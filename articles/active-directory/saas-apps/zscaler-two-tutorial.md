@@ -1,6 +1,6 @@
 ---
-title: '자습서: Azure Active Directory와 ZScaler Two 통합 | Microsoft Docs'
-description: Azure Active Directory와 Zscaler Two 간에 Single Sign-On을 구성하는 방법에 대해 알아봅니다.
+title: 'Kurz: Azure Active Directory integrace s Zscaler dvě | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscaler dvou.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,292 +22,292 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "68825090"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>자습서: Azure Active Directory와 Zscaler Two 통합
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Kurz: Azure Active Directory integrace s Zscaler dvě
 
-이 자습서에서는 Azure AD(Azure Active Directory)와 Zscaler Two를 통합하는 방법에 대해 알아봅니다.
-Zscaler Two를 Azure AD와 통합하면 다음과 같은 이점이 제공됩니다.
+V tomto kurzu se naučíte, jak integrovat Zscaler dvě s Azure Active Directory (Azure AD).
+Integrace Zscaler dvou s Azure AD poskytuje následující výhody:
 
-* Zscaler Two에 액세스할 수 있는 사용자를 Azure AD에서 제어할 수 있습니다.
-* 사용자가 자신의 Azure AD 계정으로 Zscaler Two에 자동으로 로그인(Single Sign-On)되도록 설정할 수 있습니다.
-* 단일 중앙 위치인 Azure Portal에서 계정을 관리할 수 있습니다.
+* Můžete řídit v Azure AD, kteří mají přístup k Zscaler dvěma.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili do Zscaler dvou (jednotného přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Azure AD와의 SaaS 앱 연결에 대한 자세한 내용은 [Azure Active Directory를 사용한 애플리케이션 액세스 및 Single Sign-On](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)을 참조하세요.
-Azure 구독이 아직 없는 경우 시작하기 전에 [체험](https://azure.microsoft.com/free/) 계정을 만듭니다.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>Předpoklady
 
-Zscaler Two와 Azure AD 통합을 구성하려면 다음 항목이 필요합니다.
+Ke konfiguraci integrace služby Azure AD pomocí Zscaler dvou budete potřebovat následující položky:
 
-* Azure AD 구독 Azure AD 환경이 없으면 [체험 계정](https://azure.microsoft.com/free/)을 얻을 수 있습니다.
-* Zscaler Two Single Sign-On이 설정된 구독
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* Zscaler se dva odběry s povoleným jednotným přihlašováním
 
-## <a name="scenario-description"></a>시나리오 설명
+## <a name="scenario-description"></a>Popis scénáře
 
-이 자습서에서는 테스트 환경에서 Azure AD Single Sign-On을 구성하고 테스트합니다.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Zscaler Two는 **SP** 시작 SSO를 지원합니다.
+* Zscaler 2 podporuje jednotné přihlašování s podporou **SP**
 
-* Zscaler Two는 **Just-In-Time** 사용자 프로비저닝을 지원합니다.
+* Zscaler dva podporují zřizování uživatelů **jenom v čase**
 
-## <a name="adding-zscaler-two-from-the-gallery"></a>갤러리에서 Zscaler Two 추가
+## <a name="adding-zscaler-two-from-the-gallery"></a>Přidání Zscaler 2 z Galerie
 
-Zscaler Two가 Azure AD에 통합되도록 구성하려면 갤러리의 Zscaler Two를 관리되는 SaaS 앱 목록에 추가해야 합니다.
+Pokud chcete nakonfigurovat integraci Zscalerch dvou do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Zscaler dvě z galerie.
 
-**갤러리에서 Zscaler Two를 추가하려면 다음 단계를 수행합니다.**
+**Pokud chcete přidat Zscaler dvě z Galerie, proveďte následující kroky:**
 
-1. **[Azure Portal](https://portal.azure.com)** 의 왼쪽 탐색 창에서 **Azure Active Directory** 아이콘을 클릭합니다.
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
-    ![Azure Active Directory 단추](common/select-azuread.png)
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. **엔터프라이즈 애플리케이션**으로 이동한 다음, **모든 애플리케이션** 옵션을 선택합니다.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![엔터프라이즈 애플리케이션 블레이드](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. 새 애플리케이션을 추가하려면 대화 상자 맨 위 있는 **새 애플리케이션** 단추를 클릭합니다.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![새 애플리케이션 단추](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. 검색 상자에 **Zscaler Two**를 입력하고 결과 패널에서 **Zscaler Two**를 선택한 후 **추가** 단추를 클릭하여 애플리케이션을 추가합니다.
+4. Do vyhledávacího pole zadejte **Zscaler Two**, vyberte **Zscaler dvě** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![결과 목록에 표시된 Zscaler Two](common/search-new-app.png)
+     ![Zscaler dvě v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD Single Sign-On 구성 및 테스트
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-이 섹션에서는 **Britta Simon**이라는 테스트 사용자를 사용하여 Zscaler Two에서 Azure AD Single Sign-On을 구성하고 테스트합니다.
-Single Sign-On이 작동하려면 Azure AD 사용자와 Zscaler Two의 관련 사용자 간에 연결 관계를 설정해야 합니다.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Zscaler dvou na základě testovacího uživatele s názvem **Britta Simon**.
+Aby se jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Zscaler.
 
-Zscaler Two에서 Azure AD Single Sign-On을 구성하고 테스트하려면 다음 구성 요소를 완료해야 합니다.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Zscaler dvou, musíte dokončit tyto stavební bloky:
 
-1. **[Azure AD Single Sign-On 구성](#configure-azure-ad-single-sign-on)** - 사용자가 이 기능을 사용할 수 있도록 합니다.
-2. **[Zscaler Two Single Sign-On 구성](#configure-zscaler-two-single-sign-on)** - 애플리케이션 쪽에서 Single Sign-on 설정을 구성합니다.
-3. **[Azure AD 테스트 사용자 만들기](#create-an-azure-ad-test-user)** - Britta Simon으로 Azure AD Single Sign-On을 테스트하는 데 사용합니다.
-4. **[Azure AD 테스트 사용자 할당](#assign-the-azure-ad-test-user)** - Britta Simon이 Azure AD Single Sign-on을 사용할 수 있도록 합니다.
-5. **[Zscaler Two 테스트 사용자 만들기](#create-zscaler-two-test-user)** - Britta Simon의 Azure AD 표현과 연결된 해당 사용자를 Zscaler Two에 만듭니다.
-6. **[Single Sign-On 테스트](#test-single-sign-on)** - 구성이 작동하는지 여부를 확인합니다.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte Zscaler dvě jednotné přihlašování](#configure-zscaler-two-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte Zscaler dvou testovacích uživatelů](#create-zscaler-two-test-user)** – abyste měli protějšek Britta Simon ve Zscaler dva, který je propojený s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD Single Sign-On 구성
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-이 섹션에서는 Azure Portal에서 Azure AD Single Sign-On을 사용하도록 설정합니다.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Zscaler Two에서 Azure AD Single Sign-On을 구성하려면 다음 단계를 수행합니다.
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zscaler dvou, proveďte následující kroky:
 
-1. [Azure Portal](https://portal.azure.com/)의 **Zscaler Two** 애플리케이션 통합 페이지에서 **Single Sign-On**을 선택합니다.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **dvou aplikací Zscaler** vyberte **jednotné přihlašování**.
 
-    ![Single Sign-On 구성 링크](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. **Single Sign-On 방법 선택** 대화 상자에서 **SAML/WS-Fed** 모드를 선택하여 Single Sign-On을 사용하도록 설정합니다.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Single Sign-On 선택 모드](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. **SAML로 Single Sign-On 설정** 페이지에서 **편집** 아이콘을 클릭하여 **기본 SAML 구성** 대화 상자를 엽니다.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-    ![기본 SAML 구성 편집](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. **기본 SAML 구성** 섹션에서 다음 단계를 수행합니다.
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Zscaler Two 도메인 및 URL Single Sign-On 정보](common/sp-signonurl.png)
+    ![Zscaler dvě informace o jednotném přihlašování v doméně a adresách URL](common/sp-signonurl.png)
 
-    [로그온 URL] 텍스트 상자에 사용자가 ZScaler Two 애플리케이션에 로그인하는 데 사용하는 URL을 입력합니다.
+    Do textového pole přihlašovací adresa URL zadejte adresu URL používanou vašimi uživateli, abyste se přihlásili ke své ZScaler dvě aplikace.
 
     > [!NOTE]
-    > 이 값을 실제 로그온 URL로 업데이트합니다. 이 값을 얻으려면 [Zscaler Two 클라이언트 지원 팀](https://www.zscaler.com/company/contact)에 문의하세요. Azure Portal의 **기본 SAML 구성** 섹션에 표시된 패턴을 참조할 수도 있습니다.
+    > Hodnotu aktualizujete skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [Zscalerho týmu podpory klientů](https://www.zscaler.com/company/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Zscaler Two 애플리케이션에는 특정 형식의 SAML 어설션이 필요하므로 사용자 지정 특성 매핑을 SAML 토큰 특성 구성에 추가해야 합니다. 다음 스크린샷에서는 기본 특성의 목록을 보여 줍니다. **편집** 아이콘을 클릭하여 **사용자 특성** 대화 상자를 엽니다.
+5. Vaše Zscaler dvě aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno **atributy uživatele** .
 
-    ![이미지](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
-6. 위에서 언급한 특성 외에도, Zscaler Two 애플리케이션에는 SAML 응답에서 다시 전달되어야 하는 몇 가지 특성이 추가로 필요합니다. **사용자 특성** 대화 상자의 **사용자 클레임** 섹션에서 다음 단계를 수행하여 아래 표와 같은 SAML 토큰 특성을 추가합니다.
+6. Kromě výše uvedeného platí, že Zscaler dvě aplikace očekává, že se v odpovědi SAML zpátky vrátí několik atributů. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
     
-    | name | 원본 특성 |
+    | Name (Název) | Zdrojový atribut |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf     | User. assignedroles |
 
-    a. **새 클레임 추가**를 클릭하여 **사용자 클레임 관리** 대화 상자를 엽니다.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![이미지](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![이미지](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
-    b. **이름** 텍스트 상자에서 해당 행에 표시된 특성 이름을 입력합니다.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    다. **네임스페이스**를 비워 둡니다.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. 원본을 **특성**으로 선택합니다.
+    d. Jako **atribut**vyberte zdroj.
 
-    ㅁ. **원본 특성** 목록에서 해당 행에 표시된 특성 값을 입력합니다.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
     
-    f. 페이지 맨 아래에 있는 **저장**을 참조하세요.
+    f. Klikněte na **Uložit**.
 
     > [!NOTE]
-    > [여기](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)를 클릭하여 Azure AD에서 역할을 구성하는 방법을 알아봅니다.
+    > Chcete-li zjistit, jak nakonfigurovat roli v Azure AD, klikněte prosím [sem](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) .
 
-7. **SAML로 Single Sign-On 설정** 페이지의 **SAML 서명 인증서** 섹션에서 **다운로드**를 클릭하여 요구 사항에 따라 제공된 옵션에서 **인증서(Base64)** 를 다운로드한 다음, 컴퓨터에 저장합니다.
+7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![인증서 다운로드 링크](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-8. **Zscaler Two 설정** 섹션에서 요구 사항에 따라 적절한 URL을 복사합니다.
+8. V části **Nastavení Zscaler dvě** zkopírujte příslušné adresy URL podle vašeho požadavku.
 
-    ![구성 URL 복사](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. 로그인 URL
+    a. Přihlašovací adresa URL
 
-    b. Azure AD 식별자
+    b. Identifikátor Azure AD
 
-    다. 로그아웃 URL
+    c. Odhlašovací adresa URL
 
-### <a name="configure-zscaler-two-single-sign-on"></a>Zscaler Two Single Sign-On 구성
+### <a name="configure-zscaler-two-single-sign-on"></a>Konfigurace Zscaler dvou jednotného přihlašování
 
-1. Zscaler Two 내에서 구성을 자동화하려면 **확장 설치**를 클릭하여 **내 앱 보안 로그인 브라우저 확장**을 설치해야 합니다.
+1. Pokud chcete automatizovat konfiguraci v rámci Zscaler dvou, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-    ![내 앱 확장](common/install-myappssecure-extension.png)
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-2. 브라우저에 확장을 추가한 후 **Zscaler Two 설정**을 클릭하면 Zscaler Two 애플리케이션으로 이동됩니다. 여기서 관리자 자격 증명을 입력하여 Zscaler Two에 로그인합니다. 브라우저 확장이 애플리케이션을 자동으로 구성하고 3-6단계를 자동으로 수행합니다.
+2. Po přidání rozšíření do prohlížeče klikněte na **Zscaler nastavení 2** a nasměrujte vás na Zscaler dvě aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení k Zscaler dvěma. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-6.
 
-    ![SSO 설정](common/setup-sso.png)
+    ![Nastavení jednotného přihlašování](common/setup-sso.png)
 
-3. Zscaler Two를 수동으로 설정하려면 새 웹 브라우저 창을 열고 Zscaler Two 회사 사이트에 관리자로 로그인하여 다음 단계를 수행합니다.
+3. Pokud chcete nastavit Zscaler dvakrát, otevřete nové okno webového prohlížeče a přihlaste se ke svojí Zscaler firemnímu webu jako správce a proveďte následující kroky:
 
-4. **관리 > 인증 > 인증 설정**으로 이동하고 다음 단계를 수행합니다.
+4. V části **správa > ověřování > nastavení ověřování** a proveďte následující kroky:
    
-    ![관리](./media/zscaler-two-tutorial/ic800206.png "관리")
+    ![Řízení](./media/zscaler-two-tutorial/ic800206.png "Správa")
 
-    a. 인증 형식에서 **SAML**을 선택합니다.
+    a. V části typ ověřování vyberte **SAML**.
 
-    b. **SAML 구성**을 클릭합니다.
+    b. Klikněte na **Konfigurovat SAML**.
 
-5. **SAML 편집** 창에서 다음 단계를 수행하고 저장을 클릭합니다.  
+5. V okně **Upravit SAML** proveďte následující kroky: a klikněte na Uložit.  
             
-    ![사용자 & 인증 관리](./media/zscaler-two-tutorial/ic800208.png "사용자 & 인증 관리")
+    ![Správa uživatelů & ověřování](./media/zscaler-two-tutorial/ic800208.png "Správa uživatelů & ověřování")
     
-    a. Azure Portal에서 복사한 **로그인 URL** 값을 **SAML 포털 URL** 텍스트 상자에 붙여넣습니다.
+    a. Do textového pole **Adresa URL portálu SAML** vložte **přihlašovací adresu URL** , kterou jste zkopírovali z Azure Portal.
 
-    b. **로그인 이름 특성** 텍스트 상자에 **NameID**을 입력합니다.
+    b. Do textového pole **atributu přihlašovací jméno** zadejte **NameId**.
 
-    다. **업로드**를 클릭하여 Azure Portal에서 다운로드한 Azure SAML 서명 인증서를 **공용 SSL 인증서**에 업로드합니다.
+    c. Klikněte na **nahrát**a nahrajte podpisový certifikát Azure SAML, který jste stáhli z Azure Portal ve **veřejném certifikátu SSL**.
 
-    d. **SAML 자동 프로비전 사용**을 선택/해제합니다.
+    d. Přepněte **možnost povolit Automatické zřizování SAML**.
 
-    ㅁ. displayName 특성에 대해 SAML 자동 프로비전을 사용하도록 설정하려는 경우 **사용자 표시 이름 특성** 텍스트 상자에 **displayName**을 입력합니다.
+    e. Do textového pole **atribut zobrazovaného jména uživatele** zadejte **DisplayName** , pokud chcete povolit Automatické zřizování SAML pro atributy DisplayName.
 
-    f. memberOf 특성에 대해 SAML 자동 프로비전을 사용하도록 설정하려는 경우 **그룹 이름 특성** 텍스트 상자에 **memberOf**를 입력합니다.
+    f. Do textového pole **atributu název skupiny** zadejte **memberOf** , pokud chcete povolit Automatické zřizování SAML pro atributy memberOf.
 
-    g. 부서 특성에 대해 SAML 자동 프로비전을 사용하도록 설정하려는 경우 **부서 이름 특성** 텍스트 상자에 **부서**를 입력합니다.
+    g. V **atributu název oddělení** zadejte **oddělení** , pokud chcete povolit Automatické zřizování SAML pro atributy oddělení.
 
-    h. 페이지 맨 아래에 있는 **저장**을 참조하세요.
+    h. Klikněte na **Uložit**.
 
-6. **사용자 인증 구성** 대화 상자 페이지에서 다음 단계를 수행합니다.
+6. Na stránce **Konfigurovat ověření uživatele** proveďte následující kroky:
 
-    ![관리](./media/zscaler-two-tutorial/ic800207.png)
+    ![Správa](./media/zscaler-two-tutorial/ic800207.png)
 
-    a. 왼쪽 아래 근처에 있는 **활성화** 메뉴를 마우스로 가리킵니다.
+    a. Najeďte myší na nabídku **Aktivace** v blízkosti levého dolního rohu.
 
-    b. **활성화**를 클릭합니다.
+    b. Klikněte na tlačítko **aktivovat**.
 
-## <a name="configuring-proxy-settings"></a>프록시 설정 구성
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer에서 프록시 설정을 구성하려면
+## <a name="configuring-proxy-settings"></a>Konfigurace nastavení proxy serveru
+### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Konfigurace nastavení proxy serveru v Internet Exploreru
 
-1. **Internet Explorer**를 시작합니다.
+1. Spusťte **aplikaci Internet Explorer**.
 
-2. **도구** 메뉴에서 **인터넷 옵션**을 선택하여 **인터넷 옵션** 대화 상자를 엽니다.   
+2. V nabídce **nástroje** vyberte **Možnosti Internetu** . otevře se dialogové okno **Možnosti Internetu** .   
     
-     ![인터넷 옵션](./media/zscaler-two-tutorial/ic769492.png "인터넷 옵션")
+     ![Možnosti Internetu](./media/zscaler-two-tutorial/ic769492.png "Možnosti Internetu")
 
-3. **연결** 탭을 클릭합니다.   
+3. Klikněte na kartu **připojení** .   
   
-     ![연결](./media/zscaler-two-tutorial/ic769493.png "연결")
+     ![Připojení](./media/zscaler-two-tutorial/ic769493.png "Připojení")
 
-4. **LAN 설정**을 클릭하여 **LAN 설정** 대화 상자를 엽니다.
+4. Kliknutím na **Nastavení místní sítě** otevřete dialogové okno **nastavení sítě LAN** .
 
-5. 프록시 서버 섹션에서 다음 단계를 수행합니다.   
+5. V části proxy server proveďte následující kroky:   
    
-    ![프록시 서버](./media/zscaler-two-tutorial/ic769494.png "프록시 서버")
+    ![Proxy server](./media/zscaler-two-tutorial/ic769494.png "Proxy server")
 
-    a. **사용자 LAN의 프록시 서버 사용**을 선택합니다.
+    a. Vyberte **použít proxy server pro vaši síť LAN**.
 
-    b. 주소 텍스트 상자에 **gateway.Zscaler Two.net**를 입력합니다.
+    b. Do textového pole Adresa zadejte **Gateway. Zscaler Two.net**.
 
-    다. 포트 텍스트 상자에 **80**을 입력합니다.
+    c. Do textového pole Port zadejte **80**.
 
-    d. **로컬 주소의 바이패스 프록시 서버**를 선택합니다.
+    d. Vyberte možnost **obejít proxy server pro místní adresy**.
 
-    ㅁ. **확인**을 클릭하여 **LAN(Local Area Network) 설정** 대화 상자를 닫습니다.
+    e. Kliknutím na tlačítko **OK** zavřete dialogové okno **Nastavení místní sítě (LAN)** .
 
-6. **확인**을 클릭하여 **인터넷 옵션** 대화 상자를 닫습니다.
+6. Kliknutím na tlačítko **OK** zavřete dialogové okno **Možnosti Internetu** .
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD 테스트 사용자 만들기 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-이 섹션의 목적은 Azure Portal에서 Britta Simon이라는 테스트 사용자를 만드는 것입니다.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Azure Portal의 왼쪽 창에서 **Azure Active Directory**, **사용자**, **모든 사용자**를 차례로 선택합니다.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    !["사용자 및 그룹" 및 "모든 사용자" 링크](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. 화면 위쪽에서 **새 사용자**를 선택합니다.
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![새 사용자 단추](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. 사용자 속성에서 다음 단계를 수행합니다.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![사용자 대화 상자](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. **이름** 필드에 **BrittaSimon**을 입력합니다.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. **사용자 이름** 필드에 `brittasimon@yourcompanydomain.extension`을 입력합니다. 위치(예:BrittaSimon@contoso.com
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    다. **암호 표시** 확인란을 선택한 다음, [암호] 상자에 표시된 값을 적어둡니다.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. **만들기**를 클릭합니다.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD 테스트 사용자 할당
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-이 섹션에서는 Azure Single Sign-On을 사용할 수 있도록 Britta Simon에게 Zscaler Two에 대한 액세스 권한을 부여합니다.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Zscaler dvěma.
 
-1. Azure Portal에서 **엔터프라이즈 애플리케이션**, **모든 애플리케이션**, **Zscaler Two**를 차례로 선택합니다.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **Zscaler 2**.
 
-    ![엔터프라이즈 애플리케이션 블레이드](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. 애플리케이션 목록에서 **Zscaler Two**를 선택합니다.
+2. V seznamu aplikace vyberte **Zscaler dvě**.
 
-    ![애플리케이션 목록의 Zscaler Two 링크](common/all-applications.png)
+    ![Zscaler dva odkazy v seznamu aplikací](common/all-applications.png)
 
-3. 왼쪽 메뉴에서 **사용자 및 그룹**을 선택합니다.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    !["사용자 및 그룹" 링크](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. **사용자 추가** 단추를 클릭한 다음, **할당 추가** 대화 상자에서 **사용자 및 그룹**을 선택합니다.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![할당 추가 창](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. **사용자 및 그룹** 대화 상자의 목록에서 **Britta Simon** 등의 사용자를 선택한 다음, 화면 맨 아래에서 **선택** 단추를 클릭합니다.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatele, jako je **Britta Simon** , a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-    ![이미지](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
+    ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
 
-6. **역할 선택** 대화 상자의 목록에서 적절한 사용자 역할을 선택한 다음, 화면 맨 아래에서 **선택** 단추를 클릭합니다.
+6. V dialogu **Vybrat roli** vyberte příslušnou roli uživatele v seznamu a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-    ![이미지](./media/zscaler-two-tutorial/tutorial_zscalertwo_roles.png)
+    ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_roles.png)
 
-7. **할당 추가** 대화 상자에서 **할당** 단추를 선택합니다.
+7. V dialogovém okně **Přidat přiřazení** vyberte tlačítko **přiřadit** .
 
-    ![이미지](./media/zscaler-two-tutorial/tutorial_zscalertwo_assign.png)
+    ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_assign.png)
 
-### <a name="create-zscaler-two-test-user"></a>Zscaler Two 테스트 사용자 만들기
+### <a name="create-zscaler-two-test-user"></a>Vytvořit Zscaler dva testovací uživatele
 
-이 섹션에서는 Zscaler Two에서 Britta Simon이라는 사용자를 만듭니다. Zscaler Two는 기본적으로 사용하도록 설정되는 Just-In-Time 사용자 프로비저닝을 지원합니다. 이 섹션에 작업 항목이 없습니다. Zscaler Two에 사용자가 아직 없는 경우 인증 후에 새 사용자가 만들어집니다.
+V této části se v Zscaler 2 vytvoří uživatel s názvem Britta Simon. Zscaler Two podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v Zscaler dvakrát neexistuje, vytvoří se po ověření nový.
 
 >[!Note]
->사용자를 수동으로 만들어야 하는 경우 [Zscaler Two 지원 팀](https://www.zscaler.com/company/contact)에 문의해야 합니다.
+>Pokud potřebujete ručně vytvořit uživatele, kontaktujte [Zscaler dva týmy podpory](https://www.zscaler.com/company/contact).
 
-### <a name="test-single-sign-on"></a>Single Sign-On 테스트 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-이 섹션에서는 액세스 패널을 사용하여 Azure AD Single Sign-On 구성을 테스트합니다.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-액세스 패널에서 Zscaler Two 타일을 클릭하면 SSO를 설정한 Zscaler Two에 자동으로 로그인되어야 합니다. 액세스 패널에 대한 자세한 내용은 [액세스 패널 소개](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)를 참조하세요.
+Když na přístupovém panelu kliknete na dlaždici Zscaler, měli byste se automaticky přihlášeni k Zscaler dvěma, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="additional-resources"></a>Další materiály
 
-- [Azure Active Directory와 SaaS Apps를 통합하는 방법에 대한 자습서 목록](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory로 애플리케이션 액세스 및 Single Sign-On을 구현하는 방법](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory의 조건부 액세스란?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

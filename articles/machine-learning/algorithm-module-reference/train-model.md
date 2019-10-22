@@ -1,5 +1,5 @@
 ---
-title: 'Model výuky: Odkaz na modul'
+title: 'Model výuky: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul **vlakového modelu** ve službě Azure Machine Learning ke školení modelu klasifikace nebo regrese.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 08b551e766632949db350478fa8d3725906c8af8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f9717c39388c85ced889744722899b78a5df8453
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128452"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693686"
 ---
-# <a name="train-model-module"></a>Modul trénování modelu
+# <a name="train-model-module"></a>Modul vlakového modelu
 
 Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
@@ -31,19 +31,19 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
     + **Klasifikační** modely založené na neuronovéch sítích, rozhodovacích stromů a doménových strukturách a dalších algoritmech.
     + **Regresní** modely, které mohou zahrnovat standardní lineární regresi nebo které používají jiné algoritmy, včetně neuronovéch sítí a bayesovského rozhodování regrese.  
 
-2. Poskytněte datovou sadu, která je označena a má data kompatibilní s algoritmem. Připojte data i model k proškolování **modelu**.
+2. Poskytněte datovou sadu, která je označena a má data kompatibilní s algoritmem. Připojte data i model k **proškolování modelu**.
 
     Jaké školení vytváří konkrétní binární formát, iLearner, který zapouzdřuje statistické vzorce získané z dat. Tento formát nejde změnit přímo ani číst. Tento vycvičený model ale může používat jiný modul. 
     
     Můžete také zobrazit vlastnosti modelu. Další informace najdete v části s výsledky.
 
-3. Po dokončení školení použijte školicí model s jedním z [modulů](./score-model.md)pro vyhodnocování a předpovědi se na nová data.
+3. Po dokončení školení použijte školicí model s jedním z [modulů pro vyhodnocování](./score-model.md)a předpovědi se na nová data.
 
 ## <a name="how-to-use-train-model"></a>Jak používat **model výuky**  
   
 1.  V Azure Machine Learning nakonfigurujte model klasifikace nebo regresní model.
     
-2. Přidejte modul **vlakového modelu** do experimentu.  Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte položku **vlak**a přetáhněte modul **vlakového modelu** do experimentu.
+2. Přidejte modul **vlakového modelu** do kanálu.  Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte položku **vlak**a přetáhněte do svého kanálu modul **vlakového modelu** .
   
 3.  Na levém vstupu připojte nev nevýukovém režimu. Připojte datovou sadu ke správnému vstupu **modelu výuky**.
 
@@ -62,19 +62,19 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
     > [!TIP] 
     > Pokud máte potíže s použitím voliče sloupců, přečtěte si článek [Výběr sloupců v datové sadě](./select-columns-in-dataset.md) pro tipy. Popisuje několik běžných scénářů a tipů k používání **pravidel s pravidly** a možnostmi **názvu** .
   
-5.  Spusťte experiment. Pokud máte velké množství dat, může to chvíli trvat.
+5.  Spuštění kanálu Pokud máte velké množství dat, může to chvíli trvat.
 
 ## <a name="bkmk_results"></a>Důsledk
 
 Po vyškolení modelu:
 
 + Pokud chcete zobrazit parametry modelu a váhy funkcí, klikněte pravým tlačítkem na výstup a vyberte **vizualizovat**.
-+ Pokud chcete model použít v jiných experimentech, klikněte pravým tlačítkem na model a vyberte **Uložit model**. Zadejte název modelu. 
++ Pokud chcete model použít v jiných kanálech, klikněte pravým tlačítkem na model a vyberte **Uložit model**. Zadejte název modelu. 
 
-    Tím se model uloží jako snímek, který není aktualizován opakovanými běhy experimentu.
+    Tím se model uloží jako snímek, který není aktualizován opakovanými běhy kanálu.
 + Pokud chcete model použít při předvídání nových hodnot, připojte ho k modulu [skóre modelu](./score-model.md) spolu s novými vstupními daty.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

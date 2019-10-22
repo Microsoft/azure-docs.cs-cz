@@ -1,7 +1,7 @@
 ---
-title: 포털에서 Azure ML 작업 영역 만들기
+title: Vytváření pracovních prostorů Azure ML na portálu
 titleSuffix: Azure Machine Learning
-description: Azure Portal에서 Azure Machine Learning 작업 영역을 만들고, 확인 하 고, 삭제 하는 방법에 대해 알아봅니다.
+description: Naučte se vytvářet, zobrazovat a odstraňovat Azure Machine Learning pracovní prostory v Azure Portal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,55 +18,55 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "71269251"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Portal에서 Azure Machine Learning 작업 영역 만들기 및 관리
+# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal
 
-이 문서에서는 [Azure Machine Learning](overview-what-is-azure-ml.md)에 대 한 Azure Portal에서 [**Azure Machine Learning 작업 영역**](concept-workspace.md) 을 만들고, 확인 하 고, 삭제 합니다.  포털은 작업 영역을 시작 하는 가장 쉬운 방법 이지만 변경 내용 또는 automation 증가 요구 사항에 따라 [CLI를 사용 하 여](reference-azure-machine-learning-cli.md)작업 영역을 만들고 삭제할 수도 있습니다 (예를 들어, [Python 코드를](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 사용 하거나 [VS Code 확장을 통해](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code)).
+V tomto článku vytvoříte, zobrazíte a odstraníte [**Azure Machine Learning pracovní prostory**](concept-workspace.md) v Azure Portal pro [Azure Machine Learning](overview-what-is-azure-ml.md).  Portál představuje nejjednodušší způsob, jak začít pracovat s pracovními prostory, ale jak se vaše potřeby mění nebo jsou požadavky na automatizaci, můžete také vytvořit a odstranit pracovní prostory [pomocí rozhraní](reference-azure-machine-learning-cli.md)příkazového řádku [s kódem Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) nebo [prostřednictvím rozšíření vs Code](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code).
 
-## <a name="create-a-workspace"></a>작업 영역 생성
+## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-작업 영역을 만들려면 Azure 구독이 필요합니다. Azure 구독이 없는 경우 시작하기 전에 체험 계정을 만듭니다. 지금 [Azure Machine Learning 서비스의 평가판 또는 유료 버전](https://aka.ms/AMLFree)을 사용해 보세요.
+K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-### <a name="download-a-configuration-file"></a>구성 파일 다운로드
+### <a name="download-a-configuration-file"></a>Stažení konfiguračního souboru
 
-1. [노트북 VM](tutorial-1st-experiment-sdk-setup.md#azure)을 만들 경우에는이 단계를 건너뜁니다.
+1. Pokud budete vytvářet [virtuální počítač poznámkového bloku](tutorial-1st-experiment-sdk-setup.md#azure), tento krok přeskočte.
 
-1. 로컬 환경에서 이 작업 영역을 참조하는 코드를 사용하려면 작업 영역의 **개요** 섹션에서 **config.json 다운로드**를 선택합니다.  
+1. Pokud plánujete použít kód v místním prostředí, které odkazuje na tento pracovní prostor, vyberte **Stáhnout soubor config. JSON** v části **Přehled** pracovního prostoru.  
 
-   ![config.json 다운로드](./media/how-to-manage-workspace/configure.png)
+   ![Stažení souboru config. JSON](./media/how-to-manage-workspace/configure.png)
    
-   Python 스크립트 또는 Jupyter Notebook을 사용하여 파일을 디렉터리 구조에 배치합니다. 동일한 디렉터리, *.azureml*이라는 하위 디렉터리 또는 부모 디렉터리에 있을 수 있습니다. 노트북 VM을 만들 때이 파일은 VM의 올바른 디렉터리에 추가 됩니다.
+   Soubor umístěte do struktury adresáře pomocí skriptů Pythonu nebo poznámkových bloků Jupyter. Může být ve stejném adresáři, v podadresáři s názvem *. AzureML*nebo v nadřazeném adresáři. Při vytváření virtuálního počítače poznámkového bloku se tento soubor přidá do správného adresáře na VIRTUÁLNÍm počítači za vás.
 
 
-## <a name="view"></a>작업 영역 보기
+## <a name="view"></a>Zobrazení pracovního prostoru
 
-1. 포털의 왼쪽 위 모서리에서 **모든 서비스**를 선택합니다.
+1. V levém horním rohu portálu vyberte **všechny služby**.
 
-1. **모든 서비스** 필터 필드에 **machine learning 서비스**를 입력 합니다.  
+1. Do pole Filtr **všechny služby** zadejte **Služba Machine Learning**.  
 
-1. **Machine Learning 서비스 작업 영역**을 선택 합니다.
+1. Vyberte **Machine Learning pracovní prostory služby**.
 
-   ![Azure Machine Learning 작업 영역 검색](media/how-to-manage-workspace/all-services.png)
+   ![Vyhledat Azure Machine Learning pracovní prostor](media/how-to-manage-workspace/all-services.png)
 
-1. 검색된 작업 영역 목록을 살펴봅니다. 구독, 리소스 그룹 및 위치를 기준으로 필터링 할 수 있습니다.  
+1. Prohlédněte si seznam pracovních prostorů, které se našly. Můžete filtrovat podle předplatného, skupin prostředků a umístění.  
 
-1. 해당 속성을 표시할 작업 영역을 선택 합니다.
-   ![Workspace 속성 ](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
+1. Vyberte pracovní prostor, ve kterém chcete zobrazit jeho vlastnosti.
+   vlastnosti ![Workspace ](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
-## <a name="delete-a-workspace"></a>작업 영역 삭제
+## <a name="delete-a-workspace"></a>Odstranění pracovního prostoru
 
-삭제하려는 작업 영역 맨 위에 있는 [삭제] 단추를 사용합니다.
+Použijte tlačítko Odstranit v horní části pracovního prostoru, který chcete odstranit.
 
-  ![삭제 단추](media/how-to-manage-workspace/delete-workspace.png)
+  ![Tlačítko Odstranit](media/how-to-manage-workspace/delete-workspace.png)
 
-## <a name="clean-up-resources"></a>리소스 정리
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>Další kroky
 
-전체 길이 자습서에 따라 작업 영역을 사용 하 여 Azure Machine Learning으로 모델을 작성, 학습 및 배포 하는 방법을 알아봅니다.
+Postupujte podle kurzu pro celou délku a Naučte se používat pracovní prostor k sestavování, vytváření výukových a nasazování modelů pomocí Azure Machine Learning.
 
 > [!div class="nextstepaction"]
-> [자습서: 모델 교육](tutorial-train-models-with-aml.md)
+> [Kurz: modely vlaků](tutorial-train-models-with-aml.md)

@@ -121,15 +121,8 @@
           href: paas-applications-using-storage.md
         - name: Osvědčené postupy DB pro PaaS
           href: paas-applications-using-sql.md
-    - name: IoT
-      href: iot-overview.md
     - name: Zabezpečení služby Azure Service Fabric
-      href: service-fabric-overview.md
-      items:
-        - name: Osvědčené postupy
-          href: service-fabric-best-practices.md
-        - name: Kontrolní seznam zabezpečení
-          href: service-fabric-checklist.md
+      href: service-fabric-best-practices.md
 - name: 'Monitorování, auditování a provoz'
   href: management-monitoring-overview.md
   items:

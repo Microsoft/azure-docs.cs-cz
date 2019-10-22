@@ -1,6 +1,6 @@
 ---
-title: 기존 Azure Service Bus 표준 네임 스페이스를 프리미엄 계층으로 마이그레이션 | Microsoft Docs
-description: 기존 Azure Service Bus 표준 네임 스페이스를 premium으로 마이그레이션할 수 있는 가이드
+title: Migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium | Microsoft Docs
+description: Průvodce pro povolení migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -20,41 +20,41 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "69611922"
 ---
-# <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>기존 Azure Service Bus 표준 네임 스페이스를 프리미엄 계층으로 마이그레이션
-이전에는 표준 계층 에서만 네임 스페이스를 제공 Azure Service Bus 합니다. 네임 스페이스는 낮은 처리량 및 개발자 환경에 최적화 된 다중 테 넌 트의 기능입니다. 프리미엄 계층은 예측 가능한 대기 시간에 대 한 네임 스페이스 당 전용 리소스를 제공 하 고 고정 된 가격으로 처리량을 증가 시킵니다. 프리미엄 계층은 높은 처리량 및 추가 엔터프라이즈 기능이 필요한 프로덕션 환경에 최적화 되어 있습니다.
+# <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium
+Dřív Azure Service Bus nabízet obory názvů jenom na úrovni Standard. Obory názvů jsou nastavení pro více tenantů, která jsou optimalizovaná pro prostředí s nízkou propustností a vývojářem. Úroveň Premium nabízí vyhrazené prostředky na obor názvů pro předvídatelné latenci a vyšší propustnost za pevnou cenu. Úroveň Premium je optimalizovaná pro vysokou propustnost a produkční prostředí, která vyžadují další podnikové funkce.
 
-이 문서에서는 기존 표준 계층 네임 스페이스를 프리미엄 계층으로 마이그레이션하는 방법을 설명 합니다.  
+Tento článek popisuje, jak migrovat existující obory názvů úrovně Standard na úroveň Premium.  
 
 >[!WARNING]
-> 마이그레이션은 프리미엄 계층으로 업그레이드 될 Service Bus 표준 네임 스페이스를 위한 것입니다. 마이그레이션 도구는 다운 그레이드를 지원 하지 않습니다.
+> Migrace je určená pro Service Bus standardní obory názvů, které se mají upgradovat na úroveň Premium. Nástroj pro migraci nepodporuje downgrade.
 
-참고 사항: 
-- 이 마이그레이션은 기존 발신자 및 수신자 응용 프로그램에서 **코드 또는 구성을 변경할 필요가**없음을 의미 합니다. 기존 연결 문자열이 자동으로 새 프리미엄 네임 스페이스를 가리킵니다.
-- 마이그레이션을 성공적으로 수행 하려면 **premium** 네임 스페이스에 **엔터티가** 없어야 합니다. 
-- 표준 네임 스페이스의 모든 **엔터티** 는 마이그레이션 프로세스 중에 프리미엄 네임 스페이스로 **복사** 됩니다. 
-- 마이그레이션은 프리미엄 계층에서 **메시징 단위당 1000 엔터티** 를 지원 합니다. 필요한 메시징 단위 수를 식별 하려면 현재 표준 네임 스페이스에 있는 엔터티 수로 시작 합니다. 
-- **기본 계층** 에서 **프리미어 계층**으로 직접 마이그레이션할 수는 없지만 다음 단계에서 basic에서 standard로 먼저 마이그레이션하고 표준에서 프리미엄으로 마이그레이션하여 간접적으로 수행할 수 있습니다.
+Některé body, které je potřeba poznamenat: 
+- Tato migrace by měla být provedena, což znamená, že stávající aplikace odesílatele a přijímače **nevyžadují žádné změny kódu nebo konfigurace**. Existující připojovací řetězec bude automaticky ukazovat na nový obor názvů Premium.
+- Obor názvů **Premium** by neměl obsahovat **žádné entity** , aby migrace proběhla úspěšně. 
+- Všechny **entity** v oboru názvů Standard jsou během procesu migrace **zkopírovány** do oboru názvů Premium. 
+- Migrace podporuje **1 000 entit na jednu jednotku zasílání zpráv** na úrovni Premium. Pokud chcete zjistit, kolik jednotek pro zasílání zpráv potřebujete, začněte s počtem entit, které máte v aktuálním oboru názvů Standard. 
+- Nemůžete přímo migrovat z **úrovně Basic** na **úroveň Premier**, ale můžete to provést nepřímo migrací z úrovně Basic na standard a potom z standardu na prémii v dalším kroku.
 
-## <a name="migration-steps"></a>마이그레이션 단계
-일부 조건은 마이그레이션 프로세스와 연결 됩니다. 오류 발생 가능성을 줄이기 위해 다음 단계를 숙지 합니다. 이러한 단계는 마이그레이션 프로세스를 개략적으로 설명 하 고 다음 섹션에서 단계별 세부 정보를 나열 합니다.
+## <a name="migration-steps"></a>Kroky migrace
+K procesu migrace jsou přidružené některé podmínky. Seznamte se s následujícími kroky, abyste snížili pravděpodobnost chyb. Tyto kroky popisují proces migrace a podrobné informace jsou uvedené v následujících oddílech.
 
-1. 새 프리미엄 네임 스페이스를 만듭니다.
-1. 표준 및 프리미엄 네임 스페이스를 서로 쌍으로 연결 합니다.
-1. 표준에서 프리미엄 네임 스페이스로 엔터티를 동기화 (복사) 합니다.
-1. 마이그레이션을 커밋합니다.
-1. 네임 스페이스의 마이그레이션 후 이름을 사용 하 여 표준 네임 스페이스의 엔터티를 드레이닝 합니다.
-1. 표준 네임 스페이스를 삭제 합니다.
+1. Vytvořte nový obor názvů Premium.
+1. Párovat obory názvů Standard a Premium na sebe navzájem.
+1. Proveďte synchronizaci entit (kopírování) z úrovně Standard do oboru názvů Premium.
+1. Potvrďte migraci.
+1. Vyprázdnit entity v oboru názvů Standard pomocí názvu po migraci oboru názvů.
+1. Odstraňte obor názvů Standard.
 
 >[!IMPORTANT]
-> 마이그레이션이 커밋된 후 이전 표준 네임 스페이스에 액세스 하 여 큐와 구독을 드레이닝 합니다. 메시지가 배출 된 후에는 받는 사람 응용 프로그램에서 처리 하기 위해 새 프리미엄 네임 스페이스로 전송 될 수 있습니다. 큐 및 구독이 방전 된 후에는 이전 표준 네임 스페이스를 삭제 하는 것이 좋습니다.
+> Po potvrzení migrace přejděte ke starému standardnímu oboru názvů a vyprázdněte fronty a odběry. Po vyprázdnění zpráv je možné je odeslat do nového oboru názvů Premium, aby je mohl zpracovat aplikace příjemce. Po vyprázdnění front a předplatných doporučujeme odstranit starý obor názvů Standard.
 
-### <a name="migrate-by-using-the-azure-cli-or-powershell"></a>Azure CLI 또는 PowerShell을 사용 하 여 마이그레이션
+### <a name="migrate-by-using-the-azure-cli-or-powershell"></a>Migrace pomocí Azure CLI nebo PowerShellu
 
-Azure CLI 또는 PowerShell 도구를 사용 하 여 Service Bus 표준 네임 스페이스를 premium으로 마이그레이션하려면 다음 단계를 수행 합니다.
+Pokud chcete migrovat obor názvů Service Bus Standard do úrovně Premium pomocí Azure CLI nebo nástroje PowerShell, postupujte podle těchto kroků.
 
-1. 새 Service Bus 프리미엄 네임 스페이스를 만듭니다. [Azure Resource Manager 템플릿을](service-bus-resource-manager-namespace.md) 참조 하거나 [Azure Portal를 사용할](service-bus-create-namespace-portal.md)수 있습니다. **Servicebussku** 매개 변수에 대해 **프리미엄** 을 선택 해야 합니다.
+1. Vytvořte nový obor názvů Service Bus Premium. Můžete odkazovat na [šablony Azure Resource Manager](service-bus-resource-manager-namespace.md) nebo [použít Azure Portal](service-bus-create-namespace-portal.md). Nezapomeňte vybrat možnost **Premium** pro parametr **serviceBusSku** .
 
-1. 마이그레이션 명령을 간소화 하기 위해 다음 환경 변수를 설정 합니다.
+1. Nastavte následující proměnné prostředí, aby se zjednodušily příkazy migrace.
    ```azurecli
    resourceGroup = <resource group for the standard namespace>
    standardNamespace = <standard namespace to migrate>
@@ -63,113 +63,113 @@ Azure CLI 또는 PowerShell 도구를 사용 하 여 Service Bus 표준 네임 �
    ```
 
     >[!IMPORTANT]
-    > 마이그레이션 후 별칭/이름 (post_migration_dns_name)은 이전 표준 네임 스페이스 마이그레이션 후에 액세스 하는 데 사용 됩니다. 이를 사용 하 여 큐와 구독을 드레이닝 하 고 네임 스페이스를 삭제 합니다.
+    > Pro přístup k starému standardnímu oboru názvů po migraci se použije alias nebo název po migraci (post_migration_dns_name). Tuto akci použijte pro vyprázdnění front a odběrů a pak obor názvů odstraňte.
 
-1. 표준 및 프리미엄 네임 스페이스를 페어링 하 고 다음 명령을 사용 하 여 동기화를 시작 합니다.
+1. Spárujte obory názvů Standard a Premium a spusťte synchronizaci pomocí následujícího příkazu:
 
     ```azurecli
     az servicebus migration start --resource-group $resourceGroup --name $standardNamespace --target-namespace $premiumNamespaceArmId --post-migration-name $postMigrationDnsName
     ```
 
 
-1. 다음 명령을 사용 하 여 마이그레이션 상태를 확인 합니다.
+1. Stav migrace zkontrolujete pomocí následujícího příkazu:
     ```azurecli
     az servicebus migration show --resource-group $resourceGroup --name $standardNamespace
     ```
 
-    마이그레이션은 다음과 같은 값을 볼 때 완료 된 것으로 간주 됩니다.
-    * MigrationState = "Active"
+    Migrace se považuje za dokončenou, když se zobrazí následující hodnoty:
+    * MigrationState = "aktivní"
     * pendingReplicationsOperationsCount = 0
-    * provisioningState = "Succeeded"
+    * provisioningState = "úspěch"
 
-    이 명령은 마이그레이션 구성도 표시 합니다. 값이 올바르게 설정 되었는지 확인 합니다. 또한 포털에서 프리미엄 네임 스페이스를 확인 하 여 모든 큐 및 항목이 만들어지고 표준 네임 스페이스에 있던 항목과 일치 하는지 확인 합니다.
+    Tento příkaz také zobrazí konfiguraci migrace. Zkontrolujte, zda jsou hodnoty správně nastaveny. Zkontrolujte také obor názvů Premium na portálu, abyste se ujistili, že byly vytvořeny všechny fronty a témata a aby odpovídaly tomu, co existovaly v oboru názvů Standard.
 
-1. 다음의 전체 명령을 실행 하 여 마이그레이션을 커밋합니다.
+1. Potvrďte migraci provedením následujícího příkazu Complete:
    ```azurecli
    az servicebus migration complete --resource-group $resourceGroup --name $standardNamespace
    ```
 
-### <a name="migrate-by-using-the-azure-portal"></a>Azure Portal를 사용 하 여 마이그레이션
+### <a name="migrate-by-using-the-azure-portal"></a>Migrace pomocí Azure Portal
 
-Azure Portal를 사용 하 여 마이그레이션하는 경우에는 명령을 사용 하 여 마이그레이션하는 것과 동일한 논리 흐름이 사용 됩니다. Azure Portal를 사용 하 여 마이그레이션하려면 다음 단계를 수행 합니다.
+Migrace pomocí Azure Portal má stejný logický tok jako migrace pomocí příkazů. Při migraci pomocí Azure Portal postupujte podle těchto kroků.
 
-1. 왼쪽 창의 **탐색** 메뉴에서 **premium으로 마이그레이션**을 선택 합니다. **시작** 단추를 클릭 하 여 다음 페이지로 이동 합니다.
-    ![Migration 방문 페이지 ][]
+1. V **navigační** nabídce v levém podokně vyberte **migrovat na Premium**. Kliknutím na tlačítko **Začínáme** můžete pokračovat na další stránku.
+    ![Migration Úvodní stránka ][]
 
-1. **설치**를 완료 합니다.
-   ![Setup 네임 스페이스 ][]
-   1. 프리미엄 네임 스페이스를 만들고 할당 하 여 기존 표준 네임 스페이스를로 마이그레이션합니다.
-        ![Setup 네임 스페이스-premium 네임 스페이스 만들기 ][]
-   1. **마이그레이션 후 이름을**선택 합니다. 마이그레이션이 완료 된 후이 이름을 사용 하 여 표준 네임 스페이스에 액세스 합니다.
-        ![Setup 네임 스페이스-마이그레이션 후 이름 선택 ][]
-   1. 계속 하려면 **' 다음 '** 을 선택 합니다.
-1. 표준 네임 스페이스와 프리미엄 네임 스페이스 간에 엔터티를 동기화 합니다.
-    ![Setup 네임 스페이스-동기화 엔터티-시작 ][]
+1. Dokončete **Nastavení**.
+   obor názvů ![Setup ][]
+   1. Vytvořte a přiřaďte obor názvů Premium pro migraci stávajícího oboru názvů Standard na.
+        obor názvů ![Setup – vytvoření oboru názvů Premium ][]
+   1. Vyberte **název následné migrace**. Tento název použijete pro přístup ke standardnímu oboru názvů po dokončení migrace.
+        ![Setup obor názvů – název následné migrace pro výběr ][]
+   1. Pokračujte výběrem **příkazu ' Next '** .
+1. Synchronizace entit mezi obory názvů Standard a Premium.
+    obor názvů ![Setup – synchronizační entity – spustit ][]
 
-   1. **동기화 시작** 을 선택 하 여 엔터티 동기화를 시작 합니다.
-   1. 대화 상자에서 **예** 를 선택 하 여 동기화를 확인 하 고 시작 합니다.
-   1. 동기화가 완료 될 때까지 기다립니다. 상태 표시줄에 상태를 사용할 수 있습니다.
-        ![Setup 네임 스페이스-동기화 엔터티-진행률 ][]
+   1. Vyberte **Spustit synchronizaci** a začněte synchronizovat entity.
+   1. V dialogovém okně vyberte **Ano** a potvrďte a spusťte synchronizaci.
+   1. Počkejte na dokončení synchronizace. Stav je k dispozici na stavovém řádku.
+        ![Setup obor názvů – synchronizační entity – průběh ][]
         >[!IMPORTANT]
-        > 어떤 이유로 든 마이그레이션을 중단 해야 하는 경우이 문서의 FAQ 섹션에서 중단 흐름을 검토 하세요.
-   1. 동기화가 완료 되 면 페이지 아래쪽에서 **다음** 을 선택 합니다.
+        > Pokud potřebujete migraci z nějakého důvodu přerušit, přečtěte si prosím tok přerušení v části Nejčastější dotazy v tomto dokumentu.
+   1. Po dokončení synchronizace vyberte v dolní části stránky **Další** .
 
-1. 요약 페이지에서 변경 내용을 검토 합니다. **마이그레이션 완료** 를 선택 하 여 네임 스페이스를 전환 하 고 마이그레이션을 완료 합니다.
-    ![Switch 네임 스페이스-전환 메뉴 ][]  
-    마이그레이션이 완료 되 면 확인 페이지가 표시 됩니다.
-    ![Switch 네임 스페이스-성공 ][]
+1. Zkontrolujte změny na stránce Souhrn. Vyberte **dokončit migraci** pro přepínání oborů názvů a dokončení migrace.
+    ![Switch nabídka přepínač oboru názvů ][]  
+    Po dokončení migrace se zobrazí stránka potvrzení.
+    ![Switch obor názvů – úspěch ][]
 
-## <a name="caveats"></a>주의 사항
+## <a name="caveats"></a>Upozornění
 
-Azure Service Bus 표준 계층에서 제공 하는 일부 기능은 Azure Service Bus 프리미엄 계층에서 지원 되지 않습니다. 프리미엄 계층은 예측 가능한 처리량 및 대기 시간에 대 한 전용 리소스를 제공 하기 때문에 이러한 방식으로 설계 되었습니다.
+Některé funkce, které poskytuje Azure Service Bus úrovně Standard, nejsou podporovány Azure Service Bus úrovně Premium. Jedná se o návrh, protože úroveň Premium nabízí vyhrazené prostředky pro předvídatelné propustnost a latenci.
 
-다음은 프리미엄 및 해당 완화에서 지원 되지 않는 기능 목록입니다. 
+Tady je seznam funkcí, které Premium nepodporují, a jejich zmírnění – 
 
-### <a name="express-entities"></a>Express 엔터티
+### <a name="express-entities"></a>Expresní entity
 
-   저장소에 메시지 데이터를 커밋하지 않는 Express 엔터티는 Premium에서 지원 되지 않습니다. 전용 리소스는 엔터프라이즈 메시징 시스템에서와 같이 데이터가 유지 되도록 하는 동시에 상당한 처리량 향상을 제공 했습니다.
+   Expresní entity, které nepotvrzují žádná data zpráv do úložiště, nejsou v úrovni Premium podporované. Vyhrazené prostředky poskytovaly výrazné zlepšení propustnosti a zároveň zajišťují, že data jsou trvalá od libovolného podnikového systému zasílání zpráv.
    
-   마이그레이션 중에 표준 네임 스페이스의 모든 express 엔터티는 비 express 엔터티로 프리미엄 네임 스페이스에 만들어집니다.
+   Během migrace se v oboru názvů Premium vytvoří každá z vašich expresních entit jako neexpresní entita.
    
-   ARM (Azure Resource Manager) 템플릿을 활용 하는 경우 자동화 된 워크플로가 오류 없이 실행 되도록 배포 구성에서 ' enableExpress ' 플래그를 제거 해야 합니다.
+   Pokud používáte šablony Azure Resource Manager (ARM), nezapomeňte z konfigurace nasazení odebrat příznak ' enableExpress ', aby byly automatizované pracovní postupy spouštěny bez chyb.
 
-### <a name="partitioned-entities"></a>분할 된 엔터티
+### <a name="partitioned-entities"></a>Dělené entity
 
-   분할 된 엔터티는 다중 테 넌 트 설정에서 더 나은 가용성을 제공 하기 위해 표준 계층에서 지원 됩니다. 프리미엄 계층에서 네임 스페이스 당 전용 리소스를 프로 비전 할 경우이는 더 이상 필요 하지 않습니다.
+   Rozdělené entity byly podporovány na úrovni Standard, aby bylo zajištěno lepší dostupnosti instalace s více klienty. Díky zajištění dostupnosti vyhrazených prostředků na obor názvů na úrovni Premium už to není potřeba.
    
-   마이그레이션하는 동안 표준 네임 스페이스에 있는 모든 분할 된 엔터티는 비 분할 된 엔터티로 프리미엄 네임 스페이스에 만들어집니다.
+   Během migrace se v oboru názvů Premium vytvoří libovolná entita s dělenou entitou jako entita, která není rozdělená na oddíly.
    
-   ARM 템플릿에서 특정 큐 또는 토픽에 대해 ' enablePartitioning '을 ' t r u e '로 설정 하면 broker에서 무시 됩니다.
+   Pokud šablona ARM nastaví pro konkrétní frontu nebo téma hodnotu ' enablePartitioning ' na ' true ', bude ji zprostředkovatel ignorovat.
 
-## <a name="faqs"></a>FAQ
+## <a name="faqs"></a>Nejčastější dotazy
 
-### <a name="what-happens-when-the-migration-is-committed"></a>마이그레이션이 커밋되면 어떻게 되나요?
+### <a name="what-happens-when-the-migration-is-committed"></a>Co se stane, když se migrace potvrdí?
 
-마이그레이션이 커밋된 후 표준 네임 스페이스를 가리키는 연결 문자열은 premium 네임 스페이스를 가리킵니다.
+Po potvrzení migrace se připojovací řetězec, který ukazuje na standardní obor názvů, nasměruje na obor názvů Premium.
 
-발신자 및 수신자 응용 프로그램은 표준 네임 스페이스와의 연결을 끊고 premium 네임 스페이스에 자동으로 다시 연결 합니다.
+Aplikace odesílatel a přijímač se z oboru názvů Standard odpojí a automaticky se znovu připojí k oboru názvů Premium.
 
-### <a name="what-do-i-do-after-the-standard-to-premium-migration-is-complete"></a>표준에서 프리미엄으로의 마이그레이션이 완료 된 후에는 어떻게 해야 하나요?
+### <a name="what-do-i-do-after-the-standard-to-premium-migration-is-complete"></a>Co mám dělat po dokončení migrace na úrovni Standard na Premium?
 
-표준에서 프리미엄으로 마이그레이션하려면 토픽, 구독 및 필터와 같은 엔터티 메타 데이터가 표준 네임 스페이스에서 premium 네임 스페이스로 복사 됩니다. 표준 네임 스페이스에 커밋된 메시지 데이터는 표준 네임 스페이스에서 premium 네임 스페이스로 복사 되지 않습니다.
+Migrace Standard na Premium zajišťuje, že metadata entit, jako jsou témata, předplatná a filtry, se zkopírují z oboru názvů Standard do oboru názvů Premium. Data zprávy, která byla potvrzena na standardní obor názvů, se nekopírují z oboru názvů Standard do oboru názvů Premium.
 
-마이그레이션이 진행 되는 동안에는 표준 네임 스페이스에 전송 되 고 커밋된 일부 메시지가 있을 수 있습니다. 표준 네임 스페이스에서 이러한 메시지를 수동으로 드레이닝 하 고 premium 네임 스페이스로 수동으로 보냅니다. 메시지를 수동으로 드레이닝 하려면 마이그레이션 명령에 지정한 마이그레이션 후 DNS 이름을 사용 하 여 표준 네임 스페이스 엔터티를 드레이닝 하는 스크립트 또는 콘솔 앱을 사용 합니다. 이러한 메시지를 수신자가 처리할 수 있도록 premium 네임 스페이스로 보냅니다.
+Obor názvů Standard může obsahovat zprávy, které byly odeslány a potvrzeny během migrace. Ručně vyprázdněte tyto zprávy ze standardního oboru názvů a ručně je odešlete do oboru názvů Premium. Chcete-li ručně vyprázdnit zprávy, použijte konzolovou aplikaci nebo skript, který vyprázdní standardní entity oboru názvů pomocí názvu DNS po migraci, který jste zadali v příkazech migrace. Odešlete tyto zprávy do oboru názvů Premium, aby mohly být zpracovány přijímači.
 
-메시지가 배출 된 후 표준 네임 스페이스를 삭제 합니다.
+Po vyprázdnění zpráv odstraňte standardní obor názvů.
 
 >[!IMPORTANT]
-> 표준 네임 스페이스의 메시지가 방전 된 후 표준 네임 스페이스를 삭제 합니다. 표준 네임 스페이스를 처음 참조 하는 연결 문자열은 이제 프리미엄 네임 스페이스를 참조 하기 때문에이는 중요 합니다. 표준 네임 스페이스는 더 이상 필요 하지 않습니다. 마이그레이션한 표준 네임 스페이스를 삭제 하면 나중에 혼동을 줄일 수 있습니다.
+> Po vyprázdnění zpráv z oboru názvů Standard odstraňte standardní obor názvů. To je důležité, protože připojovací řetězec, který původně odkazoval na standardní obor názvů, teď odkazuje na obor názvů Premium. Obor názvů Standard už nebudete potřebovat. Odstranění standardního oboru názvů, který jste migrovali, pomáhá snižovat pozdější nejasnost.
 
-### <a name="how-much-downtime-do-i-expect"></a>얼마나 많은 가동 중지 시간이 필요 한가요?
-마이그레이션 프로세스는 응용 프로그램의 예상 가동 중지 시간을 줄이기 위한 것입니다. 발신자 및 수신자 응용 프로그램이 새 프리미엄 네임 스페이스를 가리키는 데 사용 하는 연결 문자열을 사용 하 여 가동 중지 시간을 줄일 수 있습니다.
+### <a name="how-much-downtime-do-i-expect"></a>Kolik výpadků se očekává?
+Proces migrace je určený ke snížení předpokládaných výpadků aplikací. Výpadky se snižují pomocí připojovacího řetězce, který aplikace odesílatel a přijímač používá k odkazování na nový obor názvů Premium.
 
-응용 프로그램에서 발생 하는 가동 중지 시간은 프리미엄 네임 스페이스를 가리키도록 DNS 항목을 업데이트 하는 데 걸리는 시간으로 제한 됩니다. 가동 중지 시간은 약 5 분입니다.
+Výpadek, ke kterému dochází aplikace, je omezený na dobu, po kterou je potřeba aktualizovat položku DNS, aby odkazovala na obor názvů Premium. Výpadek je přibližně 5 minut.
 
-### <a name="do-i-have-to-make-any-configuration-changes-while-doing-the-migration"></a>마이그레이션을 수행 하는 동안 구성을 변경 해야 하나요?
-아니요, 마이그레이션을 수행 하는 데 필요한 코드 또는 구성 변경 내용이 없습니다. 보낸 사람 및 받는 사람 응용 프로그램이 표준 네임 스페이스에 액세스 하는 데 사용 하는 연결 문자열은 프리미엄 네임 스페이스에 대 한 별칭 역할을 하도록 자동으로 매핑됩니다.
+### <a name="do-i-have-to-make-any-configuration-changes-while-doing-the-migration"></a>Musím během migrace dělat změny v konfiguraci?
+Ne, neexistují žádné změny kódu nebo konfigurace potřebné k provedení migrace. Připojovací řetězec, který aplikace odesílatele a přijímače používají pro přístup ke standardnímu oboru názvů, je automaticky namapován na fungovat jako alias oboru názvů Premium.
 
-### <a name="what-happens-when-i-abort-the-migration"></a>마이그레이션을 중단 하면 어떻게 되나요?
-@No__t_0 명령을 사용 하거나 Azure Portal를 사용 하 여 마이그레이션을 중단할 수 있습니다. 
+### <a name="what-happens-when-i-abort-the-migration"></a>Co se stane po přerušení migrace?
+Migraci můžete zrušit buď pomocí příkazu `Abort`, nebo pomocí Azure Portal. 
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -177,51 +177,51 @@ Azure Service Bus 표준 계층에서 제공 하는 일부 기능은 Azure Servi
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
 ```
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Portál Azure
 
-![Abort flow-동기화 ][]
- ![Abort 흐름 중단 완료 ][]
+tok ![Abort – přerušení synchronizace ][]
+ ![Abort tok – přerušení dokončeno ][]
 
-마이그레이션 프로세스가 중단 되 면 표준에서 프리미엄 네임 스페이스로 엔터티 (토픽, 구독 및 필터)를 복사 하는 프로세스를 중단 하 고 페어링을 중단 합니다.
+Po přerušení procesu migrace přeruší proces kopírování entit (témat, odběrů a filtrů) z úrovně Standard do oboru názvů Premium a přeruší párování.
 
-프리미엄 네임 스페이스를 가리키도록 연결 문자열이 업데이트 되지 않았습니다. 기존 응용 프로그램은 마이그레이션을 시작 하기 전과 마찬가지로 계속 작동 합니다.
+Připojovací řetězec se neaktualizoval tak, aby odkazoval na obor názvů Premium. Stávající aplikace budou i nadále fungovat stejně jako před zahájením migrace.
 
-그러나 premium 네임 스페이스의 엔터티를 삭제 하거나 premium 네임 스페이스를 삭제 하지 않습니다. 마이그레이션을 사용 하 여 앞으로 이동 하지 않기로 결정 한 경우 수동으로 엔터티를 삭제 합니다.
+Neodstraňují ale entity v oboru názvů Premium ani neodstraní obor názvů Premium. Pokud jste se rozhodli Nepřesouvat vpřed s migrací, odstraňte entity ručně.
 
 >[!IMPORTANT]
-> 마이그레이션을 중단 하기로 결정 한 경우 리소스에 대 한 요금이 청구 되지 않도록 마이그레이션하기 위해 프로 비전 한 premium 네임 스페이스를 삭제 합니다.
+> Pokud se rozhodnete migraci přerušit, odstraňte obor názvů Premium, který jste zřídili pro migraci, abyste se za prostředky neúčtovali.
 
-#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>메시지를 드레이닝 하지 않으려고 합니다. 어떻게 하나요?
+#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nechci zprávy vyprázdnit. Co mám dělat?
 
-마이그레이션이 진행 되는 동안 및 마이그레이션이 커밋될 때까지 발신자 응용 프로그램에서 전송 되 고 표준 네임 스페이스의 저장소에 커밋된 메시지가 있을 수 있습니다.
+Může se stát, že aplikace odesílatele pošle zprávy a odešlou je do úložiště v oboru názvů Standard během migrace a těsně před potvrzením migrace.
 
-마이그레이션하는 동안 실제 메시지 데이터/페이로드가 표준에서 프리미엄 네임 스페이스로 복사 되지 않습니다. 메시지는 수동으로 배출 된 후 premium 네임 스페이스로 전송 되어야 합니다.
+Během migrace se skutečná data zprávy nebo datová část nekopírují z úrovně Standard do oboru názvů Premium. Zprávy je nutné ručně vyprázdnit a pak je odeslat do oboru názvů Premium.
 
-그러나 계획 된 유지 관리/정리 기간 동안 마이그레이션할 수 있고 메시지를 수동으로 드레이닝 및 보내지 않으려는 경우 다음 단계를 수행 합니다.
+Pokud však můžete provést migraci během plánované údržby nebo údržbu okna a nechcete zprávy ručně vyprázdnit a odeslat, postupujte podle následujících kroků:
 
-1. 발신자 응용 프로그램을 중지 합니다. 받는 사람 응용 프로그램은 현재 표준 네임 스페이스에 있는 메시지를 처리 하 고 큐를 드레이닝 합니다.
-1. 표준 네임 스페이스의 큐와 구독이 비어 있는 후 앞에서 설명한 절차에 따라 표준에서 프리미엄 네임 스페이스로 마이그레이션을 실행 합니다.
-1. 마이그레이션이 완료 된 후 발신자 응용 프로그램을 다시 시작할 수 있습니다.
-1. 이제 발신자와 수신자가 premium 네임 스페이스와 자동으로 연결 됩니다.
+1. Zastavte aplikace odesílatele. Aplikace příjemce budou zpracovávat zprávy, které jsou aktuálně ve standardním oboru názvů a vyprázdní frontu.
+1. Po vyprázdnění front a předplatných ve standardním oboru názvů použijte postup, který je popsaný výše, a spusťte migraci z úrovně Standard na obor názvů Premium.
+1. Po dokončení migrace můžete restartovat aplikace odesílatele.
+1. Odesílatelé a příjemci se teď budou automaticky připojovat k oboru názvů Premium.
 
     >[!NOTE]
-    > 마이그레이션하기 위해 수신자 응용 프로그램을 중지할 필요는 없습니다.
+    > Nemusíte zastavovat aplikace příjemce pro migraci.
     >
-    > 마이그레이션이 완료 되 면 수신자 응용 프로그램은 표준 네임 스페이스와의 연결을 끊고 premium 네임 스페이스에 자동으로 연결 됩니다.
+    > Po dokončení migrace se aplikace přijímače odpojí ze standardního oboru názvů a automaticky se připojí k oboru názvů Premium.
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>Další kroky
 
-* [표준 및 프리미엄 메시징의 차이점](./service-bus-premium-messaging.md)에 대해 자세히 알아보세요.
-* [Service Bus 프리미엄에 대 한 고가용성 및 지리적 재해 복구 측면](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)에 대해 알아봅니다.
+* Přečtěte si další informace o [rozdílech mezi zasíláním zpráv na úrovni Standard a Premium](./service-bus-premium-messaging.md).
+* Seznamte se s [vysokou dostupností a geografickými aspekty zotavení po havárii pro Service Bus Premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
 
-[마이그레이션 방문 페이지]: ./media/service-bus-standard-premium-migration/1.png
-[설치 네임 스페이스]: ./media/service-bus-standard-premium-migration/2.png
-[설치 네임 스페이스-premium 네임 스페이스 만들기]: ./media/service-bus-standard-premium-migration/3.png
-[네임 스페이스 설정-마이그레이션 후 이름 선택]: ./media/service-bus-standard-premium-migration/4.png
-[네임 스페이스-동기화 엔터티 설정-시작]: ./media/service-bus-standard-premium-migration/5.png
-[네임 스페이스-동기화 엔터티 설정-진행률]: ./media/service-bus-standard-premium-migration/8.png
-[네임 스페이스 전환-전환 메뉴]: ./media/service-bus-standard-premium-migration/9.png
-[네임 스페이스 전환-성공]: ./media/service-bus-standard-premium-migration/12.png
+[Cílová stránka migrace]: ./media/service-bus-standard-premium-migration/1.png
+[Nastavit obor názvů]: ./media/service-bus-standard-premium-migration/2.png
+[Nastavení oboru názvů – vytvoření oboru názvů Premium]: ./media/service-bus-standard-premium-migration/3.png
+[Nastavení oboru názvů – vybrat název následné migrace]: ./media/service-bus-standard-premium-migration/4.png
+[Nastavení oboru názvů – synchronizační entity – začátek]: ./media/service-bus-standard-premium-migration/5.png
+[Nastavení oboru názvů – synchronizační entity – průběh]: ./media/service-bus-standard-premium-migration/8.png
+[Přepnout nabídku oboru názvů – přepínač]: ./media/service-bus-standard-premium-migration/9.png
+[Přepnout obor názvů – úspěch]: ./media/service-bus-standard-premium-migration/12.png
 
-[흐름 중단-동기화 중단]: ./media/service-bus-standard-premium-migration/abort1.png
-[흐름 중단-중단 완료]: ./media/service-bus-standard-premium-migration/abort3.png
+[Přerušení toku – přerušení synchronizace]: ./media/service-bus-standard-premium-migration/abort1.png
+[Přerušení toku – přerušení dokončeno]: ./media/service-bus-standard-premium-migration/abort3.png

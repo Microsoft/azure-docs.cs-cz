@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault (미리 보기)에서 고객 관리 키를 사용 하 여 미사용 암호화-Azure Search
-description: Azure Key Vault에서 만들고 관리 하는 키를 통해 Azure Search의 인덱스 및 동의어 맵에 대 한 서버 쪽 암호화를 보충 합니다.
+title: Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem v Azure Key Vault (Preview) – Azure Search
+description: Doplňte šifrování na straně serveru přes indexy a mapy synonym v Azure Search prostřednictvím klíčů, které vytvoříte a spravujete v Azure Key Vault.
 author: NatiNimni
 manager: nitinme
 ms.author: natinimn
@@ -16,36 +16,36 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "70182412"
 ---
-# <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault에서 고객이 관리 하는 키를 사용 하 여 암호화 Azure Search
+# <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Search šifrování pomocí klíčů spravovaných zákazníkem v Azure Key Vault
 
 > [!Note]
-> 고객 관리 키를 사용 하는 암호화는 미리 보기 상태 이며 프로덕션 용도로는 사용할 수 없습니다. 이 기능은 [REST API 버전 2019-05-06-미리 보기](search-api-preview.md)에서 제공됩니다. .NET SDK 버전 8.0-미리 보기를 사용할 수도 있습니다.
+> Šifrování pomocí klíčů spravovaných zákazníkem je ve verzi Preview a není určené pro produkční použití. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . Můžete také použít sadu .NET SDK verze 8,0-Preview.
 >
-> 무료 서비스에서는이 기능을 사용할 수 없습니다. 2019-01-01 이후 또는 이후에 생성 된 청구 가능 검색 서비스를 사용 해야 합니다. 지금은 포털을 지원 하지 않습니다.
+> Tato funkce není dostupná pro bezplatné služby. Je nutné použít fakturovatelný vyhledávací službu vytvořenou v nebo po 2019-01-01. V tuto chvíli není dostupná žádná podpora portálu.
 
-기본적으로 Azure Search는 [서비스 관리 키](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)를 사용 하 여 미사용 사용자 콘텐츠를 암호화 합니다. Azure Key Vault에서 만들고 관리 하는 키를 사용 하 여 추가 암호화 계층으로 기본 암호화를 보완할 수 있습니다. 이 문서에서는 단계를 안내 합니다.
+Ve výchozím nastavení Azure Search šifruje obsah uživatele v klidovém stavu pomocí [klíčů spravovaných službou](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Výchozí šifrování můžete doplnit pomocí dalších vrstev šifrování s použitím klíčů, které vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky.
 
-서버 쪽 암호화는 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)와의 통합을 통해 지원 됩니다. 사용자 고유의 암호화 키를 만들고 Azure Key Vault에 저장할 수도 있고 Azure Key Vault의 API를 사용하여 암호화 키를 생성할 수도 있습니다. Azure Key Vault를 사용 하 여 키 사용을 감사할 수도 있습니다. 
+Šifrování na straně serveru je podporováno prostřednictvím integrace s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování šifrovacích klíčů. Pomocí Azure Key Vault můžete také auditovat použití klíče. 
 
-고객 관리 키를 사용 하는 암호화는 검색 서비스 수준이 아닌 해당 개체가 생성 될 때 인덱스 또는 동의어 맵 수준에서 구성 됩니다. 이미 존재 하는 콘텐츠는 암호화할 수 없습니다. 
+Šifrování pomocí klíčů spravovaných zákazníkem se při vytváření těchto objektů konfiguruje na úrovni mapy index nebo synonym, a ne na úrovni vyhledávací služby. Nemůžete zašifrovat obsah, který už existuje. 
 
-다른 키 자격 증명 모음에서 다른 키를 사용할 수 있습니다. 즉, 단일 search 서비스는 서로 다른 고객 관리 키를 사용 하 여 잠재적으로 암호화 된 여러 개의 암호화 된 indexes\synonym 맵을 호스트할 수 있으며,이는 고객 관리 키를 사용 하 여 암호화 되지 않은 indexes\synonym 지도와 함께 사용 됩니다. 
+Můžete použít různé klíče z různých trezorů klíčů. To znamená, že jedna vyhledávací služba může hostovat několik šifrovaných indexes\synonym map, z nichž každý zašifrovaný potenciálně používá jiný klíč spravovaný zákazníkem spolu s indexes\synonym mapami, které nejsou šifrované pomocí klíčů spravovaných zákazníkem. 
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>Předpoklady
 
-이 예제에서 사용 되는 서비스는 다음과 같습니다. 
+V tomto příkladu se používají následující služby. 
 
-+ [Azure Search 서비스를 만들거나](search-create-service-portal.md) 현재 구독에서 [기존 서비스를 찾습니다](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). 이 자습서에서는 체험 서비스를 사용할 수 있습니다.
++ [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu.
 
-+ [Azure Key Vault 리소스를 만들거나](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) 구독에서 기존 자격 증명 모음을 찾습니다.
++ [Vytvořte prostředek Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) nebo v rámci svého předplatného Najděte existující trezor.
 
-+ [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 또는 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 는 구성 작업에 사용 됩니다.
++ Pro úlohy konfigurace se používá [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-+ [Postman](search-get-started-postman.md), [AZURE POWERSHELL](search-create-index-rest-api.md) 및 [Azure Search SDK](https://aka.ms/search-sdk-preview) 는 미리 보기 REST API를 호출 하는 데 사용할 수 있습니다. 현재는 고객이 관리 하는 암호화에 대 한 포털 또는 .NET SDK가 지원 되지 않습니다.
++ K volání REST API verze Preview lze použít [metodu post](search-get-started-postman.md), [Azure POWERSHELL](search-create-index-rest-api.md) a [Azure Search SDK](https://aka.ms/search-sdk-preview) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK pro šifrování spravované zákazníkem.
 
-## <a name="1---enable-key-recovery"></a>1-키 복구 사용
+## <a name="1---enable-key-recovery"></a>1 – povolit obnovení klíče
 
-이 단계는 선택 사항 이지만 매우 권장 됩니다. Azure Key Vault 리소스를 만든 후 다음 PowerShell 또는 Azure CLI 명령을 실행 하 여 선택한 Key Vault에서 **일시 삭제** 및 **보호 제거** 를 사용 하도록 설정 합니다.   
+Tento krok je volitelný, ale důrazně se doporučuje. Po vytvoření prostředku Azure Key Vault Povolte ochranu proti **odstranění** a **vyprázdnění** ve vybraném trezoru klíčů spuštěním následujících příkazů PowerShellu nebo rozhraní příkazového řádku Azure CLI:   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -62,80 +62,80 @@ az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --en
 ```
 
 >[!Note]
-> Azure 주요 자격 증명 모음 키가 삭제 된 경우에는 고객이 관리 하는 키 기능을 사용 하 여 암호화 기능을 사용 하기 때문에 Azure Search에서 데이터를 검색할 수 없습니다. 실수로 Key Vault 키 삭제로 인 한 데이터 손실을 방지 하려면 선택한 키 자격 증명 모음에 대해 일시 삭제 및 제거 보호를 사용 하도록 설정 하는 것이 좋습니다. 자세한 내용은 [Azure Key Vault 일시 삭제](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)를 참조 하세요.   
+> Z důvodu velmi vysokého charakteru šifrování s použitím klíčů spravovaných zákazníkem nebude Azure Search moct načíst vaše data, pokud se odstraní klíč trezoru klíčů Azure. Aby nedošlo ke ztrátě dat způsobenému Key Vault náhodným odstraněním klíčů, důrazně doporučujeme, abyste u vybraného trezoru klíčů povolili ochranu pomocí obnovitelného odstranění a vyprázdnění. Další informace najdete v tématu [Azure Key Vault obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
 
-## <a name="2---create-a-new-key"></a>2-새 키 만들기
+## <a name="2---create-a-new-key"></a>2\. vytvoření nového klíče
 
-기존 키를 사용 하 여 Azure Search 콘텐츠를 암호화 하는 경우이 단계를 건너뜁니다.
+Pokud k šifrování Azure Search obsahu používáte existující klíč, přeskočte tento krok.
 
-1. [Azure Portal에 로그인](https://portal.azure.com) 하 고 키 자격 증명 모음 대시보드로 이동 합니다.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com) a přejděte do řídicího panelu trezoru klíčů.
 
-1. 왼쪽 탐색 창에서 **키** 설정을 선택 하 고 **+ 생성/가져오기**를 클릭 합니다.
+1. V levém navigačním podokně vyberte nastavení **klíče** a klikněte na **+ Generovat/importovat**.
 
-1. **키 만들기** 창에 있는 **옵션**목록에서 키를 만드는 데 사용할 방법을 선택 합니다. 새 키를 **생성** 하거나 기존 키를 **업로드** 하거나 **복원 백업을** 사용 하 여 키 백업을 선택할 수 있습니다.
+1. V podokně **vytvořit klíč** klikněte v seznamu **možností**na metodu, kterou chcete použít k vytvoření klíče. Můžete **vygenerovat** nový klíč, **nahrát** existující klíč nebo použít **obnovení zálohy** k výběru zálohy klíče.
 
-1. 키의 **이름을** 입력 하 고 필요에 따라 다른 키 속성을 선택 합니다.
+1. Zadejte **název** klíče a volitelně vyberte další vlastnosti klíče.
 
-1. **만들기** 단추를 클릭 하 여 배포를 시작 합니다.
+1. Kliknutím na tlačítko **vytvořit** spusťte nasazení.
 
-키 식별자를 적어 둡니다 .이는 키 **값 Uri**, **키 이름**및 **키 버전**으로 구성 됩니다. Azure Search에서 암호화 된 인덱스를 정의 하는 데 필요 합니다.
+Poznamenejte si identifikátor klíče – to se skládá z **identifikátoru URI hodnoty klíče**, **názvu klíče**a **verze klíče**. Budete je potřebovat k definování šifrovaného indexu v Azure Search.
  
-![새 key vault 키 만들기](./media/search-manage-encryption-keys/create-new-key-vault-key.png "새 key vault 키 만들기")
+![Vytvoří nový klíč trezoru klíčů.](./media/search-manage-encryption-keys/create-new-key-vault-key.png "Vytvoří nový klíč trezoru klíčů.")
 
-## <a name="3---create-a-service-identity"></a>3-서비스 id 만들기
+## <a name="3---create-a-service-identity"></a>3\. vytvoření identity služby
 
-검색 서비스에 id를 할당 하면 검색 서비스에 대 한 Key Vault 액세스 권한을 부여할 수 있습니다. 검색 서비스는 해당 id를 사용 하 여 Azure Key vault에 인증 합니다.
+Přiřazení identity ke službě Search vám umožní udělit službě vyhledávání Key Vault přístupová oprávnění. Vaše vyhledávací služba bude používat svoji identitu k ověřování pomocí trezoru klíčů Azure.
 
-Azure Search는 id를 할당 하는 두 가지 방법, 즉 관리 되는 id 또는 외부에서 관리 되는 Azure Active Directory 응용 프로그램을 지원 합니다. 
+Azure Search podporuje dva způsoby přiřazení identity: spravované identity nebo externě spravované Azure Active Directory aplikace. 
 
-가능 하면 관리 되는 id를 사용 합니다. 검색 서비스에 id를 할당 하는 가장 간단한 방법은 대부분의 시나리오에서 작동 해야 합니다. 인덱스 및 동의어 맵에 대해 여러 키를 사용 하는 경우 또는 솔루션이 id 기반 인증을 정규화 하지 않는 분산 아키텍처에 있는 경우 마지막에 설명 된 대로 [외부에서 관리 되는 고급 Azure Active Directory 방법을](#aad-app) 사용 합니다. 문서를 참조 하세요.
+Pokud je to možné, použijte spravovanou identitu. Je nejjednodušší způsob, jak přiřadit identitu službě vyhledávání a ve většině scénářů fungovat. Pokud používáte více klíčů pro indexy a mapy synonym nebo pokud je vaše řešení v distribuované architektuře, která ruší ověřování na základě identity, použijte pokročilý [externě spravovaný Azure Active Directory přístup](#aad-app) , který je popsaný na konci. v tomto článku.
 
- 일반적으로 관리 되는 id를 사용 하면 검색 서비스에서 코드에 자격 증명을 저장 하지 않고 Azure Key Vault에 인증할 수 있습니다. 이러한 유형의 관리 되는 id의 수명 주기는 관리 id를 하나만 포함할 수 있는 검색 서비스의 수명 주기에 연결 됩니다. [관리 id에 대해 자세히 알아보세요](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+ Obecně spravovaná identita umožňuje službě vyhledávání ověřovat Azure Key Vault bez uložení přihlašovacích údajů do kódu. Životní cyklus tohoto typu spravované identity je svázán s životním cyklem služby vyhledávání, který může mít pouze jednu spravovanou identitu. [Přečtěte si další informace o spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-1. 관리 id를 만들려면 [azure portal에 로그인](https://portal.azure.com) 하 고 검색 서비스 대시보드를 엽니다. 
+1. Pokud chcete vytvořit spravovanou identitu, [Přihlaste se k portálu toAzure](https://portal.azure.com) a otevřete řídicí panel vyhledávací služby. 
 
-1. 왼쪽 탐색 창에서 **id** 를 클릭 하 고 상태를 **켜기**로 변경 하 고 **저장**을 클릭 합니다.
+1. V levém navigačním podokně klikněte na **Identita** , změňte její stav na **zapnuto**a klikněte na **Uložit**.
 
-![관리 id 사용](./media/search-enable-msi/enable-identity-portal.png "관리 되 id 사용")
+![Povolení spravované identity](./media/search-enable-msi/enable-identity-portal.png "Povolení identity spravovaných")
 
-## <a name="4---grant-key-access-permissions"></a>4-키 액세스 권한 부여
+## <a name="4---grant-key-access-permissions"></a>4 – udělení přístupových oprávnění k klíčům
 
-검색 서비스에서 Key Vault 키를 사용 하도록 설정 하려면 검색 서비스에 특정 액세스 권한을 부여 해야 합니다.
+Pokud chcete, aby služba vyhledávání mohla používat váš Key Vault klíč, budete muset udělit vašim vyhledávacím službám určitá přístupová oprávnění.
 
-지정 된 시간에 액세스 권한이 취소 될 수 있습니다. 해지 되 면 해당 키 자격 증명 모음을 사용 하는 모든 검색 서비스 인덱스 또는 동의어 맵을 사용할 수 없게 됩니다. 나중에 Key vault 액세스 권한을 복원 하면 index\synonym 맵 액세스가 복원 됩니다. 자세한 내용은 [key vault에 대 한 보안 액세스](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)를 참조 하세요.
+Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvolání se žádný index služby vyhledávání nebo mapa synonym používající tento trezor klíčů stane nepoužitelným. Obnovení přístupových oprávnění trezoru klíčů později obnoví přístup k mapě index\synonym. Další informace najdete v tématu [zabezpečený přístup k trezoru klíčů](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).
 
-1. [Azure Portal에 로그인](https://portal.azure.com) 하 고 키 자격 증명 모음 개요 페이지를 엽니다. 
+1. [Přihlaste se k Azure Portal](https://portal.azure.com) a otevřete stránku s přehledem trezoru klíčů. 
 
-1. 왼쪽 탐색 창에서 **액세스 정책** 설정을 선택 하 고 **+ 새로 추가**를 클릭 합니다.
+1. V levém navigačním podokně vyberte nastavení **zásady přístupu** a klikněte na **+ Přidat nový**.
 
-   ![새 키 자격 증명 모음 액세스 정책 추가](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "새 키 자격 증명 모음 액세스 정책 추가")
+   ![Přidat nové zásady přístupu trezoru klíčů](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "Přidat nové zásady přístupu trezoru klíčů")
 
-1. **보안 주체 선택** 을 클릭 하 고 Azure Search 서비스를 선택 합니다. 이름 또는 관리 id를 사용 하도록 설정한 후 표시 된 개체 ID를 기준으로 검색할 수 있습니다.
+1. Klikněte na **Vybrat objekt zabezpečení** a vyberte službu Azure Search. Můžete ho vyhledat podle názvu nebo ID objektu, které se zobrazilo po povolení spravované identity.
 
-   ![키 자격 증명 모음 액세스 정책 주체를 선택 합니다.](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "키 자격 증명 모음 액세스 정책 주체를 선택 합니다.")
+   ![Výběr objektu zásad přístupu trezoru klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "Výběr objektu zásad přístupu trezoru klíčů")
 
-1. **키 사용 권한** 을 클릭 하 고 *가져오기*, *키 래핑* 및 *키 래핑*을 선택 합니다. *Azure Data Lake Storage 또는 Azure Storage* 템플릿을 사용 하 여 필요한 사용 권한을 빠르게 선택할 수 있습니다.
+1. Klikněte na **klíčová oprávnění** a vyberte *získat*, *Rozbalit klíč* a *zabalit klíč*. Pomocí šablony *Azure Data Lake Storage nebo Azure Storage* můžete rychle vybrat požadovaná oprávnění.
 
-   Azure search는 다음 [액세스 권한](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations)으로 부여 되어야 합니다.
+   Azure Search se musí udělit s následujícími [přístupovými oprávněními](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations):
 
-   * *Get* -검색 서비스를 사용 하 여 Key Vault에서 키의 공개 부분을 검색할 수 있습니다.
-   * *키 래핑* -검색 서비스에서 키를 사용 하 여 내부 암호화 키를 보호할 수 있습니다.
-   * *래핑 해제 키* -검색 서비스에서 키를 사용 하 여 내부 암호화 키를 래핑 해제할 수 있습니다.
+   * *Get* – umožní službě vyhledávání načíst veřejné části klíče ve Key Vault
+   * *Zalamovat klíč* – umožní službě vyhledávání používat klíč k ochraně interního šifrovacího klíče.
+   * *Rozbalení klíče* – umožní službě vyhledávání používat klíč k rozbalení interního šifrovacího klíče.
 
-   ![키 자격 증명 모음 액세스 정책 키 사용 권한 선택](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "키 자격 증명 모음 액세스 정책 키 사용 권한 선택")
+   ![Výběr oprávnění klíče zásad přístupu trezoru klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "Výběr oprávnění klíče zásad přístupu trezoru klíčů")
 
-1. **확인** 을 클릭 하 고 액세스 정책 변경 내용을 **저장** 합니다.
+1. Klikněte na **OK** a **uložte** změny zásad přístupu.
 
 > [!Important]
-> Azure search의 암호화 된 콘텐츠는 특정 **버전**의 특정 Azure Key Vault 키를 사용 하도록 구성 됩니다. 키 또는 버전을 변경 하는 경우 이전 key\versiona를 삭제 **하기 전에** 새 key\version을 사용 하도록 인덱스 또는 동의어 맵을 업데이트 해야 합니다. 이렇게 하지 않으면 인덱스 또는 동의어 맵을 사용할 수 없게 되며 키 액세스가 손실 된 후에는 콘텐츠의 암호를 해독할 수 없습니다.   
+> Šifrovaný obsah ve službě Azure Search je nakonfigurovaný tak, aby používal konkrétní Azure Key Vault klíč s konkrétní **verzí**. Pokud změníte klíč nebo verzi, je nutné aktualizovat index nebo mapu synonym, aby používaly nové key\version **před** odstraněním předchozího key\version. Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné. po ztrátě přístupu ke klíči nebude možné obsah dešifrovat.   
 
-## <a name="5---encrypt-content"></a>5-콘텐츠 암호화
+## <a name="5---encrypt-content"></a>5\. šifrování obsahu
 
-Azure Portal를 사용 하 여 고객 관리 키로 암호화 된 인덱스 또는 동의어 맵을 만들 수는 없습니다. Azure Search REST API를 사용 하 여 이러한 인덱스나 동의어 맵을 만들 수 있습니다.
+Vytvoření mapy indexů nebo synonym šifrovaných pomocí klíče spravovaného zákazníkem zatím není možné pomocí Azure Portal. Pomocí Azure Search REST API vytvořte takový index nebo mapu synonym.
 
-인덱스와 동의어 맵은 모두 키를 지정 하는 데 사용 되는 새 최상위 **encryptionKey** 속성을 지원 합니다. 
+Index i mapa synonym podporují novou vlastnost **EncryptionKey** na nejvyšší úrovni, která se používá k zadání klíče. 
 
-주요 자격 증명 모음 키의 주요 **자격 증명 모음 Uri**, **키 이름** 및 **키 버전** 을 사용 하 여 **encryptionKey** 정의를 만들 수 있습니다.
+Pomocí **identifikátoru URI trezoru klíčů**, **názvu klíče** a **verze** klíče trezoru klíčů můžeme vytvořit definici **EncryptionKey** :
 
 ```json
 {
@@ -147,9 +147,9 @@ Azure Portal를 사용 하 여 고객 관리 키로 암호화 된 인덱스 또�
 }
 ```
 > [!Note] 
-> 이러한 주요 자격 증명 모음 세부 정보는 비밀로 간주 되지 않으며 Azure Portal의 관련 Azure Key Vault 키 페이지로 이동 하 여 쉽게 검색할 수 있습니다.
+> Žádná z těchto podrobností trezoru klíčů není považována za tajnou a lze ji snadno načíst procházením příslušné Azure Key Vault klíčovou stránkou v Azure Portal.
 
-관리 id를 사용 하는 대신 Key Vault 인증을 위해 AAD 응용 프로그램을 사용 하는 경우 AAD 응용 프로그램 **액세스 자격 증명** 을 암호화 키에 추가 합니다. 
+Pokud používáte aplikaci AAD pro Key Vault ověřování namísto použití spravované identity, přidejte **přihlašovací údaje** k aplikaci AAD do svého šifrovacího klíče: 
 ```json
 {
   "encryptionKey": {
@@ -164,8 +164,8 @@ Azure Portal를 사용 하 여 고객 관리 키로 암호화 된 인덱스 또�
 }
 ```
 
-## <a name="example-index-encryption"></a>예: 인덱스 암호화
-REST API를 통해 새 인덱스를 만드는 방법에 대 한 자세한 내용은 [인덱스 만들기 (Azure Search 서비스 REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)에서 찾을 수 있습니다. 여기서 유일한 차이점은 인덱스 정의의 일부로 암호화 키 세부 정보를 지정 하는 것입니다. 
+## <a name="example-index-encryption"></a>Příklad: šifrování indexu
+Podrobnosti o vytvoření nového indexu prostřednictvím REST API najdete v tématu [vytvoření indexu (Azure Search REST API služby)](https://docs.microsoft.com/rest/api/searchservice/create-index), kde jediný rozdíl tady určuje podrobnosti šifrovacího klíče v rámci definice indexu: 
 
 ```json
 {
@@ -189,11 +189,11 @@ REST API를 통해 새 인덱스를 만드는 방법에 대 한 자세한 내용
  }
 }
 ```
-이제 인덱스 생성 요청을 보낸 다음 인덱스를 정상적으로 사용 하기 시작할 수 있습니다.
+Nyní můžete odeslat požadavek na vytvoření indexu a pak začít používat rejstřík normálně.
 
-## <a name="example-synonym-map-encryption"></a>예: 동의어 맵 암호화
+## <a name="example-synonym-map-encryption"></a>Příklad: šifrování mapování synonym
 
-REST API를 통해 새 동의어 맵을 만드는 방법에 대 한 자세한 내용은 동의어 맵 [만들기 (Azure Search 서비스 REST API)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)에서 찾을 수 있습니다. 여기서 유일한 차이점은 동의어 맵 정의의 일부로 암호화 키 세부 정보를 지정 하는 것입니다. 
+Podrobnosti o vytvoření nové mapy synonym prostřednictvím REST API lze nalézt v tématu [vytvoření mapy synonym (Azure Search REST API služby)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map), kde jediným rozdílem je zadání podrobností šifrovacího klíče v rámci definice mapy synonym: 
 
 ```json
 {   
@@ -208,35 +208,35 @@ REST API를 통해 새 동의어 맵을 만드는 방법에 대 한 자세한 �
   }
 }
 ```
-이제 동의어 맵 만들기 요청을 보낸 다음 일반적으로 사용을 시작할 수 있습니다.
+Nyní můžete odeslat požadavek na vytvoření mapy synonym a pak ho začít používat normálně.
 
 >[!Important] 
-> **EncryptionKey** 는 기존 Azure Search 인덱스나 동의어 맵에 추가할 수 없지만 세 가지 주요 자격 증명 모음 세부 정보 (예: 키 버전 업데이트)에 대해 다른 값을 제공 하 여 업데이트할 수 있습니다. 새 Key Vault 키 또는 새 키 버전으로 변경 하는 경우 이전 key\versiona를 삭제 **하기 전에** 먼저 새 key\version을 사용 하도록 해당 키를 사용 하는 모든 Azure Search 인덱스나 동의어 맵을 업데이트 해야 합니다. 이렇게 하지 않으면 키 액세스가 손실 된 후 콘텐츠를 해독할 수 없으므로 인덱스나 동의어 맵을 사용할 수 없게 됩니다.   
-> 나중에 Key vault 액세스 권한을 복원 하면 콘텐츠 액세스가 복원 됩니다.
+> I když **EncryptionKey** nejde přidat k existujícím indexům Azure Search nebo mapováním synonym, může se aktualizovat zadáním různých hodnot pro všechny tři podrobnosti trezoru klíčů (například aktualizace verze klíče). Když se změní na nový klíč Key Vault nebo na novou verzi klíče, musí se nejdřív aktualizovat Azure Search index nebo mapa synonym, která tento klíč používá, aby používala nový key\version **před** odstraněním předchozího key\version. Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné, protože po ztrátě přístupu ke klíči nebude moct obsah dešifrovat.   
+> Obnovení přístupu k obsahu později obnoví přístupová oprávnění trezoru klíčů.
 
-## <a name="aad-app"></a>고급: 외부에서 관리 되는 Azure Active Directory 응용 프로그램 사용
+## <a name="aad-app"></a>Upřesnit: použití externě spravované aplikace Azure Active Directory
 
-관리 id를 사용할 수 없는 경우 Azure Search 서비스의 보안 주체를 사용 하 여 Azure Active Directory 응용 프로그램을 만들 수 있습니다. 특히 관리 되는 id는 다음과 같은 경우에는 실행 되지 않습니다.
+Pokud není možná spravovaná identita, můžete vytvořit aplikaci Azure Active Directory s objektem zabezpečení pro vaši službu Azure Search. Konkrétně spravovaná identita není za těchto podmínek životaschopná:
 
-* 검색 서비스가 Azure Key Vault와 다른 Active Directory 테 넌 트에 있는 경우와 같이 검색 서비스에 대 한 액세스 권한을 키 자격 증명 모음에 직접 부여할 수는 없습니다.
+* Přístup k trezoru klíčů nelze udělit přímo vašim oprávněním služby Search (například pokud je vyhledávací služba v jiném tenantovi služby Active Directory než Azure Key Vault).
 
-* 단일 검색 서비스는 각각 다른 키 자격 증명 모음에서 다른 키를 사용 하 여 각각 다른 키 자격 증명 모음에서 다른 키를 사용 해야 하는 여러 암호화 된 indexes\synonym 맵을 호스트 해야 합니다. 여기서 각 키 자격 증명 모음은 인증에 **다른 id** 다른 id를 사용 하 여 다른 키 자격 증명 모음을 관리 하는 것은 요구 사항이 아닙니다. 위의 관리 id 옵션을 사용 하십시오.  
+* Pro hostování více šifrovaných map indexes\synonym je potřeba jedna vyhledávací služba, z nichž každá používá jiný klíč z jiného trezoru klíčů, kde každý Trezor klíčů musí pro ověřování použít **jinou identitu** . Pokud používáte jinou identitu pro správu různých trezorů klíčů, není nutné zvážit použití možnosti spravovaná identita výše.  
 
-이러한 토폴로지를 수용 하기 위해 Azure search는 search 서비스와 Key Vault 간의 인증을 위해 AAD (Azure Active Directory) 응용 프로그램을 사용할 수 있도록 지원 합니다.    
-포털에서 AAD 응용 프로그램을 만들려면 다음을 수행 합니다.
+Pro uspokojení takových topologií podporuje služba Azure Search použití aplikací Azure Active Directory (AAD) k ověřování mezi vaší vyhledávací službou a Key Vault.    
+Vytvoření aplikace AAD na portálu:
 
-1. [Azure Active Directory 애플리케이션을 만듭니다](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
+1. [Vytvořte aplikaci Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
 
-1. 암호화 된 인덱스를 만드는 데 필요한 [응용 프로그램 ID 및 인증 키를 가져옵니다](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) . 제공 해야 하는 값에는 **응용 프로그램 ID** 및 **인증 키**가 포함 됩니다.
+1. [Získejte ID aplikace a ověřovací klíč](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) , protože se budou vyžadovat pro vytvoření šifrovaného indexu. Hodnoty, které budete muset zadat, zahrnují **ID aplikace** a **ověřovací klíč**.
 
 >[!Important]
-> 관리 되는 id 대신 aad 응용 프로그램 인증을 사용 하기로 결정 하는 경우 사용자를 대신 하 여 aad 응용 프로그램을 관리할 수 있는 권한이 없다는 것을 고려 하 여 정기적으로 순환 하는 것과 같은 AAD 응용 프로그램을 관리 하는 것이 Azure Search. 응용 프로그램 인증 키입니다.
-> AAD 응용 프로그램 또는 해당 인증 키를 변경 하는 경우 이전 응용 프로그램 또는 해당 권한 부여 키를 삭제 **하기 전에** 새 application ID\key를 사용 하도록 해당 응용 프로그램을 사용 하는 모든 Azure Search 인덱스 또는 동의어 맵을 먼저 업데이트 해야 합니다. Key Vault에 대 한 액세스를 취소 하기 전에
-> 이렇게 하지 않으면 키 액세스가 손실 된 후 콘텐츠를 해독할 수 없으므로 인덱스나 동의어 맵을 사용할 수 없게 됩니다.   
+> Pokud se rozhodnete použít aplikaci AAD ověřování místo spravované identity, zvažte skutečnost, že Azure Search nemá oprávnění ke správě vaší aplikace AAD vaším jménem, a je až do správy aplikace AAD, jako je pravidelná rotace. ověřovací klíč aplikace
+> Při změně aplikace AAD nebo jejího ověřovacího klíče se musí nejdřív aktualizovat Azure Search index nebo mapa synonym, které tuto aplikaci používají, aby se nová aplikace ID\key **před** odstraněním předchozí aplikace nebo jejího autorizačního klíče. před odvoláním Key Vault k němu.
+> Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné, protože po ztrátě přístupu ke klíči nebude moct obsah dešifrovat.   
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>Další kroky
 
-Azure 보안 아키텍처에 익숙하지 않은 경우 [Azure 보안 설명서](https://docs.microsoft.com/azure/security/)를 검토 합니다. 특히이 문서는 다음과 같습니다.
+Pokud nejste obeznámeni s architekturou zabezpečení Azure, přečtěte si [dokumentaci k zabezpečení Azure](https://docs.microsoft.com/azure/security/)a zejména tento článek:
 
 > [!div class="nextstepaction"]
-> [미사용 데이터 암호화](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+> [Šifrování neaktivních dat](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

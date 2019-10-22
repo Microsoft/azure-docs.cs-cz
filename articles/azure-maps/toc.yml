@@ -53,8 +53,6 @@
       href: supported-languages.md
     - name: Podporované styly map
       href: supported-map-styles.md
-    - name: Podporované prohlížeče pro sadu Web SDK
-      href: supported-browsers.md
     - name: Úrovně přiblížení a mřížka dlaždic
       href: zoom-levels-and-tile-grid.md
     - name: Datová struktura Mobility Service
@@ -147,6 +145,8 @@
               href: map-get-information-from-coordinate.md
             - name: Zobrazení pokynů pro trasu z A do B
               href: map-route.md
+        - name: Podporované prohlížeče pro sadu Web SDK
+          href: supported-browsers.md
     - name: Vývoj s využitím sady Android SDK
       items:
         - name: Začínáme s mapovým ovládacím prvkem Androidu

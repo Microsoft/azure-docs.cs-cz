@@ -1,7 +1,7 @@
 ---
-title: '데이터 정규화: 모듈 참조'
+title: 'Normalizovat data: odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning 서비스의 데이터 정규화 모듈을 사용 하 여 *정규화*를 통해 데이터 집합을 변환 하는 방법을 알아봅니다.
+description: Naučte se používat modul normalizing data ve službě Azure Machine Learning k transformaci datové sady prostřednictvím *normalizace*.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -16,97 +16,97 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "72692699"
 ---
-# <a name="normalize-data-module"></a>데이터 정규화 모듈
+# <a name="normalize-data-module"></a>Normalizovat datový modul
 
-이 문서에서는 Azure Machine Learning 서비스에 대 한 시각적 인터페이스 (미리 보기)의 모듈을 설명 합니다.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-이 모듈을 사용 하 여 *정규화*를 통해 데이터 집합을 변환 합니다.
+Tento modul použijte k transformaci datové sady prostřednictvím *normalizace*.
 
-정규화는 기계 학습을 위한 데이터 준비의 일부로 종종 적용 되는 기술입니다. 정규화의 목표는 값 범위의 차이를 왜곡 하거나 정보를 잃지 않고 공통 눈금을 사용 하도록 데이터 집합의 숫자 열 값을 변경 하는 것입니다. 데이터를 올바르게 모델링 하는 일부 알고리즘의 경우 정규화도 필요 합니다.
+Normalizace je technika, která se často používá jako součást přípravy dat pro strojové učení. Cílem normalizace je změnit hodnoty číselného sloupce v datové sadě tak, aby používaly společný rozsah, aniž by došlo k narušení rozdílů v rozsahu hodnot nebo ztrátě informací. Normalizace je také nutná pro některé algoritmy pro správné modelování dat.
 
-예를 들어 입력 데이터 집합에 0에서 1 사이의 값을 가진 하나의 열이 포함 되어 있고 값이 1만에서 10만 사이인 다른 열이 포함 되어 있다고 가정 합니다. 숫자의 *소수 자릿수* 차이는 모델링 중에 값을 기능으로 결합 하려고 할 때 문제가 발생할 수 있습니다.
+Předpokládejme například, že vaše vstupní datová sada obsahuje jeden sloupec s hodnotami od 0 do 1 a další sloupec s hodnotami od 10 000 do 100 000. Velký rozdíl v *rozsahu* čísel může způsobit problémy při pokusu o kombinování hodnot jako funkcí během modelování.
 
-*정규화* 를 사용 하면 원본 데이터의 일반 분포와 비율을 유지 하는 동시에 모델에 사용 되는 모든 숫자 열에 적용 되는 값을 유지 하는 새 값을 만들어 이러한 문제를 방지할 필요가 없습니다.
+*Normalizace* zabraňuje těmto problémům vytvořením nových hodnot, které udržují obecnou distribuci a poměry ve zdrojových datech, a přitom udržuje hodnoty v rámci měřítka aplikované napříč všemi číselnými sloupci používanými v modelu.
 
-이 모듈은 숫자 데이터를 변환 하기 위한 몇 가지 옵션을 제공 합니다.
+Tento modul nabízí několik možností transformace číselných dat:
 
-- 모든 값을 0-1 배율로 변경 하거나 절대값 대신 백분위 수 순위를 나타내는 값을 변환할 수 있습니다.
-- 단일 열 또는 동일한 데이터 집합의 여러 열에 정규화를 적용할 수 있습니다.
-- 파이프라인을 반복 하거나 다른 데이터에 동일한 정규화 단계를 적용 해야 하는 경우 단계를 정규화 변환으로 저장 하 고 동일한 스키마를 가진 다른 데이터 집합에 적용할 수 있습니다.
+- Můžete změnit všechny hodnoty na 0-1ový rozsah nebo transformovat hodnoty tak, že je zastupuje jako percentil, nikoli jako absolutní hodnoty.
+- Normalizaci můžete aplikovat na jeden sloupec nebo na více sloupců ve stejné datové sadě.
+- Pokud potřebujete kanál opakovat nebo použít stejný postup normalizace na jiná data, můžete tyto kroky Uložit jako transformaci normalizace a použít ji pro jiné datové sady, které mají stejné schéma.
 
 > [!WARNING]
-> 일부 알고리즘의 경우 모델을 학습 하기 전에 데이터를 정규화 해야 합니다. 다른 알고리즘은 고유한 데이터 크기 조정 또는 정규화를 수행 합니다. 따라서 예측 모델을 작성 하는 데 사용할 기계 학습 알고리즘을 선택 하는 경우 학습 데이터에 정규화를 적용 하기 전에 알고리즘의 데이터 요구 사항을 검토 해야 합니다.
+> Některé algoritmy vyžadují, aby byla data normalizována před školením modelu. Jiné algoritmy provádějí vlastní škálování dat nebo normalizaci. Proto když zvolíte algoritmus strojového učení, který se použije při vytváření prediktivního modelu, nezapomeňte si projít požadavky na data algoritmu před použitím normalizace na školicí data.
 
-##  <a name="configure-normalize-data"></a>데이터 정규화 구성
+##  <a name="configure-normalize-data"></a>Konfigurace normalizování dat
 
-이 모듈을 사용 하 여 한 번에 하나의 정규화 메서드만 적용할 수 있습니다. 따라서 선택한 모든 열에 동일한 정규화 방법이 적용 됩니다. 다른 정규화 방법을 사용 하려면 **데이터를 정규화**하는 두 번째 인스턴스를 사용 합니다.
+Pomocí tohoto modulu můžete najednou použít jenom jednu metodu normalizace. Proto se stejná metoda normalizace použije na všechny sloupce, které vyberete. Chcete-li použít jiné metody normalizace, použijte druhou instanci **normalizovaná data**.
 
-1. **데이터 정규화** 모듈을 파이프라인에 추가 합니다. **크기 조정 및 축소** 범주의 **데이터 변환**아래 Azure Machine Learning에서 모듈을 찾을 수 있습니다.
+1. Přidejte modul **dat Normalize** do vašeho kanálu. Modul můžete najít v Azure Machine Learning v části **transformace dat**v kategorii **škálování a snížení** .
 
-2. 모든 숫자의 열이 하나 이상 포함 된 데이터 집합을 연결 합니다.
+2. Připojte datovou sadu, která obsahuje alespoň jeden sloupec se všemi čísly.
 
-3. 열 선택기를 사용 하 여 정규화 할 숫자 열을 선택 합니다. 개별 열을 선택 하지 않으면 기본적으로 입력의 **모든** 숫자 형식 열이 포함 되 고 선택한 모든 열에 동일한 정규화 프로세스가 적용 됩니다. 
+3. Pomocí voliče sloupců vyberte číselné sloupce, které se mají normalizovat. Pokud si nejste zvolili jednotlivé sloupce, jsou ve výchozím nastavení zahrnuty **všechny** sloupce číselného typu ve vstupu a stejný proces normalizace se použije na všechny vybrané sloupce. 
 
-    이렇게 하면 정규화 되지 않은 숫자 열을 포함 하는 경우 이상한 결과가 발생할 수 있습니다. 열은 항상 신중 하 게 확인 해야 합니다.
+    Pokud zahrnete číselné sloupce, které by neměly být normalizovány, může to vést k neobvyklým výsledkům. Vždy pečlivě zkontrolujte sloupce.
 
-    숫자 열이 검색 되지 않으면 열 메타 데이터를 검사 하 여 열의 데이터 형식이 지원 되는 숫자 형식 인지 확인 합니다.
+    Pokud nejsou zjištěny žádné číselné sloupce, zkontrolujte metadata sloupce a ověřte, zda je datovým typem sloupce podporovaný numerický typ.
 
     > [!TIP]
-    > 특정 형식의 열이 입력으로 제공 되도록 하려면 **데이터를 정규화**하기 전에 데이터 [집합의 열 선택](./select-columns-in-dataset.md) 모듈을 사용 하십시오.
+    > Chcete-li zajistit, aby jako vstup byly zadány sloupce určitého typu, zkuste použít modul [Výběr sloupců v datové sadě](./select-columns-in-dataset.md) a teprve potom **normalizovat data**.
 
-4. **선택 시 상수 열에 0 사용**: 임의의 숫자 열에 변경 되지 않은 단일 값이 포함 된 경우이 옵션을 선택 합니다. 이렇게 하면 정규화 작업에서 이러한 열이 사용 되지 않습니다.
+4. **Při zaškrtnutí použít 0 pro konstantní sloupce**: tuto možnost vyberte, pokud libovolný číselný sloupec obsahuje jedinou nezměněnou hodnotu. Tím se zajistí, že se tyto sloupce nepoužijí v normalizaci operací.
 
-5. **변형 방법** 드롭다운 목록에서 선택한 모든 열에 적용할 단일 수학 함수를 선택 합니다. 
+5. V rozevíracím seznamu **Metoda transformace** vyberte jednu matematickou funkci, která se použije pro všechny vybrané sloupce. 
   
-    - **Zscore**: 모든 값을 z-점수로 변환 합니다.
+    - **Zscore**: převede všechny hodnoty na z-skóre.
     
-      열의 값은 다음 수식을 사용 하 여 변환 됩니다.  
+      Hodnoty ve sloupci jsou transformovány pomocí následujícího vzorce:  
   
-      ![z&#45;점수를 사용 하는 정규화](media/module/aml-normalization-z-score.png)
+      ![normalizace s využitím skóre z&#45;](media/module/aml-normalization-z-score.png)
   
-      평균 및 표준 편차는 각 열에 대해 개별적으로 계산 됩니다. 모집단 표준 편차가 사용 됩니다.
+      Střední a směrodatná odchylka se počítá pro každý sloupec samostatně. Použije se standardní odchylka populace.
   
-    - **Minmax**: 최소 최대 노 멀 라이저 선형 다시 조정 모든 기능을 [0, 1] 간격으로 계산 합니다.
+    - **MinMax**: normalizace min-max lineárně mění škálu každé funkce na interval [0, 1].
     
-      [0, 1] 간격에 대 한 크기 조정는 최소 값이 0이 되도록 각 기능의 값을 이동한 다음 새 최대값 (원래 최대 및 최소 값의 차이)으로 나누는 방법으로 수행 됩니다.
+      Změna měřítka intervalu [0, 1] se provádí posunutím hodnot každé funkce tak, aby minimální hodnota byla 0 a pak se vydělí novou maximální hodnotou (což je rozdíl mezi původní maximální a minimální hodnotou).
       
-      열의 값은 다음 수식을 사용 하 여 변환 됩니다.  
+      Hodnoty ve sloupci jsou transformovány pomocí následujícího vzorce:  
   
-      ![min&#45;max 함수를 사용 하는 정규화](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
+      ![normalizace pomocí funkce min&#45;max](media/module/aml-normalization-minmax.png "AML_normalization – minmax")  
   
-    - **로지스틱**: 열의 값은 다음 수식을 사용 하 여 변환 됩니다.
+    - **Logistické**: hodnoty ve sloupci se transformují pomocí následujícího vzorce:
 
-      ![로지스틱 함수의 정규화 수식](media/module/aml-normalization-logistic.png "AML_normalization-로지스틱")  
+      ![vzorec pro normalizaci pomocí logistické funkce](media/module/aml-normalization-logistic.png "AML_normalization – logistická")  
   
-    - **로그 정규**:이 옵션은 모든 값을 로그 아웃 된 배율로 변환 합니다.
+    - **Normální**: Tato možnost převede všechny hodnoty na logaritmicko-normální škálování.
   
-      열의 값은 다음 수식을 사용 하 여 변환 됩니다.
+      Hodnoty ve sloupci jsou transformovány pomocí následujícího vzorce:
   
-      ![수식 로그&#45;정규 분포](media/module/aml-normalization-lognormal.png "AML_normalization-로그 아웃")
+      ![normální distribuce&#45;protokolu vzorců](media/module/aml-normalization-lognormal.png "AML_normalization – normální")
     
-      여기서 μ 및 σ는 각 열에 대 한 분포의 계산 된 알려지고 실험적으로를 데이터에서 최대 확률 추정치로 계산 합니다.  
+      V této části jsou parametry distribuce vypočítané z dat jako maximální pravděpodobnost odhadu pro každý sloupec samostatně.  
   
-    - **TanH**: 모든 값이 하이퍼볼릭 탄젠트로 변환 됩니다.
+    - **Tanh –** : všechny hodnoty jsou převedeny na hyperbolický tangens.
     
-      열의 값은 다음 수식을 사용 하 여 변환 됩니다.
+      Hodnoty ve sloupci jsou transformovány pomocí následujícího vzorce:
     
-      ![tanh 함수를 사용 하는 정규화](media/module/aml-normalization-tanh.png "AML_normalization-tanh")
+      ![normalizace pomocí funkce tanh –](media/module/aml-normalization-tanh.png "AML_normalization – tanh –")
 
-6. 파이프라인을 실행 하거나 **데이터 정규화** 모듈을 두 번 클릭 하 고 선택 된 **실행**을 선택 합니다. 
+6. Spusťte kanál nebo poklikejte na modul **dat Normalize** a vyberte **Spustit vybrané**. 
 
-## <a name="results"></a>결과
+## <a name="results"></a>Výsledky
 
-**데이터 정규화** 모듈은 두 개의 출력을 생성 합니다.
+Modul **Normalize data** generuje dva výstupy:
 
-- 변환 된 값을 보려면 모듈을 마우스 오른쪽 단추로 클릭 하 고 **변환 된 데이터 집합**을 선택한 다음 **시각화**를 클릭 합니다.
+- Chcete-li zobrazit transformované hodnoty, klikněte pravým tlačítkem myši na modul, vyberte **transformovaná datová sada**a klikněte na **vizualizovat**.
 
-    기본적으로 값은 현재 위치가 변환 됩니다. 변환 된 값을 원래 값과 비교 하려는 경우 [열 추가](./add-columns.md) 모듈을 사용 하 여 데이터 집합을 다시 결합 열을 나란히 표시 합니다.
+    Ve výchozím nastavení se hodnoty transformují na místě. Chcete-li porovnat transformované hodnoty s původními hodnotami, použijte modul [Přidat sloupce](./add-columns.md) pro rekombinaci datových sad a zobrazení sloupců vedle sebe.
 
-- 동일한 정규화 방법을 다른 유사한 데이터 집합에 적용할 수 있도록 변환을 저장 하려면 모듈을 마우스 오른쪽 단추로 클릭 하 고 **변환 함수**를 선택한 다음 **변환으로 저장**을 클릭 합니다.
+- Chcete-li uložit transformaci, abyste mohli použít stejnou metodu normalizace na jinou podobnou datovou sadu, klikněte pravým tlačítkem myši na modul, vyberte možnost **transformační funkce**a klikněte na možnost **Uložit jako transformaci**.
 
-    그런 다음 왼쪽 탐색 창의 **변환** 그룹에서 저장 된 변환을 로드 하 고 [/Apply 변환을](apply-transformation.md)사용 하 여 동일한 스키마를 사용 하는 데이터 집합에 적용할 수 있습니다.  
+    Uloženou transformaci pak můžete načíst ze skupiny **transformes** v levém navigačním podokně a použít ji pro datovou sadu se stejným schématem pomocí [transformace./Apply](apply-transformation.md).  
 
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>Další kroky
 
-Azure Machine Learning 서비스에 [사용할 수 있는 모듈 집합](module-reference.md) 을 참조 하세요. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

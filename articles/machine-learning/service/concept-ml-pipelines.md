@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 09/14/2019
-ms.openlocfilehash: 0465dcba5130f3b2dc5c615c884bfa0d3b138eb7
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.date: 10/10/2019
+ms.openlocfilehash: f5136084530c48815fd6a9f9e25b7358df00af07
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514931"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692530"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
@@ -112,6 +112,14 @@ V sadě [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/ap
 Kanál Azure ML je přidružený k pracovnímu prostoru Azure Machine Learning a krok kanálu je přidružený k cílovému výpočetnímu prostředí, které je dostupné v daném pracovním prostoru. Další informace najdete v tématu [Vytvoření a Správa pracovních prostorů Azure Machine Learning v Azure Portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) nebo [Jaké jsou výpočetní cíle v Azure Machine Learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
 
 V Azure Machine Learning výpočetní cíl je prostředí, ve kterém nastane fáze ML. Softwarové prostředí může být vzdáleným virtuálním počítačem, Azure Machine Learning výpočetní prostředky, Azure Databricks, Azure Batch a tak dále. Hardwarová prostředí se také můžou výrazně lišit v závislosti na podpoře GPU, paměti, úložišti a tak dále. Pro každý krok můžete zadat výpočetní cíl, který vám poskytne jemně odstupňovanou kontrolu nad náklady. Můžete použít více nebo méně výkonné prostředky pro konkrétní akci, objem dat a potřeby výkonu vašeho projektu. 
+
+## <a name="how-do-i-build-pipelines-using-the-azure-machine-learning-visual-interface"></a>Návody kanály sestavení pomocí Azure Machine Learningho vizuálního rozhraní?
+
+Vývojáři, kteří preferují vizuální návrhovou plochu, mohou použít vizuální rozhraní Azure Machine Learning k vytváření kanálů. K tomuto nástroji můžete přistupovat z výběru **vizuálního rozhraní** na domovské stránce pracovního prostoru.  Vizuální rozhraní umožňuje přetáhnout kroky na návrhovou plochu. Pro rychlý vývoj můžete používat existující moduly v rámci spektra úloh ML. stávající moduly pokrývají vše od transformace dat až po výběr algoritmu až po školení k nasazení. Nebo můžete vytvořit plně vlastní kanál kombinováním vlastních kroků definovaných ve skriptech Pythonu.
+
+Při vizuálním návrhu kanálů jsou vstupy a výstupy kroku zobrazeny viditelně. Můžete přetahovat datová připojení, což vám umožní rychle pochopit a upravovat tok dat vašeho kanálu.
+ 
+![Příklad vizuálního rozhraní Azure Machine Learning](./media/concept-ml-pipelines/visual-design-surface.gif)
 
 ### <a name="understanding-the-execution-graph"></a>Princip grafu spuštění
 

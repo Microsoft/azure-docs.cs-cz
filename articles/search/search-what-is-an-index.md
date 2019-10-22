@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69647370"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Vytvoření základního indexu v Azure Search
@@ -54,7 +54,7 @@ Pro iterativní návrh se doporučuje kód spíše než přístup k portálu. Po
 
 Schématem Azure Search index se skládá z následujících prvků. 
 
-[*Kolekce polí*](#fields-collection) je obvykle největší částí indexu, kde jsou pojmenovány, zadány a označeny s povoleným chováním, které určují, jak se používají. Mezi další prvky patří [návrhy](#suggesters), [profily vyhodnocování](#scoring-profiles), analyzátory s součástmi komponent pro podporu přizpůsobení, [CORS](#cors) a možnosti [šifrovacího klíče](#encryption-key) . [](#analyzers)
+[*Kolekce polí*](#fields-collection) je obvykle největší částí indexu, kde jsou pojmenovány, zadány a označeny s povoleným chováním, které určují, jak se používají. Mezi další prvky patří [návrhy](#suggesters), [profily vyhodnocování](#scoring-profiles), [analyzátory](#analyzers) s součástmi komponent pro podporu přizpůsobení, [CORS](#cors) a možnosti [šifrovacího klíče](#encryption-key) .
 
 ```json
 {
@@ -146,7 +146,7 @@ Schématem Azure Search index se skládá z následujících prvků.
 Při definování schématu musíte zadat název, typ a atributy každého pole v indexu. Typ pole klasifikuje data, která jsou v tomto poli uložená. Atributy se nastavují u jednotlivých polí a určují, jak se příslušné pole použije. Následující tabulky poskytují výčet typů a atributů, které můžete zadat.
 
 ### <a name="data-types"></a>Typy dat
-| type | Popis |
+| Typ | Popis |
 | --- | --- |
 | *Edm.String* |Text, který lze volitelně použít pro fulltextové vyhledávání (dělení slov, odvozování a tak dále). |
 | *Collection(Edm.String)* |Seznam řetězců, které jde volitelně tokenizovat k fulltextovému hledání. Ačkoli neexistuje žádné teoretické omezení počtu položek v kolekci, na kolekce se vztahuje 16MB omezení velikosti datové části. |
@@ -181,11 +181,11 @@ Rozhraní API, která použijete k vytvoření indexu, mají proměnlivé výcho
 
 Atributy, které vyberete, mají vliv na úložiště. Následující snímek obrazovky znázorňuje vzory úložiště indexů, které jsou výsledkem různých kombinací atributů.
 
-Index je založený na integrovaném zdroji ukázkových dat z [reálného majetku](search-get-started-portal.md) , který můžete indexovat a dotazovat na portálu. I když nejsou uvedena schémata indexu, můžete odvodit atributy na základě názvu indexu. Index s možností vyhledávání *realestate* má například vybraný atribut, který není k dispozici, a není k dispozici žádný jiný index s *realestate* , který je v indexu s **možností** získat a tak dále.
+Index je založený na [integrovaném zdroji ukázkových dat z reálného majetku](search-get-started-portal.md) , který můžete indexovat a dotazovat na portálu. I když nejsou uvedena schémata indexu, můžete odvodit atributy na základě názvu indexu. Index s možností vyhledávání *realestate* má například vybraný atribut, který není k dispozici, a není k dispozici žádný jiný index s *realestate* , který **je v indexu** s **možností** získat a tak dále.
 
 ![Velikost indexu na základě výběru atributu](./media/search-what-is-an-index/realestate-index-size.png "Velikost indexu na základě výběru atributu")
 
-I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Má nastavení načístelné zvýšení velikosti indexu? Ne. Přidávají se pole do přizpůsobitelné velikosti indexu? Ano.
+I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Má nastavení načístelné zvýšení velikosti indexu? Ne. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Ano.
 
 Indexy, které podporují filtrování a řazení, jsou proporcionálně větší než indexy podporující pouze fulltextové vyhledávání. Důvodem je, že dotaz filtru a řazení se shoduje s přesnými shodami, takže se dokumenty ukládají beze změny. Naproti tomu prohledávatelné pole podporující fulltextové a přibližné vyhledávání používá obrácené indexy, které jsou vyplněny pomocí tokenů, které spotřebovávají méně místa než celé dokumenty.
 
@@ -197,7 +197,7 @@ Modul pro návrhy je oddíl schématu, který definuje, která pole v indexu se 
 
 Pole přidaná do modulu pro návrhy se používají k sestavení podmínek vyhledávání typu dopředu. Všechny hledané výrazy se vytvoří při indexování a ukládají se samostatně. Další informace o vytváření struktury návrhů najdete v tématu [Přidání návrhů](index-add-suggesters.md).
 
-## <a name="scoring-profiles"></a>Bodovací profily
+## <a name="scoring-profiles"></a>Profily skórování
 
 [Profil vyhodnocování](index-add-scoring-profiles.md) je oddíl schématu, který definuje vlastní bodování chování, které vám umožní ovlivnit, které položky se ve výsledcích hledání objeví výše. Profily vyhodnocování se skládají z vah a funkcí polí. Pokud je chcete použít, zadejte v řetězci dotazu profil podle názvu.
 
@@ -213,11 +213,11 @@ JavaScript na straně klienta nemůže ve výchozím nastavení volat žádná r
 
 Pro CORS se dají nastavit tyto možnosti:
 
-+ **allowedOrigins** (povinné): Toto je seznam původních zdrojů, kterým bude udělen přístup k vašemu indexu. To znamená, že jakýkoli JavaScriptový kód, který je obsluhován z těchto původu, bude moci dotazovat váš index (za předpokladu, že poskytuje správný klíč rozhraní API). Každý původ má obvykle tvar `protocol://<fully-qualified-domain-name>:<port>` , i když `<port>` je často vynechán. Další podrobnosti najdete v tématu [sdílení prostředků mezi zdroji (Wikipedii)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
++ **allowedOrigins** (povinné): Jedná se o seznam původních zdrojů, kterým bude udělen přístup k vašemu indexu. To znamená, že jakýkoli JavaScriptový kód, který je obsluhován z těchto původu, bude moci dotazovat váš index (za předpokladu, že poskytuje správný klíč rozhraní API). Každý původ má obvykle tvar `protocol://<fully-qualified-domain-name>:<port>` i když je `<port>` často vynecháno. Další podrobnosti najdete v tématu [sdílení prostředků mezi zdroji (Wikipedii)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
 
-  Pokud chcete povolený přístup ke všem počátkům, zahrňte `*` do pole **allowedOrigins** jako jednu položku. *Toto není doporučený postup pro služby vyhledávání v provozu* , ale je často užitečný pro vývoj a ladění.
+  Pokud chcete povolený přístup ke všem počátkům, zahrňte `*` jako jednu položku do pole **allowedOrigins** . *Toto není doporučený postup pro služby vyhledávání v provozu* , ale je často užitečný pro vývoj a ladění.
 
-+ **maxAgeInSeconds** (volitelné): V prohlížečích se tato hodnota používá k určení doby (v sekundách) pro ukládání odpovědí na předběžné zprávy z mezipaměti CORS. Toto musí být nezáporné celé číslo. Čím větší je tato hodnota, tím vyšší bude výkon, tím déle bude trvat, než se změny zásad CORS projeví. Pokud není nastavená, použije se výchozí doba trvání 5 minut.
++ **maxAgeInSeconds** (volitelné): v prohlížečích se tato hodnota používá k určení doby (v sekundách), po kterou se budou odpovědi na kontrolu mezipaměti CORS ukládat do mezipaměti. Toto musí být nezáporné celé číslo. Čím větší je tato hodnota, tím vyšší bude výkon, tím déle bude trvat, než se změny zásad CORS projeví. Pokud není nastavená, použije se výchozí doba trvání 5 minut.
 
 ## <a name="encryption-key"></a>Šifrovací klíč
 

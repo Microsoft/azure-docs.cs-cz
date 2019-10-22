@@ -103,6 +103,8 @@
                   href: virtual-network-ipv4-ipv6-dual-stack-cli.md
                 - name: Šablona Resource Manageru
                   href: ipv6-configure-template-json.md
+            - name: Místní upgrade
+              href: ipv6-add-to-existing-vnet-powershell.md
             - name: Veřejný nástroj pro vyrovnávání zatížení verze Standard
               items:
                 - name: Azure PowerShell

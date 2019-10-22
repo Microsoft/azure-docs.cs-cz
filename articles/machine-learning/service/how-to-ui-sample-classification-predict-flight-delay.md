@@ -1,5 +1,5 @@
 ---
-title: 'Ukázka vizuálního rozhraní #6: Klasifikace pro předpověď zpoždění letů'
+title: 'Příklad vizuálního rozhraní #6: klasifikace pro předpověď zpoždění letů'
 titleSuffix: Azure Machine Learning
 description: V tomto článku se dozvíte, jak vytvořit model strojového učení pro předpověď zpoždění letu pomocí vizuálního rozhraní přetažení a vlastního kódu jazyka R.
 services: machine-learning
@@ -9,46 +9,44 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
-ms.date: 07/02/2019
-ms.openlocfilehash: 257f6034df7d1974f3964c4d07ca96d17c7fe509
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 6e65075b309ed12505ce6fffadac12af3f16344b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131646"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692572"
 ---
-# <a name="sample-6---classification-predict-flight-delays-using-r"></a>Ukázka 6 – klasifikace: Předpověď zpoždění letu pomocí R
+# <a name="sample-6---classification-predict-flight-delays-using-r"></a>Ukázka 6 – klasifikace: předpověď zpoždění letu pomocí R
 
-Tento experiment používá historická data o letu a počasí k předpovídání, jestli se naplánovaný osobní let zpozdí o více než 15 minut.
+Tento kanál používá historické údaje o letu a počasí k předběžnému předběžnému zpoždění, pokud se naplánovaný osobní let zpozdí o více než 15 minut. K tomuto problému může dojít jako problém klasifikace, předpověď dvou tříd: opožděné nebo včas.
 
-K tomuto problému může dojít jako problém klasifikace, předpověď dvou tříd – opožděné nebo v čase. Pokud chcete vytvořit klasifikátor, tento model využívá velký počet příkladů z historických letových dat.
+Toto je konečný Graf kanálu pro tuto ukázku:
 
-Zde je konečný graf experimentu pro tuto ukázku:
+[![Graph kanálu](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-[![Graf experimentu](media/how-to-ui-sample-classification-predict-flight-delay/experiment-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Vyberte tlačítko **otevřít** pro experiment s ukázkou 6:
+4. Vyberte tlačítko **otevřít** pro kanál Sample 6:
 
-    ![Otevřít experiment](media/how-to-ui-sample-classification-predict-flight-delay/open-sample6.png)
+    ![Otevření kanálu](media/how-to-ui-sample-classification-predict-flight-delay/open-sample6.png)
 
 ## <a name="get-the-data"></a>Získání dat
 
-Tento experiment používá datovou sadu **dat o zpoždění letů** . Je součástí shromažďování dat TranStats z USA. Oddělení dopravy. Datová sada obsahuje informace o zpoždění letu od dubna do října 2013. Před odesláním dat do vizuálního rozhraní byl předem zpracován následujícím způsobem:
+Tato ukázka používá datovou sadu **dat o zpoždění letů** . Je součástí shromažďování dat TranStats z ministerstva dopravy USA. Datová sada obsahuje informace o zpoždění letu od dubna do října 2013. Datová sada byla předem zpracována následujícím způsobem:
 
 * Filtrováno tak, aby zahrnovalo letiště 70 nejvytíženější do kontinentální USA.
-* U zrušených letů přepište za zpožděné o více než 15 minut.
+* Zrušené lety přeoznačené jako zpožděné o více než 15 minut.
 * Vyfiltrováno odcházející lety.
 * Vybráno 14 sloupců.
 
-Pro doplnění letových dat se použije **datová sada počasí** . Data o počasí obsahují hodinové počasí založené na půdě z NOAA a představují pozorování z povětrnostních stanic na letišti, které pokrývají stejné časové období v dubnu-říjnu 2013. Před odesláním do vizuálního rozhraní Azure ML byl předem zpracován následujícím způsobem:
+Pro doplnění letových dat se použije **datová sada počasí** . Data o počasí obsahují hodinu a počasí na základě půdy z NOAA a představují pozorování z povětrnostních stanic na letišti, které pokrývají stejné časové období jako datová sada letů. Byl předem zpracován následujícím způsobem:
 
 * ID povětrnostních stanic byly namapovány na odpovídající ID letišť.
 * Některé z povětrnostních stanic, které nejsou spojené s 70 nejvytíženější letiště, se odebraly.
-* Sloupec data byl rozdělen do samostatných sloupců: Rok, měsíc a den.
+* Sloupec data byl rozdělen na samostatné sloupce: rok, měsíc a den.
 * Vybráno 26 sloupců.
 
 ## <a name="pre-process-the-data"></a>Předběžné zpracování dat
@@ -61,15 +59,15 @@ Datová sada obvykle vyžaduje před analýzou některé předběžné zpracová
 
 Sloupce **přepravce**, **OriginAirportID**a **DestAirportID** se ukládají jako celá čísla. Jsou však kategorií atributy, a to pomocí modulu **Upravit metadata** a převeďte je na kategorií.
 
-![edit-metadata](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
+![Upravit metadata](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
 
-Pak použijte modul **Vybrat sloupce** v datové sadě, který se vyloučí ze sloupců datové sady, které jsou možné nevrácením cíle: **DepDelay**, **DepDel15**, **ArrDelay**, **Canceled**, **year**. 
+Pak použijte modul **Výběr sloupců** v datové sadě k vyloučení ze sloupců datové sady, které jsou potenciálními nevrácenými cíli: **DepDelay**, **DepDel15**, **ArrDelay**, **Canceled**, **year**. 
 
 Pokud se chcete připojit ke letovým záznamům pomocí hodinových záznamů počasí, použijte naplánovaný čas odchodu jako jeden z klíčů JOIN. Aby bylo možné spojení provést, musí být sloupec CSRDepTime zaokrouhlený dolů na nejbližší hodinu, kterou provádí v modulu **spuštění skriptu jazyka R** . 
 
 ### <a name="weather-data"></a>Data o počasí
 
-Sloupce, které mají velký podíl chybějících hodnot, jsou vyloučeny pomocí modulu **projektové sloupce** . Tyto sloupce obsahují všechny sloupce s hodnotou řetězce: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**a **StationPressure**.
+Sloupce, které mají velký podíl chybějících hodnot, jsou vyloučeny pomocí modulu **projektové sloupce** . Mezi tyto sloupce patří všechny sloupce s hodnotou řetězce: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**a **StationPressure.** .
 
 Na zbývajících sloupcích se pak použije modul **Vyčištění chybějících dat** , aby se odstranily řádky s chybějícími daty.
 
@@ -107,12 +105,11 @@ Chcete-li vytvořit model, můžete použít všechny dostupné funkce nebo vybr
 Vytvořte model pomocí modulu **logistické regrese dvou tříd** a prohlaste ho v datové sadě školení. 
 
 Výsledkem modulu **vlakového modelu** je vyškolený model klasifikace, který se dá použít ke stanovení skóre nových vzorků, aby bylo možné předpovědiovat. Pomocí sady testů můžete vygenerovat skóre z vycvičených modelů. Pak pomocí modulu **vyhodnocení modelu** Analyzujte a porovnejte kvalitu modelů.
+kanál po spuštění kanálu můžete zobrazit výstup z modulu **skóre modelu** tak, že kliknete na výstupní port a vyberete **vizualizovat**. Výstup obsahuje popisky s skóre a pravděpodobnosti pro popisky.
 
-Po spuštění experimentu můžete zobrazit výstup z modulu **skóre modelu** kliknutím na výstupní port a výběrem možnosti **vizualizovat**. Výstup obsahuje popisky s skóre a pravděpodobnosti pro popisky.
+Nakonec můžete testovat kvalitu výsledků, přidat modul **vyhodnocení modelu** na plátno kanálu a propojit levý vstupní port s výstupem modulu určení skóre modelu. Spusťte kanál a zobrazte výstup modulu **vyhodnocení modelu** tak, že kliknete na výstupní port a vyberete **vizualizovat**.
 
-Nakonec pro otestování kvality výsledků přidejte modul **vyhodnotit model** na plátno experimentu a propojte levý vstupní port s výstupem modulu určení skóre modelu. Spusťte experiment a zobrazte výstup modulu **vyhodnocení modelu** tak, že kliknete na výstupní port a vyberete **vizualizovat**.
-
-## <a name="evaluate"></a>Vyhodnotit
+## <a name="evaluate"></a>Vyhodnocení
 Model logistické regrese má v sadě testů AUC 0,631.
 
  ![Vyhodnocení](media/how-to-ui-sample-classification-predict-flight-delay/evaluate.png)
@@ -121,8 +118,9 @@ Model logistické regrese má v sadě testů AUC 0,631.
 
 Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 
-- [Ukázka 1 – regrese: Předpověď ceny automobilu](how-to-ui-sample-regression-predict-automobile-price-basic.md)
-- [Ukázka 2 – regrese: Porovnat algoritmy pro předpověď cen automobilu](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Ukázka 3 – klasifikace: Předpověď úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-- [Ukázka 4 – klasifikace: Předpověď úvěrového rizika (citlivé na náklady)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [Ukázka 5 – klasifikace: Předpověď změn](how-to-ui-sample-classification-predict-churn.md)
+- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+- [Ukázka 2 – regrese: porovnání algoritmů pro předpověď cen automobilu](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Ukázka 3 – klasifikace: předpověď úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Ukázka 5 – klasifikace: předpověď změn](how-to-ui-sample-classification-predict-churn.md)
+- [Ukázka 7 – klasifikace textu: recenze knih](how-to-ui-sample-text-classification.md)

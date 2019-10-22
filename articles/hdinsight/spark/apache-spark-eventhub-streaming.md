@@ -1,6 +1,6 @@
 ---
-title: '자습서: HDInsight의 Apache Spark를 사용 하 여 Azure Event Hubs에서 데이터 처리'
-description: 자습서 - Azure HDInsight의 Apache Spark를 Azure Event Hubs에 연결하고 스트리밍 데이터를 처리합니다.
+title: 'Kurz: zpracování dat z Azure Event Hubs s využitím Apache Spark ve službě HDInsight'
+description: Kurz – připojení Apache Spark ve službě Azure HDInsight do Azure Event Hubs a zpracování dat streamování.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -15,130 +15,130 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266197"
 ---
-# <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>자습서: HDInsight에서 Azure Event Hubs 및 Apache Spark를 사용하여 트윗 처리
+# <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Kurz: zpracování tweety pomocí Azure Event Hubs a Apache Spark v HDInsight
 
-이 자습서에서는 [Apache Spark](https://spark.apache.org/) 스트리밍 애플리케이션을 만들어 Azure 이벤트 허브로 트윗을 보내고, 다른 애플리케이션을 만들어 이벤트 허브에서 트윗을 읽는 방법을 알아봅니다. Spark 스트리밍에 대한 자세한 내용은 [Apache Spark 스트리밍 개요](https://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)를 참조하세요. HDInsight는 Azure에서 Spark 클러스터에 동일한 스트리밍 기능을 제공합니다.
+V tomto kurzu se naučíte, jak vytvořit aplikaci pro streamování [Apache Spark](https://spark.apache.org/) pro odeslání tweety do centra událostí Azure a vytvořit další aplikaci pro čtení tweety z centra událostí. Podrobné vysvětlení streamování Sparku najdete v tématu [Přehled streamování Apache Spark](https://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). HDInsight přináší stejné funkce streamování do clusteru Spark v Azure.
 
-이 자습서에서는 다음 방법에 대해 알아봅니다.
+V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Azure 이벤트 허브에 메시지 전송
-> * Azure 이벤트 허브에서 메시지 읽기
+> * Odesílání zpráv do centra událostí Azure
+> * Čtení zpráv z centra událostí Azure
 
-Azure 구독이 아직 없는 경우 시작하기 전에 [체험](https://azure.microsoft.com/free/) 계정을 만듭니다.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>Předpoklady
 
-* HDInsight의 Apache Spark. [Apache Spark 클러스터 만들기](./apache-spark-jupyter-spark-sql-use-portal.md)를 참조하세요.
+* Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 
-* HDInsight의 Spark에서 Jupyter Notebook을 사용하는 방법 이해. 자세한 내용은 [HDInsight의 Apache Spark로 데이터 로드 및 쿼리 실행](./apache-spark-load-data-run-query.md)을 참조하세요.
+* Znalost používání poznámkových bloků Jupyter se Sparkem ve službě HDInsight. Další informace najdete v tématech [načtení dat a spuštění dotazů s Apache Spark v HDInsight](./apache-spark-load-data-run-query.md).
 
-* [Twitter 계정](https://twitter.com/i/flow/signup)입니다.
+* [Účet na Twitteru](https://twitter.com/i/flow/signup).
 
-## <a name="create-a-twitter-application"></a>Twitter 애플리케이션 만들기
+## <a name="create-a-twitter-application"></a>Vytvoření aplikace Twitter
 
-트윗 스트림을 받으려면 Twitter에 애플리케이션을 만듭니다. 다음 지침에 따라 Twitter 애플리케이션을 만들고 이 자습서를 완료하는 데 필요한 값을 기록합니다.
+Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. Postupujte podle pokynů k vytvoření aplikace Twitter a zapište hodnoty, které potřebujete k dokončení tohoto kurzu.
 
-1. [Twitter 애플리케이션 관리](https://apps.twitter.com/)로 이동합니다.
+1. Přejděte na [Správa aplikací na Twitter](https://apps.twitter.com/).
 
-1. **새 앱 만들기**를 선택합니다.
+1. Vyberte **vytvořit novou aplikaci**.
 
-1. 다음 값을 제공합니다.
+1. Zadejte následující hodnoty:
 
-    |자산 |Value |
+    |Vlastnost |Hodnota |
     |---|---|
-    |name|애플리케이션 이름을 제공합니다. 이 자습서에 사용되는 값은 **HDISparkStreamApp0423**입니다. 이 이름은 고유한 이름이어야 합니다.|
-    |설명|애플리케이션에 대한 간단한 설명을 제공합니다. 이 자습서에 사용되는 값은 **간단한 HDInsight Spark 스트리밍 애플리케이션**입니다.|
-    |Website|애플리케이션의 웹 사이트를 제공합니다. 유효한 웹 사이트를 입력하지 않아도 됩니다.  이 자습서에 사용되는 값은 `http://www.contoso.com`입니다.|
-    |콜백 URL|비워 둘 수 있습니다.|
+    |Name (Název)|Zadejte název aplikace. Hodnota použitá v tomto kurzu je **HDISparkStreamApp0423**. Tento název musí být jedinečný název.|
+    |Popis|Zadejte krátký popis aplikace. Hodnota použitá v tomto kurzu je **Jednoduchá aplikace pro streamování HDInsight Spark**.|
+    |Web|Poskytněte web aplikace. Nemusí to být platný web.  Hodnota použitá v tomto kurzu je `http://www.contoso.com`.|
+    |Adresa URL zpětného volání|Můžete ponechat prázdné.|
 
-1. **예, Twitter 개발자 계약을 읽고 동의합니다**를 선택한 다음, **Twitter 애플리케이션 만들기**를 선택합니다.
+1. Vyberte **Ano, jsem si přečetl (a) jsem na Twitteru a souhlasím se smlouvou pro vývojáře na Twitteru**a pak vyberte **vytvořit aplikaci Twitter**.
 
-1. **Keys and Access Tokens** 탭을 선택합니다.
+1. Vyberte kartu **klíče a přístupové tokeny** .
 
-1. 페이지의 끝에서 **내 액세스 토큰 만들기**를 선택합니다.
+1. Na konci stránky vyberte **vytvořit token přístupu** .
 
-1. 페이지에서 다음 값을 기록합니다.  자습서의 뒷부분에서 이러한 값이 필요합니다.
+1. Zapište ze stránky následující hodnoty.  Tyto hodnoty budete potřebovat později v tomto kurzu:
 
-    - **소비자 키(API 키)**    
-    - **소비자 비밀(API 비밀)**  
-    - **액세스 토큰**
-    - **액세스 토큰 비밀**   
+    - **Klíč příjemce (klíč rozhraní API)**    
+    - **Tajný klíč uživatele (tajný kód rozhraní API)**  
+    - **Přístupový token**
+    - **Tajný klíč přístupového tokenu**   
 
-## <a name="create-an-azure-event-hubs-namespace"></a>Azure Event Hubs 네임스페이스 만들기
+## <a name="create-an-azure-event-hubs-namespace"></a>Vytvoření oboru názvů Azure Event Hubs
 
-이 이벤트 허브를 사용하여 트윗을 저장합니다.
+Toto centrum událostí se používá k ukládání tweety.
 
-1. [Azure portal](https://portal.azure.com)에 로그인합니다. 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 
-2. 왼쪽 메뉴에서 **모든 서비스**를 선택합니다.  
+2. V nabídce vlevo vyberte **všechny služby**.  
 
-3. **사물 인터넷** 아래에서 **Event Hubs**를 선택합니다. 
+3. V části **Internet věcí**vyberte **Event Hubs**. 
 
-    ![Spark 스트리밍 예제에 대 한 이벤트 허브 만들기](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Spark 스트리밍 예제에 대 한 이벤트 허브 만들기")
+    ![Příklad vytvoření centra událostí pro streamování Sparku](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Příklad vytvoření centra událostí pro streamování Sparku")
 
-4. **+추가**를 선택합니다.
+4. Vyberte **+ Přidat**.
 
-5. 새 Event Hubs 네임스페이스에 다음 값을 입력합니다.
+5. Zadejte následující hodnoty pro nový obor názvů Event Hubs:
 
-    |자산 |Value |
+    |Vlastnost |Hodnota |
     |---|---|
-    |name|이벤트 허브의 이름을 입력합니다.  이 자습서에 사용되는 값은 **myeventhubns20180403**입니다.|
-    |가격 책정 계층|**표준**을 선택합니다.|
-    |Subscription|내게 적합한 구독을 선택합니다.|
-    |Resource group|드롭다운 목록에서 기존 리소스 그룹을 선택 하거나 **새로 만들기** 를 선택 하 여 새 리소스 그룹을 만듭니다.|
-    |위치|대기 시간 및 비용을 줄이려면 HDInsight에서 Apache Spark 클러스터와 동일한 **위치** 를 선택 합니다.|
-    |자동 팽창 사용(선택 사항) |자동 팽창은 트래픽이 Event Hubs 네임스페이스에 할당된 처리량 단위의 용량을 초과할 때 Event Hubs 네임스페이스에 할당된 처리량 단위의 수를 자동으로 조정합니다.  |
-    |자동 팽창 최대 처리량 단위(선택 사항)|슬라이더는 **자동 팽창 사용**을 선택한 경우에만 나타납니다.  |
+    |Name (Název)|Zadejte název centra událostí.  Hodnota použitá v tomto kurzu je **myeventhubns20180403**.|
+    |Cenová úroveň|Vyberte **Standard**.|
+    |Předplatné|Vyberte odpovídající předplatné.|
+    |Skupina prostředků|V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou** a vytvořte novou skupinu prostředků.|
+    |Umístění|Pokud chcete snížit latenci a náklady, vyberte stejné **umístění** jako cluster Apache Spark v HDInsight.|
+    |Povolit automatické rozploché (volitelné) |Automatické rozploché automaticky škálují počet jednotek propustnosti přiřazených k vašemu oboru názvů Event Hubs, když váš provoz přesáhne kapacitu jednotek propustnosti, které jsou jim přiřazeny.  |
+    |Automaticky plochý maximální počet jednotek propustnosti (volitelné)|Tento posuvník se zobrazí pouze v případě, že je zaškrtnuto zaškrtávací políčka **Povolit automatické rozplochení**.  |
 
-    ![Spark 스트리밍 예제에 대 한 이벤트 허브 이름 제공](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Spark 스트리밍 예제에 대 한 이벤트 허브 이름 제공")
+    ![Příklad zadání názvu centra událostí pro streamování Sparku](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Příklad zadání názvu centra událostí pro streamování Sparku")
 
-6. **만들기**를 선택하여 네임스페이스를 만듭니다.  몇 분 안에 배포가 완료됩니다.
+6. Vyberte **vytvořit** a vytvořte obor názvů.  Nasazení bude dokončeno během několika minut.
 
-## <a name="create-an-azure-event-hub"></a>Azure 이벤트 허브 만들기
-Event Hubs 네임스페이스가 배포된 후에 이벤트 허브를 만듭니다.  포털에서 다음을 수행합니다.
+## <a name="create-an-azure-event-hub"></a>Vytvoření centra událostí Azure
+Po nasazení Event Hubs oboru názvů vytvořte centrum událostí.  Z portálu:
 
-1. 왼쪽 메뉴에서 **모든 서비스**를 선택합니다.  
+1. V nabídce vlevo vyberte **všechny služby**.  
 
-1. **사물 인터넷** 아래에서 **Event Hubs**를 선택합니다.  
+1. V části **Internet věcí**vyberte **Event Hubs**.  
 
-1. 목록에서 Event Hubs 네임스페이스를 선택합니다.  
+1. Ze seznamu vyberte svůj obor názvů Event Hubs.  
 
-1. **Event Hubs 네임스페이스** 페이지에서 **+ Event Hub**를 선택합니다.  
-1. **Event Hubs 만들기** 페이지에 다음 값을 입력합니다.
+1. Na stránce **Event Hubs obor názvů** vyberte **+ centrum událostí**.  
+1. Na stránce **vytvořit centrum událostí** zadejte následující hodnoty:
 
-    - **이름**: 이벤트 허브의 이름을 지정 합니다. 
+    - **Název**: zadejte název centra událostí. 
  
-    - **파티션 수**: 10  
+    - **Počet oddílů**: 10.  
 
-    - **메시지 보존**: 1.   
+    - **Uchovávání zpráv**: 1.   
    
-      ![Spark 스트리밍 예제에 대 한 이벤트 허브 세부 정보 제공](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark 스트리밍 예제에 대 한 이벤트 허브 세부 정보 제공")
+      ![Příklad zadání podrobností centra událostí pro streamování Sparku](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Příklad zadání podrobností centra událostí pro streamování Sparku")
 
-1. **만들기**를 선택합니다.  몇 초 내에 배포가 완료되고 Event Hubs 네임스페이스 페이지로 돌아갑니다.
+1. Vyberte **Create** (Vytvořit).  Nasazení by mělo být dokončeno během několika sekund a bude vráceno na stránku Event Hubs oboru názvů.
 
-1. **설정**에서 **공유 액세스 정책**을 선택합니다.
+1. V části **Nastavení**vyberte **zásady sdíleného přístupu**.
 
-1. **RootManageSharedAccessKey**를 선택합니다.
+1. Vyberte **RootManageSharedAccessKey**.
     
-     ![Spark 스트리밍 예제에 대 한 이벤트 허브 정책 설정](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Spark 스트리밍 예제에 대 한 이벤트 허브 정책 설정")
+     ![Příklad nastavení zásad centra událostí pro streamování Sparku](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Příklad nastavení zásad centra událostí pro streamování Sparku")
 
-1. **기본 키** 및 **연결 문자열-기본 키**의 값을 저장하여 자습서의 뒷부분에서 사용합니다.
+1. Uložte hodnoty **primárního klíče** a **připojovacího řetězce – primární klíč** , který použijete později v tomto kurzu.
 
-     ![Spark 스트리밍 예제에 대 한 이벤트 허브 정책 키 보기](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Spark 스트리밍 예제에 대 한 이벤트 허브 정책 키 보기")
+     ![Příklad zobrazení klíčů zásad centra událostí pro streamování Sparku](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Příklad zobrazení klíčů zásad centra událostí pro streamování Sparku")
 
 
-## <a name="send-tweets-to-the-event-hub"></a>이벤트 허브에 트윗 보내기
+## <a name="send-tweets-to-the-event-hub"></a>Odeslání tweety do centra událostí
 
-Jupyter Notebook을 만들고, **SendTweetsToEventHub**라는 이름을 지정합니다. 
+Vytvořte Poznámkový blok Jupyter a pojmenujte ho **SendTweetsToEventHub**. 
 
-1. 다음 코드를 실행하여 외부 Apache Maven 라이브러리를 추가합니다.
+1. Spusťte následující kód a přidejte externí knihovny Apache Maven:
 
     ```
     %%configure
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
-2. `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` 및 `<TOKEN SECRET>`을 적절한 값으로 대체하여 아래 코드를 편집합니다. 편집된 코드를 실행하여 이벤트 허브에 트윗을 보냅니다.
+2. Níže uvedený kód nahraďte `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` a `<TOKEN SECRET>` s příslušnými hodnotami. Spusťte upravený kód pro odeslání tweety do centra událostí:
 
     ```scala
     import java.util._
@@ -207,20 +207,20 @@ Jupyter Notebook을 만들고, **SendTweetsToEventHub**라는 이름을 지정�
     eventHubClient.get().close()
     ```
 
-3. Azure Portal에서 이벤트 허브를 엽니다.  **개요**에 이벤트 허브로 전송된 메시지를 보여주는 일부 차트가 표시됩니다.
+3. Otevřete centrum událostí v Azure Portal.  V **přehledu**se zobrazí některé grafy znázorňující zprávy odeslané do centra událostí.
 
-## <a name="read-tweets-from-the-event-hub"></a>이벤트 허브에서 트윗 읽기
+## <a name="read-tweets-from-the-event-hub"></a>Čtení tweety z centra událostí
 
-또 다른 Jupyter Notebook을 만들고, **ReadTweetsFromEventHub**라는 이름을 지정합니다. 
+Vytvořte další Poznámkový blok Jupyter a pojmenujte ho **ReadTweetsFromEventHub**. 
 
-1. 다음 코드를 실행하여 외부 Apache Maven 라이브러리를 추가합니다.
+1. Spuštěním následujícího kódu přidejte externí knihovnu Apache Maven:
 
     ```
     %%configure -f
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
-2. `<Event hub name>` 및 `<Event hub namespace connection string>`을 적절한 값으로 대체하여 아래 코드를 편집합니다. 편집된 코드를 실행하여 이벤트 허브에서 트윗을 읽습니다.
+2. Níže uvedený kód nahraďte `<Event hub name>` a `<Event hub namespace connection string>` s příslušnými hodnotami. Spusťte upravený kód pro čtení tweety z centra událostí:
 
     ```scala
     import org.apache.spark.eventhubs._
@@ -246,19 +246,19 @@ Jupyter Notebook을 만들고, **SendTweetsToEventHub**라는 이름을 지정�
     messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
     ```
 
-## <a name="clean-up-resources"></a>리소스 정리
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-HDInsight를 사용하면 데이터가 Azure Storage 또는 Azure Data Lake Storage에 저장되므로 클러스터를 사용하지 않을 때 안전하게 삭제할 수 있습니다. HDInsight 클러스터를 사용하지 않는 기간에도 요금이 청구됩니다. 다음 자습서에서 즉시 작업하려면 클러스터를 유지하는 것이 좋습니다. 그렇지 않으면 계속 진행하여 클러스터를 삭제하는 것이 좋습니다.
+Ve službě HDInsight jsou vaše data uložená ve Azure Storage nebo Azure Data Lake Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Pokud plánujete, že budete v dalším kurzu pracovat okamžitě, můžete chtít zachovat cluster, jinak pokračovat a odstranit cluster.
 
-Azure Portal에서 클러스터를 열고 **삭제**를 선택합니다.
+Otevřete cluster na webu Azure Portal a vyberte **Odstranit**.
 
-![HDInsight Azure Portal 클러스터 삭제](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight 클러스터 삭제")
+![Portál Azure na webu HDInsight – odstranění clusteru](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "Odstranit cluster HDInsight")
 
-또한 리소스 그룹 이름을 선택하여 리소스 그룹 페이지를 연 다음, **리소스 그룹 삭제**를 선택할 수도 있습니다. 리소스 그룹을 삭제하여 HDInsight Spark 클러스터와 기본 스토리지 계정을 삭제합니다.
+Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight Spark i výchozí účet úložiště.
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>Další kroky
 
-이 자습서에서는 Apache Spark 스트리밍 애플리케이션을 만들어 Azure 이벤트 허브로 트윗을 보내고, 다른 애플리케이션을 만들어 이벤트 허브에서 트윗을 읽는 방법을 알아보았습니다.  기계 학습 애플리케이션을 만들 수 있는지 보려면 다음 문서를 진행합니다.
+V tomto kurzu jste zjistili, jak vytvořit aplikaci pro streamování Apache Spark pro odeslání tweety do centra událostí Azure a vytvořit další aplikaci pro čtení tweety z centra událostí.  V dalším článku se dozvíte, jak můžete vytvořit aplikaci Machine Learning.
 
 > [!div class="nextstepaction"]
-> [기계 학습 애플리케이션 만들기](./apache-spark-ipython-notebook-machine-learning.md)
+> [Vytvoření aplikace Machine Learning](./apache-spark-ipython-notebook-machine-learning.md)

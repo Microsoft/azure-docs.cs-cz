@@ -1,6 +1,6 @@
 ---
-title: '빠른 시작: REST Api를 사용 하 여 Postman에서 검색 인덱스 만들기-Azure Search'
-description: Postman 및 샘플 데이터와 정의를 사용하여 Azure Search REST API를 호출하는 방법을 알아봅니다.
+title: 'Rychlý Start: vytvoření indexu vyhledávání v části post pomocí rozhraní REST API – Azure Search'
+description: Naučte se volat Azure Search rozhraní REST API pomocí post a vzorových dat a definic.
 author: HeidiSteen
 manager: nitinme
 services: search
@@ -16,83 +16,83 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "72176039"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>빠른 시작: REST Api를 사용 하 여 Postman에서 Azure Search 인덱스 만들기
+# <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Rychlý Start: vytvoření indexu Azure Search v části post pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
 > * [Python](search-get-started-python.md)
-> * [Portal](search-get-started-portal.md)
+> * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice)를 검색하는 가장 쉬운 방법 중 하나는 Postman 또는 다른 웹 테스트 도구를 사용하여 HTTP 요청을 작성하고 응답을 검사하는 것입니다. 적절한 도구와 이러한 지침을 사용하면 코드를 작성하기 전에 요청을 전송하고 응답을 볼 수 있습니다.
+Jedním z nejjednodušších způsobů, jak prozkoumat [rozhraní REST api Azure Search](https://docs.microsoft.com/rest/api/searchservice) , je použít post nebo jiný nástroj pro testování webu, který vám umožní formulovat požadavky HTTP a kontrolovat odpovědi. S využitím správných nástrojů a pokynů můžete odesílat žádosti a zobrazovat odpovědi, ještě než začnete psát kód.
 
-이 문서에서는 요청을 대화형으로 작성하는 방법을 설명합니다. 또는 [Postman 컬렉션을 다운로드한 후 가져와](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) 미리 정의된 요청을 사용할 수도 있습니다.
+Tento článek vysvětluje, jak interaktivně formulovat požadavky. Alternativně můžete [Stáhnout a importovat kolekci post](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) pro použití předdefinovaných požadavků.
 
-Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>Předpoklady
 
-이 빠른 시작에 필요한 서비스와 도구는 다음과 같습니다. 
+V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
-+ [Postman 데스크톱 앱](https://www.getpostman.com/)은 요청을 Azure Search에 보내는 데 사용됩니다.
++ [Aplikace po pracovní ploše](https://www.getpostman.com/) se používá k odesílání požadavků do Azure Search.
 
-+ [Azure Search 서비스를 만들거나](search-create-service-portal.md) 현재 구독에서 [기존 서비스를 찾습니다](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). 이 빠른 시작에서는 체험 서비스를 사용할 수 있습니다. 
++ [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
-## <a name="get-a-key-and-url"></a>키 및 URL 가져오기
+## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-REST를 호출하려면 모든 요청에 대한 액세스 키와 서비스 URL이 필요합니다. 검색 서비스는 둘 모두를 사용하여 작성되므로 Azure Search를 구독에 추가한 경우 다음 단계에 따라 필요한 정보를 확보하십시오.
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-1. [Azure Portal에 로그인](https://portal.azure.com/)하고, 검색 서비스 **개요** 페이지에서 URL을 가져옵니다. 엔드포인트의 예는 다음과 같습니다. `https://mydemo.search.windows.net`
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. **설정** > **키**에서 서비스에 대한 모든 권한의 관리자 키를 가져옵니다. 교체 가능한 두 개의 관리자 키가 있으며, 하나를 롤오버해야 하는 경우 비즈니스 연속성을 위해 다른 하나가 제공됩니다. 개체 추가, 수정 및 삭제 요청 시 기본 또는 보조 키를 사용할 수 있습니다.
+1. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![HTTP 끝점 및 액세스 키 가져오기](media/search-get-started-postman/get-url-key.png "HTTP 끝점 및 액세스 키 가져오기")
+![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
-모든 요청에서 서비스에 보내는 각 요청마다 API 키가 필요합니다. 유효한 키가 있다면 요청을 기반으로 요청을 보내는 애플리케이션과 이를 처리하는 서비스 사이에 신뢰가 쌓입니다.
+Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-## <a name="connect-to-azure-search"></a>Azure Search에 연결
+## <a name="connect-to-azure-search"></a>Připojení k Azure Search
 
-이 섹션에서는 선택한 웹 도구를 사용하여 Azure Search에 대한 연결을 설정합니다. 각 도구는 세션에 대한 요청 헤더 정보를 유지하므로 api-key 및 Content-Type을 한 번만 입력하면 됩니다.
+V této části můžete pomocí svého webového nástroje vybrat nastavení připojení k Azure Search. Každý nástroj uchovává informace hlavičky žádosti pro relaci, což znamená, že stačí zadat jenom klíč rozhraní API a typ Content-Type.
 
-두 도구 중 하나에서 명령(GET, POST, PUT 등)을 선택하고 URL 엔드포인트를 제공하며, 일부 작업의 경우 요청 본문에 JSON을 제공해야 합니다. 검색 서비스 이름(YOUR-SEARCH-SERVICE-NAME)을 유효한 값으로 바꿉니다. `$select=name`을 추가하여 각 인덱스의 이름만 반환합니다. 
+Pro kterýkoli nástroj musíte zvolit příkaz (GET, POST, PUT a tak dále), poskytnout koncový bod adresy URL a pro některé úlohy v těle žádosti zadat JSON. Nahraďte název vyhledávací služby (název služby-SEARCH-SERVICE-NAME) platnou hodnotou. Přidejte `$select=name` pro vrácení pouze názvu každého indexu. 
 
     https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
 
-HTTPS 접두사, 서비스 이름, 개체 이름(이 경우 인덱스 컬렉션) 및 [api-version](search-api-versions.md)을 확인합니다. api-version은 현재 버전에 대해 `?api-version=2019-05-06`로 지정된 필수 소문자 문자열입니다. API 버전은 정기적으로 업데이트됩니다. 각 요청에 api-version을 포함시키면 어느 것이 사용되는지를 완전히 제어할 수 있습니다.  
+Všimněte si předpony HTTPS, názvu služby, názvu objektu (v tomto případě kolekce indexů) a [verze API-Version](search-api-versions.md). Verze API-Version je povinný, malý řetězec zadaný jako `?api-version=2019-05-06` pro aktuální verzi. Verze rozhraní API se pravidelně aktualizují. Zahrnutím verze api-version v každé žádosti získáte úplnou kontrolu nad tím, která se použije.  
 
-요청 헤더 구성에는 콘텐츠 형식 및 Azure Search에 인증하는 데 사용되는 api-key의 두 가지 요소가 포함됩니다. 관리 API 키(YOUR-AZURE-SEARCH-ADMIN-API-KEY)를 유효한 값으로 바꿉니다. 
+Sestavování hlaviček žádosti zahrnuje dva prvky, typ obsahu a navíc klíč rozhraní API, který se používá k ověření Azure Search. Nahraďte klíč rozhraní API pro správu (vaše – AZURE-SEARCH-ADMIN-API-KEY) platnou hodnotou. 
 
     api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
-Postman에서 다음 스크린샷과 같은 요청을 작성합니다. 동사로 **GET**을 선택하고, URL을 제공하고, **보내기**를 클릭합니다. 이 명령은 Azure Search에 연결하여 인덱스 컬렉션을 읽고, 성공적으로 연결되면 200 HTTP 상태 코드를 반환합니다. 서비스에 이미 인덱스가 있으면 응답에 인덱스 정의도 포함됩니다.
+V poli pro odeslání si formulujte požadavek, který vypadá jako na následujícím snímku obrazovky. Jako příkaz vyberte **Get (získat** ), zadejte adresu URL a klikněte na **Odeslat**. Tento příkaz se připojí k Azure Search, přečte kolekci indexů a vrátí stavový kód HTTP 200 po úspěšném připojení. Pokud vaše služba již indexy obsahuje, bude odpověď zahrnovat také definice indexu.
 
-![Postman 요청 URL 및 헤더](media/search-get-started-postman/postman-url.png "Postman 요청 URL 및 헤더")
+![Adresa URL a záhlaví žádosti post](media/search-get-started-postman/postman-url.png "Adresa URL a záhlaví žádosti post")
 
-## <a name="1---create-an-index"></a>1 - 인덱스 만들기
+## <a name="1---create-an-index"></a>1\. Vytvoření indexu
 
-Azure Search에서는 일반적으로 데이터를 로드하기 전에 인덱스를 만듭니다. 이 작업에는 [인덱스 만들기](https://docs.microsoft.com/rest/api/searchservice/create-index) REST API가 사용됩니다. 
+V Azure Search obvykle index vytvoříte předtím, než ho načtete s daty. Pro tento úkol se používá [REST API pro vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) . 
 
-URL은 `hotels` 인덱스 이름을 포함하도록 확장됩니다.
+Adresa URL je rozšířena tak, aby obsahovala název indexu `hotels`.
 
-Postman에서 이렇게 하려면 다음을 수행합니다.
+Provedete to po:
 
-1. 동사를 **PUT**으로 변경합니다.
+1. Změňte operaci na **Put**.
 
-2. 이 URL(`https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`)에 복사합니다.
+2. Zkopírujte `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06` této adresy URL.
 
-3. 인덱스 정의(아래에 복사 준비 코드가 제공됨)를 요청 본문에 지정합니다.
+3. Zadejte definici indexu (kód připravený ke kopírování je uveden níže) v těle žádosti.
 
-4. **Send**를 클릭합니다.
+4. Klikněte na **Odeslat**.
 
-![요청 본문의 인덱스 JSON 문서](media/search-get-started-postman/postman-request.png "요청 본문의 인덱스 JSON 문서")
+![Dokument JSON indexu v textu požadavku](media/search-get-started-postman/postman-request.png "Dokument JSON indexu v textu požadavku")
 
-### <a name="index-definition"></a>인덱스 정의
+### <a name="index-definition"></a>Definice indexu
 
-fields 컬렉션은 문서 구조를 정의합니다. 각 문서에는 이러한 필드가 있어야 하며, 각 필드에는 데이터 형식이 있어야 합니다. 문자열 필드는 전체 텍스트 검색에 사용되므로 콘텐츠를 검색할 수 있도록 하려면 숫자 데이터를 문자열로 캐스팅해야 합니다.
+Kolekce Fields definuje strukturu dokumentu. Každý dokument musí mít tato pole a každé pole musí mít datový typ. Pole řetězců se používají ve fulltextovém vyhledávání, takže pokud chcete umožnit prohledávání číselných údajů, přetypujte je na řetězce.
 
-필드의 특성에 따라 허용되는 작업이 결정됩니다. REST API는 기본적으로 많은 작업을 허용합니다. 예를 들어, 모든 문자열은 기본적으로 검색, 조회, 필터링이 가능하고 패싯이 가능합니다. 동작을 해제해야 하는 경우 특성만 설정하면 되는 경우가 많습니다.
+Atributy pole určují povolenou akci. Rozhraní REST API ve výchozím nastavení povolují mnoho akcí. Například všechny řetězce ve výchozím nastavení podporují prohledávání, načítání, filtrování a omezující vlastnosti. Často je třeba nastavit atributy pouze v případě, že je nutné vypnout chování.
 
 ```json
 {
@@ -119,32 +119,32 @@ fields 컬렉션은 문서 구조를 정의합니다. 각 문서에는 이러한
 }
 ```
 
-이 요청을 제출할 때 인덱스가 성공적으로 생성되었음을 나타내는 HTTP 201 응답을 받아야 합니다. 이 작업은 포털에서 확인할 수 있지만 포털 페이지에 새로 고침 간격이 있으므로 그 때까지 1~2분이 걸릴 수 있습니다.
+Po odeslání této žádosti byste měli získat odpověď HTTP 201, která značí úspěšné vytvoření indexu. Tuto akci můžete ověřit na portálu, ale nezapomeňte, že stránka portálu má intervaly obnovení, takže aktualizace může pár minut trvat.
 
 > [!TIP]
-> HTTP 504가 표시될 경우 URL이 HTTPS를 지정하는지 확인합니다. HTTP 400 또는 404가 표시되는 경우 요청 본문에서 복사/붙여 넣기 오류가 없는지 확인합니다. HTTP 403은 대개 api-key에 문제가 있음을 나타냅니다(잘못된 키 또는 api-key 지정 방법과 관련된 구문 문제).
+> Pokud se zobrazí kód HTTP 504, ověřte, jestli je v adrese URL určený protokol HTTPS. Pokud se zobrazí kód HTTP 400 nebo 404, zkontrolujte, jestli v textu žádosti nejsou chyby způsobené kopírováním a vkládáním. Kód HTTP 403 obvykle znamená potíže s klíčem rozhraní API (buď je klíč neplatný, nebo je při určení klíče rozhraní API použitá nesprávná syntaxe).
 
-## <a name="2---load-documents"></a>2 - 문서 로드
+## <a name="2---load-documents"></a>2\. načtení dokumentů
 
-인덱스 생성과 인덱스 채우기는 별도의 단계입니다. Azure Search 검색에서 인덱스에는 JSON 문서로 제공할 수 있는 검색 가능한 모든 데이터가 포함됩니다. 이 작업에는 [문서 추가, 업데이트 또는 삭제](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) REST API가 사용됩니다. 
+Vytvoření indexu a jeho naplnění jsou samostatné kroky. Ve službě Azure Search obsahuje index veškerá prohledávatelná data, která můžete zadat jako dokumenty JSON. Pro tento úkol se používá [REST API přidat, aktualizovat nebo odstranit dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) . 
 
-URL은 `docs` 컬렉션 및 `index` 작업을 포함하도록 확장됩니다.
+Adresa URL je rozšířena tak, aby zahrnovala kolekce `docs` a operace `index`.
 
-Postman에서 이렇게 하려면 다음을 수행합니다.
+Provedete to po:
 
-1. 동사를 **POST**로 변경합니다.
+1. Změňte operaci na **POST**.
 
-2. 이 URL(`https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`)에 복사합니다.
+2. Zkopírujte `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06` této adresy URL.
 
-3. JSON 문서(아래에 복사 준비 코드가 제공됨)를 요청 본문에 지정합니다.
+3. Poskytněte dokumenty JSON (kód připravený k kopírování je níže) v těle žádosti.
 
-4. **Send**를 클릭합니다.
+4. Klikněte na **Odeslat**.
 
-![요청 본문의 JSON 문서](media/search-get-started-postman/postman-docs.png "요청 본문의 JSON 문서")
+![Dokumenty JSON v textu požadavku](media/search-get-started-postman/postman-docs.png "Dokumenty JSON v textu požadavku")
 
-### <a name="json-documents-to-load-into-the-index"></a>인덱스에 로드할 JSON 문서
+### <a name="json-documents-to-load-into-the-index"></a>Dokumenty JSON, které se mají načíst do indexu
 
-요청 본문에 호텔 인덱스에 추가될 문서 4개가 포함됩니다.
+Text žádosti obsahuje čtyři dokumenty, které se mají přidat do indexu hotels.
 
 ```json
 {
@@ -229,35 +229,35 @@ Postman에서 이렇게 하려면 다음을 수행합니다.
 }
 ```
 
-몇 초 후에 HTTP 201 응답이 검색 목록에 표시됩니다. 이는 문서가 성공적으로 만들어졌음을 나타냅니다. 
+Během několika sekund by se v seznamu relace měla zobrazit odpověď HTTP 201. To znamená, že se dokumenty úspěšně vytvořily. 
 
-207이 표시될 경우 하나 이상의 문서를 업로드하지 못했습니다. 404가 표시될 경우 요청의 헤더 또는 본문에 구문 오류가 있습니다. `/docs/index`를 포함하도록 엔드포인트를 변경했는지 확인하십시오.
+Pokud se zobrazí kód 207, nejméně jeden dokument nešel nahrát. Pokud se zobrazí kód 404, hlavička nebo text žádosti obsahuje syntaktickou chybu. Ověřte, že jste změnili koncový bod tak, aby zahrnoval `/docs/index`.
 
 > [!Tip]
-> 선택한 데이터 원본의 경우 인덱싱에 필요한 코드의 양을 줄이고 단순화할 수 있는 대체 *인덱서* 방식을 선택할 수 있습니다. 자세한 내용은 [인덱서 작업](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)을 참조하세요.
+> Pro vybrané zdroje dat můžete zvolit přístup s použitím alternativního *indexeru*, který zjednodušuje a snižuje množství kódu vyžadovaného pro indexování. Další informace najdete v tématu [Operace indexeru](https://docs.microsoft.com/rest/api/searchservice/indexer-operations).
 
 
-## <a name="3---search-an-index"></a>3 - 인덱스 검색
+## <a name="3---search-an-index"></a>3\. Prohledání indexu
 
-이제 인덱스와 문서가 로드되었으므로 [문서 검색](https://docs.microsoft.com/rest/api/searchservice/search-documents) REST API를 사용하여 쿼리를 실행할 수 있습니다.
+Teď, když je načtený index a dokumenty, můžete pro ně vydávat dotazy pomocí [vyhledávacích dokumentů REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-URL은 검색 연산자를 사용하여 지정된 쿼리 식을 포함하도록 확장됩니다.
+Adresa URL je rozšířena tak, aby zahrnovala výraz dotazu, zadaný pomocí operátoru hledání.
 
-Postman에서 이렇게 하려면 다음을 수행합니다.
+Provedete to po:
 
-1. 동사를 **GET**으로 변경합니다.
+1. Změňte operaci na **Get**.
 
-2. 이 URL(`https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`)에 복사합니다.
+2. Zkopírujte `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06` této adresy URL.
 
-3. **Send**를 클릭합니다.
+3. Klikněte na **Odeslat**.
 
-이 쿼리는 비어 있으며 검색 결과에 문서의 수를 반환합니다. **보내기**를 클릭한 후 요청 및 응답은 Postman의 다음 스크린샷과 유사합니다. 상태 코드는 200이어야 합니다.
+Tento dotaz je prázdný a vrátí počet dokumentů ve výsledcích hledání. Po kliknutí na **Odeslat**může žádost a odpověď vypadat podobně jako na následujícím snímku obrazovky. Stavový kód by měl být 200.
 
- ![URL에서 검색 문자열을 사용 하 여 가져오기](media/search-get-started-postman/postman-query.png "URL에서 검색 문자열을 사용 하 여 가져오기")
+ ![ZÍSKAT pomocí vyhledávacího řetězce na adrese URL](media/search-get-started-postman/postman-query.png "ZÍSKAT pomocí vyhledávacího řetězce na adrese URL")
 
-구문을 이해하기 위해 몇 가지 다른 쿼리 예제를 시도해봅니다. 문자열 검색, 축자 $filter 쿼리를 수행하고, 결과 세트를 제한하고, 검색 범위를 특정 필드로 지정하는 등의 작업을 수행할 수 있습니다.
+Vyzkoušejte si několik dalších příkladů dotazů, které vám pomohou s syntaxí. Můžete provést hledání v řetězci, doslovné znění $filter dotazů, omezit sadu výsledků, určit rozsah hledání na konkrétní pole a další.
 
-결과를 볼 때마다 현재 URL을 아래의 URL로 바꾸고, **보내기**를 클릭합니다.
+Aktuální adresu URL zaměňte tak, že na ně kliknete níže, a zobrazíte výsledky kliknutím na **Odeslat** .
 
 ```
 # Query example 1 - Search on restaurant and wifi
@@ -275,30 +275,30 @@ https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?
 https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
 ```
 
-## <a name="get-index-properties"></a>인덱스 속성 가져오기
-[통계 가져오기](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)를 사용하여 문서 개수와 인덱스 크기를 쿼리할 수도 있습니다. 
+## <a name="get-index-properties"></a>Získat vlastnosti indexu
+K dotazování na počty dokumentů a velikost indexu můžete použít také možnost [získat statistiku](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) : 
 
 ```
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06
 ```
 
-URL에 `/stats`를 추가하면 인덱스 정보가 반환됩니다. Postman에서 요청은 다음과 유사하며 응답에는 문서 수와 사용된 공간(바이트 단위)이 포함됩니다.
+Přidání `/stats` do adresy URL vrátí informace o indexu. V nástroji Postman by vaše žádost měla vypadat podobně jako v následujícím příkladu a odpověď by měla obsahovat počet dokumentů a využité místo v bajtech.
 
- ![인덱스 정보 가져오기](media/search-get-started-postman/postman-system-query.png "인덱스 정보 가져오기")
+ ![Získat informace o indexu](media/search-get-started-postman/postman-system-query.png "Získat informace o indexu")
 
-api-version 구문이 다른 점에 유의하세요. 이 요청의 경우 `?`를 사용하여 api-version을 추가합니다. `?`는 쿼리 문자열에서 URL 경로를 구분하고 &는 쿼리 문자열에서 각 '이름=값' 쌍을 구분합니다. 이 쿼리에서 api-version은 쿼리 문자열의 처음이자 유일한 항목입니다.
+Všimněte si, že syntaxe api-version se liší. Pro tuto žádost použijte k připojení verze api-version znak `?`. @No__t_0 odděluje cestu URL od řetězce dotazu, zatímco & odděluje každou dvojici název = hodnota v řetězci dotazu. V tomto dotazu je api-version první a také jedinou položkou v řetězci dotazu.
 
-## <a name="clean-up"></a>정리
+## <a name="clean-up"></a>Vyčištění
 
-본인 소유의 구독으로 이 모듈을 진행하고 있는 경우에는 프로젝트가 끝날 때 여기서 만든 리소스가 계속 필요한지 확인하는 것이 좋습니다. 계속 실행되는 리소스에는 요금이 부과될 수 있습니다. 리소스를 개별적으로 삭제하거나 리소스 그룹을 삭제하여 전체 리소스 세트를 삭제할 수 있습니다.
+Pokud pracujete ve vlastním předplatném, je vhodné na konci projektu zjistit, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Prostředky můžete odstranit jednotlivě nebo odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
 
-왼쪽 탐색 창의 **모든 리소스** 또는 **리소스 그룹** 링크를 사용하여 포털에서 리소스를 찾고 관리할 수 있습니다.
+Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
-무료 서비스를 사용하는 경우 인덱스, 인덱서, 데이터 원본 세 개로 제한됩니다. 포털에서 개별 항목을 삭제하여 제한 이하로 유지할 수 있습니다. 
+Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>Další kroky
 
-이제 핵심 작업을 수행하는 방법을 배웠으므로 인덱서 또는 [인지 검색 파이프라인 설정](cognitive-search-tutorial-blob.md)과 같은 고급 기능에 대한 추가 REST API 호출을 진행할 수 있습니다. 다음 단계에서는 다음 링크를 권장합니다.
+Když teď víte, jak provádět základní úlohy, můžete přejít vpřed pomocí dalších REST API volání pro pokročilejší funkce, jako jsou indexery nebo [Nastavení kanálu pro hledání vnímání](cognitive-search-tutorial-blob.md). V dalším kroku doporučujeme následující odkaz:
 
 > [!div class="nextstepaction"]
-> [REST 자습서: Azure Search에서 반 구조화 된 데이터 (JSON blob) 인덱싱 및 검색](search-semi-structured-data.md)
+> [Kurz REST: indexování a hledání částečně strukturovaných dat (blobů JSON) v Azure Search](search-semi-structured-data.md)
