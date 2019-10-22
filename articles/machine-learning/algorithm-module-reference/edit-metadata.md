@@ -1,5 +1,5 @@
 ---
-title: 'Upravit metadata: Reference k modulu'
+title: 'Upravit metadata: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se, jak pomocí modulu upravit metadata ve službě Azure Machine Learning změnit metadata, která jsou přidružená ke sloupcům v datové sadě.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b6e28577fefe4892d719e211e16edafed1504e87
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128870"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693816"
 ---
 # <a name="edit-metadata-module"></a>Upravit modul metadat
 
@@ -34,13 +34,13 @@ Typické změny metadat mohou zahrnovat:
   
 + Přejmenování sloupců.
   
- Použijte úpravu metadat kdykoli potřebujete upravit definici sloupce, obvykle pro splnění požadavků na modul pro příjem dat. Například některé moduly fungují pouze s konkrétními datovými typy nebo vyžadují příznaky na sloupcích, například `IsFeature` nebo. `IsCategorical`  
+ Použijte úpravu metadat kdykoli potřebujete upravit definici sloupce, obvykle pro splnění požadavků na modul pro příjem dat. Některé moduly například fungují pouze s konkrétními datovými typy nebo vyžadují příznaky na sloupcích, například `IsFeature` nebo `IsCategorical`.  
   
  Po provedení požadované operace můžete metadata obnovit do původního stavu.
   
 ## <a name="configure-edit-metadata"></a>Konfigurace úprav metadat
   
-1. V Azure Machine Learning přidejte do experimentu modul upravit metadata a připojte datovou sadu, kterou chcete aktualizovat. Datovou sadu můžete najít v části **transformace dat** v kategorii **manipulace** .
+1. V Azure Machine Learning přidejte do kanálu modul úprav metadat a připojte datovou sadu, kterou chcete aktualizovat. Datovou sadu můžete najít v části **transformace dat** v kategorii **manipulace** .
   
 1. Vyberte možnost **Spustit selektor sloupců** a vyberte sloupec nebo sadu sloupců, se kterými chcete pracovat. Sloupce můžete zvolit jednotlivě podle názvu nebo indexu nebo můžete zvolit skupinu sloupců podle typu.  
   
@@ -63,9 +63,9 @@ Typické změny metadat mohou zahrnovat:
   
 1. Možnost **pole** použijte, pokud chcete změnit způsob, jakým Azure Machine Learning používá data v modelu.
 
-    + **Funkce**: Tuto možnost použijte k označení sloupce jako funkce v modulech, které pracují pouze na sloupcích funkcí. Ve výchozím nastavení se všechny sloupce považují za funkce.  
+    + **Funkce**: tuto možnost použijte k označení sloupce jako funkce v modulech, které pracují pouze na sloupcích funkcí. Ve výchozím nastavení se všechny sloupce považují za funkce.  
   
-    + **Popisek**: Tuto možnost použijte k označení popisku, který je také znám jako předvídatelný atribut nebo cílová proměnná. Mnoho modulů vyžaduje, aby datová sada obsahovala přesně jeden sloupec popisku.
+    + **Label**: tuto možnost použijte k označení popisku, který se označuje také jako předvídatelný atribut nebo cílová proměnná. Mnoho modulů vyžaduje, aby datová sada obsahovala přesně jeden sloupec popisku.
 
         V mnoha případech Azure Machine Learning může odvodit, že sloupec obsahuje popisek třídy. Nastavením těchto metadat můžete zajistit správnou identifikaci sloupce. Nastavením této možnosti nedojde ke změně hodnot dat. Změní se jenom na to, jak některé algoritmy strojového učení zpracovávají data.
   
@@ -76,13 +76,13 @@ Typické změny metadat mohou zahrnovat:
   
 1. Pomocí následujících možností smažete předchozí výběry a obnovíte výchozí hodnoty metadat.  
   
-    + **Vymazat funkci**: Tuto možnost použijte, chcete-li odebrat příznak funkce.  
+    + **Clear – funkce**: tuto možnost použijte, pokud chcete odebrat příznak funkce.  
   
          Všechny sloupce se zpočátku považují za funkce. U modulů, které provádějí matematické operace, možná budete muset tuto možnost použít, chcete-li zabránit tomu, aby se číselné sloupce považovat za proměnné.
   
-    + **Vymazat popisek**: Tuto možnost použijte, chcete-li odebrat metadata **popisku** ze zadaného sloupce.  
+    + **Vymazat popisek**: pomocí této možnosti můžete odebrat metadata **popisku** ze zadaného sloupce.  
   
-    + **Vymazat skóre**: Pomocí této možnosti můžete ze zadaného sloupce odebrat metadata **skóre** .  
+    + **Vymazat skóre**: pomocí této možnosti můžete ze zadaného sloupce odebrat metadata **skóre** .  
   
          V tuto chvíli nemůžete explicitně označit sloupec jako skóre v Azure Machine Learning. Některé operace ale mají za následek, že se sloupec označí jako skóre interně. Také vlastní modul R může výstupní hodnoty skóre.
 
@@ -94,8 +94,8 @@ Typické změny metadat mohou zahrnovat:
   
     + Všechny vybrané sloupce musí být přejmenovány. Nemůžete vynechat nebo přeskočit sloupce.  
   
-1. Spusťte experiment.  
+1. Spuštění kanálu  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning.

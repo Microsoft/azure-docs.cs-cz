@@ -1,5 +1,5 @@
 ---
-title: 'Přidat řádky: Odkaz na modul'
+title: 'Přidat řádky: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul přidat řádky ve službě Azure Machine Learning ke zřetězení dvou datových sad.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: c25f555fd7870afa4e75a3d1e490914e85118d20
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c8d8b6a873ee17d1658b0cb47de830848b215b89
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129008"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693238"
 ---
 # <a name="add-rows-module"></a>Modul pro přidání řádků
 
@@ -32,11 +32,11 @@ Zřetězení řádků je užitečné ve scénářích, jako jsou tyto:
 
 Aby bylo možné zřetězit řádky ze dvou datových sad, musí mít řádky přesně stejné schéma. To znamená, že stejný počet sloupců a stejný typ dat ve sloupcích.
 
-1.  Přetáhněte modul **Přidat řádky** do experimentu, můžete ho najít v části **transformace dat**v kategorii **manipulace** .
+1.  Přetáhněte modul **Přidat řádky** do kanálu, který můžete najít v části **transformace dat**v kategorii **manipulace** .
 
 2. Připojte datové sady ke dvěma vstupním portům. Datová sada, kterou chcete připojit, by měla být připojena k druhému (pravému) portu. 
   
-3.  Spusťte experiment. Počet řádků ve výstupní datové sadě by se měl rovnat součtu řádků obou vstupních datových sad.
+3.  Spuštění kanálu Počet řádků ve výstupní datové sadě by se měl rovnat součtu řádků obou vstupních datových sad.
 
     Pokud přidáte stejnou datovou sadu do obou vstupů modulu **Přidat řádky** , je datová sada duplikována. 
 

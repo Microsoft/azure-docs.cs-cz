@@ -1,6 +1,6 @@
 ---
-title: Index Azure Cosmos DB zdroj dat – Azure Search
-description: Procházet Azure Cosmos DB zdroj dat a ingestovat data v fulltextovém indexu s možností vyhledávání v Azure Search. Indexery automatizují přijímání dat pro vybrané zdroje dat, jako je Azure Cosmos DB.
+title: Azure Cosmos DB 데이터 원본 인덱싱 - Azure Search
+description: Azure Cosmos DB 데이터 원본을 크롤링하고 Azure Search의 전체 텍스트 검색 가능 인덱스에 데이터를 수집합니다. 인덱서는 Azure Cosmos DB와 같은 선택된 데이터 원본에 대해 데이터 수집을 자동화합니다.
 ms.date: 05/02/2019
 author: mgottein
 manager: nitinme
@@ -11,149 +11,149 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 802a4e9c6191d33051eb075543691845595bc9c3
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69656695"
 ---
-# <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Postup indexování Cosmos DB pomocí indexeru Azure Search
+# <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Azure Search 인덱서를 사용 하 여 Cosmos DB를 인덱싱하는 방법
 
 
 > [!Note]
-> Podpora rozhraní MongoDB API je ve verzi Preview a není určená pro použití v produkčním prostředí. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
+> MongoDB API 지원은 미리 보기 상태 이며 프로덕션 용도로는 사용할 수 없습니다. 이 기능은 [REST API 버전 2019-05-06-미리 보기](search-api-preview.md)에서 제공됩니다. 지금은 포털 또는 .NET SDK가 지원 되지 않습니다.
 >
-> Rozhraní SQL API je všeobecně dostupné.
+> SQL API는 일반적으로 사용할 수 있습니다.
 
-V tomto článku se dozvíte, jak nakonfigurovat [indexer](search-indexer-overview.md) Azure Cosmos DB pro extrakci obsahu a zpřístupnění jeho prohledávání v Azure Search. Tento pracovní postup vytvoří index Azure Search a načte ho s existujícím extrahovaným textem z Azure Cosmos DB. 
+이 문서에서는 Azure Cosmos DB [인덱서](search-indexer-overview.md) 를 구성 하 여 콘텐츠를 추출 하 고 Azure Search에서 검색 가능 하도록 설정 하는 방법을 보여 줍니다. 이 워크플로는 Azure Search 인덱스를 만든 다음 Azure Cosmos DB에서 추출한 기존 텍스트와 함께 로드 합니다. 
 
-Vzhledem k tomu, že terminologie může být matoucí, je třeba poznamenat, že [Azure Cosmos DB indexování](https://docs.microsoft.com/azure/cosmos-db/index-overview) a [Azure Search indexování](search-what-is-an-index.md) jsou odlišné operace, které jsou pro každou službu jedinečné. Než začnete s indexováním Azure Search, databáze Azure Cosmos DB už musí existovat a obsahovat data.
+용어는 혼란 스 러 울 수 있으므로 [Azure Cosmos DB 인덱싱](https://docs.microsoft.com/azure/cosmos-db/index-overview) 및 [Azure Search 인덱싱이](search-what-is-an-index.md) 각 서비스에 고유한 고유한 작업 임을 기억해 야 합니다. Azure Search 인덱싱을 시작 하기 전에 Azure Cosmos DB 데이터베이스가 이미 존재 하 고 데이터를 포함 해야 합니다.
 
-K indexování Cosmos obsahu můžete použít [portál](#cosmos-indexer-portal), rozhraní REST API nebo sadu .NET SDK. Indexer Cosmos DB v Azure Search může procházet [položky Azure Cosmos](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) , ke kterým se přistupoval prostřednictvím těchto protokolů:
+[포털](#cosmos-indexer-portal), REST api 또는 .net SDK를 사용 하 여 Cosmos 콘텐츠를 인덱싱할 수 있습니다. Azure Search의 Cosmos DB 인덱서는 다음 프로토콜을 통해 액세스 되는 [Azure Cosmos 항목](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) 을 탐색할 수 있습니다.
 
-* [ROZHRANÍ SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
-* [Rozhraní API pro MongoDB (Preview)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)
+* [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
+* [MongoDB API (미리 보기)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)
 
 > [!Note]
-> Uživatelský hlas obsahuje existující položky pro další podporu rozhraní API. Můžete přetypovat hlasovat pro rozhraní Cosmos API, která chcete zobrazit, pokud chcete vidět podporované Azure Search: [Rozhraní API pro tabulky](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4) [rozhraní API pro Apache Cassandra](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu).
+> 사용자 의견에는 추가 API 지원을 위한 기존 항목이 있습니다. Azure Search [Table API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4), [Apache Cassandra API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu)에서 지원 되는 것으로 확인 하려는 Cosmos api에 대 한 투표를 캐스팅할 수 있습니다.
 >
 
 <a name="cosmos-indexer-portal"></a>
 
-## <a name="use-the-portal"></a>Použití portálu
+## <a name="use-the-portal"></a>포털 사용
 
-Nejjednodušší způsob indexování položek Azure Cosmos je použití Průvodce v [Azure Portal](https://portal.azure.com/). Pomocí vzorkování dat a čtení metadat v kontejneru může průvodce [**importem dat**](search-import-data-portal.md) v Azure Search vytvořit výchozí index, mapovat zdrojová pole na pole cílového indexu a načíst index v rámci jedné operace. V závislosti na velikosti a složitosti zdrojových dat můžete mít během několika minut provozní fulltextový index vyhledávání.
+Azure Cosmos 항목을 인덱싱하는 가장 쉬운 방법은 [Azure Portal](https://portal.azure.com/)에서 마법사를 사용 하는 것입니다. 데이터를 샘플링 하 고 컨테이너에 대 한 메타 데이터를 읽으면 Azure Search의 [**데이터 가져오기**](search-import-data-portal.md) 마법사에서 기본 인덱스를 만들고, 원본 필드를 대상 인덱스 필드에 매핑하고, 인덱스를 단일 작업으로 로드할 수 있습니다. 원본 데이터의 크기 및 복잡성에 따라 몇 분 안에 운영 작업에 대한 전체 텍스트 검색 인덱스를 사용할 수 있습니다.
 
-Pro Azure Search i Azure Cosmos DB doporučujeme použít stejné předplatné Azure, pokud je to ve stejné oblasti.
+Azure Search와 Azure Cosmos DB 모두 동일한 지역에 동일한 Azure 구독을 사용 하는 것이 좋습니다.
 
-### <a name="1---prepare-source-data"></a>1\. Příprava zdrojových dat
+### <a name="1---prepare-source-data"></a>1 - 원본 데이터 준비
 
-Měli byste mít účet Cosmos, databázi Azure Cosmos namapovanou na rozhraní SQL API nebo rozhraní MongoDB API a kontejner dokumentů JSON. 
+Cosmos 계정, SQL API 또는 MongoDB API에 매핑된 Azure Cosmos 데이터베이스 및 JSON 문서 컨테이너를가지고 있어야 합니다. 
 
-Ujistěte se, že vaše databáze Cosmos DB obsahuje data. [Průvodce importem dat](search-import-data-portal.md) načte metadata a provede vzorkování dat pro odvození schématu indexu, ale také načte data z Cosmos DB. Pokud data chybí, průvodce se zastaví s touto chybou "při zjišťování schématu indexu ze zdroje dat došlo k chybě: Nepovedlo se vytvořit index prototypu, protože DataSource prázdnécollection nevrátil žádná data.
+Cosmos DB 데이터베이스에 데이터가 포함 되어 있는지 확인 합니다. [데이터 가져오기 마법사](search-import-data-portal.md) 는 메타 데이터를 읽고 데이터 샘플링을 수행 하 여 인덱스 스키마를 유추 하지만 Cosmos DB에서 데이터를 로드 합니다. 데이터가 누락 된 경우 "데이터 원본에서 인덱스 스키마를 검색 하는 동안 오류 발생: 데이터 원본 ' emptycollection '에서 데이터를 반환 하지 않았으므로 프로토타입 인덱스를 작성할 수 없습니다." 라는 오류와 함께 마법사가 중단 됩니다.
 
-### <a name="2---start-import-data-wizard"></a>2\. spuštění Průvodce importem dat
+### <a name="2---start-import-data-wizard"></a>2 - 데이터 가져오기 마법사 시작
 
-Průvodce můžete [Spustit](search-import-data-portal.md) z příkazového řádku na stránce Azure Search služby nebo kliknutím na **Přidat Azure Search** v části **Nastavení** v levém navigačním podokně svého účtu úložiště.
+Azure Search 서비스 페이지의 명령 모음에서 또는 저장소 계정의 왼쪽 탐색 창의 **설정** 섹션에서 **Azure Search 추가** 를 클릭 하 여 [마법사를 시작할](search-import-data-portal.md) 수 있습니다.
 
-   ![Příkaz Importovat data na portálu](./media/search-import-data-portal/import-data-cmd2.png "Spuštění Průvodce importem dat")
+   ![포털에서 데이터 가져오기 명령](./media/search-import-data-portal/import-data-cmd2.png "데이터 가져오기 마법사 시작")
 
-### <a name="3---set-the-data-source"></a>3 – nastavení zdroje dat
+### <a name="3---set-the-data-source"></a>3 - 데이터 원본 설정
 
 > [!NOTE] 
-> V současné době nemůžete vytvářet ani upravovat zdroje dat **MongoDB** pomocí Azure Portal nebo sady .NET SDK. Historii spuštění MongoDB indexerů ale **můžete** monitorovat na portálu.
+> 현재 Azure Portal 또는 .NET SDK를 사용 하 여 **MongoDB** 데이터 원본을 만들거나 편집할 수 없습니다. 그러나 포털에서 MongoDB 인덱서의 실행 기록을 모니터링할 수 **있습니다**.
 
-Na stránce **zdroj dat** musí být zdroj **Cosmos DB**, a to s následujícími specifikacemi:
+**데이터 원본** 페이지에서 다음 사양을 사용 하 여 소스를 **Cosmos DB**해야 합니다.
 
-+ **Name** je název objektu zdroje dat. Po vytvoření si ho můžete vybrat pro jiné úlohy.
++ **Name** 은 데이터 원본 개체의 이름입니다. 만든 후에는 다른 작업에 대해 선택할 수 있습니다.
 
-+ **Cosmos DB účet** by měl být primárním nebo sekundárním připojovacím řetězcem z `AccountEndpoint` Cosmos DB s `AccountKey`a. Účet určuje, jestli se data přetypování mají jako SQL API nebo Mongo DB API.
++ **Cosmos DB 계정은** `AccountEndpoint` 및 `AccountKey`를 사용 하 여 Cosmos DB의 기본 또는 보조 연결 문자열 이어야 합니다. 이 계정은 데이터가 SQL API 또는 Mongo DB API로 캐스팅 되는지 여부를 결정 합니다.
 
-+ **Databáze** je existující databáze z účtu. 
++ **데이터베이스** 는 계정의 기존 데이터베이스입니다. 
 
-+ **Kolekce** je kontejner dokumentů. Aby import proběhl úspěšně, musí dokumenty existovat. 
++ **컬렉션** 은 문서의 컨테이너입니다. 가져오기가 성공 하려면 문서가 있어야 합니다. 
 
-+ **Dotaz** může být prázdný, pokud chcete všechny dokumenty, jinak můžete zadat dotaz, který vybere podmnožinu dokumentu. 
++ 모든 문서를 원하는 경우 **쿼리** 를 비워 둘 수 있습니다. 그렇지 않으면 문서 하위 집합을 선택 하는 쿼리를 입력할 수 있습니다. 
 
-   ![Cosmos DB definice zdroje dat](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB definice zdroje dat")
+   ![Cosmos DB 데이터 원본 정의](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB 데이터 원본 정의")
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 – přeskočí stránku přidat vyhledávání rozpoznávání v průvodci.
+### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 - 마법사에서 "인식 검색 추가" 페이지 건너뛰기
 
-Přidání dovedností rozpoznávání není pro import dokumentu nutné. Pokud nemáte konkrétní nutnost [zahrnout rozhraní API služeb Cognitive Services a transformace](cognitive-search-concept-intro.md) do kanálu indexování, měli byste tento krok přeskočit.
+문서 가져오기에는 인식 기술 추가가 필요 하지 않습니다. 인덱싱 파이프라인에 [Cognitive Services API 및 변환을 포함](cognitive-search-concept-intro.md)할 구체적인 요구가 있지 않다면 이 단계는 건너뛰는 것이 좋습니다.
 
-Chcete-li tento krok přeskočit, nejprve přejděte na další stránku.
+단계를 건너뛰려면 먼저 다음 페이지로 이동 합니다.
 
-   ![Tlačítko Další stránka pro hledání rozpoznávání](media/search-get-started-portal/next-button-add-cog-search.png)
+   ![인식 검색에 대한 다음 페이지 단추](media/search-get-started-portal/next-button-add-cog-search.png)
 
-Z této stránky můžete přejít dopředu k přizpůsobení indexu.
+해당 페이지에서 인덱스 사용자 지정으로 건너뛸 수 있습니다.
 
-   ![Vynechání kroku kognitivních dovedností](media/search-get-started-portal/skip-cog-skill-step.png)
+   ![인식 기술 단계 건너뛰기](media/search-get-started-portal/skip-cog-skill-step.png)
 
-### <a name="5---set-index-attributes"></a>5\. nastavení atributů indexu
+### <a name="5---set-index-attributes"></a>5 - 인덱스 특성 설정
 
-Na stránce **index** byste měli vidět seznam polí s datovým typem a řadu zaškrtávacích políček pro nastavení atributů indexu. Průvodce může vygenerovat seznam polí založený na metadatech a vzorkováním zdrojových dat. 
+**인덱스** 페이지에는 데이터 형식을 포함하는 필드 목록과 인덱스 특성을 설정하기 위한 여러 확인란이 표시됩니다. 마법사는 메타 데이터를 기반으로 하 고 원본 데이터를 샘플링 하 여 필드 목록을 생성할 수 있습니다. 
 
-Atributy můžete hromadně vybírat kliknutím na zaškrtávací políčko v horní části sloupce atributu. Vyberte možnost získatelné a prohledávatelné pro každé pole, které by se mělo vrátit do klientské aplikace a podléhá fulltextovým zpracování fulltextového vyhledávání. Všimnete si, že celá čísla nejsou fulltextová nebo přibližná prohledávání (čísla jsou vyhodnocována v doslovném znění a jsou často užitečná ve filtrech).
+특성 열의 맨 위에 있는 확인란을 클릭 하 여 특성을 일괄 선택할 수 있습니다. 클라이언트 앱에 반환 되어야 하는 모든 필드에 대해 검색 가능 하 고 **검색** 가능 **을 선택 하 고 전체** 텍스트 검색 처리를 적용 합니다. 정수는 전체 텍스트 또는 유사 항목 검색이 아닌 것을 알 수 있습니다. 숫자는 축 자로 계산 되며 필터에 유용한 경우가 많습니다.
 
-Další informace najdete v popisu [atributů indexu](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) a [analyzátorů jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support) . 
+자세한 내용은 [인덱스 특성](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) 및 [언어 분석기](https://docs.microsoft.com/rest/api/searchservice/language-support) 에 대 한 설명을 참조 하세요. 
 
-Věnujte prosím chvíli kontrole vašich výběrů. Po spuštění Průvodce se vytvoří fyzické datové struktury a nebudete moct tato pole upravovat, aniž byste museli odstraňovat a znovu vytvářet všechny objekty.
+시간을 내서 선택 항목을 검토합니다. 마법사를 실행하면 실제 데이터 구조가 만들어지며, 모든 개체를 삭제했다가 다시 만들지 않으면 이러한 필드를 편집할 수 없습니다.
 
-   ![Definice indexu Cosmos DB](media/search-howto-index-cosmosdb/cosmosdb-index-schema.png "Definice indexu Cosmos DB")
+   ![인덱스 정의 Cosmos DB](media/search-howto-index-cosmosdb/cosmosdb-index-schema.png "인덱스 정의 Cosmos DB")
 
-### <a name="6---create-indexer"></a>6\. vytvoření indexeru
+### <a name="6---create-indexer"></a>6 - 인덱서 만들기
 
-V rámci vaší vyhledávací služby vytvoří průvodce tři odlišné objekty. Objekt zdroje dat a objekt indexu jsou uloženy ve službě Azure Search jako pojmenované prostředky. Poslední krok vytvoří objekt indexeru. Pojmenování indexeru umožňuje, aby existoval jako samostatný prostředek, který můžete naplánovat a spravovat nezávisle na objektu index a zdroj dat, který jste vytvořili ve stejné sekvenci průvodce.
+완전히 지정된 마법사는 검색 서비스에서 세 개의 고유한 개체를 만듭니다. 데이터 원본 개체 및 인덱스 개체는 Azure Search 서비스에 명명된 리소스로 저장됩니다. 마지막 단계는 인덱서 개체를 만듭니다. 인덱서 이름을 지정하면 인덱서가 동일한 마법사 시퀀스에서 만든 인덱스 및 데이터 원본 개체와는 별도로 예약하고 관리할 수 있는 독립 실행형 리소스가 될 수 있습니다.
 
-Pokud nejste obeznámeni s indexery, *indexer* je prostředek v Azure Search, který prochází externím zdrojem dat pro prohledávatelný obsah. Výstupem průvodce **importem dat** je indexer, který prochází Cosmos DB zdroj dat, extrahuje prohledávatelný obsah a importuje ho do indexu v Azure Search.
+인덱서에 익숙하지 않은 경우 *인덱서*를 검색 가능 콘텐츠의 외부 데이터 원본을 탐색하는 Azure Search의 리소스로 간주할 수 있습니다. **데이터 가져오기** 마법사의 출력은 Cosmos DB 데이터 원본을 탐색 하 고, 검색 가능한 콘텐츠를 추출 하 고, Azure Search의 인덱스에 가져오는 인덱서입니다.
 
-Následující snímek obrazovky ukazuje výchozí konfiguraci indexeru. Pokud chcete indexer spustit jednorázově, můžete přepnout na jeden. Kliknutím na **Odeslat** spusťte průvodce a vytvořte všechny objekty. Indexování se okamžitě zahájí.
+다음 스크린샷은 기본 인덱서 구성을 보여 줍니다. 인덱서를 한 번 실행 하려는 경우 **한 번만** 전환할 수 있습니다. **제출** 을 클릭 하 여 마법사를 실행 하 고 모든 개체를 만듭니다. 인덱싱이 즉시 시작됩니다.
 
-   ![Cosmos DB definice indexeru](media/search-howto-index-cosmosdb/cosmosdb-indexer.png "Cosmos DB definice indexeru")
+   ![Cosmos DB 인덱서 정의](media/search-howto-index-cosmosdb/cosmosdb-indexer.png "Cosmos DB 인덱서 정의")
 
-Data importování můžete monitorovat na stránkách portálu. Oznámení o průběhu označují stav indexování a počet odeslaných dokumentů. 
+포털 페이지에서 데이터 가져오기를 모니터링할 수 있습니다. 진행률 알림은 인덱싱 상태 및 업로드된 문서 수를 나타냅니다. 
 
-Po dokončení indexování můžete pomocí [Průzkumníka služby Search Vyhledat](search-explorer.md) dotaz na svůj index.
+인덱싱이 완료되면 [검색 탐색기](search-explorer.md)를 사용하여 인덱스를 쿼리할 수 있습니다.
 
 > [!NOTE]
-> Pokud nevidíte očekávaná data, možná budete muset nastavit další atributy pro více polí. Odstraňte index a indexer, který jste právě vytvořili, a projděte průvodce znovu a změňte si výběr pro atributy indexu v kroku 5. 
+> 원하는 데이터가 표시 되지 않는 경우 더 많은 필드에서 더 많은 특성을 설정 해야 할 수 있습니다. 방금 만든 인덱스 및 인덱서를 삭제 하 고 마법사를 다시 단계별로 실행 하 여 5 단계에서 인덱스 특성에 대 한 선택 항목을 수정 합니다. 
 
 <a name="cosmosdb-indexer-rest"></a>
 
-## <a name="use-rest-apis"></a>Použití rozhraní REST API
+## <a name="use-rest-apis"></a>REST API 사용
 
-Pomocí REST API můžete indexovat Azure Cosmos DB data, a to za pracovní postup tří částí, který je společný pro všechny Indexery v Azure Search: vytvořte zdroj dat, vytvořte index a vytvořte indexer. K extrakci dat z úložiště Cosmos dojde, když odešlete žádost o vytvoření indexeru. Po dokončení této žádosti budete mít Queryable index. 
+REST API를 사용 하 여 Azure Cosmos DB 데이터를 인덱싱할 수 있습니다. 즉, 데이터 원본 만들기, 인덱스 만들기, 인덱서 만들기 Azure Search의 모든 인덱서에 공통 된 세 부분으로 구성 된 워크플로를 수행 합니다. Cosmos 저장소에서 데이터 추출은 인덱서 만들기 요청을 제출할 때 발생 합니다. 이 요청을 완료 한 후에는 쿼리 가능한 인덱스를 갖게 됩니다. 
 
-Pokud vyhodnocujete MongoDB, musíte použít zbytek `api-version=2019-05-06-Preview` k vytvoření zdroje dat.
+MongoDB를 평가 하는 경우에는 REST `api-version=2019-05-06-Preview`를 사용 하 여 데이터 원본을 만들어야 합니다.
 
-V účtu Cosmos DB můžete zvolit, zda chcete, aby kolekce automaticky indexoval všechny dokumenty. Ve výchozím nastavení jsou všechny dokumenty indexovány automaticky, ale můžete vypnout automatické indexování. Když je indexování vypnuto, k dokumentům lze přistupovat pouze prostřednictvím vlastních odkazů nebo dotazů pomocí ID dokumentu. Azure Search vyžaduje, aby bylo Cosmos DB automatické indexování zapnuté v kolekci, která bude indexována Azure Search. 
+Cosmos DB 계정에서 모든 문서를 자동으로 인덱싱하도록 할지 여부를 선택할 수 있습니다. 기본적으로 모든 문서는 자동으로 인덱싱되지만 자동 인덱싱을 해제할 수도 있습니다. 인덱싱을 해제하면 자체 링크를 통해서나 문서 ID를 사용한 쿼리로만 문서에 액세스할 수 있습니다. Azure Search를 사용하려면 Azure Search로 인덱싱할 컬렉션에서 Cosmos DB 자동 인덱싱이 설정되어 있어야 합니다. 
 
 > [!WARNING]
-> Azure Cosmos DB je další generace DocumentDB. Dřív s rozhraním API verze **2017-11-11** můžete použít `documentdb` syntaxi. To znamená, že můžete zadat typ zdroje dat jako `cosmosdb` nebo. `documentdb` Počínaje rozhraním API verze **2019-05-06** Azure Search rozhraní API i portál podporují `cosmosdb` pouze syntaxi podle pokynů v tomto článku. To znamená, že typ zdroje dat musí `cosmosdb` být v případě, že se chcete připojit k Cosmos DB koncovému bodu.
+> Azure Cosmos DB는 DocumentDB의 다음 세대입니다. 이전에는 API 버전 **2017-11-11** 을 사용 하 여 `documentdb` 구문을 사용할 수 있었습니다. 따라서 데이터 원본 유형을 `cosmosdb` 또는 `documentdb`으로 지정할 수 있습니다. API 버전 **2019-05-06** 부터 Azure Search Api 및 포털 모두이 문서에 설명 된 대로 `cosmosdb` 구문을 지원 합니다. 즉, Cosmos DB 끝점에 연결 하려는 경우 데이터 원본 유형이 `cosmosdb` 해야 합니다.
 
-### <a name="1---assemble-inputs-for-the-request"></a>1\. sestavování vstupů pro požadavek
+### <a name="1---assemble-inputs-for-the-request"></a>1-요청에 대 한 입력을 조합 합니다.
 
-Pro každý požadavek musíte zadat název služby a klíč správce pro Azure Search (v hlavičce POST) a název účtu úložiště a klíč pro úložiště objektů BLOB. K odeslání požadavků HTTP do Azure Search můžete použít [metodu post](search-get-started-postman.md) .
+각 요청에 대해 Azure Search (POST 헤더)에 대 한 서비스 이름 및 관리자 키와 blob 저장소의 저장소 계정 이름 및 키를 제공 해야 합니다. [Postman](search-get-started-postman.md) 을 사용 하 여 AZURE SEARCH에 HTTP 요청을 보낼 수 있습니다.
 
-Do poznámkového bloku zkopírujte následující čtyři hodnoty, abyste je mohli vložit do žádosti:
+다음 4 개 값을 메모장에 복사 하 여 요청에 붙여 넣을 수 있습니다.
 
-+ Název služby Azure Search
-+ Klíč správce Azure Search
-+ Připojovací řetězec Cosmos DB
++ Azure Search 서비스 이름
++ Azure Search 관리자 키
++ 연결 문자열 Cosmos DB
 
-Tyto hodnoty můžete najít na portálu:
+포털에서 이러한 값을 찾을 수 있습니다.
 
-1. Na stránkách portálu pro Azure Search zkopírujte adresu URL služby Search na stránce Přehled.
+1. Azure Search에 대 한 포털 페이지의 개요 페이지에서 검색 서비스 URL을 복사 합니다.
 
-2. V levém navigačním podokně klikněte na **klíče** a zkopírujte buď primární nebo sekundární klíč (jsou ekvivalentní).
+2. 왼쪽 탐색 창에서 **키** 를 클릭 한 다음 기본 키 또는 보조 키 (해당 하는 항목)를 복사 합니다.
 
-3. Přepněte na stránky portálu účtu úložiště Cosmos. V levém navigačním podokně v části **Nastavení**klikněte na **klíče**. Tato stránka poskytuje identifikátor URI, dvě sady připojovacích řetězců a dvě sady klíčů. Zkopírujte jeden z připojovacích řetězců do poznámkového bloku.
+3. Cosmos 저장소 계정에 대 한 포털 페이지로 전환 합니다. 왼쪽 탐색 창의 **설정**에서 **키**를 클릭 합니다. 이 페이지에서는 URI, 두 개의 연결 문자열 집합 및 두 개의 키 집합을 제공 합니다. 연결 문자열 중 하나를 메모장에 복사 합니다.
 
-### <a name="2---create-a-data-source"></a>2\. vytvoření zdroje dat
+### <a name="2---create-a-data-source"></a>2-데이터 원본 만들기
 
-**Zdroj dat** určuje data, která mají být indexována, pověření a zásady pro identifikaci změn v datech (například upravené nebo odstraněné dokumenty v kolekci). Zdroj dat je definován jako nezávislý prostředek, aby jej bylo možné použít více indexery.
+**데이터 원본**은 인덱싱할 데이터, 자격 증명 및 데이터의 변경 사항 식별 정책(예: 컬렉션 내 수정 또는 삭제된 문서)을 지정합니다. 데이터 소스는 독립 리소스로 정의되므로 여러 인덱서에서 사용할 수 있습니다.
 
-Chcete-li vytvořit zdroj dat, formulujte požadavek POST:
+데이터 원본을 만들려면 POST 요청을 작성 합니다.
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
@@ -172,24 +172,24 @@ Chcete-li vytvořit zdroj dat, formulujte požadavek POST:
         }
     }
 
-Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat následující pole:
+요청 본문에는 다음 필드를 포함해야 하는 데이터 소스 정의가 포함됩니다.
 
-| Pole   | Popis |
+| 필드   | 설명 |
 |---------|-------------|
-| **name** | Povinný parametr. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
-|**type**| Povinný parametr. Musí být `cosmosdb`. |
-|**přihlašovací údaje** | Povinný parametr. Musí se jednat o Cosmos DB připojovací řetězec.<br/>V případě kolekcí SQL jsou připojovací řetězce v tomto formátu:`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Pro kolekce MongoDB přidejte **ApiKind = MongoDB** do připojovacího řetězce:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Vyhněte se číslům portů v adrese URL koncového bodu. Pokud zadáte číslo portu, Azure Search nebude moci indexovat databázi Azure Cosmos DB.|
-| **container** | Obsahuje následující prvky: <br/>**název**: Povinný parametr. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz**: Volitelný parametr. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které Azure Search může indexovat.<br/>Pro kolekce MongoDB se dotazy nepodporují. |
-| **dataChangeDetectionPolicy** | Doporučil. Viz část [indexování změněných dokumentů](#DataChangeDetectionPolicy) .|
-|**dataDeletionDetectionPolicy** | Volitelný parametr. Viz část [indexování odstraněných dokumentů](#DataDeletionDetectionPolicy) .|
+| **name** | 필수 사항입니다. 데이터 원본 개체를 나타내는 이름을 선택 합니다. |
+|**type**| 필수 사항입니다. `cosmosdb`이어야 합니다. |
+|**credentials** | 필수 사항입니다. Cosmos DB 연결 문자열 이어야 합니다.<br/>SQL 컬렉션의 경우 연결 문자열 형식은 다음과 같습니다. `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>MongoDB 컬렉션의 경우 **Apikind = MongoDB** 를 연결 문자열에 추가 합니다.<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>엔드포인트 URL에는 포트 번호를 사용하지 않습니다. 포트 번호를 포함하는 경우 Azure Search는 Azure Cosmos DB 데이터베이스를 인덱싱할 수 없습니다.|
+| **container** | 에는 다음 요소가 포함 되어 있습니다. <br/>**이름**: 필수입니다. 인덱싱할 데이터베이스 컬렉션의 ID를 지정 합니다.<br/>**쿼리**: 선택 사항입니다. 추상 JSON 문서를 Azure Search가 인덱싱할 수 있는 평면 스키마로 평면화하는 쿼리를 지정할 수 있습니다.<br/>MongoDB 컬렉션의 경우 쿼리가 지원되지 않습니다. |
+| **dataChangeDetectionPolicy** | 권장됩니다. [변경된 문서 인덱싱](#DataChangeDetectionPolicy) 섹션을 참조하세요.|
+|**dataDeletionDetectionPolicy** | 선택 사항입니다. [삭제된 문서 인덱싱](#DataDeletionDetectionPolicy) 섹션을 참조하세요.|
 
-### <a name="using-queries-to-shape-indexed-data"></a>Použití dotazů na indexovaná data obrazců
-Můžete zadat dotaz SQL pro sloučení vnořených vlastností nebo polí, vlastností JSON projektu a filtrovat data, která mají být indexována. 
+### <a name="using-queries-to-shape-indexed-data"></a>쿼리를 사용하여 인덱싱된 데이터 형성
+중첩된 속성 또는 배열을 평면화하고, JSON 속성을 프로젝션하고, 인덱싱할 데이터를 필터링하는 SQL 쿼리를 지정할 수 있습니다. 
 
 > [!WARNING]
-> Vlastní dotazy nejsou podporovány pro kolekce **MongoDB** : `container.query` parametr musí být nastaven na hodnotu null nebo vynechán. Pokud potřebujete použít vlastní dotaz, dejte nám prosím na [uživatelském hlasu](https://feedback.azure.com/forums/263029-azure-search)informace.
+> **MongoDB** 컬렉션에 대한 사용자 지정 쿼리는 지원되지 않습니다. `container.query` 매개 변수를 null로 설정하거나 생략해야 합니다. 사용자 지정 쿼리를 사용해야 하는 경우 [사용자 의견](https://feedback.azure.com/forums/263029-azure-search)에서 알려주세요.
 
-Ukázkový dokument:
+예제 문서:
 
     {
         "userId": 10001,
@@ -201,28 +201,28 @@ Ukázkový dokument:
         "tags": ["azure", "cosmosdb", "search"]
     }
 
-Dotaz filtru:
+필터 쿼리:
 
     SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
 
-Dotaz na sloučení:
+평면화 쿼리:
 
     SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
     
     
-Dotaz projekce:
+프로젝션 쿼리:
 
     SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
 
 
-Dotaz na sloučení pole:
+배열 평면화 쿼리:
 
     SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
 
 
-### <a name="3---create-a-target-search-index"></a>3\. Vytvoření cílového vyhledávacího indexu 
+### <a name="3---create-a-target-search-index"></a>3-대상 검색 인덱스 만들기 
 
-Pokud ho ještě nemáte, [vytvořte cílový Azure Search index](/rest/api/searchservice/create-index) . Následující příklad vytvoří index s polem ID a popis:
+아직 없는 경우 [대상 Azure Search 인덱스를 만듭니다](/rest/api/searchservice/create-index) . 다음 예에서는 ID 및 설명 필드를 사용 하 여 인덱스를 만듭니다.
 
     POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
@@ -245,28 +245,28 @@ Pokud ho ještě nemáte, [vytvořte cílový Azure Search index](/rest/api/sear
        }]
      }
 
-Ujistěte se, že schéma cílového indexu je kompatibilní se schématem zdrojových dokumentů JSON nebo výstupem vlastního projekce dotazu.
+대상 인덱스의 스키마가 소스 JSON 문서의 스키마 또는 사용자 지정 쿼리 프로젝션의 출력과 호환되는지 확인합니다.
 
 > [!NOTE]
-> U dělených kolekcí je výchozí klíč dokumentu Azure Cosmos DB `_rid` vlastnost, která Azure Search automaticky přejmenuje na `rid` , protože názvy polí nemohou začínat znakem undescore. Azure Cosmos DB `_rid` hodnoty také obsahují znaky, které jsou v Azure Search klíčes neplatné. Z `_rid` tohoto důvodu jsou hodnoty kódovány pomocí kódování Base64.
+> 분할된 컬렉션의 경우, 기본 문서 키는 Azure Cosmos DB의 `_rid` 속성입니다. 필드 이름은 밑줄 문자로 시작할 수 없으므로 Azure Search에서 이름이 `rid`로 자동으로 바뀝니다. 또한 Azure Cosmos DB의 `_rid` 값은 Azure Search 키에 잘못된 문자를 포함합니다. 따라서 `_rid` 값은 Base64로 인코딩됩니다.
 > 
-> Pro kolekce MongoDB Azure Search automaticky přejmenuje `_id` vlastnost na. `doc_id`  
+> MongoDB 컬렉션의 경우 Azure Search에서 `_id` 속성의 이름이 `doc_id`로 자동으로 바뀝니다.  
 
-### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>Mapování mezi datovými typy JSON a Azure Searchmi datovými typy
-| Datový typ JSON | Kompatibilní typy polí cílového indexu |
+### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>JSON 데이터 형식과 Azure Search 데이터 형식 사이의 매핑
+| JSON 데이터 형식 | 호환되는 대상 인덱스 필드 형식 |
 | --- | --- |
-| Bool |EDM. Boolean, Edm. String |
-| Čísla, která vypadají jako celá čísla |Edm.Int32, Edm.Int64, Edm.String |
-| Čísla, která vypadají jako plovoucí body |Edm.Double, Edm.String |
-| Řetězec |Edm.String |
-| Pole primitivních typů, například ["a", "b", "c"] |Collection(Edm.String) |
-| Řetězce, které vypadají jako kalendářní data |Edm.DateTimeOffset, Edm.String |
-| Objekty injson pro injson, například {"Type": "Point", "souřadnice": [Long, lat]} |Edm.GeographyPoint |
-| Jiné objekty JSON |Není k dispozici |
+| Bool |Edm.Boolean, Edm.String |
+| 정수와 같이 보이는 숫자 |Edm.Int32, Edm.Int64, Edm.String |
+| 부동소수점처럼 보이는 숫자 |Edm.Double, Edm.String |
+| string |Edm.String |
+| 기본 형식의 배열, 예: ["a", "b", "c"] |Collection(Edm.String) |
+| 날짜처럼 보이는 문자열 |Edm.DateTimeOffset, Edm.String |
+| GeoJSON 개체, 예: { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
+| 기타 JSON 개체 |N/A |
 
-### <a name="4---configure-and-run-the-indexer"></a>4\. konfigurace a spuštění indexeru
+### <a name="4---configure-and-run-the-indexer"></a>4-인덱서 구성 및 실행
 
-Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
+인덱스와 데이터 원본이 만들어지면 인덱서를 만들 준비가 된 것입니다.
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -279,15 +279,15 @@ Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
       "schedule" : { "interval" : "PT2H" }
     }
 
-Tento indexer se spouští každé dvě hodiny (časový interval je nastaven na "PT2H"). Pokud chcete indexer spustit každých 30 minut, nastavte interval na "PT30M". Nejkratší podporovaný interval je 5 minut. Plán je nepovinný – Pokud je vynechaný, indexer se při vytvoření spustí jenom jednou. Můžete ale kdykoli spustit indexer na vyžádání.   
+이 인덱서는 2시간 간격으로 실행됩니다(일정 간격이 "PT2H"로 설정됨). 인덱서를 30분 간격으로 실행하려면 간격을 "PT30M"으로 설정합니다. 지원되는 가장 짧은 간격은 5분입니다. 일정은 선택 사항입니다. 생략하는 경우 인덱서는 만들어질 때 한 번만 실행됩니다. 그러나 언제든지 필요할 때 인덱서를 실행할 수 있습니다.   
 
-Další informace o rozhraní API Create indexeru najdete v části [Vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+인덱서 만들기 API에 대한 자세한 내용은 [인덱서 만들기](https://docs.microsoft.com/rest/api/searchservice/create-indexer)를 확인하세요.
 
-Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure Search](search-howto-schedule-indexers.md).
+인덱서 일정을 정의 하는 방법에 대 한 자세한 내용은 [Azure Search의 인덱서를 예약 하는 방법을](search-howto-schedule-indexers.md)참조 하세요.
 
-## <a name="use-net"></a>Použití .NET
+## <a name="use-net"></a>.NET 사용
 
-Obecně dostupná sada .NET SDK má úplnou paritu s všeobecně dostupnou REST API. Doporučujeme, abyste si přečtěte předchozí část REST API, kde se dozvíte o konceptech, pracovních postupech a požadavcích. Pak se můžete podívat na následující referenční dokumentaci rozhraní .NET API a implementovat indexer JSON ve spravovaném kódu.
+일반적으로 사용할 수 있는 .NET SDK에는 일반 공급 REST API의 전체 패리티가 있습니다. 개념, 워크플로 및 요구 사항을 알아보려면 이전 REST API 섹션을 검토하는 것이 좋습니다. 그런 후, 다음 .NET API 참조 설명서를 참조하여 관리되는 코드에서 JSON 인덱서를 구현할 수 있습니다.
 
 + [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
 + [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
@@ -296,28 +296,28 @@ Obecně dostupná sada .NET SDK má úplnou paritu s všeobecně dostupnou REST 
 
 <a name="DataChangeDetectionPolicy"></a>
 
-## <a name="indexing-changed-documents"></a>Indexování změněných dokumentů
+## <a name="indexing-changed-documents"></a>변경된 문서 인덱싱
 
-Účelem zásad detekce změn dat je efektivně identifikovat změněné datové položky. V současné době jedinou podporovanou zásadou `High Water Mark` je zásada `_ts` pomocí vlastnosti (časové razítko), kterou poskytuje Azure Cosmos DB, která je určena následujícím způsobem:
+데이터 변경 감지 정책의 목적은 변경된 데이터 항목을 효율적으로 식별하는 것입니다. 현재 지원되는 정책은 Azure Cosmos DB에서 제공하는 `_ts`(타임스탬프) 속성을 사용하는 `High Water Mark` 정책뿐이며, 다음과 같이 지정됩니다.
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
         "highWaterMarkColumnName" : "_ts"
     }
 
-Použití této zásady se důrazně doporučuje, aby se zajistil dobrý výkon indexeru. 
+적절한 인덱서 성능을 보장하기 위해서는 반드시 이 정책을 사용하는 것이 좋습니다. 
 
-Pokud používáte vlastní dotaz, ujistěte se, že `_ts` je vlastnost projekt provedená dotazem.
+사용자 지정 쿼리를 사용하는 경우 `_ts` 속성이 쿼리에 의해 프로젝션되어야 합니다.
 
 <a name="IncrementalProgress"></a>
 
-### <a name="incremental-progress-and-custom-queries"></a>Přírůstkový průběh a vlastní dotazy
+### <a name="incremental-progress-and-custom-queries"></a>증분 진행률 및 사용자 지정 쿼리
 
-Přírůstkový průběh indexování zajišťuje, že pokud je provádění indexeru přerušeno přechodnými chybami nebo časovým limitem spuštění, může indexer vyzvednutí místa, kde se při příštím spuštění ponechá, místo aby bylo nutné znovu indexovat celou kolekci od začátku. To je obzvláště důležité při indexování velkých kolekcí. 
+인덱싱하는 동안 증분 진행률은 인덱서 실행이 일시적 오류 또는 실행 시간 제한에 의해 중단되었는지를 확인합니다. 인덱서는 처음부터 전체 컬렉션을 다시 인덱스하는 대신 다음으로 실행할 위치를 선택할 수 있습니다. 대규모 컬렉션을 인덱싱할 때 특히 유용합니다. 
 
-Pokud chcete povolit přírůstkový průběh při použití vlastního dotazu, ujistěte se, že dotaz seřadí výsledky `_ts` podle sloupce. To umožňuje pravidelné vracení se změnami, které Azure Search používá k poskytnutí přírůstkového postupu v případě výskytu selhání.   
+사용자 지정 쿼리를 사용하는 경우 증분 진행률을 사용하려면 쿼리가 `_ts` 열을 기준으로 결과를 정렬해야 합니다. 그러면 Azure Search에서 사용하는 정기적 검사점이 오류가 있는 경우 증분 진행률을 제공할 수 있습니다.   
 
-V některých případech i v případě, že dotaz obsahuje `ORDER BY [collection alias]._ts` klauzuli, Azure Search nesmí odvodit, že dotaz je seřazen `_ts`podle. Azure Search, že výsledky jsou seřazené pomocí `assumeOrderByHighWaterMarkColumn` vlastnosti konfigurace, můžete určit. Chcete-li zadat tuto nápovědu, vytvořte nebo aktualizujte indexer následujícím způsobem: 
+어떤 경우에는 쿼리에 `ORDER BY [collection alias]._ts` 절이 포함되더라도 Azure Search이 `_ts` 기준으로 쿼리를 정렬하는지 유추하지 않을 수 있습니다. Azure Search에서 결과가 `assumeOrderByHighWaterMarkColumn` 구성 속성을 사용하여 정렬되도록 지시할 수 있습니다. 이 힌트를 지정하려면 다음과 같이 인덱서를 만들거나 업데이트합니다. 
 
     {
      ... other indexer definition properties
@@ -327,9 +327,9 @@ V některých případech i v případě, že dotaz obsahuje `ORDER BY [collecti
 
 <a name="DataDeletionDetectionPolicy"></a>
 
-## <a name="indexing-deleted-documents"></a>Indexování odstraněných dokumentů
+## <a name="indexing-deleted-documents"></a>삭제된 문서 인덱싱
 
-Pokud jsou řádky z kolekce odstraněny, obvykle je chcete odstranit také z indexu vyhledávání. Účelem zásad detekce odstranění dat je efektivně identifikovat odstraněné datové položky. V současné době je `Soft Delete` jedinou podporovanou zásadou zásada (odstranění je označeno příznakem nějakého řazení), které je zadáno následujícím způsobem:
+컬렉션에서 행이 삭제된 경우 일반적으로 검색 인덱스에서도 해당 행을 삭제하려고 할 것입니다. 데이터 삭제 감지 정책의 목적은 변경된 데이터 항목을 효율적으로 식별하는 것입니다. 현재까지 지원되는 유일한 정책은 다음과 같이 지정되는 `Soft Delete` 정책입니다(삭제 시 일부 유형의 플래그로 표시됨).
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
@@ -337,9 +337,9 @@ Pokud jsou řádky z kolekce odstraněny, obvykle je chcete odstranit také z in
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
 
-Pokud používáte vlastní dotaz, ujistěte se, že vlastnost, na kterou odkazuje `softDeleteColumnName` , je projektovaná dotazem.
+사용자 지정 쿼리를 사용하는 경우 `softDeleteColumnName`에서 참조되는 속성이 쿼리에 의해 프로젝션됩니다.
 
-Následující příklad vytvoří zdroj dat se zásadami podmíněného odstranění:
+다음 예제에서는 일시 삭제 정책을 사용하여 데이터 원본을 만듭니다.
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
@@ -363,9 +363,9 @@ Následující příklad vytvoří zdroj dat se zásadami podmíněného odstran
         }
     }
 
-## <a name="NextSteps"></a>Další kroky
+## <a name="NextSteps"></a>다음 단계
 
-Blahopřejeme! Zjistili jste, jak integrovat Azure Cosmos DB s Azure Search pomocí indexeru.
+축하합니다. 인덱서를 사용하여 Azure Search에 Azure Cosmos DB를 통합하는 방법을 알아보았습니다.
 
-* Další informace o Azure Cosmos DB najdete na [stránce služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
-* Další informace o Azure Search najdete na [stránce vyhledávací služby](https://azure.microsoft.com/services/search/).
+* Azure Cosmos DB에 대한 자세한 내용은 [Azure Cosmos DB 서비스 페이지](https://azure.microsoft.com/services/cosmos-db/)를 참조하세요.
+* Azure Search에 대해 자세히 알아보려면 [Search 서비스 페이지](https://azure.microsoft.com/services/search/)를 참조하세요.

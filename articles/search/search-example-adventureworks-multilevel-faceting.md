@@ -1,5 +1,5 @@
 ---
-title: 'Příklad: Omezující vlastnosti na více úrovních – Azure Search'
+title: 'Příklad: omezující vlastnosti na více úrovních – Azure Search'
 description: Naučte se vytvářet strukturální struktury pro taxonomie na více úrovních a vytváření vnořené navigační struktury, kterou můžete zahrnout na stránky aplikace.
 author: HeidiSteen
 manager: nitinme
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70274082"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>Příklad: Víceúrovňové omezující vlastnosti v Azure Search
+# <a name="example-multi-level-facets-in-azure-search"></a>Příklad: omezující vlastnosti na více úrovních v Azure Search
 
 Schémata Azure Search nepodporují explicitně víceúrovňové kategorie, ale můžete je roztřídit tak, že před indexováním provedete jejich navýšení a potom použijete pro ně speciální zpracování. 
 
@@ -41,15 +41,15 @@ LEFT JOIN
 
 V indexu, který obsahuje tuto strukturu, vytvořte pole **Collection (EDM. String)** ve schématu Azure Search pro uložení těchto dat. Zajistěte, aby atributy pole zahrnovaly prohledávatelný, filtrovatelné, plošky a získatelné.
 
-Nyní při indexování obsahu, který odkazuje na konkrétní kategorii taxonomie, odešlete taxonomii jako pole obsahující text z každé úrovně taxonomie. Například pro entitu s `ProductCategoryId = 5 (Mountain Bikes)`můžete pole Odeslat jako`[ "Bikes", "Bikes|Mountain Bikes"]`
+Nyní při indexování obsahu, který odkazuje na konkrétní kategorii taxonomie, odešlete taxonomii jako pole obsahující text z každé úrovně taxonomie. Například pro entitu s `ProductCategoryId = 5 (Mountain Bikes)` odešlete pole jako `[ "Bikes", "Bikes|Mountain Bikes"]`
 
 Všimněte si zahrnutí nadřazené kategorie "Bikes" v podřízené kategorii hodnota "horská kola". Každá podkategorie by měla vložit celou cestu relativní k kořenovému elementu. Oddělovač znaků kanálu je libovolný, ale musí být konzistentní a neměl by se zobrazovat ve zdrojovém textu. Znak oddělovače bude použit v kódu aplikace k rekonstrukci stromu taxonomie z výsledků omezujících vlastností.
 
 ## <a name="construct-the-query"></a>Sestavit dotaz
 
-Při vydávání dotazů zahrňte následující specifikaci omezující vlastnosti (kde taxonomie je vaše pole taxonomie obličeje):`facet = taxonomy,count:50,sort:value`
+Při vydávání dotazů zahrňte následující specifikaci omezující vlastnosti (kde taxonomie je vaše pole taxonomie obličeje): `facet = taxonomy,count:50,sort:value`
 
-Hodnota Count musí být dostatečně vysoká, aby vracela všechny možné hodnoty taxonomie. Data AdventureWorks obsahují 41 různých hodnot taxonomie, takže `count:50` je to dostačující.
+Hodnota Count musí být dostatečně vysoká, aby vracela všechny možné hodnoty taxonomie. Data AdventureWorks obsahují 41 různých hodnot taxonomie, takže `count:50` dostatek.
 
   ![Filtr s omezujícími vlastnostmi](./media/search-example-adventureworks/facet-filter.png "Filtr s omezujícími vlastnostmi")
 
@@ -87,16 +87,16 @@ Objekt **Categories** se teď dá použít k vykreslení sbalitelného stromu ta
   ![víceúrovňový filtr s omezujícími vlastnostmi](./media/search-example-adventureworks/multi-level-facet.png "víceúrovňový filtr s omezujícími vlastnostmi")
 
  
-U každého odkazu ve stromu by se měl použít příslušný filtr. Příklad:
+U každého odkazu ve stromu by se měl použít příslušný filtr. Například:
 
-+ **taxonomie/any** `(x:x eq 'Accessories')` vrátí všechny dokumenty ve větvi příslušenství.
-+ **taxonomie/any** `(x:x eq 'Accessories|Bike Racks')` vrátí pouze dokumenty s podkategorií stojanů kol v rámci větve příslušenství.
++ **taxonomie/libovolné** `(x:x eq 'Accessories')` vrátí všechny dokumenty ve větvi příslušenství.
++ **taxonomie/libovolné** `(x:x eq 'Accessories|Bike Racks')` vrátí pouze dokumenty, které mají podkategorii stojanů kol v rámci větve příslušenství.
 
-Tato technika se škáluje tak, aby pokrývala složitější scénáře, jako jsou hlubší stromy taxonomie a zdvojené podkategorie, ke kterým `Bike Components|Forks` dochází `Camping Equipment|Forks`v různých nadřazených kategoriích (například a).
+Tato technika se škáluje tak, aby pokrývala složitější scénáře, jako jsou hlubší stromy taxonomie a zdvojené podkategorie, ke kterým dochází v různých nadřazených kategoriích (například `Bike Components|Forks` a `Camping Equipment|Forks`).
 
 > [!TIP]
 > Rychlost dotazu je ovlivněna počtem vrácených omezujících vlastností. Pro podporu velmi rozsáhlých sad taxonomie zvažte přidání pole **EDM. String** pro plošky, které bude uchovávat hodnotu taxonomie nejvyšší úrovně pro každý dokument. Pak použijte stejný postup, ale v případě, že uživatel rozbalí uzel nejvyšší úrovně, proveďte pouze dotaz Collection-Faced (filtrováno v kořenovém poli taxonomie). Nebo pokud není vyžadováno odvolání 100%, stačí snížit počet omezujících podmínek na rozumné číslo a zajistit, aby byly položky omezující vlastnosti seřazené podle počtu.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-[Příklad: Modelování databáze inventáře AdventureWorks pro Azure Search](search-example-adventureworks-modeling.md)
+[Příklad: modelování databáze AdventureWorks Inventory pro Azure Search](search-example-adventureworks-modeling.md)

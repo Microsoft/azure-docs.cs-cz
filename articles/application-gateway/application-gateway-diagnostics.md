@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 36f26808b94893990ceec65e114b11113dbafd6f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 72549a2df3490344987567d1e62c65f76f151097
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177487"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693270"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
@@ -33,7 +33,7 @@ Application Gateway poskytuje možnost monitorování stavu jednotlivých člen�
 Zpráva o stavu back-endu odráží výstup Application Gateway sondy stavu do back-endové instance. Když je zjišťování úspěšné a back-end může přijímat přenosy, považuje se za dobrý stav. V opačném případě se považuje za není v pořádku.
 
 > [!IMPORTANT]
-> Pokud je v Application Gateway podsíti skupina zabezpečení sítě (NSG), otevřete rozsahy portů 65503-65534 v podsíti Application Gateway pro příchozí provoz. Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Jsou chráněné (uzamčené) pomocí certifikátů Azure. Bez správných certifikátů nebudou externí entity, včetně zákazníků těchto bran, moci na těchto koncových bodech iniciovat žádné změny.
+> Pokud je v Application Gateway podsíti skupina zabezpečení sítě (NSG), otevřete rozsahy portů 65503-65534 v podsíti Application Gateway pro příchozí provoz. Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nebudou externí entity, včetně zákazníků těchto bran, moci na těchto koncových bodech iniciovat žádné změny.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Zobrazení stavu back-endu prostřednictvím portálu
@@ -92,44 +92,44 @@ Následující fragment kódu ukazuje příklad odpovědi:
 
 ## <a name="diagnostic-logging"></a>Diagnostické protokoly
 
-Pomocí různých typů protokolů v Azure můžete spravovat a řešit potíže s aplikačními bránami. K některým z těchto protokolů máte přístup prostřednictvím portálu. Všechny protokoly se dají extrahovat z úložiště objektů BLOB v Azure a zobrazovat v různých nástrojích, jako jsou [protokoly Azure monitor](../azure-monitor/insights/azure-networking-analytics.md), excelu a Power BI. Další informace o různých typech protokolů najdete v následujícím seznamu:
+Pomocí různých typů protokolů v Azure můžete spravovat a řešit potíže s aplikačními bránami. Některé z těchto protokolů jsou přístupné z webu Azure Portal. Všechny protokoly se dají extrahovat z úložiště objektů BLOB v Azure a zobrazovat v různých nástrojích, jako jsou [protokoly Azure monitor](../azure-monitor/insights/azure-networking-analytics.md), excelu a Power BI. Další informace o různých typech protokolů najdete v následujícím seznamu:
 
-* **Protokol aktivit**: k zobrazení všech operací odeslaných do vašeho předplatného Azure a jejich stavu můžete použít [protokoly aktivit Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dřív označované jako operační protokoly a protokoly auditu). Položky protokolu aktivit jsou shromažďovány ve výchozím nastavení a lze je zobrazit v Azure Portal.
+* **Protokol aktivit**: k zobrazení všech operací odeslaných do vašeho předplatného Azure a jejich stavu můžete použít [protokoly aktivit Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dřív označované jako operační protokoly a protokoly auditu). Položky protokolu aktivit se ve výchozím nastavení shromažďují a můžete si je zobrazit na webu Azure Portal.
 * **Protokol přístupu**: pomocí tohoto protokolu můžete zobrazit vzory přístupu Application Gateway a analyzovat důležité informace. Patří sem IP adresa volajícího, požadovaná adresa URL, latence odpovědi, návratový kód a bajtů. Protokol přístupu se shromáždí každých 300 sekund. Tento protokol obsahuje jeden záznam na instanci Application Gateway. Instance Application Gateway je identifikována vlastností instanceId.
-* **Protokol výkonu**: pomocí tohoto protokolu můžete zobrazit, jak probíhá Application Gateway instance. Tento protokol zachycuje informace o výkonu pro každou instanci, včetně celkového počtu zpracovaných požadavků, propustnosti v bajtech, celkových zpracovaných požadavků, počtu neúspěšných žádostí a stavu back-endu back-endu v pořádku. Protokol výkonu se shromáždí každých 60 sekund.
+* **Protokol výkonu**: pomocí tohoto protokolu můžete zobrazit, jak probíhá Application Gateway instance. Tento protokol zachycuje informace o výkonu pro každou instanci, včetně celkového počtu zpracovaných požadavků, propustnosti v bajtech, celkových zpracovaných požadavků, počtu neúspěšných žádostí a stavu back-endu back-endu v pořádku. Protokol výkonu se shromáždí každých 60 sekund. Protokol výkonu je k dispozici pouze pro SKU v1. Pro SKU v2 použijte [metriky](application-gateway-metrics.md) pro data výkonu.
 * **Protokol brány firewall**: pomocí tohoto protokolu můžete zobrazit požadavky, které se protokolují v režimu detekce nebo prevence služby Application Gateway, která je nakonfigurovaná s bránou firewall webových aplikací.
 
 > [!NOTE]
 > Protokoly jsou k dispozici pouze pro prostředky nasazené v modelu nasazení Azure Resource Manager. Protokoly pro prostředky v modelu nasazení Classic nemůžete použít. Abyste lépe pochopili tyto dva modely, přečtěte si článek [principy správce prostředků nasazení a klasického nasazení](../azure-resource-manager/resource-manager-deployment-model.md) .
 
-Máte tři možnosti pro ukládání protokolů:
+Protokoly můžete ukládat třemi způsoby:
 
-* **Účet úložiště**: účty úložiště se nejlépe používají pro protokoly, když jsou protokoly uložené po delší dobu a v případě potřeby se přezkoumávají.
+* **Učet úložiště**: Účty úložiště jsou nejvhodnější pro ukládání protokolů na delší dobu, které budete kontrolovat pouze v případě potřeby.
 * **Centra událostí**: centra událostí jsou skvělou možností pro integraci s dalšími nástroji Siem (Security Information and Event Management), které vám umožní získat výstrahy na vaše prostředky.
 * **Protokoly Azure monitor**: Azure monitor protokoly se nejlépe používají pro obecné monitorování vaší aplikace v reálném čase nebo při prohlížení trendů.
 
 ### <a name="enable-logging-through-powershell"></a>Povolit protokolování prostřednictvím PowerShellu
 
-Protokolování aktivit se automaticky povolí u každého prostředku Správce prostředků. Chcete-li začít shromažďovat data dostupná prostřednictvím těchto protokolů, je nutné povolit protokolování přístupu a výkonu. Chcete-li povolit protokolování, použijte následující postup:
+Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Chcete-li začít shromažďovat data dostupná prostřednictvím těchto protokolů, je nutné povolit protokolování přístupu a výkonu. Chcete-li povolit protokolování, použijte následující postup:
 
-1. Poznamenejte si ID prostředku účtu úložiště, kde jsou uložená data protokolu. Tato hodnota má formát:/subscriptions/\<subscriptionId @ no__t-1/resourceGroups/\<resource název skupiny @ no__t-3/Providers/Microsoft. Storage/storageAccounts/\<storage název účtu @ no__t-5. V předplatném můžete použít libovolný účet úložiště. Tyto informace můžete najít pomocí Azure Portal.
+1. Poznamenejte si ID prostředku účtu úložiště, kam se data protokolu ukládají. Tato hodnota má formát:/subscriptions/\<subscriptionId \>/resourceGroups/\<resource název skupiny \>/providers/Microsoft.Storage/storageAccounts/\<storage název účtu \>. Můžete použít libovolný účet úložiště z vašeho předplatného. Tuto informaci najdete pomocí webu Azure Portal
 
     ![Portál: ID prostředku pro účet úložiště](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Poznamenejte si ID prostředku brány Application Gateway, pro které je povolené protokolování. Tato hodnota má formát:/subscriptions/\<subscriptionId @ no__t-1/resourceGroups/\<resource název skupiny @ no__t-3/Providers/Microsoft. Network/applicationGateways/\<application Gateway Name @ no__t-5. K vyhledání těchto informací můžete použít portál.
+2. Poznamenejte si ID prostředku brány Application Gateway, pro které je povolené protokolování. Tato hodnota je ve formátu:/subscriptions/\<subscriptionId \>/resourceGroups/\<resource název skupiny \>/providers/Microsoft.Network/applicationGateways/\<application brána název \>. Tuto informaci najdete pomocí webu Azure Portal.
 
     ![Portál: ID prostředku pro aplikační bránu](./media/application-gateway-diagnostics/diagnostics2.png)
 
-3. Povolte protokolování diagnostiky pomocí následující rutiny prostředí PowerShell:
+3. Protokolování diagnostiky zapnete pomocí následující rutiny PowerShellu:
 
     ```powershell
     Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
     ```
     
 > [!TIP] 
->Protokoly aktivit nevyžadují samostatný účet úložiště. Používání úložiště pro přístup a protokolování výkonu se účtuje za služby.
+>Protokoly aktivit nevyžadují samostatný účet úložiště. Za používání úložiště k protokolování přístupu a výkonu se účtují poplatky.
 
-### <a name="enable-logging-through-the-azure-portal"></a>Povolit protokolování prostřednictvím Azure Portal
+### <a name="enable-logging-through-the-azure-portal"></a>Povolit protokolování prostřednictvím webu Azure Portal
 
 1. V Azure Portal vyhledejte prostředek a vyberte **nastavení diagnostiky**.
 
@@ -143,7 +143,7 @@ Protokolování aktivit se automaticky povolí u každého prostředku Správce 
 
    ![Zapnutí diagnostiky][1]
 
-3. Stránka **nastavení diagnostiky** poskytuje nastavení pro diagnostické protokoly. V tomto příkladu Log Analytics ukládá protokoly. K ukládání diagnostických protokolů můžete použít taky centra událostí a účet úložiště.
+3. Stránka **Nastavení diagnostiky** obsahuje nastavení diagnostických protokolů. V tomto příkladu Log Analytics ukládá protokoly. Diagnostické protokoly můžete ukládat také pomocí služby center událostí a účtu úložiště.
 
    ![Spouští se proces konfigurace.][2]
 
@@ -172,7 +172,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |sentBytes| Velikost odeslaného paketu (v bajtech).|
 |timeTaken| Doba (v milisekundách), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje dobu, po kterou se pakety požadavků a odpovědí cestují po síti. |
 |sslEnabled| Zda komunikace s back-end fondy používala protokol SSL. Platné hodnoty jsou zapnuté a vypnuté.|
-|host| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
+|Provoz| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
 |originalHost| Název hostitele, se kterým Application Gateway požadavek přijal z klienta.|
 ```json
 {
@@ -220,7 +220,7 @@ V případě Application Gateway a WAF v2 se v protokolech zobrazí další info
 |serverRouted| Back-end Server, na který Aplikační brána směruje požadavek.|
 |serverStatus| Stavový kód HTTP back-end serveru.|
 |serverResponseLatency| Latence odpovědi ze serveru back-end.|
-|host| Adresa uvedená v hlavičce hostitele žádosti.|
+|Provoz| Adresa uvedená v hlavičce hostitele žádosti.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -252,7 +252,7 @@ V případě Application Gateway a WAF v2 se v protokolech zobrazí další info
 
 ### <a name="performance-log"></a>Protokol výkonu
 
-Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na každé instanci Application Gateway, jak je popsáno v předchozích krocích. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Data protokolu výkonu se generují v intervalu 1 minuty. Zaprotokolují se následující data:
+Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na každé instanci Application Gateway, jak je popsáno v předchozích krocích. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Data protokolu výkonu se generují v intervalu 1 minuty. Je k dispozici pouze pro SKU v1. Pro SKU v2 použijte [metriky](application-gateway-metrics.md) pro data výkonu. Zaprotokolují se následující data:
 
 
 |Hodnota  |Popis  |
@@ -263,7 +263,7 @@ Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na ka
 |requestCount     | Počet zpracovaných požadavků.        |
 |latence | Průměrná latence (v milisekundách) požadavků z instance do back-endu, který obsluhuje požadavky. |
 |failedRequestCount| Počet neúspěšných žádostí|
-|propustnost| Průměrná propustnost od posledního protokolu měřená v bajtech za sekundu|
+|zvyšují| Průměrná propustnost od posledního protokolu měřená v bajtech za sekundu|
 
 ```json
 {
@@ -301,8 +301,8 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
 |Typ rulesettype     | Typ sady pravidel Dostupná hodnota je OWASP.        |
 |ruleSetVersion     | Použitá verze sady pravidel Dostupné hodnoty jsou 2.2.9 a 3,0.     |
 |ruleId     | ID pravidla události triggeru        |
-|– zpráva     | Uživatelsky přívětivá zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
-|Akce     |  Akce prováděná na žádosti Dostupné hodnoty jsou blokované a povolené.      |
+|zpráva     | Uživatelsky přívětivá zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
+|action     |  Akce prováděná na žádosti Dostupné hodnoty jsou blokované a povolené.      |
 |webovém     | Lokalita, pro kterou se protokol vygeneroval. V současné době se v seznamu zobrazí pouze globální, protože pravidla jsou globální.|
 |Zobrazí     | Podrobnosti události aktivace.        |
 |Podrobnosti. zpráva     | Popis pravidla        |
@@ -342,21 +342,21 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
 
 ```
 
-### <a name="view-and-analyze-the-activity-log"></a>Zobrazit a analyzovat protokol aktivit
+### <a name="view-and-analyze-the-activity-log"></a>Zobrazení a analýza protokolu aktivit
 
-Data protokolu aktivit můžete zobrazit a analyzovat pomocí kterékoli z následujících metod:
+Data protokolu aktivit si můžete zobrazit použitím jedné z následujících metod:
 
-* **Nástroje Azure**: načítají se informace z protokolu aktivit prostřednictvím Azure PowerShell, Azure CLI, Azure REST API nebo Azure Portal. Podrobné pokyny pro jednotlivé metody jsou popsány v tématu [operace aktivity s správce prostředkům](../azure-resource-manager/resource-group-audit.md) článkem.
-* **Power BI**: Pokud ještě nemáte účet [Power BI](https://powerbi.microsoft.com/pricing) , můžete si ho vyzkoušet zdarma. Pomocí [aplikací Power BI šablon](https://docs.microsoft.com/power-bi/service-template-apps-overview)můžete analyzovat data.
+* **Nástroje Azure**: Načtěte informace z protokolu aktivit prostřednictvím Azure PowerShellu, Azure CLI, rozhraní Azure REST API nebo webu Azure Portal. Podrobné pokyny k jednotlivým metodám najdete v článku o [operacích s protokoly aktivit ve Správci prostředků](../azure-resource-manager/resource-group-audit.md).
+* **Power BI**: Pokud ještě účet [Power BI](https://powerbi.microsoft.com/pricing) nemáte, můžete ho vyzkoušet zdarma. Pomocí [aplikací Power BI šablon](https://docs.microsoft.com/power-bi/service-template-apps-overview)můžete analyzovat data.
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Zobrazení a analýza protokolů přístupu, výkonu a brány firewall
 
-[Protokoly Azure monitor](../azure-monitor/insights/azure-networking-analytics.md) můžou shromažďovat soubory protokolů čítačů a událostí z vašeho účtu služby Blob Storage. Obsahuje vizualizace a výkonné vyhledávací funkce pro analýzu protokolů.
+[Protokoly Azure monitor](../azure-monitor/insights/azure-networking-analytics.md) můžou shromažďovat soubory protokolů čítačů a událostí z vašeho účtu služby Blob Storage. Zahrnuje vizualizace a výkonné vyhledávací funkce k analýze protokolů.
 
-Můžete se také připojit k účtu úložiště a načíst položky protokolu JSON pro protokoly přístupu a výkonu. Po stažení souborů JSON je můžete převést na CSV a zobrazit je v Excelu, Power BI nebo jakémkoli jiném nástroji pro vizualizaci dat.
+Můžete se také připojit k účtu úložiště a načíst položky protokolu JSON s protokoly přístupu a výkonu. Po stažení souborů JSON je můžete převést do formátu CSV a zobrazit si je v Excelu, Power BI nebo jiném nástroji s vizualizací dat.
 
 > [!TIP]
-> Pokud jste obeznámeni se sadou Visual Studio a základními koncepty úprav hodnot konstant a proměnných v C#nástroji, můžete použít [Nástroje pro převod protokolů](https://github.com/Azure-Samples/networking-dotnet-log-converter) , které jsou k dispozici na GitHubu.
+> Pokud znáte Visual Studio a máte představu, jak u konstant a proměnných v jazyce C# měnit hodnoty, můžete použít [nástroje pro převedení protokolů](https://github.com/Azure-Samples/networking-dotnet-log-converter), které jsou k dispozici na GitHubu.
 > 
 > 
 

@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.openlocfilehash: fe981167249e24a43a8cb14c51c9b7c1eb081225
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70164014"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Rychlý start: Vytvoření Azure Database for PostgreSQL – Citus (Preview) v Azure Portal
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Rychlý Start: vytvoření Azure Database for PostgreSQL – Citus (Preview) v Azure Portal
 
 Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte, spravujete a škálujete vysoce dostupné databáze PostgreSQL v cloudu. V tomto rychlém startu se dozvíte, jak vytvořit skupinu serverů Azure Database for PostgreSQL (Citus) (ve verzi Preview) pomocí Azure Portal. Budete zkoumat distribuovaná data: horizontálního dělení tabulky napříč uzly, ingestování ukázkových dat a spouštění dotazů, které se spouštějí na více uzlech.
 
@@ -62,16 +62,16 @@ CREATE TABLE github_users
 );
 ```
 
-`payload` Pole`github_events` má datový typ JSONB. JSONB je datový typ JSON v binárním formátu v Postgres. Datový typ usnadňuje ukládání flexibilního schématu do jednoho sloupce.
+Pole `payload` `github_events` má datový typ JSONB. JSONB je datový typ JSON v binárním formátu v Postgres. Datový typ usnadňuje ukládání flexibilního schématu do jednoho sloupce.
 
-Postgres může pro tento `GIN` typ vytvořit index, který bude indexovat každý klíč a hodnotu v rámci něj. S indexem se dá rychle a snadno dotazovat datovou část s různými podmínkami. Pojďme dopředu a vytvořit několik indexů, než načteme naše data. V psql:
+Postgres může pro tento typ vytvořit index `GIN`, který bude indexovat každý klíč a hodnotu v něm. S indexem se dá rychle a snadno dotazovat datovou část s různými podmínkami. Pojďme dopředu a vytvořit několik indexů, než načteme naše data. V psql:
 
 ```sql
 CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-V dalším kroku převezmeme tyto tabulky Postgres v uzlu koordinátora a oznámíme tak, aby se horizontálních oddílů napříč zaměstnanci. Uděláte to tak, že spustíte dotaz pro každou tabulku, která určuje klíč, na který se má horizontálních oddílů. V aktuálním příkladu horizontálních oddílů události a uživatele v `user_id`tabulce:
+V dalším kroku převezmeme tyto tabulky Postgres v uzlu koordinátora a oznámíme tak, aby se horizontálních oddílů napříč zaměstnanci. Uděláte to tak, že spustíte dotaz pro každou tabulku, která určuje klíč, na který se má horizontálních oddílů. V aktuálním příkladu horizontálních oddílů události a uživatele v tabulce `user_id`:
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -96,13 +96,13 @@ SET CLIENT_ENCODING TO 'utf8';
 
 ## <a name="run-queries"></a>Spouštění dotazů
 
-Teď je čas na zábavu, ve kterém jsou ve skutečnosti spuštěné nějaké dotazy. Pojďme začít jednoduchým `count (*)` způsobem a zjistit, kolik dat jsme načetli:
+Teď je čas na zábavu, ve kterém jsou ve skutečnosti spuštěné nějaké dotazy. Pojďme začít jednoduchým `count (*)`, abyste zjistili, kolik dat jsme načetli:
 
 ```sql
 SELECT count(*) from github_events;
 ```
 
-Ty, které byly k dispracovanému. Vrátíme se k tomuto uspořádání agregace, ale teď se podíváme na několik dalších dotazů. Ve sloupci JSONB `payload` je dobrým bitem dat, ale liší se v závislosti na typu události. `PushEvent`události obsahují velikost, která zahrnuje počet jedinečných potvrzení pro vložení. Dá se použít k vyhledání celkového počtu potvrzení za hodinu:
+Ty, které byly k dispracovanému. Vrátíme se k tomuto uspořádání agregace, ale teď se podíváme na několik dalších dotazů. Ve sloupci JSONB `payload` je dobrým bitem dat, ale liší se v závislosti na typu události. `PushEvent` události obsahují velikost, která zahrnuje počet jedinečných potvrzení pro vložení. Dá se použít k vyhledání celkového počtu potvrzení za hodinu:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,
@@ -113,9 +113,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Doposud dotazy zahrnovaly jenom události GitHubu\_, ale tyto informace můžeme kombinovat s uživateli GitHubu.\_ Vzhledem k tomu, že jsme horizontálně dělené uživatele i události na stejný`user_id`identifikátor (), řádky obou tabulek s ID odpovídajícího uživatele budou společně [umístěny](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) na stejných uzlech databáze a lze je snadno připojit.
+Proto se dotazy do GitHubu podílely \_events výhradně, ale tyto informace můžeme kombinovat s \_users GitHubu. Vzhledem k tomu, že jsme horizontálně dělené uživatele i události na stejný identifikátor (`user_id`), řádky obou tabulek s ID odpovídajícího uživatele budou společně [umístěny](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) na stejných uzlech databáze a lze je snadno připojit.
 
-V případě, že `user_id`se připojíme k systému, může být do horizontálních oddílů spuštěno souběžné spouštění. Pojďme například najít uživatele, kteří vytvořili největší počet úložišť:
+Pokud se připojíme k `user_id`, může se při spuštění připojení do horizontálních oddílů spustit souběžně na pracovních uzlech. Pojďme například najít uživatele, kteří vytvořili největší počet úložišť:
 
 ```sql
 SELECT gu.login, count(*)
@@ -132,7 +132,7 @@ SELECT gu.login, count(*)
 
 V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu serverů. Stiskněte tlačítko **Odstranit** na stránce **Přehled** pro skupinu serverů. Po zobrazení výzvy na místní stránce potvrďte název skupiny serverů a klikněte na tlačítko poslední **Odstranit** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se dozvěděli, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data.
 

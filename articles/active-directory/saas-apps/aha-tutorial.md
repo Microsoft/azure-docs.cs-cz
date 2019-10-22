@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s použitím programu Aha! | Dokumenty Microsoft'
+title: 'Kurz: Integrace Azure Active Directory s Aha! | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Aha!.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 08/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a63872680d28664c6d5a7ff109f6de72817173d5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68989651"
 ---
-# <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Kurz: Integrovat Aha! s Azure Active Directory
+# <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Kurz: integrace programu Aha! s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat program Aha! s Azure Active Directory (Azure AD). Při integraci Aha! pomocí Azure AD můžete:
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat program Aha! s Azure Active Directory 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -67,7 +67,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-2. **[Nakonfigurujte Aha. ](#configure-aha-sso) SSO** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurujte Aha. SSO](#configure-aha-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
     1. **[Vytvořte se systémem Aha! Test User](#create-aha-test-user)** – abyste měli protějšek B. Simon v programu Aha! který je propojený s reprezentací uživatele Azure AD.
 3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
@@ -83,34 +83,34 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.aha.io/session/new`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.aha.io/session/new`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.aha.io`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.aha.io`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Kontaktujte [Aha! Tým](https://www.aha.io/company/contact) podpory klientů, který získá tyto hodnoty. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Kontaktujte [Aha! Tým podpory klientů](https://www.aha.io/company/contact) , který získá tyto hodnoty. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
 6. V **Nastavení Aha!** na základě vašeho požadavku zkopírujte příslušné adresy URL (y).
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
     1. Do pole **Název** zadejte `B.Simon`.  
     1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-    1. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Aha!.
 
@@ -118,7 +118,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. V seznamu aplikace vyberte možnost **Aha!** .
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -128,7 +128,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-aha-sso"></a>Nakonfigurujte Aha. Jednotné přihlašování
+## <a name="configure-aha-sso"></a>Nakonfigurujte Aha. JEDNOTNÉ
 
 1. Pokud chcete automatizovat konfiguraci v rámci programu Aha!, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
@@ -166,7 +166,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     c. Pokud chcete nahrát stažený soubor metadat, klikněte na **Procházet**.
 
-    d. Klikněte na tlačítko **aktualizace**.
+    d. Klikněte na **Aktualizovat**.
 
 ### <a name="create-aha-test-user"></a>Vytvořte Aha! testovací uživatel
 
@@ -174,11 +174,11 @@ V této části se v Aha! vytvoří uživatel s názvem B. Simon. Aha! podporuje
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Po kliknutí na ikonu Aha! dlaždice na přístupovém panelu, měli byste být automaticky přihlášení do Aha! pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

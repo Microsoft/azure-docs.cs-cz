@@ -9,10 +9,10 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.openlocfilehash: 46a7eb25152c8c7e9ac22c5b4df67bbf6416df4d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69894119"
 ---
 >[!IMPORTANT]
@@ -23,7 +23,7 @@ Pokud neplánujete použít prostředky, které jste vytvořili, odstraňte je, 
 
 1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků**.
  
-   [![Odstranit v Azure Portal](./media/aml-delete-resource-group/delete-resources.png)](./media/aml-delete-resource-group/delete-resources-expanded.png)
+   [![Delete v Azure Portal](./media/aml-delete-resource-group/delete-resources.png)](./media/aml-delete-resource-group/delete-resources-expanded.png)
 
 1. V seznamu vyberte skupinu prostředků, kterou jste vytvořili.
 

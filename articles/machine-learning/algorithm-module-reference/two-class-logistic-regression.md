@@ -1,7 +1,7 @@
 ---
-title: 'Logistická regrese dvou tříd: Odkaz na modul'
+title: '2 클래스 로지스틱 회귀: 모듈 참조'
 titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul logistické regrese ve službě Azure Machine Learning, abyste mohli vytvořit model logistické regrese, který se dá použít k předpovědi dvou (a jenom dvou) výsledků.
+description: Azure Machine Learning service에서 2 클래스 로지스틱 회귀 모듈을 사용 하 여 두 개의 결과를 예측 하는 데 사용할 수 있는 로지스틱 회귀 모델을 만드는 방법에 대해 알아봅니다.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,82 +9,82 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 818b8627decd5ee7db711abc417f71c83e32b6c0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7020bf529fa635d74959a9dac071aa6e2b134c5b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128383"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692625"
 ---
-# <a name="two-class-logistic-regression-module"></a>Modul logistické regrese se dvěma třídami
+# <a name="two-class-logistic-regression-module"></a>2 클래스 로지스틱 회귀 모듈
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+이 문서에서는 Azure Machine Learning 서비스에 대 한 시각적 인터페이스 (미리 보기)의 모듈을 설명 합니다.
 
-Pomocí tohoto modulu můžete vytvořit model logistické regrese, který se dá použít k předpovědi dvou (a jenom dvou) výsledků. 
+이 모듈을 사용 하 여 두 개의 결과를 예측 하는 데 사용할 수 있는 로지스틱 회귀 모델을 만듭니다. 
 
-Logistická regrese je dobře známá statistická technika, která se používá k modelování mnoha druhů problémů. Tento algoritmus je metoda *učení pod dohledem* ;  Proto je nutné poskytnout datovou sadu, která již obsahuje výsledky pro výuku modelu.  
+로지스틱 회귀는 다양 한 종류의 문제를 모델링 하는 데 사용 되는 잘 알려진 통계 기술입니다. 이 알고리즘은 *감독 된 학습* 방법입니다.  따라서 모델을 학습 하는 결과가 이미 포함 된 데이터 집합을 제공 해야 합니다.  
 
-### <a name="about-logistic-regression"></a>O logistické regresi  
+### <a name="about-logistic-regression"></a>로지스틱 회귀 정보  
 
-Logistická regrese je dobře známá metoda, která se používá k předpovědi pravděpodobnosti výsledku, a je obzvláště oblíbená pro úlohy klasifikace. Algoritmus předpovídá pravděpodobnost výskytu události tím, že se data namontuje na logistickou funkci.
+로지스틱 회귀는 결과의 확률을 예측 하는 데 사용 되는 통계의 잘 알려진 방법 이며 특히 분류 작업에 사용 됩니다. 알고리즘은 데이터를 로지스틱 함수에 맞추는 방법으로 이벤트 발생 확률을 예측 합니다.
   
-V tomto modulu je klasifikační algoritmus optimalizovaný pro dichotomous nebo binární proměnné. Pokud potřebujete klasifikovat více výsledků, použijte modul logistické regrese pro více [tříd](./multiclass-logistic-regression.md) .
+이 모듈에서 분류 알고리즘은이 분 또는 이진 변수에 대해 최적화 됩니다. 여러 결과를 분류 해야 하는 경우 [다중 클래스 로지스틱 회귀](./multiclass-logistic-regression.md) 모듈을 사용 합니다.
 
-##  <a name="how-to-configure"></a>Jak nakonfigurovat  
+##  <a name="how-to-configure"></a>구성 방법  
 
-Chcete-li tento model naučit, je nutné poskytnout datovou sadu, která obsahuje sloupec popisku nebo třídy. Vzhledem k tomu, že tento modul je určený pro problémy se dvěma třídami, sloupec popisku nebo třídy musí obsahovat přesně dvě hodnoty. 
+이 모델을 학습 하려면 레이블 또는 클래스 열을 포함 하는 데이터 집합을 제공 해야 합니다. 이 모듈은 2 클래스 문제에 적합 하기 때문에 label 또는 class 열에는 정확히 두 개의 값이 포함 되어야 합니다. 
 
-Sloupec popisku může být například [hlasovalo] s možnými hodnotami "Ano" nebo "ne". Nebo může to být [úvěrové riziko] s možnými hodnotami "vysoká" nebo "nízká". 
+예를 들어 레이블 열은 "Yes" 또는 "No"의 가능한 값을 사용 하 여 [투표] 일 수 있습니다. 또는 가능한 값이 "높음" 또는 "낮음" 인 [신용 위험] 일 수 있습니다. 
   
-1.  Přidejte do experimentu modul **logistické regrese dvou tříd** .  
+1.  **2 클래스 로지스틱 회귀** 모듈을 파이프라인에 추가 합니다.  
   
-2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
+2.  **강사 모드 만들기** 옵션을 설정 하 여 모델을 학습 하는 방법을 지정 합니다.  
   
-    -   **Jeden parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.  
+    -   **단일 매개 변수**: 모델을 구성 하는 방법을 아는 경우 특정 값 집합을 인수로 제공할 수 있습니다.  
   
-3.  V případě **tolerance optimalizace**zadejte mezní hodnotu, která se má použít při optimalizaci modelu. Pokud vylepšení mezi iteracemi klesne pod zadanou prahovou hodnotu, je algoritmus považován za sblížený v řešení a školení se zastaví.  
+3.  **최적화 허용 오차**의 경우 모델을 최적화할 때 사용할 임계값을 지정 합니다. 반복 간의 개선 사항이 지정 된 임계값 아래로 떨어지면 알고리즘이 솔루션에서 수렴 된 것으로 간주 되 고 학습은 중지 됩니다.  
   
-4.  Pro **váhu regulárních hodnot L1** a **váhu pravidelného použití L2**zadejte hodnotu, která se má použít pro parametry pro pravidelnost L1 a L2. Pro obojí se doporučuje nenulová hodnota.  
+4.  **L1 정규화 weight** 및 **l2 정규화 가중치**에 대해 정규화 매개 변수 L1 및 l2에 사용할 값을 입력 합니다. 0이 아닌 값은 둘 다에 권장 됩니다.  
   
-     *Pravidelná* metoda představuje způsob, jak zabránit přeložení pomocí postihu modelů s hodnotami extrémního součinitele. Pravidelnou práci můžete provést přidáním pokuty, která je spojená s hodnotami koeficientu, na chybu hypotézy. Přesný model s hodnotami extrémních koeficientů by tedy byl potrestánější, ale méně přesný model s více konzervativními hodnotami by byl méně trestný.  
+     *정규화* 는 극단적인 계수 값을 사용 하 여 과잉 맞춤 by 페널티 모델을 방지 하는 방법입니다. 정규화는 계수 값과 연결 된 페널티를 가설의 오류에 추가 하 여 작동 합니다. 따라서 극단적인 계수 값을 포함 하는 정확한 모델은 페널티가 더 많은 값이 있는 정확한 모델을 페널티가 하는 것이 더 낮습니다.  
   
-     Pravidelná L1 a L2 mají různé účinky a použití.  
+     L1 및 L2 정규화에는 다른 효과와 사용이 있습니다.  
   
-    -   L1 se dá použít na řídké modely, což je užitečné při práci s vysokými objemy dat.  
+    -   L1은 최고 차원 데이터로 작업할 때 유용한 스파스 모델에 적용할 수 있습니다.  
   
-    -   Na rozdíl od je pro data, která nejsou zhuštěná, vhodnější pravidelná navýšení L2.  
+    -   이와 대조적으로, 스파스가 아닌 데이터에 대해 L2 정규화이 좋습니다.  
   
-     Tento algoritmus podporuje lineární kombinaci hodnot L1 a L2 pro účely depravidelnosti: to znamená, <code>x = L1</code> že <code>y = L2</code>Pokud a <code>ax + by = c</code> , pak definuje lineární rozpětí regulárních podmínek.  
+     이 알고리즘은 L1 및 L2 정규화 값의 선형 조합을 지원 합니다. 즉, <code>x = L1</code> 및 <code>ax + by = c</code> <code>y = L2</code> 경우 정규화 용어의 선형 범위를 정의 합니다.  
   
     > [!NOTE]
-    >  Chcete získat další informace o L1 a propravidelnosti L2? Následující článek poskytuje diskuzi o tom, jak se v proneuronovéch L1 a L2 liší a jak ovlivňují přizpůsobení modelu, s ukázkami kódu pro logistické regrese a síťové modely:  [Pravidelná Kol1 a L2 pro Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  L1 및 L2 정규화에 대해 자세히 알아보고 싶습니까? 다음 문서에서는 L1 및 L2 정규화 어떻게 다르고, 로지스틱 회귀 및 신경망 모델에 대 한 코드 샘플을 사용 하 여 모델 피팅에 어떻게 영향을 주는지에 대해 설명 합니다. [l1 및 L2 정규화 for Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
     >
-    > Pro logistické regresní modely byly navrženy různé lineární kombinace L1 a L2: například [elastické čisté](https://wikipedia.org/wiki/Elastic_net_regularization)účely. Doporučujeme, abyste na tyto kombinace odkazovali a definovali lineární kombinaci, která je v modelu platná.
+    > 로지스틱 회귀 모델에 대해 L1 및 L2 용어의 여러 선형 조합이 고안 되었습니다 (예: [탄력적 네트워크 정규화](https://wikipedia.org/wiki/Elastic_net_regularization)). 이러한 조합을 참조 하 여 모델에 적용 되는 선형 조합을 정의 하는 것이 좋습니다.
       
-5.  Pro **velikost paměti pro l-BFGS**určete velikost paměti, která se má použít pro optimalizaci *l-BFGS* .  
+5.  **BFGS에 대 한 메모리 크기**에 대해 *BFGS* 최적화에 사용할 메모리 양을 지정 합니다.  
   
-     L-BFGS představuje "omezené paměťové Broyden-Fletcher-Goldfarb-Shanno". Jedná se o optimalizační algoritmus, který je oblíbený pro odhad parametru. Tento parametr určuje počet minulých pozic a přechodů, které se mají uložit pro výpočet dalšího kroku.  
+     BFGS은 "제한 된 메모리 Broyden-Fletcher-Goldfarb-Shanno"를 나타냅니다. 매개 변수 예측에 널리 사용 되는 최적화 알고리즘입니다. 이 매개 변수는 다음 단계 계산을 위해 저장할 이전 위치 및 그라데이션의 수를 나타냅니다.  
   
-     Tento parametr optimalizace omezuje velikost paměti, která se používá k výpočtu dalšího kroku a směru. Když zadáte méně paměti, školení je rychlejší, ale je méně přesné.  
+     이 최적화 매개 변수는 다음 단계 및 방향을 계산 하는 데 사용 되는 메모리 양을 제한 합니다. 메모리를 더 작게 지정 하면 학습 속도는 빨라지지만 정확도는 낮아집니다.  
   
-6.  V případě **náhodného čísla**zadejte celočíselnou hodnotu. Definování počáteční hodnoty je důležité, pokud chcete, aby byly výsledky reprodukovatelné na více spuštěních stejného experimentu.  
+6.  **난수 초기값**에 정수 값을 입력 합니다. 동일한 파이프라인을 여러 번 실행 하 여 결과를 재현할 수 있도록 하려면 초기값을 정의 하는 것이 중요 합니다.  
   
   
-8. Přidejte do experimentu tagované datové sady a propojte jeden ze [školicích modulů](module-reference.md).  
+8. 태그가 지정 된 데이터 집합을 파이프라인에 추가 하 고 [학습 모듈](module-reference.md)중 하나를 연결 합니다.  
   
-    -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](./train-model.md) .  
+    -   담당자 **모드 만들기** 를 **단일 매개 변수로**설정한 경우 [모델 학습](./train-model.md) 모듈을 사용 합니다.  
   
-9. Spusťte experiment.  
+9. 파이프라인을 실행합니다.  
   
-## <a name="results"></a>Výsledky
+## <a name="results"></a>결과
 
-Po dokončení školení:
+학습 완료 후:
 
-+ Pokud chcete zobrazit souhrn parametrů modelu spolu s váhy funkcí zjištěnými ze školení, klikněte pravým tlačítkem na výstup [výukového modelu](./train-model.md) a vyberte **vizualizovat**.   
++ 모델 매개 변수에 대 한 요약을 학습에서 배운 기능 가중치와 함께 보려면 [모델 학습](./train-model.md) 의 출력을 마우스 오른쪽 단추로 클릭 하 고 **시각화**를 선택 합니다.   
   
-+ Chcete-li vytvořit předpovědi pro nová data, použijte školený model a nová data jako vstup do modulu určení [skóre modelu](./score-model.md) . 
++ 새 데이터에 대 한 예측을 만들려면 학습 된 모델 및 새 데이터를 [모델 점수 매기기](./score-model.md) 모듈의 입력으로 사용 합니다. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>다음 단계
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Azure Machine Learning 서비스에 [사용할 수 있는 모듈 집합](module-reference.md) 을 참조 하세요. 

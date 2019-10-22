@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072258"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Vystavení šablon v Azure API Management
@@ -90,9 +90,9 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```
   
 ### <a name="controls"></a>Ovládací prvky  
- Šablona může používat následující [ovládací prvky stránky.](api-management-page-controls.md) `Issue list`  
+ Šablona `Issue list` může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Datový model  
   
@@ -100,9 +100,9 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 |--------------|----------|-----------------|  
 |`Issues`|Kolekce entit [problémů](api-management-template-data-model-reference.md#Issue) .|Problémy viditelné pro aktuálního uživatele.|  
 |`Paging`|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce aplikací.|  
-|`IsAuthenticated`|boolean|Určuje, jestli je aktuální uživatel přihlášený k portálu pro vývojáře.|  
-|`CanReportIssues`|boolean|Zda má aktuální uživatel oprávnění k zastavení problému.|  
-|`Search`|řetězec|Tato vlastnost je zastaralá a neměla by se používat.|  
+|`IsAuthenticated`|Boolean|Určuje, jestli je aktuální uživatel přihlášený k portálu pro vývojáře.|  
+|`CanReportIssues`|Boolean|Zda má aktuální uživatel oprávnění k zastavení problému.|  
+|`Search`|string|Tato vlastnost je zastaralá a neměla by se používat.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -135,5 +135,5 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).

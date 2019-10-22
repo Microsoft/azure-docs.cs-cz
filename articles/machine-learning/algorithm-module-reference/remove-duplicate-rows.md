@@ -1,5 +1,5 @@
 ---
-title: 'Odebrat duplicitní řádky: Odkaz na modul'
+title: 'Odebrat duplicitní řádky: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se, jak pomocí modulu odebrat duplicitní řádky ve službě Azure Machine Learning odebrat možné duplicity z datové sady.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b16e745de277d5aa262f1e1624df22f97d0cf29c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128523"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693662"
 ---
 # <a name="remove-duplicate-rows-module"></a>Odebrat modul duplicitních řádků
 
@@ -26,15 +26,15 @@ Předpokládejme například, že vaše data vypadají jako následující a př
 
 | PatientID | Iniciály| Pohlaví|Věk|Pustil|
 |----|----|----|----|----|
-|1|F.M.| M| 53| Led|
-|2| F.A.M.| M| 53| Led|
-|3| F.A.M.| M| 24| Led|
-|3| F.M.| M| 24| Úno|
-|4| F.M.| M| 23| Úno|
-| | F.M.| M| 23| |
-|5| F.A.M.| M| 53| |
-|6| F.A.M.| M| NaN| |
-|7| F.A.M.| M| NaN| |
+|1\. místo|F.M.| mil.| 53| Svalbard|
+|2| F.A.M.| mil.| 53| Svalbard|
+|3| F.A.M.| mil.| 24| Svalbard|
+|3| F.M.| mil.| 24| Revize|
+|4| F.M.| mil.| 23| Revize|
+| | F.M.| mil.| 23| |
+|5| F.A.M.| mil.| 53| |
+|6| F.A.M.| mil.| Pak| |
+|7| F.A.M.| mil.| Pak| |
 
 V tomto příkladu je jasně uvedeno více sloupců s potenciálně duplicitními daty. Bez ohledu na to, jestli jsou ve skutečnosti duplicity, záleží na vašich znalostech dat. 
 
@@ -51,7 +51,7 @@ Když spustíte modul, vytvoří se kandidátská datová sada a vrátí sadu ř
 
 ## <a name="how-to-use-remove-duplicate-rows"></a>Použití funkce odebrat duplicitní řádky
 
-1. Přidejte modul do experimentu. Modul **Odebrat duplicitní řádky** můžete najít v části **transformace dat**, **manipulace**.  
+1. Přidejte modul do svého kanálu. Modul **Odebrat duplicitní řádky** můžete najít v části **transformace dat**, **manipulace**.  
 
 2. Připojte datovou sadu, u které chcete kontrolovat duplicitní řádky.
 
@@ -61,21 +61,21 @@ Když spustíte modul, vytvoří se kandidátská datová sada a vrátí sadu ř
 
     Příklady:
 
-    + "Chci mít jistotu, že jsou identifikátory jedinečné": Vyberte pouze sloupec ID.
-    + "Chci zajistit, aby byla kombinace křestního jména, příjmení a ID jedinečná": Vyberte všechny tři sloupce.
+    + "Chci zajistit, aby ID byla jedinečná": vyberte pouze sloupec ID.
+    + "Chcete zajistit, aby byla kombinace jména, příjmení a ID jedinečná": vyberte všechny tři sloupce.
 
 4. Chcete-li určit, který řádek, který se má vrátit, když budou nalezeny duplicity, použijte zaškrtávací políčko **zachovat první duplicitní řádek** :
 
     + Pokud je tato možnost vybrána, vrátí se první řádek a ostatní se zruší. 
     + Pokud zrušíte kontrolu této možnosti, bude poslední duplicitní řádek ve výsledcích uchováván a ostatní budou zahozeny. 
 
-5. Spusťte experiment.
+5. Spuštění kanálu
 
 6. Chcete-li zkontrolovat výsledky, klikněte pravým tlačítkem na modul, vyberte možnost **datová sada výsledků**a klikněte na **vizualizovat**. 
 
 > [!TIP]
 > Pokud jsou výsledky obtížné pochopit nebo pokud chcete vyloučit některé sloupce z úvah, můžete sloupce odebrat pomocí modulu [Výběr sloupců v datové sadě](./select-columns-in-dataset.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

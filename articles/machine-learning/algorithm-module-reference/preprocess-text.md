@@ -1,7 +1,7 @@
 ---
-title: 'Text předběžného zpracování: Odkaz na modul'
+title: '텍스트 전처리: 모듈 참조'
 titleSuffix: Azure Machine Learning service
-description: Naučte se, jak používat modul textu předzpracování ve službě Azure Machine Learning k vyčištění a zjednodušení textu.
+description: Azure Machine Learning 서비스에서 전처리 텍스트 모듈을 사용 하 여 텍스트를 정리 하 고 간소화 하는 방법에 대해 알아봅니다.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,82 +9,82 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 4ee5e90b36f7a8fb3bfb42cad425cbb272553b3a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 2213d26e6d3b2b6a7aca9d65e74a4499ff0da6c1
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210829"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692694"
 ---
-# <a name="preprocess-text"></a>Předběžné zpracování textu
+# <a name="preprocess-text"></a>텍스트 전처리
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+이 문서에서는 Azure Machine Learning 서비스에 대 한 시각적 인터페이스 (미리 보기)의 모듈을 설명 합니다.
 
-K čištění a zjednodušení textu použijte modul **předzpracování textu** . Podporuje tyto běžné operace zpracování textu:
+텍스트 **전처리** 모듈을 사용 하 여 텍스트를 정리 하 고 간소화할 수 있습니다. 이러한 일반 텍스트 처리 작업을 지원 합니다.
 
-* Odebrání stop-slov
-* Použití regulárních výrazů k vyhledání a nahrazení konkrétních cílových řetězců
-* Lemmatizátor nebo předzpracování, který převede více souvisejících slov na jeden kanonický tvar
-* Normalizace případu
-* Odebrání určitých tříd znaků, například čísel, speciálních znaků a posloupností opakujících se znaků, jako je například "AAAA"
-* Identifikace a odebrání e-mailů a adres URL
+* 중지 단어 제거
+* 정규식을 사용 하 여 특정 대상 문자열 검색 및 바꾸기
+* 분류 정리-여러 개의 관련 단어를 단일 정규 형식으로 변환 합니다.
+* 대/소문자 정규화
+* 숫자, 특수 문자, 반복 되는 문자 시퀀스 (예: "aaaa") 등의 특정 문자 클래스 제거
+* 전자 메일 및 Url의 식별 및 제거
 
-Modul pro **zpracování textu** v současné době podporuje pouze angličtinu.
+**전처리 텍스트** 모듈은 현재 영어만 지원 합니다.
 
-## <a name="configure-text-preprocessing"></a>Konfigurace předběžného zpracování textu  
+## <a name="configure-text-preprocessing"></a>텍스트 전처리 구성  
 
-1.  Přidejte modul **textu předběžného zpracování** do experimentu ve službě Azure Machine Learning. Tento modul můžete najít v části **Analýza textu**.
+1.  Azure Machine Learning 서비스의 실험에 **전처리 텍스트** 모듈을 추가 합니다. 이 모듈은 **Text Analytics**에서 찾을 수 있습니다.
 
-1. Připojte datovou sadu, která má alespoň jeden sloupec obsahující text.
+1. 텍스트를 포함 하는 열이 하나 이상 있는 데이터 집합을 연결 합니다.
 
-1. V rozevíracím seznamu **jazyk** vyberte jazyk.
+1. **언어** 드롭다운 목록에서 언어를 선택 합니다.
 
-1. **Sloupec textu, který se má vyčistit**: Vyberte sloupec, který chcete předzpracovat.
+1. **정리할 텍스트 열**: 전처리 하려는 열을 선택 합니다.
 
-1. **Odebrat slova stop**: Tuto možnost vyberte, pokud chcete použít předdefinovaný seznam stopslovo do textového sloupce. 
+1. **중지 단어 제거**: 미리 정의 된 중지 단어 목록을 텍스트 열에 적용 하려면이 옵션을 선택 합니다. 
 
-    Seznamy stopslovo jsou závislé na jazyku a přizpůsobitelné.
+    중지 단어 목록은 언어에 따라 다르며 사용자 지정할 수 있습니다.
 
-1. **Lemmatizátor nebo předzpracování**: Tuto možnost vyberte, pokud chcete, aby se v kanonickém tvaru reprezentují slova. Tato možnost je užitečná pro snížení počtu jedinečných výskytů jiných podobných textových tokenů.
+1. **분류 정리**: 정규 형식으로 단어를 표시 하려면이 옵션을 선택 합니다. 이 옵션은 다른 경우와 유사한 텍스트 토큰의 고유한 발생 수를 줄이는 데 유용 합니다.
 
-    Proces lemmatizátor nebo předzpracování je velmi závislý na jazyku...
+    분류 정리 프로세스는 언어에 따라 달라 집니다.
 
-1. **Zjistit věty**: Tuto možnost vyberte, pokud chcete, aby modul při provádění analýzy vkládal značku ohraničení věty.
+1. **문장 검색**: 분석을 수행할 때 모듈에서 문장 경계 표시를 삽입 하도록 하려면이 옵션을 선택 합니다.
 
-    Tento modul používá sérii tří znaků `|||` kanálu, které reprezentují zakončení věty.
+    이 모듈에서는 일련의 파이프 문자 `|||` 사용 하 여 문장 종결자를 나타냅니다.
 
-1. Provádět volitelné operace hledání a nahrazení pomocí regulárních výrazů.
+1. 정규식을 사용 하 여 선택적 찾기 및 바꾸기 작업을 수행 합니다.
 
-    * **Vlastní regulární výraz**: Zadejte text, který hledáte.
-    * **Vlastní řetězec nahrazení**: Definujte jedinou nahrazující hodnotu.
+    * **사용자 지정 정규식**: 검색 하는 텍스트를 정의 합니다.
+    * **사용자 지정 대체 문자열**: 단일 대체 값을 정의 합니다.
 
-1. **Normalizovat malá a velká**písmena: Tuto možnost vyberte, pokud chcete převést znaky ASCII znaků na malá písmena.
+1. 소문자 **를 소문자로 정규화**: ASCII 대문자를 소문자 형식으로 변환 하려면이 옵션을 선택 합니다.
 
-    Pokud nejsou znaky normalizovány, stejné slovo velkými a malými písmeny je považováno za dvě odlišná slova.
+    문자가 정규화 되지 않은 경우 대문자 및 소문자의 동일한 단어는 두 단어로 간주 됩니다.
 
-1. Z zpracovaného výstupního textu můžete také odebrat následující typy znaků nebo sekvence znaků:
+1. 처리 된 출력 텍스트에서 다음과 같은 유형의 문자 또는 문자 시퀀스를 제거할 수도 있습니다.
 
-    * **Odebrat čísla**: Tuto možnost vyberte, pokud chcete pro zadaný jazyk odebrat všechny číselné znaky. Identifikační čísla jsou závislá na doméně a závislé na jazyku. Pokud jsou číselné znaky integrální součástí známého slova, číslo se nemusí odebrat.
+    * **숫자 제거**: 지정 된 언어의 모든 숫자 문자를 제거 하려면이 옵션을 선택 합니다. Id 번호는 도메인 종속 및 언어에 따라 달라 집니다. 숫자 문자가 알려진 단어의 정수 부분이 면 숫자가 제거 되지 않을 수 있습니다.
     
-    * **Odeberte speciální znaky**: Tuto možnost použijte, pokud chcete odebrat jakékoli jiné než alfanumerické speciální znaky.
+    * **특수 문자 제거**: 영숫자가 아닌 특수 문자를 모두 제거 하려면이 옵션을 사용 합니다.
     
-    * **Odstraňte duplicitní znaky**: Tuto možnost vyberte, pokud chcete odebrat nadbytečné znaky v jakékoli sekvenci, která se opakuje více než dvakrát. Například sekvence jako "AAAAA" by se snížila na "AA".
+    * **중복 문자 제거**: 두 번 이상 반복 되는 시퀀스에서 추가 문자를 제거 하려면이 옵션을 선택 합니다. 예를 들어 "aaaaa"와 같은 시퀀스는 "aa"로 줄어듭니다.
     
-    * **Odebrat e-mailové adresy**: Tuto možnost vyberte, pokud chcete odebrat jakoukoli sekvenci `<string>@<string>`formátu.  
-    * **Odebrat adresy URL**: Tuto možnost vyberte, pokud chcete odebrat všechny sekvence obsahující následující předpony adresy URL `http`: `https`, `ftp`,,`www`
+    * **전자 메일 주소 제거**: `<string>@<string>` 형식의 시퀀스를 모두 제거 하려면이 옵션을 선택 합니다.  
+    * Url **제거**: 다음 url 접두사가 포함 된 시퀀스를 제거 하려면이 옵션을 선택 합니다. `http`, `https`, `ftp`, `www`
     
-1. **Rozbalte položku kontrakty operací**: Tato možnost se vztahuje jenom na jazyky, které používají kontrakty operací. v současné době pouze v angličtině. 
+1. **Expand verb 축약**:이 옵션은 verb 축약를 사용 하는 언어에만 적용 됩니다. 현재는 영어로만 되어 있습니다. 
 
-    Když například vyberete tuto možnost, můžete nahradit frázi. nezůstane tam, kde se nachází.
+    예를 들어이 옵션을 선택 하면 "유지 되지 않습니다." *라는 문구를* *"유지 하지 않습니다*"로 바꿀 수 있습니다.
 
-1. Normalizuje zpětná **lomítka na lomítka**: Tuto možnost vyberte, pokud chcete namapovat `\\` všechny `/`instance na.
+1. **백슬래시를 슬래시로 정규화**: `\\`의 모든 인스턴스를 `/` 매핑하려면이 옵션을 선택 합니다.
 
-1. **Rozdělit tokeny na speciální znaky**: Tuto možnost vyberte `&`, pokud chcete rozdělit slova na znaky, například, `-`a tak dále. Tato možnost může také snížit speciální znaky, pokud se opakuje více než dvakrát. 
+1. **특수 문자에 대 한 토큰 분할**: `&`, `-` 등의 문자에 대 한 단어를 중단 하려면이 옵션을 선택 합니다. 이 옵션은 또한 두 번 이상 반복 될 때 특수 문자를 줄일 수 있습니다. 
 
-    Například řetězec `MS---WORD` by byl rozdělen na tři tokeny `-`, `MS`, a `WORD`.
+    예를 들어 `MS---WORD` 문자열은 `MS`, `-` 및 `WORD`의 세 가지 토큰으로 구분 됩니다.
 
-1. Spusťte experiment.
+1. 실험을 실행합니다.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>다음 단계
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Azure Machine Learning 서비스에 [사용할 수 있는 모듈 집합](module-reference.md) 을 참조 하세요. 

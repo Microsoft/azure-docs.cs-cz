@@ -10,10 +10,10 @@ ms.date: 10/03/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 89f43227cfca3519a4985c5c961cf0b3c5774177
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71936913"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Průvodce importem dat pro Azure Search
@@ -64,13 +64,13 @@ Tuto jednu tabulku nebo zobrazení byste měli vytvořit před spuštěním prů
 
 |  Výběr | Popis |
 | ---------- | ----------- |
-| **Existující zdroj dat** |Pokud ve vyhledávací službě již máte definovány indexery, můžete mít existující definici zdroje dat, kterou můžete znovu použít. V Azure Search objekty zdroje dat používají pouze indexery. Objekt zdroje dat můžete vytvořit programově nebo prostřednictvím průvodce **importem dat** a podle potřeby je znovu použít.|
+| **Stávající zdroj dat** |Pokud ve vyhledávací službě již máte definovány indexery, můžete mít existující definici zdroje dat, kterou můžete znovu použít. V Azure Search objekty zdroje dat používají pouze indexery. Objekt zdroje dat můžete vytvořit programově nebo prostřednictvím průvodce **importem dat** a podle potřeby je znovu použít.|
 | **Ukázky**| Azure Search poskytuje dva předdefinované ukázkové zdroje dat, které se používají v kurzech a rychlých startech: v reálném čase databáze SQL a databáze hotelů hostované na Cosmos DB. Návod na základě ukázky hotelů najdete v tématu [vytvoření indexu v Azure Portal](search-get-started-portal.md) rychlý Start. |
-| [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Název služby, pověření pro uživatele databáze s oprávněním ke čtení a název databáze lze zadat buď na stránce, nebo prostřednictvím připojovacího řetězce ADO.NET. Chcete-li zobrazit nebo upravit vlastnosti, vyberte možnost připojovací řetězec. <br/><br/>Na stránce musí být určena tabulka nebo zobrazení, které poskytuje sadu řádků. Tato možnost se zobrazí po úspěšném připojení a zadání rozevíracího seznamu, aby bylo možné provést výběr.|
-| **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název služby, ID uživatele a heslo a databázi jako připojovací řetězec. Chcete-li použít tento zdroj dat, musíte mít dříve nainstalovaný certifikát v místním úložišti, které šifruje připojení. Pokyny najdete v tématu [připojení k virtuálnímu počítači SQL pro Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na stránce musí být určena tabulka nebo zobrazení, které poskytuje sadu řádků. Tato možnost se zobrazí po úspěšném připojení a zadání rozevíracího seznamu, aby bylo možné provést výběr. |
-| [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Požadavky zahrnují účet, databázi a kolekci. Do indexu budou zahrnuty všechny dokumenty v kolekci. Můžete definovat dotaz pro sloučení nebo filtrování sady řádků nebo nechat dotaz prázdný. V tomto průvodci není vyžadován dotaz.|
-| [**Blob Storage Azure**](search-howto-indexing-azure-blob-storage.md) |Požadavky zahrnují účet úložiště a kontejner. Pokud se v případě názvů objektů BLOB řídí konvence pro účely seskupení, můžete zadat část názvu jako složku v kontejneru. Další informace najdete v tématu [indexování BLOB Storage](search-howto-indexing-azure-blob-storage.md) . |
-| [**Table Storage Azure**](search-howto-indexing-azure-tables.md) |Požadavky zahrnují účet úložiště a název tabulky. Volitelně můžete zadat dotaz pro načtení podmnožiny tabulek. Další informace najdete v tématu [indexování Table Storage](search-howto-indexing-azure-tables.md) . |
+| [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Název služby, přihlašovací údaje uživatele s oprávněním ke čtení a název databáze můžete zadat na této stránce nebo přes připojovací řetězec technologie ADO.NET. Chcete-li zobrazit nebo přizpůsobit vlastnosti, zvolte možnost připojovacího řetězce. <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat.|
+| **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název služby, ID uživatele a heslo a databázi jako připojovací řetězec. Abyste mohli použít tento zdroj dat, je třeba mít v místním úložišti dříve nainstalovaný certifikát šifrující připojení. Pokyny najdete v tématu [Připojení virtuálního počítače SQL ke službě Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
+| [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Požadavky zahrnují účet, databázi a kolekci. Všechny dokumenty v kolekci budou zahrnuty v indexu. Můžete definovat dotaz pro sloučení nebo filtrování sady řádků nebo nechat dotaz prázdný. V tomto průvodci není vyžadován dotaz.|
+| [**Blob Storage Azure**](search-howto-indexing-azure-blob-storage.md) |Požadavky zahrnují účet úložiště a kontejner. Pokud se názvy objektů blob řídí zásadami virtuálního pojmenovávání pro účely seskupování, můžete volitelně zadat část názvu obsahující virtuální adresář jako složku v kontejneru. Další informace najdete v tématu [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md). |
+| [**Table Storage Azure**](search-howto-indexing-azure-tables.md) |Požadavky zahrnují účet úložiště a název tabulky. Volitelně můžete zadat dotaz pro načtení podmnožiny tabulek. Další informace najdete v tématu [Indexování služby Table Storage](search-howto-indexing-azure-tables.md). |
 
 ## <a name="wizard-output"></a>Výstup Průvodce
 
@@ -92,7 +92,7 @@ Průvodce importem dat je spuštěn z panelu příkazů na stránce Přehled slu
 
 2. Na stránce Přehled služby v horní části klikněte na **importovat data**.
 
-   ![Příkaz Importovat data na portálu](./media/search-import-data-portal/import-data-cmd2.png "Spustit Průvodce importem dat")
+   ![Příkaz Importovat data na portálu](./media/search-import-data-portal/import-data-cmd2.png "Spuštění Průvodce importem dat")
 
 Můžete také spustit **Import dat** z jiných služeb Azure, včetně Azure Cosmos DB, Azure SQL Database a úložiště objektů BLOB v Azure. Vyhledejte **přidat Azure Search** v levém navigačním podokně na stránce Přehled služby.
 

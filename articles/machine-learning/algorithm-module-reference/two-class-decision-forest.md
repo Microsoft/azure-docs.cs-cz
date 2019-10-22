@@ -1,5 +1,5 @@
 ---
-title: 'Rozhodovací doménová struktura se dvěma třídami: Odkaz na modul'
+title: 'Rozhodovací doménová struktura se dvěma třídami: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul pro rozhodovací doménovou strukturu dvou tříd ve službě Azure Machine Learning k vytvoření modelu Machine Learning na základě algoritmu rozhodovací doménové struktury.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 37a2ce77e438145219df9cb553d1881626e8a2c6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 243f1774069f048d0e8a1ce11e3ac42e4e73f58b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128400"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693627"
 ---
 # <a name="two-class-decision-forest-module"></a>Modul doménové struktury se dvěma třídami
 
@@ -49,23 +49,23 @@ Další informace najdete v tématu o [rozhodovacích doménových strukturách]
 
 ## <a name="how-to-configure"></a>Jak nakonfigurovat
   
-1.  Přidejte modul pro **rozhodovací doménovou strukturu dvou tříd** do experimentu v Azure Machine Learning a otevřete podokno **vlastností** modulu. 
+1.  Přidejte modul pro **rozhodovací doménovou strukturu dvou tříd** do kanálu v Azure Machine Learning a otevřete podokno **vlastnosti** daného modulu. 
 
     Modul najdete v části **Machine Learning**. Rozbalte položku **Initialize**a pak **klasifikaci**.  
   
 2.  V případě **metody převzorkování**vyberte metodu použitou k vytvoření jednotlivých stromů.  Můžete si vybrat z **zavazadla** nebo **replikace**.  
   
-    -   Zazavazadlí: Pro zaznamenání je také označováno jako *agregace Bootstrap*. V této metodě se každý strom vypěstuje na novém vzorku, který vytvořil náhodným vzorkováním původní datové sady s náhradou, dokud nebudete mít datovou velikost původní.  
+    -   Zaznamenání **do zavazadla**se také označuje jako *agregace Bootstrap*. V této metodě se každý strom vypěstuje na novém vzorku, který vytvořil náhodným vzorkováním původní datové sady s náhradou, dokud nebudete mít datovou velikost původní.  
   
-         Výstupy modelů jsou kombinovány hlasováním, což je forma agregace. Každý strom v doménové struktuře rozhodnutí o klasifikaci má za následek nenormalizovaný frekvenční histogram popisků. Agregaci je sečíst Tyto histogramy a normalizovat a získat tak "pravděpodobnost" pro každý popisek. Tímto způsobem budou mít stromy s důvěrou vysoké předpovědi větší váhu v konečném rozhodnutí kompletu.  
+         Výstupy modelů jsou kombinovány *hlasováním*, což je forma agregace. Každý strom v doménové struktuře rozhodnutí o klasifikaci má za následek nenormalizovaný frekvenční histogram popisků. Agregaci je sečíst Tyto histogramy a normalizovat a získat tak "pravděpodobnost" pro každý popisek. Tímto způsobem budou mít stromy s důvěrou vysoké předpovědi větší váhu v konečném rozhodnutí kompletu.  
   
          Další informace najdete v tématu Wikipedii pro agregaci Bootstrap.  
   
-    -   **Replikovat**: V případě replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a stromy budou odlišné.   
+    -   **Replikace: v**rámci replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a stromy budou odlišné.   
   
 3.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.
+    -   **Jediný parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.
   
 4.  V poli **počet rozhodovacích stromů**zadejte maximální počet rozhodovacích stromů, které lze v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete potenciálně získat lepší pokrytí, ale zvýší se čas školení.  
   
@@ -97,9 +97,9 @@ Po dokončení školení:
   
     Kliknutím na jednotlivé stromové struktury přejdete k podrobnostem o rozdělení a uvidíte pravidla pro každý uzel.
 
-+ Snímek modelu uložíte tak, že kliknete pravým tlačítkem na výstup **trained model** a vyberete **Uložit model**. Uložený model není aktualizován při následných spuštění experimentu.
++ Snímek modelu uložíte tak, že kliknete pravým tlačítkem na výstup **trained model** a vyberete **Uložit model**. Uložený model není aktualizován při následných spuštěních kanálu.
 
-+ Chcete-li použít model pro bodování, přidejte modul určení **skóre modelu** do experimentu.
++ Chcete-li použít model pro bodování, přidejte modul určení **skóre modelu** do kanálu.
 
 
 ## <a name="next-steps"></a>Další kroky

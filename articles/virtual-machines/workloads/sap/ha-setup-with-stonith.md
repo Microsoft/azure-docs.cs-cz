@@ -14,16 +14,16 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71212527"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Nastavení vysoké dostupnosti v SUSE pomocí STONITH
 Tento dokument popisuje podrobné pokyny k nastavení vysoké dostupnosti v SUSE operačním systému pomocí zařízení STONITH.
 
-**Právní omezení** *Tato příručka je odvozená pomocí testování nastavení v prostředí velkých instancí Microsoft HANA, které úspěšně funguje. Protože tým Microsoft Service Management pro velké instance HANA nepodporuje operační systém, možná budete muset kontaktovat SUSE a vyřešit případné další řešení potíží nebo objasnění vrstvy operačního systému. Tým Microsoftu pro správu služeb nastavil zařízení STONITH a plně podporuje a může se zapojit do řešení potíží s STONITH problémy zařízení.*
+**Právní omezení:** *Tato příručka je odvozená pomocí testování nastavení v prostředí velkých instancí Microsoft Hana, které úspěšně funguje. Protože tým Microsoft Service Management pro velké instance HANA nepodporuje operační systém, možná budete muset kontaktovat SUSE a vyřešit případné další řešení potíží nebo objasnění vrstvy operačního systému. Tým Microsoftu pro správu služeb nastavil zařízení STONITH a plně podporuje a může se zapojit do řešení potíží s STONITH problémy zařízení.*
 ## <a name="overview"></a>Přehled
 K nastavení vysoké dostupnosti pomocí clusteringu SUSE musí splňovat tyto požadavky.
 ### <a name="pre-requisites"></a>Požadavky
@@ -63,7 +63,7 @@ Pro nastavení koncového HA pomocí STONITH je potřeba splnit následující k
 7.  Konfigurace prostředků do clusteru
 8.  Test procesu převzetí služeb při selhání
 
-## <a name="1---identify-the-sbd-device"></a>1.   Identifikace zařízení SBD
+## <a name="1---identify-the-sbd-device"></a>1. identifikace zařízení SBD
 Tato část popisuje, jak určit zařízení SBD pro vaši instalaci poté, co tým Microsoftu pro správu služeb nakonfiguruje STONITH. **Tato část se vztahuje pouze na stávajícího zákazníka**. Pokud jste nový zákazník, tým Microsoftu pro správu služeb vám poskytne název zařízení SBD a tuto část můžete přeskočit.
 
 1,1 upravit */etc/iSCSI/initiatorname.iSCI* na 
@@ -75,7 +75,7 @@ Služba Microsoft Service Management poskytuje tento řetězec. Upravte soubor n
 
 ![iniciátor. png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1,2 upravit */etc/iSCSI/iscsid.conf*: Nastavte *Node. Session. Timeo. replacement_timeout = 5* a *Node. Startup = Automatic*. Upravte soubor na **obou** uzlech.
+1,2 upravit */etc/iSCSI/iscsid.conf*: nastavte *Node. Session. Timeo. replacement_timeout = 5* a *Node. Startup = Automatic*. Upravte soubor na **obou** uzlech.
 
 1,3 spuštěním příkazu pro zjišťování se zobrazí čtyři relace. Spusťte ji na obou uzlech.
 
@@ -83,21 +83,21 @@ Služba Microsoft Service Management poskytuje tento řetězec. Upravte soubor n
 iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 ```
 
-![iSCSIadmDiscovery.png](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
+![iSCSIadmDiscovery. png](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
 1,4 spuštěním příkazu pro přihlášení k zařízení iSCSI se zobrazí čtyři relace. Spusťte ji na **obou** uzlech.
 
 ```
 iscsiadm -m node -l
 ```
-![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
+![iSCSIadmLogin. png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1,5 spusťte skript opětovného prohledání: *rescan-SCSI-Bus.sh*.  Tento skript vám ukáže nové disky, které jste pro vás vytvořili.  Spusťte ji na obou uzlech. Mělo by se zobrazit číslo logické jednotky (LUN), které je větší než nula (například: 1, 2 atd.)
+1,5 spusťte skript opětovného prohledání: *rescan-SCSI-Bus.sh*.  Tento skript vám ukáže nové disky, které jste pro vás vytvořili.  Spusťte ji na obou uzlech. Mělo by se zobrazit číslo logické jednotky (LUN), které je větší než nula (například: 1, 2 atd.).
 
 ```
 rescan-scsi-bus.sh
 ```
-![rescanscsibus.png](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
+![rescanscsibus. png](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
 
 1,6 Chcete-li získat název zařízení, spusťte příkaz *fdisk – l*. Spusťte ji na obou uzlech. Vyberte zařízení s velikostí **178 MIB**.
 
@@ -105,16 +105,16 @@ rescan-scsi-bus.sh
   fdisk –l
 ```
 
-![fdisk-l.png](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
+![fdisk-l. png](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
 
-## <a name="2---initialize-the-sbd-device"></a>2.   Inicializace zařízení SBD
+## <a name="2---initialize-the-sbd-device"></a>2. inicializace zařízení SBD
 
 2,1 inicializace zařízení **SBD na** uzlech
 
 ```
 sbd -d <SBD Device Name> create
 ```
-![sbdcreate.png](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
+![sbdcreate. png](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
 
 2,2 Podívejte se, co bylo zapsáno do zařízení. Udělejte to na **obou** uzlech
 
@@ -122,7 +122,7 @@ sbd -d <SBD Device Name> create
 sbd -d <SBD Device Name> dump
 ```
 
-## <a name="3---configuring-the-cluster"></a>3.   Konfigurace clusteru
+## <a name="3---configuring-the-cluster"></a>3. konfigurace clusteru
 Tato část popisuje kroky pro nastavení clusteru SUSE HA.
 ### <a name="31-package-installation"></a>instalace balíčku 3,1
 3.1.1 Zkontrolujte prosím, že jsou nainstalované vzory ha_sles a SAPHanaSR-doc. Pokud není nainstalován, nainstalujte je. Nainstalujte ji do **obou** uzlů.
@@ -130,23 +130,23 @@ Tato část popisuje kroky pro nastavení clusteru SUSE HA.
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
 ```
-![zypperpatternha_sles.png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
-![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+![zypperpatternha_sles. png ](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
+ ![zypperpatternSAPHANASR-doc. png ](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3,2 nastavení clusteru
 3.2.1 můžete buď použít příkaz *ha-cluster-init* , nebo můžete použít Průvodce YaST2 k nastavení clusteru. V tomto případě se používá Průvodce YaST2. Tento krok provedete **pouze v primárním uzlu**.
 
-Sledujte YaST2 > vysoké dostupnosti > clusteru ![YaST-Control-Center. png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
-![YaST-Hawk-Install. png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
+Dodržujte YaST2 > s vysokou dostupností > clusteru ![yast-Control-Center. png ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
+ ![yast-Hawk-Install. png ](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
 Klikněte na tlačítko **Storno** , protože balíček halk2 je již nainstalován.
 
-![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
+![YaST-Hawk-Continue. png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
 Klikněte na **pokračovat** .
 
-Očekávaná hodnota = počet nasazených uzlů (v tomto případě 2) ![YaST-cluster-Security. png](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) klikněte na **Další**
-![YaST-cluster-Configure-csync2.](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) png přidat názvy uzlů a pak klikněte na Přidat. navrhované soubory "
+Očekávaná hodnota = počet nasazených uzlů (v tomto případě 2) ![yast-Cluster-Security. png ](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) klikněte na **další** 
+ ![yast-cluster-Configure-csync2. png ](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) přidejte názvy uzlů a pak klikněte na Přidat Doporučené soubory.
 
 Klikněte na zapnout csync2.
 
@@ -158,64 +158,64 @@ Klikněte na tlačítko **OK**.
 
 Ověřování se provádí pomocí IP adres a předsdílených klíčů v Csync2. Soubor klíče se vygeneruje s csync2-k/etc/csync2/key_hagroup. Soubor key_hagroup by měl být po vytvoření zkopírován do všech členů clusteru ručně. Nezapomeňte **zkopírovat soubor z uzlu 1 do Uzel2**.
 
-![yast-cluster-conntrackd.png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
+![YaST-cluster-conntrackd. png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-Klikněte na **Další**
-![YaST-Cluster-Service. png.](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+Klikněte na tlačítko **další** 
+ ![yast-Cluster-Service. png ](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 Ve výchozí možnosti bylo spuštění vypnuto, změňte ho na zapnuto, aby se Pacemaker spustil při spuštění. Můžete vybrat podle požadavků na instalaci.
 Klikněte na **Další** a konfigurace clusteru se dokončí.
 
-## <a name="4---setting-up-the-softdog-watchdog"></a>4.   Nastavení sledovacího zařízení Softdog
+## <a name="4---setting-up-the-softdog-watchdog"></a>4. nastavení sledovacího zařízení Softdog
 Tato část popisuje konfiguraci sledovacího zařízení (softdog).
 
 4,1 přidejte následující řádek do */etc/init.d/Boot.Local* v **obou** uzlech.
 ```
 modprobe softdog
 ```
-![modprobe-softdog.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
+![modprobe-softdog. png](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
 
 4,2 aktualizujte soubor */etc/sysconfig/SBD* na **obou** uzlech následujícím způsobem:
 ```
 SBD_DEVICE="<SBD Device Name>"
 ```
-![sbd-device.png](media/HowToHLI/HASetupWithStonith/sbd-device.png)
+![SBD-Device. png](media/HowToHLI/HASetupWithStonith/sbd-device.png)
 
 4,3 načtěte modul jádra na **obou** uzlech spuštěním následujícího příkazu.
 ```
 modprobe softdog
 ```
-![modprobe-softdog-command.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
+![modprobe-softdog-Command. png](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
 4,4 Zkontrolujte a zajistěte, **aby na** uzlech běžela softdog, a to následujícím způsobem:
 ```
 lsmod | grep dog
 ```
-![lsmod-grep-dog.png](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
+![lsmod-grep-Dog. png](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
 
 4,5 spustit zařízení SBD v **obou** uzlech
 ```
 /usr/share/sbd/sbd.sh start
 ```
-![sbd-sh-start.png](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
+![SBD-SH-Start. png](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
 
 4,6 otestujte démon SBD na **obou** uzlech. Po nakonfigurování **na uzlech se zobrazí** dvě položky.
 ```
 sbd -d <SBD Device Name> list
 ```
-![sbd-list.png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
+![SBD-list. png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
 4,7 odeslání zkušební zprávy na **jeden** z vašich uzlů
 ```
 sbd  -d <SBD Device Name> message <node2> <message>
 ```
-![sbd-list.png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
+![SBD-list. png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
 4,8 na **druhém** uzlu (Uzel2) můžete kontrolovat stav zprávy.
 ```
 sbd  -d <SBD Device Name> list
 ```
-![sbd-list-message.png](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
+![SBD-list-Message. png](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
 
 4,9 Chcete-li přijmout konfiguraci SBD, aktualizujte soubor */etc/sysconfig/SBD* následujícím způsobem. Aktualizujte soubor na **obou** uzlech.
 ```
@@ -231,9 +231,9 @@ systemctl start pacemaker
 ```
 ![Start-Pacemaker. png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-Pokud se služba Pacemaker *nezdařila*, *Přečtěte si scénář 5: Služba Pacemaker se nezdařila*
+Pokud se služba Pacemaker *nepovede,* Přečtěte si *scénář 5: služba Pacemaker se nezdařila.*
 
-## <a name="5---joining-the-cluster"></a>5.   Připojení ke clusteru
+## <a name="5---joining-the-cluster"></a>5. připojení ke clusteru
 Tato část popisuje, jak připojit uzel ke clusteru.
 
 ### <a name="51-add-the-node"></a>5,1 přidat uzel
@@ -241,9 +241,9 @@ Spuštěním následujícího příkazu na **Uzel2** umožněte Uzel2 připojit 
 ```
 ha-cluster-join
 ```
-Pokud při připojování ke clusteru dojde k *chybě* , přečtěte *si scénář 6: Uzel 2 se nemůže připojit ke clusteru*.
+Pokud při připojování ke clusteru dojde k *chybě* , použijte *scénář 6: uzel 2 nelze připojit ke clusteru*.
 
-## <a name="6---validating-the-cluster"></a>6.   Ověřování clusteru
+## <a name="6---validating-the-cluster"></a>6. ověřování clusteru
 
 ### <a name="61-start-the-cluster-service"></a>6,1 spuštění Clusterové služby
 Chcete-li kontrolovat a volitelně spustit cluster na **obou** uzlech poprvé.
@@ -251,13 +251,13 @@ Chcete-li kontrolovat a volitelně spustit cluster na **obou** uzlech poprvé.
 systemctl status pacemaker
 systemctl start pacemaker
 ```
-![systemctl-status-pacemaker.png](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
+![systemctl-status-Pacemaker. png](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
 ### <a name="62-monitor-the-status"></a>6,2 Sledujte stav
 Spusťte příkaz *crm_mon* , abyste zajistili, že **oba** uzly jsou online. Můžete ho spustit na **jakémkoli uzlu** clusteru.
 ```
 crm_mon
 ```
-![CRM-Mon. png](media/HowToHLI/HASetupWithStonith/crm-mon.png) můžete se také přihlásit k Hawk a ověřit tak stav clusteru *> IP\<adresa uzlu https://: 7630*. Výchozí uživatel je hacluster a heslo je Linux. V případě potřeby můžete heslo změnit pomocí příkazu *passwd* .
+![crm-Mon. png ](media/HowToHLI/HASetupWithStonith/crm-mon.png) můžete se také přihlásit k Hawk a ověřit stav clusteru *https://\<node IP >: 7630*. Výchozí uživatel je hacluster a heslo je Linux. V případě potřeby můžete heslo změnit pomocí příkazu *passwd* .
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. Konfigurace vlastností a prostředků clusteru 
 Tato část popisuje kroky pro konfiguraci prostředků clusteru.
@@ -288,7 +288,7 @@ Přidejte konfiguraci do clusteru.
 ```
 crm configure load update crm-bs.txt
 ```
-![crm-configure-crmbs.png](media/HowToHLI/HASetupWithStonith/crm-configure-crmbs.png)
+![CRM-Configure-crmbs. png](media/HowToHLI/HASetupWithStonith/crm-configure-crmbs.png)
 
 ### <a name="72-stonith-device"></a>zařízení STONITH 7,2
 Přidejte STONITH prostředku. Vytvořte soubor a přidejte text následujícím způsobem.
@@ -320,13 +320,13 @@ crm configure load update crm-vip.txt
 ### <a name="74-validate-the-resources"></a>7,4 ověřit prostředky
 
 Po spuštění příkazu *crm_mon*můžete zobrazit tyto dva prostředky.
-![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
+![crm_mon_command. png ](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-Můžete také zobrazit stav na adrese *> IP adresa\<uzlu https://: 7630/CIB/Live/State.*
+Také můžete zobrazit stav na adrese *https://\<node IP adresa >: 7630/CIB/Live/State.*
 
-![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
+![hawlk-status-Page. png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
-## <a name="8-testing-the-failover-process"></a>8. Testování procesu převzetí služeb při selhání
+## <a name="8-testing-the-failover-process"></a>8. testování procesu převzetí služeb při selhání
 Chcete-li otestovat proces převzetí služeb při selhání, zastavte službu Pacemaker v Uzel1 a převzetí služeb při selhání v Uzel2.
 ```
 Service pacemaker stop
@@ -334,17 +334,17 @@ Service pacemaker stop
 Teď zastavte službu Pacemaker pro **Uzel2** a převzetí služeb při selhání službou **Uzel1**
 
 **Před převzetím služeb při selhání**  
-![Before-Failover. png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+![Before-Failover. png ](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
 **Po převzetí služeb při selhání**  
-![After-Failover. png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![CRM-Mon-After-Failover. png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+![after-Failover. png ](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-Mon-After-Failover. png ](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
-## <a name="9-troubleshooting"></a>9. Řešení potíží
+## <a name="9-troubleshooting"></a>9. odstraňování potíží
 Tato část popisuje několik scénářů selhání, které mohou být zjištěny během instalace. Tyto problémy nemusí být nutně vhodné.
 
-### <a name="scenario-1-cluster-node-not-online"></a>Scénář 1: Uzel clusteru není online.
+### <a name="scenario-1-cluster-node-not-online"></a>Scénář 1: uzel clusteru není online
 Pokud se některý z uzlů ve Správci clusteru nezobrazuje online, můžete zkusit převést ho do online režimu.
 
 Spuštění služby iSCSI
@@ -389,13 +389,13 @@ Pokud chcete balíčky nainstalovat, použijte YaST > software > software > záv
 
 ![YaST-sofwaremanagement. png](media/HowToHLI/HASetupWithStonith/yast-sofwaremanagement.png)
 
-V části závislosti vyberte "instalovat doporučené balíčky" ![YaST-Dependencies. png.](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
+V části závislosti vyberte "nainstalovat Doporučené balíčky" ![yast-Dependencies. png ](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
 
 Zkontrolujte změny a stiskněte OK.
 
 ![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
-Instalace balíčku pokračuje ![YaST-Performing-Installation. png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
+Instalace balíčku pokračuje ![yast-Performing-Installation. png ](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
 Kliknutí na Další
 
@@ -407,13 +407,13 @@ Také je potřeba nainstalovat balíčky libqt4 a libyui-QT.
 ```
 zypper -n install libqt4
 ```
-![zypper-install-libqt4.png](media/HowToHLI/HASetupWithStonith/zypper-install-libqt4.png)
+![Zypper-Install-libqt4. png](media/HowToHLI/HASetupWithStonith/zypper-install-libqt4.png)
 ```
 zypper -n install libyui-qt
 ```
-![Zypper-Install-ligyui. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
-![Zypper-Install-ligyui_part2. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) Yast2 by teď mělo být možné otevřít grafické zobrazení, jak je znázorněno zde.
-![yast2-control-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![zypper-Install-ligyui. png ](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
+ ![zypper-Install-ligyui_part2. png ](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) Yast2 by mělo být možné otevřít grafické zobrazení nyní, jak je znázorněno zde.
+![yast2-Control-Center. png ](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 ### <a name="scenario-3-yast2-does-not-high-availability-option"></a>Scénář 3: YaST2 nemá možnost vysoké dostupnosti
 Aby bylo možné zobrazit možnost vysoké dostupnosti v řídicím centru YaST2, je nutné nainstalovat další balíčky.
@@ -433,8 +433,8 @@ Používání softwaru YaST2 > software > správu softwaru
 
 Výběr vzorů
 
-![yast-pattern1.png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
-![yast-pattern2.png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
+![yast-pattern1. png ](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
+ ![yast-pattern2. png ](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
 Klikněte na **přijmout**
 
@@ -442,22 +442,22 @@ Klikněte na **přijmout**
 
 Klikněte na **pokračovat** .
 
-![yast2-performing-installation.png](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
+![YaST2-Performing-Installation. png](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
 Po dokončení instalace klikněte na **Další** .
 
-![yast2-installation-report.png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
+![YaST2-Installation-Report. png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
-### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>Scénář 4: Instalace HANA se nezdařila s chybou sestavení RSZ
+### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>Scénář 4: instalace HANA se nezdařila s chybou sestavení RSZ
 Instalace HANA se nezdařila s následující chybou.
 
-![Hana-installation-error.png](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
+![Hana-Installation-Error. png](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
 
 Chcete-li tento problém vyřešit, je třeba nainstalovat knihovny (libgcc_sl a libstdc + + 6) následujícím způsobem.
 
-![zypper-install-lib.png](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
+![Zypper-Install-lib. png](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
 
-### <a name="scenario-5-pacemaker-service-fails"></a>Scénář 5: Služba Pacemaker se nezdařila
+### <a name="scenario-5-pacemaker-service-fails"></a>Scénář 5: služba Pacemaker se nezdařila
 
 Během spouštění služby Pacemaker došlo k následující chybě.
 
@@ -508,7 +508,7 @@ Persistent=true
 
 ![Persistent. png](media/HowToHLI/HASetupWithStonith/Persistent.png)
 
-### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>Scénář 6: Uzel 2 se nemůže připojit ke clusteru.
+### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>Scénář 6: uzel 2 se nemůže připojit ke clusteru
 
 Při připojení Uzel2 ke stávajícímu clusteru pomocí příkazu *ha-cluster-JOIN* došlo k následující chybě.
 

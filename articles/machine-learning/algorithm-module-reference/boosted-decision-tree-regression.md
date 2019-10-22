@@ -1,5 +1,5 @@
 ---
-title: 'Zvýšila se regrese rozhodovacího stromu: Odkaz na modul'
+title: 'Zesílené regrese rozhodovacího stromu: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se, jak používat modul pro regresi se zesíleným rozhodovacím stromem ve službě Azure Machine Learning k vytvoření sady regresních stromů pomocí zvyšování úrovně.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 5f26dfbdd8d3ef094ed380b7bd00ab0169152502
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 4b8ff1c9f5b0f0b04448b950d3ba904ba76927c9
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208163"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693841"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Zesílený modul pro regresi rozhodovacího stromu
 
@@ -22,7 +22,7 @@ Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure
 
 Tento modul použijte k vytvoření kompletu regresních stromů pomocí zvyšování úrovně. *Zvyšování úrovně* znamená, že každý strom je závislý na předchozí stromové struktuře. Algoritmus se učí tím, že se dovedou zbytky stromů, které jí předcházejí. Proto zvýšení přesnosti v kompletu rozhodovacího stromu zamýšlí zlepšit přesnost s malým rizikem menšího rozsahu.  
   
-Tato regresní metoda je metoda učení pod dohledem, a proto vyžaduje *datovou sadu*s popiskem. Sloupec popisku musí obsahovat číselné hodnoty.  
+Tato regresní metoda je metoda učení pod dohledem, a proto vyžaduje *datovou sadu s popiskem*. Sloupec popisku musí obsahovat číselné hodnoty.  
 
 > [!NOTE]
 > Tento modul použijte pouze s datovými sadami, které používají číselné proměnné.  
@@ -46,20 +46,20 @@ Další informace najdete v těchto článcích:
   
 -  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
-    Microsoft Research: Z RankNet až LambdaRank na LambdaMART: Přehled. Od J.C. Burges.
+    Microsoft Research: od RankNet do LambdaRank do LambdaMART: Přehled. Od J.C. Burges.
 
 Metodu zvyšování barevného přechodu lze také použít pro problémy s klasifikací tím, že je zmenšíte na regresi pomocí vhodné funkce ztráty. Další informace o implementaci posílených stromů pro úlohy klasifikace najdete v článku o [rozhodovacím stromu se dvěma třídami](./two-class-boosted-decision-tree.md).  
 
 ## <a name="how-to-configure-boosted-decision-tree-regression"></a>Jak nakonfigurovat zvýšení regrese rozhodovacího stromu
 
-1.  Přidejte do experimentu modul **zesíleného rozhodovacího stromu** . Tento modul najdete pod **Machine Learning**, **inicializovat**v rámci kategorie regrese . 
+1.  Přidejte do svého kanálu modul **zesíleného rozhodovacího stromu** . Tento modul najdete pod **Machine Learning**, **inicializovat**v rámci kategorie **regrese** . 
   
 2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: Tuto možnost vyberte, pokud víte, jak chcete model konfigurovat, a poskytněte konkrétní sadu hodnot jako argumenty.  
+    -   **Jeden parametr**: tuto možnost vyberte, pokud víte, jak chcete model konfigurovat, a poskytněte konkrétní sadu hodnot jako argumenty.  
    
   
-3. **Maximální počet pochodů na strom**: Určuje maximální počet uzlů terminálu (opustí), které lze vytvořit v jakémkoli stromu.  
+3. **Maximální počet pochodů na stromovou strukturu**: Určuje maximální počet uzlů terminálu (opustí), které je možné vytvořit v jakémkoli stromu.  
 
     Zvýšením této hodnoty můžete zvýšit velikost stromu a dosáhnout lepší přesnosti, a to na riziko přebudování a delší dobu školení.  
 
@@ -67,17 +67,17 @@ Metodu zvyšování barevného přechodu lze také použít pro problémy s klas
 
     Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň 5 případů, které splňují stejné podmínky.
 
-5. **Rychlost učení**: Zadejte číslo od 0 do 1, které definuje velikost kroku při učení. Studijní frekvence určuje, jak rychle nebo pomalu se učí sblížení s optimálním řešením. Pokud je velikost kroku příliš velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než se sblížení dostanou na nejlepší řešení.
+5. **Studijní frekvence**: zadejte číslo od 0 do 1, které definuje velikost kroku při učení. Studijní frekvence určuje, jak rychle nebo pomalu se učí sblížení s optimálním řešením. Pokud je velikost kroku příliš velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než se sblížení dostanou na nejlepší řešení.
 
-6. **Počet vytvořených stromů**: Určuje celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete potenciálně získat lepší pokrytí, ale zvýší se čas školení.
+6. **Počet konstruovaných stromů**: uveďte celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete potenciálně získat lepší pokrytí, ale zvýší se čas školení.
 
-    Tato hodnota také určuje počet stromů zobrazených při vizualizaci výukového modelu. Pokud chcete zobrazit nebo vytisknout strom Ingle, můžete nastavit hodnotu na 1. je však vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a nejsou provedeny žádné další iterace.
+    Tato hodnota také určuje počet stromů zobrazených při vizualizaci výukového modelu. Pokud chcete zobrazit nebo vytisknout jeden strom, můžete hodnotu nastavit na 1. je však vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a nejsou provedeny žádné další iterace.
 
-7. **Počáteční číslo prvního čísla**: Zadejte volitelné nezáporné celé číslo, které bude použito jako hodnota náhodného základu. Určení počáteční hodnoty zajišťuje reprodukovatelnost v různých spuštěních, která mají stejná data a parametry.
+7. **Počáteční číslo osiva**: zadejte volitelné nezáporné celé číslo, které se použije jako hodnota náhodného základu. Určení počáteční hodnoty zajišťuje reprodukovatelnost v různých spuštěních, která mají stejná data a parametry.
 
     Ve výchozím nastavení je náhodné osazení nastaveno na hodnotu 0, což znamená, že počáteční počáteční hodnota se získá ze systémových hodin.
   
-8. **Povolení neznámých úrovní kategorií**: Tuto možnost vyberte, pokud chcete vytvořit skupinu pro neznámé hodnoty v sadách pro školení a ověření. Pokud zrušíte výběr této možnosti, může model přijímat pouze hodnoty, které jsou obsaženy v školicích datech. Model může být pro známé hodnoty méně přesný, ale může poskytovat lepší předpovědi pro nové (neznámé) hodnoty.
+8. **Povolení neznámých úrovní kategorií**: tuto možnost vyberte, pokud chcete vytvořit skupinu pro neznámé hodnoty v sadách pro školení a ověření. Pokud zrušíte výběr této možnosti, může model přijímat pouze hodnoty, které jsou obsaženy v školicích datech. Model může být pro známé hodnoty méně přesný, ale může poskytovat lepší předpovědi pro nové (neznámé) hodnoty.
 
 9. Přidejte datovou sadu školení a jeden z školicích modulů:
 
@@ -85,7 +85,7 @@ Metodu zvyšování barevného přechodu lze také použít pro problémy s klas
   
     
 
-10. Spusťte experiment.  
+10. Spuštění kanálu  
   
 ## <a name="results"></a>Výsledky
 
@@ -97,8 +97,6 @@ Po dokončení školení:
 
 + Chcete-li použít model pro bodování, připojte ho k [modelu skóre](./score-model.md)a předpovídat hodnoty pro nové vstupní příklady.
 
-+ Pokud chcete uložit snímek školicího modelu, klikněte pravým tlačítkem na vyškolený výstup **modelu** školicího modulu a vyberte **Uložit jako**. Kopie vyškolených modelů, které uložíte, není aktualizována při následných spuštění experimentu.
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

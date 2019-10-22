@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 070365c79e14b80c50c70aa3277a6eddd9286a37
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 39a7e78085f297838a028489de23c1991b6d672f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018745"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693438"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall (Preview)
 
@@ -35,20 +35,20 @@ Souhrn kroků pro uzamčení odchozích dat ze stávajícího HDInsight s Azure 
 1. Vytvořte bránu firewall.
 1. Přidat do brány firewall pravidla aplikací
 1. Přidejte do brány firewall Síťová pravidla.
-1. Vytvoření směrovací tabulky.
+1. Vytvořte směrovací tabulku.
 
 ### <a name="create-a-new-firewall-for-your-cluster"></a>Vytvoření nové brány firewall pro cluster
 
 1. Ve virtuální síti, ve které se nachází váš cluster, vytvořte podsíť s názvem **AzureFirewallSubnet** . 
-1. Pomocí kroků v [kurzu vytvořte novou bránu firewall **test-FW01** : Nasazení a konfigurace Azure Firewall pomocí Azure Portal](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall).
+1. Pomocí kroků v kurzu vytvořte novou bránu firewall **test-FW01** [: nasaďte a nakonfigurujte Azure firewall pomocí Azure Portal](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall).
 
 ### <a name="configure-the-firewall-with-application-rules"></a>Konfigurace brány firewall pomocí pravidel aplikací
 
 Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a přijímat důležitá sdělení.
 
-Z Azure Portal vyberte nový **test brány firewall – FW01** . Klikněte na **pravidla** v části **Nastavení** > **kolekce** > pravidel aplikace**přidat kolekci pravidel aplikace**.
+Z Azure Portal vyberte nový **test brány firewall – FW01** . V části **nastavení**  > **kolekce pravidel aplikací** klikněte na **pravidla**  > **přidat kolekci pravidel aplikace**.
 
-![Hlava Přidat kolekci pravidel aplikace](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+![Title: přidat kolekci pravidel aplikace](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 Na obrazovce **přidat kolekci pravidel aplikací** proveďte následující kroky:
 
@@ -60,30 +60,30 @@ Na obrazovce **přidat kolekci pravidel aplikací** proveďte následující kro
 
 1. Do **oddílu cílové plně kvalifikované názvy domén** přidejte následující pravidla:
 
-   | **Název** | **Zdrojová adresa** | **Protocol:Port** | **Cílové plně kvalifikované názvy domén** | **Poznámky** |
+   | **Název** | **Zdrojová adresa** | **Protokol: port** | **Cílové plně kvalifikované názvy domén** | **Poznámky** |
    | --- | --- | --- | --- | --- |
-   | Rule_2 | * | https:443 | login.windows.net | Povoluje aktivitu přihlášení systému Windows. |
-   | Rule_3 | * | https:443 | login.microsoftonline.com | Povoluje aktivitu přihlášení systému Windows. |
-   | Rule_4 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | Pokud je váš cluster zálohovaný pomocí WASB, přidejte pravidlo pro WASB. Pokud chcete použít jenom připojení HTTPS, ujistěte se, že je v účtu úložiště povolený [požadovaný zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) . |
+   | Rule_2 | * | https: 443 | login.windows.net | Povoluje aktivitu přihlášení systému Windows. |
+   | Rule_3 | * | https: 443 | login.microsoftonline.com | Povoluje aktivitu přihlášení systému Windows. |
+   | Rule_4 | * | https: 443, http: 80 | < storage_account_name. blob. Core. Windows. NET > | Pokud je váš cluster zálohovaný pomocí WASB, přidejte pravidlo pro WASB. Pokud chcete použít jenom připojení HTTPS, ujistěte se, že je v účtu úložiště povolený [požadovaný zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) . |
 
-1. Klikněte na **Přidat**.
+1. Klikněte na tlačítko **Přidat**.
 
-   ![Hlava Zadejte podrobnosti kolekce pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   ![Title: zadejte podrobnosti kolekce pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurace brány firewall pomocí síťových pravidel
 
 Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
 1. Z Azure Portal vyberte nový **test brány firewall – FW01** .
-1. Klikněte na **pravidla** v části **Nastavení** > **kolekce** > pravidel sítě**Přidat kolekce pravidel sítě**.
+1. V části **nastavení**  > **kolekce pravidel sítě** klikněte na **pravidla**  > **přidat kolekci pravidel sítě**.
 1. Na obrazovce **přidat kolekci pravidel sítě** zadejte **název**a **prioritu**a v rozevírací nabídce **Akce** klikněte na možnost **Povolení** .
 1. V části **IP adresy** vytvořte následující pravidla:
 
    | **Název** | **Protokol** | **Zdrojová adresa** | **Cílová adresa** | **Cílový port** | **Poznámky** |
    | --- | --- | --- | --- | --- | --- |
-   | Rule_1 | UDP | * | * | `123` | Časová služba |
-   | Rule_2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Pokud používáte Balíček zabezpečení podniku (ESP), pak v části IP adresy přidejte síťové pravidlo, které umožňuje komunikaci s clustery AAD-DS pro ESP. IP adresy řadičů domény najdete v části AAD-DS na portálu. | 
-   | Rule_3 | TCP | * | IP adresa vašeho účtu Data Lake Storage | `*` | Pokud používáte Azure Data Lake Storage, můžete v části IP adresy přidat síťové pravidlo, které řeší problém s SNI s ADLS Gen1 a Gen2. Tato možnost přesměruje provoz do brány firewall, což může vést k vyšším nákladům na načtení velkých objemů dat, ale přenos bude protokolován a auditován v protokolech brány firewall. Určete IP adresu účtu Data Lake Storage. Můžete použít příkaz prostředí PowerShell, například `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` k překladu plně kvalifikovaného názvu domény na IP adresu.|
+   | Rule_1 | KONTROLNÍ | * | * | `123` | Časová služba |
+   | Rule_2 | Všechny | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Pokud používáte Balíček zabezpečení podniku (ESP), pak v části IP adresy přidejte síťové pravidlo, které umožňuje komunikaci s clustery AAD-DS pro ESP. IP adresy řadičů domény najdete v části AAD-DS na portálu. | 
+   | Rule_3 | TCP | * | IP adresa vašeho účtu Data Lake Storage | `*` | Pokud používáte Azure Data Lake Storage, můžete v části IP adresy přidat síťové pravidlo, které řeší problém s SNI s ADLS Gen1 a Gen2. Tato možnost přesměruje provoz do brány firewall, což může vést k vyšším nákladům na načtení velkých objemů dat, ale přenos bude protokolován a auditován v protokolech brány firewall. Určete IP adresu účtu Data Lake Storage. K překladu plně kvalifikovaného názvu domény na IP adresu můžete použít příkaz prostředí PowerShell, například `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")`.|
    | Rule_4 | TCP | * | * | `12000` | Volitelné Pokud používáte Log Analytics, vytvořte v části IP adresy síťové pravidlo, které umožní komunikaci s pracovním prostorem Log Analytics. |
 
 1. V části **značky služby** vytvořte následující pravidla:
@@ -94,7 +94,7 @@ Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
 1. Kliknutím na **Přidat** dokončete vytvoření kolekce pravidel sítě.
 
-   ![Hlava Zadat kolekci pravidel aplikace](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![Title: zadejte kolekci pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>Vytvoření a konfigurace směrovací tabulky
 
@@ -113,14 +113,14 @@ Pokud chcete například nakonfigurovat směrovací tabulku pro cluster vytvoře
 1. V části **Nastavení**klikněte na **trasy** .
 1. Klikněte na tlačítko **Přidat** a vytvořte trasy pro IP adresy v následující tabulce.
 
-| Název směrování | Předpona adresy | Typ dalšího přesměrování | Adresa dalšího přesměrování |
+| Název trasy | Předpona adresy | Typ dalšího segmentu | Adresa dalšího segmentu |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | Není k dispozici |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | Není k dispozici |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | Není k dispozici |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | Není k dispozici |
-| 13.67.223.215 | 13.67.223.215/32 | Internet | Není k dispozici |
-| 40.86.83.253 | 40.86.83.253/32 | Internet | Není k dispozici |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | není k dispozici |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | není k dispozici |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | není k dispozici |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | není k dispozici |
+| 13.67.223.215 | 13.67.223.215/32 | Internet | není k dispozici |
+| 40.86.83.253 | 40.86.83.253/32 | Internet | není k dispozici |
 | 0.0.0.0 | 0.0.0.0/0 | Virtuální zařízení | 10.1.1.4 |
 
 Dokončete konfiguraci směrovací tabulky:
@@ -139,9 +139,9 @@ Pro přenos aplikací je nutné vytvořit trasy, aby se předešlo problémům s
 
 Pokud vaše aplikace mají jiné závislosti, musí být do Azure Firewall přidány. Vytvořte pravidla aplikací pro povolení přenosů HTTP/HTTPS a síťových pravidel pro všechno ostatní.
 
-## <a name="logging"></a>Protokolování
+## <a name="logging-and-scale"></a>Protokolování a škálování
 
-Azure Firewall může odesílat protokoly do několika různých systémů úložiště. Pokyny ke konfiguraci protokolování pro bránu firewall najdete v následujících krocích v [kurzu: Monitorujte protokoly Azure Firewall a metriky](../firewall/tutorial-diagnostics.md).
+Azure Firewall může odesílat protokoly do několika různých systémů úložiště. Pokyny ke konfiguraci protokolování pro bránu firewall najdete v následujících krocích v [kurzu: monitorování Azure firewall protokolů a metrik](../firewall/tutorial-diagnostics.md).
 
 Po dokončení nastavení protokolování můžete při protokolování dat do Log Analytics zobrazit blokované přenosy s dotazem, jako je například následující:
 
@@ -151,8 +151,12 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Integrace vašich Azure Firewall s protokoly Azure Monitor je užitečná při prvním získání aplikace, když si nejste vědomi všech závislostí aplikace. Další informace o protokolech Azure Monitor můžete získat z [analýzy dat protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md)
 
+Další informace o omezeních Azure Firewall a žádosti o zvýšení kapacity najdete v [tomto](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits) dokumentu.
+
 ## <a name="access-to-the-cluster"></a>Přístup ke clusteru
-Po úspěšném nastavení brány firewall můžete pomocí interního koncového bodu (`https://<clustername>-int.azurehdinsight.net`) získat přístup k Ambari z virtuální sítě. Pokud chcete použít veřejný koncový bod`https://<clustername>.azurehdinsight.net`() nebo koncový bod`<clustername>-ssh.azurehdinsight.net`SSH (), ujistěte se, že máte správné trasy v nastavení směrovací tabulky a pravidel NSG, abyste se vyhnuli problému s směrováním [assymetric.](https://docs.microsoft.com/azure/firewall/integrate-lb)
+Po úspěšném nastavení brány firewall můžete pomocí interního koncového bodu (`https://<clustername>-int.azurehdinsight.net`) přistupovat k Ambari zevnitř virtuální sítě. 
+
+Pokud chcete použít veřejný koncový bod (`https://<clustername>.azurehdinsight.net`) nebo koncový bod SSH (`<clustername>-ssh.azurehdinsight.net`), ujistěte se, že máte správné trasy v tabulce směrování a NSG pravidla, abyste se vyhnuli problému s směrováním [assymetric.](https://docs.microsoft.com/azure/firewall/integrate-lb) Konkrétně v takovém případě musíte povolit IP adresu klienta v příchozích pravidlech NSG a také ji přidat do tabulky směrování definované uživatelem s další sadou segmentů směrování jako `internet`. Pokud toto nastavení není správně nastavené, zobrazí se chyba časového limitu.
 
 ## <a name="configure-another-network-virtual-appliance"></a>Konfigurace jiného síťového virtuálního zařízení
 
@@ -169,7 +173,7 @@ Předchozí pokyny vám pomůžou nakonfigurovat Azure Firewall pro omezení odc
 
 ### <a name="service-endpoint-capable-dependencies"></a>Závislosti podporující koncový bod služby
 
-| **Koncový bod** |
+| **Služba** |
 |---|
 | Azure SQL |
 | Azure Storage |
@@ -177,12 +181,12 @@ Předchozí pokyny vám pomůžou nakonfigurovat Azure Firewall pro omezení odc
 
 #### <a name="ip-address-dependencies"></a>Závislosti IP adres
 
-| **Koncový bod** | **Podrobnosti** |
+| **Služba** | **Podrobnosti** |
 |---|---|
 | \*:123 | Kontroluje se čas NTP. Provoz se kontroluje na více koncových bodech na portu 123. |
 | [Zde](hdinsight-management-ip-addresses.md) publikované IP adresy | Jedná se o službu HDInsight |
 | Privátní IP adresy AAD-DS pro clustery ESP |
-| \*: 16800 pro aktivaci Windows služby správy klíčů |
+| \*:16800 pro aktivaci Windows služby správy klíčů |
 | \*12000 pro Log Analytics |
 
 #### <a name="fqdn-httphttps-dependencies"></a>Závislosti HTTP/HTTPS v plně kvalifikovaném názvu domény
@@ -190,7 +194,7 @@ Předchozí pokyny vám pomůžou nakonfigurovat Azure Firewall pro omezení odc
 >[!Important]
 > Následující seznam obsahuje jenom několik nejdůležitějších plně kvalifikovaných názvů domén. Úplný seznam plně kvalifikovaných názvů domény pro konfiguraci síťové virtuální zařízení můžete získat [v tomto souboru](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json).
 
-| **Koncový bod**                                                          |
+| **Služba**                                                          |
 |---|
 | azure.archive.ubuntu.com:80                                           |
 | security.ubuntu.com:80                                                |

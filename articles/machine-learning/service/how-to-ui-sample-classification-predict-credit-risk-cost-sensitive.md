@@ -1,7 +1,7 @@
 ---
-title: 'Ukázka vizuálního rozhraní #4: Klasifikace pro předpověď úvěrového rizika (citlivé na náklady)'
+title: 'Příklad vizuálního rozhraní #4: klasifikace pro předpověď úvěrového rizika (citlivá na náklady)'
 titleSuffix: Azure Machine Learning
-description: V tomto článku se dozvíte, jak vytvořit složitý experiment strojového učení pomocí vizuálního rozhraní. Naučíte se, jak implementovat vlastní skripty v Pythonu a porovnat více modelů a vybrat nejlepší možnost.
+description: V tomto článku se dozvíte, jak vytvořit komplexní kanál strojového učení pomocí vizuálního rozhraní. Naučíte se, jak implementovat vlastní skripty v Pythonu a porovnat více modelů a vybrat nejlepší možnost.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,52 +9,52 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: c06da0fd325f6b79bc0e14c4e6a246497f86a900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 7196e9522695a28a5560faa77860073bd08e25ee
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131906"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693517"
 ---
-# <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Ukázka 4 – klasifikace: Předpověď úvěrového rizika (citlivé na náklady)
+# <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)
 
-V tomto článku se dozvíte, jak vytvořit složitý experiment strojového učení pomocí vizuálního rozhraní. Naučíte se, jak implementovat vlastní logiku pomocí skriptů Pythonu a porovnat více modelů a vybrat nejlepší možnost.
+V tomto článku se dozvíte, jak vytvořit komplexní kanál strojového učení pomocí vizuálního rozhraní. Naučíte se, jak implementovat vlastní logiku pomocí skriptů Pythonu a porovnat více modelů a vybrat nejlepší možnost.
 
 Tato ukázka navlakuje klasifikátor k předpovídání úvěrového rizika pomocí informací o kreditních aplikacích, jako je například historie kreditů, stáří a počet platebních karet. Koncepty v tomto článku ale můžete použít k tomu, abyste se mohli vypořádat s vlastními problémy machine learningu.
 
 Pokud se strojové učení teprve začíná, můžete si nejdřív prohlédnout [základní vzorek třídění](how-to-ui-sample-classification-predict-credit-risk-basic.md) .
 
-Zde je dokončený graf pro tento experiment:
+Zde je dokončený graf pro tento kanál:
 
-[![Graf experimentu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph kanálu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Vyberte tlačítko **otevřít** pro experiment Sample 4:
+4. Vyberte tlačítko **otevřít** pro kanál Sample 4:
 
-    ![Otevřít experiment](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
+    ![Otevření kanálu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
 ## <a name="data"></a>Data
 
-V této ukázce se používá datová sada pro německé kreditní karty z úložiště UC Irvine. Tato datová sada obsahuje 1 000 vzorků s 20 funkcemi a 1 popiskem. Každá ukázka představuje osobu. 20 funkcí zahrnuje číselné a kategorií funkce. Další informace o datové sadě najdete na [webu UCI](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). Poslední sloupec je popisek, který označuje úvěrové riziko a má pouze dvě možné hodnoty: vysoké úvěrové riziko = 2 a nízké úvěrové riziko = 1.
+V této ukázce se používá datová sada pro německé kreditní karty z úložiště UC Irvine. Obsahuje 1 000 vzorků s 20 funkcemi a 1 popiskem. Každá ukázka představuje osobu. 20 funkcí zahrnuje číselné a kategorií funkce. Další informace o datové sadě najdete na [webu UCI](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). Poslední sloupec je popisek, který označuje úvěrové riziko a má pouze dvě možné hodnoty: vysoké úvěrové riziko = 2 a nízké úvěrové riziko = 1.
 
-## <a name="experiment-summary"></a>Shrnutí experimentů
+## <a name="pipeline-summary"></a>Souhrn kanálu
 
-V tomto experimentu porovnáte dva různé přístupy k vygenerování modelů pro vyřešení tohoto problému:
+V tomto kanálu porovnáte dva různé přístupy k vygenerování modelů pro vyřešení tohoto problému:
 
 - Školení s původní datovou sadou.
 - Školení s replikovanou datovou sadou.
 
-Oba přístupy vyhodnotí modely pomocí testovací datové sady s replikací, aby bylo zajištěno, že výsledky budou zarovnány s funkcí cost. Test dvou klasifikátorů pomocí obou přístupů: **Podpora dvou tříd – vektorový počítač** a se **dvěma třídami se zvyšuje rozhodovací strom**.
+Oba přístupy vyhodnotí modely pomocí testovací datové sady s replikací, aby bylo zajištěno, že výsledky budou zarovnány s funkcí cost. Test dvou klasifikátorů s oběma přístupy: **Podpora dvou tříd – vektorový počítač** a rozposílený **rozhodovací strom se dvěma třídami**.
 
 Náklady na chybnou klasifikaci příkladu s nízkým rizikem jako vysoké jsou 1 a náklady na neklasifikaci vysoce rizikového příkladu, který je nízký, je 5. Pro tyto náklady na nesprávnou klasifikaci používáme modul **vykonávání skriptu Pythonu** .
 
-Tady je graf experimentu:
+Tady je graf kanálu:
 
-[![Graf experimentu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph kanálu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>Zpracování dat
 
@@ -89,7 +89,7 @@ Modul **spuštění skriptu Pythonu** replikuje jak školicí, tak testovací da
 
 ### <a name="feature-engineering"></a>Návrh funkcí
 
-Algoritmus **vektorového stroje podpory dvou tříd** vyžaduje normalizovaná data. Proto použijte modul **Normalize data** pro normalizaci rozsahů všech numerických funkcí `tanh` transformace. `tanh` Transformace převede všechny číselné funkce na hodnoty v rozsahu 0 až 1 a současně zachovává celkovou distribuci hodnot.
+Algoritmus **vektorového stroje podpory dvou tříd** vyžaduje normalizovaná data. Proto použijte modul **Normalize data** pro normalizaci rozsahů všech numerických funkcí pomocí transformace `tanh`. Transformace `tanh` převede všechny číselné funkce na hodnoty v rozsahu 0 až 1 a současně zachovává celkovou distribuci hodnot.
 
 Modul **vektorového stroje podpory dvou tříd** zpracovává řetězcové funkce, převádí je na funkce kategorií a pak na binární funkce s hodnotou 0 nebo 1. Takže tyto funkce nemusíte normalizovat.
 
@@ -108,11 +108,11 @@ Tato ukázka používá standardní pracovní postup pro datové vědy k vytvá�
 1. Použijte **model výuky** pro použití algoritmu pro data a vytvořte skutečný model.
 1. Použijte **model skóre** k vytvoření skóre pomocí příkladů testu.
 
-Následující diagram znázorňuje část tohoto experimentu, ve které se původní a replikované školicí sady používají ke školení dvou různých SVM modelů. **Model výuky** je připojen ke školicí sadě a **model skóre** je připojen k sadě testů.
+Následující diagram znázorňuje část tohoto kanálu, při které se původní a replikované školicí sady používají ke školení dvou různých SVM modelů. **Model výuky** je připojen ke školicí sadě a **model skóre** je připojen k sadě testů.
 
-![Graf experimentu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![Graf kanálu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-Ve zkušební fázi experimentu vypočítáte přesnost každého ze čtyř modelů. Pro účely tohoto experimentu použijte **vyhodnocený model** pro porovnání příkladů, které mají stejné náklady na klasifikaci.
+Ve fázi hodnocení kanálu vypočítáte přesnost každého ze čtyř modelů. Pro tento kanál použijte **vyhodnocený model** a porovnejte příklady, které mají stejné náklady na klasifikaci.
 
 Modul **vyhodnocení modelu** může vypočítat metriky výkonu, a to až pro dva modely skóre. Proto můžete použít jednu instanci **vyhodnocení modelu** k vyhodnocení dvou modelů SVM a jiné instance **vyhodnocení modelu** pro vyhodnocení dvou modelů rozstupného rozhodovacího stromu.
 
@@ -142,12 +142,14 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>Výsledky
 
-Chcete-li zobrazit výsledky experimentu, můžete kliknout pravým tlačítkem myši na výstup vizualizace v modulu poslední **Výběr sloupců v datové sadě** .
+Chcete-li zobrazit výsledky kanálu, můžete kliknout pravým tlačítkem myši na výstup vizualizace v modulu poslední **Výběr sloupců v datové sadě** .
 
 ![Vizualizovat výstup](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
 První sloupec uvádí algoritmus strojového učení, který se používá k vygenerování modelu.
+
 Druhý sloupec indikuje typ sady školení.
+
 Třetí sloupec obsahuje hodnotu přesnosti citlivou na náklady.
 
 Z těchto výsledků vidíte, že je nejlepší přesnost zajištěna modelem vytvořeným se **dvěma třídami pro vektorový stroj podpory** a vyškolenou na replikovanou datovou sadu školení.
@@ -160,8 +162,9 @@ Z těchto výsledků vidíte, že je nejlepší přesnost zajištěna modelem vy
 
 Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 
-- [Ukázka 1 – regrese: Předpověď ceny automobilu](how-to-ui-sample-regression-predict-automobile-price-basic.md)
-- [Ukázka 2 – regrese: Porovnat algoritmy pro předpověď cen automobilu](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Ukázka 3 – klasifikace: Předpověď úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-- [Ukázka 5 – klasifikace: Předpověď změn](how-to-ui-sample-classification-predict-churn.md)
-- [Ukázka 6 – klasifikace: Předpověď zpoždění letů](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+- [Ukázka 2 – regrese: porovnání algoritmů pro předpověď cen automobilu](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Ukázka 3 – klasifikace: předpověď úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+- [Ukázka 5 – klasifikace: předpověď změn](how-to-ui-sample-classification-predict-churn.md)
+- [Ukázka 6 – klasifikace: předpověď zpoždění letů](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Ukázka 7 – klasifikace textu: recenze knih](how-to-ui-sample-text-classification.md)

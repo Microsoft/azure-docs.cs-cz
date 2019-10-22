@@ -1,7 +1,7 @@
 ---
 title: 'Příklad vizuálního rozhraní #3: regrese na ceny a porovnávání algoritmů'
 titleSuffix: Azure Machine Learning
-description: V tomto článku se dozvíte, jak vytvořit složitý experiment strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní. Naučte se, jak vytvořit a porovnat více regresních modelů a předpovídat cenu automobilu na základě technických funkcí.
+description: V tomto článku se dozvíte, jak vytvořit složitý kanál strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní. Naučte se, jak vytvořit a porovnat více regresních modelů a předpovídat cenu automobilu na základě technických funkcí.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,34 +10,34 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: c40d76b87ca7437e25c567176b0309f08f3ca9f2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 651644eaae910792aac2144531d09afc4cde7153
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131568"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692793"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Ukázka 2 – regrese: Předpověď cen a porovnávání algoritmů
+# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Ukázka 2 – regrese: předpověď cen a porovnávání algoritmů
 
-Naučte se vytvářet složitý experiment strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní. Tato ukázka vlaků a porovnává více regresních modelů a předpovídá cenu auta na základě svých technických funkcí. Nabídneme vám odůvodnění pro volby, které jsme udělali v tomto experimentu, abyste mohli řešit vlastní problémy machine learningu.
+Naučte se vytvářet komplexní kanály strojového učení, aniž byste museli psát jediný řádek kódu pomocí vizuálního rozhraní. Tato ukázka vlaků a porovnává více regresních modelů a předpovídá cenu auta na základě svých technických funkcí. Nabídneme vám odůvodnění pro volby provedené v tomto kanálu, abyste se mohli vypořádat s vlastními problémy machine learningu.
 
-Pokud se strojové učení teprve začíná, podívejte se na [základní verzi](how-to-ui-sample-regression-predict-automobile-price-basic.md) tohoto experimentu.
+Pokud se strojové učení teprve začíná, podívejte se na [základní verzi](how-to-ui-sample-regression-predict-automobile-price-basic.md) tohoto kanálu.
 
-Zde je dokončený graf pro tento experiment:
+Zde je dokončený graf pro tento kanál:
 
-[![Graf experimentu](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph kanálu](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Vyberte tlačítko **otevřít** pro experiment Sample 2:
+4. Vyberte tlačítko **otevřít** pro kanál Sample 2:
 
-    ![Otevřít experiment](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
+    ![Otevření kanálu](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="experiment-summary"></a>Shrnutí experimentů
+## <a name="pipeline-summary"></a>Souhrn kanálu
 
-Pomocí následujících kroků sestavíte experiment ve službě Machine Learning:
+Pomocí následujících kroků Sestavte kanál strojového učení:
 
 1. Získat data.
 1. Předběžné zpracování dat.
@@ -60,11 +60,9 @@ Použijte modul **Výběr sloupců v datové sadě** k vyloučení normalizovan�
 
 Problémy strojového učení se liší. Mezi běžné úkoly strojového učení patří klasifikace, clusteringu, regrese a systémy doporučení, z nichž každá může vyžadovat jiný algoritmus. Vaše volba algoritmu často závisí na požadavcích případu použití. Po výběru algoritmu je třeba vyladit jeho parametry a naučit se model lépe přesný. Pak je potřeba vyhodnotit všechny modely na základě metrik, jako je přesnost, intelligibility a efektivita.
 
-Vzhledem k tomu, že cílem tohoto experimentu je předpovědět ceny automobilu a protože sloupec popisku (price) obsahuje skutečná čísla, je regresní model dobrou volbou. Vzhledem k tomu, že počet funkcí je relativně malý (méně než 100) a tyto funkce nejsou zhuštěné, je pravděpodobně nelineární hranice rozhodnutí.
+Vzhledem k tomu, že cílem tohoto kanálu je předpovědět ceny automobilu a protože sloupec popisku (price) obsahuje skutečná čísla, je regresní model vhodný. Vzhledem k tomu, že počet funkcí je relativně malý (méně než 100) a tyto funkce nejsou zhuštěné, je pravděpodobně nelineární hranice rozhodnutí.
 
-Vzhledem k tomu, že cílem tohoto experimentu je předpovědět ceny automobilu a protože sloupec popisku (price) obsahuje skutečná čísla, je regresní model dobrou volbou. Vzhledem k tomu, že počet funkcí je relativně malý (méně než 100) a tyto funkce nejsou zhuštěné, je pravděpodobně nelineární hranice rozhodnutí.
-
-Pro porovnání výkonu různých algoritmů používáme dva nelineární algoritmy, zvýšili jsme regresi **rozhodovacího stromu** a **regresi rozhodovací doménové struktury**a sestavíte modely. Oba algoritmy mají parametry, které lze změnit, ale tato ukázka používá výchozí hodnoty pro tento experiment.
+Pro porovnání výkonu různých algoritmů používáme dva nelineární algoritmy, zvýšili jsme regresi **rozhodovacího stromu** a **regresi rozhodovací doménové struktury**a sestavíte modely. Oba algoritmy mají parametry, které lze změnit, ale tato ukázka používá výchozí hodnoty pro tento kanál.
 
 Použijte modul **rozdělit data** k náhodnému rozdělení vstupních dat tak, aby datová sada školení obsahovala 70% původních dat a testovací datová sada obsahuje 30% původních dat.
 
@@ -74,7 +72,7 @@ Použijete dvě různé sady náhodně zvolených dat ke školení a otestován�
 
 Po vyzkoušení modelu použijte **model skóre** a **vyhodnoťte moduly modelů** pro generování předpokládaných výsledků a vyhodnocení modelů. **Model skóre** generuje předpovědi pro testovací datovou sadu pomocí trained model. Pak předejte skóre k **vyhodnocení modelu** pro generování metrik vyhodnocení.
 
-V tomto experimentu použijete dvě instance **vyhodnocení modelu** k porovnání dvou párů modelů.
+V tomto kanálu použijete dvě instance **vyhodnocení modelu** k porovnání dvou párů modelů.
 
 Nejprve Porovnejte dva algoritmy v datové sadě školení.
 Za druhé Porovnejte dva algoritmy pro testovací datovou sadu.
@@ -95,8 +93,9 @@ Oba algoritmy mají v datové sadě školení nižší chybu než v datové sad�
 
 Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 
-- [Ukázka 1 – regrese: Předpověď ceny automobilu](how-to-ui-sample-regression-predict-automobile-price-basic.md)
-- [Ukázka 3 – klasifikace: Předpověď úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-- [Ukázka 4 – klasifikace: Předpověď úvěrového rizika (citlivé na náklady)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [Ukázka 5 – klasifikace: Předpověď změn](how-to-ui-sample-classification-predict-churn.md)
-- [Ukázka 6 – klasifikace: Předpověď zpoždění letů](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+- [Ukázka 3 – klasifikace: předpověď úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Ukázka 5 – klasifikace: předpověď změn](how-to-ui-sample-classification-predict-churn.md)
+- [Ukázka 6 – klasifikace: předpověď zpoždění letů](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Ukázka 7 – klasifikace textu: recenze knih](how-to-ui-sample-text-classification.md)

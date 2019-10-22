@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
 ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331213"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorovat spotřebu prostředků a aktivity dotazů v Azure Search
@@ -30,8 +30,8 @@ V tomto článku se dozvíte o možnostech monitorování, o tom, jak povolit pr
 
 Na kartě **využití** se zobrazuje dostupnost prostředků vzhledem k aktuálním [limitům](search-limits-quotas-capacity.md). Následující obrázek je pro bezplatnou službu, která je omezené na 3 objekty každého typu a 50 MB úložiště. Základní nebo standardní služba má vyšší limity, a pokud nakročíte počty oddílů, maximální velikost úložiště se provedla poměrně.
 
-![Stav použití vzhledem k efektivnímu omezení](./media/search-monitor-usage/usage-tab.png
- "stavu využití vzhledem k platným limitům")
+![Stav použití vzhledem k platným omezením](./media/search-monitor-usage/usage-tab.png
+ "Stav použití vzhledem k platným omezením")
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Dotazy za sekundu (QPS) a další metriky
 
@@ -40,7 +40,7 @@ Karta **monitorování** zobrazuje klouzavý průměr pro metriky, jako jsou vyh
 
 Tato čísla jsou přibližná a jsou určena k získání Obecné informace o tom, jak dobře systém obsluhuje požadavky. Skutečný QPS může být vyšší nebo nižší než číslo hlášené na portálu.
 
-Dotazy ![na aktivity za sekundu](./media/search-monitor-usage/monitoring-tab.png "aktivity za sekundu")
+![Aktivita dotazů za sekundu](./media/search-monitor-usage/monitoring-tab.png "Aktivita dotazů za sekundu")
 
 ## <a name="activity-logs"></a>Protokoly aktivit
 
@@ -78,7 +78,7 @@ V této části se dozvíte, jak používat úložiště objektů BLOB k uklád�
 
 2. Otevřete stránku Přehled vyhledávací služby. V levém navigačním podokně přejděte dolů na **sledování** a klikněte na **Povolit monitorování**.
 
-   ![Povolit]monitorování(./media/search-monitor-usage/enable-monitoring.png "Povolení") monitorování
+   ![Povolit monitorování](./media/search-monitor-usage/enable-monitoring.png "Povolení monitorování")
 
 3. Vyberte data, která chcete exportovat: protokoly, metriky nebo obojí. Můžete ho zkopírovat do účtu úložiště, odeslat ho do centra událostí nebo ho exportovat do Azure Monitor protokolů.
 

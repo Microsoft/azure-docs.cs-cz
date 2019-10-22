@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71122687"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Přineste si vlastní klíč pro Apache Kafka ve službě Azure HDInsight
@@ -91,7 +91,7 @@ Pokud chcete vytvořit cluster Kafka s podporou BYOK, Projděte si následujíc�
 
         ![Uložit zásady přístupu Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy-save.png)
 
-## <a name="create-hdinsight-cluster"></a>Vytvořit cluster HDInsight
+## <a name="create-hdinsight-cluster"></a>Vytvoření clusteru HDInsight
 
    Nyní jste připraveni vytvořit nový cluster HDInsight. BYOK se dá použít jenom pro nové clustery během vytváření clusteru. Šifrování nejde odebrat z clusterů BYOK a BYOK se nedá přidat do stávajících clusterů.
 

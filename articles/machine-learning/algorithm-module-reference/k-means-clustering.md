@@ -1,5 +1,5 @@
 ---
-title: 'K-znamená clustering: Odkaz na modul'
+title: 'K-znamená clustering: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat K tomu modul clustering ve službě Azure Machine Learning ke školení modelů clusteringu.
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 7de2978fee80cf3acd078ef8ee5f235fab21713e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128702"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693112"
 ---
-# <a name="module-k-means-clustering"></a>Čipu Clustering K-Means
+# <a name="module-k-means-clustering"></a>Modul: K-znamená clustering
 
-Tento článek popisuje, jak použít modul pro clustering v Azure Machine Learning Studio k vytvoření nevýukového modelu clusteringu. 
+Tento článek popisuje, jak použít modul pro *clustering* v Azure Machine Learning Studio k vytvoření nevýukového modelu clusteringu. 
  
-K-znamená, že je jedním z nejjednodušších a osvědčených bezdohledných algoritmů učení. Můžete použít algoritmus pro nejrůznější úlohy strojového učení, například: 
+K-znamená, že je jedním z nejjednodušších a osvědčených *bezdohledných* algoritmů učení. Můžete použít algoritmus pro nejrůznější úlohy strojového učení, například: 
 
 * [Zjišťování neobvyklých dat](https://msdn.microsoft.com/magazine/jj891054.aspx)
 * Vytváření clusterů textových dokumentů.
@@ -28,7 +28,7 @@ K-znamená, že je jedním z nejjednodušších a osvědčených bezdohledných 
 
 Chcete-li vytvořit model clusteringu, postupujte takto:
 
-* Přidejte tento modul do experimentu.
+* Přidejte tento modul do vašeho kanálu.
 * Připojte datovou sadu.
 * Nastavte parametry, třeba počet očekávaných clusterů, metriku vzdálenosti, která se má použít při vytváření clusterů, a tak dále. 
   
@@ -54,11 +54,11 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
 
 ## <a name="configure-the-k-means-clustering-module"></a>Konfigurace K – znamená modul clusteringu
   
-1.  Přidejte k experimentu modul **clusteringu-to** .  
+1.  Přidejte k vašemu kanálu modul **clusteringu** .  
   
 2.  Chcete-li určit, jakým způsobem chcete model vyškolet, vyberte možnost **vytvořit režim Trainer** .  
   
-    -   **Jeden parametr**: Pokud znáte přesné parametry, které chcete použít v modelu clusteringu, můžete zadat konkrétní sadu hodnot jako argumenty.  
+    -   **Jediný parametr**: Pokud znáte přesné parametry, které chcete použít v modelu clusteringu, můžete zadat konkrétní sadu hodnot jako argumenty.  
   
 3.  Do pole **počet Centroids**zadejte počet clusterů, se kterými má algoritmus začínat.  
   
@@ -66,11 +66,11 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
   
 4.  **Inicializace** vlastností slouží k určení algoritmu, který se používá k definování počáteční konfigurace clusteru.  
   
-    -   **Prvních N**: Z datové sady se vybere nějaký počáteční počet datových bodů, který se používá jako počáteční prostředky. 
+    -   **First N**: z datové sady se vybere nějaký počáteční počet datových bodů, který se používá jako počáteční prostředky. 
     
          Tato metoda se označuje také jako *Metoda padělání*.  
   
-    -   **Náhodně**: Algoritmus náhodně umístí datový bod do clusteru a pak vypočítá počáteční střední hodnotu tak, aby těžištěy náhodně přiřazených bodů clusteru. 
+    -   **Náhodný**: algoritmus náhodně umístí datový bod do clusteru a pak vypočítá počáteční střední hodnotu jako těžištěy náhodně přiřazených bodů clusteru. 
 
          Tato metoda se označuje také jako metoda *náhodného dělení* .  
   
@@ -81,9 +81,9 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
     
 5.  V případě **náhodného čísla**můžete zadat hodnotu, která se má použít jako počáteční hodnota pro inicializaci clusteru. Tato hodnota může mít významný vliv na výběr clusteru.  
   
-6.  Včásti metrika vyberte funkci, která se má použít pro měření vzdálenosti mezi vektory clusteru nebo mezi novými datovými body a náhodně zvoleným těžiště. Azure Machine Learning podporuje následující metriky na dálku clusteru:  
+6.  V části **metrika**vyberte funkci, která se má použít pro měření vzdálenosti mezi vektory clusteru nebo mezi novými datovými body a náhodně zvoleným těžiště. Azure Machine Learning podporuje následující metriky na dálku clusteru:  
   
-    -   **Euclidean**: Vzdálenost Euclidean se běžně používá jako Měrná jednotka bodového clusteru pro K, což znamená clusteringu. Tato metrika je preferována, protože minimalizuje střední vzdálenost mezi body a centroids.
+    -   **Euclidean**: Euclideaná vzdálenost se běžně používá jako míra bodových clusterů pro k, znamená clusteringu. Tato metrika je preferována, protože minimalizuje střední vzdálenost mezi body a centroids.
   
 7.  Pro **iterace**zadejte počet, kolikrát se má algoritmus iterovat přes školicí data před tím, než dokončí výběr centroids.  
   
@@ -93,15 +93,15 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
   
      Vzhledem K tomu, že clustering je nekontrolovaný způsob strojového učení, popisky jsou volitelné. Pokud však vaše datová sada již obsahuje sloupec popisku, můžete tyto hodnoty použít k nastavení služby pro výběr clusterů nebo můžete určit, že se mají hodnoty ignorovat.  
   
-    -   **Ignorovat sloupec popisku**: Hodnoty ve sloupci popisek jsou ignorovány a nejsou použity při sestavování modelu.
+    -   **Ignorovat popisek sloupce**: hodnoty ve sloupci popisek jsou ignorovány a nejsou použity při sestavování modelu.
   
-    -   **Vyplnit chybějící hodnoty**: Hodnoty sloupců popisku se používají jako funkce, které vám pomůžou vytvořit clustery. Pokud v některých řádcích chybí popisek, hodnota se připravuje pomocí dalších funkcí.  
+    -   **Vyplnit chybějící hodnoty**: hodnoty sloupců popisku se používají jako funkce, které vám pomůžou sestavení clusterů. Pokud v některých řádcích chybí popisek, hodnota se připravuje pomocí dalších funkcí.  
   
-    -   **Přepsat z nejbližšího středu**: Hodnoty sloupce popisku jsou nahrazeny hodnotami předpokládaných popisků, které používají popisek bodu, který je nejblíže aktuálnímu těžiště.  
+    -   **Přepsat z nejbližšího středu**: hodnoty sloupce Label jsou nahrazeny hodnotami předpokládaných popisků, které používají popisek bodu, který je nejblíže aktuálnímu těžiště.  
 
 8.  Vyberte možnost **normalizovat funkce** , pokud chcete před školením normalizovat funkce.
   
-     Použijete-li normalizaci, před školením jsou datové body normalizovány na `[0,1]` MinMaxNormalizer.
+     Použijete-li normalizaci před školením, jsou datové body normalizovány na `[0,1]` pomocí MinMaxNormalizer.
 
 10. Proveďte výuku modelu.  
   
@@ -119,7 +119,7 @@ Pokud jste použili modul [výukového modelu clusteringu](train-clustering-mode
 
 2. Vyberte **trained model**a pak vyberte **Uložit jako trained model**.
 
-Uložený model představuje školicí data v době, kdy jste model uložili. Pokud později aktualizujete školicí údaje použité v experimentu, neaktualizuje uložený model. 
+Uložený model představuje školicí data v době, kdy jste model uložili. Pokud později aktualizujete školicí data použitá v kanálu, neaktualizuje uložený model. 
 
 #### <a name="see-the-clustering-result-dataset"></a>Zobrazit datovou sadu výsledků clusteringu 
 

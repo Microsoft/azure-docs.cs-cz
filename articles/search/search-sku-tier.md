@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
 ms.openlocfilehash: 32ec97ce923c1cffd92fa6522f30abf7ea87fff7
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331192"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Vyberte cenovou úroveň pro Azure Search
@@ -41,7 +41,7 @@ Vybraná úroveň určuje fakturovatelnou sazbu. Následující snímek obrazovk
 
 **Free** vytvoří v clusteru omezený vyhledávací službu, která je sdílená s ostatními předplatiteli. Můžete dokončit malé projekty, včetně rychlých startů a kurzů, ale nemůžete škálovat službu ani provádět významné úlohy. **Základní** a **standardní** jsou nejčastěji používané Fakturovatelné úrovně s výchozím nastavením **Standard** .
 
-![Cenové úrovně Azure Search](media/search-sku-tier/tiers.png "cenové úrovně Azure Search")
+![Cenové úrovně Azure Search](media/search-sku-tier/tiers.png "Cenové úrovně Azure Search")
 
 Některé úrovně jsou optimalizované pro určité typy práce. Například **Standard 3 vysoká hustota (S3 HD)** je *hostující režim* pro S3, kde je základní hardware optimalizovaný pro velký počet menších indexů a je určený pro víceklientské scénáře. S3 HD má stejné poplatky za jednotku jako S3, ale hardware je optimalizovaný pro rychlé čtení souborů na velkém počtu menších indexů.
 

@@ -9,15 +9,15 @@ ms.date: 05/23/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67056488"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Kolik koncových bodů klienta VPN je možné mít v konfiguraci připojení Point-to-Site?
 
-To závisí na SKU brány. Další informace o počtu připojení podporovány, naleznete v tématu [skladové položky brány](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
+Závisí na SKU brány. Další informace o počtu podporovaných připojení najdete v tématu [SKU brány](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
 
 ### <a name="supportedclientos"></a>Které klientské operační systémy je možné používat s připojeními typu Point-to-Site?
 
@@ -29,8 +29,8 @@ Podporovány jsou následující operační systémy:
 * Windows Server 2012 (pouze 64bitové verze)
 * Windows Server 2012 R2 (pouze 64bitové verze)
 * Windows Server 2016 (pouze 64bitové verze)
-* Windows 10
-* Verze Mac OS X 10.11 nebo novější
+* Windows 10
+* Mac OS X verze 10,11 nebo vyšší
 * Linux (StrongSwan)
 * iOS
 
@@ -38,13 +38,13 @@ Podporovány jsou následující operační systémy:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Je možné procházet proxy servery a brány firewall s využitím schopnosti Point-to-Site?
 
-Azure podporuje tři typy možností Point-to-site VPN:
+Azure podporuje tři typy možností sítě VPN typu Point-to-site:
 
-* SSTP (Secure Socket Tunneling Protocol). SSTP je Microsoft proprietární založený na protokolu SSL řešení, které umožňuje pronikat branami firewall, protože většina bran firewall otevřít odchozí port TCP, který používá protokol SSL 443.
+* SSTP (Secure Socket Tunneling Protocol). SSTP je proprietární řešení založené na SSL společnosti Microsoft, které může proniknout branami firewall, protože většina bran firewall otevírá odchozí port TCP, který používá protokol 443 SSL.
 
-* OpenVPN. OpenVPN je založený na protokolu SSL řešení, které umožňuje pronikat branami firewall, protože většina bran firewall otevřít odchozí port TCP, který používá protokol SSL 443.
+* OpenVPN. OpenVPN je řešení založené na protokolu SSL, které může proniknout branami firewall, protože většina bran firewall otevírá odchozí port TCP, který používá protokol SSL 443.
 
-* IKEv2 VPN. Je IKEv2 VPN řešení IPsec VPN založené na standardech, které již používá Odchozí porty UDP 500 a 4500 a protokol IP. 50. Brány firewall tyto porty neotvírají vždycky, takže je možné, že IKEv2 VPN nebude moct procházet servery proxy a branami firewall.
+* IKEv2 VPN. IKEv2 VPN je řešení IPsec VPN založené na standardech, které používá Odchozí porty UDP 500 a 4500 a číslo protokolu IP. 50. Brány firewall tyto porty neotvírají vždycky, takže je možné, že IKEv2 VPN nebude moct procházet servery proxy a branami firewall.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Pokud restartuji klientský počítač nakonfigurovaný pro připojení Point-to-Site, připojí se síť VPN automaticky znovu?
 
@@ -68,11 +68,11 @@ Určit přesnou propustnost tunelových propojení sítí VPN je obtížné. IPs
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Je možné pro připojení Point-to-Site použít libovolného softwarového klienta sítě VPN, pokud podporuje protokol SSTP a/nebo IKEv2?
 
-Ne. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a pro IKEv2 nativního klienta VPN v systému Mac. Můžete však použít OpenVPN klienta na všech platformách pro připojení přes protokol OpenVPN. Podrobnosti najdete v seznamu podporovaných klientských operačních systémů.
+Ne. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a pro IKEv2 nativního klienta VPN v systému Mac. K připojení přes protokol OpenVPN ale můžete použít klienta OpenVPN na všech platformách. Podrobnosti najdete v seznamu podporovaných klientských operačních systémů.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Podporuje Azure IKEv2 VPN s Windows?
 
-IKEv2 se podporuje v systémech Windows 10 a Server 2016. Pokud ale chcete používat IKEv2, musíte nainstalovat aktualizace a nastavit hodnotu klíče registru v místním prostředí. Verze operačního systému starší než Windows 10 nejsou podporovány a mohou používat pouze SSTP nebo **OpenVPN® protokol**.
+IKEv2 se podporuje v systémech Windows 10 a Server 2016. Pokud ale chcete používat IKEv2, musíte nainstalovat aktualizace a nastavit hodnotu klíče registru v místním prostředí. Verze operačního systému starší než Windows 10 nejsou podporované a můžou používat jenom protokol SSTP nebo **OpenVPN®**.
 
 Postup přípravy systému Windows 10 nebo Server 2016 na IKEv2:
 
@@ -80,9 +80,9 @@ Postup přípravy systému Windows 10 nebo Server 2016 na IKEv2:
 
    | Verze operačního systému | Datum | Číslo/odkaz |
    |---|---|---|
-   | Windows Server 2016<br>Windows 10 verze 1607 | 17\. ledna 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-   | Windows 10 verze 1703 | 17\. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10 Version 1709 | 22\. března 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows Server 2016<br>Windows 10 verze 1607 | 17. ledna 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10 verze 1703 | 17. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | Windows 10 verze 1709 | 22. března 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |
 
 2. Nastavte hodnotu klíče registru. Vytvořte nebo nastavte klíč REG_DWORD HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload v registru na hodnotu 1.

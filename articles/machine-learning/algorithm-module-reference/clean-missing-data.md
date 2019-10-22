@@ -1,5 +1,5 @@
 ---
-title: 'Vyčistit chybějící data: Odkaz na modul'
+title: 'Vyčistit chybějící data: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul vyčištění chybějících dat ve službě Azure Machine Learning k odebrání, nahrazení nebo odvodit chybějící hodnoty.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: a65e8224b00bb592d6e0e42abdd304cf325d4412
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128939"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693213"
 ---
 # <a name="clean-missing-data-module"></a>Modul vyčištění chybějících dat
 
@@ -50,9 +50,9 @@ Tento modul vám umožní definovat operaci čištění. Operaci čištění mů
 
 Pokaždé, když použijete modul [Vyčištění chybějících dat](./clean-missing-data.md) na sadu dat, použije se stejná operace čištění pro všechny sloupce, které vyberete. Proto pokud potřebujete vyčistit různé sloupce pomocí různých metod, použijte samostatné instance modulu.
 
-1.  Přidejte modul [Vyčištění chybějících dat](./clean-missing-data.md) do experimentu a připojte datovou sadu, která má chybějící hodnoty.  
+1.  Přidejte modul [Vyčištění chybějících dat](./clean-missing-data.md) do kanálu a připojte datovou sadu, která obsahuje chybějící hodnoty.  
   
-2.  Pro **sloupce, které mají být**vyčištěny vyberte sloupce obsahující chybějící hodnoty, které chcete změnit. Můžete zvolit více sloupců, ale je nutné použít stejnou metodu nahrazení ve všech vybraných sloupcích. Proto je obvykle nutné vyčistit řetězcové sloupce a číselné sloupce samostatně.
+2.  Pro **sloupce, které mají být vyčištěny**vyberte sloupce obsahující chybějící hodnoty, které chcete změnit. Můžete zvolit více sloupců, ale je nutné použít stejnou metodu nahrazení ve všech vybraných sloupcích. Proto je obvykle nutné vyčistit řetězcové sloupce a číselné sloupce samostatně.
 
     Například pro kontrolu chybějících hodnot ve všech číselných sloupcích:
 
@@ -63,7 +63,7 @@ Pokaždé, když použijete modul [Vyčištění chybějících dat](./clean-mis
 
     3. Jako **Zahrnout**vyberte **typ sloupce** z rozevíracího seznamu a pak vyberte **číselné**nebo konkrétnější číselné typy. 
   
-    Jakákoli metoda čištění nebo náhrady, kterou zvolíte, musí být platná pro **všechny** sloupce ve výběru. Pokud jsou data v jakémkoli sloupci nekompatibilní se zadanou operací, modul vrátí chybu a zastaví experiment.
+    Jakákoli metoda čištění nebo náhrady, kterou zvolíte, musí být platná pro **všechny** sloupce ve výběru. Pokud jsou data v jakémkoli sloupci nekompatibilní se zadanou operací, modul vrátí chybu a zastaví kanál.
   
 3.  Pro **poměr minimální chybějící hodnoty**zadejte minimální počet chybějících hodnot vyžadovaných pro provedení operace.  
   
@@ -87,23 +87,23 @@ Pokaždé, když použijete modul [Vyčištění chybějících dat](./clean-mis
 5. Pro **režim čištění**vyberte jednu z následujících možností pro nahrazení nebo odebrání chybějících hodnot:  
   
   
-    + **Vlastní substituční hodnota**: Pomocí této možnosti můžete zadat zástupnou hodnotu (například 0 nebo NA), která se vztahuje na všechny chybějící hodnoty. Hodnota, kterou zadáte jako náhradu, musí být kompatibilní s datovým typem sloupce.
+    + **Vlastní substituční hodnota**: pomocí této možnosti můžete zadat zástupnou hodnotu (například 0 nebo na), která se vztahuje na všechny chybějící hodnoty. Hodnota, kterou zadáte jako náhradu, musí být kompatibilní s datovým typem sloupce.
   
-    + **Nahraďte**hodnotou: Vypočítá průměr sloupce a použije průměr jako hodnotu pro nahrazení každé chybějící hodnoty ve sloupci.  
+    + **Nahraďte průměrem**: vypočítá průměr sloupce a použije průměr jako hodnotu pro nahrazení každé chybějící hodnoty ve sloupci.  
   
         Platí pouze pro sloupce, které mají datový typ integer, Double nebo Boolean.  
   
-    + **Nahraďte mediánem**: Vypočítá střední hodnotu sloupce a použije hodnotu mediánu jako náhradu pro všechny chybějící hodnoty ve sloupci.  
+    + **Nahradit hodnotou medián**: vypočítá medián sloupce a použije hodnotu mediánu jako náhradu pro všechny chybějící hodnoty ve sloupci.  
   
         Platí pouze pro sloupce, které mají datový typ Integer nebo Double. 
   
-    + **Nahradit režimem**: Vypočítá režim sloupce a použije režim jako nahrazující hodnotu pro všechny chybějící hodnoty ve sloupci.  
+    + **Nahradit hodnotou Mode**: vypočítá režim sloupce a použije režim jako nahrazující hodnotu pro všechny chybějící hodnoty ve sloupci.  
   
         Platí pro sloupce, které mají datový typ integer, Double, Boolean nebo kategorií. 
   
-    + **Odebrat celý řádek**: Kompletně odebere všechny řádky v datové sadě, které mají jednu nebo více chybějících hodnot. To je užitečné v případě, že chybějící hodnota může být považována za náhodně chybět.  
+    + **Odebrat celý řádek**: kompletně odebere všechny řádky v datové sadě, které mají jednu nebo více chybějících hodnot. To je užitečné v případě, že chybějící hodnota může být považována za náhodně chybět.  
   
-    + **Odebrat celý sloupec**: Zcela odebere všechny sloupce v datové sadě, které mají jednu nebo více chybějících hodnot.  
+    + **Odebrat celý sloupec**: zcela odebere všechny sloupce v datové sadě, které mají jednu nebo více chybějících hodnot.  
   
     
   
@@ -111,29 +111,29 @@ Pokaždé, když použijete modul [Vyčištění chybějících dat](./clean-mis
   
     Všimněte si, že tuto možnost lze použít pouze ve sloupcích, které mají datový typ integer, Double, Boolean nebo Date. Pro sloupce data lze nahrazující hodnotu zadat také jako počet 100 – nanosekund od 1/1/0001 12:00 dop.  
   
-7. **Generovat sloupec indikátoru chybějící hodnoty**: Tuto možnost vyberte, pokud chcete vyznačit, zda hodnoty ve sloupci splňují kritéria pro čištění chybějících hodnot. Tato možnost je užitečná hlavně v případě, že nastavujete novou operaci čištění a chcete se ujistit, že funguje tak, jak je navržena.
+7. **Generovat sloupec indikátoru chybějící hodnoty**: tuto možnost vyberte, pokud chcete výstupem určit, zda hodnoty ve sloupci splňují kritéria pro čištění chybějících hodnot. Tato možnost je užitečná hlavně v případě, že nastavujete novou operaci čištění a chcete se ujistit, že funguje tak, jak je navržena.
   
-8. Spusťte experiment.
+8. Spuštění kanálu
 
 ### <a name="results"></a>Výsledky
 
 Modul vrací dva výstupy:  
 
--   **Vyčištěná datová sada**: Datová sada skládající se z vybraných sloupců s chybějícími hodnotami, které jsou zpracovány jako zadané, spolu se sloupcem indikátoru, pokud jste vybrali tuto možnost.  
+-   **Vyčištěná datová sada**: datová sada skládající se z vybraných sloupců s chybějícími hodnotami, které jsou zpracovány jako specifikované, spolu se sloupcem indikátoru, pokud jste vybrali tuto možnost.  
 
     Sloupce, které nejsou vybrány pro čištění, jsou také "předávány".  
   
--  **Čištění transformace**: Transformace dat, která se používá k čištění, kterou je možné uložit do svého pracovního prostoru a později použít pro nová data.
+-  **Čištění transformace**: transformace dat používaná k čištění, kterou je možné uložit do svého pracovního prostoru a později použít pro nová data.
 
 ### <a name="apply-a-saved-cleaning-operation-to-new-data"></a>Použít uloženou operaci čištění na nová data  
 
-Pokud potřebujete znovu opakovat čisticí operace, doporučujeme, abyste uložili svůj recept na čištění dat jako transformaci, abysteho mohli znovu použít se stejnou datovou sadou. Ukládání čisticí transformace je zvláště užitečné, pokud je nutné často znovu importovat a vyčistit data, která mají stejné schéma.  
+Pokud potřebujete znovu opakovat čisticí operace, doporučujeme, abyste uložili svůj recept na čištění dat jako *transformaci*, abyste ho mohli znovu použít se stejnou datovou sadou. Ukládání čisticí transformace je zvláště užitečné, pokud je nutné často znovu importovat a vyčistit data, která mají stejné schéma.  
       
-1.  Přidejte do experimentu modul [použít transformaci](./apply-transformation.md) .  
+1.  Přidejte do svého kanálu modul [použít transformaci](./apply-transformation.md) .  
   
 2.  Přidejte datovou sadu, kterou chcete vyčistit, a připojte datovou sadu ke vstupnímu portu na pravé straně.  
   
-3.  Rozbalte skupinu **Transformers** v levém podokně rozhraní. Vyhledejte uloženou transformaci a přetáhněte ji do experimentu.  
+3.  Rozbalte skupinu **Transformers** v levém podokně rozhraní. Vyhledejte uloženou transformaci a přetáhněte ji do kanálu.  
   
 4.  Připojte uloženou transformaci k levému vstupnímu portu [transformace Apply](./apply-transformation.md). 
 
@@ -141,8 +141,8 @@ Pokud potřebujete znovu opakovat čisticí operace, doporučujeme, abyste ulož
 
     Předpokládejme však, že jste vytvořili transformaci u podmnožiny číselných sloupců. Tuto transformaci lze použít na datovou sadu smíšených typů sloupců bez vyvolání chyby, protože chybějící hodnoty jsou změněny pouze v rámci odpovídajícího číselného sloupce.
 
-6.  Spusťte experiment.  
+6.  Spuštění kanálu  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

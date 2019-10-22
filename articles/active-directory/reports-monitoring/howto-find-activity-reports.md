@@ -15,10 +15,10 @@ ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70127396"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Hledání sestav aktivit v Azure Portal
@@ -52,19 +52,19 @@ Pomocí pokročilého filtrování v sestavě audit můžete získat přístup k
 
 Mezi kategorie patří:
 
-- Vše
+- Všechno
 - AdministrativeUnit
 - ApplicationManagement
-- Ověřování
-- Authorization
-- Kontakt
+- Ověření
+- Autorizace
+- Kontaktovat
 - Zařízení
 - DeviceConfiguration
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
-- Ostatní
-- Zásada
+- Jiné
+- Zásady
 - ResourceManagement
 - RoleManagement
 - UserManagement
@@ -73,7 +73,7 @@ Pomocí filtru rozevíracího seznamu **služby** můžete také filtrovat konkr
 
 Služby zahrnují:
 
-- Vše
+- Všechno
 - Kontroly přístupu
 - Zřizování účtů 
 - Jednotné přihlašování aplikace
@@ -82,12 +82,12 @@ Služby zahrnují:
 - Podmíněný přístup
 - Základní adresář
 - Správa nároků
-- Identity Protection
+- Ochrany identit
 - Pozvaní uživatelé
-- PIM
+- OSOBNÍCH
 - Samoobslužná správa skupin
 - Samoobslužná správa hesel
-- Podmínkami použití
+- Podmínky použití
 
 ## <a name="sign-ins-report"></a>Sestava přihlášení 
 
@@ -108,7 +108,7 @@ Pomocí sestavy přihlášení můžete zobrazit podrobnosti o využití aplikac
 
 ![Stránka filtrovat události přihlášení](./media/howto-find-activity-reports/07.png "Stránka filtrovat události přihlášení")
 
-## <a name="security-reports"></a>Sestavy zabezpečení
+## <a name="security-reports"></a>Zprávy o zabezpečení
 
 ### <a name="anomalous-activity-reports"></a>Sestavy aktivit neobvyklé
 
@@ -119,7 +119,7 @@ V následující tabulce jsou uvedené sestavy zabezpečení aktivity Azure AD n
 
 | Sestava aktivity Azure AD neobvyklé |  Typ detekce rizika ochrany identity|
 | :--- | :--- |
-| Uživatelé s uniklými přihlašovacími údaji | Uniklé přihlašovací údaje |
+| Uživatelé s uniklými přihlašovacími údaji | Nevrácená pověření |
 | Nestandardní přihlašovací aktivita | Nemožná cesta do netypických míst |
 | Přihlášení z možných nakažených zařízení | Přihlášení z nakažených zařízení|
 | Přihlášení z neznámých zdrojů | Přihlášení z anonymních IP adres |
@@ -139,7 +139,7 @@ K sestavám zjištěných detekcí rizik můžete získat přístup v části **
 - [Ohrožení uživatelé](concept-user-at-risk.md)
 - [Riziková přihlášení](concept-risky-sign-ins.md)
 
-    ![Sestavy zabezpečení](./media/howto-find-activity-reports/04.png "Sestavy zabezpečení")
+    ![Sestavy zabezpečení](./media/howto-find-activity-reports/04.png "Zprávy o zabezpečení")
 
 ## <a name="troubleshoot-issues-with-activity-reports"></a>Řešení potíží se sestavami aktivit
 
@@ -149,13 +149,13 @@ K sestavám zjištěných detekcí rizik můžete získat přístup v části **
 
 Ve stažených protokolech aktivity (auditu nebo přihlášení) se nezobrazují žádné záznamy pro zvolený čas. Proč? 
 
- ![Vytváření sestav](./media/troubleshoot-missing-data-download/01.png)
+ ![Generování sestav](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Příčina
 
 Když si stáhnete protokoly aktivit v Azure Portal, omezíme měřítko na 250000 záznamů seřazených podle nejnovějšího prvního. 
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Můžete využít [rozhraní API pro vytváření sestav Azure AD](concept-reporting-api.md), abyste načetli až milion záznamů v libovolném časovém okamžiku.
 
@@ -165,7 +165,7 @@ Můžete využít [rozhraní API pro vytváření sestav Azure AD](concept-repor
 
 Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce zobrazení protokolu auditu v okně `Activity logs > Audit Logs`, ale nemůžu je najít.
 
- ![Vytváření sestav](./media/troubleshoot-missing-audit-data/01.png)
+ ![Generování sestav](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>Příčina
 
@@ -176,7 +176,7 @@ Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce js
 | Audit adresáře | &nbsp; | 2 minuty | 5 minut |
 | Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protokolu zobrazily. Pokud se protokoly ani po dvou hodinách nezobrazí, [vytvořte lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a my se na to podíváme.
 
@@ -186,7 +186,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Nedávno jsem se přihlásil/a k webu Azure Portal a očekával/a jsem, že se pro tyto akce zobrazí protokoly přihlášení v okně `Activity logs > Sign-ins`, ale nemůžu je najít.
 
- ![Vytváření sestav](./media/troubleshoot-missing-audit-data/02.png)
+ ![Generování sestav](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Příčina
 
@@ -197,7 +197,7 @@ Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce js
 | Audit adresáře | &nbsp; | 2 minuty | 5 minut |
 | Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protokolu zobrazily. Pokud se protokoly ani po dvou hodinách nezobrazí, [vytvořte lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a my se na to podíváme.
 
@@ -207,24 +207,24 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Na webu Azure Portal nemůžu zobrazit data přihlášení a auditu za více než 30 dnů. Proč? 
 
- ![Vytváření sestav](./media/troubleshoot-missing-audit-data/03.png)
+ ![Generování sestav](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Příčina
 
 V závislosti na vaší licenci akce služby Azure Active Directory ukládají sestavy aktivit na tyto počty dní:
 
-| Sestava           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| Zpráva           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ----   |  ---           | ---                 | ---                 |
 | Audit adresáře  | &nbsp; |   7 dní     | 30 dní             | 30 dní             |
 | Přihlašovací aktivita | &nbsp; | Není k dispozici. K vlastním přihlášením máte přístup po dobu 7 dnů v okně profilu uživatele. | 30 dní | 30 dní             |
 
 Další informace najdete v tématu [Zásady uchovávání sestav Azure Active Directory](reference-reports-data-retention.md).  
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Pokud chcete data uchovávat déle než 30 dnů, máte dvě možnosti. Pomocí [rozhraní API pro generování sestav v Azure AD](concept-reporting-api.md) můžete data načíst prostřednictvím kódu programu a uložit je do databáze. Případně můžete protokoly auditu integrovat do systému SIEM třetí strany, jako je Splunk nebo Sumo Logic.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přehled protokolů auditu](concept-audit-logs.md)
 * [Přehled přihlášení](concept-sign-ins.md)

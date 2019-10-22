@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s zástupné | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s zástupné | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a zástupné.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28f3fca731c9ceb28f66ecd1c178e5c025f80ede
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70163545"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s zástupné
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s zástupné
 
 V tomto kurzu se dozvíte, jak integrovat zástupné s Azure Active Directory (Azure AD). Když integrujete zástupné s Azure AD, můžete:
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat zástupné s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta zástupné](https://envoy.com/contact/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -104,19 +104,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k zástupné.
 
@@ -124,7 +124,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **zástupné**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -148,15 +148,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. Na panelu nástrojů v horní části klikněte na **Nastavení**.
 
-    ![Zástupné](./media/envoy-tutorial/ic776782.png "Zástupné")
+    ![Zástupné](./media/envoy-tutorial/ic776782.png "Envoy")
 
 5. Klikněte na **Společnost**.
 
-    ![Společnost](./media/envoy-tutorial/ic776783.png "Společnost")
+    ![Podnikový](./media/envoy-tutorial/ic776783.png "Společnost")
 
 6. Klikněte na **SAML**.
 
-    ![SAML](./media/envoy-tutorial/ic776784.png "SAML")
+    ![ELEMENT](./media/envoy-tutorial/ic776784.png "SAML")
 
 7. V části konfigurace **ověřování SAML** proveďte následující kroky:
 
@@ -169,7 +169,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     
     b. Vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali, do TEXTOVÉHO pole **URL poskytovatele identity SAML http SAML** , které jste zkopírovali Azure Portal.
     
-    c. Klikněte na tlačítko **uložit změny**.
+    c. Klikněte na **Uložit změny**.
 
 ### <a name="create-envoy-test-user"></a>Vytvořit testovacího uživatele zástupné
 
@@ -177,11 +177,11 @@ V této části se v zástupné vytvoří uživatel s názvem Britta Simon. Zás
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici zástupné, měli byste se automaticky přihlásit k zástupné, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

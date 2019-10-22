@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Provádění operací ETL pomocí Azure Databricks'
-description: Zjistěte, jak extrahovat data z Data Lake Storage Gen2 do Azure Databricks, transformovat data a pak načíst data do Azure SQL Data Warehouse.
+title: '자습서: Azure Databricks를 사용하여 ETL 작업 수행'
+description: Data Lake Storage Gen2에서 Azure Databricks로 데이터를 추출하고 데이터를 전송한 다음, Azure SQL Data Warehouse에 데이터를 로드하는 방법을 알아봅니다.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -9,143 +9,143 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 228b0fff7231af811206d5c477b63ed70706939b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72329760"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>자습서: Azure Databricks을 사용 하 여 데이터 추출, 변환 및 로드
 
-V tomto kurzu provedete operaci ETL (extrakce, transformace a načítání dat) pomocí Azure Databricks. Data z Azure Data Lake Storage Gen2 můžete extrahovat do Azure Databricks, spustit transformace dat v Azure Databricks a načíst transformovaná data do Azure SQL Data Warehouse.
+이 자습서에서는 Azure Databricks를 사용하여 ETL(추출, 변환 및 데이터 로드) 작업을 수행합니다. Azure Data Lake Storage Gen2에서 Azure Databricks로 데이터를 추출하고, Azure Databricks에서 데이터를 변환하여, 변환된 데이터를 Azure SQL Data Warehouse에 로드합니다.
 
-Postup, který je popsaný v tomto kurzu, používá k přenosu dat do Azure Databricks konektor SQL Data Warehouse pro Azure Databricks. Tento konektor zase používá Azure Blob Storage jako dočasné úložiště dat přenášených mezi clusterem Azure Databricks a službou Azure SQL Data Warehouse.
+이 자습서의 단계에서는 Azure Databricks용 SQL Data Warehouse 커넥터를 사용하여 Azure Databricks로 데이터를 전송합니다. 그러면 이 커넥터는 Azure Blob Storage를 Azure Databricks 클러스터와 Azure SQL Data Warehouse 간에 전송되는 데이터의 임시 스토리지로 사용합니다.
 
-Následující obrázek ukazuje běh aplikace:
+다음 그림에서는 애플리케이션 흐름을 보여줍니다.
 
-![Azure Databricks se službami Data Lake Store a SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks se službami Data Lake Store a SQL Data Warehouse")
+![Data Lake Store 및 SQL Data Warehouse를 사용 하 여 Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Data Lake Store 및 SQL Data Warehouse를 사용 하 여 Azure Databricks")
 
-Tento kurz se zabývá následujícími úkony:
+이 자습서에서 다루는 작업은 다음과 같습니다.
 
 > [!div class="checklist"]
-> * Vytvořte službu Azure Databricks.
-> * Vytvořte v Azure Databricks cluster Spark.
-> * Vytvořte v účtu Data Lake Storage Gen2 systém souborů.
-> * Nahrajte ukázková data na účet Azure Data Lake Storage Gen2.
-> * Vytvoření instančního objektu.
-> * Extrahuje data z účtu Azure Data Lake Storage Gen2.
-> * Transformuje data v Azure Databricks.
-> * Načte data do Azure SQL Data Warehouse.
+> * Azure Databricks 서비스 만들기
+> * Azure Databricks에 Spark 클러스터 만들기
+> * Data Lake Storage Gen2 계정에서 파일 시스템 만들기
+> * Azure Data Lake Storage Gen2 계정에 샘플 데이터 업로드
+> * 서비스 주체를 생성합니다.
+> * Azure Data Lake Storage Gen2 계정에서 데이터 추출
+> * Azure Databricks에서 데이터 변환
+> * Azure SQL Data Warehouse에 데이터 로드
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Azure 구독이 아직 없는 경우 시작하기 전에 [무료 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
 
 > [!Note]
-> Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
-> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
+> 이 자습서는 **Azure 평가판 구독**을 사용하여 수행할 수 없습니다.
+> 무료 계정이 있는 경우 프로필로 이동하고 구독을 **종량제**로 변경합니다. 자세한 내용은 [Azure 체험 계정](https://azure.microsoft.com/free/)을 참조하세요. 그런 다음 [지출 한도를 제거](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)하고 해당 지역의 vCPU에 대한 [할당량 증가를 요청](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)합니다. Azure Databricks 작업 영역을 만드는 경우 **평가판(프리미엄-14일 무료 DBU)** 가격 책정 계층을 선택하여 14일간 무료 프리미엄 Azure Databricks DBU를 위한 작업 영역 액세스 권한을 부여할 수 있습니다.
      
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>전제 조건
 
-Než začnete s tímto kurzem, dokončete tyto úkoly:
+이 자습서를 시작하기 전에 다음 작업을 완료합니다.
 
-* Vytvořte službu Azure SQL Data Warehouse, vytvořte pravidlo brány firewall na úrovni serveru a připojte se k serveru jako správce serveru. Další informace najdete [v tématu rychlý Start: vytvoření a dotazování služby Azure SQL Data Warehouse v Azure Portal](../sql-data-warehouse/create-data-warehouse-portal.md).
+* Azure SQL data warehouse를 만들고, 서버 수준 방화벽 규칙을 만들고, 서버 관리자로 서버에 연결 합니다. [Azure Portal 빠른 시작: AZURE SQL data Warehouse 만들기 및 쿼리](../sql-data-warehouse/create-data-warehouse-portal.md)를 참조 하세요.
 
-* Vytvořte hlavní klíč pro Azure SQL Data Warehouse. Viz [Vytvoření hlavního klíče databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Azure SQL data warehouse에 대 한 마스터 키를 만듭니다. [데이터베이스 마스터 키 만들기](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)를 참조하세요.
 
-* Vytvořili jste účet Azure Blob Storage a v něm kontejner. A načetli jste přístupový klíč pro přístup k účtu úložiště. Další informace najdete v tématu [rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+* Azure Blob Storage 계정을 만들고, 그 안에 컨테이너를 만듭니다. 또한 스토리지 계정에 액세스하는 데 사용되는 액세스 키를 검색합니다. [빠른 시작: Azure Portal을 사용 하 여 Blob 업로드, 다운로드 및 나열을](../storage/blobs/storage-quickstart-blobs-portal.md)참조 하세요.
 
-* Vytvořte účet úložiště Azure Data Lake Storage Gen2. Další informace najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+* Azure Data Lake Storage Gen2 스토리지 계정을 만듭니다. [빠른 시작: Azure Data Lake Storage Gen2 저장소 계정 만들기](../storage/blobs/data-lake-storage-quickstart-create-account.md)를 참조 하세요.
 
-* Vytvoření instančního objektu. Viz [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* 서비스 주체를 생성합니다. [방법: 포털을 사용 하 여 리소스에 액세스할 수 있는 AZURE AD 응용 프로그램 및 서비스 주체 만들기를](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)참조 하세요.
 
-   K dispozici je několik konkrétních věcí, které budete muset udělat při provádění kroků v tomto článku.
+   해당 문서의 단계를 수행할 때 해야 하는 두어 가지 항목이 있습니다.
 
-   * Při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) v článku je třeba přiřadit roli **Přispěvatel dat objektů BLOB úložiště** k instančnímu objektu v rozsahu Data Lake Storage Gen2 účtu. Pokud přiřadíte roli nadřazené skupině prostředků nebo předplatnému, obdržíte chyby související s oprávněními, dokud tato přiřazení role nerozšíříte do účtu úložiště.
+   * 문서의 [애플리케이션을 역할에 할당](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) 섹션에 있는 단계를 수행할 때 **Storage Blob 데이터 기여자** 역할을 Data Lake Storage Gen2 계정 범위에 있는 서비스 주체에 할당해야 합니다. 역할을 부모 리소스 그룹 또는 구독에 할당하는 경우 이러한 역할 할당이 스토리지 계정에 전파될 때까지 권한 관련 오류가 발생합니다.
 
-      Pokud byste chtěli použít seznam řízení přístupu (ACL) k přidružení instančního objektu ke konkrétnímu souboru nebo adresáři, referenční [řízení přístupu v Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
+      특정 파일 또는 디렉터리를 사용하여 서비스 주체를 연결하는 데 ACL(액세스 제어 목록)을 사용하려는 경우 [Azure Data Lake Storage Gen2의 액세스 제어](../storage/blobs/data-lake-storage-access-control.md)를 참조하세요.
 
-   * Při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a hodnoty hesla do textového souboru. Budete je potřebovat brzy.
+   * 문서의 [로그인을 위한 값 가져오기](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) 섹션에서 단계를 수행하는 경우 테넌트 ID, 앱 ID 및 암호 값을 텍스트 파일에 붙여넣습니다. 곧 이 값들이 필요합니다.
 
-* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+* [Azure portal](https://portal.azure.com/)에 로그인합니다.
 
-## <a name="gather-the-information-that-you-need"></a>Shromážděte informace, které potřebujete.
+## <a name="gather-the-information-that-you-need"></a>필요한 정보 수집
 
-Ujistěte se, že jste dokončili požadavky tohoto kurzu.
+이 자습서의 필수 조건을 완료했는지 확인합니다.
 
-   Než začnete, měli byste mít tyto položky informací:
+   시작하기 전에 다음 정보 항목이 있어야 합니다.
 
-   : heavy_check_mark: název databáze, název databázového serveru, uživatelské jméno a heslo ke službě Azure SQL Data Warehouse.
+   : heavy_check_mark: Azure SQL Data warehouse의 데이터베이스 이름, 데이터베이스 서버 이름, 사용자 이름 및 암호입니다.
 
-   : heavy_check_mark: přístupový klíč účtu úložiště objektů BLOB.
+   : heavy_check_mark: blob 저장소 계정의 액세스 키입니다.
 
-   : heavy_check_mark: název vašeho účtu úložiště Data Lake Storage Gen2.
+   : heavy_check_mark: Data Lake Storage Gen2 저장소 계정의 이름입니다.
 
-   : heavy_check_mark: ID tenanta vašeho předplatného.
+   : heavy_check_mark: 구독의 테 넌 트 ID입니다.
 
-   : heavy_check_mark: ID aplikace aplikace, kterou jste zaregistrovali ve službě Azure Active Directory (Azure AD).
+   : heavy_check_mark: Azure Active Directory (Azure AD)에 등록 한 앱의 응용 프로그램 ID입니다.
 
-   : heavy_check_mark: ověřovací klíč pro aplikaci, kterou jste zaregistrovali ve službě Azure AD.
+   : heavy_check_mark: Azure AD에 등록 한 앱에 대 한 인증 키입니다.
 
-## <a name="create-an-azure-databricks-service"></a>Vytvoření služby Azure Databricks
+## <a name="create-an-azure-databricks-service"></a>Azure Databricks 서비스 만들기
 
-V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
+이 섹션에서는 Azure Portal을 사용하여 Azure Databricks 서비스를 만듭니다.
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**.
+1. Azure Portal에서 **리소스 만들기** > **분석** > **Azure Databricks**를 차례로 선택합니다.
 
-    ![Databricks na webu Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks na webu Azure Portal")
+    ![Azure Portal Databricks](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Azure Portal의 Databricks")
 
-2. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření služby datacihly:
+2. **Azure Databricks 서비스** 아래에서 다음 값을 입력하여 Databricks 서비스를 만듭니다.
 
-    |Vlastnost  |Popis  |
+    |자산  |설명  |
     |---------|---------|
-    |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
-    |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
-    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/resource-group-overview.md). |
-    |**Umístění**     | Vyberte **Západní USA 2**.  Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).      |
-    |**Cenová úroveň**     |  Vyberte **Standard**.     |
+    |**작업 영역 이름**     | Databricks 작업 영역에 대한 이름을 제공합니다.        |
+    |**구독**     | 드롭다운에서 Azure 구독을 선택합니다.        |
+    |**리소스 그룹**     | 새 리소스 그룹을 만들지, 아니면 기존 그룹을 사용할지 여부를 지정합니다. 리소스 그룹은 Azure 솔루션에 관련된 리소스를 보유하는 컨테이너입니다. 자세한 내용은 [Azure Resource Manager 개요](../azure-resource-manager/resource-group-overview.md)를 참조하세요. |
+    |**위치**     | **미국 서부 2**를 선택합니다.  사용 가능한 다른 영역은 [지역별 사용 가능한 Azure 서비스](https://azure.microsoft.com/regions/services/)를 참조하세요.      |
+    |**가격 책정 계층**     |  **표준**을 선택합니다.     |
 
-3. Vytvoření účtu trvá několik minut. Chcete-li monitorovat stav operace, zobrazte indikátor průběhu v horní části.
+3. 계정 생성에는 몇 분 정도가 소요됩니다. 작업 상태를 모니터링하려면 맨 위에 있는 진행률 표시줄을 확인합니다.
 
-4. Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit**.
+4. **대시보드에 고정**을 선택한 다음, **만들기**를 선택합니다.
 
-## <a name="create-a-spark-cluster-in-azure-databricks"></a>Vytvoření clusteru Spark v Azure Databricks
+## <a name="create-a-spark-cluster-in-azure-databricks"></a>Azure Databricks에 Spark 클러스터 만들기
 
-1. V Azure Portal otevřete službu datacihly, kterou jste vytvořili, a vyberte **Spustit pracovní prostor**.
+1. Azure Portal에서 본인이 만든 Databricks 서비스로 이동한 다음, **작업 영역 시작**을 선택합니다.
 
-2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Cluster**.
+2. Azure Databricks 포털로 리디렉션됩니다. 포털에서 **클러스터**를 선택합니다.
 
-    ![Databricks v Azure](./media/databricks-extract-load-sql-data-warehouse/databricks-on-azure.png "Databricks v Azure")
+    ![Azure의 Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-on-azure.png "Azure의 Databricks")
 
-3. Na stránce **New cluster** (Nový cluster) zadejte hodnoty pro vytvoření clusteru.
+3. **새 클러스터** 페이지에서 값을 제공하여 클러스터를 만듭니다.
 
-    ![Vytvoření clusteru Databricks Spark v Azure](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
+    ![Azure에서 Databricks Spark 클러스터 만들기](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Azure에서 Databricks Spark 클러스터 만들기")
 
-4. Zadejte hodnoty následujících polí a potvrďte výchozí hodnoty dalších polí:
+4. 다음 필드에 대한 값을 입력하고, 다른 필드에는 기본값을 그대로 적용합니다.
 
-    * Zadejte název clusteru.
+    * 클러스터의 이름을 입력합니다.
 
-    * Ujistěte se, že jste zaškrtli políčko **ukončit po \_ @ no__t-2 minuty nečinnosti** . Pokud se cluster nepoužívá, zadejte dobu (v minutách), po kterou má cluster skončit.
+    * **비활성 \_\_분 후 종료** 확인란을 선택합니다. 클러스터가 사용되지 않는 경우 클러스터를 종료할 시간(분)을 입력합니다.
 
-    * Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
+    * **클러스터 만들기**를 선택합니다. 클러스터가 실행되면 Notebook을 클러스터에 연결하고 Spark 작업을 실행할 수 있습니다.
 
-## <a name="create-a-file-system-in-the-azure-data-lake-storage-gen2-account"></a>Vytvoření systému souborů v účtu Azure Data Lake Storage Gen2
+## <a name="create-a-file-system-in-the-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 계정에서 파일 시스템 만들기
 
-V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový blok a pak spustíte fragmenty kódu pro konfiguraci účtu úložiště.
+이 섹션에서는 Azure Databricks 작업 영역에서 Notebook을 만든 다음, 코드 조각을 실행하여 스토리지 계정을 구성합니다.
 
-1. V [Azure Portal](https://portal.azure.com)otevřete službu Azure Databricks, kterou jste vytvořili, a vyberte **Spustit pracovní prostor**.
+1. [Azure Portal](https://portal.azure.com)에서 본인이 만든 Azure Databricks 서비스로 이동한 다음, **작업 영역 시작**을 선택합니다.
 
-2. Na levé straně vyberte **pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok**.
+2. 왼쪽 창에서 **작업 영역**을 선택합니다. **작업 영역** 드롭다운에서 **만들기** > **Notebook**을 차례로 선택합니다.
 
-    ![Vytvoření poznámkového bloku v datacihlech](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "vytvoření poznámkového bloku v datacihlech")
+    ![Databricks에서 노트북 만들기](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Databricks에서 노트북 만들기")
 
-3. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Vyberte jazyk **Scala** a vyberte cluster Spark, který jste vytvořili v předchozí části.
+3. **노트북 만들기** 대화 상자에서 노트북 이름을 입력합니다. 언어로 **Scala**를 선택한 다음, 앞에서 만든 Spark 클러스터를 선택합니다.
 
-    ![Zadání podrobností pro Poznámkový blok v datacihlách], které(./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "poskytují podrobné informace o poznámkovém bloku v datacihlech")
+    ![Databricks에서 노트북에 대 한 세부 정보 제공](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Databricks에서 노트북에 대 한 세부 정보 제공")
 
-4. Vyberte **Create** (Vytvořit).
+4. **만들기**를 선택합니다.
 
-5. Následující blok kódu nastaví výchozí přihlašovací údaje instančního objektu pro libovolný účet ADLS Gen 2, ke kterému se přistupoval v relaci Spark. Druhý blok kódu připojí název účtu k nastavení k zadání přihlašovacích údajů pro konkrétní účet ADLS Gen 2.  Zkopírujte a vložte blok kódu do první buňky Azure Databricks poznámkového bloku.
+5. 다음 코드 블록은 Spark 세션에서 액세스하는 ADLS Gen 2 계정에 대한 기본 서비스 주체 자격 증명을 설정합니다. 두 번째 코드 블록은 특정 ADLS Gen 2 계정에 대한 자격 증명을 지정하는 설정에 계정 이름을 추가합니다.  Azure Databricks Notebook의 첫 번째 셀에 코드 블록 중 하나를 복사하여 붙여넣습니다.
 
-   **Konfigurace relace**
+   **세션 구성**
 
    ```scala
    val appID = "<appID>"
@@ -163,7 +163,7 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-   **Konfigurace účtu**
+   **계정 구성**
 
    ```scala
    val storageAccountName = "<storage-account-name>"
@@ -182,47 +182,47 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. V tomto bloku kódu Nahraďte zástupné hodnoty `<app-id>`, `<password>`, `<tenant-id>` a `<storage-account-name>` v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte zástupnou hodnotu `<file-system-name>` libovolným názvem, který chcete systému souborů poskytnout.
+6. 이 코드 블록에서 `<app-id>`, `<password>`, `<tenant-id>` 및 `<storage-account-name>` 자리 표시자 값을 이 자습서의 필수 조건을 수행하는 동안 수집한 값으로 바꿉니다. `<file-system-name>` 자리 표시자 값을 파일 시스템에 제공하려는 이름으로 바꿉니다.
 
-   * @No__t-0 a `<password>` jsou z aplikace, kterou jste zaregistrovali ve službě Active Directory, v rámci vytváření instančního objektu.
+   * `<app-id>` 및 `<password>`는 서비스 주체 만들기의 일환으로 활성 디렉터리에 등록한 앱에서 가져온 것입니다.
 
-   * @No__t – 0 pochází z vašeho předplatného.
+   * `<tenant-id>`는 구독에서 가져온 것입니다.
 
-   * @No__t-0 je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
+   * `<storage-account-name>`은 Azure Data Lake Storage Gen2 스토리지 계정의 이름입니다.
 
-7. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
+7. 이 블록에서 코드를 실행하려면 **SHIFT + ENTER** 키를 누릅니다.
 
-## <a name="ingest-sample-data-into-the-azure-data-lake-storage-gen2-account"></a>Ingestování ukázkových dat do účtu Azure Data Lake Storage Gen2
+## <a name="ingest-sample-data-into-the-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 계정에 샘플 데이터 수집
 
-Než se pustíte do této části, je potřeba nejprve splnit následující požadavky:
+이 섹션을 시작하기 전에 다음 필수 구성 요소를 완료해야 합니다.
 
-Do buňky poznámkového bloku zadejte následující kód:
+노트북 셀에 다음 코드를 입력합니다.
 
     %sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
 
-V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
+셀에서 **Shift+Enter**를 눌러 코드를 실행합니다.
 
-Nyní vložte následující kód do nové buňky pod tímto kódem a nahraďte hodnoty zobrazené v závorkách stejnými hodnotami, které jste použili dříve:
+이제 이 아래에 있는 새 셀에서 다음 코드를 입력하고 괄호에 나타나는 값을 이전에 사용한 동일한 값으로 바꿉니다.
 
     dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://" + fileSystemName + "@" + storageAccountName + ".dfs.core.windows.net/")
 
-V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
+셀에서 **Shift+Enter**를 눌러 코드를 실행합니다.
 
-## <a name="extract-data-from-the-azure-data-lake-storage-gen2-account"></a>Extrakce dat z Azure Data Lake Storage Gen2 účtu
+## <a name="extract-data-from-the-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 계정에서 데이터 추출
 
-1. Ukázkový soubor JSON teď můžete načíst jako datový rámec v Azure Databricks. Do nové buňky vložte následující kód. Zástupné symboly zobrazené v závorkách nahraďte hodnotami.
+1. 이제 Azure Databricks에서 샘플 json 파일을 데이터 프레임으로 로드할 수 있습니다. 다음 코드를 새 셀에 붙여넣습니다. 대괄호 안에 표시된 자리 표시자를 사용자 고유의 값으로 바꿉니다.
 
    ```scala
    val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
    ```
-2. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
+2. 이 블록에서 코드를 실행하려면 **SHIFT + ENTER** 키를 누릅니다.
 
-3. Chcete-li zobrazit obsah datového rámce, spusťte následující kód:
+3. 데이터 프레임의 콘텐츠를 보려면 다음 코드를 실행합니다.
 
     ```scala
     df.show()
     ```
-   Zobrazí se výstup, který bude podobný následujícímu fragmentu kódu:
+   다음 코드 조각과 유사한 결과가 표시됩니다.
 
    ```bash
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
@@ -235,20 +235,20 @@ V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
    ...
    ```
 
-   Tím jste extrahovali data z Azure Data Lake Storage Gen2 do Azure Databricks.
+   이제 Azure Data Lake Storage Gen2에서 Azure Databricks로 데이터를 추출했습니다.
 
-## <a name="transform-data-in-azure-databricks"></a>Transformace dat v Azure Databricks
+## <a name="transform-data-in-azure-databricks"></a>Azure Databricks에서 데이터 변환
 
-Nezpracovaný ukázkový soubor **small_radio_json. JSON** zachycuje cílovou skupinu pro radiovou stanici a má různé sloupce. V této části Transformujte data tak, aby se z datové sady načítala jenom konkrétní sloupce.
+원시 샘플 데이터 **small_radio_json.json** 파일은 라디오 방송국의 대상을 캡처하며, 다양한 열을 갖고 있습니다. 이 섹션에서는 데이터 세트의 특정 열만 검색하도록 데이터를 변환합니다.
 
-1. Nejdříve načtěte pouze sloupce **FirstName**, **LastName**, **pohlaví**, **Location**a **Level** z datového rámce, který jste vytvořili.
+1. 먼저 앞에서 만든 데이터 프레임에서 **firstname**, **lastname**, **gender**, **location** 및 **level** 열만 검색합니다.
 
    ```scala
    val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
    specificColumnsDf.show()
    ```
 
-   Zobrazí se výstup, jak je znázorněno v následujícím fragmentu kódu:
+   다음 코드 조각과 같은 출력이 수신됩니다.
 
    ```bash
    +---------+----------+------+--------------------+-----+
@@ -277,14 +277,14 @@ Nezpracovaný ukázkový soubor **small_radio_json. JSON** zachycuje cílovou sk
    +---------+----------+------+--------------------+-----+
    ```
 
-2. Teď můžete v datech sloupec **level** přejmenovat na **subscription_type**.
+2. **level** 열을 **subscription_type**으로 변경하도록 이 데이터를 추가로 변환할 수 있습니다.
 
    ```scala
    val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
    renamedColumnsDF.show()
    ```
 
-   Zobrazí se výstup, jak je znázorněno v následujícím fragmentu kódu.
+   다음 코드 조각과 같은 출력이 수신됩니다.
 
    ```bash
    +---------+----------+------+--------------------+-----------------+
@@ -313,13 +313,13 @@ Nezpracovaný ukázkový soubor **small_radio_json. JSON** zachycuje cílovou sk
    +---------+----------+------+--------------------+-----------------+
    ```
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Načtení dat do Azure SQL Data Warehouse
+## <a name="load-data-into-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse에 데이터 로드
 
-V této části načtete transformovaná data do služby Azure SQL Data Warehouse. Pomocí konektoru Azure SQL Data Warehouse můžete Azure Databricks přímo nahrát datový rámec jako tabulku v SQL Data Warehouse.
+이 섹션에서는 변환된 데이터를 Azure SQL Data Warehouse로 업로드합니다. Azure Databricks용 Azure SQL Data Warehouse 커넥터를 사용하여 데이터 프레임을 SQL 데이터 웨어하우스의 테이블로 직접 업로드합니다.
 
-Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá úložiště objektů BLOB v Azure jako dočasné úložiště pro nahrávání dat mezi Azure Databricks a Azure SQL Data Warehouse. Proto musíte napřed zadat konfiguraci pro připojení k účtu tohoto úložiště. Účet již musíte mít již vytvořen jako součást požadavků pro tento článek.
+앞서 언급했듯이, SQL Data Warehouse 커넥터는 Azure Blob 스토리지를 임시 스토리지로 사용하여 Azure Databricks와 Azure SQL Data Warehouse 간에 데이터를 업로드합니다. 따라서 스토리지 계정에 연결하는 구성을 먼저 제공해야 합니다. 이 문서의 필수 구성 요소로 이미 계정을 만들어 두셨을 것입니다.
 
-1. Zadejte konfiguraci pro přístup k účtu Azure Storage z Azure Databricks.
+1. Azure Databricks에서 Azure Storage 계정에 액세스하기 위한 구성을 입력합니다.
 
    ```scala
    val blobStorage = "<blob-storage-account-name>.blob.core.windows.net"
@@ -327,20 +327,20 @@ Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá úložiš
    val blobAccessKey =  "<access-key>"
    ```
 
-2. Zadejte dočasnou složku, která se má použít při přesouvání dat mezi Azure Databricks a Azure SQL Data Warehouse.
+2. Azure Databricks와 Azure SQL Data Warehouse 간에 데이터를 이동할 때 사용할 임시 폴더를 지정합니다.
 
    ```scala
    val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
    ```
 
-3. Spusťte následující fragment kódu, který v konfiguraci uloží přístupové klíče služby Azure Blob Storage. Tato akce zajistí, že nebudete muset přístupový klíč v poznámkovém bloku uchovávat v prostém textu.
+3. 다음 코드 조각을 실행하여 Azure Blob Storage 액세스 키를 구성에 저장합니다. 이 작업을 수행하면 액세스 키를 노트북에서 일반 텍스트로 유지할 필요가 없습니다.
 
    ```scala
    val acntInfo = "fs.azure.account.key."+ blobStorage
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Je nutné, abyste vytvořili datový sklad SQL jako předpoklad. Použijte plně kvalifikovaný název serveru pro **dwServer**. Například, `<servername>.database.windows.net`.
+4. Azure SQL Data Warehouse 인스턴스에 연결하기 위한 값을 입력합니다. 필수 구성 요소의 일부로 SQL 데이터 웨어하우스를 이미 만들어 두셨을 것입니다. **dwServer**에 대해 정규화된 서버 이름을 사용합니다. 예: `<servername>.database.windows.net`
 
    ```scala
    //SQL Data Warehouse related settings
@@ -354,7 +354,7 @@ Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá úložiš
    val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
-5. Spusťte následující fragment kódu, který načte transformovaný datový rámec **renamedColumnsDF**jako tabulku v SQL Data Warehouse. Tento fragment kódu vytvoří v SQL databázi tabulku s názvem **SampleTable**.
+5. 다음 코드 조각을 실행하여 변환된 데이터 프레임 **renamedColumnsDF**를 SQL 데이터 웨어하우스에 테이블로 로드합니다. 이 코드 조각은 SQL 데이터베이스에 **SampleTable**이라는 테이블을 만듭니다.
 
    ```scala
    spark.conf.set(
@@ -365,39 +365,39 @@ Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá úložiš
    ```
 
    > [!NOTE]
-   > Tato ukázka používá příznak `forward_spark_azure_storage_credentials`, který způsobí, že SQL Data Warehouse přístup k datům z úložiště objektů BLOB pomocí přístupového klíče. Toto je jediná podporovaná metoda ověřování.
+   > 이 샘플에서는 SQL Data Warehouse가 액세스 키를 사용하여 BLOB 스토리지의 데이터에 액세스하도록 하는 `forward_spark_azure_storage_credentials` 플래그를 사용합니다. 이것이 유일하게 지원되는 인증 방법입니다.
    >
-   > Pokud je Blob Storage Azure omezené na výběr virtuálních sítí, SQL Data Warehouse [místo přístupových klíčů vyžaduje identita spravované služby](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Tím dojde k chybě "Tato žádost není autorizována k provedení této operace".
+   > Azure Blob Storage가 가상 네트워크를 선택하도록 제한되면 SQL Data Warehouse에 [액세스 키 대신 관리 서비스 ID](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)가 필요합니다. 이렇게 하면 "이 요청은 작업을 수행할 권한이 없습니다." 오류가 발생합니다.
 
-6. Připojte se k databázi SQL a ověřte, že se zobrazí databáze s názvem **Samples**.
+6. SQL 데이터베이스에 연결하여 **SampleTable**이라는 데이터베이스가 있는지 확인합니다.
 
-   ![Ověření]ukázkové(./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "tabulky ověření") ukázkové tabulky
+   ![예제 테이블 확인](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "예제 테이블 확인")
 
-7. Spusťte výběrový dotaz, kterým ověříte obsah tabulky. Tabulka by měla mít stejná data jako **renamedColumnsDF** dataframe.
+7. select 쿼리를 실행하여 테이블의 콘텐츠를 확인합니다. 이 테이블에 **renamedColumnsDF** 데이터 프레임과 똑같은 데이터가 있어야 합니다.
 
-    ![Ověření obsahu ukázkové tabulky](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "ověření obsahu ukázkové tabulky")
+    ![샘플 테이블 콘텐츠 확인](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "샘플 테이블 콘텐츠 확인")
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
+## <a name="clean-up-resources"></a>리소스 정리
 
-Po dokončení kurzu můžete cluster ukončit. V pracovním prostoru Azure Databricks na levé straně vyberte **clustery** . Pokud chcete cluster ukončit, v části **Akce**přejděte na tři tečky (...) a vyberte ikonu **ukončit** .
+자습서를 마친 후에는 클러스터를 종료해도 됩니다. Azure Databricks 작업 영역의 왼쪽에서 **클러스터**를 선택합니다. 클러스터를 종료하려면 **작업** 아래에서 줄임표(...)를 가리키고 **종료** 아이콘을 선택합니다.
 
-![Zastavení clusteru Databricks](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
+![Databricks 클러스터 중지](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks 클러스터 중지")
 
-Pokud cluster neukončíte ručně, automaticky se zastaví a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_ @ no__t – 2 minuty nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud je po určenou dobu neaktivní.
+클러스터를 만들 때 **비활성 \_\_분 후 종료** 확인란을 선택한 경우 클러스터를 수동으로 종료하지 않으면 클러스터가 자동으로 중지됩니다. 이 경우 지정한 시간 동안 클러스터가 비활성 상태이면 클러스터가 자동으로 중지됩니다.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>다음 단계
 
-V tomto kurzu jste se naučili:
+이 자습서에서는 다음을 수행하는 방법에 대해 알아보았습니다.
 
 > [!div class="checklist"]
-> * Vytvoření služby Azure Databricks
-> * Vytvoření clusteru Spark v Azure Databricks
-> * Vytvoření poznámkového bloku v Azure Databricks
-> * Extrakce dat z Data Lake Storage Gen2 účtu
-> * Transformace dat v Azure Databricks
-> * Načtení dat do Azure SQL Data Warehouse
+> * Azure Databricks 서비스 만들기
+> * Azure Databricks에 Spark 클러스터 만들기
+> * Azure Databricks에 노트북 만들기
+> * Data Lake Storage Gen2 계정에서 데이터 추출
+> * Azure Databricks에서 데이터 변환
+> * Azure SQL Data Warehouse에 데이터 로드
 
-Pokračujte dalším kurzem, ve kterém se naučíte streamovat data v reálném čase do Azure Databricks pomocí služby Azure Event Hubs.
+다음 자습서로 넘어가서 Azure Event Hubs를 사용하여 Azure Databricks로 실시간 데이터를 스트리밍하는 방법을 알아보세요.
 
 > [!div class="nextstepaction"]
->[Streamování dat do Azure Databricks pomocí služby Event Hubs](databricks-stream-from-eventhubs.md)
+>[Event Hubs를 사용하여 Azure Databricks로 데이터 스트리밍](databricks-stream-from-eventhubs.md)

@@ -7,48 +7,47 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 05/06/2019
-ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 10/16/2019
+ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175424"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692393"
 ---
 >[!IMPORTANT]
->Splnění požadavků pro ostatní kurzy služby Azure Machine Learning a články s postupy můžete použít prostředky, které jste vytvořili.
-
+>Prostředky, které jste vytvořili jako předpoklady, můžete použít pro jiné kurzy Azure Machine Learning služby a články s postupy.
 
 ### <a name="delete-everything"></a>Odstranit vše
 
-Pokud nemáte v úmyslu použít cokoli, co jste vytvořili, odstraníte celou skupinu prostředků, tak nebudou účtovat žádné poplatky:
+Pokud neplánujete použít nic, co jste vytvořili, odstraňte celou skupinu prostředků, aby se vám neúčtovaly žádné poplatky:
 
-1. Na webu Azure Portal, vyberte **skupiny prostředků** na levé straně okna.
+1. V Azure Portal na levé straně okna vyberte **skupiny prostředků** .
  
    ![Odstranění skupiny prostředků na webu Azure Portal](./media/aml-ui-cleanup/delete-resources.png)
 
 1. V seznamu vyberte skupinu prostředků, kterou jste vytvořili.
 
-1. Na pravé straně okna, vyberte tlačítko se třemi tečkami ( **...** ).
+1. Na pravé straně okna vyberte tlačítko se třemi tečkami ( **...** ).
 
 1. Vyberte **Odstranit skupinu prostředků**.
 
-Odstraněním skupiny prostředků se odstraní také všechny prostředky, které jste vytvořili v vizuální rozhraní.  
+Odstraněním skupiny prostředků se odstraní také všechny prostředky, které jste vytvořili v rámci vizuálního rozhraní.  
 
-### <a name="delete-only-the-compute-target"></a>Odstranit pouze cílové výpočetní prostředí
+### <a name="delete-only-the-compute-target"></a>Odstranit jenom výpočetní cíl
 
-Cílové výpočetní prostředí, který jste vytvořili v tomto poli *automaticky pravidla automatického škálování provedou* na 0 uzlů, když se nepoužívá. Cílem je minimalizovat náklady. Pokud chcete odstranit cílové výpočetní prostředí, proveďte tyto kroky:
+Cíl výpočtů, který jste zde vytvořili, *automaticky automaticky škáluje* na nula uzlů, pokud se nepoužívá. Tím se minimalizují poplatky. Pokud chcete odstranit cíl výpočtů, proveďte tyto kroky:
 
-1. V [webu Azure portal](https://portal.azure.com), otevřete pracovní prostor.
+1. V [Azure Portal](https://portal.azure.com)otevřete pracovní prostor.
 
-    ![Odstranit cílové výpočetní prostředí](./media/aml-ui-cleanup/delete-compute-target.png)
+    ![Odstranit cíl výpočtů](./media/aml-ui-cleanup/delete-compute-target.png)
 
-1. V **Compute** části pracovního prostoru, vyberte prostředek.
+1. V části **výpočty** v pracovním prostoru vyberte prostředek.
 
 1. Vyberte **Odstranit**.
 
-### <a name="delete-individual-assets"></a>Odstranit jednotlivé prostředky
+### <a name="delete-individual-assets"></a>Odstranění jednotlivých assetů
 
-Ve vizuální rozhraní, ve které jste vytvořili experimentu, odstranit jednotlivé prostředky tak, že je vyberete a pak vyberete **odstranit** tlačítko.
+Ve vizuálním rozhraní, kde jste vytvořili experiment, odstraňte jednotlivé prostředky tak, že je vyberete a pak vyberete tlačítko **Odstranit** . Z vašeho pracovního prostoru můžete zrušit registraci datových sad tak, že vyberete každou datovou sadu a vyberete **zrušit registraci**.
 
-![Odstranit experimentů](./media/aml-ui-cleanup/delete-experiment.png)
+![Odstranit prostředky](./media/aml-ui-cleanup/delete-asset.png)

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 08/15/2019
 ms.author: heidist
 ms.openlocfilehash: aa8ab3a3bc2f243e8b0ee404228926ef46bc46db
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266394"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "rozpoznávání hledání" v Azure Search?
@@ -25,7 +25,7 @@ Rozpoznávání rozpoznávání je funkce AI v Azure Search, která se použív�
 
 ![Diagram kanálu vyhledávání pro rozpoznávání](./media/cognitive-search-intro/cogsearch-architecture.png "Přehled kanálu vyhledávání rozpoznávání")
 
-Rozpoznávání dovedností v Azure Search jsou založené na modelech strojového učení v rozhraní API služeb Cognitive Services: Analýza [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) a [textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). 
+Rozpoznávání dovedností v Azure Search jsou založené na modelech strojového učení v rozhraní API služeb Cognitive Services: [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) a [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). 
 
 Během fáze příjmu dat se použije přirozený jazyk a zpracování obrazu s výsledky, které se stanou součástí kompozice dokumentu v Azure Searchovém indexu v. Data se nastavují jako datová sada Azure a pak se provedou prostřednictvím kanálu indexování s použitím libovolných [integrovaných dovedností](cognitive-search-predefined-skills.md) , které potřebujete. Architektura je rozšiřitelná, takže pokud nejsou integrované dovednosti dostatečné, můžete vytvořit a připojit [vlastní dovednosti](cognitive-search-create-custom-skill-example.md) pro integraci vlastního zpracování. Příkladem může být modul vlastních entit nebo třídění dokumentů cílící na konkrétní doménu, jako je finance, vědecké publikace nebo lékařství.
 
@@ -57,15 +57,15 @@ Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoz
 
 Kanál hledání rozpoznávání je založen na [Azure Search *indexerů* ](search-indexer-overview.md) , které procházejí zdroji dat a poskytují ucelené zpracování indexu. Dovednosti jsou teď připojené k indexerům, zachycení a obohacení dokumentů podle dovednosti, které definujete. Po indexování můžete k obsahu přistupovat prostřednictvím žádostí o hledání prostřednictvím všech [typů dotazů podporovaných Azure Search](search-query-overview.md).  Pokud s indexery začínáte, Tato část vás provede jednotlivými kroky.
 
-### <a name="step-1-connection-and-document-cracking-phase"></a>Krok 1: Fáze připojení a vytrhlinování dokumentů
+### <a name="step-1-connection-and-document-cracking-phase"></a>Krok 1: fáze připojení a odhalující dokumentu
 
 Na začátku kanálu máte nestrukturovaný text nebo obsah, který není v textu (například obrázek a naskenovaný dokument JPEG). Data musí existovat ve službě úložiště dat Azure, ke které je možné přistupovat indexerem. Indexery mohou "prolomené" zdrojové dokumenty pro extrakci textu ze zdrojových dat.
 
-![Fáze pro trhliny dokumentů](./media/cognitive-search-intro/document-cracking-phase-blowup.png "trhliny dokumentů")
+![Fáze pro trhliny dokumentů](./media/cognitive-search-intro/document-cracking-phase-blowup.png "Trhliny dokumentů")
 
- Mezi podporované zdroje patří Azure Blob Storage, Azure Table Storage, Azure SQL Database a Azure Cosmos DB. Textový obsah se dá extrahovat z následujících typů souborů: Soubory PDF, Word, PowerPoint, CSV. Úplný seznam najdete v tématu [podporované formáty](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
+ Mezi podporované zdroje patří Azure Blob Storage, Azure Table Storage, Azure SQL Database a Azure Cosmos DB. Textový obsah se dá extrahovat z následujících typů souborů: PDF, Word, PowerPoint, soubory CSV. Úplný seznam najdete v tématu [podporované formáty](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 
-### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>Krok 2: Rozvnímání dovedností a fáze obohacení
+### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>Krok 2: vnímání dovedností a fáze obohacení
 
 Obohacení je prostřednictvím *odbornosti rozpoznávání* provádět atomické operace. Například když máte textový obsah z formátu PDF, můžete použít detekci jazyka rozpoznávání entit nebo extrakci klíčových frází pro vytvoření nových polí v indexu, která nejsou nativně dostupná ve zdroji. Kolekce dovedností použité ve vašem kanálu se zcela nazývá *dovednosti*.  
 
@@ -81,7 +81,7 @@ Kanál interně vytvoří kolekci obohacených dokumentů. Můžete určit, kter
 
 Přidání znalostní báze do dovednosti vám dává možnost zastupovat na základě rozšíření pro jiné scénáře než fulltextové vyhledávání. Další informace najdete v [článku Co je znalostní báze Knowledge Store](knowledge-store-concept-intro.md).
 
-### <a name="step-3-search-index-and-query-based-access"></a>Krok 3: Vyhledat index a přístup založený na dotazech
+### <a name="step-3-search-index-and-query-based-access"></a>Krok 3: hledání indexu a přístupu na základě dotazů
 
 Po dokončení zpracování máte index vyhledávání sestávající z obohacených dokumentů, který je v Azure Search plněný pro hledání textu. [Dotazování indexu](search-query-overview.md) je způsob, jakým vývojáři a uživatelé přistupují k obohacenému obsahu vygenerovanému kanálem. 
 
@@ -97,7 +97,7 @@ Indexy jsou generovány z schématu indexu definující pole, atributy a další
 
 | Koncept | Popis| Odkazy |
 |---------|------------|-------|
-| Sada dovedností | Nejvyšší úroveň s názvem prostředek obsahující kolekci dovedností. Dovednosti je kanál pro obohacení. Vyvolá se při indexování indexerem. | [Definovat dovednosti](cognitive-search-defining-skillset.md) |
+| dovednosti | Nejvyšší úroveň s názvem prostředek obsahující kolekci dovedností. Dovednosti je kanál pro obohacení. Vyvolá se při indexování indexerem. | [Definovat dovednosti](cognitive-search-defining-skillset.md) |
 | Vnímání znalostí | Atomická transformace v kanálu rozšíření. Často se jedná o komponentu, která extrahuje nebo odvodí strukturu, a proto rozšiřuje vaše znalosti vstupních dat. Téměř vždy je výstupem na základě textu a zpracování je zpracování přirozeného jazyka nebo zpracování obrázků, které extrahuje nebo generuje text ze vstupů z obrázku. Výstup dovedností lze namapovat na pole v indexu nebo použít jako vstup pro obohacení pro podřízené služby. Dovednost je předdefinovaná a poskytnutá společností Microsoft, nebo vlastní: vytvořená a nasazená vámi. | [Předdefinované dovednosti](cognitive-search-predefined-skills.md) |
 | Extrakce dat | Pokrývá širokou škálu zpracování, ale týká se rozpoznávání rozpoznávání entit, se většinou používá k extrakci dat (entity) ze zdroje, který tyto informace neposkytuje nativně. | [Dovednost pro rozpoznávání entit](cognitive-search-skill-entity-recognition.md)| 
 | Zpracování obrázků | Odvodí text z obrázku, jako je například schopnost rozpoznat orientační bod, nebo extrahuje text z obrázku. Mezi běžné příklady patří rozpoznávání znaků pro zvedání znaků ze souboru naskenovaného dokumentu (JPEG) nebo rozpoznávání názvu ulice ve fotografii obsahující značku ulice. | Dovednost k [analýze obrázků](cognitive-search-skill-image-analysis.md) nebo [rozpoznávání OCR](cognitive-search-skill-ocr.md)
@@ -105,7 +105,7 @@ Indexy jsou generovány z schématu indexu definující pole, atributy a další
 | Trhliny dokumentů | Proces extrahování nebo vytváření textového obsahu z netextových zdrojů během indexování. Optické rozpoznávání znaků (OCR) je příklad, ale obecně odkazuje na základní funkce indexeru, protože indexer extrahuje obsah ze souborů aplikace. Zdroj dat, který poskytuje umístění zdrojových souborů, a definice indexeru, které poskytují mapování polí, jsou klíčové faktory při trhlinách dokumentů. | Viz [indexery](search-indexer-overview.md) |
 | Shaping | Konsolidujte fragmenty textu do větší struktury nebo naopak rozdělte větší textové bloky do spravovatelné velikosti pro další zpracování pro příjem dat. | Dovednost [Shaper](cognitive-search-skill-shaper.md), dovednost pro [spojování textu](cognitive-search-skill-textmerger.md), dovednost [rozdělení textu](cognitive-search-skill-textsplit.md) |
 | Obohacené dokumenty | Přechodná interní struktura generovaná během zpracování s konečným výstupem, který se odráží ve vyhledávacím indexu. Dovednosti určuje, které obohacení se provádí. Mapování polí určují, které datové prvky jsou přidány do indexu. Volitelně můžete vytvořit znalostní bázi pro uchování a prozkoumání obohacených dokumentů pomocí nástrojů, jako jsou Průzkumník služby Storage, Power BI nebo jakýkoli jiný nástroj, který se připojuje ke službě Azure Blob Storage. | Viz [znalostní báze Knowledge Store (Preview)](knowledge-store-concept-intro.md). |
-| Indexer |  Prohledávací modul, který extrahuje hledaná data a metadata z externího zdroje dat a naplní index založený na mapování polí mezi indexem a zdrojem dat pro trhliny dokumentů. Pro obohacení vyhledávacích hledání vyvolá indexer dovednosti a obsahuje mapování polí, které přidružuje výstup obohacení do cílových polí v indexu. Definice indexeru obsahuje všechny pokyny a odkazy na operace kanálu a kanál je vyvolán při spuštění indexeru. | [Indexery](search-indexer-overview.md) |
+| Indexovací modul |  Prohledávací modul, který extrahuje hledaná data a metadata z externího zdroje dat a naplní index založený na mapování polí mezi indexem a zdrojem dat pro trhliny dokumentů. Pro obohacení vyhledávacích hledání vyvolá indexer dovednosti a obsahuje mapování polí, které přidružuje výstup obohacení do cílových polí v indexu. Definice indexeru obsahuje všechny pokyny a odkazy na operace kanálu a kanál je vyvolán při spuštění indexeru. | [Indexery](search-indexer-overview.md) |
 | Zdroj dat  | Objekt používaný indexerem pro připojení k externímu zdroji dat s podporovanými typy v Azure. | Viz [indexery](search-indexer-overview.md) |
 | Index | Trvalý vyhledávací index v Azure Search sestavený z schématu indexu, který definuje strukturu a využití polí. | [Indexy v Azure Search](search-what-is-an-index.md) | 
 
@@ -113,9 +113,9 @@ Indexy jsou generovány z schématu indexu definující pole, atributy a další
 
 ## <a name="where-do-i-start"></a>Kde mám začít?
 
-**Krok 1: [Vytvoření prostředku Azure Search](search-create-service-portal.md)** 
+**Krok 1: [vytvoření prostředku Azure Search](search-create-service-portal.md)** 
 
-**Krok 2: Vyzkoušejte si nějaké rychlé starty a příklady pro praktická prostředí**
+**Krok 2: Vyzkoušejte si některé rychlé starty a příklady pro praktická prostředí**
 
 + [Rychlý Start (portál)](cognitive-search-quickstart-blob.md)
 + [Kurz (požadavky HTTP)](cognitive-search-tutorial-blob.md)
@@ -125,18 +125,18 @@ Pro účely učení doporučujeme bezplatnou službu, ale počet bezplatných tr
 
 **Krok 3: Kontrola rozhraní API**
 
-Můžete použít Rest `api-version=2019-05-06` na žádostech nebo .NET SDK. 
+V žádostech nebo v sadě .NET SDK můžete použít REST `api-version=2019-05-06`. 
 
 Tento krok používá rozhraní REST API k sestavení řešení pro hledání vnímání. Pro vyhledávání rozpoznávání se přidávají nebo rozšiřují jenom dvě rozhraní API. Další rozhraní API mají stejnou syntaxi jako všeobecně dostupné verze.
 
-| REST API | Popis |
+| Rozhraní REST API | Popis |
 |-----|-------------|
 | [Vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Prostředek identifikující externí zdroj dat, který poskytuje zdrojová data používaná k vytváření obohacených dokumentů.  |
-| [Create Skillset (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Toto rozhraní API je specifické pro rozpoznávání vyhledávání. Je to prostředek, který koordinuje používání [předdefinovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) , které se v kanálu rozšíření používají během indexování. |
+| [Create dovednosti (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Toto rozhraní API je specifické pro rozpoznávání vyhledávání. Je to prostředek, který koordinuje používání [předdefinovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) , které se v kanálu rozšíření používají během indexování. |
 | [Vytvořit index](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schéma, které vyjadřuje index Azure Search. Pole v indexu jsou mapována na pole ve zdrojových datech nebo na pole vyráběná během fáze obohacení (například pole pro názvy organizací vytvořená rozpoznáváním entit). |
-| [Create Indexer (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek definující součásti používané při indexování: včetně zdroje dat, dovednosti, přidružení polí ze zdrojových a zprostředkujících datových struktur do cílového indexu a samotného indexu. Spuštění indexeru je triggerem pro přijímání a obohacení dat. Výstupem je index hledání založený na schématu indexu, vyplněný zdrojovými daty, obohacený přes dovednosti. Toto existující rozhraní API je rozšířené pro scénáře hledání rozpoznávání s zahrnutím vlastnosti dovednosti. |
+| [Vytvoření indexeru (rozhraní API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek definující součásti používané při indexování: včetně zdroje dat, dovednosti, přidružení polí ze zdrojových a zprostředkujících datových struktur do cílového indexu a samotného indexu. Spuštění indexeru je triggerem pro přijímání a obohacení dat. Výstupem je index hledání založený na schématu indexu, vyplněný zdrojovými daty, obohacený přes dovednosti. Toto existující rozhraní API je rozšířené pro scénáře hledání rozpoznávání s zahrnutím vlastnosti dovednosti. |
 
-**Téma Typický pracovní postup**
+**Kontrolní seznam: Typický pracovní postup**
 
 1. Oddělit vaše zdrojová data Azure do reprezentativního vzorku. Indexování trvá čas, takže začne používat malou reprezentativní datovou sadu a pak ji vytvoří přírůstkově jako vaše řešení.
 
@@ -161,7 +161,7 @@ Další informace o konkrétních otázkách a problémech najdete v tématu [ti
 ## <a name="next-steps"></a>Další kroky
 
 + [Dokumentace pro hledání vnímání](cognitive-search-resources-documentation.md)
-+ [Rychlé zprovoznění: Vyzkoušet rozpoznávání rozpoznávání v průvodci na portálu](cognitive-search-quickstart-blob.md)
-+ [Kurz: Přečtěte si rozhraní API pro hledání vnímání](cognitive-search-tutorial-blob.md)
++ [Rychlý Start: Vyzkoušejte si vyzkoušení vnímání v návodu k portálu](cognitive-search-quickstart-blob.md)
++ [Kurz: informace o rozhraních API pro vyhledávání rozpoznávání](cognitive-search-tutorial-blob.md)
 + [Přehled znalostní báze Knowledge Store](knowledge-store-concept-intro.md)
 + [Návod k znalostnímu obchodu](knowledge-store-howto.md)

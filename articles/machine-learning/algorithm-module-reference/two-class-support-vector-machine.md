@@ -1,7 +1,7 @@
 ---
-title: 'Vektorový počítač podpory dvou tříd: Odkaz na modul'
+title: '2 클래스 지원 벡터 컴퓨터: 모듈 참조'
 titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul **vektorového počítače podpory dvou tříd** ve službě Azure Machine Learning Service k vytvoření modelu, který je založený na algoritmu podpory vektorového počítače.
+description: Azure Machine Learning service에서 **2 클래스 지원 벡터 컴퓨터** 모듈을 사용 하 여 지원 벡터 컴퓨터 알고리즘을 기반으로 하는 모델을 만드는 방법에 대해 알아봅니다.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,75 +9,75 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 23f5c638146472b72078e76745e557b6babe7a49
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c58e66070f137f9c5d713a45682afac5f30bbd1e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128306"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692609"
 ---
-# <a name="two-class-support-vector-machine-module"></a>Modul Vector Machine Support pro dvě třídy
+# <a name="two-class-support-vector-machine-module"></a>2 클래스 지원 벡터 컴퓨터 모듈
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+이 문서에서는 Azure Machine Learning 서비스에 대 한 시각적 인터페이스 (미리 보기)의 모듈을 설명 합니다.
 
-Tento modul použijte k vytvoření modelu, který je založen na algoritmu podpory vektorového počítače. 
+이 모듈을 사용 하 여 지원 벡터 컴퓨터 알고리즘을 기반으로 하는 모델을 만듭니다. 
 
-Podpora vektorových počítačů (SVMs) je dobře prohledaná třída studijních metod, které jsou pod dohledem. Tato konkrétní implementace je vhodná pro předpověď dvou možných výsledků, a to na základě souvislých nebo kategorií proměnných.
+SVMs (Support vector machines)는 감독 된 학습 방법의 잘 연구 된 클래스입니다. 이 특정 구현은 연속 또는 범주 변수를 기반으로 하는 두 가지 가능한 결과를 예측 하는 데 적합 합니다.
 
-Po definování parametrů modelu proveďte výuku modelu pomocí školicích modulů a poskytněte *tagované datové sady* , která obsahuje sloupec popisku nebo výsledku.
+모델 매개 변수를 정의한 후 학습 모듈을 사용 하 여 모델을 학습 하 고 레이블 또는 결과 열을 포함 하는 *태그가 지정 된 데이터 집합* 을 제공 합니다.
 
-## <a name="about-support-vector-machines"></a>O podpoře vektorových počítačů
+## <a name="about-support-vector-machines"></a>지원 벡터 컴퓨터 정보
 
-Podpora vektorových počítačů je mezi nejstaršími algoritmy strojového učení a modely SVM se používají v mnoha aplikacích, od načtení informací do klasifikace textu a obrázku. SVMs lze použít pro úlohy klasifikace i regrese.
+지원 벡터 컴퓨터는 가장 빠른 기계 학습 알고리즘 중 하나 이며, SVM 모델은 정보 검색에서 텍스트 및 이미지 분류에 이르기까지 많은 응용 프로그램에서 사용 되었습니다. SVMs는 분류 및 회귀 작업 모두에 사용할 수 있습니다.
 
-Tento model SVM je model výuky pod dohledem, který vyžaduje data s popisky. V procesu školení algoritmus analyzuje vstupní data a rozpoznává vzory v multidimenzionálním prostoru funkce s názvem.  Všechny vstupní příklady jsou reprezentovány jako body v tomto prostoru a jsou namapovány na výstupní kategorie takovým způsobem, že kategorie jsou rozděleny tak, jak jsou, a co nejpřesnější je vymazat.
+이 SVM 모델은 레이블이 지정 된 데이터를 요구 하는 감독 된 학습 모델입니다. 학습 프로세스에서 알고리즘은 입력 데이터를 분석 하 고 하이퍼 *평면*이라는 다차원 기능 공간의 패턴을 인식 합니다.  모든 입력 예제는이 공간에서 점으로 표시 되 고 범주를 광범위 하 게 구분 하 고 가능한 한 간격을 해제 하는 방식으로 출력 범주에 매핑됩니다.
 
-Pro předpovědi SVM algoritmus přiřadí nové příklady do jedné kategorie nebo do druhé a namapuje je na stejné místo. 
+예측을 위해 SVM 알고리즘은 새 예제를 하나의 범주 또는 다른 범주에 할당 하 여 동일한 공간에 매핑합니다. 
 
-## <a name="how-to-configure"></a>Jak nakonfigurovat 
+## <a name="how-to-configure"></a>구성 방법 
 
-Pro tento typ modelu doporučujeme datovou sadu normalizovat před jejím použitím k učení třídění.
+이 모델 유형의 경우 분류자를 학습 하는 데 사용 하기 전에 데이터 집합을 정규화 하는 것이 좋습니다.
   
-1.  Do experimentu přidejte modul **vektorového počítače podpory dvou tříd** .  
+1.  파이프라인에 **2 클래스 지원 벡터 컴퓨터** 모듈을 추가 합니다.  
   
-2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
+2.  **강사 모드 만들기** 옵션을 설정 하 여 모델을 학습 하는 방법을 지정 합니다.  
   
-    -   **Jeden parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.  
+    -   **단일 매개 변수**: 모델을 구성 하는 방법을 아는 경우 특정 값 집합을 인수로 제공할 수 있습니다.  
 
-3.  Pro **počet iterací**zadejte číslo, které označuje počet iterací použitých při sestavování modelu.  
+3.  **반복 횟수**에 대해 모델을 작성할 때 사용 되는 반복 횟수를 나타내는 숫자를 입력 합니다.  
   
-     Tento parametr lze použít k řízení vzájemného obchodování mezi rychlostí a přesností školení.  
+     이 매개 변수를 사용 하 여 학습 속도와 정확도 간의 균형을 제어할 수 있습니다.  
   
-4.  Pro **výraz lambda**zadejte hodnotu, která se má použít jako váha pro pravidelnou práci s L1.  
+4.  **람다**의 경우 L1 정규화의 가중치로 사용할 값을 입력 합니다.  
   
-     Tento koeficient depravidelnosti se dá použít k ladění modelu. Vyšší hodnoty postihují složitější modely.  
+     이 정규화 계수를 사용 하 여 모델을 튜닝할 수 있습니다. 더 큰 값은 더 복잡 한 모델을 penalize 합니다.  
   
-5.  Pokud chcete funkce normalizovat před školením, vyberte možnost **normalizovat funkce**.
+5.  학습 전에 기능을 정규화 하려면 **기능 정규화**옵션을 선택 합니다.
   
-     Použijete-li normalizaci, před školením budou datové body zarovnány na střední hodnotu a škálovat tak, aby měly jednu jednotku směrodatné odchylky.
+     학습 전에 정규화를 적용 하는 경우 데이터 요소는 평균으로 확장 되며 하나의 표준 편차를 갖도록 확장 됩니다.
   
-6.  Chcete-li normalizovat koeficienty, vyberte možnost **projekt k police jednotky**.
+6.  **단위 구에 대 한 프로젝션**옵션을 선택 하 여 계수를 정규화 합니다.
   
-     Při projekci hodnot do místa na disku znamená, že před školením jsou datové body zarovnány na střed 0 a zvětšeny tak, aby měly jednu jednotku směrodatné odchylky.
+     값을 단위 공간에 프로젝션 하는 것은 학습 전에 데이터 요소를 0으로 가운데에 배치 하 고 하나의 표준 편차를 갖도록 확장 했음을 의미 합니다.
   
-7.  V **počátečním čísle náhodného čísla**zadejte celočíselnou hodnotu, která se má použít jako počáteční hodnota pro zajištění reprodukovatelnosti napříč běhy.  V opačném případě se systémová hodnota hodin používá jako počáteční hodnota, což může vést ke vzniku mírně odlišných výsledků napříč běhy.
+7.  **임의 숫자 초기값**에 재현 가능성를 실행 하는 데 필요한 경우 초기값으로 사용할 정수 값을 입력 합니다.  그렇지 않으면 시스템 클록 값이 초기값으로 사용 되어 실행에 대해 약간 다른 결과가 발생할 수 있습니다.
   
-9. Připojte s popiskem datovou sadu a jeden z [školicích modulů](module-reference.md):
+9. 레이블이 지정 된 데이터 집합 및 [학습 모듈](module-reference.md)중 하나를 연결 합니다.
   
-    -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](train-model.md) .
+    -   담당자 **모드 만들기** 를 **단일 매개 변수로**설정한 경우 [모델 학습](train-model.md) 모듈을 사용 합니다.
   
 
-10. Spusťte experiment.
+10. 파이프라인을 실행합니다.
 
-## <a name="results"></a>Výsledky
+## <a name="results"></a>결과
 
-Po dokončení školení:
+학습 완료 후:
 
-+ Pokud chcete zobrazit souhrn parametrů modelu spolu s váhy funkcí zjištěnými ze školení, klikněte pravým tlačítkem myši na výstup [modelu vlaků](./train-model.md)a vyberte **vizualizovat**.
++ 모델 매개 변수의 요약을 학습에서 배운 기능 가중치와 함께 보려면 [모델 학습](./train-model.md)의 출력을 마우스 오른쪽 단추로 클릭 하 고 **시각화**를 선택 합니다.
 
-+ Chcete-li použít trained Models k vytvoření předpovědi, připojte školený model k modulu určení [skóre modelu](score-model.md) .
++ 학습 된 모델을 사용 하 여 예측을 만들려면 학습 된 모델을 [모델 점수 매기기](score-model.md) 모듈에 연결 합니다.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>다음 단계
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Azure Machine Learning 서비스에 [사용할 수 있는 모듈 집합](module-reference.md) 을 참조 하세요. 

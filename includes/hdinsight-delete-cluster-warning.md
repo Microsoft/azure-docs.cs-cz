@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 6f565391727c2296e7e2081c0157aa62b18fe9da
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67174735"
 ---
 > [!WARNING]
-> Za clustery HDInsight se fakturuje za minutu, ať už používáte je nebo není. Nezapomeňte odstranit cluster po dokončení jeho použití. Zobrazit [odstranění clusteru služby HDInsight](../articles/hdinsight/hdinsight-delete-cluster.md).
+> Fakturace za clustery HDInsight se účtuje poměrnou rychlostí za minutu, ať už je používáte, nebo ne. Po dokončení používání clusteru nezapomeňte tento cluster odstranit. Viz [Jak odstranit cluster HDInsight](../articles/hdinsight/hdinsight-delete-cluster.md).
 > 
 > 
 

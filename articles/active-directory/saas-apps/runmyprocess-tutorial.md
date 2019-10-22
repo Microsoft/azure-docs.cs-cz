@@ -17,13 +17,13 @@ ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46c31a209e8521b24e7f604dbe630f689fca484e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68880379"
 ---
-# <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>Kurz: Integrace RunMyProcess s Azure Active Directory
+# <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>Kurz: integrace RunMyProcess s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat RunMyProcess s Azure Active Directory (Azure AD). Když integrujete RunMyProcess s Azure AD, můžete:
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat RunMyProcess s Azure Active Directory 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -57,7 +57,7 @@ Pokud chcete nakonfigurovat integraci RunMyProcess do služby Azure AD, musíte 
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **RunMyProcess** .
 1. Na panelu výsledků vyberte **RunMyProcess** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí RunMyProcess pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v RunMyProcess.
 
@@ -82,14 +82,14 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://live.runmyprocess.com/live/<tenant id>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://live.runmyprocess.com/live/<tenant id>`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta RunMyProcess](mailto:support@runmyprocess.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
 1. V části **Nastavení RunMyProcess** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
@@ -111,7 +111,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole pro **přesměrování jednotného přihlašování** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
-    c. Do textového pole pro **přesměrování odhlášení** vložte hodnotu **URL**pro odhlášení, kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole pro **přesměrování odhlášení** vložte hodnotu **URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
 
     d. Do textového pole **formát ID názvu** zadejte hodnotu **Formát identifikátoru názvu** jako **urn: Oasis: names: TC: SAML: 1.1: NameId-Format: EmailAddress**.
 
@@ -119,19 +119,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     f. Klikněte na **Uložit** ikonu.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k RunMyProcess.
 
@@ -139,7 +139,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **RunMyProcess**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -178,11 +178,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k RunMyProcess, musí se zřídi
 
 ### <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici RunMyProcess, měli byste se automaticky přihlásit k RunMyProcess, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -9,10 +9,10 @@ ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71123442"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
@@ -40,10 +40,10 @@ V předchozím diagramu čísla označují klíčové síťové body. Na síťov
 V závislosti na modelu připojení ExpressRoute (společné umístění cloudového systému Exchange, připojení k síti Ethernet typu Point-to-Point nebo IPVPN) můžou být síťové body 3 a 4 přepínači (zařízení vrstvy 2). Klíčové body sítě jsou znázorněny takto:
 
 1.  Výpočetní zařízení zákazníka (například server nebo počítač)
-2.  Webovou Hraniční směrovače zákazníka 
-3.  PEs (s přístupem CE): Hraniční směrovače a přepínače poskytovatele, které jsou na hraničních směrovačích zákazníka. Označuje se jako PE-zápis certifikátů v tomto dokumentu.
-4.  PEs (MSEE s přístupem): Hraniční směrovače a přepínače poskytovatele, které se směrovači msee. V tomto dokumentu se říká směrovači msee PE.
-5.  Směrovači msee Směrovače Microsoft Enterprise Edge (MSEE) ExpressRoute
+2.  Zápis certifikátů: hraniční směrovače zákazníka 
+3.  PEs (s přístupem CE): hraniční směrovače poskytovatele/přepínače, které jsou na hraničních směrovačích zákazníka. Označuje se jako PE-zápis certifikátů v tomto dokumentu.
+4.  PEs (MSEE s přístupem): hraniční směrovače a přepínače poskytovatele, které jsou na směrovači msee. V tomto dokumentu se říká směrovači msee PE.
+5.  Směrovači msee: směrovače ExpressRoute Microsoft Enterprise Edge (MSEE)
 6.  Brána Virtual Network (VNet)
 7.  Výpočetní zařízení ve virtuální síti Azure
 
@@ -157,7 +157,7 @@ Ukázková odpověď:
     Sku                              : Standard
     Status                           : Enabled
 
-Pokud si chcete ověřit, jestli je okruh ExpressRoute funkční, věnujte zvláštní pozornost následujícím polím: ServiceProviderProvisioningState : Zřízený stav: Enabled
+Pokud si chcete ověřit, jestli je okruh ExpressRoute funkční, věnujte zvláštní pozornost následujícím polím: ServiceProviderProvisioningState: stav zřizování: povoleno
 
 > [!NOTE]
 > Pokud není *stav* povolený, kontaktujte [Podpora Microsoftu][Support]. Pokud není *ServiceProviderProvisioningState* zřízené, obraťte se na svého poskytovatele služeb.
@@ -165,7 +165,7 @@ Pokud si chcete ověřit, jestli je okruh ExpressRoute funkční, věnujte zvlá
 >
 
 ## <a name="validate-peering-configuration"></a>Ověřit konfiguraci partnerského vztahu
-Jakmile poskytovatel služeb dokončí zřizování okruhu ExpressRoute, je možné vytvořit konfiguraci směrování přes okruh ExpressRoute mezi MSEE-PR (4) a směrovači msee (5). Každý okruh ExpressRoute může mít povolený jeden, dva nebo tři kontexty směrování: Soukromý partnerský vztah Azure (provoz do privátních virtuálních sítí v Azure), veřejný partnerský vztah Azure (provoz na veřejné IP adresy v Azure) a partnerský vztah Microsoftu (provoz do Office 365). Další informace o tom, jak vytvořit a upravit konfiguraci směrování, najdete v článku [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].
+Jakmile poskytovatel služeb dokončí zřizování okruhu ExpressRoute, je možné vytvořit konfiguraci směrování přes okruh ExpressRoute mezi MSEE-PR (4) a směrovači msee (5). Každý okruh ExpressRoute může mít povolený jeden, dva nebo tři kontexty směrování: privátní partnerské vztahy Azure (provoz do privátních virtuálních sítí v Azure), veřejný partnerský vztah Azure (provoz na veřejné IP adresy v Azure) a partnerský vztah Microsoftu (provoz do Office 365). Další informace o tom, jak vytvořit a upravit konfiguraci směrování, najdete v článku [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].
 
 ### <a name="verification-via-the-azure-portal"></a>Ověření prostřednictvím Azure Portal
 
@@ -295,7 +295,7 @@ Ukázková odpověď pro příkaz v úspěšném scénáři:
                  113             On-Prem       10.0.0.1           e8ed.f335.4ca9
                    0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
 
-Podobně můžete zaškrtnout tabulku ARP z MSEE v *primární*/*sekundární* cestě, u *privátních*/*veřejných*/partnerských vztahů*Microsoftu* .
+Podobně můžete zaškrtnout tabulku ARP z MSEE v*sekundární* cestě *primárního* / pro *privátní* /*veřejné* / partnerské vztahy*Microsoftu* .
 
 Následující příklad ukazuje odpověď příkazu pro partnerský vztah neexistuje.
 
@@ -352,7 +352,7 @@ Příklad úspěšného výsledku pro příkaz:
          10.2.0.0/16            10.0.0.1                                       0    #### ##### #####
     ...
 
-Podobně můžete zaškrtnout směrovací tabulku z MSEE v *primární*/*sekundární* cestě, pro *soukromý*/*veřejný*/kontext partnerského vztahu*Microsoftu* .
+Podobně můžete zaškrtnout směrovací tabulku z MSEE v *primární* /*sekundární* cestu pro *privátní* /*Public* / kontextu partnerského vztahu*Microsoftu* .
 
 Následující příklad ukazuje odpověď příkazu pro partnerský vztah neexistuje:
 
@@ -379,14 +379,14 @@ Ukázkový výstup příkazu pro neexistující partnerský vztah:
         + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.GetAzureDedicatedCircuitPeeringStatsCommand
 
 ## <a name="next-steps"></a>Další kroky
-Další informace a nápovědu najdete na následujících odkazech:
+Další informace nebo nápovědu najdete na následujících odkazech:
 
-- [Podpora Microsoftu][Support]
+- [podpora Microsoftu][Support]
 - [Vytvoření a úprava okruhu ExpressRoute][CreateCircuit]
 - [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png  "Připojení logické expressové trasy"
+[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "připojení logické expressové trasy"
 [2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "Ikona všech prostředků"
 [3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "Ikona přehledu"
 [4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "Ukázkový snímek obrazovky ExpressRoute Essentials"

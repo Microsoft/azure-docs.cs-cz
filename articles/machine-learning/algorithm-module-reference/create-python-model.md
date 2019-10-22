@@ -1,5 +1,5 @@
 ---
-title: 'Vytvořit model Pythonu: Odkaz na modul'
+title: 'Vytvoření modelu Pythonu: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat model vytvoření modelu Pythonu ve službě Azure Machine Learning k vytvoření vlastního modulu modelování nebo zpracování dat.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: c6d7aabd41e9d0e872926adbbcb2d18332cb7d5e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2a035644dc0d3d533aa052217c89968a5692230b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128926"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693895"
 ---
 # <a name="create-python-model"></a>Vytvoření modelu Pythonu
 
@@ -33,9 +33,9 @@ Po vytvoření modelu můžete použít [model výuky](train-model.md) pro výuk
 Použití tohoto modulu vyžaduje mezilehlé nebo odborné znalosti Pythonu. Modul podporuje použití všech informací, které jsou součástí balíčků Pythonu, které jsou už nainstalované v Azure Machine Learning. Podívejte se na seznam předem nainstalovaných balíčků Pythonu ve [skriptu spustit](execute-python-script.md)v jazyce Python.
   
 
-V tomto článku se dozvíte, jak pomocí jednoduchého experimentu **vytvořit model Pythonu** . Níže je uveden graf experimentu.
+V tomto článku se dozvíte, jak pomocí jednoduchého kanálu **vytvořit model Pythonu** . Níže je uveden graf kanálu.
 
-![create-python-model](./media/module/aml-create-python-model.png)
+![Vytvoření – Python-model](./media/module/aml-create-python-model.png)
 
 1.  Klikněte na **vytvořit model Pythonu**, upravte skript pro implementaci modelování nebo procesu správy dat. Model můžete založit na jakémkoli učení, které je součástí balíčku Pythonu v prostředí Azure Machine Learning.
 

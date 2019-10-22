@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 08/29/2019
-ms.openlocfilehash: ae7baf09df42a5824e5f59e7ebb372f4d9f6350c
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/21/2019
+ms.openlocfilehash: 108e31ebff5910c139bcaf83675cc8161c2a96f6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72032870"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693371"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na vCore
 
@@ -46,8 +46,8 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Paměť (GB)|7|14|21|28|35|42|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Maximální velikost dat (GB)|1024|1024|1024|1536|1536|1536|
-|Maximální velikost protokolu (GB)|307|307|307|461|461|461|
+|Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|
+|Maximální velikost protokolu (GB)|307|307|461|461|461|922|
 |Maximální velikost dat databáze TempDB (GB)|32|64|96|128|160|192|
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
@@ -69,8 +69,8 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Paměť (GB)|49|56|63|70|112|168|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Maximální velikost dat (GB)|1536|3072|3072|3072|4 096|4 096|
-|Maximální velikost protokolu (GB)|461|922|922|922|1229|1229|
+|Maximální velikost dat (GB)|3072|3072|3072|3072|4 096|4 096|
+|Maximální velikost protokolu (GB)|922|922|922|922|1229|1229|
 |Maximální velikost dat databáze TempDB (GB)|224|256|288|320|384|384|
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)
@@ -93,7 +93,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
 |Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
-|Maximální velikost protokolu (GB)|307|307|307|461|461|461|461|
+|Maximální velikost protokolu (GB)|307|307|461|461|461|922|922|
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|320|384|384|
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
@@ -196,8 +196,8 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1\. místo|2|3|4|5|6|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
-|Maximální velikost dat (GB)|650|650|650|650|650|650|
-|Maximální velikost protokolu (GB)|195|195|195|195|195|195|
+|Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
+|Maximální velikost protokolu (GB)|307|307|307|307|307|307|
 |Maximální velikost dat databáze TempDB (GB)|32|64|96|128|160|192|
 |Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
 |Maximální počet datových IOPS (64 KB)|5000|10000|15 000|20000|25000|30000|
@@ -220,8 +220,8 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|7|8|9,5|11|20|36|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
-|Maximální velikost dat (GB)|650|650|650|650|1024|1024|
-|Maximální velikost protokolu (GB)|195|195|195|195|307|307|
+|Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
+|Maximální velikost protokolu (GB)|307|307|307|307|307|307|
 |Maximální velikost dat databáze TempDB (GB)|224|256|288|320|384|384|
 |Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
 |Maximální počet datových IOPS (64 KB)|35000|40000|45000|50000|80000|120000|
@@ -244,7 +244,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
 |Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
-|Maximální velikost protokolu (GB)|307|307|307|461|461|922|922|
+|Maximální velikost protokolu (GB)|307|307|461|461|461|922|922|
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|320|384|384|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
 |Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|

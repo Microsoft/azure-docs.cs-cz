@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9fe7147325b2e14a7ae6bb4b31aa941fb4059b11
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550856"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690830"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti Azure Functions sítě
 
@@ -36,7 +36,7 @@ Aplikace Function App můžete hostovat několika způsoby:
 |[Omezení příchozí IP adresy & přístupu k privátnímu webu](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
 |[Integrace virtuální sítě](#virtual-network-integration)|❌No|✅Yes (místní)|✅Yes (místní a brána)|✅Yes|
 |[Aktivační události virtuální sítě (jiné než HTTP)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
-|[Hybridní připojení](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[Hybridní připojení](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
 |[Omezení odchozích IP adres](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
@@ -127,11 +127,11 @@ Pokud chcete například nakonfigurovat Azure Cosmos DB, aby přijímala jenom p
 
 ## <a name="hybrid-connections"></a>Hybridní připojení
 
-[Hybrid Connections](../service-bus-relay/relay-hybrid-connections-protocol.md) je funkce Azure Relay, kterou můžete použít pro přístup k prostředkům aplikací v jiných sítích. Poskytuje přístup z vaší aplikace do koncového bodu aplikace. Nemůžete ho použít pro přístup k aplikaci. Hybrid Connections je k dispozici pro funkce spuštěné v [plánu App Service](functions-scale.md#app-service-plan) a [App Service Environment](../app-service/environment/intro.md).
+[Hybrid Connections](../service-bus-relay/relay-hybrid-connections-protocol.md) je funkce Azure Relay, kterou můžete použít pro přístup k prostředkům aplikací v jiných sítích. Poskytuje přístup z vaší aplikace do koncového bodu aplikace. Nemůžete ho použít pro přístup k aplikaci. Hybrid Connections je k dispozici pro funkce spuštěné ve všech, ale v plánu spotřeby.
 
 Jak se používá v Azure Functions, každé hybridní připojení se koreluje s jedinou kombinací hostitele TCP a portu. To znamená, že koncový bod hybridního připojení může být v jakémkoli operačním systému a libovolné aplikaci, pokud přistupujete k portu naslouchání TCP. Funkce Hybrid Connections neznáte ani nezáleží na tom, jaký je protokol aplikace nebo k čemu přistupujete. Jednoduše poskytuje přístup k síti.
 
-Další informace najdete v dokumentaci k [App Service pro Hybrid Connections](../app-service/app-service-hybrid-connections.md), která podporuje funkce v plánu App Service.
+Další informace najdete v [dokumentaci App Service pro Hybrid Connections](../app-service/app-service-hybrid-connections.md), která podporuje funkce prostřednictvím stejných kroků konfigurace.
 
 ## <a name="outbound-ip-restrictions"></a>Omezení odchozích IP adres
 

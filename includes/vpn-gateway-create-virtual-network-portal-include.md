@@ -9,10 +9,10 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8b585a47d3950d232eb3e8047c12ee8949030c95
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68780250"
 ---
 Pokud chcete vytvořit virtuální síť v modelu nasazení Resource Manageru pomocí webu Azure Portal, postupujte podle následujících kroků. Použijte **příkladové hodnoty** , pokud používáte tyto kroky jako kurz. Pokud se nejedná o kurz, nezapomeňte ukázkové hodnoty nahradit svými. Další informace o práci s virtuálními sítěmi najdete v článku [Přehled virtuálních sítí](../articles/virtual-network/virtual-networks-overview.md).
@@ -23,15 +23,15 @@ Pokud chcete vytvořit virtuální síť v modelu nasazení Resource Manageru po
 
 1. V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
 2. Klikněte na **Vytvořit prostředek**. Do pole **Hledat na Marketplace** zadejte text „Virtuální síť“. Ve vráceném seznamu vyhledejte položku **Virtuální síť** a kliknutím otevřete stránku **Virtuální síť**.
-3. Klikněte na možnost **Vytvořit**. Tím se otevře stránka **vytvořit virtuální síť** .
+3. Klikněte na **Vytvořit**. Tím se otevře stránka **vytvořit virtuální síť** .
 4. Na stránce **Vytvořit virtuální síť** nakonfigurujte nastavení virtuální sítě. Po vyplnění polí se červený vykřičník změní na zelenou značku zaškrtnutí, pokud jsou znaky zadané do pole platné. Použijte následující hodnoty:
 
    - **Název**: VNet1
    - **Adresní prostor**: 10.1.0.0/16
-   - **Předplatné**: Ověřte, že je předplatné uvedené jako ten, který chcete použít. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
-   - **Skupina prostředků**: TestRG1 (Pokud chcete vytvořit novou skupinu, klikněte na **vytvořit nový** )
-   - **Umístění**: East US
-   - **Podsíť**: Front-end
+   - **Předplatné**: Ověřte, jestli je předplatné uvedené jako ten, který chcete použít. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
+   - **Skupina prostředků**: TestRG1 (Pokud chcete vytvořit novou skupinu, klikněte na **vytvořit novou** ).
+   - **Umístění**: východní USA
+   - **Podsíť**: front-end
    - **Rozsah adres**: 10.1.0.0/24
 
    ![Stránka pro vytvoření virtuální sítě](./media/vpn-gateway-create-virtual-network-portal-include/create-virtual-network1.png)

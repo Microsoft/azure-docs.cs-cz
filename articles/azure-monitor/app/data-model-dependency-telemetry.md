@@ -1,59 +1,55 @@
 ---
-title: Azure Application Insights Telemetrie datový Model - Telemetrických závislostí | Dokumentace Microsoftu
+title: Datový model Azure Telemetrie Application Insights – telemetrie závislostí | Microsoft Docs
 description: Application Insights datový model pro telemetrii závislostí
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 3e3d6b8fdc9ac8dd28f73fecd6231e97a5645407
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0923c20b11aa02f380af1faa6766d2346ad1fb2
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60901021"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677437"
 ---
-# <a name="dependency-telemetry-application-insights-data-model"></a>Telemetrie závislostí: Datový model Application Insights
+# <a name="dependency-telemetry-application-insights-data-model"></a>Telemetrie závislostí: datový model Application Insights
 
-Telemetrie závislostí (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje interakci monitorované součásti pomocí vzdáleného komponenty, jako je SQL nebo koncový bod HTTP.
+Telemetrie závislostí (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje interakce monitorované komponenty se vzdálenou komponentou, jako je SQL nebo koncový bod HTTP.
 
-## <a name="name"></a>Name
+## <a name="name"></a>Name (Název)
 
-Název příkazu zahájené s tímto voláním závislostí. Hodnota s nízkou kardinality. Příklady jsou název uložené procedury a šablonu cesty URL.
+Název příkazu iniciované tímto voláním závislosti. Nízká hodnota mohutnosti. Příklady jsou název uložené procedury a šablona cesty URL.
 
 ## <a name="id"></a>ID
 
-Identifikátor instance volání závislostí. Slouží pro korelaci s položky telemetrie požadavku odpovídající toto volání závislosti. Další informace najdete v tématu [korelace](../../azure-monitor/app/correlation.md) stránky.
+Identifikátor instance volání závislosti Používá se pro korelaci s položkou telemetrie žádosti odpovídající tomuto volání závislosti. Další informace najdete na stránce [korelace](../../azure-monitor/app/correlation.md) .
 
 ## <a name="data"></a>Data
 
-Příkaz iniciovaných toto volání závislosti. Příklady příkazu jazyka SQL a adresa URL protokolu HTTP se všemi parametry dotazu.
+Příkaz iniciované tímto voláním závislosti. Příklady jsou příkazy SQL a adresa URL protokolu HTTP se všemi parametry dotazu.
 
-## <a name="type"></a>Type
+## <a name="type"></a>Typ
 
-Název typu závislosti. Kardinalita s nízkou hodnotu pro logické seskupení závislosti a další pole, jako jsou commandName a kód výsledku vyhodnocení. Příklady jsou SQL, Azure table a HTTP.
+Název typu závislosti Nízká hodnota mohutnosti pro logické seskupení závislostí a výklad jiných polí, jako například příkazové a resultCode. Příklady jsou SQL, tabulka Azure a HTTP.
 
-## <a name="target"></a>Target
+## <a name="target"></a>Výběr cílového umístění
 
-Cílový web volání závislostí. Příkladem mohou být název serveru, adresa hostitele. Další informace najdete v tématu [korelace](../../azure-monitor/app/correlation.md) stránky.
+Cílový web volání závislosti. Příkladem je název serveru, adresa hostitele. Další informace najdete na stránce [korelace](../../azure-monitor/app/correlation.md) .
 
-## <a name="duration"></a>Doba trvání
+## <a name="duration"></a>Délka
 
-Doba trvání ve formátu žádosti: `DD.HH:MM:SS.MMMMMM`. Musí být menší než `1000` dnů.
+Doba trvání žádosti ve formátu: `DD.HH:MM:SS.MMMMMM`. Musí být kratší než `1000`é dny.
 
 ## <a name="result-code"></a>Kód výsledku
 
-Kód výsledku volání závislostí. Příklady kódu chyby SQL a stavový kód protokolu HTTP.
+Kód výsledku volání závislosti Příkladem je kód chyby SQL a kód stavu HTTP.
 
 ## <a name="success"></a>Úspěch
 
-Údaj o volání úspěšné nebo neúspěšné.
+Označení úspěšného nebo neúspěšného volání.
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 
@@ -64,10 +60,10 @@ Kód výsledku volání závislostí. Příklady kódu chyby SQL a stavový kód
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Nastavení pro sledování závislostí [.NET](../../azure-monitor/app/asp-net-dependencies.md).
-- Nastavení pro sledování závislostí [Java](../../azure-monitor/app/java-agent.md).
-- [Napište vlastní závislost telemetrii](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- Zobrazit [datový model](data-model.md) pro typy a datový model Application Insights.
-- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované službou Application Insights.
+- Nastavte sledování závislostí pro [.NET](../../azure-monitor/app/asp-net-dependencies.md).
+- Nastavte sledování závislostí pro [Java](../../azure-monitor/app/java-agent.md).
+- [Zápis vlastní telemetrie závislosti](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
+- Viz [datový model](data-model.md) pro typy Application Insights a datový model.
+- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované nástrojem Application Insights.

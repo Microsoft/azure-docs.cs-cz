@@ -10,10 +10,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70163990"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Kurz: návrh databáze s více klienty pomocí Azure Database for PostgreSQL – Citus (Preview)
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte, jak pomocí Azure Database for PostgreSQL – Citus 
 > * Sdílení dat mezi klienty
 > * Přizpůsobení schématu pro jednotlivé klienty
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -130,7 +130,7 @@ Víceklientské aplikace můžou vymáhat jedinečnost jenom pro každého tenan
 
 Nasazení v rámci škálování ukládá řádky tabulky na různých uzlech na základě hodnoty uživatelem označeného sloupce. Tento "distribuční sloupec" označuje, ve kterém tenantovi vlastní řádky.
 
-Pojďme nastavit distribuční sloupec jako ID společnosti\_, identifikátor tenanta. V psql spusťte tyto funkce:
+Nastavíme distribuční sloupec jako \_id společnosti, identifikátor tenanta. V psql spusťte tyto funkce:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -166,7 +166,7 @@ Tato data se teď rozšíří mezi pracovními uzly.
 
 ## <a name="query-tenant-data"></a>Dotaz na data tenanta
 
-Když aplikace požaduje data pro jednoho tenanta, databáze může spustit dotaz na jednom pracovním uzlu. Dotazy jednoho tenanta se filtrují podle jednoho ID tenanta. Například následující filtry dotazu vyfiltrují `company_id = 5` reklamy a natisky. Zkuste ho spustit v psql, aby se zobrazily výsledky.
+Když aplikace požaduje data pro jednoho tenanta, databáze může spustit dotaz na jednom pracovním uzlu. Dotazy jednoho tenanta se filtrují podle jednoho ID tenanta. Například následující dotaz filtruje `company_id = 5` pro reklamy a naTisk. Zkuste ho spustit v psql, aby se zobrazily výsledky.
 
 ```sql
 SELECT a.campaign_id,
@@ -185,7 +185,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 ## <a name="share-data-between-tenants"></a>Sdílení dat mezi klienty
 
-Až do chvíle, kdy byly všechny tabulky `company_id`distribuovány, ale některá data nejsou přirozeně "patřila" do jakéhokoli klienta, konkrétně a lze je sdílet. Například všechny společnosti v ukázkové platformě služby AD mohou chtít získat geografické informace pro svou cílovou skupinu na základě IP adres.
+Až do chvíle, kdy byly všechny tabulky distribuovány `company_id`, ale některá data nejsou přirozeně "patřila" do libovolného klienta, a lze je sdílet. Například všechny společnosti v ukázkové platformě služby AD mohou chtít získat geografické informace pro svou cílovou skupinu na základě IP adres.
 
 Vytvořte tabulku pro ukládání sdílených geografických informací. V psql spusťte následující příkazy:
 
@@ -199,7 +199,7 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Dále vytvořte `geo_ips` odkazovou tabulku pro uložení kopie tabulky v každém pracovním uzlu.
+Dále vytvořte `geo_ips` "referenční tabulka" pro uložení kopie tabulky v každém pracovním uzlu.
 
 ```sql
 SELECT create_reference_table('geo_ips');
@@ -211,7 +211,7 @@ Načtěte ho s ukázkovými daty. Nezapomeňte spustit tento příkaz v psql zev
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Spojování tabulky kliknutí s geografickými\_IP adresami je efektivní na všech uzlech.
+Spojování tabulky kliknutí s geografickým \_ips je efektivní na všech uzlech.
 Tady je spojení, kde najdete umístění všech uživatelů, kteří na reklamu klikli.
 290. Zkuste spustit dotaz v psql.
 
@@ -227,7 +227,7 @@ SELECT c.id, clicked_at, latlon
 
 Každý tenant může potřebovat ukládat speciální informace, které jiné nevyžadují. Všichni klienti ale sdílejí společnou infrastrukturu se stejným schématem databáze. Kde může další data přejít?
 
-Jedním z zdvihů je použití typu otevřeného a koncového sloupce, jako je PostgreSQL JSONB.  Naše schéma má `clicks` volané `user_data`pole JSONB.
+Jedním z zdvihů je použití typu otevřeného a koncového sloupce, jako je PostgreSQL JSONB.  Naše schéma má pole JSONB v `clicks` s názvem `user_data`.
 Společnost (vyslovit pět firem) může pomocí sloupce sledovat, jestli je uživatel v mobilním zařízení.
 
 Tady je dotaz, který zjistí, kdo klikne na další: mobilní nebo tradiční Návštěvníci.
@@ -269,7 +269,7 @@ SELECT id
 
 V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu serverů. Stiskněte tlačítko *Odstranit* na stránce *Přehled* pro skupinu serverů. Po zobrazení výzvy na místní stránce potvrďte název skupiny serverů a klikněte na tlačítko poslední *Odstranit* .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data. Seznámili jste se s dotazem na data uvnitř i mezi klienty a k přizpůsobení schématu pro každého tenanta.
 

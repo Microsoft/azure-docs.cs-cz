@@ -1,5 +1,5 @@
 ---
-title: 'Přiřaďte data do clusteru: Odkaz na modul'
+title: 'Přiřazení dat ke clusteru: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul přiřazení dat ke clusteru ve službě Azure Machine Learning ke stanovení skóre modelu clusteringu.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 56f608044716ea3655576c11aa7a62343215f508
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3caf568590beb5b1f9d346d472c93f134a4f3a5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128996"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693227"
 ---
-# <a name="module-assign-data-to-clusters"></a>Čipu Přiřazení dat clusterům
+# <a name="module-assign-data-to-clusters"></a>Modul: přiřazení dat clusterům
 
 Tento článek popisuje, jak použít modul *přiřazení dat ke clusterům* v rozhraní Azure Machine Learningho vizuálu. Modul generuje předpovědi pomocí modelu clusteringu, který byl vyškolený pomocí rozhraní *K – označuje algoritmus clusteringu* .
 
@@ -44,9 +44,9 @@ Modul přiřazení dat ke clusterům vrátí datovou sadu, která obsahuje pravd
   
     Pokud zrušíte zaškrtnutí tohoto políčka, vrátí se pouze výsledky. Tato možnost může být užitečná, když vytváříte předpovědi jako součást webové služby.
   
-5.  Spusťte experiment.  
+5.  Spuštění kanálu  
   
 ### <a name="results"></a>Výsledky
 
-+  Chcete-li zobrazit hodnoty v datové sadě, klikněte pravým tlačítkem na modul, vyberte výslednou datovou **sadu**a pak vyberte **vizualizovat**.
++  Chcete-li zobrazit hodnoty v datové sadě, klikněte pravým tlačítkem na modul, vyberte **výslednou**datovou sadu a pak vyberte **vizualizovat**.
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
 ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71129694"
 ---
 Při klonování konfigurace z jiného slotu nasazení je naklonovaná konfigurace upravitelná. Některé prvky konfigurace následují po prohození obsahu (ne pro konkrétní sloty), zatímco jiné konfigurační prvky zůstávají na stejném slotu po prohození (specifické pro slot). Následující seznamy obsahují nastavení, která se mění při prohození slotů.

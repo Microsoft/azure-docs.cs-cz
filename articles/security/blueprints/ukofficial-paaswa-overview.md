@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
 ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71262773"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Podrobný plán zabezpečení a dodržování předpisů Azure: PaaS hostování webových aplikací pro Velkou Británii pro oficiální úlohy
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Podrobný plán zabezpečení a dodržování předpisů Azure: PaaS hostování webových aplikací pro Velkou Británii pro úřední úlohy
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Plány zabezpečení a dodržování předpisů v Azure
 
@@ -39,7 +39,7 @@ Při použití šablon [Azure Resource Manager](https://docs.microsoft.com/azure
 
 Tento plán je základem základní architektury. Naši zákazníci mohou tento podrobný plán využít jako základ pro své oficiální webové úlohy klasifikace a rozšiřovat šablony a prostředky s jejich vlastními požadavky. Tento podrobný plán se sestaví na základě zásad [OFFICALch webových aplikací IaaS pro Velké Británie](https://aka.ms/ukofficial-iaaswa) , které nabízí našim zákazníkům možnosti implementace [infrastruktury jako služby (IaaS)](https://azure.microsoft.com/overview/what-is-iaas/) a PaaS pro hostování webových úloh.
 
-K nasazení tohoto podrobného plánu se vyžaduje předplatné Azure. Pokud předplatné Azure nemáte, můžete se rychle zaregistrovat a snadno se zdarma: Začněte s Azure. Pokyny k nasazení získáte kliknutím [sem](https://aka.ms/ukofficial-paaswa-repo/) .
+K nasazení tohoto podrobného plánu se vyžaduje předplatné Azure. Pokud předplatné Azure nemáte, můžete se rychle zaregistrovat a snadno se zaregistrovat: Začínáme s Azure. Pokyny k nasazení získáte kliknutím [sem](https://aka.ms/ukofficial-paaswa-repo/) .
 
 ## <a name="architecture-and-components"></a>Architektura a součásti
 
@@ -52,15 +52,15 @@ V rámci architektury nasazení, zabezpečení zřizování úložiště, monito
 Toto řešení používá následující služby Azure. Podrobnosti o architektuře nasazení najdete v části [architektura nasazení](#deployment-architecture) .
 
 - Azure Active Directory
-- App Service
+- Aplikační služba
 - Webová aplikace
-- Aplikace API
+- Aplikace využívající rozhraní API
 - Azure DNS
 - Key Vault
 - Azure Monitor (protokoly)
 - Application Insights
 - Azure Resource Manager
-- Azure Security Center
+- Centrum zabezpečení Azure
 - Azure SQL Database
 - Azure Storage
 
@@ -78,7 +78,7 @@ Následující technologie poskytují možnosti správy identit v prostředí Az
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) je víceklientské cloudové služby Microsoftu a služba pro správu identit založené na víceklientské architektuře. Všichni uživatelé pro toto řešení byli vytvořeni v Azure Active Directory, včetně uživatelů, kteří přistupují k SQL Database.
 - Ověřování pro webovou aplikaci s přístupem k operátoru a přístup pro správu prostředků Azure se provádí pomocí Azure AD. Další informace najdete v tématu [Integrace aplikací s Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
-- Šifrování sloupce databáze používá Azure AD k ověření aplikace pro Azure SQL Database. Další informace najdete v tématu [Always Encrypted: Chraňte citlivá data v](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)SQL Database.
+- Šifrování sloupce databáze používá Azure AD k ověření aplikace pro Azure SQL Database. Další informace najdete v tématu [Always Encrypted: Ochrana citlivých dat v SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
 - Webová aplikace pro občany je nakonfigurována pro veřejný přístup. Aby bylo umožněno vytváření a ověřování účtů prostřednictvím služby Active Directory nebo zprostředkovatele identity sociální sítě [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) možné v případě potřeby integrovat.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) detekuje potenciální slabá místa a rizikové účty a poskytuje doporučení k vylepšení stav zabezpečení identit vaší organizace. konfiguruje automatizované odpovědi na zjištěné podezřelé. akce související s identitami vaší organizace a prošetří podezřelé incidenty a provádí vhodná opatření k jejich vyřešení.
 - Správa [Access Control na základě rolí v Azure (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) umožňuje přesné řízení přístupu pro Azure. Přístup k předplatnému je omezený na správce předplatného a přístup Azure Key Vault je omezený jenom na uživatele, kteří vyžadují přístup ke správě klíčů.
@@ -110,7 +110,7 @@ Plány Basic, Standard a Premium jsou určené pro produkční úlohy a běží 
 Tato šablona nasadí následující funkce App Service:
 
 - [Standardní](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) App Service – úroveň plánu
-- Více App Servicech [slotů nasazení](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Vývoj, verze Preview, QA, UAT a těžba kurzů (výchozí slot).
+- Několik App Servicech [slotů nasazení](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): dev, Preview, QA, UAT a Kurzová výroba (výchozí slot).
 - [Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity) , které se připojují k [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (můžete také použít k poskytnutí přístupu k [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
 - Integrace s [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) pro monitorování výkonu
 - [Diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) 
@@ -191,7 +191,7 @@ Tato šablona používá následující součásti Application Insights:
 
 #### <a name="azure-activity-logs"></a>Protokoly aktivit Azure
 
-Auditování [protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) audity kontrolují události v rámci vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy použít pro všechny operace zápisu (PUT, POST, DELETE) u prostředků ve vašem předplatném. Můžete také zjištění stavu operace a další relevantní vlastnosti.
+Auditování [protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) audity kontrolují události v rámci vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy použít pro všechny operace zápisu (PUT, POST, DELETE) u prostředků ve vašem předplatném. Můžete také pochopit stav operace a dalších relevantních vlastností.
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
@@ -229,9 +229,9 @@ Tato Podrobný plán zabezpečení a dodržování předpisů Azure Automation s
 Pro nasazení jsou k dispozici tři přístupy. Jednoduché "expresní" rozhraní [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) vhodné pro rychlé vytváření testovacího prostředí; parametr rozhraní příkazového [řádku Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) poskytující větší konfiguraci pro prostředí úloh. a Azure Portal nasazení na základě, kde operátor může určit parametry nasazení prostřednictvím Azure Portal. 
 
 1.  Naklonujte nebo stáhněte [Toto](https://aka.ms/ukofficial-paaswa-repo) úložiště GitHub na místní pracovní stanici.
-2.  Přečtěte si [metodu 1: Azure CLI 2 (expresní verze)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) a spustit poskytnuté příkazy.
-3.  Kontrola [metody 1a: Azure CLI 2 (konfigurace nasazení přes argumenty skriptu)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) a spuštění zadaných příkazů
-4.  Kontrola [metody 2: Azure Portal proces](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) nasazení a provést uvedené příkazy
+2.  Podívejte se na [metodu 1: rozhraní příkazového řádku Azure CLI 2 (expresní verze)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) a spusťte poskytnuté příkazy.
+3.  Projděte si [metodu 1a: rozhraní příkazového řádku Azure CLI 2 (konfigurace nasazení prostřednictvím argumentů skriptu)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) a spusťte poskytnuté příkazy.
+4.  Zkontrolujte [metodu 2: Azure Portal proces nasazení](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) a spusťte uvedené příkazy.
 
 ## <a name="guidance-and-recommendations"></a>Doprovodné materiály a doporučení
 
@@ -239,11 +239,11 @@ Pro nasazení jsou k dispozici tři přístupy. Jednoduché "expresní" rozhran�
 
 [Azure API Management](https://azure.microsoft.com/services/api-management/) můžete použít před rozhraním API App Service k zajištění dalších vrstev zabezpečení, omezování a ovládacích prvků pro vystavení, proxy a ochraně rozhraní API.
 
-### <a name="azure-b2c"></a>Azure B2C
+### <a name="azure-b2c"></a>B2C Azure
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) může být implementován jako ovládací prvek, který umožňuje uživatelům zaregistrovat, vytvořit identitu a povolit autorizaci a řízení přístupu pro veřejnou webovou aplikaci.
 
-## <a name="disclaimer"></a>Zřeknutí se práv
+## <a name="disclaimer"></a>Právní omezení
 
 - Tento dokument slouží pouze k informativním účelům. SPOLEČNOST MICROSOFT NEPOSKYTUJE ŽÁDNÉ ZÁRUKY, AŤ UŽ VÝSLOVNĚ UVEDENÉ, PŘEDPOKLÁDANÉ NEBO STATUTÁRNÍ, JAKO INFORMACE V TOMTO DOKUMENTU. Tento dokument se poskytuje "tak, jak je". Informace a názory vyjádřené v tomto dokumentu, včetně adres URL a dalších odkazů na internetové weby, se mohou změnit bez předchozího upozornění. Zákazníci, kteří si tento dokument přečetli, nesou riziko jeho používání.
 - Tento dokument neposkytuje zákazníkům žádná zákonná práva k žádnému duševnímu vlastnictví jakéhokoli produktu nebo řešení společnosti Microsoft.

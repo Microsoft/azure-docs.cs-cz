@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 7d46773ce45cb3ef8b70d3c6074b9f1c771e9e24
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 179676ae2a7d68bc0263f897ffededcf8b7a01f4
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554640"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693373"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -276,7 +276,6 @@ Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 M
 
 **Četnost změn dat zdroje** | **Maximální omezení**
 ---|---
-Průměrná četnost změn dat na virtuální počítač| 25 MB/s
 Četnost změn dat ve špičce napříč všemi disky virtuálního počítače | 54 MB/s
 Maximální četnost změn dat za den s podporou procesového serveru | 2 TB
 

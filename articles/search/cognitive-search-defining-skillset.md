@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265519"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Postup vytvoření dovednosti v kanálu pro rozšíření
 
-Rozpoznávání rozpoznávání rozbalí data a vylepšuje je, aby je bylo možné prohledávat Azure Search. Vyvoláme kroky pro extrakcia obohacení, které jsou zkombinovány do *dovednosti* , na který se odkazuje při indexování. Dovednosti může používat [integrované dovednosti](cognitive-search-predefined-skills.md) nebo vlastní dovednosti (viz [příklad: Vytvoření vlastní dovednosti pro hledání](cognitive-search-create-custom-skill-example.md) vnímání, kde najdete další informace.
+Rozpoznávání rozpoznávání rozbalí data a vylepšuje je, aby je bylo možné prohledávat Azure Search. Vyvoláme kroky pro extrakci a obohacení, které jsou zkombinovány do *dovednosti* , na *který se odkazuje*při indexování. Dovednosti může používat [integrované dovednosti](cognitive-search-predefined-skills.md) nebo vlastní dovednosti (Další informace najdete v tématu [Vytvoření vlastní dovednosti pro hledání v rozpoznávání](cognitive-search-create-custom-skill-example.md) ).
 
-V tomto článku se dozvíte, jak vytvořit kanál pro rozšíření pro dovednosti, které chcete použít. Dovednosti je připojen k indexeru Azure Search [](search-indexer-overview.md). Jedna součást návrhu kanálu, která je popsaná v tomto článku, sestavuje dovednosti sebe sama. 
+V tomto článku se dozvíte, jak vytvořit kanál pro rozšíření pro dovednosti, které chcete použít. Dovednosti je připojen k [indexeru](search-indexer-overview.md)Azure Search. Jedna součást návrhu kanálu, která je popsaná v tomto článku, sestavuje dovednosti sebe sama. 
 
 > [!NOTE]
 > Další součástí návrhu kanálu je zadání indexeru, který je popsaný v [dalším kroku](#next-step). Definice indexeru zahrnuje odkaz na dovednosti a mapování polí, která se používají pro připojení vstupů k výstupům v cílovém indexu.
@@ -36,9 +36,9 @@ Doporučený počáteční krok je rozhodování o tom, která data se mají ext
 
 Předpokládejme, že máte zájem o zpracování sady svých komentářů finančního analytika. Pro každý soubor budete chtít extrahovat názvy společností a obecné míněníy komentářů. Můžete také vytvořit vlastní nástroj pro obohacení, který používá službu Vyhledávání entit Bingu k vyhledání dalších informací o společnosti, například o tom, jaký druh firmy je ve společnosti zapojen. V podstatě budete chtít extrahovat informace, jako jsou následující, indexované pro každý dokument:
 
-| record-text | Firma | mínění | popisy společnosti |
+| záznam – text | Firma | Mínění | popisy společnosti |
 |--------|-----|-----|-----|
-|sample-record| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation je americká Vícevrstvá technologie...", "LinkedIn je síť, která je zaměřená na obchodní a výdělečnou práci..."]
+|Ukázka-záznam| ["Microsoft", "LinkedIn"] | 0,99 | ["Microsoft Corporation je americká Vícevrstvá technologie...", "LinkedIn je síť, která je zaměřená na obchodní a výdělečnou práci..."]
 
 Následující diagram znázorňuje hypotetický kanál pro obohacení:
 
@@ -48,7 +48,7 @@ Následující diagram znázorňuje hypotetický kanál pro obohacení:
 Jakmile budete mít k dispozici lepší představu o tom, co chcete v kanálu, můžete vyjádřit dovednosti, které poskytuje tyto kroky. Funkce dovednosti se vyjadřuje při nahrávání definice indexeru do Azure Search. Další informace o tom, jak nahrát indexer, najdete v dokumentaci k [indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 
-V diagramu se krok vytrhlinování *dokumentu* provede automaticky. V podstatě Azure Search ví, jak otevřít dobře známé soubory a vytvoří pole *obsahu* obsahující text extrahovaný z každého dokumentu. Prázdné čtverečky jsou integrované nástroje pro obohacení a pole s tečkami Vyhledávání entit Bingu představuje vlastní obohacení, které vytváříte. Jak je znázorněno, dovednosti obsahuje tři dovednosti.
+V diagramu se krok *vytrhlinování dokumentu* provede automaticky. V podstatě Azure Search ví, jak otevřít dobře známé soubory a vytvoří pole *obsahu* obsahující text extrahovaný z každého dokumentu. Prázdné čtverečky jsou integrované nástroje pro obohacení a pole s tečkami Vyhledávání entit Bingu představuje vlastní obohacení, které vytváříte. Jak je znázorněno, dovednosti obsahuje tři dovednosti.
 
 ## <a name="skillset-definition-in-rest"></a>Definice dovednosti v REST
 
@@ -126,7 +126,7 @@ Content-Type: application/json
 
 ## <a name="create-a-skillset"></a>Vytvoření sady dovedností
 
-Při vytváření dovednosti můžete zadat popis, který provede samoobslužný dokument dovednosti. Popis je nepovinný, ale užitečný pro sledování toho, co dovednosti. Vzhledem k tomu, že dovednosti je dokument JSON, který nepovoluje komentáře, musíte pro `description` tento prvek použít element.
+Při vytváření dovednosti můžete zadat popis, který provede samoobslužný dokument dovednosti. Popis je nepovinný, ale užitečný pro sledování toho, co dovednosti. Vzhledem k tomu, že dovednosti je dokument JSON, který nepovoluje komentáře, je nutné použít `description` element.
 
 ```json
 {
@@ -163,23 +163,23 @@ Pojďme se podívat na první dovednost, což je integrovaná [dovednost pro roz
     }
 ```
 
-* Každá integrovaná dovednost má `odata.type`, `input`a `output` vlastnosti. Vlastnosti specifické pro dovednost poskytují další informace, které se vztahují na tuto dovednost. Pro rozpoznávání `categories` entit je jedna entita mezi pevnou sadou typů entit, kterou může předvlakový model rozpoznat.
+* Každá integrovaná dovednost má vlastnosti `odata.type`, `input` a `output`. Vlastnosti specifické pro dovednost poskytují další informace, které se vztahují na tuto dovednost. Pro rozpoznávání entit je `categories` jedna entita mezi pevnou sadou typů entit, kterou může předvlakový model rozpoznat.
 
-* Každá dovednost by měla mít ```"context"```. Kontext představuje úroveň, na které operace probíhají. V dovednostech výše je kontext celý dokument, což znamená, že dovednost rozpoznávání entit se volá jednou pro každý dokument. Výstupy jsou také vytvářeny na této úrovni. Přesněji řečeno, ```"organizations"``` jsou generovány jako ```"/document"```člen. V případě dovedností pro příjem dat můžete na tyto nově vytvořené informace odkazovat ```"/document/organizations"```jako na.  ```"context"``` Pokud pole není explicitně nastaveno, je výchozím kontextem dokument.
+* Každá dovednost by měla mít ```"context"```. Kontext představuje úroveň, na které operace probíhají. V dovednostech výše je kontext celý dokument, což znamená, že dovednost rozpoznávání entit se volá jednou pro každý dokument. Výstupy jsou také vytvářeny na této úrovni. Konkrétně se ```"organizations"``` generují jako člen ```"/document"```. V případě dovedností pro příjem dat můžete na tyto nově vytvořené informace odkazovat jako na ```"/document/organizations"```.  Pokud není pole ```"context"``` explicitně nastaveno, je výchozím kontextem dokument.
 
-* Dovednost má jeden vstup s názvem "text", ve kterém je zdrojová vstupní sada ```"/document/content"```nastavená na. Dovednost (rozpoznávání entit) pracuje na poli *obsah* každého dokumentu, což je standardní pole vytvořené indexerem objektů BLOB v Azure. 
+* Dovednost má jeden vstup s názvem "text", ve kterém je zdrojová vstupní sada nastavena na ```"/document/content"```. Dovednost (rozpoznávání entit) pracuje na poli *obsah* každého dokumentu, což je standardní pole vytvořené indexerem objektů BLOB v Azure. 
 
-* Dovednost má jeden výstup s názvem ```"organizations"```. Výstupy existují pouze během zpracování. Chcete-li tento výstup zřetězit na vstup pro příjem dat, odkazujte na ```"/document/organizations"```výstup.
+* Dovednost má jeden výstup s názvem ```"organizations"```. Výstupy existují pouze během zpracování. Pokud chcete tento výstup zřetězit do vstupu pro příjem dat, odkazujte na výstup jako ```"/document/organizations"```.
 
-* V případě konkrétního dokumentu ```"/document/organizations"``` je hodnota pole organizací extrahovaných z textu. Příklad:
+* V případě konkrétního dokumentu je hodnota ```"/document/organizations"``` pole organizací extrahovaných z textu. Například:
 
   ```json
   ["Microsoft", "LinkedIn"]
   ```
 
-Některé situace volají pro odkazování na každý prvek pole samostatně. Předpokládejme například, že chcete každý prvek ```"/document/organizations"``` předat samostatně do jiné dovednosti (například vlastní rozšíření pro vyhledávání entit Bingu). Na každý prvek pole můžete odkazovat přidáním hvězdičky do cesty:```"/document/organizations/*"``` 
+Některé situace volají pro odkazování na každý prvek pole samostatně. Předpokládejme například, že chcete každý prvek ```"/document/organizations"``` předat samostatně jiné dovednosti (například vlastní rozšíření pro vyhledávání entit Bingu). Na každý prvek pole můžete odkazovat přidáním hvězdičky na cestu: ```"/document/organizations/*"``` 
 
-Druhá dovednost pro extrakci mínění se řídí stejným vzorem jako první obohacení. Jako vstup ```"/document/content"``` bere a vrátí mínění skóre pro každou instanci obsahu. Vzhledem k tomu, že jste ```"context"``` pole nezadali explicitně, výstup (mySentiment) je teď ```"/document"```podřízeným objektem.
+Druhá dovednost pro extrakci mínění se řídí stejným vzorem jako první obohacení. Vybírá ```"/document/content"``` jako vstup a vrací mínění skóre pro každou instanci obsahu. Vzhledem k tomu, že jste nastavili pole ```"context"``` explicitně, je výstup (mySentiment) nyní podřízenou položkou ```"/document"```.
 
 ```json
     {
@@ -229,13 +229,13 @@ Odvolání struktury vlastního rozšíření pro vyhledávání entit Bingu:
 
 Tato definice je [vlastní dovednost](cognitive-search-custom-skill-web-api.md) , která jako součást procesu rozšíření volá webové rozhraní API. Pro každou organizaci identifikovanou nástrojem pro rozpoznávání entit volá tato dovednost webové rozhraní API, kde najdete popis této organizace. Orchestrace, kdy volat webové rozhraní API a postup toku přijatých informací, je zpracována interně modulem pro obohacení. Nicméně inicializace nutná pro volání tohoto vlastního rozhraní API musí být uvedena ve formátu JSON (například identifikátor URI, httpHeaders a očekávané vstupy). Pokyny k vytvoření vlastního webového rozhraní API pro kanál pro rozšíření najdete v tématu [jak definovat vlastní rozhraní](cognitive-search-custom-skill-interface.md).
 
-Všimněte si, že pole "Context" je nastaveno ```"/document/organizations/*"``` na hvězdičku, což znamená, že je krok rozšíření volán *pro každou* organizaci ```"/document/organizations"```v rámci. 
+Všimněte si, že pole "Context" je nastavené na ```"/document/organizations/*"``` s hvězdičkou, což znamená, že je krok obohacení volán *pro každou* organizaci v rámci ```"/document/organizations"```. 
 
 Výstup, v tomto případě se pro každou identifikovanou organizaci vygeneruje popis společnosti. Při odkazování na popis v rámci navazujícího kroku (například při extrakci klíčových frází) byste použili cestu ```"/document/organizations/*/description"``` k tomu. 
 
 ## <a name="add-structure"></a>Přidat strukturu
 
-Dovednosti generuje strukturované informace mimo nestrukturovaná data. Vezměte v úvahu v následujícím příkladu:
+Dovednosti generuje strukturované informace mimo nestrukturovaná data. Vezměte v úvahu následující příklad:
 
 *"Ve čtvrtém čtvrtletí se společnost Microsoft zaznamenala $1 100 000 000 ve tržbách z LinkedInu, což je společnost sociální sítě, kterou koupili minulý rok. Akvizice umožňuje Microsoftu kombinovat možnosti LinkedInu s funkcemi CRM a Office. V tomto případě se drží v tomto stavu. "*
 
@@ -277,4 +277,4 @@ Můžete zvolit ukládání obohacených dokumentů jako tabulek s hierarchický
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste obeznámeni s kanálem pro obohacení a dovednosti, pokračujte s odkazem na [poznámky v dovednosti](cognitive-search-concept-annotations-syntax.md) nebo [jak mapovat výstupy na pole v indexu](cognitive-search-output-field-mapping.md). 
+Teď, když jste obeznámeni s kanálem pro obohacení a dovednosti, pokračujte s [odkazem na poznámky v dovednosti](cognitive-search-concept-annotations-syntax.md) nebo [jak mapovat výstupy na pole v indexu](cognitive-search-output-field-mapping.md). 

@@ -1,7 +1,7 @@
 ---
-title: 'Ukázka vizuálního rozhraní #5: Klasifikace pro předpověď změn + appetency + up-proprodej'
+title: 'Příklad vizuálního rozhraní #5: klasifikace pro předpověď změn + appetency + up-proprodej'
 titleSuffix: Azure Machine Learning
-description: Tento vzorový experiment mezi vizuálními rozhraními ukazuje, jak často předpověď třídění změn, což je běžný úkol pro řízení vztahů se zákazníky (CRM).
+description: Tento ukázkový kanál vizuálního rozhraní znázorňuje četnost změn v binárním třídění, což je běžný úkol pro řízení vztahů se zákazníky (CRM).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,45 +9,45 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: 260d94ddf2572979e819ee89dfcbd315ef3c4769
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 82639779dde08bb1f71fb75dba62038dbf34d1b6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131932"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693560"
 ---
-# <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Ukázka 5 – klasifikace: Předpověď změn, appetencyí a prodejů 
+# <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Ukázka 5 – klasifikace: předpověď změn, appetencyí a prodejů 
 
-Naučte se vytvářet složitý experiment strojového učení bez nutnosti psát jediný řádek kódu pomocí vizuálního rozhraní.
+Naučte se vytvářet komplexní kanály strojového učení, aniž byste museli psát jediný řádek kódu pomocí vizuálního rozhraní.
 
-Tento experiment vlaků tři, dvě třídy rozappetencyější klasifikátory **rozhodovacího stromu** pro předpověď běžných úloh pro systémy řízení vztahů se zákazníky (CRM): změny, a prodej. Hodnoty dat a popisky jsou rozdělené do několika zdrojů dat a zakódované tak, aby anonymizovat informace o zákaznících, ale přesto můžeme použít vizuální rozhraní ke kombinování datových sad a výukou modelu pomocí kódovaných hodnot.
+Tento kanál vlaky doplní tři, rozpracované Klasifikátory pro **rozhodovací stromovou strukturu** pro předpověď běžných úloh pro systémy řízení vztahů se zákazníky (CRM): změny, appetency a prodej. Hodnoty dat a popisky jsou rozdělené do několika zdrojů dat a zakódované tak, aby anonymizovat informace o zákaznících, ale přesto můžeme použít vizuální rozhraní ke kombinování datových sad a výukou modelu pomocí zakrytých hodnot.
 
-Vzhledem k tomu, že se snažíte odpovědět na otázku, kterou jste nahlásili? To se označuje jako problém klasifikace, ale můžete použít stejnou logiku v tomto projektu, abyste mohli řešit jakýkoli typ problému strojového učení bez ohledu na to, jestli jde o regresi, klasifikaci, clusteringu a tak dále.
+Vzhledem k tomu, že se snažíte odpovědět na otázku, kterou jste nahlásili? To se označuje jako problém klasifikace, ale můžete použít stejnou logiku jako v této ukázce, abyste mohli řešit jakýkoli typ problému strojového učení, ať už jde o regresi, klasifikaci, clusteringu a tak dále.
 
-Zde je dokončený graf pro tento experiment:
+Zde je dokončený graf pro tento kanál:
 
-![Graf experimentu](./media/how-to-ui-sample-classification-predict-churn/experiment-graph.png)
+![Graf kanálu](./media/how-to-ui-sample-classification-predict-churn/pipeline-graph.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Vyberte tlačítko **otevřít** pro experiment Sample 5.
+4. Vyberte tlačítko **otevřít** pro kanál Sample 5.
 
-    ![Otevřít experiment](media/how-to-ui-sample-classification-predict-churn/open-sample5.png)
+    ![Otevření kanálu](media/how-to-ui-sample-classification-predict-churn/open-sample5.png)
 
 ## <a name="data"></a>Data
 
-Data pro tento experiment jsou od konference KDD. 2009. Má 50 000 řádků a 230 sloupců funkcí. Úkolem je předpovědět změny, appetency a prodej pro zákazníky, kteří tyto funkce používají. Další informace o datech a úkolech najdete na [webu konference KDD](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
+Data pro tento kanál vychází z konference KDDu 2009. Má 50 000 řádků a 230 sloupců funkcí. Úkolem je předpovědět změny, appetency a prodej pro zákazníky, kteří tyto funkce používají. Další informace o datech a úkolech najdete na [webu konference KDD](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
-## <a name="experiment-summary"></a>Shrnutí experimentů
+## <a name="pipeline-summary"></a>Souhrn kanálu
 
-Tento vzorový experiment mezi vizuálními rozhraními ukazuje, jak se v programu pro správu vztahů se zákazníky (CRM) zobrazuje binární klasifikátor pro třídění změn, appetency a prodej.
+Tento ukázkový kanál pro vizuální rozhraní ukazuje, jak se v rámci služby řízení vztahů se zákazníky (CRM) vytváří binární předpověď klasifikátoru pro změny, appetency a prodej.
 
-Nejprve udělejte jednoduché zpracování dat.
+Nejprve některé jednoduché zpracování dat.
 
-- Nezpracovaná datová sada obsahuje spoustu chybějících hodnot. Pomocí modulu **Vyčištění chybějících dat** nahraďte chybějící hodnoty hodnotou 0.
+- Nezpracovaná datová sada má mnoho chybějících hodnot. Pomocí modulu **Vyčištění chybějících dat** nahraďte chybějící hodnoty hodnotou 0.
 
     ![Vyčistit datovou sadu](./media/how-to-ui-sample-classification-predict-churn/cleaned-dataset.png)
 
@@ -57,7 +57,7 @@ Nejprve udělejte jednoduché zpracování dat.
 
 - Pomocí modulu **rozdělit data** rozdělte datovou sadu do výukových a testovacích sad.
 
-    Pak použijte binární klasifikátor zesíleného rozhodovacího stromu s výchozími parametry pro sestavení předpovědí modelů. Sestavte jeden model na každý úkol, tj. jeden model pro předpověď prodeje, appetency a změn.
+- Pak použijte binární klasifikátor zesíleného rozhodovacího stromu s výchozími parametry pro sestavení předpovědí modelů. Sestavte jeden model na každý úkol, tj. jeden model pro předpověď prodeje, appetency a změn.
 
 ## <a name="results"></a>Výsledky
 
@@ -75,8 +75,9 @@ Vizualizujte výstup modulu **vyhodnocení modelu** , abyste viděli výkon mode
 
 Prozkoumejte další ukázky, které jsou k dispozici pro vizuální rozhraní:
 
-- [Ukázka 1 – regrese: Předpověď ceny automobilu](how-to-ui-sample-regression-predict-automobile-price-basic.md)
-- [Ukázka 2 – regrese: Porovnat algoritmy pro předpověď cen automobilu](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Ukázka 3 – klasifikace: Předpověď úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-- [Ukázka 4 – klasifikace: Předpověď úvěrového rizika (citlivé na náklady)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [Ukázka 6 – klasifikace: Předpověď zpoždění letů](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+- [Ukázka 2 – regrese: porovnání algoritmů pro předpověď cen automobilu](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Ukázka 3 – klasifikace: předpověď úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Ukázka 6 – klasifikace: předpověď zpoždění letů](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Ukázka 7 – klasifikace textu: recenze knih](how-to-ui-sample-text-classification.md)

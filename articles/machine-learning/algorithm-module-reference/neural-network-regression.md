@@ -1,5 +1,5 @@
 ---
-title: 'Regrese sítě neuronové: Odkaz na modul'
+title: 'Regrese sítě neuronové: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul neuronové Network regrese ve službě Azure Machine Learning k vytvoření regresního modelu pomocí přizpůsobitelného síťového algoritmu neuronové.
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 93f27458a2571b2e26a090c06b01d8abe3e79c2a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 54518d21db0c9b14cbb7b4fc4316d1db2b871573
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128577"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692740"
 ---
 # <a name="neural-network-regression-module"></a>Neuronové Network regrese – modul
 
 *Vytvoří regresní model pomocí neuronové síťového algoritmu.*  
   
- Kategorií Machine Learning/inicializace modelu/regrese
+ Kategorie: Machine Learning/inicializovat model/regrese
   
 ## <a name="module-overview"></a>Přehled modulu  
 
@@ -32,7 +32,7 @@ Tento modul použijte k vytvoření regresního modelu pomocí přizpůsobiteln�
   
  Regrese sítě neuronové je metoda učení pod dohledem a proto vyžaduje *tagované datové sady*, která obsahuje sloupec popisku. Vzhledem k tomu, že regresní model předpovídá číselnou hodnotu, sloupec popisku musí být číselný datový typ.  
   
- Model můžete proškolit poskytnutím modelu a tagované datové sady jako vstupu pro vlakový [model](./train-model.md). K předpovědi hodnot pro nové příklady vstupu je pak možné použít trained model.  
+ Model můžete proškolit poskytnutím modelu a tagované datové sady jako vstupu pro [vlakový model](./train-model.md). K předpovědi hodnot pro nové příklady vstupu je pak možné použít trained model.  
   
 ## <a name="configure-neural-network-regression"></a>Konfigurace regrese sítě neuronové 
 
@@ -52,11 +52,11 @@ Neuronové sítě je možné výrazně přizpůsobit. Tato část popisuje, jak 
 
 ##  <a name="bkmk_DefaultArchitecture"></a>Vytvoření modelu sítě neuronové pomocí výchozí architektury
   
-1.  Přidejte modul **regrese sítě neuronové** do experimentu v rozhraní. Tento modul najdete v části **Machine Learning**, **Initialize**, v kategorii **regrese** . 
+1.  Přidejte modul **regrese sítě neuronové** do vašeho kanálu v rozhraní. Tento modul najdete v části **Machine Learning**, **Initialize**, v kategorii **regrese** . 
   
 2. Určete, jak chcete, aby byl model vyškolený, nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: Tuto možnost vyberte, pokud už víte, jak chcete model nakonfigurovat.  
+    -   **Jeden parametr**: tuto možnost vyberte, pokud už víte, jak chcete model nakonfigurovat.  
 
 3.  V případě **specifikace skryté vrstvy**vyberte možnost **plně připojené**. Tato možnost vytvoří model pomocí výchozí síťové architektury neuronové, která je pro model regrese sítě neuronové, má tyto atributy:  
   
@@ -76,16 +76,16 @@ Neuronové sítě je možné výrazně přizpůsobit. Tato část popisuje, jak 
 
 8.  Pro **potenciál**zadejte hodnotu, která se má použít během učení, jako váha na uzlech z předchozích iterací.
 
-10. Pokud chcete změnit pořadí případů mezi iteracemi, vyberte možnost, která bude náhodně vymezit **Příklady**. Pokud zrušíte výběr této možnosti, jsou případy zpracovávány přesně stejným způsobem pokaždé, když spustíte experiment.
+10. Pokud chcete změnit pořadí případů mezi iteracemi, vyberte možnost, která bude náhodně vymezit **Příklady**. Pokud zrušíte výběr této možnosti, jsou případy zpracovávány přesně stejným způsobem pokaždé, když spustíte kanál.
   
-11. V případě použití **náhodného čísla**můžete volitelně zadat hodnotu, která se má použít jako počáteční hodnota. Zadání počáteční hodnoty je užitečné, pokud chcete zajistit opakovatelnost v rámci jednoho spuštění stejného experimentu.
+11. V případě použití **náhodného čísla**můžete volitelně zadat hodnotu, která se má použít jako počáteční hodnota. Zadání počáteční hodnoty je užitečné, pokud chcete zajistit opakování v rámci spuštění stejného kanálu.
   
 13. Připojte datovou sadu školení a jeden z [školicích modulů](module-reference.md): 
   
     -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijete [model výuky](./train-model.md).  
   
    
-14. Spusťte experiment.  
+14. Spuštění kanálu  
 
 ## <a name="results"></a>Výsledky
 
@@ -93,9 +93,9 @@ Po dokončení školení:
 
 + Chcete-li zobrazit souhrn parametrů modelu spolu s váhy funkcí zjištěnými ze školení a dalšími parametry sítě neuronové, klikněte pravým tlačítkem na výstup [výukového modelu](./train-model.md)a vyberte **vizualizovat**.  
 
-+ Pokud chcete uložit snímek výukového modelu, klikněte pravým tlačítkem na výstup **trained model** a vyberte **Uložit jako trained model**. Tento model není aktualizován při následných spuštěních stejného experimentu.
++ Pokud chcete uložit snímek výukového modelu, klikněte pravým tlačítkem na výstup **trained model** a vyberte **Uložit jako trained model**. Tento model se neaktualizuje při následných spuštěních stejného kanálu.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

@@ -1,5 +1,5 @@
 ---
-title: 'Vyhodnotit model: Odkaz na modul'
+title: 'Vyhodnocení modelu: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul vyhodnocení modelu ve službě Azure Machine Learning k měření přesnosti vyučeného modelu.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 17263c8e7300f427b7d82aea65e1f83edf6d6fc4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 0ad4ceedf9c1d65339c9e4aabebc0a47475ed568
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128850"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693807"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
@@ -22,7 +22,7 @@ Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure
 
 Tento modul použijte k měření přesnosti trained model. Poskytnete datovou sadu obsahující skóre vygenerované z modelu a modul **vyhodnocení modelu** vypočítá sadu standardních metrik vyhodnocení v oboru.
   
- Metriky vrácené modelem **vyhodnocení** závisí na typu modelu, který vyhodnocujete:  
+ Metriky vrácené **modelem vyhodnocení** závisí na typu modelu, který vyhodnocujete:  
   
 -   **Modely klasifikace**    
 -   **Regresní modely**    
@@ -30,7 +30,7 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
 
 
 > [!TIP]
-> Pokud s vyhodnocením modelu začínáte, doporučujeme vám řadu videí pomocí Dr. Stephen Elston jako součást [strojového učení](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) od EdX. 
+> Pokud s hodnocením modelu začínáte, doporučujeme, aby se série videí Dr. Stephen Elston jako součást [strojového učení](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) od EdX. 
 
 
 Existují tři způsoby použití modulu **vyhodnocení modelu** :
@@ -44,7 +44,7 @@ Existují tři způsoby použití modulu **vyhodnocení modelu** :
 Pro vyhodnocení modelu musíte připojit datovou sadu, která obsahuje sadu vstupních sloupců a skóre.  Pokud nejsou k dispozici žádná jiná data, můžete použít původní datovou sadu.
 
 1. Připojte výstup skóre výsledné **sady dat** [modelu skóre](./score-model.md) k vstupu **modelu vyhodnocení**. 
-2. Klikněte na vyhodnotit modul **modelu** a spusťte experiment, který vygeneruje hodnocení vyhodnocení.
+2. Klikněte na **vyhodnotit modul modelu** a spuštěním kanálu vygenerujte skóre vyhodnocení.
 
 ## <a name="use-testing-data"></a>Použití testovacích dat
 
@@ -52,7 +52,7 @@ Běžným scénářem ve službě Machine Learning je oddělení původní sady 
 
 1. Připojte výstup skóre výsledné **sady dat** [modelu skóre](score-model.md) k vstupu **modelu vyhodnocení**. 
 2. Připojte výstup modulu rozdělených dat, který obsahuje testovací data, do pravého vstupu pro **vyhodnocení modelu**.
-2. Klikněte na vyhodnotit modul **modelu** a vyberte **Spustit vybrané** pro vygenerování skóre vyhodnocení.
+2. Klikněte na **vyhodnotit modul modelu** a vyberte **Spustit vybrané** pro vygenerování skóre vyhodnocení.
 
 ## <a name="compare-scores-from-two-models"></a>Porovnání skóre ze dvou modelů
 
@@ -62,7 +62,7 @@ Tato funkce je užitečná, protože můžete snadno porovnat výsledky dvou rů
 
 1. Připojte výstup skóre výsledné **sady dat** [modelu skóre](score-model.md) k vstupu **modelu vyhodnocení**. 
 2. Připojte výstup modulu určení skóre modelu pro druhý model na pravého vstupu **modelu vyhodnocení**.
-3. Klikněte pravým tlačítkem na vyhodnotit **model**a vyberte **Spustit vybrané** a vygenerujte hodnocení vyhodnocení.
+3. Klikněte pravým tlačítkem na **vyhodnotit model**a vyberte **Spustit vybrané** a vygenerujte hodnocení vyhodnocení.
 
 ## <a name="results"></a>Výsledky
 
@@ -82,7 +82,7 @@ Vzhledem k tomu, že se jedná o model clusteringu, výsledky hodnocení jsou ji
 
 ## <a name="metrics"></a>Metriky
 
-Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s vyhodnocením **modelu**:
+Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s **vyhodnocením modelu**:
 
 + [modely klasifikace](#bkmk_classification)
 + [Regresní modely](#bkmk_regression)
@@ -119,11 +119,11 @@ Metriky vracené pro regresní modely jsou obecně navržené k odhadu množstv�
   
 - **Relativní kvadratická chyba (RSE)** podobně normalizuje celkovou kvadratickou chybu předpokládaných hodnot tak, že se vydělí celkovými kvadratickými chybami skutečných hodnot.  
   
-- **Střední hodnota nula (MZOE)** označuje, zda byla předpověď správná nebo ne.  Jinými slovy: `ZeroOneLoss(x,y) = 1` `x!=y`v opačném `0`případě.
+- **Střední hodnota nula (MZOE)** označuje, zda byla předpověď správná nebo ne.  Jinými slovy: `ZeroOneLoss(x,y) = 1`, když `x!=y`; jinak `0`.
   
 - **Koeficient stanovitelnosti**, který se často označuje jako R<sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
   
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

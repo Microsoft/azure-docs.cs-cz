@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.openlocfilehash: 26634e2fe23e0a23540638c4559af6e11eccbe72
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71180728"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v Azure HDInsight
@@ -23,7 +23,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Schéma identifikátoru URI pro primární úložiště clusterů. To je `wasb://` pro Azure `abfs://` BLOB Storage pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Další informace najdete [v tématu o vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
+* Schéma identifikátoru URI pro primární úložiště clusterů. To `wasb://` pro Azure Blob Storage, `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, `wasbs://` identifikátor URI.  Další informace najdete [v tématu o vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Spuštění poznámkového bloku Apache Zeppelin
 
@@ -34,7 +34,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. Vytvořte nový poznámkový blok. V podokně záhlaví přejděte na **Poznámkový blok** > **vytvořit novou poznámku**.
+2. Vytvořte nový poznámkový blok. V podokně záhlaví přejděte na **Poznámkový blok**  > **vytvořit novou poznámku**.
 
     ![Vytvoření nového poznámkového bloku Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Vytvoření nového poznámkového bloku Zeppelin")
 
@@ -44,7 +44,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
     ![Stav poznámkového bloku Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Stav poznámkového bloku Zeppelin")
 
-4. Načtěte vzorová data do dočasné tabulky. Při vytváření clusteru Spark ve službě HDInsight se Ukázkový datový soubor `hvac.csv`zkopíruje do přidruženého účtu úložiště v části. `\HdiSamples\SensorSampleData\hvac`
+4. Načtěte vzorová data do dočasné tabulky. Když vytvoříte cluster Spark ve službě HDInsight, Ukázkový datový soubor `hvac.csv`, zkopíruje se do přidruženého účtu úložiště v části `\HdiSamples\SensorSampleData\hvac`.
 
     V novém poznámkovém bloku vložte následující fragment kódu do prázdného odstavce, který je ve výchozím nastavení vytvořen.
 
@@ -81,7 +81,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
     > [!NOTE]  
     > % spark2 překladače není podporován v poznámkových blocích Zeppelin napříč všemi verzemi HDInsight a překladač% SH nebude podporován od HDInsight 4,0 a vyšší.
 
-5. V `hvac` tabulce teď můžete spustit příkazy Spark SQL. Vložte následující dotaz do nového odstavce. Dotaz načte ID sestavení a rozdíl mezi cílovou a skutečnou teplotou pro každé sestavení v daném datu. Stiskněte **SHIFT + ENTER**.
+5. Nyní můžete spustit příkazy Spark SQL na `hvac` tabulce. Vložte následující dotaz do nového odstavce. Dotaz načte ID sestavení a rozdíl mezi cílovou a skutečnou teplotou pro každé sestavení v daném datu. Stiskněte **SHIFT + ENTER**.
 
     ```sql
     %sql
@@ -94,7 +94,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
     ![Spuštění příkazu Spark SQL pomocí notebook1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Spuštění příkazu Spark SQL pomocí notebook1")
 
-7. Příkazy Spark SQL můžete také spouštět pomocí proměnných v dotazu. Další fragment kódu ukazuje, jak definovat proměnnou `Temp`v dotazu s možnými hodnotami, se kterými se chcete dotazovat. Při prvním spuštění dotazu se automaticky vyplní rozevírací seznam hodnotami, které jste zadali pro proměnnou.
+7. Příkazy Spark SQL můžete také spouštět pomocí proměnných v dotazu. Další fragment kódu ukazuje, jak definovat proměnnou `Temp` v dotazu s možnými hodnotami, se kterými se chcete dotazovat. Při prvním spuštění dotazu se automaticky vyplní rozevírací seznam hodnotami, které jste zadali pro proměnnou.
 
     ```sql
     %sql  
@@ -105,8 +105,8 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
 8. Vyberte ikonu **pruhového grafu** pro změnu zobrazení.  Pak vyberte **Nastavení** a proveďte následující změny:
 
-   * **Skupiny**  Přidat **targettemp**.  
-   * **Hodnota** 1. Odebrat **Datum**.  2. Přidat **temp_diff**.  3.  Změňte agregátor z **Sum** na **AVG**.  
+   * **Skupiny:**  Přidat **targettemp**.  
+   * **Hodnoty:** první. Odebrat **Datum**.  2. Přidat **temp_diff**.  3.  Změňte agregátor z **Sum** na **AVG**.  
 
      Výstup se zobrazí na následujícím snímku obrazovky.
 
@@ -133,7 +133,7 @@ V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít 
 
     ![Změnit Interpret settings1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Změnit Interpret settings1")
 
-3. Přidejte nový klíč s názvem `livy.spark.jars.packages`a nastavte jeho hodnotu ve formátu. `group:id:version` Pokud tedy chcete použít balíček [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) , je nutné nastavit hodnotu klíče na `com.databricks:spark-csv_2.10:1.4.0`.
+3. Přidejte nový klíč s názvem `livy.spark.jars.packages` a nastavte jeho hodnotu ve formátu `group:id:version`. Pokud tedy chcete použít balíček [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) , je nutné nastavit hodnotu klíče na `com.databricks:spark-csv_2.10:1.4.0`.
 
     ![Změnit Interpret settings2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Změnit Interpret settings2")
 
@@ -174,12 +174,12 @@ V takovém případě je třeba provést následující kroky, aby bylo možné 
 3. Spustí buňku kódu z existujícího poznámkového bloku Zeppelin. Tím se vytvoří nová relace Livy v clusteru HDInsight.
 
 ## <a name="seealso"></a>Viz také
-* [Přehled Apache Spark ve službě Azure HDInsight](apache-spark-overview.md)
+* [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: Použití Sparku ve službě HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI.](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
@@ -193,7 +193,7 @@ V takovém případě je třeba provést následující kroky, aby bylo možné 
 * [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Spravovat prostředky
+### <a name="manage-resources"></a>Správa prostředků
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)
 

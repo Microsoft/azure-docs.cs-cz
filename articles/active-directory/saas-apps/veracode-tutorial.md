@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50056e6b201313805e7b9253e7a962e096b9df65
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72372973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Veracode
@@ -109,13 +109,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V nabídce v horní části klikněte na **Nastavení**a potom klikněte na **správce**.
    
-    ![](./media/veracode-tutorial/ic802911.png "Správa") správy
+    ![Řízení](./media/veracode-tutorial/ic802911.png "Správa")
 
 1. Klikněte na kartu **SAML** .
 
 1. V části **nastavení pro organizaci SAML** proveďte následující kroky:
 
-    ![](./media/veracode-tutorial/ic802912.png "Správa") správy
+    ![Řízení](./media/veracode-tutorial/ic802912.png "Správa")
 
     a.  Do textového pole **vystavitele** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
 
@@ -125,7 +125,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **nastavení pro osobní registraci** proveďte následující kroky a potom klikněte na **Uložit**:
 
-    ![](./media/veracode-tutorial/ic802913.png "Správa") správy
+    ![Řízení](./media/veracode-tutorial/ic802913.png "Správa")
 
     a. Při **aktivaci nové uživatele**vyberte možnost **nepožaduje se žádná aktivace**.
 

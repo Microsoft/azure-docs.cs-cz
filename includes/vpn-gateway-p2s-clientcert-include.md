@@ -1,6 +1,6 @@
 ---
-title: zahrnout soubor
-description: zahrnout soubor
+title: 포함 파일
+description: 포함 파일
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,31 +8,31 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67174869"
 ---
-Každý klientský počítač, který můžete připojit k virtuální síti pomocí připojení Point-to-Site musí mít nainstalovaný certifikát klienta. Generovat z kořenového certifikátu a nainstalujte ho na každý klientský počítač. Pokud nechcete nainstalovat platný klientský certifikát, ověření se nezdaří, když se klient pokusí připojit k virtuální síti.
+지점 및 사이트 간 연결을 사용하여 VNet에 연결하는 각 클라이언트 컴퓨터에는 클라이언트 인증서가 설치되어 있어야 합니다. 이 인증서는 루트 인증서에서 생성하여 각 클라이언트 컴퓨터에 설치합니다. 유효한 클라이언트 인증서를 설치하지 않으면 클라이언트에서 VNet에 연결하려고 할 때 인증이 실패합니다.
 
-Můžete buď vygenerovat jedinečný certifikát pro každého klienta, nebo můžete použít stejný certifikát pro více klientů. Výhodou generování jedinečných certifikátů pro klienty je možnost jednotlivý certifikát odvolat. Jinak pokud více klienti používají stejný klientský certifikát k ověření a jeho odvolání, bude nutné vygenerovat a nainstalovat nové certifikáty pro každého klienta, který používá tento certifikát.
+연결할 각 클라이언트에 대해 고유한 인증서를 생성하거나 여러 클라이언트에서 동일한 인증서를 사용할 수 있습니다. 고유한 클라이언트 인증서를 생성하면 단일 인증서를 해지할 수 있는 장점이 있습니다. 그렇지 않으면 여러 클라이언트에서 인증하는 데 동일한 클라이언트 인증서를 사용하지만 이 인증서를 철회하는 경우 해당 인증서를 사용하는 모든 클라이언트에 대해 새 인증서를 생성하여 설치해야 합니다.
 
-Klientské certifikáty můžete vygenerovat pomocí následujících metod:
+클라이언트 인증서는 다음 메서드를 사용하여 생성할 수 있습니다.
 
-- **Podnikový certifikát:**
+- **엔터프라이즈 인증서:**
 
-  - Pokud používáte podnikové certifikační řešení, vygenerujte klientský certifikát s běžným názvem formátu *název\@vasedomena.com*. Použijte tento formát místo *domény\uživatelské jméno* formátu.
-  - Ujistěte se, že klientský certifikát je založen na šabloně certifikátu uživatele, který má *ověření klienta* uvedená jako první položku v seznamu uživatelů. Zkontrolujte certifikát tak, že na něj kliknuli dvakrát a zobrazení **rozšířené použití klíče** v **podrobnosti** kartu.
+  - 엔터프라이즈 인증서 솔루션을 사용 하는 경우 일반 이름 값 형식 *이름 \@yourdomain .com*의 클라이언트 인증서를 생성 합니다. *도메인 이름\사용자 이름* 형식 대신 이 형식을 사용합니다.
+  - 클라이언트 인증서가 사용자 목록의 첫 번째 항목으로 나열된 *클라이언트 인증*이 있는 사용자 인증서 템플릿을 기반으로 하는지 확인합니다. 인증서를 두 번 클릭하고 **세부 정보** 탭에서 **확장된 키 사용**을 확인하여 해당 인증서를 확인합니다.
 
-- **Certifikát podepsaný svým držitelem:** Postupujte podle pokynů v některém z následujících článků P2S tak, aby klientské certifikáty, které vytvoříte, budou kompatibilní s připojení P2S. Kompatibilní klientský certifikát můžete vytvořit postupu v těchto článcích: 
+- **자체 서명 된 루트 인증서:** 만든 클라이언트 인증서가 P2S 연결과 호환 되도록 다음 P2S certificate 문서 중 하나의 단계를 수행 합니다. 이러한 문서의 단계에서는 호환되는 클라이언트 인증서를 생성합니다. 
 
-  * [Pokyny pro Windows 10 PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert): Tyto pokyny vyžadují Windows 10 a PowerShell, čímž vygenerujete certifikáty. Vygenerované certifikáty můžete nainstalovat na libovolný podporovaný klient P2S.
-  * [Pokyny pro MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): Použijte MakeCert, pokud nemáte přístup k počítači s Windows 10 pro generování certifikátů. I když MakeCert je zastaralý, slouží stále ke generování certifikátů. Vygenerované certifikáty můžete nainstalovat na libovolný podporovaný klient P2S.
-  * [Pokyny pro Linux](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
+  * [Windows 10 PowerShell 지침](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert): Windows 10 및 PowerShell에서 인증서를 생성해야 합니다. 생성된 인증서는 지원되는 모든 P2S 클라이언트에 설치할 수 있습니다.
+  * [Makecert.exe 지침](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): 인증서를 생성 하는 Windows 10 컴퓨터에 액세스할 수 없는 경우 Makecert.exe를 사용 합니다. MakeCert는 더 이상 사용되지 않지만, 인증서를 생성하는 데에는 여전히 사용할 수 있습니다. 생성된 인증서는 지원되는 모든 P2S 클라이언트에 설치할 수 있습니다.
+  * [Linux 지침](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
-  Pokud generujete klientský certifikát z certifikátu podepsaného svým držitelem, je automaticky nainstalován v počítači, který jste použili k jeho vygenerování. Pokud chcete nainstalovat klientský certifikát na jiný klientský počítač, můžete ho exportujte jako soubor .pfx spolu s celý řetěz certifikátů. Díky tomu se vytvoří soubor .pfx, který obsahuje informace o kořenovém certifikátu potřebné pro klienta k ověření. 
+  자체 서명된 루트 인증서에서 클라이언트 인증서를 생성하는 경우 이를 생성하는 데 사용한 컴퓨터에 자동으로 설치됩니다. 다른 클라이언트 컴퓨터에 클라이언트 인증서를 설치하려면 전체 인증서 체인과 함께 .pfx 파일로 내보냅니다. 이렇게 하면 클라이언트에서 인증하는 데 필요한 루트 인증서 정보가 포함된 .pfx 파일이 만들어집니다. 
 
-**Export certifikátu**
+**인증서를 내보내려면**
 
-Postup exportování certifikátu najdete v tématu [generování a export certifikátů pro Point-to-Site pomocí Powershellu](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).
+인증서를 내보내는 단계는 [PowerShell을 사용하여 지점 및 사이트 간 연결에 대한 인증서 생성 및 내보내기](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)를 참조하세요.

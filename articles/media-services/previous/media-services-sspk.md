@@ -1,6 +1,6 @@
 ---
-title: Licencování Microsoft® technologie Smooth Streaming portování klienta
-description: Další informace o tom, k licencování Microsoft® technologie Smooth Streaming klienta portování Kit.
+title: Licencování sady Microsoft® Smooth Streaming klientských portů
+description: Přečtěte si, jak licencovat sadu Microsoft® Smooth Streaminging SDK pro přenos klientů.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -12,150 +12,152 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 505def9cde7cddf2ddcc23408fa3159de886167a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e7742e7035f3c4f4827a2edae1ad5a705aa221f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472685"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693415"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencování Microsoft® technologie Smooth Streaming portování klienta 
+# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencování sady Microsoft® Smooth Streaming klientských portů 
 ## <a name="overview"></a>Přehled
-Microsoft Smooth Streaming klienta portování Kit (**SSPK** zkráceně) je technologie Smooth Streaming klienta implementace, která je optimalizována pro pomáhají výrobci zařízení se systémem embedded, kabelu a mobilní operátoři, poskytovatelé služeb obsahu, telefonu výrobci, nezávislí výrobci softwaru (ISV) a poskytovatelé řešení k vytvoření produktů a služeb pro streamování obsahu s adaptivním ve formátu technologie Smooth Streaming. SSPK je nezávislá na platformě implementace klienta Smooth Streaming, který může přenést pomocí licence na jakékoli zařízení a platformy a zařízení. 
+Sada Microsoft Smooth Streaming Client porting kit (**SSPK** pro krátké) je Smooth Streaming implementace klienta optimalizovaná tak, aby pomáhala integrovaným výrobcům zařízení, kabelovým a mobilním operátorům, poskytovatelům služeb obsahu a výrobcům na sluchátkech. nezávislí výrobci softwaru (ISV) a poskytovatelé řešení k vytváření produktů a služeb pro streamování adaptivního obsahu ve formátu Smooth Streaming. SSPK je implementace klienta Smooth Streaming nezávislá na platformě, kterou může licence přenést na jakékoli zařízení a platformu. 
 
-Uvedeném níž je architektura vysoké úrovně a služby IIS technologie Smooth Streaming portování Kit pole je implementace klienta funkce Smooth Streaming poskytované společností Microsoft a obsahuje všechny základní logiku pro přehrávání obsahu Smooth Streaming. Tento obsah je poté přenáší od partnerů pro určité zařízení nebo platformu implementací odpovídající rozhraní. 
+Níže je uveden seznam architektury vysoké úrovně a služba IIS Smooth Streaminging Kit je Smooth Streamingá implementace klienta poskytovaná Microsoftem a zahrnuje všechny základní logiky pro přehrávání Smooth Streaming obsahu. Tento obsah pak partneři přenášejí pro konkrétní zařízení nebo platformu implementací vhodných rozhraní. 
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
 ## <a name="description"></a>Popis
-SSPK je licencovaný podle podmínek, které nabízí vynikající přidanou hodnotu. Obsahuje licenci SSPK obor pomocí:
+SSPK je licencovaná pro výrazy, které nabízejí skvělou obchodní hodnotu. SSPK License poskytuje odvětví s:
 
-* Technologie Smooth Streaming portování Kit zdroj v jazyce C++ 
-  * implementuje funkce klienta funkce Smooth Streaming
-  * Přidá formátu parsování heuristickými metodami, ukládání do vyrovnávací paměti logiky atd.
-* Aplikace přehrávače rozhraní API 
-  * programovací rozhraní pro interakci s aplikací media player
-* Platforma Abstraction Layer (PAL) rozhraní 
-  * programovací rozhraní pro interakci s operačním systémem (vláken, sockets)
-* Hardware Abstrakční vrstvu HAL rozhraní 
-  * programovací rozhraní pro interakci s hardwarem A / dekodérů V (dekódování, vykreslování)
+* Zdroj Smooth Streaming pro přenosovou saduC++ 
+  * implementuje klientské funkce Smooth Streaming
+  * Přidá analýzu formátu, heuristiky, logiku ukládání do vyrovnávací paměti atd.
+* Rozhraní API aplikací přehrávače 
+  * programovací rozhraní pro interakci s aplikací přehrávače médií
+* Rozhraní Abstraction Layer (PAL) platformy 
+  * programovací rozhraní pro interakci s operačním systémem (vlákna, sokety)
+* Rozhraní HAL (hardware Abstraction Layer) 
+  * programovací rozhraní pro interakci s hardwarovými A/V dekodéry (dekódování, vykreslování)
 * Rozhraní Digital Rights Management (DRM) 
-  * programovací rozhraní pro zpracování DRM prostřednictvím DRM DAL (Abstraction Layer)
-  * Microsoft PlayReady portování Kit dodává samostatně, ale integruje prostřednictvím tohoto rozhraní. Podrobné informace o licencování Microsoft PlayReady Device, klikněte na tlačítko [tady](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
-* Implementace ukázky 
-  * Ukázková implementace PAL pro Linux
+  * programovací rozhraní pro zpracování DRM přes vrstvu abstrakce DRM (DAL)
+  * Microsoft PlayReady porting kit se dodává samostatně, ale integruje se přes toto rozhraní. Další podrobnosti o licencování zařízení Microsoft PlayReady získáte kliknutím [sem](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
+* Ukázky implementace 
+  * Ukázka implementace PAL pro Linux
   * Ukázková implementace vrstvy HAL pro GStreamer
 
 ## <a name="licensing-options"></a>Možnosti licencování
-Microsoft Smooth Streaming klienta portování Kit je k dispozici pro nabyvatelů licence za dvě odlišné licenční smlouvy: jeden pro vývoj, technologie Smooth Streaming produkty klienta prozatímní a druhý pro distribuci technologie Smooth Streaming klientské finální produkty pro koncové uživatele.
+Sada portů Microsoft Smooth Streaming clienting Kit je dostupná pro licence v rámci dvou různých licenčních smluv: jeden pro vývoj Smooth Streamingch předběžných produktů klienta a druhý pro distribuci Smooth Streaming finálních produktech klienta do koncových uživatelů.
 
-* Pro výrobce čipů, systémoví integrátoři nebo nezávislé výrobce softwaru (ISV), kteří vyžadují zdroj kódu přenosem kit na vývoj produktů prozatímní, Microsoft Smooth Streaming klienta přenesení sady **licenci na produkt prozatímní** by měl být spuštěn.
-* Výrobci zařízení nebo nezávislým výrobcům softwaru, kteří požadují distribuční práva pro technologie Smooth Streaming klientské finální produkty koncovým uživatelům, Microsoft Smooth Streaming klienta portování Kit **konečný stav licencí produktu** by měl být spuštěn.
+* Pro výrobce čipové soustavy, systémové integrátory nebo nezávislé výrobce softwaru (ISV), kteří potřebují pro vývoj produktů pro vytváření dočasných produktů sadu portů pro přenos od zdrojového kódu, by se měla spustit **dočasná licence k produktu** Microsoft Smooth Streaming Client.
+* Pro výrobce zařízení nebo nezávislého výrobce softwaru, kteří potřebují oprávnění k distribuci Smooth Streaming koncovým uživatelům konečné produkty klienta, by měla být spuštěna **konečná licence k produktu** Microsoft Smooth Streaming Client porting kit.
 
-### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Portování licenci na produkt prozatímní Kit klienta Microsoft Smooth Streaming
-Společnost Microsoft nabízí v rámci této licence, technologie Smooth Streaming klienta přenesení sady a práva k duševnímu potřebné k vývoji a distribuci technologie Smooth Streaming produkty klienta prozatímní nabyvatelů licence jiné technologie Smooth Streaming klienta přenesení sady zařízení, která distribuce technologie Smooth Streaming klientské finální produkty.
-
-#### <a name="fee-structure"></a>Struktura poplatků
-Jednorázové licenčního poplatku 50 000 dolarů USA poskytuje přístup k technologie Smooth Streaming klienta portování sadě. 
-
-### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft Smooth Streaming licenci na produkt závěrečné sady pro portování klienta
-V rámci této licence společnost Microsoft nabízí všechny potřebné práva na duševní vlastnictví pro příjem technologie Smooth Streaming produkty klienta prozatímní z jiné technologie Smooth Streaming klienta portování Kit nabyvatelů licence a distribuovat značky společnosti technologie Smooth Streaming klienta konečný Produkty, aby koncoví uživatelé.
+### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Dočasná licence produktu Microsoft Smooth Streaming Client porting kit
+V rámci této licence Společnost Microsoft nabízí Smooth Streaming sadu klientských portů a nezbytná práva k duševnímu vlastnictví pro vývoj a distribuci Smooth Streamingch předběžných produktů klientů do jiných Smooth Streaming klientských licencí pro zařízení distribuovat Smooth Streaming finální produkty klienta.
 
 #### <a name="fee-structure"></a>Struktura poplatků
-Technologie Smooth Streaming konečného produktu klienta se nabízí v rámci modelu nevýhradní jako v části:
+V případě jednorázového licenčního poplatku v USA $50 000 poskytuje přístup k sadě Smooth Streamingch portů pro přenos klientů. 
 
-* dodané 0.10 za implementaci zařízení
-* Licencovaní je omezené na 50 000 dolarů, každý rok
-* Žádné licencované pro prvních 10 000 zařízení implementace každý rok 
+### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Konečná licence produktu Microsoft Smooth Streaming clienting Kit pro porting
+V rámci této licence Společnost Microsoft nabízí všechna nezbytná práva k duševnímu vlastnictví pro příjem Smooth Streamingch předběžně vydaných produktů klienta z jiných Smooth Streaming klientských licencí pro portování a pro distribuci Smooth Streamingho klienta s firemními značkami. Produkty pro koncové uživatele.
 
-## <a name="licensing-procedure-and-sspk-access"></a>Licencování postup a SSPK přístup
-E-mailu [ sspkinfo@microsoft.com ](mailto:sspkinfo@microsoft.com) pro všechny licence dotazy.
+#### <a name="fee-structure"></a>Struktura poplatků
+Konečný produkt Smooth Streaming klienta se nabízí v rámci licencovaného modelu, jako v rámci:
 
-[SSPK distribuce portál](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) je přístupný pro registrované nabyvatelů prozatímní licence.
+* $0,10 pro implementaci zařízení byla odeslána.
+* Licencovaný omezené každý rok je $50 000.
+* Žádné licenční poplatky pro první implementace zařízení 10 000 v roce 
 
-Prozatím a finální SSPK nabyvatelů licence můžete odeslat technické dotazy do [ smoothpk@microsoft.com ](mailto:smoothpk@microsoft.com).
+## <a name="licensing-procedure-and-sspk-access"></a>Licenční postup a přístup k SSPK
+E-mailová [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) pro všechny dotazy na licencování.
 
-## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming nabyvatelů klienta dočasné produktu smlouvy licence
+[Portál pro distribuci SSPK](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) má přístup k registrovaným průběžným licencím.
+
+Průběžné a konečné licence SSPK mohou odesílat technické dotazy [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com).
+
+## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming klientských provizorních licencí k produktu
+
 * Adroit Business Solutions, Inc
-* Advanced Digital Broadcast SA
-* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
+* Rozšířené digitální vysílání SA
+* Kablosuz Iletism Sanayive dis Ticaret neúčinné látky
 * Albis Technologies Ltd.
 * Alticast Corporation
-* Amazon Digital Services, Inc.
+* Služba Amazon Digital Services, Inc.
 * Arion Technology, Inc.
-* AVC Multimedia Software Co., Ltd.
+* AVC Multimedia software co., Ltd.
 * Cavium, Inc.
-* EchoStar zakoupení Corporation
+* EchoStar koupit společnost
 * Enseo, Inc.
 * Fluendo S.A.
-* HANDAN BroadInfoCom Co., Ltd.
+* HANDAN BroadInfoCom co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
 * iWEDIA S.A. 
-* Liberty Global Services BV
+* Služba svobody Global Services BV
 * MediaTek Inc.
-* MStar Co, Ltd
+* MStar co, Ltd
 * Nintendo Co., Ltd.
 * OpenTV, Inc.
-* Šafrán digitální Limited
-* Sichuan Changhong Electric Co., Ltd
+* Saffron s digitálním omezením
+* Iština Changhong elektrických co., Ltd
 * SoftAtHome
 * Sony Corporation
-* Tatung technologie Inc.
-* TCL Technology Electronics (Huizhou) Co., Ltd.
-* Horní vítězství investic, Ltd.
-* Vestel Elektronik Sanayi ve Ticaret A.S.
+* Tatung Technology Inc.
+* TCL Technology Electronics (Huizhou) co., Ltd.
+* Hlavní investice do Victory, Ltd.
+* Vestel Elektronik Sanayi ve Ticaret neúčinné
 * VisualOn, Inc.
 * ZTE Corporation
 
-## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming nabyvatelů licence smlouvu konečného produktu klienta
-* Advanced Digital Broadcast SA
-* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
+## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Konečné licence k produktu Microsoft Smooth Streaming Client
+* Rozšířené digitální vysílání SA
+* Kablosuz Iletism Sanayive dis Ticaret neúčinné látky
 * Albis Technologies Ltd.
-* Amazon Digital Services, Inc.
+* Služba Amazon Digital Services, Inc.
 * AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
 * Arion Technology, Inc.
-* ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
-* British Sky Broadcasting Limited
+* ATMACA ELEKTRONIK SAN. VE TIC. A. Ş
+* Britské přenosové nebe – omezené
 * CastPal Technology Inc., Shenzhen
-* Compal Electronics, Inc.
+* Kompatibilní s elektronikou, Inc.
 * Dongguan Digital AV Technology Corp., Ltd.
-* EchoStar zakoupení Corporation
+* EchoStar koupit společnost
 * Enseo, Inc.
-* FilmFlex Movies Limited
+* FilmFlex filmy omezené
 * Fluendo S.A.
-* FUNAI ELECTRIC CO., LTD
-* Gibson Innovations Limited
-* Informace o Applicantion Haier S.R.L
-* HANDAN BroadInfoCom Co., Ltd.
-* Hisense International Co., Ltd. 
-* Homecast Co., Ltd
+* FUNAI ELEKTROINSTALACE CO., LTD
+* Gibson inovace s omezením
+* Haier informace žadatele S. R. L
+* HANDAN BroadInfoCom co., Ltd.
+* Hisense International co., Ltd. 
+* Homecast co., Ltd
 * Hon Hai Precision Industry Co., Ltd.
 * Infomir GMBH
-* Kaonmedia Co., Ltd.
+* Kaonmedia co., Ltd.
 * KDDI Corporation
 * Nintendo Co., Ltd.
 * Oranžová SA
-* Šafrán digitální Limited
+* Saffron s digitálním omezením
 * Sagemcom Broadband SAS
-* Shenzhen Coship Electronics CO., LTD
-* Shenzhen Jiuzhou Electric Co., Ltd
-* Shenzhen Skyworth Digital Technology Co., Ltd
-* Sichuan Changhong Electric Co., Ltd.
-* Skardin Industrial Corp.
-* Sky Deutschland Fernsehen GmbH & Co. KG
+* Shenzhen Chuangwei – RGB Electronics Co., Ltd.
+* Shenzhenická elektronika CO., LTD
+* Shenzhen Jiuzhou elektrických co., Ltd
+* Digitální technologie Shenzhen Skyworth co., Ltd
+* Iština Changhong elektrických co., Ltd.
+* Skardin průmyslová Corp.
+* Nebeská Deutschlanda Fernsehen GmbH & Co. KG
 * SmarDTV S.A.
 * SoftAtHome
 * Sony Corporation
-* TCL Overseas Marketing (Macao Commercial Offshore) Limited
-* Technicolor doručování technologie SAS
+* TCLský marketing (Macao – zvláštní komerční pobřežní obchod) omezený
+* Technologie Technicolor Delivery, SAS
 * Tongfang Global Ltd.
-* Horní vítězství investic, Ltd.
-* Toshiba Lifestyle produkty a služby Corporation
-* Universal Media Corporation /Slovakia/ s.r.o.
+* Hlavní investice do Victory, Ltd.
+* Toshiba životní výrobky produkty & Services Corporation
+* Universal Media Corporation/Slovakia/s.r.o.
 * VIZIO, Inc.
 * Wistron Corporation
 * ZTE Corporation
@@ -163,6 +165,6 @@ Prozatím a finální SSPK nabyvatelů licence můžete odeslat technické dotaz
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

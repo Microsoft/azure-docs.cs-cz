@@ -1,5 +1,5 @@
 ---
-title: 'Regrese rozhodovací doménové struktury: Odkaz na modul'
+title: 'Regrese rozhodovací doménové struktury: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se, jak pomocí modulu pro regresi rozhodovací doménové struktury ve službě Azure Machine Learning vytvořit regresní model založený na kompletu rozhodovacích stromů.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b8bb3285aecb6aff399606e6263f014027a86581
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128890"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693176"
 ---
 # <a name="decision-forest-regression-module"></a>Modul pro regresi rozhodovací doménové struktury
 
@@ -38,21 +38,21 @@ Stromy pro rozhodování mají tyto výhody:
 
 Tento regresní model se skládá ze kompletu rozhodovacích stromů. U každého stromu v doménové struktuře regrese se jako předpověď vytvoří Gaussovské distribuce. Agregace se provádí přes kompletování stromů, aby bylo možné najít Gaussovské rozdělení, které je nejblíže kombinované distribuci pro všechny stromy v modelu.
 
-Další informace o teoretickém rozhraní pro tento algoritmus a jeho implementaci najdete v tomto článku: [Doménové struktury rozhodnutí: Jednotná architektura pro klasifikaci, regresi, odhad hustoty, výukové učení a částečně pod dohledem](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci najdete v tomto článku: [rozhodovací doménové struktury: jednotná architektura pro klasifikaci, regresi, odhad hustoty, učení kurzů a vzdělávání s částečně kontrolovaným učením. ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Jak nakonfigurovat regresní model doménové struktury
 
-1. Přidejte do experimentu modul regrese pro **rozhodovací doménovou strukturu** . Modul můžete najít v rozhraní pod **Machine Learning**, **inicializovat model**a **regrese**.
+1. Přidejte do kanálu modul **regrese rozhodovací doménové struktury** . Modul můžete najít v rozhraní pod **Machine Learning**, **inicializovat model**a **regrese**.
 
 2. Otevřete vlastnosti modulu a pro **metodu převzorkování**vyberte metodu použitou k vytvoření jednotlivých stromů.  Můžete si vybrat z **zavazadla** nebo **replikace**.
 
-    - Zazavazadlí: Pro zaznamenání je také označováno jako *agregace Bootstrap*. Každý strom v doménové struktuře regrese má za následek Gaussovské rozdělení způsobem předpovědi. Agregaci je najít Gaussovské, jehož první dvě momenty se shodují se momentem kombinace Gaussovské, která je dána kombinací všech Gaussovskéů vrácených jednotlivými stromy.
+    - Zaznamenání **do zavazadla**se také označuje jako *agregace Bootstrap*. Každý strom v doménové struktuře regrese má za následek Gaussovské rozdělení způsobem předpovědi. Agregaci je najít Gaussovské, jehož první dvě momenty se shodují se momentem kombinace Gaussovské, která je dána kombinací všech Gaussovskéů vrácených jednotlivými stromy.
 
-         Další informace najdete v tématu Wikipedii pro agregaci [bootstrap](https://wikipedia.org/wiki/Bootstrap_aggregating).
+         Další informace najdete v tématu Wikipedii pro [agregaci Bootstrap](https://wikipedia.org/wiki/Bootstrap_aggregating).
 
-    - **Replikovat**: V případě replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a stromy budou odlišné.
+    - **Replikace: v**rámci replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a stromy budou odlišné.
 
-         Další informace o procesu školení s možností **replikace** najdete v tématu [rozhodovací doménové struktury pro počítačové zpracování obrazu a analýzu lékařských imagí. Criminisi a J. Shotton. Springer 2013. ](https://research.microsoft.com/projects/decisionforests/).
+         Další informace o procesu školení s možností **replikace** najdete v tématu [rozhodovací doménové struktury pro počítačové zpracování obrazu a analýzu lékařských imagí. Criminisi a J. Shotton. Springer 2013.](https://research.microsoft.com/projects/decisionforests/)..
 
 3. Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .
 
@@ -82,7 +82,7 @@ Další informace o teoretickém rozhraní pro tento algoritmus a jeho implement
 
    
 
-10. Spusťte experiment.
+10. Spuštění kanálu
 
 ### <a name="results"></a>Výsledky
 
@@ -92,7 +92,7 @@ Po dokončení školení:
 
 + Chcete-li zobrazit pravidla pro každý uzel, klikněte na jednotlivé stromové struktury a přejděte k podrobnostem o rozdělení.
 
-+ Pokud chcete uložit snímek školicího modelu, klikněte pravým tlačítkem na výstup školicího modulu a vyberte **Uložit jako trained model**. Tato kopie modelu není aktualizována při následných spuštění experimentu. 
++ Pokud chcete uložit snímek školicího modelu, klikněte pravým tlačítkem na výstup školicího modulu a vyberte **Uložit jako trained model**. Tato kopie modelu není aktualizována při následných spuštěních kanálu. 
 
 ## <a name="next-steps"></a>Další kroky
 

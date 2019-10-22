@@ -1,5 +1,5 @@
 ---
-title: 'Neuronové síť se dvěma třídami: Odkaz na modul'
+title: 'Neuronové síť se dvěma třídami: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat neuronové síťový modul se dvěma třídami ve službě Azure Machine Learning k vytvoření modelu sítě neuronové, který se dá použít k předpovědi cíle, který má jenom dvě hodnoty.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f0ad3cc6f506efdc0579f7b8949c41b539ade6a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8f38a7b7086e5023eb63e94363301ac5277f7e7c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128367"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693597"
 ---
 # <a name="two-class-neural-network-module"></a>Síťový modul neuronové se dvěma třídami
 
@@ -38,15 +38,15 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
   
 ## <a name="how-to-configure"></a>Jak nakonfigurovat
 
-1.  Přidejte k experimentu modul **neuronové Network pro dva třídy** . Tento modul můžete najít v části **Machine Learning**, **Initialize**, v kategorii **klasifikace** .  
+1.  Přidejte do svého kanálu **síťový modul neuronové pro dva třídy** . Tento modul můžete najít v části **Machine Learning**, **Initialize**, v kategorii **klasifikace** .  
   
 2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: Tuto možnost vyberte, pokud už víte, jak chcete model nakonfigurovat.  
+    -   **Jeden parametr**: tuto možnost vyberte, pokud už víte, jak chcete model nakonfigurovat.  
 
 3.  V případě **specifikace skryté vrstvy**vyberte typ síťové architektury, která se má vytvořit.  
   
-    -   **Plně připojený případ**: Používá výchozí neuronové síťovou architekturu definovanou pro neuronové sítě se dvěma třídami, jak je znázorněno níže:
+    -   **Plně připojený případ**: používá výchozí neuronové síťovou architekturu definovanou pro neuronové sítě se dvěma třídami, jak je znázorněno níže:
   
         -   Má jednu skrytou vrstvu.
   
@@ -66,17 +66,17 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
 
 8.  Pro **potenciál**zadejte váhu, která se má použít při učení na uzly z předchozích iterací.  
 
-10. Vyberte možnost **náhodné příklady** pro náhodné případy mezi iteracemi. Pokud zrušíte výběr této možnosti, jsou případy zpracovávány přesně stejným způsobem pokaždé, když spustíte experiment.
+10. Vyberte možnost **náhodné příklady** pro náhodné případy mezi iteracemi. Pokud zrušíte výběr této možnosti, jsou případy zpracovávány přesně stejným způsobem pokaždé, když spustíte kanál.
   
 11. Pro **počáteční číslo semen**zadejte hodnotu, která se má použít jako počáteční hodnota.
   
-     Zadání počáteční hodnoty je užitečné, pokud chcete zajistit opakovatelnost v rámci jednoho spuštění stejného experimentu.  V opačném případě se jako počáteční hodnota použije systémová časová hodnota, která může při každém spuštění experimentu způsobit mírně odlišné výsledky.
+     Zadání počáteční hodnoty je užitečné, pokud chcete zajistit opakování v rámci spuštění stejného kanálu.  Jinak se jako počáteční hodnota použije systémová časová hodnota, která může při každém spuštění kanálu způsobit mírně odlišné výsledky.
   
-13. Přidejte do experimentu tagované datové sady a propojte jeden ze [školicích modulů](module-reference.md).  
+13. Přidejte do kanálu příznakovou datovou sadu a propojte jeden ze [školicích modulů](module-reference.md).  
   
     -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](train-model.md) .  
   
-14. Spusťte experiment.
+14. Spuštění kanálu
 
 ## <a name="results"></a>Výsledky
 
@@ -84,9 +84,9 @@ Po dokončení školení:
 
 + Chcete-li zobrazit souhrn parametrů modelu spolu s váhy funkcí zjištěnými ze školení a dalšími parametry sítě neuronové, klikněte pravým tlačítkem na výstup [výukového modelu](./train-model.md)a vyberte **vizualizovat**.  
 
-+ Pokud chcete uložit snímek výukového modelu, klikněte pravým tlačítkem na výstup **trained model** a vyberte **Uložit jako trained model**. Tento model není aktualizován při následných spuštěních stejného experimentu.
++ Pokud chcete uložit snímek výukového modelu, klikněte pravým tlačítkem na výstup **trained model** a vyberte **Uložit jako trained model**. Tento model se neaktualizuje při následných spuštěních stejného kanálu.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

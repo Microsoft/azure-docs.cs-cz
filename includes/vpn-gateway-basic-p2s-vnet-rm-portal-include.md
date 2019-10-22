@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3d9826e3eae2a60b217df1406d26d83c78fbdefb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67673294"
 ---
 Pokud chcete vytvořit virtuální síť v modelu nasazení Resource Manageru pomocí webu Azure Portal, postupujte podle následujících kroků. Snímky obrazovek slouží pouze jako příklady. Nezapomeňte hodnoty nahradit vlastními. Další informace o práci s virtuálními sítěmi najdete v článku [Přehled virtuálních sítí](../articles/virtual-network/virtual-networks-overview.md).
@@ -25,22 +25,22 @@ Pokud chcete vytvořit virtuální síť v modelu nasazení Resource Manageru po
 1. V prohlížeči přejděte na portál [Azure Portal](https://portal.azure.com) a v případě potřeby se přihlaste pomocí účtu Azure.
 2. Klikněte na **+** . Do pole **Hledat na Marketplace** zadejte text „Virtuální síť“. Ve vráceném seznamu vyhledejte položku **Virtuální síť** a kliknutím otevřete stránku **Virtuální síť**.
 
-   ![Stránka pro vyhledání prostředku virtuální sítě](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "Stránka pro vyhledání prostředku virtuální sítě")
+   ![Stránka pro vyhledání prostředku Virtual Network](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "Stránka pro vyhledání prostředku virtuální sítě")
 3. U dolního okraje stránky Virtuální síť v seznamu **Vybrat model nasazení** vyberte **Resource Manager** a potom klikněte na **Vytvořit**.
 
-   ![Výběr Resource Manageru](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "Výběr Resource Manageru")
+   ![Vyberte Správce prostředků](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "Výběr správce prostředků")
 4. Na stránce **Vytvořit virtuální síť** nakonfigurujte nastavení virtuální sítě. Po vyplnění polí se červený vykřičník změní na zelenou značku zaškrtnutí, pokud jsou znaky zadané do pole platné. Některé hodnoty mohou být vyplněny automaticky. V takovém případě je nahraďte vlastními. Stránka **Vytvořit virtuální síť** vypadá podobně jako v následujícím příkladu:
 
-   ![Kontrola polí](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/vnetp2s.png "Kontrola polí")
-5. **Název**: Zadejte název pro vaši virtuální síť.
+   ![Ověřování polí](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/vnetp2s.png "Ověřování polí")
+5. **Název**: Zadejte název vaší virtuální sítě.
 6. **Adresní prostor**: Zadejte adresní prostor. Pokud chcete přidat více adresních prostorů, přidejte první adresní prostor. Další adresní prostory můžete přidat později po vytvoření virtuální sítě.
-7. **Předplatné**: Ověřte, že je v předplatném uvedeným správné. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
-8. **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou zadáním názvu nové skupiny prostředků. Pokud vytváříte novou skupinu, nazvěte skupinu prostředků v souladu s hodnotami plánované konfigurace. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
-9. **Umístění**: Vyberte umístění pro vaši virtuální síť. Umístění určuje, kde budou uloženy prostředky nasazené v této síti VNet.
-10. **Podsíť**: Přidejte název podsítě a rozsah adres podsítě. Další podsítě můžete přidat později po vytvoření virtuální sítě.
+7. **Předplatné**: Zkontrolujte, jestli je uvedeno správné předplatné. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
+8. **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou zadáním názvu nové skupiny prostředků. Pokud vytváříte novou skupinu, nazvěte skupinu prostředků v souladu s hodnotami plánované konfigurace. Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+9. **Umístění**: Vyberte umístění sítě VNet. Umístění určuje, kde budou uloženy prostředky nasazené v této síti VNet.
+10. **Podsíť:** Přidejte název podsítě a rozsah adres podsítě. Další podsítě můžete přidat později po vytvoření virtuální sítě.
 11. Pokud chcete mít k síti VNet snadný přístup na řídicím panelu, vyberte možnost **Připnout na řídicí panel** a potom klikněte na **Vytvořit**.
 
-    ![Připnout na řídicí panel](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/pintodashboard150.png "Připnout na řídicí panel")
+    ![Připnout na řídicí panel](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/pintodashboard150.png "připnout na řídicí panel")
 12. Po kliknutí na **Vytvořit** se na řídicím panelu zobrazí dlaždice s informacemi o průběhu vytváření sítě VNet. Obsah dlaždice se v průběhu vytváření sítě VNet mění.
 
-    ![Dlaždice Vytváří se virtuální síť](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/deploying150.png "Dlaždice Vytváří se virtuální síť")
+    ![Dlaždice vytváření virtuální sítě](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/deploying150.png "dlaždice Vytváří se virtuální síť")

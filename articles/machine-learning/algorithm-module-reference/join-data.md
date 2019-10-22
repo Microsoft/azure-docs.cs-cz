@@ -1,5 +1,5 @@
 ---
-title: 'Připojit data: Odkaz na modul'
+title: 'Data spojování: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat datový modul Join join ve službě Azure Machine Learning ke sloučení datových sad.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 5fdb822a445e8a62cd36e6dd05aa218b9b41ce9e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128734"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693098"
 ---
 # <a name="join-data"></a>Spojení dat
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak použít modul **Join data** v vizuálním rozhran�
 
 Chcete-li provést spojení se dvěma datovými sadami, měly by se vztahovat na klíčový sloupec. Podporují se také složené klíče využívající více sloupců. 
 
-1. Přidejte datové sady, které chcete zkombinovat, a pak přetáhněte modul **Join data** do experimentu. 
+1. Přidejte datové sady, které chcete zkombinovat, a pak přetáhněte modul **Join data** do kanálu. 
 
     Modul můžete najít v kategorii **transformace dat** v části **manipulace**.
 
@@ -47,25 +47,25 @@ Chcete-li provést spojení se dvěma datovými sadami, měly by se vztahovat na
    
 1. Pomocí rozevíracího seznamu **typ spojení** můžete určit, jak se mají datové sady kombinovat.  
   
-    * **Vnitřní spojení**: *Vnitřní spojení* je nejběžnější operace JOIN. Vrátí kombinované řádky pouze v případě, že se hodnoty klíčových sloupců shodují.  
+    * **Vnitřní spojení**: nejběžnější operace spojení je *vnitřní spojení* . Vrátí kombinované řádky pouze v případě, že se hodnoty klíčových sloupců shodují.  
   
-    * **Levé vnější spojení**: *Levé vnější spojení* vrátí připojené řádky pro všechny řádky z levé tabulky. Pokud řádek v levé tabulce nemá odpovídající řádky v pravé tabulce, vrácený řádek obsahuje chybějící hodnoty pro všechny sloupce, které pocházejí z pravé tabulky. Můžete také zadat náhradní hodnotu pro chybějící hodnoty.  
+    * **Levé vnější spojení**: *levé vnější spojení* vrátí připojené řádky pro všechny řádky z levé tabulky. Pokud řádek v levé tabulce nemá odpovídající řádky v pravé tabulce, vrácený řádek obsahuje chybějící hodnoty pro všechny sloupce, které pocházejí z pravé tabulky. Můžete také zadat náhradní hodnotu pro chybějící hodnoty.  
   
-    * **Úplné vnější spojení**: *Úplné vnější spojení* vrátí všechny řádky z levé tabulky (**Tabulka1**) a z pravé tabulky (**Tabulka2**).  
+    * **Úplné vnější spojení**: *úplné vnější spojení* vrátí všechny řádky z levé tabulky (**Tabulka1**) a z pravé tabulky (**Tabulka2**).  
   
          Pro každý z řádků v obou tabulkách, které nemají odpovídající řádky v druhé, výsledek zahrnuje řádek obsahující chybějící hodnoty.  
   
-    * **Levé spojení**: *Levé spojení* vrátí jenom hodnoty z levé tabulky, když se hodnoty klíčových sloupců shodují.  
+    * **LEFT JOIN**: *levá polovina spojení* vrátí pouze hodnoty z levé tabulky, když se hodnoty klíčových sloupců shodují.  
 
 1. Pro možnost **zachovat pravé klíčové sloupce v připojené tabulce**:
 
     * Tuto možnost vyberte, pokud chcete zobrazit klíče z obou vstupních tabulek.
     * Zrušte zaškrtnutí, pokud chcete vrátit pouze klíčové sloupce z levého vstupu.
 
-1. Spusťte experiment nebo vyberte modul připojení dat a vybrané **spuštění** , aby se spojení provádělo.
+1. Spusťte kanál, nebo vyberte modul připojení dat a vybrané **spuštění** , aby se spojení provádělo.
 
-1. Pokud chcete zobrazit výsledky, klikněte pravým tlačítkem > myši na**vizualizaci**datové**sady** > výsledků spojování.
+1. Chcete-li zobrazit výsledky, klikněte pravým tlačítkem myši na**datovou sadu výsledků** **spojení  >  dat**  > **vizualizace**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
