@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 33fc6e59a0a85275b055524d8ccf5d78935725a8
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 05ce5fd560168c1f60b7c559539f4a368ba83ca8
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718762"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754287"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Kontrola fakturace předplatného pomocí rozhraní REST API
 
@@ -92,7 +92,7 @@ Každá položka v **hodnotě** představuje podrobné informace o použití slu
 |**meterDetails** | Podrobné informace o použití. |
 |**nextLink**| Při nastavení určuje adresu URL další stránky podrobností. Prázdné, pokud je stránka poslední. |
 
-Tento příklad je zkrácený; úplný popis každého pole odpovědi najdete v části věnované [výpisu podrobností o využití](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod).
+Tento příklad je zkrácený; úplný popis každého pole odpovědi najdete v části věnované [výpisu podrobností o využití](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy).
 
 Jiné stavové kódy označují chybové stavy. V těchto případech objekt odpovědi vysvětluje, proč se požadavek nezdařil.
 

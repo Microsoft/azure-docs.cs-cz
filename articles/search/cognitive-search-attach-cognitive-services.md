@@ -10,7 +10,7 @@ ms.date: 05/20/2019
 ms.author: luisca
 ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
 ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265932"

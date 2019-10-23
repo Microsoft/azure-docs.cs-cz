@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 50de654fb9222951a7380a322160496421006e7a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 57e38888249de448f5286baa1b5ebb0e2c01bda9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719679"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757421"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Rozhraní API pro automatizaci rezervací Azure
 
@@ -26,7 +26,7 @@ Pomocí rozhraní API pro Azure můžete informace o rezervacích služeb nebo s
 
 Na základě informací o využití ve vaší organizaci můžete pomocí rozhraní API pro doporučení rezervací získávat doporučení plánu rezervací, který byste měli zakoupit. Další informace najdete v článku o [získání doporučení rezervací](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 
-Využití prostředků můžete analyzovat také pomocí údajů o využití rozhraní API služby Consumption. Další informace najdete v [údajích o využití ve výpisu pro fakturační období podle fakturačního účtu](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod). Nejvhodnějším kandidátem pro rezervaci jsou obvykle prostředky Azure, které používáte konzistentně.
+Využití prostředků můžete analyzovat také pomocí údajů o využití rozhraní API služby Consumption. Další informace najdete v [údajích o využití ve výpisu pro fakturační období podle fakturačního účtu](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod-legacy). Nejvhodnějším kandidátem pro rezervaci jsou obvykle prostředky Azure, které používáte konzistentně.
 
 ## <a name="buy-a-reservation"></a>Nákup rezervace
 

@@ -10,7 +10,7 @@ ms.date: 05/02/2019
 ms.author: vikurpad
 ms.openlocfilehash: c5fb547b18bc4014f91341070f49c4af84c01005
 ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265188"

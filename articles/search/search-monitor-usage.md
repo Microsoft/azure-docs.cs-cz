@@ -11,7 +11,7 @@ ms.date: 05/16/2019
 ms.author: heidist
 ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
 ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331213"
