@@ -3,10 +3,6 @@
 - name: Architektura a návrh
   href: overview.md
   expanded: false
-  items: null
-- name: Architektura a návrh
-  href: overview.md
-  expanded: false
   items:
     - name: Sdílená odpovědnost v cloudu
       href: shared-responsibility.md
@@ -232,16 +228,12 @@
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Služby zabezpečení Azure
   href: services-technologies.md
-- name: Technické přehledy
-  href: overviews.md
 - name: Osvědčené postupy
   href: best-practices-and-patterns.md
 - name: Zdroje a prostředky
   items:
     - name: Integrované ovládací prvky zabezpečení
       href: security-controls.md
-    - name: Program MVP pro zabezpečení Azure
-      href: mvp.md
     - name: Poradenství pro zabezpečení
       href: cyber-services.md
     - name: Zadání lístku podpory pro událost zabezpečení

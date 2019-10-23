@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 08/23/2019
 ms.author: angrobe
-ms.openlocfilehash: 2312c29b12c0703ba04b0d66c5bafb0721003576
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 2a8a61439245226521b12953334b7344adcf5e3c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70148893"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792373"
 ---
 # <a name="azure-security-fundamentals-documentation"></a>Základní dokumentace k zabezpečení Azure
 
@@ -145,7 +145,7 @@ Další informace o zabezpečení Azure
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-disk-encryption">
+        <a href="/azure/security/fundamentals/azure-disk-encryption-vms-vmss">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -429,7 +429,7 @@ Další informace o zabezpečení Azure
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-disk-encryption">
+        <a href="/azure/security/fundamentals/azure-disk-encryption-vms-vmss">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">

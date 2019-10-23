@@ -98,13 +98,13 @@
     - name: Diagnostika a řešení potíží
       items:
         - name: Řešení potíží se serverem Redis
-          href: cache-how-to-troubleshoot-server.md
+          href: cache-troubleshoot-server.md
         - name: Řešení potíží s klientem Redis
-          href: cache-how-to-troubleshoot-client.md
+          href: cache-troubleshoot-client.md
         - name: Řešení potíží s časovými limity
-          href: cache-how-to-troubleshoot-timeouts.md
+          href: cache-troubleshoot-timeouts.md
         - name: Řešení potíží se ztrátou dat
-          href: cache-how-to-troubleshoot-data-loss.md
+          href: cache-troubleshoot-data-loss.md
     - name: Měřítko
       items:
         - name: "Aktualizace na jinou velikost a\_úroveň"
