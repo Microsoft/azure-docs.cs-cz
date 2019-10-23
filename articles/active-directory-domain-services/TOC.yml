@@ -9,8 +9,10 @@
 - name: Kurzy
   expanded: true
   items:
-    - name: Vytvoření spravované domény
+    - name: Vytvoření základní spravované domény
       href: tutorial-create-instance.md
+    - name: Konfigurace virtuální sítě pro aplikace
+      href: tutorial-configure-networking.md
     - name: Připojení virtuálního počítače s Windows Serverem k doméně
       href: join-windows-vm.md
     - name: Instalace nástrojů pro správu
@@ -19,6 +21,8 @@
       href: tutorial-configure-ldaps.md
     - name: Konfigurace synchronizace hodnot hash hesel
       href: tutorial-configure-password-hash-sync.md
+    - name: Vytvoření pokročilé spravované domény
+      href: tutorial-create-instance-advanced.md
 - name: Ukázky
   items:
     - name: Vytvoření spravované domény pomocí Azure PowerShellu

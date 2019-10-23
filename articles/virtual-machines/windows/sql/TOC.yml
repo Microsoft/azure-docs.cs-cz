@@ -64,9 +64,9 @@
           href: virtual-machines-windows-ps-sql-create.md
     - name: Registrace s využitím poskytovatele prostředků
       href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: Změna modelu licencování pro virtuální počítač SQL
+    - name: Změna modelu licencování
       href: virtual-machines-windows-sql-ahb.md
-    - name: Změna edice SQL Serveru
+    - name: Změna edice
       href: virtual-machines-windows-sql-change-edition.md
     - name: Migrace
       items:
@@ -103,7 +103,7 @@
             - name: "S využitím prostorů úložiště s\_přímým přístupem"
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
             - name: S využitím sdílené složky úrovně Premium
-              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

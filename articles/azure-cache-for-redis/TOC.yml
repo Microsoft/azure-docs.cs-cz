@@ -28,19 +28,17 @@
     - name: Ukázky služby Azure Cache for Redis
       href: cache-redis-samples.md
     - name: Azure PowerShell
-      href: cache-howto-manage-redis-cache-powershell.md
+      href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
 - name: Koncepty
   items:
     - name: Osvědčené postupy
-      items:
-        - name: Osvědčené postupy pro Azure Cache for Redis
-          href: cache-best-practices.md
-        - name: Osvědčené postupy architektury Azure pro ukládání do mezipaměti
-          href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-    - name: Vysvětlení převzetí služeb při selhání a oprav
+      href: cache-best-practices.md
+    - name: Převzetí služeb při selhání a opravy
       href: cache-failover.md
+    - name: Osvědčené postupy architektury pro ukládání do mezipaměti
+      href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Návody
   items:
     - name: Plánování
@@ -58,19 +56,25 @@
     - name: Automatizace
       items:
         - name: Nasazení a správa s využitím Azure PowerShellu
-          href: cache-howto-manage-redis-cache-powershell.md
+          href: cache-how-to-manage-redis-cache-powershell.md
         - name: Nasazení a správa pomocí Azure CLI
           href: cli-samples.md
         - name: Zřízení služby Azure Cache for Redis
           href: cache-redis-cache-arm-provision.md
         - name: Zřízení webové aplikace s využitím služby Azure Cache for Redis
           href: cache-web-app-arm-with-redis-cache-provision.md
-    - name: Integrace s ASP.NET
+    - name: Integrace s aplikací
       items:
-        - name: Poskytovatel stavu relace
-          href: cache-aspnet-session-state-provider.md
-        - name: Poskytovatel výstupní mezipaměti
-          href: cache-aspnet-output-cache-provider.md
+        - name: ASP.NET
+          items:
+            - name: Použití poskytovatele stavu relace
+              href: cache-aspnet-session-state-provider.md
+            - name: Použití poskytovatele výstupní mezipaměti
+              href: cache-aspnet-output-cache-provider.md
+        - name: Java Spring
+          items:
+            - name: Použití aplikace Spring Boot Initializer
+              href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: Spravovat
       items:
         - name: Konfigurace na webu Azure Portal
@@ -85,24 +89,28 @@
           href: 'cache-administration.md#schedule-updates'
         - name: Konfigurace přístupu k redis-cli.exe
           href: cache-how-to-redis-cli-tool.md
-    - name: Monitorování a odstraňování potíží
+    - name: Monitorování
       items:
         - name: Monitorování na webu Azure Portal
           href: cache-how-to-monitor.md
-        - name: Řešení potíží s mezipamětí
-          href: cache-how-to-troubleshoot.md
         - name: Nastavení výstrah pro výjimky
           href: 'cache-how-to-monitor.md#operations-and-alerts'
+    - name: Diagnostika a řešení potíží
+      items:
+        - name: Řešení potíží se serverem Redis
+          href: cache-how-to-troubleshoot-server.md
+        - name: Řešení potíží s klientem Redis
+          href: cache-how-to-troubleshoot-client.md
+        - name: Řešení potíží s časovými limity
+          href: cache-how-to-troubleshoot-timeouts.md
+        - name: Řešení potíží se ztrátou dat
+          href: cache-how-to-troubleshoot-data-loss.md
     - name: Měřítko
       items:
         - name: "Aktualizace na jinou velikost a\_úroveň"
           href: cache-how-to-scale.md
         - name: Použití clusteru Redis pro horizontální snížení nebo zvýšení kapacity
           href: cache-how-to-premium-clustering.md
-    - name: Integrace se Spring Bootem
-      items:
-        - name: Použití aplikace Spring Boot Initializer se službou Azure Cache for Redis
-          href: cache-java-spring-boot-initializer-with-redis-cache.md
 - name: Referenční informace
   items:
     - name: Ukázky kódů

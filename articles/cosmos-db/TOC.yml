@@ -599,8 +599,10 @@
       items:
         - name: Úvod
           href: mongodb-introduction.md
-        - name: Podpora přenosového protokolu
+        - name: Podpora přenosového protokolu (3.2)
           href: mongodb-feature-support.md
+        - name: Podpora přenosového protokolu (3.6)
+          href: mongodb-feature-support-36.md
         - name: Šablony Rychlý start
           items:
             - name: .NET
