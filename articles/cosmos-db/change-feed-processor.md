@@ -1,19 +1,19 @@
 ---
 title: Práce s knihovnou Change feed Processor v Azure Cosmos DB
 description: Pomocí knihovny Azure Cosmos DB Change feed Processor.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 4bd7a31abf47664d1a6ffdd39fe46d9370dbbc97
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073690"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757034"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Změnit procesor kanálu v Azure Cosmos DB 
 
@@ -39,7 +39,7 @@ Abychom lépe porozuměli tomu, jak tyto čtyři prvky procesoru Change feed fun
 
 ## <a name="implementing-the-change-feed-processor"></a>Implementace procesoru změny kanálu
 
-Bod vstupu je vždy monitorovaný kontejner, z `Container` instance, kterou voláte: `GetChangeFeedProcessorBuilder`
+Bod vstupu je vždy monitorovaný kontejner, od `Container` instance, kterou voláte `GetChangeFeedProcessorBuilder`:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -49,16 +49,16 @@ Příkladem delegáta může být:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Nakonec definujete název této instance procesoru s `WithInstanceName` a, který je kontejnerem pro udržení `WithLeaseContainer`stavu zapůjčení.
+Nakonec definujete název této instance procesoru pomocí `WithInstanceName`, což je kontejner pro udržení stavu zapůjčení s `WithLeaseContainer`.
 
-Volání `Build` vám poskytne instanci procesoru, kterou můžete spustit voláním `StartAsync`.
+Volání `Build` poskytne instanci procesoru, kterou můžete spustit voláním `StartAsync`.
 
 ## <a name="processing-life-cycle"></a>Životní cyklus zpracování
 
 Normální životní cyklus instance hostitele je:
 
 1. Přečtěte si kanál změn.
-1. Pokud nedošlo k žádným změnám, přejdete do režimu spánku v předdefinovaném `WithPollInterval` čase (dá se přizpůsobit v Tvůrci) a přejdete na #1.
+1. Pokud nedošlo k žádným změnám, přejdete do režimu spánku po předem určenou dobu (přizpůsobit pomocí `WithPollInterval` v Tvůrci) a přejít na #1.
 1. Pokud dojde ke změnám, odešlete je **delegátovi**.
 1. Když delegát dokončí zpracování změn **úspěšně**, aktualizujte úložiště zapůjčení s nejnovějším zpracovávaným bodem v čase a přejděte na #1.
 
@@ -84,13 +84,13 @@ Procesor změn kanálu se navíc může dynamicky upravovat na kontejnery škál
 
 Účtují se vám poplatky za ru spotřebované, protože přesun dat do kontejnerů Cosmos a z nich vždycky spotřebovává ru. Účtují se vám poplatky za ru spotřebované kontejnerem zapůjčení.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Další ukázky na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 

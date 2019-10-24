@@ -1,18 +1,18 @@
 ---
 title: Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence v Azure Cosmos DB
 description: Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence v Azure Cosmos DB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 2d80e291b3c054fec92b169c8a216a7189e24b79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384199"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755186"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy mezi konzistencí, dostupností a výkonem 
 
@@ -20,11 +20,11 @@ Distribuované databáze, které spoléhají na replikaci při vysoké dostupnos
 
 Azure Cosmos DB přistupuje k konzistenci dat jako spektrum možností. Tento přístup zahrnuje více možností než dvě extrémní silná a konečná konzistence. Pro spektrum konzistence si můžete vybrat z pěti dobře definovaných modelů. Od nejpřísnější až nejslabších jsou modely:
 
-- *Silné*
-- *Omezená neaktuálnost*
-- *Relace*
+- *Silnější*
+- *Ohraničená neaktuálnost*
+- *Jednání*
 - *Konzistentní předpona*
-- *Konečný výsledek*
+- *Konečné*
 
 Každý model poskytuje kompromisy k dostupnosti a výkonu a je zajištěný ucelenou SLA.
 
@@ -50,20 +50,20 @@ V globálně distribuovaném databázovém prostředí existuje přímý vztah m
 
 Následující tabulka definuje vztah mezi modelem konzistence a odolností dat při výpadku oblasti v oblasti výpadku v síti. Je důležité si uvědomit, že v distribuovaném systému, a to i se silnou konzistencí, není možné mít distribuovanou databázi s cílem RPO a RTO nula z důvodu věta CAP. Další informace o tom, proč najdete [v tématu úrovně konzistence v Azure Cosmos DB](consistency-levels.md).
 
-|**Oblast (y)**|**Režim replikace**|**Úrovně konzistence**|**OBNOVENÍ**|**RTO**|
+|**Oblast (y)**|**Režim replikace**|**Úroveň konzistence**|**OBNOVENÍ**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|Jedna nebo více hlavních serverů|Jakákoli úroveň konzistence|< 240 minut|< 1 týden|
-|>1|Jedna hlavní|Relace, konzistentní předpona, případný|< 15 minut|< 15 minut|
-|>1|Jedna hlavní|Omezená neaktuálnost|*K* & *T*|< 15 minut|
-|>1|Jedna hlavní|Silné|0|< 15 minut|
-|>1|Vícenásobný hlavní|Relace, konzistentní předpona, případný|< 15 minut|0|
-|>1|Vícenásobný hlavní|Omezená neaktuálnost|*K* & *T*|0|
+|1\. místo|Jedna nebo více hlavních serverů|Jakákoli úroveň konzistence|< 240 minut|< 1 týden|
+|> 1|Jedna hlavní|Relace, konzistentní předpona, případný|< 15 minut|< 15 minut|
+|> 1|Jedna hlavní|Omezená neaktuálnost|*K*  & *t*|< 15 minut|
+|> 1|Jedna hlavní|Strong|0|< 15 minut|
+|> 1|Vícenásobný hlavní|Relace, konzistentní předpona, případný|< 15 minut|0|
+|> 1|Vícenásobný hlavní|Omezená neaktuálnost|*K*  & *t*|0|
 
 *K* = počet verzí *"K"* (tj. aktualizace) položky.
 
 *T* = časový interval *"t"* od poslední aktualizace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o globální distribuci a obecných kompromisech konzistence v distribuovaných systémech. Viz následující články:
 

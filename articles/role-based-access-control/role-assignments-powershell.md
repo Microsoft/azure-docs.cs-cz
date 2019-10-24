@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4eaf59200295a25498d3c8b84196e73a703b055d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
-ms.translationtype: MT
+ms.openlocfilehash: 5a6ed66efa0f73f957c3acb048136a5328f9c264
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995251"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750167"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Správa přístupu k prostředkům Azure pomocí RBAC a Azure PowerShell
 
@@ -27,7 +27,7 @@ ms.locfileid: "70995251"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke správě přístupu budete potřebovat jednu z následujících možností:
 
@@ -239,7 +239,7 @@ K zobrazení seznamu přiřazení rolí pro klasického Správce předplatného 
 Get-AzRoleAssignment -IncludeClassicAdministrators
 ```
 
-## <a name="grant-access"></a>Udělit přístup
+## <a name="grant-access"></a>Udělení přístupu
 
 V RBAC se přístup uděluje vytvořením přiřazení role.
 
@@ -310,7 +310,7 @@ K vytvoření přiřazení role pomocí jedinečného ID role místo názvu role
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-Následující příklad přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k *alain@example.com* uživateli v oboru skupiny prostředků *Pharma-Sales* . Pokud chcete získat jedinečné ID role, můžete použít [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo se podívat na [předdefinované role pro prostředky Azure](built-in-roles.md).
+Následující příklad přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k *alain@example.com* uživatele v oboru skupiny prostředků *Pharma-Sales* . Pokud chcete získat jedinečné ID role, můžete použít [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo se podívat na [předdefinované role pro prostředky Azure](built-in-roles.md).
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -401,11 +401,11 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-## <a name="remove-access"></a>Odebrat přístup
+## <a name="remove-access"></a>Odebrání přístupu
 
 Chcete-li odebrat přístup, odeberte přiřazení role v RBAC pomocí funkce [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
 
-Následující příklad odebere přiřazení role *Přispěvatel virtuálních počítačů* z uživatele *Alain\@example.com* ve skupině prostředků *Pharma-Sales* :
+Následující příklad odebere přiřazení role *Přispěvatel virtuálních počítačů* z *Alain \@example. com* uživatel ve skupině prostředků *Pharma-Sales* :
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
@@ -423,10 +423,10 @@ Následující příklad odebere roli < role_name > z < object_id > v oboru skup
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Pokud se zobrazí chybová zpráva: "Zadané informace nejsou namapovány na přiřazení role", ujistěte se, že jste zadali také `-Scope` parametry nebo. `-ResourceGroupName` Další informace najdete v tématu [řešení potíží s RBAC pro prostředky Azure](troubleshooting.md#role-assignments-without-a-security-principal).
+Pokud se zobrazí chybová zpráva: "zadané informace nejsou mapovány na přiřazení role", ujistěte se, že jste zadali také parametry `-Scope` nebo `-ResourceGroupName`. Další informace najdete v tématu [řešení potíží s RBAC pro prostředky Azure](troubleshooting.md#role-assignments-with-unknown-security-principal).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Udělení přístupu skupině k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-group-powershell.md)
-- [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure PowerShellu](tutorial-custom-role-powershell.md)
+- [Kurz: udělení přístupu skupině k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-group-powershell.md)
+- [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Správa prostředků pomocí Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)

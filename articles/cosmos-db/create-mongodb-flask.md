@@ -1,21 +1,21 @@
 ---
-title: Vytvoření webové aplikace Flask pomocí rozhraní API služby Azure Cosmos DB pro MongoDB a sadě Python SDK
-description: Představuje ukázku kódu Python Flask, kterou můžete použít k připojení a dotazování pomocí rozhraní API služby Azure Cosmos DB pro MongoDB.
-author: rimman
-ms.author: rimman
+title: Sestavení webové aplikace v baňce pomocí rozhraní Azure Cosmos DB API pro MongoDB a Python SDK
+description: Prezentuje vzorový kód v Pythonu, který můžete použít k připojení a dotazování pomocí rozhraní Azure Cosmos DB API pro MongoDB.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 07f213de3509ed16af627af5e0583cd985c278f6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 2bd8fa81d0825e604c42c54c0f789b7939206804
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954651"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756942"
 ---
-# <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý start: Sestavení aplikace v Pythonu pomocí služby Azure Cosmos DB API pro MongoDB
+# <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -26,11 +26,11 @@ ms.locfileid: "65954651"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat dokument, klíč/hodnota a databáze grafů, které můžou využívat výhody globální distribuce a možností horizontálního škálování v jádru služby Cosmos DB.
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat databáze dokumentů, klíčů a hodnot a grafů, z nichž všechno přináší výhody funkcí globální distribuce a horizontálního škálování v jádru Cosmos DB.
 
-Tato příručka rychlý start používá následující [příklad Flask](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) a ukazuje, jak vytvořit jednoduchou aplikaci seznamu úkolů Flask pomocí [emulátor služby Azure Cosmos DB](local-emulator.md) a rozhraní Azure Cosmos DB API pro MongoDB.
+Tento průvodce rychlým startem používá následující [příklad baňky](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) a ukazuje, jak vytvořit jednoduchou aplikaci k baňce pomocí [emulátoru Azure Cosmos DB](local-emulator.md) a rozhraní API Azure Cosmos DB pro MongoDB.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Stáhněte si [emulátor služby Azure Cosmos DB](local-emulator.md). Emulátor je momentálně podporovaný jenom ve Windows. Tato ukázka vysvětluje, jak ukázku použít s produkčním klíčem z Azure, což se dá udělat na libovolné platformě.
 
@@ -44,9 +44,9 @@ Tato příručka rychlý start používá následující [příklad Flask](https
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Teď naklonujeme aplikaci Flask-MongoDB z Githubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu.
+Teď naklonujte aplikaci MongoDB z GitHubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu.
 
-1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
 
     ```bash
     md "C:\git-samples"
@@ -104,7 +104,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru app.py a použív
 
 2. Otevřete okno a příkazem `cd` přejděte do adresáře, ve kterém je aplikace uložená.
 
-3. Nastavte proměnnou prostředí pro aplikace Flask pomocí `set FLASK_APP=app.py`, `$env:FLASK_APP = app.py` pro prostředí PowerShell editorů, nebo `export FLASK_APP=app.py` Pokud použijete počítači Mac. 
+3. Pak nastavte proměnnou prostředí pro aplikaci v baňce pomocí `set FLASK_APP=app.py`, `$env:FLASK_APP = app.py` editory PowerShellu nebo `export FLASK_APP=app.py`, pokud používáte Mac. 
 
 4. Spusťte aplikaci pomocí příkazu `flask run` a přejděte na adresu [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
 
@@ -116,9 +116,9 @@ Všechny následující fragmenty kódu pocházejí ze souboru app.py a použív
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Pokud chcete otestovat na aktivní účet Cosmos, přejděte na web Azure Portal k vytvoření účtu služby a získat informace o připojovacím řetězci. Potom ho zkopírujte do aplikace.
+Pokud chcete otestovat kód proti Cosmos účtu v reálném čase, klikněte na Azure Portal pro vytvoření účtu a získání informací o připojovacím řetězci. Potom ho zkopírujte do aplikace.
 
-1. V [webu Azure portal](https://portal.azure.com/), ve vašem účtu Cosmos v levém navigačním panelu klikněte na tlačítko **připojovací řetězec**a potom klikněte na tlačítko **klíče pro čtení i zápis**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky uživatelské jméno, heslo a hostitele do souboru Dal.cs.
+1. V [Azure Portal](https://portal.azure.com/)v účtu Cosmos v levém navigačním panelu klikněte na **připojovací řetězec**a pak klikněte na **klíče pro čtení i zápis**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky uživatelské jméno, heslo a hostitele do souboru Dal.cs.
 
 2. Otevřete soubor **app.py** v kořenovém adresáři.
 
@@ -128,11 +128,11 @@ Pokud chcete otestovat na aktivní účet Cosmos, přejděte na web Azure Portal
 
 5. Nakonec z portálu zkopírujte hodnotu **password** a nastavte ji jako hodnotu **password** v souboru **app.py**.
 
-Aplikaci jste teď aktualizovaný o všechny potřebné informace týkající se potřebuje ke komunikaci s Cosmos DB. Můžete ji spustit stejným způsobem jako předtím.
+Nyní jste aktualizovali aplikaci o všechny informace, které potřebuje ke komunikaci s Cosmos DB. Můžete ji spustit stejným způsobem jako předtím.
 
-## <a name="deploy-to-azure"></a>Nasazení do Azure
+## <a name="deploy-to-azure"></a>Nasadit do Azure
 
-Pokud chcete nasadit tuto aplikaci, můžete vytvořit novou webovou aplikaci v Azure a umožnit průběžné nasazování ve forku tohoto úložiště GitHub. Použít tento [kurzu](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) nastavit průběžné nasazování pomocí Githubu v Azure.
+Pokud chcete tuto aplikaci nasadit, můžete v Azure vytvořit novou webovou aplikaci a povolit průběžné nasazování pomocí větvení tohoto úložiště GitHub. V tomto [kurzu](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) nastavíte průběžné nasazování s GitHubem v Azure.
 
 Při nasazování do Azure je potřeba odebrat klíče aplikace a ujistit se, následující část není označená jako komentář:
 
@@ -151,7 +151,7 @@ Pokud nechcete vytvořit fork tohoto úložiště, můžete také kliknout na n�
 </a>
 
 > [!NOTE]
-> Pokud máte v plánu uložit svůj kód na Githubu nebo jiných možností správy zdrojového kódu, nezapomeňte z kódu odebrat připojovací řetězce. Ty je možné místo toho nastavit pomocí nastavení dané webové aplikace.
+> Pokud máte v plánu ukládat kód do GitHubu nebo jiné možnosti správy zdrojového kódu, nezapomeňte odebrat připojovací řetězce z kódu. Ty je možné místo toho nastavit pomocí nastavení dané webové aplikace.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
@@ -161,9 +161,9 @@ Pokud nechcete vytvořit fork tohoto úložiště, můžete také kliknout na n�
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak vytvořit účet Cosmos a spuštění aplikace Flask. Teď můžete importovat další data k databázi Cosmos. 
+V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Cosmos a spuštění aplikace v baňce. Nyní můžete importovat další data do databáze Cosmos. 
 
 > [!div class="nextstepaction"]
-> [Importování dat MongoDB do služby Azure Cosmos DB](mongodb-migrate.md)
+> [Importování dat MongoDB do databáze Azure Cosmos](mongodb-migrate.md)

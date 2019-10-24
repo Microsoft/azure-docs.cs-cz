@@ -1,17 +1,17 @@
 ---
 title: Vytvořte v Azure Cosmos DB syntetický klíč oddílu, abyste mohli data a zatížení rovnoměrně distribuovat.
 description: Naučte se používat syntetické klíče oddílů v kontejnerech Azure Cosmos.
-author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
-ms.openlocfilehash: bf60c674f9f43c01a3090efa3ac1f0e2e0674efa
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+author: markjbrown
+ms.author: mjbrown
+ms.openlocfilehash: 8b4e2b8abac39f3268e0da7838acd566f40fdccc
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467838"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754804"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Vytvoření syntetického klíče oddílu
 
@@ -19,7 +19,7 @@ Osvědčeným postupem je klíč oddílu s velkým množstvím různých hodnot,
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>Zřetězení více vlastností položky
 
-Klíč oddílu můžete vytvořit zřetězením více hodnot vlastností do jediné umělé `partitionKey` vlastnosti. Tyto klíče se označují jako syntetické klíče. Zvažte například následující příklad dokumentu:
+Klíč oddílu můžete vytvořit zřetězením více hodnot vlastností do jedné uměle `partitionKey` vlastnosti. Tyto klíče se označují jako syntetické klíče. Zvažte například následující příklad dokumentu:
 
 ```JavaScript
 {
@@ -28,7 +28,7 @@ Klíč oddílu můžete vytvořit zřetězením více hodnot vlastností do jedi
 }
 ```
 
-Pro předchozí dokument je jednou z možností nastavit/deviceId nebo/Date jako klíč oddílu. Tuto možnost použijte, pokud chcete rozdělit kontejner na základě ID nebo data zařízení. Další možností je zřetězit tyto dvě hodnoty do syntetické `partitionKey` vlastnosti, která se používá jako klíč oddílu.
+Pro předchozí dokument je jednou z možností nastavit/deviceId nebo/Date jako klíč oddílu. Tuto možnost použijte, pokud chcete rozdělit kontejner na základě ID nebo data zařízení. Další možností je zřetězit tyto dvě hodnoty do syntetické vlastnosti `partitionKey`, která se používá jako klíč oddílu.
 
 ```JavaScript
 {
@@ -44,13 +44,13 @@ V případě scénářů v reálném čase můžete mít v databázi tisíce pol
 
 Další možnou strategií pro distribuci úloh je, že se na konci hodnoty klíče oddílu připojí náhodné číslo. Při distribuci položek tímto způsobem můžete provádět paralelní operace zápisu napříč oddíly.
 
-Příkladem je, že klíč oddílu představuje datum. Můžete zvolit náhodné číslo mezi 1 a 400 a zřetězit ho jako příponu k datu. Tato metoda má za následek hodnoty klíče oddílu `2018-08-09.1`jako`2018-08-09.2`, `2018-08-09.400`a tak dále. Vzhledem k tomu, že je klíč oddílu náhodně, operace zápisu na kontejneru v každém dni jsou rovnoměrně rozloženy mezi několik oddílů. Výsledkem této metody je lepší paralelismus a celková vyšší propustnost.
+Příkladem je, že klíč oddílu představuje datum. Můžete zvolit náhodné číslo mezi 1 a 400 a zřetězit ho jako příponu k datu. Tato metoda má za následek hodnoty klíčů oddílu, například  `2018-08-09.1`, `2018-08-09.2` a tak dále, prostřednictvím  `2018-08-09.400`. Vzhledem k tomu, že je klíč oddílu náhodně, operace zápisu na kontejneru v každém dni jsou rovnoměrně rozloženy mezi několik oddílů. Výsledkem této metody je lepší paralelismus a celková vyšší propustnost.
 
 ## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Použít klíč oddílu s předem vypočítanými příponami 
 
 Strategie náhodné přípony může významně zlepšit propustnost zápisu, ale je obtížné si přečíst konkrétní položku. Neznáte hodnotu přípony, která se použila při zapsání položky. Aby bylo snazší číst jednotlivé položky, použijte strategii předběžně vypočítaných přípon. Místo použití náhodného čísla k distribuci položek mezi oddíly použijte číslo, které se vypočítá na základě něčeho, co chcete dotazovat.
 
-Vezměte v úvahu předchozí příklad, kde kontejner používá jako klíč oddílu datum. Nyní předpokládejme, že každá položka má `Vehicle-Identification-Number` atribut`VIN`(), ke kterému chceme získat přístup. Dále Předpokládejme, že často spouštíte dotazy pro hledání položek podle `VIN`data. Předtím, než aplikace zapíše položku do kontejneru, může vypočítat příponu hash založenou na kódu VIN a připojit ji k datu klíče oddílu. Výpočet může vygenerovat číslo mezi 1 a 400, které je rovnoměrně distribuováno. Tento výsledek je podobný výsledkům, které vytvořila metoda strategie náhodné přípony. Hodnota klíče oddílu je pak datum zřetězení s vypočítaným výsledkem.
+Vezměte v úvahu předchozí příklad, kde kontejner používá jako klíč oddílu datum. Nyní předpokládejme, že každá položka má atribut  `Vehicle-Identification-Number` (`VIN`), ke kterému chceme získat přístup. Dále Předpokládejme, že často spouštíte dotazy pro hledání položek `VIN`, a navíc k datu. Předtím, než aplikace zapíše položku do kontejneru, může vypočítat příponu hash založenou na kódu VIN a připojit ji k datu klíče oddílu. Výpočet může vygenerovat číslo mezi 1 a 400, které je rovnoměrně distribuováno. Tento výsledek je podobný výsledkům, které vytvořila metoda strategie náhodné přípony. Hodnota klíče oddílu je pak datum zřetězení s vypočítaným výsledkem.
 
 V této strategii jsou zápisy rovnoměrně rozloženy mezi hodnoty klíčů oddílu a mezi oddíly. Můžete snadno přečíst konkrétní položku a datum, protože můžete vypočítat hodnotu klíče oddílu pro konkrétní `Vehicle-Identification-Number`. Výhodou této metody je, že se můžete vyhnout vytváření jediného aktivního klíče oddílu, tj. klíč oddílu, který přebírá všechny úlohy. 
 
@@ -58,7 +58,7 @@ V této strategii jsou zápisy rovnoměrně rozloženy mezi hodnoty klíčů odd
 
 Další informace o konceptu dělení na oddíly najdete v následujících článcích:
 
-* Přečtěte si [](partition-data.md)Další informace o logických oddílech.
+* Přečtěte si další informace o [logických oddílech](partition-data.md).
 * Přečtěte si další informace o tom, jak [zřídit propustnost na Cosmosch kontejnerech a databázích Azure](set-throughput.md).
 * Naučte se [zřídit propustnost v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
 * Naučte se [zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).

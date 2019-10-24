@@ -1,58 +1,58 @@
 ---
-title: Optimalizovat náklady na operace čtení a zápisu ve službě Azure Cosmos DB
-description: Tento článek vysvětluje, vysvětluje, jak snížit náklady na služby Azure Cosmos DB při provádění pro čtení a zápisu operace s daty.
-author: rimman
+title: Optimalizace nákladů na čtení a zápisy v Azure Cosmos DB
+description: Tento článek vysvětluje, jak snížit náklady na Azure Cosmos DB při provádění operací čtení a zápisu dat.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 13ce5ee8b0e2a5d9cc84ea1a408ebba152b46050
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 934853b80c6e6377923df4c2b5cce7b7d7d57d7c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967402"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754934"
 ---
-# <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Optimalizace operací čtení a zápisů nákladů ve službě Azure Cosmos DB
+# <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Optimalizujte čtení a zapisuje náklady v Azure Cosmos DB
 
-Tento článek popisuje, jak vypočítat náklady na požadované ke čtení a zápisu dat ze služby Azure Cosmos DB. Operace čtení zahrnují operace get u položek a operace zápisu zahrnuje vložení, nahradit, odstranění a upsert položek.  
+Tento článek popisuje, jak se počítá náklady nutné ke čtení a zápisu dat z Azure Cosmos DB. Operace čtení zahrnují operace get pro položky a operace zápisu včetně vložení, nahrazení, odstranění a Upsert položek.  
 
-## <a name="cost-of-reads-and-writes"></a>Náklady na operace čtení a zápisy
+## <a name="cost-of-reads-and-writes"></a>Náklady na čtení a zápisy
 
-Azure Cosmos DB garantuje předvídatelný výkon z hlediska latence a propustnosti za použití modelu zřízenou propustnost. Zřízenou propustnost je reprezentován z hlediska [jednotek žádostí](request-units.md) za sekundu neboli RU/s. Jednotku požadavku (RU) je logické abstrakce přes výpočetní prostředky, například CPU, paměti, vstupně-výstupních operací, atd., které jsou nutné k provedení požadavku. Zřízená propustnost (ru) je vyhrazené a vyhrazené pro váš kontejner nebo databázi, aby zajistil předvídatelnou propustnost a latenci. Zřízená propustnost umožňuje službě Azure Cosmos DB zajistit konzistentní a předvídatelný výkon, zaručené nízké latence a vysoká dostupnost v libovolném měřítku. Jednotky žádosti představují normalizované měny, která zjednodušuje uvažování o tom, kolik prostředků, které aplikace potřebuje. 
+Azure Cosmos DB garantuje předvídatelný výkon z hlediska propustnosti a latence pomocí zřízeného modelu propustnosti. Zajištěná propustnost je vyjádřena z hlediska [jednotek žádosti](request-units.md) za sekundu nebo ru/s. Jednotka požadavku (RU) je logická abstrakce nad výpočetními prostředky, jako jsou například CPU, paměť, vstupně-výstupní operace atd., které jsou nutné k provedení žádosti. Zřízená propustnost (ru) je nastavená jako vyhrazená pro váš kontejner nebo databázi, aby poskytovala předvídatelné propustnost a latenci. Zajištěná propustnost umožňuje Azure Cosmos DB poskytovat předvídatelný a konzistentní výkon, zaručenou nízkou latenci a vysokou dostupnost v jakémkoli měřítku. Jednotky žádosti reprezentují normalizovanou měnu, která zjednodušuje určení toho, kolik prostředků aplikace potřebuje. 
 
-Není nutné zvážit odlišení těchto jednotkách požadavků mezi operací čtení a zápisu. Model jednotný měny jednotek žádosti ze vytvoří efektivitu Zaměnitelně používat stejné kapacity propustnosti pro operace čtení i zápisu. Následující tabulka ukazuje náklady na operace čtení a zápisy z hlediska RU/s pro položky, které jsou do velikosti 1 KB a 100 KB.
+Nemusíte myslet na rozdíl od čtení a zápisu jednotek žádostí. Sjednocený model měny jednotek požadavků vytváří efektivitu pro zaměnitelné používání stejné kapacity propustnosti pro čtení i zápis. V následující tabulce jsou uvedeny náklady na čtení a zápisy v souvislosti s RU/s pro položky, které mají velikost 1 KB a 100 KB.
 
-|**Velikost položky**  |**Náklady na jeden pro čtení** |**Náklady na jeden zápis**|
+|**Velikost položky**  |**Náklady na jedno čtení** |**Náklady na jeden zápis**|
 |---------|---------|---------|
 |1 KB |1 RU |5 ru |
-|100 KB |10 RU |50 jednotek ru |
+|100 KB |10 RU |50 ru |
 
-Čtení položky, který je 1 KB velikost náklady na jednu RU. Zápis položky, který je 1 KB stojí 5 RU. Při použití výchozí relace platí náklady na čtení a zápis [úrovně konzistence](consistency-levels.md).  Mezi aspekty kolem ru patří: velikost, počet vlastností, konzistenci dat, indexované vlastnosti, indexování, klikněte na ni a vzory pro dotazování.
+Čtení položky o velikosti 1 KB se bude načítat náklady o jednu RU. Zápis položky s 1 KB náklady pět ru Náklady na čtení a zápis se použijí při použití výchozí [úrovně konzistence](consistency-levels.md)relace.  Mezi požadavky týkající se ru patří: velikost položky, počet vlastností, konzistence dat, indexované vlastnosti, indexování a vzory dotazů.
 
-## <a name="normalized-cost-for-1-million-reads-and-writes"></a>Normalizovaná náklady na 1 milion čte a zapisuje
+## <a name="normalized-cost-for-1-million-reads-and-writes"></a>Normalizované náklady pro čtení a zápisy 1 000 000
 
-Zřizování 1 000 RU/s se přeloží na 3.6 miliony RU za hodinu a stojí 0,08 USD za hodinu (v USA a Evropa). Pro 1 KB položku, můžete provádět 3.6 milionů čtení nebo zápisu 0,72 milionů (Tato hodnota se vypočítá jako: `3.6 million RU / 5`) HODINOVĚ, přičemž tento zřízenou propustnost. Normalizovány na milion operací čtení a zápisu, náklady by byly 0,022 $ 1 milion čtení (Tato hodnota se vypočítá jako: $0.08/3.6 milionů) a 0.111 pro zápis 1 milion (Tato hodnota se vypočítá jako: $0.08/0.72 milionů).
+Zřizování 1 000 RU/s se překládá na 3 600 000 RU za hodinu a $0,08 náklady na hodinu (v USA a Evropě). U položky 1-KB můžete provádět 3 600 000 čtení nebo 720 000 zápisu (Tato hodnota se vypočítává jako: `3.6 million RU / 5`) za hodinu pomocí této zřízené propustnosti. V normalizovaní na milion čtení a zápisů by cena byla $0,022 pro 1 000 000 čtení (Tato hodnota se vypočítá jako: $0,08/3.6 milionů) a $0,111 pro zápisy po 1 000 000 (Tato hodnota se vypočítá jako: $0,08/3.6 milion).
 
-## <a name="number-of-regions-and-the-request-units-cost"></a>Počet oblastí a jednotkách požadavků nákladů
+## <a name="number-of-regions-and-the-request-units-cost"></a>Počet oblastí a náklady na jednotky žádosti
 
-Náklady na zápisy jsou konstantní bez ohledu na počet oblastí přidružených k účtu Azure Cosmos. Jinými slovy zápis 1 KB stojí 5 ru nezávislé na počtu oblastí, které jsou přidružená k účtu. Je netriviální množství prostředků stráveného replikaci, příjem a zpracování provoz replikace na každou oblast. Podrobnosti o optimalizaci nákladů ve více oblastech najdete v tématu [optimalizovat náklady na účty ve více oblastech Cosmos](optimize-cost-regions.md) článku.
+Náklady na zápisy jsou konstantní bez ohledu na počet oblastí přidružených k účtu Azure Cosmos. Jinými slovy, zápis 1 KB bude mít za následek pět ru nezávisle na počtu oblastí, které jsou přidružené k účtu. Replikace, příjem a zpracování provozu replikace v každé oblasti je netriviální množství prostředků, které stráví replikaci. Podrobnosti o optimalizaci nákladů na více oblastí najdete v článku věnovaném [optimalizaci nákladů na účty Cosmos s více oblastmi](optimize-cost-regions.md) .
 
-## <a name="optimize-the-cost-of-writes-and-reads"></a>Optimalizovat náklady na zápisy a čtení
+## <a name="optimize-the-cost-of-writes-and-reads"></a>Optimalizace nákladů na zápisy a čtení
 
-Při provádění operace zápisu, měli byste zřídit dostatečnou kapacitu pro podporu počet zápisů potřeby za sekundu. Zřízená propustnost můžete zvýšit pomocí sady SDK, portálu, rozhraní příkazového řádku, než se pustíte do zápisy a potom snížení propustnosti po dokončení zápisu. Propustnost za období zápisu je minimální propustnost potřebné pro daná data a požadované propustnosti pro vložení úloh za předpokladu, že jsou spuštěné žádné úlohy. 
+Při provádění operací zápisu byste měli zřídit dostatečnou kapacitu pro podporu počtu potřebných zápisů za sekundu. Zřízenou propustnost můžete zvýšit před provedením zápisů pomocí sady SDK, portálu, rozhraní příkazového řádku a následným snížením propustnosti po dokončení zápisů. Propustnost za dobu zápisu je minimální propustností potřebnou pro zadaná data a navíc propustnost, která je nutná pro vkládání úloh, za předpokladu, že nejsou spuštěny žádné jiné úlohy. 
 
-Pokud jsou spuštěny další zátěže souběžně, například dotazu, čtení, aktualizace nebo odstranění, měli byste přidat další požadavek jednotky, vyžaduje se pro tyto operace příliš. Pokud operace zápisu se míra časově omezené, můžete přizpůsobit zásady opakování/omezení rychlosti s použitím sady SDK služby Azure Cosmos DB. Například můžete zvýšit zatížení dokud malý počet žádostí o získá míra limited. Pokud dojde k omezení četnosti, klientská aplikace by měla Regrese v omezení rychlosti požadavků pro interval zadaný opakování. Než to zkusíte znovu zápisy, měli byste co nejkratším časové prodlevy mezi opakovanými pokusy. Podpora zásad opakování je součástí SQL .NET, Java, Node.js a sady SDK pro Python a všech podporovaných verzích .NET Core SDK. 
+Pokud spouštíte jiné úlohy, například dotaz, čtení, aktualizace nebo odstranění, měli byste přidat i další jednotky žádostí vyžadované pro tyto operace. Pokud jsou operace zápisu omezené na míru, můžete upravit zásadu opakování/omezení rychlosti pomocí sad SDK pro Azure Cosmos DB. Můžete například zvýšit zatížení, dokud malá míra požadavků nezíská omezení na úrovni. Pokud dojde k překročení limitu četnosti, klientské aplikace by se měly zálohovat na požadavky na omezení rychlosti pro zadaný interval opakování. Před opakovaným pokusem o zápisy byste měli mít minimální časovou prodlevu mezi opakovanými pokusy. Podpora zásad opakování je obsažená v sadách SQL .NET, Java, Node. js a Python SDK a v podporovaných verzích sady .NET Core SDK. 
 
-Můžete také hromadné vložení dat do služby Azure Cosmos DB nebo kopírování dat ze všech podporovaných zdrojů úložišť dat do služby Azure Cosmos DB pomocí [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md). Azure Data Factory nativně integruje s Azure Cosmos DB hromadné API poskytovat nejlepší výkon, když zapisujete data.
+Můžete také hromadně vkládat data do Azure Cosmos DB nebo kopírovat data z libovolného podporovaného zdrojového úložiště dat do Azure Cosmos DB pomocí [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md). Azure Data Factory nativně integruje s rozhraním API Azure Cosmos DB Bulk pro zajištění nejlepšího výkonu při psaní dat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Potom můžete přejít k další informace o optimalizaci nákladů ve službě Azure Cosmos DB najdete v následujících článcích:
+Další informace o optimalizaci nákladů v Azure Cosmos DB najdete v následujících článcích:
 
-* Další informace o [optimalizace pro vývoj a testování](optimize-dev-test.md)
-* Další informace o [vysvětlení vašeho vyúčtování Azure Cosmos DB](understand-your-bill.md)
-* Další informace o [optimalizace propustnosti náklady](optimize-cost-throughput.md)
-* Další informace o [optimalizovat náklady na úložiště](optimize-cost-storage.md)
-* Další informace o [optimalizovat náklady na dotazy](optimize-cost-queries.md)
-* Další informace o [optimalizovat náklady na účty ve více oblastech Azure Cosmos](optimize-cost-regions.md)
+* Další informace o [optimalizaci pro vývoj a testování](optimize-dev-test.md)
+* Další informace o [Azure Cosmos DB vyúčtování](understand-your-bill.md)
+* Další informace o [optimalizaci nákladů na propustnost](optimize-cost-throughput.md)
+* Další informace o [optimalizaci nákladů na úložiště](optimize-cost-storage.md)
+* Další informace o [optimalizaci nákladů na dotazy](optimize-cost-queries.md)
+* Další informace o [optimalizaci nákladů na účty Azure Cosmos ve více oblastech](optimize-cost-regions.md)

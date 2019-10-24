@@ -4,28 +4,28 @@ description: Podívejte se na historii aktivit a auditu pro role prostředků Az
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e1ed018f66d4f5eefd02d587504cf64969f47b
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 0c9a58fb6cd8591f571b4e65c3ab88cc59e38cda
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804045"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756327"
 ---
-# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Zobrazení historie aktivit a auditu pro role prostředků Azure v PIM
+# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Zobrazení historie aktivit a auditu pro role prostředků Azure v Privileged Identity Management
 
-S Azure Active Directory (Azure AD) Privileged Identity Management (PIM) můžete zobrazit aktivity, aktivace a historii auditu pro role prostředků Azure v rámci vaší organizace. Patří sem předplatná, skupiny prostředků a i virtuální počítače. Všechny prostředky v rámci Azure Portal, které využívají funkci řízení přístupu na základě role (RBAC) v Azure, můžou využívat možnosti správy zabezpečení a životního cyklu v PIM.
+S Azure Active Directory (Azure AD) Privileged Identity Management (PIM) můžete zobrazit aktivity, aktivace a historii auditu pro role prostředků Azure v rámci vaší organizace. Patří sem předplatná, skupiny prostředků a i virtuální počítače. Všechny prostředky v rámci Azure Portal, které využívají funkci řízení přístupu na základě role (RBAC) v Azure, můžou využívat možnosti správy zabezpečení a životního cyklu v Privileged Identity Management.
 
 ## <a name="view-activity-and-activations"></a>Zobrazit aktivity a aktivace
 
@@ -51,7 +51,7 @@ Pokud chcete zjistit, jaké akce určitý uživatel trval v různých prostředc
 
 ## <a name="export-role-assignments-with-children"></a>Export přiřazení rolí s podřízenými položkami
 
-Můžete mít požadavek na dodržování předpisů, kde musíte poskytnout úplný seznam přiřazení rolí auditorům. PIM vám umožní dotazovat se na přiřazení rolí v konkrétním prostředku, který zahrnuje přiřazení rolí pro všechny podřízené prostředky. Dřív bylo obtížné, aby správci získali úplný seznam přiřazení rolí pro předplatné a museli exportovat přiřazení rolí pro každý konkrétní prostředek. Pomocí PIM můžete zadat dotaz na všechna aktivní a oprávněná přiřazení rolí v rámci předplatného, včetně přiřazení rolí pro všechny skupiny prostředků a prostředky.
+Můžete mít požadavek na dodržování předpisů, kde musíte poskytnout úplný seznam přiřazení rolí auditorům. Privileged Identity Management vám umožní dotazovat se na přiřazení rolí u konkrétního prostředku, který zahrnuje přiřazení rolí pro všechny podřízené prostředky. Dřív bylo obtížné, aby správci získali úplný seznam přiřazení rolí pro předplatné a museli exportovat přiřazení rolí pro každý konkrétní prostředek. Pomocí Privileged Identity Management se můžete dotazovat na všechna aktivní a oprávněná přiřazení rolí v rámci předplatného, včetně přiřazení rolí pro všechny skupiny prostředků a prostředky.
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
@@ -67,7 +67,7 @@ Můžete mít požadavek na dodržování předpisů, kde musíte poskytnout úp
 
 1. Kliknutím na **exportovat všechny členy** exportujte všechna přiřazení rolí v souboru CSV.
 
-    ![Export přiřazení rolí v CSV náhl jako zobrazení v Excelu](media/azure-pim-resource-rbac/export-csv.png)
+    ![Export přiřazení rolí v souboru CSV jako zobrazení v Excelu](media/azure-pim-resource-rbac/export-csv.png)
 
 ## <a name="view-resource-audit-history"></a>Zobrazit historii auditu prostředků
 
@@ -111,6 +111,6 @@ Můj audit umožňuje zobrazit aktivitu osobní role.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přiřazení rolí prostředků Azure v PIM](pim-resource-roles-assign-roles.md)
-- [Schválení nebo zamítnutí žádostí o role prostředků Azure v PIM](pim-resource-roles-approval-workflow.md)
-- [Zobrazení historie auditu pro role Azure AD v PIM](pim-how-to-use-audit-log.md)
+- [Přiřazení rolí prostředků Azure v Privileged Identity Management](pim-resource-roles-assign-roles.md)
+- [Schválení nebo zamítnutí žádostí o role prostředků Azure v Privileged Identity Management](pim-resource-roles-approval-workflow.md)
+- [Zobrazit historii auditu pro role Azure AD v Privileged Identity Management](pim-how-to-use-audit-log.md)

@@ -1,30 +1,31 @@
 ---
-title: Použití rozhraní API Azure Cosmos DB pro podporu funkcí MongoDB
-description: Přečtěte si o podpoře funkcí, kterou Azure Cosmos DB API pro MongoDB poskytuje pro MongoDB 3,4.
+title: Podporované funkce a syntaxe rozhraní API pro MongoDB (verze 3,2) Azure Cosmos DB
+description: Přečtěte si o podporovaných funkcích a syntaxi rozhraní API pro Azure Cosmos DB pro MongoDB (verze 3,2).
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 05/21/2019
+ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 999b9ed88b6ff2c14defd3424c0fb541b7cf5d8e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 12e5dba0339b6092564e5d35c1a6250b0c47f50f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050095"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755006"
 ---
-# <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Rozhraní API Azure Cosmos DB pro MongoDB: podporované funkce a syntaxe
+# <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Rozhraní API Azure Cosmos DB pro MongoDB (verze 3,2): podporované funkce a syntaxe
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Pomocí libovolného z open source [ovladačů](https://docs.mongodb.org/ecosystem/drivers)klientů MongoDB můžete komunikovat s rozhraním API Azure Cosmos DB pro MongoDB. Rozhraní API pro Azure Cosmos DB pro MongoDB umožňuje použití existujících ovladačů klientů, které dodržuje MongoDB [síťový protokol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
 Díky rozhraní API Azure Cosmos DB pro MongoDB můžete využívat výhody MongoDB, ke kterému jste se přihlásili, se všemi podnikovými funkcemi, které Cosmos DB poskytuje: [globální distribuce](distribute-data-globally.md), [Automatické horizontálního dělení](partition-data.md), dostupnost a latence. zaručuje automatické indexování každého pole, šifrování v klidovém umístění, zálohování a mnoho dalšího.
 
+> [!NOTE]
+> Tento článek je určen pro rozhraní Azure Cosmos DB API pro MongoDB 3,2. Informace o verzi MongoDB 3,6 najdete v tématu [podporované funkce a syntaxe pro MongoDB 3,6](mongodb-feature-support-36.md).
+
 ## <a name="protocol-support"></a>Podpora protokolů
 
-Rozhraní API Azure Cosmos DB pro MongoDB je ve výchozím nastavení kompatibilní s MongoDB serverem verze **3,2** . Podporované operátory a případná omezení nebo výjimky jsou uvedené níže. Funkce nebo operátory dotazu přidané v MongoDB verze **3.4** jsou v současné době dostupné jako funkce Preview. Každý ovladač klienta, který pochopení těchto protokolů, by měl být schopný se připojit k rozhraní API Azure Cosmos DB pro MongoDB.
-
-[Kanál agregace MongoDB](#aggregation-pipeline) je v současné době také dostupný jako samostatná funkce Preview.
+Všechny nové účty pro rozhraní API Azure Cosmos DB pro MongoDB jsou kompatibilní se serverem MongoDB verze **3,6**. Tento článek popisuje MongoDB verze 3,2. Podporované operátory a případná omezení nebo výjimky jsou uvedené níže. Každý ovladač klienta, který pochopení těchto protokolů, by měl být schopný se připojit k rozhraní API Azure Cosmos DB pro MongoDB.
 
 ## <a name="query-language-support"></a>Podpora jazyka dotazů
 
@@ -35,6 +36,7 @@ Rozhraní API pro Azure Cosmos DB MongoDB poskytuje komplexní podporu konstrukc
 Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázové příkazy:
 
 ### <a name="query-and-write-operation-commands"></a>Příkazy pro dotazovací a zápisové operace
+
 - delete
 - find
 - findAndModify
@@ -44,15 +46,17 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 - update
 
 ### <a name="authentication-commands"></a>Příkazy pro ověření
-- logout
+
+- odhlásit
 - authenticate
 - getnonce
 
 ### <a name="administration-commands"></a>Příkazy pro správu
+
 - dropDatabase
 - listCollections
 - drop
-- create
+- vytvoření
 - filemd5
 - createIndexes
 - listIndexes
@@ -61,6 +65,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 - reIndex
 
 ### <a name="diagnostics-commands"></a>Příkazy pro diagnostiku
+
 - buildInfo
 - collStats
 - dbStats
@@ -72,14 +77,16 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ## <a name="aggregation-pipelinea"></a>Agregační zřetězení</a>
 
-Cosmos DB podporuje kanál agregace ve verzi Public Preview. Pokyny k registraci veřejné verze Preview najdete na [blogu Azure](https://aka.ms/mongodb-aggregation).
+Cosmos DB podporuje kanál agregace pro MongoDB 3,2 ve verzi Public Preview. Pokyny k registraci veřejné verze Preview najdete na [blogu Azure](https://aka.ms/mongodb-aggregation).
 
 ### <a name="aggregation-commands"></a>Příkazy pro agregaci
+
 - aggregate
 - count
 - distinct
 
 ### <a name="aggregation-stages"></a>Fáze agregace
+
 - $project
 - $match
 - $limit
@@ -96,11 +103,13 @@ Cosmos DB podporuje kanál agregace ve verzi Public Preview. Pokyny k registraci
 ### <a name="aggregation-expressions"></a>Výrazy pro agregaci
 
 #### <a name="boolean-expressions"></a>Logické výrazy
+
 - $and
 - $or
 - $not
 
 #### <a name="set-expressions"></a>Nastavovací výrazy
+
 - $setEquals
 - $setIntersection
 - $setUnion
@@ -110,6 +119,7 @@ Cosmos DB podporuje kanál agregace ve verzi Public Preview. Pokyny k registraci
 - $allElementsTrue
 
 #### <a name="comparison-expressions"></a>Porovnávací výrazy
+
 - $cmp
 - $eq
 - $gt
@@ -119,6 +129,7 @@ Cosmos DB podporuje kanál agregace ve verzi Public Preview. Pokyny k registraci
 - $ne
 
 #### <a name="arithmetic-expressions"></a>Aritmetické výrazy
+
 - $abs
 - $add
 - $ceil
@@ -136,6 +147,7 @@ Cosmos DB podporuje kanál agregace ve verzi Public Preview. Pokyny k registraci
 - $trunc
 
 #### <a name="string-expressions"></a>Řetězcové výrazy
+
 - $concat
 - $indexOfBytes
 - $indexOfCP
@@ -150,6 +162,7 @@ Cosmos DB podporuje kanál agregace ve verzi Public Preview. Pokyny k registraci
 - $toUpper
 
 #### <a name="array-expressions"></a>Maticové výrazy
+
 - $arrayElemAt
 - $concatArrays
 - $filter
@@ -162,6 +175,7 @@ Cosmos DB podporuje kanál agregace ve verzi Public Preview. Pokyny k registraci
 - $in
 
 #### <a name="date-expressions"></a>Datumové výrazy
+
 - $dayOfYear
 - $dayOfMonth
 - $dayOfWeek
@@ -176,10 +190,12 @@ Cosmos DB podporuje kanál agregace ve verzi Public Preview. Pokyny k registraci
 - $isoWeek
 
 #### <a name="conditional-expressions"></a>Podmíněné výrazy
+
 - $cond
 - $ifNull
 
 ## <a name="aggregation-accumulators"></a>Agregační zásobníky
+
 - $sum
 - $avg
 - $first
@@ -212,7 +228,7 @@ Jsou podporované následující operátory, doplněné o odpovídající přík
 }
 ```
 
-Operator | Příklad |
+Operátor | Příklad: |
 --- | --- |
 $eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
 $gt | `{ "Elevation": { $gt: 4000 } }` |  | -
@@ -234,12 +250,15 @@ $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 ### <a name="notes"></a>Poznámky
 
 V dotazech $regex umožňují zleva ukotvené výrazy hledání indexu. Použití modifikátorů „i“ (rozlišování malých a velkých písmen) a „m“ (více řádků) ale způsobí, že se kolekce prohledává ve všech výrazech.
-Pokud potřebujete začlenit „$“ nebo „|“, je nejlepší vytvořit dva (nebo více) dotazů využívajících regulární výrazy. Například následující původní dotaz ```find({x:{$regex: /^abc$/})``` by se měl upravit takto: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
-V první části se použije index k omezení hledání na dokumenty, které začínají na ^abc a ve druhé části se porovnají přesné položky. Operátor „|“ se chová jako funkce „nebo“ – dotaz ```find({x:{$regex: /^abc|^def/})``` porovnává dokumenty, ve kterých pole „x“ nabývá hodnot, které začínají na „abc“ nebo „def“. Pokud chcete využít index, je doporučeno dotaz rozdělit na dva různé dotazy spojené operátorem $or: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+Pokud potřebujete začlenit „$“ nebo „|“, je nejlepší vytvořit dva (nebo více) dotazů využívajících regulární výrazy.
+Například následující původní dotaz ```find({x:{$regex: /^abc$/})``` by se měl upravit takto: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
+V první části se použije index k omezení hledání na dokumenty, které začínají na ^abc a ve druhé části se porovnají přesné položky.
+Operátor „|“ se chová jako funkce „nebo“ – dotaz ```find({x:{$regex: /^abc|^def/})``` porovnává dokumenty, ve kterých pole „x“ nabývá hodnot, které začínají na „abc“ nebo „def“. Pokud chcete využít index, je doporučeno dotaz rozdělit na dva různé dotazy spojené operátorem $or: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 
 ### <a name="update-operators"></a>Aktualizační operátory
 
 #### <a name="field-update-operators"></a>Operátory pro aktualizaci polí
+
 - $inc
 - $mul
 - $rename
@@ -251,6 +270,7 @@ V první části se použije index k omezení hledání na dokumenty, které za�
 - $currentDate
 
 #### <a name="array-update-operators"></a>Operátory pro aktualizaci matic
+
 - $addToSet
 - $pop
 - $pullAll
@@ -263,11 +283,12 @@ V první části se použije index k omezení hledání na dokumenty, které za�
 - $position
 
 #### <a name="bitwise-update-operator"></a>Operátor pro bitovou aktualizaci
+
 - $bit
 
 ### <a name="geospatial-operators"></a>Geoprostorové operátory
 
-Operator | Příklad | |
+Operátor | Příklad: | |
 --- | --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ano |
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano |
@@ -282,16 +303,17 @@ $box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 4
 $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano |
 
 ## <a name="sort-operations"></a>Operace řazení
-Při použití `findOneAndUpdate` operace jsou podporovány operace řazení v jednom poli, ale operace řazení u více polí nejsou podporovány.
+
+Při použití operace `findOneAndUpdate` jsou podporovány operace řazení v jednom poli, ale operace řazení pro více polí nejsou podporovány.
 
 ## <a name="additional-operators"></a>Další operátory
 
-Operator | Příklad | Poznámky 
+Operátor | Příklad: | Poznámky
 --- | --- | --- |
-$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` | 
-$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
-$size | ```{ "Location.coordinates": { $size: 2 } }``` | 
-$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
+$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
+$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |
+$size | ```{ "Location.coordinates": { $size: 2 } }``` |
+$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
 $text |  | Nepodporuje se. Použijte místo toho $regex.
 
 ## <a name="unsupported-operators"></a>Nepodporované operátory
@@ -304,13 +326,13 @@ Podporují se následující metody:
 
 #### <a name="cursor-methods"></a>Metody kurzoru
 
-Metoda | Příklad | Poznámky 
+Metoda | Příklad: | Poznámky
 --- | --- | --- |
 cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumenty bez klíče řazení se nevracejí
 
 ## <a name="unique-indexes"></a>Jedinečné indexy
 
-Cosmos DB indexuje všechna pole v dokumentech, která jsou ve výchozím nastavení zapsána do databáze. Jedinečné indexy zajišťují, aby určité pole nemělo duplicitní hodnoty v rámci všech dokumentů v kolekci. Je to podobné, jako když má být zachovaná jedinečnost výchozího klíče „_id“. Vlastní indexy můžete v Cosmos DB vytvořit pomocí příkazu createIndex, včetně omezení UNIQUE.
+Cosmos DB indexuje všechna pole v dokumentech, která jsou ve výchozím nastavení zapsána do databáze. Jedinečné indexy zajišťují, že konkrétní pole neobsahuje duplicitní hodnoty ve všech dokumentech v kolekci, podobně jako jedinečnost je zachována ve výchozím `_id` klíč. Vlastní indexy můžete v Cosmos DB vytvořit pomocí příkazu createIndex, včetně omezení UNIQUE.
 
 K dispozici jsou jedinečné indexy pro všechny účty Cosmos s využitím rozhraní API Azure Cosmos DB pro MongoDB.
 
