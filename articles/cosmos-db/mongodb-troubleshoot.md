@@ -1,37 +1,38 @@
 ---
-title: Řešení běžných chyb v rozhraní API služby Azure Cosmos DB pro Mongo DB
-description: Tento dokument popisuje způsoby řešení běžných problémů v Azure Cosmos DB přes rozhraní API pro MongoDB.
+title: Řešení běžných chyb v rozhraní API Azure Cosmos DB pro Mongo DB
+description: Tento dokument popisuje způsoby řešení běžných potíží, ke kterým došlo v rozhraní Azure Cosmos DB API pro MongoDB.
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: roaror
-ms.openlocfilehash: 5b3d3993a497240c1ea18f0fcf852c0e834f6e79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ece975fa37e500b1c160210684a0cb46e719c48b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735703"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754957"
 ---
-# <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Řešení běžných potíží v Azure Cosmos DB přes rozhraní API pro MongoDB
+# <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Řešení běžných problémů v rozhraní Azure Cosmos DB API pro MongoDB
 
-Azure Cosmos DB implementuje přenosový protokoly common databází NoSQL, včetně MongoDB. Kvůli implementaci protokolu přenosu můžete transparentně pracovat s Azure Cosmos DB pomocí existující klientské sady SDK, ovladačů a nástrojů, které fungují s databází NoSQL. Azure Cosmos DB nepoužívá žádný zdrojový kód databází k zajištění přenosu kompatibilní s rozhraním API pro žádnou z databází NoSQL. Všechny ovladače klienta MongoDB, která analyzuje verze protokolu přenosu můžete připojit ke službě Azure Cosmos DB.
+Azure Cosmos DB implementuje přenosové protokoly běžných databází NoSQL, včetně MongoDB. Z důvodu implementace přenosového protokolu můžete transparentně komunikovat s Azure Cosmos DB pomocí stávajících klientských sad SDK, ovladačů a nástrojů, které fungují s databázemi NoSQL. Azure Cosmos DB nepoužívá žádný zdrojový kód databází pro poskytování rozhraní API kompatibilních s drátem pro žádnou z databází NoSQL. Libovolný ovladač klienta MongoDB, který rozumí verzi přenosných protokolů, se může připojit k Azure Cosmos DB.
 
-Přestože rozhraní API služby Azure Cosmos DB pro MongoDB je kompatibilní s 3.2 verzi protokolu přenosu MongoDB. (funkce přidané do verze 3.4 a operátorů dotazu jsou aktuálně k dispozici jako verze preview), existují některé vlastní chybové kódy, které odpovídají ke službě Azure Cosmos DB konkrétní chyby. Tento článek popisuje různé chyby, kódy chyb a kroky k vyřešení těchto chyb.
+Azure Cosmos DB i když je rozhraní API pro MongoDB kompatibilní s 3,2 verzí MongoDB přenosového protokolu (operátory a funkce dotazů přidané ve verzi 3,4 jsou momentálně dostupné jako verze Preview), existují některé vlastní chybové kódy, které odpovídají Azure Cosmos DB konkrétní chyby. Tento článek popisuje různé chyby, kódy chyb a postup řešení těchto chyb.
 
 ## <a name="common-errors-and-solutions"></a>Běžné chyby a řešení
 
 | Chyba               | Kód  | Popis  | Řešení  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí je větší než počet zřízených jednotky žádosti pro kolekci a se omezila. | Zvažte možnost škálování propustnosti přiřazené ke kontejneru nebo sadu kontejnerů na webu Azure Portal nebo můžete operaci opakovat. |
-| ExceededMemoryLimit | 16501 | Jako víceklientská služba operace přešel přes klienta přidělení paměti. | Redukujte obor operaci prostřednictvím více omezující kritéria dotazu nebo se obraťte na podporu – od [webu Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Příklad: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
-| Problémy s verzí při přenosu MongoDB | - | Starší verze ovladače MongoDB se nám rozpoznat název účtu Azure Cosmos v připojovacích řetězcích. | Připojit *appName = @**accountName** @*  na konci rozhraní API Cosmos DB pro MongoDB připojovací řetězec, ve kterém ***accountName*** je název vašeho účtu služby Cosmos DB . |
+| TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí je vyšší než stanovená sazba žádosti-jednotka pro kolekci a byla omezena. | Zvažte možnost škálování propustnosti přiřazené kontejneru nebo sady kontejnerů ze Azure Portal nebo můžete operaci zopakovat. |
+| ExceededMemoryLimit | 16501 | Jako služba pro více tenantů se operace převzala v průběhu plnění paměti klienta. | Snižte rozsah operace prostřednictvím přísnějších kritérií dotazu nebo kontaktujte podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Příklad: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
+| Cesta k indexu odpovídající určenému pořadí podle položky je vyloučena/dotaz ORDER by nemá odpovídající složený index, ze kterého může být obsluhován. | 2 | Dotaz požádá o řazení pro pole, které není indexované. | Pro pokusy o řadicí dotaz vytvořte stejný index (nebo složený index). |
+| Problémy s verzí MongoDB drátu | - | Starší verze ovladačů MongoDB nemůžou v připojovacích řetězech rozpoznat název účtu Azure Cosmos. | Připojením *AppName = @**account** @* na konci rozhraní API služby Cosmos DB pro připojovací řetězec MongoDB, kde ***account*** Name je váš Cosmos DB název účtu. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [použití studia 3T](mongodb-mongochef.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
-- Zjistěte, jak [použít Robo 3T](mongodb-robomongo.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
-- Prozkoumejte MongoDB [ukázky](mongodb-samples.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
+- Naučte se [používat Studio 3T](mongodb-mongochef.md) s rozhraním API Azure Cosmos DB pro MongoDB.
+- Naučte se [používat Robo 3T](mongodb-robomongo.md) s rozhraním API Azure Cosmos DB pro MongoDB.
+- Prozkoumejte [ukázky](mongodb-samples.md) MONGODB s rozhraním API Azure Cosmos DB pro MongoDB.
 

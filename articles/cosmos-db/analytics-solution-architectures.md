@@ -1,18 +1,18 @@
 ---
 title: Řešení využívající globálně distribuované analýzy v Azure Cosmos DB.
 description: Seznamte se s řešeními, která se dají sestavit pomocí globálně distribuovaných analýz v Azure Cosmos DB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d5c6b8727a24a7ea8ddf05f7983618b55884d3bf
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d50b946e67bbcc171850b71021165356011f58e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338981"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755205"
 ---
 # <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>Řešení využívající globálně distribuované analýzy v Azure Cosmos DB
 
@@ -65,7 +65,7 @@ Následující obrázek ukazuje, jak se Azure Cosmos DB podpora Sparku použív�
 
 ![Podpora Sparku Azure Cosmos DB pro sestavení diagnostického systému pro vozidlo v reálném čase](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
 
-## <a name="gaming"></a>Hraní her
+## <a name="gaming"></a>Hry
 
 * Díky integrované podpoře Spark vám Azure Cosmos DB umožňuje snadno sestavovat, škálovat a nasazovat pokročilé analýzy a modely strojového učení během několika minut, aby se vytvořily nejlepší možné herní prostředí.
 

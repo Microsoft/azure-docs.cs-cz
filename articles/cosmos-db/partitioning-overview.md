@@ -1,23 +1,23 @@
 ---
 title: Vytváření oddílů v Azure Cosmos DB
 description: Přehled dělení v Azure Cosmos DB.
-ms.author: rimman
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: e80e548ceae2149fe7061da42c71ee8b61f00a72
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 38b4e4c2541bf30bd9c95d9c0ec61779b0d1d7bb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717559"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753248"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Vytváření oddílů v Azure Cosmos DB
 
 Azure Cosmos DB používá dělení ke škálování jednotlivých kontejnerů v databázi tak, aby splňovaly požadavky vaší aplikace na výkon. Při dělení jsou položky v kontejneru rozděleny do samostatných dílčích množin nazývaných *logické oddíly*. Logické oddíly se vytvoří na základě hodnoty *klíče oddílu* , který je spojený s každou položkou v kontejneru. Všechny položky v logickém oddílu mají stejnou hodnotu klíče oddílu.
 
-Například kontejner obsahuje položky. Každá položka má jedinečnou hodnotu pro `UserID` vlastnost. Pokud `UserID` slouží jako klíč oddílu pro položky v kontejneru a jsou-li k dispozici jedinečné `UserID` hodnoty 1 000, jsou pro kontejner vytvořeny logické oddíly 1 000.
+Například kontejner obsahuje položky. Každá položka má jedinečnou hodnotu pro vlastnost `UserID`. Pokud `UserID` slouží jako klíč oddílu pro položky v kontejneru a je 1 000 jedinečných `UserID`ch hodnot, pro kontejner se vytvoří logické oddíly 1 000.
 
 Kromě klíče oddílu, který určuje logický oddíl položky, každá položka v kontejneru má *ID položky* (jedinečné v rámci logického oddílu). Kombinování klíče oddílu a ID položky vytvoří *index*položky, který položku jednoznačně identifikuje.
 
@@ -47,7 +47,7 @@ Následuje dobrý návod pro výběr klíče oddílu:
 
 * Kandidáti na klíče oddílů mohou obsahovat vlastnosti, které se často zobrazují jako filtr v dotazech. Dotazy lze efektivně směrovat zahrnutím klíče oddílu do predikátu filtru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si o [dělení a horizontálním škálování v Azure Cosmos DB](partition-data.md).
 * Přečtěte si o [zřízené propustnosti v Azure Cosmos DB](request-units.md).

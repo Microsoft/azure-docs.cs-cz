@@ -1,25 +1,21 @@
 ---
-title: Rychlý Start Azure Cloud Shell | Microsoft Docs
-description: Rychlý Start pro Azure Cloud Shell
-services: ''
-documentationcenter: ''
+title: Rychlý Start Azure Cloud Shell – bash
+description: Naučte se používat příkazový řádek bash v prohlížeči s Azure Cloud Shell.
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 8151013f263c6cf2f90e89fa1c3b0b3025f2ea38
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741987"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757400"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Rychlý Start pro bash v Azure Cloud Shell
 
@@ -39,7 +35,7 @@ Tento dokument popisuje, jak používat Bash v Azure Cloud Shell v [Azure Portal
 > Při každé relaci se automaticky ověřují pro Azure CLI.
 
 ### <a name="select-the-bash-environment"></a>Výběr prostředí bash
-Ověřte, že je v rozevíracím seznamu prostředí v levé části okna `Bash`prostředí uvedena ikona prostředí. <br>
+Ověřte, že se v rozevíracím seznamu prostředí v levé části okna prostředí uvádí `Bash`. <br>
 ![](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Nastavení předplatného
@@ -70,16 +66,16 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> Pomocí `--generate-ssh-keys` pokynů příkazového řádku Azure CLI vytvoří a nastaví veřejné a privátní klíče ve vašem virtuálním `$Home` počítači a adresáři. Ve výchozím nastavení jsou klíče umístěny v Cloud Shell `/home/<user>/.ssh/id_rsa` v `/home/<user>/.ssh/id_rsa.pub`a. Vaše `.ssh` složka je trvalá v imagi 5 GB připojené sdílené složky, která se používá k zachování `$Home`.
+> Pomocí `--generate-ssh-keys` dá rozhraní příkazového řádku Azure CLI k vytvoření a nastavení veřejných a privátních klíčů ve vašem VIRTUÁLNÍm počítači a `$Home` Directory. Ve výchozím nastavení jsou klíče umístěny v Cloud Shell v `/home/<user>/.ssh/id_rsa` a `/home/<user>/.ssh/id_rsa.pub`. Vaše složka `.ssh` trvala v imagi 5 GB připojené sdílené složky, která se používá k trvalému `$Home`.
 
-Vaše uživatelské jméno na tomto VIRTUÁLNÍm počítači bude vaše uživatelské jméno použité vUser@Azure:Cloud Shell ($).
+Vaše uživatelské jméno na tomto VIRTUÁLNÍm počítači bude vaše uživatelské jméno používané v Cloud Shell ($ User@Azure:).
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH do virtuálního počítače se systémem Linux
 1. Na panelu hledání Azure Portal vyhledejte název svého virtuálního počítače.
 2. Kliknutím na připojit získáte název virtuálního počítače a veřejnou IP adresu. <br>
    ![](media/quickstart/sshcmd-copy.png)
 
-3. Připojte se přes SSH k virtuálnímu počítači pomocí `ssh` příkazu cmd.
+3. Připojte se přes SSH k VIRTUÁLNÍmu počítači pomocí `ssh` cmd.
    ```
    ssh username@ipaddress
    ```

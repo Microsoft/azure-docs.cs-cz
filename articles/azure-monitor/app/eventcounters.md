@@ -8,10 +8,10 @@ author: cithomas
 ms.author: cithomas
 ms.date: 09/20/2019
 ms.openlocfilehash: 0762819239e8fd71a015f317776a94280806db53
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 10/22/2019
 ms.locfileid: "72677150"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters

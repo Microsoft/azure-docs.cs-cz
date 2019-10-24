@@ -1,17 +1,17 @@
 ---
 title: Optimalizace nákladů na propustnost v Azure Cosmos DB
 description: Tento článek vysvětluje, jak optimalizovat náklady na propustnost pro data uložená v Azure Cosmos DB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.author: rimman
-ms.openlocfilehash: d874f1ba8823ceddbef378decde127cef4ff8885
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 24812b8d97080d59fd50f4dc528117b3020fd8dc
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020105"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753269"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizujte zřízené náklady na propustnost v Azure Cosmos DB
 
@@ -53,19 +53,19 @@ Níže jsou uvedeny některé pokyny k rozhodování o strategii zřízené prop
 
 Jak je znázorněno v následující tabulce v závislosti na volbě rozhraní API, můžete zajistit propustnost v různých členitcích.
 
-|rozhraní API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
+|API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
 |----|----|----|
 |SQL API|Databáze|Kontejner|
-|Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Collection|
-|Rozhraní Cassandra API|Prostor klíčů|Table|
-|Rozhraní Gremlin API|Databázový účet|Graph|
-|Rozhraní Table API|Databázový účet|Table|
+|Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
+|Rozhraní API Cassandra|prostor klíčů|Tabulka|
+|Rozhraní Gremlin API|Databázový účet|Graf|
+|Rozhraní Table API|Databázový účet|Tabulka|
 
 Díky zajištění propustnosti na různých úrovních můžete optimalizovat náklady na základě charakteristik vašich úloh. Jak bylo zmíněno dříve, můžete programově a kdykoli zvětšit nebo zmenšit zřízenou propustnost pro jednotlivé kontejnery nebo souhrnně napříč sadou kontejnerů. Díky elastickému škálování propustnosti při změnách zatížení platíte jenom za propustnost, kterou jste nakonfigurovali. Pokud je váš kontejner nebo sada kontejnerů distribuován napříč několika oblastmi, je zaručená propustnost, kterou nakonfigurujete na kontejneru nebo sadě kontejnerů, ve všech oblastech.
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizace pomocí hodnocení – omezení vašich požadavků
 
-Pro úlohy, které nejsou citlivé na latenci, můžete zřídit menší propustnost a nechat aplikaci omezit rychlost, když Skutečná propustnost překročí zřízenou propustnost. Server bude žádost bez `RequestRateTooLarge` jakýchkoli požadavků (kód stavu HTTP 429) a `x-ms-retry-after-ms` vrátí hlavičku udávající, jak dlouho (v milisekundách) musí uživatel čekat, než bude požadavek opakovat. 
+Pro úlohy, které nejsou citlivé na latenci, můžete zřídit menší propustnost a nechat aplikaci omezit rychlost, když Skutečná propustnost překročí zřízenou propustnost. Server v tuto chvíli ukončí požadavek s `RequestRateTooLarge` (kód stavu HTTP 429) a vrátí hlavičku `x-ms-retry-after-ms`, která indikuje, jak dlouho (v milisekundách) musí uživatel čekat před opakováním žádosti. 
 
 ```html
 HTTP Status 429, 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 Nativní sady SDK (.NET/.NET Core, Java, Node. js a Python) implicitně zachytí tuto odpověď, a to s ohledem na server, který je zadaný na základě opakování, a zkuste požadavek zopakovat. Pokud k účtu nebudete mít souběžně více klientů, další pokus bude úspěšný.
 
-Pokud máte více než jednoho klienta, který je v současné době trvale spuštěný nad sazbou požadavků, výchozí počet opakování aktuálně nastavený na 9 nemusí být dostatečný. V takovém případě klient vyvolá `DocumentClientException` aplikaci se stavovým kódem 429. Výchozí počet opakování lze změnit nastavením `RetryOptions` v instanci ConnectionPolicy. Ve výchozím nastavení `DocumentClientException` se stavový kód 429 vrátí po kumulativní čekací době 30 sekund, pokud požadavek nadále funguje nad sazbou požadavku. K tomu dojde i v případě, že aktuální počet opakování je menší než maximální počet opakování, výchozí hodnota je 9 nebo uživatelem definovaná hodnota. 
+Pokud máte více než jednoho klienta, který je v současné době trvale spuštěný nad sazbou požadavků, výchozí počet opakování aktuálně nastavený na 9 nemusí být dostatečný. V takovém případě klient vyvolá `DocumentClientException` se stavovým kódem 429 pro aplikaci. Výchozí počet opakování lze změnit nastavením `RetryOptions` v instanci ConnectionPolicy. Ve výchozím nastavení se `DocumentClientException` se stavovým kódem 429 vrátí po kumulativní čekací době 30 sekund, pokud požadavek nadále funguje nad sazbou požadavku. K tomu dojde i v případě, že aktuální počet opakování je menší než maximální počet opakování, výchozí hodnota je 9 nebo uživatelem definovaná hodnota. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti kontejneru, operace požadavku se třikrát pokusí vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavená na 60, takže v tomto případě je výjimka kumulativního opakování pokusu v sekundách od prvního požadavku delší než 60 sekund.
 
@@ -139,7 +139,7 @@ K určení zřízené propustnosti pro novou úlohu můžete použít následuj�
 
 2. Doporučuje se vytvořit kontejnery s vyšší propustností, než se očekávalo, a pak podle potřeby škálovat dolů. 
 
-3. Doporučuje se použít jednu z nativních sad Azure Cosmos DB SDK, abyste využili výhody automatických opakovaných pokusů, když se požadavky získají s omezením četnosti. Pokud pracujete na platformě, která není podporovaná a používá REST API Cosmos DB, implementujte vlastní zásady opakování pomocí `x-ms-retry-after-ms` hlavičky. 
+3. Doporučuje se použít jednu z nativních sad Azure Cosmos DB SDK, abyste využili výhody automatických opakovaných pokusů, když se požadavky získají s omezením četnosti. Pokud pracujete na platformě, která není podporovaná a používá REST API Cosmos DB, implementujte vlastní zásady opakování pomocí hlavičky `x-ms-retry-after-ms`. 
 
 4. Ujistěte se, že kód aplikace bez problémů podporuje případ, kdy se všechny opakované pokusy nezdaří. 
 
@@ -173,7 +173,7 @@ Následující kroky vám pomůžou zajistit, aby vaše řešení byla při pou�
 
 10. Díky Azure Cosmos DB rezervované kapacity můžete pro tři roky získat až 65% významné slevy. Model rezervované kapacity Azure Cosmos DB je předem stanovený závazek na jednotky požadavků, které jsou potřeba v průběhu času. Tyto slevy jsou vrstveny, takže čím více jednotek požadavků budete používat v delší době, tím déle bude vaše sleva. Tyto slevy se projeví okamžitě. Všechny ru použité nad zřízené hodnoty se účtují na základě nerezervovaných nákladů na kapacitu. Další podrobnosti najdete v tématu [Cosmos DB rezervovanou kapacitu](cosmos-db-reserved-capacity.md)). Zvažte zakoupení rezervované kapacity k dalšímu snížení nákladů na náklady na zajištění propustnosti.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o optimalizaci nákladů v Azure Cosmos DB najdete v následujících článcích:
 

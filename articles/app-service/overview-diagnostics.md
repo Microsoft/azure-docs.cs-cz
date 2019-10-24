@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 5631b34fee64c6ad0917b95ec68fcd586717a1b0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 2919c7a2fa3a8912de0272af5131583988184704
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675176"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755517"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Přehled diagnostiky Azure App Service
 
@@ -92,7 +92,7 @@ Diagnostické nástroje obsahují pokročilejší diagnostické nástroje, kter�
 
 ### <a name="proactive-cpu-monitoring"></a>Proaktivní monitorování CPU
 
-Proaktivní monitorování procesoru poskytuje snadný a aktivní způsob, jak provést akci, když vaše aplikace nebo podřízený proces vaší aplikace spotřebovává vysoké prostředky procesoru. Můžete nastavit vlastní mezní hodnoty CPU, abyste dočasně zmírnili vysoký problém s PROCESORem, dokud nezjistíte skutečnou příčinu neočekávaného problému. Další informace najdete v tématu [zmírnění problémů s procesorem před tím, než k nim dojde](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html). Proaktivní monitorování procesoru poskytuje snadný a aktivní způsob, jak provést akci, když vaše aplikace nebo podřízený proces vaší aplikace spotřebovává vysoké prostředky procesoru. Můžete nastavit vlastní mezní hodnoty CPU, abyste dočasně zmírnili vysoký problém s PROCESORem, dokud nezjistíte skutečnou příčinu neočekávaného problému.
+Proaktivní monitorování procesoru poskytuje snadný a aktivní způsob, jak provést akci, když vaše aplikace nebo podřízený proces vaší aplikace spotřebovává vysoké prostředky procesoru. Můžete nastavit vlastní mezní hodnoty CPU, abyste dočasně zmírnili vysoký problém s PROCESORem, dokud nezjistíte skutečnou příčinu neočekávaného problému. Další informace najdete v tématu [zmírnění problémů s procesorem před tím, než k nim dojde](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html).
 
 ![Proaktivní monitorování CPU](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 

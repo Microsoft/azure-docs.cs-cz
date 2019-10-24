@@ -4,31 +4,31 @@ description: Postup přiřazení vlastní role Azure AD pro přiřazení Privile
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a3f6eb815677133f3d7fe6ce07d6abf23db1f04
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1c4963e6563db166566cff41d381295a8a9e576b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947335"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756363"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Přiřazení vlastní role Azure AD v Privileged Identity Management
 
 V tomto článku se dozvíte, jak pomocí Privileged Identity Management (PIM) vytvořit přiřazení za běhu a časově vázaný čas pro vlastní role vytvořené pro správu aplikací v prostředí pro správu Azure Active Directory (Azure AD).
 
 - Další informace o vytváření vlastních rolí pro delegování správy aplikací ve službě Azure AD najdete v tématu [vlastní role správců v Azure Active Directory (Preview)](../users-groups-roles/roles-custom-overview.md).
-- Pokud jste Privileged Identity Management ještě nepoužili, získáte další informace na adrese Začínáme [s používáním PIM](pim-getting-started.md).
-- Informace o tom, jak udělit přístup jinému správci ke správě Privileged Identity Management, najdete v tématu [udělení přístupu jiným správcům pro správu PIM](pim-how-to-give-access-to-pim.md).
+- Pokud jste zatím Privileged Identity Management ještě nepoužili, získáte další informace na adrese Začínáme [s používáním Privileged Identity Management](pim-getting-started.md).
+- Informace o tom, jak udělit přístup jinému správci ke správě Privileged Identity Management, najdete v tématu [udělení přístupu jiným správcům pro správu Privileged Identity Management](pim-how-to-give-access-to-pim.md).
 
 > [!NOTE]
 > Vlastní role Azure AD nejsou integrovány s předdefinovanými rolemi adresáře ve verzi Preview. Jakmile je funkce všeobecně dostupná, bude se Správa rolí konat v prostředí integrovaných rolí.
@@ -71,11 +71,11 @@ Privileged Identity Management může spravovat vlastní role, které můžete v
 1. Pokud je **trvalé** zaškrtávací políčko k dispozici a je k dispozici (v závislosti na nastavení role), můžete určit, zda je přiřazení trvalé. Zaškrtnutím políčka zajistěte, aby se přiřazení trvale způsobilo nebo trvale přiřadilo. Zrušte zaškrtnutí políčka a určete dobu trvání přiřazení.
 1. Pokud chcete vytvořit nové přiřazení role, klikněte na **Uložit** a pak na **Přidat**. Zobrazí se oznámení o stavu procesu přiřazení.
 
-Přiřazení role ověříte tak, že v otevřené roli vyberete **přiřazení** > přiřadíte a ověříte, že je přiřazení role správně identifikované jako oprávněné nebo aktivní.
+Přiřazení role ověříte tak, že v otevřené roli vyberete **přiřazení**  > **přiřadíte** a ověříte, že je přiřazení role správně identifikované jako oprávněné nebo aktivní.
 
  ![Zkontrolujte, jestli je přiřazení role zobrazené jako oprávněné nebo aktivní.](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Aktivace vlastní role Azure AD](azure-ad-custom-roles-assign.md)
 - [Odebrání nebo aktualizace přiřazení vlastní role Azure AD](azure-ad-custom-roles-update-remove.md)

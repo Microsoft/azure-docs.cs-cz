@@ -1,44 +1,43 @@
 ---
 title: Modelování dat v Azure Cosmos DB
 titleSuffix: Azure Cosmos DB
-description: Další informace o modelování dat v databázích NoSQL, rozdíly mezi modelování dat v relační databázi a databázi dokumentů.
-author: rimman
+description: Přečtěte si o modelování dat v databázích NoSQL, rozdílech mezi daty modelování v relační databázi a databází dokumentů.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
-ms.custom: rimman
-ms.openlocfilehash: da119b2858c6b6c7bbc99b40d340f79964e0fae3
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 523049ea3286445117f41147f3dd12a2c911d1ae
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467885"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755015"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Modelování dat v Azure Cosmos DB
 
 Databáze bez schématu, jako je například Azure Cosmos DB, usnadňují ukládání a dotazování nestrukturovaných a částečně strukturovaných dat, měli byste věnovat si nějaké informace o datovém modelu a získat tak většinu služby z pohledu výkonu a škálovatelnosti a nejnižší ze.
 
-Jak probíhá data k uložení? Jak se vaše aplikace bude k načtení a dotazování dat? Je vaše aplikace těžká pro čtení, nebo pro zápis?
+Jak se data budou ukládat? Jak vaše aplikace načítá data a dotazuje se na ně? Je vaše aplikace těžká pro čtení, nebo pro zápis?
 
-Po přečtení tohoto článku, budou moci odpovědět na následující otázky:
+Po přečtení tohoto článku budete moci zodpovědět následující otázky:
 
-* Co je modelování dat a proč by měli starat?
+* Co je modelování dat a proč se mám zajímat?
 * Jak se data modelování v Azure Cosmos DB liší od relační databáze?
-* Jak můžu express relací mezi daty nerelační databáze?
-* Při vkládání dat a když je propojení s daty?
+* Návody relace Express data v nerelační databázi?
+* Kdy vložit data a kdy se mám propojit s daty?
 
 ## <a name="embedding-data"></a>Vkládání dat
 
 Když začnete sestavovat data v Azure Cosmos DB pokusíte se zacházet s entitami jako se **samostatnými položkami** , které jsou reprezentované jako dokumenty JSON.
 
-V případě porovnání si nejdřív projdeme, jak můžeme modelovat data v relační databázi. Následující příklad ukazuje, jak osoba můžou být uložená v relační databázi.
+V případě porovnání si nejdřív projdeme, jak můžeme modelovat data v relační databázi. Následující příklad ukazuje, jak může být osoba uložená v relační databázi.
 
 ![Model relační databáze](./media/sql-api-modeling-data/relational-data-model.png)
 
 Při práci s relačními databázemi je strategie normalizovat všechna vaše data. Normalizace dat obvykle zahrnuje pořízení entity, jako je třeba osoba, a její rozdělení do diskrétních součástí. V předchozím příkladu může osoba mít několik záznamů s podrobnostmi kontaktů a také několik záznamů adres. Kontaktní údaje mohou být dále rozděleny další extrakcí společných polí, jako je typ. Totéž platí pro adresu, každý záznam může být typu *Home* nebo *Business*.
 
-Která bude obsahovat místní normalizace dat se **Vyhněte se ukládání redundantních dat** na každý záznam a místo toho odkazovat na data. Chcete-li v tomto příkladu číst osobu se všemi kontaktními údaji a adresami kontaktů, je nutné použít spojení k efektivnímu psaní (nebo denormalizaci) dat v době běhu.
+Základní GUID při normalizaci dat je **vyhnout se ukládání redundantních dat** u každého záznamu a místo toho je třeba odkazovat na data. Chcete-li v tomto příkladu číst osobu se všemi kontaktními údaji a adresami kontaktů, je nutné použít spojení k efektivnímu psaní (nebo denormalizaci) dat v době běhu.
 
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
@@ -46,7 +45,7 @@ Která bude obsahovat místní normalizace dat se **Vyhněte se ukládání redu
     JOIN ContactDetailType cdt ON cdt.Id = cd.TypeId
     JOIN Address a ON a.PersonId = p.Id
 
-Aktualizace jedné osobě s jejich kontaktní údaje a adresy vyžaduje operací zápisu napříč mnoha jednotlivé tabulky.
+Aktualizace jedné osoby s jejich kontaktními informacemi a adresami vyžaduje operace zápisu napříč mnoha jednotlivými tabulkami.
 
 Teď se podíváme na to, jak by bylo vhodné modelovat stejná data jako samostatná entita v Azure Cosmos DB.
 
@@ -69,31 +68,31 @@ Teď se podíváme na to, jak by bylo vhodné modelovat stejná data jako samost
         ]
     }
 
-Pomocí výše uvedeného postupu jsme denormalizováni záznam osoby tím, že **vložíte** všechny informace týkající se této osoby, jako jsou kontaktní údaje a adresy, do *jednoho dokumentu JSON* .
-Navíc protože jsme nejsou omezeny na pevné schéma máme flexibilitu k provádění akcí, jako byste měli zcela kontaktní údaje z různých tvarů.
+Pomocí výše uvedeného postupu jsme **denormalizováni** záznam osoby tím, že **vložíte** všechny informace týkající se této osoby, jako jsou kontaktní údaje a adresy, do *jednoho dokumentu JSON* .
+Kromě toho, vzhledem k tomu, že jsme neomezeni na pevné schéma, máme flexibilitu v tom, aby bylo možné provádět věci, jako byste měli k dispozici pouze kontaktní údaje různých tvarů.
 
 Načtení záznamu kompletní osoby z databáze je nově **jedna operace čtení** proti jednomu kontejneru a pro jednu položku. Aktualizace záznamu osoby s jeho kontaktními údaji a adresami je zároveň **jedna operace zápisu** na jednu položku.
 
-Podle denormalizing dat, vaše aplikace může potřebovat vydat menšího počtu dotazů a aktualizace dokončete běžných operací.
+Po denormalizaci dat může vaše aplikace potřebovat vydávat méně dotazů a aktualizací, aby bylo možné provádět běžné operace.
 
-### <a name="when-to-embed"></a>Kdy se má vložit
+### <a name="when-to-embed"></a>Kdy vložit
 
-Vložená data se obvykle používá při modely:
+V obecném případě použijte vložené datové modely v těchto případech:
 
 * Mezi entitami je **obsažena** relace.
-* Existují **jeden několik** vztahů mezi entitami.
-* Je vložená data, která **mění jen zřídka**.
+* Mezi entitami existuje relace **1:1** .
+* K dispozici jsou vložená data, která se **mění zřídka**.
 * Existují vložená data, která se nezvětšují **bez vazby**.
 * K dispozici jsou vložená data, která se **často dotazují**.
 
 > [!NOTE]
-> Obvykle Nenormalizovaná data modely poskytují lepší **čtení** výkonu.
+> Typicky denormalizované datové modely poskytují lepší výkon při **čtení** .
 
-### <a name="when-not-to-embed"></a>Kdy nepoužívat pro vložení
+### <a name="when-not-to-embed"></a>Kdy Nevkládat
 
 I když pravidlo palce v Azure Cosmos DB slouží k denormalizování všeho a vložení všech dat do jediné položky, může to vést k nějakým situacím, které by se měly vyvarovat.
 
-Využijte tento fragment kódu JSON.
+Proveďte tento fragment kódu JSON.
 
     {
         "id": "1",
@@ -111,7 +110,7 @@ Využijte tento fragment kódu JSON.
         ]
     }
 
-To může být to, co entita příspěvek s vložené komentáře může vypadat třeba jsme modelování byly typické blogu nebo systému CMS. Problém s v tomto příkladu je, že je pole komentáře **bez vazby**, což znamená, že neexistuje žádné omezení (praktické) počet komentářů může mít libovolný jeden příspěvek. Může se jednat o problém, protože velikost položky by mohla růst nekonečně velká.
+Může to být tím, že entita příspěvku s vloženými komentáři by vypadala jako při vytváření modelů typického blogu nebo CMS, systému. Problém s tímto příkladem je, že pole komentáře je **neohraničené**, což znamená, že neexistuje (praktické) omezení na počet komentářů, který může mít každý příspěvek. Může se jednat o problém, protože velikost položky by mohla růst nekonečně velká.
 
 Jak velikost položky zvětšuje schopnost přenášet data prostřednictvím sítě a také číst a aktualizovat položku ve velkém měřítku, bude to mít vliv na.
 
@@ -148,11 +147,11 @@ V takovém případě by bylo lepší zvážit následující datový model.
         ]
     }
 
-Tento model obsahuje tři nejaktuálnější Komentáře vložené v zásobníku post, což je pole s pevnou sadou atributů. Ostatní komentáře jsou seskupeny do dávek 100 komentářů a uloženy jako samostatné položky. Velikost dávky byla vybrána jako 100 protože fiktivní aplikaci mu umožní načíst 100 komentáře v čase.  
+Tento model obsahuje tři nejaktuálnější Komentáře vložené v zásobníku post, což je pole s pevnou sadou atributů. Ostatní komentáře jsou seskupeny do dávek 100 komentářů a uloženy jako samostatné položky. Velikost dávky byla zvolena jako 100, protože naše fiktivní aplikace umožňuje uživateli načíst 100 komentáře v čase.  
 
 Další případ, kdy vkládání dat není dobrý nápad, je, že vložená data se často používají napříč položkami a často se mění.
 
-Využijte tento fragment kódu JSON.
+Proveďte tento fragment kódu JSON.
 
     {
         "id": "1",
@@ -170,17 +169,17 @@ Využijte tento fragment kódu JSON.
         ]
     }
 
-To může představovat uložených portfolia osoby. Zvolili jsme vložení informací o akcií do každého dokumentu portfolia. V prostředí, ve kterém související data se často mění například akcie obchodní aplikace, vkládání dat, která se často mění se to znamenat pokaždé, když se prodávají stejných akcií se neustále aktualizuje každý dokument portfolia.
+To může představovat portfolio akcií osoby. Zvolili jsme vložení informací o akcií do každého dokumentu portfolia. V prostředí, kde se často mění související data, jako je burzovní obchodní aplikace, se vkládá data, která se často mění, což znamená, že průběžně aktualizujete každý dokument portfolia při každém obchodování se zásobami.
 
-Stock *zaza* může být prodávají stovky časy v jediném den a tisíce uživatelů může mít *zaza* na jejich portfolia. S datovým modelem, který je uveden výše budeme něco muset aktualizovat tisíce portfolia dokumenty v mnoha případech každý den, což vede k systému, který nebude jednoduše škálovat.
+Burzovní *Zaza* se můžou v jednom dni projednat spoustou času a tisíce uživatelů by na jejich portfolio mohli *Zaza* . S datovým modelem, jako je výše, bychom museli každý den aktualizovat spoustu tisíc dokumentů portfolia, což vede k systému, který se nebude dobře škálovat.
 
 ## <a name="referencing-data"></a>Odkazování na data
 
-Vkládání dat v mnoha případech je důležité, ale scénáře denormalizace dat způsobují více problémů, než stojí. Tak co můžeme udělat teď?
+Vkládání dat v mnoha případech je důležité, ale scénáře denormalizace dat způsobují více problémů, než stojí. Co to teď udělat?
 
-Relační databáze nejsou jediným místem, kde můžete vytvářet vztahy mezi entitami. V databázi dokumentů můžete mít informace v jednom dokumentu, které se vztahují k datům v jiných dokumentech. Nedoporučujeme vytvářet systémy, které by byly lépe vhodné pro relační databázi v Azure Cosmos DB, nebo v jakékoli jiné databázi dokumentů, ale jednoduché relace jsou přesné a můžou být užitečné.
+Relační databáze nejsou jediným místem, kde můžete vytvářet relace mezi entitami. V databázi dokumentů můžete mít informace v jednom dokumentu, které se vztahují k datům v jiných dokumentech. Nedoporučujeme vytvářet systémy, které by byly lépe vhodné pro relační databázi v Azure Cosmos DB, nebo v jakékoli jiné databázi dokumentů, ale jednoduché relace jsou přesné a můžou být užitečné.
 
-V následující JSON jsme se rozhodli používat na příklad, základní portfolio z dříve, ale tentokrát označujeme skladová položka Portfolio místo jeho vložení. Tímto způsobem, při skladová položka mění mnohokrát za den jediný dokument, který je potřeba aktualizovat je jeden uložených dokumentů.
+Ve formátu JSON níže jsme se rozhodli použít příklad portfolia akcií z předchozích verzí, ale tentokrát odkazujeme na skladovou položku v portfoliu místo jejího vložení. To znamená, že pokud se skladová položka často mění v průběhu dne, jediný dokument, který je třeba aktualizovat, je jediný dokument s cenným papírem.
 
     Person document:
     {
@@ -215,32 +214,32 @@ V následující JSON jsme se rozhodli používat na příklad, základní portf
         "pe": 75.82
     }
 
-Okamžité nevýhodou tohoto přístupu je ale pokud je vaše aplikace vyžaduje k zobrazení informací o každé populace, která se nachází při zobrazení portfolia osoby; v tomto případě je třeba provést více cest k databázi se načíst informace pro každý dokument uložených. Tady jsme rozhodnutí ke zvýšení efektivity operace zápisu, které stát mnohokrát za den, ale pak dojde k ohrožení bezpečnosti na operace čtení, které můžou mít menší dopad na výkon této konkrétní systém.
+Bezprostředním Nevýhodou tohoto přístupu je, že pokud je vaše aplikace nutná k zobrazení informací o každé populaci, která je držena při zobrazení portfolia osoby; v takovém případě byste potřebovali vytvořit více cest k databázi, aby se načetly informace pro každý burzovní dokument. Tady jsme udělali rozhodnutí, abychom vylepšili efektivitu operací zápisu, ke kterým dochází často během dne, ale zároveň se tím přestala ohrozit operace čtení, které mohou mít méně vliv na výkon tohoto konkrétního systému.
 
 > [!NOTE]
-> Normalizovaná datové modely **může vyžadovat více výměn** k serveru.
+> Normalizované datové modely **můžou vyžadovat více zpátečních cest** k serveru.
 
-### <a name="what-about-foreign-keys"></a>A co cizí klíče?
+### <a name="what-about-foreign-keys"></a>Co jsou cizí klíče?
 
-Protože nyní neexistuje koncept omezení, cizí klíč nebo jinak, případné relace mezi dokumentu, které máte v dokumentech jsou účinně "slabé odkazy" a se dá ověřit pomocí samotná databáze. Pokud chcete zajistit, aby data, která odkazuje dokument na skutečně existuje, je potřeba to udělat v aplikaci nebo pomocí aktivační události na straně serveru nebo uložené procedury ve službě Azure Cosmos DB.
+Vzhledem k tomu, že neexistuje koncept omezení, cizí klíč ani jinak, všechny vztahy mezi dokumenty, které máte v dokumentech, jsou efektivně "slabé odkazy" a nebudou ověřovány samotnými databázemi. Pokud chcete zajistit, aby data, která odkazuje na daný dokument, byla skutečně existovat, musíte to provést ve své aplikaci nebo pomocí triggerů na straně serveru nebo uložených procedur na Azure Cosmos DB.
 
-### <a name="when-to-reference"></a>Kdy se má odkazovat
+### <a name="when-to-reference"></a>Kdy odkazovat
 
-Obecně platí, normalizovaná data použít při modely:
+Obecně používejte normalizované datové modely v těchto případech:
 
-* Představující **jeden mnoho** vztahy.
-* Představující **many-to-many** vztahy.
-* Související data **často mění**.
-* Využívaných dat může být **bez vazby**.
+* Reprezentace vztahů **1: n** .
+* Reprezentace vztahů **m:n** .
+* Změny souvisejících dat jsou **často časté**.
+* Odkazovaná data by mohla být **neohraničená**.
 
 > [!NOTE]
-> Normalizace obvykle poskytuje lepší **zápisu** výkonu.
+> Obvykle normalizace poskytuje lepší výkon **zápisu** .
 
-### <a name="where-do-i-put-the-relationship"></a>Kam můžu dát relace?
+### <a name="where-do-i-put-the-relationship"></a>Kam se má vztah přesunout?
 
-Růst relace vám pomůže určit, který dokument pro uložení odkazu.
+Nárůst vztahu vám pomůže určit, ve kterém dokumentu se má odkaz uložit.
 
-Když se podíváte na JSON, níže, který modeluje vydavatele a knihy.
+Pokud se podíváme na JSON níže, které modely vydavatelé a knihy.
 
     Publisher document:
     {
@@ -258,9 +257,9 @@ Když se podíváte na JSON, níže, který modeluje vydavatele a knihy.
     ...
     {"id": "1000", "name": "Deep Dive into Azure Cosmos DB" }
 
-Pokud je malá růstu omezený počet knih podle vydavatele, pak ukládání odkaz knihy uvnitř vydavatele dokumentu může být užitečné. Nicméně pokud počet knih podle vydavatele je bez vazby, pak tento datový model povede k měnitelný a rostoucí pole, stejně jako v dokumentu vydavatele příklad výše.
+Pokud je počet knih na vydavatele malý s omezeným nárůstem, může být užitečné ukládat odkaz na knihu v dokumentu vydavatele. Pokud je ale počet knih na vydavatele neohraničený, pak tento datový model vede ke proměnlivým a rostoucím polím, jak je uvedeno výše v dokumentu ukázkový Vydavatel výše.
 
-Přepínání věcí kolem trochu způsobovaly v modelu, který představuje stále stejná data, ale teď předchází tyto velké proměnlivé kolekce.
+Přepnutím položek do bitu by došlo k tomu, že model, který stále představuje stejná data, ale nyní brání těmto velkým proměnlivým kolekcím.
 
     Publisher document:
     {
@@ -277,15 +276,15 @@ Přepínání věcí kolem trochu způsobovaly v modelu, který představuje st�
     ...
     {"id": "1000","name": "Deep Dive into Azure Cosmos DB", "pub-id": "mspress"}
 
-V předchozím příkladu jsme vynechali kolekci bez vazby na dokument vydavatele. Místo toho jsme právě obsahovat odkaz na vydavatele u každé knihy dokumentu.
+Ve výše uvedeném příkladu jsme zrušili nevázanou kolekci v dokumentu vydavatele. Místo toho máme v dokumentu knihy odkaz na vydavatele.
 
-### <a name="how-do-i-model-manymany-relationships"></a>Jak můžu modelovat vztahy m: n?
+### <a name="how-do-i-model-manymany-relationships"></a>Návody model řady: mnoho vztahů?
 
-V relační databázi *m: n* vztahy jsou často modelovány pomocí spojení tabulek, které právě spojení záznamy z jiných tabulek.
+V relačních databázích *mnoho: mnoho* relací je často modelů s spojovacími tabulkami, které slouží pouze k propojení záznamů z jiných tabulek.
 
-![Spojení tabulek](./media/sql-api-modeling-data/join-table.png)
+![Spojování tabulek](./media/sql-api-modeling-data/join-table.png)
 
-Můžete mít tendenci replikovat stejnou věc použití dokumentů a vytvořit datový model, který bude vypadat nějak takto.
+Můžete se rozhodnout, že budete replikovat stejnou věc s použitím dokumentů a vytvořit datový model, který vypadá podobně jako následující.
 
     Author documents:
     {"id": "a1", "name": "Thomas Andersen" }
@@ -304,10 +303,10 @@ Můžete mít tendenci replikovat stejnou věc použití dokumentů a vytvořit 
     {"authorId": "a1", "bookId": "b2" }
     {"authorId": "a1", "bookId": "b3" }
 
-To by fungovalo. Ale načítají se buď Autor s jejich knihy nebo načítání knihy s jeho autor by vždy vyžadují alespoň dva další dotazy na databázi. Jeden dotaz na spojovacího dokument a pak další dotaz pro načtení vlastního dokumentu je připojen.
+To bude fungovat. Načtením autora do svých knih nebo načtením knihy se svým autorem ale bude vždycky vyžadovat aspoň dva další dotazy na databázi. Jeden dotaz do spojovacího dokumentu a pak jiný dotaz k načtení aktuálně připojeného dokumentu.
 
-Pokud vše, co dělá tuto tabulku spojení je připevnit společně dva druhy dat, pak případně proč bezpečná není ho můžete vypustit zcela?
-Mějte na paměti.
+Pokud je všechny tyto spojovací tabulky spojování společně se dvěma částmi dat, nechcete ji úplně vyřadit?
+Vezměte v úvahu následující skutečnosti.
 
     Author documents:
     {"id": "a1", "name": "Thomas Andersen", "books": ["b1, "b2", "b3"]}
@@ -319,15 +318,15 @@ Mějte na paměti.
     {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
     {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
 
-Teď, když mám autora, okamžitě poznáte, které knihy napsaly, a naopak, pokud mám načtený dokument z knihy by znal ID autorů. Toto uloží zprostředkující dotazu proti spojení tabulek snižuje počet serverů zaokrouhlit zkracuje dobu odezvy, které má vaše aplikace provést.
+Teď, když mám autora, okamžitě poznáte, které knihy napsaly, a naopak, pokud mám načtený dokument z knihy by znal ID autorů. Tím se uloží tento zprostředkující dotaz proti tabulce JOIN, čímž se sníží počet přenosů serveru, které musí vaše aplikace dělat.
 
 ## <a name="hybrid-data-models"></a>Hybridní datové modely
 
-Podívali jsme se nyní vkládání (nebo denormalizing) a odkazující (nebo normalizace) data, mají jejich upsides a mají ohrožení, jako jsme viděli.
+Nyní jsme prohlédli vkládání (nebo denormalizace) a odkazování na data (nebo normalizaci), z nichž každá má své hrany a každá z nich má zabezpečení, jak jsme viděli.
 
-Vždy nemusí to být buď nebo není možné kombinovat věci trochu děsili toho.
+Nemusíte vždycky mít ani jednu z těchto možností, nemusíte děsili.
 
-Na základě vzorce konkrétní používání vaší aplikace a procesy, které můžou nastat případy, kde vložené kombinování a využívaných dat dává smysl a může vést k jednodušší aplikace logiky s menším počtem server zaokrouhlit zkracuje dobu odezvy a přitom zachovávat funkční úroveň výkonu.
+Na základě specifických vzorů a úloh používání vaší aplikace může dojít k případům, kdy je smysl kombinování integrovaných a odkazovaných dat, a může vést k jednodušší aplikační logice s menším počtem zpátečních cest serveru, přičemž stále udržuje dobrou úroveň výkonu.
 
 Vezměte v úvahu následující JSON.
 
@@ -372,19 +371,19 @@ Vezměte v úvahu následující JSON.
         ]
     }
 
-Tady jsme postupovali (většinou) vloženým modelem, kde data z jiné entity jsou vložené v nejvyšší úrovni dokumentu, ale ostatní data se odkazuje.
+Tady jsme (hlavně) následovali vložený model, ve kterém jsou data z jiných entit vložená v dokumentu nejvyšší úrovně, ale odkaz na další data.
 
-Když se podíváte na dokument adresáře, můžeme vidět některé zajímavé pole, když se podíváme na pole autoři. K dispozici `id` je pole, které používáme k odkazování zpátky na vytvořený dokument, standardní postupy v normalizovaném modelu, ale `name` také máme a `thumbnailUrl`. Mohli jsme aplikaci zablokovat `id` a ponechali ji, aby získala další informace, které potřebuje z příslušného autorského dokumentu pomocí odkazu, ale vzhledem k tomu, že naše aplikace zobrazuje jméno autora a miniaturu s každou knihou. zobrazí se zpráva o tom, že se na server na knihu v seznamu dá ušetřit zpráva tím, že se odnormalizují **data od** autora.
+Pokud se podíváte na dokument knihy, uvidíme několik zajímavých polí, když se podíváme na pole autorů. K dispozici je pole `id`, které slouží k odkazování zpátky na vytvořený dokument, standardní postupy v normalizovaném modelu, ale máme také `name` a `thumbnailUrl`. Mohli jsme zablokovat `id` a ponechá aplikaci k získání dalších informací, které potřebuje z příslušného autorského dokumentu pomocí odkazu, ale vzhledem k tomu, že naše aplikace zobrazuje jméno autora a miniaturu pro každou knihu, kterou jsme zobrazili. může uložit zpáteční cestu k serveru na knihu v seznamu tím, že se odnormalizují **data od** autora.
 
 Ujistěte se, že pokud se změnil název autora nebo chce aktualizovat fotografii, musíme si projít a aktualizovat každou knihu, kterou předtím publikovali, ale pro naši aplikaci, a to na základě předpokladu, že autoři nezměnili jejich názvy často, jedná se o přijatelné rozhodnutí o návrhu.  
 
-V tomto příkladu jsou **předem vypočtena agregace** hodnoty ušetřit nákladné zpracování na operace čtení. V tomto příkladu je některá data vloží do dokumentu Autor data, která se počítá v době běhu. Pokaždé, když se publikuje nová kniha, se vytvoří dokument adresáře **a** countOfBooks pole nastavena na počítané hodnoty na základě počtu dokumentů knihy, které existují konkrétní autora. Tyto optimalizace by bylo dobré v systémech čtení náročné kde jsme si může dovolit provádět výpočty na zápis k optimalizaci čtení.
+V tomto příkladu jsou **předem vypočtené agregované** hodnoty pro ukládání nákladného zpracování operace čtení. V příkladu jsou některá data vložená v dokumentu autora data počítána za běhu. Pokaždé, když se publikuje nová kniha, vytvoří se dokument knihy **a** pole countOfBooks se nastaví na vypočtenou hodnotu na základě počtu dokumentů knihy, které existují pro určitého autora. Tato optimalizace by byla dobrá pro čtení těžkých systémů, kde můžeme pro účely optimalizace čtení provádět výpočty na zápisy.
 
-Možnost používat model s předem vypočtené pole je možné, protože Azure Cosmos DB podporuje **transakce s několika dokumenty**. Mnoho úložišť nosql s dvojicí nelze provádět transakce mezi dokumenty a proto pomocníků pro rozhodnutí o návrhu, jako je například "always vložit všechno, co", z důvodu tohoto omezení. Pomocí služby Azure Cosmos DB můžete použít aktivační procedury na straně serveru nebo uložené procedury, které knihy vkládací a aktualizační autoři všechny v modelu ACID transakci. Teď nemusíte vkládat vše do jednoho dokumentu, abyste měli jistotu, že vaše data zůstanou konzistentní.
+Možnost mít model s předem vypočítanými poli je možná, protože Azure Cosmos DB podporuje transakce s **více dokumenty**. Mnoho úložišť NoSQL nemůže dělat transakce napříč dokumenty a proto rozhodování o návrhu, jako je "vždy vkládat vše", z důvodu tohoto omezení. Pomocí Azure Cosmos DB můžete použít triggery na straně serveru nebo uložené procedury, které v rámci transakce s kyselým obsahem vloží všechny knihy a tvůrci aktualizací. Teď **nemusíte** vkládat vše do jednoho dokumentu, abyste měli jistotu, že vaše data zůstanou konzistentní.
 
 ## <a name="distinguishing-between-different-document-types"></a>Odlišení mezi různými typy dokumentů
 
-V některých scénářích může být vhodné kombinovat různé typy dokumentů ve stejné kolekci. obvykle se jedná o případ, kdy chcete do stejného [oddílu](partitioning-overview.md)zasedat více souvisejících dokumentů. Můžete například do jedné kolekce umístit recenze knih a knih a rozdělit je `bookId`na oddíly. V takové situaci obvykle chcete do dokumentů přidat pole, které určuje jejich typ, aby je bylo možné odlišit.
+V některých scénářích může být vhodné kombinovat různé typy dokumentů ve stejné kolekci. obvykle se jedná o případ, kdy chcete do stejného [oddílu](partitioning-overview.md)zasedat více souvisejících dokumentů. Můžete například do jedné kolekce umístit recenze knih a knih a rozdělit je na oddíly `bookId`. V takové situaci obvykle chcete do dokumentů přidat pole, které určuje jejich typ, aby je bylo možné odlišit.
 
     Book documents:
     {
@@ -408,14 +407,14 @@ V některých scénářích může být vhodné kombinovat různé typy dokument
         "type": "review"
     }
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Největší takeaways v tomto článku jsou informace o tom, že se modelování ve světě neschematických dat důležité jako dříve.
+Největším poznatky z tohoto článku je pochopit, že modelování dat na světě bez schématu je důležité jako kdy dřív.
 
-Stejně jako neexistuje žádný jeden způsob, jak reprezentaci část dat na obrazovce, neexistuje žádný jeden způsob modelování dat. Potřebujete pochopit, aplikace a jak ji vytvoří, využívat a zpracovat data. Použitím některé zde uvedené pokyny, pak můžete nastavit o vytváření modelu, který řeší okamžité potřeby vaší aplikace. Pokud vaše aplikace musí změnit, můžete využít flexibilitu bez schématu databáze a využívat, měnit a snadnému rozšíření datového modelu.
+Stejně jako neexistuje žádný jediný způsob, jak znázornit data na obrazovce, neexistuje jediný způsob, jak modelovat data. Musíte pochopit, jak vaše aplikace bude vytvářet, spotřebovávat a zpracovávat data. Pak můžete použít některé z uvedených pokynů, které vám pomůžou vytvořit model, který řeší okamžité potřeby vaší aplikace. Když se vaše aplikace musí změnit, můžete využít flexibilitu databáze bez schématu, abyste mohli snadno použít tuto změnu a snadno rozvíjet datový model.
 
-Další informace o službě Azure Cosmos DB, najdete v tématu služby [dokumentaci](https://azure.microsoft.com/documentation/services/cosmos-db/) stránky.
+Další informace o Azure Cosmos DB najdete na stránce [dokumentace](https://azure.microsoft.com/documentation/services/cosmos-db/) ke službě.
 
-Abyste pochopili, jak horizontálního dělení dat napříč několika oddíly, najdete v tématu [dělení dat ve službě Azure Cosmos DB](sql-api-partition-data.md).
+Další informace o tom, jak horizontálních oddílů data napříč více oddíly, najdete [v tématu dělení dat v Azure Cosmos DB](sql-api-partition-data.md).
 
 Pokud chcete zjistit, jak modelovat data a rozdělit je na Azure Cosmos DB pomocí reálného příkladu, přečtěte si téma [modelování a vytváření oddílů dat – příklad reálného světa](how-to-model-partition-example.md).

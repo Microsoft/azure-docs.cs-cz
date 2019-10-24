@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: aa683e90a328e9525fa7d0a78981aa107818188a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678175"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755356"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -214,6 +214,82 @@ Datové modely [OpenTracing a specifikace datového modelu](https://opentracing.
 Další informace najdete v tématu [Application Insights datovém modelu telemetrie](../../azure-monitor/app/data-model.md). 
 
 Definice konceptů OpenTracing najdete v článku [specifikace](https://github.com/opentracing/specification/blob/master/specification.md) OpenTracing a [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
+
+## <a name="telemetry-correlation-in-opencensus-python"></a>Korelace telemetrie v OpenCensus Pythonu
+
+OpenCensus Python sleduje specifikace datového modelu `OpenTracing` popsané výše. Podporuje také [kontext trasování W3C](https://w3c.github.io/trace-context/) bez nutnosti žádné konfigurace.
+
+### <a name="incoming-request-correlation"></a>Korelace příchozích požadavků
+
+OpenCensus Python koreluje hlavičky kontextu trasování W3C z příchozích požadavků do rozsahů, které jsou generovány z požadavků samotných. OpenCensus to provede automaticky s integrací pro oblíbené webové aplikace, jako jsou `flask`, `django` a `pyramid`. Hlavičky kontextu trasování W3C stačí vyplnit [správným formátem](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)a odeslat žádost. Níže je uveden příklad `flask` aplikace, která to demonstruje.
+
+```python
+from flask import Flask
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+from opencensus.trace.samplers import ProbabilitySampler
+
+app = Flask(__name__)
+middleware = FlaskMiddleware(
+    app,
+    exporter=AzureExporter(),
+    sampler=ProbabilitySampler(rate=1.0),
+)
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8080, threaded=True)
+```
+
+Tím se na místním počítači spustí ukázková `flask` aplikace, která naslouchá na portu `8080`. Abychom mohli korelovat kontext trasování, pošleme požadavek na koncový bod. V tomto příkladu můžeme použít příkaz `curl`.
+```
+curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
+```
+Při prohlížení [formátu hlavičky kontextu trasování](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)se odvozují tyto informace: `version`: `00` 
+ `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736` 
+ `parent-id/span-id`: `00f067aa0ba902b7` 
+ 0: 1
+
+Pokud se podíváme na záznam žádosti, který byl odeslán do Azure Monitor, uvidíme pole vyplněná informacemi v hlavičce trasování.
+
+![Snímek z telemetrie požadavků v protokolech (Analytics) se zvýrazněnými poli hlavičky trasování ve červených polích](./media/opencensus-python/0011-correlation.png)
+
+Pole `id` je ve formátu `<trace-id>.<span-id>`, kde se `trace-id` předává z hlavičky trasování, která byla předána v požadavku, a `span-id` je vygenerované pole s osmi bajty pro tento rozsah. 
+
+Pole `operation_ParentId` je ve formátu `<trace-id>.<parent-id>`, kde `trace-id` i `parent-id` jsou pořízeny z hlavičky trasování, která byla předána v žádosti.
+
+### <a name="logs-correlation"></a>Korelace protokolů
+
+OpenCensus Python umožňuje korelaci protokolů obohacením záznamů protokolu s ID trasování, rozpětím ID a vzorkovacím příznakem. To se provádí instalací [integrace protokolování](https://pypi.org/project/opencensus-ext-logging/)OpenCensus. Do `LogRecord`s Pythonu se přidají následující atributy: `traceId`, `spanId` a `traceSampled`. Všimněte si, že se to projeví jenom u protokolovacích nástrojů vytvořených po integraci.
+Níže je uvedená ukázková aplikace, která to demonstruje.
+
+```python
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+    logger.warning('In the span')
+logger.warning('After the span')
+```
+Po spuštění tohoto kódu se v konzole zobrazí následující:
+```
+2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
+2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
+2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
+```
+Sledujte, jak je přítomný spanId pro zprávu protokolu, která je v rozpětí, což je stejný spanId, který patří do rozpětí s názvem `hello`.
 
 ## <a name="telemetry-correlation-in-net"></a>Korelace telemetrie v .NET
 

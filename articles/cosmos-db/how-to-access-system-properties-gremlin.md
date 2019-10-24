@@ -1,22 +1,22 @@
 ---
 title: Přístup k vlastnostem systémových dokumentů prostřednictvím Azure Cosmos DB graphu
 description: Přečtěte si, jak číst a zapisovat Cosmos DB vlastnosti systémového dokumentu přes rozhraní Gremlin API.
-author: olignat
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/10/2019
-ms.author: olignat
-ms.openlocfilehash: 4354d37a32bde006a9bee70c39df1fee9b269365
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+author: luisbosquez
+ms.author: lbosq
+ms.openlocfilehash: e762674936ab2fbdf198ca67f79acfa545127f02
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910654"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755058"
 ---
 # <a name="system-document-properties"></a>Vlastnosti systémového dokumentu
 
-Azure Cosmos DB má [systémové vlastnosti](https://docs.microsoft.com/rest/api/cosmos-db/databases) ```_ts```, jako jsou ```_self```, ```_attachments```, ```_rid```, a ```_etag``` v každém dokumentu. Modul Gremlin kromě toho přidává pro hrany vlastnosti ```inVPartition``` a ```outVPartition```. Ve výchozím nastavení jsou tyto vlastnosti k dispozici pro procházení. Je však možné do průchodu Gremlin zahrnout konkrétní vlastnosti nebo všechny.
+Azure Cosmos DB v každém dokumentu obsahuje [systémové vlastnosti](https://docs.microsoft.com/rest/api/cosmos-db/databases) , jako jsou ```_ts```, ```_self```, ```_attachments```, ```_rid``` a ```_etag```. Modul Gremlin kromě toho přidává pro hrany vlastnosti ```inVPartition``` a ```outVPartition```. Ve výchozím nastavení jsou tyto vlastnosti k dispozici pro procházení. Je však možné do průchodu Gremlin zahrnout konkrétní vlastnosti nebo všechny.
 
 ```
 g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_ts').create())
@@ -32,7 +32,7 @@ g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_etag').cre
 
 ## <a name="time-to-live-ttl"></a>Hodnota TTL (Time-To-Live)
 
-Pokud má kolekce zapnuté vypršení platnosti dokumentu ```ttl``` a pro ně je nastavená vlastnost Documents, bude tato vlastnost k dispozici v Gremlin procházení jako běžná vlastnost vrcholu nebo Edge. ```ProjectionStrategy```není nutné povolit expozici vlastností Time to Live.
+Pokud má kolekce zapnuté vypršení platnosti dokumentu a pro ně jsou ```ttl``` nastavené vlastnosti, bude tato vlastnost k dispozici v Gremlin procházení jako běžná vlastnost vrcholu nebo Edge. ```ProjectionStrategy``` není nutné povolit vystavení vlastností Time to Live.
 
 Vrchol vytvořený s následujícím procházením se automaticky odstraní za **123 sekund**.
 

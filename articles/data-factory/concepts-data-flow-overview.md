@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 94bde7b2e2a6f3902d83de90b06638035fd34397
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7f6c131737ca63d120e111b3ef4504a36dbd7fc1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679123"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754714"
 ---
-# <a name="what-are-mapping-data-flows"></a>Co jsou mapování toků dat?
+# <a name="what-are-mapping-data-flows"></a>Co jsou toky dat mapování?
 
 Mapování datových toků je vizuálně navržené transformace dat v Azure Data Factory. Datové toky umožňují technikům pro transformaci dat pracovat s grafickými logikami bez psaní kódu. Výsledné toky dat se spouštějí jako aktivity v rámci Azure Data Factory kanálů, které používají clustery Spark se škálováním na více systémů. Aktivity toku dat je možné provozovat prostřednictvím stávajících Data Factory plánování, řízení, toku a monitorování.
 
@@ -39,6 +39,38 @@ Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfi
 Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj**. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace.
 
 ![Kreslicí](media/data-flow/canvas2.png "Kreslicí")
+
+### <a name="azure-integration-runtime-data-flow-properties"></a>Vlastnosti toku dat prostředí Azure Integration runtime
+
+![Tlačítko ladit](media/data-flow/debugbutton.png "Tlačítko ladit")
+
+Po zahájení práce s toky dat v ADF budete chtít zapnout přepínač ladit pro toky dat v horní části uživatelského rozhraní prohlížeče. Tím se uvolní cluster Azure Databricks, který se má použít pro interaktivní ladění, náhledy dat a spuštění ladění kanálu. Velikost používaného clusteru můžete nastavit tak, že vyberete vlastní [Azure Integration runtime](concepts-integration-runtime.md). Relace ladění zůstane aktivní po dobu až 60 minut po poslední ukázce náhledu dat nebo posledního spuštění kanálu ladění.
+
+Při zprovozněníí kanálů s aktivitami toku dat použije ADF Azure Integration Runtime přidružený k [aktivitě](control-flow-execute-data-flow-activity.md) ve vlastnosti spustit na.
+
+Výchozí Azure Integration Runtime je malý cluster jednoho pracovního procesu s jedním jádrem, který je určený k tomu, aby bylo možné zobrazovat náhled dat a rychle spouštět kanály ladění s minimálními náklady. Pokud provádíte operace s velkými datovými sadami, nastavte větší konfiguraci Azure IR.
+
+Můžete nastavit, aby služba ADF udržovala fond prostředků clusteru (VM) nastavením hodnoty TTL ve vlastnostech toku dat Azure IR. Výsledkem bude rychlejší provádění úloh v následných aktivitách.
+
+#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Azure Integration runtime a strategie toku dat
+
+##### <a name="execute-data-flows-in-parallel"></a>Paralelní spouštění toků dat
+
+Pokud pracujete s paralelními toky dat v kanálu, vytvoří se ADF samostatné Azure Databricks clustery pro každé spuštění aktivity na základě nastavení Azure Integration Runtime připojených ke každé aktivitě. Chcete-li navrhovat paralelní spouštění v kanálech ADF, přidejte aktivity toku dat bez omezení priority v uživatelském rozhraní.
+
+Z těchto tří možností se tato možnost bude v nejkratší době provádět. Každý paralelní tok dat se ale spustí ve stejnou dobu u samostatných clusterů, takže řazení událostí je nedeterministické.
+
+##### <a name="overload-single-data-flow"></a>Jeden tok dat přetížení
+
+Pokud vložíte veškerou logiku do jediného toku dat, spustí se ADF v rámci stejného kontextu spuštění úlohy v jedné instanci clusteru Spark.
+
+Tato možnost může být obtížnější sledovat a řešit potíže, protože vaše obchodní pravidla a obchodní logika budou Jumble společně. Tato možnost také neposkytuje mnohem novou použitelnost.
+
+##### <a name="execute-data-flows-serially"></a>Sériové provádění toků dat
+
+Pokud provedete aktivity toku dat v rámci kanálu sériového portu a nastavíte hodnotu TTL pro konfiguraci Azure IR, pak ADF znovu použije výpočetní prostředky (virtuální počítače), což vede k rychlejšímu následnému spuštění. Pro každé spuštění se stále dostanete nový kontext Sparku.
+
+Z těchto tří možností to může trvat delší dobu, než se provede celý až do konce. Ale poskytuje čisté oddělení logických operací v každém kroku toku dat.
 
 ### <a name="configuration-panel"></a>Panel konfigurace
 
