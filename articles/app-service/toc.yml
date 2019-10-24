@@ -123,6 +123,8 @@
               href: deploy-continuous-deployment.md
             - name: Nasazení z místního Gitu
               href: deploy-local-git.md
+            - name: Nasazení s využitím GitHub Actions
+              href: deploy-github-actions.md
             - name: Nasazení pomocí šablony
               href: deploy-complex-application-predictably.md
         - name: Nastavení přihlašovacích údajů nasazení

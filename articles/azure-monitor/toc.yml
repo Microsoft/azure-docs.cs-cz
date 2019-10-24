@@ -639,6 +639,8 @@
                   href: insights/vminsights-workbooks.md
                 - name: Analýza dat s využitím dotazů na protokoly
                   href: insights/vminsights-log-search.md
+                - name: Upgrade agenta závislostí
+                  href: insights/vminsights-dependency-agent-maintenance.md
                 - name: Zákaz monitorování
                   href: insights/vminsights-optout.md
             - name: Řešení kapacity a výkonu

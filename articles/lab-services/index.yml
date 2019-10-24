@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure Lab Services
-summary: Naučte se využívat Azure Lab Services k rychlému nastavení testovacího prostředí pro vývoj, testování, hackathon nebo učebnu pro váš tým nebo studenty v cloudu.
+title: Dokumentace ke službě Azure DevTest Labs
+summary: Naučte se využívat Azure DevTest Labs k rychlému nastavení testovacího prostředí pro vývoj, testování, hackathon nebo učebnu pro váš tým nebo studenty v cloudu.
 metadata:
-  title: Dokumentace ke službě Azure Lab Services
-  description: Naučte se využívat Azure Lab Services k rychlému nastavení testovacího prostředí pro vývoj, testování, hackathon nebo učebnu pro váš tým nebo studenty v cloudu.
+  title: Dokumentace ke službě Azure DevTest Labs
+  description: Naučte se využívat Azure DevTest Labs k rychlému nastavení testovacího prostředí pro vývoj, testování, hackathon nebo učebnu pro váš tým nebo studenty v cloudu.
   services: lab-services
   ms.service: lab-services
   ms.subservice: 
@@ -12,75 +12,59 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 09/26/2019
-  ms.openlocfilehash: 63a5b41fba026cc52cdcc599bfdd38e1e27ad42d
-  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.openlocfilehash: 1cfb86a37068d4cd928081446e6bf9ad381bbd86
+  ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71326979"
+  ms.lasthandoff: 10/23/2019
+  ms.locfileid: "72790951"
 landingContent:
-- title: Podrobný přehled
+- title: Začínáme
   linkLists:
   - linkListType: overview
     links:
-    - text: Informace o Lab Services
+    - text: Informace o službě DevTest Labs
+      url: devtest-lab-overview.md
+    - text: Informace o DevTest Labs a Lab Services
       url: lab-services-overview.md
-    - text: Informace o službě DevTest Labs
-      url: devtest-lab-overview.md
-    - text: Informace o testovacích prostředích v učebnách
-      url: ./classroom-labs/classroom-labs-overview.md
-- title: DevTest Labs
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Informace o službě DevTest Labs
-      url: devtest-lab-overview.md
-  - linkListType: tutorial
-    links:
-    - text: Nastavení testovacího prostředí
-      url: tutorial-create-custom-lab.md
-    - text: Přístup k testovacímu prostředí
-      url: tutorial-use-custom-lab.md
   - linkListType: concept
     links:
     - text: Koncepce DevTest Labs
       url: devtest-lab-concepts.md
     - text: Oblíbené scénáře
       url: devtest-lab-guidance-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: Nastavení testovacího prostředí
+      url: tutorial-create-custom-lab.md
+    - text: Přístup k testovacímu prostředí
+      url: tutorial-use-custom-lab.md
+- title: Artefakty
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přidání artefaktu do virtuálního počítače
+      url: add-artifact-vm.md
+    - text: Přidání vlastních artefaktů
+      url: devtest-lab-artifact-author.md
+    - text: Určení povinných artefaktů
+      url: devtest-lab-mandatory-artifacts.md
+    - text: Řešení potíží se selháním artefaktů
+      url: devtest-lab-troubleshoot-artifact-failure.md
+- title: Prostředí
+  linkLists:
   - linkListType: how-to-guide
     links:
     - text: Konfigurace a použití veřejných prostředí
       url: devtest-lab-configure-use-public-environments.md
-    - text: Vytvoření a použití vlastního prostředí
+    - text: Vytvoření prostředí
       url: devtest-lab-create-environment-from-arm.md
-    - text: Vytvoření vlastní image
-      url: devtest-lab-create-custom-image-from-vm-using-portal.md
-    - text: Správa vzorců
-      url: devtest-lab-manage-formulas.md
-    - text: Přidání artefaktů do virtuálního počítače
-      url: add-artifact-vm.md
-- title: Testovací prostředí v učebnách
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Informace o testovacích prostředích v učebnách
-      url: ./classroom-labs/classroom-labs-overview.md
-  - linkListType: tutorial
-    links:
-    - text: Nastavení účtu testovacího prostředí
-      url: ./classroom-labs/tutorial-setup-lab-account.md
-    - text: Nastavení testovacího prostředí v učebně
-      url: ./classroom-labs/tutorial-setup-classroom-lab.md
-    - text: Přístup k testovacímu prostředí v učebně
-      url: ./classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
-    - text: Sledování využití testovacího prostředí v učebně
-      url: ./classroom-labs/tutorial-track-usage.md
-  - linkListType: concept
-    links:
-    - text: Koncepce testovacích prostředí v učebnách
-      url: ./classroom-labs/classroom-labs-concepts.md
-    - text: Využití testovacích prostředí při výuce
-      url: ./classroom-labs/classroom-labs-scenarios.md
+    - text: Použití služeb PaaS (Platform-as-a-Service)
+      url: use-paas-services.md
+    - text: Připojit k virtuální síti testovacího prostředí
+      url: connect-environment-lab-virtual-network.md
+    - text: Řešení potíží s chybami prostředí
+      url: troubleshoot-vm-environment-creation-failures.md
 - title: Procházení referenčního obsahu
   linkLists:
   - linkListType: reference
@@ -91,3 +75,15 @@ landingContent:
       url: /powershell/module/az.devtestlabs/#devtest_labs
     - text: REST
       url: /rest/api/dtl
+- title: Šablony
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vlastní image vs. Vzorec
+      url: devtest-lab-comparing-vm-base-image-types.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření vlastní image z virtuálního počítače
+      url: devtest-lab-create-custom-image-from-vm-using-portal.md
+    - text: Správa vzorců
+      url: devtest-lab-manage-formulas.md

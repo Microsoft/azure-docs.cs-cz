@@ -1,0 +1,48 @@
+- name: Vytváření reálných mobilních aplikací pomocí služeb Microsoftu
+  href: index.md
+- name: Fáze vytváření mobilních aplikací
+  items:
+    - name: Přehled
+      href: stages-overview.md
+    - name: Volba architektury pro vývoj mobilních aplikací
+      href: front-end-development-platform.md
+    - name: Plánování a návrh mobilní aplikace pomocí back-endových služeb
+      items:
+        - name: Authentication
+          href: authentication.md
+        - name: Úložiště dat
+          href: data-storage.md
+        - name: Bezserverové výpočetní prostředí
+          href: serverless-compute.md
+        - name: Úložiště Azure
+          href: azure-storage.md
+        - name: Aplikace v reálném čase
+          href: real-time.md
+    - name: Správa zdrojového kódu
+      href: code-hosting-services.md
+    - name: DevOps
+      items:
+        - name: Co je DevOps
+          href: devops.md
+        - name: Průběžné sestavování a integrace
+          href: continuous-integration.md
+        - name: Testování na skutečných zařízeních
+          href: test.md
+        - name: Průběžné doručování
+          href: continuous-delivery.md
+    - name: Analýza využití a chování uživatelů
+      href: analytics.md
+    - name: Oznamování chyb v reálném čase
+      href: diagnostics.md
+    - name: Nabízená oznámení
+      href: push-notifications.md
+- name: Další služby
+  items:
+    - name: Azure Cognitive Services
+      href: cognitive-services.md
+    - name: Azure Maps
+      href: azure-maps.md
+    - name: Azure CDN
+      href: azure-cdn.md
+    - name: Azure Search
+      href: azure-search.md

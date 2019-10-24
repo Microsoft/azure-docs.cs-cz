@@ -1,0 +1,92 @@
+- name: Dokumentace ke službě Lab Services
+  href: index.yml
+- name: Přejít na dokumentaci k DevTest Labs
+  href: ../devtest-lab-overview.md
+- name: Přehled
+  items:
+    - name: Informace o testovacích prostředích v učebnách
+      href: classroom-labs-overview.md
+    - name: Informace o Lab Services a DevTest Labs
+      href: ../lab-services-overview.md?toc=%2fazure%2flab-services%2fclassroom-labs%2ftoc.json
+- name: Kurzy
+  items:
+    - name: Nastavení účtu testovacího prostředí
+      href: tutorial-setup-lab-account.md
+    - name: Nastavení testovacího prostředí v učebně
+      href: tutorial-setup-classroom-lab.md
+    - name: Přístup k testovacímu prostředí v učebně
+      href: tutorial-connect-virtual-machine-classroom-lab.md
+    - name: Sledování využití testovacího prostředí v učebně
+      href: tutorial-track-usage.md
+- name: Koncepty
+  items:
+    - name: Koncepce testovacích prostředí v učebnách
+      href: classroom-labs-concepts.md
+    - name: Scénáře
+      items:
+        - name: Využití testovacích prostředí při výuce
+          href: classroom-labs-scenarios.md
+- name: Návody
+  items:
+    - name: Testovací prostředí v učebnách – typy tříd
+      items:
+        - name: Přehled typů tříd
+          href: class-types.md
+        - name: Hluboké učení v přirozeném zpracování
+          href: class-type-deep-learning-natural-processing.md
+        - name: Skriptování Shellu v Linuxu
+          href: class-type-shell-scripting-linux.md
+        - name: Etický hacking
+          href: class-type-ethical-hacking.md
+    - name: Vytvoření a konfigurace účtů testovacího prostředí (vlastník testovacího prostředí)
+      items:
+        - name: Vytvoření a správa účtů testovacího prostředí
+          href: how-to-manage-lab-accounts.md
+        - name: Konfigurace účtů testovacího prostředí
+          href: how-to-configure-lab-accounts.md
+        - name: Připojení vašich testovacích prostředí k partnerské virtuální síti
+          href: how-to-connect-peer-virtual-network.md
+        - name: Připojení nebo odpojení sdílené galerie imagí
+          href: how-to-attach-detach-shared-image-gallery.md
+    - name: Vytvoření a konfigurace testovacích prostředí v učebnách (instruktor)
+      items:
+        - name: Vytváření a správa testovacích prostředí v učebnách
+          href: how-to-manage-classroom-labs.md
+        - name: 'Nastavení, přizpůsobení a publikování šablon'
+          href: how-to-create-manage-template.md
+        - name: Nastavení a správa fondu virtuálních počítačů
+          href: how-to-set-virtual-machine-passwords.md
+        - name: Přidání a správa uživatelů testovacího prostředí
+          href: how-to-configure-student-usage.md
+        - name: Vytvoření a správa plánů
+          href: how-to-create-schedules.md
+        - name: Využití galerie sdílených imagí
+          href: how-to-use-shared-image-gallery.md
+        - name: Povolení připojení ke vzdálené ploše pro Linux
+          href: how-to-enable-remote-desktop-linux.md
+        - name: Povolení vnořené virtualizace v šabloně virtuálního počítače
+          href: how-to-enable-nested-virtualization-template-vm.md
+        - name: Vytvoření prostředí s více virtuálními počítači v rámci virtuálního počítače podle šablony
+          href: how-to-enable-multi-vm-environment.md
+    - name: Připojení k virtuálním počítačům v testovacích prostředích v učebnách (student)
+      items:
+        - name: Přístup k testovacím prostředím v učebnách
+          href: how-to-use-classroom-lab.md
+        - name: Použití připojení ke vzdálené ploše pro linuxové virtuální počítače
+          href: how-to-use-remote-desktop-linux-student.md
+        - name: Nastavení nebo resetování hesel pro virtuální počítače
+          href: how-to-set-virtual-machine-passwords-student.md
+- name: Referenční informace
+  items:
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/labservices/'
+- name: Zdroje a prostředky
+  items:
+    - name: Aktualizace Azure
+      href: 'https://azure.microsoft.com/updates/?product=lab-services'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/lab-services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
+    - name: Nejčastější dotazy
+      href: classroom-labs-faq.md

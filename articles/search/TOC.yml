@@ -1,20 +1,24 @@
-- name: Dokumentace ke službě Azure Search
+- name: Dokumentace ke kognitivnímu hledání Azure
   href: index.yml
 - name: Přehled
-  items:
-    - name: Co je Azure Search?
-      href: search-what-is-azure-search.md
-- name: Šablony Rychlý start
   expanded: true
+  items:
+    - name: Co je kognitivní hledání Azure?
+      href: search-what-is-azure-search.md
+    - name: Co je nového
+      href: whats-new.md
+- name: Šablony Rychlý start
   items:
     - name: Vytvoření služby
       href: search-create-service-portal.md
     - name: Portál
       items:
-        - name: Vytvoření a použití indexu
+        - name: Vytvoření vyhledávacího indexu
           href: search-get-started-portal.md
-        - name: Rozšíření s využitím kognitivního hledání (AI)
+        - name: Vytvoření sady kognitivních dovedností
           href: cognitive-search-quickstart-blob.md
+        - name: Vytvoření úložiště znalostí
+          href: knowledge-store-create-portal.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -79,7 +83,7 @@
   items:
     - name: Fulltextové vyhledávání
       href: search-lucene-query-architecture.md
-    - name: Kognitivní hledání
+    - name: Obohacení AI
       href: cognitive-search-concept-intro.md
     - name: Sady dovedností
       href: cognitive-search-working-with-skillsets.md
@@ -87,6 +91,8 @@
       href: knowledge-store-concept-intro.md
     - name: Projekce
       href: knowledge-store-projection-overview.md
+    - name: Přírůstkové indexování
+      href: cognitive-search-incremental-indexing-conceptual.md
 - name: Návody
   items:
     - name: Plánování
@@ -209,6 +215,8 @@
           href: search-howto-schedule-indexers.md
         - name: Pole map
           href: search-indexer-field-mappings.md
+        - name: Přírůstkové indexování
+          href: search-howto-incremental-index.md
         - name: Připojení ke spravované instanci SQL
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Připojení k virtuálním počítačům s SQL Serverem
@@ -247,8 +255,6 @@
           href: cognitive-search-resources-documentation.md
         - name: Knowledge Store (Preview)
           items:
-            - name: Vytvoření znalostní databáze na webu Azure Portal
-              href: knowledge-store-create-portal.md
             - name: Vytvoření s využitím architektury REST a Postman
               href: knowledge-store-create-rest.md
             - name: Zobrazení s využitím Průzkumníka služby Storage

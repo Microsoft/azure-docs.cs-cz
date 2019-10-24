@@ -719,6 +719,8 @@
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: Přidání spravované instance do skupiny převzetí služeb při selhání
           href: sql-database-managed-instance-failover-group-tutorial.md
+        - name: Migrace místních uživatelů a skupin
+          href: tutorial-managed-instance-azure-active-directory-migration.md
     - name: Koncepty
       items:
         - name: Referenční informace k rozhraní API pro správu
