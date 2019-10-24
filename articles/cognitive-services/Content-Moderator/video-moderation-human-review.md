@@ -3,19 +3,19 @@ title: Moderování videa pomocí recenze pro člověka – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Pro střední nevhodný obsah použijte moderování videa a nástroje pro kontrolu člověkem s podporou počítače.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.author: sajagtap
-ms.openlocfilehash: 69075f6b36a0be7cd4d0dd4453ea9cdfc08d77dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561172"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754158"
 ---
 # <a name="video-moderation-with-human-review"></a>Moderování videa díky lidské kontrole
 
@@ -100,9 +100,9 @@ Videa obvykle využívají hlas nad tím, že se vyžaduje moderování a také 
 
 ![zobrazení přepisu nástroje pro kontrolu videa](images/video-review-transcript-view.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Začněte s rychlým [startem pro moderování videa](video-moderation-api.md).
+- Začněte s [rychlým startem pro moderování videa](video-moderation-api.md).
 - Naučte se generovat [recenze videí](video-reviews-quickstart-dotnet.md) pro své lidské kontrolory ze svého moderovaného výstupu.
 - Přidejte [recenze přepisu videa](video-transcript-reviews-quickstart-dotnet.md) do recenze videí.
 - Podrobné informace o tom, jak vyvíjet [kompletní řešení pro moderování videa](video-transcript-moderation-review-tutorial-dotnet.md), najdete v podrobném kurzu.

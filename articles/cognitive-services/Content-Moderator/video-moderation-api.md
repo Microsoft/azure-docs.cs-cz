@@ -3,19 +3,19 @@ title: Analýza obsahu videa pro nevhodný materiál C# v Content moderator
 titleSuffix: Azure Cognitive Services
 description: Analýza obsahu videa pro různé problematické materiály pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 1742db702a899d47110177532f5e85e74a59d91c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564311"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755242"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analýza obsahu videa pro nevhodný materiál vC#
 
@@ -23,7 +23,7 @@ V tomto článku najdete informace a ukázky kódu, které vám pomůžou začí
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 
 ## <a name="set-up-azure-resources"></a>Nastavení prostředků Azure
@@ -40,7 +40,7 @@ V Azure Portal přejděte do nového předplatného AMS a v postranní nabídce 
 
 V části **aplikace Azure AD** vyberte **vytvořit novou** a pojmenujte novou registraci aplikace služby Azure AD (například "VideoModADApp"). Klikněte na **Uložit** a počkejte několik minut, než se aplikace nakonfiguruje. Pak by se měla zobrazit nová registrace aplikace v části **aplikace Azure AD** stránky.
 
-Vyberte registraci aplikace a klikněte na tlačítko **Spravovat aplikaci** pod ním. Poznamenejte si hodnotu v poli **ID aplikace** . budete ho potřebovat později. Vyberte **Nastavení** > **klíče**a zadejte popis nového klíče (například "VideoModKey"). Klikněte na **Uložit**a pak si všimněte nové hodnoty klíče. Zkopírujte tento řetězec a uložte ho někam do zabezpečení.
+Vyberte registraci aplikace a klikněte na tlačítko **Spravovat aplikaci** pod ním. Poznamenejte si hodnotu v poli **ID aplikace** . budete ho potřebovat později. Vyberte **nastavení**  > **klíče**a zadejte popis nového klíče (například "VideoModKey"). Klikněte na **Uložit**a pak si všimněte nové hodnoty klíče. Zkopírujte tento řetězec a uložte ho někam do zabezpečení.
 
 Podrobný návod k výše uvedenému procesu najdete v tématu Začínáme [s ověřováním Azure AD](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
 
@@ -48,7 +48,7 @@ Až to uděláte, můžete použít procesor médií pro moderování videa dvě
 
 ## <a name="use-azure-media-services-explorer"></a>Použití Průzkumníka Azure Media Services
 
-Azure Media Services Explorer je uživatelsky přívětivý front-end pro AMS. Použijte ho k procházení účtu AMS, nahrávání videí a skenování obsahu pomocí procesoru Content Moderator Media. Můžete si ho stáhnout a [](https://github.com/Azure/Azure-Media-Services-Explorer/releases)nainstalovat z GitHubu. Další informace najdete v [blogovém příspěvku o Azure Media Services v Průzkumníkovi](https://azure.microsoft.com/blog/managing-media-workflows-with-the-new-azure-media-services-explorer-tool/) .
+Azure Media Services Explorer je uživatelsky přívětivý front-end pro AMS. Použijte ho k procházení účtu AMS, nahrávání videí a skenování obsahu pomocí procesoru Content Moderator Media. Můžete si ho stáhnout a nainstalovat z [GitHubu](https://github.com/Azure/Azure-Media-Services-Explorer/releases). Další informace najdete v [blogovém příspěvku o Azure Media Services v Průzkumníkovi](https://azure.microsoft.com/blog/managing-media-workflows-with-the-new-azure-media-services-explorer-tool/) .
 
 ![Azure Media Services Explorer s Content Moderator](images/ams-explorer-content-moderator.PNG)
 
@@ -57,8 +57,8 @@ Azure Media Services Explorer je uživatelsky přívětivý front-end pro AMS. P
 1. V aplikaci Visual Studio vytvořte nový projekt **konzolové aplikace (.NET Framework)** a pojmenujte ho **VideoModeration**. 
 1. Pokud vaše řešení obsahuje i jiné projekty, vyberte tento projekt jako jediný spouštěný projekt.
 1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na svůj projekt v Průzkumníku řešení a vyberte **Spravovat balíčky NuGet**. Potom vyhledejte a nainstalujte následující balíčky:
-    - windowsazure.mediaservices
-    - windowsazure.mediaservices.extensions
+    - windowsazure. MediaServices
+    - windowsazure. MediaServices. Extensions
 
 ## <a name="add-video-moderation-code"></a>Přidat kód pro moderování videa
 
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Nastavení odkazů na prostředky
 
-Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole obsahují informace potřebné pro připojení k předplatnému AMS. Vyplňte je hodnotami, které jste získali v krocích výše. Všimněte si `CLIENT_ID` , že je hodnota **ID aplikace** vaší aplikace Azure AD a `CLIENT_SECRET` je hodnota "VideoModKey", kterou jste pro tuto aplikaci vytvořili.
+Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole obsahují informace potřebné pro připojení k předplatnému AMS. Vyplňte je hodnotami, které jste získali v krocích výše. Všimněte si, že `CLIENT_ID` je hodnota **ID aplikace** vaší aplikace Azure AD a `CLIENT_SECRET` je hodnota "VideoModKey", kterou jste pro tuto aplikaci vytvořili.
 
 ```csharp
 // declare constants and globals
@@ -118,9 +118,9 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 ```
 
-Pokud chcete použít místní videosoubor (nejjednodušší případ), přidejte ho do projektu a zadejte jeho cestu jako `INPUT_FILE` hodnotu (relativní cesty jsou relativní vzhledem ke spouštěcímu adresáři).
+Pokud chcete použít místní videosoubor (nejjednodušší případ), přidejte ho do projektu a zadejte jeho cestu jako hodnotu `INPUT_FILE` (relativní cesty jsou relativní vzhledem k adresáři spuštění).
 
-Budete také muset vytvořit soubor _přednastavení. JSON_ v aktuálním adresáři a použít ho k zadání čísla verze. Příklad:
+Budete také muset vytvořit soubor _přednastavení. JSON_ v aktuálním adresáři a použít ho k zadání čísla verze. Například:
 
 ```JSON
 {
@@ -364,15 +364,15 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 Po dokončení úlohy Moderování obsahu Analyzujte odpověď JSON. Skládá se z těchto elementů:
 
 - Shrnutí informací o videu
-- **Nasnímků** jako"fragmenty"
+- **Nasnímků** jako "**fragmenty**"
 - **Klíčové snímky** jako "**události**" s příznakem "události" s **reviewRecommended "(= true nebo false)"** na základě výsledků z **dospělého** a **pikantní**
 - možnost **Start**, **Duration**, **totalDuration**a **timestamp** jsou v "Ticks". Rozdělte podle **časové osy** k získání počtu v sekundách.
  
 > [!NOTE]
-> - `adultScore`představuje potenciální přítomnost a předpověď skóre obsahu, který může být v určitých situacích považován za zřejmý nebo dospělý.
-> - `racyScore`představuje potenciální stav a předpověď skóre obsahu, který může být v určitých situacích považovaný za pohlavní sugestivní nebo vyspělý.
-> - `adultScore`a `racyScore` jsou mezi 0 a 1. Čím vyšší je skóre, tím vyšší je model, který předpokládá, že se kategorie může použít. Tato verze Preview spoléhá na místo ručně kódovaných výsledků z statistického modelu. Doporučujeme, abyste při testování pomocí vlastního obsahu určili, jak jednotlivé kategorie odpovídají vašim požadavkům.
-> - `reviewRecommended`je buď true, nebo false v závislosti na vnitřních prahech skóre. Zákazníci by měli posoudit, jestli tuto hodnotu použít, nebo se rozhodnout o vlastních prahech na základě zásad obsahu.
+> - `adultScore` představuje potenciální přítomnost a předpověď skóre obsahu, který může být v určitých situacích považován za zřejmý nebo dospělý.
+> - `racyScore` představuje potenciální situaci v důsledku přítomnosti a předpovědi obsahu, která může být v určitých situacích považovaná za pohlavní sugestivnía nebo v vyspělosti.
+> - `adultScore` a `racyScore` jsou mezi 0 a 1. Čím vyšší je skóre, tím vyšší je model, který předpokládá, že se kategorie může použít. Tato verze Preview spoléhá na místo ručně kódovaných výsledků z statistického modelu. Doporučujeme, abyste při testování pomocí vlastního obsahu určili, jak jednotlivé kategorie odpovídají vašim požadavkům.
+> - v závislosti na prahových hodnotách interního skóre je `reviewRecommended` buď true, nebo false. Zákazníci by měli posoudit, jestli tuto hodnotu použít, nebo se rozhodnout o vlastních prahech na základě zásad obsahu.
 
 ```json
 {
@@ -426,12 +426,12 @@ Po dokončení úlohy Moderování obsahu Analyzujte odpověď JSON. Skládá se
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se generovat [recenze videí](video-reviews-quickstart-dotnet.md) z výstupu pro moderování.
 
-Přidejte [](video-transcript-moderation-review-tutorial-dotnet.md) do recenze videí moderování přepisu.
+Přidejte do recenze videí [moderování přepisu](video-transcript-moderation-review-tutorial-dotnet.md) .
 
-Projděte si podrobný kurz týkající se sestavení kompletního [řešení pro moderování videa a přepisu](video-transcript-moderation-review-tutorial-dotnet.md).
+Projděte si podrobný kurz týkající se sestavení [kompletního řešení pro moderování videa a přepisu](video-transcript-moderation-review-tutorial-dotnet.md).
 
 [Stáhněte si řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další Content moderator rychlý Start pro .NET.

@@ -3,19 +3,19 @@ title: Konfigurovat nastavení nástroje pro kontrolu – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Pomocí nástroje pro revize můžete nakonfigurovat nebo načíst svůj tým, značky, konektory, pracovní postupy a přihlašovací údaje pro Content Moderator.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: sajagtap
-ms.openlocfilehash: 5e12806aca7c53c254cc43c8ff5bb8d314f9993e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882734"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757436"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurace nástroje pro recenze
 
@@ -25,7 +25,7 @@ ms.locfileid: "68882734"
 
 ## <a name="manage-team-and-subteams"></a>Spravovat tým a subtýmy
 
-Karta **tým** umožňuje spravovat&mdash;skupiny uživatelů a subtýmů, kteří mohou být upozorněni při zahájení určitých [lidských](../review-api.md#reviews) kontrol. Můžete mít pouze jeden tým (který vytvoříte při registraci pomocí nástroje pro revizi), ale můžete vytvořit více subtýmů. Správce týmu může pozvat členy, nastavit jejich oprávnění a přiřadit je různým subtýmům.
+Na kartě **tým** můžete spravovat svůj tým a subtým &mdash;groups uživatelů, kteří mohou být upozorněni, když se spustí některé [lidské recenze](../review-api.md#reviews) . Můžete mít pouze jeden tým (který vytvoříte při registraci pomocí nástroje pro revizi), ale můžete vytvořit více subtýmů. Správce týmu může pozvat členy, nastavit jejich oprávnění a přiřadit je různým subtýmům.
 
 ![Kontrola nastavení týmu nástroje](images/settings-2-team.png)
 
@@ -35,7 +35,7 @@ V této části se dozvíte, jak vytvářet dílčí týmy a rychle přiřazovat
 
 ### <a name="create-a-subteam"></a>Vytvořit subtým
 
-Přejděte do části subtýmy a klikněte na **Přidat dílčí tým**. Do dialogového okna zadejte název svého subtýmu a klikněte na **Uložit**.
+Přejděte do části **subtýmy** a klikněte na **Přidat dílčí tým**. Do dialogového okna zadejte název svého subtýmu a klikněte na **Uložit**.
 
 ![Název subtýmu](images/1-Teams-2.PNG)
 
@@ -43,7 +43,7 @@ Přejděte do části subtýmy a klikněte na **Přidat dílčí tým**. Do dial
 
 Nemůžete přiřadit někoho do subtýmu, pokud už nejsou členem výchozího týmu, takže musíte nejdřív přidat kontrolory k výchozímu týmu. Na kartě **tým** klikněte na **pozvat** .
 
-![Pozvat uživatele](images/invite-users.png)
+![Pozvání uživatelů](images/invite-users.png)
 
 #### <a name="assign-teammates-to-subteam"></a>Přiřadit ostatními týmu k subtýmu
 
@@ -64,9 +64,9 @@ Pokud jste členem více než jednoho subtýmu, můžete mezi těmito seskupení
 
 ![Přepínání mezi subskupinami](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>Značky
 
-**Značky** kartu umožňuje definovat vlastní moderování značky kromě značek moderování dvě výchozí&mdash;**isadult** (**a**) **isracy**  (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
+Karta **značky** vám umožňuje definovat vlastní značky moderování kromě dvou výchozích značek moderování &mdash;**nezletilá** (**a**) a **isracy** (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
 
 ![Zobrazení značek, včetně zaškrtávacích políček "je viditelné"](images/tags-4-disable.png)
 
@@ -74,9 +74,9 @@ Pokud jste členem více než jednoho subtýmu, můžete mezi těmito seskupení
 
 Chcete-li vytvořit novou značku, je nutné do příslušných polí zadat krátký kód, název a popis.
 
-- **Krátký kód**: Zadejte pro značku kód se dvěma písmeny. Příklad:
-- **Název**: Zadejte krátký a popisný název značky malými písmeny bez mezer. Příklad: **isbullying**.
-- **Popis**: (volitelné) zadejte popis druhu obsahu, který vaše značka cílí. Příklad: **Znázornění nebo instance počítačové bullyingy**.
+- **Krátký kód**: zadejte pro značku kód se dvěma písmeny. Příklad:
+- **Název**: zadejte krátký a popisný název značky malými písmeny bez mezer. Příklad: **isbullying**.
+- **Popis**: (volitelné) zadejte popis druhu obsahu, který vaše značka cílí. Příklad: **znázornění nebo instance počítačové bullyingy**.
 
 Kliknutím na **Přidat** přidejte značku a po dokončení vytváření značek klikněte na **Uložit** .
 
@@ -94,8 +94,8 @@ Výchozí konektor při vytváření pracovního postupu je konektor Content Mod
 
 [Nástroj pro kontrolu](./human-in-the-loop.md) zahrnuje následující konektory:
 
-- Rozhraní API pro rozpoznávání emocí (Preview)
-- Rozhraní API pro rozpoznávání tváře
+- Rozhraní Emotion API
+- Rozhraní Face API
 - Cloudová služba PhotoDNA
 - Rozhraní Text Analytics API
 
@@ -105,13 +105,13 @@ Pokud chcete přidat konektor (a zpřístupnit ho pro použití v [pracovních p
 
 ![Nastavení konektorů Content Moderator](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>Pracovní postupy
 
 Karta **pracovní postupy** vám umožní spravovat [pracovní postupy](../review-api.md#workflows). Pracovní postupy jsou cloudové filtry pro obsah a pracují s konektory k řazení obsahu různými způsoby a provádějí příslušné akce. Tady můžete definovat, upravovat a testovat pracovní postupy. Pokyny k tomu, jak to udělat, najdete v tématu [Definování a použití pracovních postupů](Workflows.md) .
 
 ![Nastavení pracovního postupu Content Moderator](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>Pověření
+## <a name="credentials"></a>Přihlašovací údaje
 
 Karta **pověření** poskytuje rychlý přístup k vašemu Content moderator klíč předplatného, který budete potřebovat k přístupu ke všem službám pro moderování z volání REST nebo klientské sady SDK.
 
@@ -125,7 +125,7 @@ Pokud jste vytvořili [prostředek Content moderator](https://ms.portal.azure.co
 
 ![Content Moderator klíče v Azure Portal](images/credentials-azure-portal-keys.PNG)
 
-Na kartě [Kontrola](https://contentmoderator.cognitive.microsoft.com)přihlašovacích **údajů** nástroje otevřete podokno **Nastavení pracovního postupu** , vyberte **Upravit**a vložte svůj klíč do pole **OCP-APIM-Subscription-Key** . Nyní budou pracovní postupy, které volají rozhraní API pro moderování, používat vaše přihlašovací údaje Azure.
+Na kartě [Kontrola](https://contentmoderator.cognitive.microsoft.com) **přihlašovacích údajů** nástroje otevřete podokno **Nastavení pracovního postupu** , vyberte **Upravit**a vložte svůj klíč do pole **OCP-APIM-Subscription-Key** . Nyní budou pracovní postupy, které volají rozhraní API pro moderování, používat vaše přihlašovací údaje Azure.
 
 > [!NOTE]
 > Další dvě pole v podokně **Nastavení pracovního postupu** slouží pro vlastní seznamy termínů a obrázků. Další informace o těchto tématech najdete v příručkách [vlastní podmínka](../try-terms-list-api.md) nebo [vlastní obrázky](../try-image-list-api.md) .
@@ -138,6 +138,6 @@ Pokud chcete používat klíč Azure s rozhraními API recenze, musíte načíst
 
 Pokud jste zadali klíč předplatného na obou místech, nebude se používat zkušební klíč, který je součástí vašeho účtu nástroje pro kontrolu, ale zůstane k dispozici.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Postupujte podle pokynů k rychlému zprovoznění [nástrojů pro kontrolu](../quick-start.md) a začněte používat nástroj pro kontrolu ve scénářích Moderování obsahu.
+Postupujte podle pokynů k [rychlému zprovoznění nástrojů pro kontrolu](../quick-start.md) a začněte používat nástroj pro kontrolu ve scénářích Moderování obsahu.
