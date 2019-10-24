@@ -3,19 +3,19 @@ title: Střední obrázky s vlastními seznamy a konzolou rozhraní API – Cont
 titleSuffix: Azure Content Moderator
 description: Pomocí rozhraní API pro správu seznamu v Azure Content Moderator můžete vytvářet vlastní seznamy imagí.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2b2ab138945d32ca874dc20576d412c862965dc9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564364"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757197"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Střední s vlastními seznamy obrázků v konzole API
 
@@ -42,7 +42,7 @@ Než budete moct otestovat rozhraní API v online konzole, budete potřebovat sv
 
 Až provedete změny v seznamu obrázků, je nutné aktualizovat index, aby byly změny zahrnuté do budoucích kontrol. Tento krok je podobný tomu, jak vyhledávací modul na ploše (Pokud je povolen) nebo webový vyhledávací modul průběžně aktualizuje svůj index, aby zahrnoval nové soubory nebo stránky.
 
-1. V referenčních informacích k [rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **Aktualizovat index vyhledávání**.
+1. V [referenčních informacích k rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **Aktualizovat index vyhledávání**.
 
    Otevře se stránka **seznam obrázků – index hledání obnovení** .
 
@@ -113,7 +113,7 @@ Až provedete změny v seznamu obrázků, je nutné aktualizovat index, aby byly
 
     ![Image – získat všechna ID imagí v konzole obsah odpovědi konzoly seznam imagí, které jste zadali](images/try-image-list-create-11.png)
  
-10. Přidejte několik dalších imagí. Teď, když jste vytvořili vlastní seznam imagí, zkuste vyhodnotit [Image](try-image-api.md) pomocí vlastního seznamu obrázků. 
+10. Přidejte několik dalších imagí. Teď, když jste vytvořili vlastní seznam imagí, zkuste [vyhodnotit image](try-image-api.md) pomocí vlastního seznamu obrázků. 
 
 ## <a name="delete-images-and-lists"></a>Odstranění obrázků a seznamů
 
@@ -125,7 +125,7 @@ Odstranění obrázku nebo seznamu je jednoduché. Pomocí tohoto rozhraní API 
 
 Tento příklad odstraní jeden obrázek:
 
-1. V referenčních informacích k [rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)vyberte v nabídce vlevo možnost **Obrázek**a pak vyberte **Odstranit**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)vyberte v nabídce vlevo možnost **Obrázek**a pak vyberte **Odstranit**. 
 
    Otevře se stránka **Obrázek – odstranit** .
 
@@ -147,7 +147,7 @@ V našem příkladu je ID seznamu **58953**, hodnota pro **ContentSource**. ID I
 
 Můžete upravit název a popis seznamu a přidat položky metadat.
 
-1. V referenčních informacích k [rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **aktualizovat podrobnosti**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **aktualizovat podrobnosti**. 
 
    Otevře se stránka **seznamy obrázků – podrobnosti o aktualizaci** .
 
@@ -164,6 +164,6 @@ Můžete upravit název a popis seznamu a přidat položky metadat.
    ![Seznamy obrázků – aktualizace těla žádosti konzoly úpravy textu](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pomocí REST API v kódu nebo začněte s [imagí Seznamte](image-lists-quickstart-dotnet.md) se s rychlým startem .NET pro integraci s vaší aplikací.
+Pomocí REST API v kódu nebo začněte s [imagí Seznamte se s rychlým](image-lists-quickstart-dotnet.md) startem .NET pro integraci s vaší aplikací.

@@ -1,5 +1,5 @@
 ---
-title: 'Funkce: Akce a kontext – přizpůsobování'
+title: 'Funkce: akce a kontext – přizpůsobování'
 titleSuffix: Azure Cognitive Services
 description: Přizpůsobení používá funkce, informace o akcích a kontextu k zajištění lepšího hodnocení návrhů. Funkce mohou být velmi obecné nebo specifické pro položku.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989085"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756107"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
@@ -25,8 +25,8 @@ Přizpůsobení používá **funkce**, které jsou informace o **aktuálním kon
 
 Můžete mít například **funkci** o:
 
-* _Uživatel_ , jako je `Sports_Shopper`například. Nemělo by to být individuální ID uživatele. 
-* _Obsah_ , jako je `Documentary` `Movie`například, pokud se jedná o, a, nebo zda je položka maloobchodního prodeje v obchodě k dispozici. `TV Series`
+* _Uživatel_ , jako je například `Sports_Shopper`. Nemělo by to být individuální ID uživatele. 
+* _Obsah_ , jako je například video `Documentary`, `Movie` nebo `TV Series` nebo zda je maloobchodní položka v obchodě k dispozici.
 * _Aktuální_ časové období, jako je například den v týdnu.
 
 Přizpůsobené aplikace nepředepisuje, neomezuje ani neopravují funkce, které můžete odeslat pro akce a kontext:
@@ -43,8 +43,8 @@ Přizpůsobení podporuje funkce typu String, numeric a Boolean.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Jak volba typu funkce ovlivní Machine Learning v přizpůsobování
 
-* **Řetězce**: V případě typů řetězců každá kombinace klíče a hodnoty vytváří novou váhu v modelu strojového učení pro přizpůsobení. 
-* **Číselná**: Číselné hodnoty by měly být použity v případě, že číslo by mělo proporcionálně ovlivnit výsledek přizpůsobení. To je velmi závislé na scénáři. Ve zjednodušeném příkladu, například při přizpůsobení maloobchodního prostředí, může být NumberOfPetsOwned funkce, která je numerická, protože může chtít, aby lidé se dvěma nebo 3 domácími osobami ovlivnili výsledek přizpůsobení dvakrát nebo třikrát, a to v rozsahu 1 PET. Funkce, které jsou založené na číselných jednotkách, ale u kterých není význam lineární – například stáří, teplota nebo výška osoby – jsou nejlépe kódované jako řetězce a kvalita funkcí se může obvykle zlepšit pomocí rozsahů. Například stáří může být kódováno jako "stáří": "0-5", "stáří": "6-10" atd.
+* **Řetězce**: u typů řetězců každá kombinace klíče a hodnoty vytváří novou váhu v modelu strojového učení pro přizpůsobení. 
+* **Číselná**hodnota: je třeba použít číselné hodnoty, pokud má číslo proporcionálně ovlivnit výsledek přizpůsobení. To je velmi závislé na scénáři. Ve zjednodušeném příkladu, například při přizpůsobení maloobchodního prostředí, může být NumberOfPetsOwned funkce, která je numerická, protože může chtít, aby lidé se dvěma nebo 3 domácími osobami ovlivnili výsledek přizpůsobení dvakrát nebo třikrát, a to v rozsahu 1 PET. Funkce, které jsou založené na číselných jednotkách, ale u kterých není význam lineární – například stáří, teplota nebo výška osoby – jsou nejlépe kódované jako řetězce a kvalita funkcí se může obvykle zlepšit pomocí rozsahů. Například stáří může být kódováno jako "stáří": "0-5", "stáří": "6-10" atd.
 * **Logické** hodnoty odeslané s hodnotou false fungují jako v případě, že jste byly odeslány vůbec.
 
 Funkce, které nejsou k dispozici, by měly být z požadavku vynechány. Vyhněte se posílání funkcí s hodnotou null, protože se při výuce modelu zpracuje jako stávající a s hodnotou null.
@@ -61,7 +61,7 @@ Následují příklady oborů názvů funkcí používaných aplikacemi:
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Počasí
+* Před
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,7 +69,7 @@ Následují příklady oborů názvů funkcí používaných aplikacemi:
 Obory názvů funkcí můžete pojmenovat podle vlastních konvencí, pokud jsou platné klíče JSON. Obory názvů slouží k uspořádání funkcí do různých sad a k jednoznačnému využití funkcí s podobnými názvy. Obory názvů si můžete představit jako předponu, která je přidána do názvů funkcí. Obory názvů nemůžou být vnořené.
 
 
-V následujících JSON, `user` `state`, a `device` jsou obory názvů funkcí. Public Preview Poznámka: V současné době důrazně doporučujeme používat názvy pro obory názvů funkcí, které jsou založené na kódování UTF-8 a začínají s různými písmeny. `user`Například ,,`s`a začnětes`u` ,`d`a. `device` `state` V současné době by obory názvů se stejnými prvními znaky mohly způsobit kolizi v indexech použitých pro strojové učení.
+V následujících JSON jsou `user`, `state` a `device` obory názvů funkcí. Public Preview Poznámka: v současné době důrazně doporučujeme používat názvy pro obory názvů funkcí, které jsou založené na kódování UTF-8 a začínají s různými písmeny. Například `user`, `state` a `device` začínají `u`, `s` a `d`. V současné době by obory názvů se stejnými prvními znaky mohly způsobit kolizi v indexech použitých pro strojové učení.
 
 Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti nebo hodnoty. Pole lze zahrnout pouze v případě, že položky pole jsou čísla. 
 
@@ -98,6 +98,13 @@ Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti n
 }
 ```
 
+### <a name="restrictions-in-character-sets-for-namespaces"></a>Omezení ve znakových sadách pro obory názvů
+
+Řetězec, který použijete pro pojmenování oboru názvů, musí splňovat určitá omezení: 
+* Nemůže to být Unicode.
+* Můžete použít některé z tisknutelných symbolů s kódy < 256 pro názvy oborů názvů. 
+* Nemůžete použít symboly s kódy < 32 (netisknutelný), 32 (Space), 58 (dvojtečka), 124 (pipe) a 126 – 140.
+
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Jak nastavit efektivnější nastavení funkcí pro přizpůsobení
 
 Dobrá sada funkcí pomáhá přizpůsobovat, jak předpovědět akci, která bude řídit nejvyšší odměnu. 
@@ -106,7 +113,7 @@ Zvažte odeslání funkcí rozhraní API pro řazení přizpůsobeného rozhran�
 
 * K dispozici je dostatek funkcí pro přizpůsobení. Přesnější cílení obsahu vyžaduje, aby bylo potřeba víc funkcí.
 
-* Existuje dostatek funkcí různých *hustot*. Funkce je *zhuštěná* , pokud je v několika intervalech seskupeno mnoho položek. Například tisíce videí mohou být klasifikovány jako "Long" (více než 5 minut dlouhé) a "krátká" (méně než 5 minut). Toto je *velmi zhuštěná* funkce. Na druhé straně stejné tisíce položek mohou mít atribut nazvaný "title", který téměř nikdy nebude mít stejnou hodnotu z jedné položky do druhé. Toto je velmi nezhuštěná nebo zhuštěná funkce.  
+* Existuje dostatek funkcí různých *hustot*. Funkce je *zhuštěná* , pokud je v několika intervalech seskupeno mnoho položek. Například tisíce videí mohou být klasifikovány jako "Long" (více než 5 minut dlouhé) a "krátká" (méně než 5 minut). Toto je *velmi zhuštěná* funkce. Na druhé straně stejné tisíce položek mohou mít atribut nazvaný "title", který téměř nikdy nebude mít stejnou hodnotu z jedné položky do druhé. Toto je velmi nezhuštěná nebo *zhuštěná* funkce.  
 
 Funkce vysoké hustoty pomáhá přizpůsobování odvodit z jedné položky do druhé. Pokud ale existuje jenom několik funkcí a jsou moc husté, přizpůsobené aplikace se pokusí přesně cílit na obsah, který se dá vybrat jenom v několika intervalech.
 
@@ -133,7 +140,7 @@ Umělá logika a Cognitive Services připravená ke spuštění můžou být vel
 
 Díky předzpracování vašich položek pomocí umělých analytických služeb můžete automaticky extrahovat informace, které jsou pravděpodobně relevantní pro přizpůsobení.
 
-Příklad:
+Například:
 
 * Můžete spustit filmový soubor prostřednictvím [video indexer](https://azure.microsoft.com/services/media-services/video-indexer/) k extrakci elementů scény, text, mínění a mnoha dalších atributů. Tyto atributy je pak možné odrážet tak, aby odrážely vlastnosti, které původní metadata položky neobsahovaly. 
 * Image je možné spouštět pomocí detekce objektů, plošek až po mínění atd.
@@ -153,7 +160,7 @@ Každá akce:
 * Má ID _události_ . Pokud již máte ID události, měli byste je odeslat. Pokud nemáte ID události, neodešlete ho, přizpůsobování ho pro vás vytvoří a vrátí ho v reakci na požadavek Rank. ID je přidruženo k události pořadí, nikoli k uživateli. Vytvoříte-li ID, bude nejlépe fungovat GUID. 
 * Obsahuje seznam funkcí.
 * Seznam funkcí může být velký (stovky), ale doporučujeme vyhodnotit efektivitu funkcí a odebrat funkce, které nepřispívají k získání neprospěchu. 
-* Funkce v akcích mohou nebo nemusí mít žádnou korelaci s funkcemi v **kontextu** , který používá přizpůsobený modul.
+* Funkce v **akcích** mohou nebo nemusí mít žádnou korelaci s funkcemi v **kontextu** , který používá přizpůsobený modul.
 * V některých akcích se můžou vyskytovat funkce pro akce, které ne ostatní. 
 * Funkce pro konkrétní ID akce mohou být k dispozici po jednom dni, ale později v ní nejsou k dispozici. 
 
@@ -166,9 +173,9 @@ Neodesílat při akcích řazení více než 50 akcí. Může se jednat o stejn�
 
 Akce, které zadáte do rozhraní API řazení, budou záviset na tom, co se snažíte přizpůsobit.
 
-Následuje několik příkladů:
+Zde je několik příkladů:
 
-|Účel|Action|
+|Účel|Akce|
 |--|--|
 |Přizpůsobení článku, který je zvýrazněný na webu příspěvky|Každá akce je potenciálně novinkou.|
 |Optimalizujte umístění reklamy na webu.|Každá akce bude rozložení nebo pravidla, která vytvoří rozložení pro reklamy (například nahoře, malý obrázek a velké obrázky).|
@@ -309,6 +316,6 @@ Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti n
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Posílení učení](concepts-reinforcement-learning.md) 

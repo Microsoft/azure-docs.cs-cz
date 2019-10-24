@@ -3,19 +3,19 @@ title: Informace o konceptech nástrojů pro kontrolu – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si o nástroji pro kontrolu Content Moderator, webu, který koordinuje kombinované navýšení souborů AI a recenze pro lidské revize.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.date: 03/15/2019
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.author: sajagtap
-ms.openlocfilehash: 7f20b9c824045ac2f8c13df3ed8f776195de611a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 465f24c3d9b7f53c0b494f387cc5d21aa6bd83b5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564514"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754230"
 ---
 # <a name="content-moderator-review-tool"></a>Nástroj pro kontrolu Content Moderator
 
@@ -23,7 +23,7 @@ Azure Content Moderator poskytuje služby pro kombinování Moderování obsahu 
 
 ![Řídicí panel nástroje pro kontrolu v prohlížeči](./images/0-dashboard.png)
 
-## <a name="what-it-does"></a>Co dělá
+## <a name="what-it-does"></a>Výsledek
 
 [Nástroj pro revize](https://contentmoderator.cognitive.microsoft.com)při použití ve spojení s rozhraními API pro moderování s asistencí pro počítače umožňuje v procesu moderování obsahu provádět následující úlohy:
 
@@ -43,10 +43,10 @@ Na kartě **řídicí panel** vidíte klíčové metriky pro revize obsahu prove
 
 ## <a name="review-tool-credentials"></a>Kontrola přihlašovacích údajů nástroje
 
-Při registraci pomocí [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com)budete vyzváni k výběru oblasti Azure pro účet. Důvodem je skutečnost, že [Nástroj pro kontrolu](https://contentmoderator.cognitive.microsoft.com) vygeneruje bezplatný zkušební klíč pro Azure Content moderator Services; Tento klíč budete potřebovat pro přístup ke všem službám ze volání REST nebo klientské sady SDK. Klíč a adresu URL koncového bodu rozhraní API si můžete zobrazit tak, že vyberete **Nastavení** > **přihlašovací údaje**.
+Při registraci pomocí [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com)budete vyzváni k výběru oblasti Azure pro účet. Důvodem je skutečnost, že [Nástroj pro kontrolu](https://contentmoderator.cognitive.microsoft.com) vygeneruje bezplatný zkušební klíč pro Azure Content moderator Services; Tento klíč budete potřebovat pro přístup ke všem službám ze volání REST nebo klientské sady SDK. Klíč a adresu URL koncového bodu rozhraní API si můžete zobrazit tak, že vyberete **nastavení**  > **přihlašovací údaje**.
 
 ![Content Moderator přihlašovací údaje](images/settings-6-credentials.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o tom, jak získat přístup k nástrojům pro kontrolu a měnit nastavení, najdete v tématu [Konfigurace nástroje pro kontrolu](./configure.md) .

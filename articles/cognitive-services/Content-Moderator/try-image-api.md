@@ -3,19 +3,19 @@ title: Střední obrázky s konzolou API – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Použití rozhraní API pro moderování imagí v Azure Content Moderator k zahájení kontrol a revizí pracovních postupů moderování pro obsah obrázků.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 20353d488cba255925d21017b77d1def2d06b30b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: aa3b6ce886b06c32e9e4515469099a5b31ff49e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561242"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757211"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Střední obrázky z konzoly API
 
@@ -26,7 +26,7 @@ Než budete moct otestovat rozhraní API v online konzole, budete potřebovat sv
 
 1. Přejít na [Reference k rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)
 
-   Otevře se stránka **pro** moderování image vyhodnocování obrazu.
+   Otevře se stránka pro moderování image **vyhodnocování** obrazu.
 
 2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
 
@@ -54,11 +54,11 @@ Než budete moct otestovat rozhraní API v online konzole, budete potřebovat sv
 
    ![Vyzkoušejte hodnocení pravděpodobnosti a určení podmínky v konzole pro vyhodnocení image](images/try-image-api-3.PNG)
 
-## <a name="face-detection"></a>Rozpoznávání tváře
+## <a name="face-detection"></a>Detekce tváře
 
 Rozhraní API pro moderování obrázků můžete použít k vyhledání plošek v obrázku. Tato možnost může být užitečná, když máte obavy z ochrany osobních údajů a chcete zabránit tomu, aby se na vaší platformě publikoval konkrétní obličej. 
 
-1. V referenčních informacích k [rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)v nabídce vlevo v části **Obrázek**vyberte **Najít obličeje**. 
+1. V [referenčních informacích k rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)v nabídce vlevo v části **Obrázek**vyberte **Najít obličeje**. 
 
    Otevře se stránka **s obrázkem obličeje** .
 
@@ -82,7 +82,7 @@ Rozhraní API pro moderování obrázků můžete použít k vyhledání plošek
 
 K detekci textu v obrázcích můžete použít funkci Content Moderator optické rozpoznávání znaků.
 
-1. V referenčních informacích k [rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)v nabídce vlevo v části **Obrázek**vyberte **optické rozpoznávání znaků**. 
+1. V [referenčních informacích k rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)v nabídce vlevo v části **Obrázek**vyberte **optické rozpoznávání znaků**. 
 
    Otevře se stránka **Obrázek – optické rozpoznávání znaků** .
 
@@ -100,6 +100,6 @@ K detekci textu v obrázcích můžete použít funkci Content Moderator optick�
 
    ![Obrázek – pole obsahu odpovědi vzorku pro optické rozpoznávání znaků](images/try-image-api-ocr.PNG)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pomocí REST API ve vašem kódu nebo začněte s aplikací pro [rychlý Start pro moderování imagí .NET](image-moderation-quickstart-dotnet.md) pro integraci s vaší aplikací.

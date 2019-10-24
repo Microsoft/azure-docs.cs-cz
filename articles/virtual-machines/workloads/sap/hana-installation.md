@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aacedeb2c047d1abfc5affdcf94404abbb2c7b62
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 516f61775060b3e4073ed9d623545d4f227563ed
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168599"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750359"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak nainstalovat a nakonfigurovat SAP HANA (velké instance) v Azure
 
@@ -101,7 +101,7 @@ Níže jsou uvedené další a užitečné SAP na odkazech souvisejících s SUS
 
 Níže jsou uvedené poznámky k podpoře SAP, které se vztahují k implementaci SAP HANA v SLES 12:
 
-- [Poznámka k podpoře SAP #1944799 – pokyny pro SAP HANA instalace operačního systému SLES](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+- [Poznámka k podpoře SAP #1944799 – pokyny pro SAP HANA instalace operačního systému SLES](http://service.sap.com/sap/support/notes/1944799)
 - [SAP – Poznámka k podpoře #2205917 – doporučená nastavení operačního systému SAP HANA DB pro aplikace SAP pro SLES 12](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [Poznámka k podpoře SAP #1984787 – SUSE Linux Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787)
 - [Poznámka k podpoře SAP #171356 – software SAP na platformě Linux: Obecné informace](https://launchpad.support.sap.com/#/notes/1984787)
@@ -125,7 +125,7 @@ Níže jsou uvedené poznámky k podpoře SAP, které se vztahují k implementac
 
 ### <a name="time-synchronization"></a>Synchronizace času
 
-Aplikace SAP, které jsou postavené na architektuře SAP NetWeaver, jsou citlivé na časové rozdíly mezi různými součástmi, které tvoří systém SAP. Je pravděpodobné, že jsou známé krátké výpisy SAP ABAP s názvem chyby ZDATE @ no__t-0LARGE @ no__t-1TIME @ no__t-2DIFF. Důvodem je, že tyto krátké výpisy se zobrazí, když je systémový čas různých serverů nebo virtuálních počítačů příliš daleko od sebe.
+Aplikace SAP, které jsou postavené na architektuře SAP NetWeaver, jsou citlivé na časové rozdíly mezi různými součástmi, které tvoří systém SAP. Krátké výpisy SAP ABAP s názvem chyby ZDATE \_LARGE \_TIME \_DIFF jsou pravděpodobně obeznámené. Důvodem je, že tyto krátké výpisy se zobrazí, když je systémový čas různých serverů nebo virtuálních počítačů příliš daleko od sebe.
 
 V případě SAP HANA v Azure (velké instance) se synchronizace času prováděná v Azure nevztahuje na výpočetní jednotky ve velkých objemech instancí. Tuto synchronizaci nejde použít ke spouštění aplikací SAP v nativních virtuálních počítačích Azure, protože Azure zajišťuje správnou synchronizaci času systému. 
 
@@ -152,8 +152,8 @@ Zásady vytváření názvů svazků úložiště jsou uvedené v následující
 
 | Využití úložiště | Název připojení | Název svazku | 
 | --- | --- | ---|
-| Data HANA | /hana/data/SID/mnt0000 @ no__t-0M > | IP adresa úložiště:/hana_data_SID_mnt00001_tenant_vol |
-| Protokol HANA | /hana/log/SID/mnt0000 @ no__t-0M > | IP adresa úložiště:/hana_log_SID_mnt00001_tenant_vol |
+| Data HANA | /hana/data/SID/mnt0000 \<m > | IP adresa úložiště:/hana_data_SID_mnt00001_tenant_vol |
+| Protokol HANA | /hana/log/SID/mnt0000 \<m > | IP adresa úložiště:/hana_log_SID_mnt00001_tenant_vol |
 | Zálohování protokolu HANA | /hana/log/backups | IP adresa úložiště:/hana_log_backups_SID_mnt00001_tenant_vol |
 | Sdílená HANA | /hana/shared/SID | IP adresa úložiště:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/SAP | /usr/sap/SID | IP adresa úložiště:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |

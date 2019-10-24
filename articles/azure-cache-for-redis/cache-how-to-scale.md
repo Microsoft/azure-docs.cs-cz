@@ -1,6 +1,6 @@
 ---
-title: Postup škálování Azure mezipaměti Redis | Dokumentace Microsoftu
-description: Zjistěte, jak se dá škálovat mezipaměť Azure pro instance Redis
+title: Jak škálovat Azure cache pro Redis | Microsoft Docs
+description: Přečtěte si, jak škálovat mezipaměť Azure pro instance Redis
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21c93cac8b4126a46e4c3dc396db9857f6b62de9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66132916"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755436"
 ---
-# <a name="how-to-scale-azure-cache-for-redis"></a>Postup škálování Azure mezipaměti Redis
-Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti a funkcí mezipaměti. Po vytvoření mezipaměti je možné škálovat velikost a cenovou úroveň mezipaměti, pokud se změní požadavky aplikace. Tento článek popisuje, jak se dá škálovat mezipaměť pomocí webu Azure portal a nástrojů, jako je Azure PowerShell a rozhraní příkazového řádku Azure.
+# <a name="how-to-scale-azure-cache-for-redis"></a>Jak škálovat Azure cache pro Redis
+Mezipaměť Azure pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti. Po vytvoření mezipaměti můžete velikost a cenovou úroveň mezipaměti škálovat, pokud se změní požadavky vaší aplikace. V tomto článku se dozvíte, jak škálovat mezipaměť pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.
 
 ## <a name="when-to-scale"></a>Kdy škálovat
-Můžete použít [monitorování](cache-how-to-monitor.md) funkce mezipaměti Azure pro určení toho, kdy se má změnit velikost mezipaměti a monitorovat stav a výkon mezipaměti Redis. 
+Funkce [monitorování](cache-how-to-monitor.md) mezipaměti Azure cache pro Redis můžete použít k monitorování stavu a výkonu mezipaměti a k určení, kdy se má mezipaměť škálovat. 
 
-Můžete monitorovat následující metriky pro určení toho, pokud je potřeba škálovat.
+Můžete monitorovat následující metriky, abyste zjistili, jestli potřebujete škálovat.
 
-* Redis Server Load
+* Zatížení serveru Redis
 * Využití paměti
 * Šířka pásma sítě
-* Využití procesoru
+* Využití CPU
 
-Pokud zjistíte, že mezipaměť už splňuje požadavky vaší aplikace, můžete škálovat pro větší nebo menší mezipaměti cenovou úroveň, která je nejvhodnější pro vaši aplikaci. Další informace o určení, která mezipaměť cenová úroveň používat, naleznete v tématu [jaké mezipaměti Azure Redis a jeho velikost pomocí](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
+Pokud zjistíte, že vaše mezipaměť již nesplňuje požadavky vaší aplikace, můžete škálovat na větší nebo menší cenovou úroveň mezipaměti, která je pro vaši aplikaci nejvhodnější. Další informace o určení cenové úrovně, která se má použít, najdete v tématu [co je to Azure cache pro nabídku Redis a velikost, kterou mám použít](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
 
 ## <a name="scale-a-cache"></a>Škálování mezipaměti
-Se dá škálovat mezipaměť, [přejděte do mezipaměti](cache-configure.md#configure-azure-cache-for-redis-settings) v [webu Azure portal](https://portal.azure.com) a klikněte na tlačítko **škálování** z **nabídce prostředků**.
+Pokud chcete škálovat mezipaměť, [přejděte do mezipaměti](cache-configure.md#configure-azure-cache-for-redis-settings) v [Azure Portal](https://portal.azure.com) a v **nabídce prostředků**klikněte na **škálovat** .
 
-![Měřítko](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Limit](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-Vyberte požadovanou cenovou úroveň z **Vyberte cenovou úroveň** okna a kliknutím na **vyberte**.
+V okně **vyberte cenovou úroveň** vyberte požadovanou cenovou úroveň a klikněte na **Vybrat**.
 
 ![Cenová úroveň][redis-cache-pricing-tier-blade]
 
 
-Je možné škálovat na jinou cenovou úroveň s následujícími omezeními:
+Můžete škálovat na jinou cenovou úroveň s následujícími omezeními:
 
-* Nejde škálovat z vyšší cenovou úroveň na nižší cenovou úroveň.
-  * Nejde škálovat z **Premium** dolů na do mezipaměti **standardní** nebo **základní** mezipaměti.
-  * Nejde škálovat z **standardní** dolů na do mezipaměti **základní** mezipaměti.
-* Je možné škálovat od **základní** mezipaměti tak, aby **standardní** mezipaměti, ale nemůže změnit velikost ve stejnou dobu. Pokud potřebujete jinou velikost, můžete provést následující operaci škálování na požadovanou velikost.
-* Nejde škálovat z **základní** přímo do mezipaměti **Premium** mezipaměti. Nejprve škálování od **základní** k **standardní** v rámci jedné operace škálování a pak **standardní** k **Premium** následné škálování operace.
-* Nejde škálovat z větší velikost dolů na **C0 (250 MB)** velikost.
+* Nemůžete škálovat z vyšší cenové úrovně na nižší cenovou úroveň.
+  * Mezipaměť **Premium** nejde škálovat do **úrovně Standard** nebo **Basic** .
+  * **Standardní** mezipaměť nejde škálovat do **základní** mezipaměti.
+* Můžete škálovat ze **základní** mezipaměti na **standardní** mezipaměť, ale nemůžete změnit velikost současně. Pokud potřebujete jinou velikost, můžete provést následnou operaci škálování na požadovanou velikost.
+* Nemůžete škálovat ze **základní** mezipaměti přímo do mezipaměti **Premium** . Nejprve Škálujte z úrovně **Basic** na **Standard** v rámci jedné operace škálování a pak od **Standard** na **Premium** v následné operaci škálování.
+* Velikost se nedá škálovat z větší velikosti na velikost **C0 (250 MB/s)** .
  
-Zatímco mezipaměti je škálování na novou cenovou úroveň **škálování** stav se zobrazuje v **mezipaměti Azure Redis** okno.
+I když je mezipaměť škálovatelná na novou cenovou úroveň, v okně **Azure cache pro Redis** se zobrazí stav **škálování** .
 
 ![Škálování][redis-cache-scaling]
 
-Po dokončení škálování stav se změní z **škálování** k **systémem**.
+Po dokončení škálování se stav změní z **škálování** na **spuštěno**.
 
-## <a name="how-to-automate-a-scaling-operation"></a>Jak automatizovat operaci škálování
-Kromě škálování vaše instance mezipaměti na webu Azure Portal, můžete škálovat pomocí rutin prostředí PowerShell, rozhraní příkazového řádku Azure a pomocí knihoven správy Azure společnosti Microsoft (MAML). 
+## <a name="how-to-automate-a-scaling-operation"></a>Automatizace operace škálování
+Kromě škálování instancí mezipaměti v Azure Portal můžete škálovat pomocí rutin PowerShellu, rozhraní příkazového řádku Azure a pomocí knihoven pro správu Microsoft Azure (MAML). 
 
-* [Škálování pomocí Powershellu](#scale-using-powershell)
+* [Škálování pomocí PowerShellu](#scale-using-powershell)
 * [Škálování pomocí Azure CLI](#scale-using-azure-cli)
 * [Škálování pomocí MAML](#scale-using-maml)
 
-### <a name="scale-using-powershell"></a>Škálování pomocí Powershellu
+### <a name="scale-using-powershell"></a>Škálování pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Mezipaměť Azure pro instance Redis pomocí prostředí PowerShell můžete škálovat s použitím [Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) rutiny při `Size`, `Sku`, nebo `ShardCount` jsou upraveny vlastnosti Description. Následující příklad ukazuje, jak na škálování mezipaměti s názvem `myCache` 2,5 GB mezipaměti. 
+Službu Azure cache pro instance Redis můžete škálovat pomocí prostředí PowerShell pomocí rutiny [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) při změně vlastností `Size`, `Sku` nebo `ShardCount`. Následující příklad ukazuje, jak škálovat mezipaměť s názvem `myCache` do mezipaměti 2,5 GB. 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
-Další informace o škálování s využitím Powershellu najdete v tématu [škálování pro Redis pomocí prostředí Powershell Azure Cache](cache-howto-manage-redis-cache-powershell.md#scale).
+Další informace o škálování pomocí PowerShellu najdete v tématu [škálování mezipaměti Azure pro Redis pomocí PowerShellu](cache-how-to-manage-redis-cache-powershell.md#scale).
 
 ### <a name="scale-using-azure-cli"></a>Škálování pomocí Azure CLI
-Se dá škálovat mezipaměť Azure Redis instance pomocí rozhraní příkazového řádku Azure, zavolejte `azure rediscache set` příkazu a předejte mu změny požadované konfigurace, které obsahují novou velikost, sku nebo velikosti clusteru, v závislosti na požadované operace škálování.
+Pokud chcete škálovat mezipaměť Azure pro instance Redis pomocí rozhraní příkazového řádku Azure, zavolejte příkaz `azure rediscache set` a předejte požadované změny konfigurace, které budou zahrnovat novou velikost, SKU nebo velikost clusteru, v závislosti na požadované operaci škálování.
 
-Další informace o škálování pomocí Azure CLI najdete v tématu [změnit nastavení existujícího mezipaměti Azure Redis](cache-manage-cli.md#scale).
+Další informace o škálování pomocí Azure CLI najdete v tématu [Změna nastavení stávající mezipaměti Azure pro Redis](cache-manage-cli.md#scale).
 
 ### <a name="scale-using-maml"></a>Škálování pomocí MAML
-Se dá škálovat mezipaměť Azure Redis instance pomocí [Microsoft Azure Management knihovny (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), volání `IRedisOperations.CreateOrUpdate` metoda a předejte jí nové velikost `RedisProperties.SKU.Capacity`.
+Pokud chcete škálovat mezipaměť Azure pro instance Redis pomocí [knihoven pro správu Microsoft Azure (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), zavolejte metodu `IRedisOperations.CreateOrUpdate` a předejte jí novou velikost pro `RedisProperties.SKU.Capacity`.
 
     static void Main(string[] args)
     {
@@ -104,80 +104,80 @@ Se dá škálovat mezipaměť Azure Redis instance pomocí [Microsoft Azure Mana
         client.Redis.CreateOrUpdate(resourceGroupName,cacheName, redisParams);
     }
 
-Další informace najdete v tématu [Správa mezipaměti Azure Redis pomocí MAML](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) vzorku.
+Další informace najdete v tématu [Správa mezipaměti Azure pro Redis pomocí ukázky MAML](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) .
 
-## <a name="scaling-faq"></a>Škálování – nejčastější dotazy
-Následující seznam obsahuje odpovědi na nejčastější dotazy o mezipaměti Azure Redis škálování.
+## <a name="scaling-faq"></a>Nejčastější dotazy k škálování
+Následující seznam obsahuje odpovědi na nejčastější dotazy týkající se škálování Azure cache pro Redis.
 
-* [Můžete škálovat do, z nebo v rámci cache ve verzi Premium?](#can-i-scale-to-from-or-within-a-premium-cache)
-* [Po škálování, budu muset změnit Moje klíče název nebo přístup k mezipaměti?](#after-scaling-do-i-have-to-change-my-cache-name-or-access-keys)
-* [Jak funguje škálování](#how-does-scaling-work)
-* [Přijdu o data z mezipaměť během změny měřítka?](#will-i-lose-data-from-my-cache-during-scaling)
-* [Je Moje vlastní databáze nastavení ovlivněných během změny měřítka?](#is-my-custom-databases-setting-affected-during-scaling)
-* [Mezipaměť bude k dispozici během změny měřítka?](#will-my-cache-be-available-during-scaling)
-* S geografickou replikací nakonfigurovaná, proč mi nejde škálovat mezipaměť, nebo změňte horizontálních oddílů v clusteru?
+* [Můžu škálovat na, z nebo do mezipaměti Premium?](#can-i-scale-to-from-or-within-a-premium-cache)
+* [Po škálování je třeba změnit název mezipaměti nebo přístupové klíče?](#after-scaling-do-i-have-to-change-my-cache-name-or-access-keys)
+* [Jak funguje škálování?](#how-does-scaling-work)
+* [Ztratím během škálování data z mezipaměti?](#will-i-lose-data-from-my-cache-during-scaling)
+* [Ovlivňuje toto nastavení vlastní databáze při škálování?](#is-my-custom-databases-setting-affected-during-scaling)
+* [Bude při škálování k dispozici moje mezipaměť?](#will-my-cache-be-available-during-scaling)
+* Když máte nakonfigurovanou geografickou replikaci a nemůžete škálovat mezipaměť nebo změnit horizontálních oddílů v clusteru?
 * [Operace, které nejsou podporovány](#operations-that-are-not-supported)
-* [Jak dlouho škálování trvá?](#how-long-does-scaling-take)
-* [Jak poznám, že při škálování je kompletní?](#how-can-i-tell-when-scaling-is-complete)
+* [Jak dlouho trvá škálování?](#how-long-does-scaling-take)
+* [Jak poznám, kdy je možné škálování dokončit?](#how-can-i-tell-when-scaling-is-complete)
 
-### <a name="can-i-scale-to-from-or-within-a-premium-cache"></a>Můžete škálovat do, z nebo v rámci cache ve verzi Premium?
-* Nejde škálovat z **Premium** dolů na do mezipaměti **základní** nebo **standardní** cenovou úroveň.
-* Je možné škálovat z jednoho **Premium** mezipaměti cenovou úroveň na jiný.
-* Nejde škálovat z **základní** přímo do mezipaměti **Premium** mezipaměti. Nejprve škálování od **základní** k **standardní** v rámci jedné operace škálování a pak **standardní** k **Premium** následné škálování operace.
-* Pokud povolíte clustering při vytváření vašeho **Premium** mezipaměti, můžete [velikost clusteru změnit](cache-how-to-premium-clustering.md#cluster-size). Pokud mezipaměti byl vytvořen bez clusteringu s povolená, můžete nakonfigurovat clustering později.
+### <a name="can-i-scale-to-from-or-within-a-premium-cache"></a>Můžu škálovat na, z nebo do mezipaměti Premium?
+* Z mezipaměti **Premium** nejde škálovat do cenové úrovně **Basic** nebo **Standard** .
+* Můžete škálovat z jedné cenové úrovně mezipaměti **Premium** na jinou.
+* Nemůžete škálovat ze **základní** mezipaměti přímo do mezipaměti **Premium** . Nejprve Škálujte z úrovně **Basic** na **Standard** v rámci jedné operace škálování a pak od **Standard** na **Premium** v následné operaci škálování.
+* Pokud jste povolili clusteringu při vytváření mezipaměti **Premium** , můžete [změnit velikost clusteru](cache-how-to-premium-clustering.md#cluster-size). Pokud byla vaše mezipaměť vytvořena bez povoleného clusteringu, můžete nakonfigurovat clustering později.
   
-  Další informace najdete v tématu [postup konfigurace clusterů pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-clustering.md).
+  Další informace najdete v tématu [Konfigurace clusteringu pro službu Azure cache v úrovni Premium pro Redis](cache-how-to-premium-clustering.md).
 
-### <a name="after-scaling-do-i-have-to-change-my-cache-name-or-access-keys"></a>Po škálování, budu muset změnit Moje klíče název nebo přístup k mezipaměti?
-Ne, název mezipaměti a klíče jsou beze změny během operace škálování.
+### <a name="after-scaling-do-i-have-to-change-my-cache-name-or-access-keys"></a>Po škálování je třeba změnit název mezipaměti nebo přístupové klíče?
+Ne, název a klíče mezipaměti se během operace škálování nezměnily.
 
-### <a name="how-does-scaling-work"></a>Jak funguje škálování
-* Když **základní** mezipaměti je škálovaný na jinou velikost, je vypnout a nové mezipaměti je zajištěno používat novou velikost. Během této doby je mezipaměť nedostupná a dojde ke ztrátě všech dat v mezipaměti.
-* Při **základní** mezipaměti škálovat tak, aby **standardní** mezipaměti, repliky mezipaměti je zřízený a kopírují data z primární mezipaměti do mezipaměti se repliky. Mezipaměti zůstávají dostupná během procesu změny velikosti.
-* Při **standardní** mezipaměti je škálovat na jinou velikost nebo položky **Premium** mezipaměti, jednu z replik se vypne a znovu zajištěny novou velikost a data přenesená prostřednictvím a jiná replika provádí převzetí služeb při selhání dřív, než bude znovu zajištěny, podobně jako proces, ke kterému dochází k selhání jednoho uzly mezipaměti.
+### <a name="how-does-scaling-work"></a>Jak funguje škálování?
+* Pokud je **základní** mezipaměť škálovaná na jinou velikost, je vypnutá a nová velikost mezipaměti je zřízena pomocí nové velikosti. Během této doby není mezipaměť k dispozici a všechna data v mezipaměti jsou ztracena.
+* Pokud je mezipaměť úrovně **Basic** škálovaná na **standardní** mezipaměť, zřídí se mezipaměť repliky a data se zkopírují z primární mezipaměti do mezipaměti repliky. Mezipaměť zůstává během procesu škálování dostupná.
+* Pokud je **standardní** mezipaměť škálovaná na jinou velikost nebo mezipaměť úrovně **Premium** , jedna z replik se vypne a znovu zřídí na novou velikost a data přenesená a pak druhá replika provede převzetí služeb při selhání, než se znovu zřídí. Podobně jako u procesu, ke kterému dochází při selhání jednoho z uzlů mezipaměti.
 
-### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>Přijdu o data z mezipaměť během změny měřítka?
-* Když **základní** mezipaměti se mění podle nové velikosti, dojde ke ztrátě všech dat a mezipaměť není k dispozici během operace škálování.
-* Při **základní** mezipaměti škálovat tak, aby **standardní** mezipaměti, data v mezipaměti je obvykle zachovány.
-* Když **standardní** mezipaměti je škálovat na větší velikost nebo vrstvy, nebo **Premium** mezipaměti je škálovat pro větší velikost, obvykle se zachovají všechna data. Při horizontálním škálování **standardní** nebo **Premium** mezipaměti na menší velikost dat může dojít ke ztrátě v závislosti na tom, kolik dat je v mezipaměti je horizontální související s novou velikost. Pokud dojde ke ztrátě dat při škálování, použití klíče se vyřadí [allkeys lru](https://redis.io/topics/lru-cache) zásady vyřazení. 
+### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>Ztratím během škálování data z mezipaměti?
+* Pokud je mezipaměť úrovně **Basic** škálovaná na novou velikost, ztratí se všechna data a mezipaměť není během operace škálování k dispozici.
+* Pokud je mezipaměť úrovně **Basic** škálovaná na **standardní** mezipaměť, jsou data v mezipaměti obvykle zachovaná.
+* Když se **standardní** mezipaměť škáluje na větší velikost nebo úroveň, nebo se mezipaměť **Premium** škáluje na větší velikost, obvykle se zachovají všechna data. Když velikost mezipaměti **úrovně Standard** nebo **Premium** zmenšíte do menší velikosti, může dojít ke ztrátě dat v závislosti na tom, kolik dat je v mezipaměti, které souvisí s novou velikostí při škálování. Pokud dojde ke ztrátě dat při horizontálním navýšení kapacity, klíče se vyloučí pomocí zásad vyřazení [AllKeys-LRU](https://redis.io/topics/lru-cache) . 
 
-### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Je Moje vlastní databáze nastavení ovlivněných během změny měřítka?
-Pokud jste nakonfigurovali vlastní hodnotu `databases` nastavení během vytváření mezipaměti, uvědomte si, že některé cenové úrovně mají odlišné [databáze omezení](cache-configure.md#databases). Tady jsou některé aspekty při horizontálním škálování v tomto scénáři:
+### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Ovlivňuje toto nastavení vlastní databáze při škálování?
+Pokud jste při vytváření mezipaměti nakonfigurovali vlastní hodnotu pro `databases` nastavení, pamatujte na to, že některé cenové úrovně mají různé [limity databáze](cache-configure.md#databases). Tady jsou některé předpoklady při škálování v tomto scénáři:
 
-* Při škálování na cenovou úroveň s nižší `databases` limit než aktuální úroveň:
-  * Pokud používáte výchozí počet `databases`, což je 16 pro všechny cenové úrovně, se neztratila žádná data.
-  * Pokud použijete vlastní číslo `databases` , která spadá do omezení pro vrstvu, do kterého jste se škálování, to `databases` zachována nastavení a se neztratila žádná data.
-  * Pokud použijete vlastní číslo `databases` , který překračuje omezení na nové úrovni, `databases` klesnou nastavení omezení na novou úroveň a dojde ke ztrátě všech dat v odebrané databáze.
-* Při škálování na cenovou úroveň se stejnou nebo větší `databases` limit než aktuální úroveň vaše `databases` zachována nastavení a se neztratila žádná data.
+* Při škálování na cenovou úroveň s nižším `databases` limit než aktuální úroveň:
+  * Pokud používáte výchozí počet `databases`, což je 16 pro všechny cenové úrovně, neztratí se žádná data.
+  * Pokud používáte vlastní počet `databases`, který spadá do omezení vrstvy, na kterou chcete škálovat, nastavení `databases` se zachová a ztratí se žádná data.
+  * Pokud používáte vlastní počet `databases`, který překračuje limity nové vrstvy, nastavení `databases` se sníží na limity nové úrovně a ztratí se všechna data v odebraných databázích.
+* Při škálování na cenovou úroveň se stejným nebo vyšším limitem `databases`, než je aktuální úroveň, se nastavení `databases` zachová a ztratí se žádná data.
 
-Mezipaměti Standard a Premium mají SLA 99,9 % dostupnost, neexistuje žádná smlouva SLA pro únikem informací.
+I když mají mezipaměť úrovně Standard a Premium dostupnost 99,9%, není k dispozici žádná smlouva SLA pro ztrátu dat.
 
-### <a name="will-my-cache-be-available-during-scaling"></a>Mezipaměť bude k dispozici během změny měřítka?
-* **Standardní** a **Premium** mezipaměti zůstávají dostupná během operace škálování. Ale připojení blips situace může nastat při škálování mezipaměti Standard a Premium a také při škálování z úrovně Basic na Standard mezipamětí. Blips těchto připojení jsou očekávány malé a klientů redis by měl být schopný okamžitě znovu vytvořit připojení.
-* **Základní** jsou během změny měřítka operací na jinou velikost offline mezipaměti. Základní mezipamětí zůstanou dostupné i při škálování z **základní** k **standardní** ale může docházet k blip malé připojení. Pokud dojde k připojení blip, by měl klientů redis moci okamžitě znovu navázat připojení.
+### <a name="will-my-cache-be-available-during-scaling"></a>Bude při škálování k dispozici moje mezipaměť?
+* Mezipaměť **Standard** a **Premium** zůstávají během operace škálování k dispozici. Výkyvů připojení ale může nastat při škálování na úrovni Standard a Premium, ale také při škálování z úrovně Basic na standardní mezipaměti. Očekává se, že tyto výkyvů připojení budou malé a klienti Redis by měli být schopní okamžitě znovu vytvořit připojení.
+* **Základní** mezipaměti jsou během operací škálování v režimu offline na jinou velikost. Základní mezipaměti zůstávají dostupné při škálování z úrovně **Basic** na **Standard** , ale můžou se setkat s malým blipm připojení. Pokud dojde k blipí připojení, klienti Redis by měli být schopní okamžitě znovu vytvořit připojení.
 
 
-### <a name="scaling-limitations-with-geo-replication"></a>Škálování omezení s geografickou replikací
+### <a name="scaling-limitations-with-geo-replication"></a>Omezení škálování pomocí geografické replikace
 
-Po přidání odkazu geografickou replikaci mezi dvěma mezipamětí, budete moct zahájit operaci škálování nebo změnit počet horizontálních oddílů v clusteru. Je nutné zrušit mezipaměti vydat tyto příkazy. Další informace najdete v tématu [konfigurace geografické replikace](cache-how-to-geo-replication.md).
+Po přidání odkazu na geografickou replikaci mezi dvěma mezipamětmi už nebudete moct iniciovat operaci škálování ani měnit počet horizontálních oddílů v clusteru. Aby bylo možné tyto příkazy vydávat, je nutné zrušit propojení mezipaměti. Další informace najdete v tématu [Konfigurace geografické replikace](cache-how-to-geo-replication.md).
 
 
 ### <a name="operations-that-are-not-supported"></a>Operace, které nejsou podporovány
-* Nejde škálovat z vyšší cenovou úroveň na nižší cenovou úroveň.
-  * Nejde škálovat z **Premium** dolů na do mezipaměti **standardní** nebo **základní** mezipaměti.
-  * Nejde škálovat z **standardní** dolů na do mezipaměti **základní** mezipaměti.
-* Je možné škálovat od **základní** mezipaměti tak, aby **standardní** mezipaměti, ale nemůže změnit velikost ve stejnou dobu. Pokud potřebujete jinou velikost, můžete provést následující operaci škálování na požadovanou velikost.
-* Nejde škálovat z **základní** přímo do mezipaměti **Premium** mezipaměti. Nejprve škálování od **základní** k **standardní** v jedné operaci škálování a škálování od **standardní** k **Premium** v následné operace.
-* Nejde škálovat z větší velikost dolů na **C0 (250 MB)** velikost.
+* Nemůžete škálovat z vyšší cenové úrovně na nižší cenovou úroveň.
+  * Mezipaměť **Premium** nejde škálovat do **úrovně Standard** nebo **Basic** .
+  * **Standardní** mezipaměť nejde škálovat do **základní** mezipaměti.
+* Můžete škálovat ze **základní** mezipaměti na **standardní** mezipaměť, ale nemůžete změnit velikost současně. Pokud potřebujete jinou velikost, můžete provést následnou operaci škálování na požadovanou velikost.
+* Nemůžete škálovat ze **základní** mezipaměti přímo do mezipaměti **Premium** . První škálování z úrovně **Basic** na **Standard** v rámci jedné operace škálování a pak při následné operaci Škálujte ze **Standard** na **Premium** .
+* Velikost se nedá škálovat z větší velikosti na velikost **C0 (250 MB/s)** .
 
-Pokud selže operaci škálování, služba se pokusí vrátit operace a mezipaměti změní zpět na původní velikost.
+Pokud operace škálování selže, služba se pokusí operaci vrátit zpět a mezipaměť se vrátí k původní velikosti.
 
 
-### <a name="how-long-does-scaling-take"></a>Jak dlouho škálování trvá?
+### <a name="how-long-does-scaling-take"></a>Jak dlouho trvá škálování?
 Škálování trvá přibližně 20 minut, v závislosti na tom, kolik dat je v mezipaměti.
 
-### <a name="how-can-i-tell-when-scaling-is-complete"></a>Jak poznám, že při škálování je kompletní?
-Na webu Azure Portal uvidíte škálování probíhá operace. Po dokončení změny velikosti mezipaměti stav změní na **systémem**.
+### <a name="how-can-i-tell-when-scaling-is-complete"></a>Jak poznám, kdy je možné škálování dokončit?
+V Azure Portal vidíte, že probíhá operace škálování. Po dokončení škálování se stav mezipaměti změní na **spuštěno**.
 
 <!-- IMAGES -->
 

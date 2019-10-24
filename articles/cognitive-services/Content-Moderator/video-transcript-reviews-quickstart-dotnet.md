@@ -3,19 +3,19 @@ title: Vytváření recenzí přepisů videa pomocí .NET-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Vytváření recenzí přepisů videa pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: c7d68685a772bb777fff1dd56a25990b9d0406ef
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 7fe254aa6e78133102a295c5e60a10d29f6382a4
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242820"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757173"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Vytváření recenzí přepisů videa pomocí .NET
 
@@ -25,18 +25,18 @@ Tento článek poskytuje informace a ukázky kódu, které vám pomůžou rychle
 - Přidání moderovaného přepisu do Revize
 - Publikování Revize
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud jste to ještě neudělali, přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 - V tomto článku se předpokládá, že jste rozvedli [střední video](video-moderation-api.md) a [vytvořili jste kontrolu videa](video-reviews-quickstart-dotnet.md) v nástroji pro revize pro rozhodování o lidském rozhodování. Nyní chcete přidat do nástroje pro revize moderované přepisy videa.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>Ujistěte se, že klíč rozhraní API může volat rozhraní API pro revize (vytváření úloh).
 
-Po dokončení předchozích kroků může dokončit dva Content Moderator klíče, pokud jste začali z Azure Portal.
+Pokud jste začínali na portálu Azure Portal, můžete po dokončení předchozích kroků získat dva klíče Content Moderatoru.
 
-Pokud máte v ukázce sady SDK používat klíč rozhraní API pro Azure, postupujte podle kroků uvedených v části [použití klíče Azure spolu s bodem recenze rozhraní API](./review-tool-user-guide/configure.md#use-your-azure-account-with-the-review-apis) , pokud chcete, aby aplikace volala rozhraní API pro revize a vytvořila recenze.
+Pokud plánujete ve své ukázkové sadě SDK používat klíč rozhraní API poskytnutý službou Azure, postupujte podle pokynů v části o [použití klíče Azure s rozhraním API pro kontroly](./review-tool-user-guide/configure.md#use-your-azure-account-with-the-review-apis), aby aplikace mohla volat rozhraní API pro kontroly a vytvářet kontroly.
 
-Pokud použijete bezplatný zkušební klíč vygenerovaný nástrojem pro kontrolu, váš účet nástroje pro kontrolu už o klíči ví, a proto nejsou potřeba žádné další kroky.
+Pokud budete používat klíč bezplatné zkušební verze vygenerovaný nástrojem pro revidování, pak váš účet nástroje pro revidování už klíč zná a není potřeba už žádné další kroky provádět.
 
 ## <a name="prepare-your-video-for-review"></a>Příprava videa na kontrolu
 
@@ -46,24 +46,24 @@ Přidejte přepis do recenze videa. Video se musí publikovat online. Potřebuje
 
 - Zkopírujte **adresu URL** na této [Azure Media Services ukázkové](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) stránce pro adresu URL manifestu.
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
 
-1. Přidejte do svého řešení nový projekt **konzolové aplikace (.NET Framework)** .
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)** .
 
 1. Pojmenujte projekt **VideoTranscriptReviews**.
 
-1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
+1. Projekt vyberte jako jediný spouštěný projekt řešení.
 
-### <a name="install-required-packages"></a>Nainstalovat požadované balíčky
+### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
 Pro projekt TermLists nainstalujte následující balíčky NuGet.
 
-- Microsoft. Azure. Cognitiveservices Account. ContentModerator
-- Microsoft. REST. ClientRuntime
-- Microsoft. REST. ClientRuntime. Azure
-- Newtonsoft. JSON
+- Microsoft.Azure.CognitiveServices.ContentModerator
+- Microsoft.Rest.ClientRuntime
+- Microsoft.Rest.ClientRuntime.Azure
+- Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizovat příkazy using programu
+### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
 
 Pomocí příkazů programu upravte následující příkazy.
 
@@ -78,7 +78,7 @@ using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 ```
 
-### <a name="add-private-properties"></a>Přidat soukromé vlastnosti
+### <a name="add-private-properties"></a>Přidání soukromých vlastností
 
 Přidejte následující soukromé vlastnosti do oboru názvů VideoTranscriptReviews, program třídy.
 
@@ -148,12 +148,12 @@ public static ContentModeratorClient NewClient()
 
 ## <a name="create-a-video-review"></a>Vytvořit recenzi videa
 
-Vytvoří recenzi videa pomocí **ContentModeratorClient. Reviews. CreateVideoReviews**. Další informace najdete v referenčních informacích k [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+Vytvoří recenzi videa pomocí **ContentModeratorClient. Reviews. CreateVideoReviews**. Další informace najdete v [referenčních informacích k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
 **CreateVideoReviews** má následující požadované parametry:
 1. Řetězec obsahující typ MIME, který by měl být "Application/JSON" 
 1. Váš Content Moderator název týmu.
-1. Objekt **IList @ no__t-1CreateVideoReviewsBodyItem >** . Každý objekt **CreateVideoReviewsBodyItem** představuje kontrolu videa. Tento rychlý Start vytváří vždy jednu kontrolu.
+1. Objekt **IList \<CreateVideoReviewsBodyItem >** objektu. Každý objekt **CreateVideoReviewsBodyItem** představuje kontrolu videa. Tento rychlý Start vytváří vždy jednu kontrolu.
 
 **CreateVideoReviewsBodyItem** má několik vlastností. Minimálně nastavte následující vlastnosti:
 - **Obsah**. Adresa URL videa, která se má zkontrolovat
@@ -161,7 +161,7 @@ Vytvoří recenzi videa pomocí **ContentModeratorClient. Reviews. CreateVideoRe
 - **Stav**. Nastavte hodnotu na Nepublikováno. Pokud ho nenastavíte, použije se výchozí nastavení "čeká", což znamená, že se recenze videa publikuje a čeká na revizi pro lidskou kontrolu. Po publikování recenze videa už nemůžete do ní přidávat snímky videa, přepisy ani jejich nemoderování.
 
 > [!NOTE]
-> **CreateVideoReviews** vrátí objekt IList @ no__t-1string >. Každý z těchto řetězců obsahuje ID pro kontrolu videa. Tato ID jsou identifikátory GUID a nejsou stejná jako **hodnota vlastnosti ID** obsahu.
+> **CreateVideoReviews** vrací objekt IList \<string >. Každý z těchto řetězců obsahuje ID pro kontrolu videa. Tato ID jsou identifikátory GUID a nejsou stejná jako **hodnota vlastnosti ID** obsahu.
 
 Přidejte následující definici metody do oboru názvů VideoReviews, program třídy.
 
@@ -199,9 +199,9 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 ```
 
 > [!NOTE]
-> Váš klíč služby Content Moderator má omezení četnosti požadavků za sekundu (RPS). Pokud překročíte limit, sada SDK vyvolá výjimku s kódem chyby 429.
+> Klíč služby Content Moderator má omezenou rychlost v jednotkách RPS (žádosti za sekundu). Když tento limit překročíte, sada SDK vyvolá výjimku s kódem chyby 429.
 >
-> Klíč bezplatné úrovně má jeden limit RPS frekvence.
+> Klíč úrovně Free má limit nastavený na jeden požadavek za vteřinu.
 
 ## <a name="add-transcript-to-video-review"></a>Přidat přepis do recenze videa
 
@@ -237,21 +237,21 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 
 ## <a name="add-a-transcript-moderation-result-to-video-review"></a>Přidání výsledku moderování přepisu do kontroly videa
 
-Kromě přidání přepisu do recenze videa přidáte také výsledek moderování tohoto přepisu. Provedete to pomocí **ContentModeratorClient. Reviews. AddVideoTranscriptModerationResult**. Další informace najdete v referenčních informacích k [rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
+Kromě přidání přepisu do recenze videa přidáte také výsledek moderování tohoto přepisu. Provedete to pomocí **ContentModeratorClient. Reviews. AddVideoTranscriptModerationResult**. Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
 
 **AddVideoTranscriptModerationResult** má následující požadované parametry:
 1. Řetězec obsahující typ MIME, který by měl být "Application/JSON" 
 1. Váš Content Moderator název týmu.
 1. ID kontroly videa vrácené funkcí **CreateVideoReviews**.
-1. Objekt IList @ no__t-0TranscriptModerationBodyItem >. **TranscriptModerationBodyItem** má následující vlastnosti:
-1. **Podmínek**. Objekt IList @ no__t-0TranscriptModerationBodyItemTermsItem >. **TranscriptModerationBodyItemTermsItem** má následující vlastnosti:
+1. > IList \<TranscriptModerationBodyItem. **TranscriptModerationBodyItem** má následující vlastnosti:
+1. **Podmínek**. > IList \<TranscriptModerationBodyItemTermsItem. **TranscriptModerationBodyItemTermsItem** má následující vlastnosti:
 1. **Index**. Index výrazu založený na nule.
 1. **Termín**. Řetězec, který obsahuje termín.
 1. **Časové razítko**. Řetězec, který obsahuje v sekundách čas v přepisu, při kterém jsou výrazy nalezeny.
 
 Přepis musí být ve formátu WebVTT. Další informace naleznete v tématu [WebVTT: text webového videa sleduje formát](https://www.w3.org/TR/webvtt1/).
 
-Přidejte následující definici metody do oboru názvů VideoTranscriptReviews, program třídy. Tato metoda odesílá přepis do metody **ContentModeratorClient. TextModeration. ScreenText** . Také přeloží výsledek do objektu IList @ no__t-> 0TranscriptModerationBodyItem a odešle do **AddVideoTranscriptModerationResult**.
+Přidejte následující definici metody do oboru názvů VideoTranscriptReviews, program třídy. Tato metoda odesílá přepis do metody **ContentModeratorClient. TextModeration. ScreenText** . Také přeloží výsledek na objekt IList \<TranscriptModerationBodyItem > a odešle do **AddVideoTranscriptModerationResult**.
 
 ```csharp
 /// <summary>
@@ -321,7 +321,7 @@ private static void PublishReview(ContentModeratorClient client, string review_i
 }
 ```
 
-## <a name="putting-it-all-together"></a>Společné umístění
+## <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
 
 Přidejte definici **Main** metody do oboru názvů VideoTranscriptReviews, program třídy. Nakonec zavřete třídu program a obor názvů VideoTranscriptReviews.
 
@@ -360,7 +360,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>Spusťte program a zkontrolujte výstup.
+## <a name="run-the-program-and-review-the-output"></a>Spuštění programu a kontrola výstupu
 
 Při spuštění aplikace se zobrazí výstup na následujících řádcích:
 

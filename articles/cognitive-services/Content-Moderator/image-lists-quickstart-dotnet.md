@@ -1,62 +1,62 @@
 ---
 title: Kontrolovat image proti vlastním seznamům C# v Content moderator
 titleSuffix: Azure Cognitive Services
-description: Jak střední obrázky s vlastními seznamy obrázků pomocí sady Content Moderator SDK pro C#.
+description: Návod, jak moderovat obrázky se seznamy vlastních obrázků pomocí sady Content Moderator SDK pro jazyk C#.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: 63eb2285563bf83ac56beb03ff008a2bfa5daab6
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 63dd3b782d868994c46e71b55201e65f91678d86
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242905"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755344"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>Střední s vlastními seznamy obrázků vC#
 
-Tento článek poskytuje informace a ukázky kódu, které vám pomohou začít používat [sadu Content moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k těmto akcím:
-- Vytvoření vlastního seznamu obrázků
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k následujícím účelům:
+- Vytvoření seznamu vlastních obrázků
 - Přidání a odebrání obrázků ze seznamu
-- Získá identifikátory všech imagí v seznamu.
+- Získání ID všech obrázků na seznamu
 - Načtení a aktualizace metadat seznamu
-- Aktualizuje index vyhledávání seznamu.
-- Obrázky obrazovky pro obrázky v seznamu
-- Odstraní všechny obrázky ze seznamu.
-- Odstraní vlastní seznam.
+- Aktualizace indexu vyhledávání seznamu
+- Vyhledávání odpovídajících obrázků na seznamu pomocí obrázků
+- Odstranění všech obrázků ze seznamu
+- Odstranění vlastního seznamu
 
 > [!NOTE]
-> V každém seznamu je maximální počet **5 seznamů obrázků** , **které nepřesahují 10 000 imagí**.
+> Limit je maximálně **5 seznamů obrázků** a v každém seznamu může být **maximálně 10 000 obrázků**.
 
 Konzolová aplikace pro tuto příručku simuluje některé úlohy, které můžete provádět s rozhraním API pro seznam imagí.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="sign-up-for-content-moderator-services"></a>Zaregistrujte se do služby Content Moderator Services.
+## <a name="sign-up-for-content-moderator-services"></a>Registrace do služeb Content Moderatoru
 
-Než budete moct použít Content Moderator Services přes REST API nebo sadu SDK, budete potřebovat klíč předplatného rozhraní API. Přihlaste se k odběru služby Content Moderator v [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) , abyste ji mohli získat.
+Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného rozhraní API. Získáte ho přihlášením k odběru služby Content Moderator na webu [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
 
-1. Přidejte do svého řešení nový projekt **konzolové aplikace (.NET Framework)** .
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)** .
 
-   V ukázkovém kódu pojmenujte seznam **ImageList**projektu.
+   Ve vzorovém kódu pojmenujte tento projekt **ImageLists**.
 
-1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
+1. Projekt vyberte jako jediný spouštěný projekt řešení.
 
-### <a name="install-required-packages"></a>Nainstalovat požadované balíčky
+### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
 Nainstalujte následující balíčky NuGet:
 
-- Microsoft. Azure. Cognitiveservices Account. ContentModerator
-- Microsoft. REST. ClientRuntime
-- Newtonsoft. JSON
+- Microsoft.Azure.CognitiveServices.ContentModerator
+- Microsoft.Rest.ClientRuntime
+- Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizovat příkazy using programu
+### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
 
 Přidejte následující příkazy `using`.
 
@@ -70,12 +70,12 @@ using System.IO;
 using System.Threading;
 ```
 
-### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderator
+### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Přidejte následující kód, který vytvoří klienta Content Moderator pro vaše předplatné.
+Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru.
 
 > [!IMPORTANT]
-> Aktualizujte pole **a** a **CMSubscriptionKey** hodnotami identifikátoru vaší oblasti a klíče předplatného.
+> Aktualizujte pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
 
 ```csharp
 /// <summary>
@@ -122,9 +122,9 @@ public static class Clients
 ```
 
 
-### <a name="initialize-application-specific-settings"></a>Inicializovat nastavení specifické pro aplikaci
+### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifických pro aplikaci
 
-Do třídy **program** v program.cs přidejte následující třídy a statická pole.
+Do třídy **Program** v souboru Program.cs přidejte následující třídy a statická pole.
 
 ```csharp
 /// <summary>
@@ -247,12 +247,12 @@ private static Body listDetails;
 ```
    
 > [!NOTE]
-> Váš klíč služby Content Moderator má omezení četnosti požadavků za sekundu (RPS). Pokud tento limit překročíte, sada SDK vyvolá výjimku s kódem chyby 429. Klíč bezplatné úrovně má RPS limit četnosti.
+> Klíč služby Content Moderator má limit četnosti žádostí za sekundu (RPS), a pokud ho překročíte, sada SDK vyvolá výjimku s kódem chyby 429. Klíč úrovně Free má limit nastavený na 1 RPS.
 
 
-## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Vytvoření metody pro zápis zpráv do souboru protokolu
+## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Vytvoření metody k zapisování zpráv do souboru protokolu
 
-Do třídy **program** přidejte následující metodu. 
+Do třídy **Program** přidejte následující metodu. 
 
 ```csharp
 /// <summary>
@@ -271,9 +271,9 @@ private static void WriteLine(string message = null, bool echo = false)
 }
 ```
 
-## <a name="create-a-method-to-create-the-custom-list"></a>Vytvoření metody pro vytvoření vlastního seznamu
+## <a name="create-a-method-to-create-the-custom-list"></a>Vytvoření metody k vytvoření vlastního seznamu
 
-Do třídy **program** přidejte následující metodu. 
+Do třídy **Program** přidejte následující metodu. 
 
 ```csharp
 /// <summary>
@@ -300,9 +300,9 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 }
 ```
 
-## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Vytvoření metody pro přidání kolekce obrázků do seznamu
+## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Vytvoření metody k přidání kolekce obrázků do seznamu
 
-Do třídy **program** přidejte následující metodu. Tato příručka neukazuje, jak používat značky pro obrázky v seznamu. 
+Do třídy **Program** přidejte následující metodu. Tato příručka neukazuje, jak používat značky pro obrázky v seznamu. 
 
 ```csharp
 /// <summary>
@@ -344,9 +344,9 @@ IEnumerable<string> imagesToAdd, string label)
 }
 ```
 
-## <a name="create-a-method-to-remove-images-from-the-list"></a>Vytvoření metody pro odebrání obrázků ze seznamu
+## <a name="create-a-method-to-remove-images-from-the-list"></a>Vytvoření metody k odebrání obrázků ze seznamu
 
-Do třídy **program** přidejte následující metodu. 
+Do třídy **Program** přidejte následující metodu. 
 
 ```csharp
 /// <summary>
@@ -381,9 +381,9 @@ private static void RemoveImages(
 }
 ```
 
-## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Vytvoření metody pro získání všech ID obsahu pro obrázky v seznamu
+## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Vytvoření metody k získání všech ID obsahu obrázků na seznamu
 
-Do třídy **program** přidejte následující metodu. 
+Do třídy **Program** přidejte následující metodu. 
 
 ```csharp
 /// <summary>
@@ -408,9 +408,9 @@ private static ImageIds GetAllImageIds(
 }
 ```
 
-## <a name="create-a-method-to-update-the-details-of-the-list"></a>Vytvoření metody aktualizace podrobností seznamu
+## <a name="create-a-method-to-update-the-details-of-the-list"></a>Vytvoření metody k aktualizaci podrobností seznamu
 
-Do třídy **program** přidejte následující metodu. 
+Do třídy **Program** přidejte následující metodu. 
 
 ```csharp
 /// <summary>
@@ -438,9 +438,9 @@ private static ImageList UpdateListDetails(
 }
 ```
 
-## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Vytvoření metody pro načtení podrobností seznamu
+## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Vytvoření metody k načtení podrobností seznamu
 
-Do třídy **program** přidejte následující metodu.
+Do třídy **Program** přidejte následující metodu.
 
 ```csharp
 /// <summary>
@@ -465,9 +465,9 @@ private static ImageList GetListDetails(
 }
 ```
 
-## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Vytvoření metody aktualizace indexu vyhledávání v seznamu
+## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Vytvoření metody k aktualizaci indexu vyhledávání seznamu
 
-Do třídy **program** přidejte následující metodu. Když seznam aktualizujete, budete muset před použitím seznamu na obrázky obrazovky aktualizovat index vyhledávání.
+Do třídy **Program** přidejte následující metodu. Vždy, když aktualizujete seznam, musíte před vyhledáváním obrázků aktualizovat index vyhledávání.
 
 ```csharp
 /// <summary>
@@ -492,9 +492,9 @@ private static RefreshIndex RefreshSearchIndex(
 }
 ```
 
-## <a name="create-a-method-to-match-images-against-the-list"></a>Vytvoření metody pro spárování obrázků se seznamem
+## <a name="create-a-method-to-match-images-against-the-list"></a>Vytvoření metody k vyhledávání odpovídajících obrázků na seznamu pomocí obrázků
 
-Do třídy **program** přidejte následující metodu. 
+Do třídy **Program** přidejte následující metodu. 
 
 ```csharp
 /// <summary>
@@ -522,9 +522,9 @@ private static void MatchImages(
 }
 ```
 
-## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Vytvoření metody pro odstranění všech imagí ze seznamu
+## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Vytvoření metody k odstranění všech obrázků ze seznamu
 
-Do třídy **program** přidejte následující metodu. 
+Do třídy **Program** přidejte následující metodu. 
 
 ```csharp
 /// <summary>
@@ -546,9 +546,9 @@ private static void DeleteAllImages(
 }
 ```
 
-## <a name="create-a-method-to-delete-the-list"></a>Vytvoření metody pro odstranění seznamu
+## <a name="create-a-method-to-delete-the-list"></a>Vytvoření metody k odstranění seznamu
 
-Do třídy **program** přidejte následující metodu. 
+Do třídy **Program** přidejte následující metodu. 
 
 ```csharp
 /// <summary>
@@ -570,9 +570,9 @@ private static void DeleteCustomList(
 }
 ```
 
-## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>Vytvoření metody pro načtení ID pro všechny seznamy obrázků
+## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>Vytvoření metody k načtení ID všech seznamů obrázků
 
-Do třídy **program** přidejte následující metodu. 
+Do třídy **Program** přidejte následující metodu. 
 
 ```csharp
 /// <summary>
@@ -595,9 +595,9 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 }
 ```
 
-## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Přidat kód pro simulaci použití seznamu obrázků
+## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Simulace použití seznamu obrázků přidáním kódu
 
-Do metody **Main** přidejte následující kód. Tento kód simuluje mnohé z operací, které byste provedli při definování a správě seznamu, a také používání seznamu pro obrázky na obrazovce. Funkce protokolování umožňují zobrazit objekty odpovědí generované sadou SDK volání služby Content Moderator.
+Do metody **Main** přidejte následující kód. Tento kód simuluje mnoho operací, které byste provedli při definování a správě seznamu i použití seznamu k vyhledávání obrázků. Funkce protokolování vám umožňují zobrazit objekty odpovědí vygenerované voláními sady SDK do služby Content Moderatoru.
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.
@@ -667,9 +667,9 @@ Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>Spusťte program a zkontrolujte výstup.
+## <a name="run-the-program-and-review-the-output"></a>Spuštění programu a kontrola výstupu
 
-ID seznamu a ID obrázků se liší pokaždé, když aplikaci spouštíte.
+ID seznamu a ID obsahu obrázků se při každém spuštění aplikace mění.
 Soubor protokolu zapsaný programem má následující výstup:
 
 ```json
@@ -1090,4 +1090,4 @@ Response:
 
 ## <a name="next-steps"></a>Další kroky
 
-Získejte [Content moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a řešení sady [Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další Content moderator rychlý Start pro .NET a začněte s integrací.
+Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro technologii .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.

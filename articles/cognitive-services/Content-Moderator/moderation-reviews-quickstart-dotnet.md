@@ -1,58 +1,58 @@
 ---
 title: Vytváření revizí pomocí Content Moderator .NET
 titleSuffix: Azure Cognitive Services
-description: Jak vytvořit recenze pomocí Azure Content Moderator SDK pro .NET.
+description: Způsob vytvoření revizí pomocí sady Azure Content Moderator SDK pro .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: e3b36eae4f6dc4343828a38fa4ffe3920a83f589
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 540d9872d41ba3ffc73f5e42f098fe51437789c6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242874"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755298"
 ---
 # <a name="create-human-reviews-net"></a>Vytvořit lidské recenze (.NET)
 
 Kontroluje ukládání a zobrazování obsahu pro Moderátoři pro lidské moderování k vyhodnocení. Když uživatel dokončí revizi, výsledky se odešlou do zadaného koncového bodu zpětného volání. Tato příručka poskytuje informace a ukázky kódu, které vám pomohou začít používat [sadu Content moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k těmto akcím:
 
-- Vytvoření sady revizí pro lidské moderování
-- Získat stav stávajících revizí pro lidské moderování
+- Vytvoření sady revizí pro lidské moderátory
+- Získání stavu existujících revizí pro lidské moderátory
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 - Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 
-## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Zajistěte, aby váš klíč rozhraní API mohl volat kontrolu rozhraní API pro vytvoření revize.
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Kontrola, že klíč rozhraní API může volat rozhraní API pro kontroly, aby se mohla vytvořit kontrola
 
-Po dokončení předchozích kroků může dokončit dva Content Moderator klíče, pokud jste začali z Azure Portal.
+Pokud jste začínali na portálu Azure Portal, můžete po dokončení předchozích kroků získat dva klíče Content Moderatoru.
 
-Pokud máte v ukázce sady SDK používat klíč rozhraní API pro Azure, postupujte podle kroků uvedených v části [použití klíče Azure spolu s bodem recenze rozhraní API](./review-tool-user-guide/configure.md#use-your-azure-account-with-the-review-apis) , pokud chcete, aby aplikace volala rozhraní API pro revize a vytvořila recenze.
+Pokud plánujete ve své ukázkové sadě SDK používat klíč rozhraní API poskytnutý službou Azure, postupujte podle pokynů v části o [použití klíče Azure s rozhraním API pro kontroly](./review-tool-user-guide/configure.md#use-your-azure-account-with-the-review-apis), aby aplikace mohla volat rozhraní API pro kontroly a vytvářet kontroly.
 
-Pokud použijete bezplatný zkušební klíč vygenerovaný nástrojem pro kontrolu, váš účet nástroje pro kontrolu už o klíči ví, a proto nejsou potřeba žádné další kroky.
+Pokud budete používat klíč bezplatné zkušební verze vygenerovaný nástrojem pro revidování, pak váš účet nástroje pro revidování už klíč zná a není potřeba už žádné další kroky provádět.
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
 
-1. Přidejte do svého řešení nový projekt **konzolové aplikace (.NET Framework)** .
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)** .
 
-   V ukázkovém kódu pojmenujte projekt **CreateReviews**.
+   Ve vzorovém kódu pojmenujte tento projekt **CreateReviews**.
 
-1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
+1. Projekt vyberte jako jediný spouštěný projekt řešení.
 
-### <a name="install-required-packages"></a>Nainstalovat požadované balíčky
+### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
 Nainstalujte následující balíčky NuGet:
 
-- Microsoft. Azure. Cognitiveservices Account. ContentModerator
-- Microsoft. REST. ClientRuntime
-- Newtonsoft. JSON
+- Microsoft.Azure.CognitiveServices.ContentModerator
+- Microsoft.Rest.ClientRuntime
+- Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizovat příkazy using programu
+### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
 
 Upravte příkazy using programu.
 
@@ -67,12 +67,12 @@ using System.IO;
 using System.Threading;
 ```
 
-### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderator
+### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Přidejte následující kód, který vytvoří klienta Content Moderator pro vaše předplatné.
+Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru.
 
 > [!IMPORTANT]
-> Aktualizujte pole **a** a **CMSubscriptionKey** hodnotami identifikátoru vaší oblasti a klíče předplatného.
+> Aktualizujte pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
 
 ```csharp
 /// <summary>
@@ -118,9 +118,9 @@ public static class Clients
 }
 ```
 
-## <a name="create-a-class-to-associate-internal-content-information-with-a-review-id"></a>Vytvoření třídy pro přidružení informací o interním obsahu k ID Revize
+## <a name="create-a-class-to-associate-internal-content-information-with-a-review-id"></a>Vytvoření třídy pro přidružení interních informací o obsahu k ID revize
 
-Do třídy **program** přidejte následující třídu. Tato třída slouží k přidružení ID revize k vašemu internímu ID obsahu položky.
+Do třídy **Program** přidejte následující třídu. Tato třída slouží k přidružení ID revize k ID interního obsahu dané položky.
 
 ```csharp
 /// <summary>
@@ -151,12 +151,12 @@ Do třídy **program** přidejte následující třídu. Tato třída slouží k
     }
 ```
 
-### <a name="initialize-application-specific-settings"></a>Inicializovat nastavení specifické pro aplikaci
+### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifických pro aplikaci
 
 > [!NOTE]
-> Váš klíč služby Content Moderator má omezení četnosti požadavků za sekundu (RPS). Pokud tento limit překročíte, sada SDK vyvolá výjimku s kódem chyby 429.
+> Klíč služby Content Moderatoru má limit četnosti požadavků za sekundu (RPS), a pokud ho překročíte, sada SDK zobrazí výjimku s chybovým kódem 429.
 >
-> Klíč bezplatné úrovně má jeden limit RPS frekvence.
+> Klíč úrovně Free má limit nastavený na jeden požadavek za vteřinu.
 
 #### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Do třídy **program** v program.cs přidejte následující konstanty
 
@@ -185,9 +185,9 @@ Do třídy **program** přidejte následující třídu. Tato třída slouží k
 Aktualizujte tyto hodnoty tak, aby obsahovaly informace specifické pro vaše předplatné a tým.
 
 > [!NOTE]
-> Nastavte konstantu týmem na název, který jste použili při vytváření předplatného [nástroje Content moderator recenze](https://contentmoderator.cognitive.microsoft.com/) . Tým načtěte z oddílu **přihlašovací údaje** v nabídce **Nastavení** (ozubené kolo).
+> Konstantu TeamName nastavte na název, který jste použili při vytváření předplatného [nástroje Content Moderatoru pro revidování](https://contentmoderator.cognitive.microsoft.com/). Název týmu získáte z části **Credentials** (Přihlašovací údaje) v nabídce **Settings** (Nastavení – ozubené kolečko).
 >
-> Název týmu je hodnota pole **ID** v oddílu **rozhraní API** .
+> Název týmu je hodnota pole **Id** v části **API**.
 
 ```csharp
 /// <summary>
@@ -255,9 +255,9 @@ private static List<ReviewItem> reviewItems =
     new List<ReviewItem>();
 ```
 
-## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Vytvoření metody pro zápis zpráv do souboru protokolu
+## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Vytvoření metody k zapisování zpráv do souboru protokolu
 
-Do třídy **program** přidejte následující metodu.
+Do třídy **Program** přidejte následující metodu.
 
 ```csharp
 /// <summary>
@@ -276,11 +276,11 @@ private static void WriteLine(string message = null, bool echo = false)
 }
 ```
 
-## <a name="create-a-method-to-create-a-set-of-reviews"></a>Vytvoření metody pro vytvoření sady revizí
+## <a name="create-a-method-to-create-a-set-of-reviews"></a>Vytvoření metody k vytvoření sady revizí
 
-Normálně máte nějakou obchodní logiku pro identifikaci příchozích imagí, textu nebo videa, která je potřeba zkontrolovat. Tady ale stačí použít pevný seznam imagí.
+Za normálních okolností byste k identifikaci příchozích obrázků, textů nebo videí, které je třeba revidovat, používali obchodní logiku. Tady však stačí používat pevně daný seznam obrázků.
 
-Do třídy **program** přidejte následující metodu.
+Do třídy **Program** přidejte následující metodu.
 
 ```csharp
 /// <summary>
@@ -345,12 +345,12 @@ private static void CreateReviews(ContentModeratorClient client)
 }
 ```
 
-## <a name="create-a-method-to-get-the-status-of-existing-reviews"></a>Vytvoření metody pro získání stavu stávajících revizí
+## <a name="create-a-method-to-get-the-status-of-existing-reviews"></a>Vytvoření metody k získání stavu existujících revizí
 
-Do třídy **program** přidejte následující metodu.
+Do třídy **Program** přidejte následující metodu.
 
 > [!Note]
-> V praxi byste nastavili adresu URL zpětného volání `CallbackEndpoint` na adresu URL, která by obdržela výsledky ruční kontroly (prostřednictvím požadavku HTTP POST). Tuto metodu můžete změnit, aby kontrolovala stav probíhajících revizí.
+> V praxi byste nastavili adresu URL pro zpětné volání `CallbackEndpoint` na adresu URL, která by načítala výsledky ručních revizí (prostřednictvím žádosti HTTP POST). Tuto metodu byste mohli změnit, aby kontrolovala stav čekajících revizí.
 
 ```csharp
 /// <summary>
@@ -377,11 +377,11 @@ Do třídy **program** přidejte následující metodu.
     }
 ```
 
-## <a name="add-code-to-create-a-set-of-reviews-and-check-its-status"></a>Přidejte kód pro vytvoření sady revizí a kontrolu jejího stavu
+## <a name="add-code-to-create-a-set-of-reviews-and-check-its-status"></a>Přidání kódu k vytvoření sady revizí a kontrole jejího stavu
 
 Do metody **Main** přidejte následující kód.
 
-Tento kód simuluje mnohé z operací, které provádíte při definování a správě seznamu, a také použití seznamu na obrázky obrazovky. Funkce protokolování umožňují zobrazit objekty odpovědí generované sadou SDK volání služby Content mModerator.
+Tento kód simuluje mnoho operací, které provádíte při definování a správě seznamu i použití seznamu k vyhledávání obrázků. Funkce protokolování umožňují zobrazit objekty odpovědí generované sadou SDK volání služby Content mModerator.
 
 ```csharp
 using (TextWriter outputWriter = new StreamWriter(OutputFile, false))
@@ -414,9 +414,9 @@ Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>Spusťte program a zkontrolujte výstup.
+## <a name="run-the-program-and-review-the-output"></a>Spuštění programu a kontrola výstupu
 
-Zobrazí se následující vzorový výstup:
+Uvidíte následující ukázkový výstup:
 
 ```console
 Creating reviews for the following images:
@@ -426,11 +426,11 @@ Creating reviews for the following images:
     Review 201712i46950138c61a4740b118a43cac33f434 for item ID 0 is Pending.
 ```
 
-Přihlaste se k nástroji Content Moderator recenze, aby se zobrazila nevyřízená recenze obrázku s popiskem **SC** nastaveným na **hodnotu true**. Zobrazí se **také výchozí značky a** a **r** a všechny vlastní značky, které jste mohli v rámci nástroje pro revize definovat.
+Přihlaste se k nástroji Content Moderatoru pro revidování, abyste si zobrazili čekající revize obrázků s popiskem **sc**, který má hodnotu **true**. Můžete si také zobrazit výchozí značky **a** a **r** nebo libovolné vlastní značky, které jste si v nástroji pro revidování nadefinovali.
 
-K odeslání použijte tlačítko **Další** .
+Tlačítkem **Next** (Další) revizi odešlete.
 
-![Recenze obrázků pro moderátory lidí](images/moderation-reviews-quickstart-dotnet.PNG)
+![Revize obrázku lidskými moderátory](images/moderation-reviews-quickstart-dotnet.PNG)
 
 Pak pokračujte stisknutím libovolné klávesy.
 
@@ -443,12 +443,12 @@ Waiting 45 seconds for results to propagate.
     Press any key to exit...
 ```
 
-## <a name="check-out-the-following-output-in-the-log-file"></a>Podívejte se na následující výstup v souboru protokolu.
+## <a name="check-out-the-following-output-in-the-log-file"></a>Kontrola následujícího výstupu v souboru protokolu
 
 > [!NOTE]
-> Ve výstupním souboru řetězce "\{teamname}" a "\{callbackUrl}" odrážejí hodnoty pro pole `TeamName` a `CallbackEndpoint` v uvedeném pořadí.
+> Ve výstupním souboru odpovídají řetězce „\{teamname}“ a „\{callbackUrl}“ hodnotám polí `TeamName` a `CallbackEndpoint`.
 
-ID revize a adresy URL obsahu obrázků se liší při každém spuštění aplikace a po dokončení kontroly pole `reviewerResultTags` odráží, jak kontrolor označil položku.
+ID revizí a adresy URL obsahu obrázků se při každém spuštění aplikace mění a po dokončení revize odpovídá pole `reviewerResultTags` tomu, jak revidující položku označil.
 
 ```json
 Creating reviews for the following images:
@@ -511,9 +511,9 @@ Creating reviews for the following images:
     }
 ```
 
-## <a name="your-callback-url-if-provided-receives-this-response"></a>Adresa URL vašeho zpětného volání, pokud je zadaná, obdrží tuto odpověď.
+## <a name="your-callback-url-if-provided-receives-this-response"></a>Adresa URL pro zpětné volání (pokud je k dispozici) získá tuto odpověď
 
-Zobrazí se odpověď podobná následujícímu příkladu:
+Zobrazí se odpověď, která vypadá jako následující příklad:
 
 ```json
 {

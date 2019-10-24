@@ -5,14 +5,14 @@ services: service-fabric
 author: athinanthny
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: dcffc1ba783b49343bf3380b62c3d4085f5aa347
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b9a3534c24649e71385cd8fdc8b4981ac471cf90
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390083"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752304"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Co je model prostředků aplikace Service Fabric?
 Doporučuje se Service Fabric aplikace nasadit do Service Fabric clusteru prostřednictvím Azure Resource Manager. Tato metoda umožňuje popsat aplikace a služby ve formátu JSON a nasazovat je do stejné šablony Správce prostředků jako váš cluster. Na rozdíl od nasazení a správy aplikací přes PowerShell nebo Azure CLI není nutné čekat na to, aby cluster byl připravený. Proces registrace, zřizování a nasazování aplikací potom může probíhat v jediném kroku. Je to osvědčený postup pro správu životního cyklu aplikací ve vašem clusteru. Další informace najdete v článku [osvědčené postupy](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
@@ -41,8 +41,14 @@ Nasazení aplikace ze šablony Správce prostředků vyžaduje účet úložišt
 ![vytvořit účet úložiště][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>Konfigurace účtu úložiště 
-Po vytvoření účtu úložiště je potřeba vytvořit kontejner objektů blob, kde můžete aplikace připravit. V Azure Portal přejděte do účtu úložiště, do kterého chcete aplikace uložit. Vyberte okno **objekty blob** a klikněte na tlačítko **Přidat kontejner** . Přidejte nový kontejner s úrovní veřejného přístupu objektu BLOB.
-   
+Po vytvoření účtu úložiště je potřeba vytvořit kontejner objektů blob, kde můžete aplikace připravit. V Azure Portal přejděte do účtu úložiště, do kterého chcete aplikace uložit. Vyberte okno **objekty blob** a klikněte na tlačítko **Přidat kontejner** . Prostředky v clusteru je možné zabezpečit nastavením úrovně veřejného přístupu na Private. Přístup lze udělit několika způsoby:
+* [Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](../storage/common/storage-auth-aad-app.md)
+* [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC na webu Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md)
+* [Delegovat přístup pomocí sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
+)
+
+ V tomto příkladu použijeme anonymní přístup pro čtení pro objekty blob.
+
 ![Vytvořit objekt BLOB][CreateBlob]
 
 ### <a name="stage-application-in-a-storage-account"></a>Fáze aplikace v účtu úložiště
@@ -51,10 +57,10 @@ Předtím, než bude možné aplikaci nasadit, je nutné ji připravit v úloži
 1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na hlasovací projekt a vyberte možnost balíček.   
 ![Aplikace balíčku][PackageApplication]  
 2. Otevřete adresář **.\Service-Fabric-dotnet-quickstart\Voting\pkg\Debug** , který jste právě vytvořili, a nahlaste obsah do souboru s názvem **hlasovat. zip** , aby soubor souboru ApplicationManifest. XML byl v kořenu souboru ZIP.  
-@no__t aplikace 0Zip @ no__t-1  
+![Zip ][ZipApplication] aplikace  
 3. Přejmenujte příponu souboru z. zip na **. sfpkg**.
 4. V Azure Portal v kontejneru **aplikace** svého účtu úložiště klikněte na **nahrát** a nahrajte **hlasování. sfpkg**.  
-Balíček aplikace ![Upload @ no__t-1
+Balíček aplikace ![Upload ][UploadAppPkg]
 
 Aplikace je teď připravená. Nyní jsme připraveni vytvořit šablonu Azure Resource Manager pro nasazení aplikace.      
    
