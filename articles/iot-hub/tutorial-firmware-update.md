@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: c576020118778e34b80187ec056fca22a4d9c5b1
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: be1b23991a8dc4d8f29e961e33ba97153d8c5355
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485833"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755836"
 ---
-# <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementujte proces aktualizace firmwaru zařízení
+# <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementace procesu aktualizace firmwaru zařízení
 
 U zařízení připojených k centru IoT možná budete potřebovat aktualizovat firmware. Například můžete do firmwaru chtít přidat nové funkce nebo implementovat opravy zabezpečení. V řadě scénářů IoT je nepraktické být fyzicky u zařízení a pak na ně ručně instalovat aktualizace firmwaru. Tento kurz ukazuje, jak můžete začít a vzdáleně monitorovat proces aktualizace firmwaru prostřednictvím back-endové aplikace připojené k centru.
 
@@ -39,9 +39,9 @@ V tomto kurzu provedete následující úlohy:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Potřebujete Node.js v10.x.x, nebo později na vývojovém počítači.
+Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Ve vývojovém počítači potřebujete Node. js v10 za účelem. x. x nebo novější.
 
 Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
 
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -policy-name service -o table
+az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
@@ -186,7 +186,7 @@ Následující snímek obrazovky ukazuje výstup z back-endové aplikace a je na
 
 ![Back-endová aplikace](./media/tutorial-firmware-update/BackEnd2.png)
 
-Protože automatické konfigurace spuštění v okamžiku vytvoření a pak každých pět minut, se nemusí zobrazí každý stav aktualizace odeslán do back endové aplikace. Metriky můžete zobrazit také na portálu v části **Automatická správa zařízení > Konfigurace zařízení IoT** vašeho centra IoT:
+Vzhledem k tomu, že automatické konfigurace zařízení běží v době vytváření a pak každých pět minut, se nemusí zobrazit každá aktualizace stavu odesílaná do back-endové aplikace. Metriky můžete zobrazit také na portálu v části **Automatická správa zařízení > Konfigurace zařízení IoT** vašeho centra IoT:
 
 ![Zobrazení konfigurace na portálu](./media/tutorial-firmware-update/portalview.png)
 
@@ -203,9 +203,9 @@ Můžete použít také rozhraní příkazového řádku:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak pro svá připojená zařízení implementovat proces aktualizace firmwaru. Přejděte k dalšímu kurzu, kde se naučíte, jak použít nástroje na portálu Azure IoT Hub a příkazy rozhraní příkazového řádku Azure k testování připojení zařízení.
+V tomto kurzu jste zjistili, jak pro svá připojená zařízení implementovat proces aktualizace firmwaru. Přejděte k dalšímu kurzu, kde se dozvíte, jak pomocí nástrojů portálu Azure IoT Hub a příkazů Azure CLI testovat připojení zařízení.
 
 > [!div class="nextstepaction"]
 > [Použití simulovaného zařízení pro otestování připojení k IoT Hubu](tutorial-connectivity.md)

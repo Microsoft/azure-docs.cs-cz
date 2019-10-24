@@ -3,25 +3,25 @@ title: Definování a použití pracovních postupů obsahu prostřednictvím n�
 titleSuffix: Azure Cognitive Services
 description: Pomocí návrháře pracovních postupů Azure Content Moderator můžete definovat vlastní pracovní postupy a prahové hodnoty na základě zásad obsahu.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: sajagtap
-ms.openlocfilehash: ca223735e64e5499313872ba0508bfb0d8ec7ed2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882703"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754257"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Definování a použití pracovních postupů moderování
 
 V této příručce se dozvíte, jak nastavit a používat [pracovní postupy](../review-api.md#workflows) na webu [nástrojů pro revize](https://contentmoderator.cognitive.microsoft.com) . Pracovní postupy jsou cloudově přizpůsobené filtry, které můžete použít ke efektivnějšímu zpracování obsahu. Pracovní postupy se můžou připojit k nejrůznějším službám a filtrovat obsah různými způsoby a pak provést příslušné akce. V této příručce se dozvíte, jak pomocí konektoru Content Moderator (který je ve výchozím nastavení zahrnutý) filtrovat obsah a jak v typickém scénáři moderování nastavit lidské recenze.
 
-## <a name="create-a-new-workflow"></a>Vytvoření nového pracovního postupu
+## <a name="create-a-new-workflow"></a>Vytvořit nový pracovní postup
 
 Přejdete na [Nástroj pro kontrolu Content moderator](https://contentmoderator.cognitive.microsoft.com/) a přihlaste se. Na kartě **Nastavení** vyberte **pracovní postupy**.
 
@@ -41,7 +41,7 @@ Pojmenujte pracovní postup, zadejte popis a určete, zda pracovní postup zprac
 
 Na další obrazovce přejdete do části **if** . V rozevírací nabídce nahoře vyberte **Podmínka**. To vám umožní nakonfigurovat podmínku, na které bude pracovní postup provádět akce. Pokud chcete použít více podmínek, vyberte místo toho **kombinaci** . 
 
-V dalším kroku vyberte konektor. Tento příklad používá **Content moderator**. V závislosti na zvoleném konektoru se zobrazí různé možnosti pro výstup dat. Informace o [](./configure.md#connectors) nastavení dalších konektorů najdete v části konektory v Průvodci nastavením nástroje pro kontrolu.
+V dalším kroku vyberte konektor. Tento příklad používá **Content moderator**. V závislosti na zvoleném konektoru se zobrazí různé možnosti pro výstup dat. Informace o nastavení dalších konektorů najdete v části [konektory](./configure.md#connectors) v Průvodci nastavením nástroje pro kontrolu.
 
 ![Vybrat konektor pracovního postupu](images/image-workflow-connect-to.PNG)
 
@@ -51,7 +51,7 @@ Vyberte požadovaný výstup, který chcete použít, a nastavte podmínky pro j
 
 ### <a name="define-the-action"></a>Definovat akci
 
-Přejít na část a, kde vyberete akci. Následující příklad vytvoří revizi obrázku a přiřadí značku. Volitelně můžete přidat alternativní cestu (Else) a také pro ni nastavit akci.
+Přejít **na část a** , kde vyberete akci. Následující příklad vytvoří revizi obrázku a přiřadí značku. Volitelně můžete přidat alternativní cestu (Else) a také pro ni nastavit akci.
 
 ![Akce definování pracovního postupu](images/image-workflow-action.PNG)
 

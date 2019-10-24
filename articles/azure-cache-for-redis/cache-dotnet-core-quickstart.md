@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cf241b788c0027c6905c6898352bb3352da64825
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: deef63c07dedbff0ae914b09558a2771adba19ff
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326518"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755480"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý start: Použití mezipaměti Azure pro Redis s aplikací .NET Core
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Core
 
-V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Core, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure. Konkrétně použijete klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) s C# kódem v konzolové aplikaci .NET Core. 
+V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Core, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure. Konkrétně použijete klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) s C# kódem v konzolové aplikaci .NET Core.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -133,7 +133,7 @@ K souboru *Program.cs* přidejte následující příkaz `using`:
 using StackExchange.Redis;
 ```
 
-Připojení k mezipaměti Azure pro Redis je spravováno `ConnectionMultiplexer` třídou. Tato třída by se měla v rámci klientské aplikace sdílet a opakovaně používat. Nevytvářejte pro každou operaci nové připojení. 
+Připojení k mezipaměti Azure pro Redis je spravováno třídou `ConnectionMultiplexer`. Tato třída by se měla v rámci klientské aplikace sdílet a opakovaně používat. Nevytvářejte pro každou operaci nové připojení. 
 
 V souboru *Program.cs* přidejte k třídě `Program` konzolové aplikace následující členy:
 
@@ -153,7 +153,7 @@ V souboru *Program.cs* přidejte k třídě `Program` konzolové aplikace násle
         }
 ```
 
-Tento přístup ke sdílení instance `ConnectionMultiplexer` v aplikaci používá statickou vlastnost, která vrací připojenou instanci. Tento kód poskytuje způsob inicializace pouze jedné připojené instance `ConnectionMultiplexer`, který je bezpečný pro přístup z více vláken. `abortConnect`je nastavené na false, což znamená, že volání je úspěšné i v případě, že není navázáno připojení k mezipaměti Azure pro Redis. Klíčovou vlastností `ConnectionMultiplexer` je automatické obnovení připojení k mezipaměti po vyřešení problémů se sítí nebo jiných příčin.
+Tento přístup ke sdílení instance `ConnectionMultiplexer` v aplikaci používá statickou vlastnost, která vrací připojenou instanci. Tento kód poskytuje způsob inicializace pouze jedné připojené instance `ConnectionMultiplexer`, který je bezpečný pro přístup z více vláken. `abortConnect` je nastavené na false, což znamená, že se volání zdaří i v případě, že není navázáno připojení k mezipaměti Azure pro Redis. Klíčovou vlastností `ConnectionMultiplexer` je automatické obnovení připojení k mezipaměti po vyřešení problémů se sítí nebo jiných příčin.
 
 Hodnota tajného kódu *CacheConnection* se používá jako parametr hesla a je možné k ní získat přístup použitím zprostředkovatele konfigurace Secret Manager.
 
@@ -302,11 +302,11 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
 >
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
-Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
+Do textového pole **Filtrovat podle názvu...** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
-![Odstranění](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
+![Odstranit](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
 Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
 
@@ -316,7 +316,7 @@ Po chvíli bude skupina prostředků včetně všech obsažených prostředků o
 
 <a name="next-steps"></a>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z aplikace .NET Core. Přejděte k dalšímu rychlému startu a použijte Azure cache pro Redis s webovou aplikací ASP.NET.
 

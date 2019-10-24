@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/22/2019
+ms.date: 10/21/2019
 ms.author: juliako
-ms.openlocfilehash: bb62a28798010d3e18c5f19fa0062001a70b9622
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675657"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750250"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video
 
@@ -94,11 +94,12 @@ Naklonujte úložiště GitHub, který obsahuje soubory kolekce a prostředí n�
 V této části odešleme požadavky relevantní pro kódování a vytvoření adres URL, abyste mohli soubor streamovat. Konkrétně se odesílají následující požadavky:
 
 1. Získání tokenu služby Azure AD pro ověření instančního objektu
+1. Spuštění koncového bodu streamování
 2. Vytvoření výstupního prostředku
-3. Vytvořit **transformaci**
-4. Vytvoření **úlohy**
-5. Vytvoření **lokátoru streamování**
-6. Seznam cest **lokátoru streamování**
+3. Vytvořit transformaci
+4. Vytvoření úlohy
+5. Vytvoření lokátoru streamování
+6. Seznam cest lokátoru streamování
 
 > [!Note]
 >  V tomto kurzu předpokládáme, že všechny prostředky vytváříte s jedinečnými názvy.  
@@ -118,6 +119,33 @@ V této části odešleme požadavky relevantní pro kódování a vytvoření a
 4. Vrátí se odpověď s tokenem, která nastaví proměnnou prostředí „AccessToken“ na hodnotu tokenu. Kód, který nastavuje proměnnou „AccessToken“, zobrazíte na kartě **Tests** (Testy). 
 
     ![Získání tokenu AAD](./media/develop-with-postman/postman-get-aad-auth-token.png)
+
+
+### <a name="start-a-streaming-endpoint"></a>Spuštění koncového bodu streamování
+
+Pokud chcete streamování povolit, musíte nejdřív spustit [koncový bod streamování](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) , ze kterého chcete streamovat video.
+
+> [!NOTE]
+> Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
+
+1. V levém okně aplikace po výběru vyberte streamování a živé.
+2. Pak vyberte "spustit StreamingEndpoint".
+3. Stiskněte **Odeslat**.
+
+    * Odesílá se následující operace **post** :
+
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
+        ```
+    * Pokud je žádost úspěšná, `Status: 202 Accepted` se vrátí.
+
+        Tento stav znamená, že žádost byla přijata ke zpracování; zpracování však nebylo dokončeno. Na základě hodnoty v hlavičce odpovědi `Azure-AsyncOperation` můžete zadat dotaz na stav operace.
+
+        Například následující operace GET vrátí stav vaší operace:
+        
+        `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
+
+        Článek [sledování asynchronních operací Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) podrobněji vysvětluje, jak sledovat stav asynchronních operací Azure prostřednictvím hodnot vrácených v odpovědi.
 
 ### <a name="create-an-output-asset"></a>Vytvoření výstupního prostředku
 

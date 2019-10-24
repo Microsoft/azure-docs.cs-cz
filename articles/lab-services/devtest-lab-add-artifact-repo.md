@@ -1,6 +1,6 @@
 ---
-title: Přidání úložiště Git do testovacího prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak přidat úložiště Githubu nebo Azure DevOps služby Git pro váš zdroj vlastních artefaktů ve službě Azure DevTest Labs.
+title: Přidání úložiště Git do testovacího prostředí v Azure DevTest Labs | Microsoft Docs
+description: Naučte se, jak do Azure DevTest Labs přidat úložiště GitHubu nebo Azure DevOps Services úložiště Git pro vlastní zdroj artefaktů.
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: spelluru
@@ -14,88 +14,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1555eb4e48a0cf43a38aa811e20ffbbed8ee87a9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311687"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755817"
 ---
-# <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Přidání úložiště Git pro ukládání vlastních artefaktů a šablony Resource Manageru
+# <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Přidání úložiště Git pro uložení vlastních artefaktů a šablon Správce prostředků
 
-Je možné [při vytváření vlastních artefaktů](devtest-lab-artifact-author.md) pro virtuální počítače ve vaší laboratoři nebo [pomocí šablon Azure Resource Manageru k vytvoření vlastního testovacího prostředí](devtest-lab-create-environment-from-arm.md). Privátní úložiště Git pro artefakty nebo šablony Resource Manageru, které váš tým vytváří, je nutné přidat. Úložiště je možné hostovat na [Githubu](https://github.com) nebo na [Azure DevOps služby](https://visualstudio.com).
+Můžete [vytvořit vlastní artefakty](devtest-lab-artifact-author.md) pro virtuální počítače v testovacím prostředí, nebo můžete [použít šablony Azure Resource Manager k vytvoření vlastního testovacího prostředí](devtest-lab-create-environment-from-arm.md). Je nutné přidat privátní úložiště Git pro artefakty nebo šablony Správce prostředků, které váš tým vytvoří. Úložiště je možné hostovat na [GitHubu](https://github.com) nebo na [Azure DevOps Services](https://visualstudio.com).
 
-Nabízíme [úložiště GitHub artefaktů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) , kterou můžete nasadit jako-je, nebo si můžete přizpůsobit pro vaše testovací prostředí. Když upravit nebo vytvořit artefakt, nejde uložit artefaktů ve veřejném úložišti. Je nutné vytvořit vaše vlastní privátní úložiště vlastních artefaktů a artefakty, které vytvoříte. 
+Nabízíme [úložiště GitHub artefaktů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) , které můžete nasadit tak, jak jsou, nebo si je můžete přizpůsobit pro vaše cvičení. Při přizpůsobování nebo vytváření artefaktu nemůžete uložit artefakt ve veřejném úložišti. Musíte vytvořit vlastní privátní úložiště pro vlastní artefakty a artefakty, které vytvoříte. 
 
-Při vytváření virtuálního počítače, můžete šablonu Resource Manageru uložit, upravit jej a pak ho později použít k vytvoření více virtuálních počítačů. Je třeba vytvořit vlastní privátní úložiště pro ukládání své vlastní šablony Resource Manageru.  
+Když vytváříte virtuální počítač, můžete šablonu Správce prostředků uložit, přizpůsobit ji, pokud chcete, a pak ji později použít k vytvoření dalších virtuálních počítačů. Abyste mohli ukládat vlastní šablony Správce prostředků, musíte si vytvořit vlastní privátní úložiště.  
 
-* Zjistěte, jak vytvořit úložiště GitHub, najdete v článku [Githubu Bootcamp](https://help.github.com/categories/bootcamp/).
-* Zjistěte, jak vytvořit projekt Azure DevOps služby, který má úložiště Git, naleznete v tématu [připojit ke službám Azure DevOps](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
+* Informace o tom, jak vytvořit úložiště GitHubu, najdete v článku [GitHub Bootcamp](https://help.github.com/categories/bootcamp/).
+* Informace o tom, jak vytvořit projekt Azure DevOps Services s úložištěm Git, najdete v tématu [připojení k Azure DevOps Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
 
-Na následujícím obrázku je příklad toho, jak může vypadat úložiště, který má artefaktů v Githubu:  
+Následující obrázek je příkladem toho, jak by úložiště, které má artefakty, vypadalo na GitHubu:  
 
-![Ukázkové artefakty úložiště GitHub](./media/devtest-lab-add-repo/devtestlab-github-artifact-repo-home.png)
+![Ukázka úložiště artefaktů GitHubu](./media/devtest-lab-add-repo/devtestlab-github-artifact-repo-home.png)
 
-## <a name="get-the-repository-information-and-credentials"></a>Získejte informace o úložišti a přihlašovací údaje
-Přidání úložiště do vašeho testovacího prostředí, nejprve získejte informace o klíči z úložiště. Následující části popisují, jak získat požadované informace pro úložiště, které jsou hostované na Githubu nebo služby Azure DevOps.
+## <a name="get-the-repository-information-and-credentials"></a>Získat informace o úložišti a přihlašovací údaje
+Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získejte klíčové informace z vašeho úložiště. Následující části popisují, jak získat požadované informace pro úložiště, která jsou hostovaná na GitHubu nebo Azure DevOps Services.
 
-### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Získat adresu URL klonování úložiště Githubu a osobní přístupový token
+### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Získání adresy URL pro klonování úložiště GitHub a tokenu osobního přístupu
 
-1. Přejděte na domovskou stránku úložiště GitHub obsahující artefakt nebo definice šablon Resource Manageru.
+1. Přejít na domovskou stránku úložiště GitHub, které obsahuje definice artefaktů nebo Správce prostředků šablon.
 2. Vyberte **Clone or download** (Naklonovat nebo stáhnout).
-3. Zkopírujte adresu URL do schránky, vyberte **adresa url HTTPS clone** tlačítko. Uložte adresu URL pro pozdější použití.
-4. V pravém horním rohu GitHub, vyberte profilový obrázek a pak vyberte **nastavení**.
-5. V **osobní nastavení** nabídky na levé straně vyberte **osobní přístupové tokeny**.
-6. Vyberte **vygenerovat nový token**.
-7. Na **nový token pat** stránce v části **Token popis**, zadejte popis. Přijměte výchozí položky v rámci **vyberte obory**a pak vyberte **vygenerovat Token vygenerujte**.
-8. Uložte vygenerovaný token. Tento token použijete později.
-9. Zavřete Githubu.   
-10. Dál [připojit se k úložišti testovacího prostředí](#connect-your-lab-to-the-repository) oddílu.
+3. Chcete-li zkopírovat adresu URL do schránky, vyberte tlačítko **Adresa URL klonování https** . Uložte adresu URL pro pozdější použití.
+4. V pravém horním rohu GitHubu vyberte profilový obrázek a pak vyberte **Nastavení**.
+5. V nabídce **osobní nastavení** na levé straně vyberte **tokeny osobních přístupů**.
+6. Vyberte možnost **generovat nový token**.
+7. Na stránce **Nový token osobního přístupu** zadejte v části **Popis tokenu**popis. Přijměte výchozí položky v části **Vybrat obory**a pak vyberte **vygenerovat token**.
+8. Uložte vygenerovaný token. Token použijete později.
+9. Zavřete GitHub.   
+10. Přejděte k části [připojení laboratoře k úložišti](#connect-your-lab-to-the-repository) .
 
-### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Klonování úložiště Azure získat adresu URL a osobní přístupový token
+### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Získat adresu URL pro klonování Azure Repos a osobní přístupový token
 
-1. Přejděte na domovskou stránku týmu kolekce (například https://contoso-web-team.visualstudio.com) a pak vyberte svůj projekt.
-2. Na domovské stránce projektu, vyberte **kód**.
-3. Chcete-li zobrazit adresu URL klonu na projekt **kód** stránce **klonování**.
-4. Adresu URL si uložte. Adresa URL použijete později.
-5. Chcete-li vytvořit osobní přístupový token, v rozevírací nabídce účtu uživatele, vyberte **Můj profil**.
-6. Na stránce informace o profilu, vyberte **zabezpečení**.
-7. Na **zabezpečení** kartu, vyberte možnost **přidat**.
-8. Na **vytvořit osobní přístupový token** stránky:
-   1. Zadejte **popis** pro daný token.
-   2. V **vyprší v** seznamu vyberte **180 dnů**.
-   3. V **účty** seznamu vyberte **všechny přístupné účty**.
-   4. Vyberte **všechny obory** možnost.
-   5. Vyberte **vytvořit Token**.
-9. Nový token se zobrazí v **osobní přístupové tokeny** seznamu. Vyberte **kopírování Token**a potom uložte hodnota tokenu pro pozdější použití.
-10. Dál [připojit se k úložišti testovacího prostředí](#connect-your-lab-to-the-repository) oddílu.
+1. Přejít na domovskou stránku kolekce týmu (například https://contoso-web-team.visualstudio.com) a potom vyberte svůj projekt.
+2. Na domovské stránce projektu vyberte možnost **kód**.
+3. Chcete-li zobrazit adresu URL klonování, vyberte na stránce **kód** projektu možnost **klonovat**.
+4. Uložte adresu URL. Adresu URL použijete později.
+5. Pokud chcete vytvořit osobní přístupový token, v rozevírací nabídce uživatelský účet vyberte **můj profil**.
+6. Na stránce informace o profilu vyberte **zabezpečení**.
+7. Na kartě **zabezpečení** vyberte **Přidat**.
+8. Na stránce **Vytvoření osobního přístupového tokenu** :
+   1. Zadejte **Popis** tokenu.
+   2. V seznamu **vyprší platnost** vyberte **180 dnů**.
+   3. V seznamu **účty** vyberte **všechny účty k dispozici**.
+   4. Vyberte možnost jen **pro čtení** .
+   5. Vyberte **vytvořit token**.
+9. Nový token se zobrazí v seznamu **tokenů osobního přístupu** . Vyberte možnost **Kopírovat token**a pak hodnotu token uložte pro pozdější použití.
+10. Přejděte k části [připojení laboratoře k úložišti](#connect-your-lab-to-the-repository) .
 
-## <a name="connect-your-lab-to-the-repository"></a>Připojit se k úložišti testovacího prostředí
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Vyberte **další služby**a pak vyberte **DevTest Labs** ze seznamu služeb.
-3. V seznamu testovacích prostředí vyberte vaše testovací prostředí. 
-4. Vyberte **konfigurace a zásad** > **úložišť** >  **+ přidat**.
+## <a name="connect-your-lab-to-the-repository"></a>Připojení testovacího prostředí k úložišti
+1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+2. Vyberte **Další služby**a v seznamu služeb vyberte **DevTest Labs** .
+3. V seznamu cvičení vyberte testovací prostředí. 
+4. Vyberte **Konfigurace a zásady**  > **úložišť**  >  **+ Přidat**.
 
     ![Tlačítko Přidat úložiště](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
-5. V druhém **úložišť** stránky, zadejte následující informace:
+5. Na stránce druhá **úložiště** zadejte následující informace:
    1. **Název**. Zadejte název úložiště.
-   2. **Adresa Url klonu Git**. Zadejte adresu URL klonu Git HTTPS, který jste si zkopírovali z Githubu nebo služby Azure DevOps.
-   3. **Větev**. Chcete-li získat vaše definice, zadejte větev.
-   4. **Token pat**. Zadejte osobní přístupový token, který jste předtím získali z Githubu nebo služby Azure DevOps.
-   5. **Cesty ke složkám**. Zadejte alespoň jedna cesta ke složce relativní adresa URL klonu, který obsahuje vaše artefakt nebo definice šablon Resource Manageru. Při zadávání podadresář, nezapomeňte že zahrnout lomítko cesta ke složce.
+   2. **Adresa Url git clone** Zadejte adresu URL klonu Git HTTPS, kterou jste zkopírovali dříve z GitHubu nebo z Azure DevOps Services.
+   3. **Větev**. Pokud chcete získat definice, zadejte větev.
+   4. **Osobní přístupový token** Zadejte osobní přístupový token, který jste už dříve získali z GitHubu nebo Azure DevOps Services.
+   5. **Cesty ke složkám**. Zadejte alespoň jednu cestu ke složce vzhledem k adrese URL klonování, která obsahuje definice artefaktů nebo Správce prostředků šablon. Když zadáte podadresář, nezapomeňte v cestě ke složce zadat lomítko.
 
-      ![Oblast úložiště](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. Vyberte **Uložit**.
+      ![Oblast úložišť](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+6. Vyberte **Save** (Uložit).
 
 ### <a name="related-blog-posts"></a>Související blogové příspěvky
-* [Řešení potíží s selhání artefaktů ve službě DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)
-* [Připojte se k virtuální počítač do existující domény služby Active Directory pomocí šablony Resource Manageru ve službě DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Řešení potíží s neúspěšnými artefakty v DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)
+* [Připojení virtuálního počítače k existující doméně služby Active Directory pomocí Správce prostředků šablony v DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Další postup
-Jakmile vytvoříte privátní úložiště Git máte jeden nebo oba z těchto možností podle svých potřeb:
-* Store vaše [vlastních artefaktů](devtest-lab-artifact-author.md). Můžete později použít k vytvoření nové virtuální počítače.
-* [Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Resource Manageru](devtest-lab-create-environment-from-arm.md). Potom můžete ukládat šablony ve vašem privátním úložišti.
+## <a name="next-steps"></a>Další kroky
+Po vytvoření privátního úložiště Git můžete v závislosti na vašich potřebách provést jednu nebo obě následující akce:
+* Uložte [vlastní artefakty](devtest-lab-artifact-author.md). Později je můžete použít k vytvoření nových virtuálních počítačů.
+* [Vytvářejte prostředí s více virtuálními počítači a PaaS prostředky pomocí šablon Správce prostředků](devtest-lab-create-environment-from-arm.md). Pak můžete šablony Uložit do soukromého úložiště.
 
-Při vytváření virtuálního počítače můžete ověřit, že se artefakty nebo šablony jsou přidány do úložiště Git. Jsou okamžitě dostupné v seznamu artefakty nebo šablon. Název vašeho privátního úložiště zobrazuje ve sloupci, který určuje zdroj. 
+Když vytváříte virtuální počítač, můžete ověřit, že se artefakty nebo šablony přidaly do úložiště Git. Jsou okamžitě k dispozici v seznamu artefaktů nebo šablon. Název soukromého úložiště se zobrazí ve sloupci, který určuje zdroj. 

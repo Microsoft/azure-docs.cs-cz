@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 477b4e51c49a558aed0e5623a3821fa9b8d9eabd
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0c2e368b9c12d8ab673e5b8808632501de448b9a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622364"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755770"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizaci Azure Active Directory v Azure Active Directory B2C
 
@@ -25,13 +26,13 @@ Pokud chcete jako [poskytovatele identity](active-directory-b2c-reference-oauth-
 
 Pokud chcete povolit přihlašování pro uživatele z konkrétní organizace Azure AD, musíte zaregistrovat aplikaci v tenantovi organizace Azure AD, která není stejná jako váš tenant Azure AD B2C.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho TENANTA Azure AD. Toto není stejný tenant jako tenant Azure AD B2C.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 4. Vyberte **Nová registrace**.
 5. Zadejte název své aplikace. Například, `Azure AD B2C App`.
 6. Přijměte výběr **účtů v tomto organizačním adresáři pouze** pro tuto aplikaci.
-7. Pro **identifikátor URI přesměrování**přijměte hodnotu **Web**a zadejte následující adresu URL na všechna malá písmena, kde `your-B2C-tenant-name` se nahradí názvem vašeho tenanta Azure AD B2C. Například `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`:
+7. Pro **identifikátor URI přesměrování**přijměte hodnotu **Web**a zadejte následující adresu URL do všech malých písmen, kde se `your-B2C-tenant-name` nahradí názvem vašeho tenanta Azure AD B2C. Například `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`:
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -51,13 +52,15 @@ Pokud chcete povolit přihlašování pro uživatele z konkrétní organizace Az
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Zprostředkovatelé identity**a potom vyberte **Nový poskytovatel OpenID Connect**.
 1. Zadejte **název**. Zadejte například *Contoso Azure AD*.
-1. V poli **Adresa URL metadat**zadejte následující adresu URL `your-AD-tenant-domain` , která nahrazuje název domény vašeho tenanta Azure AD:
+1. V poli **Adresa URL metadat**zadejte následující adresu URL, která nahrazuje `your-AD-tenant-domain` názvem domény vašeho TENANTA Azure AD:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
     Například, `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
+
+    **Nepoužívejte koncový** bod METADAT Azure AD v 2.0, například `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`. Výsledkem je, že při pokusu o přihlášení dojde k chybě, která je podobná `AADB2C: A claim with id 'UserId' was not found, which is required by ClaimsTransformation 'CreateAlternativeSecurityId' with id 'CreateAlternativeSecurityId' in policy 'B2C_1_SignUpOrIn' of tenant 'contoso.onmicrosoft.com'`.
 
 1. Jako **ID klienta**zadejte ID aplikace, které jste si poznamenali dříve.
 1. Jako **tajný klíč klienta**zadejte tajný klíč klienta, který jste předtím nahráli.
@@ -71,4 +74,4 @@ Pokud chcete povolit přihlašování pro uživatele z konkrétní organizace Az
     * **Příjmení**: *family_name*
     * **E-mail**: *unique_name*
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).

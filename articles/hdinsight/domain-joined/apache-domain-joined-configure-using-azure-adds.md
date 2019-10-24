@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 10/02/2019
-ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 448b2674aa6021107d138bc0d91f1bda399eb4a6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030326"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755905"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Konfigurace Balíček zabezpečení podniku s využitím Azure Active Directory Domain Services ve službě HDInsight
 
@@ -70,7 +70,7 @@ Po vytvoření spravované identity a správné role může správce AAD-DS nast
 ## <a name="networking-considerations"></a>Aspekty sítí
 
 > [!NOTE]  
-> Služba Azure AD-DS musí být nasazená ve virtuální síti založené na Azure Resource Manager. Klasické virtuální sítě se pro Azure AD-DS nepodporují. Další informace najdete v tématu [povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network).
+> Služba Azure AD-DS musí být nasazená ve virtuální síti založené na Azure Resource Manager. Klasické virtuální sítě se pro Azure AD-DS nepodporují. Další informace najdete v tématu [povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network).
 
 Po povolení služby Azure AD-DS se na Virtual Machines AD (VM) spustí místní server DNS (Domain Name Service). Nakonfigurujte službu Azure AD-DS Virtual Network (VNET), aby používala tyto vlastní servery DNS. Pokud chcete najít správné IP adresy, vyberte v kategorii **Spravovat** možnost **vlastnosti** a podívejte se na IP adresy uvedené pod položkou **IP adresa v Virtual Network**.
 

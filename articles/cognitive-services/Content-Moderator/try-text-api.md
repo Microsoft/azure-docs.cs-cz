@@ -3,19 +3,19 @@ title: Mírný text pomocí rozhraní API pro moderování textu – Content Mod
 titleSuffix: Azure Cognitive Services
 description: Moderování textu testovacího disku pomocí rozhraní API pro moderování textu v online konzole.
 services: cognitive-services
-author: sanjeev3
-ms.author: sajagtap
+author: PatrickFarley
+ms.author: pafarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 49047c21f86530aac6ed3e0138a643fd08c35af8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf3f08436fb4bac56907b342c991709947f4c24d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561187"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754202"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Střední text z konzoly API
 
@@ -29,7 +29,7 @@ Než budete moct otestovat rozhraní API v online konzole, budete potřebovat sv
 
 Přejít na [odkaz rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) 
 
-  Otevře  se stránka s textovou obrazovkou.
+  Otevře se stránka s **textovou obrazovkou** .
 
 ## <a name="open-the-api-console"></a>Otevřete konzolu rozhraní API.
 
@@ -46,7 +46,7 @@ V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuj
 Vyberte parametry dotazu, které chcete použít na textové obrazovce. V tomto příkladu použijte výchozí hodnotu pro **jazyk**. Můžete ho nechat prázdné, protože operace automaticky detekuje pravděpodobný jazyk v rámci provádění.
 
 > [!NOTE]
-> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila **odpověď s** podporou počítače (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
+> Pro parametr **jazyka** přiřaďte `eng` nebo nechte prázdné, aby se zobrazila **odpověď s** podporou počítače (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
 >
 > Pro detekci **podmínek vulgárních** výrazů použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo ponechte prázdné.
 
@@ -174,6 +174,6 @@ Následující odpověď ukazuje různé přehledy z rozhraní API. Obsahuje pot
 
 Podrobné vysvětlení všech sekcí v odpovědi JSON najdete v koncepční příručce pro [moderování textu](text-moderation-api.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Použijte REST API ve vašem kódu nebo začněte s aplikací pro [rychlý Start s moderováním .NET](text-moderation-quickstart-dotnet.md) pro integraci s vaší aplikací.
