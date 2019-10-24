@@ -1,27 +1,27 @@
 ---
-title: 'Rychlý start: Vyzkoušejte Content Moderator na webu Content Moderator'
+title: 'Rychlý Start: Vyzkoušejte Content Moderator na webu Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete nástroj online Content Moderator recenze k otestování základních funkcí Content Moderator bez nutnosti psát jakýkoli kód.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: e5b20bb45c08330c59fc72712b9e65b488c8c68b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564440"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757370"
 ---
-# <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý start: Vyzkoušet Content Moderator na webu
+# <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý Start: Vyzkoušejte Content Moderator na webu
 
 V tomto rychlém startu použijete nástroj online Content Moderator recenze k otestování základních funkcí Content Moderator bez nutnosti psát jakýkoli kód. Pokud chcete tuto službu integrovat do vaší aplikace rychleji, přečtěte si další rychlé starty v části [Další kroky](#next-steps) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Webový prohlížeč
 
@@ -50,7 +50,7 @@ Odešlete obsah pro moderování. Interně Nástroj pro kontrolu zavolá rozhran
 
 Zkontrolujte použité značky moderování. Můžete vidět, které značky byly aplikovány na váš obsah a jaké byly skóre v každé kategorii. Další informace o tom, co ukazují různé značky obsahu, najdete v tématech o moderování [obrázku](image-moderation-api.md), [textu](text-moderation-api.md)a [videa](video-moderation-api.md) .
 
-![Zkontrolovat výsledky](images/reviewresults_text.png)
+![Kontrola výsledků](images/reviewresults_text.png)
 
 V projektu můžete vy nebo váš tým revize tyto značky změnit nebo podle potřeby přidat další značky. Tyto změny odešlete tlačítkem **Další** . Protože vaše obchodní aplikace volá rozhraní API moderátorů, bude se zde zařadit do fronty, která je připravená k revizi týmy pro lidskou kontrolu. Pomocí tohoto přístupu můžete rychle zkontrolovat velké objemy obsahu.
 
@@ -65,7 +65,7 @@ Další informace o tom, jak používat nástroj pro kontrolu Content Moderator,
 
 Nebo pokračujte dalšími kroky, abyste mohli začít používat rozhraní API pro moderování ve vašem kódu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se používat rozhraní API pro moderování ve vaší aplikaci.
 - Implementujte moderování imagí. Použijte [konzolu rozhraní API](try-image-api.md) nebo [ C# rychlý Start](image-moderation-quickstart-dotnet.md) pro skenování imagí a detekci potenciálního dospělého a pikantní obsahu pomocí značek, hodnocení spolehlivosti a dalších extrahovaných informací.

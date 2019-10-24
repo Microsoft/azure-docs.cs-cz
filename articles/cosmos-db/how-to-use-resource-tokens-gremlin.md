@@ -1,18 +1,18 @@
 ---
 title: Použití Azure Cosmos DBch tokenů prostředků v sadě SDK pro Gremlin
 description: Naučte se vytvářet tokeny prostředků a používat je pro přístup k databázi grafu.
-author: olignat
+author: luisbosquez
+ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/06/2019
-ms.author: olignat
-ms.openlocfilehash: 6364bd0f762647b5fe9567ed40042a5ad81f97c1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 443b6ea2583c7c8a1c633cf1825e83cc02bd168c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105023"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756070"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Použití Azure Cosmos DBch tokenů prostředků v sadě SDK pro Gremlin
 
@@ -93,9 +93,9 @@ authenticationProperties.with(AuthProperties.Property.PASSWORD, resourceToken);
 builder.authProperties(authenticationProperties);
 ```
 
-## <a name="limit"></a>Omezení
+## <a name="limit"></a>škálování
 
-S jedním účtem Gremlin můžete vystavit neomezený počet tokenů. V průběhu jedné hodiny ale můžete použít až 100 tokenů současně. Pokud aplikace překročí limit tokenu za hodinu, je žádost o ověření zamítnutá a zobrazí se tato chybová zpráva: "Překročil povolený limit tokenu prostředku 100, který se dá použít souběžně." Nefunguje na ukončení aktivních připojení, která používají konkrétní tokeny k uvolnění slotů pro nové tokeny. Databázový stroj Azure Cosmos DB Gremlin sleduje jedinečné tokeny během hodiny bezprostředně před požadavkem na ověření.
+S jedním účtem Gremlin můžete vystavit neomezený počet tokenů. V průběhu jedné hodiny ale můžete použít až 100 tokenů současně. Pokud aplikace překročí limit tokenu za hodinu, je žádost o ověření zamítnutá a zobrazí se následující chybová zpráva: "překročení povoleného limitu tokenu prostředku 100, který se dá použít souběžně." Nefunguje na ukončení aktivních připojení, která používají konkrétní tokeny k uvolnění slotů pro nové tokeny. Databázový stroj Azure Cosmos DB Gremlin sleduje jedinečné tokeny během hodiny bezprostředně před požadavkem na ověření.
 
 ## <a name="permission"></a>Oprávnění
 

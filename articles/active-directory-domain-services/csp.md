@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services pro poskytovatele cloudových řešení Azure | Microsoft Docs
+title: Azure AD Domain Services pro poskytovatele cloudových řešení | Microsoft Docs
 description: Azure Active Directory Domain Services pro poskytovatele cloudových řešení Azure.
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
-ms.openlocfilehash: dc4ad7d8cf9f3267713fd066fa79a4d9d8ab733f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1134c078ee36a146cb1e1cbf8ca46f6cd9f8d775
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612962"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754445"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Služba AD DS (Active Directory Domain Services) pro Azure Cloud Solution Provider (CSP) Azure Active Directory
 Tento článek vysvětluje, jak můžete používat Azure AD Domain Services v předplatném CSP Azure.
@@ -74,7 +74,7 @@ Při správě spravované domény v předplatném Azure CSP platí následujíc�
 
 * **Agenti správce CSP můžou zřídit spravovanou doménu pomocí svých přihlašovacích údajů:** Azure AD Domain Services podporuje předplatná Azure CSP. Proto uživatelé patřící do skupiny agenti správce v partnerovi CSP mohou zřídit novou Azure AD Domain Services spravovanou doménu.
 
-* **Poskytovatelé CSP můžou vytvořit skripty pro vytváření nových spravovaných domén pro zákazníky pomocí prostředí PowerShell:** Podrobnosti najdete v tématu [povolení Azure AD Domain Services pomocí prostředí PowerShell](powershell-create-instance.md) .
+* Poskytovatelé **CSP můžou vytvořit skripty pro vytváření nových spravovaných domén pro zákazníky pomocí prostředí PowerShell:** Podrobnosti najdete v tématu [povolení Azure AD Domain Services pomocí prostředí PowerShell](powershell-create-instance.md) .
 
 * **Agenti správce CSP nemohou provádět probíhající úlohy správy ve spravované doméně pomocí svých přihlašovacích údajů:** Uživatelé správců CSP nemohou provádět rutinní úlohy správy v rámci spravované domény pomocí svých přihlašovacích údajů. Tito uživatelé jsou externí v adresáři Azure AD zákazníka a jejich přihlašovací údaje nejsou k dispozici v adresáři Azure AD zákazníka. Proto Azure AD Domain Services pro tyto uživatele nemá přístup k hodnotám hash hesla protokolu Kerberos a NTLM. V důsledku toho se tyto uživatele nedají ověřit u Azure AD Domain Services spravovaných domén.
 
@@ -86,7 +86,7 @@ Při správě spravované domény v předplatném Azure CSP platí následujíc�
 * **Uživatelský účet vytvořený pro probíhající správu musí být přidán do skupiny Správci AAD DC:** Skupina Správci AAD DC má oprávnění provádět určité delegované úlohy správy ve spravované doméně. Mezi tyto úlohy patří konfigurace DNS, vytváření organizačních jednotek, Správa zásad skupiny atd. Aby mohl partner CSP provádět takové úkoly ve spravované doméně, je potřeba vytvořit uživatelský účet v adresáři Azure AD zákazníka. Přihlašovací údaje pro tento účet musí být sdíleny s agenty správce partnera CSP. Tento uživatelský účet musí být také přidán do skupiny Správci AAD DC, aby bylo možné provádět úlohy konfigurace ve spravované doméně pomocí tohoto uživatelského účtu.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Zaregistrujte se do programu Azure CSP](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) a začněte vytvářet firmy prostřednictvím CSP Azure.
 * Projděte si seznam [služeb Azure dostupných ve zprostředkovateli CSP Azure](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Povolení služby Azure AD Domain Services pomocí PowerShellu](powershell-create-instance.md)

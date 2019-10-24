@@ -1,18 +1,18 @@
 ---
 title: Transakce databáze a kontrola optimistického řízení souběžnosti v Azure Cosmos DB
 description: Tento článek popisuje transakce databáze a kontrolu optimistického řízení souběžnosti v Azure Cosmos DB
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b58255aa471fe78c84b5f6a7432c0f3d402f0875
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4c263b32b7ededb9e5169e80a29806f322a3c849
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467907"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755174"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Řízení optimistické souběžnosti a transakce
 
@@ -53,11 +53,11 @@ Optimistické řízení souběžnosti umožňuje zabránit ztrátě aktualizací
 
 Souběžné aktualizace položky podléhají OCC vrstvě komunikačního protokolu Azure Cosmos DB. Azure Cosmos Database zajišťuje, že verze položky na straně klienta, kterou aktualizujete (nebo odstraňujete), je stejná jako verze položky v kontejneru Azure Cosmos. To zaručuje, že vaše zápisy jsou před náhodným zápisem přepsány zápisy ostatních a naopak. V prostředí s více uživateli vám optimistické řízení souběžnosti chrání před náhodným odstraněním nebo aktualizací nesprávné verze položky. V takovém případě jsou položky chráněny proti problémům s inFamous "ztráty aktualizace" nebo "ztráty odstranění".
 
-Každá položka uložená v kontejneru Azure Cosmos má vlastnost definovanou `_etag` systémem. Hodnota `_etag` je automaticky generována a aktualizována serverem při každém aktualizaci položky. `_etag`dá se použít spolu s hlavičkou `if-match` žádosti, která je součástí klienta, aby mohl server rozhodnout, jestli může být položka podmíněně aktualizována. Hodnota `if-match` hlavičky odpovídá hodnotě na `_etag` serveru, položka se pak aktualizuje. Pokud hodnota `if-match` hlavičky požadavku již není aktuální, server odmítne operaci se zprávou odpovědi "selhání předběžné podmínky HTTP 412". Klient pak může znovu načíst položku k získání aktuální verze položky na serveru nebo přepsat verzi položky na serveru vlastní `_etag` hodnotou položky. Kromě toho `_etag` lze použít `if-none-match` s hlavičkou k určení, zda je nutné znovu načíst prostředek. 
+Každá položka uložená v kontejneru Azure Cosmos má definovanou systémovou vlastnost `_etag`. Hodnota `_etag` je automaticky generována a aktualizována serverem pokaždé, když je položka aktualizována. `_etag` lze použít s `if-match` hlavičce požadavku, která umožňuje serveru rozhodnout, zda může být položka podmíněně aktualizována. Hodnota hlavičky `if-match` se shoduje s hodnotou `_etag` na serveru, položka se pak aktualizuje. Pokud hodnota hlavičky žádosti `if-match` již není aktuální, server tuto operaci odmítne, pokud se zobrazí zpráva s odpovědí "selhání předběžné podmínky protokolu HTTP 412". Klient pak může položku znovu načíst, aby získala aktuální verzi položky na serveru, nebo přepsat verzi položky na serveru vlastní `_etag`ovou hodnotou položky. Kromě toho `_etag` možné použít s hlavičkou `if-none-match`, abyste zjistili, jestli je potřeba znovu načíst prostředek. 
 
-`_etag` Hodnota položky se změní pokaždé, když je položka aktualizována. V případě operací `if-match` nahradit položku musí být explicitně vyjádřena jako součást možností žádosti. Příklad najdete v ukázkovém kódu na GitHubu [](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). `_etag`hodnoty jsou implicitně kontrolovány u všech zapsaných položek, které jsou v rámci uložené procedury změněny. Pokud je zjištěn nějaký konflikt, uložená procedura vrátí transakci zpět a vyvolá výjimku. Pomocí této metody se v rámci uložené procedury nepoužívají buď všechny, nebo žádné zápisy. Toto je signál k aplikaci pro opětovné použití aktualizací a původní požadavek klienta.
+Hodnota `_etag` položky se mění pokaždé, když je položka aktualizována. V případě operací Replace Item `if-match` musí být explicitně vyjádřeny jako součást možností žádosti. Příklad najdete v ukázkovém kódu na [GitHubu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). hodnoty `_etag` jsou implicitně kontrolovány u všech zapsaných položek, které jsou v rámci uložené procedury změněny. Pokud je zjištěn nějaký konflikt, uložená procedura vrátí transakci zpět a vyvolá výjimku. Pomocí této metody se v rámci uložené procedury nepoužívají buď všechny, nebo žádné zápisy. Toto je signál k aplikaci pro opětovné použití aktualizací a původní požadavek klienta.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o transakcích databáze a kontrole optimistického řízení souběžnosti najdete v následujících článcích:
 

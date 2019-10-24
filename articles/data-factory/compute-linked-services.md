@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ae3350b14ca1073a5fbb1a353b9301c57e7f1ea4
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 7426493a575ceb38211f5e6e3b4f7e2ba558b670
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298323"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754736"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaná nástrojem Azure Data Factory
 V tomto článku se dozvíte o různých výpočetních prostředích, která můžete použít ke zpracování nebo transformaci dat. Poskytuje taky podrobnosti o různých konfiguracích (na vyžádání a přineste si vlastní) podporované Data Factory při konfiguraci propojených služeb, které propojuje tato výpočetní prostředí s objektem pro vytváření dat Azure.
@@ -32,7 +32,7 @@ Následující tabulka uvádí seznam výpočetních prostředí podporovaných 
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [U-SQL Data Lake Analytics](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Uložená procedura](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Poznámkový blok](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
-
+| [Funkce Azure](#azure-function-linked-service)         | [Aktivita funkce Azure](control-flow-azure-function-activity.md)
 >  
 
 ## <a name="on-demand-hdinsight-compute-environment"></a>Výpočetní prostředí HDInsight na vyžádání
@@ -100,7 +100,7 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 | Vlastnost                     | Popis                              | Požaduje se |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Vlastnost Type by měla být nastavená na **HDInsightOnDemand**. | Ano      |
-| clusterSize                  | Počet uzlů pracovních procesů nebo datových uzlů v clusteru. Cluster HDInsight se vytvoří s 2 hlavními uzly spolu s počtem pracovních uzlů, které pro tuto vlastnost zadáte. Uzly mají velikost Standard_D3, která má 4 jádra, takže cluster se čtyřmi pracovními uzly má 24 jader (4 @ no__t-04 = 16 jader pro pracovní uzly a navíc 2 @ no__t-14 = 8 jader pro hlavní uzly). Podrobnosti najdete v tématu [Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a další](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . | Ano      |
+| clusterSize                  | Počet uzlů pracovních procesů nebo datových uzlů v clusteru. Cluster HDInsight se vytvoří s 2 hlavními uzly spolu s počtem pracovních uzlů, které pro tuto vlastnost zadáte. Uzly mají velikost Standard_D3, která má 4 jádra, takže cluster se čtyřmi pracovními uzly má 24 jader (4 \*4 = 16 jader pro pracovní uzly a 2 \*4 = 8 jader pro hlavní uzly). Podrobnosti najdete v tématu [Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a další](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . | Ano      |
 | linkedServiceName            | Azure Storage propojená služba, kterou má cluster na vyžádání použít k ukládání a zpracování dat. Cluster HDInsight se vytvoří ve stejné oblasti jako tento účet Azure Storage. Pro Azure HDInsight platí omezení celkového počtu jader, která můžete v jednotlivých podporovaných oblastech Azure použít. Ujistěte se, že je v oblasti Azure dostatek základních kvót, aby splňovaly požadované clusterSize. Podrobnosti najdete [v tématu Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a dalšími](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) .<p>V současné době nemůžete vytvořit cluster HDInsight na vyžádání, který jako úložiště používá Azure Data Lake Store. Pokud chcete uložit výsledná data ze zpracování HDInsight ve Azure Data Lake Store, pomocí aktivity kopírování zkopírujte data z Azure Blob Storage do Azure Data Lake Store. </p> | Ano      |
 | clusterResourceGroup         | Cluster HDInsight se vytvoří v této skupině prostředků. | Ano      |
 | TimeToLive                   | Povolený čas nečinnosti pro cluster HDInsight na vyžádání. Určuje, jak dlouho zůstane cluster HDInsight na vyžádání aktivní po dokončení spuštění aktivity, pokud v clusteru nejsou žádné další aktivní úlohy. Minimální povolená hodnota je 5 minut (00:05:00).<br/><br/>Pokud například spuštění aktivity trvá 6 minut a TimeToLive je nastaveno na 5 minut, zůstane cluster aktivní po dobu 5 minut po 6 minutách zpracování spuštění aktivity. Pokud je spuštěný jiný běh aktivity s oknem o 6 minut, zpracuje ho stejný cluster.<br/><br/>Vytvoření clusteru HDInsight na vyžádání je náročná operace (může chvíli trvat), proto toto nastavení použijte, pokud chcete zlepšit výkon objektu pro vytváření dat, a to tak, že znovu použijete cluster HDInsight na vyžádání.<br/><br/>Pokud nastavíte hodnotu TimeToLive na 0, cluster se odstraní hned po dokončení spuštění aktivity. Pokud nastavíte vysokou hodnotu, cluster může zůstat nečinný, abyste se mohli přihlásit k nějakému účelu řešení potíží, ale může to mít za následek vysoké náklady. Proto je důležité nastavit odpovídající hodnotu podle svých potřeb.<br/><br/>Pokud je hodnota vlastnosti TimeToLive správně nastavená, může více kanálů sdílet instanci clusteru HDInsight na vyžádání. | Ano      |
@@ -293,7 +293,7 @@ Můžete vytvořit propojenou službu Azure HDInsight a zaregistrovat si vlastn�
 | heslo          | Zadejte heslo pro uživatelský účet.                       | Ano      |
 | linkedServiceName | Název propojené služby Azure Storage, která odkazuje na úložiště objektů BLOB v Azure používané clusterem HDInsight. <p>V současné době nelze pro tuto vlastnost zadat propojenou službu Azure Data Lake Store. Pokud má cluster HDInsight přístup k Data Lake Store, můžete k datům v Azure Data Lake Store přistupovat ze skriptů z podregistru nebo vepřového masa. </p> | Ano      |
 | isEspEnabled      | Pokud je cluster HDInsight [balíček zabezpečení podniku](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture) povolený, zadejte*hodnotu true*. Výchozí hodnota je*false (NEPRAVDA*). | Ne       |
-| connectVia        | Integration Runtime, která se má použít k odeslání aktivit do této propojené služby. Můžete použít Azure Integration Runtime nebo místní Integration Runtime. Pokud není zadaný, použije se výchozí Azure Integration Runtime. <br />Pro cluster HDInsight s povoleným Balíček zabezpečení podniku (ESP) se používá modul runtime integrace v místním prostředí, který má na clusteru řadu pohledů, nebo by se měl nasadit do stejného Virtual Network jako cluster s protokolem ESP HDInsight. | Ne       |
+| connectVia        | Integration Runtime, která se má použít k odeslání aktivit do této propojené služby. Můžete použít Azure Integration Runtime nebo místní Integration Runtime. Pokud není zadaný, použije se výchozí Azure Integration Runtime. <br />U clusteru HDInsight s povoleným Balíček zabezpečení podniku (ESP) se používá místní prostředí Integration runtime, které má na clusteru řadu pohledů, nebo by se mělo nasadit do stejného Virtual Network jako cluster protokolu ESP HDInsight. | Ne       |
 
 > [!IMPORTANT]
 > Služba HDInsight podporuje více verzí clusteru Hadoop, které lze nasadit. Volba každé verze vytvoří konkrétní verzi distribuce Hortonworks data Platform (HDP) a sadu součástí, které jsou obsaženy v rámci této distribuce. Seznam podporovaných verzí HDInsight se aktualizuje, aby poskytoval nejnovější součásti a opravy ekosystému Hadoop. Nezapomeňte vždy použít nejnovější informace o [podporované verzi HDInsight a typu operačního systému](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) , abyste měli jistotu, že používáte podporovanou verzi HDInsight. 
@@ -309,10 +309,10 @@ Můžete vytvořit propojenou službu Azure HDInsight a zaregistrovat si vlastn�
 
 Můžete vytvořit propojenou službu Azure Batch k registraci fondu služby Batch virtuálních počítačů do objektu pro vytváření dat. Vlastní aktivitu můžete spustit pomocí Azure Batch.
 
-Pokud Azure Batch službu nezačínáte, podívejte se na následující témata:
+Pokud Azure Batch službu nepoužíváte, přečtěte si následující články:
 
 * [Azure Batch základy](../batch/batch-technical-overview.md) pro přehled služby Azure Batch.
-* Rutina [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) pro vytvoření účtu Azure Batch (nebo) [Azure Portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí Azure Portal. Podrobné pokyny k používání rutiny najdete v tématu [použití PowerShellu ke správě účtu Azure Batch](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) .
+* Rutina [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) pro vytvoření účtu Azure Batch (nebo) [Azure Portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí Azure Portal. Podrobné pokyny k používání rutiny najdete v článku [použití PowerShellu ke správě Azure Batch účtu](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) .
 * Rutina [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) pro vytvoření fondu Azure Batch.
 
 ### <a name="example"></a>Příklad:
@@ -533,14 +533,14 @@ Můžete vytvořit **propojenou službu Azure Databricks** k registraci pracovn�
 | Vlastnost             | Popis                              | Požaduje se                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | jméno                 | Název propojené služby               | Ano   |
-| type                 | Vlastnost Type by měla být nastavená na: **AzureDatabricks**. | Ano                                      |
+| type                 | Vlastnost Type by měla být nastavená na: **Azure Databricks**. | Ano                                      |
 | Domain               | Podle oblasti pracovního prostoru datacihly určete příslušné oblasti Azure. Příklad: https://eastus.azuredatabricks.net | Ano                                 |
 | accessToken          | Pro Data Factory ověřování pro Azure Databricks je vyžadován přístupový token. Přístupový token se musí vygenerovat z pracovního prostoru datacihly. Podrobnější kroky, jak najít přístupový token, najdete [tady](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token) .  | Ano                                       |
 | existingClusterId    | ID clusteru existujícího clusteru, ve kterém se mají spouštět všechny úlohy. Mělo by se jednat o již vytvořený interaktivní cluster. Pokud přestane reagovat, může být nutné cluster restartovat ručně. Datacihly navrhují spuštěné úlohy na nových clusterech kvůli větší spolehlivosti. ID clusteru interaktivního clusteru můžete najít v pracovním prostoru datacihly – > clustery – > Interaktivní název clusteru – > značky konfigurace >. [Další podrobnosti](https://docs.databricks.com/user-guide/clusters/tags.html) | Ne 
 | instancePoolId    | ID fondu instancí existujícího fondu v pracovním prostoru datacihly  | Ne  |
 | newClusterVersion    | Verze Sparku clusteru Vytvoří cluster úloh v datacihlách. | Ne  |
 | newClusterNumOfWorker| Počet uzlů pracovního procesu, které má tento cluster mít. Cluster obsahuje jeden ovladač Spark a prováděcí modul num_workers pro celkový počet uzlů num_workers + 1 Spark. Řetězec s formátováním Int32, jako je "1" znamená numOfWorker je 1 nebo "1:10" znamená automatické škálování od 1 jako minimum a 10 jako Max.  | Ne                |
-| newClusterNodeType   | Toto pole kóduje prostřednictvím jedné hodnoty prostředky, které jsou k dispozici pro každý uzel Spark v tomto clusteru. Například uzly Spark můžou být zřízené a optimalizované pro úlohy náročné na paměť nebo výpočetní výkon toto pole je potřeba pro nový cluster.                | Ne               |
+| newClusterNodeType   | Toto pole kóduje prostřednictvím jedné hodnoty prostředky, které jsou k dispozici pro každý uzel Spark v tomto clusteru. Například uzly Spark můžou být zřízené a optimalizované pro úlohy náročné na paměť nebo výpočetní výkon. Toto pole je povinné pro nový cluster.                | Ne               |
 | newClusterSparkConf  | sada volitelných uživatelsky definovaných párů klíč-hodnota konfigurace Sparku. Uživatelé mohou také předat do ovladače a prováděcích řetězců další možnosti JVM do ovladače a prováděcích modulů přes Spark. Driver. extraJavaOptions a Spark. exekutor. extraJavaOptions v uvedeném pořadí. | Ne  |
 | newClusterInitScripts| sada volitelných uživatelem definovaných inicializačních skriptů pro nový cluster. Zadání cesty DBFS ke skriptům init. | Ne  |
 
@@ -553,6 +553,16 @@ Vytvoříte propojenou službu Azure SQL Data Warehouse a použijete ji s [aktiv
 
 ## <a name="sql-server-linked-service"></a>Propojená služba SQL Server
 Vytvoříte propojenou službu SQL Server a použijete ji s [aktivitou uložené procedury](transform-data-using-stored-procedure.md) k vyvolání uložené procedury z kanálu Data Factory. Podrobnosti o této propojené službě najdete v článku [SQL Server konektoru](connector-sql-server.md#linked-service-properties) .
+
+## <a name="azure-function-linked-service"></a>Propojená služba Functions Azure
+Vytvoříte propojenou službu Azure functions a použijete ji s [aktivitou funkce Azure](control-flow-azure-function-activity.md) ke spouštění Azure Functions v kanálu Data Factory. Návratový typ funkce Azure Function musí být platným `JObject`. ( *Mějte na paměti* , že [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) není `JObject`.) Libovolný návratový typ jiný než `JObject` se nezdařil a vyvolává obsah odpovědi na chyb uživatele není *platný JObject*.
+
+| **Vlastnost** | **Popis** | **Požadovanou** |
+| --- | --- | --- |
+| type   | Vlastnost Type musí být nastavená na: **AzureFunction** . | ano |
+| Adresa URL aplikace Function App | Adresa URL pro Azure Function App. Formát je `https://<accountname>.azurewebsites.net`. Tato adresa URL je hodnota v sekci **URL** při zobrazení Function App v Azure Portal  | ano |
+| klíč funkce | Přístupový klíč pro funkci Azure Functions Klikněte na část **Správa** příslušné funkce a zkopírujte buď **klíč funkce** , nebo **klíč hostitele**. Další informace najdete tady: [aktivační události a vazby HTTP Azure Functions](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) . | ano |
+|   |   |   |
 
 ## <a name="next-steps"></a>Další kroky
 Seznam aktivit transformace, které podporuje Azure Data Factory, najdete v tématu [transformace dat](transform-data.md).

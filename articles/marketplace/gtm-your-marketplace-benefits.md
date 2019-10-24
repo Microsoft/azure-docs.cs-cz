@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962693"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752338"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -44,7 +44,7 @@ Postup, jak začít, je snadné:
 2. Tým dosáhne nabídky vlastník nebo primární kontakt na nabídku Marketplace. Osvědčeným postupem je zadat buď jednotlivce, nebo alias, který pravidelně kontrolujete: zprávy odesílané aliasům, například info@company.com často se ztratí.
 
 >[!Note]
->Pokud je vaše nabídka živá déle než čtyři týdny a neobdrželi jste zprávu, zkontrolujte prosím v organizaci, která je vlastníkem příslušné nabídky, a to buď pomocí portál partnerů cloudu nebo v partnerském centru. Měly by mít komunikaci a další kroky. <br> <br> Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na adrese https://aka.ms/marketplacepublishersupport.
+>Pokud je vaše nabídka živá déle než čtyři týdny a neobdrželi jste zprávu, zkontrolujte prosím v organizaci, která je vlastníkem příslušné nabídky, a to buď pomocí portál partnerů cloudu nebo v partnerském centru. Měly by mít komunikaci a další kroky. <br> <br> Pokud nemůžete určit vlastníka, nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na https://aka.ms/marketplacepublishersupport.
 
 Rozsah aktivit, které jsou k dispozici, se rozšíří při zvětšování nabídek na webu Marketplace. Všechny výpisy obdrží základní úroveň doporučení optimalizace a povýšení v rámci samoobslužného e-mailu s prostředky a osvědčenými postupy.
 
@@ -60,7 +60,10 @@ Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://aka
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Ceny na webu Marketplace pro partnery Transact
 
-Až budete pracovat s podporou transakcí v Azure Marketplace nebo Microsoft AppSource, budete mít přístup k dalším výhodám při růstu fakturovaných prodejních transakcí prostřednictvím komerčního tržiště. 
+Až budete pracovat s podporou transakcí v Azure Marketplace nebo Microsoft AppSource, budete mít přístup k dalším výhodám při růstu fakturovaných prodejních transakcí nebo míst prodávaných prostřednictvím komerčního tržiště. 
+
+>[!Note]
+>Prahová hodnota počtu vydaných míst se vztahuje jenom na Microsoft 365 aplikace (SaaS aplikace, které mají integrace s Microsoft teams, Office, Outlookem nebo SharePointem) a výhody se musí dokončit 30. června 2020.
 
 Tyto výhody jsou navržené tak, aby vám podporovaly marketing, prodej a technické aktivity a tím vám pomohly získat další návštěvníky, získat větší potenciální zákazníky a převést více firmy.
 
@@ -71,6 +74,8 @@ Všem partnerům, kteří mají živou nabídku, se dostanou pracovat s vyhrazen
 ![Prodejní výhody](./media/marketplace-publishers-guide/sales-benefit.png)
 
 ![Technické výhody](./media/marketplace-publishers-guide/technical-benefit.png)
+
+prahová hodnota \*ch vydaných míst platí jenom pro Microsoft 365 aplikace (SaaS aplikace, které mají integrace s Microsoft teams, Office, Outlookem nebo SharePointem) a výhody se musí dokončit 30. června 2020.
 
 Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://aka.ms/marketplacerewards)– výhody programu.
 

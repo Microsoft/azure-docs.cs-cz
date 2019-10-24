@@ -1,17 +1,17 @@
 ---
 title: Optimalizujte jednotky požadavků a náklady na spouštění dotazů v Azure Cosmos DB
 description: Naučte se vyhodnocovat poplatky za jednotky požadavků na dotaz a optimalizovat dotaz z hlediska výkonu a nákladů.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
-ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717009"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753293"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na dotaz v Azure Cosmos DB
 
@@ -27,13 +27,13 @@ Dotazy v Azure Cosmos DB jsou obvykle seřazené z nejrychlejší/nejefektivněj
 
 * Dotaz bez filtrů
 
-Dotazy, které čtou data z jednoho nebo více oddílů, vybírají větší latenci a spotřebovávají větší počet jednotek žádostí. Vzhledem k tomu, že každý oddíl má automatické indexování pro všechny vlastnosti, může být dotaz efektivně obsluhován z indexu. Dotazy, které používají více oddílů, můžete provádět rychleji pomocí možností paralelismu. Další informace o vytváření oddílů a klíče oddílů, naleznete v tématu [dělení ve službě Azure Cosmos DB](partitioning-overview.md).
+Dotazy, které čtou data z jednoho nebo více oddílů, vybírají větší latenci a spotřebovávají větší počet jednotek žádostí. Vzhledem k tomu, že každý oddíl má automatické indexování pro všechny vlastnosti, může být dotaz efektivně obsluhován z indexu. Dotazy, které používají více oddílů, můžete provádět rychleji pomocí možností paralelismu. Další informace o dělení a klíčích oddílů najdete v tématu [dělení v Azure Cosmos DB](partitioning-overview.md).
 
 ## <a name="evaluate-request-unit-charge-for-a-query"></a>Vyhodnotit poplatek za jednotku žádosti pro dotaz
 
 Po uložení dat do kontejnerů Azure Cosmos můžete pomocí Průzkumník dat v Azure Portal sestavit a spustit vaše dotazy. Náklady na dotazy můžete také získat pomocí Průzkumníka dat. Tato metoda vám poskytne představu o tom, jaké skutečné poplatky se týkají běžných dotazů a operací, které váš systém podporuje.
 
-Náklady na dotazy můžete také získat programově pomocí sad SDK. Pokud chcete změřit režii jakékoli operace, jako je vytvoření, aktualizace nebo odstranění, zkontrolujte `x-ms-request-charge` hlavičku při použití REST API. Pokud používáte rozhraní .NET nebo Java SDK, `RequestCharge` vlastnost je ekvivalentní vlastnost pro získání poplatků za požadavek a tato vlastnost je k dispozici v rámci ResourceResponse nebo FeedResponse.
+Náklady na dotazy můžete také získat programově pomocí sad SDK. Chcete-li změřit režii jakékoli operace, jako je například vytvoření, aktualizace nebo odstranění, při použití REST API zkontrolujte hlavičku `x-ms-request-charge`. Pokud používáte rozhraní .NET nebo Java SDK, vlastnost `RequestCharge` je ekvivalentní vlastnost pro získání poplatků za požadavek a tato vlastnost je k dispozici v rámci ResourceResponse nebo FeedResponse.
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -99,7 +99,7 @@ Při optimalizaci dotazů na náklady Vezměte v úvahu následující osvědče
 
    Poplatek za požadavek vrácený v hlavičce požadavku indikuje náklady na daný dotaz. Pokud například dotaz vrátí položky 1000 1 – KB, cena za operaci je 1000. V takovém případě se server během jedné sekundy připadá pouze na dva takové požadavky, než frekvence omezí následné požadavky. Další informace najdete v článku [o jednotkách žádosti](request-units.md) a kalkulačkě jednotek žádostí. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o optimalizaci nákladů v Azure Cosmos DB najdete v následujících článcích:
 

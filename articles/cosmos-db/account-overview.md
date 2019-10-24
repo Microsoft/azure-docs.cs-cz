@@ -1,19 +1,19 @@
 ---
 title: Práce s účty Azure Cosmos DB
 description: Tento článek popisuje, jak vytvářet a používat účty Azure Cosmos DB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 833d8533ff3289693e1744db2d77d4bed6a9ea69
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 57b2cffbf8085e6d393765190a6dfc2dead51625
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617001"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757093"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Práce s účtem Azure Cosmos
 
@@ -31,7 +31,7 @@ V současné době můžete v rámci předplatného Azure vytvořit maximálně 
 
 ![Hierarchie účtu Azure Cosmos](./media/account-overview/hierarchy.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se spravovat účet Azure Cosmos a další koncepty:
 

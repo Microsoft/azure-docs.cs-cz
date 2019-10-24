@@ -1,34 +1,34 @@
 ---
-title: Kurz globální distribuce pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
-description: Zjistěte, jak nastavit globální distribuce pomocí rozhraní API služby Azure Cosmos DB pro MongoDB.
-author: rimman
+title: Kurz globální distribuce pomocí rozhraní Azure Cosmos DB API pro MongoDB
+description: Přečtěte si, jak nastavit globální distribuci pomocí rozhraní API Azure Cosmos DB pro MongoDB.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 5ae5923253575fc3dea6b90b599b9fa3d79a85b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a9c618fdcf2e904a2a3c03b3ae6b5477cd47c4e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578796"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754781"
 ---
-# <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Nastavení globální distribuovanou databázi s použitím rozhraní API služby Azure Cosmos DB pro MongoDB
+# <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Nastavení globální distribuované databáze pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
-V tomto článku vám ukážeme, jak pomocí webu Azure portal nastavit globální distribuovaná databáze a připojte se k němu pomocí rozhraní API služby Azure Cosmos DB pro MongoDB.
+V tomto článku ukážeme, jak použít Azure Portal k nastavení globální distribuované databáze a k jejímu připojení pomocí rozhraní Azure Cosmos DB API pro MongoDB.
 
 Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
 > * Konfigurace globální distribuce pomocí webu Azure Portal
-> * Konfigurace globální distribuce pomocí [rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md)
+> * Konfigurace globální distribuce pomocí [rozhraní API Azure Cosmos DB pro MongoDB](mongodb-introduction.md)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="verifying-your-regional-setup"></a>Ověření regionálního nastavení 
-Jednoduchý způsob, jak zkontrolovat globální konfiguraci s Cosmos DB přes rozhraní API pro MongoDB, je spustit *isMaster()* příkazu v prostředí Mongo Shell.
+## <a name="verifying-your-regional-setup"></a>Ověření místní instalace 
+Jednoduchý způsob, jak kontrolovat globální konfiguraci pomocí rozhraní API Cosmos DB pro *MongoDB, je spuštění příkazu "* Mongo" z prostředí.
 
 V prostředí Mongo Shell:
 
@@ -62,9 +62,9 @@ Příklad výsledků:
       }
    ```
 
-## <a name="connecting-to-a-preferred-region"></a>Připojení k preferované oblasti 
+## <a name="connecting-to-a-preferred-region"></a>Připojení k upřednostňované oblasti 
 
-Azure Cosmos DB API pro MongoDB umožňuje určit vaše předvolby kolekce pro čtení pro globálně distribuované databáze. Pro zajištění nízké latence čtení a globální vysoké dostupnosti doporučujeme nastavit předvolby kolekce pro čtení na *nearest* (nejbližší). Předvolba pro čtení *nearest* (nejbližší) je nakonfigurovaná pro čtení z nejbližší oblasti.
+Rozhraní API Azure Cosmos DB pro MongoDB umožňuje zadat předvolby pro čtení kolekce pro globálně distribuovanou databázi. Pro zajištění nízké latence čtení a globální vysoké dostupnosti doporučujeme nastavit předvolby kolekce pro čtení na *nearest* (nejbližší). Předvolba pro čtení *nearest* (nejbližší) je nakonfigurovaná pro čtení z nejbližší oblasti.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -88,15 +88,15 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 
 To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
 > * Konfigurace globální distribuce pomocí webu Azure Portal
-> * Konfigurace globální distribuce pomocí rozhraní API služby Cosmos DB pro MongoDB
+> * Konfigurace globální distribuce pomocí rozhraní API Cosmos DB pro MongoDB
 
 Teď můžete přejít k dalšímu kurzu, ve kterém se naučíte vyvíjet místně s využitím místního emulátoru služby Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Vývoj v místním prostředí pomocí emulátoru služby Azure Cosmos DB](local-emulator.md)
+> [Vývoj místně pomocí emulátoru Azure Cosmos DB](local-emulator.md)

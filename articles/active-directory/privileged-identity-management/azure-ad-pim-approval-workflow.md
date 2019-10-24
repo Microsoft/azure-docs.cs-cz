@@ -4,11 +4,11 @@ description: Naučte se schvalovat nebo odmítat žádosti pro role Azure AD v A
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -16,14 +16,14 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a8d373a7e6edeaefd933e4f8ec8ee11e3c14ee
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 3245f7343a48d3e54795c14dcb23b836c8d9d988
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804040"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756432"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>Schválení nebo zamítnutí žádostí o role Azure AD v PIM
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Schválení nebo zamítnutí žádostí o role Azure AD v Privileged Identity Management
 
 V případě služby Azure Active Directory (Azure AD) Privileged Identity Management (PIM) můžete nakonfigurovat role tak, aby vyžadovaly schválení aktivace, a vybrat jednoho nebo více uživatelů nebo skupin jako delegované schvalovatele. Delegovaní schvalovatelé mají ke schválení požadavků 24 hodin. Pokud žádost není schválena do 24 hodin, pak oprávněný uživatel musí znovu odeslat novou žádost. Časový interval schválení 24 hodin nelze konfigurovat.
 
@@ -31,9 +31,9 @@ Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro ro
 
 ## <a name="view-pending-requests"></a>Zobrazit nevyřízené žádosti
 
-Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role Azure AD čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v PIM.
+Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role Azure AD čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
@@ -45,7 +45,7 @@ Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek
 
     Zobrazí se seznam žádostí, které čekají na vaše schválení.
 
-## <a name="approve-requests"></a>Schválit žádosti
+## <a name="approve-requests"></a>Schvalování žádostí
 
 1. Vyberte žádosti, které chcete schválit, a kliknutím na **schválit** otevřete podokno schválit vybrané žádosti.
 
@@ -75,7 +75,7 @@ Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek
 
     Symbol stavu bude aktualizován o Vaše odmítnutí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [E-mailová oznámení v PIM](pim-email-notifications.md)
-- [Schválení nebo zamítnutí žádostí o role prostředků Azure v PIM](pim-resource-roles-approval-workflow.md)
+- [E-mailová oznámení v Privileged Identity Management](pim-email-notifications.md)
+- [Schválení nebo zamítnutí žádostí o role prostředků Azure v Privileged Identity Management](pim-resource-roles-approval-workflow.md)

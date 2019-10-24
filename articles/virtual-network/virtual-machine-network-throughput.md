@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 68fe50c75fc25106a0f47af8bf6cfc0db562fbe5
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529115"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750326"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Šířka pásma sítě virtuálního počítače
 
@@ -54,7 +54,7 @@ Přenos dat mezi koncovými body vyžaduje vytvoření několika toků kromě t�
 
 ## <a name="flow-limits-and-recommendations"></a>Omezení toků a doporučení
 
-V současné době sada Azure Networking Stack podporuje 250 tisíc celkové síťové toky s dobrým výkonem pro virtuální počítače s více než 8 jádry procesoru a 100 tisíc celkové toky s dobrým výkonem pro virtuální počítače s méně než 8 jádry procesoru. Po uplynutí tohoto limitu dojde k řádnému snížení výkonu sítě pro další toky až do pevného limitu 1M celkových toků, 500 000 příchozích a 500 000ch odchozích přenosů, po jejichž uplynutí budou další toky vyřazeny.
+V současné době sada Azure Networking Stack podporuje 250 tisíc celkové síťové toky s dobrým výkonem pro virtuální počítače s více než 8 jádry procesoru a 100 tisíc celkové toky s dobrým výkonem pro virtuální počítače s méně než 8 jádry procesoru. Po uplynutí tohoto limitu dojde k řádnému snížení výkonu sítě pro další toky až po vynucený limit 500 000 celkových toků, 250 tisíc příchozích a 250 tisíc odchozích přenosů, po jejichž uplynutí budou další toky vyřazeny.
 
 ||Virtuální počítače s < 8 PROCESORových jader|Virtuální počítače s 8 a jádry procesoru|
 |---|---|---|

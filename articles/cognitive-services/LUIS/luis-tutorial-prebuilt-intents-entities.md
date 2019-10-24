@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Předem připravené záměry a entity – LUIS'
+title: 'Kurz: předem sestavené záměry a entity – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu přidáte do aplikace předem připravené záměry a entity, abyste rychle získali předpověď záměrů a extrakci dat. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
 services: cognitive-services
@@ -9,22 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 10/21/2019
 ms.author: diberry
-ms.openlocfilehash: aaeddac98e3f192d5e6a87ecfd48005526379ff2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: cf0ef1095946b1c8e9479b3cd47fe403baeed7d1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390987"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757126"
 ---
-# <a name="tutorial-identify-common-intents-and-entities"></a>Kurz: Identifikace běžných záměrů a entit
+# <a name="tutorial-identify-common-intents-and-entities"></a>Kurz: identifikace běžných záměrů a entit
 
 V tomto kurzu přidejte předem připravené záměry a entity do aplikace kurz pro lidské zdroje, abyste mohli rychle získat předpověď záměrů a extrakci dat. Nemusíte označit žádné projevy s předem vytvořenými entitami, protože entita se detekuje automaticky.
 
 Předem připravené modely (domény, záměry a entity) vám pomůžou rychle sestavit model.
 
-**V tomto kurzu se naučíte:**
+**Co se v tomto kurzu naučíte:**
 
 > [!div class="checklist"]
 > * Vytvoření nové aplikace
@@ -32,7 +32,7 @@ Předem připravené modely (domény, záměry a entity) vám pomůžou rychle s
 > * Přidání předem připravených entit 
 > * Trénování 
 > * Publikování 
-> * Zjistit záměry a entity z koncového bodu
+> * Získat záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -63,12 +63,9 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 1. V seznamu předem vytvořených entit vyberte následující entity a potom vyberte **Hotovo**:
 
-   * **[PersonName](luis-reference-prebuilt-person.md)** 
    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
-     ![Snímek obrazovky s číslem vybraným v dialogu předem připravené entity](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
-
-     Tyto entity vám pomůžou přidat název a umístit rozpoznávání do klientské aplikace.
+     Tato entita vám pomůže přidat do klientské aplikace rozpoznávání místa.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None 
 
@@ -86,79 +83,83 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Přejděte v adresním řádku prohlížeče na konec adresy URL a zadejte `I want to cancel my trip to Seattle to see Bob Smith`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
+1. Přejděte v adresním řádku prohlížeče na konec adresy URL a zadejte `I want to cancel my trip to Seattle`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
     ```json
     {
-      "query": "I want to cancel my trip to Seattle to see Bob Smith.",
+      "query": "I want to cancel my trip to Seattle",
       "topScoringIntent": {
-        "intent": "Utilities.ReadAloud",
-        "score": 0.100361854
+        "intent": "Utilities.Cancel",
+        "score": 0.1055009
       },
       "intents": [
         {
-          "intent": "Utilities.ReadAloud",
-          "score": 0.100361854
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.08102781
-        },
-        {
-          "intent": "Utilities.SelectNone",
-          "score": 0.0398852825
-        },
-        {
           "intent": "Utilities.Cancel",
-          "score": 0.0277276486
+          "score": 0.1055009
         },
         {
           "intent": "Utilities.SelectItem",
-          "score": 0.0220712926
+          "score": 0.02659072
         },
         {
-          "intent": "Utilities.StartOver",
-          "score": 0.0145813478
+          "intent": "Utilities.Stop",
+          "score": 0.0253379084
         },
         {
-          "intent": "None",
-          "score": 0.012434179
+          "intent": "Utilities.ReadAloud",
+          "score": 0.02528683
+        },
+        {
+          "intent": "Utilities.SelectNone",
+          "score": 0.02434013
         },
         {
           "intent": "Utilities.Escalate",
-          "score": 0.0122632384
+          "score": 0.009161292
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.006861785
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00633448
         },
         {
           "intent": "Utilities.ShowNext",
-          "score": 0.008534077
+          "score": 0.0053827134
+        },
+        {
+          "intent": "None",
+          "score": 0.002602003
         },
         {
           "intent": "Utilities.ShowPrevious",
-          "score": 0.00547111453
+          "score": 0.001797354
         },
         {
           "intent": "Utilities.SelectAny",
-          "score": 0.00152912608
+          "score": 0.000831930141
         },
         {
           "intent": "Utilities.Repeat",
-          "score": 0.0005556819
-        },
-        {
-          "intent": "Utilities.FinishTask",
-          "score": 0.000169488427
+          "score": 0.0006924066
         },
         {
           "intent": "Utilities.Confirm",
-          "score": 0.000149565312
+          "score": 0.000606057351
         },
         {
           "intent": "Utilities.GoBack",
-          "score": 0.000141017343
+          "score": 0.000276725681
+        },
+        {
+          "intent": "Utilities.FinishTask",
+          "score": 0.000267822179
         },
         {
           "intent": "Utilities.Reject",
-          "score": 6.27324E-06
+          "score": 3.21784828E-05
         }
       ],
       "entities": [
@@ -167,18 +168,12 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
           "type": "builtin.geographyV2.city",
           "startIndex": 28,
           "endIndex": 34
-        },
-        {
-          "entity": "bob smith",
-          "type": "builtin.personName",
-          "startIndex": 43,
-          "endIndex": 51
         }
       ]
     }
     ```
 
-    Výsledkem bylo předpověď těchto nástrojů. zrušení záměru s 80% jistotou a extrahování dat města a jména osoby. 
+    Výsledkem bylo předpověď těchto nástrojů. zrušení záměru s 80% jistotou a extrahování dat města. 
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -199,7 +194,7 @@ Další informace o práci s aplikací LUIS:
 * [Jak publikovat](luis-how-to-publish-app.md)
 * [Testování na portálu LUIS](luis-interactive-test.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Díky přidávání předem připravených záměrů a entit může klientská aplikace určovat běžné záměry uživatelů a extrahovat běžné datové typy.  
 

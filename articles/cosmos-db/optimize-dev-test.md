@@ -1,43 +1,43 @@
 ---
-title: Optimalizace pro vývoj a testování ve službě Azure Cosmos DB
-description: Tento článek vysvětluje, jak službu Azure Cosmos DB nabízí více možností pro vývoj a testování služby zdarma.
-author: rimman
+title: Optimalizace pro vývoj a testování v Azure Cosmos DB
+description: Tento článek vysvětluje, jak Azure Cosmos DB nabízí více možností pro vývoj a testování služby zdarma.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: f9cb18b66def144b84de708351743832d1831fbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 992d165d323aab79bb7b5475aa396d4432691530
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967261"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754904"
 ---
-# <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optimalizujte vývoj a testování nákladů ve službě Azure Cosmos DB
+# <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optimalizujte náklady na vývoj a testování v Azure Cosmos DB
 
-Tento článek popisuje různé možnosti pro vývoj a testování zdarma nákladů pomocí služby Azure Cosmos DB.
+Tento článek popisuje různé možnosti použití Azure Cosmos DB pro vývoj a testování bez jakýchkoli nákladů.
 
-## <a name="azure-cosmos-db-emulator-locally-downloadable-version"></a>Emulátor služby Azure Cosmos DB (místně ke stažení verze)
+## <a name="azure-cosmos-db-emulator-locally-downloadable-version"></a>Emulátor Azure Cosmos DB (místně zaváděná verze)
 
-[Emulátor služby Azure Cosmos DB](local-emulator.md) je místní verzi ke stažení, která napodobuje cloudovou službu Azure Cosmos DB. Můžete napsat a testovat kód, který používá rozhraní API služby Azure Cosmos DB, i když máte žádné síťové připojení a bez bez jakýchkoli nákladů. Emulátor služby Azure Cosmos DB poskytuje místní prostředí pro účely vývoje s vysokou věrností ke cloudové službě. Můžete vyvíjet a testovat aplikace místně bez vytváření předplatného Azure. Jakmile budete připraveni k nasazení aplikace do cloudu, aktualizujte připojovací řetězec pro připojení ke koncovému bodu služby Azure Cosmos DB v cloudu, nejsou potřeba žádné úpravy. Můžete také [nastavení kanálu CI/CD pomocí emulátoru služby Azure Cosmos DB](tutorial-setup-ci-cd.md) vytvářet úlohy v Azure DevOps pro spouštění testů. Můžete začít návštěvou [emulátor služby Azure Cosmos DB](local-emulator.md) článku.
+[Emulátor Azure Cosmos DB](local-emulator.md) je místní verze ke stažení, která napodobuje cloudovou službu Azure Cosmos DB. Kód, který používá rozhraní API Azure Cosmos DB, můžete napsat a otestovat i v případě, že nemáte žádné síťové připojení a neúčtujete náklady. Emulátor Azure Cosmos DB poskytuje místní prostředí pro účely vývoje s vysokou přesností pro cloudovou službu. Svou aplikaci můžete vyvíjet a testovat místně, aniž byste museli vytvářet předplatné Azure. Až budete připraveni k nasazení aplikace do cloudu, aktualizujte připojovací řetězec pro připojení ke koncovému bodu Azure Cosmos DB v cloudu, nepotřebujete žádné další úpravy. Můžete také [nastavit kanál CI/CD s úlohou sestavení emulátoru Azure Cosmos DB](tutorial-setup-ci-cd.md) ve službě Azure DevOps pro spouštění testů. Můžete začít tím, že navštívíte článek [Azure Cosmos DB emulátoru](local-emulator.md) .
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Vyzkoušejte si Azure Cosmos DB zdarma
 
-[Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) je bezplatná poplatek prostředí, která umožňuje vytvoření databáze a kolekce a Experimentujte s Azure Cosmos DB v cloudu. Nemáte k registraci pro Azure nebo platit žádné poplatky. Účty zkuste Azure Cosmos DB jsou k dispozici po omezenou dobu, v současnosti 30 dní. Kdykoli můžete obnovit je. Vyzkoušejte si Azure Cosmos DB účtů usnadňuje vyhodnotit službu Azure Cosmos DB, sestavení a testování aplikace pomocí kurzů nebo rychlých startů. Můžete vytvořit na ukázku nebo provádět testování bez bez jakýchkoli nákladů. S využitím vyzkoušejte si Azure Cosmos DB pro bezplatné účty, můžete si vyzkoušet prémiové možnosti služby Azure Cosmos DB zdarma, včetně na klíč globální distribuce, smlouvy o úrovni služeb a konzistence modelů. Vytvořit databázi s maximálně 25 kontejnery Azure Cosmos a propustnosti 10 000 RU/s. Spuštění ukázkové aplikace bez přihlášení k účtu Azure nebo pomocí platební karty. S vyzkoušejte Azure Cosmos DB zdarma, můžete vytvořit účet více oblastí Azure Cosmos a spuštění aplikace na ní za několik minut. Abyste mohli začít, najdete v článku [vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) stránky.
+[Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) je bezplatné prostředí, které vám umožní vytvořit databázi a kolekce a experimentovat s Azure Cosmos DB v cloudu. Nemusíte se přihlašovat k Azure ani platit žádné náklady. Účty try Azure Cosmos DB jsou k dispozici po dobu omezeného času, aktuálně 30 dnů. Můžete je kdykoli obnovit. Zkuste Azure Cosmos DB účty usnadňují vyhodnocení Azure Cosmos DB, sestavení a otestování aplikace pomocí rychlých startů nebo kurzů. Můžete vytvořit ukázku nebo provést testování částí bez jakýchkoli nákladů. Pomocí možnosti vyzkoušet Azure Cosmos DB u bezplatných účtů můžete vyhodnotit Azure Cosmos DB prémiové funkce Premium zdarma, včetně globálních distribucí, SLA a modelů konzistence klíč. Můžete vytvořit databázi s maximálním počtem 25 Cosmosch kontejnerů Azure a propustností 10 000 RU/s. Ukázkovou aplikaci můžete spustit bez přihlášení k odběru účtu Azure nebo pomocí platební karty. Pomocí vyzkoušet Azure Cosmos DB zdarma můžete vytvořit účet Azure Cosmos s více oblastmi a v něm spustit aplikaci během několika minut. Chcete-li začít, přečtěte si téma [vyzkoušet Azure Cosmos DB pro bezplatnou](https://azure.microsoft.com/try/cosmosdb/) stránku.
 
 ## <a name="azure-free-account"></a>Bezplatný účet Azure
 
-Je součástí služby Azure Cosmos DB [bezplatný účet Azure](https://azure.microsoft.com/free), který nabízí kredity Azure a prostředky zdarma pro určité časové období. Konkrétně pro Azure Cosmos DB nabízí bezplatný účet 5 GB úložiště a zřízenou propustnost 400 ru za celý rok. Toto prostředí umožňuje vývojáři ocení snadno testovat funkce služby Azure Cosmos DB nebo ji integrovat s dalšími službami Azure nulovými náklady. S bezplatným účtem Azure získejte kredit 200 USD, který můžou investovat do prvních 30 dnů. Vám nebude účtovat, i když začnete používat služby, dokud se nerozhodnete pro upgrade. Abyste mohli začít, navštivte [bezplatný účet Azure](https://azure.microsoft.com/free) stránky.
+Azure Cosmos DB je součástí [bezplatného účtu Azure](https://azure.microsoft.com/free), který nabízí za určité časové období kredity a prostředky Azure zdarma. Tento bezplatný účet Azure Cosmos DB konkrétně nabízí 5 GB úložiště a 400 Ruy zajištěné propustnosti po celý rok. Toto prostředí umožňuje všem vývojářům snadno testovat funkce Azure Cosmos DB nebo je integrovat s jinými službami Azure za nulové náklady. S bezplatným účtem Azure získáte za prvních 30 dní kredit $200. Nebudeme vám nic účtovat, ani když začnete používat služby, dokud nebudete chtít upgradovat. Začněte tím, že přejdete na stránku [bezplatný účet Azure](https://azure.microsoft.com/free) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Můžete začít s pomocí emulátoru nebo bezplatných účtů služby Azure Cosmos DB najdete v následujících článcích:
+Můžete začít s používáním emulátoru nebo bezplatného Azure Cosmos DB účtů s následujícími články:
 
-* Další informace o [optimalizace pro vývoj a testování](optimize-dev-test.md)
-* Další informace o [vysvětlení vašeho vyúčtování Azure Cosmos DB](understand-your-bill.md)
-* Další informace o [optimalizace propustnosti náklady](optimize-cost-throughput.md)
-* Další informace o [optimalizovat náklady na úložiště](optimize-cost-storage.md)
-* Další informace o [optimalizovat náklady na operace čtení a zápisy](optimize-cost-reads-writes.md)
-* Další informace o [optimalizovat náklady na dotazy](optimize-cost-queries.md)
-* Další informace o [optimalizovat náklady na účty ve více oblastech Azure Cosmos](optimize-cost-regions.md)
+* Další informace o [optimalizaci pro vývoj a testování](optimize-dev-test.md)
+* Další informace o [Azure Cosmos DB vyúčtování](understand-your-bill.md)
+* Další informace o [optimalizaci nákladů na propustnost](optimize-cost-throughput.md)
+* Další informace o [optimalizaci nákladů na úložiště](optimize-cost-storage.md)
+* Další informace o [optimalizaci nákladů na čtení a zápisy](optimize-cost-reads-writes.md)
+* Další informace o [optimalizaci nákladů na dotazy](optimize-cost-queries.md)
+* Další informace o [optimalizaci nákladů na účty Azure Cosmos ve více oblastech](optimize-cost-regions.md)
 

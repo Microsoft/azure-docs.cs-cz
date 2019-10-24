@@ -1,28 +1,28 @@
 ---
-title: Dotazování dat pomocí služby Azure Cosmos DB přes rozhraní API pro MongoDB
-description: Zjistěte, jak k dotazování dat pomocí služby Azure Cosmos DB přes rozhraní API pro MongoDB.
-author: rimman
-ms.author: rimman
+title: Dotazování dat pomocí rozhraní API Azure Cosmos DB pro MongoDB
+description: Naučte se, jak zadávat dotazy na data pomocí rozhraní API Azure Cosmos DB pro MongoDB.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 8bdd88652019ceb48cfd9f05d1009271f5b7a8c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 40385524e85f950fb32b69817fec27d842370736
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60727144"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754763"
 ---
-# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Dotazování dat pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Dotazování dat pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
-[Rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md) podporuje [MongoDB dotazy](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+[Rozhraní API Azure Cosmos DB pro MongoDB](mongodb-introduction.md) podporuje [dotazy MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
 Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
-> * Dotazování na data uložená v databázi Cosmos přes MongoDB shell
+> * Dotazování na data uložená ve vaší databázi Cosmos pomocí prostředí MongoDB
 
 Můžete začít s použitím příkladů v tomto dokumentu a podívat se na video o [dotazování služby Azure Cosmos DB pomocí prostředí MongoDB Shell](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/).
 
@@ -297,12 +297,12 @@ Další dotaz vrátí všechny rodiny s polem children (děti) velikosti 3.
 
 Nevrátí se žádné výsledky, protože v žádné rodině není více než dvě děti. Tento dotaz bude úspěšný pouze v případě, že parametr bude 2, a pak vrátí celý dokument.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Zjistili jste, jak provádět dotazy pomocí rozhraní API Cosmos DB pro MongoDB
+> * Seznámili jste se s dotazování pomocí rozhraní Cosmos DB API pro MongoDB.
 
 Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak globálně distribuovat data.
 

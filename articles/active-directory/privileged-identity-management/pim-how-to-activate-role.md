@@ -14,12 +14,12 @@ ms.date: 06/28/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9d9b2aff1d196d8b2987d77046831e7200ee2fe
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 6007762c897337170dec69c3486302aa62723480
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804471"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756293"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivace mých rolí Azure AD v PIM
 
@@ -27,15 +27,15 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) zjednodu�
 
 Pokud jste nastavili nárok na roli správce, to znamená, že tuto roli můžete aktivovat, když potřebujete provést privilegované akce. Pokud například občas spravujete funkce sady Office 365, správci privilegovaných rolí vaší organizace nemůžou mít trvalého globálního správce, protože tato role má dopad i na jiné služby. Místo toho vám budou mít nárok na role Azure AD, jako je třeba správce Exchange Online. Můžete požádat o aktivaci této role, když budete potřebovat její oprávnění, a pak budete mít kontrolu nad tím, jak bude mít správce na předstanovenou dobu.
 
-Tento článek je určen pro správce, kteří potřebují aktivovat roli Azure AD v PIM.
+Tento článek je určen pro správce, kteří potřebují aktivovat roli Azure AD v Privileged Identity Management.
 
 ## <a name="activate-a-role"></a>Aktivace role
 
-Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci pomocí možnosti navigace **Moje role** v PIM.
+Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci pomocí možnosti navigace **Moje role** v Privileged Identity Management.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-1. Otevřete **Azure AD Privileged Identity Management**. Informace o tom, jak přidat dlaždici PIM na řídicí panel, najdete v tématu [Začínáme používat PIM](pim-getting-started.md).
+1. Otevřete **Azure AD Privileged Identity Management**. Informace o tom, jak přidat dlaždici Privileged Identity Management do řídicího panelu, najdete v tématu [Začínáme používat Privileged Identity Management](pim-getting-started.md).
 
 1. Klikněte na **role Azure AD**.
 
@@ -129,14 +129,14 @@ Pokud nepotřebujete aktivovat roli, která vyžaduje schválení, můžete žá
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Po aktivaci role nedojde k udělení oprávnění
 
-Když aktivujete roli v PIM, aktivace se nemusí okamžitě rozšířit na všechny portály, které vyžadují privilegovanou roli. Někdy se může stát, že i přes rozšíření změny může kvůli webovému ukládání do mezipaměti na portálu dojít k tomu, že se změna neuplatní okamžitě. Pokud je vaše aktivace zpožděná, tady je to, co byste měli dělat.
+Když v Privileged Identity Management aktivujete roli, aktivace se nemusí okamžitě rozšířit na všechny portály, které vyžadují privilegovanou roli. Někdy se může stát, že i přes rozšíření změny může kvůli webovému ukládání do mezipaměti na portálu dojít k tomu, že se změna neuplatní okamžitě. Pokud je vaše aktivace zpožděná, tady je to, co byste měli dělat.
 
 1. Odhlaste se z webu Azure Portal a pak se znovu přihlaste.
 
-    Při aktivaci role Azure AD se zobrazí fáze aktivace. Po dokončení všech fází se zobrazí odkaz **Odhlásit se**. Pomocí tohoto odkazu se můžete odhlásit. Tím se vyřeší většina případů zpoždění aktivace.
+    Při aktivaci role Azure AD se zobrazí fáze aktivace. Po dokončení všech fází se zobrazí odkaz **Odhlásit se**. Tento odkaz můžete použít k odhlášení. Tato akce vyřeší většinu případů zpoždění aktivace.
 
-1. V části PIM ověřte, že jste uvedeni jako člen role.
+1. V Privileged Identity Management ověřte, že jste uvedeni jako člen role.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Aktivace mých rolí prostředků Azure v PIM](pim-resource-roles-activate-your-roles.md)
+- [Aktivovat moje role prostředků Azure v Privileged Identity Management](pim-resource-roles-activate-your-roles.md)

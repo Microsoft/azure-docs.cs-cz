@@ -3,66 +3,66 @@ title: 'Rychlý Start: analýza textového obsahu C# v Content moderator'
 titleSuffix: Azure Cognitive Services
 description: Jak analyzovat textový obsah pro různé nevhodný materiál pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: 69c190b9ce9e5a99d39a46c147f7159ace47e4f7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.author: pafarley
+ms.openlocfilehash: 40f73a6aabd3631bf2a2f8f1406d2ec9abd55e51
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001441"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757232"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý Start: analýza textového obsahu pro nevhodný materiál vC#
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza problematického materiálu v obsahu textu v jazyce C#
 
-V tomto článku najdete informace a ukázky kódu, které vám pomůžou začít používat [sadu Content moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Naučíte se, jak provádět filtrování založené na termínech a klasifikaci textových obsahu s cílem moderování potenciálně nežádoucího materiálu.
+Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Naučíte se, jak provádět filtrování založené na termínech a klasifikaci textových obsahu s cílem moderování potenciálně nežádoucího materiálu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
-- Content Moderator klíč předplatného. Podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru Content moderator a Získejte svůj klíč.
+## <a name="prerequisites"></a>Předpoklady
+- Klíč předplatného Content Moderatoru. Podle pokynů v tématu [Vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru Content Moderatoru a získejte svůj klíč.
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 
 > [!NOTE]
-> Tato příručka používá Content Moderator předplatné na bezplatné úrovni. Informace o tom, co je k dispozici u jednotlivých úrovní předplatného, najdete na stránce [ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/) .
+> V této příručce se používá předplatné Content Moderatoru úrovně Free. Informace o tom, co je součástí jednotlivých úrovní předplatného, najdete na stránce [Ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/).
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. V aplikaci Visual Studio vytvořte nový projekt **konzolové aplikace (.NET Framework)** a pojmenujte ho **TextModeration**. 
-1. Pokud máte ve svém řešení jiné projekty, vyberte je jako jeden spouštěný projekt.
+1. V sadě Visual Studio vytvořte nový projekt **Konzolová aplikace (.NET Framework)** a pojmenujte ho **TextModeration**. 
+1. Pokud vaše řešení obsahuje i jiné projekty, vyberte tento projekt jako jediný spouštěný projekt.
 1. Získejte požadovaný balíček NuGet. V Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Pak vyhledejte a nainstalujte **balíček `Microsoft.Azure.CognitiveServices.ContentModerator`** . Alternativně můžete spustit následující příkaz z adresáře řešení:
 
 ```console
 dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator
 ```
 
-## <a name="add-text-moderation-code"></a>Přidat kód pro moderování textu
+## <a name="add-text-moderation-code"></a>Přidání kódu pro moderování textu
 
-V dalším kroku zkopírujete a vložíte kód z tohoto průvodce do projektu, abyste implementovali základní scénář Moderování obsahu.
+Dále zkopírováním kódu z této příručky a jeho vložením do svého projektu implementujete základní scénář moderování obsahu.
 
-### <a name="include-namespaces"></a>Zahrnout obory názvů
+### <a name="include-namespaces"></a>Zahrnutí oborů názvů
 
-Do horní části souboru *program.cs* přidejte následující příkazy `using`.
+Na začátek souboru *Program.cs* přidejte následující příkazy `using`.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=1-8)]
 
-### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderator
+### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Přidejte do souboru *program.cs* následující kód pro vytvoření poskytovatele klienta Content moderator pro vaše předplatné. Přidejte kód spolu se třídou **program** ve stejném oboru názvů. Pole **a** a **CMSubscriptionKey** budete muset aktualizovat hodnotami identifikátoru vaší oblasti a klíče předplatného.
+Do souboru *Program.cs* přidejte následující kód, který pro vaše předplatné vytvoří zprostředkovatele klienta Content Moderatoru. Přidejte kód společně s třídou **Program** do stejného oboru názvů. Budete muset aktualizovat pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=54-77)]
 
-### <a name="set-up-input-and-output-targets"></a>Nastavit cíle vstupu a výstupu
+### <a name="set-up-input-and-output-targets"></a>Nastavení vstupních a výstupních cílů
 
-Do třídy **program** v _program.cs_přidejte následující statická pole. Tato pole určují soubory pro vstupní textový obsah a výstupní obsah JSON.
+Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole určují soubory pro vstupní textový obsah a výstupní obsah JSON.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-Budete muset vytvořit vstupní soubor *textfile. txt* a aktualizovat jeho cestu (cesty jsou relativní vzhledem k adresáři spuštění). Otevřete _textfile. txt_ a přidejte text do středníku. V tomto rychlém startu se používá následující vzorový text:
+Budete muset vytvořit vstupní soubor *textfile. txt* a aktualizovat jeho cestu (cesty jsou relativní vzhledem k adresáři spuštění). Otevřete soubor _TextFile.txt_ a přidejte text, který se má moderovat. V tomto rychlém startu se používá následující ukázkový text:
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -70,24 +70,24 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).
 ```
 
-### <a name="load-the-input-text"></a>Načíst vstupní text
+### <a name="load-the-input-text"></a>Načtení vstupního textu
 
-Do metody **Main** přidejte následující kód. Metoda **ScreenText** je základní operace. Jeho parametry určují, které operace Moderování obsahu budou provedeny. V tomto příkladu je metoda nakonfigurovaná na:
-- Detekuje potenciální vulgární text.
-- Normalizuje text a překlepy v automatických opravách.
+Do metody **Main** přidejte následující kód. Zásadní operací je metoda **ScreenText**. Její parametry určují, které operace moderování obsahu se provedou. V tomto příkladu je metoda nakonfigurovaná tak, aby prováděla následující:
+- Rozpoznávání potenciálně vulgárních výrazů v textu
+- Normalizace textu a automatické opravy překlepů
 - Zjišťují se osobní údaje, jako jsou telefonní čísla USA a UK, e-mailové adresy a poštovní adresy USA.
-- Použijte modely založené na strojovém učení pro klasifikaci textu do tří kategorií.
+- Klasifikace textu do tří kategorií s využitím modelů založených na strojovém učení
 
-Pokud se chcete dozvědět více o tom, co tyto operace provede, postupujte podle odkazu v části [Další kroky](#next-steps) .
+Další informace o tom, co tyto operace dělají, najdete na odkazu v části [Další kroky](#next-steps).
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=23-48)]
 
-## <a name="run-the-program"></a>Spustit program
+## <a name="run-the-program"></a>Spuštění programu
 
-Program zapíše data řetězce JSON do souboru _TextModerationOutput. txt_ . Vzorový text použitý v tomto rychlém startu nabízí následující výstup:
+Program zapíše řetězcová data JSON do souboru _TextModerationOutput.txt_. Pro ukázkový text použitý v tomto rychlém startu bude výstup následující:
 
 ```json
-Autocorrect typos, check for matching terms, PII, and classify.
+Autocorrect typos, check for matching terms, check for personal data, and classify.
 {
 "OriginalText": "\"Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).\"",
 "NormalizedText": "\" Is this a garbage or crap email abide@ abed. com, phone: 6657789887, IP: 255. 255. 255. 255, 1 Microsoft Way, Redmond, WA 98052. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number ( SSN) . \"",
@@ -174,7 +174,7 @@ Autocorrect typos, check for matching terms, PII, and classify.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili jednoduchou aplikaci .NET, která používá službu Content Moderator k vrácení relevantních informací o dané ukázce textu. Dále si přečtěte další informace o tom, co jednotlivé příznaky a klasifikace znamenají, abyste se mohli rozhodnout, jaká data potřebujete a jak ji by měla vaše aplikace zpracovat.
+V tomto rychlém startu jste vytvořili jednoduchou aplikaci v .NET, která s využitím služby Content Moderator vrací relevantní informace o poskytnutém ukázkovém textu. Dále si můžete přečíst další informace o tom, co znamenají různé příznaky a klasifikace, abyste se mohli rozhodnout, jaká data potřebujete a jak by je vaše aplikace měla zpracovávat.
 
 > [!div class="nextstepaction"]
-> [Průvodce moderováním textu](text-moderation-api.md)
+> [Příručka moderování textu](text-moderation-api.md)

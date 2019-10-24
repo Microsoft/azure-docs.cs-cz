@@ -1,18 +1,18 @@
 ---
 title: Použití kanálu změny Azure Cosmos DB s Azure Functions
 description: Použití Azure Cosmos DB změn kanálu s Azure Functions
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 2ec38659b0bafa8836ac787ac36b662970141843
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 95fec1ef57c1d70ea484de9ad49b3410ed8594a4
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249090"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757056"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektury založené na událostech bez serveru s Azure Cosmos DB a Azure Functions
 
@@ -25,7 +25,7 @@ Pomocí [triggeru Azure Functions pro Cosmos DB](../azure-functions/functions-bi
 > [!NOTE]
 > V současné době se aktivační událost Azure Functions pro Cosmos DB podporuje jenom s rozhraním API Core (SQL).
 
-## <a name="requirements"></a>požadavky
+## <a name="requirements"></a>Požadavky
 
 K implementaci toku založeného na události bez serveru budete potřebovat:
 

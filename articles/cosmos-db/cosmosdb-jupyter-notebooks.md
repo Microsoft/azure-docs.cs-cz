@@ -4,14 +4,14 @@ description: Přečtěte si, jak můžete použít integrovanou podporu Jupyter 
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 09/22/2019
-author: rimman
-ms.author: rimman
-ms.openlocfilehash: 8389cd4d73c5c5d881dcc32c688a59b86895a3e2
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+author: markjbrown
+ms.author: mjbrown
+ms.openlocfilehash: 8026140a07ce8ed03a7bec57f03a1ca1708f85ac
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309558"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756964"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Integrovaná podpora Jupyter poznámkových bloků v Azure Cosmos DB
 
@@ -28,7 +28,7 @@ Azure Portal nativně integruje prostředí poznámkového bloku Jupyter do úč
 
 Poznámkové bloky Jupyter byly původně vyvinuty pro aplikace pro datové vědy napsané v Pythonu, R. Lze je však použít různými způsoby pro různé druhy projektů, jako například:
 
-* ***Vizualizace dat:** Jupyter poznámkové bloky umožňují vizualizovat data ve formě sdíleného poznámkového bloku, který vykresluje určitou datovou sadu jako grafiku. Poznámkový blok Jupyter vám umožňuje vytvářet vizualizace, sdílet je a umožňovat interaktivní změny sdíleného kódu a sady dat.
+* ***vizualizace dat:** poznámkové bloky Jupyter umožňují vizualizovat data ve formě sdíleného poznámkového bloku, který vykresluje určitou sadu dat jako grafiku. Poznámkový blok Jupyter vám umožňuje vytvářet vizualizace, sdílet je a umožňovat interaktivní změny sdíleného kódu a sady dat.
 
 * **Sdílení kódu:** Služby, jako je GitHub, poskytují způsob, jak sdílet kód, ale jsou převážně neinteraktivní. Pomocí poznámkového bloku Jupyter můžete zobrazit kód, spustit ho a výsledky zobrazit přímo v Azure Portal.
 
@@ -48,11 +48,11 @@ Jupyter poznámkové bloky můžou zahrnovat několik typů komponent, které js
 
 * **Kód a výstup:** Poznámkové bloky Jupyter podporují Python Code. Výsledky spouštěného kódu se zobrazí ihned po blocích kódu a bloky kódu lze spustit několikrát v libovolném pořadí.
 
-* **Vizualizace** Grafiky a grafy je možné vygenerovat z kódu pomocí modulů, jako je matplotlib, prokreslovat nebo rozostření. Podobně jako výstup se tyto vizualizace zobrazí jako vložené vedle kódu, který je generuje.
+* **Vizualizace:** Grafiky a grafy je možné vygenerovat z kódu pomocí modulů, jako je matplotlib, prokreslovat nebo rozostření. Podobně jako výstup se tyto vizualizace zobrazí jako vložené vedle kódu, který je generuje.
 
-* **Multimédií** Vzhledem k tomu, že Poznámkový blok Jupyter je postaven na webové technologii, může zobrazit všechny typy multimédií podporované na webové stránce. Můžete je zahrnout do poznámkového bloku jako prvky HTML, nebo je můžete vygenerovat programově pomocí `IPython.display` modulu.
+* **Multimédia:** Vzhledem k tomu, že Poznámkový blok Jupyter je postaven na webové technologii, může zobrazit všechny typy multimédií podporované na webové stránce. Můžete je zahrnout do poznámkového bloku jako prvky HTML, nebo je můžete vygenerovat programově pomocí modulu `IPython.display`.
 
-* **Údajů** Data z kontejnerů Azure Cosmos a výsledky dotazů je možné naimportovat do poznámkového bloku Jupyter programově. Například zahrnutím kódu do poznámkového bloku můžete zadávat dotazy na data pomocí kterékoli z Cosmos DB rozhraní API nebo nativně integrovaných Apache Spark.
+* **Data:** Data z kontejnerů Azure Cosmos a výsledky dotazů je možné naimportovat do poznámkového bloku Jupyter programově. Například zahrnutím kódu do poznámkového bloku můžete zadávat dotazy na data pomocí kterékoli z Cosmos DB rozhraní API nebo nativně integrovaných Apache Spark.
 
 ## <a name="next-steps"></a>Další kroky
 

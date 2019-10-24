@@ -1,18 +1,18 @@
 ---
 title: Globálně distribuované transakční a analytické úložiště pro kontejnery Azure Cosmos
 description: Přečtěte si o transakčních a analytických úložištích a možnostech jejich konfigurace pro kontejnery Azure Cosmos.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 27ca2102ee95273fbedd1a870e57d2ae3318e879
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: abf222b7a6d6e8fd053fa83c066d2b7850f575ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703385"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756909"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globálně distribuované transakční a analytické úložiště pro kontejnery Azure Cosmos
 
@@ -69,7 +69,7 @@ Transakční úlohy využívají zřízenou propustnost (ru). Na rozdíl od tran
 
 ### <a name="on-demand-snapshots-and-time-travel-analytics"></a>Snímky na vyžádání a analýza času – cestování
 
-Snímky dat uložených v analytickém úložišti vašich kontejnerů Azure Cosmos můžete kdykoli pořizovat voláním příkazu `CreateSnapshot (name, timestamp)` na kontejneru. Snímky jsou pojmenovány "záložky" v historii aktualizací, které byly někdy provedeny ve vašem kontejneru.
+Můžete pořizovat snímky dat uložených v analytickém úložišti vašich kontejnerů Azure Cosmos, a to tak, že zavoláte příkaz `CreateSnapshot (name, timestamp)` v kontejneru. Snímky jsou pojmenovány "záložky" v historii aktualizací, které byly někdy provedeny ve vašem kontejneru.
 
 ![Snímky na vyžádání a analýza času – cestování](./media/globally-distributed-transactional-analytical-storage/ondemand-analytical-data-snapshots.png)
 
@@ -90,19 +90,19 @@ V závislosti na vašem scénáři můžete nezávisle povolit nebo zakázat ka�
 
 1. **Konfigurace kontejneru výhradně pro analytické úlohy (s nekonečným uchováváním)**
 
-   Kontejner Azure Cosmos můžete nakonfigurovat výhradně pro analytické úlohy. Tato konfigurace má výhodu, kdy nemusíte platit za transakční úložiště. Pokud je vaším cílem použít kontejner jenom pro analytické úlohy, můžete transakční úložiště zakázat nastavením `DefaultTimeToLive` na 0 v kontejneru Cosmos a můžete povolit analytické úložiště s nekonečným uchováním nastavením `ColumnStoreTimeToLive` na-1.
+   Kontejner Azure Cosmos můžete nakonfigurovat výhradně pro analytické úlohy. Tato konfigurace má výhodu, kdy nemusíte platit za transakční úložiště. Pokud je vaším cílem použít kontejner jenom pro analytické úlohy, můžete transakční úložiště zakázat nastavením `DefaultTimeToLive` na 0 v kontejneru Cosmos a můžete povolit analytické úložiště s nekonečným uchováním nastavením `ColumnStoreTimeToLive` na hodnotu-1.
 
    ![Analytické úlohy s nekonečným uchováváním](./media/globally-distributed-transactional-analytical-storage/analytical-workload-configuration.png)
 
 1. **Konfigurace kontejneru výhradně pro transakční úlohy (s nekonečné uchovávání)**
 
-   Kontejner Azure Cosmos můžete nakonfigurovat výhradně pro transakční úlohy. Analytické úložiště můžete zakázat nastavením `ColumnStoreTimeToLive` na 0 v kontejneru a můžete povolit analytické úložiště s nekonečným uchováváním nastavením `DefaultTimeToLive` na-1.
+   Kontejner Azure Cosmos můžete nakonfigurovat výhradně pro transakční úlohy. Analytické úložiště můžete zakázat nastavením `ColumnStoreTimeToLive` na 0 na kontejneru a můžete povolit analytické úložiště s nekonečným uchováním nastavením `DefaultTimeToLive` na hodnotu-1.
 
    ![Transakční úlohy s nekonečným uchováváním](./media/globally-distributed-transactional-analytical-storage/transactional-workload-configuration.png)
 
 1. **Konfigurace kontejneru pro transakční i analytické úlohy (s nekonečným uchováváním)**
 
-   Kontejner Azure Cosmos můžete nakonfigurovat pro transakční i analytické úlohy s úplnou izolací výkonu mezi nimi. Analytické úložiště můžete povolit nastavením `ColumnStoreTimeToLive` na-1 a povolením transakčního úložiště s nekonečným uchováním nastavením `DefaultTimeToLive ` na-1.
+   Kontejner Azure Cosmos můžete nakonfigurovat pro transakční i analytické úlohy s úplnou izolací výkonu mezi nimi. Analytické úložiště můžete povolit nastavením `ColumnStoreTimeToLive` na hodnotu-1 a povolení transakčního úložiště s nekonečné uchovávání nastavením `DefaultTimeToLive ` na hodnotu-1.
 
    ![Transakční a analytické úlohy s nekonečným uchováváním](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-infinite-retention.png)
 
@@ -110,7 +110,7 @@ V závislosti na vašem scénáři můžete nezávisle povolit nebo zakázat ka�
 
    Kontejner Azure Cosmos můžete nakonfigurovat pro transakční i analytické úlohy s úplnou izolací výkonu mezi nimi a různými intervaly uchovávání. Azure Cosmos DB vynutilo, aby se analytické úložiště vždycky zachovalo delší dobu než transakční úložiště.
 
-   Transakční úložiště můžete povolit s nekonečným uchováváním nastavením `DefaultTimeToLive` na < hodnoty 1 > a povolením analytického úložiště nastavením `ColumnStoreTimeToLive` na < hodnoty 2 >. Azure Cosmos DB vyhodnotí, že < hodnota 2 > je vždycky větší než < hodnota 1 >.
+   Můžete povolit transakční úložiště s nekonečným uchováváním nastavením `DefaultTimeToLive` na < hodnotu 1 > a povolit analytické úložiště nastavením `ColumnStoreTimeToLive` na < hodnoty 2 >. Azure Cosmos DB vyhodnotí, že < hodnota 2 > je vždycky větší než < hodnota 1 >.
 
    ![Transakční a analytické úlohy s využitím vrstev úložiště](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-specified-retention.png)
 

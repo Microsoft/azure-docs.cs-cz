@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 574b1591669cc32ce30677cad5158e13b944486f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025630"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750207"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím rozhraní API Media Services V3
 
@@ -107,6 +107,8 @@ Media Services má následující dlouhodobě běžící operace:
 * [Škálování StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
 
 Po úspěšném odeslání dlouhé operace obdržíte 202 přijato a musíte se dotázat na dokončení operace pomocí vráceného ID operace.
+
+Článek [sledování asynchronních operací Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) podrobněji vysvětluje, jak sledovat stav asynchronních operací Azure prostřednictvím hodnot vrácených v odpovědi.
 
 Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vysílání je podporována pouze jedna dlouhodobě běžící operace. Po spuštění se musí dlouho běžící operace dokončit před spuštěním následné dlouhotrvající operace na stejném Livestream nebo jakýchkoli přidružených živých výstupech. U živých událostí s více živými výstupy musíte očekávat dokončení dlouhotrvající operace na jednom aktivním výstupu před aktivací dlouhotrvající operace na jiném živém výstupu. 
 

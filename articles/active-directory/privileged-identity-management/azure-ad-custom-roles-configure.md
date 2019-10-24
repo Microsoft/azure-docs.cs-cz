@@ -4,23 +4,23 @@ description: Jak nakonfigurovat vlastní role Azure AD v Privileged Identity Man
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7e52a2ef92120da60f085c0afebeb8af714203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: e7d5a7fe20a53baa86f43703c97fb8437fbb0fcd
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947356"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756416"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurace vlastních rolí Azure AD v Privileged Identity Management
 
@@ -48,27 +48,27 @@ Existuje několik nastavení, která můžete konfigurovat.
 
 Při konfiguraci nastavení role můžete vybrat ze dvou možností trvání přiřazení pro každý typ přiřazení (způsobilý nebo aktivní). Tyto možnosti se stanou výchozím maximálním trváním, když je člen přiřazen k roli v Privileged Identity Management.
 
-Můžete vybrat jednu z těchto možností s nárokem na trvání přiřazení.
+Můžete vybrat jednu z těchto možností s *nárokem* na trvání přiřazení.
 
 - **Povolení trvalého oprávněného přiřazení**: Správci můžou přiřadit trvalé oprávněné členství.
-- **Platnost oprávněného přiřazení vyprší po**: Správci mohou vyžadovat, aby u všech oprávněných přiřazení bylo zadané počáteční a koncové datum.
+- **Vypršení platnosti oprávněného přiřazení**: Správci můžou vyžadovat, aby u všech oprávněných přiřazení bylo zadané počáteční a koncové datum.
 
 Můžete také zvolit jednu z těchto možností trvání *aktivních* přiřazení:
 
-- **Povoluje trvalé aktivní přiřazení**: Správci můžou přiřadit trvalé aktivní členství.
-- **Po vypršení platnosti aktivního přiřazení**: Správci mohou vyžadovat, aby u všech aktivních přiřazení bylo zadané počáteční a koncové datum.
+- **Povolení trvalého aktivního přiřazení**: Správci můžou přiřadit trvalé aktivní členství.
+- **Ukončit aktivní přiřazení po**: Správci můžou vyžadovat, aby u všech aktivních přiřazení bylo zadané počáteční a koncové datum.
 
 ### <a name="require-azure-multi-factor-authentication"></a>Vyžadovat Azure Multi-Factor Authentication
 
-Privileged Identity Management poskytuje volitelnou vynucování Azure Multi-Factor Authentication pro dva různé scénáře.
+Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure pro dva různé scénáře.
 
-- **Vyžadovat službu Multi-Factor Authentication u aktivního přiřazení**
+- **Vyžadovat Multi-Factor Authentication aktivnímu přiřazení**
 
-  Pokud chcete členům přiřadit jenom krátkou dobu trvání (jeden den, například), může být příliš pomalý a vyžadovat, aby přiřazená členové požádali o aktivaci. V tomto scénáři Privileged Identity Management nemůžou vymáhat ověřování službou Multi-Factor Authentication, když uživatel aktivuje přiřazení role, protože už jsou v roli aktivní od okamžiku, kdy jsou přiřazeni. Aby bylo zajištěno, že správce naplní přiřazení, považuje je za to, že jsou vysloví, vyberte možnost **vyžadovat vícefaktorové ověřování v aktivním poli přiřazení** .
+  Pokud chcete členům přiřadit jenom krátkou dobu trvání (jeden den, například), může být příliš pomalý a vyžadovat, aby přiřazená členové požádali o aktivaci. V tomto scénáři Privileged Identity Management nemůžou vymáhat ověřování službou Multi-Factor Authentication, když uživatel aktivuje přiřazení role, protože už jsou v roli aktivní od okamžiku, kdy jsou přiřazeni. Aby se zajistilo, že správce naplní přiřazení, považuje je za to, že jsou vydávají, vyberte pole **vyžadovat Multi-Factor Authentication v aktivním přiřazení** .
 
-- **Vyžadovat vícefaktorové ověřování při aktivaci**
+- **Vyžadovat Multi-Factor Authentication při aktivaci**
 
-  Aby bylo možné provést registraci do služby Azure Multi-Factor Authentication, můžete vyžadovat, aby se oprávněným uživatelům přidělila role. Tento proces zajišťuje, že uživatel žádající o aktivaci je tím, kdo říkají, že má rozumnou jistotu. Vynucování této možnosti chrání důležité role v situacích, kdy mohlo dojít k ohrožení uživatelského účtu. Pro vyžadování oprávněného člena pro spuštění služby Azure Multi-Factor Authentication před aktivací zaškrtněte políčko **vyžadovat vícefaktorové ověřování při aktivaci** .
+  Můžete vyžadovat, aby se oprávnění uživatelé přiřazení k roli zaregistrovali v Azure Multi-Factor Authentication předtím, než se můžou aktivovat. Tento proces zajišťuje, že uživatel žádající o aktivaci je tím, kdo říkají, že má rozumnou jistotu. Vynucování této možnosti chrání důležité role v situacích, kdy mohlo dojít k ohrožení uživatelského účtu. Pro vyžadování oprávněného člena pro spuštění služby Azure Multi-Factor Authentication před aktivací zaškrtněte políčko **vyžadovat Multi-Factor Authentication na aktivaci** .
 
 Další informace naleznete v tématu [Multi-Factor Authentication a Privileged Identity Management](pim-how-to-require-mfa.md).
 
@@ -80,7 +80,7 @@ Pomocí posuvníku **maximální doby trvání aktivace** můžete nastavit maxi
 
 Můžete požadovat, aby členové zadali odůvodnění aktivní přiřazení nebo když se aktivují. Chcete-li vyžadovat odůvodnění, zaškrtněte políčko **vyžadovat odůvodnění při aktivním přiřazení** nebo políčko **vyžadovat odůvodnění při aktivaci** .
 
-### <a name="require-approval-to-activate"></a>K aktivaci vyžadovat schválení
+### <a name="require-approval-to-activate"></a>Vyžadovat schválení pro aktivaci
 
 Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto kroků.
 
@@ -92,7 +92,7 @@ Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto 
 1. Vyberte aspoň jednoho člena nebo skupinu a potom klikněte na **Vybrat**. Musíte vybrat aspoň jednoho schvalovatele. Neexistují žádní výchozí schvalovatelé. Vaše výběry se zobrazí v seznamu vybraných schvalovatelů.
 1. Po zadání nastavení role uložte změny výběrem možnosti **aktualizovat** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Aktivace vlastní role Azure AD](azure-ad-custom-roles-assign.md)
 - [Přiřazení vlastní role Azure AD](azure-ad-custom-roles-assign.md)

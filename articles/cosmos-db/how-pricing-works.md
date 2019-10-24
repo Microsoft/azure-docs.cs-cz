@@ -1,28 +1,28 @@
 ---
 title: Cenový model Azure Cosmos DB
 description: V tomto článku se dozvíte o cenovém modelu Azure Cosmos DB a o tom, jak zjednodušuje správu nákladů a plánování nákladů.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
-ms.openlocfilehash: 43a4b46199277da11d2820a11ec0801c0345e62b
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 0e0adef2728ef75dc67f02fdf38b6638965df62f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717605"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756875"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Cenový model v Azure Cosmos DB 
 
 Cenový model Azure Cosmos DB zjednodušuje správu a plánování nákladů. S Azure Cosmos DB platíte za zajištěnou propustnost a úložiště, které využíváte.
 
-* **Zřízená propustnost**: Zajištěná propustnost (označovaná také jako rezervovaná propustnost) zaručuje vysoký výkon v jakémkoli měřítku. Určete propustnost (RU/s), kterou potřebujete, a Azure Cosmos DB vyhradit prostředky potřebné k zajištění nakonfigurované propustnosti. Za danou hodinu se účtuje po hodinách maximální zajištěné propustnosti.
+* **Zajištěná propustnost**: zajištěná propustnost (označovaná také jako rezervovaná propustnost) zaručuje vysoký výkon v jakémkoli měřítku. Určete propustnost (RU/s), kterou potřebujete, a Azure Cosmos DB vyhradit prostředky potřebné k zajištění nakonfigurované propustnosti. Za danou hodinu se účtuje po hodinách maximální zajištěné propustnosti.
 
    > [!NOTE]
    > Vzhledem k tomu, že model zřízené propustnosti vyhradí prostředky pro váš kontejner nebo databázi, bude se vám za zřízenou propustnost účtovat i v případě, že nespustíte žádné úlohy.
 
-* **Spotřebované úložiště**: Účtují se paušální sazba za celkovou velikost úložiště (GB) spotřebovaného pro data a indexy za danou hodinu.
+* **Spotřebované úložiště**: za určitou hodinu se účtuje paušální sazba za celkové množství úložiště (GB) spotřebované za data a indexy.
 
 Zřízená propustnost, zadaná jako [jednotky žádosti](request-units.md) za sekundu (ru/s), umožňuje čtení nebo zápis dat do kontejnerů nebo databází. Propustnost můžete [zřídit buď pro databázi, nebo pro kontejner](set-throughput.md). Na základě potřeb vašich úloh můžete kdykoli škálovat a snížit propustnost. Ceny Azure Cosmos DB jsou elastické a jsou úměrné propustnosti, kterou konfigurujete v databázi nebo kontejneru. Minimální propustnost a hodnoty úložiště a zvýšení měřítka poskytují celou škálu cen a spektra pružnosti pro všechny segmenty zákazníků, od malých až po velké kontejnery. Každá databáze nebo kontejner se fakturuje po hodinách na základě propustnosti zřízené v jednotkách 100 RU/s, minimálně 400 RU/s a úložiště spotřebovaného v GB. Na rozdíl od zřízené propustnosti se úložiště účtuje na základě spotřeby. To znamená, že nemusíte rezervovat žádné úložiště předem. Účtuje se vám jenom úložiště, které spotřebováváte.
 
@@ -47,7 +47,7 @@ Azure Cosmos DB nabízí zdarma několik možností pro vývojáře. K těmto mo
 
 * **Vyzkoušejte si Azure Cosmos DB zdarma**: Azure Cosmos DB nabízí časově omezené prostředí pomocí funkce vyzkoušet Azure Cosmos DB pro bezplatné účty. Můžete vytvořit účet Azure Cosmos DB, vytvořit databázi a kolekce a spustit ukázkovou aplikaci pomocí rychlých startů a kurzů. Ukázkovou aplikaci můžete spustit bez přihlášení k odběru účtu Azure nebo pomocí platební karty. [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) nabízených nabídek Azure Cosmos DB po dobu jednoho měsíce, s možností obnovit účet několikrát.
 
-* **Emulátor Azure Cosmos DB**: Emulátor Azure Cosmos DB poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Emulátor se nabízí zdarma a vysoká věrnost cloudové služby. Pomocí emulátoru Azure Cosmos DB můžete své aplikace vyvíjet a testovat v místním prostředí, aniž byste museli vytvářet předplatné Azure ani náklady. Své aplikace můžete vyvíjet pomocí místního emulátoru před tím, než budete pokračovat v produkci. Až budete spokojeni s funkcemi aplikace proti emulátoru, můžete přepnout na použití účtu Azure Cosmos DB v cloudu a významně ušetřit náklady. Další informace o emulátoru najdete v článku [použití Azure Cosmos DB pro vývoj a testování](local-emulator.md) .
+* **Emulátor Azure Cosmos DB**: Azure Cosmos DB emulátor poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Emulátor se nabízí zdarma a vysoká věrnost cloudové služby. Pomocí emulátoru Azure Cosmos DB můžete své aplikace vyvíjet a testovat v místním prostředí, aniž byste museli vytvářet předplatné Azure ani náklady. Své aplikace můžete vyvíjet pomocí místního emulátoru před tím, než budete pokračovat v produkci. Až budete spokojeni s funkcemi aplikace proti emulátoru, můžete přepnout na použití účtu Azure Cosmos DB v cloudu a významně ušetřit náklady. Další informace o emulátoru najdete v článku [použití Azure Cosmos DB pro vývoj a testování](local-emulator.md) .
 
 ## <a name="pricing-with-reserved-capacity"></a>Ceny s rezervovanou kapacitou
 
@@ -55,7 +55,7 @@ Azure Cosmos DB [Rezervovaná kapacita](cosmos-db-reserved-capacity.md) vám pom
 
 Rezervovaná kapacita poskytuje fakturační slevu a nemá vliv na běhový stav vašich Azure Cosmos DBch prostředků. Rezervovaná kapacita je jednotně dostupná pro všechna rozhraní API, která zahrnují MongoDB, Cassandra, SQL, Gremlin a Azure a všechny oblasti po celém světě. Další informace o rezervované kapacitě najdete v tématu [platba za Azure Cosmos DB prostředky s využitím rezervované kapacity](cosmos-db-reserved-capacity.md) a zakoupení rezervované kapacity z [Azure Portal](https://portal.azure.com/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o optimalizaci nákladů na prostředky Azure Cosmos DB najdete v následujících článcích:
 

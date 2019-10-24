@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 84e8f1d7b723bb86b31abb1ff60bce5351d7d996
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883401"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750160"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Podívejte se na stav publikování vaší nabídky na komerčním webu Marketplace.
 
@@ -106,7 +106,7 @@ Během kroku **vytvoření verze Preview** vytvoříme verzi nabídky, která je
 
 V tomto kroku se vám pošle e-mail s žádostí o kontrolu a schválení vaší nabídky Preview před konečným krokem publikování.
 
-Pokud jste si zvolili prodej vaší nabídky prostřednictvím Microsoftu, budete moct otestovat navýšení a nasazení vaší nabídky, abyste měli jistotu, že vyhovují vašim požadavkům v této fázi schvalování verze Preview. Vaše nabídka nebude zatím k dispozici na webu Pubic Marketplace. Jakmile otestujete a schválíte tuto verzi Preview, budete muset na řídicím panelu [**Přehled nabídek**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) vybrat možnost **Přejít na aktivní** .
+Pokud jste si zvolili prodej vaší nabídky prostřednictvím Microsoftu, budete moct otestovat navýšení a nasazení vaší nabídky, abyste měli jistotu, že vyhovují vašim požadavkům v této fázi schvalování verze Preview. Vaše nabídka nebude zatím dostupná na veřejném webu Marketplace. Jakmile otestujete a schválíte tuto verzi Preview, budete muset na řídicím panelu [**Přehled nabídek**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) vybrat možnost **Přejít na aktivní** .
 
 Pokud chcete v této fázi Preview provádět změny nabídky, můžete je upravit a znovu odeslat a publikovat novou verzi Preview. Podrobnosti o dalších změnách najdete v článku [aktualizace stávajících nabídek Marketplace](#update-existing-marketplace-offers) .
 

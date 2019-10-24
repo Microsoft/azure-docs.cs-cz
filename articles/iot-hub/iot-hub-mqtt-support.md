@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 6a43b721b70858d82083538638853c5bbdf1531d
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
-ms.translationtype: MT
+ms.openlocfilehash: 59bf62f73d8ba9732cd89209d2b239fd15a6d844
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004126"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754477"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -44,10 +44,10 @@ Následující tabulka obsahuje odkazy na ukázky kódu pro každý podporovaný
 
 | Jazyk | Parametr protokolu |
 | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |Azure-IoT-Device-MQTT |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol. MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType. MQTT |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Ve výchozím nastavení vždycky podporuje MQTT |
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Migrace aplikace zařízení z AMQP do MQTT
@@ -68,7 +68,7 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 
 * V poli **ClientID** použijte **deviceId**.
 
-* V poli **uživatelské jméno** použijte `{iothubhostname}/{device_id}/?api-version=2018-06-30`, kde `{iothubhostname}` je kompletní záznam CNAME služby IoT Hub.
+* V poli **uživatelské jméno** použijte `{iothubhostname}/{device_id}/?api-version=2018-06-30`, kde `{iothubhostname}` je celý záznam CNAME služby IoT Hub.
 
     Například pokud je název vašeho centra IoT **contoso.Azure-Devices.NET** a pokud je název vašeho zařízení **MyDevice01**, pole úplné **uživatelské jméno** by mělo obsahovat následující:
 
@@ -103,7 +103,7 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 
 3. V **SASTokenForm**vyberte zařízení v rozevíracím seznamu **DeviceID** . Nastavte **hodnotu TTL**.
 
-4. Kliknutím na vytvořit vytvořte token.
+4. Kliknutím **na vytvořit vytvořte** token.
 
    Vygenerovaný token SAS má následující strukturu:
 
@@ -115,7 +115,7 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 
 V případě MQTT připojení a odpojení paketů IoT Hub vydá událost na kanálu **monitorování operací** . Tato událost obsahuje další informace, které vám můžou pomoct vyřešit problémy s připojením.
 
-Aplikace zařízení může v paketu **Connect** zadat zprávu. Aplikace zařízení by se měla `devices/{device_id}/messages/events/` použít `devices/{device_id}/messages/events/{property_bag}` , nebo jako název tématu, který se má definovat, **bude** zprávy předávané jako zpráva telemetrie. V takovém případě, pokud je síťové připojení ukončeno, ale ze zařízení nebyl dříve přijat paket pro **odpojení** , IoT Hub odešle zprávu dodanou v paketu **připojit** k kanálu telemetrie. Kanál telemetrie může být buď koncovým bodem výchozí **události** , nebo vlastním koncovým bodem definovaným IoT Hub směrováním. Zpráva obsahuje vlastnost **iothub-MessageType** s hodnotou, která se mu přiřadí.
+Aplikace zařízení může v paketu **Connect** **zadat zprávu.** Aplikace zařízení by měla používat `devices/{device_id}/messages/events/` nebo `devices/{device_id}/messages/events/{property_bag}` jako název **tématu, které se má** definovat, **bude** zprávy předávané jako zpráva telemetrie. V takovém případě, pokud je síťové připojení ukončeno, ale ze zařízení nebyl dříve přijat paket pro **odpojení** , IoT Hub **odešle zprávu** dodanou v paketu **připojit** k kanálu telemetrie. Kanál telemetrie může být buď koncovým bodem výchozí **události** , nebo vlastním koncovým bodem definovaným IoT Hub směrováním. Zpráva obsahuje vlastnost **iothub-MessageType** s hodnotou, která **se mu přiřadí.**
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Přímé použití protokolu MQTT (jako modul)
 
@@ -123,11 +123,11 @@ Připojení k IoT Hub přes MQTT pomocí identity modulu je podobné zařízení
 
 * Nastavte ID klienta na `{device_id}/{module_id}`.
 
-* Při ověřování pomocí uživatelského jména a hesla nastavte uživatelské jméno na `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` a jako heslo použijte token SAS přidružený k identitě modulu.
+* Pokud se ověřuje pomocí uživatelského jména a hesla, nastavte uživatelské jméno na `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` a jako heslo použijte token SAS přidružený k identitě modulu.
 
-* Použijte `devices/{device_id}/modules/{module_id}/messages/events/` jako téma pro publikování telemetrie.
+* Jako téma publikování telemetrie použijte `devices/{device_id}/modules/{module_id}/messages/events/`.
 
-* Použijte `devices/{device_id}/modules/{module_id}/messages/events/` jako téma.
+* Použijte `devices/{device_id}/modules/{module_id}/messages/events/`, jak se bude jednat o téma.
 
 * Dvojitá témata GET a PATCH jsou pro moduly a zařízení shodná.
 
@@ -149,13 +149,13 @@ pip install paho-mqtt
 
 Potom implementujte klienta ve skriptu Python. Zástupné symboly nahraďte následujícím způsobem:
 
-* `<local path to digicert.cer>`je cesta k místnímu souboru, který obsahuje kořenový certifikát DigiCert Baltimore. Tento soubor můžete vytvořit zkopírováním informací o certifikátu z části [certifikáty. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) v sadě Azure IoT SDK pro c. Přidejte řádky `-----BEGIN CERTIFICATE-----` `"` a `-----END CERTIFICATE-----`odstraňte značky na začátku a konci každého řádku a odeberte `\r\n`znaků na konci každého řádku.
+* `<local path to digicert.cer>` je cesta k místnímu souboru, který obsahuje kořenový certifikát DigiCert Baltimore. Tento soubor můžete vytvořit zkopírováním informací o certifikátu z části [certifikáty. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) v sadě Azure IoT SDK pro c. zahrňte řádky `-----BEGIN CERTIFICATE-----` a `-----END CERTIFICATE-----`, odstraňte `"` značky na začátku a konci každého řádku a odeberte `\r\n` znaky na konci e. velmi čára.
 
-* `<device id from device registry>`je ID zařízení, které jste přidali do služby IoT Hub.
+* `<device id from device registry>` je ID zařízení, které jste přidali do služby IoT Hub.
 
-* `<generated SAS token>`je token SAS pro zařízení vytvořený, jak je popsáno dříve v tomto článku.
+* `<generated SAS token>` je token SAS pro zařízení vytvořené, jak je popsáno dříve v tomto článku.
 
-* `<iot hub name>`název centra IoT.
+* `<iot hub name>` název centra IoT.
 
 ```python
 from paho.mqtt import client as mqtt
@@ -189,7 +189,7 @@ client.username_pw_set(username=iot_hub_name+".azure-devices.net/" +
                        device_id + "/?api-version=2018-06-30", password=sas_token)
 
 client.tls_set(ca_certs=path_to_root_cert, certfile=None, keyfile=None,
-               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)
 client.tls_insecure_set(False)
 
 client.connect(iot_hub_name+".azure-devices.net", port=8883)
@@ -216,7 +216,7 @@ client.username_pw_set(username=iot_hub_name+".azure-devices.net/" +
 cert_file = "<local path to your certificate file>"
 key_file = "<local path to your device key file>"
 client.tls_set(ca_certs=path_to_root_cert, certfile=cert_file, keyfile=key_file,
-               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)
 
 # Connect as before
 client.connect(iot_hub_name+".azure-devices.net", port=8883)
@@ -224,14 +224,14 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Posílání zpráv ze zařízení do cloudu
 
-Po úspěšném připojení může zařízení posílat zprávy, které se IoT Hub pomocí `devices/{device_id}/messages/events/` **názvu tématu**nebo. `devices/{device_id}/messages/events/{property_bag}` `{property_bag}` Prvek umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Příklad:
+Po úspěšném připojení může zařízení odesílat zprávy IoT Hub pomocí `devices/{device_id}/messages/events/` nebo `devices/{device_id}/messages/events/{property_bag}` jako **název tématu**. Element `{property_bag}` umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Například:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
 ```
 
 > [!NOTE]
-> Tento `{property_bag}` prvek používá stejné kódování jako řetězce dotazů v protokolu HTTPS.
+> Tento element `{property_bag}` používá stejné kódování jako řetězce dotazů v protokolu HTTPS.
 
 Následuje seznam IoT Hub chování specifické pro implementaci:
 
@@ -245,17 +245,17 @@ Další informace najdete v tématu [Příručka pro vývojáře pro zasílání
 
 ## <a name="receiving-cloud-to-device-messages"></a>Příjem zpráv z cloudu na zařízení
 
-Pokud chcete dostávat zprávy z IoT Hub, zařízení by se mělo `devices/{device_id}/messages/devicebound/#` přihlásit jako **Filtr tématu**. Zástupný znak `#` na více úrovních v rámci filtru tématu slouží pouze k tomu, aby zařízení přijímalo další vlastnosti v názvu tématu. IoT Hub nepovoluje použití `#` zástupných znaků nebo `?` pro filtrování dílčích témat. Vzhledem k tomu, že IoT Hub není modul pro zasílání zpráv typu Pub pro obecné účely, podporuje pouze dokumentované názvy témat a filtry témat.
+Aby bylo možné přijímat zprávy z IoT Hub, mělo by se zařízení přihlásit pomocí `devices/{device_id}/messages/devicebound/#` jako **Filtr tématu**. Zástupný znak na více úrovních `#` v filtru tématu slouží pouze k tomu, aby zařízení přijímalo další vlastnosti v názvu tématu. IoT Hub nepovoluje použití `#` nebo `?` zástupné znaky pro filtrování dílčích témat. Vzhledem k tomu, že IoT Hub není modul pro zasílání zpráv typu Pub pro obecné účely, podporuje pouze dokumentované názvy témat a filtry témat.
 
-Zařízení neobdrží žádné zprávy od IoT Hub, dokud se úspěšně přihlásí ke koncovému bodu pro konkrétní zařízení, reprezentovanému `devices/{device_id}/messages/devicebound/#` filtrem tématu. Po navázání předplatného zařízení obdrží zprávy typu cloud-zařízení, které se do ní poslaly po uplynutí doby platnosti předplatného. Pokud se zařízení připojí s příznakem **CleanSession** nastaveným na **hodnotu 0**, předplatné se trvale zachová napříč různými relacemi. V takovém případě se při příštím připojení zařízení k **CleanSession 0** obdrží všechny nedokončené zprávy, které se do ní odesílají během odpojení. Pokud zařízení používá příznak **CleanSession** nastavené na **1** , ale neobdrží žádné zprávy z IoT Hub, dokud se přihlásí k odběru koncového bodu zařízení.
+Zařízení neobdrží žádné zprávy od IoT Hub, dokud se neúspěšně přihlásí ke koncovému bodu specifickému pro zařízení, reprezentovaným filtrem `devices/{device_id}/messages/devicebound/#` tématu. Po navázání předplatného zařízení obdrží zprávy typu cloud-zařízení, které se do ní poslaly po uplynutí doby platnosti předplatného. Pokud se zařízení připojí s příznakem **CleanSession** nastaveným na **hodnotu 0**, předplatné se trvale zachová napříč různými relacemi. V takovém případě se při příštím připojení zařízení k **CleanSession 0** obdrží všechny nedokončené zprávy, které se do ní odesílají během odpojení. Pokud zařízení používá příznak **CleanSession** nastavené na **1** , ale neobdrží žádné zprávy z IoT Hub, dokud se přihlásí k odběru koncového bodu zařízení.
 
-IoT Hub doručuje zprávy s **názvem** `devices/{device_id}/messages/devicebound/`tématu, nebo `devices/{device_id}/messages/devicebound/{property_bag}` Pokud jsou vlastnosti zprávy. `{property_bag}`obsahuje páry klíč/hodnota zakódované adresy URL vlastností zprávy. Do kontejneru objektů a dat jsou zahrnuty pouze vlastnosti aplikace a uživatelsky nastavitelované systémové vlastnosti (například **MessageID** nebo **ID korelace**). Názvy systémových vlastností mají předponu **$** , vlastnosti aplikace používají název původní vlastnosti bez předpony.
+IoT Hub doručuje zprávy s **názvem tématu** `devices/{device_id}/messages/devicebound/` nebo `devices/{device_id}/messages/devicebound/{property_bag}`, pokud jsou vlastnosti zprávy. `{property_bag}` obsahuje páry klíč/hodnota zakódované URL vlastností zprávy. Do kontejneru objektů a dat jsou zahrnuty pouze vlastnosti aplikace a uživatelsky nastavitelované systémové vlastnosti (například **MessageID** nebo **ID korelace**). Názvy systémových vlastností mají předponu **$** , vlastnosti aplikace používají název původní vlastnosti bez předpony.
 
 Když se aplikace zařízení přihlásí k odběru tématu s **QoS 2**, IoT Hub v paketu **SUBACK** udělí maximální úroveň QoS úrovně 1. Potom IoT Hub doručuje zprávy na zařízení pomocí technologie QoS 1.
 
 ## <a name="retrieving-a-device-twins-properties"></a>Načítají se vlastnosti vlákna zařízení.
 
-Nejdřív se zařízení přihlásí k odběru `$iothub/twin/res/#`, aby mohl přijímat odpovědi na operaci. Pak pošle prázdnou zprávu do tématu `$iothub/twin/GET/?$rid={request id}`s vyplněnou hodnotou **ID žádosti**. Služba pak pošle zprávu odpovědi obsahující data zařízení s dvojitým obsahem v `$iothub/twin/res/{status}/?$rid={request id}`tématu s použitím stejného **ID žádosti** jako požadavek.
+Nejdřív se zařízení přihlásí k odběru `$iothub/twin/res/#`, aby mohl přijímat odpovědi na operaci. Pak pošle prázdnou zprávu do tématu `$iothub/twin/GET/?$rid={request id}` s vyplněnou hodnotou **ID žádosti**. Služba pak pošle zprávu odpovědi obsahující data zařízení s dvojitým obsahem v tématu `$iothub/twin/res/{status}/?$rid={request id}` s použitím stejného **ID žádosti** jako požadavek.
 
 ID žádosti může být libovolná platná hodnota pro hodnotu vlastnosti zprávy, jak je to [IoT Hub Příručka vývojáře pro zasílání zpráv](iot-hub-devguide-messaging.md)a stav je ověřen jako celé číslo.
 
@@ -281,23 +281,23 @@ Možné stavové kódy:
 | ----- | ----------- |
 | 204 | Úspěch (není vrácen žádný obsah) |
 | 429 | Příliš mnoho požadavků (omezení) podle [omezení pro IoT Hub](iot-hub-devguide-quotas-throttling.md) |
-| 5** | Chyby serveru |
+| 5 * * | Chyby serveru |
 
 Další informace najdete v tématu [Příručka vývojáře pro vlákna v zařízení](iot-hub-devguide-device-twins.md).
 
 ## <a name="update-device-twins-reported-properties"></a>Aktualizace hlášených vlastností nezaznamenaného vlákna zařízení
 
-K aktualizaci hlášených vlastností zařízení vydá požadavek na IoT Hub prostřednictvím publikace v rámci určeného MQTT tématu. Po zpracování žádosti IoT Hub odpoví na stav úspěch nebo selhání operace aktualizace prostřednictvím publikace v jiném tématu. Toto téma může být přihlášené k odběru zařízení za účelem upozornění na výsledek jeho vyplynulé žádosti o aktualizaci. Pro implementaci tohoto typu interakce s žádostmi a odpověďmi v MQTT využíváme pojem ID žádosti (`$rid`), který je na začátku zařízení v žádosti o aktualizaci. Toto ID žádosti je také zahrnuté v odpovědi z IoT Hub, aby bylo možné zařízení korelovat s odpovědí na jeho konkrétní předchozí požadavek.
+K aktualizaci hlášených vlastností zařízení vydá požadavek na IoT Hub prostřednictvím publikace v rámci určeného MQTT tématu. Po zpracování žádosti IoT Hub odpoví na stav úspěch nebo selhání operace aktualizace prostřednictvím publikace v jiném tématu. Toto téma může být přihlášené k odběru zařízení za účelem upozornění na výsledek jeho vyplynulé žádosti o aktualizaci. Pro implementaci tohoto typu interakce s žádostmi a odpověďmi v MQTT využíváme fiktivní ID žádosti (`$rid`), které je na začátku zařízení v žádosti o aktualizaci. Toto ID žádosti je také zahrnuté v odpovědi z IoT Hub, aby bylo možné zařízení korelovat s odpovědí na jeho konkrétní předchozí požadavek.
 
 Následující text popisuje, jak zařízení aktualizuje hlášené vlastnosti v zařízení, které je v IoT Hub.
 
-1. Zařízení se musí nejdřív přihlásit k odběru `$iothub/twin/res/#` tématu, aby přijímalo odpovědi operace od IoT Hub.
+1. Zařízení se musí nejdřív přihlásit k odběru `$iothub/twin/res/#`ho tématu, aby přijímalo odpovědi operace od IoT Hub.
 
-2. Zařízení pošle zprávu s informacemi o tom, že se v zařízení `$iothub/twin/PATCH/properties/reported/?$rid={request id}` nachází aktualizace s dvojitou příponou. Tato zpráva obsahuje hodnotu **ID žádosti** .
+2. Zařízení pošle zprávu, která obsahuje aktualizaci se zdvojeným zařízením, do `$iothub/twin/PATCH/properties/reported/?$rid={request id}` tématu. Tato zpráva obsahuje hodnotu **ID žádosti** .
 
-3. Služba pak pošle zprávu odpovědi, která obsahuje novou hodnotu ETag pro nahlášenou kolekci vlastností v tématu `$iothub/twin/res/{status}/?$rid={request id}`. Tato zpráva odpovědi používá stejné **ID požadavku** jako požadavek.
+3. Služba pak pošle zprávu odpovědi, která obsahuje novou hodnotu ETag pro nahlášenou kolekci Properties v tématu `$iothub/twin/res/{status}/?$rid={request id}`. Tato zpráva odpovědi používá stejné **ID požadavku** jako požadavek.
 
-Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Člen nastavený na odstraní `null`člena z objektu, který ho obsahuje. Příklad:
+Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Sada členů je nastavena na hodnotu `null` odstraní člena z objektu, který jej obsahuje. Například:
 
 ```json
 {
@@ -313,7 +313,7 @@ Možné stavové kódy:
 | 200 | Úspěch |
 | 400 | Chybný požadavek. Chybně vytvořený kód JSON |
 | 429 | Příliš mnoho požadavků (omezení) podle [omezení pro IoT Hub](iot-hub-devguide-quotas-throttling.md) |
-| 5** | Chyby serveru |
+| 5 * * | Chyby serveru |
 
 Níže uvedený fragment kódu Pythonu demonstruje nedokončený proces aktualizace vlastností prostřednictvím MQTT (pomocí klienta PAHO MQTT):
 
@@ -329,13 +329,13 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
                rid, twin_reported_property_patch, qos=0)
 ```
 
-Po úspěchu výše nahlášené operace aktualizace vlastností výše bude mít zpráva publikace z IoT Hub následující téma:, kde `$iothub/twin/res/204/?$rid=1&$version=6` `204` je stavový kód indikující úspěch, `$rid=1` odpovídá ID žádosti. je poskytováno zařízením v kódu a `$version` odpovídá části verze hlášených vlastností, které jsou v zařízení po aktualizaci vyzdvojené.
+Po úspěchu výše nahlášené operace aktualizace vlastností výše bude mít zpráva publikace z IoT Hub následující téma: `$iothub/twin/res/204/?$rid=1&$version=6`, kde `204` je stavový kód indikující úspěch, `$rid=1` odpovídá ID požadavku, který je součástí zařízení. kód a `$version` odpovídají verzi hlášených vlastností, které jsou v zařízení po aktualizaci vyzdvojené.
 
 Další informace najdete v tématu [Příručka vývojáře pro vlákna v zařízení](iot-hub-devguide-device-twins.md).
 
 ## <a name="receiving-desired-properties-update-notifications"></a>Přijímání oznámení o aktualizaci požadovaných vlastností
 
-Když je zařízení připojené, IoT Hub odesílá oznámení do tématu `$iothub/twin/PATCH/properties/desired/?$version={new version}`, které obsahuje obsah aktualizace provedené back-endu řešení. Příklad:
+Když je zařízení připojené, IoT Hub odesílá oznámení do `$iothub/twin/PATCH/properties/desired/?$version={new version}` tématu, které obsahuje obsah aktualizace provedené back-end řešení. Například:
 
 ```json
 {
@@ -345,7 +345,7 @@ Když je zařízení připojené, IoT Hub odesílá oznámení do tématu `$ioth
 }
 ```
 
-Jako u aktualizací `null` vlastností hodnoty znamená, že je odstraněn člen objektu JSON. Všimněte si také, `$version` že označuje novou verzi oddílu požadovaných vlastností vlákna.
+Jako u aktualizací vlastností `null` hodnoty znamená, že je odstraněn člen objektu JSON. Všimněte si také, že `$version` označuje novou verzi oddílu požadovaných vlastností vlákna.
 
 > [!IMPORTANT]
 > IoT Hub generuje oznámení o změnách jenom v případě, že jsou zařízení připojená. Ujistěte se, že jste implementovali [Postup opětovného připojení zařízení](iot-hub-devguide-device-twins.md#device-reconnection-flow) , abyste zachovali požadované vlastnosti synchronizované mezi IoT Hub a aplikací zařízení.
@@ -354,9 +354,9 @@ Další informace najdete v tématu [Příručka vývojáře pro vlákna v zař�
 
 ## <a name="respond-to-a-direct-method"></a>Reakce na přímou metodu
 
-Nejdřív se zařízení musí přihlásit k odběru `$iothub/methods/POST/#`. IoT Hub odesílá požadavky metody do tématu `$iothub/methods/POST/{method name}/?$rid={request id}`s platným JSON nebo prázdným tělem.
+Nejprve se zařízení musí přihlásit k odběru `$iothub/methods/POST/#`. IoT Hub odesílá požadavky metody do tématu `$iothub/methods/POST/{method name}/?$rid={request id}` s platným JSON nebo prázdným tělem.
 
-V případě, že zařízení odpoví, odešle do tématu `$iothub/methods/res/{status}/?$rid={request id}`zprávu s platným kódem JSON nebo prázdným textem. V této zprávě musí **ID žádosti** odpovídat hodnotě ve zprávě požadavku a **stav** musí být celé číslo.
+K reakci zařízení pošle zprávu s platným JSON nebo prázdným textem do tématu `$iothub/methods/res/{status}/?$rid={request id}`. V této zprávě musí **ID žádosti** odpovídat hodnotě ve zprávě požadavku a **stav** musí být celé číslo.
 
 Další informace najdete v tématu [Průvodce pro vývojáře Direct Method](iot-hub-devguide-direct-methods.md).
 

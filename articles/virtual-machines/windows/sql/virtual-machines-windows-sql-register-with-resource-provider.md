@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a0e5076f6ecb102b239a94b986830235eb720125
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2f0fac5e1951f593ea769f73feb21a60afe9c02b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512358"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756194"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -203,7 +203,7 @@ Aktuální režim SQL Server agenta IaaS můžete zobrazit pomocí prostředí P
      $sqlvm.Properties.sqlManagement
   ```
 
-SQL Server virtuální počítače, které mají nainstalovanou *zjednodušenou* příponu IaaS, mohou upgradovat režim na _úplný_ s použitím Azure Portal. SQL Server virtuálních počítačů v režimu _bez agenta_ se může upgradovat na _úplný_ , až se operační systém upgraduje na Windows 2008 R2 a novější. Tuto akci není možné downgradovat, takže budete muset prostředek poskytovatele prostředků SQL VM odstranit pomocí Azure Portal a pak znovu zaregistrovat poskytovatele prostředků SQL VM. 
+SQL Server virtuální počítače, které mají nainstalovanou *zjednodušenou* příponu IaaS, mohou upgradovat režim na _úplný_ s použitím Azure Portal. SQL Server virtuálních počítačů v režimu _bez agenta_ se může upgradovat na _úplný_ , až se operační systém upgraduje na Windows 2008 R2 a novější. Není možné downgradovat – k tomu je potřeba [zrušit registraci](#unregister-vm-from-resource-provider) virtuálního počítače s SQL Server od poskytovatele prostředků virtuálního počítače SQL, a to tak, že odstraníte prostředek virtuálního počítače SQL a zaregistrujete se do poskytovatele prostředků virtuálního počítače SQL. 
 
 Postup upgradu režimu agenta na úplný: 
 
@@ -281,6 +281,49 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ```
 ---
 
+## <a name="unregister-vm-from-resource-provider"></a>Zrušení registrace virtuálního počítače od poskytovatele prostředků 
+
+Pokud chcete zrušit registraci SQL Server virtuálního počítače pomocí poskytovatele prostředků virtuálního počítače SQL, odstraňte *prostředek* virtuálního počítače sql pomocí Azure Portal nebo Azure CLI. Odstranění *prostředku* virtuálního počítače SQL neodstraní virtuální počítač SQL Server. Buďte ale opatrní a postupujte opatrně, protože je možné při pokusu o odebrání *prostředku*neúmyslně odstranit virtuální počítač. 
+
+Zrušení registrace virtuálního počítače SQL pomocí poskytovatele prostředků virtuálního počítače SQL je nezbytné pro přechod z úplného režimu správy. 
+
+### <a name="azure-portal"></a>Portál Azure
+
+Chcete-li zrušit registraci SQL Serverho virtuálního počítače poskytovatelem prostředků pomocí Azure Portal, postupujte podle následujících kroků:
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přejděte na prostředek virtuálního počítače SQL Server. 
+  
+   ![Prostředek virtuálních počítačů SQL](media/virtual-machines-windows-sql-manage-portal/sql-vm-manage.png)
+
+1. Vyberte **Odstranit**. 
+
+   ![Odstranit poskytovatele prostředků virtuálního počítače SQL](media/virtual-machines-windows-sql-register-with-rp/delete-sql-vm-resource-provider.png)
+
+1. Zadejte název virtuálního počítače SQL a **zrušte zaškrtnutí políčka vedle virtuálního počítače**.
+
+   ![Odstranit poskytovatele prostředků virtuálního počítače SQL](media/virtual-machines-windows-sql-register-with-rp/confirm-delete-of-resource-uncheck-box.png)
+
+   >[!WARNING]
+   > Nepovedlo se zrušit zaškrtnutí políčka u názvu virtuálního počítače, aby se virtuální počítač zcela *odstranil* . Zrušením zaškrtnutí políčka zrušíte registraci SQL Server virtuálního počítače od poskytovatele prostředků, ale *neodstraníte skutečný virtuální počítač*. 
+
+1. Vyberte **Odstranit** a potvrďte odstranění *prostředku*virtuálního počítače SQL, nikoli SQL Server virtuálního počítače. 
+
+
+### <a name="azure-cli"></a>Azure CLI 
+
+Pokud chcete zrušit registraci virtuálního počítače s SQL Server od poskytovatele prostředků pomocí Azure CLI, použijte příkaz [AZ SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) . Tato akce odebere *prostředek* virtuálního počítače SQL Server, ale virtuální počítač se neodstraní. 
+
+
+```azurecli-interactive
+   az sql vm delete 
+     --name <SQL VM resource name> |
+     --resource-group <Resource group name> |
+     --yes 
+```
+
+
+
 ## <a name="remarks"></a>Poznámky
 
 - Poskytovatel prostředků virtuálního počítače SQL podporuje jenom SQL Server virtuální počítače nasazené prostřednictvím Azure Resource Manager. SQL Server virtuální počítače nasazené prostřednictvím klasického modelu se nepodporují. 
@@ -353,7 +396,7 @@ Ano. Upgrade režimu spravovatelnosti z jednoduchého na plný se podporuje pře
 
 Ne. Přechod do režimu spravovatelnosti rozšíření SQL Server IaaS se nepodporuje. Režim spravovatelnosti nejde downgradovat z režimu úplného režimu na odlehčený nebo bez agenta a nedá se downgradovat z prostého režimu na režim bez agenta. 
 
-Chcete-li změnit režim spravovatelnosti z možnosti úplné správy, vyřaďte prostředek Microsoft. SqlVirtualMachine a znovu zaregistrujte SQL Server virtuálního počítače pomocí poskytovatele prostředků virtuálního počítače SQL.
+Chcete-li změnit režim spravovatelnosti z možnosti úplné správy, [zrušte registraci](#unregister-vm-from-resource-provider) virtuálního počítače SQL Server od poskytovatele prostředků SQL Server tím, že vyřadíte *prostředek* SQL Server a znovu zaregistrujete SQL Server virtuální počítač s POSKYTOVATELEm prostředků SQL VM. znovu v jiném režimu správy.
 
 **Můžu se zaregistrovat k poskytovateli prostředků SQL VM z Azure Portal?**
 

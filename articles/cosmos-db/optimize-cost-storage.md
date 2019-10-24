@@ -1,17 +1,17 @@
 ---
 title: Optimalizace nákladů na úložiště v Azure Cosmos DB
 description: Tento článek vysvětluje, jak spravovat náklady na úložiště pro data uložená v Azure Cosmos DB
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 2955df266bcf164ce4a155acc5209679eff0ce8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615005"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754948"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na úložiště v Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Pokud chcete ukládat bohatě formátované typy médií, například videa, obr
 
 ## <a name="check-storage-consumed"></a>Ověřit spotřebované úložiště
 
-Pokud chcete zkontrolovat spotřebu úložiště kontejneru Azure Cosmos, můžete na kontejneru spustit kopii nebo získat požadavek a zkontrolovat `x-ms-request-quota` `x-ms-request-usage` hlavičky a. Případně při práci s .NET SDK můžete použít vlastnosti [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) a získat tak využité úložiště.
+Pokud chcete zkontrolovat spotřebu úložiště kontejneru Azure Cosmos, můžete na kontejneru spustit kopii nebo získat požadavek a zkontrolovat `x-ms-request-quota` a záhlaví `x-ms-request-usage`. Případně při práci s .NET SDK můžete použít vlastnosti [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) a získat tak využité úložiště.
 
 ## <a name="using-sdk"></a>Pomocí sady SDK
 

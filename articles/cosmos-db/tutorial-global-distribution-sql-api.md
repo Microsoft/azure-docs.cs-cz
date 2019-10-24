@@ -1,18 +1,18 @@
 ---
-title: Kurz globální distribuci Azure Cosmos DB pro rozhraní SQL API
+title: Kurz globálního distribuce Azure Cosmos DB pro rozhraní SQL API
 description: Zjistěte, jak nastavit globální distribuci služby Azure Cosmos DB pomocí rozhraní SQL API.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 07/15/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a566094f88ba9ffd25eadd046ae7254e26b9c2cf
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: b6b8be29afc25a3862a440e46d41e8c911189c04
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234600"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756830"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -47,7 +47,7 @@ Pokud vlastnost PreferredLocations není nastavená, všechny požadavky se budo
 ## <a name="net-sdk"></a>.NET SDK
 Sadu SDK můžete využívat bez jakýchkoli změn kódu. V tomto případě sada SDK automaticky směruje operace čtení i zápisu do aktuální oblasti pro zápis.
 
-V sadě .NET SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient vlastnost Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Tato vlastnost je typu Kolekce `<string>` a měla by obsahovat seznam názvů oblastí. Řetězcové hodnoty se formátují podle sloupce název oblasti na [oblastí Azure][regions] stránky, bez mezer před nebo po prvním a posledním znakem.
+V sadě .NET SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient vlastnost Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Tato vlastnost je typu Kolekce `<string>` a měla by obsahovat seznam názvů oblastí. Řetězcové hodnoty jsou formátovány podle sloupce název oblasti na stránce [oblasti Azure][regions] , bez mezer před nebo za prvním a posledním znakem.
 
 Aktuální koncové body pro čtení a zápis jsou k dispozici ve vlastnostech DocumentClient.WriteEndpoint a DocumentClient.ReadEndpoint.
 
@@ -78,11 +78,11 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Node.js/JavaScript
+## <a name="nodejsjavascript"></a>Node. js/JavaScript
 
 Sadu SDK můžete využívat bez jakýchkoli změn kódu. V tomto případě bude sada SDK automaticky směrovat operace čtení i zápisu do aktuální oblasti pro zápis.
 
-V jednotlivých sadách SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient novou vlastnost DocumentClient.ConnectionPolicy.PreferredLocations. Tento parametr je pole řetězců, které přebírá seznam názvů oblastí. Názvy se formátují podle sloupce název oblasti [oblastí Azure][regions] stránky. Můžete použít také předdefinované konstanty v pomocném objektu AzureDocuments.Regions.
+V jednotlivých sadách SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient novou vlastnost DocumentClient.ConnectionPolicy.PreferredLocations. Tento parametr je pole řetězců, které přebírá seznam názvů oblastí. Názvy se naformátují podle sloupce název oblasti na stránce [oblasti Azure][regions] . Můžete použít také předdefinované konstanty v pomocném objektu AzureDocuments.Regions.
 
 Aktuální koncové body pro čtení a zápis jsou k dispozici ve vlastnostech DocumentClient.getWriteEndpoint a DocumentClient.getReadEndpoint.
 
@@ -91,7 +91,7 @@ Aktuální koncové body pro čtení a zápis jsou k dispozici ve vlastnostech D
 >
 >
 
-Níže je příklad kódu pro Node.js/Javascript.
+Níže je příklad kódu pro Node. js/JavaScript.
 
 ```JavaScript
 // Creating a ConnectionPolicy object
@@ -109,7 +109,7 @@ var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPoli
 
 ## <a name="python-sdk"></a>Python SDK
 
-Následující kód ukazuje, jak nastavit upřednostňované umístění pomocí sady Python SDK:
+Následující kód ukazuje, jak nastavit Upřednostňovaná umístění pomocí sady Python SDK:
 
 ```python
 
@@ -119,9 +119,9 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>Java V2 SDK
+## <a name="java-v2-sdk"></a>Sada Java v2 SDK
 
-Následující kód ukazuje, jak nastavit upřednostňované umístění pomocí sady Java SDK:
+Následující kód ukazuje, jak nastavit Upřednostňovaná umístění pomocí sady Java SDK:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -184,7 +184,7 @@ Pokud se po počáteční fázi zjišťování klienta oblast pro zápis změní
 
 To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste provedli následující:
 

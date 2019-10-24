@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 17db8dbcba8dd0181be9ca7289ea1b85079ff9a1
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f7f45e479ad21b27832573b73a5e09e8da1b37b1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168509"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756116"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuálních sítí
 
@@ -107,13 +107,13 @@ Prostředky v jedné virtuální síti nemůžou přeložit názvy prostředků 
 
 ## <a name="permissions"></a>Oprávnění
 
-Azure využívá [řízení přístupu na základě role](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) k prostředkům. Oprávnění jsou přiřazena k [oboru](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) v následující hierarchii: předplatné, skupina pro správu, skupina prostředků a jednotlivé prostředky. Další informace o hierarchii najdete v tématu [uspořádání prostředků](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete pracovat s virtuálními sítěmi Azure a všemi jejich souvisejícími možnostmi, jako je například partnerský vztah, skupiny zabezpečení sítě, koncové body služby a směrovací tabulky, můžete členům vaší organizace přiřadit integrovaného [vlastníka](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)nebo [ Role přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) a potom přiřaďte roli příslušnému oboru. Pokud chcete přiřadit konkrétní oprávnění k podmnožině možností virtuální sítě, vytvořte [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a přiřaďte specifická oprávnění požadovaná pro [virtuální sítě](manage-virtual-network.md#permissions), [podsítě a koncové body služby](virtual-network-manage-subnet.md#permissions), [Síťová rozhraní. ](virtual-network-network-interface.md#permissions), [partnerské vztahy](virtual-network-manage-peering.md#permissions), [skupiny zabezpečení sítě a aplikace](manage-network-security-group.md#permissions)nebo [směrovací tabulky](manage-route-table.md#permissions) k roli.
+Azure využívá [řízení přístupu na základě role](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) k prostředkům. Oprávnění jsou přiřazena k [oboru](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) v následující hierarchii: skupina pro správu, předplatné, skupina prostředků a jednotlivé prostředky. Další informace o hierarchii najdete v tématu [uspořádání prostředků](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete pracovat s virtuálními sítěmi Azure a všemi jejich souvisejícími možnostmi, jako je například partnerský vztah, skupiny zabezpečení sítě, koncové body služby a směrovací tabulky, můžete členům vaší organizace přiřadit integrovaného [vlastníka](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)nebo [ Role přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) a potom přiřaďte roli příslušnému oboru. Pokud chcete přiřadit konkrétní oprávnění k podmnožině možností virtuální sítě, vytvořte [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a přiřaďte specifická oprávnění požadovaná pro [virtuální sítě](manage-virtual-network.md#permissions), [podsítě a koncové body služby](virtual-network-manage-subnet.md#permissions), [Síťová rozhraní. ](virtual-network-network-interface.md#permissions), [partnerské vztahy](virtual-network-manage-peering.md#permissions), [skupiny zabezpečení sítě a aplikace](manage-network-security-group.md#permissions)nebo [směrovací tabulky](manage-route-table.md#permissions) k roli.
 
 ## <a name="policy"></a>Zásady
 
 Azure Policy vám umožní vytvářet, přiřazovat a spravovat definice zásad. Definice zásad pro vaše prostředky vynutila různá pravidla, takže prostředky zůstávají v souladu se standardy vaší organizace a smlouvami o úrovni služeb. Azure Policy spouští vyhodnocení vašich prostředků, hledá prostředky, které nejsou kompatibilní s definicemi zásad, které máte. Můžete například definovat a použít zásadu, která umožňuje vytváření virtuálních sítí jenom v konkrétní skupině prostředků nebo oblasti. Jiná zásada může vyžadovat, aby každá podsíť měla přidruženou skupinu zabezpečení sítě. Zásady se pak vyhodnotí při vytváření a aktualizaci prostředků.
 
-Zásady jsou aplikovány na následující hierarchii: předplatné, skupina pro správu a skupinu prostředků. Přečtěte si další informace o [službě Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo nasaďte některé ukázky [šablon zásad](policy-samples.md) virtuální sítě.
+Zásady jsou aplikovány na následující hierarchii: skupina pro správu, předplatné a skupina prostředků. Přečtěte si další informace o [službě Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo nasaďte některé ukázky [šablon zásad](policy-samples.md) virtuální sítě.
 
 ## <a name="next-steps"></a>Další kroky
 

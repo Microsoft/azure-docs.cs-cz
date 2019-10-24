@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/30/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 297c6a51c1f902cf7b5843b2dd47b658ebc705fd
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ef9674165533ef3e4887bba68507344406ca128c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980992"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755928"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Správa přiřazení pomocí PowerShellu
 
@@ -42,7 +42,7 @@ Modul modrotisky pro PowerShell je **AZ. detail**.
    > [!NOTE]
    > Pokud je už nainstalovaná **AZ. Accounts** , může být nutné použít `-AllowClobber` k vynucení instalace.
 
-1. Ověřte, že je modul naimportovaný a má správnou verzi (0.2.5):
+1. Ověřte, že je modul naimportovaný a má správnou verzi (0.2.6):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
@@ -52,7 +52,7 @@ Modul modrotisky pro PowerShell je **AZ. detail**.
 ## <a name="get-blueprint-definitions"></a>Získat definice podrobného plánu
 
 Prvním krokem pro práci s přiřazením je často získání odkazu na definici podrobného plánu.
-Rutina `Get-AzBlueprint` získá jednu nebo více definic podrobného plánu. Rutina může získat definice podrobného plánu ze skupiny pro správu s `-ManagementGroupId {mgId}` nebo s předplatným `-SubscriptionId {subId}`. Parametr **Name** získá definici podrobného plánu, ale musí být použit s **ManagementGroupId** nebo **SubscriptionId**. **Verzi** lze použít s **názvem** , aby byla lépe explicitní o tom, která definice podrobného plánu se vrátí. Místo **verze**je přepínač `-LatestPublished` z poslední publikované verze.
+Rutina `Get-AzBlueprint` získá jednu nebo více definic podrobného plánu. Rutina může získat definice podrobného plánu ze skupiny pro správu pomocí `-ManagementGroupId {mgId}` nebo předplatného s `-SubscriptionId {subId}`. Parametr **Name** získá definici podrobného plánu, ale musí být použit s **ManagementGroupId** nebo **SubscriptionId**. **Verzi** lze použít s **názvem** , aby byla lépe explicitní o tom, která definice podrobného plánu se vrátí. Místo **verze**`-LatestPublished` přepínač přesměruje naposledy publikovanou verzi.
 
 Následující příklad používá `Get-AzBlueprint` k získání všech verzí definice podrobného plánu s názvem "101-modrotisky-definition-Subscription" z konkrétního předplatného reprezentovaného jako `{subId}`:
 
@@ -98,9 +98,9 @@ allowedlocations_listOfAllowedLocations                Microsoft.Azure.Commands.
 
 ## <a name="get-blueprint-assignments"></a>Získat přiřazení podrobného plánu
 
-Pokud přiřazení podrobného plánu již existuje, můžete na něj získat odkaz pomocí rutiny `Get-AzBlueprintAssignment`. Rutina přijímá **SubscriptionId** a **název** jako volitelné parametry. Pokud není zadané **SubscriptionId** , použije se aktuální kontext předplatného.
+Pokud přiřazení podrobného plánu už existuje, můžete na něj získat odkaz pomocí rutiny `Get-AzBlueprintAssignment`. Rutina přijímá **SubscriptionId** a **název** jako volitelné parametry. Pokud není zadané **SubscriptionId** , použije se aktuální kontext předplatného.
 
-Následující příklad používá `Get-AzBlueprintAssignment` k získání jednoho podrobného přiřazení s názvem "přiřazení-Lock-Resource-Groups" z konkrétního předplatného reprezentovaného jako `{subId}`:
+Následující příklad používá `Get-AzBlueprintAssignment` k získání jednoho přiřazení podrobného plánu s názvem "přiřazení-Lock-Resource-Groups" z konkrétního předplatného reprezentovaného jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -171,7 +171,7 @@ Pokud přiřazení podrobného plánu ještě neexistuje, můžete ho vytvořit 
 
 ### <a name="example-1-provide-parameters"></a>Příklad 1: zadání parametrů
 
-Následující příklad vytvoří nové přiřazení verze "1,1" definice podrobného plánu "My-detail" načtené pomocí `Get-AzBlueprint`, nastaví umístění objektu spravované identity a přiřazení na hodnotu "westus2", zamkne prostředky pomocí _AllResourcesReadOnly_, a nastaví zatřiďovací tabulky pro **parametr** i **ResourceGroupParameter** pro konkrétní předplatné reprezentované jako `{subId}`:
+Následující příklad vytvoří nové přiřazení verze "1,1" definice podrobného plánu "My-detail" načtené pomocí `Get-AzBlueprint`, nastaví spravovanou identitu a umístění objektu přiřazení na hodnotu "westus2", zamkne prostředky pomocí _AllResourcesReadOnly_, a nastaví zatřiďovací tabulky pro **parametr** i **ResourceGroupParameter** pro konkrétní předplatné reprezentované jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -252,7 +252,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
 
 ## <a name="update-blueprint-assignments"></a>Aktualizovat přiřazení podrobného plánu
 
-Někdy je potřeba aktualizovat přiřazení podrobného plánu, který už je vytvořený. Rutina `Set-AzBlueprintAssignment` zpracovává tuto akci. Rutina přebírá většinu stejných parametrů, jako je rutina `New-AzBlueprintAssignment`, což umožňuje aktualizovat vše, co bylo nastaveno na přiřazení. Výjimkou jsou _název_, podrobný _plán_a _SubscriptionId_. Aktualizují se jenom zadané hodnoty.
+Někdy je potřeba aktualizovat přiřazení podrobného plánu, který už je vytvořený. Rutina `Set-AzBlueprintAssignment` zpracovává tuto akci. Rutina přebírá většinu stejných parametrů, které provádí rutina `New-AzBlueprintAssignment`, a umožňuje tak aktualizovat cokoli, co bylo nastaveno na přiřazení. Výjimkou jsou _název_, podrobný _plán_a _SubscriptionId_. Aktualizují se jenom zadané hodnoty.
 
 Informace o tom, co se stane při aktualizaci přiřazení podrobného plánu, najdete v tématu [pravidla pro aktualizaci přiřazení](./update-existing-assignments.md#rules-for-updating-assignments).
 
@@ -324,7 +324,7 @@ ResourceGroups    : ResourceGroup
 
 Když je čas na odebrání přiřazení podrobného plánu, rutina `Remove-AzBlueprintAssignment` tuto akci zpracuje. Rutina přebírá buď **název** , nebo **položky InputObject** , který určuje, které přiřazení podrobného plánu se má odebrat. **SubscriptionId** je _povinné_ a musí být zadáno ve všech případech.
 
-Následující příklad načte existující přiřazení podrobného plánu s `Get-AzBlueprintAssignment` a pak ho odebere z konkrétního předplatného reprezentovaného jako `{subId}`:
+Následující příklad načte existující přiřazení podrobného plánu pomocí `Get-AzBlueprintAssignment` a pak ho odebere z konkrétního předplatného reprezentovaného jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -338,7 +338,7 @@ Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '
 
 ## <a name="end-to-end-code-example"></a>Příklad kódu na konci
 
-Když propojíte všechny kroky společně, následující příklad získá definici podrobného plánu a pak vytvoří, aktualizuje a odebere přiřazení podrobného plánu v rámci konkrétního předplatného reprezentované jako `{subId}`:
+Když propojíte všechny kroky společně, následující příklad získá definici podrobného plánu a pak vytvoří, aktualizuje a odebere přiřazení podrobného plánu v rámci konkrétního předplatného, které je reprezentované jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

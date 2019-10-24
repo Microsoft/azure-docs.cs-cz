@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Software kompatibilní třetích stran | Dokumentace Microsoftu'
-description: Software třetích stran, která funguje s Azure Active Directory Domain Services
+title: Kompatibilní software třetí strany pro Azure AD Domain Services | Microsoft Docs
+description: Software jiných výrobců, který spolupracuje s Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,30 +15,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: iainfou
-ms.openlocfilehash: 7d0130c3489d29f4e6b0fbe42f184dd06f17bbd7
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: f5a633a49a0f7b99da4eac08a527d17299aa34b9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473783"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754453"
 ---
-# <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Software jiných výrobců, které jsou kompatibilní se službou Azure AD Domain Services
+# <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Software třetí strany, který je kompatibilní s Azure AD Domain Services
 
-## <a name="one-identity-authentication-services"></a>Jedna identita ověřovací služby
+## <a name="one-identity-authentication-services"></a>Jedna služba ověřování identity
 
 ![Jedna identita](./media/compatible-software-icons/OneIdentity.png)
 
-Jeden ověřovací služby identit umožňuje systémů Unix, Linux a Mac OS X používat přístup, ověřování a autorizace v organizaci stávající infrastrukturu služby Active Directory (AD). Ověřovací služby teď podporuje Azure Active Directory Domain Services povolíte prostředky bez Windows využívat stejné novou generaci platforem, které již používají vaše stávající řešení SaaS.
+Jedna služba ověřování identity umožňuje, aby systémy UNIX, Linux a Mac OS X používaly přístup, ověřování a autorizaci stávající infrastruktury služby Active Directory (AD) organizace. Služba ověřování teď podporuje Azure Active Directory Domain Services povolení prostředků nevyužívajících systém Windows pro využití stejné platformy nové generace, jakou už vaše stávající řešení SaaS používají.
 
-[Jedna identita ověřovací služby](https://www.quest.com/products/authentication-services/)
+[Jedna služba ověřování identity](https://www.quest.com/products/authentication-services/)
 
-[Článek znalostní báze KB – použijte pouze jeden Identity ověřování služby Azure AD Domain Services](https://support.quest.com/authentication-services/kb/208427)
+[Článek znalostní báze Knowledge Base – použití jedné ověřovací služby identity s Azure AD Domain Services](https://support.quest.com/authentication-services/kb/208427)
 
 
 ## <a name="red-hat-enterprise-linux"></a>Red Hat Enterprise Linux
 
 ![Red Hat](./media/compatible-software-icons/RedHat.png)
 
-Red Hat Enterprise Linux je na světě přední enterprise Linux platformy tak, aby splňovala požadavky dnešních moderních organizacích. Red Hat Enterprise Linux je upřednostňovanou volbou pro úlohy virtuálních počítačů (VM) Linux enterprise v Microsoft Azure. Red Hat Enterprise Linux je určená pro zákazníky, kteří chtějí flexibility nasazení pro své důležité podnikové úlohy – od datového centra do cloudu Azure – zajištěná úzce otevřít, spolehlivou a zabezpečenou platformu integrovaná, podporu na podnikové úrovni Red Hat a Microsoft.
+Red Hat Enterprise Linux je špičková podniková platforma pro Linux vytvořená tak, aby vyhovovala potřebám dnešní moderní organizace. Red Hat Enterprise Linux je Upřednostňovaná volba pro úlohy virtuálních počítačů s podnikovým Linuxem v Microsoft Azure. Red Hat Enterprise Linux je otevřená, spolehlivá a zabezpečená platforma určená pro zákazníky, kteří chtějí flexibilitu nasazení pro své důležité obchodní úlohy – od datového centra až po cloud Azure, které jsou zajištěné pevně integrovanou podporou na podnikové úrovni. Red Hat a Microsoft.
 
-[Připojte se k systému Red Hat Enterprise Linux 7.2 virtuálních počítačů do Azure AD Domain Services](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+[Připojit virtuální počítač Red Hat Enterprise Linux 7,2 k Azure AD Domain Services](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

@@ -10,18 +10,38 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: f51b9c3032518fb66215126c5a8bf26ab9b59526
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: afad2648ec73b02d4e06ad55f850a518d2488f68
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331577"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756056"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde se dozvíte o známých chybách a alternativním řešení.
+
+## <a name="2019-10-21"></a>2019-10-21
+
+### <a name="visual-interface-preview"></a>Vizuální rozhraní (Preview)
+
++ Rozhraní Azure Machine Learningho vizuálu (Preview) se převedlo na běh [Azure Machine Learning kanálů](concept-ml-pipelines.md). Kanály (dříve označované jako experimenty) vytvořené v rámci vizuálního rozhraní jsou teď plně integrované se základními Azure Machine Learning prostředími.
+  + Jednotné prostředí pro správu pomocí prostředků sady SDK
+  + Správa verzí a sledování modelů, kanálů a koncových bodů pro vizuální rozhraní 
+  + Přepracování uživatelského rozhraní
+  + Přidání nasazení Batch Inferencing
+  + Přidání podpory služby Azure Kubernetes (AKS) pro cíle výpočtů Inferencing
+  + Nový pracovní postup vytváření kanálů v Pythonu – krok
+  + Nová [cílová stránka](https://ml.azure.com) pro nástroje pro tvorbu vizuálů
+
++ **Nové moduly**
+  + Použít matematickou operaci
+  + Použít transformaci SQL
+  + Oříznout hodnoty
+  + Shrnout data
+  + Import z databáze SQL  
 
 ## <a name="2019-10-14"></a>2019-10-14
 
@@ -68,6 +88,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Nadřazený běh již nebude při iteraci instalace úspěšný, protože orchestrace ho již zajímá.
     + Přidání podpory Local-Docker a Local-conda pro experimenty AutoML
 
+
 ## <a name="2019-10-08"></a>2019-10-08
 
 ### <a name="new-web-experience-preview-for-azure-machine-learning-workspaces"></a>Nové webové prostředí (Preview) pro Azure Machine Learning pracovní prostory
@@ -110,8 +131,8 @@ Karta experiment v [novém portálu pracovního prostoru](http://ml.azure.com) s
     + Přidání guardrail pro kontrolu, zda je datová sada nevyvážená nebo ne. V takovém případě se do konzoly zapíše zpráva guardrail.
   + **AzureML-Core**
     + Přidání možnosti načíst adresu URL SAS pro model v úložišti prostřednictvím objektu modelu. Ex: model. Get _sas_url ()
-    + Zaveďte `run.get_details()['datasets']` pro získání datových sad přidružených k odeslanému běhu.
-    + Přidejte rozhraní API `Dataset.Tabular.from_json_lines_files` pro vytvoření TabularDataset ze souborů řádků JSON. Další informace o těchto tabelárních datech v souborech řádků JSON na TabularDataset najdete v dokumentaci https://aka.ms/azureml-data.
+    + Zavést `run.get_details()['datasets']` k získání datových sad přidružených k odeslanému běhu
+    + Přidejte `Dataset.Tabular.from_json_lines_files` API k vytvoření TabularDataset ze souborů JSON řádků. Další informace o těchto tabelárních datech v souborech řádků JSON na TabularDataset najdete v dokumentaci https://aka.ms/azureml-data.
     + Přidání dalších polí velikosti virtuálního počítače (disk s operačním systémem, počet GPU) do funkce supported_vmsizes ()
     + Do funkce list_nodes () přidejte další pole, která zobrazí spuštění, soukromou a veřejnou IP adresu, port atd.
     + Možnost zadat nové pole během zřizování clusteru--remotelogin_port_public_access, který se dá nastavit na povoleno nebo zakázáno v závislosti na tom, jestli se má port SSH nechat otevřený nebo zavřený v době vytváření clusteru. Pokud ho nezadáte, služba bude port inteligentně otevřít nebo Zavřít v závislosti na tom, jestli nasazujete cluster uvnitř virtuální sítě.
@@ -150,7 +171,7 @@ Karta experiment v [novém portálu pracovního prostoru](http://ml.azure.com) s
     + Přečtěte si přečtěte si zpracování výjimek v kódu ADB a udělejte změny jako při zpracování nových chyb.
     + Bylo přidáno automatické ověřování MSI pro virtuální počítače poznámkových bloků.
     + Opravuje chybu, kde by mohly být nahrány poškozené nebo prázdné modely z důvodu neúspěšných pokusů o selhání.
-    + Byla opravena chyba, kdy se změní název `DataReference` při změně režimu `DataReference` (například při volání `as_upload`, `as_download` nebo `as_mount`).
+    + Byla opravena chyba, kdy se `DataReference` název změní při změně režimu `DataReference` (například při volání `as_upload`, `as_download` nebo `as_mount`).
     + Nastavit `mount_point` a `target_path` volitelné pro `FileDataset.mount` a `FileDataset.download`.
     + Výjimka, že sloupec časového razítka nejde najít, se zavolá, pokud se rozhraní API s časovými sériovými metodami volá bez dodaného sloupce časového razítka, nebo jsou vyřazené sloupce přiřazených časových razítek
     + Sloupce s časovými intervaly by měly být přiřazeny sloupci, jehož typ je datum, jinak se očekává výjimka.
@@ -172,7 +193,7 @@ Karta experiment v [novém portálu pracovního prostoru](http://ml.azure.com) s
   + **AzureML-vlak – jádro**
     + Vyřazení source_directory_data_store se zrušilo.
     + Byla přidána možnost přepsat verze balíčku po instalaci. 
-    + Přidala se podpora souboru Dockerfile v parametru `environment_definition` v odhady.
+    + Do parametru `environment_definition` v odhady byla přidána podpora souboru Dockerfile.
     + Zjednodušené parametry distribuovaného školení v odhady.
          ```py 
         from azureml.train.dnn import TensorFlow, Mpi, ParameterServer 
@@ -224,7 +245,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Modely AutoML nyní vracejí AutoMLExceptions
     + Tato verze vylepšuje výkon spuštění automatizovaného místního spuštění machine learningu.
   + **AzureML-Core**
-    + Zaveďte DataSet. Get _all (pracovní prostor), který vrátí slovník `TabularDataset` a objekty `FileDataset`, které se budou zobrazovat pomocí názvu registrace. 
+    + Zaveďte DataSet. Get _all (pracovní prostor), který vrací slovník `TabularDataset` a `FileDataset` objektů podle názvu registrace. 
     
     ```py 
     workspace = Workspace.from_config() 
@@ -232,7 +253,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     mydata = all_datasets['my-data'] 
     ```
     
-    + Zaveďte `parition_format` jako argument pro `Dataset.Tabular.from_delimited_files` a `Dataset.Tabular.from_parquet.files`. Informace o oddílu každé cesty k datům budou extrahovány do sloupců v závislosti na zadaném formátu. {column_name} vytvoří sloupec String a {column_name: RRRR/MM/DD/HH/MM/SS} vytvoří sloupec data a času, kde ' yyyy ', ' MM ', ' DD ', ' HH ', ' mm ' a ' ss ' slouží k extrakci roku, měsíce, dne, hodin, minut a sekund pro typ DateTime. Partition_format by měl začít od pozice prvního klíče oddílu až do konce cesty k souboru. Například s ohledem na cestu. /USA/2019/01/01/data.csv ', kde je oddíl podle země a čas, partition_format = '/{Country}/{PartitionDate: RRRR/MM/DD}/data. csv ' vytvoří řetězcový sloupec ' země ' s hodnotou ' USA ' a sloupec DateTime ' PartitionDate ' s hodnotou ' 2019-01-01 '.
+    + Do `Dataset.Tabular.from_delimited_files` a `Dataset.Tabular.from_parquet.files` zaveďte `parition_format` jako argument. Informace o oddílu každé cesty k datům budou extrahovány do sloupců v závislosti na zadaném formátu. {column_name} vytvoří sloupec String a {column_name: RRRR/MM/DD/HH/MM/SS} vytvoří sloupec data a času, kde ' yyyy ', ' MM ', ' DD ', ' HH ', ' mm ' a ' ss ' slouží k extrakci roku, měsíce, dne, hodin, minut a sekund pro typ DateTime. Partition_format by měl začít od pozice prvního klíče oddílu až do konce cesty k souboru. Například s ohledem na cestu. /USA/2019/01/01/data.csv ', kde je oddíl podle země a čas, partition_format = '/{Country}/{PartitionDate: RRRR/MM/DD}/data. csv ' vytvoří řetězcový sloupec ' země ' s hodnotou ' USA ' a sloupec DateTime ' PartitionDate ' s hodnotou ' 2019-01-01 '.
     + do `TabularDataset` byly přidány metody `to_csv_files` a `to_parquet_files`. Tyto metody umožňují převod mezi `TabularDataset` a `FileDataset` převodem dat do souborů v zadaném formátu.
     + Při ukládání souboru Dockerfile generovaného modelem. Package () se automaticky přihlaste k registru základní image.
     + ' gpu_support ' už není potřeba; AzureML nyní automaticky detekuje a používá rozšíření Docker, když je k dispozici. V budoucí verzi se odebere.
@@ -258,8 +279,8 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
 ### <a name="azure-machine-learning-data-prep-sdk-v1114"></a>Sada Azure Machine Learning data PREP SDK v 1.1.14
 + **Opravy chyb a vylepšení**
   + Umožnění psaní do ADLS/ADLSGen2 s použitím nezpracovaných cest a přihlašovacích údajů.
-  + Opravili jsme chybu, která způsobila, že `include_path=True` nefunguje pro `read_parquet`.
-  + Opravila se chyba `to_pandas_dataframe()`, která způsobila výjimku "Neplatná hodnota vlastnosti: hostSecret".
+  + Opravili jsme chybu, která způsobila, že `include_path=True` nefungují pro `read_parquet`.
+  + Opravená `to_pandas_dataframe()` selhání způsobená výjimkou: Neplatná hodnota vlastnosti: hostSecret.
   + Opravili jsme chybu, kdy se soubory v DBFS v režimu Spark nepodařilo přečíst.
   
 ## <a name="2019-08-19"></a>2019-08-19
@@ -308,7 +329,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Certifikát SSL pro vyhodnocování koncového bodu, který je nasazený v clusteru AKS, teď můžete aktualizovat pro Microsoft vygenerovaný i certifikát zákazníka.
   + **AzureML-vysvětlit-model**
     + Přidání parametru pro přidání ID modelu do vysvětlení při nahrávání.
-    + Přidání označování `is_raw` pro vysvětlení v paměti a nahrání.
+    + Přidání značek `is_raw` k vysvětlení v paměti a nahrání.
     + Přidala se podpora a testy pytorch pro balíček pro AzureML-vysvětlující-model.
   + **AzureML-opendatasets**
     + Podporuje detekci a protokolování automatického testovacího prostředí.
@@ -331,11 +352,11 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Sada Azure Machine Learning data PREP SDK v 1.1.12
 + **Nové funkce**
-  + Seznamy řetězců se teď dají předat jako vstup do metod `read_*`.
+  + Seznamy řetězců se teď dají předat jako vstup `read_*` metodám.
 
 + **Opravy chyb a vylepšení**
-  + Výkon `read_parquet` byl při spuštění ve Sparku výrazně vylepšen.
-  + Opravili jsme problém, kdy `column_type_builder` selhal v případě jednoho sloupce s nejednoznačnými formáty data.
+  + Výkon `read_parquet` byl významně vylepšen při spuštění ve Sparku.
+  + Opravili jsme problém, kdy se `column_type_builder` v případě jednoho sloupce s nejednoznačnými formáty data nezdařila.
 
 ### <a name="azure-portal"></a>Portál Azure
 + **Funkce Preview**
@@ -372,7 +393,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Přidání podpory pro použití objektu prostředí při nasazování modelu na webovou službu. Objekt prostředí se teď dá zadat jako součást objektu InferenceConfig.
     + Přidání mapování appinsifht pro nové oblasti – centralus-westus-northcentralus
     + Přidali jsme dokumentaci pro všechny atributy ve všech třídách úložiště dat.
-    + Byl přidán parametr blob_cache_timeout pro `Datastore.register_azure_blob_container`.
+    + Do `Datastore.register_azure_blob_container` se přidal parametr blob_cache_timeout.
     + Do AzureML. Core. Environment. Environment se přidaly metody save_to_directory a load_from_directory.
     + Do CLI se přidaly příkazy AZ ml Environment download a AZ ml Environment Register.
     + Bylo přidáno prostředí. Přidejte metodu _private_pip_wheel.
@@ -424,9 +445,9 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Prognózování teď umožňuje různé frekvence v vlakových a testovacích sadách, pokud je jde zarovnávat. Například "čtvrtletní zahájení v lednu" a "čtvrtletní začátek v říjnu" lze zarovnávat.
     + Do TimeSeriesTransformer se přidala vlastnost Parameters.
     + Odeberte staré třídy výjimek.
-    + Při prognózování úkolů parametr `target_lags` nyní přijímá jednu celočíselnou hodnotu nebo seznam celých čísel. Pokud bylo zadáno celé číslo, bude vytvořena pouze jedna prodleva. Pokud je k dispozici seznam, budou provedeny jedinečné hodnoty prodlevy. target_lags = [1, 2, 2, 4] vytvoří prodlevy jednu, 2 a 4 tečky.
+    + V úkolech prognózování parametr `target_lags` nyní přijímá jednu celočíselnou hodnotu nebo seznam celých čísel. Pokud bylo zadáno celé číslo, bude vytvořena pouze jedna prodleva. Pokud je k dispozici seznam, budou provedeny jedinečné hodnoty prodlevy. target_lags = [1, 2, 2, 4] vytvoří prodlevy jednu, 2 a 4 tečky.
     + Opravte chybu týkající se ztráty typů sloupců po transformaci (propojená chyba);
-    + V `model.forecast(X, y_query)` povolte y_query jako typ objektu, který neobsahuje žádné (s) na začátku (#459519).
+    + V `model.forecast(X, y_query)` povolte, aby y_query bylo typu objektu, který neobsahuje žádné (s) na začátku (#459519).
     + Přidání očekávaných hodnot do výstupu automl
   + **AzureML-contrib – dataunášená**
     +  Vylepšení ukázkového poznámkového bloku, včetně přepnutí do programu AzureML-opendatasets namísto funkcí AzureML-contrib-opendatasets a zlepšení výkonu při rozšiřování dat
@@ -440,7 +461,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Aktualizuje závislost NimbusML na verzi 1.2.0 (aktuální nejnovější).
   + **AzureML-Core**
     + Přidání možnosti připojit úložiště DBFS v rozhraní příkazového řádku AzureML 
-    + Opravili jsme chybu pomocí nahrávání úložiště dat, kde se vytvoří prázdná složka, pokud `target_path` spuštěná s `/`.
+    + Opravili jsme chybu pomocí nahrávání úložiště dat, kde se vytvoří prázdná složka, pokud `target_path` spuštěná s `/`
     + Opravený problém DeepCopy v ServicePrincipalAuthentication.
     + Do CLI se přidaly příkazy AZ ml Environment show a AZ ml Environment list.
     + Prostředí teď podporují zadání base_dockerfile jako alternativy k již vytvořeným base_image.
@@ -450,9 +471,9 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Opravili jsme chybu, která vytiskla prázdné trvání pro nasazení, ke kterým dochází při vytváření pracovního prostoru pro některá prostředí.
     + Vylepšené výjimky při vytváření pracovních prostorů Tato možnost se uživatelům nezobrazí "nelze vytvořit pracovní prostor". Nejde najít... jako zpráva a místo toho se zobrazí skutečná Chyba při vytváření.
     + Přidání podpory pro ověřování tokenu v AKS WebServices. 
-    + Přidejte metodu `get_token()` do objektů `Webservice`.
+    + Přidejte `get_token()` metodu pro `Webservice` objektů.
     + Přidala se podpora rozhraní příkazového řádku pro správu datových sad Machine Learning.
-    + `Datastore.register_azure_blob_container` nyní volitelně převezme hodnotu `blob_cache_timeout` (v sekundách), která nakonfiguruje parametry připojení blobfuse pro povolení vypršení platnosti mezipaměti pro toto úložiště dat. Výchozí hodnota není žádný časový limit, tj. když je objekt BLOB načtený, zůstane v místní mezipaměti, dokud není úloha dokončena. Většina úloh bude preferovat toto nastavení, ale některé úlohy potřebují číst více dat z velké datové sady, než se vejde do jejich uzlů. Pro tyto úlohy ladění tohoto parametru pomůže úspěšně. Při vyladění tohoto parametru se ujistěte, že nastavení příliš nízké hodnoty může mít za následek špatný výkon, protože data používaná v epocha můžou vypršet, než se znovu použijí. To znamená, že všechny čtení se budou provádět ze služby Blob Storage (tj. sítě) místo z místní mezipaměti, což negativně ovlivní dobu školení.
+    + `Datastore.register_azure_blob_container` nyní převezme hodnotu `blob_cache_timeout` (v sekundách), která nakonfiguruje parametry připojení blobfuse pro povolení vypršení platnosti mezipaměti pro toto úložiště dat. Výchozí hodnota není žádný časový limit, tj. když je objekt BLOB načtený, zůstane v místní mezipaměti, dokud není úloha dokončena. Většina úloh bude preferovat toto nastavení, ale některé úlohy potřebují číst více dat z velké datové sady, než se vejde do jejich uzlů. Pro tyto úlohy ladění tohoto parametru pomůže úspěšně. Při vyladění tohoto parametru se ujistěte, že nastavení příliš nízké hodnoty může mít za následek špatný výkon, protože data používaná v epocha můžou vypršet, než se znovu použijí. To znamená, že všechny čtení se budou provádět ze služby Blob Storage (tj. sítě) místo z místní mezipaměti, což negativně ovlivní dobu školení.
     + Popis modelu se teď dá po registraci správně aktualizovat.
     + Odstranění modelu a obrázku nyní poskytuje další informace o nadřazených objektech, které jsou na nich závislé, což způsobí selhání odstranění.
     + Vylepšete využití prostředků ve vzdálených spuštěních pomocí AzureML. mlflow.
@@ -465,7 +486,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + pevná funkce permutace důležitost při zadání argumentu Transformers pro získání důležité funkce
     + Přidat batch_size pro napodobení vysvětlení, když include_local = false pro globální vysvětlení streamování v dávkách za účelem zlepšení doby provádění DecisionTreeExplainableModel
     + v případě knihovny pro vysvětlení modelu jsou k disblackbox vysvětlující, kde je pro předpověď vyžadován vstup PANDAS dataframe.
-    + Byla opravena chyba, kdy `explanation.expected_values` někdy vracet místo seznamu s plovoucí desetinnou čárkou.
+    + Opravili jsme chybu, kdy `explanation.expected_values` někdy vracet místo seznamu s plovoucí desetinnou čárkou.
   + **AzureML-mlflow**
     + Zvýšení výkonu mlflow. set _experiment (experiment_name)
     + Oprava chyby při použití InteractiveLoginAuthentication pro mlflow tracking_uri
@@ -535,7 +556,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Přidali jsme batch_size k napodobení vysvětlujícíi, když include_local = false pro globální vysvětlení streamování v dávkách, aby se zlepšila doba provádění DecisionTreeExplainableModel pro knihovnu pro vysvětlení modelu.
   + **AzureML-Core**
     + Do příkazového řádku AzureML se přidala možnost připojit úložiště DBFS.
-    + Opravili jsme problém s nahráváním úložiště dat, kde se vytvoří prázdná složka, pokud `target_path` začíná na `/`.
+    + Opravili jsme problém s nahráváním úložiště dat, kde se vytvoří prázdná složka, pokud `target_path` spuštěná s `/`.
     + Je povolené porovnání dvou datových sad.
     + Odstranění modelu a obrázku nyní poskytuje další informace o načítání nadřazených objektů, které jsou na nich závislé, pokud odstranění selhalo z důvodu nadřazené závislosti.
     + Nepoužívané nastavení RunConfiguration v auto_prepare_environment se nepoužívá.
@@ -552,14 +573,14 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
   + **AzureML-vlak – jádro**
     + Řetězce jsou nyní přijímány jako cíl výpočtů pro automatizované ladění parametrů.
     + Nepoužívané nastavení RunConfiguration v auto_prepare_environment se nepoužívá.
-    + Zastaralé parametry `conda_dependencies_file_path` a `pip_requirements_file_path` ve prospěch `conda_dependencies_file` a `pip_requirements_file`.
+    + Zastaralé parametry `conda_dependencies_file_path` a `pip_requirements_file_path` namísto `conda_dependencies_file` a `pip_requirements_file`.
   + **AzureML-opendatasets**
     + Výrazně Zvyšte výkon NoaaIsdWeather obohacení ve verzi mimo SPARK.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v118"></a>Sada Azure Machine Learning data PREP SDK v 1.1.8
 
 + **Nové funkce**
- + Objekty toku dat se teď dají iterovat a vytvářejí sekvenci záznamů. @No__t-0 najdete v dokumentaci.
+ + Objekty toku dat se teď dají iterovat a vytvářejí sekvenci záznamů. @No__t_0 najdete v dokumentaci.
 
 + **Opravy chyb a vylepšení**
  + Zvýšila se odolnost sady SDK pro sadu pro dataprep.
@@ -572,7 +593,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
 ### <a name="azure-machine-learning-data-prep-sdk-v117"></a>Sada Azure Machine Learning data PREP SDK v 1.1.7
 
 Změnili jsme změnu, která zlepšila výkon, protože způsobila problémům pro některé zákazníky, kteří používají Azure Databricks. Pokud jste narazili na problém s Azure Databricks, můžete upgradovat na verzi 1.1.7 pomocí jedné z níže uvedených metod:
-1. Spusťte tento skript pro upgrade: `%sh /home/ubuntu/databricks/python/bin/pip install azureml-dataprep==1.1.7`
+1. Spusťte tento skript k upgradu: `%sh /home/ubuntu/databricks/python/bin/pip install azureml-dataprep==1.1.7`
 2. Znovu vytvořte cluster, který nainstaluje nejnovější verzi sady SDK pro přípravu dat.
 
 ## <a name="2019-06-25"></a>2019-06-25
@@ -610,9 +631,9 @@ Změnili jsme změnu, která zlepšila výkon, protože způsobila problémům p
 
 + **Opravy chyb a vylepšení**
   + Výrazně se vylepšil výkon `read_pandas_dataframe`.
-  + Opravili jsme chybu, která by způsobila neúspěch `get_profile()` u toku dat, který odkazuje na binární soubory.
+  + Opravili jsme chybu, která by způsobila, že `get_profile()` v toku dat směřujícím do binárních souborů došlo k chybě.
   + Zpřístupnění `set_diagnostics_collection()`, které umožňuje programům povolit nebo zakázat shromažďování telemetrie.
-  + Změnilo se chování `get_profile()`. Hodnoty NaN jsou nyní ignorovány pro funkce min, střed_hodn, STD a Sum, které odpovídají chování PANDAS.
+  + Změna chování `get_profile()`. Hodnoty NaN jsou nyní ignorovány pro funkce min, střed_hodn, STD a Sum, které odpovídají chování PANDAS.
 
 
 ## <a name="2019-06-10"></a>2019-06-10
@@ -641,12 +662,12 @@ Změnili jsme změnu, která zlepšila výkon, protože způsobila problémům p
   + Přidání do mezipaměti v ServicePrincipalAuthentication je ve výchozím nastavení vypnuté.
   + Povolí protokolování více zobrazovaných souborů pod stejným názvem metriky.
   + Třída modelu je teď správně importovaná ze služby AzureML. Core (`from azureml.core import Model`).
-  + V krocích kanálu je parametr `hash_path` už zastaralý. Nové chování je source_directory hash Complete, s výjimkou souborů uvedených v souboru. amlignore nebo. gitignore.
-  + V balíčcích kanálu se různé metody `get_all` a `get_all_*` zastaraly namísto `list` a `list_*` v uvedeném pořadí.
+  + V krocích kanálu je `hash_path` parametr teď zastaralý. Nové chování je source_directory hash Complete, s výjimkou souborů uvedených v souboru. amlignore nebo. gitignore.
+  + V balíčcích kanálu se různé `get_all` a `get_all_*` metody zastaraly namísto `list` a `list_*`, v uvedeném pořadí.
   + rutina AzureML. Core. Get _run již nevyžaduje Import tříd, než vrátí původní typ spuštění.
   + Opravili jsme problém, kdy některá volání aktualizace WebService neaktivovala aktualizaci.
   + Časový limit vyhodnocování u AKS WebServices by měl být mezi 5ms a 300000ms. Maximální povolený počet scoring_timeout_ms pro požadavky na bodování byl předaný z 1 min na 5 min.
-  + Objekty LocalWebservice mají nyní vlastnosti `scoring_uri` a `swagger_uri`.
+  + Objekty LocalWebservice nyní mají vlastnosti `scoring_uri` a `swagger_uri`.
   + Z procesu uživatele se přesunuly vytvoření adresáře výstupů a výstupy adresáře pro odeslání. Byla povolena sada SDK historie spuštění v každém procesu uživatele. To by mělo vyřešit některé problémy synchronizace, ke kterým dochází v distribuovaném školicím běhu.
   + Název procesu AzureML napsaný z názvu uživatelského procesu teď bude zahrnovat název procesu (jenom pro distribuované školení) a PID.
 
@@ -667,9 +688,9 @@ Změnili jsme změnu, která zlepšila výkon, protože způsobila problémům p
   + Nyní můžete použít následující funkce jazyka výrazů k extrakci a analyzování hodnot data a času na nové sloupce.
     + `RegEx.extract_record()` extrahuje prvky DateTime do nového sloupce.
     + `create_datetime()` vytvoří objekty DateTime z oddělených elementů DateTime.
-  + Když zavoláte `get_profile()`, teď vidíte, že Quantile sloupce jsou označené jako (EST.), aby jasně označovaly, že se jedná o přibližné hodnoty.
+  + Při volání `get_profile()` nyní můžete vidět, že sloupce Quantile jsou označeny jako (EST.), aby jasně označovaly, že hodnoty jsou aproximace.
   + Při čtení z Azure Blob Storage teď můžete použít * * expanzi názvů.
-    + např. `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
+    + například.  `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
 
 + **Opravy chyb**
   + Opravili jsme chybu související s čtením souboru Parquet ze vzdáleného zdroje (Azure BLOB).
@@ -728,7 +749,7 @@ V Azure Portal teď můžete:
 ### <a name="notebook-virtual-machine"></a>Virtuální počítač poznámkového bloku 
 
 Použijte virtuální počítač s poznámkovým blokem jako zabezpečené hostitelské prostředí pro Jupyter poznámkových bloků, ve kterém můžete programovat experimenty strojového učení, nasadit modely jako koncové body webu a provádět všechny ostatní operace podporované Azure Machine Learning SDK pomocí Pythonu. Nabízí několik možností:
-+ [Rychlé zprovoznění předkonfigurovaného virtuálního počítače poznámkového bloku](tutorial-1st-experiment-sdk-setup.md)@no__t – může tato má nejnovější verzi sady Azure Machine Learning SDK a související balíčky.
++ [Rychlé zprovoznění předkonfigurovaného virtuálního počítače s poznámkovým blokem](tutorial-1st-experiment-sdk-setup.md)  that má nejnovější verzi sady Azure Machine Learning SDK a související balíčky.
 + Přístup je zabezpečený prostřednictvím prověřených technologií, jako je protokol HTTPS, Azure Active Directory ověřování a autorizace.
 + Spolehlivé cloudové úložiště poznámkových bloků a kódu v účtu služby pracovní prostor Azure Machine Learning BLOB Storage. Virtuální počítač poznámkového bloku můžete bezpečně odstranit, aniž byste ztratili práci.
 + Předinstalované ukázkové poznámkové bloky k prozkoumávání a experimentování s funkcemi Azure Machine Learning.
@@ -790,7 +811,7 @@ Použijte virtuální počítač s poznámkovým blokem jako zabezpečené hosti
 
 Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 
-[@No__t-1](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py) byl zaveden k přidání nové verze publikovaného kanálu při zachování stejného koncového bodu.
+[@No__t_1](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py) byl zaveden k přidání nové verze publikovaného kanálu při zachování stejného koncového bodu.
 
 ## <a name="2019-04-17"></a>2019-04-17
 
@@ -805,14 +826,14 @@ Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a
     + Příklady:
       + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
       + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
-  + V jazyce Expression teď můžete použít `to_upper` @ no__t-1and `to_lower` @ no__t-3functions.
+  + V jazyce Expression můžete nyní použít `to_upper`  and `to_lower`  functions.
   + V datovém profilu teď můžete zobrazit počet jedinečných hodnot každého sloupce.
-  + U některých běžně používaných kroků čtečky teď můžete předávat argument `infer_column_types`. Pokud je nastavená na `True`, aplikace pro přípravu dat se pokusí rozpoznat a automaticky převést typy sloupců.
+  + U některých běžně používaných kroků čtečky teď můžete předat `infer_column_types` argument. Pokud je nastavená na `True`, aplikace pro přípravu dat se pokusí rozpoznat a automaticky převést typy sloupců.
     + `inference_arguments` je nyní zastaralé.
   + Nyní můžete volat `Dataflow.shape`.
 
 + **Opravy chyb a vylepšení**
-  + `keep_columns` @ no__t-1Now přijímá další volitelný argument `validate_column_exists`, který kontroluje, zda výsledek `keep_columns` bude obsahovat všechny sloupce.
+  + `keep_columns`  now přijímá další volitelný argument `validate_column_exists`, který kontroluje, zda výsledek `keep_columns` bude obsahovat všechny sloupce.
   + Všechny kroky čtecího zařízení (které se čtou ze souboru) nyní přijímají další volitelný argument `verify_exists`.
   + Vylepšený výkon při čtení z PANDAS dataframe a získávání profilů dat.
   + Opravili jsme chybu, kdy došlo k chybě průřezu jednoho kroku z toku dat s jedním indexem.
@@ -831,7 +852,7 @@ Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a
 
 + **Nové funkce**
   + Sada Azure Machine Learning SDK teď podporuje Python 3,7.
-  + Azure Machine Learning DNN odhady teď nabízí integrovanou podporu více verzí. Například `TensorFlow` @ no__t-1estimator nyní přijímá parametr `framework_version` a uživatelé mohou zadat verzi "1,10" nebo "1,12". Seznam verzí podporovaných vaší aktuální verzí sady SDK získáte voláním `get_supported_versions()` na požadované třídě rozhraní (například `TensorFlow.get_supported_versions()`).
+  + Azure Machine Learning DNN odhady teď nabízí integrovanou podporu více verzí. Například `TensorFlow`  estimator nyní přijímá parametr `framework_version` a uživatelé mohou zadat verzi 1,10 nebo 1,12. Seznam verzí podporovaných vaší aktuální verzí sady SDK volání `get_supported_versions()` na požadované třídě rozhraní (například `TensorFlow.get_supported_versions()`).
   Seznam verzí podporovaných nejnovější verzí sady SDK najdete v [dokumentaci k DNN Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Sada Azure Machine Learning data PREP SDK v 1.1.1
@@ -870,12 +891,12 @@ Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a
   + Příprava dat teď může rozpoznat sloupce, které odpovídají konkrétnímu sémantickému typu, a odpovídajícím způsobem je rozdělit. STypes aktuálně podporuje: e-mailová adresa, geografické souřadnice (zeměpisná šířka & zeměpisná délka), adresy IPv4 a IPv6, telefonní číslo USA a PSČ USA.
     + Návod: [Poznámkový blok sémantických typů](https://aka.ms/aml-data-prep-semantic-types-nb)
   + Příprava dat teď podporuje následující operace pro vygenerování výsledného sloupce ze dvou číselných sloupců: odečíst, vynásobení, dělení a modulo.
-  + Můžete zavolat `verify_has_data()` na tok dat a ověřit, zda by tok dat při spuštění vytvořil záznamy.
+  + Můžete volat `verify_has_data()` v toku dat a ověřit, zda by tok dat při spuštění vytvářely záznamy.
 
 + **Opravy chyb a vylepšení**
   + Nyní můžete zadat počet přihrádek, které se mají použít v histogramu pro profily číselných sloupců.
-  + Transformace `read_pandas_dataframe` nyní vyžaduje, aby měl datový rámec názvy sloupců typu řetězec nebo bajt.
-  + Opravili jsme chybu v transformaci `fill_nulls`, kde hodnoty nebyly správně vyplněny, pokud sloupec chybí.
+  + @No__t_0 transformaci teď vyžaduje, aby měl datový rámec názvy sloupců typu String nebo Byte.
+  + Opravili jsme chybu v `fill_nulls` transformaci, kde hodnoty nebyly správně vyplněny, pokud sloupec chybí.
 
 ## <a name="2019-03-11"></a>2019-03-11
 
@@ -883,7 +904,7 @@ Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a
 
  + **Provedeny**
    + Balíček AzureML-tensorboard nahrazuje. AzureML-contrib-tensorboard.
-   + V této verzi můžete při vytváření amlcompute (Managed Compute Cluster) nastavit uživatelský účet. To lze provést předáním těchto vlastností v konfiguraci zřizování. Další podrobnosti najdete v [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remotelogin-port-public-access--notspecified--).
+   + V této verzi můžete při vytváření amlcompute (Managed Compute Cluster) nastavit uživatelský účet. To lze provést předáním těchto vlastností v konfiguraci zřizování. Další podrobnosti najdete v [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Sada Azure Machine Learning data PREP SDK v 1.0.17
 
@@ -942,8 +963,8 @@ Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a
   +  DataTranferStep aktualizace pro práci s Azure SQL Server a Azure Database for PostgreSQL ([Poznámkový blok](https://aka.ms/pl-data-trans)).
 
 + **Provedeny**
-  + Zastaralé `PublishedPipeline.get_published_pipeline` namísto `PublishedPipeline.get`.
-  + Zastaralé `Schedule.get_schedule` namísto `Schedule.get`.
+  + Nepoužívané `PublishedPipeline.get_published_pipeline` ve prospěch `PublishedPipeline.get`.
+  + Nepoužívané `Schedule.get_schedule` ve prospěch `Schedule.get`.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Sada Azure Machine Learning data PREP SDK v 1.0.12
 
@@ -952,8 +973,8 @@ Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a
  
 + **Provedeny**
   + Vylepšený výkon u velkých objemů paměti u různých operací.
-  + `read_pandas_dataframe()` nyní vyžaduje určení `temp_folder`.
-  + Vlastnost `name` u `ColumnProfile` je zastaralá – místo toho použijte `column_name`.
+  + `read_pandas_dataframe()` nyní vyžaduje, aby bylo zadáno `temp_folder`.
+  + Vlastnost `name` v `ColumnProfile` byla zastaralá – použijte místo toho `column_name`.
 
 ## <a name="2019-01-28"></a>2019-01-28
 
@@ -1014,10 +1035,10 @@ Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a
 ### <a name="azure-machine-learning-data-prep-sdk-v104"></a>Sada Azure Machine Learning data PREP SDK v 1.0.4
 
 + **Nové funkce**
-  + funkce `to_bool` teď umožňuje převést neshodné hodnoty na hodnoty chyby. Toto je nové výchozí chování při neshodě `to_bool` a `set_column_types`, zatímco předchozí výchozí chování převedlo neshodné hodnoty na false.
-  + Při volání `to_pandas_dataframe` je k dispozici nová možnost interpretovat hodnoty null/chybějící v číselných sloupcích jako NaN.
+  + funkce `to_bool` nyní umožňuje převést neshodné hodnoty na chybové hodnoty. Toto je nové výchozí chování při neshodě `to_bool` a `set_column_types`, zatímco předchozí výchozí chování převedlo neshodné hodnoty na false.
+  + Při volání `to_pandas_dataframe` je k dispozici nová možnost pro interpretaci hodnot null a chybějících v číselných sloupcích jako NaN.
   + Byla přidána možnost zkontrolovat návratový typ některých výrazů, aby byla zajištěna konzistence typů a předčasné selhání.
-  + Nyní můžete volat `parse_json` a analyzovat hodnoty ve sloupci jako objekty JSON a rozbalovat je do více sloupců.
+  + Nyní můžete volat `parse_json` pro analýzu hodnot ve sloupci jako objektů JSON a jejich rozbalení do více sloupců.
 
 + **Opravy chyb**
   + Opravili jsme chybu, která selhala `set_column_types` v Pythonu 3.5.2.
@@ -1073,7 +1094,7 @@ Azure Machine Learning výpočetní prostředí je možné vytvořit v Pythonu, 
 + **Opravy chyb**
   * Při čtení a zápisu do úložiště dat ve vzdálených běhůch použijte nejnovější AML spustit token. Pokud jste dřív v Pythonu aktualizovali token AML Run, modul runtime data pro přípravu nebude aktualizován pomocí aktualizovaného tokenu spuštění AML.
   * Další jasné chybové zprávy
-  * to_spark_dataframe () přestane selhat, pokud Spark používá `Kryo` serializace.
+  * to_spark_dataframe () přestane být v případě, že Spark používá `Kryo` serializace
   * Kontrola počtu hodnot teď může zobrazit víc než 1000 jedinečných hodnot.
   * Náhodné rozdělení už nefunguje, pokud původní tok dat nemá název.  
 
@@ -1121,7 +1142,7 @@ Další informace o sadě data PREP SDK najdete v [referenční dokumentaci](htt
    * Může číst ze souborů zip, které obsahují soubory CSV.
    * Může rozdělit datové sady na řádek s náhodným rozdělením (například do sady test-vlak).
    * Může získat všechny datové typy sloupců z datového toku nebo datového profilu voláním `.dtypes`.
-   * Může získat počet řádků z datového toku nebo datového profilu voláním `.row_count`.
+   * Může získat počet řádků z datového toku nebo datového profilu voláním `.row_count`
 
 + **Opravy chyb**
    * Pevné pro dvojitou konverzi 

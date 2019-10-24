@@ -14,49 +14,49 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 018cc54a770a0d18fa9af3d93fec2f5f720ce17b
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: b0ba7846b60ca6649b4342d5096e92dfd8c96601
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804528"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756312"
 ---
-# <a name="start-using-pim"></a>Zahájení práce s využitím PIM
+# <a name="start-using-privileged-identity-management"></a>Zahájení využití technologie Privileged Identity Management
 
-S Azure Active Directory (Azure AD) Privileged Identity Management (PIM) můžete spravovat, řídit a monitorovat přístup v rámci vaší organizace. Tento obor zahrnuje přístup k prostředkům Azure, Azure AD a dalších online služeb Microsoftu jako Office 365 nebo Microsoft Intune.
+S Privileged Identity Management (PIM) můžete spravovat, řídit a monitorovat přístup v rámci vaší organizace Azure Active Directory (Azure AD). Tento obor zahrnuje přístup k prostředkům Azure, Azure AD a dalším online služby, jako je Office 365 nebo Microsoft Intune.
 
-Tento článek popisuje, jak povolit a začít používat PIM.
+Tento článek popisuje, jak povolit a začít používat Privileged Identity Management.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete použít PIM, musíte mít jednu z těchto licencí:
+Chcete-li použít Privileged Identity Management, je nutné mít jednu z následujících licencí:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
 
-Další informace najdete v tématu [licenční požadavky pro použití PIM](subscription-requirements.md).
+Další informace najdete v tématu [licenční požadavky pro použití Privileged Identity Management](subscription-requirements.md).
 
 ## <a name="first-person-to-use-pim"></a>První osoba pro použití PIM
 
-Pokud jste první, kdo bude ve vašem adresáři používat PIM, přiřadíte automaticky role správce [zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) a [privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) v adresáři. Pouze správci privilegovaných rolí můžou spravovat přiřazení rolí Azure AD pro uživatele. Kromě toho se můžete rozhodnout spustit [Průvodce zabezpečením](pim-security-wizard.md) , který vás provede počátečním zjišťováním a přiřazením.
+Pokud jste první, kdo bude používat Privileged Identity Management ve vašem adresáři, automaticky se vám v adresáři přiřadí role správce [zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) a [privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) . Pouze správci privilegovaných rolí můžou spravovat přiřazení rolí Azure AD pro uživatele. Kromě toho se můžete rozhodnout spustit [Průvodce zabezpečením](pim-security-wizard.md) , který vás provede počátečním zjišťováním a přiřazením.
 
 ## <a name="enable-pim"></a>Povolit PIM
 
-Pokud chcete ve svém adresáři začít používat PIM, musíte nejdřív povolit PIM.
+Pokud chcete ve svém adresáři začít používat Privileged Identity Management, musíte nejdřív povolit Privileged Identity Management.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce vašeho adresáře.
 
-    Chcete-li povolit PIM pro adresář, musíte být globálním správcem s účtem @yourdomain.comorganizace (například), nikoli účet Microsoft ( @outlook.comnapříklad).
+    Pokud chcete povolit Privileged Identity Management pro adresář, musíte být globálním správcem s účtem organizace (například @yourdomain.com), ne účet Microsoft (například @outlook.com).
 
 1. Klikněte na **všechny služby** a vyhledejte službu **Azure AD Privileged Identity Management** .
 
     ![Azure AD Privileged Identity Management ve všech službách](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Kliknutím otevřete rychlý Start PIM.
+1. Kliknutím otevřete Privileged Identity Management rychlý Start.
 
 1. V seznamu klikněte na **souhlas s PIM**.
 
-    ![Souhlas s PIM pro povolení PIM](./media/pim-getting-started/consent-pim.png)
+    ![Souhlas s Privileged Identity Management povolení Privileged Identity Management](./media/pim-getting-started/consent-pim.png)
 
 1. Klikněte na **ověřit moji identitu** a ověřte svoji identitu pomocí Azure MFA. Zobrazí se výzva k výběru účtu.
 
@@ -72,35 +72,35 @@ Pokud chcete ve svém adresáři začít používat PIM, musíte nejdřív povol
 
 1. Po dokončení procesu ověřování klikněte na tlačítko **souhlasu** .
 
-1. Ve zprávě, která se zobrazí, klikněte na **Ano** a odsouhlaste službu PIM.
+1. Ve zprávě, která se zobrazí, klikněte na **Ano** a odsouhlaste službu Privileged Identity Management.
 
-    ![Souhlas se zprávou PIM k dokončení procesu souhlasu](./media/pim-getting-started/consent-pim-message.png)
+    ![Souhlas s Privileged Identity Managementovou zprávou k dokončení procesu souhlasu](./media/pim-getting-started/consent-pim-message.png)
 
 ## <a name="sign-up-pim-for-azure-ad-roles"></a>Registrace PIM pro role Azure AD
 
-Jakmile pro svůj adresář povolíte PIM, budete se muset ke správě rolí Azure AD zaregistrovat PIM.
+Jakmile pro svůj adresář povolíte Privileged Identity Management, budete se muset zaregistrovat Privileged Identity Management a spravovat role Azure AD.
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
 1. Klikněte na **role Azure AD**.
 
-    ![Registrace PIM pro role Azure AD](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
+    ![Registrace Privileged Identity Management pro role Azure AD](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
 
 1. Klikněte na **zaregistrovat**se.
 
-1. Ve zprávě, která se zobrazí, se kliknutím na tlačítko **Ano** Zaregistrujte PIM a spravujte role Azure AD.
+1. Ve zprávě, která se zobrazí, klikněte na **Ano** a zaregistrujte se Privileged Identity Management ke správě rolí Azure AD.
 
-    ![Zaregistrujte si zprávu PIM pro role Azure AD](./media/pim-getting-started/sign-up-pim-message.png)
+    ![Registrace Privileged Identity Management pro zprávu o rolích služby Azure AD](./media/pim-getting-started/sign-up-pim-message.png)
 
     Po dokončení registrace se povolí možnosti Azure AD. Může být potřeba aktualizovat portál.
 
-    Informace o tom, jak zjistit a vybrat prostředky Azure, které se mají chránit pomocí PIM, najdete v tématu [zjištění prostředků Azure pro správu v PIM](pim-resource-roles-discover-resources.md).
+    Informace o tom, jak zjišťovat a vybírat prostředky Azure, které se mají chránit pomocí Privileged Identity Management, najdete [v tématu zjištění prostředků Azure pro správu v Privileged Identity Management](pim-resource-roles-discover-resources.md).
 
 ## <a name="navigate-to-your-tasks"></a>Přechod k úkolům
 
-Po nastavení PIM můžete provádět úlohy správy identit.
+Jakmile Privileged Identity Management nastavíte, můžete začít s úlohami správy identit.
 
-![Navigační okno v PIM zobrazující úkoly a spravovat možnosti](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Navigační okno v Privileged Identity Management znázorňující úlohy a spravovat možnosti](./media/pim-getting-started/pim-quickstart-tasks.png)
 
 | Úkol a Správa | Popis |
 | --- | --- |
@@ -113,25 +113,25 @@ Po nastavení PIM můžete provádět úlohy správy identit.
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>Přidání dlaždice PIM na řídicí panel
 
-Chcete-li usnadnit otevírání PIM, měli byste na řídicí panel Azure Portal přidat dlaždici PIM.
+Aby bylo snazší otevřít Privileged Identity Management, měli byste do řídicího panelu Azure Portal přidat dlaždici Privileged Identity Management.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. Klikněte na **všechny služby** a vyhledejte službu **Azure AD Privileged Identity Management** .
 
     ![Azure AD Privileged Identity Management ve všech službách](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Kliknutím otevřete rychlý Start PIM.
+1. Kliknutím otevřete Privileged Identity Management rychlý Start.
 
-1. Ověřte **okno připnout na řídicí panel** , abyste mohli připnout okno rychlý Start PIM na řídicí panel.
+1. Chcete-li připnout okno rychlý Start Privileged Identity Management na řídicí panel, ověřte **okno připnout na řídicí panel** .
 
-    ![Ikona připínáček pro připnutí okna PIM na řídicí panel](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Ikona připínáček pro připnutí Privileged Identity Management okna na řídicí panel](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Na řídicím panelu Azure se zobrazí dlaždice podobná této:
 
-    ![Dlaždice PIM pro rychlý Start na řídicím panelu](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Dlaždice pro rychlý Start Privileged Identity Management na řídicím panelu](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Přiřazení rolí Azure AD v PIM](pim-how-to-add-role-to-user.md)
-- [Zjištění prostředků Azure pro správu v PIM](pim-resource-roles-discover-resources.md)
+- [Přiřazení rolí Azure AD v Privileged Identity Management](pim-how-to-add-role-to-user.md)
+- [Zjištění prostředků Azure pro správu v Privileged Identity Management](pim-resource-roles-discover-resources.md)

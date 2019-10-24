@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: bb7b9a41523ab1b1addbf37cb7b463f12a72a814
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: afb48c18f9690e77a5478956e1147acf850290ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263686"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756611"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak spravovat službu Azure cache pro Redis
 Toto téma popisuje, jak provádět úlohy správy, jako je třeba [restartování](#reboot) a [Plánování aktualizací](#schedule-updates) pro instance Redis v mezipaměti Azure.
@@ -71,16 +71,16 @@ Pokud restartujete **hlavní** i **podřízený** uzel, může dojít ke ztrát�
 Pokud restartujete pouze jeden z uzlů, data se obvykle neztratí, ale přesto může být. Například pokud je hlavní uzel restartován a probíhá zápis do mezipaměti, dojde ke ztrátě dat z zápisu do mezipaměti. Dalším scénářem pro ztrátu dat by byl případ, že restartujete jeden uzel a druhý uzel přejde k výpadku z důvodu selhání ve stejnou dobu. Další informace o možných příčinách ztráty dat najdete v tématu [co se stalo s daty v Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Je možné restartovat tuto mezipaměť pomocí PowerShellu, CLI nebo jiných nástrojů pro správu?
-Ano, pokyny k prostředí PowerShell najdete v tématu [restart mezipaměti Azure pro Redis](cache-howto-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
+Ano, pokyny k prostředí PowerShell najdete v tématu [restart mezipaměti Azure pro Redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
-## <a name="schedule-updates"></a>Naplánovat aktualizace
+## <a name="schedule-updates"></a>Aktualizace plánu
 Okno **naplánovat aktualizace** umožňuje určit časové období údržby pro instanci mezipaměti. Po zadání časového období údržby se v průběhu tohoto okna provedou všechny aktualizace Redis serveru. 
 
 > [!NOTE] 
 > Časové období údržby se vztahuje jenom na aktualizace serveru Redis a ne na aktualizace nebo aktualizace Azure v operačním systému virtuálních počítačů, které hostují mezipaměť.
 >
 
-![Naplánovat aktualizace](./media/cache-administration/redis-schedule-updates.png)
+![Aktualizace plánu](./media/cache-administration/redis-schedule-updates.png)
 
 Chcete-li určit časový interval pro správu a údržbu, zaškrtněte požadované dny a zadejte časový interval pro správu a údržbu pro každý den a klikněte na tlačítko **OK**. Všimněte si, že čas časového období údržby je UTC. 
 

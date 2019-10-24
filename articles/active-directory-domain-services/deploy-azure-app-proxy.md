@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Nasadit Azure Proxy aplikací služby AD | Microsoft Docs'
+title: Nasadit Azure Proxy aplikací služby AD pro Azure AD Domain Services | Microsoft Docs
 description: Použití Azure Proxy aplikací služby AD ve Azure Active Directory Domain Services spravovaných doménách
 services: active-directory-ds
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80c3b2120a617e5c4c0f8de252b9436753fea011
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613012"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754405"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Azure Proxy aplikací služby AD ve spravované doméně Azure AD Domain Services
 Proxy aplikace Azure Active Directory (AD) pomáhá podporovat vzdálené pracovní procesy publikováním místních aplikací, které jsou k dispozici prostřednictvím Internetu. S Azure AD Domain Services teď můžete nasouvat starší verze aplikací, které běží místně, do služby infrastruktury Azure. Tyto aplikace pak můžete publikovat pomocí Proxy aplikací služby AD Azure, abyste uživatelům ve vaší organizaci zajistili zabezpečený vzdálený přístup.
 
-Pokud s Proxy aplikací služby AD Azure začínáte, přečtěte si další informace o této funkci v následujícím článku: [Jak zajistit zabezpečený vzdálený přístup k místním aplikacím](../active-directory/manage-apps/application-proxy.md).
+Pokud s Proxy aplikací služby AD Azure začínáte, přečtěte si další informace o této funkci v následujícím článku: [jak zajistit zabezpečený vzdálený přístup k místním aplikacím](../active-directory/manage-apps/application-proxy.md).
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 K provedení úkolů uvedených v tomto článku budete potřebovat:
 
 1. Platné **předplatné Azure**.
@@ -95,7 +95,7 @@ Nastavili jste Azure Proxy aplikací služby AD a integruje ji s vaší Azure AD
 
 * **Migrujte své aplikace na virtuální počítače Azure:** Své aplikace můžete napravit z místních serverů na virtuální počítače Azure připojené ke svojí spravované doméně. To vám pomůže se zbavit se nákladů na infrastrukturu pro spuštěné servery v místním prostředí.
 
-* **Publikování aplikací s využitím Azure Proxy aplikací služby AD:** Publikujte aplikace běžící na virtuálních počítačích Azure pomocí Proxy aplikací služby AD Azure. Další informace najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
+* **Publikování aplikací s využitím Azure proxy aplikací služby AD:** Publikujte aplikace běžící na virtuálních počítačích Azure pomocí Proxy aplikací služby AD Azure. Další informace najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Poznámka k nasazení – publikování aplikací IWA (integrovaných ověřování systému Windows) pomocí Azure Proxy aplikací služby AD

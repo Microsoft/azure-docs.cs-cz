@@ -1,29 +1,29 @@
 ---
-title: 'Rychlý start: Analýza imagí pro nevhodný obsah C# v Content moderator'
+title: 'Rychlý Start: analýza imagí pro nevhodný C# obsah v Content moderator'
 titleSuffix: Azure Cognitive Services
 description: Jak analyzovat obsah obrázků pro různé nevhodný materiál pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: pafarley
+ms.openlocfilehash: 3fdc3fa0b7c624558aef84f86afd85c5aedb7054
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946239"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757304"
 ---
-# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Rychlý start: Analýza imagí pro nevhodný obsah v nástrojiC#
+# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Rychlý Start: analýza imagí pro nevhodný obsah v nástrojiC#
 
 Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Naučíte se, jak hledat obsah pro dospělé nebo pikantní, extrahovatelné texty a lidské obličeje s cílem moderování potenciálně nežádoucího materiálu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Klíč předplatného Content Moderatoru. Podle pokynů v tématu [Vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru Content Moderatoru a získejte svůj klíč.
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
@@ -92,7 +92,7 @@ Do metody **Main** ve třídě **Program** přidejte následující kód. Tento 
 
 ## <a name="run-the-program"></a>Spuštění programu
 
-Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_ . Pro ukázkové obrázky použité v tomto rychlém startu bude výstup následující. Každý obrázek má různé oddíly pro `ImageModeration`, `FaceDetection`a `TextDetection`, které odpovídají třem voláním rozhraní API v metodě **EvaluateImage** .
+Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_. Pro ukázkové obrázky použité v tomto rychlém startu bude výstup následující. Každý obrázek má různé oddíly pro `ImageModeration`, `FaceDetection` a `TextDetection`, které odpovídají třem voláním rozhraní API v metodě **EvaluateImage** .
 
 ```json
 [{
@@ -276,7 +276,7 @@ Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_ . Pro
 }]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili jednoduchou aplikaci v .NET, která s využitím služby Content Moderator vrací relevantní informace o poskytnutém ukázkovém obrázku. Dále si můžete přečíst další informace o tom, co znamenají různé příznaky a klasifikace, abyste se mohli rozhodnout, jaká data potřebujete a jak by je vaše aplikace měla zpracovávat.
 

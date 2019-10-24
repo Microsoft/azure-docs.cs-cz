@@ -1,18 +1,18 @@
 ---
 title: Vypršení platnosti dat v Azure Cosmos DB s časem až Live
 description: Pomocí TTL Microsoft Azure Cosmos DB poskytuje možnost mít po určitou dobu automaticky vyčištěné dokumenty ze systému.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: c3e1c4f56c641bf5bfa189836a4bcdf99672a3c1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f66508a4794b8009523cc2820efe0156b4a9e2f6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597481"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756853"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Hodnota TTL (Time to Live) v Azure Cosmos DB 
 
@@ -24,7 +24,7 @@ Odstraněním položek, jejichž platnost vypršela, je úloha na pozadí, kter�
 
 Hodnota TTL (Time to Live) je nastavena v sekundách a je interpretována jako rozdíl od doby poslední změny položky. Můžete nastavit hodnotu TTL (Time to Live) pro kontejner nebo položku v rámci kontejneru:
 
-1. **Doba do provozu v kontejneru** (nastavit pomocí `DefaultTimeToLive`):
+1. **Doba do živého kontejneru** (nastaveného pomocí `DefaultTimeToLive`):
 
    - Pokud chybí (nebo je nastavené na hodnotu null), položky se automaticky nevyprší.
 
@@ -32,11 +32,11 @@ Hodnota TTL (Time to Live) je nastavena v sekundách a je interpretována jako r
 
    - Pokud je tato hodnota nastavená na nějaké číslo *"n"* , vyprší *"n"* sekund po datu poslední změny.
 
-2. **Čas do živého pro položku** (nastavit pomocí `ttl`):
+2. **Čas do živého pro položku** (nastavenou pomocí `ttl`):
 
-   - Tato vlastnost je platná pouze v `DefaultTimeToLive` případě, že je k dispozici a není pro nadřazený kontejner nastavena na hodnotu null.
+   - Tato vlastnost je platná pouze v případě, že je k dispozici `DefaultTimeToLive` a není pro nadřazený kontejner nastavena na hodnotu null.
 
-   - Je-li k dispozici `DefaultTimeToLive` , Přepisuje hodnotu nadřazeného kontejneru.
+   - Je-li k dispozici, Přepisuje hodnotu `DefaultTimeToLive` nadřazeného kontejneru.
 
 ## <a name="time-to-live-configurations"></a>Doba do živých konfigurací
 

@@ -1,21 +1,21 @@
 ---
 title: Jak provádět dotazy pomocí jazyka SQL ve službě Azure Cosmos DB?
 description: Zjistěte, jak provádět dotazy pomocí jazyka SQL ve službě Azure Cosmos DB.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e57abcc3df17dadd2e607895a8de011761ed68c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ffebdb0a46fdae981ca73a4569344365459dd7b8
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932799"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756817"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování Azure Cosmos DB pomocí rozhraní SQL API
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
 
 Rozhraní [SQL API](documentdb-introduction.md) služby Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL. Tento článek obsahuje ukázkový dokument a dva ukázkové dotazy SQL a jejich výsledky.
 
@@ -63,9 +63,9 @@ Dotazy můžete spouštět pomocí Průzkumníka dat na webu Azure Portal, prost
 Další informace o dotazech SQL najdete tady:
 * [Dotazy a syntaxe SQL](sql-query-getting-started.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Něco z toho nemáte? Dokončete [pětiminutový rychlý start](create-mongodb-nodejs.md).
+V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Něco z toho nemáte? Dokončete [pětiminutový rychlý start](create-cosmosdb-resources-portal.md).
 
 ## <a name="example-query-1"></a>Příklad dotazu 1
 
@@ -121,10 +121,10 @@ Další dotaz vrátí křestní jména všech dětí v rodině, jejíž ID odpov
 
 **Results**
 
-[{"jméno daného typu": "Jesse"}, {"křestní jméno": "Lisa"}]
+[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste provedli následující:
 

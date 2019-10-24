@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Ruční instalace SAP HANA s jednou instancí v Azure Virtual Machines | Microsoft Docs'
+title: 'Rychlý Start: ruční instalace SAP HANA s jednou instancí v Azure Virtual Machines | Microsoft Docs'
 description: Průvodce rychlým startem pro ruční instalaci SAP HANA s jednou instancí v Azure Virtual Machines
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 8d4e7b7056f4d5e53785366818fad05e24cfc605
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100054"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750366"
 ---
-# <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Rychlý start: Ruční instalace SAP HANA s jednou instancí v Azure Virtual Machines
-## <a name="introduction"></a>Úvod
+# <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Rychlý Start: ruční instalace SAP HANA s jednou instancí v Azure Virtual Machines
+## <a name="introduction"></a>Představení
 Tato příručka vám pomůže nastavit SAP HANA s jednou instancí v Azure Virtual Machines při ruční instalaci SAP NetWeaver 7,5 a SAP HANA 1,0 SP12. Tato příručka se zaměřuje na nasazení SAP HANA v Azure. Nenahrazuje dokumentaci SAP. 
 
 > [!NOTE]
 > Tato příručka popisuje nasazení SAP HANA do virtuálních počítačů Azure. Informace o tom, jak nasadit SAP HANA do velkých instancí HANA, najdete v tématu [použití SAP v Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started).
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto průvodci se předpokládá, že jste obeznámeni s takovými základními principy infrastruktury jako služby (IaaS):
  * Jak nasadit virtuální počítače (VM) nebo virtuální sítě prostřednictvím Azure Portal nebo PowerShellu
  * Rozhraní příkazového řádku (CLI) Azure pro různé platformy, které obsahuje možnost použít šablony JavaScript Object Notation (JSON).
@@ -50,7 +50,7 @@ SAP HANA vysoké dostupnosti najdete v tématu [SAP HANA vysoká dostupnost pro 
 
 Pokud chcete rychle nasadit instanci SAP HANA nebo S/4HANA nebo ČERNOBÍLý nebo 4HANA systém, zvažte použití [knihovny cloudových zařízení SAP](https://cal.sap.com). Dokumentaci k nasazení systému S/4HANA prostřednictvím knihovny cloudového zařízení SAP v Azure najdete v dokumentaci, například v [této příručce](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Potřebujete jenom předplatné Azure a uživatele SAP, který je možné zaregistrovat pomocí knihovny cloudových zařízení SAP.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 ### <a name="sap-hana-backup"></a>Zálohování SAP HANA
 Informace o tom, jak zálohovat SAP HANA databází na virtuálních počítačích Azure, najdete v těchto tématech:
 * [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide).
@@ -61,19 +61,19 @@ Informace o tom, jak zálohovat SAP HANA databází na virtuálních počítač�
 Informace o tom, jak pomocí knihovny cloudových zařízení SAP nasadit S/4HANA nebo ČERNOBÍLé/4HANA, najdete v tématu [nasazení SAP S/4HANA nebo černobílé/4HANA na Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h).
 
 ### <a name="sap-hana-supported-operating-systems"></a>SAP HANA – podporované operační systémy
-Informace o podporovaných operačních systémech SAP HANA najdete v tématu [SAP Note 2235581-SAP HANA: Podporované operační systémy](https://launchpad.support.sap.com/#/notes/2235581/E). Virtuální počítače Azure podporují pouze podmnožinu těchto operačních systémů. Nasazení SAP HANA v Azure podporuje následující operační systémy: 
+Informace o podporovaných operačních systémech SAP HANA najdete v tématu [SAP Note 2235581-SAP HANA: podporované operační systémy](https://launchpad.support.sap.com/#/notes/2235581/E). Virtuální počítače Azure podporují pouze podmnožinu těchto operačních systémů. Nasazení SAP HANA v Azure podporuje následující operační systémy: 
 
 * SUSE Linux Enterprise Server 12. x
-* Red Hat Enterprise Linux 7,2
+* Red Hat Enterprise Linux 7.2
 
 Další dokumentaci ke službě SAP týkající se SAP HANA a různých operačních systémů Linux najdete v těchto tématech:
 
-* [Poznámka SAP ke 171356: Software SAP na platformě Linux: Obecné informace](https://launchpad.support.sap.com/#/notes/1984787).
-* [Poznámka SAP ke 1944799: SAP HANA pokyny pro instalaci](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)operačního systému SLES.
-* [Poznámka SAP ke 2205917: SAP HANA DB doporučuje nastavení operačního systému pro aplikace](https://launchpad.support.sap.com/#/notes/2205917/E)SAP SLES 12.
-* [Poznámka SAP ke 1391070: Řešení](https://launchpad.support.sap.com/#/notes/1391070)UUID pro Linux.
-* [Poznámka SAP ke 2009879: Pokyny pro SAP HANA pro operační systém](https://launchpad.support.sap.com/#/notes/2009879)Red Hat Enterprise Linux (RHEL).
-* [Poznámka SAP ke 2292690: SAP HANA DB: Doporučené nastavení operačního systému pro RHEL](https://launchpad.support.sap.com/#/notes/2292690/E)7.
+* [SAP Note 171356: software SAP na platformě Linux: Obecné informace](https://launchpad.support.sap.com/#/notes/1984787).
+* [SAP Note 1944799: pokyny pro SAP HANA pro instalaci operačního systému SLES](http://service.sap.com/sap/support/notes/1944799).
+* [SAP Note 2205917: Doporučená nastavení operačního systému SAP HANA DB pro aplikace SAP pro SLES 12](https://launchpad.support.sap.com/#/notes/2205917/E).
+* [SAP Note 1391070: řešení UUID pro Linux](https://launchpad.support.sap.com/#/notes/1391070).
+* [SAP Note 2009879: pokyny pro SAP HANA pro operační systém Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879).
+* [SAP Note 2292690: SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E).
 
 ### <a name="sap-monitoring-in-azure"></a>Monitorování SAP v Azure
 Informace o monitorování SAP v Azure:
@@ -85,7 +85,7 @@ Informace o monitorování SAP v Azure:
 ### <a name="azure-vm-types"></a>Typy virtuálních počítačů Azure
 Typy virtuálních počítačů Azure a scénáře úloh podporované SAP, které se používají s SAP HANA, jsou popsané v [SAP Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). 
 
-Typy virtuálních počítačů Azure, které jsou certifikovány SAP pro SAP pro SAP NetWeaver nebo aplikační vrstva s/4HANA [, jsou zdokumentovány v části SAP Note 1928533: Aplikace SAP v Azure: Podporované produkty a typy](https://launchpad.support.sap.com/#/notes/1928533/E)virtuálních počítačů Azure.
+Typy virtuálních počítačů Azure, které jsou certifikovány SAP pro SAP pro SAP NetWeaver nebo aplikační vrstva S/4HANA, jsou zdokumentovány v části [SAP Note 1928533: aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533/E).
 
 > [!NOTE]
 > SAP-Linux – Integrace Azure je podporovaná jenom v Azure Resource Manager a ne v modelu nasazení Classic. 
@@ -116,7 +116,7 @@ V této části jsou uvedené klíčové kroky pro ruční instalaci SAP HANA je
 6. Na připojených discích nebo na logických svazcích vytvořte XFS souborové systémy.
 7. Připojte nové systémy souborů XFS na úrovni operačního systému. Pro veškerý software SAP použijte jeden systém souborů. Pro adresář/sapmnt a zálohování použijte jiný systém souborů, například. Na serveru SAP HANA DB Připojte systémy souborů XFS na discích úložiště úrovně Premium jako/Hana a/usr/SAP. Tento proces je nutný k tomu, aby se zabránilo naplnění kořenového systému souborů. Kořenový systém souborů není ve virtuálních počítačích se systémem Linux Azure velký. 
 8. Zadejte místní IP adresy testovacích virtuálních počítačů v souboru/etc/hosts.
-9. V souboru /etc/fstab zadejte parametr neúspěšná.
+9. V souboru/etc/fstab zadejte parametr **neúspěšná** .
 10. V závislosti na verzi operačního systému Linux, kterou používáte, nastavte parametry jádra systému Linux. Další informace najdete v poznámkách SAP, které se týkají HANA a v části "parametry jádra" v této příručce.
 11. Přidejte místo odkládacího souboru.
 12. Volitelně můžete nainstalovat grafickou plochu na testovacích virtuálních počítačích. V opačném případě použijte vzdálenou instalaci SAPinst.
@@ -138,7 +138,7 @@ V této části jsou uvedené klíčové kroky pro ruční instalaci SAP HANA je
 6. Na připojených discích nebo na logických svazcích vytvořte XFS souborové systémy.
 7. Připojte nové systémy souborů XFS na úrovni operačního systému. Pro veškerý software SAP použijte jeden systém souborů. Pro adresář/sapmnt a zálohování použijte jiný systém souborů, například. Na serveru SAP HANA DB Připojte systémy souborů XFS na discích úložiště úrovně Premium jako/Hana a/usr/SAP. Tento proces je nutný k tomu, aby se zabránilo naplnění kořenového systému souborů. Kořenový systém souborů není ve virtuálních počítačích se systémem Linux Azure velký.
 8. Zadejte místní IP adresy testovacích virtuálních počítačů v souboru/etc/hosts.
-9. V souboru /etc/fstab zadejte parametr neúspěšná.
+9. V souboru/etc/fstab zadejte parametr **neúspěšná** .
 10. Nastavte parametry jádra podle používané verze operačního systému Linux. Další informace najdete v poznámkách SAP, které se týkají HANA a v části "parametry jádra" v této příručce.
 11. Přidejte místo odkládacího souboru.
 12. Volitelně můžete nainstalovat grafickou plochu na testovacích virtuálních počítačích. V opačném případě použijte vzdálenou instalaci SAPinst.
@@ -177,24 +177,24 @@ Tady je příklad, jak vyhledat dostupné opravy pro SUSE Linux pomocí příkaz
 V závislosti na druhu problému jsou opravy klasifikované podle kategorie a závažnosti. Běžně používané hodnoty pro kategorii jsou: 
 - Zabezpečení
 - Doporučené
-- volitelná,
+- Volitelné
 - Funkce
-- Dokument
-- Yast
+- Databáze dokumentů
+- yast
 
 Běžně používané hodnoty pro závažnost jsou:
 
-- Kritická
+- Kritické
 - Důležité
-- Pokročilé
-- Nízká
-- Neurčeno
+- Střední
+- Nízký
+- Neurčené
 
 Příkaz **zypperu** vyhledá jenom aktualizace, které vaše nainstalované balíčky potřebují. Například můžete použít tento příkaz:
 
 `sudo zypper patch  --category=security,recommended --severity=critical,important`
 
-Můžete přidat parametr `--dry-run` pro otestování aktualizace bez toho, aby systém skutečně aktualizoval systém.
+Můžete přidat parametr `--dry-run` k otestování aktualizace bez toho, aby systém skutečně aktualizoval systém.
 
 
 ### <a name="disk-setup"></a>Nastavení disku
@@ -204,7 +204,7 @@ V závislosti na [SAP HANA požadavky na úložiště TDI](https://www.sap.com/d
 
 | SKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM |  /Hana/data a/Hana/log <br /> prokládaný pomocí LVM nebo mdadm | /hana/shared | Rozsah/root | /usr/sap |
 | --- | --- | --- | --- | --- | --- |
-| GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
+| GS5 | 448 GB | 2 × P30 | 1 × P20 | 1 × P10 | 1 × P10 | 
 
 V navrhovaných konfiguracích disků se svazek dat HANA a svazek protokolu nacházejí na stejné sadě disků služby Azure Premium Storage, které jsou vykládané pomocí LVM nebo mdadm. Není nutné definovat žádnou redundanci RAID, protože Azure Premium Storage udržuje tři bitové kopie disků pro zajištění redundance. 
 
@@ -235,13 +235,13 @@ V testovacím prostředí jsou dva disky úložiště Azure Standard připojené
 ### <a name="kernel-parameters"></a>Parametry jádra
 SAP HANA vyžaduje specifická nastavení jádra pro Linux. Tato nastavení jádra nejsou součástí standardních imagí Galerie Azure a musí být nastavená ručně. Parametry se můžou lišit v závislosti na tom, jestli používáte SUSE nebo Red Hat. Poznámky SAP uvedené dříve obsahují informace o těchto parametrech. V zobrazených snímcích obrazovky se použil systém SUSE Linux 12 SP1. 
 
-SLES for SAP Applications 12 General availability a SLES for SAP Applications 12 SP1 mají novýnástroj, který je vyladěný, který nahrazuje starý nástroj **sapconf** . K dispozici je speciální profil SAP HANA pro vyladěné **-ADM**. Pro optimalizaci systému pro SAP HANA zadejte následující profil jako kořenového uživatele:
+SLES for SAP Applications 12 General availability a SLES for SAP Applications 12 SP1 mají nový nástroj, který je **vyladěný**, který nahrazuje starý nástroj **sapconf** . K dispozici je speciální profil SAP HANA pro **vyladěné-ADM**. Pro optimalizaci systému pro SAP HANA zadejte následující profil jako kořenového uživatele:
 
    `tuned-adm profile sap-hana`
 
-Další informace o vyladěných **admch**najdete v [dokumentaci k SUSE o laděném-ADM](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip).
+Další informace o **vyladěných admch**najdete v [dokumentaci k SUSE o laděném-ADM](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip).
 
-Na následujícím snímku obrazovky vidíte, jak vyladěná funkce **ADM** změnila `transparent_hugepage` hodnoty `numa_balancing` a podle požadovaných nastavení SAP HANA:
+Na následujícím snímku obrazovky vidíte, jak **vyladěná funkce ADM** změnila hodnoty `transparent_hugepage` a `numa_balancing` podle požadovaných nastavení SAP HANA:
 
 ![Nástroj pro vyladěné a ADM mění hodnoty podle požadovaného nastavení SAP HANA](./media/hana-get-started/image005.jpg)
 
@@ -251,7 +251,7 @@ Následující snímek obrazovky ukazuje, jak se v konfiguračním souboru změn
 
 ![Nastavení jádra se v konfiguračním souboru změnilo a zkompiluje pomocí grub2-mkconfig.](./media/hana-get-started/image006.jpg)
 
-Další možností je změnit nastavení pomocí YaST a nastavení**parametrů jádra jádra** **spouštěcího zavaděče** > :
+Další možností je změnit nastavení pomocí YaST a **zaváděcího** programu pro spouštění  >  nastavení**parametrů jádra** :
 
 ![Karta nastavení parametrů jádra v zavaděči YaST Boot](./media/hana-get-started/image007.jpg)
 
@@ -282,7 +282,7 @@ Než začnete instalovat SAP, ujistěte se, že jste do souboru/etc/hosts zahrnu
 
 ### <a name="the-etcfstab-file"></a>Soubor/etc/fstab
 
-Je užitečné přidat do souboru fstab parametr neúspěch. V případě, že dojde k nějakému problému s disky, virtuální počítač přestane v procesu spouštění reagovat. Mějte ale na paměti, že další místo na disku nemusí být k dispozici a procesy mohou zaplnit kořenový systém souborů. Pokud/Hana chybí, SAP HANA se nespustí.
+Je užitečné přidat do souboru fstab parametr **neúspěch** . V případě, že dojde k nějakému problému s disky, virtuální počítač přestane v procesu spouštění reagovat. Mějte ale na paměti, že další místo na disku nemusí být k dispozici a procesy mohou zaplnit kořenový systém souborů. Pokud/Hana chybí, SAP HANA se nespustí.
 
 ![Přidejte do souboru fstab parametr neúspěch.](./media/hana-get-started/image000c.jpg)
 
@@ -321,7 +321,7 @@ Pokud máte pozadí Windows, můžete snadno použít grafickou plochu přímo v
 
    `check /var/run` 
 
-   `xrdp.pid`Hledat. Pokud ho najdete, odeberte ho a zkuste ho znovu spustit.
+   Vyhledejte `xrdp.pid`. Pokud ho najdete, odeberte ho a zkuste ho znovu spustit.
 
 ### <a name="start-sap-mc"></a>Spustit SAP MC
 Po instalaci desktopu GNOME můžete z Firefox spustit grafický software SAP založený na jazyce Java. Pokud běží v Azure SLES 12/SLES pro SAP Applications 12 VM, může se zobrazit chyba. K této chybě dochází z důvodu chybějícího modulu plug-in prohlížeče Java.
@@ -345,7 +345,7 @@ Po opětovném zadání adresy URL konzoly pro správu SAP budete požádáni o 
 Může se také zobrazit chybová zpráva o chybějícím souboru, JavaFX. Properties. Vztahuje se na požadavky Oracle Java 1,8 pro rozhraní SAP GUI 7,4. Další informace najdete v tématu [SAP Note 2059429](https://launchpad.support.sap.com/#/notes/2059424).
 Verze IBM Java a balíček OpenJDK, který se dodává s SLES/SLES pro aplikace SAP, 12 nezahrnuje potřebný soubor JavaFX. Properties. Řešením je stáhnout a nainstalovat Java SE 8 od Oracle.
 
-Informace o podobném problému s OpenJDK v openSUSE najdete v tématu diskuze [SAPGui 7,4 Java for openSUSE 42,1](https://scn.sap.com/thread/3908306)přestupnější.
+Informace o podobném problému s OpenJDK v openSUSE najdete v tématu diskuze [SAPGui 7,4 Java for openSUSE 42,1 Přestupnější](https://scn.sap.com/thread/3908306).
 
 ## <a name="manual-installation-of-sap-hana-swpm"></a>Ruční instalace SAP HANA: SWPM
 Série obrazovek v této části ukazuje klíčové kroky pro instalaci SAP NetWeaver 7,5 a SAP HANA SP12 při použití SWPM s SAPinst. V rámci instalace NetWeaver 7,5 může SWPM také nainstalovat databázi HANA jako jednu instanci.
@@ -419,7 +419,7 @@ Další informace o nástroji HANA HDBLCM najdete v těchto tématech:
 * [Nástroje pro správu životního cyklu SAP HANA](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm).
 * [Instalace a Průvodce aktualizací serveru SAP HANA](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf).
 
-Chcete se vyhnout problémům s výchozím nastavením ID skupiny pro `\<HANA SID\>adm user`, který je vytvořen nástrojem HDBLCM Tool. Před instalací SAP HANA přes HDBLCM Definujte novou skupinu s názvem `sapsys` ID `1001`skupiny:
+Chcete se vyhnout problémům s výchozím nastavením ID skupiny pro `\<HANA SID\>adm user`, který je vytvořen nástrojem HDBLCM Tool. Před instalací SAP HANA přes HDBLCM Definujte novou skupinu s názvem `sapsys` pomocí ID skupiny `1001`:
 
 ![Nová skupina "sapsys" definovaná pomocí ID skupiny 1001](./media/hana-get-started/image030.jpg)
 
@@ -432,13 +432,13 @@ Na následujícím snímku obrazovky se zobrazí všechny klíčové možnosti, 
 > [!IMPORTANT]
 > Adresáře s názvem pro protokoly a datové svazky HANA a instalační cestu, která je v této ukázce/Hana/Shared, a/usr/SAP nesmí být součástí kořenového systému souborů. Tyto adresáře patří k datovým diskům Azure, které byly připojeny k virtuálnímu počítači. Další informace najdete v části "nastavení disku". 
 
-Tento přístup pomáhá zabránit v nedostatku místa v kořenovém systému souborů. Všimněte si, že správce systému Hana má ID `1005` uživatele a je součástí `sapsys` skupiny s ID `1001`, které bylo definováno před instalací.
+Tento přístup pomáhá zabránit v nedostatku místa v kořenovém systému souborů. Všimněte si, že správce systému HANA má ID uživatele `1005` a je součástí skupiny `sapsys` s ID `1001`, které bylo definováno před instalací.
 
 ![Seznam všech dříve vybraných součástí Key SAP HANA](./media/hana-get-started/image032.jpg)
 
-Projděte `\<HANA SID\>adm user` si podrobnosti v adresáři/etc/passwd. `azdadm`Vyhledejte, jak je znázorněno na následujícím snímku obrazovky:
+Podívejte se na podrobnosti o `\<HANA SID\>adm user` v adresáři/etc/passwd. Vyhledejte `azdadm`, jak je znázorněno na následujícím snímku obrazovky:
 
-![Podrobnosti \<o uživatelích\>ADM v Hana Hana, které jsou uvedené v adresáři/etc/passwd](./media/hana-get-started/image033.jpg)
+![HANA \<HANA SID \>adm podrobnosti o uživatelích uvedených v adresáři/etc/passwd](./media/hana-get-started/image033.jpg)
 
 Po instalaci SAP HANA pomocí HDBLCM můžete zobrazit strukturu souborů v aplikaci SAP HANA Studio, jak je znázorněno na následujícím snímku obrazovky. Schéma SAPABAP1, které zahrnuje všechny tabulky SAP NetWeaver, ještě nejsou k dispozici.
 

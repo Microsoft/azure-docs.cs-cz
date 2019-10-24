@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fd213a6550d045fe4bea280449ed228ba9eda35
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550288"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756550"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití ovládacího prvku Azure Maps mapa
 
@@ -44,6 +44,12 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
     <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
     ```
+
+    >[!Note]
+    > Definice TypeScript lze do aplikace importovat přidáním:
+    > ```Javascript
+    > import * as atlas from 'azure-maps-control';
+    > ```
 
 3. Chcete-li vykreslit mapu, aby vyplnila celé tělo stránky, přidejte následující prvek `<style>` do prvku `<head>`.
 
@@ -102,6 +108,8 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     </script>
     ```
 
+    Seznam ukázek, které ukazují, jak integrovat Azure Active Directory (AAD) se Azure Maps najdete [tady](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples). 
+    
     Další informace najdete v dokumentu [ověřování pomocí Azure Maps](azure-maps-authentication.md) .
 
 6. Volitelně můžete najít následující prvky meta značky do hlavní stránky, která je užitečná:
@@ -222,3 +230,8 @@ Přidání dalších dat do mapy:
 
 > [!div class="nextstepaction"]
 > [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+
+Seznam ukázek, které ukazují, jak integrovat Azure Active Directory (AAD) s Azure Maps, najdete v těchto tématech:
+
+> [!div class="nextstepaction"]
+> [Ukázky ověřování AAD](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
