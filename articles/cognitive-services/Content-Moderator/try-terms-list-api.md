@@ -3,19 +3,19 @@ title: Střední text s vlastními seznamy termínů – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Pomocí rozhraní API pro správu seznamu můžete vytvořit vlastní seznamy podmínek, které se použijí v rozhraní API pro moderování textu.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 0a4e9b7925c2309a9682156934e9d94fa83c0d4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 828e8ae68286d7c208462d77a31a764427c79637
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564399"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755268"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Střední s vlastními seznamy podmínek v konzole API
 
@@ -44,7 +44,7 @@ Než budete moct otestovat rozhraní API v online konzole, budete potřebovat sv
 
 Až provedete změny v seznamu termínů, je nutné aktualizovat index, aby se změny projevily v budoucích kontrolách. Tento krok je podobný tomu, jak vyhledávací modul na ploše (Pokud je povolen) nebo webový vyhledávací modul průběžně aktualizuje svůj index, aby zahrnoval nové soubory nebo stránky.
 
-1. V referenčních informacích k [rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **seznamy termínů**a pak vyberte **Aktualizovat index vyhledávání**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **seznamy termínů**a pak vyberte **Aktualizovat index vyhledávání**. 
 
    Otevře se stránka **termín seznamy-obnovit index vyhledávání** .
 
@@ -129,7 +129,7 @@ Odstranění výrazu nebo seznamu je jednoduché. Pomocí tohoto rozhraní API p
 
 Tento příklad odstraní jeden výraz.
 
-1. V referenčních informacích k [rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **termín**a pak vyberte **Odstranit**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **termín**a pak vyberte **Odstranit**. 
 
    Otevře se **výraz – odstranění** .
 
@@ -153,7 +153,7 @@ Tento příklad odstraní jeden výraz.
 
 Můžete upravit název a popis seznamu a přidat položky metadat.
 
-1. V referenčních informacích k [rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **seznamy termínů**a pak vyberte **aktualizovat podrobnosti**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **seznamy termínů**a pak vyberte **aktualizovat podrobnosti**. 
 
    Otevře se stránka **termín seznamy – podrobnosti aktualizace** .
 
@@ -172,4 +172,4 @@ Můžete upravit název a popis seznamu a přidat položky metadat.
 
 ## <a name="next-steps"></a>Další kroky
 
-Použijte REST API ve svém kódu nebo začněte s termínem Seznamte se s rychlým startem [.NET](term-lists-quickstart-dotnet.md) pro integraci s vaší aplikací.
+Použijte REST API ve svém kódu nebo začněte s [termínem Seznamte se s rychlým](term-lists-quickstart-dotnet.md) startem .NET pro integraci s vaší aplikací.

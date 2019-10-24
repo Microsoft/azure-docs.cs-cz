@@ -1,18 +1,18 @@
 ---
 title: Princip Azure Cosmos DB faktury
 description: V tomto článku se dozvíte, jak porozumět vašemu Azure Cosmos DB faktury s příklady.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1dc4120ec9f1db8ac34800096ae407b5581758a4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 6d2edb7674a82a0388a0e028bee1b222e0e55004
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614161"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754728"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Pochopení Azure Cosmos DB faktury
 
@@ -22,7 +22,7 @@ S Azure Cosmos DB se účtuje po hodinách na základě zřízené propustnosti 
 
 Tento článek používá několik příkladů, které vám pomůžou pochopit podrobnosti, které vidíte na faktuře za měsíc. Čísla zobrazená v příkladech mohou být odlišná, pokud jsou v kontejnerech Azure Cosmos různé úrovně zajištěné propustnosti, pokud jsou rozloženy mezi několik oblastí nebo jsou spouštěny po dobu kratší než měsíc.
 
->! Značte Fakturuje se za každou část hodinové hodiny, ne pro dobu 60 minut.
+>! Poznámka: faktura vychází z jakékoli části hodinové hodiny, ne z 60 minut.
 
 ## <a name="billing-examples"></a>Příklady vyúčtování
 
@@ -70,7 +70,7 @@ Pokud zvýšíte zřízenou propustnost pro kontejner nebo sadu kontejnerů v 9:
 
 * Vaše vyúčtování se pak změní na: $0,008 × 222 = $1.776/hod. 
 
-* Za měsíc 720 hodin (24 hodin × 30 dní), pokud po dobu 500 hodin zřídila 1 200 propustnost, RU/s a zbývající hodin v době, kdy 22 200 byla zajištěna propustnost v řádu 220/s, vám vaše měsíční vyúčtování ukáže: 500 x $0.096/Hour + 220 x $1.776/Hour = $438.72/měsíc.
+* Za měsíc 720 hodin (24 hodin × 30 dní), pokud po dobu 500 hodin zřídila 1 200 propustnost RU/s a 220 zbývající hodin zajištěné propustnosti byl 22 200 RU/s, vaše měsíční faktura vám ukáže: 500 x $0.096/Hour + 220 × $1.776/Hour = $438.72/měsíc.
 
 ![Příklad vyhrazené faktury za propustnost](./media/understand-your-bill/bill-example1.png)
 
@@ -82,9 +82,9 @@ Pokud zvýšíte zřízenou propustnost pro kontejner nebo sadu kontejnerů v 9:
 
 * Pokud se vaše požadavky na propustnost změnily a zvýšili jste u každé databáze zřízenou propustnost každé databáze 10 000 RU/s a přidáte nový kontejner do první databáze s vyhrazeným režimem propustnosti 15 – K RU/s do vaší sdílené databáze propustnosti, vaše Celková zřízená kapacita by byla 155-K RU/s (60 K RU/s + 80 K RU/s + 15 K RU/s).  
 
-* Vaše faktura se potom změní na 1 550 * $0,008 = $12.40/hod.  
+* Vaše vyúčtování se pak změní na: 1 550 × $0,008 = $12.40/hod.  
 
-* Pokud byla v měsíci 720 hodin zajištěna propustnost od 300 hodin, 120 byla-K RU/s a pro 420 zbývající hodin zajištěná propustnost byla 155-K RU/s. vaše měsíční vyúčtování bude zobrazovat tyto akce: 300 x $9.60/Hour + 420 × $12.40/Hour = $2 880 + $5 208 = $8088/měsíc. 
+* Za měsíc 720 hodin, pokud po dobu 300 hodin zřídila 120 propustnost-K RU/s a 420 zbývající hodin zajištěné propustnosti byly 155-K RU/s, bude vaše měsíční vyúčtování obsahovat: 300 x $9.60/Hour + 420 × $12.40/Hour = $2 880 + $5 208 = $8088/měsíc. 
 
 ![Příklad sdílené propustnosti na faktuře](./media/understand-your-bill/bill-example2.png)
 
@@ -102,7 +102,7 @@ Předpokládejme, že máte v Západní USA kontejner Azure Cosmos. Kontejner se
 |Faktura za propustnost za 3 další oblasti: Východní USA, Severní Evropa a Východní Asie       | 3 × 10 000 RU/s * 24 * 30    |$0,008 za 100 RU/s za hodinu  |$1 728|
 |Faktura za úložiště za kontejner v oblasti Západní USA      | 250 GB    |0,25/GB  |$62,50|
 |Faktura za úložiště za 3 další oblasti: Východní USA, Severní Evropa a Východní Asie      | 3 × 250 GB    |0,25/GB  |$187,50|
-|**Celkem**     |     |  |**$2 554**|
+|**Čtení**     |     |  |**$2 554**|
 
 *Také předpokládáme, že každý měsíc 100 GB dat z kontejneru v Západní USA pro replikaci dat do Východní USA, Severní Evropa a Východní Asie. Účtují se za výstup podle sazeb za přenos dat.*
 
@@ -116,11 +116,11 @@ Předpokládejme, že máte v Západní USA kontejner Azure Cosmos. Kontejner se
 |Faktura za propustnost pro 3 další oblasti – Východní USA, Severní Evropa a Východní Asie (všechny oblasti jsou zapisovatelné)        | (3 + 1) × 10 000 RU/s * 24 * 30    |$0,016 za 100 RU/s za hodinu   |$4 608 |
 |Faktura za úložiště za kontejner v oblasti Západní USA      | 250 GB    |0,25/GB  |$62,50|
 |Faktura za úložiště za 3 další oblasti: Východní USA, Severní Evropa a Východní Asie      | 3 × 250 GB    |0,25/GB  |$187,50|
-|**Celkem**     |     |  |**$6 010**|
+|**Čtení**     |     |  |**$6 010**|
 
 *Také předpokládáme, že každý měsíc 100 GB dat z kontejneru v Západní USA pro replikaci dat do Východní USA, Severní Evropa a Východní Asie. Účtují se za výstup podle sazeb za přenos dat.*
 
-### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>Příklad fakturace: Účet Azure Cosmos s více hlavními a propustností na úrovni databáze včetně vyhrazeného režimu propustnosti pro některé kontejnery
+### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>Příklad fakturace: účet Azure Cosmos s více hlavními a propustností na úrovni databáze včetně vyhrazeného režimu propustnosti pro některé kontejnery
 
 Pojďme vzít v úvahu následující příklad, kde máme účet Azure Cosmos s více oblastmi, kde jsou všechny oblasti zapisovatelné (multi-Master config). V zájmu jednoduchosti předpokládáme, že velikost úložiště zůstane konstantní a nemění se a vynechá se tady, aby byl příklad jednodušší. Zřízená propustnost v měsíci je rozlišena takto (za 30 dní nebo 720 hodin): 
 
@@ -183,19 +183,19 @@ Celková fakturovaná částka bude (za za 30 dní/720 hodin za měsíc) se vypo
 |**Hodin**  |**RU/s** |**Položka** |**Využití (každou hodinu)** |**Náklady** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10000 <br/>D2:30 TISÍC <br/>C1:20 TISÍC |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
-| | |Faktura za propustnost pro 2 další oblasti: Východní USA Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2 880  |
-|[101-200] |D1:50 TIS <br/>D2:70K <br/>C1: -- |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` |$1920  |
-| | |Faktura za propustnost pro 2 další oblasti: Východní USA Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(2 + 1) * (120 K RU/sec /100 * $0.016) * 100 hours = $5,760`  |$5 760  |
+| | |Faktura za propustnost pro 2 další oblasti: Východní USA, Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2 880  |
+|[101-200] |D1:50 TIS <br/>D2:70K <br/>C1:-- |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` |$1920  |
+| | |Faktura za propustnost pro 2 další oblasti: Východní USA, Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(2 + 1) * (120 K RU/sec /100 * $0.016) * 100 hours = $5,760`  |$5 760  |
 |[201-300]  |D1:50 TIS <br/>D2:70K <br/>C1:20 TISÍC |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$2 240  |
-| | |Faktura za propustnost pro 2 další oblasti: Východní USA Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(2 + 1) * (140 K RU/sec /100 * $0.016-) * 100 hours = $6,720` |$6 720 |
-|[301-400] |D1:10000 <br/>D2:80K <br/>C1: -- |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 80 K RU/sec/100 * $0.016 * 100 hours = $1,280`  |$1 440   |
-| | |Faktura za propustnost pro 2 další oblasti: Východní USA Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(1 + 1) * (90 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2 880  |
+| | |Faktura za propustnost pro 2 další oblasti: Východní USA, Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(2 + 1) * (140 K RU/sec /100 * $0.016-) * 100 hours = $6,720` |$6 720 |
+|[301-400] |D1:10000 <br/>D2:80K <br/>C1:-- |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 80 K RU/sec/100 * $0.016 * 100 hours = $1,280`  |$1 440   |
+| | |Faktura za propustnost pro 2 další oblasti: Východní USA, Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(1 + 1) * (90 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2 880  |
 |[401-500] |D1:10000 <br>D2:10 000 <br>C1:20 TISÍC |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`D2: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$640  |
-| | |Faktura za propustnost pro 2 další oblasti: Východní USA Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(1 + 1) * (40 K RU/sec /100 * $0.016) * 100 hours = $1,280`  |$1 280  |
-|[501-700] |D1:20 TISÍC <br>D2:100 TISÍC <br>C1: -- |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  |`D1: 20 K RU/sec/100 * $0.016 * 200 hours = $640` <br>`D2: 100 K RU/sec/100 * $0.016 * 200 hours = $3,200` |$3 840  |
-| | |Faktura za propustnost pro 2 další oblasti: Východní USA Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(1 + 1) * (120 K RU/sec /100 * $0.016) * 200 hours = $1,280`  |$7 680  |
-|[701-720] |D1:20 TISÍC <br/>D2:50 TIS <br/>C1: -- |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  |`D1: 20 K RU/sec/100 *$0.016 * 20 hours = $64` <br/>`D2: 50 K RU/sec/100 *$0.016 * 20 hours = $160` |$224  |
-| | |Faktura za propustnost pro 2 další oblasti: Východní USA Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
+| | |Faktura za propustnost pro 2 další oblasti: Východní USA, Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(1 + 1) * (40 K RU/sec /100 * $0.016) * 100 hours = $1,280`  |$1 280  |
+|[501-700] |D1:20 TISÍC <br>D2:100 TISÍC <br>C1:-- |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  |`D1: 20 K RU/sec/100 * $0.016 * 200 hours = $640` <br>`D2: 100 K RU/sec/100 * $0.016 * 200 hours = $3,200` |$3 840  |
+| | |Faktura za propustnost pro 2 další oblasti: Východní USA, Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(1 + 1) * (120 K RU/sec /100 * $0.016) * 200 hours = $1,280`  |$7 680  |
+|[701-720] |D1:20 TISÍC <br/>D2:50 TIS <br/>C1:-- |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)  |`D1: 20 K RU/sec/100 *$0.016 * 20 hours = $64` <br/>`D2: 50 K RU/sec/100 *$0.016 * 20 hours = $160` |$224  |
+| | |Faktura za propustnost pro 2 další oblasti: Východní USA, Severní Evropa (všechny oblasti jsou zapisovatelné)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
 || |**Celkové měsíční náklady**  | |**$38 688**   |
 
 ## <a name="proactively-estimating-your-monthly-bill"></a>Proaktivní odhadování měsíčních faktur  
@@ -204,7 +204,7 @@ Podívejme se na jiný příklad, kde chcete proaktivně odhadnout fakturu před
 
 |**Náklady na úložiště** | |
 |----|----|
-|Průměrná velikost záznamů (KB) |1 |
+|Průměrná velikost záznamů (KB) |1\. místo |
 |Počet záznamů  |100 000 000  |
 |Celková velikost úložiště (GB)  |100 |
 |Měsíční náklady na GB  |$0,25  |
@@ -214,11 +214,11 @@ Podívejme se na jiný příklad, kde chcete proaktivně odhadnout fakturu před
 
 |**Náklady na propustnost** | | | |
 |----|----|----|----|
-|Typ operace| Počet požadavků za sekundu| Střední RU/žádost| Požadováno ru|
+|Typ operace| Počet požadavků za sekundu| Průměrný RU/žádost| Požadováno ru|
 |Zápis| 100 | 5 | 500|
-|Čtení| 400| 1| 400|
+|Čtení| 400| 1\. místo| 400|
 
-Celkový počet RU za sekundu: 500 + 400 = 900 hodinových nákladů: 900/100 * $0,008 = $0,072 očekávané měsíční náklady na propustnost (předpokládá se 31 dní): $0,072 * 24 * 31 = $53,57
+Celkem RU/s: 500 + 400 = 900 hodinových nákladů: 900/100 * $0,008 = $0,072 očekávané měsíční náklady na propustnost (předpokládá se 31 dní): $0,072 * 24 * 31 = $53,57
 
 **Celkové měsíční náklady**
 
@@ -238,13 +238,13 @@ Celkový počet faktur (bez rezervované kapacity) by byl (za 30 dní nebo 720 h
 
 |**Oblast**| **Hodinová cena za 100 RU/s**|**Jednotky (RU/s)**|**Fakturovaná částka (každou hodinu)**| **Fakturovaná částka (měsíčně)**|
 |----|----|----|----|----|
-|East US|$0,008 |50 K|$4|$2 880 |
+|USA – východ|$0,008 |50 K|$4|$2 880 |
 |Japonsko – východ|$0,009 |50 K| $4,50 |$3 240 |
 |Celkem|||$8,50|$6 120 |
 
 Pojďme si vzít v úvahu, že jste místo toho koupili rezervovanou kapacitu. Rezervovanou kapacitu můžete zakoupit 100 – K RU/s za cenu $56 064 po dobu jednoho roku (s 20% slevou) nebo $6,40 za hodinu. Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)na ceny rezervovaných kapacit.  
 
-* Náklady na propustnost (průběžné platby): 100 000 RU/s/100 * $0.008/hod * 8760 hodin za rok = $70 080 
+* Náklady na propustnost (průběžné platby): 100 000 RU/s/100 * $0.008/Hour × 8760 hodin za rok = $70 080 
 
 * Náklady na propustnost (s rezervovanou kapacitou) $70 080 se slevou 20% = $56 064 
 
@@ -252,7 +252,7 @@ Z toho, co jste efektivně koupili, je kredit $8 za hodinu, za 100 K RU/s pomoc�
 
 |**Oblast**| **Hodinová cena za 100 RU/s**|**Jednotky (RU/s)**| **Fakturovaná částka (každou hodinu)**| **Fakturovaná částka (měsíčně)**|
 |----|----|----|----|----|
-|East US|$0,008 |50 K|$4|$2 880 |
+|USA – východ|$0,008 |50 K|$4|$2 880 |
 |Japonsko – východ|$0,009 |50 K| $4,50 |$3 240 |
 |||Průběžné platby|$8,50|$6120|
 |Zakoupená záložní kapacita|$0,0064 (20% sleva) |předem zakoupená kapacita 100 RU/s nebo $8 |-$8|-$5 760 |

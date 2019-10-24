@@ -3,19 +3,19 @@ title: Moderování obrázku – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Využijte Nástroj pro kontrolu obrazu s asistencí Content Moderator a nástroj pro recenze na základě lidského provozu pro použití pro dospělé a pikantní obsah.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 8b3449edb539ab56fcf206a367f9b81e43290733
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 3bc5bc99984367b44b38a65266d2915c47ca6fd0
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564901"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757342"
 ---
 # <a name="learn-image-moderation-concepts"></a>Základní informace o principech moderování obrázků
 
@@ -139,12 +139,12 @@ Příklad extrakce:
     ....
     }
 
-## <a name="human-review-tool"></a>Nástroj pro kontrolu prováděnou lidmi
+## <a name="human-review-tool"></a>Nástroj pro recenze prováděné lidmi
 
 Pro více případů odlišit použijte [Nástroj pro kontrolu](Review-Tool-User-Guide/human-in-the-loop.md) Content moderator a jeho rozhraní API k obstudování výsledků moderování a obsahu v recenzi pro své lidské moderátoři. Posuzuje značky přiřazené počítači a potvrdí jejich konečné rozhodnutí.
 
-![Kontrola obrázku lidskými moderátory](images/moderation-reviews-quickstart-dotnet.PNG)
+![Revize obrázku lidskými moderátory](images/moderation-reviews-quickstart-dotnet.PNG)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Otestujte konzolu [rozhraní API pro moderování imagí](try-image-api.md) a použijte ukázky kódu REST API. Pokud jste obeznámeni se sadou Visual Studio a C#, podívejte se také na [rychlý Start pro moderování image .NET](image-moderation-quickstart-dotnet.md) .
+Otestujte [konzolu rozhraní API pro moderování imagí](try-image-api.md) a použijte ukázky kódu REST API. Pokud jste obeznámeni se sadou Visual Studio a C#, podívejte se také na [rychlý Start pro moderování image .NET](image-moderation-quickstart-dotnet.md) .

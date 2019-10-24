@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: pafarley
-ms.openlocfilehash: 31b8dfc234ac99d6f04061d6596e3dc8113e8d0f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 06735240729fb2bfd21b87f592e143e9ceabb390
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213837"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753487"
 ---
 # <a name="label-images-faster-with-suggested-tags"></a>Rychlejší označování obrázků pomocí navrhovaných značek
 
@@ -27,8 +27,7 @@ Když označíte obrázky pro model Custom Vision, služba používá nejnověj�
 
 Mějte na paměti následující omezení:
 
-* Pouze navrhované značky pro obrázky, jejichž obsah již byl vyškolený. Nezískejte návrhy na novou značku, kterou právě začínáte naučit.
-* Můžete použít pouze navrhované značky na obrázcích, které jsou netagované; nemůžete získat návrhy na další značky pro již označený obrázek.
+* Měli byste vyžadovat pouze navrhované značky pro obrázky, jejichž obsah již byl vyškolený. Nezískejte návrhy na novou značku, kterou právě začínáte naučit.
 
 > [!IMPORTANT]
 > Funkce Navrhované značky používá stejný [cenový model](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) jako běžný předpovědi. Při prvním spuštění navrhovaných značek pro sadu imagí se vám bude účtovat stejná jako u prediktivních volání. Potom služba uloží výsledky pro vybrané image v databázi po dobu 30 dnů a v tomto období je můžete kdykoli získat. Po 30 dnech se vám bude účtovat, pokud znovu vyžádáte navrhované značky.
@@ -44,21 +43,21 @@ Následující kroky ukazují, jak používat funkci navrhovaných značek:
 1. Spusťte školicí proces.
 1. Po dokončení školení přejděte do **neoznačeného** zobrazení a v levém podokně vyberte tlačítko **získat navrhované značky** .
     > [!div class="mx-imgBorder"]
-    > ![Tlačítko navrhované značky se zobrazí na kartě netagované bitové kopie.](./media/suggested-tags/suggested-tags-button.png)
+    > na kartě netagované bitové kopie se zobrazí tlačítko navrhované značky ![The. ](./media/suggested-tags/suggested-tags-button.png)
 1. Vyberte sadu imagí, pro které chcete vytvořit návrhy. Měli byste získat pouze prvotní návrhy značek pro část netagovaných imagí. Při iterování tohoto procesu získáte lepší návrhy značek.
 1. Potvrďte navrhované značky a opravte všechny, které nejsou správné.
     > [!TIP]
     > Obrázky s navrhovanými značkami jsou seřazené podle jejich předpovědi nejistoty (nižší hodnoty znamenají vyšší spolehlivost). Pořadí řazení můžete změnit pomocí možnosti **Seřadit podle nejistoty** . Pokud nastavíte pořadí na **vysoké**, můžete nejprve opravit vysoce nejistotu předpovědi a pak rychle potvrdit nejistotu.
     * V projektech klasifikace obrázků můžete vybrat a potvrdit značky v dávkách. Filtrovat zobrazení podle dané navrhované značky, zrušit výběr obrázků, které jsou označeny nesprávně, a pak potvrďte zbytek v dávce.
         > [!div class="mx-imgBorder"]
-        > ![Navrhované značky se zobrazí v dávkovém režimu pro mezipodniková s filtry.](./media/suggested-tags/ic-batch-mode.png)
+        > značky ![Suggested se zobrazují v dávkovém režimu pro mezipodniková s filtry. ](./media/suggested-tags/ic-batch-mode.png)
 
         Navrhované značky můžete použít také v jednotlivých režimech obrázku výběrem obrázku z galerie.
 
         ![Navrhované značky se zobrazí v samostatném režimu obrázků pro mezipodnikové.](./media/suggested-tags/ic-individual-image-mode.png)
     * V projektech detekce objektů se nepodporují služby Batch, ale můžete je dál filtrovat a řadit podle navrhovaných značek pro komplexnější možnosti označování. Miniatury netagovaných obrázků budou zobrazovat překryv ohraničujících rámečků, které označují umístění navrhovaných značek. Pokud nevyberete navrhovaný filtr značek, zobrazí se všechny neoznačené obrázky bez překrytí ohraničovacích rámečků.
         > [!div class="mx-imgBorder"]
-        > ![Navrhované značky se zobrazí v dávkovém režimu pro filtry OD z.](./media/suggested-tags/od-batch-mode.png)
+        > značky ![Suggested se zobrazují v dávkovém režimu pro OD pro filtry. ](./media/suggested-tags/od-batch-mode.png)
 
         Chcete-li potvrdit značky detekce objektu, je nutné je použít pro každou jednotlivou image v galerii.
 
