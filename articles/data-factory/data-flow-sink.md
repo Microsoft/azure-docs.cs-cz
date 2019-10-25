@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596521"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882445"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Transformace jímky pro tok dat
 
@@ -53,8 +53,8 @@ Pokud se změní schéma, vyberte možnost **ověřit schéma** a selhání jím
 
 Chcete-li zkrátit obsah složky jímky před zápisem cílových souborů do této cílové složky, vyberte možnost **zrušit zaškrtnutí složky** .
 
-## <a name="rule-based-mapping"></a>Mapování na základě pravidel
-Při vypnutí automatického mapování budete mít možnost Přidat mapování na základě sloupců (pevné mapování) nebo mapování na základě pravidel. Mapování na základě pravidel vám umožní zapisovat výrazy s porovnáváním vzorů. 
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>Pevné mapování vs. mapování na základě pravidel
+Pokud automatické mapování vypnete, budete mít možnost Přidat mapování na základě sloupců (pevné mapování) nebo mapování na základě pravidel. Mapování na základě pravidel vám umožní zapisovat výrazy s porovnáváním vzorů, zatímco pevné mapování bude mapovat logické a fyzické názvy sloupců.
 
 ![Mapování na základě pravidel](media/data-flow/rules4.png "Mapování na základě pravidel")
 
@@ -65,6 +65,12 @@ Podrobnosti o porovnávání vzorů jsou v [dokumentaci ke vzorci sloupců](conc
 Můžete také zadat vzory regulárních výrazů při použití shody založené na pravidlech rozbalením řádku a zadáním regulárního výrazu vedle položky "shoda názvů:".
 
 ![Mapování regulárního výrazu](media/data-flow/scdt1g4.png "Mapování regulárního výrazu")
+
+Velmi základní běžný příklad pro mapování na základě pravidel a pevné mapování je případ, kdy chcete mapovat všechna příchozí pole na stejný název v cíli. V případě pevných mapování byste měli v tabulce uvést každý jednotlivý sloupec. Pro mapování na základě pravidel byste měli mít jedno pravidlo, které mapuje všechna pole pomocí ```true()``` na stejný název pole, který je reprezentován ```$$```.
+
+### <a name="sink-association-with-dataset"></a>Přidružení jímky s datovou sadou
+
+Datová sada, kterou vyberete pro jímku, může nebo nemusí mít schéma definované v definici datové sady. Pokud nemá definované schéma, je nutné zakázat posun schématu. Pokud jste definovali pevné mapování, mapování logických na fyzického názvu bude uchováno v transformaci jímky. Pokud změníte definici schématu pro datovou sadu, pak budete pravděpodobně přerušit mapování jímky. Pokud se tomu chcete vyhnout, použijte mapování na základě pravidel. Mapování na základě pravidel jsou zobecněna, což znamená, že změny schématu ve vaší datové sadě nebudou přerušit mapování.
 
 ## <a name="file-name-options"></a>Možnosti názvu souboru
 

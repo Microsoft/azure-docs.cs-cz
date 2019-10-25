@@ -1,46 +1,41 @@
 ---
-title: Skript Powershellu pro vytvoření prostředku Application Insights | Dokumentace Microsoftu
-description: Automatizace vytváření prostředků Application Insights.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: f0082c9b-43ad-4576-a417-4ea8e0daf3d9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Skript PowerShellu pro vytvoření prostředku Application Insights | Microsoft Docs
+description: Automatizuje vytváření prostředků Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/19/2016
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 8a7b19dd6e5bc08c0c7e278b514ecaa9dc13a00e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/19/2016
+ms.openlocfilehash: 11245d0f9d6e6b86a5d0249df65b33f851bee9d7
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254483"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820684"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Rutina PowerShell pro vytvoření prostředku Application Insights
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pokud chcete monitorování nové aplikace - nebo nové verze aplikace – díky [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), nastavte nový prostředek v Microsoft Azure. Tento prostředek je kde analyzovat a zobrazit telemetrická data z vaší aplikace. 
+Když chcete monitorovat novou aplikaci nebo novou verzi aplikace – pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), nastavíte v Microsoft Azure nový prostředek. Tento prostředek je místo, kde se analyzují a zobrazují data telemetrie z vaší aplikace. 
 
-Vytvoření nového prostředku můžete automatizovat pomocí prostředí PowerShell.
+Vytváření nového prostředku můžete automatizovat pomocí prostředí PowerShell.
 
-Například pokud vyvíjíte aplikace pro mobilní zařízení, je pravděpodobné, že v každém okamžiku bude existovat několik publikované verze vaší aplikace v vaše zákazníky. Nechcete k získání požadovaných výsledků telemetrická data z různých verzí promíchají. Takže získáš váš proces sestavení vytvořit nový prostředek pro každé sestavení.
+Pokud například vyvíjíte aplikaci pro mobilní zařízení, je možné, že budete mít v některých případech několik publikovaných verzí vaší aplikace, které vaši zákazníci používají. Nechcete získat výsledky telemetrie z různých verzí v kombinaci. Proto získáte proces sestavení pro vytvoření nového prostředku pro každé sestavení.
 
 > [!NOTE]
-> Pokud chcete vytvořit sadu prostředků všechny ve stejnou dobu, vezměte v úvahu [vytváření prostředků pomocí šablony Azure](powershell.md).
+> Pokud chcete vytvořit sadu prostředků ve stejnou dobu, zvažte [vytvoření prostředků pomocí šablony Azure](powershell.md).
 > 
 > 
 
 ## <a name="script-to-create-an-application-insights-resource"></a>Skript pro vytvoření prostředku Application Insights
-V tématu Specifikace příslušné rutiny:
+Podívejte se na příslušné specifikace rutiny:
 
 * [New-AzResource](https://msdn.microsoft.com/library/mt652510.aspx)
 * [New-AzRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
 
-*Skript prostředí PowerShell*  
+*PowerShellový skript*  
 
 ```powershell
 
@@ -100,18 +95,18 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 ```
 
 ## <a name="what-to-do-with-the-ikey"></a>Co dělat s iKey
-Každý prostředek je identifikován jeho Instrumentační klíč (Instrumentační klíč). IKey jde o výstup skriptu pro vytváření prostředků. Váš skript buildu by měla poskytnout že vložený Instrumentační klíč do Application Insights SDK do vaší aplikace.
+Jednotlivé prostředky identifikuje klíč instrumentace (iKey). IKey je výstupem skriptu pro vytvoření prostředku. Váš skript sestavení by měl poskytovat iKey Application Insights SDK vložené do vaší aplikace.
 
-Existují dva způsoby, jak zpřístupnit iKey sady SDK:
+Existují dva způsoby, jak iKey zpřístupnit pro sadu SDK:
 
-* In [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md): 
+* V [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md): 
   * `<instrumentationkey>`*ikey*`</instrumentationkey>`
-* Nebo v [inicializační kód](../../azure-monitor/app/api-custom-events-metrics.md): 
+* Nebo v [inicializačním kódu](../../azure-monitor/app/api-custom-events-metrics.md): 
   * `Microsoft.ApplicationInsights.Extensibility.
     TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Vytvořit Application Insights a webových testů prostředků ze šablony](powershell.md)
-* [Nastavte monitorování diagnostiky Azure pomocí Powershellu](powershell-azure-diagnostics.md) 
-* [Nastavení výstrah pomocí Powershellu](powershell-alerts.md)
+* [Vytvoření prostředků Application Insights a webového testu ze šablon](powershell.md)
+* [Nastavení monitorování diagnostiky Azure pomocí PowerShellu](powershell-azure-diagnostics.md) 
+* [Nastavení upozornění pomocí prostředí PowerShell](powershell-alerts.md)
 

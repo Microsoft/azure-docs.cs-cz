@@ -1,42 +1,40 @@
 ---
 title: OpenCensus přejít ke sledování pomocí Azure Application Insights | Microsoft Docs
 description: Poskytuje pokyny pro integraci trasování OpenCensus na cestách s místním doposíláním a Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/15/2018
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 56e66f17e9ce1d2482463f619e82dfd29d48f191
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 99f26bb2b89ef9642a36aa2be2037d04aafcdcd4
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990305"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819283"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Shromažďovat distribuované trasování z webu přejít (Preview)
 
 Application Insights teď podporuje distribuované trasování aplikací v cestách prostřednictvím integrace s [OpenCensus](https://opencensus.io) a naší novou [místní službou pro předávání](./opencensus-local-forwarder.md). Tento článek vás seznámí s postupem nastavení OpenCensus pro přechod a získávání dat trasování pro Application Insights.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Mít předplatné Azure.
 - Chcete-li nainstalovat nástroj, použijte verzi 1,11 [ke stažení](https://golang.org/dl/).
 - Postupujte podle pokynů k instalaci [místního serveru pro přeposílání jako služby systému Windows](./opencensus-local-forwarder.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-application-insights-resource"></a>Vytvořit prostředek Application Insights
 
 Nejdřív je potřeba vytvořit prostředek Application Insights, který vygeneruje klíč instrumentace (ikey). Ikey se pak použije ke konfiguraci místního předávacího serveru pro odesílání distribuovaných trasování z vaší OpenCensus instrumentované aplikace, aby bylo možné Application Insights.   
 
-1. Vyberte **vytvořit prostředek** > **vývojářské nástroje** > **Application Insights**.
+1. Vyberte **vytvořit prostředek** > **vývojářské nástroje** **Application Insights** > .
 
    ![Přidání prostředku Application Insights](./media/opencensus-Go/0001-create-resource.png)
 
@@ -45,13 +43,13 @@ Nejdřív je potřeba vytvořit prostředek Application Insights, který vygener
 
    Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
-    | Nastavení        | Value           | Popis  |
+    | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
-   | **Location** | East US | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-2. Klikněte na možnost **Vytvořit**.
+2. Klikněte na **Vytvořit**.
 
 ## <a name="configure-local-forwarder"></a>Konfigurace místního serveru pro směrování
 
@@ -59,7 +57,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights, který vygener
 
    ![Snímek obrazovky klíč instrumentace](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. `LocalForwarder.config` Upravte soubor a přidejte svůj klíč instrumentace. Pokud jste postupovali podle pokynů v části [požadavky](./opencensus-local-forwarder.md) , je soubor umístěný v`C:\LF-WindowsServiceHost`
+2. Upravte soubor `LocalForwarder.config` a přidejte svůj klíč instrumentace. Pokud jste postupovali podle pokynů v části [požadavky](./opencensus-local-forwarder.md) , je soubor umístěný na adrese `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -188,9 +186,9 @@ Nejdřív je potřeba vytvořit prostředek Application Insights, který vygener
 
 3. Po spuštění aplikace Simple směřuje přejděte na `http://localhost:50030`. Každá aktualizace prohlížeče vygeneruje text "Hello World", spolu s odpovídajícími daty, která jsou vybrána místním serverem pro přeposílání.
 
-4. Chcete-li potvrdit, že **místní předávací server** vybírá trasování, zkontrolujte `LocalForwarder.config` soubor. Pokud jste postupovali podle kroků [](https://docs.microsoft.com/azure/application-insights/local-forwarder)v předpokladech, bude se nacházet `C:\LF-WindowsServiceHost`v.
+4. Chcete-li potvrdit, že **místní předávací server** vybírá trasování, zkontrolujte soubor `LocalForwarder.config`. Pokud jste postupovali podle kroků v [předpokladech](https://docs.microsoft.com/azure/application-insights/local-forwarder), bude se nacházet v `C:\LF-WindowsServiceHost`.
 
-    Na obrázku níže v souboru protokolu vidíte, že před spuštěním druhého skriptu, kde jsme přidali exportéra `OpenCensus input BatchesReceived` , byl 0. Po spuštění aktualizovaného skriptu `BatchesReceived` , který se zvyšuje, se rovná počtu zadaných hodnot:
+    Na obrázku níže v souboru protokolu vidíte, že před spuštěním druhého skriptu, kde jsme přidali exportéra `OpenCensus input BatchesReceived`, byl 0. Po spuštění aktualizovaného skriptu `BatchesReceived` zvýšený o počet zadaných hodnot:
     
     ![Formulář Nový prostředek App Insights](./media/opencensus-go/0004-batches-received.png)
 
@@ -200,7 +198,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights, který vygener
 
    ![Snímek obrazovky s aktivním datovým proudem metriky vybraným v červeném poli](./media/opencensus-go/0005-overview-live-metrics-stream.png)
 
-2. Pokud znovu spustíte aplikaci s druhým přechodem a začnete aktualizovat prohlížeč pro `http://localhost:50030`, zobrazí se data o živém trasování, která se dostanou do Application Insights z místní služby pro doručování.
+2. Pokud znovu spustíte aplikaci s druhým přechodem a začnete aktualizovat prohlížeč pro `http://localhost:50030`, zobrazí se živá data trasování, která se dostanou do Application Insights z místního služby pro doručování.
 
    ![Snímek obrazovky živého streamu metrik se zobrazenými daty o výkonu](./media/opencensus-go/0006-stream.png)
 
@@ -224,7 +222,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights, který vygener
 
 Pokryli jsme základní informace o integraci OpenCensus for a k místnímu serveru pro posílání a Application Insights. Oficiální témata týkající se [používání OpenCensus najdete](https://godoc.org/go.opencensus.io) v tématu popisujícím pokročilé postupy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Mapa aplikace](./../../azure-monitor/app/app-map.md)
 * [Monitorování výkonu na konci](./../../azure-monitor/learn/tutorial-performance.md)

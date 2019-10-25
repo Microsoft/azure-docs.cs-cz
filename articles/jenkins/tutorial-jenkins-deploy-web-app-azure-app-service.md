@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Nasazení z GitHubu do Azure App Service pomocí Jenkinse'
+title: 'Kurz: nasazení z GitHubu do Azure App Service pomocí Jenkinse'
 description: Nastavení Jenkinse pro průběžnou integraci (CI) z GitHubu a průběžného nasazování (CD) pro Azure App Service pro webové aplikace v jazyce Java
 services: jenkins
 ms.service: jenkins
@@ -7,16 +7,16 @@ author: tomarchermsft
 ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 10/23/2019
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 24dbe67052d185de0eb308c4c869e63dbc825d9e
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172839"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882016"
 ---
-# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z GitHubu do Azure App Service s průběžnou integrací a nasazením Jenkinse
+# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: nasazení z GitHubu do Azure App Service s průběžnou integrací a nasazením Jenkinse
 
 V tomto kurzu se nasadí Ukázková webová aplikace v jazyce Java z GitHubu do [Azure App Service na Linux](/azure/app-service/containers/app-service-linux-intro) tím, že se nastaví průběžná integrace (CI) a průběžné nasazování (CD) v Jenkinse. Když aplikaci aktualizujete vložením potvrzení do GitHubu, Jenkinse automaticky vytvoří a znovu publikuje vaši aplikaci, aby Azure App Service. Ukázková aplikace v tomto kurzu byla vyvinutá pomocí rozhraní pro [spouštění pružiny](https://projects.spring.io/spring-boot/) . 
 
@@ -38,13 +38,13 @@ V tomto kurzu dokončíte tyto úlohy:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu budete potřebovat tyto položky:
 
 * Server [Jenkinse](https://jenkins.io/) se sadou Java Development Kit (JDK) a Maven Tools nainstalovanými na virtuálním počítači Azure Linux
 
-  Pokud nemáte server Jenkinse, proveďte tyto kroky nyní v Azure Portal: [Vytvoření serveru Jenkinse na virtuálním počítači Azure Linux](/azure/jenkins/install-jenkins-solution-template)
+  Pokud nemáte server Jenkinse, proveďte tyto kroky nyní v Azure Portal: [Vytvoření Jenkinse serveru na virtuálním počítači Azure Linux](/azure/jenkins/install-jenkins-solution-template)
 
 * Účet [GitHub](https://github.com) , abyste pro ukázkovou webovou aplikaci v jazyce Java mohli získat pracovní kopii (rozvětvení). 
 
@@ -56,7 +56,7 @@ K dokončení tohoto kurzu budete potřebovat tyto položky:
 
    `https://<Jenkins-server-name>.<Azure-region>.cloudapp.azure.com`
 
-1. Na hlavní stránce Jenkinse vyberte **Spravovat Jenkinse** > **Správa modulů plug-in**.
+1. Na hlavní stránce Jenkinse vyberte **Spravovat jenkinse** > **Spravovat moduly plug-in**.
 
    ![Správa modulů plug-in Jenkinse](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-plugins.png)
 
@@ -67,7 +67,7 @@ K dokončení tohoto kurzu budete potřebovat tyto položky:
    - [Modul plug-in Jenkinse prostředí pro vložení prostředí](https://plugins.jenkins.io/envinject)
    - [Přihlašovací údaje Azure](https://plugins.jenkins.io/azure-credentials)
 
-   Pokud se tyto moduly plug-in nezobrazí, ujistěte se, že jste ještě nenainstalovali, a to tak, že zkontrolujete kartu nainstalováno.
+   Pokud se tyto moduly plug-in nezobrazí, ujistěte se, že jste ještě nenainstalovali, a to tak, že zkontrolujete kartu **nainstalováno** .
 
 1. Pokud chcete nainstalovat vybrané moduly plug-in, vyberte **Stáhnout hned a po restartování nainstalujte**.
 
@@ -87,7 +87,7 @@ Dále nastavte Jenkinse s přihlašovacími údaji k GitHubu.
 
 ## <a name="connect-jenkins-to-github"></a>Připojení Jenkinse k GitHubu
 
-Pokud chcete, aby nástroj Jenkinse monitoroval GitHub a reagovali, když se nové potvrzení do vaší webové aplikace vloží do [](https://developer.github.com/webhooks/) vaší větve GitHubu, povolte Webhooky GitHubu v Jenkinse.
+Pokud chcete, aby nástroj Jenkinse monitoroval GitHub a reagovali, když se nové potvrzení do vaší webové aplikace vloží do vaší větve GitHubu, povolte [Webhooky GitHubu](https://developer.github.com/webhooks/) v Jenkinse.
 
 > [!NOTE]
 > 
@@ -123,7 +123,7 @@ V dalším kroku vytvoříte instanční objekt Azure, který Jenkinse použív�
 
 ## <a name="create-service-principal"></a>Vytvoření instančního objektu
 
-V pozdější části vytvoříte úlohu kanálu Jenkinse, která sestaví vaši aplikaci z GitHubu a nasadí vaši aplikaci na Azure App Service. Pokud chcete mít Jenkinse přístup k Azure bez zadání vašich přihlašovacích údajů, vytvořte [instanční objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) v Azure Active Directory pro Jenkinse. Instanční objekt je samostatná identita, kterou může Jenkinse použít k ověřování přístupu k prostředkům Azure. Pokud chcete vytvořit tento instanční objekt, spusťte příkaz [ **`az ad sp create-for-rbac`** ](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)Azure CLI, a to buď z místního příkazového řádku, nebo Azure Cloud Shell, například: 
+V pozdější části vytvoříte úlohu kanálu Jenkinse, která sestaví vaši aplikaci z GitHubu a nasadí vaši aplikaci na Azure App Service. Pokud chcete mít Jenkinse přístup k Azure bez zadání vašich přihlašovacích údajů, vytvořte [instanční objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) v Azure Active Directory pro Jenkinse. Instanční objekt je samostatná identita, kterou může Jenkinse použít k ověřování přístupu k prostředkům Azure. Pokud chcete vytvořit tento instanční objekt, spusťte příkaz Azure CLI [ **`az ad sp create-for-rbac`** ](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest), a to buď z místního příkazového řádku, nebo Azure Cloud Shell, například: 
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourSecurePassword
@@ -131,7 +131,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
 Ujistěte se, že jste k hlavnímu názvu služby používali uvozovky. Můžete také vytvořit silné heslo na základě [pravidel a omezení pro Azure Active Directory hesla](/azure/active-directory/active-directory-passwords-policy). Pokud heslo nezadáte, rozhraní příkazového řádku Azure pro vás vytvoří heslo. 
 
-Zde je výstup generovaný **`create-for-rbac`** příkazem: 
+Zde je výstup generovaný příkazem **`create-for-rbac`** : 
 
 ```json
 {
@@ -146,12 +146,12 @@ Zde je výstup generovaný **`create-for-rbac`** příkazem:
 > [!TIP]
 > 
 > Pokud již máte instanční objekt, můžete místo toho použít tuto identitu.
-> Při poskytování hodnot instančního objektu pro ověřování použijte `appId`hodnoty vlastností, `password`a `tenant` . 
-> Při hledání existujícího objektu služby použijte `displayName` hodnotu vlastnosti.
+> Při poskytování hodnot instančního objektu pro ověřování použijte hodnoty vlastnosti `appId`, `password`a `tenant`. 
+> Při hledání existujícího instančního objektu použijte hodnotu vlastnosti `displayName`.
 
 ## <a name="add-service-principal-to-jenkins"></a>Přidání instančního objektu do Jenkinse
 
-1. Na hlavní stránce Jenkinse vyberte možnost**systém** **přihlašovacích údajů** > . 
+1. Na hlavní stránce Jenkinse vyberte **přihlašovací údaje** > **systém**. 
 
 1. Na stránce **systém** v části **doména**vyberte **globální přihlašovací údaje (neomezeno)** .
 
@@ -163,13 +163,13 @@ Zde je výstup generovaný **`create-for-rbac`** příkazem:
 
    ![Přidat pověření instančního objektu služby Azure](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-service-principal-credentials.png)
 
-   | Vlastnost | Value | Popis | 
+   | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------| 
-   | **ID předplatného** | <*yourAzureSubscription-ID*> | Hodnota GUID předplatného Azure <p>**Tip**: Pokud neznáte ID předplatného Azure, spusťte tento příkaz Azure CLI z příkazového řádku nebo v Cloud Shell a pak použijte `id` hodnotu GUID: <p>`az account list` | 
-   | **ID klienta** | <*yourAzureServicePrincipal-ID*> | Hodnota `appId` GUID, která se dřív vygenerovala pro váš instanční objekt Azure | 
-   | **Tajný kód klienta** | <*yourSecurePassword*> | `password` Hodnota nebo "tajný klíč", který jste zadali pro instanční objekt Azure | 
-   | **ID tenanta** | <*yourAzureActiveDirectoryTenant-ID*> | Hodnota `tenant` GUID pro vašeho tenanta Azure Active Directory | 
-   | **ID** | <*yourAzureServicePrincipalName*> | `displayName` Hodnota pro objekt služby Azure | 
+   | **ID předplatného** | <*yourAzureSubscription-ID*> | Hodnota GUID předplatného Azure <p>**Tip**: Pokud neznáte ID předplatného Azure, spusťte tento příkaz Azure CLI z příkazového řádku nebo v Cloud Shell a pak použijte hodnotu identifikátoru GUID `id`: <p>`az account list` | 
+   | **ID klienta** | <*yourAzureServicePrincipal-ID*> | Hodnota GUID `appId` pro instanční objekt Azure dřív vygenerovala. | 
+   | **Tajný kód klienta** | <*yourSecurePassword*> | Hodnota `password` nebo tajný klíč, který jste zadali pro váš instanční objekt Azure | 
+   | **ID tenanta** | <*yourAzureActiveDirectoryTenant-ID*> | Hodnota identifikátoru GUID `tenant` pro vašeho tenanta Azure Active Directory | 
+   | **ID** | <*yourAzureServicePrincipalName*> | Hodnota `displayName` pro objekt služby Azure | 
 
 1. Pokud chcete potvrdit, že váš instanční objekt funguje, vyberte **ověřit instanční objekt**. Až to bude hotové, vyberte **OK**.
 
@@ -209,7 +209,7 @@ Dále vytvořte skripty sestavení a nasazení pro Jenkinse.
 
 Teď vytvořte soubory, které Jenkinse používá pro sestavování a nasazování vaší aplikace.
 
-1. Ve `src/main/resources/` složce rozvětvení GitHubu vytvořte tento konfigurační soubor aplikace s `web.config`názvem, který obsahuje `gs-spring-boot-0.1.0.jar`tento kód XML `$(JAR_FILE_NAME)` , ale nahraďte:
+1. Ve složce `src/main/resources/` rozvětvení GitHubu vytvořte tento konfigurační soubor aplikace s názvem `web.config`, který obsahuje tento kód XML, ale nahraďte `$(JAR_FILE_NAME)` `gs-spring-boot-0.1.0.jar`:
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
@@ -223,7 +223,7 @@ Teď vytvořte soubory, které Jenkinse používá pro sestavování a nasazová
    </configuration>
    ```
 
-1. V kořenové složce rozvětvení GitHubu vytvořte tento skript sestavení a nasazení s `Jenkinsfile`názvem, který obsahuje tento text ([zdroj v GitHubu tady](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/doc/resources/jenkins/Jenkinsfile-webapp-se)):
+1. V kořenové složce rozvětvení GitHubu vytvořte tento skript sestavení a nasazení s názvem `Jenkinsfile`, který obsahuje tento text ([zdroj v GitHubu tady](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/doc/resources/jenkins/Jenkinsfile-webapp-se)):
 
    ```groovy
    node {
@@ -246,7 +246,7 @@ Teď vytvořte soubory, které Jenkinse používá pro sestavování a nasazová
    }
    ```
 
-1. `web.config` PotvrďtesouboryidorozvětveníGitHubu`Jenkinsfile` a nahrajte změny.
+1. Potvrďte `web.config` i `Jenkinsfile` soubory do rozvětvení GitHubu a nahrajte změny.
 
 ## <a name="point-pipeline-at-script"></a>Kanál bodu na skriptu
 
@@ -262,7 +262,7 @@ Nyní zadejte skript sestavení a nasazení, který má Jenkinse použít.
 
    1. V okně **SCM** , které se zobrazí, vyberte **Git** jako správu zdrojového kódu. 
 
-   1. V části úložiště v poli **Adresa URL úložiště**zadejte adresu URL rozvětvení GitHubu, například: 
+   1. V části **úložiště v poli** **Adresa URL úložiště**zadejte adresu URL rozvětvení GitHubu, například: 
 
       `https://github.com/<your-GitHub-username>/gs-spring-boot`
 
@@ -312,7 +312,7 @@ V dalším kroku Sestavte a nasaďte aplikaci pro Azure App Service.
    
 1. V pravém horním rohu GitHubu vyberte **Upravit tento soubor**.
 
-1. Proveďte tuto změnu na `commandLineRunner()` metodu a potvrďte změnu ve `master` větvi úložiště. Toto potvrzení ve `master` větvi spustí sestavení v Jenkinse. 
+1. Proveďte tuto změnu na metodu `commandLineRunner()` a potvrďte změnu v `master` větvi úložiště. Toto potvrzení ve větvi `master` spustí sestavení v Jenkinse. 
    
    ```java
    System.out.println("Let's inspect the beans provided by Spring Boot on Azure");

@@ -1,23 +1,18 @@
 ---
 title: Průběžný export telemetrie z Application Insights | Microsoft Docs
 description: Exportujte data o využití a diagnostiku do úložiště v Microsoft Azure a Stáhněte si z něj.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/25/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 3238abcbcbc4d776e3736b13d5b32149c642649c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 07/25/2019
+ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516950"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819555"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportovat telemetrie z Application Insights
 Chcete udržet telemetrii déle než standardní doba uchovávání? Nebo ji zpracujete specializovaným způsobem? Pro tuto dobu je ideální pro průběžný export. Události, které vidíte na portálu Application Insights, se dají exportovat do úložiště v Microsoft Azure ve formátu JSON. Odtud si můžete stáhnout svá data a napsat kód, který budete potřebovat k jeho zpracování.  
@@ -78,7 +73,7 @@ Pokud chcete export zastavit trvale, odstraňte ho. Tím nedojde k odstranění 
 ## <a name="analyze"></a>Jaké události získáte?
 Exportovaná data jsou nezpracovaná telemetrie z vaší aplikace, s výjimkou toho, že přidáváme data o umístění, která počítáme z IP adresy klienta.
 
-Data Zahozená vzorkováním [](../../azure-monitor/app/sampling.md) nejsou obsažena v exportovaných datech.
+Data Zahozená [vzorkováním](../../azure-monitor/app/sampling.md) nejsou obsažena v exportovaných datech.
 
 Jiné počítané metriky nejsou zahrnuty. Nebudete třeba exportovat průměrné využití procesoru, ale vyexportujeme nezpracované telemetrie, ze které se vypočítá průměr.
 
@@ -92,7 +87,7 @@ Data také obsahují výsledky všech [webových testů dostupnosti](../../azure
 ## <a name="get"></a>Kontrola dat
 Úložiště si můžete prohlédnout přímo na portálu. V levém horním rohu klikněte na domů v horní části, kde se říká "služby Azure" vybrat **účty úložiště**, vyberte název účtu úložiště, na stránce Přehled vyberte **objekty blob** v části služby a nakonec vyberte název kontejneru.
 
-Chcete-li zkontrolovat službu Azure Storage v aplikaci Visual Studio, otevřete **zobrazení**, **Průzkumník cloudu**. (Pokud nemáte příkaz nabídky, musíte nainstalovat sadu Azure SDK: Otevřete dialogové okno **Nový projekt** , rozbalte položku C#Visual/Cloud a vyberte možnost **získat Microsoft Azure SDK pro .NET**.)
+Chcete-li zkontrolovat službu Azure Storage v aplikaci Visual Studio, otevřete **zobrazení**, **Průzkumník cloudu**. (Pokud nemáte příkaz nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno **Nový projekt** , rozbalte položku Visual C#/Cloud a vyberte možnost **získat Microsoft Azure SDK pro .NET**.)
 
 Po otevření úložiště objektů BLOB se zobrazí kontejner se sadou souborů objektů BLOB. Identifikátor URI jednotlivých souborů odvozený od názvu prostředku Application Insights, jeho klíče instrumentace, typu telemetrie/data a času. (Název prostředku je malými písmeny a klíč instrumentace vynechává pomlčky.)
 
@@ -106,8 +101,8 @@ Tady je forma cesty:
 
 Kde
 
-* `blobCreationTimeUtc`je čas, kdy byl objekt BLOB vytvořen v interním přípravném úložišti.
-* `blobDeliveryTimeUtc`je čas, kdy se objekt BLOB kopíruje do cílového úložiště pro export
+* `blobCreationTimeUtc` je čas, kdy byl objekt BLOB vytvořen v interním přípravném úložišti.
+* `blobDeliveryTimeUtc` je čas, kdy se objekt BLOB kopíruje do cílového úložiště exportu.
 
 ## <a name="format"></a>Formát dat
 * Každý objekt BLOB je textový soubor, který obsahuje více řádků oddělených znakem \n. Obsahuje telemetrii zpracovávanou za časové období zhruba půl minuty.
@@ -125,7 +120,7 @@ Doba trvání se nachází v taktech, kde 10 000 taktes = 1 ms. Například tyto
 [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Zpracování dat
-V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Příklad:
+V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Například:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -185,12 +180,12 @@ V případě větších škálování zvažte clustery [HDInsight](https://azure
   * Pro aplikace s vysokým provozem jsou navíc přiděleny další jednotky oddílu. V takovém případě každá jednotka vytvoří objekt BLOB každou minutu.
 * *Znovu vygeneroval (a) klíč do úložiště nebo změnil název kontejneru a teď export nefunguje.*
 
-    Upravte export a otevřete kartu exportovat cíl. Vyberte stejné úložiště jako předtím a kliknutím na OK potvrďte. Export se restartuje. Pokud byla změna během posledních několika dní, ztratíte data.
+    Upravte export a otevřete kartu exportovat cíl. ponechte stejné úložiště jako předtím a kliknutím na OK potvrďte. Export se restartuje. Pokud byla změna během posledních několika dní, ztratíte data.
 * *Můžu pozastavit export?*
 
     Ano. Klikněte na zakázat.
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 * [Ukázka Stream Analytics](export-stream-analytics.md)
 * [Export do SQL pomocí Stream Analytics][exportasa]

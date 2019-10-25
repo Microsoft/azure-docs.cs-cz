@@ -1,5 +1,5 @@
 ---
-title: Jak nainstalovat a používat zobrazení Log Analytics pro Azure Active Directory | Microsoft Docs
+title: Jak nainstalovat a používat zobrazení Log Analytics | Microsoft Docs
 description: Naučte se instalovat a používat zobrazení Log Analytics pro Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -17,21 +17,21 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb1241387144b691b76ec330a5f90b762ebc11f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 00bca8bca19f9a71c4eeb639017845987682661f
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989786"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820907"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalace a použití zobrazení Log Analytics pro Azure Active Directory
 
 Azure Active Directory zobrazení Log Analytics pomáhá analyzovat a hledat protokoly aktivit Azure AD ve vašem tenantovi Azure AD. Protokoly aktivit Azure AD zahrnují:
 
-* Protokoly auditu: [Sestava aktivita protokoly auditu](concept-audit-logs.md) vám poskytne přístup k historii každého úkolu, který se provádí ve vašem tenantovi.
-* Protokoly přihlášení: Pomocí [sestavy aktivit přihlašování](concept-sign-ins.md)můžete určit, kdo provedl úkoly, které jsou hlášeny v protokolech auditu.
+* Protokoly auditu: [Sestava aktivity protokoly auditu](concept-audit-logs.md) vám poskytne přístup k historii všech úloh, které provedete ve vašem tenantovi.
+* Protokoly přihlašování: pomocí [sestavy aktivita přihlášení](concept-sign-ins.md)můžete určit, kdo provedl úkoly hlášené v protokolech auditu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat zobrazení Log Analytics, potřebujete:
 
@@ -51,17 +51,17 @@ Pokud chcete používat zobrazení Log Analytics, potřebujete:
 
 2. Až budete v pracovním prostoru, vyberte **Přehled pracovního prostoru**. Měli byste vidět následující tři zobrazení:
 
-    * **Události zřizování účtu Azure AD**: Toto zobrazení obsahuje sestavy týkající se aktivity zřizování auditování, jako je počet nových uživatelů, kteří se zřídili a provisionují chyby, počet uživatelů, kteří se aktualizovaly a aktualizují chyby, a počet nezřízených uživatelů a odpovídající selhání.    
-    * **Události přihlášení**: Toto zobrazení obsahuje nejrelevantnější sestavy týkající se monitorování přihlašovacích aktivit, jako jsou například přihlášení podle aplikace, uživatele, zařízení a také souhrnné zobrazení sledování počtu přihlášení v průběhu času.
+    * **Události zřizování účtů Azure AD**: Toto zobrazení ukazuje sestavy týkající se aktivity zřizování auditování, jako je počet nových uživatelů zřízených a zřizovacích selhání, počet aktualizovaných uživatelů a selhání aktualizace a počet uživatelů. zrušení zřízení a odpovídající selhání.    
+    * **Události přihlášení**: Toto zobrazení ukazuje nejrelevantnější sestavy týkající se monitorování přihlašovacích aktivit, jako jsou například přihlášení podle aplikace, uživatele, zařízení a také souhrnné zobrazení sledování počtu přihlášení v průběhu času.
 
 3. Vyberte jedno z těchto zobrazení pro přechod do jednotlivých sestav. Výstrahy můžete také nastavit pro libovolný parametr sestavy. Můžete například nastavit výstrahu pro pokaždé, když dojde k chybě přihlášení. Pokud to chcete provést, vyberte nejprve zobrazení **události přihlášení** , vyberte možnost **chyby přihlášení v průběhu** sestavy a potom vyberte **Analytics** . otevře se stránka s podrobnostmi s skutečným dotazem za sestavu. 
 
     ![Podrobnosti](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. Vyberte **nastavit výstrahu**a potom vyberte pokaždé, když je **&lt;&gt;** v části kritéria výstrahy vybraná možnost nedefinovaná logika vlastního protokolu. Vzhledem k tomu, že chceme upozornit vždy, když dojde k chybě přihlášení, nastavte **prahovou hodnotu** výchozí logiky výstrahy na **1** a potom vyberte **Hotovo**. 
+4. Vyberte **nastavit výstrahu**a potom vyberte **vždy, když je hledání vlastního protokolu &lt;logic nedefinované&gt;** v části **kritéria výstrahy** . Vzhledem k tomu, že chceme upozornit vždy, když dojde k chybě přihlášení, nastavte **prahovou hodnotu** výchozí logiky výstrahy na **1** a potom vyberte **Hotovo**. 
 
-    ![Konfigurovat logiku signálů](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
+    ![Konfigurace logiky signálů](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 
 5. Zadejte název a popis výstrahy a nastavte závažnost na **Warning**.
 

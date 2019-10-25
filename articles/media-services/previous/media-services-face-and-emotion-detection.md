@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 3ae2e49b812e7a9515cef81b328ceb87e1a7f017
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6fa2495ee580bb8e74a0d026533fa90f20743510
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015460"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881771"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Detekce obličeje a emoce pomocí Azure Media Analytics
+
+> [!IMPORTANT]
+> Prohlédněte si [plány vyřazení](media-services-analytics-overview.md#retirement-plans) některých multimediálních procesorů.
+
 ## <a name="overview"></a>Přehled
 Procesor **Azure Media Face Detector** Media (MP) umožňuje počítat, sledovat pohyby a dokonce i vyhodnocovat podíl a reakci v cílové skupině prostřednictvím výrazů obličeje. Tato služba obsahuje dvě funkce: 
 
@@ -153,7 +157,7 @@ Při vytváření úlohy s **Azure Media Face Detector**je nutné zadat předvol
 #### <a name="attribute-descriptions"></a>Popisy atributů
 | Název atributu | Popis |
 | --- | --- |
-| Režim |Emotikon Jenom rozpoznávání tváře.<br/>PerFaceEmotion: Vracet emoce nezávisle pro každou detekci obličeje.<br/>AggregateEmotion: Vrátí průměrné hodnoty emoce pro všechny plošky v rámci rámečku. |
+| Režim |Obličeje: jenom rozpoznávání tváře.<br/>PerFaceEmotion: vrátíte emoce nezávisle pro každou detekci obličeje.<br/>AggregateEmotion: vrátí průměrné hodnoty emoce pro všechny plošky v rámci rámečku. |
 | AggregateEmotionWindowMs |Použijte, pokud je vybraný režim AggregateEmotion. Určuje délku videa, která se používá k získání každého agregovaného výsledku v milisekundách. |
 | AggregateEmotionIntervalMs |Použijte, pokud je vybraný režim AggregateEmotion. Určuje, jakou četnost mají být výsledkem agregované výsledky. |
 
@@ -162,8 +166,8 @@ Níže jsou doporučené hodnoty pro agregované nastavení okna a intervalu. Ag
 
 || Výchozí hodnoty: | Maximální počet (s) | Minimum (s) |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0,5 |2 |0.25|
-| AggregateEmotionIntervalMs |0,5 |1 |0.25|
+| AggregateEmotionWindowMs |0,5 |2 |0,25|
+| AggregateEmotionIntervalMs |0,5 |1\. místo |0,25|
 
 ### <a name="json-output"></a>Výstup JSON
 Výstup JSON pro agregovaná emoce (zkrácený):
@@ -345,7 +349,7 @@ Následující program ukazuje, jak:
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```csharp
 using System;
@@ -517,7 +521,7 @@ namespace FaceDetection
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy

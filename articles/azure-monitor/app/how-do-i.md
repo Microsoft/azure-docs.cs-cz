@@ -1,143 +1,138 @@
 ---
-title: Jak na to... ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Nejčastější dotazy týkající se ve službě Application Insights.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Návody... v Azure Application Insights | Microsoft Docs
+description: Nejčastější dotazy v Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/04/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9f80edf18a531d6c2850658ddef9c7007edb350f
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 04/04/2017
+ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795513"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817369"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
-## <a name="get-an-email-when-"></a>Získejte e-mailu při...
-### <a name="email-if-my-site-goes-down"></a>Pokud web přestane fungovat e-mailu
-Nastavení [dostupnosti webového testu](../../azure-monitor/app/monitor-web-app-availability.md).
+## <a name="get-an-email-when-"></a>Získat e-mail, když...
+### <a name="email-if-my-site-goes-down"></a>Poslat e-mail, když se můj web neukončí
+Nastavte [webový test dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
 
-### <a name="email-if-my-site-is-overloaded"></a>E-mailu, pokud je přetížena Můj web
-Nastavení [výstraha](../../azure-monitor/app/alerts.md) na **doba odezvy serveru**. Prahová hodnota mezi 1 a 2 sekundy, by mělo fungovat.
+### <a name="email-if-my-site-is-overloaded"></a>E-mail, pokud je můj web přetížený
+Nastavte [Upozornění](../../azure-monitor/app/alerts.md) na **dobu odezvy serveru**. Musí fungovat prahová hodnota mezi 1 a 2 sekundami.
 
 ![](./media/how-do-i/030-server.png)
 
-Aplikace může také zobrazovat známky kmen vrácením Kódy selhání. Nastavení upozornění na **neúspěšné požadavky**.
+Vaše aplikace může také zobrazit znaménka kmene vrácením kódů selhání. Nastavte upozornění na **neúspěšné žádosti**.
 
-Pokud chcete nastavení upozornění na **výjimky serveru**, možná budete muset provést [některé další nastavení](../../azure-monitor/app/asp-net-exceptions.md) Chcete-li zobrazit data.
+Pokud chcete nastavit výstrahu pro **serverové výjimky**, možná budete muset provést [Další instalaci](../../azure-monitor/app/asp-net-exceptions.md) , aby se zobrazila data.
 
-### <a name="email-on-exceptions"></a>Odeslání e-mailu výjimky
-1. [Nastavit monitorování výjimek](../../azure-monitor/app/asp-net-exceptions.md)
-2. [Nastavení upozornění](../../azure-monitor/app/alerts.md) o výjimce počet metrik
+### <a name="email-on-exceptions"></a>E-mail na výjimkách
+1. [Nastavení sledování výjimek](../../azure-monitor/app/asp-net-exceptions.md)
+2. [Nastavení upozornění](../../azure-monitor/app/alerts.md) na metriku počtu výjimek
 
-### <a name="email-on-an-event-in-my-app"></a>Odeslání e-mailu událost ve své aplikaci
-Předpokládejme, že chcete dostávat e-maily, když dojde k určité události. Application Insights neposkytuje Azure přímo, ale může [Odeslat výstrahu, pokud metrika překročí mezní hodnotu](../../azure-monitor/app/alerts.md).
+### <a name="email-on-an-event-in-my-app"></a>E-mail na události v aplikaci
+Řekněme, že byste chtěli při výskytu určité události získat e-mail. Application Insights neposkytuje toto zařízení přímo, ale může [Odeslat výstrahu, pokud metrika přetrvá prahovou hodnotu](../../azure-monitor/app/alerts.md).
 
-Upozornění je možné nastavit na [vlastní metriky](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), i když není vlastní události. Napsání kódu pro zvýšení metriku při výskytu události:
+Výstrahy je možné nastavit na [vlastní metriky](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), ale ne na vlastní události. Napsání kódu pro zvýšení metriky, když dojde k události:
 
     telemetry.TrackMetric("Alarm", 10);
 
-nebo:
+ani
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
     telemetry.TrackEvent("status", null, measurements);
 
-Protože výstrahy mají dva stavy, budete muset odeslat nízkou hodnotu, pokud zvažujete výstrahu, kterou chcete být ukončeny:
+Vzhledem k tomu, že výstrahy mají dva stavy, je nutné při zvážení výstrahy na ukončení odeslat nízkou hodnotu:
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-Vytvoření grafu v [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md) zobrazíte vaše upozornění:
+V [Průzkumníkovi metriky](../../azure-monitor/app/metrics-explorer.md) vytvořte graf, ve kterém se zobrazí upozornění:
 
 ![](./media/how-do-i/010-alarm.png)
 
-Nyní nastavte výstrahu, která se aktivuje, když metriky překročí hodnotu mid na krátkou dobu:
+Teď můžete nastavit výstrahu, která se aktivuje, když metrika překročí hodnotu Mid po krátkou dobu:
 
 ![](./media/how-do-i/020-threshold.png)
 
-Nastavení je průměrované období na minimum.
+Nastavte období průměrování na minimum.
 
-Když metriky překročí i pod prahovou hodnotou, dostanete e-mailů.
+Když metrika překročí nad prahovou hodnotu, dostanete e-maily.
 
 Některé body ke zvážení:
 
-* Upozornění má dva stavy ("alert" a "v pořádku"). Stav je vyhodnocen pouze v případě, že se metriky přijetí.
-* E-mail je odeslán, pouze při změně stavu. Toto je Proč je nutné posílat vysokou a nízkou hodnotu metriky.
-* K vyhodnocení výstrahy, je průměr pořídí přijaté hodnoty předchozím období. K tomu dochází pokaždé, když metriky přijetí, aby byla odeslána e-mailů častěji, než je doba, kterou jste nastavili.
-* Vzhledem k tomu, jak na "alert" a "v pořádku", pošlou se e-maily, můžete chtít zvážit znovu uvažujete jednorázové události jako podmínku dvou stavů. Například místo v případě události "úloha dokončena" máte podmínku "probíhající úloze", kde získat e-mailů na začátku a konci úlohy.
+* Výstraha má dva stavy ("výstrahy" a "v pořádku"). Stav je vyhodnocen pouze v případě, že je přijata metrika.
+* E-mail se pošle jenom v případě, že se změní stav. To je důvod, proč je nutné odesílat metriky s vysokou a nízkou hodnotou.
+* Pro vyhodnocení výstrahy je průměrem přijatých hodnot za předchozí období. K tomu dochází pokaždé, když je přijata metrika, takže e-maily je možné odeslat častěji, než je období, které jste nastavili.
+* Vzhledem k tomu, že e-maily jsou odesílány na "Alert" a "v pořádku", možná budete chtít vzít v úvahu, že se událost jednoho snímku považuje za podmínku dvou stavů. Například namísto události "dokončená úloha" se zobrazí podmínka "probíhá úloha", kde získáte e-maily na začátku a na konci úlohy.
 
-### <a name="set-up-alerts-automatically"></a>Automaticky nastavit výstrahy
-[Použití Powershellu k vytvoření nové výstrahy](../../azure-monitor/app/alerts.md#automation)
+### <a name="set-up-alerts-automatically"></a>Nastavit výstrahy automaticky
+[Použití PowerShellu k vytváření nových výstrah](../../azure-monitor/app/alerts.md#automation)
 
-## <a name="use-powershell-to-manage-application-insights"></a>Použití Powershellu ke správě služby Application Insights
-* [Vytvářet nové prostředky](../../azure-monitor/app/powershell-script-create-resource.md)
+## <a name="use-powershell-to-manage-application-insights"></a>Použití PowerShellu ke správě Application Insights
+* [Vytvoření nových prostředků](../../azure-monitor/app/powershell-script-create-resource.md)
 * [Vytvořit nové výstrahy](../../azure-monitor/app/alerts.md#automation)
 
-## <a name="separate-telemetry-from-different-versions"></a>Samostatné telemetrická data z různých verzí
+## <a name="separate-telemetry-from-different-versions"></a>Samostatná telemetrie z různých verzí
 
-* Více rolí v aplikaci: Použít na jeden prostředek Application Insights a vyfiltrujte [cloud_Rolename](../../azure-monitor/app/app-map.md).
-* Oddělení vývoje, testování a vydání verze: Použijte různé prostředky Application Insights. Sbírání instrumentačních klíčů ze souboru web.config. [Víc se uč](../../azure-monitor/app/separate-resources.md)
-* Vytváření sestav verze sestavení: Přidání vlastnosti pomocí inicializátoru telemetrie. [Víc se uč](../../azure-monitor/app/separate-resources.md)
+* Více rolí v aplikaci: použijte jeden prostředek Application Insights a vyfiltrujte [cloud_Rolename](../../azure-monitor/app/app-map.md).
+* Oddělení vývoje, testování a verzí vydání: použijte jiné prostředky Application Insights. Vyzvedněte klíče instrumentace ze souboru Web. config. [Další informace](../../azure-monitor/app/separate-resources.md)
+* Verze sestavení pro vytváření sestav: přidejte vlastnost pomocí inicializátoru telemetrie. [Další informace](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>Monitorování back-end serverů a aplikací klasické pracovní plochy
-[Použít modul Windows Server SDK](../../azure-monitor/app/windows-desktop.md).
+[Použijte modul Windows Server SDK](../../azure-monitor/app/windows-desktop.md).
 
 ## <a name="visualize-data"></a>Vizualizace dat
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Řídicí panel s metrikami z více aplikací
-* V [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md), přizpůsobení grafu a uložit jako oblíbenou položku. Připnete na řídicí panel Azure.
+* V [Průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md)upravte svůj graf a uložte ho jako oblíbenou položku. Připněte ho na řídicí panel Azure.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Řídicí panel s daty z jiných zdrojů a Application Insights
-* [Export telemetrie do Power BI](../../azure-monitor/app/export-power-bi.md ).
+* [Exportujte telemetrii do Power BI](../../azure-monitor/app/export-power-bi.md ).
 
-Nebo
+nebo
 
-* Používání služby SharePoint jako řídicí panel, zobrazení dat ve webové části služby SharePoint. [Export do SQL pomocí průběžný export a Stream Analytics](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md).  Pomocí PowerView zkontrolujte databázi a vytvářet webové části služby SharePoint pro PowerView.
+* Použijte SharePoint jako řídicí panel, který zobrazuje data ve webových částech SharePointu. K [exportu do SQL použijte průběžný export a Stream Analytics](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md).  K prohlédnutí databáze použijte PowerView a vytvořte webovou část služby SharePoint pro PowerView.
 
 <a name="search-specific-users"></a>
 
-### <a name="filter-out-anonymous-or-authenticated-users"></a>Vyfiltrování ověřený nebo anonymní uživatelé
-Pokud se vaši uživatelé přihlásí, můžete nastavit [ověřit id uživatele](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users). (Je tomu tak není automaticky.)
+### <a name="filter-out-anonymous-or-authenticated-users"></a>Odfiltrování anonymních nebo ověřených uživatelů
+Pokud se uživatelé přihlásí, můžete nastavit [ID ověřeného uživatele](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users). (Automaticky se to nestane.)
 
 Pak můžete:
 
-* Hledat na ID konkrétního uživatele
+* Hledat ID konkrétních uživatelů
 
 ![](./media/how-do-i/110-search.png)
 
-* Filtrovat metriky pro anonymní nebo ověřeného uživatele
+* Filtrovat metriky buď anonymních, nebo ověřených uživatelů
 
 ![](./media/how-do-i/115-metrics.png)
 
-## <a name="modify-property-names-or-values"></a>Upravit názvy vlastností nebo hodnot
-Vytvoření [filtr](../../azure-monitor/app/api-filtering-sampling.md#filtering). To umožňuje změnit nebo filtrování telemetrických dat před odesláním z vaší aplikace do služby Application Insights.
+## <a name="modify-property-names-or-values"></a>Úprava názvů vlastností nebo hodnot
+Vytvořte [Filtr](../../azure-monitor/app/api-filtering-sampling.md#filtering). To vám umožní upravit nebo filtrovat telemetrii předtím, než se pošle z vaší aplikace do Application Insights.
 
-## <a name="list-specific-users-and-their-usage"></a>Seznam konkrétních uživatelů a jejich používání
-Pokud chcete jen [vyhledávání pro konkrétní uživatele](#search-specific-users), můžete nastavit [ověřit id uživatele](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users).
+## <a name="list-specific-users-and-their-usage"></a>Vypsat konkrétní uživatele a jejich použití
+Pokud chcete pouze [vyhledat konkrétní uživatele](#search-specific-users), můžete nastavit [ID ověřeného uživatele](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users).
 
-Pokud chcete seznam uživatelů s daty, jako jsou například jaké stránky, podívejte se na nebo jak často přihlášení, máte dvě možnosti:
+Pokud chcete zobrazit seznam uživatelů s daty, například které stránky se zobrazí nebo jak často se přihlašují, máte dvě možnosti:
 
-* [Id ověřeného uživatele sady](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), [export do databáze](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) a použijte vhodné nástroje k analýze dat uživatele existuje.
-* Pokud máte pouze malý počet uživatelů, posílat vlastní události nebo metriky, jako název metriky hodnotu nebo událost pomocí dat, které vás zajímají a nastavení id uživatele jako vlastnost. K analýze zobrazení stránek, nahraďte standardní trackPageView volání JavaScriptu. K analýze telemetrických dat na straně serveru, pomocí inicializátoru telemetrie přidat id uživatele k veškeré telemetrii serveru. Pak můžete filtrujte a segmentujte metrik a vyhledávání na id uživatele.
+* [Nastavte ověřené ID uživatele](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), [exportujte ho do databáze](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) a použijte vhodné nástroje k analýze uživatelských dat.
+* Pokud máte pouze malý počet uživatelů, odešlete vlastní události nebo metriky pomocí dat o hodnotě metriky nebo názvu události a nastavte ID uživatele jako vlastnost. Chcete-li analyzovat zobrazení stránky, nahraďte standardní volání trackPageView JavaScriptu. K analýze telemetrie na straně serveru použijte inicializátor telemetrie k přidání ID uživatele do telemetrie všech serverů. Pak můžete filtrovat a segmentovat metriky a vyhledat ID uživatele.
 
-## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Omezit přenos z aplikace do služby Application Insights
-* V [soubor ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md), zakažte všechny moduly, které už nebudete potřebovat, takový výkon čítače kolektoru.
-* Použití [vzorkování a filtrování](../../azure-monitor/app/api-filtering-sampling.md) v sadě SDK.
-* Na webových stránkách omezte počet volání Ajax hlášených pro každé zobrazení stránky. V tomto fragmentu kódu skriptu po `instrumentationKey:...` , vložte: `,maxAjaxCallsPerView:3` (nebo vhodný číslo).
-* Pokud používáte [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), compute agregace dávky hodnoty metrik před odesláním výsledek. Přetížení metody TrackMetric(), která poskytuje pro, který není k dispozici.
+## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Snížit provoz z aplikace do Application Insights
+* V [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)zakažte všechny moduly, které nepotřebujete, například kolektor čítače výkonu.
+* Použijte [vzorkování a filtrování](../../azure-monitor/app/api-filtering-sampling.md) v sadě SDK.
+* Na webových stránkách omezte počet volání AJAX hlášených pro každé zobrazení stránky. Do fragmentu skriptu po `instrumentationKey:...` vložte: `,maxAjaxCallsPerView:3` (nebo vhodné číslo).
+* Pokud používáte [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), před odesláním výsledku COMPUTE agreguje dávky hodnot metriky. Existuje přetížení TrackMetric (), které to poskytuje.
 
-Další informace o [ceny a kvóty](../../azure-monitor/app/pricing.md).
+Přečtěte si další informace o [cenách a kvótách](../../azure-monitor/app/pricing.md).
 
 ## <a name="disable-telemetry"></a>Zakázat telemetrii
-K **dynamicky zastavení a spuštění** shromažďování a předávání telemetrických dat ze serveru:
+Chcete-li **dynamicky zastavit a spustit** shromažďování a přenos telemetrie ze serveru aplikace:
 
-### <a name="aspnet-classic-applications"></a>Technologie ASP.NET, klasická aplikace
+### <a name="aspnet-classic-applications"></a>Klasické aplikace ASP.NET
 
 ```csharp
     using  Microsoft.ApplicationInsights.Extensibility;
@@ -146,27 +141,27 @@ K **dynamicky zastavení a spuštění** shromažďování a předávání telem
 ```
 
 ### <a name="other-applications"></a>Další aplikace
-Nedoporučuje se používat `TelemetryConfiguration.Active` jednotlivý prvek v konzole nebo aplikace ASP.NET Core.
-Pokud jste vytvořili `TelemetryConfiguration` instance sami – nastavte `DisableTelemetry` k `true`.
+Pro konzolové nebo ASP.NET Core aplikace se nedoporučuje používat `TelemetryConfiguration.Active` singleton.
+Pokud jste vytvořili instanci `TelemetryConfiguration` sami, nastavte `DisableTelemetry` na `true`.
 
-Pro aplikace ASP.NET Core může přistupovat k `TelemetryConfiguration` instance pomocí [injektáž závislostí ASP.NET Core](/aspnet/core/fundamentals/dependency-injection/). Podrobnosti v [ApplicationInsights pro aplikace ASP.NET Core](../../azure-monitor/app/asp-net-core.md) článku.
+U aplikací ASP.NET Core máte přístup k instanci `TelemetryConfiguration` pomocí [vkládání závislostí ASP.NET Core](/aspnet/core/fundamentals/dependency-injection/). Další podrobnosti najdete v článku [ApplicationInsights for ASP.NET Core Applications](../../azure-monitor/app/asp-net-core.md) .
 
-## <a name="disable-selected-standard-collectors"></a>Zakázat vybrané standardní kolekce
-Můžete zakázat standardní kolekce (například čítače výkonu, požadavky HTTP nebo závislosti)
+## <a name="disable-selected-standard-collectors"></a>Zakázat vybrané standardní sběrače
+Můžete zakázat standardní sběrače (například čítače výkonu, požadavky HTTP nebo závislosti).
 
-* **Aplikace ASP.NET** – odstranit nebo okomentovat relevantní vstupující [soubor ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)
-* **Aplikace ASP.NET Core** – postupujte podle možností konfigurace telemetrie moduly v [ApplicationInsights ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
+* **ASP.NET aplikace** – odstraňte nebo zakomentujte příslušné řádky v [souboru ApplicationInsights. config.](../../azure-monitor/app/configuration-with-applicationinsights-config.md)
+* **ASP.NET Core aplikace** – v ApplicationInsights se řiďte možnostmi konfigurace modulů telemetrie [ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>Zobrazit čítače výkonu systému
-Mezi metriky, které můžete zobrazit v Průzkumníku metrik představují sadu systému čítače výkonu. Není předdefinovanou okno s názvem **servery** , který zobrazí několik z nich.
+Mezi metrikami, které můžete zobrazit v Průzkumníkovi metrik, patří sada čítačů výkonu systému. Existuje předdefinované okno s názvem **servery** , které zobrazuje několik z nich.
 
-![Otevřete prostředek Application Insights a klikněte na servery](./media/how-do-i/121-servers.png)
+![Otevřete prostředek Application Insights a klikněte na servery.](./media/how-do-i/121-servers.png)
 
-### <a name="if-you-see-no-performance-counter-data"></a>Pokud se nezobrazují žádná data čítače výkonu
-* **Server služby IIS** na vlastním počítači nebo na virtuálním počítači. [Nainstalujte monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md).
-* **Webový server** – zatím nepodporujeme čítače výkonu. Existuje několik metrik, které můžete získat jako standardní součást ovládacího panelu webu Azure.
-* **Server systému UNIX** - [nainstalujte collectd](../../azure-monitor/app/java-collectd.md)
+### <a name="if-you-see-no-performance-counter-data"></a>Pokud se nezobrazí žádná data čítače výkonu
+* **Server IIS** na vašem počítači nebo na virtuálním počítači. [Nainstalujte monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md).
+* **Web Azure** – zatím nepodporujeme čítače výkonu. K dispozici je několik metrik, které můžete získat jako standardní součást ovládacího panelu webu Azure.
+* **Server se systémem Unix** - [Instalace byla shromažďována](../../azure-monitor/app/java-collectd.md)
 
-### <a name="to-display-more-performance-counters"></a>Chcete-li zobrazit další čítače výkonu
-* Nejprve je potřeba [přidejte nový graf](../../azure-monitor/app/metrics-explorer.md) a podívejte se, pokud čítač je v základní sadě, kterou nabízíme.
-* V opačném případě [přidat čítače do sady modul čítače výkonu shromážděné](../../azure-monitor/app/performance-counters.md).
+### <a name="to-display-more-performance-counters"></a>Zobrazení dalších čítačů výkonu
+* Nejdřív [přidejte nový graf](../../azure-monitor/app/metrics-explorer.md) a podívejte se, jestli je čítač v základní sadě, kterou nabízíme.
+* V takovém případě [přidejte čítač do sady shromážděné modulem čítače výkonu](../../azure-monitor/app/performance-counters.md).

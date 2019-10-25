@@ -5,25 +5,20 @@ author: bharathsreenivas
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 6092b3aac2b0282a795d89730266e72179b34e8a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 69b400eb7838c986ac6f275da58c7457179ebea6
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648899"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880205"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrace stovek terabajtů dat do Azure Cosmos DB 
 
-Azure Cosmos DB může ukládat terabajty dat. K přesunu produkční úlohy na Azure Cosmos DB můžete provést rozsáhlou migraci dat. Tento článek popisuje problémy spojené s přesunutím velkých objemů dat do Azure Cosmos DB a zavádí vám nástroj, který pomáhá s problémy a migruje data do Azure Cosmos DB. V tomto případě se zákazník používal Cosmos DB rozhraní SQL API.  
+Azure Cosmos DB může uchovávat terabajty dat. Můžete provést rozsáhlou migraci dat a přesunout svou produkční úlohu do služby Azure Cosmos DB. Tento článek popisuje problémy spojené s přesunutím velkých objemů dat do Azure Cosmos DB a zavádí vám nástroj, který pomáhá s problémy a migruje data do Azure Cosmos DB. V tomto případě se zákazník používal Cosmos DB rozhraní SQL API.  
 
 Před migrací celé úlohy na Azure Cosmos DB můžete migrovat podmnožinu dat a ověřit některé aspekty, jako je například volba klíče oddílu, výkon dotazů a modelování dat. Po ověření konceptu konceptu můžete přesunout celou úlohu na Azure Cosmos DB.  
-
-K urychlení vytváření a migrace aplikací na Azure Cosmos DB můžete použít také [Program Cosmos DB Bootstrap](https://azurecosmosdb.github.io/CosmosBootstrap/) . V rámci tohoto programu by se technici z týmu Azure Cosmos DB přiřadili k vašemu projektu a pomohli vám migrovat data do Azure Cosmos DB. Kliknutím na tlačítko níže si můžete zaregistrovat Cosmos DB zaváděcí program:
-
-> [!div class="nextstepaction"]
-> [Zaváděcí program Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ## <a name="tools-for-data-migration"></a>Nástroje pro migraci dat 
 
@@ -33,11 +28,11 @@ Azure Cosmos DB strategie migrace se aktuálně liší podle volby rozhraní API
 
 Stávající nástroje pro migraci dat na Azure Cosmos DB mají určitá omezení, která se budou obzvláště vymezit velkými škálami:
 
- * **Omezené možnosti horizontálního**navýšení kapacity: Aby bylo možné migrovat terabajty dat do Azure Cosmos DB co nejrychleji a efektivně spotřebovat celou zřízenou propustnost, klienti migrace by měli mít možnost horizontálního navýšení kapacity navýšit na neomezenou dobu.  
+ * **Omezené možnosti horizontálního**navýšení kapacity: aby bylo možné migrovat terabajty dat do Azure Cosmos DB co nejrychleji a efektivně spotřebovat celou zřízenou propustnost, klienti migrace by měli mít možnost horizontálního navýšení kapacity navýšit na neomezenou dobu.  
 
-* **Chybí sledování průběhu a vracení se změnami**: Je důležité sledovat průběh migrace a vracet se změnami při migraci velkých datových sad. V opačném případě všechny chyby, ke kterým dojde během migrace, zastaví migraci a vy budete muset proces začít od začátku. Nepovedlo se vám neproduktivní restartování celého procesu migrace, až 99% z něj už je dokončený.  
+* **Nedostatek sledování průběhu a vracení se změnami**: je důležité sledovat průběh migrace a vracet se změnami při migraci velkých datových sad. V opačném případě všechny chyby, ke kterým dojde během migrace, zastaví migraci a vy budete muset proces začít od začátku. Nepovedlo se vám neproduktivní restartování celého procesu migrace, až 99% z něj už je dokončený.  
 
-* **Nedostatek fronty nedoručených zpráv**: V rámci velkých datových sad může v některých případech dojít k potížím s částmi zdrojových dat. Kromě toho může docházet k přechodným problémům s klientem nebo sítí. Některé z těchto případů by nemělo způsobit selhání celé migrace. I když většina nástrojů pro migraci má robustní možnosti opakovaného pokusů, které chrání před přerušovanými problémy, není vždy dostatek. Pokud je například méně než 0,01% zdrojových datových dokumentů větší než 2 MB, způsobí to, že zápis dokumentu selže v Azure Cosmos DB. V ideálním případě je vhodné, aby nástroj pro migraci zachoval tyto "neúspěšné" dokumenty do jiné fronty nedoručených zpráv, která může být zpracována po migraci. 
+* **Nedostatek fronty nedoručených zpráv**: v rámci velkých datových sad může v některých případech dojít k problémům s částmi zdrojových dat. Kromě toho může docházet k přechodným problémům s klientem nebo sítí. Některé z těchto případů by nemělo způsobit selhání celé migrace. I když většina nástrojů pro migraci má robustní možnosti opakovaného pokusů, které chrání před přerušovanými problémy, není vždy dostatek. Pokud je například méně než 0,01% zdrojových datových dokumentů větší než 2 MB, způsobí to, že zápis dokumentu selže v Azure Cosmos DB. V ideálním případě je vhodné, aby nástroj pro migraci zachoval tyto "neúspěšné" dokumenty do jiné fronty nedoručených zpráv, která může být zpracována po migraci. 
 
 Mnohé z těchto omezení se stanovují pro nástroje, jako je Azure Data Factory, služby Azure Data Migration Services. 
 
@@ -153,11 +148,8 @@ I když můžete postupovat podle tohoto průvodce k úspěšné migraci velkýc
 ![Téma podpory migrace](./media/migrate-cosmosdb-data/supporttopic.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 * Další informace získáte vyzkoušením ukázkových aplikací, které využívají knihovnu hromadných prováděcích modulů v jazycích [.NET](bulk-executor-dot-net.md) a [Java](bulk-executor-java.md). 
 * Knihovna hromadného prováděcího modulu je integrovaná do konektoru Cosmos DB Spark. Další informace najdete v článku [Azure Cosmos DB Spark Connector](spark-connector.md) .  
 * Obraťte se na Azure Cosmos DB produktového týmu otevřením lístku podpory v části problémový typ problému "Obecné poradenství" a "velké (TB +) migrace" pro další nápovědu k migracím ve velkém měřítku. 
-* K urychlení vytváření a migrace aplikací na Azure Cosmos DB použijte [Program Cosmos DB Bootstrap](https://azurecosmosdb.github.io/CosmosBootstrap/) .
-
-> [!div class="nextstepaction"]
-> [Zaváděcí program Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)

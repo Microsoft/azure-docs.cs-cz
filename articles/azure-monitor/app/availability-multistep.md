@@ -1,19 +1,19 @@
 ---
 title: Monitorování webové aplikace pomocí webových testů s více kroky a Azure Application Insights | Microsoft Docs
-description: Nastavení více kroků pro sledování webových aplikací s využitím Azure Application Insights
+description: Nastavení webových testů s více kroky pro monitorování webových aplikací s využitím Azure Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/25/2019
+ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678240"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817382"
 ---
 # <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 
@@ -34,38 +34,12 @@ Pro vyhledání požadovaných testovacích nástrojů. Spusťte **Instalační 
 > [!NOTE]
 > U více kroků jsou k těmto webovým testům přidruženy další náklady. Další informace najdete v [oficiálních cenových příručkách](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="record-a-multi-step-web-test"></a>Záznam webového testu s více kroky
+## <a name="record-a-multi-step-web-test"></a>Záznam webového testu s více kroky 
 
-Pro vytvoření vícekrokového testu uložte scénář pomocí sady Visual Studio Enterprise a pak nahrajte tento záznam do služby Application Insights. Application Insights přehraje scénář v nastavených intervalech a ověří odpověď.
+> [!WARNING]
+> Nedoporučujeme používat nahrávání více kroků. Zapisovač byl vyvinut pro statické stránky HTML se základními interakcemi a neposkytuje funkční prostředí pro moderní webové stránky.
 
-> [!IMPORTANT]
-> * V testech nelze použít programové funkce nebo smyčky. Test musí být zcela obsažený ve skriptu .webtest. Můžete však použít standardní moduly plug-in.
-> * Vícekrokové webové testy podporují pouze anglické znaky. Pokud používáte sadu Visual Studio v jiném jazyce, aktualizujte definiční soubor webového testu pro překlad/vyloučení jiných než anglických znaků.
-
-Slouží k zaznamenání relace webové aplikace Visual Studio Enterprise.
-
-1. Vytvořte projekt webového výkonu a zátěžového testu. **Soubor**  > **Nový**  > **projekt**  > **test** **Visual C#**   > 
-
-    ![Nové uživatelské rozhraní projektu sady Visual Studio](./media/availability-multistep/vs-web-performance-and-load-test.png)
-
-2. Otevřete soubor `.webtest` a začněte nahrávat.
-
-    ![Uživatelské rozhraní záznamu testů sady Visual Studio](./media/availability-multistep/open-web-test.png)
-
-3. Klikněte na kroky, které má test simulovat jako součást záznamu.
-
-    ![Uživatelské rozhraní pro záznam v prohlížeči](./media/availability-multistep/record.png)
-
-4. Upravte test na:
-
-    * Přidání ověření ke kontrole přijatého textu a kódů odpovědi.
-    * Odeberte jakékoli uneccesary interakce. Můžete také odebrat závislé požadavky na obrázky nebo přidat sledovací lokality, které nejsou relevantní pro vaši žádost o úspěšnost testu.
-    
-    Mějte na paměti, že můžete upravit pouze testovací skript – můžete přidat vlastní kód nebo zavolat jiné webové testy. Nevkládejte do testu smyčky. Můžete použít standardní zásuvné moduly webového testu.
-
-5. Spusťte test v sadě Visual Studio a ověřte ho a ujistěte se, že funguje.
-
-    Spouštěč webových testů otevře webový prohlížeč a zopakuje zaznamenané akce. Ujistěte se, že vše se chová podle očekávání.
+Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální dokumentaci k sadě Visual studio 2019](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
 
 ## <a name="upload-the-web-test"></a>Nahrát webový test
 
@@ -96,7 +70,7 @@ Slouží k zaznamenání relace webové aplikace Visual Studio Enterprise.
 |**Classic** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
 |**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem umístění testu je **prahová hodnota pro umístění výstrahy**  = **počet umístění testu – 2, minimálně pět umístění testu.**|
 
-## <a name="advanced-configuration"></a>Pokročilá konfigurace
+## <a name="configuration"></a>Konfigurace
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>Doba připojení a náhodné číslování do testu
 

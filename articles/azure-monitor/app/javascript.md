@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights pro webové aplikace JavaScript | Dokumentace Microsoftu
 description: Načtení zobrazení stránek a počty relací, data webového klienta a sledování vzorů využití. Zjištění výjimek a problémů s výkonem na webových stránkách v jazyce JavaScript.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/20/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: b49206c677e2f1b20c154ae0c9e358e8b2b0bbd8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 09/20/2019
+ms.openlocfilehash: 17765910b379bd4212d171cce6643de561db23ad
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430192"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819378"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -178,7 +173,7 @@ Vyberte **prohlížeč** a pak zvolte **selhání** nebo **výkon**.
 
 ### <a name="analytics"></a>Analýzy 
 
-Chcete-li zadat dotaz na telemetrii shromážděnou sadou JavaScript SDK, vyberte tlačítko **Zobrazit v protokolech (Analytics)** . Přidáním příkazu `where` `client_Type == "Browser"` zobrazíte pouze data ze sady JavaScript SDK a všechny telemetrie na straně serveru shromážděné jinými sadami SDK budou vyloučeny.
+Chcete-li zadat dotaz na telemetrii shromážděnou sadou JavaScript SDK, vyberte tlačítko **Zobrazit v protokolech (Analytics)** . Přidáním `where`ho příkazu `client_Type == "Browser"`zobrazíte pouze data z sady JavaScript SDK a všechny telemetrie na straně serveru shromážděné jinými sadami SDK budou vyloučeny.
  
 ```kusto
 // average pageView duration by name
@@ -219,7 +214,7 @@ Příklady spustitelný naleznete v tématu [Application Insights JavaScript SDK
 Přerušující se změny v verzi sady SDK v2:
 - Aby bylo možné použít lepší signatury rozhraní API, jsou některá volání rozhraní API, jako je trackPageView, trackException, aktualizována. Spuštění v IE8 nebo nižších verzích prohlížeče se nepodporuje.
 - Obálka telemetrie má název pole a strukturu se mění kvůli aktualizacím schématu dat.
-- Přesunula se `context.operation` do `context.telemetryTrace`. Některá pole se také změnila (`operation.id` @ no__t-1 @ no__t-2)
+- Přesunula se `context.operation` do `context.telemetryTrace`. Některá pole se změnila i (`operation.id` --> `telemetryTrace.traceID`).
   - Pokud chcete ručně aktualizovat aktuální ID PageView (například v aplikacích pro SPA), můžete to udělat s `appInsights.properties.context.telemetryTrace.traceID = Util.newId()`.
 
 Pokud používáte aktuální sadu SDK 1.0.20 (Application Insights produkční SDK) a chcete zjistit, jestli nová sada SDK funguje v modulu runtime, aktualizujte adresu URL v závislosti na vašem aktuálním scénáři načítání sady SDK.

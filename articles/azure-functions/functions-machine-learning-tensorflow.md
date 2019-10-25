@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dbf2b4b5113598fee742c3864bede782a624773c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677894"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817454"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Kurz: použití modelů strojového učení v Azure Functions pomocí Pythonu a TensorFlow
 
@@ -114,7 +114,7 @@ func new --language python --template HttpTrigger --name classify
 
 Vytvoří se nová složka s názvem *klasifikovat* , která obsahuje dva soubory.
 
-- *\_ \_init \_ \_. py*: soubor pro funkci main
+- *\_\_init\_\_. py*: soubor pro hlavní funkci
 - *Function. JSON*: soubor popisující aktivační událost funkce a její vstupní a výstupní vazby
 
 ### <a name="run-the-function"></a>Spuštění funkce
@@ -179,7 +179,7 @@ Potvrďte, že *klasifikace* nyní obsahuje soubor s názvem *PREDICT.py*.
 Pomocná knihovna obsahuje některé závislosti, které je potřeba nainstalovat. V editoru otevřete soubor *Start/požadavky. txt* a přidejte do něj následující závislosti.
 
 ```txt
-tensorflow==1.15
+tensorflow==1.14
 Pillow
 requests
 ```
@@ -200,7 +200,7 @@ Další informace o globálních proměnných najdete v [příručce pro vývoj�
 
 ## <a name="update-function-to-run-predictions"></a>Funkce Update pro spuštění předpovědi
 
-V editoru otevřete *\_ \_init \_ \_. py* . Importujte knihovnu *předpověď* , kterou jste přidali do stejné složky dříve. Následující příkazy `import` přidejte pod ostatní importy, které jsou již v souboru.
+V editoru otevřete *klasifikovat/\_\_init\_\_. py* . Importujte knihovnu *předpověď* , kterou jste přidali do stejné složky dříve. Následující příkazy `import` přidejte pod ostatní importy, které jsou již v souboru.
 
 ```python
 import json

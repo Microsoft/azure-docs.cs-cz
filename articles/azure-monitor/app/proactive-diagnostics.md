@@ -1,73 +1,68 @@
 ---
-title: Inteligentní zjišťování ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Application Insights provádí automatické hloubkové analýzy telemetrie vaší aplikace a upozorní vás na potenciální problémy.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2eeb4a35-c7a1-49f7-9b68-4f4b860938b2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Inteligentní zjišťování v Azure Application Insights | Microsoft Docs
+description: Application Insights provádí automatickou hloubkovou analýzu telemetrie aplikací a upozorňuje na potenciální problémy.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/07/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 8ee2dea364253d871d5624242d15d8a81ab6f08f
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.date: 02/07/2019
+ms.openlocfilehash: ae9af5721e53277f6c939840721ca50ea67ca51e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465899"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818811"
 ---
-# <a name="smart-detection-in-application-insights"></a>Inteligentní detekce ve službě Application Insights
- Inteligentní zjišťování automaticky upozorní vás na potenciální problémy s výkonem a selhání anomálie ve webové aplikaci. Provádí proaktivní analýzy telemetrie, která vaše aplikace odesílá do [Application Insights](../../azure-monitor/app/app-insights-overview.md). Pokud je nečekané zvýšení míry selhání nebo nestandardní vzorce výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce vyžaduje žádná konfigurace. To funguje, pokud vaše aplikace odesílá dostatek telemetrie.
+# <a name="smart-detection-in-application-insights"></a>Inteligentní zjišťování v Application Insights
+ Inteligentní zjišťování vás automaticky upozorní na potenciální problémy s výkonem a anomálie při selhání ve vaší webové aplikaci. Provádí proaktivní analýzu telemetrie, kterou vaše aplikace odesílá [Application Insights](../../azure-monitor/app/app-insights-overview.md). Pokud dojde k náhlému nárůstu sazeb za selhání nebo abnormálních vzorů v výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce nepotřebuje žádnou konfiguraci. Funguje, pokud vaše aplikace posílá dostatek telemetrie.
 
-Můžete přistupovat detekcí vydané inteligentního zjišťování z e-mailů, které se zobrazí i v okně inteligentní zjišťování.
+K detekcím vydaným inteligentním zjišťováním můžete přistupovat z e-mailů, které obdržíte, a v okně inteligentní zjišťování.
 
-## <a name="review-your-smart-detections"></a>Zkontrolujte Inteligentní detekce
-Může zjišťovat detekce dvěma způsoby:
+## <a name="review-your-smart-detections"></a>Kontrola inteligentních zjišťování
+Zjišťování můžete zjistit dvěma způsoby:
 
-* **Dostávat e-mailu** ze služby Application Insights. Tady je typickým příkladem:
+* **Dostanete e-mail** od Application Insights. Tady je typický příklad:
   
     ![E-mailové upozornění](./media/proactive-diagnostics/03.png)
   
-    Klikněte na tlačítko velké tlačítko pro otevření více podrobností na portálu.
-* **Inteligentní zjišťování okno** ve službě Application Insights. Vyberte **inteligentního zjišťování** pod **prošetření** nabídku zobrazte seznam nedávných detekcí.
+    Kliknutím na tlačítko Velká otevřete další podrobnosti na portálu.
+* Okno **inteligentní detekce** v Application Insights. V nabídce **prozkoumat** vyberte **inteligentní zjišťování** , aby se zobrazil seznam posledních zjištění.
 
-![Zobrazit poslední detekce](./media/proactive-diagnostics/04.png)
+![Zobrazit nedávné detekce](./media/proactive-diagnostics/04.png)
 
-Vyberte detekce zobrazíte její podrobnosti.
+Výběrem detekce zobrazíte její podrobnosti.
 
-## <a name="what-problems-are-detected"></a>Zjištění jaké potíže?
-Inteligentní zjišťování zjistí a upozorní různé problémy, jako například:
+## <a name="what-problems-are-detected"></a>Jaké problémy se zjišťují?
+Inteligentní zjišťování detekuje a upozorňuje na nejrůznější problémy, například:
 
-* [Inteligentní zjišťování – anomálie selhání](../../azure-monitor/app/proactive-failure-diagnostics.md). Jsme na základě machine learningu k nastavení očekávané míry neúspěšných žádostí pro vaši aplikaci korelace se zátěžovými testy a dalších faktorů. Pokud je míra selhání přejde mimo očekávané obálky, pošleme upozornění.
-* [Inteligentní zjišťování – anomálie výkonu](../../azure-monitor/app/proactive-performance-diagnostics.md). Budete dostávat oznámení, pokud doba odezvy trvání operace nebo závislost je zpomalení za porovnání se směrným plánem historických nebo identifikace neobvyklého vzoru v době odezvy nebo čas načítání stránky.   
-* Obecné přehledu a problémy, jako třeba [trasování snížení](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [nevracení paměti](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [Abnormal navýšení počtu výjimek](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) a [zabezpečení antimodely](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
+* [Inteligentní zjišťování – anomálie selhání](../../azure-monitor/app/proactive-failure-diagnostics.md). Machine Learning používáme k nastavení očekávané míry neúspěšných žádostí pro vaši aplikaci a koreluje se zatížením a dalšími faktory. Pokud je míra selhání mimo očekávanou obálku, pošleme vám upozornění.
+* [Inteligentní zjišťování – anomálie výkonu](../../azure-monitor/app/proactive-performance-diagnostics.md). Obdržíte oznámení v případě, že doba odezvy operace nebo trvání závislosti zpomaluje v porovnání s historickým směrným plánem nebo pokud identifikujeme vzor neobvyklé v době odezvy nebo v době načítání stránky.   
+* Obecné degradace a problémy, jako jsou [snížení trasování](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [nevracení paměti](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [neobvyklé zvýšení objemu výjimek](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) a [antipatterny zabezpečení](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
 
-(Odkazy nápovědy v jednotlivých oznámení dostanete v příslušných článcích.)
+(Odkazy na Help v jednotlivých oznámeních vás převezmou na příslušné články.)
 
-## <a name="smart-detection-email-notifications"></a>Inteligentní detekce e-mailových oznámení
+## <a name="smart-detection-email-notifications"></a>E-mailová oznámení inteligentního zjišťování
 
-Všechna pravidla inteligentního zjišťování, s výjimkou pravidla označen jako _ve verzi preview_, jsou nakonfigurované ve výchozím nastavení k odesílání e-mailová oznámení, pokud nenajdou detekcí.
+Všechna pravidla inteligentního zjišťování s výjimkou pravidel označených jako _Preview_jsou ve výchozím nastavení nakonfigurována tak, aby odesílala e-mailová oznámení při nalezení detekce.
 
-Konfigurace e-mailová oznámení pro konkrétní pravidlo inteligentní zjišťování můžete udělat tak, že otevřete inteligentního zjišťování **nastavení** vyberte pravidlo, které se otevře se okno **upravit pravidlo** okno.
+Konfigurace e-mailových oznámení pro konkrétní pravidlo inteligentního zjišťování se dá udělat tak, že otevřete okno **Nastavení** inteligentního zjišťování a vyberete pravidlo, ve kterém se otevře okno **Upravit pravidlo** .
 
-Alternativně můžete změnit konfiguraci pomocí šablon Azure Resource Manageru. [Pravidla inteligentního zjišťování spravovat Application Insights pomocí šablon Azure Resource Manageru najdete v článku](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) další podrobnosti.
+Alternativně můžete změnit konfiguraci pomocí Azure Resource Manager šablon. Další podrobnosti [najdete v tématu Správa pravidel inteligentního vyhledávání Application Insights pomocí šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) .
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Další postup
-Tyto diagnostické nástroje umožňují kontrolovat telemetrie z vaší aplikace:
+## <a name="next-steps"></a>Další kroky
+Tyto diagnostické nástroje vám pomůžou zkontrolovat telemetrii z vaší aplikace:
 
 * [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md)
-* [Průzkumník služby Search](../../azure-monitor/app/diagnostic-search.md)
+* [Průzkumník vyhledávání](../../azure-monitor/app/diagnostic-search.md)
 * [Analýza – výkonný dotazovací jazyk](../../azure-monitor/log-query/get-started-portal.md)
 
-Inteligentní zjišťování je úplně automatický. Ale možná chcete nastavit některé další oznámení?
+Inteligentní zjišťování je zcela automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
-* [Ručně konfigurované metriky výstrahy](../../azure-monitor/app/alerts.md)
-* [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md) 
+* [Ručně nakonfigurované výstrahy metriky](../../azure-monitor/app/alerts.md)
+* [Webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) 
 

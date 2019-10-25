@@ -1,5 +1,5 @@
 ---
-title: Analýza protokolů aktivit Azure Active Directory pomocí protokolů Azure Monitor | Microsoft Docs
+title: Analýza protokolů aktivit pomocí Azure Monitorch protokolů | Microsoft Docs
 description: Naučte se analyzovat Azure Active Directory protokoly aktivit pomocí protokolů Azure Monitor
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1670c93f83ecd6f5bd557d24ec754998a225db0c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 52ab1bd445f8af0bf58dcb6b1176904aa073877a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255622"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820962"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analýza protokolů aktivit Azure AD pomocí protokolů Azure Monitor
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak analyzovat protokoly aktivit Azure AD v pracov
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Požadované součásti 
+## <a name="prerequisites"></a>Předpoklady 
 
 Pokud chcete postup sledovat, potřebujete:
 
@@ -47,7 +47,7 @@ Pokud chcete postup sledovat, potřebujete:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Přejděte do pracovního prostoru Log Analytics.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 
 2. Vyberte **Azure Active Directory**a potom v části **monitorování** vyberte **protokoly** . tím otevřete pracovní prostor Log Analytics. Pracovní prostor se otevře s výchozím dotazem.
 
@@ -61,7 +61,7 @@ Protokoly jsou vloženy do tabulek **AuditLogs** a **SigninLogs** v pracovním p
 1. V zobrazení výchozí dotaz v předchozí části vyberte **schéma** a rozbalte pracovní prostor. 
 
 2. Rozbalte část **Správa protokolů** a potom rozbalte buď **AuditLogs** nebo **SignInLogs** , a zobrazte schéma protokolu.
-    protokoly ![Audit @ no__t-1 ![Signin logs @ no__t-3
+    protokoly auditu ![](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![přihlášení](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>Dotazování protokolů aktivit služby Azure AD
 

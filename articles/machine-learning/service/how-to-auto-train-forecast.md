@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: eb13e6d279ffd8efc0cdb5ce675b77aac5be9c18
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3cec6ee9368b1d9d1f2c9a627108aaf41c6da3c3
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436630"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819851"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
@@ -34,6 +34,27 @@ Tento přístup, na rozdíl od metod klasických časových řad, má výhodu p�
 Můžete [nakonfigurovat](#config) , jak daleko do budoucna má být prognóza rozšířena (horizont předpovědi), a také prodlevy a další. Automatizovaná ML seznámí s jedním, ale často interně rozvětveným modelem pro všechny položky v datové sadě a horizontech předpovědi. K dispozici jsou proto další data k odhadování parametrů modelu a generalizace na nedostupné řady.
 
 Funkce extrahované ze školicích dat hrají důležitou roli. Automatizované ML a vychází ze standardních kroků předběžného zpracování a generuje další funkce časových řad, které zaznamenávají sezónní účinky a maximalizují prediktivní přesnost.
+
+## <a name="time-series-and-deep-learning-models"></a>Modely časových řad a hloubkového učení
+
+
+Automatizované ML poskytuje uživatelům v rámci systému doporučení jak nativní modely časových řad, tak i obsáhlé učení. Mezi tyto informace patří:
++ Prophet
++ Automatické ARIMA
++ ForecastTCN
+
+Obsáhlý Learning v automatizovaném ML umožňuje prognózování dat univariate a lineární časových řad.
+
+Modely hloubkového učení mají tři vnitřní capbailities:
+1. Můžou se učit z libovolného mapování ze vstupů na výstupy.
+1. Podporují několik vstupů a výstupů.
+1. Můžou automaticky extrahovat vzory ve vstupních datech, která jsou rozložená přes dlouhé sekvence.
+
+Kvalitní modely pro hloubkové učení, jako je například Microsoft, ForecasTCN, můžou zlepšit skóre výsledného modelu. 
+
+V rámci automatizovaného ML jsou také k dispozici informace o nativních časových řadách. Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Prophet je přesný & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě. 
+
+Autoregresivní Integrated klouzavý průměr (ARIMA) je oblíbená statistická metoda pro prognózování časových řad. Tato technika prognózy se běžně používá ve scénářích krátkodobého předpovědi, kde data zobrazují důkazy o trendech, jako jsou cykly, což může být nepředvídatelné a obtížné model nebo předpověď. Automatické ARIMA transformuje data do stacionárních dat, aby se přijímaly konzistentní a spolehlivé výsledky.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -56,7 +77,7 @@ Nejdůležitější rozdíl mezi typem úkolu regrese regrese a typem úlohy reg
     9/7/2018,A,2450,36
     9/7/2018,B,650,36
 
-Tato datová sada je jednoduchý příklad každodenních prodejních dat pro společnost, která má dvě různá úložiště, a a B. Navíc je k dispozici funkce `week_of_year`, která umožňuje, aby model zjišťoval týdenní sezónnost. Pole `day_datetime` představuje čistou časovou řadu s denní frekvencí a pole `sales_quantity` je cílovým sloupcem pro spuštění předpovědi. Přečtěte si data do PANDAS dataframe a pomocí funkce `to_datetime` zajistěte, aby časová řada byla typu `datetime`.
+Tato datová sada je jednoduchý příklad každodenních prodejních dat pro společnost, která má dvě různá úložiště, a a B. Navíc je k dispozici funkce pro `week_of_year`, která umožní modelu detekovat týdenní sezónnost. Pole `day_datetime` představuje čistou časovou řadu s denní frekvencí a pole `sales_quantity` je cílovým sloupcem pro provozování předpovědi. Přečtěte si data do PANDAS dataframe a pomocí funkce `to_datetime` zajistěte, aby časová řada byla `datetime` typu.
 
 ```python
 import pandas as pd
@@ -64,7 +85,7 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-V tomto případě se data již řadí vzestupně podle pole čas `day_datetime`. Při nastavování experimentu se ale ujistěte, že požadovaný sloupec čas je seřazen vzestupně, aby se vytvořila platná časová řada. Předpokládejme, že data obsahují 1 000 záznamů a vytvoří deterministické rozdělení dat pro vytváření školicích a testovacích sad dat. Identifikujte název sloupce popisku a nastavte jej na popisek. V tomto příkladu bude popisek `sales_quantity`. Pak pole popisku oddělte od `test_data`, aby se nastavila sada `test_target`.
+V tomto případě jsou data již seřazena vzestupně podle pole čas `day_datetime`. Při nastavování experimentu se ale ujistěte, že požadovaný sloupec čas je seřazen vzestupně, aby se vytvořila platná časová řada. Předpokládejme, že data obsahují 1 000 záznamů a vytvoří deterministické rozdělení dat pro vytváření školicích a testovacích sad dat. Identifikujte název sloupce popisku a nastavte jej na popisek. V tomto příkladu bude popisek `sales_quantity`. Pak pole popisku oddělte od `test_data`, aby se nastavila `test_target` sada.
 
 ```python
 train_data = data.iloc[:950]
@@ -101,7 +122,7 @@ Objekt `AutoMLConfig` definuje nastavení a data potřebná pro úlohu automatiz
 
 Další informace najdete v [referenční dokumentaci](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) .
 
-Vytvořte nastavení časových řad jako objekt Dictionary. Nastavte `time_column_name` na pole `day_datetime` v sadě dat. Definujte parametr `grain_column_names`, aby se zajistilo, že se pro data vytvoří **dvě samostatné skupiny časových řad** . jednu pro Store a a B. Nakonec nastavte `max_horizon` na 50, aby se předpovídá celá sada testů. Nastavte okno prognózy na 10 teček s `target_rolling_window_size` a zadejte jednu prodlevu pro cílové hodnoty pro 2 tečky předem s parametrem `target_lags`.
+Vytvořte nastavení časových řad jako objekt Dictionary. Nastavte `time_column_name` na pole `day_datetime` v sadě dat. Definujte parametr `grain_column_names`, aby se zajistilo, že se pro data vytvoří **dvě samostatné skupiny časových řad** . jednu pro Store a a B. Nakonec nastavte `max_horizon` na 50, aby bylo možné předpovědět celou sadu testů. Nastavte okno prognózy na 10 teček s `target_rolling_window_size`a zadejte jednu prodlevu pro cílové hodnoty 2 tečky předem s parametrem `target_lags`.
 
 ```python
 time_series_settings = {
@@ -173,7 +194,7 @@ predict_labels = fitted_model.predict(test_data)
 actual_labels = test_labels.flatten()
 ```
 
-Alternativně můžete použít funkci `forecast()` místo `predict()`, což umožní specifikace, kdy se má předpovědi spustit. V následujícím příkladu nahradíte nejprve všechny hodnoty v `y_pred` s `NaN`. V takovém případě bude zdroj prognózy na konci školicích dat, protože by se normálně používal `predict()`. Pokud jste však nahradili pouze druhou polovinu `y_pred` s `NaN`, funkce by tyto číselné hodnoty v první polovině nezměnila, ale předpověď hodnoty `NaN` v druhé polovině. Funkce vrátí předpovězené hodnoty i zarovnané funkce.
+Alternativně můžete použít funkci `forecast()` místo `predict()`, což umožní specifikace, kdy se má předpovědi spustit. V následujícím příkladu nahradíte nejprve všechny hodnoty v `y_pred` `NaN`. V takovém případě bude zdroj prognózy na konci školicích dat, protože by se normálně používal `predict()`. Pokud jste však nahradili pouze druhou polovinu `y_pred` s `NaN`, funkce by v první polovině nezměněných hodnot nechala tyto číselné hodnoty, ale v druhé polovině vypovídat hodnoty `NaN`. Funkce vrátí předpovězené hodnoty i zarovnané funkce.
 
 Můžete také použít parametr `forecast_destination` ve funkci `forecast()` k předpovědi hodnot až do zadaného data.
 
@@ -184,7 +205,7 @@ label_fcst, data_trans = fitted_pipeline.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-Vypočítá RMSE (chyba čtvercového významu) mezi skutečnými hodnotami `actual_labels` a předpovězenými hodnotami v `predict_labels`.
+Vypočítá RMSE (chyba čtvercového významu) mezi `actual_labels` skutečnými hodnotami a předpovězenými hodnotami v `predict_labels`.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -194,13 +215,13 @@ rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
 rmse
 ```
 
-Teď, když je zjištěná přesnost celkového modelu, je nejrealističtějším dalším krokem použití modelu k předpovědi neznámých budoucích hodnot. Jednoduše poskytněte sadu dat ve stejném formátu jako sadu testů `test_data`, ale s budoucími hodnotami DateTime a výslednou předpokládanou sadou je předpověď hodnot pro každý krok časové řady. Předpokládejte, že poslední záznamy časových řad v datové sadě byly pro 12/31/2018. Chcete-li předpovědět poptávku pro následující den (nebo tolik období, kolik potřebujete pro předpověď, < = `max_horizon`), vytvořte jeden záznam časových řad pro každé úložiště pro 01/01/2019.
+Teď, když je zjištěná přesnost celkového modelu, je nejrealističtějším dalším krokem použití modelu k předpovědi neznámých budoucích hodnot. Jednoduše poskytněte sadu dat ve stejném formátu jako sadu testů `test_data` ale s budoucími DateTime a výslednou předpokládanou sadou je předpověď hodnot pro každý krok časové řady. Předpokládejte, že poslední záznamy časových řad v datové sadě byly pro 12/31/2018. Chcete-li předpovědět poptávku pro následující den (nebo tolik období, kolik potřebujete pro předpověď, < = `max_horizon`), vytvořte jeden záznam časových řad pro každé úložiště pro 01/01/2019.
 
     day_datetime,store,week_of_year
     01/01/2019,A,1
     01/01/2019,A,1
 
-Opakujte potřebné kroky pro načtení těchto budoucích dat do datového rámce a potom spusťte `best_run.predict(test_data)` a předpovědět budoucí hodnoty.
+Zopakováním potřebných kroků načtěte tato budoucí data do datového rámce a potom spusťte `best_run.predict(test_data)` pro předpověď budoucích hodnot.
 
 > [!NOTE]
 > Hodnoty nelze odhadnout pro počet období, který je větší než `max_horizon`. Model musí být znovu vyškolen s větším horizontem, aby bylo možné předpovědět budoucí hodnoty nad rámec aktuálního horizontu.

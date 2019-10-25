@@ -1,22 +1,20 @@
 ---
-title: Použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure Kubenetes
+title: Použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure Kubernetes
 description: Naučte se používat modul plug-in Azure Dev Spaces v kanálu průběžné integrace.
 author: tomarchermsft
 ms.author: tarcher
 ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/31/2019
-ms.openlocfilehash: 3d5e8ba8a29481a6f37ffd10f577d354fc5fbf0a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/23/2019
+ms.openlocfilehash: 7bc2bb63f1382d1c7fd7e436dd5ddfa278262526
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161498"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881883"
 ---
-<!-- GMinchAQ, 06/18/19 -->
-
-# <a name="tutorial-using-the-azure-dev-spaces-plugin-for-jenkins-with-azure-kubenetes-service"></a>Kurz: Použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure Kubenetes 
+# <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Kurz: použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure Kubernetes 
 
 Azure Dev Spaces umožňuje testovat a iterativní vývoj aplikace mikroslužeb běžící ve službě Azure Kubernetes Service (AKS) bez nutnosti replikovat nebo napodobovat závislosti. Modul plug-in Azure Dev Spaces pro Jenkinse pomáhá používat vývojové prostory v kanálu průběžné integrace a doručování (CI/CD).
 
@@ -32,7 +30,7 @@ V tomto kurzu dokončíte tyto úlohy:
 
 Tento kurz předpokládá průběžné znalosti základních služeb Azure, AKS, ACR, Azure Dev Spaces, [kanálů](https://jenkins.io/doc/book/pipeline/) Jenkinse a modulů plug-in a GitHubu. Základní znalost s podpůrnými nástroji, jako je kubectl a Helm, je užitečná.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -42,7 +40,7 @@ Tento kurz předpokládá průběžné znalosti základních služeb Azure, AKS,
 
 * Rozhraní příkazového [řádku Azure je nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest), verze 2.0.43 nebo vyšší.
 
-* Hlavní server Jenkins. Pokud ještě nemáte hlavní server Jenkinse, nasaďte [Jenkinse](https://aka.ms/jenkins-on-azure) v Azure podle kroků v tomto [rychlém](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)startu. 
+* Hlavní server Jenkins. Pokud ještě nemáte hlavní server Jenkinse, nasaďte [jenkinse](https://aka.ms/jenkins-on-azure) v Azure podle kroků v tomto [rychlém](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)startu. 
 
 * Server Jenkinse musí mít nainstalovanou Helm a kubectl a k dispozici pro účet Jenkinse, jak je vysvětleno dále v tomto kurzu.
 
@@ -74,7 +72,7 @@ V této části vytvoříte prostředky Azure:
     ```bash
     az aks use-dev-spaces --resource-group MyResourceGroup --name MyAKS
     ```
-    Tento krok nainstaluje rozšíření `azds` rozhraní příkazového řádku (CLI).
+    Tento krok nainstaluje rozšíření rozhraní příkazového řádku `azds`.
 
 4. Vytvořte registr kontejnerů.
 
@@ -88,11 +86,11 @@ V této části nastavíte místo pro vývoj a nasadíte ukázkovou aplikaci do 
 
 Další informace o používání Azure Dev Spaces a vývoje více služeb pomocí Azure Dev Spaces najdete v tématu [Začínáme s Azure dev Spaces s Java](https://docs.microsoft.com/azure/dev-spaces/get-started-java)a [vývoj více služeb s](https://docs.microsoft.com/azure/dev-spaces/multi-service-java)využitím Azure dev Spaces. Tyto kurzy poskytují další informace, které tady nejsou uvedené.
 
-1. https://github.com/Azure/dev-spaces Stáhněte úložiště z GitHubu.
+1. Stáhněte si úložiště https://github.com/Azure/dev-spaces z GitHubu.
 
-2. `samples/java/getting-started/webfrontend` Otevřete složku v vs Code. (Případné výchozí výzvy ohledně přidání prostředků ladění nebo obnovení projektu můžete ignorovat.)
+2. Otevřete složku `samples/java/getting-started/webfrontend` v VS Code. (Případné výchozí výzvy ohledně přidání prostředků ladění nebo obnovení projektu můžete ignorovat.)
 
-3. Aktualizujte `/src/main/java/com/ms/sample/webfrontend/Application.java` tak, aby vypadaly takto:
+3. `/src/main/java/com/ms/sample/webfrontend/Application.java` aktualizace, aby vypadala takto:
 
     ```java
     package com.ms.sample.webfrontend;
@@ -124,26 +122,26 @@ Další informace o používání Azure Dev Spaces a vývoje více služeb pomoc
 
 4. Kliknutím na **Zobrazit** a **terminál** otevřete integrovaný terminál v vs Code.
 
-5. `azds prep` Spusťte příkaz pro přípravu aplikace tak, aby běžela ve vývojovém prostoru. Tento příkaz musí být spuštěn z `dev-spaces/samples/java/getting-started/webfrontend` , aby bylo možné správně připravit aplikaci:
+5. Spusťte příkaz `azds prep`, abyste aplikaci připravili tak, aby běžela ve vývojovém prostoru. Tento příkaz musí být spuštěn z `dev-spaces/samples/java/getting-started/webfrontend`, aby bylo možné správně připravit aplikaci:
 
     ```bash
     azds prep --public
     ```
 
-    `azds prep` Příkaz rozhraní příkazového řádku pro vývojáře generuje Docker a Kubernetes prostředky s výchozími nastaveními. Tyto soubory jsou uchovány po dobu života projektu a lze je přizpůsobit:
+    Příkaz `azds prep` vývojové prostory pro vývoj vygeneruje Docker a Kubernetes Asset s výchozími nastaveními. Tyto soubory jsou uchovány po dobu života projektu a lze je přizpůsobit:
 
-    * `./Dockerfile`a `./Dockerfile.develop` popište image kontejneru aplikace a způsob sestavení a spuštění zdrojového kódu v rámci kontejneru.
+    * `./Dockerfile` a `./Dockerfile.develop` popisují image kontejneru aplikace a způsob sestavení a spuštění zdrojového kódu v rámci kontejneru.
     * [Helm chart](https://helm.sh/docs/developing_charts/) v `./charts/webfrontend` popisuje, jak do Kubernetes nasadit kontejner.
-    * `./azds.yaml`je konfigurační soubor Azure Dev Spaces.
+    * `./azds.yaml` je konfigurační soubor Azure Dev Spaces.
 
     Další informace najdete v tématu [jak Azure dev Spaces fungují a jsou nakonfigurované](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works).
 
-6. Sestavte a spusťte aplikaci v AKS pomocí `azds up` příkazu:
+6. Sestavte a spusťte aplikaci v AKS pomocí příkazu `azds up`:
 
     ```bash
     azds up
     ```
-    <a name="test_endpoint"></a>Vyhledejte v výstupu konzoly informace o adrese URL, která byla vytvořena `up` příkazem. Bude v tomto tvaru:
+    <a name="test_endpoint"></a>Vyhledejte v výstupu konzoly informace o adrese URL, která byla vytvořena příkazem `up`. Bude v tomto tvaru:
 
     ```bash
     (pending registration) Service 'webfrontend' port 'http' will be available at '<url>'
@@ -153,15 +151,15 @@ Další informace o používání Azure Dev Spaces a vývoje více služeb pomoc
 
 8. V dalším kroku nastavte a nasaďte *mywebapi*:
 
-    1. Změnit adresář na`dev-spaces/samples/java/getting-started/mywebapi`
+    1. Změňte adresář na `dev-spaces/samples/java/getting-started/mywebapi`
 
-    2. Spusťte
+    2. Spuštění
 
         ```bash
         azds prep
         ```
 
-    3. Spusťte
+    3. Spuštění
 
         ```bash
         azds up -d
@@ -196,7 +194,7 @@ Vzorový kanál používá Helm a kubectl k nasazení do vývojového prostoru. 
 
 1. Vytvořte připojení SSH k hlavnímu serveru Jenkinse. 
 
-2. Přepněte na `jenkins` uživatele:
+2. Přepněte na uživatele `jenkins`:
     ```bash
     sudo su jenkins
     ```
@@ -207,7 +205,7 @@ Vzorový kanál používá Helm a kubectl k nasazení do vývojového prostoru. 
 
 ### <a name="add-credentials-to-jenkins"></a>Přidání přihlašovacích údajů do Jenkinse
 
-1. Jenkinse potřebuje instanční objekt Azure pro ověřování a přístup k prostředkům Azure. Pokud chcete vytvořit instanční objekt, přečtěte si část [Vytvoření instančního objektu](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) v kurzu nasazení do Azure App Service. Nezapomeňte uložit kopii výstupu z `create-for-rbac` , protože potřebujete tyto informace k dokončení dalšího kroku. Výstup bude vypadat přibližně takto:
+1. Jenkinse potřebuje instanční objekt Azure pro ověřování a přístup k prostředkům Azure. Chcete-li vytvořit instanční objekt, přečtěte si část [Vytvoření instančního objektu služby](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) v kurzu nasazení do Azure App Service. Nezapomeňte uložit kopii výstupu z `create-for-rbac`, protože tyto informace potřebujete k dokončení dalšího kroku. Výstup bude vypadat přibližně takto:
 
     ```json
     {
@@ -221,11 +219,11 @@ Vzorový kanál používá Helm a kubectl k nasazení do vývojového prostoru. 
 
 2. Do Jenkinse přidejte typ přihlašovacích údajů *instančního objektu služby* , a Microsoft Azure to pomocí informací o instančním objektu z předchozího kroku. Názvy na snímku obrazovky níže odpovídají výstupu z `create-for-rbac`.
 
-    Pole **ID** je název přihlašovacího údaje Jenkinse pro instanční objekt. V příkladu se používá hodnota `displayName` (v této `xxxxxxxjenkinssp`instanci), ale můžete použít libovolný požadovaný text. Tento název přihlašovacích údajů je hodnota proměnné prostředí AZURE_CRED_ID v další části.
+    Pole **ID** je název přihlašovacího údaje Jenkinse pro instanční objekt. V příkladu se používá hodnota `displayName` (v této instanci, `xxxxxxxjenkinssp`), ale můžete použít libovolný text, který chcete. Tento název přihlašovacích údajů je hodnota proměnné prostředí AZURE_CRED_ID v další části.
 
     ![Přidání přihlašovacích údajů instančního objektu do Jenkinse](media/tutorial-jenkins-dev-spaces/add-service-principal-credentials.png)
 
-    **Popis** je volitelný. Podrobnější pokyny najdete v tématu věnovaném [Přidání instančního objektu do Jenkinse](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#add-service-principal-to-jenkins) v kurzu nasazení do Azure App Service. 
+    **Popis** je volitelný. Podrobnější pokyny najdete v tématu [Přidání instančního objektu do jenkinse](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#add-service-principal-to-jenkins) v kurzu nasazení do Azure App Service. 
 
 
 
@@ -253,7 +251,7 @@ Vzorový kanál používá Helm a kubectl k nasazení do vývojového prostoru. 
     }
     ```
 
-4. Do Jenkinse přidejte *uživatelské jméno s přihlašovacími údaji k heslu* . **Uživatelské jméno** je uživatelské jméno z posledního kroku v tomto příkladu `acr01`. **Heslo** je hodnota pro první heslo, v tomto příkladu `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. **ID** tohoto přihlašovacího údaje je hodnota ACR_CRED_ID.
+4. Do Jenkinse přidejte *uživatelské jméno s přihlašovacími údaji k heslu* . **Uživatelské jméno** je uživatelské jméno z posledního kroku, v tomto příkladu `acr01`. **Heslo** je hodnota pro první heslo, v tomto příkladu `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. **ID** tohoto přihlašovacího údaje je hodnota ACR_CRED_ID.
 
 5. Nastavte přihlašovací údaje AKS. Přidejte do Jenkinse typ přihlašovacích údajů *Konfigurace Kubernetes (kubeconfig)* (použijte možnost zadat přímo). Přihlašovací údaje pro přístup ke clusteru AKS získáte spuštěním následujícího příkazu:
 
@@ -265,7 +263,7 @@ Vzorový kanál používá Helm a kubectl k nasazení do vývojového prostoru. 
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-Scénář vybraný pro příklad kanálu je založený na vzoru reálného světa: Žádost o přijetí změn aktivuje kanál CI, který sestaví a následně nasadí navrhované změny do vývojového prostoru Azure pro účely testování a kontroly. V závislosti na výsledku recenze se změny buď sloučí, a nasadí, aby se AKS nebo zahodily. Nakonec se odebere místo pro vývoj.
+Scénář vybraný pro příklad kanálu je založený na vzoru reálného světa: žádost o přijetí změn aktivuje kanál CI, který sestaví a následně nasadí navrhované změny do vývojového prostoru Azure pro testování a kontrolu. V závislosti na výsledku recenze se změny buď sloučí, a nasadí, aby se AKS nebo zahodily. Nakonec se odebere místo pro vývoj.
 
 Konfigurace kanálu Jenkinse a Jenkinsfile definují fáze v kanálu CI. Tento vývojový diagram zobrazuje fáze zřetězení a body rozhodování definované Jenkinsfileem:
 
@@ -339,7 +337,7 @@ K dokončení kroku 3 v této části budete muset komentovat část Jenkinsfile
     }
 ```
 
-1. Proveďte změnu na `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`a pak vytvořte žádost o získání dat. Příklad:
+1. Proveďte změnu `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`a pak vytvořte žádost o přijetí změn. Například:
 
     ```java
     public String index() {
@@ -355,7 +353,7 @@ K dokončení kroku 3 v této části budete muset komentovat část Jenkinsfile
 
     1. Otevřete prohlížeč a přejděte na sdílenou verzi `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. TEST_ENDPOINT obsahuje adresu URL.
 
-    2. Otevřete jinou kartu a potom zadejte adresu URL vývojového prostoru žádosti o přijetí změn. Bude vypadat podobně jako `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. Odkaz najdete v **historii sestavení > < Build # > >** pro úlohu Jenkinse. Vyhledejte na stránce `aksapp`, nebo pokud chcete zobrazit pouze předponu, `azdsprefix`vyhledejte.
+    2. Otevřete jinou kartu a potom zadejte adresu URL vývojového prostoru žádosti o přijetí změn. Bude se podobat `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. Odkaz najdete v **historii sestavení > < Build # > >** pro úlohu Jenkinse. Vyhledejte na stránce `aksapp`, nebo pokud chcete zobrazit pouze předponu, vyhledejte `azdsprefix`.
 
  
 
@@ -376,9 +374,9 @@ stage('create dev space') {
 }
 ```
 
-Je adresa URL aplikace webendu, kterou jste předtím nasadili `azds up`pomocí nástroje v části [nasazení ukázkových aplikací do clusteru AKS, krok 7.](#test_endpoint) `test_endpoint` Hodnota `$env.TEST_ENDPOINT` je nastavena v konfiguraci kanálu. 
+`test_endpoint` je adresa URL aplikace webendu, kterou jste předtím nasadili pomocí `azds up`v [části nasazení ukázkových aplikací do clusteru AKS, krok 7](#test_endpoint). V konfiguraci kanálu je nastavená hodnota `$env.TEST_ENDPOINT`. 
 
-Následující fragment kódu ukazuje, jak se v této `smoketest` fázi používá adresa URL místa pro vývoj v podřízeném objektu. Kód zkontroluje, zda je k dispozici podřízený vývojové místo TEST_ENDPOINT, a pokud ano, stáhne text pozdravu do stdout:
+Následující fragment kódu ukazuje, jak se adresa URL podřízeného prostoru pro vývoj používá ve fázi `smoketest`. Kód zkontroluje, zda je k dispozici podřízený vývojové místo TEST_ENDPOINT, a pokud ano, stáhne text pozdravu do stdout:
 
 ```Groovy
 stage('smoketest') {

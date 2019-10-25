@@ -1,5 +1,5 @@
 ---
-title: Řešení chyb při přihlašování pomocí sestav Azure Active Directory | Microsoft Docs
+title: Řešení potíží se zprávami o chybách přihlášení | Microsoft Docs
 description: Přečtěte si, jak řešit chyby při přihlašování pomocí sestav Azure Active Directory v Azure Portal
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c901395436c8ed660c50b7342a804143d57db3c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 692fd2034fb70feffe02320eea5cdb9a3d163475
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988169"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819708"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Postup: Řešení chyb při přihlašování pomocí sestav Azure Active Directory
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Postupy: řešení chyb při přihlašování pomocí sestav Azure Active Directory
 
 [Sestava přihlášení](concept-sign-ins.md) v Azure Active Directory (Azure AD) umožňuje najít odpovědi na otázky týkající se správy přístupu k aplikacím ve vaší organizaci, včetně těchto:
 
@@ -32,7 +32,7 @@ ms.locfileid: "68988169"
 
 Kromě toho sestava přihlášení také může pomoct při odstraňování potíží s přihlášením pro uživatele ve vaší organizaci. V této příručce se dozvíte, jak v sestavě přihlášení izolovat selhání při přihlašování a jak je použít k pochopení hlavní příčiny selhání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat:
 

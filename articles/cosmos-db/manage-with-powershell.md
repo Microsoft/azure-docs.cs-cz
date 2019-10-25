@@ -4,15 +4,15 @@ description: Použijte Azure PowerShell ke správě účtů Azure Cosmos DB, dat
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 08/05/2019
+ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 3b5d8ff6177b4f9f397b40f50a9cc65f74460f02
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815891"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882113"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
 
@@ -26,7 +26,7 @@ Pro správu Azure Cosmos DB pro různé platformy můžete použít rozhraní p�
 
 Postupujte podle pokynů v tématu [instalace a konfigurace Azure PowerShell][powershell-install-configure] pro instalaci a přihlášení ke svému účtu Azure v prostředí PowerShell.
 
-* Pokud chcete spustit následující příkazy bez potvrzení uživatele, přidejte do příkazu příznak `-Force`.
+* Pokud chcete spustit následující příkazy, aniž byste museli potvrzovat uživatele, přidejte do příkazu příznak `-Force`.
 * Všechny následující příkazy jsou synchronní.
 
 ## <a name="azure-cosmos-accounts"></a>Účty Azure Cosmos
@@ -78,11 +78,11 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-* @no__t – 0 název účtu Azure Cosmos. Musí obsahovat malá písmena, přijímat alfanumerické znaky a znak "-" a mezi 3 a 31 znaky.
-* @no__t – 0 umístění prostředku účtu Azure Cosmos.
-* @no__t – 0 oblasti repliky pro databázový účet. Pro každý databázový účet musí být jedna oblast zápisu s hodnotou priority převzetí služeb při selhání 0.
-* @no__t – 0 výchozí úroveň konzistence účtu Azure Cosmos. Další informace najdete v tématu [úrovně konzistence v Azure Cosmos DB](consistency-levels.md).
-* `$CosmosDBProperties` hodnoty vlastností předané poskytovateli Cosmos DB Azure Resource Manager ke zřízení účtu.
+* `$accountName` název účtu Azure Cosmos. Musí obsahovat malá písmena, přijímat alfanumerické znaky a znak "-" a mezi 3 a 31 znaky.
+* `$location` umístění prostředku účtu Azure Cosmos.
+* `$locations` oblasti repliky pro databázový účet. Pro každý databázový účet musí být jedna oblast zápisu s hodnotou priority převzetí služeb při selhání 0.
+* `$consistencyPolicy` výchozí úroveň konzistence účtu Azure Cosmos. Další informace najdete v tématu [úrovně konzistence v Azure Cosmos DB](consistency-levels.md).
+* `$CosmosDBProperties` hodnoty vlastností předané poskytovateli Cosmos DB Azure Resource Manager k zřízení účtu.
 
 Účty Azure Cosmos se dají nakonfigurovat pomocí brány firewall protokolu IP a Virtual Network koncových bodů služby. Informace o tom, jak nakonfigurovat bránu firewall protokolu IP pro Azure Cosmos DB, najdete v tématu [Konfigurace brány firewall protokolu IP](how-to-configure-firewall.md).  Další informace o povolení koncových bodů služby pro Azure Cosmos DB najdete v tématu [Konfigurace přístupu z virtuálních sítí](how-to-configure-vnet-service-endpoint.md).
 
@@ -223,7 +223,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 Následující příklad popisuje, jak nastavit [značky prostředků Azure][azure-resource-tags] pro účet Azure Cosmos.
 
 > [!NOTE]
-> Tento příkaz lze kombinovat s příkazy vytvořit nebo aktualizovat připojením příznaku `-Tags` s odpovídajícím parametrem.
+> Tento příkaz lze kombinovat s příkazy vytvořit nebo aktualizovat připojením příznaku `-Tags` k odpovídajícímu parametru.
 
 ```azurepowershell-interactive
 # Update tags for an Azure Cosmos Account
@@ -255,7 +255,8 @@ $keys = Invoke-AzResourceAction -Action listKeys `
     -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
     -ResourceGroupName $resourceGroupName -Name $accountName
 
-Select-Object $keys
+Write-Host "PrimaryKey =" $keys.primaryMasterKey
+Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 ```
 
 ### <a id="list-connection-strings"></a>Vypsat připojovací řetězce
@@ -319,10 +320,10 @@ Set-AzResource -ResourceType $resourceType `
 
 U účtů konfigurovaných s automatickým převzetím služeb při selhání můžete změnit pořadí, ve kterém bude Cosmos povýšit sekundární repliky na primární, pokud primární databáze není k dispozici.
 
-V následujícím příkladu Předpokládejme, že aktuální priorita převzetí služeb při selhání `West US 2 = 0`, `East US 2 = 1` `South Central US = 2`.
+V následujícím příkladu Předpokládejme, že aktuální priorita převzetí služeb při selhání `West US 2 = 0``East US 2 = 1``South Central US = 2`.
 
 > [!CAUTION]
-> Změna `locationName` pro `failoverPriority=0` spustí ruční převzetí služeb při selhání pro účet Azure Cosmos. Jakékoli další změny priority nebudou aktivovat převzetí služeb při selhání.
+> Změna `locationName` `failoverPriority=0` spustí ruční převzetí služeb při selhání pro účet Azure Cosmos. Jakékoli další změny priority nebudou aktivovat převzetí služeb při selhání.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -348,12 +349,12 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 
 ### <a id="trigger-manual-failover"></a>Aktivace ručního převzetí služeb při selhání
 
-U účtů konfigurovaných pomocí ručního převzetí služeb při selhání můžete převzít služby při selhání a zvýšit úroveň sekundární repliky na primární úpravou `failoverPriority=0`. Tato operace se dá použít k inicializaci plánování zotavení po havárii při zotavení po havárii.
+Pro účty nakonfigurované s ručním převzetím služeb při selhání můžete převzetí služeb při selhání a zvýšení úrovně sekundární repliky na primární úpravou `failoverPriority=0`. Tato operace se dá použít k inicializaci plánování zotavení po havárii při zotavení po havárii.
 
-V následujícím příkladu Předpokládejme, že účet má aktuální prioritu převzetí služeb při selhání `West US 2 = 0` a `East US 2 = 1` a překlopit oblasti.
+V následujícím příkladu Předpokládejme, že účet má aktuální prioritu převzetí služeb při selhání `West US 2 = 0` a `East US 2 = 1` a Překlopí oblasti.
 
 > [!CAUTION]
-> Změna `locationName` pro `failoverPriority=0` spustí ruční převzetí služeb při selhání pro účet Azure Cosmos. Žádná jiná změna priority nebude aktivovat převzetí služeb při selhání.
+> Změna `locationName` `failoverPriority=0` spustí ruční převzetí služeb při selhání pro účet Azure Cosmos. Žádná jiná změna priority nebude aktivovat převzetí služeb při selhání.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -697,7 +698,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 
 ### <a id="create-container-lww"></a>Vytvoření kontejneru Azure Cosmos s řešením konfliktů
 
-Chcete-li vytvořit zásadu řešení konfliktů pro použití uložené procedury, nastavte `"mode"="custom"` a nastavte cestu řešení jako název uložené procedury, `"conflictResolutionPath"="myResolverStoredProcedure"`. Pro zapsání všech konfliktů do ConflictsFeed a popisovači samostatně nastavte `"mode"="custom"` a `"conflictResolutionPath"=""`.
+Chcete-li vytvořit zásadu řešení konfliktů pro použití uložené procedury, nastavte `"mode"="custom"` a nastavte cestu řešení jako název uložené procedury, `"conflictResolutionPath"="myResolverStoredProcedure"`. Chcete-li zapisovat všechny konflikty do ConflictsFeed a zpracovávat samostatně, nastavte `"mode"="custom"` a `"conflictResolutionPath"=""`
 
 ```azurepowershell-interactive
 # Create container with last-writer-wins conflict resolution policy

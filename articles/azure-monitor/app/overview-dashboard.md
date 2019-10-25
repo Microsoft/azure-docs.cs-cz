@@ -1,70 +1,65 @@
 ---
-title: Řídicí panel Přehled Azure Application Insights | Dokumentace Microsoftu
-description: Monitorování aplikací s Azure Application Insights a řídicího panelu s přehledem funkcí.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Řídicí panel přehled služby Azure Application Insights | Microsoft Docs
+description: Sledujte aplikace s využitím Azure Application Insights a přehled funkcí řídicího panelu.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 06/03/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/03/2019
+ms.openlocfilehash: 218ae158512326bcad8efd6c598f68d296fe9370
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497150"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819149"
 ---
-# <a name="application-insights-overview-dashboard"></a>Application Insights přehled řídicího panelu
+# <a name="application-insights-overview-dashboard"></a>Řídicí panel přehledu Application Insights
 
-Application Insights stále poskytuje přehled souhrnu podokna umožňující rychlé a v přehled vyhodnocení stavu a výkonu vaší aplikace. Nový řídicí panel Přehled poskytuje rychlejší pružnější možnosti.
+Application Insights má vždy k dispozici souhrnný přehled, který umožňuje rychlé, okamžité posouzení stavu a výkonu vaší aplikace. Nový řídicí panel přehled nabízí rychlejší flexibilní prostředí.
 
-## <a name="how-do-i-test-out-the-new-experience"></a>Jak otestovat si nové prostředí
+## <a name="how-do-i-test-out-the-new-experience"></a>Návody vyzkoušet nové prostředí?
 
-Nový řídicí panel přehledu teď ve výchozím nastavení spustí:
+Nový řídicí panel přehled se teď ve výchozím nastavení spustí:
 
-![Přehled – podokno náhledu](./media/overview-dashboard/overview.png)
+![Podokno náhledu – přehled](./media/overview-dashboard/overview.png)
 
 ## <a name="better-performance"></a>Lepší výkon
 
-Výběr časového rozsahu zjednodušenou topologickou jednoduché rozhraní jedním kliknutím.
+Výběr časového rozsahu byl zjednodušen pro jednoduché rozhraní jedním kliknutím.
 
 ![Časové rozmezí](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-Celkový výkon se výrazně zvýšil. Máte přístup jedním kliknutím k oblíbených funkcí, jako je **hledání** a **Analytics**. Každý výchozí dynamicky aktualizuje dlaždice klíčových ukazatelů výkonu poskytuje podrobné informace o odpovídající funkce Application Insights. Další informace o selhání vyberte požadavky **selhání** pod **prošetření** hlavičky:
+Celkový výkon se významně zvýšil. Máte přístup jedním kliknutím k oblíbeným funkcím, jako je **hledání** a **Analýza**. Každá výchozí dlaždice s dynamicky aktualizovanými KUV nabízí přehled o odpovídajících funkcích Application Insights. Pokud chcete získat další informace o neúspěšných požadavcích, vyberte v hlavičce **prozkoumat** **selhání** :
 
 ![Selhání](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Řídicí panel aplikací
 
-Řídicí panel aplikací využívá existující technologii řídicí panel v rámci Azure poskytují plně přizpůsobitelná jedno podokno zobrazení stavu aplikace a výkonu.
+Řídicí panel aplikace využívá stávající technologii řídicího panelu v rámci Azure a poskytuje plně přizpůsobitelné zobrazení stavu a výkonu vaší aplikace v jednom podokně.
 
-Pro přístup k řídicím panelu vyberte výchozí _řídicí panel aplikací_ v levém horním rohu.
+Chcete-li získat přístup k výchozímu řídicímu panelu, vyberte _řídicí panel aplikace_ v levém horním rohu.
 
 ![Zobrazení řídicího panelu](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
-Pokud je to poprvé přístup k řídicím panelu, spustí se výchozí zobrazení:
+Pokud k řídicímu panelu přistupujete poprvé, spustí se výchozí zobrazení:
 
 ![Zobrazení řídicího panelu](./media/overview-dashboard/0001-dashboard.png)
 
-Pokud se vám líbí, můžete ponechat výchozí zobrazení. Nebo můžete také přidat a odstranit z řídicího panelu aby co nejlépe vyhovovaly potřebám vašeho týmu.
+Můžete ponechat výchozí zobrazení, pokud to chcete. Nebo můžete také přidat a odstranit z řídicího panelu, aby nejlépe vyhovovaly potřebám vašeho týmu.
 
 > [!NOTE]
-> Všichni uživatelé s přístupem k prostředku Application Insights sdílet stejné prostředí řídicí panel aplikací. Změny prováděné jedním uživatelem upraví zobrazení pro všechny uživatele.
+> Všichni uživatelé s přístupem k prostředku Application Insights sdílejí stejné možnosti řídicího panelu aplikace. Změny provedené jedním uživatelem změní zobrazení pro všechny uživatele.
 
-Chcete-li přejít zpět na stačí vybrat přehled prostředí:
+Chcete-li přejít zpět k prostředí přehledu, stačí vybrat:
 
 ![Tlačítko Přehled](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud vyberete **konfigurovat nastavení dlaždice** a nastavit vlastní časový rozsah nad rámec 31 dní řídicím panelu nezobrazí se po uplynutí 31 dnů dat, dokonce i s uchováním dat výchozí 90 dnů. Aktuálně neexistuje žádné alternativní řešení pro toto chování.
+Pokud vyberete **Konfigurovat nastavení dlaždic** a nastavíte vlastní časový rozsah přesahující 31 dní, řídicí panel se nezobrazí déle než 31 dní dat, a to ani s výchozím uchováváním dat 90 dnů. Pro toto chování není aktuálně k dispozici žádné alternativní řešení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Trychtýře](../../azure-monitor/app/usage-funnels.md)
 - [Uchování](../../azure-monitor/app/usage-retention.md)

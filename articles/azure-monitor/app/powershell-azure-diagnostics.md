@@ -1,22 +1,18 @@
 ---
 title: Použití prostředí PowerShell k nastavení Application Insights v Azure | Dokumentace Microsoftu
 description: Automatizuje konfiguraci Azure Diagnostics pro přenos dat do Application Insights.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/06/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 0c963e4cd7befffe69fef159542eabd29059e3d9
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/06/2019
+ms.openlocfilehash: 0e1fd048b855473c1d7978e2a908c45360a1ed2a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035193"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819013"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Použití PowerShellu k nastavení Application Insights pro Azure Cloud Services
 
@@ -43,10 +39,10 @@ Pokud je webová aplikace v Azure a vy vytvoříte své prostředky pomocí šab
      } 
 
 * `nameOfAIAppResource` – název prostředku Application Insights
-* `myWebAppName`– ID webové aplikace
+* `myWebAppName` – ID webové aplikace
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Povolit rozšíření diagnostiky jako součást nasazení cloudové služby
-Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Příklad:
+Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Například:
 
 ```ps
 
@@ -133,7 +129,7 @@ Chcete-li odebrat rozšíření diagnostiky pro každou jednotlivou roli:
 ```
 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Monitorování aplikací v Azure Cloud Services službou Application Insights](../../azure-monitor/app/cloudservices.md)
 * [Odesílání Diagnostiky Azure do Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Automatizace konfigurace výstrah](powershell-alerts.md)

@@ -1,27 +1,27 @@
 ---
-title: 'Kurz: Použít API datové proudy Apache Kafka – Azure HDInsight '
-description: Kurz – zjistěte, jak použít rozhraní Apache Kafka datové proudy API s využitím Kafka v HDInsight. Toto rozhraní API umožňuje provádět zpracování datových proudů mezi tématy v systému Kafka.
-ms.service: hdinsight
+title: 'Kurz: Použití rozhraní Kafka Streams API – Azure HDInsight '
+description: Kurz – Naučte se používat rozhraní API pro Apache Kafka streamování s Kafka ve službě HDInsight. Toto rozhraní API umožňuje provádět zpracování datových proudů mezi tématy v systému Kafka.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/25/2019
-ms.openlocfilehash: 0639ecaa0e4ae0581a6c88e1ea9a47de870a8355
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 10/08/2019
+ms.openlocfilehash: f256adfd1fc970512cad5fb93ec235fc27a50373
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446382"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817745"
 ---
-# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Kurz: Použití Apache Kafka streams API v Azure HDInsight
+# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Kurz: použití rozhraní API streamování Apache Kafka ve službě Azure HDInsight
 
-Zjistěte, jak vytvořit aplikaci, která používá rozhraní API Apache Kafka datových proudů a spustit ji s využitím Kafka v HDInsight.
+Naučte se, jak vytvořit aplikaci, která používá rozhraní API služby Apache Kafka Streams, a spusťte ji s Kafka ve službě HDInsight.
 
 Aplikace použitá v tomto kurzu počítá slova v datovém proudu. Přečte textová data z tématu Kafka, extrahuje jednotlivá slova a pak uloží slova a jejich počet do jiného tématu Kafka.
 
-Zpracování datových proudů Kafka se často provádí pomocí Apache Spark nebo Apache Storm. Kafka verze 1.1.0 (v HDInsight 3.5 a 3.6) zavedla rozhraní API datové proudy Kafka. Toto rozhraní API umožňuje transformovat datové proudy mezi vstupními a výstupními tématy. V některých případech to může být alternativa k vytváření řešení streamování Sparku nebo Stormu.
+Zpracování streamu Kafka se často provádí pomocí Apache Spark nebo Apache Storm. Kafka verze 1.1.0 (ve službě HDInsight 3,5 a 3,6) zavedla rozhraní API streamování Kafka. Toto rozhraní API umožňuje transformovat datové proudy mezi vstupními a výstupními tématy. V některých případech to může být alternativa k vytváření řešení streamování Sparku nebo Stormu.
 
 Další informace o datových proudech Kafka najdete v [úvodní dokumentaci k datovým proudům](https://kafka.apache.org/10/documentation/streams/) na webu Apache.org.
 
@@ -33,46 +33,46 @@ V tomto kurzu se naučíte:
 > * Konfigurace témat Kafka
 > * Spuštění kódu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Cluster Kafka ve službě HDInsight 3.6. Zjistěte, jak vytvořit systém Kafka na clusteru HDInsight, najdete v článku [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md) dokumentu.
+* Cluster Kafka ve službě HDInsight 3.6. Informace o tom, jak vytvořit Kafka v clusteru HDInsight, najdete v dokumentu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md) .
 
-* Proveďte kroky v [Apache Kafka příjemce a rozhraní API pro producenta](apache-kafka-producer-consumer-api.md) dokumentu. Kroky v tomto dokumentu používají ukázkovou aplikaci a témata vytvořená v tomto kurzu.
+* Proveďte kroky v dokumentu [Apache Kafka příjemce a rozhraní API pro výrobce](apache-kafka-producer-consumer-api.md) . Kroky v tomto dokumentu používají ukázkovou aplikaci a témata vytvořená v tomto kurzu.
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalentní, například OpenJDK.
+* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalent, jako je například OpenJDK.
 
-* [Nástroje Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) podle Apache.  Maven je projekt sestavovacího systému pro projekty Java.
+* [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
-* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
 Ukázková aplikace se nachází na adrese [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) v podadresáři `Streaming`. Aplikace se skládá ze dvou souborů:
 
-* `pom.xml`: Tento soubor definuje závislosti projektu, verze Javy a balení metody.
-* `Stream.java`: Tento soubor implementuje logiku datových proudů.
+* `pom.xml`: Tento soubor definuje závislosti projektu, verzi Javy a metody balení.
+* `Stream.java`: Tento soubor implementuje logiku streamování.
 
 ### <a name="pomxml"></a>Pom.xml
 
 V souboru `pom.xml` je důležité porozumět následujícímu:
 
-* Závislosti: Tento projekt využívá rozhraní API datové proudy Kafka poskytuje `kafka-clients` balíčku. Tuto závislost definuje následující kód XML:
+* Závislosti: Tento projekt spoléhá na rozhraní Kafka Streams API, které je součástí balíčku `kafka-clients`. Tuto závislost definuje následující kód XML:
 
     ```xml
     <!-- Kafka client for producer/consumer operations -->
     <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-clients</artifactId>
-      <version>${kafka.version}</version>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
     </dependency>
     ```
 
     Položka `${kafka.version}` se deklaruje v části `<properties>..</properties>` souboru `pom.xml` a je nakonfigurovaná na verzi systému Kafka v clusteru HDInsight.
 
-* Moduly plug-in: Moduly plug-in maven poskytují různé možnosti. V tomto projektu se používají následující moduly plug-in:
+* Moduly plug-in: Moduly plug-in Mavenu poskytují různé funkce. V tomto projektu se používají následující moduly plug-in:
 
-    * `maven-compiler-plugin`: Slouží k nastavení Java verze používané v projektu na 8. Javu 8 vyžaduje HDInsight 3.6.
-    * `maven-shade-plugin`: Použít ke generování uber jar, který obsahuje tato aplikace, stejně jako všechny závislosti. Používá se také k nastavení vstupního bodu aplikace, abyste mohli přímo spustit soubor JAR bez nutnosti zadávat hlavní třídu.
+    * `maven-compiler-plugin`: Slouží k nastavení verze Javy, kterou projekt používá, na 8. Javu 8 vyžaduje HDInsight 3.6.
+    * `maven-shade-plugin`: Slouží k vygenerování souboru JAR, který obsahuje tuto aplikaci i všechny závislosti. Slouží také k nastavení vstupního bodu aplikace, aby bylo možné přímo spustit soubor JAR bez nutnosti zadat hlavní třídu.
 
 ### <a name="streamjava"></a>Stream.java
 
@@ -131,7 +131,7 @@ public class Stream
 
 Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight, postupujte následovně:
 
-1. Nastavit aktuální adresář na umístění `hdinsight-kafka-java-get-started-master\Streaming` adresáře a pak zadáním následujícího příkazu vytvořte balíček jar:
+1. Nastavte aktuální adresář na umístění adresáře `hdinsight-kafka-java-get-started-master\Streaming` a pak pomocí následujícího příkazu vytvořte balíček JAR:
 
     ```cmd
     mvn clean package
@@ -139,51 +139,50 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
 
     Tento příkaz vytvoří balíček v umístění `target/kafka-streaming-1.0-SNAPSHOT.jar`.
 
-2. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `clustername` zadejte název clusteru. Použijte následující příkaz pro kopírování `kafka-streaming-1.0-SNAPSHOT.jar` soubor do vašeho clusteru HDInsight. Pokud se zobrazí výzva, zadejte heslo uživatelského účtu SSH.
+2. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `clustername` zadejte název clusteru. K zkopírování souboru `kafka-streaming-1.0-SNAPSHOT.jar` do clusteru HDInsight použijte následující příkaz. Pokud se zobrazí výzva, zadejte heslo uživatelského účtu SSH.
 
     ```cmd
     scp ./target/kafka-streaming-1.0-SNAPSHOT.jar sshuser@clustername-ssh.azurehdinsight.net:kafka-streaming.jar
     ```
 
-## <a name="create-apache-kafka-topics"></a>Vytvářejte témata Apache Kafka
+## <a name="create-apache-kafka-topics"></a>Vytvoření Apache Kafka témata
 
-1. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Otevřete připojení SSH ke clusteru, tak, že zadáte následující příkaz. Pokud se zobrazí výzva, zadejte heslo uživatelského účtu SSH.
+1. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Zadáním následujícího příkazu otevřete připojení SSH ke clusteru. Pokud se zobrazí výzva, zadejte heslo uživatelského účtu SSH.
 
     ```bash
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Nainstalujte [jq](https://stedolan.github.io/jq/), příkazového řádku procesoru JSON. V otevřené připojení SSH, zadejte následující příkaz k instalaci `jq`:
+2. Nainstalujte [JQ](https://stedolan.github.io/jq/)procesor JSON pro příkazový řádek. V otevřeném připojení SSH zadejte následující příkaz pro instalaci `jq`:
 
     ```bash
     sudo apt -y install jq
     ```
 
-3. Nastavte proměnné prostředí. Nahraďte `PASSWORD` a `CLUSTERNAME` přihlašovací heslo clusteru a clusteru název v uvedeném pořadí, a pak zadejte příkaz:
+3. Nastavte proměnnou hesla. Nahraďte `PASSWORD` heslem přihlášení clusteru a pak zadejte příkaz:
 
     ```bash
     export password='PASSWORD'
-    export clusterNameA='CLUSTERNAME'
     ```
 
-4. Rozbalte název clusteru správně notaci. Skutečné malých a velkých písmen na název clusteru může být jiný než byste očekávali, v závislosti na způsobu vytvoření clusteru. Tento příkaz se získat skutečný malých a velkých písmen, uložte ho do proměnné a pak zobrazí správně cased název a název, který jste zadali dříve. Zadejte následující příkaz:
+4. Extrahuje správně použita název clusteru. V závislosti na tom, jak byl cluster vytvořen, může být skutečná velikost názvu clusteru odlišná, než očekáváte. Tento příkaz získá skutečnou velikost písmen a uloží ji do proměnné. Zadejte následující příkaz:
+    ```bash
+    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
+    ```
+
+    > [!Note]  
+    > Pokud provádíte tento proces mimo cluster, existuje jiný postup pro uložení názvu clusteru. Získá název clusteru z Azure Portal malými písmeny. Pak v následujícím příkazu nahraďte název clusteru pro `<clustername>` a spusťte ho: `export clusterName='<clustername>'`.  
+
+5. Pokud chcete získat hostitele zprostředkovatele Kafka a hostitele Apache Zookeeper, použijte následující příkazy. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin). Zobrazí se dvě výzvy k zadání hesla.
 
     ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" \
-  	| jq -r '.items[].Clusters.cluster_name')
-    echo $clusterName, $clusterNameA
+    export KAFKAZKHOSTS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2);
+
+    export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
-5. Chcete-li získat zprostředkovatele Kafka, hostitele a hostitele Apache Zookeeper, použijte následující příkazy. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin). Zobrazí se dvě výzvy k zadání hesla.
-
-    ```bash
-    export KAFKAZKHOSTS=`curl -sS -u admin:$password -G \
-    https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER \
-  	| jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`;
-    export KAFKABROKERS=`curl -sS -u admin:$password -G \
-    https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER \
-  	| jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`;
-    ```
+> [!Note]  
+> Tyto příkazy vyžadují přístup k Ambari. Pokud je váš cluster za NSG, spusťte tyto příkazy z počítače, který má přístup k Ambari. 
 
 6. K vytvoření témat, která používá operace streamování, použijte následující příkazy:
 
@@ -199,10 +198,10 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
 
     Témata slouží k následujícím účelům:
 
-   * `test`: Toto téma je, kde jsou přijímány záznamy. Odtud čte data aplikace streamování.
-   * `wordcounts`: Toto téma je, kde streamování aplikace ukládá svůj výstup.
-   * `RekeyedIntermediateTopic`: V tomto tématu se používá k znovu rozdělovat data, jako je počet aktualizovat `countByKey` operátor.
-   * `wordcount-example-Counts-changelog`: Toto téma je stav úložiště používané konvencemi `countByKey` operace
+   * `test`: V tomto tématu se přijímají záznamy. Odtud čte data aplikace streamování.
+   * `wordcounts`: Do tohoto tématu aplikace streamování ukládá výstup.
+   * `RekeyedIntermediateTopic`: Toto téma slouží k opětovnému rozdělení dat při aktualizaci počtu pomocí operátoru `countByKey`.
+   * `wordcount-example-Counts-changelog`: Toto téma používá operace `countByKey` jako úložiště stavu.
 
     Systém Kafka ve službě HDInsight je také možné nakonfigurovat tak, aby vytvářel témata automaticky. Další informace najdete v dokumentu [Konfigurace automatického vytváření témat](apache-kafka-auto-create-topics.md).
 
@@ -214,7 +213,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
     java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS &
     ```
 
-    Může zobrazit upozornění týkající se Apache log4j. To můžete ignorovat.
+    Může se zobrazit upozornění týkající se Apache log4j. To můžete ignorovat.
 
 2. K odesílání záznamů do tématu `test` použijte následující příkaz, který spustí aplikaci producenta:
 
@@ -231,7 +230,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
     Parametry `--property` říkají konzole konzumenta, aby vytiskla klíč (slovo) společně s počtem (hodnota). Tento parametr také konfiguruje deserializátor, který se použije při čtení těchto hodnot ze systému Kafka.
 
     Výstup se bude podobat následujícímu:
-   
+
         dwarfs  13635
         ago     13664
         snow    13636
@@ -249,7 +248,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
 
 4. Producenta ukončíte stisknutím __Ctrl+C__. Pokračujte a pomocí __Ctrl + C__ ukončete aplikaci i konzumenta.
 
-5. Pokud chcete odstranit témata používat streamování operace, použijte následující příkazy:
+5. Chcete-li odstranit témata používaná operací streamování, použijte následující příkazy:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic test --zookeeper $KAFKAZKHOSTS
@@ -268,9 +267,9 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste zjistili, jak pomocí rozhraní API Apache Kafka datové proudy Kafka v HDInsight. Další informace o práci s platformou Kafka použijte následující postup.
+V tomto dokumentu jste zjistili, jak používat rozhraní API pro Apache Kafka streamování s Kafka ve službě HDInsight. Další informace o práci s Kafka získáte pomocí následujících kroků.
 
 > [!div class="nextstepaction"]
-> [Analýza protokolů platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
+> [Analyzovat protokoly Apache Kafka](apache-kafka-log-analytics-operations-management.md)

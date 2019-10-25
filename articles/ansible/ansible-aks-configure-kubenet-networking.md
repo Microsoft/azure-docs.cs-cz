@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 949a55fd8c004bc656d02816231c4ebb6dd8f92b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 67b4eb9e9ee53613ec8b54b2bf8d3bbdb89778c7
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242168"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881527"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Kurz: konfigurace sítě kubenet ve službě Azure Kubernetes Service (AKS) pomocí Ansible
 
@@ -107,13 +107,13 @@ Uložte následující ukázkový playbook jako `aks.yml`:
 
 Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
 
-- K nalezení podporované verze použijte modul `azure_rm_aks_version`.
-- @No__t-0 je podsíť vytvořená v předchozí části.
-- @No__t-0 definuje vlastnosti pro modul plug-in kubenet sítě.
-- @No__t-0 slouží k přiřazení interních služeb v clusteru AKS k IP adrese. Tento rozsah IP adres by měl být adresní prostor, který se v síti nepoužívá jinde. 
+- Použijte modul `azure_rm_aks_version` k nalezení podporované verze.
+- `vnet_subnet_id` je podsíť vytvořená v předchozí části.
+- `network_profile` definuje vlastnosti pro modul plug-in kubenet Network.
+- `service_cidr` slouží k přiřazení interních služeb v clusteru AKS k IP adrese. Tento rozsah IP adres by měl být adresní prostor, který se v síti nepoužívá jinde. 
 - Adresa `dns_service_ip` by měla být adresa ". 10" rozsahu IP adres služby.
-- @No__t-0 by měl být velký adresní prostor, který se ve vašem síťovém prostředí nepoužívá jinde. Rozsah adres musí být dostatečně velký, aby odpovídal počtu uzlů, na které očekáváte horizontální navýšení kapacity. Po nasazení clusteru už tento rozsah adres nemůžete změnit.
-- Rozsah IP adres pod se používá k přiřazení adresního prostoru/24 k jednotlivým uzlům v clusteru. V následujícím příkladu `pod_cidr` 192.168.0.0/16 přiřadí první uzel 192.168.0.0/24, druhý uzel 192.168.1.0/24 a třetí uzel 192.168.2.0/24.
+- `pod_cidr` by měl být velký adresní prostor, který se ve vašem síťovém prostředí nepoužívá jinde. Rozsah adres musí být dostatečně velký, aby odpovídal počtu uzlů, na které očekáváte horizontální navýšení kapacity. Po nasazení clusteru už tento rozsah adres nemůžete změnit.
+- Rozsah IP adres pod se používá k přiřazení adresního prostoru/24 k jednotlivým uzlům v clusteru. V následujícím příkladu přiřadí `pod_cidr` 192.168.0.0/16 první uzel 192.168.0.0/24, druhý uzel 192.168.1.0/24 a třetí uzel 192.168.2.0/24.
 - Při škálování a upgradech clusteru Azure stále přiřazuje každému novému uzlu rozsah IP adres pod.
 - PlayBook načítá `ssh_key` z `~/.ssh/id_rsa.pub`. Pokud ho upravíte, použijte jednořádkový formát začínající na "SSH-RSA" (bez uvozovek).
 - Hodnoty `client_id` a `client_secret` jsou načteny z `~/.azure/credentials`, což je výchozí soubor přihlašovacích údajů. Tyto hodnoty můžete nastavit na instanční objekt nebo načíst tyto hodnoty z proměnných prostředí:
@@ -161,8 +161,8 @@ Následující PlayBook uložte jako `associate.yml`.
 
 Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
 
-- @No__t-0 je název skupiny prostředků, ve které jsou vytvořeny uzly AKS.
-- @No__t-0 je podsíť vytvořená v předchozí části.
+- `node_resource_group` je název skupiny prostředků, ve které jsou vytvořeny uzly AKS.
+- `vnet_subnet_id` je podsíť vytvořená v předchozí části.
 
 
 ## <a name="run-the-sample-playbook"></a>Spuštění ukázkové PlayBook
@@ -212,7 +212,7 @@ Uložte následující ukázkový playbook jako `aks-kubenet.yml`:
 
 V části `vars` proveďte následující změny:
 
-- U klíče `resource_group` změňte hodnotu `aksansibletest` na název skupiny prostředků.
+- Pro `resource_group` klíč změňte hodnotu `aksansibletest` na název skupiny prostředků.
 - U klíče `name` změňte hodnotu `aksansibletest` na název AKS.
 - U klíče `Location` změňte hodnotu `eastus` na umístění skupiny prostředků.
 

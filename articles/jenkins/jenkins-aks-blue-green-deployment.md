@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: de9088333f69a22246fe5873d6e09ddb7ba3044a
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 10/23/2019
+ms.openlocfilehash: 4f528a667a7b498cadb15a441f9d9321259fffde
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249398"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882089"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení
 
@@ -218,7 +218,7 @@ V této části se dozvíte, jak připravit server Jenkinse na spuštění sesta
     1. Vyberte **Manage Jenkins -> Manage Plugins -> Available** (Správa Jenkinse -> Správa modulů plug-in -> K dispozici).
     1. Vyhledejte a nainstalujte modul plug-in služby Azure Container Service.
 
-1. Přidejte přihlašovací údaje pro správu prostředků v Azure. Pokud ho ještě nemáte, nainstalujte modul plug-in **Azure Credentials**.
+1. Přidejte přihlašovací údaje pro správu prostředků v Azure. Pokud ještě nemáte modul plug-in, nainstalujte modul plug-in **Azure Credential** .
 
 1. Přidejte své přihlašovací údaje instančního objektu Azure jako typ **Microsoft Azure Service Principal** (Instanční objekt Microsoft Azure).
 

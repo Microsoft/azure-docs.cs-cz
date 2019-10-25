@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 6/7/2017
-ms.openlocfilehash: 5728a9ab70c5b7db10a123d6964b498e70f96588
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/23/2019
+ms.openlocfilehash: 3da18bf50c82a32a9cec70555ac0d051e7660184
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162217"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882122"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Nasazení do Azure App Service pomocí Jenkinse a Azure CLI
 K nasazení webové aplikace v Javě do Azure můžete použít Azure CLI v [kanálu Jenkinse](https://jenkins.io/doc/book/pipeline/). V tomto kurzu vytvoříte kanál CI/CD na virtuálním počítači Azure a také se naučíte:
@@ -31,13 +31,13 @@ Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spu�
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-and-configure-jenkins-instance"></a>Vytvoření a konfigurace instance Jenkinse
-Pokud ještě nemáte hlavní server Jenkinse, začněte [šablonou řešení](install-jenkins-solution-template.md), která ve výchozím nastavení zahrnuje požadovaný modul plug-in [Azure Credentials](https://plugins.jenkins.io/azure-credentials). 
+Pokud ještě nemáte hlavní server Jenkinse, začněte se [šablonou řešení](install-jenkins-solution-template.md), která ve výchozím nastavení zahrnuje požadované moduly plug-in [Azure Credentials](https://plugins.jenkins.io/azure-credentials) . 
 
-Modul plug-in Azure Credentials umožňuje ukládat přihlašovací údaje instančních objektů Microsoft Azure v Jenkinsu. Ve verzi 1.2 jsme pro kanál Jenkinse přidali podporu získání přihlašovacích údajů Azure. 
+Modul plug-in Azure Credential umožňuje ukládat Microsoft Azure přihlašovací údaje instančního objektu v Jenkinse. Ve verzi 1.2 jsme pro kanál Jenkinse přidali podporu získání přihlašovacích údajů Azure. 
 
 Ujistěte se, že máte verzi 1.2 nebo novější:
 * Na řídicím panelu Jenkinse klikněte na **Manage Jenkins -> Plugin Manager** (Správa Jenkinse -> Správa modulů plug-in) a vyhledejte **Azure Credential**. 
-* Pokud máte starší verzi než 1.2, aktualizujte modul plug-in.
+* Pokud je verze starší než 1,2, aktualizujte modul plug-in.
 
 Na hlavním serveru Jenkinse se vyžaduje také sada Java JDK a Maven. Pokud je chcete nainstalovat, pomocí SSH se přihlaste k hlavnímu serveru Jenkinse a spusťte následující příkazy:
 ```bash
@@ -174,7 +174,7 @@ Zobrazí se následující:
 ## <a name="deploy-to-azure-web-app-on-linux"></a>Nasazení do služby Azure Web App on Linux
 Teď, když víte, jak používat Azure CLI v kanálu Jenkinse, můžete skript upravit tak, aby provedl nasazení do služby Azure Web App on Linux.
 
-Web App on Linux podporuje jiný způsob nasazení, který spočívá v použití Dockeru. K nasazení je potřeba určit soubor Dockerfile, který zabalí vaši webovou aplikaci s modulem runtime služby do image Dockeru. Modul plug-in pak image sestaví, odešle do registru Dockeru a nasadí do vaší webové aplikace.
+Web App on Linux podporuje jiný způsob nasazení, který spočívá v použití Dockeru. K nasazení je potřeba určit soubor Dockerfile, který zabalí vaši webovou aplikaci s modulem runtime služby do image Dockeru. Modul plug-in pak sestaví image, nabídne ji do registru Docker a nasadí image do vaší webové aplikace.
 
 * Podle [těchto](../app-service/containers/quickstart-nodejs.md) kroků vytvořte webovou aplikaci Azure spuštěnou v Linuxu.
 * Nainstalujte do své instance Jenkinse Docker podle pokynů v tomto [článku](https://docs.docker.com/engine/installation/linux/ubuntu/).
@@ -215,7 +215,7 @@ Web App on Linux podporuje jiný způsob nasazení, který spočívá v použit�
 
     Přejděte na adresu http://&lt;název_aplikace>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (místo &lt;x> a &lt;y> zadejte libovolná čísla), kde se zobrazí součet hodnot x a y.
     
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste nakonfigurovali kanál Jenkinse, který rezervuje zdrojový kód v úložišti GitHub. Potom spustí Maven, který sestaví soubor war, a sestavený soubor pak pomocí Azure CLI nasadí do služby Azure App Service. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

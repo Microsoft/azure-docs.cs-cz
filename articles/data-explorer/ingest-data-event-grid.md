@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9557923fc2228e8508acaa7e15d1729ac3d29538
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d3f5ef9d2c3359dc61c32d4971100b096b004f2f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028377"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881553"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Ingestování objektů blob do Azure Průzkumník dat díky přihlášení k odběru oznámení Event Grid
 
@@ -35,7 +35,7 @@ V tomto článku se naučíte, jak nastavit předplatné [Azure Event Grid](/azu
 ## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>Vytvoření předplatného Event Grid v účtu úložiště
 
 1. V Azure Portal Najděte svůj účet úložiště.
-1. Vyberte **události**@no__t**odběr událostí**1.
+1. Vyberte **události** > **odběr události**.
 
     ![Dotaz – odkaz aplikace](media/ingest-data-event-grid/create-event-grid-subscription.png)
 
@@ -53,7 +53,7 @@ V tomto článku se naučíte, jak nastavit předplatné [Azure Event Grid](/azu
     | Koncový bod | *test-hub* | Centrum událostí, které jste vytvořili |
     | | |
 
-1. Vyberte kartu **Další funkce** , pokud chcete sledovat soubory z konkrétního kontejneru. Filtry pro oznámení můžete nastavit následujícím způsobem:
+1. Vyberte kartu **filtry** , pokud chcete sledovat soubory z konkrétního kontejneru. Filtry pro oznámení můžete nastavit následujícím způsobem:
     * **Subjekt začínající** v poli je předpona *literálu* kontejneru objektů BLOB. Vzhledem k tomu, že je vzor použit jako *StartsWith*, může zahrnovat více kontejnerů. Nejsou povoleny žádné zástupné znaky.
      *Musí* být nastavená takto: *`/blobServices/default/containers/`* [Předpona kontejneru]
     * **Subjekt končí s** polem je přípona *literálu* objektu BLOB. Nejsou povoleny žádné zástupné znaky.

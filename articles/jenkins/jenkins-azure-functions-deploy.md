@@ -1,28 +1,28 @@
 ---
-title: Nasazení do Azure Functions pomocí modulu plug-in Azure Functions Jenkinse
-description: Přečtěte si, jak nasadit do Azure Functions pomocí modulu plug-in Azure Functions Jenkinse
+title: Nasazení do Azure Functions pomocí modulu plug-in pro Azure Functions Jenkinse
+description: Naučte se, jak nasadit Azure Functions pomocí modulu plug-in Azure Functions Jenkinse
 ms.service: jenkins
 keywords: Jenkinse, Azure, DevOps, Java, Azure Functions
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 02/23/2019
-ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 10/23/2019
+ms.openlocfilehash: 58267c607b0c4f2eaaf242c8e0752451f8c04c9a
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815735"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882038"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Nasazení do Azure Functions pomocí modulu plug-in Azure Functions Jenkinse
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Nasazení do Azure Functions pomocí modulu plug-in pro Azure Functions Jenkinse
 
 [Azure Functions](/azure/azure-functions/) je služba COMPUTE bez serveru. Pomocí Azure Functions můžete spustit kód na vyžádání bez zřízení nebo správy infrastruktury. V tomto kurzu se dozvíte, jak nasadit funkci Java, která Azure Functions pomocí modulu plug-in Azure Functions.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
-- **Jenkinse Server**: Pokud nemáte nainstalovaný server Jenkinse, přečtěte si článek [vytvoření serveru Jenkinse v Azure](./install-jenkins-solution-template.md).
+- **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- **Server Jenkinse**: Pokud nemáte nainstalovaný server Jenkinse, přečtěte si článek [vytvoření serveru Jenkinse v Azure](./install-jenkins-solution-template.md).
 
   > [!TIP]
   > Zdrojový kód, který se používá pro tento kurz, se nachází v [úložišti GitHub sady Visual Studio Čína](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java).
@@ -33,7 +33,7 @@ Chcete-li vytvořit funkci Java pomocí zásobníku Java Runtime, použijte buď
 
 Následující kroky ukazují, jak vytvořit funkci Java pomocí rozhraní příkazového řádku Azure:
 
-1. Vytvořte skupinu prostředků a nahraďte  **&lt;zástupný symbol resource_group >** názvem vaší skupiny prostředků.
+1. Vytvořte skupinu prostředků a nahraďte zástupný text **&lt;resource_group >** názvem vaší skupiny prostředků.
 
     ```cli
     az group create --name <resource_group> --location eastus
@@ -85,9 +85,9 @@ Následující postup vysvětluje, jak připravit server Jenkinse:
 
 ## <a name="fork-the-sample-github-repo"></a>Rozvětvení ukázkového úložiště GitHub
 
-1. Přihlaste se [k úložišti GitHub pro vzorovou nebo stejnou ukázkovou aplikaci](https://github.com/VSChina/odd-or-even-function.git).
+1. [Přihlaste se k úložišti GitHub pro vzorovou nebo stejnou ukázkovou aplikaci](https://github.com/VSChina/odd-or-even-function.git).
 
-1. V pravém horním rohu GitHubu vyberte možnost rozvětvení.
+1. V pravém horním rohu GitHubu vyberte možnost **rozvětvení**.
 
 1. Podle pokynů vyberte svůj účet GitHub a dokončete rozvětvení.
 
@@ -137,7 +137,7 @@ Teď je čas spustit úlohu Jenkinse.
 
 1. Nejdřív Získejte autorizační klíč pomocí pokynů v článku [Azure Functions aktivační události a vazby protokolu HTTP](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) .
 
-1. V prohlížeči zadejte adresu URL aplikace. Zástupné symboly nahraďte odpovídajícími hodnotami a zadejte číselnou hodnotu pro  **&lt;input_number >** jako vstup pro funkci Java.
+1. V prohlížeči zadejte adresu URL aplikace. Zástupné symboly nahraďte odpovídajícími hodnotami a zadejte číselnou hodnotu pro **&lt;input_number >** jako vstup pro funkci Java.
 
     ```
     https://<function_app>.azurewebsites.net/api/HttpTrigger-Java?code=<authorization_key>&number=<input_number>
@@ -156,7 +156,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte prostředky, které 
 az group delete -y --no-wait -n <resource_group>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Functions najdete v následujících zdrojích:
 > [!div class="nextstepaction"]

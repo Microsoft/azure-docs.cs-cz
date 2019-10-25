@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671312"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882564"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure Storage
 
@@ -29,7 +29,7 @@ Informace o tom, jak vytvořit účet úložiště Azure, najdete v tématu [Vyt
 
 Účty úložiště pro obecné účely v2 podporují nejnovější funkce Azure Storage a zahrnují všechny funkce účtů pro obecné účely V1 a BLOB Storage. Účty pro obecné účely v2 poskytují nejnižší cenu za GB pro Azure Storage a také ceny za transakce z odvětví konkurenčních produktů. Účty úložiště pro obecné účely v2 podporují tyto služby Azure Storage:
 
-- Objekty BLOB (všechny typy: Blokovat, připojit, stránku)
+- Objekty BLOB (všechny typy: blokovat, připojit, stránka)
 - Soubory
 - Disky
 - Fronty
@@ -44,7 +44,7 @@ Informace o tom, jak vytvořit účet úložiště Azure, najdete v tématu [Vyt
 
 ### <a name="general-purpose-v1-accounts"></a>Účty pro obecné účely verze 1
 
-Účty pro obecné účely v1 poskytují přístup ke všem službám Azure Storage, ale nemusí mít nejnovější funkce nebo nejnižší ceny za gigabajt. Účty úložiště pro obecné účely v1 podporují tyto služby Azure Storage:
+Účty úložiště pro obecné účely v1 poskytují přístup ke všem službám Azure Storage, ale nemusí mít nejnovější funkce nebo nejnižší ceny za gigabajt. Účty úložiště pro obecné účely v1 podporují tyto služby Azure Storage:
 
 - Objekty BLOB (všechny typy)
 - Soubory
@@ -60,17 +60,19 @@ I když jsou ve většině případů doporučovány účty pro obecné účely 
 
 * Používáte verzi rozhraní [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx), která je starší než 14.2.2014, nebo klientskou knihovnu verze nižší než 4.x a nemůžete svoji aplikaci upgradovat.
 
-### <a name="block-blob-storage-accounts"></a>Zablokovat účty úložiště objektů BLOB
+### <a name="blockblobstorage-accounts"></a>Účty BlockBlobStorage
 
-Účet úložiště objektů blob bloku je specializovaný účet úložiště pro ukládání nestrukturovaných dat objektu jako objektů blob bloku. Tento typ účtu úložiště podporuje objekty blob bloku a doplňovací objekty blob, ale ne objekty blob stránky, tabulky nebo fronty.
+Účet BlockBlobStorage je specializovaný účet úložiště, který slouží k ukládání nestrukturovaných dat objektu jako objektů blob bloku a k vytvoření objektů blob bloku úrovně Premium. Tento druh účtu úložiště podporuje objekty blob bloku a doplňovací objekty blob, ale ne objekty blob stránky, tabulky nebo fronty.
 
-V porovnání s účty úložiště pro obecné účely v2 a BLOB Storage zablokuje účty úložiště objektů BLOB zajišťují nízkou a konzistentní latenci a vyšší sazby za transakce.
+V porovnání s účty pro obecné účely v2 a BlobStorage účty BlockBlobStorage poskytují nízkou a konzistentní latenci a vyšší sazby za transakce.
 
-Účty úložiště blob bloku v současné době nepodporují vrstvení na horkou, studenou nebo archivní úroveň přístupu.
+Účty BlockBlobStorage v současné době nepodporují vrstvy přístupu na horkou, studenou nebo archivní úroveň.
 
-### <a name="filestorage-storage-accounts"></a>Účty úložiště úložiště
+### <a name="filestorage-accounts"></a>Účty úložiště
 
-Účet úložiště souborů je specializovaný účet úložiště, který se používá k ukládání a vytváření sdílených složek Premium. Účty úložiště úložiště obsahují jedinečné vyhrazené charakteristiky výkonu, jako je například shlukování IOPS. Další informace o těchto vlastnostech najdete v části [výkonnostní vrstvy sdílení souborů](../files/storage-files-planning.md#file-share-performance-tiers) v příručce pro plánování souborů.
+Účet úložiště souborů je specializovaný účet úložiště, který slouží k ukládání a vytváření sdílených složek Premium. Tento druh účtu úložiště podporuje soubory, ale ne objekty blob bloku, doplňovací objekty blob, objekty blob stránky, tabulky nebo fronty. 
+
+Účty úložiště obsahují jedinečné vyhrazené charakteristiky výkonu, jako je třeba shlukování IOPS. Další informace o těchto vlastnostech najdete v části [výkonnostní vrstvy sdílení souborů](../files/storage-files-planning.md#file-share-performance-tiers) v příručce pro plánování souborů.
 
 ## <a name="naming-storage-accounts"></a>Pojmenování účtů úložiště
 
@@ -86,7 +88,7 @@ Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 * Standardní úroveň výkonu pro ukládání objektů blob, souborů, tabulek, front a disků virtuálních počítačů Azure.
 * Úroveň výkonu Premium pro ukládání pouze nespravovaných disků virtuálního počítače.
 
-Účty úložiště blob bloku poskytují úroveň výkonu Premium pro ukládání objektů blob bloku a doplňovacích objektů BLOB.
+Účty úložiště BlockBlobStorage poskytují úroveň výkonu Premium pro ukládání objektů blob bloku a doplňovací objektů BLOB.
 
 Účty úložiště úložiště obsahují úroveň výkonu Premium pro sdílené složky Azure.
 
@@ -186,5 +188,5 @@ Služba import/export se dá použít taky k přenosu dat z úložiště objekt�
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o tom, jak vytvořit účet úložiště Azure pro obecné účely, najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
-* Informace o tom, jak vytvořit účet úložiště objektů blob bloku, najdete v tématu [Vytvoření účtu bloku BLOB Storage](../blobs/storage-blob-create-account-block-blob.md).
+* Pokud se chcete dozvědět, jak vytvořit účet BlockBlobStorage, přečtěte si téma [Vytvoření účtu úložiště objektů blob bloku](../blobs/storage-blob-create-account-block-blob.md).
 * Pokud chcete spravovat nebo odstranit existující účet úložiště, přečtěte si téma [Správa účtů Azure Storage](storage-account-manage.md).

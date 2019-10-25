@@ -4,15 +4,15 @@ description: AzCopy je nástroj příkazového řádku, který můžete použít
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 37d8c483a1ef49a87205dcc848aae974f5b0e47e
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 812daaf42a987e9dd63bbc39b60c517d8f0cc761
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675865"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882498"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s AzCopy
 
@@ -58,6 +58,8 @@ Pokud chcete zobrazit seznam příkazů, zadejte `azcopy -h` a potom stiskněte 
 Chcete-li získat informace o konkrétním příkazu, stačí zahrnout název příkazu (například: `azcopy list -h`).
 
 ![Vložená Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
+Podrobné referenční dokumentaci k jednotlivým příkazům a parametrům příkazu najdete v tématu [AzCopy](storage-ref-azcopy.md) .
 
 > [!NOTE] 
 > Jako vlastník účtu Azure Storage nemáte automaticky přiřazená oprávnění pro přístup k datům. Než budete moct s AzCopy dělat něco smysluplného, budete se muset rozhodnout, jak zadáte přihlašovací údaje pro autorizaci službě úložiště. 

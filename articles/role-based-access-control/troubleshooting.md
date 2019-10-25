@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 158222c256e3efc7ca87d7a3781ca68e1c4307b1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: e8a5b8b5794687f9e3b1707fda4cbe381e277317
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750192"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819770"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Řešení potíží s RBAC pro prostředky Azure
 
@@ -29,7 +29,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se řízení p�
 ## <a name="problems-with-rbac-role-assignments"></a>Potíže s přiřazováním rolí RBAC
 
 - Pokud nemůžete přidat přiřazení role v Azure Portal na **řízení přístupu (IAM)** , protože možnost **Přidat**  > **Přidat přiřazení role** je zakázaná nebo protože se zobrazí chyba oprávnění "klient s ID objektu nemá. autorizace k provedení akce: Ověřte, že jste aktuálně přihlášeni jako uživatel, kterému je přiřazena role s oprávněním `Microsoft.Authorization/roleAssignments/write`, jako je [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) v oboru, ke kterému se pokoušíte přiřadit roli.
-- Pokud se zobrazí chybová zpráva "při pokusu o přiřazení role nemůžete vytvořit další přiřazení rolí (Code: RoleAssignmentLimitExceeded)", zkuste omezit počet přiřazení rolí přiřazením rolí do skupin. Azure podporuje až **2 000** přiřazení rolí na jedno předplatné.
+- Pokud se zobrazí chybová zpráva "při pokusu o přiřazení role nemůžete vytvořit další přiřazení rolí (Code: RoleAssignmentLimitExceeded)", zkuste omezit počet přiřazení rolí přiřazením rolí do skupin. Azure podporuje až **2 000** přiřazení rolí na jedno předplatné. Toto omezení přiřazení rolí je pevně nastavené a nelze ho zvýšit.
 
 ## <a name="problems-with-custom-roles"></a>Potíže s vlastními rolemi
 

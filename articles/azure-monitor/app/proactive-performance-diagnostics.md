@@ -1,24 +1,19 @@
 ---
 title: Inteligentní zjišťování – anomálie výkonu | Microsoft Docs
 description: Application Insights provádí inteligentní analýzu telemetrie aplikací a upozorňuje na potenciální problémy. Tato funkce nepotřebuje žádné nastavení.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.author: mbullwin
-ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867714"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820565"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -41,7 +36,7 @@ Inteligentní zjišťování vyžaduje alespoň 8 dní telemetrie na funkčním 
 
 Ne, oznámení neznamená, že vaše aplikace má jednoznačně problém. Je to je jednoduše návrh ohledně něčeho, co byste měli blíže prozkoumat.
 
-## <a name="how-do-i-fix-it"></a>Jak ho mám opravit?
+## <a name="how-do-i-fix-it"></a>Návody opravit?
 
 Oznámení obsahují diagnostické informace. Tady je příklad:
 
@@ -52,7 +47,7 @@ Oznámení obsahují diagnostické informace. Tady je příklad:
 2. **Rozsah**. Má tento problém vliv na veškerý provoz, nebo jenom na nějaké stránky? Je omezená na konkrétní prohlížeče nebo umístění? Tyto informace lze získat z oznámení.
 3. **Diagnostikujte**. Diagnostické informace v oznámení budou často navrhovat povahu problému. Například pokud se doba odezvy zpomaluje, když je rychlost požadavků vysoká, navrhne se, aby váš server nebo závislosti byly přetížené. 
 
-    V opačném případě otevřete okno výkon v Application Insights. Tady najdete data profileru [](profiler.md) . Pokud jsou výjimky vyvolány, můžete také vyzkoušet [ladicí program snímku](../../azure-monitor/app/snapshot-debugger.md).
+    V opačném případě otevřete okno výkon v Application Insights. Tady najdete data [profileru](profiler.md) . Pokud jsou výjimky vyvolány, můžete také vyzkoušet [ladicí program snímku](../../azure-monitor/app/snapshot-debugger.md).
 
 
 
@@ -66,7 +61,7 @@ Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odes�
 
 U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Application Insights prostředku omezí na jeden e-mail za den. E-mail se pošle jenom v případě, že se v daném dni našel aspoň jeden nový problém. Žádná zpráva se neopakuje. 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 * *Proto si zaměstnanci Microsoftu prohledají moje údaje?*
   * Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](../../azure-monitor/app/data-retention-privacy.md).
@@ -116,7 +111,7 @@ Otevřete okno metrika prohlížeče. Segmentované zobrazení času načtení s
 ### <a name="improve-slow-pages"></a>Zlepšení pomalých stránek
 Na webu je dostatek Rady na vylepšení odezvy serveru a doby načítání stránek, proto se nebudeme opakovat tady. Tady je několik tipů, o kterých už jste se seznámili, stačí vám to, abyste se seznámili:
 
-* Pomalé načítání z důvodu velkých souborů: Načtěte skripty a další součásti asynchronně. Použijte sdružování skriptů. Oddělte hlavní stránku na widgety, které data načítají samostatně. Neodesílat obyčejné staré HTML pro dlouhé tabulky: pomocí skriptu si vyžádejte data jako JSON nebo jiné kompaktní formátování a pak tabulku vyplňte. Existují Skvělé architektury, které vám pomůžou s tímto. (Zahrnuje také velké skripty samozřejmě.)
+* Pomalé načítání z důvodu velkých souborů: asynchronní načtení skriptů a dalších částí. Použijte sdružování skriptů. Oddělte hlavní stránku na widgety, které data načítají samostatně. Neodesílat obyčejné staré HTML pro dlouhé tabulky: pomocí skriptu si vyžádejte data jako JSON nebo jiné kompaktní formátování a pak tabulku vyplňte. Existují Skvělé architektury, které vám pomůžou s tímto. (Zahrnuje také velké skripty samozřejmě.)
 * Pomalé závislosti serveru: Zvažte zeměpisná umístění vašich komponent. Pokud například používáte Azure, ujistěte se, že webový server a databáze jsou ve stejné oblasti. Načítají dotazy Další informace, než potřebují? Mohlo by to být v ukládání do mezipaměti nebo v dávce?
 * Problémy s kapacitou: Podívejte se na metriky serveru doby odezvy a počty požadavků. Pokud se špičky odezvy ve špičce v počtu požadavků neúměrně sníží, je pravděpodobný, že se vaše servery roztáhnou.
 
@@ -168,7 +163,7 @@ Nemusíte nastavovat žádné prahové hodnoty ani konfigurovat pravidla. Algori
 
 ![Kliknutím na odkaz v e-mailové výstraze otevřete diagnostickou sestavu v Azure.](./media/proactive-performance-diagnostics/03.png)
 
-* **Zobrazuje** čas zjištěného problému.
+* **Zobrazuje čas** zjištěného problému.
 * **Co** popisuje:
 
   * Problém, který byl zjištěn;

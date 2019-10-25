@@ -1,105 +1,126 @@
 ---
-title: Jak používat Azure Table Storage a Azure Cosmos DB Table API s C++
+title: Jak používat Azure Table Storage a Azure Cosmos DB rozhraní API pro tabulky sC++
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: cpp
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 10/07/2019
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 40b84a56f93ad670a26eb876a18820e0d4037f63
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 48222bf3f964f8c728f980f839c460862a8212ca
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130547"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818654"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí C++
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Přehled
-Tato příručka ukazuje, jak provádět běžné scénáře pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Popsané scénáře zahrnují **vytvoření a odstranění tabulky** a **práci s entitami tabulky**.
+Tato příručka popisuje běžné scénáře pomocí služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Tento článek se zabývá následujícími scénáři:
+
+* Vytvoření a odstranění tabulky
+* Práce s entitami tabulky
 
 > [!NOTE]
-> Tato příručka je určená pro klientskou knihovnu služby Azure Storage pro C++ verze 1.0.0 nebo novější. Doporučená verze klientské knihovny služby Storage je 2.2.0, která je k dispozici přes [NuGet](https://www.nuget.org/packages/wastorage) nebo [GitHub](https://github.com/Azure/azure-storage-cpp/).
-> 
+> Tato příručka je určená pro klientskou knihovnu služby Azure Storage pro C++ verze 1.0.0 nebo novější. Doporučená verze je Klientská knihovna pro úložiště 2.2.0, která je k dispozici pomocí [NuGet](https://www.nuget.org/packages/wastorage) nebo [GitHubu](https://github.com/Azure/azure-storage-cpp/).
+>
 
-## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
+## <a name="create-accounts"></a>Vytváření účtů
+
+### <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
+
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
+
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>Vytvoření účtu rozhraní Table API služby Azure Cosmos DB
+
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-c-application"></a>Vytvoření aplikace C++
-V této příručce budete používat funkce úložiště, které je možné spustit v rámci aplikace C++. Abyste mohli pokračovat, musíte si nainstalovat klientskou knihovnu služby Azure Storage pro C++ a vytvořit ve svém předplatném účet úložiště Azure.  
 
-Klientskou knihovnu služby Azure Storage pro C++ můžete nainstalovat následujícími způsoby:
+V této příručce použijete funkce úložiště z C++ aplikace. Provedete to tak, že nainstalujete klientskou knihovnu Azure Storage pro C++.
 
-* **Linux:** Postupujte podle pokynů na [Klientská knihovna Azure Storage pro C++ – soubor README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) stránky.  
-* **Windows:** V sadě Visual Studio klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**. Do [konzoly Správce balíčků NuGet](/nuget/tools/package-manager-console) zadejte následující příkaz a stiskněte Enter.  
-  
-     Install-Package wastorage
+Chcete-li nainstalovat knihovnu klienta Azure Storage C++pro, použijte následující metody:
 
-## <a name="configure-access-to-the-table-client-library"></a>Konfigurace přístupu ke klientské knihovně služby Table Storage
-Na začátek souboru C++, ve kterém chcete pro přístup k tabulkám použít rozhraní API úložiště Azure, přidejte následující příklady pro vložení:  
+* Linux Postupujte podle pokynů uvedených v [Azure Storage klientské knihovně pro C++ ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).  
+* Windows V aplikaci Visual Studio vyberte **nástroje > správce balíčků NuGet > konzole správce balíčků**. Spusťte následující příkaz v **konzole Správa balíčků**:
+
+  ```powershell
+  Install-Package wastorage
+  ```
+
+Další informace o **konzole Správa balíčků**najdete v tématu [instalace a Správa balíčků pomocí konzoly Správce balíčků v aplikaci Visual Studio](/nuget/tools/package-manager-console).
+
+### <a name="configure-access-to-the-table-client-library"></a>Konfigurace přístupu ke klientské knihovně služby Table Storage
+
+Pokud chcete pro přístup k tabulkám použít rozhraní API služby Azure Storage, přidejte na začátek C++ souboru následující příkazy `include`:
 
 ```cpp
 #include <was/storage_account.h>
 #include <was/table.h>
 ```
 
-Klient Azure Storage nebo klient Cosmos DB používá připojovací řetězec k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění klientské aplikace musíte zadat připojovací řetězec úložiště nebo připojovací řetězec služby Azure Cosmos DB v příslušném formátu.
+Klient Azure Storage nebo klient Cosmos DB používá připojovací řetězec k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění klientské aplikace musíte zadat připojovací řetězec úložiště nebo připojovací řetězec Azure Cosmos DB v příslušném formátu.
 
-## <a name="set-up-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure Storage
- Jako hodnoty *AccountName* a *AccountKey* použijte název a přístupový klíč vašeho účtu služby Storage uvedené na webu [Azure Portal](https://portal.azure.com). Další informace o účtech služby Storage a přístupových klíčích najdete v tématu [Informace o účtech Azure Storage](../storage/common/storage-create-storage-account.md). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce služby Azure Storage:  
+### <a name="set-up-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure Storage
+
+Tento příklad ukazuje, jak deklarovat statické pole pro uchování Azure Storage připojovacího řetězce:  
 
 ```cpp
 // Define the Storage connection string with your values.
-const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
+const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-## <a name="set-up-an-azure-cosmos-db-connection-string"></a>Nastavení připojovacího řetězce služby Azure Cosmos DB
-Jako hodnoty *Název účtu*, *Primární klíč* a *Koncový bod* použijte název vašeho účtu služby Azure Cosmos DB, váš primární klíč a koncový bod uvedené na webu [Azure Portal](https://portal.azure.com). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce služby Azure Cosmos DB:
+Pro `<your_storage_account>`použijte název svého účtu úložiště. Pro < your_storage_account_key > použijte přístupový klíč pro účet úložiště uvedený v [Azure Portal](https://portal.azure.com). Informace o účtech úložiště a přístupových klíčích najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md).
+
+### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Nastavení připojovacího řetězce služby Azure Cosmos DB
+
+Tento příklad ukazuje, jak deklarovat statické pole pro uchování Azure Cosmos DB připojovacího řetězce:
 
 ```cpp
 // Define the Azure Cosmos DB connection string with your values.
-const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_cosmos_db_account;AccountKey=your_cosmos_db_account_key;TableEndpoint=your_cosmos_db_endpoint"));
+const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_cosmos_db_account>;AccountKey=<your_cosmos_db_account_key>;TableEndpoint=<your_cosmos_db_endpoint>"));
 ```
 
+Pro `<your_cosmos_db_account>`použijte název účtu Azure Cosmos DB. Zadejte svůj primární klíč pro `<your_cosmos_db_account_key>`. Zadejte koncový bod uvedený v [Azure Portal](https://portal.azure.com) pro `<your_cosmos_db_endpoint>`.
 
-K testování aplikace na místním počítači s Windows můžete použít [emulátor úložiště](../storage/common/storage-use-emulator.md) Azure, který se instaluje spolu se sadou [Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště je nástroj, který simulujte služby Azure Blob, Queue a Table Storage a zpřístupňuje je na místním počítači pro vývoj. Následující příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce k místnímu emulátoru úložiště:  
+K otestování aplikace v místním počítači se systémem Windows můžete použít emulátor úložiště Azure, který je nainstalovaný spolu se sadou [Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště je nástroj, který simulujte služby Azure Blob, Queue a Table Storage a zpřístupňuje je na místním počítači pro vývoj. Následující příklad ukazuje, jak deklarovat statické pole pro uložení připojovacího řetězce do místního emulátoru úložiště:  
 
 ```cpp
 // Define the connection string with Azure storage emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Pokud chcete spustit emulátor úložiště Azure, klikněte na tlačítko **Spustit** nebo stiskněte klávesu Windows. Začněte zadávat **Emulátor úložiště Azure** a pak v seznamu aplikací vyberte **Emulátor úložiště Microsoft Azure**.  
+Emulátor úložiště Azure spustíte tak, že z plochy Windows vyberete tlačítko **Start** nebo klávesu Windows. Zadejte a spusťte *emulátor úložiště Microsoft Azure*. Další informace najdete v článku [Použití emulátoru úložiště Azure pro vývoj a testování](../storage/common/storage-use-emulator.md).
 
-V následujících ukázkách se předpokládá, že jste pomocí některé z těchto dvou metod získali připojovací řetězec úložiště.  
+### <a name="retrieve-your-connection-string"></a>Načtení připojovacího řetězce
 
-## <a name="retrieve-your-connection-string"></a>Načtení připojovacího řetězce
-Jako reprezentaci informací o vašem účtu úložiště můžete použít třídu **cloud_storage_account**. K načtení informací o vašem účtu úložiště z připojovacího řetězce úložiště můžete použít metodu **parse**.
+K reprezentaci informací o účtu úložiště můžete použít třídu `cloud_storage_account`. K načtení informací o účtu úložiště z připojovacího řetězce úložiště použijte metodu `parse`.
 
 ```cpp
 // Retrieve the storage account from the connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-Dále získejte odkaz na třídu **cloud_table_client**, která umožňuje získat referenční objekty pro tabulky a entity uložené v rámci služby Table Storage. Následující kód vytvoří objekt **cloud_table_client** s použitím objektu účtu úložiště, který jsme načetli dříve:  
+Potom Získejte odkaz na třídu `cloud_table_client`. Tato třída umožňuje získat referenční objekty pro tabulky a entity uložené ve službě Table Storage. Následující kód vytvoří objekt `cloud_table_client` pomocí objektu účtu úložiště, který jste dříve získali:  
 
 ```cpp
 // Create the table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 ```
 
-## <a name="create-a-table"></a>Vytvoření tabulky
-Objekt **cloud_table_client** umožňuje získat referenční objekty pro tabulky a entity. Následující kód vytvoří objekt **cloud_table_client** a použije ho k vytvoření nové tabulky.
+## <a name="create-and-add-entities-to-a-table"></a>Vytvoření a přidání entit do tabulky
+
+### <a name="create-a-table"></a>Vytvoření tabulky
+
+Objekt `cloud_table_client` umožňuje získat referenční objekty pro tabulky a entity. Následující kód vytvoří objekt `cloud_table_client` a použije ho k vytvoření nové tabulky.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -115,10 +136,11 @@ azure::storage::cloud_table table = table_client.get_table_reference(U("people")
 table.create_if_not_exists();  
 ```
 
-## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
-Pokud chcete do tabulky přidat entitu, vytvořte nový objekt **table_entity** a předejte ho do metody **table_operation::insert_entity**. Následující kód používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu. Společně pak klíč oddílu a řádku entity jednoznačně identifikují entitu v tabulce. Na entity se stejným klíčem oddílu je možné se (v porovnání s těmi, které mají různé klíče oddílů) rychleji dotazovat, ale používání různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Další informace najdete v tématu [Kontrolní seznam výkonu a škálovatelnosti služby Microsoft Azure Storage](../storage/common/storage-performance-checklist.md).
+### <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-Následující kód vytvoří novou instanci objektu **table_entity** a několik zákaznických dat k uložení. Kód pak zavoláním metody **table_operation::insert_entity** vytvoří objekt **table_operation**, který do tabulky vloží entitu a přidruží k ní novou entitu tabulky. Nakonec kód zavolá metodu execute pro objekt **cloud_table**. A nový objekt **table_operation** odešle do služby Table Storage požadavek na vložené nové entity zákazníka do tabulky people.  
+Chcete-li přidat entitu do tabulky, vytvořte nový objekt `table_entity` a předejte ho do `table_operation::insert_entity`. Následující kód používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu. Společně pak klíč oddílu a řádku entity jednoznačně identifikují entitu v tabulce. Na entity se stejným klíčem oddílu je možné zadávat dotazy rychleji než entity s různými klíči oddílů. Použití různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Další informace najdete v tématu [Kontrolní seznam výkonu a škálovatelnosti služby Microsoft Azure Storage](../storage/common/storage-performance-checklist.md).
+
+Následující kód vytvoří novou instanci `table_entity` s některými Zákaznickými daty, která se mají uložit. Kód Next volá `table_operation::insert_entity` k vytvoření objektu `table_operation` pro vložení entity do tabulky a přidruží k ní novou entitu tabulka. Nakonec kód volá metodu `execute` pro objekt `cloud_table`. Nový `table_operation` odešle požadavek do Table service, aby do tabulky `people` vložil novou entitu Customer.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -149,8 +171,9 @@ azure::storage::table_operation insert_operation = azure::storage::table_operati
 azure::storage::table_result insert_result = table.execute(insert_operation);
 ```
 
-## <a name="insert-a-batch-of-entities"></a>Vložení dávky entit
-V rámci jedné operace zápisu můžete do služby Table Storage vložit dávku entit. Následující kód vytvoří objekt **table_batch_operation** a pak do něj přidá tři operace vložení. Jednotlivé operace vložení se přidají vytvořením nového objektu entity, nastavením jeho hodnot a zavoláním metody insert pro objekt **table_batch_operation**, která k entitě přidruží novou operaci vložení. Pak se zavolá metoda **cloud_table.execute**, která provede operaci.  
+### <a name="insert-a-batch-of-entities"></a>Vložení dávky entit
+
+V rámci jedné operace zápisu můžete do služby Table Storage vložit dávku entit. Následující kód vytvoří objekt `table_batch_operation` a potom do něj přidá tři operace vložení. Každá operace vložení je přidána vytvořením nového objektu entity, nastavením jeho hodnot a následným voláním metody `insert` v objektu `table_batch_operation` k přidružení entity k nové operaci vložení. Potom kód volá `cloud_table.execute` pro spuštění operace.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -198,15 +221,18 @@ batch_operation.insert_or_replace_entity(customer3);
 std::vector<azure::storage::table_result> results = table.execute_batch(batch_operation);
 ```
 
-O dávkových operacích byste měli vědět několik věcí:  
+O dávkových operacích byste měli vědět několik věcí:
 
-* V jedné dávce můžete provést jakoukoli kombinaci až 100 operací vložení, odstranění, sloučení, nahrazení, vložení nebo sloučení a vložení nebo nahrazení.  
-* Dávková operace může obsahovat operaci načtení, pokud se jedná o jedinou operaci v dávce.  
+* V libovolné kombinaci v jedné dávce můžete provádět až 100 `insert`, `delete`, `merge`, `replace`, `insert-or-merge`a `insert-or-replace` operací.  
+* Dávková operace může mít operaci načtení, pokud se jedná o jedinou operaci v dávce.  
 * Všechny entity v jedné dávkové operaci musí mít stejný klíč oddílu.  
 * Velikost datové části dávkové operace je omezená na 4 MB.  
 
-## <a name="retrieve-all-entities-in-a-partition"></a>Načtení všech entit v oddílu
-Pokud chcete zadat dotaz na tabulku pro všechny entity v oddílu, použijte objekt **table_query**. Následující příklad kódu určuje filtr pro entity, kde Smith je klíč oddílu. Tento příklad zobrazí pole každé entity z výsledků dotazu z konzoly.  
+## <a name="query-and-modify-entities"></a>Dotazování a úpravy entit
+
+### <a name="retrieve-all-entities-in-a-partition"></a>Načtení všech entit v oddílu
+
+Chcete-li zadat dotaz na tabulku pro všechny entity v oddílu, použijte objekt `table_query`. Následující příklad kódu určuje filtr pro entity, kde `Smith` je klíč oddílu. Tento příklad zobrazí pole každé entity z výsledků dotazu z konzoly.  
 
 > [!NOTE]
 > Tyto metody se ve službě Azure Cosmos DB v současné době nepodporují pro C++.
@@ -241,10 +267,11 @@ for (; it != end_of_results; ++it)
 }  
 ```
 
-Dotaz v tomto příkladu načte všechny entity, které odpovídají kritériím filtru. Pokud máte velké tabulky a potřebujete často stahovat entity tabulky, doporučujeme místo toho ukládat data v objektech blob v úložišti Azure.
+Dotaz v tomto příkladu vrátí všechny entity, které odpovídají kritériím filtru. Pokud máte velké tabulky a potřebujete často stahovat entity tabulky, doporučujeme místo toho ukládat data v objektech blob v úložišti Azure.
 
-## <a name="retrieve-a-range-of-entities-in-a-partition"></a>Načtení rozsahu entit v oddílu
-Pokud nechcete, aby se zadával dotaz na všechny entity v oddílu, můžete zadat rozsah nakombinováním filtru klíče oddílu s filtrem klíče řádku. Následující příklad kódu používá dva filtry k získání všech entit v oddílu Smith, kde klíč řádku (jméno) začíná písmenem abecedy před písmenem E, a potom zobrazí výsledky dotazu.  
+### <a name="retrieve-a-range-of-entities-in-a-partition"></a>Načtení rozsahu entit v oddílu
+
+Pokud nechcete zadávat dotazy na všechny entity v oddílu, můžete zadat rozsah. Kombinovat filtr klíče oddílu s filtrem klíče řádku. Následující příklad kódu používá dva filtry k získání všech entit v oddílu `Smith`, kde klíč řádku (jméno) začíná písmenem starším než `E` v abecedním a pak vypíše výsledky dotazu.  
 
 > [!NOTE]
 > Tyto metody se ve službě Azure Cosmos DB v současné době nepodporují pro C++.
@@ -283,8 +310,9 @@ for (; it != end_of_results; ++it)
 }  
 ```
 
-## <a name="retrieve-a-single-entity"></a>Načtení jedné entity
-Můžete napsat dotaz pro načtení jedné konkrétní entity. Následující kód používá metodu **table_operation::retrieve_entity** k určení zákazníka Jeff Smith. Tato metoda vrátí místo kolekce pouze jednu entitu a vrácená hodnota bude v objektu **table_result**. Určení jak klíčů oddílu, tak klíčů řádků v dotazu představuje nejrychlejší způsob, jak načíst jednu entitu ze služby Table service.  
+### <a name="retrieve-a-single-entity"></a>Načtení jedné entity
+
+Můžete napsat dotaz pro načtení jedné konkrétní entity. Následující kód používá `table_operation::retrieve_entity` k určení `Jeff Smith`zákazníka. Tato metoda vrátí pouze jednu entitu, nikoli kolekci, a vrácená hodnota je v `table_result`. Určení jak klíčů oddílu, tak klíčů řádků v dotazu představuje nejrychlejší způsob, jak načíst jednu entitu ze služby Table service.  
 
 ```cpp
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -308,8 +336,9 @@ std::wcout << U("PartitionKey: ") << entity.partition_key() << U(", RowKey: ") <
     << U(", Property2: ") << properties.at(U("Phone")).string_value() << std::endl;
 ```
 
-## <a name="replace-an-entity"></a>Nahrazení entity
-Pokud chcete entitu nahradit, načtěte ji ze služby Table Storage, upravte objekt entity a pak uložte změny zpět do služby Table Storage. Následující kód změní telefonní číslo a e-mailovou adresu stávajícího zákazníka. Místo volání metody **table_operation::insert_entity** tento kód používá metodu **table_operation::replace_entity**. To způsobí, že entita se na serveru plně nahradí, pokud se entita na serveru od načtení nezměnila, protože v takovém případě se operace nezdaří. Toto selhání zabrání vaší aplikaci v nechtěném přepsání změny provedené mezi načtením a aktualizací provedenou jinou součástí vaší aplikace. Toto selhání by se mělo správně zpracovat tak, že entitu znovu načtete, provedete požadované změny (pokud je stále ještě chcete provést) a pak provedete další operaci **table_operation::replace_entity**. V další části si ukážeme, jak toto chování potlačit.  
+### <a name="replace-an-entity"></a>Nahrazení entity
+
+Pokud chcete entitu nahradit, načtěte ji ze služby Table Storage, upravte objekt entity a pak uložte změny zpět do služby Table Storage. Následující kód změní telefonní číslo a e-mailovou adresu stávajícího zákazníka. Místo volání `table_operation::insert_entity`tento kód používá `table_operation::replace_entity`. Tento přístup způsobí, že entita se na serveru úplně nahradí, pokud se entita na serveru od načtení nezměnila. Pokud byl změněn, operace se nezdařila. Tato chyba zabraňuje vaší aplikaci přepsat změnu provedenou mezi načítáním a aktualizací jiné součásti. Řádným zpracováním této chyby je znovu načíst entitu, provést změny, pokud je stále platná, a poté provést jinou operaci `table_operation::replace_entity`.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -339,8 +368,9 @@ azure::storage::table_operation replace_operation = azure::storage::table_operat
 azure::storage::table_result replace_result = table.execute(replace_operation);
 ```
 
-## <a name="insert-or-replace-an-entity"></a>Vložení nebo nahrazení entity
-Operace **table_operation::replace_entity** selžou, pokud se entita od načtení ze serveru změnila. Kromě toho musíte entitu nejprve načíst ze serveru, aby operace **table_operation::replace_entity** proběhla úspěšně. V některých případech ale nevíte, jestli entita existuje na serveru a jestli jsou hodnoty, které jsou v ní aktuálně uložené, relevantní – vaše aktualizace by je měla všechny přepsat. K tomu použijete operaci **table_operation::insert_or_replace_entity**. Tato operace vloží entitu, pokud neexistuje, nebo ji nahradí, pokud existuje, a to bez ohledu na to, kdy byla provedena poslední aktualizace. V následujícím příkladu kódu se opět načte entita zákazníka Jeff Smith, ale pak se uloží zpět na server prostřednictvím metody **table_operation::insert_or_replace_entity**. Jakékoli aktualizace provedené v entitě mezi operací načtení a aktualizace se přepíšou.  
+### <a name="insert-or-replace-an-entity"></a>Vložení nebo nahrazení entity
+
+`table_operation::replace_entity` operace selžou, pokud byla entita od načtení ze serveru změněna. Kromě toho je nutné nejprve načíst entitu ze serveru, aby `table_operation::replace_entity` bylo úspěšné. Někdy nevíte, jestli na serveru existuje entita. Aktuální hodnoty, které jsou v něm uložené, nejsou důležité, protože by je vaše aktualizace měla přepsat. K dosažení tohoto výsledku použijte operaci `table_operation::insert_or_replace_entity`. Tato operace vloží entitu, pokud neexistuje. Operace nahradí entitu, pokud existuje. V následujícím příkladu kódu je entita zákazníka pro `Jeff Smith` stále načtená, ale je pak uložena zpět na server pomocí `table_operation::insert_or_replace_entity`. Jakékoli aktualizace provedené v entitě mezi operací načtení a aktualizace se přepíšou.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -352,7 +382,7 @@ azure::storage::cloud_table_client table_client = storage_account.create_cloud_t
 // Create a cloud table object for the table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Insert-or-replace an entity.
+// Insert or replace an entity.
 azure::storage::table_entity entity_to_insert_or_replace(U("Smith"), U("Jeff"));
 azure::storage::table_entity::properties_type& properties_to_insert_or_replace = entity_to_insert_or_replace.properties();
 
@@ -364,15 +394,16 @@ properties_to_insert_or_replace[U("Phone")] = azure::storage::entity_property(U(
 // Specify an email address.
 properties_to_insert_or_replace[U("Email")] = azure::storage::entity_property(U("Jeffsm@contoso.com"));
 
-// Create an operation to insert-or-replace the entity.
+// Create an operation to insert or replace the entity.
 azure::storage::table_operation insert_or_replace_operation = azure::storage::table_operation::insert_or_replace_entity(entity_to_insert_or_replace);
 
 // Submit the operation to the Table service.
 azure::storage::table_result insert_or_replace_result = table.execute(insert_or_replace_operation);
 ```
 
-## <a name="query-a-subset-of-entity-properties"></a>Dotaz na podmnožinu vlastností entity
-Dotaz na tabulku dokáže z entity načíst pouze několik vlastností. Dotaz v následujícím kódu pomocí metody **table_query::set_select_columns** vrátí pouze e-mailové adresy entit v tabulce.  
+### <a name="query-a-subset-of-entity-properties"></a>Dotaz na podmnožinu vlastností entity
+
+Dotaz na tabulku dokáže z entity načíst pouze několik vlastností. Dotaz v následujícím kódu používá metodu `table_query::set_select_columns` k vrácení pouze e-mailových adres entit v tabulce.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -412,11 +443,13 @@ for (; it != end_of_results; ++it)
 
 > [!NOTE]
 > Dotazování několika vlastností entity je efektivnější operace než načítání všech vlastností.
-> 
-> 
+>
 
-## <a name="delete-an-entity"></a>Odstranění entity
-Entitu můžete snadno odstranit po jejím načtení. Po načtení entity zavolejte metodu **table_operation::delete_entity** s entitou, kterou chcete odstranit. Potom zavolejte metodu **cloud_table.execute**. Následující kód načte a odstraní entitu s klíčem oddílu Smith a klíčem řádku Jeff.  
+## <a name="delete-content"></a>Odstranit obsah
+
+### <a name="delete-an-entity"></a>Odstranění entity
+
+Entitu můžete po jejím načtení odstranit. Po načtení entity zavolejte `table_operation::delete_entity` s entitou, která se má odstranit. Pak zavolejte metodu `cloud_table.execute`. Následující kód načte a odstraní entitu s klíčem oddílu `Smith` a klíčem řádku `Jeff`.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -439,8 +472,9 @@ azure::storage::table_operation delete_operation = azure::storage::table_operati
 azure::storage::table_result delete_result = table.execute(delete_operation);  
 ```
 
-## <a name="delete-a-table"></a>Odstranění tabulky
-Následující příklad kódu nakonec odstraní tabulku z účtu úložiště. Tabulku, která byla odstraněna, nebude možné po odstranění nějakou dobu znovu vytvořit.  
+### <a name="delete-a-table"></a>Odstranění tabulky
+
+Následující příklad kódu nakonec odstraní tabulku z účtu úložiště. Odstraněná tabulka není k dispozici, aby ji bylo možné po odstranění znovu vytvořit.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -454,28 +488,30 @@ azure::storage::cloud_table table = table_client.get_table_reference(U("people")
 
 // Delete the table if it exists
 if (table.delete_table_if_exists())
-    {
-        std::cout << "Table deleted!";
-    }
-    else
-    {
-        std::cout << "Table didn't exist";
-    }
+{
+    std::cout << "Table deleted!";
+}
+else
+{
+    std::cout << "Table didn't exist";
+}
 ```
 
 ## <a name="troubleshooting"></a>Řešení potíží
-* Chyby sestavení v sadě Visual Studio 2017 Community Edition
 
-  Pokud u vašeho projektu dochází k chybám sestavení kvůli vkládaným souborům storage_account.h a table.h, odeberte přepínač kompilátoru **/permissive-**. 
-  - V **Průzkumníku řešení** klikněte pravým tlačítkem na váš projekt a vyberte **Vlastnosti**.
-  - V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace**, pak rozbalte **C/C++** a vyberte **Jazyk**.
-  - Nastavte **Režim přizpůsobení** na hodnotu **Ne**.
-   
-## <a name="next-steps"></a>Další postup
-Další informace o službě Azure Storage a rozhraní Table API ve službě Azure Cosmos DB najdete na následujících odkazech: 
+Pro Visual Studio Community Edition, pokud váš projekt získá chyby sestavení z důvodu souborů include *storage_account. h* a *Table. h*, odeberte přepínač kompilátoru **/Permissive-** :
+
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na váš projekt a vyberte **Vlastnosti**.
+1. V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace**, pak rozbalte **C/C++** a vyberte **Jazyk**.
+1. Nastavte **Režim přizpůsobení** na hodnotu **Ne**.
+
+## <a name="next-steps"></a>Další kroky
+
+[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
+
+Další informace o službě Azure Storage a rozhraní Table API ve službě Azure Cosmos DB najdete na následujících odkazech:
 
 * [Úvod do rozhraní Table API](table-introduction.md)
-* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 * [Výpis prostředků Azure Storage v C++](../storage/common/storage-c-plus-plus-enumeration.md)
 * [Klientská knihovna služby Storage pro C++ – referenční informace](https://azure.github.io/azure-storage-cpp)
 * [Dokumentace ke službě Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

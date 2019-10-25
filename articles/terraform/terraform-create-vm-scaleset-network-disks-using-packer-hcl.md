@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/23/2019
+ms.openlocfilehash: de68d5217fb455c8d2b3e11163287e00abcf8481
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173482"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882511"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure z vlastní image Packeru
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 > * [Nainstalujte Terraform a nakonfigurujte přístup k Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure).
 > * [Vytvořte pár klíčů SSH](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), pokud ho ještě nemáte.
 > * [Nainstalujte Packer](https://www.packer.io/docs/install/index.html), pokud ho ještě na svém místním počítači nainstalovaný nemáte.
@@ -42,9 +42,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 V prázdném adresáři vytvořte tři nové soubory s následujícími názvy:
 
-- `variables.tf` : Tento soubor obsahuje hodnoty proměnných použitých v šabloně.
-- `output.tf` : Tento soubor popisuje nastavení, která se zobrazí po nasazení.
-- `vmss.tf` : Tento soubor obsahuje kód infrastruktury, kterou nasazujete.
+- `variables.tf`: Tento soubor obsahuje hodnoty proměnných použitých v šabloně.
+- `output.tf`: Tento soubor popisuje nastavení, která se zobrazí po nasazení.
+- `vmss.tf`: Tento soubor obsahuje kód infrastruktury, kterou nasazujete.
 
 ##  <a name="create-the-variables"></a>Vytvoření proměnných 
 
@@ -145,7 +145,7 @@ Spuštěním následujícího příkazu v adresáři, ve kterém jste vytvořili
 terraform init 
 ```
  
-Moduly plug-in poskytovatele se z registru Terraformu stáhnou do složky `.terraform` adresáře, ve kterém jste příkaz spustili.
+Moduly plug-in zprostředkovatele se stáhnou z registru Terraformu do složky `.terraform` v adresáři, ve kterém jste příkaz spustili.
 
 Spuštěním následujícího příkazu nasaďte infrastrukturu do Azure.
 

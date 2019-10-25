@@ -1,25 +1,20 @@
 ---
 title: Analýzy webové aplikace Java pomocí Azure Application Insights | Dokumentace Microsoftu
 description: 'Sledování výkonu webových aplikací Java pomocí Application Insights '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/24/2019
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: a6e8187a085d637ad3abc650daf15d92b96755a3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 05/24/2019
+ms.openlocfilehash: 28fbb5fcfba2b346d0519dec79e538b1e513b7dd
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338118"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817139"
 ---
-# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
+# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu v Javě
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) představují rozšiřitelnou analytickou službu, která webovým vývojářům pomůže pochopit výkon a využití živých aplikací. Slouží k [automatickému instrumentování požadavků, sledování závislostí a shromažďování čítačů výkonu](auto-collect-dependencies.md#java), diagnostice problémů s výkonem a výjimek a [psaní kódu][api] ke sledování toho, co uživatelé s vaší aplikací dělají. 
 
@@ -32,7 +27,7 @@ Budete potřebovat:
 * Java 7 nebo novější
 * Předplatné [Microsoft Azure](https://azure.microsoft.com/).
 
-## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Získejte klíč instrumentace Application Insights
+## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Získejte Application Insights klíč instrumentace.
 1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
 2. Vytvořte prostředek Application Insights. Nastavte typ aplikace na webovou aplikaci Java.
 
@@ -40,7 +35,7 @@ Budete potřebovat:
 
     ![V přehledu nového prostředku klikněte na tlačítko Vlastnosti a zkopírujte klíč instrumentace](./media/java-get-started/instrumentation-key-001.png)
 
-## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Do projektu přidejte Application Insights SDK pro jazyk Java
+## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Přidejte do svého projektu sadu Application Insights SDK pro jazyk Java.
 *Zvolte vhodný způsob pro váš projekt.*
 
 #### <a name="if-youre-using-maven-a-namemaven-setup-"></a>Pokud používáte Maven... <a name="maven-setup" />
@@ -77,10 +72,10 @@ Pak obnovte závislosti projektu k získání stažených binárních souborů.
 Stáhněte si [nejnovější verzi](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a zkopírujte do svého projektu potřebné soubory, přičemž nahraďte jejich starší verze.
 
 ### <a name="questions"></a>Otázky...
-* *Jaký je vztah mezi `-web-auto` `-web` komponentami a a `-core` ?*
-  * `applicationinsights-web-auto`poskytuje metriky, které sledují počty požadavků HTTP servlet a doby odezvy, automatickým registrací filtru Application Insights servlet za běhu.
-  * `applicationinsights-web`také poskytuje metriky, které sledují počty požadavků HTTP servlet a doby odezvy, ale vyžaduje ruční registraci filtru Application Insights servlet ve vaší aplikaci.
-  * `applicationinsights-core`poskytuje pouze úplné rozhraní API, například pokud vaše aplikace není založená na servlet.
+* *Jaký je vztah mezi `-web-auto`, `-web` a `-core` komponenty?*
+  * `applicationinsights-web-auto` poskytuje metriky, které sledují počty požadavků HTTP servlet a doby odezvy, automatickým registrací Application Insights filtru servlet za běhu.
+  * `applicationinsights-web` také poskytuje metriky, které sledují počty požadavků HTTP servlet a doby odezvy, ale vyžaduje ruční registraci Application Insights filtru servlet ve vaší aplikaci.
+  * `applicationinsights-core` poskytuje pouze úplné rozhraní API, například pokud vaše aplikace není založená na servlet.
   
 * *Jak mám aktualizovat sadu SDK na nejnovější verzi?*
   * Pokud používáte Gradle nebo Maven...
@@ -88,7 +83,7 @@ Stáhněte si [nejnovější verzi](https://github.com/Microsoft/ApplicationInsi
   * Pokud spravujete závislosti ručně...
     * Stáhněte si poslední [Application Insights SDK pro jazyk Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a nahraďte staré. Změny jsou popsány v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
 
-## <a name="3-add-an-applicationinsightsxml-file"></a>3. Přidejte soubor ApplicationInsights.xml
+## <a name="3-add-an-applicationinsightsxml-file"></a>3. Přidejte soubor ApplicationInsights. XML.
 Přidejte soubor ApplicationInsights.xml do složky zdrojů v projektu nebo zajistěte, aby byl přidán do cesty nasazení tříd projektu. Zkopírujte do něj následující kód XML.
 
 Nahraďte klíč instrumentace, který jste dostali z portálu Azure.
@@ -144,14 +139,14 @@ Můžete ho taky [nastavit v kódu](../../azure-monitor/app/api-custom-events-me
     }
 ```
 
-## <a name="4-add-agent"></a>4. Přidat agenta
+## <a name="4-add-agent"></a>4. přidat agenta
 
 [Nainstalujte agenta Java](java-agent.md) , abyste mohli zachytit odchozí volání http, dotazy JDBC, protokolování aplikací a lepší pojmenovávání operací.
 
 ## <a name="5-run-your-application"></a>5. Spusťte aplikaci
 Buď ji spusťte v režimu ladění na vývojovém počítači, nebo publikujte na serveru.
 
-## <a name="6-view-your-telemetry-in-application-insights"></a>6. Zobrazte telemetrii ve službě Application Insights
+## <a name="6-view-your-telemetry-in-application-insights"></a>6. zobrazení telemetrie v Application Insights
 Vraťte se do prostředku Application Insights na web [Microsoft Azure Portal](https://portal.azure.com).
 
 Data požadavků HTTP se zobrazí v okně přehledu. (Pokud zde nejsou, počkejte několik sekund a pak klikněte na tlačítko Aktualizovat.)
@@ -173,12 +168,12 @@ Proklikejte se jednotlivými typy konkrétního požadavku pro zobrazení jednot
 
 ![Přejít k určitému ukázkovému zobrazení](./media/java-get-started/007-instance.png)
 
-### <a name="analytics-powerful-query-language"></a>Analytics Výkonný dotazovací jazyk
+### <a name="analytics-powerful-query-language"></a>Analýzy: účinný dotazovací jazyk
 Jak shromažďujete další data, můžete spouštět dotazy obou ke shromáždění dat a k nalezení jednotlivých instancí.  [Analýzy](../../azure-monitor/app/analytics.md) představují výkonný nástroj jak pro vysvětlení výkonu, tak i využití a k diagnostickým účelům.
 
 ![Příklad analýz](./media/java-get-started/0025.png)
 
-## <a name="7-install-your-app-on-the-server"></a>7. Nainstalujte aplikaci na server
+## <a name="7-install-your-app-on-the-server"></a>7. Nainstalujte svou aplikaci na server.
 Teď publikujte aplikaci na server, dovolte osobám ji používat a sledujte telemetrii zobrazenou na portálu.
 
 * Ujistěte se, že brána firewall umožňuje vaší aplikace odesílat telemetrii na tyto porty:
@@ -225,7 +220,7 @@ A pro automatické pojmenovávání operací.
 
 Sada Application Insights Java SDK teď podporuje [distribuované trasování W3C](https://w3c.github.io/trace-context/).
 
-Příchozí konfigurace sady SDK je podrobněji vysvětlena v našem článku [](correlation.md#telemetry-correlation-in-the-java-sdk)o korelaci.
+Příchozí konfigurace sady SDK je podrobněji vysvětlena v našem článku o [korelaci](correlation.md#telemetry-correlation-in-the-java-sdk).
 
 Odchozí konfigurace sady SDK je definována v souboru [AI-agent. XML](java-agent.md) .
 
@@ -302,7 +297,7 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 
 [Přečtěte si další informace o tom, jak nastavit webové testy dostupnosti.][availability]
 
-## <a name="questions-problems"></a>Máte dotazy? Problémy?
+## <a name="questions-problems"></a>Máte otázky? Máte problémy?
 [Řešení potíží s Javou](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>Další kroky

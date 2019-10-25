@@ -1,24 +1,19 @@
 ---
 title: Konfigurace nastavení pravidla inteligentního zjišťování pro Azure Application Insights pomocí šablon Azure Resource Manager | Microsoft Docs
 description: Automatizace správy a konfigurace pravidel inteligentního zjišťování Application Insights Azure pomocí šablon Azure Resource Manager
-services: application-insights
-documentationcenter: ''
-author: harelbr
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: harelbr
+ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.author: harelbr
-ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8b55271b39bf2a65dababbef58f7389ca07d57d8
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193720"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818830"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Správa pravidel inteligentního vyhledávání Application Insights pomocí šablon Azure Resource Manager
 
@@ -29,7 +24,7 @@ Tuto metodu lze použít při nasazování nových Application Insightsch prost�
 
 Můžete konfigurovat následující nastavení pravidel inteligentního zjišťování:
 - Pokud je pravidlo povolené (výchozí hodnota je **true**)
-- Pokud se mají e-maily posílat uživatelům přidruženým ke [čtenářům monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) předplatného a k [monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rolí přispěvatele, když se najde detekce (výchozí hodnota je **true**)
+- Pokud se mají e-maily posílat uživatelům přidruženým ke [čtenářům monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) předplatného a k [monitorování rolí přispěvatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , když se najde detekce (výchozí hodnota je **true**)
 - Všichni další příjemci e-mailu, kteří by měli dostávat oznámení, když zjistí detekci.
     -  Konfigurace e-mailu není k dispozici pro pravidla inteligentního zjišťování označená jako _Náhled_.
 
@@ -140,7 +135,7 @@ Nezapomeňte nahradit název Application Insights prostředku a zadat odpovídaj
 
 ### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Pravidlo upozornění na anomálii v2 (neklasické)
 
-Tato šablona Azure Resource Manager demonstruje konfiguraci pravidla upozornění na anomálii v2 s závažností 2. Tato nová verze pravidla výstrahy anomálií při selhání je součástí nové platformy pro upozorňování Azure a nahrazuje klasickou verzi, která je vyřazena jako součást procesu odchodu [klasických výstrah](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+Tato šablona Azure Resource Manager demonstruje konfiguraci pravidla upozornění na anomálii v2 s závažností 2. Tato nová verze pravidla výstrahy anomálií při selhání je součástí nové platformy pro upozorňování Azure a nahrazuje klasickou verzi, která je vyřazena jako součást [procesu odchodu klasických výstrah](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
 
 ```json
 {
@@ -153,7 +148,7 @@ Tato šablona Azure Resource Manager demonstruje konfiguraci pravidla upozorněn
             "name": "Failure Anomalies - my-app",
             "location": "global", 
             "properties": {
-                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "description": "Failure Anomalies notifies you of an unusual rise in the rate of failed HTTP requests or dependency calls.",
                   "state": "Enabled",
                   "severity": "2",
                   "frequency": "PT1M",
@@ -182,11 +177,11 @@ Níže je tabulka s názvy pravidel inteligentního zjišťování, které se zo
 
 | Název pravidla Azure Portal | Interní název
 |:---|:---|
-| Pomalé načítání stránky | slowpageloadtime |
-| Dlouhá doba odezvy serveru | slowserverresponsetime |
+| Pomalá doba načítání stránky | slowpageloadtime |
+| Nízká doba odezvy serveru | slowserverresponsetime |
 | Dlouhá doba trvání závislosti | longdependencyduration |
-| Prodloužení doby odezvy serveru | degradationinserverresponsetime |
-| Pokles v trvání závislosti | degradationindependencyduration |
+| Snížení doby odezvy serveru | degradationinserverresponsetime |
+| Snížení doby trvání závislosti | degradationindependencyduration |
 | Snížení výkonu v poměru závažnosti trasování (Preview) | extension_traceseveritydetector |
 | Neobvyklé zvýšení objemu výjimek (Preview) | extension_exceptionchangeextension |
 | Zjištěna potenciální nevracení paměti (Preview) | extension_memoryleakextension |

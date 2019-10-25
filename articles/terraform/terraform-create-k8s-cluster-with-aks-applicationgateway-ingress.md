@@ -8,13 +8,13 @@ author: tomarcher
 manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b156169e7202319366e337cc7081e02f5de3acad
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 82cee1e5c93eb21fa8db29985d26fe75bde970d2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244809"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882605"
 ---
 # <a name="create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Vytvoření kontroleru Application Gateway příchozího přenosu dat ve službě Azure Kubernetes
 
@@ -475,11 +475,11 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
 
 1. Uložte soubor a ukončete Editor.
 
-Kód uvedený v této části nastaví název clusteru, umístění a resource_group_name. Hodnota `dns_prefix` – tvoří součást plně kvalifikovaného názvu domény (FQDN) použitého pro přístup ke clusteru – je nastavena.
+Kód uvedený v této části nastaví název clusteru, umístění a resource_group_name. Hodnota `dns_prefix` – ta tvoří část plně kvalifikovaného názvu domény (FQDN), která se používá pro přístup ke clusteru – je nastavena.
 
 Záznam `linux_profile` umožňuje nakonfigurovat nastavení, která umožňují přihlašovat se k pracovním uzlům pomocí SSH.
 
-Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` konfiguruje podrobnosti pro tyto pracovní uzly. @No__t-0 zahrnuje počet pracovních uzlů, které se mají vytvořit, a typ pracovních uzlů. Pokud potřebujete v budoucnu horizontální navýšení nebo snížení kapacity clusteru, upravte hodnotu `count` v tomto záznamu.
+Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` nakonfiguruje podrobnosti pro tyto pracovní uzly. `agent_pool_profile record` obsahuje počet pracovních uzlů, které se mají vytvořit, a typ pracovních uzlů. Pokud potřebujete v budoucnu horizontální navýšení nebo snížení kapacity clusteru, upravte hodnotu `count` v tomto záznamu.
 
 ## <a name="create-a-terraform-output-file"></a>Vytvoření výstupního souboru Terraformu
 
@@ -568,7 +568,7 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
   
-    Příkaz `terraform init` zobrazí úspěch inicializace back-endu a modulu plug-in poskytovatele:
+    Příkaz `terraform init` zobrazuje úspěšnost inicializace modulu plug-in back-end a poskytovatele:
 
     ![Příklad výsledků příkazu „terraform init“](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
@@ -737,8 +737,8 @@ Kód v této části používá správce balíčků [Helm](/azure/aks/kubernetes
     - `armAuth.secretJSON`: vyžaduje se jenom v případě, že je zvolený tajný typ objektu služby (Pokud `armAuth.type` byl nastaven na `servicePrincipal`).
 
     Klíčové poznámky:
-    - Hodnota `identityResourceID` se vytvoří ve skriptu terraformu a dá se najít spuštěním: `echo "$(terraform output identity_client_id)"`.
-    - Hodnota `identityClientID` se vytvoří ve skriptu terraformu a dá se najít spuštěním: `echo "$(terraform output identity_resource_id)"`.
+    - Hodnota `identityResourceID` je vytvořena ve skriptu terraformu a lze ji najít spuštěním: `echo "$(terraform output identity_client_id)"`.
+    - Hodnota `identityClientID` je vytvořena ve skriptu terraformu a lze ji najít spuštěním: `echo "$(terraform output identity_resource_id)"`.
     - Hodnota `<resource-group>` je skupina prostředků vaší aplikační brány.
     - Hodnota `<identity-name>` je název vytvořené identity.
     - Všechny identity pro dané předplatné můžete uvést pomocí: `az identity list`.
