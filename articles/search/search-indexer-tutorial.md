@@ -1,27 +1,27 @@
 ---
-title: C#Návodu Indexování dat z databází SQL Azure – Azure Search
-description: Příklad C# kódu, který ukazuje, jak se připojit ke službě Azure SQL Database, extrahovat hledaná data a načíst je do indexu Azure Search.
-author: HeidiSteen
+title: 'C#Kurz: indexování dat z databází SQL Azure'
+titleSuffix: Azure Cognitive Search
+description: C#příklad kódu ukazuje, jak se připojit ke službě Azure SQL Database, extrahovat hledaná data a načíst je do indexu služby Azure Kognitivní hledání.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 1ba0a965de356cfbe7d9a1cfc8d6d2e8da092934
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: d83db424ee6e9a009353ca568232b38260883a4c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327182"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793605"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Návodu Procházení databáze SQL Azure pomocí Azure Search indexerů
+# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#Kurz: procházení databáze SQL Azure pomocí indexerů Azure Kognitivní hledání
 
-Naučte se konfigurovat indexer pro extrakci prohledávatelných dat z ukázkové databáze SQL Azure. [Indexery](search-indexer-overview.md) jsou součástí služby Azure Search, které procházejí externí zdroje dat a naplňují [index vyhledávání](search-what-is-an-index.md) obsahem. U všech indexerů je indexer pro Azure SQL Database nejčastěji používaný. 
+Naučte se konfigurovat indexer pro extrakci prohledávatelných dat z ukázkové databáze SQL Azure. [Indexery](search-indexer-overview.md) jsou součástí služby Azure kognitivní hledání, která prochází externími zdroji dat a naplňuje [Index vyhledávání](search-what-is-an-index.md) obsahem. U všech indexerů je indexer pro Azure SQL Database nejčastěji používaný. 
 
 Znalost konfigurace indexeru je užitečná, protože zjednodušuje množství kódu, který musíte psát a spravovat. Místo přípravy a nabízení datové sady JSON odpovídající schématu můžete ke zdroji dat připojit indexer a nechat ho extrahovat data a vložit je do indexu. Volitelně také můžete indexer spouštět podle plánu opakování, aby přebíral změny v základním zdroji.
 
-V tomto kurzu použijete [klientské knihovny Azure Search .NET](https://aka.ms/search-sdk) a konzolovou aplikaci .NET Core k provádění následujících úloh:
+V tomto kurzu pomocí [klientských knihoven Azure kognitivní hledání .NET](https://aka.ms/search-sdk) a konzolové aplikace .NET Core provedete následující úlohy:
 
 > [!div class="checklist"]
 > * Přidání informací o vyhledávací službě do nastavení aplikace
@@ -33,11 +33,11 @@ V tomto kurzu použijete [klientské knihovny Azure Search .NET](https://aka.ms/
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu se používají následující služby, nástroje a data. 
 
-[Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu.
+[Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu.
 
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) ukládá externí zdroj dat používaný indexerem. Ukázkové řešení obsahuje datový soubor SQL pro vytvoření tabulky. Postup pro vytvoření služby a databáze jsou k dispozici v tomto kurzu.
 
@@ -46,17 +46,17 @@ Pro spuštění ukázkového řešení lze použít [Visual Studio 2017](https:/
 [Azure-Samples/Search-dotnet-Začínáme](https://github.com/Azure-Samples/search-dotnet-getting-started) poskytuje ukázkové řešení, které najdete v úložišti GitHub Samples Azure. Stáhněte a extrahujte řešení. Ve výchozím nastavení jsou řešení jen pro čtení. Klikněte pravým tlačítkem na řešení a zrušte zaškrtnutí atributu jen pro čtení, aby bylo možné upravovat soubory.
 
 > [!Note]
-> Pokud používáte bezplatnou službu Azure Search, platí pro vás omezení na tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Ujistěte se, že ve své službě máte místo pro příjem nových prostředků.
+> Pokud používáte bezplatnou službu Azure Kognitivní hledání, budete omezeni na tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Ujistěte se, že ve své službě máte místo pro příjem nových prostředků.
 
 ## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![Získání koncového bodu http a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu http a přístupového klíče")
+![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -67,7 +67,7 @@ Informace o připojení k požadovaným službám se zadává do souboru **appse
 
 1. V Průzkumník řešení otevřete **appSettings. JSON** , abyste mohli naplnit jednotlivá nastavení.  
 
-První dvě položky, které můžete hned vyplnit, pomocí adresy URL a klíčů pro správu služby Azure Search. V případě koncového `https://mydemo.search.windows.net`bodu je `mydemo`název služby, který má být poskytnut.
+První dvě položky, které můžete hned vyplnit, pomocí adresy URL a klíčů pro správu služby Azure Kognitivní hledání. Když je zadaný koncový bod `https://mydemo.search.windows.net`, název služby, který se má poskytnout, je `mydemo`.
 
 ```json
 {
@@ -81,7 +81,7 @@ Poslední položka vyžaduje existující databázi. Vytvoříte ho v dalším k
 
 ## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
-V tomto kroku vytvoříte externí zdroj dat, který může indexer procházet. Datovou sadu ve službě Azure SQL Database můžete vytvořit pomocí webu Azure Portal a souboru *hotels.sql* z ukázky. Azure Search využívá ploché sady řádků, jako jsou například řádky generované zobrazením nebo dotazem. Soubor SQL v ukázkovém řešení vytvoří a naplní jednu tabulku.
+V tomto kroku vytvoříte externí zdroj dat, který může indexer procházet. Datovou sadu ve službě Azure SQL Database můžete vytvořit pomocí webu Azure Portal a souboru *hotels.sql* z ukázky. Azure Kognitivní hledání spotřebovává sloučené sady řádků, jako je například jedna vygenerovaná ze zobrazení nebo dotazu. Soubor SQL v ukázkovém řešení vytvoří a naplní jednu tabulku.
 
 Následující cvičení předpokládá, že neexistuje žádný server ani databáze, a v kroku 2 poskytuje pokyny k jejich vytvoření. Pokud máte existující prostředek, volitelně můžete tabulku hotels přidat do něj podle pokynů od kroku 4 dále.
 
@@ -159,7 +159,7 @@ V tomto kurzu indexer přetahuje data z jednoho zdroje dat. V praxi můžete ke 
 
 Hlavní program obsahuje logiku pro vytváření klienta, index, zdroj dat a indexer. Kód předpokládá, že byste tento program mohli spustit několikrát, a proto kontroluje a odstraňuje existující prostředky se stejným názvem.
 
-Objekt zdroje dat je nakonfigurovaný s nastavením, která jsou specifická pro prostředky Azure SQL Database, včetně [přírůstkového indexování](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) pro využití integrovaných [funkcí detekce změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) v Azure SQL. Ukázková databáze hotelů v Azure SQL má sloupec "obnovitelné odstranění" s názvem **IsDeleted**. Pokud je tento sloupec v databázi nastaven na hodnotu true, indexer odebere odpovídající dokument z Azure Search indexu.
+Objekt zdroje dat je nakonfigurovaný s nastavením, která jsou specifická pro prostředky Azure SQL Database, včetně [přírůstkového indexování](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) pro využití integrovaných [funkcí detekce změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) v Azure SQL. Ukázková databáze hotelů v Azure SQL má sloupec "obnovitelné odstranění" s názvem **IsDeleted**. Pokud je tento sloupec v databázi nastavený na hodnotu true, indexer odebere odpovídající dokument z indexu služby Azure Kognitivní hledání.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -261,7 +261,7 @@ Všechny indexery, včetně toho, který jste právě vytvořili prostřednictv�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
+Nejrychlejší způsob vyčištění po kurzu odstraněním skupiny prostředků, která obsahuje službu Azure Kognitivní hledání. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Na portálu je název skupiny prostředků na stránce Přehled služby Azure Kognitivní hledání.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331061"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791807"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Po převzetí služeb při selhání do Azure znovu nastavit ochranu a navrácení počítačů po obnovení do místní lokality
 
@@ -34,6 +34,7 @@ Pokud jste pro vytváření virtuálních počítačů použili šablonu, ujist�
 - Pokud Server vCenter spravuje virtuální počítače, na které se vrátíte navrácení služeb po obnovení, ujistěte se, že máte [požadovaná oprávnění](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) pro zjišťování virtuálních počítačů na serverech vCenter.
 - Než znovu nastavíte ochranu, odstraňte snímky na hlavním cílovém serveru. Pokud se snímky nacházejí na místním hlavním cíli nebo na virtuálním počítači, znovu se ochrana nezdařila. Snímky na virtuálním počítači se automaticky sloučí během úlohy opětovného zapnutí ochrany.
 - Všechny virtuální počítače skupiny replikace musí být stejného typu operačního systému (buď všechny systémy Windows, nebo všechny systémy Linux). Replikační skupina se smíšenými operačními systémy aktuálně není podporovaná pro opětovné zapnutí ochrany a navrácení služeb po obnovení do místního prostředí. Důvodem je to, že hlavní cíl musí být stejného operačního systému jako virtuální počítač. Všechny virtuální počítače skupiny replikace musí mít stejný hlavní cíl. 
+- Hlavní cíl musí mít stejnou nebo vyšší verzi operačního systému, než je verze operačního systému replikovaných položek.
 - Při navrácení služeb po obnovení je konfigurační server vyžadován v místním prostředí. Během navrácení služeb po obnovení musí virtuální počítač existovat v databázi konfiguračního serveru. V opačném případě je navrácení služeb po obnovení neúspěšné. Ujistěte se, že provádíte pravidelné naplánování záloh konfiguračního serveru. Pokud dojde k havárii, obnovte server se stejnou IP adresou, aby navrácení služeb po obnovení fungovalo. 
 - Opětovné navýšení a navrácení služeb po obnovení vyžaduje pro replikaci dat privátní partnerské vztahy typu Site-to-Site (S2S) VPN nebo ExpressRoute. Poskytněte síť, aby se virtuální počítače s podporou převzetí služeb při selhání v Azure dostaly k místnímu konfiguračnímu serveru (otestujete ho). Je potřeba nasadit procesový Server v síti Azure u virtuálních počítačů, které selhaly při převzetí služeb při selhání. Tento procesový Server musí být také schopný komunikovat s místním konfiguračním serverem a hlavním cílovým serverem.
 - V případě, že se IP adresy replikovaných položek zachovaly při převzetí služeb při selhání, je třeba vytvořit připojení S2S nebo ExpressRoute mezi virtuálními počítači Azure a síťovou kartou pro navrácení služeb po obnovení pro konfigurační server. Mějte na paměti, že uchovávání IP adres vyžaduje, aby konfigurační server měl dvě síťové karty – jeden pro připojení ke zdrojovým počítačům a jeden pro připojení k Azure navrácení služeb K tomu je potřeba zabránit překrytí rozsahů adres podsítí ve zdroji a při převzetí služeb při selhání virtuálních počítačů.

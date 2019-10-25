@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1533ceebcda15c45a71c04580c35432de4125ccd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984986"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789394"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -33,9 +33,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 
 > [!NOTE]
-    > Nyní můžete službu Azure Migrate použít k migraci instancí AWS do Azure. [Další informace](../migrate/tutorial-migrate-physical-virtual-machines.md).
+> Nyní můžete službu Azure Migrate použít k migraci instancí AWS do Azure. [Další informace](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Ověřte, že na virtuálních počítačích, které chcete migrovat, běží podporovaná verze operačního systému. Podporované verze: 
   - Windows Server 2016 
   - Windows Server 2012 R2
@@ -122,11 +122,11 @@ Na stránce **Cíl ochrany** vyberete následující hodnoty:
 
 Jakmile to budete mít, přejděte zvolením **OK** na další krok.
 
-### <a name="2-select-deployment-planning"></a>2: Výběr plánování nasazení
+### <a name="2-select-deployment-planning"></a>2: vyberte plánování nasazení.
 
 Na stránce **Dokončili jste plánování nasazení?** vyberte **Udělám to později** a potom vyberte **OK**.
 
-### <a name="3-prepare-source"></a>3: Připravit zdroj
+### <a name="3-prepare-source"></a>3: Příprava zdroje
 
 Na stránce **Připravit zdroj** vyberte **+ Konfigurační server**.
 
@@ -149,9 +149,9 @@ Na stránce **Připravit zdroj** vyberte **+ Konfigurační server**.
     11. V části **Installation Progress** (Průběh instalace) vidíte, jak je instalace daleko. Po dokončení vyberte **Finish** (Dokončit). Zobrazí se okno se zprávou o restartování. Vyberte **OK**. V dalším kroku se zobrazí okno s heslem pro připojení ke konfiguračnímu serveru. Zkopírujte heslo do schránky a bezpečně si ho uložte.
 6. Na virtuálním počítači spusťte program cspsconfigtool.exe, pomocí kterého vytvoříte na konfiguračním serveru jeden nebo více účtů pro správu. Ujistěte se, že účty pro správu mají oprávnění správce na instancích EC2, které chcete migrovat.
 
-Po dokončení nastavení konfiguračního serveru přejděte zpátky na portál Azure Portal a vyberte server, který jste vytvořili jako **Konfigurační server**. Vyberte **OK** , pokud chcete přejít na 3: Připravte cíl.
+Po dokončení nastavení konfiguračního serveru přejděte zpátky na portál Azure Portal a vyberte server, který jste vytvořili jako **Konfigurační server**. Zvolením možnosti **OK** přejděte na krok 3: Příprava cíle.
 
-### <a name="4-prepare-target"></a>4: Připravit cíl
+### <a name="4-prepare-target"></a>4: Příprava cíle
 
 V této části zadáte informace o prostředcích, které jste vytvořili v předchozích krocích tohoto kurzu v části [Příprava prostředků Azure](#prepare-azure-resources).
 
@@ -176,7 +176,7 @@ Povolte replikaci pro všechny virtuální počítače, které chcete migrovat. 
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Na stránce svého trezoru v části **Začínáme** vyberte **Site Recovery**.
-2. V části **pro místní počítače a virtuální počítače Azure**vyberte **krok 1: Replikuje**aplikaci. Na stránkách průvodce zadejte následující informace. Po zadání údajů na každé stránce zvolte **OK**.
+2. V části **Pro místní počítače a virtuální počítače Azure** vyberte **Krok 1: Replikace aplikace**. Na stránkách průvodce zadejte následující informace. Po zadání údajů na každé stránce zvolte **OK**.
    - 1: Konfigurace zdroje
 
      |  |  |
@@ -186,7 +186,7 @@ Povolte replikaci pro všechny virtuální počítače, které chcete migrovat. 
      |Typ počítače: | Zvolte **Fyzické počítače**.|
      | Procesový server: | Z rozevíracího seznamu vyberte konfigurační server.|
 
-   - 2: Konfigurovat cíl
+   - 2: Konfigurace cíle
 
      |  |  |
      |-----|-----|
@@ -229,9 +229,9 @@ Spusťte na portálu test převzetí služeb při selhání:
 
 1. Na stránce vašeho trezoru přejděte na **Chráněné položky** > **Replikované položky**. Vyberte virtuální počítač a potom zvolte **Testovací převzetí služeb při selhání**.
 2. Vyberte bod obnovení, který chcete pro převzetí služeb při selhání použít:
-    - **Poslední zpracovaná**: Převezme virtuální počítač na nejnovější bod obnovení, který zpracoval Site Recovery. Časové razítko je vidět. U této možnosti nedochází k prodlevě při zpracování dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
-    - **Nejnovější konzistentní vzhledem k aplikacím**: Tato možnost převezme všechny virtuální počítače na nejnovější bod obnovení konzistentní vzhledem k aplikacím. Časové razítko je vidět.
-    - **Vlastní**: Vyberte libovolný bod obnovení.
+    - **Nejnovější zpracovaný**: Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Zobrazí se časové razítko. U této možnosti nedochází k prodlevě při zpracování dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
+    - **Nejnovější konzistentní vzhledem k aplikacím:** Tato možnost vrátí všechny virtuální počítače k nejnovějšímu bodu obnovení konzistentnímu vzhledem k aplikacím. Zobrazí se časové razítko.
+    - **Vlastní:** Vyberete si libovolný bod obnovení.
 
 3. V části **Testovací převzetí služeb při selhání** vyberte cílovou síť Azure, ke které se virtuální počítače Azure po převzetí služeb při selhání připojí. Měla by to být síť, kterou jste vytvořili v části [Příprava prostředků Azure](#prepare-azure-resources).
 4. Zvolením možnosti **OK** zahajte převzetí služeb při selhání. Pokud chcete sledovat průběh, otevřete zvolením virtuálního počítače jeho vlastnosti. Nebo můžete vybrat úlohu **Testovací převzetí služeb při selhání** na stránce trezoru. Pokud to chcete udělat, vyberte **Sledování a sestavy** > **Úlohy** >  **Úlohy Site Recovery**.
@@ -241,7 +241,7 @@ Spusťte na portálu test převzetí služeb při selhání:
 
 V některých scénářích vyžaduje převzetí služeb při selhání další zpracování. Zpracování se dokončí za 8 až 10 minut.
 
-## <a name="migrate-to-azure"></a>Migrovat do Azure
+## <a name="migrate-to-azure"></a>Migrace do Azure
 
 Spusťte skutečné převzetí služeb při selhání pro instance EC2 a proveďte jejich migraci na virtuální počítače Azure:
 
@@ -253,13 +253,13 @@ Spusťte skutečné převzetí služeb při selhání pro instance EC2 a proveď
    - Tím se dokončí proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro daný virtuální počítač.
    - Tento krok vyčistí data replikace. Migrované virtuální počítače se neodstraňují. 
 
-     ![Dokončit migraci](./media/migrate-tutorial-aws-azure/complete-migration.png)
+     ![Dokončení migrace](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
 > [!WARNING]
 > *Nepřerušujte probíhající převzetí služeb při selhání*. Před zahájením převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud probíhající proces převzetí služeb při selhání přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste se naučili, jak migrovat instance ES2 AWS do virtuálních počítačů Azure. Další informace o virtuálních počítačích Azure najdete v kurzech pro virtuální počítače s Windows.
 

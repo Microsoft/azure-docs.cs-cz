@@ -14,86 +14,93 @@ ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: a14cb3035c159c82df44f686da7f7b78ef942943
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 277333cbca5a31fdc08ae943d2ff61c35d2c9310
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035855"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802359"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Kurz: použití odkazů Key Vault v aplikaci ASP.NET Core
 
-V tomto kurzu se naučíte používat službu Azure App Configuration Service společně s Azure Key Vault. Jedná se o doplňkové služby, které budou ve většině nasazení aplikací použity vedle sebe. Pro usnadnění jejich použití vám konfigurace aplikace umožňuje vytvořit klíče, které odkazují na hodnoty uložené v Key Vault. Když to uděláte, konfigurace aplikace uloží identifikátor URI do Key Vault hodnoty místo samotné hodnoty. Vaše aplikace načítá hodnotu tohoto klíče pomocí poskytovatele klienta konfigurace aplikace, stejně jako jakýkoli jiný klíč uložený v konfiguraci aplikace. Poskytovatel klienta ho rozpoznává jako odkaz na Key Vault a volá Key Vault, aby se načetla hodnota. Vaše aplikace zodpovídá za to, že se správně ověřuje jak konfigurace aplikace, tak i Key Vault. Tyto dvě služby nekomunikují přímo.
+V tomto kurzu se naučíte používat službu Azure App Configuration Service společně s Azure Key Vault. Konfigurace aplikace a Key Vault jsou doplňkové služby, které jsou používány souběžně ve většině nasazení aplikace.
 
-V tomto kurzu se dozvíte, jak můžete implementovat Key Vault odkazy v kódu. Sestavuje se ve webové aplikaci představené v rychlých startech. Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) .
+Konfigurace aplikací pomáhá používat služby dohromady vytvořením klíčů, které odkazují na hodnoty uložené v Key Vault. Když konfigurace aplikace tyto klíče vytvoří, uloží identifikátory URI Key Vault hodnoty místo samotných hodnot.
 
-K provedení kroků v tomto kurzu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) je vynikající možnost, která je dostupná na platformách Windows, MacOS a Linux.
+Vaše aplikace používá poskytovatele klienta konfigurace aplikace k načtení Key Vault odkazů, stejně jako u všech ostatních klíčů uložených v konfiguraci aplikace. V tomto případě hodnoty uložené v konfiguraci aplikace jsou identifikátory URI, které odkazují na hodnoty v Key Vault. Nejsou Key Vault hodnoty ani přihlašovací údaje. Vzhledem k tomu, že poskytovatel klienta rozpozná klíče jako odkazy Key Vault, používá Key Vault k načtení jejich hodnot.
+
+Vaše aplikace zodpovídá za to, že se správně ověřuje jak konfigurace aplikace, tak i Key Vault. Tyto dvě služby nekomunikují přímo.
+
+V tomto kurzu se dozvíte, jak implementovat Key Vault odkazy v kódu. Sestavuje se ve webové aplikaci představené v rychlých startech. Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) .
+
+K provedení kroků v tomto kurzu můžete použít libovolný editor kódu. Například [Visual Studio Code](https://code.visualstudio.com/) je editor kódu pro různé platformy, který je k dispozici pro operační systémy Windows, MacOS a Linux.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření konfiguračního klíče aplikace, který odkazuje na hodnotu uloženou v Key Vault
-> * Přístup k hodnotě tohoto klíče z ASP.NET Core webové aplikace
+> * Vytvořte konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v Key Vault.
+> * Přístup k hodnotě tohoto klíče z ASP.NET Core webové aplikace.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
+Než začnete s tímto kurzem, nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
-1. Vyberte možnost **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
+1. V levém horním rohu Azure Portal vyberte možnost **vytvořit prostředek** :
 
-    ![Výstup po dokončení vytváření služby Key Vault](./media/quickstarts/search-services.png)
-2. Do vyhledávacího pole zadejte **Key Vault**.
-3. V seznamu výsledků zvolte **Key Vault**.
-4. V části Key Vault zvolte **Vytvořit**.
-5. V části **Vytvořit trezor klíčů** zadejte následující informace:
-    - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **Contoso-vault2**. 
-    - **Předplatné:** Zvolte předplatné.
-    - V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
-    - V rozevírací nabídce **Umístění** zvolte umístění.
-    - U ostatních možností ponechte jejich výchozí hodnoty.
-6. Po zadání výše uvedených informací vyberte **Vytvořit**.
+    ![Výstup po dokončení vytvoření trezoru klíčů](./media/quickstarts/search-services.png)
+1. Do vyhledávacího pole zadejte **Key Vault**.
+1. V seznamu výsledků vyberte na levé straně **trezory klíčů** .
+1. V **trezorech klíčů**vyberte **Přidat**.
+1. Na pravé straně v části **Vytvoření trezoru klíčů**zadejte následující informace:
+    - Vyberte **předplatné** a zvolte předplatné.
+    - V případě **skupiny prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    - V **názvu trezoru klíčů**je vyžadován jedinečný název. Pro tento kurz zadejte **Contoso-vault2**.
+    - V rozevíracím seznamu **oblast** vyberte umístění.
+1. Ostatní možnosti **Vytvoření trezoru klíčů** ponechte výchozí hodnoty.
+1. Vyberte **Create** (Vytvořit).
 
 V tomto okamžiku je váš účet Azure jediným autorizovaným oprávněním pro přístup k tomuto novému trezoru.
 
-![Výstup po dokončení vytváření služby Key Vault](./media/quickstarts/vault-properties.png)
+![Výstup po dokončení vytvoření trezoru klíčů](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault
 
-Pokud chcete do trezoru přidat tajný klíč, stačí provést několik dalších kroků. V tomto případě přidáme zprávu, kterou můžeme použít k otestování Key Vault načítání. Zpráva se nazývá **zpráva** a ukládáme hodnotu **hello z Key Vault** .
+Pokud chcete do trezoru přidat tajný klíč, musíte provést několik dalších kroků. V takovém případě přidejte zprávu, kterou můžete použít k otestování Key Vault načítání. Zpráva se nazývá **zpráva**a v ní uložíte hodnotu Hello z Key Vault.
 
-1. Na stránkách Key Vault vlastnosti vyberte **tajné**kódy.
-1. Klikněte na **Vygenerovat/importovat**.
-1. Na obrazovce **Vytvoření tajného kódu** zvolte následující hodnoty:
-    - **Možnosti nahrání:** Ruční
-    - **Název**: zpráva
-    - **Hodnota**: Hello z Key Vault
-    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Vytvořit**.
+1. Na stránkách vlastností Key Vault vyberte **tajné klíče**.
+1. Vyberte **Generovat/importovat**.
+1. V podokně **vytvořit tajný klíč** zadejte následující hodnoty:
+    - **Možnosti nahrání**: zadejte **Ruční**.
+    - **Název**: zadejte **zprávu**.
+    - **Hodnota**: zadejte **hello z Key Vault**.
+1. Ponechte druhé **vytvořit vlastnosti tajného klíče** s výchozími hodnotami.
+1. Vyberte **Create** (Vytvořit).
 
-## <a name="add-a-key-vault-reference-to-app-config"></a>Přidat odkaz Key Vault do konfigurace aplikace
+## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
-1. Klikněte na **Průzkumník konfigurace** .
+1. Vyberte **Průzkumník konfigurace**.
 
-1. Klikněte na **+ vytvořit** > **odkaz trezoru klíčů** a vyberte následující hodnoty:
-    - **Klíč**: TestApp: nastavení: KeyVaultMessage
-    - **Popisek**: ponechte prázdné.
-    - **Předplatné**, **Skupina prostředků**, **Trezor klíčů**: vyberte možnosti odpovídající Key Vault, který jste vytvořili v předchozí části.
-    - **Tajný kód**: vyberte tajný kód nazvaný **zpráva** , kterou jste vytvořili v předchozí části.
+1. Vyberte **+ vytvořit** > **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
+    - **Klíč**: vyberte **TestApp: Settings: KeyVaultMessage**.
+    - **Popisek**: Nechte tuto hodnotu prázdnou.
+    - **Předplatné**, **Skupina prostředků**a **Trezor klíčů**: zadejte hodnoty odpovídající klíčům v trezoru klíčů, který jste vytvořili v předchozí části.
+    - **Tajný kód**: vyberte tajný kód s názvem **zpráva** , kterou jste vytvořili v předchozí části.
 
 ## <a name="connect-to-key-vault"></a>Připojení k Key Vault
 
-1. V tomto kurzu použijete instanční objekt pro ověřování do trezoru klíčů. Tento instanční objekt vytvoříte pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
+1. V tomto kurzu použijete k ověřování Key Vault instanční objekt. Tento instanční objekt vytvoříte pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
     ```
 
-    Tato operace vrátí řadu párů klíč/hodnota. 
+    Tato operace vrátí řadu párů klíč/hodnota:
 
     ```console
     {
@@ -110,28 +117,32 @@ Pokud chcete do trezoru přidat tajný klíč, stačí provést několik další
     }
     ```
 
-1. Spusťte následující příkaz, který objektu služby povolí přístup k trezoru klíčů:
+1. Spusťte následující příkaz, který instančnímu objektu umožní přístup k trezoru klíčů:
 
-        az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+    ```
+    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+    ```
 
-1. Přidání tajných kódů pro *ClientID* a *ClientSecret* do správce tajných klíčů. Tyto příkazy musí být spuštěny ve stejném adresáři jako soubor *. csproj* .
+1. V následujících příkazech přidejte tajné klíče místo *ClientID* a *ClientSecret* do správce tajných klíčů. Příkazy musí být spuštěny ve stejném adresáři jako soubor *. csproj* .
 
-        dotnet user-secrets set ConnectionStrings:KeyVaultClientId <clientId-of-your-service-principal>        
-        dotnet user-secrets set ConnectionStrings:KeyVaultClientSecret <clientSecret-of-your-service-principal>
+    ```
+    dotnet user-secrets set ConnectionStrings:KeyVaultClientId <clientId-of-your-service-principal>
+    dotnet user-secrets set ConnectionStrings:KeyVaultClientSecret <clientSecret-of-your-service-principal>
+    ```
 
 > [!NOTE]
 > Tyto přihlašovací údaje Key Vault jsou používány pouze v rámci vaší aplikace. Vaše aplikace se ověřuje přímo Key Vault s těmito přihlašovacími údaji. Nejsou nikdy předány do služby konfigurace aplikace.
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Aktualizace kódu pro použití odkazu na Key Vault
 
-1. Otevřete *program.cs*a přidejte odkazy na požadované balíčky.
+1. Otevřete *program.cs*a přidejte odkazy na následující požadované balíčky:
 
     ```csharp
     using Microsoft.Azure.KeyVault;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-1. Aktualizujte metodu `CreateWebHostBuilder` pro použití konfigurace aplikace voláním metody `config.AddAzureAppConfiguration()`. Zahrňte možnost `UseAzureKeyVault` a předejte do svého Key Vault nový odkaz `KeyVaultClient`.
+1. Aktualizujte metodu `CreateWebHostBuilder`, aby používala konfiguraci aplikace, voláním metody `config.AddAzureAppConfiguration`. Zahrňte parametr `UseAzureKeyVault`, který bude předávat nové `KeyVaultClient` odkaz na Key Vault.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -154,7 +165,9 @@ Pokud chcete do trezoru přidat tajný klíč, stačí provést několik další
             .UseStartup<Startup>();
     ```
 
-1. Až předáte odkaz *KeyVaultClient* na metodu `UseAzureKeyVault` při inicializaci připojení k konfiguraci aplikace, můžete získat přístup k hodnotám Key Vault odkazů stejným způsobem jako při přístupu k hodnotám konfiguračních klíčů běžné aplikace. Chcete-li zobrazit tento proces v akci, otevřete *index. cshtml* v zobrazeních > domovském adresáři. Nahraďte jeho obsah následujícím kódem:
+1. Po inicializaci připojení ke konfiguraci aplikace jste předali `KeyVaultClient` odkaz na metodu `UseAzureKeyVault`. Po inicializaci můžete přistupovat k hodnotám Key Vault odkazů stejným způsobem jako při přístupu k hodnotám běžných konfiguračních klíčů aplikací.
+
+    Chcete-li zobrazit tento proces v akci, otevřete *index. cshtml* v **zobrazeních** > **domovské** složce. Nahraďte jeho obsah následujícím kódem:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -174,22 +187,25 @@ Pokud chcete do trezoru přidat tajný klíč, stačí provést několik další
         and @Configuration["TestApp:Settings:KeyVaultMessage"]</h1>
     ```
 
-    Přistupujete k hodnotě Key Vault reference *TestApp: Settings: KeyVaultMessage* stejným způsobem jako konfigurační hodnota *TestApp: nastavení: zpráva*
+    Přistupujete k hodnotě Key Vault reference **TestApp: Settings: KeyVaultMessage** stejným způsobem jako hodnota konfigurace **TestApp: Settings: Message**.
 
 ## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
 1. Pokud chcete aplikaci vytvořit pomocí .NET Core CLI, spusťte v příkazovém prostředí následující příkaz:
 
-        dotnet build
+    ```
+    dotnet build
+    ```
 
-2. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění webové aplikace:
+1. Po dokončení sestavení použijte následující příkaz pro místní spuštění webové aplikace:
 
-        dotnet run
+    ```
+    dotnet run
+    ```
 
-3. Otevřete okno prohlížeče a vyberte `http://localhost:5000`, což je výchozí adresa URL pro webovou aplikaci hostovanou místně.
+1. Otevřete okno prohlížeče a vyberte `http://localhost:5000`, což je výchozí adresa URL pro webovou aplikaci hostovanou místně.
 
-    ![Spuštění aplikace pro rychlý Start – místní](./media/key-vault-reference-launch-local.png)
-
+    ![Spuštění místní aplikace v rychlém startu](./media/key-vault-reference-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -197,7 +213,7 @@ Pokud chcete do trezoru přidat tajný klíč, stačí provést několik další
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přidali identitu spravované služby Azure, abyste zjednodušili přístup ke konfiguraci aplikací a vylepšili správu přihlašovacích údajů pro vaši aplikaci. Další informace o tom, jak používat konfiguraci aplikací, najdete v ukázkách Azure CLI.
+V tomto kurzu jste vytvořili konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v Key Vault. Pokud se chcete dozvědět, jak přidat identitu služby spravovanou v Azure, která zjednodušuje přístup k konfiguraci aplikací a Key Vault, pokračujte k dalšímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Ukázky rozhraní příkazového řádku](./cli-samples.md)
+> [Spravovaná integrace identit](./howto-integrate-azure-managed-service-identity.md)

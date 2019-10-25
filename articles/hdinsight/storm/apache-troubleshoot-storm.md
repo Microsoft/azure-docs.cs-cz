@@ -1,7 +1,7 @@
 ---
-title: Řešení Storm pomocí Azure HDInsight
-description: Získejte odpovědi na běžné dotazy týkající se použití Apache Storm pomocí Azure HDInsight.
-keywords: HDInsight, Storm, nejčastější dotazy k Azure, průvodce, běžné problémy s řešením problémů
+title: Řešení potíží s využitím Azure HDInsight
+description: Získejte odpovědi na běžné otázky týkající se použití Apache Storm se službou Azure HDInsight.
+keywords: Azure HDInsight, vyplavení, nejčastější dotazy, Průvodce odstraňováním potíží, běžné problémy
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,171 +9,171 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70030c9014e83984b2cd493ba0d3b2a36180feb3
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: f307d6245b107fdbd3c6d6baafa5a162988235da
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575067"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800007"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Řešení potíží s Apache Storm pomocí Azure HDInsight
 
-Další informace o nejčastější problémy a jejich řešení pro práci s [Apache Storm](https://storm.apache.org/) datové části v [Apache Ambari](https://ambari.apache.org/).
+Přečtěte si o hlavních problémech a jejich řešeních pro práci s [Apache Stormmi](https://storm.apache.org/) datovými částmi v [Apache Ambari](https://ambari.apache.org/).
 
-## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Jak získám přístup do uživatelského rozhraní Storm v clusteru?
+## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Návody přístup k uživatelskému rozhraní pro zaplavení v clusteru?
 
-Máte dvě možnosti pro přístup k rozhraní Storm z prohlížeče:
+Máte dvě možnosti pro přístup k uživatelskému rozhraní s více podmnožinami z prohlížeče:
 
 ### <a name="apache-ambari-ui"></a>Uživatelské rozhraní Apache Ambari
 
-1. Přejdete na řídicí panel Ambari.
-2. V seznamu služeb vyberte **Storm**.
-3. V **rychlé odkazy** nabídce vyberte možnost **uživatelské rozhraní Storm**.
+1. Přejít na řídicí panel Ambari
+2. V seznamu **služeb vyberte možnost**zaplavit.
+3. V nabídce **Rychlé odkazy** vyberte **uživatelské rozhraní**pro zaplavení.
 
 ### <a name="direct-link"></a>Přímý odkaz
 
-Je možné otevřít uživatelské rozhraní Storm na následující adrese URL:
+K uživatelskému rozhraní zaplavení máte přístup na následující adrese URL:
 
 `https://<cluster DNS name>/stormui`
 
 Příklad: `https://stormcluster.azurehdinsight.net/stormui`
 
-## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Jak přenesu o kontrolním bodu spoutu centra událostí Stormu z jedné topologie do jiného?
+## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Návody přenést informace o kontrolním bodu centra událostí Spout z jedné topologie do druhé?
 
-Při vývoji topologií, které čtou z Azure Event Hubs pomocí centra událostí Stormu v HDInsight spout soubor .jar, je nutné nasadit topologii, která má stejný název v novém clusteru. Musí však zachovat dat kontrolního bodu, který se potvrdily [Apache ZooKeeper](https://zookeeper.apache.org/) v původním clusteru.
+Když vyvíjíte topologie, které se čtou z Azure Event Hubs pomocí souboru Spout. jar centra událostí HDInsight, musíte nasadit topologii, která má stejný název v novém clusteru. Je však nutné zachovat data kontrolního bodu, která byla potvrzena k [Apache Zookeeper](https://zookeeper.apache.org/) v původním clusteru.
 
-### <a name="where-checkpoint-data-is-stored"></a>Uložení dat kontrolního bodu
+### <a name="where-checkpoint-data-is-stored"></a>Kde jsou uložená data kontrolního bodu
 
-Data kontrolního bodu pro posunutí neukládají spoutu centra událostí v ZooKeeper v dvě kořenové cesty:
+Data kontrolního bodu pro posuny se ukládají do centra událostí Spout v ZooKeeper ve dvou kořenových cestách:
 
 - Kontrolní body netransakčního Spout jsou uloženy v `/eventhubspout`.
 
-- Data kontrolního bodu transakčního Spout `/transactional`se ukládají v.
+- Data kontrolního bodu transakčního Spout se ukládají v `/transactional`.
 
-### <a name="how-to-restore"></a>Postup při obnovení
+### <a name="how-to-restore"></a>Postup obnovení
 
-Pokud chcete získat skripty a knihoven, které můžete použít k exportu dat mimo ZooKeeper a potom importovat data zpět do ZooKeeper s novým názvem, naleznete v tématu [příklady použití Stormu v HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
+Pokud chcete získat skripty a knihovny, které slouží k exportu dat z ZooKeeper, a pak data importovat zpět do ZooKeeper s novým názvem, přečtěte si [Příklady HDInsight pro HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
 
-Lib – složka obsahuje soubory .jar, které obsahují implementaci pro operace exportu/importu. Bash složka obsahuje ukázkový skript, který ukazuje, jak exportovat data ze serveru ZooKeeper v původním clusteru a potom naimportovat zpět na server ZooKeeper v novém clusteru.
+Složka lib obsahuje soubory. jar, které obsahují implementaci pro operaci exportu/importu. Složka bash obsahuje ukázkový skript, který ukazuje, jak exportovat data ze serveru ZooKeeper v původním clusteru a pak ji znovu naimportovat zpět na server ZooKeeper v novém clusteru.
 
-Spustit [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) skript z uzlu ZooKeeper, abyste exportovat a importovat data. Aktualizujte skript na správnou verzi Hortonworks Data Platform (HDP). (Kterých pracujeme na tom, aby tyto skripty Obecné v HDInsight. Obecný skripty můžete spustit z libovolného uzlu v clusteru bez úprav uživatele.)
+Spusťte skript [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) z uzlů Zookeeper pro export a import dat. Aktualizujte skript na správnou verzi Hortonworks data Platform (HDP). (Pracujeme na tom, aby tyto skripty byly Obecné v HDInsight. Obecné skripty lze spustit z libovolného uzlu v clusteru bez úprav uživatelem.)
 
 Příkaz pro export zapíše metadata do cesty Apache Hadoop systém souborů DFS (Distributed File System) (HDFS) (v Azure Blob Storage nebo Azure Data Lake Storage) do umístění, které jste nastavili.
 
 ### <a name="examples"></a>Příklady
 
-#### <a name="export-offset-metadata"></a>Export posunu metadat
+#### <a name="export-offset-metadata"></a>Exportovat metadata posunutí
 
-1. Přejděte do clusteru ZooKeeper v clusteru, ze kterého posun kontrolního bodu musí být exportovány pomocí SSH.
-2. Spusťte následující příkaz (po aktualizaci řetězce verze HDP) exportujte data posunutí Zookeeper na `/stormmetadta/zkdata` cestu HDFS:
+1. Pomocí SSH můžete přejít do clusteru ZooKeeper v clusteru, ze kterého se musí exportovat posun kontrolního bodu.
+2. Spusťte následující příkaz (po aktualizaci řetězce verze HDP) exportujte data posunutí ZooKeeper do cesty k `/stormmetadta/zkdata` HDFS:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
     ```
 
-#### <a name="import-offset-metadata"></a>Import metadat posunutí
+#### <a name="import-offset-metadata"></a>Importovat metadata posunutí
 
-1. Přejděte do clusteru ZooKeeper v clusteru, ze kterého posun kontrolního bodu musí být importovány pomocí SSH.
-2. Spusťte následující příkaz (po aktualizaci řetězce verze HDP) importujte Zookeeper posunutí data z cesty `/stormmetadata/zkdata` HDFS na server Zookeeper v cílovém clusteru:
+1. Pomocí SSH můžete přejít do clusteru ZooKeeper v clusteru, ze kterého se musí naimportovat posun kontrolního bodu.
+2. Spusťte následující příkaz (po aktualizaci řetězce verze HDP) importujte data posunutí ZooKeeper z cesty HDFS `/stormmetadata/zkdata` na server ZooKeeper v cílovém clusteru:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
     ```
 
-#### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Odstranit posunu metadata tak, aby topologie začít od začátku nebo od časové razítko, které uživatel vybere možnost zpracování dat
+#### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Odstraní metadata posunutí, aby topologie mohly začít zpracovávat data od začátku, nebo z časového razítka, které uživatel zvolí.
 
-1. Přejděte do clusteru ZooKeeper v clusteru, ze kterého posun kontrolního bodu musí být odstraněny pomocí SSH.
-2. Spusťte následující příkaz k odstranění všech dat posunu ZooKeeper v aktuálním clusteru (po aktualizaci verze řetězce HDP):
+1. Pomocí SSH můžete přejít do clusteru ZooKeeper v clusteru, ze kterého se musí odstranit posun kontrolního bodu.
+2. Spusťte následující příkaz (po aktualizaci řetězce verze HDP) odstraňte všechna data posunutí ZooKeeper v aktuálním clusteru:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter delete /eventhubspout
     ```
 
-## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Jak najít binární soubory Stormu v clusteru?
+## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Návody najít binární soubory s více podmnožinami v clusteru?
 
-Binární soubory pro aktuální HDP zásobník jsou v `/usr/hdp/current/storm-client`. Umístění je stejný pro hlavní uzly i pro pracovní uzly.
+Binární soubory pro aktuální HDP zásobník jsou v `/usr/hdp/current/storm-client`. Umístění je stejné pro hlavní uzly i pro pracovní uzly.
 
-Pro konkrétní verze HDP v/usr/HDP může existovat více binárních souborů (například `/usr/hdp/2.5.0.1233/storm`). `/usr/hdp/current/storm-client` Složka je symlinked na nejnovější verzi, která je spuštěna v clusteru.
+V/usr/HDP může být několik binárních souborů pro konkrétní verze HDP (například `/usr/hdp/2.5.0.1233/storm`). Složka `/usr/hdp/current/storm-client` je symlinked na nejnovější verzi, která je spuštěna v clusteru.
 
 Další informace najdete v tématu [připojení ke clusteru HDInsight pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) a [Apache Storm](https://storm.apache.org/).
 
-## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Jak zjistím topologie nasazení clusteru Storm?
+## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Návody určit topologii nasazení clusteru se zaplavou?
 
-Nejprve Identifikujte všechny součásti, které se instalují s HDInsight Storm. Storm cluster se skládá z čtyři kategorie uzlu:
+Nejprve identifikujte všechny součásti, které jsou nainstalovány se službou HDInsight. Cluster pro zaplavení se skládá ze čtyř kategorií uzlů:
 
 * Uzly brány
 * Hlavní uzly
-* Uzly zooKeeper
+* Uzly ZooKeeper
 * Pracovní uzly
 
 ### <a name="gateway-nodes"></a>Uzly brány
 
-Uzel brány je brány a reverzní proxy server služby, která umožní veřejný přístup ke službě active management Ambari. Také obstará Ambari volba vedoucího procesu.
+Uzel brány je brána a reverzní proxy služba, která umožňuje veřejný přístup ke službě Active Ambari Management Service. Také zpracovává Ambari vedoucího procesu.
 
 ### <a name="head-nodes"></a>Hlavní uzly
 
-Hlavní uzly Storm spusťte tyto služby:
+Hlavní uzly pro zaplavování spouštějí následující služby:
 * Nimbus
-* Ambari server
-* Ambari metrik serveru
-* Metriky Ambari kolekcí
+* Server Ambari
+* Server metrik Ambari
+* Kolektor metrik Ambari
  
-### <a name="zookeeper-nodes"></a>Uzly zooKeeper
+### <a name="zookeeper-nodes"></a>Uzly ZooKeeper
 
-HDInsight se dodává s třemi uzly ZooKeeper kvora. Velikost kvora je pevná a nedá se změnit.
+HDInsight přináší ZooKeeper kvorum se třemi uzly. Velikost kvora je pevná a nelze ji překonfigurovat.
 
-Automaticky použít kvorum ZooKeeper jsou nakonfigurované služby Storm v clusteru.
+Služby pro zaplavení v clusteru jsou nakonfigurovány tak, aby automaticky používaly kvorum ZooKeeper.
 
 ### <a name="worker-nodes"></a>Pracovní uzly
 
-Pracovní uzly Storm spusťte tyto služby:
+V pracovních uzlech s více uzly spusťte následující služby:
 * Dohledový uzel
-* Pracovního procesu Java virtual machines (JVMs) pro topologií
-* Ambari agent
+* Virtuální počítače Java Worker (JVMs) pro spuštěné topologie
+* Agent Ambari
 
-## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Kde najdu Storm binární soubory spoutů centra událostí pro vývoj?
+## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Návody najít binární soubory Spout centra událostí pro vývoj?
 
-Další informace o používání soubory .jar spoutu centra událostí Stormu s vaší topologii najdete v následující prostředky.
+Další informace o použití souborů. jar centra událostí Spout s vaší topologií najdete v následujících zdrojích.
 
-### <a name="java-based-topology"></a>Topologie založené na jazyce Java
+### <a name="java-based-topology"></a>Topologie založená na jazyce Java
 
-[Zpracování událostí z Azure Event Hubs pomocí Apache Storm v HDInsight (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+[Zpracování událostí z Azure Event Hubs s využitím Apache Storm v HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
-### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# – na základě topologie (Mono na clustery Linux Storm HDInsight 3.4 +)
+### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#-based topologie (mono v clusterech HDInsight 3.4 + Linux)
 
-[Zpracování událostí z Azure Event Hubs pomocí Apache Storm v HDInsight (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[Zpracování událostí z Azure Event Hubs s využitím Apache Storm veC#službě HDInsight ()](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
 
-### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Nejnovější Apache Storm event hub spout binárních souborů pro clustery HDInsight 3.5 + Linux Storm
+### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Nejnovější Apache Storm binární soubory Spout centra událostí pro clustery HDInsight 3.5 + Linux
 
 Další informace o tom, jak používat nejnovější Spout centra událostí, která funguje s clustery HDInsight 3.5 + Linux, najdete v [souboru Readme pro MVN-úložiště](https://github.com/hdinsight/mvn-repo/blob/master/README.md).
 
 ### <a name="source-code-examples"></a>Příklady zdrojového kódu
 
-Zobrazit [příklady](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) o tom, jak číst a zapisovat z Azure Event Hubs pomocí topologie Apache Storm (napsané v jazyce Java) v clusteru Azure HDInsight.
+Podívejte se na [Příklady](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) čtení a zápisu z centra událostí azure pomocí Apache Storm topologie (napsané v jazyce Java) v clusteru Azure HDInsight.
 
-## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Kde najdu soubory konfigurace Storm Log4J 2 v clusterech?
+## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Návody najít v clusterech konfigurační soubory s nastavením Log4J 2?
 
-K identifikaci [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) konfigurační soubory pro Storm služby.
+Identifikujte konfigurační soubory [Apache log4j 2](https://logging.apache.org/log4j/2.x/) pro služby pro zaplavení.
 
-### <a name="on-head-nodes"></a>Na hlavní uzly.
+### <a name="on-head-nodes"></a>U hlavních uzlů
 
 Konfigurace Nimbus Log4J je čtena z `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`.
 
-### <a name="on-worker-nodes"></a>Na pracovní uzly
+### <a name="on-worker-nodes"></a>V pracovních uzlech
 
-Konfigurace Log4J správce je načítána z `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`.
+Konfigurace Log4J správce je čtena z `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`.
 
-Konfigurační soubor Work Log4J je načten z `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`.
+Konfigurační soubor Work Log4J je načtený z `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`.
 
-4\.6`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
+Příklady: `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-- Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+- Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) -oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 - Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

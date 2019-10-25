@@ -1,5 +1,6 @@
 ---
-title: Přečtěte si, jak poskytnout volitelné deklarace identity do vaší aplikace Azure AD | Microsoft Docs
+title: Zjistěte, jak poskytnout volitelné deklarace identity vaší aplikaci Azure AD.
+titleSuffix: Microsoft identity platform
 description: Průvodce přidáním vlastních nebo dodatečných deklarací na tokeny SAML 2,0 a JSON webtokens (JWT) vydaných Azure Active Directory.
 documentationcenter: na
 author: rwike77
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6e097df21051019495b3bf9bb6c83cb3dba03c8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b74e680979ccbcc94f8a49e993c6d64797ab80b1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835327"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803403"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postup: Poskytněte volitelné deklarace identity do vaší aplikace Azure AD.
+# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci Azure AD
 
 Vývojáři aplikací můžou ve svých aplikacích Azure AD použít volitelné deklarace identity a určit, které deklarace identity se mají v tokenech odeslaných do jejich aplikace. 
 
@@ -38,43 +39,43 @@ Seznam standardních deklarací identity najdete v dokumentaci k deklaracím [Ac
 
 I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.0 i v 2.0 i v tokenech SAML, poskytují většinu jejich hodnoty při přechodu z verze 1.0 do verze 2.0. Jedním z cílů [koncového bodu Microsoft Identity Platform v 2.0](active-directory-appmodel-v2-overview.md) jsou menší velikosti tokenů, aby se zajistil optimální výkon pro klienty. V důsledku toho již v tokenech verze 2.0 nejsou k dispozici několik deklarací, které byly dříve zahrnuty v tokenech Access a ID, a je nutné, abyste byli požádáni o konkrétně na základě jednotlivých aplikací.
 
-**Tabulka 1: Použitelnost**
+**Tabulka 1: použitelnost**
 
 | Typ účtu | tokeny v 1.0 | tokeny v 2.0  |
 |--------------|---------------|----------------|
-| Osobní účet Microsoft  | Není k dispozici  | Podporováno |
+| Osobní účet Microsoft  | Nevztahuje se  | Podporováno |
 | Účet Azure AD      | Podporováno | Podporováno |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>volitelná sada deklarací v 1.0 a v 2.0
 
-Sada volitelných deklarací, které jsou ve výchozím nastavení k dispozici pro použití aplikací, jsou uvedeny níže. Pokud chcete přidat vlastní volitelné deklarace identity pro vaši aplikaci, přečtěte si část [rozšíření adresáře](#configuring-directory-extension-optional-claims)níže. Při přidávání deklarací do **přístupového tokenu**se to bude vztahovat na přístupové tokeny požadované *pro* aplikaci (webové rozhraní API), nikoli na aplikace. Tím se zajistí, že bez ohledu na to, jestli klient přistupuje k rozhraní API, se v přístupovém tokenu, který používá k ověřování na rozhraní API, nachází správná data.
+Sada volitelných deklarací, které jsou ve výchozím nastavení k dispozici pro použití aplikací, jsou uvedeny níže. Pokud chcete přidat vlastní volitelné deklarace identity pro vaši aplikaci, přečtěte si část [rozšíření adresáře](#configuring-directory-extension-optional-claims)níže. Při přidávání deklarací do **přístupového tokenu**se to bude vztahovat na přístupové tokeny požadované *pro* aplikaci (webové rozhraní API), nikoli *na aplikace* . Tím se zajistí, že bez ohledu na to, jestli klient přistupuje k rozhraní API, se v přístupovém tokenu, který používá k ověřování na rozhraní API, nachází správná data.
 
 > [!NOTE]
-> Většinu těchto deklarací lze zahrnout do JWTs pro tokeny v 1.0 a v 2.0, ale ne tokeny SAML, s výjimkou případů, kdy je uvedeno ve sloupci typ tokenu. Uživatelské účty podporují podmnožinu těchto deklarací, která je označena ve sloupci "typ uživatele".  Mnohé z uvedených deklarací se nevztahují na uživatele typu uživatel (nemají žádného tenanta `tenant_ctry` ).  
+> Většinu těchto deklarací lze zahrnout do JWTs pro tokeny v 1.0 a v 2.0, ale ne tokeny SAML, s výjimkou případů, kdy je uvedeno ve sloupci typ tokenu. Uživatelské účty podporují podmnožinu těchto deklarací, která je označena ve sloupci "typ uživatele".  Mnohé z uvedených deklarací se nevztahují na uživatele spotřebitele (nemají žádného tenanta, takže `tenant_ctry` nemá žádnou hodnotu).  
 
 **Tabulka 2: volitelná sada deklarací identity v 1.0 a v 2.0**
 
-| Name                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
+| Name (Název)                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
 |----------------------------|----------------|------------|-----------|--------|
-| `auth_time`                | Čas posledního ověření uživatele Viz specifikace OpenID Connect.| JWT        |           |  |
-| `tenant_region_scope`      | Oblast tenanta prostředků | JWT        |           | |
-| `home_oid`                 | Pro uživatele typu Host, ID objektu uživatele v domovském tenantovi uživatele.| JWT        |           | |
-| `sid`                      | ID relace, která se používá pro odhlášení uživatele na relaci. | JWT        |  Osobní účty a účty Azure AD.   |         |
-| `platf`                    | Platforma zařízení    | JWT        |           | Omezeno na spravovaná zařízení, která můžou ověřit typ zařízení.|
-| `verified_primary_email`   | Zdroj z PrimaryAuthoritativeEmail uživatele      | JWT        |           |         |
-| `verified_secondary_email` | Zdroj z SecondaryAuthoritativeEmail uživatele   | JWT        |           |        |
-| `enfpolids`                | Vynutila se ID zásad. Seznam ID zásad, které byly vyhodnoceny pro aktuálního uživatele. | JWT |  |  |
-| `vnet`                     | Informace o specifikátoru virtuální sítě | JWT        |           |      |
-| `fwd`                      | IP adresa.| JWT    |   | Přidá původní IPv4 adresu žádajícího klienta (Pokud se nachází uvnitř virtuální sítě). |
-| `ctry`                     | Země uživatele | JWT |  | Služba Azure AD vrátí `ctry` volitelnou deklaraci identity, pokud je přítomná a hodnota deklarace je standardní kód země pro dvě písmena, například FR, JP, SZ a tak dále. |
-| `tenant_ctry`              | Země tenanta prostředku | JWT | | |
-| `xms_pdl`          | Preferované umístění dat   | JWT | | U více geografických tenantů se jedná o kód 3, který ukazuje geografickou oblast, ve které se uživatel nachází. Další informace najdete v dokumentaci k [Azure AD Connect o umístění preferovaného data](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation).<br/>Například: `APC` pro Asie a Tichomoří. |
-| `xms_pl`                   | Preferovaný jazyk uživatele  | JWT ||Preferovaný jazyk uživatele, pokud je nastavený. Zdroj z jeho domovského tenanta ve scénářích přístupu hosta. Formát LL-CC ("en-US"). |
-| `xms_tpl`                  | Preferovaný jazyk tenanta| JWT | | Preferovaný jazyk tenanta prostředků, pokud je nastavený. Naformátované vše ("en"). |
-| `ztdid`                    | ID nasazení s nulovým dotykem | JWT | | Identita zařízení používaná pro [Windows autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
+| `auth_time`                | Čas posledního ověření uživatele Viz specifikace OpenID Connect.| TOKEN        |           |  |
+| `tenant_region_scope`      | Oblast tenanta prostředků | TOKEN        |           | |
+| `home_oid`                 | Pro uživatele typu Host, ID objektu uživatele v domovském tenantovi uživatele.| TOKEN        |           | |
+| `sid`                      | ID relace, která se používá pro odhlášení uživatele na relaci. | TOKEN        |  Osobní účty a účty Azure AD.   |         |
+| `platf`                    | Platforma zařízení    | TOKEN        |           | Omezeno na spravovaná zařízení, která můžou ověřit typ zařízení.|
+| `verified_primary_email`   | Zdroj z PrimaryAuthoritativeEmail uživatele      | TOKEN        |           |         |
+| `verified_secondary_email` | Zdroj z SecondaryAuthoritativeEmail uživatele   | TOKEN        |           |        |
+| `enfpolids`                | Vynutila se ID zásad. Seznam ID zásad, které byly vyhodnoceny pro aktuálního uživatele. | TOKEN |  |  |
+| `vnet`                     | Informace o specifikátoru virtuální sítě | TOKEN        |           |      |
+| `fwd`                      | IP adresa.| TOKEN    |   | Přidá původní IPv4 adresu žádajícího klienta (Pokud se nachází uvnitř virtuální sítě). |
+| `ctry`                     | Země uživatele | TOKEN |  | Služba Azure AD vrátí `ctry` volitelnou deklaraci identity, pokud je přítomná a hodnota deklarace je standardní kód země 2 – Letter, například FR, JP, SZ a tak dále. |
+| `tenant_ctry`              | Země tenanta prostředku | TOKEN | | |
+| `xms_pdl`          | Preferované umístění dat   | TOKEN | | U více geografických tenantů se jedná o kód 3, který ukazuje geografickou oblast, ve které se uživatel nachází. Další informace najdete v dokumentaci k [Azure AD Connect o umístění preferovaného data](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation).<br/>Například: `APC` pro Asie a Tichomoří. |
+| `xms_pl`                   | Preferovaný jazyk uživatele  | TOKEN ||Preferovaný jazyk uživatele, pokud je nastavený. Zdroj z jeho domovského tenanta ve scénářích přístupu hosta. Formát LL-CC ("en-US"). |
+| `xms_tpl`                  | Preferovaný jazyk tenanta| TOKEN | | Preferovaný jazyk tenanta prostředků, pokud je nastavený. Naformátované vše ("en"). |
+| `ztdid`                    | ID nasazení s nulovým dotykem | TOKEN | | Identita zařízení používaná pro [Windows autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
 | `email`                    | Adresovatelné e-maily pro tohoto uživatele, pokud ho uživatel má.  | JWT, SAML | MSA, Azure AD | Tato hodnota je ve výchozím nastavení zahrnutá, pokud je uživatel hostem v tenantovi.  U spravovaných uživatelů (těch, kteří jsou v tenantovi) je nutné požádat o tuto volitelnou deklaraci identity, a to jenom v 2.0 s oborem OpenID.  U spravovaných uživatelů musí být e-mailová adresa nastavena na [portálu pro správu Office](https://portal.office.com/adminportal/home#/users).| 
 | `groups`| Volitelné formátování pro deklarace skupin |JWT, SAML| |Používá se ve spojení s nastavením GroupMembershipClaims v [manifestu aplikace](reference-app-manifest.md), který musí být nastaven také. Podrobnosti najdete v tématu [deklarace skupin](#Configuring-group-optional claims) níže. Další informace o deklaracích skupiny najdete v tématu [Konfigurace deklarací identity skupin](../hybrid/how-to-connect-fed-group-claims.md) .
-| `acct`             | Stav uživatelských účtů v tenantovi. | JWT, SAML | | Pokud je uživatel členem tenanta, hodnota je `0`. Pokud se jedná o hosta, hodnota je `1`. |
+| `acct`             | Stav uživatelských účtů v tenantovi. | JWT, SAML | | Pokud je uživatel členem tenanta, hodnota je `0`. Pokud se jedná o hosta, hodnota `1`. |
 | `upn`                      | Deklarace UserPrincipalName. | JWT, SAML  |           | I když je tato deklarace identity zahrnutá automaticky, můžete ji zadat jako volitelnou deklaraci identity pro připojení dalších vlastností, abyste mohli změnit její chování v případě uživatele typu Host.  |
 
 ### <a name="v20-optional-claims"></a>volitelné deklarace identity v 2.0
@@ -83,29 +84,29 @@ Tyto deklarace jsou vždycky zahrnuté v tokenech Azure AD v 1.0, ale nejsou zah
 
 **Tabulka 3: v 2.0 – jenom volitelné deklarace identity**
 
-| JWT Claim     | Name                            | Popis                                | Poznámky |
+| Deklarace JWT     | Name (Název)                            | Popis                                | Poznámky |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP adresa                      | IP adresa, ze které se klient přihlásil.   |       |
 | `onprem_sid`  | Místní identifikátor zabezpečení |                                             |       |
 | `pwd_exp`     | Čas vypršení platnosti hesla        | Datum a čas, kdy platnost hesla vyprší |       |
 | `pwd_url`     | Změnit adresu URL hesla             | Adresa URL, na kterou může uživatel přejít, aby změnila heslo.   |   |
 | `in_corp`     | V podnikové síti        | Signalizuje, že se klient přihlašuje z podnikové sítě. Pokud nejsou, deklarace identity není zahrnutá.   |  Vychází z nastavení [důvěryhodných IP adres](../authentication/howto-mfa-mfasettings.md#trusted-ips) v MFA.    |
-| `nickname`    | Přezdívka                        | Další název uživatele, který je oddělený od prvního nebo posledního jména. | 
+| `nickname`    | Zdívek                        | Další název uživatele, který je oddělený od prvního nebo posledního jména. | 
 | `family_name` | Příjmení                       | Poskytuje příjmení, příjmení nebo rodinné jméno uživatele, jak je definováno v objektu User. <br>"family_name": "Miller" | Podporováno v MSA a Azure AD   |
-| `given_name`  | Jméno                      | Poskytuje první nebo "předané" jméno uživatele, jak je nastaveno u objektu User.<br>"given_name": Frank                   | Podporováno v MSA a Azure AD  |
+| `given_name`  | Jméno                      | Poskytuje první nebo "předané" jméno uživatele, jak je nastaveno u objektu User.<br>"given_name": "Jan"                   | Podporováno v MSA a Azure AD  |
 | `upn`         | Hlavní název uživatele | Identifikátorem pro uživatele, který lze použít s parametrem username_hint.  Nejedná se o trvalý identifikátor pro uživatele a neměl by se používat k klíčovým datům. | Konfiguraci deklarace identity najdete níže v části [Další vlastnosti](#additional-properties-of-optional-claims) . |
 
 ### <a name="additional-properties-of-optional-claims"></a>Další vlastnosti volitelných deklarací identity
 
-Některé volitelné deklarace identity je možné nakonfigurovat tak, aby se změnil způsob, jakým se deklarace identity vrací. Tyto další vlastnosti se většinou používají k migraci místních aplikací s různými očekáváními dat (například `include_externally_authenticated_upn_without_hash` pomáhá klientům, kteří nemůžou zpracovávat značky hash (`#`) v hlavním názvu uživatele (UPN)).
+Některé volitelné deklarace identity je možné nakonfigurovat tak, aby se změnil způsob, jakým se deklarace identity vrací. Tyto další vlastnosti se většinou používají k migraci místních aplikací s různými očekáváními dat (například `include_externally_authenticated_upn_without_hash` pomáhají s klienty, kteří nemůžou zpracovávat značky hash (`#`) v hlavní název uživatele (UPN).)
 
-**Tabulka 4: Hodnoty pro konfiguraci volitelných deklarací identity**
+**Tabulka 4: hodnoty pro konfiguraci volitelných deklarací identity**
 
 | Název vlastnosti  | Název další vlastnosti | Popis |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Lze použít pro odpovědi SAML i JWT i pro tokeny v 1.0 a v 2.0. |
 |                | `include_externally_authenticated_upn`  | Zahrnuje hlavní název uživatele (UPN), který je uložený v tenantovi prostředků. Například `foo_hometenant.com#EXT#@resourcetenant.com`. |             
-|                | `include_externally_authenticated_upn_without_hash` | Stejné jako výše, s tím rozdílem, že`#`značky hash () jsou nahrazeny podtržítkem (`_`), například`foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | Stejné jako výše, s tím rozdílem, že se značky hash (`#`) nahrazují podtržítkem (`_`), například `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>Příklad dalších vlastností
 
@@ -122,14 +123,14 @@ Některé volitelné deklarace identity je možné nakonfigurovat tak, aby se zm
 }
 ```
 
-Tento objekt OptionalClaims způsobí, že token ID se vrátil klientovi, aby zahrnoval jiné hlavní název uživatele (UPN) s dalšími informacemi o domácím tenantovi a tenantovi prostředků. Tato akce změní `upn` jenom deklaraci identity v tokenu, pokud je uživatel hostem v tenantovi (který používá pro ověřování jiný IDP). 
+Tento objekt OptionalClaims způsobí, že token ID se vrátil klientovi, aby zahrnoval jiné hlavní název uživatele (UPN) s dalšími informacemi o domácím tenantovi a tenantovi prostředků. Tím se změní jenom deklarace identity `upn` v tokenu, pokud je uživatel hostem v tenantovi (který používá pro ověřování jiný IDP). 
 
 ## <a name="configuring-optional-claims"></a>Konfigurace volitelných deklarací identity
 
 Můžete nakonfigurovat volitelné deklarace identity pro aplikaci úpravou manifestu aplikace (viz příklad níže). Další informace najdete v [článku Principy manifestu aplikace Azure AD](reference-app-manifest.md).
 
 > [!IMPORTANT]
-> Přístupové tokeny jsou **vždy** generovány pomocí manifestu prostředku, nikoli klienta.  Takže v požadavku `...scope=https://graph.microsoft.com/user.read...` , který je zdrojem grafu.  Proto je přístupový token vytvořen pomocí manifestu grafu, nikoli manifestu klienta.  Změna manifestu aplikace nikdy nezpůsobí, že tokeny pro graf budou vypadat jinak.  Aby bylo možné ověřit, že `accessToken` jsou vaše změny v platnosti, požádejte o token pro vaši aplikaci, ne jinou aplikaci.  
+> Přístupové tokeny jsou **vždy** generovány pomocí manifestu prostředku, nikoli klienta.  Takže v žádosti `...scope=https://graph.microsoft.com/user.read...` prostředek je graf.  Proto je přístupový token vytvořen pomocí manifestu grafu, nikoli manifestu klienta.  Změna manifestu aplikace nikdy nezpůsobí, že tokeny pro graf budou vypadat jinak.  Aby se ověřilo, že se změny `accessToken` projeví, požádejte o token pro vaši aplikaci, ne jinou aplikaci.  
 
 **Ukázkové schéma:**
 
@@ -166,9 +167,9 @@ Můžete nakonfigurovat volitelné deklarace identity pro aplikaci úpravou mani
 
 Deklaruje volitelné deklarace požadované aplikací. Aplikace může nakonfigurovat volitelné deklarace identity, které se budou vracet v každém ze tří typů tokenů (token ID, přístupový token, token SAML 2), který může přijímat ze služby tokenu zabezpečení. Aplikace může nakonfigurovat jinou sadu volitelných deklarací identity, které budou vráceny v každém typu tokenu. Vlastnost OptionalClaims entity Application je objekt OptionalClaims.
 
-**Tabulka 5: Vlastnosti typu OptionalClaims**
+**Tabulka 5: vlastnosti OptionalClaims typu**
 
-| Name        | Typ                       | Popis                                           |
+| Name (Název)        | Typ                       | Popis                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Kolekce (OptionalClaim) | Volitelné deklarace identity vrácené v tokenu JWT ID. |
 | `accessToken` | Kolekce (OptionalClaim) | Volitelné deklarace identity vrácené v přístupovém tokenu JWT. |
@@ -179,13 +180,13 @@ Deklaruje volitelné deklarace požadované aplikací. Aplikace může nakonfigu
 Obsahuje volitelnou deklaraci přidruženou k aplikaci nebo instančnímu objektu. Vlastnosti idToken, accessToken a saml2Token typu [OptionalClaims](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) je kolekce OptionalClaim.
 Pokud je tato možnost podporovaná konkrétní deklarací identity, můžete také změnit chování OptionalClaim pomocí pole AdditionalProperties.
 
-**Tabulka 6: Vlastnosti typu OptionalClaim**
+**Tabulka 6: vlastnosti OptionalClaim typu**
 
-| Name                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
+| Name (Název)                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Název volitelné deklarace identity.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | Zdroj (objekt adresáře) deklarace identity. Z vlastností rozšíření jsou předdefinované deklarace identity a uživatelsky definované deklarace identity. Pokud má zdrojová hodnota hodnotu null, deklarace identity je předdefinovaná volitelná deklarace identity. Pokud je zdrojovou hodnotou uživatel, hodnota ve vlastnosti název je vlastnost rozšíření z objektu User. |
-| `essential`            | Edm.Boolean             | Pokud je hodnota true, deklarace identity zadaná klientem je nutná k zajištění hladkého autorizačního prostředí pro konkrétní úkol požadovaný koncovým uživatelem. Výchozí hodnota je false.                                                                                                             |
+| `essential`            | Edm.Boolean             | Pokud je hodnota true, deklarace identity zadaná klientem je nutná k zajištění hladkého autorizačního prostředí pro konkrétní úkol požadovaný koncovým uživatelem. Výchozí hodnota je false (NEPRAVDA).                                                                                                             |
 | `additionalProperties` | Collection (EDM. String) | Další vlastnosti deklarace identity Pokud v této kolekci existuje vlastnost, upraví chování volitelné deklarace identity zadané ve vlastnosti název.                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>Konfigurace volitelných deklarací rozšíření adresáře
 
@@ -193,15 +194,15 @@ Kromě standardní volitelné sady deklarací identity můžete také nakonfigur
 
 > [!Note]
 > - Rozšíření schématu adresáře jsou funkcí pouze pro Azure AD, takže pokud manifest aplikace požaduje vlastní rozšíření a MSA uživatele do vaší aplikace, tato rozšíření nebudou vrácena.
-> - Volitelné deklarace identity Azure AD fungují jenom s rozšířením Azure AD a nefungují s rozšířením Microsoft Graph Directory. Obě rozhraní API vyžadují `Directory.ReadWriteAll` oprávnění, která mohou být odsouhlasena pouze správci.
+> - Volitelné deklarace identity Azure AD fungují jenom s rozšířením Azure AD a nefungují s rozšířením Microsoft Graph Directory. Obě rozhraní API vyžadují oprávnění `Directory.ReadWriteAll`, která mohou být odsouhlasena pouze správci.
 
 ### <a name="directory-extension-formatting"></a>Formátování rozšíření adresáře
 
-V případě atributů rozšíření použijte úplný název rozšíření (ve formátu: `extension_<appid>_<attributename>`) v manifestu aplikace. `<appid>` Musí odpovídat ID aplikace, která žádá o deklaraci identity. 
+V případě atributů rozšíření použijte úplný název rozšíření (ve formátu: `extension_<appid>_<attributename>`) v manifestu aplikace. `<appid>` musí odpovídat ID aplikace, která žádá o deklaraci identity. 
 
-V rámci tokenu JWT budou tyto deklarace vygenerovány s následujícím formátem názvu `extn.<attributename>`:.
+V rámci tokenu JWT budou tyto deklarace vygenerovány s následujícím formátem názvu: `extn.<attributename>`.
 
-V rámci tokenů SAML budou tyto deklarace vygenerovány s následujícím formátem identifikátoru URI:`http://schemas.microsoft.com/identity/claims/extn.<attributename>`
+V rámci tokenů SAML budou tyto deklarace vygenerovány s následujícím formátem identifikátoru URI: `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
 
 ## <a name="configuring-group-optional-claims"></a>Konfigurace volitelných deklarací skupin
 
@@ -224,7 +225,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "DistributionList"
    - "DirectoryRole"
 
-   Příklad:
+   Například:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"
@@ -259,7 +260,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    | **Jméno:** | Musí být "skupiny" |
    | **Zdrojová** | Nepoužívá se. Vynechat nebo zadat hodnotu null |
    | **význam** | Nepoužívá se. Vynechat nebo zadat hodnotu false |
-   | **additionalProperties:** | Seznam dalších vlastností  Platné možnosti jsou "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
+   | **AdditionalProperties** | Seznam dalších vlastností  Platné možnosti jsou "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
 
    V additionalProperties se vyžadují jenom jedna z těchto "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name".  Pokud je k dispozici více než jeden, použije se první a ostatní se ignorují.
 
@@ -305,12 +306,12 @@ K dispozici je několik možností aktualizace vlastností konfigurace identity 
 
 **Příklad:** V následujícím příkladu upravíte manifest aplikace a přidáte tak deklarace identity pro přístup, ID a tokeny SAML, které jsou určené pro aplikaci.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Na levé straně vyberte **Registrace aplikací** .
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a klikněte na ni.
 1. Na stránce aplikace kliknutím na možnost **manifest** otevřete vložený editor manifestu. 
-1. Manifest můžete přímo upravit pomocí tohoto editoru. Manifest následuje po schématu pro entitu [aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)a automaticky formátuje manifest po jeho uložení. Do `OptionalClaims` vlastnosti budou přidány nové prvky.
+1. Manifest můžete přímo upravit pomocí tohoto editoru. Manifest následuje po schématu pro [entitu aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)a automaticky formátuje manifest po jeho uložení. Do vlastnosti `OptionalClaims` budou přidány nové prvky.
 
     ```json
       "optionalClaims": 
@@ -339,11 +340,11 @@ K dispozici je několik možností aktualizace vlastností konfigurace identity 
 
     ```
 
-    V takovém případě byly do každého typu tokenu, který může aplikace přijmout, přidány různé volitelné deklarace. Tokeny ID teď budou obsahovat hlavní název uživatele (UPN) pro federované uživatele v`<upn>_<homedomain>#EXT#@<resourcedomain>`úplném formátu (). Přístupové tokeny, které ostatní klienti požadují pro tuto aplikaci, teď budou zahrnovat auth_time deklarací identity. Tokeny SAML teď budou obsahovat rozšíření schématu adresáře skypeId (v tomto příkladu je ID aplikace pro tuto aplikaci ab603c56068041afb2f6832e2a17e237). Tokeny SAML vystaví Skype ID jako `extension_skypeId`.
+    V takovém případě byly do každého typu tokenu, který může aplikace přijmout, přidány různé volitelné deklarace. Tokeny ID teď budou obsahovat hlavní název uživatele (UPN) pro federované uživatele v úplném formátu (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Přístupové tokeny, které ostatní klienti požadují pro tuto aplikaci, teď budou zahrnovat auth_time deklarací identity. Tokeny SAML teď budou obsahovat rozšíření schématu adresáře skypeId (v tomto příkladu je ID aplikace pro tuto aplikaci ab603c56068041afb2f6832e2a17e237). Tokeny SAML zveřejňují Skype ID jako `extension_skypeId`.
 
 1. Po dokončení aktualizace manifestu klikněte na **Uložit** a uložte manifest.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o standardních deklaracích poskytovaných službou Azure AD.
 

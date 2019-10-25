@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: e80d79c16b0748e25e549365001990fb014b5f14
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 895425232dabc78650b6ee7ed035048471084237
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030551"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793897"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatizované strojové učení?
 
@@ -81,7 +81,7 @@ V každém automatizovaném experimentu Machine Learning se vaše data předzpra
 
 V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly.  Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace.
 
-|Škálování @ no__t-0 @ no__t-1 @ no__t-2normalization| Popis |
+|Škálování&nbsp;&&nbsp;normalizace| Popis |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizace funkcí odebráním střední odchylky a měřítka jednotky  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformuje funkce změnou velikosti jednotlivých funkcí na minimum a maximum tohoto sloupce.  |
@@ -108,6 +108,8 @@ Automatický experiment s časovou řadou se považuje za problém lineární re
 Přečtěte si další informace a podívejte se na příklad [automatizovaného strojového učení pro předpověď časových řad](how-to-auto-train-forecast.md). Případně můžete zobrazit podrobné příklady kódu pro pokročilou konfiguraci prognózování v [poznámkovém bloku Energy Demand](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) , včetně:
 
 * detekce svátků a featurization
+* DNN (auto-ARIMA, Prophet, ForecastTCN)
+* řada podpory modelů prostřednictvím seskupení
 * křížové ověření pro návratové zdroje
 * konfigurovatelné prodlevy
 * souhrnné funkce kumulovaných oken

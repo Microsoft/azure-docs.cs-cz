@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915249"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800059"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs s využitím Apache Storm veC#službě HDInsight ()
 
 Naučte se pracovat s Azure Event Hubs z [Apache Storm](https://storm.apache.org/) v HDInsight. Tento dokument používá C# topologii pro čtení a zápis dat z Event Hubs
 
 > [!NOTE]  
-> Verzi tohoto projektu v jazyce Java najdete v tématu [zpracování událostí z Azure Event Hubs s Apache Storm v HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
+> Verzi tohoto projektu v jazyce Java najdete v tématu [zpracování událostí z Azure Event Hubs s Apache Storm v HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
 
 ## <a name="scpnet"></a>SCP.NET
 
@@ -44,17 +44,17 @@ C#topologie musí také cílit na rozhraní .NET 4,5.
 
 ## <a name="how-to-work-with-event-hubs"></a>Jak pracovat s Event Hubs
 
-Společnost Microsoft poskytuje sadu komponent Java, které lze použít ke komunikaci s Event Hubs z topologie s více podmnožinami. Soubor archivu Java (JAR), který obsahuje verzi kompatibilní s HDInsight 3,6, najdete v [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)části.
+Společnost Microsoft poskytuje sadu komponent Java, které lze použít ke komunikaci s Event Hubs z topologie s více podmnožinami. Soubor archivu Java (JAR), který obsahuje verzi kompatibilní s HDInsight 3,6, najdete na adrese [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
 > [!IMPORTANT]  
 > I když jsou komponenty napsané v jazyce Java, můžete je snadno použít z C# topologie.
 
 V tomto příkladu se používají následující komponenty:
 
-* __EventHubSpout__: Načte data z Event Hubs.
-* __EventHubBolt__: Zapisuje data do Event Hubs.
-* __EventHubSpoutConfig__: Používá se ke konfiguraci EventHubSpout.
-* __EventHubBoltConfig__: Používá se ke konfiguraci EventHubBolt.
+* __EventHubSpout__: čte data z Event Hubs.
+* __EventHubBolt__: zapisuje data do Event Hubs.
+* __EventHubSpoutConfig__: používá se ke konfiguraci EventHubSpout.
+* __EventHubBoltConfig__: používá se ke konfiguraci EventHubBolt.
 
 ### <a name="example-spout-usage"></a>Příklad použití Spout
 
@@ -105,7 +105,7 @@ topologyBuilder.SetJavaBolt(
 
 Kompletní verzi projektu vytvořeného v tomto článku si můžete stáhnout z [GitHubu](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub). Přesto ale budete muset zadat nastavení konfigurace podle kroků v tomto článku.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
@@ -125,9 +125,9 @@ Kompletní verzi projektu vytvořeného v tomto článku si můžete stáhnout z
 
 ## <a name="download-the-event-hubs-components"></a>Stáhnout součásti Event Hubs
 
-Stáhněte komponentu Event Hubs Spout a šroub z [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+Z [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)si stáhněte komponentu Event Hubs Spout a šroub.
 
-Vytvořte adresář s názvem `eventhubspout`a uložte ho do adresáře.
+Vytvořte adresář s názvem `eventhubspout`a uložte soubor do adresáře.
 
 ## <a name="configure-event-hubs"></a>Konfigurace Event Hubs
 
@@ -135,10 +135,10 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
 
 1. Po vytvoření centra událostí si prohlédněte nastavení **EventHub** v Azure Portal a vyberte **zásady sdíleného přístupu**. Vyberte **+ Přidat** a přidejte následující zásady:
 
-   | Name | Oprávnění |
+   | Name (Název) | Oprávnění |
    | --- | --- |
-   | zapisovatel |Poslat |
-   | čtenář |Naslouchat |
+   | archiv |Odeslat |
+   | Modulu |Naslouchat |
 
     ![Snímek obrazovky okna zásady přístupu ke sdílení](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
@@ -152,7 +152,7 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
 
 3. V projektu **EventHubWriter** otevřete soubor **App. config** . Pomocí informací z centra událostí, které jste nakonfigurovali dříve, vyplníte hodnotu pro následující klíče:
 
-   | Klíč | Value |
+   | Klíč | Hodnota |
    | --- | --- |
    | EventHubPolicyName |zapisovač (Pokud jste pro zásadu s oprávněním *Odeslat* použili jiný název, použijte ji místo toho.) |
    | EventHubPolicyKey |Klíč pro zásady zapisovače. |
@@ -168,7 +168,7 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
 
 2. Otevřete soubor **App. config** pro **EventHubReader**. Pomocí informací z centra událostí, které jste nakonfigurovali dříve, vyplníte hodnotu pro následující klíče:
 
-   | Klíč | Value |
+   | Klíč | Hodnota |
    | --- | --- |
    | EventHubPolicyName |Čtenář (Pokud jste pro zásadu použili jiný název, použijte místo toho oprávnění k *naslouchání* .) |
    | EventHubPolicyKey |Klíč pro zásady čtenáře |

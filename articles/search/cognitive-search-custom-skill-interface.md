@@ -1,25 +1,25 @@
 ---
-title: Definice rozhraní pro vlastní dovednosti v hledání rozpoznávání – Azure Search
-description: Vlastní rozhraní pro extrakci dat pro vlastní dovednosti webového rozhraní API v kanálu vyhledávání rozpoznávání v Azure Search.
+title: Definice rozhraní pro vlastní dovednosti
+titleSuffix: Azure Cognitive Search
+description: Vlastní rozhraní pro extrakci dat pro vlastní dovednosti webového rozhraní API v kanálu rozšíření AI v Azure Kognitivní hledání.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: f86c34dcc1276b8677e3e60514661a6d0b974005
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692191"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787551"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Postup přidání vlastní dovednosti do kanálu vyhledávání rozpoznávání
+# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Postup přidání vlastní dovednosti do kanálu rozšíření Azure Kognitivní hledání
 
-[Kanál indexování vyhledávání rozpoznávání](cognitive-search-concept-intro.md) v Azure Search lze sestavovat z [předdefinovaných dovedností](cognitive-search-predefined-skills.md) a také [vlastními dovednostmi](cognitive-search-custom-skill-web-api.md) , které vytvoříte a přidáte do kanálu. V tomto článku se dozvíte, jak vytvořit vlastní dovednost, která zveřejňuje rozhraní, což umožňuje zahrnutí do kanálu vyhledávání rozpoznávání. 
+[Kanál pro rozšíření](cognitive-search-concept-intro.md) ve službě Azure kognitivní hledání se dá sestavovat z [vestavěných schopností rozpoznávání](cognitive-search-predefined-skills.md) a také [vlastních dovedností](cognitive-search-custom-skill-web-api.md) , které do kanálu vytvoříte a přidáte. V tomto článku se dozvíte, jak vytvořit vlastní dovednost, která zveřejňuje rozhraní, což umožňuje zahrnutí do kanálu pro rozšíření AI. 
 
-Vytváření vlastních dovedností vám dává možnost vkládat transformace, které jsou pro váš obsah jedinečné. Vlastní dovednosti se spouští nezávisle, přičemž se aplikuje libovolný krok obohacení, který požadujete. Můžete například definovat vlastní entity specifické pro pole, vytvořit vlastní modely klasifikace pro odlišení obchodních a finančních smluv a dokumentů nebo přidat dovednost rozpoznávání řeči, abyste dosáhli hlubšího přístupu do zvukových souborů pro relevantní obsah. Podrobný příklad najdete v tématu [Příklad: Vytvoření vlastní dovednosti pro hledání vnímání](cognitive-search-create-custom-skill-example.md).
+Vytváření vlastních dovedností vám dává možnost vkládat transformace, které jsou pro váš obsah jedinečné. Vlastní dovednosti se spouští nezávisle, přičemž se aplikuje libovolný krok obohacení, který požadujete. Můžete například definovat vlastní entity specifické pro pole, vytvořit vlastní modely klasifikace pro odlišení obchodních a finančních smluv a dokumentů nebo přidat dovednost rozpoznávání řeči, abyste dosáhli hlubšího přístupu do zvukových souborů pro relevantní obsah. Podrobný příklad najdete v tématu [Příklad: Vytvoření vlastní dovednosti pro obohacení AI](cognitive-search-create-custom-skill-example.md).
 
  Libovolná vlastní funkce, kterou požadujete, je jednoduché a jasné rozhraní pro připojení vlastní dovednosti ke zbytku kanálu rozšíření. Jediným požadavkem pro zařazení do [dovednosti](cognitive-search-defining-skillset.md) je schopnost přijímat vstupy a generovat výstupy způsobem, který je spotřební v dovednosti jako celek. Tento článek je zaměřený na vstupní a výstupní formáty, které kanál pro obohacení vyžaduje.
 

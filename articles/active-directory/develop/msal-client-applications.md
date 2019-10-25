@@ -1,5 +1,6 @@
 ---
-title: Klientské aplikace (Microsoft Authentication Library) | Azure
+title: Klientské aplikace (Microsoft Authentication Library)
+titleSuffix: Microsoft identity platform
 description: Přečtěte si informace o veřejném klientovi a důvěrných klientských aplikacích v knihovně Microsoft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c854cc34a1ea50f37428cfc18146618d516de7d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 76c57d3a13f9f03fa635c6c9425e2049e2a2c885
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69532972"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803212"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Veřejné klientské a důvěrné klientské aplikace
 Knihovna Microsoft Authentication Library (MSAL) definuje dva typy klientů: veřejné klienty a důvěrné klienty. Oba typy klientů se rozlišují podle možnosti bezpečného ověřování pomocí autorizačního serveru a udržují důvěrnost svých přihlašovacích údajů klienta. Na rozdíl od Azure AD Authentication Library (ADAL) používá s názvem *kontext ověřování* (což je připojení ke službě Azure AD).
@@ -30,12 +31,12 @@ Knihovna Microsoft Authentication Library (MSAL) definuje dva typy klientů: ve�
 - **Důvěrné klientské aplikace** jsou aplikace, které běží na serverech (webové aplikace, aplikace webového rozhraní API nebo i aplikace Service/démon). Považují se za obtížné přístup a z tohoto důvodu může uchovávat tajný klíč aplikace. Důvěrní klienti můžou uchovávat tajné kódy pro čas konfigurace. Každá instance klienta má odlišnou konfiguraci (včetně ID klienta a tajného klíče klienta). Tyto hodnoty jsou pro koncové uživatele obtížné extrahovat. Webová aplikace je nejčastějším tajným klientem. ID klienta se zveřejňuje prostřednictvím webového prohlížeče, ale tajný klíč se předává jenom v zadním kanálu a nikdy se nezveřejňuje.
 
     Důvěrné klientské aplikace: <BR>
-    ![Web App ](media/msal-client-applications/web-app.png) ![Web API ](media/msal-client-applications/web-api.png) ![Daemon/Service ](media/msal-client-applications/daemon-service.png)
+    ![Web App](media/msal-client-applications/web-app.png) ![Web API](media/msal-client-applications/web-api.png) ![démon/služba](media/msal-client-applications/daemon-service.png)
 
 - **Veřejné klientské aplikace** jsou aplikace, které běží na zařízeních nebo stolních počítačích nebo ve webovém prohlížeči. Nejsou důvěryhodné k bezpečnému zachování tajných klíčů, takže mají přístup pouze k webovým rozhraním API jménem uživatele. (Podporují pouze veřejné toky klientů.) Veřejné klienty nemůžou uchovávat tajné klíče v době konfigurace, takže nemají tajné klíče klienta.
 
     Veřejné klientské aplikace: <BR>
-    ![Desktop App ](media/msal-client-applications/desktop-app.png) ![Browserless API ](media/msal-client-applications/browserless-app.png) ![Mobile aplikace
+    ![desktopové aplikace](media/msal-client-applications/desktop-app.png) ![rozhraní API pro prohlížení](media/msal-client-applications/browserless-app.png) ![mobilní aplikace](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
 > V MSAL. js neexistují žádné oddělení veřejných a důvěrných klientských aplikací.  MSAL. js představuje klientské aplikace jako aplikace založené na uživatelských agentech, veřejné klienty, ve kterých se klientský kód spouští v uživatelském agentovi, jako je webový prohlížeč. Tito klienti neukládají tajné kódy, protože kontext prohlížeče je otevřený.

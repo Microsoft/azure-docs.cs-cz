@@ -1,23 +1,23 @@
 ---
-title: 'Kurz REST: Sestavení kanálu obohacení AI pomocí vyhledávání rozpoznávání – Azure Search'
-description: Projděte si příklad extrakce textu a zpracování přirozeného jazyka přes obsah v objektech blob JSON pomocí metody post a rozhraní REST API Azure Search.
+title: 'Kurz REST: vytvoření kanálu rozšíření AI pro extrakci textu a struktury z objektů BLOB JSON'
+titleSuffix: Azure Cognitive Search
+description: Projděte si příklad extrakce textu a zpracování přirozeného jazyka nad obsahem objektů BLOB JSON pomocí post a rozhraní REST API služby Azure Kognitivní hledání.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 08/23/2019
 ms.author: luisca
-ms.openlocfilehash: 6f7c5e2955c57e0e1891593504e5eec1a06bbb04
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: cb05d85c32d7eaed002d3e3bacbe7fdbd17310eb
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265375"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790196"
 ---
-# <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Kurz: Přidání struktury do "nestrukturovaného obsahu" pomocí hledání rozpoznávání
+# <a name="tutorial-add-structure-to-unstructured-content-with-ai-enrichment"></a>Kurz: Přidání struktury do "nestrukturovaného obsahu" s obohacením AI
 
-Pokud máte nestrukturované textové nebo obrázkové obsahy, funkce pro [vyhledávání rozpoznávání](cognitive-search-concept-intro.md) Azure Search vám může pomoct extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když nástroj pro rozpoznávání řeči může zpracovat soubory obrázků (JPG, PNG, TIFF), tento kurz se zaměřuje na obsah založený na slovech, použití detekce jazyka a analýza textu pro vytváření nových polí a informací, které můžete využít v dotazech, omezujících aspektech a filtrech.
+Pokud máte nestrukturovaný text nebo obsah obrázku, [kanál rozšíření AI](cognitive-search-concept-intro.md) vám může pomoci extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat soubory obrázků (JPG, PNG, TIFF), tento kurz se zaměřuje na obsah založený na slovech, použití detekce jazyka a analýzy textu k vytváření nových polí a informací, které můžete využít v dotazech, omezujících aspektech a filtrech.
 
 > [!div class="checklist"]
 > * Začněte s celými dokumenty (nestrukturovaný text), například PDF, MD, DOCX a PPTX v úložišti objektů BLOB v Azure.
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https
 
 ## <a name="1---create-services"></a>1\. vytvoření služeb
 
-Tento návod používá Azure Search pro indexování a dotazy, Cognitive Services pro rozšíření AI a Azure Blob Storage k poskytnutí dat. Pokud je to možné, vytvořte všechny tři služby ve stejné oblasti a skupině prostředků pro možnost blízkost a spravovatelnost. V praxi může být váš účet Azure Storage v jakékoli oblasti.
+Tento návod používá pro indexování a dotazování Azure Kognitivní hledání, Cognitive Services pro rozšíření AI a Azure Blob Storage k poskytování dat. Pokud je to možné, vytvořte všechny tři služby ve stejné oblasti a skupině prostředků pro možnost blízkost a spravovatelnost. V praxi může být váš účet Azure Storage v jakékoli oblasti.
 
 ### <a name="start-with-azure-storage"></a>Začínáme s Azure Storage
 
@@ -54,7 +54,7 @@ Tento návod používá Azure Search pro indexování a dotazy, Cognitive Servic
 
    + **Název účtu úložiště** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus*. 
 
-   + **Umístění**. Pokud je to možné, vyberte stejné umístění, které se používá pro Azure Search a Cognitive Services. Jediné místo má za vyrušení poplatky za šířku pásma.
+   + **Umístění**. Pokud je to možné, vyberte stejné umístění, které se používá pro Azure Kognitivní hledání a Cognitive Services. Jediné místo má za vyrušení poplatky za šířku pásma.
 
    + **Druh účtu**. Vyberte výchozí *StorageV2 (obecné účely v2)* .
 
@@ -70,7 +70,7 @@ Tento návod používá Azure Search pro indexování a dotazy, Cognitive Servic
 
    ![Nahrání ukázkových souborů](media/cognitive-search-tutorial-blob/sample-files.png "Nahrání ukázkových souborů")
 
-1. Než ponecháte Azure Storage, Získejte připojovací řetězec, abyste mohli formulovat připojení v Azure Search. 
+1. Než ponecháte Azure Storage, Získejte připojovací řetězec, abyste mohli formulovat připojení v Azure Kognitivní hledání. 
 
    1. Přejděte zpět na stránku Přehled vašeho účtu úložiště (jako příklad jsme použili *blobstragewestus* ). 
    
@@ -86,21 +86,21 @@ Tento návod používá Azure Search pro indexování a dotazy, Cognitive Servic
 
 ### <a name="cognitive-services"></a>Cognitive Services
 
-Obohacení AI v hledání rozpoznávání je zajištěno Cognitive Services, včetně Analýza textu a Počítačové zpracování obrazu pro zpracování přirozeného jazyka a obrazu. Pokud by vaším cílem bylo dokončit skutečný prototyp nebo projekt, měli byste v tomto okamžiku zřídit Cognitive Services (ve stejné oblasti jako Azure Search), abyste ho mohli připojit k operacím indexování.
+Obohacení AI je zajištěno Cognitive Services, včetně Analýza textu a Počítačové zpracování obrazu pro zpracování přirozeného jazyka a obrazu. Pokud by vaším cílem bylo dokončit skutečný prototyp nebo projekt, měli byste v tomto okamžiku zřídit Cognitive Services (ve stejné oblasti jako Azure Kognitivní hledání), abyste ho mohli připojit k operacím indexování.
 
-Pro toto cvičení ale můžete přeskočit zřizování prostředků, protože Azure Search se může připojit k Cognitive Services na pozadí a poskytnout vám 20 bezplatných transakcí na indexer. Vzhledem k tomu, že tento kurz používá 7 transakcí, je bezplatné přidělení dostatečné. Pro větší projekty Naplánujte zřizování Cognitive Services na úrovni průběžných plateb. Další informace najdete v tématu věnovaném [připojení Cognitive Services](cognitive-search-attach-cognitive-services.md).
+Pro toto cvičení ale můžete přeskočit zřizování prostředků, protože Azure Kognitivní hledání se může připojit k Cognitive Services na pozadí a poskytnout vám 20 bezplatných transakcí na indexer. Vzhledem k tomu, že tento kurz používá 7 transakcí, je bezplatné přidělení dostatečné. Pro větší projekty Naplánujte zřizování Cognitive Services na úrovni průběžných plateb. Další informace najdete v tématu věnovaném [připojení Cognitive Services](cognitive-search-attach-cognitive-services.md).
 
-### <a name="azure-search"></a>Azure Search
+### <a name="azure-cognitive-search"></a>Kognitivní hledání Azure
 
-Třetí součást je Azure Search, kterou můžete vytvořit na [portálu](search-create-service-portal.md). K dokončení tohoto Názorného postupu můžete použít bezplatnou úroveň. 
+Třetí součástí je Azure Kognitivní hledání, kterou můžete vytvořit na [portálu](search-create-service-portal.md). K dokončení tohoto Názorného postupu můžete použít bezplatnou úroveň. 
 
 Stejně jako u služby Azure Blob Storage si pro získání přístupového klíče chvíli počkejte. Když při zahájení strukturování požadavků začnete, budete muset zadat koncový bod a klíč rozhraní API pro správu, který se použije k ověření každého požadavku.
 
-### <a name="get-an-admin-api-key-and-url-for-azure-search"></a>Získat klíč rozhraní API pro správu a adresu URL pro Azure Search
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Získání klíčového rozhraní API pro správu a adresy URL pro Azure Kognitivní hledání
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla `https://mydemo.search.windows.net`adresa URL koncového bodu, název vaší služby `mydemo`by byl.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud se `https://mydemo.search.windows.net`adresa URL koncového bodu, bude název služby `mydemo`.
 
-2. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
     Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
@@ -110,17 +110,17 @@ Všechny požadavky vyžadují klíč rozhraní API-Key v hlavičce všech poža
 
 ## <a name="2---set-up-postman"></a>2 – nastavení post
 
-Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [zkoumání Azure Search rozhraní REST API pomocí post](search-get-started-postman.md).
+Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [prozkoumání rozhraní REST API služby Azure kognitivní hledání pomocí služby post](search-get-started-postman.md).
 
 Metody žádosti použité v tomto kurzu jsou **post**, **Put**a **Get**. Tyto metody použijete k vytvoření čtyř volání rozhraní API vaší vyhledávací služby: vytvořit zdroj dat, dovednosti, index a indexer.
 
-V části hlavičky nastavte typ Content-Type na `application/json` a nastavte `api-key` na klíč rozhraní API pro správu služby Azure Search. Po nastavení hlaviček je můžete použít pro každý požadavek v tomto cvičení.
+V části hlavičky nastavte typ Content-Type na `application/json` a nastavte `api-key` na klíč rozhraní API pro správu služby Azure Kognitivní hledání. Po nastavení hlaviček je můžete použít pro každý požadavek v tomto cvičení.
 
   ![Adresa URL a záhlaví žádosti post](media/search-get-started-postman/postman-url.png "Adresa URL a záhlaví žádosti post")
 
 ## <a name="3---create-the-pipeline"></a>3\. vytvoření kanálu
 
-V Azure Search probíhá zpracování AI při indexování (nebo při příjmu dat). Tato část návodu vytvoří čtyři objekty: zdroj dat, index definice, dovednosti, indexer. 
+Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování dat) objevuje zpracování AI. Tato část návodu vytvoří čtyři objekty: zdroj dat, index definice, dovednosti, indexer. 
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
 
@@ -132,7 +132,7 @@ V Azure Search probíhá zpracování AI při indexování (nebo při příjmu d
    https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2019-05-06
    ```
 
-1. V **textu**žádosti zkopírujte následující definici JSON a nahraďte ji `connectionString` skutečným připojením svého účtu úložiště. 
+1. Do **textu**žádosti zkopírujte následující definici JSON a nahraďte `connectionString` skutečným připojením k vašemu účtu úložiště. 
 
    Nezapomeňte také upravit název kontejneru. Navrhl (a) "ozubeného kola-Search-demo" pro název kontejneru v předchozím kroku.
 
@@ -152,7 +152,7 @@ V Azure Search probíhá zpracování AI při indexování (nebo při příjmu d
 
 Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v koncovém bodu by mělo být `api-version=2019-05-06`, v hlavičce za `Content-Type` by mělo být `api-key` a jeho hodnota musí být pro vyhledávací službu platná. Dokument JSON můžete chtít spustit pomocí online validátoru JSON, abyste se ujistili, že je syntaxe správná. 
 
-### <a name="step-2-create-a-skillset"></a>Krok 2: Vytvoření sady dovedností
+### <a name="step-2-create-a-skillset"></a>Krok 2: vytvoření dovednosti
 
 [Objekt dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset) je sada kroků rozšíření, které se aplikují na váš obsah. 
 
@@ -171,9 +171,9 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
    | [Rozdělení textu](cognitive-search-skill-textsplit.md)  | Před voláním dovednosti pro extrakci klíčových frází rozdělí velký obsah do menších bloků dat. Extrakce klíčových frází přijímá vstup složený z 50 000 znaků nebo méně. Některé ze zdrojových souborů je nutné rozdělit, aby se do tohoto limitu vešly. |
    | [Extrakce klíčových frází](cognitive-search-skill-keyphrases.md) | Vyžádá si hlavní klíčové fráze. |
 
-   Pro obsah dokumentu se využijí jednotlivé dovednosti. Během zpracování služba Azure Search otevře každý dokument a přečte obsah z různých formátů souborů. Nalezený text, který pochází ze zdrojového souboru, se umístí do vygenerovaného pole ```content```, jednoho pro každý dokument. V takovém případě se vstup ```"/document/content"```bude.
+   Pro obsah dokumentu se využijí jednotlivé dovednosti. Během zpracování Azure Kognitivní hledání napraskliní každý dokument, aby četl obsah z různých formátů souborů. Nalezený text, který pochází ze zdrojového souboru, se umístí do vygenerovaného pole ```content```, jednoho pro každý dokument. V takovém případě se vstup ```"/document/content"```.
 
-   Pro extrakci klíčových frází, protože používáme rozdělovač textu k přerušení větších souborů na stránky, kontext pro extrakci klíčových frází je ```"document/pages/*"``` (pro každou stránku v dokumentu) ```"/document/content"```místo.
+   Pro extrakci klíčových frází, protože používáme oddělení text k rozdělení větších souborů na stránky, kontext pro extrakci klíčových frází je ```"document/pages/*"``` (pro každou stránku v dokumentu) místo ```"/document/content"```.
 
     ```json
     {
@@ -230,16 +230,16 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
     ```
     Grafickou reprezentaci sady dovedností najdete níže. 
 
-    ![Ilustrace sady dovedností](media/cognitive-search-tutorial-blob/skillset.png "Ilustrace sady dovedností")
+    ![Pochopení dovednosti](media/cognitive-search-tutorial-blob/skillset.png "Pochopení dovednosti")
 
 1. Odešlete požadavek. Metoda post by měla vrátit stavový kód 201 potvrzující úspěch. 
 
 > [!NOTE]
 > Výstupy se dají namapovat na index, použít jako vstup do podřízené dovednosti, nebo využít oběma způsoby tak, jak se to dělá s kódem jazyka. V indexu je kód jazyka užitečný při filtrování. Jako vstup se kód jazyka používá v dovednostech analýzy textu, čímž se jazykovým pravidlům poskytne informace o dělení slov. Další informace o základních principech sady dovedností najdete v článku o [definování sady dovedností](cognitive-search-defining-skillset.md).
 
-### <a name="step-3-create-an-index"></a>Krok 3: Vytvoření indexu
+### <a name="step-3-create-an-index"></a>Krok 3: vytvoření indexu
 
-[Index](https://docs.microsoft.com/rest/api/searchservice/create-index) poskytuje schéma používané k vytvoření fyzického výrazu vašeho obsahu v obrácených indexech a jiných konstrukcích v Azure Search. Největší komponentou indexu je kolekce pole, kde typ dat a atributy určují obsah a chování v Azure Search.
+[Index](https://docs.microsoft.com/rest/api/searchservice/create-index) poskytuje schéma používané k vytvoření fyzického výrazu vašeho obsahu ve invertovaných indexech a jiných konstrukcích v Azure kognitivní hledání. Největší součástí indexu je kolekce polí, kde typ dat a atributy určují obsah a chování v Azure Kognitivní hledání.
 
 1. Použijte příkaz **Put** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby a pojmenujte index.
 
@@ -247,7 +247,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2019-05-06
    ```
 
-1. Do **textu**žádosti zkopírujte následující definici JSON. `content` Pole slouží k uložení samotného dokumentu. Další pole pro `languageCode`, `keyPhrases`a `organizations` reprezentují nové informace (pole a hodnoty) vytvořené pomocí dovednosti.
+1. Do **textu**žádosti zkopírujte následující definici JSON. Pole `content` ukládá samotný dokument. Další pole pro `languageCode`, `keyPhrases`a `organizations` reprezentují nové informace (pole a hodnoty) vytvořené v dovednosti.
 
     ```json
     {
@@ -321,9 +321,9 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 1. Odešlete požadavek. Metoda post by měla vrátit stavový kód 201 potvrzující úspěch. 
 
-### <a name="step-4-create-and-run-an-indexer"></a>Krok 4: Vytvoření a spuštění indexeru
+### <a name="step-4-create-and-run-an-indexer"></a>Krok 4: vytvoření a spuštění indexeru
 
-[Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) vyřídí kanál. Tři komponenty, které jste doposud vytvořili (zdroj dat, dovednosti, index), jsou vstupy pro indexer. Vytvoření indexeru na Azure Search je událost, která vloží celý kanál do pohybu. 
+[Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) vyřídí kanál. Tři komponenty, které jste doposud vytvořili (zdroj dat, dovednosti, index), jsou vstupy pro indexer. Vytvoření indexeru v Azure Kognitivní hledání je událost, která vloží celý kanál do pohybu. 
 
 1. Použijte příkaz **Put** a následující adresu URL, kde NAHRAĎte název vaší služby skutečným názvem vaší služby a pojmenujte indexer.
 
@@ -333,9 +333,9 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 1. Do **textu**žádosti ZKOPÍRUJTE definici JSON níže. Všimněte si elementů mapování polí; Tato mapování jsou důležitá, protože definují tok dat. 
 
-   Je `fieldMappings` zpracována před dovednosti a odesílá obsah ze zdroje dat do cílových polí v indexu. K odeslání existujícího nezměněného obsahu do indexu budete používat mapování polí. Pokud jsou názvy polí a typy na obou koncích stejné, není nutné žádné mapování.
+   `fieldMappings` jsou zpracovány před dovednosti a odesílají obsah ze zdroje dat do cílových polí v indexu. K odeslání existujícího nezměněného obsahu do indexu budete používat mapování polí. Pokud jsou názvy polí a typy na obou koncích stejné, není nutné žádné mapování.
 
-   Je `outputFieldMappings` pro pole, která jsou vytvořena pomocí dovedností a následně zpracována po spuštění dovednosti. Odkazy na `sourceFieldNames` v `outputFieldMappings` nástroji neexistují, dokud je nevytvoří dokument trhliny nebo rozšíření. `targetFieldName` Je pole v indexu definované ve schématu indexu.
+   `outputFieldMappings` jsou pro pole vytvořená dovednostmi, která se následně zpracovala po spuštění dovednosti. Odkazy na `sourceFieldNames` v `outputFieldMappings` neexistují, dokud je nevytvoří dokument trhliny nebo rozšíření. `targetFieldName` je pole v indexu definované ve schématu indexu.
 
     ```json
     {
@@ -410,9 +410,9 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 Skript nastaví ```"maxFailedItems"``` na -1, což dá modulu indexování pokyn, aby během importování dat ignoroval chyby. To je přijatelné, protože v ukázkovém zdroji dat je k dispozici několik dokumentů. Pro větší zdroje dat by tato hodnota byla větší než 0.
 
-```"dataToExtract":"contentAndMetadata"``` Příkaz říká indexeru, aby automaticky rozbalí obsah z různých formátů souborů a také metadata týkající se jednotlivých souborů. 
+Příkaz ```"dataToExtract":"contentAndMetadata"``` říká indexeru, aby automaticky rozbalí obsah z různých formátů souborů a také metadata týkající se jednotlivých souborů. 
 
-Když se extrahuje obsah, můžete nastavit ```imageAction```, aby se z obrázků nalezených ve zdroji dat extrahoval text. V ```"imageAction":"generateNormalizedImages"``` kombinaci s dovedností optického textu a dovednosti pro sloučení textu říká indexeru, aby vyextrahovali text z obrázků (například slovo "Stop" z znaku zastavení provozu) a vloží ho jako součást pole Content. Toto chování platí jak pro obrázky vložené do dokumentů (třeba obrázek v souboru PDF), tak pro obrázky nalezené ve zdroji dat, např. soubor JPG.
+Když se extrahuje obsah, můžete nastavit ```imageAction```, aby se z obrázků nalezených ve zdroji dat extrahoval text. Konfigurace ```"imageAction":"generateNormalizedImages"``` v kombinaci s dovedností rozpoznávání textu a dovedností pro sloučení textu říká indexeru, aby vyextrahovali text z obrázků (například slovo "Stop" z znaku zastavení provozu) a vložil jej jako součást pole Content. Toto chování platí jak pro obrázky vložené do dokumentů (třeba obrázek v souboru PDF), tak pro obrázky nalezené ve zdroji dat, např. soubor JPG.
 
 ## <a name="4---monitor-indexing"></a>4\. monitorování indexování
 
@@ -435,9 +435,9 @@ Pokud používáte úroveň Free, očekává se následující zpráva: "" z dok
 
 Teď, když jste vytvořili nová pole a informace, můžeme spustit některé dotazy, abychom porozuměli hodnotě hledání rozpoznávání v souvislosti s běžným scénářem hledání.
 
-Odvoláme, že jsme začali s obsahem objektu blob, kde se celý dokument balí `content` do jednoho pole. Můžete hledat v tomto poli a vyhledat odpovídající dotazy.
+Odvoláme, že jsme začali s obsahem objektu blob, kde se celý dokument balí do jednoho `content` pole. Můžete hledat v tomto poli a vyhledat odpovídající dotazy.
 
-1. Použijte příkaz **Get** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby, vyhledejte výskyty podmínky nebo fráze a vraťte `content` pole a počet odpovídajících dokumentů.
+1. Použijte příkaz **Get** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby, vyhledejte výskyty podmínky nebo fráze a vraťte pole `content` a počet odpovídajících dokumentů.
 
    ```http
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2019-05-06
@@ -481,7 +481,7 @@ Tyto dotazy znázorňují několik způsobů, jak můžete pracovat se syntaxí 
 
 ## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění
 
-V raných experimentálních fázích vývoje kanálu je při iterování návrhu nejpraktičtější, když se ze služby Azure Search odstraní objekty a umožní se kódu, aby je znovu vytvořil. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
+V předčasných fázích vývoje kanálu je nejpohodlnější přístup k iteracím v rámci návrhu odstranění objektů z Azure Kognitivní hledání a povolení jejich opětovného sestavování kódu. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
 
 Pokud chcete dokumenty znovu indexovat s novými definicemi:
 
@@ -503,17 +503,17 @@ Až se váš kód bude blížit dokončení, možná budete chtít zdokonalit st
 
 Tento kurz ukazuje základní postup sestavení kanálu pro rozšířené indexování, při kterém se vytvářejí součásti: zdroj dat, sada dovedností, index a indexer.
 
-Představili jsme si [předdefinované dovednosti](cognitive-search-predefined-skills.md), definice sad dovedností a mechanismy, jak pomocí vstupů a výstupů řetězit dovednosti za sebe. Naučili jste se, že `outputFieldMappings` v definici indexu umožňuje směrovat rozšířené hodnoty z kanálu do prohledávatelného indexu ve službě Azure Search.
+Byly představeny [předdefinované dovednosti](cognitive-search-predefined-skills.md) společně s definicí dovednosti a mechanismy zřetězení dovedností prostřednictvím vstupů a výstupů. Zjistili jste taky, že `outputFieldMappings` v definici indexeru je potřeba pro směrování hodnot obohacených z kanálu do indexu s možností vyhledávání ve službě Azure Kognitivní hledání.
 
 Nakonec jste se dozvěděli, jak testovat výsledky a resetovat systém pro další iterace. Zjistili jste, že zasílání dotazů na index vrací výstup vytvořený kanálem rozšířeného indexování. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejší způsob, jak po kurzu vše vyčistit, je odstranit skupinu prostředků, která obsahuje službu Azure Search a službu Azure Blob. Za předpokladu, že jste vložili obě služby do stejné skupiny, odstraňte skupinu prostředků. Tím se trvale odstraní všechno, co v ní je, včetně služeb a veškerého uloženého obsahu, který jste v tomto kurzu vytvořili. Na portálu najdete název skupiny prostředků na stránce Přehled jednotlivých služeb.
+Nejrychlejší způsob vyčištění po kurzu odstraněním skupiny prostředků, která obsahuje službu Azure Kognitivní hledání a Azure Blob service. Za předpokladu, že jste vložili obě služby do stejné skupiny, odstraňte skupinu prostředků. Tím se trvale odstraní všechno, co v ní je, včetně služeb a veškerého uloženého obsahu, který jste v tomto kurzu vytvořili. Na portálu najdete název skupiny prostředků na stránce Přehled jednotlivých služeb.
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud si chcete kanál přizpůsobit nebo rozšířit, můžete použít vlastní dovednosti. Když si vytvoříte vlastní dovednost, kterou pak přidáte do sady dovedností, budete moct používat analýzu textu a obrazu, kterou si sami napíšete. 
 
 > [!div class="nextstepaction"]
-> [Příklad: Vytvoření vlastní dovednosti pro hledání vnímání](cognitive-search-create-custom-skill-example.md)
+> [Příklad: Vytvoření vlastní dovednosti pro obohacení AI](cognitive-search-create-custom-skill-example.md)

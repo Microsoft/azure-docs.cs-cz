@@ -1,20 +1,20 @@
 ---
 title: 'Rychlý Start: připojení aplikace MongoDB Node. js k Azure Cosmos DB'
 description: Tento rychlý Start ukazuje, jak připojit existující aplikaci MongoDB napsanou v Node. js k Azure Cosmos DB.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b9cadbf35680953058bd38d7db26a6e6c684836b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: c2a689f7c3ac1308e12d0e371a9ad7f7187417d6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327298"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792180"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Rychlý Start: migrace stávající webové aplikace Node. js v MongoDB na Azure Cosmos DB 
 
@@ -55,7 +55,7 @@ Spuštěním následujících příkazů naklonujte ukázkové úložiště. Tot
 1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci.
@@ -179,10 +179,10 @@ module.exports = {
 
 ## <a name="retrieve-the-key"></a>Načtení klíče
 
-Aby bylo možné se připojit k databázi Cosmos, potřebujete klíč databáze. Pro načtení primárního klíče použijte příkaz [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys).
+Aby bylo možné se připojit k databázi Cosmos, potřebujete klíč databáze. K načtení primárního klíče použijte příkaz [AZ cosmosdb Keys list](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) .
 
 ```azurecli-interactive
-az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
+az cosmosdb keys list --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
 ```
 
 Výstupní informace rozhraní příkazového řádku Azure jsou podobné jako v následujícím příkladu. 

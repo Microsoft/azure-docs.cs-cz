@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 032d52961b4867cad94d06802adb0a1f3eb00f5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 84af0484ed9fb792bef6bbbe9c53395b569acb3c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553952"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793870"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -69,7 +69,10 @@ Z vašeho předplatného Office 365:
 
 - Username: e-mailová adresa účtu správce.
 - ID tenanta: jedinečné ID pro předplatné Office 365.
-- ID klienta: 16 znaků řetězec, který představuje klienta Office 365.
+
+Při vytváření a konfiguraci aplikace Office 365 v Azure Active Directory by se měly shromažďovat následující informace:
+
+- ID aplikace (klienta): 16 znaků řetězec, který představuje klienta Office 365.
 - Tajný kód klienta: pro ověřování je nutný šifrovaný řetězec.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Vytvoření aplikace Office 365 v Azure Active Directory
@@ -87,6 +90,9 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, že řešení p
 1. Klikněte na **Registrovat** a ověřte informace o aplikaci.
 
     ![Registrovaná aplikace](media/solution-office-365/registered-app.png)
+
+1. Uložte si ID aplikace (klienta) spolu se zbytkem shromážděných informací.
+
 
 ### <a name="configure-application-for-office-365"></a>Konfigurace aplikace pro Office 365
 
@@ -117,7 +123,7 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, že řešení p
     ![Klíče](media/solution-office-365/secret.png)
  
 1. Zadejte **Popis** a **dobu trvání** nového klíče.
-1. Klikněte na **Přidat** a potom zkopírujte **hodnotu** , která se vygenerovala.
+1. Klikněte na tlačítko **Přidat** a poté uložte **hodnotu** , která byla vygenerována jako tajný klíč klienta, spolu se zbytkem shromážděných informací.
 
     ![Klíče](media/solution-office-365/keys.png)
 
@@ -188,7 +194,12 @@ Chcete-li povolit účet správce poprvé, je nutné pro aplikaci zadat souhlas 
     
     ![Souhlas správce](media/solution-office-365/admin-consent.png)
 
+> [!NOTE]
+> Je možné, že budete přesměrováni na stránku, která neexistuje. Vezměte ho jako úspěšný.
+
 ### <a name="subscribe-to-log-analytics-workspace"></a>Přihlášení k odběru Log Analytics pracovního prostoru
+
+Posledním krokem je přihlášení k odběru aplikace do vašeho pracovního prostoru Log Analytics. Provedete to také pomocí skriptu PowerShellu.
 
 Posledním krokem je přihlášení k odběru aplikace do vašeho pracovního prostoru Log Analytics. Provedete to také pomocí skriptu PowerShellu.
 
@@ -236,18 +247,20 @@ Posledním krokem je přihlášení k odběru aplikace do vašeho pracovního pr
                     $authority = "https://login.windows.net/$adTenant";
                     $ARMResource ="https://management.azure.com/";break} 
                     }
-    
+
     Function RESTAPI-Auth { 
-    
-    $global:SubscriptionID = $Subscription.SubscriptionId
+    $global:SubscriptionID = $Subscription.Subscription.Id
     # Set Resource URI to Azure Service Management API
-    $resourceAppIdURIARM=$ARMResource;
+    $resourceAppIdURIARM=$ARMResource
     # Authenticate and Acquire Token 
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
-    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
+    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
+    $global:authResultARM.Wait()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
+
     $authHeader
     }
     
@@ -271,7 +284,7 @@ Posledním krokem je přihlášení k odběru aplikace do vašeho pracovního pr
     
     Function Connection-API
     {
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $ResourceName = "https://manage.office.com"
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     
@@ -315,7 +328,7 @@ Posledním krokem je přihlášení k odběru aplikace do vašeho pracovního pr
     Function Office-Subscribe-Call{
     try{
     #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
     
@@ -509,7 +522,7 @@ Shromažďování dat na začátku může trvat několik hodin. Po zahájení sh
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 Když do svého pracovního prostoru Log Analytics přidáte řešení Office 365, na řídicí panel se přidá dlaždice **Office 365** . Na této dlaždici se zobrazuje počet a grafické vyjádření počtu počítačů ve vašem prostředí a jejich kompatibilita s aktualizacemi.<br><br>
-](media/solution-office-365/tile.png) ![Office 365 dlaždice souhrnu  
+![dlaždici](media/solution-office-365/tile.png) na souhrn Office 365  
 
 Kliknutím na dlaždici **office 365** otevřete řídicí panel **Office 365** .
 

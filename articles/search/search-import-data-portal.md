@@ -1,24 +1,23 @@
 ---
-title: Import dat do indexu vyhledávání pomocí Azure Portal-Azure Search
+title: Import dat do indexu vyhledávání pomocí Azure Portal
+titleSuffix: Azure Cognitive Search
 description: Naučte se používat Průvodce importem dat v Azure Portal k procházení dat Azure z Cosmos DB, úložiště objektů blob, úložiště tabulek, SQL Database a SQL Server na virtuálních počítačích Azure.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/03/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 89f43227cfca3519a4985c5c961cf0b3c5774177
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 6b4ae076ba08af5514caa09a2e8027a1cbc909dc
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71936913"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793674"
 ---
-# <a name="import-data-wizard-for-azure-search"></a>Průvodce importem dat pro Azure Search
+# <a name="import-data-wizard-for-azure-cognitive-search"></a>Průvodce importem dat pro Azure Kognitivní hledání
 
-Azure Portal poskytuje průvodce **importem dat** na řídicím panelu Azure Search pro vytváření prototypů a načítání indexu. Tento článek se věnuje výhodám a omezením při používání průvodce, vstupů a výstupů a některých informací o využití. Praktické pokyny k procházení průvodce pomocí integrovaných ukázkových dat najdete v tématu [vytvoření Azure Search indexu pomocí Azure Portal](search-get-started-portal.md) rychlého startu.
+Azure Portal poskytuje průvodce **importem dat** na řídicím panelu Azure kognitivní hledání pro vytváření prototypů a načítání indexu. Tento článek se věnuje výhodám a omezením při používání průvodce, vstupů a výstupů a některých informací o využití. Praktické pokyny k procházení průvodce pomocí integrovaných ukázkových dat najdete v tématu [vytvoření indexu Azure kognitivní hledání pomocí Azure Portal](search-get-started-portal.md) rychlého startu.
 
 Operace, které tento průvodce provede, zahrnují:
 
@@ -34,7 +33,7 @@ Průvodce vypíše počet objektů, které jsou uloženy do vaší vyhledávací
 
 ## <a name="advantages-and-limitations"></a>Výhody a omezení
 
-Než začnete psát kód, můžete použít Průvodce pro testování prototypů a testování konceptu. Průvodce se připojuje k externím zdrojům dat, vzorkuje data pro vytvoření počátečního indexu a pak data importuje jako dokumenty JSON do indexu v Azure Search. 
+Než začnete psát kód, můžete použít Průvodce pro testování prototypů a testování konceptu. Průvodce se připojuje k externím zdrojům dat, vzorkuje data pro vytvoření počátečního indexu a pak data importuje jako dokumenty JSON do indexu v Azure Kognitivní hledání. 
 
 Vzorkování je proces, při kterém je schéma indexu odvozeno a má určitá omezení. Když se vytvoří zdroj dat, Průvodce vybere ukázku dokumentů a určí, které sloupce jsou součástí zdroje dat. Ne všechny soubory jsou čteny, protože by to mohlo trvat i hodiny u velmi rozsáhlých zdrojů dat. Při výběru dokumentů se zdrojová metadata, jako je název pole nebo typ, používají k vytvoření kolekce polí ve schématu indexu. V závislosti na složitosti zdrojových dat může být nutné upravit počáteční schéma pro přesnost nebo ho pro úplnosti zvětšit. Změny můžete provést na stránce definice indexu.
 
@@ -56,7 +55,7 @@ Známá omezení jsou shrnuta takto:
 
 ## <a name="data-source-input"></a>Vstup zdroje dat
 
-Průvodce **importem dat** se připojí k externímu zdroji dat pomocí interní logiky poskytnuté Azure Search indexery, které jsou vybavené pro ukázku zdroje, čtení metadat, vylomení dokumentů pro čtení obsahu a struktury a serializace obsahu jako JSON pro následná import do Azure Search.
+Průvodce **importem dat** se připojuje k externímu zdroji dat pomocí interní logiky poskytované indexovací službou Azure kognitivní hledání indexery, které jsou vybavené pro ukázku zdroje, čtení metadat, odhalení dokumentů pro čtení obsahu a struktury a serializace obsahu. jako JSON pro následné importy do Azure Kognitivní hledání.
 
 Importovat můžete pouze z jedné tabulky, zobrazení databáze nebo ekvivalentní datové struktury, ale struktura může zahrnovat hierarchické nebo vnořené podstruktury. Další informace najdete v tématu [modelování komplexních typů](search-howto-complex-data-types.md).
 
@@ -64,10 +63,10 @@ Tuto jednu tabulku nebo zobrazení byste měli vytvořit před spuštěním prů
 
 |  Výběr | Popis |
 | ---------- | ----------- |
-| **Stávající zdroj dat** |Pokud ve vyhledávací službě již máte definovány indexery, můžete mít existující definici zdroje dat, kterou můžete znovu použít. V Azure Search objekty zdroje dat používají pouze indexery. Objekt zdroje dat můžete vytvořit programově nebo prostřednictvím průvodce **importem dat** a podle potřeby je znovu použít.|
-| **Ukázky**| Azure Search poskytuje dva předdefinované ukázkové zdroje dat, které se používají v kurzech a rychlých startech: v reálném čase databáze SQL a databáze hotelů hostované na Cosmos DB. Návod na základě ukázky hotelů najdete v tématu [vytvoření indexu v Azure Portal](search-get-started-portal.md) rychlý Start. |
+| **Stávající zdroj dat** |Pokud ve vyhledávací službě již máte definovány indexery, můžete mít existující definici zdroje dat, kterou můžete znovu použít. V Azure Kognitivní hledání objekty zdroje dat používají pouze indexery. Objekt zdroje dat můžete vytvořit programově nebo prostřednictvím průvodce **importem dat** a podle potřeby je znovu použít.|
+| **Ukázky**| Azure Kognitivní hledání poskytuje dva předdefinované ukázkové zdroje dat, které se používají v kurzech a rychlých startech: v reálném čase databáze SQL a databáze hotelů hostované na Cosmos DB. Návod na základě ukázky hotelů najdete v tématu [vytvoření indexu v Azure Portal](search-get-started-portal.md) rychlý Start. |
 | [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Název služby, přihlašovací údaje uživatele s oprávněním ke čtení a název databáze můžete zadat na této stránce nebo přes připojovací řetězec technologie ADO.NET. Chcete-li zobrazit nebo přizpůsobit vlastnosti, zvolte možnost připojovacího řetězce. <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat.|
-| **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název služby, ID uživatele a heslo a databázi jako připojovací řetězec. Abyste mohli použít tento zdroj dat, je třeba mít v místním úložišti dříve nainstalovaný certifikát šifrující připojení. Pokyny najdete v tématu [Připojení virtuálního počítače SQL ke službě Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
+| **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název služby, ID uživatele a heslo a databázi jako připojovací řetězec. Abyste mohli použít tento zdroj dat, je třeba mít v místním úložišti dříve nainstalovaný certifikát šifrující připojení. Pokyny najdete v tématu [připojení k virtuálnímu počítači SQL do Azure kognitivní hledání](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Požadavky zahrnují účet, databázi a kolekci. Všechny dokumenty v kolekci budou zahrnuty v indexu. Můžete definovat dotaz pro sloučení nebo filtrování sady řádků nebo nechat dotaz prázdný. V tomto průvodci není vyžadován dotaz.|
 | [**Blob Storage Azure**](search-howto-indexing-azure-blob-storage.md) |Požadavky zahrnují účet úložiště a kontejner. Pokud se názvy objektů blob řídí zásadami virtuálního pojmenovávání pro účely seskupování, můžete volitelně zadat část názvu obsahující virtuální adresář jako složku v kontejneru. Další informace najdete v tématu [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md). |
 | [**Table Storage Azure**](search-howto-indexing-azure-tables.md) |Požadavky zahrnují účet úložiště a název tabulky. Volitelně můžete zadat dotaz pro načtení podmnožiny tabulek. Další informace najdete v tématu [Indexování služby Table Storage](search-howto-indexing-azure-tables.md). |
@@ -94,7 +93,7 @@ Průvodce importem dat je spuštěn z panelu příkazů na stránce Přehled slu
 
    ![Příkaz Importovat data na portálu](./media/search-import-data-portal/import-data-cmd2.png "Spuštění Průvodce importem dat")
 
-Můžete také spustit **Import dat** z jiných služeb Azure, včetně Azure Cosmos DB, Azure SQL Database a úložiště objektů BLOB v Azure. Vyhledejte **přidat Azure Search** v levém navigačním podokně na stránce Přehled služby.
+Můžete také spustit **Import dat** z jiných služeb Azure, včetně Azure Cosmos DB, Azure SQL Database a úložiště objektů BLOB v Azure. V levém navigačním podokně na stránce Přehled služby vyhledejte **Přidat Azure kognitivní hledání** .
 
 <a name="index-definition"></a>
 
@@ -104,7 +103,7 @@ Průvodce vygeneruje nekompletní index, který se naplní dokumenty získanými
 
 1. Je seznam polí dokončený? Přidejte nová pole, která vzorkování nenalezlo, a odeberte všechny, které neumožňují přidat hodnotu do vyhledávacího prostředí, nebo které nebudou použity ve [výrazu filtru](search-query-odata-filter.md) nebo [profilu bodování](index-add-scoring-profiles.md).
 
-1. Je datový typ vhodný pro příchozí data? Azure Search podporuje [datové typy EDM (Entity Data Model)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Pro data SQL Azure je k dispozici [mapování grafu](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#mapping-between-sql-and-azure-search-data-types) , které stanovuje ekvivalentní hodnoty. Další informace najdete v tématu [mapování polí a transformace](search-indexer-field-mappings.md).
+1. Je datový typ vhodný pro příchozí data? Azure Kognitivní hledání podporuje [datové typy EDM (Entity Data Model)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Pro data SQL Azure je k dispozici [mapování grafu](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) , které stanovuje ekvivalentní hodnoty. Další informace najdete v tématu [mapování polí a transformace](search-indexer-field-mappings.md).
 
 1. Máte jedno pole, které může sloužit jako *klíč*? Toto pole musí být EDM. String a musí jednoznačně identifikovat dokument. V případě relačních dat může být namapována na primární klíč. U objektů BLOB se může jednat o `metadata-storage-path`. Pokud hodnoty polí obsahují mezery nebo pomlčky, je nutné nastavit možnost **klíč kódování Base-64** v kroku **Vytvoření indexeru** v části **Upřesnit možnosti**pro potlačení kontroly ověření pro tyto znaky.
 
@@ -134,4 +133,4 @@ Průvodce vygeneruje nekompletní index, který se naplní dokumenty získanými
 Nejlepším způsobem, jak porozumět výhodám a omezením průvodce, je projít si ho. Následující rychlý Start vás provede jednotlivými kroky.
 
 > [!div class="nextstepaction"]
-> [Vytvoření indexu Azure Search pomocí Azure Portal](search-get-started-portal.md)
+> [Vytvoření indexu služby Azure Kognitivní hledání pomocí Azure Portal](search-get-started-portal.md)

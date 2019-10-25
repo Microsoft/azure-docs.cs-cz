@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f7e9b738a55248678a207f0b298ef65e6c2761a4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: f3976f69302ff50bf067bbaa2eff4be25ac64f43
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240156"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786349"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Osvědčené postupy a doporučení pro Microsoft Identity Platform
 
@@ -31,7 +31,7 @@ Pokud teprve začínáte, podívejte se na dokumentaci k [platformě Microsoft I
 
 Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikace efektivně integrovaná s [platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/).
 
-## <a name="basics"></a>Práce
+## <a name="basics"></a>Základy
 
 |   |   |
 |---|---|
@@ -74,13 +74,13 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 |---|---|
 | ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | K bezpečnému přihlášení uživatelů používejte řešení pro moderní ověřování (OAuth 2,0, [OpenID Connect](v2-protocols-oidc.md)). |
 | ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) |  Neprovádějte program přímo proti protokolům, jako je OAuth 2,0 a Open ID. Místo toho využijte [Microsoft Authentication Library (MSAL)](msal-overview.md). Knihovny MSAL bezpečně zabalí protokoly zabezpečení do snadno použitelné knihovny a získáte integrovanou podporu pro scénáře [podmíněného přístupu](/azure/active-directory/conditional-access/overview) , [jednotné přihlašování (SSO) v rámci jednotného přihlašování (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on)a integrovanou podporu ukládání tokenů do mezipaměti. Další informace najdete v seznamu podporovaných [klientských knihoven](reference-v2-libraries.md#microsoft-supported-client-libraries) a [knihoven middlewaru](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) od Microsoftu a v seznamu [kompatibilních klientských knihoven třetích stran](reference-v2-libraries.md#compatible-client-libraries).<br/><br/>Pokud potřebujete pro ověřovací protokoly rukou, měli byste postupovat podle metodologie, jako je například [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx). Věnujte velkou pozornost hlediskům zabezpečení v specifikacích standardů pro jednotlivé protokoly.|
-| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) |  Migrujte stávající aplikace z [knihovny Azure Active Directory Authentication Library (ADAL)](active-directory-authentication-libraries.md) do [knihovny Microsoft Authentication Library](msal-overview.md). MSAL je řešení nejnovější platformy od Microsoftu a upřednostňuje se pro ADAL. Je k dispozici na platformě .NET a JavaScriptu a je také ve verzi Public Preview pro Android, iOS, Python a Java. Přečtěte si další informace o migraci aplikací [ADAL.NET](msal-net-migration.md), [ADAL. js](msal-compare-msal-js-and-adal-js.md)a [ADAL.NET a zprostředkovatelů iOS](msal-net-migration-ios-broker.md) .|
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) |  Migrujte stávající aplikace z [knihovny Azure Active Directory Authentication Library (ADAL)](active-directory-authentication-libraries.md) do [knihovny Microsoft Authentication Library](msal-overview.md). MSAL je řešení nejnovější platformy od Microsoftu a upřednostňuje se pro ADAL. Je k dispozici pro .NET, JavaScript, Android, iOS, macOS a je také ve verzi Public Preview pro Python a Java. Přečtěte si další informace o migraci aplikací [ADAL.NET](msal-net-migration.md), [ADAL. js](msal-compare-msal-js-and-adal-js.md)a [ADAL.NET a zprostředkovatelů iOS](msal-net-migration-ios-broker.md) .|
 | ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) |  Pro mobilní aplikace nakonfigurujte jednotlivé platformy pomocí prostředí pro registraci aplikací. Aby vaše aplikace mohla využít výhod Microsoft Authenticator nebo Microsoft Portál společnosti pro jednotné přihlašování, vaše aplikace potřebuje nakonfigurovaný identifikátor URI pro přesměrování zprostředkovatele. To umožňuje, aby Microsoft po ověření vrátil kontrolu na vaši aplikaci. Při konfiguraci jednotlivých platforem vás proces registrace aplikace provede procesem. Pracovní příklad můžete stáhnout pomocí rychlého startu. Pokud je to možné, používejte v iOS zprostředkovatele a systémové webzobrazení.|
 | ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) |  Ve webových aplikacích nebo webových rozhraních API ponechte jednu mezipaměť tokenů na účet.  Pro webové aplikace by měla být mezipaměť tokenů nastavená ID účtu.  Pro webová rozhraní API by měl být účet nastaven pomocí hash tokenu, který se používá k volání rozhraní API. MSAL.NET poskytuje serializaci mezipaměti vlastního tokenu v podplatformách .NET Framework a .NET Core. Z důvodu zabezpečení a výkonu doporučujeme, abyste měli v úmyslu serializovat jednu mezipaměť na uživatele. Další informace najdete v tématu o [serializaci mezipaměti tokenů](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application).|
 | ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Pokud jsou data, která vaše aplikace vyžaduje, dostupná prostřednictvím [Microsoft Graph](https://developer.microsoft.com/graph), požádejte o oprávnění pro tato data pomocí koncového bodu Microsoft Graph místo jednotlivého rozhraní API. |
 | ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) |Nehlédněte do hodnoty přístupového tokenu nebo se pokuste o jeho analýzu jako klient.  Můžou měnit hodnoty, formáty nebo dokonce zašifrované bez upozornění – vždy použijte id_token, pokud se klient potřebuje dozvědět něco o uživateli nebo volat Microsoft Graph.  Přístupové tokeny by měly analyzovat jenom webová rozhraní API (protože jsou ta definující formát a nastavení šifrovacích klíčů). |
 
-## <a name="end-user-experience"></a>Prostředí koncového uživatele
+## <a name="end-user-experience"></a>Činnost koncového uživatele
 
 |   |   |
 |---|---|
@@ -91,21 +91,21 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 | ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Zaregistrujte úplnou sadu oprávnění, která vaše aplikace vyžaduje, aby správci mohli udělit souhlas svým klientům snadno. Pomocí [přírůstkového souhlasu](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) v době spuštění pomůžete uživatelům pochopit, proč vaše aplikace požaduje oprávnění, která se mohou v případě potřeby při prvním spuštění týkat nebo Zaměňujte uživatelům. |
 | ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Implementujte [čisté prostředí pro jednotné odhlašování](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut). Je to ochrana osobních údajů a požadavky na zabezpečení a přináší dobrý dojem uživatelské prostředí. |
 
-## <a name="testing"></a>Zkouší
+## <a name="testing"></a>Testování
 
 |   |   |
 |---|---|
 | ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Otestujte [zásady podmíněného přístupu](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut) , které mohou mít vliv na schopnost uživatelů používat vaši aplikaci. |
 | ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Otestujte svoji aplikaci se všemi možnými účty, které hodláte podporovat (například pracovní nebo školní účty, osobní účty Microsoft, podřízené účty a účty z svrchovaného účtu). |
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje informací:
 
-Prozkoumejte podrobné informace o verzi v 2.0:
+Prostudujte si podrobné informace týkající se v2.0:
 
 * [Microsoft Identity Platform (přehled verze 2.0)](v2-overview.md)
 * [Referenční informace o protokolech platformy Microsoft Identity Platform](active-directory-v2-protocols.md)
-* [Reference přístupových tokenů](access-tokens.md)
-* [Odkazy na tokeny ID](id-tokens.md)
+* [informace o přístupových tokenech](access-tokens.md)
+* [informace o tokenech ID](id-tokens.md)
 * [Referenční dokumentace knihoven ověřování](reference-v2-libraries.md)
 * [Oprávnění a souhlas na platformě Microsoft identity](v2-permissions-and-consent.md)
-* [Rozhraní API pro Microsoft Graph](https://developer.microsoft.com/graph)
+* [Microsoft Graph API](https://developer.microsoft.com/graph)

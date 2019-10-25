@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e26cf5ede2c8884719152b6d35f1b41eb092eda6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 72874e7b96e2ec8909a325b5ae598b900ebe8079
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071804"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791899"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybrid Connections #
 
@@ -38,7 +38,7 @@ Přes dvě připojená připojení má vaše aplikace tunel TCP na pevný hostit
 Když vaše aplikace vytvoří požadavek DNS, který odpovídá nakonfigurovanému koncovému bodu hybridního připojení, odchozí přenosy TCP se přesměrují prostřednictvím hybridního připojení.  
 
 > [!NOTE]
-> To znamená, že byste se měli pokusit vždy použít název DNS pro hybridní připojení. Některý klientský software neprovede vyhledávání DNS, pokud koncový bod místo toho používá IP adresu.
+> To znamená, že byste se měli pokusit vždy použít název DNS pro hybridní připojení. Některý klientský software neprovede vyhledávání DNS, pokud koncový bod místo toho používá IP adresu. 
 >
 
 ### <a name="app-service-hybrid-connection-benefits"></a>App Service výhody hybridního připojení ###
@@ -63,9 +63,12 @@ Mezi věci, které nemůžete Hybrid Connections, patří:
 - Podporuje protokol LDAP, protože může vyžadovat protokol UDP.
 - Podporuje službu Active Directory, protože se nemůžete připojit k doméně App Service pracovního procesu.
 
+### <a name="prerequisites"></a>Předpoklady ###
+ - Služba Windows App Service je povinná. Je k dispozici pouze v systému Windows.  
+
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Přidání a vytvoření Hybrid Connections v aplikaci ##
 
-Pokud chcete vytvořit hybridní připojení, otevřete [Azure Portal][portal] a vyberte svou aplikaci. Vyberte **sítě** > **Konfigurace koncových bodů hybridního připojení**. Tady vidíte Hybrid Connections, které jsou pro vaši aplikaci nakonfigurované.  
+Pokud chcete vytvořit hybridní připojení, otevřete [Azure Portal][portal] a vyberte svou aplikaci. Vyberte **sítě** > **nakonfigurovat koncové body hybridního připojení**. Tady vidíte Hybrid Connections, které jsou pro vaši aplikaci nakonfigurované.  
 
 ![Snímek obrazovky se seznamem hybridních připojení][2]
 
@@ -103,8 +106,8 @@ App Service Hybrid Connections jsou k dispozici pouze v jednotkách Basic, Stand
 
 | Cenový tarif | Počet Hybrid Connections použitelný v plánu |
 |----|----|
-| Basic | 5 |
-| Standard | 25 |
+| Úroveň Basic | 5 |
+| Úroveň Standard | 25 |
 | Premium | 200 |
 | Isolated | 200 |
 
@@ -122,7 +125,7 @@ Kromě toho, že App Service požadavek na SKLADOVOU položku plánu, je k použ
 
 ## <a name="hybrid-connection-manager"></a>Správce hybridního připojení ##
 
-Funkce Hybrid Connections vyžaduje přenosového agenta v síti, který je hostitelem koncového bodu hybridního připojení. Agent Relay se nazývá Správce hybridního připojení (HCM). Pokud chcete stáhnout HCM, z vaší aplikace v [Azure Portal][portal]vyberte **sítě** > **Konfigurace koncových bodů hybridního připojení**.  
+Funkce Hybrid Connections vyžaduje přenosového agenta v síti, který je hostitelem koncového bodu hybridního připojení. Agent Relay se nazývá Správce hybridního připojení (HCM). Pokud chcete stáhnout HCM, z vaší aplikace v [Azure Portal][portal]vyberte **síť** > **Konfigurace koncových bodů hybridního připojení**.  
 
 Tento nástroj běží na Windows Serveru 2012 a novějším. HCM se spouští jako služba a připojuje odchozí Azure Relay na portu 443.  
 
@@ -136,14 +139,14 @@ Přidání jednoho nebo více Hybrid Connections do HCM:
 
 1. Spusťte uživatelské rozhraní HCM.
 2. Vyberte **Konfigurovat jiné hybridní připojení**.
-![Snímek obrazovky s konfigurací nových Hybrid Connections][8]
+![snímek obrazovky konfigurace nového Hybrid Connections][8]
 
 1. Přihlaste se pomocí účtu Azure, abyste mohli Hybrid Connections k dispozici ve svých předplatných. HCM nebude nadále používat váš účet Azure nad rámec těchto. 
 1. Vyberte předplatné.
 1. Vyberte Hybrid Connections, který má HCM Relay.
-![Snímek obrazovky s Hybrid Connections][9]
+![snímku Hybrid Connections][9]
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 Teď můžete zobrazit Hybrid Connections, které jste přidali. Můžete také vybrat nakonfigurované hybridní připojení a zobrazit podrobnosti.
 
@@ -169,7 +172,7 @@ Pokud chcete někomu mimo předplatné povolit hostování instance HCM pro dan�
 
 ![Ruční přidání hybridního připojení][11]
 
-### <a name="upgrade"></a>Upgrade ###
+### <a name="upgrade"></a>Aktualizace ###
 
 Existují pravidelné aktualizace Správce hybridního připojení, které řeší problémy nebo poskytují vylepšení. Po vydání upgradů se v uživatelském rozhraní HCM zobrazí místní nabídka. Při použití upgradu se změny projeví a restartuje HCM. 
 
@@ -220,7 +223,7 @@ Pokud chcete používat toto rozhraní API, potřebujete poslat klíč a ID pros
 
 ## <a name="troubleshooting"></a>Řešení potíží ##
 
-Stav "připojeno" znamená, že minimálně jeden HCM je nakonfigurován s tímto hybridním připojením a je schopný získat přístup k Azure. Pokud stav hybridního připojení nefunguje, vaše hybridnípřipojení není nakonfigurované na žádném HCM, které má přístup k Azure.
+Stav "připojeno" znamená, že minimálně jeden HCM je nakonfigurován s tímto hybridním připojením a je schopný získat přístup k Azure. Pokud stav hybridního připojení nefunguje **, vaše**hybridní připojení není nakonfigurované na žádném HCM, které má přístup k Azure.
 
 Primárním důvodem, proč se klienti nemohou připojit ke svému koncovému bodu, je, že koncový bod byl zadán pomocí IP adresy místo názvu DNS. Pokud vaše aplikace nemůže získat přístup k požadovanému koncovému bodu a použili jste IP adresu, přepněte se na použití názvu DNS, který je platný na hostiteli, kde je spuštěný HCM. Také ověřte, že se název DNS správně překládá na hostiteli, kde je spuštěný HCM. Potvrďte, že existuje připojení z hostitele, kde HCM běží na koncovém bodu hybridního připojení.  
 

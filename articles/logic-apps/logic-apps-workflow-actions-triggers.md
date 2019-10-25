@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 9bee329953a1f39720b054ed90e1d56c6743862e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: a6789f409e26d1310d9e583ac2934e0bae462b21
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679876"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799425"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Referenční příručka schématu pro typy triggerů a akcí v Azure Logic Apps
 
@@ -132,7 +132,7 @@ Tato aktivační událost zkontroluje nebo provede *dotaz* na koncový bod pomoc
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*APIConnection_trigger_name* > | Řetězec | Název triggeru | 
+| <*APIConnection_trigger_name*> | Řetězec | Název triggeru | 
 | <*připojení-název*> | Řetězec | Název připojení ke spravovanému rozhraní API, které používá pracovní postup | 
 | <*typ metody* > | Řetězec | Metoda HTTP pro komunikaci se spravovaným rozhraním API: "GET", "PUT", "POST", "PATCH", "DELETE" | 
 | <*rozhraní API – operace* > | Řetězec | Operace rozhraní API, která se má volat | 
@@ -273,19 +273,21 @@ Tato definice triggeru se přihlásí k odběru rozhraní API pro Office 365 Out
 
 ### <a name="http-trigger"></a>Trigger HTTP
 
-Tato aktivační událost zkontroluje nebo provede dotazování zadaného koncového bodu na základě zadaného plánu opakování. Odpověď koncového bodu Určuje, zda je pracovní postup spuštěn.
+Tato aktivační událost pošle požadavek na zadaný koncový bod HTTP nebo HTTPS na základě zadaného plánu opakování. Aktivační událost pak zkontroluje odezvu a určí, zda je pracovní postup spuštěn.
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<endpoint-URL>",
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
       "headers": { "<header-content>" },
+      "queries": "<query-parameters>",
       "body": "<body-content>",
-      "authentication": { "<authentication-method>" },
-      "retryPolicy": { "<retry-behavior>" },
-      "queries": "<query-parameters>"
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      }
    },
    "recurrence": {
       "frequency": "<time-unit>",
@@ -303,27 +305,27 @@ Tato aktivační událost zkontroluje nebo provede dotazování zadaného koncov
 
 *Požadovanou*
 
-| Hodnota | Typ | Popis | 
-|-------|------|-------------| 
-| <*typ metody* > | Řetězec | Metoda HTTP, která se má použít pro cyklické dotazování zadaného koncového bodu: "GET", "PUT", "POST", "PATCH", "DELETE" | 
-| <*koncový bod-adresa URL* > | Řetězec | Adresa URL protokolu HTTP nebo HTTPS pro koncový bod, který se má dotazovat <p>Maximální velikost řetězce: 2 KB | 
-| <*Časová jednotka* > | Řetězec | Časová jednotka, která popisuje, jak často se Trigger aktivuje: "druhé", "Minute", "hodina", "den", "týden", "měsíc" | 
-| <*číslo-jednotky-času* > | Integer | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. | 
-|||| 
+| Vlastnost | Hodnota | Typ | Popis |
+|----------|-------|------|-------------|
+| `method` | <*typ metody* > | Řetězec | Metoda, která se má použít pro odeslání odchozí žádosti: "GET", "PUT", "POST", "PATCH" nebo "DELETE" |
+| `uri` | <*http-nebo-https-Endpoint-URL* > | Řetězec | Adresa URL koncového bodu HTTP nebo HTTPS, kam chcete odeslat odchozí požadavek. Maximální velikost řetězce: 2 KB <p>V případě služby nebo prostředku Azure Tato syntaxe identifikátoru URI zahrnuje ID prostředku a cestu k prostředku, ke kterému chcete získat přístup. |
+| `frequency` | <*Časová jednotka* > | Řetězec | Časová jednotka, která popisuje, jak často se Trigger aktivuje: "druhé", "Minute", "hodina", "den", "týden", "měsíc" |
+| `interval` | <*číslo-jednotky-času* > | Integer | Hodnota, která určuje, jak často se Trigger aktivuje na základě frekvence, což je počet časových jednotek, které se mají počkat, dokud se Trigger znovu nespustí. <p>Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month", opakování je každých 6 měsíců. |
+|||||
 
 *Volitelné*
 
-| Hodnota | Typ | Popis | 
-|-------|------|-------------| 
-| <*záhlaví-obsah* > | Objekt JSON | Hlavičky, které se mají odeslat s požadavkem <p>Například pro nastavení jazyka a typu pro požadavek: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| *text < – obsah* > | Řetězec | Obsah zprávy, která má být odeslána jako datová část s požadavkem | 
-| <*authentication-method* > | Objekt JSON | Metoda, kterou požadavek používá k ověření. Další informace najdete v tématu [odchozí ověřování Scheduleru](../scheduler/scheduler-outbound-authentication.md). Kromě Scheduleru je podporovaná vlastnost `authority`. Pokud není zadaný, použije se výchozí hodnota `https://login.windows.net`, ale můžete použít jinou hodnotu, třeba `https://login.windows\-ppe.net`. |
-| <*opakování – chování* > | Objekt JSON | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). |  
- <*dotaz – parametry* > | Objekt JSON | Všechny parametry dotazu, které se mají zahrnout do žádosti <p>Například objekt `"queries": { "api-version": "2018-01-01" }` přidá do žádosti `?api-version=2018-01-01`. | 
-| <*Max-běhy* > | Integer | Ve výchozím nastavení se instance pracovních postupů spouští ve stejnou dobu, nebo paralelně s [výchozím limitem](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). | 
-| <*Max-běhy-queue* > | Integer | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit v závislosti na vlastnosti `runtimeConfiguration.concurrency.runs`, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
-| <*operace – možnost* > | Řetězec | Výchozí chování můžete změnit nastavením vlastnosti `operationOptions`. Další informace najdete v tématu [Možnosti operací](#operation-options). | 
-|||| 
+| Vlastnost | Hodnota | Typ | Popis |
+|----------|-------|------|-------------|
+| `headers` | <*záhlaví-obsah* > | Objekt JSON | Libovolná záhlaví, která je potřeba zahrnout do žádosti <p>Chcete-li například nastavit jazyk a typ: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*dotaz – parametry* > | Objekt JSON | Všechny parametry dotazů, které je třeba v žádosti použít <p>Například objekt `"queries": { "api-version": "2018-01-01" }` přidá do žádosti `?api-version=2018-01-01`. |
+| `body` | *text < – obsah* > | Objekt JSON | Obsah zprávy, která má být odeslána jako datová část s požadavkem |
+| `authentication` | <*hodnoty ověřování-Type-a-Property-values*> | Objekt JSON | Model ověřování, který požadavek používá pro ověřování odchozích požadavků. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). Kromě Scheduleru je podporovaná vlastnost `authority`. Pokud není zadaný, použije se výchozí hodnota `https://management.azure.com/`, ale můžete použít jinou hodnotu. |
+| `retryPolicy` > `type` | <*opakování – chování* > | Objekt JSON | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
+| `runs` | <*Max-běhy* > | Integer | Ve výchozím nastavení se instance pracovních postupů spouští ve stejnou dobu, nebo paralelně s [výchozím limitem](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). |
+| `maximumWaitingRuns` | <*Max-běhy-queue* > | Integer | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit v závislosti na vlastnosti `runtimeConfiguration.concurrency.runs`, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). |
+| `operationOptions` | <*operace – možnost* > | Řetězec | Výchozí chování můžete změnit nastavením vlastnosti `operationOptions`. Další informace najdete v tématu [Možnosti operací](#operation-options). |
+|||||
 
 *Výstupy*
 
@@ -374,7 +376,7 @@ Chování triggeru závisí na oddílech, které použijete nebo vynecháte.
          "uri": "<endpoint-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": { "<retry-behavior>" }
          },
       },
@@ -383,7 +385,7 @@ Chování triggeru závisí na oddílech, které použijete nebo vynecháte.
          "url": "<endpoint-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" }
+         "authentication": { "<authentication-type>" }
       }
    },
    "runTimeConfiguration": {
@@ -413,7 +415,7 @@ Některé hodnoty, například <*metody typu*>, jsou k dispozici pro objekty `"s
 | <*typ metody* > | Řetězec | Metoda HTTP, která se má použít pro žádost o zrušení: "GET", "PUT", "POST", "PATCH" nebo "DELETE" | 
 | <*koncového bodu – zrušení odběru adresy URL* > | Řetězec | Adresa URL koncového bodu, kam se má odeslat žádost o zrušení | 
 | *text < – obsah* > | Řetězec | Veškerý obsah zprávy pro odeslání v rámci předplatného nebo žádosti o zrušení | 
-| <*authentication-method* > | Objekt JSON | Metoda, kterou požadavek používá k ověření. Další informace najdete v tématu [odchozí ověřování Scheduleru](../scheduler/scheduler-outbound-authentication.md). |
+| <*typ ověřování*> | Objekt JSON | Model ověřování, který požadavek používá pro ověřování odchozích požadavků. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*opakování – chování* > | Objekt JSON | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*Max-běhy* > | Integer | Ve výchozím nastavení se instance pracovních postupů spouští současně nebo paralelně s [výchozím limitem](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete tento limit změnit nastavením nového <*počet*> hodnoty, přečtěte si téma [Změna souběžnosti triggeru](#change-trigger-concurrency). | 
 | <*Max-běhy-queue* > | Integer | Pokud je v pracovním postupu již spuštěn maximální počet instancí, které lze změnit v závislosti na vlastnosti `runtimeConfiguration.concurrency.runs`, budou všechny nové běhy vloženy do této fronty až do [výchozího limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](#change-waiting-runs). | 
@@ -950,7 +952,7 @@ Tato akce odešle požadavek na předplatné přes HTTP do koncového bodu pomoc
          "uri": "<api-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": "<retry-behavior>",
          "queries": { "<query-parameters>" },
          "<other-action-specific-input-properties>"
@@ -960,7 +962,7 @@ Tato akce odešle požadavek na předplatné přes HTTP do koncového bodu pomoc
          "uri": "<api-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "<other-action-specific-properties>"
       },
    },
@@ -986,7 +988,7 @@ Některé hodnoty, například <*metody typu*>, jsou k dispozici pro objekty `"s
 | <*API – zrušení odběru adresy URL* > | Řetězec | Identifikátor URI, který se má použít k odhlášení odběru rozhraní API | 
 | <*záhlaví-obsah* > | Objekt JSON | Libovolná záhlaví, která se mají poslat v žádosti <p>Například chcete-li nastavit jazyk a typ pro požadavek: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | *text < – obsah* > | Objekt JSON | Veškerý obsah zprávy, který se má odeslat v žádosti | 
-| <*authentication-method* > | Objekt JSON | Metoda, kterou požadavek používá k ověření. Další informace najdete v tématu [odchozí ověřování Scheduleru](../scheduler/scheduler-outbound-authentication.md). |
+| <*typ ověřování*> | Objekt JSON | Model ověřování, který požadavek používá pro ověřování odchozích požadavků. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*opakování – chování* > | Objekt JSON | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*dotaz – parametry* > | Objekt JSON | Všechny parametry dotazu, které se mají zahrnout do volání rozhraní API <p>Například objekt `"queries": { "api-version": "2018-01-01" }` přidá `?api-version=2018-01-01` do volání. | 
 | < >, které jsou*specifické pro akci-Input-Properties* | Objekt JSON | Všechny další vstupní vlastnosti, které se vztahují na tuto konkrétní akci | 
@@ -1105,9 +1107,9 @@ Tato akce spustí kód, který získá název vaší aplikace logiky a vrátí d
 
 *Příklad 2*
 
-Tato akce spustí kód v aplikaci logiky, která se aktivuje při přijetí nového e-mailu v účtu Office 365 Outlook. Aplikace logiky také používá akci odeslání e-mailu pro schválení, která přesměruje obsah z přijatého e-mailu spolu se žádostí o schválení. 
+Tato akce spustí kód v aplikaci logiky, která se aktivuje při přijetí nového e-mailu v účtu Office 365 Outlook. Aplikace logiky také používá akci odeslání e-mailu pro schválení, která přesměruje obsah z přijatého e-mailu spolu se žádostí o schválení.
 
-Kód extrahuje e-mailové adresy z vlastnosti triggeru `Body` a vrátí tyto e-mailové adresy spolu s hodnotou vlastnosti `SelectedOption` z akce schválení. Akce explicitně zahrnuje akci odeslání e-mailu o schválení jako závislost v atributu `explicitDependencies`  >  `actions`.
+Kód extrahuje e-mailové adresy z vlastnosti triggeru `Body` a vrátí adresy spolu s hodnotou vlastnosti `SelectedOption` z akce schválení. Akce explicitně zahrnuje akci odeslání e-mailu o schválení jako závislost v atributu `explicitDependencies`  >  `actions`.
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1206,14 +1208,21 @@ Tato definice akce volá dříve vytvořenou funkci getproductid:
 
 ### <a name="http-action"></a>Akce HTTP
 
-Tato akce odešle požadavek na zadaný koncový bod a zkontroluje odpověď, aby určil, zda by měl být pracovní postup spuštěn. 
+Tato akce odešle požadavek na zadaný koncový bod HTTP nebo HTTPS a zkontroluje odpověď, aby zjistil, zda pracovní postup běží.
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<HTTP-or-HTTPS-endpoint-URL>"
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
+      "headers": { "<header-content>" },
+      "queries": { "<query-parameters>" },
+      "body": "<body-content>",
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      },
    },
    "runAfter": {}
 }
@@ -1221,23 +1230,24 @@ Tato akce odešle požadavek na zadaný koncový bod a zkontroluje odpověď, ab
 
 *Požadovanou*
 
-| Hodnota | Typ | Popis | 
-|-------|------|-------------| 
-| <*typ metody* > | Řetězec | Metoda, která se má použít pro odeslání žádosti: "GET", "PUT", "POST", "PATCH" nebo "DELETE" | 
-| <*http-nebo-https-Endpoint-URL* > | Řetězec | Koncový bod HTTP nebo HTTPS, který chcete zavolat. Maximální velikost řetězce: 2 KB | 
-|||| 
+| Vlastnost | Hodnota | Typ | Popis |
+|----------|-------|------|-------------|
+| `method` | <*typ metody* > | Řetězec | Metoda, která se má použít pro odeslání odchozí žádosti: "GET", "PUT", "POST", "PATCH" nebo "DELETE" |
+| `uri` | <*http-nebo-https-Endpoint-URL* > | Řetězec | Adresa URL koncového bodu HTTP nebo HTTPS, kam chcete odeslat odchozí požadavek. Maximální velikost řetězce: 2 KB <p>V případě služby nebo prostředku Azure Tato syntaxe identifikátoru URI zahrnuje ID prostředku a cestu k prostředku, ke kterému chcete získat přístup. |
+|||||
 
 *Volitelné*
 
-| Hodnota | Typ | Popis | 
-|-------|------|-------------| 
-| <*záhlaví-obsah* > | Objekt JSON | Všechna záhlaví, která se mají poslat pomocí žádosti <p>Chcete-li například nastavit jazyk a typ: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| *text < – obsah* > | Objekt JSON | Veškerý obsah zprávy, který se má odeslat v žádosti | 
-| <*opakování – chování* > | Objekt JSON | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*dotaz – parametry* > | Objekt JSON | Všechny parametry dotazu, které se mají zahrnout do žádosti <p>Například objekt `"queries": { "api-version": "2018-01-01" }` přidá `?api-version=2018-01-01` do volání. | 
-| < >, které jsou*specifické pro akci-Input-Properties* | Objekt JSON | Všechny další vstupní vlastnosti, které se vztahují na tuto konkrétní akci | 
-| < >, které jsou*specifické pro akci* | Objekt JSON | Všechny další vlastnosti, které se vztahují na tuto konkrétní akci | 
-|||| 
+| Vlastnost | Hodnota | Typ | Popis |
+|----------|-------|------|-------------|
+| `headers` | <*záhlaví-obsah* > | Objekt JSON | Libovolná záhlaví, která je potřeba zahrnout do žádosti <p>Chcete-li například nastavit jazyk a typ: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*dotaz – parametry* > | Objekt JSON | Všechny parametry dotazů, které je třeba v žádosti použít <p>Například objekt `"queries": { "api-version": "2018-01-01" }` přidá `?api-version=2018-01-01` do volání. |
+| `body` | *text < – obsah* > | Objekt JSON | Obsah zprávy, která má být odeslána jako datová část s požadavkem |
+| `authentication` | <*hodnoty ověřování-Type-a-Property-values*> | Objekt JSON | Model ověřování, který požadavek používá pro ověřování odchozích požadavků. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). Kromě Scheduleru je podporovaná vlastnost `authority`. Pokud není zadaný, použije se výchozí hodnota `https://management.azure.com/`, ale můžete použít jinou hodnotu. |
+| `retryPolicy` > `type` | <*opakování – chování* > | Objekt JSON | Přizpůsobuje chování opakování pro přerušované výpadky, které mají stavový kód 408, 429 a 5XX, a jakékoli výjimky připojení. Další informace najdete v tématu [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
+| < >, které jsou*specifické pro akci-Input-Properties* | > <*input-Property* | Objekt JSON | Všechny další vstupní vlastnosti, které se vztahují na tuto konkrétní akci |
+| < >, které jsou*specifické pro akci* | <*vlastnosti-hodnota*> | Objekt JSON | Všechny další vlastnosti, které se vztahují na tuto konkrétní akci |
+|||||
 
 *Příklad*
 
@@ -2665,134 +2675,11 @@ Pro jednu definici aplikace logiky má počet akcí, které se spustí každých
 }
 ```
 
-<a name="connector-authentication"></a>
+<a name="authenticate-triggers-actions"></a>
 
-## <a name="authenticate-http-triggers-and-actions"></a>Ověřování aktivačních událostí a akcí HTTP
+## <a name="authenticate-triggers-and-actions"></a>Ověřování aktivačních událostí a akcí
 
-Koncové body HTTP podporují různé druhy ověřování. Pro tyto triggery a akce HTTP můžete nastavit ověřování:
-
-* [HTTP](../connectors/connectors-native-http.md)
-* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
-* [HTTP Webhook](../connectors/connectors-native-webhook.md)
-
-Tady jsou typy ověřování, které můžete nastavit:
-
-* [Základní ověřování](#basic-authentication)
-* [Ověřování certifikátu klienta](#client-certificate-authentication)
-* [Ověřování OAuth pro Azure Active Directory (Azure AD)](#azure-active-directory-oauth-authentication)
-
-> [!IMPORTANT]
-> Ujistěte se, že jste chránili všechny citlivé informace, které vaše definice pracovního postupu aplikace logiky zpracovává. V případě potřeby používejte zabezpečené parametry a zakódovat data. Další informace o použití a zabezpečení parametrů najdete v tématu [zabezpečení aplikace logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-<a name="basic-authentication"></a>
-
-### <a name="basic-authentication"></a>Základní ověřování
-
-Pro [základní ověřování](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) pomocí Azure Active Directory může definice triggeru nebo akce zahrnovat objekt `authentication` JSON, který má vlastnosti určené v následující tabulce. Chcete-li získat přístup k hodnotám parametrů za běhu, můžete použít výraz `@parameters('parameterName')`, který je poskytován [jazykem definice pracovního postupu](https://aka.ms/logicappsdocs). 
-
-| Vlastnost | Požaduje se | Hodnota | Popis | 
-|----------|----------|-------|-------------| 
-| **type** | Ano | Basic | Typ ověřování, který má být použit, který je zde "základní" | 
-| **jmen** | Ano | "@parameters (' userNameParam ')" | Uživatelské jméno pro ověřování přístupu k cílovému koncovému bodu služby |
-| **zadáno** | Ano | "@parameters (' passwordParam ')" | Heslo pro ověřování přístupu k cílovému koncovému bodu služby |
-||||| 
-
-V tomto příkladu definice akce HTTP určuje `authentication` oddíl `Basic` ověřování. Další informace o použití a zabezpečení parametrů najdete v tématu [zabezpečení aplikace logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "Basic",
-         "username": "@parameters('userNameParam')",
-         "password": "@parameters('passwordParam')"
-      }
-  },
-  "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Ujistěte se, že jste chránili všechny citlivé informace, které vaše definice pracovního postupu aplikace logiky zpracovává. V případě potřeby používejte zabezpečené parametry a zakódovat data. Další informace o zabezpečení parametrů najdete v tématu [zabezpečení aplikace logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-<a name="client-certificate-authentication"></a>
-
-### <a name="client-certificate-authentication"></a>Ověřování certifikátu klienta
-
-Pro [ověřování na základě certifikátů](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) pomocí Azure Active Directory může definice triggeru nebo akce zahrnovat objekt `authentication` JSON, který má vlastnosti určené v následující tabulce. Chcete-li získat přístup k hodnotám parametrů za běhu, můžete použít výraz `@parameters('parameterName')`, který je poskytován [jazykem definice pracovního postupu](https://aka.ms/logicappsdocs). Omezení počtu klientských certifikátů, které můžete použít, najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md).
-
-| Vlastnost | Požaduje se | Hodnota | Popis |
-|----------|----------|-------|-------------|
-| **type** | Ano | ClientCertificate | Typ ověřování, který se má použít pro SSL (Secure Sockets Layer) (SSL) klientské certifikáty. I když jsou certifikáty podepsané svým držitelem podporovány, certifikáty podepsané svým držitelem pro SSL nejsou podporovány. |
-| **PFX** | Ano | "@parameters (' pfxParam ') | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) |
-| **zadáno** | Ano | "@parameters (' passwordParam ')" | Heslo pro přístup k souboru PFX |
-||||| 
-
-V tomto příkladu definice akce HTTP určuje `authentication` oddíl `ClientCertificate` ověřování. Další informace o použití a zabezpečení parametrů najdete v tématu [zabezpečení aplikace logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ClientCertificate",
-         "pfx": "@parameters('pfxParam')",
-         "password": "@parameters('passwordParam')"
-      }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Ujistěte se, že jste chránili všechny citlivé informace, které vaše definice pracovního postupu aplikace logiky zpracovává. V případě potřeby používejte zabezpečené parametry a zakódovat data. Další informace o zabezpečení parametrů najdete v tématu [zabezpečení aplikace logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-<a name="azure-active-directory-oauth-authentication"></a>
-
-### <a name="azure-active-directory-ad-oauth-authentication"></a>Ověřování OAuth Azure Active Directory (AD)
-
-Pro [ověřování Azure AD OAuth](../active-directory/develop/authentication-scenarios.md)může definice triggeru nebo akce zahrnovat `authentication` objekt JSON, který má vlastnosti určené v následující tabulce. Chcete-li získat přístup k hodnotám parametrů za běhu, můžete použít výraz `@parameters('parameterName')`, který je poskytován [jazykem definice pracovního postupu](https://aka.ms/logicappsdocs).
-
-| Vlastnost | Požaduje se | Hodnota | Popis |
-|----------|----------|-------|-------------|
-| **type** | Ano | `ActiveDirectoryOAuth` | Typ ověřování, který se má použít, což je "ActiveDirectoryOAuth" pro Azure AD OAuth |
-| **dohled** | Ne | <*Adresa URL – > vystavitele tokenu* | Adresa URL pro autoritu, která poskytuje ověřovací token |
-| **tenant** | Ano | <*tenant-ID* > | ID tenanta pro tenanta Azure AD |
-| **osoby** | Ano | <*prostředku k autorizaci* > | Prostředek, který chcete použít pro autorizaci, například `https://management.core.windows.net/` |
-| **clientId** | Ano | <*Client-ID* > | ID klienta pro aplikaci požadující autorizaci |
-| **credentialType** | Ano | "Certifikát" nebo "tajný klíč" | Typ přihlašovacích údajů, který klient používá pro vyžádání autorizace. Tato vlastnost a hodnota se nezobrazí v základní definici, ale určí požadované parametry pro typ přihlašovacích údajů. |
-| **PFX** | Ano, pouze pro typ přihlašovacích údajů "certifikát" | "@parameters (' pfxParam ') | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) |
-| **zadáno** | Ano, pouze pro typ přihlašovacích údajů "certifikát" | "@parameters (' passwordParam ')" | Heslo pro přístup k souboru PFX |
-| **otázku** | Ano, pouze pro "tajný" typ přihlašovacích údajů | "@parameters (' secretParam ')" | Tajný klíč klienta pro vyžádání autorizace |
-|||||
-
-V tomto příkladu definice akce HTTP obsahuje oddíl `authentication` `ActiveDirectoryOAuth` ověřování a typ přihlašovacích údajů "tajné". Další informace o použití a zabezpečení parametrů najdete v tématu [zabezpečení aplikace logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ActiveDirectoryOAuth",
-         "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-         "audience": "https://management.core.windows.net/",
-         "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-         "secret": "@parameters('secretParam')"
-     }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Ujistěte se, že jste chránili všechny citlivé informace, které vaše definice pracovního postupu aplikace logiky zpracovává. V případě potřeby používejte zabezpečené parametry a zakódovat data. Další informace o zabezpečení parametrů najdete v tématu [zabezpečení aplikace logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
+Koncové body HTTP a HTTPS podporují různé druhy ověřování. V závislosti na triggeru nebo akci, kterou použijete k provedení odchozích volání nebo požadavků pro přístup k těmto koncovým bodům, můžete vybrat z různých rozsahů typů ověřování. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 ## <a name="next-steps"></a>Další kroky
 

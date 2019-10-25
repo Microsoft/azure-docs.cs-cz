@@ -1,29 +1,28 @@
 ---
-title: Upgrade na rozhraní Azure Search .NET SDK verze 10 – Azure Search
+title: Upgrade na Azure Search .NET SDK verze 10
+titleSuffix: Azure Cognitive Search
 description: Migruje kód do sady Azure Search .NET SDK verze 10 ze starších verzí. Zjistěte, co je nového a kdy se vyžadují změny kódu.
-author: arv100kri
 manager: nitinme
-services: search
-ms.service: search
+author: arv100kri
+ms.author: arjagann
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: arjagann
-ms.custom: seodec2018
-ms.openlocfilehash: e4633a1c0543331b0ea9820703ed685fb99f2130
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182365"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793041"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-10"></a>Upgrade na rozhraní Azure Search .NET SDK verze 10
+# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Upgrade na Azure Search .NET SDK verze 10
 
 Pokud používáte [sadu Azure Search .NET SDK](https://aka.ms/search-sdk)verze 9,0 nebo starší, Tento článek vám pomůže při upgradu aplikace na použití verze 10.
 
 Obecnější návod k sadě SDK, včetně příkladů, najdete v tématu [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).
 
-Verze 10 přináší několik funkcí a oprav chyb a přináší tak stejnou úroveň funkčnosti jako poslední verze REST API verze `2019-05-06`. V případech, kdy změna přeruší existující kód, Vás provedeme [kroky potřebnými k vyřešení tohoto problému](#UpgradeSteps).
+Verze 10 přináší několik funkcí a oprav chyb a přináší tak stejnou úroveň funkčnosti jako nejnovější verzi REST API `2019-05-06`. V případech, kdy změna přeruší existující kód, Vás provedeme [kroky potřebnými k vyřešení tohoto problému](#UpgradeSteps).
 
 > [!NOTE]
 > Pokud používáte verzi 8,0-Preview nebo starší, měli byste nejdřív upgradovat na verzi 9 a pak upgradovat na verzi 10. Pokyny najdete v tématu [upgrade na sadu Azure Search .NET SDK verze 9](search-dotnet-sdk-migration-version-9.md) .
@@ -33,22 +32,22 @@ Verze 10 přináší několik funkcí a oprav chyb a přináší tak stejnou úr
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>Co je nového ve verzi 10
-Verze 10 sady Azure Search .NET SDK cílí na nejnovější obecně dostupnou verzi Azure Search REST API (`2019-05-06`) s těmito aktualizacemi:
+Verze 10 sady Azure Search .NET SDK cílí na nejnovější všeobecně dostupnou verzi Azure Search REST API (`2019-05-06`) s těmito aktualizacemi:
 
 * Seznámení se dvěma novými dovednostmi – [podmíněná](cognitive-search-skill-conditional.md) dovednost a [dovednost překladu textu](cognitive-search-skill-text-translation.md)
 * [Shapery odbornosti](cognitive-search-skill-shaper.md) byly restrukturované, aby vyhovovaly konsolidaci z vnořených kontextů. Další informace najdete v tomto [příkladu definice JSON](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
 * Přidání dvou nových [funkcí mapování polí](search-indexer-field-mappings.md):
     - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
     - [urlDecode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
-* V některých případech můžou chyby a upozornění, která se zobrazují ve [stavu provádění indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) , získat další podrobnosti, které vám pomůžou při ladění. `IndexerExecutionResult`byla aktualizována, aby odrážela toto chování.
-* Jednotlivé dovednosti definované v rámci [dovednosti](cognitive-search-defining-skillset.md) lze volitelně identifikovat zadáním `name` vlastnosti.
-* `ServiceLimits`Zobrazuje omezení pro [komplexní typy](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) a `IndexerExecutionInfo` zobrazuje relevantní omezení a kvóty indexerů.
+* V některých případech můžou chyby a upozornění, která se zobrazují ve [stavu provádění indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) , získat další podrobnosti, které vám pomůžou při ladění. `IndexerExecutionResult` byla aktualizována, aby odrážela toto chování.
+* Jednotlivé dovednosti definované v rámci [dovednosti](cognitive-search-defining-skillset.md) lze volitelně identifikovat zadáním vlastnosti `name`.
+* `ServiceLimits` zobrazuje omezení pro [komplexní typy](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) a `IndexerExecutionInfo` zobrazuje relevantní limity a kvóty indexerů.
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Postup upgradu
 
-1. Aktualizujte svůj odkaz na `Microsoft.Azure.Search` NuGet pro použití buď konzoly Správce balíčků NuGet, nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
+1. Aktualizujte svůj odkaz na NuGet pro `Microsoft.Azure.Search` pomocí konzoly Správce balíčků NuGet nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
 
 2. Jakmile NuGet stáhne nové balíčky a jejich závislosti, sestavte projekt znovu. 
 
@@ -69,9 +68,9 @@ K dispozici je několik zásadních změn ve verzi 10, které mohou vyžadovat z
 
 Definice [vlastního dovednosti webového rozhraní API](cognitive-search-custom-skill-web-api.md) byla nesprávně zadaná ve verzi 9 a starší. 
 
-Model `WebApiSkill` určený `HttpHeaders` jako vlastnost objektu, která _obsahuje_ slovník. Vytvoření dovednosti s `WebApiSkill` vytvořeným tímto způsobem by způsobilo výjimku, protože REST API by poznamenala chybně vytvořený požadavek. Tento problém byl opraven nastavením `HttpHeaders` `WebApiSkill` **vlastnosti slovníku nejvyšší úrovně** v modelu samotného, což je považováno za platný požadavek z REST API.
+Model pro `WebApiSkill` určený `HttpHeaders` jako vlastnost objektu, která _obsahuje_ slovník. Vytvoření dovednosti `WebApiSkill` s tímto způsobem má za následek výjimku, protože REST API by to znamenalo, že požadavek byl nesprávně vytvořen. Tento problém byl opraven, protože `HttpHeaders` **vlastnost slovníku nejvyšší úrovně** u samotného modelu `WebApiSkill`, který se považuje za platný požadavek od REST API.
 
-Například pokud jste se dříve pokusili vytvořit instanci a `WebApiSkill` následujícím způsobem:
+Například pokud jste se dříve pokusili vytvořit instanci `WebApiSkill` následujícím způsobem:
 
 ```csharp
 
@@ -110,18 +109,18 @@ var webApiSkill = new WebApiSkill(
 
 ## <a name="shaper-skill-allows-nested-context-consolidation"></a>Shaper dovednost umožňuje konsolidaci vnořeného kontextu.
 
-Shaper dovednost teď může z vnořených kontextů umožňovat vstupní konsolidaci. Pro povolení této změny jsme změnili `InputFieldMappingEntry` tak, aby mohla být vytvořena instance zadáním `Source` pouze `SourceContext` vlastnosti, nebo vlastností a `Inputs` .
+Shaper dovednost teď může z vnořených kontextů umožňovat vstupní konsolidaci. Pro tuto změnu jsme změnili `InputFieldMappingEntry` tak, aby mohla být vytvořena instance zadáním pouze vlastnosti `Source` nebo vlastností `SourceContext` a `Inputs`.
 
 Pravděpodobně nebudete muset dělat žádné změny kódu; Upozorňujeme však, že je povolena pouze jedna z těchto dvou kombinací. To znamená:
 
-- Vytváření je `InputFieldMappingEntry` platné pouze `Source` v případě, že je inicializována pouze inicializace.
-- Vytváření je `InputFieldMappingEntry` platné pouze `SourceContext` v `Inputs` případě, že jsou inicializovány.
+- Vytvoření `InputFieldMappingEntry`, kde jsou inicializovány pouze `Source`, jsou platné.
+- Vytvoření `InputFieldMappingEntry`, kde jsou inicializovány pouze `SourceContext` a `Inputs`, jsou platné.
 - Všechny ostatní kombinace týkající se těchto tří vlastností jsou neplatné.
 
 Pokud se rozhodnete začít používat tuto novou funkci, ujistěte se, že všichni klienti jsou aktualizováni tak, aby používali verzi 10 jako první, a teprve potom provedete tuto změnu. V opačném případě existuje možnost, že aktualizace klienta (pomocí starší verze sady SDK) k Shaper dovednosti může vést k chybám ověření.
 
 > [!NOTE]
-> I když je původní `InputFieldMappingEntry` model upraven tak, aby povoloval konsolidaci z vnořených kontextů, použití je platné pouze v rámci definice Shaper dovednosti. Použití této funkce v jiných dovednostech, zatímco platné v době kompilace, bude mít za následek chybu ověřování za běhu.
+> I když byl upravený `InputFieldMappingEntry` model změněn tak, aby bylo možné konsolidovat z vnořených kontextů, použití je platné pouze v rámci definice Shaper dovednosti. Použití této funkce v jiných dovednostech, zatímco platné v době kompilace, bude mít za následek chybu ověřování za běhu.
 
 ## <a name="skills-can-be-identified-by-a-name"></a>Dovednosti můžete identifikovat podle názvu.
 
@@ -140,24 +139,24 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill`má přiřazený název `#1`, `WebApiSkill` `#2` `ShaperSkill` jepřiřazen`#3` a tak dále.
+`SentimentSkill` je přiřazen název `#1`, `WebApiSkill` `#2`přiřazen `ShaperSkill` a tak dále.
 
-Pokud se rozhodnete identifikovat dovednosti podle vlastního názvu, nezapomeňte nejdřív aktualizovat všechny instance klientů na verzi 10 sady SDK. V opačném případě existuje možnost, že klient nástroje, který používá starší verzi sady SDK `null` , může `Name` mít vlastnost dovednosti, což způsobí, že se klient vrátí k výchozímu schématu pojmenování.
+Pokud se rozhodnete identifikovat dovednosti podle vlastního názvu, nezapomeňte nejdřív aktualizovat všechny instance klientů na verzi 10 sady SDK. V opačném případě může klient, který používá starší verzi sady SDK, `null` vlastnost `Name` dovednosti, což způsobí, že se klient vrátí k výchozímu schématu pojmenování.
 
 ## <a name="details-about-errors-and-warnings"></a>Podrobnosti o chybách a upozorněních
 
-`ItemError`a `ItemWarning` modely, které zapouzdřují podrobnosti chyb a varování (v uvedeném pořadí), ke kterým došlo během provádění indexeru, se změnily tak, aby zahrnovaly tři nové vlastnosti s cílem pomoci při ladění indexeru. Tyto vlastnosti jsou:
+modely `ItemError` a `ItemWarning`, které zapouzdřují podrobnosti chyb a varování (v uvedeném pořadí), ke kterým došlo během provádění indexeru, se změnily tak, aby zahrnovaly tři nové vlastnosti s cílem pomoci při ladění indexeru. Tyto vlastnosti jsou:
 
-- `Name`: Název zdroje, ze kterého došlo k chybě. Například může odkazovat na konkrétní dovednosti v připojené dovednosti.
-- `Details`: Další podrobné informace o chybě nebo upozornění
-- `DocumentationLink`: Odkaz na Průvodce odstraňováním potíží se specifickou chybou nebo upozorněním.
+- `Name`: název zdroje, ze kterého došlo k chybě. Například může odkazovat na konkrétní dovednosti v připojené dovednosti.
+- `Details`: Další podrobné informace o chybě nebo upozornění.
+- `DocumentationLink`: odkaz na Průvodce odstraňováním potíží se specifickou chybou nebo upozorněním.
 
 > [!NOTE]
 > Začali jsme strukturovat naše chyby a upozornění, aby zahrnovaly tyto užitečné podrobnosti, kdykoli je to možné. Pracujeme na tom, abychom zajistili, že všechny chyby a upozornění jsou k dispozici, ale jedná se o probíhající práci a tyto další podrobnosti nemusí být vždy naplněny.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Změny Shaper dovednosti mají největší možný dopad na nový nebo existující kód. V dalším kroku se ujistěte, že tento příklad ilustruje vstupní strukturu: [Příklad definice JSON pro Shaper dovednosti](cognitive-search-skill-shaper.md)
-- Projděte si [příručku Úvod do rozpoznávání vyhledávání](cognitive-search-concept-intro.md).
-- Vaše názory na sadu SDK jsme uvítá. Pokud narazíte na problémy, řekněte nám, abychom vám pomohli [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search). Pokud narazíte na chybu, můžete založit problém v [úložišti GitHub Azure .NET SDK](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že název problému bude předponou "[Azure Search]".
+- Změny Shaper dovednosti mají největší možný dopad na nový nebo existující kód. V dalším kroku se ujistěte, že tento příklad ilustruje vstupní strukturu: [příklad definice JSON Shaper dovednost](cognitive-search-skill-shaper.md)
+- Projděte si [Přehled rozšíření AI](cognitive-search-concept-intro.md).
+- Vaše názory na sadu SDK jsme uvítá. Pokud narazíte na problémy, řekněte nám, abychom vám pomohli [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search). Pokud narazíte na chybu, můžete založit problém v [úložišti GitHub Azure .NET SDK](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že název problému bude předponou [Azure Kognitivní hledání].
 

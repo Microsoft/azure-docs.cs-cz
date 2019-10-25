@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 18eba93661d9c418a230ced8f9970047a869a7e3
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051443"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808415"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -26,7 +26,7 @@ Správci můžou v zásadách definovat, které metody ověřování jsou dostup
 
 Microsoft důrazně doporučuje správcům, aby uživatelům umožnil vybrat více než minimální požadovaný počet metod ověřování v případě, že k tomu nemají přístup.
 
-|Metoda ověření|Použití|
+|Metoda ověřování|Využití|
 | --- | --- |
 | Heslo | MFA a SSPR |
 | Bezpečnostní otázky | Jenom SSPR |
@@ -123,26 +123,26 @@ Microsoft doporučuje používat e-mailový účet, který nepotřebuje k přís
 
 Microsoft Authenticator aplikace poskytuje další úroveň zabezpečení pro pracovní nebo školní účet služby Azure AD nebo účet Microsoft.
 
-Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
+Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
 
 > [!NOTE]
-> Uživatelé nebudou mít možnost registrovat svou mobilní aplikaci při registraci pro Samoobslužné resetování hesla. Místo toho mohou uživatelé zaregistrovat svou mobilní aplikaci v [https://aka.ms/mfasetup](https://aka.ms/mfasetup) nebo ve verzi Preview registrace bezpečnostních údajů na [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)adrese.
+> Uživatelé nebudou mít možnost registrovat svou mobilní aplikaci při registraci pro Samoobslužné resetování hesla. Místo toho si uživatelé můžou svou mobilní aplikaci zaregistrovat na [https://aka.ms/mfasetup](https://aka.ms/mfasetup) nebo ve verzi Preview registrace bezpečnostních údajů v [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
 >
 
-### <a name="notification-through-mobile-app"></a>Oznámení přes mobilní aplikaci
+### <a name="notification-through-mobile-app"></a>Oznámení prostřednictvím mobilní aplikace
 
 Aplikace Microsoft Authenticator může přispět k zabránění neoprávněnému přístupu k účtům a zastavovat podvodné transakce vložením oznámení do telefonu Smartphone nebo tabletu. Uživatelé zobrazí oznámení a pokud je to legitimní, vyberte ověřit. V opačném případě mohou vybrat odepřít.
 
 > [!WARNING]
 > Pro Samoobslužné resetování hesla, když se pro resetování vyžaduje jenom jedna metoda, je ověřovací kód jedinou možností dostupnou uživatelům, **aby se zajistila nejvyšší úroveň zabezpečení**.
 >
-> Pokud jsou vyžadovány dvě metody, budou moci uživatelé obnovit pomocí oznámení **nebo** ověřovacího kódu spolu s jinými povolenými metodami.
+> Pokud jsou vyžadovány dvě metody, budou moci uživatelé obnovit pomocí oznámení **nebo** ověřovacího kódu **spolu s jinými** povolenými metodami.
 >
 
 Pokud povolíte použití oznámení prostřednictvím mobilní aplikace a ověřovacího kódu z mobilní aplikace, uživatelé, kteří zaregistrují Microsoft Authenticator aplikaci pomocí oznámení, můžou pomocí oznámení a kódu ověřit jejich identitu.
 
 > [!NOTE]
-> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách na Čínu, **oznámení prostřednictvím metody mobilní aplikace** v **zařízeních** s Androidem v dané zemi nefunguje. Pro tyto uživatele by měly být k dispozici alternativní metody.
+> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách na Čínu, **oznámení prostřednictvím metody mobilní aplikace** v **zařízeních s Androidem** v dané zemi nefunguje. Pro tyto uživatele by měly být k dispozici alternativní metody.
 
 ### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
 
@@ -186,7 +186,7 @@ Uživatelé můžou mít kombinaci až pěti hardwarových tokenů OATH nebo ov�
 
 Pro uživatele s mobilními telefony jsou k dispozici dvě možnosti.
 
-Pokud uživatelé nechtějí, aby se jejich mobilní telefonní číslo zobrazoval v adresáři, ale přesto se chtějí použít pro resetování hesla, Správci by ho neměli naplnit v adresáři. Uživatelé by měli naplnit svůj **ověřovací** atribut pro ověřování pomocí [registračního portálu pro resetování hesla](https://aka.ms/ssprsetup). Správci můžou tyto informace zobrazit v profilu uživatele, ale nepublikují se jinde.
+Pokud uživatelé nechtějí, aby se jejich mobilní telefonní číslo zobrazoval v adresáři, ale přesto se chtějí použít pro resetování hesla, Správci by ho neměli naplnit v adresáři. Uživatelé by měli naplnit svůj ověřovací atribut pro **ověřování** pomocí [registračního portálu pro resetování hesla](https://aka.ms/ssprsetup). Správci můžou tyto informace zobrazit v profilu uživatele, ale nepublikují se jinde.
 
 Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCode PhoneNumber*, například + 1 4255551234.
 
@@ -197,7 +197,7 @@ Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCod
 
 Společnost Microsoft nezaručuje konzistentní doručování zpráv SMS nebo hlasové Multi-Factor Authentication s využitím stejného čísla. V zájmu našich uživatelů může společnost Microsoft kdykoli přidat nebo odebrat krátké kódy, protože provádíme úpravy postupů pro zlepšení poskytování služby SMS. Společnost Microsoft nepodporuje krátké kódy pro země a oblasti kromě USA a Kanady.
 
-#### <a name="text-message"></a>Zpráva SMS
+#### <a name="text-message"></a>Textová zpráva
 
 SMS se pošle na číslo mobilního telefonu obsahující ověřovací kód. Pokračujte zadáním ověřovacího kódu, který je k dispozici v přihlašovacím rozhraní.
 
@@ -257,7 +257,7 @@ Pokud je vaše organizace federované pro jednotné přihlašování pomocí Azu
 * Některé pokročilé návrhy architektury mohou vyžadovat použití kombinace uživatelského jména a hesla organizace a hesla aplikací při použití dvoustupňového ověřování u klientů v závislosti na tom, kde jsou ověřovány. U klientů, kteří se ověřují s místní infrastrukturou, byste měli použít uživatelské jméno a heslo organizace. Pro klienty, kteří se ověřují v Azure AD, byste použili heslo aplikace.
 * Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Pokud potřebujete uživatelům dovolit vytvářet hesla aplikací, vyberte v části nastavení služby **možnost dovolit uživatelům vytvářet hesla aplikací pro přihlášení k neprohlížečovým aplikacím** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Povolení samoobslužného resetování hesla pro vaši organizaci](quickstart-sspr.md)
 

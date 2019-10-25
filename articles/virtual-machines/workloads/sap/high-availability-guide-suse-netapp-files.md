@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 572255cfcd34b97a6ba0f784f7fc7ed1c0df040a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3764ae9ff3a20de6d31f0438b73597933080e372
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213267"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791737"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
 
@@ -78,7 +78,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 * Poznámka SAP Poznámka [2243692][2243692] obsahuje informace o LICENCOVÁNí SAP v systému Linux v Azure.
 * Poznámka SAP poznámky [1984787][1984787] obsahuje obecné informace o SUSE Linux Enterprise Server 12.
 * V části SAP Note [1999351][1999351] najdete další informace o odstraňování potíží pro rozšíření Azure Enhanced Monitoring pro SAP.
-* Komunitní wikiweb pro SAP]https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) (obsahuje všechny požadované poznámky SAP pro Linux.
+* WIKIWEB komunity SAP] (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
 * [Plánování a implementace služby Azure Virtual Machines pro SAP v systému Linux][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP v systému Linux][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
@@ -102,14 +102,14 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP
 > Clustering s více identifikátory SID pro SAP ASCS/OLAJÍCÍCH s SUSE Linux jako hostovaný operační systém ve virtuálních počítačích **Azure se nepodporuje.** Clustering s více SID popisuje instalaci více instancí SAP ASCS/OLAJÍCÍCH s různými identifikátory SID v jednom clusteru Pacemaker.
 
 
-### <a name="ascs"></a>(A)SCS
+### <a name="ascs"></a>Určitého SCS
 
 * Konfigurace front-endu
   * 10.1.1.20 IP adres
 * Konfigurace back-endu
   * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
 * Port testu paměti
-  * Port 620<strong>&lt;Nr&gt;</strong>
+  * Port 620<strong>&lt;nr&gt;</strong>
 * Pravidla vyrovnávání zatížení
   * 32<strong>&lt;nr&gt;</strong> TCP
   * 36<strong>&lt;nr&gt;</strong> TCP
@@ -126,7 +126,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP
 * Konfigurace back-endu
   * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
 * Port testu paměti
-  * Port 621<strong>&lt;Nr&gt;</strong>
+  * Port 621<strong>&lt;nr&gt;</strong>
 * Pravidla vyrovnávání zatížení
   * 32<strong>&lt;nr&gt;</strong> TCP
   * 33<strong>&lt;nr&gt;</strong> TCP
@@ -255,7 +255,7 @@ Postupujte podle kroků v části [Nastavení Pacemaker na SUSE Linux Enterprise
 
 ### <a name="installation"></a>Instalace
 
-Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
+Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
 1. **[A]** instalace KONEKTORu SUSE
 
@@ -304,15 +304,15 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-3. **[A]**  Nastavit rozlišení názvu hostitele
+3. **[A]** nastavení rozlišení názvu hostitele
 
-   Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele, aby odpovídaly vašemu prostředí   
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.   
 
    <pre><code>
    # IP address of cluster node 1
@@ -363,7 +363,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    > [!NOTE]
    > V současné době Azure NetApp Files podporuje pouze NFSv3. Vynechejte přepínač nfsvers = 3.
    
-   Restartováním `autofs` připojíte nové sdílené složky.
+   Nové sdílené složky připojíte restartováním `autofs`.
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -393,6 +393,10 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 1. **[1]** vytvoření prostředku virtuální IP adresy a stavu – sonda pro instanci ASCS
 
+   > [!IMPORTANT]
+   > Nedávné testování odhalilo situace, kde NetCat přestane reagovat na požadavky z důvodu nevyřízených položek a omezení zpracování pouze jednoho připojení. Prostředek NetCat přestane naslouchat požadavkům nástroje pro vyrovnávání zatížení Azure a plovoucí IP adresa přestane být k dispozici.  
+   > Pro existující clustery Pacemaker doporučujeme nahradit NetCat pomocí Socat podle pokynů v článku [posílení zabezpečení zjišťování služby Azure Load Balancer](https://www.suse.com/support/kb/doc/?id=7024128). Všimněte si, že tato změna bude vyžadovat krátké výpadky.  
+
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
    
    sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
@@ -405,7 +409,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>QAS</b>_ASCS anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k 620<b>00</b>" \
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:620<b>00</b>,backlog=10,fork,reuseaddr /dev/null" \
      op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>QAS</b>_ASCS fs_<b>QAS</b>_ASCS nc_<b>QAS</b>_ASCS vip_<b>QAS</b>_ASCS \
@@ -460,10 +464,10 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>QAS</b>_ERS anything \
-    params binfile="/usr/bin/nc" cmdline_options="-l -k 621<b>01</b>" \
+    params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:621<b>01</b>,backlog=10,fork,reuseaddr /dev/null" \
     op monitor timeout=20s interval=10 depth=0
    
-   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/nc"
+   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/socat"
    # Do you still want to commit (y/n)? y
    
    sudo crm configure group g-<b>QAS</b>_ERS fs_<b>QAS</b>_ERS nc_<b>QAS</b>_ERS vip_<b>QAS</b>_ERS
@@ -658,9 +662,9 @@ Postup níže předpokládá, že instalujete aplikační server na jiný server
 Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS, **[P]** – platí jenom pro pas nebo **[S]** – platí jenom pro AAS.
 
 
-1. **[A]**  Konfigurace operačního systému
+1. **[A]** konfigurace operačního systému
 
-   Snížení velikosti mezipaměti změny. Další informace najdete v tématu [zápisu s nízkou výkonu na SLES 11/12 servery s velkou paměť RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Snižte velikost nečisté mezipaměti. Další informace najdete v tématu [nízký výkon zápisu na serverech SLES 11/12 s velkou pamětí RAM](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>
    sudo vi /etc/sysctl.conf
@@ -669,16 +673,16 @@ Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS,
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]**  Nastavit rozlišení názvu hostitele
+1. **[A]** nastavení rozlišení názvu hostitele
 
-   Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.
 
    ```bash
    sudo vi /etc/hosts
    ```
 
-   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele, aby odpovídaly vašemu prostředí
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.
 
    <pre><code>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
@@ -732,7 +736,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS,
    /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
    </code></pre>
 
-   Restartováním `autofs` připojíte nové sdílené složky.
+   Nové sdílené složky připojíte restartováním `autofs`.
 
    <pre><code>
    sudo systemctl enable autofs
@@ -757,7 +761,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS,
    /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
    </code></pre>
 
-   Restartováním `autofs` připojíte nové sdílené složky.
+   Nové sdílené složky připojíte restartováním `autofs`.
 
    <pre><code>
    sudo systemctl enable autofs
@@ -843,7 +847,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
 
 1. Test HAGetFailoverConfig, HACheckConfig a HACheckFailoverConfig
 
-   Spusťte následující příkazy jako \<sapsid > ADM na uzlu, ve kterém je aktuálně spuštěná instance ASCS. Pokud se příkazy nezdaří s CHYBou: Nedostatek paměti, může to být způsobeno pomlčkami ve vašem názvu hostitele. Jedná se o známý problém, který bude opraven nástrojem SUSE v balíčku SAP-SUSE-cluster-Connector.
+   Spusťte následující příkazy \<sapsid > ADM na uzlu, ve kterém je aktuálně spuštěná instance ASCS. Pokud se příkazy nezdaří s CHYBou: nedostatek paměti, může to být způsobeno pomlčkami ve vašem názvu hostitele. Jedná se o známý problém, který bude opraven nástrojem SUSE v balíčku SAP-SUSE-cluster-Connector.
 
    <pre><code>
    anftstsapcl1:qasadm 52> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -939,7 +943,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-3. Test HAFailoverToNode
+3. HAFailoverToNode testu
 
    Stav prostředku před spuštěním testu:
 
@@ -957,7 +961,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   Spusťte následující příkazy jako \<sapsid > ADM k migraci instance ASCS.
+   Spusťte následující příkazy \<sapsid > ADM pro migraci instance ASCS.
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""
@@ -1085,7 +1089,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Vytvořte zámek zařazení do fronty, například upravit uživatele v su01 transakce. Spusťte následující příkazy jako < sapsid\>ADM na uzlu, ve kterém je spuštěná instance ASCS. Příkazy zazastaví instanci ASCS a znovu se spustí. Pokud používáte architekturu serveru fronty 1, očekává se, že se v tomto testu ztratí zámek fronty. Pokud používáte architekturu Server 2 pro zařazování do fronty, zachová se. 
+   Vytvořte zámek zařazení do fronty, například upravit uživatele v su01 transakce. Spusťte následující příkazy < sapsid\>ADM na uzlu, ve kterém je spuštěná instance ASCS. Příkazy zazastaví instanci ASCS a znovu se spustí. Pokud používáte architekturu serveru fronty 1, očekává se, že se v tomto testu ztratí zámek fronty. Pokud používáte architekturu Server 2 pro zařazování do fronty, zachová se. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1231,7 +1235,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   Pokud příkaz spouštíte pouze jednou, `sapstart` proces se restartuje. Pokud je spuštěno dostatečně často, `sapstart` proces nebude restartován a prostředek bude zastaven. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředku instance OLAJÍCÍCH po testu.
+   Pokud příkaz spustíte pouze jednou, `sapstart` proces restartuje. Pokud je spuštěno dostatečně často, `sapstart` proces nerestartuje a prostředek bude v zastaveném stavu. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředku instance OLAJÍCÍCH po testu.
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>

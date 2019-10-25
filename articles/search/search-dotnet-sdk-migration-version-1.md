@@ -1,23 +1,22 @@
 ---
-title: Upgrade na rozhraní Azure Search .NET SDK verze 1,1-Azure Search
+title: Upgrade na Azure Search .NET SDK verze 1,1
+titleSuffix: Azure Cognitive Search
 description: Migrujte kód do sady Azure Search .NET SDK verze 1,1 ze starších verzí rozhraní API. Podívejte se, co je nového a co je potřeba mít změny kódu.
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/15/2018
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 8227e1b372af1eee43db59da2cfad165d67be9ae
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: 159aaa8424c3d7a711b587464b80696929f02186
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183271"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792382"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Upgrade na sadu Azure Search .NET SDK verze 1,1
+# <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Upgrade na Azure Search .NET SDK verze 1,1
 
 Pokud používáte verzi 1.0.2-Preview nebo starší [Azure Search .NET SDK](https://aka.ms/search-sdk), Tento článek vám pomůže při upgradu vaší aplikace tak, aby používala verzi 1,1.
 
@@ -27,7 +26,7 @@ Obecnější návod k sadě SDK, včetně příkladů, najdete v tématu [použi
 > Po upgradu na verzi 1,1 nebo pokud už používáte verzi mezi 1,1 a 2,0-Preview (včetně), měli byste upgradovat na verzi 3. Pokyny najdete v tématu [upgrade na sadu Azure Search .NET SDK verze 3](search-dotnet-sdk-migration.md) .
 >
 
-Nejdřív aktualizujte svůj odkaz na NuGet `Microsoft.Azure.Search` pro použití buď konzoly Správce balíčků NuGet, nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
+Nejdřív aktualizujte svůj odkaz na NuGet pro `Microsoft.Azure.Search` pomocí konzoly Správce balíčků NuGet nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
 
 Jakmile NuGet stáhne nové balíčky a jejich závislosti, sestavte projekt znovu.
 
@@ -52,11 +51,11 @@ Nakonec, pokud jste opravili chyby sestavení, můžete v aplikaci provádět zm
 Následující seznam je seřazen podle pravděpodobnosti, že změna bude mít vliv na kód aplikace.
 
 ### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch a IndexAction změny
-`IndexBatch.Create`byl přejmenován na `IndexBatch.New` a již `params` nemá argument. Můžete použít `IndexBatch.New` pro dávky, které mají kombinaci různých typů akcí (sloučení, odstranění atd.). Kromě toho existují nové statické metody pro vytváření dávek, kde jsou všechny akce stejné `Delete`:, `Merge`, `MergeOrUpload`a `Upload`.
+`IndexBatch.Create` byla přejmenována na `IndexBatch.New` a již nemá argument `params`. Můžete použít `IndexBatch.New` pro dávky, které budou kombinovat různé typy akcí (sloučení, odstranění atd.). Kromě toho existují nové statické metody pro vytváření dávek, kde jsou všechny akce stejné: `Delete`, `Merge`, `MergeOrUpload`a `Upload`.
 
-`IndexAction`už nemá veřejné konstruktory a jeho vlastnosti jsou teď neměnné. Je vhodné použít nové statické metody pro vytváření akcí pro různé účely `Delete`:, `Merge`, `MergeOrUpload` `Upload`a. `IndexAction.Create`bylo odebráno. Pokud jste použili přetížení, které používá pouze dokument, nezapomeňte místo toho použít `Upload` .
+`IndexAction` už nemá veřejné konstruktory a jeho vlastnosti jsou teď neměnné. Pro vytváření akcí pro různé účely byste měli použít nové statické metody: `Delete`, `Merge`, `MergeOrUpload`a `Upload`. `IndexAction.Create` byla odebrána. Pokud jste použili přetížení, které používá pouze dokument, nezapomeňte místo toho použít `Upload`.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 Pokud váš kód vypadá takto:
 
     var batch = IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc)));
@@ -73,9 +72,9 @@ Pokud chcete, můžete ho dál zjednodušit:
     indexClient.Documents.Index(batch);
 
 ### <a name="indexbatchexception-changes"></a>IndexBatchException změny
-Vlastnost byla přejmenována na `IndexingResults`a její typ je nyní `IList<IndexingResult>`. `IndexBatchException.IndexResponse`
+Vlastnost `IndexBatchException.IndexResponse` byla přejmenována na `IndexingResults`a její typ je nyní `IList<IndexingResult>`.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 Pokud váš kód vypadá takto:
 
     catch (IndexBatchException e)
@@ -149,13 +148,13 @@ V `IndexesOperationsExtensions`:
 Počínaje verzí 1,1 Azure Search .NET SDK uspořádá metody operací různě:
 
 * Volitelné parametry se nyní modelují jako výchozí parametry, nikoli jako další přetížení metody. Tím se snižuje počet přetížení metod, někdy významně.
-* Rozšiřující metody teď skrývají velké množství cizích podrobností HTTP od volajícího. Například starší verze sady SDK vrátily objekt Response se stavovým kódem http, který často nemusíte kontrolovat, protože operace vyvolají `CloudException` metody operací pro libovolný stavový kód, který označuje chybu. Nové metody rozšíření právě vracejí objekty modelu a ušetří vám tak problémy s jejich rozbalením do kódu.
-* Naopak základní rozhraní teď zveřejňují metody, které poskytují větší kontrolu na úrovni HTTP, pokud je potřebujete. Nyní můžete předat vlastní hlavičky protokolu HTTP, které budou zahrnuty do požadavků, a nový `AzureOperationResponse<T>` návratový typ vám poskytne přímý přístup `HttpRequestMessage` k a `HttpResponseMessage` pro danou operaci. `AzureOperationResponse`je definována v `Microsoft.Rest.Azure` oboru názvů a nahrazuje `Hyak.Common.OperationResponse`.
+* Rozšiřující metody teď skrývají velké množství cizích podrobností HTTP od volajícího. Například starší verze sady SDK vrátila objekt Response se stavovým kódem HTTP, který často nemusíte kontrolovat, protože provozní metody vyvolávají `CloudException` pro jakýkoliv stavový kód, který indikuje chybu. Nové metody rozšíření právě vracejí objekty modelu a ušetří vám tak problémy s jejich rozbalením do kódu.
+* Naopak základní rozhraní teď zveřejňují metody, které poskytují větší kontrolu na úrovni HTTP, pokud je potřebujete. Nyní můžete předat vlastní hlavičky protokolu HTTP, které budou zahrnuty do požadavků, a nový `AzureOperationResponse<T>` návratový typ vám poskytne přímý přístup k `HttpRequestMessage` a `HttpResponseMessage` pro danou operaci. `AzureOperationResponse` je definována v oboru názvů `Microsoft.Rest.Azure` a nahrazuje `Hyak.Common.OperationResponse`.
 
 ### <a name="scoringparameters-changes"></a>ScoringParameters změny
-V nejnovější sadě SDK `ScoringParameter` se přidala nová třída s názvem, která usnadňuje zadání parametrů pro vyhodnocování profilů ve vyhledávacím dotazu. Dříve byla `SearchParameters` `IList<string>`vlastnost třídy zapsána jako; `ScoringProfiles` Nyní je zapsán jako `IList<ScoringParameter>`.
+V nejnovější sadě SDK se přidala nová třída s názvem `ScoringParameter`, která usnadňuje zadání parametrů pro vyhodnocování profilů ve vyhledávacím dotazu. Dříve byla vlastnost `ScoringProfiles` `SearchParameters` třídy zapsána jako `IList<string>`; Nyní je zapsána jako `IList<ScoringParameter>`.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 Pokud váš kód vypadá takto:
 
     var sp = new SearchParameters();
@@ -174,18 +173,18 @@ Můžete ji změnit na tuto možnost, chcete-li opravit chyby sestavení:
         };
 
 ### <a name="model-class-changes"></a>Změny třídy modelu
-Z důvodu změn signatur popsaných ve [změnách metod operace](#OperationMethodChanges)byl mnoho tříd v `Microsoft.Azure.Search.Models` oboru názvů přejmenováno nebo odebráno. Příklad:
+Z důvodu změn signatur popsaných ve [změnách metod operace](#OperationMethodChanges)se mnoho tříd v oboru názvů `Microsoft.Azure.Search.Models` přejmenovalo nebo odebralo. Například:
 
-* `IndexDefinitionResponse`byl nahrazen`AzureOperationResponse<Index>`
+* `IndexDefinitionResponse` nahradila `AzureOperationResponse<Index>`
 * Přejmenování `DocumentSearchResponse` na `DocumentSearchResult`
 * Přejmenování `IndexResult` na `IndexingResult`
-* `Documents.Count()`nyní vrátí `long` s počet dokumentů místo`DocumentCountResponse`
+* `Documents.Count()` nyní vrátí `long` počet dokumentů místo `DocumentCountResponse`
 * Přejmenování `IndexGetStatisticsResponse` na `IndexGetStatisticsResult`
 * Přejmenování `IndexListResponse` na `IndexListResult`
 
-Pro sumarizaci `OperationResponse`byly odebrány odvozené třídy, které existovaly pouze pro zabalení objektu modelu. U zbývajících tříd se změnila přípona z `Response` na `Result`.
+Pro shrnutí, `OperationResponse`odvozené třídy, které existovaly pouze pro zabalení objektu modelu, byly odebrány. U zbývajících tříd se změnila přípona z `Response` na `Result`.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 Pokud váš kód vypadá takto:
 
     IndexerGetStatusResponse statusResponse = null;
@@ -219,7 +218,7 @@ Můžete ji změnit na tuto možnost, chcete-li opravit chyby sestavení:
     IndexerExecutionResult lastResult = status.LastResult;
 
 #### <a name="response-classes-and-ienumerable"></a>Třídy odpovědí a IEnumerable
-Další změnu, která může ovlivnit váš kód, je, že třídy odpovědí, které uchovávají kolekce `IEnumerable<T>`, již nejsou implementovány. Místo toho můžete k vlastnosti kolekce přistupovat přímo. Například pokud váš kód vypadá takto:
+Další změnu, která může ovlivnit váš kód, je, že třídy odpovědí, které uchovávají kolekce, již neimplementují `IEnumerable<T>`. Místo toho můžete k vlastnosti kolekce přistupovat přímo. Například pokud váš kód vypadá takto:
 
     DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response)
@@ -236,7 +235,7 @@ Můžete ji změnit na tuto možnost, chcete-li opravit chyby sestavení:
     }
 
 #### <a name="special-case-for-web-applications"></a>Zvláštní případ pro webové aplikace
-Máte-li webovou aplikaci, která je `DocumentSearchResponse` přímo serializována k odeslání výsledků hledání do prohlížeče, bude nutné změnit kód nebo výsledky nebudou serializovány správně. Například pokud váš kód vypadá takto:
+Pokud máte webovou aplikaci, která `DocumentSearchResponse` přímo k odeslání výsledků hledání do prohlížeče, bude nutné změnit kód nebo výsledky nebudou serializovány správně. Například pokud váš kód vypadá takto:
 
     public ActionResult Search(string q = "")
     {
@@ -251,7 +250,7 @@ Máte-li webovou aplikaci, která je `DocumentSearchResponse` přímo serializov
         };
     }
 
-Můžete ho změnit tak `.Results` , že získáte vlastnost odpovědi vyhledávání pro opravu vykreslování výsledků hledání:
+Můžete ho změnit tak, že získáte vlastnost `.Results` odpovědi pro hledání k opravě vykreslování výsledků hledání:
 
     public ActionResult Search(string q = "")
     {
@@ -269,14 +268,14 @@ Můžete ho změnit tak `.Results` , že získáte vlastnost odpovědi vyhledáv
 Tyto případy budete muset ve svém kódu Hledat sami. **Kompilátor vás neupozorní,** protože `JsonResult.Data` je typu `object`.
 
 ### <a name="cloudexception-changes"></a>CloudException změny
-Třída se přesunula `Hyak.Common` z oboru názvů do `Microsoft.Rest.Azure` oboru názvů. `CloudException` I jeho `Error` vlastnost byla přejmenována na `Body`.
+Třída `CloudException` se přesunula z oboru názvů `Hyak.Common` do oboru názvů `Microsoft.Rest.Azure`. Také `Error` vlastnost byla přejmenována na `Body`.
 
 ### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient a SearchIndexClient změny
-Typ `Credentials` vlastnosti se změnil z `SearchCredentials` na svou základní třídu, `ServiceClientCredentials`. Pokud potřebujete přístup `SearchCredentials` k `SearchIndexClient` z nebo `SearchServiceClient`, použijte prosím novou `SearchCredentials` vlastnost.
+Typ vlastnosti `Credentials` se změnil z `SearchCredentials` na jeho základní třídu `ServiceClientCredentials`. Pokud potřebujete získat přístup k `SearchCredentials` `SearchIndexClient` nebo `SearchServiceClient`, použijte prosím novou vlastnost `SearchCredentials`.
 
-Ve starších verzích sady SDK `SearchServiceClient` a `SearchIndexClient` měly `HttpClient` konstruktory, které převzaly parametr. Ty byly nahrazeny konstruktory, které přijímají `HttpClientHandler` a `DelegatingHandler` pole objektů. Díky tomu je snazší instalovat vlastní obslužné rutiny pro předběžné zpracování požadavků HTTP v případě potřeby.
+Ve starších verzích sady SDK měly `SearchServiceClient` a `SearchIndexClient` konstruktory, které převzaly parametr `HttpClient`. Ty byly nahrazeny konstruktory, které přijímají `HttpClientHandler` a pole objektů `DelegatingHandler`. Díky tomu je snazší instalovat vlastní obslužné rutiny pro předběžné zpracování požadavků HTTP v případě potřeby.
 
-Nakonec konstruktory, které trvalo `Uri` a `SearchCredentials` změnily. Například pokud máte kód, který vypadá takto:
+Nakonec se změnily konstruktory, které trvalo `Uri` a `SearchCredentials`. Například pokud máte kód, který vypadá takto:
 
     var client =
         new SearchServiceClient(
@@ -290,17 +289,17 @@ Můžete ji změnit na tuto možnost, chcete-li opravit chyby sestavení:
             new Uri("http://myservice.search.windows.net"),
             new SearchCredentials("abc123"));
 
-Všimněte si také, že typ parametru přihlašovacích údajů se změnil `ServiceClientCredentials`na. To je pravděpodobně ovlivněno kódem, protože `SearchCredentials` je odvozen z `ServiceClientCredentials`.
+Všimněte si také, že se typ parametru přihlašovacích údajů změnil na `ServiceClientCredentials`. To by pravděpodobně ovlivnilo váš kód, protože `SearchCredentials` je odvozen z `ServiceClientCredentials`.
 
 ### <a name="passing-a-request-id"></a>Předání ID žádosti
-Ve starších verzích sady SDK jste mohli nastavit ID žádosti na `SearchServiceClient` nebo `SearchIndexClient` a v každém požadavku na REST API. To je užitečné pro řešení problémů se službou vyhledávání, pokud potřebujete kontaktovat podporu. Je ale užitečnější, abyste pro každou operaci nastavili jedinečné ID žádosti místo použití stejného ID pro všechny operace. Z `SearchIndexClient` `SetClientRequestId` tohotodůvodubyly`SearchServiceClient` odebrány metody a. Místo toho můžete každému provozní metodě předat ID žádosti prostřednictvím volitelného `SearchRequestOptions` parametru.
+Ve starších verzích sady SDK jste mohli nastavit ID žádosti na `SearchServiceClient` nebo `SearchIndexClient` a ta by byla součástí všech požadavků REST API. To je užitečné pro řešení problémů se službou vyhledávání, pokud potřebujete kontaktovat podporu. Je ale užitečnější, abyste pro každou operaci nastavili jedinečné ID žádosti místo použití stejného ID pro všechny operace. Z tohoto důvodu byly odebrány `SetClientRequestId` metody `SearchServiceClient` a `SearchIndexClient`. Místo toho můžete každému provozní metodě předat ID žádosti prostřednictvím volitelného parametru `SearchRequestOptions`.
 
 > [!NOTE]
 > V budoucí verzi sady SDK přidáme nový mechanismus pro nastavení ID žádosti globálně na objektech klienta, který je konzistentní s přístupem používaným jinými sadami SDK Azure.
 > 
 > 
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Pokud máte kód, který vypadá takto:
 
     client.SetClientRequestId(Guid.NewGuid());
@@ -327,9 +326,9 @@ Tato změna pravděpodobně neovlivní váš kód, pokud jste pro testovací ú�
 Došlo k chybě ve starších verzích sady Azure Search .NET SDK týkající se serializace vlastních tříd modelu. K této chybě může dojít, pokud jste vytvořili vlastní třídu modelu s vlastností typu hodnoty, která není null.
 
 ### <a name="steps-to-reproduce"></a>Kroky pro reprodukování
-Vytvořte vlastní třídu modelu s vlastností typu hodnoty, která není null. Například přidejte veřejnou `UnitCount` vlastnost typu `int` namísto `int?`.
+Vytvořte vlastní třídu modelu s vlastností typu hodnoty, která není null. Přidejte například vlastnost Public `UnitCount` typu `int` namísto `int?`.
 
-Pokud nasadíte dokument s výchozí hodnotou daného typu (například 0 pro `int`), bude pole null v Azure Search. Pokud `Search` tento dokument následně vyhledáte, volání vyvolá `JsonSerializationException` stížnost, na `int`kterou nemůže převést `null` .
+Pokud nasadíte dokument s výchozí hodnotou daného typu (například 0 pro `int`), bude pole null v Azure Search. Pokud tento dokument následně vyhledáte, `Search` volání vygeneruje `JsonSerializationException` stěžovateli, že nemůže převést `null` na `int`.
 
 Filtry také nemusí fungovat podle očekávání, protože místo zamýšlené hodnoty byla do indexu zapsána hodnota null.
 
@@ -343,11 +342,11 @@ Tento problém jsme vyřešili ve verzi 1,1 sady SDK. Nyní, pokud máte třídu
         public int IntValue { get; set; }
     }
 
-a nastavíte `IntValue` hodnotu 0, tato hodnota je nyní správně serializována jako 0 na lince a v indexu je uložena jako 0. Funkce Round Trip funguje také podle očekávání.
+a nastavíte `IntValue` na 0, tato hodnota je nyní správně serializována jako 0 na lince a v indexu bude uložena jako 0. Funkce Round Trip funguje také podle očekávání.
 
-Existuje jeden možný problém, který by měl být vědom tohoto přístupu: Pokud použijete typ modelu s vlastností bez hodnoty null, musíte **zaručit** , že žádné dokumenty v indexu obsahují hodnotu null pro odpovídající pole. Sada SDK ani Azure Search REST API vám ji nepomůže vyhovět.
+Existuje jeden možný problém s tímto přístupem: Pokud použijete typ modelu s vlastností, která neumožňuje hodnotu null, musíte **zaručit** , aby žádné dokumenty v indexu neobsahovaly pro odpovídající pole hodnotu null. Sada SDK ani Azure Search REST API vám ji nepomůže vyhovět.
 
-Nejedná se pouze o hypotetické obavy: Představte si situaci, kdy přidáte nové pole do existujícího indexu, který je typu `Edm.Int32`. Po aktualizaci definice indexu budou mít všechny dokumenty pro toto nové pole hodnotu null (protože všechny typy jsou ve službě Azure Search s možností null). Pokud pak použijete třídu modelu s vlastností `int` se zakázanou hodnotou null, při pokusu o načtení dokumentů dojde k vyvolání podobné výjimky `JsonSerializationException`:
+Nejedná se pouze o hypotetický problém: představte si situaci, kdy přidáte nové pole do stávajícího indexu typu `Edm.Int32`. Po aktualizaci definice indexu budou mít všechny dokumenty pro toto nové pole hodnotu null (protože všechny typy jsou ve službě Azure Search s možností null). Pokud pak použijete třídu modelu s vlastností `int` se zakázanou hodnotou null, při pokusu o načtení dokumentů dojde k vyvolání podobné výjimky `JsonSerializationException`:
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 

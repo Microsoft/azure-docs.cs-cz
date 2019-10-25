@@ -1,22 +1,22 @@
 ---
-title: 'Rychlý Start: vytvoření indexu vyhledávání v části post pomocí rozhraní REST API – Azure Search'
-description: Naučte se volat Azure Search rozhraní REST API pomocí post a vzorových dat a definic.
+title: 'Rychlý Start: vytvoření indexu vyhledávání v části post pomocí rozhraní REST API'
+titleSuffix: Azure Cognitive Search
+description: Naučte se volat rozhraní REST API pro Azure Kognitivní hledání pomocí post a ukázkových dat a definicí.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: ffa20599ae57908f9b0ea848ab68f41a3d0e2a14
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: 00d1122a8b56237eeb20892ad05cdbbcbe247510
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72176039"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792287"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Rychlý Start: vytvoření indexu Azure Search v části post pomocí rozhraní REST API
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v části post pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "72176039"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-Jedním z nejjednodušších způsobů, jak prozkoumat [rozhraní REST api Azure Search](https://docs.microsoft.com/rest/api/searchservice) , je použít post nebo jiný nástroj pro testování webu, který vám umožní formulovat požadavky HTTP a kontrolovat odpovědi. S využitím správných nástrojů a pokynů můžete odesílat žádosti a zobrazovat odpovědi, ještě než začnete psát kód.
+Jedním z nejjednodušších způsobů, jak prozkoumat [rozhraní REST API pro Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice) , je pomocí post nebo jiného nástroje pro testování webu formulovat požadavky HTTP a kontrolovat odpovědi. S využitím správných nástrojů a pokynů můžete odesílat žádosti a zobrazovat odpovědi, ještě než začnete psát kód.
 
 Tento článek vysvětluje, jak interaktivně formulovat požadavky. Alternativně můžete [Stáhnout a importovat kolekci post](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) pro použití předdefinovaných požadavků.
 
@@ -35,13 +35,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
-+ [Aplikace po pracovní ploše](https://www.getpostman.com/) se používá k odesílání požadavků do Azure Search.
++ [Aplikace po pracovní ploše](https://www.getpostman.com/) se používá k odesílání požadavků do Azure kognitivní hledání.
 
-+ [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
++ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
 ## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
@@ -51,9 +51,9 @@ Volání REST vyžadují pro každý požadavek adresu URL služby a přístupov
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-## <a name="connect-to-azure-search"></a>Připojení k Azure Search
+## <a name="connect-to-azure-cognitive-search"></a>Připojení k Azure Kognitivní hledání
 
-V této části můžete pomocí svého webového nástroje vybrat nastavení připojení k Azure Search. Každý nástroj uchovává informace hlavičky žádosti pro relaci, což znamená, že stačí zadat jenom klíč rozhraní API a typ Content-Type.
+V této části můžete pomocí svého webového nástroje vybrat nastavení připojení k Azure Kognitivní hledání. Každý nástroj uchovává informace hlavičky žádosti pro relaci, což znamená, že stačí zadat jenom klíč rozhraní API a typ Content-Type.
 
 Pro kterýkoli nástroj musíte zvolit příkaz (GET, POST, PUT a tak dále), poskytnout koncový bod adresy URL a pro některé úlohy v těle žádosti zadat JSON. Nahraďte název vyhledávací služby (název služby-SEARCH-SERVICE-NAME) platnou hodnotou. Přidejte `$select=name` pro vrácení pouze názvu každého indexu. 
 
@@ -61,18 +61,18 @@ Pro kterýkoli nástroj musíte zvolit příkaz (GET, POST, PUT a tak dále), po
 
 Všimněte si předpony HTTPS, názvu služby, názvu objektu (v tomto případě kolekce indexů) a [verze API-Version](search-api-versions.md). Verze API-Version je povinný, malý řetězec zadaný jako `?api-version=2019-05-06` pro aktuální verzi. Verze rozhraní API se pravidelně aktualizují. Zahrnutím verze api-version v každé žádosti získáte úplnou kontrolu nad tím, která se použije.  
 
-Sestavování hlaviček žádosti zahrnuje dva prvky, typ obsahu a navíc klíč rozhraní API, který se používá k ověření Azure Search. Nahraďte klíč rozhraní API pro správu (vaše – AZURE-SEARCH-ADMIN-API-KEY) platnou hodnotou. 
+Sestavování hlaviček žádosti zahrnuje dva prvky, typ obsahu a navíc klíč rozhraní API, který se používá k ověření do Azure Kognitivní hledání. Nahraďte klíč rozhraní API pro správu (vaše – AZURE-SEARCH-ADMIN-API-KEY) platnou hodnotou. 
 
     api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
-V poli pro odeslání si formulujte požadavek, který vypadá jako na následujícím snímku obrazovky. Jako příkaz vyberte **Get (získat** ), zadejte adresu URL a klikněte na **Odeslat**. Tento příkaz se připojí k Azure Search, přečte kolekci indexů a vrátí stavový kód HTTP 200 po úspěšném připojení. Pokud vaše služba již indexy obsahuje, bude odpověď zahrnovat také definice indexu.
+V poli pro odeslání si formulujte požadavek, který vypadá jako na následujícím snímku obrazovky. Jako příkaz vyberte **Get (získat** ), zadejte adresu URL a klikněte na **Odeslat**. Tento příkaz se připojí k Azure Kognitivní hledání, přečte kolekci indexů a vrátí stavový kód HTTP 200 po úspěšném připojení. Pokud vaše služba již indexy obsahuje, bude odpověď zahrnovat také definice indexu.
 
 ![Adresa URL a záhlaví žádosti post](media/search-get-started-postman/postman-url.png "Adresa URL a záhlaví žádosti post")
 
 ## <a name="1---create-an-index"></a>1\. Vytvoření indexu
 
-V Azure Search obvykle index vytvoříte předtím, než ho načtete s daty. Pro tento úkol se používá [REST API pro vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) . 
+V Azure Kognitivní hledání obvykle index vytvoříte předtím, než ho načtete s daty. Pro tento úkol se používá [REST API pro vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) . 
 
 Adresa URL je rozšířena tak, aby obsahovala název indexu `hotels`.
 
@@ -126,7 +126,7 @@ Po odeslání této žádosti byste měli získat odpověď HTTP 201, která zna
 
 ## <a name="2---load-documents"></a>2\. načtení dokumentů
 
-Vytvoření indexu a jeho naplnění jsou samostatné kroky. Ve službě Azure Search obsahuje index veškerá prohledávatelná data, která můžete zadat jako dokumenty JSON. Pro tento úkol se používá [REST API přidat, aktualizovat nebo odstranit dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) . 
+Vytvoření indexu a jeho naplnění jsou samostatné kroky. V Azure Kognitivní hledání index obsahuje všechna hledaná data, která můžete zadat jako dokumenty JSON. Pro tento úkol se používá [REST API přidat, aktualizovat nebo odstranit dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) . 
 
 Adresa URL je rozšířena tak, aby zahrnovala kolekce `docs` a operace `index`.
 
@@ -301,4 +301,4 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 Když teď víte, jak provádět základní úlohy, můžete přejít vpřed pomocí dalších REST API volání pro pokročilejší funkce, jako jsou indexery nebo [Nastavení kanálu pro hledání vnímání](cognitive-search-tutorial-blob.md). V dalším kroku doporučujeme následující odkaz:
 
 > [!div class="nextstepaction"]
-> [Kurz REST: indexování a hledání částečně strukturovaných dat (blobů JSON) v Azure Search](search-semi-structured-data.md)
+> [Kurz REST: indexování a hledání částečně strukturovaných dat (blobů JSON) v Azure Kognitivní hledání](search-semi-structured-data.md)

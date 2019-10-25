@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 7af5663b399556d66f86213310858780369215af
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101053"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791722"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -120,7 +120,7 @@ K nasazení všech požadovaných prostředků můžete použít jednu z šablon
    4. Uživatelské jméno správce a heslo správce  
       Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    5. ID podsítě  
-      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID&gt;** předplatného **&lt;/resourceGroups/název&gt;skupiny prostředků**/Providers/Microsoft.Network/virtualNetworks/ **&lt; &gt;** název**podsítě/subnets/&gt; názvu virtuální sítě&lt;**
+      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;virtuální síť&gt;** /subnets/ **&lt;název podsítě&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
@@ -188,17 +188,17 @@ Postupujte podle kroků v části [Nastavení Pacemaker na SUSE Linux Enterprise
 
 ### <a name="configure-nfs-server"></a>Konfigurace serveru NFS
 
-Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
+Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
-1. **[A]**  Nastavit rozlišení názvu hostitele
+1. **[A]** nastavení rozlišení názvu hostitele
 
-   Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
    
-   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele, aby odpovídaly vašemu prostředí
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.
    
    <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
@@ -436,6 +436,10 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 1. **[1]** přidání zařízení DRBD NFS pro SAP System NW1 do konfigurace clusteru
 
+   > [!IMPORTANT]
+   > Nedávné testování odhalilo situace, kde NetCat přestane reagovat na požadavky z důvodu nevyřízených položek a omezení zpracování pouze jednoho připojení. Prostředek NetCat přestane naslouchat požadavkům nástroje pro vyrovnávání zatížení Azure a plovoucí IP adresa přestane být k dispozici.  
+   > Pro existující clustery Pacemaker doporučujeme nahradit NetCat pomocí Socat podle pokynů v článku [posílení zabezpečení zjišťování služby Azure Load Balancer](https://www.suse.com/support/kb/doc/?id=7024128). Všimněte si, že tato změna bude vyžadovat krátké výpadky.  
+
    <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
 
    # Enable maintenance mode
@@ -473,7 +477,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    
    sudo crm configure primitive nc_<b>NW1</b>_nfs \
      anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61000</b>" op monitor timeout=20s interval=10 depth=0
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>61000</b>,backlog=10,fork,reuseaddr /dev/null" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW1</b>_nfs \
      fs_<b>NW1</b>_sapmnt exportfs_<b>NW1</b> nc_<b>NW1</b>_nfs vip_<b>NW1</b>_nfs
@@ -518,7 +522,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    
    sudo crm configure primitive nc_<b>NW2</b>_nfs \
      anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61001</b>" op monitor timeout=20s interval=10 depth=0
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>61001</b>,backlog=10,fork,reuseaddr /dev/null" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW2</b>_nfs \
      fs_<b>NW2</b>_sapmnt exportfs_<b>NW2</b> nc_<b>NW2</b>_nfs vip_<b>NW2</b>_nfs

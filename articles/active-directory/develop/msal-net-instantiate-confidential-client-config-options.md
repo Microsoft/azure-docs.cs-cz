@@ -1,5 +1,6 @@
 ---
-title: Vytvoření instance důvěrné klientské aplikace s možnostmi (Microsoft Authentication Library pro .NET) | Azure
+title: Vytvoření instance důvěrné klientské aplikace pomocí možností (Microsoft Authentication Library pro .NET)
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet instance důvěrných klientských aplikací s možnostmi konfigurace pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a05959311b7f62f88a7b474b907982e005b98b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: e382a8d0b5d6f08eafc5621d0e7591111a5e286b
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532626"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802811"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance aplikace důvěrného klienta s možnostmi konfigurace pomocí MSAL.NET
 
@@ -64,7 +65,7 @@ Konfigurace aplikace ASP.NET Core je popsána v souboru *appSettings. JSON* :
 
 Od MSAL.NET v3. x můžete svoji důvěrnou klientskou aplikaci nakonfigurovat z konfiguračního souboru.
 
-Ve třídě, kde chcete konfigurovat a vytvářet instance aplikace, je nutné deklarovat `ConfidentialClientApplicationOptions` objekt.  Navažte konfiguraci načtenou ze zdroje (včetně souboru appconfig. JSON) do instance možností aplikace pomocí `IConfigurationRoot.Bind()` metody z [balíčku NuGet Microsoft. Extensions. Configuration. Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+Ve třídě, kde chcete konfigurovat a vytvářet instance aplikace, je nutné deklarovat objekt `ConfidentialClientApplicationOptions`.  Navažte konfiguraci načtenou ze zdroje (včetně souboru appconfig. JSON) do instance možností aplikace pomocí metody `IConfigurationRoot.Bind()` z [balíčku NuGet Microsoft. Extensions. Configuration. Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -74,7 +75,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-To umožňuje svázat obsah oddílu "AzureAD" souboru *appSettings. JSON* s odpovídajícími vlastnostmi `ConfidentialClientApplicationOptions` objektu.  V dalším kroku Sestavte `ConfidentialClientApplication` objekt:
+To umožňuje svázat obsah oddílu "AzureAD" souboru *appSettings. JSON* s odpovídajícími vlastnostmi objektu `ConfidentialClientApplicationOptions`.  Dále Sestavte objekt `ConfidentialClientApplication`:
 
 ```csharp
 IConfidentialClientApplication app;

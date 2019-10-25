@@ -1,22 +1,23 @@
 ---
-title: 'Rychlý start: Vytvoření indexu vyhledávání v Pythonu pomocí rozhraní REST API – Azure Search'
-description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, poznámkových bloků Jupyter a REST API Azure Search.
-ms.date: 09/10/2019
+title: 'Rychlý Start: vytvoření indexu vyhledávání v Pythonu pomocí rozhraní REST API'
+titleSuffix: Azure Cognitive Search
+description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, poznámkových bloků Jupyter a REST API Azure Kognitivní hledání.
 author: heidisteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.openlocfilehash: 273cd690c56ef01b4fd38398aaef85570dd758a2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: c663fae47de1e161314aa3bf2fdb9966ae80d3c6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881550"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792264"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Rychlý start: Vytvoření indexu Azure Search v Pythonu pomocí poznámkových bloků Jupyter
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Pythonu pomocí poznámkových bloků Jupyter
+
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
@@ -25,33 +26,33 @@ ms.locfileid: "70881550"
 > * [Azure Portal](search-create-index-portal.md)
 > 
 
-Sestavte Jupyter Poznámkový blok, který vytváří, načítá a odesílá dotazy Azure Search indexu pomocí Pythonu a [rozhraní Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
+Vytvářejte Jupyter Poznámkový blok, který vytváří, načítá a odesílá dotazy do indexu služby Azure Kognitivní hledání pomocí Pythonu a [rozhraní REST API azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
 + [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), který poskytuje Poznámkový blok Python 3. x a Jupyter.
 
-+ [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Úroveň Free můžete použít pro tento rychlý Start. 
++ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Úroveň Free můžete použít pro tento rychlý Start. 
 
 ## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![Získání koncového bodu http a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu http a přístupového klíče")
+![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-## <a name="connect-to-azure-search"></a>Připojení k Azure Search
+## <a name="connect-to-azure-cognitive-search"></a>Připojení k Azure Kognitivní hledání
 
-V této úloze spusťte Poznámkový blok Jupyter a ověřte, že se můžete připojit k Azure Search. Provedete to tak, že si vyžádáte seznam indexů z vaší služby. Ve Windows s Anaconda3 můžete použít Anaconda Navigator ke spuštění poznámkového bloku.
+V této úloze spusťte Poznámkový blok Jupyter a ověřte, jestli se můžete připojit k Azure Kognitivní hledání. Provedete to tak, že si vyžádáte seznam indexů z vaší služby. Ve Windows s Anaconda3 můžete použít Anaconda Navigator ke spuštění poznámkového bloku.
 
 1. Vytvoření nového poznámkového bloku python3
 
@@ -85,9 +86,9 @@ V této úloze spusťte Poznámkový blok Jupyter a ověřte, že se můžete p�
 
 1. Spusťte jednotlivé kroky. Pokud indexy existují, obsahuje odpověď seznam názvů indexů. Na následujícím snímku obrazovky již služba obsahuje index azureblobu-index a realestate-US-Sample.
 
-   ![Skript Pythonu v poznámkovém bloku Jupyter s požadavky HTTP na Azure Search](media/search-get-started-python/connect-azure-search.png "Skript Pythonu v poznámkovém bloku Jupyter s požadavky HTTP na Azure Search")
+   ![Skript Pythonu v poznámkovém bloku Jupyter s požadavky HTTP na Azure Kognitivní hledání](media/search-get-started-python/connect-azure-search.png "Skript Pythonu v poznámkovém bloku Jupyter s požadavky HTTP na Azure Kognitivní hledání")
 
-   Naproti tomu prázdná kolekce indexů vrátí tuto odpověď:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Naproti tomu prázdná kolekce indexů vrátí tuto odpověď: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 ## <a name="1---create-an-index"></a>1\. Vytvoření indexu
 
@@ -251,7 +252,7 @@ K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy 
 
 V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [vyhledávacích dokumentů REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-1. V buňce zadejte výraz dotazu, který spustí prázdné vyhledávání (Search = *) a vrátí Neseřazený seznam (hledání skóre = 1,0) libovolných dokumentů. Ve výchozím nastavení Azure Search vrátí 50 shod v čase. Jako strukturovaný tento dotaz vrátí celou strukturu dokumentů a hodnot. Přidejte $count = true pro získání počtu všech dokumentů ve výsledcích.
+1. V buňce zadejte výraz dotazu, který spustí prázdné vyhledávání (Search = *) a vrátí Neseřazený seznam (hledání skóre = 1,0) libovolných dokumentů. Ve výchozím nastavení Azure Kognitivní hledání vrátí 50 shod v čase. Jako strukturovaný tento dotaz vrátí celou strukturu dokumentů a hodnot. Přidejte $count = true pro získání počtu všech dokumentů ve výsledcích.
 
    ```python
    searchstring = '&search=*&$count=true'
@@ -274,9 +275,9 @@ V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [vyhledávacích dok
 
 1. Spusťte jednotlivé kroky. Výsledky by měly vypadat podobně jako v následujícím výstupu. 
 
-    ![Hledání v indexu](media/search-get-started-python/search-index.png "Hledání v indexu")
+    ![Prohledání indexu](media/search-get-started-python/search-index.png "Prohledat index")
 
-1. Vyzkoušejte si několik dalších příkladů dotazů, které vám pomohou s syntaxí. Můžete nahradit `searchstring` následujícími příklady a pak znovu spustit požadavek hledání. 
+1. Vyzkoušejte si několik dalších příkladů dotazů, které vám pomohou s syntaxí. `searchstring` můžete nahradit následujícími příklady a pak znovu spustit požadavek hledání. 
 
    Použít filtr: 
 
@@ -304,9 +305,9 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny pr
 
 Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V rámci zjednodušení se v tomto rychlém startu používá zkrácená verze indexu hotelů. Můžete vytvořit úplnou verzi a vyzkoušet si zajímavější dotazy. Chcete-li získat úplnou verzi a všechny dokumenty 50, spusťte průvodce **importem dat** a vyberte možnost *hotely-ukázka* z vestavěných ukázkových zdrojů dat.
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vytvoření indexu v Azure Portal](search-get-started-portal.md)
+> [Rychlý Start: vytvoření indexu v Azure Portal](search-get-started-portal.md)

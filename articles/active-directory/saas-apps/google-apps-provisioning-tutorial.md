@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0187d17f8210800aef1c68def0614ce26913e09a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 54b158528a67dfe77f33f41f3bb4b4570eb4c508
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555051"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802197"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -32,7 +32,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v G Suite a A
 > [!NOTE]
 > Konektor G Suite se nedávno aktualizoval v říjnu 2019. Mezi změny provedené v konektoru G Suite patří:
 - Byla přidána podpora dalších atributů uživatelů a skupin G Suite. 
-- Aktualizované názvy atributů cíle G Suite tak, aby odpovídaly, co se [tady]()definuje.
+- Aktualizované názvy atributů cíle G Suite tak, aby odpovídaly, co se [tady](/azure/active-directory/manage-apps/customize-application-attributes)definuje.
 - Mapování výchozích atributů se aktualizovala.
 
 ## <a name="prerequisites"></a>Předpoklady

@@ -12,12 +12,12 @@ ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.openlocfilehash: eb8451272ecb5bc7b9a7c670545170cd74621883
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 6e5a8eda3891b3b356e0cbd7b6d2e22e4a70c278
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680312"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799720"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Volání, triggery nebo vnořování aplikací logiky pomocí koncových bodů HTTP v Azure Logic Apps
 
@@ -32,7 +32,7 @@ K vytvoření koncových bodů HTTP můžete přidat tyto triggery, aby aplikace
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
-   > I když tyto příklady používají aktivační událost **žádosti** , můžete použít kteroukoli z uvedených aktivačních triggerů http a všechny zásady se stejným způsobem vztahují na ostatní typy triggerů.
+   > I když tyto příklady používají aktivační událost **žádosti** , můžete použít kteroukoli z uvedených triggerů založených na žádostech a všechny zásady se stejným způsobem vztahují na ostatní typy triggerů.
 
 ## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>Nastavení koncového bodu HTTP pro aplikaci logiky
 
@@ -40,22 +40,21 @@ Pokud chcete vytvořit koncový bod HTTP, přidejte Trigger, který může přij
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Portál Azure"). Přejít do vaší aplikace logiky a otevřít návrháře aplikace logiky
 
-2. Přidejte Trigger, který umožní vaší aplikaci logiky přijímat příchozí požadavky. Přidejte například Trigger **Request** do aplikace logiky.
+1. Přidejte Trigger, který umožní vaší aplikaci logiky přijímat příchozí požadavky. Přidejte například Trigger **Request** do aplikace logiky.
 
-3.  V části **schéma JSON textu žádosti**můžete volitelně zadat schéma JSON pro datovou část (data), které očekáváte, že aktivační událost obdrží.
+1. V části **schéma JSON textu žádosti**můžete volitelně zadat schéma JSON pro datovou část (data), které očekáváte, že aktivační událost obdrží.
 
-    Návrhář používá toto schéma pro generování tokenů, které může vaše aplikace logiky použít ke zpracování, analýze a předávání dat z triggeru prostřednictvím pracovního postupu. 
-    Další informace o [tokenech generovaných ze schémat JSON](#generated-tokens).
+   Návrhář používá toto schéma pro generování tokenů, které může vaše aplikace logiky použít ke zpracování, analýze a předávání dat z triggeru prostřednictvím pracovního postupu. Přečtěte si další informace o [tokenech generovaných ze schémat JSON](#generated-tokens).
 
-    V tomto příkladu zadejte schéma zobrazené v Návrháři:
+   V tomto příkladu zadejte toto schéma, jak je znázorněno v Návrháři:
 
-    ```json
-    {
+   ```json
+   {
       "type": "object",
       "properties": {
-        "address": {
-          "type": "string"
-        }
+         "address": {
+            "type": "string"
+         }
       },
       "required": [
         "address"
@@ -63,52 +62,50 @@ Pokud chcete vytvořit koncový bod HTTP, přidejte Trigger, který může přij
     }
     ```
 
-    ![Přidat akci žádosti][1]
+   ![Přidat akci žádosti](./media/logic-apps-http-endpoint/manualtrigger.png)
 
-    > [!TIP]
-    > 
-    > Můžete vygenerovat schéma pro ukázkovou datovou část JSON z nástroje, jako je [jsonschema.NET](https://jsonschema.net/), nebo v triggeru **žádosti** výběrem možnosti **použít ukázkovou datovou část k vygenerování schématu**. 
-    > Zadejte svou ukázkovou datovou část a klikněte na **Hotovo**.
+   > [!TIP]
+   >
+   > Můžete vygenerovat schéma pro ukázkovou datovou část JSON z nástroje, jako je [jsonschema.NET](https://jsonschema.net/) , nebo v triggeru **žádosti** výběrem možnosti **použít ukázkovou datovou část k vygenerování schématu**. Zadejte svou ukázkovou datovou část a klikněte na **Hotovo**.
 
-    Například Tato ukázková datová část:
+   Například Tato ukázková datová část:
 
-    ```json
-    {
-       "address": "21 2nd Street, New York, New York"
-    }
-    ```
+   ```json
+   {
+      "address": "21 2nd Street, New York, New York"
+   }
+   ```
 
-    vygeneruje toto schéma:
+   vygeneruje toto schéma:
 
-    ```json
-    {
-       "type": "object",
-       "properties": {
-          "address": {
-             "type": "string" 
-          }
-       }
-    }
-    ```
+   ```json
+   {
+      "type": "object",
+      "properties": {
+         "address": {
+            "type": "string"
+         }
+      }
+   }
+   ```
 
-4.  Uložte svou aplikaci logiky. V části **http post na tuto adresu URL**byste teď měli najít VYGENEROVANOU adresu URL zpětného volání, jako je například:
+1. Uložte svou aplikaci logiky. V části **http post na tuto adresu URL**byste teď měli najít VYGENEROVANOU adresu URL zpětného volání, jako je například:
 
-    ![Vygenerovaná adresa URL zpětného volání pro koncový bod](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
+   ![Vygenerovaná adresa URL zpětného volání pro koncový bod](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
 
-    Tato adresa URL obsahuje klíč sdíleného přístupového podpisu (SAS) v parametrech dotazu, který se používá pro ověřování. 
-    Adresu URL koncového bodu HTTP můžete také získat z přehledu aplikace logiky v Azure Portal. V části **Historie aktivační události**vyberte aktivační událost:
+   Tato adresa URL obsahuje klíč sdíleného přístupového podpisu (SAS) v parametrech dotazu, který se používá pro ověřování. Adresu URL koncového bodu HTTP můžete také získat z přehledu aplikace logiky v Azure Portal. V části **Historie aktivační události**vyberte aktivační událost:
 
-    ![Získat adresu URL koncového bodu HTTP z Azure Portal][2]
+   ![Získat adresu URL koncového bodu HTTP z Azure Portal](./media/logic-apps-http-endpoint/manualtriggerurl.png)
 
-    Můžete také získat adresu URL tím, že zadáte toto volání:
+   Můžete také získat adresu URL tím, že zadáte toto volání:
 
-    ```
-    POST https://management.azure.com/{logic-app-resourceID}/triggers/{myendpointtrigger}/listCallbackURL?api-version=2016-06-01
+    ```http
+    POST https://management.azure.com/{logic-app-resource-ID}/triggers/{myendpointtrigger}/listCallbackURL?api-version=2016-06-01
     ```
 
 ## <a name="change-the-http-method-for-your-trigger"></a>Změna metody HTTP triggeru
 
-Ve výchozím nastavení očekává **aktivační událost požadavek HTTP** post, ale můžete použít jinou metodu HTTP. 
+Ve výchozím nastavení očekává **aktivační událost požadavek HTTP** post, ale můžete použít jinou metodu HTTP.
 
 > [!NOTE]
 > Můžete zadat jenom jeden typ metody.
@@ -117,10 +114,10 @@ Ve výchozím nastavení očekává **aktivační událost požadavek HTTP** pos
 
 2. Otevřete seznam **metod** . V tomto příkladu vyberte **získat** , abyste mohli otestovat adresu URL koncového bodu http později.
 
-    > [!NOTE]
-    > Můžete vybrat jakoukoli jinou metodu HTTP nebo zadat vlastní metodu pro vlastní aplikaci logiky.
+   > [!NOTE]
+   > Můžete vybrat jakoukoli jinou metodu HTTP nebo zadat vlastní metodu pro vlastní aplikaci logiky.
 
-    ![Změnit metodu HTTP](./media/logic-apps-http-endpoint/change-method.png)
+   ![Změnit metodu HTTP](./media/logic-apps-http-endpoint/change-method.png)
 
 ## <a name="accept-parameters-through-your-http-endpoint-url"></a>Přijmout parametry prostřednictvím adresy URL koncového bodu HTTP
 
@@ -130,37 +127,36 @@ Pokud chcete, aby adresa URL koncového bodu HTTP přijímala parametry, přizp�
 
 2. V části **Metoda**zadejte metodu HTTP, kterou požadujete, aby vaše žádost používala. V tomto příkladu vyberte metodu **Get** , pokud jste to ještě neudělali, abyste mohli otestovat adresu URL koncového bodu http.
 
-      > [!NOTE]
-      > Když zadáte relativní cestu k triggeru, musíte explicitně zadat metodu HTTP triggeru.
+   > [!NOTE]
+   > Když zadáte relativní cestu k triggeru, musíte explicitně zadat metodu HTTP triggeru.
 
 3. V části **relativní cesta**zadejte relativní cestu k parametru, který by měla adresa URL přijmout, například `customers/{customerID}`.
 
-    ![Zadejte metodu HTTP a relativní cestu pro parametr](./media/logic-apps-http-endpoint/relativeurl.png)
+   ![Zadejte metodu HTTP a relativní cestu pro parametr](./media/logic-apps-http-endpoint/relativeurl.png)
 
 4. Pokud chcete použít parametr, přidejte do aplikace logiky akci **odpovědi** . (V rámci triggeru vyberte **Nový krok**  > **přidat akci**  > **odpověď**) 
 
 5. Do **těla**odpovědi přidejte token pro parametr, který jste zadali v relativní cestě triggeru.
 
-    Pokud například chcete vrátit `Hello {customerID}`, aktualizujte **tělo** odpovědi pomocí `Hello {customerID token}`. 
-    Seznam dynamického obsahu by se měl zobrazit a zobrazit `customerID` token, který můžete vybrat.
+   Pokud například chcete vrátit `Hello {customerID}`, aktualizujte **tělo** odpovědi pomocí `Hello {customerID token}`. Seznam dynamického obsahu by se měl zobrazit a zobrazit `customerID` token, který můžete vybrat.
 
-    ![Přidat parametr do textu odpovědi](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+   ![Přidat parametr do textu odpovědi](./media/logic-apps-http-endpoint/relativeurlresponse.png)
 
-    Váš **text** by měl vypadat jako v tomto příkladu:
+   Váš **text** by měl vypadat jako v tomto příkladu:
 
-    ![Tělo odpovědi s parametrem](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
+   ![Tělo odpovědi s parametrem](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
 6. Uložte svou aplikaci logiky. 
 
     Adresa URL koncového bodu HTTP teď obsahuje relativní cestu, například: 
 
-    //Prod-00.southcentralus.Logic.Azure.com/Workflows/f90cb66c52ea4e9cabe0abf4e197deff/Triggers/Manual/Paths/Invoke/Customers/{CustomerID}...&#58;https
+    ```http
+    https://prod-00.southcentralus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/customers/{customerID}...
+    ```
 
 7. Chcete-li otestovat koncový bod HTTP, zkopírujte a vložte aktualizovanou adresu URL do jiného okna prohlížeče, ale `{customerID}` nahraďte `123456` a stiskněte klávesu ENTER.
 
-    V prohlížeči by se měl zobrazit tento text: 
-
-    `Hello 123456`
+   V prohlížeči by se měl zobrazit tento text: `Hello 123456`
 
 <a name="generated-tokens"></a>
 
@@ -215,16 +211,16 @@ Chcete-li získat výstup z příchozího požadavku, můžete použít funkci `
 
 ```json
 {
-    "headers": {
-        "content-type" : "application/json"
-    },
-    "body": {
-        "myProperty" : "property value"
-    }
+   "headers": {
+      "content-type" : "application/json"
+   },
+   "body": {
+      "myProperty" : "property value"
+   }
 }
 ```
 
-Pokud chcete získat přístup k vlastnosti `body` specificky, můžete použít zástupce `@triggerBody()`. 
+Pokud chcete získat přístup k vlastnosti `body` specificky, můžete použít zástupce `@triggerBody()`.
 
 ## <a name="respond-to-requests"></a>Reakce na žádosti
 
@@ -237,7 +233,7 @@ Je možné, že budete chtít reagovat na určité požadavky, které spustí ap
 
 V těle odpovědi můžete zahrnout více než jednu hlavičku a jakýkoliv typ obsahu. V příkladu odpovědi záhlaví určuje, že odpověď má typ obsahu `application/json`. a tělo obsahuje `title` a `name` na základě schématu JSON aktualizovaného dříve pro aktivační událost **žádosti** .
 
-![Akce odpovědi HTTP][3]
+![Akce odpovědi HTTP](./media/logic-apps-http-endpoint/response.png)
 
 Odpovědi mají tyto vlastnosti:
 
@@ -251,18 +247,18 @@ Tady je schéma JSON, které vypadá teď jako akce **odpovědi** :
 
 ``` json
 "Response": {
+   "type": "Response",
    "inputs": {
       "body": {
          "title": "@{triggerBody()?['title']}",
          "name": "@{triggerBody()?['name']}"
       },
       "headers": {
-           "content-type": "application/json"
+         "content-type": "application/json"
       },
       "statusCode": 200
    },
-   "runAfter": {},
-   "type": "Response"
+   "runAfter": {}
 }
 ```
 
@@ -283,11 +279,11 @@ Odpověď: Azure bezpečně generuje adresy URL zpětného volání aplikace log
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>Otázka: Můžu dál nakonfigurovat koncové body HTTP?
 
-Odpověď: Ano, koncové body HTTP podporují pokročilejší konfiguraci prostřednictvím [**API Management**](../api-management/api-management-key-concepts.md). Tato služba také nabízí možnost konzistentně spravovat všechna vaše rozhraní API, včetně aplikací logiky, nastavení vlastních názvů domén, používání dalších metod ověřování a dalších, například:
+Odpověď: Ano, koncové body HTTP podporují pokročilejší konfiguraci prostřednictvím [Azure API Management](../api-management/api-management-key-concepts.md). Tato služba také nabízí možnost konzistentně spravovat všechna vaše rozhraní API, včetně aplikací logiky, nastavení vlastních názvů domén, používání dalších metod ověřování a dalších, například:
 
-* [Změna metody Request](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
-* [Změna segmentů adres URL žádosti](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
-* Nastavení domén API Management v [Azure Portal](https://portal.azure.com/ "Portál Azure")
+* [Změna metody Request](../api-management/api-management-advanced-policies.md#SetRequestMethod)
+* [Změna segmentů adres URL žádosti](../api-management/api-management-transformation-policies.md#RewriteURL)
+* Nastavení domén API Management v [Azure Portal](https://portal.azure.com/)
 * Nastavte zásady pro kontrolu základního ověřování.
 
 #### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>Otázka: co se změnilo, když se schéma migruje z 1. prosince 2014 Preview?
@@ -304,17 +300,7 @@ Odpověď: Zde je souhrn těchto změn:
 | Odkazování na příchozí text prostřednictvím `@triggerOutputs().body.Content` |Odkaz prostřednictvím `@triggerOutputs().body` |
 | Akce **odeslání odpovědi HTTP** u NASLOUCHACÍHO procesu http |Klikněte na **odpovědět na požadavek HTTP** (není vyžadována aplikace API). |
 
-## <a name="get-help"></a>Získání nápovědy
-
-Klást otázky, odpovídat na ně a poučit se ze zkušeností jiných uživatelů Azure Logic Apps můžete ve [fóru Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-
-Pokud chcete pomoci při vylepšování Azure Logic Apps a konektorů, hlasujte nebo zanechte své nápady na [webu zpětné vazby uživatelů Azure Logic Apps](https://aka.ms/logicapps-wish).
-
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytváření definic aplikací logiky](./logic-apps-author-definitions.md)
-* [Zpracování chyb a výjimek](./logic-apps-exception-handling.md)
-
-[1]: ./media/logic-apps-http-endpoint/manualtrigger.png
-[2]: ./media/logic-apps-http-endpoint/manualtriggerurl.png
-[3]: ./media/logic-apps-http-endpoint/response.png
+* [Vytváření definic aplikací logiky](logic-apps-author-definitions.md)
+* [Zpracování chyb a výjimek](logic-apps-exception-handling.md)

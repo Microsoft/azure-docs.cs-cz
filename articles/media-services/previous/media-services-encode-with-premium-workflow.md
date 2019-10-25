@@ -1,6 +1,6 @@
 ---
-title: Pokročilé kódování pomocí Media Encoderu Premium Workflow | Dokumentace Microsoftu
-description: Informace o kódování pomocí Media Encoderu Premium Workflow. Ukázky kódu jsou napsané C# a používat Media Services SDK pro .NET.
+title: Rozšířené kódování pomocí Media Encoder Premium Workflow | Microsoft Docs
+description: Naučte se kódovat pomocí Media Encoder Premium Workflow. Ukázky kódu jsou napsané C# v a používají sadu Media Services SDK pro .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,36 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca5de657ad45f53cff0cb01d5fe9cc412baf4533
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463891"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792306"
 ---
-# <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Pokročilé kódování pomocí Media Encoderu Premium Workflow
+# <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Rozšířené kódování pomocí Media Encoder Premium Workflow
 > [!NOTE]
-> Pracovní postup kodéru Media Encoder Premium mediálním procesorem popisovaných v tomto článku není k dispozici v Číně.
+> Procesor Media Encoder Premium Workflow médií popisovaný v tomto článku není v Číně k dispozici.
 >
 >
-
-Dotazy kodér úrovně premium, e-mailu mepd@microsoft.com.
 
 ## <a name="overview"></a>Přehled
-Představujeme Microsoft Azure Media Services **pracovní postup kodéru Media Encoder Premium** procesor médií. Tato záloha nabídky procesor kódování funkce pro pracovní postupy podle potřeby premium.
+Microsoft Azure Media Services zavádí procesor **Media Encoder Premium Workflow** Media. Tento procesor nabízí pro pracovní postupy Premium na vyžádání možnosti kódování předem.
 
-Následující témata popisují podrobností týkajících se **pracovní postup kodéru Media Encoder Premium**:
+Následující témata popisují podrobnosti související s **Media Encoder Premium Workflow**:
 
-* [Formáty podporované serverem Media Encoderu Premium Workflow](media-services-premium-workflow-encoder-formats.md) – popisuje soubor formáty a kodeky podporuje **pracovní postup kodéru Media Encoder Premium**.
-* [Přehled a porovnání kodérů médií na vyžádání Azure](media-services-encode-asset.md) porovnává možnosti kódování **pracovní postup kodéru Media Encoder Premium** a **kodéru Media Encoder Standard**.
+* [Formáty podporované Media Encoder Premium Workflow](media-services-premium-workflow-encoder-formats.md) – popisuje formáty souborů a kodeky, které **Media Encoder Premium Workflow**podporuje.
+* [Přehled a porovnání kodérů médií na vyžádání v Azure](media-services-encode-asset.md) porovnává funkce kódování **Media Encoder Premium Workflow** a **Media Encoder Standard**.
 
-Tento článek ukazuje, jak kódovat s **pracovní postup kodéru Media Encoder Premium** pomocí rozhraní .NET.
+Tento článek ukazuje, jak se zakódovat pomocí **Media Encoder Premium Workflow** pomocí rozhraní .NET.
 
-Úlohy pro kódování **pracovní postup kodéru Media Encoder Premium** vyžadují samostatného konfiguračního souboru, názvem souboru pracovního postupu. Tyto soubory mají příponu .workflow a jsou vytvářeny pomocí [návrháře postupu provádění](media-services-workflow-designer.md) nástroj.
+Úlohy kódování pro **Media Encoder Premium Workflow** vyžadují samostatný konfigurační soubor, který se označuje jako soubor pracovního postupu. Tyto soubory mají příponu. Workflow a jsou vytvořeny pomocí nástroje [Návrhář postupu provádění](media-services-workflow-designer.md) .
 
-Můžete také získat výchozí soubory pracovního postupu [tady](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Složka také obsahuje popis těchto souborů.
+Do [tohoto](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)pole můžete také získat výchozí soubory pracovního postupu. Složka obsahuje také popis těchto souborů.
 
-Soubory pracovního postupu je třeba nahrát do účtu Media Services jako prostředek a tohoto prostředku by měly být předány v úlohu kódování.
+Soubory pracovního postupu je třeba odeslat do účtu Media Services jako Asset a tento prostředek by měl být předán do úlohy kódování.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
@@ -50,26 +48,26 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 
 ## <a name="encoding-example"></a>Příklad kódování
 
-Následující příklad ukazuje, jak kódovat s **pracovní postup kodéru Media Encoder Premium**.
+Následující příklad ukazuje, jak kódovat pomocí **Media Encoder Premium Workflow**.
 
-Jsou prováděny následovně:
+Provedou se následující kroky:
 
-1. Vytvořte asset a nahrajte soubor pracovního postupu.
-2. Vytvořte asset a nahrajte soubor zdrojového média.
-3. Získejte procesor médií "Pracovní postup kodéru Media Encoder Premium".
-4. Vytvoření úlohy a úlohy.
+1. Vytvořte Asset a nahrajte soubor pracovního postupu.
+2. Vytvořte Asset a nahrajte zdrojový mediální soubor.
+3. Získejte multimediální procesor "Media Encoder Premium Workflow".
+4. Vytvořte úlohu a úlohu.
 
-    Ve většině případů je prázdný řetězec konfigurace pro úlohu (jako v následujícím příkladu). Existují některé pokročilé scénáře (které vyžadují dynamické nastavení vlastnosti modulu runtime) v takovém případě je zadat jako řetězec XML pro úlohu kódování. Mezi tyto scénáře patří: vytváření překrytí, paralelní a sekvenční médií spojování, titulkování.
-5. Přidáte dva vstupní datové zdroje do úlohy.
+    Ve většině případů je konfigurační řetězec pro úlohu prázdný (jako v následujícím příkladu). Existují některé pokročilé scénáře (které vyžadují, abyste nastavili dynamické vlastnosti za běhu). v takovém případě byste k úloze kódování zadali řetězec XML. Příklady takových scénářů: Vytvoření překrytí, paralelního nebo sekvenčního spojování médií, Subtitling.
+5. Přidejte do úkolu dva vstupní prostředky.
 
-   1. 1\. dne – asset pracovního postupu.
-   2. 2 – asset videa.
+   1. 1st – prostředek pracovního postupu
+   2. 2\. video – Asset.
 
       >[!NOTE]
-      >Asset pracovního postupu musí přidat do úlohy před asset média.
-      Konfigurační řetězec pro tuto úlohu by měla být prázdná.
+      >Prostředek pracovního postupu musí být přidán do úlohy před Assetem média.
+      Konfigurační řetězec pro tento úkol by měl být prázdný.
    
-6. Odešlete kódovací úlohu.
+6. Odešlete úlohu kódování.
 
 ```csharp
 using System;
@@ -231,10 +229,12 @@ namespace MediaEncoderPremiumWorkflowSample
 }
 ```
 
-Dotazy kodér úrovně premium, e-mailu mepd@microsoft.com.
+## <a name="need-help"></a>Potřebujete pomoct?
+
+Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -1,5 +1,6 @@
 ---
-title: Vymazání mezipaměti tokenů pomocí knihovny Microsoft Authentication Library pro .NET – Azure
+title: Vymazání mezipaměti tokenů pomocí knihovny Microsoft Authentication Library pro .NET
+titleSuffix: Microsoft identity platform
 description: Zjistěte, jak vymazat mezipaměť tokenů pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,16 +18,16 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cee6443db0b019f79a80cf5b7c0e2a7a50240f2
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 4bd48078ec87b085a71ee23006d18917881894bf
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532658"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802925"
 ---
 # <a name="clear-the-token-cache-using-msalnet"></a>Vymazání mezipaměti tokenů pomocí MSAL.NET
 
-Při [získání přístupového tokenu](msal-acquire-cache-tokens.md) pomocí knihovny Microsoft Authentication Library pro .net (MSAL.NET) se token uloží do mezipaměti. Když aplikace potřebuje token, měla by nejdřív zavolat `AcquireTokenSilent` metodu pro ověření, jestli je přijatelný token v mezipaměti. 
+Při [získání přístupového tokenu](msal-acquire-cache-tokens.md) pomocí knihovny Microsoft Authentication Library pro .net (MSAL.NET) se token uloží do mezipaměti. Když aplikace potřebuje token, měla by nejdřív zavolat metodu `AcquireTokenSilent`, aby se ověřilo, jestli je v mezipaměti přijatelný token. 
 
 Vymazání mezipaměti se dosáhne odebráním účtů z mezipaměti. Tím nedojde k odebrání souboru cookie relace, který je v prohlížeči, ale.  Následující příklad vytvoří instanci veřejné klientské aplikace, získá účty pro aplikaci a odebere účty.
 

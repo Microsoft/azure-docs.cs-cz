@@ -1,24 +1,23 @@
 ---
-title: Běžné chyby a upozornění – Azure Search
-description: Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Search.
-services: search
-manager: heidist
+title: Běžné chyby a upozornění
+titleSuffix: Azure Cognitive Search
+description: Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Kognitivní hledání.
+manager: nitinme
 author: amotley
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: a8d5fc30299dbb16373b1cfbbd89563bad471f39
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553610"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787980"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Běžné chyby a upozornění kanálu obohacení AI v Azure Search
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Běžné chyby a upozornění kanálu obohacení AI v Azure Kognitivní hledání
 
-Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Search.
+Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Kognitivní hledání.
 
 ## <a name="errors"></a>Chyby
 Indexování se zastaví, když počet chyb překročí [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
@@ -210,3 +209,14 @@ Pokud chcete zajistit, aby byl veškerý text analyzován, zvažte použití [ro
 
 ### <a name="web-api-skill-response-contains-warnings"></a>Reakce na dovednosti webového rozhraní API obsahuje upozornění
 Indexer mohl v dovednosti spustit dovednost, ale odpověď z požadavku webového rozhraní API zjistila při spuštění upozornění. Přečtěte si upozornění, abyste porozuměli tomu, jak jsou vaše data ovlivněná a zda je akce nutná.
+
+### <a name="the-current-indexer-configuration-does-not-support-incremental-progress"></a>Aktuální konfigurace indexeru nepodporuje přírůstkový průběh.
+K tomuto upozornění dochází pouze u Cosmos DB zdrojů dat.
+
+Přírůstkový průběh při indexování zajišťuje, že pokud je provádění indexeru přerušeno přechodnými chybami nebo časovým limitem, může indexer vyzvednutí, kde byl při příštím spuštění ponechán, místo nutnosti znovu indexovat celou kolekci od začátku. To je obzvláště důležité při indexování velkých kolekcí.
+
+Možnost obnovit nedokončenou úlohu indexování je predikátem, ve kterém jsou pořízeny dokumenty seřazené podle sloupce `_ts`. Indexer používá časové razítko k určení, který dokument se má vybrat jako další. Pokud sloupec `_ts` chybí nebo pokud indexer nedokáže určit, jestli je vlastní dotaz seřazený podle IT, indexer začne na začátku a toto upozornění se zobrazí.
+
+Toto chování je možné přepsat, což umožňuje přírůstkové průběh a potlačení tohoto upozornění pomocí vlastnosti `assumeOrderByHighWatermarkColumn` Configuration.
+
+[Další informace o Cosmos DB přírůstkovém průběhu a vlastních dotazech.](https://go.microsoft.com/fwlink/?linkid=2099593)

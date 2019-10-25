@@ -1,27 +1,27 @@
 ---
-title: 'C#Kurz: indexování více zdrojů dat – Azure Search'
-description: Naučte se importovat data z více zdrojů dat do jednoho Azure Search indexu.
-author: RobDixon22
+title: 'C#Kurz: indexování více zdrojů dat'
+titleSuffix: Azure Cognitive Search
+description: Naučte se importovat data z více zdrojů dat do jednoho indexu služby Azure Kognitivní hledání.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 06/21/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 3b94e3e352f4d6b5cd7da41feb9660be2ffed2bd
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70241839"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786489"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Kurz: kombinování dat z více zdrojů dat v jednom Azure Search indexu
+# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Kurz: kombinování dat z více zdrojů dat v jednom indexu Azure Kognitivní hledání
 
-Azure Search mohou importovat, analyzovat a indexovat data z více zdrojů dat do jednoho kombinovaného indexu vyhledávání. To podporuje situace, kdy jsou strukturovaná data agregována s méně strukturovanými nebo i prostými textovými daty z jiných zdrojů, jako jsou text, HTML nebo dokumenty JSON.
+Azure Kognitivní hledání může importovat, analyzovat a indexovat data z více zdrojů dat do jednoho kombinovaného indexu vyhledávání. To podporuje situace, kdy jsou strukturovaná data agregována s méně strukturovanými nebo i prostými textovými daty z jiných zdrojů, jako jsou text, HTML nebo dokumenty JSON.
 
 V tomto kurzu se dozvíte, jak indexovat data hotelu z Azure Cosmos DB zdroje dat a sloučit je s podrobnostmi o hotelu z Azure Blob Storage dokumentů. Výsledkem bude kombinovaný index vyhledávání hotelu obsahující komplexní datové typy.
 
-V tomto kurzu C#se používá sada .NET SDK pro Azure Search a Azure Portal k provádění následujících úloh:
+V tomto kurzu C#se používá sada .NET SDK pro Azure Kognitivní hledání a Azure Portal k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Nahrání ukázkových dat a vytváření zdrojů dat
@@ -34,7 +34,7 @@ V tomto kurzu C#se používá sada .NET SDK pro Azure Search a Azure Portal k pr
 
 V tomto rychlém startu se používají následující služby, nástroje a data. 
 
-- [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu.
+- [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu.
 
 - [Vytvořte účet Azure Cosmos DB](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro uložení ukázkových údajů o hotelu.
 
@@ -46,7 +46,7 @@ V tomto rychlém startu se používají následující služby, nástroje a data
 
 1. Vyhledejte ukázkové úložiště na GitHubu: [Azure-Search-dotnet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. Vyberte **klonovat nebo stáhnout** a udělejte si soukromou místní kopii úložiště.
-1. Otevřete Visual Studio a nainstalujte balíček NuGet Microsoft Azure Search, pokud ještě není nainstalovaný. V nabídce **nástroje** vyberte **Správce balíčků NuGet** a pak **spravujte balíčky NuGet pro řešení...** . Vyberte kartu **Procházet** a do vyhledávacího pole zadejte text "Azure Search". Nainstalujte **Microsoft. Azure. Search** , když se objeví v seznamu (verze 9.0.1 nebo novější). K dokončení instalace budete muset kliknout na další dialogová okna.
+1. Otevřete Visual Studio a nainstalujte balíček NuGet Microsoft Azure Kognitivní hledání, pokud ještě není nainstalovaný. V nabídce **nástroje** vyberte **Správce balíčků NuGet** a pak **spravujte balíčky NuGet pro řešení...** . Na kartě **Procházet** vyhledejte a pak nainstalujte **Microsoft. Azure. Search** (verze 9.0.1 nebo novější). K dokončení instalace budete muset kliknout na další dialogová okna.
 
     ![Přidání knihoven Azure pomocí NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
@@ -54,7 +54,7 @@ V tomto rychlém startu se používají následující služby, nástroje a data
 
 ## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-Abyste mohli komunikovat se službou Azure Search, budete potřebovat adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+Abyste mohli komunikovat se službou Azure Kognitivní hledání, budete potřebovat adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
@@ -121,17 +121,17 @@ Informace o připojení pro vyhledávací službu a zdroje dat jsou zadány v so
 }
 ```
 
-První dvě položky používají adresu URL a klíče správce pro vaši službu Azure Search. Byl zadán koncový bod `https://mydemo.search.windows.net`, například název služby, který se má poskytnout `mydemo`.
+První dvě položky používají adresu URL a klíče pro správu služby Azure Kognitivní hledání. Byl zadán koncový bod `https://mydemo.search.windows.net`, například název služby, který se má poskytnout `mydemo`.
 
 Další položky určují názvy účtů a připojovací řetězec pro Azure Blob Storage a zdroje dat Azure Cosmos DB.
 
 ### <a name="identify-the-document-key"></a>Identifikujte klíč dokumentu
 
-V Azure Search pole Key jednoznačně identifikuje každý dokument v indexu. Každý index vyhledávání musí mít přesně jedno pole Key typu `Edm.String`. Toto pole klíče musí být k dispozici pro každý dokument ve zdroji dat, který je přidán do indexu. (Ve skutečnosti je to jediné povinné pole.)
+V Azure Kognitivní hledání pole klíč jednoznačně identifikuje každý dokument v indexu. Každý index vyhledávání musí mít přesně jedno pole Key typu `Edm.String`. Toto pole klíče musí být k dispozici pro každý dokument ve zdroji dat, který je přidán do indexu. (Ve skutečnosti je to jediné povinné pole.)
 
 Při indexování dat z více zdrojů dat musí být každá hodnota klíče zdroje dat namapována na stejné klíčové pole v kombinovaném indexu. Často vyžaduje některé předem plánované plánování, které identifikují smysluplný klíč dokumentu pro váš index, a ujistěte se, že existuje v každém zdroji dat.
 
-Azure Search indexery mohou použít mapování polí k přejmenování a dokonce formátování datových polí během procesu indexování, aby mohla být zdrojová data směrována do správného pole indexu.
+Indexery Azure Kognitivní hledání můžou použít mapování polí k přejmenování a dokonce formátování datových polí během procesu indexování, aby se zdrojová data mohla směrovat do správného pole indexu.
 
 Například v našem příkladu Azure Cosmos DB data se identifikátor hotelu nazývá **HotelId**. V souborech objektů BLOB JSON se ale pro hotelové místnosti identifikátor hotelu nazývá **ID**. Program to pořídí mapováním pole **ID** z objektů blob na pole klíče **HotelId** v indexu.
 
@@ -143,7 +143,7 @@ Například v našem příkladu Azure Cosmos DB data se identifikátor hotelu na
 Jakmile jsou data a nastavení konfigurace na místě, vzorový program v **AzureSearchMultipleDataSources. sln** by měl být připravený k sestavování a spouštění.
 
 Tato jednoduchá C#Konzolová aplikace/.NET provádí následující úlohy:
-* Vytvoří nový index Azure Search na základě struktury dat třídy C# hotelu (která také odkazuje na třídy adres a místností).
+* Vytvoří nový index služby Azure Kognitivní hledání na základě struktury dat třídy C# hotelu (která také odkazuje na třídy adres a místností).
 * Vytvoří zdroj dat Azure Cosmos DB a indexer, který mapuje Azure Cosmos DB data na pole indexu.
 * Spustí indexer Azure Cosmos DB, který načte data hotelu.
 * Vytvoří zdroj dat služby Azure Blob Storage a indexer, který mapuje data objektů BLOB JSON na pole indexu.
@@ -152,11 +152,11 @@ Tato jednoduchá C#Konzolová aplikace/.NET provádí následující úlohy:
  Před spuštěním programu si prostudujte kód a definice indexu a indexeru pro tuto ukázku. Důležitý kód je ve dvou souborech:
 
   + **Hotel.cs** obsahuje schéma, které definuje index.
-  + **Program.cs** obsahuje funkce, které vytvářejí index Azure Search, zdroje dat a indexery a načítají kombinované výsledky do indexu.
+  + **Program.cs** obsahuje funkce, které vytvářejí index služby Azure kognitivní hledání, zdroje dat a indexery a načítají kombinované výsledky do indexu.
 
 ### <a name="define-the-index"></a>Definice indexu
 
-Tento ukázkový program používá sadu .NET SDK k definování a vytvoření indexu Azure Search. Využívá třídu [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) k vygenerování struktury indexu z třídy C# datového modelu.
+Tento ukázkový program používá sadu .NET SDK k definování a vytvoření indexu služby Azure Kognitivní hledání. Využívá třídu [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) k vygenerování struktury indexu z třídy C# datového modelu.
 
 Datový model je definován třídou hotelu, která také obsahuje odkazy na třídy Address a Room. FieldBuilder projde k podrobnostem v různých definicích tříd a vygeneruje složitou strukturu dat pro index. Značky metadat slouží k definování atributů každého pole, jako je například, zda je možné prohledávatelné nebo seřaditelné.
 
@@ -336,22 +336,22 @@ Po spuštění programu můžete prozkoumat vyplněný index vyhledávání pomo
 
 V Azure Portal otevřete stránku **Přehled** služby Search a v seznamu **indexy** Najděte rejstřík **Hotel-místnosti – vzor** .
 
-  ![Seznam indexů Azure Search](media/tutorial-multiple-data-sources/index-list.png "Seznam indexů Azure Search")
+  ![Seznam indexů Kognitivní hledání Azure](media/tutorial-multiple-data-sources/index-list.png "Seznam indexů Kognitivní hledání Azure")
 
 V seznamu klikněte na rejstřík hotelových místností. Pro index se zobrazí rozhraní Průzkumníka služby Search. Zadejte dotaz pro termín, jako je například "luxus". Ve výsledcích by se měl zobrazit alespoň jeden dokument a tento dokument by měl v poli místností zobrazit seznam objektů místností.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Na portálu je název skupiny prostředků na stránce Přehled služby Azure Search.
+Nejrychlejší způsob vyčištění po kurzu odstraněním skupiny prostředků, která obsahuje službu Azure Kognitivní hledání. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Na portálu je název skupiny prostředků na stránce Přehled služby Azure Kognitivní hledání.
 
 ## <a name="next-steps"></a>Další kroky
 
 Existuje několik přístupů a několik možností indexování objektů BLOB JSON. Pokud zdrojová data obsahují obsah JSON, můžete si projít tyto možnosti, abyste viděli, co nejlépe vyhovuje vašemu scénáři.
 
 > [!div class="nextstepaction"]
-> [Indexování objektů blob JSON pomocí indexeru Azure Search Blob](search-howto-index-json-blobs.md)
+> [Indexování objektů BLOB JSON pomocí indexeru Azure Kognitivní hledání BLOB](search-howto-index-json-blobs.md)
 
-Je možné, že budete chtít rozšířit strukturovaná data indexu z jednoho zdroje dat s obohacenými daty z nestrukturovaných objektů BLOB nebo fulltextového obsahu. V následujícím kurzu se dozvíte, jak používat Cognitive Services společně s Azure Search pomocí sady .NET SDK.
+Je možné, že budete chtít rozšířit strukturovaná data indexu z jednoho zdroje dat s obohacenými daty z nestrukturovaných objektů BLOB nebo fulltextového obsahu. V následujícím kurzu se dozvíte, jak používat Cognitive Services společně s Azure Kognitivní hledání pomocí sady .NET SDK.
 
 > [!div class="nextstepaction"]
-> [Volání rozhraní API služeb Cognitive Services v kanálu indexování Azure Search](cognitive-search-tutorial-blob-dotnet.md)
+> [Volání rozhraní API služeb Cognitive Services v kanálu indexování Kognitivní hledání Azure](cognitive-search-tutorial-blob-dotnet.md)

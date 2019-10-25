@@ -1,6 +1,6 @@
 ---
-title: Nastavení zdrojového prostředí pro VMware pro replikaci Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak vytvořit místní prostředí pro replikaci virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
+title: Nastavte zdrojové prostředí pro replikaci z VMware do Azure pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak nastavit místní prostředí pro replikaci virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,26 +8,26 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 075f86b24e2915d9689db8097889a830bade74c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf1ff4dfba105b6c90ab949217453e1db82d109d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723422"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791777"
 ---
-# <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Nastavení zdrojového prostředí pro VMware pro replikaci Azure
+# <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Nastavení zdrojového prostředí pro replikaci z VMware do Azure
 
-Tento článek popisuje, jak nastavit místní vaše zdrojové prostředí pro replikaci virtuálních počítačů VMware do Azure. Její součástí jsou kroky pro výběr vašeho scénáře replikace, nastavení místního počítače jako konfigurační server Site Recovery, a automaticky zjišťování místních virtuálních počítačů. 
+Tento článek popisuje, jak nastavit zdrojové místní prostředí pro replikaci virtuálních počítačů VMware do Azure. Tento článek obsahuje kroky pro výběr scénáře replikace, nastavení místního počítače jako konfiguračního serveru Site Recovery a automatické zjišťování místních virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Tento článek předpokládá, že jste již:
+Článek předpokládá, že jste již:
 
-- Plánované nasazení díky [Azure Site Recovery Deployment Planner](site-recovery-deployment-planner.md). To vám umožní přidělit dostatečnou šířku pásma v závislosti na vaší denní frekvenci změn dat, abyste splňovat váš požadovaný cíl bodu obnovení (RPO).
-- [Nastavení prostředků](tutorial-prepare-azure.md) v [webu Azure portal](https://portal.azure.com).
-- [Nastavení VMware v místním prostředí](vmware-azure-tutorial-prepare-on-premises.md), včetně vyhrazený účet pro automatické zjišťování.
+- Naplánovalo se nasazení pomocí [Plánovač nasazení služby Azure Site Recovery](site-recovery-deployment-planner.md). To vám pomůže přidělit dostatečnou šířku pásma na základě denní frekvence změny dat, aby splňovala požadovaný cíl bodu obnovení (RPO).
+- [Nastavte prostředky](tutorial-prepare-azure.md) v [Azure Portal](https://portal.azure.com).
+- [Nastavte místní VMware](vmware-azure-tutorial-prepare-on-premises.md), včetně vyhrazeného účtu pro automatické zjišťování.
 
-## <a name="choose-your-protection-goals"></a>Volba cílů ochrany
+## <a name="choose-your-protection-goals"></a>Výběr cílů ochrany
 
 1. V okně **Trezory Recovery Services** vyberte název trezoru. Pro tento scénář používáme **ContosoVMVault**.
 2. V části **Začínáme** vyberte Site Recovery. Pak vyberte **Příprava infrastruktury**.
@@ -35,54 +35,54 @@ Tento článek předpokládá, že jste již:
 4. V části **Kam chcete počítače replikovat?** vyberte **Do Azure**.
 5. V části **Máte počítače ve virtuální podobě?** vyberte **Ano, s VMware vSphere Hypervisor**. Pak vyberte **OK**.
 
-## <a name="set-up-the-configuration-server"></a>Nastavení konfigurace serveru
+## <a name="set-up-the-configuration-server"></a>Nastavení konfiguračního serveru
 
-Prostřednictvím šablonu otevřít virtualizace aplikace OVA () můžete nastavit konfigurační server jako VMware v místním prostředí virtuálních počítačů. [Další informace](concepts-vmware-to-azure-architecture.md) o součástech, které se nainstalují na virtuální počítač VMware.
+Konfigurační server můžete nastavit jako místní virtuální počítač VMware prostřednictvím šablony aplikace virtualizace (Open Virtualization Application). [Přečtěte si další informace](concepts-vmware-to-azure-architecture.md) o součástech, které se nainstalují na virtuálním počítači VMware.
 
-1. Další informace o [požadavky](vmware-azure-deploy-configuration-server.md#prerequisites) pro nasazení konfiguračního serveru.
-2. [Zkontrolujte kapacitu čísla](vmware-azure-deploy-configuration-server.md#capacity-planning) pro nasazení.
-3. [Stáhněte si](vmware-azure-deploy-configuration-server.md#download-the-template) a [importovat](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) šablony OVA nastavení VMware v místním prostředí virtuálního počítače, na kterém běží konfigurační server. Licence, které jsou poskytovány s šablonou je zkušební licence a je platná po dobu 180 dnů. Po uplynutí této doby zákazník potřebuje aktivovat systém windows s licencí opatřené.
-4. Zapněte požadovaný virtuální počítač VMware a [ho zaregistrovat](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) v služby Recovery Services vault.
+1. Přečtěte si informace o [požadavcích](vmware-azure-deploy-configuration-server.md#prerequisites) pro nasazení konfiguračního serveru.
+2. [Ověřte čísla kapacity](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements) pro nasazení.
+3. [Stáhněte](vmware-azure-deploy-configuration-server.md#download-the-template) a [importujte](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) šablonu vajíček a nastavte místní virtuální počítač VMware, který spouští konfigurační server. Licence, která je součástí šablony, je zkušební licence a platí po dobu 180 dnů. Po tomto období musí zákazník aktivovat Windows pomocí předem získané licence.
+4. Zapněte virtuální počítač VMware a [Zaregistrujte ho](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) v úložišti Recovery Services.
 
-## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Azure Site Recovery vyloučení složek z antivirového programu
+## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Azure Site Recovery vyloučení složky z antivirového programu
 
-### <a name="if-antivirus-software-is-active-on-source-machine"></a>Pokud je aktivní na zdrojovém počítači antivirový software
+### <a name="if-antivirus-software-is-active-on-source-machine"></a>Pokud je na zdrojovém počítači aktivní antivirový software
 
-Pokud zdrojový počítač má aktivní antivirový software, by se měly vyloučit složku instalace. Ano, vyloučit složky *C:\ProgramData\ASR\agent* hladký průběh replikace.
+Pokud má zdrojový počítač aktivní antivirový software, měla by být vyloučena instalační složka. Proto vylučte složku *C:\ProgramData\ASR\agent* pro zajištění hladké replikace.
 
-### <a name="if-antivirus-software-is-active-on-configuration-server"></a>Pokud Software antivirové ochrany v programu je aktivní na konfiguračním serveru
+### <a name="if-antivirus-software-is-active-on-configuration-server"></a>Pokud je antivirový software na konfiguračním serveru aktivní
 
-Vyloučit následující složky z antivirového softwaru pro hladký průběh replikace a aby se zabránilo problémům s připojením
+Vyloučení následujících složek z antivirového softwaru pro zajištění hladké replikace a předcházení problémům s připojením
 
-- C:\Program Files\Microsoft Azure Recovery Services Agent.
-- C:\Program Files\Microsoft Azure Site Recovery Provider
-- C:\Program Files\Microsoft Azure Site Recovery Configuration Manageru 
-- Kolekce chyb nástroj pro C:\Program Files\Microsoft Azure Site Recovery 
+- C:\Program Files\Microsoft Azure Recovery Services agent.
+- C:\Program Files\Microsoft Azure Site Recovery poskytovatel
+- C:\Program Files\Microsoft Azure Site Recovery Configuration Manager 
+- C:\Program Files\Microsoft Azure Site Recovery – Nástroj pro shromažďování chyb 
   - C:\thirdparty
   - C:\Temp
   - C:\strawberry
   - C:\ProgramData\MySQL
-  - C:\Program Files (x86)\MySQL
+  - C:\Program Files (x86) \MySQL
   - C:\ProgramData\ASR
   - C:\ProgramData\Microsoft Azure Site Recovery
   - C:\ProgramData\ASRLogs
   - C:\ProgramData\ASRSetupLogs
   - C:\ProgramData\LogUploadServiceLogs
   - C:\inetpub
-  - Instalační adresář serveru Azure Site Recovery. Příklad: E:\Program soubory (x86) \Microsoft Azure Site Recovery
+  - Instalační adresář serveru Site Recovery. Příklad: E:\Program Files (x86) \Microsoft Azure Site Recovery
 
-### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Pokud Software antivirové ochrany v programu je aktivní na horizontální navýšení kapacity zpracování server nebo hlavní cíl
+### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Pokud je antivirový software aktivní na procesovém serveru nebo hlavním cíli s možností horizontálního rozšíření kapacity
 
 Vyloučit následující složky z antivirového softwaru
 
-1. Agent C:\Program Files\Microsoft Azure Recovery Services
+1. C:\Program Files\Microsoft Azure Recovery Services Agent
 2. C:\ProgramData\ASR
 3. C:\ProgramData\ASRLogs
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. Azure Site Recovery zatížení vyvážené proces serveru instalační adresář, příklad: C:\Program Files (x86)\Microsoft Azure Site Recovery
+7. Azure Site Recovery instalačního adresáře s vyrovnáváním zatížení pro procesový Server, například: C:\Program Files (x86) \Microsoft Azure Site Recovery
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Nastavení cílového prostředí](./vmware-azure-set-up-target.md) 

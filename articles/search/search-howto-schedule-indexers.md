@@ -1,31 +1,31 @@
 ---
-title: Postup plánování indexerů – Azure Search
-description: Naplánujte, aby indexery Azure Search pravidelně nebo v určitých časech indexovat obsah.
-ms.date: 05/31/2019
+title: Postup plánování indexerů
+titleSuffix: Azure Cognitive Search
+description: Naplánování pravidelného nebo v určitých časech indexerům služby Azure Kognitivní hledání indexování
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: ''
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.date: 11/04/2019
+ms.openlocfilehash: e9d4f49bd0aec1a04b4839b2084a81fb538f7890
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533619"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793694"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>Postup plánování indexerů pro Azure Search
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Postup plánování indexerů v Azure Kognitivní hledání
+
 Indexer se normálně spouští jednou ihned po jeho vytvoření. Můžete ji znovu spustit na vyžádání pomocí portálu, REST API nebo sady .NET SDK. Můžete také nakonfigurovat indexer, aby pravidelně běžel podle plánu.
 
 V některých situacích, kdy je plánování indexeru užitečné:
 
-* Zdrojová data se v průběhu času mění a chcete, aby indexery Azure Search automaticky zpracovaly změněná data.
+* Zdrojová data se v průběhu času mění a chcete, aby indexery služby Azure Kognitivní hledání automaticky zpracovaly změněná data.
 * Index bude vyplněn z více zdrojů dat a chcete zajistit, aby se indexery spouštěly v různých časech, aby se snížily konflikty.
-* Zdrojová data jsou velmi velká a je třeba rozdělit zpracování indexerem v čase. Další informace o indexování velkých objemů dat najdete v tématu [postup indexování velkých datových sad v Azure Search](search-howto-large-index.md).
+* Zdrojová data jsou velmi velká a je třeba rozdělit zpracování indexerem v čase. Další informace o indexování velkých objemů dat najdete v tématu [postup indexování velkých datových sad v Azure kognitivní hledání](search-howto-large-index.md).
 
-Plánovač je integrovaná funkce Azure Search. Nemůžete použít externí plánovač k řízení vyhledávacích indexerů.
+Plánovač je integrovaná funkce Azure Kognitivní hledání. Nemůžete použít externí plánovač k řízení vyhledávacích indexerů.
 
 ## <a name="define-schedule-properties"></a>Definovat vlastnosti plánu
 
@@ -88,7 +88,7 @@ Indexer můžete na vyžádání spustit kdykoli pomocí volání metody Run ind
 
 ## <a name="schedule-using-the-net-sdk"></a>Plánování pomocí .NET SDK
 
-Můžete definovat plán pro indexer pomocí sady Azure Search .NET SDK. Chcete-li to provést, zahrňte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** .
+Můžete definovat plán pro indexer pomocí sady Azure Kognitivní hledání .NET SDK. Chcete-li to provést, zahrňte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** .
 
 V následujícím C# příkladu se vytvoří indexer s použitím předdefinovaného zdroje dat a indexu a nastaví se plán, který se spustí jednou denně od 30 minut od teď:
 

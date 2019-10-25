@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 7ca6f1bda2dff9a8a9e54cb9d9ce5fd2d34c7245
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e7de3e8026b15342c06eff9718242c08d33a53a4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428073"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72783788"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -341,11 +341,15 @@ Následující položky jsou s předponou buď:
 - **[2]** : platí pouze pro uzel 2
 
 **[A]** předpoklady pro konfiguraci Pacemaker:
-1. Vypněte oba databázové servery s uživatelem DB2 @ no__t-0sid > s db2stop.
-1. Změňte prostředí prostředí pro DB2 @ no__t-0sid > uživatele na */bin/ksh*. Doporučujeme použít nástroj YaST. 
+1. Vypínejte jak databázové servery s uživatelem DB2\<SID > pomocí db2stop.
+1. Změňte prostředí prostředí pro DB2\<SID > uživatele na */bin/ksh*. Doporučujeme použít nástroj YaST. 
 
 
 ### <a name="pacemaker-configuration"></a>Konfigurace Pacemaker
+
+> [!IMPORTANT]
+> Nedávné testování odhalilo situace, kde NetCat přestane reagovat na požadavky z důvodu nevyřízených položek a omezení zpracování pouze jednoho připojení. Prostředek NetCat přestane naslouchat požadavkům nástroje pro vyrovnávání zatížení Azure a plovoucí IP adresa přestane být k dispozici.  
+> Pro existující clustery Pacemaker doporučujeme nahradit NetCat pomocí Socat podle pokynů v článku [posílení zabezpečení zjišťování služby Azure Load Balancer](https://www.suse.com/support/kb/doc/?id=7024128). Všimněte si, že tato změna bude vyžadovat krátké výpadky.  
 
 **[1]** IBM Db2 hadr – konfigurace Pacemaker pro konkrétní:
 <pre><code># Put Pacemaker into maintenance mode
@@ -371,7 +375,7 @@ sudo crm configure primitive rsc_ip_db2ptr_<b>PTR</b> IPaddr2 \
 
 # Configure probe port for Azure load Balancer
 sudo crm configure primitive rsc_nc_db2ptr_<b>PTR</b> anything \
-        params binfile="/usr/bin/nc" cmdline_options="-l -k <b>62500</b>" \
+        params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>62500</b>,backlog=10,fork,reuseaddr /dev/null" \
         op monitor timeout="20s" interval="10" depth="0"
 
 sudo crm configure group g_ip_db2ptr_<b>PTR</b> rsc_ip_db2ptr_<b>PTR</b> rsc_nc_db2ptr_<b>PTR</b>
@@ -474,12 +478,12 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Provedení změn v profilech SAP pro použití virtuální IP adresy pro připojení
 Aby bylo možné připojit se k primární instanci konfigurace HADR, musí aplikační vrstva SAP používat virtuální IP adresu, kterou jste definovali a nakonfigurovali pro Azure Load Balancer. Jsou vyžadovány tyto změny:
 
-/sapmnt/@no__t – 0SID >/profile/DEFAULT. PFL
+/sapmnt/\<SID >/profile/DEFAULT. PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/@no__t – 0SID >/Global/DB6/Db2cli.ini
+/sapmnt/\<SID >/Global/DB6/Db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -558,7 +562,7 @@ Původní stav systému SAP je popsán v části > Konfigurace služby Transacti
 > Než začnete s testem, ujistěte se, že:
 > * Pacemaker nemá žádné neúspěšné akce (stav CRM).
 > * Neexistují žádná omezení umístění (Leftovers test migrace).
-> * Synchronizace IBM Db2 HADR funguje. Podívejte se na uživatele DB2 @ no__t-0sid > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * Synchronizace IBM Db2 HADR funguje. Ověření pomocí\<SID uživatele DB2 > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Migrujte uzel, na kterém je spuštěná primární databáze Db2, spuštěním následujícího příkazu:
@@ -592,9 +596,9 @@ Migrujte prostředek zpátky do *azibmdb01* a vymažte omezení umístění.
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **@no__t prostředků CRM migrace – 1res_name > \<host >:** Vytvoří omezení umístění a může způsobit problémy s převzetím.
-- **prostředek CRM clear @no__t – 1res_name >** : vymaže omezení umístění.
-- **@no__t vyčištění prostředků CRM – 1res_name >** : vymaže všechny chyby prostředku.
+- **prostředek CRM migrace \<res_name > \<hostitele >:** Vytvoří omezení umístění a může způsobit problémy s převzetím.
+- **prostředek CRM clear \<res_name >** : vymaže omezení umístění.
+- **\<res_name > pro vyčištění prostředků CRM**: vymaže všechny chyby prostředku.
 
 ### <a name="test-the-fencing-agent"></a>Testování agenta pro oplocení
 
@@ -767,7 +771,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb01
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-Jako uživatel DB2 @ no__t-0sid > spustit příkaz db2stop Force:
+Jako db2stop SID pro uživatele DB2\<> spuštění příkazu Force:
 <pre><code>azibmdb01:~ # su - db2ptr
 azibmdb01:db2ptr> db2stop force</code></pre>
 

@@ -1,5 +1,6 @@
 ---
-title: Konfigurace domény vydavatele aplikace | Azure
+title: Konfigurace domény vydavatele aplikace
+titleSuffix: Microsoft identity platform
 description: Naučte se konfigurovat doménu vydavatele aplikace, aby uživatelé věděli, kde se odesílají jejich informace.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 26ef28be328e01f8edcf898f123db55f262f286c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257937"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803344"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Postup: Konfigurace domény vydavatele aplikace (Preview)
+# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Postupy: Konfigurace domény vydavatele aplikace (Preview)
 
 Doména vydavatele aplikace se zobrazí uživatelům na [výzvu k vyjádření souhlasu aplikace](application-consent-experience.md) a umožní uživatelům, aby věděli, kde jsou odesílány informace. Víceklientské aplikace registrované po 21. května 2019, které nemají doménu vydavatele zobrazeno jako **Neověřeno** Víceklientské aplikace jsou aplikace, které podporují účty mimo jeden adresář organizace. například podporují všechny účty Azure AD nebo podporují všechny účty Azure AD a osobní účty Microsoft.
 
@@ -38,7 +39,7 @@ Následující tabulka shrnuje výchozí chování hodnoty domény vydavatele.
 
 | Domény ověřené klientem | Výchozí hodnota domény vydavatele |
 |-------------------------|----------------------------|
-| null | null |
+| platnost | platnost |
 | *. onmicrosoft.com | *. onmicrosoft.com |
 | – *. onmicrosoft.com<br/>– domain1.com<br/>-domain2.com (primární) | domain2.com |
 
@@ -69,7 +70,7 @@ Pokud chcete nastavit doménu vydavatele vaší aplikace, postupujte podle těch
    - Pokud jste ještě nenakonfigurovali doménu, vyberte **nakonfigurovat doménu** .
    - Pokud je doména už nakonfigurovaná, vyberte **aktualizovat doménu** .
 
-Pokud je vaše aplikace registrovaná v tenantovi, uvidíte dvě karty, ze kterých můžete vybírat: **Vyberte ověřenou doménu** a **ověřte novou doménu**.
+Pokud je vaše aplikace registrovaná v tenantovi, zobrazí se dvě karty, ze kterých můžete vybrat: **Vyberte ověřenou doménu** a **ověřte novou doménu**.
 
 Pokud vaše aplikace není registrovaná v tenantovi, zobrazí se jenom možnost ověřit novou doménu pro vaši aplikaci.
 
@@ -89,7 +90,7 @@ Pokud vaše aplikace není registrovaná v tenantovi, zobrazí se jenom možnost
 
 1. Zástupný symbol *{Your-App-ID-tady}* nahraďte ID aplikace (klienta), které odpovídá vaší aplikaci.
 
-1. Hostovat soubor v umístění: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Nahraďte zástupný symbol *{a-Domain}* , aby odpovídal ověřené doméně.
+1. Hostovat soubor v: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Nahraďte zástupný symbol *{a-Domain}* , aby odpovídal ověřené doméně.
 
 1. Klikněte na tlačítko **ověřit a uložit doménu** .
 
@@ -98,7 +99,7 @@ Pokud vaše aplikace není registrovaná v tenantovi, zobrazí se jenom možnost
 - Pokud má váš tenant ověřené domény, vyberte jednu z domén v rozevíracím seznamu **Vybrat ověřenou doménu** .
 
 >[!Note]
-> Očekávala se hlavička Content-Type, která by se `application/json`měla vrátit. Může se zobrazit chyba, jak je uvedeno níže, pokud použijete něco jiného jako`application/json; charset=utf-8` 
+> Očekávala se hlavička Content-Type, která by se měla vrátit `application/json`. Pokud používáte cokoliv jiného, co je uvedeno níže, může se zobrazit chyba, jak je uvedeno níže: `application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >

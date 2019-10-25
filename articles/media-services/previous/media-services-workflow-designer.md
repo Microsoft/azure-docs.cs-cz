@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: c5aa7af1ca6f4fe0768add47d2037d797e4ef99b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613241"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801954"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění  
 ## <a name="overview"></a>Přehled
@@ -37,7 +37,7 @@ Mezi ukázkové pracovní postupy, které můžete vytvořit, patří:
 Tento nástroj lze také použít k úpravě kteréhokoli z našich [publikovaných pracovních postupů](media-services-workflow-designer.md#existing_workflows). 
 
 > [!NOTE]
-> Pokud chcete získat kopii Návrhář postupu prováděního nástroje, kontaktujte mepd@microsoft.comprosím.
+> Pokud chcete získat kopii Návrhář postupu prováděního nástroje, kontaktujte prosím mepd@microsoft.com.
 
 Po vytvoření je soubor pracovního postupu možné ho nahrát jako Asset a pak ho použít k Kódování mediálních souborů. Informace o tom, jak kódovat pomocí **Media Encoder Premium Workflow** pomocí **rozhraní .NET**, najdete v tématu [Rozšířené kódování pomocí Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).
 
@@ -57,7 +57,7 @@ Následující videa ukazují, jak používat návrháře.
 > 
 > 
 
-### <a name="day-2"></a>2\. den
+### <a name="day-2"></a>Den 2
 1\. den pokrývá video:
 
 * Různé scénáře zdrojového souboru – manipulace se zvukem
@@ -73,21 +73,23 @@ Video o dni 3 se zabývá:
 
 * Skriptování v rámci pracovních postupů/modrotisky
 * Omezení s aktuálním kodérem
-* FUNKCE Q &AMP; A
+* Otázka & A
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 
 > 
+
+## <a name="need-help"></a>Potřebujete pomoct?
+
+Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
 ## <a name="next-step"></a>Další krok
 Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-Pokud potřebujete podporu nebo máte dotazy týkající se vytváření vlastních pracovních postupů v nástroji návrháře pracovních postupů, odešlete e-mail mepd@microsoft.comna adresu. Při psaní e-mailu prosím použijte anglický jazyk.
 
 ## <a name="see-also"></a>Viz také
 [Výuková videa pro Azure Premium Encoder Návrhář postupu provádění](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)

@@ -1,23 +1,23 @@
 ---
-title: 'Příklad: Modelování databáze inventáře AdventureWorks – Azure Search'
-description: Naučte se modelovat relační data, transformovat je na sloučenou datovou sadu pro indexování a fulltextové vyhledávání v Azure Search.
+title: 'Příklad: modelování databáze inventáře AdventureWorks'
+titleSuffix: Azure Cognitive Search
+description: Naučte se modelovat relační data a transformovat je na sloučenou datovou sadu pro indexování a fulltextové vyhledávání v Azure Kognitivní hledání.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: heidist
-ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: edb6162724938962df8a7340afea6e930a0b1049
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274042"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792994"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Příklad: Modelování databáze inventáře AdventureWorks pro Azure Search
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>Příklad: modelování databáze AdventureWorks Inventory pro Azure Kognitivní hledání
 
-Azure Search přijímá sloučené sady řádků jako vstupy [kanálu indexování (přijímání dat)](search-what-is-an-index.md). Pokud zdrojová data pocházejí z SQL Server relační databáze, Tento článek ukazuje jeden přístup k vytvoření ploché sady řádků před indexováním pomocí ukázkové databáze AdventureWorks jako příklad.
+Azure Kognitivní hledání přijímá sloučené sady řádků jako vstupy [kanálu indexování (přijímání dat)](search-what-is-an-index.md). Pokud zdrojová data pocházejí z SQL Server relační databáze, Tento článek ukazuje jeden přístup k vytvoření ploché sady řádků před indexováním pomocí ukázkové databáze AdventureWorks jako příklad.
 
 ## <a name="about-adventureworks"></a>O AdventureWorks
 
@@ -43,7 +43,7 @@ Vyřešení tohoto problému není tak jednoduché jako přesunutí cílového i
 
 ## <a name="use-a-collection-data-type"></a>Použití datového typu kolekce
 
-Správný přístup je využití funkce vyhledávacího schématu, která nemá přímý paralelní v modelu databáze: **Collection (EDM. String)** . Tento konstruktor je definován ve schématu indexu Azure Search. Datový typ kolekce se používá v případě, že je nutné reprezentovat seznam jednotlivých řetězců, nikoli velmi dlouhý (jeden) řetězec. Pokud máte značky nebo klíčová slova, měli byste pro toto pole použít datový typ kolekce.
+Správný přístup je použití funkce vyhledávacího schématu, která nemá přímý paralelní v modelu databáze: **Collection (EDM. String)** . Tento konstruktor je definovaný ve schématu indexu služby Azure Kognitivní hledání. Datový typ kolekce se používá v případě, že je nutné reprezentovat seznam jednotlivých řetězců, nikoli velmi dlouhý (jeden) řetězec. Pokud máte značky nebo klíčová slova, měli byste pro toto pole použít datový typ kolekce.
 
 Při definování polí indexu s více hodnotami **kolekce (EDM. String)** pro "Color", "size" a "image" jsou pomocné informace uchovány pro omezující vlastnosti a pro filtrování bez zneznečištění indexu s duplicitními položkami. Podobně použijte agregační funkce na pole číselného produktu a indexování **minListPrice** místo každého jednotlivého produktu **listPrice**.
 
@@ -160,7 +160,7 @@ WHERE
   md.Culture='en'
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Příklad: Taxonomie omezující vlastnosti na více úrovních v Azure Search](search-example-adventureworks-multilevel-faceting.md)
+> [Příklad: taxonomie omezujících vlastností na úrovni Azure Kognitivní hledání](search-example-adventureworks-multilevel-faceting.md)

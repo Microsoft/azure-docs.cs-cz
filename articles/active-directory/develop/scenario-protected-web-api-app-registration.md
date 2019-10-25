@@ -1,5 +1,6 @@
 ---
-title: Chráněné webové rozhraní API – registrace aplikace | Azure
+title: Chráněné webové rozhraní API – registrace aplikace
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet chráněné webové rozhraní API a informace, které potřebujete k registraci aplikace.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,18 +17,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbccfc38a4e5e4b31cb625c614e838a3c92e7429
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0c905dfd86fd80b9e55aa7bd5a9b9b03f277570c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562301"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802542"
 ---
-# <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: Registrace aplikace
+# <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: registrace aplikace
 
 Tento článek vysvětluje konkrétní registraci aplikací pro chráněné webové rozhraní API.
 
-Další [informace najdete v tématu rychlý Start: Registrace aplikace s platformou](quickstart-register-app.md) Microsoft identity pro běžný postup registrace aplikace
+Obecné kroky pro registraci aplikace najdete v tématu [rychlý Start: registrace aplikace na platformě Microsoft Identity](quickstart-register-app.md) .
 
 ## <a name="accepted-token-version"></a>Verze přijatého tokenu
 
@@ -49,17 +50,17 @@ Po vytvoření aplikace můžete zjistit nebo změnit verzi přijatého tokenu p
 
 Webová rozhraní API nepotřebují registrovat identifikátor URI přesměrování, protože k interaktivnímu přihlášení není žádný uživatel.
 
-## <a name="expose-an-api"></a>Zpřístupnit rozhraní API
+## <a name="expose-an-api"></a>Vystavení rozhraní API
 
 Další nastavení specifické pro webová rozhraní API je vystavené rozhraní API a exponované obory.
 
 ### <a name="resource-uri-and-scopes"></a>Identifikátor URI a rozsahy prostředku
 
-Obory jsou obvykle ve formuláři `resourceURI/scopeName`. Pro Microsoft Graph mají obory zkratky jako `User.Read`. Tento řetězec je zkratkou pro `https://graph.microsoft.com/user.read`.
+Obory jsou obvykle ve formě `resourceURI/scopeName`. Pro Microsoft Graph mají obory zkratky jako `User.Read`. Tento řetězec je zástupcem pro `https://graph.microsoft.com/user.read`.
 
 Při registraci aplikace budete muset definovat tyto parametry:
 
-- Identifikátor URI prostředku Portál pro registraci aplikací standardně doporučuje použití `api://{clientId}`nástroje. Identifikátor URI tohoto prostředku je jedinečný, ale není čitelný pro lidskou čitelnost. Můžete ho změnit, ale zajistěte, aby byla nová hodnota jedinečná.
+- Identifikátor URI prostředku Portál pro registraci aplikací standardně doporučuje použít `api://{clientId}`. Identifikátor URI tohoto prostředku je jedinečný, ale není čitelný pro lidskou čitelnost. Můžete ho změnit, ale zajistěte, aby byla nová hodnota jedinečná.
 - Jeden nebo více *oborů*. (Klientským aplikacím se zobrazí jako *delegovaná oprávnění* pro vaše webové rozhraní API.)
 - Jedna nebo více *aplikačních rolí*. (Pro klientské aplikace se zobrazí jako *oprávnění aplikace* pro vaše webové rozhraní API.)
 
@@ -70,9 +71,9 @@ Obory se také zobrazují na obrazovce pro vyjádření souhlasu, která se zobr
 
 ### <a name="exposing-delegated-permissions-scopes"></a>Vystavení delegovaných oprávnění (rozsahy)
 
-1. V registraci aplikace vyberte část vystavení **rozhraní API** .
+1. V registraci aplikace vyberte část **vystavení rozhraní API** .
 1. Vyberte **Přidat obor**.
-1. Pokud se zobrazí výzva, přijměte navržený identifikátor`api://{clientId}`URI () ID aplikace výběrem možnosti **Uložit a pokračovat**.
+1. Pokud se zobrazí výzva, přijměte navržený identifikátor URI (`api://{clientId}`) ID aplikace **a vyberte Uložit a pokračovat**.
 1. Zadejte tyto parametry:
       - Pro **název oboru**použijte **access_as_user**.
       - Pro **uživatele, kteří můžou vyjádřit souhlas**, se ujistěte, že je vybraná možnost **Správci a uživatelé** .
@@ -95,10 +96,10 @@ V této části se dozvíte, jak zaregistrovat chráněné webové rozhraní API
 Chcete-li zveřejnit oprávnění aplikace, budete muset manifest upravit.
 
 1. V registraci aplikace pro vaši aplikaci vyberte možnost **manifest**.
-1. Upravte manifest tak, že vyhledáte `appRoles` nastavení a přidáte jednu nebo více aplikačních rolí. Definice role je k dispozici v následujícím ukázkovém bloku JSON. Ponechte `"Application"` nastavenou pouze na. `allowedMemberTypes` Ujistěte se `displayName`,že `id` je jedinečný identifikátor GUID a že neobsahuje mezery. `value`
+1. Upravte manifest tak, že vyhledáte nastavení `appRoles` a přidáte jednu nebo více aplikačních rolí. Definice role je k dispozici v následujícím ukázkovém bloku JSON. Ponechte `allowedMemberTypes` nastavenou na pouze `"Application"`. Ujistěte se, že `id` jedinečný identifikátor GUID a že `displayName` a `value` neobsahuje mezery.
 1. Uložte manifest.
 
-Následující příklad ukazuje obsah `appRoles`. `id` (Může to být libovolný jedinečný identifikátor GUID.)
+Následující příklad ukazuje obsah `appRoles`. (`id` může být libovolný jedinečný identifikátor GUID.)
 
 ```JSon
 "appRoles": [
@@ -130,11 +131,11 @@ Webové rozhraní API kontroluje aplikační roli. (To je vývojář způsob, ja
 
    > [!IMPORTANT]
    >
-   > Pokud jste si nastavili **přiřazení uživatele jako povinné?** Pokud **Ano**, služba Azure AD zkontroluje přiřazení rolí aplikace při vyžádání přístupového TOKENU pro webové rozhraní API. Pokud klient není přiřazený k rolím aplikace, vrátí se chyba `invalid_client: AADSTS501051: Application <application name> is not assigned to a role for the <web API>`Azure AD.
+   > Pokud jste si nastavili **přiřazení uživatele jako povinné?** Pokud **Ano**, služba Azure AD zkontroluje přiřazení rolí aplikace při vyžádání přístupového TOKENU pro webové rozhraní API. Pokud klient není přiřazený k rolím aplikace, služba Azure AD vrátí chybu `invalid_client: AADSTS501051: Application <application name> is not assigned to a role for the <web API>`.
    >
-   > Pokud si zachováte **přiřazení uživatelů?** nastavit na **ne**, *Azure AD nebude kontrolovat přiřazení role aplikace, když si klient vyžádá přístupový token pro vaše webové rozhraní API*. Jakýkoli Klient démona (to znamená, že každý klient používající tok přihlašovacích údajů klienta) bude moci získat přístupový token pro rozhraní API jenom tak, že určí cílovou skupinu. Každá aplikace bude mít přístup k rozhraní API bez nutnosti požádat o oprávnění. Ale vaše webové rozhraní API může vždy, jak je vysvětleno v předchozí části, ověřit, zda má aplikace správnou roli (která je autorizována správcem tenanta). Rozhraní API provede toto ověření tím, že ověří, že přístupový token má deklaraci identity rolí a že hodnota této deklarace je správná. (V našem případě je `access_as_application`hodnota.)
+   > Pokud si zachováte **přiřazení uživatelů?** nastavit na **ne**, *Azure AD nebude kontrolovat přiřazení role aplikace, když si klient vyžádá přístupový token pro vaše webové rozhraní API*. Jakýkoli Klient démona (to znamená, že každý klient používající tok přihlašovacích údajů klienta) bude moci získat přístupový token pro rozhraní API jenom tak, že určí cílovou skupinu. Každá aplikace bude mít přístup k rozhraní API bez nutnosti požádat o oprávnění. Ale vaše webové rozhraní API může vždy, jak je vysvětleno v předchozí části, ověřit, zda má aplikace správnou roli (která je autorizována správcem tenanta). Rozhraní API provede toto ověření tím, že ověří, že přístupový token má deklaraci identity rolí a že hodnota této deklarace je správná. (V našem případě je hodnota `access_as_application`.)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="next-steps"></a>Další kroky
 

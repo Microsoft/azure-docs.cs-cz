@@ -1,51 +1,52 @@
 ---
-title: C#kurz týkající se stránkování výsledků vyhledávání – Azure Search
-description: Tento kurz vychází projektu "Vytvoření první aplikace – Azure Search", s možností dva druhy stránkování. První používá celou řadu tlačítek číslo stránky, stejně jako první, potom předchozí a poslední stránky, tlačítka. Druhý systém stránkování používá nekonečné posouvání, aktivuje přesunutím svislý posuvník na jeho dolní mez.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#kurz pro stránkování výsledků hledání
+titleSuffix: Azure Cognitive Search
+description: Tento kurz sestaví projekt "Vytvoření první aplikace – Azure Kognitivní hledání" s volbou dvou typů stránkování. První používá rozsah tlačítek čísel stránek a také tlačítka první, další, předchozí a poslední stránka. Druhý stránkovací systém používá nekonečné posouvání, aktivované přesunutím svislého posuvníku na jeho dolní limit.
+manager: nitinme
 author: PeterTurcan
-ms.date: 05/01/2019
-ms.openlocfilehash: 7e6c433168b73c6b58d13d4698bed55d7c18ec58
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 935e6d43cf77d94b485d55eb4bc5eb517bf802a0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434625"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794004"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-search"></a>C#kurz: Stránkování výsledků vyhledávání – Azure Search
+# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#kurz: stránkování výsledků hledání – Azure Kognitivní hledání
 
-Zjistěte, jak implementovat dva různé systémy stránkování, první na základě čísla stránek a podruhé v nekonečné posouvání. Oba systémy stránkování hojně používají, a ten správný výběr závisí na uživatelské prostředí, které chcete s výsledky. V tomto kurzu sestavení do projektu vytvořeného v systémech stránkování [ C# kurzu: Vytvoření první aplikace – Azure Search](tutorial-csharp-create-first-app.md) kurzu.
+Naučte se implementovat dva různé systémy stránkování, první v závislosti na číslech stránek a druhá při nekonečné posouvání. Často se používají oba systémy stránkování a výběr pravého tlačítka závisí na uživatelském prostředí, které chcete s výsledky. Tento kurz sestaví stránkovací systémy do projektu vytvořeného v [ C# kurzu: Vytvoření první aplikace – Azure kognitivní hledání](tutorial-csharp-create-first-app.md) kurz.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Rozšiřte svou aplikaci pomocí číselného stránkování
-> * Rozšiřte svou aplikaci pomocí nekonečné posouvání
+> * Rozšiřování aplikace pomocí číslovaného stránkování
+> * Rozšiřování aplikace pomocí nekonečné posouvání
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-Máte [ C# kurzu: Vytvoření první aplikace – Azure Search](tutorial-csharp-create-first-app.md) projektu rychle zprovoznit. Tento projekt může být vlastní verzi nebo nainstalovat z Githubu: [Vytvoření první aplikace](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+[Seznámení s kurzem: Vytvoření první aplikace – Azure kognitivní hledání Project a jejich provoz. C# ](tutorial-csharp-create-first-app.md) Tento projekt může být buď vlastní verze, nebo ho můžete nainstalovat z GitHubu: [vytvořit první aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-## <a name="extend-your-app-with-numbered-paging"></a>Rozšiřte svou aplikaci pomocí číselného stránkování
+## <a name="extend-your-app-with-numbered-paging"></a>Rozšiřování aplikace pomocí číslovaného stránkování
 
-Číselného stránkování je systém stránkování hlavní vyhledávací weby internet a většina jiných webových stránek hledání podle výběru. Číselného stránkování obvykle nabízí možnost "následující" a "předchozí" kromě rozsah čísel skutečné stránky. Také "první stránka" a "poslední stránka" možnost může být také k dispozici. Tyto možnosti jistě poskytnout uživatelský ovládací prvek v navigaci na stránce výsledky.
+Číslované stránkování je stránkovací systém, ve kterém se volí hlavní vyhledávací weby pro Internet a většina ostatních vyhledávacích webů. Očíslované stránkování obvykle zahrnuje možnost "Další" a "předchozí" kromě rozsahu skutečných čísel stránek. Také může být k dispozici možnost "první stránka" a "Poslední stránka". Tyto možnosti jistě poskytují uživatelský ovládací prvek pro procházení výsledků na základě stránky.
 
-Přidáme systému, který obsahuje další první, předchozí a poslední možnosti, spolu s čísly, která nebudou spuštěny z 1, ale místo toho je obklopit stránce aktuálního uživatele na (tedy například, pokud se uživatel dívá na stránku s 10, třeba čísla stránek 8 9, 10, 11 a 12 se zobrazí).
+Přidáme systém, který obsahuje možnosti First, Previous, Next a Last, spolu s čísly stránek, která nezačínají od 1, ale místo toho se uživatel bude začínat (například pokud se uživateli na stránce 10 díváte, možná čísla stránek 8). zobrazí se, 9, 10, 11 a 12).
 
-Systém bude dostatečně flexibilní, aby počet čísel viditelné stránky v globální proměnné.
+Systém bude dostatečně flexibilní, aby bylo možné nastavit počet zobrazených čísel stránek v globální proměnné.
 
-Systém bude považovat stránka úplně vlevo a úplně vpravo číslo tlačítka jako speciální, což znamená, že aktivují změnit rozsah čísel stránky zobrazí. Například pokud se zobrazí stránka čísla 8, 9, 10, 11 a 12 a uživatel klikne na 8, pak rozsah čísel stránky zobrazí změny 6, 7, 8, 9 a 10. A pokud vybral 12 je podobné posunutí doprava.
+Systém bude zacházet s tlačítky na nejvyšší úrovni vlevo a vpravo (jako speciální), což znamená, že budou aktivovat změnu rozsahu zobrazených čísel stránek. Například pokud se zobrazí čísla stránky 8, 9, 10, 11 a 12 a uživatel klikne na 8, pak se rozsah zobrazených čísel stránek změní na 6, 7, 8, 9 a 10. A v případě, že je vybrána možnost 12, existuje podobný posun doprava.
 
-### <a name="add-paging-fields-to-the-model"></a>Do modelu přidat pole stránkování
+### <a name="add-paging-fields-to-the-model"></a>Přidání polí stránkování do modelu
 
-Máte základní hledání stránky řešení otevřené.
+Otevřete základní řešení pro stránku vyhledávání.
 
 1. Otevřete soubor modelu SearchData.cs.
 
-2. Nejprve přidáte některých globálních proměnných. V aplikaci MVC globální proměnné jsou deklarovány ve své vlastní statické třídě. **ResultsPerPage** nastaví počet výsledků na stránku. **MaxPageRange** určuje počet hodnot viditelné stránky v zobrazení. **PageRangeDelta** určuje počet stránek levého nebo pravého rozsah stránek by měl posunuta, pokud je vybrána číslo levým nebo krajním stránky. Toto druhé číslo je obvykle kolem polovinu **MaxPageRange**. Přidejte následující kód do oboru názvů.
+2. Nejdřív přidejte některé globální proměnné. V MVC jsou globální proměnné deklarovány ve vlastní statické třídě. **ResultsPerPage** nastaví počet výsledků na stránce. **MaxPageRange** určuje počet viditelných čísel stránek v zobrazení. **PageRangeDelta** určuje, kolik stran doleva nebo dolů má být rozsahem stránky posunuto, pokud je vybráno číslo stránky nejvíce vlevo nebo vpravo. Toto druhé číslo je obvykle kolem poloviny **MaxPageRange**. Do oboru názvů přidejte následující kód.
 
     ```cs
     public static class GlobalVariables
@@ -76,9 +77,9 @@ Máte základní hledání stránky řešení otevřené.
     ```
 
     >[!Tip]
-    >Pokud používáte tento projekt na zařízení s menší obrazovku, například notebook, pak zvažte změnu **ResultsPerPage** na 2.
+    >Pokud tento projekt spouštíte na zařízení, které má menší obrazovku, jako je třeba přenosný počítač, zvažte změnu **ResultsPerPage** na 2.
 
-3. Přidání vlastností stránkování **SearchData** třídy, například po **Prohledávanýtext** vlastnost.
+3. Přidejte vlastnosti stránkování do třídy **SearchData** , říkáme za vlastnost **prohledávanýtext** .
 
     ```cs
         // The current page being displayed.
@@ -97,9 +98,9 @@ Máte základní hledání stránky řešení otevřené.
         public string paging { get; set; }
     ```
 
-### <a name="add-a-table-of-paging-options-to-the-view"></a>Přidat tabulku možností stránkování na zobrazení
+### <a name="add-a-table-of-paging-options-to-the-view"></a>Přidání tabulky možností stránkování do zobrazení
 
-1. Otevřete soubor index.cshtml a přidejte následující kód bezprostředně před uzavírací &lt;/body&gt; značky. Tento nový kód představuje tabulku možnosti stránkování: první, předchozí, 1, 2, 3, 4, 5, v dalším kroku naposledy.
+1. Otevřete soubor index. cshtml a přidejte následující kód přímo před uzavírací &lt;značku&gt;/body. Tento nový kód představuje tabulku možností stránkování: první, předchozí, 1, 2, 3, 4, 5, další, poslední.
 
     ```cs
     @if (Model != null && Model.pageCount > 1)
@@ -180,11 +181,11 @@ Máte základní hledání stránky řešení otevřené.
     }
     ```
 
-    Používáme tabulku HTML elegantně zarovnat věci. Ale všechny akce pochází z @Html.ActionLink příkazy, každá volá kontroler s **nové** model vytvořený pomocí jiné položky **stránkování** vlastnost jsme přidali dříve.
+    K zarovnání věcí používáme tabulku HTML. Všechny akce však přicházejí z příkazů @Html.ActionLink, každé volání kontroleru s **novým** modelem vytvořeným s různými položkami do vlastnosti **stránkování** , kterou jsme přidali dříve.
 
-    První a poslední stránky možnosti Neodesílat řetězce, jako jsou "first" a "last", ale místo toho odesílat čísla správná stránka.
+    První a poslední stránka neodesílají řetězce, například "First" a "Last", ale místo toho odesílají správná čísla stránek.
 
-2. Přidejte do seznamu stylů HTML v souboru hotels.css některé třídy stránkování. **PageSelected** třídy existuje a identifikovat tak stránku uživatel je momentálně zobrazení (počet aktivací bold) v seznamu čísel stránek.
+2. Přidejte některé třídy stránkování do seznamu stylů HTML v souboru hotely. CSS. Třída **pageSelected** je k identifikaci stránky, kterou uživatel aktuálně zobrazuje (zapnutím čísla tučně) v seznamu čísel stránek.
 
     ```html
         .pageButton {
@@ -209,9 +210,9 @@ Máte základní hledání stránky řešení otevřené.
         }
     ```
 
-### <a name="add-a-page-action-to-the-controller"></a>Přidat stránku akce kontroleru
+### <a name="add-a-page-action-to-the-controller"></a>Přidat akci stránky do kontroleru
 
-1. Otevřete soubor HomeController.cs a přidejte **stránky** akce. Tato akce jsou reaguje na některý z vybrané možnosti stránky.
+1. Otevřete soubor HomeController.cs a přidejte akci **stránky** . Tato akce odpoví na kteroukoli z vybraných možností stránky.
 
     ```cs
         public async Task<ActionResult> Page(SearchData model)
@@ -257,12 +258,12 @@ Máte základní hledání stránky řešení otevřené.
         }
     ```
 
-    **RunQueryAsync** metoda kvůli třetí parametr, který bude přejdeme k ve chvíli nyní zobrazí chybu syntaxe.
+    Metoda **RunQueryAsync** nyní zobrazí syntaktickou chybu, protože se jedná o třetí parametr, ke kterému budeme přijít v bitu.
 
     > [!Note]
-    > **TempData** volání uložení hodnoty ( **objekt**) v dočasné úložiště, i když toto úložiště potrvají _pouze_ jedno volání. Pokud něco uložíme v dočasných dat, bude k dispozici pro další volání akce kontroleru, ale bude nejvíc jednoznačně znovu voláním po tomto! Z důvodu této krátké životnost, uložíme hledaný text a zpět vlastnosti stránkování v dočasné úložiště každého volání **stránky**.
+    > **TempData** volá do dočasného úložiště hodnotu ( **objekt**), i když toto úložiště přetrvává _jenom_ pro jedno volání. Pokud ukládáme něco do dočasných dat, bude k dispozici pro další volání akce kontroleru, ale po této akci bude toto volání nejvíce neomezené. V důsledku tohoto krátkého intervalu ukládáme do dočasného úložiště vlastnosti hledání textu a stránkování a každé volání **stránky**se vrátí do dočasného úložiště.
 
-2. **Index(model)** akce potřeby aktualizovali k ukládání dočasných proměnných a přidat parametr stránka úplně vlevo **RunQueryAsync** volání.
+2. Akce **index (model)** vyžaduje aktualizaci, aby ukládala dočasné proměnné a přidala do volání **RunQueryAsync** parametr stránky vlevo.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -292,7 +293,7 @@ Máte základní hledání stránky řešení otevřené.
         }
     ```
 
-3. **RunQueryAsync** metoda potřeby výrazně aktualizovat. Používáme **přeskočit**, **horní**, a **IncludeTotalResultCount** pole **parametrech vyhledávání** třídy požádat o jednu stránku za výsledky, počínaje **přeskočit** nastavení. Potřebujeme také k výpočtu proměnné stránkování pro naše zobrazení. Nahraďte celou metodu s následujícím kódem.
+3. Metoda **RunQueryAsync** se musí významně aktualizovat. Pomocí polí **Skip**, **Top**a **IncludeTotalResultCount** třídy **SearchParameters** si vyžádáme jenom jednu stránku s výsledky, počínaje nastavením **Skip** . Pro naše zobrazení je také potřeba vypočítat stránkovací proměnné. Nahraďte celou metodu následujícím kódem.
 
     ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
@@ -351,7 +352,7 @@ Máte základní hledání stránky řešení otevřené.
         }
     ```
 
-4. Nakonec musíme proveďte malou změnu do zobrazení. Proměnná **resultsList.Results.Count** bude teď obsahovat počet výsledků vrácených na jedné stránce (3 v našem příkladu), není celkový počet. Protože jsme nastavili **IncludeTotalResultCount** na hodnotu true, je proměnná **resultsList.Count** nyní obsahuje celkový počet výsledků. Proto vyhledejte, kde počet výsledků, které se zobrazí v zobrazení a změnit na následující kód.
+4. Nakonec musíme udělat malou změnu zobrazení. Proměnná **resultsList. Results. Count** nyní bude obsahovat počet výsledků vrácených na jedné stránce (3 v našem příkladu), ne celkové číslo. Vzhledem k tomu, že **IncludeTotalResultCount** nastavíme na hodnotu true, proměnná **resultsList. Count** nyní obsahuje celkový počet výsledků. Proto Najděte, kde se v zobrazení zobrazí počet výsledků, a změňte ji na následující kód.
 
     ```cs
             // Show the result count.
@@ -361,50 +362,50 @@ Máte základní hledání stránky řešení otevřené.
     ```
 
     > [!Note]
-    > Je dosaženo výkonu, i když obvykle mnohem jednoho nastavením **IncludeTotalResultCount** na hodnotu true, protože tento součet je potřeba vypočítat služba Azure Search. Komplexní datové sady existuje upozornění. Vrácená hodnota je _aproximace_. Pro naše data hotelu je přesné.
+    > Výkon se může dosáhnout, i když to není obvykle mnoho, nastavením **IncludeTotalResultCount** na hodnotu true, protože tento součet je potřeba vypočítat pomocí Azure kognitivní hledání. U komplexních datových sad se zobrazí upozornění, že vrácená hodnota je _aproximace_. Pro naše data hotelu bude přesné.
 
-### <a name="compile-and-run-the-app"></a>Kompilace a spuštění aplikace
+### <a name="compile-and-run-the-app"></a>Zkompilovat a spustit aplikaci
 
-Teď vyberte **spustit bez ladění** (nebo stiskněte klávesu F5).
+Nyní vyberte možnost **Spustit bez ladění** (nebo stiskněte klávesu F5).
 
-1. Hledat na nějaký text, který vám poskytne dostatek výsledků (například "Wi-Fi"). Lze při procházení elegantně výsledky?
+1. Vyhledejte nějaký text, který poskytne dostatek výsledků (například "WiFi"). Můžete stránku na základě výsledků zamezit.
 
-    ![Číselného stránkování prostřednictvím "fond" výsledky](./media/tutorial-csharp-create-first-app/azure-search-numbered-paging.png)
+    ![Očíslované stránkování prostřednictvím "fondu" výsledků](./media/tutorial-csharp-create-first-app/azure-search-numbered-paging.png)
 
-2. Zkuste klepnout na úplně vpravo a později, čísla stránek nejvíce vlevo. Číslo stránky odpovídajícím způsobem nastavit střed stránku, kterou používáte?
+2. Zkuste kliknout na nejvíc vpravo a později na všechna čísla stránek, která jsou nejvíce vlevo. Přizpůsobte si čísla stránek odpovídajícím způsobem centrování stránky, na které jste připojeni?
 
-3. Možnosti "first" a "last" jsou užitečné? Tyto možnosti použít některé oblíbené webové vyhledávání a jiné zase ne.
+3. Jsou možnosti "první" a "poslední" užitečné? Některá Oblíbená hledání na webu využívají tyto možnosti a jiné ne.
 
-4. Přejdete na poslední stránku výsledků. Poslední stránka je jedinou stránkou, která mohou obsahovat méně než **ResultsPerPage** výsledky.
+4. Přejít na poslední stránku výsledků. Poslední stránka je jediná stránka, která může obsahovat méně než **ResultsPerPage** výsledků.
 
-    ![Zkoumání poslední stránky "Wi-Fi"](./media/tutorial-csharp-create-first-app/azure-search-pool-last-page.png)
+    ![Prozkoumání poslední stránky "WiFi"](./media/tutorial-csharp-create-first-app/azure-search-pool-last-page.png)
 
-5. Zadejte "Město" a klikněte na tlačítko Hledat. Pokud jsou menší než za stránku výsledků, zobrazí se žádné možnosti stránkování.
+5. Zadejte "město" a klikněte na Hledat. Pokud je k dispozici méně než jedna stránka s výsledky, nejsou zobrazeny žádné možnosti stránkování.
 
-    ![Hledání "Město"](./media/tutorial-csharp-create-first-app/azure-search-town.png)
+    ![Hledání "města"](./media/tutorial-csharp-create-first-app/azure-search-town.png)
 
-Vypnout tento projekt nyní uložit a teď si vyzkoušíme alternativu k tomuto formuláři stránkování.
+Nyní tento projekt uložte a pojďme se pokusit o alternativu k této formě stránkování.
 
-## <a name="extend-your-app-with-infinite-scrolling"></a>Rozšiřte svou aplikaci pomocí nekonečné posouvání
+## <a name="extend-your-app-with-infinite-scrolling"></a>Rozšiřování aplikace pomocí nekonečné posouvání
 
-Nekonečné posouvání se aktivuje, když bude uživatel posouvat poslední výsledků se zobrazí svislý posuvník. V takovém případě je uskutečněn hovor na server pro další stránky výsledků. Pokud neexistují žádné další výsledky, nevrátí a nemění svislý posuvník. Pokud existují další výsledky, jsou připojeny k aktuální stránce a změny posuvníku panelu zobrazíte, že jsou k dispozici více výsledků.
+Nekonečná posouvání se aktivuje, když uživatel posune svislý posuvník na poslední zobrazené výsledky. V tomto případě se pro další stránku výsledků vyvolá volání serveru. Pokud neexistují žádné další výsledky, není nic vráceno a svislý posuvník se nemění. Pokud je k dispozici více výsledků, připojí se k aktuální stránce a posuvník se změní, aby bylo vidět, že jsou k dispozici další výsledky.
 
-Důležitý bod je, že na stránce se zobrazí není nahrazena, ale připojené k nové výsledky. Uživatele můžete vždy přejděte zpět do první výsledky hledání.
+Důležitým bodem je, že zobrazená stránka není nahrazena, ale je připojená k novým výsledkům. Uživatel může vždycky přejít zpět na první výsledky hledání.
 
-K implementaci nekonečné posouvání, začneme projektu předtím, než byly přidané číslo posouvání prvky stránky. Ano Pokud je potřeba vytvořte další kopii základní hledání stránky z Githubu: [Vytvoření první aplikace](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Chcete-li implementovat nekonečné posouvání, začněte s projektem před přidáním prvků pro posouvání čísla stránky. Takže pokud potřebujete, udělejte další kopii základní vyhledávací stránky z GitHubu: [vytvořit první aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-### <a name="add-paging-fields-to-the-model"></a>Do modelu přidat pole stránkování
+### <a name="add-paging-fields-to-the-model"></a>Přidání polí stránkování do modelu
 
-1. Nejprve přidejte **stránkování** vlastnost **SearchData** třídy (v souboru modelu SearchData.cs).
+1. Nejprve přidejte vlastnost **stránkování** do třídy **SearchData** (v souboru modelu SearchData.cs).
 
     ```cs
         // Record if the next page is requested.
         public string paging { get; set; }
     ```
 
-    Tato proměnná je řetězec, který obsahuje tlačítko Další"Pokud by měly být odeslány další stránky výsledků, nebo mít hodnotu null pro první stránka hledání.
+    Tato proměnná je řetězec, který obsahuje "Next", pokud by se měla odeslat další stránka výsledků, nebo pro první stránku hledání mít hodnotu null.
 
-2. Ve stejném souboru a v rámci oboru názvů přidejte třídu globální proměnné s jednou vlastností. V aplikaci MVC globální proměnné jsou deklarovány ve své vlastní statické třídě. **ResultsPerPage** nastaví počet výsledků na stránku. 
+2. Do stejného souboru a v rámci oboru názvů přidejte globální proměnnou třídy s jednou vlastností. V MVC jsou globální proměnné deklarovány ve vlastní statické třídě. **ResultsPerPage** nastaví počet výsledků na stránce. 
 
     ```cs
     public static class GlobalVariables
@@ -419,11 +420,11 @@ K implementaci nekonečné posouvání, začneme projektu předtím, než byly p
     }
     ```
 
-### <a name="add-a-vertical-scroll-bar-to-the-view"></a>Přidat do zobrazení svislý posuvník
+### <a name="add-a-vertical-scroll-bar-to-the-view"></a>Přidat svislý posuvník do zobrazení
 
-1. Vyhledejte část souboru index.cshtml, která zobrazuje výsledky (začíná  **@if (Model! = null)** ).
+1. Vyhledejte část souboru index. cshtml, který zobrazuje výsledky (začíná na **@if (model! = null)** ).
 
-2. V části nahraďte následujícím kódem. Nové **&lt;div&gt;** části spočívá v oblasti, která by měla být posuvný a přidá obě **overflow-y** atribut a volání **onscroll**funkci nazvanou "scrolled()" tak, jako je.
+2. Nahraďte oddíl následujícím kódem. Nový oddíl **&lt;div&gt;** je okolo oblasti, která se má Procházet, a přidá jak atribut **přetečení** , tak i **volání funkce pro posouvání s** názvem "scrolled ()", například.
 
     ```cs
         @if (Model != null)
@@ -446,7 +447,7 @@ K implementaci nekonečné posouvání, začneme projektu předtím, než byly p
         }
     ```
 
-3. Přímo pod smyčky po &lt;/div&gt; značky, přidejte **Posunul** funkce.
+3. Přímo pod smyčkou, za &lt;/div&gt; tag, přidejte funkci **scrolled** .
 
     ```javascript
         <script>
@@ -466,15 +467,15 @@ K implementaci nekonečné posouvání, začneme projektu předtím, než byly p
         </script>
     ```
 
-    **Pokud** příkaz ve skriptu vyšší než testy, které chcete zobrazit, pokud se uživatel posunul k dolnímu okraji svislý posuvník. Pokud ano, volání **Domů** řadič se provádí akci volá **Další**. Je potřeba žádné další informace o kontroleru, vrátí data na další stránku. Tato data pak formátována pomocí stejné stylů HTML jako původní stránku. Pokud se nezobrazí žádné výsledky, nic se připojí a věcí, zůstanou jsou.
+    Příkaz **if** ve skriptu výše testuje, zda se uživatel přesunul do dolní části svislého posuvníku. Pokud mají, volání do **domovského** kontroleru se provede na akci s názvem Next ( **Další**). Kontroler nevyžaduje žádné další informace, vrátí další stránku dat. Tato data se pak naformátují pomocí identických stylů HTML jako původní stránky. Pokud se nevrátí žádné výsledky, nic se nepřipojí a co se stane.
 
-### <a name="handle-the-next-action"></a>Popisovač akce dalšího
+### <a name="handle-the-next-action"></a>Zpracování další akce
 
-Existují pouze tří akcí, které se mají odeslat na řadič: první spuštění aplikace, která volá **Index()** , první hledat podle uživatelů, která volá **Index(model)** a pak následné volání pro více výsledků prostřednictvím **Next(model)** .
+K řadiči je potřeba odeslat jenom tři akce: první spuštění aplikace, která volá **index ()** , první hledání uživatele, který volá **index (model)** , a následné volání dalších výsledků prostřednictvím **Next (model)** .
 
-1. Otevřete soubor domácí řadiče a odstraňte **RunQueryAsync** metoda z původní kurzu.
+1. Otevřete soubor domovského kontroleru a odstraňte metodu **RunQueryAsync** z původního kurzu.
 
-2. Nahradit **Index(model)** akce s následujícím kódem. Nyní zpracovává **stránkování** pole, pokud je hodnota null, nebo nastavte na "next" a zpracovává volání do služby Azure Search.
+2. Nahraďte akci **indexu (modelu)** následujícím kódem. Nyní zpracovává pole **stránkování** , pokud je null nebo nastaveno na "Další" a zpracovává volání do Azure kognitivní hledání.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -536,9 +537,9 @@ Existují pouze tří akcí, které se mají odeslat na řadič: první spuště
         }
     ```
 
-    Podobně jako metodu číselného stránkování, můžeme použít **přeskočit** a **horní** vrátil nastavení vyhledávání o jen data, budeme potřebovat.
+    Podobně jako u očíslované metody stránkování používáme nastavení pro **přeskočení** a **začátek** vyhledávání k vyžádání pouze těch dat, která potřebujeme.
 
-3. Přidat **Další** akci pro kontroler home. Všimněte si, jak vrátí seznam, každý hotelu přidáním dvou prvků do seznamu: hotelu název a popis hotelu. Tento formát je nastaven tak, aby odpovídaly **Posunul** použití funkce vrácená data v zobrazení.
+3. Přidejte **Další** akci do domovského kontroleru. Všimněte si, jak vrátí seznam a každý Hotel přidávají dva prvky do seznamu: název hotelu a popis hotelu. Tento formát je nastavený tak, aby se **shodoval s použitím** vrácených dat v zobrazení.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -562,42 +563,42 @@ Existují pouze tří akcí, které se mají odeslat na řadič: první spuště
         }
     ```
 
-4. Pokud se zobrazuje chyba syntaxe **seznamu&lt;řetězec&gt;** , pak přidejte následující **pomocí** na začátku souboru řadiče.
+4. Pokud se zobrazí chyba syntaxe v **seznamu&lt;&gt;řetězce** , přidejte následující direktivu **using** do hlavičky souboru kontroleru.
 
     ```cs
     using System.Collections.Generic;
     ```
 
-### <a name="compile-and-run-your-project"></a>Kompilace a spuštění projektu
+### <a name="compile-and-run-your-project"></a>Zkompilovat a spustit projekt
 
-Teď vyberte **spustit bez ladění** (nebo stiskněte klávesu F5).
+Nyní vyberte možnost **Spustit bez ladění** (nebo stiskněte klávesu F5).
 
-1. Zadejte termín, který bude dát spoustu výsledky (například "fond") a poté otestujte svislý posuvník. To aktivovat novou stránku výsledků?
+1. Zadejte termín, který poskytne dostatek výsledků (například "fond") a potom otestuje svislý posuvník. Aktivuje se nová stránka s výsledky?
 
-    ![Nekonečné "fond" výsledků procházení](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
+    ![Nekonečná posouvání prostřednictvím "fondu" výsledků](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
 
     > [!Tip]
-    > Pokud chcete mít jistotu, že posuvník se zobrazí na stránce první, první stránka výsledků mírně překročit výšku, které se zobrazí v oblasti. V našem příkladu **.box1** má výšku 30 pixelů, **.box2** má 100 pixelů výška _a_ dolní okraj 24 pixelů. Takže každý záznam používá 154 pixelů. Tři položky bude trvat až 3 x 154 = 462 pixelů. Chcete-li zajistit, aby se zobrazí svislý posuvník, musí být nastavena výšku do oblasti zobrazení, který je menší než 462 pixelů, dokonce i 461 funguje. K tomuto problému dochází pouze na první stránce po, který je potřeba se zobrazí posuvník. Řádek k aktualizaci:  **&lt;div id = "myDiv" style = "width: 800px; Height: 450px; přetečení y: posuvníku;"onscroll="scrolled() "&gt;** .
+    > Aby se zajistilo, že se na první stránce zobrazí posuvník, první stránka výsledků musí mírně překročit výšku oblasti, ve které se zobrazují. V našem příkladu má **box1** výšku 30 pixelů **. box2** má výšku 100 pixelů _a_ spodní okraj 24 pixelů. Každá položka tedy používá 154 pixelů. Tři položky budou zabírat 3 x 154 = 462 pixelů. Aby se zajistilo, že se zobrazí svislý posuvník, musí být výška na zobrazované oblasti nastavená tak, aby byla menší než 462 pixelů, i když 461 funguje. K tomuto problému dochází pouze na první stránce, poté, co se zobrazí posuvník. Řádek, který se má aktualizovat: **&lt;div ID = "myDiv" Style = "width: 800px; Height: 450px; přetečení-y: Scroll;" proscroll = "scrolled ()"&gt;** .
 
-2. Přejděte dolů, až na konec výsledky. Všimněte si, že způsob, jakým je všechny informace na stránce jedno zobrazení. Můžete procházet všechny způsob, jakým zpět na začátek bez aktivace všechna volání serveru.
+2. Posuňte se dolů k dolnímu okraji výsledků. Všimněte si, že všechny informace jsou nyní na jedné stránce zobrazení. Můžete se přesměrovat zpět na začátek, aniž by se aktivovala žádná volání serveru.
 
-Složitější nekonečné posuvné systémy použít kolečko myši nebo podobné jiný mechanismus pro aktivaci načtení nové stránky výsledků. Jsme nebude trvá nekonečné žádné další v těchto kurzech posouvání, ale má určitá ovládacího tlačítka na ni a zabraňuje navíc myší, můžete chtít prozkoumat další možnosti Další!
+Sofistikované nekonečné systémy posouvání můžou použít kolečko myši nebo podobný jiný mechanismus, aby se aktivovalo načítání nové stránky výsledků. V těchto kurzech ještě nebudeme nic přepínat, ale k tomu má určitý ovládací tlačítko, protože se vyhnete dalším klikáním myší a možná budete chtít prozkoumat další možnosti.
 
 ## <a name="takeaways"></a>Shrnutí
 
-Vezměte v úvahu následující takeaways z tohoto projektu:
+Vezměte v úvahu následující poznatky z tohoto projektu:
 
-* Číselného stránkování je dobré pro hledání pořadí výsledky se mohou poněkud libovolného, to znamená i něco, abyste uživatelům na novější stránkách.
-* Nekonečné posouvání je dobré, když je zvláště důležité pořadí výsledky. Pokud například výsledky jsou seřazeny na vzdálenost v Centru pro určení města.
-* Číselného stránkování umožňuje některé lepší navigace. Například uživatel může mějte na paměti, že byl zajímavé výsledky na stránce 6, že neexistuje žádný takový snadno odkaz v nekonečné posouvání.
-* Snadné odvolání, posouvání navýšení nebo snížení kapacity se žádná čísla není přeplněna nepoužitelnými stránky na nekonečnou posouvání má.
-* Klíčovou funkcí nekonečné posouvání je, že výsledky jsou připojeny k existující stránky, ne nahrazení tuto stránku, což je efektivnější.
-* Dočasné úložiště potrvají pouze jedno volání a je potřeba resetovat nezbytné k překonání další volání.
+* Očíslované stránkování je dobré pro hledání, kde pořadí výsledků je trochu libovolné, což znamená, že uživatelé můžou na pozdějších stránkách něco zajímat.
+* Nekonečné posouvání je vhodné, pokud je pořadí výsledků obzvláště důležité. Například pokud jsou výsledky seřazené na vzdálenost od středu cílového města.
+* Číslované stránkování umožňuje určitou lepší navigaci. Uživatel si například může pamatovat, že na stránce 6 byl zajímavý výsledek, protože žádný takový jednoduchý odkaz neexistuje v nekonečném posouvání.
+* Nekonečné posouvání má snadnou přitažlivost, posun nahoru a dolů bez Fussy čísel stránek, na které kliknete.
+* Klíčovou funkcí nekonečné posouvání je, že výsledky se připojí k existující stránce a nenahrazují tuto stránku, což je efektivní.
+* Dočasné úložiště uchovává pouze jedno volání a musí být obnoveno, aby se zadrželo další volání.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Stránkování je zásadní pro hledání na Internetu. S stránkování také zahrnuté, dalším krokem je vylepšit uživatelské prostředí dále přidáním našeptávání hledání.
+Stránkování je zásadní pro hledání v Internetu. V případě dobře krytého stránkování je dalším krokem lepší zlepšení uživatelského prostředí tím, že se přidají hledání typu dopředu.
 
 > [!div class="nextstepaction"]
-> [C#Kurz: Přidat automatického doplňování a návrhy – Azure Search](tutorial-csharp-type-ahead-and-suggestions.md)
+> [C#Kurz: přidání automatického dokončování a návrhů – Azure Kognitivní hledání](tutorial-csharp-type-ahead-and-suggestions.md)

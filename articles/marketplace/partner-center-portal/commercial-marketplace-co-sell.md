@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 7364bc41a67d8651c91745a8763fff62fee722fe
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773224"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784814"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Možnost společného prodeje v partnerském centru
 
@@ -35,7 +35,7 @@ Vyberte svůj typ nabídky:
 | Zařízení | Nabídka, která zahrnuje sestavování nebo prodej hardwaru od výrobce zařízení. |
 | IP | Aplikace nebo jiný chráněný materiál licencovaný na používání zákazníka. Například: program CRM, který je možné licencovat a nainstalovat místně. |
 | Služba | Praktické odborné znalosti pro určitý jednorázový projekt, často dodávané prostřednictvím konzultantů. Příklad: nastavení zákaznické databáze pro klienta (s klientem předpokládá zodpovědnost za provoz databáze po doručení). |
-| Spravovaná služba | Praktická znalost pro cloudový projekt, obvykle průběžně. Příklad: Poskytování platformy a nástrojů pro spuštění online databáze s průběžnou správou poskytovanou poskytovatelem spravované služby. |
+| Spravovaná služba | Praktická znalost pro cloudový projekt, obvykle průběžně. Například: poskytování platformy a nástrojů pro spuštění online databáze a průběžnou správu poskytovanou poskytovatelem spravované služby. |
 
 ## <a name="solution-areas"></a>Oblasti řešení
 
@@ -65,17 +65,17 @@ Tento dokument poskytuje pokyny k různým rolím pro partnery a jejich výběr.
 
 Můžete také exportovat existující seznam kontaktů nabídky a následně provést změny v tomto souboru.
 
-* *Název (povinné)* : Jméno kontaktu
-* *E-mailová adresa (povinné)* : E-mailová adresa kontaktu
-* *Pozice úlohy (povinné)* : Pracovní pozice.
-* *Role (povinné)* : V tomto poli v šabloně použijte jednu z následujících rolí.
+* *Název (povinné)* : jméno kontaktu.
+* *E-mailová adresa (povinné)* : e-mailová adresa kontaktu
+* *Pozice úlohy (povinné)* : pracovní pozice.
+* *Role (povinné)* : v tomto poli v šabloně použijte jednu z následujících rolí.
 
     | **Role**    | **Popis**  |
     | :------------------- | :-------------------|
-    | *Partnerský marketing* | Tato role se zaměřuje na marketing vašeho řešení a spolupráci na marketingovém úsilí s prodejními týmy Microsoftu a prodejci kanálů. Hlavní kontaktní bod pro marketingové závazky a seznam obsahu nabídky, jako jsou popisy produktů, obrázky a videa. |
-    | *Obchodní partneři* | Tato role se zaměřuje na prodej řešení a spolupráci s prodejními týmy Microsoftu a prodejci kanálů. U řešení pro spoluprodejní verze označte aspoň jeden prodejní kontakt partnera na oblast, ve které chcete být připravený pro spoluprodejní účast. Stejný prodejní kontakt partnera může pokrývat více oblastí. |
-    | *Partner Technical Sales* | Podporuje technické architektury a požadavky na nasazení během prodejního cyklu, integrace po prodeji a období nasazení. |
-    | *Správce úspěšnosti partnera pro zákazníky* | Obvykle podporuje zákazníky po nasazení, což jim umožní co nejvíc využít vaše řešení a rozšířit jeho kapacitu v rámci organizace zákazníka. |
+    | *:::no-loc text="Partner marketing":::* | Tato role se zaměřuje na marketing vašeho řešení a spolupráci na marketingovém úsilí s prodejními týmy Microsoftu a prodejci kanálů. Hlavní kontaktní bod pro marketingové závazky a seznam obsahu nabídky, jako jsou popisy produktů, obrázky a videa. |
+    | *:::no-loc text="Partner sales":::* | Tato role se zaměřuje na prodej řešení a spolupráci s prodejními týmy Microsoftu a prodejci kanálů. U řešení pro spoluprodejní verze označte aspoň jeden prodejní kontakt partnera na oblast, ve které chcete být připravený pro spoluprodejní účast. Stejný prodejní kontakt partnera může pokrývat více oblastí. |
+    | *:::no-loc text="Partner technical sales":::* | Podporuje technické architektury a požadavky na nasazení během prodejního cyklu, integrace po prodeji a období nasazení. |
+    | *:::no-loc text="Partner customer success manager":::* | Obvykle podporuje zákazníky po nasazení, což jim umožní co nejvíc využít vaše řešení a rozšířit jeho kapacitu v rámci organizace zákazníka. |
 
 * *Země/oblasti (povinné):*  Při vyplňování šablony použijte [kód země/oblasti, jak je uvedeno v seznamu](./commercial-marketplace-co-sell-countries.md). Pokud kontakt pokrývá všechny země nebo oblasti, použijte tři kódy "OOO". Pokud kontakt pokrývá více zemí nebo oblastí, zadejte jednotlivé kódy obou písmen oddělené čárkou (například zadejte "US, CA, FR" bez uvozovek do šablony).
 
@@ -83,6 +83,6 @@ Můžete také exportovat existující seznam kontaktů nabídky a následně pr
 
 * *Země/provincie (volitelné):*  Při vyplňování šablony použijte formát XX-XX, jak je uvedeno v [tabulce stavy/provincie](./commercial-marketplace-co-sell-states.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace najdete v tématu [prodej s Microsoftem](https://partner.microsoft.com/membership/sell-with-microsoft).

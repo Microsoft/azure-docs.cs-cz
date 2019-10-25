@@ -7,14 +7,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 004010983b87c333adeb4b20abbe851581917a3a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937436"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802192"
 ---
-# <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci technologie Hyper-V
+# <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci Hyper-V
 
 [Službu Azure Migrate](migrate-overview.md) můžete použít k vyhodnocení a migraci počítačů do Microsoft Azure cloudu. Tento článek shrnuje nastavení podpory a omezení pro vyhodnocení a migraci místních virtuálních počítačů Hyper-V.
 
@@ -29,30 +29,28 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače Hyper-V.
 **Posouzení místních virtuálních počítačů Hyper-V** | [Nastavte](tutorial-prepare-hyper-v.md) své první posouzení.<br/><br/> [Spusťte](scale-hyper-v-assessment.md) hodnocení ve velkém měřítku.
 **Migrace virtuálních počítačů Hyper-V do Azure** | [Vyzkoušejte](tutorial-migrate-hyper-v.md) migraci do Azure.
 
-Migrace serverů Hyper-V spravovaných pomocí System Center Virtual Machine Manager (VMM) není podporována migrací Azure Migrate serveru.
-
 ## <a name="azure-migrate-projects"></a>Azure Migrate projekty
 
-**Pracovníky** | **Zobrazí**
+**Podpora** | **Podrobnosti**
 --- | ---
 Oprávnění Azure | Chcete-li vytvořit projekt Azure Migrate, potřebujete oprávnění přispěvatele nebo vlastníka v rámci předplatného.
 Virtuální počítače Hyper-V | Vyhodnoťte až 35 000 virtuálních počítačů Hyper-V v jednom projektu. V předplatném Azure můžete mít více projektů. Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
 Geografické | Azure Migrate projekty lze vytvořit v řadě geografických oblastí. I když můžete vytvářet projekty v konkrétních geografických oblastech, můžete vyhodnotit nebo migrovat počítače pro jiná cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
 
-  **Geografické** | **Umístění úložiště metadat**
+  **Zeměpisné oblasti** | **Umístění úložiště metadat**
   --- | ---
-  Azure Government | US Gov – Virginie
+  Azure Government | USA – Virginie
   Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
   Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
   Brazílie | Brazílie – jih
   Kanada | Kanada – střed nebo Kanada – východ
-  Evropským | Severní Evropa nebo Západní Evropa
+  Evropa | Severní Evropa nebo Západní Evropa
   Francie | Francie – střed
   Indie | Střed Indie nebo Jižní Indie
   Japonsko |  Japonsko – východ nebo Japonsko – západ
   Korea | Korea – střed nebo Korea – jih
   Spojené království | Velká Británie – jih nebo Velká Británie – západ
-  Spojené státy americké | Střed USA nebo Západní USA 2
+  Spojené státy | Střed USA nebo Západní USA 2
 
 
  > [!NOTE]
@@ -61,18 +59,18 @@ Geografické | Azure Migrate projekty lze vytvořit v řadě geografických obla
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Posouzení – požadavky na hostitele Hyper-V
 
-| **Pracovníky**                | **Zobrazí**               
+| **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
 | **Nasazení hostitele**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru. |
 | **Oprávnění**           | Na hostiteli Hyper-V potřebujete oprávnění správce. <br/> Případně, pokud nechcete přiřadit oprávnění správce, vytvořte místní účet nebo uživatelský účet domény a přidejte tohoto uživatele do těchto skupin – Uživatelé vzdálené správy, Správci technologie Hyper-V a uživatelé nástroje Performance Monitor. |
-| **Operační systém hostitele** | Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/> Nelze vyhodnotit virtuální počítače umístěné na hostitelích Hyper-V se systémem Windows Server 2012. |
+| **Operační systém hostitele** | Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/> Virtuální počítače na hostitelích Hyper-V s Windows Serverem 2012 hodnotit nemůžete. |
 | **Vzdálená komunikace PowerShellu**   | Musí být povoleno na každém hostiteli. |
 | **Replika technologie Hyper-V**       | Pokud používáte repliku technologie Hyper-V (nebo máte více virtuálních počítačů se stejnými identifikátory virtuálních počítačů) a zjistíte jak původní, tak replikované virtuální počítače pomocí Azure Migrate, hodnocení vygenerované Azure Migrate nemusí být přesné. |
 
 
 ## <a name="assessment-hyper-v-vm-requirements"></a>Posouzení – požadavky na virtuální počítače Hyper-V
 
-| **Pracovníky**                  | **Zobrazí**               
+| **Podpora**                  | **Podrobnosti**               
 | :----------------------------- | :------------------- |
 | **Operační systém** | Všechny operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) podporované Azure. |
 | **Integrační služby**       | Aby bylo možné zachytit informace o operačním systému, musí být na virtuálních počítačích, které jste vyhodnotili, spuštěny [integrační služby technologie Hyper-v](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) . |
@@ -83,12 +81,12 @@ Geografické | Azure Migrate projekty lze vytvořit v řadě geografických obla
 
 Pro posouzení Azure Migrate spouští odlehčené zařízení pro zjišťování virtuálních počítačů Hyper-V a posílání metadat a dat o výkonu virtuálních počítačů do Azure Migrate. Zařízení běží na virtuálním počítači s technologií Hyper-V a můžete ho nastavit pomocí komprimovaného virtuálního pevného disku Hyper-V, který stáhnete z Azure Portal. Následující tabulka shrnuje požadavky na zařízení.
 
-| **Pracovníky**                | **Zobrazí**               
+| **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
 | **Nasazení zařízení**   |  Zařízení nasadíte jako virtuální počítač Hyper-V.<br/> Virtuální počítač zařízení, který poskytuje Azure Migrate, je virtuální počítač Hyper-V verze 5,0.<br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější.<br/> Hostitel potřebuje dostatek místa pro přidělení 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač pro virtuální počítač zařízení.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
 | **Azure Migrate projekt**  |  Zařízení může být přidruženo k jednomu projektu.<br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> V projektu můžete vyhodnotit až 35 000 virtuálních počítačů.
 | **Hostitelé Hyper-V**          | Zařízení se může připojit k až 300 hostitelům Hyper-V.
-| **Zjišťování**              | Jedno zařízení může zjistit až 5000 virtuálních počítačů.
+| **Rozpoznávání**              | Jedno zařízení může zjistit až 5000 virtuálních počítačů.
 | **Skupina posouzení**       | Do jedné skupiny můžete přidat až 35 000 počítačů.
 | **Posouzení**             | V jednom posouzení můžete vyhodnotit až 35 000 virtuálních počítačů.
 
@@ -103,14 +101,14 @@ K vyhodnocení virtuálních počítačů Azure Migrate zařízení potřebuje p
 - Pokud máte zachycený proxy server, může být nutné importovat certifikát serveru z proxy server do zařízení.
 
 
-**Adresa URL** | **Zobrazí**  
+**Adresa URL** | **Podrobnosti**  
 --- | ---
-*. portal.azure.com | Navigace na Azure Portal
-*.windows.net <br/> *. msftauth.net <br/> *. msauth.net <br/> *.microsoft.com <br/> *.live.com  | Přihlaste se ke svému předplatnému Azure
+*.portal.azure.com | Navigace na Azure Portal
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Přihlaste se ke svému předplatnému Azure.
 *.microsoftonline.com <br/> *. microsoftonline-p.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
 management.azure.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
-dc.services.visualstudio.com | Protokolování a sledování
-*. vault.azure.net | Správa tajných kódů v Azure Key Vault při komunikaci mezi zařízením a službou.
+dc.services.visualstudio.com | Protokolování a monitorování
+*.vault.azure.net | Správa tajných kódů v Azure Key Vault při komunikaci mezi zařízením a službou.
 aka.ms/* | Povolí přístup k odkazům.
 https://download.microsoft.com/download/* | Povoluje soubory ke stažení z webu Microsoft Download.
 
@@ -130,7 +128,7 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 
 ## <a name="migration-hyper-v-host-requirements"></a>Migrace – požadavky na hostitele Hyper-V
 
-| **Pracovníky**                | **Zobrazí**               
+| **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
 | **Nasazení hostitele**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru. |
 | **Oprávnění**           | Na hostiteli Hyper-V potřebujete oprávnění správce. |
@@ -138,7 +136,7 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 
 ## <a name="migration-hyper-v-vm-requirements"></a>Migrace – požadavky na virtuální počítače Hyper-V
 
-| **Pracovníky**                  | **Zobrazí**               
+| **Podpora**                  | **Podrobnosti**               
 | :----------------------------- | :------------------- |
 | **Operační systém** | Všechny operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) podporované Azure. |
 | **Oprávnění**           | Pro každý virtuální počítač Hyper-V, který chcete vyhodnotit, potřebujete oprávnění správce. |
@@ -155,8 +153,8 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 | **NFS**                        | Svazky NFS připojené jako svazky na virtuálních počítačích se nebudou replikovat. |
 | **ISCSI**                      | Virtuální počítače s cíli iSCSI se nepodporují pro migraci.
 | **Cílový disk**                | Můžete migrovat jenom na virtuální počítače Azure se spravovanými disky. |
-| **Protokolů** | Není podporováno.
-| **Seskupování síťových adaptérů** | Není podporováno.
+| **Protokolů** | Nepodporuje se.
+| **Seskupování síťových adaptérů** | Nepodporuje se.
 | **Azure Site Recovery** | Pokud je virtuální počítač povolený pro replikaci pomocí Azure Site Recovery, nejde replikovat pomocí Azure Migrate migrace serveru.
 
 
@@ -167,12 +165,12 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 
 Následující tabulka shrnuje požadavky na přístup k adresám URL pro hostitele Hyper-V.
 
-**Adresa URL** | **Zobrazí**  
+**Adresa URL** | **Podrobnosti**  
 --- | ---
 login.microsoftonline.com | Řízení přístupu a Správa identit pomocí služby Active Directory.
-*. backup.windowsazure.com | Přenos a koordinace dat replikace.
-*. hypervrecoverymanager.windowsazure.com | Připojte se k adresám URL služby Azure Migrate.
-*. blob.core.windows.net | Nahrajte data do účtů úložiště.
+*.backup.windowsazure.com | Přenos a koordinace dat replikace.
+*.hypervrecoverymanager.windowsazure.com | Připojte se k adresám URL služby Azure Migrate.
+*.blob.core.windows.net | Nahrajte data do účtů úložiště.
 dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
 time.windows.com | Ověřuje časovou synchronizaci mezi systémovým a globálním časem.
 

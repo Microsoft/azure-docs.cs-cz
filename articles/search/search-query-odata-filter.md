@@ -1,13 +1,13 @@
 ---
-title: Odkaz na filtr OData – Azure Search
-description: Referenční dokumentace jazyka OData pro syntaxi filtru v Azure Searchch dotazech.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: Odkaz na filtr OData
+titleSuffix: Azure Cognitive Search
+description: Referenční dokumentace jazyka OData pro syntaxi filtru v Azure Kognitivní hledání dotazy.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8817ce075409a3f166b82404767697dc1326cc89
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647588"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793375"
 ---
-# <a name="odata-filter-syntax-in-azure-search"></a>Syntaxe $filter OData v Azure Search
+# <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Syntaxe $filter OData v Azure Kognitivní hledání
 
-Azure Search používá [výrazy filtru OData](query-odata-filter-orderby-syntax.md) k použití dalších kritérií pro vyhledávací dotaz, kromě výrazů pro fulltextové vyhledávání. Tento článek popisuje syntaxi filtrů podrobněji. Obecnější informace o tom, jaké filtry jsou a jak je použít k realizaci konkrétních scénářů dotazů, najdete v tématu [filtry v Azure Search](search-filters.md).
+Azure Kognitivní hledání používá [výrazy filtru OData](query-odata-filter-orderby-syntax.md) k použití dalších kritérií pro vyhledávací dotaz kromě výrazů pro fulltextové vyhledávání. Tento článek popisuje syntaxi filtrů podrobněji. Obecnější informace o tom, jaké filtry jsou a jak je použít k realizaci konkrétních scénářů dotazů, najdete v tématu [filtry v Azure kognitivní hledání](search-filters.md).
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -53,32 +53,32 @@ variable ::= identifier | field_path
 K dispozici je také diagram interaktivní syntaxe:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
+> [Diagram syntaxe OData pro Azure Kognitivní hledání](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
 
 > [!NOTE]
-> Kompletní EBNF najdete v referenčních informacích k [syntaxi výrazu OData pro Azure Search](search-query-odata-syntax-reference.md) .
+> Kompletní EBNF najdete v článku [referenční informace k syntaxi výrazu OData pro Azure kognitivní hledání](search-query-odata-syntax-reference.md) .
 
 Mezi typy logických výrazů patří:
 
-- Výrazy filtru kolekce pomocí `any` nebo `all`. Ty aplikují kritéria filtru na pole kolekce. Další informace naleznete v tématu [operátory kolekce OData v Azure Search](search-query-odata-collection-operators.md).
-- Logické výrazy, které spojují jiné logické výrazy pomocí `and`operátorů `or`, a `not`. Další informace najdete v tématu [logické operátory OData v Azure Search](search-query-odata-logical-operators.md).
-- Výrazy porovnání, které porovnávají pole nebo proměnné rozsahu s konstantními hodnotami pomocí `eq`operátorů `gt`, `lt` `ne`, `ge`,, `le`a. Další informace naleznete v tématu [operátory porovnání OData v Azure Search](search-query-odata-comparison-operators.md). Výrazy porovnání jsou také použity k porovnání vzdálenosti mezi geograficky prostorovými souřadnicemi pomocí `geo.distance` funkce. Další informace najdete v tématu [funkce geografického prostoru OData v Azure Search](search-query-odata-geo-spatial-functions.md).
+- Výrazy filtru kolekce používající `any` nebo `all`. Ty aplikují kritéria filtru na pole kolekce. Další informace najdete v tématu [operátory kolekce OData v Azure kognitivní hledání](search-query-odata-collection-operators.md).
+- Logické výrazy, které spojují jiné logické výrazy pomocí operátorů `and`, `or`a `not`. Další informace najdete v tématu [logické operátory OData v Azure kognitivní hledání](search-query-odata-logical-operators.md).
+- Výrazy porovnání, které porovnávají pole nebo proměnné rozsahu s konstantními hodnotami pomocí operátorů `eq`, `ne`, `gt`, `lt`, `ge`a `le`. Další informace najdete v tématu [operátory porovnání OData v Azure kognitivní hledání](search-query-odata-comparison-operators.md). Výrazy porovnání jsou také použity k porovnání vzdálenosti mezi geograficky prostorovými souřadnicemi pomocí funkce `geo.distance`. Další informace najdete v tématu [funkce geografického prostoru OData v Azure kognitivní hledání](search-query-odata-geo-spatial-functions.md).
 - Logické literály `true` a `false`. Tyto konstanty můžou být užitečné někdy při generování filtrů, ale jinak se v praxi nepoužívá.
 - Volání logických funkcí, včetně:
-  - `geo.intersects`, který testuje, zda je daný bod v rámci daného mnohoúhelníku. Další informace najdete v tématu [funkce geografického prostoru OData v Azure Search](search-query-odata-geo-spatial-functions.md).
-  - `search.in`, který porovnává pole nebo proměnnou rozsahu s každou hodnotou v seznamu hodnot. Další informace naleznete v tématu [funkce `search.in` OData v Azure Search](search-query-odata-search-in-function.md).
-  - `search.ismatch`a `search.ismatchscoring`, které provádějí operace fulltextového vyhledávání v kontextu filtru. Další informace najdete v tématu [funkce fulltextového vyhledávání OData v Azure Search](search-query-odata-full-text-search-functions.md).
-- Cesty pole nebo proměnné rozsahu typu `Edm.Boolean` Například pokud má váš index pole Boolean s názvem `IsEnabled` a chcete vrátit všechny dokumenty, kde je `true`toto pole, váš výraz filtru může být pouze název `IsEnabled`.
+  - `geo.intersects`, která testuje, zda je daný bod v rámci daného mnohoúhelníku. Další informace najdete v tématu [funkce geografického prostoru OData v Azure kognitivní hledání](search-query-odata-geo-spatial-functions.md).
+  - `search.in`, která porovnává proměnnou pole nebo rozsahu s každou hodnotou v seznamu hodnot. Další informace najdete v tématu [funkce `search.in` OData ve službě Azure kognitivní hledání](search-query-odata-search-in-function.md).
+  - `search.ismatch` a `search.ismatchscoring`, které provádějí operace fulltextového vyhledávání v kontextu filtru. Další informace najdete v tématu [funkce fulltextového vyhledávání OData v Azure kognitivní hledání](search-query-odata-full-text-search-functions.md).
+- Cesty pole nebo proměnné rozsahu typu `Edm.Boolean`. Například pokud má váš index pole Boolean s názvem `IsEnabled` a chcete vrátit všechny dokumenty, kde je toto pole `true`, váš výraz filtru může být pouze název `IsEnabled`.
 - Logické výrazy v závorkách. Použití závorek vám může pomoci explicitně určit pořadí operací ve filtru. Další informace o výchozí prioritě operátorů OData najdete v další části.
 
 ### <a name="operator-precedence-in-filters"></a>Priorita operátorů ve filtrech
 
-Pokud napíšete výraz filtru bez závorek kolem jeho dílčích výrazů, Azure Search ho vyhodnotí podle sady pravidel priorit operátorů. Tato pravidla jsou založena na operátorech, které slouží ke kombinování dílčích výrazů. V následující tabulce jsou uvedeny skupiny operátorů v pořadí od nejvyšší po nejnižší prioritu:
+Pokud napíšete výraz filtru bez závorek kolem jeho dílčích výrazů, Azure Kognitivní hledání ho vyhodnotí podle sady pravidel priority operátorů. Tato pravidla jsou založena na operátorech, které slouží ke kombinování dílčích výrazů. V následující tabulce jsou uvedeny skupiny operátorů v pořadí od nejvyšší po nejnižší prioritu:
 
 | Skupina | Operátor (y) |
 | --- | --- |
 | Logické operátory | `not` |
-| Operátory porovnání | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
+| Operátory porovnání | `eq`, `ne`, `gt`, `lt`, `ge``le` |
 | Logické operátory | `and` |
 | Logické operátory | `or` |
 
@@ -87,7 +87,7 @@ Operátor, který je vyšší ve výše uvedené tabulce, bude "vazba propojuje"
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
 
-`not` Operátor má nejvyšší prioritu vše – dokonce i vyšší než operátory porovnání. Proto pokud se pokusíte napsat filtr takto:
+Operátor `not` má nejvyšší prioritu, a to i vyšší, než jsou operátory porovnání. Proto pokud se pokusíte napsat filtr takto:
 
     not Rating gt 5
 
@@ -95,7 +95,7 @@ Zobrazí se tato chybová zpráva:
 
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
 
-K této chybě dochází, protože operátor je přidružen pouze `Rating` k poli, které je typu `Edm.Int32`a nikoli k celému srovnávacímu výrazu. Opravou je vložení operandu `not` do závorek:
+K této chybě dochází, protože operátor je přidružen pouze k poli `Rating`, které je typu `Edm.Int32`a nikoli celým výrazem porovnání. Opravou je vložení operandu `not` v závorkách:
 
     not (Rating gt 5)
 
@@ -103,10 +103,10 @@ K této chybě dochází, protože operátor je přidružen pouze `Rating` k pol
 
 ### <a name="filter-size-limitations"></a>Omezení velikosti filtru
 
-Existují omezení velikosti a složitosti výrazů filtrování, které lze odeslat do Azure Search. Omezení jsou založena přibližně na počtu klauzulí ve výrazu filtru. Dobrým vodítkem je to, že pokud máte stovky klauzulí, riskujete překročení tohoto limitu. Doporučujeme navrhnout aplikaci tak, aby negenerovala filtry neohraničené velikosti.
+Existují omezení velikosti a složitosti výrazů filtru, které můžete odeslat do služby Azure Kognitivní hledání. Omezení jsou založena přibližně na počtu klauzulí ve výrazu filtru. Dobrým vodítkem je to, že pokud máte stovky klauzulí, riskujete překročení tohoto limitu. Doporučujeme navrhnout aplikaci tak, aby negenerovala filtry neohraničené velikosti.
 
 > [!TIP]
-> Použití funkce namísto dlouhého disjunkce porovnávání rovnosti vám může pomoci zabránit omezení klauzule filtru, protože volání funkce se počítá jako jedna klauzule. [ `search.in` ](search-query-odata-search-in-function.md)
+> Použití [funkce `search.in`](search-query-odata-search-in-function.md) místo dlouhého úniku porovnání rovnosti vám může pomoci zabránit omezení klauzule filtru, protože volání funkce se počítá jako jedna klauzule.
 
 ## <a name="examples"></a>Příklady
 
@@ -126,7 +126,7 @@ Vyhledejte všechny hotely, které mají zabalení a kde jsou všechny místnost
 
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
 
- \-ANI  
+ \- nebo-  
 
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
 
@@ -134,7 +134,7 @@ Vyhledejte všechny hotely, které jsou luxus nebo zahrňte do parkování a maj
 
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
 
-Najde všechny hotely s označením "WiFi" alespoň v jedné místnosti (kde každá místnost obsahuje značky uložené v `Collection(Edm.String)` poli):  
+Vyhledejte všechny hotely s označením "WiFi" alespoň v jedné místnosti (kde každá místnost obsahuje značky uložené v `Collection(Edm.String)` poli):  
 
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
 
@@ -146,11 +146,11 @@ Najít všechny hotely, které nemají místnosti:
 
     $filter=not Rooms/any()
 
-Najde všechny hotely v průběhu 10 km od daného referenčního bodu ( `Location` kde je pole typu `Edm.GeographyPoint`):
+Najde všechny hotely v rámci 10 kilometrů daného referenčního bodu (kde `Location` je pole typu `Edm.GeographyPoint`):
 
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 
-Najde všechny hotely v daném zobrazení, které jsou popsány jako `Location` mnohoúhelník (kde je pole typu EDM. GeographyPoint). Mnohoúhelník musí být uzavřen, což znamená, že první a poslední bod musí být stejné. [Body musí být také uvedeny v pořadí zprava doleva](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Najde všechny hotely v rámci daného zobrazení popsané jako mnohoúhelník (kde `Location` je pole typu EDM. GeographyPoint). Mnohoúhelník musí být uzavřen, což znamená, že první a poslední bod musí být stejné. [Body musí být také uvedeny v pořadí zprava doleva](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
@@ -174,11 +174,11 @@ Najde shodu u frází v rámci kolekce, jako jsou například "zahřívaná rack
 
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-Vyhledá dokumenty ve slově "Waterfront". Tento dotaz filtru je stejný jako [požadavek na hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents) s `search=waterfront`.
+Vyhledá dokumenty ve slově "Waterfront". Tento dotaz filtru je stejný jako [požadavek hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents) s `search=waterfront`.
 
     $filter=search.ismatchscoring('waterfront')
 
-Najde dokumenty se slovem "Hostel" a hodnocením větším nebo rovným 4 nebo dokumenty se slovem "Motel" a hodnocením rovným 5. Tuto žádost nebylo možné vyjádřit bez `search.ismatchscoring` funkce, protože kombinuje fulltextové vyhledávání s operacemi filtru pomocí. `or`
+Najde dokumenty se slovem "Hostel" a hodnocením větším nebo rovným 4 nebo dokumenty se slovem "Motel" a hodnocením rovným 5. Tuto žádost nebylo možné vyjádřit bez funkce `search.ismatchscoring`, protože kombinuje fulltextové vyhledávání s operacemi filtrování pomocí `or`.
 
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
 
@@ -186,7 +186,7 @@ Najde dokumenty bez slova "luxus".
 
     $filter=not search.ismatch('luxury')
 
-Vyhledá dokumenty se frází "zobrazení v oceánu" nebo hodnocení rovno 5. Dotaz bude proveden pouze proti polím `HotelName` a `Description`. `search.ismatchscoring` Dokumenty, které odpovídají pouze druhé klauzuli disjunkce, budou vráceny příliš-Hotely s `Rating` hodnotou 5. Tyto dokumenty se vrátí se skóre, které se rovná nule, aby bylo jasné, že neodpovídaly žádné z částí výrazu ve výsledku.
+Vyhledá dokumenty se frází "zobrazení v oceánu" nebo hodnocení rovno 5. Dotaz `search.ismatchscoring` bude proveden pouze proti polím `HotelName` a `Description`. Dokumenty, které odpovídají pouze druhé klauzuli disjunkce, budou vráceny příliš-Hotely s `Rating` rovny 5. Tyto dokumenty se vrátí se skóre, které se rovná nule, aby bylo jasné, že neodpovídaly žádné z částí výrazu ve výsledku.
 
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
 
@@ -196,7 +196,7 @@ Najděte si hotely, kde jsou termíny "Hotel" a "letiště" více než pět slov
 
 ## <a name="next-steps"></a>Další kroky  
 
-- [Filtry v Azure Search](search-filters.md)
-- [Přehled jazyka výrazů OData pro Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenční dokumentace syntaxe výrazu OData pro Azure Search](search-query-odata-syntax-reference.md)
-- [Hledat dokumenty &#40;Azure Search REST API služby&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filtry v Azure Kognitivní hledání](search-filters.md)
+- [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
+- [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
+- [Hledání dokumentů &#40;Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

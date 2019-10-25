@@ -1,5 +1,6 @@
 ---
-title: Předpoklady pro Xamarin iOS (Microsoft Authentication Library pro .NET) | Azure
+title: Předpoklady pro Xamarin iOS (Microsoft Authentication Library pro .NET)
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních doporučeních pro použití Xamarin iOS s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,18 +18,18 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 054033c0fc9f1138ef9ecf7eaceca626f6f53423
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 64524960e584907b1e761a36f8ceb1461a7771c7
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872843"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802606"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Otázky specifické pro Xamarin iOS s MSAL.NET
 V systému Xamarin iOS je při používání MSAL.NET potřeba vzít v úvahu několik důležitých informací.
 
 - [Známé problémy se systémem iOS 12 a ověřováním](#known-issues-with-ios-12-and-authentication)
-- [Přepsání a implementace `OpenUrl` funkce v`AppDelegate`](#implement-openurl)
+- [Přepsání a implementace funkce `OpenUrl` v `AppDelegate`](#implement-openurl)
 - [Povolit skupiny řetězce klíčů](#enable-keychain-access)
 - [Povolit sdílení mezipaměti tokenů](#enable-token-cache-sharing-across-ios-applications)
 - [Povolit přístup k řetězci klíčů](#enable-keychain-access)
@@ -42,7 +43,7 @@ Můžete se také setkat s přerušením v ASP.NET Core ověřování OIDC se sy
 
 ## <a name="implement-openurl"></a>Implementovat OpenUrl
 
-Nejprve je třeba přepsat `OpenUrl` metodu `FormsApplicationDelegate` odvozené třídy a volání `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`.
+Nejprve je třeba přepsat metodu `OpenUrl` `FormsApplicationDelegate` odvozené třídy a volat `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`.
 
 ```CSharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -57,9 +58,9 @@ Budete taky muset definovat schéma adresy URL, vyžadovat oprávnění, aby va�
 ### <a name="enable-keychain-access"></a>Povolit přístup k řetězci klíčů
 
 Aby bylo možné povolit přístup pomocí řetězce klíčů, musí mít vaše aplikace přístupovou skupinu pro řetězce klíčů.
-Přístupovou skupinu pro `WithIosKeychainSecurityGroup()` řetězce klíčů můžete nastavit pomocí rozhraní API při vytváření aplikace, jak je znázorněno níže:
+Přístupovou skupinu pro řetězce klíčů můžete nastavit pomocí rozhraní `WithIosKeychainSecurityGroup()` API při vytváření aplikace, jak je znázorněno níže:
 
-Pokud chcete povolit jednotné přihlašování, musíte nastavit `PublicClientApplication.iOSKeychainSecurityGroup` vlastnost na stejnou hodnotu ve všech aplikacích.
+Pokud chcete povolit jednotné přihlašování, musíte nastavit vlastnost `PublicClientApplication.iOSKeychainSecurityGroup` na stejnou hodnotu ve všech aplikacích.
 
 Příkladem použití MSAL v3. x bude:
 ```csharp
@@ -71,7 +72,7 @@ var builder = PublicClientApplicationBuilder
 
 Oprávnění. plist by se měla aktualizovat tak, aby vypadala jako následující fragment kódu XML:
 
-Tato změna je *navíc* k povolení přístupu k řetězci klíčů v `Entitlements.plist` souboru, a to pomocí níže uvedené skupiny přístupu nebo vlastního:
+Tato změna je *navíc* k povolení přístupu k řetězci klíčů v souboru `Entitlements.plist`, a to buď pomocí níže uvedené skupiny přístupu, nebo podle vlastního:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -92,7 +93,7 @@ Příkladem je použití MSAL v4. x:
 PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
 ```
 
-Při použití `WithIosKeychainSecurityGroup()` rozhraní API MSAL automaticky připojí skupinu zabezpečení na konec ID týmu aplikace (AppIdentifierPrefix), protože když sestavíte aplikaci pomocí Xcode, bude to mít stejnou. [Další podrobnosti najdete v dokumentaci k oprávněním pro iOS](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). To je důvod, proč potřebujete aktualizovat oprávnění, aby zahrnoval $ (AppIdentifierPrefix) před přístupovou skupinou pro řetězce klíčů v oprávněních. plist.
+Když použijete rozhraní `WithIosKeychainSecurityGroup()` API, MSAL automaticky připojí skupinu zabezpečení na konec ID týmu aplikace (AppIdentifierPrefix), protože když sestavíte aplikaci pomocí Xcode, bude to mít stejnou. [Další podrobnosti najdete v dokumentaci k oprávněním pro iOS](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). To je důvod, proč potřebujete aktualizovat oprávnění, aby zahrnoval $ (AppIdentifierPrefix) před přístupovou skupinou pro řetězce klíčů v oprávněních. plist.
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Povolit sdílení mezipaměti tokenů napříč aplikacemi pro iOS
 
@@ -102,15 +103,15 @@ Sdílení mezipaměti tokenů umožňuje jednotné přihlašování mezi všemi 
 
 Pokud chcete povolit toto sdílení mezipaměti, musíte nastavit metodu "WithIosKeychainSecurityGroup ()" pro nastavení přístupové skupiny pro řetězce klíčů na stejnou hodnotu ve všech aplikacích, které sdílejí stejnou mezipaměť, jak je znázorněno v předchozím příkladu.
 
-Dřív bylo zmíněno, že při každém použití `WithIosKeychainSecurityGroup()` rozhraní API MSAL přidala $ (AppIdentifierPrefix). Důvodem je, že AppIdentifierPrefix nebo "ID týmu" slouží k zajištění, aby přístup k řetězci klíčů mohl sdílet jenom aplikace, které provádí tentýž Vydavatel.
+Dřív bylo zmíněno, že MSAL přidala $ (AppIdentifierPrefix) vždy, když použijete rozhraní `WithIosKeychainSecurityGroup()` API. Důvodem je, že AppIdentifierPrefix nebo "ID týmu" slouží k zajištění, aby přístup k řetězci klíčů mohl sdílet jenom aplikace, které provádí tentýž Vydavatel.
 
 > [!NOTE]
-> **`KeychainSecurityGroup` Vlastnost je zastaralá.**
+> **Vlastnost `KeychainSecurityGroup` je zastaralá.**
 > 
-> Předtím, od MSAL 2. x, museli vývojáři při použití `KeychainSecurityGroup` vlastnosti zahrnovat předponu TeamId.
+> Předtím, od MSAL 2. x, museli vývojáři při použití vlastnosti `KeychainSecurityGroup` obsahovat předponu TeamId.
 >
->  MSAL při použití nové `iOSKeychainSecurityGroup` vlastnosti v MSAL 2.7. x během běhu vyřeší předponu TeamId. Pokud použijete tuto vlastnost, hodnota by neměla obsahovat předponu TeamId.
->  Použijte novou `iOSKeychainSecurityGroup` vlastnost, která nevyžaduje zadání TeamId, protože předchozí `KeychainSecurityGroup` vlastnost je nyní zastaralá.
+>  Pokud při použití vlastnosti New `iOSKeychainSecurityGroup` použijete novou vlastnost 2.7. x, MSAL během běhu vyřeší předponu TeamId. Pokud použijete tuto vlastnost, hodnota by neměla obsahovat předponu TeamId.
+>  Použijte novou vlastnost `iOSKeychainSecurityGroup`, která nevyžaduje zadání TeamId, protože předchozí vlastnost `KeychainSecurityGroup` je nyní zastaralá.
 
 ### <a name="use-microsoft-authenticator"></a>Použít Microsoft Authenticator
 

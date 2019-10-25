@@ -1,5 +1,6 @@
 ---
-title: Protokolování aplikací MSAL (Microsoft Authentication Library) | Azure
+title: Protokolování aplikací MSAL (Microsoft Authentication Library)
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o protokolování aplikací MSAL (Microsoft Authentication Library).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 87102e3ea71695006e465d1becad0f2ece2a426b
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678040"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802968"
 ---
 # <a name="logging-in-msal-applications"></a>Protokolování aplikací MSAL
 
@@ -46,12 +47,12 @@ Protokolovací nástroj MSAL ve výchozím nastavení nezachytí žádná citliv
  > [!NOTE]
  > Ukázky protokolování MSAL.NET a další informace najdete na [wikiwebu MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) .
 
-V MSAL 3. x je protokolování nastaveno na aplikaci při vytváření aplikací pomocí modifikátoru tvůrce `.WithLogging`. Tato metoda přebírá volitelné parametry:
+V MSAL 3. x je protokolování nastaveno na aplikaci při vytváření aplikací pomocí modifikátoru `.WithLogging` Builder. Tato metoda přebírá volitelné parametry:
 
 - `Level` vám umožní rozhodnout, jakou úroveň protokolování chcete. Při jejich nastavení na chyby se zobrazí jenom chyby.
-- @no__t – 0 umožňuje protokolovat osobní a organizační data, pokud je nastavené na true. Ve výchozím nastavení je tato hodnota nastavena na false, aby vaše aplikace neprotokoloval osobní údaje.
-- hodnota `LogCallback` je nastavena na delegáta, který provádí protokolování. Je-li hodnota `PiiLoggingEnabled` pravdivá, bude tato metoda přijímat zprávy dvakrát: jednou s parametrem `containsPii` se rovná false a zpráva bez osobních údajů a druhá s parametrem `containsPii` se rovná hodnotě true a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
-- @no__t – 0 povolí výchozí protokolování pro platformu. Ve výchozím nastavení má hodnotu false. Pokud ho nastavíte na true, používá se k trasování událostí v aplikacích Desktop/UWP NSLog v iOS a Logcat na Androidu.
+- `PiiLoggingEnabled` umožňuje protokolovat osobní a organizační data, pokud je nastavené na true. Ve výchozím nastavení je tato hodnota nastavena na false, aby vaše aplikace neprotokoloval osobní údaje.
+- `LogCallback` je nastavena na delegáta, který provádí protokolování. Pokud je `PiiLoggingEnabled` true, tato metoda obdrží zprávy dvakrát: jednou s parametrem `containsPii` se rovná false a zpráva bez osobních údajů a druhá s parametrem `containsPii` se rovná hodnotě true a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
+- `DefaultLoggingEnabled` povolí pro platformu výchozí protokolování. Ve výchozím nastavení má hodnotu false. Pokud ho nastavíte na true, používá se k trasování událostí v aplikacích Desktop/UWP NSLog v iOS a Logcat na Androidu.
 
 ```csharp
 class Program
@@ -85,9 +86,9 @@ class Program
 Zapněte při vytváření aplikace přihlášení vytvořením zpětného volání protokolování. Zpětné volání přebírá tyto parametry:
 
 - `tag` je řetězec předaný do zpětného volání knihovnou. Je spojena s položkou protokolu a lze ji použít k řazení zpráv protokolování.
-- `logLevel` vám umožní rozhodnout, jakou úroveň protokolování chcete. Podporované úrovně protokolu jsou: `Error`, `Warning`, `Info` a `Verbose`.
+- `logLevel` vám umožní rozhodnout, jakou úroveň protokolování chcete. Podporované úrovně protokolu jsou: `Error`, `Warning`, `Info`a `Verbose`.
 - `message` je obsah položky protokolu.
-- `containsPII` určuje, zda budou zprávy obsahující osobní údaje nebo data organizace protokolovány. Ve výchozím nastavení je tato hodnota nastavená na false, aby vaše aplikace neprotokoloval osobní údaje. Pokud je `containsPII` `true`, bude tato metoda přijímat zprávy dvakrát: jednou s parametrem `containsPII` nastaveným na `false` a `message` bez osobních údajů a druhý čas s parametrem `containsPii` nastaveným na `true` a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
+- `containsPII` určuje, jestli se mají protokolovat zprávy obsahující osobní údaje nebo data organizace. Ve výchozím nastavení je tato hodnota nastavená na false, aby vaše aplikace neprotokoloval osobní údaje. Pokud je `containsPII` `true`, tato metoda obdrží zprávy dvakrát: jednou s parametrem `containsPII` nastaveným na `false` a `message` bez osobních údajů a druhý čas s parametrem `containsPii` nastaveným na `true` a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
 
 ```java
 private StringBuilder mLogs;
@@ -126,9 +127,9 @@ Logger.getInstance().setEnableLogcatLog(true);
  Povolte protokolování v MSAL. js předáním objektu protokolovacího nástroje během konfigurace pro vytvoření instance `UserAgentApplication`. Tento objekt protokolovacího nástroje má následující vlastnosti:
 
 - `localCallback`: instance zpětného volání, kterou může vývojář poskytnout pro využívání a publikování protokolů vlastním způsobem. Implementujte metodu localCallback v závislosti na tom, jak chcete přesměrovat protokoly.
-- `level` (volitelné): konfigurovatelná úroveň protokolu. Podporované úrovně protokolu jsou: `Error`, `Warning`, `Info` a `Verbose`. Výchozí hodnota je `Info`.
-- `piiLoggingEnabled` (volitelné): Pokud je nastavena hodnota true, protokoluje osobní a organizační data. Ve výchozím nastavení je to false, aby vaše aplikace nehlásila osobní údaje. Protokoly osobních údajů se nikdy nezapisují do výchozích výstupů, jako je konzola, Logcat nebo NSLog.
-- `correlationId` (volitelné): jedinečný identifikátor, který se používá k mapování požadavku na odezvu pro účely ladění. Ve výchozím nastavení se RFC4122 identifikátor GUID verze 4 (128 bitů).
+- `level` (volitelné): konfigurovatelná úroveň protokolu. Podporované úrovně protokolu jsou: `Error`, `Warning`, `Info`a `Verbose`. Výchozí formát je `Info`.
+- `piiLoggingEnabled` (volitelné): Pokud je nastavené na true, protokoluje osobní a organizační data. Ve výchozím nastavení je to false, aby vaše aplikace nehlásila osobní údaje. Protokoly osobních údajů se nikdy nezapisují do výchozích výstupů, jako je konzola, Logcat nebo NSLog.
+- `correlationId` (volitelné): jedinečný identifikátor, který slouží k mapování požadavku na odpověď pro účely ladění. Ve výchozím nastavení se RFC4122 identifikátor GUID verze 4 (128 bitů).
 
 ```javascript
 function loggerCallback(logLevel, message, containsPii) {
@@ -172,7 +173,7 @@ Nastavte zpětné volání pro zachycení protokolování MSAL a zahrňte ho do 
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Příklad:
+Například:
 
 Objective-C
 ```objc
@@ -188,7 +189,7 @@ Objective-C
     }];
 ```
 
-SWIFT
+Swift
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
     if let message = message, !containsPII
@@ -216,7 +217,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = YES;
 MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 ```
 
-SWIFT
+Swift
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
 
@@ -231,31 +232,31 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL pro iOS a macOS, použijte jednu z následujících hodnot:
 
-|Obsah  |Popis |
+|Úroveň  |Popis |
 |---------|---------|
 | `MSALLogLevelNothing`| Zakázat všechna protokolování |
 | `MSALLogLevelError` | Výchozí úroveň, vytiskne informace pouze v případě, že dojde k chybám |
-| `MSALLogLevelWarning` | Upozornění |
+| `MSALLogLevelWarning` | Varování |
 | `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi řetězce klíčů |
 |`MSALLogLevelVerbose`     |  Trasování rozhraní API       |
 
-Příklad:
+Například:
 
 Objective-C
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
  ```
  
- SWIFT
+ Swift
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
  ```
 
 ### <a name="log-message-format"></a>Formát zprávy protokolu
 
-Část zprávy protokolu MSAL je ve formátu `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`.
+Část zprávy protokolu MSAL je ve formátu `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Příklad:
+Například:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 

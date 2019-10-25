@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 12ac5c44a0ee479d84616b138f9e2369a195c275
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 69afe2aab3c10707f7160d727b970ad73d59a952
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976472"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791544"
 ---
-# <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Rychlý start: Vytvoření pracovního prostoru Azure Databricks v Virtual Network
+# <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Rychlý Start: vytvoření pracovního prostoru Azure Databricks v Virtual Network
 
 V tomto rychlém startu se dozvíte, jak vytvořit pracovní prostor Azure Databricks ve virtuální síti. V tomto pracovním prostoru vytvoříte také cluster Apache Spark.
 
@@ -23,11 +23,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
-> Tento kurz se nedá provést pomocí předplatného **Azure free zkušební verze**.
-> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na průběžné **platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)a požádejte o [zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
+> Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
+> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -37,38 +37,38 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
     |Nastavení|Navrhovaná hodnota|Popis|
     |-------|---------------|-----------|
-    |Name|datacihly – rychlý Start|Vyberte název vaší virtuální sítě.|
-    |Adresní prostor|10.1.0.0/16|Rozsah adres virtuální sítě v zápisu CIDR|
-    |Subscription|\<Vaše předplatné\>|Vyberte předplatné Azure, které chcete použít.|
-    |Resource group|datacihly – rychlý Start|Vyberte **vytvořit novou** a zadejte nový název skupiny prostředků pro váš účet.|
-    |Location|\<Vyberte oblast nejbližší vašim uživatelům.\>|Vyberte zeměpisnou polohu, kde můžete hostovat svou virtuální síť. Použijte umístění, které je nejblíže vašim uživatelům.|
+    |Name (Název)|datacihly – rychlý Start|Vyberte název vaší virtuální sítě.|
+    |Adresní prostor|10.1.0.0/16|Rozsah adres virtuální sítě v zápisu CIDR.|
+    |Předplatné|\<Vaše předplatné\>|Vyberte předplatné Azure, které chcete použít.|
+    |Skupina prostředků|datacihly – rychlý Start|Vyberte **vytvořit novou** a zadejte nový název skupiny prostředků pro váš účet.|
+    |Umístění|\<Vyberte oblast nejbližší vašim uživatelům.\>|Vyberte zeměpisnou polohu, kde můžete hostovat svou virtuální síť. Použijte umístění, které je nejblíže vašim uživatelům.|
     |Název podsítě|default|Vyberte název výchozí podsítě ve vaší virtuální síti.|
     |Rozsah adres podsítě|10.1.0.0/24|Rozsah adres podsítě v zápisu CIDR. Musí být obsažený v adresním prostoru virtuální sítě. Rozsah adres podsítě, která se používá, se nedá upravit.|
 
     ![Vytvoření virtuální sítě v Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
 
-3. Až se nasazení dokončí, přejděte do virtuální sítě a v části **Nastavení**vyberte **adresní prostor** . Do pole `10.179.0.0/16` *Přidat další rozsah adres*zadejte a vyberte **Uložit**.
+3. Až se nasazení dokončí, přejděte do virtuální sítě a v části **Nastavení**vyberte **adresní prostor** . Do pole *Přidat další rozsah adres*zadejte `10.179.0.0/16` a vyberte **Uložit**.
 
     ![Adresní prostor virtuální sítě Azure](./media/quickstart-create-databricks-workspace-vnet-injection/add-address-space.png)
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
-1. V Azure Portal vyberte **vytvořit** > datacihly prostředků**Analytics** > .
+1. V Azure Portal vyberte **vytvořit prostředek** > **Analytics** > **datacihly**.
 
 2. V části **služba Azure Databricks**použijte následující nastavení:
 
     |Nastavení|Navrhovaná hodnota|Popis|
     |-------|---------------|-----------|
     |Název pracovního prostoru|datacihly – rychlý Start|Vyberte název pracovního prostoru Azure Databricks.|
-    |Subscription|\<Vaše předplatné\>|Vyberte předplatné Azure, které chcete použít.|
-    |Resource group|datacihly – rychlý Start|Vyberte stejnou skupinu prostředků, kterou jste použili pro virtuální síť.|
-    |Location|\<Vyberte oblast nejbližší vašim uživatelům.\>|Vyberte stejné umístění jako vaše virtuální síť.|
-    |Cenová úroveň|Vyberte si z úrovně Standard nebo Premium.|Další informace o cenových úrovních najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/databricks/)datacihly.|
+    |Předplatné|\<Vaše předplatné\>|Vyberte předplatné Azure, které chcete použít.|
+    |Skupina prostředků|datacihly – rychlý Start|Vyberte stejnou skupinu prostředků, kterou jste použili pro virtuální síť.|
+    |Umístění|\<Vyberte oblast nejbližší vašim uživatelům.\>|Vyberte stejné umístění jako vaše virtuální síť.|
+    |Cenová úroveň|Vyberte si z úrovně Standard nebo Premium.|Další informace o cenových úrovních najdete na stránce s [cenami datacihly](https://azure.microsoft.com/pricing/details/databricks/).|
     |Nasazení pracovního prostoru Azure Databricks v Virtual Network|Ano|Toto nastavení umožňuje nasadit Azure Databricks pracovní prostor ve vaší virtuální síti.|
-    |Virtuální sítě|datacihly – rychlý Start|Vyberte virtuální síť, kterou jste vytvořili v předchozí části.|
-    |Název veřejné podsítě|public-subnet|Použijte výchozí název veřejné podsítě.|
+    |Virtual Network|datacihly – rychlý Start|Vyberte virtuální síť, kterou jste vytvořili v předchozí části.|
+    |Název veřejné podsítě|Veřejná podsíť|Použijte výchozí název veřejné podsítě.|
     |Rozsah CIDR veřejné podsítě|10.179.64.0/18|Rozsah CIDR pro tuto podsíť by měl být mezi/18 a/26.|
-    |Název privátní podsítě|private-subnet|Použijte výchozí název privátní podsítě.|
+    |Název privátní podsítě|privátní podsíť|Použijte výchozí název privátní podsítě.|
     |Rozsah CIDR privátní podsítě|10.179.0.0/18|Rozsah CIDR pro tuto podsíť by měl být mezi/18 a/26.|
 
     ![Vytvoření pracovního prostoru Azure Databricks v Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
@@ -104,7 +104,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 Po dokončení tohoto článku můžete cluster ukončit. Pokud to chcete udělat, v levém podokně v pracovním prostoru Azure Databricks vyberte **Clusters** (Clustery). U clusteru, který chcete ukončit, přesuňte kurzor na tři tečky pod sloupcem **Actions** (Akce) a vyberte ikonu **Terminate** (Ukončit). Tím se cluster zastaví.
 
-Pokud se cluster automaticky zastaví neukončíte ručně, k dispozici, jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl po stanovenou dobu neaktivní.
+Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_\_ minut při nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po stanovenou dobu neaktivní.
 
 Pokud nechcete cluster znovu použít, můžete odstranit skupinu prostředků, kterou jste vytvořili v Azure Portal.
 

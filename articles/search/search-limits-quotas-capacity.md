@@ -1,22 +1,23 @@
 ---
-title: Omezení služby pro vrstvy a SKU – Azure Search
-description: Omezení služby pro plánování kapacity a maximální limity pro žádosti a odpovědi pro Azure Search.
-author: HeidiSteen
+title: Omezení služby pro úrovně a SKU
+titleSuffix: Azure Cognitive Search
+description: Omezení služeb pro plánování kapacity a maximální limity pro žádosti a odpovědi pro Azure Kognitivní hledání.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/03/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d70812779d392cc4555c91599fad37c2d2c68ba5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947782"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793577"
 ---
-# <a name="service-limits-in-azure-search"></a>Omezení služby v Azure Search
-Maximální limity úložiště, zatížení a množství indexů, dokumentů a dalších objektů závisí na tom, jestli jste [zřídili Azure Search](search-create-service-portal.md) na cenových úrovních **Free**, **Basic**, **Standard**nebo **Storage s optimalizovaným úložištěm** .
+# <a name="service-limits-in-azure-cognitive-search"></a>Omezení služby v Azure Kognitivní hledání
+
+Maximální limity pro úložiště, úlohy a množství indexů, dokumentů a dalších objektů závisí na tom, jestli [zřizujete Azure kognitivní hledání](search-create-service-portal.md) na cenových úrovních **Free**, **Basic**, **Standard**nebo **Storage optimalizované pro úložiště** . .
 
 + **Zdarma** je sdílená služba s více klienty, která se dodává s vaším předplatným Azure. Požadavky na indexování a dotazy se spouštějí na replikách a oddílech, které používají jiní klienti.
 
@@ -45,14 +46,14 @@ Maximální limity úložiště, zatížení a množství indexů, dokumentů a 
 
 ## <a name="index-limits"></a>Omezení indexu
 
-| Partner | Dost | Basic @ no__t-0<sup>1</sup>  | S1 | S2 | Stavu | S3 @ no__t-0HD | L1 | Paměť |
+| Prostředek | Zadarmo | Základní&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | Paměť |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
-| Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1000 na oddíl nebo 3000 na službu |10pruhový |10pruhový |
-| Maximální počet jednoduchých polí na index |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1 000 na oddíl nebo 3 000 na službu |10 |10 |
+| Maximální počet jednoduchých polí na index |1 000 |100 |1 000 |1 000 |1 000 |1 000 |1 000 |1 000 |
 | Maximální složitá pole kolekce na index |40 |40 |40 |40 |40 |40 |40 |40 |
 | Maximální počet prvků napříč všemi složitými kolekcemi na dokument |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
-| Maximální hloubka složitých polí |10pruhový |10pruhový |10pruhový |10pruhový |10pruhový |10pruhový |10pruhový |10pruhový |
-| Maximální počet modulu pro [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggesters) na index |první |první |první |první |první |první |první |první |
+| Maximální hloubka složitých polí |10 |10 |10 |10 |10 |10 |10 |10 |
+| Maximální počet modulu pro [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggesters) na index |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |
 | Maximální počet [profilů vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) na index |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maximální počet funkcí na profil |8 |8 |8 |8 |8 |8 |8 |8 |
 
@@ -68,23 +69,23 @@ Pokud chcete zjistit, jestli vaše služba má omezení dokumentů, podívejte s
 
   ![Dlaždice využití](media/search-limits-quotas-capacity/portal-usage-tile.png)
 
-<sup>1</sup> , i když nejsou k dispozici žádné limity dokumentů specifické pro skladovou položku, má každý index i nadále maximální bezpečný limit, aby se zajistila stabilita služby. Toto omezení pochází z Lucene. Každý Azure Search dokument je interně indexován jako jeden nebo více dokumentů Lucene. Počet dokumentů Lucene na dokument Azure Search závisí na celkovém počtu prvků v komplexních polích kolekcí. Každý element je indexován jako samostatný dokument Lucene. Například dokument se 3 prvky ve komplexním poli kolekce bude indexován jako 4 dokumenty Lucene – 1 pro samotný dokument a 3 pro prvky. Maximální počet dokumentů Lucene je zhruba 25 000 000 000 na jeden index.
+<sup>1</sup> , i když nejsou k dispozici žádné limity dokumentů specifické pro skladovou položku, má každý index i nadále maximální bezpečný limit, aby se zajistila stabilita služby. Toto omezení pochází z Lucene. Každý dokument Azure Kognitivní hledání je interně indexován jako jeden nebo více dokumentů Lucene. Počet dokumentů Lucene na hledaný dokument závisí na celkovém počtu prvků v komplexních polích kolekcí. Každý element je indexován jako samostatný dokument Lucene. Například dokument se 3 prvky ve komplexním poli kolekce bude indexován jako 4 dokumenty Lucene – 1 pro samotný dokument a 3 pro prvky. Maximální počet dokumentů Lucene je zhruba 25 000 000 000 na jeden index.
 
 ### <a name="regions-previously-having-document-limits"></a>Oblasti, které dříve mají omezení dokumentů
 
-Pokud portál indikuje omezení počtu dokumentů, byla služba vytvořena před 2017 nebo byla vytvořena v datovém centru s využitím clusterů s nižší kapacitou pro hostování Azure Searchch služeb:
+Pokud portál indikuje omezení dokumentu, služba byla buď vytvořena před 2017, nebo byla vytvořena v datovém centru s využitím clusterů s nižší kapacitou pro hostování služeb Azure Kognitivní hledání:
 
 + Austrálie – východ
 + Východní Asie
-+ Střed Indie
++ Střední Indie
 + Japonsko – západ
 + Středozápadní USA
 
 Pro služby podléhající omezením dokumentu platí následující maximální limity:
 
-|  Dost | Základní | S1 | S2 | Stavu | S3 @ no__t-0HD |
+|  Zadarmo | Úroveň Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10 000 |1 @ no__t-0million |15 000 000 na oddíl nebo 180 000 000 na službu |60 000 000 na oddíl nebo 720 000 000 na službu |120 000 000 na oddíl nebo 1 400 000 000 na službu |1 000 000 na jeden index nebo 200 000 000 na oddíl |
+|  10 000 |1 @ no__t_0_ milionů |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
 
 Pokud vaše služba obsahuje omezení, která vás zablokují, vytvořte novou službu a pak znovu publikujte veškerý obsah do této služby. Neexistuje žádný mechanismus pro bezproblémové opětovné zřízení vaší služby na nový hardware na pozadí.
 
@@ -105,17 +106,17 @@ Aby se zachovala velikost dokumentu, nezapomeňte z požadavku vyloučit data, k
 Pro zajištění rovnováhy a stability služby jako celku existovala maximální doba běhu, ale větší sady dat můžou potřebovat více času indexování než maximální povolený počet. Pokud úloha indexování nemůže být dokončena v maximálním povoleném čase, zkuste ji spustit podle plánu. Scheduler sleduje stav indexování. Pokud z nějakého důvodu dojde k přerušení plánované úlohy indexování, může indexer vybrat, kde se naposledy nacházelo při příštím naplánovaném spuštění.
 
 
-| Partner | Zdarma @ no__t-0<sup>1</sup> | Basic @ no__t-0<sup>2</sup>| S1 | S2 | Stavu | S3 @ no__t-0HD @ no__t-1<sup>3</sup>|L1 |Paměť |
+| Prostředek | Bezplatná&nbsp;<sup>1</sup> | Základní&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |Paměť |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |Není k dispozici |10pruhový |10pruhový |
-| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10pruhový |10pruhový |
-| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10pruhový |10pruhový |
-| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Není k dispozici |Bez omezení |Bez omezení |
+| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |Nevztahuje se |10 |10 |
+| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |Nevztahuje se |10 |10 |
+| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |Nevztahuje se |10 |10 |
+| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Nevztahuje se |Bez omezení |Bez omezení |
 | Minimální plán | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
-| Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |Není k dispozici  |24 hodin |24 hodin |
-| Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |Není k dispozici  |2 hodiny |2 hodiny |
-| Indexer objektů BLOB: maximální velikost objektu blob, MB |16bitovém |16bitovém |128 |256 |256 |Není k dispozici  |256 |256 |
-| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32 000 |64 000 |4 @ no__t – 0million |4 @ no__t – 0million |4 @ no__t – 0million |Není k dispozici |4 @ no__t – 0million |4 @ no__t – 0million |
+| Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |Nevztahuje se  |24 hodin |24 hodin |
+| Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |Nevztahuje se  |2 hodiny |2 hodiny |
+| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |Nevztahuje se  |256 |256 |
+| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32 000 |64 000 |4 @ no__t_0_ milionů |4 @ no__t_0_ milionů |4 @ no__t_0_ milionů |Nevztahuje se |4 @ no__t_0_ milionů |4 @ no__t_0_ milionů |
 
 <sup>1</sup> bezplatné služby mají maximální dobu provádění indexeru 3 minuty pro zdroje objektů BLOB a 1 minutu pro všechny ostatní zdroje dat. V případě indexování AI, který volá Cognitive Services, jsou bezplatné služby omezené na 20 bezplatných transakcí za den, kde transakce je definovaná jako dokument, který úspěšně projde kanálem pro obohacení.
 
@@ -131,22 +132,22 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 Maximální povolený počet map synonym se liší podle cenové úrovně. Každé pravidlo může mít až 20 rozšíření, kde rozšíření je equivalvent termínem. Například dané "Cat", asociace s "Kitty", "Feline" a "Felis" (rod pro kočky) by se znamenaly jako 3 rozšíření.
 
-| Partner | Dost | Základní | S1 | S2 | Stavu | S3-HD |L1 | Paměť |
+| Prostředek | Zadarmo | Úroveň Basic | S1 | S2 | S3 | S3-HD |L1 | Paměť |
 | -------- | -----|------ |----|----|----|-------|---|----|
-| Maximální počet mapování synonym |3 |3|5 |10pruhový |20o |20o | 10pruhový | 10pruhový |
+| Maximální počet mapování synonym |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maximální počet pravidel na mapování |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
 
 ## <a name="queries-per-second-qps"></a>Dotazů za sekundu (QPS)
 
 Odhady QPS musí být vyvíjeny nezávisle na každém zákazníkovi. Velikost indexu a složitost, velikost a složitost dotazů a množství přenosů jsou primárními determinanty QPS. Neexistuje žádný způsob, jak nabízet smysluplné odhady v případě, že tyto faktory nejsou známy.
 
-Odhady jsou předvídatelné při výpočtu na službách, které běží na vyhrazených prostředcích (úrovně Basic a Standard). QPS můžete odhadnout přesněji, protože máte kontrolu nad více parametry. Pokyny pro přístup k odhadu najdete v tématu [Azure Search výkon a optimalizace](search-performance-optimization.md).
+Odhady jsou předvídatelné při výpočtu na službách, které běží na vyhrazených prostředcích (úrovně Basic a Standard). QPS můžete odhadnout přesněji, protože máte kontrolu nad více parametry. Pokyny pro přístup k odhadu najdete v tématu [výkon a optimalizace pro Azure kognitivní hledání](search-performance-optimization.md).
 
 Pro vrstvy optimalizované pro úložiště byste měli očekávat nižší propustnost dotazů a vyšší latenci než na úrovni Standard.  Metodologie pro odhad výkonu dotazů, které budete mít, je stejná jako u standardních úrovní.
 
-## <a name="data-limits-cognitive-search"></a>Omezení pro data (vyhledávání rozpoznávání)
+## <a name="data-limits-ai-enrichment"></a>Omezení pro data (rozšíření AI)
 
-[Kanál hledání rozpoznávání](cognitive-search-concept-intro.md) , který volá analýza textu prostředek pro [rozpoznávání entit](cognitive-search-skill-entity-recognition.md), [extrakci klíčových frází](cognitive-search-skill-keyphrases.md), [analýzu mínění](cognitive-search-skill-sentiment.md)a [rozpoznávání jazyka](cognitive-search-skill-language-detection.md) , podléhá omezením dat. Maximální velikost záznamu musí být 50 000 znaků, měřeno [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do nástroje mínění Analyzer rozdělit, použijte [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
+[Kanál pro obohacení AI](cognitive-search-concept-intro.md) , který umožňuje volat prostředek analýza textu pro [rozpoznávání entit](cognitive-search-skill-entity-recognition.md), [extrakci klíčových frází](cognitive-search-skill-keyphrases.md), [analýzu mínění](cognitive-search-skill-sentiment.md)a [rozpoznávání jazyka](cognitive-search-skill-language-detection.md) , podléhá omezením dat. Maximální velikost záznamu musí být 50 000 znaků měřenou [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do nástroje mínění Analyzer rozdělit, použijte [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Omezení omezování
 
@@ -167,7 +168,7 @@ Omezení požadavků na statickou rychlost pro operace související s indexem:
 * Maximálně 32 polí v klauzuli $orderby
 * Maximální velikost hledaného výrazu je 32 766 bajtů (32 KB minus 2 bajty) textu kódovaného v kódování UTF-8.
 
-<sup>1</sup> v Azure Search tělo požadavku podléhá hornímu limitu 16 MB, čímž se zavedlo praktické omezení obsahu jednotlivých polí nebo kolekcí, které nejsou jinak omezeny teoretickými limity (Další informace najdete v tématu [podporované datové typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) . informace o složení polí a omezeních.
+<sup>1</sup> v Azure kognitivní hledání, tělo požadavku podléhá hornímu limitu 16 MB a nasazuje se tak praktické omezení obsahu jednotlivých polí nebo kolekcí, které nejsou jinak omezené o teoretická omezení (viz [podporované datové typy. ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)Další informace o složení polí a omezeních.
 
 ## <a name="api-response-limits"></a>Omezení odezvy rozhraní API
 * Maximální počet 1000 dokumentů vrácených na stránku výsledků hledání

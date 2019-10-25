@@ -1,10 +1,9 @@
 ---
-title: Použití AMQP 1,0 s rozhraním API služby Java Message Service a Azure Service Bus
+title: Použití AMQP s rozhraním API služby Java Message Service & Azure Service Bus
 description: Jak používat službu JMS (Java Message Service) s Azure Service Bus a rozšířený protokol řízení front zpráv (AMQP) (AMQP) 1,0.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
 ms.service: service-bus-messaging
@@ -12,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 9dff2cc11b71f314de81fd99ed3b72c6337d977f
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: f1a679deca8ee33bb4801eb1d1023684a37d0f59
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967968"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793164"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Použití JMS (Java Message Service) s Azure Service Bus a AMQP 1,0
 V tomto článku se dozvíte, jak používat funkce Azure Service Bus zasílání zpráv (fronty a témata pro publikování a odběr) z aplikací Java pomocí oblíbeného standardu rozhraní API pro JMS (Java Message Service). K dispozici je [doprovodný článek](service-bus-amqp-dotnet.md) , který vysvětluje, jak to samé provést pomocí rozhraní API Azure Service Bus .NET. Tyto dvě příručky můžete použít společně a získat další informace o zasílání zpráv mezi různými platformami pomocí AMQP 1,0.
@@ -38,19 +37,19 @@ V tomto průvodci se předpokládá, že už máte obor názvů Service Bus obsa
 > 
 
 ## <a name="downloading-the-amqp-10-jms-client-library"></a>Stažení klientské knihovny AMQP 1,0 JMS
-Informace o tom, kde stáhnout nejnovější verzi klientské knihovny Apache Qpid JMS AMQP 1,0, najdete [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)v části.
+Informace o tom, kde stáhnout nejnovější verzi klientské knihovny Apache Qpid JMS AMQP 1,0, najdete [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html).
 
 Při sestavování a spouštění aplikací JMS pomocí Service Bus musíte do cesty k cestě Java přidat následující čtyři soubory JAR z distribučního archivu Apache Qpid JMS AMQP 1,0:
 
-* geronimo-jms\_1.1\_spec-1.0.jar
-* qpid-jms-client-[version].jar
+* Geronimo-JMS\_1,1\_spec-1.0. jar
+* qpid-JMS-Client-[verze]. jar
 
 > [!NOTE]
 > Názvy a verze JAR JMS se možná změnily. Podrobnosti najdete v tématu [QPID JMS-AMQP 1,0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 
 ## <a name="coding-java-applications"></a>Kódování aplikací Java
 ### <a name="java-naming-and-directory-interface-jndi"></a>Názvy rozhraní a adresáře Java (JNDI)
-JMS pomocí rozhraní JNDI (naming and Directory Interface) Java vytvoří oddělení mezi logickými názvy a fyzickými názvy. Dva typy objektů JMS jsou vyřešeny pomocí JNDI: ConnectionFactory a cíl. JNDI používá model poskytovatele, ve kterém můžete připojit různé adresářové služby ke zpracování povinností překladu názvů. Knihovna Apache Qpid JMS AMQP 1,0 obsahuje jednoduchý poskytovatel JNDI na základě souboru, který je nakonfigurovaný pomocí souboru vlastností v následujícím formátu:
+JMS pomocí rozhraní JNDI (naming and Directory Interface) Java vytvoří oddělení mezi logickými názvy a fyzickými názvy. Dva typy objektů JMS jsou vyřešeny pomocí JNDI: ConnectionFactory a Destination. JNDI používá model poskytovatele, ve kterém můžete připojit různé adresářové služby ke zpracování povinností překladu názvů. Knihovna Apache Qpid JMS AMQP 1,0 obsahuje jednoduchý poskytovatel JNDI na základě souboru, který je nakonfigurovaný pomocí souboru vlastností v následujícím formátu:
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -342,7 +341,7 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
-## <a name="jms-topics-vs-service-bus-topics"></a>JMS témata vs. Témata služby Service Bus
+## <a name="jms-topics-vs-service-bus-topics"></a>Témata JMS a témata týkající se Service Bus
 Použití Azure Service Bus témata a odběry prostřednictvím rozhraní API služby Java Message Service (JMS) poskytuje základní funkce pro odesílání a příjem. To je vhodná volba při přenosu aplikací od jiných zprostředkovatelů zpráv s rozhraními API kompatibilních s JMS, i když Service Bus témata se liší od témat JMS a vyžadují několik úprav. 
 
 Azure Service Bus témata směrují zprávy do pojmenovaných, sdílených a trvalých předplatných spravovaných prostřednictvím rozhraní pro správu prostředků Azure, nástrojů příkazového řádku Azure nebo prostřednictvím Azure Portal. Každé předplatné umožňuje až 2000 pravidel výběru, z nichž každá může mít podmínku filtru a pro filtry SQL i akci transformace metadat. Jednotlivé podmínky filtru se shodují s výběrem vstupní zprávy, která se má zkopírovat do předplatného tehj.  
@@ -382,7 +381,7 @@ Tato příručka ukázala, jak používat funkce Service Bus zprostředkovaných
 
 Service Bus AMQP 1,0 můžete také použít z jiných jazyků, včetně .NET, C, Pythonu a PHP. Komponenty sestavené pomocí těchto různých jazyků můžou spolehlivě vyměňovat zprávy a s plnou věrností pomocí podpory AMQP 1,0 v Service Bus.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Podpora AMQP 1,0 v Azure Service Bus](service-bus-amqp-overview.md)
 * [Jak používat AMQP 1,0 s rozhraním API Service Bus .NET](service-bus-dotnet-advanced-message-queuing.md)
 * [Příručka pro vývojáře Service Bus AMQP 1,0](service-bus-amqp-dotnet.md)

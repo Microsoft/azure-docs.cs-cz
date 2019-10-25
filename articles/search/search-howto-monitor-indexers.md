@@ -1,25 +1,24 @@
 ---
-title: Postup sledování stavu a výsledků indexeru – Azure Search
-description: Pomocí REST API nebo sady .NET SDK Sledujte stav, průběh a výsledky Azure Search indexerů v Azure Portal.
-ms.date: 06/28/2019
-author: RobDixon22
+title: Jak monitorovat stav a výsledky indexeru
+titleSuffix: Azure Cognitive Search
+description: Pomocí REST API nebo sady .NET SDK Sledujte stav, průběh a výsledky indexerů služby Azure Kognitivní hledání v Azure Portal.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 0096334e06051b9ff474543384febb37bdf1c8e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 11/04/2019
+ms.openlocfilehash: c7f688c96576f660795becaf318c3b0677a24542
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72533697"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793788"
 ---
-# <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Jak monitorovat stav a výsledky indexeru Azure Search
+# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Jak monitorovat stav a výsledky služby Azure Kognitivní hledání indexer
 
-Azure Search poskytuje informace o stavu a monitorování o aktuálním a historickém spuštění každého indexeru.
+Azure Kognitivní hledání poskytuje informace o stavu a monitorování o aktuálním a historickém spuštění každého indexeru.
 
 Monitorování indexeru je užitečné v případě, že chcete:
 
@@ -75,7 +74,7 @@ Pokud během běhu došlo k určitým dokumentům, budou uvedeny v poli chyby a 
 
 Upozornění jsou společná u některých typů indexerů a neznamenají vždy problém. Například indexery, které používají službu rozpoznávání, mohou hlásit upozornění, když obrázky nebo soubory PDF neobsahují žádný text ke zpracování.
 
-Další informace o zkoumání chyb a upozornění indexeru najdete v tématu [řešení běžných potíží indexeru v Azure Search](search-indexer-troubleshooting.md).
+Další informace o zkoumání chyb a upozornění indexeru najdete v tématu [řešení běžných potíží indexerů v Azure kognitivní hledání](search-indexer-troubleshooting.md).
 
 <a name="restapi"></a>
 
@@ -128,7 +127,7 @@ Další podrobnosti o stavových kódech a datech monitorování indexeru najdet
 
 ## <a name="monitor-using-the-net-sdk"></a>Monitorování pomocí sady .NET SDK
 
-Můžete definovat plán pro indexer pomocí sady Azure Search .NET SDK. Chcete-li to provést, zahrňte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** .
+Můžete definovat plán pro indexer pomocí sady Azure Kognitivní hledání .NET SDK. Chcete-li to provést, zahrňte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** .
 
 Následující C# Příklad zapisuje informace o stavu indexeru a výsledcích jeho posledního (nebo probíhajícího) běhu do konzoly.
 

@@ -1,10 +1,9 @@
 ---
-title: Migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium | Microsoft Docs
+title: Migrace Azure Service Bus oborů názvů – Standard na Premium
 description: Průvodce pro povolení migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
-manager: darosa
 editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69611922"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790379"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium
 Dřív Azure Service Bus nabízet obory názvů jenom na úrovni Standard. Obory názvů jsou nastavení pro více tenantů, která jsou optimalizovaná pro prostředí s nízkou propustností a vývojářem. Úroveň Premium nabízí vyhrazené prostředky na obor názvů pro předvídatelné latenci a vyšší propustnost za pevnou cenu. Úroveň Premium je optimalizovaná pro vysokou propustnost a produkční prostředí, která vyžadují další podnikové funkce.
@@ -94,30 +93,30 @@ Pokud chcete migrovat obor názvů Service Bus Standard do úrovně Premium pomo
 Migrace pomocí Azure Portal má stejný logický tok jako migrace pomocí příkazů. Při migraci pomocí Azure Portal postupujte podle těchto kroků.
 
 1. V **navigační** nabídce v levém podokně vyberte **migrovat na Premium**. Kliknutím na tlačítko **Začínáme** můžete pokračovat na další stránku.
-    ![Migration Úvodní stránka ][]
+    ![Úvodní stránka migrace][]
 
 1. Dokončete **Nastavení**.
-   obor názvů ![Setup ][]
+   ![obor názvů nastavení][]
    1. Vytvořte a přiřaďte obor názvů Premium pro migraci stávajícího oboru názvů Standard na.
-        obor názvů ![Setup – vytvoření oboru názvů Premium ][]
+        obor názvů pro nastavení ![– vytvoření oboru názvů Premium][]
    1. Vyberte **název následné migrace**. Tento název použijete pro přístup ke standardnímu oboru názvů po dokončení migrace.
-        ![Setup obor názvů – název následné migrace pro výběr ][]
+        obor názvů pro nastavení ![– vyberte název následné migrace][]
    1. Pokračujte výběrem **příkazu ' Next '** .
 1. Synchronizace entit mezi obory názvů Standard a Premium.
-    obor názvů ![Setup – synchronizační entity – spustit ][]
+    obor názvů nastavení ![– synchronizace entit – spuštění][]
 
    1. Vyberte **Spustit synchronizaci** a začněte synchronizovat entity.
    1. V dialogovém okně vyberte **Ano** a potvrďte a spusťte synchronizaci.
    1. Počkejte na dokončení synchronizace. Stav je k dispozici na stavovém řádku.
-        ![Setup obor názvů – synchronizační entity – průběh ][]
+        ![nastavení oboru názvů – synchronizační entity – průběh][]
         >[!IMPORTANT]
         > Pokud potřebujete migraci z nějakého důvodu přerušit, přečtěte si prosím tok přerušení v části Nejčastější dotazy v tomto dokumentu.
    1. Po dokončení synchronizace vyberte v dolní části stránky **Další** .
 
 1. Zkontrolujte změny na stránce Souhrn. Vyberte **dokončit migraci** pro přepínání oborů názvů a dokončení migrace.
-    ![Switch nabídka přepínač oboru názvů ][]  
+    ![nabídka přepínač oboru názvů přepínače][]  
     Po dokončení migrace se zobrazí stránka potvrzení.
-    ![Switch obor názvů – úspěch ][]
+    obor názvů ![přepínání – úspěch][]
 
 ## <a name="caveats"></a>Upozornění
 
@@ -179,8 +178,8 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>Portál Azure
 
-tok ![Abort – přerušení synchronizace ][]
- ![Abort tok – přerušení dokončeno ][]
+Přerušený tok ![– přerušit synchronizaci][]
+![přerušení – přerušení dokončeno][]
 
 Po přerušení procesu migrace přeruší proces kopírování entit (témat, odběrů a filtrů) z úrovně Standard do oboru názvů Premium a přeruší párování.
 

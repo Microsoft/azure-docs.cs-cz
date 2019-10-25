@@ -1,6 +1,7 @@
 ---
 let application: MSALPublicClientApplication!
-title: Migrujte aplikace na MSAL. ObjectiveC | Platforma Microsoft identity
+title: Migrujte aplikace na MSAL. ObjectiveC
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o rozdílech mezi Microsoft Authentication Library for ObjectiveC (MSAL for iOS and macOS) a s knihovnou ověřování Azure AD pro ObjectiveC (ADAL. ObjC) a postup migrace na MSAL pro iOS a macOS.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +19,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcceec31785b3d8ebc6d9566e7d2eba857d792ef
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 208c644c26006fb99139abe1b05c63f90eff448d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269022"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803270"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrace aplikací do MSAL pro iOS a macOS
 
@@ -58,69 +59,69 @@ Veřejné rozhraní API MSAL odráží několik klíčových rozdílů mezi Azur
 
 ### <a name="msalpublicclientapplication-instead-of-adauthenticationcontext"></a>MSALPublicClientApplication místo ADAuthenticationContext
 
-`ADAuthenticationContext`je prvním objektem, který aplikace ADAL vytvoří. Představuje instanci ADAL. Aplikace vytvoří novou instanci `ADAuthenticationContext` pro každou kombinaci Azure Active Directory cloudu a tenanta (autorita). Stejný `ADAuthenticationContext` postup lze použít k získání tokenů pro více veřejných klientských aplikací.
+`ADAuthenticationContext` je první objekt, který aplikace ADAL vytvoří. Představuje instanci ADAL. Aplikace vytvoří novou instanci `ADAuthenticationContext` pro každou kombinaci Azure Active Directory cloudu a tenanta (Authority). Stejný `ADAuthenticationContext` lze použít k získání tokenů pro více veřejných klientských aplikací.
 
-V MSAL je hlavní interakcí prostřednictvím `MSALPublicClientApplication` objektu, který je modelován po [veřejném klientovi OAuth 2,0](https://tools.ietf.org/html/rfc6749#section-2.1). Jednu instanci `MSALPublicClientApplication` lze použít k interakci s několika cloudy AAD a klienty, aniž byste museli vytvářet novou instanci pro každou autoritu. Pro většinu aplikací je jedna `MSALPublicClientApplication` instance dostatečná.
+V MSAL je hlavní interakcí prostřednictvím objektu `MSALPublicClientApplication`, který se modeluje po [veřejném klientovi OAuth 2,0](https://tools.ietf.org/html/rfc6749#section-2.1). Jednu instanci `MSALPublicClientApplication` lze použít k interakci s více cloudy AAD a klienty, aniž byste museli vytvářet novou instanci pro každou autoritu. Pro většinu aplikací je jedna instance `MSALPublicClientApplication` dostatečná.
 
 ### <a name="scopes-instead-of-resources"></a>Rozsahy namísto prostředků
 
-V ADAL musela aplikace poskytnout identifikátor *prostředku* , třeba `https://graph.microsoft.com` získat tokeny z koncového bodu Azure Active Directory v 1.0. Prostředek může definovat počet oborů nebo oAuth2Permissions v manifestu aplikace, který to porozuměl. Tyto povolené klientské aplikace vyžadují tokeny od daného prostředku pro určitou sadu oborů předem definovaných během registrace aplikace.
+V ADAL musela aplikace poskytnout identifikátor *prostředku* , například `https://graph.microsoft.com` získat tokeny z koncového bodu Azure Active Directory v 1.0. Prostředek může definovat počet oborů nebo oAuth2Permissions v manifestu aplikace, který to porozuměl. Tyto povolené klientské aplikace vyžadují tokeny od daného prostředku pro určitou sadu oborů předem definovaných během registrace aplikace.
 
 V MSAL místo jednoho identifikátoru prostředku poskytují aplikace sadu oborů na požadavek. Obor je identifikátor prostředku následovaný názvem oprávnění ve formuláři nebo oprávněním. Například `https://graph.microsoft.com/user.read`.
 
 Existují dva způsoby, jak poskytnout obory v MSAL:
 
-* Zadejte seznam všech oprávnění, která aplikace potřebuje. Příklad: 
+* Zadejte seznam všech oprávnění, která aplikace potřebuje. Například: 
 
     `@[@"https://graph.microsot.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
-    V takovém případě aplikace požaduje `directory.read` oprávnění a. `directory.write` Uživatel bude požádán o souhlas s těmito oprávněními, pokud je před touto aplikací nesouhlasí. Aplikace může také obdržet další oprávnění, která uživatel již souhlasil s aplikací. Uživateli se zobrazí výzva k vyjádření souhlasu s novými oprávněními nebo oprávnění, která nebyla udělena.
+    V takovém případě aplikace požaduje `directory.read` a `directory.write` oprávnění. Uživatel bude požádán o souhlas s těmito oprávněními, pokud je před touto aplikací nesouhlasí. Aplikace může také obdržet další oprávnění, která uživatel již souhlasil s aplikací. Uživateli se zobrazí výzva k vyjádření souhlasu s novými oprávněními nebo oprávnění, která nebyla udělena.
 
-* `/.default` Obor.
+* Obor `/.default`.
 
-Toto je vestavěný rozsah pro každou aplikaci. Odkazuje na statický seznam oprávnění nakonfigurovaných při registraci aplikace. Jeho chování je podobné jako `resource`u. To může být užitečné při migraci, aby se zajistilo, že bude zachována podobná sada oborů a činnost koncového uživatele.
+Toto je vestavěný rozsah pro každou aplikaci. Odkazuje na statický seznam oprávnění nakonfigurovaných při registraci aplikace. Jeho chování je podobné jako `resource`. To může být užitečné při migraci, aby se zajistilo, že bude zachována podobná sada oborů a činnost koncového uživatele.
 
-Chcete-li `/.default` použít rozsah, `/.default` přidejte k identifikátoru prostředku. Například: `https://graph.microsoft.com/.default`. Pokud váš prostředek končí lomítkem (`/`), měli byste se stále připojit `/.default`, včetně počátečního lomítka, a to v oboru, který obsahuje dvojité lomítko (`//`).
+Chcete-li použít obor `/.default`, přidejte `/.default` k identifikátoru prostředku. Například: `https://graph.microsoft.com/.default`. Pokud váš prostředek končí lomítkem (`/`), měli byste k tomu i nadále připojovat `/.default`, včetně počátečního lomítka, a to v oboru, který obsahuje dvojité lomítko (`//`).
 
 Další informace o používání oboru "/.default" si můžete přečíst [tady](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope) .
 
 ### <a name="supporting-different-webview-types--browsers"></a>Podpora různých typů webových zobrazení & prohlížečů
 
-ADAL podporuje pouze UIWebView/WKWebView pro iOS a WebView pro macOS. MSAL pro iOS podporuje další možnosti zobrazení webového obsahu při vyžádání autorizačního kódu a už není podporovaný `UIWebView`, což může zlepšit uživatelské prostředí a zabezpečení.
+ADAL podporuje pouze UIWebView/WKWebView pro iOS a WebView pro macOS. MSAL pro iOS podporuje další možnosti zobrazení webového obsahu při vyžádání autorizačního kódu a už nepodporuje `UIWebView`; což může zlepšit uživatelské prostředí a zabezpečení.
 
 Ve výchozím nastavení MSAL v systému iOS používá [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc), což je webová komponenta, kterou Apple doporučuje pro ověřování na zařízeních s iOS 12 +. Poskytuje výhody jednotného přihlašování (SSO) prostřednictvím sdílení souborů cookie mezi aplikacemi a prohlížečem Safari.
 
 Můžete použít jinou webovou komponentu v závislosti na požadavcích aplikace a na možnosti koncového uživatele, kterou požadujete. Další možnosti najdete v tématu [podporované typy webových zobrazení](customize-webviews.md) .
 
-Při migraci z knihovny ADAL na MSAL `WKWebView` poskytuje prostředí pro uživatele nejčastěji podobné ADAL v iOS a MacOS. Pokud je to možné, doporučujeme `ASWebAuthenticationSession` migrovat na systém iOS. Pro macOS doporučujeme, abyste používali `WKWebView`.
+Při migraci z knihovny ADAL na MSAL `WKWebView` poskytuje činnost koncového uživatele, která se podobá ADAL v iOS a macOS. Pokud je to možné, doporučujeme migrovat na `ASWebAuthenticationSession` v iOS. Pro macOS doporučujeme, abyste používali `WKWebView`.
 
 ### <a name="account-management-api-differences"></a>Rozdíly v rozhraní API pro správu účtů
 
-Při volání metod `acquireToken()` ADAL nebo `acquireTokenSilent()`obdržíte `ADUserInformation` `id_token` objekt obsahující seznam deklarací identity, které představují ověřovaný účet. `ADUserInformation` Navíc vrátína`upn`základědeklarace. `userId` Po počátečním získání interaktivního tokenu ADAL očekává, `userId` že vývojář poskytne všechna tichá volání.
+Při volání metod ADAL `acquireToken()` nebo `acquireTokenSilent()`obdržíte objekt `ADUserInformation` obsahující seznam deklarací identity ze `id_token`, které představují ověřovaný účet. Kromě toho `ADUserInformation` vrátí `userId` na základě deklarace `upn`. Po počátečním získání interaktivního tokenu ADAL očekává, že vývojář poskytne `userId` ve všech tichých voláních.
 
 ADAL neposkytuje rozhraní API k načtení známých identit uživatelů. Spoléhá na to, že aplikace ukládá a spravuje tyto účty.
 
 MSAL poskytuje sadu rozhraní API pro výpis všech účtů známých pro MSAL bez nutnosti získat token.
 
-Podobně jako ADAL MSAL vrací informace o účtu, který obsahuje seznam deklarací identity z `id_token`. Je součástí `MSALAccount` objektu `MSALResult` uvnitř objektu.
+Podobně jako ADAL MSAL vrací informace o účtu, který obsahuje seznam deklarací identity z `id_token`. Je součástí objektu `MSALAccount` uvnitř objektu `MSALResult`.
 
 MSAL poskytuje sadu rozhraní API pro odebrání účtů a tím nepřístupných účtů k aplikacím. Po odebrání účtu se později volání pro získání tokenu vyzve uživatele k provedení interaktivního získání tokenu. Odebrání účtu se vztahuje jenom na klientskou aplikaci, která ji spustila, a neodebere účet z ostatních aplikací spuštěných v zařízení nebo v prohlížeči systému. Tím se zajistí, že uživatel bude i po odhlášení z jednotlivé aplikace i nadále mít v zařízení možnost jednotného přihlašování.
 
-MSAL také vrací identifikátor účtu, který lze použít k tiché vyžádání tokenu později. Identifikátor účtu (přístupný prostřednictvím `identifier` vlastnosti `MSALAccount` v objektu) se ale nedá zobrazit a nemůžete předpokládat, který formát je v, ani ho zkusit interpretovat nebo analyzovat.
+MSAL také vrací identifikátor účtu, který lze použít k tiché vyžádání tokenu později. Identifikátor účtu (přístupný prostřednictvím `identifier` vlastnosti v objektu `MSALAccount`) však nelze zobrazit a nemůžete předpokládat, který formát je v, ani byste se měli pokusit interpretovat nebo analyzovat.
 
 ### <a name="migrating-the-account-cache"></a>Migrace mezipaměti účtu
 
-Při migraci z knihovny ADAL aplikace normálně ukládají knihovny ADAL `userId`, které `identifier` nevyžadují MSAL. V rámci jednorázového kroku migrace může aplikace zadat dotaz na účet MSAL pomocí ID účtu ADAL s následujícím rozhraním API:
+Při migraci z knihovny ADAL aplikace normálně ukládají `userId`ADAL, které nemají `identifier` vyžadované v MSAL. V rámci jednorázového kroku migrace může aplikace zadat dotaz na účet MSAL pomocí ID účtu ADAL s následujícím rozhraním API:
 
 `- (nullable MSALAccount *)accountForUsername:(nonnull NSString *)username error:(NSError * _Nullable __autoreleasing * _Nullable)error;`
 
 Toto rozhraní API přečte mezipaměť MSAL a ADAL, aby našel účet pomocí ADAL userId (UPN).
 
-V případě nalezení účtu by měl vývojář použít účet k tomu, aby se získalo tiché získání tokenu. Prvním získáním pasivního tokenu bude efektivně aktualizovat účet a vývojář Získá identifikátor účtu kompatibilního s MSAL v výsledku MSAL (`identifier`). Pak byste měli použít `identifier` jenom pro vyhledávání účtů pomocí následujícího rozhraní API:
+V případě nalezení účtu by měl vývojář použít účet k tomu, aby se získalo tiché získání tokenu. První pasivní získání tokenu bude efektivně aktualizovat účet a vývojář Získá identifikátor účtu kompatibilního s MSAL ve výsledku MSAL (`identifier`). V takovém případě by se měly pro vyhledávání účtů použít jenom `identifier` pomocí následujícího rozhraní API:
 
 `- (nullable MSALAccount *)accountForIdentifier:(nonnull NSString *)identifier error:(NSError * _Nullable __autoreleasing * _Nullable)error;`
 
-I když je možné i nadále používat ADAL `userId` pro všechny operace v MSAL, protože `userId` je založená na názvu UPN, je v něm více omezení, která mají za následek špatné uživatelské prostředí. Pokud se například hlavní název uživatele změní, uživatel se musí znovu přihlásit. Pro všechny operace doporučujeme, aby všechny aplikace používaly nezobrazitelný účet `identifier` .
+I když je možné i nadále používat `userId` ADAL pro všechny operace v MSAL, protože `userId` je založená na hlavní název uživatele (UPN), je v něm více omezení, která mají za následek špatné uživatelské prostředí. Pokud se například hlavní název uživatele změní, uživatel se musí znovu přihlásit. Pro všechny operace doporučujeme, aby všechny aplikace používaly `identifier` účtu, který neumožňuje nezobrazitelný.
 
 Přečtěte si další informace o [migraci stavu mezipaměti](sso-between-adal-msal-apps-macos-ios.md).
 
@@ -128,18 +129,18 @@ Přečtěte si další informace o [migraci stavu mezipaměti](sso-between-adal-
 
 MSAL zavádí některé změny volání pro získání tokenu:
 
-* Podobně jako ADAL `acquireTokenSilent` , vždy má za následek tichou žádost.
-* Na rozdíl od ADAL `acquireToken` je vždy výsledkem uživatelské rozhraní s uživatelskými možnostmi, a to prostřednictvím webového zobrazení nebo aplikace Microsoft Authenticator. V závislosti na stavu jednotného přihlašování ve službě WebView/Microsoft Authenticator se uživateli může zobrazit výzva k zadání přihlašovacích údajů.
-* V ADAL `acquireToken` se `AD_PROMPT_AUTO` při prvním pokusu o získání tichého tokenu pokusy zobrazí jenom uživatelské rozhraní, pokud se neúspěšná žádost o tichou instalaci. V MSAL se tato logika dá dosáhnout při prvním volání `acquireTokenSilent` a `acquireToken` jenom v případě, že se nezdařila tichá akvizice. To umožňuje vývojářům přizpůsobit uživatelské prostředí před spuštěním interaktivního získání tokenu.
+* Podobně jako ADAL `acquireTokenSilent` vždy vede k tichému požadavku.
+* Na rozdíl od ADAL `acquireToken` vždy výsledky uživatelského rozhraní, které je možné využít, buď prostřednictvím webového zobrazení, nebo Microsoft Authenticator aplikace. V závislosti na stavu jednotného přihlašování ve službě WebView/Microsoft Authenticator se uživateli může zobrazit výzva k zadání přihlašovacích údajů.
+* V ADAL `acquireToken` s `AD_PROMPT_AUTO` nejprve pokusy o získání tichého tokenu a zobrazí pouze uživatelské rozhraní v případě, že se bezobslužný požadavek nezdařil. V MSAL lze tuto logiku dosáhnout prvním voláním `acquireTokenSilent` a pouze volání `acquireToken` v případě, že se nezdařilo tiché získání. To umožňuje vývojářům přizpůsobit uživatelské prostředí před spuštěním interaktivního získání tokenu.
 
 ### <a name="error-handling-differences"></a>Rozdíly v manipulaci s chybami
 
 MSAL poskytuje větší přehlednost mezi chybami, které může zpracovat vaše aplikace a které vyžadují zásah uživatele. Existuje omezený počet chyb, které může vývojář zpracovat:
 
-* `MSALErrorInteractionRequired`: Uživatel musí provést interaktivní požadavek. To může být způsobeno různými důvody, jako je například relace ověřování s vypršenou platností, zásady podmíněného přístupu se změnily, vypršela platnost obnovovacího tokenu nebo byl odvolán, neexistují žádné platné tokeny v mezipaměti atd.
-* `MSALErrorServerDeclinedScopes`: Požadavek nebyl zcela dokončen a některému z oborů nebyl udělen přístup. Může to být způsobeno odmítnutím souhlasu uživatele s jedním nebo více obory.
+* `MSALErrorInteractionRequired`: uživatel musí provést interaktivní požadavek. To může být způsobeno různými důvody, jako je například relace ověřování s vypršenou platností, zásady podmíněného přístupu se změnily, vypršela platnost obnovovacího tokenu nebo byl odvolán, neexistují žádné platné tokeny v mezipaměti atd.
+* `MSALErrorServerDeclinedScopes`: požadavek nebyl zcela dokončen a některému z oborů nebyl udělen přístup. Může to být způsobeno odmítnutím souhlasu uživatele s jedním nebo více obory.
 
-Zpracování všech ostatních chyb v [ `MSALError` seznamu](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) je volitelné. Pomocí informací v těchto chybách můžete zlepšit činnost koncového uživatele.
+Zpracování všech dalších chyb v [seznamu`MSALError`](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) je volitelné. Pomocí informací v těchto chybách můžete zlepšit činnost koncového uživatele.
 
 Další informace o zpracování chyb MSAL najdete v tématu [zpracování výjimek a chyb pomocí MSAL](msal-handling-exceptions.md) .
 
@@ -149,9 +150,9 @@ MSAL, počínaje verzí 0.3.0, poskytuje podporu pro zprostředkované ověřov�
 
 Postup povolení zprostředkovatele pro vaši aplikaci:
 
-1. Zaregistrujte pro aplikaci formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem. Formát identifikátoru URI přesměrování kompatibilního `msauth.<app.bundle.id>://auth`s zprostředkovatelem je. Nahraďte `<app.bundle.id>` ID sady prostředků vaší aplikace. Pokud migrujete z ADAL a vaše aplikace už je zavedená, nemusíte nic dalšího dělat. Váš předchozí identifikátor URI pro přesměrování je plně kompatibilní s MSAL, takže můžete přejít na krok 3.
+1. Zaregistrujte pro aplikaci formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem. Formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem je `msauth.<app.bundle.id>://auth`. Nahraďte `<app.bundle.id>` IDENTIFIKÁTORem sady prostředků vaší aplikace. Pokud migrujete z ADAL a vaše aplikace už je zavedená, nemusíte nic dalšího dělat. Váš předchozí identifikátor URI pro přesměrování je plně kompatibilní s MSAL, takže můžete přejít na krok 3.
 
-2. Do souboru info. plist přidejte schéma identifikátoru URI pro přesměrování vaší aplikace. Pro výchozí identifikátor URI pro přesměrování MSAL je `msauth.<app.bundle.id>`formát. Příklad:
+2. Do souboru info. plist přidejte schéma identifikátoru URI pro přesměrování vaší aplikace. Pro výchozí identifikátor URI pro přesměrování MSAL je formát `msauth.<app.bundle.id>`. Například:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -170,7 +171,7 @@ Postup povolení zprostředkovatele pro vaši aplikaci:
     </array>
     ```
 
-4. Přidejte následující do souboru AppDelegate. m pro zpracování zpětných volání: Cíl-C:
+4. Přidejte následující do souboru AppDelegate. m pro zpracování zpětných volání: cíl-C:
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options`
@@ -179,7 +180,7 @@ Postup povolení zprostředkovatele pro vaši aplikaci:
     }
     ```
     
-    Swift:
+    SWIFT
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -207,7 +208,7 @@ V macOS se MSAL dá dosáhnout jednotného přihlašování s dalšími MSAL pro
 
 MSAL v iOS taky podporuje dva další typy jednotného přihlašování:
 
-* SSO přes webový prohlížeč. MSAL pro iOS podporuje `ASWebAuthenticationSession`, který umožňuje jednotné přihlašování prostřednictvím souborů cookie sdílených mezi ostatními aplikacemi na zařízení a konkrétně prohlížečem Safari.
+* SSO přes webový prohlížeč. MSAL pro iOS podporuje `ASWebAuthenticationSession`, která poskytuje jednotné přihlašování přes soubory cookie sdílené mezi ostatními aplikacemi na zařízení a speciálně v prohlížeči Safari.
 * SSO prostřednictvím zprostředkovatele ověřování. V zařízení se systémem iOS Microsoft Authenticator funguje jako zprostředkovatel ověřování. Může docházet k zásadám podmíněného přístupu, jako je třeba vyžadování vyhovujícího zařízení, a poskytuje jednotné přihlašování pro registrovaná zařízení. MSAL sady SDK počínaje verzí 0.3.0 podporují ve výchozím nastavení zprostředkovatele.
 
 ## <a name="intune-mam-sdk"></a>Sada Intune MAM SDK
@@ -229,9 +230,9 @@ ADAL a MSAL koexistence mezi více aplikacemi je plně podporovaná.
 
 Nemusíte měnit stávající aplikaci AAD, abyste přešli na MSAL a povolili účty AAD. Pokud však vaše aplikace založené na knihovně ADAL nepodporuje zprostředkované ověřování, bude nutné před přechodem na MSAL zaregistrovat nový identifikátor URI přesměrování pro aplikaci.
 
-Identifikátor URI přesměrování by měl být v tomto formátu `msauth.<app.bundle.id>://auth`:. Nahraďte `<app.bundle.id>` ID sady prostředků vaší aplikace. Zadejte identifikátor URI přesměrování v [Azure Portal](https://aka.ms/MobileAppReg).
+Identifikátor URI přesměrování by měl být v tomto formátu: `msauth.<app.bundle.id>://auth`. Nahraďte `<app.bundle.id>` IDENTIFIKÁTORem sady prostředků vaší aplikace. Zadejte identifikátor URI přesměrování v [Azure Portal](https://aka.ms/MobileAppReg).
 
-Jenom pro iOS: Pokud chcete podporovat ověřování na základě certifikátů, musí se v aplikaci zaregistrovat Další identifikátor URI pro přesměrování a Azure Portal v tomto formátu: `msauth://code/<broker-redirect-uri-in-url-encoded-form>`. Například `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`.
+Pouze pro iOS: aby bylo možné podporovat ověřování na základě certifikátů, je nutné v aplikaci zaregistrovat Další identifikátor URI pro přesměrování a Azure Portal v následujícím formátu: `msauth://code/<broker-redirect-uri-in-url-encoded-form>`. Například `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`.
 
 Doporučujeme, aby všechny aplikace registrovaly identifikátory URI pro přesměrování.
 
@@ -254,7 +255,7 @@ Pouze pro iOS přidejte schéma identifikátoru URI přesměrování vaší apli
 </array>
 ```
 
-Do souboru info. plist `LSApplicationQueriesSchemes`vaší aplikace přidejte následující schémata.
+Do souboru info. plist vaší aplikace přidejte následující schémata `LSApplicationQueriesSchemes`.
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>
@@ -277,7 +278,7 @@ Cíl-C:
 }
 ```
 
-Swift:
+SWIFT
 
 ```swift
 func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -285,7 +286,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 }
 ```
 
-**Pokud používáte Xcode 11**, měli byste místo toho umístit MSAL zpět do `SceneDelegate` souboru.
+**Pokud používáte Xcode 11**, měli byste místo toho umístit MSAL zpět do souboru `SceneDelegate`.
 Pokud podporujete UISceneDelegate i UIApplicationDelegate pro zajištění kompatibility se staršími systémy iOS, je nutné MSAL zpětné volání umístit do obou souborů.
 
 Cíl-C:
@@ -301,7 +302,7 @@ Cíl-C:
  }
 ```
 
-Swift:
+SWIFT
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -326,12 +327,12 @@ Ve výchozím nastavení MSAL ukládá do mezipaměti tokeny vaší aplikace v �
 
 Postup povolení ukládání tokenů do mezipaměti:
 1. Ujistěte se, že je aplikace správně podepsaná.
-2. Přejít na nastavení projektu Xcode **karta** > možnosti >**Povolit sdílení řetězce klíčů**
-3. Klikněte **+** a zadejte následující položku **skupin klíčů** : 3. a pro iOS zadejte `com.microsoft.adalcache` 3. b pro MacOS ENTER.`com.microsoft.identity.universalstorage`
+2. Přejít na nastavení projektu Xcode > **kartu možnosti** > **Povolení sdílení řetězce klíčů**
+3. Klikněte na **+** a zadejte následující položku **skupin klíčů** : 3. a pro iOS zadejte `com.microsoft.adalcache` 3. b pro MacOS ENTER `com.microsoft.identity.universalstorage`
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>Vytvoření MSALPublicClientApplication a přepnutí na jeho acquireToken a acquireTokeSilent volání
 
-Můžete vytvořit `MSALPublicClientApplication` pomocí následujícího kódu:
+`MSALPublicClientApplication` můžete vytvořit pomocí následujícího kódu:
 
 Cíl-C:
 
@@ -344,7 +345,7 @@ MSALPublicClientApplication *application =
                                                      error:&error];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
@@ -367,7 +368,7 @@ NSError *error = nil;
 MSALAccount *account = [application accountForIdentifier:accountIdentifier error:&error];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 // definitions that need to be initialized
@@ -393,7 +394,7 @@ NSError *error = nil;
 NSArray<MSALAccount *> *accounts = [application allAccounts:&error];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let application: MSALPublicClientApplication!
@@ -435,7 +436,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 }];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let application: MSALPublicClientApplication!

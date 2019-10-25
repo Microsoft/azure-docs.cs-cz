@@ -1,6 +1,6 @@
 ---
-title: Příjem událostí pomocí Apache Storm – Azure Event Hubs | Dokumentace Microsoftu
-description: Tento článek obsahuje informace o tom, jak příjem událostí ze služby Azure Event Hubs pomocí Apache Storm.
+title: Příjem událostí pomocí Apache Storm – Azure Event Hubs | Microsoft Docs
+description: Tento článek poskytuje informace o tom, jak přijímat události z Azure Event Hubs pomocí Apache Storm.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -15,40 +15,40 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 75a96127c48186befc48b2240f78e49cd5914239
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eaa461dd0c4ef6bd9ed0ae4379a710ee100929d2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343409"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800198"
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Příjem událostí ze služby Event Hubs pomocí Apache Storm
+# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Příjem událostí z Event Hubs pomocí Apache Storm
 
-[Apache Storm](https://storm.incubator.apache.org) je distribuovaný výpočet v reálném čase, která zjednodušuje spolehlivé zpracování streamů dat bez vazby. Tato část ukazuje, jak pomocí Azure Event Hubs Storm spout příjem událostí ze služby Event Hubs. Použití Apache Storm, můžete události rozdělit mezi více procesů, které jsou hostované v různých uzlech. Integrace služby Event Hubs se Stormem zjednodušuje spotřebu událostí tím, že transparentně vytváření kontrolních bodů průběhu pomocí instalace Zookeeper pro Storm, spravuje trvalé kontrolní body a paralelní příjmy ze služby Event Hubs.
+[Apache Storm](https://storm.incubator.apache.org) je distribuovaný výpočetní systém v reálném čase, který zjednodušuje spolehlivé zpracování nevázaných datových proudů dat. V této části se dozvíte, jak pro příjem událostí z Event Hubs použít Spout s využitím Azure Event Hubs. Pomocí Apache Storm můžete rozdělit události mezi více procesů hostovaných v různých uzlech. Event Hubs integrace se zaplavou zjednodušuje spotřebu událostí transparentním prostupným vytvářením kontrolních bodů pomocí instalace Zookeeper, správu trvalých kontrolních bodů a paralelních přijímání z Event Hubs.
 
-Další informace o službě Event Hubs přijímat vzory, najdete v článku [Přehled služby Event Hubs][Event Hubs overview].
+Další informace o Event Hubs vzorech přijímání najdete v [přehledu Event Hubs][Event Hubs overview].
 
-## <a name="prerequisites"></a>Požadavky
-Než začnete pomocí rychlého startu, **vytvořit obor názvů služby Event Hubs a centra událostí**. Použití [webu Azure portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). 
+## <a name="prerequisites"></a>Předpoklady
+Než začnete s rychlým startem, **vytvořte obor názvů Event Hubs a centrum událostí**. Použijte [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). 
 
-## <a name="create-project-and-add-code"></a>Vytvořte projekt a přidejte kód
+## <a name="create-project-and-add-code"></a>Vytvořit projekt a přidat kód
 
-Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která je součástí spout Event Hubs, která je již k dispozici.
+Tento kurz používá instalaci [HDInsight][HDInsight Storm] , která je součástí Event Hubs Spout již k dispozici.
 
-1. Postupujte podle [Storm v HDInsight – Začínáme](../hdinsight/storm/apache-storm-overview.md) postup pro vytvoření nového clusteru HDInsight a připojte se k němu přes vzdálenou plochu.
-2. Kopírovat `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` soubor do svého místního vývojového prostředí. Tato položka obsahuje spout storm události.
-3. Použijte následující příkaz k instalaci balíčku do místního úložiště Maven. To umožňuje přidat jako odkaz v projektu Storm v pozdějším kroku.
+1. Pokud chcete vytvořit nový cluster HDInsight a připojit se k němu přes vzdálenou plochu, postupujte podle pokynů v části Začínáme s využitím [HDInsight](../hdinsight/storm/apache-storm-overview.md) .
+2. Zkopírujte soubor `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` do svého místního vývojového prostředí. Obsahuje události-Spout.
+3. K instalaci balíčku do místního úložiště Maven použijte následující příkaz. To umožňuje, abyste ho v pozdějším kroku přidali jako odkaz v projektu zaplavení.
 
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. V nástroji Eclipse vytvořte nový projekt Maven (klikněte na tlačítko **souboru**, pak **nový**, pak **projektu**).
+4. V zatmění vytvořte nový projekt Maven (klikněte na **soubor**, pak na **Nový**a pak na **projekt**).
    
-    ![Soubor -> Nový -> Projekt][12]
-5. Vyberte **použijte výchozí umístění pracovního prostoru**, pak klikněte na tlačítko **další**
-6. Vyberte **maven-archetype-quickstart** archetype, pak klikněte na tlačítko **další**
-7. Vložit **GroupId** a **ArtifactId**, pak klikněte na tlačítko **dokončit**
-8. V **pom.xml**, přidejte následující závislosti v `<dependency>` uzlu.
+    ![Soubor-> Nový projekt >][12]
+5. Vyberte **použít výchozí umístění pracovního prostoru**a pak klikněte na **Další** .
+6. Vyberte **Maven-Archetype – rychlý Start** Archetype a potom klikněte na **Další** .
+7. Vložte ID **skupiny** a **ArtifactId**a potom klikněte na **Dokončit** .
+8. V **pom. XML**přidejte následující závislosti do uzlu `<dependency>`.
 
     ```xml  
     <dependency>
@@ -80,7 +80,7 @@ Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která je 
     </dependency>
     ```
 
-9. V **src** složce vytvořte soubor s názvem **Config.properties** a zkopírujte do něj následující obsah, nahraďte `receive rule key` a `event hub name` hodnoty:
+9. Ve složce **Src** vytvořte soubor s názvem **config. Properties** a zkopírujte následující obsah a nahraďte `receive rule key` a `event hub name` hodnoty:
 
     ```java
     eventhubspout.username = ReceiveRule
@@ -95,8 +95,8 @@ Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která je 
     eventhubspout.checkpoint.interval = 10
     eventhub.receiver.credits = 10
     ```
-    Hodnota pro **eventhub.receiver.credits** Určuje, kolik události jsou dávce před uvolněním do kanálu Storm. Z důvodu zjednodušení v tomto příkladu nastaví tuto hodnotu 10. V produkčním prostředí to je obvykle třeba nastavit na vyšší hodnoty; například 1024.
-10. Vytvořit novou třídu s názvem **LoggerBolt** následujícím kódem:
+    Hodnota pro **eventhub. Receiver. kredity** určuje, kolik událostí je dávkování dávek před jejich uvolněním do kanálu pro zaplavení. V zájmu jednoduchosti tento příklad nastaví tuto hodnotu na 10. V produkčním prostředí by mělo být obvykle nastaveno na vyšší hodnoty; například 1024.
+10. Vytvořte novou třídu s názvem **LoggerBolt** s následujícím kódem:
     
     ```java
     import java.util.Map;
@@ -135,8 +135,8 @@ Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která je 
     }
     ```
     
-    Touto funkcí bolt Storm zaznamená obsah přijatých událostí. To lze snadno rozšířit pro uložení řazených kolekcí členů ve službě úložiště. [Storm v HDInsight pomocí příkladu centra událostí] používá tento stejný přístup k ukládání dat do služby Azure Storage a Power BI.
-11. Vytvořte třídu s názvem **LogTopology** následujícím kódem:
+    Tento šroub zaznamená obsah přijatých událostí. Tuto možnost lze snadno rozšířit tak, aby ukládala řazené kolekce členů do služby úložiště. V [Příklad HDInsight s využitím centra událostí] používá stejný přístup k ukládání dat do Azure Storage a Power BI.
+11. Vytvořte třídu s názvem **LogTopology** s následujícím kódem:
     
     ```java
     import java.io.FileReader;
@@ -240,9 +240,9 @@ Tento kurz používá [HDInsight Storm] [ HDInsight Storm] instalace, která je 
     }
     ```
 
-    Tato třída vytvoří nové spout Event Hubs pomocí vlastností v konfiguračním souboru k vytvoření instance této komponenty. Je důležité si uvědomit, že tento příklad vytvoří libovolný počet spoutů úlohy jako počet oddílů v Centru událostí, aby bylo možné používat maximální paralelismu tohoto centra událostí dovolují.
+    Tato třída vytvoří novou Event Hubs Spout pomocí vlastností v konfiguračním souboru pro vytvoření instance. Je důležité si uvědomit, že tento příklad vytvoří tolik úloh spoutů jako počet oddílů v centru událostí, aby bylo možné použít maximální paralelismus povolenou pro toto centrum událostí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
 * [Přehled služby Event Hubs][Event Hubs overview]
@@ -252,7 +252,7 @@ Další informace o službě Event Hubs najdete na následujících odkazech:
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
-[Storm v HDInsight pomocí příkladu centra událostí]: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
+[Příklad HDInsight s využitím centra událostí]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 
 <!-- Images -->
 

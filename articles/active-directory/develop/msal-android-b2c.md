@@ -1,5 +1,6 @@
 ---
-title: Azure AD B2C (Microsoft Authentication Library pro Android) | Azure
+title: Azure AD B2C (Microsoft Authentication Library pro Android)
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních otázkách při použití Azure AD B2C s knihovnou Microsoft Authentication Library pro Android (MSAL. Svém
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c55356b19c8150c76858efb4edc593406c1722a4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8b5061f1ab341e5872dfa82c9f5c5b133ae40bdf
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679734"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803234"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Použití MSAL pro Android s B2C
 
@@ -38,7 +39,7 @@ Daná aplikace B2C má dvě zásady:
 - Upravit profil
     * Nazývá se `B2C_1_EditProfile`
 
-Konfigurační soubor pro aplikaci deklaruje dvě `authorities`. Jednu pro každou zásadu. Vlastnost `type` každého orgánu je `B2C`.
+Konfigurační soubor pro aplikaci deklaruje dvě `authorities`. Jednu pro každou zásadu. Vlastnost `type` jednotlivých autorit je `B2C`.
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json
@@ -58,11 +59,11 @@ Konfigurační soubor pro aplikaci deklaruje dvě `authorities`. Jednu pro každ
 }
 ```
 
-@No__t-0 musí být registrována v konfiguraci aplikace a také v `AndroidManifest.xml` pro podporu přesměrování během [toku udělení autorizačního kódu](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code).
+`redirect_uri` musí být registrována v konfiguraci aplikace a také v `AndroidManifest.xml` k podpoře přesměrování během [toku udělení autorizačního kódu](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code).
 
 ## <a name="initialize-ipublicclientapplication"></a>Inicializovat IPublicClientApplication
 
-`IPublicClientApplication` je vytvořen metodou továrního nastavení, které umožní, aby se konfigurace aplikace analyzovala asynchronně.
+`IPublicClientApplication` je vytvořen metodou továrního nastavení, aby bylo možné konfiguraci aplikace analyzovat asynchronně.
 
 ```java
 PublicClientApplication.createMultipleAccountPublicClientApplication(
@@ -85,7 +86,7 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(
 
 ## <a name="interactively-acquire-a-token"></a>Interaktivně získat token
 
-Chcete-li získat token interaktivně pomocí MSAL, sestavte instanci `AcquireTokenParameters` a poskytněte ji metodě `acquireToken`. Žádost o token níže používá autoritu @no__t 0.
+Chcete-li získat token interaktivně pomocí MSAL, sestavte instanci `AcquireTokenParameters` a poskytněte ji do metody `acquireToken`. Níže uvedený požadavek na token používá `default` autorita.
 
 ```java
 IMultipleAccountPublicClientApplication pca = ...; // Initialization not shown
@@ -116,7 +117,7 @@ pca.acquireToken(parameters);
 
 ## <a name="silently-renew-a-token"></a>Bezobslužné obnovení tokenu
 
-K tiché získání tokenu pomocí MSAL vytvořte instanci `AcquireTokenSilentParameters` a poskytněte ji metodě `acquireTokenSilentAsync`. Na rozdíl od metody `acquireToken` je nutné zadat `authority` pro bezobslužné získání tokenu.
+K tiché získání tokenu pomocí MSAL vytvořte instanci `AcquireTokenSilentParameters` a poskytněte ji do metody `acquireTokenSilentAsync`. Na rozdíl od metody `acquireToken` musí být `authority` určena k tiché získání tokenu.
 
 ```java
 IMultilpeAccountPublicClientApplication pca = ...; // Initialization not shown
@@ -143,7 +144,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Zadat zásadu
 
-Vzhledem k tomu, že zásady v B2C jsou reprezentovány jako samostatné autority, při vytváření parametrů `acquireToken` nebo `acquireTokenSilent` je dosaženo volání jiné jiné než výchozí zásady, a to zadáním klauzule `fromAuthority`.  Příklad:
+Vzhledem k tomu, že zásady v B2C jsou reprezentovány jako samostatné autority, je při sestavování `acquireToken` nebo `acquireTokenSilent` parametrů vyvoláno jiné jiné než výchozí zásady, a to zadáním klauzule `fromAuthority`.  Například:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -161,7 +162,7 @@ Tok uživatele registrace nebo přihlašování k místnímu účtu zobrazuje**z
 
 Místo toho se do vaší aplikace vrátí kód chyby `AADB2C90118`. Vaše aplikace by měla zpracovat tento kód chyby spuštěním konkrétního toku uživatele, který resetuje heslo.
 
-Pokud chcete zachytit kód chyby resetování hesla, můžete použít tuto implementaci v rámci `AuthenticationCallback`:
+Pokud chcete zachytit kód chyby resetování hesla, můžete v `AuthenticationCallback`použít tuto implementaci:
 
 ```java
 new AuthenticationCallback() {
@@ -189,7 +190,7 @@ new AuthenticationCallback() {
 
 ## <a name="use-iauthenticationresult"></a>Použití IAuthenticationResult
 
-Úspěšné získání tokenu má za následek @no__t objekt-0. Obsahuje přístupový token, deklarace identity uživatelů a metadata.
+Výsledkem úspěchu získání tokenu je objekt `IAuthenticationResult`. Obsahuje přístupový token, deklarace identity uživatelů a metadata.
 
 ### <a name="get-the-access-token-and-related-properties"></a>Získání přístupového tokenu a souvisejících vlastností
 
@@ -219,7 +220,7 @@ String id = account.getId();
 // Get the IdToken Claims
 //
 // For more information about B2C token claims, see reference documentation
-// https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-tokens
+// https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens
 Map<String, ?> claims = account.getClaims();
 
 // Get the 'preferred_username' claim through a convenience function
@@ -231,15 +232,15 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>IdToken deklarace identity
 
-Deklarace identity vrácené v IdToken jsou vyplněné pomocí služby tokenů zabezpečení (STS), nikoli pomocí MSAL. V závislosti na použitém zprostředkovateli identity (IdP) mohou chybět některé deklarace identity. Některé zprostředkovatelů identity aktuálně neposkytují deklaraci `preferred_username`. Vzhledem k tomu, že je tato deklarace identity používána MSAL pro ukládání do mezipaměti, se na svém místě používá zástupný symbol `MISSING FROM THE TOKEN RESPONSE`. Další informace o deklaracích B2C IdToken najdete v tématu [Přehled tokenů v Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims).
+Deklarace identity vrácené v IdToken jsou vyplněné pomocí služby tokenů zabezpečení (STS), nikoli pomocí MSAL. V závislosti na použitém zprostředkovateli identity (IdP) mohou chybět některé deklarace identity. Některé zprostředkovatelů identity aktuálně neposkytují deklaraci `preferred_username`. Vzhledem k tomu, že je tato deklarace identity používána MSAL pro ukládání do mezipaměti, se na svém místě používá zástupná hodnota `MISSING FROM THE TOKEN RESPONSE`. Další informace o deklaracích B2C IdToken najdete v tématu [Přehled tokenů v Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims).
 
 ## <a name="managing-accounts-and-policies"></a>Správa účtů a zásad
 
 B2C považuje každou zásadu za samostatnou autoritu. Přístupové tokeny, aktualizační tokeny a tokeny ID vrácené z jednotlivých zásad proto nejsou zaměnitelné. To znamená, že každá zásada vrátí samostatný objekt `IAccount`, jehož tokeny nelze použít k vyvolání jiných zásad.
 
-Každá zásada přidá do mezipaměti `IAccount` pro každého uživatele. Pokud se uživatel přihlásí k aplikaci a vyvolá dvě zásady, budou mít dvě `IAccount`s. Chcete-li tohoto uživatele odebrat z mezipaměti, je nutné pro každou zásadu volat `removeAccount()`.
+Každá zásada přidá `IAccount` do mezipaměti pro každého uživatele. Pokud se uživatel přihlásí k aplikaci a vyvolá dvě zásady, budou mít dvě `IAccount`. Chcete-li tohoto uživatele odebrat z mezipaměti, je nutné volat `removeAccount()` pro každou zásadu.
 
-Při obnovování tokenů pro zásadu s `acquireTokenSilent` zadejte stejný `IAccount`, který byl vrácen z předchozích vyvolání zásady do `AcquireTokenSilentParameters`. Poskytnutí účtu vráceného jinou zásadou způsobí chybu.
+Při obnovování tokenů pro zásadu s `acquireTokenSilent`zadejte stejný `IAccount`, který byl vrácen z předchozích vyvolání zásady do `AcquireTokenSilentParameters`. Poskytnutí účtu vráceného jinou zásadou způsobí chybu.
 
 ## <a name="next-steps"></a>Další kroky
 

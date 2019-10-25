@@ -1,5 +1,6 @@
 ---
-title: Přizpůsobení deklarací tokenů SAML pro podnikové aplikace v Azure AD | Microsoft Docs
+title: Přizpůsobení deklarací tokenů SAML pro podnikové aplikace v Azure AD
+titleSuffix: Microsoft identity platform
 description: Naučte se přizpůsobit deklarace identity vydané v tokenu SAML pro podnikové aplikace v Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4f26c82d4cda6ce3d8bf01c7fd52fa579e86dcf
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
-ms.translationtype: MT
+ms.openlocfilehash: a9994d5f882e7bf27ac822a69c4310bc7c6fabe1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240232"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803455"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -59,7 +60,7 @@ Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude Azure AD vystavo
 
 V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybrat jednu z následujících možností.
 
-| Formát NameID | Description |
+| Formát NameID | Popis |
 |---------------|-------------|
 | **Výchozí** | Azure AD bude používat výchozí formát zdroje. |
 | **Perzistentní** | Služba Azure AD bude používat jako formát NameID jako trvalá. |
@@ -72,9 +73,9 @@ Dočasná NameID je také podporována, ale v rozevíracím seznamu není k disp
 
 Vyberte požadovaný zdroj pro deklaraci identity `NameIdentifier` (nebo NameID). Můžete vybrat z následujících možností.
 
-| Jméno | Description |
+| Name (Název) | Popis |
 |------|-------------|
-| E-mailu | E-mailová adresa uživatele |
+| E-mail | E-mailová adresa uživatele |
 | Třídy | Hlavní název uživatele (UPN) uživatele |
 | onpremisessamaccount | Název účtu SAM, který byl synchronizovaný z místní služby Azure AD |
 | objektu | objectID uživatele v Azure AD |
@@ -102,10 +103,10 @@ Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakou
 
 Můžete také použít funkce transformace deklarací identity.
 
-| Funkce | Description |
+| Funkce | Popis |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com). |
-| **Join ()** | Připojí k atributu ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například jako hodnotu identifikátoru uživatele vyberete e-mail (joe_smith@contoso.com) a jako ověřenou doménu vyberete contoso.onmicrosoft.com, výsledkem bude joe_smith@contoso.onmicrosoft.com. |
+| **Join ()** | Připojí k atributu ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například jako hodnotu identifikátoru uživatele vyberete e-mail (joe_smith@contoso.com) a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com. |
 | **ToLower ()** | Převede znaky vybraného atributu na malá písmena. |
 | **ToUpper ()** | Převede znaky vybraného atributu na velká písmena. |
 
@@ -121,7 +122,7 @@ Přidání deklarací specifických pro aplikaci:
 
 Můžete také použít funkce transformace deklarací identity.
 
-| Funkce | Description |
+| Funkce | Popis |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com). |
 | **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. |

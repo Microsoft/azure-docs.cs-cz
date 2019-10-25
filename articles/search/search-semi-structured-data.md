@@ -1,60 +1,59 @@
 ---
-title: 'Kurz REST: Indexování částečně strutured dat v objektech blob JSON – Azure Search'
-description: Naučte se indexovat a prohledávat částečně strukturované objekty blob služby Azure JSON pomocí Azure Search rozhraní REST API a post.
-author: HeidiSteen
+title: 'Kurz REST: indexování částečně strutured dat v objektech blob JSON'
+titleSuffix: Azure Cognitive Search
+description: Naučte se indexovat a prohledávat částečně strukturované objekty blob služby Azure JSON pomocí Azure Kognitivní hledání rozhraní REST API a post.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: cb9c97efd62a56ad0eac49956f11fb422a448194
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 569289a2d750f96423bd03ac82cb9e33f893ee15
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647860"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794293"
 ---
-# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Kurz REST: Indexujte a prohledejte částečně strukturovaná data (bloby JSON) v Azure Search
+# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>Kurz REST: indexování a hledání částečně strukturovaných dat (blobů JSON) v Azure Kognitivní hledání
 
-Azure Search může indexovat dokumenty a pole JSON ve službě Azure Blob Storage pomocí [indexeru](search-indexer-overview.md), který ví, jak číst částečně strukturovaná data. Částečně strukturovaná data obsahují značky nebo označení oddělující obsah v rámci dat. Rozdělí rozdíl mezi nestrukturovanými daty, která musí být plně indexována, a formálně strukturovaná data, která jsou v datovém modelu, například ve schématu relační databáze, která lze indexovat podle jednotlivých polí.
+Azure Kognitivní hledání může indexovat dokumenty JSON a pole ve službě Azure Blob Storage s využitím [indexeru](search-indexer-overview.md) , který ví, jak číst částečně strukturovaná data. Částečně strukturovaná data obsahují značky nebo označení oddělující obsah v rámci dat. Rozdělí rozdíl mezi nestrukturovanými daty, která musí být plně indexována, a formálně strukturovaná data, která jsou v datovém modelu, například ve schématu relační databáze, která lze indexovat podle jednotlivých polí.
 
-V tomto kurzu můžete pomocí [rozhraní REST api Azure Search](https://docs.microsoft.com/rest/api/searchservice/) a klienta REST provádět následující úlohy:
+V tomto kurzu použijete [rozhraní REST API pro Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/) a klienta REST k provádění následujících úloh:
 
 > [!div class="checklist"]
-> * Konfigurace zdroje dat Azure Search pro kontejner objektů blob Azure
-> * Vytvoření indexu Azure Search, který bude obsahovat prohledávatelný obsah
+> * Konfigurace zdroje dat služby Azure Kognitivní hledání pro kontejner objektů blob Azure
+> * Vytvoření indexu služby Azure Kognitivní hledání, který bude obsahovat prohledávatelný obsah
 > * Konfigurace a spuštění indexeru pro čtení kontejneru a extrakce vyhledávaného obsahu z úložiště objektů BLOB v Azure
 > * Prohledávání právě vytvořeného indexu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu se používají následující služby, nástroje a data. 
 
-[Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu. 
+[Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu. 
 
 [Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat.
 
-[Aplikace po pracovní ploše](https://www.getpostman.com/) pro odesílání požadavků na Azure Search.
+[Aplikace po pracovní ploše](https://www.getpostman.com/) pro odesílání požadavků do Azure kognitivní hledání.
 
 [Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) obsahuje data použitá v tomto kurzu. Stáhnout a rozbalit tento soubor do vlastní složky. Data pocházejí z [ClinicalTrials.gov](https://clinicaltrials.gov/ct2/results), která jsou pro tento kurz převedená na JSON.
 
 ## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![Získání koncového bodu http a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu http a přístupového klíče")
+![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
 
 1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) , který bude obsahovat vzorová data. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
 
@@ -64,13 +63,13 @@ Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odesla
 
 1. Přejděte do složky, která obsahuje ukázkové soubory. Vyberte všechny z nich a pak klikněte na **nahrát**.
 
-   ![Nahrání souborů](media/search-semi-structured-data/clinicalupload.png "Nahrání souborů")
+   ![Nahrání souborů](media/search-semi-structured-data/clinicalupload.png "Nahrávání souborů")
 
 Po dokončení nahrávání by se soubory měly zobrazit v samostatné podsložce uvnitř kontejneru dat.
 
 ## <a name="set-up-postman"></a>Nastavení nástroje Postman
 
-Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [zkoumání Azure Search rozhraní REST API pomocí post](search-get-started-postman.md).
+Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [prozkoumání rozhraní REST API služby Azure kognitivní hledání pomocí služby post](search-get-started-postman.md).
 
 Metoda žádosti pro každé volání v tomto kurzu je **post**. Klíče hlaviček jsou Content-type a api-key. Hodnoty těchto klíčů hlaviček jsou application/json a váš klíč správce (klíč správce je zástupná hodnota za váš primární klíč služby Search). Samotný obsah volání se vkládá do textu požadavku. V závislosti na klientovi, kterého používáte, se může způsob vytváření dotazu mírně lišit, ale toto jsou základní informace.
 
@@ -84,7 +83,7 @@ Ve svém klientovi REST proveďte následující tři volání rozhraní API.
 
 ## <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
-[Rozhraní API pro vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)vytvoří objekt Azure Search, který určuje, jaká data se mají indexovat.
+[Rozhraní API pro vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)vytvoří objekt Azure kognitivní hledání, který určuje, jaká data se mají indexovat.
 
 Koncový bod tohoto volání je `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search. 
 
@@ -92,7 +91,7 @@ V případě tohoto volání musí tělo žádosti zahrnovat název vašeho úč
 
   ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/storagekeys.png)
 
-Před provedením volání `[storage account name]`nezapomeňte `[storage account key]`nahradit, `[blob container name]` a v těle volání.
+Před provedením volání nezapomeňte v těle volání nahradit `[storage account name]`, `[storage account key]`a `[blob container name]`.
 
 ```json
 {
@@ -127,7 +126,7 @@ Odpověď by měla vypadat nějak takto:
 
 ## <a name="create-an-index"></a>Vytvoření indexu
     
-Druhé volání je [vytvořit index rozhraní API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)a vytvoří Azure Search index, který ukládá všechna hledaná data. Index určuje všechny parametry a jejich atributy.
+Druhé volání je [vytvořit index API](https://docs.microsoft.com/rest/api/searchservice/create-indexer), což vytvoří index služby Azure kognitivní hledání, který ukládá všechna hledaná data. Index určuje všechny parametry a jejich atributy.
 
 Adresa URL pro toto volání je `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search.
 
@@ -286,11 +285,11 @@ Parametr `$filter` pracuje pouze s metadaty, která se při vytváření indexu 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
+Nejrychlejší způsob vyčištění po kurzu odstraněním skupiny prostředků, která obsahuje službu Azure Kognitivní hledání. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Na portálu je název skupiny prostředků na stránce Přehled služby Azure Kognitivní hledání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Existuje několik přístupů a několik možností indexování objektů BLOB JSON. V dalším kroku si můžete projít a otestovat různé možnosti, abyste viděli, co nejlépe vyhovuje vašemu scénáři.
 
 > [!div class="nextstepaction"]
-> [Postup indexování objektů BLOB JSON pomocí Azure Search indexeru objektů BLOB](search-howto-index-json-blobs.md)
+> [Indexování objektů BLOB JSON pomocí indexeru Azure Kognitivní hledání BLOB](search-howto-index-json-blobs.md)

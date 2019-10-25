@@ -1,24 +1,23 @@
 ---
-title: Použití nástroje Průzkumník služby Search pro dotazování dat v Azure Portal-Azure Search
-description: Průzkumník služby Search je integrovaný do Azure Portal, který je užitečný pro zkoumání obsahu a ověřování dotazů v Azure Search. Zadejte řetězce pro hledání termínu nebo fráze nebo plně kvalifikované výrazy hledání s pokročilou syntaxí.
+title: Použití nástroje Průzkumník služby Search pro dotazování na data v Azure Portal
+titleSuffix: Azure Cognitive Search
+description: Průzkumník služby Search je integrovaný do Azure Portal, který je užitečný pro zkoumání obsahu a ověřování dotazů v Azure Kognitivní hledání. Zadejte řetězce pro hledání termínu nebo fráze nebo plně kvalifikované výrazy hledání s pokročilou syntaxí.
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/20/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 0bb50bd50c58b85f1d5de100c34d00d114a9ed77
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178135"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792964"
 ---
-# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>Použití Průzkumníka služby Search v Azure Portal pro dotazování dokumentů v Azure Search 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>Použití Průzkumníka služby Search v Azure Portal pro dotazování dokumentů v Azure Kognitivní hledání 
 
-V tomto článku se dozvíte, jak zadat dotaz na existující index Azure Search pomocí **Průzkumníka služby Search** v Azure Portal. Můžete spustit Průzkumníka služby Search na panelu příkazů a odeslat jednoduché nebo úplné výrazy dotazů Lucene do libovolného existujícího indexu ve vaší službě. 
+V tomto článku se dozvíte, jak pomocí **Průzkumníka služby Search** v Azure Portal dotazovat existující index služby Azure kognitivní hledání. Můžete spustit Průzkumníka služby Search na panelu příkazů a odeslat jednoduché nebo úplné výrazy dotazů Lucene do libovolného existujícího indexu ve vaší službě. 
 
    ![Příkaz Průzkumníka vyhledávání na portálu](./media/search-explorer/search-explorer-cmd2.png "Příkaz Průzkumníka vyhledávání na portálu")
 
@@ -28,9 +27,9 @@ V následujících příkladech se předpokládá, že je předdefinovaný ukáz
 
 ### <a name="example-1---empty-search"></a>Příklad 1 – prázdné hledání
 
-Pokud se chcete podívat na obsah, spusťte prázdné vyhledávání kliknutím na **Hledat** bez zadání podmínek. Prázdné hledání je užitečné jako první dotaz, protože vrací celé dokumenty, abyste mohli zkontrolovat složení dokumentu. Při prázdném hledání není k dispozici žádné pořadí hledání a dokumenty se vrátí v libovolném pořadí`"@search.score": 1` (pro všechny dokumenty). Ve výchozím nastavení jsou v žádosti o vyhledávání vráceny dokumenty 50.
+Pokud se chcete podívat na obsah, spusťte prázdné vyhledávání kliknutím na **Hledat** bez zadání podmínek. Prázdné hledání je užitečné jako první dotaz, protože vrací celé dokumenty, abyste mohli zkontrolovat složení dokumentu. Při prázdném hledání není k dispozici žádné pořadí hledání a dokumenty se vrátí v libovolném pořadí (`"@search.score": 1` pro všechny dokumenty). Ve výchozím nastavení jsou v žádosti o vyhledávání vráceny dokumenty 50.
 
-Ekvivalentní syntaxe pro prázdné hledání je `*` nebo. `search=*`
+Ekvivalentní syntaxe pro prázdné hledání je `*` nebo `search=*`.
 
    ```Input
    search=*
@@ -42,7 +41,7 @@ Ekvivalentní syntaxe pro prázdné hledání je `*` nebo. `search=*`
 
 ### <a name="example-2---free-text-search"></a>Příklad 2 – bezplatné hledání textu
 
-Dotazy bezplatného formuláře s operátory nebo bez nich jsou užitečné pro simulaci uživatelem definovaných dotazů odeslaných z vlastní aplikace do Azure Search. Všimněte si, že když zadáte podmínky dotazu nebo výrazy, bude se hledat v pořadí hledání. Následující příklad znázorňuje volné hledání textu.
+Dotazy na bezplatné formuláře s operátory nebo bez nich jsou užitečné pro simulaci uživatelsky definovaných dotazů odeslaných z vlastní aplikace do Azure Kognitivní hledání. Všimněte si, že když zadáte podmínky dotazu nebo výrazy, bude se hledat v pořadí hledání. Následující příklad znázorňuje volné hledání textu.
 
    ```Input
    Seattle apartment "Lake Washington" miele OR thermador appliance
@@ -67,7 +66,7 @@ Přidejte **$Count** pro získání počtu shod nalezených v indexu. Při práz
 
 ### <a name="example-4---restrict-fields-in-search-results"></a>Příklad 4 – omezení polí ve výsledcích hledání
 
-Přidejte **$Select** pro omezení výsledků do výslovně pojmenovaných polí pro čitelnější výstup v **Průzkumníku služby Search**. Chcete-li zachovat hledaný řetězec a **$Count = true**, nahraďte **&** argumenty předponou. 
+Přidejte **$Select** pro omezení výsledků do výslovně pojmenovaných polí pro čitelnější výstup v **Průzkumníku služby Search**. Chcete-li zachovat hledaný řetězec a **$Count = true**, argumenty předpony s **&** . 
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true
@@ -79,7 +78,7 @@ Přidejte **$Select** pro omezení výsledků do výslovně pojmenovaných polí
 
 ### <a name="example-5---return-next-batch-of-results"></a>Příklad 5 – vrácení další dávky výsledků
 
-Azure Search vrátí prvních 50 shod na základě pořadí hledání. Chcete-li získat další sadu vyhovujících dokumentů, přidejte **$Top = 100, & $Skip = 50** pro zvýšení sady výsledků na 100 dokumenty (výchozí hodnota je 50, maximum je 1000), přeskočí první 50 dokumentů. Abyste získali seřazené výsledky, je nutné, abyste zadali kritéria hledání, jako je například termín dotazu nebo výraz. Všimněte si, že výsledky hledání snižují hlubší přístup k výsledkům vyhledávání.
+Azure Kognitivní hledání vrátí nejvyšší 50 shody na základě pořadí hledání. Chcete-li získat další sadu vyhovujících dokumentů, přidejte **$Top = 100, & $Skip = 50** pro zvýšení sady výsledků na 100 dokumenty (výchozí hodnota je 50, maximum je 1000), přeskočí první 50 dokumentů. Abyste získali seřazené výsledky, je nutné, abyste zadali kritéria hledání, jako je například termín dotazu nebo výraz. Všimněte si, že výsledky hledání snižují hlubší přístup k výsledkům vyhledávání.
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100&$skip=50
@@ -127,23 +126,23 @@ Přidejte **$OrderBy** pro řazení výsledků podle jiného pole než skóre vy
 
 3. Vyberte index, který se má dotazovat.
 
-   ![Vyberte index, který se má dotazovat](./media/search-explorer/search-explorer-changeindex-se2.png "Vyberte index") .
+   ![Vyberte index, který se má dotazovat.](./media/search-explorer/search-explorer-changeindex-se2.png "Vyberte index.")
 
 4. Volitelně můžete nastavit verzi rozhraní API. Ve výchozím nastavení je vybrána aktuální všeobecně dostupná verze rozhraní API, ale můžete zvolit verzi Preview nebo starší rozhraní API, pokud je syntaxe, kterou chcete použít, specifická pro danou verzi.
 
 5. Po výběru index a verze rozhraní API zadejte na panelu hledání hledané výrazy nebo plně kvalifikované výrazy dotazu a klikněte na **Hledat** , které se spustí.
 
-   ![Zadejte hledané výrazy a klikněte na Hledat](./media/search-explorer/search-explorer-query-string-example.png "Zadejte hledané výrazy a klikněte na Hledat") .
+   ![Zadejte hledané výrazy a klikněte na Hledat.](./media/search-explorer/search-explorer-query-string-example.png "Zadejte hledané výrazy a klikněte na Hledat.")
 
 Tipy pro hledání v **Průzkumníkovi služby Search**:
 
 + Výsledky jsou vráceny jako podrobné dokumenty JSON, takže můžete v celém rozsahu zobrazit konstrukci a obsah dokumentu. Pomocí výrazů dotazů zobrazených v příkladech můžete omezit, která pole jsou vrácena.
 
-+ Dokumenty se skládají ze všech polí označených jako načístelné v indexu. Chcete-li zobrazit atributy indexu na portálu, klikněte na *realestate-US-Sample* v seznamu **indexy** na stránce s přehledem hledání.
++ Dokumenty se skládají ze všech polí označených jako načístelné **v indexu** . Chcete-li zobrazit atributy indexu na portálu, klikněte na *realestate-US-Sample* v seznamu **indexy** na stránce s přehledem hledání.
 
 + Dotazy na volném formuláři, podobně jako to, co byste mohli zadat do komerčního webového prohlížeče, jsou užitečné při testování činnosti koncového uživatele. Předpokládejme například, že jste zavedli integrovaný vzorový index realestate, mohli byste zadat "Seattle Apartments Lake Washington" a potom můžete pomocí kombinace kláves CTRL-F vyhledat výrazy ve výsledcích hledání. 
 
-+ Výrazy dotazu a filtru musí být kloubem v syntaxi podporované Azure Search. Výchozí hodnota je [Jednoduchá syntaxe](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale pro výkonnější dotazy můžete použít také [úplné Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) . [Výrazy filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) jsou syntaxí OData.
++ Výrazy dotazu a filtru musí být nakloubované v syntaxi podporované službou Azure Kognitivní hledání. Výchozí hodnota je [Jednoduchá syntaxe](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale pro výkonnější dotazy můžete použít také [úplné Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) . [Výrazy filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) jsou syntaxí OData.
 
 
 ## <a name="next-steps"></a>Další kroky

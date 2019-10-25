@@ -1,24 +1,25 @@
 ---
-title: C#kurz pro řazení výsledků – Azure Search
-description: Tento kurz sestaví projekt "stránkování výsledků hledání – Azure Search", aby se přidalo řazení výsledků hledání. Naučte se, jak seřadit výsledky u primární vlastnosti a pro výsledky, které mají stejnou primární vlastnost, jak seřadit výsledky u sekundární vlastnosti. Nakonec se dozvíte, jak seřadit výsledky na základě profilu vyhodnocování.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#kurz pro řazení výsledků
+titleSuffix: Azure Cognitive Search
+description: Tento kurz sestaví projekt "stránkování výsledků hledání – Azure Kognitivní hledání" pro přidání řazení výsledků hledání. Naučte se, jak seřadit výsledky u primární vlastnosti a pro výsledky, které mají stejnou primární vlastnost, jak seřadit výsledky u sekundární vlastnosti. Nakonec se dozvíte, jak seřadit výsledky na základě profilu vyhodnocování.
+manager: nitinme
 author: PeterTurcan
-ms.date: 06/21/2019
-ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327649"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794053"
 ---
-# <a name="c-tutorial-order-the-results---azure-search"></a>C#návodu Seřazení výsledků – Azure Search
+# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#kurz: seřazení výsledků – Azure Kognitivní hledání
 
 Až do tohoto okamžiku v naší sérii kurzů se výsledky vrátí a zobrazí ve výchozím pořadí. Může to být pořadí, ve kterém jsou data umístěna, nebo pravděpodobně byl definován výchozí _profil vyhodnocování_ , který bude použit v případě, že nejsou zadány žádné parametry řazení. V tomto kurzu se naučíme, jak objednat výsledky založené na primární vlastnosti a potom pro výsledky, které mají stejnou primární vlastnost, jak tento výběr seřadit na sekundární vlastnost. Jako alternativu k řazení na základě numerických hodnot ukazuje konečný příklad, jak objednat na základě vlastního profilu vyhodnocování. Trochu provedeme také hlubší zobrazení _komplexních typů_.
 
-Aby bylo možné snadno porovnat vracené výsledky, projekt se sestaví do nekonečného posunutí projektu vytvořeného v kurzu [C# : Stránkování výsledků hledání-Azure Search @ no__t-0 kurz.
+Aby bylo možné snadno porovnat vrácené výsledky, projekt se sestaví do nekonečného posouvaného projektu vytvořeného v [ C# kurzu: stránkování výsledků hledání – kurz k Azure kognitivní hledání](tutorial-csharp-paging.md) .
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -27,11 +28,11 @@ V tomto kurzu se naučíte:
 > * Filtrovat výsledky podle vzdálenosti od zeměpisného bodu
 > * Seřazení výsledků na základě profilu vyhodnocování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-Posuňte se do nekonečného posouvání kurzu @no__tC# -0: Stránkování výsledků hledání-Azure Search @ no__t-0 Project up a Running. Tento projekt může být buď vlastní verze, nebo ho můžete nainstalovat z GitHubu: [Vytvořte první aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Použití nekonečné posouvaných verzí [ C# kurzu: stránkování výsledků hledání – Azure kognitivní hledání](tutorial-csharp-paging.md) projekt je spuštěný. Tento projekt může být buď vlastní verze, nebo ho můžete nainstalovat z GitHubu: [vytvořit první aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="order-results-based-on-one-property"></a>Seřazení výsledků na základě jedné vlastnosti
 
@@ -113,7 +114,7 @@ Není nutné upravovat žádné modely, aby bylo možné řazení povolit. Zobra
     ```
 
     >[!Tip]
-    >Prohlížeče obvykle ukládají soubory CSS do mezipaměti a to může vést k použití starého souboru CSS a vaše úpravy se ignorují. Dobrým způsobem, jak to zaokrouhlit, je přidat řetězec dotazu s parametrem verze na odkaz. Příklad:
+    >Prohlížeče obvykle ukládají soubory CSS do mezipaměti a to může vést k použití starého souboru CSS a vaše úpravy se ignorují. Dobrým způsobem, jak to zaokrouhlit, je přidat řetězec dotazu s parametrem verze na odkaz. Například:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
@@ -127,7 +128,7 @@ Není nutné upravovat žádné modely, aby bylo možné řazení povolit. Zobra
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Otevřete zobrazení (index. cshtml) a nahraďte smyčku vykreslování ( **&lt;!--Zobrazit hotelová data.--&gt;** ) s následujícím kódem.
+5. Otevřete zobrazení (index. cshtml) a nahraďte smyčku vykreslování ( **&lt;!--zobrazit data hotelu.--&gt;** ) pomocí následujícího kódu.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -435,7 +436,7 @@ Pro zobrazení výsledků na základě zeměpisné vzdálenosti je potřeba něk
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. I když byly výsledky vráceny Azure Search pomocí filtru vzdálenosti, vypočtená vzdálenost mezi daty a zadaným _bodem se nevrátí._ Přepočítejte tuto hodnotu v zobrazení, nebo v případě, že ji chcete zobrazit ve výsledcích.
+3. I když Azure Kognitivní hledání výsledky vrátili pomocí filtru vzdálenosti, vypočtená vzdálenost mezi daty a zadaným _bodem se nevrátí._ Přepočítejte tuto hodnotu v zobrazení, nebo v případě, že ji chcete zobrazit ve výsledcích.
 
     Následující kód bude počítat vzdálenost mezi dvěma body tabulky LAT/Lon.
 
@@ -465,7 +466,7 @@ Pro zobrazení výsledků na základě zeměpisné vzdálenosti je potřeba něk
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Seřazení výsledků na základě profilu vyhodnocování
 
-V příkladech uvedených v tomto kurzu se dozvíte, jak seřadit číselné hodnoty (hodnocení, datum renovace, zeměpisná vzdálenost) a poskytnout _přesný_ proces řazení. Některá hledání a některá data ale neposkytují jednoduché porovnání mezi dvěma datovými prvky. Azure Search obsahuje koncept _bodování_. _Profily vyhodnocování_ je možné zadat pro sadu dat, která se dají použít k zajištění složitějších a kvalitativních porovnání, která by měla být nejdůležitější, když například porovnáme textová data a určíte, která z nich se má zobrazit jako první.
+V příkladech uvedených v tomto kurzu se dozvíte, jak seřadit číselné hodnoty (hodnocení, datum renovace, zeměpisná vzdálenost) a poskytnout _přesný_ proces řazení. Některá hledání a některá data ale neposkytují jednoduché porovnání mezi dvěma datovými prvky. Azure Kognitivní hledání zahrnuje koncept _bodování_. _Profily vyhodnocování_ je možné zadat pro sadu dat, která se dají použít k zajištění složitějších a kvalitativních porovnání, která by měla být nejdůležitější, když například porovnáme textová data a určíte, která z nich se má zobrazit jako první.
 
 Profily vyhodnocování nejsou definované uživateli, ale obvykle se jedná o správce sady dat. V datech hotelů bylo nastaveno několik profilů vyhodnocování. Pojďme se podívat, jak je definovaný profil vyhodnocování, a pak zkuste napsat kód, který je bude hledat.
 
@@ -543,7 +544,7 @@ Pojďme se podívat na tři příklady profilů vyhodnocování a vzít v úvahu
 
 ### <a name="add-code-to-the-view-to-compare-profiles"></a>Přidání kódu do zobrazení pro porovnání profilů
 
-1. Otevřete soubor index. cshtml a nahraďte část &lt;body @ no__t-1 následujícím kódem.
+1. Otevřete soubor index. cshtml a v části &lt;tělo&gt; nahraďte následující kód.
 
     ```cs
     <body>
@@ -955,9 +956,9 @@ Pojďme se podívat na tři příklady profilů vyhodnocování a vzít v úvahu
 
 4. Vyzkoušejte si profil "podle renovated data/hodnocení", abyste viděli, jestli se vám neočekáváte. Pouze nedávno renovated hotely by měli zvýšit zvýšení _aktuálnosti_ .
 
-### <a name="resources"></a>Zdroje a prostředky
+### <a name="resources"></a>Materiály
 
-Další informace najdete v následujících tématech [přidání profilů vyhodnocování do indexu Azure Search](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Další informace najdete v následujících tématech [přidání profilů vyhodnocování do indexu služby Azure kognitivní hledání](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Shrnutí
 
@@ -971,6 +972,6 @@ Vezměte v úvahu následující poznatky z tohoto projektu:
 
 ## <a name="next-steps"></a>Další kroky
 
-Dokončili jste tuto sérii C# kurzů – měli byste mít k dispozici užitečné znalosti Azure Search API.
+Dokončili jste tuto sérii C# kurzů – měli byste mít k dispozici užitečné znalosti rozhraní api Azure kognitivní hledání.
 
-Další informace a kurzy najdete v části o procházení [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)nebo v dalších kurzech v [dokumentaci k Azure Search](https://docs.microsoft.com/azure/search/).
+Další referenční materiály a kurzy najdete v části procházení [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)nebo v dalších kurzech v [dokumentaci k Azure kognitivní hledání](https://docs.microsoft.com/azure/search/).

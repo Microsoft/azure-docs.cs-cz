@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 66022b5e4885c515bd6117f9a44b8108ff84ae5c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 42e1e283736d8a1e3d4ece33c861185df2d72da7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250104"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791822"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware
 
@@ -20,6 +20,10 @@ Místní konfigurační server nastavíte při použití [Azure Site Recovery](s
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="update-windows-license"></a>Aktualizovat licenci Windows
+
+Licence, která je součástí šablony OVF, je zkušební licence platná po dobu 180 dnů. V případě nepřerušovaného využití musíte aktivovat Windows pomocí předem získané licence. Aktualizace licencí se dá provést buď pomocí samostatného klíče, nebo standardního klíče služby správy klíčů. Doprovodné materiály k dispozici na [příkazovém řádku Windows DISM pro běžící operační](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)systém. Pokud chcete získat klíče, přečtěte si téma [nastavení klienta služby správy klíčů](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys).
 
 ## <a name="access-configuration-server"></a>Přístup ke konfiguračnímu serveru
 
@@ -68,7 +72,7 @@ Pokud jste při OVF nasazení konfiguračního serveru nenechali přidávat při
 
 1. Po [přihlášení](#access-configuration-server)vyberte **spravovat přihlašovací údaje virtuálního počítače**.
 2. Klikněte na **Přidat přihlašovací údaje virtuálního počítače**.
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![Add-mobility-Credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Zadejte nové přihlašovací údaje a klikněte na **Přidat**.
 
 Přihlašovací údaje můžete také přidat pomocí CSPSConfigtool. exe.
@@ -96,7 +100,7 @@ Upravte nastavení proxy serveru používaného počítačem konfiguračního se
 V případě potřeby můžete konfigurační server ve stejném trezoru znovu zaregistrovat. Pokud máte další počítač procesového serveru, Kromě výchozího procesového serveru, který běží na počítači konfiguračního serveru, znovu proveďte registraci obou počítačů.
 
 
-1. V trezoru otevřete **Spravovat** > **servery konfigurace** **infrastruktury** > Site Recovery.
+1. V trezoru otevřete **spravovat** > **Site Recovery infrastruktury** > **konfiguračních serverech**.
 2. V části **servery**vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
 3. Přihlaste se k počítači konfiguračního serveru.
 4. V **%ProgramData%\ASR\home\svsystems\bin**otevřete **cspsconfigtool. exe**.
@@ -135,7 +139,7 @@ V případě potřeby můžete konfigurační server ve stejném trezoru znovu z
 
 ## <a name="upgrade-the-configuration-server"></a>Upgrade konfiguračního serveru
 
-Aktualizace konfiguračního serveru spustíte spuštěním kumulativních aktualizací. Aktualizace je možné použít až pro N-4 verze. Příklad:
+Aktualizace konfiguračního serveru spustíte spuštěním kumulativních aktualizací. Aktualizace je možné použít až pro N-4 verze. Například:
 
 - Pokud spouštíte 9,7, 9,8, 9,9 nebo 9,10, můžete upgradovat přímo na 9,11.
 - Pokud spustíte 9,6 nebo starší a chcete upgradovat na 9,11, musíte nejdřív upgradovat na verzi 9,7. před 9,11.
@@ -149,18 +153,18 @@ Odkazy na kumulativní aktualizace pro upgrade na všechny verze konfiguračníh
 
 Proveďte upgrade serveru následujícím způsobem:
 
-1. V trezoru přejdete na **Správa** > **Site Recovery** > **Konfigurace serverů**infrastruktury.
+1. V trezoru přejdete na **správa** > **Site Recovery infrastruktury** > **konfiguračních serverech**.
 2. Pokud je k dispozici aktualizace, zobrazí se odkaz ve sloupci **verze agenta** >.
     ![Aktualizace](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Stáhněte instalační soubor aktualizace na konfigurační server.
 
-    ![Aktualizace](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Aktualizovat](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Dvojím kliknutím spusťte instalační program.
 5. Instalační program detekuje aktuální verzi spuštěnou v počítači. Kliknutím na **Ano** zahájíte upgrade.
 6. Po dokončení upgradu se konfigurace serveru ověří.
 
-    ![Aktualizace](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Aktualizovat](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Kliknutím na tlačítko **Dokončit** ukončíte instalační program.
 8. Chcete-li upgradovat zbývající součásti Site Recovery, přečtěte si naše [pokyny k upgradu](https://aka.ms/asr_vmware_upgrades).
@@ -183,22 +187,22 @@ Spusťte instalační soubor následujícím způsobem:
 
 ### <a name="parameters"></a>Parametry
 
-|Název parametru| type | Popis| Hodnoty|
+|Název parametru| Typ | Popis| Hodnoty|
 |-|-|-|-|
-| /ServerMode|Požadováno|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
-|/InstallLocation|Požadováno|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
-|/MySQLCredsFilePath|Požadováno|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
-|/VaultCredsFilePath|Požadováno|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
-|/EnvType|Požadováno|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
-|/PSIP|Požadováno|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
-|/CSIP|Požadováno|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
-|/PassphraseFilePath|Požadováno|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
-|/BypassProxy|volitelná,|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
-|/ProxySettingsFilePath|volitelná,|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
-|DataTransferSecurePort|volitelná,|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
-|/SkipSpaceCheck|volitelná,|Přeskočí kontrolu místa na disku mezipaměti.| |
-|/AcceptThirdpartyEULA|Požadováno|Příznak značí přijetí smlouvy EULA třetích stran| |
-|/ShowThirdpartyEULA|Nepovinné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
+| /ServerMode|Požaduje se|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
+|/InstallLocation|Požaduje se|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
+|/MySQLCredsFilePath|Požaduje se|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
+|/VaultCredsFilePath|Požaduje se|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
+|/EnvType|Požaduje se|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
+|/PSIP|Požaduje se|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
+|/CSIP|Požaduje se|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
+|/PassphraseFilePath|Požaduje se|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
+|/BypassProxy|Volitelné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
+|/ProxySettingsFilePath|Volitelné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
+|DataTransferSecurePort|Volitelné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
+|/SkipSpaceCheck|Volitelné|Přeskočí kontrolu místa na disku mezipaměti.| |
+|/AcceptThirdpartyEULA|Požaduje se|Příznak značí přijetí smlouvy EULA třetích stran| |
+|/ShowThirdpartyEULA|Volitelné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
 
 
 
@@ -227,7 +231,7 @@ ProxyPassword="Password"
 1. [Zakažte ochranu](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) pro všechny virtuální počítače v konfiguračním serveru.
 2. [Zrušte přidružení](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) a [odstranění](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) všech zásad replikace z konfiguračního serveru.
 3. [Odstraňte](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) všechny servery vCenter nebo hostitele vSphere, kteří jsou přidruženi ke konfiguračnímu serveru.
-4. V trezoru otevřete **Site Recovery** > **konfigurační servery**infrastruktury.
+4. V trezoru otevřete **Site Recovery infrastruktura** > **konfigurační servery**.
 5. Vyberte konfigurační server, který chcete odebrat. Pak na stránce **Podrobnosti** vyberte **Odstranit**.
 
     ![Odstranit konfigurační server](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
@@ -281,20 +285,16 @@ U nasazení konfiguračního serveru do května 2016 se platnost certifikátu na
 
 ### <a name="renew-the-certificate"></a>Prodloužit platnost certifikátu
 
-1. V trezoru otevřete **Site Recovery** > **konfiguračního serveru**infrastruktury. Vyberte požadovaný konfigurační server.
+1. V trezoru otevřete **Site Recovery infrastruktura** > **konfiguračního serveru**. Vyberte požadovaný konfigurační server.
 2. Datum vypršení platnosti se zobrazí v části **stav konfiguračního serveru**.
 3. Vyberte možnost **obnovit certifikáty**.
 
 ## <a name="refresh-configuration-server"></a>Aktualizovat konfigurační server
 
-1. V Azure Portal přejděte do trezoru  > Recovery Services**Spravovat** > **Site Recovery infrastruktury** > pro > konfiguraci**fyzických počítačů VMware &** . **Servery**
+1. V Azure Portal přejděte do **trezoru Recovery Services** > **spravujte** > **Site Recovery infrastruktura** > **pro fyzické počítače VMware &**  > **konfigurační servery** .
 2. Klikněte na konfigurační server, který chcete aktualizovat.
-3. V okně s podrobnostmi o zvoleném konfiguračním serveru klikněte  > na tlačítko**aktualizovat server**.
-4. Sledujte průběh úlohy v části**monitorování** >  **trezoru** > služby Recovery Services**Site Recovery úlohy**.
-
-## <a name="update-windows-license"></a>Aktualizovat licenci Windows
-
-Licence, která je součástí šablony OVF, je zkušební licence platná po dobu 180 dnů. V případě nepřerušovaného využití musíte aktivovat Windows pomocí předem získané licence.
+3. V okně s podrobnostmi o zvoleném konfiguračním serveru klikněte na **další** > **aktualizovat server**.
+4. Monitorujte průběh úlohy v rámci služby **Recovery Services trezor** > **monitorování** > **Site Recovery úloh**.
 
 ## <a name="failback-requirements"></a>Požadavky na navrácení služeb po obnovení
 
@@ -302,6 +302,6 @@ Při opětovném zapnutí ochrany a navrácení služeb po obnovení musí míst
 
 Ujistěte se, že provádíte pravidelné naplánování záložních záloh konfiguračního serveru. Pokud dojde k havárii a dojde ke ztrátě konfiguračního serveru, musíte nejdřív obnovit konfigurační server ze záložní kopie a zajistit, aby obnovený konfigurační server měl stejnou IP adresu, se kterou se zaregistroval v trezoru. Navrácení služeb po obnovení nebude fungovat, pokud se pro obnovený konfigurační server používá jiná IP adresa.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si kurzy k nastavení zotavení po havárii [virtuálních počítačů VMware](vmware-azure-tutorial.md) do Azure.

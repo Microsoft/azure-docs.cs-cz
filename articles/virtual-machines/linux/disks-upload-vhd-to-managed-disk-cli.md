@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: dfcf9ea61a1f0fb5fd2d3b613c2449480753b3a1
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5215a7d899af15dc028189aee5760a6ec5b6577d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595103"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803984"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Nahrání virtuálního pevného disku do Azure pomocí Azure CLI
 
 Tento článek vysvětluje, jak nahrát virtuální pevný disk z místního počítače do spravovaného disku Azure. Dříve museli byste postupovat podle dalšího Zahrnutého procesu, který zahrnuje přípravu vašich dat v účtu úložiště a správu tohoto účtu úložiště. Nyní už nebudete muset spravovat účet úložiště nebo data fáze v něm, abyste nahráli VHD. Místo toho vytvoříte prázdný spravovaný disk a nahrajete do něj VHD přímo. Tato možnost zjednodušuje nahrávání místních virtuálních počítačů do Azure a umožňuje odeslat virtuální pevný disk až 32 TiB přímo do velkého spravovaného disku.
 
-Pokud poskytujete řešení zálohování pro virtuální počítače s IaaS v Azure, doporučujeme použít přímé nahrávání pro obnovení záloh zákazníka na spravované disky. Pokud nahráváte virtuální pevný disk z externího počítače mimo Azure, rychlosti závisí na vaší místní šířce pásma. Pokud používáte virtuální počítač Azure, Šířka pásma bude stejná jako u HDD Standard.
+Pokud poskytujete řešení zálohování pro virtuální počítače s IaaS v Azure, doporučujeme použít přímé nahrávání pro obnovení záloh zákazníka na spravované disky. Pokud nahráváte virtuální pevný disk z počítače, který je externí pro Azure, bude rychlost záviset na vaší místní šířce pásma. Pokud používáte virtuální počítač Azure, Šířka pásma bude stejná jako u HDD Standard.
 
 V současné době se podporuje přímé nahrávání pro disky Standard HDD, Standard SSD a Premium SSD. Pro ultra SSD se ještě nepodporuje.
 
@@ -29,7 +29,7 @@ V současné době se podporuje přímé nahrávání pro disky Standard HDD, St
 - Stáhněte si nejnovější [verzi nástroje AzCopy v10 za účelem](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 - Soubor VHD uložený místně
-- Pokud máte v úmyslu nahrát VHD z PEM: virtuální pevný disk [připravený pro Azure](../windows/prepare-for-upload-vhd-image.md), uložený místně.
+- Pokud máte v úmyslu nahrát VHD z místního prostředí: virtuální pevný disk [připravený pro Azure](../windows/prepare-for-upload-vhd-image.md), uložený místně.
 - Nebo spravovaný disk v Azure, pokud máte v úmyslu provést akci kopírování.
 
 ## <a name="create-an-empty-managed-disk"></a>Vytvoření prázdného spravovaného disku
@@ -124,6 +124,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste úspěšně nahráli VHD na spravovaný disk, můžete disk připojit k virtuálnímu počítači a začít ho používat.
+Teď, když jste úspěšně nahráli VHD na spravovaný disk, můžete disk připojit jako [datový disk k existujícímu virtuálnímu počítači](add-disk.md) nebo [připojit disk k virtuálnímu počítači jako disk s operačním systémem](upload-vhd.md#create-the-vm)a vytvořit nový virtuální počítač. 
 
-Informace o tom, jak připojit disk k virtuálnímu počítači, najdete v našem článku na předmětu: [Přidání disku do virtuálního počítače se systémem Linux](add-disk.md).

@@ -1,5 +1,6 @@
 ---
-title: Konfigurace řetězce klíčů | Platforma Microsoft identity
+title: Konfigurace klíčenky
+titleSuffix: Microsoft identity platform
 description: Naučte se konfigurovat řetězce klíčů tak, aby vaše aplikace mohla ukládat tokeny do mezipaměti v řetězci klíčů.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +18,14 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264179"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803803"
 ---
-# <a name="configure-keychain"></a>Konfigurace řetězce klíčů
+# <a name="configure-keychain"></a>Konfigurace klíčenky
 
 Když se v rámci uživatele v [knihovně pro ověřování pro iOS a MacOS](msal-overview.md) (MSAL) přihlásí nebo aktualizuje token, pokusí se v řetězci klíčů ukládat tokeny do mezipaměti. Ukládání tokenů do mezipaměti v řetězci klíčů umožňuje MSAL poskytovat tiché jednotné přihlašování (SSO) mezi více aplikacemi, které distribuuje stejný vývojář Apple. Jednotné přihlašování se dosahuje prostřednictvím funkcí přístupových skupin pro řetězce klíčů. Další informace najdete v [dokumentaci k položkám řetězce klíčů](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)společnosti Apple.
 

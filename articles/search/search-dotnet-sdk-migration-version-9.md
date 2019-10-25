@@ -1,23 +1,22 @@
 ---
-title: Upgrade na sadu Azure Search .NET SDK verze 9 – Azure Search
+title: Upgrade na Azure Search .NET SDK verze 9
+titleSuffix: Azure Cognitive Search
 description: Migruje kód do sady Azure Search .NET SDK verze 9 ze starších verzí. Zjistěte, co je nového a kdy se vyžadují změny kódu.
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 32908ab209cbe05a0acf9da896e1e1fb11e6f5dd
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183244"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793008"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Upgrade na rozhraní Azure Search .NET SDK verze 9
+# <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade na Azure Search .NET SDK verze 9
 
 Pokud používáte verzi 7,0-Preview nebo starší [sadu Azure Search .NET SDK](https://aka.ms/search-sdk), Tento článek vám pomůže při upgradu aplikace na použití verze 9.
 
@@ -38,7 +37,7 @@ Verze 9 sady Azure Search .NET SDK obsahuje mnoho změn z dřívějších verzí
 ## <a name="whats-new-in-version-9"></a>Co je nového ve verzi 9
 Verze 9 sady Azure Search .NET SDK cílí na nejnovější všeobecně dostupnou verzi Azure Search REST API, konkrétně 2019-05-06. Díky tomu je možné využít nové funkce Azure Search z aplikace .NET, včetně následujících:
 
-* [Rozpoznávání rozpoznávání](cognitive-search-concept-intro.md) je funkce AI v Azure Search, která se používá k extrakci textu z obrázků, objektů BLOB a dalších nestrukturovaných zdrojů dat – vylepšuje obsah, aby bylo možné snadněji prohledávat v indexu Azure Search.
+* [Obohacení AI](cognitive-search-concept-intro.md) je schopnost extrahovat text z obrázků, objektů BLOB a dalších nestrukturovaných zdrojů dat – vylepšuje obsah, aby bylo lépe prohledávatelné Azure Search indexu.
 * Podpora [komplexních typů](search-howto-complex-data-types.md) umožňuje modelovat skoro všechny vnořené struktury JSON v indexu Azure Search.
 * [Automatické dokončování](search-autocomplete-tutorial.md) nabízí alternativu k rozhraní API pro **navrhování** pro implementaci chování hledání podle zadání. Automatické dokončování "dokončí" slovo nebo frázi, kterou uživatel právě zapisuje.
 * [Režim analýzy JsonLines](search-howto-index-json-blobs.md), část indexování objektů BLOB v Azure, vytvoří jeden vyhledávací dokument pro každou entitu JSON, která je oddělená novým řádkem.
@@ -51,13 +50,13 @@ Verze 8,0-Preview rozhraní API cíle Azure Search .NET SDK verze 2017-11-11-Pre
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Postup upgradu
-Nejdřív aktualizujte svůj odkaz na NuGet `Microsoft.Azure.Search` pro použití buď konzoly Správce balíčků NuGet, nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
+Nejdřív aktualizujte svůj odkaz na NuGet pro `Microsoft.Azure.Search` pomocí konzoly Správce balíčků NuGet nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
 
 Jakmile NuGet stáhne nové balíčky a jejich závislosti, sestavte projekt znovu. V závislosti na tom, jak je kód strukturovaný, se může úspěšně znovu sestavit. Pokud ano, jste připraveni!
 
 Pokud se sestavení nezdaří, bude nutné opravit každou chybu sestavení. Podrobnosti o tom, jak vyřešit každou možnou chybu sestavení, naleznete [v tématu průlomové změny ve verzi 9](#ListOfChanges) .
 
-Může se zobrazit další upozornění sestavení související s zastaralými metodami nebo vlastnostmi. Upozornění budou obsahovat pokyny k používání funkce místo zastaralé funkce. Například pokud vaše aplikace používá `DataSourceType.DocumentDb` vlastnost, mělo by se zobrazit upozornění, že "Tento člen je zastaralý. Místo toho použijte CosmosDb.
+Může se zobrazit další upozornění sestavení související s zastaralými metodami nebo vlastnostmi. Upozornění budou obsahovat pokyny k používání funkce místo zastaralé funkce. Například pokud vaše aplikace používá vlastnost `DataSourceType.DocumentDb`, měla by se zobrazit upozornění, že "Tento člen je zastaralý. Místo toho použijte CosmosDb.
 
 Jakmile budete chtít opravit chyby nebo upozornění sestavení, můžete v aplikaci provádět změny, abyste mohli využít nové funkce, pokud chcete. Nové funkce v sadě SDK jsou podrobně popsané v části [co je nového ve verzi 9](#WhatsNew).
 
@@ -83,9 +82,9 @@ Veřejné vlastnosti několika tříd modelu jsou nyní neměnný. Pokud potřeb
 
 ### <a name="changes-to-field"></a>Změny v poli
 
-`Field` Třída se změnila nyní, která může také představovat složitá pole.
+Třída `Field` se změnila nyní, která může také představovat složitá pole.
 
-Následující `bool` vlastnosti jsou nyní Nullable:
+Následující vlastnosti `bool` nyní umožňují hodnotu null:
 
   - `IsFilterable`
   - `IsFacetable`
@@ -94,33 +93,33 @@ Následující `bool` vlastnosti jsou nyní Nullable:
   - `IsRetrievable`
   - `IsKey`
 
-Důvodem je, že tyto vlastnosti se teď `null` musí nacházet v případě složitých polí. Pokud máte kód, který tyto vlastnosti čte, musí být připraven zpracovat `null`. Všimněte si, že všechny ostatní `Field` vlastnosti se vždycky nastavily a budou mít i nadále hodnotu null a některé z `null` nich budou také v případě komplexních polí – konkrétně následující:
+Důvodem je, že tyto vlastnosti se teď musí `null` v případě složitých polí. Pokud máte kód, který tyto vlastnosti čte, je nutné jej připravit, aby zpracovávala `null`. Všimněte si, že všechny ostatní vlastnosti `Field` byly vždycky a budou mít i nadále hodnotu null a některé z nich budou také `null` v případě komplexních polí – konkrétně následující:
 
   - `Analyzer`
   - `SearchAnalyzer`
   - `IndexAnalyzer`
   - `SynonymMaps`
 
-Konstruktor `Field` bez parametrů byl proveden `internal`. Od této chvíle `Field` vyžaduje explicitní název a datový typ v době konstrukce.
+`internal`konstruktor bez parametrů `Field`. Od této chvíle každý `Field` vyžaduje explicitní název a datový typ v době konstrukce.
 
 ### <a name="simplified-batch-and-results-types"></a>Zjednodušené typy dávek a výsledků
 
 Ve verzi 7,0-Preview a dříve byly různé třídy, které zapouzdřují skupiny dokumentů, strukturované do paralelních hierarchií tříd:
 
-  -  `DocumentSearchResult`a `DocumentSearchResult<T>` zděděno od`DocumentSearchResultBase`
-  -  `DocumentSuggestResult`a `DocumentSuggestResult<T>` zděděno od`DocumentSuggestResultBase`
-  -  `IndexAction`a `IndexAction<T>` zděděno od`IndexActionBase`
-  -  `IndexBatch`a `IndexBatch<T>` zděděno od`IndexBatchBase`
-  -  `SearchResult`a `SearchResult<T>` zděděno od`SearchResultBase`
-  -  `SuggestResult`a `SuggestResult<T>` zděděno od`SuggestResultBase`
+  -  `DocumentSearchResult` a `DocumentSearchResult<T>` zděděné z `DocumentSearchResultBase`
+  -  `DocumentSuggestResult` a `DocumentSuggestResult<T>` zděděné z `DocumentSuggestResultBase`
+  -  `IndexAction` a `IndexAction<T>` zděděné z `IndexActionBase`
+  -  `IndexBatch` a `IndexBatch<T>` zděděné z `IndexBatchBase`
+  -  `SearchResult` a `SearchResult<T>` zděděné z `SearchResultBase`
+  -  `SuggestResult` a `SuggestResult<T>` zděděné z `SuggestResultBase`
 
-Odvozené typy bez parametru obecného typu by se měly používat ve scénářích s dynamickým zadáním a s předpokládaným využitím tohoto `Document` typu.
+Odvozené typy bez parametru obecného typu by se měly použít ve scénářích s dynamickým zadáním a při předpokládaném použití typu `Document`.
 
 Počínaje verzí 8,0-Preview byly všechny základní třídy a neobecné odvozené třídy odebrány. Pro scénáře s dynamickým typem můžete použít `IndexBatch<Document>`, `DocumentSearchResult<Document>`a tak dále.
  
 ### <a name="removed-extensibleenum"></a>Odebrané ExtensibleEnum
 
-`ExtensibleEnum` Základní třída byla odebrána. Všechny třídy, které jsou z něj odvozeny, jsou nyní strukturami `DataType`, například `DataSourceType` `AnalyzerName`, a. Jejich `Create` metody byly také odebrány. Můžete pouze odebrat volání, `Create` protože tyto typy jsou implicitně převoditelné z řetězců. Pokud dojde k chybám kompilátoru, můžete explicitně vyvolat operátor převodu prostřednictvím přetypování pro jednoznačné typy. Například můžete změnit kód takto:
+Byla odebrána základní třída `ExtensibleEnum`. Všechny třídy, které jsou z něj odvozeny, jsou nyní strukturami, například `AnalyzerName`, `DataType`a `DataSourceType`. Byly také odebrány jejich `Create` metody. Můžete pouze odebrat volání `Create`, protože tyto typy jsou implicitně převoditelné z řetězců. Pokud dojde k chybám kompilátoru, můžete explicitně vyvolat operátor převodu prostřednictvím přetypování pro jednoznačné typy. Například můžete změnit kód takto:
 
 ```csharp
 var index = new Index()
@@ -134,7 +133,7 @@ var index = new Index()
 }
 ```
 
-K tomuto:
+měli změnit na:
 
 ```csharp
 var index = new Index()
@@ -152,7 +151,7 @@ Vlastnosti, které drží volitelné hodnoty těchto typů, jsou nyní explicitn
 
 ### <a name="removed-facetresults-and-hithighlights"></a>Odebrané FacetResults a HitHighlights
 
-Třídy `FacetResults` a`HitHighlights` byly odebrány. Výsledky omezující vlastnosti se teď zadávají jako `IDictionary<string, IList<FacetResult>>` a `IDictionary<string, IList<string>>`zvýrazní se. Rychlý způsob, jak vyřešit chyby sestavení zavedené touto změnou, je `using` přidat aliasy v horní části každého souboru, který používá odebrané typy. Příklad:
+Třídy `FacetResults` a `HitHighlights` se odebraly. Výsledky omezující vlastnosti se teď zadávají jako `IDictionary<string, IList<FacetResult>>` a jako `IDictionary<string, IList<string>>`se zvýrazní. Rychlý způsob, jak vyřešit chyby sestavení zavedené touto změnou, je přidat aliasy `using` v horní části každého souboru, který používá odebrané typy. Například:
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;
@@ -161,26 +160,26 @@ using HitHighlights = System.Collections.Generic.IDictionary<string, System.Coll
 
 ### <a name="change-to-synonymmap"></a>Změnit na SynonymMap 
 
-Konstruktor již nemá parametr pro `SynonymMapFormat`. `enum` `SynonymMap` Tento výčet má pouze jednu hodnotu, a proto byl redundantní. Pokud se v důsledku toho zobrazí chyby sestavení, jednoduše odeberte odkazy na `SynonymMapFormat` parametr.
+Konstruktor `SynonymMap` už neobsahuje parametr `enum` pro `SynonymMapFormat`. Tento výčet má pouze jednu hodnotu, a proto byl redundantní. Pokud se v důsledku toho zobrazí chyby sestavení, jednoduše odeberte odkazy na parametr `SynonymMapFormat`.
 
 ### <a name="miscellaneous-model-class-changes"></a>Různé třídy modelu – změny
 
-Vlastnost již `AutocompleteMode`nenínastavenana hodnotunull.`AutocompleteParameters` Pokud máte kód, kterému tuto vlastnost `null`přiřadíte, můžete ji jednoduše odebrat a vlastnost se automaticky inicializuje na výchozí hodnotu.
+Vlastnost `AutocompleteMode` `AutocompleteParameters` již není nastavena na hodnotu null. Pokud máte kód, který přiřadí tuto vlastnost `null`, můžete ji jednoduše odebrat a vlastnost se automaticky inicializuje na výchozí hodnotu.
 
-Pořadí parametrů `IndexAction` konstruktoru bylo nyní změněno, je-li tento konstruktor automaticky generován. Namísto použití konstruktoru doporučujeme použít metody `IndexAction.Upload`továrny, `IndexAction.Merge`a tak dále.
+Pořadí parametrů `IndexAction` konstruktoru se změnilo nyní, když je tento konstruktor automaticky vygenerován. Namísto použití konstruktoru doporučujeme použít metody továrny `IndexAction.Upload`, `IndexAction.Merge`a tak dále.
 
 ### <a name="removed-preview-features"></a>Odebrané funkce verze Preview
 
-Pokud upgradujete z verze 8,0-Preview na verzi 9, počítejte s tím, že šifrování pomocí klíčů spravovaných zákazníkem bylo odebráno, protože tato funkce je stále ve verzi Preview. Konkrétně byly `Index` odebrány `EncryptionKey` vlastnosti a `SynonymMap` .
+Pokud upgradujete z verze 8,0-Preview na verzi 9, počítejte s tím, že šifrování pomocí klíčů spravovaných zákazníkem bylo odebráno, protože tato funkce je stále ve verzi Preview. Konkrétně byly odebrány vlastnosti `EncryptionKey` `Index` a `SynonymMap`.
 
 Pokud má vaše aplikace pevně závislou funkci, nebudete moct upgradovat na verzi 9 sady Azure Search .NET SDK. Můžete dál používat verzi 8,0-Preview. Mějte ale na paměti, že **v produkčních aplikacích nedoporučujeme používat sady SDK pro verze Preview**. Funkce ve verzi Preview jsou jenom pro vyhodnocení a můžou se změnit.
 
 > [!NOTE]
-> Pokud jste vytvořili šifrované indexy nebo mapy synonym pomocí verze 8,0-Preview sady SDK, budete je moct používat a upravovat jejich definice pomocí verze 9 sady SDK, aniž by to ovlivnilo jejich stav šifrování. Verze 9 sady SDK nebude odesílat `encryptionKey` vlastnost do REST API a v důsledku toho REST API stav šifrování prostředku nemění. 
+> Pokud jste vytvořili šifrované indexy nebo mapy synonym pomocí verze 8,0-Preview sady SDK, budete je moct používat a upravovat jejich definice pomocí verze 9 sady SDK, aniž by to ovlivnilo jejich stav šifrování. Verze 9 sady SDK neodešle do REST API vlastnost `encryptionKey` a v důsledku toho REST API stav šifrování prostředku nebude změněn. 
 
 ### <a name="behavioral-change-in-data-retrieval"></a>Změna chování při načítání dat
 
-Pokud používáte "dynamicky typované" `Search`, `Suggest`nebo `Get` rozhraní API, které vracejí instance typu `Document`, uvědomte si `string[]`, že nyní deserializovat prázdná pole `object[]` JSON namísto.
+Pokud používáte "dynamicky typované" `Search`, `Suggest`nebo `Get` rozhraní API, které vracejí instance typu `Document`, uvědomte si, že nyní deserializovat prázdná pole JSON na `object[]` namísto `string[]`.
 
 ## <a name="conclusion"></a>Závěr
 Pokud potřebujete další podrobnosti o používání sady Azure Search .NET SDK, přečtěte si [článek postupy pro .NET](search-howto-dotnet-sdk.md).

@@ -1,33 +1,32 @@
 ---
-title: Dovednost pro vyhledávání rozpoznávání obrázků v analýze – Azure Search
-description: Extrahujte sémantický text prostřednictvím analýzy obrázků s využitím ImageAnalysis vnímání v kanálu rozšíření Azure Search.
-services: search
+title: Vnímání znalostí analýzy obrázků
+titleSuffix: Azure Cognitive Search
+description: Extrahujte sémantický text pomocí analýzy obrázků s využitím vnímání analýzy obrázků v kanálu rozšíření AI v Azure Kognitivní hledání.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 08/28/2019
 ms.author: luisca
-ms.openlocfilehash: 69e798601dc53ffb666aa9dcddd68980256fa3fc
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 04114d00f3905675a1794a3875e650661febc832
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265457"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791991"
 ---
-#   <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
+# <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
 
 Dovednost **analýzy obrázků** extrahuje bohatou sadu vizuálních funkcí založenou na obsahu obrázku. Můžete například vygenerovat titulek z obrázku, generovat značky nebo identifikovat celebrit a orientačních bodů. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) . 
 
 > [!NOTE]
-> Malé objemy (pod 20 transakcí) se dají spouštět zdarma v Azure Search, ale větší úlohy vyžadují [připojení fakturovatelné Cognitive Services prostředků](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů v Azure Search. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
+> Malé objemy (pod 20 transakcí) se dají v Azure Kognitivní hledání zdarma spustit, ale větší úlohy vyžadují [připojení fakturovatelné Cognitive Services prostředků](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsány na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Vision.ImageAnalysisSkill 
+Microsoft. dovednosti. Vision. ImageAnalysisSkill 
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
@@ -37,13 +36,13 @@ V parametrech jsou rozlišována malá a velká písmena.
 |--------------------|-------------|
 | defaultLanguageCode   |  Řetězec označující jazyk, který se má vrátit. Služba vrátí výsledky rozpoznávání v zadaném jazyce. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/><br/>Podporované jazyky: <br/>*EN* -angličtina (výchozí) <br/> *zh* – zjednodušená čínština|
 |visualFeatures |   Pole řetězců udávající typy vizuálních funkcí, které mají být vráceny. Mezi platné typy vizuálních funkcí patří:  <ul><li> *Categories* – roztřídí obsah obrázků podle taxonomie definované v [dokumentaci Cognitive Services počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li> *Tags* – Taguje obrázek pomocí podrobného seznamu slov souvisejících s obsahem obrázku.</li><li>*Popis* – popisuje obsah obrázku s úplnou anglickou větou.</li><li>*obličeje* – zjišťuje, zda jsou k dispozici plošky. Pokud je k dispozici, vygeneruje souřadnice, pohlaví a stáří.</li><li>    *ImageType* – zjistí, zda je obrázek Klipart nebo kreslení čáry.</li><li>  *Color* – Určuje barvu zvýraznění, dominantní barvu a, zda je obrázek černý & bílá.</li><li>*dospělý* – zjistí, jestli je obrázek pornografickýý (znázorňuje nahotu nebo pohlaví). Zjistili jsme také zřejmý sugestivní obsah.</li></ul> Názvy vizuálních funkcí rozlišují velká a malá písmena.|
-| details   | Pole řetězců udávající, které podrobnosti specifické pro doménu se mají vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrit* – identifikuje celebrit, pokud se v imagi zjistí.</li><li>*orientačních bodů* – identifikuje orientační části, pokud jsou v imagi zjištěné. </li></ul> |
+| Zobrazí   | Pole řetězců udávající, které podrobnosti specifické pro doménu se mají vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrit* – identifikuje celebrit, pokud se v imagi zjistí.</li><li>*orientačních bodů* – identifikuje orientační části, pokud jsou v imagi zjištěné. </li></ul> |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
 | Název vstupu      | Popis                                          |
 |---------------|------------------------------------------------------|
-| image         | Komplexní typ. V současné době funguje pouze s polem "/Document/normalized_images" vytvořeným indexerem objektů BLOB v ```imageAction``` Azure, pokud je nastavena na jinou ```none```hodnotu než. Další informace najdete v [ukázce](#sample-output) .|
+| image         | Komplexní typ. V současné době funguje pouze s polem "/Document/normalized_images" vytvořeným indexerem objektů BLOB v Azure, pokud je ```imageAction``` nastaveno na jinou hodnotu než ```none```. Další informace najdete v [ukázce](#sample-output) .|
 
 
 
@@ -503,7 +502,7 @@ V následujících chybových případech nejsou extrahovány žádné prvky.
 | NotSupportedImage | Nepodporovaná image, například podřízená pornografie. |
 | InvalidDetails | Nepodporovaný model specifický pro doménu. |
 
-Pokud se zobrazí chyba, která `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`je podobná, ověřte cestu. Celebrit i orientačních bodů jsou vlastnosti v `detail`rámci.
+Pokud se zobrazí chybová zpráva podobná `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`, ověřte cestu. Celebrit i orientačních bodů jsou vlastnosti v rámci `detail`.
 
 ```json
 "categories":[  
@@ -519,8 +518,8 @@ Pokud se zobrazí chyba, která `"One or more skills are invalid. Details: Error
             ]
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-+ [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
++ [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

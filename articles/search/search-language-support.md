@@ -1,25 +1,25 @@
 ---
-title: Indexování s více jazyky pro vyhledávací dotazy jiné než anglické verze – Azure Search
-description: Azure Search podporuje jazyky 56, což využívá analyzátory jazyka z aplikace Lucene a technologie pro zpracování přirozeného jazyka od Microsoftu.
-author: yahnoosh
+title: Indexování ve více jazycích pro jiné než anglické vyhledávací dotazy
+titleSuffix: Azure Cognitive Search
+description: Azure Kognitivní hledání podporuje jazyky 56, které využívají analyzátory jazyka z aplikace Lucene a technologie pro zpracování přirozeného jazyka od Microsoftu.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
+author: yahnoosh
 ms.author: jlembicz
-ms.openlocfilehash: 9d2e6418eb925f0d113b7e9a91463951ca52031a
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186554"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793592"
 ---
-# <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Vytvoření indexu pro více jazyků v Azure Search
+# <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Vytvoření indexu pro více jazyků v Azure Kognitivní hledání
 
 Indexy mohou zahrnovat pole obsahující obsah z více jazyků, například vytváření jednotlivých polí pro řetězce specifické pro jazyk. Pro dosažení nejlepších výsledků při indexování a dotazování přiřaďte analyzátor jazyka, který poskytuje příslušná jazyková pravidla. 
 
-Azure Search nabízí velký výběr jazykových analyzátorů z aplikace Lucene i Microsoftu, které je možné přiřadit k jednotlivým polím pomocí vlastnosti Analyzer. Můžete také zadat analyzátor jazyka na portálu, jak je popsáno v tomto článku.
+Azure Kognitivní hledání nabízí velký výběr jazykových analyzátorů z aplikací Lucene a Microsoft, které je možné přiřadit k jednotlivým polím pomocí vlastnosti Analyzer. Můžete také zadat analyzátor jazyka na portálu, jak je popsáno v tomto článku.
 
 ## <a name="add-analyzers-to-fields"></a>Přidat analyzátory do polí
 
@@ -34,7 +34,7 @@ Analyzátor jazyka je určen při vytvoření pole. Přidáním analyzátoru do 
 
 ![Přiřazovat analyzátory jazyka během definice pole](media/search-language-support/select-analyzer.png "Přiřazovat analyzátory jazyka během definice pole")
 
-Ve výchozím nastavení používají všechna hledaná pole [standardní analyzátor Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) , který je Language-nezávislá. Úplný seznam podporovaných analyzátorů najdete v tématu [Přidání analyzátorů jazyka do indexu Azure Search](index-add-language-analyzers.md).
+Ve výchozím nastavení používají všechna hledaná pole [standardní analyzátor Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) , který je Language-nezávislá. Pokud chcete zobrazit úplný seznam podporovaných analyzátorů, přečtěte si téma [Přidání analyzátorů jazyka do indexu služby Azure kognitivní hledání](index-add-language-analyzers.md).
 
 V portálu se analyzátory mají použít tak, jak jsou. Pokud budete vyžadovat přizpůsobení nebo konkrétní konfiguraci filtrů a tokenizátory musíte nejdřív, měli byste v kódu [vytvořit vlastní analyzátor](index-add-custom-analyzers.md) . Portál nepodporuje výběr a konfiguraci vlastních analyzátorů.
 
@@ -63,6 +63,6 @@ Někdy není známý jazyk agenta, který vydává dotaz, a v takovém případ�
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud jste vývojářem rozhraní .NET, Všimněte si, že můžete nakonfigurovat jazykové analyzátory pomocí [sady Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) a vlastnosti [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) . 
+Pokud jste vývojářem rozhraní .NET, Všimněte si, že můžete nakonfigurovat jazykové analyzátory pomocí [sady Azure kognitivní hledání .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) a vlastnosti [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) . 

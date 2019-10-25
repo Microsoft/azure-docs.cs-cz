@@ -1,41 +1,41 @@
 ---
-title: Upgradujte na nejnovější službu Azure Search REST API verzi Azure Search
-description: Projděte si rozdíly ve verzích rozhraní API a zjistěte, které akce jsou potřeba k migraci stávajícího kódu na nejnovější Azure Searchovou verzi REST API služby.
-author: brjohnstmsft
+title: Upgradovat na nejnovější verzi služby Azure Kognitivní hledání REST API
+titleSuffix: Azure Cognitive Search
+description: Projděte si rozdíly ve verzích rozhraní API a zjistěte, které akce jsou potřeba k migraci stávajícího kódu na nejnovější REST API verzi služby Azure Kognitivní hledání.
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: brjohnstmsft
 ms.author: brjohnst
-ms.openlocfilehash: 6c1f7fdb1f349c9e31ba63d79a9b9e26ea9f09da
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a9bffb41cce030b7a63e600e5ffaf65130261b4c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182382"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791161"
 ---
-# <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Upgradovat na nejnovější verzi služby Azure Search REST API
-Pokud používáte předchozí verzi [služby Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/), Tento článek vám pomůže při upgradu vaší aplikace tak, aby používala nejnovější všeobecně dostupnou verzi rozhraní API 2019-05-06.
+# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Upgradovat na nejnovější verzi služby Azure Kognitivní hledání REST API
+
+Pokud používáte předchozí verzi [vyhledávacího REST API](https://docs.microsoft.com/rest/api/searchservice/), Tento článek vám pomůže při upgradu vaší aplikace tak, aby používala nejnovější všeobecně dostupnou verzi rozhraní API 2019-05-06.
 
 Verze 2019-05-06 REST API obsahuje některé změny z dřívějších verzí. Jsou to většinou zpětně kompatibilní, takže změna kódu by měla vyžadovat jenom minimální úsilí v závislosti na verzi, kterou jste předtím používali. [Postup upgradu](#UpgradeSteps) popisuje změny kódu, které jsou potřebné pro použití nových funkcí.
 
 > [!NOTE]
-> Instance služby Azure Search podporuje rozsah REST API verzí, včetně předchozích. Tyto verze rozhraní API můžete dál používat, ale doporučujeme migrovat kód na nejnovější verzi, abyste měli přístup k novým funkcím.
+> Instance služby Azure Kognitivní hledání podporuje rozsah REST API verzí, včetně předchozích. Tyto verze rozhraní API můžete dál používat, ale doporučujeme migrovat kód na nejnovější verzi, abyste měli přístup k novým funkcím.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-2019-05-06"></a>Co je nového ve verzi 2019-05-06
-Verze 2019-05-06 je nejnovější všeobecně dostupná verze služby Azure Search REST API. Funkce, které přešly na všeobecně dostupný stav této verze rozhraní API, zahrnují:
+Verze 2019-05-06 je nejnovější všeobecně dostupná verze REST API. Funkce, které přešly na všeobecně dostupný stav této verze rozhraní API, zahrnují:
 
 * [Automatické dokončování](index-add-suggesters.md) je funkce typeahead, která dokončí částečně zadaný pojem vstupu.
 
-* [Komplexní typy](search-howto-complex-data-types.md) poskytují nativní podporu pro data strukturovaných objektů v indexu Azure Search.
+* [Komplexní typy](search-howto-complex-data-types.md) poskytují nativní podporu pro data strukturovaných objektů v indexu vyhledávání.
 
 * [Režimy analýzy JsonLines](search-howto-index-json-blobs.md), součást indexování objektů BLOB v Azure, vytvoří jeden vyhledávací dokument pro každou entitu JSON, která je oddělená novým řádkem.
 
-* [Rozpoznávání rozpoznávání](cognitive-search-concept-intro.md) poskytuje indexování, která využívá moduly obohacení AI Cognitive Services.
+* [Rozšíření AI](cognitive-search-concept-intro.md) poskytuje indexování, která využívá moduly obohacení AI Cognitive Services.
 
 Tato všeobecně dostupná aktualizace se shoduje s několika verzemi funkcí verze Preview. Seznam nových funkcí ve verzi Preview najdete v tématu věnovaném [hledání rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md).
 
@@ -53,7 +53,7 @@ Struktura chyb pro provádění indexeru dříve měla `status` element. Tento p
 
 ### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>Rozhraní API zdroje dat indexeru už nevrací připojovací řetězce.
 
-V rozhraní API verze 2019-05-06 a 2019-05-06-Preview a vyšší, rozhraní API zdroje dat už v reakci na operaci REST nevrací připojovací řetězce. V předchozích verzích rozhraní API byly pro zdroje dat vytvořené pomocí POST Azure Search vráceny **201** a odpověď OData, která obsahovala připojovací řetězec v prostém textu.
+V rozhraní API verze 2019-05-06 a 2019-05-06-Preview a vyšší, rozhraní API zdroje dat už v reakci na operaci REST nevrací připojovací řetězce. V předchozích verzích rozhraní API byly pro zdroje dat vytvořené pomocí POST Kognitivní hledání Azure vrátil **201** a odpověď OData, která obsahovala připojovací řetězec v prostém textu.
 
 ### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>Již je ukončeno rozpoznávání pojmenovaných entit.
 
@@ -66,7 +66,7 @@ Pokud provádíte upgrade z předchozí verze GA, 2017-11-11 nebo 2016-09-01, pr
 
 * Pokud se v odpovědi rozhraní API vrátí nerozpoznané vlastnosti, váš kód se nezdařil. Ve výchozím nastavení by vaše aplikace měla ignorovat vlastnosti, které nerozumí.
 
-* Váš kód uchovává požadavky rozhraní API a pokusí se je znovu odeslat do nové verze rozhraní API. K tomu může dojít například `@search.nextPageParameters` v případě, že vaše aplikace udržuje tokeny pokračování vracené z rozhraní API pro hledání (Další informace najdete v referenčních informacích [rozhraní API hledání](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)).
+* Váš kód uchovává požadavky rozhraní API a pokusí se je znovu odeslat do nové verze rozhraní API. K tomu může dojít například v případě, že vaše aplikace udržuje tokeny pokračování vracené z rozhraní API pro hledání (Další informace najdete v [referenčních informacích k rozhraní API hledání](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)`@search.nextPageParameters`).
 
 Pokud se vám některé z těchto situací vztahují, možná budete muset změnit kód odpovídajícím způsobem. V opačném případě by neměly být potřebné žádné změny, pokud nechcete začít používat [nové funkce](#WhatsNew) verze 2019-05-06.
 
@@ -90,7 +90,7 @@ Pokud váš kód používá komplexní typy s verzí starší verze Preview 2017
 
 + Rozhraní API-Version 2019-05-06 obsahuje nový limit počtu prvků komplexních kolekcí na dokument. Pokud jste vytvořili indexy s dokumenty, které překračují tato omezení pomocí verze Preview rozhraní API, všechny pokus o Reindexování těchto dat pomocí rozhraní API-Version 2019-05-06 se nezdaří. Pokud to platí pro vás, budete muset před změnou indexu dat snížit počet komplexních prvků kolekce na dokument.
 
-Další informace najdete v tématu [omezení služby pro Azure Search](search-limits-quotas-capacity.md).
+Další informace najdete v tématu [omezení služby pro Azure kognitivní hledání](search-limits-quotas-capacity.md).
 
 ### <a name="how-to-upgrade-an-old-complex-type-structure"></a>Postup upgradu staré struktury komplexního typu
 
@@ -142,9 +142,9 @@ Pomocí následujících kroků můžete pomocí rozhraní API verze 2017-11-11-
 > [!NOTE]
 > Není možné spravovat indexy vytvořené se starým formátem "plochý" z Azure Portal. Upgradujte prosím své indexy z "ploché" reprezentace na "strom", a to nejdřívějším pohodlím.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Přečtěte si referenční dokumentaci ke službě Azure Search REST API. Pokud narazíte na problémy, požádejte nás o pomoc na [StackOverflow](https://stackoverflow.com/) nebo [kontaktujte podporu](https://azure.microsoft.com/support/community/?product=search).
+Projděte si referenční dokumentaci REST API hledání. Pokud narazíte na problémy, požádejte nás o pomoc na [StackOverflow](https://stackoverflow.com/) nebo [kontaktujte podporu](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
 > [Odkaz na REST API služby Search](https://docs.microsoft.com/rest/api/searchservice/)

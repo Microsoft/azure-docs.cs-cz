@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511018"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784835"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -49,7 +49,7 @@ Hlavička hostitele HTTP, která je odeslána z prohlížeče klienta, je nejbě
 
 Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager funguje na úrovni DNS. Vzhledem k tomu, že se klienti připojují k koncovým bodům služby přímo, nedochází při použití Traffic Manager po navázání tohoto připojení k žádnému dopadu na výkon.
 
-Vzhledem k tomu, že Traffic Manager se integruje s aplikacemi na úrovni DNS, vyžaduje se vložení dalšího vyhledávání DNS do řetězce překladu DNS. Dopad Traffic Manager na dobu překladu DNS je minimální. Traffic Manager používá globální síť názvových serverů a používá síť s [](https://en.wikipedia.org/wiki/Anycast) více jmény k zajištění toho, aby se dotazy DNS vždycky směrovaly na nejbližší dostupný názvový server. Kromě toho ukládání odpovědí DNS do mezipaměti znamená, že další latence DNS vzniklé pomocí Traffic Manager platí jenom pro zlomek relací.
+Vzhledem k tomu, že Traffic Manager se integruje s aplikacemi na úrovni DNS, vyžaduje se vložení dalšího vyhledávání DNS do řetězce překladu DNS. Dopad Traffic Manager na dobu překladu DNS je minimální. Traffic Manager používá globální síť názvových serverů [a používá síť](https://en.wikipedia.org/wiki/Anycast) s více jmény k zajištění toho, aby se dotazy DNS vždycky směrovaly na nejbližší dostupný názvový server. Kromě toho ukládání odpovědí DNS do mezipaměti znamená, že další latence DNS vzniklé pomocí Traffic Manager platí jenom pro zlomek relací.
 
 Metoda Performance směruje provoz do nejbližšího dostupného koncového bodu. Výsledkem netto je, že celkový dopad na výkon spojený s touto metodou by měl být minimální. Jakékoli zvýšení latence DNS by mělo být posunuto o nižší latenci sítě ke koncovému bodu.
 
@@ -172,7 +172,7 @@ Můžete zadat maximální počet koncových bodů, které mají být vráceny, 
 
 Nemůžeme zaručit, že se v každém dotazu vrátí stejná sada koncových bodů. To je ovlivněno i tím, že některé koncové body můžou být v nesprávném stavu, v jakém okamžiku nebudou zahrnuty do odpovědi.
 
-## <a name="real-user-measurements"></a>Měření reálných uživatelů
+## <a name="real-user-measurements"></a>Real User Measurements
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jaké jsou výhody použití Měření reálných uživatelů?
 
@@ -252,7 +252,7 @@ Ne, nemusíte hostovat žádnou komponentu na straně serveru v Azure, aby mohla
 
 Jak je uvedeno v předchozí odpovědi, komponenty na straně serveru služby Měření reálných uživatelů jsou vlastněné a spravované pomocí Azure. To znamená, že využití šířky pásma Azure se nezvýší, protože používáte Měření reálných uživatelů. Nezahrnuje použití šířky pásma mimo jiné poplatky za Azure. Šířku pásma, kterou používáme, minimalizujete tak, že stáhnete jenom jeden obrázek v pixelech, abyste zjistili latenci v oblasti Azure. 
 
-## <a name="traffic-view"></a>Zobrazení přenosů
+## <a name="traffic-view"></a>Traffic View
 
 ### <a name="what-does-traffic-view-do"></a>Co Zobrazení přenosů udělat?
 
@@ -300,7 +300,7 @@ Zobrazení přenosů pro libovolný profil můžete vypnout pomocí portálu neb
 
 Ceny Zobrazení přenosů jsou založené na počtu datových bodů použitých k vytvoření výstupu. V současné době je jediným podporovaným datovým typem dotazy, které váš profil obdrží. Kromě toho se vám bude účtovat pouze zpracování, které bylo provedeno, když máte Zobrazení přenosů povoleno. To znamená, že pokud povolíte Zobrazení přenosů v určitém časovém období v měsíci a vypnete ho v jinou dobu, zpracují se jenom datové body, které se zpracovaly v době, kdy jste vystavili povolený počet funkcí.
 
-## <a name="traffic-manager-endpoints"></a>Koncové body služby Traffic Manager
+## <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 
 ### <a name="can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions"></a>Můžu použít Traffic Manager s koncovými body z více předplatných?
 
@@ -326,7 +326,7 @@ Traffic Manager se obvykle používá k směrování provozu do aplikací nasaze
 
 Koncové body Azure přidružené k profilu Traffic Manager jsou sledovány pomocí jejich ID prostředků. Pokud se prostředek Azure, který se používá jako koncový bod (například veřejná IP adresa, klasický cloudová služba, WebApp nebo jiný profil Traffic Manager), přesune do jiné skupiny prostředků nebo předplatného, změní se jeho ID. V tomto scénáři je potřeba aktualizovat profil Traffic Manager tím, že nejprve odstraníte a pak přidáte zpátky koncové body do profilu.
 
-## <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncového bodu Traffic Manager
+## <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
 
 ### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Je Traffic Manager odolné vůči selhání oblasti Azure?
 
@@ -384,13 +384,13 @@ Pro profily s jinou metodou směrování než s více hodnotami:
 
 |Příchozí žádost o dotaz|    Typ koncového bodu|  Poskytnutá odpověď|
 |--|--|--|
-|JAKÝMIKOLI |  A / AAAA / CNAME |  Cílový koncový bod| 
+|JAKÝMIKOLI |  A/AAAA/CNAME |  Cílový koncový bod| 
 |A |    A/CNAME | Cílový koncový bod|
 |A |    AAAA |  DATA |
-|AAAA | AAAA / CNAME |  Cílový koncový bod|
+|AAAA | AAAA/CNAME |  Cílový koncový bod|
 |AAAA | A | DATA |
 |CNAME |    CNAME | Cílový koncový bod|
-|CNAME  |A / AAAA | DATA |
+|CNAME  |A/AAAA | DATA |
 |
 
 Pro profily s metodou směrování nastavenou na hodnotu vícehodnotové:
@@ -416,7 +416,10 @@ Ano. Jako monitorovací protokol můžete zadat TCP a Traffic Manager může ini
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Jaké konkrétní odpovědi z koncového bodu vyžadují při použití monitorování protokolu TCP?
 
-Když se použije monitorování protokolu TCP, Traffic Manager spustí třícestný protokol TCP handshake odesláním žádosti SYN do koncového bodu na zadaném portu. Potom počká po určitou dobu (zadanou v nastavení časového limitu) pro odpověď z koncového bodu. Pokud koncový bod odpoví na požadavek SYN s odpovědí SYN-ACK v časovém limitu zadaném v nastavení monitorování, pak je tento koncový bod považován za dobrý. Pokud je přijata odpověď SYN-ACK, Traffic Manager obnoví připojení tak, že odpoví zpět o RST.
+Když se použije monitorování protokolu TCP, Traffic Manager spustí třícestný protokol TCP handshake odesláním žádosti SYN do koncového bodu na zadaném portu. Pak počká na odpověď SYN-ACK z koncového bodu po určitou dobu (zadanou v nastavení časového limitu).
+
+- Pokud je odpověď SYN-ACK přijata v rámci časového limitu zadaného v nastavení monitorování, pak je tento koncový bod považován za dobrý. FIN nebo FIN-ACK je očekávaná odpověď z Traffic Manager, když pravidelně ukončuje soket.
+- Pokud je po uplynutí zadaného časového limitu přijata odpověď SYN-ACK, Traffic Manager bude při resetování připojení reagovat s parametrem RST.
 
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Jak rychle Traffic Manager přesunout uživatele z poškozeného koncového bodu?
 
@@ -477,8 +480,8 @@ Použití vnořených profilů nemá žádný negativní dopad na ceny.
 
 Traffic Manager fakturace má dvě komponenty: kontroly stavu koncových bodů a miliony dotazů DNS.
 
-* Kontroly stavu koncových bodů: Pro podřízený profil se neúčtují žádné poplatky, pokud je v nadřazeném profilu nakonfigurovaný jako koncový bod. Monitorování koncových bodů v podřízeném profilu se fakturuje obvyklým způsobem.
-* Dotazy DNS: Každý dotaz se počítá jenom jednou. Dotaz na nadřazený profil, který vrací koncový bod z podřízeného profilu, se počítá pouze s nadřazeným profilem.
+* Kontroly stavu koncových bodů: pro podřízený profil se neúčtují žádné poplatky, pokud je v nadřazeném profilu nakonfigurovaný jako koncový bod. Monitorování koncových bodů v podřízeném profilu se fakturuje obvyklým způsobem.
+* Dotazy DNS: každý dotaz se počítá jenom jednou. Dotaz na nadřazený profil, který vrací koncový bod z podřízeného profilu, se počítá pouze s nadřazeným profilem.
 
 Úplné podrobnosti najdete na stránce s [cenami Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
@@ -502,7 +505,7 @@ Následující tabulka popisuje chování Traffic Managerch kontrol stavu pro vn
 | CheckingEndpoints. Aspoň jeden podřízený koncový bod profilu je "CheckingEndpoint". Žádné koncové body nejsou online nebo jsou degradovány. |Stejné jako výše. | |
 | Termín. Všechny koncové body podřízeného profilu jsou buď zakázány, nebo zastaveny, nebo tento profil nemá žádné koncové body. |Zastaveno | |
 
-## <a name="next-steps"></a>Další postup:
+## <a name="next-steps"></a>Další kroky:
 
 - Další informace o Traffic Manager [monitorování koncového bodu a automatické převzetí služeb při selhání](../traffic-manager/traffic-manager-monitoring.md).
 - Přečtěte si další informace o [metodách směrování provozu](../traffic-manager/traffic-manager-routing-methods.md)Traffic Manager.

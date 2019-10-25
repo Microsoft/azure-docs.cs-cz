@@ -7,38 +7,38 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 35f11ee9bce4dc7c68e12749f69d2f2e4253d4bc
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: b5839ef7d9f1e5498beabfcdf0f1605fc1378498
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996243"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800427"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocíC#
 
 > [!div class="op_single_selector"]
-> * [Bran](create-cluster-database-portal.md)
-> * [CLI](create-cluster-database-cli.md)
-> * [Prostředí](create-cluster-database-powershell.md)
+> * [Azure Portal](create-cluster-database-portal.md)
+> * [Rozhraní příkazového řádku](create-cluster-database-cli.md)
+> * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Šablona ARM](create-cluster-database-resource-manager.md)
 
-Azure Průzkumník dat je rychlá a plně spravovaná služba analýzy dat pro analýzu velkých objemů datových proudů z aplikací, webů, zařízení IoT a dalších prostředků v reálném čase. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí nástroje C#.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí nástroje C#.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Pokud nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit **vývoj pro Azure** .
+* Pokud nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="install-c-nuget"></a>Nainstalovat C# NuGet
 
-1. Nainstalujte [balíček NuGet pro Azure Průzkumník dat (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Nainstalujte [balíček NuGet pro Azure Průzkumník dat (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-1. Nainstalujte [balíček NuGet Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) pro ověřování.
+* Nainstalujte [balíček NuGet Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) pro ověřování.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověření
 Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure AD a instanční objekt, který má přístup k prostředkům. Pokud chcete vytvořit bezplatnou aplikaci Azure AD a přidat přiřazení role v oboru předplatného, podívejte se na [vytvořit aplikaci Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Také ukazuje, jak získat `Directory (tenant) ID`, `Application ID` a `Client Secret`.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Azure Průzkumník dat
@@ -72,12 +72,12 @@ Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure
     await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
 
-   |**Nastavením** | **Navrhovaná hodnota** | **Popis pole**|
+   |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | clusterName | *mykustocluster* | Požadovaný název clusteru.|
    | skuName | *Standard_D13_v2* | SKU, které bude použito pro váš cluster. |
-   | vrstva | *Standardní* | Úroveň SKU. |
-   | klíčivost | *Automatické* | Počet instancí clusteru |
+   | Basic | *Standard* | Úroveň SKU. |
+   | capacity | *Automatické* | Počet instancí clusteru |
    | resourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 
     > [!NOTE]
@@ -104,7 +104,7 @@ Pokud výsledek obsahuje `ProvisioningState` s hodnotou `Succeeded`, cluster byl
     await kustoManagementClient.Databases.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, database);
     ```
 
-   |**Nastavením** | **Navrhovaná hodnota** | **Popis pole**|
+   |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | clusterName | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
    | Databáze | *mykustodatabase* | Název vaší databáze.|

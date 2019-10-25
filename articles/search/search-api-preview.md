@@ -1,26 +1,23 @@
 ---
-title: Verze Preview REST API Azure Search 2019-05-06 – Preview – Azure Search
-description: Služba Azure Search REST API verze 2019-05-06-Preview zahrnuje experimentální funkce, jako jsou úložiště znalostí a šifrovací klíče spravované zákazníkem.
-services: search
-author: HeidiSteen
+title: REST API verze 2019-05-06-Preview
+titleSuffix: Azure Cognitive Search
+description: Služba Azure Kognitivní hledání REST API verze 2019-05-06-Preview zahrnuje experimentální funkce, jako jsou znalostní báze Knowledge Store a zákaznické šifrovací klíče spravované zákazníky.
 manager: nitinme
-ms.service: search
-ms.devlang: rest-api
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: search
-ms.date: 05/02/2019
-ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7fa280742556b7bc42d2c7fb30c880f836eef62b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 11/04/2019
+ms.openlocfilehash: a4daaac6abababcedb5d6dd7eb2122ef29846ef4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649983"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792536"
 ---
-# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Rozhraní REST API služby Azure Search – verze 2019-05-06 – Preview
-Tento článek popisuje `api-version=2019-05-06-Preview` verzi služby Azure Search REST API, která nabízí experimentální funkce, které ještě nejsou všeobecně dostupné.
+# <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Rozhraní REST API pro službu Azure Kognitivní hledání – verze 2019-05-06 – Preview
+
+Tento článek popisuje REST API `api-version=2019-05-06-Preview` verzi služby Search, která nabízí experimentální funkce, které ještě nejsou všeobecně dostupné.
 
 > [!NOTE]
 > Funkce ve verzi Preview jsou k dispozici pro testování a experimentování s cílem shromažďování názorů a mohou se změnit. Důrazně doporučujeme používat rozhraní API ve verzi Preview v produkčních aplikacích.
@@ -49,11 +46,11 @@ Následující příklad syntaxe znázorňuje volání rozhraní API verze Previ
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
 
-Služba Azure Search je dostupná ve více verzích. Další informace najdete v tématu [verze rozhraní API](search-api-versions.md).
+Služba Azure Kognitivní hledání je dostupná ve více verzích. Další informace najdete v tématu [verze rozhraní API](search-api-versions.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Přečtěte si referenční dokumentaci ke službě Azure Search REST API. Pokud narazíte na problémy, požádejte nás o pomoc na [StackOverflow](https://stackoverflow.com/) nebo [kontaktujte podporu](https://azure.microsoft.com/support/community/?product=search).
+Projděte si referenční dokumentaci REST API hledání. Pokud narazíte na problémy, požádejte nás o pomoc na [StackOverflow](https://stackoverflow.com/) nebo [kontaktujte podporu](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
 > [Odkaz na REST API služby Search](https://docs.microsoft.com/rest/api/searchservice/)

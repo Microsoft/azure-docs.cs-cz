@@ -1,5 +1,6 @@
 ---
-title: Migrace na MSAL.NET | Azure
+title: Migrace na MSAL.NET
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o rozdílech mezi Microsoft Authentication Library for .NET (MSAL.NET) a s knihovnou ověřování Azure AD pro .NET (ADAL.NET) a postupem migrace na MSAL.NET.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a132834952d2654f400217bd6eed1a3745efbf9
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 6d9f178df5e5fd9d2b70b7791588cfdc0652b217
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264269"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802777"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
@@ -45,25 +46,25 @@ Pokud už jste obeznámeni s koncovým bodem Azure AD for Developers (v 1.0) (a 
 
 Pokud ale vaše aplikace potřebuje přihlašovat uživatele staršími verzemi [Active Directory Federation Services (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services), musíte i nadále používat ADAL.NET. Další informace najdete v tématu [Podpora služby ADFS](https://aka.ms/msal-net-adfs-support).
 
-Následující obrázek shrnuje některé rozdíly mezi ADAL.NET a MSAL.NETem ![souběžného kódu.](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
+Následující obrázek shrnuje některé rozdíly mezi ADAL.NET a MSAL.NET ![souběžného kódu](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
 
 ### <a name="nuget-packages-and-namespaces"></a>Balíčky a obory názvů NuGet
 
-ADAL.NET se spotřebovává z balíčku NuGet [Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) . obor názvů, který se `Microsoft.IdentityModel.Clients.ActiveDirectory`má použít, je.
+ADAL.NET se spotřebovává z balíčku NuGet [Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) . obor názvů, který se má použít, je `Microsoft.IdentityModel.Clients.ActiveDirectory`.
 
-Pokud chcete použít MSAL.NET, budete muset přidat balíček NuGet [Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client) a použít `Microsoft.Identity.Client` obor názvů.
+Pokud chcete použít MSAL.NET, budete muset přidat balíček NuGet [Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client) a použít obor názvů `Microsoft.Identity.Client`.
 
 ### <a name="scopes-not-resources"></a>Obory nejsou prostředky
 
-ADAL.NET získá tokeny pro *prostředky*, ale MSAL.NET získá tokeny pro *rozsahy*. Řada MSAL.NETch přepsání AcquireToken vyžaduje parametr nazvaný scopes (`IEnumerable<string> scopes`). Tento parametr je jednoduchý seznam řetězců, který deklaruje požadovaná oprávnění a požadované prostředky. Mezi známé obory patří i [obory Microsoft Graph](/graph/permissions-reference).
+ADAL.NET získá tokeny pro *prostředky*, ale MSAL.NET získá tokeny pro *rozsahy*. Počet MSAL.NETch přepsání AcquireToken vyžaduje parametr nazvaný scopes (`IEnumerable<string> scopes`). Tento parametr je jednoduchý seznam řetězců, který deklaruje požadovaná oprávnění a požadované prostředky. Mezi známé obory patří i [obory Microsoft Graph](/graph/permissions-reference).
 
 V MSAL.NET je také možné získat přístup k prostředkům v 1.0. Podívejte se na podrobnosti v [oborech pro aplikaci v 1.0](#scopes-for-a-web-api-accepting-v10-tokens). 
 
 ### <a name="core-classes"></a>Základní třídy
 
-- ADAL.NET používá [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) jako znázornění připojení ke službě tokenů zabezpečení (STS) nebo k autorizačnímu serveru prostřednictvím autority. V opačném případě je MSAL.NET navržený kolem [klientských aplikací](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications). Poskytuje dvě samostatné třídy: `PublicClientApplication` a`ConfidentialClientApplication`
+- ADAL.NET používá [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) jako znázornění připojení ke službě tokenů zabezpečení (STS) nebo k autorizačnímu serveru prostřednictvím autority. V opačném případě je MSAL.NET navržený kolem [klientských aplikací](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications). Poskytuje dvě samostatné třídy: `PublicClientApplication` a `ConfidentialClientApplication`
 
-- Získávají se tokeny: ADAL.NET a MSAL.NET mají stejná ověřovací volání`AcquireTokenAsync` (a `AcquireTokenSilentAsync` pro ADAL.NET a `AcquireTokenInteractive` a `AcquireTokenSilent` v MSAL.NET), ale vyžadují různé parametry. Jedním rozdílem je skutečnost, že v MSAL.NET už nemusíte předávat `ClientID` do aplikace v každém volání AcquireTokenXX. Ve `ClientID` skutečnosti je při sestavování (`IPublicClientApplication` nebo `IConfidentialClientApplication`) nastaveno pouze jednou.
+- Získání tokenů: ADAL.NET a MSAL.NET mají stejná ověřovací volání (`AcquireTokenAsync` a `AcquireTokenSilentAsync` pro ADAL.NET a `AcquireTokenInteractive` a `AcquireTokenSilent` v MSAL.NET), ale s jinými požadovanými parametry. Jedním rozdílem je skutečnost, že v MSAL.NET už nemusíte předávat `ClientID` vaší aplikace v každém volání AcquireTokenXX. Ve skutečnosti se `ClientID` při sestavování (`IPublicClientApplication` nebo `IConfidentialClientApplication`) nastavuje jenom jednou.
 
 ### <a name="iaccount-not-iuser"></a>IAccount není IUser
 
@@ -77,7 +78,7 @@ Další informace o rozdílech mezi IUser a IAccount najdete v tématu [MSAL.NET
 
 #### <a name="interaction-required-exceptions"></a>Interakce – vyžadované výjimky
 
-MSAL.NET má více explicitních výjimek. Pokud například v knihovně ADAL dojde k chybě tichého ověřování, procedura je zachytit výjimku a vyhledat `user_interaction_required` kód chyby:
+MSAL.NET má více explicitních výjimek. Pokud například v knihovně ADAL dojde k chybě tichého ověřování, je třeba zachytit výjimku a vyhledat kód chyby `user_interaction_required`:
 
 ```csharp
 catch(AdalException exception)
@@ -92,7 +93,7 @@ catch(AdalException exception)
 
 Získání tokenu pomocí ADAL.NET najdete v podrobnostech o [doporučeném vzoru](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-a-cached-token#recommended-pattern-to-acquire-a-token) .
 
-Pomocí MSAL.NET můžete zachytit `MsalUiRequiredException` , jak je popsáno v [AcquireTokenSilent](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-a-cached-token).
+Pomocí MSAL.NET zachytíte `MsalUiRequiredException`, jak je popsáno v [AcquireTokenSilent](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-a-cached-token).
 
 ```csharp
 catch(MsalUiRequiredException exception)
@@ -105,14 +106,14 @@ catch(MsalUiRequiredException exception)
 
 V ADAL.NET jsou výjimky výzvy deklarace identity zpracovávány následujícím způsobem:
 
-- `AdalClaimChallengeException`je výjimka (odvozená od `AdalServiceException`), kterou služba vyvolala v případě, že prostředek vyžaduje více deklarací identity od uživatele (např. pro ověřování instance se dvěma faktory). `Claims` Člen obsahuje některý fragment JSON s deklaracemi, které jsou očekávané.
-- V ADAL.NET je nutné, aby aplikace veřejné klienta obdržela tuto výjimku, aby `AcquireTokenInteractive` vyvolala přepsání s parametrem deklarací identity. Toto přepsání `AcquireTokenInteractive` se ani nepokusí použít mezipaměť, protože není nutné. Důvodem je, že token v mezipaměti nemá správné deklarace identity (jinak `AdalClaimChallengeException` by nebyl vyvolán). Proto není nutné pohlížet na mezipaměť. Všimněte si, `ClaimChallengeException` že je možné přijímat v WebApi OBO, `AcquireTokenInteractive` zatímco musí být volány ve veřejné klientské aplikaci, která volá toto webové rozhraní API.
+- `AdalClaimChallengeException` je výjimka (odvozená od `AdalServiceException`) vyvolaná službou pro případ, že prostředek vyžaduje více deklarací od uživatele (pro ověřování instance se dvěma faktory). Člen `Claims` obsahuje některý fragment JSON s deklaracemi, které jsou očekávané.
+- V ADAL.NET je nutné, aby aplikace veřejné klienta obdržela tuto výjimku, aby vyvolala `AcquireTokenInteractive` přepsat parametr deklarací identity. Toto přepsání `AcquireTokenInteractive` ještě nepokusí o vykonání mezipaměti, protože není nutné. Důvodem je, že token v mezipaměti nemá správné deklarace identity (jinak by nedošlo k vystavení `AdalClaimChallengeException`). Proto není nutné pohlížet na mezipaměť. Všimněte si, že `ClaimChallengeException` lze přijmout v WebAPI OBO, zatímco `AcquireTokenInteractive` musí být voláno ve veřejné klientské aplikaci, která volá toto webové rozhraní API.
 - Podrobnosti, včetně ukázek, najdete v tématu zpracování [AdalClaimChallengeException](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Exceptions-in-ADAL.NET#handling-adalclaimchallengeexception) .
 
 V MSAL.NET jsou výjimky výzvy deklarace identity zpracovávány následujícím způsobem:
 
-- Jsou umístěny na povrchu `MsalServiceException`. `Claims`
-- Existuje metoda, která může `AcquireTokenInteractive` být použita na tvůrce. `.WithClaim(claims)` 
+- `Claims` jsou v `MsalServiceException`.
+- K dispozici je `.WithClaim(claims)` metoda, která se může vztahovat na tvůrce `AcquireTokenInteractive`. 
 
 ### <a name="supported-grants"></a>Podporované granty
 
@@ -122,7 +123,7 @@ V MSAL.NET a koncovém bodu v 2.0 se zatím nepodporují všechny granty. Násle
 
 Tady jsou granty podporované v ADAL.NET a MSAL.NET pro desktopové a mobilní aplikace.
 
-Udělení | ADAL.NET | MSAL.NET
+Udělit | ADAL.NET | MSAL.NET
 ----- |----- | -----
 Interaktivní | [Interaktivní ověřování](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [Interaktivní získávání tokenů v MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 Integrované ověřování systému Windows | [Integrované ověřování ve Windows (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Integrované ověřování systému Windows](msal-authentication-flows.md#integrated-windows-authentication)
@@ -133,23 +134,23 @@ Tok kódu zařízení | [Profil zařízení pro zařízení bez webových prohl�
 
 Tady jsou granty podporované v ADAL.NET a MSAL.NET pro webové aplikace, webová rozhraní API a aplikace démona:
 
-Typ aplikace | Udělení | ADAL.NET | MSAL.NET
+Typ aplikace | Udělit | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Webová aplikace, webové rozhraní API, démon | Pověření klienta | [Toky přihlašovacích údajů klienta v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Toky přihlašovacích údajů klienta v MSAL.NET](msal-authentication-flows.md#client-credentials))
-Webové rozhraní API | Jménem: | [Volání služeb jménem uživatele pomocí ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Jménem v MSAL.NET](msal-authentication-flows.md#on-behalf-of)
+Webové rozhraní API | Jménem | [Volání služeb jménem uživatele pomocí ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Jménem v MSAL.NET](msal-authentication-flows.md#on-behalf-of)
 Webová aplikace | Ověřovací kód | [Získání tokenů pomocí autorizačních kódů ve webových aplikacích pomocí ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Získání tokenů pomocí autorizačních kódů u webových aplikací s MSAL.NET](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Trvalost mezipaměti
 
-ADAL.NET umožňuje zvětšit `TokenCache` třídu pro implementaci požadovaných funkcí trvalosti na platformách bez zabezpečeného úložiště (.NET Framework a .NET Core) `BeforeAccess`pomocí metod a `BeforeWrite` . Podrobnosti najdete v tématu [serializace mezipaměti tokenů v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization).
+ADAL.NET umožňuje zvětšit třídu `TokenCache` pro implementaci požadovaných funkcí trvalosti na platformách bez zabezpečeného úložiště (.NET Framework a .NET Core) pomocí `BeforeAccess`a `BeforeWrite`ch metod. Podrobnosti najdete v tématu [serializace mezipaměti tokenů v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization).
 
 MSAL.NET zpřístupňuje zapečetěnou třídu cache tokenem a odebírá možnost jejich rozšiřování. Proto vaše implementace mezipaměti tokenů musí být ve formě pomocné třídy, která komunikuje s zapečetěnou mezipamětí tokenu. Tato interakce je popsána v tématu [serializace mezipaměti tokenů v MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization).
 
 ## <a name="signification-of-the-common-authority"></a>Signification společné autority
 
-Pokud v v 1.0 používáte https://login.microsoftonline.com/common autoritu, umožníte uživatelům přihlašovat se pomocí libovolného účtu AAD (pro libovolnou organizaci). Viz [ověření autority v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
+Pokud v v 1.0 používáte autoritu https://login.microsoftonline.com/common , umožníte uživatelům přihlašovat se pomocí libovolného účtu AAD (pro libovolnou organizaci). Viz [ověření autority v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
-Pokud použijete https://login.microsoftonline.com/common autoritu v 2.0, umožníte uživatelům, aby se přihlásili pomocí libovolné organizace AAD nebo osobního účtu Microsoft (MSA). Pokud v MSAL.NET chcete omezit přihlášení na libovolný účet AAD (stejné chování jako u ADAL.NET), budete muset použít https://login.microsoftonline.com/organizations. Podrobnosti najdete `authority` v parametru ve [veřejné klientské aplikaci](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
+Pokud používáte https://login.microsoftonline.com/common autoritu v 2.0, umožníte uživatelům přihlašovat se pomocí libovolné organizace AAD nebo osobního účtu Microsoft (MSA). Pokud v MSAL.NET chcete omezit přihlášení na libovolný účet AAD (stejné chování jako u ADAL.NET), musíte použít https://login.microsoftonline.com/organizations. Podrobnosti najdete v parametru `authority` ve [veřejné klientské aplikaci](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
 
 ## <a name="v10-and-v20-tokens"></a>tokeny v 1.0 a v 2.0
 
@@ -159,7 +160,7 @@ Existují dvě verze tokenů:
 
 Koncový bod v 1.0 (používaný v ADAL) vysílá jenom tokeny v 1.0.
 
-Koncový bod v 2.0 (používaný v MSAL) ale emituje verzi tokenu, který webové rozhraní API přijímá. Vlastnost manifestu aplikace webového rozhraní API umožňuje vývojářům zvolit, která verze tokenu je přijata. Viz `accessTokenAcceptedVersion` v tématu Referenční dokumentace k [manifestu aplikace](reference-app-manifest.md) .
+Koncový bod v 2.0 (používaný v MSAL) ale emituje verzi tokenu, který webové rozhraní API přijímá. Vlastnost manifestu aplikace webového rozhraní API umožňuje vývojářům zvolit, která verze tokenu je přijata. Viz `accessTokenAcceptedVersion` v referenční dokumentaci k [manifestu aplikace](reference-app-manifest.md) .
 
 Další informace o tokenech v 1.0 a v 2.0 najdete v tématu [Azure Active Directory Access tokens](access-tokens.md)
 
@@ -169,24 +170,24 @@ Oprávnění OAuth2 jsou obory oprávnění, které aplikace webového rozhraní
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Obory pro vyžádání přístupu ke konkrétním OAuth2 oprávnění aplikace v 1.0
 
-Pokud chcete získat tokeny pro konkrétní obory aplikace v 1.0 (například graf AAD, který je https://graph.windows.net) , budete muset vytvořit `scopes` zřetězením požadovaného identifikátoru prostředku s požadovaným oprávněním OAuth2 pro daný prostředek).
+Pokud chcete získat tokeny pro konkrétní obory aplikace v 1.0 (například graf AAD, který je https://graph.windows.net) , je nutné vytvořit `scopes` zřetězením požadovaného identifikátoru prostředku s požadovaným oprávněním OAuth2 pro daný prostředek.
 
-Chcete-li například získat přístup k názvu uživatelského rozhraní API pro uživatele a v 1.0, které identifikátor ID aplikace `ResourceId`je, chcete použít:
+Chcete-li například získat přístup k názvu uživatelského rozhraní API pro uživatele a v 1.0, které `ResourceId`identifikátor ID aplikace, měli byste použít:
 
 ```csharp
 var scopes = new [] {  ResourceId+"/user_impersonation"};
 ```
 
-Pokud chcete číst a zapisovat pomocí MSAL.NET Azure Active Directory pomocí rozhraní AAD Graph API (https://graph.windows.net/) , měli byste vytvořit seznam oborů, jako v následujícím fragmentu kódu:
+Pokud chcete číst a zapisovat pomocí MSAL.NET Azure Active Directory pomocí rozhraní AAD Graph API (https://graph.windows.net/) , vytvořili byste seznam oborů, jako v následujícím fragmentu kódu:
 
 ```csharp
 ResourceId = "https://graph.windows.net/";
 var scopes = new [] { ResourceId + “Directory.Read”, ResourceID + “Directory.Write”}
 ```
 
-#### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Upozornění: V rozsahu, který odpovídá webovému rozhraní API v 1.0, byste měli mít jedno nebo dvě lomítka
+#### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Upozornění: v oboru, který odpovídá webovému rozhraní API v 1.0, by mělo být jedno nebo dvě lomítka
 
-Pokud chcete zapsat obor odpovídající rozhraní Azure Resource Manager API (https://management.core.windows.net/) , musíte požádat o následující obor (Všimněte si dvou lomítek). 
+Pokud chcete zapsat rozsah odpovídající rozhraní Azure Resource Manager API (https://management.core.windows.net/) , musíte požádat o následující obor (Všimněte si dvou lomítek). 
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -195,12 +196,12 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 // then call the API: https://management.azure.com/subscriptions?api-version=2016-09-01
 ```
 
-Důvodem je to, že rozhraní Správce prostředků API očekává lomítko v deklaraci`aud`identity cílové skupiny (), a pak je lomítko k oddělení názvu rozhraní API z oboru.
+Důvodem je to, že rozhraní Správce prostředků API očekává lomítko v deklaraci identity cílové skupiny (`aud`) a pak je lomítko oddělit název rozhraní API z oboru.
 
 Logika, kterou používá služba Azure AD, je následující:
 - Koncový bod pro ADAL (v 1.0) s přístupovým tokenem v 1.0 (jediný možný), AUD = Resource
 - Pro MSAL (koncový bod verze 2.0) se žádostí o přístupový token pro prostředek, který přijímá tokeny v 2.0, AUD = Resource. Identifikátor
-- Pro MSAL (koncový bod verze 2.0), který žádá o přístupový token pro prostředek, který přijímá přístupový token v 1.0 (což je výše uvedený případ), Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku. Proto pokud https:\//Database.Windows.NET očekává cílovou skupinu "https://database.windows.net/ ", budete muset vyžádat rozsah protokolu https:\/ /Database.Windows.NET//.default. Viz také problém č.[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL #747
+- Pro MSAL (koncový bod verze 2.0), který žádá o přístupový token pro prostředek, který přijímá přístupový token v 1.0 (což je výše uvedený případ), Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku. Proto pokud https:\//database.windows.net očekává cílovou skupinu "https://database.windows.net/ ", budete muset požádat o obor https:\/ /database.windows.net//.default. Viz také problém č.[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL #747
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Obory pro vyžadování přístupu ke všem oprávněním aplikace v 1.0
@@ -214,15 +215,15 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>Rozsahy, které se mají požádat v případě aplikace Flow/démon přihlašovacích údajů klienta
 
-V případě toku přihlašovacích údajů klienta by měl být `/.default`taky obor, který se má předat. Tento rozsah oznamuje službě Azure AD: "všechna oprávnění na úrovni aplikace, ke kterým správce souhlasí v registraci aplikace.
+V případě toku přihlašovacích údajů klienta by se taky `/.default`obor, který se má předat. Tento rozsah oznamuje službě Azure AD: "všechna oprávnění na úrovni aplikace, ke kterým správce souhlasí v registraci aplikace.
 
 ## <a name="adal-to-msal-migration"></a>MSAL migrace ADAL
 
-V ADAL.NET v2. X, aktualizační tokeny byly vystaveny, což vám umožní vyvíjet řešení kolem používání těchto tokenů jejich ukládáním do mezipaměti `AcquireTokenByRefreshToken` a pomocí metod poskytovaných ADAL 2. x. Některá z těchto řešení se použila ve scénářích, jako jsou:
+V ADAL.NET v2. X, aktualizační tokeny byly vystaveny, což vám umožní vyvíjet řešení kolem používání těchto tokenů jejich ukládáním do mezipaměti a pomocí `AcquireTokenByRefreshToken`ch metod poskytovaných ADAL 2. x. Některá z těchto řešení se použila ve scénářích, jako jsou:
 * Dlouhodobě běžící služby, které provádí akce, včetně aktualizace řídicích panelů jménem uživatelů, zatímco uživatelé už nebudou připojení. 
 * Scénáře webfarmu, které umožňují klientovi přenést RT do webové služby (ukládání do mezipaměti probíhá na straně klienta, zašifrovaný soubor cookie a není na straně serveru)
 
-MSAL.NET nevystavuje aktualizace tokenů z bezpečnostních důvodů: MSAL zpracovává aktualizace tokenů za vás. 
+MSAL.NET nevystavuje aktualizace tokenů z důvodů zabezpečení: MSAL zpracovává obnovování tokenů za vás. 
 
 Naštěstí MSAL.NET nyní obsahuje rozhraní API, které vám umožní migrovat předchozí obnovovací tokeny (získané pomocí ADAL) do `IConfidentialClientApplication`:
 
@@ -242,9 +243,9 @@ IByRefreshToken.AcquireTokenByRefreshToken(IEnumerable<string> scopes, string re
  
 Pomocí této metody můžete zadat dříve použitý obnovovací token spolu s libovolnými obory (prostředky), které si přejete. Obnovovací token se vymění pro nový a uložený do mezipaměti do vaší aplikace.  
 
-Jelikož je tato metoda určena pro scénáře, které nejsou typické, není k dispozici, není k `IConfidentialClientApplication` dispozici, a to `IByRefreshToken`bez jejich prvního přetypování do.
+Jelikož je tato metoda určena pro scénáře, které nejsou typické, není k dispozici pro `IConfidentialClientApplication` bez toho, aby ji bylo možné `IByRefreshToken`.
 
-Tento fragment kódu ukazuje určitý kód migrace v důvěrné klientské aplikaci. `GetCachedRefreshTokenForSignedInUser`Načtěte obnovovací token, který byl uložen v některém úložišti, pomocí předchozí verze aplikace, která použila k využití knihovny ADAL 2. x. `GetTokenCacheForSignedInUser`deserializace mezipaměť přihlášeného uživatele (protože důvěrné klientské aplikace by měly mít jednu mezipaměť na uživatele).
+Tento fragment kódu ukazuje určitý kód migrace v důvěrné klientské aplikaci. `GetCachedRefreshTokenForSignedInUser` načíst obnovovací token, který byl uložen v některém úložišti, pomocí předchozí verze aplikace, která použila k využití knihovny ADAL 2. x. `GetTokenCacheForSignedInUser` deserializace mezipaměť přihlášeného uživatele (protože důvěrné klientské aplikace by měly mít jednu mezipaměť na uživatele).
 
 ```csharp
 TokenCache userCache = GetTokenCacheForSignedInUser();

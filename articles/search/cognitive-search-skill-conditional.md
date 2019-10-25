@@ -1,24 +1,23 @@
 ---
-title: Dovednost vyhledávání podmíněného rozpoznávání (Azure Search) | Microsoft Docs
-description: Podmíněná dovednost umožňuje filtrování, vytváření výchozích hodnot a slučování hodnot.
-services: search
+title: Dovednost podmíněného vnímání
+titleSuffix: Azure Cognitive Search
+description: Podmíněná dovednost v Azure Kognitivní hledání umožňuje filtrování, vytváření výchozích hodnot a slučování hodnot v definici dovednosti.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: ea6113b96e2acf70a877e170651be3daa578e518
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265818"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792049"
 ---
-#   <a name="conditional-skill"></a>Podmíněná dovednost
+# <a name="conditional-cognitive-skill"></a>Dovednost podmíněného vnímání
 
-*Podmíněná dovednost* umožňuje Azure Search scénářů, které vyžadují logickou operaci k určení dat, která se mají přiřadit k výstupu. Mezi tyto scénáře patří filtrování, přiřazení výchozí hodnoty a sloučení dat na základě podmínky.
+**Podmíněná** dovednost umožňuje scénářům Azure kognitivní hledání, které vyžadují logickou operaci k určení dat, která se mají přiřadit k výstupu. Mezi tyto scénáře patří filtrování, přiřazení výchozí hodnoty a sloučení dat na základě podmínky.
 
 Následující pseudokódu demonstruje, co podmíněných dovedností dosáhne:
 
@@ -33,7 +32,7 @@ else
 > Tato dovednost není vázaná na rozhraní API Azure Cognitive Services a neúčtují se za jejich použití. Přesto byste ale měli k dispozici [prostředek Cognitive Services](cognitive-search-attach-cognitive-services.md) , abyste mohli přepsat možnost "Free" prostředku, která omezuje na malý počet rozšíření za den.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Util.ConditionalSkill
+Microsoft. dovednosti. util. ConditionalSkill
 
 
 ## <a name="evaluated-fields"></a>Vyhodnocená pole
@@ -73,7 +72,7 @@ Následující položky jsou platné hodnoty výrazu:
         "= !true"
     ```
 
--   Výrazy, které používají číselné operátory (+,- \*,,/,%) <br/>
+-   Výrazy, které používají číselné operátory (+,-, \*,/,%) <br/>
     Příklady: 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
@@ -88,7 +87,7 @@ Vstupy rozlišují velká a malá písmena.
 
 | Vstup   | Popis |
 |-------------|-------------|
-| condition   | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje podmínku pro vyhodnocení. Tato podmínka by se měla vyhodnotit na logickou hodnotu (*true* nebo *false*).   <br/>  Příklady: <br/> "= true" <br/> "= $ (/Document/Language) = =" fr "" <br/> "= $ (/Document/Pages/\*/Language) = = $ (/Document/expectedLanguage)" <br/> |
+| Pomocné   | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje podmínku pro vyhodnocení. Tato podmínka by se měla vyhodnotit na logickou hodnotu (*true* nebo *false*).   <br/>  Příklady: <br/> "= true" <br/> "= $ (/Document/Language) = =" fr "" <br/> "= $ (/Document/Pages/\*/Language) = = $ (/document/expectedLanguage)" <br/> |
 | whenTrue    | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje hodnotu, která se má vrátit, pokud je podmínka vyhodnocena na *hodnotu true*. Řetězcové konstanty by měly být vráceny v jednoduchých uvozovkách (a). <br/>Ukázkové hodnoty: <br/> "=" kontrakt ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/> |
 | whenFalse   | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje hodnotu, která se má vrátit, pokud je podmínka vyhodnocena jako *NEPRAVDA*. <br/>Ukázkové hodnoty: <br/> "=" kontrakt ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/>
 
@@ -97,7 +96,7 @@ Existuje jeden výstup, který se jednoduše nazývá "výstup". Vrátí hodnotu
 
 ## <a name="examples"></a>Příklady
 
-### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Ukázka definice dovednosti 1: Filtrování dokumentů pro vrácení pouze francouzských dokumentů
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Ukázka definice dovednosti 1: filtrování dokumentů pro vrácení pouze francouzských dokumentů
 
 Následující výstup vrátí pole vět ("/document/frenchSentences"), pokud je jazyk dokumentu francouzsky. Pokud jazyk není Francouzštin, hodnota je nastavena na *hodnotu null*.
 
@@ -133,7 +132,7 @@ Následující výstup vytvoří anotaci ("/document/languageWithDefault"), kter
 }
 ```
 
-### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Ukázka definice dovednosti 3: Sloučit hodnoty ze dvou polí do jedné
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Ukázková dovednost definice 3: sloučení hodnot ze dvou polí do jedné
 
 V tomto příkladu mají některé věty vlastnost *frenchSentiment* . Pokaždé, když vlastnost *frenchSentiment* má hodnotu null, chceme použít hodnotu *englishSentiment* . Výstup přiřadíme členovi s názvem *mínění* ("/Document/sentiment/*/sentiment").
 
@@ -151,7 +150,7 @@ V tomto příkladu mají některé věty vlastnost *frenchSentiment* . Pokaždé
 ```
 
 ## <a name="transformation-example"></a>Příklad transformace
-### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Ukázka definice dovedností 4: Transformace dat v jednom poli
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Ukázka definice dovedností 4: transformace dat v jednom poli
 
 V tomto příkladu se zobrazuje *mínění* , který je v rozsahu 0 až 1. Chceme ho transformovat tak, aby byl mezi-1 a 1. Tuto vedlejší transformaci můžeme použít pro podmíněnou dovednost.
 
@@ -170,11 +169,11 @@ V tomto příkladu nepoužíváme podmíněný aspekt dovednosti, protože podm�
 }
 ```
 
-## <a name="special-considerations"></a>Zvláštní upozornění
+## <a name="special-considerations"></a>Zvláštní požadavky
 Některé parametry jsou vyhodnoceny, takže musíte být obzvláště opatrní, abyste mohli postupovat podle zdokumentovaného vzoru. Výrazy musí začínat symbolem rovná se. Cesta musí být oddělená znaky "$ (" a "") ". Nezapomeňte vkládat řetězce do jednoduchých uvozovek. Který pomáhá vyhodnocovacímu vyhodnocení rozlišovat mezi řetězci a skutečnými cestami a operátory. Také nezapomeňte vložit prázdné znaky kolem operátorů (např. "*" v cestě znamená něco jiného než násobení).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-+ [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
++ [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

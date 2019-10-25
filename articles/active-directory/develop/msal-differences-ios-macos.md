@@ -1,5 +1,6 @@
 ---
-title: Microsoft Authentication Library (MSAL) pro iOS & macOS | Azure
+title: Knihovna Microsoft Authentication Library (MSAL) pro iOS & macOS
+titleSuffix: Microsoft identity platform
 description: Popisuje rozdíly v používání knihovny Microsoft Authentication Library (MSAL) mezi iOS a macOS.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb6e55e83412535f29284db48fb37fd514b35d4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 090f4eaea292c7122db2427ce8730df815506fc0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269009"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803145"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>Microsoft Authentication Library pro iOS a macOS – rozdíly
 
@@ -37,7 +38,7 @@ MSAL for macOS je podmnožinou funkcí dostupných pro iOS.
 
 MSAL for macOS nepodporuje:
 
-- různé typy prohlížečů `ASWebAuthenticationSession`, například, `SFAuthenticationSession`, `SFSafariViewController`.
+- různé typy prohlížečů, například `ASWebAuthenticationSession`, `SFAuthenticationSession``SFSafariViewController`.
 - zprostředkované ověřování pomocí Microsoft Authenticator aplikace není pro macOS podporované.
 
 Sdílení řetězce klíčů mezi aplikacemi od stejného vydavatele je více omezené na macOS 10,14 a starších verzích. Pomocí [seznamů řízení přístupu](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc) určete cesty k aplikacím, které by měly sdílet řetězce klíčů. Uživatel může zobrazit další výzvy pro řetězce klíčů.

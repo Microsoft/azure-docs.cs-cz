@@ -1,24 +1,23 @@
 ---
-title: Vlastní dovednost pro hledání vnímání – Azure Search
-description: Rozšíření schopností rozpoznávání vyhledávání dovednosti voláním na webová rozhraní API
-services: search
+title: Vlastní dovednosti webového rozhraní API v kanálu pro rozšíření
+titleSuffix: Azure Cognitive Search
+description: Rozšíření schopností Azure Kognitivní hledání dovednosti voláním na webová rozhraní API. Použijte vlastní dovednosti webového rozhraní API a integrujte svůj vlastní kód.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a148f974671e0d909591cbf24a433384a7570842
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693293"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784895"
 ---
-# <a name="custom-web-api-skill"></a>Vlastní dovednosti webového rozhraní API
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Vlastní dovednosti webového rozhraní API v kanálu pro rozšíření Azure Kognitivní hledání
 
-**Vlastní dovednosti webového rozhraní API** umožňuje rozšiřování rozpoznávání vyhledávání voláním koncového bodu webového rozhraní API, který poskytuje vlastní operace. Podobně jako u integrovaných dovedností má **vlastní dovednost webového rozhraní API** vstupy a výstupy. V závislosti na vstupech vaše webové rozhraní API obdrží datovou část JSON, když indexer běží, a vypíše datovou část JSON jako odpověď spolu s kódem stavu úspěch. Očekává se, že odpověď bude mít výstupy určené vaší vlastní dovedností. Jakákoli jiná odpověď se považuje za chybu a neprovádí se žádné obohacení.
+**Vlastní dovednosti webového rozhraní API** umožňuje rozšířit rozšíření AI voláním koncového bodu webového rozhraní API, který poskytuje vlastní operace. Podobně jako u integrovaných dovedností má **vlastní dovednost webového rozhraní API** vstupy a výstupy. V závislosti na vstupech vaše webové rozhraní API obdrží datovou část JSON, když indexer běží, a vypíše datovou část JSON jako odpověď spolu s kódem stavu úspěch. Očekává se, že odpověď bude mít výstupy určené vaší vlastní dovedností. Jakákoli jiná odpověď se považuje za chybu a neprovádí se žádné obohacení.
 
 Struktura datových částí JSON je podrobněji popsána v tomto dokumentu.
 
@@ -204,5 +203,5 @@ V případech, kdy webové rozhraní API není k dispozici nebo vrátí chybu pr
 
 + [Dovednosti v Power: úložiště vlastních dovedností](https://aka.ms/powerskills)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Přidat vlastní dovednosti do vyhledávání rozpoznávání](cognitive-search-custom-skill-interface.md)
-+ [Příklad: Vytvoření vlastní dovednosti pro hledání vnímání](cognitive-search-create-custom-skill-example.md)
++ [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
++ [Příklad: Vytvoření vlastní dovednosti pro rozšíření AI (rozpoznávání-Search-Create-Custom-dovednost-example.md)

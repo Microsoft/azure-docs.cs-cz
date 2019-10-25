@@ -1,27 +1,28 @@
 ---
-title: Zobrazení znalostní báze s Průzkumník služby Storage Azure Search
-description: Umožňuje zobrazit a analyzovat Azure Search znalostní báze Azure Portal Průzkumník služby Storage.
+title: Zobrazení znalostní báze s Průzkumník služby Storage
+titleSuffix: Azure Cognitive Search
+description: Umožňuje zobrazit a analyzovat Azure Kognitivní hledání Knowledge Store pomocí Průzkumník služby Storage Azure Portal.
+manager: nitinme
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 9ec93bcd2309bb47b24983260c35726ac24b5e95
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265600"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789977"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Zobrazení znalostní báze s Průzkumník služby Storage
 
 > [!Note]
-> Znalostní báze je ve verzi Preview a neměl by se používat v produkčním prostředí. Tuto funkci poskytuje [Azure Search REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
+> Znalostní báze je ve verzi Preview a neměl by se používat v produkčním prostředí. Tuto funkci poskytuje [Azure Kognitivní hledání REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
 >
 V tomto článku se dozvíte, jak se připojit a prozkoumat úložiště znalostí pomocí Průzkumník služby Storage v Azure Portal. Pokud chcete vytvořit ukázku znalostní báze používanou v tomto návodu, přečtěte si téma [vytvoření znalostní báze v Azure Portal](knowledge-store-create-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Postupujte podle kroků v části [vytvoření znalostní báze v Azure Portal](knowledge-store-create-portal.md) k vytvoření ukázkového úložiště Knowledge Store používaného v tomto návodu.
 

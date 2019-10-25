@@ -1,27 +1,26 @@
 ---
-title: Jak spravovat souběžné zápisy do prostředků – Azure Search
-description: Pomocí optimistického řízení souběžnosti předejdete kolizím v polovině vzduchu při aktualizacích nebo odstraňování Azure Search indexů, indexerů a datových zdrojů.
-author: HeidiSteen
+title: Jak spravovat souběžné zápisy do prostředků
+titleSuffix: Azure Cognitive Search
+description: Použijte optimistickou souběžnost, abyste zabránili kolizím středního proudění při aktualizacích nebo odstraňování do Azure Kognitivní hledání indexů, indexerů a datových zdrojů.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/21/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 67f2dad016d3958dc10ba87e785d31694a1c94f5
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656722"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792217"
 ---
-# <a name="how-to-manage-concurrency-in-azure-search"></a>Správa souběžnosti v Azure Search
+# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Jak spravovat souběžnost v Azure Kognitivní hledání
 
-Při správě Azure Search prostředků, jako jsou indexy a zdroje dat, je důležité aktualizovat prostředky bezpečně, zejména v případě, že se k prostředkům přistupoval současně pomocí různých komponent aplikace. Když dva klienti souběžně aktualizují prostředek bez koordinace, jsou možné situace časování. Chcete-li tomu zabránit, Azure Search nabízí *optimistický model souběžnosti*. U prostředku neexistují žádné zámky. Místo toho je k dispozici značka ETag pro každý prostředek, který identifikuje verzi prostředku, aby bylo možné vytvořit požadavky, které zabrání náhodnému přepsání.
+Při správě prostředků Azure Kognitivní hledání, jako jsou indexy a zdroje dat, je důležité aktualizovat prostředky bezpečně, zejména v případě, že se k prostředkům přistupoval současně pomocí různých komponent aplikace. Když dva klienti souběžně aktualizují prostředek bez koordinace, jsou možné situace časování. Aby k tomu nedocházelo, Azure Kognitivní hledání nabízí *optimistický model souběžnosti*. U prostředku neexistují žádné zámky. Místo toho je k dispozici značka ETag pro každý prostředek, který identifikuje verzi prostředku, aby bylo možné vytvořit požadavky, které zabrání náhodnému přepsání.
 
 > [!Tip]
-> Koncepční kód v [ukázkovém C# řešení](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) vysvětluje, jak řízení souběžnosti funguje v Azure Search. Kód vytvoří podmínky, které vyvolávají řízení souběžnosti. Čtení [fragmentu kódu níže](#samplecode) je pravděpodobně dostačující pro většinu vývojářů, ale pokud ho chcete spustit, upravte appSettings. JSON a přidejte název služby a klíč rozhraní API pro správu. Název služby je `myservice`dán adresou `http://myservice.search.windows.net`URL služby.
+> Koncepční kód v [ukázkovém C# řešení](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) vysvětluje, jak řízení souběžnosti funguje v Azure kognitivní hledání. Kód vytvoří podmínky, které vyvolávají řízení souběžnosti. Čtení [fragmentu kódu níže](#samplecode) je pravděpodobně dostačující pro většinu vývojářů, ale pokud ho chcete spustit, upravte appSettings. JSON a přidejte název služby a klíč rozhraní API pro správu. Má-li adresa URL služby `http://myservice.search.windows.net`, je název služby `myservice`.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -32,7 +31,7 @@ Všechny prostředky mají [*značku entity (ETag)* ](https://en.wikipedia.org/w
 + REST API používá [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) v hlavičce požadavku.
 + Sada .NET SDK nastaví značku ETag prostřednictvím objektu accessCondition, nastavení [If-Match | Záhlaví If-Match-None](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) u prostředku Libovolný objekt, který dědí z [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) , má objekt accessCondition.
 
-Pokaždé, když aktualizujete prostředek, jeho značka ETag se automaticky změní. Když implementujete řízení souběžnosti, vše, co provádíte, je předběžnou podmínkou pro žádost o aktualizaci, která vyžaduje, aby vzdálený prostředek měl stejnou značku ETag jako kopie prostředku, který jste změnili v klientovi. Pokud již souběžný proces změnil vzdálený prostředek, značka ETag se neshoduje s podmínkou a požadavek selže s protokolem HTTP 412. Pokud používáte sadu .NET SDK, tento manifest jako `CloudException` `IsAccessConditionFailed()` metoda rozšíření vrátí hodnotu true.
+Pokaždé, když aktualizujete prostředek, jeho značka ETag se automaticky změní. Když implementujete řízení souběžnosti, vše, co provádíte, je předběžnou podmínkou pro žádost o aktualizaci, která vyžaduje, aby vzdálený prostředek měl stejnou značku ETag jako kopie prostředku, který jste změnili v klientovi. Pokud již souběžný proces změnil vzdálený prostředek, značka ETag se neshoduje s podmínkou a požadavek selže s protokolem HTTP 412. Pokud používáte sadu .NET SDK, tento manifest je `CloudException`, kde metoda rozšíření `IsAccessConditionFailed()` vrátí hodnotu true.
 
 > [!Note]
 > Existuje pouze jeden mechanismus pro souběžnost. Vždycky se používá bez ohledu na to, jaké rozhraní API se používá pro aktualizace prostředků.
@@ -51,7 +50,7 @@ Následující kód ukazuje accessCondition kontroly operací aktualizace klíč
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
-        // on an Azure Search index.
+        // on an Azure Cognitive Search index.
         static void Main(string[] args)
         {
             IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
@@ -62,14 +61,14 @@ Následující kód ukazuje accessCondition kontroly operací aktualizace klíč
             Console.WriteLine("Deleting index...\n");
             DeleteTestIndexIfExists(serviceClient);
 
-            // Every top-level resource in Azure Search has an associated ETag that keeps track of which version
+            // Every top-level resource in Azure Cognitive Search has an associated ETag that keeps track of which version
             // of the resource you're working on. When you first create a resource such as an index, its ETag is
             // empty.
             Index index = DefineTestIndex();
             Console.WriteLine(
                 $"Test index hasn't been created yet, so its ETag should be blank. ETag: '{index.ETag}'");
 
-            // Once the resource exists in Azure Search, its ETag will be populated. Make sure to use the object
+            // Once the resource exists in Azure Cognitive Search, its ETag will be populated. Make sure to use the object
             // returned by the SearchServiceClient! Otherwise, you will still have the old object with the
             // blank ETag.
             Console.WriteLine("Creating index...\n");
@@ -129,9 +128,9 @@ Následující kód ukazuje accessCondition kontroly operací aktualizace klíč
             serviceClient.Indexes.Delete("test", accessCondition: AccessCondition.GenerateIfExistsCondition());
 
             // This is slightly better than using the Exists method since it makes only one round trip to
-            // Azure Search instead of potentially two. It also avoids an extra Delete request in cases where
+            // Azure Cognitive Search instead of potentially two. It also avoids an extra Delete request in cases where
             // the resource is deleted concurrently, but this doesn't matter much since resource deletion in
-            // Azure Search is idempotent.
+            // Azure Cognitive Search is idempotent.
 
             // And we're done! Bye!
             Console.WriteLine("Complete.  Press any key to end application...\n");
@@ -170,7 +169,7 @@ Následující kód ukazuje accessCondition kontroly operací aktualizace klíč
 
 Vzor návrhu pro implementaci optimistického řízení souběžnosti by měl zahrnovat smyčku, která opakuje kontrolu podmínky přístupu, otestuje podmínku přístupu a volitelně načte aktualizovaný prostředek před pokusem o opětovné použití změn.
 
-Tento fragment kódu ilustruje přidání synonymMap k indexu, který již existuje. Tento kód pochází z [příkladu synonyma C# pro Azure Search](search-synonyms-tutorial-sdk.md).
+Tento fragment kódu ilustruje přidání synonymMap k indexu, který již existuje. Tento kód pochází z [příkladu synonyma C# pro Azure kognitivní hledání](search-synonyms-tutorial-sdk.md).
 
 Fragment Načte index "hotely", zkontroluje verzi objektu u operace Update, vyvolá výjimku, pokud se podmínka nezdařila, a poté opakuje operaci (až třikrát), počínaje načítáním indexu ze serveru za účelem získání nejnovější verze.
 
@@ -206,7 +205,7 @@ Fragment Načte index "hotely", zkontroluje verzi objektu u operace Update, vyvo
         }
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak bezpečně aktualizovat existující index, najdete v [ C# ukázce synonym](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) .
 
@@ -215,8 +214,8 @@ Zkuste upravit některý z následujících vzorků, aby obsahovaly ETag nebo Ac
 + [Ukázka REST API na GitHubu](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [Ukázka .NET SDK na GitHubu](https://github.com/Azure-Samples/search-dotnet-getting-started). Toto řešení zahrnuje projekt "DotNetEtagsExplainer" obsahující kód uvedený v tomto článku.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-[Běžné požadavky protokolu HTTP a hlavičky](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-odpovědí[http stavové kódy](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[operací index (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Běžné hlavičky požadavků a odpovědí protokolu http](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[stavových kódů http](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
+[operací indexu (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)

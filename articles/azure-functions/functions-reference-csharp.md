@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: c055e1e94d6bc636292fef5da63e7a8c8eb7fa07
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 8bbfef9d9873669120f792bce3e50e457791d4b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299854"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787200"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Referenční C# informace pro vývojáře skriptu Azure Functions (. csx)
 
@@ -27,7 +27,7 @@ V tomto článku se předpokládá, že už jste si přečetli [příručku pro 
 
 ## <a name="how-csx-works"></a>Jak funguje. csx
 
-Prostředí C# skriptu pro Azure Functions je založené na [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction). Data přetoků do C# vaší funkce prostřednictvím argumentů metody. Názvy argumentů jsou zadány v souboru @no__t 0 a existují předdefinované názvy pro přístup k objektům, jako je protokolování funkcí a tokeny zrušení.
+Prostředí C# skriptu pro Azure Functions je založené na [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction). Data přetoků do C# vaší funkce prostřednictvím argumentů metody. Názvy argumentů jsou zadány v souboru `function.json` a existují předdefinované názvy pro přístup k objektům, jako je protokolování funkcí a tokeny zrušení.
 
 Formát *. csx* umožňuje napsat méně "často používaný" text a soustředit se na zápis pouze do C# funkce. Místo zabalení všeho v oboru názvů a třídě stačí definovat metodu `Run`. Zahrňte na začátek souboru odkazy na sestavení a obory názvů jako obvykle.
 
@@ -462,7 +462,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` je atribut rozhraní .NET, který definuje vaši vazbu a `T` je vstupní nebo výstupní typ podporovaný tímto typem vazby. `T` nemůže být typ parametru `out` (například `out JObject`). Například výstupní vazba Mobile Apps tabulky podporuje [šest výstupních typů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale můžete použít pouze [ICollector @ no__t-2T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) pro `T`.
+`BindingTypeAttribute` je atribut rozhraní .NET, který definuje vaši vazbu a `T` je vstupní nebo výstupní typ podporovaný tímto typem vazby. `T` nemůže být typ parametru `out` (například `out JObject`). Například výstupní vazba Mobile Apps tabulky podporuje [šest výstupních typů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale pro `T`můžete použít jenom [ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) .
 
 ### <a name="single-attribute-example"></a>Příklad jednoduchého atributu
 
@@ -512,7 +512,7 @@ V následující tabulce jsou uvedeny atributy rozhraní .NET pro každý typ va
 > | Ovládacího | Atribut | Přidat odkaz |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
-> | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
+> | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
 > | Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
 > | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 > | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |

@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b0c9fd85171020c9b78dc166980f85bcd89d8d67
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 10/22/2019
+ms.openlocfilehash: 3852531615418ffe5397295bc194de34139d6e81
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692296"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792661"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Kurz: předpověď ceny automobilu pomocí vizuálního rozhraní
 
@@ -40,15 +40,15 @@ V [druhé části](ui-tutorial-automobile-price-deploy.md) kurzu se naučíte, j
 
 ## <a name="create-a-new-pipeline"></a>Vytvořit nový kanál
 
-Kanály Azure Machine Learning organizují více závislých kroků zpracování dat do jednoho prostředku. Kanály vám pomůžou organizovat, spravovat a opakovaně používat složité pracovní postupy strojového učení napříč projekty a uživateli. Pokud chcete vytvořit kanál Azure Machine Learning, potřebujete pracovní prostor služby Azure Machine Learning. V této části se dozvíte, jak tyto prostředky vytvořit.
+Kanály Azure Machine Learning organizují více závislých kroků strojového učení a zpracování dat do jediného prostředku. Kanály vám pomůžou organizovat, spravovat a opakovaně používat složité pracovní postupy strojového učení napříč projekty a uživateli. Pokud chcete vytvořit kanál Azure Machine Learning, potřebujete pracovní prostor služby Azure Machine Learning. V této části se dozvíte, jak tyto prostředky vytvořit.
 
 ### <a name="create-a-new-workspace"></a>Vytvořit nový pracovní prostor
 
-Pokud máte pracovní prostor Azure Machine Learning, přejděte k další části.
+Pokud máte pracovní prostor služby Azure Machine Learning, přejděte k další části.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-### <a name="create-a-pipeline"></a>Vytvoření kanálu
+### <a name="create-the-pipeline"></a>Vytvoření kanálu
 
 1. Přihlaste se k [ml.Azure.com](https://ml.azure.com) a vyberte pracovní prostor, se kterým chcete pracovat.
 
@@ -56,7 +56,7 @@ Pokud máte pracovní prostor Azure Machine Learning, přejděte k další čás
 
     ![Snímek obrazovky s vizuálním pracovním prostorem, který ukazuje, jak přistupovat k vizuálnímu rozhraní](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
 
-1. Vyberte možnost **prázdný kanál**.
+1. Vyberte **snadno použitelné předem připravené moduly**.
 
 1. V horní části plátna vyberte výchozí název kanálu, který jste **vytvořili** , a přejmenujte ho na něco smysluplného. Například **"předpověď ceny automobilu"** . Název nemusí být jedinečný.
 
@@ -69,32 +69,6 @@ K dispozici je několik ukázkových datových sad, které jsou součástí vizu
 1. Vyberte datovou sadu, **údaje o cenách automobilu (RAW)** a přetáhněte ji na plátno.
 
    ![Přetáhněte data na plátno.](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
-
-1. Vyberte sloupce dat, se kterými chcete pracovat. Do pole Hledat v horní části palety zadejte **Select** a vyhledejte modul **Výběr sloupců v datové sadě** .
-
-1. Klikněte na plátno a přetáhněte modul **Výběr sloupců v datové sadě** na plátno. Přetáhněte modul pod modul DataSet.
-
-1. Připojte datovou sadu, kterou jste přidali dříve, do modulu **Výběr sloupců v datové sadě** kliknutím a přetažením. Přetáhněte z výstupního portu datové sady, což je malý kroužek v dolní části datové sady na plátně, na vstupní port pro **Výběr sloupců v datové sadě**, což je malý kruh v horní části modulu.
-
-    > [!TIP]
-    > Pokud připojíte výstupní port jednoho modulu ke vstupnímu portu jiného, vytvoříte tok dat prostřednictvím kanálu.
-    >
-
-    ![Připojit moduly](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
-
-1. Vyberte modul **Výběr sloupců v datové sadě** .
-
-1. V podokně **vlastnosti** napravo od plátna vyberte **Upravit sloupec**.
-
-    V dialogovém okně **Vybrat sloupce** vyberte **všechny sloupce** a zahrňte **všechny funkce**.
-
-1. V pravém dolním rohu výběrem **Uložit** zavřete selektor sloupců.
-
-### <a name="run-the-pipeline"></a>Spuštění kanálu
-
-V každém okamžiku klikněte na výstupní port datové sady nebo modulu, abyste viděli, jak data v tomto okamžiku v toku dat vypadají. Pokud se nezobrazí karta **výstupy** , musíte nejdřív spustit kanál.
-
-[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
 
 ### <a name="visualize-the-data"></a>Vizualizace dat
 
@@ -114,30 +88,23 @@ Můžete vizualizovat data a pochopit datovou sadu, kterou budete používat.
 
 ## <a name="prepare-data"></a>Příprava dat
 
-Datové sady obvykle vyžadují před analýzou určitý předzpracování. Při vizualizaci datové sady jste si pravděpodobně všimli některých chybějících hodnot. Tyto chybějící hodnoty se musí vyčistit, aby model mohl data správně analyzovat. Odeberete všechny řádky, které obsahují chybějící hodnoty.
+Datové sady obvykle vyžadují před analýzou určitý předzpracování. Při vizualizaci datové sady jste si pravděpodobně všimli některých chybějících hodnot. Tyto chybějící hodnoty se musí vyčistit, aby model mohl data správně analyzovat. Odeberete sloupce s velkým počtem chybějících hodnot a odeberete všechny řádky, které obsahují chybějící hodnoty.
 
-1. Do pole Hledat v horní části palety zadejte **Select** a vyhledejte modul **Výběr sloupců v datové sadě** .
+### <a name="remove-a-column"></a>Odebrání sloupce
+
+Při výukovém modelu je nutné provést něco o chybějících datech. Ve sloupci **normalizované ztráty** v této datové sadě chybí mnoho hodnot, takže tento sloupec z modelu zcela vyloučíte.
+
+1. Vyberte sloupce dat, se kterými chcete pracovat. Do pole Hledat v horní části palety zadejte **Select** a vyhledejte modul **Výběr sloupců v datové sadě** .
 
 1. Klikněte na plátno a přetáhněte modul **Výběr sloupců v datové sadě** na plátno. Přetáhněte modul pod modul DataSet.
 
 1. Připojte datovou sadu, kterou jste přidali dříve, do modulu **Výběr sloupců v datové sadě** kliknutím a přetažením. Přetáhněte z výstupního portu datové sady, což je malý kroužek v dolní části datové sady na plátně, na vstupní port pro **Výběr sloupců v datové sadě**, což je malý kruh v horní části modulu.
 
+    > [!TIP]
+    > Pokud připojíte výstupní port jednoho modulu ke vstupnímu portu jiného, vytvoříte tok dat prostřednictvím kanálu.
+    >
+
     ![Připojit moduly](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
-
-1. Vyberte modul **Výběr sloupců v datové sadě** .
-
-1. V podokně **vlastnosti** napravo od plátna vyberte **Upravit sloupec**.
-
-    V dialogovém okně **Vybrat sloupce** vyberte **všechny sloupce** a zahrňte **všechny funkce**.
-
-1. V pravém dolním rohu výběrem **Uložit** zavřete selektor sloupců.
-
-> [!TIP]
-> Vyčištění chybějících hodnot ze vstupních dat je předpokladem pro použití většiny modulů v rámci vizuálního rozhraní.
-
-### <a name="remove-column"></a>Odebrání sloupce
-
-Při výukovém modelu je nutné provést něco o chybějících datech. V této datové sadě má sloupec **normalizované ztráty** velký počet chybějících hodnot, takže tento sloupec z modelu zcela vyloučíte.
 
 1. Vyberte modul **Výběr sloupců v datové sadě** .
 
@@ -162,6 +129,9 @@ Při výukovém modelu je nutné provést něco o chybějících datech. V této
 ### <a name="clean-missing-data"></a>Vyčistit chybějící data
 
 Ve vaší datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované ztráty** . Zbývající chybějící data můžete odebrat pomocí modulu **Vyčištění chybějících dat** .
+
+> [!TIP]
+> Vyčištění chybějících hodnot ze vstupních dat je předpokladem pro použití většiny modulů v rámci vizuálního rozhraní.
 
 1. Do vyhledávacího pole zadejte **vyčistit** a vyhledejte modul **Vyčištění chybějících dat** .
 
@@ -286,7 +256,7 @@ V první části tohoto kurzu jste dokončili tyto kroky:
 * Vyškolený model
 * Skóre a vyhodnocení modelu
 
-V části druhá část se dozvíte, jak model nasadit jako koncový bod kanálu.
+V části druhá část se dozvíte, jak model nasadit jako koncový bod v reálném čase.
 
 > [!div class="nextstepaction"]
 > [Pokračovat v nasazování modelů](ui-tutorial-automobile-price-deploy.md)

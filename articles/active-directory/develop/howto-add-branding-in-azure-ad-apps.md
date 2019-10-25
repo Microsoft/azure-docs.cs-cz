@@ -1,5 +1,6 @@
 ---
-title: Pokyny pro branding aplikací | Microsoft Docs
+title: Pokyny pro branding aplikací
+titleSuffix: Microsoft identity platform
 description: Komplexní průvodce prostředky služby Azure Active Directory určenými pro vývojáře
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92770acb19bf95d6a19507184bd8bea10806d5b7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ef784dc5f071889a1f4a0072599b9880b7c07c55
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70053244"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803878"
 ---
 # <a name="branding-guidelines-for-applications"></a>Pokyny pro branding aplikací
 
@@ -60,9 +61,9 @@ Ve starší verzi těchto pokynů jsme doporučovali používat piktogram modré
 
 Vaše aplikace může nabízet jiné prostředí pro registraci i přihlášení a v následujících částech najdete vizuální pokyny pro oba scénáře.
 
-**Pokud vaše aplikace podporuje registraci koncového uživatele (například bezplatnou zkušební verzi nebo model freemium)** : Můžete zobrazit tlačítko pro **přihlášení** , které uživatelům umožní přístup k aplikaci pomocí svého pracovního účtu nebo svého osobního účtu. Při prvním přístupu k vaší aplikaci jim Azure AD zobrazí dialogové okno pro vyjádření souhlasu.
+**Pokud vaše aplikace podporuje registrace koncových uživatelů (např. při přechodu z bezplatné na zkušební verzi nebo v rámci modelu freemium):** Můžete zobrazit tlačítko pro **přihlášení**, které uživatelům umožní získat přístup k vaší aplikaci pomocí pracovního nebo osobního účtu. Při prvním přístupu k vaší aplikaci jim Azure AD zobrazí dialogové okno pro vyjádření souhlasu.
 
-**Pokud vaše aplikace vyžaduje oprávnění, ke kterým můžou souhlasit jenom správci, nebo pokud vaše aplikace vyžaduje licencování organizace**: Oddělení od přihlášení uživatele oddělte. **Tlačítko pro získání aplikace** přesměruje správce na přihlášení a pak se jim zobrazí výzva k udělení souhlasu jménem uživatelů v jejich organizaci. Další výhodou tohoto přístupu je potlačení dialogových oken pro vyjádření souhlasu koncového uživatele ve vaší aplikaci.
+**Pokud vaše aplikace vyžaduje oprávnění, která můžou odsouhlasit pouze správci, nebo pokud vaše aplikace vyžaduje licencování organizace:** Oddělte získávání správců od přihlašování uživatelů. **Tlačítko pro získání aplikace** přesměruje správce na přihlášení a pak se jim zobrazí výzva k udělení souhlasu jménem uživatelů v jejich organizaci. Další výhodou tohoto přístupu je potlačení dialogových oken pro vyjádření souhlasu koncového uživatele ve vaší aplikaci.
 
 ## <a name="visual-guidance-for-app-acquisition"></a>Vizuální pokyny pro pořizování aplikace
 
@@ -72,9 +73,9 @@ Jakmile správce vyjádří souhlas s vaší aplikací, může ji uživatelům p
 
 ![Tlačítko, které zobrazuje text loga Microsoftu a "Přidat k mojí organizaci"](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Příklad:
+Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Například:
 
-> *Pokud již používáte Office 365 nebo jinou obchodní službu od Microsoftu, můžete <název_vaší_aplikace> udělit přístup k datům vaší organizace. Tím umožníte uživatelům přístup k <název_vaší_aplikace> pomocí jejich stávajících pracovních účtů.*
+> *Pokud už používáte Office 365 nebo jiné obchodní služby od Microsoftu, můžete udělit < your_app_name > přístup k datům vaší organizace. Umožníte tak uživatelům přístup k < your_app_name > s jejich stávajícími pracovními účty.*
 
 Pokud si pro použití ve vaší aplikaci chcete stáhnout oficiální logo Microsoftu, klikněte pravým tlačítkem na logo, které chcete použít, a uložte si ho do počítače.
 

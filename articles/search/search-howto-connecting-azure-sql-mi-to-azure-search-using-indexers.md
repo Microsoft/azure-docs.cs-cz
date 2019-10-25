@@ -1,22 +1,23 @@
 ---
-title: Připojení ke službě Azure SQL Managed instance pro indexování vyhledávání – Azure Search
-description: Povolte veřejný koncový bod, aby bylo možné povolit připojení ke spravovaným instancím SQL z indexeru na Azure Search.
-author: vl8163264128
+title: Připojení ke službě Azure SQL Managed instance pro indexování vyhledávání
+titleSuffix: Azure Cognitive Search
+description: Povolením veřejného koncového bodu umožníte připojení ke spravovaným instancím SQL z indexeru v Azure Kognitivní hledání.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/01/2019
+author: vl8163264128
 ms.author: victliu
-ms.openlocfilehash: 07bc1a55c0222fda87b28acbaa8bfe552fb8e6ed
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 16daf4a79252134703715ccd88f0b10dda7f4fa6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186664"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792158"
 ---
-# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-managed-instance"></a>Konfigurace připojení z Azure Search indexeru na spravovanou instanci SQL
-Jak je uvedeno v části [připojení Azure SQL Database k Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexerů pro **spravované instance SQL** podporuje Azure Search prostřednictvím veřejného koncového bodu.
+# <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer na spravovanou instanci SQL
+
+Jak je uvedeno v části [připojení Azure SQL Database k Azure kognitivní hledání pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexerů pro **spravované instance SQL** podporuje Azure kognitivní hledání prostřednictvím veřejného koncového bodu.
 
 ## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>Vytvoření spravované instance Azure SQL pomocí veřejného koncového bodu
 Vytvořte spravovanou instanci SQL pomocí vybrané možnosti **Povolit veřejný koncový bod** .
@@ -24,7 +25,7 @@ Vytvořte spravovanou instanci SQL pomocí vybrané možnosti **Povolit veřejn�
    ![Povolit veřejný koncový bod](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "Povolit veřejný koncový bod")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Povolit veřejný koncový bod spravované instance Azure SQL
-V existující spravované instanci SQL můžete povolit také veřejný koncový bod v části **zabezpečení** > **Povolit** **veřejný koncový bod** > **virtuální sítě** > .
+V existující spravované instanci SQL můžete také povolit veřejný koncový bod v části **zabezpečení** > **virtuální síť** > **veřejné koncového bodu** > **Povolit**.
 
    ![Povolit veřejný koncový bod](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Povolit veřejný koncový bod")
 
@@ -38,5 +39,5 @@ Ujistěte se, že používáte připojovací řetězec pro **veřejný koncový 
 
    ![Připojovací řetězec veřejného koncového bodu](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-connection-string.png "Připojovací řetězec veřejného koncového bodu")
 
-## <a name="next-steps"></a>Další postup
-V případě konfigurace ze systému teď můžete určit spravovanou instanci SQL jako zdroj dat pro Azure Search indexer pomocí portálu nebo REST API. Další informace najdete v tématu [připojení Azure SQL Database k Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) .
+## <a name="next-steps"></a>Další kroky
+S konfigurací ze systému teď můžete jako zdroj dat pro službu Azure Kognitivní hledání indexer zadat spravovanou instanci SQL, a to buď pomocí portálu, nebo REST API. Další informace najdete v tématu [připojení Azure SQL Database k Azure kognitivní hledání pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) .

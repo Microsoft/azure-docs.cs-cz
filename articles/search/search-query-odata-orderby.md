@@ -1,13 +1,13 @@
 ---
-title: Objednávka OData – podle odkazu Azure Search
-description: Referenční dokumentace jazyka OData pro syntaxi ORDER-by v Azure Searchch dotazech.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: Řazení OData podle odkazu
+titleSuffix: Azure Cognitive Search
+description: Referenční dokumentace jazyka OData pro syntaxi ORDER by v Azure Kognitivní hledání dotazy.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8ee44549931100a1affa5e2bb9e5cda904c05ed1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: e3ca19b5696b9a7ad9b68b180313753a5c9de912
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647543"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793306"
 ---
-# <a name="odata-orderby-syntax-in-azure-search"></a>Syntaxe $orderby OData v Azure Search
+# <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Syntaxe $orderby OData v Azure Kognitivní hledání
 
- Pomocí [parametru **$OrderBy** OData](query-odata-filter-orderby-syntax.md) můžete použít vlastní pořadí řazení pro výsledky hledání v Azure Search. V tomto článku se podrobně popisuje syntaxe **$OrderBy** . Obecnější informace o tom, jak používat **$OrderBy** při prezentaci výsledků hledání, najdete [v tématu Jak pracovat s výsledky hledání v Azure Search](search-pagination-page-layout.md).
+ Pomocí [parametru **$OrderBy** OData](query-odata-filter-orderby-syntax.md) můžete pro výsledky hledání ve službě Azure kognitivní hledání použít vlastní pořadí řazení. V tomto článku se podrobně popisuje syntaxe **$OrderBy** . Obecnější informace o tom, jak používat **$OrderBy** při prezentaci výsledků hledání, najdete v tématu [jak pracovat s výsledky hledání v Azure kognitivní hledání](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -45,20 +45,20 @@ sortable_function ::= geo_distance_call | 'search.score()'
 K dispozici je také diagram interaktivní syntaxe:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
+> [Diagram syntaxe OData pro Azure Kognitivní hledání](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> Kompletní EBNF najdete v referenčních informacích k [syntaxi výrazu OData pro Azure Search](search-query-odata-syntax-reference.md) .
+> Kompletní EBNF najdete v článku [referenční informace k syntaxi výrazu OData pro Azure kognitivní hledání](search-query-odata-syntax-reference.md) .
 
-Každá klauzule má kritéria řazení, volitelně následované směrem řazení (`asc` pro vzestupné nebo `desc` sestupné). Pokud nezadáte směr, výchozí hodnota je vzestupné. Kritéria řazení mohou být buď cesta `sortable` k poli, nebo volání [`geo.distance`](search-query-odata-geo-spatial-functions.md) [`search.score`](search-query-odata-search-score-function.md) funkcí nebo.
+Každá klauzule má kritéria řazení, volitelně následované směrem řazení (`asc` pro vzestupné nebo `desc` sestupně). Pokud nezadáte směr, výchozí hodnota je vzestupné. Kritéria řazení mohou být buď cestou pole `sortable`, nebo voláním [`geo.distance`](search-query-odata-geo-spatial-functions.md) nebo [`search.score`](search-query-odata-search-score-function.md) funkcí.
 
-Pokud má více dokumentů stejné kritérium řazení a funkce se `search.score` nepoužívá (například pokud řadíte podle číselného `Rating` pole a tři dokumenty mají hodnocení 4), bude počet vazeb v sestupném pořadí rozdělen podle skóre dokumentu. Pokud jsou skóre dokumentu stejné (například když v žádosti není zadán dotaz fulltextového vyhledávání), relativní řazení vázaných dokumentů je neurčité.
+Pokud má více dokumentů stejné kritérium řazení a funkce `search.score` se nepoužívá (například pokud řadíte podle číselného `Rating` pole a tři dokumenty mají hodnocení 4), budou se v sestupném pořadí považovat za počet vazeb podle skóre dokumentu. Pokud jsou skóre dokumentu stejné (například když v žádosti není zadán dotaz fulltextového vyhledávání), relativní řazení vázaných dokumentů je neurčité.
 
-Můžete zadat více kritérií řazení. Pořadí výrazů Určuje konečné pořadí řazení. Například pro řazení sestupně podle skóre, které následuje hodnocení, by měla být `$orderby=search.score() desc,Rating desc`syntaxe.
+Můžete zadat více kritérií řazení. Pořadí výrazů Určuje konečné pořadí řazení. Například pro řazení sestupně podle skóre, které následuje hodnocení, bude `$orderby=search.score() desc,Rating desc`syntaxe.
 
-Syntaxe pro `geo.distance` v **$OrderBy** je stejná jako v **$Filter**. Při použití `geo.distance` v **$OrderBy**musí pole, na které se vztahuje, být typu `Edm.GeographyPoint` a musí být `sortable`také.
+Syntaxe pro `geo.distance` v **$OrderBy** je stejná jako v **$Filter**. Při použití `geo.distance` v **$OrderBy**musí být pole, na které se vztahuje, typu `Edm.GeographyPoint` a musí být také `sortable`.
 
-Syntaxe pro `search.score` v **$OrderBy** je `search.score()`. Funkce `search.score` nepřijímá žádné parametry.
+Syntaxe pro `search.score` v **$OrderBy** je `search.score()`. `search.score` funkce nepřijímá žádné parametry.
 
 ## <a name="examples"></a>Příklady
 
@@ -78,9 +78,9 @@ Seřaďte hotely v sestupném pořadí podle hledání. skóre a hodnocení a po
 
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
-- [Jak pracovat s výsledky hledání v Azure Search](search-pagination-page-layout.md)
-- [Přehled jazyka výrazů OData pro Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenční dokumentace syntaxe výrazu OData pro Azure Search](search-query-odata-syntax-reference.md)
-- [Hledat dokumenty &#40;Azure Search REST API služby&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Jak pracovat s výsledky hledání v Azure Kognitivní hledání](search-pagination-page-layout.md)
+- [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
+- [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
+- [Hledání dokumentů &#40;Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

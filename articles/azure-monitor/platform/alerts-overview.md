@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: e79d9be6b893184bd615fbc569893e53a2c72861
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555609"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802306"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -184,9 +184,9 @@ Spotřeba a Správa instancí výstrah vyžaduje, aby uživatel měl předdefino
 
 Pro výstrahy generované proti vašemu předplatnému můžete chtít dotazovat programově. Může se jednat o vytváření vlastních zobrazení mimo Azure Portal nebo k analýze výstrah pro identifikaci vzorců a trendů.
 
-Můžete zadat dotaz na výstrahy vygenerované na základě předplatného, a to buď pomocí [Alert Management REST API](https://aka.ms/alert-management-api) nebo pomocí [REST APIho grafu prostředků Azure pro výstrahy](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources).
+Pomocí [Alert Management REST API](https://aka.ms/alert-management-api) nebo pomocí [grafu prostředků Azure REST API pro výstrahy](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)se můžete dotazovat na výstrahy vygenerované proti vašemu předplatnému.
 
-[Graf prostředků Azure REST API pro výstrahy](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) vám umožní dotazovat se na instance výstrah ve velkém měřítku. To se doporučuje, když budete muset spravovat výstrahy vygenerované v mnoha předplatných. 
+[Graf prostředků Azure REST API pro výstrahy](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)) umožňuje dotazovat se na instance výstrah ve velkém měřítku. To se doporučuje, když budete muset spravovat výstrahy vygenerované v mnoha předplatných. 
 
 Následující vzorový požadavek na rozhraní API vrátí počet výstrah v rámci jednoho předplatného:
 

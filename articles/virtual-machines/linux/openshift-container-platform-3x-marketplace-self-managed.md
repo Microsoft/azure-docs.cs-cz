@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 721d4dae2c05c252b863b7cea2589deca8404602
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d5028ff6378fec5939aee3218071fe6f4eb1e843
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392693"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791611"
 ---
 # <a name="configure-prerequisites"></a>Konfigurovat požadavky
 
-Než začnete používat nabídku Marketplace k nasazení samostatného clusteru OpenShift Container Platform 3,11 v Azure, je nutné nakonfigurovat několik požadavků.  Pokyny k vytvoření klíče SSH (bez hesla) najdete v článku [požadavky na OpenShift](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-prerequisites) , Trezor klíčů Azure, tajný klíč trezoru klíčů a instanční objekt.
+Než začnete používat nabídku Marketplace k nasazení samostatného clusteru OpenShift Container Platform 3,11 v Azure, je nutné nakonfigurovat několik požadavků.  Pokyny k vytvoření klíče SSH (bez hesla) najdete v článku [požadavky na OpenShift](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) , Trezor klíčů Azure, tajný klíč trezoru klíčů a instanční objekt.
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Nasazení pomocí nabídky Marketplace

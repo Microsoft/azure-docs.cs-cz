@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2017
+ms.date: 10/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ef64a43cbed7f033a938351506b7f78142ff044c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0bac6f9105d505bdfc1492b6966c2352771e73b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097618"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791298"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Správa verzí v Durable Functions (Azure Functions)
 
@@ -24,11 +24,11 @@ Je nevyhnutelné, že funkce budou přidány, odebrány a změněny po dobu živ
 
 K dispozici je několik příkladů zásadních změn, o kterých byste měli vědět. Tento článek popisuje nejběžnější. Hlavním motivem v celém z nich je, že nové i existující orchestrace funkcí jsou ovlivněny změnami v kódu funkce.
 
-### <a name="changing-activity-function-signatures"></a>Změna signatur funkcí aktivity
+### <a name="changing-activity-or-entity-function-signatures"></a>Změna signatur funkcí aktivity nebo entity
 
-Změna podpisu odkazuje na změnu názvu, vstupu nebo výstupu funkce. Pokud je tento typ změny proveden na funkci aktivity, může dojít k přerušení funkce Orchestrator, která na ní závisí. Pokud aktualizujete funkci Orchestrator tak, aby odpovídala této změně, můžete přerušit existující instance v letadlech.
+Změna podpisu odkazuje na změnu názvu, vstupu nebo výstupu funkce. Pokud je tento typ změny proveden u aktivity nebo funkce entity, může dojít k přerušení jakékoli funkce nástroje Orchestrator, která na ní závisí. Pokud aktualizujete funkci Orchestrator tak, aby odpovídala této změně, můžete přerušit existující instance v letadlech.
 
-Předpokládejme například, že máme následující funkci.
+Předpokládejme například, že máme následující funkci Orchestrator.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -39,7 +39,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Tato funkce zjednodušený přijímá výsledky **foo** a předává je do **pruhů**. Řekněme, že potřebujeme změnit vrácenou hodnotu **foo** z `bool` na `int` na, aby podporovala širší škálu výsledných hodnot. Výsledek bude vypadat takto:
+Tato funkce zjednodušený přijímá výsledky **foo** a předává je do **pruhů**. Řekněme, že potřebujeme změnit vrácenou hodnotu **foo** z `bool` na `int`, aby podporovala širší škálu výsledných hodnot. Výsledek bude vypadat takto:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -50,7 +50,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Tato změna funguje pro všechny nové instance funkce Orchestrator, ale přerušuje jakékoli služby v letadle. Například je třeba vzít v úvahu případ, kde instance orchestrace volá **foo**, vrátí logickou hodnotu a pak kontrolní body. Pokud je změna podpisu nasazena v tomto okamžiku, kontrolní instance selže okamžitě po obnovení a znovu spustí volání `context.CallActivityAsync<int>("Foo")`. Důvodem je, že výsledek v tabulce historie je `bool` ale nový kód se pokusí ho deserializovat do. `int`
+Tato změna funguje pro všechny nové instance funkce Orchestrator, ale přerušuje jakékoli služby v letadle. Například je třeba vzít v úvahu případ, kde instance orchestrace volá **foo**, vrátí logickou hodnotu a pak kontrolní body. Pokud je v tuto chvíli nasazená změna podpisu, kontrolní instance selže okamžitě po obnovení a přehraje volání `context.CallActivityAsync<int>("Foo")`. Důvodem je, že výsledek v tabulce historie je `bool`, ale nový kód se pokusí ho deserializovat do `int`.
 
 Toto je pouze jeden z mnoha různých způsobů, kterými změna podpisu může přerušit stávající instance. Obecně platí, že pokud nástroj Orchestrator potřebuje změnit způsob, jakým volá funkci, pak změna bude pravděpodobně problematická.
 
@@ -85,7 +85,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Tato změna přidá nové volání funkce **SendNotification** mezi **foo** a **bar**. Neexistují žádné změny podpisu. K tomuto problému dochází, když existující instance obnoví volání na **bar**. Při opakovaném přehrání, pokud se vrátí `true`původní volání foo, pak bude znovu přehrání nástroje Orchestrator volat do **SendNotification** , které není v historii spuštění. Výsledkem je, že rozhraní odolného úlohy se nezdařila s a `NonDeterministicOrchestrationException` , protože při očekávaném volání na **panel**se objevilo volání **SendNotification** .
+Tato změna přidá nové volání funkce **SendNotification** mezi **foo** a **bar**. Neexistují žádné změny podpisu. K tomuto problému dochází, když existující instance obnoví volání na **bar**. Při opakovaném přehrání, pokud původní volání **foo** vrátilo `true`, pak bude znovu přehrání nástroje Orchestrator volat do **SendNotification** , které není v historii spuštění. V důsledku toho dojde k neúspěšnému rozhraní úlohy s `NonDeterministicOrchestrationException`, protože se mu objevilo volání **SendNotification** , když se očekává, že se zobrazí volání na **panel**. Stejný typ problému může nastat při přidávání jakýchkoli volání do "trvanlivého" rozhraní API, včetně `CreateTimer`, `WaitForExternalEvent`atd.
 
 ## <a name="mitigation-strategies"></a>Strategie zmírňování
 
@@ -112,9 +112,9 @@ Další možností je zastavit všechny letecké instance. To se dá udělat vym
 
 Nejpravděpodobnější způsob, jak zajistit, aby se změny v bezpečném nasazení nezdařily, je nasazením souběžně se staršími verzemi. To lze provést pomocí některého z následujících postupů:
 
-* Všechny aktualizace nasaďte jako zcela nové funkce (nové názvy).
+* Všechny aktualizace nasaďte jako zcela nové funkce a existující funkce tak budou fungovat tak, jak jsou. To může být obtížné, protože volající nových verzí funkcí se musí aktualizovat stejně jako stejné pokyny.
 * Nasaďte všechny aktualizace jako novou aplikaci Function App s jiným účtem úložiště.
-* Nasaďte novou kopii aplikace Function App, ale s aktualizovaným `TaskHub` názvem. Toto je doporučený postup.
+* Nasaďte novou kopii aplikace Function App se stejným účtem úložiště, ale s aktualizovaným názvem `taskHub`. Toto je doporučený postup.
 
 ### <a name="how-to-change-task-hub-name"></a>Postup změny názvu centra úloh
 
@@ -125,18 +125,28 @@ Centrum úloh lze v souboru *Host. JSON* nakonfigurovat následujícím způsobe
 ```json
 {
     "durableTask": {
-        "HubName": "MyTaskHubV2"
+        "hubName": "MyTaskHubV2"
     }
 }
 ```
 
 #### <a name="functions-2x"></a>Functions 2.x
 
-Výchozí hodnota je `DurableFunctionsHub`.
+```json
+{
+    "extensions": {
+        "durableTask": {
+            "hubName": "MyTaskHubV2"
+        }
+    }
+}
+```
 
-Všechny entity Azure Storage jsou pojmenovány na `HubName` základě hodnoty konfigurace. Když zadáte novému centru úkolů nový název, zajistíte, aby se pro novou verzi vaší aplikace vytvořily samostatné fronty a tabulky historie.
+Výchozí hodnota pro Durable Functions v1. x je `DurableFunctionsHub`. Počínaje Durable Functions v 2.0 je výchozí název centra úloh stejný jako název aplikace Function App v Azure nebo `TestHubName`, pokud je spuštěný mimo Azure.
 
-Doporučujeme nasadit novou verzi aplikace Function App do nového slotu pro [nasazení](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/). Sloty nasazení umožňují souběžně spustit více kopií aplikace Function App s jedním z nich, jako je aktivní *produkční* slot. Až budete připraveni vystavit novou logiku orchestrace pro stávající infrastrukturu, může to být jednoduché jako záměna nové verze do produkčního slotu.
+Všechny entity Azure Storage jsou pojmenovány na základě hodnoty `hubName` konfigurace. Když zadáte novému centru úkolů nový název, zajistíte, aby se pro novou verzi vaší aplikace vytvořily samostatné fronty a tabulky historie. Aplikace Function App ale zastaví zpracování událostí pro orchestraci nebo entity vytvořené v předchozím názvu centra úloh.
+
+Doporučujeme nasadit novou verzi aplikace Function App do nového [slotu pro nasazení](../functions-deployment-slots.md). Sloty nasazení umožňují souběžně spustit více kopií aplikace Function App s jedním z nich, jako je aktivní *produkční* slot. Až budete připraveni vystavit novou logiku orchestrace pro stávající infrastrukturu, může to být jednoduché jako záměna nové verze do produkčního slotu.
 
 > [!NOTE]
 > Tato strategie funguje nejlépe při použití aktivačních událostí HTTP a Webhooku pro funkce Orchestrator. U triggerů bez protokolu HTTP, jako jsou fronty nebo Event Hubs, by definice triggeru měla [odvozovat z nastavení aplikace](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , které se v rámci operace swapu aktualizuje.

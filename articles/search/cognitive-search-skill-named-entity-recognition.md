@@ -1,20 +1,19 @@
 ---
-title: Dovednost pro vyhledávání pojmenovaných entit – Azure Search
-description: Extrahujte pojmenované entity pro osobu, umístění a organizaci z textu v kanálu vyhledávání Azure Searchho rozpoznávání.
-services: search
+title: Vnímání znalostí rozpoznávání pojmenovaných entit
+titleSuffix: Azure Cognitive Search
+description: Extrahujte pojmenované entity pro osobu, umístění a organizaci z textu v kanálu rozšíření AI v Azure Kognitivní hledání.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: b152d5a48d49e78818602e7f66574937bebce2ac
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 127155e492b556ce1ce02b67cf0b0846b99ebcd4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265768"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791939"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání pojmenovaných entit
 
@@ -24,16 +23,16 @@ Dovednost pro **rozpoznávání pojmenovaných entit** extrahuje pojmenované en
 > Dovednost pro rozpoznávání pojmenovaných entit je teď přerušená [Microsoft. dovednosti. text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Podpora se zastavila 15. února 2019 a rozhraní API se z produktu odebralo 2. května 2019. Pokud chcete migrovat na podporovanou dovednost, postupujte podle doporučení v části [nepoužívané poznatky pro vyhledávání v rozpoznávání](cognitive-search-skill-deprecated.md) .
 
 > [!NOTE]
-> Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů v Azure Search. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
+> Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsány na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.NamedEntityRecognitionSkill
+Microsoft. dovednosti. text. NamedEntityRecognitionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřenou [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
@@ -41,15 +40,15 @@ V parametrech jsou rozlišována malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| Kategorie    | Pole kategorií, které mají být extrahovány.  Možné typy kategorií: `"Person"`, `"Location"`, `"Organization"`. Pokud není zadána žádná kategorie, jsou vráceny všechny typy.|
-|defaultLanguageCode |  Kód jazyka vstupního textu Podporují se tyto jazyky:`de, en, es, fr, it`|
+| categories    | Pole kategorií, které mají být extrahovány.  Možné typy kategorií: `"Person"`, `"Location"``"Organization"`. Pokud není zadána žádná kategorie, jsou vráceny všechny typy.|
+|defaultLanguageCode |  Kód jazyka vstupního textu Podporovány jsou následující jazyky: `de, en, es, fr, it`|
 | minimumPrecision  | Číslo mezi 0 a 1. Pokud je přesnost nižší než tato hodnota, entita se nevrátí. Výchozí hodnota je 0.|
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
 | Název vstupu      | Popis                   |
 |---------------|-------------------------------|
-| languageCode  | Volitelný parametr. Výchozí hodnota je `"en"`.  |
+| languageCode  | Volitelné. Výchozí hodnota je `"en"`.  |
 | text          | Text, který se má analyzovat          |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
@@ -57,9 +56,9 @@ V parametrech jsou rozlišována malá a velká písmena.
 | Název výstupu     | Popis                   |
 |---------------|-------------------------------|
 | obyvatel      | Pole řetězců, kde každý řetězec představuje jméno osoby. |
-| locations  | Pole řetězců, kde každý řetězec představuje umístění. |
+| Polohy  | Pole řetězců, kde každý řetězec představuje umístění. |
 | organizations  | Pole řetězců, kde každý řetězec představuje organizaci. |
-| podnikům | Pole komplexních typů. Každý komplexní typ obsahuje následující pole: <ul><li>kategorie (`"person"`, `"organization"`nebo) `"location"`</li> <li>Value (skutečný název entity)</li><li>posun (umístění, kde byl nalezen v textu)</li><li>důvěra (hodnota mezi 0 a 1, která představuje jistotu, že hodnota je skutečnou entitou)</li></ul> |
+| podnikům | Pole komplexních typů. Každý komplexní typ obsahuje následující pole: <ul><li>kategorie (`"person"`, `"organization"`nebo `"location"`)</li> <li>Value (skutečný název entity)</li><li>posun (umístění, kde byl nalezen v textu)</li><li>důvěra (hodnota mezi 0 a 1, která představuje jistotu, že hodnota je skutečnou entitou)</li></ul> |
 
 ##  <a name="sample-definition"></a>Definice vzorku
 
@@ -154,8 +153,8 @@ V parametrech jsou rozlišována malá a velká písmena.
 ## <a name="error-cases"></a>Chybové případy
 Pokud kód jazyka pro dokument není podporován, je vrácena chyba a nejsou extrahovány žádné entity.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-+ [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
++ [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Dovednost pro rozpoznávání entit](cognitive-search-skill-entity-recognition.md)

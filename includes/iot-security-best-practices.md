@@ -8,75 +8,73 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 2138eed9975abe804442c476d19b5b7229685362
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4fdb891d668d99644d8a9ed9c15d158e65d53ba5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175122"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793129"
 ---
-# <a name="security-best-practices-for-internet-of-things-iot"></a>Osvědčené postupy zabezpečení pro Internet věcí (IoT)
-
-Zabezpečení infrastruktury Internetu věcí (IoT) vyžaduje přísné strategii zabezpečení do hloubky. Tato strategie vyžaduje, abyste k zabezpečení dat v cloudu, chránit integritu dat při přenosu přes veřejný internet a bezpečně zřizování zařízení. Každá vrstva sestavení větší zajištění zabezpečení, v celkové infrastruktury.
+Zabezpečení infrastruktury Internet věcí (IoT) vyžaduje přísnou strategii zabezpečení v rámci hloubky. Tato strategie vyžaduje, abyste zabezpečili data v cloudu, chránili integritu dat během přenosu prostřednictvím veřejného Internetu a bezpečně zřídili zařízení. Každá vrstva sestaví větší bezpečnostní ujištění v celkové infrastruktuře.
 
 ## <a name="secure-an-iot-infrastructure"></a>Zabezpečení infrastruktury IoT
 
-Tato strategie zabezpečení in-depth lze vyvinuli a spustit aktivní účasti různé přehrávače, které jsou součástí výroby, vývoj a nasazení infrastruktury a zařízení IoT. Tady je stručný popis těchto přehrávače.
+Tuto strategii zabezpečení je možné vyvíjet a provádět s aktivní účastí různých hráčů zapojených do výroby, vývoje a nasazení zařízení a infrastruktury IoT. Následuje popis těchto hráčů na nejvyšší úrovni.
 
-* **Výrobce hardwaru IoT/integrátor**: Tyto přehrávače jsou obvykle výrobci hardwaru IoT nasazuje integrátorům sestavování hardwarem od různých výrobců a dodavatelů poskytuje hardware pro nasazení IoT vyrobenými nebo integrované podle jiných dodavatelů.
+* **Výrobce nebo integrátor hardwaru IoT**: obvykle jsou tito hráči výrobci hardwaru IoT, který je nasazený, integrátory nastavovat hardware od různých výrobců nebo dodavatelé, kteří poskytují hardware pro vyráběné nasazení IoT. nebo jsou integrovány jinými dodavateli.
 
-* **Pro vývojáře IoT řešení**: Vývoj řešení IoT se obvykle provádí vývojář řešení. Tento vývojář může část interního týmu nebo systémový integrátor (SI), která se specializuje na tuto aktivitu. Pro vývojáře IoT řešení můžete vyvíjet různé součásti řešení IoT od začátku, integrovat různých předem připravená nebo open source komponenty nebo přijmout akcelerátory řešení s menší úpravy.
+* **Vývojář řešení IoT**: vývoj řešení IoT obvykle provádí vývojář řešení. Tento vývojář může být součástí interního týmu nebo integrátoru systému (SI), který se specializuje s touto aktivitou. Vývojář řešení IoT může vyvíjet různé komponenty řešení IoT od začátku, integrovat různé komponenty na polici nebo Open Source nebo přijmout akcelerátory řešení s menším přizpůsobením.
 
-* **Nástroje pro nasazení řešení IoT**: Po řešení IoT, je produkt musí být nasazeny v poli. Tento proces zahrnuje nasazení hardwaru, propojení zařízení a nasazení řešení v hardwarových zařízeních nebo v cloudu.
+* **Nasazení řešení IoT**: po vývoji řešení IoT je potřeba ho nasadit v poli. Tento proces zahrnuje nasazení hardwaru, propojení zařízení a nasazení řešení v hardwarových zařízeních nebo v cloudu.
 
-* **Operátor řešení IoT**: Po nasazení řešení IoT, vyžaduje dlouhodobé provoz, sledování, upgradu a údržby. Tyto úlohy provést interně týmem, který obsahuje informace o technologii specialisty, hardwarových operací a údržby týmy a domény specialistů, kteří monitorovat správné chování celkovou infrastrukturu IoT.
+* **Operátor řešení IoT**: po nasazení řešení IoT se vyžaduje dlouhodobá operace, monitorování, upgrady a údržba. Tyto úlohy může udělat interní tým, který zahrnuje specialisty na informační technologie, hardwarovou činnost a týmy údržby a specialisty na doménu, kteří sledují správné chování celkové infrastruktury IoT.
 
-Následující části poskytují osvědčené postupy pro každou z těchto hráčům pomáhají vyvíjet, nasazovat a provozovat zabezpečené infrastruktury IoT.
+Následující části obsahují osvědčené postupy pro každého z těchto hráčů, které vám pomůžou vyvíjet, nasazovat a provozovat zabezpečenou infrastrukturu IoT.
 
-## <a name="iot-hardware-manufacturerintegrator"></a>Výrobce hardwaru IoT/integrátor
+## <a name="iot-hardware-manufacturerintegrator"></a>Výrobce nebo integrátor hardwaru IoT
 
-Níže jsou osvědčené postupy pro výrobce hardwaru IoT a integrátory hardwaru.
+Níže jsou uvedené osvědčené postupy pro výrobce hardwaru IoT a hardwarové integrátory.
 
-* **Určení oboru, minimální požadavky na hardware**: Návrh hardwaru by měl obsahovat minimální požadované pro fungování hardwaru a žádné další funkce. Příkladem je pro zahrnutí portů USB pouze v případě, že je nezbytné pro operace zařízení. Tyto další funkce otevřít zařízení pro nežádoucí útoky, které by se jim vyhnout.
+* **Rozsah hardwaru na minimální požadavky**: návrh hardwaru by měl zahrnovat minimální funkce vyžadované pro provoz hardwaru a nic dalšího. Příkladem je zahrnutí portů USB, pokud je to nutné pro operaci zařízení. Tyto další funkce otevřou zařízení pro nechtěné způsoby útoku, které by se měly vyhnout.
 
-* **Ujistěte se, hardware manipulovat testování**: Vytvářejte mechanismy pro detekci fyzické úmyslné poškozování, jako je například otevírání krytí zařízení nebo odebrání součástí zařízení. Tyto manipulovat signály mohou být součástí datového proudu nahráli do cloudu, což může upozornit operátory tyto události.
+* Ověření **manipulace s hardwarem**: Sestavte mechanismy pro detekci fyzické manipulace, jako je například otevření zařízení nebo jeho odebrání. Tyto neoprávněné signály můžou být součástí datového proudu nahraného do cloudu, který by se mohl vyvarovat od operátorů těchto událostí.
 
-* **Sestavení kolem zabezpečený hardware**: Pokud povoluje COGS sestavení funkce zabezpečení, jako je zabezpečené a šifrované úložiště nebo spouštěcí funkce založené na čipu Trusted Platform Module (TPM). Tyto funkce musíte zařízení více zabezpečit a chránit celkovou infrastrukturu IoT.
+* **Sestavování s zabezpečeným hardwarem**: Pokud umožňují spotřebu na úrovni, Sestavujte bezpečnostní funkce, jako je zabezpečené a šifrované úložiště, nebo spouštěcí funkce založené na čipu TPM (Trusted Platform Module). Díky těmto funkcím je zařízení bezpečnější a lépe se chrání celková infrastruktura IoT.
 
-* **Zabezpečit inovace**: Upgrady firmwaru během životního cyklu zařízení jsou nevyhnutelné. Vytváření zařízení s cestami k zabezpečení pro inovace a kryptografické záruky verzí firmwaru vám umožní aby zařízení bylo zabezpečené, během a po upgradu.
+* **Zabezpečte upgrady**: upgrady firmwaru během životnosti zařízení se nevyhnutelně provedou. Sestavování zařízení s bezpečnými cestami pro upgrady a kryptografická ujištění verzí firmwaru umožní, aby bylo zařízení zabezpečené během a po upgradech.
 
-## <a name="iot-solution-developer"></a>Řešení IoT pro vývojáře
+## <a name="iot-solution-developer"></a>Vývojář řešení IoT
 
-Tady jsou osvědčené postupy pro vývojáře řešení IoT:
+Níže jsou uvedené osvědčené postupy pro vývojáře řešení IoT:
 
-* **Postupujte podle metodologie vývoje zabezpečeného softwaru**: Vývoj zabezpečeného softwaru vyžaduje základů přemýšlení o zabezpečení, od vzniku projektu až po jeho implementaci, testování a nasazení. Volby platforem, jazyků a nástrojů jsou ovlivněny pomocí této metody. Microsoft Security Development Lifecycle poskytuje podrobné přístup k vytváření zabezpečených softwaru.
+* **Dodržujte zabezpečení metodologie vývoje softwaru**: vývoj zabezpečeného softwaru vyžaduje základní úvahu o zabezpečení, od vzniku projektu až po jeho implementaci, testování a nasazení. Tato metodologie má vliv na možnosti platforem, jazyků a nástrojů. Životní cyklus Microsoft Security Development poskytuje podrobný přístup k sestavování zabezpečeného softwaru.
 
-* **Zvolte možnost open source softwaru pečlivě**: Open source softwaru poskytuje možnost rychle vyvíjet řešení. Abyste dokázali vybrat open source softwaru, vezměte v úvahu úrovně aktivity pro každou komponentu open sourcové komunity. Aktivní komunitě zajistí, že software je podporovaný a zjišťování a řešit problémy. Můžete také nemusí být podporován projekt open source softwaru skrytého a neaktivní a pravděpodobně nejsou být zjištěny problémy.
+* **Vyberte open source software s péčí**: Open source software nabízí příležitost k rychlému vývoji řešení. Při volbě open source softwaru zvažte úroveň aktivity komunity pro každou Open-Source komponentu. Aktivní komunita zajišťuje, že je software podporován a že problémy jsou zjišťovány a řešeny. Další možností je, že se nepodporují i neaktivní open source softwarový projekt a problémy se pravděpodobně neobjevují.
 
-* **Integrace s opatrností**: Existuje mnoho nedostatky v zabezpečení softwaru na hranici knihovny a rozhraní API. Funkce, které nemusí být nezbytný pro aktuální nasazení může být stále k dispozici prostřednictvím vrstvu rozhraní API. Aby bylo zajištěno celkové zabezpečení, nezapomeňte zaškrtnout všechna rozhraní komponenty integrace probíhá pro chyby zabezpečení.
+* **Integrace s péčí**: mnoho nedostatků zabezpečení softwaru existuje na hranici knihoven a rozhraní API. Funkce, které nemusí být potřeba pro aktuální nasazení, můžou být pořád dostupné přes vrstvu rozhraní API. Aby se zajistilo celkové zabezpečení, ujistěte se, že jste kontrolovali všechna rozhraní součástí, která jsou integrovaná pro chyby zabezpečení.
 
-## <a name="iot-solution-deployer"></a>Nástroje pro nasazení řešení IoT
+## <a name="iot-solution-deployer"></a>Nástroj pro nasazení řešení IoT
 
-Tady jsou osvědčené postupy pro pracovníky řešení IoT:
+Níže jsou uvedené osvědčené postupy pro nástroje pro nasazení řešení IoT:
 
-* **Bezpečné nasazení hardwaru**: Nasazení IoT může vyžadovat hardware pro nasazení v nezabezpečených umístění, jako je například veřejný mezery nebo bez dohledu národní prostředí. V takových situacích, ujistěte se, že hardware nasazení odolného proti maximálním možném rozsahu. Pokud USB nebo jiné porty jsou k dispozici na hardwaru, ujistěte se, pokrývá bezpečně. Mnoho způsobů útoku je použít jako vstupní body.
+* **Bezpečné nasazení hardwaru**: nasazení IoT může vyžadovat nasazení hardwaru v nezabezpečených umístěních, například ve veřejných prostorech nebo v nekontrolovaných národních prostředích. V takových situacích se ujistěte, že je nasazení hardwaru v maximálním rozsahu. Pokud je na hardwaru k dispozici USB nebo jiné porty, ujistěte se, že jsou pokryté zabezpečeně. Mnoho vektorů útoku může tyto hodnoty použít jako vstupní body.
 
-* **Bezpečnost ověřovací klíče**: Během nasazování každé zařízení vyžaduje ID zařízení a přidružený ověřovací klíče generované cloudovou službu. Bezpečnost tyto klíče fyzicky po nasazení. Žádné ohrožený klíč umožňuje škodlivý zařízení maskovat jako ze stávajících zařízení.
+* **Udržujte ověřovací klíče v bezpečí**: během nasazování vyžaduje každé zařízení ID zařízení a přidružené ověřovací klíče vygenerované cloudovou službou. Tyto klíče si nechte fyzicky bezpečně i po nasazení. Jakékoli napadené klíče může použít škodlivé zařízení k maskování jako stávající zařízení.
 
 ## <a name="iot-solution-operator"></a>Operátor řešení IoT
 
-Tady jsou osvědčené postupy pro operátory řešení IoT:
+Níže jsou uvedené osvědčené postupy pro operátory řešení IoT:
 
-* **Aktualizovat systém**: Ujistěte se, že jsou operační systémy zařízení a všechny ovladače zařízení upgradují na nejnovější verze. Je-li zapnout automatické aktualizace Windows 10 (IoT nebo ostatní SKU), Microsoft udržuje je aktuální, poskytuje zabezpečení operačního systému pro zařízení IoT. Udržování jinými operačními systémy (jako je Linux) aktuální pomáhá tak zajistit, že jsou rovněž chráněni před útoky se zlými úmysly.
+* **Udržujte systém v aktuálním stavu**: Ujistěte se, že operační systémy zařízení a všechny ovladače zařízení jsou upgradovány na nejnovější verze. Pokud zapnete automatické aktualizace ve Windows 10 (IoT nebo jiné SKU), společnost Microsoft je aktuální a poskytuje zabezpečený operační systém pro zařízení IoT. Udržování dalších operačních systémů (například Linux) pomáhá zajistit, aby byly chráněny i proti škodlivým útokům.
 
-* **Ochrana před škodlivými aktivitami**: Pokud operačního systému povolí, nainstalujte nejnovější funkce dané antivirového a antimalwarového na každý operační systém zařízení. Tento postup může pomoci zmírnit Většina externích hrozeb. Většina moderních operačních systémů před hrozbami můžete chránit pomocí odpovídající kroků.
+* **Ochrana před škodlivou aktivitou**: Pokud operační systém povoluje, nainstalujte nejnovější antivirové a antimalwarové funkce na každý operační systém zařízení. Tento postup může přispět k zmírnění většiny externích hrozeb. Většinu moderních operačních systémů můžete chránit před hrozbami, a to provedením příslušných kroků.
 
-* **Auditovat často**: Auditování IoT infrastruktury pro souvisejících se zabezpečením, je klíč při reakci na incidenty zabezpečení. Většina operačních systémů poskytuje integrované události protokolování, které byste měli zkontrolovat často zajistit, aby že nedošlo k porušení zabezpečení došlo k chybě. Auditu mohou být odesílány informace jako datový proud samostatné telemetrická data do cloudové služby ve kterém se dají analyzovat.
+* **Nejčastější audit**: auditování infrastruktury IoT pro problémy související se zabezpečením je klíč při reakci na incidenty zabezpečení. Většina operačních systémů nabízí integrované protokolování událostí, které by se mělo často zkontrolovat, aby se zajistilo, že nedošlo k narušení zabezpečení. Informace o auditu je možné odeslat jako samostatný datový proud telemetrie do cloudové služby, kde se dá analyzovat.
 
-* **Fyzicky ochrana infrastruktury IoT**: Nejhorší zabezpečení útoky na infrastrukturu IoT spustily pomocí fyzický přístup k zařízením. Jedné postupem důležité zabezpečení je pro ochranu proti zneužití portů USB a dalších fyzický přístup. Fyzický přístup, jako je například použití portu USB je protokolování jednoho klíče na po porušení, které mohly nastat. Znovu Windows 10 (Internet věcí a ostatní SKU) zapne podrobné protokolování z těchto událostí.
+* **Fyzicky chránit infrastrukturu IoT**: nejhorší bezpečnostní útoky proti infrastruktuře IoT se spouští pomocí fyzického přístupu k zařízením. Jedním z důležitých bezpečnostních postupů je chránit před škodlivým použitím portů USB a dalšího fyzického přístupu. Jedním z klíčových přístupů k odhalení, ke kterým mohlo dojít, je protokolování fyzického přístupu, jako je například použití portu USB. Znovu, Windows 10 (IoT a jiné SKU) umožňuje podrobné protokolování těchto událostí.
 
-* **Ochrana přihlašovacích údajů cloudu**: Cloudové ověřování pověření používaná pro konfiguraci a provozu při nasazení IoT jsou pravděpodobně nejjednodušší způsob, jak získat přístup a ohrozit systém IoT. Ochrana přihlašovacích údajů často změnou hesla a nepoužívejte tyto přihlašovací údaje na veřejné počítače.
+* **Chránit cloudová pověření**: přihlašovací údaje cloudového ověřování používané ke konfiguraci a provozování nasazení IoT jsou pravděpodobně nejjednodušší způsob, jak získat přístup a ohrozit systém IoT. Zabezpečte přihlašovací údaje změnou hesla často a nepoužívejte tyto přihlašovací údaje na veřejných počítačích.
 
-Funkce různých zařízeních IoT se liší. Některá zařízení může být počítače se systémem běžné operační systémy a některá zařízení může být velmi nenáročné operačním systémem. Osvědčené postupy zabezpečení popsané dříve může být pro tato zařízení v různých úrovních. Pokud je zadán, byste měli dodržet, další nasazení osvědčené postupy pro zabezpečení a od výrobců tato zařízení.
+Možnosti různých zařízení IoT se liší. Některá zařízení můžou být počítače, na kterých běží běžné desktopové operační systémy, a některá zařízení můžou používat velmi lehké operační systémy. Doporučené postupy zabezpečení, které byly popsané dříve, se můžou u těchto zařízení použít v různých stupních. V případě potřeby by se měly dodržovat Další doporučené postupy zabezpečení a nasazení od výrobců těchto zařízení.
 
-Některá zařízení starší verzi a omezením nemusí mít určený speciálně pro nasazení IoT. Tato zařízení nemusí mít možnost šifrování dat, připojení k Internetu nebo poskytování pokročilých auditování. V těchto případech můžete brány moderní a zabezpečené pole agregovat data ze starší verze zařízení a zabezpečení potřebné pro tato zařízení připojují přes Internet. Vyjednávání šifrovaných relací zabezpečeného ověřování, obdržení příkazů z cloudu a řadu dalších funkcí zabezpečení může poskytnout bran v terénu.
+Některá starší a omezená zařízení možná nebudou navržená speciálně pro nasazení IoT. Tato zařízení pravděpodobně nemají možnost šifrovat data, připojit se k Internetu nebo poskytovat pokročilé auditování. V těchto případech může moderní a zabezpečená brána polí agregovat data ze starších zařízení a zajistit zabezpečení potřebné pro připojení těchto zařízení přes Internet. Brány polí můžou poskytovat zabezpečené ověřování, vyjednávání šifrovaných relací, příjem příkazů z cloudu a spoustu dalších funkcí zabezpečení.

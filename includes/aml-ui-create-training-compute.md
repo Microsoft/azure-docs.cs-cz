@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: 28478f38df6ba6ea356626cc36c23ad498fc1f47
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 3f969fb346ce341e694458dcc38bf193f012226b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692287"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792632"
 ---
-Kanál běží na výpočetním cíli, což je výpočetní prostředek, který je připojený k vašemu pracovnímu prostoru.  Jakmile vytvoříte cílový výpočetní výkon, můžete ho znovu použít pro budoucí spuštění.
+Kanál se spouští na výpočetním cíli, což je výpočetní prostředek, který je připojený k vašemu pracovnímu prostoru. Jakmile vytvoříte cílový výpočetní výkon, můžete ho znovu použít pro budoucí spuštění.
 
 1. Kanál spustíte tak, že v horní části plátna vyberete **Spustit** .
 
@@ -36,6 +36,9 @@ Kanál běží na výpočetním cíli, což je výpočetní prostředek, který 
 1. Vyberte **Run** (Spustit).
 
 1. V dialogovém okně **nastavit spuštění kanálu** vyberte **+ nový experiment** pro **experiment** .
+
+    > [!NOTE]
+    > Experimenty seskupují podobný kanál společně. Pokud kanál spouštíte několikrát, můžete vybrat stejný experiment pro po sobě jdoucí běhy.
 
     * Zadejte popisný **název experimentu** .
 

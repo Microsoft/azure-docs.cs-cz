@@ -1,5 +1,5 @@
 ---
-title: Azure Storage front a Service Busch front v porovnání a kontrastu | Microsoft Docs
+title: Porovnání front Azure Storage a front Service Bus
 description: Analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Azure.
 services: service-bus-messaging
 documentationcenter: na
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: df9a7325d3ffc2362ff14b9a618ca0db7928b337
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a1e75416db34514425436bc3ceae9f27b156b557
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376337"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792690"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty úložiště a fronty Service Bus – porovnání a kontrast
-Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure dnes: Fronty úložiště a fronty Service Bus. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
+Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure dnes: fronty úložiště a Service Bus fronty. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
 
-## <a name="introduction"></a>Úvod
-Azure podporuje dva typy mechanismů fronty: **Fronty úložiště** a **fronty Service Bus**.
+## <a name="introduction"></a>Představení
+Azure podporuje dva typy mechanismů fronty: **fronty úložiště** a **fronty Service Bus**.
 
 **Fronty úložiště**, které jsou součástí infrastruktury [úložiště Azure](https://azure.microsoft.com/services/storage/) , poskytují jednoduché rozhraní Get/PUT a prohlížení založené na REST, které zajišťuje spolehlivé a trvalé zasílání zpráv v rámci služeb i mezi nimi.
 
@@ -67,16 +67,16 @@ Tabulky v následujících částech poskytují logické seskupení funkcí fron
 ## <a name="foundational-capabilities"></a>Základní možnosti
 V této části jsou porovnávány některé základní možnosti služby Řízení front zpráv poskytované frontami úložiště a Service Bus frontami.
 
-| Kritéria porovnání | Fronty úložiště | Fronty služby Service Bus |
+| Kritéria porovnání | Fronty úložiště | Fronty Service Bus |
 | --- | --- | --- |
 | Záruka řazení |**Ne** <br/><br>Další informace naleznete v první poznámce v části "Další informace".</br> |**Yes – first-in-first-out (FIFO)**<br/><br>(pomocí relací zasílání zpráv) |
-| Záruka na doručení |**Nejméně jednou** |Nejméně **jednou** (použití režimu Receive PeekLock – Toto je výchozí nastavení) <br/><br/>Maximálně **jednou** (použití režimu Receive ReceiveAndDelete) <br/> <br/> Další informace o různých [režimech příjmu](service-bus-queues-topics-subscriptions.md#receive-modes)  |
+| Záruka na doručení |**Nejméně jednou** |Nejméně **jednou** (pomocí režimu příjmu PeekLock – Toto je výchozí nastavení). <br/><br/>**Ve** více než jednou (pomocí režimu Receive ReceiveAndDelete) <br/> <br/> Další informace o různých [režimech příjmu](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Podpora atomických operací |**Ne** |**Ano**<br/><br/> |
 | Chování při příjmu |**Bez blokování**<br/><br/>(hned se dokončí, pokud se nenalezne žádná nová zpráva.) |**Blokování s časovým limitem/bez**<br/><br/>(nabízí dlouhodobé cyklické dotazování nebo ["Comet techniku"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Bez blokování**<br/><br/>(jenom prostřednictvím rozhraní API spravovaného rozhraním .NET) |
 | Rozhraní API pro vložení stylu |**Ne** |**Ano**<br/><br/>[Zprávy](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) a relace rozhraní .NET API pro **informování** . |
 | Režim příjmu |**Náhled & zapůjčení** |**Náhled & zámek**<br/><br/>**Přijmout & odstranění** |
 | Režim výhradního přístupu |**Na základě zapůjčení** |**Na základě zámku** |
-| Doba trvání zapůjčení/zámku |**30 sekund (výchozí)**<br/><br/>**7 dní (maximum)** (Můžete obnovit nebo vydat zapůjčení zprávy pomocí rozhraní [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API.) |**60 sekund (výchozí)**<br/><br/>Zámek zprávy můžete obnovit pomocí rozhraní [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API. |
+| Doba trvání zapůjčení/zámku |**30 sekund (výchozí)**<br/><br/>**7 dní (maximum)** (můžete obnovit nebo vydat zapůjčení zprávy pomocí rozhraní [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API.) |**60 sekund (výchozí)**<br/><br/>Zámek zprávy můžete obnovit pomocí rozhraní [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API. |
 | Přesnost zapůjčení nebo zámku |**Úroveň zprávy**<br/><br/>(každá zpráva může mít jinou hodnotu časového limitu, kterou pak můžete podle potřeby aktualizovat při zpracování zprávy pomocí rozhraní [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API). |**Úroveň fronty**<br/><br/>(u všech zpráv je použita přesnost zámku, ale můžete obnovit zámek pomocí rozhraní [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API.) |
 | Dávková příjem |**Ano**<br/><br/>(explicitní určení počtu zpráv při načítání zpráv, až do maximálního počtu zpráv 32) |**Ano**<br/><br/>(implicitně povolení předběžného načtení vlastnosti nebo explicitní prostřednictvím použití transakcí) |
 | Dávkové odeslání |**Ne** |**Ano**<br/><br/>(prostřednictvím použití transakcí nebo dávkování na straně klienta) |
@@ -99,7 +99,7 @@ V této části jsou porovnávány některé základní možnosti služby Říze
 ## <a name="advanced-capabilities"></a>Pokročilé možnosti
 Tato část porovnává rozšířené možnosti poskytované frontami úložiště a Service Bus frontami.
 
-| Kritéria porovnání | Fronty úložiště | Fronty služby Service Bus |
+| Kritéria porovnání | Fronty úložiště | Fronty Service Bus |
 | --- | --- | --- |
 | Naplánované doručení |**Ano** |**Ano** |
 | Automatické nedoručené dopisy |**Ne** |**Ano** |
@@ -130,12 +130,12 @@ Tato část porovnává rozšířené možnosti poskytované frontami úložišt
 ## <a name="capacity-and-quotas"></a>Kapacita a kvóty
 V této části se porovnávají fronty úložiště a Service Bus fronty z perspektivy [kapacity a kvót](service-bus-quotas.md) , které mohou platit.
 
-| Kritéria porovnání | Fronty úložiště | Fronty služby Service Bus |
+| Kritéria porovnání | Fronty úložiště | Fronty Service Bus |
 | --- | --- | --- |
 | Maximální velikost fronty |**500 TB**<br/><br/>(omezeno na [jednu kapacitu účtu úložiště](../storage/common/storage-introduction.md#queue-storage)) |**1 GB až 80 GB**<br/><br/>(definováno při vytváření fronty a [Povolení dělení](service-bus-partitioning.md) – viz část "Další informace") |
 | Maximální velikost zprávy |**64 kB**<br/><br/>(48 KB při použití kódování **Base64** )<br/><br/>Azure podporuje velké zprávy kombinováním front a objektů BLOB – v takovém bodě můžete každou položku zařadit do fronty až 200 GB. |**256 KB** nebo **1 MB**<br/><br/>(včetně záhlaví a textu, maximální velikost hlavičky: 64 KB).<br/><br/>Závisí na [úrovni služby](service-bus-premium-messaging.md). |
-| Maximální hodnota TTL zprávy |**Nekonečné** (jako rozhraní API verze 2017-07-27) |**TimeSpan. max** |
-| Maximální počet front |**Unlimited** |**10,000**<br/><br/>(obor názvů pro službu) |
+| Maximální hodnota TTL zprávy |**Infinite** (od verze API-Version 2017-07-27) |**TimeSpan. max** |
+| Maximální počet front |**Unlimited** |**10 000**<br/><br/>(obor názvů pro službu) |
 | Maximální počet souběžných klientů |**Unlimited** |**Unlimited**<br/><br/>(100 souběžného počtu připojení se vztahuje jenom na komunikaci založenou na protokolu TCP). |
 
 ### <a name="additional-information"></a>Další informace
@@ -149,14 +149,14 @@ V této části se porovnávají fronty úložiště a Service Bus fronty z pers
 ## <a name="management-and-operations"></a>Správa a operace
 V této části se porovnávají funkce správy poskytované frontami úložiště a Service Bus frontami.
 
-| Kritéria porovnání | Fronty úložiště | Fronty služby Service Bus |
+| Kritéria porovnání | Fronty úložiště | Fronty Service Bus |
 | --- | --- | --- |
 | Protokol pro správu |**REST přes HTTP/HTTPS** |**REST přes HTTPS** |
 | Protokol za běhu |**REST přes HTTP/HTTPS** |**REST přes HTTPS**<br/><br/>**AMQP 1,0 Standard (TCP s TLS)** |
 | .NET API |**Ano**<br/><br/>(Klientské rozhraní API pro úložiště .NET) |**Ano**<br/><br/>(Rozhraní .NET Service Bus API) |
-| Nativní kód C++ |**Ano** |**Ano** |
+| NativníC++ |**Ano** |**Ano** |
 | Java API |**Ano** |**Ano** |
-| PHP API |**Ano** |**Ano** |
+| ROZHRANÍ PHP API |**Ano** |**Ano** |
 | Rozhraní API pro Node. js |**Ano** |**Ano** |
 | Libovolná Podpora metadat |**Ano** |**Ne** |
 | Queue pravidla pojmenování |**Až 63 znaků dlouhé**<br/><br/>(Písmena v názvu fronty musí být malá.) |**Až 260 znaků dlouhé**<br/><br/>(U cest a názvů fronty se nerozlišují malá a velká písmena.) |
@@ -173,10 +173,10 @@ V této části se porovnávají funkce správy poskytované frontami úložišt
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace
 Tato část popisuje funkce pro ověřování a autorizaci podporované frontami úložiště a frontami Service Bus.
 
-| Kritéria porovnání | Fronty úložiště | Fronty služby Service Bus |
+| Kritéria porovnání | Fronty úložiště | Fronty Service Bus |
 | --- | --- | --- |
-| Ověřování |**Symetrický klíč** |**Symetrický klíč** |
-| Model zabezpečení |Delegovaný přístup prostřednictvím tokenů SAS. |SAS |
+| Ověření |**Symetrický klíč** |**Symetrický klíč** |
+| Model zabezpečení |Delegovaný přístup prostřednictvím tokenů SAS. |VEDE |
 | Federace zprostředkovatele identity |**Ne** |**Ano** |
 
 ### <a name="additional-information"></a>Další informace

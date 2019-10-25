@@ -1,61 +1,74 @@
 ---
-title: Vzory sloupců v Azure Data Factory mapování datových toků
-description: Vytváření zobecněných vzorů pro transformaci dat pomocí Azure Data Factorych vzorů sloupců v mapování toků dat
+title: Vzory sloupců v Azure Data Factory tok dat mapování
+description: Vytváření zobecněných vzorů pro transformaci dat pomocí vzorů sloupců v Azure Data Factory mapování toků dat
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: a95bbb726f8c391270d3f60ed769d9475004b1e4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 10/21/2019
+ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388008"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789931"
 ---
-# <a name="mapping-data-flows-column-patterns"></a>Vzorce mapování datových toků
+# <a name="using-column-patterns-in-mapping-data-flow"></a>Použití vzorů sloupců v mapování toku dat
 
+Několik transformací toku dat mapování vám umožní odkazovat na sloupce šablon na základě vzorů namísto pevně kódovaných názvů sloupců. Tato shoda se označuje jako *vzory sloupců*. Můžete definovat vzory, které odpovídají sloupcům na základě názvu, datového typu, datového proudu nebo pozice místo vyžadování přesných názvů polí. Existují dva scénáře, kdy jsou vhodné vzory sloupců:
 
+* Pokud se pole příchozího zdroje často mění, například případ změny sloupců v textových souborech nebo NoSQL databázích. Tento scénář je známý jako [posun schématu](concepts-data-flow-schema-drift.md).
+* Pokud chcete provést běžnou operaci pro velkou skupinu sloupců. Například, chcete-li přetypování každého sloupce, který má "Total" v názvu sloupce na hodnotu Double.
 
-Několik Azure Data Factory transformacích toků dat podporuje představu o vzorcích sloupců, takže můžete vytvářet šablony sloupců založené na vzorcích místo pevně zakódovaných názvů sloupců. Tuto funkci můžete v rámci Tvůrce výrazů použít k definování vzorů, které odpovídají sloupcům pro transformaci místo vyžadování přesně specifických názvů polí. Vzorce jsou užitečné v případě, že se příchozí zdrojová pole často mění, zejména v případě změny sloupců v textových souborech nebo NoSQL databázích. Tato podmínka se někdy označuje jako "posun schématu".
+Vzory sloupců jsou aktuálně k dispozici v odvozeném sloupci, agregace, výběru a transformaci jímky.
 
-Toto "flexibilní schéma" zpracovává se aktuálně v odvozeném sloupci a agregované transformace a také transformace Select a jímka jako mapování na základě pravidel.
+## <a name="column-patterns-in-derived-column-and-aggregate"></a>Vzory sloupců v odvozeném sloupci a agregace
+
+Chcete-li přidat vzor sloupce do odvozeného sloupce nebo na kartě agregace agregované transformace, klikněte na ikonu se symbolem plus napravo od existujícího sloupce. Vyberte možnost **přidat model sloupce**. 
+
+![vzory sloupců](media/data-flow/columnpattern.png "Vzory sloupců")
+
+K zadání podmínky shody použijte [Tvůrce výrazů](concepts-data-flow-expression-builder.md) . Vytvořte logický výraz, který odpovídá sloupcům na základě `name`, `type`, `stream`a `position` sloupce. Vzor bude mít vliv na libovolný sloupec, posunovaná nebo definovaná, kde podmínka vrátí hodnotu true.
+
+Dvě pole výrazu pod podmínkou shody určují nové názvy a hodnoty ovlivněných sloupců. Použijte `$$` k odkazování na existující hodnotu odpovídajícího pole. Levý rámeček výrazu definuje název a pravé pole výrazu definuje hodnotu.
 
 ![vzory sloupců](media/data-flow/columnpattern2.png "Vzory sloupců")
 
-## <a name="column-patterns"></a>Vzory sloupců
-Vzory sloupců jsou užitečné pro zpracování obou scénářů a také v obecných scénářích. Je vhodný pro podmínky, kdy nemůžete plně znát název každého sloupce. Porovnávání vzorů lze použít pro název sloupce a datový typ sloupce a vytvořit výraz pro transformaci, který provede tuto operaci s jakýmkoli polem v datovém proudu, které odpovídá vzorům `name` @ no__t-1 @ no__t-2.
+Výše uvedený vzor sloupce odpovídá každému sloupci typu Double a vytvoří jeden agregovaný sloupec na základě shody. Název nového sloupce se shoduje s názvem sloupce, který je zřetězený s příponou _Total. Hodnota nového sloupce je zaokrouhlená, agregovaná suma existující hodnoty typu Double.
 
-Při přidávání výrazu k transformaci, která přijímá vzory, vyberte možnost "přidat vzor sloupců". Vzory sloupců umožňují, aby sloupce s posunem schématu odpovídaly vzorům.
+Pokud chcete ověřit, jestli je vaše shoda podmínky správná, můžete ověřit výstupní schéma definovaných sloupců na kartě **zkontrolovat** nebo získat snímek dat na kartě **Náhled dat** . 
 
-Při sestavování vzorů sloupců šablony použijte ve výrazu `$$`, který představuje odkaz na každé odpovídající pole ze vstupního datového proudu.
+![vzory sloupců](media/data-flow/columnpattern3.png "Vzory sloupců")
 
-Pokud se rozhodnete použít některý z funkcí regulárního výrazu pro Tvůrce výrazů, můžete následně použít $1, $2, $3... Chcete-li odkazovat na dílčí vzory odpovídající vašemu výrazu Regex.
+## <a name="rule-based-mapping-in-select-and-sink"></a>Mapování na základě pravidel pro výběr a jímku
 
-Příklad scénáře vzoru sloupce používá součet s řadou příchozích polí. Výpočty agregačního SOUČTu jsou v agregační transformaci. Pak můžete použít součet každé shody typů polí, které odpovídají "celému číslu", a pak použít $ $ pro odkazování na každou shodu ve výrazu.
+Při mapování sloupců ve zdroji a výběru transformací můžete přidat buď pevné mapování, nebo mapování na základě pravidel. Pokud znáte schéma vašich dat a očekáváte, že konkrétní sloupce ze zdrojové datové sady budou vždycky odpovídat specifickým statickým názvům, použijte pevné mapování. Pokud pracujete s flexibilními schématy, použijte mapování na základě pravidel k sestavení porovnávání vzorů na základě `name`, `type`, `stream`a `position` sloupců. Můžete mít libovolnou kombinaci s pevným mapováním a mapování na základě pravidel. 
 
-## <a name="match-columns"></a>Shoda sloupců
-![typy vzorků sloupců](media/data-flow/pattern2.png "Typy vzorku")
-
-Chcete-li vytvořit vzory založené na sloupcích, můžete se shodovat s názvem sloupce, typem, datovým proudem nebo pozicí a použít libovolnou kombinaci těch s funkcemi výrazů a regulárními výrazy.
-
-![pozice sloupce](media/data-flow/position.png "Pozice sloupce")
-
-## <a name="rule-based-mapping"></a>Mapování na základě pravidel
-Když namapujete sloupce ve zdroji a vyberete transformace, budete mít možnost zvolit "pevné mapování" nebo "mapování na základě pravidel". Pokud znáte schéma vašich dat a očekáváte konkrétní sloupce ze zdrojové datové sady, které vždy odpovídají specifickým statickým názvům, můžete použít pevné mapování. Ale při práci s flexibilními schématy použijte mapování na základě pravidel. Pomocí výše popsaných pravidel budete moct vytvořit porovnávání vzorů.
+Chcete-li přidat mapování na základě pravidla, klikněte na tlačítko **Přidat mapování** a vyberte **mapování na základě pravidel**.
 
 ![mapování na základě pravidel](media/data-flow/rule2.png "Mapování na základě pravidel")
 
-Sestavte pravidla pomocí Tvůrce výrazů. Vaše výrazy vrátí logickou hodnotu buď pro odpovídající sloupce (true), nebo pro vyloučení sloupců (false).
+Do pole levý výraz zadejte podmínku vaší logické shody. V poli pravého výrazu určete, k čemu se odpovídající sloupec namapuje. Použijte `$$` k odkazování na existující název odpovídajícího pole.
 
-## <a name="pattern-matching-special-columns"></a>Speciální sloupce pro porovnávání vzorů
+Pokud kliknete na ikonu Dvojitá šipka dolů, můžete zadat podmínku mapování regulárního výrazu.
 
-* `$$` se převede na název každé shody v době návrhu v režimu ladění a při spuštění v době běhu.
+Kliknutím na ikonu brýlí vedle mapování založeného na pravidlech zobrazíte, které definované sloupce se shodují a k čemu se namapují.
+
+![mapování na základě pravidel](media/data-flow/rule1.png "Mapování na základě pravidel")
+
+Ve výše uvedeném příkladu se vytvoří dvě mapování založená na pravidlech. První z nich přebírá všechny sloupce, které nemají název ' video ' a mapuje je na jejich existující hodnoty. Druhé pravidlo používá regulární výraz pro shodu se všemi sloupci, které začínají na ' video ' a mapuje je na sloupec ' movieId '.
+
+Pokud vaše pravidlo vede k více identickým mapováním, povolte **Přeskočit duplicitní vstupy** nebo **Přeskočit duplicitní výstupy** , aby nedocházelo k duplicitám.
+
+## <a name="pattern-matching-expression-values"></a>Hodnoty výrazů pro porovnávání vzorů.
+
+* `$$` překládá k názvu nebo hodnotě každé shody v době běhu.
 * `name` představuje název každého příchozího sloupce.
 * `type` představuje datový typ každého příchozího sloupce.
-* `stream` představuje název přidružený ke každému streamu nebo transformaci v toku.
+* `stream` představuje název spojený s každým datovým proudem nebo transformaci v toku.
 * `position` je pořadové místo sloupců v toku dat
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [jazykovém výrazu](https://aka.ms/dataflowexpressions) toku dat mapování ADF pro transformace dat.
+* Další informace o [jazyku výrazu](data-flow-expression-functions.md) mapování dat pro transformaci dat
 * Použijte vzory sloupců v [transformaci jímky](data-flow-sink.md) a [Vyberte transformaci](data-flow-select.md) pomocí mapování založeného na pravidlech.

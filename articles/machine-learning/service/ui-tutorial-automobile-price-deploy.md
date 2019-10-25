@@ -1,125 +1,121 @@
 ---
-title: 'Kurz: Nasazení modelu Machine Learning pomocí vizuálního rozhraní'
+title: 'Kurz: nasazení modelu strojového učení pomocí vizuálního rozhraní'
 titleSuffix: Azure Machine Learning
-description: Naučte se vytvářet řešení prediktivní analýzy v vizuálním rozhraní Azure Machine Learning. Naučte se, vyhodnocovat a nasazují model strojového učení pomocí přetažení modulů. Tento kurz je druhou částí série dvou částí pro předpověď cen automobilů pomocí lineární regrese.
+description: Naučte se vytvářet řešení prediktivní analýzy v Azure Machine Learning vizuálním rozhraní. Naučte se, vyhodnocovat a nasazují model strojového učení pomocí přetažení modulů.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/11/2019
-ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 10/22/2019
+ms.openlocfilehash: 6f8717f70a2cb03a7fd683cfe61f1198461f4305
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128984"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792678"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Kurz: Nasazení modelu Machine Learning pomocí vizuálního rozhraní
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Kurz: nasazení modelu strojového učení pomocí vizuálního rozhraní
 
-Pokud chcete jiným uživatelům umožnit používání prediktivního modelu vyvinutého v [rámci jednoho kurzu](ui-tutorial-automobile-price-train-score.md), můžete ho nasadit jako webovou službu Azure. Zatím jste experimentování s školením modelu. Nyní je čas vytvořit nové předpovědi na základě vstupu uživatele. V této části kurzu:
+Pokud chcete jiným osobám umožnit používání prediktivního modelu vyvinutého v [rámci jednoho kurzu](ui-tutorial-automobile-price-train-score.md), můžete ho nasadit jako koncový bod v reálném čase. V části 1 jste si vyškole svůj model. Nyní je čas vytvořit nové předpovědi na základě vstupu uživatele. V této části kurzu:
 
 > [!div class="checklist"]
-> * Příprava modelu pro nasazení
-> * Nasazení webové služby
-> * Testování webové služby
-> * Správa webové služby
-> * Využívání webové služby
+> * Nasazení koncového bodu v reálném čase
+> * Vytvoření clusteru Inferencing
+> * Testování koncového bodu v reálném čase
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Kompletní [část tohoto kurzu](ui-tutorial-automobile-price-train-score.md) se naučíte, jak ve vizuálním rozhraní naučit a vyhodnocovat model strojového učení.
 
-## <a name="prepare-for-deployment"></a>Příprava nasazení
+## <a name="deploy-a-real-time-endpoint"></a>Nasazení koncového bodu v reálném čase
 
-Než nasadíte experiment jako webovou službu, musíte nejprve převést *školicí experiment* na *prediktivní experiment*.
+Aby bylo možné svůj kanál nasadit, musíte:
 
-1. V dolní části plátna experimentu vyberte **vytvořit prediktivní experiment\*** .
+1. Převeďte školicí kanál na kanál pro odvození v reálném čase, který odebere školicí moduly a přidá vstupy a výstupy pro požadavky Inferencing.
+1. Nasaďte kanál odvození.
 
-    ![Animovaný obrázek GIF znázorňující automatický převod školicích experimentů do prediktivního experimentu](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
+### <a name="create-a-real-time-inference-pipeline"></a>Vytvoření kanálu odvození v reálném čase
 
-    Když vyberete možnost **vytvořit prediktivní experiment**, nastane několik věcí:
+1. V horní části plátna kanálu vyberte **vytvořit kanál odvození**  > **kanál pro odvození v reálném čase** .
+
+    Když vyberete **vytvořit kanál odvození**, nastane několik věcí:
     
-    * Trained model je uložený jako modul **trained modelu** v paletě modulu. Najdete ho pod **školenými modely**.
-    * Moduly, které byly použity pro vzdělávání se odeberou; konkrétně:
-      * Trénování modelu
-      * Rozdělení dat
-      * Vyhodnocení modelu
-    * Uložený vycvičený model se přidá zpátky do experimentu.
+    * Trained model je uložen jako modul **DataSet** v paletě modulu. Můžete ji najít v části **Moje datové sady**.
+    * Moduly, jako je **model výuky** a **rozdělená data**, které se použily pro školení, se odeberou.
+    * Uložený vycvičený model se přidá zpátky do kanálu.
     * Jsou přidány výstupní moduly **webové služby** a **webové služby** . Tyto moduly identifikují, kam budou data uživatelů zadávat model a kde se vrátí data.
 
-    **Školicí experiment** se pořád ukládá na nové karty v horní části plátna experimentu.
+    > [!Note]
+    > **Školicí kanál** se uloží pod novou kartu v horní části plátna kanálu. Může být také nalezen jako publikovaný kanál ve vizuálním rozhraní.
+    >
 
-1. **Spusťte** experiment.
+    Váš kanál by teď měl vypadat takto:  
 
-1. Vyberte výstup modulu určení **skóre modelu** a vyberte **Zobrazit výsledky** , abyste ověřili, že model stále pracuje. Můžete vidět, že se zobrazí původní data společně s předpovězenou cenou ("popisky s skóre").
+   ![Snímek obrazovky znázorňující očekávanou konfiguraci kanálu po jeho přípravě na nasazení](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-Experiment by teď měl vypadat takto:  
+1. Vyberte **Spustit** a použijte stejný cíl výpočtů a experiment jste použili v části 1.
 
-![Snímek obrazovky znázorňující očekávanou konfiguraci experimentu po jeho přípravě na nasazení](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
+1. Vyberte modul určení **skóre modelu** .
 
-## <a name="deploy-the-web-service"></a>Nasazení webové služby
+1. V podokně Vlastnosti vyberte **výstupy**  > **vizualizaci** , abyste ověřili, že model stále pracuje. Můžete vidět, že se zobrazí původní data spolu s předpovězenou cenou ("popisky s skóre").
 
-1. Pod plátnem vyberte **nasadit webovou službu** .
+1. Vyberte **Nasadit**.
 
-1. Vyberte **výpočetní cíl** , pro který chcete spustit webovou službu.
+### <a name="create-an-inferencing-cluster"></a>Vytvoření clusteru Inferencing
 
-    V současné době vizuální rozhraní podporuje nasazení pouze do výpočetních cílů služby Azure Kubernetes Service (AKS). V pracovním prostoru služby Machine Learning můžete vybrat z dostupných výpočetních cílů AKS nebo nakonfigurovat nové prostředí AKS pomocí kroků v zobrazeném dialogovém okně.
+V dialogovém okně, které se zobrazí, můžete v pracovním prostoru vybrat z existujících clusterů Azure Kubernetes Service (AKS) a model nasadit. Pokud nemáte cluster AKS, vytvořte ho pomocí následujících kroků.
 
-    ![Snímek obrazovky znázorňující možnou konfiguraci pro nový cíl výpočtů](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
+1. V dialogovém okně vyberte **COMPUTE** a přejděte na stránku **COMPUTE** .
 
-1. Vyberte **nasadit webovou službu**. Po dokončení nasazení se zobrazí následující oznámení. Nasazení může trvat několik minut.
+1. Na pásu karet navigace vyberte **odvozené clustery**  >  **+ nové**.
 
-    ![Snímek obrazovky s potvrzovací zprávou pro úspěšné nasazení](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
+    ![Snímek obrazovky ukazující, jak přejít k novému podoknu clusteru odvození](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
 
-## <a name="test-the-web-service"></a>Test webové služby
+1. V podokně odvození clusteru nakonfigurujte novou službu Kubernetes.
 
-Webové služby vizuálního rozhraní můžete testovat a spravovat tak, že přejdete na kartu **webové služby** .
+1. Jako **výpočetní název**zadejte "AKS-COMPUTE".
+    
+1. Vyberte **oblast**dostupnou v okolí.
 
-1. Přejít na část webové služby. Uvidíte webovou službu, kterou jste nasadili, pomocí pojmenování **kurzu – předpověď ceny automobilu [prediktivní exp]** .
+1. Vyberte **Create** (Vytvořit).
 
-     ![Snímek obrazovky zobrazující kartu webové služby s zvýrazněnou webovou službou naposledy vytvořenou](./media/ui-tutorial-automobile-price-deploy/web-services.png)
+    > [!Note]
+    > Vytvoření nové služby AKS trvá přibližně 15 minut. Stav zřizování můžete kontrolovat na stránce **odvození clusterů** .
+    >
 
-1. Pokud chcete zobrazit další podrobnosti, vyberte název webové služby.
+### <a name="deploy-the-real-time-endpoint"></a>Nasazení koncového bodu v reálném čase
+
+Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v reálném čase, abyste mohli dokončit nasazení.
+
+1. Na plátně vyberte **nasadit** .
+
+1. Vyberte **nasadit nový koncový bod v reálném čase**. 
+
+1. Vyberte cluster AKS, který jste vytvořili.
+
+1. Vyberte **Nasadit**.
+
+    ![Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+
+    Po dokončení nasazení se zobrazí oznámení o úspěchu nad plátnem, může to trvat několik minut.
+
+## <a name="test-the-real-time-endpoint"></a>Testování koncového bodu v reálném čase
+
+Koncový bod v reálném čase můžete otestovat tak, že přejdete na stránku **koncové body** v navigačním podokně pracovního prostoru na levé straně.
+
+1. Na stránce **koncové body** vyberte koncový bod, který jste nasadili.
+
+    ![Snímek obrazovky zobrazující kartu koncových bodů v reálném čase s zvýrazněným nedávno vytvořeným koncovým bodem](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
 1. Vyberte **test**.
 
-    [![Snímek obrazovky zobrazující stránku testování webové služby](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
-
 1. Zadejte testovací data nebo použijte možnost automatického vyplňování ukázkových dat a vyberte **test**.
 
-    Požadavek na test se odešle do webové služby a výsledky se zobrazí na stránce. I když je pro vstupní data vygenerována hodnota ceny, není použita k vygenerování hodnoty předpovědi.
+    Požadavek na test se odešle do koncového bodu a výsledky se zobrazí na stránce. I když je pro vstupní data vygenerována hodnota ceny, není použita k vygenerování hodnoty předpovědi.
 
-## <a name="consume-the-web-service"></a>Využívání webové služby
-
-Uživatelé teď můžou odesílat požadavky rozhraní API na webovou službu Azure a získávat výsledky pro předpověď ceny svých nových Automobiles.
-
-**Požadavek nebo odpověď** – uživatel pošle jednu nebo více řádků dat automobilu do služby pomocí protokolu HTTP. Služba reaguje s jednou nebo více sadami výsledků.
-
-Ukázková volání REST můžete najít na stránce s podrobnostmi webové služby na kartě **spotřebovat** .
-
-   ![Snímek obrazovky znázorňující ukázkové volání REST, které uživatelé můžou najít na kartě spotřebovat](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
-
-Přejděte na kartu **API doc** , kde najdete další podrobnosti o rozhraní API.
-
-## <a name="manage-models-and-deployments"></a>Správa modelů a nasazení
-
-Nasazení modelů a webových služeb, která vytvoříte v rámci vizuálního rozhraní, lze spravovat také z pracovního prostoru Azure Machine Learning.
-
-1. Otevřete pracovní prostor v [Azure Portal](https://portal.azure.com/).  
-
-1. V pracovním prostoru vyberte **modely**. Pak vyberte experiment, který jste vytvořili.
-
-    ![Snímek obrazovky, který ukazuje, jak přejít k experimentům v Azure Portal](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
-
-    Na této stránce se zobrazí další podrobnosti o modelu.
-
-1. Vyberte **nasazení**. zobrazí se seznam všech webových služeb, které používají model. Vyberte název webové služby, který se bude nacházet na stránce s podrobnostmi webové služby. Na této stránce můžete získat podrobnější informace o webové službě.
-
-    [![Podrobná sestava spuštění snímku obrazovky](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
-
-Tyto modely a nasazení můžete najít také v částech **modely** a **koncové body** [cílové stránky pracovního prostoru (Preview)](https://ml.azure.com).
+    ![Snímek obrazovky ukazující, jak otestovat koncový bod v reálném čase pomocí popisku s skóre pro zvýrazněnou cenu](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -127,7 +123,7 @@ Tyto modely a nasazení můžete najít také v částech **modely** a **koncov�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se seznámili s klíčovými kroky při vytváření, nasazování a využívání modelu strojového učení ve vizuálním rozhraní. Další informace o tom, jak můžete pomocí vizuálního rozhraní vyřešit jiné typy problémů, najdete v našich dalších ukázkových experimentech.
+V tomto kurzu jste se seznámili s klíčovými kroky při vytváření, nasazování a využívání modelu strojového učení ve vizuálním rozhraní. Další informace o tom, jak můžete pomocí vizuálního rozhraní vyřešit jiné typy problémů, najdete v našich dalších ukázkových kanálech.
 
 > [!div class="nextstepaction"]
 > [Ukázka klasifikace úvěrového rizika](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

@@ -1,25 +1,25 @@
 ---
-title: Vytvoření dovednosti v kanálu vyhledávání vnímání – Azure Search
-description: Definování extrakce dat, zpracování přirozeného jazyka nebo kroků analýzy obrázků za účelem obohacení a extrakce strukturovaných informací z vašich dat pro použití v Azure Search.
+title: Vytvoření dovednosti v kanálu pro rozšíření
+titleSuffix: Azure Cognitive Search
+description: Definování extrakce dat, zpracování přirozeného jazyka nebo kroků analýzy obrázků za účelem obohacení a extrakce strukturovaných informací z vašich dat pro použití v Azure Kognitivní hledání.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71265519"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787473"
 ---
-# <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Postup vytvoření dovednosti v kanálu pro rozšíření
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Postup vytvoření dovednosti v kanálu rozšíření AI v Azure Kognitivní hledání 
 
-Rozpoznávání rozpoznávání rozbalí data a vylepšuje je, aby je bylo možné prohledávat Azure Search. Vyvoláme kroky pro extrakci a obohacení, které jsou zkombinovány do *dovednosti* , na *který se odkazuje*při indexování. Dovednosti může používat [integrované dovednosti](cognitive-search-predefined-skills.md) nebo vlastní dovednosti (Další informace najdete v tématu [Vytvoření vlastní dovednosti pro hledání v rozpoznávání](cognitive-search-create-custom-skill-example.md) ).
+Rozšíření AI extrahuje a vylepšuje data, aby je bylo možné prohledávat v Azure Kognitivní hledání. Vyvoláme kroky pro extrakci a obohacení, které jsou zkombinovány do *dovednosti* , na *který se odkazuje*při indexování. Dovednosti může používat [integrované dovednosti](cognitive-search-predefined-skills.md) nebo vlastní dovednosti (viz [Příklad: Vytvoření vlastní dovednosti v kanálu rozšíření AI](cognitive-search-create-custom-skill-example.md) pro další informace).
 
-V tomto článku se dozvíte, jak vytvořit kanál pro rozšíření pro dovednosti, které chcete použít. Dovednosti je připojen k [indexeru](search-indexer-overview.md)Azure Search. Jedna součást návrhu kanálu, která je popsaná v tomto článku, sestavuje dovednosti sebe sama. 
+V tomto článku se dozvíte, jak vytvořit kanál pro rozšíření pro dovednosti, které chcete použít. Dovednosti je připojen ke službě Azure Kognitivní hledání [indexer](search-indexer-overview.md). Jedna součást návrhu kanálu, která je popsaná v tomto článku, sestavuje dovednosti sebe sama. 
 
 > [!NOTE]
 > Další součástí návrhu kanálu je zadání indexeru, který je popsaný v [dalším kroku](#next-step). Definice indexeru zahrnuje odkaz na dovednosti a mapování polí, která se používají pro připojení vstupů k výstupům v cílovém indexu.
@@ -45,10 +45,10 @@ Následující diagram znázorňuje hypotetický kanál pro obohacení:
 ![Hypotetický kanál pro obohacení](media/cognitive-search-defining-skillset/sample-skillset.png "Hypotetický kanál pro obohacení")
 
 
-Jakmile budete mít k dispozici lepší představu o tom, co chcete v kanálu, můžete vyjádřit dovednosti, které poskytuje tyto kroky. Funkce dovednosti se vyjadřuje při nahrávání definice indexeru do Azure Search. Další informace o tom, jak nahrát indexer, najdete v dokumentaci k [indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Jakmile budete mít k dispozici lepší představu o tom, co chcete v kanálu, můžete vyjádřit dovednosti, které poskytuje tyto kroky. Funkce dovednosti se vyjadřuje při nahrávání definice indexeru do Azure Kognitivní hledání. Další informace o tom, jak nahrát indexer, najdete v dokumentaci k [indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 
-V diagramu se krok *vytrhlinování dokumentu* provede automaticky. V podstatě Azure Search ví, jak otevřít dobře známé soubory a vytvoří pole *obsahu* obsahující text extrahovaný z každého dokumentu. Prázdné čtverečky jsou integrované nástroje pro obohacení a pole s tečkami Vyhledávání entit Bingu představuje vlastní obohacení, které vytváříte. Jak je znázorněno, dovednosti obsahuje tři dovednosti.
+V diagramu se krok *vytrhlinování dokumentu* provede automaticky. V podstatě Kognitivní hledání Azure ví, jak otevřít dobře známé soubory a vytvoří pole *obsahu* obsahující text extrahovaný z každého dokumentu. Prázdné čtverečky jsou integrované nástroje pro obohacení a pole s tečkami Vyhledávání entit Bingu představuje vlastní obohacení, které vytváříte. Jak je znázorněno, dovednosti obsahuje tři dovednosti.
 
 ## <a name="skillset-definition-in-rest"></a>Definice dovednosti v REST
 
@@ -243,11 +243,11 @@ Pravděpodobným výsledkem by byla vygenerovaná struktura podobná následují
 
 ![Ukázka výstupní struktury](media/cognitive-search-defining-skillset/enriched-doc.png "Ukázka výstupní struktury")
 
-Až do této struktury byla tato struktura jenom interní, jenom paměť a používá se jenom v Azure Search indexech. Přidání znalostní báze vám dává možnost ukládat obohacení na tvar pro použití mimo hledání.
+Až do této struktury byla tato struktura jenom interní, jenom paměť a používá se jenom v indexech Azure Kognitivní hledání. Přidání znalostní báze vám dává možnost ukládat obohacení na tvar pro použití mimo hledání.
 
 ## <a name="add-a-knowledge-store"></a>Přidat znalostní bázi Knowledge Store
 
-[Znalostní báze](knowledge-store-concept-intro.md) je funkce ve verzi preview v Azure Search pro uložení obohaceného dokumentu. Znalostní báze, kterou vytvoříte, je zajištěné účtem služby Azure Storage, kde je úložiště, ve kterém jsou rozšířená data uložena. 
+[Znalostní báze](knowledge-store-concept-intro.md) je funkce ve verzi Preview v Azure kognitivní hledání pro ukládání obohaceného dokumentu. Znalostní báze, kterou vytvoříte, je zajištěné účtem služby Azure Storage, kde je úložiště, ve kterém jsou rozšířená data uložena. 
 
 Do dovednosti se přidá definice znalostní databáze. Návod k celému procesu najdete v tématu [jak začít používat znalostní bázi Knowledge Store](knowledge-store-howto.md).
 

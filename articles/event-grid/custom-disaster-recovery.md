@@ -1,39 +1,39 @@
 ---
-title: Vytvářejte vlastní zotavení po havárii pro vlastní témata ve službě Azure Event Grid | Dokumentace Microsoftu
-description: Překonání regionální výpadky zachovat připojené služby Azure Event Grid.
+title: Zotavení po havárii pro vlastní témata v Azure Event Grid
+description: Přečtěte si, jak zajistit, aby zůstaly Azure Event Grid připojené k místním výpadkům.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 05/16/2019
+ms.date: 10/22/2019
 ms.author: babanisa
-ms.openlocfilehash: 4a069db7984a7b0b0bb4bb867dc510f73d8b1f75
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 7020fb167539e8ad16cc6c386f58e38326dec43b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305081"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790281"
 ---
-# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytváření vlastních zotavení po havárii pro vlastní témata ve službě Event Grid
-Zotavení po havárii se zaměřuje na obnovení závažné ztráty funkčnost aplikace. Tento kurz vás provede nastavení architektury zpracování událostí k obnovení v případě služby Event Grid nebude v pořádku v konkrétní oblasti.
+# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvoření vlastního zotavení po havárii pro vlastní témata v Event Grid
+Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. V tomto kurzu se dozvíte, jak nastavit architekturu událostí pro obnovení, pokud služba Event Grid v konkrétní oblasti nebude v pořádku.
 
-V tomto kurzu se dozvíte, jak vytvořit architekturu aktivní pasivní převzetí služeb při selhání pro vlastní témata ve službě Event Grid. Budete provádět převzetí služeb při selhání pomocí zrcadlení témata a odběry ve dvou oblastech a následné správy převzetí služeb při selhání, když téma nebude v pořádku. Architektura v tomto kurzu převezme služby při selhání všechny nové přenosy. je důležité vědět, s tímto nastavením, události už je v letu nebude obnoven, dokud nebude ohrožených oblast opět v pořádku.
+V tomto kurzu se dozvíte, jak vytvořit architekturu pro převzetí služeb při selhání aktivní – pasivní pro vlastní témata v Event Grid. Převzetí služeb při selhání můžete provést zrcadlením vašich témat a odběrů ve dvou oblastech a potom můžete spravovat převzetí služeb při selhání, když se téma stane špatným. Architektura v tomto kurzu převezme všechny nové přenosy. je důležité, abyste s tímto nastavením věděli, že události, které už jsou v letadle, se nebudou obnovovat, dokud se ohrožená oblast opět neobjeví v pořádku.
 
 > [!NOTE]
-> Event Grid teď podporuje automatické geografického zotavení po havárii (GeoDR) na straně serveru. Stále můžete implementovat logiku pro zotavení po havárii na straně klienta potřebujete větší kontrolu na proces převzetí služeb při selhání. Podrobnosti o automatické GeoDR najdete v tématu [na straně serveru geografického zotavení po havárii ve službě Azure Event Grid](geo-disaster-recovery.md).
+> Event Grid podporuje nyní na straně serveru automatické obnovení geografického zotavení po havárii (GeoDR). Pokud chcete mít větší kontrolu nad procesem převzetí služeb při selhání, můžete i nadále implementovat logiku zotavení po havárii na straně klienta. Podrobnosti o automatických GeoDR najdete [v tématu geografická zotavení po havárii na straně serveru v Azure Event Grid](geo-disaster-recovery.md).
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
-Testování konfigurace převzetí služeb při selhání, bude nutné koncový bod pro příjem událostí v. Koncový bod, které nejsou součástí vaší infrastruktury převzetí služeb při selhání, ale bude fungovat jako naše obslužná rutina události, aby bylo snazší testování.
+K otestování konfigurace převzetí služeb při selhání budete potřebovat koncový bod pro příjem vašich událostí. Koncový bod není součástí vaší infrastruktury převzetí služeb při selhání, ale bude fungovat jako naše obslužná rutina události, aby bylo snazší ho testovat.
 
-Pro zjednodušení testování, nasazení [předem vytvořené webové aplikace](https://github.com/Azure-Samples/azure-event-grid-viewer) , která zobrazuje zprávy o událostech. Nasazené řešení zahrnuje plán služby App Service, webovou aplikaci App Service a zdrojový kód z GitHubu.
+Chcete-li zjednodušit testování, nasaďte [předem vytvořenou webovou aplikaci](https://github.com/Azure-Samples/azure-event-grid-viewer) , která zobrazí zprávy o událostech. Nasazené řešení zahrnuje plán služby App Service, webovou aplikaci App Service a zdrojový kód z GitHubu.
 
 1. Vyberte **Nasadit do Azure** a nasaďte řešení do svého předplatného. Na webu Azure Portal zadejte hodnoty pro parametry.
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. Dokončení nasazení může trvat několik minut. Po úspěšném nasazení si webovou aplikaci prohlédněte, abyste se ujistili, že funguje. Ve webovém prohlížeči přejděte na: `https://<your-site-name>.azurewebsites.net`
-Ujistěte se, že si tuto adresu URL, protože ji budete potřebovat později.
+Nezapomeňte tuto adresu URL poznamenat, protože ji budete potřebovat později.
 
 1. Zobrazí se web, na který se však zatím neodeslaly žádné události.
 
@@ -42,58 +42,58 @@ Ujistěte se, že si tuto adresu URL, protože ji budete potřebovat později.
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
 
-## <a name="create-your-primary-and-secondary-topics"></a>Vytvoření primárního a sekundárního témata
+## <a name="create-your-primary-and-secondary-topics"></a>Vytvoření primárních a sekundárních témat
 
-Nejprve vytvořte dvě témata služby Event Grid. Tato témata bude fungovat jako primární a sekundární. Ve výchozím nastavení budou události směrovat přes primární tématu. Pokud dojde k výpadku služby v primární oblasti, bude mít vaše sekundární.
+Nejprve vytvořte dvě Event Grid témata. Tato témata budou fungovat jako primární a sekundární. Ve výchozím nastavení budou vaše události procházet vaším primárním tématem. Pokud v primární oblasti dojde k výpadku služby, vaše sekundární převezme.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 
-1. V levém horním rohu v hlavní nabídce Azure zvolte **všechny služby** > vyhledejte **služby Event Grid** > vyberte **témata Event gridu**.
+1. V levém horním rohu hlavní nabídky Azure zvolte **všechny služby** > vyhledejte **Event Grid** > vyberte **Event Grid témata**.
 
-   ![Nabídka událostí témata mřížky](./media/custom-disaster-recovery/select-topics-menu.png)
+   ![Nabídka Event Gridch témat](./media/custom-disaster-recovery/select-topics-menu.png)
 
-    Vyberte hvězdičku vedle témata Event gridu v budoucnu přidat k nabídce prostředků pro snadnější přístup.
+    Vyberte hvězdičku vedle Event Grid témata a přidejte je do nabídky prostředků pro snadnější přístup v budoucnu.
 
-1. V nabídce témata Event Grid vyberte **+ přidat** vytvořit primární tématu.
+1. V nabídce Event Grid témata vyberte **+ Přidat** a vytvořte tak primární téma.
 
-   * Zadejte logický název tématu a přidejte "– primární" jako příponu k tomu, aby ke sledování.
-   * Toto téma oblast bude primární oblasti.
+   * Dejte tématu logický název a přidejte "-Primary" jako příponu, aby bylo snazší ho sledovat.
+   * Oblast tohoto tématu bude vaší primární oblastí.
 
-     ![Dialog vytvořit primární téma Event gridu](./media/custom-disaster-recovery/create-primary-topic.png)
+     ![Dialog Event Grid primárním vytvořením tématu](./media/custom-disaster-recovery/create-primary-topic.png)
 
-1. Po vytvoření tématu, přejděte na ni a zkopírujte **koncový bod tématu**. identifikátor URI budete potřebovat později.
+1. Po vytvoření tématu přejděte do něj a zkopírujte **koncový bod tématu**. identifikátor URI budete potřebovat později.
 
-    ![Primární téma Event gridu](./media/custom-disaster-recovery/get-primary-topic-endpoint.png)
+    ![Event Grid – primární téma](./media/custom-disaster-recovery/get-primary-topic-endpoint.png)
 
-1. Získáte přístupový klíč pro téma, které budete také potřebovat později. Klikněte na **přístupové klíče** v nabídce prostředků a zkopírujte klíč 1.
+1. Získání přístupového klíče k tématu, které budete potřebovat později. V nabídce prostředků klikněte na **přístupové klíče** a zkopírujte klíč 1.
 
-    ![Získat téma primární klíč](./media/custom-disaster-recovery/get-primary-access-key.png)
+    ![Získat klíč primárního tématu](./media/custom-disaster-recovery/get-primary-access-key.png)
 
-1. V okně tématu, klikněte na tlačítko **+ odběr události** odběr připojování vašeho odběru webu příjemce událostí jste provedli v požadavcích najdete v tomto kurzu vytvoříte.
+1. V okně tématu klikněte na **+ předplatné události** a vytvořte předplatné připojující web přijímače událostí, který jste provedli v rámci požadavků, do tohoto kurzu.
 
-   * Logický název odběru událostí a přidejte "– primární" jako příponu k tomu, aby ke sledování.
-   * Vyberte koncový bod typu Webhooku.
-   * Nastavení koncového bodu adresy URL události příjemce událostí, které by měl vypadat přibližně jako: `https://<your-event-reciever>.azurewebsites.net/api/updates`
+   * Zadejte pro odběr události logický název a přidejte "-Primary" jako příponu, aby bylo snazší ho sledovat.
+   * Vyberte typ koncového bodu Webhook.
+   * Nastavte koncový bod na adresu URL události vašeho přijímače událostí, který by měl vypadat nějak takto: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-     ![Primární událost odběru Event gridu](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Event Grid odběr primárních událostí](./media/custom-disaster-recovery/create-primary-es.png)
 
-1. Opakujte stejný tok vytvořit sekundární téma a odběr. Nahraďte tento čas "-primární" přípony s "-sekundární" pro jednodušší sledování. Nakonec se ujistěte, že jste ji vložili do jiné oblasti Azure. Přestože můžete ji umístit kamkoli chcete, je doporučeno používat [spárované oblasti Azure](../best-practices-availability-paired-regions.md). Vložení sekundární téma a odběr v jiné oblasti zajistí, že budou směrovat nové události, i v případě, že primární oblast přestane fungovat.
+1. Opakováním stejného toku Vytvořte sekundární téma a předplatné. Tentokrát pro snazší sledování Nahraďte příponu "-Primary" pomocí "-Secondary". Nakonec se ujistěte, že jste ji umístili do jiné oblasti Azure. I když ho můžete umístit kdekoli, doporučujeme používat [spárované oblasti Azure](../best-practices-availability-paired-regions.md). Vložením sekundárního tématu a předplatného do jiné oblasti zajistíte, aby se vaše nové události vytekly i v případě, že dojde k výpadku primární oblasti.
 
-Teď byste měli mít:
+Nyní byste měli mít následující:
 
-   * Na webu příjemce událostí pro testování.
-   * Primární téma ve vaší primární oblasti.
-   * Předplatné primární události připojení primární tématu na webu příjemce událostí.
+   * Web přijímače událostí pro testování.
+   * Primární téma v primární oblasti.
+   * Primární odběr událostí, který připojuje primární téma k webu přijímače událostí.
    * Sekundární téma v sekundární oblasti.
-   * Předplatné sekundární události připojení primární tématu na webu příjemce událostí.
+   * Sekundární předplatné události připojující vaše primární téma k webu přijímače událostí.
 
 ## <a name="implement-client-side-failover"></a>Implementace převzetí služeb při selhání na straně klienta
 
-Teď, když máte regionálně redundantní dvojici nastavení témat a odběrů, budete připraveni provádět převzetí služeb při selhání na straně klienta. Existuje několik způsobů, jak toho dosáhnout, ale všechny implementace převzetí služeb při selhání bude mít to běžná funkce: Pokud jedno téma již není v pořádku, provoz se přesměruje na téma.
+Teď, když máte místně redundantní dvojici témat a odběrů, jste připraveni implementovat převzetí služeb při selhání na straně klienta. Existuje několik způsobů, jak to provést, ale všechny implementace převzetí služeb při selhání budou mít společnou funkci: Pokud už jedno téma není v pořádku, provoz se přesměruje na jiné téma.
 
-### <a name="basic-client-side-implementation"></a>Základní implementaci na straně klienta
+### <a name="basic-client-side-implementation"></a>Základní implementace na straně klienta
 
-Následující ukázkový kód je jednoduchý publisher .NET, která se vždy pokusí nejprve publikovat do primární tématu. Pokud neproběhne úspěšně, dojde poté převzetí služeb při selhání sekundární tématu. V obou případech se také kontroluje stav rozhraní api tématu tímto způsobem GET na `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. V pořádku tématu by měla vždy odpovídat s **200 OK** při provedení GET na **/api/stavu** koncového bodu.
+Následující vzorový kód je jednoduchý Vydavatel .NET, který se vždycky pokusí publikovat do primárního tématu jako první. Pokud to nepomůže, bude převzetí služeb při selhání sekundárním tématem. V obou případech také kontroluje rozhraní API stavu v druhém tématu díky `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`získat na. V případě, že je na koncovém bodu **/API/Health** proveden pokus o načtení, by mělo být v pořádku vždy reagovat na **200 OK** .
 
 ```csharp
 using System;
@@ -188,27 +188,27 @@ namespace EventGridFailoverPublisher
 
 ### <a name="try-it-out"></a>Vyzkoušet
 
-Teď, když máte všechny vaše součásti na místě, můžete otestovat na implementaci převzetí služeb při selhání. Spusťte ukázku výše uvedené v aplikaci Visual Studio code nebo vašem oblíbeném prostředí. Nahraďte následující čtyři hodnoty koncových bodů a klíče z témat:
+Teď, když máte všechny vaše komponenty, můžete otestovat implementaci převzetí služeb při selhání. Spusťte výše uvedený příklad v nástroji Visual Studio Code nebo ve vašem oblíbeném prostředí. Nahraďte následující čtyři hodnoty koncovými body a klíči z těchto témat:
 
-   * primaryTopic – koncový bod pro primární tématu.
-   * secondaryTopic – koncový bod pro sekundární tématu.
-   * primaryTopicKey - key pro vaše primární téma.
-   * secondaryTopicKey – klíč pro sekundární tématu.
+   * primaryTopic – koncový bod pro primární téma.
+   * secondaryTopic – koncový bod pro sekundární téma.
+   * primaryTopicKey – klíč pro primární téma.
+   * secondaryTopicKey – klíč pro sekundární téma.
 
-Zkuste spustit zdroj události. V prohlížeči služby Event Grid jako níže, měli byste vidět události pozemního vašeho testu.
+Zkuste spustit vydavatele události. V prohlížeči Event Grid by se měly zobrazit vaše události testu jako v následujícím příkladu.
 
-![Primární událost odběru Event gridu](./media/custom-disaster-recovery/event-grid-viewer.png)
+![Event Grid odběr primárních událostí](./media/custom-disaster-recovery/event-grid-viewer.png)
 
-Pokud chcete mít jistotu, že vaše převzetí služeb při selhání funguje, můžete změnit několik znaků v klíč primárního tématu k němu už nebude platná. Zkuste znovu spustit vydavatele. Stále byste měli vidět nové události měly zobrazovat v prohlížeči vaší služby Event Grid, ale když se podíváte na konzolu, uvidíte, že jsou nyní publikují se prostřednictvím sekundární tématu.
+Pokud chcete zajistit, aby převzetí služeb při selhání fungovalo, můžete změnit několik znaků v primárním klíči tématu, aby už není platný. Zkuste spustit vydavatele znovu. V prohlížeči Event Grid se pořád zobrazují nové události, ale když se podíváte na konzolu, uvidíte, že se teď publikují prostřednictvím sekundárního tématu.
 
-### <a name="possible-extensions"></a>Je to možné rozšíření
+### <a name="possible-extensions"></a>Možná rozšíření
 
-Existuje mnoho způsobů, jak rozšířit tuto ukázku na základě vašich potřeb. U scénářů s vysokými objemy, můžete chtít pravidelně kontrolovat stav na téma api nezávisle na sobě. Tímto způsobem téma, přestanou fungovat, pokud není nutné obraťte se na každém publikování jednoho. Jakmile budete vědět, že se že na téma není v pořádku, můžete výchozí s publikováním na sekundární téma.
+Existuje mnoho způsobů, jak tuto ukázku rozšiřuje podle vašich potřeb. U scénářů s vysokým objemem můžete chtít pravidelně kontrolovat rozhraní API stavu tématu nezávisle. Tímto způsobem by se při každém publikování nemusela Tato část kontrolovat. Když víte, že téma není v pořádku, můžete ho ve výchozím nastavení publikovat do sekundárního tématu.
 
-Podobně můžete implementovat logiku navrácení služeb po obnovení na základě vašich konkrétních potřeb. Pokud publikování na nejbližší datové centrum je důležité si můžete snížit latenci, můžete pravidelně testovat stav rozhraní api, která se má převzetí služeb při selhání. Jakmile je opět v pořádku, budete vědět, že je bezpečný pro navrácení služeb po obnovení do blíže datového centra.
+Podobně můžete chtít implementovat logiku navrácení služeb po obnovení na základě konkrétních potřeb. Pokud je publikování do nejbližšího datového centra velmi důležité, abyste snížili latenci, můžete pravidelně testovat rozhraní API stavu tématu, u kterého došlo k převzetí služeb při selhání. Jakmile je opět v pořádku, budete mít jistotu, že je bezpečné navrácení služeb po obnovení do bližšího datového centra.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [příjem událostí na koncový bod http](./receive-events.md)
-- Objevte jak [směrování událostí do hybridních připojení](./custom-event-to-hybrid-connection.md)
-- Další informace o [zotavení po havárii pomocí Azure DNS a Traffic Manageru](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)
+- Informace o tom, jak [přijímat události na koncovém bodu http](./receive-events.md)
+- Zjistěte, jak [směrovat události do Hybrid Connections](./custom-event-to-hybrid-connection.md)
+- Přečtěte si o [zotavení po havárii pomocí Azure DNS a Traffic Manager](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)

@@ -1,5 +1,6 @@
 ---
-title: Přihlašovací údaje certifikátu v Azure AD | Microsoft Docs
+title: Přihlašovací údaje certifikátu v Azure AD
+titleSuffix: Microsoft identity platform
 description: Tento článek popisuje registraci a použití přihlašovacích údajů certifikátu pro ověřování aplikací.
 services: active-directory
 documentationcenter: .net
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa63a8f06b71455b7f00d2ce5842f0da851789b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1184d210f5b7ea25b9f73cbd70b5f960402126a1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835474"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803538"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Přihlašovací údaje certifikátu pro ověřování aplikací
 
@@ -34,7 +35,7 @@ Jedna forma přihlašovacích údajů, kterou může aplikace použít k ověřo
 ## <a name="assertion-format"></a>Formát kontrolního výrazu
 Chcete-li vypočítat kontrolní výraz, můžete použít jednu z mnoha knihoven [JSON web token](https://jwt.ms/) v jazyce podle vašeho výběru. Tato informace je převedená tímto tokenem:
 
-### <a name="header"></a>Záhlaví
+### <a name="header"></a>Hlavička
 
 | Parametr |  Přeznačit |
 | --- | --- |
@@ -46,14 +47,14 @@ Chcete-li vypočítat kontrolní výraz, můžete použít jednu z mnoha knihove
 
 | Parametr |  Poznámky |
 | --- | --- |
-| `aud` | Osoby By měl být  **https://login.microsoftonline.com/ *tenant_Id*/OAuth2/token** |
+| `aud` | Cílová skupina: by měla být **https://login.microsoftonline.com/*tenant_Id*/OAuth2/token** |
 | `exp` | Datum vypršení platnosti: datum vypršení platnosti tokenu. Čas je reprezentován jako počet sekund od 1. ledna 1970 (1970-01-01T0:0: 0Z) UTC až do doby, kdy platnost tokenu vyprší.|
 | `iss` | Vystavitel: by měl být client_id (ID aplikace služby klienta). |
 | `jti` | GUID: ID JWT |
 | `nbf` | Ne před: datum, před kterým se token nedá použít. Čas je reprezentován jako počet sekund od 1. ledna 1970 (1970-01-01T0:0: 0Z) UTC až do doby, kdy byl token vydán. |
-| `sub` | Předmět: Jako pro `iss`by měl být client_id (ID aplikace služby klienta). |
+| `sub` | Předmět: stejně jako u `iss`by měl být client_id (ID aplikace služby klienta). |
 
-### <a name="signature"></a>Podpis
+### <a name="signature"></a>Označení
 
 Podpis se počítá s použitím certifikátu, jak je popsáno ve [specifikaci JSON web token RFC7519 Specification](https://tools.ietf.org/html/rfc7519) .
 
@@ -100,7 +101,7 @@ Přihlašovací údaje certifikátu můžete přidružit k klientské aplikaci v
 V registraci aplikace Azure pro klientskou aplikaci:
 1. Vyberte **certifikáty & tajných**kódů. 
 2. Klikněte na **nahrát certifikát** a vyberte soubor certifikátu, který se má nahrát.
-3. Klikněte na **Přidat**.
+3. Klikněte na tlačítko **Přidat**.
   Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti. 
 
 ### <a name="updating-the-application-manifest"></a>Aktualizace manifestu aplikace
@@ -110,7 +111,7 @@ Po uložení certifikátu je potřeba vypočítat:
 - `$base64Thumbprint`, což je kódování Base64 hodnoty hash certifikátu
 - `$base64Value`, což je kódování Base64 nezpracovaných dat certifikátu
 
-Také je nutné zadat identifikátor GUID k identifikaci klíče v manifestu aplikace (`$keyId`).
+Pro identifikaci klíče v manifestu aplikace (`$keyId`) je také nutné zadat identifikátor GUID.
 
 V registraci aplikace Azure pro klientskou aplikaci:
 1. Vyberte **manifest** pro otevření manifestu aplikace.
@@ -129,8 +130,8 @@ V registraci aplikace Azure pro klientskou aplikaci:
    ```
 3. Uložte úpravy manifestu aplikace a pak nahrajte manifest do Azure AD. 
 
-   `keyCredentials` Vlastnost má více hodnot, takže můžete nahrát více certifikátů pro bohatší správu klíčů.
+   Vlastnost `keyCredentials` je vícehodnotový, takže můžete nahrát více certifikátů pro bohatší správu klíčů.
    
 ## <a name="code-sample"></a>Ukázka kódu
 
-Ukázka kódu při [ověřování ve službě Azure AD v aplikacích démon s certifikáty](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) ukazuje, jak aplikace používá vlastní přihlašovací údaje pro ověřování. Také ukazuje, jak můžete [vytvořit certifikát podepsaný svým držitelem](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) pomocí `New-SelfSignedCertificate` příkazu PowerShellu. Můžete také využít a použít [skripty pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) k vytvoření certifikátů, výpočtů kryptografických otisků a tak dále.
+Ukázka kódu při [ověřování ve službě Azure AD v aplikacích démon s certifikáty](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) ukazuje, jak aplikace používá vlastní přihlašovací údaje pro ověřování. Také ukazuje, jak můžete [vytvořit certifikát podepsaný svým držitelem](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) pomocí příkazu `New-SelfSignedCertificate` PowerShellu. Můžete také využít a použít [skripty pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) k vytvoření certifikátů, výpočtů kryptografických otisků a tak dále.

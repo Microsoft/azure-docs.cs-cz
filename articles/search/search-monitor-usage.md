@@ -1,24 +1,24 @@
 ---
-title: Monitorování využití prostředků a metrik dotazů pro vyhledávací službu – Azure Search
-description: Povolte protokolování, Získejte metriky aktivity dotazů, využití prostředků a další systémová data z Azure Search služby.
-author: HeidiSteen
+title: Monitorování využití prostředků a metrik dotazů
+titleSuffix: Azure Cognitive Search
+description: Povolte protokolování, Získejte metriky aktivity dotazů, využití prostředků a další systémová data ze služby Azure Kognitivní hledání.
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/16/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+tags: azure-portal
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72331213"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793492"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorovat spotřebu prostředků a aktivity dotazů v Azure Search
+# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Sledování využití prostředků a aktivity dotazů v Azure Kognitivní hledání
 
-Na stránce Přehled služby Azure Search můžete zobrazit systémová data o využití prostředků, metrikách dotazů a velikosti dostupné kvóty k vytvoření dalších indexů, indexerů a zdrojů dat. Portál můžete použít také ke konfiguraci Log Analytics nebo jiného prostředku, který se používá pro trvalé shromažďování dat. 
+Na stránce Přehled služby Azure Kognitivní hledání můžete zobrazit systémová data o využití prostředků, metrikách dotazů a velikosti dostupné kvóty k vytvoření dalších indexů, indexerů a zdrojů dat. Portál můžete použít také ke konfiguraci Log Analytics nebo jiného prostředku, který se používá pro trvalé shromažďování dat. 
 
 Nastavení protokolů je užitečné pro samoobslužnou diagnostiku a zachovávání provozní historie. Interně protokoly existují v back-endu po krátkou dobu, postačující pro šetření a analýzu, pokud zadáte lístek podpory. Pokud chcete mít kontrolu nad a přistupovat k informacím protokolu, měli byste nastavit jedno z řešení popsaných v tomto článku.
 
@@ -52,7 +52,7 @@ Pro úlohy v rámci služby, jako je vytvoření indexu nebo odstranění zdroje
 
 ## <a name="add-on-monitoring-solutions"></a>Řešení monitorování doplňku
 
-Azure Search neukládá žádná data mimo objekty, které spravuje, což znamená, že data protokolu musí být ukládána externě. V případě, že chcete zachovat data protokolu, můžete nakonfigurovat kterýkoli z níže uvedených prostředků. 
+Azure Kognitivní hledání neukládá žádná data nad objekty, které spravuje, což znamená, že data protokolu se musí ukládat externě. V případě, že chcete zachovat data protokolu, můžete nakonfigurovat kterýkoli z níže uvedených prostředků. 
 
 V následující tabulce jsou porovnávány možnosti pro ukládání protokolů a přidání podrobného monitorování operací služby a úloh dotazů prostřednictvím Application Insights.
 
@@ -64,17 +64,17 @@ V následující tabulce jsou porovnávány možnosti pro ukládání protokolů
 
 Protokoly Azure Monitor a BLOB Storage jsou k dispozici jako bezplatná služba, takže si ji můžete vyzkoušet bez poplatků za dobu života předplatného Azure. Application Insights se zaregistrovat a použít, pokud je velikost dat aplikace za určitých mezí (podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/) ).
 
-V další části se seznámíte s postupem povolení a používání úložiště objektů BLOB v Azure ke shromažďování a přístupu k datům protokolu vytvořeným pomocí operací Azure Search.
+V další části se seznámíte s postupem povolení a používání úložiště objektů BLOB v Azure ke shromažďování a přístupu k datům protokolu vytvořeným operacemi Azure Kognitivní hledání.
 
 ## <a name="enable-logging"></a>Povolit protokolování
 
-Protokolování pro indexování a úlohy dotazů je ve výchozím nastavení vypnuté a závisí na řešeních doplňku pro infrastrukturu protokolování a dlouhodobém externím úložišti. Sám o sobě platí, že jediná trvalá data v Azure Search jsou objekty, které vytváří a spravují, takže protokoly se musí ukládat jinde.
+Protokolování pro indexování a úlohy dotazů je ve výchozím nastavení vypnuté a závisí na řešeních doplňku pro infrastrukturu protokolování a dlouhodobém externím úložišti. Sám o sobě platí, že jediná trvalá data ve službě Azure Kognitivní hledání jsou objekty, které vytváří a spravují, takže protokoly se musí ukládat jinde.
 
 V této části se dozvíte, jak používat úložiště objektů BLOB k ukládání protokolovaných událostí a dat metrik.
 
-1. [Vytvořte účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , pokud ho ještě nemáte. Můžete ji umístit do stejné skupiny prostředků, jako je Azure Search, aby se zjednodušilo pozdější vyčištění, pokud chcete odstranit všechny prostředky používané v tomto cvičení.
+1. [Vytvořte účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , pokud ho ještě nemáte. Můžete ji umístit do stejné skupiny prostředků, jako je Azure Kognitivní hledání, aby se zjednodušilo pozdější vyčištění, pokud chcete odstranit všechny prostředky používané v tomto cvičení.
 
-   Váš účet úložiště musí existovat ve stejné oblasti jako Azure Search.
+   Váš účet úložiště musí existovat ve stejné oblasti jako Azure Kognitivní hledání.
 
 2. Otevřete stránku Přehled vyhledávací služby. V levém navigačním podokně přejděte dolů na **sledování** a klikněte na **Povolit monitorování**.
 
@@ -158,14 +158,14 @@ K zobrazení souboru protokolu můžete použít libovolný editor JSON. Pokud h
 
 1. V Azure Portal otevřete svůj účet úložiště. 
 
-2. V levém navigačním podokně klikněte na **objekty blob**. Měli byste vidět **Insights-logs-operationlogs** a **Insights – metriky – pt1m**. Tyto kontejnery vytvoří Azure Search, když se data protokolu exportují do úložiště objektů BLOB.
+2. V levém navigačním podokně klikněte na **objekty blob**. Měli byste vidět **Insights-logs-operationlogs** a **Insights – metriky – pt1m**. Tyto kontejnery vytvoří služba Azure Kognitivní hledání, když se data protokolu exportují do úložiště objektů BLOB.
 
 3. Klikněte na hierarchii složek dolů, dokud nedosáhnete souboru. JSON.  K stažení souboru použijte kontextovou nabídku.
 
 Po stažení souboru ho otevřete v editoru JSON, abyste mohli zobrazit jeho obsah.
 
 ## <a name="use-system-apis"></a>Použití systémových rozhraní API
-REST API Azure Search a .NET SDK poskytují programový přístup k metrikám služeb, indexům a informacím indexeru a počtům dokumentů.
+REST API Kognitivní hledání Azure i .NET SDK poskytují programový přístup k metrikám služeb, indexům a informacím indexeru a počtům dokumentů.
 
 * [Získat statistiku služeb](/rest/api/searchservice/get-service-statistics)
 * [Získat statistiku indexu](/rest/api/searchservice/get-index-statistics)

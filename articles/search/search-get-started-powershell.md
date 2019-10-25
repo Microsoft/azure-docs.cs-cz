@@ -1,22 +1,22 @@
 ---
-title: 'Rychlý start: Vytvoření indexu vyhledávání v PowerShellu pomocí rozhraní REST API – Azure Search'
-description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí rutiny Invoke-RestMethod prostředí PowerShell a REST API Azure Search.
-ms.date: 09/10/2019
-author: heidisteen
+title: 'Rychlý Start: vytvoření indexu vyhledávání v PowerShellu pomocí rozhraní REST API'
+titleSuffix: Azure Cognitive Search
+description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí PowerShellu Invoke-RestMethod a REST API Azure Kognitivní hledání.
 manager: nitinme
+author: heidisteen
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.openlocfilehash: ab82406fa151f5889a563d8154e02da921f1c4e6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: e9b2b8e8b3585bc747efb5b2916ddf1fe07d3645
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881718"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792255"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Rychlý start: Vytvoření indexu Azure Search v PowerShellu pomocí rozhraní REST API
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Rychlý Start: vytvoření indexu Azure Kognitivní hledání v PowerShellu pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,31 +25,31 @@ ms.locfileid: "70881718"
 > * [Azure Portal](search-create-index-portal.md)
 > 
 
-Tento článek vás provede procesem vytvoření, načtení a dotazování indexu Azure Search pomocí prostředí PowerShell a [rozhraní API pro Azure Search REST](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak interaktivně spustit příkazy prostředí PowerShell. Případně můžete [Stáhnout a spustit skript prostředí PowerShell](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , který provede stejné operace.
+Tento článek vás provede procesem vytvoření, načtení a dotazování indexu služby Azure Kognitivní hledání pomocí prostředí PowerShell a [rozhraní REST API azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak interaktivně spustit příkazy prostředí PowerShell. Případně můžete [Stáhnout a spustit skript prostředí PowerShell](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , který provede stejné operace.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
-+ [PowerShell 5,1 nebo novější](https://github.com/PowerShell/PowerShell), pomocí rutiny [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) pro sekvenční a interaktivní kroky.
++ [PowerShell 5,1 nebo novější, pomocí rutiny](https://github.com/PowerShell/PowerShell) [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) pro sekvenční a interaktivní kroky.
 
-+ [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
++ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
 ## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-2. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![Získání koncového bodu http a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu http a přístupového klíče")
+![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-## <a name="connect-to-azure-search"></a>Připojení k Azure Search
+## <a name="connect-to-azure-cognitive-search"></a>Připojení k Azure Kognitivní hledání
 
 1. V PowerShellu vytvořte objekt **$Headers** pro uložení typu obsahu a klíče rozhraní API. Nahraďte klíč rozhraní API pro správu (klíč-správce-API-KEY) klíčem, který je platný pro vaši vyhledávací službu. Tuto hlavičku musíte nastavit jenom jednou po dobu trvání relace, ale přidáte ji do každé žádosti. 
 
@@ -183,7 +183,7 @@ K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy 
 
 1. Vložte tento příklad do PowerShellu a vytvořte objekt **$body** obsahující dokumenty, které chcete nahrát. 
 
-    Tato žádost obsahuje dva úplné a jeden částečný záznam. Částečný záznam ukazuje, že můžete nahrávat nedokončené dokumenty. `@search.action` Parametr určuje, jak je indexování provedeno. Platné hodnoty zahrnují nahrávání, sloučení, mergeOrUpload a odstranění. Chování mergeOrUpload buď vytvoří nový dokument pro hotelId = 3, nebo aktualizuje obsah, pokud již existuje.
+    Tato žádost obsahuje dva úplné a jeden částečný záznam. Částečný záznam ukazuje, že můžete nahrávat nedokončené dokumenty. Parametr `@search.action` určuje, jak je indexování provedeno. Platné hodnoty zahrnují nahrávání, sloučení, mergeOrUpload a odstranění. Chování mergeOrUpload buď vytvoří nový dokument pro hotelId = 3, nebo aktualizuje obsah, pokud již existuje.
 
     ```powershell
     $body = @"
@@ -319,11 +319,11 @@ K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy 
 
 V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [rozhraní API pro hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-Nezapomeňte použít jednoduché uvozovky při hledání $urls. Řetězce dotazů obsahují **$** znaky a je možné je vynechat, pokud je celý řetězec uzavřen v jednoduchých uvozovkách.
+Nezapomeňte použít jednoduché uvozovky při hledání $urls. Řetězce dotazu zahrnují **$** znaky a můžete je vynechat, pokud je celý řetězec uzavřen v jednoduchých uvozovkách.
 
 1. Nastavte koncový bod do kolekce dokumentů pro *rychlé zprovoznění hotelů* a přidejte parametr **hledání** , který se bude předávat v řetězci dotazu. 
   
-   Tento řetězec spustí prázdné hledání (Search = *) a vrátí Neseřazený seznam (skóre hledání = 1,0) libovolných dokumentů. Ve výchozím nastavení Azure Search vrátí 50 shod v čase. Jako strukturovaný tento dotaz vrátí celou strukturu dokumentů a hodnot. Přidejte **$Count = true** pro získání počtu všech dokumentů ve výsledcích.
+   Tento řetězec spustí prázdné hledání (Search = *) a vrátí Neseřazený seznam (skóre hledání = 1,0) libovolných dokumentů. Ve výchozím nastavení Azure Kognitivní hledání vrátí 50 shod v čase. Jako strukturovaný tento dotaz vrátí celou strukturu dokumentů a hodnot. Přidejte **$Count = true** pro získání počtu všech dokumentů ve výsledcích.
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
@@ -399,9 +399,9 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny pr
 
 Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste pomocí PowerShellu procházeli základní pracovní postup pro vytváření a přístup k obsahu v Azure Search. V případě konceptů doporučujeme přejít k pokročilejším scénářům, jako je například indexování ze zdrojů dat Azure;
+V tomto rychlém startu jste pomocí PowerShellu procházeli základní pracovní postup pro vytváření a přístup k obsahu v Azure Kognitivní hledání. V případě konceptů doporučujeme přejít k pokročilejším scénářům, jako je například indexování ze zdrojů dat Azure;
 
 > [!div class="nextstepaction"]
-> [Kurz REST: Indexujte a prohledejte částečně strukturovaná data (bloby JSON) v Azure Search](search-semi-structured-data.md)
+> [Kurz REST: indexování a hledání částečně strukturovaných dat (blobů JSON) v Azure Kognitivní hledání](search-semi-structured-data.md)

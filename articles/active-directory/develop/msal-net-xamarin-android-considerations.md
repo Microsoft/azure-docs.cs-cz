@@ -1,5 +1,6 @@
 ---
-title: Předpoklady pro Xamarin Android (Microsoft Authentication Library pro .NET) | Azure
+title: Předpoklady pro Xamarin Android (Microsoft Authentication Library pro .NET)
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních doporučeních pro použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 465902cf6ef6db1d867f7cc986da8c9e06e4fbbf
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2d6af9753887ffa593a44fba9faa3376066417a8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532467"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802646"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Doporučení pro Xamarin Android týkající se MSAL.NET
 Tento článek popisuje konkrétní informace týkající se použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
@@ -46,7 +47,7 @@ var pca = PublicClientApplicationBuilder
   .Build();
 ```
 
-Doporučením je použít CurrentActivityPlugin. [](https://github.com/jamesmontemagno/CurrentActivityPlugin)  Váš kód tvůrce PublicClientApplication by pak vypadal takto:
+Doporučením je [použít CurrentActivityPlugin.](https://github.com/jamesmontemagno/CurrentActivityPlugin)  Váš kód tvůrce PublicClientApplication by pak vypadal takto:
 
 ```CSharp
 // Requires MSAL.NET 4.2 or above
@@ -58,7 +59,7 @@ var pca = PublicClientApplicationBuilder
 
 
 ## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>Zajistěte, aby se řízení vrátilo zpátky na MSAL, jakmile skončí interaktivní část toku ověřování.
-V systému Android je nutné přepsat `OnActivityResult` metodu `Activity` a voláním metody SetAuthenticationContinuationEventArgs třídy MSAL AuthenticationContinuationHelper.
+V systému Android je nutné přepsat metodu `OnActivityResult` `Activity` a volat metodu SetAuthenticationContinuationEventArgs třídy MSAL AuthenticationContinuationHelper.
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -74,7 +75,7 @@ protected override void OnActivityResult(int requestCode,
 Tento řádek zajistí, že se ovládací prvek vrátí zpět na MSAL, jakmile se dokončí interaktivní část toku ověřování.
 
 ## <a name="update-the-android-manifest"></a>Aktualizace manifestu pro Android
-`AndroidManifest.xml` Měl by obsahovat následující hodnoty:
+`AndroidManifest.xml` by měl obsahovat následující hodnoty:
 ```csharp
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -113,9 +114,9 @@ Chcete-li tyto problémy vyřešit, měli byste:
 - Případně, pokud vytváříte z příkazového řádku, zkuste z příkazu odebrat/m, pokud ho používáte.
 
 
-### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Chyba: Název ' AuthenticationContinuationHelper ' v aktuálním kontextu neexistuje.
+### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Chyba: název AuthenticationContinuationHelper neexistuje v aktuálním kontextu.
 
-To je pravděpodobně proto, že Visual Studio neaktualizovalo správně soubor Android. csproj *. **V\<některých případech cestu >** FilePath nesprávně obsahuje netstandard13 namísto **monoandroid90**.
+To je pravděpodobně proto, že Visual Studio neaktualizovalo správně soubor Android. csproj *. Někdy **\<cestu >** FilePath nesprávně obsahuje netstandard13 namísto **monoandroid90**.
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,
@@ -124,7 +125,7 @@ To je pravděpodobně proto, že Visual Studio neaktualizovalo správně soubor 
 </Reference>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další podrobnosti a ukázky najdete v článku o [specifických informacích pro Android](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) v následujícím souboru Readme.MD ukázky:
 
