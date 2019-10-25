@@ -1,10 +1,9 @@
 ---
-title: Jak používat fronty služby Azure Service Bus v Node.js – azure/service-bus | Dokumentace Microsoftu
-description: Zjistěte, jak používat fronty Service Bus v Azure z aplikace Node.js.
+title: Jak používat fronty Azure/Service-Bus v Node. js
+description: Naučte se používat fronty Service Bus v Azure z aplikace Node. js pomocí balíčku Azure/Service-Bus.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
 ms.service: service-bus-messaging
@@ -12,42 +11,42 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 10/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 7aacefde9c037fcce64d9256e35082eb04e0a2f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58049855cc27d51134b9f76a773f32f49c6381b6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65988354"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790312"
 ---
-# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Jak používat fronty služby Service Bus pomocí Node.js a balíček azure/service-bus
-> [!div class="op_multi_selector" title1="Programovací jazyk" title2="Node.js balíčku"]
-> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
+# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Použití front Service Bus s Node. js a balíčkem Azure/Service-Bus
+> [!div class="op_multi_selector" title1="Programovací jazyk" title2="Manageru balíček s Node. js"]
+> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
+> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
-V tomto kurzu se dozvíte, jak psát Nodejs programu pro odesílání a příjem zpráv z fronty Service Bus pomocí nového [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) balíčku. Tento balíček používá rychlejší [protokolu AMQP 1.0](service-bus-amqp-overview.md) vzhledem k tomu starší [azure-sb](https://www.npmjs.com/package/azure-sb) balíček použitý [rozhraní API REST pro Service Bus za běhu](/rest/api/servicebus/service-bus-runtime-rest). Ukázky jsou napsané v jazyce JavaScript.
+V tomto kurzu se naučíte psát program NodeJS, který odesílá zprávy do fronty Service Bus a přijímá je pomocí nového balíčku [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Tento balíček používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md) , zatímco starší balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používaný [Service Bus rozhraní API pro běh REST](/rest/api/servicebus/service-bus-runtime-rest). Ukázky jsou napsány v jazyce JavaScript.
 
-## <a name="prerequisites"></a>Požadavky
-- Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Pokud nemáte k dispozici pro práci s frontou, postupujte podle kroků v [použijte Azure portal můžete vytvořit frontu služby Service Bus](service-bus-quickstart-portal.md) článku můžete vytvořit frontu. Poznamenejte si připojovací řetězec pro vaši instanci služby Service Bus a název fronty, kterou jste vytvořili. Použijeme tyto hodnoty ve vzorcích.
+## <a name="prerequisites"></a>Předpoklady
+- Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) . Poznamenejte si připojovací řetězec pro vaši instanci Service Bus a název fronty, kterou jste vytvořili. Tyto hodnoty použijeme v ukázkách.
 
 > [!NOTE]
-> - Tento kurz pracuje s ukázkami, které můžete zkopírovat a spustit pomocí [Nodejs](https://nodejs.org/). Pokyny o tom, jak vytvořit aplikaci v Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na web Azure](../app-service/app-service-web-get-started-nodejs.md), nebo [Node.js cloudové službě pomocí Windows Powershellu](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
-> - Nové [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) balíček nepodporuje vytváření front ještě. Použijte prosím [ @azure/arm-servicebus ](https://www.npmjs.com/package/@azure/arm-servicebus) balíček, pokud chcete prostřednictvím kódu programu vytvořit.
+> - Tento kurz funguje s ukázkami, které můžete zkopírovat a spustit pomocí [NodeJS](https://nodejs.org/). Pokyny k vytvoření aplikace Node. js najdete v tématu [Vytvoření a nasazení aplikace Node. js na web Azure](../app-service/app-service-web-get-started-nodejs.md)nebo [cloudovou službu Node. js pomocí prostředí Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - Nový [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíček ještě nepodporuje vytváření front. Pokud je chcete programově vytvořit, použijte prosím balíček [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) .
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Instalace balíčku pomocí Node Package Manageru (NPM)
-Instalace balíčku npm služby Service Bus, otevřete příkazový řádek, který má `npm` v cestě, změňte adresář na složku, ve kterém chcete mít vašich ukázek a spusťte tento příkaz.
+Chcete-li nainstalovat balíček npm pro Service Bus, otevřete příkazový řádek, který má v cestě `npm`, změňte adresář na složku, ve které chcete mít ukázky, a pak spusťte tento příkaz.
 
 ```bash
 npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Zasílání zpráv do fronty
-Interakce se službou Service Bus fronty začíná vytvoření instance [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) třídy a použít ho k vytvoření instance [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) třídy. Jakmile budete mít klienta fronty, můžete vytvořit odesílatele a použijte buď [odeslat](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) nebo [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) metodu na ni odesílání zpráv.
+Interakce s Service Bus frontou začíná vytvořením instance třídy [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) a jejím použitím k vytvoření instance třídy [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) . Jakmile budete mít klienta front, můžete vytvořit odesílatele a k odesílání zpráv použít buď metodu [Send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) , nebo [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) .
 
-1. Otevřete oblíbeného editoru, jako například [Visual Studio Code](https://code.visualstudio.com/)
-2. Vytvořte soubor s názvem `send.js` a vložte níže uvedeného kódu do něj. Tento kód odešle 10 zpráv do fronty.
+1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com/)
+2. Vytvořte soubor s názvem `send.js` a vložte do něj následující kód. Tento kód pošle do fronty 10 zpráv.
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
@@ -84,20 +83,20 @@ Interakce se službou Service Bus fronty začíná vytvoření instance [Service
       console.log("Error occurred: ", err);
     });
     ```
-3. Zadejte připojovací řetězec a název vaší fronty ve výše uvedeném kódu.
-4. Pak spusťte příkaz `node send.js` v příkazovém řádku a spusťte tento soubor.
+3. Do výše uvedeného kódu zadejte připojovací řetězec a název vaší fronty.
+4. Pak spusťte příkaz `node send.js` na příkazovém řádku, aby se tento soubor spustil.
 
-Blahopřejeme! Jste právě odeslali zprávy do fronty služby Service Bus.
+Blahopřejeme! Právě jste odeslali zprávy do fronty Service Bus.
 
-Zprávy mají některými standardní vlastnostmi, třeba `label` a `messageId` , kterou můžete nastavit při odesílání. Pokud chcete nastavit všechny vlastní vlastnosti, použijte `userProperties`, což je objekt json, který může obsahovat páry klíč hodnota vaše vlastní data.
+Zprávy mají některé standardní vlastnosti, například `label` a `messageId`, které můžete nastavit při odesílání. Pokud chcete nastavit libovolné vlastní vlastnosti, použijte `userProperties`, což je objekt JSON, který může uchovávat páry klíč-hodnota vašich vlastních dat.
 
-Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Neexistuje žádné omezení na počet zpráv držených ve frontě, ale celková velikost zpráv držených ve frontě je limitu. Velikost fronty se definuje při vytvoření, maximální limit je 5 GB. Další informace o kvótách najdete v tématu [kvótách služby Service Bus](service-bus-quotas.md).
+Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Počet zpráv držených ve frontě není nijak omezený, ale celková velikost zpráv držených ve frontě je příliš velká. Velikost fronty se definuje při vytvoření, maximální limit je 5 GB. Další informace o kvótách najdete v tématu [Service Bus kvóty](service-bus-quotas.md).
 
-## <a name="receive-messages-from-a-queue"></a>Příjem zpráv z fronty
-Interakce se službou Service Bus fronty začíná vytvoření instance [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) třídy a použít ho k vytvoření instance [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) třídy. Jakmile budete mít klienta fronty, můžete vytvořit příjemce a použijte buď [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) nebo [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metoda ji pro příjem zpráv.
+## <a name="receive-messages-from-a-queue"></a>Přijímání zpráv z fronty
+Interakce s Service Bus frontou začíná vytvořením instance třídy [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) a jejím použitím k vytvoření instance třídy [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) . Jakmile budete mít klienta front, můžete vytvořit přijímač a použít buď metodu [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) nebo [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) , pro příjem zpráv.
 
-1. Otevřete oblíbeného editoru, jako například [Visual Studio Code](https://code.visualstudio.com/)
-2. Vytvořte soubor s názvem `recieve.js` a vložte níže uvedeného kódu do něj. Tento kód se pokusí o 10 zpráv z fronty. Skutečný počet, který jste dostali závisí na počtu zpráv ve frontě a latenci.
+1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com/)
+2. Vytvořte soubor s názvem `recieve.js` a vložte do něj následující kód. Tento kód se pokusí přijmout 10 zpráv z fronty. Skutečný počet, který obdržíte, závisí na počtu zpráv ve frontě a na latenci sítě.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -109,7 +108,7 @@ Interakce se službou Service Bus fronty začíná vytvoření instance [Service
     async function main(){
       const sbClient = ServiceBusClient.createFromConnectionString(connectionString); 
       const queueClient = sbClient.createQueueClient(queueName);
-      const receiver = queueClient.createReceiver(ReceiveMode.ReceiveAndDelete);
+      const receiver = queueClient.createReceiver(ReceiveMode.receiveAndDelete);
       try {
         const messages = await receiver.receiveMessages(10)
         console.log("Received messages:");
@@ -125,19 +124,19 @@ Interakce se službou Service Bus fronty začíná vytvoření instance [Service
       console.log("Error occurred: ", err);
     });
     ```
-3. Zadejte připojovací řetězec a název vaší fronty ve výše uvedeném kódu.
-4. Pak spusťte příkaz `node receiveMessages.js` v příkazovém řádku a spusťte tento soubor.
+3. Do výše uvedeného kódu zadejte připojovací řetězec a název vaší fronty.
+4. Pak spusťte příkaz `node receiveMessages.js` na příkazovém řádku, aby se tento soubor spustil.
 
-Blahopřejeme! Právě obdrželi zprávy z fronty Service Bus.
+Blahopřejeme! Právě jste přijali zprávy z fronty Service Bus.
 
-[CreateReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) metoda přijímá `ReceiveMode` což je výčet s hodnotami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) a [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Nezapomeňte [vyrovnat vaše zprávy](message-transfers-locks-settlement.md#settling-receive-operations) používáte `PeekLock` režimu pomocí některé z `complete()`, `abandon()`, `defer()`, nebo `deadletter()` metody ve zprávě.
+Metoda [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) přebírá v `ReceiveMode`, což je výčet s hodnotami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) a [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Nezapomeňte [vyrovnávat zprávy](message-transfers-locks-settlement.md#settling-receive-operations) , pokud použijete režim `PeekLock` pomocí kterékoli z metod `complete()`, `abandon()`, `defer()` nebo `deadletter()` ve zprávě.
 
 > [!NOTE]
-> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
-## <a name="next-steps"></a>Další postup
-Další informace naleznete v následujících zdrojích.
+## <a name="next-steps"></a>Další kroky
+Další informace najdete v následujících zdrojích informací.
 - [Fronty, témata a odběry](service-bus-queues-topics-subscriptions.md)
-- Podívejte se na další [Nodejs ukázky pro Service Bus na Githubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
+- Rezervace dalších [ukázek NodeJS pro Service Bus na GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Středisko pro vývojáře Node.js](https://azure.microsoft.com/develop/nodejs/)
 

@@ -1,5 +1,6 @@
 ---
-title: Konfigurace jednotného přihlašování v macOS a iOS | Platforma Microsoft identity
+title: Konfigurace jednotného přihlašování v macOS a iOS
+titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování (SSO) na macOS a iOS.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a407b57a380d059703383b02e37decb8761786f4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b43319f3a456c7ea56ee3c6d5b3f9a1a4526bbe0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268931"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802490"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>Postup: Konfigurace jednotného přihlašování v macOS a iOS
+# <a name="how-to-configure-sso-on-macos-and-ios"></a>Postupy: Konfigurace jednotného přihlašování v macOS a iOS
 
 Knihovna Microsoft Authentication Library (MSAL) pro macOS a iOS podporuje jednotné přihlašování (SSO) mezi aplikacemi pro macOS/iOS a prohlížeči. Tento článek se zabývá následujícími scénáři jednotného přihlašování:
 
@@ -69,9 +70,9 @@ Pokud chcete povolit jednotné přihlašování napříč vašimi aplikacemi, mu
 
 Aby mohla aplikace od Microsoftu zjistit, které aplikace můžou tyto tokeny sdílet, musí tyto aplikace sdílet stejné ID klienta nebo ID aplikace. Toto je jedinečný identifikátor, který vám byl poskytnut při registraci první aplikace na portálu.
 
-Způsob, jakým Microsoft Identity Platform oznamuje aplikacím, které používají stejné ID aplikace, je pomocí **identifikátorů URI pro přesměrování**. Každá aplikace může obsahovat více identifikátorů URI pro přesměrování v portálu pro registraci. Každá aplikace v sadě bude mít jiný identifikátor URI pro přesměrování. Příklad:
+Způsob, jakým Microsoft Identity Platform oznamuje aplikacím, které používají stejné ID aplikace, je pomocí **identifikátorů URI pro přesměrování**. Každá aplikace může obsahovat více identifikátorů URI pro přesměrování v portálu pro registraci. Každá aplikace v sadě bude mít jiný identifikátor URI pro přesměrování. Například:
 
-Identifikátor URI pro přesměrování app1: `msauth.com.contoso.mytestapp1://auth`Identifikátor URI pro přesměrování app2: `msauth.com.contoso.mytestapp2://auth`Identifikátor URI pro přesměrování APP3:`msauth.com.contoso.mytestapp3://auth`
+Identifikátor URI pro přesměrování app1: `msauth.com.contoso.mytestapp1://auth` app2 URI pro přesměrování: `msauth.com.contoso.mytestapp2://auth` APP3 URI pro přesměrování: `msauth.com.contoso.mytestapp3://auth`
 
 > [!IMPORTANT]
 > Formát identifikátorů URI pro přesměrování musí být kompatibilní s formátem, který podporuje MSAL, který je popsán v části [požadavky formátu identifikátoru URI přesměrování MSAL](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
@@ -80,7 +81,7 @@ Identifikátor URI pro přesměrování app1: `msauth.com.contoso.mytestapp1://a
 
 Pokud chcete povolit sdílení řetězce klíčů, podívejte se do článku věnovaném [Přidání schopností](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) společnosti Apple. Důležité je, abyste se rozhodli, co chcete volat do řetězce klíčů, a přidat tuto možnost do všech aplikací, které budou součástí jednotného přihlašování.
 
-Pokud máte oprávnění nastavené správně, zobrazí se v adresáři projektu `entitlements.plist` soubor, který obsahuje něco podobného jako v tomto příkladu:
+Pokud máte oprávnění nastavené správně, zobrazí se soubor `entitlements.plist` v adresáři projektu, který obsahuje něco podobného jako v tomto příkladu:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -96,7 +97,7 @@ Pokud máte oprávnění nastavené správně, zobrazí se v adresáři projektu
 </plist>
 ```
 
-Jakmile budete mít v každé aplikaci povolený nárok na řetězec řetězce klíčů a jste připraveni použít jednotné přihlašování, nakonfigurujte `MSALPublicClientApplication` pomocí přístupové skupiny pro řetězce klíčů jako v následujícím příkladu:
+Jakmile budete mít v každé aplikaci povolený nárok na řetězce klíčů a jste připraveni použít jednotné přihlašování, nakonfigurujte `MSALPublicClientApplication` pomocí přístupové skupiny pro řetězce klíčů jako v následujícím příkladu:
 
 Cíl-C:
 
@@ -108,7 +109,7 @@ configuration.cacheConfig.keychainSharingGroup = @"my.keychain.group";
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:configuration error:&error];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
@@ -137,7 +138,7 @@ MSAL poskytuje podporu pro zprostředkované ověřování pomocí Microsoft Aut
 
 Následující postup slouží k povolení jednotného přihlašování pomocí zprostředkovatele ověřování pro vaši aplikaci:
 
-1. Zaregistrujte formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem pro aplikaci v souboru info. plist vaší aplikace. Formát identifikátoru URI přesměrování kompatibilního `msauth.<app.bundle.id>://auth`s zprostředkovatelem je. Nahraďte ' < App. sada. ID > ' ' s ID sady prostředků vaší aplikace. Příklad:
+1. Zaregistrujte formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem pro aplikaci v souboru info. plist vaší aplikace. Formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem je `msauth.<app.bundle.id>://auth`. Nahraďte ' < App. sada. ID > ' ' s ID sady prostředků vaší aplikace. Například:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -146,7 +147,7 @@ Následující postup slouží k povolení jednotného přihlašování pomocí 
     </array>
     ```
 
-1. Do souboru info. plist `LSApplicationQueriesSchemes`vaší aplikace přidejte následující schémata:
+1. Do souboru info. plist vaší aplikace přidejte následující schémata `LSApplicationQueriesSchemes`:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -156,7 +157,7 @@ Následující postup slouží k povolení jednotného přihlašování pomocí 
     </array>
     ```
 
-1. Přidejte do `AppDelegate.m` souboru následující soubor pro zpracování zpětných volání:
+1. Přidejte následující do souboru `AppDelegate.m` pro zpracování zpětných volání:
 
     Cíl-C:
     
@@ -167,7 +168,7 @@ Následující postup slouží k povolení jednotného přihlašování pomocí 
     }
     ```
     
-    Swift:
+    SWIFT
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -175,7 +176,7 @@ Následující postup slouží k povolení jednotného přihlašování pomocí 
     }
     ```
     
-**Pokud používáte Xcode 11**, měli byste místo toho umístit MSAL zpět do `SceneDelegate` souboru.
+**Pokud používáte Xcode 11**, měli byste místo toho umístit MSAL zpět do souboru `SceneDelegate`.
 Pokud podporujete UISceneDelegate i UIApplicationDelegate pro zajištění kompatibility se staršími systémy iOS, je nutné MSAL zpětné volání umístit do obou souborů.
 
 Cíl-C:
@@ -191,7 +192,7 @@ Cíl-C:
  }
 ```
 
-Swift:
+SWIFT
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

@@ -1,5 +1,6 @@
 ---
 title: Omezení aplikace zaregistrované v Azure Active Directory pro sadu uživatelů
+titleSuffix: Microsoft identity platform
 description: Naučte se, jak omezit přístup k aplikacím registrovaným ve službě Azure AD na vybranou skupinu uživatelů.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +18,14 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51c49633e68fdc5f9afd4bf0205adaa625940ff
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: c768730a00d424333e735bb4f6a385d294f38513
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812972"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803950"
 ---
-# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Postup: Omezení aplikace na sadu uživatelů
+# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Postupy: omezení aplikace na sadu uživatelů
 
 Aplikace zaregistrované v tenantovi Azure Active Directory (Azure AD) jsou ve výchozím nastavení dostupné všem uživatelům tenanta, kteří se úspěšně ověřují.
 
@@ -69,7 +70,7 @@ Existují dva způsoby, jak vytvořit aplikaci s povoleným přiřazením uživa
 1. Vyhledejte nastavení **přiřazení uživatele požadované?** a nastavte ho na **Ano**. Pokud je tato možnost nastavená na **hodnotu Ano**, uživatelé se musí nejdřív přiřadit k této aplikaci dřív, než k nim budou mít přístup.
 1. Vyberte **Uložit** a uložte tuto změnu konfigurace.
 
-### <a name="app-registration"></a>Registrace aplikace
+### <a name="app-registration"></a>Registrace aplikací
 
 1. Přejít na [**Azure Portal**](https://portal.azure.com/).
 1. V horním panelu vyberte přihlášený účet. 

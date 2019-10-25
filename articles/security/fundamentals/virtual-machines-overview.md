@@ -4,7 +4,7 @@ description: Tento článek obsahuje přehled základních funkcí zabezpečení
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828557"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792622"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure Virtual Machines
 Tento článek obsahuje přehled základních funkcí zabezpečení Azure, které je možné používat s virtuálními počítači.
@@ -45,22 +45,10 @@ Microsoft Antimalware pro Azure Cloud Services a Virtual Machines je schopnost o
 
 Microsoft Antimalware pro Azure je jediného agenta pro aplikace a klientská prostředí. Je navržena tak, aby běžela na pozadí bez zásahu člověka. Ochranu můžete nasadit v závislosti na potřebách úloh aplikací, a to buď pomocí základní zabezpečené, nebo pokročilé vlastní konfigurace, včetně antimalwarového monitorování.
 
-Když nasadíte a povolíte Microsoft Antimalware pro Azure, jsou k dispozici následující základní funkce:
-
-* **Ochrana v reálném čase**: monitoruje aktivitu v Cloud Services a na Virtual Machines ke zjišťování a blokování spouštění malwaru.
-* **Naplánované prohledávání**: pravidelně provádí cílené prohledávání za účelem zjištění malwaru, včetně aktivně spouštěných programů.
-* **Náprava malwaru**: automaticky provede akci zjištěného malwaru, jako je odstranění nebo karanténa škodlivých souborů a vyčištění škodlivých položek registru.
-* **Aktualizace signatur**: automaticky nainstaluje nejnovější podpisy ochrany (definice virů), aby se zajistilo, že ochrana je aktuální na předem určené frekvenci.
-* **Aktualizace antimalwarového stroje**: automaticky aktualizuje modul Microsoft Antimalware pro Azure Engine.
-* **Aktualizace antimalwarové platformy**: automaticky aktualizuje platformu Microsoft Antimalware pro Azure.
-* **Aktivní ochrana**: nahlásí metadata telemetrie do Azure o zjištěných hrozbách a podezřelých materiálech, aby se zajistila rychlá odezva. Umožňuje doručování synchronních podpisů v reálném čase prostřednictvím systému Microsoft Active Protection System (MAPS).
-* **Vytváření sestav ukázek**: poskytuje a hlásí ukázky služby Microsoft Antimalware pro Azure, které vám pomůžou službu zdokonalit a povolit řešení potíží.
-* **Vyloučení**: umožňuje správcům aplikací a služeb nakonfigurovat určité soubory, procesy a jednotky, aby je vyloučily z ochrany a kontrolovala výkon a další důvody.
-* **Shromažďování antimalwarových událostí**: zaznamenává stav antimalwarové služby, podezřelé aktivity a nápravné akce provedené v protokolu událostí operačního systému a shromažďuje je v účtu služby Azure Storage.
+Přečtěte si další informace o [programu Microsoft Antimalware pro Azure](antimalware.md) a dostupných základních funkcích.
 
 Přečtěte si další informace o antimalwarovém softwaru, které vám pomůžou ochránit vaše virtuální počítače:
 
-* [Microsoft Antimalware pro Azure Cloud Services a Virtual Machines](antimalware.md)
 * [Nasazování antimalwarových řešení na virtuálních počítačích Azure](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows](/azure/virtual-machines/windows/classic/install-trend)
 * [Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači s Windows](/azure/virtual-machines/windows/classic/install-symantec)
@@ -171,7 +159,7 @@ Další informace:
 
 I když důvěrné výpočetní operace není technicky součástí zabezpečení virtuálních počítačů, téma zabezpečení virtuálních počítačů patří do předmětu vyšší úrovně zabezpečení Compute. Důvěrné výpočetní prostředky patří do kategorie zabezpečení Compute.
 
-Důvěrné výpočetní operace zajišťuje, že pokud jsou data "v jasném znění, které je vyžadováno pro efektivní zpracování, data jsou chráněna v prostředí důvěryhodného spuštění https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE-také označované jako enklávy), což je příklad, který je znázorněn na následujícím obrázku.  
+Důvěrné výpočetní operace zajišťuje, že pokud jsou data "v jasném znění, které je vyžadováno pro efektivní zpracování, data jsou chráněna v prostředí s důvěryhodným spouštěním https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE-také označované jako enklávy), což je příklad, který je znázorněn na následujícím obrázku.  
 
 TEEs zajistěte, aby neexistoval žádný způsob, jak zobrazit data ani operace uvnitř vně, ani pomocí ladicího programu. Ještě zajistí, že přístup k datům je povolen pouze autorizovaným kódem. Pokud dojde ke změně nebo poškození kódu, operace jsou zamítnuté a prostředí je zakázané. TEE vynutila tyto ochrany v průběhu provádění kódu v rámci IT.
 
@@ -179,3 +167,7 @@ Další informace:
 
 * [Představujeme důvěrný výpočetní výkon Azure](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Důvěrné výpočetní prostředí Azure](https://azure.microsoft.com/blog/azure-confidential-computing/)  
+
+## <a name="next-steps"></a>Další kroky
+
+Seznamte se s [osvědčenými postupy zabezpečení](iaas.md) pro virtuální počítače a operační systémy.

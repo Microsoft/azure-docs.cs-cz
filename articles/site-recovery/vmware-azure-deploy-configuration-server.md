@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5812cc73fb1da58c591d0593e079851e05bd0940
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f5fe49130742d116775b75f17c726b56150c574f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331956"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792355"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -28,7 +28,7 @@ Konfigurační server musí být nastavený jako vysoce dostupný virtuální po
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Minimální požadavky na hardware pro konfigurační server jsou shrnuté v následující tabulce.
+Minimální požadavky na hardware pro konfigurační server jsou shrnuté v následujících oddílech.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -37,31 +37,19 @@ Minimální požadavky na hardware pro konfigurační server jsou shrnuté v ná
 Pro registraci konfiguračního serveru pomocí služeb Azure Site Recovery potřebujete uživatele s **jednou z následujících** oprávnění nastaveným v AAD (Azure Active Directory).
 
 1. Uživatel by měl mít roli "vývojář aplikace" k vytvoření aplikace.
-   1. Ověření se přihlaste k Azure Portal</br>
-   1. Přechod na Azure Active Directory > rolí a správců</br>
-   1. Ověřte, zda je uživateli přiřazena role vývojář aplikace. V takovém případě použijte k [povolení oprávnění](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)uživatele s tímto oprávněním nebo se obraťte na správce.
+    - Ověření se přihlaste k Azure Portal</br>
+    - Přechod na Azure Active Directory > rolí a správců</br>
+    - Ověřte, zda je uživateli přiřazena role vývojář aplikace. V takovém případě použijte k [povolení oprávnění](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)uživatele s tímto oprávněním nebo se obraťte na správce.
     
-1. Pokud roli vývojář aplikace nelze přiřadit, zajistěte, aby byl příznak "uživatel může registrovat aplikaci" nastaven na hodnotu true, aby uživatel mohl vytvořit identitu. Pokud chcete povolit výše uvedená oprávnění,
-   1. Přihlásit se na Azure Portal
-   1. Přejít na Azure Active Directory > nastavení uživatele
-   1. V části * * Registrace aplikací "," mohou uživatelé registrovat aplikace "musí být zvolena možnost" Ano ".
+2. Pokud roli vývojář aplikace nelze přiřadit, zajistěte, aby byl příznak "uživatel může registrovat aplikaci" nastaven na hodnotu true, aby uživatel mohl vytvořit identitu. Pokud chcete povolit výše uvedená oprávnění,
+    - Přihlásit se na Azure Portal
+    - Přejít na Azure Active Directory > nastavení uživatele
+    - V části * * Registrace aplikací "," mohou uživatelé registrovat aplikace "musí být zvolena možnost" Ano ".
 
       ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
 > Active Directory Federation Services (AD FS) (ADFS) se **nepodporuje**. Použijte prosím účet spravovaný prostřednictvím [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
-
-## <a name="capacity-planning"></a>Plánování kapacit
-
-Požadavky na velikost pro konfigurační server závisí na četnosti změn dat. Tuto tabulku použijte jako vodítko.
-
-| **VČETNĚ** | **Rezident** | **Velikost disku mezipaměti** | **Frekvence změny dat** | **Chráněné počítače** |
-| --- | --- | --- | --- | --- |
-| 8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz) |16 GB |300 GB |500 GB nebo méně |Replikujte méně než 100 počítačů. |
-| 12 vCPU (2 sokety × 6 jader \@ 2,5 GHz) |18 GB |600 GB |500 GB až 1 TB |Replikujte 100-150 počítačů. |
-| 16 vCPU (2 sokety × 8 jader \@ 2,5 GHz) |32 GB |1 TB |1 TB až 2 TB |Replikujte 150-200 počítačů. |
-
-Pokud provádíte replikaci více než jednoho virtuálního počítače VMware, načtěte si [informace o plánování kapacity](site-recovery-plan-capacity-vmware.md). Spusťte [nástroj Plánovač nasazení](site-recovery-deployment-planner.md) pro replikaci VMware.
 
 ## <a name="download-the-template"></a>Stažení šablony
 
@@ -145,11 +133,11 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 7. Zadejte přihlašovací údaje, které bude konfigurační server používat pro připojení k serveru VMware. Služba Site Recovery je použije k automatickému zjištění virtuálních počítačů VMware, které jsou dostupné pro replikaci. Vyberte **Přidat**a pak **pokračovat**. Přihlašovací údaje, které tady zadáte, se uloží místně.
 8. V části **Konfigurovat přihlašovací údaje virtuálního počítače**zadejte uživatelské jméno a heslo virtuálních počítačů pro automatickou instalaci služby mobility během replikace. Pro počítače s **Windows** vyžaduje účet oprávnění místního správce na počítačích, které chcete replikovat. Pro **Linux**zadejte podrobnosti kořenového účtu.
 9. Vyberte **Dokončit konfiguraci** a dokončete registraci.
-10. Po dokončení registrace otevřete Azure Portal, ověřte, že je konfigurační server a server VMware uvedený v **Recovery Services trezoru** > **Správa** > **Site Recovery infrastruktura**@no__t **-5. Servery**.
+10. Po dokončení registrace otevřete Azure Portal a ověřte, že je konfigurační server a server VMware uvedený v **Recovery Services trezoru** > **Spravovat** > **Site Recovery infrastruktury** > **konfiguraci. Servery**.
 
 ## <a name="upgrade-the-configuration-server"></a>Upgrade konfiguračního serveru
 
-Chcete-li upgradovat konfigurační server na nejnovější verzi, postupujte podle těchto [kroků](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Podrobné pokyny, jak upgradovat všechny součásti Site Recovery, získáte kliknutím [sem](service-updates-how-to.md).
+Chcete-li upgradovat konfigurační server na nejnovější verzi, postupujte podle těchto [kroků](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Podrobné pokyny, jak upgradovat všechny součásti Site Recovery, najdete v tématu [Správa aktualizací služby](service-updates-how-to.md).
 
 ## <a name="manage-the-configuration-server"></a>Správa konfiguračního serveru
 
@@ -157,9 +145,9 @@ Aby nedošlo k přerušení probíhající replikace, zajistěte, aby se po regi
 
 ## <a name="faq"></a>Časté otázky
 
-1. Jak dlouho je licence poskytovaná na konfiguračním serveru nasazeném prostřednictvím OVF platná? Co se stane, když licenci znovu neaktivuji?
+1. Jak dlouho je licence zadaná na konfiguračním serveru nasazeném prostřednictvím OVF platná? Co se stane, když licenci znovu neaktivuji?
 
-    Licence, která je součástí šablony vajíček, je zkušební licence platná po dobu 180 dnů. Před vypršením platnosti musíte licenci aktivovat. V opačném případě to může vést k častému vypnutí konfiguračního serveru, což by způsobilo překážku aktivit replikace.
+    Licence, která je součástí šablony vajíček, je zkušební licence platná po dobu 180 dnů. Před vypršením platnosti musíte licenci aktivovat. V opačném případě může dojít k častému vypnutí konfiguračního serveru, a proto by mohlo dojít k častým výpadkům replikačních aktivit. Další podrobnosti najdete v článku věnovaném [správě licence konfiguračního serveru](vmware-azure-manage-configuration-server.md#update-windows-license).
 
 2. Můžu použít virtuální počítač, na kterém je nainstalovaný konfigurační server, pro různé účely?
 
@@ -184,7 +172,7 @@ Aby nedošlo k přerušení probíhající replikace, zajistěte, aby se po regi
     **Ne**, **důrazně doporučujeme, abyste heslo konfiguračního serveru nezměnili** . Změna v heslech: přerušení replikace chráněných počítačů a vede do kritického stavu.
 9. Kde můžu stahovat registrační klíče trezoru?
 
-    V **trezoru Recovery Services** **spravujte** **konfigurační servery** > **Site Recovery infrastruktury**@no__t 4. V části servery vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
+    V **trezoru Recovery Services** **spravujte** Site Recovery > **konfigurační servery** **infrastruktury** > . V části servery vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
 10. Můžu naklonovat existující konfigurační server a použít ho k orchestraci replikace?
 
     **Ne**, použití klonované součásti konfiguračního serveru se nepodporuje. Klonování procesového serveru se škálováním na více instancí je také nepodporovaný scénář. Klonování Site Recovery komponent má vliv na probíhající replikaci.

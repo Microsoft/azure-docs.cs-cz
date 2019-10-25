@@ -1,23 +1,23 @@
 ---
-title: Relační data modelu SQL pro import a indexování – Azure Search
-description: Naučte se modelovat relační data, Denormalizovaná do ploché sady výsledků, pro indexování a fulltextové vyhledávání v Azure Search.
+title: Modelování relačních dat SQL pro import a indexování
+titleSuffix: Azure Cognitive Search
+description: Naučte se modelovat relační data, Denormalizovaná do ploché sady výsledků, pro indexování a fulltextové vyhledávání v Azure Kognitivní hledání.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/12/2019
 ms.author: heidist
-ms.openlocfilehash: 60dfae48b0aa1d6e0d9bc8e79d5ff2dedd744fd5
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 3b973dd05d23d190c77986ca9bf6d39656739cd8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993584"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790097"
 ---
-# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-search"></a>Postup modelování relačních dat SQL pro import a indexování v Azure Search
+# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Postup modelování relačních dat SQL pro import a indexování v Azure Kognitivní hledání
 
-Azure Search přijímá jako vstup do [kanálu indexování](search-what-is-an-index.md)plochou sadu řádků. Pokud zdrojová data pocházejí z připojených tabulek v relační databázi SQL Server, Tento článek vysvětluje, jak sestavit sadu výsledků a jak modelovat relaci typu nadřazený-podřízený v indexu Azure Search.
+Azure Kognitivní hledání přijímá jako vstup do [kanálu indexování](search-what-is-an-index.md)plochou sadu řádků. Pokud zdrojová data pocházejí z připojených tabulek v relační databázi SQL Server, Tento článek vysvětluje, jak sestavit sadu výsledků a jak modelovat vztah nadřazenosti-podřízenosti v indexu Azure Kognitivní hledání.
 
 Obrázek odkazuje na hypotetickou databázi hotelů na základě [ukázkových dat](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels). Předpokládejme, že se databáze skládá z tabulky s Hotely $ s 50 hotely a místnostmi $ tabulkami s místnostmi různých typů, sazeb a možností rekreačního celkem 750 místností. Mezi tabulkami existuje vztah 1: n. V našem přístupu vám zobrazení poskytne dotaz, který vrátí 50 řádků, jeden řádek na Hotel s přiřazenými podrobnostmi o místnostech vložených do každého řádku.
 
@@ -26,7 +26,7 @@ Obrázek odkazuje na hypotetickou databázi hotelů na základě [ukázkových d
 
 ## <a name="the-problem-of-denormalized-data"></a>Problém denormalizovaných dat
 
-Jedním z problémů při práci s relacemi 1:1 je, že standardní dotazy sestavené na připojených tabulkách budou vracet Denormalizovaná data, která ve scénáři Azure Search nefungují správně. Vezměte v úvahu následující příklad, který spojuje hotely a místnosti.
+Jedním z problémů při práci s relacemi 1:1 je, že standardní dotazy sestavené na připojených tabulkách budou vracet Denormalizovaná data, která nefungují dobře ve scénáři Kognitivní hledání v Azure. Vezměte v úvahu následující příklad, který spojuje hotely a místnosti.
 
 ```sql
 SELECT * FROM Hotels$
@@ -38,13 +38,13 @@ Výsledky z tohoto dotazu vrátí všechna pole hotelu, za kterými následuje v
    ![Denormalizovaná data, redundantní data o hotelu, když se přidají pole místnosti](media/index-sql-relational-data/denormalize-data-query.png "Denormalizovaná data, redundantní data o hotelu, když se přidají pole místnosti")
 
 
-I když tento dotaz proběhne na povrchu (poskytnutí všech dat v ploché sadě řádků), selže při poskytování správné struktury dokumentu pro očekávané prostředí vyhledávání. Při indexování Azure Search vytvoří jeden vyhledávací dokument pro každý řádek, který je obdrží. Pokud vaše dokumenty hledání vypadají jako výše uvedené výsledky, měli byste se podívat na duplicity – sedm samostatných dokumentů pro jediný hotel s dvojitou čočky. Dotaz na "hotely v Florida" vrátí sedm výsledků jenom pro zdvojený Hotel, který doplní další relevantní hotely do výsledků hledání.
+I když tento dotaz proběhne na povrchu (poskytnutí všech dat v ploché sadě řádků), selže při poskytování správné struktury dokumentu pro očekávané prostředí vyhledávání. Při indexování se v Azure Kognitivní hledání vytvoří jeden vyhledávací dokument pro každý řádek, který se bude obhodnotit. Pokud vaše dokumenty hledání vypadají jako výše uvedené výsledky, měli byste se podívat na duplicity – sedm samostatných dokumentů pro jediný hotel s dvojitou čočky. Dotaz na "hotely v Florida" vrátí sedm výsledků jenom pro zdvojený Hotel, který doplní další relevantní hotely do výsledků hledání.
 
 Chcete-li získat očekávané zkušenosti jednoho dokumentu na jeden Hotel, měli byste poskytnout sadu řádků v pravé členitosti, ale s úplnými informacemi. Naštěstí to můžete provést snadno pomocí postupů v tomto článku.
 
 ## <a name="define-a-query-that-returns-embedded-json"></a>Definujte dotaz, který vrátí vložený JSON.
 
-Pro zajištění očekávaného vyhledávacího prostředí by se měla sada dat skládat z jednoho řádku pro každý dokument hledání v Azure Search. V našem příkladu chceme mít jeden řádek pro každý Hotel, ale chceme, aby naši uživatelé mohli prohledávat další pole související s místnostmi, která vás zajímají, jako je noční sazba, velikost a počet lůžek nebo zobrazení pláže, přičemž všechny jsou součástí podrobností místnosti.
+Pro zajištění očekávaného vyhledávacího prostředí by se měla sada dat skládat z jednoho řádku pro každý dokument hledání ve službě Azure Kognitivní hledání. V našem příkladu chceme mít jeden řádek pro každý Hotel, ale chceme, aby naši uživatelé mohli prohledávat další pole související s místnostmi, která vás zajímají, jako je noční sazba, velikost a počet lůžek nebo zobrazení pláže, přičemž všechny jsou součástí podrobností místnosti.
 
 Řešením je zachytit podrobnosti místnosti jako vnořený kód JSON a pak vložit strukturu JSON do pole v zobrazení, jak je znázorněno v druhém kroku. 
 
@@ -100,18 +100,18 @@ Pro zajištění očekávaného vyhledávacího prostředí by se měla sada dat
 
    ![Zobrazení HotelRooms](media/index-sql-relational-data/hotelsrooms-view.png "Zobrazení HoteRooms")
 
-1. Spusťte `SELECT * FROM dbo.HotelRooms` , aby se načetla sada řádků. Tento dotaz vrátí 50 řádků, jeden pro každý Hotel, s přidruženými informacemi o místnostech jako kolekce JSON. 
+1. Spusťte `SELECT * FROM dbo.HotelRooms` pro načtení sady řádků. Tento dotaz vrátí 50 řádků, jeden pro každý Hotel, s přidruženými informacemi o místnostech jako kolekce JSON. 
 
    ![Sada řádků ze zobrazení HotelRooms](media/index-sql-relational-data/hotelrooms-rowset.png "Sada řádků ze zobrazení HotelRooms")
 
-Tato sada řádků je nyní připravena pro import do Azure Search.
+Tato sada řádků je teď připravená na import do Azure Kognitivní hledání.
 
 > [!NOTE]
-> Tento přístup předpokládá, že vložený kód JSON je pod [omezením maximální velikosti sloupce SQL Server](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server). Pokud se vaše data nevejdou, můžete vyzkoušet programový přístup, jak je znázorněno v [příkladu: Namodelujte databázi inventáře AdventureWorks](search-example-adventureworks-modeling.md)pro Azure Search.
+> Tento přístup předpokládá, že vložený kód JSON je pod [omezením maximální velikosti sloupce SQL Server](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server). Pokud se vaše data nevejdou, můžete vyzkoušet programový přístup, jak je znázorněno v [příkladu: model datainventory Database for Azure kognitivní hledání](search-example-adventureworks-modeling.md).
 
  ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>Použití komplexní kolekce pro stranu typu "many" pro relaci 1: n
 
-Na straně Azure Search vytvořte schéma indexu, které vytváří vztah 1:1 pomocí vnořeného JSON. Sada výsledků dotazu, kterou jste vytvořili v předchozí části, obecně odpovídá schématu indexu uvedenému níže (pro zkrácení jsou k dispozici nějaká pole).
+Na straně Azure Kognitivní hledání vytvořte schéma indexu, které vytváří vztah 1:1 pomocí vnořeného JSON. Sada výsledků dotazu, kterou jste vytvořili v předchozí části, obecně odpovídá schématu indexu uvedenému níže (pro zkrácení jsou k dispozici nějaká pole).
 
 Následující příklad je podobný příkladu v tématu [jak modelovat komplexní datové typy](search-howto-complex-data-types.md#creating-complex-fields). Struktura *místností* , která se zaměřuje na tento článek, je v kolekci polí indexu s názvem *hotely*. Tento příklad také ukazuje komplexní typ pro *adresu*, který se liší od *místností* v tom, že se skládá z pevné sady položek, na rozdíl od násobku, libovolný počet položek povolených v kolekci.
 
@@ -148,7 +148,7 @@ Následující příklad je podobný příkladu v tématu [jak modelovat komplex
 }
 ```
 
-Vzhledem k předchozí sadě výsledků a výše uvedenému schématu indexu máte všechny požadované součásti pro úspěšnou operaci indexování. Sloučená datová sada splňuje požadavky na indexování, které ještě zachovává podrobné informace. V indexu Azure Search se výsledky hledání snadno zařadí do hotelových entit a zároveň zachovává kontext jednotlivých místností a jejich atributů.
+Vzhledem k předchozí sadě výsledků a výše uvedenému schématu indexu máte všechny požadované součásti pro úspěšnou operaci indexování. Sloučená datová sada splňuje požadavky na indexování, které ještě zachovává podrobné informace. V indexu služby Azure Kognitivní hledání se výsledky hledání snadno začlení do hotelových entit a zároveň zachovává kontext jednotlivých místností a jejich atributů.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -159,4 +159,4 @@ Pomocí vlastní datové sady můžete index vytvořit a načíst pomocí [Prův
 Pokud se chcete seznámit se základními kroky Průvodce importem dat, zkuste použít následující rychlý Start.
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vytvoření indexu vyhledávání pomocí Azure Portal](search-get-started-portal.md)
+> [Rychlý Start: vytvoření indexu vyhledávání pomocí Azure Portal](search-get-started-portal.md)

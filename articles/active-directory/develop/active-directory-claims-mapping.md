@@ -1,5 +1,6 @@
 ---
-title: Přizpůsobení deklarací identity pro aplikaci v tenantovi Azure AD (Public Preview)
+title: Přizpůsobení deklarací identity pro aplikaci tenanta Azure AD (Public Preview)
+titleSuffix: Microsoft identity platform
 description: Tato stránka popisuje Azure Active Directory mapování deklarací identity.
 services: active-directory
 author: rwike77
@@ -11,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9350a30ac6258664b3a8405923467a8468a6758
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 53ef51d52e699612508a446acbc075f766565d63
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835450"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803508"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postup: Přizpůsobení deklarací identity emitovaných v tokenech pro konkrétní aplikaci v tenantovi (Preview)
+# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
 > [!NOTE]
 > Tato funkce nahradí a nahrazuje [přizpůsobení deklarací identity](active-directory-saml-claims-customization.md) , které dnes nabízí portál. Pokud ve stejné aplikaci přizpůsobíte deklarace identity pomocí portálu kromě metody grafu/PowerShellu popsané v tomto dokumentu, budou tokeny vydané pro tuto aplikaci ignorovat konfiguraci na portálu. Konfigurace provedené prostřednictvím metod popsaných v tomto dokumentu se na portálu neprojeví.
@@ -52,7 +53,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | Základní sada deklarací identity | Zahrnuje deklarace identity, které jsou ve výchozím nastavení emitované pro tokeny (kromě základní sady deklarací identity). Základní deklarace identity můžete vynechat nebo upravit pomocí zásad mapování deklarací identity. |
 | Omezená sada deklarací identity | Nejde upravit pomocí zásad. Zdroj dat nelze změnit a při generování těchto deklarací se nepoužije žádná transformace. |
 
-### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabulka 1: Sada deklarací s omezením JSON Web Token (JWT)
+### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabulka 1: sada omezené deklarace identity JSON Web Token (JWT)
 
 | Typ deklarace identity (název) |
 | ----- |
@@ -61,17 +62,17 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | access_token |
 | account_type |
 | acr |
-| actor |
+| Tříd |
 | actortoken |
 | Printer |
 | altsecid |
-| amr |
+| AMR |
 | app_chain |
 | app_displayname |
 | app_res |
 | appctx |
 | appctxsender |
-| appid |
+| identifikátor |
 | appidacr |
 | Neplatný |
 | at_hash |
@@ -83,31 +84,31 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | azpacr |
 | c_hash |
 | ca_enf |
-| cc |
+| uzel |
 | cert_token_use |
 | client_id |
 | cloud_graph_host_name |
 | cloud_instance_name |
-| cnf |
-| code |
-| controls |
+| CNF |
+| Znakovou |
+| ovládací prvky |
 | credential_keys |
-| csr |
+| manažer |
 | csr_type |
-| deviceid |
+| DeviceID |
 | dns_names |
 | domain_dns_name |
 | domain_netbios_name |
 | e_exp |
-| email |
+| e-mail |
 | endpoint |
 | enfpolids |
-| oček |
+| Oček |
 | expires_on |
-| grant_type |
-| graph |
+| parametr grant_type |
+| Zapisovací |
 | group_sids |
-| groups |
+| skupiny |
 | hasgroups |
 | hash_alg |
 | home_oid |
@@ -118,15 +119,15 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
-| iat |
+| IAT |
 | IdentityProvider |
 | IDP |
 | in_corp |
-| instance |
+| případě |
 | ipaddr |
 | isbrowserhostedapp |
 | ISS |
-| jwk |
+| JWK |
 | key_id |
 | key_type |
 | mam_compliance_url |
@@ -136,58 +137,58 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | mdm_enrollment_url |
 | mdm_terms_of_use_url |
 | NameId |
-| nbf |
+| NBF |
 | netbios_name |
-| nonce |
-| oid |
+| generované |
+| identifikátor |
 | on_prem_id |
 | onprem_sam_account_name |
 | onprem_sid |
 | openid2_id |
-| password |
+| heslo |
 | platf |
 | polids |
 | pop_jwk |
 | preferred_username |
 | previous_refresh_token |
 | primary_sid |
-| puid |
+| identifikátor |
 | pwd_exp |
 | pwd_url |
-| redirect_uri |
+| identifikátor |
 | refresh_token |
 | refreshtoken kontextového tokenu |
 | request_nonce |
-| resource |
-| roles |
-| roles |
+| Partner |
+| Role |
+| prostředků |
 | scope |
-| scp |
-| sid |
-| signature |
+| SCP |
+| ID |
+| Označení |
 | signin_state |
 | src1 |
 | src2 |
-| sub |
+| jednotk |
 | tbid |
 | tenant_display_name |
 | tenant_region_scope |
 | thumbnail_photo |
-| tid |
+| identifikátory |
 | tokenAutologonEnabled |
 | trustedfordelegation |
 | unique_name |
 | názvu |
 | user_setting_sync_url |
-| username |
-| uti |
+| uživatelské jméno |
+| identifikátor UTI |
 | ver |
 | verified_primary_email |
 | verified_secondary_email |
 | wids |
 | win_ver |
 
-### <a name="table-2-saml-restricted-claim-set"></a>Tabulka 2: Omezená sada deklarací SAML
+### <a name="table-2-saml-restricted-claim-set"></a>Tabulka 2: omezená sada deklarací SAML
 
 | Typ deklarace identity (URI) |
 | ----- |
@@ -244,11 +245,11 @@ Chcete-li určit, jaké deklarace identity jsou emitovány a odkud data pocháze
 
 ### <a name="include-basic-claim-set"></a>Zahrnout základní sadu deklarací identity
 
-**Řetezce** IncludeBasicClaimSet
+**Řetězec:** IncludeBasicClaimSet
 
 **Datový typ:** Logická hodnota (true nebo false)
 
-**Shrnut** Tato vlastnost určuje, jestli je v tokenech ovlivněných touto zásadou zahrnutá základní sada deklarací identity.
+**Shrnutí:** Tato vlastnost určuje, jestli je v tokenech ovlivněných touto zásadou zahrnutá základní sada deklarací identity.
 
 - Pokud je nastavená hodnota true, všechny deklarace v základní sadě deklarací identity se vysílají v tokenech ovlivněných touto zásadou. 
 - Pokud je hodnota nastavena na false, deklarace v základní sadě deklarací identity nejsou v tokenech, pokud se nepřidaly do vlastnosti schématu deklarací ve stejné zásadě.
@@ -258,53 +259,53 @@ Chcete-li určit, jaké deklarace identity jsou emitovány a odkud data pocháze
 
 ### <a name="claims-schema"></a>Schéma deklarací identity
 
-**Řetezce** ClaimsSchema
+**Řetězec:** ClaimsSchema
 
 **Datový typ:** Objekt BLOB JSON s jednou nebo více položkami schématu deklarace identity
 
-**Shrnut** Tato vlastnost určuje, které deklarace identity jsou k dispozici v tokenech ovlivněných touto zásadou, kromě základní sady deklarací identity a základní sady deklarací identity.
+**Shrnutí:** Tato vlastnost určuje, které deklarace identity jsou k dispozici v tokenech ovlivněných touto zásadou, kromě základní sady deklarací identity a základní sady deklarací identity.
 Pro každou položku schématu deklarace identity definovanou v této vlastnosti se vyžadují určité informace. Určete, odkud data pocházejí (dvojice**hodnota** nebo **identifikátor ID**) a která deklarace identity se vygenerovala jako (**typ deklarace**).
 
 ### <a name="claim-schema-entry-elements"></a>Prvky položky schématu deklarace identity
 
-**Osa** Element Value definuje statickou hodnotu jako data, která se mají v deklaraci identity vypouštět.
+**Hodnota:** Element Value definuje statickou hodnotu jako data, která se mají v deklaraci identity vypouštět.
 
 **Dvojice ID a zdroje:** Prvky zdroje a ID definují, z nichž jsou data v deklaraci identity zdrojová. 
 
 Nastavte zdrojový element na jednu z následujících hodnot: 
 
-- "uživatel": Data v deklaraci identity jsou vlastnost objektu User. 
-- "aplikace": Data v deklaraci identity jsou vlastností instančního objektu aplikace (klienta). 
-- "prostředek": Data v deklaraci identity jsou vlastností objektu služby prostředku.
-- Cílová skupina: Data v deklaraci identity jsou vlastnost objektu služby, která je cílovou skupinou tokenu (buď klient nebo instanční objekt služby).
-- "společnost": Data v deklaraci identity jsou vlastností objektu společnosti tenanta prostředku.
-- "transformace": Data v deklaraci identity pochází z transformace deklarací identity (viz část transformace deklarací identity dále v tomto článku).
+- "User": data v deklaraci identity jsou vlastnost objektu User. 
+- "Application": data v deklaraci identity jsou vlastnost objektu služby aplikace (klienta). 
+- "prostředek": data v deklaraci identity jsou vlastnost objektu služby prostředku.
+- "cílová skupina": data v deklaraci identity jsou vlastnost objektu služby, která je cílovou skupinou tokenu (buď klient nebo instanční objekt služby).
+- "společnost": data v deklaraci identity jsou vlastností objektu společnosti tenanta prostředku.
+- "transformace": data v deklaraci identity pochází z transformace deklarací identity (viz část transformace deklarací identity dále v tomto článku).
 
 Pokud je zdrojem transformace, musí být do této definice deklarace identity zahrnut i element **TransformationID** .
 
 Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci identity. V následující tabulce jsou uvedeny hodnoty ID platné pro každou hodnotu zdroje.
 
-#### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: Platné hodnoty ID na zdroj
+#### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: platné hodnoty ID na zdroj
 
-| Source | id | Popis |
+| Zdroj | ID | Popis |
 |-----|-----|-----|
 | Uživatel | Příjmení | Název rodiny |
-| Uživatel | givenName | Křestní jméno |
-| Uživatel | displayName | Zobrazovaný název |
-| Uživatel | objektu | ObjectID |
-| Uživatel | e-mailu | E-mailová adresa |
-| Uživatel | userprincipalname | Hlavní název uživatele |
-| Uživatel | Oddělení|Oddělení|
+| Uživatel | givenName | jméno |
+| Uživatel | DisplayName | Zobrazovaný název |
+| Uživatel | objektu | Objektu |
+| Uživatel | Modul | E-mailová adresa |
+| Uživatel | třídy | Hlavní název uživatele |
+| Uživatel | Ministerstvo|Oddělení|
 | Uživatel | onpremisessamaccountname | Místní název účtu SAM |
 | Uživatel | NetBiosName| Název pro rozhraní NetBios |
-| Uživatel | dnsdomainname | DNS Domain Name |
+| Uživatel | dnsdomainname | Název domény DNS |
 | Uživatel | onpremisesecurityidentifier | Místní identifikátor zabezpečení |
 | Uživatel | společnosti| Název organizace |
-| Uživatel | streetaddress | Ulice |
-| Uživatel | ovládacím | PSČ |
-| Uživatel | preferredlanguange | Upřednostňovaný jazyk |
+| Uživatel | streetaddress | Adresa ulice |
+| Uživatel | ovládacím | Poštovní směrovací číslo |
+| Uživatel | preferredlanguange | Preferovaný jazyk |
 | Uživatel | onpremisesuserprincipalname | Místní hlavní název uživatele (UPN) |
-| Uživatel | mailNickname | Přezdívka pro poštu |
+| Uživatel | mailNickname | Přezdívka pošty |
 | Uživatel | extensionattribute1 | Atribut rozšíření 1 |
 | Uživatel | extensionattribute2 | Atribut rozšíření 2 |
 | Uživatel | extensionattribute3 | Atribut rozšíření 3 |
@@ -320,17 +321,17 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | extensionattribute13 | Atribut rozšíření 13 |
 | Uživatel | extensionattribute14 | Atribut rozšíření 14 |
 | Uživatel | extensionattribute15 | Atribut rozšíření 15 |
-| Uživatel | othermail | Jiná pošta |
-| Uživatel | krajin | Country |
-| Uživatel | city | City |
+| Uživatel | Othermail | Jiná pošta |
+| Uživatel | Krajin | Země |
+| Uživatel | city | Město |
 | Uživatel | state | Stav |
 | Uživatel | jobtitle | Funkce |
-| Uživatel | EmployeeID | ID zaměstnance |
+| Uživatel | zaměstnance | ID zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
-| aplikace, prostředek, cílová skupina | displayName | Zobrazovaný název |
-| aplikace, prostředek, cílová skupina | s objekty | ObjectID |
-| aplikace, prostředek, cílová skupina | značky | Značka objektu služby |
-| Společnosti | tenantcountry | Země tenanta |
+| aplikace, prostředek, cílová skupina | DisplayName | Zobrazovaný název |
+| aplikace, prostředek, cílová skupina | s objekty | Objektu |
+| aplikace, prostředek, cílová skupina | tags | Značka objektu služby |
+| Společnost | tenantcountry | Země tenanta |
 
 **TransformationID:** Element TransformationID se musí poskytnout jenom v případě, že je zdrojový element nastavený na transformaci.
 
@@ -346,31 +347,31 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 ### <a name="claims-transformation"></a>Transformace deklarací identity
 
-**Řetezce** ClaimsTransformation
+**Řetězec:** ClaimsTransformation
 
 **Datový typ:** Objekt BLOB JSON s jednou nebo více položkami transformace 
 
-**Shrnut** Tato vlastnost slouží k aplikování běžných transformací na zdrojová data, aby se vygenerovala výstupní data pro deklarace identity zadané ve schématu deklarací identity.
+**Shrnutí:** Tato vlastnost slouží k aplikování běžných transformací na zdrojová data, aby se vygenerovala výstupní data pro deklarace identity zadané ve schématu deklarací identity.
 
-**ÚČET** Použijte element ID pro odkazování na tuto položku transformace v položce schématu deklarace identity TransformationID. Tato hodnota musí být jedinečná pro každou položku transformace v rámci této zásady.
+**ID:** Použijte element ID pro odkazování na tuto položku transformace v položce schématu deklarace identity TransformationID. Tato hodnota musí být jedinečná pro každou položku transformace v rámci této zásady.
 
 **TransformationMethod:** Element TransformationMethod identifikuje, která operace se provádí za účelem generování dat pro danou deklaraci.
 
-Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte vstupy a výstupy pomocí prvků **InputClaims**, Inputs a **OutputClaims** .
+Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte **vstupy a** výstupy pomocí prvků **InputClaims**, Inputs a **OutputClaims** .
 
-#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: Metody transformace a očekávané vstupy a výstupy
+#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: metody transformace a očekávané vstupy a výstupy
 
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
-|Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: "foo@bar.com", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: ""foo@bar.com.sandbox|
-|ExtractMailPrefix|e-mailu|outputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není \@ k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
+|Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: "foo@bar.com", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: "foo@bar.com.sandbox"|
+|ExtractMailPrefix|Modul|outputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není k dispozici žádný \@ znak, je původní vstupní řetězec vrácen tak, jak je.|
 
 **InputClaims:** Pomocí elementu InputClaims předejte data ze záznamu schématu deklarace do transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
 - **ClaimTypeReferenceId** je spojen s elementem ID položky schématu deklarace identity, aby bylo možné najít odpovídající vstupní deklaraci identity. 
 - **TransformationClaimType** slouží k udělení jedinečného názvu tomuto vstupu. Tento název musí odpovídat jednomu z očekávaných vstupů pro metodu transformace.
 
-**Parametry** K předání konstantní hodnoty transformaci použijte prvek s parametry. Má dva atributy: **Hodnota** a **ID**.
+**Vstupní parametry:** K předání konstantní hodnoty transformaci použijte prvek s parametry. Má dva atributy: **hodnota** a **ID**.
 
 - **Value** je skutečná hodnota konstanty, která má být předána.
 - **ID** slouží k udělení jedinečného názvu vstupu. Název musí odpovídat jednomu z očekávaných vstupů pro metodu transformace.
@@ -382,16 +383,16 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte v
 
 ### <a name="exceptions-and-restrictions"></a>Výjimky a omezení
 
-**NameID SAML a hlavní název uživatele:** Atributy, ze kterých jste naNameIDi a hodnoty hlavního názvu uživatele (UPN) a povolené transformace deklarací identity, jsou omezené. Povolené hodnoty zobrazíte v tabulce 5 a tabulce 6.
+**NameId SAML a hlavní název uživatele:** Atributy, ze kterých jste naNameIDi a hodnoty hlavního názvu uživatele (UPN) a povolené transformace deklarací identity, jsou omezené. Povolené hodnoty zobrazíte v tabulce 5 a tabulce 6.
 
-#### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: Atributy povolené jako zdroj dat pro SAML NameID
+#### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: atributy povolené jako zdroj dat pro SAML NameID
 
-|Source|id|Popis|
+|Zdroj|ID|Popis|
 |-----|-----|-----|
-| Uživatel | e-mailu|E-mailová adresa|
-| Uživatel | userprincipalname|Hlavní název uživatele|
+| Uživatel | Modul|E-mailová adresa|
+| Uživatel | třídy|Hlavní název uživatele|
 | Uživatel | onpremisessamaccountname|Místní název účtu SAM|
-| Uživatel | EmployeeID|ID zaměstnance|
+| Uživatel | zaměstnance|ID zaměstnance|
 | Uživatel | extensionattribute1 | Atribut rozšíření 1 |
 | Uživatel | extensionattribute2 | Atribut rozšíření 2 |
 | Uživatel | extensionattribute3 | Atribut rozšíření 3 |
@@ -408,7 +409,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte v
 | Uživatel | extensionattribute14 | Atribut rozšíření 14 |
 | Uživatel | extensionattribute15 | Atribut rozšíření 15 |
 
-#### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabulka 6: Metody transformace povolené pro NameID SAML
+#### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabulka 6: metody transformace povolené pro NameID SAML
 
 | TransformationMethod | Omezení |
 | ----- | ----- |
@@ -417,7 +418,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte v
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč
 
-Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor.  Aplikace s povoleným mapováním deklarací musí u svých podpisových klíčů tokenu kontrolovat speciální identifikátor URI `appid={client_id}` tím, že se připojí k jejich [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document).  
+Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor.  Aplikace, které mají povolené mapování deklarací, musí pro své podpisové klíče tokenu kontrolovat speciální identifikátor URI, protože připojí `appid={client_id}` k [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document).  
 
 ### <a name="cross-tenant-scenarios"></a>Scénáře pro více tenantů
 
@@ -431,7 +432,7 @@ Zásady mapování deklarací lze přiřadit pouze objektům instančních objek
 
 V Azure AD je mnoho scénářů možné, když můžete přizpůsobit deklarace identity vydávané v tokenech pro konkrétní instanční objekty. V této části se seznámíme s několika běžnými scénáři, které vám pomůžou naučit se používat typ zásad mapování deklarací identity.
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.
 
@@ -465,7 +466,7 @@ V tomto příkladu vytvoříte zásadu, která odebere základní sadu deklarac�
       Get-AzureADPolicy
       ```
 1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby.
-   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat dotaz na Microsoft Graph. Nebo v Průzkumníku Azure AD graphu se přihlaste ke svému účtu služby Azure AD.
+   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na Microsoft Graph](/graph/traverse-the-graph). Nebo se v [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)přihlaste k účtu Azure AD.
    2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz:  
      
       ``` powershell
@@ -489,14 +490,14 @@ V tomto příkladu vytvoříte zásadu, která přidá ČísloZaměstnance a Ten
       Get-AzureADPolicy
       ```
 1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby. 
-   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat dotaz na Microsoft Graph. Nebo v Průzkumníku Azure AD graphu se přihlaste ke svému účtu služby Azure AD.
+   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na Microsoft Graph](/graph/traverse-the-graph). Nebo se v [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)přihlaste k účtu Azure AD.
    2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz:  
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Příklad: Vytvoření a přiřazení zásady, která používá transformaci deklarací identity v tokenech vydaných pro instanční objekt
+#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Příklad: vytvoření a přiřazení zásady, která používá transformaci deklarací identity v tokenech vydaných pro instanční objekt
 
 V tomto příkladu vytvoříte zásadu, která emituje vlastní deklaraci identity "JoinedData" a JWTs vydaná pro propojené objekty služby. Tato deklarace identity obsahuje hodnotu vytvořenou připojením k datům uloženým v atributu extensionAttribute1 objektu User s ". sandbox". V tomto příkladu vyloučíme základní sady deklarací identity v tokenech.
 
@@ -513,13 +514,13 @@ V tomto příkladu vytvoříte zásadu, která emituje vlastní deklaraci identi
       Get-AzureADPolicy
       ```
 1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby. 
-   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat dotaz na Microsoft Graph. Nebo v Průzkumníku Azure AD graphu se přihlaste ke svému účtu služby Azure AD.
+   1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na Microsoft Graph](/graph/traverse-the-graph). Nebo se v [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)přihlaste k účtu Azure AD.
    2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz: 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-Informace o tom, jak přizpůsobit deklarace identity vydané v tokenu SAML prostřednictvím Azure Portal, [najdete v tématu How to: Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](active-directory-saml-claims-customization.md)
+Informace o tom, jak přizpůsobit deklarace identity vydané v tokenu SAML prostřednictvím Azure Portal, najdete v tématu [How to: Customize Claims vydaných v tokenu SAML pro podnikové aplikace.](active-directory-saml-claims-customization.md)

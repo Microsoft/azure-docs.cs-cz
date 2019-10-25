@@ -1,6 +1,7 @@
 ---
-title: Známé problémy v prohlížečích (knihovna Microsoft Authentication Library pro JavaScript) | Azure
-description: Další informace o vědět problémy při použití knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) s prohlížečem Safari.
+title: Známé problémy v prohlížečích (Microsoft Authentication Library pro JavaScript)
+titleSuffix: Microsoft identity platform
+description: Seznamte se s informacemi o potížích při použití knihovny Microsoft Authentication Library pro JavaScript (MSAL. js) v prohlížeči Safari.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,30 +18,30 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb89b1ef4dbbef234fba3152d7f85bbadfbdc64a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51d800ea2fbbc733a6213d7bc4f61f955612aba0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873882"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803068"
 ---
-# <a name="known-issues-on-safari-browser-with-msaljs"></a>Známé problémy v prohlížeči Safari se MSAL.js 
+# <a name="known-issues-on-safari-browser-with-msaljs"></a>Známé problémy v prohlížeči Safari pomocí MSAL. js 
 
-## <a name="silent-token-renewal-on-safari-12-and-itp-20"></a>Bezobslužné obnovení tokenu v Safari 12 a ITP 2.0
+## <a name="silent-token-renewal-on-safari-12-and-itp-20"></a>Obnovení tichého tokenu v Safari 12 a ITP 2,0
 
-Apple iOS 12 a operační systémy MacOS 10.14 zahrnuté verzích [prohlížeče Safari 12](https://developer.apple.com/safari/whats-new/). Pro účely zabezpečení a ochrany osobních údajů zahrnuje Safari 12 [inteligentní ochrany před únikem informací 2.0 sledování](https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/). To v podstatě způsobí, že prohlížeč vyřadit soubory cookie třetích stran nastavena. ITP 2.0 zpracovává soubory cookie, nastavte pomocí zprostředkovatele identity jako soubory cookie třetích stran.
+Operační systémy Apple iOS 12 a MacOS 10,14 obsahují verzi [prohlížeče Safari 12](https://developer.apple.com/safari/whats-new/). Pro účely zabezpečení a ochrany osobních údajů zahrnuje prohlížeč Safari 12 [inteligentní prevenci sledování 2,0](https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/). To v podstatě způsobí, že prohlížeč přetáhne soubory cookie třetích stran. ITP 2,0 také zpracovává soubory cookie nastavené zprostředkovateli identity jako soubory cookie třetích stran.
 
-### <a name="impact-on-msaljs"></a>Dopad na MSAL.js
+### <a name="impact-on-msaljs"></a>Dopad na MSAL. js
 
-MSAL.js používá k provádění získání tokenu služby tichou a obnovení v rámci skrytého elementu Iframe `acquireTokenSilent` volání. Tiché žádostí o token využívají Iframe mají přístup k relaci ověřeného uživatele reprezentované soubory cookie, nastavením Azure AD. Pomocí ITP 2.0 brání přístupu k tyto soubory cookie, MSAL.js nepodaří nepozorovaně získat a obnovit tokeny a výsledkem je `acquireTokenSilent` selhání.
+MSAL. js pomocí skrytého prvku IFRAME provede získání a obnovení tichého tokenu v rámci `acquireTokenSilent` volání. Požadavky na tiché tokeny spoléhají na prvek IFRAME, který má přístup k ověřené relaci uživatele reprezentované soubory cookie nastavenými službou Azure AD. Díky ITP 2,0, který brání přístupu k těmto souborům cookie, MSAL. js nedokáže tiše získat a obnovit tokeny a tím dojde k selhání `acquireTokenSilent`.
 
-Neexistuje žádné řešení tohoto problému v tomto okamžiku a jsme vyhodnocují možnosti s komunitou standardy.
+V tuto chvíli neexistují žádné řešení tohoto problému a vyhodnocujeme možnosti pomocí komunity standardů.
 
-### <a name="work-around"></a>Obejít
+### <a name="work-around"></a>Alternativní řešení
 
-Ve výchozím nastavení je povolené nastavení ITP v prohlížeči Safari. Toto nastavení můžete zakázat tak, že přejdete do **Předvolby** -> **ochrany osobních údajů** a zrušíte zaškrtnutí **zabránit sledování webů** možnost.
+Ve výchozím nastavení je nastavení ITP povolené v prohlížeči Safari. Toto nastavení můžete zakázat tak, že přejdete na **předvolby** -> **ochrany osobních údajů** a zrušíte kontrolu možností pro možnost **zakázat sledování mezi lokalitami** .
 
-![nastavení prohlížeče Safari](./media/msal-js-known-issue-safari-browser/safari.png)
+![nastavení Safari](./media/msal-js-known-issue-safari-browser/safari.png)
 
-Je potřeba zpracovat `acquireTokenSilent` selhání s interaktivním získat token volání, které se zobrazí výzva k přihlášení.
-Aby se zabránilo opakované přihlášení, můžete implementovat přístup je pro zpracování `acquireTokenSilent` selhání a poskytnout možnost zakázat nastavení ITP v prohlížeči Safari před pokračováním interaktivní volání uživatele. Jakmile je zakázáno, by být úspěšné následné tiché token obnovení.
+U interaktivního volání metody získat, které vyzve uživatele k přihlášení, budete muset `acquireTokenSilent` selhání zpracovat.
+Abyste se vyhnuli opakovaným přihlášením, je přístup, který můžete implementovat, sloužit k tomu, aby `acquireTokenSilent` selhání a poskytoval uživateli možnost zakázat nastavení ITP v Safari před pokračováním v interaktivním volání. Jakmile je nastavení zakázané, další obnovení s bezobslužným tokenem by mělo být úspěšné.

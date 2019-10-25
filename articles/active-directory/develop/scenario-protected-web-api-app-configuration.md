@@ -1,5 +1,6 @@
 ---
-title: Chráněné webové rozhraní API – konfigurace kódu aplikace | Azure
+title: Chráněné webové rozhraní API – konfigurace kódu aplikace
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet chráněné webové rozhraní API a konfigurovat kód vaší aplikace.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fdc30df1f932a35702b01d7146017c4ca82c91a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 49dc3b0542e3f5e24c556ed78c20b16c3a6f1796
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562329"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803703"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
@@ -29,7 +30,7 @@ Pokud chcete nakonfigurovat kód pro vaše chráněné webové rozhraní API, mu
 
 ## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>Co definuje rozhraní API ASP.NET/ASP.NET Core jako chráněná?
 
-Podobně jako webové aplikace jsou webová rozhraní API ASP.NET/ASP.NET Core "chráněná", protože jejich akce kontrol jsou předponou `[Authorize]` s atributem. To znamená, že akce kontroleru lze volat pouze v případě, že je rozhraní API voláno s identitou, která je autorizována.
+Podobně jako webové aplikace jsou webová rozhraní API ASP.NET/ASP.NET Core "chráněná", protože jejich akce kontrol jsou předponou atributu `[Authorize]`. To znamená, že akce kontroleru lze volat pouze v případě, že je rozhraní API voláno s identitou, která je autorizována.
 
 Vezměte v úvahu následující otázky:
 
@@ -91,7 +92,7 @@ Tato část popisuje, jak nakonfigurovat nosný token.
 
 ### <a name="code-initialization"></a>Inicializace kódu
 
-Když se aplikace zavolá na akci kontroleru, která obsahuje `[Authorize]` atribut, ASP.NET/ASP.NET Core vyhledá nosný token v autorizační hlavičce žádosti o volání a extrahuje přístupový token. Token se pak přesměruje do middlewaru JwtBearer, který volá rozšíření Microsoft IdentityModel pro .NET.
+Když se aplikace zavolá na akci kontroleru, která obsahuje atribut `[Authorize]`, ASP.NET/ASP.NET Core vyhledá nosný token v autorizační hlavičce volajícího požadavku a extrahuje přístupový token. Token se pak přesměruje do middlewaru JwtBearer, který volá rozšíření Microsoft IdentityModel pro .NET.
 
 V ASP.NET Core se tento middleware Inicializuje v souboru Startup.cs:
 
@@ -129,7 +130,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 ## <a name="token-validation"></a>Ověření tokenu
 
-Middleware JwtBearer, jako je middleware OpenID Connect ve službě Web Apps, je `TokenValidationParameters` směrována nástrojem k ověření tokenu. Token se dešifruje (podle potřeby), deklarace se extrahují a ověří se podpis. Middleware potom ověří token tím, že zkontroluje tato data:
+Middleware JwtBearer, jako je middleware OpenID Connect ve službě Web Apps, je směrována `TokenValidationParameters` k ověření tokenu. Token se dešifruje (podle potřeby), deklarace se extrahují a ověří se podpis. Middleware potom ověří token tím, že zkontroluje tato data:
 
 - Cílí na webové rozhraní API (cílovou skupinu).
 - Vystavila se pro aplikaci, která má povoleno volání webového rozhraní API (sub).
@@ -141,7 +142,7 @@ Může se také jednat o zvláštní ověřování. Například je možné ově�
 
 ### <a name="validators"></a>Validátory
 
-Kroky ověření jsou zachyceny ve validátorech, které jsou všechny v [rozšíření Microsoft IdentityModel Extensions for .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) Open Source Library, v jednom zdrojovém souboru: [Microsoft. IdentityModel. Tokens/validátors. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
+Kroky ověření jsou zachyceny v validátorech, které jsou všechny v [rozšíření Microsoft IdentityModel Extensions for .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) Open Source Library, v jednom zdrojovém souboru: [Microsoft. IdentityModel. Tokens/validátors. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
 
 Validátory jsou popsány v této tabulce:
 
@@ -150,11 +151,11 @@ Validátory jsou popsány v této tabulce:
 | `ValidateAudience` | Ověří, jestli je token pro aplikaci, která ověřuje token (pro mě). |
 | `ValidateIssuer` | Zajišťuje, že token byl vydán důvěryhodnou službou STS (od někoho, kdo důvěřuje). |
 | `ValidateIssuerSigningKey` | Zajistí, že aplikace ověřující token důvěřuje klíči, který se použil k podepsání tokenu. (Zvláštní případ, kdy je klíč vložený do tokenu. Obvykle není nutné.) |
-| `ValidateLifetime` | Zajišťuje, že token je stále (nebo již) platný. Validátor kontroluje, zda je životnost tokenu (`notbefore` a `expires` deklarací identity) v rozsahu. |
+| `ValidateLifetime` | Zajišťuje, že token je stále (nebo již) platný. Validátor kontroluje, zda je doba života tokenu (`notbefore` a `expires` deklarace) v rozsahu. |
 | `ValidateSignature` | Zaručí, že token nebyl zfalšován. |
 | `ValidateTokenReplay` | Zajistí, že token nebude znovu přehráván. (Zvláštní případ pro některé protokoly použití Jednorázová) |
 
-Validátory jsou všechny přidruženy k vlastnostem `TokenValidationParameters` třídy, samy inicializované z konfigurace ASP.NET/ASP.NET Core. Ve většině případů nebudete muset parametry měnit. Pro aplikace, které nejsou jeden tenant, existuje jedna výjimka. (Tj. webové aplikace, které přijímají uživatele z jakékoli organizace nebo z osobních účtů Microsoft.) V takovém případě musí být Vystavitel ověřený.
+Validátory jsou všechny přidruženy k vlastnostem třídy `TokenValidationParameters`, která byla inicializována z konfigurace jádra ASP.NET/ASP.NET. Ve většině případů nebudete muset parametry měnit. Pro aplikace, které nejsou jeden tenant, existuje jedna výjimka. (Tj. webové aplikace, které přijímají uživatele z jakékoli organizace nebo z osobních účtů Microsoft.) V takovém případě musí být Vystavitel ověřený.
 
 ## <a name="next-steps"></a>Další kroky
 

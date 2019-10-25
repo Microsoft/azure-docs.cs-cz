@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65f3490e9cb62aa2d5c18b8fd564796dd6d3946c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: a312c39352f0d13b4354e7b0dfcd897bf4cc0992
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162424"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808467"
 ---
 # <a name="combined-security-information-registration-preview"></a>Registrace informací o kombinovaném zabezpečení (Preview)
 
@@ -34,7 +34,10 @@ Registrace informací o kombinovaném zabezpečení Azure AD není aktuálně do
 |     |
 
 > [!IMPORTANT]
-> Pro uživatele, kteří jsou povoleni pro původní verzi Preview i pro rozšířené kombinované registrační prostředí, se zobrazí nové chování. Uživatelům, kteří jsou u obou funkcí povoleni, se zobrazí pouze nové prostředí s profilem. Nový můj profil se zarovnává s vzhledem a chováním kombinované registrace a poskytuje uživatelům bezproblémové prostředí. Uživatelé můžou profil zobrazit kliknutím na [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+> Pro uživatele, kteří jsou povoleni pro původní verzi Preview i pro rozšířené kombinované registrační prostředí, se zobrazí nové chování. Uživatelům, kteří jsou u obou funkcí povoleni, se zobrazí pouze nové prostředí s profilem. Nový můj profil se zarovnává s vzhledem a chováním kombinované registrace a poskytuje uživatelům bezproblémové prostředí. Uživatelé uvidí svůj profil tak, že budou mít na [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+
+> [!NOTE] 
+> Při pokusu o přístup k možnosti informace o zabezpečení se může zobrazit chybová zpráva. Například "Bohužel vás nemůžeme přihlásit". V takovém případě potvrďte, že nemáte žádné konfigurační objekty nebo objekt zásad skupiny blokující soubory cookie třetích stran ve webovém prohlížeči. 
 
 Stránky s profilem jsou lokalizovány na základě nastavení jazyka počítače, který přistupuje k stránce. Microsoft ukládá nejnovější jazyk používaný v mezipaměti prohlížeče, takže následné pokusy o přístup ke stránkám se budou dál zobrazovat v posledním použitém jazyce. Pokud mezipaměť vymažete, stránky se znovu vykreslí. Pokud chcete vynutit určitý jazyk, můžete přidat `?lng=<language>` na konec adresy URL, kde `<language>` je kód jazyka, který chcete vykreslit.
 
@@ -44,15 +47,15 @@ Stránky s profilem jsou lokalizovány na základě nastavení jazyka počítač
 
 Kombinovaná registrace podporuje následující metody ověřování a akce:
 
-|   | Registrovat | Změnit | Odstranění |
+|   | Registrace | Změnit | Odstranit |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
 | Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
 | Hardwarový token | Ne | Ne | Ano |
-| Phone | Ano | Ano | Ano |
+| Telefon | Ano | Ano | Ano |
 | Alternativní telefon | Ano | Ano | Ano |
 | Telefon do kanceláře | Ne | Ne | Ne |
-| Email | Ano | Ano | Ano |
+| E-mail | Ano | Ano | Ano |
 | Bezpečnostní otázky | Ano | Ne | Ano |
 | Hesla aplikací | Ano | Ne | Ano |
 
@@ -84,15 +87,15 @@ Kombinovaná registrace respektuje zásady Multi-Factor Authentication a SSPR, p
 
 Tady je několik scénářů, ve kterých můžou být uživatelé vyzváni, aby zaregistrovali nebo aktualizovali své bezpečnostní údaje:
 
-- Multi-Factor Authentication registrace vynutila prostřednictvím Identity Protection: Uživatelům se zobrazí výzva k registraci během přihlašování. Registrují Multi-Factor Authentication metody a metody SSPR (Pokud je uživatel povolený pro SSPR).
-- Multi-Factor Authentication registrace vynutila prostřednictvím Multi-Factor Authentication pro jednotlivé uživatele: Uživatelům se zobrazí výzva k registraci během přihlašování. Registrují Multi-Factor Authentication metody a metody SSPR (Pokud je uživatel povolený pro SSPR).
-- Multi-Factor Authentication registrace vynutila prostřednictvím podmíněného přístupu nebo jiných zásad: Uživatelům se zobrazí výzva k registraci při použití prostředku, který vyžaduje Multi-Factor Authentication. Registrují Multi-Factor Authentication metody a metody SSPR (Pokud je uživatel povolený pro SSPR).
-- SSPR se vynutila registrace: Uživatelům se zobrazí výzva k registraci během přihlašování. Registrují pouze metody SSPR.
-- Vynutila se aktualizace SSPR: Uživatelé se musí podívat na své bezpečnostní údaje v intervalu nastaveném správcem. Uživatelům se zobrazí jejich informace a může potvrdit aktuální informace nebo provést změny v případě potřeby.
+- Multi-Factor Authentication registrace vynutila prostřednictvím Identity Protection: uživatelům se během přihlašování zobrazí výzva k registraci. Registrují Multi-Factor Authentication metody a metody SSPR (Pokud je uživatel povolený pro SSPR).
+- Multi-Factor Authentication registrace vynutila prostřednictvím Multi-Factor Authentication pro jednotlivé uživatele: během přihlašování se zobrazí výzva k registraci uživatelů. Registrují Multi-Factor Authentication metody a metody SSPR (Pokud je uživatel povolený pro SSPR).
+- Multi-Factor Authentication registrace vynutila prostřednictvím podmíněného přístupu nebo jiných zásad: uživatelům se zobrazí výzva k registraci při použití prostředku, který vyžaduje Multi-Factor Authentication. Registrují Multi-Factor Authentication metody a metody SSPR (Pokud je uživatel povolený pro SSPR).
+- SSPR registrace byla vynutila: uživatelům se během přihlašování zobrazí výzva k registraci. Registrují pouze metody SSPR.
+- Vynutila se aktualizace SSPR: uživatelům se vyžaduje, aby zkontrolovali své bezpečnostní údaje v intervalu nastaveném správcem. Uživatelům se zobrazí jejich informace a může potvrdit aktuální informace nebo provést změny v případě potřeby.
 
 Když se registrace vynutila, zobrazí se uživatelům minimální počet metod, které musí být v souladu se zásadami Multi-Factor Authentication a SSPR, od nejvíce po nejméně bezpečnou.
 
-Příklad:
+Například:
 
 - Uživatel je povolený pro SSPR. Zásada SSPR vyžadovala dvě metody resetování a povolení kódu mobilní aplikace, e-mailu a telefonu.
    - Tento uživatel je nutný k registraci dvou metod.
@@ -109,7 +112,7 @@ Pokud zásady SSPR vyžadují, aby si uživatelé zkontrolovali své bezpečnost
 
 ### <a name="manage-mode"></a>Režim správy
 
-Uživatelé mají přístup ke správě režimu tak, [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) že v něm nebo vyberou **bezpečnostní údaje** z mého profilu. Odtud mohou uživatelé přidávat metody, odstraňovat nebo měnit existující metody, měnit výchozí metodu a další.
+Uživatelé mají přístup ke správě režimu tak, že na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) nebo vyberou **bezpečnostní údaje** z mého profilu. Odtud mohou uživatelé přidávat metody, odstraňovat nebo měnit existující metody, měnit výchozí metodu a další.
 
 ## <a name="key-usage-scenarios"></a>Scénáře použití klíčů
 
@@ -123,7 +126,7 @@ Uživatel nenainstaloval všechny požadované bezpečnostní údaje a přejde n
 
 Správce vynutil registraci.
 
-Uživatel, který ještě nevytvořil všechny požadované bezpečnostní údaje, se dostane [https://myprofile.microsoft.com](https://myprofile.microsoft.com)do. Uživatel vybere v levém podokně **informace o zabezpečení** . Odtud se uživatel rozhodne přidat metodu, vybere některou z dostupných metod a postupuje podle pokynů k nastavení této metody. Po dokončení uživatel uvidí metodu, která se právě nastavila na stránce informace o zabezpečení.
+Uživatel, který ještě nevytvořil všechny požadované bezpečnostní údaje, přejde na [https://myprofile.microsoft.com](https://myprofile.microsoft.com). Uživatel vybere v levém podokně **informace o zabezpečení** . Odtud se uživatel rozhodne přidat metodu, vybere některou z dostupných metod a postupuje podle pokynů k nastavení této metody. Po dokončení uživatel uvidí metodu, která se právě nastavila na stránce informace o zabezpečení.
 
 ### <a name="delete-security-info-from-my-profile"></a>Odstranit informace o zabezpečení z mého profilu
 

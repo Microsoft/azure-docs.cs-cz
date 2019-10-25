@@ -1,22 +1,22 @@
 ---
-title: Skripty PowerShellu pomocí AZ. Search Module-Azure Search
-description: Vytvořte a nakonfigurujte službu Azure Search pomocí prostředí PowerShell. Službu můžete škálovat směrem nahoru nebo dolů, spravovat správce a dotazovat klíče rozhraní API a dotazovat se na informace o systému.
-author: HeidiSteen
+title: Skripty PowerShellu s použitím modulu AZ. Search
+titleSuffix: Azure Cognitive Search
+description: Vytvořte a nakonfigurujte službu Azure Kognitivní hledání pomocí prostředí PowerShell. Službu můžete škálovat směrem nahoru nebo dolů, spravovat správce a dotazovat klíče rozhraní API a dotazovat se na systémové informace.
 manager: nitinme
-services: search
-ms.service: search
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: heidist
-ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/04/2019
+ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331244"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793548"
 ---
-# <a name="manage-your-azure-search-service-with-powershell"></a>Správa služby Azure Search pomocí prostředí PowerShell
+# <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Správa služby Azure Kognitivní hledání pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
@@ -24,7 +24,7 @@ ms.locfileid: "72331244"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Rutiny a skripty prostředí PowerShell můžete spustit v systému Windows, Linux nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) a vytvořit a nakonfigurovat Azure Search. Modul **AZ. Search** rozšiřuje Azure PowerShell] o úplnou paritu [rozhraní REST api pro správu Azure Search](https://docs.microsoft.com/rest/api/searchmanagement). Pomocí Azure PowerShell a **AZ. Search**můžete provádět následující úlohy:
+Rutiny a skripty prostředí PowerShell můžete spustit v systému Windows, Linux nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) a vytvořit a nakonfigurovat Azure kognitivní hledání. Modul **AZ. Search** rozšiřuje Azure PowerShell] o úplnou paritu [rozhraní REST API pro správu Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchmanagement). Pomocí Azure PowerShell a **AZ. Search**můžete provádět následující úlohy:
 
 > [!div class="checklist"]
 > * [Vypíše všechny vyhledávací služby v rámci vašeho předplatného.](#list-search-services)
@@ -92,7 +92,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-search-services-in-your-subscription"></a>Vypíše všechny Azure Search služby v předplatném.
+## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Vypsat všechny služby Azure Kognitivní hledání ve vašem předplatném
 
 Následující příkazy jsou z [**AZ. Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)a vracejí informace o stávajících prostředcích a službách, které jsou už ve vašem předplatném zřízené. Pokud si nejste jisti, kolik služeb vyhledávání již bylo vytvořeno, tyto příkazy tyto příkazy vrátí, a tím ušetříte cestu k portálu.
 
@@ -201,7 +201,7 @@ Najednou můžete znovu vygenerovat jenom jednu, zadanou buď `primary` nebo `se
 
 V případě, že budete chtít znovu vygenerovat klíče bez aktualizace kódu klienta, požadavky, které používají starý klíč, nebudou úspěšné. Opětovné generování všech nových klíčů vám trvale nezamkne vaše služby a stále budete mít přístup ke službě prostřednictvím portálu. Po opětovném vygenerování primárního a sekundárního klíče můžete aktualizovat klientský kód tak, aby používal nové klíče a operace budou odpovídajícím způsobem pokračovat.
 
-Služba generuje hodnoty pro klíče rozhraní API. Nemůžete zadat vlastní klíč, který Azure Search použít. Podobně není k dispozici žádný uživatelsky definovaný název pro klíče rozhraní API pro správu. Odkazy na klíč jsou pevné řetězce, buď `primary` nebo `secondary`. 
+Služba generuje hodnoty pro klíče rozhraní API. Nemůžete zadat vlastní klíč pro použití Azure Kognitivní hledání. Podobně není k dispozici žádný uživatelsky definovaný název pro klíče rozhraní API pro správu. Odkazy na klíč jsou pevné řetězce, buď `primary` nebo `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
@@ -217,9 +217,9 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>Vytvoření nebo odstranění klíčů dotazů
 
-[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) se používá k vytváření [klíčů rozhraní API](search-security-api-keys.md) pro dotazování pro přístup z klientských aplikací do Azure Searchho indexu jenom pro čtení. Klíče dotazů se používají k ověření pro konkrétní index pro účely načítání výsledků hledání. Klíče dotazů neudělují přístup jen pro čtení k ostatním položkám ve službě, jako je index, zdroj dat nebo indexer.
+[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) se používá k vytváření [klíčů rozhraní API](search-security-api-keys.md) pro dotazování pro přístup jen pro čtení z klientských aplikací do indexu služby Azure kognitivní hledání. Klíče dotazů se používají k ověření pro konkrétní index pro účely načítání výsledků hledání. Klíče dotazů neudělují přístup jen pro čtení k ostatním položkám ve službě, jako je index, zdroj dat nebo indexer.
 
-Nelze zadat klíč, který má Azure Search použít. Služba vygeneruje klíče rozhraní API.
+Nemůžete poskytnout klíč pro použití Azure Kognitivní hledání. Služba vygeneruje klíče rozhraní API.
 
 ```azurepowershell-interactive
 New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
@@ -257,7 +257,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 Sestavení [indexu](search-what-is-an-index.md), [dotazování indexu](search-query-overview.md) pomocí portálu, rozhraní REST API nebo sady .NET SDK.
 
-* [Vytvoření indexu Azure Search v Azure Portal](search-create-index-portal.md)
+* [Vytvoření indexu služby Azure Kognitivní hledání v Azure Portal](search-create-index-portal.md)
 * [Nastavení indexeru pro načtení dat z jiných služeb](search-indexer-overview.md)
-* [Dotazování indexu Azure Search pomocí Průzkumníka služby Search v Azure Portal](search-explorer.md)
-* [Použití služby Azure Search v rozhraní .NET](search-howto-dotnet-sdk.md)
+* [Dotazování indexu služby Azure Kognitivní hledání pomocí Průzkumníka služby Search v Azure Portal](search-explorer.md)
+* [Jak používat Azure Kognitivní hledání v .NET](search-howto-dotnet-sdk.md)

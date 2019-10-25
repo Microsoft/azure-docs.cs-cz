@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
 ms.author: gwallace
-ms.openlocfilehash: e3e34ff9b5ce1c3a7b45468d22faddddf0c9a913
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: b8d195fba934ceae98af383b96a8c0d9a9b88c5f
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359145"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808086"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Trasování toku Cloud Services aplikace pomocí Azure Diagnostics
 Trasování je způsob, jak můžete monitorovat provádění aplikace, když je spuštěná. Třídy [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace), [System. Diagnostics. Debug](/dotnet/api/system.diagnostics.debug)a [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) můžete použít k zaznamenání informací o chybách a spouštění aplikací v protokolech, textových souborech nebo jiných zařízeních pro pozdější použití. výsledcích. Další informace o trasování najdete v tématu [trasování a instrumentace aplikací](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
@@ -22,9 +22,9 @@ Trasování je způsob, jak můžete monitorovat provádění aplikace, když je
 ## <a name="use-trace-statements-and-trace-switches"></a>Použití příkazů trasování a přepínačů trasování
 Implementujte trasování do aplikace Cloud Services přidáním [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) do konfigurace aplikace a provedením volání System. Diagnostics. Trace nebo System. Diagnostics. Debug v kódu aplikace. Použijte konfigurační soubor *App. config* pro role pracovního procesu a *Web. config* pro webové role. Když vytváříte novou hostovanou službu pomocí šablony sady Visual Studio, Azure Diagnostics je automaticky přidáno do projektu a DiagnosticMonitorTraceListener se přidá do příslušného konfiguračního souboru pro role, které přidáte.
 
-Informace o umístění příkazů trasování naleznete v tématu [How to: Přidejte příkazy trasování do kódu](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)aplikace.
+Informace o umístění příkazů trasování naleznete v tématu [How to: Add Trace Statements to Application Code](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
 
-Vložením [přepínačů trasování](/dotnet/framework/debug-trace-profile/trace-switches) do kódu můžete určit, zda trasování probíhá a jak rozsáhlý je. To vám umožní monitorovat stav aplikace v produkčním prostředí. To je obzvláště důležité v obchodní aplikaci, která používá více komponent spuštěných na více počítačích. Další informace najdete v tématu [jak: Konfigurace přepínačů](/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches)trasování.
+Vložením [přepínačů trasování](/dotnet/framework/debug-trace-profile/trace-switches) do kódu můžete určit, zda trasování probíhá a jak rozsáhlý je. To vám umožní monitorovat stav aplikace v produkčním prostředí. To je obzvláště důležité v obchodní aplikaci, která používá více komponent spuštěných na více počítačích. Další informace najdete v tématu [Postup: konfigurace přepínačů trasování](/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches).
 
 ## <a name="configure-the-trace-listener-in-an-azure-application"></a>Konfigurace naslouchacího procesu trasování v aplikaci Azure
 Trasování, ladění a TraceSource, vyžadují, abyste nastavili naslouchací procesy pro shromažďování a zaznamenávání odesílaných zpráv. Naslouchací procesy shromažďují, ukládají a směrují trasovací zprávy. Směrují výstup trasování do příslušného cíle, jako je protokol, okno nebo textový soubor. Azure Diagnostics používá třídu [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) .
@@ -64,11 +64,11 @@ Další informace o posluchačích naleznete v tématu [Trace Listeners](/dotnet
 Po dokončení kroků pro přidání naslouchacího procesu můžete do kódu přidat příkazy TRACE.
 
 ### <a name="to-add-trace-statement-to-your-code"></a>Přidání příkazu trace do kódu
-1. Otevřete zdrojový soubor pro aplikaci. Například \<soubor roleName >. cs pro roli pracovního procesu nebo webovou roli.
-2. Pokud ještě nebyl přidán, přidejte následující příkaz using:
+1. Otevřete zdrojový soubor pro aplikaci. Například \<RoleName > soubor. cs pro roli pracovního procesu nebo webovou roli.
+2. Přidejte následující direktivu using, pokud ještě nebyla přidána:
     ```
         using System.Diagnostics;
     ```
-3. Přidejte příkazy trasování, kde chcete zachytit informace o stavu aplikace. K formátování výstupu příkazu trace lze použít různé metody. Další informace najdete v tématu [jak: Přidejte příkazy trasování do kódu](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)aplikace.
+3. Přidejte příkazy trasování, kde chcete zachytit informace o stavu aplikace. K formátování výstupu příkazu trace lze použít různé metody. Další informace naleznete v tématu [Postupy: Přidání příkazů trasování do kódu aplikace](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
 4. Uložte zdrojový soubor.
 

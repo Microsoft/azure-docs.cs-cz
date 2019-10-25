@@ -1,22 +1,22 @@
 ---
-title: 'Rychlý Start: vytvoření indexu vyhledávání v jazyce Java pomocí rozhraní REST API – Azure Search'
-description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Java a rozhraní REST API pro Azure Search.
+title: 'Rychlý Start: vytvoření indexu vyhledávání v jazyce Java pomocí rozhraní REST API'
+titleSuffix: Azure Cognitive Search
+description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Java a rozhraní REST API služby Azure Kognitivní hledání.
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
-ms.service: search
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: 3f424f03f72e288994b05c4559bd42e6429760a8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 11/04/2019
+ms.openlocfilehash: 9f30c30276db6daa0b4afdf3e6bdd8e617dedc52
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166245"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792801"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Rychlý Start: vytvoření indexu Azure Search v jazyce Java pomocí rozhraní REST API
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v jazyce Java pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "72166245"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Vytvořte konzolovou aplikaci Java, která vytvoří, načte a zadá dotaz na index Azure Search pomocí [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)a [REST API služby Azure Search](/rest/api/searchservice/). Tento článek poskytuje podrobné pokyny k vytvoření aplikace. Případně můžete [Stáhnout a spustit kompletní aplikaci](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Vytvořte konzolovou aplikaci v jazyce Java, která vytvoří, načte a dotazuje index služby Azure Kognitivní hledání pomocí [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)a [REST API Azure kognitivní hledání](/rest/api/searchservice/). Tento článek poskytuje podrobné pokyny k vytvoření aplikace. Případně můžete [Stáhnout a spustit kompletní aplikaci](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -38,17 +38,17 @@ Pro sestavení a otestování této ukázky jsme použili následující softwar
 
 + [Sada SDK pro Java 11](/java/azure/jdk/?view=azure-java-stable)
 
-+ [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu.
++ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu.
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro každý požadavek. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro každý požadavek. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-2. V **nastavení**@no__t**klíčů**– 1 Získejte klíč správce s úplnými právy ke službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    Vytvořte také klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
@@ -133,9 +133,9 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 ### <a name="set-up-the-project-structure"></a>Nastavení struktury projektu
 
 1. Vyberte **soubor** > **strukturu projektu**.
-1. Vyberte **moduly**a rozbalte zdrojový strom pro přístup k obsahu složky `src` @ no__t-2 @ no__t-3.
-1. Ve složce `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 přidejte složky `app` a `service`. Provedete to tak, že vyberete složku `java`, stisknete ALT + INSERT a potom zadáte název složky.
-1. Ve složce `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 přidejte složky `app` a `service`.
+1. Vyberte **moduly**a rozbalte zdrojový strom pro přístup k obsahu >  složky`main` `src`.
+1. Do složky `src` >  `main`složce > `java` přidejte složky `app` a `service`. Provedete to tak, že vyberete složku `java`, stisknete ALT + INSERT a potom zadáte název složky.
+1. Do složky `src` >  `main`složce >`resources` přidejte složky `app` a `service`.
 
     Až skončíte, strom projektu by měl vypadat podobně jako na následujícím obrázku.
 
@@ -143,9 +143,9 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 1. Kliknutím na tlačítko **OK** zavřete okno.
 
-### <a name="add-azure-search-service-information"></a>Přidat informace o Azure Search službě
+### <a name="add-azure-cognitive-search-service-information"></a>Přidání informací o službě Azure Kognitivní hledání
 
-1. V okně **projektu** rozbalte zdrojový strom, abyste měli přístup ke složce `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 a přidejte soubor `config.properties`. Provedete to tak, že vyberete složku `app`, stisknete klávesy ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projekt** rozbalte strom zdrojového stromu pro přístup ke složce `src` >  `main` >`resources` > `app` a přidejte soubor `config.properties`. Provedete to tak, že vyberete složku `app`, stisknete klávesy ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
 
 1. Zkopírujte následující nastavení do nového souboru a nahraďte `<YOUR-SEARCH-SERVICE-NAME>`, `<YOUR-ADMIN-KEY>` a `<YOUR-QUERY-KEY>` s názvem služby a klíči. Pokud je koncový bod služby `https://mydemo.search.windows.net`, název služby by byl "mydemo".
 
@@ -159,7 +159,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="add-the-main-method"></a>Přidat metodu Main
 
-1. Do složky `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 přidejte třídu `App`. Provedete to tak, že vyberete složku `app`, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
+1. Do složky `src` >  `main` > složce`java` > `app` přidejte třídu `App`. Provedete to tak, že vyberete složku `app`, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
 1. Otevřete třídu `App` a nahraďte obsah následujícím kódem. Tento kód obsahuje metodu `main`. 
 
     Nekomentovaný kód přečte parametry vyhledávací služby a použije je k vytvoření instance klienta služby Search Service. Kód klienta služby Search se přidá do další části.
@@ -258,8 +258,8 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="add-the-http-operations"></a>Přidat operace HTTP
 
-1. Ve složce `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 přidejte třídu @ no__t-7. Provedete to tak, že vyberete složku `service`, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
-1. Otevřete třídu `SearchServiceClient` a nahraďte obsah následujícím kódem. Tento kód poskytuje operace HTTP vyžadované k použití REST API Azure Search. Další metody pro vytvoření indexu, nahrání dokumentů a dotazování indexu budou přidány v pozdější části.
+1. Do složky `src` >  `main` > složce`java` > `service` přidejte třídu`SearchServiceClient`. Provedete to tak, že vyberete složku `service`, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
+1. Otevřete třídu `SearchServiceClient` a nahraďte obsah následujícím kódem. Tento kód poskytuje operace HTTP vyžadované k použití REST API Azure Kognitivní hledání. Další metody pro vytvoření indexu, nahrání dokumentů a dotazování indexu budou přidány v pozdější části.
 
     ```java
     package main.java.service;
@@ -374,7 +374,8 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
     ![Adresářová struktura projektu](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
-1. Otevřete okno nástroje **Maven** a spusťte tento Maven cíl: `verify exec:java` @ no__t-2 @ No__t-3Execute Maven cíl: Ověřte exec: Java @ no__t-4
+1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java`
+![spustit cíl Maven: ověřit exec: Java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
 
 Po dokončení zpracování vyhledejte zprávu o úspěchu sestavení následovaný nulou (0) ukončovacím kódem.
 
@@ -382,7 +383,7 @@ Po dokončení zpracování vyhledejte zprávu o úspěchu sestavení následova
 
 Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Příkladem jednoduchého pole jsou "hotely" nebo "Description". Pole adresa je komplexní pole, protože obsahuje podpole, jako je například ulice a město. V tomto rychlém startu je definice indexu určena pomocí formátu JSON.
 
-1. V okně **projektu** rozbalte zdrojový strom, abyste měli přístup ke složce `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 a přidejte soubor `index.json`. Provedete to tak, že vyberete složku `app`, stisknete klávesy ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projekt** rozbalte strom zdrojového stromu pro přístup ke složce `src` >  `main` >`resources` > `service` a přidejte soubor `index.json`. Provedete to tak, že vyberete složku `app`, stisknete klávesy ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
 
 1. Otevřete soubor `index.json` a vložte následující definici indexu.
 
@@ -511,9 +512,9 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
 
     Název indexu bude "hotely-rychlý Start". Atributy polí indexu určují, jak lze v aplikaci vyhledat indexovaná data. Například atribut `IsSearchable` musí být přiřazen každému poli, které by mělo být zahrnuto do fulltextového vyhledávání. Další informace o atributech naleznete v tématu [kolekce polí a atributy polí](search-what-is-an-index.md#fields-collection).
     
-    Pole `Description` v tomto indexu používá volitelnou vlastnost `analyzer` k přepsání výchozího analyzátoru jazyka Lucene. Pole `Description_fr` používá francouzskou analýzu Lucene `fr.lucene`, protože ukládá francouzský text. @No__t-0 používá volitelnou jazykovou analyzátoru Microsoft en. Lucene. Další informace o analyzátorech najdete v tématu [analyzátory pro zpracování textu v Azure Search](search-analyzers.md).
+    Pole `Description` v tomto indexu používá volitelnou vlastnost `analyzer` k přepsání výchozího analyzátoru jazyka Lucene. `Description_fr` pole používá `fr.lucene`u pro francouzštinu Lucene, protože ukládá francouzský text. `Description` používá volitelnou jazykovou analyzátoru Microsoft en. Lucene. Další informace o analyzátorech najdete v tématu [analyzátory pro zpracování textu v Azure kognitivní hledání](search-analyzers.md).
 
-1. Do třídy `SearchServiceClient` přidejte následující kód. Tyto metody sestavují Azure Search adresy URL služby REST, které vytvářejí a odstraňují index a které určují, jestli index existuje. Metody také vytvářejí požadavek protokolu HTTP.
+1. Do třídy `SearchServiceClient` přidejte následující kód. Tyto metody sestavují adresy URL služby Azure Kognitivní hledání REST, které vytvářejí a odstraňují index a které určují, jestli index existuje. Metody také vytvářejí požadavek protokolu HTTP.
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -569,7 +570,7 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
     
 ## <a name="2---load-documents"></a>2\. načtení dokumentů
 
-1. V okně **projektu** rozbalte zdrojový strom, abyste měli přístup ke složce `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 a přidejte soubor `hotels.json`. Provedete to tak, že vyberete složku `app`, stisknete klávesy ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projekt** rozbalte strom zdrojového stromu pro přístup ke složce `src` >  `main` >`resources` > `service` a přidejte soubor `hotels.json`. Provedete to tak, že vyberete složku `app`, stisknete klávesy ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
 1. Do souboru vložte následující hotelové dokumenty.
 
     ```json
@@ -693,9 +694,9 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
 
 Teď, když jste načetli dokumenty hotelů, můžete vytvořit vyhledávací dotazy pro přístup k datům hotelů.
 
-1. Do třídy `SearchServiceClient` přidejte následující kód. Tento kód sestaví Azure Search adresy URL služby REST pro hledání indexovaných dat a vytiskne výsledky hledání.
+1. Do třídy `SearchServiceClient` přidejte následující kód. Tento kód sestaví adresy URL služby Azure Kognitivní hledání REST pro hledání indexovaných dat a vytiskne výsledky hledání.
 
-    Třída `SearchOptions` a metoda `createSearchOptions` umožňují určit podmnožinu dostupných možností dotazu REST API Azure Search. Další informace o možnostech dotazů REST API naleznete v tématu [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents).
+    Třída `SearchOptions` a metoda `createSearchOptions` umožňují zadat podmnožinu dostupných možností dotazu Azure Kognitivní hledání REST API. Další informace o možnostech dotazů REST API najdete v tématu [Search Documents (Azure Kognitivní hledání REST API)](/rest/api/searchservice/search-documents).
 
     Metoda `SearchPlus` vytvoří adresu URL vyhledávacího dotazu, provede požadavek hledání a pak výsledky vytiskne do konzoly. 
 

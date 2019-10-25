@@ -1,5 +1,6 @@
 ---
-title: Řešení potíží s MSAL pro cílení na C | Platforma Microsoft identity
+title: Řešení potíží s MSAL pro cílení na jazyk C
+titleSuffix: Microsoft identity platform
 description: Přečtěte si, co dělat s různými problémy pomocí certifikátů SSL s MSAL. Cíl – knihovna C.
 services: active-directory
 documentationcenter: ''
@@ -17,22 +18,22 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76892686beec8ea18d56166519353fb5a2495124
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: fc918502cd252b4e53af8bcbd209a8387ef4d8c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268905"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803667"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Postup: Řešení potíží s MSAL pro iOS a macOS SSL
+# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Postupy: řešení potíží s MSAL pro iOS a macOS SSL
 
 Tento článek poskytuje informace, které vám pomůžou při řešení problémů, ke kterým může docházet při používání [knihovny Microsoft Authentication Library (MSAL) pro iOS a MacOS](reference-v2-libraries.md) .
 
 ## <a name="network-issues"></a>Problémy se sítí
 
-**Chyba-1200**: "Došlo k chybě SSL a nelze vytvořit zabezpečené připojení k serveru."
+**Chyba-1200**: došlo k chybě SSL a zabezpečené připojení k serveru nelze vytvořit.
 
-Tato chyba znamená, že připojení není zabezpečené. K tomu dojde, pokud je certifikát neplatný. Další informace, včetně toho, který server selhává při kontrole SSL, najdete `NSURLErrorFailingURLErrorKey` `userInfo` ve slovníku objektu Error.
+Tato chyba znamená, že připojení není zabezpečené. K tomu dojde, pokud je certifikát neplatný. Další informace, včetně toho, který server selhává při kontrole SSL, najdete v tématu `NSURLErrorFailingURLErrorKey` ve slovníku `userInfo` objektu Error.
 
 Tato chyba pochází ze síťové knihovny společnosti Apple. Úplný seznam kódů chyb NSURL je v NSURLError. h v sadách SDK pro macOS a iOS. Další podrobnosti o této chybě najdete v tématu [adresy URL při načítání kódů chyb systému](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc).
 

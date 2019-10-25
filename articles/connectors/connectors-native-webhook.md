@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 36b0ea7233b449584bd83450b45276da5baa135b
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: ee86f53795b1b3e7bd61480a490d4e18c844d4c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264340"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804257"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Vytváření a spouštění automatizovaných pracovních postupů založených na událostech pomocí webhooků HTTP v Azure Logic Apps
 
@@ -47,9 +47,9 @@ Další informace najdete v těchto tématech:
 * [Webhooky a předplatná](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
 * [Vytváření vlastních rozhraní API, která podporují Webhook](../logic-apps/logic-apps-create-api-app.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * Adresa URL již nasazeného koncového bodu nebo rozhraní API, který podporuje pro [triggery Webhooku v aplikacích Logic Apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers) nebo [Webhooku v akcích](../logic-apps/logic-apps-create-api-app.md#webhook-actions) Webhooku v aplikacích logiky, podle potřeby
 
@@ -61,7 +61,7 @@ Další informace najdete v těchto tématech:
 
 Tato integrovaná aktivační událost zaregistruje adresu URL zpětného volání se zadanou službou a počká, až tato služba pošle do této adresy URL požadavek HTTP POST. Když dojde k této události, Trigger se aktivuje a okamžitě spustí aplikaci logiky.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V Návrháři zadejte do vyhledávacího pole "Webhook http" jako filtr. V seznamu **triggery** vyberte aktivační událost **http Webhooku** .
 
@@ -75,7 +75,7 @@ Tato integrovaná aktivační událost zaregistruje adresu URL zpětného volán
 
 1. Chcete-li přidat další dostupné parametry, otevřete seznam **Přidat nový parametr** a vyberte požadované parametry.
 
-   Další informace o typech ověřování dostupných pro Webhook HTTP najdete v tématu [ověřování triggerů a akcí http](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Další informace o typech ověřování dostupných pro Webhook HTTP najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Pokračujte v vytváření pracovního postupu aplikace logiky s akcemi, které se spustí, když se Trigger aktivuje.
 
@@ -89,7 +89,7 @@ Tato integrovaná aktivační událost zaregistruje adresu URL zpětného volán
 
 Tato Vestavěná akce zaregistruje adresu URL zpětného volání se zadanou službou, pozastaví pracovní postup aplikace logiky a počká, až tato služba odešle požadavek HTTP POST do této adresy URL. Když dojde k této události, akce pokračuje v běhu aplikace logiky.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
    V tomto příkladu se jako první krok používá Trigger Webhooku HTTP.
 
@@ -111,11 +111,11 @@ Tato Vestavěná akce zaregistruje adresu URL zpětného volání se zadanou slu
 
 1. Chcete-li přidat další dostupné parametry, otevřete seznam **Přidat nový parametr** a vyberte požadované parametry.
 
-   Další informace o typech ověřování dostupných pro Webhook HTTP najdete v tématu [ověřování triggerů a akcí http](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Další informace o typech ověřování dostupných pro Webhook HTTP najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Až budete hotovi, nezapomeňte uložit aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-## <a name="connector-reference"></a>Odkaz na konektor
+## <a name="connector-reference"></a>Referenční informace ke konektorům
 
 Další informace o parametrech Trigger a Action, které jsou podobné ostatním, najdete v tématu [parametry Webhooku protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger).
 
@@ -125,18 +125,18 @@ Zde jsou další informace o výstupech z triggeru nebo akce Webhooku HTTP, kter
 
 | Název vlastnosti | Typ | Popis |
 |---------------|------|-------------|
-| záhlaví | odkazy objektů | Hlavičky z požadavku |
-| těles | odkazy objektů | JSON – objekt | Objekt s obsahem textu z požadavku |
+| Záhlaví | object | Hlavičky z požadavku |
+| těles | object | Objekt JSON | Objekt s obsahem textu z požadavku |
 | Stavový kód | int | Stavový kód z požadavku |
 |||
 
-| Stavový kód | Popis |
+| Kód stavu | Popis |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Přijata |
 | 400 | Chybný požadavek |
-| 401 | Přístupu |
-| 403 | Zakázán |
+| 401 | Neautorizováno |
+| 403 | Forbidden |
 | 404 | Nenalezeno |
 | 500 | Došlo k vnitřní chybě serveru. Došlo k neznámé chybě. |
 |||

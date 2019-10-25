@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5738161e88c42f4d4033fab091d8e8c8d7162042
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9eba76d78c2070f03ed835cdf2bf303ed72b1f7f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301721"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801859"
 ---
 # <a name="developers-guide-to-durable-entities-in-net-preview"></a>Příručka pro vývojáře k trvalým entitám v rozhraní .NET (Preview)
 
@@ -120,7 +120,7 @@ Můžete například upravit entitu čítače, aby spustila orchestraci, když p
 K entitám založeným na třídě lze získat přímý pøístup pomocí explicitních řetězcových názvů pro entitu a její operace. Níže uvádíme několik příkladů; Podrobnější vysvětlení základních konceptů (jako jsou signály vs. volání) najdete v diskuzi v tématu věnovaném [přístupu k entitám](durable-functions-entities.md#accessing-entities). 
 
 > [!NOTE]
-> Pokud je to možné, doporučujeme přistoupit [k entitám prostřednictvím rozhraní](), protože poskytuje další kontrolu typu.
+> Pokud je to možné, doporučujeme přistoupit [k entitám prostřednictvím rozhraní](#accessing-entities-through-interfaces), protože poskytuje další kontrolu typu.
 
 ### <a name="example-client-signals-entity"></a>Příklad: Client – signály entit
 
@@ -313,10 +313,10 @@ public class User
 ### <a name="serialization-attributes"></a>Atributy serializace
 
 V předchozím příkladu jsme se rozhodli zahrnout několik atributů, aby se podkladová serializace lépe zobrazila:
-- Třídu přiřadíme pomocí `[JsonObject(MemberSerialization.OptIn)]`, abychom nás upozornili, že třída musí být serializovatelný a aby zachovala pouze členy, které jsou explicitně označeny jako vlastnosti JSON.
--  Pole, která se mají zachovat, dodáte `[JsonProperty("name")]`, abyste nás upozornili, že pole je součástí trvalého stavu entity, a pokud chcete zadat název vlastnosti, která se má použít v reprezentaci JSON.
+- Třídu přiřadíme `[JsonObject(MemberSerialization.OptIn)]`, abychom nás upozornili, že třída musí být serializovatelný a aby zachovala pouze členy, které jsou explicitně označeny jako vlastnosti JSON.
+-  Přidáváme pole, která se mají zachovat s `[JsonProperty("name")]` k upozornění, že pole je součástí trvalého stavu entity a určuje název vlastnosti, která se má použít v reprezentaci JSON.
 
-Tyto atributy se ale nevyžadují. jiné konvence nebo atributy jsou povoleny, pokud pracují s Json.NET. Například jedna může používat atributy `[DataContract]` nebo vůbec žádné atributy:
+Tyto atributy se ale nevyžadují. jiné konvence nebo atributy jsou povoleny, pokud pracují s Json.NET. Například jedna může používat atributy `[DataContract]`, nebo vůbec žádné atributy:
 
 ```csharp
 [DataContract]

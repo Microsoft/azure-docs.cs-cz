@@ -1,5 +1,6 @@
 ---
 title: Ověřování pomocí Azure Active Directory v národních cloudech
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o registraci aplikací a koncových bodech ověřování pro národní cloudy.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 70f1f80744043893dd7206bc6388b8e080c07d0f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135863"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803885"
 ---
 # <a name="national-clouds"></a>Národní cloudy
 
@@ -31,7 +32,7 @@ Národní cloudy jsou fyzicky izolované instancemi Azure. Tyto oblasti Azure js
 Zahrnutí globálního cloudu Azure Active Directory (Azure AD) je nasazeno v následujících národních cloudech:  
 
 - Azure Government
-- Azure Germany
+- Azure (Německo)
 - Azure China 21Vianet
 
 Národní cloudy jsou jedinečné a oddělené prostředí z globálního úložiště Azure. Je důležité si uvědomit klíčové rozdíly při vývoji aplikace pro tato prostředí. Mezi rozdíly patří registrace aplikací, získávání tokenů a konfigurace koncových bodů.
@@ -64,7 +65,7 @@ V následující tabulce jsou uvedené základní adresy URL pro koncové body s
 
 Pomocí základní adresy URL specifické pro danou oblast můžete vymezit požadavky na ověřování Azure AD nebo koncové body tokenu. Například pro Azure Německo:
 
-  - Běžný koncový bod autorizace `https://login.microsoftonline.de/common/oauth2/authorize`je.
+  - Je `https://login.microsoftonline.de/common/oauth2/authorize`běžný koncový bod autorizace.
   - Společný koncový bod tokenu je `https://login.microsoftonline.de/common/oauth2/token`.
 
 U aplikací pro jednoho tenanta nahraďte "Common" v předchozích adresách URL ID tenanta nebo názvem. Příklad: `https://login.microsoftonline.de/contoso.com`.
@@ -78,11 +79,11 @@ Informace o tom, jak volat rozhraní API Microsoft Graph v národním cloudovém
 
 Pokud se chcete dozvědět, jak vytvořit aplikaci pomocí platformy Microsoft identity, postupujte podle [kurzu MSAL (Microsoft Authentication Library)](msal-national-cloud.md). Konkrétně se tato aplikace bude přihlašovat uživateli a získat přístupový token pro volání rozhraní Microsoft Graph API.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace pro:
+Další informace:
 
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/)
 - [Azure Německo](https://docs.microsoft.com/azure/germany/)
 - [Základy ověřování Azure AD](authentication-scenarios.md)

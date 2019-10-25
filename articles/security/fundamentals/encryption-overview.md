@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003940"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804040"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování Azure
 
 Tento článek poskytuje přehled o tom, jak se šifrování používá v Microsoft Azure. Pokrývá hlavní oblasti šifrování, včetně šifrování v klidovém umístění, šifrování v letu a správy klíčů pomocí Azure Key Vault. Každá část obsahuje odkazy na podrobnější informace.
 
-## <a name="encryption-of-data-at-rest"></a>Šifrování dat v klidu
+## <a name="encryption-of-data-at-rest"></a>Šifrování neaktivních uložených dat
 
 Uložená data obsahují informace, které se nacházejí v trvalém úložišti na fyzických médiích v libovolném digitálním formátu. Médium může zahrnovat soubory na magnetických nebo optických médiích, Archivovaná data a zálohy dat. Microsoft Azure nabízí nejrůznější řešení pro ukládání dat, která vyhovují různým potřebám, včetně souborů, disků, objektů BLOB a tabulkového úložiště. Microsoft taky poskytuje šifrování pro ochranu [Azure SQL Database](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md)a Azure Data Lake.
 
@@ -51,15 +51,15 @@ Při šifrování na straně klienta nemají Poskytovatelé cloudových služeb 
 
 Tři modely šifrování na straně serveru nabízejí různé charakteristiky správy klíčů, které si můžete vybrat podle svých požadavků:
 
-- **Klíče spravované službou**: Poskytuje kombinaci řízení a pohodlí s nízkou režií.
+- **Klíče spravované službou**: poskytuje kombinaci řízení a pohodlí s nízkou režií.
 
-- **Klíče spravované zákazníkem**: Poskytuje kontrolu nad klíči, včetně podpory BYOK (Přineste si vlastní klíče), nebo umožňuje vygenerovat nové.
+- **Klíče spravované zákazníkem**: poskytuje kontrolu nad klíči, včetně podpory BYOK (Přineste si vlastní klíče), nebo umožňuje vygenerovat nové.
 
-- **Klíče spravované službou v hardwaru ovládaném zákazníkem**: Umožňuje spravovat klíče ve vašem vlastním úložišti, a to mimo řízení společnosti Microsoft. Tato vlastnost se nazývá hostitel vlastního klíče (HYOK). Konfigurace je ale komplexní a většina služeb Azure tento model nepodporuje.
+- **Klíče spravované službou v hardwaru ovládaném zákazníkem**: umožňuje spravovat klíče ve vašem vlastním úložišti, mimo kontrolu společnosti Microsoft. Tato vlastnost se nazývá hostitel vlastního klíče (HYOK). Konfigurace je ale komplexní a většina služeb Azure tento model nepodporuje.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Virtuální počítače s Windows a Linuxem můžete chránit pomocí služby [Azure Disk Encryption](/azure/security/azure-security-disk-encryption), která využívá technologii [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) k ochraně disků a datových disků operačního systému pomocí úplného šifrování svazku.
+Virtuální počítače s Windows a Linuxem můžete chránit pomocí služby [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss), která využívá technologii [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) k ochraně disků a datových disků operačního systému pomocí úplného šifrování svazku.
 
 Šifrovací klíče a tajné kódy jsou v [předplatném Azure Key Vault](../../key-vault/key-vault-overview.md)chráněny. Pomocí služby Azure Backup můžete zálohovat a obnovovat šifrované virtuální počítače, které používají konfiguraci klíčového šifrovacího klíče (KEK).
 
@@ -79,7 +79,7 @@ Další informace o a stažení balíčku klientské knihovny pro rozhraní .NET
 
 Pokud používáte šifrování na straně klienta s Key Vault, vaše data se šifrují pomocí jednorázového šifrovacího klíče symetrického obsahu (CEK), který je vygenerován Azure Storage klientské sady SDK. CEK je zašifrovaný pomocí klíčového šifrovacího klíče (KEK), který může být buď symetrický klíč, nebo asymetrický klíčový pár. Můžete ji místně spravovat nebo ji uložit v Key Vault. Šifrovaná data se pak nahrají do Azure Storage.
 
-Další informace o šifrování na straně klienta pomocí Key Vault a Začínáme s návody najdete v tématu [kurz: Šifrování a dešifrování objektů BLOB v Azure Storage pomocí Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
+Další informace o šifrování na straně klienta pomocí Key Vault a Začínáme s postupy najdete v tématu [kurz: šifrování a dešifrování objektů BLOB v Azure Storage pomocí Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 
 Nakonec můžete použít také klientskou knihovnu Azure Storage pro jazyk Java k provedení šifrování na straně klienta před odesláním dat do Azure Storage a dešifrováním dat při jejich stažení do klienta. Tato knihovna také podporuje integraci s [Key Vault](https://azure.microsoft.com/services/key-vault/) pro správu klíčů účtu úložiště.
 
@@ -105,7 +105,7 @@ CLE má integrované funkce, které můžete použít k šifrování dat pomocí
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB šifrování databáze
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) je globálně distribuovaná databáze Microsoftu pro více modelů. Uživatelská data uložená v Cosmos DB v nestálém úložišti (jednotky SSD) se standardně šifrují. Neexistují žádné ovládací prvky, které by bylo možné zapnout nebo vypnout. Šifrování v klidovém stavu je implementovaný s využitím řadu bezpečnostních technologií, včetně systémů zabezpečené úložiště klíčů, šifrované sítě a rozhraní API kryptografických. Šifrovací klíče spravuje Microsoft a jsou otočené podle interních pokynů Microsoftu.
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) je globálně distribuovaná databáze Microsoftu pro více modelů. Uživatelská data uložená v Cosmos DB v nestálém úložišti (jednotky SSD) se standardně šifrují. Neexistují žádné ovládací prvky, které by bylo možné zapnout nebo vypnout. Šifrování v klidovém stavu se implementuje pomocí řady bezpečnostních technologií, včetně zabezpečených systémů úložiště klíčů, šifrovaných sítí a kryptografických rozhraní API. Šifrovací klíče spravuje Microsoft a jsou otočené podle interních pokynů Microsoftu.
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Šifrování neaktivních umístění v Data Lake
 
@@ -121,7 +121,7 @@ Azure nabízí řadu mechanismů pro zachování privátních dat při jejich p�
 
 Microsoft používá protokol TLS ( [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) ) k ochraně dat při cestování mezi Cloud Services a zákazníky. Datová centra Microsoftu vyjednávají připojení TLS k klientským systémům, které se připojují ke službám Azure. Protokol TLS zajišťuje silné ověřování, soukromí zpráv a integritu (povolení detekce manipulace, zachycení a padělání zpráv), interoperability, flexibility algoritmů a snadné nasazení a použití.
 
-[Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) chrání připojení mezi klientskými systémy zákazníků a cloudovou službou Microsoftu pomocí jedinečných klíčů. Připojení také používají délky šifrovacího klíče 2 048 založeného na šifrování RSA. Tato kombinace usnadňuje uživatelům zachycení a přístup k datům, která se přepravují.
+PFS ( [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) ) chrání připojení mezi klientskými systémy zákazníků a cloudovou službou Microsoftu pomocí jedinečných klíčů. Připojení také používají délky šifrovacího klíče 2 048 založeného na šifrování RSA. Tato kombinace usnadňuje uživatelům zachycení a přístup k datům, která se přepravují.
 
 ### <a name="azure-storage-transactions"></a>Transakce Azure Storage
 
@@ -181,7 +181,7 @@ Připojení brány VPN typu Site-to-site můžete použít k připojení místn�
 
 Připojení VPN typu Site-to-site k virtuální síti můžete nakonfigurovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Další informace naleznete v tématu:
+Další informace:
 
 [Vytvoření připojení typu Site-to-site v Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
@@ -201,7 +201,7 @@ Další informace o šifrování dat při přenosu v Data Lake najdete v tématu
 
 Key Vault zbavuje organizace nutnost konfigurovat, opravovat a udržovat moduly hardwarového zabezpečení (HSM) a software pro správu klíčů. Při použití Key Vault zachováte řízení. Microsoft nikdy nevidí vaše klíče a aplikace k nim nemají přímý přístup. Můžete také importovat nebo generovat klíče v HSM.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přehled zabezpečení Azure](get-started-overview.md)
 - [Přehled zabezpečení sítě Azure](network-overview.md)

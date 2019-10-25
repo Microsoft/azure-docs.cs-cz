@@ -1,5 +1,5 @@
 ---
-title: Konfigurace nastavení role Azure AD v PIM-Azure Active Directory | Microsoft Docs
+title: Konfigurace nastavení role Azure AD v Privileged Identity Management-Azure Active Directory | Microsoft Docs
 description: Přečtěte si, jak nakonfigurovat nastavení role Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 05/31/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9252e3bb8ccddb810074b485f6f073f1bda3f05
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: cff298e24ac185767e6290e396818ccece7b9b55
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804436"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809155"
 ---
-# <a name="configure-azure-ad-role-settings-in-pim"></a>Konfigurace nastavení role Azure AD v PIM
+# <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role Azure AD v Privileged Identity Management
 
-Správce privilegovaných rolí může ve své organizaci přizpůsobit Azure Active Directory (Azure AD) Privileged Identity Management (PIM), včetně změny prostředí pro uživatele, který aktivuje přiřazení oprávněné role.
+Správce privilegovaných rolí může přizpůsobovat Privileged Identity Management (PIM) ve své organizaci Azure Active Directory (Azure AD), a to včetně změny prostředí pro uživatele, který aktivuje přiřazení oprávněné role.
 
 ## <a name="open-role-settings"></a>Otevřít nastavení role
 
@@ -45,77 +45,74 @@ Pomocí těchto kroků otevřete nastavení role Azure AD.
 
     Na stránce nastavení pro každou roli existuje několik nastavení, která můžete konfigurovat. Tato nastavení mají vliv jenom na uživatele, kteří jsou **oprávněná** přiřazení, ne na **trvalá** přiřazení.
 
-## <a name="activations"></a>Aktivace
+## <a name="activations"></a>Aktivací
 
 Pomocí posuvníku **Aktivace** nastavte maximální dobu v hodinách, po kterou role zůstane aktivní, než vyprší její platnost. Tato hodnota může být v rozmezí od 1 do 72 hodin.
 
 ## <a name="notifications"></a>Oznámení
 
-Pomocí přepínače **oznámení** určete, jestli budou správci dostávat e-mailová oznámení, když se role aktivují. To může být užitečné při detekci neautorizovaných nebo illegitimatech aktivací.
+Pomocí přepínače **oznámení** určete, jestli budou správci dostávat e-mailová oznámení, když se role aktivují. Toto oznámení může být užitečné při zjišťování neautorizovaných nebo illegitimatech aktivací.
 
 Když je nastavená možnost **Povolit**, odesílají se oznámení na:
 
-- Správce privilegované role
+- Správce privilegovaných rolí
 - Správce zabezpečení
 - Globální správce
 
-Další informace najdete v tématu [e-mailová oznámení v PIM](pim-email-notifications.md).
+Další informace najdete v tématu [e-mailová oznámení v Privileged Identity Management](pim-email-notifications.md).
 
 ## <a name="incidentrequest-ticket"></a>Lístek incidentu nebo žádosti
 
-Pomocí přepínače **lístku incident/požadavek** určete, jestli se při aktivaci své role mají vyžadovat oprávnění správci, aby zahrnuli číslo lístku. To může být užitečné při provádění auditů přístupu k rolím.
+Použijte přepínač **lístku incident/požadavek** , který vyžádá oprávněným správcům, aby při aktivaci jejich role zahrnuli číslo lístku. Tento postup může zvýšit efektivitu přístupu k rolím.
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Pomocí přepínače **Multi-Factor Authentication** určete, jestli se má vyžadovat, aby uživatelé před aktivací svých rolí vyžadovali ověření své identity pomocí vícefaktorového ověřování. Stačí je pouze ověřit pro každou relaci, nikoli při každém aktivaci role. Při povolování vícefaktorového ověřování je potřeba mít na paměti dvě tipy:
+Pomocí přepínače **Multi-Factor Authentication** určete, jestli se má vyžadovat, aby uživatelé před aktivací svých rolí vyžadovali ověření své identity pomocí vícefaktorového ověřování. Musí jenom ověřit identitu jenom jednou pro každou relaci, a ne pokaždé, když se role aktivuje. Při povolování vícefaktorového ověřování je potřeba mít na paměti dvě tipy:
 
-* Uživatelé, kteří mají účty Microsoft pro své e-mailové adresy (obvykle @outlook.comale ne vždycky), se nemůžou registrovat pro Azure MFA. Pokud chcete přiřadit role uživatelům s účty Microsoft, měli byste je buď nastavit jako trvalí správci, nebo pro tuto roli zakázat MFA.
-* Nemůžete zakázat MFA pro role s vysokou úrovní oprávnění pro Azure AD a Office 365. Tato funkce je bezpečnostní, protože tyto role by se měly pečlivě chránit:  
+- Uživatelé, kteří mají účty Microsoft pro své e-mailové adresy (obvykle @outlook.com, ale ne vždycky), se nemůžou zaregistrovat pro Azure Multi-Factor Authentication. Pokud chcete přiřadit role uživatelům s účty Microsoft, měli byste je buď zaměnit, nebo zakázat službu Multi-Factor Authentication pro danou roli.
+- Nemůžete zakázat Azure Multi-Factor Authentication pro role s vysokou úrovní oprávnění pro Azure AD a Office 365. Tato bezpečnostní funkce pomáhá chránit následující role:  
   
-  * Správce Azure Information Protection
-  * Správce fakturace
-  * Správce cloudových aplikací
-  * Správce dodržování předpisů
-  * Správce podmíněného přístupu
-  * Správce služeb CRM
-  * Schvalovatel přístupu ke Customer LockBoxu
-  * Zapisovače do adresáře
-  * Správce Exchange
-  * Globální správce
-  * Správce služby Intune
-  * Správce služeb Power BI
-  * Správce privilegované role
-  * Správce zabezpečení
-  * Správce služeb SharePointu
-  * Správce Skypu pro firmy
-  * Správce uživatelů
+  - Správce Azure Information Protection
+  - Správce fakturace
+  - Správce cloudové aplikace
+  - Správce dodržování předpisů
+  - Správce podmíněného přístupu
+  - Správce Dynamics 365
+  - Schvalovatel přístupu k bezpečnostnímu modulu zákazníka
+  - Zapisovače adresářů
+  - Správce Exchange
+  - Globální správce
+  - Správce Intune
+  - Správce Power BI
+  - Správce privilegovaných rolí
+  - Správce zabezpečení
+  - Správce SharePointu
+  - Správce Skypu pro firmy
+  - Správce uživatele
 
-Další informace najdete v tématu [Multi-Factor Authentication (MFA) a PIM](pim-how-to-require-mfa.md).
+Další informace naleznete v tématu [Multi-Factor Authentication a Privileged Identity Management](pim-how-to-require-mfa.md).
 
 ## <a name="require-approval"></a>Vyžadovat schválení
 
-Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto kroků.
+Pokud chcete delegovat požadované schválení pro aktivaci role, postupujte podle těchto kroků.
 
 1. Nastavte přepínač **vyžadovat schválení** na **povoleno**. Podokno se rozbalí s možnostmi pro výběr schvalovatelů.
 
     ![Role Azure AD – nastavení-vyžadovat schválení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
-    Pokud **neurčíte** žádné schvalovatele, stanou se správci privilegovaných rolí výchozími schvalovateli. Správcům privilegovaných rolí by se vyžadovalo schválení **všech** žádostí o aktivaci této role.
+    Pokud nezadáte žádné schvalovatele, bude správce privilegovaných rolí výchozím schvalovatelem a pak bude vyžadován ke schválení všech žádostí o aktivaci této role.
 
 1. Chcete-li zadat schvalovatele, klikněte na **Vybrat schvalovatele**.
 
     ![Role Azure AD – nastavení-vyžadovat schválení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. Vyberte jednoho nebo více schvalovatelů a potom klikněte na **Vybrat**. Můžete vybrat uživatele nebo skupiny. Doporučuje se alespoň 2 schvalovatelé. Schválení držitele není povoleno.
-
-    Vaše výběry se zobrazí v seznamu vybraných schvalovatelů.
+1. Kromě správce privilegovaných rolí vyberte aspoň jednoho schvalovatele a potom klikněte na **Vybrat**. Můžete vybrat uživatele nebo skupiny. Doporučujeme aspoň dva schvalovatele. I v případě, že jako schvalovatele přidáte sebe sama, nemůžete sami schválit aktivaci role. Vaše výběry se zobrazí v seznamu vybraných schvalovatelů.
 
 1. Po zadání všech nastavení role uložte změny kliknutím na **Uložit** .
 
-
 <!--PLACEHOLDER: Need an explanation of what the temporary Global Administrator setting is for.-->
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Přiřazení rolí Azure AD v PIM](pim-how-to-add-role-to-user.md)
-- [Konfigurace výstrah zabezpečení pro role Azure AD v PIM](pim-how-to-configure-security-alerts.md)
+- [Přiřazení rolí Azure AD v Privileged Identity Management](pim-how-to-add-role-to-user.md)
+- [Konfigurace výstrah zabezpečení pro role Azure AD v Privileged Identity Management](pim-how-to-configure-security-alerts.md)

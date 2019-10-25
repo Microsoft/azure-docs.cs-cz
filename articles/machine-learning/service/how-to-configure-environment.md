@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5080ec4db46f717a9e9ecdcdfbea42fbe43c349d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598430"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804144"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace vývojového prostředí pro Azure Machine Learning
 
@@ -305,7 +305,7 @@ Použijte tato nastavení:
 | Nastavení |Platí pro| Hodnota |
 |----|---|---|
 | Název clusteru |stál| yourclustername |
-| Modul runtime Databricks |stál| Libovolný modul runtime bez ML (ne ML 4. x, 5. x) |
+| Modul runtime Databricks |stál|Běhový modul bez ML 6,0 (Scala 2,11, Spark 2.4.3) |
 | Verze Pythonu |stál| 3 |
 | Pracovníků |stál| 2 nebo vyšší |
 | Typy virtuálních počítačů uzlu pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>pouze| Preferovaný virtuální počítač pro optimalizaci paměti |
@@ -346,14 +346,17 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
 
 Pokud byla instalace úspěšná, importovaná knihovna by měla vypadat jako jedna z následujících:
 
-Sada SDK pro datacihly **_bez_** automatizovaného strojového učení ![Azure Machine Learning SDK pro datacihly ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+Sada SDK pro datacihly **_bez_** automatizovaného strojového učení ![Azure Machine Learning SDK pro datacihly](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Sada SDK pro datacihly **s** automatickým ![SDK strojového učení s nainstalovanou službou Automated Machine Learning pro datacihly ](./media/how-to-configure-environment/automlonadb.jpg)
+Sada SDK pro datacihly **pomocí** automatizovaného strojového učení ![SDK s nainstalovaným automatickým strojovým učením pro datacihly](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>Začít zkoumat
 
 Vyzkoušet:
 + I když je k dispozici mnoho ukázkových poznámkových bloků, **fungují pouze [Tyto ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) s Azure Databricks.**
+
++ Tyto ukázky importujte přímo z pracovního prostoru. Viz níže: ![vyberte Import](media/how-to-configure-environment/azure-db-screenshot.png)
+![import panel](media/how-to-configure-environment/azure-db-import.png)
 
 + Naučte se [vytvářet kanály s datacihlami jako výpočetní](how-to-create-your-first-pipeline.md)prostředí.
 

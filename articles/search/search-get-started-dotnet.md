@@ -1,23 +1,22 @@
 ---
-title: 'Rychlý start: Vytvoření indexu vyhledávání v C# rámci používání sady .NET SDK – Azure Search'
-description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí C# a Azure Search .NET SDK.
-author: heidisteen
+title: 'Rychlý Start: vytvoření indexu vyhledávání v C# rámci používání sady .NET SDK'
+titleSuffix: Azure Cognitive Search
+description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí C# a sady Azure kognitivní hledání .NET SDK.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-tags: azure-portal
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: bda9c29fe3af0bd7d9a6ec61dd5fe40a8e9cc339
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 11/04/2019
+ms.openlocfilehash: cb52ebc4cfdb6f62e9e68bf007cadc20cd565fad
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881594"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792826"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>Rychlý start: Vytvoření indexu Azure Search v C# rámci používání sady .NET SDK
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání C# v rámci používání sady .NET SDK
 > [!div class="op_single_selector"]
 > * [C#](search-get-started-dotnet.md)
 > * [Azure Portal](search-get-started-portal.md)
@@ -26,34 +25,34 @@ ms.locfileid: "70881594"
 > * [Postman](search-get-started-postman.md)
 >*
 
-Vytvořte konzolovou aplikaci C# .NET Core, která vytvoří, načte a dotazuje index Azure Search pomocí sady Visual Studio a [Azure Search .NET SDK](https://aka.ms/search-sdk). Tento článek vysvětluje, jak vytvořit aplikaci krok za krokem. Případně můžete [Stáhnout a spustit kompletní aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart).
+Vytvořte konzolovou aplikaci C# .NET Core, která vytvoří, načte a dotazuje index služby Azure kognitivní hledání pomocí sady Visual Studio a [sady Azure kognitivní hledání .NET SDK](https://aka.ms/search-sdk). Tento článek vysvětluje, jak vytvořit aplikaci krok za krokem. Případně můžete [Stáhnout a spustit kompletní aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 > [!NOTE]
-> Ukázkový kód v tomto článku používá pro jednoduchost synchronní metody Azure Search .NET SDK. U produkčních scénářů ale doporučujeme používat asynchronní metody ve vašich vlastních aplikacích, abyste je zachovali a mohli reagovat. Můžete například použít `CreateAsync` a `DeleteAsync` místo `Create` a. `Delete`
+> Ukázkový kód v tomto článku používá pro jednoduchost synchronní metody sady Azure Kognitivní hledání .NET SDK. U produkčních scénářů ale doporučujeme používat asynchronní metody ve vašich vlastních aplikacích, abyste je zachovali a mohli reagovat. Můžete například použít `CreateAsync` a `DeleteAsync` namísto `Create` a `Delete`.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje.
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/), libovolná edice. Vzorový kód a pokyny byly testovány na bezplatnou edici Community.
 
-+ [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu.
++ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu.
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro každý požadavek. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro každý požadavek. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-2. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-![Získání koncového bodu http a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu http a přístupového klíče")
+![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -63,24 +62,24 @@ Začněte otevřením sady Visual Studio a vytvořením nového projektu konzolo
 
 ### <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-[Sada Azure Search .NET SDK](https://aka.ms/search-sdk) se skládá z několika klientských knihoven, které jsou distribuovány jako balíčky NuGet.
+[Sada Azure kognitivní hledání .NET SDK](https://aka.ms/search-sdk) se skládá z několika klientských knihoven, které jsou distribuovány jako balíčky NuGet.
 
-Pro tento projekt použijte verzi 9 `Microsoft.Azure.Search` balíčku NuGet a nejnovější `Microsoft.Extensions.Configuration.Json` balíček NuGet.
+Pro tento projekt použijte verzi 9 `Microsoft.Azure.Search` balíčku NuGet a nejnovější `Microsoft.Extensions.Configuration.Json` balíčku NuGet.
 
 1. V **nabídce nástroje** > **Správce balíčků NuGet**vyberte **Spravovat balíčky NuGet pro řešení...** . 
 
 1. Klikněte na **Browse** (Procházet).
 
-1. `Microsoft.Azure.Search` Vyhledejte a vyberte verze 9.0.1 nebo novější.
+1. Vyhledejte `Microsoft.Azure.Search` a vyberte verze 9.0.1 nebo novější.
 
 1. Kliknutím na **instalovat** na pravé straně přidejte sestavení do projektu a řešení.
 
-1. Opakujte pro `Microsoft.Extensions.Configuration.Json`, výběr verze 2.2.0 nebo novější.
+1. Opakujte pro `Microsoft.Extensions.Configuration.Json`, vyberte verze 2.2.0 nebo novější.
 
 
-### <a name="add-azure-search-service-information"></a>Přidat informace o Azure Search službě
+### <a name="add-azure-cognitive-search-service-information"></a>Přidání informací o službě Azure Kognitivní hledání
 
-1. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat** > **novou položku...** . 
+1. V Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte **přidat** > **Nová položka...** . 
 
 1. V části Přidat novou položku vyhledejte "JSON" a vraťte seznam typů položek souvisejících s JSON.
 
@@ -88,7 +87,7 @@ Pro tento projekt použijte verzi 9 `Microsoft.Azure.Search` balíčku NuGet a n
 
 1. Přidejte soubor do výstupního adresáře. Klikněte pravým tlačítkem na appSettings. JSON a vyberte **vlastnosti**. V **adresáři kopírovat do výstupního adresáře**vyberte možnost **Kopírovat, pokud je novější**.
 
-1. Zkopírujte následující kód JSON do nového souboru JSON. Nahraďte název vyhledávací služby (klíč-SEARCH-SERVICE-NAME) a klíč rozhraní API pro správu (kód-správce-rozhraní API-KEY) pomocí platných hodnot. Pokud je `https://mydemo.search.windows.net`koncový bod služby, název služby by byl "mydemo".
+1. Zkopírujte následující kód JSON do nového souboru JSON. Nahraďte název vyhledávací služby (klíč-SEARCH-SERVICE-NAME) a klíč rozhraní API pro správu (kód-správce-rozhraní API-KEY) pomocí platných hodnot. Pokud je koncový bod služby `https://mydemo.search.windows.net`, název služby by byl "mydemo".
 
 ```json
 {
@@ -193,18 +192,18 @@ Index hotelů se skládá z jednoduchých a složitých polí, kde je jednoduch�
     }
     ```
 
-    Atributy pole určují, jak se používá v aplikaci. Například `IsSearchable` atribut musí být přiřazen každému poli, které by mělo být zahrnuto do fulltextového vyhledávání. 
+    Atributy pole určují, jak se používá v aplikaci. Například atribut `IsSearchable` musí být přiřazen každému poli, které by mělo být zahrnuto do fulltextového vyhledávání. 
     
     > [!NOTE]
-    > V sadě .NET SDK musí být pole explicitně přidělena atributům [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet) [`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet), [`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet), a [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). Toto chování je v kontrastu s REST API, která implicitně povoluje připsat na základě datového typu (například pole jednoduchých řetězců jsou automaticky prohledávatelné).
+    > V sadě .NET SDK musí být pole explicitně přidělena jako [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet), [`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet), [`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet)a [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). Toto chování je v kontrastu s REST API, která implicitně povoluje připsat na základě datového typu (například pole jednoduchých řetězců jsou automaticky prohledávatelné).
 
-    Právě jedno pole v indexu typu `string` musí být *klíčovým* polem a jednoznačně identifikovat každý dokument. V tomto schématu je `HotelId`klíč.
+    Právě jedno pole v indexu typu `string` musí být *klíčovým* polem a jednoznačně identifikovat každý dokument. V tomto schématu je klíč `HotelId`.
 
-    V tomto indexu pole Popis používají volitelnou [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) vlastnost zadanou v případě, že chcete přepsat výchozí standardní analyzátor Lucene. Pole používá nástroj pro francouzštinu Lucene (FrLucene), protože ukládá francouzský text.[](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet) `description_fr` Používá nepovinný nástroj Microsoft Language Analyzer ([EnMicrosoft).](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet) `description`
+    V tomto indexu pole Popis používají vlastnost volitelného [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) , kterou určíte, když chcete přepsat výchozí standardní analyzátor Lucene. `description_fr` pole používá nástroj francouzštiny Lucene Analyzer ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)), protože ukládá francouzský text. `description` používá nepovinný nástroj Microsoft Language Analyzer ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)).
 
-1. V program.cs vytvořte instanci [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) třídy pro připojení ke službě pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appSettings. JSON). 
+1. V Program.cs vytvořte instanci třídy [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) pro připojení ke službě pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appSettings. JSON). 
 
-   `SearchServiceClient`[`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) má vlastnost, která poskytuje všechny metody, které potřebujete k vytvoření, výpisu, aktualizaci nebo odstranění indexů Azure Search. 
+   `SearchServiceClient` má vlastnost [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) a poskytuje všechny metody, které potřebujete k vytvoření, výpisu, aktualizaci nebo odstranění indexů služby Azure kognitivní hledání. 
 
     ```csharp
     using System;
@@ -284,14 +283,14 @@ Index hotelů se skládá z jednoduchých a složitých polí, kde je jednoduch�
     }    
     ```
 
-    Pokud je to možné, sdílejte jednu instanci `SearchServiceClient` v aplikaci, aby nedocházelo k otevření příliš velkého počtu připojení. Metody třídy jsou bezpečné pro přístup z více vláken umožňující takové sdílení.
+    Pokud je to možné, sdílejte jednu instanci `SearchServiceClient` ve vaší aplikaci, aby nedocházelo k otevření příliš velkého počtu připojení. Metody třídy jsou bezpečné pro přístup z více vláken umožňující takové sdílení.
 
    Třída má několik konstruktorů. Ten, který chcete, přijímá jako parametry název vaší vyhledávací služby a objekt `SearchCredentials`. `SearchCredentials` zabalí váš klíč api-key.
 
-    Nejjednodušší způsob, jak vytvořit `Field` objekty, je v definici indexu `FieldBuilder.BuildForType` voláním metody, předáním třídy modelu pro parametr typu. Třída modelu obsahuje vlastnosti, které se mapují na pole vašeho indexu. Toto mapování umožňuje vytvořit vazby dokumentů z indexu vyhledávání do instancí třídy modelu.
+    Nejjednodušší způsob, jak vytvořit objekty `Field`, je v definici indexu voláním metody `FieldBuilder.BuildForType` a předáním třídy modelu pro parametr typu. Třída modelu obsahuje vlastnosti, které se mapují na pole vašeho indexu. Toto mapování umožňuje vytvořit vazby dokumentů z indexu vyhledávání do instancí třídy modelu.
 
     > [!NOTE]
-    > Pokud nemáte v úmyslu používat třídu modelu, stále můžete definovat index přímým vytvořením objektů `Field`. Můžete zadat název pole do konstruktoru, společně s datovým typem (nebo analyzátor pro pole řetězce). Můžete také nastavit další vlastnosti `IsSearchable`, `IsFilterable`například,, k pojmenování několika.
+    > Pokud nemáte v úmyslu používat třídu modelu, stále můžete definovat index přímým vytvořením objektů `Field`. Můžete zadat název pole do konstruktoru, společně s datovým typem (nebo analyzátor pro pole řetězce). Můžete také nastavit další vlastnosti, například `IsSearchable`, `IsFilterable`a pojmenovat několik.
     >
 
 1. Stisknutím klávesy F5 sestavte aplikaci a vytvořte index. 
@@ -302,9 +301,9 @@ Index hotelů se skládá z jednoduchých a složitých polí, kde je jednoduch�
 
 ## <a name="2---load-documents"></a>2\. načtení dokumentů
 
-V Azure Search jsou dokumenty datové struktury, které jsou ve dvou vstupech k indexování a výstupy z dotazů. V případě získání z externího zdroje dat můžou být vstupy dokumentů v databázi, objektech blob v úložišti objektů BLOB nebo v dokumentech JSON na disku. V tomto příkladu podáváme zástupce a vkládání dokumentů JSON pro čtyři hotely do samotného kódu. 
+V Azure Kognitivní hledání jsou dokumenty datové struktury, které jsou ve dvou vstupech k indexování a výstupy z dotazů. V případě získání z externího zdroje dat můžou být vstupy dokumentů v databázi, objektech blob v úložišti objektů BLOB nebo v dokumentech JSON na disku. V tomto příkladu podáváme zástupce a vkládání dokumentů JSON pro čtyři hotely do samotného kódu. 
 
-Při odesílání dokumentů je nutné použít [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) objekt. Obsahuje kolekci objektů, z nichž každý obsahuje dokument a vlastnost sdělují Azure Search, jakou akci chcete provést ([nahrávání, sloučení, odstranění a mergeOrUpload](search-what-is-data-import.md#indexing-actions)). [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) `IndexBatch`
+Při odesílání dokumentů je nutné použít objekt [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) . `IndexBatch` obsahuje kolekci objektů [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) , z nichž každý obsahuje dokument a vlastnost sdělují Azure kognitivní hledání jakou akci chcete provést ([nahrávání, sloučení, odstranění a mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
 1. V Program.cs vytvořte pole dokumentů a indexových akcí a pak předejte pole do `IndexBatch`. Níže uvedené dokumenty odpovídají indexu pro rychlé spuštění v hotelu, jak je definováno v rámci tříd hotelů a Address.
 
@@ -426,9 +425,9 @@ Při odesílání dokumentů je nutné použít [`IndexBatch`](https://docs.micr
     }
     ```
 
-    Po inicializaci`IndexBatch` objektu jej můžete odeslat do indexu voláním [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) objektu. `Documents`je vlastnost `SearchIndexClient` , která poskytuje metody pro přidání, úpravu, odstranění nebo dotazování dokumentů v indexu.
+    Po inicializaci objektu`IndexBatch` jej můžete odeslat do indexu voláním [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) na objektu [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) . `Documents` je vlastnost `SearchIndexClient`, která poskytuje metody pro přidávání, úpravu, odstraňování nebo dotazování dokumentů v indexu.
 
-    Okolní volání metody`Index` zachytí chyby indexování, ke kterým může dojít, pokud je vaše služba přetížená. `try` / `catch` V produkčním kódu můžete odložit a potom opakovat indexování dokumentů, které selhaly, nebo můžete protokolovat a pokračovat, jako je ukázka, nebo ho zpracovat jiným způsobem, který splňuje požadavky vaší aplikace na konzistenci dat.
+    `try`/`catch` okolním voláním metody `Index` zachycení selhání při indexování, ke kterému může dojít, pokud je vaše služba přetížená. V produkčním kódu můžete odložit a potom opakovat indexování dokumentů, které selhaly, nebo můžete protokolovat a pokračovat, jako je ukázka, nebo ho zpracovat jiným způsobem, který splňuje požadavky vaší aplikace na konzistenci dat.
 
     Zpoždění dvou sekund se kompenzuje při indexování, což je asynchronní, aby bylo možné všechny dokumenty před spuštěním dotazů indexovat. Kódování v zpoždění je obvykle nutné pouze v ukázkách, testech a ukázkových aplikacích.
 
@@ -450,10 +449,10 @@ Další informace o zpracování dokumentů naleznete v tématu ["jak sada .NET 
 
 Výsledky dotazu můžete získat ihned po indexování prvního dokumentu, ale skutečný test indexu by měl počkat, dokud nebudou všechny dokumenty indexovány. 
 
-V této části se přidávají dvě části funkčnosti: logika dotazů a výsledky. Pro dotazy použijte [ `Search` metodu](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
+V této části se přidávají dvě části funkčnosti: logika dotazů a výsledky. Pro dotazy použijte metodu [`Search`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
 ) . Tato metoda přebírá hledaný text i další [parametry](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet). 
 
-[`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) Třída představuje výsledky.
+Třída [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) představuje výsledky.
 
 
 1. V Program.cs vytvořte metodu WriteDocuments, která vytiskne výsledky hledání do konzoly.
@@ -534,7 +533,7 @@ V této části se přidávají dvě části funkčnosti: logika dotazů a výsl
     }
     ```
 
-    Existují dva [způsoby, kterými se v dotazu shodují výrazy](search-query-overview.md#types-of-queries): fulltextové vyhledávání a filtry. Fulltextový vyhledávací dotaz vyhledává jeden nebo více podmínek v `IsSearchable` polích indexu. Filtr je logický výraz, který se vyhodnocuje přes `IsFilterable` pole v indexu. Můžete použít fulltextové vyhledávání a filtry společně nebo samostatně.
+    Existují dva [způsoby, kterými se v dotazu shodují výrazy](search-query-overview.md#types-of-queries): fulltextové vyhledávání a filtry. Fulltextový vyhledávací dotaz vyhledává jeden nebo více podmínek ve `IsSearchable` polích v indexu. Filtr je logický výraz, který se vyhodnocuje přes `IsFilterable` pole v indexu. Můžete použít fulltextové vyhledávání a filtry společně nebo samostatně.
 
     Vyhledávání i filtrování se provádí pomocí metody `Documents.Search`. Vyhledávací dotaz lze předat v parametru `searchText`, zatímco výraz filtru lze předat ve vlastnosti `Filter` třídy `SearchParameters`. Chcete-li filtrovat bez vyhledávání, stačí předat `"*"` jako hodnotu parametru `searchText`. Chcete-li vyhledávat bez filtrování, ponechte vlastnost `Filter` nenastavenou nebo instanci `SearchParameters` vůbec nepředávejte.
 

@@ -1,6 +1,7 @@
 ---
-title: Chráněné webové rozhraní API – Přesun do produkčního prostředí | Azure
-description: Zjistěte, jak sestavit chráněné webové rozhraní API (Přesun do produkčního prostředí).
+title: Chráněné webové rozhraní API – přesun do produkčního prostředí
+titleSuffix: Microsoft identity platform
+description: Naučte se vytvářet chráněné webové rozhraní API (přesunout do produkčního prostředí).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,30 +16,30 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e78cb712501b86f98d3459cac6280d0484f41a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deb5a04f23268edc112c38c993b190827fa65061
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833112"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802514"
 ---
-# <a name="protected-web-api---move-to-production"></a>Chráněné webové rozhraní API – Přesun do produkčního prostředí
+# <a name="protected-web-api---move-to-production"></a>Chráněné webové rozhraní API – přesun do produkčního prostředí
 
-Teď, když víte, jak k ochraně webového rozhraní API, zde je, jak můžete přesunout do produkčního prostředí.
+Když teď víte, jak chránit vaše webové rozhraní API, můžete ho přemístit do produkčního prostředí.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o volání rozhraní API pro příjem dat:
+Přečtěte si, jak volat rozhraní API pro příjem dat:
 
 > [!div class="nextstepaction"]
 > [Scénář – webové rozhraní API volá rozhraní API pro příjem dat](scenario-web-api-call-api-overview.md)
 
-Další informace najdete kurzy a ukázky:
+Další informace s kurzy a ukázkami:
 
 > [!div class="nextstepaction"]
-> [Webové rozhraní API kurz ASP.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+> [Kurz ASP.NET Core webového rozhraní API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
 
 > [!div class="nextstepaction"]
-> [Ukázkové webové rozhraní API technologie ASP.NET](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+> [Ukázka webového rozhraní API v ASP.NET](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)

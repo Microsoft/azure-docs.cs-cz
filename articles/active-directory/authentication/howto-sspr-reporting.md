@@ -1,6 +1,6 @@
 ---
-title: Samoobslužné resetování hesla sestavy – Azure Active Directory
-description: Události vytváření sestav v Azure AD hesla pomocí samoobslužné služby obnovit.
+title: Sestavy samoobslužného resetování hesla – Azure Active Directory
+description: Vytváření sestav pro události samoobslužného resetování hesla služby Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,171 +11,167 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a99481d9394229e77168e75c48f4110735578
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 55ef15bd1fe922aa44227d2fea3d882d4320146f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536930"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786712"
 ---
-# <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti zasílání zpráv o správě hesel Azure AD
+# <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti vytváření sestav pro správu hesel služby Azure AD
 
-Po nasazení, řada organizací chtít vědět, jak nebo pokud samoobslužné resetování hesla (SSPR) je doopravdy používá. Funkci vytváření sestav, které poskytuje Azure Active Directory (Azure AD) pomáhá lze zodpovědět otázky pomocí předem připravených sestav. Pokud máte správně licenci, můžete také vytvořit vlastní dotazy.
+Po nasazení mnoho organizací chce zjistit, jak nebo jestli se ve skutečnosti používá Samoobslužné resetování hesla (SSPR). Funkce vytváření sestav, kterou Azure Active Directory (Azure AD), vám pomůže odpovědět na otázky pomocí předem vytvořených sestav. Pokud máte patřičnou licenci, můžete také vytvořit vlastní dotazy.
 
-![Vytváření sestav o samoobslužném resetování HESLA pomocí auditování protokoluje ve službě Azure AD][Reporting]
+![Vytváření sestav o SSPR pomocí protokolů auditu v Azure AD][Reporting]
 
-Sestavy, které existují v můžete odpovědět na následující otázky [webu Azure portal](https://portal.azure.com/):
+Následující dotazy mohou být zodpovězené sestavami, které existují v [Azure Portal](https://portal.azure.com/):
 
 > [!NOTE]
-> Musí být [globálního správce](../users-groups-roles/directory-assign-admin-roles.md), a je nutné vyjádřit výslovný souhlas pro tato data shromáždit jménem svojí organizace. Chcete-li vyjádřit výslovný souhlas, musíte přejít **generování sestav** kartu nebo auditování protokoluje aspoň jednou. Dokud to neuděláte data nejsou shromažďována pro vaši organizaci.
+> Musíte být [globálním správcem](../users-groups-roles/directory-assign-admin-roles.md)a musíte se vyjádřit, že se tato data budou shromažďovat jménem vaší organizace. Chcete-li se vyjádřit výslovný souhlas, musíte navštívit kartu pro **vytváření sestav** nebo protokoly auditu aspoň jednou. Do té doby nebudou pro vaši organizaci shromažďována data.
 >
 
-* Kolik lidí zaregistrovali k resetování hesla?
-* Kdo je zaregistrován pro resetování hesla?
-* Jaká data se lidé registrace?
-* Kolik lidí resetovat vlastní hesla v posledních sedmi dnů?
-* Jaké jsou nejčastější metody, které uživatelé nebo správci použít k resetování hesel?
-* Jaké jsou běžné problémy uživatelé nebo správci pro rozpoznávání tváře při pokusu o použití resetování hesla?
-* Co správci jsou často resetování hesla?
-* Existuje nějaké podezřelé aktivity dál resetování hesla?
+* Kolik lidí zaregistrovalo pro resetování hesla?
+* Kdo zaregistroval pro resetování hesla?
+* Jaká data uživatelé registrují?
+* Kolik lidí obnovilo hesla během posledních sedmi dnů?
+* Jaké jsou nejběžnější metody, které uživatelé nebo Správci používají k resetování hesel?
+* Co jsou běžné problémy, které uživatelé nebo správci čelí při pokusu o použití resetování hesla?
+* Co správci často resetují svoje vlastní hesla?
+* Dochází k nějakým podezřelým aktivitám při resetování hesla?
 
-## <a name="power-bi-content-pack"></a>Balíček obsahu Power BI
+## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Postup zobrazení sestav správy hesel v Azure Portal
 
-Pokud jste uživatel Power BI, je balíček obsahu Azure AD, která zahrnuje snadno použít vytváření sestav pro samoobslužné resetování HESLA. Další informace o tom, jak použít a nasadit balíček obsahu najdete v tématu [jak používat balíček obsahu Azure Active Directory Power BI](../reports-monitoring/howto-power-bi-content-pack.md). Díky balíčku obsahu můžete vytvořit vlastní řídicí panely a sdílet s ostatními uživateli ve vaší organizaci.
-
-## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Postup zobrazení sestav správy hesel na webu Azure Portal
-
-V Azure portal ještě neznáte vylepšili jsme způsobu, jakým se zobrazí resetování hesla a činnost registrace pro resetování hesla. Použijte následující, které kroky k nalezení heslo resetovat a událostí registrace pro resetování hesla:
+V prostředí Azure Portal jsme vylepšili způsob, jakým můžete zobrazit aktivitu resetování hesla a resetování hesla. Pomocí následujícího postupu můžete najít události pro resetování hesla a resetování hesla:
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby** v levém podokně.
-3. Vyhledejte **Azure Active Directory** v seznamu služeb a vyberte ji.
-4. Vyberte **uživatelé** z části Správa.
-5. Vyberte **protokoly auditu** z **uživatelé** okno. Zobrazí všechny události auditu, ke kterým došlo před všichni uživatelé ve vašem adresáři. Můžete filtrovat toto zobrazení můžete zobrazit všechny události související s hesly.
-6. Z **filtr** nabídce v horní části podokna, vyberte **služby** rozevíracího seznamu a změňte ho na **samoobslužné správy hesel** typ služby.
-7. Volitelně můžete dál filtrovat seznam výběrem konkrétní **aktivity** vás zajímá.
+2. V levém podokně vyberte **všechny služby** .
+3. V seznamu služeb vyhledejte **Azure Active Directory** a vyberte ji.
+4. V části Správa vyberte **Uživatelé** .
+5. V okně **Uživatelé** vyberte **protokoly auditu** . Zobrazí se všechny události auditu, ke kterým došlo u všech uživatelů v adresáři. V tomto zobrazení můžete filtrovat, aby se zobrazily všechny události související s heslem.
+6. V nabídce **filtru** v horní části podokna vyberte rozevírací seznam **Služba** a změňte ji na typ služby **Samoobslužná správa hesel** .
+7. Volitelně můžete seznam filtrovat podle konkrétní **aktivity** , na kterou vás zajímáte.
 
-### <a name="converged-registration-preview"></a>Konvergované registrace (preview)
+### <a name="converged-registration-preview"></a>Sblížená registrace (Preview)
 
-Pokud se účastníte ve verzi public preview sblížené registrace, najdete informace týkající se aktivity uživatele v protokolech auditování v rámci služby **metody ověřování**.
+Pokud se účastníte ve verzi Public Preview sblížené registrace, budou se v rámci **metod ověřování**služby zobrazovat informace týkající se aktivity uživatele v protokolech auditu.
 
-## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Popis sloupce sestavy na webu Azure Portal
+## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Popis sloupců sestavy v Azure Portal
 
-Následující seznam popisuje všechny sloupce sestavy na webu Azure Portal podrobně:
+Následující seznam obsahuje podrobné vysvětlení každého sloupce sestavy v Azure Portal:
 
-* **Uživatel**: Uživatel, které se pokusily heslo resetovat operace Registrování.
-* **Role**: Role uživatele v adresáři.
-* **Datum a čas**: Datum a čas pokusu o.
-* **Daty**: Ověřovací data, že registrace pro resetování hesla zadaného uživatele.
+* **Uživatel**: uživatel, který se pokusil o operaci registrace resetování hesla.
+* **Role**: role uživatele v adresáři.
+* **Datum a čas**: datum a čas pokusu.
+* **Registrovaná data**: ověřovací data, která uživatel zadal během registrace resetování hesla.
 
-## <a name="description-of-the-report-values-in-the-azure-portal"></a>Popis hodnoty sestavy na webu Azure Portal
+## <a name="description-of-the-report-values-in-the-azure-portal"></a>Popis hodnot sestavy v Azure Portal
 
-Následující tabulka popisuje různé hodnoty, které jsou že pro každý sloupec na webu Azure Portal můžete nastavit:
+Následující tabulka popisuje různé hodnoty, které můžete nastavit pro každý sloupec v Azure Portal:
 
-| Sloupec | Povolené hodnoty a jejich význam |
+| Column | Povolené hodnoty a jejich významy |
 | --- | --- |
-| Daty |**Alternativní e-mailu**: Uživatel používá k ověření alternativní e-mailu nebo e-mail pro ověření.<p><p>**Telefon do kanceláře**: Uživatel používá k ověření pomocí telefonu v kanceláři.<p>**Mobilní telefon**: Uživatel použil mobilní telefon nebo ověřovací telefon pro ověření.<p>**Bezpečnostní otázky**: Uživatel používá k ověření bezpečnostních otázek.<p>**Libovolnou kombinaci výše uvedených metod, například alternativní e-mail + mobilního telefonu**: Nastane, pokud zásady dvě brány je zadána a ukazuje, které dvě metody uživatel použitý k ověření žádost o resetování hesla. |
+| Zaregistrovaná data |**Alternativní e-mail**: uživatel použil k ověření alternativní e-mail nebo ověřovací e-mail.<p><p>**Telefon do kanceláře**: uživatel pro ověření použil telefon do kanceláře.<p>**Mobilní telefon**: uživatel používal mobilní telefon nebo telefon pro ověření k ověření.<p>**Bezpečnostní otázky**: uživatel použil bezpečnostní otázky k ověření.<p>**Libovolná kombinace předchozích metod, například alternativní e-mailová + mobilní telefon**: nastane, když je zadána zásada dvou bran, a ukazuje, které dvě metody uživatel použil k ověřování své žádosti o resetování hesla. |
 
 ## <a name="self-service-password-management-activity-types"></a>Typy aktivit samoobslužné správy hesel
 
-Následující typy aktivit joinkind **samoobslužné správy hesel** kategorii událostí auditu:
+V kategorii událostí auditu **Samoobslužná správa hesel** se zobrazí následující typy aktivit:
 
-* [Blokování resetování hesla pomocí samoobslužné služby](#activity-type-blocked-from-self-service-password-reset): Označuje, že se uživatel pokusil resetování hesla, pomocí konkrétní brány nebo ověřit telefonní číslo více než pět celkové doby za 24 hodin.
-* [Změna hesla (Samoobslužná)](#activity-type-change-password-self-service): Označuje, že uživatel provést dobrovolná nebo vynutit (z důvodu vypršení platnosti) změnu hesla.
-* [Resetování hesla (správcem)](#activity-type-reset-password-by-admin): Označuje, že správce provedena heslo resetovat jménem uživatele z portálu Azure portal.
-* [Resetování hesla (Samoobslužná)](#activity-type-reset-password-self-service): Označuje, že uživatel úspěšně resetovat heslo [portál pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com).
-* [Průběh aktivity toku samoobslužného resetování](#activity-type-self-serve-password-reset-flow-activity-progress): Každý konkrétní krok, který uživatel pokračuje přes, označuje, jako je ověřování brány předá určité heslo resetovat, protože část hesla proces obnovení.
-* [Odemknutí uživatelského účtu (samoobslužné)](#activity-type-unlock-a-user-account-self-service)): Označuje, že uživatel úspěšně odemknuli svůj účet služby Active Directory bez resetování hesel z [portál pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com) pomocí funkce služby Active Directory účet odemknout bez resetování.
-* [Uživatel zaregistrovaný pro samoobslužné resetování hesla](#activity-type-user-registered-for-self-service-password-reset): Označuje, že uživatel zaregistroval všechny požadované informace pro také moct resetovat své heslo v souladu s zásady pro resetování hesla nyní zadaného klienta.
+* [Blokování samoobslužného resetování hesla](#activity-type-blocked-from-self-service-password-reset): označuje, že se uživatel pokusil resetovat heslo, používat konkrétní bránu nebo ověřit telefonní číslo více než pět celkových časů za 24 hodin.
+* [Změna hesla (Samoobslužná služba)](#activity-type-change-password-self-service): označuje, že uživatel provedl dobrovolné nebo vynucené změně hesla (z důvodu vypršení platnosti).
+* [Resetování hesla (správcem)](#activity-type-reset-password-by-admin): označuje, že správce provedl resetování hesla jménem uživatele z Azure Portal.
+* [Resetování hesla (Samoobslužná služba)](#activity-type-reset-password-self-service): označuje, že uživatel úspěšně obnovil heslo z [portálu pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com).
+* [Průběh aktivity toku samoobslužného resetování hesla](#activity-type-self-serve-password-reset-flow-activity-progress): označuje každý konkrétní krok, pomocí kterého uživatel pokračuje, jako je například předání konkrétní ověřovací brány pro resetování hesla, jako součást procesu resetování hesla.
+* [Odemknutí uživatelského účtu (Samoobslužná služba)](#activity-type-unlock-a-user-account-self-service)): označuje, že uživatel úspěšně odemkl svůj účet Active Directory bez resetování hesla z [portálu pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com) pomocí funkce Active Directory pro odemknutí účtu. bez resetování.
+* [Uživatel zaregistrovaný pro Samoobslužné resetování hesla](#activity-type-user-registered-for-self-service-password-reset): označuje, že uživatel zaregistroval všechny požadované informace, aby bylo možné resetovat heslo v souladu s aktuálně zadanými zásadami pro resetování hesla tenanta.
 
-### <a name="activity-type-blocked-from-self-service-password-reset"></a>Typ aktivity: Blokování samoobslužného resetování hesla
+### <a name="activity-type-blocked-from-self-service-password-reset"></a>Typ aktivity: blokováno z samoobslužného resetování hesla
 
-Následující seznam popisuje tato aktivita podrobně:
+Následující seznam vysvětluje tuto aktivitu podrobněji:
 
-* **Popis aktivity**: Označuje, že se uživatel pokusil resetování hesla, pomocí konkrétní brány nebo ověřit telefonní číslo více než pět celkové doby za 24 hodin.
-* **Aktivita actor**: Uživatel, který byla omezena z provedením další operace resetování. Tímto uživatelem může být koncový uživatel nebo správce.
-* **Cílové aktivity**: Uživatel, který byla omezena z provedením další operace resetování. Tímto uživatelem může být koncový uživatel nebo správce.
+* **Popis aktivity**: označuje, že uživatel se pokusil resetovat heslo, používat konkrétní bránu nebo ověřit telefonní číslo více než pět celkových časů za 24 hodin.
+* **Objekt actor aktivity**: uživatel, který byl omezen prováděním dalších operací resetování. Uživatel může být koncovým uživatelem nebo správcem.
+* **Cíl aktivity**: uživatel, který byl omezen prováděním dalších operací resetování. Uživatel může být koncovým uživatelem nebo správcem.
 * **Stav aktivity**:
-  * _Úspěch_: Označuje, že uživatel byla omezena z provádění jakékoli další resetování, pokusu o jakékoli další metody ověřování nebo ověřování jakékoli další telefonní čísla dobu následujících 24 hodin.
-* **Důvod selhání stavu aktivity**: Není k dispozici.
+  * _Úspěch_: označuje, že se uživatel omezil při provádění jakýchkoli dalších resetů, pokus o jakékoli další metody ověřování nebo za dalších 24 hodin za účelem ověření dalších telefonních čísel.
+* **Důvod selhání stavu aktivity**: nelze použít.
 
-### <a name="activity-type-change-password-self-service"></a>Typ aktivity: Změna hesla (samoobslužná)
+### <a name="activity-type-change-password-self-service"></a>Typ aktivity: změnit heslo (Samoobslužná služba)
 
-Následující seznam popisuje tato aktivita podrobně:
+Následující seznam vysvětluje tuto aktivitu podrobněji:
 
-* **Popis aktivity**: Označuje, že uživatel provést dobrovolná nebo vynutit (z důvodu vypršení platnosti) změnu hesla.
-* **Aktivita actor**: Uživatel, který změní heslo. Tímto uživatelem může být koncový uživatel nebo správce.
-* **Cílové aktivity**: Uživatel, který změní heslo. Tímto uživatelem může být koncový uživatel nebo správce.
-* **Aktivita stavy**:
-  * _Úspěch_: Označuje, že uživatel se úspěšně změnil heslo.
-  * _Selhání_: Udává, že uživatel se nepodařilo změnit své heslo. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
+* **Popis aktivity**: označuje, že uživatel provedl dobrovolné nebo vynucené změně hesla (z důvodu vypršení platnosti).
+* **Objekt actor aktivity**: uživatel, který změnil heslo. Uživatel může být koncovým uživatelem nebo správcem.
+* **Cíl aktivity**: uživatel, který změnil heslo. Uživatel může být koncovým uživatelem nebo správcem.
+* **Stavy aktivity**:
+  * _Úspěch_: označuje, že uživatel úspěšně změnil heslo.
+  * _Selhání_: označuje, že se uživateli nepodařilo změnit heslo. Výběrem řádku můžete zobrazit kategorii **Důvod stavu aktivity** a získat další informace o tom, proč k chybě došlo.
 * **Důvod selhání stavu aktivity**:
-  * _FuzzyPolicyViolationInvalidPassword_: Uživatel vybral, který byl automaticky zakázán, protože funkce Microsoft zakázané heslo detekce zjistila, že se moc známé nebo zvlášť slabé heslo.
+  * _FuzzyPolicyViolationInvalidPassword_: uživatel vybral heslo, které se automaticky zakázalo, protože možnosti detekce hesla zakázané společností Microsoft zjistily, že jsou příliš běžné nebo obzvláště slabé.
 
-### <a name="activity-type-reset-password-by-admin"></a>Typ aktivity: Resetování hesla (správcem)
+### <a name="activity-type-reset-password-by-admin"></a>Typ aktivity: resetování hesla (správcem)
 
-Následující seznam popisuje tato aktivita podrobně:
+Následující seznam vysvětluje tuto aktivitu podrobněji:
 
-* **Popis aktivity**: Označuje, že správce provedena heslo resetovat jménem uživatele z portálu Azure portal.
-* **Aktivita actor**: Správce, který provedl resetování jménem jiného koncový uživatel nebo správce hesel. Musí být heslo správce, uživatele správce nebo správce technické podpory.
-* **Cílové aktivity**: Uživatel, jehož heslo se resetovalo. Tímto uživatelem může být koncový uživatel nebo jiný správce.
-* **Aktivita stavy**:
-  * _Úspěch_: Označuje, že správce bylo úspěšně resetováno heslo uživatele.
-  * _Selhání_: Udává, že správce se nepodařilo změnit heslo uživatele. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
+* **Popis aktivity**: označuje, že správce provedl resetování hesla jménem uživatele z Azure Portal.
+* **Objekt actor aktivity**: správce, který provedl resetování hesla jménem jiného koncového uživatele nebo správce. Musíte být správcem hesla, správcem uživatele nebo správcem helpdesku.
+* **Cíl aktivity**: uživatel, jehož heslo bylo resetováno. Uživatel může být koncovým uživatelem nebo jiným správcem.
+* **Stavy aktivity**:
+  * _Úspěch_: označuje, že správce úspěšně obnovil heslo uživatele.
+  * _Selhání_: označuje, že správci se nepodařilo změnit heslo uživatele. Výběrem řádku můžete zobrazit kategorii **Důvod stavu aktivity** a získat další informace o tom, proč k chybě došlo.
 
-### <a name="activity-type-reset-password-self-service"></a>Typ aktivity: Resetování hesla (samoobslužné)
+### <a name="activity-type-reset-password-self-service"></a>Typ aktivity: resetování hesla (Samoobslužná služba)
 
-Následující seznam popisuje tato aktivita podrobně:
+Následující seznam vysvětluje tuto aktivitu podrobněji:
 
-* **Popis aktivity**: Označuje, že uživatel úspěšně resetovat heslo [portál pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com).
-* **Aktivita actor**: Uživatel, který resetování hesla. Tímto uživatelem může být koncový uživatel nebo správce.
-* **Cílové aktivity**: Uživatel, který resetování hesla. Tímto uživatelem může být koncový uživatel nebo správce.
-* **Aktivita stavy**:
-  * _Úspěch_: Označuje, že uživatel úspěšně resetoval svoje vlastní heslo.
-  * _Selhání_: Udává, že uživatel se nepodařilo resetovat vlastní heslo. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
+* **Popis aktivity**: označuje, že uživatel úspěšně obnovil heslo z portálu pro [resetování hesel Azure AD](https://passwordreset.microsoftonline.com).
+* **Objekt actor aktivity**: uživatel, který obnovil heslo. Uživatel může být koncovým uživatelem nebo správcem.
+* **Cíl aktivity**: uživatel, který obnovil heslo. Uživatel může být koncovým uživatelem nebo správcem.
+* **Stavy aktivity**:
+  * _Úspěch_: označuje, že uživatel úspěšně obnovil vlastní heslo.
+  * _Selhání_: označuje, že se uživateli nepodařilo resetovat vlastní heslo. Výběrem řádku můžete zobrazit kategorii **Důvod stavu aktivity** a získat další informace o tom, proč k chybě došlo.
 * **Důvod selhání stavu aktivity**:
-  * _FuzzyPolicyViolationInvalidPassword_: Vybrat správce, který byl automaticky zakázán, protože funkce Microsoft zakázané heslo detekce zjistila, že se moc známé nebo zvlášť slabé heslo.
+  * _FuzzyPolicyViolationInvalidPassword_: správce vybral heslo, které je automaticky zakázané, protože možnosti detekce hesla zakázané Microsoftem byly zjištěny příliš běžné nebo obzvláště slabé.
 
-### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>Typ aktivity: Průběh aktivity toku pro resetování hesla svým slouží
+### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>Typ aktivity: samotný postup aktivity toku resetování hesla
 
-Následující seznam popisuje tato aktivita podrobně:
+Následující seznam vysvětluje tuto aktivitu podrobněji:
 
-* **Popis aktivity**: Každý konkrétní krok, který uživatel pokračuje přes (např. předání určité heslo resetovat bránu ověřování) označuje jako součást heslo resetovat procesu.
-* **Aktivita actor**: Uživatele, který provedl součástí heslo resetovat toku. Tímto uživatelem může být koncový uživatel nebo správce.
-* **Cílové aktivity**: Uživatele, který provedl součástí heslo resetovat toku. Tímto uživatelem může být koncový uživatel nebo správce.
-* **Aktivita stavy**:
-  * _Úspěch_: Indikuje, že uživatel úspěšně dokončeno konkrétním krokem procesu resetování hesla.
-  * _Selhání_: Určuje, že konkrétní krok hesla resetovat tok selhal. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
-* **Důvody stavu aktivity**:   V následující tabulce najdete [všechny důvody přípustné obnovení činnosti stavu](#description-of-the-report-columns-in-the-azure-portal).
+* **Popis aktivity**: označuje každý konkrétní krok, který uživatel v rámci procesu resetování hesla prochází (například předání konkrétní ověřovací brány pro resetování hesla).
+* **Objekt actor aktivity**: uživatel, který provedl část toku resetování hesla. Uživatel může být koncovým uživatelem nebo správcem.
+* **Cíl aktivity**: uživatel, který provedl část toku resetování hesla. Uživatel může být koncovým uživatelem nebo správcem.
+* **Stavy aktivity**:
+  * _Úspěch_: označuje, že uživatel úspěšně dokončil konkrétní krok toku resetování hesla.
+  * _Selhání_: označuje, že se nezdařil konkrétní krok toku resetování hesla. Výběrem řádku můžete zobrazit kategorii **Důvod stavu aktivity** a získat další informace o tom, proč k chybě došlo.
+* **Důvody aktivity**: pro [všechny přípustné důvody stavu aktivity resetování](#description-of-the-report-columns-in-the-azure-portal)se podívejte na následující tabulku.
 
-### <a name="activity-type-unlock-a-user-account-self-service"></a>Typ aktivity: Odemknutí uživatelského účtu (samoobslužné)
+### <a name="activity-type-unlock-a-user-account-self-service"></a>Typ aktivity: odemknutí uživatelského účtu (Samoobslužná služba)
 
-Následující seznam popisuje tato aktivita podrobně:
+Následující seznam vysvětluje tuto aktivitu podrobněji:
 
-* **Popis aktivity**: Označuje, že uživatel úspěšně odemknuli svůj účet služby Active Directory bez resetování hesel z [portál pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com) pomocí funkce služby Active Directory účet odemknout bez resetování.
-* **Aktivita actor**: Uživatel, který odemknout svůj účet bez resetování hesel. Tímto uživatelem může být koncový uživatel nebo správce.
-* **Cílové aktivity**: Uživatel, který odemknout svůj účet bez resetování hesel. Tímto uživatelem může být koncový uživatel nebo správce.
+* **Popis aktivity**: označuje, že uživatel úspěšně odemkl svůj účet Active Directory bez resetování hesla z portálu pro [resetování hesel Azure AD](https://passwordreset.microsoftonline.com) pomocí funkce Active Directory pro odemknutí účtu bez resetování.
+* **Objekt actor aktivity**: uživatel, který účet odemkl, bez resetování hesla. Uživatel může být koncovým uživatelem nebo správcem.
+* **Cíl aktivity**: uživatel, který účet odemkl, bez resetování hesla. Uživatel může být koncovým uživatelem nebo správcem.
 * **Povolené stavy aktivity**:
-  * _Úspěch_: Označuje, že uživatel úspěšně odemknuli svůj vlastní účet.
-  * _Selhání_: Udává, že uživatel se nepodařilo odemknout svůj účet. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
+  * _Úspěch_: indikuje, že uživatel úspěšně odemkl svůj vlastní účet.
+  * _Chyba_: označuje, že uživatel nedokázal odemknout svůj účet. Výběrem řádku můžete zobrazit kategorii **Důvod stavu aktivity** a získat další informace o tom, proč k chybě došlo.
 
-### <a name="activity-type-user-registered-for-self-service-password-reset"></a>Typ aktivity: Registrace uživatele pro samoobslužné resetování hesla
+### <a name="activity-type-user-registered-for-self-service-password-reset"></a>Typ aktivity: Uživatel zaregistrovaný pro Samoobslužné resetování hesla
 
-Následující seznam popisuje tato aktivita podrobně:
+Následující seznam vysvětluje tuto aktivitu podrobněji:
 
-* **Popis aktivity**: Označuje, že uživatel zaregistroval všechny požadované informace pro také moct resetovat své heslo v souladu s zásady pro resetování hesla nyní zadaného klienta. 
-* **Aktivita actor**: Uživatel, který je registrovaný pro resetování hesla. Tímto uživatelem může být koncový uživatel nebo správce.
-* **Cílové aktivity**: Uživatel, který je registrovaný pro resetování hesla. Tímto uživatelem může být koncový uživatel nebo správce.
+* **Popis aktivity**: označuje, že uživatel zaregistroval všechny požadované informace, aby bylo možné resetovat heslo v souladu s aktuálně zadanými zásadami pro resetování hesla tenanta. 
+* **Objekt actor aktivity**: uživatel, který byl zaregistrován pro resetování hesla. Uživatel může být koncovým uživatelem nebo správcem.
+* **Cíl aktivity**: uživatel, který zaregistroval pro resetování hesla. Uživatel může být koncovým uživatelem nebo správcem.
 * **Povolené stavy aktivity**:
-  * _Úspěch_: Označuje, že uživatel úspěšně zaregistrován v souladu s aktuální zásady resetování hesla. 
-  * _Selhání_: Označuje, že se nepodařilo zaregistrovat pro resetování hesla uživatele. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
+  * _Úspěch_: označuje, že se uživatel úspěšně zaregistroval pro resetování hesla v souladu s aktuálními zásadami. 
+  * _Chyba_: označuje, že se uživateli nepodařilo zaregistrovat k resetování hesla. Výběrem řádku můžete zobrazit kategorii **Důvod stavu aktivity** a získat další informace o tom, proč k chybě došlo.
 
      >[!NOTE]
-     >Selhání neznamená, že uživatel se nepovedlo se resetovat vlastní heslo. Znamená to, že se nedokončilo proces registrace. Pokud neověřené data na svůj účet, který je správný, jako je například telefonní číslo, který není ověřen, i v případě, že neověřili toto telefonní číslo, že ji mohou dál používat k resetování hesla.
+     >Selhání neznamená, že uživatel nemůže resetovat vlastní heslo. To znamená, že nedokončili proces registrace. Pokud jsou na svém účtu neověřená data, jako je třeba telefonní číslo, které se neověřuje, i když si toto telefonní číslo neověřili, můžou ho i nadále použít k resetování hesla.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Využití samoobslužného resetování HESLA a vícefaktorové ověřování a přehled generování sestav](howto-authentication-methods-usage-insights.md)
+* [Vytváření sestav využití SSPR a MFA a přehledy](howto-authentication-methods-usage-insights.md)
 * [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
@@ -185,7 +181,7 @@ Následující seznam popisuje tato aktivita podrobně:
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco poškozené. Jak řešit problémy SSPR?](active-directory-passwords-troubleshoot.md)
+* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)
 * [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
 
-[Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Protokoly příklad aktivit auditu samoobslužného resetování HESLA ve službě Azure AD"
+[Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Příklad protokolů auditu aktivity SSPR v Azure AD"

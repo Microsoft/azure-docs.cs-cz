@@ -1,5 +1,6 @@
 ---
-title: Přizpůsobení prohlížečů a webových zobrazení | Platforma Microsoft identity
+title: Přizpůsobení prohlížečů a webových zobrazení
+titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak přizpůsobit prostředí prohlížeče používané MSAL pro iOS a macOS pro přihlášení uživatelů.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dd5be3944bdff459f6d920b358ae08efedcc431
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: fcb314e46094bb6c283a17508c35b7fc17e010e5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264198"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803375"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Postupy: přizpůsobení prohlížečů a webových zobrazení pro iOS/macOS
 
@@ -46,7 +47,7 @@ MSAL pro macOS podporuje pouze `WKWebView`.
 
 Pro iOS se jako systémové prohlížeče považují `ASWebAuthenticationSession`, `SFAuthenticationSession` a `SFSafariViewController`. Obecně platí, že systémové prohlížeče sdílí soubory cookie a jiná data webu pomocí prohlížeče Safari.
 
-Ve výchozím nastavení MSAL dynamicky detekuje verzi iOS a vybere doporučený prohlížeč systému, který je v této verzi k dispozici. V systému iOS 12 + se @no__t – 0. 
+Ve výchozím nastavení MSAL dynamicky detekuje verzi iOS a vybere doporučený prohlížeč systému, který je v této verzi k dispozici. V systému iOS 12 + se `ASWebAuthenticationSession`. 
 
 | Version | Webový prohlížeč |
 |:-------------:|:-------------:|
@@ -70,9 +71,9 @@ Prohlížeč, který použijete, má vliv na možnosti jednotného přihlašová
 | Technologie    | Typ prohlížeče  | dostupnost iOS | dostupnost macOS | Sdílí soubory cookie a jiná data  | Dostupnost MSAL | JEDNOTNÉ |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
 | [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Systém | iOS12 a nahoru | macOS 10,15 a až | Ano | jenom iOS | instance w/Safari
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systém | iOS11 a nahoru | Není k dispozici | Ano | jenom iOS |  instance w/Safari
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systém | iOS11 a nahoru | Není k dispozici | Ne | jenom iOS | Ne * *
-| **SFSafariViewController** | Systém | iOS10 | Není k dispozici | Ano | jenom iOS |  instance w/Safari
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systém | iOS11 a nahoru | Nevztahuje se | Ano | jenom iOS |  instance w/Safari
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systém | iOS11 a nahoru | Nevztahuje se | Ne | jenom iOS | Ne * *
+| **SFSafariViewController** | Systém | iOS10 | Nevztahuje se | Ano | jenom iOS |  instance w/Safari
 | **WKWebView**  | V aplikaci | iOS8 a nahoru | macOS 10,10 a až | Ne | iOS a macOS | Ne * *
 
 \* * Aby jednotné přihlašování fungovalo, musí být tokeny sdílené mezi aplikacemi. To vyžaduje mezipaměť tokenů nebo aplikaci zprostředkovatele, například Microsoft Authenticator pro iOS.
@@ -91,7 +92,7 @@ Každý požadavek je možné nakonfigurovat tak, aby přepsal výchozí prohlí
 
 Kromě toho MSAL podporuje předávání do vlastního `WKWebView` nastavením vlastnosti `MSALInteractiveTokenParameters.webviewParameters.customWebView`.
 
-Příklad:
+Například:
 
 Objective-C
 ```objc
@@ -104,7 +105,7 @@ MSALInteractiveTokenParameters *interactiveParameters = [[MSALInteractiveTokenPa
     
 [app acquireTokenWithParameters:interactiveParameters completionBlock:completionBlock];
 ```
-SWIFT
+Swift
 ```swift
 let myParentController: UIViewController = ...
 let myCustomWebView: WKWebView = ...

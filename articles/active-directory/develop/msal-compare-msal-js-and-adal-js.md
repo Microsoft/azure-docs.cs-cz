@@ -1,5 +1,6 @@
 ---
-title: Rozdíly mezi MSAL. js a ADAL. js | Azure
+title: Rozdíly mezi MSAL. js a ADAL. js
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o rozdílech mezi knihovnou Microsoft Authentication Library for JavaScript (MSAL. js) a knihovnou ověřování Azure AD pro JavaScript (ADAL. js) a postupem, jak zvolit, která z nich se má použít.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7149b9d871c43af083774ffb799255e0d1144113
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8d831f9f1cf8dbf565d569f63ee6215fac80949d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429942"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803167"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Rozdíly mezi MSAL JS a ADAL JS
 
@@ -59,9 +60,9 @@ V 2.0 se pomocí autority `https://login.microsoftonline.com/common` umožní u�
 
     protokol v 2.0 místo prostředků v požadavcích používá obory. Jinými slovy, pokud vaše aplikace potřebuje požádat o tokeny s oprávněním pro prostředek, jako je například MS Graph, rozdíl v hodnotách předaných metodám knihovny je následující:
 
-    v 1.0: Resource = https @ no__t-0//Graph. Microsoft. com
+    v 1.0: prostředek = https\://graph.microsoft.com
 
-    v 2.0: Scope = https @ no__t-0//Graph. Microsoft. com/user. Read
+    v 2.0: Scope = https\://graph.microsoft.com/User.Read
 
     Pomocí identifikátoru URI rozhraní API můžete vyžádat obory pro jakékoli rozhraní API: appidURI/Scope příklad: https: \//mytenant... Microsoft. com/MyAPI/API. Read
 

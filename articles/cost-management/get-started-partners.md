@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 661e1b6e3811ff2b5ae25e4fd59764a69e9ebe48
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6d59964013a2631430ecd7e46d1ce0f6be60a05f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596645"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802040"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme s Azure Cost Management pro partnery
 
@@ -30,10 +30,10 @@ Partneři CSP používají Cost Management k těmto akcím:
 - Povolte zásady Azure Resource Manager, které poskytují zákazníkům přístup k datům Cost Management. Zákazníci si pak můžou zobrazit data nákladů na spotřebu pro svá předplatná podle [tarifů](https://azure.microsoft.com/pricing/calculator/)průběžných plateb.
 
 Tady je příklad znázorňující náklady pro všechny zákazníky.
-![Example zobrazení nákladů pro všechny zákazníky ](./media/get-started-partners/customer-costs1.png)
+![Příklad znázorňující náklady na všechny zákazníky](./media/get-started-partners/customer-costs1.png)
 
 Tady je příklad, který ukazuje náklady na jednoho zákazníka.
-![Example zobrazující náklady na jednoho zákazníka ](./media/get-started-partners/customer-costs2.png)
+![Příklad znázorňující náklady na jednoho zákazníka](./media/get-started-partners/customer-costs2.png)
 
 Všechny funkce, které jsou dostupné v Azure Cost Management, jsou dostupné taky s rozhraními REST API. Použijte rozhraní API k automatizaci úloh správy nákladů.
 
@@ -83,7 +83,7 @@ V současné době je fakturační měna zákazníka výchozí měnou při prohl
 Partneři můžou pomocí oboru sjednotit faktury. A používají obor k nastavení rozpočtů ve fakturační měně pro následující položky:
 
 - Konkrétní filtrovaná faktura
-- Zákazníka
+- Zákazník
 - Předplatné
 - Skupina prostředků
 - Prostředek
@@ -101,7 +101,7 @@ Obor zákazníka neobsahuje zákazníky, kteří patří do aktuální nabídky 
 
 Jenom uživatelé s rolemi **globální správce** a **Agent pro správu** můžou spravovat a zobrazovat náklady na fakturační účty, profily fakturace a zákazníky přímo v tenantovi Azure partnera. Další informace o rolích partnerského centra najdete v tématu [přiřazení rolí uživatelů a oprávnění](/partner-center/permissions-overview).
 
-### <a name="enable-cost-management-in-the-customer-tenant"></a>Povolit správu nákladů v tenantovi zákazníka
+## <a name="enable-cost-management-in-the-customer-tenant"></a>Povolit správu nákladů v tenantovi zákazníka
 
 Partneři můžou povolit přístup k Cost Management, jakmile se zákazníci připojí k zákaznické smlouvě Microsoftu. Pak partneři potom můžou povolit zásadu, která zákazníkům umožní zobrazit své náklady vypočítané podle maloobchodních tarifů průběžných plateb. Náklady se zobrazují v fakturační měně zákazníka za využívání využívaného využití v rámci předplatného RBAC a skupin prostředků.
 
@@ -122,7 +122,7 @@ V seznamu zákazníků vyberte zákazníka, kterému chcete dovolit zobrazit ná
 V části **Nastavení**klikněte na **zásady**.
 
 V této zásadě se účtují poplatky za **využití Azure** spojené s předplatnými pro vybraného zákazníka.
-![Policy, aby si zákazníci mohli zobrazit poplatky za průběžné platby ](./media/get-started-partners/cost-management-billing-policies.png)
+![zásada, která zákazníkům umožní zobrazovat poplatky za průběžné platby](./media/get-started-partners/cost-management-billing-policies.png)
 
 Pokud je zásada nastavená na **ne**, Azure cost management není k dispozici pro uživatele předplatného přidruženého k zákazníkovi. Pokud není povolená partnerem, jsou zásady viditelnosti nákladů ve výchozím nastavení pro všechny uživatele předplatného zakázané.
 

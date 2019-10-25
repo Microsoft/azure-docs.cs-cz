@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s pracovištěm na Facebooku | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s pracovištěm na Facebooku | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a na pracovišti pomocí Facebooku.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe02e9d6c3fa69e0ccd88057e10edb6ea1c6e0d0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 15e98bf83cedc22aa565ba0f98089e9f6f217728
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986045"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787622"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s pracovištěm na Facebooku
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s pracovištěm na Facebooku
 
 V tomto kurzu se dozvíte, jak integrovat pracovní plochu na Facebooku pomocí Azure Active Directory (Azure AD). Když integrujete pracovní plochu na Facebooku s Azure AD, můžete:
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat pracovní plochu na Facebooku pomocí 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -63,7 +63,6 @@ Pokud chcete nakonfigurovat integraci pracoviště pomocí Facebooku do Azure AD
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **pracovní plochu podle Facebooku** .
 1. Vyberte možnost **pracovní plocha na Facebooku** z panelu výsledků a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-workplace-by-facebook"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro pracovní plochu prostřednictvím Facebooku
 
 Nakonfigurujete a otestujete jednotné přihlašování Azure AD s využitím webu na Facebooku pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v pracovní ploše Facebooku.
@@ -71,10 +70,10 @@ Nakonfigurujete a otestujete jednotné přihlašování Azure AD s využitím we
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s využitím webu na Facebooku, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 2. **[Nakonfigurujte pracoviště pomocí jednotného přihlašování na Facebooku](#configure-workplace-by-facebook-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvoření pracoviště pomocí služby Facebook Test User](#create-workplace-by-facebook-test-user)** – Pokud chcete mít protějšek B. Simon na pracovišti na pracovišti, které je propojené s reprezentací uživatele v Azure AD.
+    * **[Vytvoření pracoviště pomocí služby Facebook Test User](#create-workplace-by-facebook-test-user)** – Pokud chcete mít protějšek B. Simon na pracovišti na pracovišti, které je propojené s reprezentací uživatele v Azure AD.
 3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
@@ -89,34 +88,34 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<instancename>.facebook.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<instancename>.facebook.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://www.facebook.com/company/<instanceID>`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://www.facebook.com/company/<instanceID>`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. Správné hodnoty pro vaši komunitu na pracovišti najdete na stránce ověřování na řídicím panelu společnosti na pracovišti.
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-6. V části **nastavit pracovní plochu podle Facebooku** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+1. V části **nastavit pracovní plochu podle Facebooku** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k pracovišti prostřednictvím Facebooku.
 
@@ -124,7 +123,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **pracovní plocha na Facebooku**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -136,24 +135,36 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-workplace-by-facebook-sso"></a>Konfigurace pracoviště pomocí jednotného přihlašování na Facebooku
 
-1. V jiném okně webového prohlížeče se přihlaste k pracovišti pomocí webu Facebook společnosti jako správce.
-  
+1. Pokud chcete automatizovat konfiguraci v rámci pracoviště pomocí Facebooku, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+1. Po přidání rozšíření do prohlížeče klikněte na možnost **nastavit pracovní plochu na Facebooku** a nasměrujte vás na pracoviště po Facebooku. Odtud zadejte přihlašovací údaje správce pro přihlášení k pracovišti na Facebooku. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-5.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+1. Pokud chcete nastavit pracovní plochu ručně pomocí Facebooku, otevřete nové okno webového prohlížeče a přihlaste se k pracovišti pomocí webu Facebook společnosti jako správce a proveďte následující kroky:
+
     > [!NOTE]
     > V rámci procesu ověřování SAML může pracovní plocha využívat řetězce dotazů o velikosti až 2,5 kilobajtů, aby bylo možné předat parametry do služby Azure AD.
 
-2. Na **panelu pro správu**přejdete na kartu **zabezpečení** .
+1. Na levém navigačním panelu přejděte na kartu **ověřování** > **zabezpečení** .
 
     ![Panel pro správu](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-3. Na kartě **ověřování** vyberte **jednotné přihlašování (SSO)** a proveďte následující kroky:
+    a. Ověřte možnost **jednotného přihlašování (SSO)** .
+    
+    b. Klikněte na **+ Přidat nového poskytovatele jednotného přihlašování**.
+
+1. Na kartě **ověřování** vyberte **jednotné přihlašování (SSO)** a proveďte následující kroky:
 
     ![Karta ověřování](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-    a. Do textového pole **URL adresy SAML** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+    a. V **názvu poskytovatele jednotného přihlašování**zadejte název instance SSO, jako je Azureadsso.
 
-    b. Do **textového pole identifikátor URI vystavitele SAML**vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **URL adresy SAML** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
 
-    c. V **přesměrování odhlášení SAML** (volitelné) vložte hodnotu URL pro **odhlášení**, kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole **Adresa URL vystavitele SAML** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
 
     d. Otevřete v programu Poznámkový blok **certifikát s kódováním Base-64** stažený z Azure Portal, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikátu SAML** .
 
@@ -163,13 +174,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     g. Posuňte se do dolní části části a klikněte na tlačítko **test SSO** . Výsledkem je automaticky otevírané okno se zobrazeným přihlašovací stránkou Azure AD. Pro ověření zadejte svoje přihlašovací údaje v normálním režimu.
 
-    **Při** Ujistěte se, že se e-mailová adresa vracená zpátky ze služby Azure AD shoduje s účtem pracovní plochy, se kterým jste se přihlásili.
+    **Řešení potíží:** Ujistěte se, že se e-mailová adresa vracená zpátky ze služby Azure AD shoduje s účtem pracovní plochy, se kterým jste se přihlásili.
 
     h. Po úspěšném dokončení testu se posuňte do dolní části stránky a klikněte na tlačítko **Uložit** .
 
     i. Všichni uživatelé, kteří používají pracoviště na pracovišti, se teď zobrazí na přihlašovací stránce Azure AD pro ověřování.
 
-4. **Přesměrování odhlášení SAML (volitelné)**  -
+1. **Přesměrování odhlášení SAML (volitelné)**  -
 
     Volitelně můžete nakonfigurovat adresu URL pro odhlášení SAML, která se dá použít k ukázání na odhlašovací stránce služby Azure AD. Když je toto nastavení povolené a nakonfigurované, uživatel už nebude přesměrován na stránku pro odhlášení pracovní plochy. Místo toho bude uživatel přesměrován na adresu URL, která byla přidána v nastavení přesměrování odhlášení SAML.
 
@@ -180,7 +191,7 @@ Na pracovišti můžete nakonfigurovat, aby se spouštěla výzva ke kontrole SA
 > [!NOTE]
 > Minimální hodnota pro u mobilních aplikací kontroly SAML je nastavená na jeden týden.
 
-Resetování SAML pro všechny uživatele můžete také vynutit pomocí tlačítka: Pro všechny uživatele se teď vyžaduje ověřování SAML.
+Resetování SAML pro všechny uživatele můžete také vynutit pomocí tlačítka: vyžadovat ověřování SAML pro všechny uživatele nyní.
 
 ### <a name="create-workplace-by-facebook-test-user"></a>Vytvoření pracoviště pomocí služby Facebook Test User
 
@@ -193,7 +204,7 @@ V této části není žádná akce. Pokud uživatel na pracovišti neexistuje n
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici pracovní plocha na Facebooku, měli byste se k pracovišti automaticky přihlášeni pomocí Facebooku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
@@ -219,7 +230,7 @@ Když na přístupovém panelu kliknete na dlaždici pracovní plocha na Faceboo
 
     ![Domovská stránka](./media/workplacebyfacebook-tutorial/test01.png)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -230,4 +241,3 @@ Když na přístupovém panelu kliknete na dlaždici pracovní plocha na Faceboo
 - [Konfigurace zřizování uživatelů](workplacebyfacebook-provisioning-tutorial.md)
 
 - [Vyzkoušejte si pracovní plochu na Facebooku s Azure AD](https://aad.portal.azure.com)
-

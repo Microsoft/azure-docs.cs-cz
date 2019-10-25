@@ -1,22 +1,23 @@
 ---
-title: Vytvoření úložiště znalostí pomocí Azure Search REST
-description: Pomocí REST API a potom můžete vytvořit úložiště Azure Search znalostní báze pro zachovávání rozšíření z kanálu vyhledávání vnímání.
+title: Vytvoření úložiště znalostí pomocí REST
+titleSuffix: Azure Cognitive Search
+description: Pomocí REST API a post se vytvoří Azure Kognitivní hledání Knowledge Store pro zachování rozšíření z kanálu pro rozšíření AI.
 author: lobrien
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 10/01/2019
+manager: nitinme
 ms.author: laobri
-ms.openlocfilehash: 68808a2ea99c8fccd7e64f15e97f2ee6ec84d1a9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 24b97374b032640afafde775e90f6db735d63c46
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678460"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790013"
 ---
-# <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>Vytvoření Azure Search Knowledge Store pomocí REST
+# <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>Vytvoření úložiště Azure Kognitivní hledání Knowledge Store pomocí REST
 
-Funkce znalostní báze ve službě Azure Search uchovává výstup kanálu rozšíření AI pro pozdější analýzu nebo jiné zpracování pro příjem dat. Kanál obohacený AI akceptuje soubory obrázků nebo nestrukturované textové soubory, indexuje je pomocí Azure Search, aplikuje rozšíření AI z Azure Cognitive Services (jako je analýza obrázků a zpracování přirozeného jazyka), a pak výsledky uloží do znalostní báze. Uložit v Azure Storage. Pomocí nástrojů, jako je Power BI nebo Průzkumník služby Storage, můžete v Azure Portal prozkoumat znalostní bázi Knowledge Store.
+Funkce znalostní báze ve službě Azure Kognitivní hledání přechovává výstup kanálu rozšíření AI pro pozdější analýzu nebo jiné zpracování dat. Kanál obohacený AI akceptuje soubory obrázků nebo nestrukturované textové soubory, indexuje je pomocí Azure Kognitivní hledání, aplikuje rozšíření AI z Azure Cognitive Services (například analýzu obrázků a zpracování přirozeného jazyka), a pak výsledky uloží do znalostní báze v Azure Storage. Pomocí nástrojů, jako je Power BI nebo Průzkumník služby Storage, můžete v Azure Portal prozkoumat znalostní bázi Knowledge Store.
 
 V tomto článku použijete rozhraní REST API k ingestování, indexování a používání rozšíření AI na sadu pohlídek za Hotel. Recenze hotelu se importují do úložiště objektů BLOB v Azure. Výsledky se ukládají jako úložiště ve znalostní bázi ve službě Azure Table Storage.
 
@@ -26,15 +27,15 @@ Po vytvoření znalostní báze můžete získat informace o tom, jak získat p�
 
 Vytvořte následující služby:
 
-- Vytvořte [službu Azure Search](search-create-service-portal.md) nebo [vyhledejte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v aktuálním předplatném. Pro tento kurz můžete použít bezplatnou službu.
+- Vytvořte [službu Azure kognitivní hledání](search-create-service-portal.md) nebo [vyhledejte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v aktuálním předplatném. Pro tento kurz můžete použít bezplatnou službu.
 
-- Vytvořte [účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat a úložiště znalostí. Váš účet úložiště musí pro službu Azure Search používat stejné umístění (například USA – západ). Hodnota pro **druh účtu** musí být **StorageV2 (pro obecné účely v2)** (výchozí) nebo **Storage (pro obecné účely V1)** .
+- Vytvořte [účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat a úložiště znalostí. Váš účet úložiště musí pro službu Azure Kognitivní hledání používat stejné umístění (například USA – západ). Hodnota pro **druh účtu** musí být **StorageV2 (pro obecné účely v2)** (výchozí) nebo **Storage (pro obecné účely V1)** .
 
-- Doporučené: Získejte [aplikaci po ploše](https://www.getpostman.com/) pro odesílání požadavků do Azure Search. REST API můžete použít s jakýmkoli nástrojem, který dokáže pracovat s požadavky a odpověďmi HTTP. Jako dodatečná volba pro zkoumání rozhraní REST API je vhodná. V tomto článku používáme post. [Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) pro tento článek také obsahuje kolekci požadavků post. 
+- Doporučené: Získejte [aplikaci po ploše](https://www.getpostman.com/) pro odesílání požadavků do Azure kognitivní hledání. REST API můžete použít s jakýmkoli nástrojem, který dokáže pracovat s požadavky a odpověďmi HTTP. Jako dodatečná volba pro zkoumání rozhraní REST API je vhodná. V tomto článku používáme post. [Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) pro tento článek také obsahuje kolekci požadavků post. 
 
 ## <a name="store-the-data"></a>Uložení dat
 
-Načtěte soubor. CSV pro kontrolu hotelu do úložiště objektů BLOB v Azure, aby k němu měl k dispozici Azure Search indexer a mohl by být vydáván prostřednictvím kanálu pro rozšíření AI.
+Načtěte soubor. CSV pro kontrolu hotelu do úložiště objektů BLOB v Azure, aby k němu měl přistup Azure Kognitivní hledání indexerem a mohl by se dodávat prostřednictvím kanálu pro rozšíření AI.
 
 ### <a name="create-a-blob-container-by-using-the-data"></a>Vytvoření kontejneru objektů BLOB pomocí dat
 
@@ -68,21 +69,21 @@ Nainstalujte a nastavte post.
 
 Na kartě **proměnné** můžete přidat hodnoty, které účtují swapy při každém výskytu konkrétní proměnné uvnitř dvojitých složených závorek. Například metoda post nahradí symbol `{{admin-key}}` aktuální hodnotou, kterou jste nastavili pro `admin-key`. Po nahrazení se provede náhrada v adresách URL, hlavičkách, textu žádosti atd. 
 
-Pokud chcete získat hodnotu pro `admin-key`, přejděte do služby Azure Search a vyberte kartu **klíče** . Změňte `search-service-name` a `storage-account-name` na hodnoty, které jste zvolili v části [vytvořit služby](#create-services). Nastavte `storage-connection-string` pomocí hodnoty na kartě **přístupové klíče** účtu úložiště. Pro ostatní hodnoty můžete ponechat výchozí hodnoty.
+Pokud chcete získat hodnotu pro `admin-key`, přejděte na službu Azure Kognitivní hledání a vyberte kartu **klíče** . Změňte `search-service-name` a `storage-account-name` hodnoty, které jste zvolili v části [vytvořit služby](#create-services). Nastavte `storage-connection-string` pomocí hodnoty na kartě **přístupové klíče** účtu úložiště. Pro ostatní hodnoty můžete ponechat výchozí hodnoty.
 
 ![Karta proměnné aplikace po odeslání](media/knowledge-store-create-rest/postman-variables-window.png "Okno pro proměnné post")
 
 
 | Proměnná    | Kde ho získat |
 |-------------|-----------------|
-| `admin-key` | Na kartě **klíče** služby Azure Search.  |
+| `admin-key` | Na stránce **klíče** služby Azure kognitivní hledání.  |
 | `api-version` | Ponechte jako **2019-05-06-Preview**. |
 | `datasource-name` | Ponechte jako **hotelové recenze – DS**. | 
 | `indexer-name` | Ponechte jako **hotelové recenze – IXR**. | 
 | `index-name` | Ponechte jako **hotelové recenze – IX**. | 
-| `search-service-name` | Hlavní název služby Azure Search. Adresa URL je `https://{{search-service-name}}.search.windows.net`. | 
+| `search-service-name` | Název služby Azure Kognitivní hledání. Adresa URL je `https://{{search-service-name}}.search.windows.net`. | 
 | `skillset-name` | Ponechte jako **hotelové recenze – SS**. | 
-| `storage-account-name` | Hlavní název účtu úložiště | 
+| `storage-account-name` | Název účtu úložiště. | 
 | `storage-connection-string` | V účtu úložiště na kartě **přístupové klíče** vyberte **klíč1** **připojovací řetězec** > . | 
 | `storage-container-name` | Ponechte jako **hotelové recenze**. | 
 
@@ -90,8 +91,8 @@ Pokud chcete získat hodnotu pro `admin-key`, přejděte do služby Azure Search
 
 Při vytváření znalostní báze musíte vydat čtyři požadavky HTTP: 
 
-- **Vložit požadavek na vytvoření indexu**: Tento index obsahuje data, která Azure Search používá a vrací.
-- **Post – požadavek na vytvoření zdroje dat**: Tento zdroj dat připojuje vaše chování Azure Search k účtu úložiště dat a úložiště znalostní báze. 
+- **Vložit požadavek na vytvoření indexu**: Tento index obsahuje data, která Azure kognitivní hledání používá a vrací.
+- **Post – požadavek na vytvoření zdroje dat**: Tento zdroj dat připojuje vaše chování Azure kognitivní hledání k účtu úložiště dat a úložiště znalostní báze. 
 - **Put – požadavek na vytvoření dovednosti**: dovednosti určuje rozšíření, která se aplikují na vaše data a strukturu znalostní databáze.
 - **Vložit požadavek na vytvoření indexeru**: když spustíte indexer, načte data, použije dovednosti a výsledky uloží. Tuto žádost musíte spustit jako poslední.
 
@@ -103,11 +104,11 @@ Při vytváření znalostní báze musíte vydat čtyři požadavky HTTP:
 > Ve všech svých žádostech musíte nastavit `api-key` a `Content-type` hlaviček. Pokud post rozpoznává proměnnou, proměnná se zobrazí v oranžovém textu, stejně jako u `{{admin-key}}` na předchozím snímku obrazovky. Pokud je proměnná nesprávně napsaná, zobrazí se červený text.
 >
 
-## <a name="create-an-azure-search-index"></a>Vytvoření indexu Azure Search
+## <a name="create-an-azure-cognitive-search-index"></a>Vytvoření indexu služby Azure Kognitivní hledání
 
-Vytvořte index Azure Search, který bude reprezentovat data, která vás zajímají při hledání, filtrování a používání vylepšení. Vytvořte index tím, že vydáte požadavek PUT `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Metoda post nahradí symboly, které jsou uzavřeny ve složených závorkách (například `{{search-service-name}}`, `{{index-name}}` a `{{api-version}}`) hodnotami, které jste nastavili v části [Konfigurace post](#configure-postman). Pokud používáte jiný nástroj k vystavení příkazů REST, je nutné tyto proměnné nahradit sami.
+Vytvořte index služby Azure Kognitivní hledání, který bude reprezentovat data, která vás zajímají při hledání, filtrování a používání vylepšení. Vytvořte index tím, že vydáte požadavek PUT `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Metoda post nahradí symboly, které jsou uzavřeny ve složených závorkách (například `{{search-service-name}}`, `{{index-name}}` a `{{api-version}}`) hodnotami, které jste nastavili v části [Konfigurace post](#configure-postman). Pokud používáte jiný nástroj k vystavení příkazů REST, je nutné tyto proměnné nahradit sami.
 
-Nastavte strukturu Azure Search indexu v těle žádosti. V poli po nastavení hlaviček `api-key` a `Content-type` přejdete do podokna **tělo** žádosti. Měl by se zobrazit následující kód JSON. Pokud to neuděláte, vyberte **nezpracované**  > **JSON (Application/JSON)** a vložte následující kód jako text:
+V těle žádosti nastavte strukturu indexu služby Azure Kognitivní hledání. V poli po nastavení hlaviček `api-key` a `Content-type` přejdete do podokna **tělo** žádosti. Měl by se zobrazit následující kód JSON. Pokud to neuděláte, vyberte **nezpracované**  > **JSON (Application/JSON)** a vložte následující kód jako text:
 
 ```JSON
 {
@@ -148,7 +149,7 @@ Vyberte **Odeslat** a vydejte požadavek PUT. Měl by se zobrazit stav `201 - Cr
 
 ## <a name="create-the-datasource"></a>Vytvoření zdroje dat
 
-Dále připojte Azure Search k datům hotelu, která jste uložili v [úložišti dat](#store-the-data). Chcete-li vytvořit zdroj dat, odešlete požadavek POST na `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. Je nutné nastavit hlavičky `api-key` a `Content-Type`, jak je popsáno výše. 
+Dále připojte Azure Kognitivní hledání k datům hotelu, která jste uložili v [úložišti dat](#store-the-data). Chcete-li vytvořit zdroj dat, odešlete požadavek POST na `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. Je nutné nastavit hlavičky `api-key` a `Content-Type`, jak je popsáno výše. 
 
 V poli pro odeslání klikněte na požadavek **vytvořit zdroj dat** a pak na podokno **tělo** . Měl by se zobrazit následující kód:
 
@@ -306,7 +307,7 @@ Posledním krokem je vytvoření indexeru. Indexer načte data a aktivuje dovedn
 
 Objekt `parameters/configuration` řídí, jak indexer ingestuje data. V takovém případě se vstupní data nachází v jednom dokumentu, který obsahuje řádek záhlaví a hodnoty oddělené čárkami. Klíč dokumentu je jedinečný identifikátor pro dokument. Před kódováním je klíč dokumentu adresou URL zdrojového dokumentu. Nakonec jsou výstupní hodnoty dovednosti, jako je kód jazyka, mínění a klíčové fráze, namapovány na jejich umístění v dokumentu. I když existuje jedna hodnota pro `Language`, `Sentiment` se aplikuje na každý prvek v poli `pages`. `Keyphrases` je pole, které je také použito pro každý prvek v poli `pages`.
 
-Po nastavení hlaviček `api-key` a `Content-type` a potvrzení, že text žádosti je podobný následujícímu zdrojovému kódu, vyberte **Odeslat** v poli post. Příkaz POST odešle požadavek PUT na `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Azure Search vytvoří a spustí indexer. 
+Po nastavení hlaviček `api-key` a `Content-type` a potvrzení, že text žádosti je podobný následujícímu zdrojovému kódu, vyberte **Odeslat** v poli post. Příkaz POST odešle požadavek PUT na `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Azure Kognitivní hledání vytvoří a spustí indexer. 
 
 ```json
 {
@@ -339,7 +340,7 @@ Po nastavení hlaviček `api-key` a `Content-type` a potvrzení, že text žádo
 
 ## <a name="run-the-indexer"></a>Spuštění indexeru 
 
-V Azure Portal přejdete na stránku **Přehled** služby Azure Search. Vyberte kartu **indexery** a pak vyberte **hotely-recenze – IXR**. Pokud indexer ještě není spuštěný, vyberte **Spustit**. Úloha indexování může vyvolávat některá upozornění související s rozpoznáváním jazyka. Data obsahují některé recenze, které jsou napsané v jazycích, které ještě nejsou podporované znalostmi rozpoznávání. 
+V Azure Portal přejdete na stránku **Přehled** služby Azure kognitivní hledání. Vyberte kartu **indexery** a pak vyberte **hotely-recenze – IXR**. Pokud indexer ještě není spuštěný, vyberte **Spustit**. Úloha indexování může vyvolávat některá upozornění související s rozpoznáváním jazyka. Data obsahují některé recenze, které jsou napsané v jazycích, které ještě nejsou podporované znalostmi rozpoznávání. 
 
 ## <a name="next-steps"></a>Další kroky
 

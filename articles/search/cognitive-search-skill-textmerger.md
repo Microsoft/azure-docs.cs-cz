@@ -1,30 +1,29 @@
 ---
-title: Dovednost pro vyhledávání rozpoznávání textu při slučování – Azure Search
-description: Sloučí text z kolekce polí do jednoho konsolidovaného pole. Použijte tuto funkci rozpoznávání v kanálu rozšíření Azure Search.
-services: search
+title: Dovednost pro vnímání textu sloučení
+titleSuffix: Azure Cognitive Search
+description: Sloučí text z kolekce polí do jednoho konsolidovaného pole. Využijte tuto funkci rozpoznávání v kanálu rozšíření AI v Azure Kognitivní hledání.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265262"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791842"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Dovednost pro vnímání textu sloučení
+#   <a name="text-merge-cognitive-skill"></a>Dovednost pro vnímání textu sloučení
 
 Dovednost **sloučení textu** slučuje text z kolekce polí do jednoho pole. 
 
 > [!NOTE]
-> Tato dovednost není vázaná na rozhraní Cognitive Services API a neúčtují se za jejich použití. K dispozici byste ale měli i [prostředek Cognitive Services](cognitive-search-attach-cognitive-services.md), abyste mohli přepsat možnost bezplatného prostředku, která omezuje na malý počet denních rozšíření za den.
+> Tato dovednost není vázaná na rozhraní Cognitive Services API a neúčtují se za jejich použití. K dispozici byste ale měli i [prostředek Cognitive Services](cognitive-search-attach-cognitive-services.md), abyste mohli přepsat možnost **bezplatného** prostředku, která omezuje na malý počet denních rozšíření za den.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.MergeSkill
+Microsoft. dovednosti. text. MergeSkill
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
@@ -56,7 +55,7 @@ Dokument JSON, který poskytuje použitelný vstup pro tuto dovednost, může b�
 ```
 
 ##  <a name="sample-output"></a>Ukázkový výstup
-Tento příklad ukazuje výstup předchozí vstupní hodnoty za předpokladu, že je *insertPreTag* nastaven na `" "`hodnotu a *insertPostTag* je nastaven na `""`hodnotu. 
+Tento příklad ukazuje výstup předchozí vstupní hodnoty za předpokladu, že je *insertPreTag* nastaven na hodnotu `" "`a *insertPostTag* je nastaven na hodnotu `""`. 
 
 ```json
 {
@@ -141,8 +140,8 @@ Výše uvedený příklad předpokládá, že existuje pole Normalized-images. C
 }
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-+ [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
++ [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

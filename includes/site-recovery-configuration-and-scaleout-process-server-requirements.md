@@ -9,57 +9,74 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 3b4992a16061bef782f012aa7887b248e3423234
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 0156ab3acd2f4c629b0263356f61c22e62b424d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568307"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792328"
 ---
-**Požadavky na Configuration/Process server**
+**Požadavky na konfigurační server a procesový Server**
+
+
+## <a name="hardware-requirements"></a>Požadavky na hardware
 
 **Komponenta** | **Požadavek** 
 --- | ---
-**NASTAVENÍ HARDWARU** | 
 Procesorová jádra | 8 
 Paměť RAM | 16 GB
-Počet disků | 3, včetně operačního systému disku, disk mezipaměti procesového serveru a jednotky pro uchovávání dat pro navrácení služeb po obnovení 
-Volného místa na disku (mezipaměť procesového serveru) | 600 GB
-Volné místo na disku (disk pro uchování) | 600 GB
+Počet disků | 3, včetně disku operačního systému, disku mezipaměti procesového serveru a jednotky pro uchovávání pro navrácení služeb po obnovení 
+Volné místo na disku (mezipaměť procesového serveru) | 600 GB
+Volné místo na disku (disk pro uchovávání) | 600 GB
  | 
-**NASTAVENÍ SOFTWARU** | 
+
+## <a name="software-requirements"></a>Požadavky na software
+
+**Komponenta** | **Požadavek** 
+--- | ---
 Operační systém | Windows Server 2012 R2 <br> Windows Server 2016
 Národní prostředí operačního systému | Angličtina (en-us)
-Role Windows Serveru | Nepovolí pracovníci v těchto rolích: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V 
-Zásady skupiny | Nepovolí tyto zásady skupiny: <br> -Zabránit přístupu do příkazového řádku. <br> -Zabránit přístupu k nástrojům pro úpravu registru. <br> – Logika důvěryhodnosti pro přiložené soubory. <br> -Zapnutí provádění skriptů. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Žádné existující výchozí web <br> -Žádné stávající web/aplikace naslouchá na portu 443 <br>-Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení 
+Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V 
+Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 
 | 
-**NASTAVENÍ SÍTĚ** | 
-Typ IP adresy | Statická 
+
+## <a name="network-requirements"></a>Síťové požadavky
+
+**Komponenta** | **Požadavek** 
+--- | --- 
+Typ IP adresy | Statický 
 Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat) 
-Typ NIC | VMXNET3 (pokud jde o virtuální počítač VMware)
+Typ síťové karty | VMXNET3 (Pokud je konfigurační server virtuálním počítačem VMware)
  |
-**Přístup k Internetu** (server potřebuje přístup k následujícím adresám URL - přímo nebo prostřednictvím proxy serveru):|
-\*.backup.windowsazure.com | Používá pro koordinaci a přenosu replikovaných dat
-\*.store.core.windows.net | Používá pro koordinaci a přenosu replikovaných dat
-\*.blob.core.windows.net | Používá pro přístup k účtu úložiště, který ukládá replikovaná data
-\*.hypervrecoverymanager.windowsazure.com | Používá pro koordinaci a operace správy replikací.
-https:\//management.azure.com | Používá pro koordinaci a operace správy replikací. 
-*.services.visualstudio.com | Používá pro účely telemetrie (je volitelný)
+**Přístup k Internetu** (server potřebuje přístup k následujícím adresám URL přímo nebo prostřednictvím proxy serveru):|
+\*.backup.windowsazure.com | Slouží k přenosu replikovaných dat a jejich koordinaci.
+\*.store.core.windows.net | Slouží k přenosu replikovaných dat a jejich koordinaci.
+\*.blob.core.windows.net | Používá se pro přístup k účtu úložiště, který ukládá replikovaná data.
+\*.hypervrecoverymanager.windowsazure.com | Slouží k operacím správy replikace a jejich koordinaci.
+https:\//management.azure.com | Slouží k operacím správy replikace a jejich koordinaci. 
+*.services.visualstudio.com | Používá se pro účely telemetrie (je volitelné).
 time.nist.gov | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
 time.windows.com | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
-| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | Nastavit OVF potřebuje přístup k těmto adresám URL. Používají se pro přístup k řízení a správě identit Azure Active Directory
-protokol https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | K dokončení stahování MySQL. </br> V několika oblastech může být stažený soubor znovu orientovaného na adresu URL pro CDN. Ujistěte se, že adresa URL CDN je také přidat na seznam povolených, podle potřeby.
+| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | OVF nastavení potřebuje přístup k těmto adresám URL. Používají se k řízení přístupu a správě identit pomocí Azure Active Directory
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | Pro dokončení stažení MySQL. </br> V několika oblastech se stahování může přesměrovat na adresu URL CDN. V případě potřeby zkontrolujte, jestli je v případě potřeby také povolená adresa URL CDN.
 |
-**SOFTWARE PRO INSTALACI** | 
-VMware vSphere PowerCLI | [Nástroj PowerCLI verze 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) by měly být nainstalovány, pokud je konfigurační Server běží na virtuálním počítači VMware.
-MYSQL | Je třeba nainstalovat MySQL. Můžete nainstalovat ručně nebo ji můžete nainstalovat Site Recovery. (Odkazovat [nastavení](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings) Další informace)
 
-**Configuration/Process server velikosti požadavky**
+## <a name="required-software"></a>Požadovaný software
 
-**CPU** | **Paměť** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
+**Komponenta** | **Požadavek** 
+--- | ---
+VMware vSphere PowerCLI | Pokud konfigurační server běží na virtuálním počítači VMware, měla by být nainstalovaná [verze PowerCLI 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) .
+MYSQL | Je potřeba nainstalovat MySQL. Instalaci můžete provést ručně, nebo ji Site Recovery nainstalovat. (Další informace najdete v tématu [Konfigurace nastavení](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings) .)
+
+## <a name="sizing-and-capacity-requirements"></a>Požadavky na velikost a kapacitu
+
+Následující tabulka shrnuje požadavky na kapacitu pro konfigurační server. Pokud provádíte replikaci několika virtuálních počítačů VMware, měli byste si projít [otázky plánování kapacity](../articles/site-recovery/site-recovery-plan-capacity-vmware.md) a spustit [nástroj Plánovač nasazení služby Azure Site Recovery](../articles/site-recovery/site-recovery-deployment-planner.md).
+
+
+**VČETNĚ** | **Rezident** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
 --- | --- | --- | --- | ---
-8 virtuálních CPU<br/><br/> sokety 2 * 4 jádra \@ 2,5 GHz | 16GB | 300 GB | 500 GB nebo méně | < 100 počítačů
-12 virtuálních procesorů<br/><br/> 2 socks * 6 jader \@ 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 až 150 počítačů
-16 virtuálních procesorů<br/><br/> 2 socks * 8 jader \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 -200 počítačů
+8 vCPU<br/><br/> 2 sokety × 4 jádra \@ 2,5 GHz | 16 GB | 300 GB | 500 GB nebo méně | počítače s < 100
+12 vCPU<br/><br/> 2 SOCKS * 6 jader \@ 2,5 GHz | 18 GB | 600 GB | 500 GB AŽ 1 TB | 100 až 150 počítačů
+16 vCPU<br/><br/> 2 SOCKS * 8 jader \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 – 200 počítačů
 

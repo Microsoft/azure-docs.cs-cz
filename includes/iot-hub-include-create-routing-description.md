@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: b640a3cb9382ad72bb48e06c6a7074c96409e2e4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a5747912a18b8406cabd03c9823e3f6fe6898a6
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175628"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808819"
 ---
 <!-- description of message routing used in the Azure CLI, PowerShell, and RM routing articles.-->
 
-Potřebujete směrovat zprávy do různých prostředků na základě vlastností, které ke zprávě připojilo simulované zařízení. Zprávy, které nejsou směrovány podle vlastních pravidel, se posílají na výchozí koncový bod (zprávy/události). V dalším kurzu odesílat zprávy do služby IoT Hub a vidět směrovat na různé cíle.
+Potřebujete směrovat zprávy do různých prostředků na základě vlastností, které ke zprávě připojilo simulované zařízení. Zprávy, které nejsou směrovány podle vlastních pravidel, se posílají na výchozí koncový bod (zprávy/události). V dalším kurzu odešlete zprávy do IoT Hub a zjistíte, že jsou směrované do různých umístění.
 
-|value |Výsledek|
+|Hodnota |Výsledek|
 |------|------|
 |level="storage" |Zapsat do úložiště Azure Storage.|
 |level="critical" |Zapsat do fronty Service Bus. Aplikace logiky načte zprávu z fronty a pomocí Office 365 ji odešle e-mailem.|
 |default |Zobrazte tato data pomocí Power BI.|
 
-Prvním krokem je nastavení koncového bodu, ke kterému se budou směrovat data. Druhým krokem je nastavení směrování zpráv, který používá tento koncový bod. Po nastavení směrování, můžete zobrazit na portálu pro koncové body a směrování zpráv.
+Prvním krokem je nastavení koncového bodu, na který budou data směrována. Druhým krokem je nastavení trasy zprávy, která používá daný koncový bod. Po nastavení směrování můžete zobrazit koncové body a trasy zpráv na portálu.

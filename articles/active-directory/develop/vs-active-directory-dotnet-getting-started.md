@@ -1,5 +1,5 @@
 ---
-title: Začínáme s Azure AD v projektech Visual Studio .NET MVC
+title: Začínáme se službou Azure AD v projektech Visual Studio .NET MVC | Azure
 description: Jak začít používat Azure Active Directory v projektech .NET MVC po připojení k nebo vytvoření Azure AD pomocí připojených služeb sady Visual Studio
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806961dce41fbdf07572b3d0ab8b79bc9fb682da
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3b0a6265f76cc7c799d162487999c129ec7e6a14
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852026"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803611"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Začínáme s Azure Active Directory (projekty ASP.NET MVC)
 
@@ -31,11 +31,11 @@ Podívejte se, [co se stalo s mým projektem MVC?](vs-active-directory-dotnet-wh
 
 ## <a name="requiring-authentication-to-access-controllers"></a>Vyžadování ověřování pro přístup k řadičům
 
-Všechny řadiče v projektu se napracovaly s `[Authorize]` atributem. Tento atribut vyžaduje, aby byl uživatel ověřen před přístupem k těmto řadičům. K povolení anonymního přístup k řadiči odeberte tento atribut z kontroleru. Chcete-li nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje autorizaci namísto použití pro třídu kontroleru.
+Všechny řadiče v projektu byly navýšené pomocí atributu `[Authorize]`. Tento atribut vyžaduje, aby byl uživatel ověřen před přístupem k těmto řadičům. K povolení anonymního přístup k řadiči odeberte tento atribut z kontroleru. Chcete-li nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje autorizaci namísto použití pro třídu kontroleru.
 
 ## <a name="adding-signin--signout-controls"></a>Přidávání ovládacích prvků pro přihlášení a odhlášení
 
-Chcete-li přidat ovládací prvky pro přihlášení a odhlášení do zobrazení, můžete použít `_LoginPartial.cshtml` částečné zobrazení k přidání funkce do některého z vašich zobrazení. Tady je příklad funkcí přidaných do standardního `_Layout.cshtml` zobrazení. (Poznamenejte si poslední prvek ve třídě div s navigačním panelem třídy – sbalení):
+Chcete-li do zobrazení přidat ovládací prvky pro přihlášení a odhlášení, můžete použít částečné zobrazení `_LoginPartial.cshtml` k přidání funkce do jednoho z vašich zobrazení. Tady je příklad funkcí přidaných do standardního zobrazení `_Layout.cshtml`. (Poznamenejte si poslední prvek ve třídě div s navigačním panelem třídy – sbalení):
 
 ```html
 <!DOCTYPE html>
@@ -82,7 +82,7 @@ Chcete-li přidat ovládací prvky pro přihlášení a odhlášení do zobrazen
 </html>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
 - [Přidání přihlašování do webové aplikace ASP.NET pomocí Microsoftu](quickstart-v1-aspnet-webapp.md)

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41ff9bce6135936a4b23096fb18efecf7be1e1e2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a71eaebcc6345d6550d6ddd38350fe709706d740
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374116"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809296"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Ukázka kódu Azure Active Directory (koncový bod verze 1.0)
 
@@ -81,7 +81,7 @@ Následující ukázky ilustrují veřejné klientské aplikace (deskto/Pmobile 
 
 Klientská aplikace | Platforma | Tok a udělení | Volání Microsoft Graph | Volá webové rozhraní API ASP.NET nebo ASP.NET Core 2. x.
 ------------------ | -------- | ---------- | -------------------- | -------------------------
-Plocha (WPF)           | ![Tento obrázek ukazuje rozhraní .NET/C# logo](media/sample-v2-code/logo_NET.png)  | Interaktivní | Součást [dotnet – nativní – s více cíli](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet – nativní – plocha](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet – nativní – aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-WebApi-ruční-JWT – ověření](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
+Plocha (WPF)           | ![Tento obrázek ukazuje rozhraní .NET/C# logo](media/sample-v2-code/logo_NET.png)  | Interaktivní | Součást [dotnet – nativní – s více cíli](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet – nativní – plocha](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet – nativní – aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-WebApi-ruční-JWT – ověření](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
 Mobilní zařízení (UWP)            | .![Tento obrázek ukazuje rozhraní .NET/C#/UWP.](media/sample-v2-code/logo_Windows.png)   | Interaktivní | [dotnet – nativní – UWP – WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Tato ukázka používá [WAM](/windows/uwp/security/web-account-manager), nikoli [ADAL.NET](https://aka.ms/adalnet) .|  [dotnet – Windows Store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (aplikace UWP používající ADAL.NET k volání webového rozhraní API pro jednoho tenanta) </p> [dotnet-WebApi-multi-tenant-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (aplikace UWP používající ADAL.NET pro volání webového rozhraní API pro více tenantů)|
 Mobilní zařízení (Android, iOS, UWP)   | ![Tento obrázek ukazuje rozhraní .NET/C# (Xamarin).](media/sample-v2-code/logo_xamarin.png) | Interaktivní | [dotnet – nativní – více cílů](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 Mobilní zařízení (Android)           | ![Tento obrázek ukazuje logo Androidu.](media/sample-v2-code/logo_Android.png) | Interaktivní |   [svém](https://github.com/Azure-Samples/active-directory-android) |

@@ -5,15 +5,15 @@ description: Pomocí kanálu obohacení AI v Azure Search přidejte do objektů 
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5f65667ac8ffacdd12e57ae0d46e25c586624a31
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678422"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792473"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>Použití AI k pochopení dat služby Blob Storage
 
@@ -68,7 +68,7 @@ Rozšíření AI odkazuje na moduly, které hledají vzory nebo charakteristiky,
 
 V Azure Search *dovednosti* jsou jednotlivé komponenty zpracování AI, které můžete použít samostatně, nebo v kombinaci s dalšími dovednostmi. 
 
-+ Integrované dovednosti jsou zajištěny Cognitive Services s analýzou obrázků založenou na Počítačové zpracování obrazu a zpracováním přirozeného jazyka na základě Analýza textu. Můžete si prohlédnout úplný seznam integrovaných dovedností v části [předdefinované dovednosti pro obohacení obsahu](cognitive-search-predefined-skills.md).
++ Integrované dovednosti jsou zajištěny Cognitive Services s analýzou obrázků založenou na Počítačové zpracování obrazu a zpracováním přirozeného jazyka na základě Analýza textu. Úplný seznam najdete v tématu [integrované dovednosti pro rozšíření obsahu](cognitive-search-predefined-skills.md).
 
 + Vlastní dovednosti jsou vlastní kód, zabalený do [definice rozhraní](cognitive-search-custom-skill-interface.md) , který umožňuje integraci do kanálu. V zákaznických řešeních je běžné použití obou s vlastními dovednostmi, které poskytují moduly open-source, třetí strany nebo nástroje AI první strany.
 

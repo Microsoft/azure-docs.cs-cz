@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 9c5fb38e66cb783b02d314d55cf0d0510523b6a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 77ba9ceda3644b64aa23fbd264b4125f9a90cf81
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375981"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809474"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
 
@@ -238,13 +238,13 @@ Následující ukázka šablony ukazuje, jak:
         "metadata": {
           "description": "The resource group name containing the storage account with Azure diagnostics output"
         }
-      }
     },
-    "customlogName": {
+    "customLogName": {
     "type": "string",
     "metadata": {
       "description": "The custom log name"
       }
+     }
     },
     "variables": {
       "Updates": {
@@ -417,13 +417,13 @@ Následující ukázka šablony ukazuje, jak:
         {
           "apiVersion": "2015-11-01-preview",
           "type": "dataSources",
-          "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
+          "name": "[concat(parameters('workspaceName'), parameters('customLogName'))]",
           "dependsOn": [
             "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {
-            "customLogName": "[parameters('customlogName')]",
+            "customLogName": "[parameters('customLogName')]",
             "description": "this is a description",
             "extractions": [
               {
@@ -448,7 +448,7 @@ Následující ukázka šablony ukazuje, jak:
                   "fileSystemLocations": {
                     "linuxFileTypeLogPaths": null,
                     "windowsFileTypeLogPaths": [
-                      "[concat('c:\\Windows\\Logs\\',parameters('customlogName'))]"
+                      "[concat('c:\\Windows\\Logs\\',parameters('customLogName'))]"
                     ]
                   }
                 },
@@ -590,7 +590,6 @@ Následující ukázka šablony ukazuje, jak:
     }
   }
 }
-
 ```
 
 ### <a name="deploying-the-sample-template"></a>Nasazení ukázkové šablony

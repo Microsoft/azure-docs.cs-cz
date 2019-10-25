@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/24/2019
-ms.openlocfilehash: 9d132faf0b4d1de232e2b7e6e5ab6730978e27a8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 83c2264cd3aa3025e911db5079747930d1ae096b
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555222"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809459"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Přehled povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -157,12 +157,12 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 
 Funkce map v Azure Monitor pro virtuální počítače získá svá data od agenta závislostí společnosti Microsoft. Agent závislostí spoléhá na Log Analytics agenta pro připojení k Log Analytics. Takže váš systém musí mít nainstalovaný agent Log Analytics a nakonfigurovaný s agentem závislostí.
 
-Bez ohledu na to, jestli povolíte Azure Monitor pro virtuální počítače pro jeden virtuální počítač Azure, nebo použijete metodu nasazení v rámci škálování, nainstalujte agenta jako součást prostředí pomocí rozšíření Azure VM Dependency agent.
+Bez ohledu na to, jestli povolíte Azure Monitor pro virtuální počítače pro jeden virtuální počítač Azure nebo použijete metodu nasazení na úrovni služby, použijte rozšíření agenta závislostí virtuálních počítačů Azure pro [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) nebo [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) a nainstalujte agenta jako součást prostředí.
 
 >[!NOTE]
 >Následující informace popsané v této části se vztahují také na [řešení Service map](service-map.md).  
 
-V hybridním prostředí můžete ručně stáhnout a nainstalovat agenta závislostí. Pokud jsou vaše virtuální počítače hostované mimo Azure, použijte metodu automatizovaného nasazení.
+V hybridním prostředí můžete agenta závislostí stáhnout a nainstalovat ručně nebo pomocí automatizované metody.
 
 Následující tabulka popisuje připojené zdroje, které funkce mapy podporuje v hybridním prostředí.
 

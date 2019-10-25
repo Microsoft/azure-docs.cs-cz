@@ -1,23 +1,23 @@
 ---
-title: Vytvoření indexu Azure Search v Azure Portal-Azure Search
-description: Naučte se vytvořit index pro Azure Search s použitím integrovaného návrháře indexů portálu.
+title: Vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
+titleSuffix: Azure Cognitive Search
+description: Naučte se vytvořit index pro Azure Kognitivní hledání pomocí integrovaného návrháře indexů portálu.
 manager: nitinme
-author: heidisteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a9340b9c058ba780b8d74587f21c1b9fbe59576d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71937269"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792458"
 ---
-# <a name="create-an-azure-search-index-in-the-portal"></a>Vytvoření indexu Azure Search na portálu
+# <a name="create-an-azure-cognitive-search-index-in-the-portal"></a>Vytvoření indexu služby Azure Kognitivní hledání na portálu
 
-Azure Search obsahuje integrovaného návrháře indexů na portálu, který je užitečný pro vytváření prototypů nebo vytvoření [indexu vyhledávání](search-what-is-an-index.md) hostovaného v rámci služby Azure Search. Nástroj se používá pro konstrukci schématu. Když definici uložíte, prázdný index se v Azure Search plně vyjádří. Způsob, jakým se dá s prohledávatelným obsahem načítat, je až na vás.
+Azure Kognitivní hledání obsahuje integrovaného návrháře indexů na portálu, který je užitečný pro vytváření prototypů nebo vytvoření [indexu vyhledávání](search-what-is-an-index.md) hostovaného ve službě Azure kognitivní hledání. Nástroj se používá pro konstrukci schématu. Když definici uložíte, prázdný index se v Azure Kognitivní hledání plně vyjádří. Způsob, jakým se dá s prohledávatelným obsahem načítat, je až na vás.
 
 Návrhář indexů je pouze jeden přístup pro vytvoření indexu. Případně můžete index vytvořit a načíst pomocí [Průvodce importem dat](search-get-started-portal.md). Průvodce funguje pouze s indexy, které vytváří sám sebe. Prostřednictvím kódu programu můžete vytvořit index prostřednictvím rozhraní [.NET](search-create-index-dotnet.md) nebo rozhraní [REST](search-create-index-rest-api.md) API.
 
@@ -29,7 +29,7 @@ Návrhář indexů je pouze jeden přístup pro vytvoření indexu. Případně 
 
    ![Přidat odkaz na index na panelu příkazů](media/search-create-index-portal/add-index.png "Přidat odkaz na index na panelu příkazů")
 
-3. Pojmenujte si index Azure Search. Na názvy indexů se odkazuje při operacích indexování a dotazování. Název indexu se stane součástí adresy URL koncového bodu u připojení k indexu a pro posílání žádostí HTTP v rozhraní REST API služby Azure Search.
+3. Pojmenujte svůj index služby Azure Kognitivní hledání. Na názvy indexů se odkazuje při operacích indexování a dotazování. Název indexu se bude součástí adresy URL koncového bodu, která se používá pro připojení k indexu a odesílání požadavků HTTP ve službě Azure Kognitivní hledání REST API.
 
    * Začněte písmenem.
    * Název může obsahovat jenom malá písmena, číslice nebo pomlčky (-).
@@ -43,11 +43,11 @@ Kompozice indexu obsahuje *kolekci Pole*, která definuje prohledávatelná data
 
 1. Pokud jsou příchozí data hierarchicky uspořádaná, vaše schéma by mělo zahrnovat [komplexní typy](search-howto-complex-data-types.md) , které reprezentují vnořené struktury. Integrovaná Ukázková sada dat, hotely, znázorňuje komplexní typy pomocí adresy (obsahuje několik dílčích polí), které mají vztah 1:1 s každým hotelem, a prostorově komplexní kolekci, kde je k jednotlivým hotelům přidruženo více místností. 
 
-1. Zadejte *klíčové* pole typu EDM. String. Pole key je povinné pro každý index Azure Search a musí jít o řetězec. Hodnoty pro toto pole musí jednoznačně identifikovat každý dokument. Ve výchozím nastavení se pole jmenuje *id*, ale můžete ho přejmenovat, pokud bude řetězec splňovat [pravidla pojmenování](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Například pokud vaše pole kolekce obsahují *hotely-ID*, je vhodné si pro svůj klíč vybrat. 
+1. Zadejte *klíčové* pole typu EDM. String. Klíčové pole je povinné pro každý index Azure Kognitivní hledání a musí to být řetězec. Hodnoty pro toto pole musí jednoznačně identifikovat každý dokument. Ve výchozím nastavení se pole jmenuje *id*, ale můžete ho přejmenovat, pokud bude řetězec splňovat [pravidla pojmenování](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Například pokud vaše pole kolekce obsahují *hotely-ID*, je vhodné si pro svůj klíč vybrat. 
 
 1. Nastavte atributy pro každé pole. Návrhář indexu vylučuje všechny atributy, které jsou pro datový typ neplatné, ale nenavrhuje, co zahrnout. Přečtěte si pokyny v následující části, abyste zjistili, jaké jsou atributy pro.
 
-    Dokumentace k rozhraní API služby Azure Search obsahuje příklady kódu s jednoduchým indexem *hotels* (hotely). Na následujícím snímku obrazovky vidíte definici indexu včetně analyzátoru francouzského jazyka zadaného během definice indexu, který můžete znovu vytvořit jako cvičení na portálu.
+    Dokumentace k rozhraní API pro Azure Kognitivní hledání obsahuje příklady kódu, které obsahují jednoduchý index *hotelů* . Na následujícím snímku obrazovky vidíte definici indexu včetně analyzátoru francouzského jazyka zadaného během definice indexu, který můžete znovu vytvořit jako cvičení na portálu.
 
     ![Ukázkový index hotelů](media/search-create-index-portal/field-definitions.png "Ukázkový index hotelů")
 
@@ -76,7 +76,7 @@ Atributy polí určují, jak se pole používá, například jestli se použív�
 
 ## <a name="next-steps"></a>Další kroky
 
-Po vytvoření indexu Azure Search můžete přejít na další krok: [nahrání prohledávatelných dat do indexu](search-what-is-data-import.md).
+Po vytvoření indexu služby Azure Kognitivní hledání můžete přejít na další krok: [nahrání prohledávatelných dat do indexu](search-what-is-data-import.md).
 
 Alternativně můžete také pořizovat [hlubší pohled na indexy](search-what-is-an-index.md). Kromě kolekce Pole index také určuje analyzátory, moduly pro návrhy, profily vyhodnocování (bodovací profily) a nastavení CORS. Portál poskytuje stránky se záložkami pro definování nejběžnějších elementů: polí, analyzátorů a modulů pro návrhy. K vytvoření nebo úpravě jiných elementů můžete použít rozhraní REST API nebo .NET SDK.
 

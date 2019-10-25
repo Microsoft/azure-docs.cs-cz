@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: a545617c9e93a9a5fd0a34acc1dd5e2825917b62
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fb836b44ebd567f0ce1c833ca523b1c199ed9c9a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387683"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785998"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Textový formát s oddělovači v Azure Data Factory
 
@@ -29,7 +29,7 @@ Pro následující konektory se podporuje textový formát s oddělovači: [Amaz
 | Vlastnost         | Popis                                                  | Požaduje se |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Vlastnost Type datové sady musí být nastavená na **DelimitedText**. | Ano      |
-| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location`. **Podrobnosti najdete v článku o konektoru – > Vlastnosti datové sady**. | Ano      |
+| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location`.  | Ano      |
 | columnDelimiter  | Znak (y) použitý k oddělení sloupců v souboru. V současné době je oddělovač více znaků podporován pouze pro tok dat mapování, nikoli pro aktivitu kopírování. <br>Výchozí hodnota je **čárka `,`** , pokud je oddělovač sloupce definován jako prázdný řetězec, což znamená bez oddělovače, je celý řádek považován za jeden sloupec. | Ne       |
 | rowDelimiter     | Jeden znak nebo "\r\n", který se používá k oddělení řádků v souboru.<br>Výchozí hodnota je libovolná z následujících hodnot pro **čtení: ["\r\n", "\r", "\n"]** a **"\n" nebo "\r\n" při zápisu** pomocí mapování toku dat a aktivity kopírování v uvedeném pořadí. <br>Je-li hodnota `rowDelimiter` nastavená na hodnotu bez oddělovače (prázdný řetězec), musí být `columnDelimiter` nastavena také na hodnotu bez oddělovače (prázdný řetězec), což znamená, že bude celý obsah zacházet jako jediná hodnota. | Ne       |
 | quoteChar        | Jediný znak pro hodnoty sloupce uvozovek, pokud obsahuje oddělovač sloupců. <br>Výchozí hodnota je **dvojité uvozovky** `"`. <br>Pro mapování toku dat `quoteChar` nemůže být prázdný řetězec. <br>Pokud je pro aktivitu kopírování definovaná hodnota `quoteChar`, znamená to, že není v uvozovkách žádná znak citace ani hodnota sloupce a `escapeChar` se používá k opuštění oddělovače sloupců a sebe samé. | Ne       |
@@ -73,13 +73,13 @@ Níže je příklad objektu s oddělovači textu v Azure Blob Storage:
 
 ### <a name="delimited-text-as-source"></a>Text s oddělovači jako zdroj 
 
-V části aktivita kopírování ***@no__t – 1source @ no__t-2*** jsou podporovány následující vlastnosti.
+V části ***\*zdrojového\**** aktivity kopírování jsou podporovány následující vlastnosti.
 
 | Vlastnost       | Popis                                                  | Požaduje se |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **DelimitedTextSource**. | Ano      |
 | formatSettings | Skupina vlastností Viz tabulka **nastavení čtení s oddělovači textu** níže. | Ne       |
-| storeSettings  | Skupina vlastností, jak číst data z úložiště dat. Každý konektor založený na souborech má své vlastní podporované nastavení čtení v části `storeSettings`. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+| storeSettings  | Skupina vlastností, jak číst data z úložiště dat. Každý konektor založený na souborech má své vlastní podporované nastavení čtení v části `storeSettings`. | Ne       |
 
 Podporované **nastavení čtení textu s oddělovači** v rámci `formatSettings`:
 
@@ -90,13 +90,13 @@ Podporované **nastavení čtení textu s oddělovači** v rámci `formatSetting
 
 ### <a name="delimited-text-as-sink"></a>Text s oddělovači jako jímku
 
-V části aktivita kopírování ***@no__t – 1sink @ no__t-2*** jsou podporovány následující vlastnosti.
+V části\*aktivita kopírování ***\*jímka*** jsou podporovány následující vlastnosti.
 
 | Vlastnost       | Popis                                                  | Požaduje se |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **DelimitedTextSink**. | Ano      |
 | formatSettings | Skupina vlastností Viz tabulka **nastavení zápisu s oddělovači textu** níže. |          |
-| storeSettings  | Skupina vlastností, jak zapisovat data do úložiště dat. Jednotlivé konektory založené na souborech mají vlastní podporované nastavení zápisu v rámci `storeSettings`. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+| storeSettings  | Skupina vlastností, jak zapisovat data do úložiště dat. Jednotlivé konektory založené na souborech mají vlastní podporované nastavení zápisu v rámci `storeSettings`.  | Ne       |
 
 Podporované **nastavení zápisu textu s oddělovači** v rámci `formatSettings`:
 

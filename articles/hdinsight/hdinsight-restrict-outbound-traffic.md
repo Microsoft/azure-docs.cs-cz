@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 39a7e78085f297838a028489de23c1991b6d672f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 56e745a4f4e4bfbe82da00b46b7a5c0a58e3785e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693438"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789793"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall (Preview)
 
@@ -151,7 +151,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Integrace vašich Azure Firewall s protokoly Azure Monitor je užitečná při prvním získání aplikace, když si nejste vědomi všech závislostí aplikace. Další informace o protokolech Azure Monitor můžete získat z [analýzy dat protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md)
 
-Další informace o omezeních Azure Firewall a žádosti o zvýšení kapacity najdete v [tomto](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits) dokumentu.
+Další informace o omezeních Azure Firewall a žádosti o zvýšení kapacity najdete v [tomto](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits) dokumentu, nebo se podívejte na [Nejčastější dotazy](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq). 
 
 ## <a name="access-to-the-cluster"></a>Přístup ke clusteru
 Po úspěšném nastavení brány firewall můžete pomocí interního koncového bodu (`https://<clustername>-int.azurehdinsight.net`) přistupovat k Ambari zevnitř virtuální sítě. 

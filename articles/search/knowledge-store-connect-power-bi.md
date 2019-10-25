@@ -1,27 +1,28 @@
 ---
-title: Připojení k znalostnímu obchodu pomocí Power BI-Azure Search
-description: Připojte Azure Search znalostní bázi Knowledge Store s Power BI pro účely analýzy a průzkumu.
+title: Připojení k znalostnímu obchodu pomocí Power BI
+titleSuffix: Azure Cognitive Search
+description: Připojte si Azure Kognitivní hledání Knowledge Store pomocí Power BI pro analýzu a průzkum.
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
+manager: nitinme
 ms.author: v-lilei
-ms.openlocfilehash: de282213535a2e49f73bc30e476bae02d470fdb2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265653"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790072"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Připojit znalostní bázi Knowledge Store s Power BI
 
 > [!Note]
-> Znalostní báze je ve verzi Preview a neměl by se používat v produkčním prostředí. Tuto funkci poskytuje [Azure Search REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
+> Znalostní báze je ve verzi Preview a neměl by se používat v produkčním prostředí. Tuto funkci poskytuje [Azure Kognitivní hledání REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
 >
 V tomto článku se dozvíte, jak se připojit a prozkoumat úložiště znalostí pomocí Power Query v aplikaci Power BI Desktop. Pokud chcete vytvořit ukázku znalostní báze používanou v tomto návodu, přečtěte si téma [vytvoření znalostní báze v Azure Portal](knowledge-store-create-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Postupujte podle kroků v [části vytvoření znalostní báze v Azure Portal](knowledge-store-create-portal.md) k vytvoření ukázkového úložiště znalostí, které jste použili v tomto návodu. Také budete potřebovat název účtu služby Azure Storage, který jste použili k vytvoření obchodu Knowledge Store, a jeho přístupová klávesa z Azure Portal.
 
@@ -39,7 +40,7 @@ V tomto článku se dozvíte, jak se připojit a prozkoumat úložiště znalost
 
 1. Pokud se zobrazí výzva, zadejte klíč účtu úložiště.
 
-1. Vyberte tabulky *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*a *hotelReviewsSsPages* . Tyto tabulky jsou Azure Table probíhají ukázková data v rámci hotelu a zahrnují obohacení služeb rozpoznávání, které byly vybrány při vytváření znalostní databáze.
+1. Vyberte tabulky *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*a *hotelReviewsSsPages* . Tyto tabulky jsou Azure Table probíhají ukázková data v hotelu a zahrnují rozšíření AI, která byla vybrána při vytvoření znalostní databáze.
 
 1. Klikněte na **načíst**.
 
@@ -87,7 +88,7 @@ Create new containers in Azure Blob storage and upload each CSV file to its own 
 | Medium (6000 Records)| [HotelReviews_Medium.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
 | Large (Full dataset 35000 Records) | [HotelReviews_Large.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Be aware that very large data sets are expensive to process. This one costs roughly $1000 U.S dollars.|
 
-In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Search to use larger data sets. 
+In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 

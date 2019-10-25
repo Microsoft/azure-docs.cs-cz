@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 38a9f3a7020e866ccb000ed0c54499258f5e651a
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734679"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801876"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Metody a procesy pro zavádění služby Azure Data Catalog
 
@@ -69,7 +69,7 @@ Zde jsou některé tipy k identifikaci případů použití:
 * **Definování cílů týmu** – jak tým dosahuje svých cílů? Ještě se nezaměřujte na katalog Data Catalog, protože v této fázi chcete být objektivní. Mějte na paměti, že se že jedná o obchodní výsledky, nikoli o technologii.
 * **Definování obchodního problému** – jaké jsou problémy, týkající se hledání a získávání informací o datových prostředcích, jimž tým čelí? Například informace o důležitých zdrojích dat lze nalézt v sešitech aplikace Excel v síťové složce a tým může trávit spoustu času vyhledáním příslušných sešitů.
 * **Pochopení kultury týmu související se změnou** – mnoho problémů s přijetím se týká odporu vůči změně místo zavádění nového nástroje. Jak týmy reagují na změnu je důležité při identifikaci případů použití, protože existující proces může být používán, neboť "takhle jsme to dělali vždycky" nebo "pokud to není rozbité, proč to opravovat?". Přijetí nového nástroje nebo procesu je vždy jednodušší, když postižení zaměstnanci chápou hodnotu, která se má změnou realizovat a chápou závažnost problémů, které mají být vyřešeny.
-* Zajistěte, aby se v **souvislosti** s datovými assety zaměřily na obchodní problémy, které tým čelí, potřebujete "vyříznout obsahy plevele" a soustředit se na to, co je důležité k efektivnější využívání podnikových datových prostředků.
+* Zajistěte, aby se v **souvislosti s datovými assety zaměřily** na obchodní problémy, které tým čelí, potřebujete "vyříznout obsahy plevele" a soustředit se na to, co je důležité k efektivnější využívání podnikových datových prostředků.
 
 Zde jsou některé případy použití příklad týkající se katalogu Data Catalog:
 
@@ -125,7 +125,7 @@ Další informace o nástroji pro registraci zdroje dat naleznete v tématu [Za�
 Jako součást pilotního projektu používá Nancyin tým také zdroje dat popsané v excelovém sešitu, který udržuje David a jeho kolegové. Vzhledem k tomu, že také jiné týmy v podniku používají sešity aplikace Excel k popisu zdrojů dat, se IT tým rozhodne vytvořit nástroj pro migraci sešitu aplikace Excel do katalogu Data Catalog. S použitím rozhraní API REST katalogu Data Catalog pro import existujících poznámek může tým pilotního projektu získat kompletní datový katalog, který se skládá z metadat extrahovaných ze zdroje dat pomocí registračního nástroje zdroje dat, s úplnými informacemi dříve zdokumentovanými producenty a spotřebiteli dat bez nutnosti jejich opětovného ručního zadání. S růstem podnikového katalogu dat může organizace používat nástroj registrace zdroje dat pro běžné zdroje dat, a rozhraní API katalogu Data Catalog pro vlastní zdroje a neobvyklé scénáře.
 
 > [!NOTE]
-> Napsali jsme ukázkový nástroj, který používá rozhraní API služby **Azure Data Catalog** pro migraci sešitu aplikace Excel do katalogu Data Catalog. Pokud chcete získat další informace o rozhraní API katalogu Data Catalog a ukázkový nástroj, [stáhněte si vzorek kódu sešitu Ad Hoc](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/) a prohlédněte si dokumentaci rozhraní [REST API služby Azure Data Catalog](/rest/api/datacatalog/).
+> Napsali jsme ukázkový nástroj, který používá rozhraní API služby **Azure Data Catalog** pro migraci sešitu aplikace Excel do katalogu Data Catalog. Pokud chcete získat další informace o rozhraní API katalogu Data Catalog a ukázkový nástroj, [stáhněte si vzorek kódu sešitu Ad Hoc](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets) a prohlédněte si dokumentaci rozhraní [REST API služby Azure Data Catalog](/rest/api/datacatalog/).
 
 Jakmile se realizuje pilotní projekt, je čas ke spuštění plánu přijetí katalogu Data Catalog.
 
@@ -163,6 +163,6 @@ První uživatelé, kteří se účastnili pilotního projektu, mohou být užit
 
 Tento článek byl o seznámení se službou **Azure Data Catalog** ve vaší organizaci. Věříme, že jste byli schopni spustit pilotní projekt katalogu Data Catalog a rozšířit katalog po celé organizaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření Azure Data Catalog](data-catalog-get-started.md)

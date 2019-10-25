@@ -1,5 +1,6 @@
 ---
-title: Konfigurovatelné životnosti tokenů v Azure Active Directory | Microsoft Docs
+title: Konfigurovatelné životnosti tokenů v Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak nastavit životnost pro tokeny vydané službou Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be2e9d7657d621a285f7177dc6cdd3a01b83470d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 73869773597d372affbf02e6a256642c8c1ce8f4
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024439"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809308"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životnosti tokenů v Azure Active Directory (Preview)
 
@@ -44,11 +45,19 @@ Zásady můžete určit jako výchozí zásady pro vaši organizaci. Zásada se 
 
 ## <a name="token-types"></a>Typy tokenů
 
-Můžete nastavit zásady životnosti tokenů pro aktualizační tokeny, přístupové tokeny, tokeny relací a tokeny ID.
+Můžete nastavit zásady životnosti tokenů pro aktualizační tokeny, přístupové tokeny, tokeny SAML, tokeny relace a tokeny ID.
 
 ### <a name="access-tokens"></a>Přístupové tokeny
 
 Klienti používají přístupové tokeny pro přístup k chráněnému prostředku. Přístupový token se dá použít jenom pro konkrétní kombinaci uživatele, klienta a prostředku. Přístupové tokeny nejde odvolat a jsou platné, dokud nevyprší jejich platnost. Škodlivý objekt actor, který získal přístupový token, ho může použít pro rozsah své životnosti. Úprava životnosti přístupového tokenu je kompromis mezi zvýšením výkonu systému a zvýšením doby, po kterou klient zachovává přístup po zakázání účtu uživatele. Vylepšený výkon systému se dosahuje snížením počtu pokusů, kolikrát klient potřebuje získat nový přístupový token.  Výchozí hodnota je 1 hodina – po 1 hodině musí klient použít obnovovací token (obvykle v tichém režimu) získat nový obnovovací token a přístupový token. 
+
+### <a name="saml-tokens"></a>Tokeny SAML
+
+Tokeny SAML používá mnoho webových aplikací SAAS, které se získávají pomocí koncového bodu protokolu typu Saml2 v systému Azure Active Directory.  Využívají je i aplikace, které používají WS-Federation.    Výchozí doba platnosti tokenu je 1 hodina. Po od aplikace a perspektiva období platnosti tokenu je určena hodnotou NotOnOrAfter podmínek <... v tokenu > element.  Po období platnosti tokenu musí klient iniciovat novou žádost o ověření, což se často splní bez interaktivního přihlášení v důsledku tokenu relace jednotného přihlašování (SSO).
+
+Hodnotu NotOnOrAfter lze změnit pomocí parametru AccessTokenLifetime v TokenLifetimePolicy.  Nastaví se na životní cyklus nakonfigurovanou v zásadě, pokud existuje, a koeficient pro zešikmení s hodinami 5 minut.
+
+Všimněte si, že NotOnOrAfter potvrzení předmětu zadané v elementu <SubjectConfirmationData> není ovlivněna konfigurací životnosti tokenu. 
 
 ### <a name="refresh-tokens"></a>Aktualizovat tokeny
 
@@ -89,7 +98,7 @@ Zásada životního cyklu tokenu je typ objektu zásad, který obsahuje pravidla
 | Maximální stáří tokenu relace Multi-Factor |MaxAgeSessionMultiFactor |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
 
 * <sup>1</sup>365 dní je maximální explicitní délka, kterou lze pro tyto atributy nastavit.
-* <sup>2</sup> . Pokud chcete, aby webový klient Microsoft Teams funguje, doporučujeme nastavit AccessTokenLifetime na více než 15 minut pro týmy Microsoft.
+* <sup>2</sup> . Chcete-li zajistit, aby webový klient Microsoft Teams funguje, doporučujeme, abyste pro Microsoft Teams AccessTokenLifetime více než 15 minut.
 
 ### <a name="exceptions"></a>Výjimky
 | Vlastnost | Ovlivňuje | Výchozí |
@@ -139,7 +148,7 @@ Všechny časové rozsahy, které jsou zde použity, C# jsou formátovány podle
 ### <a name="access-token-lifetime"></a>Doba života přístupového tokenu
 **Řetězec:** AccessTokenLifetime
 
-**Má vliv na:** Přístupové tokeny, tokeny ID
+**Má vliv na:** Přístupové tokeny, tokeny ID, tokeny SAML
 
 **Shrnutí:** Tato zásada řídí, jak dlouho je přístup a tokeny ID pro tento prostředek považovány za platné. Omezení vlastnosti životnosti přístupového tokenu snižuje riziko zneužití přístupového tokenu nebo tokenu ID škodlivým objektem actor po delší dobu. (Tyto tokeny nejde odvolat.) Při obchodování je nepříznivě ovlivněn výkon, protože tokeny musí být nahrazeny častěji.
 

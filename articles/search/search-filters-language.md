@@ -1,25 +1,23 @@
 ---
-title: Filtry jazyka pro vícejazyčný obsah ve vyhledávacím indexu – Azure Search
+title: Filtry jazyka pro vícejazyčnější obsah ve vyhledávacím indexu
+titleSuffix: Azure Cognitive Search
 description: Kritéria filtru pro podporu vyhledávání ve více jazycích, určení rozsahu provádění dotazů na pole pro konkrétní jazyk
-author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 10/23/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2762ce42f0d3f5829682e0910c452746a65ef2f3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649862"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792875"
 ---
-# <a name="how-to-filter-by-language-in-azure-search"></a>Postup filtrování podle jazyka v Azure Search 
+# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Postup filtrování podle jazyka v Azure Kognitivní hledání 
 
-Klíčovým požadavkem v aplikaci pro vyhledávání ve více jazycích je schopnost vyhledávat a načítat výsledky v jazyce uživatele. V Azure Search jeden ze způsobů, jak splňovat jazykové požadavky vícejazyčné aplikace, je vytvořit řadu polí vyhrazených pro ukládání řetězců do konkrétního jazyka a potom omezit fulltextové vyhledávání jenom na ta pole v době dotazu.
+Klíčovým požadavkem v aplikaci pro vyhledávání ve více jazycích je schopnost vyhledávat a načítat výsledky v jazyce uživatele. V Azure Kognitivní hledání jeden ze způsobů, jak splnit jazykové požadavky vícejazyčné aplikace, je vytvoření řady polí vyhrazených pro ukládání řetězců v konkrétním jazyce a omezení fulltextového vyhledávání jenom na tato pole v době dotazu.
 
 Parametry dotazu v žádosti se používají k určení oboru operace vyhledávání a pak se oříznou výsledky všech polí, která neposkytují obsah kompatibilní s vyhledávacím prostředím, které chcete doručit.
 
@@ -28,11 +26,11 @@ Parametry dotazu v žádosti se používají k určení oboru operace vyhledáv�
 | **searchFields** | Omezí úplné hledání textu na seznam pojmenovaných polí. |
 | **$select** | Ořízne odpověď tak, aby zahrnovala pouze pole, která zadáte. Ve výchozím nastavení jsou vrácena všechna pole, která lze načíst. Parametr **$Select** vám umožní zvolit, která z nich se má vrátit. |
 
-Úspěch této techniky se přestavuje na základě integrity obsahu polí. Azure Search nepřevádí řetězce ani neprovádí detekci jazyka. Ujistěte se, že pole obsahují řetězce, které očekáváte.
+Úspěch této techniky se přestavuje na základě integrity obsahu polí. Azure Kognitivní hledání nepřevádí řetězce ani neprovádí detekci jazyka. Ujistěte se, že pole obsahují řetězce, které očekáváte.
 
 ## <a name="define-fields-for-content-in-different-languages"></a>Definovat pole pro obsah v různých jazycích
 
-V Azure Search dotazy cílí na jeden index. Vývojáři, kteří chtějí poskytnout řetězce pro konkrétní jazyk v rámci jednoho vyhledávacího prostředí, obvykle definují vyhrazená pole pro ukládání hodnot: jedno pole pro anglické řetězce, jeden pro francouzštinu a tak dále. 
+V Azure Kognitivní hledání dotazy cílí na jeden index. Vývojáři, kteří chtějí poskytnout řetězce pro konkrétní jazyk v rámci jednoho vyhledávacího prostředí, obvykle definují vyhrazená pole pro ukládání hodnot: jedno pole pro anglické řetězce, jeden pro francouzštinu a tak dále. 
 
 V našich ukázkách, včetně níže uvedeného [příkladu reálného majetku](search-get-started-portal.md) , jste pravděpodobně viděli definice polí podobné následujícímu snímku obrazovky. Všimněte si, jak tento příklad ukazuje přiřazení analyzátoru jazyka pro pole v tomto indexu. Pole, která obsahují řetězce, fungují lépe při fulltextovém vyhledávání, když se spáruje s analýzou analyzátoru pro zpracování jazykových pravidel cílového jazyka.
 
@@ -43,7 +41,7 @@ V našich ukázkách, včetně níže uvedeného [příkladu reálného majetku]
 
 ## <a name="build-and-load-an-index"></a>Sestavení a načtení indexu
 
-Mezilehlého (a možná zjevné) kroku je, že před vytvořením dotazu musíte [Sestavit a naplnit index](https://docs.microsoft.com/azure/search/search-create-index-dotnet) . Tento krok uvádíme pro úplnost. Jedním ze způsobů, jak zjistit, zda je index k dispozici, je kontrola seznamu indexů na [portálu](https://portal.azure.com).
+Mezilehlého (a možná zjevné) kroku je, že před [vytvořením dotazu musíte sestavit a naplnit index](https://docs.microsoft.com/azure/search/search-create-index-dotnet) . Tento krok uvádíme pro úplnost. Jedním ze způsobů, jak zjistit, zda je index k dispozici, je kontrola seznamu indexů na [portálu](https://portal.azure.com).
 
 ## <a name="constrain-the-query-and-trim-results"></a>Omezení výsledků dotazu a oříznutí
 
@@ -62,10 +60,10 @@ parameters =
 > [!Note]
 > I když v dotazu neexistuje žádný $filter argument, je tento případ použití silně spojen s koncepty filtru, takže prezentujme jako scénář filtrování.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-+ [Filtry v Azure Search](search-filters.md)
++ [Filtry v Azure Kognitivní hledání](search-filters.md)
 + [Analyzátory jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [Jak funguje úplné hledání textu v Azure Search](search-lucene-query-architecture.md)
++ [Jak funguje úplné hledání textu v Azure Kognitivní hledání](search-lucene-query-architecture.md)
 + [Hledat dokumenty REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

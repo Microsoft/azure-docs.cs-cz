@@ -13,24 +13,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 3c23cc4fc7647cffa98cff9310498f683fda6328
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 115320a8b4ee7afc6e420dcfa96612b91ea6d1a0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275721"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790773"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Seznámení s Azure Lab Services
-Služba Azure Lab Services umožňuje rychle nastavit cloudové prostředí pro váš tým (například vývojové prostředí, testovací prostředí, testovací prostředí v učebně). Vlastník testovacího prostředí vytvoří testovací prostředí, zřídí virtuální počítače s Windows nebo Linuxem, nainstaluje nezbytný software a nástroje a zpřístupní je uživatelům testovacího prostředí. Uživatelé testovacího prostředí se připojí k virtuálním počítačům (VM) v testovacím prostředí a budou je používat ke každodenní práci, na krátkodobé projekty nebo aktivity ve vyučování. Jakmile uživatelé začnou využívat prostředky v testovacím prostředí, správce testovacího prostředí může analyzovat náklady a využití ve všech spravovaných testovacích prostředích a nastavením globálních zásad optimalizovat náklady organizace i jednotlivých týmů.
+V Azure existují dvě služby, které umožňují nastavit testovací prostředí v cloudu. 
 
-> [!IMPORTANT]
-> Rozšiřujeme **Azure DevTest Labs** o nové typy testovacích prostředí (ve službě Azure Lab Services).
->  
-> Azure Lab Services umožňuje vytvářet spravované typy testovacích prostředí, jako je například učeben Labs. Tato služba zpracovává veškerou správu infrastruktury pro typ spravovaného testovacího prostředí, od odstřeďování virtuálních počítačů po zpracování chyb a škálování infrastruktury. V současné době budou [DevTest Labs](https://azure.microsoft.com/services/devtest-lab/) i [Azure Lab Services](https://azure.microsoft.com/services/lab-services/) v portálu Azure Portal nadále samostatné služby. 
+- **Azure DevTest Labs** – tato služba vám umožňuje rychle nastavit prostředí pro váš tým (například vývojové prostředí nebo testovací prostředí v cloudu). Vlastník testovacího prostředí vytvoří testovací prostředí, zřídí virtuální počítače s Windows nebo Linuxem, nainstaluje nezbytný software a nástroje a zpřístupní je uživatelům testovacího prostředí. Uživatelé testovacího prostředí se můžou v testovacím prostředí připojit k virtuálním počítačům (VM) a používat je pro každodenní práci, krátkodobé projekty. Jakmile uživatelé začnou využívat prostředky v testovacím prostředí, správce testovacího prostředí může analyzovat náklady a využití ve všech spravovaných testovacích prostředích a nastavením globálních zásad optimalizovat náklady organizace i jednotlivých týmů.
+- **Azure Lab Services** – tato služba umožňuje vytvářet spravované typy testovacího prostředí. V současné době je učebna Labs jediným typem spravovaného testovacího prostředí, které podporuje Azure Lab Services. Tato služba zpracovává veškerou správu infrastruktury pro typ spravovaného testovacího prostředí, od odstřeďování virtuálních počítačů po zpracování chyb a škálování infrastruktury. Jakmile správce IT vytvoří v Azure Lab Services účet testovacího prostředí, může instruktor rychle vytvořit testovací prostředí pro svou třídu, určit počet a typ virtuálních počítačů, které jsou ve třídě potřeba, a přidat uživatele do třídy. Jakmile se uživatel zaregistruje do třídy, uživatel může získat přístup k virtuálnímu počítači, aby mohl provádět cvičení pro třídu.  
 
 ## <a name="key-capabilities"></a>Klíčové funkce
 
-Služba Azure Lab Services podporuje následující funkce:
+Tyto služby (Azure DevTest Labs a Azure Lab Services) podporují následující klíčové funkce:
 
 - **Rychlé a flexibilní nastavení testovacích prostředí**. V Azure Lab Services si můžou vlastníci testovacích prostředí rychle nastavit testovací prostředí podle svých potřeb. Služba nabízí možnost pořídit veškerou práci na infrastruktuře Azure pro spravované typy testovacího prostředí nebo umožnit vlastníkům testovacího prostředí samoobslužné řízení a přizpůsobení infrastruktury v předplatném vlastníka testovacího prostředí. Služba má integrované možnosti škálování a nastavení odolnosti infrastruktury pro testovací prostředí, která pro vás spravuje.
 - **Zjednodušené ovládání pro uživatele testovacích prostředí**. V spravovaném typu testovacího prostředí, jako je například prostředí pro učebnu, se uživatelé testovacího prostředí můžou zaregistrovat do testovacího kódu s registračním kódem a kdykoli k testovacímu prostředí přistupovat pomocí prostředků testovacího prostředí. V testovacím prostředí v DevTest Labs může vlastník testovacího prostředí udělit oprávnění jeho uživatelům k vytváření virtuálních počítačů a přístupu k nim, správě a opakovanému používání datových disků a nastavení opakovaně použitelných tajných kódů.  
@@ -43,7 +41,7 @@ Služba Azure Lab Services podporuje následující funkce:
 
 ## <a name="scenarios"></a>Scénáře
 
-Tady je několik scénářů, které Azure Lab Services podporuje:
+Tady je několik scénářů, které Azure DevTest Labs a podpora Azure Lab Services:
 
 ### <a name="set-up-a-resizable-computer-lab-in-the-cloud-for-your-classroom"></a>Nastavení cloudové počítačové učebny s proměnlivou velikostí  
 
@@ -74,7 +72,7 @@ Azure DevTest Labs můžete použít k implementaci mnoha klíčových scénář
 Další informace najdete v tématu [Použití DevTest Labs pro testování](devtest-lab-test-env.md).
 
 ## <a name="types-of-labs"></a>Typy cvičení
-Můžete vytvořit dva typy cvičení: **spravované typy testovacích prostředí** pomocí Azure Lab Services a **Labs** s Azure Lab Services. Pokud chcete jenom zadat, co potřebujete v testovacím prostředí, a nechat službu nastavenou a spravovat infrastrukturu potřebnou pro testovací prostředí, vyberte jeden ze spravovaných **typů testovacího prostředí**. V současné době je **prostředí učebny** jediným typem spravovaného testovacího prostředí, které můžete vytvořit pomocí Azure Lab Services. Pokud chcete spravovat vlastní infrastrukturu, vytvořte testovací prostředí pomocí **Azure DevTest Labs**.
+Můžete vytvořit dva typy cvičení: **spravované typy testovacích prostředí** pomocí Azure Lab Services a **Labs** s Azure Lab Services. Pokud chcete jenom zadat, co potřebujete v testovacím prostředí, a nechat službu nastavenou a spravovat infrastrukturu potřebnou pro testovací prostředí, vyberte jeden ze **spravovaných typů testovacího prostředí**. V současné době je **prostředí učebny** jediným typem spravovaného testovacího prostředí, které můžete vytvořit pomocí Azure Lab Services. Pokud chcete spravovat vlastní infrastrukturu, vytvořte testovací prostředí pomocí **Azure DevTest Labs**.
 
 Následující části poskytují další podrobnosti o těchto testovacích prostředích. 
 
@@ -94,7 +92,7 @@ Zde jsou některé **případy použití pro spravované typy testovacích prost
 
 
 ## <a name="devtest-labs"></a>DevTest Labs
-Můžete mít scénáře, ve kterých chcete spravovat veškerou infrastrukturu a konfiguraci sami v rámci svého vlastního předplatného. Uděláte to tak, že vytvoříte testovací prostředí pomocí služby Azure DevTest Labs na webu Azure Portal. Pro tato testovací prostředí není nutné vytvořit účet testovacího prostředí. Tyto laboratoře se nezobrazují v účtu testovacího prostředí (který existuje pro spravované typy testovacího prostředí).  
+Můžete mít scénáře, ve kterých chcete spravovat veškerou infrastrukturu a konfiguraci sami v rámci svého vlastního předplatného. Uděláte to tak, že vytvoříte testovací prostředí pomocí služby Azure DevTest Labs na webu Azure Portal. Pro tyto laboratoře nemusíte vytvářet účet testovacího prostředí. Tyto laboratoře se nezobrazují v účtu testovacího prostředí (který existuje pro spravované typy testovacího prostředí).  
 
 Tady je několik **případů použití DevTest Labs**: 
 
@@ -106,7 +104,7 @@ Tady je několik **případů použití DevTest Labs**:
 - Nabídněte vašim zákazníkům školení s využitím testovacího prostředí, ve kterém je nakonfigurovaná nejnovější verze vašeho produktu. Poskytněte každému zákazníkovi určitý počet hodin pro práci v testovacím prostředí. 
 
 
-## <a name="managed-lab-types-vs-devtest-labs"></a>Typy spravovaného testovacího prostředí versus DevTest Labs
+## <a name="managed-lab-types-vs-devtest-labs"></a>Spravované typy testovacích prostředí vs. DevTest Labs
 Následující tabulka porovnává dva typy testovacích prostředí, které služba Azure Lab Services podporuje: 
 
 | Funkce | Typy spravovaného testovacího prostředí | DevTest Labs |
@@ -114,7 +112,7 @@ Následující tabulka porovnává dva typy testovacích prostředí, které slu
 | Správa infrastruktury Azure v testovacím prostředí |  Automaticky spravuje služba. | Spravujete sami.  |
 | Předdefinovaná odolnost vůči problémům s infrastrukturou | Automaticky zpracovává služba. | Spravujete sami.  |
 | Správa předplatného | Služba zpracovává přidělování prostředků v předplatných Microsoftu, která podporují danou službu. Škálování automaticky zpracovává služba. | Spravujete sami ve svém vlastním předplatném Azure. Žádné automatické škálování předplatných. |
-| Nasazení Azure Resource Manageru v testovacím prostředí | Není k dispozici. | K dispozici |
+| Nasazení Azure Resource Manageru v testovacím prostředí | Není k dispozici | Dostupné |
 
 ## <a name="next-steps"></a>Další kroky
 

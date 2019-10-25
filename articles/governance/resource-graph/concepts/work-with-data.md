@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: c78f2e37fa29fa1cdcb9acc6a4600688750b6d74
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: bcc272a8189ebb175f546f6a50c2c117a7975216
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387596"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800177"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s velkými sadami dat prostředků Azure
 
@@ -36,7 +36,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-V [REST API](/rest/api/azureresourcegraph/resources/resources)je ovládací prvek **$Top** a je součástí **QueryRequestOptionsu**.
+V [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)je ovládací prvek **$Top** a je součástí **QueryRequestOptionsu**.
 
 Ovládací prvek, který je _nejvíce omezující_ , se podaří. Pokud Váš dotaz například používá operátory **Top** nebo **limit** a výsledkem by bylo více záznamů než **první**, maximální počet vrácených záznamů bude stejný jako **první**. Podobně, pokud je **horní** nebo **limit** menší než **první**, vrácená sada záznamů bude menší hodnota nakonfigurovaná funkcí **Top** nebo **limit**.
 
@@ -59,11 +59,11 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-V [REST API](/rest/api/azureresourcegraph/resources/resources)je ovládací prvek **$Skip** a je součástí **QueryRequestOptionsu**.
+V [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)je ovládací prvek **$Skip** a je součástí **QueryRequestOptionsu**.
 
 ## <a name="paging-results"></a>Výsledky stránkování
 
-Pokud je nutné rozdělit sadu výsledků na menší sady záznamů ke zpracování nebo protože sada výsledků by překročila maximální povolenou hodnotu _1000_ vrácených záznamů, použijte stránkování. [REST API](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** poskytuje hodnoty pro indikaci sady výsledků byla rozdělena: **resultTruncated** a **$skipToken**.
+Pokud je nutné rozdělit sadu výsledků na menší sady záznamů ke zpracování nebo protože sada výsledků by překročila maximální povolenou hodnotu _1000_ vrácených záznamů, použijte stránkování. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** poskytuje hodnoty pro indikaci sady výsledků byla rozdělena: **resultTruncated** a **$skipToken**.
 **resultTruncated** je logická hodnota, která informuje příjemce, pokud v odpovědi nejsou vráceny další záznamy. Tato podmínka se dá identifikovat také v případě, že vlastnost **Count** je menší než vlastnost **totalRecords** . **totalRecords** definuje počet záznamů, které odpovídají dotazu.
 
 Pokud má resultTruncated **hodnotu true**, v odpovědi se nastaví vlastnost **$skipToken** . Tato hodnota se používá se stejnými hodnotami dotazů a předplatného k získání další sady záznamů, které odpovídají dotazu.
@@ -81,7 +81,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > Aby bylo možné stránkování fungovat, dotaz musí **projektovat** pole **ID** . Pokud v dotazu chybí, nebude odpověď zahrnovat **$skipToken**.
 
-Příklad naleznete v tématu [dotaz na další stránku](/rest/api/azureresourcegraph/resources/resources#next-page-query) v dokumentaci REST API.
+Příklad naleznete v tématu [dotaz na další stránku](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query) v dokumentaci REST API.
 
 ## <a name="formatting-results"></a>Formátování výsledků
 

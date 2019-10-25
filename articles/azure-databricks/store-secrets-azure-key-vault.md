@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 1e44a1f1be6dcadac937d641e00c99994af0c651
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 7983e18066578e3f036da84c73b6554ead2c40a1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274091"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791573"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Kurz: přístup k Azure Blob Storage z Azure Databricks pomocí Azure Key Vault
 
@@ -26,21 +26,21 @@ V tomto kurzu se naučíte:
 > * Vytvoření pracovního prostoru Azure Databricks a přidání oboru tajného klíče
 > * Přístup k kontejneru objektů BLOB z Azure Databricks
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlaste se k Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
-> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete v tématu [bezplatný účet Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
+> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Vytvoření účtu úložiště a kontejneru objektů BLOB
 
-1. V Azure Portal vyberte **vytvořit prostředek**@no__t**úložiště**-1. Pak vyberte **účet úložiště**.
+1. V Azure Portal vyberte **vytvořit prostředek** > **úložiště**. Pak vyberte **účet úložiště**.
 
    ![Najít prostředek účtu úložiště Azure](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
 
@@ -68,7 +68,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
    ![Vytvoření vyhledávacího pole prostředku Azure](./media/store-secrets-azure-key-vault/find-key-vault-resource.png)
 
-2. Prostředek Key Vault je automaticky vybrán. Vyberte **vytvořit**.
+2. Prostředek Key Vault je automaticky vybrán. Vyberte **Create** (Vytvořit).
 
    ![Vytvoření prostředku Key Vault](./media/store-secrets-azure-key-vault/create-key-vault-resource.png)
 
@@ -76,14 +76,14 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
    |Vlastnost|Popis|
    |--------|-----------|
-   |Name|Jedinečný název vašeho trezoru klíčů.|
-   |Formě|Vyberte předplatné.|
+   |Name (Název)|Jedinečný název vašeho trezoru klíčů.|
+   |Předplatné|Vyberte předplatné.|
    |Skupina prostředků|Vyberte skupinu prostředků nebo vytvořte novou.|
-   |Umístění|Vyberte umístění.|
+   |Umístění|Zvolte umístění.|
 
    ![Vlastnosti trezoru klíčů Azure](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
 
-3. Po zadání výše uvedených informací vyberte **vytvořit**. 
+3. Po zadání výše uvedených informací vyberte **Vytvořit**. 
 
 4. V Azure Portal přejděte k nově vytvořenému trezoru klíčů a vyberte **tajné klíče**. Pak vyberte **+ Generovat/importovat**. 
 
@@ -93,8 +93,8 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
    |Vlastnost|Hodnota|
    |--------|-----------|
-   |Možnosti nahrání|Zásah|
-   |Name|Popisný název klíče účtu úložiště|
+   |Možnosti nahrání|Manual|
+   |Name (Název)|Popisný název klíče účtu úložiště|
    |Hodnota|klíč1 z vašeho účtu úložiště.|
 
    ![Vlastnosti nového tajného klíče trezoru klíčů](./media/store-secrets-azure-key-vault/create-storage-secret.png)
@@ -105,7 +105,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace-and-add-a-secret-scope"></a>Vytvoření pracovního prostoru Azure Databricks a přidání oboru tajného klíče
 
-1. V Azure Portal vyberte **vytvořit prostředek** > **Analytics** > **Azure Databricks**.
+1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**.
 
     ![Datacihly na Azure Portal](./media/store-secrets-azure-key-vault/azure-databricks-on-portal.png)
 
@@ -113,15 +113,15 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
    |Vlastnost  |Popis  |
    |---------|---------|
-   |Název pracovního prostoru     | Zadejte název pracovního prostoru datacihly.        |
-   |Formě     | V rozevíracím seznamu vyberte své předplatné Azure.        |
+   |Název pracovního prostoru     | Zadejte název pracovního prostoru Databricks.        |
+   |Předplatné     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
    |Skupina prostředků     | Vyberte stejnou skupinu prostředků, která obsahuje váš Trezor klíčů. |
    |Umístění     | Vyberte stejné umístění jako vaše Azure Key Vault. Všechny dostupné oblasti najdete v tématu [služby Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).        |
-   |Cenová úroveň     |  Vyberte si z **úrovně Standard** nebo **Premium**. Další informace o těchto úrovních najdete na stránce s [cenami pro datacihly](https://azure.microsoft.com/pricing/details/databricks/).       |
+   |Cenová úroveň     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
    ![Vlastnosti pracovního prostoru datacihly](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
-   Vyberte **vytvořit**.
+   Vyberte **Create** (Vytvořit).
 
 3. Přejděte k nově vytvořenému prostředku Azure Databricks v Azure Portal a vyberte **Spustit pracovní prostor**.
 
@@ -131,7 +131,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
    **https://< \location >. azuredatabricks. NET/? o = < \id > #secrets/CreateScope**.
 
-5. Zadejte název oboru a zadejte Azure Key Vault název DNS a ID prostředku, které jste předtím uložili. Uložte název oboru v textovém editoru pro pozdější použití v tomto kurzu. Pak vyberte **vytvořit**.
+5. Zadejte název oboru a zadejte Azure Key Vault název DNS a ID prostředku, které jste předtím uložili. Uložte název oboru v textovém editoru pro pozdější použití v tomto kurzu. Potom vyberte **Create** (Vytvořit).
 
    ![Vytvoření oboru tajného kódu v pracovním prostoru Azure Databricks](./media/store-secrets-azure-key-vault/create-secret-scope.png)
 
@@ -205,7 +205,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte celou skupinu prost�
 
 1. V nabídce na levé straně v Azure Portal vyberte **skupiny prostředků** a přejděte do skupiny prostředků.
 
-2. Vyberte **Odstranit skupinu prostředků** a zadejte název skupiny prostředků. Pak vyberte **Odstranit**. 
+2. Vyberte **Odstranit skupinu prostředků** a zadejte název skupiny prostředků. Vyberte **Odstranit**. 
 
 ## <a name="next-steps"></a>Další kroky
 

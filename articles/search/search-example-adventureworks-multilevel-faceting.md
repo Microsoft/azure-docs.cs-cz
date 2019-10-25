@@ -1,27 +1,27 @@
 ---
-title: 'Příklad: omezující vlastnosti na více úrovních – Azure Search'
+title: 'Příklad: omezující vlastnosti na více úrovních'
+titleSuffix: Azure Cognitive Search
 description: Naučte se vytvářet strukturální struktury pro taxonomie na více úrovních a vytváření vnořené navigační struktury, kterou můžete zahrnout na stránky aplikace.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: 8672fa0911d1a031205bb3340fa0c03ab9492a28
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70274082"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792948"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>Příklad: omezující vlastnosti na více úrovních v Azure Search
+# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>Příklad: omezující vlastnosti na více úrovních v Azure Kognitivní hledání
 
-Schémata Azure Search nepodporují explicitně víceúrovňové kategorie, ale můžete je roztřídit tak, že před indexováním provedete jejich navýšení a potom použijete pro ně speciální zpracování. 
+Schémata Azure Kognitivní hledání nepodporují explicitně víceúrovňové kategorie, ale můžete je roztřídit tak, že před indexováním provedete jejich navýšení a pak na výsledky použijete nějaké speciální zpracování. 
 
 ## <a name="start-with-the-data"></a>Začněte s daty
 
-Příklad v tomto článku sestaví předchozí příklad, [modeluje databázi inventáře AdventureWorks](search-example-adventureworks-modeling.md)a předvádí charakteristiky na více úrovních v Azure Search.
+Příklad v tomto článku sestaví předchozí příklad, [modeluje databázi inventáře AdventureWorks](search-example-adventureworks-modeling.md)a předvádí charakteristiky na více úrovních v Azure kognitivní hledání.
 
 V AdventureWorks je jednoduchá meziúroveň taxonomie s relací typu nadřazený-podřízený. Pro hloubky taxonomie s pevnou délkou této struktury se dá použít jednoduchý dotaz SQL JOIN k seskupení taxonomie:
 
@@ -39,9 +39,9 @@ LEFT JOIN
 
 ## <a name="indexing-to-a-collection-field"></a>Indexování do pole kolekce
 
-V indexu, který obsahuje tuto strukturu, vytvořte pole **Collection (EDM. String)** ve schématu Azure Search pro uložení těchto dat. Zajistěte, aby atributy pole zahrnovaly prohledávatelný, filtrovatelné, plošky a získatelné.
+V indexu, který obsahuje tuto strukturu, vytvořte pole **Collection (EDM. String)** ve schématu Azure kognitivní hledání pro uložení těchto dat. Zajistěte, aby atributy pole zahrnovaly prohledávatelné, filtrovatelné, plošky a získatelné.
 
-Nyní při indexování obsahu, který odkazuje na konkrétní kategorii taxonomie, odešlete taxonomii jako pole obsahující text z každé úrovně taxonomie. Například pro entitu s `ProductCategoryId = 5 (Mountain Bikes)` odešlete pole jako `[ "Bikes", "Bikes|Mountain Bikes"]`
+Nyní při indexování obsahu, který odkazuje na konkrétní kategorii taxonomie, odešlete taxonomii jako pole obsahující text z každé úrovně taxonomie. Například pro entitu s `ProductCategoryId = 5 (Mountain Bikes)`odešlete pole jako `[ "Bikes", "Bikes|Mountain Bikes"]`
 
 Všimněte si zahrnutí nadřazené kategorie "Bikes" v podřízené kategorii hodnota "horská kola". Každá podkategorie by měla vložit celou cestu relativní k kořenovému elementu. Oddělovač znaků kanálu je libovolný, ale musí být konzistentní a neměl by se zobrazovat ve zdrojovém textu. Znak oddělovače bude použit v kódu aplikace k rekonstrukci stromu taxonomie z výsledků omezujících vlastností.
 
@@ -99,4 +99,4 @@ Tato technika se škáluje tak, aby pokrývala složitější scénáře, jako j
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Příklad: modelování databáze AdventureWorks Inventory pro Azure Search](search-example-adventureworks-modeling.md)
+[Příklad: modelování databáze AdventureWorks Inventory pro Azure Kognitivní hledání](search-example-adventureworks-modeling.md)

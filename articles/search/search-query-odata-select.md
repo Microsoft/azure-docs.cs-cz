@@ -1,13 +1,13 @@
 ---
-title: Odkaz na výběr OData – Azure Search
-description: Referenční dokumentace jazyka OData pro příkaz SELECT syntax v Azure Searchch dotazech.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: Odkaz na výběr OData
+titleSuffix: Azure Cognitive Search
+description: Referenční informace o jazyce OData pro příkaz SELECT syntax v Azure Kognitivní hledání dotazů.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64e9ad75d88f595ab5def6fe8b63fee9407ae0fe
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7786974f3d39f9cbc81e1ffea955156d623f1476
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647878"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793253"
 ---
-# <a name="odata-select-syntax-in-azure-search"></a>Syntaxe $select OData v Azure Search
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>Syntaxe $select OData v Azure Kognitivní hledání
 
- Pomocí [parametru **$Select** OData](query-odata-filter-orderby-syntax.md) můžete zvolit, která pole se mají zahrnout do výsledků hledání z Azure Search. V tomto článku se podrobně popisuje syntaxe **$Select** . Obecnější informace o tom, jak používat **$Select** při prezentaci výsledků hledání, najdete [v tématu Jak pracovat s výsledky hledání v Azure Search](search-pagination-page-layout.md).
+ Pomocí [parametru OData **$Select** ](query-odata-filter-orderby-syntax.md) můžete zvolit, která pole se mají zahrnout do výsledků hledání z Azure kognitivní hledání. V tomto článku se podrobně popisuje syntaxe **$Select** . Obecnější informace o tom, jak používat **$Select** při prezentaci výsledků hledání, najdete v tématu [jak pracovat s výsledky hledání v Azure kognitivní hledání](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -45,23 +45,23 @@ field_path ::= identifier('/'identifier)*
 K dispozici je také diagram interaktivní syntaxe:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [Diagram syntaxe OData pro Azure Kognitivní hledání](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> Kompletní EBNF najdete v referenčních informacích k [syntaxi výrazu OData pro Azure Search](search-query-odata-syntax-reference.md) .
+> Kompletní EBNF najdete v článku [referenční informace k syntaxi výrazu OData pro Azure kognitivní hledání](search-query-odata-syntax-reference.md) .
 
 Parametr **$Select** se vyskytuje ve dvou formách:
 
-1. Jedna hvězdička (`*`), která označuje, že by měla být vrácena všechna pole k dispozici, nebo
+1. Jedna hvězdička (`*`), která značí, že se mají vracet všechna pole, která lze načíst, nebo
 1. Čárkami oddělený seznam cest polí a určení, která pole se mají vrátit
 
 Při použití druhého formuláře můžete v seznamu zadat jenom pole, která lze načíst.
 
-Pokud vypíšete komplexní pole bez explicitního určení jeho dílčích polí, budou do sady výsledků dotazu zahrnuty všechna průchozí dílčí pole. Předpokládejme například, že `Address` váš index obsahuje pole s `Street`, `City`a `Country` podpole, která lze načíst. Pokud zadáte `Address` v **$Select**, budou výsledky dotazu zahrnovat všechna tři dílčí pole.
+Pokud vypíšete komplexní pole bez explicitního určení jeho dílčích polí, budou do sady výsledků dotazu zahrnuty všechna průchozí dílčí pole. Předpokládejme například, že váš index má pole `Address` s `Street`, `City`a `Country` dílčí pole, která lze načíst. Pokud zadáte `Address` v **$Select**, budou výsledky dotazu zahrnovat všechna tři dílčí pole.
 
 ## <a name="examples"></a>Příklady
 
-`HotelName` `Rating` Dovýsledků`Address`uveďte pole `HotelId`, a nejvyšší úrovně a také `City` dílčí pole pro:
+Do výsledků zahrňte pole `HotelId`, `HotelName`a `Rating` nejvyšší úrovně a také `City` dílčí pole `Address`:
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +78,7 @@ Příklad výsledku může vypadat takto:
 }
 ```
 
-`BaseRate` `Address` `Type` Do výsledků zahrňte pole `Rooms` nejvyšší úrovně a také všechna dílčí pole a a dílčí pole jednotlivých objektů v kolekci: `HotelName`
+Do výsledků zahrňte `HotelName` pole nejvyšší úrovně a také všechna dílčí pole `Address`a `Type` a `BaseRate` dílčí pole každého objektu v kolekci `Rooms`:
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 
@@ -110,7 +110,7 @@ Příklad výsledku může vypadat takto:
 
 ## <a name="next-steps"></a>Další kroky  
 
-- [Jak pracovat s výsledky hledání v Azure Search](search-pagination-page-layout.md)
-- [Přehled jazyka výrazů OData pro Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenční dokumentace syntaxe výrazu OData pro Azure Search](search-query-odata-syntax-reference.md)
-- [Hledat dokumenty &#40;Azure Search REST API služby&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Jak pracovat s výsledky hledání v Azure Kognitivní hledání](search-pagination-page-layout.md)
+- [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
+- [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
+- [Hledání dokumentů &#40;Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

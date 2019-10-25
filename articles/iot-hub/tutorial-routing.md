@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 5019951ca9628bc3beb849bdb2b148b575bc8618
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: cc084c9ff118aa5405bc12cf4e92ff1e11f24e2a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535117"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809401"
 ---
-# <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Kurz: Použití rozhraní příkazového řádku Azure a Azure Portal ke konfiguraci směrování zpráv IoT Hub
+# <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Kurz: použití rozhraní příkazového řádku Azure a Azure Portal ke konfiguraci směrování zpráv IoT Hub
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
@@ -26,11 +26,13 @@ ms.locfileid: "69535117"
 
 V tomto kurzu se k vytvoření základních prostředků používá Azure CLI a pak se pomocí [Azure Portal](https://portal.azure.com) ukáže, jak nakonfigurovat směrování zpráv a nastavit virtuální zařízení pro testování.
 
-Existuje několik názvů prostředků, které musí být globálně jedinečné, například IoT Hub název a název účtu úložiště. Aby to bylo snazší, názvy prostředků se připojí s náhodnou alfanumerický hodnotou s názvem *randomValue*. RandomValue se generuje jednou na začátku skriptu a připojuje se k názvům prostředků podle potřeby v celém skriptu. Pokud nechcete, aby byla náhodná, můžete ji nastavit na prázdný řetězec nebo na konkrétní hodnotu.
-
 Zkopírujte a vložte následující skript do Cloud Shell a stiskněte klávesu ENTER. Skript spustí jeden řádek po druhém. Tím se vytvoří základní prostředky pro tento kurz, včetně účtu úložiště, IoT Hub, oboru názvů Service Bus a Service Bus fronty.
 
-Poznámka o ladění: Tento skript používá symbol pokračování (zpětné lomítko `\`) k tomu, aby byl skript čitelnější. Pokud máte problém se spuštěním skriptu, ujistěte se, že neexistují žádné mezery za žádným zpětným lomítkem.
+Existuje několik názvů prostředků, které musí být globálně jedinečné, například IoT Hub název a název účtu úložiště. Aby to bylo snazší, názvy prostředků se připojí s náhodnou alfanumerický hodnotou s názvem *randomValue*. RandomValue se generuje jednou na začátku skriptu a připojuje se k názvům prostředků podle potřeby v celém skriptu. Pokud nechcete, aby byla náhodná, můžete ji nastavit na prázdný řetězec nebo na konkrétní hodnotu.
+
+> [!TIP]
+> Tip o ladění: Tento skript používá symbol pokračování (zpětné lomítko `\`) k tomu, aby byl skript čitelnější. Pokud máte problém se spuštěným skriptem, ujistěte se, že je spuštěná relace Cloud Shell `bash` a že po žádném z zpětných lomítek neexistují žádné mezery.
+>
 
 ```azurecli-interactive
 # This retrieves the subscription id of the account 
@@ -160,19 +162,19 @@ Nyní nastavte směrování pro účet úložiště. Přejděte do podokna Směr
 
 9. Teď vyplňte zbývající informace o dotazu směrování. Tento dotaz určuje kritéria pro odesílání zpráv do kontejneru úložiště, který jste právě přidali jako koncový bod. Vyplňte pole na obrazovce.
 
-   **Název**: Zadejte název dotazu směrování. V tomto kurzu se používá **ContosoStorageRoute**.
+   **Název:** Zadejte název dotazu směrování. V tomto kurzu se používá **ContosoStorageRoute**.
 
-   **Koncový bod**: Tím se zobrazí koncový bod, který jste právě nastavili.
+   **Koncový bod:** Zobrazí se koncový bod, který jste právě nastavili.
 
-   **Zdroj dat**: V rozevíracím seznamu vyberte **zprávy telemetrie zařízení** .
+   **Zdroj dat:** Vyberte z rozevíracího seznamu **Telemetrické zprávy zařízení**.
 
-   **Povolit trasu**: Ujistěte se, že je toto pole `enabled`nastaveno na.
+   **Povolit trasu**: Ujistěte se, že je toto pole nastavené na `enabled`.
    
-   **Dotaz směrování**: Jako `level="storage"` řetězec dotazu zadejte.
+   **Dotaz směrování:** Jako řetězec dotazu zadejte `level="storage"`.
 
    ![Vytvoření dotazu směrování pro účet úložiště](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
 
-   Vyberte **Uložit**. Po dokončení se vrátíte do podokna Směrování zpráv, kde se zobrazí váš nový dotaz směrování pro úložiště. Zavřete podokno Trasy a vraťte se na stránku Skupina prostředků.
+   Vyberte **Save** (Uložit). Po dokončení se vrátíte do podokna Směrování zpráv, kde se zobrazí váš nový dotaz směrování pro úložiště. Zavřete podokno Trasy a vraťte se na stránku Skupina prostředků.
 
 ### <a name="route-to-a-service-bus-queue"></a>Směrování do fronty Service Bus
 
@@ -188,27 +190,27 @@ Nyní nastavte směrování pro frontu Service Bus. Přejděte do podokna Směro
 
 4. Vyplňte jednotlivá pole:
 
-   **Název koncového bodu**: Zadejte název koncového bodu. V tomto kurzu se používá **ContosoSBQueueEndpoint**.
+   **Název koncového bodu:** Zadejte název koncového bodu. V tomto kurzu se používá **ContosoSBQueueEndpoint**.
    
-   **Obor názvů Service Bus**: Pomocí rozevíracího seznamu vyberte obor názvů služby Service Bus, který jste nastavili v přípravných krocích. Tento kurz používá **ContosoSBNamespace**.
+   **Service Bus obor názvů**: pomocí rozevíracího seznamu vyberte obor názvů služby Service Bus, který jste nastavili v přípravných krocích. Tento kurz používá **ContosoSBNamespace**.
 
-   **Service Bus fronta**: Pomocí rozevíracího seznamu Vyberte frontu Service Bus. Tento kurz používá **contososbqueue**.
+   **Service Bus fronta**: pomocí rozevíracího seznamu Vyberte frontu Service Bus. Tento kurz používá **contososbqueue**.
 
 5. Výběrem možnosti **vytvořit** přidejte koncový bod fronty Service Bus. Vrátíte se do podokna **Přidat trasu**.
 
 6. Teď vyplníte zbývající informace o dotazu směrování. Tento dotaz určuje kritéria pro odesílání zpráv do fronty služby Service Bus, kterou jste právě přidali jako koncový bod. Vyplňte pole na obrazovce. 
 
-   **Název**: Zadejte název dotazu směrování. V tomto kurzu se používá **ContosoSBQueueRoute**. 
+   **Název:** Zadejte název dotazu směrování. V tomto kurzu se používá **ContosoSBQueueRoute**. 
 
-   **Koncový bod**: Tím se zobrazí koncový bod, který jste právě nastavili.
+   **Koncový bod:** Zobrazí se koncový bod, který jste právě nastavili.
 
-   **Zdroj dat**: V rozevíracím seznamu vyberte **zprávy telemetrie zařízení** .
+   **Zdroj dat:** Vyberte z rozevíracího seznamu **Telemetrické zprávy zařízení**.
 
-   **Dotaz směrování**: Jako `level="critical"` řetězec dotazu zadejte. 
+   **Dotaz směrování:** Jako řetězec dotazu zadejte `level="critical"`. 
 
    ![Vytvoření dotazu směrování pro frontu Service Bus](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
-7. Vyberte **Uložit**. Jakmile se vrátíte do podokna Trasy, zobrazí se obě nové trasy, jak je vidět tady.
+7. Vyberte **Save** (Uložit). Jakmile se vrátíte do podokna Trasy, zobrazí se obě nové trasy, jak je vidět tady.
 
    ![Trasy, které jste právě nastavili](./media/tutorial-routing/message-routing-show-both-routes.png)
 
@@ -222,7 +224,7 @@ Nyní nastavte směrování pro frontu Service Bus. Přejděte do podokna Směro
 
 [!INCLUDE [iot-hub-include-create-simulated-device-portal](../../includes/iot-hub-include-create-simulated-device-portal.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když máte nastavené prostředky a nakonfigurované trasy zpráv, přejděte k dalšímu kurzu, kde se dozvíte, jak odesílat zprávy do centra IoT a jak je směrovat do různých cílů. 
 

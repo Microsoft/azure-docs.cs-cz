@@ -8,31 +8,31 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 710bb8cba7fbbe4bc9b9fdc52b0767c96f97fe72
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175626"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808837"
 ---
-## <a name="create-base-resources"></a>Vytváření základních prostředků
+## <a name="create-base-resources"></a>Vytvoření základních prostředků
 
-Než budete moct nakonfigurovat směrování zpráv, musíte k vytvoření služby IoT hub, účet úložiště a fronty služby Service Bus. Tyto prostředky lze vytvořit pomocí jedné z čtyři články, které jsou dostupné pro části 1 tohoto kurzu: rozhraní příkazového řádku Azure, Azure Powershellu, na webu Azure portal nebo šablony Azure Resource Manageru.
+Než budete moct nakonfigurovat směrování zpráv, musíte vytvořit centrum IoT, účet úložiště a frontu Service Bus. Tyto prostředky je možné vytvořit pomocí jednoho ze čtyř článků, které jsou k dispozici v části 1 tohoto kurzu: Azure Portal, Azure Resource Manager šablona, rozhraní příkazového řádku Azure nebo Azure PowerShell.
 
-Použijte pro všechny prostředky stejnou skupinu a umístění. Klikněte na konci, můžete odebrat všechny prostředky v jednom kroku tak, že odstraníte skupinu prostředků.
+Použijte pro všechny prostředky stejnou skupinu a umístění. Pak na konci můžete odebrat všechny prostředky v jednom kroku odstraněním skupiny prostředků.
 
-Následující části popisují postup provést.
+Níže je uveden seznam kroků, které je třeba provést v následujících částech: 
 
 1. Vytvořte [skupinu prostředků](../articles/azure-resource-manager/resource-group-overview.md).
 
 2. Vytvořte centrum IoT ve vrstvě S1. Přidejte do centra IoT skupinu uživatelů. Skupinu uživatelů používá služba Azure Stream Analytics při získávání dat.
 
    > [!NOTE]
-   > K dokončení tohoto kurzu, je nutné použít v placené úrovně služby Iot hub. Úroveň free umožňuje nastavit jeden koncový bod, a tento kurz vyžaduje více koncových bodů.
+   > K dokončení tohoto kurzu musíte použít Centrum IoT v placené úrovni. Úroveň Free umožňuje nastavit pouze jeden koncový bod a tento kurz vyžaduje více koncových bodů.
    > 
 
 3. Vytvořte standardní účet úložiště V1 s replikací Standard_LRS.
 
 4. Vytvořte oboru názvů a frontu Service Bus.
 
-5. Vytvořte identitu zařízení pro simulované zařízení, které bude odesílat zprávy do vašeho centra. Uložte klíč pro fázi testování. (Pokud vytváříte šablonu Resource Manageru, to se provádí po nasazení šablony.)
+5. Vytvořte identitu zařízení pro simulované zařízení, které bude odesílat zprávy do vašeho centra. Uložte klíč pro fázi testování. (Pokud vytváříte šablonu Správce prostředků, to se provádí po nasazení šablony.)

@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: d1461a1bb026d478d51a5f79cc02b34172524db6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 26dc1ebef1c627ed2b20eb0fda68b2ca2d01b82a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566421"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791762"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor 
 
@@ -61,7 +61,7 @@ Stáhněte si následující dvě ukázky:
 
 -   [Zobrazení Azure Monitor synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jste nastavili následující věci:
 
@@ -73,7 +73,7 @@ Ujistěte se, že jste nastavili následující věci:
 
 Použijte PowerShellový Runbook hostovaný v Azure Automation k vyžádání dat protokolu Synchronizace dat SQL a jejich odeslání do protokolů Azure Monitor. Je zahrnutý vzorový skript. Je nutné, abyste měli účet Azure Automation. Pak je potřeba vytvořit Runbook a naplánovat jeho spuštění. 
 
-### <a name="create-a-runbook"></a>Vytvořit runbook
+### <a name="create-a-runbook"></a>Vytvoření runbooku
 
 Další informace o vytváření sad Runbook najdete v tématu [můj první powershellový Runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell).
 
@@ -83,15 +83,15 @@ Další informace o vytváření sad Runbook najdete v tématu [můj první powe
 
 3.  Vyberte **importovat existující Runbook**.
 
-4.  V části **soubor sady Runbook**použijte daný `DataSyncLogPowerShellRunbook` soubor. Nastavte **typ Runbooku** jako `PowerShell`. Zadejte název Runbooku.
+4.  V části **soubor sady Runbook**použijte daný soubor `DataSyncLogPowerShellRunbook`. Nastavte **Runbook Type** jako `PowerShell`. Zadejte název Runbooku.
 
-5.  Vyberte **Vytvořit**. Nyní máte sadu Runbook.
+5.  Vyberte **Create** (Vytvořit). Nyní máte sadu Runbook.
 
 6.  V části účet Azure Automation vyberte v části sdílené prostředky kartu **proměnné** .
 
 7.  Na stránce proměnné vyberte **přidat proměnnou** . Vytvořte proměnnou pro uložení poslední doby spuštění Runbooku. Pokud máte více sad Runbook, budete pro každou sadu Runbook potřebovat jednu proměnnou.
 
-8.  Nastavte název proměnné jako `DataSyncLogLastUpdatedTime` DateTime a nastavte jeho typ jako DateTime.
+8.  Nastavte název proměnné jako `DataSyncLogLastUpdatedTime` a nastavte její typ jako DateTime.
 
 9.  Vyberte Runbook a klikněte na tlačítko Upravit v horní části stránky.
 
@@ -123,7 +123,7 @@ Postup při plánování sady Runbook:
 
 5.  Nastavte **opakování** na opakující se a nastavte interval, který chcete. Ve skriptu a v protokolech Azure Monitor použijte stejný interval.
 
-6.  Vyberte **Vytvořit**.
+6.  Vyberte **Create** (Vytvořit).
 
 ### <a name="check-the-automation"></a>Zkontroluje automatizaci.
 
@@ -135,9 +135,9 @@ Chcete-li vytvořit výstrahu, která používá protokoly Azure Monitor, prove�
 
 1.  V Azure Portal vyberte **prohledávání protokolu**.
 
-2.  Vytvořte dotaz pro výběr chyb a upozornění podle skupin synchronizace v intervalu, který jste vybrali. Příklad:
+2.  Vytvořte dotaz pro výběr chyb a upozornění podle skupin synchronizace v intervalu, který jste vybrali. Například:
 
-    `Type=DataSyncLog\_CL LogLevel\_s!=Success| measure count() by SyncGroupName\_s interval 60minute`
+    `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
 
 3.  Po spuštění dotazu vyberte zvonek, který říká **výstrahu**.
 
@@ -187,9 +187,9 @@ Ve většině případů je toto řešení zdarma.
 
 **Azure Automation:** V závislosti na vašem využití můžou být účtovány náklady na účet Azure Automation. Prvních 500 minut času běhu úlohy za měsíc je zdarma. Ve většině případů se očekává, že toto řešení bude používat méně než 500 minut za měsíc. Pokud se chcete vyhnout poplatkům, naplánujte spuštění sady Runbook v intervalu dvou hodin nebo více. Další informace najdete v tématu [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
 
-**Protokoly Azure Monitor:** V závislosti na vašem použití můžou být v protokolech Azure Monitor přidružené náklady. Úroveň Free zahrnuje 500 MB přijatých dat za den. Ve většině případů by toto řešení mělo ingestovat méně než 500 MB za den. Chcete-li snížit využití, použijte filtrování pouze pro neúspěšné zahrnutí do sady Runbook. Pokud používáte více než 500 MB za den, upgradujte na placenou úroveň, abyste se vyhnuli nebezpečí zastavení analýz při dosažení omezení. Další informace najdete v tématu [Azure monitor protokolu ceny](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Protokoly Azure monitor:** V závislosti na vašem použití můžou být v protokolech Azure Monitor přidružené náklady. Úroveň Free zahrnuje 500 MB přijatých dat za den. Ve většině případů by toto řešení mělo ingestovat méně než 500 MB za den. Chcete-li snížit využití, použijte filtrování pouze pro neúspěšné zahrnutí do sady Runbook. Pokud používáte více než 500 MB za den, upgradujte na placenou úroveň, abyste se vyhnuli nebezpečí zastavení analýz při dosažení omezení. Další informace najdete v tématu [Azure monitor protokolu ceny](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 Ukázky kódu popsané v tomto článku si stáhněte z těchto umístění:
 
@@ -197,16 +197,16 @@ Ukázky kódu popsané v tomto článku si stáhněte z těchto umístění:
 
 -   [Zobrazení Azure Monitor synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o Synchronizaci dat SQL:
 
 -   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: Nastavení Synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním prostředí](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](sql-database-get-started-sql-data-sync.md) prostředím
     - S využitím PowerShellu
-        -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [Synchronizace mezi několika databázemi Azure SQL pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
+-   Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](sql-database-data-sync-agent.md)
 -   Osvědčené postupy – [osvědčené postupy pro Azure synchronizace dat SQL](sql-database-best-practices-data-sync.md)
 -   Řešení potíží – [řešení potíží s Azure synchronizace dat SQL](sql-database-troubleshoot-data-sync.md)
 -   Aktualizace schématu synchronizace

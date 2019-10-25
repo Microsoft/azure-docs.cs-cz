@@ -1,18 +1,18 @@
 ---
-title: Nedoručené písmeno a zásady opakování pro předplatná Azure Event Grid
+title: Nedoručené písmeno a zásady opakování – Azure Event Grid
 description: Popisuje, jak přizpůsobit možnosti doručení událostí pro Event Grid. Nastavte cíl nedoručených zpráv a určete, jak dlouho se má opakovat doručení.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/06/2019
+ms.date: 10/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933362"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794039"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Nedoručené dopisy a zásady opakování
 
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Pokud nastavíte `event-ttl` a `max-deliver-attempts`, Event Grid používá první, aby vyprší jeho doručení, aby bylo možné určit, kdy se má zastavit doručování událostí.
+Pokud nakonfigurujete `event-ttl` i `max-deliver-attempts`, Event Grid používá první vypršet, aby bylo možné určit, kdy se má zastavit doručování událostí.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -127,11 +127,11 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Pokud nastavíte `EventTtl` a `MaxDeliveryAttempt`, Event Grid používá první, aby vyprší jeho doručení, aby bylo možné určit, kdy se má zastavit doručování událostí.
+Pokud nakonfigurujete `EventTtl` i `MaxDeliveryAttempt`, Event Grid používá první vypršet, aby bylo možné určit, kdy se má zastavit doručování událostí.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Ukázkovou aplikaci, která používá aplikaci funkcí Azure ke zpracování událostí nedoručených zpráv, najdete v tématu [Azure Event Grid ukázek nedoručených zpráv pro .NET](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
-* Informace o doručování událostí a opakovaných pokusů [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
-* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
-* Pokud chcete rychle začít používat služby Event Grid, přečtěte si téma [vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).
+* Pro informace o doručení a opakování události [Event Grid doručování zpráv a akci opakujte](delivery-and-retry.md).
+* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
+* Pokud chcete rychle začít používat Event Grid, přečtěte si téma [Vytvoření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).

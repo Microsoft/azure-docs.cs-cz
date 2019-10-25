@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: 793dbf056201a3315a9b77dfebbb9331a8ed7db1
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 69104cdaeb4abfc15e2ac4209e1ddbc610656c13
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310605"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793988"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry role a oprávnění
 
@@ -21,13 +21,13 @@ Služba Azure Container Registry podporuje sadu rolí Azure, které poskytují r
 
 | Role/oprávnění       | [Přístup Správce prostředků](#access-resource-manager) | [Vytvořit nebo odstranit registr](#create-and-delete-registry) | [Obrázek push](#push-image) | [Obrázek pro vyžádání obsahu](#pull-image) | [Odstranit data obrázku](#delete-image-data) | [Změnit zásady](#change-policies) |   [Podepsat obrázky](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| Owner | X | X | X | X | X | X |  |  
-| Přispěvatel | X | X | X |  X | X | X |  |  
-| Čtenář | X |  |  |  |  |  |  |
-| AcrPush |  |  | X | X | |  |  |  
-| AcrPull |  |  |  | X |  |  |  |  
-| AcrDelete |  |  |  |  | X |  |  |
-| AcrImageSigner |  |  |  |  |  |  | X |
+| Vlastník | × | × | × | × | × | × |  |  
+| Přispěvatel | × | × | × |  × | × | × |  |  
+| Čtenář | × |  |  | × |  |  |  |
+| AcrPush |  |  | × | × | |  |  |  
+| AcrPull |  |  |  | × |  |  |  |  
+| AcrDelete |  |  |  |  | × |  |  |
+| AcrImageSigner |  |  |  |  |  |  | × |
 
 ## <a name="differentiate-users-and-services"></a>Odlišení uživatelů a služeb
 
@@ -43,11 +43,11 @@ Podobně uzly se spuštěnými kontejnery potřebují roli **AcrPull** , ale nem
 
 ### <a name="visual-studio-code-docker-extension"></a>Rozšíření Docker Visual Studio Code
 
-Pro nástroje, jako je [rozšíření docker](https://code.visualstudio.com/docs/azure/docker)Visual Studio Code, je pro výpis dostupných registrů kontejnerů Azure potřeba další přístup od poskytovatele prostředků. V takovém případě Poskytněte uživatelům přístup k roli **Čtenář** nebo **Přispěvatel** . Tyto role umožňují `docker pull` `docker push` ,,`az acr build`,adalšífunkce. `az acr list` 
+Pro nástroje, jako je [rozšíření docker](https://code.visualstudio.com/docs/azure/docker)Visual Studio Code, je pro výpis dostupných registrů kontejnerů Azure potřeba další přístup od poskytovatele prostředků. V takovém případě Poskytněte uživatelům přístup k roli **Čtenář** nebo **Přispěvatel** . Tyto role povolují `docker pull`, `docker push`, `az acr list`, `az acr build`a další funkce. 
 
 ## <a name="access-resource-manager"></a>Přístup Správce prostředků
 
-Pro Azure Portal a správu registru se v [Azure CLI](/cli/azure/)vyžaduje přístup k Azure Resource Manager. Chcete-li například získat seznam registrů pomocí `az acr list` příkazu, budete potřebovat tuto sadu oprávnění. 
+Pro Azure Portal a správu registru se v [Azure CLI](/cli/azure/)vyžaduje přístup k Azure Resource Manager. Chcete-li například získat seznam registrů pomocí příkazu `az acr list`, budete potřebovat tuto sadu oprávnění. 
 
 ## <a name="create-and-delete-registry"></a>Vytvoření a odstranění registru
 
@@ -55,11 +55,11 @@ Možnost vytvářet a odstraňovat Registry kontejnerů Azure.
 
 ## <a name="push-image"></a>Obrázek push
 
-Možnost `docker push` obrázku nebo vložení dalšího podporovaného artefaktu [](container-registry-image-formats.md) , jako je například graf Helm, do registru. Vyžaduje [ověření](container-registry-authentication.md) pomocí registru pomocí autorizované identity. 
+Možnost `docker push` obrázku nebo Vložit jiný [podporovaný artefakt](container-registry-image-formats.md) , jako je například graf Helm, do registru. Vyžaduje [ověření](container-registry-authentication.md) pomocí registru pomocí autorizované identity. 
 
 ## <a name="pull-image"></a>Obrázek pro vyžádání obsahu
 
-Možnost `docker pull` obrázku mimo v karanténě nebo si z registru vyžádejte jiný [podporovaný artefakt](container-registry-image-formats.md) , jako je například Helm graf. Vyžaduje [ověření](container-registry-authentication.md) pomocí registru pomocí autorizované identity.
+Možnost `docker pull` image mimo v karanténě nebo z registru vyžádat další [podporovaný artefakt](container-registry-image-formats.md) , jako je například graf Helm. Vyžaduje [ověření](container-registry-authentication.md) pomocí registru pomocí autorizované identity.
 
 ## <a name="delete-image-data"></a>Odstranit data obrázku
 
@@ -73,7 +73,7 @@ Možnost konfigurovat zásady v registru. Zásady zahrnují vymazání imagí, p
 
 Schopnost podepisovat obrázky obvykle přiřazené automatizovanému procesu, který by používal instanční objekt. Toto oprávnění je obvykle kombinováno s [imagí push](#push-image) , aby umožňovalo vložení důvěryhodného obrázku do registru. Podrobnosti najdete v tématu [vztah důvěryhodnosti obsahu v Azure Container Registry](container-registry-content-trust.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o přiřazení rolí RBAC k identitě Azure pomocí [Azure Portal](../role-based-access-control/role-assignments-portal.md), rozhraní příkazového [řádku Azure](../role-based-access-control/role-assignments-cli.md)nebo dalších nástrojů Azure.
 

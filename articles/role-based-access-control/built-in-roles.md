@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/25/2019
+ms.date: 10/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 65a049070806fd702497d50236e9d541de2e8b1a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 31e19034f6a2c6f5ab52cbc34d8b3f6e0a1051bc
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842303"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803587"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -30,7 +30,7 @@ V tomto článku jsou uvedené předdefinované role pro prostředky Azure, kter
 
 ## <a name="built-in-role-descriptions"></a>Předdefinované popisy rolí
 
-Následující tabulka uvádí stručný popis každé předdefinované role. Kliknutím na název role zobrazíte seznam `Actions`, `NotActions`, `DataActions` a `NotDataActions` pro každou roli. Informace o tom, co tyto akce znamenají a jak se vztahují na datové roviny pro správu a data, najdete v tématu [vysvětlení definic rolí pro prostředky Azure](role-definitions.md).
+Následující tabulka uvádí stručný popis každé předdefinované role. Kliknutím na název role zobrazíte seznam `Actions`, `NotActions`, `DataActions`a `NotDataActions` pro každou roli. Informace o tom, co tyto akce znamenají a jak se vztahují na datové roviny pro správu a data, najdete v tématu [vysvětlení definic rolí pro prostředky Azure](role-definitions.md).
 
 
 | Předdefinovaná role | Popis |
@@ -279,7 +279,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **Popis** | čtečka dat karantény ACR |
 > | **ID** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Akce** |  |
-> | Microsoft. ContainerRegistry/Registry/quarantineRead/Read | Vyžádání nebo získání imagí v karanténě z registru kontejnerů |
+> | Microsoft. ContainerRegistry/registrys/karanténa/čtení | Vyžádání nebo získání imagí v karanténě z registru kontejnerů |
 > | **NotActions** |  |
 > | *nTato* |  |
 > | **Akce dataactions** |  |
@@ -294,8 +294,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **Popis** | zapisovač dat karantény ACR |
 > | **ID** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **Akce** |  |
-> | Microsoft. ContainerRegistry/Registry/quarantineRead/Read | Vyžádání nebo získání imagí v karanténě z registru kontejnerů |
-> | Microsoft. ContainerRegistry/Registry/quarantineWrite/Write | Zápis/Změna stavu karantény imagí v karanténě |
+> | Microsoft. ContainerRegistry/registrys/karanténa/čtení | Vyžádání nebo získání imagí v karanténě z registru kontejnerů |
+> | Microsoft. ContainerRegistry/registrys/Quarantine/Write | Zápis/Změna stavu karantény imagí v karanténě |
 > | **NotActions** |  |
 > | *nTato* |  |
 > | **Akce dataactions** |  |
@@ -1838,6 +1838,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. ClassicStorage/storageAccounts/klíče listkey/Action | Vypíše přístupové klíče pro účty úložiště. |
 > | Microsoft. ClassicStorage/storageAccounts/Read | Vrátí účet úložiště s daným účtem. |
 > | Microsoft. Insights/alertRules/* | Vytváření a Správa pravidel výstrah pro přehledy |
+> | Microsoft. Insights/metricAlerts/* |  |
 > | Microsoft. Insights/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
 > | Microsoft. Insights/logdefinitions/* | Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit prostřednictvím portálu. Vypíše kategorie protokolů v protokolu aktivit. |
 > | Microsoft. Insights/metricDefinitions/* | Čtení definic metriky (seznam dostupných typů metrik pro prostředek). |
@@ -1870,6 +1871,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **Akce** |  |
 > | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
 > | Microsoft. Insights/alertRules/*/Read | Pravidla výstrah pro čtení přehledů |
+> | Microsoft. Insights/metricAlerts/*/Read |  |
 > | Microsoft. Insights/diagnosticSettings/*/Read | Získá nastavení diagnostiky pro Logic Apps |
 > | Microsoft. Insights/metricDefinitions/*/Read | Získá dostupné metriky pro Logic Apps. |
 > | Microsoft. Logic/*/Read | Přečte Logic Apps prostředky. |

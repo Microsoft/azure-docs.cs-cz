@@ -1,5 +1,6 @@
 ---
-title: Správa tokenů (Microsoft Authentication Library) | Azure
+title: Správa tokenů (Microsoft Authentication Library)
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o získání a ukládání tokenů do mezipaměti pomocí knihovny Microsoft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f7914744073f82d8a35d3679a1c65459e10b2f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: aaa6a939fce3eae8b1367c2d01e947e813fa5437
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532902"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803297"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>Získání a ukládání tokenů do mezipaměti pomocí MSAL
 [Přístupové tokeny](access-tokens.md) umožňují klientům bezpečně volat webová rozhraní API chráněná Azure. Existuje mnoho způsobů, jak získat token pomocí knihovny Microsoft Authentication Library (MSAL). Některé způsoby vyžadují interakci s uživatelem prostřednictvím webového prohlížeče. Některé nevyžadují interakci s uživatelem. Obecně platí, že způsob získání tokenu závisí na tom, jestli je aplikace veřejná klientská aplikace (desktopová nebo mobilní aplikace), nebo důvěrná klientská aplikace (webová aplikace, webové rozhraní API nebo aplikace démona, jako je například služba systému Windows).
@@ -34,28 +35,28 @@ Můžete také vymazat mezipaměť tokenu, která se dosahuje odebráním účt�
 ## <a name="scopes-when-acquiring-tokens"></a>Obory při získávání tokenů
 [Obory](v2-permissions-and-consent.md) jsou oprávnění, která WEBOVÝm rozhraním API zpřístupňuje klientským aplikacím, aby si vyžádali přístup. Klientské aplikace požadují souhlas uživatele pro tyto obory při vytváření žádostí o ověření, aby získaly tokeny pro přístup k webovým rozhraním API. MSAL umožňuje získat tokeny pro přístup k Azure AD pro vývojáře (v 1.0) a rozhraní Microsoft Identity Platform (v 2.0). protokol v 2.0 místo prostředků v požadavcích používá obory. Další informace najdete v tématu [porovnání čtení v 1.0 a v 2.0](active-directory-v2-compare.md). Na základě konfigurace webového rozhraní API verze tokenu, kterou přijímá, vrátí koncový bod v 2.0 přístupový token do MSAL.
 
-Počet metod MSAL získat token vyžaduje parametr scopes . Tento parametr je jednoduchý seznam řetězců, který deklaruje požadovaná oprávnění a požadované prostředky. Dobře známé obory jsou [Microsoft Graph oprávnění](/graph/permissions-reference).
+Počet metod MSAL získat token vyžaduje parametr *scopes* . Tento parametr je jednoduchý seznam řetězců, který deklaruje požadovaná oprávnění a požadované prostředky. Dobře známé obory jsou [Microsoft Graph oprávnění](/graph/permissions-reference).
 
 V MSAL je také možné získat přístup k prostředkům v 1.0. Další informace najdete v tématu [obory čtení pro aplikaci v 1.0](msal-v1-app-scopes.md).
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>Vyžádat konkrétní obory pro webové rozhraní API
-Pokud vaše aplikace potřebuje požádat o tokeny s konkrétními oprávněními pro rozhraní API prostředků, budete muset předat obory obsahující identifikátor URI ID aplikace rozhraní API ve spodním formátu:  *&lt;obor identifikátoru URI&gt;/&lt;ID aplikace&gt;*
+Pokud vaše aplikace potřebuje žádat o tokeny s konkrétními oprávněními pro rozhraní API prostředků, budete muset předat obory obsahující identifikátor URI ID aplikace rozhraní API ve spodním formátu: *&lt;identifikátor URI ID aplikace&gt;/&lt;rozsah&gt;*
 
-Například obory pro rozhraní Microsoft Graph API:`https://graph.microsoft.com/User.Read`
+Například obory pro rozhraní Microsoft Graph API: `https://graph.microsoft.com/User.Read`
 
-Například obory pro vlastní webové rozhraní API:`api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
+Například obory pro vlastní webové rozhraní API: `api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
 
-Pro rozhraní Microsoft Graph API se hodnota `user.read` oboru mapuje na `https://graph.microsoft.com/User.Read` Format a dá se použít zaměnitelné.
+Pro rozhraní Microsoft Graph API se hodnota oboru `user.read` mapuje na `https://graph.microsoft.com/User.Read` formát a je možné ji použít zaměnitelné.
 
 > [!NOTE]
-> Některá webová rozhraní API, jako je například https://management.core.windows.net/) rozhraní API pro Azure Resource Manager (očekávají na konci deklarace identity cílové skupiny (AUD) přístupového tokenu. V takovém případě je důležité předat obor jako https://management.core.windows.net//user_impersonation (poznámku s dvojitým lomítkem), aby byl token platný v rozhraní API.
+> Některá webová rozhraní API, jako je například rozhraní API pro Azure Resource Manager (https://management.core.windows.net/) očekávají na konci deklarace identity cílové skupiny (AUD) přístupového tokenu. V takovém případě je důležité předat obor jako https://management.core.windows.net//user_impersonation (poznámení s dvojitým lomítkem), aby byl token platný v rozhraní API.
 
 ### <a name="request-dynamic-scopes-for-incremental-consent"></a>Požádat o dynamické obory pro přírůstkové vyjádření souhlasu
 Při sestavování aplikací pomocí verze 1.0 jste museli zaregistrovat úplnou sadu oprávnění (statické obory), které aplikace požaduje, aby uživatel mohl vyjádřit souhlas v době přihlášení. V 2.0 můžete podle potřeby požádat o další oprávnění pomocí parametru Scope. Nazývají se dynamické obory a umožňují uživateli poskytovat přírůstkový souhlas s obory.
 
 Například můžete uživatele nejprve podepsat a odepřít jim jakýkoliv druh přístupu. Později jim můžete dát možnost číst kalendář uživatele tím, že si vyžádáte rozsah kalendáře v metodách získat token a získáte souhlas uživatele.
 
-Například: `https://graph.microsoft.com/User.Read` a`https://graph.microsoft.com/Calendar.Read`
+Například: `https://graph.microsoft.com/User.Read` a `https://graph.microsoft.com/Calendar.Read`
 
 ## <a name="acquiring-tokens-silently-from-the-cache"></a>Tiché získávání tokenů (z mezipaměti)
 MSAL udržuje mezipaměť tokenů (nebo dvě mezipaměti pro důvěrné klientské aplikace) a po získání token uloží do mezipaměti.  V mnoha případech se při pokusu o tiché získání tokenu získá další token s více rozsahy na základě tokenu v mezipaměti. Je také možné aktualizovat token, když se blíží vypršení platnosti (protože mezipaměť tokenů obsahuje také obnovovací token).
@@ -63,7 +64,7 @@ MSAL udržuje mezipaměť tokenů (nebo dvě mezipaměti pro důvěrné klientsk
 ### <a name="recommended-call-pattern-for-public-client-applications"></a>Doporučený vzor volání pro veřejné klientské aplikace
 Kód aplikace by se měl nejdříve pokusit získat token v tichém (z mezipaměti).  Pokud volání metody vrátí chybu "požadováno UI" nebo výjimku, zkuste získat token jiným způsobem. 
 
-Existují však dva toky před tím, než se pokusíte o tiché získání tokenu:
+Existují však dva toky před tím, **než se pokusíte o** tiché získání tokenu:
 
 - [tok přihlašovacích údajů klienta](msal-authentication-flows.md#client-credentials), který nepoužívá mezipaměť tokenu uživatele, ale mezipaměť tokenu aplikace. Tato metoda postará o ověření této mezipaměti tokenů aplikace před odesláním žádosti službě STS.
 - [tok autorizačního kódu](msal-authentication-flows.md#authorization-code) v Web Apps, protože uplatňuje kód, který aplikace získala přihlašováním uživatele, a má souhlas s více obory. Vzhledem k tomu, že je kód předán jako parametr, a nikoli účet, metoda nemůže najít mezipaměť v mezipaměti před uplatněním kódu, který vyžaduje, aby bylo volání služby úspěšné.
@@ -101,5 +102,5 @@ Když si klient vyžádá přístupový token, Azure AD také vrátí výsledek 
 - Obory, pro které byl token vydán.
 - Jedinečné ID uživatele
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o [zpracování chyb a výjimek](msal-handling-exceptions.md). 

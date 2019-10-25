@@ -1,5 +1,5 @@
 ---
-title: Připojení k 3270 aplikacím v sálových počítačích IBM pomocí Azure-Azure Logic Apps
+title: Připojení k aplikacím 3270 na sálových počítačích IBM – Azure Logic Apps
 description: Integrace a automatizace 3270 aplikací řízených obrazovkou pomocí Azure pomocí Azure Logic Apps a konektoru IBM 3270
 services: logic-apps
 ms.service: logic-apps
@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 50b8fc6b6a350d0a5982cc84f94067979d018cce
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f039d0cbfa2b34fecbcdee53ebe2b56b6e9b6d69
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050671"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787578"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrace 3270 aplikací řízených obrazovkou na sálové počítače IBM s Azure pomocí Azure Logic Apps a konektoru IBM 3270
 
@@ -40,13 +40,13 @@ Aby se tyto scénáře rozšířily, konektor IBM 3270 v Azure Logic Apps funguj
 
 Po vygenerování souboru metadat z nástroje pro návrh můžete tento soubor přidat do účtu pro integraci v Azure. Aplikace logiky tak bude mít přístup k metadatům vaší aplikace, když přidáte akci konektoru 3270. Tento konektor přečte soubor metadat z účtu integrace, zpracovává navigaci přes obrazovky 3270 a dynamicky prezentuje parametry pro akci konektoru 3270. Potom můžete poskytnout data do hostitelské aplikace a konektor vrátí výsledky do vaší aplikace logiky. Tímto způsobem můžete své starší aplikace integrovat s Azure, Microsoftem a dalšími aplikacemi, službami a systémy, které Azure Logic Apps podporuje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Doporučené: [Prostředí služby Integration Service (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 
+* Doporučené: [prostředí služby Integration Service (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 
 
   Toto prostředí můžete vybrat jako umístění pro vytvoření a spuštění aplikace logiky. ISE poskytuje přístup z vaší aplikace logiky k prostředkům chráněným v rámci virtuálních sítí Azure.
 
@@ -78,20 +78,20 @@ Jediným předpokladem je [Microsoft .NET Framework 4.6.1](https://aka.ms/net-fr
 
 V aplikaci řízené obrazovkou 3270 jsou obrazovky a datová pole pro vaše scénáře jedinečné, takže konektor 3270 potřebuje tyto informace o vaší aplikaci, které můžete zadat jako metadata. Tato metadata popisují informace, které pomáhají vaší aplikaci logiky identifikovat a rozpoznávat obrazovky, popisuje, jak přecházet mezi obrazovkami, kde můžete zadávat data a kde očekávat výsledky. Chcete-li zadat a vygenerovat tato metadata, použijte nástroj pro návrh 3270, který vás provede těmito konkrétními *režimy*nebo fázemi, jak je popsáno dále ve více podrobnostech:
 
-* **Zachytit**: V tomto režimu si zaznamenáte obrazovky, které jsou potřeba k dokončení konkrétní úlohy, pomocí své aplikace v rámci sálového počítače, například získání zůstatku bank.
+* **Capture**: v tomto režimu si zaznamenáte obrazovky, které jsou potřeba k dokončení konkrétní úlohy, a to v rámci své aplikace pro sálové počítače, například při získávání bilance bank.
 
-* **Navigace**: V tomto režimu určíte plán nebo cestu, jak procházet obrazovky vaší sálové aplikace pro konkrétní úkol.
+* **Navigace**: v tomto režimu určíte plán nebo cestu, jak procházet obrazovky vaší sálové aplikace pro konkrétní úkol.
 
-* **Metody**: V tomto režimu definujete metodu, například `GetBalance`, která popisuje cestu k navigaci obrazovky. Můžete také zvolit pole na každé obrazovce, která se stanou vstupními a výstupními parametry metody.
+* **Metody**: v tomto režimu definujete metodu, například `GetBalance`, která popisuje cestu navigace obrazovky. Můžete také zvolit pole na každé obrazovce, která se stanou vstupními a výstupními parametry metody.
 
 ### <a name="unsupported-elements"></a>Nepodporované elementy
 
 Nástroj pro návrh nepodporuje tyto prvky:
 
-* Částečná mapování BMS (IBM Basic Mapping support): Pokud importujete mapu BMS, nástroj pro návrh ignoruje definice částečné obrazovky.
-* Vstupně-výstupní parametry: Nemůžete definovat vstupně-výstupní parametry.
-* Zpracování nabídky: Nepodporováno během verze Preview
-* Zpracování pole: Nepodporováno během verze Preview
+* Mapy podpory BMS (částečně základní mapování společnosti IBM): Pokud importujete mapu BMS, nástroj pro návrh ignoruje definice částečné obrazovky.
+* Vstupně-výstupní parametry: nelze definovat vstupně-výstupní parametry.
+* Zpracování nabídky: během verze Preview se nepodporuje.
+* Zpracování pole: ve verzi Preview se nepodporuje.
 
 <a name="capture-screens"></a>
 
@@ -143,7 +143,7 @@ V nástroji pro návrh můžete přidat *atributy rozpoznávání*, například 
 
 * Konkrétní hodnota: Tato hodnota odpovídá zadanému řetězci v zadaném umístění.
 * Nejedná se o konkrétní hodnotu: Tato hodnota se neshoduje se zadaným řetězcem v zadaném umístění.
-* Obsahovat Toto pole je prázdné.
+* Prázdné: Toto pole je prázdné.
 * Neprázdné: Toto pole není prázdné.
 
 Další informace najdete v [příkladu navigační plán](#example-plan) dále v tomto tématu.
@@ -152,7 +152,7 @@ Další informace najdete v [příkladu navigační plán](#example-plan) dále 
 
 ## <a name="define-navigation-plans"></a>Definování plánů navigace
 
-V tomto režimu definujete tok nebo kroky pro navigaci na obrazovkách vaší aplikace pro konkrétní úlohu. Například může být třeba mít více než jednu cestu, kterou může aplikace převzít, když jedna cesta vytvoří správný výsledek, zatímco druhá cesta vytvoří chybu. Pro každou obrazovku určete stisknutí kláves nutných pro přechod na další obrazovku, `CICSPROD <enter>`jako je například.
+V tomto režimu definujete tok nebo kroky pro navigaci na obrazovkách vaší aplikace pro konkrétní úlohu. Například může být třeba mít více než jednu cestu, kterou může aplikace převzít, když jedna cesta vytvoří správný výsledek, zatímco druhá cesta vytvoří chybu. Pro každou obrazovku zadejte stisknutí kláves, které jsou nezbytné pro přechod na další obrazovku, například `CICSPROD <enter>`.
 
 > [!TIP]
 > Pokud automatizujete několik úloh, které používají stejné obrazovky připojení a odpojení, poskytuje nástroj pro návrh speciální typy plánů připojení a odpojení. Při definování těchto plánů je můžete přidat do začátku a koncem svého navigačního plánu.
@@ -208,7 +208,7 @@ Po dokončení plánu navigace můžete [metody definovat v dalším režimu](#d
 
 <a name="example-plan"></a>
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 V tomto příkladu Předpokládejme, že spustíte transakci CICS s názvem "WBGB", která má tyto kroky: 
 
@@ -221,11 +221,11 @@ Předpokládejme také, že tento postup zopakujete, ale zadáte nesprávná dat
 
 * MSG-10
 * CICS Welcome
-* Prázdné
+* Obsahovat
 * WBGB_1 (vstup)
 * WBGB_2 (chyba)
 * Empty_1
-* MSG-10_1
+* MSG – 10_1
 
 I když mnoho obrazovek získá jedinečné názvy, některé obrazovky jsou stejné obrazovky, například "MSG-10" a "Empty". Pro opakovanou obrazovku použijte pro tuto obrazovku v plánu jenom jednu instanci. Tady jsou příklady, které ukazují, jak může vypadat samostatný plán, plán připojení, plán odpojení a kombinovaný plán:
 
@@ -245,7 +245,7 @@ I když mnoho obrazovek získá jedinečné názvy, některé obrazovky jsou ste
 
   ![Kombinovaný plán](./media/connectors-create-api-3270/combined-plan.png)
 
-#### <a name="example-identify-repeated-screens"></a>Příklad: Identifikovat opakované obrazovky
+#### <a name="example-identify-repeated-screens"></a>Příklad: identifikace opakujících se obrazovek
 
 Aby konektor mohl navigovat a odlišit obrazovky, obvykle se na obrazovce nachází jedinečný text, který můžete použít jako identifikátor napříč zachycenými obrazovkami. Pro opakované obrazovky možná budete potřebovat více metod identifikace. Vzorový plán obsahuje rozvětvení, kde můžete získat obrazovky, které vypadají podobně. Jedna obrazovka vrátí zůstatek účtu a druhá obrazovka vrátí chybovou zprávu.
 
@@ -292,8 +292,8 @@ V tomto režimu definujete metodu, která je přidružena k vašemu navigačním
    | Název vlastnosti | Možné hodnoty | 
    |---------------|-----------------|
    | **Datový typ** | Byte, datum a čas, desetinné číslo, int, Long, Short, řetězec |
-   | **Technika vyplňování polí** | Parametry podporují tyto typy výplně a v případě potřeby plní prázdné hodnoty: <p><p>- **Zadejte**: Zadejte do pole postupně znaky. <p>- **Vyplnit**: V případě potřeby nahraďte obsah pole znaky, a to tak, že vyplníte prázdné znaky. <p>- **EraseEofType**: Vymažte pole a potom do pole zadejte postupně znaky. |
-   | **Řetězec formátu** | Některé typy dat parametrů používají formátovací řetězec, který informuje konektor 3270, jak převést text z obrazovky na datový typ .NET: <p><p>- **Datum a čas**: Řetězec formátu data a času následuje za [řetězci vlastního formátu data a času rozhraní .NET](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Datum `06/30/2019` například používá řetězec `MM/dd/yyyy`formátu. <p>- **Desetinné číslo**: Řetězec formátu Decimal používá [klauzuli obrázku COBOL](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Číslo `100.35` například používá řetězec `999V99`formátu. |
+   | **Technika vyplňování polí** | Parametry podporují tyto typy výplně a v případě potřeby plní prázdné hodnoty: <p><p>- **typ**: do pole zadejte postupně znaky. <p>- **Fill**: v případě potřeby nahraďte obsah pole znaky, a to tak, že vyplníte prázdné hodnoty. <p>- **EraseEofType**: Vymažte pole a potom do pole zadejte postupně znaky. |
+   | **Řetězec formátu** | Některé typy dat parametrů používají formátovací řetězec, který informuje konektor 3270, jak převést text z obrazovky na datový typ .NET: <p><p>- **DateTime**: řetězec formátu data a času následuje za [řetězci vlastního formátu data a času rozhraní .NET](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Například datum `06/30/2019` používá formátovací řetězec `MM/dd/yyyy`. <p>- **Decimal**: řetězec formátu Decimal používá [klauzuli obrázku COBOL](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Například číslo `100.35` používá řetězec formátu `999V99`. |
    |||
 
 ## <a name="save-and-view-metadata"></a>Uložení a zobrazení metadat
@@ -350,42 +350,42 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
 
 1. V posledním kroku, kam chcete přidat akci, zvolte **Nový krok**a vyberte **přidat akci**. 
 
-1. V poli Hledat vyberte možnost **Enterprise**. Do vyhledávacího pole zadejte jako filtr "3270". V seznamu akce vyberte tuto akci: **Spustí sálový program přes připojení TN3270.**
+1. V poli Hledat vyberte možnost **Enterprise**. Do vyhledávacího pole zadejte jako filtr "3270". V seznamu akce vyberte tuto akci: **spustí sálový program přes připojení TN3270** .
 
    ![Vybrat akci 3270](./media/connectors-create-api-3270/select-3270-action.png)
 
    Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+   Zvolte znaménko plus ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
 
 1. Pokud žádné připojení ještě neexistuje, zadejte pro připojení potřebné informace a klikněte na **vytvořit**.
 
-   | Vlastnost | Požadováno | Value | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | <*název připojení*> | Název připojení |
-   | **ID účtu pro integraci** | Ano | <*integration-account-name*> | Název vašeho účtu pro integraci |
-   | **Adresa URL SAS účtu pro integraci** | Ano | <*integration-account-SAS-URL*> | Adresa URL sdíleného přístupového podpisu (SAS) vašeho účtu pro integraci, kterou můžete vygenerovat z nastavení účtu integrace v Azure Portal. <p>1. V nabídce účtu pro integraci vyberte v části **Nastavení**možnost **Adresa URL zpětného volání**. <br>2. V pravém podokně zkopírujte vygenerovanou hodnotu **URL zpětného volání** . |
-   | **Server** | Ano | <*TN3270-server-name*> | Název serveru pro vaši službu TN3270 |
-   | **Port** | Ne | <*TN3270-server-port*> | Port používaný serverem TN3270 Pokud necháte pole prázdné, použije `23` konektor jako výchozí hodnotu. |
+   | **Název připojení** | Ano | <*připojení-název*> | Název připojení |
+   | **ID účtu pro integraci** | Ano | <*Integration-Account-name* > | Název vašeho účtu pro integraci |
+   | **Adresa URL SAS účtu pro integraci** | Ano | <*Integration-Account-SAS-URL*> | Adresa URL sdíleného přístupového podpisu (SAS) vašeho účtu pro integraci, kterou můžete vygenerovat z nastavení účtu integrace v Azure Portal. <p>1. v nabídce účet pro integraci vyberte v části **Nastavení**možnost **Adresa URL zpětného volání**. <br>2. v pravém podokně Zkopírujte hodnotu **vygenerované adresy URL zpětného volání** . |
+   | **Server** | Ano | <*TN3270 – název serveru*> | Název serveru pro vaši službu TN3270 |
+   | **Port** | Ne | <*TN3270-Server-> portu* | Port používaný serverem TN3270 Pokud je ponecháno prázdné, konektor použije `23` jako výchozí hodnotu. |
    | **Typ zařízení** | Ne | <*IBM-Terminal-model*> | Název nebo číslo modelu terminálu IBM pro emulaci. Pokud necháte pole prázdné, použije konektor výchozí hodnoty. |
-   | **Znaková stránka** | Ne | <*číslo stránky kódu*> | Číslo kódové stránky pro hostitele Pokud necháte pole prázdné, použije `37` konektor jako výchozí hodnotu. |
-   | **Název logické jednotky** | Ne | <*logická jednotka – název*> | Název konkrétní logické jednotky, která se má požadovat od hostitele |
+   | **Znaková stránka** | Ne | <*Číslo znakové stránky*> | Číslo kódové stránky pro hostitele Pokud je ponecháno prázdné, konektor použije `37` jako výchozí hodnotu. |
+   | **Název logické jednotky** | Ne | <*logický-jednotka-název*> | Název konkrétní logické jednotky, která se má požadovat od hostitele |
    | **Povolit SSL?** | Ne | Zapnuto nebo vypnuto | Zapněte nebo vypněte šifrování SSL. |
    | **Ověřit certifikát SSL hostitele?** | Ne | Zapnuto nebo vypnuto | Zapněte nebo vypněte ověřování pro certifikát serveru. |
    ||||
 
-   Příklad:
+   Například:
 
    ![Vlastnosti připojení](./media/connectors-create-api-3270/connection-properties.png)
 
 1. Zadejte potřebné informace pro tuto akci:
 
-   | Vlastnost | Požadováno | Value | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Název HIDX** | Ano | <*HIDX-název souboru*> | Vyberte soubor HIDX 3270, který chcete použít. |
-   | **Název metody** | Ano | <*název metody*> | Vyberte metodu v souboru HIDX, který chcete použít. Po výběru metody se zobrazí seznam **Přidat nový parametr** , takže můžete vybrat parametry pro použití s touto metodou. |
+   | **Název metody** | Ano | < *– název metody*> | Vyberte metodu v souboru HIDX, který chcete použít. Po výběru metody se zobrazí seznam **Přidat nový parametr** , takže můžete vybrat parametry pro použití s touto metodou. |
    ||||
 
-   Příklad:
+   Například:
 
    **Vybrat soubor HIDX**
 
@@ -412,6 +412,6 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
 
 Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/si3270/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

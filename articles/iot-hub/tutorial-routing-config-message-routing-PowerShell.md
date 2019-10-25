@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 2c0e66bfe5ec332d25b93305cb2ac8d172ca130d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 8b054fd8008b926cf63a28b0730589eaece5042a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535147"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809389"
 ---
-# <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Kurz: Použití Azure PowerShell ke konfiguraci směrování zpráv IoT Hub
+# <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Kurz: použití Azure PowerShell ke konfiguraci směrování zpráv IoT Hub
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
@@ -34,13 +34,13 @@ Začněte tím, že vytvoříte prostředky pomocí PowerShellu.
 
 ### <a name="use-powershell-to-create-your-base-resources"></a>Vytvoření základních prostředků pomocí PowerShellu
 
+Zkopírujte a vložte následující skript do Cloud Shell a stiskněte klávesu ENTER. Skript spustí jeden řádek po druhém. Tato první část skriptu vytvoří základní prostředky pro účely tohoto kurzu, včetně účtu úložiště, IoT Hub, Service Bus oboru názvů a Service Bus fronty. Při procházení tohoto kurzu zkopírujte každý blok skriptu a vložte ho do Cloud Shell a spusťte ho.
+
 Existuje několik názvů prostředků, které musí být globálně jedinečné, například IoT Hub název a název účtu úložiště. Aby to bylo snazší, názvy prostředků se připojí s náhodnou alfanumerický hodnotou s názvem *randomValue*. RandomValue se generuje jednou na začátku skriptu a připojuje se k názvům prostředků podle potřeby v celém skriptu. Pokud nechcete, aby byla náhodná, můžete ji nastavit na prázdný řetězec nebo na konkrétní hodnotu. 
 
 > [!IMPORTANT]
 > Proměnné nastavené v počátečním skriptu jsou také používány skriptem směrování, takže se spustí všechny skripty ve stejné Cloud Shell relaci. Pokud otevřete novou relaci pro spuštění skriptu pro nastavení směrování, u některých z těchto proměnných dojde k chybějícím hodnotám. 
 >
-
-Zkopírujte a vložte následující skript do Cloud Shell a stiskněte klávesu ENTER. Skript spustí jeden řádek po druhém. Tato první část skriptu vytvoří základní prostředky pro účely tohoto kurzu, včetně účtu úložiště, IoT Hub, Service Bus oboru názvů a Service Bus fronty. Při procházení tohoto kurzu zkopírujte každý blok skriptu a vložte ho do Cloud Shell a spusťte ho.
 
 ```azurepowershell-interactive
 # This command retrieves the subscription id of the current Azure account.
@@ -140,29 +140,29 @@ Nejdřív nastavte koncový bod pro účet úložiště a pak vytvořte trasu zp
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-Jsou nastavené tyto proměnné:
+Toto jsou proměnné používané skriptem, které musí být nastaveny v rámci relace Cloud Shell:
 
-**resourceGroup**: Existují dva výskyty tohoto pole – nastavení obou z nich pro skupinu prostředků.
+skupina **prostředků: existují**dva výskyty tohoto pole – nastavení obou z nich pro skupinu prostředků.
 
-**název**: Toto pole je název IoT Hub, na který se bude směrování vztahovat.
+**název**: Toto pole je název IoT Hub, na kterou bude směrování platit.
 
-**endpointName**: Toto pole je název identifikující koncový bod. 
+**koncový bod**: Toto pole je název identifikující koncový bod. 
 
-**endpointType**: Toto pole je typ koncového bodu. Tato hodnota musí být nastavena na `azurestoragecontainer`, `eventhub`, `servicebusqueue`nebo `servicebustopic`. Pro vaše účely ho nastavte na `azurestoragecontainer`.
+**endpointType**: Toto pole je typ koncového bodu. Tato hodnota musí být nastavená na `azurestoragecontainer`, `eventhub`, `servicebusqueue`nebo `servicebustopic`. Pro vaše účely ho nastavte na `azurestoragecontainer`.
 
-**subscriptionID**: Toto pole je nastavené na subscriptionID účtu Azure.
+**SubscriptionId**: Toto pole je nastavené na SubscriptionId účtu Azure.
 
 **storageConnectionString**: Tato hodnota se načte z účtu úložiště, který jste nastavili v předchozím skriptu. Používá ho směrováním pro přístup k účtu úložiště.
 
-**containerName**: Toto pole je název kontejneru v účtu úložiště, do kterého se budou zapisovat data.
+**ContainerName**: Toto pole je název kontejneru v účtu úložiště, do kterého se budou zapisovat data.
 
-**Kódování**: Nastavte toto pole na buď `AVRO` nebo `JSON`. Tím se určí formát uložených dat. Výchozí hodnota je AVRO.
+**Encoding**: Toto pole nastavte buď na `AVRO`, nebo na `JSON`. Tím se určí formát uložených dat. Výchozí hodnota je AVRO.
 
-**trasa**: Toto pole je název trasy, kterou nastavujete. 
+**Route**: Toto pole je název trasy, kterou nastavujete. 
 
 **Podmínka**: Toto pole je dotaz použitý k filtrování zpráv odesílaných do tohoto koncového bodu. Podmínka dotazu pro zprávy směrované do úložiště je `level="storage"`.
 
-**povoleno**: Toto pole `true`je standardně nastaveno na hodnotu, což znamená, že po vytvoření by mělo být povoleno směrování zpráv.
+**povoleno**: Toto pole je standardně `true`, což znamená, že po vytvoření by mělo být povoleno směrování zpráv.
 
 Zkopírujte tento skript a vložte ho do okna Cloud Shell.
 
@@ -208,7 +208,7 @@ Add-AzIotHubRoute `
 
 ### <a name="route-to-a-service-bus-queue"></a>Směrování do fronty Service Bus
 
-Nyní nastavte směrování pro frontu Service Bus. Chcete-li načíst připojovací řetězec pro frontu Service Bus, je nutné vytvořit autorizační pravidlo, které má definováno správné právo. Následující skript vytvoří autorizační pravidlo pro volanou `sbauthrule`Service Busovou frontu a nastaví práva na. `Listen Manage Send` Jakmile je toto autorizační pravidlo nastavené, můžete ho použít k načtení připojovacího řetězce pro tuto frontu.
+Nyní nastavte směrování pro frontu Service Bus. Chcete-li načíst připojovací řetězec pro frontu Service Bus, je nutné vytvořit autorizační pravidlo, které má definováno správné právo. Následující skript vytvoří autorizační pravidlo pro Service Busovou frontu nazvanou `sbauthrule`a nastaví práva na `Listen Manage Send`. Jakmile je toto autorizační pravidlo nastavené, můžete ho použít k načtení připojovacího řetězce pro tuto frontu.
 
 ```powershell
 ##### ROUTING FOR SERVICE BUS QUEUE #####
@@ -232,13 +232,13 @@ $sbqkey = Get-AzServiceBusKey `
     -Name "sbauthrule"
 ```
 
-Nyní nastavte koncový bod směrování a zprávu trasy pro Service Bus frontu. Jsou nastavené tyto proměnné:
+Nyní nastavte koncový bod směrování a zprávu trasy pro Service Bus frontu. Toto jsou proměnné používané skriptem, které musí být nastaveny v rámci relace Cloud Shell:
 
-**endpointName**: Toto pole je název identifikující koncový bod. 
+**koncový bod**: Toto pole je název identifikující koncový bod. 
 
-**endpointType**: Toto pole je typ koncového bodu. Tato hodnota musí být nastavena na `azurestoragecontainer`, `eventhub`, `servicebusqueue`nebo `servicebustopic`. Pro vaše účely ho nastavte na `servicebusqueue`.
+**endpointType**: Toto pole je typ koncového bodu. Tato hodnota musí být nastavená na `azurestoragecontainer`, `eventhub`, `servicebusqueue`nebo `servicebustopic`. Pro vaše účely ho nastavte na `servicebusqueue`.
 
-**trasa**: Toto pole je název trasy, kterou nastavujete. 
+**Route**: Toto pole je název trasy, kterou nastavujete. 
 
 **Podmínka**: Toto pole je dotaz použitý k filtrování zpráv odesílaných do tohoto koncového bodu. Podmínka dotazu pro zprávy směrované do fronty Service Bus je `level="critical"`.
 
@@ -275,7 +275,7 @@ Add-AzIotHubRoute `
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když máte nastavené prostředky a nakonfigurované trasy zpráv, přejděte k dalšímu kurzu, kde se dozvíte, jak odesílat zprávy do centra IoT a jak je směrovat do různých cílů. 
 

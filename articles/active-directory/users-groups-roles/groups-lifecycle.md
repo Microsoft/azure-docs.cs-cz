@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b3cef2bd16907de6e60db2678516f70346a20285
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844316"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803604"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -28,9 +28,16 @@ V tomto článku se dozvíte, jak spravovat životní cyklus skupin Office 365 n
 
 Jakmile nastavíte vypršení platnosti skupiny:
 
-- Vlastníkům skupiny se oznámí, že obnoví skupinu jako vypršení platnosti v blízkosti
+- Skupiny s aktivitami uživatele se automaticky Obnovují jako vypršení platnosti v blízkosti
+- Vlastníci skupiny se oznamují, aby obnovili skupinu, pokud se skupina automaticky neobnovuje.
 - Odstraní se libovolná skupina, která není obnovená.
 - Všechny odstraněné skupiny Office 365 je možné obnovit do 30 dnů vlastníky skupiny nebo správcem.
+
+Akce Folloing budou mít za následek automatické obnovení skupiny:
+
+- SharePoint – zobrazení, úpravy, stažení, přesunutí, sdílení a nahrání souborů
+- Outlook – připojení skupiny, zpráva skupiny pro čtení/zápis a jako zpráva
+- Týmy – navštivte kanál Teams
 
 V současné době se pro skupiny Office 365 v rámci jednoho tenanta dá nakonfigurovat jenom jedna zásada vypršení platnosti.
 
@@ -69,7 +76,7 @@ Další informace o oprávněních k obnovení odstraněné skupiny najdete [v t
   - Až budete hotovi, uložte nastavení kliknutím na **Uložit**.
 
 > [!NOTE]
-> Když nakonfigurujete vypršení platnosti, všechny skupiny, které jsou starší než interval vypršení platnosti, se nastaví na 30 dní do vypršení platnosti, dokud ji vlastník neobnoví. První e-mail s oznámením o obnovení se pošle během dne.
+> Když nastavíte vypršení platnosti, všechny skupiny, které jsou starší než interval vypršení platnosti, se nastaví na 35 dní do vypršení platnosti, pokud se skupina automaticky neobnoví nebo ji vlastník obnoví. 
 >
 > Když se dynamická skupina odstraní a obnoví, zobrazuje se jako nová skupina a znovu se vyplní podle pravidla. Tento proces může trvat až 24 hodin.
 >
@@ -77,7 +84,7 @@ Další informace o oprávněních k obnovení odstraněné skupiny najdete [v t
 
 ## <a name="email-notifications"></a>E-mailová oznámení
 
-E-mailová oznámení, jako je tato, se odešlou vlastníkům skupiny Office 365 30 dní, 15 dnů a 1 den před vypršením platnosti skupiny. Jazyk e-mailu Určuje preferovaný jazyk vlastníka skupin nebo nastavení jazyka Azure AD. Pokud vlastník skupiny definoval preferovaný jazyk nebo má více vlastníků stejný preferovaný jazyk, použije se tento jazyk. Ve všech ostatních případech se používá nastavení jazyka Azure AD.
+Pokud se skupiny automaticky neobnovily, e-mailová oznámení, jako je tato, se odešlou vlastníkům skupiny Office 365 30 dní, 15 dnů a 1 den před vypršením platnosti skupiny. Jazyk e-mailu Určuje preferovaný jazyk vlastníka skupin nebo nastavení jazyka Azure AD. Pokud vlastník skupiny definoval preferovaný jazyk nebo má více vlastníků stejný preferovaný jazyk, použije se tento jazyk. Ve všech ostatních případech se používá nastavení jazyka Azure AD.
 
 ![E-mailová oznámení vypršení platnosti](./media/groups-lifecycle/expiration-notification.png)
 
@@ -113,17 +120,17 @@ Tady jsou příklady, jak můžete pomocí rutin PowerShellu nakonfigurovat nast
    Connect-AzureAD
    ```
 
-1. Nakonfigurujte nastavení vypršení platnosti pomocí rutiny New-AzureADMSGroupLifecyclePolicy a nastavte dobu života všech skupin Office 365 v organizaci Azure AD na 365 dnů. Oznámení o obnovení pro skupiny Office 365 bez vlastníků se odešlouemailaddress@contoso.comdo:
+1. Nakonfigurujte nastavení vypršení platnosti pomocí rutiny New-AzureADMSGroupLifecyclePolicy a nastavte dobu života všech skupin Office 365 v organizaci Azure AD na 365 dnů. Oznámení o obnovení pro skupiny Office 365 bez vlastníků se odešlou do 'emailaddress@contoso.com'.
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
    ```
 
-1. Načtěte existující zásady Get-AzureADMSGroupLifecyclePolicy: Tato rutina načte aktuální nastavení vypršení platnosti skupiny Office 365, která jsou nakonfigurovaná. V tomto příkladu vidíte:
+1. Načtení existující zásady Get-AzureADMSGroupLifecyclePolicy: Tato rutina načte aktuální nastavení vypršení platnosti skupiny Office 365, která jsou nakonfigurovaná. V tomto příkladu vidíte:
 
    - ID zásady
    - Doba života všech skupin Office 365 v organizaci Azure AD je nastavená na 365 dnů.
-   - Oznámení o obnovení pro skupiny Office 365 bez vlastníků se odešlouemailaddress@contoso.comdo.
+   - Oznámení o obnovení pro skupiny Office 365 bez vlastníků se odešlou doemailaddress@contoso.com.
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy
@@ -133,13 +140,13 @@ Tady jsou příklady, jak můžete pomocí rutin PowerShellu nakonfigurovat nast
    26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
    ```
 
-1. Aktualizujte stávající sadu zásad – AzureADMSGroupLifecyclePolicy: Tato rutina se používá k aktualizaci existujících zásad. V následujícím příkladu se doba života skupiny v existující zásadě změní z 365 dnů na 180 dnů.
+1. Aktualizace existující sady zásad – AzureADMSGroupLifecyclePolicy: Tato rutina se používá k aktualizaci existujících zásad. V následujícím příkladu se doba života skupiny v existující zásadě změní z 365 dnů na 180 dnů.
   
    ```powershell
    Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
    ```
   
-1. Přidejte do zásady Add-AzureADMSLifecyclePolicyGroup konkrétní skupiny: Tato rutina přidá skupinu do zásad životního cyklu. Jako příklad:
+1. Přidání specifických skupin do zásad Add-AzureADMSLifecyclePolicyGroup: Tato rutina přidá skupinu do zásad životního cyklu. Příklad:
   
    ```powershell
    Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
@@ -160,7 +167,7 @@ Následující rutiny se dají použít ke konfiguraci zásad podrobněji. Dalš
 - Remove-AzureADMSGroupLifecyclePolicy
 - Add-AzureADMSLifecyclePolicyGroup
 - Remove-AzureADMSLifecyclePolicyGroup
-- Reset-AzureADMSLifeCycleGroup
+- Reset – AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
 ## <a name="next-steps"></a>Další kroky

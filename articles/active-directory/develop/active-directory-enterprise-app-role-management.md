@@ -1,5 +1,6 @@
 ---
-title: Konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace v Azure AD | Microsoft Docs
+title: Konfigurace deklarace identity role pro podnikové aplikace v Azure AD
+titleSuffix: Microsoft identity platform
 description: Naučte se konfigurovat deklaraci identity role vydanou v tokenu SAML pro podnikové aplikace v Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -17,18 +18,18 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c671626a431a47e5100cf42ca0c9e29ab580ab3a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207185"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803490"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace
+# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace
 
 Pomocí Azure Active Directory (Azure AD) můžete přizpůsobit typ deklarace identity role v tokenu odpovědi, který obdržíte po autorizaci aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure AD s instalačním programem adresáře.
 - Předplatné s povoleným jednotným přihlašováním (SSO). Jednotné přihlašování je nutné nakonfigurovat u vaší aplikace.
@@ -80,7 +81,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
-      Pokud používáte více adresářů, postupujte podle tohoto vzoru:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Pokud používáte více adresářů, postupujte podle tohoto vzoru: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
       ![Průzkumník grafů s dotazem na načtení instančních objektů](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -157,7 +158,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
     | Název atributu | Hodnota atributu |
     | -------------- | ----------------|
-    | Název role  | user.assignedroles |
+    | Název role  | User. assignedroles |
 
     >[!NOTE]
     >Pokud je hodnota deklarace identity role null, služba Azure AD tuto hodnotu v tokenu nepošle a je to výchozí nastavení pro jednotlivé návrhy.
@@ -178,7 +179,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
     e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
-    f. Vyberte **Uložit**.
+    f. Vyberte **Save** (Uložit).
 
 10. Chcete-li otestovat aplikaci v rámci jednotného přihlašování iniciované poskytovatelem identity, přihlaste se na [přístupový panel](https://myapps.microsoft.com) a vyberte dlaždici aplikace. V tokenu SAML byste měli vidět všechny přiřazené role pro uživatele s názvem deklarace identity, který jste si předali.
 
@@ -194,7 +195,7 @@ Chcete-li aktualizovat existující roli, proveďte následující kroky:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Pokud používáte více adresářů, postupujte podle tohoto vzoru:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Pokud používáte více adresářů, postupujte podle tohoto vzoru: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Průzkumník grafů s dotazem na načtení instančních objektů](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -232,7 +233,7 @@ Chcete-li odstranit existující roli, proveďte následující kroky:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Pokud používáte více adresářů, postupujte podle tohoto vzoru:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Pokud používáte více adresářů, postupujte podle tohoto vzoru: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Průzkumník grafů s dotazem na načtení seznamu instančních objektů](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -268,7 +269,7 @@ Chcete-li odstranit existující roli, proveďte následující kroky:
     > [!NOTE]
     > Aby bylo možné roli odebrat, je nutné ji zakázat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další postup najdete v dokumentaci k [aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
 

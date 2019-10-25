@@ -1,5 +1,6 @@
 ---
-title: Mobilní aplikace, která volá webové rozhraní API – konfigurace kódu aplikace | Platforma Microsoft identity
+title: Mobilní aplikace, která volá webovou rozhraní API – konfigurace kódu aplikace
+titleSuffix: Microsoft identity platform
 description: Zjistěte, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (konfigurace kódu aplikace).
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bebaa5d35876d562e567a8398cc7a9ce7e6f488
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5f55e73fa1a73908d7e77bacc6af24ea1a40ba92
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413597"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803732"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Mobilní aplikace, která volá webová rozhraní API – registrace aplikace
 
@@ -52,20 +53,20 @@ Toto prostředí umožní vaší aplikaci získat jednotné přihlašování (SS
 
 Všimněte si, že na portálu pro registraci aplikací je prostředí Preview, které vám pomůžou vypočítat identifikátor URI zprostředkované odpovědi pro aplikace pro iOS a Android:
 
-1. V registraci aplikace vyberte **ověřování** a výběr **vyzkoušet nový obrázek prostředí**
-   ![.](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+1. V části registrace aplikace vyberte **ověřování** a výběr **zkuste vyzkoušet nové prostředí**
+   ![image](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-2. Vyberte **Přidat image platformy**
-   .![](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+2. Vyberte **přidat**![bitovou kopii
+   platformy](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-3. Když se podporuje seznam platforem, vyberte image pro **iOS**
-   ![.](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
+3. Když se podporuje seznam platforem, vyberte![image
+   pro **iOS**](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. Zadejte ID sady prostředků podle požadavků a potom stiskněte **Registrovat**
-   ![obrázek.](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+4. Zadejte ID sady prostředků podle požadavků a potom stiskněte **registrovat**
+   ![bitová kopie](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. Identifikátor URI přesměrování je vypočítán za vás.
-   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![obrázek](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování, můžete to provést prostřednictvím manifestu aplikace. Doporučený formát je následující:
 
@@ -77,11 +78,11 @@ Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování
 
 Pokud vaše aplikace používá jenom uživatelské jméno a heslo, nemusíte pro svoji aplikaci registrovat identifikátor URI přesměrování. To znamená, že tento tok provede zpáteční cestu ke koncovému bodu Microsoft Identity Platform v 2.0 a vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI. Musíte ale vyjádřit, že vaše aplikace je veřejná klientská aplikace. Tato konfigurace se dosahuje tak, že do části **ověřování** pro vaši aplikaci kliknete a v podčásti **Upřesnit nastavení** zvolíte **Ano**, u otázky se **považuje aplikace za veřejného klienta** (ve **výchozím nastavení. odstavcový typ klienta** )
 
-## <a name="api-permissions"></a>Oprávnění rozhraní API
+## <a name="api-permissions"></a>Oprávnění API
 
 Mobilní aplikace volají rozhraní API jménem přihlášeného uživatele. Vaše aplikace potřebuje požádat o delegovaná oprávnění, označovaná také jako obory. V závislosti na požadovaném prostředí lze to provést staticky prostřednictvím Azure Portal nebo dynamicky v době běhu. Statická registrace oprávnění umožňuje správcům snadno schválit vaši aplikaci a doporučuje se.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Konfigurace kódu](scenario-mobile-app-configuration.md)

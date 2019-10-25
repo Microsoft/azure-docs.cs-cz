@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights Snapshot Debugger pro aplikace .NET | Dokumentace Microsoftu
-description: Ladění snímků se automaticky shromažďují, pokud jsou výjimky vyvolány v produkčních aplikacích .NET
+title: Azure Application Insights Snapshot Debugger pro aplikace .NET | Microsoft Docs
+description: Snímky ladění se automaticky shromažďují, pokud jsou výjimky vyvolané v produkčních aplikacích .NET.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,26 +10,26 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: brahmnes
-ms.date: 08/06/2019
+ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 02d72ab877577e97592dfdd763a58cb01b201d8b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
-ms.translationtype: MT
+ms.openlocfilehash: c0d90d4eed7efb5c82ca9d61565bfe3f49e8aaa1
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839364"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809512"
 ---
-# <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
-Když dojde k výjimce, můžete automaticky shromažďovat snímky ladění z vaší živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnné v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger (preview) v [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje telemetrie výjimek z vaší webové aplikace. Shromažďuje snímky na vaše horní vyvolání výjimky, abyste měli informace, které potřebujete k diagnostice problémů v produkčním prostředí. Zahrnout [balíček NuGet Snapshot collector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) ve vaší aplikaci a volitelně nakonfigurovat kolekci parametrů v [soubor ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na portálu Application Insights.
+# <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladění snímků na výjimkách v aplikacích .NET
+Pokud dojde k výjimce, můžete automaticky shromáždit snímek ladění z živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnných v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger (Preview) v [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje telemetrii výjimek z vaší webové aplikace. Shromažďuje snímky na vašich vyvolané výjimce, takže budete mít k dispozici informace potřebné k diagnostice problémů v produkčním prostředí. Zahrňte do aplikace [balíček NuGet pro kolektor snímků](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a volitelně nakonfigurujte parametry kolekce v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimkách](../../azure-monitor/app/asp-net-exceptions.md) na portálu Application Insights.
 
-Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Chcete-li získat výkonnější možnosti ladění pomocí zdrojového kódu, otevřete snímky v aplikaci Visual Studio 2019 Enterprise. V sadě Visual Studio, můžete také [nastavit snímkovací body interaktivně pořizovat snímky](https://aka.ms/snappoint) bez čekání na výjimku.
+Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Chcete-li získat výkonnější možnosti ladění pomocí zdrojového kódu, otevřete snímky v aplikaci Visual Studio 2019 Enterprise. V sadě Visual Studio můžete také [nastavit snímkovací body pro interaktivní pořizování snímků](https://aka.ms/snappoint) bez čekání na výjimku.
 
-Ladění snímky se ukládají po dobu sedmi dní. Tyto zásady uchování je nastavena na základě jednotlivých aplikací. Pokud je potřeba tuto hodnotu zvýšit, můžete požádat o zvýšení tak, že otevřete případ podpory na webu Azure Portal.
+Snímky ladění se ukládají po dobu 15 dnů. Tyto zásady uchovávání informací se nastavují na základě jednotlivých aplikací. Pokud potřebujete tuto hodnotu zvýšit, můžete požádat o zvýšení otevřením případu podpory v Azure Portal.
 
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Povolit pro aplikaci Application Insights Snapshot Debugger
-Shromažďování snímků je k dispozici pro:
-* Aplikace rozhraní .NET framework a ASP.NET rozhraním .NET Framework 4.5 nebo novější.
-* Aplikace .NET core 2.0 a ASP.NET Core 2.0 běžící na Windows.
+Kolekce snímků je k dispozici pro:
+* Aplikace .NET Framework a ASP.NET spuštěné .NET Framework 4,5 nebo novější.
+* Aplikace .NET Core 2,0 a ASP.NET Core 2,0, které běží v systému Windows.
 
 Podporují se následující prostředí:
 
@@ -40,29 +40,29 @@ Podporují se následující prostředí:
 * [Místní virtuální nebo fyzické počítače](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) se systémem Windows Server 2012 R2 nebo novějším
 
 > [!NOTE]
-> Klientské aplikace (například WPF, Windows Forms nebo UPW) nejsou podporovány.
+> Klientské aplikace (například WPF, model Windows Forms nebo UWP) nejsou podporovány.
 
-Pokud jste povolili Snapshot Debugger, ale nevidíte snímky, podívejte se na naši příručku pro [řešení potíží](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
+Pokud jste povolili Snapshot Debugger, ale nevidíte snímky, podívejte se na naši [příručku pro řešení potíží](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
-Přístup k snímků je chráněn řízení přístupu na základě role (RBAC). Ke kontrole snímku, je musíte nejprve přidat do potřebné role vlastník předplatného.
+Přístup k snímkům je chráněn řízením přístupu na základě role (RBAC). Chcete-li zkontrolovat snímek, je nutné nejprve přidat k požadované roli vlastníka předplatného.
 
 > [!NOTE]
-> Vlastníci a přispěvatelé automaticky není nutné tuto roli. Aby bylo možné zobrazit snímky, musí si sami přidají do role.
+> Vlastníci a přispěvatelé tuto roli automaticky nemají. Pokud chtějí snímky zobrazit, musí se do této role přidat sami.
 
-Přiřaďte vlastníky těchto předplatných `Application Insights Snapshot Debugger` role pro uživatele, kteří budou kontrolovat snímky. Tato role může být přiřazena na jednotlivé uživatele nebo skupiny podle vlastníků předplatných pro cílový prostředek Application Insights nebo jeho skupina prostředků nebo předplatného.
+Vlastníci předplatného by měli přiřadit roli `Application Insights Snapshot Debugger` uživatelům, kteří budou kontrolovat snímky. Tato role se dá přiřadit jednotlivým uživatelům nebo skupinám podle vlastníků předplatného pro cílový Application Insights prostředek nebo jeho skupinu prostředků nebo předplatné.
 
-1. Přejděte do prostředku Application Insights na webu Azure Portal.
-1. Klikněte na tlačítko **řízení přístupu (IAM)** .
-1. Klikněte na tlačítko **+ přidat přiřazení role** tlačítko.
-1. Vyberte **Application Insights Snapshot debuggeru** z **role** rozevíracího seznamu.
-1. Vyhledejte a zadejte název pro uživatele přidat.
-1. Klikněte na tlačítko **Uložit** tlačítko pro přidání uživatele do role.
+1. V Azure Portal přejděte na prostředek Application Insights.
+1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na tlačítko **+ Přidat přiřazení role** .
+1. V rozevíracím seznamu **role** vyberte **Application Insights Snapshot Debugger** .
+1. Vyhledejte a zadejte jméno uživatele, kterého chcete přidat.
+1. Kliknutím na tlačítko **Uložit** přidáte uživatele do role.
 
 
 > [!IMPORTANT]
-> Snímky mohou obsahovat osobní a dalších citlivých informací v hodnoty proměnných a parametrů.
+> Snímky můžou potenciálně obsahovat osobní a další citlivé informace v hodnotách proměnných a parametrů.
 
 ## <a name="view-snapshots-in-the-portal"></a>Zobrazení snímků na portálu
 
@@ -72,68 +72,68 @@ Po výskytu výjimky v aplikaci a vytvoření snímku byste měli mít snímky k
 
 V pravém podokně vyberte operaci nebo výjimku, čímž otevřete podokno **podrobnosti transakce** , a pak vyberte událost výjimky. Pokud je pro danou výjimku k dispozici snímek, v pravém podokně se zobrazí tlačítko **otevřít snímek ladění** s podrobnostmi o [výjimce](../../azure-monitor/app/asp-net-exceptions.md).
 
-![Tlačítko Otevřít snímek ladění výjimek](./media/snapshot-debugger/e2e-transaction-page.png)
+![Otevřít tlačítko pro vytvoření snímku ladění na výjimce](./media/snapshot-debugger/e2e-transaction-page.png)
 
-V zobrazení ladění snímku uvidíte zásobník volání a podokno proměnných. Když vyberete rámce zásobníku volání v panelu zásobníku volání, můžete zobrazovat místní proměnné a parametry pro tuto funkci volat v podokně proměnné.
+V zobrazení snímku ladění se zobrazí zásobník volání a podokno proměnné. Když vyberete rámce zásobníku volání v podokně zásobník volání, můžete zobrazit místní proměnné a parametry pro volání funkce v podokně proměnné.
 
 ![Zobrazit snímek ladění na portálu](./media/snapshot-debugger/open-snapshot-portal.png)
 
-Snímky mohou obsahovat citlivé informace a ve výchozím nastavení nejsou možné zobrazit. Chcete-li zobrazit snímky, musíte mít `Application Insights Snapshot Debugger` role, které jsou vám přiřazeny.
+Snímky můžou obsahovat citlivé informace a ve výchozím nastavení nejsou dostupné. Chcete-li zobrazit snímky, musíte mít přiřazenou roli `Application Insights Snapshot Debugger`.
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Zobrazit snímky v aplikaci Visual Studio 2017 Enterprise nebo vyšší
-1. Klikněte na tlačítko **Stáhnout snímek** a stáhněte `.diagsession` soubor, který může být otevřen Visual Studio Enterprise.
+1. Klikněte na tlačítko **Stáhnout snímek** a stáhněte soubor `.diagsession`, který lze otevřít Visual Studio Enterprise.
 
-2. Pokud chcete `.diagsession` soubor otevřít, musíte mít nainstalovanou součást Snapshot Debugger sady Visual Studio. Komponenta Snapshot Debugger je požadovaná součást úlohy ASP.net v aplikaci Visual Studio a lze ji vybrat ze seznamu jednotlivých komponent v instalačním programu sady Visual Studio. Pokud používáte verzi sady Visual Studio starší než Visual Studio 2017 verze 15,5, bude nutné nainstalovat rozšíření z [Visual Studio Marketplace](https://aka.ms/snapshotdebugger).
+2. Chcete-li otevřít soubor `.diagsession`, je nutné mít nainstalovanou Snapshot Debugger součást sady Visual Studio. Komponenta Snapshot Debugger je požadovaná součást úlohy ASP.net v aplikaci Visual Studio a lze ji vybrat ze seznamu jednotlivých komponent v instalačním programu sady Visual Studio. Pokud používáte verzi sady Visual Studio starší než Visual Studio 2017 verze 15,5, bude nutné nainstalovat rozšíření z [Visual Studio Marketplace](https://aka.ms/snapshotdebugger).
 
-3. Po otevření souboru snímku, zobrazí se stránka s minimálním výpisem ladění v sadě Visual Studio. Klikněte na tlačítko **ladění spravovaného kódu** pro spuštění ladění snímku. Snímek se otevře na řádek kódu, kde byla vyvolána výjimka, takže můžete ladit aktuální stav procesu.
+3. Po otevření souboru snímku se zobrazí stránka ladění S minimálním výpisem v aplikaci Visual Studio. Kliknutím na **ladění spravovaného kódu** spusťte ladění snímku. Snímek se otevře na řádku kódu, kde byla vyvolána výjimka, aby bylo možné ladit aktuální stav procesu.
 
-    ![Zobrazit snímek ladění v sadě Visual Studio](./media/snapshot-debugger/open-snapshot-visualstudio.png)
+    ![Zobrazit snímek ladění v aplikaci Visual Studio](./media/snapshot-debugger/open-snapshot-visualstudio.png)
 
-Stažený snímek zahrnuje všechny soubory symbolů, které se nacházejí na webovém serveru aplikace. Tyto soubory symbolů je potřeba přidružit data snímku se zdrojovým kódem. Pro aplikace služby App Service Ujistěte se, že má povolit nasazení symbolů při publikování webové aplikace.
+Stažený snímek obsahuje všechny soubory symbolů, které byly nalezeny na vašem serveru webové aplikace. Tyto soubory symbolů jsou vyžadovány pro přidružení dat snímků ke zdrojovému kódu. Pro App Service aplikace Nezapomeňte povolit nasazení symbolů při publikování webových aplikací.
 
 ## <a name="how-snapshots-work"></a>Jak fungují snímky
 
-Snapshot Collector je implementovaný jako [procesoru Telemetrie Application Insights](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Po spuštění aplikace procesoru snímku kolektor Telemetrie se přidá do kanálu telemetrie vaší aplikace.
-Pokaždé, když vaše aplikace volání [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions), ID problému z typu výjimky a hází metoda vypočítá Snapshot Collector.
-Pokaždé, když vaše aplikace volá TrackException, hodnota čítače se zvýší pro odpovídající ID problému. Dosáhne-li čítač `ThresholdForSnapshotting` hodnotu, ID problému se přidá do kolekce plánu.
+Snapshot Collector se implementuje jako [procesor telemetrie Application Insights](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Po spuštění aplikace se do kanálu telemetrie vaší aplikace přidá procesor telemetrie Snapshot Collector.
+Pokaždé, když vaše aplikace volá [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions), Snapshot COLLECTOR vypočítá ID problému z typu vyvolané výjimky a metody throw.
+Pokaždé, když vaše aplikace volá TrackException, se pro příslušné ID problému zvýší hodnota čítače. Když čítač dosáhne `ThresholdForSnapshotting` hodnoty, ID problému se přidá do plánu kolekce.
 
-Snapshot Collector také sleduje výjimky, jako jsou vyvolány prostřednictvím přihlášení k odběru [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) událostí. Když se aktivuje tuto událost, ID problému výjimky je počítaný porovná s ID problému v plánu shromažďování dat
-Pokud se zjistí shoda, je vytvořen snímek spuštěného procesu. Snímek je přiřazen jedinečný identifikátor a výjimky je označený tímto identifikátorem. Po vrácení obslužnou rutinu FirstChanceException vyvolané výjimky se zpracovává jako obvykle. Nakonec výjimku dosáhne metoda TrackException znovu, kde, společně s identifikátorem snímku se hlásí do Application Insights.
+Snapshot Collector také monitoruje výjimky, když jsou vyvolány přihlášením k odběru události [AppDomain. CurrentDomain. FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) . Když se tato událost aktivuje, vypočítává se ID problému výjimky a porovná se s ID problémů v plánu shromažďování.
+Pokud se zobrazí shoda, vytvoří se snímek běžícího procesu. Snímku je přiřazen jedinečný identifikátor a tato výjimka je opatřena tímto identifikátorem. Po návratu obslužné rutiny FirstChanceException je vyvolána výjimka zpracována jako normální. Nakonec výjimka dosáhne TrackException metody znovu tam, kde je, společně s identifikátorem snímku, je hlášena Application Insights.
 
-Hlavní proces bude pokračovat a obsluhuje provoz pro uživatele s malou přerušení. Mezitím snímku je předávána procesu uživatele Nahrávajícího snímku. Snímek uživatele Nahrávajícího minimálního výpisu vytvoří a nahraje ho do Application Insights spolu se soubory relevantní symbolů (PDB).
+Hlavní proces pokračuje v běhu a obsluhuje přenosy pro uživatele s malým přerušením. Mezitím se snímek předává procesu odeslání snímku. Odeslání snímku odešle s minimálním výpisem a nahraje ho, aby Application Insights společně se všemi relevantními soubory symbolů (. pdb).
 
 > [!TIP]
-> - Proces snímku je pozastavené klon spuštěnému procesu.
-> - Vytvoření snímku trvá asi 10 až 20 MS.
-> - Výchozí hodnota pro `ThresholdForSnapshotting` 1. Toto je také minimální hodnota. Proto má aplikace aktivovat stejná výjimka **dvakrát** před vytvořením snímku.
-> - Nastavte `IsEnabledInDeveloperMode` na hodnotu true, pokud chcete generovat snímky při ladění v sadě Visual Studio.
-> - Vytvoření rychlost pořizování snímků je omezena `SnapshotsPerTenMinutesLimit` nastavení. Výchozí limit je, že jeden snímek každých deset minut.
-> - Více než 50 snímky za den mohou být odeslány.
+> - Snímek procesu je pozastavený klon spuštěného procesu.
+> - Vytváření snímku trvá přibližně 10 až 20 milisekund.
+> - Výchozí hodnota pro `ThresholdForSnapshotting` je 1. To je také minimální hodnota. Proto musí vaše aplikace aktivovat stejnou výjimku **dvakrát** před vytvořením snímku.
+> - Nastavte `IsEnabledInDeveloperMode` na hodnotu true, pokud chcete vygenerovat snímky během ladění v sadě Visual Studio.
+> - Frekvence vytváření snímků je omezená nastavením `SnapshotsPerTenMinutesLimit`. Ve výchozím nastavení je limit jeden snímek každých deset minut.
+> - Nelze nahrávat více než 50 snímků za den.
 
 ## <a name="limitations"></a>Omezení
 
 Výchozí doba uchovávání dat je 15 dní. Pro každou instanci Application Insights je povolený maximální počet 50 snímků za den.
 
 ### <a name="publish-symbols"></a>Publikovat symboly
-Snapshot Debugger vyžaduje soubory symbolů na provozním serveru k dekódování proměnných a ladicího prostředí sady Visual Studio.
-Verze 15.2 (nebo novější) sady Visual Studio 2017 publikuje symboly pro verzi sestavení ve výchozím nastavení, když se publikuje do služby App Service. V předchozích verzích, budete muset přidat následující řádek na svůj profil publikování `.pubxml` souboru tak, aby v režimu vydání jsou publikovány symboly:
+Snapshot Debugger vyžaduje, aby soubory symbolů na provozním serveru dekódují proměnné a poskytovaly prostředí ladění v aplikaci Visual Studio.
+Verze 15,2 (nebo vyšší) sady Visual Studio 2017 publikuje ve výchozím nastavení symboly pro sestavení vydaných verzí při publikování do App Service. V předchozích verzích musíte do svého publikačního profilu přidat následující řádek `.pubxml` souboru, aby se symboly publikovaly v režimu vydání:
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>
 ```
 
-Pro Azure Compute a ostatními typy, ujistěte se, že jsou soubory symbolů ve stejné složce hlavní aplikaci knihovny DLL (obvykle `wwwroot/bin`) nebo jsou k dispozici v aktuální cestě.
+U výpočetních a dalších typů Azure se ujistěte, že jsou soubory symbolů ve stejné složce hlavní aplikace. dll (obvykle `wwwroot/bin`), nebo jsou k dispozici na aktuální cestě.
 
 > [!NOTE]
-> Další informace o různých možnostech symbolu, které jsou k dispozici, [najdete v dokumentaci](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
-)k sadě Visual Studio. Pro dosažení nejlepších výsledků doporučujeme použít "úplné", "přenosné" nebo "vložené".
+> Další informace o různých možnostech symbolu, které jsou k dispozici, najdete v dokumentaci k sadě [Visual Studio](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+). Pro dosažení nejlepších výsledků doporučujeme použít "úplné", "přenosné" nebo "vložené".
 
 ### <a name="optimized-builds"></a>Optimalizovaná sestavení
-V některých případech se lokální proměnné nelze zobrazit, v sestaveních pro vydání z důvodu optimalizace, které se použijí kompilátorem JIT.
-Ve službě Azure App Services, ale můžete Snapshot Collector deoptimize aktivační metody, které jsou součástí jeho plánu shromažďování dat.
+V některých případech nelze místní proměnné zobrazit v sestaveních vydaných verzí z důvodu optimalizace, které jsou aplikovány kompilátorem JIT.
+V Azure App Services však Snapshot Collector může deoptimalizovat vyvolání metod, které jsou součástí plánu shromažďování dat.
 
 > [!TIP]
-> Ve službě App Service, jak získat podporu deoptimization nainstalujte rozšíření Application Insights Site Extension.
+> Pokud chcete získat podporu deoptimalizace, nainstalujte do App Service rozšíření Application Insights lokality.
 
 ## <a name="next-steps"></a>Další kroky
 Povolit pro aplikaci Application Insights Snapshot Debugger:
@@ -146,6 +146,6 @@ Povolit pro aplikaci Application Insights Snapshot Debugger:
 
 Nad Application Insights Snapshot Debugger:
  
-* [Nastavit snímkovací body ve vašem kódu](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) získat snímky bez čekání na výjimku.
-* [Diagnostika výjimek ve vašich webových aplikacích](../../azure-monitor/app/asp-net-exceptions.md) vysvětluje, jak zviditelnit více výjimek Application Insights.
+* [Nastavte snímkovací body v kódu](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) pro získání snímků bez čekání na výjimku.
+* [Diagnostika výjimek ve vašich webových aplikacích](../../azure-monitor/app/asp-net-exceptions.md) vysvětluje, jak je možné Application Insights zobrazit další výjimky.
 * [Inteligentní zjišťování](../../azure-monitor/app/proactive-diagnostics.md) automaticky zjišťuje anomálie výkonu.

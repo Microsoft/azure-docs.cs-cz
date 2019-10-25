@@ -1,6 +1,7 @@
 ---
-title: Přidání role aplikace v aplikaci Azure Active Directory zaregistrované a přijímat je v tokenu
-description: Zjistěte, jak přidat aplikace role v aplikaci registrovanou v Azure Active Directory, přiřazení uživatelů a skupin pro tyto role a přijímat je v `roles` deklarací identity v tokenu.
+title: Přidání rolí aplikace do aplikace zaregistrované v Azure Active Directory a jejich přijetí v tokenu
+titleSuffix: Microsoft identity platform
+description: Naučte se přidávat role aplikací v aplikaci registrované v Azure Active Directory, přiřazovat k těmto rolím uživatele a skupiny a přijímat je v deklaraci identity `roles` v tokenu.
 services: active-directory
 documentationcenter: ''
 author: kkrishna
@@ -17,52 +18,52 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e933399454942f4ee50440cffd791599679074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87660c6ef8266d3ebfbad1b7a8a7cb98b936e9c6
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299147"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803356"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postup: Přidání rolí aplikace ve vaší aplikaci a přijímat je v tokenu
+# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
-Řízení přístupu na základě role (RBAC) je mechanismus oblíbených vynutit autorizaci v aplikacích. Při použití RBAC, správce udělí oprávnění k rolím a nikoli na jednotlivé uživatele nebo skupiny. Správce pak můžete přiřadit role pro různé uživatele a skupiny, které se řídí, kdo má přístup k jaké obsah a funkce.
+Řízení přístupu na základě role (RBAC) je oblíbeným mechanismem pro vynucování autorizace v aplikacích. Při použití RBAC správce udělí oprávnění k rolím, nikoli jednotlivým uživatelům nebo skupinám. Správce pak může přiřadit role různým uživatelům a skupinám a určovat, kdo má přístup k jakému obsahu a funkcím.
 
-Pomocí RBAC se aplikační role a Role deklarací identity, můžou vývojáři bezpečně vynutit autorizaci ve svých aplikacích s malou úsilí na jejich část.
+Pomocí RBAC s aplikačními rolemi a deklaracemi rolí můžou vývojáři bezpečně vymáhat autorizaci ve svých aplikacích s malým úsilím na jejich straně.
 
-Další možností je používat skupiny Azure AD a deklarace skupiny, jak je znázorněno v [WebApp-GroupClaims-DotNet](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet). Azure AD skupin a rolí aplikace se vzájemně vylučují; v žádném smyslu jejich lze současně poskytují i na jemnější kontrolu jemněji přístup.
+Dalším přístupem je použití skupin Azure AD a deklarací skupin, jak je znázorněno v [WebApp-GroupClaims-dotnet](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet). Role skupin a aplikací Azure AD nejsou nijak vzájemně exkluzivní. je možné je použít společně pro zajištění ještě jemnějšího řízení přístupu.
 
-## <a name="declare-roles-for-an-application"></a>Deklarace role pro aplikaci
+## <a name="declare-roles-for-an-application"></a>Deklarace rolí pro aplikaci
 
-Pracovníci v těchto rolích aplikace jsou definovány v [webu Azure portal](https://portal.azure.com) v registraci manifestu aplikace.  Když se uživatel přihlásí do aplikace, služby Azure AD vydá `roles` deklarace identity pro každou roli, která se uživateli udělila jednotlivě pro uživatele a jejich členství ve skupině.  Přiřazení uživatelů a skupin k rolím může být Hotovo prostřednictvím uživatelského rozhraní na portálu nebo programově pomocí [Microsoft Graphu](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview).
+Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com) v manifestu registrace aplikace.  Když se uživatel do aplikace přihlásí, Azure AD vygeneruje deklaraci `roles` pro každou roli, které uživatel získal individuálně pro uživatele, a z jejich členství ve skupinách.  Přiřazení uživatelů a skupin k rolím je možné provést prostřednictvím uživatelského rozhraní portálu nebo programově pomocí [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview).
 
-### <a name="declare-app-roles-using-azure-portal"></a>Deklarace role aplikace pomocí webu Azure portal
+### <a name="declare-app-roles-using-azure-portal"></a>Deklarace rolí aplikace pomocí Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Na horním panelu, vyberte svůj účet a potom **přepnout adresář**.
-1. Jednou **adresář a předplatné** podokně se otevře, zvolte tenanta Active Directory, ve kterém chcete registrace vaší aplikace z **Oblíbené** nebo **všechny adresáře**seznamu.
-1. Vyberte **všechny služby** v levém navigačním podokně a zvolte **Azure Active Directory**.
-1. V **Azure Active Directory** vyberte **registrace aplikací** zobrazíte seznam všech aplikací.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. V horním panelu vyberte svůj účet a pak **Přepněte adresář**.
+1. Po otevření podokna **adresář a odběr** vyberte v seznamu **Oblíbené** nebo **všechny adresáře** klienta služby Active Directory, kde chcete aplikaci zaregistrovat.
+1. V levém navigačním panelu vyberte **všechny služby** a zvolte **Azure Active Directory**.
+1. V podokně **Azure Active Directory** vyberte **Registrace aplikací** a zobrazte seznam všech aplikací.
 
-     Pokud nevidíte aplikaci, kterou má, zobrazí se zde, pomocí různých filtrů v horní části **registrace aplikací** seznamu k omezení seznamu nebo přejděte dolů v seznamu vyhledejte aplikace.
+     Pokud nevidíte tu aplikaci, kterou chcete zobrazit, pomocí různých filtrů v horní části seznamu **Registrace aplikací** seznam Omezte, nebo posuňte seznam a vyhledejte svoji aplikaci.
 
-1. Vyberte aplikace, které chcete definovat role aplikace v.
-1. V okně pro vaši aplikaci, vyberte **Manifest**.
-1. Upravit manifest aplikace vyhledáním `appRoles` nastavení a přidání všechny aplikační role.
+1. Vyberte aplikaci, ve které chcete role aplikace definovat.
+1. V okně aplikace vyberte možnost **manifest**.
+1. Upravte manifest aplikace tak, že vyhledáte nastavení `appRoles` a přidáte všechny své aplikační role.
 
      > [!NOTE]
-     > Každá definice role aplikace v tomto manifestu musí mít jiný platný identifikátor GUID pro `id` vlastnost. 
+     > Každá definice role aplikace v tomto manifestu musí mít pro vlastnost `id` jiný platný identifikátor GUID. 
      > 
-     > `value` Vlastnost každá definice role aplikace by měl přesně odpovídat řetězce, které se používají v kódu v aplikaci. `value` Vlastností nesmí obsahovat mezery. Pokud už existoval, obdržíte chybu při ukládání manifestu.
+     > Vlastnost `value` každé definice role aplikace by měla přesně odpovídat řetězcům, které jsou používány v kódu v aplikaci. Vlastnost `value` nesmí obsahovat mezery. Pokud k tomu dojde, při ukládání manifestu dojde k chybě.
      
 1. Uložte manifest.
 
 ### <a name="examples"></a>Příklady
 
-Následující příklad ukazuje `appRoles` , které můžete přiřadit `users`.
+Následující příklad ukazuje `appRoles`, které můžete přiřadit k `users`.
 
 > [!NOTE]
->`id` Musí být jedinečný identifikátor GUID.
+>`id` musí být jedinečný identifikátor GUID.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -82,9 +83,9 @@ Následující příklad ukazuje `appRoles` , které můžete přiřadit `users`
 ```
 
 > [!NOTE]
->`displayName` Nesmí obsahovat mezery.
+>`displayName` nesmí obsahovat mezery.
 
-Můžete definovat role aplikace k cíli `users`, `applications`, nebo obojí. Pokud je k dispozici na `applications`, role aplikace se zobrazí jako oprávnění aplikace v **požadovaná oprávnění** okno. Následující příklad ukazuje roli aplikace zaměřené na `Application`.
+Můžete definovat aplikační role pro cílení na `users`, `applications`nebo obojí. Pokud je `applications`k dispozici, role aplikace se zobrazí jako oprávnění aplikace v okně **požadovaná oprávnění** . Následující příklad ukazuje aplikační roli, která je zacílená směrem k `Application`.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -103,35 +104,35 @@ Můžete definovat role aplikace k cíli `users`, `applications`, nebo obojí. P
 "availableToOtherTenants": false,
 ```
 
-Počet rolí definované má vliv omezení, která se má manifest aplikace. Jejich byla popsány podrobně na [manifest omezení](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) stránky.
+Počet definovaných rolí má vliv na omezení, která má manifest aplikace. Byly podrobně popsány na stránce [omezení pro manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) .
 
 ### <a name="assign-users-and-groups-to-roles"></a>Přiřazení uživatelů a skupin k rolím
 
-Po přidání role aplikace ve vaší aplikaci, můžete přiřadit těmto rolím uživatelů a skupin.
+Po přidání rolí aplikace do aplikace můžete těmto rolím přiřadit uživatele a skupiny.
 
-1. V **Azure Active Directory** vyberte **podnikové aplikace** z **Azure Active Directory** navigační nabídce vlevo.
-1. Vyberte **všechny aplikace** zobrazíte seznam všech aplikací.
+1. V podokně **Azure Active Directory** v navigační nabídce **Azure Active Directory** vlevo vyberte **podnikové aplikace** .
+1. Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
 
-     Pokud nevidíte aplikaci, kterou má, zobrazí se zde, pomocí různých filtrů v horní části **všechny aplikace** seznamu k omezení seznamu nebo přejděte dolů v seznamu vyhledejte aplikace.
+     Pokud nevidíte tu aplikaci, kterou chcete zobrazit, pomocí různých filtrů v horní části seznamu **všechny aplikace seznam všech aplikací** omezte nebo posuňte seznam a vyhledejte svoji aplikaci.
 
-1. Vyberte aplikaci, ve kterém chcete přiřadit k rolím uživatelů nebo skupin zabezpečení.
-1. Vyberte **uživatelů a skupin** podokno v levé navigační nabídce aplikace.
-1. V horní části **uživatelů a skupin** seznamu, vyberte **přidat uživatele** tlačítko Otevřít **přidat přiřazení** podokně.
-1. Vyberte **uživatelů a skupin** pro výběr **přidat přiřazení** podokně.
+1. Vyberte aplikaci, ve které chcete rolím přiřadit uživatele nebo skupinu zabezpečení.
+1. V navigační nabídce levé části aplikace vyberte podokno **Uživatelé a skupiny** .
+1. V horní části seznamu **uživatelů a skupin** vyberte tlačítko **Přidat uživatele** a otevřete podokno **Přidat přiřazení** .
+1. V podokně **Přidat přiřazení** vyberte selektor **Uživatelé a skupiny** .
 
-     Seznam uživatelů a skupin zabezpečení se zobrazí spolu s textového pole hledání a vyhledejte uživatele nebo skupinu. Tato obrazovka umožňuje vybrat najednou více uživatelů a skupin.
+     Zobrazí se seznam uživatelů a skupin zabezpečení spolu s textovým polem, kde můžete vyhledat určitého uživatele nebo skupinu. Tato obrazovka umožňuje vybrat více uživatelů a skupin v jednom přechodu.
 
-1. Po dokončení výběru uživatelů a skupin, stiskněte **vyberte** tlačítko na konci článku přejít k další části.
-1. Zvolte **vybrat roli** pro výběr **přidat přiřazení** podokně. Všechny role, které jsou deklarovány dříve v manifestu aplikace se zobrazí.
-1. Vyberte roli a stiskněte klávesu **vyberte** tlačítko.
-1. Stisknutím klávesy **přiřadit** tlačítko v dolní části na dokončení přiřazení uživatelů a skupin k aplikaci.
-1. Potvrďte, že uživatelé a skupiny, které jste přidali se zobrazují v aktualizovaném **uživatelů a skupin** seznamu.
+1. Až budete hotovi s výběrem uživatelů a skupin, přejděte kliknutím na tlačítko **Vybrat** v dolní části na další část.
+1. V podokně **Přidat přiřazení** zvolte Výběr **role vybrat** . Zobrazí se všechny role deklarované dříve v manifestu aplikace.
+1. Zvolte roli a stiskněte tlačítko **Vybrat** .
+1. Stisknutím tlačítka **přiřadit** v dolní části dokončíte přiřazení uživatelů a skupin do aplikace.
+1. Ověřte, že se uživatelé a skupiny, které jste přidali, zobrazují v seznamu aktualizovaných **uživatelů a skupin** .
 
 ## <a name="more-information"></a>Další informace
 
-- [Autorizace ve webové aplikaci pomocí Azure AD aplikační role &amp; deklarace rolí (ukázka)](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapp-roleclaims/)
-- [Pomocí skupin zabezpečení a aplikační role ve vašich aplikacích (Video)](https://www.youtube.com/watch?v=V8VUPixLSiM)
-- [Azure Active Directory, nyní se deklarace skupiny a aplikační role](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
-- [Manifest aplikace Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
-- [AAD přístupové tokeny](access-tokens.md)
-- [AAD `id_tokens`](id-tokens.md)
+- [Autorizace ve webové aplikaci s využitím aplikačních rolí Azure AD &amp; deklaracích rolí (ukázka)](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
+- [Používání skupin zabezpečení a rolí aplikací v aplikacích (video)](https://www.youtube.com/watch?v=V8VUPixLSiM)
+- [Azure Active Directory nyní s deklaracemi skupin a aplikačními rolemi](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
+- [Azure Active Directory manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Přístupové tokeny AAD](access-tokens.md)
+- [`id_tokens`AAD](id-tokens.md)

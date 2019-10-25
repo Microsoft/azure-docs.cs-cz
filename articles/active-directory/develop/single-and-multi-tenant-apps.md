@@ -1,6 +1,7 @@
 ---
-title: Jednotné a víceklientské aplikace v Azure Active Directory
-description: Další informace o funkcích a rozdíly mezi aplikacemi pro jednoho tenanta a více tenantů ve službě Azure AD.
+title: Jediná a víceklientské aplikace v Azure Active Directory
+titleSuffix: Microsoft identity platform
+description: Přečtěte si o funkcích a rozdílech mezi aplikacemi pro jednoho tenanta a víceklientské aplikace v Azure AD.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,39 +18,39 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aa8f63b6e7355ae387a321acf77683fac22e028
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111072"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803644"
 ---
-# <a name="tenancy-in-azure-active-directory"></a>Architektura v Azure Active Directory
+# <a name="tenancy-in-azure-active-directory"></a>Tenantů v Azure Active Directory
 
-Azure Active Directory (Azure AD) slouží k uspořádání objektů, jako jsou uživatelé a aplikace do skupin volá *tenantů*. Tenanti umožňují správcům nastavit zásady pro uživatele v rámci organizace a aplikace, které organizace je vlastníkem ke splnění jejich zabezpečení a zkontrolovala zásady. 
+Azure Active Directory (Azure AD) uspořádá objekty, jako jsou uživatelé a aplikace, do skupin označovaných jako *klienti*. Klienti umožňují správcům nastavit zásady pro uživatele v rámci organizace a aplikace, které organizace vlastní, aby splnila své zásady zabezpečení a provozu. 
 
-## <a name="who-can-sign-in-to-your-app"></a>Kdo se může přihlásit do aplikace?
+## <a name="who-can-sign-in-to-your-app"></a>Kdo se může přihlásit ke svojí aplikaci?
 
-Při rozhodování o vývoj aplikací, mohou zvolit bude jedním tenantem nebo více tenanty při registraci aplikace ve své aplikaci nakonfigurovat tak, [webu Azure portal](https://portal.azure.com).
-* Aplikace s jedním tenantem jsou dostupné jenom v tenantovi, které jste zaregistrovali v rámci, označované také jako jejich domovské tenanta.
-* Aplikace s více tenanty jsou dostupné pro uživatele v jeho domovském tenantovi a jiných tenantů.
+Když se přihlásí k vývoji aplikací, můžou si vývojáři zvolit, aby svou aplikaci během registrace aplikace v [Azure Portal](https://portal.azure.com)nakonfigurovali buď jako jeden tenant, nebo pro více tenantů.
+* Aplikace pro jednoho tenanta jsou k dispozici pouze v tenantovi, které byly zaregistrovány, označované také jako jejich domácí tenant.
+* Víceklientské aplikace jsou k dispozici uživatelům v jejich domovském tenantovi i v dalších klientech.
 
-Na webu Azure Portal můžete nakonfigurovat aplikaci tak, aby se jedním tenantem nebo více tenanty nastavením cílovou skupinu.
+V Azure Portal můžete svou aplikaci nakonfigurovat tak, aby byla jedním nebo více klienty, nastavením cílové skupiny podle následujících pokynů.
 
-| Cílová skupina | Jeden nebo více-tenant | Kdo se může přihlásit | 
+| Cílová skupina | Jeden nebo více tenantů | Kdo se může přihlásit | 
 |----------|--------| ---------|
-| V tomto adresáři pouze účty | Jeden tenant | Vaše aplikace nebo rozhraní API, můžete použít všechny uživatele a účet hosta. ve vašem adresáři.<br>*Tuto možnost použijte, pokud vaší cílovou skupinou probíhá interně ve vaší organizaci.* |
-| Účty v ke každému adresáři Azure AD | Víc klientů | Všech uživatelů a hostů pomocí pracovního nebo školního účtu společnosti Microsoft můžete použít, vaše aplikace nebo rozhraní API. To zahrnuje školy a podniky, které používají Office 365.<br>*Tuto možnost použijte, pokud vaší cílovou skupinou obchodní nebo vzdělávací zákazníků.* |
-| Účty v jakékoli adresáře služby Azure AD a osobní účty Microsoft (jako je Skype, Xbox, Outlook.com) | Víc klientů | Všichni uživatelé s pracovní nebo školní nebo osobní účet Microsoft můžete použít, vaše aplikace nebo rozhraní API. Zahrnuje školy a podniky, které používají Office 365, jakož i osobní účty, které se používají k přihlášení ke službám, jako jsou Xbox a Skype.<br>*Tuto možnost použijte k cílení nejširší sadu účtů Microsoft.* | 
+| Účty pouze v tomto adresáři | Jeden tenant | Vaše aplikace nebo rozhraní API můžou používat všechny účty uživatelů a hostů v adresáři.<br>*Tuto možnost použijte, pokud je cílová skupina vaší organizace interní.* |
+| Účty v jakémkoli adresáři služby Azure AD | Víc klientů | Vaše aplikace nebo rozhraní API můžou používat všichni uživatelé a hosté s pracovním nebo školním účtem od Microsoftu. To zahrnuje školy a firmy, které používají Office 365.<br>*Tuto možnost použijte, pokud vaše cílová skupina představuje obchodní nebo vzdělávací zákazníky.* |
+| Účty v jakémkoli adresáři služby Azure AD a osobních účtech Microsoft (například Skype, Xbox, Outlook.com) | Víc klientů | Vaši aplikaci nebo rozhraní API můžou používat všichni uživatelé s pracovními nebo školními nebo osobními účet Microsoft. Zahrnuje školy a firmy, které používají Office 365, a také osobní účty, které slouží k přihlašování ke službám, jako jsou Xbox a Skype.<br>*Tuto možnost použijte, chcete-li cílit na nejširší sadu účtů Microsoft.* | 
 
-## <a name="best-practices-for-multi-tenant-apps"></a>Osvědčené postupy pro aplikace s více tenanty
+## <a name="best-practices-for-multi-tenant-apps"></a>Osvědčené postupy pro víceklientské aplikace
 
-Vytvářet skvělé aplikace s více tenanty může být náročné z důvodu počet různých zásad, které správci IT můžou nastavit v svým klientům. Pokud se rozhodnete k sestavení aplikace s více tenanty, dodržujte tyto doporučené postupy zabezpečení:
+Vytváření skvělých aplikací s více klienty může být náročné kvůli počtu různých zásad, které správci IT můžou ve svých klientech nastavit. Pokud se rozhodnete sestavit aplikaci pro více tenantů, postupujte podle těchto osvědčených postupů:
 
-* Otestujte aplikaci v tenantovi, který byl nakonfigurován [zásady podmíněného přístupu](conditional-access-dev-guide.md).
-* Postupujte podle principu nejnižší přístup uživatelů k zajištění, že vaše aplikace požaduje pouze oprávnění, které skutečně potřebuje. Vyhněte se požaduje oprávnění, které vyžadují souhlas správce, protože to může zabránit uživatelům v získání vaší aplikace v některých organizacích. 
-* Zadejte odpovídající názvy a popisy pro veškerá potřebná oprávnění je vystavit v rámci vaší aplikace. Díky tomu mohou uživatelé a správci vědět, co, souhlasíte s při pokusu o použití rozhraní API vaší aplikace. Další informace naleznete v části osvědčené postupy v [oprávnění průvodce](v1-permissions-and-consent.md).
+* Otestujte svoji aplikaci v tenantovi, která má nakonfigurované [zásady podmíněného přístupu](conditional-access-dev-guide.md).
+* Postupujte podle principu minimálního přístupu uživatelů, abyste měli jistotu, že vaše aplikace žádá jenom o oprávnění, která skutečně potřebují. Vyhněte se Požadování oprávnění, která vyžadují souhlas správce, protože by to mohlo zabránit uživatelům v používání vaší aplikace v některých organizacích. 
+* Poskytněte vhodné názvy a popisy pro všechna oprávnění, která vystavíte v rámci vaší aplikace. To pomáhá uživatelům a správcům zjistit, na co se dohodli při pokusu o použití rozhraní API vaší aplikace. Další informace najdete v části osvědčené postupy v [Průvodci oprávněními](v1-permissions-and-consent.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Jak převést aplikaci na více tenantů](howto-convert-app-to-be-multi-tenant.md)

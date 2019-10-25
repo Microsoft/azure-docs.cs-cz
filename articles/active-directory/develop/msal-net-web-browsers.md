@@ -1,5 +1,6 @@
 ---
-title: Webové prohlížeče v knihovně Microsoft Authentication Library pro .NET | Azure
+title: Webové prohlížeče v knihovně Microsoft Authentication Library pro .NET
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních doporučeních pro použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1285c5c61cee25e387ca5fb598f0e062088e549
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2446166aa8078040c06d7cb54ce01666d9931727
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532500"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802679"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Používání webových prohlížečů v MSAL.NET
 Pro interaktivní ověřování se vyžadují webové prohlížeče. Ve výchozím nastavení podporuje MSAL.NET [webový prohlížeč systému](#system-web-browser-on-xamarinios-xamarinandroid) na Xamarin. iOS a Xamarin. Android. [Můžete ale také povolit vložený webový prohlížeč](#enable-embedded-webviews-on-ios-and-android) v závislosti na vašich požadavcích (uživatelské rozhraní, nutnosti jednotného přihlašování (SSO), zabezpečení) v aplikacích [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) a [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) . A můžete dokonce [zvolit](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) , který webový prohlížeč se má použít, na základě přítomnosti Chrome nebo prohlížeče, který podporuje vlastní karty Chrome v Androidu. MSAL.NET podporuje pouze prohlížeč systému v aplikacích klasické pracovní plochy .NET Core.
@@ -42,23 +43,23 @@ Je důležité si uvědomit, že při interaktivním získání tokenu se obsah 
 
 ### <a name="embedded-vs-system-web-ui"></a>Webové uživatelské rozhraní Embedded vs System
 
-MSAL.NET je knihovna s více architekturami a má kód specifický pro rozhraní, který je hostitelem prohlížeče v ovládacím prvku uživatelského rozhraní (například v klasickém rozhraní .NET používá WinForms, v Xamarin používá nativní mobilní ovládací prvky atd.). Tento ovládací prvek se `embedded` nazývá webové uživatelské rozhraní. Alternativně je MSAL.NET také možné aktivovat prohlížeč operačního systému.
+MSAL.NET je knihovna s více architekturami a má kód specifický pro rozhraní, který je hostitelem prohlížeče v ovládacím prvku uživatelského rozhraní (například v klasickém rozhraní .NET používá WinForms, v Xamarin používá nativní mobilní ovládací prvky atd.). Tento ovládací prvek se nazývá `embedded` webové uživatelské rozhraní. Alternativně je MSAL.NET také možné aktivovat prohlížeč operačního systému.
 
-Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systémový prohlížeč. Prohlížeč systému je lepší při zapamatování uživatelů, kteří se předtím přihlásili. Pokud potřebujete toto chování změnit, použijte`WithUseEmbeddedWebView(bool)`
+Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systémový prohlížeč. Prohlížeč systému je lepší při zapamatování uživatelů, kteří se předtím přihlásili. Pokud potřebujete toto chování změnit, použijte `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>Na první pohled
+### <a name="at-a-glance"></a>První pohled
 
-| Rozhraní .NET Framework        | Vložené | Systém | Výchozí |
+| Rámci        | Vložené | Systém | Výchozí |
 | ------------- |-------------| -----| ----- |
 | .NET Classic     | Ano | Ano ^ | Vložené |
 | .NET Core     | Ne | Ano ^ | Systém |
 | .NET Standard | Ne | Ano ^ | Systém |
-| UWP | Ano | Ne | Vložené |
+| PODPORUJÍ | Ano | Ne | Vložené |
 | Xamarin.Android | Ano | Ano  | Systém |
 | Xamarin.iOS | Ano | Ano  | Systém |
-| Xamarin.Mac| Ano | Ne | Vložené |
+| Xamarin. Mac| Ano | Ne | Vložené |
 
-^ Vyžaduje "http://localhost" identifikátor URI přesměrování
+^ Vyžaduje identifikátor URI přesměrování "http://localhost"
 
 ## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>Systémový webový prohlížeč v Xamarin. iOS, Xamarin. Android
 
@@ -77,11 +78,11 @@ await pca.AcquireTokenInteractive(s_scopes)
          .WithUseEmbeddedWebView(false)
 ```
 
-MSAL.NET nemůže zjistit, jestli uživatel přejde pryč nebo jednoduše zavře prohlížeč. Pro aplikace, které používají tuto techniku, doporučujeme definovat časový limit `CancellationToken`(prostřednictvím). Doporučujeme časový limit aspoň pár minut, aby se zohlednily případy, kdy se uživateli zobrazí výzva ke změně hesla nebo provedení vícefaktorového ověřování.
+MSAL.NET nemůže zjistit, jestli uživatel přejde pryč nebo jednoduše zavře prohlížeč. Pro aplikace, které používají tuto techniku, doporučujeme definovat časový limit (prostřednictvím `CancellationToken`). Doporučujeme časový limit aspoň pár minut, aby se zohlednily případy, kdy se uživateli zobrazí výzva ke změně hesla nebo provedení vícefaktorového ověřování.
 
 ### <a name="how-to-use-the-default-os-browser"></a>Použití výchozího prohlížeče operačního systému
 
-MSAL.NET musí naslouchat `http://localhost:port` a zachytit kód, který AAD posílá, když se uživatel dokončí ověřováním (podrobnosti najdete v [autorizačním kódu](v2-oauth2-auth-code-flow.md) ).
+MSAL.NET potřebuje naslouchat `http://localhost:port` a zachytit kód, který AAD posílá, když se uživatel dokončí ověřováním (podrobnosti najdete v [autorizačním kódu](v2-oauth2-auth-code-flow.md) ).
 
 Postup povolení prohlížeče systému:
 
@@ -101,8 +102,8 @@ IPublicClientApplication pca = PublicClientApplicationBuilder
 
 ### <a name="linux-and-mac"></a>Linux a MAC
 
-V systému Linux se v MSAL.NET otevře výchozí prohlížeč operačního systému pomocí nástroje xdg-Open. Pokud chcete řešit potíže, spusťte nástroj z terminálu, například`xdg-open "https://www.bing.com"`  
-V systému Mac je prohlížeč otevřený vyvoláním.`open <url>`
+V systému Linux se v MSAL.NET otevře výchozí prohlížeč operačního systému pomocí nástroje xdg-Open. Pokud chcete řešit potíže, spusťte nástroj z terminálu, například `xdg-open "https://www.bing.com"`  
+V systému Mac je prohlížeč otevřený vyvoláním `open <url>`
 
 ### <a name="customizing-the-experience"></a>Přizpůsobení prostředí
 
@@ -141,7 +142,7 @@ U aplikací klasické pracovní plochy ale spuštění webového WebView vede k 
 
 ## <a name="enable-embedded-webviews-on-ios-and-android"></a>Povolit vložená webzobrazení v iOS a Androidu
 
-Můžete také povolit vložená webzobrazení v aplikacích Xamarin. iOS a Xamarin. Android. Od verze MSAL.NET 2.0.0-Preview MSAL.NET podporuje také použití vloženého možnosti WebView. Pro ADAL.NET je jedinou podporovanou možností vložené WebView.
+Můžete také povolit vložená webzobrazení v aplikacích Xamarin. iOS a Xamarin. Android. Od verze MSAL.NET 2.0.0-Preview MSAL.NET podporuje také použití **vloženého** možnosti WebView. Pro ADAL.NET je jedinou podporovanou možností vložené WebView.
 
 Jako vývojář, který používá MSAL.NET cílené na Xamarin, se můžete rozhodnout použít buď vložená webzobrazení, nebo systémové prohlížeče. Podle vašeho výběru záleží na uživatelském prostředí a na zabezpečení, které chcete cílit.
 
@@ -152,7 +153,7 @@ Mezi vloženým webovým zobrazením a systémovým prohlížečem v MSAL.NET js
 
 **Interaktivní přihlašování pomocí MSAL.NET pomocí vloženého webviewu:**
 
-![vložené](media/msal-net-web-browsers/embedded-webview.png)
+![Vložené](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interaktivní přihlašování pomocí MSAL.NET pomocí systémového prohlížeče:**
 
@@ -163,7 +164,7 @@ Mezi vloženým webovým zobrazením a systémovým prohlížečem v MSAL.NET js
 Jako vývojář používající MSAL.NET máte k dispozici několik možností zobrazení interaktivního dialogového okna ze služby STS:
 
 - **Prohlížeč systému.** Prohlížeč systému je ve výchozím nastavení nastaven v knihovně. Při použití Androidu si přečtěte [systémové prohlížeče](msal-net-system-browser-android-considerations.md) , kde najdete konkrétní informace o podporovaných prohlížečích pro ověřování. Při používání prohlížeče systému v Androidu doporučujeme, aby zařízení mělo prohlížeč, který podporuje vlastní karty Chrome.  V opačném případě může ověřování selhat.
-- **Vložené WebView.** Chcete-li použít pouze vložené WebView v MSAL.NET `AcquireTokenInteractively` , tvůrce parametrů `WithUseEmbeddedWebView()` obsahuje metodu.
+- **Vložené WebView.** Chcete-li použít pouze vložené WebView v MSAL.NET, obsahuje tvůrce parametrů `AcquireTokenInteractively` `WithUseEmbeddedWebView()` metodu.
 
     iOS
 
@@ -174,7 +175,7 @@ Jako vývojář používající MSAL.NET máte k dispozici několik možností z
                     .ExecuteAsync();
     ```
 
-    Android:
+    Svém
 
     ```csharp
     authResult = app.AcquireTokenInteractively(scopes)
@@ -185,7 +186,7 @@ Jako vývojář používající MSAL.NET máte k dispozici několik možností z
 
 #### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>Výběr mezi integrovaným webovým prohlížečem nebo systémovým prohlížečem v Xamarin. iOS
 
-V aplikaci `AppDelegate.cs` `ParentWindow` pro iOSmůžetevnástrojiinicializovatna.`null` Nepoužívá se v iOS.
+V aplikaci pro iOS můžete v `AppDelegate.cs` `ParentWindow` inicializovat na `null`. Nepoužívá se v iOS.
 
 ```csharp
 App.ParentWindow = null; // no UI parent on iOS
@@ -193,7 +194,7 @@ App.ParentWindow = null; // no UI parent on iOS
 
 #### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>Výběr mezi integrovaným webovým prohlížečem nebo systémovým prohlížečem v Xamarin. Android
 
-V aplikaci pro Android můžete v `MainActivity.cs` aplikaci nastavit nadřazenou aktivitu tak, aby se na ni vrátil výsledek ověřování:
+V aplikaci pro Android můžete v `MainActivity.cs` nastavit nadřazenou aktivitu tak, aby se na ni vrátil výsledek ověřování:
 
 ```csharp
  App.ParentWindow = this;
@@ -210,11 +211,11 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 #### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Zjištění přítomnosti vlastních karet na Xamarin. Android
 
-Pokud chcete použít webový prohlížeč systému k povolení jednotného přihlašování s aplikacemi spuštěnými v prohlížeči, ale máte obavy o činnost koncového uživatele pro zařízení s Androidem, která nemají prohlížeč s podporou vlastní karty, máte možnost se rozhodnout, že zavoláte `IsSystemWebViewAvailable()` metodu v tématu < c 2 > `IPublicClientApplication` . Tato metoda vrátí `true` , pokud PackageManager detekuje vlastní karty, `false` a pokud nejsou v zařízení zjištěny.
+Pokud chcete použít webový prohlížeč systému k povolení jednotného přihlašování s aplikacemi spuštěnými v prohlížeči, ale máte obavy o činnost koncového uživatele pro zařízení s Androidem, která nemají prohlížeč s podporou vlastní karty, máte možnost se rozhodnout, že zavoláte metodu `IsSystemWebViewAvailable()` v `IPublicClientApplication`. Tato metoda vrátí `true`, pokud PackageManager detekuje vlastní karty a `false` Pokud nejsou v zařízení zjištěny.
 
 Na základě hodnoty vracené touto metodou a vašich požadavků můžete učinit rozhodnutí:
 
-- Uživateli můžete vrátit vlastní chybovou zprávu. Příklad: "Nainstalujte prosím Chrome, abyste mohli pokračovat v ověřování"-nebo-
+- Uživateli můžete vrátit vlastní chybovou zprávu. Například: "nainstalujte si Chrome, abyste mohli pokračovat v ověřování"-nebo-
 - Můžete se vrátit k vložené možnosti WebView a spustit uživatelské rozhraní jako vložené WebView.
 
 Následující kód ukazuje možnost vloženého WebView:

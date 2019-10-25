@@ -1,5 +1,6 @@
 ---
-title: Inicializovat klientské aplikace (Microsoft Authentication Library pro .NET) | Azure
+title: Inicializovat klientské aplikace (Microsoft Authentication Library pro .NET)
+titleSuffix: Microsoft identity platform
 description: Seznamte se s inicializací veřejných klientských a důvěrných klientských aplikací pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,19 +18,19 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5012da8f2ff41971df674fd35162fe14e1de8fc9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f15f6480c2dc77fb1f6e229b62a0114f0f6fb735
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532641"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802834"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Inicializace klientských aplikací pomocí MSAL.NET
 Tento článek popisuje inicializaci veřejného klienta a důvěrných klientských aplikací pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).  Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v [přehledu](msal-client-applications.md).
 
-Pomocí MSAL.NET 3. x je doporučený způsob vytvoření instance aplikace pomocí tvůrců aplikací: `PublicClientApplicationBuilder` a. `ConfidentialClientApplicationBuilder` Nabízí účinný mechanismus pro konfiguraci aplikace buď z kódu, nebo z konfiguračního souboru, nebo i smícháním obou přístupů.
+Pomocí MSAL.NET 3. x je doporučený způsob vytvoření instance aplikace pomocí tvůrců aplikací: `PublicClientApplicationBuilder` a `ConfidentialClientApplicationBuilder`. Nabízí účinný mechanismus pro konfiguraci aplikace buď z kódu, nebo z konfiguračního souboru, nebo i smícháním obou přístupů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Před inicializací aplikace je nejprve nutné [ji zaregistrovat](quickstart-register-app.md) , aby bylo možné aplikaci integrovat s platformou Microsoft identity.  Po registraci možná budete potřebovat následující informace (které najdete v Azure Portal):
 
 - ID klienta (řetězec představující GUID)
@@ -52,7 +53,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="initializing-a-confidential-client-application-from-code"></a>Inicializace důvěrné klientské aplikace z kódu
 
-Stejným způsobem následující kód vytvoří instanci důvěrné aplikace (webová aplikace, která se nachází `https://myapp.azurewebsites.net`v rámci) zpracování tokenů od uživatelů ve veřejném cloudu Microsoft Azure, s pracovními a školními účty nebo jejich osobními účty Microsoft. Aplikace je identifikována poskytovatelem identity sdílením tajného klíče klienta:
+Stejným způsobem následující kód vytvoří instanci důvěrné aplikace (webovou aplikaci na `https://myapp.azurewebsites.net`), která zpracovává tokeny od uživatelů ve Microsoft Azure veřejném cloudu, se svými pracovními a školními účty nebo jejich osobními účty Microsoft. Aplikace je identifikována poskytovatelem identity sdílením tajného klíče klienta:
 
 ```csharp
 string redirectUri = "https://myapp.azurewebsites.net";
@@ -83,7 +84,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 ### <a name="initializing-a-confidential-client-application-from-configuration-options"></a>Inicializace důvěrné klientské aplikace z možností konfigurace
 
-Stejný druh vzoru se vztahuje na důvěrné klientské aplikace. Můžete také přidat další parametry pomocí `.WithXXX` modifikátorů (tady je certifikát).
+Stejný druh vzoru se vztahuje na důvěrné klientské aplikace. Můžete také přidat další parametry pomocí `.WithXXX` modifikátory (tady je certifikát).
 
 ```csharp
 ConfidentialClientApplicationOptions options = GetOptions(); // your own method
@@ -94,7 +95,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 ## <a name="builder-modifiers"></a>Tvůrce – modifikátory
 
-V fragmentech kódu pomocí tvůrců aplikací lze použít několik `.With` metod jako modifikátory ( `.WithCertificate` například a `.WithRedirectUri`). 
+V fragmentech kódu pomocí tvůrců aplikací lze použít několik metod `.With` jako modifikátory (například `.WithCertificate` a `.WithRedirectUri`). 
 
 ### <a name="modifiers-common-to-public-and-confidential-client-applications"></a>Modifikátory společné pro veřejné a důvěrné klientské aplikace
 
@@ -102,12 +103,12 @@ Modifikátory, které můžete nastavit ve veřejném klientovi nebo v nástroji
 
 |Parametr | Popis|
 |--------- | --------- |
-|`.WithAuthority()`7 přepsání | Nastaví výchozí autoritu aplikace na autoritu Azure AD s možností výběru cloudu Azure, cílové skupiny, tenanta (ID tenanta nebo názvu domény) nebo poskytnutí přímo identifikátoru URI autority.|
+|`.WithAuthority()` 7 – přepsání | Nastaví výchozí autoritu aplikace na autoritu Azure AD s možností výběru cloudu Azure, cílové skupiny, tenanta (ID tenanta nebo názvu domény) nebo poskytnutí přímo identifikátoru URI autority.|
 |`.WithAdfsAuthority(string)` | Nastaví výchozí autoritu aplikace jako autoritu služby ADFS.|
 |`.WithB2CAuthority(string)` | Nastaví výchozí autoritu aplikace jako autoritu Azure AD B2C.|
 |`.WithClientId(string)` | Přepíše ID klienta.|
 |`.WithComponent(string)` | Nastaví název knihovny pomocí MSAL.NET (z důvodů telemetrie). |
-|`.WithDebugLoggingCallback()` | Při volání aplikace bude volána `Debug.Write` jednoduše povolení trasování ladění. Další informace najdete v tématu [protokolování](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) .|
+|`.WithDebugLoggingCallback()` | Při volání aplikace bude volat `Debug.Write` jednoduše povolit trasování ladění. Další informace najdete v tématu [protokolování](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) .|
 |`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | Nastavte dodatečné parametry dotazu na úrovni aplikace, které budou odeslány ve všech žádostech o ověření. To je přepsatelné na každé úrovni metody získání tokenu (se stejným `.WithExtraQueryParameters pattern`).|
 |`.WithHttpClientFactory(IMsalHttpClientFactory httpClientFactory)` | Povoluje pokročilé scénáře, jako je například konfigurace proxy serveru HTTP, nebo vynucení MSAL používání konkrétního HttpClient (například v ASP.NET Core Web Apps/rozhraní API).|
 |`.WithLogging()` | Při volání aplikace bude volat zpětné volání s trasováním ladění. Další informace najdete v tématu [protokolování](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) .|
@@ -121,7 +122,7 @@ Modifikátory, které můžete nastavit na tvůrci veřejné klientské aplikace
 
 |Parametr | Popis|
 |--------- | --------- |
-|`.WithIosKeychainSecurityGroup()` | **Jenom Xamarin. iOS**: Nastaví skupinu zabezpečení řetězu klíčů iOS (pro trvalost mezipaměti).|
+|`.WithIosKeychainSecurityGroup()` | **Jenom Xamarin. iOS**: nastaví skupinu zabezpečení řetězu klíčů pro iOS (pro trvalost mezipaměti).|
 
 ### <a name="modifiers-specific-to-confidential-client-applications"></a>Modifikátory specifické pro důvěrné klientské aplikace
 

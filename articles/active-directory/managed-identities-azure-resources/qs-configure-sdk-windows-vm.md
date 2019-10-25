@@ -1,6 +1,6 @@
 ---
-title: Konfigurace virtuálního počítače pomocí spravované identity pro prostředky Azure pomocí sady Azure SDK
-description: Podrobné pokyny pro konfiguraci a použití spravované identity pro prostředky Azure na virtuálním počítači Azure pomocí sady Azure SDK.
+title: Pomocí sady Azure SDK můžete nakonfigurovat virtuální počítač se spravovanými identitami pro prostředky Azure.
+description: Podrobné pokyny pro konfiguraci a používání spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí sady Azure SDK.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,37 +15,37 @@ ms.workload: identity
 ms.date: 09/28/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29446f6f0a86a00cc92fe46211caddd22aaa4859
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b4f5a26f240656911fb9627d273de8b69edff6a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112558"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809167"
 ---
-# <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurace virtuálního počítače pomocí spravované identity pro prostředky Azure pomocí sady Azure SDK
+# <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurace virtuálního počítače se spravovanými identitami pro prostředky Azure pomocí sady Azure SDK
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Spravované identity pro prostředky Azure poskytuje služby Azure se automaticky spravované identity v Azure Active Directory (AD). Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
+Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou v Azure Active Directory (AD). Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-V tomto článku se dozvíte, jak povolit a odebrat spravovaných identit pro prostředky Azure pro virtuální počítač Azure, pomocí sady Azure SDK.
+V tomto článku se dozvíte, jak povolit a odebrat spravované identity pro prostředky Azure pro virtuální počítač Azure pomocí sady Azure SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-## <a name="azure-sdks-with-managed-identities-for-azure-resources-support"></a>Podpora sady Azure SDK pomocí spravované identity pro prostředky Azure 
+## <a name="azure-sdks-with-managed-identities-for-azure-resources-support"></a>Azure SDK se spravovanými identitami pro podporu prostředků Azure 
 
-Azure podporuje různé programovací platformy prostřednictvím řady [sady Azure SDK](https://azure.microsoft.com/downloads). Některé z nich byly aktualizovány pro podporu spravovaných identit pro prostředky Azure a zadejte odpovídající ukázky, které ukazují využití. Tento seznam se aktualizuje, jak přidat další podporu:
+Azure podporuje několik programovacích platforem prostřednictvím řady [sad Azure SDK](https://azure.microsoft.com/downloads). Několik z nich bylo aktualizováno na podporu spravovaných identit pro prostředky Azure a poskytuje odpovídající ukázky k předvedení používání. Tento seznam je aktualizovaný, protože je přidána další podpora:
 
-| Sada SDK | Ukázka |
+| SDK | Ukázka |
 | --- | ------ | 
-| .NET   | [Správa prostředků z virtuálního počítače povolená pomocí spravované identity pro prostředky Azure, které jsou povolené](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
-| Java   | [Správa služby storage z virtuálního počítače povolená pomocí spravované identity pro prostředky Azure](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
-| Node.js| [Vytvoření Virtuálního počítače s systém přiřadil povolené spravovaná identita.](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
-| Python | [Vytvoření Virtuálního počítače s systém přiřadil povolené spravovaná identita.](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
-| Ruby   | [Vytvoření virtuálního počítače Azure s identitou systém přiřadil povoleno](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
+| .NET   | [Správa prostředků z virtuálního počítače s povoleným spravovanými identitami pro prostředky Azure](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
+| Java   | [Správa úložiště z virtuálního počítače povoleného se spravovanými identitami pro prostředky Azure](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
+| Node.js| [Vytvoření virtuálního počítače s povolenou spravovanou identitou přiřazenou systémem](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
+| Python | [Vytvoření virtuálního počítače s povolenou spravovanou identitou přiřazenou systémem](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
+| Ruby   | [Vytvoření virtuálního počítače Azure s povolenou identitou přiřazenou systémem](https://github.com/Azure-Samples/compute-ruby-msi-vm/) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zobrazit související články v části **konfigurace Identity pro virtuální počítač Azure**, se dozvíte, jak můžete také použít šablony Azure portal, Powershellu, rozhraní příkazového řádku a prostředků.
+- Informace o tom, jak můžete používat Azure Portal, PowerShell, CLI a šablony prostředků, najdete v části související články v části **Konfigurace identity pro virtuální počítač Azure**.

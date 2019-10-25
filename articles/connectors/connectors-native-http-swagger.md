@@ -1,6 +1,6 @@
 ---
-title: Připojení k koncové body REST z Azure Logic Apps
-description: Monitorování koncových bodů REST v automatizovaných úloh, procesy a pracovní postupy s využitím Azure Logic Apps
+title: Připojení k koncovým bodům REST z Azure Logic Apps
+description: Monitorování koncových bodů REST v automatizovaných úlohách, procesech a pracovních postupech pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,120 +10,120 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: f0410ed7a98e4838e41407868cf26b5254811ae3
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 663ef16511269dd61a6567d6570f3445b7da6447
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541600"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804237"
 ---
-# <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Volají koncové body REST s využitím Azure Logic Apps
+# <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Volání koncových bodů REST pomocí Azure Logic Apps
 
-S [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované HTTP + Swagger konektor, můžete automatizovat pracovní postupy, které pravidelně volání jakékoli koncového bodu REST prostřednictvím [soubor Swagger](https://swagger.io) díky vytváření aplikací logiky. HTTP + Swagger aktivovat a akce, které fungují stejně jako [triggeru HTTP a akce](connectors-native-http.md) ale poskytovat lepší prostředí v návrháři aplikace logiky zveřejněním strukturu rozhraní API a výstupy popisuje soubor Swagger. K implementaci cyklického dotazování aktivační událost, mají tvar dotazování, který je popsaný v [vytvoření vlastních rozhraní API volat jiné rozhraní API, služby a systémy z aplikací logiky](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
+Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému konektoru http + Swagger můžete automatizovat pracovní postupy, které pravidelně volají libovolný koncový bod REST prostřednictvím [souboru Swagger](https://swagger.io) vytvořením Logic Apps. Aktivační událost HTTP + Swagger a akce fungují stejně jako [Trigger http a akci](connectors-native-http.md) , ale poskytují lepší zkušenosti v návrháři aplikace logiky tím, že zpřístupňují strukturu rozhraní API a výstupy popsané v souboru Swagger. K implementaci triggeru cyklického dotazování použijte vzor cyklického dotazování, který je popsaný v tématu [Vytvoření vlastních rozhraní API a volání dalších rozhraní API, služeb a systémů z Logic Apps](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * Adresa URL pro soubor Swagger popisující cílový koncový bod REST
 
-  Koncový bod REST, obvykle musí splňovat tato kritéria pro fungování konektoru:
+  Koncový bod REST musí obvykle splňovat tato kritéria, aby mohl konektor fungovat:
 
-  * Soubor Swagger musí být hostovaný na adresu URL HTTPS, který je veřejně dostupná.
+  * Soubor Swagger musí být hostovaný na adrese URL HTTPS, která je veřejně přístupná.
 
-  * Soubor Swagger musí mít [sdílení prostředků mezi zdroji (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) povolena.
+  * Soubor Swagger musí mít povolený [sdílení prostředků mezi zdroji (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
 
-  Chcete-li odkazovat na soubor Swagger, který není hostitelem nebo, který nesplňuje požadavky na nepůvodního zdroje a zabezpečení, můžete [nahrát soubor Swagger na kontejner objektů blob v účtu služby Azure storage](#host-swagger)a proto povolení CORS na tomto účtu úložiště můžete odkazovat na soubor.
+  Chcete-li vytvořit odkaz na soubor Swagger, který není hostovaný nebo který nesplňuje požadavky na zabezpečení a více zdrojů, můžete [nahrát soubor Swagger do kontejneru objektů BLOB v účtu úložiště Azure](#host-swagger)a povolit v tomto účtu úložiště CORS, abyste mohli odkazovat soubor.
 
-  V příkladech v tomto tématu [Cognitive Services Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview), což vyžaduje [služeb Cognitive Services účtu a přístupový klíč](../cognitive-services/cognitive-services-apis-create-account.md).
+  V příkladech v tomto tématu se používá [Cognitive Services Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview), která vyžaduje [účet Cognitive Services a přístupový klíč](../cognitive-services/cognitive-services-apis-create-account.md).
 
-* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-* Aplikace logiky, ze kterého má volat cílový koncový bod. Začít s HTTP + Swagger aktivovat, [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Použití HTTP + Swagger akce začínat všechny aktivační události, které chcete aplikaci logiky. Tento příklad používá HTTP + Swagger trigger jako první krok.
+* Aplikace logiky, ze které chcete zavolat cílový koncový bod. Pokud chcete začít s triggerem HTTP + Swagger, [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci HTTP + Swagger, spusťte aplikaci logiky s libovolným triggerem, který chcete. V tomto příkladu se jako první krok používá Trigger HTTP + Swagger.
 
-## <a name="add-an-http--swagger-trigger"></a>Přidat HTTP + Swagger aktivační událost
+## <a name="add-an-http--swagger-trigger"></a>Přidání triggeru HTTP + Swagger
 
-Tato aktivační událost integrované odešle požadavek HTTP na adresu URL pro soubor Swagger popisující rozhraní REST API a vrátí odpověď, která obsahuje obsah tohoto souboru.
+Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro soubor Swagger, který popisuje REST API a vrátí odpověď obsahující obsah tohoto souboru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete váš prázdné aplikace logiky v návrháři aplikace logiky.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
-1. V návrháři, do vyhledávacího pole zadejte jako filtr "swagger". Z **triggery** seznamu, vyberte **HTTP + Swagger** aktivační události.
+1. V návrháři do vyhledávacího pole zadejte "Swagger" jako filtr. V seznamu **triggery** vyberte aktivační událost **http + Swagger** .
 
-   ![Vyberte HTTP + Swagger aktivovat](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
+   ![Vybrat aktivační událost HTTP + Swagger](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. V **adresa URL koncového bodu SWAGGERU** , zadejte adresu URL pro soubor Swagger a vyberte **Další**.
+1. Do pole **Adresa URL koncového bodu Swagger** zadejte adresu URL souboru Swagger a vyberte **Další**.
 
-   V tomto příkladu adresa URL Swaggeru, která se nachází v oblasti západní USA pro [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+   V tomto příkladu se používá adresa URL Swagger, která je umístěná v Západní USA oblasti [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Zadejte adresu URL pro koncový bod Swaggeru](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![Zadejte adresu URL koncového bodu Swagger.](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
-1. Když je v Návrháři znázorněn operací popsaných v souboru Swagger, vyberte operaci, kterou chcete použít.
+1. Když Návrhář zobrazí operace popsané souborem Swagger, vyberte operaci, kterou chcete použít.
 
    ![Operace v souboru Swagger](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
-1. Zadejte hodnoty pro aktivační událost parametry, které se liší v závislosti na vybranou operaci, kterou chcete zahrnout do volání koncového bodu. Nastavení opakování pro jak často chcete, aby se aktivační událost pro volání koncového bodu.
+1. Zadejte hodnoty pro parametry triggeru, které se liší v závislosti na vybrané operaci, kterou chcete zahrnout do volání koncového bodu. Nastavte opakování pro to, jak často chcete, aby Trigger volal koncový bod.
 
-   Tento příklad přejmenuje aktivační události "HTTP + Swagger aktivace: Rozpoznávání tváře – zjišťovat"tak, aby měl více popisný název kroku.
+   Tento příklad přejmenuje aktivační událost na "aktivační událost HTTP + Swagger: Face-Detect", aby měl krok výstižnější název.
 
    ![Podrobnosti o operaci](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
-1. Chcete-li přidat další dostupné parametry, otevřete **přidat nový parametr** seznam a vyberte požadované parametry.
+1. Chcete-li přidat další dostupné parametry, otevřete seznam **Přidat nový parametr** a vyberte požadované parametry.
 
-   Další informace o dostupných typech ověřování pro HTTP + Swagger, naleznete v tématu [ověřování protokolu HTTP triggery a akce](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Další informace o typech ověřování dostupných pro HTTP + Swagger najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-1. Pokračujte v sestavování pracovního postupu aplikace logiky s akcemi, které běží na aktivaci triggeru.
+1. Pokračujte v vytváření pracovního postupu aplikace logiky s akcemi, které se spustí, když se Trigger aktivuje.
 
-1. Jakmile budete hotovi, nezapomeňte si uložit aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Až budete hotovi, nezapomeňte uložit aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-## <a name="add-an-http--swagger-action"></a>Přidat HTTP + Swagger akce
+## <a name="add-an-http--swagger-action"></a>Přidat akci HTTP + Swagger
 
-Toto integrované akce provede požadavek HTTP na adresu URL pro soubor Swagger popisující rozhraní REST API a vrátí odpověď, která obsahuje obsah tohoto souboru.
+Tato Vestavěná akce vytvoří požadavek HTTP na adresu URL pro soubor Swagger, který popisuje REST API a vrátí odpověď obsahující obsah tohoto souboru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevření aplikace logiky v návrháři aplikace logiky.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V části krok, ve které chcete přidat HTTP + Swagger akci, vyberte **nový krok**.
+1. V kroku, kam chcete přidat akci HTTP + Swagger, vyberte **Nový krok**.
 
-   Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. V návrháři, do vyhledávacího pole zadejte jako filtr "swagger". Z **akce** seznamu, vyberte **HTTP + Swagger** akce.
+1. V návrháři do vyhledávacího pole zadejte "Swagger" jako filtr. V seznamu **Akce** vyberte akci **http + Swagger** .
 
-    ![Vyberte HTTP + Swagger akce](./media/connectors-native-http-swagger/select-http-swagger-action.png)
+    ![Vybrat akci HTTP + Swagger](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. V **adresa URL koncového bodu SWAGGERU** , zadejte adresu URL pro soubor Swagger a vyberte **Další**.
+1. Do pole **Adresa URL koncového bodu Swagger** zadejte adresu URL souboru Swagger a vyberte **Další**.
 
-   V tomto příkladu adresa URL Swaggeru, která se nachází v oblasti západní USA pro [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+   V tomto příkladu se používá adresa URL Swagger, která je umístěná v Západní USA oblasti [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Zadejte adresu URL pro koncový bod Swaggeru](./media/connectors-native-http-swagger/http-swagger-action-parameters.png)
+   ![Zadejte adresu URL koncového bodu Swagger.](./media/connectors-native-http-swagger/http-swagger-action-parameters.png)
 
-1. Když je v Návrháři znázorněn operací popsaných v souboru Swagger, vyberte operaci, kterou chcete použít.
+1. Když Návrhář zobrazí operace popsané souborem Swagger, vyberte operaci, kterou chcete použít.
 
    ![Operace v souboru Swagger](./media/connectors-native-http-swagger/http-swagger-action-operations.png)
 
-1. Zadejte hodnoty parametrů akce, které se liší podle vybraného operace, které chcete zahrnout do volání koncového bodu.
+1. Zadejte hodnoty pro parametry akce, které se liší v závislosti na vybrané operaci, kterou chcete zahrnout do volání koncového bodu.
 
-   Tento příklad nemá žádné parametry, ale přejmenuje akci, která se "HTTP + Swagger akce: Rozpoznávání tváře – identifikace"tak, aby měl více popisný název kroku.
+   Tento příklad nemá žádné parametry, ale přejmenuje akci na HTTP + Swagger Action: Face-Identifikujte, aby měl krok výstižnější název.
 
    ![Podrobnosti o operaci](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
 
-1. Chcete-li přidat další dostupné parametry, otevřete **přidat nový parametr** seznam a vyberte požadované parametry.
+1. Chcete-li přidat další dostupné parametry, otevřete seznam **Přidat nový parametr** a vyberte požadované parametry.
 
-   Další informace o dostupných typech ověřování pro HTTP + Swagger, naleznete v tématu [ověřování protokolu HTTP triggery a akce](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Další informace o typech ověřování dostupných pro HTTP + Swagger najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-1. Jakmile budete hotovi, nezapomeňte si uložit aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Až budete hotovi, nezapomeňte uložit aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 <a name="host-swagger"></a>
 
-## <a name="host-swagger-in-azure-storage"></a>Hostitel Swagger ve službě Azure Storage
+## <a name="host-swagger-in-azure-storage"></a>V Azure Storage hostitele Swagger
 
-Můžete odkazovat na soubor Swagger, který není hostitelem nebo, který nesplňuje požadavky mezi zdroji na zabezpečení a nahrání souboru do kontejneru objektů blob v účtu služby Azure storage a povolením CORS na tomto účtu úložiště. K vytvoření, nastavení a ukládání souborů Swagger ve službě Azure Storage, postupujte podle těchto kroků:
+Můžete odkazovat na soubor Swagger, který není hostovaný nebo který nesplňuje požadavky na zabezpečení a více zdrojů, odesláním tohoto souboru do kontejneru objektů BLOB v účtu úložiště Azure a povolením CORS v tomto účtu úložiště. Pokud chcete vytvářet, nastavovat a ukládat soubory Swagger v Azure Storage, postupujte podle následujících kroků:
 
 1. [Vytvořte si účet Azure Storage](../storage/common/storage-create-storage-account.md).
 
-1. Nyní povolte CORS pro objekt blob. V nabídce účtu úložiště vyberte **CORS**. Na **službu Blob service** kartu, zadejte tyto hodnoty a pak vyberte **Uložit**.
+1. Nyní povolte CORS pro objekt BLOB. V nabídce účtu úložiště vyberte **CORS**. Na kartě **BLOB Service** zadejte tyto hodnoty a pak vyberte **Uložit**.
 
    | Vlastnost | Hodnota |
    |----------|-------|
@@ -134,38 +134,38 @@ Můžete odkazovat na soubor Swagger, který není hostitelem nebo, který nespl
    | **Maximální stáří** (v sekundách) | `200` |
    |||
 
-   I když v tomto příkladu [webu Azure portal](https://portal.azure.com), můžete použít nástroj, jako [Průzkumníka služby Azure Storage](https://storageexplorer.com/), nebo automaticky konfigurovat toto nastavení s použitím této ukázky [skript prostředí PowerShell](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1).
+   I když tento příklad používá [Azure Portal](https://portal.azure.com), můžete použít nástroj jako [Průzkumník služby Azure Storage](https://storageexplorer.com/)nebo automaticky nakonfigurovat toto nastavení pomocí tohoto ukázkového [skriptu PowerShellu](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1).
 
-1. [Vytvořte kontejner objektů blob](../storage/blobs/storage-quickstart-blobs-portal.md). Ke kontejneru **přehled** vyberte **změnit úroveň přístupu**. Z **úroveň veřejného přístupu** seznamu vyberte **objektů Blob (anonymní přístup pro čtení pro objekty BLOB pouze)** a vyberte **OK**.
+1. [Vytvořte kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). V podokně s **přehledem** kontejneru vyberte **změnit úroveň přístupu**. V seznamu **úroveň veřejného přístupu** vyberte možnost **objekt BLOB (anonymní přístup pro čtení jenom pro objekty BLOB)** a vyberte **OK**.
 
-1. [Nahrát soubor Swagger do kontejneru objektů blob](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)– buď prostřednictvím [webu Azure portal](https://portal.azure.com) nebo [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
+1. [Nahrajte soubor Swagger do kontejneru objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), a to buď pomocí [Azure Portal](https://portal.azure.com) , nebo [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 
-1. Chcete-li odkazovat na soubor v kontejneru objektů blob, použijte odkazu HTTPS, který následuje tento formát, který je velká a malá písmena:
+1. Chcete-li odkazovat na soubor v kontejneru objektů blob, použijte propojení HTTPS, které následuje po tomto formátu, což rozlišuje malá a velká písmena:
 
    `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Zde jsou další informace o výstup z HTTP + Swagger triggeru nebo akce. HTTP + Swagger volání vrátí tyto informace:
+Zde jsou další informace o výstupech z triggeru HTTP + Swagger nebo akce. Volání HTTP + Swagger vrátí tyto informace:
 
-| Název vlastnosti | Type | Popis |
+| Název vlastnosti | Typ | Popis |
 |---------------|------|-------------|
-| Záhlaví | objekt | Hlavičky požadavku |
-| Text | objekt | JSON – objekt | Objekt s obsah textu požadavku |
+| Záhlaví | object | Hlavičky z požadavku |
+| těles | object | Objekt JSON | Objekt s obsahem textu z požadavku |
 | Stavový kód | int | Stavový kód z požadavku |
 |||
 
 | Kód stavu | Popis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Přijato |
-| 400 | Nesprávná žádost |
+| 202 | Přijata |
+| 400 | Chybný požadavek |
 | 401 | Neautorizováno |
-| 403 | Zakázáno |
-| 404 | Nebyl nalezen |
-| 500 | Vnitřní chyba serveru. Došlo k neznámé chybě. |
+| 403 | Forbidden |
+| 404 | Nenalezeno |
+| 500 | Došlo k vnitřní chybě serveru. Došlo k neznámé chybě. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

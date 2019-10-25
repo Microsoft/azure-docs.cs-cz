@@ -10,26 +10,26 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/27/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2069f0161ea2600a62ab123206d0ebe3c00642c3
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 72d9f0c7df12bd6746cd5cf0336e7bd58b6cc88d
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804377"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809038"
 ---
-# <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>Vytvoření kontroly přístupu rolí Azure AD v PIM
+# <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Vytvoření kontroly přístupu rolí Azure AD v Privileged Identity Management
 
-Přístup k rolím privilegované role Azure AD pro zaměstnance se v průběhu času mění. Chcete-li snížit riziko související se zastaralými přiřazeními rolí, měli byste pravidelně kontrolovat přístup. K vytváření kontrol přístupu pro privilegované role Azure AD můžete použít Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Můžete také nakonfigurovat opakované kontroly přístupu, ke kterým dochází automaticky.
+Požadavky uživatelů na získání přístupu k privilegovaným rolím Azure Active Directory (Azure AD) se můžou v průběhu času měnit. Chcete-li snížit riziko související se zastaralými přiřazeními rolí, měli byste pravidelně kontrolovat přístup. K vytváření kontrol přístupu pro privilegované role Azure AD můžete použít Azure AD Privileged Identity Management (PIM). Můžete také nakonfigurovat opakované kontroly přístupu, ke kterým dochází automaticky.
 
 Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro privilegované role Azure AD.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Otevřít recenze přístupů
 
@@ -37,19 +37,17 @@ Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro p
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. V nabídce vlevo klikněte na **role Azure AD** a pak klikněte na kontroly **přístupu**.
+1. V nabídce vlevo vyberte **role Azure AD** a pak vyberte kontroly **přístupu**.
 
-1. V části Spravovat klikněte na **recenze přístupů**.
+1. V části Spravovat vyberte **recenze přístupů**.
 
     ![Role Azure AD – seznam kontrol přístupu zobrazuje stav všech revizí](./media/pim-how-to-start-security-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>Spustit kontrolu přístupu
 
-Po zadání nastavení pro kontrolu přístupu klikněte na **Spustit**. Kontrola přístupu se zobrazí v seznamu s indikátorem jeho stavu.
+Po zadání nastavení pro kontrolu přístupu vyberte **Spustit**. Kontrola přístupu se zobrazí v seznamu s indikátorem jeho stavu.
 
 ![Seznam kontrol přístupu zobrazuje stav spuštěných revizí](./media/pim-how-to-start-security-review/access-reviews-list.png)
 
