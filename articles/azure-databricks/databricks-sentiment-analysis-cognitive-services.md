@@ -9,211 +9,211 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 1d8b3aad3104f07f8f6499c88f00328c95047816
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 1a0d0426904ef5f9f49a627120ff2cc65f630861
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274221"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785931"
 ---
-# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Kurz: analýza mínění dat streamování pomocí Azure Databricks
+# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Kurz: Analýza mínění na streamovaných datech pomocí Azure Databricks
 
-V tomto kurzu se naučíte, jak spustit analýzu mínění pro datový proud dat pomocí Azure Databricks téměř v reálném čase. Pomocí služby Azure Event Hubs nastavíte systém pro příjem dat. Zprávy z Event Hubs můžete využívat Azure Databricks pomocí konektoru Spark Event Hubs. Nakonec použijete rozhraní API pro rozpoznávání služby ke spuštění analýzy mínění dat v datových proudech.
+V tomto kurzu se naučíte, jak spustit analýzu mínění pro datový proud dat pomocí Azure Databricks téměř v reálném čase. Pomocí služby Azure Event Hubs nastavíte systém pro příjem dat. Pomocí konektoru služby Event Hubs pro Spark budete přijímat zprávy ze služby Event Hubs do Azure Databricks. Nakonec použijete rozhraní API pro rozpoznávání služby ke spuštění analýzy mínění dat v datových proudech.
 
-Po konci tohoto kurzu budete mít datový proud tweety z Twitteru, který má v nich výraz "Azure", a spustili jste mínění analýzu na tweety.
+Na konci tohoto kurzu budete streamovat tweety z Twitteru, které obsahují výraz Azure, a na těchto tweetech spustíte analýzu mínění.
 
-Následující ilustrace znázorňuje tok aplikace:
+Následující obrázek ukazuje běh aplikace:
 
 ![Azure Databricks s Event Hubs a Cognitive Services](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-tutorial.png "Azure Databricks s Event Hubs a Cognitive Services")
 
-Tento kurz se zabývá následujícími úlohami:
+Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Vytvoření pracovního prostoru Azure Databricks
 > * Vytvoření clusteru Spark v Azure Databricks
-> * Vytvoření aplikace Twitter pro přístup k datovým proudům
+> * Vytvoření twitterové aplikace pro přístup ke streamovaným datům
 > * Vytvoření poznámkových bloků v Azure Databricks
-> * Připojit knihovny pro Event Hubs a rozhraní Twitter API
+> * Připojení knihoven pro službu Event Hubs a rozhraní Twitter API
 > * Vytvoření účtu Cognitive Services a načtení přístupového klíče
-> * Odeslat tweety do Event Hubs
-> * Číst tweety z Event Hubs
-> * Spuštění analýzy mínění na tweety
+> * Odeslání tweetů do služby Event Hubs
+> * Čtení tweetů ze služby Event Hubs
+> * Spuštění analýzy mínění na tweetech
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall) před tím, než začnete.
 
 > [!Note]
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
-> Pokud chcete před vytvořením clusteru použít bezplatný Azure Databricks účet, přejděte do svého profilu a změňte předplatné na **průběžné platby**. Další informace najdete v tématu [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall).
+> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
-- Obor názvů Azure Event Hubs.
-- Centrum událostí v rámci oboru názvů.
-- Připojovací řetězec pro přístup k oboru názvů Event Hubs. Připojovací řetězec by měl mít formát podobný `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`.
-- Název zásady sdíleného přístupu a klíč zásad pro Event Hubs.
+- Obor názvů služby Azure Event Hubs.
+- Centrum událostí v rámci tohoto oboru názvů.
+- Připojovací řetězec pro přístup k oboru názvů služby Event Hubs. Připojovací řetězec by měl mít formát podobný tomuto: `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`.
+- Název zásady sdíleného přístupu a klíč zásady pro službu Event Hubs.
 
-Tyto požadavky můžete splnit provedením kroků v článku [Vytvoření oboru názvů Azure Event Hubs a centra událostí](../event-hubs/event-hubs-create.md).
+Tyto požadavky můžete splnit dokončením kroků v článku [Vytvoření oboru názvů služby Azure Event Hubs a centra událostí](../event-hubs/event-hubs-create.md).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlaste se k Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
-V této části vytvoříte Azure Databricks pracovní prostor pomocí Azure Portal.
+V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. V Azure Portal vyberte **vytvořit prostředek** > **data a analýzy** > **Azure Databricks**.
+1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Data a analýzy** > **Azure Databricks**.
 
-    ![Datacihly na Azure Portal](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "datacihly na Azure Portal")
+    ![Datacihly na Azure Portal](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
-3. V části **služba Azure Databricks**zadejte hodnoty pro vytvoření pracovního prostoru datacihly.
+3. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 
-    ![Vytvoření pracovního prostoru Azure Databricks](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-workspace.png "vytvoření pracovního prostoru Azure Databricks")
+    ![Vytvoření pracovního prostoru Azure Databricks](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-workspace.png "Vytvoření pracovního prostoru Azure Databricks")
 
     Zadejte následující hodnoty:
 
     |Vlastnost  |Popis  |
     |---------|---------|
-    |**Název pracovního prostoru**     | Zadejte název pracovního prostoru datacihly.        |
-    |**Formě**     | V rozevíracím seznamu vyberte své předplatné Azure.        |
-    |**Skupina prostředků**     | Určete, zda chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace najdete v tématu [Přehled skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md). |
-    |**Poloha**     | Vyberte **východní USA 2**. Další dostupné oblasti najdete v tématu [služby Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall).        |
-    |**Cenová úroveň**     |  Vyberte si z **úrovně Standard** nebo **Premium**. Další informace o těchto úrovních najdete na stránce s [cenami pro datacihly](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).       |
+    |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
+    |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
+    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/resource-group-overview.md). |
+    |**Umístění**     | Vyberte **Východní USA 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall).        |
+    |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).       |
 
-    Vyberte **Připnout na řídicí panel** a pak vyberte **vytvořit**.
+    Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit**.
 
-4. Vytváření účtů trvá několik minut. Během vytváření účtu se na pravé straně portálu zobrazí dlaždice **odeslání nasazení pro Azure Databricks** . Možná budete muset přejít na řídicí panel Doprava, aby se dlaždice zobrazila. V horní části obrazovky se zobrazí také indikátor průběhu. Pro průběh můžete sledovat obě oblasti.
+4. Vytvoření účtu trvá několik minut. Během vytváření účtu se na pravé straně portálu zobrazí dlaždice **Odesílání nasazení pro Azure Databricks**. Možná se budete muset posunout do pravé části řídicího panelu, aby se dlaždice zobrazila. V horní části obrazovky se také zobrazí indikátor průběhu. Průběh můžete sledovat v obou oblastech.
 
-    Dlaždice nasazení datacihly ![dlaždice](./media/databricks-sentiment-analysis-cognitive-services/databricks-deployment-tile.png "nasazení datacihly")
+    ![Dlaždice nasazení datacihly](./media/databricks-sentiment-analysis-cognitive-services/databricks-deployment-tile.png "Dlaždice nasazení datacihly")
 
-## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark v datacihlách
+## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
-1. V Azure Portal přejdete do pracovního prostoru datacihly, který jste vytvořili, a pak vyberete **Spustit pracovní prostor**.
+1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
 
-2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **cluster**.
+2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Cluster**.
 
-    ![Datacihly v Azure](./media/databricks-sentiment-analysis-cognitive-services/databricks-on-azure.png "datacihlách v Azure")
+    ![Datacihly v Azure](./media/databricks-sentiment-analysis-cognitive-services/databricks-on-azure.png "Datacihly v Azure")
 
-3. Na stránce **nový cluster** zadejte hodnoty pro vytvoření clusteru.
+3. Na stránce **New cluster** (Nový cluster) zadejte hodnoty pro vytvoření clusteru.
 
     ![Vytvoření clusteru datacihly Spark v Azure](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-spark-cluster.png "Vytvoření clusteru datacihly Spark v Azure")
 
-    Přijměte všechny ostatní výchozí hodnoty kromě následujících:
+    Přijměte všechny výchozí hodnoty kromě následujících:
 
    * Zadejte název clusteru.
    * V tomto článku vytvořte cluster s modulem runtime **5,2** .
-   * Ujistěte se, že jste zaškrtli políčko **ukončit po \_ @ no__t – 2 minuty nečinnosti** . Zadejte dobu (v minutách), po kterou se má cluster ukončit, pokud se cluster nepoužívá.
+   * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po __ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
    Vyberte pracovní proces clusteru a velikost uzlu ovladače vhodné pro vaše technická kritéria a [rozpočet](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).
 
-     Vyberte **vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
+     Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
 ## <a name="create-a-twitter-application"></a>Vytvoření aplikace Twitter
 
-Pro příjem datového proudu tweety vytvoříte aplikaci na Twitteru. Postupujte podle pokynů k vytvoření aplikace Twitter a poznamenejte si hodnoty, které potřebujete k dokončení tohoto kurzu.
+Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. Postupujte podle pokynů k vytvoření aplikace Twitter a poznamenejte si hodnoty, které potřebujete k dokončení tohoto kurzu.
 
 1. Ve webovém prohlížeči klikněte na [Twitter pro vývojáře](https://developer.twitter.com/en/apps)a vyberte **vytvořit aplikaci**. Může se zobrazit zpráva oznamující, že je potřeba požádat o vývojářský účet pro Twitter. Nebojte se tak a po schválení vaší aplikace by se měl zobrazit potvrzovací e-mail. Schválení pro vývojářský účet může trvat několik dní.
 
-    Potvrzení ![účtu vývojáře Twitteru potvrzení]účtu pro(./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "vývojáře Twitteru")
+    ![Potvrzení účtu vývojáře pro Twitter](./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "Potvrzení účtu vývojáře pro Twitter")
 
-2. Na stránce **vytvořit aplikaci** zadejte podrobnosti nové aplikace a pak vyberte **vytvořit aplikaci Twitter**.
+2. Na stránce **Create an application** (Vytvoření aplikace) zadejte podrobnosti o nové aplikaci a pak vyberte **Create your Twitter application** (Vytvořit aplikaci Twitter).
 
-    Podrobnosti ![o aplikaci Twitter]podrobnosti(./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details.png "aplikace Twitter")
+    ![Podrobnosti o aplikaci Twitter](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details.png "Podrobnosti o aplikaci Twitter")
 
-    Podrobnosti ![o aplikaci Twitter]podrobnosti(./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details-create.png "aplikace Twitter")
+    ![Podrobnosti o aplikaci Twitter](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details-create.png "Podrobnosti o aplikaci Twitter")
 
-3. Na stránce aplikace vyberte kartu **klíče a tokeny** a zkopírujte hodnoty **klíč rozhraní API příjemce** a **tajného klíče rozhraní API příjemce**. Pokud chcete generovat přístupové tokeny, vyberte také možnost **vytvořit** v části **přístupový token a tajný klíč přístupového tokenu** . Zkopírujte hodnoty **přístupového tokenu** a **tajného klíče přístupového tokenu**.
+3. Na stránce aplikace vyberte kartu **klíče a tokeny** a zkopírujte hodnoty **klíč rozhraní API příjemce** a **tajného klíče rozhraní API příjemce**. Pokud chcete generovat přístupové tokeny, vyberte také možnost **vytvořit** v části **přístupový token a tajný klíč přístupového tokenu** . Zkopírujte hodnoty **Access Token** (Přístupový token) a **Access Token Secret** (Tajný klíč přístupového tokenu).
 
-    Podrobnosti ![o aplikaci Twitter]podrobnosti(./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "aplikace Twitter")
+    ![Podrobnosti o aplikaci Twitter](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Podrobnosti o aplikaci Twitter")
 
-Uložte hodnoty, které jste načetli pro aplikaci Twitter. Hodnoty budete potřebovat později v tomto kurzu.
+Uložte hodnoty, které jste načetli pro aplikaci Twitter. Tyto hodnoty budete potřebovat v pozdější části kurzu.
 
-## <a name="attach-libraries-to-spark-cluster"></a>Připojit knihovny ke clusteru Spark
+## <a name="attach-libraries-to-spark-cluster"></a>Připojení knihoven ke clusteru Spark
 
-V tomto kurzu odešlete tweety do Event Hubs pomocí rozhraní Twitter API. Ke čtení a zápisu dat do služby Azure Event Hubs se používá také [konektor Apache Spark Event Hubs](https://github.com/Azure/azure-event-hubs-spark?WT.mc_id=sparkeventhubs-docs-alehall) . Pokud chcete tato rozhraní API používat jako součást clusteru, přidejte je jako knihovny, abyste je Azure Databricks a přidružte je k vašemu clusteru Spark. Následující pokyny ukazují, jak přidat knihovnu.
+V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní Twitter API. Použijete také [konektor služby Event Hubs pro Apache Spark](https://github.com/Azure/azure-event-hubs-spark?WT.mc_id=sparkeventhubs-docs-alehall) ke čtení a zápisu dat do služby Azure Event Hubs. Pokud chcete tato rozhraní API používat jako součást clusteru, přidejte je jako knihovny, abyste je Azure Databricks a přidružte je k vašemu clusteru Spark. Následující pokyny ukazují, jak přidat knihovnu.
 
 1. V pracovním prostoru Azure Databricks vyberte **clustery**a vyberte svůj stávající cluster Spark. V nabídce cluster vyberte možnost **knihovny** a klikněte na možnost **nainstalovat novou**.
 
-   ![Dialogové okno Přidat knihovnu](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Přidání knihovny najít cluster")
+   ![Dialogové okno Přidat knihovnu](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Přidat knihovnu najít cluster")
 
-   ![Přidat knihovnu – dialogové okno](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "přidat knihovnu nainstalovat novou")
+   ![Dialogové okno Přidat knihovnu](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Přidat novou knihovnu pro instalaci")
 
-2. Na stránce Nová knihovna vyberte v části **zdroj** možnost **Maven**. Pro **souřadnici**klikněte na **Vyhledat balíčky** pro balíček, který chcete přidat. Tady jsou souřadnice Maven pro knihovny používané v tomto kurzu:
+2. Na stránce Nová knihovna vyberte v části **zdroj** možnost **Maven**. Pro **souřadnici**klikněte na **Vyhledat balíčky** pro balíček, který chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
 
-   * Konektor Spark Event Hubs – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
-   * Rozhraní Twitter API-`org.twitter4j:twitter4j-core:4.0.7`
+   * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+   * Rozhraní Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
 
-     ![Zadání souřadnic Maven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "poskytují souřadnice Maven")
+     ![Zadat souřadnice Maven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Zadat souřadnice Maven")
 
-     ![Zadání](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "souřadnic Maven hledání") souřadnic Maven
+     ![Zadat souřadnice Maven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Hledat souřadnice Maven")
 
-3. Vyberte **nainstalovat**.
+3. Vyberte **Install** (Nainstalovat).
 
 4. V nabídce cluster zajistěte, aby byly správně nainstalovány a připojeny obě knihovny.
 
-    ![Kontrolovat knihovny](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "kontroly") knihoven
+    ![Kontrolovat knihovny](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "Kontrolovat knihovny")
 
-6. Opakujte tento postup pro balíček Twitteru `twitter4j-core:4.0.7`.
+6. Zopakujte tyto kroky pro balíček Twitteru `twitter4j-core:4.0.7`.
 
-## <a name="get-a-cognitive-services-access-key"></a>Získat Cognitive Services přístupový klíč
+## <a name="get-a-cognitive-services-access-key"></a>Získání přístupového klíče služeb Cognitive Services
 
 V tomto kurzu použijete [rozhraní API služby Azure Cognitive Services analýza textu](../cognitive-services/text-analytics/overview.md) ke spouštění analýzy mínění pro datový proud tweety téměř v reálném čase. Předtím, než použijete rozhraní API, musíte vytvořit účet Azure Cognitive Services v Azure a načíst přístupový klíč pro použití rozhraní API Analýza textu.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
-2. Vyberte **+ vytvořit prostředek**.
+2. Vyberte **+ Vytvořit prostředek**.
 
-3. V části Azure Marketplace vyberte **AI a Cognitive Services** > **rozhraní API pro analýzu textu**.
+3. V části Azure Marketplace vyberte **AI a Cognitive Services** > **Rozhraní API pro analýzu textu**.
 
-    ![Vytvoření účtu služby]pro rozpoznávání účtů vytvoření účtu služby pro(./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "rozpoznávání")
+    ![Vytvořit účet služby pro rozpoznávání](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Vytvořit účet služby pro rozpoznávání")
 
-4. V dialogovém okně **vytvořit** zadejte následující hodnoty:
+4. V dialogovém okně **Vytvořit** zadejte následující hodnoty:
 
-    ![Vytvoření účtu služby]pro rozpoznávání účtů vytvoření účtu služby pro(./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "rozpoznávání")
+    ![Vytvořit účet služby pro rozpoznávání](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "Vytvořit účet služby pro rozpoznávání")
 
-   - Zadejte název účtu Cognitive Services.
+   - Zadejte název účtu služeb Cognitive Services.
    - Vyberte předplatné Azure, ve kterém se účet vytvoří.
    - Vyberte umístění Azure.
-   - Vyberte cenovou úroveň služby. Další informace o cenách Cognitive Services najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/?WT.mc_id=sparkeventhubs-docs-alehall).
+   - Vyberte cenovou úroveň služby. Další informace o cenách služeb Cognitive Services najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/?WT.mc_id=sparkeventhubs-docs-alehall).
    - Určete, jestli chcete vytvořit novou skupinu prostředků, nebo vyberte existující.
 
-     Vyberte **vytvořit**.
+     Vyberte **Create** (Vytvořit).
 
 5. Po vytvoření účtu vyberte na kartě **Přehled** možnost **Zobrazit přístupové klíče**.
 
-    ![Zobrazit]přístupové klíče(./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "zobrazení") přístupových klíčů
+    ![Zobrazit přístupové klíče](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Zobrazit přístupové klíče")
 
-    Zkopírujte také část adresy URL koncového bodu, jak je znázorněno na snímku obrazovky. Tuto adresu URL budete potřebovat v tomto kurzu.
+    Zkopírujte také část adresy URL koncového bodu, jak je znázorněno na snímku obrazovky. Tuto adresu URL budete potřebovat v další části kurzu.
 
-6. V části **spravovat klíče**vyberte ikonu kopírování na klíč, který chcete použít.
+6. V části **Správa klíčů** vyberte ikonu kopírování vedle klíče, který chcete použít.
 
-    ![Kopírování přístupových klíčů](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-copy-access-keys.png "kopírování přístupových") klíčů
+    ![Kopírování přístupových klíčů](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-copy-access-keys.png "Kopírování přístupových klíčů")
 
-7. Uložte hodnoty adresy URL koncového bodu a přístupového klíče, který jste získali v tomto kroku. Budete ho potřebovat později v tomto kurzu.
+7. Uložte hodnoty adresy URL koncového bodu a přístupového klíče, které jste v tomto kroku načetli. Budete je potřebovat později v tomto kurzu.
 
-## <a name="create-notebooks-in-databricks"></a>Vytvoření poznámkových bloků v datacihlách
+## <a name="create-notebooks-in-databricks"></a>Vytvoření poznámkových bloků v Databricks
 
-V této části vytvoříte v pracovním prostoru datacihly dva poznámkové bloky s následujícími názvy.
+V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bloky s následujícími názvy:
 
-- **SendTweetsToEventHub** – Poznámkový blok pro výrobce, který použijete k získání tweety z Twitteru a jeho streamování do Event Hubs.
-- **AnalyzeTweetsFromEventHub** – uživatelský Poznámkový blok, který použijete ke čtení tweety z Event Hubs a spuštění analýzy mínění.
+- **SendTweetsToEventHub** –Poznámkový blob producenta, který použijete k získání tweetů z Twitteru a jejich streamování do služby Event Hubs.
+- **AnalyzeTweetsFromEventHub** – Poznámkový blok konzumenta, který použijete ke čtení tweetů ze služby Event Hubs a spuštění analýzy mínění.
 
-1. V levém podokně vyberte **pracovní prostor**. V rozevíracím seznamu **pracovní prostor** vyberte **vytvořit**a pak vyberte **Poznámkový blok**.
+1. V levém podokně vyberte **Pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** a pak vyberte **Poznámkový blok**.
 
-    ![Vytvoření poznámkového bloku v datacihlách](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "vytvoření poznámkového bloku v datacihlech")
+    ![Vytvoření poznámkového bloku v datacihlech](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Vytvoření poznámkového bloku v datacihlech")
 
-2. V dialogovém okně **vytvořit Poznámkový blok** zadejte **SendTweetsToEventHub**, jako jazyk vyberte **Scala** a vyberte cluster Spark, který jste vytvořili dříve.
+2. V dialogovém okně **Vytvořit poznámkový blok** zadejte název **SendTweetsToEventHub**, vyberte jazyk **Scala** a vyberte cluster Spark, který jste vytvořili dříve.
 
-    ![Vytvoření poznámkového bloku v datacihlách](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "vytvoření poznámkového bloku v datacihlech")
+    ![Vytvoření poznámkového bloku v datacihlech](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
 
-    Vyberte **vytvořit**.
+    Vyberte **Create** (Vytvořit).
 
-3. Opakujte postup pro vytvoření poznámkového bloku **AnalyzeTweetsFromEventHub** .
+3. Zopakováním těchto kroků vytvořte i poznámkový blok **AnalyzeTweetsFromEventHub**.
 
-## <a name="send-tweets-to-event-hubs"></a>Odeslat tweety do Event Hubs
+## <a name="send-tweets-to-event-hubs"></a>Odeslání tweetů do služby Event Hubs
 
-Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tyto streamy poznámkových bloků tweety s klíčovým slovem "Azure" do Event Hubs v reálném čase.
+Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
 
 > [!NOTE]
 > Rozhraní Twitter API má určitá omezení požadavků a [kvóty](https://developer.twitter.com/en/docs/basics/rate-limiting.html). Pokud nesplňujete standardní omezení rychlosti v rozhraní Twitter API, můžete v tomto příkladu vygenerovat textový obsah bez použití rozhraní Twitter API. Chcete-li to provést, nastavte proměnnou **DataSource** na `test` namísto `twitter` a naplňte seznam **testSource** s preferovaným vstupem testu.
@@ -314,7 +314,7 @@ Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a n
     eventHubClient.get().close()
 ```
 
-Chcete-li spustit Poznámkový blok, stiskněte klávesu **SHIFT + ENTER**. Zobrazí se výstup podobný následujícímu fragmentu kódu. Každá událost ve výstupu je v případě, že je součástí Event Hubs, který obsahuje pojem "Azure".
+Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup podobný následujícímu fragmentu kódu. Každá událost ve výstupu představuje tweet, který obsahuje výraz Azure a ingestuje se do služby Event Hubs.
 
     Sent event: @Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence
 
@@ -331,9 +331,9 @@ Chcete-li spustit Poznámkový blok, stiskněte klávesu **SHIFT + ENTER**. Zobr
     ...
     ...
 
-## <a name="read-tweets-from-event-hubs"></a>Číst tweety z Event Hubs
+## <a name="read-tweets-from-event-hubs"></a>Čtení tweetů ze služby Event Hubs
 
-Do poznámkového bloku **AnalyzeTweetsFromEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš Event Hubs Azure, které jste vytvořili dříve. Tento Poznámkový blok přečte tweety, které jste dřív použili při streamování do Event Hubs pomocí poznámkového bloku **SendTweetsToEventHub** .
+Do poznámkového bloku **AnalyzeTweetsFromEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro vaši službu Azure Event Hubs, kterou jste vytvořili dříve. Tento poznámkový blok čte tweety, které jste předtím streamovali do služby Event Hubs pomocí poznámkového bloku **SendTweetsToEventHub**.
 
 ```scala
 
@@ -391,7 +391,7 @@ Zobrazí se následující výstup:
     ...
     ...
 
-Vzhledem k tomu, že výstup je v binárním režimu, použijte následující fragment kódu k převedení na řetězec.
+Vzhledem k tomu, že se výstup zobrazuje v binárním režimu, pomocí následujícího fragmentu kódu ho převeďte na řetězec.
 
 ```scala
     import org.apache.spark.sql.types._
@@ -412,7 +412,7 @@ Vzhledem k tomu, že výstup je v binárním režimu, použijte následující f
     messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
 ```
 
-Výstup je nyní podobný následujícímu fragmentu kódu:
+Výstup teď vypadá podobně jako následující fragment kódu:
 
     root
      |-- Offset: long (nullable = true)
@@ -439,13 +439,13 @@ Výstup je nyní podobný následujícímu fragmentu kódu:
     ...
     ...
 
-Nyní máte streamovaná data z Azure Event Hubs do Azure Databricks téměř v reálném čase pomocí konektoru Event Hubs pro Apache Spark. Další informace o použití konektoru Event Hubs pro Spark najdete v [dokumentaci k konektoru](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs?WT.mc_id=sparkeventhubs-docs-alehall).
+Nyní máte streamovaná data z Azure Event Hubs do Azure Databricks téměř v reálném čase pomocí konektoru Event Hubs pro Apache Spark. Další informace o použití konektoru služby Event Hubs pro Spark najdete v [dokumentaci ke konektorům](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs?WT.mc_id=sparkeventhubs-docs-alehall).
 
-## <a name="run-sentiment-analysis-on-tweets"></a>Spuštění analýzy mínění na tweety
+## <a name="run-sentiment-analysis-on-tweets"></a>Spuštění analýzy mínění na tweetech
 
-V této části spustíte analýzu mínění na tweety přijatých pomocí rozhraní Twitter API. V této části přidáte fragmenty kódu do stejného poznámkového bloku **AnalyzeTweetsFromEventHub** .
+V této části spustíte analýzu mínění na tweetech přijatých pomocí rozhraní Twitter API. Fragmenty kódu v této části přidáte do stejného poznámkového bloku **AnalyzeTweetsFromEventHub**.
 
-Začněte přidáním nové buňky kódu do poznámkového bloku a vložte níže uvedený fragment kódu. Tento fragment kódu definuje datové typy pro práci s jazykem a rozhraním API pro mínění.
+Začněte tím, že do poznámkového bloku přidáte novou buňku kódu a vložíte do ní níže uvedený fragment kódu. Tento fragment kódu definuje datové typy pro práci s rozhraními API pro analýzu jazyka a mínění.
 
 ```scala
 import java.io._
@@ -463,7 +463,7 @@ case class RequestToTextApi(documents: Array[RequestToTextApiDocument]) extends 
 case class RequestToTextApiDocument(id: String, text: String, var language: String = "") extends Serializable
 ```
 
-Přidejte novou buňku kódu a vložte níže uvedený fragment kódu. Tento fragment kódu definuje objekt, který obsahuje funkce pro volání rozhraní API pro analýzu textu za účelem spuštění rozpoznávání jazyka a mínění analýzy. Zástupný symbol `<PROVIDE ACCESS KEY HERE>` nahraďte hodnotou, kterou jste načetli pro Cognitive Services účet.
+Přidejte novou buňku kódu a vložte do ní níže uvedený fragment kódu. Tento fragment kódu definuje objekt, který obsahuje funkce pro volání rozhraní API pro analýzu textu za účelem spuštění detekce jazyka a analýzy mínění. Zástupný symbol `<PROVIDE ACCESS KEY HERE>` nahraďte hodnotou, kterou jste načetli pro Cognitive Services účet.
 
 ```scala
 import javax.net.ssl.HttpsURLConnection
@@ -587,7 +587,7 @@ val toSentiment =
     )
 ```
 
-Přidáním konečné buňky kódu Připravte datový rámec s obsahem přípravné a mínění přidružené k poli.
+Přidejte poslední buňku kódu pro přípravu datového rámce s obsahem tweetu a mínění přidruženého k danému tweetu.
 
 ```scala
 // Prepare a dataframe with Content and Sentiment columns
@@ -597,7 +597,7 @@ val streamingDataFrame = incomingStream.selectExpr("cast (body as string) AS Con
 streamingDataFrame.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
 ```
 
-Měl by se zobrazit výstup podobný následujícímu fragmentu kódu:
+Zobrazený výstup by měl vypadat přibližně jako následující fragment kódu:
 
     -------------------------------------------
     Batch: 0
@@ -612,32 +612,32 @@ Měl by se zobrazit výstup podobný následujícímu fragmentu kódu:
     |4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |0.5               |
     +--------------------------------+------------------+
 
-Hodnota blíže k hodnotě **1** ve sloupci **mínění** navrhuje Skvělé prostředí pro Azure. Hodnota blíže k **0** navrhuje problémy, které uživatelé čelí při práci s Microsoft Azure.
+Hodnota ve sloupci **Sentiment** (Mínění) blížící se **1** značí skvělé zkušenosti s Azure. Hodnota blížící se **0** značí, že se uživatel při práci s Microsoft Azure setkal s problémy.
 
-A je to! Pomocí Azure Databricks jste úspěšně streamovaná data do služby Azure Event Hubs, využili jste data datového proudu pomocí konektoru Event Hubs a potom jsme spustili mínění analýzu dat streamování téměř v reálném čase.
+A to je vše! Pomocí Azure Databricks jste úspěšně streamovaná data do služby Azure Event Hubs, využili jste data datového proudu pomocí konektoru Event Hubs a potom jsme spustili mínění analýzu dat streamování téměř v reálném čase.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení tohoto kurzu můžete cluster ukončit. Provedete to tak, že z pracovního prostoru Azure Databricks v levém podokně vyberete **clustery**. U clusteru, který chcete ukončit, přesuňte kurzor na tři tečky pod sloupcem **Actions (akce** ) a vyberte ikonu **ukončit** .
+Po dokončení tohoto kurzu můžete cluster ukončit. Pokud to chcete udělat, v levém podokně v pracovním prostoru Azure Databricks vyberte **Clusters** (Clustery). U clusteru, který chcete ukončit, přesuňte kurzor na tři tečky pod sloupcem **Actions** (Akce) a vyberte ikonu **Terminate** (Ukončit).
 
-![Zastavení clusteru datacihly](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "zastavení clusteru datacihly")
+![Zastavení clusteru datacihly](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Zastavení clusteru datacihly")
 
-Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_ @ no__t – 2 minuty nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po určenou dobu neaktivní.
+Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_\_ minut při nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zjistili, jak používat Azure Databricks ke streamování dat do Azure Event Hubs a pak číst streamovaná data z Event Hubs v reálném čase. Zjistili jste, jak:
+V tomto kurzu jste zjistili, jak pomocí Azure Databricks streamovat data do služby Azure Event Hubs a pak streamovaná data v reálném čase číst ze služby Event Hubs. Naučili jste se tyto postupy:
 > [!div class="checklist"]
 > * Vytvoření pracovního prostoru Azure Databricks
 > * Vytvoření clusteru Spark v Azure Databricks
-> * Vytvoření aplikace Twitter pro přístup k datovým proudům
+> * Vytvoření twitterové aplikace pro přístup ke streamovaným datům
 > * Vytvoření poznámkových bloků v Azure Databricks
-> * Přidání a připojení knihoven pro Event Hubs a rozhraní Twitter API
-> * Vytvoření účtu Microsoft Cognitive Services a načtení přístupového klíče
-> * Odeslat tweety do Event Hubs
-> * Číst tweety z Event Hubs
-> * Spuštění analýzy mínění na tweety
+> * Přidání a připojení knihoven pro službu Event Hubs a rozhraní Twitter API
+> * Vytvoření účtu služeb Microsoft Cognitive Services a načtení přístupového klíče
+> * Odeslání tweetů do služby Event Hubs
+> * Čtení tweetů ze služby Event Hubs
+> * Spuštění analýzy mínění na tweetech
 
-Přejděte k dalšímu kurzu, kde se dozvíte, jak provádět úlohy strojového učení pomocí Azure Databricks.
+Pokračujte k dalšímu kurzu, kde se dozvíte, jak pomocí Azure Databricks provádět úlohy strojového učení.
 
 > [!div class="nextstepaction"]
 >[Machine Learning pomocí Azure Databricks](https://docs.azuredatabricks.net/spark/latest/mllib/decision-trees.html)
