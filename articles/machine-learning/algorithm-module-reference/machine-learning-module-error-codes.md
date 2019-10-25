@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: dc383d302fb3e9920ee8ef2d7d908a5b406ea1da
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128668"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693077"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Výjimky a kódy chyb pro odkaz na modul & algoritmu
 
@@ -32,15 +32,15 @@ Pokud text chybové zprávy není užitečný, pošlete nám informace o kontext
 ## <a name="error-0001"></a>Chyba 0001  
  K výjimce dojde v případě, že se nepovedlo najít jeden nebo více zadaných sloupců datové sady.  
   
- Tato chyba se zobrazí, pokud je pro modul proveden výběr sloupce, ale ve vstupní datové sadě neexistují vybrané sloupce. K této chybě může dojít, pokud jste ručně zadali název sloupce nebo pokud selektor sloupců zadal navrhovaný sloupec, který v datové sadě neexistoval při spuštění experimentu.  
+ Tato chyba se zobrazí, pokud je pro modul proveden výběr sloupce, ale ve vstupní datové sadě neexistují vybrané sloupce. K této chybě může dojít, pokud jste ručně zadali název sloupce nebo pokud selektor sloupců zadal navrhovaný sloupec, který v datové sadě neexistoval při spuštění kanálu.  
   
 **Řešení:** Znovu navštivte modul, který tuto výjimku vyvolal, a ověřte, zda jsou název sloupce nebo názvy správné a zda existují všechny odkazované sloupce.  
   
 |Zprávy výjimek|  
 |------------------------|  
 |Jeden nebo více zadaných sloupců nebylo nalezeno.|  
-|Sloupec s názvem nebo indexem{0}nebyl nalezen.|  
-|Sloupec s názvem nebo indexem{0}neexistuje{1}v "".|  
+|Sloupec s názvem nebo indexem "{0}" nebyl nalezen.|  
+|Sloupec s názvem nebo indexem "{0}" neexistuje v "{1}"|  
  
 
 ## <a name="error-0002"></a>Chyba 0,002  
@@ -53,11 +53,11 @@ Pokud text chybové zprávy není užitečný, pošlete nám informace o kontext
 |Zprávy výjimek|  
 |------------------------|  
 |Nepovedlo se analyzovat parametr.|  
-|Nepovedlo se{0}analyzovat parametr.|  
-|Nepovedlo se analyzovat (převést{0}) parametr{1}na.|  
-|Nepovedlo se{0}převést parametr{1}z na{2}.|  
-|Nepovedlo se{0}převést{1}hodnotu parametru{3}z{2}na.|  
-|Nepovedlo se převést{0}hodnotu ve{1}sloupci{3}z{2}na na: s využitím formátu{4}, který je k dispozici.|  
+|Nepovedlo se analyzovat parametr{0}.|  
+|Nepovedlo se analyzovat (převést) parametr{0}na{1}.|  
+|Nepovedlo se převést parametr{0}z{1}na{2}.|  
+|Nepovedlo se převést hodnotu parametru{0}{1}z{2}na{3}.|  
+|Nepovedlo se převést hodnotu{0}ve sloupci "{1}" z "{2}" na "{3}" s využitím formátu "{4}".|  
   
 
 ## <a name="error-0003"></a>Chyba 0003  
@@ -65,7 +65,7 @@ Pokud text chybové zprávy není užitečný, pošlete nám informace o kontext
   
  Tato chyba se zobrazí v Azure Machine Learning, pokud jsou jakékoli vstupy nebo parametry modulu null nebo prázdné.  K této chybě může dojít například v případě, že jste nezadali žádnou hodnotu parametru. Může k tomu také dojít, pokud vyberete datovou sadu, která obsahuje chybějící hodnoty, nebo prázdnou datovou sadu.  
   
-**Řešení:**
+**Rozhodnutí**
  
 + Otevřete modul, který vygeneroval výjimku, a ověřte, že byly zadány všechny vstupy. Zajistěte, aby byly zadány všechny požadované vstupy. 
 + Ujistěte se, že data načtená z Azure Storage jsou přístupná a že se název nebo klíč účtu nezměnil.  
@@ -89,8 +89,8 @@ Pokud text chybové zprávy není užitečný, pošlete nám informace o kontext
 |Zprávy výjimek|  
 |------------------------|  
 |Parametr by měl být větší než hodnota hranice.|  
-|Hodnota parametru musí být větší než {1}.{0}|  
-|{1}Parametr "{0}" má hodnotu "", která by měla být větší než{2}|  
+|Hodnota parametru "{0}" by měla být větší než {1}.|  
+|Parametr "{0}" má hodnotu "{1}", která by měla být větší než {2}|  
   
 
 
@@ -104,8 +104,8 @@ Pokud text chybové zprávy není užitečný, pošlete nám informace o kontext
 |Zprávy výjimek|  
 |------------------------|  
 |Parametr by měl být větší nebo roven hodnotě hranice.|  
-|Hodnota parametru musí být větší než nebo {1}rovna.{0}|  
-|Parametr "{0}" má hodnotu "{1}", která by měla být {2}větší nebo rovna.|  
+|Hodnota parametru "{0}" by měla být větší nebo rovna hodnotě {1}.|  
+|Parametr "{0}" má hodnotu "{1}", která by měla být větší nebo rovna {2}.|  
   
 
 ## <a name="error-0006"></a>Chyba 0006  
@@ -118,8 +118,8 @@ Pokud text chybové zprávy není užitečný, pošlete nám informace o kontext
 |Zprávy výjimek|  
 |------------------------|  
 |Neshoda parametrů Jeden z parametrů by měl být menší než jiný.|  
-|Hodnota parametru by měla být menší než hodnota{1}parametru.{0}|  
-|Parametr "{0}" má hodnotu "{1}", která by měla být {2}menší než.|  
+|Hodnota parametru "{0}" by měla být menší než hodnota parametru "{1}".|  
+|Parametr "{0}" má hodnotu "{1}", která by měla být menší než {2}.|  
   
 
 ## <a name="error-0007"></a>Chyba 0007  
@@ -129,7 +129,7 @@ Pokud text chybové zprávy není užitečný, pošlete nám informace o kontext
  
  Tato chyba se může zobrazit také v případě, že zadáváte dvě sady dat, které se musí nějakým způsobem shodovat. Například pokud přejmenováváte sloupce a určíte sloupce podle indexu, počet názvů, které zadáte, musí odpovídat počtu indexů sloupců. Dalším příkladem může být Matematická operace, která používá dva sloupce, kde sloupce musí mít stejný počet řádků. 
   
-**Řešení:**
+**Rozhodnutí**
  
  + Otevřete příslušný modul a zkontrolujte všechna nastavení numerických vlastností.
  + Zajistěte, aby všechny hodnoty parametrů spadají do podporovaného rozsahu hodnot pro danou vlastnost.
@@ -140,8 +140,8 @@ Pokud text chybové zprávy není užitečný, pošlete nám informace o kontext
 |Zprávy výjimek|  
 |------------------------|  
 |Neshoda parametrů Jeden z parametrů by měl být menší nebo roven druhému.|  
-|Hodnota parametru by měla být menší nebo rovna hodnotě{1}parametru.{0}|  
-|Parametr "{0}" má hodnotu "{1}", která by měla být {2}menší než nebo rovna.|  
+|Hodnota parametru "{0}" by měla být menší nebo rovna hodnotě parametru "{1}".|  
+|Parametr "{0}" má hodnotu "{1}", která by měla být menší nebo rovna {2}.|  
   
 
 ## <a name="error-0008"></a>Chyba 0008  
@@ -156,8 +156,8 @@ Pokud text chybové zprávy není užitečný, pošlete nám informace o kontext
 |Zprávy výjimek|  
 |------------------------|  
 |Hodnota parametru není v zadaném rozsahu.|  
-|Hodnota parametru{0}"" není v rozsahu.|  
-|Hodnota parametru by měla být v rozsahu [{1}, {2}].{0}|  
+|Hodnota parametru{0}není v rozsahu.|  
+|Hodnota parametru{0}musí být v rozsahu [{1}, {2}].|  
   
 
 ## <a name="error-0009"></a>Chyba 0009  
@@ -172,7 +172,7 @@ K této chybě dochází v Azure Machine Learning Studio při zadávání parame
  + Nezadali jste název kontejneru, nebo kontejner neexistuje.
  + Nezadali jste plnou cestu k souboru (cesta k objektu BLOB).
    
-**Řešení:**
+**Rozhodnutí**
 
 K takovým problémům často dochází, když se pokusíte ručně zadat název účtu, heslo nebo cestu k kontejneru. Doporučujeme použít Průvodce pro [Import dat](import-data.md) , který vám pomůže vyhledat a zkontrolovat jména.
 
@@ -188,7 +188,7 @@ Pokud byla zadána úplná cesta k objektu blob, ověřte, zda je cesta zadána 
 |Zprávy výjimek|  
 |------------------------|  
 |Název nebo název kontejneru Azure Storage je nesprávný.|  
-|Název účtu{0}úložiště Azure "" nebo název kontejneru "{1}" je nesprávný. byl očekáván název kontejneru formátu nebo kontejneru objektů BLOB.|  
+|Název účtu služby Azure Storage "{0}" nebo název kontejneru "{1}" není správný. očekával se název kontejneru formátu nebo kontejneru objektů BLOB.|  
   
 
 ## <a name="error-0010"></a>Chyba 0010  
@@ -201,7 +201,7 @@ Pokud byla zadána úplná cesta k objektu blob, ověřte, zda je cesta zadána 
 |Zprávy výjimek|  
 |------------------------|  
 |Sloupce s odpovídajícím indexem ve vstupních datových sadách mají různé názvy.|  
-|Názvy sloupců nejsou stejné pro sloupec {0} (založený na nule) vstupních datových sad ({1} a {2} v uvedeném pořadí).|  
+|Názvy sloupců nejsou pro sloupec {0} (založené na nule) vstupních datových sad ({1} a {2} v uvedeném pořadí) stejné.|  
   
 
 ## <a name="error-0011"></a>Chyba 0011  
@@ -215,12 +215,12 @@ Pokud byla zadána úplná cesta k objektu blob, ověřte, zda je cesta zadána 
   
  Pokud modul vyžaduje, abyste vybrali konkrétní sloupec, jako je například sloupec popisku, ověřte, zda je vybrán správný sloupec.  
   
- Pokud jsou vybrány nevhodné sloupce, odeberte je a znovu spusťte experiment.  
+ Pokud jsou vybrány nevhodné sloupce, odeberte je a znovu spusťte kanál.  
   
 |Zprávy výjimek|  
 |------------------------|  
 |Zadaná sada sloupců se nevztahuje na žádné sloupce datové sady.|  
-|Zadaná sada{0}sloupců se nevztahuje na žádné sloupce datové sady.|  
+|Zadaná sada sloupců "{0}" se nevztahuje na žádné sloupce datové sady.|  
   
 
 ## <a name="error-0012"></a>Chyba 0012  
@@ -231,15 +231,15 @@ Pokud byla zadána úplná cesta k objektu blob, ověřte, zda je cesta zadána 
 |Zprávy výjimek|  
 |------------------------|  
 |Nejdříve nevýukový model, model výuky.|  
-|Nevlakový model ({0}), použijte vycvičený model.|  
+|Nevlakový model ({0}), použijte školený model.|  
   
 
 ## <a name="error-0013"></a>Chyba 0013  
  K výjimce dojde, pokud se předaný modul předává do modulu neplatného typu.  
   
- K této chybě dochází pokaždé, když je trained model nekompatibilní s připojeným modulem bodování. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the experiment is run.  -->
+ K této chybě dochází pokaždé, když je trained model nekompatibilní s připojeným modulem bodování. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the pipeline is run.  -->
   
-**Řešení:**
+**Rozhodnutí**
 
 Určete typ učení, který je vytvořen modulem školení, a určete modul bodování, který je vhodný pro tento seznam. 
 
@@ -264,7 +264,7 @@ Pokud byl model vyškolen pomocí některého ze specializovaných školicích m
 |Zprávy výjimek|  
 |------------------------|  
 |Bylo předáno seznámení s neplatným typem.|  
-|{0}Seznam známek je neplatného typu.|  
+|Seznam známek "{0}" je neplatného typu.|  
 
 
 ## <a name="error-0014"></a>Chyba 0014  
@@ -272,7 +272,7 @@ Pokud byl model vyškolen pomocí některého ze specializovaných školicích m
   
  K této chybě dochází, pokud sloupec obsahuje příliš mnoho jedinečných hodnot.  Tato chyba se může zobrazit například v případě, že určíte, že sloupec bude zpracován jako kategoriíá data, ale ve sloupci je příliš mnoho jedinečných hodnot, aby bylo možné zpracování dokončit. Tato chyba se může zobrazit také v případě, že došlo k neshodě mezi počtem jedinečných hodnot ve dvou vstupech.   
   
-**Řešení:**
+**Rozhodnutí**
 
 Otevřete modul, který chybu generoval, a Identifikujte sloupce používané jako vstupy. U některých modulů můžete kliknout pravým tlačítkem myši na vstup datové sady a vybrat **vizualizovat** a získat statistiku pro jednotlivé sloupce, včetně počtu jedinečných hodnot a jejich distribuce.
 
@@ -287,7 +287,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Zprávy výjimek|  
 |------------------------|  
 |Počet jedinečných hodnot sloupce je větší, než je povoleno.|  
-|Počet jedinečných hodnot ve sloupci: "{0}" překračuje {1}počet řazených kolekcí členů.|  
+|Počet jedinečných hodnot ve sloupci: "{0}" překračuje počet řazených kolekcí členů {1}.|  
   
 
 ## <a name="error-0015"></a>Chyba 0015  
@@ -300,7 +300,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Zprávy výjimek|  
 |------------------------|  
 |Při vytváření připojení k databázi došlo k chybě.|  
-|Při vytváření připojení k databázi {0}došlo k chybě:.|  
+|Při vytváření připojení k databázi došlo k chybě: {0}.|  
   
 
 
@@ -314,8 +314,8 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Zprávy výjimek|  
 |------------------------|  
 |Sloupce s odpovídajícím indexem ve vstupních datových sadách mají nekompatibilní typy.|  
-|Sloupce {0} a{1} jsou nekompatibilní.|  
-|Typy elementů sloupce nejsou kompatibilní pro sloupec {0} (založený na nule) vstupních datových sad ({1} a {2} v uvedeném pořadí).|  
+|Sloupce {0} a {1} jsou nekompatibilní.|  
+|Typy prvků sloupce nejsou kompatibilní pro sloupce {0} (založené na nule) vstupních datových sad ({1} a {2}).|  
   
 
 ## <a name="error-0017"></a>Chyba 0017  
@@ -323,7 +323,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
   
  Tato chyba se může zobrazit například v Azure Machine Learning, pokud výběr sloupce zahrnuje sloupec s datovým typem, který nemůže být zpracován modulem, jako je například sloupec řetězce pro matematickou operaci, nebo sloupec skóre, ve kterém je sloupec funkce kategorií požadovanou.  
   
-**Řešení:**
+**Rozhodnutí**
  1. Identifikujte sloupec, který je problémem.
  2. Zkontrolujte požadavky modulu.
  3. Upravte sloupec tak, aby splňoval požadavky. V závislosti na sloupci a převodu, který se pokoušíte provést, možná budete muset použít několik následujících modulů:
@@ -341,7 +341,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Sloupec aktuálního typu nelze zpracovat. Typ není podporován modulem.|  
 |Nelze zpracovat sloupec typu {0}. Typ není podporován modulem.|  
 |Nelze zpracovat sloupec{1}typu {0}. Typ není podporován modulem.|  
-|Nelze zpracovat sloupec{1}typu {0}. Typ není podporován modulem. Název parametru:{2}|  
+|Nelze zpracovat sloupec{1}typu {0}. Typ není podporován modulem. Název parametru: {2}|  
   
 
 ## <a name="error-0018"></a>Chyba 0018  
@@ -367,8 +367,8 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Zprávy výjimek|  
 |------------------------|  
 |Datová sada není platná.|  
-|{0}obsahuje neplatná data.|  
-|{0}a {1} měly by být konzistentní sloupce.|  
+|{0} obsahuje neplatná data.|  
+|{0} a {1} by měly být konzistentní sloupce.|  
   
 
 ## <a name="error-0019"></a>Chyba 0019  
@@ -381,8 +381,8 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Zprávy výjimek|  
 |------------------------|  
 |Hodnoty ve sloupci nejsou seřazeny.|  
-|Hodnoty ve sloupci{0}nejsou seřazeny.|  
-|Hodnoty ve sloupci{0}{1}sady dat nejsou seřazeny.|  
+|Hodnoty ve sloupci "{0}" nejsou seřazeny.|  
+|Hodnoty ve sloupci "{0}" sady dat "{1}" nejsou seřazeny.|  
   
 
 ## <a name="error-0020"></a>Chyba 0020  
@@ -396,14 +396,14 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |------------------------|  
 |Počet sloupců ve vstupní datové sadě je menší než povolené minimum.|  
 |Počet sloupců ve vstupní datové sadě je menší než povolené minimum {0} sloupců.|  
-|Počet sloupců ve vstupní datové sadě{0}je menší než povolené {1} minimum sloupců.|
+|Počet sloupců ve vstupní datové sadě{0}je menší než povolené minimum {1} sloupců.|
 
 ## <a name="error-0021"></a>Chyba 0021  
  K výjimce dojde v případě, že počet řádků v některých datových sadách předaných do modulu je příliš malý.  
   
  Tato chyba se zobrazila v Azure Machine Learning, pokud v datové sadě není dostatek řádků k provedení zadané operace. Tato chyba se může zobrazit například v případě, že je vstupní datová sada prázdná nebo pokud se pokoušíte provést operaci, která vyžaduje, aby určitý minimální počet řádků byl platný. Takové operace mohou zahrnovat (ale nejsou omezené) seskupení nebo klasifikace na základě statistických metod, určitých typů binningu a učení s počty.  
   
-**Řešení:**
+**Rozhodnutí**
  
  + Otevřete modul, který vrátil chybu, a ověřte vstupní datovou sadu a vlastnosti modulu. 
  + Ověřte, zda není vstupní datová sada prázdná a zda existuje dostatek řádků dat pro splnění požadavků popsaných v nápovědě k modulu.  
@@ -439,8 +439,8 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |------------------------|  
 |Počet vybraných sloupců ve vstupní datové sadě se nerovná očekávanému počtu.|  
 |Počet vybraných sloupců ve vstupní datové sadě se nerovná {0}.|  
-|Vzor{0}výběru sloupců "" představuje počet vybraných sloupců ve vstupní datové sadě, který {1}se nerovná.|  
-|U vzoru{0}výběru sloupce se očekává, že se ve vstupní datové sadě vybraly {2} sloupce, ale jsou k dispozici sloupce (y). {1}|  
+|Vzor výběru sloupců "{0}" poskytuje počet vybraných sloupců ve vstupní datové sadě nerovná se {1}.|  
+|U vzorového výběru sloupce{0}se očekává, že se ve vstupní datové sadě vybere {1} sloupců, ale jsou k dispozici sloupce {2}.|  
 
 
 
@@ -454,8 +454,8 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Zprávy výjimek|  
 |------------------------|  
 |Vstupní datová sada obsahuje nepodporovaný cílový sloupec.|  
-|Vstupní datová sada obsahuje nepodporovaný{0}cílový sloupec.|  
-|Vstupní datová sada má nepodporovaný{0}cílový sloupec pro informace o typu {1}.|  
+|Vstupní datová sada obsahuje nepodporovaný cílový sloupec "{0}".|  
+|Vstupní datová sada má nepodporovaný cílový sloupec{0}pro seznámení s typem {1}typu.|  
  
 
 ## <a name="error-0024"></a>Chyba 0024  
@@ -465,7 +465,7 @@ K výjimce dojde, pokud datová sada neobsahuje sloupec popisku.
  
 Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku, ale Azure Machine Learning nebyl správně zjištěn.
   
-**Řešení:**
+**Rozhodnutí**
 
 + Otevřete modul, který chybu generoval, a zjistěte, jestli je přítomný sloupec popisku. Název nebo datový typ sloupce nezáleží na tom, jestli sloupec obsahuje jeden výsledek (nebo závislou proměnnou), se kterou se pokoušíte odhadnout. Pokud si nejste jistí, který sloupec má popisek, vyhledejte obecný název, jako je například *Třída* nebo *cíl*. 
 +  Pokud datová sada neobsahuje sloupec popisku, je možné, že sloupec popisku byl explicitně nebo omylem odebrán z nadřazeného objektu. Je také možné, že datová sada není výstupním modulem nadřazeného modulu pro vyhodnocování.
@@ -489,20 +489,20 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |------------------------|  
 |V datové sadě není žádný sloupec skóre.|  
 |V "{0}" neexistuje žádný sloupec skóre.|  
-|V "{0}" neexistuje žádný sloupec skóre "", který je vytvořen pomocí{1}"". Vyhodnotit datovou sadu pomocí správného typu učení.|  
+|V "{0}" není žádný sloupec skóre, který je vytvořen "{1}". Vyhodnotit datovou sadu pomocí správného typu učení.|  
   
 
 ## <a name="error-0026"></a>Chyba 0026  
  Pokud nejsou povoleny sloupce se stejným názvem, dojde k výjimce.  
   
- K této chybě v Azure Machine Learning dochází, pokud má více sloupců stejný název. Jednou z možností, jak se tato chyba může zobrazit, je, že datová sada nemá automaticky přiřazené řádky záhlaví a názvy sloupců: Col0, Sloupec1 atd.  
+ K této chybě v Azure Machine Learning dochází, pokud má více sloupců stejný název. Jednou z možností, jak se tato chyba může zobrazit, je, že datová sada nemá automaticky přiřazené řádky záhlaví a názvy sloupců: Col0, Sloupe atd.  
   
 **Řešení:** Pokud mají sloupce stejný název, vložte modul [úprav metadat](edit-metadata.md) mezi vstupní datovou sadu a modul. Pomocí voliče sloupců v okně [Upravit metadata](edit-metadata.md) vyberte sloupce, které chcete přejmenovat, a zadejte nové názvy do textového pole **nové názvy sloupců** .  
   
 |Zprávy výjimek|  
 |------------------------|  
 |V argumentech jsou zadány stejné názvy sloupců. Stejný název sloupce není povolený modulem.|  
-|Názvy stejných sloupců v argumentech{0}{1}a se nepovolují. Zadejte jiné názvy.|  
+|Názvy stejných sloupců v argumentech "{0}" a "{1}" nejsou povoleny. Zadejte jiné názvy.|  
   
 
 ## <a name="error-0027"></a>Chyba 0027  
@@ -521,7 +521,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|  
 |------------------------|  
 |Velikost předaných objektů je nekonzistentní.|  
-|Velikost{0}"" je nekonzistentní s velikostí{1}"".|  
+|Velikost "{0}" je nekonzistentní s velikostí "{1}".|  
   
 
 ## <a name="error-0028"></a>Chyba 0028  
@@ -535,7 +535,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |------------------------|  
 |Sada sloupců obsahuje duplicitní názvy sloupců.|  
 |Název "{0}" je duplikován.|  
-|Název{0}"" je duplikován v "{1}".|  
+|Název "{0}" je duplikován v "{1}".|  
   
 
 ## <a name="error-0029"></a>Chyba 0029  
@@ -570,7 +570,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|  
 |------------------------|  
 |Soubor nelze stáhnout.|  
-|Při stahování souboru došlo k chybě {0}:.|  
+|Při stahování souboru došlo k chybě: {0}.|  
   
 
 ## <a name="error-0031"></a>Chyba 0031  
@@ -583,7 +583,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|  
 |------------------------|  
 |Počet sloupců v sadě sloupců je menší, než je vyžadováno.|  
-|{0}je třeba zadat sloupce (y). Skutečný počet zadaných sloupců je {1}.|  
+|je třeba zadat {0} sloupců. Skutečný počet zadaných sloupců je {1}.|  
 
 ## <a name="error-0032"></a>Chyba 0032  
  K výjimce dojde, pokud argument není číslo.  
@@ -601,14 +601,14 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 ## <a name="error-0033"></a>Chyba 0033  
  K výjimce dojde, pokud je argumentem nekonečno.  
   
- K této chybě v Azure Machine Learning dojde, pokud je argument nekonečný. Tato chyba se zobrazí, pokud je argument buď `double.NegativeInfinity` nebo. `double.PositiveInfinity`  
+ K této chybě v Azure Machine Learning dojde, pokud je argument nekonečný. Tato chyba se zobrazí, pokud je argument buď `double.NegativeInfinity`, nebo `double.PositiveInfinity`.  
   
 **Řešení:** Upravte zadaný argument tak, aby byl platnou hodnotou.  
   
 |Zprávy výjimek|  
 |------------------------|  
 |Argument musí být konečný.|  
-|"{0}" není konečné.|  
+|"{0}" není konečná.|  
   
 
 ## <a name="error-0034"></a>Chyba 0034  
@@ -629,7 +629,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
   
  K této chybě v Azure Machine Learning dochází k tomu, že se snažíte použít model doporučení pro hodnocení, ale vektor funkce se nenašel.  
   
-**Řešení:**
+**Rozhodnutí**
 
 Doporučení Matchbox má určité požadavky, které je nutné splnit při použití funkcí nebo funkcí uživatele.  Tato chyba označuje, že pro uživatele nebo položku, kterou jste zadali jako vstup, chybí vektor funkce.  Je nutné zajistit, aby byl v datech pro každého uživatele nebo položku k dispozici vektor funkcí.  
   
@@ -647,7 +647,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Zprávy výjimek|  
 |------------------------|  
 |Pro požadovaného uživatele nebo položku nebyly zadány žádné funkce.|  
-|Funkce vyžadované {0} , ale nejsou k dispozici.|  
+|Funkce pro {0} povinné, ale nejsou k dispozici.|  
   
 
 ## <a name="error-0036"></a>Chyba 0036  
@@ -686,7 +686,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |------------------------|  
 |Počet elementů není platný.|  
 |Počet elementů v "{0}" není platný.|  
-|Počet elementů v "{0}" se nerovná platnému {1} počtu prvků.|  
+|Počet elementů v "{0}" není roven platnému počtu {1} prvků.|  
   
 
 ## <a name="error-0039"></a>Chyba 0039  
@@ -702,7 +702,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Zprávy výjimek|  
 |------------------------|  
 |Operace se nezdařila.|  
-|Chyba při dokončování operace {0}:.|  
+|Chyba při dokončování operace: {0}.|  
   
 
 ## <a name="error-0040"></a>Chyba 0040  
@@ -715,7 +715,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Zprávy výjimek|  
 |------------------------|  
 |Přístup k zastaralému modulu.|  
-|Modul "{0}" je zastaralý. Místo toho použijte{1}modul "".|  
+|Modul "{0}" je zastaralý. Místo toho použijte modul{1}.|  
  
 
 ## <a name="error-0041"></a>Chyba 0041  
@@ -728,7 +728,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Zprávy výjimek|  
 |------------------------|  
 |Přístup k zastaralému modulu.|  
-|Modul "{0}" je zastaralý. Pro požadovanou funkci použijte{1}moduly.|  
+|Modul "{0}" je zastaralý. Pro požadovanou funkci použijte moduly "{1}".|  
  
 
 ## <a name="error-0042"></a>Chyba 0042  
@@ -740,7 +740,7 @@ Můžete například vybrat sloupec a zkusit ho převést na číselný datový 
 
 Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloupec obsahující čísla s plovoucí desetinnou čárkou nebo mnoho jedinečných hodnot jako sloupec kategorií. 
   
-**Řešení:**
+**Rozhodnutí**
 
 + Otevřete stránku s nápovědu pro modul, který chybu generoval, a ověřte požadavky na datový typ.
 + Zkontrolujte datové typy sloupců ve vstupní datové sadě.
@@ -765,8 +765,8 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |------------------------|  
 |Převod není povolen.|  
 |Sloupec typu {0} nelze převést na sloupec typu {1}.|  
-|Sloupec{2} {1}typu nelze převést nasloupectypu.{0}|  
-|Sloupec{2}{3}typu nelze převést {1}na sloupec typu. {0}|  
+|Sloupec{2}typu {0} nelze převést na sloupec typu {1}.|  
+|Nelze převést sloupec{2}typu {0} na sloupec{3}typu {1}.|  
   
 
 ## <a name="error-0043"></a>Chyba 0043  
@@ -774,12 +774,12 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
   
  Tato chyba se v Azure Machine Learning nepoužívá a bude zastaralá.  
   
-**Řešení:** Žádné.  
+**Řešení:** NTato.  
   
 |Zprávy výjimek|  
 |------------------------|  
 |Nenašla se žádná přístupná explicitní metoda.|  
-|Nelze porovnat hodnoty pro sloupec \\{0}\\typu. {1} Nenašla se žádná přístupná explicitní metoda.|  
+|Hodnoty pro sloupec \\{0}\\typu {1}nelze porovnat. Nenašla se žádná přístupná explicitní metoda.|  
 
 
 ## <a name="error-0044"></a>Chyba 0044  
@@ -793,7 +793,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |------------------------|  
 |Typ elementu sloupce nelze odvodit.|  
 |Typ elementu pro sloupec{0}nelze odvodit – všechny elementy jsou odkazy s hodnotou null.|  
-|Nelze odvodit typ elementu pro sloupec{0}"" sady dat{1}"" – všechny elementy jsou odkazy s hodnotou null.|  
+|Nejde odvodit typ elementu pro sloupec{0}DataSet{1}--všechny elementy jsou odkazy s hodnotou null.|  
   
 
 ## <a name="error-0045"></a>Chyba 0045  
@@ -806,7 +806,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Nelze vytvořit sloupec se smíšenými typy prvků.|  
-|Nelze vytvořit sloupec s ID "{0}" smíšených typů prvků: \ n\tType dat [{1}, {0}] je {2}\n\tType dat [{3}, {0}] je {4}.|  
+|Nelze vytvořit sloupec s ID "{0}" smíšených typů prvků: \ n\tType dat [{1}, {0}] je {2}\n\tType dat [{3}, {0}].{4}|  
   
 
 ## <a name="error-0046"></a>Chyba 0046  
@@ -833,7 +833,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |------------------------|  
 |Počet sloupců funkce ve vstupní datové sadě je menší než povolené minimum.|  
 |Počet sloupců funkce ve vstupní datové sadě je menší než povolené minimum {0} sloupců.|  
-|Počet sloupců funkce ve vstupní datové sadě{0}je menší než povolené {1} minimum sloupců.|  
+|Počet sloupců funkce ve vstupní datové sadě{0}je menší než povolené minimum {1} sloupců.|  
   
 
 ## <a name="error-0048"></a>Chyba 0048  
@@ -858,7 +858,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Soubor nelze otevřít.|  
-|Chyba při otevírání souboru: {0}.|  
+|Při otevírání souboru došlo k chybě: {0}.|  
 
 
 ## <a name="error-0049"></a>Chyba 0049  
@@ -871,7 +871,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Soubor nelze analyzovat.|  
-|Při analýze souboru došlo k chybě {0}:.|  
+|Při analýze souboru došlo k chybě: {0}.|  
   
 
 ## <a name="error-0050"></a>Chyba 0050  
@@ -927,14 +927,14 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Data obsahují příliš málo jedinečných hodnot v zadaném sloupci, aby bylo možné dokončit operaci.|  
-|Data obsahují příliš málo jedinečných hodnot v zadaném sloupci, aby bylo možné dokončit operaci. Požadovaným minimem {0} jsou elementy.|  
-|Data obsahují příliš málo jedinečných hodnot ve sloupci{1}, aby bylo možné operaci dokončit. Požadovaným minimem {0} jsou elementy.|  
+|Data obsahují příliš málo jedinečných hodnot v zadaném sloupci, aby bylo možné dokončit operaci. Požadovaná minimální {0} prvky.|  
+|Data mají ve sloupci{1}k dokončení operace moc málo jedinečných hodnot. Požadovaná minimální {0} prvky.|  
   
 
 ## <a name="error-0055"></a>Chyba 0055  
  Při volání zastaralého modulu dojde k výjimce.  K této chybě v Azure Machine Learning se zobrazí, pokud se pokusíte zavolat modul, který je zastaralý.
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
@@ -950,7 +950,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
   
   <!--For example, the [Convert to Indicator Values](convert-to-indicator-values.md) module requires that columns be categorical, and will raise this error if you select a feature column or label column.  -->
   
-**Řešení:**
+**Rozhodnutí**
   
 1.  Zkontrolujte datový typ aktuálně vybraných sloupců. 
 
@@ -963,15 +963,15 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Jeden nebo více vybraných sloupců nebylo v povolené kategorii.|  
-|Sloupec s názvem{0}"" není v povolené kategorii.|  
+|Sloupec s názvem "{0}" není v povolené kategorii.|  
   
 
 ## <a name="error-0057"></a>Chyba 0057  
  Při pokusu o vytvoření souboru nebo objektu blob, který již existuje, dojde k výjimce.  
   
- K této výjimce dochází při použití modulu [exportu dat](export-data.md) nebo jiného modulu k uložení výsledků experimentu v Azure Machine Learning do úložiště objektů BLOB v Azure, ale pokusíte se vytvořit soubor nebo objekt blob, který už existuje.   
+ K této výjimce dochází při použití modulu [exportu dat](export-data.md) nebo jiného modulu k uložení výsledků kanálu v Azure Machine Learning do úložiště objektů BLOB v Azure, ale pokusíte se vytvořit soubor nebo objekt blob, který už existuje.   
   
-**Řešení:**
+**Rozhodnutí**
  
  Tato chyba se zobrazí jenom v případě, že jste předtím nastavili vlastnost **režim zápisu úložiště objektů BLOB v Azure** na hodnotu **Chyba**. Podle návrhu tento modul vyvolá chybu, pokud se pokusíte zapsat datovou sadu do objektu blob, který již existuje.
  
@@ -981,7 +981,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Soubor nebo objekt BLOB již existuje.|  
-|Soubor nebo objekt BLOB{0}"" již existuje.|  
+|Soubor nebo objekt blob "{0}" již existuje.|  
   
 
 ## <a name="error-0058"></a>Chyba 0058  
@@ -1000,8 +1000,8 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Sloupec popisku není podle očekávání.|  
-|Sloupec popisku není podle očekávání v "{0}".|  
-|Sloupec{0}popisku "" není v "{1}" očekáván.|  
+|Sloupec popisku není v "{0}" očekáván.|  
+|Sloupec popisku "{0}" není v "{1}" očekáván.|  
   
 
 ## <a name="error-0059"></a>Chyba 0059  
@@ -1014,7 +1014,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Jeden nebo více zadaných indexů sloupců nebo rozsahů indexu nelze analyzovat.|  
-|Index nebo rozsah{0}sloupce nelze analyzovat.|  
+|Index nebo rozsah sloupce "{0}" nelze analyzovat.|  
   
 
 ## <a name="error-0060"></a>Chyba 0060  
@@ -1027,7 +1027,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Zadaný rozsah indexu sloupce je neplatný nebo mimo rozsah.|  
-|Rozsah sloupců "{0}" je neplatný nebo je mimo rozsah.|  
+|Rozsah sloupců "{0}" je neplatný nebo mimo rozsah.|  
   
 
 ## <a name="error-0061"></a>Chyba 0061  
@@ -1066,7 +1066,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
-    + Messages from R marked as **warnings** typically do not cause the experiment to fail.
+    + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
 3. Resolve script issues.  
     + Check for R syntax errors. Check for variables that are defined but never populated.
     + Review the input data and the script to determine if either the data or variables in the script use characters not supported by Azure Machine Learning.
@@ -1074,19 +1074,19 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
     + Check whether your code loads required libraries that are not loaded by default.
     + Check whether the required packages are the correct version.
     + Make sure that any dataset that you want to output is converted to a data frame.  
-4.  Resubmit the experiment.
+4.  Resubmit the pipeline.
 
  <!--
 > [!NOTE]
-> These topics contains examples of R code that you can use, as well as links to experiments in the [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) that use R script.
+> These topics contains examples of R code that you can use, as well as links to pipelines in the [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) that use R script.
 > + [Execute R Script](execute-r-script.md)
 > + [Create R Model](create-r-model.md)
 -->  
 |Zprávy výjimek|  
 |------------------------|  
 |Při vyhodnocování skriptu jazyka R došlo k chybě.|  
-|Během hodnocení skriptu jazyka r došlo k následující chybě:----------spuštění chybové zprávy z r---------- {0} -----------konec chybové zprávy z r-----------|  
-|Během hodnocení skriptu{1}R došlo k následující chybě:----------spuštění chybové zprávy z r---------- {0} -----------konec chybové zprávy z r-----------|  
+|Během hodnocení skriptu jazyka R došlo k následující chybě:----------spuštění chybové zprávy z R----------{0}-----------konci chybové zprávy z R-----------|  
+|Během hodnocení skriptu R "{1}" došlo k následující chybě:----------spuštění chybové zprávy z R----------{0}-----------konec chybové zprávy z R-----------|  
   
 
 
@@ -1100,7 +1100,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Název účtu úložiště Azure nebo klíč úložiště nejsou správné.|  
-|Název účtu úložiště Azure "{0}" nebo klíč úložiště pro název účtu není správný.|  
+|Název účtu služby Azure Storage "{0}" nebo klíč úložiště pro název účtu není správný.|  
   
 
 ## <a name="error-0065"></a>Chyba 0065  
@@ -1121,7 +1121,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |Objekt BLOB služby Azure Storage není správný.|  
-|Název{0}objektu BLOB služby Azure Storage je nesprávný.|  
+|Název objektu BLOB služby Azure Storage "{0}" není správný.|  
   
 
 ## <a name="error-0066"></a>Chyba 0066  
@@ -1147,7 +1147,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|  
 |------------------------|  
 |V objektu DataTable je neočekávaný počet sloupců.|  
-|Místo toho byly očekávány sloupce "", ale byly nalezeny sloupce "".{1}{0}|  
+|Byly očekávány sloupce "{0}", ale místo toho byly nalezeny sloupce "{1}".|  
   
 
 ## <a name="error-0068"></a>Chyba 0068  
@@ -1155,7 +1155,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
   
  K této chybě v Azure Machine Learning dojde v případě, že se vyskytly chyby syntaxe ve skriptu QL podregistru, nebo pokud překladač podregistru při provádění dotazu nebo skriptu narazí na chybu.  
   
-**Řešení:**
+**Rozhodnutí**
 
 Chybová zpráva z podregistru se obvykle hlásí zpět v protokolu chyb, takže můžete provést akci na základě konkrétní chyby. 
 
@@ -1176,7 +1176,7 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
 |Zprávy výjimek|  
 |------------------------|  
 |Skript podregistru je nesprávný.|  
-|Skript {0} pro podregistr není správný.|  
+|{0} skriptu pro podregistr není správný.|  
   
 
 ## <a name="error-0069"></a>Chyba 0069  
@@ -1192,14 +1192,14 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
   
  Pokud dojde k vygenerování zprávy generované modulem SQL, proveďte akci na základě hlášené chyby. Chybové zprávy například někdy obsahují konkrétní pokyny o pravděpodobnou chybu:
 + *Neexistuje žádný takový sloupec nebo chybějící databáze*, což značí, že je možné, že jste zadali nesprávný název sloupce. Pokud jste si jisti, že je název sloupce správný, zkuste použít hranaté závorky nebo uvozovky k uzavření identifikátoru sloupce.
-+ *Chyba logiky SQL \<v blízkosti\>klíčového slova SQL*, což značí, že před zadaným klíčovým slovem může být chyba syntaxe.
++ *Chyba logiky SQL poblíž \<klíčového slova sql\>* , což značí, že před zadaným klíčovým slovem může být chyba syntaxe.
 
   
 |Zprávy výjimek|  
 |------------------------|  
 |Skript SQL je nesprávný.|  
 |Dotaz SQL "{0}" není správný.|  
-|Dotaz SQL "{0}" není správný:{1}|  
+|Dotaz SQL "{0}" není správný: {1}|  
   
 
 ## <a name="error-0070"></a>Chyba 0070  
@@ -1212,7 +1212,7 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
 |Zprávy výjimek|  
 |------------------------|  
 |Tabulka Azure neexistuje.|  
-|Tabulka{0}Azure neexistuje.|  
+|Tabulka Azure "{0}neexistuje".|  
   
 ## <a name="error-0071"></a>Chyba 0071  
  Pokud jsou zadané přihlašovací údaje nesprávné, dojde k výjimce.  
@@ -1238,7 +1238,7 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
 |Zprávy výjimek|  
 |------------------------|  
 |Byly předány nesprávné přihlašovací údaje.|  
-|Bylo předáno{0}nesprávné uživatelské jméno nebo heslo.|  
+|Bylo předáno nesprávné uživatelské jméno{0}nebo heslo.|  
   
 
 ## <a name="error-0072"></a>Chyba 0072  
@@ -1263,7 +1263,7 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
 |Zprávy výjimek|  
 |------------------------|  
 |Nepovedlo se převést sloupec.|  
-|Nepovedlo se převést {0}sloupec na.|  
+|Nepovedlo se převést sloupec na {0}.|  
   
 
 ## <a name="error-0074"></a>Chyba 0074  
@@ -1284,7 +1284,7 @@ K výjimce dojde, pokud je při quantizing datové sady použita neplatná funkc
   
 K této chybě v Azure Machine Learning dochází při pokusu o data z přihrádky pomocí nepodporované metody nebo v případě, že kombinace parametrů nejsou platné.  
   
-**Řešení:**
+**Rozhodnutí**
 
 Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azure Machine Learning, která umožňovala další přizpůsobení metod binningu. Všechny metody binningu jsou v současné době založené na výběru z rozevíracího seznamu, a proto by tato chyba neměla být možná.
 
@@ -1305,7 +1305,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|  
 |------------------------|  
 |Nepodporovaný režim zápisů objektů BLOB|  
-|Nepodporovaný režim zápisů objektů BLOB: {0}.|  
+|Nepodporovaný režim zapisování objektů BLOB: {0}.|  
   
 
 ## <a name="error-0078"></a>Chyba 0078  
@@ -1330,7 +1330,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|  
 |------------------------|  
 |Název kontejneru úložiště Azure je nesprávný.|  
-|Název{0}kontejneru úložiště Azure je nesprávný. byl očekáván název kontejneru formátu nebo kontejneru objektů BLOB.|  
+|Název kontejneru úložiště Azure{0}je nesprávný. očekával se název kontejneru formátu nebo kontejneru objektů BLOB.|  
   
 
 ## <a name="error-0080"></a>Chyba 0080  
@@ -1343,7 +1343,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|  
 |------------------------|  
 |Sloupce se všemi chybějícími hodnotami nejsou povoleny.|  
-|U {0} sloupce chybí všechny hodnoty.|  
+|Ve sloupci {0} chybí všechny hodnoty.|  
   
 
 ## <a name="error-0081"></a>Chyba 0081  
@@ -1363,7 +1363,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
   
  K této chybě v Azure Machine Learning dochází, když v důsledku zásadní změny nelze načíst model nebo transformaci uloženého strojového učení pomocí novější verze modulu runtime Azure Machine Learning.  
   
-**Řešení:** Experiment pro školení, který vytvořil model nebo transformaci, musí být znovu spuštěn a model nebo transformace musí být znovu uloženy.  
+**Řešení:** Kanál pro školení, který vytvořil model nebo transformaci, musí být znovu spuštěn a model nebo transformace musí být znovu uloženy.  
   
 |Zprávy výjimek|  
 |------------------------|  
@@ -1380,8 +1380,8 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|  
 |------------------------|  
 |Datová sada použitá pro školení není platná.|  
-|{0}obsahuje neplatná data pro školení.|  
-|{0}obsahuje neplatná data pro školení. Typ učení: {1}.|  
+|{0} obsahuje neplatná data pro školení.|  
+|{0} obsahuje neplatná data pro školení. Typ učení: {1}.|  
   
 
 ## <a name="error-0084"></a>Chyba 0084  
@@ -1389,7 +1389,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
   
  K této chybě v Azure Machine Learning dochází, pokud se pokusíte použít jeden z modulů pro vyhodnocení modelu s výstupem z skriptu jazyka R, který obsahuje skóre.  
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
@@ -1406,7 +1406,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|  
 |------------------------|  
 |Při vyhodnocování skriptu došlo k chybě.|  
-|Při vyhodnocování skriptu došlo k následující chybě. Další informace najdete v protokolu výstupu:----------spuštění chybové zprávy z {0} překladače---------- {1} ----------konec chybové zprávy z {0} překladače---- ------|  
+|Během vyhodnocování skriptu došlo k následující chybě. Další informace naleznete v protokolu výstupu:----------spuštění chybové zprávy ze {0} interpretace----------{1}----------konec chybové zprávy z {0} Interpret----------|  
   
 
 ## <a name="error-0086"></a>Chyba 0086  
@@ -1429,8 +1429,8 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Byla zadána neplatná transformace počítání.|  
-|Transformace počítání na vstupním portu{0}je neplatná.|  
-|Transformaci na vstupním portu{0}' ' nelze sloučit s transformací Count na vstupním portu '{1}'. Zkontrolujte, jestli se metadata použitá pro počítání shod shodují.|  
+|Transformace počítání na vstupním portu '{0}' je neplatná.|  
+|Transformaci na vstupním portu '{0}' nelze sloučit s transformací Count na vstupním portu '{1}'. Zkontrolujte, jestli se metadata použitá pro počítání shod shodují.|  
   
 
 ## <a name="error-0087"></a>Chyba 0087  
@@ -1463,7 +1463,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Byl zadán neplatný typ počítání.|  
-|Zadaný typ{0}počítání není platným typem počítání.|  
+|Zadaný typ počítání '{0}' není platným typem počítání.|  
   
 
 ## <a name="error-0089"></a>Chyba 0089  
@@ -1480,7 +1480,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Počet tříd je nesprávný. Ujistěte se, že počet tříd, které zadáte v podokně parametrů, je větší nebo roven počtu tříd ve sloupci popisek.|  
-|Počet určených tříd je{0}, což není větší než{1}hodnota popisku v datové sadě, která se používá k počítání. Ujistěte se, že počet tříd, které zadáte v podokně parametrů, je větší nebo roven počtu tříd ve sloupci popisek.|  
+|Počet určených tříd je '{0}', který není větší než hodnota popisku '{1}' v sadě dat, která se používá k počítání. Ujistěte se, že počet tříd, které zadáte v podokně parametrů, je větší nebo roven počtu tříd ve sloupci popisek.|  
   
 
 ## <a name="error-0090"></a>Chyba 0090  
@@ -1493,18 +1493,18 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Tabulku podregistru nešlo vytvořit. V případě clusteru HDInsight zkontrolujte, že název účtu úložiště Azure přidružený ke clusteru je stejný jako v parametru modulu.|  
-|Tabulku{0}podregistru nelze vytvořit. V případě clusteru HDInsight zkontrolujte, že název účtu úložiště Azure přidružený ke clusteru je stejný jako v parametru modulu.|  
-|Tabulku{0}podregistru nelze vytvořit. Pro cluster HDInsight ověřte, že název účtu úložiště Azure přidružený ke clusteru je{1}"".|  
+|Nelze vytvořit tabulku podregistru "{0}". V případě clusteru HDInsight zkontrolujte, že název účtu úložiště Azure přidružený ke clusteru je stejný jako v parametru modulu.|  
+|Nelze vytvořit tabulku podregistru "{0}". Pro cluster HDInsight ověřte, že název účtu úložiště Azure přidružený ke clusteru je "{1}".|  
  
 
 ## <a name="error-0100"></a>Chyba 0100  
  K výjimce dojde, pokud je pro vlastní modul zadán nepodporovaný jazyk.  
   
- K této chybě v Azure Machine Learning dochází při sestavování vlastního modulu a vlastnost name elementu **Language** v souboru definice XML vlastního modulu má neplatnou hodnotu. V současné době je `R`jedinou platnou hodnotou této vlastnosti. Příklad:  
+ K této chybě v Azure Machine Learning dochází při sestavování vlastního modulu a vlastnost name elementu **Language** v souboru definice XML vlastního modulu má neplatnou hodnotu. V současné době je jediná platná hodnota této vlastnosti `R`. Příklad:  
   
  `<Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />`  
   
-**Řešení:** Ověřte, zda je vlastnost Name prvku **jazyka** v souboru definice XML vlastního modulu nastavena na `R`hodnotu. Uložte soubor, aktualizujte vlastní balíček zip modulu a pokuste se přidat vlastní modul znovu.  
+**Řešení:** Ověřte, zda je vlastnost Name prvku **jazyka** v souboru definice XML vlastního modulu nastavena na hodnotu `R`. Uložte soubor, aktualizujte vlastní balíček zip modulu a pokuste se přidat vlastní modul znovu.  
   
 |Zprávy výjimek|  
 |------------------------|  
@@ -1521,7 +1521,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Všechny identifikátory portů a parametrů pro modul musí být jedinečné.|  
-|{0}Modul má duplicitní ID portů nebo argumentů. Všechny identifikátory portů nebo argumentů musí být pro modul jedinečné.|  
+|Modul{0}má duplicitní ID portů nebo argumentů. Všechny identifikátory portů nebo argumentů musí být pro modul jedinečné.|  
   
 
 ## <a name="error-0102"></a>Chyba 0102  
@@ -1564,7 +1564,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Odkazovaný soubor skriptu jazyka R neexistuje.|  
-|Odkazovaný soubor{0}skriptu R nejde najít. Zajistěte, aby byla relativní cesta k souboru správná z umístění definice.|  
+|Odkazovaný soubor skriptu R '{0}' nebyl nalezen. Zajistěte, aby byla relativní cesta k souboru správná z umístění definice.|  
 
 
 ## <a name="error-0105"></a>Chyba 0105  
@@ -1577,7 +1577,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Nepodporovaný typ parametru.|  
-|{0}Byl zadán nepodporovaný typ parametru.|  
+|Byl zadán nepodporovaný typ parametru{0}.|  
 
 
 ## <a name="error-0106"></a>Chyba 0106  
@@ -1590,7 +1590,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Nepodporovaný typ vstupu.|  
-|{0}Byl zadán nepodporovaný typ vstupu.|  
+|Byl zadán nepodporovaný typ vstupu{0}.|  
 
 
 ## <a name="error-0107"></a>Chyba 0107  
@@ -1603,7 +1603,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Nepodporovaný typ výstupu.|  
-|{0}Byl zadán nepodporovaný typ výstupu.|  
+|Byl zadán nepodporovaný typ výstupu{0}.|  
 
 
 ## <a name="error-0108"></a>Chyba 0108  
@@ -1616,7 +1616,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Překročil se podporovaný počet vstupních nebo výstupních portů.|  
-|Byl překročen počet podporovaných{0}portů. Maximální povolený počet{0}' ' portů{1}je ' '.| 
+|Byl překročen počet podporovaných portů{0}. Maximální povolený počet portů{0}je{1}.| 
 
 ## <a name="error-0109"></a>Chyba 0109  
  Vyvoláno, když soubor definice modulu nesprávně definuje výběr sloupce  
@@ -1640,7 +1640,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Výběr sloupců odkazuje na neexistující vstupní ID portu.|  
-|Výběr sloupců odkazuje na neexistující vstupní ID{0}portu.|  
+|Výběr sloupců odkazuje na neexistující vstupní port s ID{0}.|  
   
 
 ## <a name="error-0111"></a>Chyba 0111  
@@ -1653,7 +1653,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Definice vlastnosti je neplatná.|  
-|Definice{0}vlastnosti je neplatná.|  
+|Definice vlastnosti{0}je neplatná.|  
   
 
 ## <a name="error-0112"></a>Chyba 0112  
@@ -1666,7 +1666,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Nelze analyzovat soubor definice modulu.|  
-|Nelze analyzovat soubor{0}definice modulu ' '.|  
+|Nelze analyzovat soubor definice modulu '{0}'.|  
   
 
 ## <a name="error-0113"></a>Chyba 0113  
@@ -1679,8 +1679,8 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Soubor definice modulu obsahuje chyby.|  
-|Soubor{0}definice modulu obsahuje chyby.|  
-|Soubor{0}definice modulu obsahuje chyby. {1}|  
+|Definiční soubor modulu{0}obsahuje chyby.|  
+|Definiční soubor modulu{0}obsahuje chyby. {1}|  
   
 
 ## <a name="error-0114"></a>Chyba 0114  
@@ -1693,7 +1693,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Nepovedlo se vytvořit vlastní modul.|  
-|Sestavení vlastního modulu se nezdařilo s chybami:{0}|  
+|Sestavení vlastního modulu se nezdařilo s chybami: {0}|  
   
 
 ## <a name="error-0115"></a>Chyba 0115  
@@ -1706,7 +1706,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Nepodporovaná velikost pro výchozí skript|  
-|Nepodporovaná velikost {0} souboru pro výchozí skript|  
+|Nepodporovaná {0} rozsahu souborů pro výchozí skript|  
   
 
 ## <a name="error-0121"></a>Chyba 0121  
@@ -1714,7 +1714,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
   
  Tato chyba v Azure Machine Learning je vytvořena při použití modulu [Export dat](export-data.md) k uložení výsledků do tabulky v databázi SQL a do tabulky nelze zapisovat. Tato chyba se obvykle zobrazí, pokud modul [exportu dat](export-data.md) úspěšně naváže spojení s instancí SQL Server, ale není pak možné zapsat obsah datové sady Azure ml do tabulky.  
   
-**Řešení:**
+**Rozhodnutí**
  - Otevřete podokno vlastnosti modulu [Export dat](export-data.md) a ověřte, zda jsou názvy databáze a tabulky správně zadány. 
  - Zkontrolujte schéma datové sady, kterou exportujete, a ujistěte se, že jsou data kompatibilní s cílovou tabulkou.
  - Ověřte, že přihlášení SQL přidružené k uživatelskému jménu a heslu má oprávnění k zápisu do tabulky. 
@@ -1723,7 +1723,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Připojeno k serveru, nelze zapisovat do tabulky.|  
-|Nejde zapisovat do tabulky SQL:{0}|  
+|Nelze zapisovat do tabulky SQL: {0}|  
 
 
 ## <a name="error-0122"></a>Chyba 0122  
@@ -1753,7 +1753,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 ## <a name="error-0124"></a>Chyba 0124  
  K výjimce dojde, pokud jsou jako sloupce váhy určeny jiné než číselné sloupce.  
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
@@ -1764,7 +1764,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 ## <a name="error-0125"></a>Chyba 0125  
  Vyvolána, když se schéma pro více datových sad neshoduje.  
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
@@ -1778,16 +1778,16 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
   
 **Řešení:** Znovu navštivte modul. Ověřte, že server SQL Database patří do jedné z přijatých domén:  
   
--   .database.windows.net  
+-   . database.windows.net  
   
--   .cloudapp.net  
+-   . cloudapp.net  
   
--   .database.secure.windows.net  
+-   . database.secure.windows.net  
   
 |Zprávy výjimek|  
 |------------------------|  
 |Nepodporovaná doména SQL|  
-|Doména {0} SQL momentálně není v Azure ml aktuálně podporovaná.|  
+|Služba SQL Domain {0} v tuto chvíli není v Azure ML podporovaná.|  
   
 
 ## <a name="error-0127"></a>Chyba 0127  
@@ -1805,31 +1805,31 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Velikost pixelu obrázku překračuje povolený limit.|  
-|Velikost pixelu obrázku v souboru{0}překračuje povolený limit{1}:.|  
+|Velikost pixelu obrázku v souboru{0}překračuje povolený limit:{1}.|  
 
 
 ## <a name="error-0128"></a>Chyba 0128  
  Počet podmíněných pravděpodobností pro sloupce kategorií překračuje limit.  
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
 |Počet podmíněných pravděpodobností pro sloupce kategorií překračuje limit.|  
-|Počet podmíněných pravděpodobností pro sloupce kategorií překračuje limit. {0}Sloupce{1}a jsou problematický pár.|  
+|Počet podmíněných pravděpodobností pro sloupce kategorií překračuje limit. Problematický pár jsou sloupce{0}a{1}.|  
 
 
 ## <a name="error-0129"></a>Chyba 0129  
  Počet sloupců v datové sadě překračuje povolený limit.  
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
 |Počet sloupců v datové sadě překračuje povolený limit.|  
 |Počet sloupců v datové sadě v '{0}' překračuje povolenou hodnotu. '|  
-|Počet sloupců v datové sadě v{0}' ' překračuje povolený limit{1}' '. '|  
-|Počet sloupců v datové sadě v{0}' ' překračuje{1}povolený limit{2}' '.|  
+|Počet sloupců v datové sadě ve třídě{0}překračuje povolený limit{1}.|  
+|Počet sloupců v datové sadě ve třídě{0}překračuje povolený limit{1}({2}).|  
 ## <a name="error-0130"></a>Chyba 0130  
  K výjimce dojde, pokud všechny řádky v datové sadě školení obsahují chybějící hodnoty.  
   
@@ -1852,21 +1852,21 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Nepovedlo se nahrát datové sady zip.|  
-|Metoda ZIP {0} DataSet selhala s následující zprávou:{1}|  
-|Metoda getdataset {0} selhala {1} s výjimkou zprávy:{2}|  
+|Nepovedlo se {0}ovat datovou sadu zip s následující zprávou: {1}|  
+|{0} podsady zip selhala s výjimkou {1} se zprávou: {2}|  
   
 
 ## <a name="error-0132"></a>Chyba 0132  
  Nebyl zadán žádný název souboru pro rozbalení; v souboru ZIP bylo nalezeno více souborů.  
   
- Tato chyba se vytvoří, když není zadaný žádný název souboru pro rozbalení; v souboru ZIP bylo nalezeno více souborů. Tato chyba se zobrazí, pokud soubor zip obsahuje více než jeden komprimovaný soubor, ale neurčili jste soubor k extrakci v textovém poli **datová sada k** dekomprimaci v podokně **vlastností** modulu. V současné době je možné extrahovat pouze jeden soubor pokaždé, když je modul spuštěn.  
+ Tato chyba se vytvoří, když není zadaný žádný název souboru pro rozbalení; v souboru ZIP bylo nalezeno více souborů. Tato chyba se zobrazí, pokud soubor zip obsahuje více než jeden komprimovaný soubor, ale neurčili jste soubor k extrakci v textovém poli **datová sada k dekomprimaci** v podokně **vlastností** modulu. V současné době je možné extrahovat pouze jeden soubor pokaždé, když je modul spuštěn.  
   
 **Řešení:** Chybová zpráva poskytuje seznam souborů, které se nacházejí v souboru. zip. Zkopírujte název požadovaného souboru a vložte ho do textového pole **datová sada do balíčku** .  
   
 |Zprávy výjimek|  
 |------------------------|  
 |Soubor zip obsahuje více souborů. musíte zadat soubor, který se má rozbalit.|  
-|Soubor obsahuje více než jeden soubor. Zadejte soubor, který se má rozbalit. Byly nalezeny následující soubory:{0}|  
+|Soubor obsahuje více než jeden soubor. Zadejte soubor, který se má rozbalit. Našly se následující soubory: {0}|  
   
 
 ## <a name="error-0133"></a>Chyba 0133  
@@ -1879,7 +1879,7 @@ Obecně lze transformaci na základě počtu použít pouze na datové sady, kte
 |Zprávy výjimek|  
 |------------------------|  
 |Zadaný soubor nebyl nalezen v rámci celé číslo souboru ZIP.|  
-|Zadaný soubor nebyl nalezen. Našel se tento počet souborů:{0}|  
+|Zadaný soubor nebyl nalezen. Našel se tento počet souborů: {0}|  
   
 
 ## <a name="error-0134"></a>Chyba 0134
@@ -1900,7 +1900,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |Zprávy výjimek|
 |------------------------|
 |K výjimce dojde v případě, že sloupec popisku chybí nebo má nedostatečný počet řádků s popiskem.|  
-|K výjimce dojde, pokud sloupec popisku chybí nebo má {0} méně než řádky s popiskem.|  
+|K výjimce dojde v případě, že sloupec popisku chybí nebo je menší než {0} řádky s popisky.|  
   
 
 ## <a name="error-0135"></a>Chyba 0135  
@@ -1918,7 +1918,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
 ## <a name="error-0136"></a>Chyba 0136  
  Nebyl vrácen žádný název souboru. soubor se nepovedlo zpracovat v důsledku.  
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
@@ -1928,12 +1928,12 @@ K této chybě může dojít také v případě, že předchozí operace změní
 ## <a name="error-0137"></a>Chyba 0137  
  Sada Azure Storage SDK zjistila chybu při konverzi mezi vlastnostmi tabulky a sloupci datové sady během čtení nebo zápisu.  
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
 |Došlo k chybě konverze mezi vlastností úložiště Azure Table a sloupcem datové sady.|  
-|Došlo k chybě konverze mezi vlastností úložiště Azure Table a sloupcem datové sady. Další informace:{0}|  
+|Došlo k chybě konverze mezi vlastností úložiště Azure Table a sloupcem datové sady. Další informace: {0}|  
 
 ## <a name="error-0138"></a>Chyba 0138  
  Paměť byla vyčerpána, nelze dokončit běh modulu. Převzorkování na datovou sadu může pomáhat s tím, jak problém vyřešit.  
@@ -1960,7 +1960,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
   
  Tato chyba se může zobrazit také v případě, že se modul pokusí implicitně převést data tak, aby splňovala požadavky aktuálního modulu, ale převod není možný.  
   
-**Řešení:**
+**Rozhodnutí**
 
 1. Zkontrolujte vstupní data a určete přesný datový typ sloupce, který chcete použít, a datový typ sloupce, ve kterém je chyba vytvářející. V některých případech se může stát, že datový typ je správný, ale zjistíte, že v nadřazené operaci byl změněn datový typ nebo využití sloupce. Pomocí modulu [Upravit metadata](edit-metadata.md) obnovte metadata sloupce do původního stavu. 
 2. Podívejte se na stránku s nápovědu modul a ověřte požadavky na určenou operaci. Určete, které datové typy jsou aktuálním modulem podporovány a jaké jsou podporované rozsahy hodnot. 
@@ -1979,10 +1979,10 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |------------------------|  
 |Převod není povolen.|  
 |Nelze převést: {0}.|  
-|Nelze převést: {0}, v řádku {1}.|  
+|Nelze převést: {0}, na řádku {1}.|  
 |Sloupec typu {0} nelze převést na sloupec typu {1} na řádku {2}.|  
-|Sloupec{2} typuna{1} řádku nelze{3}převést {0} na sloupec typu.|  
-|Nelze{2}převést sloupec{3} {1} typu na sloupec typu na řádku {4}. {0}| 
+|Nelze převést sloupec{2}typu {0} na sloupec typu {1} na řádku {3}.|  
+|Nelze převést sloupec{2}typu {0} na sloupec{3}typu {1} na řádku {4}.| 
 
 ## <a name="error-0140"></a>Chyba 0140  
  K výjimce dojde, pokud předaný argument sady sloupců neobsahuje jiné sloupce kromě sloupce Label.  
@@ -2010,18 +2010,18 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |Zprávy výjimek|  
 |------------------------|  
 |Počet vybraných číselných sloupců a jedinečných hodnot ve sloupcích kategorií a řetězec je příliš malý.|  
-|Celkový počet vybraných číselných sloupců a jedinečné hodnoty ve sloupcích kategorií a String (aktuálně {0}) by měly být alespoň{1}|  
+|Celkový počet vybraných číselných sloupců a jedinečných hodnot ve sloupcích kategorií a String (aktuálně {0}) by měly být aspoň {1}|  
   
 
 ## <a name="error-0142"></a>Chyba 0142  
  K výjimce dojde, pokud systém nemůže načíst certifikát pro ověření.  
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
 |Certifikát nelze načíst.|  
-|Certifikát {0} nelze načíst. Jeho kryptografický otisk {1}je.|  
+|{0} certifikátu nelze načíst. Jeho kryptografický otisk je {1}.|  
   
 
 ## <a name="error-0143"></a>Chyba 0143  
@@ -2034,7 +2034,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |Zprávy výjimek|  
 |------------------------|  
 |Adresa URL není z github.com.|  
-|Adresa URL není z github.com:{0}|  
+|Adresa URL není z github.com: {0}|  
 
 ## <a name="error-0144"></a>Chyba 0144  
  U uživatelem zadané adresy URL GitHubu chybí očekávaná část.  
@@ -2046,14 +2046,14 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |Zprávy výjimek|  
 |------------------------|  
 |Nejde analyzovat adresu URL GitHubu.|  
-|Nejde analyzovat adresu URL GitHubu (očekává se\\' \blob ' nebo\\' \tree ' za názvem úložiště):{0}|  
+|Nejde analyzovat adresu URL GitHubu (očekává se \blob\\nebo \tree\\za názvem úložiště): {0}|  
 
 ## <a name="error-0145"></a>Chyba 0145  
  Z nějakého důvodu nelze vytvořit adresář replikace.  
   
  K této chybě v Azure Machine Learning dojde v případě, že se modulu nepodařilo vytvořit zadaný adresář.  
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
@@ -2089,7 +2089,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
   
  K této chybě v Azure Machine Learning dochází, když se pokoušíte vytvořit adresář nebo načíst data z úložiště, ale nemáte potřebná oprávnění.  
   
-**Řešení:**
+**Rozhodnutí**
   
 |Zprávy výjimek|  
 |------------------------|  
@@ -2106,7 +2106,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |Zprávy výjimek|  
 |------------------------|  
 |Soubor GitHubu se nenašel.|  
-|Soubor GitHubu se nenašel.:{0}|  
+|Soubor GitHubu se nenašel.: {0}|  
   
 
 ## <a name="error-0150"></a>Chyba 0150  
@@ -2126,12 +2126,12 @@ K této chybě může dojít také v případě, že předchozí operace změní
   
  K této chybě v Azure Machine Learning dochází, když se modul pokusí zapisovat data do cloudového úložiště, ale adresa URL není k dispozici nebo je neplatná.  
   
-Řešení: Zkontrolujte adresu URL a ověřte, zda k ní lze zapisovat.  
+Řešení: Zkontrolujte adresu URL a ověřte, jestli je zapisovatelná.  
   
 |Zprávy výjimek|  
 |------------------------|  
 |Chyba při zápisu do cloudového úložiště (pravděpodobně Chybná adresa URL).|  
-|Chyba při zápisu do cloudového {0}úložiště:. Ověřte adresu URL.|  
+|Chyba při zápisu do cloudového úložiště: {0}. Ověřte adresu URL.|  
   
 ## <a name="error-0152"></a>Chyba 0152  
  Typ cloudu Azure se v kontextu modulu zadal nesprávně.  
@@ -2139,7 +2139,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |Zprávy výjimek|  
 |------------------------|  
 |Chybný typ cloudu Azure|  
-|Chybný typ cloudu Azure:{0}|  
+|Chybný typ cloudu Azure: {0}|  
   
 ## <a name="error-0153"></a>Chyba 0153  
  Zadaný koncový bod úložiště není platný.  
@@ -2147,7 +2147,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |Zprávy výjimek|  
 |------------------------|  
 |Chybný typ cloudu Azure|  
-|Chybný koncový bod úložiště:{0}|  
+|Chybný koncový bod úložiště: {0}|  
 
 ## <a name="error-0154"></a>Chyba 0154  
  Zadaný název serveru nejde přeložit.  
@@ -2155,7 +2155,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |Zprávy výjimek|  
 |------------------------|  
 |Zadaný název serveru nejde přeložit.|  
-|Zadaný server {0}. Documents.Azure.com nebylo možné přeložit.|
+|Zadaný server {0}. documents.azure.com nebylo možné přeložit.|
 
 ## <a name="error-0155"></a>Chyba 0155  
  U klienta DocDb došlo k výjimce.  
@@ -2163,7 +2163,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |Zprávy výjimek|  
 |------------------------|  
 |U klienta DocDb došlo k výjimce.|  
-|Klient DocDb:{0}|
+|Klient DocDb: {0}|
 
 ## <a name="error-0156"></a>Chyba 0156  
  Chybná odpověď pro server HCatalog.  
@@ -2190,5 +2190,5 @@ Pokud chcete získat další pomoc, doporučujeme, abyste si podrobnou zprávu d
 |Zprávy výjimek|  
 |------------------------|  
 |Výjimka knihovny|  
-|Výjimka knihovny:{0}|  
-|{0}výjimka knihovny:{1}|  
+|Výjimka knihovny: {0}|  
+|výjimka knihovny {0}: {1}|  
