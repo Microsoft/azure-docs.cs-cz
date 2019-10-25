@@ -3,65 +3,49 @@
 - name: Přehled
   items:
     - name: Co je to Azure AD Identity Protection?
-      href: overview.md
-- name: Šablony Rychlý start
-  items:
-    - name: 'Blokování přístupu, pokud se zjistí riziko relace'
-      href: quickstart-sign-in-risk-policy.md
+      href: overview-identity-protection.md
 - name: Koncepty
   expanded: false
   items:
-    - name: Co jsou ohrožení zabezpečení?
-      href: vulnerabilities.md
-    - name: Co jsou oznámení?
-      href: notifications.md
-    - name: Jaké je vaše přihlašovací prostředí?
-      href: flows.md
+    - name: Přehled zabezpečení
+      href: concept-identity-protection-security-overview.md
+    - name: Jaká jsou rizika?
+      href: concept-identity-protection-risks.md
+    - name: Zásad ochrany identit
+      href: concept-identity-protection-policies.md
+    - name: Jaké je přihlašovací prostředí?
+      href: concept-identity-protection-user-experience.md
     - name: Ochrana identit a uživatelé B2B
       href: concept-identity-protection-b2b.md
 - name: Návody
   expanded: true
   items:
-    - name: Identity Protection
+    - name: Konfigurace oznámení
+      href: howto-identity-protection-configure-notifications.md
+    - name: Konfigurace zásad
       items:
-        - name: Povolení služby Azure AD Identity Protection
-          href: enable.md
         - name: Konfigurace zásad registrace MFA
-          href: howto-mfa-policy.md
-        - name: Konfigurace zásad rizik přihlášení
-          href: howto-sign-in-risk-policy.md
-        - name: Konfigurace zásad rizik uživatelů
-          href: howto-user-risk-policy.md
-        - name: Zavření aktivních detekcí rizik
-          href: howto-close-active-risk-events.md
-        - name: Odblokování uživatelů
-          href: howto-unblock-user.md
-        - name: Simulace detekce rizik
-          href: playbook.md
-        - name: Nejčastější dotazy
-          href: faqs.md
-    - name: Ochrana identit (obnovená)
-      items:
-        - name: Přehled
-          href: overview-v2.md
-        - name: Přehled zabezpečení
-          href: security-overview.md
-        - name: Šetření rizik
-          href: howto-investigate-risk.md
-        - name: Poskytnutí zpětné vazby k detekcím rizik
-          href: howto-provide-risk-event-feedback.md
+          href: howto-identity-protection-configure-mfa-policy.md
         - name: Konfigurace zásady rizik
-          href: howto-configure-risk-policies.md
-        - name: Nejčastější dotazy a známé problémy
-          href: known-issues.md
+          href: howto-identity-protection-configure-risk-policies.md
+    - name: Simulace detekce rizik
+      href: howto-identity-protection-simulate-risk.md
+    - name: Šetření a náprava
+      items:
+        - name: Šetření rizik
+          href: howto-identity-protection-investigate-risk.md
+        - name: Náprava rozpoznaných rizik a odblokování
+          href: howto-identity-protection-remediate-unblock.md
+        - name: Použití rozhraní Microsoft Graph API
+          href: howto-identity-protection-graph-api.md
+    - name: Poskytnutí zpětné vazby k detekcím rizik
+      href: howto-identity-protection-risk-feedback.md
+    - name: Nejčastější dotazy
+      href: troubleshooting-identity-protection-faq.md
 - name: Referenční informace
   items:
-    - name: Použití rozhraní Microsoft Graph API
-      href: graph-get-started.md
-    - name: Detekce rizik
-      href: risk-events-reference.md
     - name: Glosář
-      href: glossary.md
+      href: reference-identity-protection-glossary.md
 - name: Zdroje a prostředky
   items:
     - name: Fórum Azure pro názory

@@ -17,6 +17,11 @@
     - name: Spusťte svůj první dotaz – PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+- name: Kurzy
+  items:
+    - name: Vytvoření a sdílení dotazu na webu Azure Portal
+      displayName: 'query, portal'
+      href: ./tutorials/create-share-query.md
 - name: Ukázky
   items:
     - name: Dotazy pro začátečníky

@@ -81,7 +81,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Sdílení v Unity</a>
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Sdílení v Unity s využitím Azure Cosmos DB</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Sdílení napříč relacemi a zařízeními</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Trvalé sdílení s využitím Azure Cosmos DB</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-unity-hololens-app">Spuštění nové aplikace Unity HoloLens</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-android-app">Spuštění nové aplikace pro Android</a>

@@ -627,7 +627,7 @@
       items:
         - name: Vytvoření a správa účtů úložiště
           items:
-            - name: Vytvoření účtu úložiště pro obecné účely
+            - name: Vytvoření účtu úložiště pro datové jezero
               href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Správa účtu úložiště
               href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

@@ -89,6 +89,8 @@
           href: 'cache-administration.md#schedule-updates'
         - name: Konfigurace přístupu k redis-cli.exe
           href: cache-how-to-redis-cli-tool.md
+        - name: Vyřazení TLS 1.0 a 1.1 z provozu
+          href: cache-deprecate-tls-10-11.md
     - name: Monitorování
       items:
         - name: Monitorování na webu Azure Portal

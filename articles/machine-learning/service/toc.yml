@@ -285,6 +285,8 @@
     - name: Machine Learning CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: Reference YAML ke kanálu strojového učení
+      href: reference-pipeline-yaml.md
     - name: Moduly vizuálního rozhraní
       displayName: 'module, reference, algorithm, studio'
       items:

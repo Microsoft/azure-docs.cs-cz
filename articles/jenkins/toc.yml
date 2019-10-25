@@ -55,7 +55,7 @@
           maintainContext: true
 - name: Postupy
   items:
-    - name: Použití modulu plug-in App Service
+    - name: Použití modulu plug-in služby App Service
       href: deploy-jenkins-app-service-plugin.md
 - name: Ukázky
   items:
