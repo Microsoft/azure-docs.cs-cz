@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: d0b2c9c7450b8a44ca93a9d9fa8770b7ab3d9282
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 14157ed22ea40a2157f696e91c59af9b58110bf2
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743850"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819940"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Vytvoření prostředku Cognitive Services pomocí Azure Portal
 
@@ -23,7 +23,7 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Platné předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 
@@ -39,7 +39,7 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
     
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | Počítačové zpracování obrazu  | Content Moderator                                    | Tvář               | Language Understanding (LUIS) | Analýza textu   |
+    | Computer Vision  | Content Moderator                                    | Tvář               | Language Understanding (LUIS) | Analýza textu   |
     | Translator Text  | Vyhledávání Bingu v7 <br>(Web, obrázek, novinky, video, vizuál) | Vlastní vyhledávání Bingu | Vyhledávání entit Bingu            | Automatické návrhy Bingu |
     | Kontrola pravopisu Bingu |                                                      |                    |                               |                  |
     
@@ -47,11 +47,11 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
     K vytvoření prostředku pro dostupné Cognitive Services použijte odkazy níže:
 
-    | Obraz                      | Řeč                  | Jazyk                          | Rozhodnutí             | Hledat                 |
+    | Vidění                      | Řeč                  | Jazyk                          | Rozhodnutí             | Hledat                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Počítačové zpracování obrazu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Hlasové služby](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Moderní čtečka](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Detektor anomálií](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Vyhledávání Bingu rozhraní API v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
-    | [Služba Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [rozpoznávání mluvčího](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUIS) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Vlastní vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
-    | [Rozpoznávání tváře](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Přizpůsobení](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Vyhledávání entit Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
+    | [Služba Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [rozpoznávání mluvčího](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Vlastní vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
+    | [Plochy](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Přizpůsobení](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Vyhledávání entit Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [Rozpoznávání rukopisu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Analýza textu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [Kontrola pravopisu Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [Translator Text](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Automatické návrhy Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
     ***
@@ -64,13 +64,13 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
     |--|--|
     | **Název** | Popisný název prostředku služby pro rozpoznávání. Například *MyCognitiveServicesResource*. |
     | **Předplatné** | Vyberte jedno z dostupných předplatných Azure. |
-    | **Location** | Umístění instance služby vyvnímání. Různá umístění můžou způsobit latenci, ale nemají žádný vliv na dostupnost vašeho prostředku za běhu. Zapamatujte si umístění Azure, jak ho budete možná potřebovat při volání Azure Cognitive Services. |
+    | **Umístění** | Umístění instance služby vyvnímání. Různá umístění můžou způsobit latenci, ale nemají žádný vliv na dostupnost vašeho prostředku za běhu. Zapamatujte si umístění Azure, jak ho budete možná potřebovat při volání Azure Cognitive Services. |
     | **Cenová úroveň** | Náklady na účet Cognitive Services závisí na možnostech, které zvolíte, a na vašem využití. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/)rozhraní API.
     | **Skupina prostředků** | Skupina prostředků Azure, která bude obsahovat váš prostředek Cognitive Services. Můžete vytvořit novou skupinu nebo ji přidat do již existující skupiny. |
 
     ![Obrazovka pro vytvoření prostředku](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Klikněte na možnost **Vytvořit**.
+    Klikněte na **Vytvořit**.
 
     #### <a name="single-service-resourcetabsingleservice"></a>[Prostředek s jednou službou](#tab/singleservice)
 
@@ -78,13 +78,13 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
     |--|--|
     | **Název** | Popisný název prostředku služby pro rozpoznávání. Například *TextAnalyticsResource*. |
     | **Předplatné** | Vyberte jedno z dostupných předplatných Azure. |
-    | **Location** | Umístění instance služby vyvnímání. Různá umístění můžou způsobit latenci, ale nemají žádný vliv na dostupnost vašeho prostředku za běhu. Zapamatujte si umístění Azure, jak ho budete možná potřebovat při volání Azure Cognitive Services. |
+    | **Umístění** | Umístění instance služby vyvnímání. Různá umístění můžou způsobit latenci, ale nemají žádný vliv na dostupnost vašeho prostředku za běhu. Zapamatujte si umístění Azure, jak ho budete možná potřebovat při volání Azure Cognitive Services. |
     | **Cenová úroveň** | Náklady na účet Cognitive Services závisí na možnostech, které zvolíte, a na vašem využití. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/)rozhraní API.
     | **Skupina prostředků** | Skupina prostředků Azure, která bude obsahovat váš prostředek Cognitive Services. Můžete vytvořit novou skupinu nebo ji přidat do již existující skupiny. |
 
     ![Obrazovka pro vytvoření prostředku](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Klikněte na možnost **Vytvořit**.
+    Klikněte na **Vytvořit**.
 
     ***
 
@@ -108,7 +108,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 2. Vyhledejte skupinu prostředků obsahující prostředek, který chcete odstranit.
 3. Klikněte pravým tlačítkem na výpis skupiny prostředků. Vyberte **Odstranit skupinu prostředků** a potvrďte tuto akci.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Ověřování požadavků do Azure Cognitive Services](authentication.md)
 * [Co je Azure Cognitive Services?](Welcome.md)
