@@ -1,6 +1,6 @@
 ---
-title: Konfigurace BFD přes ExpressRoute – Azure | Dokumentace Microsoftu
-description: Tento článek obsahuje pokyny, jak nakonfigurovat BFD (obousměrné předávání detekce) přes partnerský vztah privátní okruhu ExpressRoute.
+title: Konfigurace BFD přes ExpressRoute – Azure | Microsoft Docs
+description: Tento článek poskytuje pokyny ke konfiguraci BFD (obousměrného předávání) prostřednictvím privátního partnerského vztahu okruhu ExpressRoute.
 services: expressroute
 author: rambk
 ms.service: expressroute
@@ -8,35 +8,35 @@ ms.topic: article
 ms.date: 8/17/2018
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 14f65851e50ed25024524f6d988ba2b2f2b3aeba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e33e90d988251afde630401bed165a4d3614d2cd
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367659"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881451"
 ---
 # <a name="configure-bfd-over-expressroute"></a>Konfigurace BFD přes ExpressRoute
 
-ExpressRoute podporuje obousměrné předávání detekce (BFD) přes privátní partnerský vztah. Když zapnete BFD přes ExpressRoute, můžete urychlit rozpoznávání selhání připojení mezi Microsoft Enterprise (MSEE) hraniční zařízení a směrovačů, ve kterých je ukončit okruh ExpressRoute (PE). ExpressRoute můžete ukončit přes hranice zákazníka zařízení pro směrování nebo směrování partnera hraničních zařízeních (Pokud jste provedli pomocí spravované služby připojení vrstvy 3). Tento dokument vás provede potřebu BFD a jak povolit BFD přes ExpressRoute.
+ExpressRoute podporuje v rámci privátního partnerského vztahu detekci obousměrného předávání (BFD). Povolením BFD over ExpressRoute můžete urychlit propojení mezi zařízeními Microsoft Enterprise Edge (MSEE) a směrovači, na kterých jste ukončili okruh ExpressRoute (PE/CE). Můžete ukončit ExpressRoute zařízení pro směrování hraničních zařízení nebo zařízení pro směrování hraničního partnera (Pokud jste přešli se službou připojení ke spravované vrstvě 3). Tento dokument vás provede potřebou BFD a tím, jak povolit BFD přes ExpressRoute.
 
-## <a name="need-for-bfd"></a>Potřebu BFD
+## <a name="need-for-bfd"></a>Potřeba pro BFD
 
-Následující diagram znázorňuje výhodu, že povolení BFD přes okruh ExpressRoute: [![1]][1]
+Následující diagram znázorňuje výhody povolování BFD okruhu ExpressRoute: [![1]][1]
 
-Můžete povolit okruh ExpressRoute, buď pomocí připojení vrstvy 2 nebo spravovaná připojení vrstvy 3. V obou případech Pokud jsou na cestě připojení ExpressRoute, jeden nebo více zařízení vrstvy 2 odpovědnost zjišťování jakýchkoliv odkazů v cestě je nadřízená protokolu BGP.
+Okruh ExpressRoute můžete povolit buď prostřednictvím připojení vrstvy 2, nebo pomocí spravovaných připojení vrstvy 3. V obou případech platí, že pokud se v cestě připojení ExpressRoute nachází jedno nebo více zařízení vrstvy 2, zodpovídáte za detekci selhání propojení v cestě k překrývající se protokolu BGP.
 
-Na zařízeních směrovači MSEE keepalive protokolu BGP a blokování času jsou obvykle nakonfigurované jako 60 – 180 sekund v uvedeném pořadí. Po selhání odkazu, by trvat až proto se tři minuty k nalezení propojit selhání a přepínat provoz připojení.
+V zařízeních MSEE se doba uchovávání protokolu BGP a doba uchování obvykle konfigurují jako 60 a 180 sekund v uvedeném pořadí. Proto po selhání propojení může trvat až tři minuty pro zjištění selhání propojení a přepnutí provozu na alternativní připojení.
 
-Časovače protokolu BGP můžete řídit konfigurací keepalive nižší protokolu BGP a dobu uchování na partnerské vztahy hraniční zařízení zákazníka. Pokud časovače protokolu BGP se neshoda mezi dvě partnerské zařízení, využije relace protokolu BGP mezi partnerské uzly nižší hodnota časovače. Keepalive protokolu BGP je možné nastavit pouhých tří sekund a doby uchování v pořadí desítky vteřin. Však nastavení protokolu BGP časovačů méně agresivní vhodnější než protože protokol je náročné na zpracování.
+Můžete řídit časovače protokolu BGP tak, že na zařízení hraničního vztahu zákazníka nakonfigurujete nižší dobu uchování a dobu uchovávání protokolu BGP. Pokud se mezi dvěma partnerskými zařízeními neshodují časovače protokolu BGP, bude relace protokolu BGP mezi partnerskými uzly používat nižší hodnotu časovače. Nastavení naživu protokolu BGP se dá nastavit tak, aby bylo nízké jako tři sekundy, a za čas v řádu desítk sekund. Nastavení časovačů protokolu BGP je ale agresivní méně žádoucí, protože protokol je náročný na zpracování.
 
-V tomto scénáři může pomoct BFD. BFD poskytuje rozpoznávání selhání připojení s nízkou režií v časovém intervalu subsecond. 
+V tomto scénáři vám může BFD pomáhat. BFD zajišťuje detekci selhání propojení s nízkou zátěží za sekundu v daném časovém intervalu. 
 
 
 ## <a name="enabling-bfd"></a>Povolení BFD
 
-BFD je nakonfigurované ve výchozím nastavení v části všechny nově vytvořené ExpressRoute privátního partnerského vztahu rozhraní na směrovači Msee. Proto povolit BFD, budete muset jenom konfigurace BFD na váš server. Konfigurace BFD je dvoustupňový proces: potřebujete nakonfigurovat BFD na rozhraní a propojit ho se relace protokolu BGP.
+BFD je ve výchozím nastavení nakonfigurována ve všech nově vytvořených rozhraních privátního partnerského vztahu ExpressRoute na směrovači msee. Aby bylo možné povolit BFD, je třeba pouze nakonfigurovat BFD na vašem počítači PEs/zápis (na primární i sekundární zařízení). Konfigurace BFD proces se dvěma kroky: musíte nakonfigurovat BFD na rozhraní a pak ho propojit s relací protokolu BGP.
 
-Příklad konfigurace PE (pomocí Cisco IOS XE) je uveden níže. 
+Níže je uvedený příklad prostředí PE/CE (pomocí Cisco IOS XE). 
 
     interface TenGigabitEthernet2/0/0.150
       description private peering to Azure
@@ -56,26 +56,26 @@ Příklad konfigurace PE (pomocí Cisco IOS XE) je uveden níže.
       exit-address-family
 
 >[!NOTE]
->Povolit BFD v již existující soukromý partnerský vztah; budete muset obnovit partnerský vztah. Zobrazit [partnerské vztahy ExpressRoute resetování][ResetPeering]
+>Povolení BFD v rámci již existujícího privátního partnerského vztahu; je potřeba resetovat partnerský vztah. Viz [resetování partnerských vztahů ExpressRoute][ResetPeering]
 >
 
-## <a name="bfd-timer-negotiation"></a>Vyjednávání BFD časovače
+## <a name="bfd-timer-negotiation"></a>Vyjednávání časovače BFD
 
-Mezi rovnocennými počítači BFD určit pomalejší dvě spolupracovníků přenosovou rychlost. Msee BFD přijímání přenosu intervalech jsou nastaveny na 300 milisekund. V některých scénářích interval může být nastaven na hodnotu vyšší 750 milisekund. Nakonfigurováním vyšší hodnoty můžete vynutit tyto intervaly delší; ale ne kratší.
+Mezi partnerskými BFDmi, pomalejším ze dvou partnerských uzlů určuje přenosovou rychlost. Intervaly přenosu a příjmu směrovači msee BFD jsou nastavené na 300 milisekund. V některých scénářích může být interval nastavený na vyšší hodnotu 750 milisekund. Konfigurací vyšších hodnot můžete vynutit, aby tyto intervaly byly delší; ale ne kratší.
 
 >[!NOTE]
->Pokud jste nakonfigurovali soukromého partnerského vztahu okruhy geograficky redundantní ExpressRoute, nebo použijte protokol IPSec Site-to-Site VPN připojení jako zálohu pro soukromý partnerský vztah ExpressRoute; povolení BFD přes privátní partnerský vztah by pomohl převzetí služeb při selhání rychlejší následující chybu připojení ExpressRoute. 
+>Pokud jste nakonfigurovali geograficky redundantní okruhy partnerských vztahů ExpressRoute nebo používáte připojení Site-to-site IPSec VPN jako zálohu pro soukromý partnerský vztah ExpressRoute; povolení BFD prostřednictvím privátního partnerského vztahu by pomohlo urychlit převzetí služeb při selhání po selhání připojení ExpressRoute. 
 >
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace a nápovědu najdete na následujících odkazech:
+Další informace nebo nápovědu najdete na následujících odkazech:
 
 - [Vytvoření a úprava okruhu ExpressRoute][CreateCircuit]
 - [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-bfd/BFD_Need.png "BFD urychluje propojování odvození selhání"
+[1]: ./media/expressroute-bfd/BFD_Need.png "BFD zrychluje čas odpočty selhání propojení" .
 
 <!--Link References-->
 [CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 

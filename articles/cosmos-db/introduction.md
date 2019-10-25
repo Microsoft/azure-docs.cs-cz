@@ -1,17 +1,17 @@
 ---
 title: Úvod do služby Azure Cosmos DB
 description: Přečtěte si něco o službě Azure Cosmos DB. Tato globálně distribuovaná databáze s více modely je navržená s ohledem na nízkou latenci, elastickou škálovatelnost a vysokou dostupnost a nabízí nativní podporu pro data NoSQL.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 09/01/2019
-ms.author: rimman
-ms.openlocfilehash: f7396a747852e98b15c8c85e9b0d9a46326e6b25
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 10/23/2019
+ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240704"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882184"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -23,11 +23,6 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 > [!div class="nextstepaction"]
 > [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/)
-
-K urychlení vytváření a migrace aplikací na Azure Cosmos DB můžete použít také [Program Cosmos DB Bootstrap](https://azurecosmosdb.github.io/CosmosBootstrap/) . Když se přihlásíte k tomuto programu, Azure Cosmos DB inženýri jsou přiřazeni pro pomoc s vaším projektem a mohou vám pomoci migrovat data do Azure Cosmos DB nebo vytvářet nové aplikace na Azure Cosmos DB.
-
-> [!div class="nextstepaction"]
-> [Zaregistrujte se do programu Cosmos DB Bootstrap.](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ![Azure Cosmos DB je globálně distribuovaná databázová služba od Microsoftu, která nabízí elastické škálování na více instancí, zaručenou nízkou latenci, pět modelů konzistence a komplexní zaručené smlouvy SLA.](./media/introduction/azure-cosmos-db.png)
 
@@ -53,7 +48,7 @@ Pomocí Cosmos DB můžete vytvářet vysoce reagující aplikace globálním š
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Přesně definované, vícenásobné volby konzistence
 
-Při sestavování globálně distribuovaných aplikací v Cosmos DB už nemusíte provádět extrémní [kompromisy mezi konzistencí, dostupností, latencí a propustností](consistency-levels-tradeoffs.md). Protokol replikace s více hlavními servery Cosmos DB je pečlivě navržený tak, aby nabízel -  [pět jasně definovaných možností konzistence](consistency-levels.md)*silné*, *ohraničené neaktuálnost*, *relace*, *konzistentní předpony* *a konečné.* – pro intuitivní programovací model s nízkou latencí a vysokou dostupností pro globálně distribuovanou aplikaci.
+Při sestavování globálně distribuovaných aplikací v Cosmos DB už nemusíte provádět extrémní [kompromisy mezi konzistencí, dostupností, latencí a propustností](consistency-levels-tradeoffs.md). Protokol replikace s více hlavními servery Cosmos DB je pečlivě navržený *tak, aby* nabízel [pět jasně definovaných voleb konzistence](consistency-levels.md) - *silné*, *ohraničené neaktuálnost*, *relace*, *konzistentní předpony*a konečné – pro intuitivní programovací model s nízkou latencí a vysokou dostupností pro globálně distribuovanou aplikaci.
 
 ### <a name="no-schema-or-index-management"></a>Žádná Správa schématu ani indexu
 
@@ -96,7 +91,7 @@ Cosmos DB nabízí možnost výběru rozhraní API pro práci s daty uloženými
 
 Všechny [webové, mobilní, herní a aplikace IoT](use-cases.md) , které potřebují zpracovávat obrovské objemy dat, čtení a zápisů v [globálním měřítku](distribute-data-globally.md) s téměř skutečnými dobami odezvy pro nejrůznější data, budou mít výhodu [zaručené vysoké dostupnosti Cosmos DB. ](https://azure.microsoft.com/support/legal/sla/cosmos-db/), vysoká propustnost, nízká latence a přizpůsobitelné konzistence. Přečtěte si, jak můžete Azure Cosmos DB použít k sestavování [IoT a telematických](use-cases.md#iot-and-telematics), [maloobchodních a marketingových](use-cases.md#retail-and-marketing), [herních](use-cases.md#gaming) a [webových a mobilních aplikací](use-cases.md#web-and-mobile-applications).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o základních konceptech Cosmos DB [klíč globální distribuci](distribute-data-globally.md) a vytváření [oddílů](partitioning-overview.md) a [zřízené propustnost](request-units.md).
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 59bf62f73d8ba9732cd89209d2b239fd15a6d844
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: 11e2a02277a47e070f91e8f057f0d8493235c5ce
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754477"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821351"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -116,6 +116,38 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 V případě MQTT připojení a odpojení paketů IoT Hub vydá událost na kanálu **monitorování operací** . Tato událost obsahuje další informace, které vám můžou pomoct vyřešit problémy s připojením.
 
 Aplikace zařízení může v paketu **Connect** **zadat zprávu.** Aplikace zařízení by měla používat `devices/{device_id}/messages/events/` nebo `devices/{device_id}/messages/events/{property_bag}` jako název **tématu, které se má** definovat, **bude** zprávy předávané jako zpráva telemetrie. V takovém případě, pokud je síťové připojení ukončeno, ale ze zařízení nebyl dříve přijat paket pro **odpojení** , IoT Hub **odešle zprávu** dodanou v paketu **připojit** k kanálu telemetrie. Kanál telemetrie může být buď koncovým bodem výchozí **události** , nebo vlastním koncovým bodem definovaným IoT Hub směrováním. Zpráva obsahuje vlastnost **iothub-MessageType** s hodnotou, která **se mu přiřadí.**
+
+### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Příklad kódu C s použitím MQTT bez sady Azure IoT C SDK
+V tomto [úložišti](https://github.com/Azure-Samples/IoTMQTTSample)najdete několik projektů C/C++ demo, které ukazují, jak odesílat zprávy telemetrie, přijímat události ve službě IoT Hub bez použití sady Azure IoT C SDK. 
+
+Tyto ukázky používají knihovnu Mosquitto zatmění k odeslání zprávy zprostředkovateli MQTT implementovanému ve službě IoT Hub.
+
+Toto úložiště obsahuje:
+
+**Pro Windows:**
+
+• TelemetryMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie do služby Azure IoT Hub, která je sestavená a spuštěná na počítači s Windows.
+
+• SubscribeMQTTWin32: obsahuje kód pro přihlášení k odběru událostí daného centra IoT v počítači s Windows.
+
+• DeviceTwinMQTTWin32: obsahuje kód pro dotazování a přihlášení k odběru událostí zařízení ve službě Azure IoT Hub na počítači s Windows.
+
+• PnPMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie pomocí funkce IoT plug & Play Preview možností zařízení ve službě Azure IoT Hub, která je postavená a spuštěná na počítači s Windows. Další informace o technologii IoT plug [& Play](https://docs.microsoft.com/en-us/azure/iot-pnp/overview-iot-plug-and-play)
+
+**Pro Linux:**
+
+• MQTTLinux: obsahuje kód a skript sestavení pro spuštění na platformě Linux (WSL, Ubuntu a Raspbian byly testovány tak daleko).
+
+• LinuxConsoleVS2019: obsahuje stejný kód, ale v projektu VS2019 cílící na WSL (Windows Linux sub System). Tento projekt vám umožní ladit kód běžící v systému Linux krok za krokem ze sady Visual Studio.
+
+**Pro mosquito_pub:**
+
+• Tato složka obsahuje dva příkazy vzorků používané s nástrojem mosquitto_pub Utility, který poskytuje Mosquitto.org.
+
+Mosquitto_sendmessage: pro odeslání jednoduché textové zprávy do služby Azure IoT Hub fungující jako zařízení.
+
+Mosquitto_subscribe: zobrazení událostí, ke kterým dochází ve službě Azure IoT Hub.
+
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Přímé použití protokolu MQTT (jako modul)
 
@@ -249,7 +281,7 @@ Aby bylo možné přijímat zprávy z IoT Hub, mělo by se zařízení přihlás
 
 Zařízení neobdrží žádné zprávy od IoT Hub, dokud se neúspěšně přihlásí ke koncovému bodu specifickému pro zařízení, reprezentovaným filtrem `devices/{device_id}/messages/devicebound/#` tématu. Po navázání předplatného zařízení obdrží zprávy typu cloud-zařízení, které se do ní poslaly po uplynutí doby platnosti předplatného. Pokud se zařízení připojí s příznakem **CleanSession** nastaveným na **hodnotu 0**, předplatné se trvale zachová napříč různými relacemi. V takovém případě se při příštím připojení zařízení k **CleanSession 0** obdrží všechny nedokončené zprávy, které se do ní odesílají během odpojení. Pokud zařízení používá příznak **CleanSession** nastavené na **1** , ale neobdrží žádné zprávy z IoT Hub, dokud se přihlásí k odběru koncového bodu zařízení.
 
-IoT Hub doručuje zprávy s **názvem tématu** `devices/{device_id}/messages/devicebound/` nebo `devices/{device_id}/messages/devicebound/{property_bag}`, pokud jsou vlastnosti zprávy. `{property_bag}` obsahuje páry klíč/hodnota zakódované URL vlastností zprávy. Do kontejneru objektů a dat jsou zahrnuty pouze vlastnosti aplikace a uživatelsky nastavitelované systémové vlastnosti (například **MessageID** nebo **ID korelace**). Názvy systémových vlastností mají předponu **$** , vlastnosti aplikace používají název původní vlastnosti bez předpony.
+IoT Hub doručuje zprávy s **názvem tématu** `devices/{device_id}/messages/devicebound/`nebo `devices/{device_id}/messages/devicebound/{property_bag}`, pokud jsou vlastnosti zprávy. `{property_bag}` obsahuje páry klíč/hodnota zakódované URL vlastností zprávy. Do kontejneru objektů a dat jsou zahrnuty pouze vlastnosti aplikace a uživatelsky nastavitelované systémové vlastnosti (například **MessageID** nebo **ID korelace**). Názvy systémových vlastností mají předponu **$** , vlastnosti aplikace používají název původní vlastnosti bez předpony.
 
 Když se aplikace zařízení přihlásí k odběru tématu s **QoS 2**, IoT Hub v paketu **SUBACK** udělí maximální úroveň QoS úrovně 1. Potom IoT Hub doručuje zprávy na zařízení pomocí technologie QoS 1.
 

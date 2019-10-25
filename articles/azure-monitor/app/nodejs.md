@@ -1,27 +1,22 @@
 ---
 title: Monitorování služeb Node.js pomocí Azure Application Insights | Dokumentace Microsoftu
 description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js pomocí Application Insights.
-services: application-insights
-documentationcenter: nodejs
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: f2a30d5a040c2713f04173e83732cea5fa19af3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/14/2019
+ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255288"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820722"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje po nasazení můžete zjišťovat a rychle diagnostikovat výkonu a další problémy s back-endové služby a komponenty. Application Insights můžete použít pro služby Node.js hostované ve vašem datovém centru, na virtuálních počítačích a ve webových aplikacích Azure a dokonce i v jiných veřejných cloudech.
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) po nasazení monitorovat vaše back-end služby a komponenty, které vám pomůžou zjistit a rychle diagnostikovat výkon a další problémy. Application Insights můžete použít pro služby Node.js hostované ve vašem datovém centru, na virtuálních počítačích a ve webových aplikacích Azure a dokonce i v jiných veřejných cloudech.
 
 Pokud chcete přijímat, ukládat a prozkoumávat data monitorování, vložte do svého kódu sadu SDK a pak v Azure nastavte odpovídající prostředek Application Insights. Sada SDK do tohoto prostředku odesílá data pro další analýzy a prozkoumávání.
 
@@ -29,13 +24,13 @@ Sada Node.js SDK dokáže automaticky monitorovat příchozí a odchozí požada
 
 Pomocí rozhraní TelemetryClient API můžete ručně instrumentovat a monitorovat další aspekty aplikace a systému. Rozhraní TelemetryClient API popisujeme podrobněji dále v tomto článku.
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 Proveďte následující úlohy a nastavte monitorování pro aplikaci nebo službu.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-Než začnete, ujistěte se, že máte předplatné Azure nebo [zdarma získejte nové předplatné][azure-free-offer]. Pokud vaše organizace již má předplatné Azure, správce vás do něj může přidat pomocí [těchto pokynů][add-aad-user].
+Než začnete, ujistěte se, že máte předplatné Azure, nebo [Získejte nový zdarma][azure-free-offer]. Pokud už vaše organizace má předplatné Azure, může správce pomocí [těchto pokynů tyto pokyny][add-aad-user] přidat.
 
 [azure-free-offer]: https://azure.microsoft.com/free/
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
@@ -83,7 +78,7 @@ Vložte do své aplikace sadu SDK, aby mohla shromažďovat data.
 
 Sada SDK automaticky shromažďuje telemetrii o modulu runtime Node.js a některých běžných modulech třetích stran. Použijte svou aplikaci k vygenerování nějakých dat.
 
-Potom na webu [Azure Portal][portal] přejděte k prostředku Application Insights, který jste vytvořili dříve. V části **Časová osa přehledu** vyhledejte vašich prvních pár datových bodů. Pokud chcete zobrazit podrobnější data, vyberte v grafech různé komponenty.
+Pak v [Azure Portal][portal] přejít na prostředek Application Insights, který jste vytvořili dříve. V části **Časová osa přehledu** vyhledejte vašich prvních pár datových bodů. Pokud chcete zobrazit podrobnější data, vyberte v grafech různé komponenty.
 
 Pokud chcete zobrazit zjištěnou topologii vaší aplikace, vyberte tlačítko **Mapa aplikace**. Výběrem komponent na mapě zobrazíte další podrobnosti.
 
@@ -101,7 +96,7 @@ Vzhledem k tomu, že sada SDK seskupuje data do dávek pro odesílání, může 
 * V zobrazení prostředku na portálu klikněte na **Aktualizovat**. Grafy se samy pravidelně aktualizují, ale ruční aktualizace vynutí jejich okamžitou aktualizaci.
 * Ověřte, že jsou otevřené [požadované výchozí porty](../../azure-monitor/app/ip-addresses.md).
 * Pomocí [Vyhledávání](../../azure-monitor/app/diagnostic-search.md) vyhledejte konkrétní události.
-* Přečtěte si [Nejčastější dotazy][FAQ].
+* Přečtěte si část [Nejčastější dotazy][FAQ].
 
 
 ## <a name="sdk-configuration"></a>Konfigurace sady SDK
@@ -200,7 +195,7 @@ server.on("listening", () => {
 });
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Monitorování telemetrických dat na portálu](../../azure-monitor/app/overview-dashboard.md)
 * [Psaní analytických dotazů do telemetrických dat](../../azure-monitor/log-query/get-started-portal.md)

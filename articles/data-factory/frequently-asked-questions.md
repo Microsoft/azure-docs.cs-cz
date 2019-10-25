@@ -5,18 +5,16 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 764a4dd31125dad20f6ef23e3628d7710dba2b85
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387063"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880147"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Data Factory.  
@@ -178,34 +176,21 @@ Ano. Výstup aktivity lze spotřebovat v následné aktivitě s konstrukcí `@ac
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Návody řádně zpracovat hodnoty null ve výstupu aktivity? 
 Můžete použít konstrukci `@coalesce` ve výrazech k řádnému zpracování hodnot null. 
 
-## <a name="mapping-data-flows"></a>Mapování toků dat
-
-### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>Kterou verzi Data Factory mám použít k vytváření toků dat?
-Pro vytváření toků dat použijte verzi Data Factory v2.
-  
-### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>Jsem předchozí zákazník verze Private Preview, který použil toky dat a používá verzi Data Factory v2 Preview pro toky dat.
-Tato verze je nyní zastaralá. Pro toky dat použijte Data Factory v2.
-  
-### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>Co se změnilo z verze Private Preview na omezené veřejné verze Preview v souvislosti s toky dat?
-Nebudete už muset přinášet vlastní clustery Azure Databricks. Data Factory bude spravovat vytváření a roztrhnout clustery. Datové sady objektů BLOB a Azure Data Lake Storage Gen2 datové sady jsou rozdělené na oddělený text a sady Apache Parquet. K ukládání těchto souborů můžete dál používat Data Lake Storage Gen2 a BLOB Storage. Použijte pro tyto paměťové moduly příslušnou propojenou službu.
-
-### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>Můžu migrovat svoje vlastní továrny ve verzi Preview na Data Factory v2?
-
-Ano. [Postupujte podle pokynů](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration).
+## <a name="mapping-data-flows"></a>Toky dat mapování
 
 ### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>Potřebuji pomoc s řešením logiky toku dat. Jaké informace potřebuji k získání nápovědu?
 
-Když Microsoft poskytuje pomoc nebo řešení potíží s toky dat, zadejte prosím plán kódu DSL. Postupujte přitom takto:
+Když Microsoft poskytuje pomoc nebo řešení potíží s toky dat, zadejte prosím skript toku dat. Toto je skript kódu na pozadí z vašeho grafu toku dat. V uživatelském rozhraní ADF otevřete tok dat a pak klikněte na tlačítko "skript" v pravém horním rohu. Tento skript zkopírujte a vložte nebo ho uložte do textového souboru.
 
-1. V Návrháři toku dat v pravém horním rohu vyberte **kód** . Tím se zobrazí upravitelný kód JSON pro tok dat.
-2. V zobrazení kód v pravém horním rohu vyberte **plán** . Tento přepínač přepne z formátu JSON do naformátovaného plánu skriptu DSL určeného jen pro čtení.
-3. Tento skript zkopírujte a vložte nebo ho uložte do textového souboru.
-
-### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>Návody přístup k datům pomocí dalších typů datových sad 80 v Data Factory?
+### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Návody přístup k datům pomocí dalších typů datových sad 90 v Data Factory?
 
 Funkce mapování toku dat v současné době umožňuje Azure SQL Database, Azure SQL Data Warehouse, oddělený text soubory ze služby Azure Blob Storage nebo Azure Data Lake Storage Gen2 a Parquet soubory ze služby Blob Storage nebo nativně Data Lake Storage Gen2 pro zdroj a jímku. 
 
 Použijte aktivitu kopírování pro přípravu dat z jiných konektorů a potom spusťte aktivitu toku dat pro transformaci dat po jejím přípravě. Například váš kanál se nejdřív nakopíruje do úložiště objektů BLOB a pak aktivita toku dat použije ve zdroji datovou sadu k transformaci těchto dat.
+
+### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Je místně hostovaný modul Integration runtime dostupný pro toky dat?
+
+Místní prostředí IR je konstrukce kanálu ADF, kterou můžete použít s aktivitou kopírování k získání nebo přesunu dat do a z Prem nebo datových zdrojů a jímky založených na virtuálních počítačích. Nejprve Připravte data s kopírováním, potom toku dat pro transformaci a následným zkopírováním, pokud potřebujete přesunout tato transformovaná data zpět do úložiště on-Prem.
 
 ## <a name="next-steps"></a>Další kroky
 Podrobné pokyny k vytvoření datové továrny najdete v následujících kurzech:

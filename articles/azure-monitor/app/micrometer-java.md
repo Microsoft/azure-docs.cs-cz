@@ -1,23 +1,18 @@
 ---
 title: Použití mikroměřiče s Azure Application Insights Java SDK | Microsoft Docs
 description: 'Podrobný návod k použití mikroměřiče s aplikacemi Application Insights pružinové spouštěcí a nepružinové spouštěcí aplikace. '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/01/2018
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 11/01/2018
+ms.openlocfilehash: 267665c97f683740c05ae6602a416225c79aa44c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299576"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819301"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
 Měření míry monitorování aplikací pro mikroměřiče pro kód aplikace založené na JVM a umožňuje exportovat data do oblíbených monitorovacích systémů. V tomto článku se dozvíte, jak používat mikroměřiče s Application Insights pro aplikace pro spouštění pružinového spouštění i pro aplikace bez pružiny.
@@ -27,7 +22,7 @@ Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti:
 * [Application Insights jaře-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 nebo novější
 * 1\.1.0 nebo novější v registru mikroměřiče Azure
 * [Pružina mikroměřiče starší verze](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 nebo vyšší (Tato znovu nasměruje kód pro automatické nastavování v rozhraní pružiny).
-* [ApplicationInsights Resource](../../azure-monitor/app/create-new-resource.md )
+* [Prostředek ApplicationInsights](../../azure-monitor/app/create-new-resource.md )
 
 Kroky
 
@@ -101,17 +96,17 @@ Výchozí metriky:
 Vypnutí automatické shromažďování metrik: 
  
 - JVM metriky: 
-    - management.metrics.binders.jvm.enabled=false 
+    - Management. Metrics. pojiv. JVM. Enabled = FALSE 
 - Logback metriky: 
-    - management.metrics.binders.logback.enabled=false
+    - Management. Metrics. pojiv. logback. Enabled = FALSE
 - Metriky provozu: 
-    - management.metrics.binders.uptime.enabled=false 
+    - Management. Metrics. propojuje.-time. Enabled = FALSE 
 - Metriky procesoru:
-    -  management.metrics.binders.processor.enabled=false 
+    -  Management. Metrics. pojivs. procesor. Enabled = FALSE 
 - FileDescriptorMetrics:
-    - management.metrics.binders.files.enabled=false 
+    - Management. Metrics. propojujed. Files. Enabled = FALSE 
 - Hystrix metriky v případě knihovny pro cestu k cestě: 
-    - management.metrics.binders.hystrix.enabled=false 
+    - Management. Metrics. pojiv. hystrix. Enabled = FALSE 
 - AspectJ metriky v případě knihovny pro cestu k cestě: 
     - pružina. aop. Enabled = FALSE 
 
@@ -144,7 +139,7 @@ Kroky:
         </dependency>
      ```
 
-2. Umístit `ApplicationInsights.xml` soubor do složky Resources:
+2. Umístit soubor `ApplicationInsights.xml` do složky Resources:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -251,9 +246,9 @@ Kroky:
          }
     ```
 
-Další informace o metrikách najdete v [dokumentaci](https://micrometer.io/docs/)k mikroměřiči.
+Další informace o metrikách najdete v [dokumentaci k mikroměřiči](https://micrometer.io/docs/).
 
-Další ukázkový kód pro vytvoření různých typů metrik najdete v[oficiálním úložišti GitHub](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples)mikroměřiče.
+Další ukázkový kód pro vytvoření různých typů metrik najdete v[oficiálním úložišti GitHub mikroměřiče](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
 
 ## <a name="how-to-bind-additional-metrics-collection"></a>Vytvoření vazby dalších kolekcí metrik
 
@@ -267,7 +262,7 @@ Vytvořte Bob příslušné kategorie metriky. Řekněme například, že potře
         Return new GuavaCacheMetrics();
     }
 ```
-K dispozici je několik metrik, které ve výchozím nastavení nejsou povoleny, ale mohou být vázány výše uvedeným způsobem. Úplný seznam najdete [v oficiálním úložišti GitHubu](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder )pro mikroměřiče.
+K dispozici je několik metrik, které ve výchozím nastavení nejsou povoleny, ale mohou být vázány výše uvedeným způsobem. Úplný seznam najdete [v oficiálním úložišti GitHubu pro mikroměřiče](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
 
 ### <a name="non-spring-apps"></a>Aplikace bez pružiny
 Do konfiguračního souboru přidejte následující kód vazby:

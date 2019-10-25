@@ -15,16 +15,31 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: d8470ad759d983f25f8f68b93d58f89f23eeb578
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9427b72faf36106602cb59dc271d72402453e81e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015396"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821413"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics na Media Services platformě 
 
+## <a name="retirement-plans"></a>Plány vyřazení
+
+> [!IMPORTANT]
+> Následující starší verze mediálních procesorů se budou vyřadit v 2020. Další informace najdete v následující tabulce. 
+
+|Název procesoru médií|Datum vyřazení|Další poznámky|
+|---|---|
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| Od 1. ledna 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer 2 do Azure Media Services video indexer](migrate-indexer-v1-v2.md).|
+|[Azure Media Indexer](media-services-index-content.md)|1\. října z 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer do Azure Media Services video indexer](migrate-indexer-v1-v2.md)
+|[Azure Media Face Detector](media-services-face-and-emotion-detection.md)|1\. února 2020|Tento procesor Media Analytics ve verzi Preview bude vyřazen a nebude přesunut do všeobecné dostupnosti. Budeme vyhodnocovat své scénáře a případy použití se zákazníky při budoucích investicích.|
+|[Azure Media Motion Detector](media-services-motion-detection.md)|1\. února 2020|Tento procesor Media Analytics ve verzi Preview bude vyřazen a nebude přesunut do všeobecné dostupnosti. Budeme vyhodnocovat své scénáře a případy použití se zákazníky při budoucích investicích.|
+|[Azure Media OCR](media-services-video-optical-character-recognition.md)|1\. února 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) a [přednastaveným analyzátorem videa rozhraní API pro Azure Media Services V3](../latest/analyzing-video-audio-files-concept.md).|
+|[Azure Media Video Thumbnails](media-services-video-summarization.md)|1\. února 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) a [přednastaveným analyzátorem videa rozhraní API pro Azure Media Services V3](../latest/analyzing-video-audio-files-concept.md).|
+
 ## <a name="overview"></a>Přehled
+
 Víc organizací používá video jako preferované médium ke školení svých zaměstnanců, zapojení svých zákazníků a dokumentaci obchodních funkcí. Cloud Computing poskytuje způsob, jak ukládat, streamovat a přistupovat k těmto velkým mediálním souborům. Ale podniková knihovna obsahu videa roste, potřebuje stejně efektivní způsob extrakce přehledů z obsahu. 
 
 Pro vyřešení tohoto rostoucího potřeb Azure Media Services nabídky Azure Media Analytics. Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. V rámci sestavování s využitím základních Media Services komponent platformy mohou Media Analytics zpracovávat zpracování médií ve velkém měřítku na jednom dni.
@@ -39,7 +54,7 @@ Procesory médií z Media Analytics vytvářejí soubory MP4 nebo soubory JSON. 
 
 ## <a name="media-analytics-services"></a>Služby Media Analytics
 
-### <a name="indexer"></a>Indexer
+### <a name="indexer"></a>Indexovací modul
 Pomocí Azure Media Indexer můžete provádět hledání obsahu a generovat stopy s titulky. Ve srovnání s předchozí verzí Azure Media Indexer 2 Preview rychlejší indexování a širší podporu jazyků. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština, portugalština a arabština. Podrobné informace a příklady najdete v tématu [zpracování videí pomocí Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
 ### <a name="motion-detector"></a>Detektor pohybu
 Pomocí snímače pohybu můžete detekovat pohyb videa pomocí stacionárních pozadí. Díky tomu je možné kontrolovat falešně pozitivní události na událostech pohybu zjištěných sledovacími kamerami. Podrobné informace a příklady najdete v tématu [detekce pohybu pro Azure Media Analytics](media-services-motion-detection.md).
@@ -125,7 +140,7 @@ Odpověď:
 ## <a name="demos"></a>Ukázky
 Viz [ukázky Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Související články

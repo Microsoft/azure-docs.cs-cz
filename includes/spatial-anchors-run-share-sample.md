@@ -4,14 +4,35 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 1007533df077c58d9e4d57f9e86b035730ea917f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ec8fb6efab126dcf5556a9abfdf58d1fd69d4212
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903999"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882312"
 ---
-## <a name="set-up-your-device-in-unity"></a>Nastavení zařízení v Unity
+## <a name="androidtabandroid"></a>[Android](#tab/Android)
+
+Ukázka Java Android podporuje sdílení přes zařízení.
+Otevřete soubor `SharedActivity.java` ze složky Samples v Android Studio. Zadejte adresu URL, kterou jste získali v předchozím kroku (z nasazení Azure Web App ASP.NET) jako hodnotu pro `SharingAnchorsServiceUrl` v souboru `SharedActivity.java`. Nahraďte `index.html` v adrese URL `api/anchors`. Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="iostabios"></a>[iOS](#tab/iOS)
+
+Ukázka "cíl-C iOS" podporuje sdílení přes zařízení.
+Otevřete soubor `SharedDemoViewController.m` ve složce Samples. Zadejte adresu URL, kterou jste získali v předchozím kroku (z nasazení Azure Web App ASP.NET) jako hodnotu pro `SharingAnchorsServiceUrl` v souboru `SharedActivity.java`. Nahraďte `index.html` v adrese URL `api/anchors`. Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="xamarintabxamarin"></a>[Xamarin](#tab/Xamarin)
+
+Ukázky pro Xamarin Android i iOS podporují sdílení přes zařízení.
+Otevřete soubor `AccountDetails.cs` ve složce Samples. Zadejte adresu URL, kterou jste získali v předchozím kroku (z nasazení Azure Web App ASP.NET) jako hodnotu pro `AnchorSharingServiceUrl` v souboru `SharedActivity.java`. Nahraďte `index.html` v adrese URL `api/anchors`. Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="unitytabunity"></a>[Jednot](#tab/Unity)
 
 [!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 
@@ -29,9 +50,9 @@ V podokně **projekt** přejděte na `Assets/AzureSpatialAnchorsPlugin/Examples`
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-V podokně **projekt** přejděte na `Assets\AzureSpatialAnchors.Examples\Resources`. Vyberte `SpatialAnchorSamplesConfig`. Pak v podokně **inspektor** `Sharing Anchors Service url` zadejte (z nasazení Azure Web App ASP.NET) jako hodnotu `api/anchors`pro `Base Sharing Url`, nahraďte `index.html` hodnotou. Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors`.
+V podokně **projekt** přejděte na `Assets\AzureSpatialAnchors.Examples\Resources`. Vyberte `SpatialAnchorSamplesConfig`. Pak v podokně **inspektor** zadejte `Sharing Anchors Service url` (z nasazení Azure web app ASP.NET) jako hodnotu `Base Sharing Url`a nahraďte `index.html` `api/anchors`. Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors`.
 
-Scénu uložte výběrem**Uložit** **soubor** > .
+Scénu uložte tak, že vyberete **soubor** > **Uložit**.
 
 ## <a name="deploy-to-your-device"></a>Nasazení zařízení
 
@@ -39,28 +60,22 @@ Scénu uložte výběrem**Uložit** **soubor** > .
 
 Přihlaste se na zařízení s Androidem a připojte ho k počítači pomocí kabelu USB.
 
-Otevřete **nastavení sestavení** výběrem**nastavení sestavení** **souboru** > .
+Otevřete **nastavení sestavení** tak, že vyberete **soubor** > **nastavení sestavení**.
 
 V části **scény v sestavení**zajistěte, aby všechny scény měly vedle sebe značku zaškrtnutí.
 
-Ujistěte se, že **projekt pro export** neobsahuje značku zaškrtnutí. Vyberte **sestavení a spustit**. Zobrazí se výzva k uložení `.apk` souboru. Můžete si vybrat libovolný název.
+Ujistěte se, že **projekt pro export** neobsahuje značku zaškrtnutí. Vyberte **sestavení a spustit**. Zobrazí se výzva k uložení souboru `.apk`. Můžete si vybrat libovolný název.
 
-Po spuštění aplikace v dialogovém okně **Zvolte ukázku** použijte šipky vlevo nebo vpravo a vyberte možnost **LocalShare** a klepněte na tlačítko **Přejít!** . Postupujte podle pokynů v aplikaci. Můžete vybrat možnost **vytvořit & sdílet kotvu** nebo **Vyhledat sdílené kotvy**.
-
-První scénář vám umožní vytvořit kotvu, která může být umístěná později na stejném zařízení nebo na jiném.
-Druhý scénář, pokud jste již aplikaci spustili, buď na stejném zařízení, nebo na jiném, umožňuje vyhledat dříve sdílené kotvy. Po výběru scénáře vás aplikace provede dalšími pokyny k tomu, co dělat. Budete například požádáni o přesunutí zařízení do složky pro shromáždění informací o prostředí. Později umístíte kotvu do světa, počkejte na její uložení atd.
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ### <a name="deploy-to-an-ios-device"></a>Nasazení na zařízení s iOS
 
-Otevřete **nastavení sestavení** výběrem**nastavení sestavení** **souboru** > .
+Otevřete **nastavení sestavení** tak, že vyberete **soubor** > **nastavení sestavení**.
 
 V části **scény v sestavení**zajistěte, aby všechny scény měly vedle sebe značku zaškrtnutí.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-Po spuštění aplikace v dialogovém okně **Zvolte ukázku** použijte šipky vlevo nebo vpravo a vyberte možnost **LocalShare** a klepněte na tlačítko **Přejít!** . Postupujte podle pokynů v aplikaci. Můžete vybrat možnost **vytvořit & sdílet kotvu** nebo **Vyhledat sdílené kotvy**.
-
-První scénář vám umožní vytvořit kotvu, která může být umístěná později na stejném zařízení nebo na jiném.
-Druhý scénář, pokud jste již aplikaci spustili, buď na stejném zařízení, nebo na jiném, umožňuje vyhledat dříve sdílené kotvy. Po výběru scénáře vás aplikace provede dalšími pokyny k tomu, co dělat. Budete například požádáni o přesunutí zařízení do složky pro shromáždění informací o prostředí. Později umístíte kotvu do světa, počkejte na její uložení atd.
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 V Xcode zastavte aplikaci tak, že vyberete **zastavit**.

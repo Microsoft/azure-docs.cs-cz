@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 73eed48bd34a8c8d81a66872888ebf5481074648
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: b984d194c75924451a52250490b1a5590b996974
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274100"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821378"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Kopírování dat z kontejnerů Amazon S3 pomocí AzCopy
 
@@ -53,6 +53,9 @@ AzCopy používá [blok Put z](https://docs.microsoft.com/rest/api/storageservic
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Pokud se rozhodnete odebrat data z bloků S3 po operaci kopírování, ujistěte se, že před odebráním dat jste ověřili, že data byla správně zkopírována do vašeho účtu úložiště.
 
+> [!TIP]
+> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (' '). Použijte jednoduché uvozovky ve všech příkazových prostředích s výjimkou příkazového prostředí systému Windows (cmd. exe). Pokud používáte příkazové prostředí systému Windows (cmd. exe), uzavřete argumenty cesty pomocí dvojitých uvozovek ("") místo jednoduchých uvozovek (' ').
+
 ### <a name="copy-an-object"></a>Zkopírování objektu
 
 |    |     |
@@ -67,7 +70,7 @@ AzCopy používá [blok Put z](https://docs.microsoft.com/rest/api/storageservic
 >
 > Další informace o virtuálním hostování kontejnerů naleznete v tématu [virtuální hostování kontejnerů]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
 
-### <a name="copy-a-directory"></a>Kopírování adresáře
+### <a name="copy-a-directory"></a>Kopírovat adresář
 
 |    |     |
 |--------|-----------|

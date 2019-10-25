@@ -1,6 +1,6 @@
 ---
-title: Vytvoření účtu úložiště objektů blob bloku – Azure Storage | Dokumentace Microsoftu
-description: Ukazuje, jak vytvořit účet úložiště objektů blob bloku Azure s charakteristikami výkonu premium.
+title: Vytvořte účet úložiště objektů blob bloku – Azure Storage | Microsoft Docs
+description: Ukazuje, jak vytvořit účet Azure BlockBlobStorage s charakteristikou výkonu Premium.
 author: tamram
 services: storage
 ms.service: storage
@@ -8,72 +8,71 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9d8fb8f5f470dc47088efb30b7f823a0b8c624c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1df1d5180d951e7a720ec82c548438892a47a426
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65140999"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881863"
 ---
-# <a name="create-a-block-blob-storage-account"></a>Vytvoření účtu úložiště objektů blob bloku
+# <a name="create-a-blockblobstorage-account"></a>Vytvoření účtu BlockBlobStorage
 
-Typ účtu úložiště objektů blob bloku umožňuje vytvářet objekty BLOB bloku s charakteristikami výkonu premium. Tento typ účtu úložiště je optimalizována pro úlohy s vysokou transakce plateb nebo, které vyžadují velmi rychlé zpracování čas přístupu. Tento článek ukazuje, jak vytvořit účet úložiště objektů blob bloku pomocí webu Azure portal, rozhraní příkazového řádku Azure nebo Azure Powershellu.
+Typ účtu BlockBlobStorage umožňuje vytvářet objekty blob bloku s charakteristikami výkonu Premium. Tento typ účtu úložiště je optimalizovaný pro úlohy s vysokými sazbami transakcí nebo, které vyžadují velmi rychlý přístup krát. Tento článek ukazuje, jak vytvořit účet BlockBlobStorage pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell.
 
-Další informace o účtech úložiště objektů blob bloku, v tématu [přehled účtu Azure storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Další informace o účtech BlockBlobStorage najdete v tématu [Přehled účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
-## <a name="create-account-in-the-azure-portal"></a>Vytvoření účtu na webu Azure Portal
+## <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+Pokud chcete v Azure Portal vytvořit účet BlockBlobStorage, postupujte následovně:
 
-K vytvoření účtu úložiště objektů blob bloku na webu Azure Portal, postupujte podle těchto kroků:
+1. V Azure Portal vyberte **všechny služby** > kategorii **úložiště** > **účty úložiště**.
 
-1. Na webu Azure Portal, vyberte **všechny služby** > **úložiště** kategorie > **účty úložiště**.
+1. V části **účty úložiště**vyberte **Přidat**.
 
-1. V části **účty úložiště**vyberte **přidat**.
+1. V poli **předplatné** vyberte předplatné, ve kterém chcete účet úložiště vytvořit.
 
-1. V **předplatné** pole, vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
+1. V poli **Skupina prostředků** vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**a zadejte název nové skupiny prostředků.
 
-1. V **skupiny prostředků** pole, vyberte existující skupinu prostředků nebo vyberte **vytvořit nový**a zadejte název pro novou skupinu prostředků.
+1. Do pole **název účtu úložiště** zadejte název účtu. Pamatujte na následující pokyny:
 
-1. V **název účtu úložiště** pole, zadejte název pro účet. Mějte na paměti následující pokyny:
+   - Název musí být v rámci Azure jedinečný.
+   - Název musí být dlouhý 3 až 24 znaků.
+   - Název může obsahovat jenom číslice a malá písmena.
 
-   - Název musí být jedinečný v Azure.
-   - Název musí být 3 až 24 znaků.
-   - Název může obsahovat pouze číslice a malá písmena.
+1. V poli **umístění** vyberte umístění pro účet úložiště nebo použijte výchozí umístění.
 
-1. V **umístění** pole, vyberte umístění pro účet úložiště nebo použijte výchozí umístění.
-
-1. Pro zbývající nastavení nakonfigurujte následující nastavení:
+1. V případě zbývajících nastavení proveďte následující konfiguraci:
 
    |Pole     |Hodnota  |
    |---------|---------|
    |**Výkon**    |  Vyberte **Premium**.   |
    |**Druh účtu**    | Vyberte **BlockBlobStorage**.      |
-   |**Replikace**    |  Ponechejte výchozí nastavení **místně redundantní úložiště (LRS)** .      |
+   |**Replikace**    |  Ponechte výchozí nastavení **místně redundantního úložiště (LRS)** .      |
 
-   ![Zobrazuje uživatelské rozhraní pro vytvoření účtu úložiště objektů blob bloku portálu](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
+   ![Zobrazuje uživatelské rozhraní portálu pro vytvoření účtu úložiště objektů blob bloku.](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
-1. Vyberte **zkontrolujte + vytvořit** ke kontrole nastavení účtu úložiště.
+1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení účtu úložiště.
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
-## <a name="create-account-using-azure-powershell"></a>Vytvoření účtu pomocí Azure Powershellu
+## <a name="azure-powershelltabazure-powershell"></a>[Azure Powershell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-1. Spusťte relaci prostředí Windows PowerShell aplikace se zvýšenými oprávněními (Spustit jako správce).
+1. Otevřete relaci Windows PowerShellu se zvýšenými oprávněními (Spustit jako správce).
 
-1. Spuštěním následujícího příkazu zkontrolujte nejnovější verzi `Az` nainstalovaný modul prostředí PowerShell.
+1. Spusťte následující příkaz, abyste se ujistili, že je nainstalovaná nejnovější verze modulu `Az` PowerShellu.
 
    ```powershell
    Install-Module -Name Az -AllowClobber
    ```
 
-1. Otevřete novou konzolu Powershellu a přihlaste se pomocí svého účtu Azure.
+1. Otevřete novou konzolu PowerShellu a přihlaste se pomocí svého účtu Azure.
 
    ```powershell
    Connect-AzAccount -SubscriptionId <SubscriptionID>
    ```
 
-1. V případě potřeby vytvořte novou skupinu prostředků. Nahraďte hodnoty v uvozovkách a spusťte následující příkaz.
+1. V případě potřeby vytvořte novou skupinu prostředků. Hodnoty v uvozovkách nahraďte a spusťte následující příkaz.
 
    ```powershell
    $resourcegroup = "new_resource_group_name"
@@ -81,7 +80,7 @@ K vytvoření účtu úložiště objektů blob bloku na webu Azure Portal, post
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. Vytvoření účtu úložiště objektů blob bloku. Nahraďte hodnoty v uvozovkách a spusťte následující příkaz.
+1. Vytvořte účet BlockBlobStorage. Hodnoty v uvozovkách nahraďte a spusťte následující příkaz.
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -91,9 +90,9 @@ K vytvoření účtu úložiště objektů blob bloku na webu Azure Portal, post
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
 
-## <a name="create-account-using-azure-cli"></a>Vytvoření účtu pomocí rozhraní příkazového řádku Azure
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Vytvoření účtu objektu blob bloku pomocí rozhraní příkazového řádku Azure, musíte nejprve nainstalovat Azure CLI verze. 2.0.46 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud chcete vytvořit účet bloku BLOB pomocí rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat rozhraní příkazového řádku Azure CLI v. 2.0.46 nebo novější verze. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 1. Přihlaste se ke svému předplatnému Azure.
 
@@ -101,7 +100,7 @@ Vytvoření účtu objektu blob bloku pomocí rozhraní příkazového řádku A
    az login
    ```
 
-1. V případě potřeby vytvořte novou skupinu prostředků. Nahraďte hodnoty v závorkách (včetně závorek) a spusťte následující příkaz.
+1. V případě potřeby vytvořte novou skupinu prostředků. Hodnoty v závorkách (včetně závorek) nahraďte a spusťte následující příkaz.
 
    ```azurecli
    az group create \
@@ -109,7 +108,7 @@ Vytvoření účtu objektu blob bloku pomocí rozhraní příkazového řádku A
     --location "<location>"
    ```
 
-1. Vytvoření účtu úložiště objektů blob bloku. Nahraďte hodnoty v závorkách (včetně závorek) a spusťte následující příkaz.
+1. Vytvořte účet BlockBlobStorage. Hodnoty v závorkách (včetně závorek) nahraďte a spusťte následující příkaz.
 
    ```azurecli
    az storage account create \
@@ -120,8 +119,8 @@ Vytvoření účtu objektu blob bloku pomocí rozhraní příkazového řádku A
     --sku "Premium_LRS"
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o účtech úložiště najdete v [přehledu účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+- Další informace o účtech úložiště najdete v [přehledu účtu úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
 - Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).

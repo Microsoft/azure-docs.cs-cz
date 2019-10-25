@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "66376929"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72887756"
 ---
 Následující omezení platí pro Azure Event Grid systémová témata a vlastní témata, *nikoli* domény událostí.
 
-| Resource | Omezení |
+| Prostředek | škálování |
 | --- | --- |
 | Vlastní témata pro každé předplatné Azure | 100 |
 | Odběry událostí na téma | 500 |
@@ -27,10 +27,11 @@ Následující omezení platí pro Azure Event Grid systémová témata a vlastn
 
 Následující omezení platí pouze pro domény událostí.
 
-| Resource | Omezení |
+| Prostředek | škálování |
 | --- | --- |
-| Témata na doménu události | 1 000 během veřejné verze Preview |
-| Odběry událostí na téma v rámci domény | 50 během veřejné verze Preview |
-| Odběry událostí oboru domény | 50 během veřejné verze Preview |
-| Frekvence publikování pro doménu události (příchozí) | 5 000 událostí za sekundu během veřejné verze Preview |
+| Témata na doménu události | 100 000 |
+| Odběry událostí na téma v rámci domény | 500 |
+| Odběry událostí oboru domény | 50 |
+| Frekvence publikování pro doménu události (příchozí) | 5 000 událostí za sekundu |
 | Žádosti o publikování | 250 za sekundu |
+| Domény událostí na předplatné Azure | 100 |

@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights OpenCensus distribuované trasování pro místní službu pro distribuci (Preview) | Dokumentace Microsoftu
 description: Předejte OpenCensus distribuované trasování a rozsahy z jazyků, jako je Python, a přejít na Azure Application Insights
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.author: mbullwin
-ms.openlocfilehash: aa64755b636005f4ed8ea5c074ffaada51fb8dd9
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348148"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819200"
 ---
 # <a name="local-forwarder-preview"></a>Místní server pro přeposílání (Preview)
 
@@ -34,10 +30,10 @@ Místní server pro přeposílání je [otevřený zdrojový projekt na GitHubu]
 Nejjednodušší způsob, jak spustit místní službu pro překládání v systému Windows, je její instalace jako služba systému Windows. Verze se dodává se spustitelným souborem služby systému Windows (*WindowsServiceHost/Microsoft. LocalForwarder. WindowsServiceHost. exe*), který lze snadno zaregistrovat s operačním systémem.
 
 > [!NOTE]
-> Místní služba pro přeposílání vyžaduje minimálně .NET Framework 4,7. Pokud nemáte .NET Framework 4,7, služba se nainstaluje, ale nespustí se. Pro přístup k nejnovější verzi rozhraní .NET Framework **[najdete na stránce pro stažení rozhraní .NET Framework](
+> Místní služba pro přeposílání vyžaduje minimálně .NET Framework 4,7. Pokud nemáte .NET Framework 4,7, služba se nainstaluje, ale nespustí se. Chcete-li získat přístup k poslední verzi .NET Framework **[přejděte na stránku pro stažení .NET Framework](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
-1. Stáhněte si LF. Soubor WindowsServiceHost. zip ze [stránky pro vydání místního serveru](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) pro posílání na GitHubu.
+1. Stáhněte si LF. Soubor WindowsServiceHost. zip ze [stránky pro vydání místního serveru pro posílání](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) na GitHubu.
 
     ![Snímek obrazovky se stránkou pro stažení místního serveru pro dopředné verze](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
@@ -53,13 +49,13 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
     `[SC] CreateService SUCCESS`
     
-    Prohlédnutí nové služby prostřednictvím typu grafického uživatelského rozhraní služeb``services.msc``
+    K prohlédnutí vaší nové služby prostřednictvím typu grafického uživatelského rozhraní služby ``services.msc``
         
      ![Snímek obrazovky místní služby pro přeposílání](./media/opencensus-local-forwarder/002-services.png)
 
 3. Klikněte **pravým tlačítkem na** nový místní server pro směrování a vyberte **Spustit**. Vaše služba teď přejde do běžícího stavu.
 
-4. Ve výchozím nastavení je služba vytvořena bez jakýchkoli akcí obnovení. Můžete **kliknout pravým tlačítkem** **a vybrat možnost** > **obnovit** nastavení a nakonfigurovat automatické odezvy na selhání služby.
+4. Ve výchozím nastavení je služba vytvořena bez jakýchkoli akcí obnovení. Můžete **kliknout pravým tlačítkem** a vybrat **vlastnosti** > **obnovení** a nakonfigurovat tak automatické odezvy na selhání služby.
 
     Pokud ale chcete nastavit automatické možnosti obnovení pro případ, že dojde k chybám, můžete použít:
 
@@ -67,11 +63,11 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     sc failure "Local Forwarder" reset= 432000 actions= restart/1000/restart/1000/restart/1000
     ```
 
-5. Ve stejném umístění ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` , ve kterém je ``C:\LF-WindowsServiceHost`` soubor, který v tomto příkladu je soubor s názvem ``LocalForwarder.config``. Jedná se o soubor založený na jazyce XML, který umožňuje upravit konfiguraci localforwader a zadat klíč instrumentace prostředku Application Insights, pro který chcete překládat data distribuovaného trasování. 
+5. Ve stejném umístění jako soubor ``Microsoft.LocalForwarder.WindowsServiceHost.exe``, který v tomto příkladu je ``C:\LF-WindowsServiceHost`` existuje soubor s názvem ``LocalForwarder.config``. Jedná se o soubor založený na jazyce XML, který umožňuje upravit konfiguraci localforwader a zadat klíč instrumentace prostředku Application Insights, pro který chcete překládat data distribuovaného trasování. 
 
-    Po úpravě ``LocalForwarder.config`` souboru pro přidání klíče instrumentace nezapomeňte restartovat **místní službu pro** dodávání změn, aby se provedené změny projevily.
+    Po úpravě souboru ``LocalForwarder.config`` přidejte klíč instrumentace, nezapomeňte restartovat **místní službu pro dodávání** změn, aby se provedené změny projevily.
     
-6. Pokud chcete potvrdit, že jsou nastavená vaše požadovaná nastavení a že místní předávací server naslouchá datům trasování podle očekávání, zkontrolujte ``LocalForwarder.log`` soubor. V dolní části souboru by se měly zobrazit podobné výsledky jako na obrázku:
+6. Pokud chcete potvrdit, že jsou nastavená vaše požadovaná nastavení a že místní předávací server naslouchá datům trasování podle očekávání, zkontrolujte soubor ``LocalForwarder.log``. V dolní části souboru by se měly zobrazit podobné výsledky jako na obrázku:
 
     ![Snímek obrazovky souboru LocalForwarder. log](./media/opencensus-local-forwarder/003-log-file.png)
 
@@ -148,7 +144,7 @@ systemctl start localforwarder
 
 * Sledujte službu pomocí kontroly souborů * *. log* v adresáři/Home/SAMPLE_USER/LOCALFORWARDER_DIR.
 
-### <a name="mac"></a>Mac
+### <a name="mac"></a>Počítač Mac
 Místní služba pro přeposílání může pracovat s macOS, ale aktuálně není oficiálně podporovaná.
 
 ### <a name="self-hosting"></a>Samoobslužné hostování
@@ -181,6 +177,6 @@ Trasování se zapisují do systému souborů vedle spustitelného souboru, kter
 
 Pokud není zadaný žádný konfigurační soubor (což je výchozí nastavení), místní server pro překládání použije výchozí konfiguraci, kterou najdete [tady](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Otevřít sčítání](https://opencensus.io/)

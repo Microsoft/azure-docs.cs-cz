@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a automatizace prvního pracovního postupu – Azure Logic Apps
-description: Rychlý Start – vytvoření prvního automatizovaného úkolu nebo pracovního postupu pomocí Azure Logic Apps pro řešení Integration System a Enterprise Application Integration (EAI)
+title: Vytvoření prvního automatizovaného pracovního postupu – Azure Logic Apps
+description: Rychlý Start – sestavení prvního automatizované úlohy pomocí Azure Logic Apps pro řešení Integration System a Enterprise Application Integration (EAI)
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,13 +10,13 @@ ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/20/2019
-ms.openlocfilehash: 8886472b9840c27bcbceb70265379db1682673a9
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 10/20/2019
+ms.openlocfilehash: 246bd7935bf5aaaae569e589e4efa0ea7d39c90a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679148"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821222"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure Portal
 
@@ -34,9 +34,13 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
-1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **integrace** **Aplikace logiky** > .
+1. Na domovské stránce Azure v poli hledání vyhledejte a vyberte **Logic Apps**.
 
-   ![Vytvoření aplikace logiky – Azure Portal](./media/quickstart-create-first-logic-app-workflow/create-new-logic-app.png)
+   ![Vyhledejte a vyberte "Logic Apps"](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
+
+1. Na stránce **Logic Apps** vyberte **Přidat**.
+
+   ![Přidat novou aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
 1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je vidět zde. Až budete hotovi, vyberte **vytvořit**.
 
@@ -69,7 +73,7 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
 1. V návrháři aplikace logiky pod vyhledávacím polem vyberte **vše**.
 
-1. Do vyhledávacího pole zadejte "RSS". V seznamu triggery vyberte tuto aktivační událost: **když je publikovaná položka informačního kanálu – RSS**
+1. Do vyhledávacího pole zadejte `rss`. V seznamu triggery vyberte tuto aktivační událost: **když se publikuje položka informačního kanálu** .
 
    ![Vyberte, kdy se má aktivovat položka informačního kanálu.](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -104,7 +108,7 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
 
 1. V části **Zvolte akci** a vyhledávací pole vyberte **vše**.
 
-1. Do vyhledávacího pole zadejte "Odeslat e-mail". V seznamu akcí vyberte akci Odeslat e-mail pro požadovaného poskytovatele e-mailu.
+1. Do vyhledávacího pole zadejte `send an email`. V seznamu akcí vyberte akci Odeslat e-mail pro požadovaného poskytovatele e-mailu.
 
    ![Výběr akce Odeslat e-mail pro Office 365 Outlook](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -121,7 +125,7 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
 
       Prozatím ignorujte seznam **Přidat dynamický obsah**, který se zobrazí. Tento seznam se zobrazí po kliknutí do některých textových polí a zobrazí všechny dostupné parametry z předchozího kroku, které můžete do svého pracovního postupu zahrnout jako vstupy.
 
-   1. Do pole **Předmět** zadejte tento text s mezerou na konci: ```New RSS item:```
+   1. Do pole **Předmět** zadejte tento text s mezerou na konci: `New RSS item: `
 
       ![Do vlastnosti subject (předmět) zadejte předmět e-mailu.](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
 
@@ -170,16 +174,12 @@ Pokud tuto ukázku už nepotřebujete, odstraňte skupinu prostředků, která o
 
    ![Najít, vybrat a odstranit skupinu prostředků](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-1. Jako potvrzení zadejte název skupiny prostředků a vyberte **Odstranit**.
+1. Jakmile se zobrazí podokno potvrzení, zadejte název skupiny prostředků a vyberte **Odstranit**.
 
    ![Odstranění potvrďte tak, že vyberete odstranit.](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 > [!NOTE]
 > Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance spuštění. Všechna probíhající a čekající spuštění se zruší. Pokud máte tisíce spuštění, jejich zrušení může trvat značnou dobu.
-
-## <a name="get-support"></a>Získat podporu
-
-Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps).
 
 ## <a name="next-steps"></a>Další kroky
 

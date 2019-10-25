@@ -1,72 +1,67 @@
 ---
-title: Zkoumání dat HockeyApp ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Analýza využití a výkonu vaší aplikace Azure pomocí Application Insights.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 97783cc6-67d6-465f-9926-cb9821f4176e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Prozkoumání HockeyApp dat v Azure Application Insights | Microsoft Docs
+description: Analyzujte využití a výkon vaší aplikace Azure pomocí Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/30/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 79adfbfde25903bfe92c94507071c9d0fe303ef1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/30/2017
+ms.openlocfilehash: b14cd38a1db6804a00883ded0b38511fa46c3a52
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60898684"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819577"
 ---
-# <a name="exploring-hockeyapp-data-in-application-insights"></a>Zkoumat data HockeyApp v Application Insights
+# <a name="exploring-hockeyapp-data-in-application-insights"></a>Zkoumání HockeyApp dat v Application Insights
 
 > [!NOTE]
-> HockeyApp už nejsou k dispozici pro nové aplikace. Stávající nasazení HockeyApp budou nadále fungovat. Visual Studio App Center je teď doporučená služba od Microsoftu pro monitorování nových mobilních aplikací. [Další informace o nastavení aplikace pomocí App Center a Application Insights](../../azure-monitor/learn/mobile-center-quickstart.md).
+> HockeyApp již není pro nové aplikace k dispozici. Existující nasazení HockeyApp budou fungovat i nadále. Visual Studio App Center je teď doporučenou službou od Microsoftu, která sleduje nové mobilní aplikace. [Naučte se, jak nastavit aplikace pomocí App Center a Application Insights](../../azure-monitor/learn/mobile-center-quickstart.md).
 
-[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) je služba pro sledování živého desktopových a mobilních aplikací. Z HockeyApp můžete odeslat vlastní a sledovat telemetrii ke sledování využití a pomoct s diagnostikou (navíc k získávání dat o chybách). Tento datový proud telemetrických dat může být dotázán pomocí výkonný [Analytics](../../azure-monitor/app/analytics.md) funkce [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Kromě toho můžete [exportovat vlastní a sledovat telemetrii](export-telemetry.md). Pokud chcete povolit tyto funkce, nastavení mostu, který předává HockeyApp vlastních dat do Application Insights.
+[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) je služba pro monitorování živých desktopových a mobilních aplikací. Z HockeyApp můžete odeslat vlastní a sledovací telemetrii, abyste mohli monitorovat využití a pomáhat při diagnostice (Kromě získání dat o chybách). Tento proud telemetrie se dá dotazovat pomocí výkonné [analytické](../../azure-monitor/app/analytics.md) funkce služby [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Kromě toho můžete [exportovat vlastní a sledovací telemetrii](export-telemetry.md). Pokud chcete tyto funkce povolit, nastavte most, který přenáší HockeyApp vlastní data do Application Insights.
 
 ## <a name="the-hockeyapp-bridge-app"></a>Aplikace HockeyApp Bridge
-Aplikace HockeyApp Bridge je základní funkce, která umožňuje přístup k vlastní HockeyApp a telemetrická data trasování v Application Insights prostřednictvím funkce analýzu a průběžný Export. Vlastní a trasování událostí shromážděných za HockeyApp po vytvoření aplikace HockeyApp Bridge bude přístupné z těchto funkcí. Podívejme se na tom, jak nastavit jednu z těchto aplikací mostu.
+HockeyApp Bridge aplikace je základní funkcí, která umožňuje přístup k HockeyApp vlastní a sledovací telemetrii v Application Insights prostřednictvím funkcí analýzy a průběžného exportu. Události vlastního a trasování shromážděné službou HockeyApp po vytvoření aplikace HockeyApp Bridge budou z těchto funkcí dostupné. Pojďme se podívat, jak nastavit jednu z těchto aplikací mostu.
 
-V Hockeyappu, otevřete nastavení účtu [tokeny API](https://rink.hockeyapp.net/manage/auth_tokens). Vytvořit nový token nebo znovu použít nějaký existující. Minimální práva potřebná jsou "jen pro čtení". Pořiďte si rozhraní API tokenů.
+V HockeyApp otevřete nastavení účtu a [tokeny API](https://rink.hockeyapp.net/manage/auth_tokens). Buď vytvořte nový token, nebo ho znovu použijte. Minimální požadovaná oprávnění jsou jen pro čtení. Pořídit kopii tokenu rozhraní API.
 
-![Získání tokenu pro rozhraní API HockeyApp](./media/hockeyapp-bridge-app/01.png)
+![Získání tokenu rozhraní API HockeyApp](./media/hockeyapp-bridge-app/01.png)
 
-Otevřít na portálu Microsoft Azure a [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ). Typ aplikace nastavte na "Aplikace HockeyApp bridge":
+Otevřete portál Microsoft Azure a [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ). Nastavte typ aplikace na "HockeyApp Bridge Application":
 
 ![Nový prostředek Application Insights](./media/hockeyapp-bridge-app/02.png)
 
-Není nutné nastavit název – to se automaticky nastaví z názvu HockeyApp.
+Nemusíte nastavovat název – ta se automaticky nastaví z HockeyApp názvu.
 
-Zobrazí pole most HockeyApp. 
+Zobrazí se pole mostu HockeyApp. 
 
-![Zadejte pole bridge](./media/hockeyapp-bridge-app/03.png)
+![Zadat pole mostu](./media/hockeyapp-bridge-app/03.png)
 
-Zadejte token HockeyApp, kterou jste si předtím poznamenali. Tato akce vyplní "Aplikace HockeyApp" rozevírací nabídky s vašimi aplikacemi HockeyApp. Vyberte ten, který chcete použít a dokončete zbývající pole. 
+Zadejte token HockeyApp, který jste si poznamenali dříve. Tato akce naplní rozevírací nabídku "aplikace HockeyApp" všemi vašimi aplikacemi HockeyApp. Vyberte ten, který chcete použít, a vyplňte zbývající část polí. 
 
 Otevřete nový prostředek. 
 
-Všimněte si, že data trvá určitou dobu spuštění toku.
+Všimněte si, že se data začnou spouštět.
 
-![Čekání na data prostředku Application Insights](./media/hockeyapp-bridge-app/04.png)
+![Application Insights prostředek čeká na data.](./media/hockeyapp-bridge-app/04.png)
 
-A to je vše! Vlastní a trasování dat shromážděných ve vaší aplikaci instrumentované HockeyApp od té chvíle se teď také k dispozici, analýzu a průběžný Export funkcí Application Insights.
+A to je vše! Vlastní a trasovací data shromážděná v HockeyApp aplikaci od tohoto okamžiku jsou teď k dispozici také v části analýza a průběžné exportování funkcí Application Insights.
 
-Pojďme krátce se podívat na každou z těchto funkcí, které jsou teď k dispozici.
+Podíváme se na každou z těchto funkcí, která je teď k dispozici.
 
 ## <a name="analytics"></a>Analýzy
-Analýza je výkonný nástroj pro ad hoc dotazování na data, díky tomu můžete diagnostikovat a analýze telemetrických dat a rychle vyhledat hlavní příčiny a vzory.
+Analýza je výkonný nástroj pro ad hoc dotazování na vaše data, což vám umožní diagnostikovat a analyzovat vaši telemetrii a rychle zjistit hlavní příčiny a vzory.
 
 ![Analýzy](./media/hockeyapp-bridge-app/05.png)
 
 * [Další informace o analýze](../../azure-monitor/log-query/get-started-portal.md)
 
 ## <a name="continuous-export"></a>Průběžný export
-Průběžný Export umožňuje exportovat data do kontejneru úložiště objektů Blob v Azure. To je velmi užitečné, pokud je potřeba zachovejte si svá data po dobu delší než doba uchování v současné době nabízena službou Application Insights. Můžete ponechat data v úložišti objektů blob, zpracovat je do databáze SQL nebo váš upřednostňovaný řešení datového skladu.
+Průběžný export umožňuje exportovat data do kontejneru Azure Blob Storage. To je velmi užitečné, pokud potřebujete uchovávat data déle, než je doba uchování, kterou momentálně nabízí Application Insights. Data v úložišti objektů blob můžete uchovávat, zpracovávat je do SQL Database nebo své preferované řešení datového skladu.
 
-[Další informace o průběžný Export](export-telemetry.md)
+[Další informace o průběžném exportu](export-telemetry.md)
 
-## <a name="next-steps"></a>Další postup
-* [Použití analýzy k vašim datům](../../azure-monitor/log-query/get-started-portal.md)
+## <a name="next-steps"></a>Další kroky
+* [Použití analýz na vaše data](../../azure-monitor/log-query/get-started-portal.md)
 

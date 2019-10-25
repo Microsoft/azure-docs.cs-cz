@@ -1,30 +1,26 @@
 ---
 title: Použití podokna nastavení Azure Application Insights Profiler | Microsoft Docs
 description: Viz téma stav profileru a spuštění relací profilace.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 12cb8e31617ee6b1e0c8515e66e265f4eccdf3df
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: b383ef8c92325b0ad6561bee9b654c78e4054338
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338037"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820488"
 ---
-# <a name="configure-application-insights-profiler"></a>Konfigurovat Application Insights Profiler
+# <a name="configure-application-insights-profiler"></a>Konfigurace Application Insights Profiler
 
 ## <a name="updated-profiler-agent"></a>Aktualizovaný agent profileru
 Funkce triggeru fungují jenom s verzí 2,6 nebo novějším agenta profileru. Pokud používáte Azure App Service, Agent se automaticky aktualizuje. Můžete si prohlédnout, jakou verzi agenta používáte, pokud přejdete na adresu URL Kudu webu a připojíte \DiagnosticServices na konec IT, například: https://yourwebsite.scm.azurewebsites.net/diagnosticservices. Webová úloha Application Insights Profiler by měla verze 2,6 nebo novější. Upgrade můžete vynutit restartováním webové aplikace. 
 
-Pokud používáte Profiler na virtuálním počítači nebo cloudové službě, musíte mít nainstalovanou příponu Windows Azure Diagnostics (WAD) verze 16.0.4 nebo novější. Verzi WAD můžete ověřit tak, že se přihlásíte do virtuálního počítače a vyhledáte tento adresář: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. Název adresáře je verze WAD, která je nainstalována. Agent virtuálního počítače Azure aktualizuje WAD automaticky, když jsou dostupné nové verze.
+Pokud používáte Profiler na virtuálním počítači nebo cloudové službě, musíte mít nainstalovanou příponu Windows Azure Diagnostics (WAD) verze 16.0.4 nebo novější. Verzi WAD můžete ověřit tak, že se přihlásíte k VIRTUÁLNÍmu počítači a vyhledáte tento adresář: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. Název adresáře je verze WAD, která je nainstalována. Agent virtuálního počítače Azure aktualizuje WAD automaticky, když jsou dostupné nové verze.
 
 ## <a name="profiler-settings-page"></a>Stránka nastavení profileru
 
@@ -41,15 +37,15 @@ Stránka **konfigurace Application Insights Profiler** obsahuje tyto funkce:
 | | |
 |-|-|
 Profilovat teď | Spustí relace profilování pro všechny aplikace, které jsou propojené s touto instancí Application Insights.
-Aktivační procedury | Umožňuje konfigurovat triggery, které způsobují, že se Profiler spustí. 
-Poslední relace profilování | Zobrazí informace o minulých relacích profilace.
+Aktivační události | Umožňuje konfigurovat triggery, které způsobují, že se Profiler spustí. 
+Nedávné relace profilování | Zobrazí informace o minulých relacích profilace.
 
 ## <a name="profile-now"></a>Profilovat teď
 Tato možnost umožňuje spustit relaci profilování na vyžádání. Po kliknutí na tento odkaz začnou všichni agenti profileru, kteří odesílají data do této instance Application Insights, zachytí profil. Po 5 až 10 minutách se relace profilu zobrazí v následujícím seznamu.
 
 Aby mohl uživatel ručně aktivovat relaci profileru, musí pro Application Insights komponentu vyžadovat minimální přístup "Write" na jejich roli. Ve většině případů tento přístup získáte automaticky a nebudete potřebovat žádnou další práci. Pokud máte problémy, obor předplatného, který se má přidat, by byl rolí "Application Insights Přispěvatel komponent". [Přečtěte si další informace o řízení přístupu k rolím pomocí monitorování Azure](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
 
-## <a name="trigger-settings"></a>Nastavení triggeru
+## <a name="trigger-settings"></a>Nastavení aktivační události
 ![Informační rámeček nastavení triggeru][trigger-settings-flyout]
 
 Kliknutím na tlačítko triggery na řádku nabídek otevřete okno nastavení triggeru. Můžete nastavit aktivační událost pro spuštění profilování, když procento využití procesoru nebo paměti narazí na úroveň, kterou jste nastavili.
@@ -58,8 +54,8 @@ Kliknutím na tlačítko triggery na řádku nabídek otevřete okno nastavení 
 |-|-|
 Tlačítko pro zapnutí/vypnutí | Zapnuto: profiler může spustit Tato aktivační událost; Vypnuto: Profiler nespustí Tato aktivační událost.
 Prahová hodnota paměti | V případě, že se toto procento paměti používá, bude spuštěn Profiler.
-Trvání | Nastavuje dobu, po kterou se Profiler spustí, když se aktivuje.
-Prodleva | Nastaví dobu, po kterou Profiler počká, než bude znovu kontrolovat paměť nebo využití procesoru po jeho aktivaci.
+Délka | Nastavuje dobu, po kterou se Profiler spustí, když se aktivuje.
+Cooldown | Nastaví dobu, po kterou Profiler počká, než bude znovu kontrolovat paměť nebo využití procesoru po jeho aktivaci.
 
 ## <a name="recent-profiling-sessions"></a>Nedávné relace profilování
 Tato část stránky zobrazuje informace o nejnovějších relacích profilování. Relace profilování představuje časový interval, po který agent profileru přebírá profil na jednom z počítačů, které hostují vaši aplikaci. Můžete otevřít profily z relace kliknutím na jeden z řádků. Pro každou relaci se zobrazuje:
@@ -69,7 +65,7 @@ Tato část stránky zobrazuje informace o nejnovějších relacích profilován
 Aktivoval | Jak byla relace spuštěna, buď triggerem, profilem nyní, nebo s výchozím vzorkováním. 
 Název aplikace | Název aplikace, která byla profilace.
 Instance počítače | Název počítače, ve kterém byl spuštěn Agent profileru.
-Timestamp | Čas, kdy byl profil zachycen.
+Časové razítko | Čas, kdy byl profil zachycen.
 Trasovat | Počet trasování, které byly připojeny k jednotlivým požadavkům.
 VČETNĚ | Procento využití procesoru, které bylo používáno během běhu profileru.
 Rezident | Procento paměti, která se použila během běhu profileru.
@@ -80,11 +76,11 @@ Profiler můžete aktivovat ručně jediným kliknutím. Předpokládejme, že p
 
 Následující části znázorňují, jak tento scénář funguje:
 
-### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>Krok 1: Vygenerujte provoz do vaší webové aplikace tím, že spustíte test výkonnosti webu.
+### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>Krok 1: vygenerujte provoz do webové aplikace spuštěním testu výkonnosti webu
 
 Pokud vaše webová aplikace již má příchozí provoz nebo pokud chcete pouze vygenerovat provoz, přeskočte tuto část a pokračujte krokem 2.
 
-1. Na portálu Application Insights vyberte **Konfigurovat** > **testování výkonu**. 
+1. Na portálu Application Insights vyberte **konfigurovat** > **testování výkonu**. 
 
 1. Chcete-li spustit nový test výkonnosti, vyberte tlačítko **Nový** .
 
@@ -100,14 +96,14 @@ Pokud vaše webová aplikace již má příchozí provoz nebo pokud chcete pouze
 
     ![Zátěžový test běží v průběhu][load-test-in-progress]
 
-### <a name="step-2-start-a-profiler-on-demand-session"></a>Krok 2: Spuštění relace na vyžádání profileru
+### <a name="step-2-start-a-profiler-on-demand-session"></a>Krok 2: spuštění relace na vyžádání profileru
 
 1. Když je spuštěn zátěžový test, spusťte profiler pro zachycení trasování webové aplikace během jejího přijetí.
 
 1. Přejít do podokna **Konfigurace profileru** .
 
 
-### <a name="step-3-view-traces"></a>Krok 3: Zobrazit trasování
+### <a name="step-3-view-traces"></a>Krok 3: zobrazení trasování
 
 Po dokončení profileru postupujte podle pokynů v části oznámení a přejděte do podokna výkon a zobrazte trasování.
 

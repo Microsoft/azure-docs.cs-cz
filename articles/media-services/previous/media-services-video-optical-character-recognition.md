@@ -1,6 +1,6 @@
 ---
-title: Digitalizaci text pomocí Azure Media Analytics OCR | Dokumentace Microsoftu
-description: Azure Media Analytics OCR (optické rozpoznávání znaků) umožňuje převést textový obsah v videosouborů do lze upravovat, prohledávatelné digitální textu.  To umožňuje automatizovat extrakce smysluplná metadata z videa signál médií.
+title: Digitalizace textu pomocí Azure Media Analytics optické rozpoznávání znaků | Microsoft Docs
+description: Azure Media Analytics optické rozpoznávání znaků (OCR) umožňuje převést textový obsah v videosouborech na upravitelný a prohledávatelný digitální text.  To vám umožní automatizovat extrakci smysluplných metadat z obrazového signálu vašeho média.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,43 +14,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48b5136505c3d0cb5e2e2027f832655e4b3445bf
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825604"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881744"
 ---
-# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Pomocí Azure Media Analytics můžete převést textový obsah v videosouborů na digitální text  
+# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Použití Azure Media Analytics k převodu textového obsahu v videosouborech na digitální text  
+
+> [!IMPORTANT]
+> Prohlédněte si [plány vyřazení](media-services-analytics-overview.md#retirement-plans) některých multimediálních procesorů.
+
 ## <a name="overview"></a>Přehled
-Pokud potřebujete extrahování textového obsahu z videosouborů odvodily a generování digitální textu lze upravovat, prohledávatelné, měli byste použít Azure Media Analytics OCR (optické rozpoznávání znaků). Tento procesor médií Azure detekuje textový obsah v video soubory a vygeneruje textových souborů pro použití. OCR umožňuje automatizovat extrakce smysluplná metadata z videa signál médií.
+Pokud potřebujete extrahovat textový obsah z vašich videosouborů a vygenerovat upravitelný, prohledávatelný digitální text, měli byste použít Azure Media Analytics optické rozpoznávání znaků (OCR). Tento procesor Azure Media detekuje textový obsah ve vašich videosouborech a generuje textové soubory pro použití. Optické rozpoznávání znaků umožňuje automatizovat extrakci smysluplných metadat z obrazového signálu vašeho média.
 
-Při použití ve spojení s vyhledávacím webem, můžete snadno indexu médií podle textu a zlepšit vyhledatelnost svůj obsah. To je velmi užitečné ve vysoce textové video, jako je nahrávání videa nebo snímek obrazovky prezentaci prezentace. Procesor médií OCR Azure je optimalizovaná pro digitální textu.
+Při použití ve spojení s vyhledávacím modulem můžete své médium snadno indexovat podle textu a rozšířit zjistitelnost obsahu. To je velmi užitečné ve vysoce textovém videu, jako je záznam videa nebo snímek obrazovky prezentace prezentace. Procesor médií v Azure OCR je optimalizovaný pro digitální text.
 
-**Azure Media OCR** procesor médií je aktuálně ve verzi Preview.
+Procesor s médii **Azure Media OCR** je momentálně ve verzi Preview.
 
-Tento článek obsahuje podrobnosti o **Azure Media OCR** a ukazuje, jak používat ve službě Media Services SDK pro .NET. Další informace a příklady najdete v tématu [tento blog](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
+Tento článek obsahuje podrobné informace o **platformě Azure Media OCR** a ukazuje, jak ji použít s Media Services SDK pro .NET. Další informace a příklady najdete v [tomto blogu](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
 
-## <a name="ocr-input-files"></a>OCR vstupních souborů
-Video soubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
+## <a name="ocr-input-files"></a>Vstupní soubory OCR
+Videosoubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
 
 ## <a name="task-configuration"></a>Konfigurace úlohy
-Konfigurace úlohy (nastavení). Při vytváření úlohy s **Azure Media OCR**, je nutné zadat konfigurace přednastavení pomocí XML nebo JSON. 
+Konfigurace úlohy (přednastavení). Při vytváření úlohy pomocí **Azure Media OCR**je nutné zadat předvolby konfigurace pomocí JSON nebo XML. 
 
 >[!NOTE]
->Modulu OCR zabere jenom určitá oblast obrázku s minimální 40 pixelů na maximální délku 32 000 pixelů jako platný vstup v obou výšku či šířku.
+>Modul rozpoznávání OCR převezme oblast obrázku s minimální 40 pixely na maximálně 32000 pixelů jako platný vstup na výšku i šířku.
 >
 
-### <a name="attribute-descriptions"></a>Popis atributu
+### <a name="attribute-descriptions"></a>Popisy atributů
 | Název atributu | Popis |
 | --- | --- |
-|AdvancedOutput| Pokud nastavíte AdvancedOutput na hodnotu true, bude obsahovat výstup JSON poziční data pro každý jednoslovné (kromě oblastí a fráze). Pokud chcete zobrazit tyto informace nechcete, nastavte příznak na hodnotu false. Výchozí hodnota je false. Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
-| Jazyk |(volitelné) popisuje jazyk textu, pro který se vás pod rouškou. Jeden z následujících akcí: Automatické rozpoznávání (výchozí), arabština, ChineseSimplified, ChineseTraditional, čeština dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, portugalština, rumunština, ruština, SerbianCyrillic, SerbianLatin , Slovenština, španělština, švédština, turečtina. |
-| TextOrientation |(volitelné) popisuje orientaci textu, pro který se vás pod rouškou.  "Left" znamená, že horní části všechna písmena jsou nasměruje levé straně.  Výchozí text (např., které lze nalézt v knize) lze volat "Nahoru" orientovaný.  Jeden z následujících akcí: Automatické rozpoznávání (výchozí), až, Jo, dolů, doleva. |
-| TimeInterval |(volitelné) popisuje vzorkovací frekvenci.  Výchozí hodnota je každých 1/2 sekundy.<br/>Formát JSON – hh: mm:. Služby Zabezpečené úložiště (výchozí 00:00:00.500)<br/>Formát XML – doba trvání primitivní W3C XSD (výchozí PT0.5) |
-| DetectRegions |(volitelné) Pole objektů DetectRegion určení oblastí v rámci video rámce, ve kterém chcete detekovat text.<br/>DetectRegion objekt je vytvořen z následujících čtyř celočíselných hodnot:<br/>Vlevo – pixelů od levého okraje<br/>TOP – pixelů od horní okraj<br/>Šířka – Šířka oblasti v pixelech<br/>Výška – výšku oblasti v pixelech |
+|AdvancedOutput| Pokud nastavíte AdvancedOutput na hodnotu true, bude výstup JSON obsahovat pozice pro každé jedno slovo (kromě frází a oblastí). Pokud nechcete zobrazit tyto podrobnosti, nastavte příznak na false. Výchozí hodnota je false (NEPRAVDA). Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
+| Jazyk |(volitelné) popisuje jazyk textu, který má být hledán. Jedna z následujících možností: automaticky rozpoznat (výchozí), arabština, ChineseSimplified, ChineseTraditional, Čeština Dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, polština, italština, japonština, korejština, norština, ruština, portugalština, rumunština, ruština SerbianCyrillic, SerbianLatin, slovenština, španělština, švédština, turečtina. |
+| TextOrientation |(volitelné) popisuje orientaci textu, který chcete vyhledat.  "Left" znamená, že horní část všech písmen je odkazována směrem doleva.  Výchozí text (jako ten, který se dá najít v knize), se dá volat nahoru.  Jedna z následujících možností: automaticky rozpoznat (výchozí), nahoru, doprava, dolů, doleva. |
+| TimeInterval |(volitelné) popisuje vzorkovací frekvenci.  Výchozí hodnota je každých 1/2 sekund.<br/>Formát JSON – HH: mm: ss. Zabezpečené úložiště (výchozí hodnota je 00:00:00.500)<br/>Formát XML – primitivum doby trvání W3C XSD (výchozí PT 0.5) |
+| DetectRegions |volitelné Pole objektů DetectRegion určujících oblasti v rámci videa, ve kterých se má detekovat text<br/>Objekt DetectRegion je tvořen následujícími čtyřmi celočíselnými hodnotami:<br/>Vlevo – pixely od levého okraje<br/>Horní – pixely od horního okraje<br/>Width – Šířka oblasti v pixelech<br/>Height – výška oblasti v pixelech |
 
-#### <a name="json-preset-example"></a>Příklad JSON s předvolby
+#### <a name="json-preset-example"></a>Příklad přednastaveného formátu JSON
 
 ```json
     {
@@ -73,7 +77,7 @@ Konfigurace úlohy (nastavení). Při vytváření úlohy s **Azure Media OCR**,
     }
 ```
 
-#### <a name="xml-preset-example"></a>Předvolby ukázkový kód XML
+#### <a name="xml-preset-example"></a>Příklad přednastavení XML
 
 ```xml
     <?xml version=""1.0"" encoding=""utf-16""?>
@@ -95,34 +99,34 @@ Konfigurace úlohy (nastavení). Při vytváření úlohy s **Azure Media OCR**,
     </VideoOcrPreset>
 ```
 
-## <a name="ocr-output-files"></a>OCR výstupní soubory
-Procesor médií OCR výstupem je soubor JSON.
+## <a name="ocr-output-files"></a>Výstupní soubory OCR
+Výstupem procesoru s médii OCR je soubor JSON.
 
 ### <a name="elements-of-the-output-json-file"></a>Prvky výstupního souboru JSON
-Výstup videa OCR obsahuje čas segmentované data znaků nalezených ve videu.  Vám pomůže atributům, jako je jazyk nebo orientace phon se změnami na přesně tak, že máte zájem o analýze slova. 
+Výstup optického rozpoznávání videa poskytuje data rozdělená na znaky nalezené ve videu.  Můžete použít atributy, jako je například jazyk nebo orientace, k doladití přesně slova, která vás zajímají při analýze. 
 
 Výstup obsahuje následující atributy:
 
 | Element | Popis |
 | --- | --- |
-| Timescale |"značky" za sekundu videa |
-| Offset |časový posun, časových razítek. Ve verzi 1.0 rozhraní API pro Video bude vždy 0. |
+| Timescale |"takty" za sekundu videa |
+| Posun |časový posun pro časová razítka. Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. |
 | Framerate |Snímků za sekundu videa |
-| Šířka |Šířka videa v pixelech |
-| Výška |výšku v pixelech |
-| Fragments |pole založené na čase bloky dat videa, do kterého metadata je rozdělený do bloků dat |
-| start |Počáteční čas fragment v "značky" |
-| Doba trvání |Délka fragment v "značky" |
-| interval |Interval každá událost v rámci dané fragmentu |
-| stránka events |pole obsahující oblastí |
-| oblast |objekt představující zjistil slova nebo fráze |
-| language |jazyk textu zjistil v rámci oblasti |
-| Orientace |orientace textu zjistil v rámci oblasti |
-| řádky |pole řádků textu zjistil v rámci oblasti |
-| text |vlastní text |
+| Délk |Šířka videa v pixelech |
+| Výška |Výška videa v pixelech |
+| Fragments |pole časových bloků videa, na které jsou metadata v bloku |
+| zahájení |počáteční čas fragmentu v taktech |
+| úkolu |Délka fragmentu v "taktech" |
+| interval |interval každé události v rámci daného fragmentu |
+| stránka events |pole obsahující oblasti |
+| . |objekt představující zjištěná slova nebo fráze |
+| language |jazyk textu zjištěného v rámci oblasti |
+| změny |orientace textu zjištěného v rámci oblasti |
+| přím |pole řádků textu zjištěných v rámci oblasti |
+| text |skutečný text |
 
 ### <a name="json-output-example"></a>Příklad výstupu JSON
-Následující příklad výstupu obsahuje obecné informace o videu a několik fragmentů videa. V každé video fragment obsahuje každou oblast, která zjistí OCR sady Management Pack s jazykem a jeho orientaci textu. Oblast také obsahuje každý jednotlivý řádek slova v této oblasti se na řádku textu, pozice na řádku a každé slovo informace (obsahu aplikace word, umístění a spolehlivosti) v tomto řádku. Následuje příklad a můžu dát některé vložené komentáře.
+Následující příklad výstupu obsahuje obecné informace o videu a několik fragmentů videa. V každém fragmentu videa obsahuje každou oblast, která je detekována nástrojem OCR MP s jazykem a jeho orientací textu. Oblast také obsahuje všechny wordové řádky v této oblasti s textem řádku, pozicí řádku a všemi slovy (obsahem a jistotou Wordu) na tomto řádku. Níže je uveden příklad a jsou vloženy komentáře.
 
 ```json
     {
@@ -181,11 +185,11 @@ Následující příklad výstupu obsahuje obecné informace o videu a několik 
 
 ## <a name="net-sample-code"></a>Vzorový kód .NET
 
-Následující program ukazuje postup:
+Následující program ukazuje, jak:
 
-1. Vytvoření assetu a uložit do assetu soubor média.
-2. Vytvoření úlohy pomocí souboru konfigurace/přednastavení optické rozpoznávání znaků.
-3. Stažení výstupních souborů JSON. 
+1. Vytvořte Asset a nahrajte do něj mediální soubor.
+2. Vytvoří úlohu s použitím souboru konfigurace nebo přednastavení OCR.
+3. Stáhněte si výstupní soubory JSON. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
@@ -365,9 +369,9 @@ namespace OCR
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Azure Media Services Analytics Overview](media-services-analytics-overview.md)
+[Přehled analýzy Azure Media Services](media-services-analytics-overview.md)
 

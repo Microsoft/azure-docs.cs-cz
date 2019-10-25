@@ -1,23 +1,19 @@
 ---
 title: Profilace produkčních aplikací v Azure pomocí Application Insights Profiler | Microsoft Docs
 description: Identifikujte cestu k Hotu v kódu webového serveru pomocí profileru s nízkou úrovní.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: debc30a368a0f9ef7be9b0cda0b1238f8e2bc2e3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338084"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820517"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilace produkčních aplikací v Azure pomocí Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Povolení Application Insights Profiler pro vaši aplikaci
@@ -48,10 +44,10 @@ Vyberte ukázku pro zobrazení rozpisu na úrovni kódu pro čas strávený prov
 
 V Průzkumníku trasování se zobrazí následující informace:
 
-* **Zobrazit cestu**k Hotu: Otevře největší uzel listu nebo alespoň něco blízko. Ve většině případů se tento uzel blíží nekritickému výkonu.
-* **Popisek**: Název funkce nebo události. Strom zobrazuje kombinaci kódu a událostí, ke kterým došlo, jako jsou události SQL a HTTP. Nejvyšší událost představuje celkovou dobu trvání žádosti.
-* **Uplynulý čas**: Časový interval mezi začátkem operace a koncem operace.
-* **Když**: Čas, kdy byla funkce nebo událost spuštěna ve vztahu k jiným funkcím.
+* **Zobrazit horkou cestu**: otevře největší uzel na list nebo alespoň něco blízko. Ve většině případů se tento uzel blíží nekritickému výkonu.
+* **Label**: název funkce nebo události. Strom zobrazuje kombinaci kódu a událostí, ke kterým došlo, jako jsou události SQL a HTTP. Nejvyšší událost představuje celkovou dobu trvání žádosti.
+* **Uplynulý**: časový interval mezi začátkem operace a koncem operace.
+* **Kdy**: čas, kdy byla funkce nebo událost spuštěna ve vztahu k jiným funkcím.
 
 ## <a name="how-to-read-performance-data"></a>Jak číst údaje o výkonu
 
@@ -61,7 +57,7 @@ Zásobník volání zobrazený v zobrazení Časová osa je výsledkem vzorková
 
 ### <a id="jitnewobj"></a>Přidělení objektů (CLR! JIT\_New nebo CLR! JIT\_Newarr1)
 
-**CLR! JIT\_JIT New** a **CLR! JIT\_Newarr1** jsou pomocné funkce v .NET Framework, které přidělují paměť ze spravované haldy. **CLR! JIT\_** je vyvolána nově, když je objekt přidělen. **CLR! Newarr1\_JIT** se vyvolá při přidělení pole objektu. Tyto dvě funkce jsou obvykle rychlé a mohou trvat poměrně krátké množství času. Pokud **CLR! JIT\_New** nebo **CLR! Newarr1\_JIT** na časové ose zabere spoustu času, kód může přidělit mnoho objektů a spotřebovávat značné množství paměti.
+**CLR! JIT\_New** a **CLR! JIT\_Newarr1** jsou pomocné funkce v .NET Framework, které přidělují paměť ze spravované haldy. **CLR! JIT\_New** je vyvolána, když je objekt přidělen. **CLR!** Je-li přiděleno pole objektu, je vyvolána\_NEWARR1 JIT. Tyto dvě funkce jsou obvykle rychlé a mohou trvat poměrně krátké množství času. Pokud **CLR! JIT\_New** nebo **CLR! JIT\_Newarr1** na časové ose zabere spoustu času, kód může přiřazovat mnoho objektů a spotřebovávat značné množství paměti.
 
 ### <a id="theprestub"></a>Načítání kódu (CLR! ThePreStub)
 
@@ -71,7 +67,7 @@ Pokud **CLR! ThePreStub** trvá pro požadavek dlouhou dobu, jedná se o první 
 
 ### <a id="lockcontention"></a>Zamykání zámků (CLR! JITutil\_MonContention nebo CLR! JITutil\_MonEnterWorker)
 
-**CLR! JITutil\_MonContention** nebo **CLR! JITutil\_MonEnterWorker** označuje, že aktuální vlákno čeká na uvolnění zámku. Tento text se často zobrazuje při C# spuštění příkazu **Lock** , vyvolání metody **monitor. Enter** nebo vyvolání metody s atributem **MethodImplOptions. Synchronized** . K uzamčení zámku obvykle dochází, když vlákno a získá zámek a vlákno _B_ se pokusí získat stejný zámek před uvolněním vlákna.
+**CLR! JITutil\_MonContention** nebo **CLR! JITutil\_MonEnterWorker** označuje, že aktuální vlákno čeká na uvolnění zámku. Tento text se často zobrazuje při C# spuštění příkazu **Lock** , vyvolání metody **monitor. Enter** nebo vyvolání metody s atributem **MethodImplOptions. Synchronized** . K uzamčení zámku obvykle dochází, když vlákno _a získá zámek_ a vlákno _B_ se pokusí získat stejný zámek _před uvolněním_ vlákna.
 
 ### <a id="ngencold"></a>Načítání kódu ([STUDENá])
 
@@ -87,15 +83,15 @@ Metody jako **HttpClient. Send** označují, že kód čeká na dokončení pož
 
 Metody jako **SqlCommand. Execute** označují, že kód čeká na dokončení operace databáze.
 
-### <a id="await"></a>Čekání (\_čas čekání)
+### <a id="await"></a>Čekání (OČEKÁVÁN\_čas)
 
-Čas čekání znamená, že kód čeká na dokončení jiné úlohy. **\_** K tomuto zpoždění obvykle dochází pomocí C# příkazu **AWAIT** . V případě, že kód C# **očekává**, vlákno odvíjí a vrátí řízení fondu vláken a neexistuje žádné vlákno, které je blokováno pro dokončení čekání. Logicky ale vlákno, které čekalo, je "blokované" a čeká na dokončení operace. Příkaz **AWAIT\_Time** označuje čas zablokování, který čeká na dokončení úlohy.
+**AWAIT\_čas** znamená, že kód čeká na dokončení jiné úlohy. K tomuto zpoždění obvykle dochází pomocí C# příkazu **AWAIT** . V případě, že kód C# **očekává**, vlákno odvíjí a vrátí řízení fondu vláken a neexistuje žádné vlákno, které je blokováno pro **dokončení čekání.** Logicky ale vlákno, které **čekalo** , je "blokované" a čeká na dokončení operace. Příkaz **AWAIT\_čas** indikuje čas zablokování, který čeká na dokončení úlohy.
 
 ### <a id="block"></a>Čas zablokování
 
 **BLOCKED_TIME** označuje, že kód čeká na zpřístupnění jiného prostředku. Může například čekat na objekt synchronizace, pro vlákno k dispozici nebo pro požadavek na dokončení.
 
-### <a name="unmanaged-async"></a>Nespravovaný asynchronní
+### <a name="unmanaged-async"></a>Nespravované asynchronní
 
 Rozhraní .NET Framework generuje události ETW a předá ID aktivity mezi vlákny, aby bylo možné sledovat asynchronní volání napříč vlákny. Nespravovaný kód (nativní kód) a některé starší styly asynchronního kódu neobsahují tyto události a ID aktivit, takže profiler nemůže sdělit, které vlákno a jaké funkce jsou ve vlákně spuštěné. Toto je označeno jako nespravované asynchronní v zásobníku volání. Pokud stáhnete soubor trasování událostí pro Windows, možná budete moct pomocí [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) získat další přehled o tom, co se děje.
 
@@ -126,7 +122,7 @@ Za použití služby profileru se neúčtují žádné poplatky. Pokud ji chcete
 Profiler náhodně spustí dvě minuty každou hodinu na každém virtuálním počítači, který je hostitelem aplikace s povoleným profilerem pro zachytávání trasování. Když je profiler spuštěný, přidává se na server od 5 do 15 procent zatížení procesoru.
 
 ## <a name="next-steps"></a>Další kroky
-Povolte Application Insights Profiler pro vaši aplikaci Azure. Viz také:
+Povolte Application Insights Profiler pro vaši aplikaci Azure. Další zdroje informací:
 * [App Services](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)

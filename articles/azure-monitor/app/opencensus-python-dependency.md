@@ -1,22 +1,18 @@
 ---
 title: Sledování závislostí ve službě Azure Application Insights s OpenCensus Pythonem | Microsoft Docs
 description: Sledujte volání závislostí pro aplikace Python prostřednictvím OpenCensus Pythonu.
-services: application-insights
-author: lzchen
-manager: carmonm
-ms.assetid: d15c4ca8-4c1a-47ab-a03d-c322b4bb2a9e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/15/2019
+author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 4d2e1fe5a3f337c2a6c96b556f3effe0ad9748c7
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 00ebf86bf6d0d57b29d660f78aae3dd828d44ded
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559499"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819142"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Sledování závislostí pomocí OpenCensus Pythonu
 

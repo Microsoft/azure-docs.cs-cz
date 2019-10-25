@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d49d763dedc5d86557dadd10f5d727e7893dbe
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 2e2195c61acbf39b40a7659335afff78ac03cb4b
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563054"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881425"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Připojení virtuální sítě Azure k CloudSimple pomocí ExpressRoute
 
@@ -23,22 +23,29 @@ Privátní cloudovou síť můžete roztáhnout do vaší virtuální sítě Azu
 
 Pro připojení ExpressRoute mezi Vaším privátním cloudem a virtuální sítí Azure se vyžaduje autorizační klíč. Pokud chcete získat klíč, zařiďte lístek s <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">podporou</a>.  V žádosti použijte následující informace:
 
-* Typ problému: **Odbornou**
-* Předplatné: **Vyberte předplatné, ve kterém je nasazená služba CloudSimple.**
-* Služba: **Řešení VMware podle CloudSimple**
-* Typ problému: **Žádost o službu**
-* Podtyp problému: **Autorizační klíč pro připojení virtuální sítě Azure**
-* Předmět: **Požadavek na autorizační klíč pro připojení virtuální sítě Azure**
+* Typ problému: **technický**
+* Předplatné: **Vyberte předplatné, ve kterém je nasazená služba CloudSimple** .
+* Služba: **řešení VMware podle CloudSimple**
+* Typ problému: **žádost o službu**
+* Podtyp problému: **autorizační klíč pro připojení virtuální sítě Azure**
+* Subject: **požadavek na autorizační klíč pro připojení virtuální sítě Azure**
 
-## <a name="obtain-peering-information-for-azure-virtual-network-to-cloudsimple-connection"></a>Získání informací o partnerském vztahu pro virtuální síť Azure a připojení CloudSimple
+## <a name="get-peering-information-from-cloudsimple-portal"></a>Získání informací o partnerském vztahu z portálu CloudSimple
 
-Pokud chcete nastavit připojení, musíte vytvořit propojení mezi virtuální sítí Azure a prostředím CloudSimple.  V rámci tohoto postupu je nutné dodat identifikátor URI a autorizační klíč partnerského okruhu. Získejte identifikátor URI a autorizační klíč z [portálu CloudSimple](access-cloudsimple-portal.md).  V nabídce na straně vyberte **síť** a pak vyberte **připojení k síti Azure**. Nebo v nabídce na straně vyberte **účet** a pak vyberte **připojení k síti Azure**.
+Pokud chcete nastavit připojení, musíte navázat připojení mezi virtuální sítí Azure a prostředím CloudSimple.  V rámci tohoto postupu je nutné dodat identifikátor URI a autorizační klíč partnerského okruhu. Získejte identifikátor URI a autorizační klíč z [portálu CloudSimple](access-cloudsimple-portal.md).  V nabídce na straně vyberte **síť** a pak vyberte **připojení k síti Azure**. Nebo v nabídce na straně vyberte **účet** a pak vyberte **připojení k síti Azure**.
 
-Všimněte si ikon kopírování identifikátoru URI partnerského okruhu a autorizačního klíče pro každou z oblastí. Pro každý privátní cloud, který chcete připojit:
+Zkopírujte identifikátor URI partnerského okruhu a pro každý z oblastí použijte ikonu *kopírování* . Pro každou oblast CloudSimple, kterou chcete připojit:
 
-* Kliknutím na **Kopírovat** zkopírujte identifikátor URI. Vložte je do souboru, kde může být k dispozici pro přidání do Azure Portal.  
-* Kliknutím na **Kopírovat** zkopírujte autorizační klíč a vložte ho do souboru taky.
+1. Kliknutím na **Kopírovat** zkopírujte identifikátor URI. Vložte je do souboru, kde může být k dispozici pro přidání do Azure Portal.  
+2. Kliknutím na **Kopírovat** zkopírujte autorizační klíč a vložte ho do souboru taky.
 
-![Stránka Virtual Network připojení](media/network-virt-conn-page.png)
+Zkopírujte autorizační klíč a identifikátor URI partnerského okruhu, který je v **dostupném** stavu.  **Použitý** stav označuje, že klíč již byl použit k vytvoření připojení k virtuální síti.
+
+![Stránka Virtual Network připojení](media/virtual-network-connection.png)
 
 Podrobnosti o nastavení propojení Azure Virtual Network na CloudSimple najdete v tématu [připojení vašeho privátního cloudového prostředí CloudSimple k virtuální síti Azure pomocí ExpressRoute](azure-expressroute-connection.md).
+
+## <a name="next-steps"></a>Další kroky
+
+* [Připojení virtuální sítě Azure k privátnímu cloudu](azure-expressroute-connection.md)
+* [Připojení k místní síti pomocí Azure ExpressRoute](on-premises-connection.md)

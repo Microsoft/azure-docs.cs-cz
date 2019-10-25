@@ -1,31 +1,26 @@
 ---
 title: Sledování výkonu pro webové aplikace v jazyce Java v Azure Application Insights | Microsoft Docs
 description: Rozšířené monitorování výkonu a využití vašeho webu Java pomocí Application Insights.
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 84017a48-1cb3-40c8-aab1-ff68d65e2128
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/10/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ff9d4bb98a79c379fda2c1a0a0ab9d5e0ec212ce
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 01/10/2019
+ms.openlocfilehash: 181a1f253157fe112d42753d6f824a327457a2fa
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338093"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819419"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycených výjimek a metod doby provádění ve webových aplikacích Java
 
 
 Pokud jste si nastavili [svou webovou aplikaci v jazyce Java pomocí Application Insights][java], můžete použít agenta Java k získání hlubších přehledů, aniž byste museli měnit kód:
 
-* **Závislosti** Data o voláních, která vaše aplikace vytváří na jiné komponenty, včetně:
-  * Budou zachycena **odchozí volání http** prostřednictvím Apache HttpClient, OkHttp `java.net.HttpURLConnection` a.
+* **Závislosti:** Data o voláních, která vaše aplikace vytváří na jiné komponenty, včetně:
+  * Budou zachycena **odchozí volání http** prostřednictvím Apache HttpClient, OkHttp a `java.net.HttpURLConnection`.
   * **Redis volání** prostřednictvím klienta Jedis.
   * **Dotazy JDBC** – pro MySQL a PostgreSQL, pokud volání trvá déle než 10 sekund, agent nahlásí plán dotazu.
 
@@ -35,8 +30,8 @@ Pokud jste si nastavili [svou webovou aplikaci v jazyce Java pomocí Application
   * **Logback**
 
 * **Lepší pojmenovávání operací:** (používá se pro agregaci požadavků na portálu)
-  * Na`@RequestMapping`jaře.
-  * **Jax-RS** založené na `@Path`. 
+  * Na **jaře** `@RequestMapping`.
+  * **Jax-RS** – na `@Path`. 
 
 Chcete-li použít agenta Java, nainstalujte jej na server. Webové aplikace musí být instrumentované pomocí [Application Insights Java SDK][java]. 
 
@@ -93,17 +88,17 @@ V případě služby Azure App Services postupujte následovně:
 * Klikněte na Nastavení > Nastavení aplikace.
 * V části Nastavení aplikace přidejte novou dvojici klíče a hodnoty:
 
-Zkrat `JAVA_OPTS`Osa`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Klíč: `JAVA_OPTS` hodnota: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-Nejnovější verzi agenta [Java najdete tady](https://github.com/Microsoft/ApplicationInsights-Java/releases
+Nejnovější verzi agenta Java najdete [tady](https://github.com/Microsoft/ApplicationInsights-Java/releases
 ). 
 
-Agent musí být zabalen jako prostředek v projektu tak, že končí na D:/Home/site/wwwroot/Directory. Můžete potvrdit, že je váš agent ve správném adresáři App Service, a to tak, že kliknete na **vývojové nástroje** > **Pokročilé nástroje** > **ladit konzolu** a prozkoumáte obsah adresáře webu.    
+Agent musí být zabalen jako prostředek v projektu tak, že končí na D:/Home/site/wwwroot/Directory. Pokud chcete ověřit, že je váš agent ve správném adresáři App Service, přecházíte na **vývojové nástroje** > **Pokročilé nástroje** > **ladit konzolu** a prozkoumáte obsah adresáře webu.    
 
 * Uložte nastavení a restartujte aplikaci. (Tyto kroky platí jenom pro App Services spuštěné v systému Windows.)
 
 > [!NOTE]
-> AI-Agent. XML a soubor JAR agenta by měly být ve stejné složce. Jsou často umístěny dohromady do `/resources` složky projektu.  
+> AI-Agent. XML a soubor JAR agenta by měly být ve stejné složce. Jsou často umístěny společně do složky `/resources` projektu.  
 
 #### <a name="enable-w3c-distributed-tracing"></a>Povolit distribuované trasování W3C
 
@@ -131,7 +126,7 @@ Chcete-li vyhledat jednotlivé instance sestav závislostí, výjimek a metod, o
 
 [Diagnostikování problémů se závislostmi – Další informace](../../azure-monitor/app/asp-net-dependencies.md#diagnosis)
 
-## <a name="questions-problems"></a>Máte dotazy? Problémy?
+## <a name="questions-problems"></a>Máte otázky? Máte problémy?
 * Žádná data? [Nastavení výjimek brány firewall](../../azure-monitor/app/ip-addresses.md)
 * [Řešení potíží s Javou](java-troubleshoot.md)
 

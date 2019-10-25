@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d374f4ddac2e4d013bab1c5e88a87af1da2c1f
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667139"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881314"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Ochrana identit a uživatelé B2B
 
@@ -33,9 +33,9 @@ Riziko uživatele pro spolupráci B2B pro uživatele se vyhodnotí v domovském 
 
 Existují omezení implementace Identity Protection pro uživatele spolupráce B2B v adresáři prostředků v důsledku jejich identity existující v domovském adresáři. Hlavní omezení jsou následující:
 
-- Pokud uživatel typu Host aktivuje zásadu rizika uživatele ochrany identity, aby vynutil resetování hesla, bude blokovaný. Tento blok je z důvodu nemožnost resetovat hesla v adresáři prostředků.
-- Uživatelé typu Host se nezobrazí v sestavě rizikové uživatele. Tato ztráta viditelnosti je způsobena hodnocením rizika, které se vyskytuje v domovském adresáři uživatele B2B.
-- Správci nemůžou v adresáři prostředků zavřít ani opravit rizikového uživatele spolupráce B2B. Tato ztráta funkčnosti je způsobená tím, že správci v adresáři prostředků nemají přístup k domovskému adresáři uživatele B2B.
+- Pokud uživatel typu Host aktivuje zásadu rizika uživatele ochrany identity, aby vynutil resetování hesla, **bude blokovaný**. Tento blok je z důvodu nemožnost resetovat hesla v adresáři prostředků.
+- **Uživatelé typu Host se nezobrazí v sestavě rizikové uživatele**. Tato ztráta viditelnosti je způsobena hodnocením rizika, které se vyskytuje v domovském adresáři uživatele B2B.
+- Správci **nemůžou v adresáři prostředků zavřít ani opravit rizikového uživatele spolupráce B2B** . Tato ztráta funkčnosti je způsobená tím, že správci v adresáři prostředků nemají přístup k domovskému adresáři uživatele B2B.
 
 ### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>Proč není možné v adresáři napravit rizikové uživatele spolupráce B2B?
 
@@ -49,9 +49,8 @@ Pokud vaše zásada založená na riziku blokuje rizikové uživatele B2B v adre
 
 Vyloučení uživatelů B2B ze zásad podmíněného přístupu na základě rizik vaší organizace zabrání uživatelům B2B v ovlivnění nebo zablokování jejich hodnocením rizik. Pokud chcete vyloučit tyto uživatele B2B, vytvořte skupinu ve službě Azure AD, která bude obsahovat všechny uživatele typu Host vaší organizace. Pak přidejte tuto skupinu jako vyloučení pro integrované uživatelské riziko ochrany identity a rizikové zásady pro přihlašování a taky všechny zásady podmíněného přístupu, které jako podmínku používají přihlašování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si následující články o spolupráci Azure AD B2B:
 
 - [Co je spolupráce B2B ve službě Azure AD?](../b2b/what-is-b2b.md)
-- [Co je podmíněný přístup?](../conditional-access/overview.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Použití Apache Kafka Producer and Consumer API – Azure HDInsight '
+title: 'Kurz: Použití rozhraní Apache Kafka Producer and Consumer API – Azure HDInsight '
 description: Zjistěte, jak používat rozhraní Apache Kafka Producer and Consumer API se systémem Kafka ve službě HDInsight. V tomto kurzu zjistíte, jak používat tato rozhraní API se systémem Kafka ve službě HDInsight z aplikace Java.
 author: dhgoelmsft
 ms.author: dhgoel
@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/24/2019
-ms.openlocfilehash: 7a23d30e940417a6191cf14ad5d60159bd11c3da
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 10/08/2019
+ms.openlocfilehash: 3ac68732042016c747b693e97bf8da15e1843b1e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446399"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817794"
 ---
-# <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití Apache Kafka Producer and Consumer API
+# <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití rozhraní Apache Kafka Producer and Consumer API
 
 Zjistěte, jak používat rozhraní Apache Kafka Producer and Consumer API se systémem Kafka ve službě HDInsight.
 
@@ -24,57 +24,57 @@ Rozhraní Kafka Producer API umožňuje aplikacím odesílat datové proudy do c
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Vysvětlení kódu
 > * Sestavení a nasazení aplikace
 > * Spuštění aplikace v clusteru
 
 Další informace o rozhraních API najdete v dokumentaci k rozhraní [Producer API](https://kafka.apache.org/documentation/#producerapi) a [Consumer API](https://kafka.apache.org/documentation/#consumerapi) na webu Apache.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Apache Kafka v HDInsight 3.6. Zjistěte, jak vytvořit systém Kafka na clusteru HDInsight, najdete v článku [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
+* Apache Kafka ve službě HDInsight 3,6. Informace o tom, jak vytvořit Kafka v clusteru HDInsight, najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalentní, například OpenJDK.
+* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalent, jako je například OpenJDK.
 
-* [Nástroje Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) podle Apache.  Maven je projekt sestavovacího systému pro projekty Java.
+* [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
-* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
 Ukázková aplikace se nachází na adrese [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) v podadresáři `Producer-Consumer`. Aplikace se skládá primárně ze čtyř souborů:
 
-* `pom.xml`: Tento soubor definuje závislosti projektu, verze Javy a balení metody.
-* `Producer.java`: Tento soubor odešle náhodné věty Kafka pomocí konzumenta rozhraní API.
-* `Consumer.java`: Tento soubor používá příjemce rozhraní API pro čtení dat z Kafka a posílat do STDOUT.
-* `Run.java`: Rozhraní příkazového řádku používají ke spouštění kódu producenta a konzumenta.
+* `pom.xml`: Tento soubor definuje závislosti projektu, verzi Javy a metody balení.
+* `Producer.java`: Tento soubor pomocí rozhraní Producer API odesílá do systému Kafka náhodné věty.
+* `Consumer.java`: Tento soubor pomocí rozhraní Consumer API čte data ze systému Kafka a posílá je do výstupu STDOUT.
+* `Run.java`: Rozhraní příkazového řádku, které slouží ke spuštění kódu producenta a konzumenta.
 
 ### <a name="pomxml"></a>Pom.xml
 
 V souboru `pom.xml` je důležité porozumět následujícímu:
 
-* Závislosti: Tento projekt využívá Kafka producenta a konzumenta rozhraní API, které jsou k dispozici ve `kafka-clients` balíčku. Tuto závislost definuje následující kód XML:
+* Závislosti: Tento projekt spoléhá na rozhraní Kafka Producer and Consumer API, která jsou součástí balíčku `kafka-clients`. Tuto závislost definuje následující kód XML:
 
     ```xml
     <!-- Kafka client for producer/consumer operations -->
     <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-clients</artifactId>
-      <version>${kafka.version}</version>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
     </dependency>
     ```
 
     Položka `${kafka.version}` se deklaruje v části `<properties>..</properties>` souboru `pom.xml` a je nakonfigurovaná na verzi systému Kafka v clusteru HDInsight.
 
-* Moduly plug-in: Moduly plug-in maven poskytují různé možnosti. V tomto projektu se používají následující moduly plug-in:
+* Moduly plug-in: Moduly plug-in Mavenu poskytují různé funkce. V tomto projektu se používají následující moduly plug-in:
 
-    * `maven-compiler-plugin`: Slouží k nastavení Java verze používané v projektu na 8. To je verze Javy, kterou používá HDInsight 3.6.
-    * `maven-shade-plugin`: Použít ke generování uber jar, který obsahuje tato aplikace, stejně jako všechny závislosti. Používá se také k nastavení vstupního bodu aplikace, abyste mohli přímo spustit soubor JAR bez nutnosti zadávat hlavní třídu.
+    * `maven-compiler-plugin`: Slouží k nastavení verze Javy, kterou projekt používá, na 8. To je verze Javy, kterou používá HDInsight 3.6.
+    * `maven-shade-plugin`: Slouží k vygenerování souboru JAR, který obsahuje tuto aplikaci i všechny závislosti. Používá se také k nastavení vstupního bodu aplikace, abyste mohli přímo spustit soubor JAR bez nutnosti zadávat hlavní třídu.
 
 ### <a name="producerjava"></a>Producer.java
 
-Producent komunikuje s hostiteli zprostředkovatelů Kafka (pracovní uzly) a odesílá data do tématu Kafka. Následující fragment kódu je z [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) soubor [úložiště GitHub](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) a ukazuje, jak nastavit vlastnosti výrobce:
+Producent komunikuje s hostiteli zprostředkovatelů Kafka (pracovní uzly) a odesílá data do tématu Kafka. Následující fragment kódu pochází ze souboru [producent. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) z [úložiště GitHub](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) a ukazuje, jak nastavit vlastnosti producenta:
 
 ```java
 Properties properties = new Properties();
@@ -112,13 +112,13 @@ V tomto kódu je konzument nakonfigurovaný tak, aby četl od začátku tématu 
 
 ### <a name="runjava"></a>Run.java
 
-[Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) soubor poskytuje rozhraní příkazového řádku, která spustí producenta nebo příjemce kód. Jako parametr je potřeba zadat informace o hostiteli zprostředkovatele Kafka. Hodnota ID skupiny, který je používán procesem příjemce může volitelně zahrnovat. Pokud vytvoříte více instancí příjemce pomocí stejné ID skupiny, se bude zatížení můžete vyrovnávat čtení z tématu.
+Soubor [Run. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) poskytuje rozhraní příkazového řádku, které spouští buď producenta, nebo kód příjemce. Jako parametr je potřeba zadat informace o hostiteli zprostředkovatele Kafka. Volitelně můžete zahrnout hodnotu ID skupiny, kterou používá proces příjemce. Pokud vytvoříte více instancí příjemce pomocí stejného ID skupiny, vyčtou se z tématu čtení z vyrovnávání zatížení.
 
 ## <a name="build-and-deploy-the-example"></a>Sestavení a nasazení příkladu
 
-1. Stažení a extrakci příklady z [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
+1. Stáhněte a extrahujte příklady z [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
-2. Nastavit aktuální adresář na umístění `hdinsight-kafka-java-get-started\Producer-Consumer` adresáře a použijte následující příkaz:
+2. Nastavte aktuální adresář na umístění adresáře `hdinsight-kafka-java-get-started\Producer-Consumer` a použijte tento příkaz:
 
     ```cmd
     mvn clean package
@@ -126,7 +126,7 @@ V tomto kódu je konzument nakonfigurovaný tak, aby četl od začátku tématu 
 
     Tento příkaz vytvoří adresář s názvem `target`, který bude obsahovat soubor s názvem `kafka-producer-consumer-1.0-SNAPSHOT.jar`.
 
-3. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Zadejte následující příkaz pro kopírování `kafka-producer-consumer-1.0-SNAPSHOT.jar` soubor do vašeho clusteru HDInsight. Po zobrazení výzvy zadejte heslo uživatele SSH.
+3. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Zadejte následující příkaz, který zkopíruje soubor `kafka-producer-consumer-1.0-SNAPSHOT.jar` do clusteru HDInsight. Po zobrazení výzvy zadejte heslo uživatele SSH.
 
     ```cmd
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
@@ -134,53 +134,54 @@ V tomto kódu je konzument nakonfigurovaný tak, aby četl od začátku tématu 
 
 ## <a id="run"></a>Spuštění příkladu
 
-1. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Otevřete připojení SSH ke clusteru, tak, že zadáte následující příkaz. Pokud se zobrazí výzva, zadejte heslo uživatelského účtu SSH.
+1. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Zadáním následujícího příkazu otevřete připojení SSH ke clusteru. Pokud se zobrazí výzva, zadejte heslo uživatelského účtu SSH.
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Nainstalujte [jq](https://stedolan.github.io/jq/), příkazového řádku procesoru JSON. V otevřené připojení SSH, zadejte následující příkaz k instalaci `jq`:
+1. Nainstalujte [JQ](https://stedolan.github.io/jq/)procesor JSON pro příkazový řádek. V otevřeném připojení SSH zadejte následující příkaz pro instalaci `jq`:
 
     ```bash
     sudo apt -y install jq
     ```
 
-3. Nastavte proměnné prostředí. Nahraďte `PASSWORD` a `CLUSTERNAME` přihlašovací heslo clusteru a clusteru název v uvedeném pořadí, a pak zadejte příkaz:
+1. Nastavte proměnnou hesla. Nahraďte `PASSWORD` heslem přihlášení clusteru a pak zadejte příkaz:
 
     ```bash
     export password='PASSWORD'
-    export clusterNameA='CLUSTERNAME'
     ```
 
-4. Rozbalte název clusteru správně notaci. Skutečné malých a velkých písmen na název clusteru může být jiný než byste očekávali, v závislosti na způsobu vytvoření clusteru. Tento příkaz se získat skutečný malých a velkých písmen, uložte ho do proměnné a pak zobrazí správně cased název a název, který jste zadali dříve. Zadejte následující příkaz:
+1. Extrahuje správně použita název clusteru. V závislosti na tom, jak byl cluster vytvořen, může být skutečná velikost názvu clusteru odlišná, než očekáváte. Tento příkaz získá skutečnou velikost písmen a uloží ji do proměnné. Zadejte následující příkaz:
 
     ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" \
-  	| jq -r '.items[].Clusters.cluster_name')
-    echo $clusterName, $clusterNameA
+    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+    > [!Note]  
+    > Pokud provádíte tento proces mimo cluster, existuje jiný postup pro uložení názvu clusteru. Získá název clusteru z Azure Portal malými písmeny. Pak v následujícím příkazu nahraďte název clusteru pro `<clustername>` a spusťte ho: `export clusterName='<clustername>'`.  
 
-5. Chcete-li získat zprostředkovatele Kafka, hostitele a hostitele Apache Zookeeper, použijte následující příkaz:
+1. Chcete-li získat hostitele zprostředkovatele Kafka, použijte následující příkaz:
 
     ```bash
-    export KAFKABROKERS=`curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER \
-  	| jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
-6. Vytvoří téma Kafka `myTest`, tak, že zadáte následující příkaz:
+    > [!Note]  
+    > Tento příkaz vyžaduje přístup Ambari. Pokud je váš cluster za NSG, spusťte tento příkaz z počítače, který má přístup k Ambari.
+
+1. Zadáním následujícího příkazu vytvořte Kafka téma, `myTest`.
 
     ```bash
     java -jar kafka-producer-consumer.jar create myTest $KAFKABROKERS
     ```
 
-7. Pokud chcete spustit producenta a zapsat data do tématu, použijte následující příkaz:
+1. Pokud chcete spustit producenta a zapsat data do tématu, použijte následující příkaz:
 
     ```bash
     java -jar kafka-producer-consumer.jar producer myTest $KAFKABROKERS
     ```
 
-8. Jakmile bude producent hotový, pomocí následujícího příkazu zahajte čtení z tématu:
+1. Jakmile bude producent hotový, pomocí následujícího příkazu zahajte čtení z tématu:
 
     ```bash
     java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS
@@ -188,7 +189,7 @@ V tomto kódu je konzument nakonfigurovaný tak, aby četl od začátku tématu 
 
     Zobrazí se počet načtených záznamů spolu s celkovým počtem.
 
-9. Konzumenta ukončíte stisknutím __Ctrl+C__.
+1. Konzumenta ukončíte stisknutím __Ctrl+C__.
 
 ### <a name="multiple-consumers"></a>Víc současných konzumentů
 
@@ -210,14 +211,14 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 \; attach
 ```
 
-Tento příkaz pomocí `tmux` rozdělí terminál do dvou sloupců. V obou sloupcích je spuštěný konzument se stejnou hodnotou ID skupiny. Jakmile konzumenti dokončí čtení, všimněte si, že oba přečetli pouze část záznamů. Použití __Ctrl + C__ dvakrát ukončíte `tmux`.
+Tento příkaz pomocí `tmux` rozdělí terminál do dvou sloupců. V obou sloupcích je spuštěný konzument se stejnou hodnotou ID skupiny. Jakmile konzumenti dokončí čtení, všimněte si, že oba přečetli pouze část záznamů. Pro ukončení `tmux`použijte dvakrát __kombinaci kláves CTRL + C__ .
 
 Konzumace klienty ze stejné skupiny se realizuje rozdělením tématu na oddíly. V tomto vzorovém kódu má dříve vytvořené téma `test` osm oddílů. Pokud spustíte osm konzumentů, každý z nich bude číst záznamy z jednoho oddílu tématu.
 
 > [!IMPORTANT]  
 > Ve skupině příjemců nemůže být víc instancí konzumentů než má téma oddílů. V tomto příkladu může skupina konzumentů obsahovat až osm konzumentů, protože to je počet oddílů tématu. Nebo můžete mít více skupin konzumentů, každou s maximálně osmi konzumenty.
 
-Záznamy se v systému Kafka ukládají v pořadí, ve kterém je oddíl přijme. Pro dosažení doručování záznamů ve správném pořadí *v rámci oddílu* vytvořte skupinu příjemců, ve které bude počet instancí konzumentů odpovídat počtu oddílů. Pro dosažení doručování záznamů ve správném pořadí *v rámci tématu* vytvořte skupinu obsahující pouze jednu instanci konzumenta.
+Záznamy uložené v Kafka jsou uloženy v pořadí, v jakém jsou přijímány v rámci oddílu. Pro dosažení doručování záznamů ve správném pořadí *v rámci oddílu* vytvořte skupinu příjemců, ve které bude počet instancí konzumentů odpovídat počtu oddílů. Pro dosažení doručování záznamů ve správném pořadí *v rámci tématu* vytvořte skupinu obsahující pouze jednu instanci konzumenta.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -229,9 +230,9 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste zjistili, jak používat Apache Kafka Producer and Consumer API s využitím Kafka v HDInsight. Další informace o práci s platformou Kafka najdete v těchto zdrojích:
+V tomto dokumentu jste zjistili, jak používat Apache Kafkaho výrobce a zákaznického rozhraní API s Kafka ve službě HDInsight. Další informace o práci s platformou Kafka najdete v těchto zdrojích:
 
 > [!div class="nextstepaction"]
-> [Analýza protokolů platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
+> [Analyzovat protokoly Apache Kafka](apache-kafka-log-analytics-operations-management.md)

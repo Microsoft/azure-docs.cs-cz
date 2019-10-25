@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: d89150f43205a4b38612008033ab5649acd9af5b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 38be15cf5771f7eb09bce1154baa3bc6e559d49b
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241577"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881510"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Kurz: Konfigurace dynamického inventáře vašich prostředků Azure pomocí Ansible
 
@@ -28,7 +28,7 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 > * Instalace Nginx na označené virtuální počítače
 > * Konfigurace dynamického inventáře, který obsahuje nakonfigurované prostředky Azure
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -36,7 +36,7 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 
 ## <a name="create-the-test-vms"></a>Vytvoření testovacích virtuálních počítačů
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -71,11 +71,20 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 
 Pomocí [značek můžete uspořádat prostředky Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli) podle uživatelem definovaných kategorií. 
 
+### <a name="using-ansible-version--28"></a>Použití Ansible verze < 2,8
 Zadáním následujícího příkazu [AZ Resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) označíte virtuální počítač `ansible-inventory-test-vm1` s klíčem `nginx`:
 
 ```azurecli-interactive
 az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
 ```
+
+### <a name="using-ansible-version--28"></a>Použití Ansible verze > = 2,8
+Zadejte následující příkaz [AZ Resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) – k označení `ansible-inventory-test-vm1` virtuálního počítače pomocí klíčového `Ansible=nginx`:
+
+```azurecli-interactive
+az resource tag --tags Ansible=nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
+```
+
 ## <a name="generate-a-dynamic-inventory"></a>Generovat dynamický soupis
 
 Po definování virtuálních počítačů (a označení) je čas vytvořit dynamický soupis.
@@ -84,7 +93,7 @@ Po definování virtuálních počítačů (a označení) je čas vytvořit dyna
 
 Ansible poskytuje skript Pythonu s názvem [azure_rm. py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) , který vygeneruje dynamický inventář vašich prostředků Azure. Následující kroky vás provedou použitím skriptu `azure_rm.py` pro připojení ke dvěma testovacím virtuálním počítačům Azure:
 
-1. Pomocí příkazu GNU `wget` načtěte skript `azure_rm.py`:
+1. K načtení skriptu `azure_rm.py` použijte příkaz `wget` GNU:
 
     ```azurecli-interactive
     wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
@@ -121,13 +130,17 @@ Ansible poskytuje skript Pythonu s názvem [azure_rm. py](https://github.com/ans
 
 Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/inventory/azure_rm.py). Následující kroky vás provedou použitím modulu plug-in:
 
-1. Modul plug-in inventarizace vyžaduje konfigurační soubor. Konfigurační soubor musí končit `azure_rm` a mít rozšíření buď `yml`, nebo `yaml`. Pro tento příklad kurzu uložte následující PlayBook jako `myazure_rm.yml`:
+1. Modul plug-in pro inventarizace vyžaduje konfigurační soubor. Konfigurační soubor musí končit `azure_rm` a mít rozšíření buď `yml` nebo `yaml`. Pro tento příklad kurzu uložte následující PlayBook jako `myazure_rm.yml`:
 
     ```yml
-    plugin: azure_rm
-    include_vm_resource_groups:
-    - ansible-inventory-test-rg
-    auth_source: auto
+        plugin: azure_rm
+        include_vm_resource_groups:
+        - ansible-inventory-test-rg
+        auth_source: auto
+    
+        keyed_groups:
+        - prefix: tag
+          key: tags
     ```
 
 1. Spusťte následující příkaz, který otestuje virtuální počítače příkazem Command v této skupině prostředků:
@@ -156,33 +169,49 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
     ```
 
 ## <a name="enable-the-vm-tag"></a>Povolení značky VM
-Po nastavení značky musíte tuto značku "Povolit". Jedním ze způsobů, jak povolit značku, je exportovat značku do proměnné prostředí `AZURE_TAGS` pomocí příkazu `export`:
 
-```azurecli-interactive
-export AZURE_TAGS=nginx
-```
+### <a name="if-youre-using-ansible--28"></a>Pokud používáte Ansible < 2,8,
 
-- Pokud používáte Ansible < 2,8, spusťte následující příkaz:
+- Po nastavení značky musíte tuto značku "Povolit". Jedním ze způsobů, jak povolit značku, je exportovat značku do proměnné prostředí `AZURE_TAGS` prostřednictvím příkazu `export`:
+
+    ```azurecli-interactive
+    export AZURE_TAGS=nginx
+    ```
+    
+- Spusťte následující příkaz:
 
     ```bash
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping
     ```
+    
+    Teď vidíte jenom jeden virtuální počítač (jehož značka odpovídá hodnotě exportované do proměnné prostředí `AZURE_TAGS`):
 
-- Pokud používáte Ansible > = 2,8, spusťte následující příkaz:
-  
-    ```bash
-    ansible all -m ping -i ./myazure_rm.yml
+    ```Output
+       ansible-inventory-test-vm1 | SUCCESS => {
+        "changed": false,
+        "failed": false,
+        "ping": "pong"
+    }
     ```
 
-Teď vidíte jenom jeden virtuální počítač (ten, jehož značka odpovídá hodnotě exportované do proměnné prostředí `AZURE_TAGS`):
+### <a name="if-youre-using-ansible---28"></a>Pokud používáte Ansible > = 2,8
 
-```Output
-ansible-inventory-test-vm1 | SUCCESS => {
-    "changed": false,
-    "failed": false,
-    "ping": "pong"
-}
-```
+- Spusťte `ansible-inventory -i myazure_rm.yml --graph` příkazu, abyste získali následující výstup:
+
+    ```Output
+        @all:
+          |--@tag_Ansible_nginx:
+          |  |--ansible-inventory-test-vm1_9e2f
+          |--@ungrouped:
+          |  |--ansible-inventory-test-vm2_7ba9
+    ```
+
+- K otestování připojení k virtuálnímu počítači s Nginx můžete taky spustit následující příkaz:
+  
+    ```bash
+    ansible -i ./myazure_rm.yml -m ping tag_Ansible_nginx
+    ```
+
 
 ## <a name="set-up-nginx-on-the-tagged-vm"></a>Nastavení Nginx na označeném virtuálním počítači
 
@@ -194,39 +223,39 @@ ansible-inventory-test-vm1 | SUCCESS => {
    code nginx.yml
    ```
 
-1. Do editoru vložte následující vzorový kód:
+1. Vložte do editoru následující vzorový kód:
 
     ```yml
-    ---
-    - name: Install and start Nginx on an Azure virtual machine
-      hosts: all
-      become: yes
-      tasks:
-      - name: install nginx
-        apt: pkg=nginx state=installed
-        notify:
-        - start nginx
-
-      handlers:
-        - name: start nginx
-          service: name=nginx state=started
+        ---
+        - name: Install and start Nginx on an Azure virtual machine
+          hosts: all
+          become: yes
+          tasks:
+          - name: install nginx
+            apt: pkg=nginx state=installed
+            notify:
+            - start nginx
+    
+          handlers:
+            - name: start nginx
+              service: name=nginx state=started
     ```
 
-1. Uložte tento soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
 
 1. Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
    - Ansible < 2,8:
 
-    ```bash
-    ansible-playbook -i azure_rm.py nginx.yml
-    ```
+     ```bash
+     ansible-playbook -i azure_rm.py nginx.yml
+     ```
 
    - Ansible > = 2,8:
 
-    ```bash
-     ansible-playbook  -i ./myazure_rm.yml  nginx.yml
-    ```
+     ```bash
+     ansible-playbook  -i ./myazure_rm.yml  nginx.yml --limit=tag_Ansible_nginx
+     ```
 
 1. Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
 

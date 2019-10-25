@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a757ee03b8d8c7c93b191054182d077408c162db
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376288"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819823"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
@@ -178,7 +178,8 @@ Po dokončení těchto polí vyberte **Uložit** .
 Vyberte minimálně jednu (1) a maximálně tři (3) kategorie použité pro seskupení nabídek do příslušných oblastí hledání na webu Marketplace. Zavolejte prosím, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. 
 
 ### <a name="industry"></a>Odvětví
-Vyberte až dva obory (2), které se používají k seskupení vaší nabídky, do příslušných oblastí hledání na webu Marketplace. Pokud vaše nabídka není specifická pro odvětví, nevybírejte ji. Zavolejte prosím, jak vaše nabídka podporuje vybrané odvětví v popisu nabídky. 
+
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>verze aplikace
 Toto je volitelné pole, které se používá na webu AppSource Marketplace k identifikaci čísla verze vaší nabídky. 
@@ -240,7 +241,7 @@ Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu
 
     **Příklad**: 
 
-    @no__t – 0 Toto je můj první odstavec. `</p>` <br>
+    `<p>` Toto je můj první odstavec. `</p>` <br>
     `<p>` Toto je můj druhý odstavec. `</p>` <br>
 
     Výše uvedená by vypadala takto:
@@ -289,12 +290,12 @@ Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu
 
     **Příklad**:
 
-    @no__t – 0This je nadpis 1 @ no__t-1. <br>
-    @no__t – 0This je Nadpis 2 @ no__t-1. <br>
-    @no__t – 0This je nadpis 3 @ no__t-1. <br>
-    @no__t – 0This je nadpis 4 @ no__t-1. <br>
-    @no__t – 0This je nadpis 5 @ no__t-1. <br>
-    @no__t – 0This je nadpis 6 @ no__t-1 
+    `<h1>`je to nadpis 1`</h1>` <br>
+    `<h2>`je to Nadpis 2`</h2>` <br>
+    `<h3>`se jedná o Nadpis 3`</h3>` <br>
+    `<h4>`se jedná o nadpis 4`</h4>` <br>
+    `<h5>`je to nadpis 5`</h5>` <br>
+    `<h6>`je to nadpis 6`</h6>` 
 
     Výše uvedená by vypadala takto:
 
@@ -436,7 +437,7 @@ Vyberte frekvenci, kterou zákazníci musí platit v uvedené ceně. Musí se za
 - **Cena**: USD za měsíc nebo USD za rok
 
 Ceny nastavené v místní měně (USD = USA dolar) se převedou na místní měnu všech vybraných trhů pomocí aktuálních kurzů pro Exchange, které jsou k dispozici během instalace. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a zkontrolujete cenu na každém trhu. Pokud chcete nastavit vlastní ceny v individuálním trhu, upravte a importujte tabulku s cenami. Zodpovídáte za ověřování těchto cen a jejich nastavení.
-*@no__t – 1You musí nejdřív Uložit změny cen, aby bylo možné exportovat data o cenách.*
+*\*musíte nejdřív Uložit změny cen, abyste mohli exportovat data o cenách.*
 
 Před publikováním pečlivě zkontrolujte své ceny, protože existují určitá omezení, co se může po publikování plánu změnit:
 

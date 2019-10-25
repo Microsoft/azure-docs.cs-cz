@@ -1,6 +1,6 @@
 ---
-title: Zobrazení stavu úlohy Azure Import/Export | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit stav úlohy importu/exportu a použití disků.
+title: Zobrazit stav úloh Azure import/export | Microsoft Docs
+description: Zjistěte, jak zobrazit stav úloh importu/exportu a využitých jednotek.
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,76 +8,76 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 225164fe00f70839446f8b74155cd3959f745a49
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 222c893f06d9adf77f8a8124af18bc03c5d20bdf
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478015"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821439"
 ---
-# <a name="view-the-status-of-azure-importexport-jobs"></a>Zobrazení stavu úlohy Azure Import/Export
+# <a name="view-the-status-of-azure-importexport-jobs"></a>Zobrazit stav úloh importu a exportu Azure
 
-Tento článek obsahuje informace o tom, jak zobrazit stav disku a úlohy pro úlohy Azure Import/Export. Služba Azure Import/Export umožňuje bezpečně přenášet velké objemy dat do objektů BLOB Azure a službou soubory Azure. Služba také umožňuje exportovat data z úložiště objektů Blob v Azure.  
+Tento článek poskytuje informace o tom, jak zobrazit jednotku a stav úlohy pro úlohy Azure import/export. Služba import/export Azure slouží k bezpečnému přenosu velkých objemů dat do objektů blob Azure a souborů Azure. Služba se používá také k exportu dat z úložiště objektů BLOB v Azure.  
 
-## <a name="view-job-and-drive-status"></a>Zobrazení úlohy a stav jednotky
-Můžete sledovat stav importu nebo exportu úloh na webu Azure Portal. Klikněte na tlačítko **Import/Export** kartu. Na stránce se zobrazí seznam vašich úloh.
+## <a name="view-job-and-drive-status"></a>Zobrazení stavu úlohy a jednotky
+Stav úloh importu nebo exportu můžete sledovat z Azure Portal. Klikněte na kartu **Import/export** . Na stránce se zobrazí seznam úloh.
 
-![Zobrazení stavu úlohy](./media/storage-import-export-service/jobstate.png)
+![Zobrazit stav úlohy](./media/storage-import-export-service/jobstate.png)
 
 ## <a name="view-job-status"></a>Zobrazení stavu úlohy
 
-Přečtěte si jedno z následujících stavů úloh v závislosti na tom, kde je jednotka v procesu.
+V závislosti na tom, kde se jednotka právě nachází, se zobrazí jedna z následujících stavů úlohy.
 
 | Stav úlohy | Popis |
 |:--- |:--- |
-| Vytváření | Jakmile se vytvoří úloha, její stav je nastavený na **vytváření**. Během úlohy **vytváření** stavu služby Import/Export předpokládá jednotky nebyly byl odeslán do datového centra. Úloha může zůstat v tomto stavu po dobu až dvou týdnů, po jejichž uplynutí je automaticky odstraní službu. |
-| Přesouvání | Po dodání vašeho balíčku, měli byste aktualizovat informace o sledování na webu Azure Portal.  Tím dojde k úloze do **přesouvání** stavu. Úloha zůstává ve **přesouvání** stavu po dobu až dvou týdnů. 
-| Přijato | Po přijetí všech jednotkách v datovém centru, stav úlohy je nastavený na **přijaté**. |
-| Přenos | Po zahájení zpracování alespoň jednu jednotku, stav úlohy je nastavený na **přenos**. Další informace najdete v části [stavy jednotek](#view-drive-status). |
-| Balení | Po dokončení zpracování všech jednotkách, úloha se umístí do **balení** stavu, dokud jednotky jsou odeslání zpět. |
-| Dokončeno | Po všech jednotkách se dodávají zpět na vás, pokud byla úloha dokončena bez chyb, než úloha je nastaven **dokončeno**. Úloha je automaticky odstraněny po 90 dnech v **dokončeno** stavu. |
-| Zavřeno | Po všech jednotkách se dodávají zpět na vás, pokud došlo k chybám při zpracování úlohy, úlohy je nastavena na **uzavřeno**. Úloha je automaticky odstraněny po 90 dnech v **uzavřeno** stavu. |
+| Vytváření | Po vytvoření úlohy se její stav nastaví na **vytvořit**. Když je úloha ve stavu **vytváření** , služba import/export předpokládá, že se jednotky nedodaly do datového centra. Úloha může zůstat v tomto stavu po dobu až dvou týdnů, po jejímž uplynutí je služba automaticky odstranila. |
+| Bírá | Po odeslání balíčku byste měli aktualizovat informace o sledování v Azure Portal.  Tím se úloha přepíná do stavu **expedice** . Úloha zůstane ve stavu **expedice** po dobu až dvou týdnů. 
+| Přijato | Po přijetí všech jednotek v datovém centru se stav úlohy nastaví na **přijato**. |
+| Pojování | Po zahájení zpracování aspoň jedné jednotky se stav úlohy nastaví na **přenos**. Další informace najdete v informacích o [stavu jednotky](#view-drive-status). |
+| Balení | Po dokončení zpracování všech jednotek se úloha umístí do stavu **balení** , dokud se jednotky nevrátí zpět. |
+| Dokončeno | Po odeslání všech jednotek zpět do vás, pokud byla úloha dokončena bez chyb, je úloha nastavena na **dokončeno**. Tato úloha se automaticky odstraní po 90 dnech v **dokončeném** stavu. |
+| ukončit | Po odeslání všech jednotek zpět, pokud došlo k nějakým chybám během zpracování úlohy, je úloha nastavena na **Uzavřeno**. Tato úloha se automaticky odstraní po 90 dnech v **zavřeném** stavu. |
 
 ## <a name="view-drive-status"></a>Zobrazení stavu jednotky
 
-Následující tabulka popisuje životní cyklus jednotlivé jednotky jako přechází prostřednictvím úlohu importu nebo exportu. Aktuální stav každé jednotky, v rámci úlohy se zobrazí na webu Azure Portal.
+Následující tabulka popisuje životní cyklus jednotlivé jednotky při přechodu prostřednictvím úlohy importu nebo exportu. Aktuální stav jednotlivých jednotek v úloze se zobrazuje v Azure Portal.
 
-Následující tabulka popisuje každý stav, který může procházet každé jednotky, v rámci úlohy.
+V následující tabulce jsou popsány všechny stavy, které mohou jednotlivé jednotky v úloze Procházet.
 
-| Stav disku | Popis |
+| Stav jednotky | Popis |
 |:--- |:--- |
-| Zadaný | Pro úlohu importu při vytvoření úlohy se na webu Azure Portal, je počáteční stav pro jednotku **zadaná**. Pro úlohu exportu protože není zadána žádná jednotka při vytvoření úlohy, stav počáteční jednotky je **přijaté**. |
-| Přijato | Na jednotce přejde do **přijaté** stavu, když má služba Import/Export zpracovává jednotky, které byly přijaty z přepravní společnost pro úlohu importu. Pro úlohu exportu stav počáteční jednotku je **přijaté** stavu. |
-| NeverReceived | Přesune jednotky **NeverReceived** stav, když dorazí balíček pro úlohu, ale balíček neobsahuje jednotce. Jednotky se také přesune do tohoto stavu, pokud to bylo dva týdny, protože služba přijala dodací informace, ale balíček ještě nedorazily v datovém centru. |
-| Přenos | Přesune jednotky **přenos** stavu, kdy začne služba přenosu dat z jednotky do služby Azure Storage. |
-| Dokončeno | Přesune jednotky **dokončeno** stavu, kdy služba byla úspěšně převedena všechna data bez chyb.
-| CompletedMoreInfo | Přesune jednotky **CompletedMoreInfo** stavu, když službu došlo k některým problémům při kopírování dat z nebo na jednotku. Informace může patřit chyby, upozornění nebo informační zprávy o přepsání objektů BLOB.
-| ShippedBack | Přesune jednotky **ShippedBack** stav, když byla byla odeslaná z datacentra zpět na návratovou adresu. |
+| Dané | Při vytvoření úlohy z Azure Portal se pro úlohu importu **zadá**počáteční stav jednotky. V případě úlohy exportu, protože při vytvoření úlohy není zadána žádná jednotka, je **přijat**počáteční stav jednotky. |
+| Přijato | Pokud služba import/export zpracovává jednotky, které byly přijaty od společnosti pro expedici pro úlohu importu, přejde do stavu **přijato** . V případě úlohy exportu je počáteční stav jednotky stav **přijato** . |
+| NeverReceived | Jednotka se přesune do stavu **NeverReceived** , když dorazí balíček pro úlohu, ale balíček disk neobsahuje. Jednotka se také přesune do tohoto stavu, pokud byla za dva týdny, protože služba obdržela informace o expedici, ale balíček ještě nedorazil do datového centra. |
+| Pojování | Jednotka se přesune do stavu **přenosu** , když služba začne přenášet data z jednotky na Azure Storage. |
+| Dokončeno | Jednotka se přesune do stavu **dokončeno** , pokud služba úspěšně přenesla všechna data bez chyb.
+| CompletedMoreInfo | Jednotka se přesune do stavu **CompletedMoreInfo** , pokud služba zjistila určité problémy při kopírování dat z disku nebo na disk. Tyto informace mohou obsahovat chyby, varování nebo informativní zprávy týkající se přepsání objektů BLOB.
+| ShippedBack | Jednotka se po odeslání z datového centra zpátky na zpáteční adresu přesune do stavu **ShippedBack** . |
 
-Tuto image z webu Azure portal zobrazuje stav jednotky úlohu příkladu:
+Tento obrázek z Azure Portal zobrazuje stav jednotky ukázkové úlohy:
 
-![Stav zobrazení](./media/storage-import-export-service/drivestate.png)
+![Zobrazit stav jednotky](./media/storage-import-export-service/drivestate.png)
 
-Následující tabulka popisuje stavy selhání jednotky a akce prováděné na jednotlivých stavech.
+Následující tabulka popisuje stavy selhání jednotek a akce prováděné pro jednotlivé stavy.
 
-| Stav disku | Událost | Řešení / další krok |
+| Stav jednotky | Událost | Řešení/další krok |
 |:--- |:--- |:--- |
-| NeverReceived | Jednotku, která je označena jako **NeverReceived** (protože nebyla přijata jako součást úlohy dodávky) dorazí v jiném dodávky. | Přesune jednotku pro provozní tým **přijaté**. |
-| neuvedeno | Jednotce, která není součástí jakoukoliv úlohu dorazí datacentra jako součást jiná úloha. | Na jednotce je označen jako dodatečné jednotky a vrátí se vám po dokončení úlohy spojené s původní balíček. |
+| NeverReceived | Jednotka, která je označena jako **NeverReceived** (protože nebyla přijata jako součást dodávky úlohy), dorazí do jiné dodávky. | Provozní tým přesune jednotku k **přijetí**. |
+| Nevztahuje se | Jednotka, která není součástí žádné úlohy, přijde v datovém centru jako součást jiné úlohy. | Jednotka je označena jako dodatečná jednotka a při dokončení úlohy přidružené k původnímu balíčku se vám vrátí. |
 
-## <a name="time-to-process-job"></a>Čas do procesu úlohy
-Množství čas potřebný ke zpracování úlohu importu/exportu se liší v závislosti na řadě faktorů, jako například:
+## <a name="time-to-process-job"></a>Čas zpracování úlohy
+Doba potřebná ke zpracování úlohy importu/exportu se liší v závislosti na mnoha faktorech, jako například:
 
--  Dobu dodání
--  Načíst v datovém centru
--  Typ úlohy a velikosti dat kopírování
--  Počet disků v rámci úlohy. 
+-  Čas expedice
+-  Zatížení v datacentru
+-  Typ úlohy a velikost kopírovaných dat
+-  Počet disků v úloze. 
 
-Služba Import/Export nemá žádnou smlouvu SLA, ale službě se snaží dokončete kopírování v 7 až 10 dní, po přijetí disky. Kromě stavu zveřejněný na webu Azure Portal rozhraní REST API je možné sledovat průběh úlohy. Dokončeno v parametru [vypisovat úlohy](/previous-versions/azure/dn529083(v=azure.100)) volání operace rozhraní API poskytuje průběh kopírování procento.
+Služba import/export nemá smlouvu SLA, ale služba se snaží dokončit kopírování 7 až 10 dní od přijetí těchto disků. Kromě stavu publikovaného na portálu Azure Portal je možné pomocí rozhraní REST API sledovat průběh úlohy. Procentuální hodnota parametru dokončení v volání rozhraní API [seznamu úloh](/previous-versions/azure/dn529083(v=azure.100)) poskytuje procentní průběh kopírování.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nastavení nástroje WAImportExport](storage-import-export-tool-how-to.md)
-* [Přenos dat pomocí příkazového řádku azcopy](storage-use-azcopy.md)
-* [Ukázkový Import exportovat rozhraní REST API služby Azure](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
+* [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
+* [Ukázka REST API exportu pro import do Azure](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

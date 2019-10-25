@@ -4,14 +4,14 @@ description: Popisuje, jak určit, jestli se má použít kompletní nebo přír
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 10a9917d8ed763b133fbd33aedd16da399a224b2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258965"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881641"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manager
 
@@ -21,7 +21,9 @@ V obou režimech se Správce prostředků pokusí vytvořit všechny prostředky
 
 ## <a name="complete-mode"></a>Režim dokončení
 
-V režimu úplné Správce prostředků **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. Prostředky, které jsou zadány v šabloně, ale nejsou nasazeny, protože [Podmínka](conditional-resource-deployment.md) je vyhodnocena jako false, nejsou odstraněna.
+V režimu úplné Správce prostředků **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané.
+
+Pokud vaše šablona obsahuje prostředek, který není nasazený, protože [Podmínka](conditional-resource-deployment.md) je vyhodnocena jako NEPRAVDA, výsledek závisí na tom, která REST API verze, kterou použijete k nasazení šablony. Pokud používáte verzi starší než 2019-05-10, prostředek se **neodstraní**. Při 2019-05-10 nebo novějším se prostředek **odstraní**. Nejnovější verze Azure PowerShell a Azure CLI odstraní prostředek.
 
 Použití kompletního režimu s [kopírováním smyček](resource-group-create-multiple.md)vám bude opatrní. Všechny prostředky, které nejsou zadány v šabloně po vyřešení smyčky kopírování, jsou odstraněny.
 
@@ -45,7 +47,7 @@ Pokud je skupina prostředků [zamčená](resource-group-lock-resources.md), re�
 
 V přírůstkovém režimu Správce prostředků **opustí nezměněné** prostředky, které existují ve skupině prostředků, ale nejsou zadané v šabloně.
 
-Pokud však dojde k opětovnému nasazení stávajícího prostředku v přírůstkovém režimu, výsledek je jiný. Zadejte všechny vlastnosti prostředku, nikoli jenom ty, které aktualizujete. Běžným srozumitelným porozuměním je, aby nedošlo ke změně vlastností, které nejsou zadané. Pokud nezadáte určité vlastnosti, Správce prostředků interpretuje aktualizaci jako přepsání těchto hodnot.
+Pokud však dojde k opětovnému nasazení stávajícího prostředku v přírůstkovém režimu, výsledek je jiný. Zadejte všechny vlastnosti prostředku, nikoli jenom ty, které aktualizujete. Běžným nesrozumitelným pochopením je, aby nedošlo ke změně vlastností, které nejsou určené. Pokud nezadáte určité vlastnosti, Správce prostředků interpretuje aktualizaci jako přepsání těchto hodnot.
 
 ## <a name="example-result"></a>Příklad výsledku
 
@@ -78,7 +80,7 @@ Při nasazení v režimu **úplné** se odstraní prostředek C. Skupina prostř
 
 ## <a name="set-deployment-mode"></a>Nastavit režim nasazení
 
-Chcete-li nastavit režim nasazení při nasazení pomocí prostředí PowerShell, `Mode` použijte parametr.
+Chcete-li nastavit režim nasazení při nasazení pomocí prostředí PowerShell, použijte parametr `Mode`.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment `
@@ -88,7 +90,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile c:\MyTemplates\storage.json
 ```
 
-Pokud chcete nastavit režim nasazení při nasazení pomocí Azure CLI, použijte `mode` parametr.
+Pokud chcete nastavit režim nasazení při nasazení pomocí Azure CLI, použijte parametr `mode`.
 
 ```azurecli-interactive
 az group deployment create \
@@ -115,7 +117,7 @@ Následující příklad ukazuje propojenou šablonu nastavenou na režim přír
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o vytváření šablon Správce prostředků najdete v tématu [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md).
 * Další informace o nasazení prostředků najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](resource-group-template-deploy.md).

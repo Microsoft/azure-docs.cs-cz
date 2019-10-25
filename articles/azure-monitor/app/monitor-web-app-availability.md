@@ -1,23 +1,19 @@
 ---
 title: Sledování dostupnosti a odezvy libovolných webů | Dokumentace Microsoftu
 description: Nastavení testů webu ve službě Application Insights. Zasílání upozornění, pokud web přestane být k dispozici nebo reaguje pomalu.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 3c7ba10525dedf213a416d9ce6b55c80539fedd7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 074b5c175305131cd67cc6660d13756a83386c11
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812213"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819299"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
@@ -78,7 +74,7 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
 |**Classic** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
-|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem umístění testu je **prahová hodnota pro umístění výstrahy** = **počet umístění testu – 2, minimálně pět umístění testu.**|
+|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem umístění testu je **prahová hodnota pro umístění výstrahy**  = **počet umístění testu – 2, minimálně pět umístění testu.**|
 
 ## <a name="see-your-availability-test-results"></a>Zobrazení výsledků testu dostupnosti
 
