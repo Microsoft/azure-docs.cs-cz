@@ -7,22 +7,22 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: eb3b25387df33f8d366a088f9fa63e0dc96290bf
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 834447d15336fcd6d56f2979113aaef7e22ecb8f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173255"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934310"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Rychlý start: Vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio
 
 V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analytics pomocí Azure Stream Analytics Tools for Visual Studio. Ukázková úloha načte streamovaná data z IoT Hubho zařízení. Nadefinujete úlohu, která vypočítá průměrnou teplotu při více než 27 ° a zapíše výsledné výstupní události do nového souboru v úložišti objektů BLOB.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 * Nainstalujte Visual Studio 2019, Visual Studio 2015 nebo Visual Studio 2013 Update 4. Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express se nepodporuje.
 
@@ -32,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 
 Před definováním Stream Analytics úlohy byste měli připravit data, která jsou později nakonfigurovaná jako vstup úlohy. Chcete-li připravit vstupní data požadovaná úlohou, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
 
@@ -40,14 +40,14 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
    
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
-   |Subscription  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít. |
-   |Resource group   |   asaquickstart-resourcegroup  |   Vyberte**Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
+   |Předplatné  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít. |
+   |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte**Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
    |Oblast  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisnou polohu, kde můžete IoT Hub hostovat. Použijte umístění, které je nejblíže vašim uživatelům. |
-   |Název IoT Hubu  | MyASAIoTHub  |   Vyberte název IoT Hub.   |
+   |Název IoT Hub  | MyASAIoTHub  |   Vyberte název IoT Hub.   |
 
    ![Vytvořit IoT Hub](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
-4. Vyberte **další: Nastavte velikost a měřítko**.
+4. Vyberte **Další: nastavit velikost a měřítko**.
 
 5. Zvolte si **Úroveň ceny a škálování**. Pro tento rychlý Start vyberte úroveň **F1** , pokud je stále k dispozici ve vašem předplatném. Pokud úroveň Free není k dispozici, vyberte nejnižší dostupnou úroveň. Další informace najdete v tématu [IoT Hub ceny](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -110,12 +110,12 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**   |
    |---------|---------|---------|
-   |Vstupní alias  |  Vstup   |  Zadejte název pro identifikaci vstupu úlohy.   |
-   |Typ zdroje   |  Datový proud |  Vyberte příslušný zdroj vstupu: Datový proud nebo referenční data.   |
-   |Source  |  IoT Hub |  Vyberte odpovídající vstupní zdroj.   |
-   |Resource  | Zvolit zdroj dat z aktuálního účtu | Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
-   |Subscription  |  \<Vaše předplatné\>   | Vyberte předplatné Azure, které obsahuje IoT Hub, které jste vytvořili.   |
-   |IoT Hub  |  MyASAIoTHub   |  Vyberte nebo zadejte název IoT Hub. Názvy IoT Hub jsou automaticky zjištěny, pokud jsou vytvořeny ve stejném předplatném.   |
+   |Alias pro vstup  |  Vstup   |  Zadejte název pro identifikaci vstupu úlohy.   |
+   |Typ zdroje   |  Datový proud |  Zvolte odpovídající vstupní zdroj: datový proud nebo referenční data.   |
+   |Zdroj  |  Centrum IoT |  Vyberte odpovídající vstupní zdroj.   |
+   |Prostředek  | Zvolit zdroj dat z aktuálního účtu | Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
+   |Předplatné  |  \<Vaše předplatné\>   | Vyberte předplatné Azure, které obsahuje IoT Hub, které jste vytvořili.   |
+   |Centrum IoT  |  MyASAIoTHub   |  Vyberte nebo zadejte název IoT Hub. Názvy IoT Hub jsou automaticky zjištěny, pokud jsou vytvořeny ve stejném předplatném.   |
    
 3. U ostatních možností ponechejte výchozí hodnoty a výběrem možnosti **Uložit** uložte nastavení.  
 
@@ -130,12 +130,12 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**   |
    |---------|---------|---------|
    |Alias pro výstup  |  Výstup   |  Zadejte název pro identifikaci výstupu úlohy.   |
-   |Jímka   |  Úložiště objektů blob |  Zvolte odpovídající jímku.    |
-   |Resource  |  Zadat zdroj dat ručně |  Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
-   |Subscription  |  \<Vaše předplatné\>   | Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného.   |
+   |Jímka   |  Blob Storage |  Zvolte odpovídající jímku.    |
+   |Prostředek  |  Zadat nastavení zdroje dat ručně |  Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
+   |Předplatné  |  \<Vaše předplatné\>   | Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného.   |
    |Účet úložiště  |  asaquickstartstorage   |  Vyberte nebo zadejte název účtu úložiště. Pokud jsou názvy vytvořeny v rámci stejného předplatného, zjišťují se automaticky.   |
    |Kontejner  |  container1   |  Vyberte existující kontejner, který jste vytvořili v účtu úložiště.   |
-   |Vzor cesty  |  výstup   |  Zadejte název cesty k souboru, která se vytvoří v rámci kontejneru.   |
+   |Vzor cesty  |  output   |  Zadejte název cesty k souboru, která se vytvoří v rámci kontejneru.   |
    
 3. U ostatních možností ponechejte výchozí hodnoty a výběrem možnosti **Uložit** uložte nastavení.  
 
@@ -198,11 +198,11 @@ Odstraňte skupinu prostředků, úlohu streamování a všechny související p
 
 2. Na stránce skupiny prostředků zvolte **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a potom vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste pomocí sady Visual Studio nasadili jednoduchou úlohu Stream Analytics. Úlohy Stream Analytics můžete nasadit také pomocí webu [Azure Portal](stream-analytics-quick-create-portal.md) a [PowerShellu](stream-analytics-quick-create-powershell.md). 
 
 Další informace o nástrojích Azure Stream Analytics Tools for Visual Studio najdete v následujícím článku:
 
 > [!div class="nextstepaction"]
-> [Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)
+> [Použití sady Visual Studio k zobrazení Azure Stream Analyticsch úloh](stream-analytics-vs-tools.md)

@@ -1,24 +1,18 @@
 ---
 title: Připojit počítače s Windows k Azure Monitor | Microsoft Docs
 description: Tento článek popisuje, jak připojit počítače s Windows hostované v jiných cloudech nebo místně, aby se Azure Monitor s agentem Log Analytics pro Windows.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/07/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 6c8d25a9df49323866e99487ef6c648dede40ec4
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/07/2019
+ms.openlocfilehash: abe114a989c4ec672d391a7fd7d83341d4c52638
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033951"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932779"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows k Azure Monitor
 
@@ -67,9 +61,9 @@ Chcete-li nakonfigurovat použití protokolu [TLS 1,2](https://docs.microsoft.co
 
 Nakonfigurujte .NET Framework 4,6 nebo novější, aby podporovaly zabezpečenou kryptografii, protože ve výchozím nastavení je zakázaná. [Silná kryptografie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) používá bezpečnější síťové protokoly jako TLS 1,2 a blokuje protokoly, které nejsou zabezpečené. 
 
-1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft @ no__t-1. NETFramework\v4.0.30319**.  
+1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\. NETFramework\v4.0.30319**.  
 2. V tomto podklíči vytvořte hodnotu DWORD **do schusestrongcrypto** s hodnotou **1**.  
-3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft @ no__t-1. NETFramework\v4.0.30319**.  
+3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319**.  
 4. V tomto podklíči vytvořte hodnotu DWORD **do schusestrongcrypto** s hodnotou **1**. 
 5. Restartujte systém, aby se nastavení projevilo. 
 

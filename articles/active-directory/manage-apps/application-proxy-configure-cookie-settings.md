@@ -1,6 +1,6 @@
 ---
-title: Nastavení souborů cookie Proxy aplikace – Azure Active Directory | Dokumentace Microsoftu
-description: Azure Active Directory (Azure AD) obsahuje přístupu a relace soubory cookie pro přístup k místním aplikacím přes Proxy aplikací. V tomto článku zjistíte, jak používat a nakonfigurujte nastavení souborů cookie.
+title: Nastavení souborů cookie proxy aplikace – Azure Active Directory | Microsoft Docs
+description: Azure Active Directory (Azure AD) mají přístup a soubory cookie relace pro přístup k místním aplikacím prostřednictvím proxy aplikací. V tomto článku zjistíte, jak používat a konfigurovat nastavení souborů cookie.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,40 +12,52 @@ ms.date: 01/16/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2e7f1bb54ce316a10eca0d020519779b0536c9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca5f1b41e345caafdc465872c948be76c31d55e8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825749"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928876"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Nastavení souborů cookie pro přístup k místním aplikacím v Azure Active Directory
 
-Azure Active Directory (Azure AD) obsahuje přístupu a relace soubory cookie pro přístup k místním aplikacím přes Proxy aplikací. Zjistěte, jak používat nastavení souborů cookie Proxy aplikací. 
+Azure Active Directory (Azure AD) mají přístup a soubory cookie relace pro přístup k místním aplikacím prostřednictvím proxy aplikací. Zjistěte, jak používat nastavení souborů cookie proxy aplikace. 
 
 ## <a name="what-are-the-cookie-settings"></a>Co jsou nastavení souborů cookie?
 
-[Proxy aplikací](application-proxy.md) používá následující nastavení souborů cookie přístupu a relace.
+[Proxy aplikace](application-proxy.md) používá následující nastavení přístupu a souborů cookie relace.
 
 | Nastavení souborů cookie | Výchozí | Popis | Doporučení |
 | -------------- | ------- | ----------- | --------------- |
-| Použít soubor Cookie jenom pro protokol HTTP | **Ne** | **Ano** umožňuje Proxy aplikací, které mají být zahrnuty HTTPOnly příznak hlavičky HTTP odpovědi. Tento příznak poskytuje další bezpečnostní výhody, třeba zabraňuje klientským skriptování (CSS) kopírování nebo upravit soubory cookie.<br></br><br></br>Předtím, než jsme nepodporuje nastavení jen HTTP, Proxy aplikací zašifrované a soubory cookie přenosu přes zabezpečený kanál SSL pro ochranu před úpravy. | Použití **Ano** kvůli další bezpečnostní výhody.<br></br><br></br>Použití **ne** pro klienty nebo Uživatelští agenti, které vyžadují přístup k souboru cookie relace. Například použít **ne** pro protokol RDP nebo MTSC klienta, která se připojuje k serveru služby Brána vzdálené plochy prostřednictvím Proxy aplikací.|
-| Použití zabezpečeného souboru Cookie | **Ne** | **Ano** umožňuje Proxy aplikací, které chcete zahrnout Secure příznak v hlavičkách odpovědi protokolu HTTP. Bezpečné soubory cookie vylepšuje zabezpečení tím, že soubory cookie přenosu přes zabezpečený kanál TLS jako je například HTTPS. To zabrání tomu, aby soubory cookie pozorovaného neoprávněnými osobami kvůli přenosu souboru cookie ve formátu prostého textu. | Použití **Ano** kvůli další bezpečnostní výhody.|
-| Použít trvalého souboru Cookie | **Ne** | **Ano** umožňuje Proxy aplikace a jeho ukládání souborů cookie přístup při zavření prohlížeče, nevyprší platnost. Stálost trvá až do vypršení platnosti přístupového tokenu, nebo dokud uživatel ručně neodstraní trvalé soubory cookie. | Použití **ne** kvůli bezpečnostní riziko spojené s udržováním ověřovaný.<br></br><br></br>Doporučujeme používat pouze **Ano** pro starší aplikace, které nelze sdílení souborů cookie mezi procesy. Je lepší aktualizovat vaši aplikaci obsluhování sdílení souborů cookie mezi procesy namísto použití trvalé soubory cookie. Například můžete potřebovat trvalé soubory cookie umožňuje uživatelům otevírat dokumenty Office v zobrazení Průzkumníka z webu služby SharePoint. Bez trvalé soubory cookie tato operace může selhat, pokud soubory cookie přístupu nejsou sdíleny mezi prohlížečem, Průzkumníka procesů a procesem Office. |
+| Použít soubor cookie pouze s protokolem HTTP | **Ne** | Hodnota **Ano** povolí proxy aplikace, aby do hlaviček http Response zahrnovala příznak HttpOnly. Tento příznak poskytuje další výhody zabezpečení, například brání skriptování na straně klienta (CSS) z kopírování a úprav souborů cookie.<br></br><br></br>Před tím, než jsme podporovali nastavení HTTP, proxy aplikací zašifrované a přenesené soubory cookie přes zabezpečený kanál SSL, aby se chránily proti úpravám. | Použijte **Ano** z důvodu dalších výhod zabezpečení.<br></br><br></br>Pro klienty nebo uživatelské agenty, kteří potřebují přístup k souboru cookie relace, nepoužívejte **žádné** . Například pro klienta RDP nebo MTSC použijte **No** , který se připojuje k serveru Brána vzdálené plochy prostřednictvím proxy aplikací.|
+| Použít zabezpečený soubor cookie | **Ne** | Hodnota **Ano** povolí proxy aplikace zahrnout zabezpečený příznak v hlavičkách http Response. Soubory cookie zabezpečení zvyšují zabezpečení tím, že přenáší soubory cookie přes zabezpečený kanál TLS, jako je například HTTPS. To brání tomu, aby soubory cookie byly pozorovány neoprávněnými stranami z důvodu přenosu souboru cookie ve formě prostého textu. | Použijte **Ano** z důvodu dalších výhod zabezpečení.|
+| Použít trvalý soubor cookie | **Ne** | Hodnota **Ano** povolí proxy aplikace, aby při zavření webového prohlížeče nastavily soubory cookie pro přístup do vypršení platnosti. Trvalost trvá, dokud nevyprší platnost přístupového tokenu, nebo dokud uživatel neodstraní trvalé soubory cookie ručně. | Nepoužívejte **žádnou** z důvodu bezpečnostního rizika spojeného s udržením ověřených uživatelů.<br></br><br></br>Pro starší aplikace, které nemůžou sdílet soubory cookie mezi procesy, doporučujeme použít jenom **Ano** . Je lepší aktualizovat aplikaci tak, aby zpracovávala soubory cookie sdílení mezi procesy namísto použití trvalých souborů cookie. Můžete například potřebovat trvalé soubory cookie, které uživateli umožňují otevírat dokumenty Office v zobrazení Průzkumník z webu služby SharePoint. Bez trvalých souborů cookie Tato operace může selhat, pokud soubory cookie přístupu nejsou sdíleny mezi prohlížečem, procesem Průzkumníka a procesem Office. |
 
-## <a name="set-the-cookie-settings---azure-portal"></a>Nastavení souborů cookie – nastavení webu Azure portal
-Nastavení souborů cookie pomocí webu Azure portal:
+## <a name="samesite-cookies"></a>Soubory cookie SameSite
+Od verze [Chrome 80](https://support.google.com/chrome/a/answer/7679408?hl=en) a nakonec v prohlížečích využívajících [chrom](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html), soubory cookie, které nespecifikují atribut [SameSite](https://web.dev/samesite-cookies-explained) , budou považovány za, jako kdyby byly nastaveny na **SameSite = LAX**. Atribut SameSite deklaruje, jak by měly být soubory cookie omezeny na kontext stejného serveru. Když se nastaví na LAX, soubor cookie se pošle jenom do požadavků na stejnou lokalitu nebo do navigace na nejvyšší úrovni. Proxy aplikace ale vyžaduje, aby se tyto soubory cookie zachovaly v kontextu třetí strany, aby se uživatelé mohli při jejich relaci správně přihlásit. Z tohoto důvodu provádíme aktualizace přístupu k proxy aplikací a souborů cookie relace, aby se zabránilo nepříznivému dopadu této změny. Mezi tyto aktualizace patří:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
-2. Přejděte do **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace**.
+* Nastavení atributu **SameSite** na **hodnotu None**– umožňuje, aby se soubory cookie přístupu k proxy aplikací a jejich relací správně odesílaly v kontextu třetí strany.
+* Nastavení **použít zabezpečený soubor cookie** pro použití výchozí hodnoty **Ano** . Chrom také vyžaduje, aby soubory cookie určovaly zabezpečený příznak, nebo bude odmítnut. Tato změna se bude vztahovat na všechny existující aplikace publikované prostřednictvím proxy aplikací. Všimněte si, že soubory cookie pro přístup k proxy aplikacím jsou vždycky nastavené na zabezpečení a přenášejí se přes HTTPS. Tato změna se bude vztahovat pouze na soubory cookie relace.
+
+Tyto změny souborů cookie aplikace proxy se budou zavádět v průběhu příštích několika týdnů před datem vydání verze Chrome 80.
+
+Navíc platí, že pokud vaše back-end aplikace obsahuje soubory cookie, které potřebují být k dispozici v kontextu třetí strany, musíte explicitně vyjádřit výslovný souhlas změnou aplikace tak, aby pro tyto soubory cookie používala SameSite = None. Proxy aplikace překládá záhlaví Set-cookie na jeho adresy URL a bude respektovat nastavení pro tyto soubory cookie nastavené back-end aplikací.
+
+
+
+## <a name="set-the-cookie-settings---azure-portal"></a>Nastavení souborů cookie – Azure Portal
+Nastavení souborů cookie pomocí Azure Portal:
+
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+2. Přejděte na **Azure Active Directory** > **podnikových aplikací** > **všech aplikacích**.
 3. Vyberte aplikaci, pro kterou chcete povolit nastavení souborů cookie.
-4. Klikněte na tlačítko **Proxy aplikací**.
-5. V části **další nastavení**, nastavte nastavení souborů cookie na **Ano** nebo **ne**.
-6. Klikněte na tlačítko **Uložit** změny. 
+4. Klikněte na **proxy aplikace**.
+5. V části **Další nastavení**nastavte nastavení souborů cookie na **Ano** nebo **ne**.
+6. Změny aplikujte kliknutím na **Uložit** . 
 
 ## <a name="view-current-cookie-settings---powershell"></a>Zobrazit aktuální nastavení souborů cookie – PowerShell
 
-Pokud chcete zobrazit aktuální nastavení souborů cookie pro aplikace, použijte tento příkaz Powershellu:  
+Pokud chcete zobrazit aktuální nastavení souborů cookie pro aplikaci, použijte tento příkaz PowerShellu:  
 
 ```powershell
 Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl * 
@@ -53,16 +65,16 @@ Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl *
 
 ## <a name="set-cookie-settings---powershell"></a>Nastavení souborů cookie – PowerShell
 
-V následující příkazy Powershellu ```<ObjectId>``` je ID objektu aplikace. 
+V následujících příkazech PowerShell je ```<ObjectId>``` ObjectId aplikace. 
 
-**Http-Only Cookie** 
+**Soubor cookie pouze s protokolem HTTP** 
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $false 
 ```
 
-**Secure Cookie**
+**Zabezpečený soubor cookie**
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $true 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 07/15/2019
+ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330737"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929364"
 ---
 # <a name="collect-data-for-models-in-production"></a>Shromažďování dat pro modely v produkčním prostředí
 
@@ -47,9 +47,12 @@ Výstup se uloží do objektu blob Azure. Vzhledem k tomu, že se data přidají
 Cesta k výstupním datům v objektu BLOB se řídí touto syntaxí:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
+
+>[!Note]
+> Ve verzích sady SDK před `0.1.0a16` `designation` argument byl pojmenován `identifier`. Pokud byl váš kód vyvinutý pomocí starší verze, budete ho muset aktualizovat odpovídajícím způsobem.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -80,8 +83,8 @@ Pokud ho chcete povolit, musíte:
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", identifier="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
-    prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
     *ID korelace* je nepovinný parametr, nemusíte ho nastavovat, pokud ho model nevyžaduje. Máte-li na místě ID korelace, může vám to usnadnit mapování s ostatními daty. (Příklady zahrnují: LoanNumber, CustomerId atd.)
@@ -122,7 +125,7 @@ Pokud již máte v souboru **prostředí** a v **souboru bodování**nainstalova
 
 1. V **rozšířeném nastavení**zrušte výběr možnosti **Povolit shromažďování dat modelu**. 
 
-    [@no__t – shromažďování dat pro 1check](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
+    [![shromažďování dat kontroly](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    V tomto okně můžete také vybrat možnost Povolit diagnostiku Appinsights a sledovat stav služby.  
 
@@ -139,11 +142,11 @@ Shromažďování dat můžete kdykoli zastavit. Pro zakázání shromažďován
 
   1. Přejít na **nasazení** -> **Vyberte službu** -> **Upravit**.
 
-     [@no__t – možnost 1Edit](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+     [![– možnost úprav](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. V **rozšířeném nastavení**zrušte výběr možnosti **Povolit shromažďování dat modelu**. 
 
-     [@no__t – shromažďování dat pro 1Uncheck](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+     [![zrušit kontrolu shromažďování dat](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. Pokud chcete změnu použít, vyberte **aktualizovat** .
 
@@ -165,12 +168,12 @@ Rychlý přístup k datům z objektu BLOB:
 1. Otevřete pracovní prostor.
 1. Klikněte na **úložiště**.
 
-    [@no__t – 1Storage](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+    [![úložiště](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
 1. Použijte cestu k výstupním datům v objektu BLOB s touto syntaxí:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
@@ -181,26 +184,26 @@ Rychlý přístup k datům z objektu BLOB:
 
 1. Vyberte **získat data** a klikněte na [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
-    [nastavení objektu BLOB @no__t 1PBI](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [nastavení![PBI BLOB](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
 1. Přidejte název svého účtu úložiště a zadejte svůj klíč úložiště. Tyto informace najdete v **Nastavení** objektu blob > > přístupových klíčích. 
 
 1. Vyberte kontejner **modeldata** a klikněte na **Upravit**. 
 
-    [@no__t – 1PBI Navigator](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
+    [![PBI Navigator](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. V editoru dotazů klikněte pod sloupcem název a přidejte svůj účet úložiště 1. Cesta k modelu do filtru. Poznámka: Pokud chcete hledat pouze soubory z konkrétního roku nebo měsíce, stačí rozšířit cestu filtru. Například stačí najít data v březnu:/modeldata/SubscriptionId >/ResourceGroupName >/workspacename >/WebServiceName >/ModelName >/modelversion >/Identifier > za rok >/3
+1. V editoru dotazů klikněte pod sloupcem název a přidejte svůj účet úložiště 1. Cesta k modelu do filtru. Poznámka: Pokud chcete hledat pouze soubory z konkrétního roku nebo měsíce, stačí rozšířit cestu filtru. Například stačí najít data v březnu:/modeldata/SubscriptionId >/ResourceGroupName >/workspacename >/WebServiceName >/ModelName >/modelversion >/Designation > za rok >/3
 
 1. Vyfiltrujte data, která jsou pro vás důležitá na základě **názvu**. Pokud jste uložili **předpovědi** a **vstupy**, budete si muset vytvořit dotaz pro každý z nich.
 
 1. Kliknutím na šipku vedle sloupce **obsah** spojíte soubory. 
 
-    [@no__t – obsah 1PBI](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
+    [![PBI obsahu](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
 1. Klikněte na OK a data se načtou.
 
-    [@no__t – 1pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
+    [![pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
 1. Nyní můžete kliknout na **Zavřít a použít** .
 
@@ -217,11 +220,11 @@ Rychlý přístup k datům z objektu BLOB:
 
 1. V pracovním prostoru datacihly vyberte **Odeslat data**.
 
-    [@no__t – nahrávání 1DB](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+    [nahrání![DB](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
 1. Vytvořte novou tabulku a vyberte **jiné zdroje dat** – > Azure Blob Storage-> vytvořit tabulku v poznámkovém bloku.
 
-    [@no__t – tabulka 1DB](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+    [Tabulka![DB](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
 1. Aktualizujte umístění vašich dat. Zde naleznete příklad:
 
@@ -230,7 +233,7 @@ Rychlý přístup k datům z objektu BLOB:
     file_type = "csv"
     ```
  
-    [@no__t – 1DBsetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
+    [![nástroj DBSetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
 1. Pokud chcete zobrazit a analyzovat data, postupujte podle kroků uvedených v šabloně. 
 

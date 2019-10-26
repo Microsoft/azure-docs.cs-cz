@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: a5c9d2d54fcce1179e43c38027db23c3d7e557e8
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: db3581616b369345ad654593192048e8573c6fa4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249308"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935217"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glosář pojmů pro IoT technologie Plug and Play Preview
 
@@ -117,7 +117,7 @@ Vývojář zařízení používá model, [rozhraní](#interface)a sadu [funkcí]
 
 ## <a name="device-provisioning-service"></a>Služba Device Provisioning
 
-[Azure IoT Central](#azure-iot-central) používá službu Device Provisioning ke správě veškeré registrace a připojení zařízení. Další informace najdete v tématu [připojení zařízení v Azure IoT Central](../iot-central/concepts-connectivity-pnp.md). Službu Device Provisioning můžete použít také ke správě registrace zařízení a připojení k řešení IoT založenému na IoT Hub. Další informace najdete v tématu [zřizování zařízení pomocí Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
+[Azure IoT Central](#azure-iot-central) používá službu Device Provisioning ke správě veškeré registrace a připojení zařízení. Další informace najdete v tématu [připojení zařízení v Azure IoT Central](../iot-central/core/concepts-connectivity-pnp.md). Službu Device Provisioning můžete použít také ke správě registrace zařízení a připojení k řešení IoT založenému na IoT Hub. Další informace najdete v tématu [zřizování zařízení pomocí Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
 ## <a name="device-registration"></a>Registrace zařízení
 

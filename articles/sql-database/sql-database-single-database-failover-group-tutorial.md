@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Přidání izolované databáze Azure SQL Database do skupiny převzetí služeb při selhání | Microsoft Docs'
+title: 'Kurz: Přidání jedné databáze Azure SQL Database do skupiny převzetí služeb při selhání | Microsoft Docs'
 description: Přidejte do skupiny převzetí služeb při selhání jednu databázi Azure SQL Database pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: a80dc8ccaa72a57986ed6c64f7ab7050ab4c7de5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 106351487980d2f76e9122bc7423114e65593b15
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099073"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933254"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Kurz: Přidání samostatné databáze Azure SQL Database do skupiny převzetí služeb při selhání
 
@@ -27,7 +27,7 @@ Nakonfiguruje skupinu převzetí služeb při selhání pro Azure SQL Database i
 > - Vytvořte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) pro jednu databázi mezi dvěma logickými servery SQL.
 > - Testovací převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující: 
@@ -60,9 +60,8 @@ V tomto kroku vytvoříte [skupinu převzetí služeb při selhání](sql-databa
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal. 
 
-
 1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
-1. Vyberte jednu databázi vytvořenou v části 2, například `mySampleDatbase`. 
+1. Vyberte jednu databázi vytvořenou v oddílu 1, například `mySampleDatabase`. 
 1. Kliknutím na název serveru v části **název serveru** otevřete nastavení serveru.
 
    ![Otevřít server pro jednu databázi](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
@@ -72,19 +71,19 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
     ![Přidat novou skupinu převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte následující hodnoty a pak vyberte **vytvořit**:
-    - **Název skupiny převzetí služeb při selhání**: Zadejte jedinečný název skupiny převzetí služeb při selhání, `failovergrouptutorial`například. 
-    - **Sekundární server**: Vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru**. Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot vyberte **Vybrat**. 
+    - **Název skupiny převzetí služeb při selhání**: Zadejte jedinečný název skupiny převzetí služeb při selhání, například `failovergrouptutorial`. 
+    - **Sekundární server**: vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru**. Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot vyberte **Vybrat**. 
         - **Název serveru**: Zadejte jedinečný název sekundárního serveru, například `mysqlsecondary`. 
-        - **Přihlašovací jméno správce serveru**: Textový`azureuser`
-        - **Heslo**: Zadejte komplexní heslo, které splňuje požadavky na heslo.
-        - **Umístění**: V rozevíracím seznamu vyberte umístění, například `East US`. Toto umístění nemůže být stejné jako primární server.
+        - **Přihlašovací jméno správce serveru**: zadejte `azureuser`
+        - **Heslo**: zadejte komplexní heslo, které splňuje požadavky na heslo.
+        - **Umístění**: vyberte umístění z rozevíracího seznamu, například `East US`. Toto umístění nemůže být stejné jako primární server.
 
     > [!NOTE]
     > Přihlašovací údaje serveru a firewall se musí shodovat s nastavením vašeho primárního serveru. 
     
       ![Vytvoření sekundárního serveru pro skupinu převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/create-secondary-failover-server.png)
 
-   - **Databáze v rámci této skupiny**: Po výběru sekundárního serveru se tato možnost odemkne. Vyberte ho a vyberte databáze, které **chcete přidat** , a pak vyberte databázi, kterou jste vytvořili v části 1. Když přidáte databázi do skupiny převzetí služeb při selhání, automaticky se spustí proces geografické replikace. 
+   - **Databáze v rámci skupiny**: po výběru sekundárního serveru se tato možnost odemkne. Vyberte ho a vyberte databáze, které **chcete přidat** , a pak vyberte databázi, kterou jste vytvořili v části 1. Když přidáte databázi do skupiny převzetí služeb při selhání, automaticky se spustí proces geografické replikace. 
         
     ![Přidat databázi SQL do skupiny převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
@@ -107,6 +106,11 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
    $drServerName = "mysqlsecondary-$(Get-Random)"
    $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
 
+   # The ip address range that you want to allow to access your server 
+   # (leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB)
+   $startIp = "0.0.0.0"
+   $endIp = "0.0.0.0"
+
    # Show randomized variables
    Write-host "DR Server name is" $drServerName 
    Write-host "Failover group name is" $failoverGroupName
@@ -119,7 +123,13 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
       -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
          -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
    $drServer
-   
+
+   # Create a server firewall rule that allows access from the specified IP range
+   Write-host "Configuring firewall for secondary logical server..."
+   $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName `
+      -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
+   $serverFirewallRule   
    
    # Create a failover group between the servers
    $failovergroup = Write-host "Creating a failover group between the primary and secondary server..."
@@ -144,6 +154,17 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
       -FailoverGroupName $failoverGroupName
    Write-host "Successfully added the database to the failover group..." 
    ```
+
+Tato část kurzu používá následující rutiny PowerShellu:
+
+| Příkaz | Poznámky |
+|---|---|
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický Server. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří novou Azure SQL Database jedinou databázi. | 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Vytvoří novou skupinu převzetí služeb při selhání. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Získá jednu nebo více databází SQL. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Přidá jednu nebo více databází SQL Azure do skupiny převzetí služeb při selhání. |
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní samostatnou databázi pomocí AZ CLI. 
@@ -173,6 +194,15 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní samostatn
       --location $drLocation  \
       --admin-user $adminLogin\
       --admin-password $password
+
+   # Configure a firewall rule for the server
+   echo "Configuring firewall..."
+   az sql server firewall-rule create \
+      --resource-group $resourceGroupName \
+      --server $drServerName \
+      -n AllowYourIp \
+      --start-ip-address $startip \
+      --end-ip-address $endip
    
    # Create a failover group between the servers and add the database
    echo "Creating a failover group between the two servers..."
@@ -184,6 +214,14 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní samostatn
       --add-db $databaseName
       --failover-policy Automatic
    ```
+
+Tato část kurzu používá následující příkaz AZ CLI rutin:
+
+| Příkaz | Poznámky |
+|---|---|
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
+| [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Vytvoří pravidla brány firewall serveru. | 
+| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Vytvoří skupinu převzetí služeb při selhání. | 
 
 ---
 
@@ -204,7 +242,7 @@ Testovací převzetí služeb při selhání pomocí Azure Portal.
    ![Výběr skupiny převzetí služeb při selhání z portálu](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
 1. Zkontrolujte, který server je primární a který server je sekundární. 
-1. V podokně úloh vyberte převzetí služeb při selhání pro skupinu převzetí služeb při selhání, která obsahuje vaši ukázkovou jedinou databázi. 
+1. V podokně úloh vyberte **převzetí** služeb při selhání pro skupinu převzetí služeb při selhání, která obsahuje vaši ukázkovou jedinou databázi. 
 1. U upozornění, které vás upozorní na to, že relace TDS budou odpojeny, vyberte **Ano** . 
 
    ![Převzetí služeb při selhání ve skupině, která obsahuje vaše databáze SQL](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
@@ -232,7 +270,6 @@ Ověřte roli sekundární repliky:
       -ServerName $drServerName).ReplicationRole
    ```
 
-
 Převzetí služeb při selhání sekundárním serverem: 
 
    ```powershell-interactive
@@ -247,7 +284,7 @@ Převzetí služeb při selhání sekundárním serverem:
       -ResourceGroupName $resourceGroupName `
       -ServerName $drServerName `
       -FailoverGroupName $failoverGroupName
-   Write-host "Failed failover group to sucessfully to" $drServerName 
+   Write-host "Failed failover group successfully to" $drServerName 
    ```
 
 Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
@@ -264,12 +301,20 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
       -ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -FailoverGroupName $failoverGroupName
-   Write-host "Failed failover group to successfully to back to" $serverName
+   Write-host "Failed failover group successfully back to" $serverName
    ```
+
+Tato část kurzu používá následující rutiny PowerShellu:
+
+| Příkaz | Poznámky |
+|---|---|
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
+| [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
+
+
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 Testovací převzetí služeb při selhání pomocí AZ CLI. 
-
 
 Ověřte, který server je sekundární:
 
@@ -319,6 +364,13 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
    echo "Successfully failed failover group back to" $serverName
    ```
 
+Tato část kurzu používá následující příkaz AZ CLI rutin:
+
+| Příkaz | Poznámky |
+|---|---|
+| [AZ SQL Failover-Group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Vypíše skupiny převzetí služeb při selhání na serveru. |
+| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Nastavte primární skupinu převzetí služeb při selhání pomocí převzetí služeb při selhání všemi databázemi z aktuálního primárního serveru. | 
+
 ---
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
@@ -327,12 +379,12 @@ Vyčistěte prostředky odstraněním skupiny prostředků.
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Odstraňte skupinu prostředků pomocí Azure Portal. 
 
-
 1. Přejděte do skupiny prostředků v [Azure Portal](https://portal.azure.com).
 1. Vyberte **Odstranit skupinu prostředků** a odstraňte všechny prostředky ve skupině a také samotnou skupinu prostředků. 
-1. Zadejte název skupiny `myResourceGroup`prostředků, v textovém poli a pak vyberte **Odstranit** a odstraňte skupinu prostředků.  
+1. Do textového pole zadejte název skupiny prostředků, `myResourceGroup`, a pak výběrem **Odstranit** odstraňte skupinu prostředků.  
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Odstraňte skupinu prostředků pomocí PowerShellu. 
 
 
@@ -346,7 +398,14 @@ Odstraňte skupinu prostředků pomocí PowerShellu.
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
+Tato část kurzu používá následující rutiny PowerShellu:
+
+| Příkaz | Poznámky |
+|---|---|
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. | 
+
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Odstraňte skupinu prostředků pomocí AZ CLI. 
 
 
@@ -361,6 +420,12 @@ Odstraňte skupinu prostředků pomocí AZ CLI.
    echo "Successfully removed resource group" $resourceGroupName
    ```
 
+Tato část kurzu používá následující příkaz AZ CLI rutin:
+
+| Příkaz | Poznámky |
+|---|---|
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+
 ---
 
 
@@ -370,20 +435,49 @@ Odstraňte skupinu prostředků pomocí AZ CLI.
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+
+| Příkaz | Poznámky |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický Server. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří novou Azure SQL Database jedinou databázi. | 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Vytvoří novou skupinu převzetí služeb při selhání. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Získá jednu nebo více databází SQL. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Přidá jednu nebo více databází SQL Azure do skupiny převzetí služeb při selhání. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
+| [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. | 
+
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Create SQL Database")]
+[!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Add single database to a failover group")]
+
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+
+| Příkaz | Poznámky |
+|---|---|
+| [AZ Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Nastaví předplatné jako aktuální aktivní předplatné. | 
+| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
+| [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Vytvoří pravidla brány firewall serveru. | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Vytvoří databázi. | 
+| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Vytvoří skupinu převzetí služeb při selhání. | 
+| [AZ SQL Failover-Group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Vypíše skupiny převzetí služeb při selhání na serveru. |
+| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Nastavte primární skupinu převzetí služeb při selhání pomocí převzetí služeb při selhání všemi databázemi z aktuálního primárního serveru. | 
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
-Pro Azure Portal nejsou k dispozici žádné skripty.
+Pro Azure Portal nejsou k dispozici žádné skripty. 
  
 ---
 
 Další Azure SQL Database skripty můžete najít tady: [Azure PowerShell](sql-database-powershell-samples.md) a [Azure CLI](sql-database-cli-samples.md). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste do skupiny převzetí služeb při selhání přidali izolovanou databázi Azure SQL Database a otestujete převzetí služeb při selhání. Naučili jste se tyto postupy:
+V tomto kurzu jste do skupiny převzetí služeb při selhání přidali izolovanou databázi Azure SQL Database a otestujete převzetí služeb při selhání. Naučili jste se tyto postupy: 
 
 > [!div class="checklist"]
 > - Vytvořte Azure SQL Database izolovanou databázi. 

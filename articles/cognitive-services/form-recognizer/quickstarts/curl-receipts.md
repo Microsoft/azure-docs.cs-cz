@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Extrakce dat příjmu pomocí nástroje pro rozpoznávání složeného formuláře'
+title: 'Rychlý Start: extrakce příjmových dat pomocí funkce pro rozpoznávání složeného formuláře'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s kudrlinkou k extrakci dat z imagí prodejních příjmů.
 author: PatrickFarley
@@ -9,20 +9,20 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: badd674030ec014f2e70050c3c45599a26b17882
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c533949cf0ce69ddc5237dd893dd75e43447c4a9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073814"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931588"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Rychlý start: Extrakce dat příjmu pomocí REST API pro rozpoznávání formulářů s kudrlinkou
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Rychlý Start: extrakce údajů o příjemcích pomocí REST API pro rozpoznávání formulářů s kudrlinkou
 
 V tomto rychlém startu použijete REST API pro rozpoznávání formulářů Azure s kudrlinkou k extrakci a identifikaci relevantních informací v prodejních příjemkách.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto rychlého startu musíte mít:
 - Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) .
 - byl nainstalován [oblý](https://curl.haxx.se/windows/) .
@@ -36,7 +36,7 @@ K dokončení tohoto rychlého startu musíte mít:
 
 Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **analýzy pro příjem** pomocí příkazu složeného níže. Před spuštěním příkazu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání vašeho formuláře.
 1. Nahraďte `<your receipt URL>` adresou URL obrázku účtenky.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 
@@ -44,7 +44,7 @@ Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **analýzy pro p�
 curl -i -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/asyncBatchAnalyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-Dostanete `202 (Success)` odpověď, která obsahuje hlavičku **umístění operace** . Hodnota této hlavičky obsahuje ID operace, kterou můžete použít k dotazování na stav operace a získání výsledků. V následujícím příkladu řetězce `operations/` následuje ID operace.
+Obdržíte odpověď `202 (Success)`, která obsahuje hlavičku **umístění operace** . Hodnota této hlavičky obsahuje ID operace, kterou můžete použít k dotazování na stav operace a získání výsledků. V následujícím příkladu je řetězec po `operations/` ID operace.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -54,7 +54,7 @@ https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations
 
 Po volání funkce **analyzovat příjem** rozhraní API zavolejte rozhraní API **získat výsledek příjemky** , abyste získali stav operace a extrahovaná data.
 
-1. Nahraďte `<operationId>` ID operace z předchozího kroku.
+1. Nahraďte `<operationId>` IDENTIFIKÁTORem operace z předchozího kroku.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 
 ```bash
@@ -63,7 +63,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/ope
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Dostanete `200 (Success)` odpověď s výstupem JSON. První pole `"status"`indikuje stav operace. Pokud je operace dokončena, `"recognitionResults"` pole obsahuje každý řádek textu, který byl extrahován z účtenky, `"understandingResults"` a pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části účtenky. Pokud operace není dokončena, hodnota `"status"` `"Running"` bude nebo `"NotStarted"`a později byste měli zavolat rozhraní API, a to buď ručně, nebo prostřednictvím skriptu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
+Dostanete odpověď `200 (Success)` s výstupem JSON. První pole `"status"`určuje stav operace. Pokud je operace dokončena, pole `"recognitionResults"` obsahuje všechny řádky textu, které byly extrahovány z účtenky, a pole `"understandingResults"` obsahuje informace o klíč/hodnota pro nejrelevantnější části příjmu. Pokud operace není dokončená, hodnota `"status"` bude `"Running"` nebo `"NotStarted"`a později byste měli volat rozhraní API, a to buď ručně, nebo prostřednictvím skriptu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
 
 Podívejte se na následující obrázek účtenky a příslušný výstup JSON. Výstup byl zkrácen z důvodu čitelnosti.
 
@@ -180,7 +180,7 @@ Podívejte se na následující obrázek účtenky a příslušný výstup JSON.
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste k extrakci obsahu prodejní účtenky použili REST API pro rozpoznávání formuláře s kudrlinkou. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
 

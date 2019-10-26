@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098995"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933238"
 ---
 V tomto kroku vytvoříte Azure SQL Database jedinou databázi. 
 
@@ -31,27 +31,27 @@ Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
 
 3. Na kartě **základy** v části **Project Details (podrobnosti projektu** ) zadejte nebo vyberte následující hodnoty:
 
-   - **Předplatné:** Rozevírací seznam a vyberte správné předplatné, pokud se nezobrazí.
-   - **Skupina prostředků**: Vyberte **vytvořit nový**, zadejte `myResourceGroup`a vyberte **OK**.
+   - **Předplatné**: rozevírací seznam a výběr správného předplatného, pokud se nezobrazí.
+   - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte `myResourceGroup`a vyberte **OK**.
 
      ![Nová databáze SQL – karta Basic](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
 4. V části **Podrobnosti databáze** zadejte nebo vyberte následující hodnoty:
 
-   - **Název databáze**: Zadejte `mySampleDatabase`.
-   - **Server**: Vyberte **vytvořit nový**, zadejte následující hodnoty a pak vyberte **Vybrat**.
-       - **Název serveru**: Typ `mysqlserver`; spolu s některými čísly pro jedinečnost.
-       - **Přihlašovací jméno správce serveru**: Zadejte `azureuser`.
-       - **Heslo**: Zadejte komplexní heslo, které splňuje požadavky na heslo.
-       - **Umístění**: V rozevíracím seznamu vyberte umístění, například `West US`.
+   - **Název databáze**: zadejte `mySampleDatabase`.
+   - **Server**: vyberte **vytvořit novou**, zadejte následující hodnoty a pak vyberte **Vybrat**.
+       - **Název serveru**: zadejte `mysqlserver`; spolu s některými čísly pro jedinečnost.
+       - **Přihlašovací jméno správce serveru**: zadejte `azureuser`.
+       - **Heslo**: zadejte komplexní heslo, které splňuje požadavky na heslo.
+       - **Umístění**: vyberte umístění z rozevíracího seznamu, například `West US`.
 
          ![Nový server](../media/sql-database-get-started-portal/new-server.png)
 
       > [!IMPORTANT]
       > Nezapomeňte si zaznamenat přihlašovací jméno a heslo správce serveru, abyste se mohli přihlásit k serveru a databázím pro toto a další rychlé starty. Pokud zapomenete přihlašovací jméno nebo heslo, můžete získat přihlašovací jméno nebo resetovat heslo na stránce **SQL serveru** . Stránku **SQL serveru** otevřete tak, že po vytvoření databáze vyberete název serveru na stránce **Přehled** databáze.
 
-   - **Chcete použít elastický fond SQL**: Vyberte možnost **ne** .
-   - **Výpočty a úložiště**: Vyberte **Konfigurovat databázi**. 
+   - **Chcete použít elastický fond SQL**: vyberte možnost **ne** .
+   - **COMPUTE + úložiště**: vyberte **Konfigurovat databázi**. 
 
      ![Podrobnosti SQL Database](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
@@ -59,7 +59,7 @@ Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
 
      ![Zřízené COMPUTE GEN4 –](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
-   - Zkontrolujte nastavení maximálního **počtu virtuální jádra**, **min virtuální jádra**, **zpoždění**při autopauzu a **maximální velikosti dat**. Změňte je podle potřeby.
+   - Zkontrolujte nastavení **maximálního počtu virtuální jádra**, **min virtuální jádra**, **zpoždění při autopauzu**a **maximální velikosti dat**. Změňte je podle potřeby.
    - Přijměte podmínky verze Preview a klikněte na **OK**.
    - Vyberte **Použít**.
 
@@ -69,7 +69,7 @@ Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
    ![Další nastavení databáze SQL](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
-   > Ujistěte se, že jste vybrali ukázková data **(AdventureWorksLT)** , abyste se mohli snadno řídit tímto a dalšími Azure SQL Database rychlými starty, které používají tato data.
+   > Ujistěte se, že jste vybrali **ukázková data (AdventureWorksLT)** , abyste se mohli snadno řídit tímto a dalšími Azure SQL Database rychlými starty, které používají tato data.
 
 7. Zbývající hodnoty ponechte jako výchozí a v dolní části formuláře vyberte **zkontrolovat + vytvořit** .
 8. Zkontrolujte poslední nastavení a vyberte **vytvořit**.
@@ -142,6 +142,15 @@ Vytvořte skupinu prostředků a izolovanou databázi pomocí prostředí PowerS
    $database
    ```
 
+Tato část článku používá následující rutiny PowerShellu:
+
+| Příkaz | Poznámky |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický Server. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří novou Azure SQL Database jedinou databázi. | 
+
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Vytvořte skupinu prostředků a samostatnou databázi pomocí AZ CLI.
@@ -207,5 +216,16 @@ Vytvořte skupinu prostředků a samostatnou databázi pomocí AZ CLI.
       --family Gen5 \
       --capacity 2
    ```
+
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+
+| Příkaz | Poznámky |
+|---|---|
+| [AZ Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Nastaví předplatné jako aktuální aktivní předplatné. | 
+| [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
+| [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Vytvoří pravidla brány firewall serveru. | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Vytvoří databázi. | 
+
 
 ---

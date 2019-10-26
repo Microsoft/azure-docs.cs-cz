@@ -13,18 +13,18 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8498346c5623913cb68c63e95a787f31c7d90cc0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 90c9d9be6f5a255a4ddd4f7fae7cf410e5b1f80d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901947"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934953"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Hromadné registraci virtuálních počítačů SQL v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
-Tento článek popisuje, jak hromadně zaregistrovat SQL Server virtuální počítač v Azure pomocí poskytovatele prostředků virtuálního počítače SQL pomocí rutiny PowerShellu Register-SqlVMs.
+Tento článek popisuje, jak hromadně zaregistrovat SQL Server virtuální počítač v Azure pomocí poskytovatele prostředků virtuálního počítače SQL pomocí rutiny prostředí PowerShell `Register-SqlVMs`.
 
-Rutinu Register-SqlVMs lze použít k registraci všech virtuálních počítačů v daném seznamu předplatných, skupin prostředků nebo seznamu konkrétních virtuálních počítačů. Rutina zaregistruje virtuální počítače v režimu _prosté_ správy a pak vygeneruje [sestavu i soubor protokolu](#output-description). 
+Rutina `Register-SqlVMs` se dá použít k registraci všech virtuálních počítačů v daném seznamu předplatných, skupin prostředků nebo seznamu konkrétních virtuálních počítačů. Rutina zaregistruje virtuální počítače v režimu _prosté_ správy a pak vygeneruje [sestavu i soubor protokolu](#output-description). 
 
 Proces registrace nevede k žádnému riziku bez výpadků a nerestartuje SQL Server ani virtuální počítač. 
 

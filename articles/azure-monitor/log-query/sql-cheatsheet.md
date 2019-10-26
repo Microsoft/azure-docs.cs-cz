@@ -1,53 +1,47 @@
 ---
-title: SQL tak, aby tahák pro dotazy protokolů Azure Monitor | Dokumentace Microsoftu
-description: Nápověda pro uživatele znáte SQL při psaní dotazů na protokoly ve službě Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Tabulka tahák dotazu protokolu SQL do protokolu Azure Monitor | Microsoft Docs
+description: Nápovědu pro uživatele obeznámené s SQL při psaní dotazů protokolu v Azure Monitor.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/21/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: b756b9484273c098dbeb6685430f70626b3af787
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2018
+ms.openlocfilehash: 4acf3c2f8cee3ca9e679915eec677b6dd92792bf
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789238"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932912"
 ---
-# <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL pro monitorování Azure tahák pro dotazy log 
+# <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>Tabulka tahák dotazu protokolu SQL pro Azure Monitor 
 
-Následující tabulka pomáhá uživatelům, kteří znají SQL učit jazyk dotaz Kusto psaní dotazů protokolu ve službě Azure Monitor. Podíváme se na příkaz T-SQL pro řešení běžných scénářů a ekvivalent v dotazu protokolu Azure Monitor.
+Tabulka níže pomáhá uživatelům, kteří jsou obeznámeni s SQL, získat informace o jazyce dotazů Kusto pro zápis dotazů protokolu v Azure Monitor. Podíváme se na příkaz T-SQL pro řešení běžných scénářů a ekvivalentu v dotazu protokolu Azure Monitor.
 
-## <a name="sql-to-azure-monitor"></a>SQL Azure monitor
+## <a name="sql-to-azure-monitor"></a>SQL pro Azure Monitor
 
-Popis                             |Příkaz jazyka SQL                                                                                          |Azure Monitor dotaz protokolu
+Popis                             |Dotaz SQL                                                                                          |Azure Monitor dotaz protokolu
 ----------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------
-Vyberte všechna data z tabulky            |`SELECT * FROM dependencies`                                                                       |<code>dependencies</code>
-Vyberte konkrétní sloupce z tabulky    |`SELECT name, resultCode FROM dependencies`                                                        |<code>dependencies <br>&#124; project name, resultCode</code>
-Vyberte 100 záznamů z tabulky         |`SELECT TOP 100 * FROM dependencies`                                                               |<code>dependencies <br>&#124; take 100</code>
-Null hodnocení                         |`SELECT * FROM dependencies WHERE resultCode IS NOT NULL`                                          |<code>dependencies <br>&#124; where isnotnull(resultCode)</code>
-Porovnání řetězců: rovnosti             |`SELECT * FROM dependencies WHERE name = "abcde"`                                                  |<code>dependencies <br>&#124; where name == "abcde"</code>
-Porovnání řetězců: dílčí řetězec            |`SELECT * FROM dependencies WHERE name like "%bcd%"`                                                   |<code>dependencies <br>&#124; where name contains "bcd"</code>
-Porovnání řetězců: zástupných znaků             |`SELECT * FROM dependencies WHERE name like "abc%"`                                                |<code>dependencies <br>&#124; where name startswith "abc"</code>
-Datum, porovnání: poslední 1 den             |`SELECT * FROM dependencies WHERE timestamp > getdate()-1`                                         |<code>dependencies <br>&#124; where timestamp > ago(1d)</code>
-Datum, porovnání: rozsah kalendářních dat             |`SELECT * FROM dependencies WHERE timestamp BETWEEN '2016-10-01' AND '2016-11-01'`                 |<code>dependencies <br>&#124; where timestamp between (datetime(2016-10-01) .. datetime(2016-10-01))</code>
-Logická porovnání                      |`SELECT * FROM dependencies WHERE !(success)`                                                      |<code>dependencies <br>&#124; where success == "False" </code>
+Výběr všech dat z tabulky            |`SELECT * FROM dependencies`                                                                       |<code>dependencies</code>
+Vybrat konkrétní sloupce z tabulky    |`SELECT name, resultCode FROM dependencies`                                                        |<code>dependencies <br>&#124; project name, resultCode</code>
+Vybrat záznamy 100 z tabulky         |`SELECT TOP 100 * FROM dependencies`                                                               |<code>dependencies <br>&#124; take 100</code>
+Vyhodnocení hodnoty null                         |`SELECT * FROM dependencies WHERE resultCode IS NOT NULL`                                          |<code>dependencies <br>&#124; where isnotnull(resultCode)</code>
+Porovnání řetězců: rovnost             |`SELECT * FROM dependencies WHERE name = "abcde"`                                                  |<code>dependencies <br>&#124; where name == "abcde"</code>
+Porovnání řetězců: podřetězec            |`SELECT * FROM dependencies WHERE name like "%bcd%"`                                                   |<code>dependencies <br>&#124; where name contains "bcd"</code>
+Porovnání řetězců: zástupný znak             |`SELECT * FROM dependencies WHERE name like "abc%"`                                                |<code>dependencies <br>&#124; where name startswith "abc"</code>
+Porovnání data: poslední 1 den             |`SELECT * FROM dependencies WHERE timestamp > getdate()-1`                                         |<code>dependencies <br>&#124; where timestamp > ago(1d)</code>
+Porovnání data: rozsah dat             |`SELECT * FROM dependencies WHERE timestamp BETWEEN '2016-10-01' AND '2016-11-01'`                 |<code>dependencies <br>&#124; where timestamp between (datetime(2016-10-01) .. datetime(2016-10-01))</code>
+Logické porovnání                      |`SELECT * FROM dependencies WHERE !(success)`                                                      |<code>dependencies <br>&#124; where success == "False" </code>
 Seřadit                                    |`SELECT name, timestamp FROM dependencies ORDER BY timestamp asc`                                  |<code>dependencies <br>&#124; order by timestamp asc </code>
-DISTINCT                                |`SELECT DISTINCT name, type  FROM dependencies`                                                    |<code>dependencies <br>&#124; summarize by name, type </code>
+Znak                                |`SELECT DISTINCT name, type  FROM dependencies`                                                    |<code>dependencies <br>&#124; summarize by name, type </code>
 Seskupení, agregace                   |`SELECT name, AVG(duration) FROM dependencies GROUP BY name`                                       |<code>dependencies <br>&#124; summarize avg(duration) by name </code>
-Názvy sloupců, rozšíření                  |`SELECT operation_Name as Name, AVG(duration) as AvgD FROM dependencies GROUP BY name`             |<code>dependencies <br>&#124; summarize AvgD=avg(duration) by operation_Name <br>&#124; project Name=operation_Name, AvgD</code>
-Prvních n záznamů míru                |`SELECT TOP 100 name, COUNT(*) as Count FROM dependencies GROUP BY name ORDER BY Count asc`        |<code>dependencies <br>&#124; summarize Count=count() by name <br>&#124; top 100 by Count asc</code>
+Aliasy sloupce, rozšířené                  |`SELECT operation_Name as Name, AVG(duration) as AvgD FROM dependencies GROUP BY name`             |<code>dependencies <br>&#124; summarize AvgD=avg(duration) by operation_Name <br>&#124; project Name=operation_Name, AvgD</code>
+Prvních n záznamů podle míry                |`SELECT TOP 100 name, COUNT(*) as Count FROM dependencies GROUP BY name ORDER BY Count asc`        |<code>dependencies <br>&#124; summarize Count=count() by name <br>&#124; top 100 by Count asc</code>
 Sjednocení                                   |`SELECT * FROM dependencies UNION SELECT * FROM exceptions`                                        |<code>union dependencies, exceptions</code>
 Sjednocení: s podmínkami                  |`SELECT * FROM dependencies WHERE value > 4 UNION SELECT * FROM exceptions WHERE value < 5`                |<code>dependencies <br>&#124; where value > 4 <br>&#124; union (exceptions <br>&#124; where value < 5)</code>
-Připojit                                    |`SELECT * FROM dependencies JOIN exceptions ON dependencies.operation_Id = exceptions.operation_Id`|<code>dependencies <br>&#124; join (exceptions) on operation_Id == operation_Id</code>
+Spojit                                    |`SELECT * FROM dependencies JOIN exceptions ON dependencies.operation_Id = exceptions.operation_Id`|<code>dependencies <br>&#124; join (exceptions) on operation_Id == operation_Id</code>
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Projděte si lekcí [psaní dotazů protokolu ve službě Azure Monitor](get-started-queries.md).
+- Projděte si lekce o [psaní dotazů protokolu v Azure monitor](get-started-queries.md).

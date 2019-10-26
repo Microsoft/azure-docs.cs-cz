@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70273a45bb60fca57292275ea0bb564e17a6f4e9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389512"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934665"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Vytvoření nového balíčku pro přístup ve správě nároků ve službě Azure AD (Preview)
 
@@ -68,9 +68,9 @@ Tady je postup vysoké úrovně pro vytvoření nového přístupového balíčk
 
 1. V nabídce vlevo klikněte na možnost **přístup k balíčkům**.
 
-    ![Správa nároků v Azure Portal](./media/entitlement-management-shared/elm-access-packages.png)
-
 1. Klikněte na **nový balíček pro přístup**.
+
+    ![Správa nároků v Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
 ## <a name="basics"></a>Základy
 
@@ -104,7 +104,7 @@ Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do
 
     Pokud vytváříte balíček přístupu v existujícím katalogu, můžete vybrat libovolný prostředek, který je již v katalogu, aniž by mu byl vlastník.
 
-    Pokud jste globální správce, správce uživatele nebo vlastníka katalogu, máte další možnost výběru nevlastních prostředků, které ještě nejsou v katalogu. Pokud vyberete prostředky, které nejsou aktuálně ve vybraném katalogu, tyto prostředky budou také přidány do katalogu pro jiné Správce katalogu, aby mohli vytvářet balíčky přístupu pomocí nástroje. Pokud chcete pouze vybrat prostředky, které jsou aktuálně ve vybraném katalogu, zaškrtněte políčko **pouze** v horní části okna Vybrat pan.
+    Pokud jste globální správce, správce uživatele nebo vlastníka katalogu, máte další možnost výběru nevlastních prostředků, které ještě nejsou v katalogu. Pokud vyberete prostředky, které nejsou aktuálně ve vybraném katalogu, tyto prostředky budou také přidány do katalogu pro jiné Správce katalogu, aby mohli vytvářet balíčky přístupu pomocí nástroje. Pokud chcete pouze vybrat prostředky, které jsou aktuálně ve vybraném katalogu, zaškrtněte políčko **pouze** v horní části podokna vybrat.
 
 1. Jakmile vyberete prostředky, v seznamu **role** vyberte roli, kterou chcete přiřadit uživatelům pro daný prostředek.
 
@@ -118,7 +118,7 @@ Na kartě **žádosti** vytvoříte první zásadu, která určí, kdo může ž
 
 ![Přístup na kartu požadavky na balíček](./media/entitlement-management-access-package-create/requests.png)
 
-Proveďte kroky v jedné z následujících částí.
+V závislosti na tom, kdo má být schopný požádat o přístup k tomuto balíčku, proveďte kroky v jednom z následujících částí.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 

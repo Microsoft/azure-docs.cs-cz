@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 009ae89327272ae4b9acd82eb415aad724d14988
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176658"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934362"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Nasazení modulu zabezpečení na zařízení IoT Edge
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak nasadit modul zabezpečení na zařízení IoT
 
 Pomocí následujících kroků nasaďte Azure Security Center pro modul zabezpečení IoT pro IoT Edge.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 1. V IoT Hub se ujistěte, že je zařízení [registrované jako IoT Edge zařízení](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal).
 
@@ -107,7 +107,7 @@ Existují tři kroky pro vytvoření nasazení IoT Edge pro Azure Security Cente
 1. Klikněte na **Uložit**.
 1. Posuňte se do dolní části karty a vyberte **konfigurovat pokročilá nastavení modulu runtime Edge**. 
    
-1. Změňte **Obrázek** v oblasti **Edge hub** na **MCR.Microsoft.com/azureiotedge-hub:1.0.9-RC2**.
+1. Změňte **Obrázek** v oblasti **Edge hub** na **MCR.Microsoft.com/azureiotedge-hub:1.0.8.3**.
 
 1. Ověřte, že **Možnosti vytváření** jsou nastavené na: 
          
@@ -136,7 +136,7 @@ Existují tři kroky pro vytvoření nasazení IoT Edge pro Azure Security Cente
     ```
 1. Klikněte na **Uložit**.
    
-1. Klikněte na tlačítko **Další**.
+1. Klikněte na **Další**.
 
 #### <a name="step-2-specify-routes"></a>Krok 2: určení tras 
 
@@ -156,7 +156,7 @@ Existují tři kroky pro vytvoření nasazení IoT Edge pro Azure Security Cente
 
 ## <a name="diagnostic-steps"></a>Kroky diagnostiky
 
-Pokud narazíte na problém, je nejlepším způsobem, jak se dozvědět o stavu zařízení modulu zabezpečení IoT Edge, jsou protokoly kontejnerů. K získání informací použijte příkazy a nástroje v této části.
+Pokud narazíte na problém, je nejlepším způsobem, jak se dozvědět o stavu zařízení modulu zabezpečení IoT Edge, jsou protokoly kontejnerů. Ke shromáždění informací použijte příkazy a nástroje uvedené v této části.
 
 ### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>Ověřte, že požadované kontejnery jsou nainstalované a fungují podle očekávání.
 
@@ -166,10 +166,10 @@ Pokud narazíte na problém, je nejlepším způsobem, jak se dozvědět o stavu
    
 1. Ověřte, zda jsou spuštěny následující kontejnery:
    
-   | Name | OBRAZU |
+   | Name (Název) | OBRAZU |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
-   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Pokud nejsou k dispozici minimální požadované kontejnery, ověřte, zda je váš manifest nasazení IoT Edge zarovnán s doporučeným nastavením. Další informace najdete v tématu [nasazení modulu IoT Edge](#deployment-using-azure-portal).

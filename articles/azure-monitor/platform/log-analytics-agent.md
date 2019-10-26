@@ -1,24 +1,18 @@
 ---
 title: Shromažďování dat protokolu pomocí agenta služby Azure Log Analytics | Microsoft Docs
 description: Toto téma vám pomůže pochopit, jak shromažďovat data a monitorovat počítače hostované v Azure, v místním prostředí nebo v jiném cloudovém prostředí s Log Analytics.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/07/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1eec8b79579a1c4d5c889b830706299ccc25e88b
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/07/2019
+ms.openlocfilehash: 8070abad675acc69f5b1da232b60179078adbc57
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035645"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932227"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Shromažďovat data protokolu pomocí agenta Log Analytics
 

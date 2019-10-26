@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: fbc024b6ae6e3ebfed6f64067158352e8201aef5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e0ac349554fa580c4ac88b26e76d0bea1ecf738b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642562"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932713"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>Pochopení procesu automatické migrace pro pravidla upozornění na Classic
 
-Jak [už](monitoring-classic-retirement.md)jsme oznámili, klasické výstrahy v Azure monitor se v září 2019 (původně z července 2019). V rámci procesu vyřazení je k dispozici ve Azure Portal [Nástroj pro migraci](alerts-using-migration-tool.md) , který zákazníkům umožňuje aktivovat migraci sami. Pokud jste nástroj pro migraci nepoužili 31. srpna 2019, Azure Monitor spustí proces automatické migrace klasických výstrah od 1. září 2019.
-Tento článek vás provede procesem automatické migrace a pomůže vám vyřešit případné problémy, se kterými můžete běžet.
+Jak [už jsme oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor se v září 2019 (původně z července 2019). V rámci procesu vyřazení je k dispozici ve Azure Portal [Nástroj pro migraci](alerts-using-migration-tool.md) , který zákazníkům umožňuje aktivovat migraci sami. Pokud jste nástroj pro migraci nepoužili 31. srpna 2019, Azure Monitor spustí proces automatické migrace klasických výstrah od 1. září 2019.
+Tento článek vás provede procesem automatické migrace a pomůže vám vyřešit všechny problémy, se kterými můžete běžet.
 
   > [!NOTE]
   > Tento článek se týká jenom veřejného cloudu Azure. Proces odchodu pro Azure Monitor klasické výstrahy v cloudu Azure Government a Azure Čína 21Vianet se budou v budoucnu vyvažovat za budoucí datum.
@@ -57,7 +57,7 @@ V [Průvodci odstraňováním potíží](alerts-understand-migration.md#common-p
   > [!NOTE]
   > V případě, že je potřeba provést akci od zákazníka, jako je například dočasné zakázání zámku prostředku nebo změna přiřazení zásady, zákazníci budou muset vyřešit všechny problémy do 31. října 2019. Pokud pak problémy nebudou vyřešeny, nelze zaručit úspěšnou migraci klasických výstrah.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Příprava na migraci](alerts-prepare-migration.md)
 - [Princip fungování nástroje pro migraci](alerts-understand-migration.md)

@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a467856550bf2deaab931b3fe2f54b7986f12f8a
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 136a9994415b42c456ebdb0caa8ed6edcc7b4534
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430309"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934378"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je správa nároků Azure AD? (Preview)
 
@@ -121,6 +121,7 @@ Abyste lépe pochopili správu nároků a dokumentaci, měli byste si projít n�
 | Typ prostředku | Typ prostředku, který zahrnuje skupiny, aplikace a weby SharePointu Online. |
 | role prostředku | Kolekce oprávnění přidružených k prostředku |
 | Adresář prostředků | Adresář, který obsahuje jeden nebo více prostředků ke sdílení. |
+| připojená organizace | Externí adresář služby Azure AD nebo doména, se kterou máte relaci. |
 | přiřazení uživatelé | Přiřazení balíčku přístupu uživateli, aby měl uživatel všechny role prostředků tohoto balíčku přístupu. |
 | aby | Proces zpřístupnění balíčku přístupu uživatelům pro vyžádání. |
 

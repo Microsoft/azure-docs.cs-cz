@@ -1,25 +1,24 @@
 ---
 title: Použití PowerShellu k vytvoření a konfiguraci pracovního prostoru Log Analytics | Microsoft Docs
 description: Log Analytics pracovní prostory v Azure Monitor ukládají data ze serverů ve vaší místní nebo cloudové infrastruktuře. Při generování diagnostikou Azure můžete shromažďovat data počítače z úložiště Azure.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
-ms.devlang: powershell
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 16cad34290ecc518e95ec1a0ce0950722cfe0780
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 05/19/2019
+ms.openlocfilehash: 9d5bbaf02798c0fd87c40f1d952db19aac7b0b7e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71836148"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932081"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Správa pracovního prostoru Log Analytics v Azure Monitor pomocí prostředí PowerShell
 
 [Rutiny Log Analytics PowerShellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/) můžete použít k provádění různých funkcí v pracovním prostoru Log Analytics v Azure monitor z příkazového řádku nebo jako součást skriptu.  Mezi příklady úloh, které můžete provádět pomocí PowerShellu, patří:
 
-* Vytvořit pracovní prostor
+* Vytvoření pracovního prostoru
 * Přidání nebo odebrání řešení
 * Import a export uložených hledání
 * Vytvoření skupiny počítačů
@@ -38,14 +37,14 @@ Tento článek poskytuje dva ukázky kódu, které ilustrují některé z funkc�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tyto příklady pracují s verzí 1.0.0 nebo novějším v modulu AZ. OperationalInsights.
 
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Vytvoření a konfigurace pracovního prostoru Log Analytics
 Následující ukázka skriptu ukazuje, jak:
 
-1. Vytvořit pracovní prostor
+1. Vytvoření pracovního prostoru
 2. Seznam dostupných řešení
 3. Přidání řešení do pracovního prostoru
 4. Import uložených hledání
@@ -180,7 +179,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 Ve výše uvedeném příkladu byl regexDelimiter definován jako "\\n" pro nový řádek. Oddělovač protokolu může být také časovým razítkem.  Podporované formáty:
 
-| Formát | Formát regulárního výrazu JSON používá ke každému regulárnímu regulárnímu výrazu dva \\, takže pokud testování v aplikaci RegEx snižuje \\ na \ | | |
+| Formát | Formát regulárního výrazu JSON používá dva \\ pro každý \ ve standardním regulárním výrazu, takže pokud testování v aplikaci RegEx snižuje \\ na \ | | |
 | --- | --- | --- | --- |
 | `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 | `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` | | |
@@ -197,22 +196,22 @@ Ve výše uvedeném příkladu byl regexDelimiter definován jako "\\n" pro nov�
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurace Log Analytics pro odeslání diagnostiky Azure
 Pro monitorování prostředků Azure bez agentů musí mít prostředky povolenu diagnostiku Azure a nakonfigurované pro zápis do Log Analyticsho pracovního prostoru. Tento přístup odesílá data přímo do pracovního prostoru a nevyžaduje zápis dat do účtu úložiště. Mezi podporované prostředky patří:
 
-| Typ prostředku | Protokolování | Metriky |
+| Typ prostředku | Protokoly | Metriky |
 | --- | --- | --- |
-| Aplikační brány    | Ano | Ano |
-| Účty služby Automation     | Ano | |
+| Brány Application Gateway    | Ano | Ano |
+| Účty pro službu Automation     | Ano | |
 | Účty Batch          | Ano | Ano |
-| Analýzy Data Lake     | Ano | |
+| Analytické nástroje Data Lake     | Ano | |
 | Data Lake Store         | Ano | |
 | Elastický fond SQL        |     | Ano |
 | Obor názvů centra událostí     |     | Ano |
-| Centra IoT                |     | Ano |
+| Iot Hub                |     | Ano |
 | Key Vault               | Ano | |
 | Nástroje pro vyrovnávání zatížení          | Ano | |
 | Logic Apps              | Ano | Ano |
 | Skupiny zabezpečení sítě | Ano | |
-| Mezipaměť Azure pro Redis             |     | Ano |
-| Hledat služby         | Ano | Ano |
+| Azure Cache for Redis             |     | Ano |
+| Služby hledání         | Ano | Ano |
 | Obor názvů Service Bus   |     | Ano |
 | SQL (V12)               |     | Ano |
 | Weby               |     | Ano |

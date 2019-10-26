@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 546c97421fdb3a581a22e34f6110986a1a0732b6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592482"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929151"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Průvodce odstraňováním potíží pro běžné problémy
 
@@ -119,7 +119,7 @@ Pokud dojde k přerušení dotazování, stále můžete načíst protokoly nasa
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Ujistěte se, že je vaše aplikace zabalená ve správném [spustitelném formátu jar](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html). Pokud ne, zobrazí se podobná chyba:
+Ujistěte se, že je vaše aplikace zabalená ve správném [formátu spustitelného souboru JAR](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html). Pokud ne, zobrazí se podobná chyba:
 
 `Error: Invalid or corrupt jarfile /jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714`
 
@@ -165,7 +165,7 @@ Proměnné prostředí informují cloudové cloudové rozhraní Azure, které za
             </dependency>
         ```
 
-1. S povoleným koncovým bodem pohánějícího spouštěcího bodu je potřeba přejít na Azure Portal a najít stránku konfigurace aplikace.  Přidejte proměnnou prostředí s názvem `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value ` *. 
+1. S povoleným koncovým bodem pohánějícího spouštěcího bodu je potřeba přejít na Azure Portal a najít stránku konfigurace aplikace.  Přidejte proměnnou prostředí s názvem `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` a hodnotu `*`. 
 
 1. Restartujte aplikaci.
 

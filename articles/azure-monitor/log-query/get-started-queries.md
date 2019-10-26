@@ -3,26 +3,21 @@ title: Začínáme s dotazy protokolu v Azure Monitor | Microsoft Docs
 description: Tento článek popisuje kurz Začínáme s psaním dotazů protokolu v Azure Monitor.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: conceptual
+ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 05/09/2019
-ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.date: 10/24/2019
+ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894307"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933028"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolu v Azure Monitor
 
-
-> [!NOTE]
-> Před dokončením tohoto kurzu byste měli dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) .
-
 > [!NOTE]
 > Pokud shromažďujete data alespoň z jednoho virtuálního počítače, můžete toto cvičení použít ve vlastním prostředí. Pokud ne, použijte naše ukázkové [prostředí](https://portal.loganalytics.io/demo), které obsahuje spoustu ukázkových dat.
-
 
 V tomto kurzu se naučíte psát dotazy protokolu v Azure Monitor. Naučíte se, jak:
 
@@ -36,6 +31,10 @@ V tomto kurzu se naučíte psát dotazy protokolu v Azure Monitor. Naučíte se,
 
 Kurz použití Log Analytics v Azure Portal najdete v tématu [Začínáme s Azure Monitor Log Analytics](get-started-portal.md).<br>
 Další podrobnosti o dotazech protokolu v Azure Monitor najdete v tématu [Přehled dotazů protokolu v Azure monitor](log-query-overview.md).
+
+Sledujte níže uvedenou verzi videa v tomto kurzu:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>Zápis nového dotazu
 Dotazy mohou začít buď s názvem tabulky, nebo s příkazem *hledání* . Měli byste začít s názvem tabulky, protože definuje pro dotaz jasný rozsah a zvyšuje výkon dotazů a relevanci výsledků.

@@ -1,24 +1,18 @@
 ---
 title: Doprovodné materiály k osobním údajům uloženým v Azure Log Analytics | Microsoft Docs
 description: Tento článek popisuje, jak spravovat osobní údaje uložené v Azure Log Analytics a metody pro jejich identifikaci a odebrání.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/18/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 05/18/2018
+ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617308"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932125"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Doprovodné materiály k osobním údajům uloženým v Log Analytics a Application Insights
 
@@ -33,7 +27,7 @@ Log Analytics je úložiště dat, kde se pravděpodobně nacházejí osobní ú
 
 I když bude vaše společnost až do vaší společnosti, abyste nakonec určili strategii, se kterou budete pokládat vaše privátní data (pokud vůbec), jsou zde některé možné přístupy. Jsou uvedené v pořadí podle priority z technického hlediska od nejmenšího po nejvýhodnějších:
 
-* Pokud je to možné, zastavte shromažďování, zmatení, anonymizovat nebo jinak upravte shromažďovaná data, aby se vyloučila, aby se považovala za "soukromá". To je nejjednodušeji upřednostňovaný přístup, takže ušetříte potřebu vytvořit velmi náročnou a ovlivněnou strategii zpracování dat.
+* Pokud je to možné, zastavte shromažďování, zmatení, anonymizovat nebo jinak upravte shromažďovaná data, aby se vyloučila, aby se považovala za "soukromá". _To je_ nejjednodušeji upřednostňovaný přístup, takže ušetříte potřebu vytvořit velmi náročnou a ovlivněnou strategii zpracování dat.
 * Pokud není to možné, pokuste se normalizovat data a snížit dopad na datovou platformu a výkon. Například místo protokolování explicitního ID uživatele vytvořte vyhledávací data, která budou korelovat uživatelské jméno a jejich podrobnosti s interním ID, které lze následně zaznamenat jinam. To znamená, že pokud jeden z vašich uživatelů požaduje odstranění jejich osobních údajů, je možné, že bude stačit jenom odstranit řádek v tabulce vyhledávání odpovídající tomuto uživateli. 
 * Nakonec, pokud musí být shromážděna soukromá data, sestavte proces kolem cesty rozhraní API pro vyprázdnění a stávající cestu rozhraní API pro dotaz tak, aby splňovala jakékoli závazky, které byste mohli vyexportovat a odstranit všechna soukromá data přidružená k uživateli. 
 
@@ -49,24 +43,24 @@ Log Analytics je flexibilní úložiště, které při stanovení schématu pro 
     | where * matches regex @'\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b' //RegEx originally provided on https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp
     | summarize count() by $table
     ```
-* *ID uživatele*: ID uživatelů najdete ve velkých různých řešeních a tabulkách. Můžete vyhledat konkrétní uživatelské jméno napříč celou datovou sadou pomocí příkazu search:
+* *ID uživatelů*: ID uživatelů se nachází ve velkých různých řešeních a tabulkách. Můžete vyhledat konkrétní uživatelské jméno napříč celou datovou sadou pomocí příkazu search:
     ```
     search "[username goes here]"
     ```
   Nezapomeňte se podívat nejen na uživatelsky čitelné uživatelské jméno, ale také identifikátory GUID, které se dají přímo trasovat na konkrétního uživatele.
-* *ID zařízení*: Podobně jako u ID uživatele se ID zařízení někdy považují za "soukromá". Použijte stejný přístup, jak je uvedeno výše pro ID uživatelů, a Identifikujte tak tabulky, kde se to může týkat. 
+* *ID zařízení*: jako ID uživatelů se někdy považují ID zařízení za "soukromé". Použijte stejný přístup, jak je uvedeno výše pro ID uživatelů, a Identifikujte tak tabulky, kde se to může týkat. 
 * *Vlastní data*: Log Analytics umožňuje shromažďování v různých metodách: vlastní protokoly a vlastní pole, [rozhraní API kolekce dat http](../../azure-monitor/platform/data-collector-api.md) a vlastní data shromážděná jako součást protokolů systémových událostí. Všechny tyto jsou náchylné k obsahující privátní data a měli byste je prozkoumat, abyste ověřili, jestli taková data existují.
-* *Zachycená data řešení*: Vzhledem k tomu, že mechanismus řešení je otevřený – ukončený, doporučujeme zkontrolovat všechny tabulky vygenerované řešeními, abyste zajistili dodržování předpisů.
+* *Zachycená data řešení*: vzhledem k tomu, že mechanismus řešení je otevřený – ukončený, doporučujeme zkontrolovat všechny tabulky vygenerované řešeními, abyste zajistili dodržování předpisů.
 
 ### <a name="application-data"></a>Data aplikací
 
-* *IP adresy*: I když Application Insights bude ve výchozím nastavení zastarat všechna pole IP adres na "0.0.0.0", jedná se o poměrně běžný vzor pro přepsání této hodnoty skutečnou uživatelskou IP adresou, aby udržoval informace o relaci. Analytický dotaz níže lze použít k vyhledání jakékoli tabulky, která obsahuje hodnoty ve sloupci IP adresa (kromě "0.0.0.0" za posledních 24 hodin:
+* *IP adresy*: i když Application Insights bude ve výchozím nastavení zastarat všechna pole IP adres na "0.0.0.0", jedná se o poměrně běžný vzor pro přepsání této hodnoty skutečnou UŽIVATELskou IP adresou, aby bylo možné zachovat informace o relaci. Analytický dotaz níže lze použít k vyhledání jakékoli tabulky, která obsahuje hodnoty ve sloupci IP adresa (kromě "0.0.0.0" za posledních 24 hodin:
     ```
     search client_IP != "0.0.0.0"
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *ID uživatele*: Ve výchozím nastavení Application Insights použijí náhodně generované identifikátory pro sledování uživatelů a relací. Je však běžné, že jsou tato pole přepsána pro uložení ID, které je pro aplikaci relevantní. Příklad: uživatelská jména, identifikátory GUID AAD atd. Tato ID se často považují za v oboru jako osobní údaje, a proto by se měla odpovídajícím způsobem zpracovat. Naše doporučení se vždycky snaží zaanonymizovatovat nebo pořídit tato ID. Pole, kde jsou tyto hodnoty běžně nalezeny, zahrnují session_Id, user_Id, user_AuthenticatedId, user_AccountId a customDimensions.
+* *ID uživatelů*: ve výchozím nastavení Application Insights použijí náhodně generované identifikátory pro sledování uživatelů a relací. Je však běžné, že jsou tato pole přepsána pro uložení ID, které je pro aplikaci relevantní. Příklad: uživatelská jména, identifikátory GUID AAD atd. Tato ID se často považují za v oboru jako osobní údaje, a proto by se měla odpovídajícím způsobem zpracovat. Naše doporučení se vždycky snaží zaanonymizovatovat nebo pořídit tato ID. Pole, kde jsou tyto hodnoty běžně nalezeny, zahrnují session_Id, user_Id, user_AuthenticatedId, user_AccountId a customDimensions.
 * *Vlastní data*: Application Insights umožňuje připojit sadu vlastních dimenzí k jakémukoli datovému typu. Tyto dimenze můžou být *libovolná* data. Pomocí následujícího dotazu identifikujte všechny vlastní dimenze shromážděné za posledních 24 hodin:
     ```
     search * 
@@ -74,12 +68,12 @@ Log Analytics je flexibilní úložiště, které při stanovení schématu pro 
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Data v paměti a přenosu*: Application Insights bude sledovat výjimky, požadavky, volání závislostí a trasování. Soukromá data je často možné shromažďovat na úrovni kódu a volání HTTP. Projděte si tabulky výjimky, požadavky, závislosti a trasování a Identifikujte taková data. Použijte [Inicializátory telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) tam, kde je to možné, k dezmatení těchto dat.
-* *Snapshot Debugger zachycení*: Funkce [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) v Application Insights umožňuje shromažďovat snímky ladění vždy, když je v produkční instanci aplikace zachycena výjimka. Snímky vystaví kompletní trasování zásobníku, které vede k výjimkám, a také hodnoty pro lokální proměnné v každém kroku v zásobníku. Tato funkce bohužel neumožňuje selektivní odstranění bodů přichycení nebo programový přístup k datům ve snímku. Proto pokud výchozí míra uchování snímku nesplňuje požadavky na dodržování předpisů, doporučujeme tuto funkci vypnout.
+* *Data v paměti a přenosu*: Application Insights budou sledovat výjimky, požadavky, volání závislostí a trasování. Soukromá data je často možné shromažďovat na úrovni kódu a volání HTTP. Projděte si tabulky výjimky, požadavky, závislosti a trasování a Identifikujte taková data. Použijte [Inicializátory telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) tam, kde je to možné, k dezmatení těchto dat.
+* *Snapshot Debugger zachycení*: funkce [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) v Application Insights umožňuje shromažďovat snímky ladění vždy, když je v produkční instanci aplikace zachycena výjimka. Snímky vystaví kompletní trasování zásobníku, které vede k výjimkám, a také hodnoty pro lokální proměnné v každém kroku v zásobníku. Tato funkce bohužel neumožňuje selektivní odstranění bodů přichycení nebo programový přístup k datům ve snímku. Proto pokud výchozí míra uchování snímku nesplňuje požadavky na dodržování předpisů, doporučujeme tuto funkci vypnout.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Jak exportovat a odstranit soukromá data
 
-Jak bylo zmíněno v předchozí [strategii pro zpracování osobních údajů](#strategy-for-personal-data-handling) , důrazně se doporučuje, pokud je to možné, aby bylo možné změnit strukturu zásad shromažďování dat, aby se zakázala shromažďování privátních dat, její zatřídění nebo anonymizace nebo v opačném případě je upravovaná, aby se odebrala z považovat za "soukromé". Manipulace s daty bude mít za následek, že budou mít náklady na vás a váš tým k definování a automatizaci strategie, vytvoření rozhraní pro vaše zákazníky, aby mohli pracovat s daty a průběžnými náklady na údržbu. Kromě toho je pro Log Analytics a Application Insights výpočetně nákladné a velký objem souběžných volání rozhraní API dotazů nebo vyprázdnění může mít negativní dopad na veškerou interakci s Log Analyticsmi funkcemi. V takovém případě existují některé platné scénáře, ve kterých musí být shromažďována soukromá data. V těchto případech by měla být data zpracována způsobem popsaným v této části.
+Jak bylo zmíněno v předchozí [strategii pro zpracování osobních údajů](#strategy-for-personal-data-handling) , __důrazně__ se doporučuje, pokud je to možné, aby bylo možné změnit strukturu zásad shromažďování dat, aby se zakázala shromažďování privátních dat, její zatřídění nebo anonymizace nebo v opačném případě je upravovaná, aby se odebrala z považovat za "soukromé". Manipulace s daty bude mít za následek, že budou mít náklady na vás a váš tým k definování a automatizaci strategie, vytvoření rozhraní pro vaše zákazníky, aby mohli pracovat s daty a průběžnými náklady na údržbu. Kromě toho je pro Log Analytics a Application Insights výpočetně nákladné a velký objem souběžných volání rozhraní API dotazů nebo vyprázdnění může mít negativní dopad na veškerou interakci s Log Analyticsmi funkcemi. V takovém případě existují některé platné scénáře, ve kterých musí být shromažďována soukromá data. V těchto případech by měla být data zpracována způsobem popsaným v této části.
 
 [!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
 
@@ -90,12 +84,12 @@ Pro požadavky na zobrazení a export dat by se měla použít rozhraní [API pr
 > [!IMPORTANT]
 >  I když velká většina operací vyprázdnění může trvat mnohem rychlejší než smlouva SLA, **je formální smlouva SLA pro dokončení operací vyprázdnění nastavená na 30 dní** kvůli jejich těžkému dopadu na využitou datovou platformu. Toto je automatizovaný proces; neexistuje žádný způsob, jak vyžádat zpracování operace rychleji.
 
-### <a name="delete"></a>Odstranění
+### <a name="delete"></a>Odstranit
 
 > [!WARNING]
 > Odstranění v Log Analytics jsou destruktivní a nevratná! Při jejich provádění prosím buďte velmi opatrní.
 
-K dispozici jako součást ochrany osobních údajů, která zpracovává cestu rozhraní API pro vyprázdnění. Tato cesta by se měla používat zřídka, protože rizika spojená s tím spojené s tím, jaký je potenciální dopad na výkon, a potenciál pro zkosení všech agregací, měření a dalších aspektů vašich Log Analytics dat. Alternativní přístupy k manipulaci s privátními daty najdete v části [strategie pro zpracování osobních údajů](#strategy-for-personal-data-handling) .
+K dispozici jako součást ochrany osobních údajů, která zpracovává cestu rozhraní API pro *vyprázdnění* . Tato cesta by se měla používat zřídka, protože rizika spojená s tím spojené s tím, jaký je potenciální dopad na výkon, a potenciál pro zkosení všech agregací, měření a dalších aspektů vašich Log Analytics dat. Alternativní přístupy k manipulaci s privátními daty najdete v části [strategie pro zpracování osobních údajů](#strategy-for-personal-data-handling) .
 
 Vyprázdnit je vysoce privilegovaná operace, kterou žádná aplikace ani uživatel v Azure (včetně ani vlastníka prostředku) bude mít oprávnění ke spuštění bez explicitního udělení role v Azure Resource Manager. Tato role je modul pro _vyprázdnění dat_ a měla by být řádně delegovaná kvůli možné ztrátě dat. 
 
@@ -109,7 +103,7 @@ Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty ro
 #### <a name="log-data"></a>Protokolování dat
 
 * [Post](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) Return-převezme objekt určující parametry dat, které se mají odstranit, a vrátí identifikátor GUID odkazu. 
-* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Příklad:
+* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Například:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -121,7 +115,7 @@ Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty ro
 #### <a name="application-data"></a>Data aplikací
 
 * [Post](https://docs.microsoft.com/rest/api/application-insights/components/purge) Return-převezme objekt určující parametry dat, které se mají odstranit, a vrátí identifikátor GUID odkazu.
-* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Příklad:
+* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Například:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

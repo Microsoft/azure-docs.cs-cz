@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 694c8866a69d8488511be1670ba3d3013a4a3423
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: a20ff526ba00f5b6521198122972071360bb58d6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392511"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934459"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Zobrazení, přidání a odebrání přiřazení balíčku pro přístup ve správě nároků Azure AD (Preview)
 
@@ -70,11 +70,9 @@ V některých případech můžete chtít přímo přiřadit konkrétní uživat
 
     ![Přiřazení – přidat uživatele do balíčku pro přístup](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. Klikněte na **Přidat uživatele** a vyberte uživatele, kterým chcete přiřadit balíček přístupu.
+1. Klikněte na **Přidat uživatele** a vyberte uživatele, kterým chcete přiřadit tento balíček přístupu.
 
-1. V seznamu **Vybrat zásadu** vyberte zásadu, která má nastavení [žádné (pouze přímé přiřazení správců)](entitlement-management-access-package-request-policy.md#none-administrator-direct-assignments-only) .
-
-    Pokud tento balíček přístupu nemá tento typ zásad, můžete ho přidat kliknutím na **vytvořit novou zásadu** .
+1. V seznamu **Vybrat zásadu** vyberte zásadu, kterou budou řídit a sledovat budoucí požadavky uživatelů a životní cyklus. Pokud chcete, aby vybraní uživatelé měli jiná nastavení zásad, můžete kliknutím na **vytvořit novou zásadu** přidat novou zásadu.
 
 1. Nastavte datum a čas, kdy má přiřazení vybraných uživatelů začít a končit. Pokud není zadané koncové datum, použije se nastavení životního cyklu zásad.
 

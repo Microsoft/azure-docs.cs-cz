@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/21/2019
+ms.date: 10/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bcd27378039d539e36c72cf6e8fec7e8a1425e54
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1faf6e4c9124d494507a124013d5fd8588f4b41b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750340"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934922"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -40,7 +40,7 @@ Minimální SAP HANA certifikované podmínky pro různé typy úložišť:
 
 - Azure SSD úrovně Premium –/Hana/log se musí ukládat do mezipaměti v Azure [akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator). Svazek/Hana/data může být umístěný na SSD úrovně Premium bez použití Azure Akcelerátor zápisu nebo na disku Ultra.
 - Azure Ultra disk alespoň pro svazek/Hana/log. Svazek/Hana/data se dá umístit buď do SSD úrovně Premium bez Akcelerátor zápisu Azure, nebo aby se dosáhlo rychlejšího restartování extrémně disku.
-- Svazky **systému souborů NFS v 4.1** nad Azure NetApp Files/Hana/log **a** /Hana/data
+- Svazky **systému souborů NFS v 4.1** nad Azure NetApp Files/Hana/log **a** /Hana/data. Svazek/Hana/Shared může používat protokol NFS v3 nebo NFS verze 4.1. Protokol NFS v 4.1 je povinný pro svazky/Hana/data a/Hana/protokolů.
 
 Některé typy úložišť lze kombinovat. Například je možné umístit/Hana/data do Premium Storage a/Hana/log je možné umístit do úložiště Ultra disk, aby se dosáhlo požadované nízké latence. Nedoporučuje se ale kombinovat svazky NFS pro například/Hana/data a používat jeden z dalších certifikovaných typů úložiště pro/Hana/log.
 
@@ -230,10 +230,10 @@ V této konfiguraci jsou svazky/Hana/data a/Hana/log na stejném disku. Navrhova
 Typy virtuálních počítačů s M416xx_v2 ještě nejsou od Microsoftu k dispozici k veřejnému. Uvedené hodnoty mají být výchozím bodem a je nutné je vyhodnotit proti skutečným požadavkům. Výhodou pro Azure Ultra disk je, že hodnoty pro vstupně-výstupní operace a propustnost můžou být přizpůsobené bez nutnosti vypnout virtuální počítač nebo zastavit zatížení, které se v systému používá.  
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Svazky NFS v 4.1 na Azure NetApp Files
-Azure NetApp Files poskytuje nativní sdílené složky systému souborů NFS, které se dají použít pro svazky/Hana/Shared,/Hana/data a/Hana/log. Použití sdílených složek systému souborů NFS založených na ANF pro tyto svazky vyžaduje použití protokolu v systému souborů NFS v 4.1. protokol NFS verze 3 není podporován pro použití svazků souvisejících s HANA při založení sdílených složek na ANF. 
+Azure NetApp Files poskytuje nativní sdílené složky systému souborů NFS, které se dají použít pro svazky/Hana/Shared,/Hana/data a/Hana/log. Použití sdílených složek systému souborů NFS založených na ANF pro svazky/Hana/data a/Hana/log vyžaduje použití protokolu NFS v 4.1. Protokol NFS verze 3 není podporován pro použití/Hana/data a/Hana/log svazků při založení sdílených složek na ANF. 
 
 > [!IMPORTANT]
-> protokol NFS v3 implementovaný v Azure NetApp Files není podporován pro použití pro/Hana/Shared,/Hana/data a/Hana/log.
+> Protokol NFS v3 implementovaný v Azure NetApp Files není podporován pro použití pro/Hana/data a/Hana/log. Použití NFS 4,1 je povinné pro svazky/Hana/data a/Hana/log z funkčního bodu zobrazení. Vzhledem k tomu, že je možné použít pro svazek/Hana/Shared systém souborů NFS v3 nebo NFS verze 4.1, ze funkčního hlediska.
 
 ### <a name="important-considerations"></a>Důležité informace
 Při zvažování Azure NetApp Files SAP NetWeaver a SAP HANA si pamatujte na následující důležité informace:
@@ -270,21 +270,21 @@ Při návrhu infrastruktury pro SAP v Azure byste měli znát minimální požad
 
 Aby splňovala požadavky na minimální propustnost SAP pro data a protokol a podle pokynů pro `/hana/shared`, Doporučené velikosti by vypadaly takto:
 
-| Svazek | Velikost<br /> Premium Storage úroveň | Velikost<br /> Úroveň úložiště Ultra Storage |
+| Svazek | Velikost<br /> Premium Storage úroveň | Velikost<br /> Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
 | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB |
-| /hana/data | 6,3 TiB | 3,2 TiB |
-| /hana/shared | Max (512 GB, 1xRAM) na 4 pracovní uzly | Max (512 GB, 1xRAM) na 4 pracovní uzly |
+| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
+| /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
+| /hana/shared | Max (512 GB, 1xRAM) na 4 pracovní uzly | Max (512 GB, 1xRAM) na 4 pracovní uzly | V3 nebo v 4.1 |
 
 Konfigurace SAP HANA pro rozložení prezentovaná v tomto článku by mohla pomocí Azure NetApp Files úrovně Ultra Storage vypadat takto:
 
-| Svazek | Velikost<br /> Úroveň úložiště Ultra Storage |
+| Svazek | Velikost<br /> Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
 | --- | --- |
-| /hana/log/mnt00001 | 2 TiB |
-| /hana/log/mnt00002 | 2 TiB |
-| /hana/data/mnt00001 | 3,2 TiB |
-| /hana/data/mnt00002 | 3,2 TiB |
-| /hana/shared | 2 TiB |
+| /hana/log/mnt00001 | 2 TiB | v 4.1 |
+| /hana/log/mnt00002 | 2 TiB | v 4.1 |
+| /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
+| /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
+| /hana/shared | 2 TiB | V3 nebo v 4.1 |
 
 > [!NOTE]
 > Tady uvedená doporučení pro změny velikosti Azure NetApp Files cílí na to, aby splňovala minimální požadavky SAP na jejich poskytovatele infrastruktury. V reálných scénářích nasazení zákazníků a úloh, které nemusí být dostatečné. Tato doporučení použijte jako výchozí bod a přizpůsobte je na základě požadavků konkrétního zatížení.  

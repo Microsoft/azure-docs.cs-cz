@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 5c501e6c2bc1a30273682352a68565ccc897ff50
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cc0539462fad0a73d5fc7eb75d2078e513df4e5d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699204"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926540"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
 
 V tomto článku jsou uvedené běžné problémy, které se týkají souborů Azure, když se připojujete z klientů se systémem Linux. Poskytuje taky možné příčiny a řešení těchto problémů. 
 
-Kromě kroků pro řešení potíží v tomto článku můžete použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) a zajistit tak, že klient pro Linux bude mít správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku. Pomáhá nastavit vaše prostředí, aby získalo optimální výkon. Tyto informace můžete najít také v poradci při potížích se sdílenými složkami [souborů Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Poradce při potížích obsahuje kroky, které vám pomůžou s problémy s připojením, mapováním a připojením sdílených složek Azure Files.
+Kromě kroků pro řešení potíží v tomto článku můžete použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) a zajistit tak, že klient pro Linux bude mít správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku. Pomáhá nastavit vaše prostředí, aby získalo optimální výkon. Tyto informace můžete najít také v [poradci při potížích se sdílenými složkami souborů Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Poradce při potížích obsahuje kroky, které vám pomůžou s problémy s připojením, mapováním a připojením sdílených složek Azure Files.
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nelze se připojit ke sdílené složce Azure nebo ji připojit
 
@@ -31,13 +31,13 @@ Mezi běžné příčiny tohoto problému patří:
 |   | SMB 2.1 <br>(Připojení k virtuálním počítačům ve stejné oblasti Azure) | SMB 3.0 <br>(Připojení z místního prostředí a mezi oblastmi) |
 | --- | :---: | :---: |
 | Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7 + | 7.5+ |
-| CentOS | 7 + |  7.5+ |
-| Debian | 8+ |   |
+| RHEL | 7 + | 7.5 + |
+| CentOS | 7 + |  7.5 + |
+| Debian | 8 + |   |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
 
-- V klientovi nejsou nainstalované nástroje CIFS (CFS-util).
+- V klientovi nejsou nainstalované nástroje CIFS (CIFS-util).
 - Na klientovi není nainstalovaná minimální verze protokolu SMB/CIFS 2,1.
 - Šifrování SMB 3,0 není na klientovi podporováno. Předchozí tabulka poskytuje seznam distribucí pro Linux, které podporují připojení z místního prostředí a mezi oblastmi pomocí šifrování. Ostatní distribuce vyžadují jádro verze 4.11 nebo novější.
 - Pokoušíte se připojit k účtu úložiště přes port TCP 445, což není podporováno.
@@ -54,9 +54,9 @@ Pokud chcete tento problém vyřešit, použijte [Nástroj pro řešení potíž
 * Shromažďuje diagnostické trasování.
 
 <a id="mounterror13"></a>
-## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>„Chyba připojení (13): Oprávnění se zamítlo“ při připojování sdílené složky Azure
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>"Chyba připojení (13): oprávnění odepřeno" při připojení sdílené složky Azure
 
-### <a name="cause-1-unencrypted-communication-channel"></a>Příčina 1: Nešifrovaný komunikační kanál
+### <a name="cause-1-unencrypted-communication-channel"></a>Příčina 1: nešifrovaný komunikační kanál
 
 Z bezpečnostních důvodů se připojení ke sdíleným složkám Azure blokují, když komunikační kanál není šifrovaný a když k pokusu o připojení nedošlo ze stejného datacentra, ve kterém se sdílená složka Azure nachází. Nešifrovaná připojení ze stejného datacentra se můžou blokovat také v případě, že je pro účet úložiště povolené nastavení [Vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer). Šifrovaný komunikační kanál je k dispozici pouze v případě, že klientský operační systém uživatele podporuje šifrování protokolu SMB.
 
@@ -67,7 +67,7 @@ Další informace najdete v části [Požadavky na připojení sdílené složky
 1. Připojte se z klienta, který podporuje šifrování přes protokol SMB, nebo se připojte z virtuálního počítače ve stejném datovém centru jako účet úložiště Azure, který se používá pro sdílenou složku Azure.
 2. Pokud klient nepodporuje šifrování protokolu SMB, ověřte, že je v účtu úložiště zakázané nastavení [Vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) .
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Příčina 2: V účtu úložiště jsou povolená virtuální síť nebo pravidla brány firewall. 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Příčina 2: v účtu úložiště jsou povolená pravidla virtuální sítě nebo brány firewall. 
 
 Pokud jsou pro účet úložiště nakonfigurovaná pravidla virtuální sítě nebo brány firewall, síťovému provozu se odepře přístup, dokud se nepovolí přístup z virtuální sítě nebo IP adresy klienta.
 
@@ -80,7 +80,7 @@ Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla b
 
 V systému Linux se zobrazí chybová zpráva podobná následující:
 
-**\<název souboru > [oprávnění odepřeno] překročena kvóta disku**
+**\<filename > [oprávnění odepřeno] překročena kvóta disku**
 
 ### <a name="cause"></a>Příčina
 
@@ -107,18 +107,18 @@ Chcete-li zavřít otevřené popisovače pro sdílenou složku, adresář nebo 
     - Použijte [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro jakýkoli přenos mezi dvěma sdílenými složkami souborů.
     - Použití CP nebo DD s paralelním může zlepšit rychlost kopírování. počet vláken závisí na vašem případu použití a na zatížení. Následující příklady používají šest: 
     - CP – příklad (CP použije výchozí velikost bloku systému souborů jako velikost bloku): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
-    - DD příklad (Tento příkaz explicitně nastaví velikost bloku na 1 MiB):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
+    - DD příklad (Tento příkaz explicitně nastaví velikost bloku na 1 MiB): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Open Source nástroje třetích stran, jako jsou:
         - [GNU Parallel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) – seřadí soubory a zabalí je do oddílů.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) – používá Fpart a nástroj pro kopírování k vytvoření více instancí k migraci dat z src_dir na dst_url.
         - [Více](https://github.com/pkolano/mutil) vláken CP a md5sum s více vlákny založené na systému GNU coreutils.
-- Nastavení velikosti souboru předem. místo toho, aby bylo možné zapisovat do zápisu, pomáhá vylepšit rychlost kopírování ve scénářích, kde je známá velikost souboru. Pokud se vyžaduje rozšíření zápisů, můžete nastavit velikost cílového souboru pomocí `truncate - size <size><file>` příkazu. `dd if=<source> of=<target> bs=1M conv=notrunc`Pak příkaz zkopíruje zdrojový soubor bez opakované aktualizace velikosti cílového souboru. Můžete například nastavit velikost cílového souboru pro každý soubor, který chcete zkopírovat (předpokládá se, že je sdílená složka připojená pod/mnt/share):
+- Nastavení velikosti souboru předem. místo toho, aby bylo možné zapisovat do zápisu, pomáhá vylepšit rychlost kopírování ve scénářích, kde je známá velikost souboru. Pokud se vyžaduje rozšíření zápisů, můžete nastavit velikost cílového souboru pomocí příkazu `truncate - size <size><file>`. Poté `dd if=<source> of=<target> bs=1M conv=notrunc`příkaz zkopíruje zdrojový soubor, aniž by bylo nutné opakovaně aktualizovat velikost cílového souboru. Můžete například nastavit velikost cílového souboru pro každý soubor, který chcete zkopírovat (předpokládá se, že je sdílená složka připojená pod/mnt/share):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
-    - a pak zkopírujte soubory bez rozšíření zápisu paralelně:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
+    - a pak zkopírujte soubory bez rozšíření zápisu paralelně: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>„Chyba připojení (115): Právě probíhá operace“ při připojování služby Azure Files pomocí protokolu SMB 3.0
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Chyba připojení (115): operace nyní probíhá" při připojování souborů Azure pomocí protokolu SMB 3,0
 
 ### <a name="cause"></a>Příčina
 
@@ -138,13 +138,13 @@ Když přejdete na sdílenou složku Azure na portálu, může se zobrazit násl
 Selhání autorizace  
 Nemáte přístup.
 
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Příčina 1: Váš uživatelský účet nemá přístup k účtu úložiště.
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Příčina 1: váš uživatelský účet nemá přístup k účtu úložiště.
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
 Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klikněte na **řízení přístupu (IAM)** a ověřte, jestli má uživatelský účet přístup k účtu úložiště. Další informace najdete v tématu [zabezpečení účtu úložiště pomocí Access Control na základě rolí (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Příčina 2: V účtu úložiště jsou povolená virtuální síť nebo pravidla brány firewall.
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Příčina 2: v účtu úložiště jsou povolená pravidla virtuální sítě nebo brány firewall.
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
@@ -170,7 +170,7 @@ Pokud klienti SMB zavřeli všechny otevřené popisovače a problém přetrváv
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Pomalý výkon sdílené složky Azure připojené k virtuálnímu počítači se systémem Linux
 
-### <a name="cause-1-caching"></a>Příčina 1: Caching
+### <a name="cause-1-caching"></a>Příčina 1: ukládání do mezipaměti
 
 Jednou z možných příčin pomalého výkonu je zakázané ukládání do mezipaměti. Ukládání do mezipaměti může být užitečné, pokud k souboru přistupujete opakovaně, jinak může to být režie. Ověřte, zda používáte mezipaměť, a poté ji zakazování.
 
@@ -192,7 +192,7 @@ Pomocí příkazu **sudo Mount | grep CIFS** a kontrolou jeho výstupu můžete 
 
 Pokud možnost **cache = Strict** nebo **serverino** není k dispozici, odpojte a připojte soubory Azure znovu spuštěním příkazu Mount z [dokumentace](../storage-how-to-use-files-linux.md). Pak znovu zkontrolujte, jestli má položka **/etc/fstab** správné možnosti.
 
-### <a name="cause-2-throttling"></a>Příčina 2: Omezování
+### <a name="cause-2-throttling"></a>Příčina 2: omezování
 
 Je možné, že máte omezení a vaše požadavky jsou odesílány do fronty. To můžete ověřit využitím [Azure Storage metriky v Azure monitor](../common/storage-metrics-in-azure-monitor.md).
 
@@ -218,22 +218,22 @@ Pro kopírování souborů použijte uživatele účtu úložiště:
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nejde získat přístup&lt;k&gt;cestě: Chyba vstupu/výstupu
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nejde získat přístup k&lt;cestě&gt;: Chyba vstupu/výstupu.
 
 Když se pokusíte zobrazit seznam souborů ve sdílené složce Azure pomocí příkazu ls, příkaz se při výpisu souboru přestane reagovat. Zobrazí se následující chyba:
 
-**ls: nejde získat přístup&lt;k&gt;cestě: Chyba vstupu/výstupu**
+**ls: nejde získat přístup k&lt;cestě&gt;: Chyba vstupu/výstupu.**
 
 
 ### <a name="solution"></a>Řešení
 Upgradujte jádro systému Linux na následující verze, které mají opravu tohoto problému:
 
-- 4.4.87+
-- 4.9.48+
-- 4.12.11+
+- 4.4.87 +
+- 4.9.48 +
+- 4.12.11 +
 - Všechny verze, které jsou větší nebo rovny 4,13
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nejde vytvořit symbolické odkazy – LN: nepovedlo se vytvořit symbolický odkaz t:. Operace není podporována
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nejde vytvořit symbolické odkazy – LN: nepovedlo se vytvořit symbolický odkaz t: operace není podporovaná.
 
 ### <a name="cause"></a>Příčina
 Ve výchozím nastavení připojení sdílených složek Azure v systému Linux pomocí protokolu CIFS nepovoluje podporu pro symbolické odkazy (symbolických odkazů). Zobrazí se chyba podobná této:
@@ -261,7 +261,7 @@ Pak můžete vytvořit symbolických odkazů podle doporučení na [wikiwebu](ht
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 <a id="error112"></a>
-## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>„Chyba připojení (112): Hostitel je mimo provoz, protože vypršel časový limit pro opětovné připojení.
+## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Chyba připojení (112): hostitel je mimo provoz, protože došlo k vypršení časového limitu připojení.
 
 K chybě připojení 112 dochází v klientovi s Linuxem při dlouhodobé nečinnosti klienta. Po delší době nečinnosti se klient odpojí a vyprší platnost připojení.  
 
@@ -278,8 +278,8 @@ Tento problém s opětovným připojením v jádru Linuxu je teď opravený v r�
 
 - [Oprava opětovného připojení, aby se neodkládalo opětovné připojení k relaci protokolu SMB 3 dlouho po opětovném připojení k socketu](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
 - [Volání služby Echo okamžitě po opětovném připojení k socketu](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
-- [CIFS: Oprava možného poškození paměti během opětovného připojování](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
-- [CIFS: Oprava možného dvojího uzamčení vzájemně vyloučeného přístupu během opětovného připojování (u jádra verze 4.9 nebo novější)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
+- [CIFS: Oprava možného poškození paměti během opětovného připojení](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: Oprava možného dvojitého zamykání mutex během opětovného připojení (pro jádro v 4.9 a novější)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
 Tyto změny se však ještě nemusely přenést do všech distribucí Linuxu. Tuto opravu a další opravy opětovného připojení najdete v části [Minimální doporučené verze s odpovídajícími možnostmi připojení (protokol SMB verze 2.1 vs. protokol SMB verze 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) článku [Použití služby Azure Files s Linuxem](storage-how-to-use-files-linux.md). Tuto opravu můžete získat upgradem na některou z těchto doporučených verzí jádra.
 
@@ -289,6 +289,6 @@ Tento problém můžete obejít tím, že zadáte trvalé připojení. Trvalé p
 
 Pokud nemůžete upgradovat na nejnovější verze jádra, můžete tento problém obejít tím, že ve sdílené složce Azure budete uchovávat soubor, do kterého budete každých maximálně 30 sekund zapisovat. Musí se jednat o operaci zápisu, jako je přepsání vytvořeného nebo upraveného data souboru. Jinak můžete dostávat výsledky uložené v mezipaměti a vaše operace nemusí aktivovat opětovné připojení.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 
 Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém.

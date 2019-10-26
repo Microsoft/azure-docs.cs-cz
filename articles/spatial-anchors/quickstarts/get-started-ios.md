@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – vytvoření aplikace pro iOS pomocí Azure prostorových kotvy | Dokumentace Microsoftu
-description: V tomto rychlém startu se dozvíte, jak vytvářet aplikace pro iOS pomocí prostorových kotvy.
+title: Rychlý Start – vytvoření aplikace pro iOS pomocí prostorových kotev Azure | Microsoft Docs
+description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS pomocí prostorových ukotvení.
 author: craigktreasure
 manager: aliemami
 services: azure-spatial-anchors
@@ -8,43 +8,43 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56360238db8632e74a95c057a7fe643b5cea3151
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 42a97646a6881ead61ceeaff3fe8c0c8d73d6057
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206837"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929398"
 ---
-# <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Rychlý start: Vytvoření aplikace pro iOS pomocí Azure prostorových ukotvení v Swift a Objective-C
+# <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Rychlý Start: Vytvoření aplikace pro iOS pomocí prostorových kotev Azure v SWIFT nebo objektivní-C
 
-Tento rychlý start popisuje, jak vytvořit aplikaci s iOS pomocí [prostorových kotvy Azure](../overview.md) v Swift a Objective-C. Azure prostorových kotvy je služba napříč platformami pro vývojáře, která vám umožní vytvořit prostředí hybridní realita s využitím objektů, které se zachovávají jejich umístění na zařízeních v čase. Jakmile budete hotovi, budete mít aplikaci pro iOS ARKit, která můžete uložit a odvolat prostorových ukotvení.
+V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS pomocí [prostorových kotev Azure](../overview.md) buď v SWIFT, nebo v cíli-C. Prostorové kotvy Azure je služba pro vývojáře napříč platformami, která umožňuje vytvářet hybridní prostředí realit pomocí objektů, které v průběhu času trvale uchovávají jejich umístění v rámci zařízení. Až budete hotovi, budete mít ARKit aplikaci pro iOS, která může uložit a odvolat prostorovou kotvu.
 
 Dozvíte se, jak provést tyto akce:
 
 > [!div class="checklist"]
-> * Vytvoření účtu prostorových kotvy
-> * Konfigurace prostorový kotvy účtu identifikátor a klíč účtu
+> * Vytvoření účtu prostorových kotev
+> * Konfigurace identifikátoru účtu prostorových kotev a klíče účtu
 > * Nasazení a spuštění na zařízení s iOS
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- Počítače s macOS pro vývojáře povolené s <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10 +</a> a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> nainstalované.
-- Git instalovaných pomocí instalace HomeBrew. Jako jeden řádek, terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Potom spusťte `brew install git`.
-- Vývojář povolené <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit kompatibilní</a> zařízení s Iosem.
+- MacOS počítač s podporou vývojářů s nainstalovaným <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10 +</a> a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> .
+- Git se nainstaloval přes HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Pak spusťte `brew install git`.
+- Vývojářem podporujícím zařízení s iOS <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">kompatibilní s ARKit</a> .
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project"></a>Otevřete ukázkový projekt
+## <a name="open-the-sample-project"></a>Otevřete vzorový projekt
 
-Pomocí terminálu můžete provádět následující akce.
+Pomocí terminálu proveďte následující akce.
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Instalace nezbytné podů pomocí CocoaPods:
+Nainstalujte potřebné lusky pomocí CocoaPods:
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
@@ -64,9 +64,12 @@ cd ./iOS/Objective-C/
 
 ---
 
-Spustit `pod install --repo-update` nainstalujte CocoaPods pro projekt.
+Spusťte `pod install --repo-update` pro instalaci CocoaPods pro projekt.
 
 Nyní otevřete `.xcworkspace` v Xcode.
+
+> [!NOTE]
+> Pokud máte CocoaPod problémy po upgradu na macOS Catalina (10,15), Projděte [si postup](#cocoapods-issues-on-macos-catalina-1015) řešení potíží.
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
@@ -82,46 +85,58 @@ open ./SampleObjC.xcworkspace
 
 ---
 
-## <a name="configure-account-identifier-and-key"></a>Nakonfigurujte identifikátor účtu a klíč
+## <a name="configure-account-identifier-and-key"></a>Konfigurace identifikátoru a klíče účtu
 
-Dalším krokem je konfigurace aplikace pro používání identifikátor účtu a klíč účtu. Jste zkopírovali do textového editoru, když [nastavení zdroje prostorových kotvy](#create-a-spatial-anchors-resource).
+Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Při [nastavování prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-Otevřít `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
+Otevřete `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
-Vyhledejte `spatialAnchorsAccountKey` pole a nahraďte `Set me` klíčem účtu.
+Vyhledejte pole `spatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
 
-Vyhledejte `spatialAnchorsAccountId` pole a nahraďte `Set me` s identifikátor účtu.
+Vyhledejte pole `spatialAnchorsAccountId` a nahraďte `Set me` identifikátorem účtu.
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-Otevřít `iOS/Objective-C/SampleObjC/BaseViewController.m`.
+Otevřete `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
-Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` klíčem účtu.
+Vyhledejte pole `SpatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
 
-Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` s identifikátor účtu.
+Vyhledejte pole `SpatialAnchorsAccountId` a nahraďte `Set me` identifikátorem účtu.
 
 ---
 
-## <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace na zařízení s Iosem
+## <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do zařízení s iOS
 
-Připojit zařízení s Iosem do Mac a nastavte **aktivní schéma** na zařízení s Iosem.
+Připojte zařízení s iOS k počítači Mac a nastavte **aktivní schéma** na zařízení s iOS.
 
-![Vyberte zařízení](./media/get-started-ios/select-device.png)
+![Vyberte zařízení.](./media/get-started-ios/select-device.png)
 
-Vyberte **sestavení a poté spusťte aktuální schéma**.
+Vyberte **Sestavit a potom spusťte aktuální schéma**.
 
 ![Nasazení a spuštění](./media/get-started-ios/deploy-run.png)
 
 > [!NOTE]
-> Pokud se zobrazí `library not found for -lPods-SampleObjC` chyba, pravděpodobně otevřením `.xcodeproj` souborů namísto `.xcworkspace`. Otevřít `.xcworkspace` a zkuste to znovu.
+> Pokud se zobrazí chyba `library not found for -lPods-SampleObjC`, pravděpodobně jste otevřeli soubor `.xcodeproj` namísto `.xcworkspace`. Otevřete `.xcworkspace` a zkuste to znovu.
 
-V Xcode, zastavte aplikaci stisknutím klávesy **Zastavit**.
+V Xcode zastavte aplikaci stisknutím klávesy **stop**.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="cocoapods-issues-on-macos-catalina-1015"></a>Problémy s CocoaPods na macOS Catalina (10,15)
+
+Pokud jste nedávno aktualizovali na macOS Catalina (10,15) a původně jste CocoaPods nainstalovali, CocoaPods může být v nefunkčním stavu a nemusí správně konfigurovat soubory lusku a `.xcworkspace` projektu. Chcete-li tento problém vyřešit, budete muset přeinstalovat CocoaPods spuštěním následujících příkazů:
+
+```shell
+brew update
+brew install cocoapods --build-from-source
+brew link --overwrite cocoapods
+```
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Kurz: Sdílená složka prostorových kotvy napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Kurz: sdílení prostorových ukotvení napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)

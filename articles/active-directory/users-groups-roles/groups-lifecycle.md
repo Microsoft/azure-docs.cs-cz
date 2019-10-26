@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 10/24/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3cef2bd16907de6e60db2678516f70346a20285
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5dd8858786d59563542c95d43d4e480ab1c11383
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803604"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933784"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -28,23 +28,33 @@ V tomto článku se dozvíte, jak spravovat životní cyklus skupin Office 365 n
 
 Jakmile nastavíte vypršení platnosti skupiny:
 
-- Skupiny s aktivitami uživatele se automaticky Obnovují jako vypršení platnosti v blízkosti
+- Skupiny s aktivitami uživatele se automaticky Obnovují jako vypršení platnosti (Preview).
 - Vlastníci skupiny se oznamují, aby obnovili skupinu, pokud se skupina automaticky neobnovuje.
 - Odstraní se libovolná skupina, která není obnovená.
 - Všechny odstraněné skupiny Office 365 je možné obnovit do 30 dnů vlastníky skupiny nebo správcem.
 
-Akce Folloing budou mít za následek automatické obnovení skupiny:
-
-- SharePoint – zobrazení, úpravy, stažení, přesunutí, sdílení a nahrání souborů
-- Outlook – připojení skupiny, zpráva skupiny pro čtení/zápis a jako zpráva
-- Týmy – navštivte kanál Teams
-
-V současné době se pro skupiny Office 365 v rámci jednoho tenanta dá nakonfigurovat jenom jedna zásada vypršení platnosti.
+V současné době je možné nakonfigurovat pro všechny skupiny Office 365 v organizaci Azure AD jenom jednu zásadu vypršení platnosti.
 
 > [!NOTE]
 > Konfigurace a použití zásad vypršení platnosti pro skupiny Office 365 vyžaduje, abyste měli k disAzure AD Premium licence pro členy všech skupin, na které se zásady vypršení platnosti aplikují, ale ne nutně.
 
 Informace o tom, jak stáhnout a nainstalovat rutiny Azure AD PowerShellu, najdete v tématu [Azure Active Directory PowerShellu pro graf 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+
+## <a name="activity-based-automatic-renewal-preview"></a>Automatické obnovení na základě aktivit (Preview)
+
+Pomocí služby Azure AD Intelligence se teď skupiny automaticky Obnovují na základě toho, jestli jsou v nedávné době použity. Tato funkce eliminuje nutnost ručních akcí podle vlastníků skupin, protože je založená na aktivitě uživatelů ve skupinách napříč službami Office 365, jako je Outlook, SharePoint, teams nebo Yammer. Pokud například vlastník nebo člen skupiny nahraje dokument do SharePointu, navštíví kanál týmů nebo pošle e-mailovou zprávu do skupiny v Outlooku, skupina se automaticky obnoví a vlastník nezíská žádná oznámení o obnovení.
+
+### <a name="activities-that-automatically-renew-group-expiration"></a>Aktivity, které automaticky Obnovují vypršení platnosti skupiny
+
+Následující akce uživatele způsobují automatické obnovení skupin:
+
+- SharePoint: zobrazení, úpravy, stažení, přesunutí, sdílení nebo nahrání souborů
+- Outlook: připojit se ke skupině, číst/zapisovat zprávy ze skupinového prostoru, jako je například zpráva (v aplikaci Outlook Web Access)
+- Týmy: navštivte kanál týmů
+
+### <a name="auditing-and-reporting"></a>Auditování a vytváření sestav
+
+Správci můžou získat seznam automaticky obnovených skupin z protokolů auditu aktivit ve službě Azure AD.
 
 ## <a name="roles-and-permissions"></a>Role a oprávnění
 
@@ -67,16 +77,16 @@ Další informace o oprávněních k obnovení odstraněné skupiny najdete [v t
 
 3. Na stránce **vypršení platnosti** můžete:
 
-  - Nastavte dobu života skupiny ve dnech. Můžete vybrat jednu z přednastavených hodnot nebo vlastní hodnotu (měla by být 31 dní nebo více).
-  - Zadejte e-mailovou adresu, na kterou by se měla odeslat oznámení o prodloužení a vypršení platnosti, když skupina nemá žádného vlastníka.
-  - Vyberte, které skupiny Office 365 vyprší. Můžete nastavit vypršení platnosti pro:
-    - **Vše** Skupiny Office 365
-    - Seznam **vybraných** skupin Office 365
-    - **Žádné** pro omezení vypršení platnosti pro všechny skupiny
-  - Až budete hotovi, uložte nastavení kliknutím na **Uložit**.
+    - Nastavte dobu života skupiny ve dnech. Můžete vybrat jednu z přednastavených hodnot nebo vlastní hodnotu (měla by být 31 dní nebo více).
+    - Zadejte e-mailovou adresu, na kterou by se měla odeslat oznámení o prodloužení a vypršení platnosti, když skupina nemá žádného vlastníka.
+    - Vyberte, které skupiny Office 365 vyprší. Můžete nastavit vypršení platnosti pro:
+      - **Vše** Skupiny Office 365
+      - Seznam **vybraných** skupin Office 365
+      - **Žádné** pro omezení vypršení platnosti pro všechny skupiny
+    - Až budete hotovi, uložte nastavení kliknutím na **Uložit**.
 
 > [!NOTE]
-> Když nastavíte vypršení platnosti, všechny skupiny, které jsou starší než interval vypršení platnosti, se nastaví na 35 dní do vypršení platnosti, pokud se skupina automaticky neobnoví nebo ji vlastník obnoví. 
+> Když nastavíte vypršení platnosti, všechny skupiny, které jsou starší než interval vypršení platnosti, se nastaví na 35 dní do vypršení platnosti, pokud se skupina automaticky neobnoví nebo ji vlastník obnoví.
 >
 > Když se dynamická skupina odstraní a obnoví, zobrazuje se jako nová skupina a znovu se vyplní podle pravidla. Tento proces může trvat až 24 hodin.
 >
@@ -99,18 +109,22 @@ Skupinu je možné obnovit do 30 dnů od jejího odstranění výběrem možnost
 Pokud skupina, kterou obnovujete, obsahuje dokumenty, weby SharePointu nebo jiné trvalé objekty, může trvat až 24 hodin, než se úplně obnoví skupina a její obsah.
 
 ## <a name="how-to-retrieve-office-365-group-expiration-date"></a>Jak načíst datum vypršení platnosti skupiny Office 365
+
 Kromě přístupového panelu, kde uživatelé mohou zobrazit podrobnosti o skupině včetně data vypršení platnosti a data posledního obnovení, může být datum vypršení platnosti skupiny sady Office 365 z Microsoft Graph REST API beta. v Microsoft Graph Beta byla povolena vlastnost expirationDateTime jako skupina. Dá se načíst pomocí žádosti o získání. Další podrobnosti najdete v [tomto příkladu](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example).
 
 > [!NOTE]
 > Aby bylo možné spravovat členství ve skupinách na přístupovém panelu, musí být v obecném nastavení skupiny Azure Active Directory nastavení omezit přístup ke skupinám v přístupovém panelu.
 
 ## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Jak funguje vyprší platnost skupiny Office 365 s poštovní schránkou na základě právního blokování
-Po vypršení platnosti skupiny a jejím odstranění se po uplynutí 30 dnů od odstranění dat skupiny z aplikací, jako je Planner, weby nebo týmy, trvale odstraní, ale poštovní schránka s právním blokováním se zachová a není trvale Odstraněná. Správce může pomocí rutin systému Exchange obnovit poštovní schránku, aby data načetla. 
+
+Po vypršení platnosti skupiny a jejím odstranění se po uplynutí 30 dnů od odstranění dat skupiny z aplikací, jako je Planner, weby nebo týmy, trvale odstraní, ale poštovní schránka s právním blokováním se zachová a není trvale Odstraněná. Správce může pomocí rutin systému Exchange obnovit poštovní schránku, aby data načetla.
 
 ## <a name="how-office-365-group-expiration-works-with-retention-policy"></a>Jak funguje vypršení platnosti skupiny Office 365 se zásadami uchovávání informací
+
 Zásady uchovávání informací jsou nakonfigurovány pomocí centra zabezpečení a dodržování předpisů. Pokud jste pro skupiny Office 365 nastavili zásady uchovávání informací, když vyprší a odstraníte skupinu, konverzace skupiny v poštovní schránce skupiny a souborech v lokalitě skupiny se uchovávají v kontejneru uchovávání informací o konkrétním počtu dní definovaných v uchování. politických. Uživatelé neuvidí po vypršení platnosti skupinu ani její obsah, ale mohou obnovit lokalitu a data poštovní schránky prostřednictvím e-Discovery.
 
 ## <a name="powershell-examples"></a>Příklady prostředí PowerShell
+
 Tady jsou příklady, jak můžete pomocí rutin PowerShellu nakonfigurovat nastavení vypršení platnosti pro skupiny Office 365 ve vaší organizaci Azure AD:
 
 1. Nainstalujte modul PowerShellu v 2.0 a přihlaste se na příkazovém řádku PowerShellu:
@@ -152,7 +166,7 @@ Tady jsou příklady, jak můžete pomocí rutin PowerShellu nakonfigurovat nast
    Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
    ```
   
-1. Odeberte existující zásady Remove-AzureADMSGroupLifecyclePolicy: Tato rutina odstraní nastavení vypršení platnosti skupiny Office 365, ale vyžaduje ID zásad. Tím se zakáže vypršení platnosti pro skupiny Office 365.
+1. Odeberte existující zásady Remove-AzureADMSGroupLifecyclePolicy: Tato rutina odstraní nastavení vypršení platnosti skupiny Office 365, ale vyžaduje ID zásad. Tato rutina zakáže vypršení platnosti pro skupiny Office 365.
   
    ```powershell
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"

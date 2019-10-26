@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 4035746772b44d7267d6a9cd90c7bdc02c804a8a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 20f325ff64581396f5f7ab2ce05a2479cdb45118
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147078"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933549"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii z Hyper-V do Azure
 
@@ -39,6 +39,8 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 ![Architektura](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
+> [!WARNING]
+> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Komponenty architektury – technologie Hyper-V s nástrojem VMM
 
@@ -50,7 +52,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 **Server VMM** | Server VMM obsahuje jeden nebo více cloudů s hostiteli Hyper-V. | Na server VMM nainstalujete poskytovatele Site Recovery, pro orchestraci replikace pomocí Site Recovery a registraci serveru v trezoru služby Recovery Services.
 **Hostitel Hyper-V** | Jeden nebo několik hostitelů/clusterů Hyper-V spravovaných nástrojem VMM. |  Agenta Recovery Services nainstalujete na každého hostitele nebo uzel clusteru Hyper-V.
 **Virtuální počítače Hyper-V** | Jeden nebo několik virtuálních počítačů spuštěných na hostitelském serveru Hyper-V. | Na virtuálních počítačích není výslovně potřeba nic instalovat.
-**Sítě** | Logické sítě a sítě virtuálních počítačů nastavené na serveru VMM. Síť virtuálních počítačů by měla být propojená s logickou sítí, která je přidružená ke cloudu. | Sítě virtuálních počítačů jsou namapované na virtuální sítě Azure. Když se po převzetí služeb při selhání vytvoří virtuální počítače Azure, přidají se do sítě Azure, která je namapovaná na síť virtuálních počítačů.
+**Networking** | Logické sítě a sítě virtuálních počítačů nastavené na serveru VMM. Síť virtuálních počítačů by měla být propojená s logickou sítí, která je přidružená ke cloudu. | Sítě virtuálních počítačů jsou namapované na virtuální sítě Azure. Když se po převzetí služeb při selhání vytvoří virtuální počítače Azure, přidají se do sítě Azure, která je namapovaná na síť virtuálních počítačů.
 
 **Architektura Hyper-V do Azure (s VMM)**
 
@@ -70,7 +72,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 1. Po povolení ochrany pro virtuální počítače Hyper-V (na webu Azure Portal nebo místně) se spustí **Povolení ochrany**.
 2. Úloha zkontroluje, zda počítač splňuje požadavky, a potom vyvolá metodu [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx), která nastaví replikaci s nastavením, které jste nakonfigurovali.
 3. Úloha spustí počáteční replikaci vyvoláním metody [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx), která zahájí úplnou replikaci virtuálního počítače a odešle virtuální disky virtuálního počítače do Azure.
-4. Úlohu můžete sledovat na kartě **Úlohy**.      ![Seznam úloh](media/hyper-v-azure-architecture/image1.png) ![Podrobnosti povolení ochrany](media/hyper-v-azure-architecture/image2.png)
+4. Úlohu můžete sledovat na kartě **úlohy** .      seznam úloh ![](media/hyper-v-azure-architecture/image1.png) ![povolit ochranu procházením](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Počáteční replikace dat
@@ -131,9 +133,9 @@ Pokud dojde k chybě replikace, je předdefinován opakovaný pokus. Opakování
 Po opětovném zprovoznění místní infrastruktury můžete provést navrácení služeb po obnovení. Navrácení služeb po obnovení proběhne ve třech fázích:
 
 1. Vykonání plánovaného převzetí služeb při selhání z Azure do místní lokality:
-    - **Minimalizovat prostoje**: Pokud použijete tuto možnost Site Recovery synchronizuje data před převzetím služeb při selhání. Kontroluje změněné bloky dat a stáhne je do místní lokality, zatímco virtuální počítač Azure běží a minimalizuje výpadky. Když ručně určíte, že převzetí služeb při selhání by mělo být dokončené, virtuální počítač Azure se vypne a všechny poslední změny rozdílu se zkopírují a spustí se převzetí služeb při selhání.
-    - **Úplné stažení**: Tato data možností se synchronizují během převzetí služeb při selhání. Tato možnost stáhne celý disk. Je rychlejší, protože nejsou vypočítány žádné kontrolní součty, ale existuje více výpadků. Tuto možnost použijte, pokud jste už nějakou dobu spustili repliky virtuálních počítačů Azure, nebo pokud se místní virtuální počítač odstranil.
-    - **Vytvořit virtuální počítač**: Můžete vybrat, že navrácení služeb po obnovení do stejného virtuálního počítače nebo na jiný virtuální počítač. Můžete určit, že Site Recovery vytvořit virtuální počítač, pokud ještě neexistuje.
+    - **Minimalizovat prostoje**: Pokud použijete tuto možnost Site Recovery před převzetí služeb při selhání synchronizuje data. Kontroluje změněné bloky dat a stáhne je do místní lokality, zatímco virtuální počítač Azure běží a minimalizuje výpadky. Když ručně určíte, že převzetí služeb při selhání by mělo být dokončené, virtuální počítač Azure se vypne a všechny poslední změny rozdílu se zkopírují a spustí se převzetí služeb při selhání.
+    - **Úplné stažení**: při převzetí služeb při selhání je tato data možností synchronizovaná. Tato možnost stáhne celý disk. Je rychlejší, protože nejsou vypočítány žádné kontrolní součty, ale existuje více výpadků. Tuto možnost použijte, pokud jste už nějakou dobu spustili repliky virtuálních počítačů Azure, nebo pokud se místní virtuální počítač odstranil.
+    - **Vytvořit virtuální počítač**: můžete vybrat, že se navrácení služeb po obnovení do stejného virtuálního počítače nebo na jiný virtuální počítač. Můžete určit, že Site Recovery vytvořit virtuální počítač, pokud ještě neexistuje.
 
 2. Po dokončení počáteční synchronizace můžete vybrat, aby se převzetí služeb při selhání dokončilo. Po dokončení se můžete přihlásit k místnímu virtuálnímu počítači a ověřit, jestli všechno funguje podle očekávání. V Azure Portal vidíte, že se virtuální počítače Azure zastavily.
 3.  Pak potvrdíte převzetí služeb při selhání, které se dokončí, a znovu otevřete přístup k zatížení z místního virtuálního počítače.

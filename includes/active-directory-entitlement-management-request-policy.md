@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: aba3dd34383edbfb555adcc2063e4a2b76af1959
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 78a0dafeedc9aac4db69903b9f1193574cbd39c7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389388"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934606"
 ---
 ## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
 
 Postupujte podle těchto kroků, pokud chcete, aby uživatelé ve vašem adresáři mohli požadovat tento balíček přístupu. Při definování zásad žádosti můžete zadat jednotlivé uživatele nebo skupiny uživatelů, kteří jsou často. Vaše organizace například už může mít skupinu, jako je například **Všichni zaměstnanci**.  Pokud se tato skupina přidá v zásadách pro uživatele, kteří můžou požádat o přístup, pak může každý člen této skupiny požádat o přístup.
 
-1. V seznamu **Uživatelé, kteří můžou vyžádat přístup** vyberte **pro uživatele v adresáři**.
+1. V části **Uživatelé, kteří můžou požádat o přístup** , klikněte na **uživatele v adresáři**.
 
     Když vyberete tuto možnost, zobrazí se nové možnosti, které vám pomůžou lépe upřesnit, kdo v adresáři může tento přístupový balíček požádat.
 
@@ -52,7 +52,7 @@ Postupujte podle těchto kroků, pokud chcete, aby uživatelé, kteří nejsou v
 > [!NOTE]
 > Uživatelský účet hosta se vytvoří pro uživatele, který ještě není ve vašem adresáři, jehož žádost je schválená nebo automaticky schválená. Host bude pozván, ale neobdrží e-mail s pozvánkou. Místo toho obdrží e-mail po doručení jejich přiřazení balíčku přístupu. Ve výchozím nastavení platí, že pokud už uživatel typu host již nemá žádná přiřazení balíčku přístupu, protože jejich poslední přiřazení vypršela nebo byla zrušena, bude tento uživatelský účet hosta zablokován a následně odstraněn. Pokud chcete, aby uživatelé typu Host zůstali ve vašem adresáři po neomezenou dobu, a to i v případě, že nemají žádná přiřazení balíčků přístupu, můžete změnit nastavení pro konfiguraci správy nároků. Další informace o objektu uživatele hosta najdete v tématu [vlastnosti Azure Active Directoryho uživatele spolupráce B2B](../articles/active-directory/b2b/user-properties.md).
 
-1. V seznamu **Uživatelé, kteří můžou vyžádat přístup** vyberte **pro uživatele, kteří nejsou ve vašem adresáři**.
+1. V části **Uživatelé, kteří můžou požádat o přístup** , klikněte na uživatele, kteří **nejsou ve vašem adresáři**.
 
     Když vyberete tuto možnost, zobrazí se nové možnosti.
 
@@ -65,20 +65,20 @@ Postupujte podle těchto kroků, pokud chcete, aby uživatelé, kteří nejsou v
     | **Konkrétní propojené organizace** | Tuto možnost vyberte, pokud chcete vybrat ze seznamu organizací, které jste přidali jako správce. Všichni uživatelé z vybraných organizací budou moct požádat o tento balíček přístupu. |
     | **Všechny připojené organizace** | Tuto možnost vyberte, pokud chcete, aby všichni uživatelé ze všech připojených organizací mohli požádat o tento balíček přístupu. |
 
-    Připojená organizace je externí adresář služby Azure AD nebo doména, se kterou často spolupracujete.
+    Připojená organizace je externí adresář nebo doména služby Azure AD, ke kterým máte relaci.
 
 1. Pokud jste vybrali **konkrétní připojené organizace**, klikněte na **Přidat adresáře** a vyberte si ze seznamu připojených organizací, které jste přidali jako správce.
 
-1. Zadejte název domény, ve kterém chcete vyhledat připojenou organizaci s názvem domény.
+1. Zadejte název nebo název domény, ve kterém chcete hledat dříve připojenou organizaci.
 
     ![Přístup k balíčku – požadavky – výběr adresářů](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    Pokud organizace, se kterou chcete spolupracovat, není v seznamu, můžete požádat správce, aby ho přidal jako připojenou organizaci. 
+    Pokud organizace, se kterou chcete spolupracovat, není v seznamu, můžete požádat správce, aby ho přidal jako připojenou organizaci. Další informace najdete v tématu [Přidání připojené organizace](../articles/active-directory/governance/entitlement-management-organization.md).
 
 1. Po výběru všech připojených organizací klikněte na **Vybrat**.
 
     > [!NOTE]
-    > Všichni uživatelé z vybraných připojených organizací budou moct požádat o tento balíček přístupu. To zahrnuje uživatele ze všech subdomén přidružených k připojeným organizacím.
+    > Všichni uživatelé z vybraných připojených organizací budou moct požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k organizaci, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. Přeskočte dolů k části [schválení](#approval) .
 
@@ -86,11 +86,11 @@ Postupujte podle těchto kroků, pokud chcete, aby uživatelé, kteří nejsou v
 
 Postupujte podle těchto kroků, pokud chcete vynechat žádosti o přístup a umožníte správcům, aby k tomuto balíčku přístupu přiřadili přímo konkrétní uživatele. Uživatelé nebudou muset vyžadovat balíček přístupu. Pořád můžete nastavit nastavení životního cyklu, ale neexistují žádná nastavení žádostí.
 
-1. V seznamu **Uživatelé, kteří můžou vyžádat přístup** , vyberte možnost **žádný (pouze přímá přiřazení správců**).
+1. V části **Uživatelé, kteří můžou požádat o přístup** , klikněte na možnost **žádný (pouze přímá přiřazení správců**).
 
     ![Přístup k balíčku – požadavky – pouze přímá přiřazení správců](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    Po vytvoření balíčku pro přístup můžete k balíčku pro přístup přímo přiřadit konkrétní interní a externí uživatele. Pokud zadáte externího uživatele, vytvoří se ve vašem adresáři uživatelský účet hosta. Informace o tom, jak přímo přiřazovat uživatele, najdete v tématu [zobrazení a změna přiřazení balíčku pro přístup](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
+    Po vytvoření balíčku pro přístup můžete k balíčku pro přístup přímo přiřadit konkrétní interní a externí uživatele. Pokud zadáte externího uživatele, vytvoří se ve vašem adresáři uživatelský účet hosta. Informace o tom, jak přímo přiřazovat uživatele, najdete v tématu [zobrazení, přidání a odebrání přiřazení balíčku pro přístup](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
 
 1. Přeskočte dolů do oddílu [Povolit žádosti](#enable-requests) .
 
@@ -100,6 +100,8 @@ V části schvalování určíte, jestli se vyžaduje schválení, když si uži
 
 - Pouze jeden z vybraných schvalovatelů nebo záložní schvalovatelé musí žádost schválit. Schválení ze všech schvalovatelů se nevyžaduje.
 - Rozhodnutí o schválení vychází z toho, kdo žádost nejprve zkontroluje.
+
+Pomocí těchto kroků určíte nastavení schválení pro uživatele, které jste předtím vybrali.
 
 1. Pokud chcete pro žádosti od vybraných uživatelů vyžadovat schválení, nastavte u přepínače **vyžadovat schválení** **hodnotu Ano**. Chcete-li automaticky schvalovat požadavky, nastavte přepínač na **ne**.
 

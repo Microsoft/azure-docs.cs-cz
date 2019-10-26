@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 92a46f7be116d0664b438c9039e311f802c873e5
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: 79a11a58f11486f3eda0205e62e7a4a92ff070b2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708082"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933938"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatické aktualizace služby mobility v Azure do Azure – replikace
 
@@ -53,11 +53,11 @@ Pokud povolíte replikaci pro virtuální počítač buď [od zobrazení virtuá
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Přepínání nastavení aktualizace rozšíření v rámci trezoru
 
-1. V trezoru můžete přejít na **Správa** > **Site Recovery infrastruktury**.
-2. V části pro**Nastavení aktualizace rozšíření** **Azure Virtual Machines** > zapněte přepínač **Povolit Site Recovery ke správě** . Pokud ho chcete spravovat ručně, vypněte ho. 
-3. Vyberte **Uložit**.
+1. V trezoru můžete přejít na **správu** > **Site Recovery infrastruktury**.
+2. V části pro **Nastavení aktualizace rozšíření** **služby Azure Virtual Machines** > zapněte přepínač **Povolit Site Recovery pro správu** . Pokud ho chcete spravovat ručně, vypněte ho. 
+3. Vyberte **Save** (Uložit).
 
-![Nastavení aktualizací rozšíření](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![Nastavení aktualizace rozšíření](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
 > [!Important]
 > Když vyberete možnost **povoluje Site Recovery správě**, nastavení se použije na všechny virtuální počítače v odpovídajícím trezoru.
@@ -66,7 +66,8 @@ Pokud povolíte replikaci pro virtuální počítač buď [od zobrazení virtuá
 > [!Note]
 > Obě možnosti vás upozorní na účet Automation, který se používá ke správě aktualizací. Pokud tuto funkci používáte v trezoru poprvé, vytvoří se ve výchozím nastavení nový účet Automation. Alternativně můžete upravit nastavení a zvolit existující účet Automation. Všechna další povolení replikace ve stejném trezoru používají dříve vytvořenou replikaci. V současné době rozevírací seznam bude zobrazovat jenom účty Automation, které jsou ve stejné skupině prostředků jako trezor.  
 
-Pro vlastní účet Automation použijte tento skript:
+> [!IMPORTANT]
+> Níže uvedený skript musí být spuštěný v kontextu účtu Automation pro vlastní účet Automation, použijte tento skript:
 
 ```azurepowershell
 param(
@@ -505,7 +506,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ### <a name="manage-updates-manually"></a>Ruční správa aktualizací
 
-1. Pokud jsou na virtuálních počítačích nainstalované nové aktualizace služby mobility, zobrazí se následující oznámení: K dispozici je nová aktualizace agenta replikace služby Site Recovery. Kliknutím nainstalujete
+1. Pokud jsou na virtuálních počítačích nainstalované nové aktualizace služby mobility, zobrazí se toto oznámení: "nová aktualizace agenta replikace Site Recovery je k dispozici. Kliknutím nainstalujete
 
      ![Okno replikované položky](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 2. Vyberte oznámení a otevřete stránku výběr virtuálního počítače.
@@ -520,25 +521,25 @@ Pokud dojde k potížím s automatickými aktualizacemi, zobrazí se v části *
 
 Pokud nemůžete povolit automatické aktualizace, přečtěte si následující běžné chyby a doporučené akce:
 
-- **Chyba:** Nemáte oprávnění vytvořit účet Spustit jako pro Azure (instanční objekt) a udělit tomuto instančnímu objektu roli Přispěvatel.
+- **Chyba**: nemáte oprávnění k vytvoření účtu spustit v Azure jako (instančního objektu) a udělení role přispěvateli objektu služby.
 
-   **Doporučená akce**: Zajistěte, aby byl přihlášený účet přiřazen jako Přispěvatel, a akci opakujte. Pokud chcete získat další informace o přiřazování oprávnění, přečtěte si část požadovaná oprávnění v tématu [použití portálu k vytvoření aplikace služby Azure AD a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) .
+   **Doporučená akce**: Přesvědčte se, zda je přihlášený účet přiřazen jako Přispěvatel, a akci opakujte. Pokud chcete získat další informace o přiřazování oprávnění, přečtěte si část požadovaná oprávnění v tématu [použití portálu k vytvoření aplikace služby Azure AD a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) .
  
    Chcete-li opravit většinu problémů po povolení automatických aktualizací, vyberte možnost **opravit**. Pokud není tlačítko opravit k dispozici, přečtěte si chybovou zprávu zobrazenou v podokně nastavení aktualizace rozšíření.
 
    ![Tlačítko pro opravu služby Site Recovery v nastavení aktualizace rozšíření](./media/azure-to-azure-autoupdate/repair.png)
 
-- **Chyba:** Účet Spustit jako nemá oprávnění pro přístup k prostředku služby Recovery Services.
+- **Chyba**: účet Spustit jako nemá oprávnění pro přístup k prostředku služby Recovery Services.
 
-    **Doporučená akce**: Odstraňte a [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Nebo se ujistěte, že aplikace Azure Active Directory účtu Spustit jako pro automatizaci má přístup k prostředku Recovery Services.
+    **Doporučená akce**: odstraňte a [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Nebo se ujistěte, že aplikace Azure Active Directory účtu Spustit jako pro automatizaci má přístup k prostředku Recovery Services.
 
-- **Chyba:** Účet Spustit jako nebyl nalezen. Jedna z těchto položek byla odstraněna nebo nebyla vytvořena-Azure Active Directory aplikace, instanční objekt, role, Asset certifikátu Automation, Asset připojení Automation – nebo kryptografický otisk není totožný mezi certifikátem a připojením. 
+- **Chyba**: účet Spustit jako nebyl nalezen. Jedna z těchto položek byla odstraněna nebo nebyla vytvořena-Azure Active Directory aplikace, instanční objekt, role, Asset certifikátu Automation, Asset připojení Automation – nebo kryptografický otisk není totožný mezi certifikátem a připojením. 
 
-    **Doporučená akce**: Odstraňte a [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+    **Doporučená akce**: odstraňte a [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 
--  **Chyba:** Platnost certifikátu spustit jako pro Azure, který používá účet Automation, brzy vyprší. 
+-  **Chyba**: platnost certifikátu spustit jako pro Azure, který používá účet Automation, brzy vyprší. 
 
-    Certifikát podepsaný svým držitelem, který se vytvoří pro účet Spustit jako, vyprší jeden rok od data vytvoření. Před vypršením platnosti ho můžete kdykoli obnovit. Pokud jste se zaregistrovali k e-mailovým oznámením, obdržíte také e-maily, když se z vaší strany vyžaduje akce. Tato chyba se zobrazí po 2 měsících před datem vypršení platnosti a v případě vypršení platnosti certifikátu se změní na kritickou chybu. Po vypršení platnosti certifikátu nebudou Automatické aktualizace funkční, dokud neobnovíte stejné.
+    Certifikát podepsaný svým držitelem, který se vytvoří pro účet Spustit jako, vyprší jeden rok od data vytvoření. Před vypršením platnosti ho můžete kdykoli obnovit. Pokud jste se zaregistrovali k e-mailovým oznámením, obdržíte také e-maily, když se z vaší strany vyžaduje akce. Tato chyba se zobrazí po dvou měsících před datem vypršení platnosti a v případě vypršení platnosti certifikátu se změní na kritickou chybu. Po vypršení platnosti certifikátu nebudou Automatické aktualizace funkční, dokud neobnovíte stejné.
 
    **Doporučená akce**: Pokud chcete tento problém vyřešit, klikněte na opravit a pak na prodloužit certifikát.
     

@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d3794f409b2cdc11373dc330099e5ff93d65a2a1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527109"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934389"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD (Preview)
 
@@ -50,11 +50,13 @@ Následující diagram a kroky poskytují přehled o tom, jak mají externí už
 
 ![Diagram znázorňující životní cyklus externích uživatelů](./media/entitlement-management-external-users/external-users-lifecycle.png)
 
+1. [Přidáváte připojenou organizaci](entitlement-management-organization.md) pro adresář nebo doménu služby Azure AD, se kterým chcete spolupracovat.
+
 1. Ve svém adresáři vytvoříte balíček pro přístup, který obsahuje zásady [pro uživatele, kteří nejsou ve vašem adresáři](entitlement-management-access-package-create.md#for-users-not-in-your-directory).
 
 1. Pošlete odkaz na [portál pro přístup](entitlement-management-access-package-settings.md) k vašemu kontaktu v externí organizaci, kterou můžou sdílet s uživateli, aby si vyžádali balíček pro přístup.
 
-1. Externí uživatel (v tomto příkladu**žadatel a** ) používá odkaz Můj portál přístupu k [vyžádání přístupu](entitlement-management-request-access.md) k balíčku přístupu.
+1. Externí uživatel (v tomto příkladu**žadatel a** ) používá odkaz Můj portál přístupu k [vyžádání přístupu](entitlement-management-request-access.md) k balíčku přístupu. Způsob přihlášení uživatele závisí na typu ověřování adresáře nebo domény definované v připojené organizaci.
 
 1. Schvalovatel [žádost schválí](entitlement-management-request-approve.md) (nebo se žádost automaticky schválí).
 
@@ -116,6 +118,6 @@ Toto nastavení můžete změnit i po vytvoření katalogu.
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Přidat připojenou organizaci](entitlement-management-organization.md)
 - [Pro uživatele, kteří nejsou ve vašem adresáři](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [Vytvoření a správa katalogu prostředků](entitlement-management-catalog-create.md)
-- [Delegování a role](entitlement-management-delegate.md)

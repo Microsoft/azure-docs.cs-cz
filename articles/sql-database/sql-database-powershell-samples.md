@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 998497d3e790ba501ac5cdeb4974bf7ee9ea6a54
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 27b4a6f5614b79b2e9d8f3730441d702f2d7cc77
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059265"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933273"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Ukázky v Azure PowerShellu pro službu Azure SQL Database
 
@@ -41,6 +41,7 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu p
 | [Konfigurace a převzetí služeb při selhání databáze ve fondu s využitím aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje aktivní geografickou replikaci pro databázi Azure SQL v elastickém fondu SQL a převezme její služby při selhání do sekundární repliky. |
 |**Konfigurace skupiny převzetí služeb při selhání**||
 | [Konfigurace skupiny převzetí služeb při selhání pro izolovanou databázi](scripts/sql-database-add-single-db-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří databázi a skupinu převzetí služeb při selhání přidá databázi do skupiny převzetí služeb při selhání a otestuje převzetí služeb při selhání na sekundární server. | 
+| [Konfigurace skupiny převzetí služeb při selhání pro elastický fond](scripts/sql-database-add-elastic-pool-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří databázi, přidá ji do elastického fondu, přidá elastický fond do skupiny převzetí služeb při selhání a otestuje převzetí služeb při selhání na sekundární server. | 
 |**Škálování izolované databáze a elastického fondu**||
 | [Škálování izolované databáze](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu monitoruje metriky výkonu databáze Azure SQL, škáluje ji na vyšší velikost výpočetních prostředků a vytvoří pravidlo upozornění na jednu z metrik výkonu. |
 | [Škálování elastického fondu](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu monitoruje metriky výkonu elastického fondu databáze Azure SQL, škáluje ji na vyšší velikost výpočetních prostředků a vytvoří pravidlo upozornění na jednu z metrik výkonu. |
@@ -70,12 +71,14 @@ Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pr
 | [Obnovení databáze do spravované instance v jiné geografické oblasti](scripts/sql-managed-instance-restore-geo-backup.md) | Tento skript PowerShellu přebírá zálohu jedné databáze a obnoví ji do jiné oblasti. To se označuje jako scénář zotavení po havárii geografického obnovení. |
 | **Konfigurace transparentní šifrování dat (TDE)**||
 | [Správa transparentní šifrování dat ve spravované instanci pomocí vlastního klíče z Azure Key Vault](scripts/transparent-data-encryption-byok-sql-managed-instance-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje transparentní šifrování dat (TDE) ve scénáři Bring Your Own Key pro spravovanou instanci Azure SQL pomocí klíče z Azure Key Vault|
+|**Konfigurace skupiny převzetí služeb při selhání**||
+| [Konfigurace skupiny převzetí služeb při selhání pro spravovanou instanci](scripts/sql-database-add-managed-instance-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří dvě spravované instance, přidá je do skupiny převzetí služeb při selhání a pak otestuje převzetí služeb při selhání z primární spravované instance do sekundární spravované instance. | 
 |||
 
 Přečtěte si další informace o [spravované instanci Azure PowerShell rozhraní API](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances).
 
 ---
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
-Příklady uvedené na této stránce využívají rutiny [Azure SQL Database](/powershell/module/az.sql/) pro vytváření a správu prostředků Azure SQL. Další rutiny pro spouštění dotazů a provádění mnoha databázových úloh se nachází v modulu [SQLServer](/powershell/module/sqlserver/) . Další informace najdete v tématu [SQL Server PowerShell](/sql/powershell/sql-server-powershell/).
+Příklady uvedené na této stránce využívají [rutiny Azure SQL Database](/powershell/module/az.sql/) pro vytváření a správu prostředků Azure SQL. Další rutiny pro spouštění dotazů a provádění mnoha databázových úloh se nachází v modulu [SQLServer](/powershell/module/sqlserver/) . Další informace najdete v tématu [SQL Server PowerShell](/sql/powershell/sql-server-powershell/).

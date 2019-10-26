@@ -1,90 +1,84 @@
 ---
-title: Import dat Azure Log Analytics do Power BI | Dokumentace Microsoftu
-description: Power BI je Cloudová služba obchodní analýzy od Microsoftu, která poskytuje bohaté vizualizace a sestavy pro analýzu z různých sad dat.  Tento článek popisuje, jak nakonfigurovat a importovat do Power BI data služby Log Analytics a nakonfigurovat, aby automaticky aktualizovat.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 83edc411-6886-4de1-aadd-33982147b9c3
-ms.service: log-analytics
+title: Import dat služby Azure Log Analytics do Power BI | Microsoft Docs
+description: Power BI je cloudová služba pro obchodní analýzy od Microsoftu, která poskytuje bohatou vizualizaci a sestavy pro analýzu různých sad dat.  Tento článek popisuje, jak nakonfigurovat a importovat Log Analytics data do Power BI a nakonfigurovat je tak, aby se automaticky aktualizovala.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0b1627306f1a8e9d9285c72118bfebdcb53d369b
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.date: 05/01/2019
+ms.openlocfilehash: 62a010480dc83561a11c6ee99c76f35b29e808c1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626122"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932118"
 ---
-# <a name="import-azure-monitor-log-data-into-power-bi"></a>Importovat do Power BI data protokolů Azure Monitor
+# <a name="import-azure-monitor-log-data-into-power-bi"></a>Importovat data protokolu Azure Monitor do Power BI
 
 
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) je Cloudová služba obchodní analýzy od Microsoftu, která poskytuje bohaté vizualizace a sestavy pro analýzu z různých sad dat.  Výsledky dotazu protokolu Azure Monitor můžete importovat do datové sady Power BI umožňuje využívat jeho funkce, jako je kombinování dat z různých zdrojů a sdílení sestav na webu a mobilních zařízeních.
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) je cloudová služba pro obchodní analýzy od Microsoftu, která poskytuje bohatou vizualizaci a sestavy pro analýzu různých sad dat.  Výsledky dotazu protokolu Azure Monitor můžete importovat do datové sady Power BI, abyste mohli využít jeho funkce, jako je například kombinování dat z různých zdrojů a sdílení sestav na webových a mobilních zařízeních.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview"></a>Přehled
-Pro import dat z [pracovní prostor Log Analytics](manage-access.md) ve službě Azure Monitor do Power BI vytvoříte datovou sadu v Power BI na základě [dotaz protokolu](../log-query/log-query-overview.md) ve službě Azure Monitor.  Pokaždé, když se aktualizuje datovou sadu spuštění dotazu.  Potom můžete vytvářet sestavy Power BI, která využívají data z datové sady.  Vytvořte datovou sadu v Power BI, exportujete z Log Analytics pro váš dotaz [Power Query (M) jazyka](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Potom použít pro vytvoření dotazu v Power BI Desktopu a publikujte ji do Power BI jako datovou sadu.  Podrobnosti o tomto procesu jsou popsané níže.
+Chcete-li importovat data z [pracovního prostoru Log Analytics](manage-access.md) v Azure Monitor do Power BI, vytvořte datovou sadu v Power BI na základě [dotazu protokolu](../log-query/log-query-overview.md) v Azure monitor.  Dotaz se spustí pokaždé, když se datová sada aktualizuje.  Potom můžete vytvořit sestavy Power BI, které používají data z datové sady.  Chcete-li vytvořit datovou sadu v Power BI, exportujte dotaz z Log Analytics do [jazyka Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Pak použijete tuto akci k vytvoření dotazu v Power BI Desktop a pak ho publikujete do Power BI jako datovou sadu.  Podrobnosti o tomto procesu jsou popsány níže.
 
-![Log Analytics pro Power BI](media/powerbi/overview.png)
+![Log Analytics Power BI](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>Exportovat dotaz
-Začněte vytvořením [dotaz protokolu](../log-query/log-query-overview.md) , která vrací data, která chcete k naplnění datové sady Power BI.  Poté exportovat tento dotaz k [Power Query (M) jazyk](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) které může využívat Power BI Desktopu.
+Začněte vytvořením [dotazu protokolu](../log-query/log-query-overview.md) , který vrátí data, která chcete vyplnit Power BI datovou sadu.  Pak tento dotaz exportujte do [jazyka Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) , který lze použít v Power BI Desktop.
 
-1. [Vytvořit dotaz protokolu v Log Analytics](../log-query/get-started-portal.md) k extrakci dat pro datové sady.
-2. Vyberte **exportovat** > **Power BI dotazu (M)** .  Tento dotaz exportuje do textového souboru s názvem **PowerBIQuery.txt**. 
+1. [Vytvořte dotaz protokolu v Log Analytics](../log-query/get-started-portal.md) pro extrakci dat pro datovou sadu.
+2. Vyberte **exportovat** > **Power BI dotaz (M)** .  Tím se dotaz exportuje do textového souboru s názvem **PowerBIQuery. txt**. 
 
-    ![Export prohledávání protokolů](media/powerbi/export-analytics.png)
+    ![Exportovat hledání protokolu](media/powerbi/export-analytics.png)
 
 3. Otevřete textový soubor a zkopírujte jeho obsah.
 
-## <a name="import-query-into-power-bi-desktop"></a>Importovat dotaz do Power BI Desktopu
-Power BI Desktop je desktopová aplikace, která umožňuje vytvoření datové sady a sestavy, které je možné publikovat do Power BI.  Také ho můžete použít k vytvoření dotazu v jazyce Power Query exportovat ze služby Azure Monitor. 
+## <a name="import-query-into-power-bi-desktop"></a>Importovat dotaz do Power BI Desktop
+Power BI Desktop je desktopová aplikace, která umožňuje vytvořit datové sady a sestavy, které se dají publikovat do Power BI.  Můžete ji také použít k vytvoření dotazu pomocí Power Queryho jazyka exportovaného z Azure Monitor. 
 
-1. Nainstalujte [Power BI Desktopu](https://powerbi.microsoft.com/desktop/) Pokud nemáte ji už máte a pak otevřete aplikaci.
-2. Vyberte **získat Data** > **prázdný dotaz** otevřete nový dotaz.  Potom vyberte **rozšířený Editor** a vložte obsah exportovaného souboru do dotazu. Klikněte na **Done** (Hotovo).
+1. Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/desktop/) , pokud ho ještě nemáte, a pak aplikaci otevřete.
+2. Vyberte **získat Data** > **prázdný dotaz** pro otevření nového dotazu.  Pak vyberte **Rozšířený editor** a vložte obsah exportovaného souboru do dotazu. Klikněte na **Done** (Hotovo).
 
-    ![Power BI Desktopu dotazu](media/powerbi/desktop-new-query.png)
+    ![Power BI Desktop dotaz](media/powerbi/desktop-new-query.png)
 
-5. Spustí dotaz a jeho výsledky se zobrazí.  Můžete být vyzváni k zadání pověření pro připojení k Azure.  
-6. Zadejte popisný název dotazu.  Výchozí hodnota je **Query1**. Klikněte na tlačítko **zavřít a použít** na datovou sadu přidat do sestavy.
+5. Dotaz se spustí a zobrazí se jeho výsledky.  Může se zobrazit výzva k zadání přihlašovacích údajů pro připojení k Azure.  
+6. Zadejte popisný název dotazu.  Výchozí hodnota je **Dotaz1**. Kliknutím na **Zavřít a použít** přidejte datovou sadu do sestavy.
 
-    ![Název Power BI Desktopu](media/powerbi/desktop-results.png)
+    ![Název Power BI Desktop](media/powerbi/desktop-results.png)
 
 
 
-## <a name="publish-to-power-bi"></a>Publikování do Power BI
-Při publikování do Power BI se vytvoří datovou sadu a sestavu.  Pokud vytvoříte sestavu v Power BI Desktopu, pak toto bude publikován s vašimi daty.  Pokud ne, pak se vytvoří prázdné sestavy.  Můžete upravit sestavu v Power BI nebo vytvořte novou u datové sady.
+## <a name="publish-to-power-bi"></a>Publikovat do Power BI
+Když publikujete do Power BI, vytvoří se datová sada a sestava.  Pokud vytvoříte sestavu v Power BI Desktop, bude tato zpráva publikována s Vašimi daty.  V takovém případě se vytvoří prázdná sestava.  Sestavu můžete upravit v Power BI nebo vytvořit novou v závislosti na datové sadě.
 
-1. Vytvoření sestavy založené na datech.  Použití [dokumentace ke službě Power BI Desktopu](https://docs.microsoft.com/power-bi/desktop-report-view) Pokud nejste obeznámeni s ním.  
-1. Až budete připravení odeslat do Power BI, klikněte na tlačítko **publikovat**.  
-1. Po zobrazení výzvy vyberte cílové umístění ve vašem účtu Power BI.  Pokud nemáte konkrétní cíl v paměti, použijte **Můj pracovní prostor**.
+1. Vytvořte sestavu na základě vašich dat.  Pokud s ním nejste obeznámeni, použijte [dokumentaci Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-report-view) .  
+1. Až budete připraveni ho odeslat Power BI, klikněte na **publikovat**.  
+1. Po zobrazení výzvy vyberte cíl v účtu Power BI.  Pokud nemáte na mysli konkrétní cíl, použijte **pracovní prostor**.
 
-    ![Publikování Power BI Desktopu](media/powerbi/desktop-publish.png)
+    ![Publikování Power BI Desktop](media/powerbi/desktop-publish.png)
 
-1. Po dokončení publikování klikněte na tlačítko **otevřít v Power BI** otevřete Power BI s novou datovou sadu.
+1. Po dokončení publikování kliknutím na **otevřít v Power BI** otevřete Power BI s novou datovou sadou.
 
 
 ### <a name="configure-scheduled-refresh"></a>Konfigurace plánované aktualizace
-Datová sada v Power BI bude mít stejná data, která jste předtím viděli v Power BI Desktopu.  Bude nutné aktualizovat datové sady pravidelně na dotaz spustit znovu a jeho naplnění nejnovější data ze služby Azure Monitor.  
+Datová sada vytvořená v Power BI bude mít stejná data, která jste předtím viděli v Power BI Desktop.  Musíte pravidelně aktualizovat datovou sadu a znovu spustit dotaz a naplnit ho nejnovějšími daty z Azure Monitor.  
 
-1. Klikněte na pracovní prostor, kam jste odeslali sestavy a vyberte **datových sad** nabídky. 
-1. Vyberte příslušnou kontextovou nabídku vedle nová datová sada a vyberte **nastavení**. 
-1. V části **přihlašovací údaje ke zdroji dat** byste měli mít zprávu, že přihlašovací údaje jsou neplatné.  Je to proto, že jste nezadali pověření zatím pro datovou sadu pro použití při aktualizuje jeho data.  
-1. Klikněte na tlačítko **upravit přihlašovací údaje** a zadat přihlašovací údaje s přístupem k pracovnímu prostoru Log Analytics ve službě Azure Monitor. Pokud budete potřebovat dvojúrovňové ověřování, vyberte **OAuth2** pro **metodu ověřování** výzva k přihlášení pomocí přihlašovacích údajů.
+1. Klikněte na pracovní prostor, kam jste nahráli sestavu, a vyberte nabídku **datové sady** . 
+1. Vyberte kontextovou nabídku vedle vaší nové datové sady a vyberte **Nastavení**. 
+1. V části **přihlašovací údaje ke zdroji dat** byste měli mít zprávu, že přihlašovací údaje jsou neplatné.  Důvodem je to, že jste ještě nezadali přihlašovací údaje pro datovou sadu, která se používá při aktualizaci dat.  
+1. Klikněte na **Upravit přihlašovací údaje** a zadejte přihlašovací údaje s přístupem k pracovnímu prostoru Log Analytics v Azure monitor. Pokud požadujete dvojúrovňové ověřování, vyberte **OAuth2** , aby se pro **metodu ověřování** zobrazila výzva k přihlášení pomocí vašich přihlašovacích údajů.
 
-    ![Power BI plán](media/powerbi/powerbi-schedule.png)
+    ![Plán Power BI](media/powerbi/powerbi-schedule.png)
 
-5. V části **naplánovaná aktualizace** zapnout možnost **datech udržovat aktuální**.  Volitelně můžete změnit **obnovovací frekvence** a konkrétní čas spuštění aktualizace.
+5. V části **plánovaná aktualizace** zapněte možnost a **Udržujte si data v aktuálním stavu**.  Volitelně můžete změnit **Četnost aktualizace** a jednu nebo více konkrétních časů pro spuštění aktualizace.
 
-    ![Aktualizace Power BI](media/powerbi/powerbi-schedule-refresh.png)
+    ![Power BI aktualizace](media/powerbi/powerbi-schedule-refresh.png)
 
 
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](../log-query/log-query-overview.md) sestavování dotazů, které je možné exportovat do Power BI.
-* Další informace o [Power BI](https://powerbi.microsoft.com) k vytváření vizualizací založených na protokolu exporty Azure Monitor.
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si informace o [prohledávání protokolu](../log-query/log-query-overview.md) k vytváření dotazů, které je možné exportovat do Power BI.
+* Přečtěte si další informace o [Power BI](https://powerbi.microsoft.com) k vytváření vizualizací na základě Azure Monitorch exportů protokolů.

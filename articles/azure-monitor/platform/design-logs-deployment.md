@@ -1,24 +1,18 @@
 ---
 title: Navrhování nasazení Azure Monitorch protokolů | Microsoft Docs
 description: Tento článek popisuje pokyny a doporučení pro zákazníky, kteří připravují nasazení pracovního prostoru v Azure Monitor.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 24eb8440ed4746b51b92ce371b5d58b8d55de9a3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/20/2019
+ms.openlocfilehash: ae737b908aad95f61cef922b493b41752da68f14
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177595"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932349"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení Azure Monitorch protokolů
 
@@ -145,7 +139,7 @@ Operation
 ``` 
 
 
-## <a name="recommendations"></a>Doporučit
+## <a name="recommendations"></a>Doporučení
 
 ![Příklad návrhu kontextu prostředků](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 

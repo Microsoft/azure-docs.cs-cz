@@ -5,40 +5,67 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 05/05/2019
+ms.date: 10/17/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 460199c1958e3bb22148624b9f013eadbb707bd2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3204387a8e0920d2a7196edbad229bf811a9ba0a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564351"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72958519"
 ---
-1. Vyberte tlačítko **vytvořit prostředek** v levém horním rohu Azure Portal a pak vyberte > COMPUTE**Function App**.
+1. Otevřete Azure Portal z [https://portal.azure.com](https://portal.azure.com)
 
-    ![Vytvoření aplikace Function App na portálu Azure Portal](./media/functions-create-function-app-portal/function-app-create-flow.png)
+1. Vyberte tlačítko **vytvořit prostředek** .
 
-2. Použijte nastavení aplikace Function App uvedená v tabulce pod obrázkem.
+    ![Vytvořit prostředek](./media/functions-create-function-app-portal/function-app-create-resource.png)
 
-    ![Určení nastavení nové aplikace Function App](./media/functions-create-function-app-portal/function-app-create-flow2.png)
+1. Vyberte **compute** > **Function App**.
 
-    | Nastavení      | Navrhovaná hodnota  | Popis                                        |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **Název aplikace** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z`, `0-9` a `-`.  | 
-    | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. | 
-    | **[Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
-    | **OS** | Windows | Dostupné možnosti jazyka závisí na operačním systému aplikace Function App. Například Python vyžaduje Linux. |
-    | **[Plán hostování](../articles/azure-functions/functions-scale.md)** | Plán Consumption | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Ve výchozím **plánu Consumption** se prostředky přidávají dynamicky podle požadavků příslušných funkcí. U tohoto hostování [bez serveru](https://azure.microsoft.com/overview/serverless-computing/) platíte jenom za dobu, kdy jsou funkce spuštěné. Pokud používáte plán služby App Service, musíte zajistit správu [škálování vaší aplikace funkcí](../articles/azure-functions/functions-scale.md).  |
-    | **Location** | Západní Evropa | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. |
+    ![Vytvoření aplikace Function App na portálu Azure Portal](./media/functions-create-function-app-portal/function-app-create-start.png)
+
+1. Použijte nastavení aplikace Function App uvedená v tabulce pod obrázkem.
+
+    ![Základy](./media/functions-create-function-app-portal/function-app-create-basics.png)
+
+    | Nastavení      | Navrhovaná hodnota  | Popis |
+    | ------------ | ---------------- | ----------- |
+    | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. |
+    | **[Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md)** |  *myResourceGroup* | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
+    | **Název Function App** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z` (nerozlišuje velká a malá písmena), `0-9`a `-`.  |
+    |**Publikování**| Kód | Možnost publikování souborů kódu nebo kontejneru Docker. |
     | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Zvolte **.NET** pro funkce C# a F#. |
-    | **[Úložiště](../articles/storage/common/storage-quickstart-create-account.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít také existující účet, který splňuje [požadavky na účet úložiště](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
-    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Výchozí | Vytvoří Application Insights prostředek stejného *názvu aplikace* v nejbližší podporované oblasti. Rozbalením tohoto nastavení můžete změnit **název nového prostředku** nebo zvolit jiné **umístění** v geografických oblastech [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , kam chcete data uložit. |
+    |**Oblast**| Upřednostňovaná oblast | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. |
 
-3. Aplikaci Function App zřídíte a nasadíte kliknutím na **Vytvořit**.
+    Vyberte tlačítko **Další: hostování >** .
 
-4. Vyberte ikonu oznámení v pravém horním rohu portálu a sledujte, kdy se objeví zpráva, že **nasazení bylo úspěšné**.
+1. Zadejte následující nastavení pro hostování.
 
-    ![Určení nastavení nové aplikace Function App](./media/functions-create-function-app-portal/function-app-create-notification.png)
+    ![Hostování](./media/functions-create-function-app-portal/function-app-create-hosting.png)
 
-5. Volbou **Přejít k prostředku** novou aplikaci Function App zobrazíte. Můžete také vybrat **Připnout na řídicí panel**. Připnutí usnadňuje návrat k tomuto prostředku Function App z vašeho řídicího panelu.
+    | Nastavení      | Navrhovaná hodnota  | Popis |
+    | ------------ | ---------------- | ----------- |
+    | **[Účet úložiště](../articles/storage/common/storage-quickstart-create-account.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
+    |**Operační systém**| Preferovaný operační systém | Operační systém je předem vybraný pro vás na základě výběru zásobníku modulu runtime, ale v případě potřeby můžete změnit nastavení. |
+    | **[Rozhraní](../articles/azure-functions/functions-scale.md)** | Plán Consumption | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Ve výchozím **plánu Consumption** se prostředky přidávají dynamicky podle požadavků příslušných funkcí. U tohoto hostování [bez serveru](https://azure.microsoft.com/overview/serverless-computing/) platíte jenom za dobu, kdy jsou funkce spuštěné. Pokud používáte plán služby App Service, musíte zajistit správu [škálování vaší aplikace funkcí](../articles/azure-functions/functions-scale.md).  |
+
+    Vyberte tlačítko **Další: > monitorování** .
+
+1. Pro monitorování zadejte následující nastavení.
+
+    ![Sledování](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
+
+    | Nastavení      | Navrhovaná hodnota  | Popis |
+    | ------------ | ---------------- | ----------- |
+    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Výchozí | Vytvoří Application Insights prostředek stejného *názvu aplikace* v nejbližší podporované oblasti. Rozbalením tohoto nastavení můžete změnit **název nového prostředku** nebo zvolit jiné **umístění** v [geografických oblastech Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , kam chcete data uložit. |
+
+    Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte výběry konfigurace aplikace.
+
+1. Aplikaci Function App zřídíte a nasadíte kliknutím na **Vytvořit**.
+
+1. Vyberte ikonu oznámení v pravém horním rohu portálu a sledujte, kdy se objeví zpráva, že **nasazení bylo úspěšné**.
+
+    ![Oznámení o nasazení](./media/functions-create-function-app-portal/function-app-create-notification2.png)
+
+1. Volbou **Přejít k prostředku** novou aplikaci Function App zobrazíte. Můžete také vybrat **Připnout na řídicí panel**. Připnutí usnadňuje návrat k tomuto prostředku Function App z vašeho řídicího panelu.

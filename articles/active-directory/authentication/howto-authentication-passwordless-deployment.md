@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea4b8ea98365ec13f7f027215a75b9d79ea5c54e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453131"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933117"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Dokončení nasazení ověřování pomocí hesla
 
@@ -185,7 +185,7 @@ Zde jsou ukázkové testovací případy pro ověřování bez hesla s bezpečno
 | Uživatel se může přihlásit pomocí zařízení FIDO2 (1809). | Uživatel může vybrat klíč zabezpečení z okna přihlášení a úspěšně se přihlásit. |
 | Uživatel může zaregistrovat zařízení FIDO2 (1903). | Uživatel může zaregistrovat zařízení FIDO2 v nastavení > účty > Možnosti přihlášení > klíč zabezpečení. |
 | Uživatel může resetovat zařízení FIDO2 (1903). | Uživatel může resetovat zařízení FIDO2 v nastavení > účty > Možnosti přihlášení > klíč zabezpečení. |
-| Uživatel se může přihlásit pomocí zařízení FIDO2 (1809). | Uživatel může vybrat klíč zabezpečení z okna přihlášení a úspěšně se přihlásit. |
+| Uživatel se může přihlásit pomocí zařízení FIDO2 (1903). | Uživatel může vybrat klíč zabezpečení z okna přihlášení a úspěšně se přihlásit. |
 
 **Přihlášení FIDO k webovým aplikacím Azure AD s heslem**
 

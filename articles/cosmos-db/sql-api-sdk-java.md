@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL Java API, sada SDK & prostředky'
-description: Další informace o rozhraní SQL Java API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB SQL Java SDK.
+title: 'Azure Cosmos DB: SQL Java API, SDK & prostředky'
+description: Seznamte se se všemi informacemi o rozhraních SQL Java API a SDK, včetně dat vydání, data odchodu a změn provedených mezi jednotlivými verzemi Azure Cosmos DB SQL Java SDK.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: bf89d419bcd97c276df35701bc4fd808f599094a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: eb8110c953787d1ebf7f01037808ee77db2eb8b4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637705"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934160"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: Poznámky k verzi a zdroje informací
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
@@ -30,18 +30,42 @@ ms.locfileid: "68637705"
 > * [Hromadný prováděcí modul – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
 
-Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní podporu, použijte [SQL API asynchronní Java SDK](sql-api-sdk-async-java.md). 
+Rozhraní SQL API Java SDK podporuje synchronní operace. Pro asynchronní podporu použijte [rozhraní API SQL Async Java SDK](sql-api-sdk-async-java.md). 
 
 | |  |
 |---|---|
 |**Stažení sady SDK**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
-|**Dokumentace k rozhraní API**|[Dokumentace k rozhraní Java API](/java/api/com.microsoft.azure.documentdb)|
-|**Přispívat k sadě SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Java API](/java/api/com.microsoft.azure.documentdb)|
+|**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Začínáme**|[Začínáme se sadou Java SDK](sql-api-java-get-started.md)|
-|**Kurz vývoje webové aplikace**|[Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimální podporovaný modul runtime**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
+|**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-java-application.md)|
+|**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name244244"></a><a name="2.4.4"/>2.4.4
+* Aktualizace mezipaměti rozsahu klíčů optimalizovaného oddílu
+
+### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2
+* Optimalizované aktualizace mezipaměti kolekce
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+* Přidala se podpora pro načtení zprávy vnitřní výjimky z řetězce diagnostiky požadavku.
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+* Bylo zavedeno rozhraní API verze v PartitionKeyDefinition.
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+* Přidání podpory samostatného časového limitu pro přímý režim.
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+* Spotřebovává se chybová zpráva s hodnotou null ze služby a vyprodukuje se výjimka klienta dokumentu.
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+* Vylepšení připojení soketu, přidání výchozí hodnoty true SoKeepAlive
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* Byla přidána podpora řetězců diagnostiky žádostí.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 * Opravila se chyba v PartitionKey pro algoritmus hash v2.
@@ -55,164 +79,164 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 * Opravená chyba v mezipaměti adres brány
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Podpora více oblastí zápisu přidá pro přímý režim.
-* Přidání podpory pro zpracování IOExceptions vyvolána jako ServiceUnavailable výjimky z proxy serveru.
-* Oprava chyby v zásadách koncového bodu zjišťování opakování.
-* Je opravená chyba, aby ukazatel s hodnotou null, které nejsou ve BaseDatabaseAccountConfigurationProvider vyvolání výjimky.
+* Přidaná podpora zápisu do více oblastí pro přímý režim.
+* Přidání podpory pro zpracování IOExceptions vyvolaného jako výjimky ServiceUnavailable z proxy serveru.
+* Opravili jsme chybu v zásadách opakování zjišťování koncových bodů.
+* Opravili jsme chybu, aby se v BaseDatabaseAccountConfigurationProvider nevolaly výjimky ukazatelů na hodnotu null.
 * Opravili jsme chybu, abyste zajistili, že QueryIterator nevrací hodnoty null.
-* Je opravená chyba, ujistěte se, že je povolené velké PartitionKey
+* Opravili jsme chybu, aby se zajistilo, že je povolený velký PartitionKey
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
-* Podpora více oblastí zápisu pro režim bránu přidat.
+* Podpora zápisu do více oblastí se přidala do režimu brány.
 
 ### <a name="a-name11641164"></a><a name="1.16.4"/>1.16.4
-* Oprava chyby v oddílu čtení klíče oblastí pro dotaz.
+* Opravili jsme chybu v rozsahu klíče oddílu čtení pro dotaz.
 
 ### <a name="a-name11631163"></a><a name="1.16.3"/>1.16.3
-* Oprava chyby v nastavení velikost záhlaví token pokračování v režimu DirectHttps.
+* Opravili jsme chybu v nastavení velikosti hlavičky tokenu pokračování v režimu DirectHttps.
 
 ### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
-* Přidání streamovaných převzetí služeb při selhání podpory.
-* Přidání podpory pro vlastní metadata.
+* Přidání streamování při selhání prostřednictvím podpory.
+* Přidání podpory pro vlastní metadata
 * Vylepšená logika zpracování relace.
-* Oprava chyby v mezipaměti rozsah klíče oddílu.
-* Je opravená chyba NPE v přímém režimu.
+* Opravila se chyba v mezipaměti rozsahu klíčů oddílu.
+* V přímém režimu byla opravena chyba NPE.
 
 ### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
-* Přidání podpory pro jedinečný Index.
-* Přidání podpory pro omezení velikosti token pokračování v možnostech informačního kanálu.
-* Oprava chyby v serializaci Json (časové razítko).
-* Oprava chyby v serializaci Json (výčtu).
-* Závislost na upgradovat na 2.9.5 com.fasterxml.jackson.core:jackson-databind.
+* Byla přidána podpora pro jedinečný index.
+* Přidání podpory pro omezení velikosti tokenu pokračování v možnostech kanálu.
+* Byla opravena chyba serializace JSON (časové razítko).
+* Opravila se chyba serializace JSON (Enum).
+* Závislost na modelu COM. fasterxml. Jacksonův diagram. Core: Jacksonův-vázání – proveďte upgrade na 2.9.5.
 
 ### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
-* Vylepšené sdružování pro přímý režim.
-* Vylepšili jsme předběžného načítání vylepšení pro jiné orderby pro různé oddílu dotazu.
-* Vylepšené generování UUID.
+* Vylepšené sdružování připojení pro přímý režim.
+* Vylepšené zlepšování předběžného načítání pro neorderby dotaz na různé oddíly.
+* Vylepšená generace identifikátoru UUID.
 * Vylepšená logika konzistence relace.
-* Přidání podpory pro multipolygon.
-* Přidání podpory pro statistiky rozsah klíče oddílu pro kolekci.
-* Oprava chyby v podpora více oblastí.
+* Přidala se podpora pro více mnohoúhelníků.
+* Byla přidána podpora statistik rozsahu klíče oddílu pro kolekci.
+* Opravili jsme chybu v podpoře více oblastí.
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
-* Vylepšený výkon serializace Json.
-* Tato verze sady SDK vyžaduje nejnovější verzi Azure emulátor služby Cosmos DB k dispozici ke stažení z https://aka.ms/cosmosdb-emulator.
+* Vylepšený výkon serializace JSON.
+* Tato verze sady SDK vyžaduje k dispozici nejnovější verzi Azure Cosmos DB emulátoru ke stažení z https://aka.ms/cosmosdb-emulator.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
-* Interní změny pro knihovny Microsoft přátel.
+* Interní změny pro knihovny přátel Microsoftu.
 
 ### <a name="a-name11301130"></a><a name="1.13.0"/>1.13.0
-* Opravili jsme problém při čtení klíče oblastí jednoho oddílu.
-* Opravili jsme problém v ResourceID analýza kódu, který má vliv na databázi s krátkým názvem.
-* Opravili jsme problém způsobit kódování klíče oddílu.
+* Opravili jsme problém při čtení rozsahů klíčů s jedním oddílem.
+* Opravili jsme problém v analýze ResourceID, která má vliv na databázi s krátkými názvy.
+* Opravili jsme problém způsobený kódováním klíče oddílu.
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* Požádat o zpracování během rozdělení oddílů důležité opravy chyb.
-* Opravili jsme problém s úrovní konzistence silná i BoundedStaleness.
+* Opravy kritické chyby pro zpracování žádostí během rozdělení oddílů
+* Opravili jsme problém se silnými a BoundedStaleness úrovněmi konzistence.
 
 ### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
-* Volá se přidání podpory pro nové úrovně konzistence ConsistentPrefix.
-* Oprava chyby v kolekci v relaci režimu pro čtení.
+* Přidání podpory pro novou úroveň konzistence s názvem ConsistentPrefix.
+* Opravili jsme chybu v kolekci čtení v režimu relace.
 
 ### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
-* Povolená podpora dělené kolekce s jako nízká 2 500 RU/s a škálovat v přírůstcích po 100 RU/s.
-* Oprava chyby v nativní sestavení, což může způsobit výjimku NullRef u některých dotazů.
+* Povolená podpora pro dělené kolekce s nižší než 2 500 RU/s a škálování v přírůstcích po 100 RU/s.
+* Opravili jsme chybu v nativním sestavení, která může v některých dotazech způsobit výjimku NullRef.
 
 ### <a name="a-name196196"></a><a name="1.9.6"/>1.9.6
-* Oprava chyby v konfiguraci modulu dotazu, který může způsobit výjimky pro dotazy v režimu brány.
-* Opravili jsme několik chyb v kontejneru relace, které mohou způsobit výjimku "Vlastník prostředek nebyl nalezen" požadavkům ihned po vytvoření kolekce.
+* Opravili jsme chybu v konfiguraci dotazovacího stroje, která může způsobit výjimky pro dotazy v režimu brány.
+* Opravili jsme několik chyb v kontejneru relací, které můžou způsobit výjimku "prostředek nenalezen" pro požadavky hned po vytvoření kolekce.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Přidání podpory pro dotazy agregace (počet, MIN, MAX, součet a průměr). Zobrazit [podporu agregace](sql-query-aggregates.md).
-* Přidání podpory pro kanál změn.
-* Přidání podpory pro informace o kvótě kolekce prostřednictvím RequestOptions.setPopulateQuotaInfo.
-* Přidání podpory pro uloženou proceduru skript protokolování prostřednictvím RequestOptions.setScriptLoggingEnabled.
+* Přidání podpory agregačních dotazů (COUNT, MIN, MAX, SUM a AVG). Viz [Podpora agregace](sql-query-aggregates.md).
+* Přidání podpory pro kanál změn
+* Přidala se podpora pro informace o kvótě kolekce prostřednictvím RequestOptions. setPopulateQuotaInfo.
+* Přidání podpory pro protokolování skriptu uložených procedur přes RequestOptions. setScriptLoggingEnabled.
 * Opravili jsme chybu, kdy dotaz v režimu DirectHttps může přestat reagovat při zjištění selhání omezení.
-* Oprava chyby v režimu konzistence relace.
-* Je opravená chyba, což může způsobit NullReferenceException v objektu HttpContext, když je vysoká frekvence požadavků.
-* Vylepšení výkonu DirectHttps režimu.
+* Opravili jsme chybu v režimu konzistence relace.
+* Opravili jsme chybu, která může způsobit NullReferenceException v HttpContext, pokud je míra požadavků vysoká.
+* Vylepšený výkon DirectHttps režimu.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
-* Přidání jednoduchého klienta proxy server založený na instancích podporu ConnectionPolicy.setProxy() rozhraní API.
-* Přidání rozhraní API DocumentClient.close() správně vypnutí instance DocumentClient.
-* Zvýšení výkonu dotazů v režimu přímého připojení odvozením plán dotazu z nativní sestavení namísto brány.
-* Nastavit FAIL_ON_UNKNOWN_PROPERTIES = false, aby uživatelé nemuseli k definování JsonIgnoreProperties v jejich POJO.
-* Refaktorovaný protokolování použití SLF4J.
-* Vyřešili několik dalších chyb ve čtečce konzistence.
+* Byla přidána podpora proxy serveru založeného na instanci jednoduchého klienta s rozhraním API ConnectionPolicy. SetProxy – ().
+* Bylo přidáno rozhraní API DocumentClient. Close () pro správnou vypínání instance DocumentClient.
+* Vylepšený výkon dotazů v režimu přímého připojení odvozením plánu dotazů z nativního sestavení namísto brány.
+* Nastavte FAIL_ON_UNKNOWN_PROPERTIES = false, aby uživatelé nemuseli definovat JsonIgnoreProperties ve svých POJO.
+* Refaktored pro použití SLF4J.
+* Opravili jsme několik dalších chyb v čtečce konzistence.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Oprava chyby ve správě připojení k zabránění únikům připojení v režimu přímého připojení.
+* Opravili jsme chybu v řízení připojení, aby se zabránilo úniku nevracení připojení v režimu přímého připojení.
 * Opravili jsme chybu v HORNÍm dotazu, kde může vyvolat výjimku NullReference.
-* Vylepšení výkonu snížením počtu volání sítě pro vnitřní mezipaměti.
-* Přidání stavový kód, ID aktivity a požádat o identifikátor URI v DocumentClientException pro lepší řešení potíží.
+* Vylepšený výkon snížením počtu síťových volání interních mezipamětí.
+* Přidaný stavový kód, ActivityID a identifikátor URI žádosti v DocumentClientException pro lepší řešení potíží.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
-* Opravili jsme problém ve správě připojení pro zvýšení stability.
+* Opravili jsme problém se správou připojení pro stabilitu.
 
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
-* Přidání podpory pro úroveň konzistence BoundedStaleness.
-* Přidání podpory pro přímé připojení pro operace CRUD u dělených kolekcí.
-* Oprava chyby v dotazování databáze pomocí jazyka SQL.
-* Oprava chyby v mezipaměti relace, ve kterém může být nesprávně nastaven tokenu relace.
+* Byla přidána podpora úrovně konzistence BoundedStaleness.
+* Přidání podpory pro přímé připojení pro operace CRUD pro dělené kolekce.
+* Opravili jsme chybu při dotazování databáze pomocí SQL.
+* Opravili jsme chybu v mezipaměti relace, kde je token relace nastavený nesprávně.
 
 ### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* Přidání podpory pro různé paralelní dotazy oddílu.
-* Přidání podpory pro TOP/ORDER BY dotazů používejte u dělených kolekcí.
-* Přidání podpory pro zajištění konzistence.
-* Přidání podpory pro název na základě požadavků při použití přímé připojení.
-* Opravili jsme aby ActivityId zůstanou konzistentní napříč všechny žádosti o opakování.
-* Je opravená chyba související s mezipaměti relace při opětovném vytváření kolekce se stejným názvem.
-* Přidání mnohoúhelníků a datové typy LineString při zadávání kolekce indexování zásady pro monitorování geografických zón geograficky prostorových dotazů.
-* Opravené problémy s Doc Java pro jazyk Java 1.8.
+* Byla přidána podpora paralelních dotazů mezi oddíly.
+* Přidání podpory pro dotazy TOP/ORDER BY pro dělené kolekce
+* Přidání podpory pro silnou konzistenci.
+* Přidání podpory pro žádosti založené na názvu při použití přímého připojení.
+* Opraveno tak, aby ActivityId zůstaly konzistentní napříč všemi pokusy o žádosti.
+* Při opětovném vytváření kolekce se stejným názvem opravila chyba související s mezipamětí relace.
+* Přidání mnohoúhelníku a LineString DataTypes při určování zásad indexování kolekce pro prostorové vytváření geografických zón.
+* Opravili jsme problémy s dokumentem Java pro Java 1,8.
 
 ### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
-* Oprava chyby v PartitionKeyDefinitionMap kolekce jednoho oddílu do mezipaměti a Nedovolte, aby byly nadbytečné načítání o klíč oddílu.
-* Opravili jsme chybu, která není opakovat, pokud je zadaná hodnota klíče nesprávný oddíl.
+* Opravili jsme chybu v PartitionKeyDefinitionMap k ukládání kolekcí s jedním oddílem do mezipaměti a nemusejí mít dodatečné požadavky na načtení klíčů oddílu.
+* Opravili jsme chybu, aby se neopakovala, pokud je zadaná nesprávná hodnota klíče oddílu.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * Přidání podpory pro účty databáze ve více oblastech.
-* Přidání podpory pro automatické opakované pokusy na omezené požadavky s možnostmi pro přizpůsobení maximální počet opakovaných pokusů a doba čekání maximální počet opakování.  Viz RetryOptions a ConnectionPolicy.getRetryOptions().
-* Nepoužívané IPartitionResolver na základě vlastních oddílů kódu. Použijte prosím dělených kolekcí pro vyšší propustnost a úložiště.
+* Přidání podpory automatického opakování u omezených žádostí s možnostmi pro přizpůsobení maximálního počtu opakovaných pokusů a maximální doby čekání na opakování.  Viz RetryOptions a ConnectionPolicy. getRetryOptions ().
+* Zastaralý kód pro vlastní dělení na základě IPartitionResolver Použijte prosím dělené kolekce pro vyšší úložiště a propustnost.
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* Přidání opakování podpora zásad omezení četnosti.  
+* Přidala se podpora zásad opakování pro omezení četnosti.  
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
-* Další čas pro podporu live (TTL) pro dokumenty.
+* Byla přidána podpora TTL (Time to Live) pro dokumenty.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
-* Implementovat [dělené kolekce](partition-data.md) a [uživatelsky definovaným výkonem úrovně](performance-levels.md).
+* Implementované [dělené kolekce](partition-data.md) a [uživatelem definované úrovně výkonu](performance-levels.md).
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
-* Oprava chyby v HashPartitionResolver ke generování hodnot hash v little endian, aby byla konzistentní s jiných sad SDK.
+* Opravili jsme chybu v HashPartitionResolver a generovali hodnoty hash v Little-endian, aby byly konzistentní s jinými sadami SDK.
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Přidat hodnotu Hash & Rozsah oddílu překladače, která vám pomůže s horizontálního dělení aplikace napříč několika oddíly.
+* Přidáním překladačů oddílů rozsahu & hash můžete pomáhat s aplikacemi horizontálního dělení napříč více oddíly.
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
-* Implementace Upsert. Nové metody upsertXXX přidaná kvůli podpoře funkcí Upsert.
-* Směrování na základě ID implementace. Žádné změny veřejné rozhraní API, všechny změny interní.
+* Implementujte Upsert. Přidaly se nové metody upsertXXX, které podporují funkci Upsert.
+* Implementujte směrování na základě ID. Žádné změny veřejného rozhraní API, všechny změny jsou interní.
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
-* Verze přeskočeno vám číslo verze v souladu s jiných sad SDK
+* Vynechává se vydaná verze, která přináší číslo verze v zarovnání s jinými sadami SDK.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Podporuje geoprostorové indexu
-* Ověří vlastnost ID pro všechny prostředky. ID prostředků nemůže obsahovat?, /, #, \, znaky ani končit mezerou.
-* Přidá nové záhlaví "index transformace průběh" ResourceResponse.
+* Podporuje geoprostorové index
+* Ověří vlastnost ID pro všechny prostředky. ID pro prostředky nesmí obsahovat znaky?,/, #, \, nebo končit mezerou.
+* Přidá novou hlavičku průběh transformace indexu do ResourceResponse.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Implementuje zásady indexování V2
+* Implementuje zásadu indexování v2.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
 
-## <a name="release-and-retirement-dates"></a>Datum vydání verze a vyřazení z provozu
-Microsoft bude poskytovat oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.
+## <a name="release-and-retirement-dates"></a>Data o uvolnění a vyřazení
+Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** .
 
-Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK, proto je doporučujeme vždy upgradovat na nejnovější SDK verzi co možná nejdříve.
+Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože je to proto, že doporučujeme vždy co nejdříve upgradovat na nejnovější verzi sady SDK.
 
-Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítnuty službou.
+Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou odmítnuty.
 
 > [!WARNING]
 > Všechny verze **1. x** sady SQL SDK pro jazyk Java budou vyřazeny **30. května 2020**.
@@ -220,21 +244,21 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 >
 
 > [!WARNING]
-> Všechny verze SQL SDK pro Javu starší než verze **1.0.0** byly dostupné jenom do **29. února 2016**.
+> Všechny verze sady SQL SDK pro jazyk Java starší než verze **1.0.0** byly vyřazení od **29. února 2016**.
 > 
 > 
 
 <br/>
 
-| Verze | Datum vydání | Datum vyřazení z provozu |
+| Version | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
 | [2.1.3](#2.1.3) |13. března 2018 |--- |
 | [2.1.2](#2.1.2) |9\. března 2018 |--- |
-| [2.1.1](#2.1.1) |DEC 13, 2018 |--- |
+| [bodů](#2.1.1) |DEC 13, 2018 |--- |
 | [2.1.0](#2.1.0) |20. listopadu 2018 |--- |
-| [2.0.0](#2.0.0) |21. září 2018 |--- |
-| [1.16.4](#1.16.4) |10. září 2018 |30. května 2020 |
-| [1.16.3](#1.16.3) |09. září 2018 |30. května 2020 |
+| [2.0.0](#2.0.0) |Září 21, 2018 |--- |
+| [1.16.4](#1.16.4) |Září 10, 2018 |30. května 2020 |
+| [1.16.3](#1.16.3) |Září 09, 2018 |30. května 2020 |
 | [1.16.2](#1.16.2) |29. června 2018 |30. května 2020 |
 | [1.16.1](#1.16.1) |16. května 2018 |30. května 2020 |
 | [1.16.0](#1.16.0) |15. března 2018 |30. května 2020 |
@@ -245,11 +269,11 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | [1.11.0](#1.11.0) |10. května 2017 |30. května 2020 |
 | [1.10.0](#1.10.0) |11. března 2017 |30. května 2020 |
 | [1.9.6](#1.9.6) |21. února 2017 |30. května 2020 |
-| [1.9.5](#1.9.5) |Do 31. ledna 2017 |30. května 2020 |
+| [1.9.5](#1.9.5) |31. ledna 2017 |30. května 2020 |
 | [1.9.4](#1.9.4) |24. listopadu 2016 |30. května 2020 |
 | [1.9.3](#1.9.3) |30. října 2016 |30. května 2020 |
 | [1.9.2](#1.9.2) |28. října 2016 |30. května 2020 |
-| [1.9.1](#1.9.1) |26. říjnu 2016 |30. května 2020 |
+| [1.9.1](#1.9.1) |26. října 2016 |30. května 2020 |
 | [1.9.0](#1.9.0) |03. října 2016 |30. května 2020 |
 | [1.8.1](#1.8.1) |30. června 2016 |30. května 2020 |
 | [1.8.0](#1.8.0) |14. června 2016 |30. května 2020 |
@@ -257,23 +281,23 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | [1.7.0](#1.7.0) |27. dubna 2016 |30. května 2020 |
 | [1.6.0](#1.6.0) |29. března 2016 |30. května 2020 |
 | [1.5.1](#1.5.1) |31. prosince 2015 |30. května 2020 |
-| [1.5.0](#1.5.0) |04. prosince 2015 |30. května 2020 |
+| [1.5.0](#1.5.0) |4\. prosince 2015 |30. května 2020 |
 | [1.4.0](#1.4.0) |05. října 2015 |30. května 2020 |
 | [1.3.0](#1.3.0) |05. října 2015 |30. května 2020 |
 | [1.2.0](#1.2.0) |05. srpna 2015 |30. května 2020 |
-| [1.1.0](#1.1.0) |09. července 2015 |30. května 2020 |
+| [1.1.0](#1.1.0) |9\. července 2015 |30. května 2020 |
 | 1.0.1 |12. května 2015 |30. května 2020 |
-| [1.0.0](#1.0.0) |07. dubna 2015 |30. května 2020 |
-| 0.9.5-prelease |09 března 2015 |29. února 2016 |
-| 0.9.4-prelease |17. února 2015 |29. února 2016 |
-| 0.9.3-prelease |13. ledna 2015 |29. února 2016 |
-| 0.9.2-prelease |19. prosince 2014 |29. února 2016 |
-| 0.9.1-prelease |19. prosince 2014 |29. února 2016 |
-| 0.9.0-prelease |10. prosince 2014 |29. února 2016 |
+| [1.0.0](#1.0.0) |7\. dubna 2015 |30. května 2020 |
+| 0.9.5 – zapůjčení |9\. března 2015 |29. února 2016 |
+| 0.9.4 – zapůjčení |17. února 2015 |29. února 2016 |
+| 0.9.3 – zapůjčení |13. ledna 2015 |29. února 2016 |
+| 0.9.2 – zapůjčení |19. prosince 2014 |29. února 2016 |
+| 0.9.1 – zapůjčení |19. prosince 2014 |29. února 2016 |
+| 0.9.0 – zapůjčení |10. prosince 2014 |29. února 2016 |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-Další informace o službě Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby.
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
 

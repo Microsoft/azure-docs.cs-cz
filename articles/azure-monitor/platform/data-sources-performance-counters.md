@@ -1,73 +1,67 @@
 ---
-title: Shromažďujte a analyzujte čítače výkonu ve službě Azure Monitor | Dokumentace Microsoftu
-description: Čítače výkonu jsou shromážděné službou Azure Monitor k analýze výkonu agentů Windows a Linux.  Tento článek popisuje, jak konfigurovat shromažďování čítačů výkonu pro obě Windows a agenti systému Linux, podrobnosti o jejich jsou uložené v pracovním prostoru a analyzovat je na webu Azure Portal.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
-ms.service: log-analytics
+title: Shromažďovat a analyzovat čítače výkonu v Azure Monitor | Microsoft Docs
+description: Čítače výkonu jsou shromažďovány nástrojem Azure Monitor k analýze výkonu v agentech systému Windows a Linux.  Tento článek popisuje, jak nakonfigurovat shromažďování čítačů výkonu pro agenty Windows i Linux, podrobnosti o nich jsou uložené v pracovním prostoru a jak je analyzovat v Azure Portal.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2018
+ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205758"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932441"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows a Linuxem zdroje dat výkonu ve službě Azure Monitor
-Čítače výkonu ve Windows a Linuxu poskytují přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v pravidelných intervalech pro analýzu v téměř reálném čase (NRT) kromě agregaci údajů o výkonu pro delší dlouhodobější analýzu a generování sestav.
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Zdroje dat o výkonu pro Windows a Linux v Azure Monitor
+Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v častých intervalech pro analýzu téměř v reálném čase (NRT) Kromě agregace dat výkonu pro dlouhodobé analýzy a generování sestav.
 
 ![Čítače výkonu](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurace čítačů výkonu
-Nakonfigurujte čítače výkonu z [dat nabídky v upřesňujícím nastavení](agent-data-sources.md#configuring-data-sources).
+Nakonfigurujte čítače výkonu z [nabídky data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources).
 
-Při první konfiguraci Windows nebo Linux výkon čítače pro nový pracovní prostor, budete mít možnost rychle vytvořit několik běžných čítačů.  Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.  Ujistěte se, že jsou kontrolovány všechny čítače mají zpočátku vytvořit a potom klikněte na **přidat vybrané čítače výkonu**.
+Při první konfiguraci čítačů výkonu systému Windows nebo Linux pro nový pracovní prostor budete mít možnost rychle vytvořit několik běžných čítačů.  Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.  Ujistěte se, že jsou zaškrtnuté všechny čítače, které chcete zpočátku vytvořit, a pak klikněte na **Přidat vybrané čítače výkonu**.
 
-Pro čítače výkonu Windows můžete zvolit konkrétní instance pro každý čítač výkonu. Pro čítače výkonu systému Linux instance jednotlivých čítačů, kterou zvolíte se vztahuje na všechny podřízené čítače nadřazené čítače. Následující tabulka uvádí běžné instance k dispozici pro čítače výkonu systému Linux a Windows.
+V případě čítačů výkonu systému Windows můžete zvolit konkrétní instanci pro každý čítač výkonu. Pro čítače výkonu Linux se instance každého čítače, kterou zvolíte, vztahuje na všechny podřízené čítače nadřazeného čítače. V následující tabulce jsou uvedeny běžné instance dostupné pro čítače výkonu pro systémy Linux a Windows.
 
 | Název instance | Popis |
 | --- | --- |
-| \_Celkem |Celkový počet všech instancí |
+| \_celkem |Celkem všech instancí |
 | \* |Všechny instance |
-| (/&#124;/var) |Odpovídá instance s názvem: / nebo /var |
+| (/&#124;/var) |Odpovídá instancím s názvem:/nebo/var |
 
 ### <a name="windows-performance-counters"></a>Čítače výkonu Windows
 
-![Nakonfigurujte čítače výkonu Windows](media/data-sources-performance-counters/configure-windows.png)
+![Konfigurace čítačů výkonu systému Windows](media/data-sources-performance-counters/configure-windows.png)
 
-Pomocí následujícího postupu přidejte nový čítač výkonu Windows pro shromažďování.
+Pomocí tohoto postupu můžete přidat nový čítač výkonu systému Windows, který se má shromáždit.
 
-1. Zadejte název čítače v textovém poli ve formátu *objektu (instance) \counter*.  Když začnete psát, zobrazí se odpovídající seznam běžných čítačů.  Čítače můžete vybrat ze seznamu nebo zadejte svůj vlastní.  Můžete se taky vrátit na všechny instance konkrétní čítač zadáním *object\counter*.  
+1. Do textového pole ve formátu *objekt (instance) \counter*zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  Můžete také vrátit všechny instance pro konkrétní čítač zadáním *object\counter*.  
 
-    Při shromažďování čítače výkonu pro SQL Server z pojmenované instance, všechny pojmenované instance čítače začínají u *MSSQL$* a za nímž následuje název instance.  Například pokud chcete shromáždit čítače poměr přístupů do mezipaměti protokolu pro všechny databáze z objektu výkonu databáze SQL s názvem instance INST2, zadejte `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
+    Když shromažďujete čítače výkonu SQL Server z pojmenovaných instancí, všechny pojmenované čítače instancí začínají na *MSSQL $* a za názvem instance.  Například pro shromáždění čítače poměru přístupů do mezipaměti protokolu pro všechny databáze z objektu výkonu databáze pro pojmenovanou instanci SQL INST2 zadejte `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
 
-2. Klikněte na tlačítko **+** nebo stiskněte klávesu **Enter** přidat čítače do seznamu.
-3. Když přidáte čítače, použije výchozí hodnotu 10 sekund, jeho **Interval vzorkování**.  Můžete určit to k vyšší hodnotě až 1800 sekund (30 minut) Pokud budete chtít snížit požadavky na úložiště dat shromážděných výkonu.
-4. Po dokončení přidávání čítačů, klikněte na tlačítko **Uložit** tlačítko v horní části obrazovky, čímž konfiguraci uložíte.
+2. Kliknutím na **+** nebo stisknutím klávesy **ENTER** přidáte čítač do seznamu.
+3. Když přidáte čítač, použije se výchozí hodnota 10 sekund pro svůj **interval vzorkování**.  Pokud chcete snížit požadavky na úložiště shromážděných dat o výkonu, můžete to změnit na vyšší hodnotu až na 1800 sekund (30 minut).
+4. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **Uložit** v horní části obrazovky uložte konfiguraci.
 
-### <a name="linux-performance-counters"></a>Čítače výkonu Linuxu
+### <a name="linux-performance-counters"></a>Čítače výkonu pro Linux
 
-![Konfiguraci Linuxových čítačů výkonu](media/data-sources-performance-counters/configure-linux.png)
+![Konfigurace čítačů výkonu systému Linux](media/data-sources-performance-counters/configure-linux.png)
 
-Pomocí následujícího postupu přidejte nový čítač výkonu systému Linux ke shromažďování.
+Pomocí tohoto postupu můžete přidat nový čítač výkonu pro Linux, který se má shromáždit.
 
-1. Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů.  U agentů systému Linux je konfigurační soubor odeslané do kolektoru dat Fluentd.  Pokud chcete upravit tento soubor ručně na každý agent systému Linux, poté zrušte zaškrtnutí políčka *použít uvedenou konfiguraci u mých Linuxových počítačů* a postupujte podle pokynů níže.
-2. Zadejte název čítače v textovém poli ve formátu *objektu (instance) \counter*.  Když začnete psát, zobrazí se odpovídající seznam běžných čítačů.  Čítače můžete vybrat ze seznamu nebo zadejte svůj vlastní.  
-3. Klikněte na tlačítko **+** nebo stiskněte klávesu **Enter** přidat čítač seznam dalších čítačů pro objekt.
-4. Všechny čítače pro objekt použít stejné **Interval vzorkování**.  Výchozí hodnota je 10 sekund.  Můžete změnit na vyšší hodnotu až 1 800 sekund (30 minut) Pokud budete chtít snížit požadavky na úložiště dat shromážděných výkonu.
-5. Po dokončení přidávání čítačů, klikněte na tlačítko **Uložit** tlačítko v horní části obrazovky, čímž konfiguraci uložíte.
+1. Ve výchozím nastavení jsou všechny změny konfigurace automaticky vloženy do všech agentů.  Pro agenty Linux se konfigurační soubor pošle do Fluent sběrače dat.  Pokud chcete tento soubor upravit ručně u každého agenta pro Linux, zrušte jeho zaškrtávací políčko u *počítačů se systémem Linux níže uvedená konfigurace* a postupujte podle pokynů níže.
+2. Do textového pole ve formátu *objekt (instance) \counter*zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  
+3. Klikněte na **+** nebo stiskněte klávesu **ENTER** , chcete-li přidat čítač do seznamu dalších čítačů pro daný objekt.
+4. Všechny čítače pro objekt používají stejný **interval vzorkování**.  Výchozí hodnota je 10 sekund.  Pokud chcete snížit požadavky na úložiště shromážděných dat výkonu, změňte tuto hodnotu na vyšší hodnotu až na 1800 sekund (30 minut).
+5. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **Uložit** v horní části obrazovky uložte konfiguraci.
 
-#### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfiguraci čítačů výkonu systému Linux v konfiguračním souboru
-Namísto konfigurace Linuxovými čítači výkonu pomocí webu Azure portal, máte možnost upravit konfigurační soubory do agenta pro Linux.  Metriky výkonu pro shromažďování se řídí konfigurací v **/etc/opt/microsoft/omsagent/\<id pracovního prostoru\>/conf/omsagent.conf**.
+#### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurace čítačů výkonu systému Linux v konfiguračním souboru
+Místo konfigurace čítačů výkonu systému Linux pomocí Azure Portal máte možnost upravovat konfigurační soubory v agentovi systému Linux.  Metriky výkonu ke shromáždění jsou řízeny konfigurací v **/etc/opt/microsoft/omsagent/\<pracovního prostoru id\>/conf/omsagent.conf**.
 
-Každý objekt nebo kategorii, metriky výkonu ke shromažďování musí být definován v konfiguračním souboru jako jediný `<source>` elementu. Syntaxe má následující formát, níže.
+Každý objekt nebo kategorie metriky výkonu ke shromáždění by měly být definovány v konfiguračním souboru jako jeden `<source>` element. Syntaxe následuje níže uvedený vzor.
 
     <source>
       type oms_omi  
@@ -82,72 +76,72 @@ Parametry v tomto elementu jsou popsány v následující tabulce.
 
 | Parametry | Popis |
 |:--|:--|
-| objekt\_název | Název objektu pro kolekci. |
-| instance\_regex |  A *regulárního výrazu* definování které instance, které chcete shromažďovat. Hodnota: `.*` Určuje všechny instance. Shromažďovat metriky procesoru pro pouze \_celkový počet instancí, můžete zadat `_Total`. Chcete-li shromažďovat metriky procesů pro pouze crond nebo sshd instancí, můžete zadat: `(crond\|sshd)`. |
-| Čítač\_název\_regulární výraz | A *regulárního výrazu* definující, které čítačů (pro objekt), které pokud chcete shromažďovat. Chcete-li shromažďovat všechny čítače pro objekt, zadejte: `.*`. Chcete-li shromažďovat pouze čítače místa odkládacího souboru paměti objektu, například můžete zadat: `.+Swap.+` |
-| interval | Frekvence, s jakou se shromažďují čítače objektu. |
+| název\_objektu | Název objektu pro kolekci |
+| instance\_Regex |  *Regulární výraz* definující, které instance se mají shromažďovat Hodnota: `.*` určuje všechny instance. Pokud chcete shromáždit metriky procesoru jenom pro \_celkovou instanci, můžete zadat `_Total`. Pokud chcete shromáždit metriky procesu jenom pro instance crond nebo sshd, můžete zadat: `(crond\|sshd)`. |
+| název čítače\_\_regulárního výrazu | *Regulární výraz* definující, které čítače (pro objekt) se mají shromáždit. Chcete-li shromáždit všechny čítače pro objekt, zadejte: `.*`. Chcete-li shromažďovat pouze čítače odkládacích míst pro objekt paměti, například můžete zadat: `.+Swap.+` |
+| interval | Frekvence, s níž jsou shromažďovány čítače objektu. |
 
 
-V následující tabulce jsou uvedeny objekty a čítače, které můžete zadat v konfiguračním souboru.  K dispozici další čítače pro určité aplikace, jak je popsáno v [shromáždit čítače výkonu pro Linuxové aplikace ve službě Azure Monitor](data-sources-linux-applications.md).
+V následující tabulce jsou uvedeny objekty a čítače, které lze zadat v konfiguračním souboru.  Pro některé aplikace jsou k dispozici další čítače, jak je popsáno v tématu [shromažďování čítačů výkonu pro aplikace pro Linux v Azure monitor](data-sources-linux-applications.md).
 
-| Název objektu | Název počítadla |
+| Název objektu | Název čítače |
 |:--|:--|
-| Logický Disk | % Volných uzlů Inode |
-| Logický Disk | % Volného místa |
-| Logický Disk | % Použitých uzlů Inode |
-| Logický Disk | % Využitého místa |
-| Logický Disk | Bajty čtení z disku/s |
-| Logický Disk | Čtení disku/s |
-| Logický Disk | Přenosy disku/s |
-| Logický Disk | Bajty zapisování na disk/s |
-| Logický Disk | Zápis disku/s |
-| Logický Disk | Volné megabajty |
-| Logický Disk | Bajtů logického disku/s |
-| Memory (Paměť) | Dostupná paměť v % |
-| Memory (Paměť) | % Dostupného odkládacího prostoru |
-| Memory (Paměť) | % Využité paměti |
-| Memory (Paměť) | Využitý prostor záměny v % |
-| Memory (Paměť) | Dostupná paměť v MB |
-| Memory (Paměť) | Dostupný prostor záměny v MB |
-| Memory (Paměť) | Čtení stránek/s |
-| Memory (Paměť) | Zápisy stránek/s |
-| Memory (Paměť) | Stránky/s |
-| Memory (Paměť) | Použitý odkládací prostor v MB místa |
-| Memory (Paměť) | Použitá paměť v MB |
-| Síť | Celkový počet bajtů přenesených |
+| Logický disk | % Bezplatného uzlů inode |
+| Logický disk | % Volného místa |
+| Logický disk | % Použitého uzlů inode |
+| Logický disk | % Využitého místa |
+| Logický disk | Bajty čtení z disku/s |
+| Logický disk | Čtení z disku/s |
+| Logický disk | Přenosy disku/s |
+| Logický disk | Bajty zápisu na disk/s |
+| Logický disk | Zápisy na disk/s |
+| Logický disk | Volné megabajty |
+| Logický disk | Bajty logického disku/s |
+| Paměť | % Dostupné paměti |
+| Paměť | % Dostupného odkládacího prostoru |
+| Paměť | % Využité paměti |
+| Paměť | % Využitého místa odkládacího souboru |
+| Paměť | Dostupná paměť v MB |
+| Paměť | Dostupný počet MB swap |
+| Paměť | Čtení stránek/s |
+| Paměť | Zápisy stránek/s |
+| Paměť | Stránky/s |
+| Paměť | Využité místo odkládacího souboru v MB |
+| Paměť | Využitá paměť v MB |
+| Síť | Celkový počet odeslaných bajtů |
 | Síť | Celkový počet přijatých bajtů |
-| Síť | Celkový počet bajtů |
-| Síť | Celkový počet paketů odesílané informace |
+| Síť | Bajty celkem |
+| Síť | Celkový počet odeslaných paketů |
 | Síť | Celkový počet přijatých paketů |
-| Síť | Chyby celkem příjmu |
-| Síť | Celkový počet odesílání chyb |
+| Síť | Celkový počet chyb příjmu |
+| Síť | Chyby odesílání celkem |
 | Síť | Celkový počet kolizí |
-| Fyzický Disk | Střední Doba disku/čtení |
-| Fyzický Disk | Střední Doba disku/přenos |
-| Fyzický Disk | Střední Doby disku/zápis |
-| Fyzický Disk | Bajtů fyzického disku/s |
-| Proces | Procento privilegovaného času |
-| Proces | Procento uživatelského času |
-| Proces | Využité paměti kB |
-| Proces | Sdílené virtuální paměti |
-| Procesor | Čas DPC v % |
-| Procesor | Čas nečinnosti v % |
-| Procesor | Čas přerušení v % |
-| Procesor | Doba čekání % vstupně-výstupních operací |
-| Procesor | Dobrý čas v % |
+| Fyzický disk | Střední doba disku/čtení |
+| Fyzický disk | Střední doba disku/přenos |
+| Fyzický disk | Střední doba disku/zápis |
+| Fyzický disk | Bajty fyzického disku/s |
+| Proces | Privilegovaný čas protokolu PCT |
+| Proces | Doba uživatele v protokolu PCT |
+| Proces | Využitá paměť v kilobajtech |
+| Proces | Virtuální sdílená paměť |
+| Procesor | % Času DPC |
+| Procesor | % Času nečinnosti |
+| Procesor | % Času přerušení |
+| Procesor | % Času čekání na v/v |
+| Procesor | % Dobrý čas |
 | Procesor | % Privilegovaného času |
 | Procesor | % Času procesoru |
-| Procesor | Uživatelský čas v % |
-| Systémový | Volná fyzická paměť |
-| Systémový | Volné místo ve stránkovacích souborech |
-| Systémový | Volná virtuální paměť |
-| Systémový | Procesy |
-| Systémový | Velikost uložená ve stránkovacích souborech |
-| Systémový | Doba provozu |
-| Systémový | Uživatelé |
+| Procesor | % Uživatelského času |
+| Systém | Volná fyzická paměť |
+| Systém | Volné místo ve stránkovacích souborech |
+| Systém | Volná virtuální paměť |
+| Systém | Procesy |
+| Systém | Velikost uložená ve stránkovacích souborech |
+| Systém | Doba provozu |
+| Systém | Uživatelé |
 
 
-Toto je výchozí konfigurace pro metriky výkonu.
+Následuje výchozí konfigurace pro metriky výkonu.
 
     <source>
       type oms_omi
@@ -182,48 +176,48 @@ Toto je výchozí konfigurace pro metriky výkonu.
     </source>
 
 ## <a name="data-collection"></a>Shromažďování dat
-Azure Monitor provádí sběr všech čítačů výkonu zadaný v jejich zadané vzorkovací interval na všechny agenty, kteří mají nainstalované čítač.  Data nejsou agregovány a nezpracovaných dat je k dispozici ve všech zobrazeních dotazu protokolu po dobu zadanou vaším předplatným.
+Azure Monitor shromažďuje všechny zadané čítače výkonu v zadaném vzorkovacím intervalu u všech agentů, u kterých je nainstalovaný tento čítač.  Data nejsou agregovaná a nezpracovaná data jsou k dispozici ve všech zobrazeních dotazů protokolu po dobu určenou vaším předplatným.
 
-## <a name="performance-record-properties"></a>Vlastnosti výkonnostní záznamu
-Výkon záznamy mají typ **výkonu** a mít vlastnosti v následující tabulce.
+## <a name="performance-record-properties"></a>Vlastnosti záznamu výkonu
+Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Počítač, který událost byla shromážděna z. |
-| Hodnota counterName |Název čítače výkonu |
-| CounterPath |Úplná cesta k čítači ve formě \\ \\ \<počítače >\\objekt(instance)\\čítače. |
+| Počítač |Počítač, ze kterého byla událost shromážděna. |
+| CounterName |Název čítače výkonu |
+| CounterPath |Úplná cesta k čítači ve formuláři \\\\\<počítač >\\objekt (instance)\\čítač. |
 | CounterValue |Číselná hodnota čítače. |
-| InstanceName |Název instance události.  Prázdný, pokud žádná instance. |
-| Název objektu |Název objektu výkonu |
-| SourceSystem |Typ agenta data se shromažďovala ze. <br><br>OpsManager – Windows agent, buď přímé připojení nebo SCOM <br> Linux – všichni agenti systému Linux  <br> AzureStorage – diagnostiky Azure |
-| TimeGenerated |Datum a čas, který je Vzorkovaná data. |
+| InstanceName |Název instance události  Prázdné, pokud není instance. |
+| ObjectName |Název objektu výkonu |
+| SourceSystem |Typ agenta, ze kterého se data shromáždila. <br><br>OpsManager – Agent pro Windows, buď přímé připojení, nebo SCOM <br> Linux – všichni agenti se systémem Linux  <br> AzureStorage – Azure Diagnostics |
+| TimeGenerated |Datum a čas vzorkování dat |
 
 ## <a name="sizing-estimates"></a>Odhady velikosti
- Je hrubý odhad pro kolekci jednotlivých čítačů v intervalech po 10 sekundách je přibližně 1 MB za den na jednu instanci.  Chcete-li odhadnout požadavky na úložiště jednotlivých čítačů s následující vzorec.
+ Hrubý odhad pro shromažďování určitého čítače v intervalu 10 sekund je přibližně 1 MB za den na instanci.  Požadavky na úložiště určitého čítače můžete odhadnout pomocí následujícího vzorce.
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
-## <a name="log-queries-with-performance-records"></a>Protokol dotazů s záznamů o výkonu
-Následující tabulka obsahuje příklady různých dotazů na protokoly, které načítají záznamů o výkonu.
+## <a name="log-queries-with-performance-records"></a>Dotazy protokolu se záznamy o výkonu
+Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy o výkonu.
 
 | Dotaz | Popis |
 |:--- |:--- |
-| Perf |Všechny údaje o výkonu |
-| Perf &#124; kde počítač == "Počítač" |Všechny údaje o výkonu z určitého počítače |
-| Perf &#124; tam, kde CounterName == "Aktuální délka fronty disku" |Všechny údaje o výkonu pro konkrétní čítač |
-| Perf &#124; kde ObjectName == "Procesor pro" a hodnota CounterName == "% Processor Time" a InstanceName == "_Total" &#124; shrnout AVGCPU = avg(CounterValue) podle počítače |Průměrné využití procesoru ve všech počítačích |
-| Perf &#124; tam, kde CounterName == "% Processor Time" &#124; summarize AggregatedValue = max(CounterValue) podle počítače |Maximální využití CPU ve všech počítačích |
-| Perf &#124; kde ObjectName == "LogicalDisk" a hodnota CounterName == "Aktuální délka fronty disku" a počítač == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) podle InstanceName |Průměrná napříč všemi instancemi daného počítače. aktuální délka fronty disku |
-| Perf &#124; where CounterName == "Disk Transfers/sec" &#124; summarize AggregatedValue = percentile(CounterValue, 95) by Computer |95\. percentil z přenosy disku/s pro všechny počítače |
-| Perf &#124; tam, kde CounterName == "% Processor Time" a InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hodina), počítač |Hodinové průměrné zatížení CPU ve všech počítačích |
-| Perf &#124; kde počítač == "Počítač" a hodnota CounterName startswith_cs "%" a InstanceName == "_Total" &#124; summarize AggregatedValue = podle bin (TimeGenerated, 1 hodina), hodnota CounterName. percentilu (CounterValue, 70) | Hodinové 70 percentilu každý % procenta čítače pro určitý počítač |
-| Perf &#124; tam, kde CounterName == "% Processor Time" a InstanceName == "_Total" a počítač == "Počítač" &#124; shrnout ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] percentil (CounterValue, 75) = ["max(CounterValue)"] = max(CounterValue) podle bin (TimeGenerated, 1 hodina), počítač |Hodinové průměrné, minimální, maximální a 75 percentilu využití procesoru pro určitý počítač |
-| Perf &#124; kde ObjectName == "MSSQL$ INST2: databáze" a InstanceName == "hlavní" | Všechny údaje o výkonu z objektu výkonu databáze pro hlavní databázi z pojmenované instanci systému SQL Server INST2.  
+| Výkon |Všechna data o výkonu |
+| Výkon &#124; , kde Computer = = "mycomputer" |Všechna data o výkonu z konkrétního počítače |
+| Výkon &#124; , kde CounterName = = "aktuální délka fronty disku" |Veškerá data o výkonu pro určitý čítač |
+| Výkon &#124; , kde ObjectName = = "procesor" a CounterName = = "% času procesoru" a InstanceName = = "_Total" &#124; sumarizace AVGCPU = AVG (CounterValue) podle počítače |Průměrné využití procesoru napříč všemi počítači |
+| Výkon &#124; , kde CounterName = = "% času procesoru &#124; " sumarizace AggregatedValue = Max (CounterValue) podle počítače |Maximální využití procesoru napříč všemi počítači |
+| Výkon &#124; , kde ObjectName = = "logický disk" a CounterName = = "Current diskových front" a Computer = = "MyComputerName &#124; " sumarizace AggregatedValue = AVG (CounterValue) pomocí InstanceName |Průměrná aktuální délka fronty disku napříč všemi instancemi daného počítače |
+| Výkon &#124; , kde CounterName = = "přenosů disku/ &#124; s" sumarizace AggregatedValue = percentil (CounterValue, 95) podle počítače |95. percentil přenosů disku za sekundu ve všech počítačích |
+| Výkon &#124; , kde CounterName = = "% času procesoru" a InstanceName = = "_Total" &#124; sumarizace AggregatedValue = prům (CounterValue) by bin (TimeGenerated, 1H), počítač |Hodinový průměr využití procesoru napříč všemi počítači |
+| Výkon &#124; , kde Computer = = "mycomputer" a CounterName startswith_cs "%" a InstanceName = = "_Total" &#124; sumarizace AggregatedValue = percentil (CounterValue, 70) podle přihrádky (TimeGenerated, 1H), CounterName | Hodinově 70. percentil každého čítače%% pro určitý počítač |
+| Výkon &#124; , kde CounterName = = "% času procesoru" a InstanceName = = "_Total" a Computer = "mycomputer" &#124; shrnuje ["min (CounterValue)"] = min (CounterValue), ["prům (CounterValue)"] = AVG (CounterValue), ["percentile75 (CounterValue)"] = percentil (CounterValue, 75), ["Max (CounterValue)"] = Max (CounterValue) by bin (TimeGenerated, 1H), počítač |Hodinový průměr, minimum, maximum a 75-percentil využití CPU pro určitý počítač |
+| Výkon &#124; , kde ObjectName = = "MSSQL $ INST2: databáze" a InstanceName = = "Master" | Veškerá data o výkonu z objektu výkonu databáze pro hlavní databázi z pojmenované SQL Server instance INST2.  
 
 
 
 
-## <a name="next-steps"></a>Další postup
-* [Získat čítače výkonu z aplikace pro Linux](data-sources-linux-applications.md) včetně MySQL serveru Apache HTTP Server.
-* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
-* Export shromážděná data [Power BI](powerbi.md) další vizualizace a analýzy.
+## <a name="next-steps"></a>Další kroky
+* [Shromážděte čítače výkonu z aplikací pro Linux](data-sources-linux-applications.md) , včetně MySQL a serveru http Apache.
+* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.  
+* Exportujte shromážděná data do [Power BI](powerbi.md) pro další vizualizace a analýzu.

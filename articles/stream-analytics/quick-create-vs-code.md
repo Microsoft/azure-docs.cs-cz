@@ -1,5 +1,5 @@
 ---
-title: Vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code (Preview)
+title: Vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code
 description: V tomto rychlém startu se dozvíte, jak začít vytvořením Stream Analytics úlohy, konfigurací vstupů, výstupů a definováním dotazu pomocí Visual Studio Code.
 ms.service: stream-analytics
 author: mamccrea
@@ -7,22 +7,22 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 3301be3a067982cb90e663fe3782319eb0b90ba0
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 35e2711bbb3cd6dc0662146a566014dd65d879bc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673131"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935092"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Rychlý start: Vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code (Preview)
+# <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Rychlý Start: vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code (Preview)
 
 V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analytics pomocí rozšíření Azure Stream Analytics pro Visual Studio Code. Ukázková úloha načte streamovaná data z IoT Hubho zařízení. Nadefinujete úlohu, která vypočítá průměrnou teplotu při více než 27 ° a zapíše výsledné výstupní události do nového souboru v úložišti objektů BLOB.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 * Nainstalujte [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -52,7 +52,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 
 Před definováním Stream Analytics úlohy byste měli připravit data, která jsou později nakonfigurovaná jako vstup úlohy. Chcete-li připravit vstupní data požadovaná úlohou, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
 
@@ -60,14 +60,14 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
    
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
-   |Subscription  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít. |
-   |Resource group   |   asaquickstart-resourcegroup  |   Vyberte**Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
+   |Předplatné  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít. |
+   |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte**Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
    |Oblast  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisnou polohu, kde můžete IoT Hub hostovat. Použijte umístění, které je nejblíže vašim uživatelům. |
-   |Název IoT Hubu  | MyASAIoTHub  |   Vyberte název IoT Hub.   |
+   |Název IoT Hub  | MyASAIoTHub  |   Vyberte název IoT Hub.   |
 
    ![Vytvořit IoT Hub](./media/quick-create-vs-code/create-iot-hub.png)
 
-4. Vyberte **další: Nastavte velikost a měřítko**.
+4. Vyberte **Další: nastavit velikost a měřítko**.
 
 5. Zvolte si **Úroveň ceny a škálování**. Pro tento rychlý Start vyberte úroveň **F1** , pokud je stále k dispozici ve vašem předplatném. Pokud úroveň Free není k dispozici, vyberte nejnižší dostupnou úroveň. Další informace najdete v tématu [IoT Hub ceny](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -97,13 +97,13 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
 
 4. Na stránce **BLOB Service** vyberte **kontejner** a zadejte název svého kontejneru, například *container1*. Ponechte **úroveň veřejného přístupu** jako **soukromou (bez anonymního přístupu)** a vyberte **OK**.
 
-   ![Vytvořit kontejner objektů blob](./media/quick-create-vs-code/create-blob-container.png)
+   ![Vytvoření kontejneru objektů blob](./media/quick-create-vs-code/create-blob-container.png)
 
 ## <a name="create-a-stream-analytics-project"></a>Vytvoření projektu Stream Analytics
 
-1. V Visual Studio Code stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů. Pak zadejte **ASA** a vyberte **ASA: Vytvořit nový projekt @ no__t-0.
+1. V Visual Studio Code stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů. Pak zadejte **ASA** a vyberte **ASA: vytvořit nový projekt**.
 
-   ![Vytvořit nový projekt](./media/quick-create-vs-code/create-new-project.png)
+   ![Vytvoření nového projektu](./media/quick-create-vs-code/create-new-project.png)
 
 2. Zadejte název projektu, například **myASAproj** , a vyberte složku pro svůj projekt.
 
@@ -132,16 +132,16 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
    FROM Input
    HAVING Temperature > 27
    ```
-## <a name="test-with-sample-data"></a>Testovat s ukázkovými daty
+## <a name="test-with-sample-data"></a>Testování s ukázkovými daty
 Před spuštěním dotazu v cloudu můžete otestovat dotaz s místními ukázkovými daty a ověřit logiku dotazu.
 
 Postupujte podle pokynů v části [test s ukázkovými daty](vscode-local-run.md) , kde najdete další podrobnosti. 
 
  ![Testování s ukázkovými daty v VS Code](./media/quick-create-vs-code/vscode-localrun.gif)
 
-## <a name="define-an-input"></a>Definujte vstupní hodnota
+## <a name="define-an-input"></a>Definování vstupu
 
-1. Výběrem **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů a zadejte **ASA: Přidejte vstup @ no__t-0.
+1. Vyberte **CTRL + SHIFT + P** a otevřete paletu příkazů a zadejte **ASA: přidat vstup**.
 
    ![Přidat vstup Stream Analytics v VS Code](./media/quick-create-vs-code/add-input.png)
 
@@ -159,17 +159,17 @@ Postupujte podle pokynů v části [test s ukázkovými daty](vscode-local-run.m
 
    |Nastavení|Navrhovaná hodnota|Popis|
    |-------|---------------|-----------|
-   |Name|Vstup|Zadejte název pro identifikaci vstupu úlohy.|
+   |Name (Název)|Vstup|Zadejte název pro identifikaci vstupu úlohy.|
    |IotHubNamespace|MyASAIoTHub|Vyberte nebo zadejte název IoT Hub. Názvy IoT Hub jsou automaticky zjištěny, pokud jsou vytvořeny ve stejném předplatném.|
-   |SharedAccessPolicyName|iothubowner| |
+   |sharedAccessPolicyName|iothubowner| |
 
    ![Konfigurace vstupu v Visual Studio Code](./media/quick-create-vs-code/configure-input.png)
 
 
 
-## <a name="define-an-output"></a>Definování výstup
+## <a name="define-an-output"></a>Definování výstupu
 
-1. Kliknutím na **CTRL + SHIFT + P** otevřete paletu příkazů. Pak zadejte **ASA: Přidejte výstup @ no__t-0.
+1. Kliknutím na **CTRL + SHIFT + P** otevřete paletu příkazů. Pak zadejte **ASA: Přidat výstup**.
 
    ![Přidat výstup Stream Analytics v VS Code](./media/quick-create-vs-code/add-output.png)
 
@@ -183,10 +183,10 @@ Postupujte podle pokynů v části [test s ukázkovými daty](vscode-local-run.m
 
    |Nastavení|Navrhovaná hodnota|Popis|
    |-------|---------------|-----------|
-   |Name|Výstup| Zadejte název pro identifikaci výstupu úlohy.|
+   |Name (Název)|Výstup| Zadejte název pro identifikaci výstupu úlohy.|
    |Účet úložiště|asaquickstartstorage|Vyberte nebo zadejte název svého účtu úložiště. Pokud jsou názvy vytvořeny v rámci stejného předplatného, zjišťují se automaticky.|
    |Kontejner|container1|Vyberte existující kontejner, který jste vytvořili v účtu úložiště.|
-   |Vzor cesty|výstup|Zadejte název cesty k souboru, která se vytvoří v rámci kontejneru.|
+   |Vzor cesty|output|Zadejte název cesty k souboru, která se vytvoří v rámci kontejneru.|
 
  ![Konfigurace výstupu v Visual Studio Code](./media/quick-create-vs-code/configure-output.png)
 
@@ -266,4 +266,4 @@ V tomto rychlém startu jste nasadili jednoduchou Stream Analyticsovou úlohu po
 Další informace o nástrojích Azure Stream Analytics Tools for Visual Studio najdete v následujícím článku:
 
 > [!div class="nextstepaction"]
-> [Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)
+> [Použití sady Visual Studio k zobrazení Azure Stream Analyticsch úloh](stream-analytics-vs-tools.md)

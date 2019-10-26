@@ -1,24 +1,18 @@
 ---
 title: Práce s řetězci v Azure Monitorch dotazech protokolu | Microsoft Docs
 description: Popisuje, jak upravit, porovnat, vyhledat a provést různé operace s řetězci v Azure Monitorch dotazech protokolu.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.date: 08/16/2018
+ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741460"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932935"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v Azure Monitorch dotazech protokolu
 
@@ -34,7 +28,7 @@ Každý znak v řetězci má číslo indexu v závislosti na jeho umístění. P
 
 
 ## <a name="strings-and-escaping-them"></a>Řetězce a uvozovací znaky
-Řetězcové hodnoty jsou zabaleny buď pomocí jednoduchých nebo dvojitých uvozovek. Zpětné lomítko\\() se používá k řídicím znakům na znak, který následuje, jako je například \t pro tabulátor, \n \" pro nový řádek a znak citace.
+Řetězcové hodnoty jsou zabaleny buď pomocí jednoduchých nebo dvojitých uvozovek. Zpětné lomítko (\\) se používá k řídicím znakům na znak, který následuje, jako je například \t pro tabulátor, \n pro nový řádek a \" samotného znaku citace.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -44,7 +38,7 @@ print "this is a 'string' literal in double \" quotes"
 print 'this is a "string" literal in single \' quotes'
 ```
 
-Chcete-li\\zabránit "" v tom, aby jednal jako řídicí\@znak, přidejte "" jako předponu do řetězce:
+Chcete-li zabránit "\\" v tom, aby jednal jako řídicí znak, přidejte do řetězce "\@" jako předponu:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
@@ -53,11 +47,11 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Porovnávání řetězců
 
-Operator       |Popis                         |Rozlišovat velká a malá písmena|Příklad (výnosy `true`)
+Operátor       |Popis                         |Rozlišovat velká a malá písmena|Příklad (poskytuje `true`)
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Je rovno                              |Ano           |`"aBc" == "aBc"`
+`==`           |Rovná se                              |Ano           |`"aBc" == "aBc"`
 `!=`           |Nerovná se                          |Ano           |`"abc" != "ABC"`
-`=~`           |Je rovno                              |Ne            |`"abc" =~ "ABC"`
+`=~`           |Rovná se                              |Ne            |`"abc" =~ "ABC"`
 `!~`           |Nerovná se                          |Ne            |`"aBc" !~ "xyz"`
 `has`          |Pravá strana je celý výraz na levé straně |Ne|`"North America" has "america"`
 `!has`         |Pravá strana není úplným termínem na levé straně.       |Ne            |`"North America" !has "amer"` 
@@ -97,12 +91,12 @@ Spočítá výskyty podřetězce v řetězci. Může odpovídat prostým řetěz
 countof(text, search [, kind])
 ```
 
-### <a name="arguments"></a>Argumenty:
-- `text`– Vstupní řetězec 
-- `search`– Prostý řetězec nebo regulární výraz pro spárování uvnitř textu
-- `kind` - normální | _regulární výraz_ (výchozí: normální).
+### <a name="arguments"></a>Náhodné
+- `text` – vstupní řetězec 
+- `search` – prostý řetězec nebo regulární výraz pro spárování uvnitř textu
+- `kind` - _normálního_ _regulárního výrazu_ | (výchozí: Normal).
 
-### <a name="returns"></a>Vrací
+### <a name="returns"></a>Vrátí
 
 Počet, kolikrát může být hledaný řetězec v kontejneru spárován. Shody s prostým řetězcem se mohou překrývat, zatímco se neshodují regulární výrazy
 
@@ -139,12 +133,12 @@ extract(regex, captureGroup, text [, typeLiteral])
 
 ### <a name="arguments"></a>Argumenty
 
-- `regex`– Regulární výraz.
-- `captureGroup`– Kladná celočíselná konstanta označující skupinu zachycení k extrakci. 0 pro celou shodu, hodnota 1 pro hodnotu odpovídající prvnímu (' závorce ') ' v regulárním výrazu, 2 nebo více pro následující závorky.
-- `text`– Řetězec, který chcete vyhledat.
-- `typeLiteral`– Volitelný literál typu (například typeof (Long)). Je-li tento příkaz zadán, extrahovaný dílčí řetězec je převeden na tento typ.
+- `regex` – regulární výraz.
+- `captureGroup` – kladná celočíselná konstanta označující skupinu zachycení, která se má extrahovat. 0 pro celou shodu, hodnota 1 pro hodnotu odpovídající prvnímu (' závorce ') ' v regulárním výrazu, 2 nebo více pro následující závorky.
+- `text` – řetězec, který se má hledat.
+- `typeLiteral` – volitelný literál typu (například typeof (Long)). Je-li tento příkaz zadán, extrahovaný dílčí řetězec je převeden na tento typ.
 
-### <a name="returns"></a>Vrací
+### <a name="returns"></a>Vrátí
 Podřetězec se shoduje s určenou skupinou zachycení skupiny zachycení, volitelně převedena na typeLiteral.
 Pokud se neshoduje, nebo převod typu se nezdařil, vrátí hodnotu null.
 
@@ -179,7 +173,7 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 ## <a name="isempty-isnotempty-notempty"></a>neprázdný, isnotempty, a.
 
 - atribut *Empty* vrátí hodnotu true, pokud je argumentem prázdný řetězec nebo hodnota null (viz také *IsNull*).
-- *isnotempty* vrátí hodnotu true, pokud argument není prázdný řetězec nebo hodnota null (viz také *IsNotNull*). alias:a.
+- *isnotempty* vrátí hodnotu true, pokud argument není prázdný řetězec nebo hodnota null (viz také *IsNotNull*). alias: *a*.
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -246,11 +240,11 @@ replace(regex, rewrite, input_text)
 
 ### <a name="arguments"></a>Argumenty
 
-- `regex`– Regulární výraz, který se má shodovat s. Může obsahovat skupiny zachycení v ' (' závorky ') '.
-- `rewrite`– Nahrazující regulární výraz pro všechny shody provedené porovnáváním regulárním výrazem. Pomocí \ 0 se můžete podívat na celou shodu, \ 1 pro první skupinu zachycení, \ 2 atd. pro další skupiny zachycení.
-- `input_text`– Vstupní řetězec, ve kterém se má hledat.
+- `regex` – regulární výraz, který se má shodovat s. Může obsahovat skupiny zachycení v ' (' závorky ') '.
+- `rewrite` – regulární regulární výraz pro jakoukoliv shodu provedenou odpovídajícím regulárním výrazem. Pomocí \ 0 se můžete podívat na celou shodu, \ 1 pro první skupinu zachycení, \ 2 atd. pro další skupiny zachycení.
+- `input_text` – vstupní řetězec, ve kterém se má hledat.
 
-### <a name="returns"></a>Vrací
+### <a name="returns"></a>Vrátí
 Text po nahrazení všech shod regulárního výrazu pomocí vyhodnocení přepisu Shoda se nekryje.
 
 ### <a name="examples"></a>Příklady
@@ -266,7 +260,7 @@ Může mít následující výsledky:
 
 Aktivita                                        |znění
 ------------------------------------------------|----------------------------------------------------------
-4663 – byl proveden pokus o přístup k objektu.  |ID aktivity 4663: Byl proveden pokus o přístup k objektu.
+4663 – byl proveden pokus o přístup k objektu.  |ID aktivity 4663: byl proveden pokus o přístup k objektu.
 
 
 ## <a name="split"></a>split
@@ -278,11 +272,11 @@ Rozdělí daný řetězec na základě zadaného oddělovače a vrátí pole vý
 split(source, delimiter [, requestedIndex])
 ```
 
-### <a name="arguments"></a>Argumenty:
+### <a name="arguments"></a>Náhodné
 
-- `source`– Řetězec, který má být rozdělen podle zadaného oddělovače.
-- `delimiter`– Oddělovač, který bude použit k rozdělení zdrojového řetězce.
-- `requestedIndex`– Volitelný index založený na nule. Pokud je zadáno, bude vrácené pole řetězce obsahovat pouze tuto položku (pokud existuje).
+- `source` – řetězec, který má být rozdělen podle zadaného oddělovače.
+- `delimiter` – oddělovač, který bude použit k rozdělení zdrojového řetězce.
+- `requestedIndex` – volitelný index založený na nule. Pokud je zadáno, bude vrácené pole řetězce obsahovat pouze tuto položku (pokud existuje).
 
 
 ### <a name="examples"></a>Příklady
@@ -326,7 +320,7 @@ print strlen("hello")   // result: 5
 ```
 
 
-## <a name="substring"></a>substring
+## <a name="substring"></a>podřetězec
 
 Extrahuje podřetězec z daného zdrojového řetězce, počínaje zadaným indexem. Volitelně lze zadat délku požadovaného podřetězce.
 
@@ -335,11 +329,11 @@ Extrahuje podřetězec z daného zdrojového řetězce, počínaje zadaným inde
 substring(source, startingIndex [, length])
 ```
 
-### <a name="arguments"></a>Argumenty:
+### <a name="arguments"></a>Náhodné
 
-- `source`– Zdrojový řetězec, ze kterého se bude podřetězec považovat.
-- `startingIndex`– Počáteční pozice znaku požadovaného podřetězce na základě nuly.
-- `length`– Volitelný parametr, který lze použít k určení požadované délky vráceného podřetězce.
+- `source` – zdrojový řetězec, ze kterého se bude podřetězec považovat.
+- `startingIndex` – počáteční pozice znaku požadovaného podřetězce na základě nuly.
+- `length` – volitelný parametr, který lze použít k určení požadované délky vráceného podřetězce.
 
 ### <a name="examples"></a>Příklady
 ```Kusto
@@ -368,7 +362,7 @@ print toupper("hello"); // result: "HELLO"
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokračujte v pokročilých kurzech:
 * [Agregační funkce](aggregations.md)
 * [Pokročilé agregace](advanced-aggregations.md)

@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 27884d83b9ca828a81922d27fe958334665e664a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 45cf376d54ef9f2e77acb2ece9529af640938853
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719523"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931779"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>Rychlý Start: Klientská knihovna Počítačové zpracování obrazu pro .NET
 
@@ -25,7 +25,7 @@ Pomocí klientské knihovny Počítačové zpracování obrazu pro .NET:
 * Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
 * Vyrozpoznávají vytištěné a ručně psaný text pomocí rozhraní Batch Read API.
 
-[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet) | [Ukázka](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | 
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)  | [Ukázka  |  ukázek](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision)  | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -41,7 +41,7 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 * Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu sedmi dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Prohlédněte si prostředek na [Azure Portal](https://portal.azure.com/).
 
-Po získání klíče ze zkušebního předplatného nebo prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíčovou adresu URL klíče a koncového bodu s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
+Až dostanete klíč ze zkušebního předplatného nebo prostředku, [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíčovou adresu URL klíče a koncového bodu s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT`v uvedeném pořadí.
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové C# aplikace
 
@@ -108,7 +108,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 > [!NOTE]
-> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro počítačové zpracování obrazu klíč s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY`.
+> V tomto rychlém startu se předpokládá, že jste pro svůj Počítačové zpracování obrazu klíč a koncový bod [vytvořili proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT`.
 
 V nové metodě vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) .
 
@@ -120,15 +120,15 @@ Pravděpodobně budete chtít zavolat tuto metodu v metodě `Main`.
 
 ## <a name="analyze-an-image"></a>Analýza obrázku
 
-Následující kód definuje metodu `AnalyzeImageUrl`, která používá objekt klienta k analýze vzdálené image a vytisknutí výsledků. Metoda vrátí textový popis, kategorizaci, seznam značek, zjištěné plošky, příznaky obsahu pro dospělé, hlavní barvy a typ obrázku.
+Následující kód definuje metodu, `AnalyzeImageUrl`, která používá objekt klienta k analýze vzdálené image a vytisknutí výsledků. Metoda vrátí textový popis, kategorizaci, seznam značek, zjištěné plošky, příznaky obsahu pro dospělé, hlavní barvy a typ obrázku.
 
-Přidejte volání metody do metody `Main`.
+Přidejte do metody `Main` volání metody.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_analyzeinmain)]
 
 ### <a name="set-up-test-image"></a>Nastavit testovací image
 
-V třídě **program** uložte odkaz na adresu URL obrázku, který chcete analyzovat.
+Ve vaší třídě **programu** uložte odkaz na adresu URL obrázku, který chcete analyzovat.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_analyze_url)]
 
@@ -199,7 +199,7 @@ Následující kód vytiskne zjištěné atributy barev v obrázku, jako jsou do
 
 ### <a name="get-domain-specific-content"></a>Získání obsahu specifického pro doménu
 
-Počítačové zpracování obrazu může použít specializovaný model k další analýze imagí. Další podrobnosti najdete v tématu [obsah specifický pro doménu](../concept-detecting-domain-content.md) . 
+Počítačové zpracování obrazu může použít specializované modely k dalšímu analýze imagí. Další podrobnosti najdete v tématu [obsah specifický pro doménu](../concept-detecting-domain-content.md) . 
 
 Následující kód analyzuje data o zjištěných celebrit v imagi.
 
@@ -211,15 +211,15 @@ Následující kód analyzuje data o zjištěných orientačních seznamech v ob
 
 ### <a name="get-the-image-type"></a>Získat typ obrázku
 
-Následující kód Vytiskne informace o typu obrázku @ no__t-0whether je Klipart nebo kreslení čáry.
+Následující kód Vytiskne informace o typu obrázku&mdash;, zda se jedná o Klipart nebo kreslení čáry.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_type)]
 
 ## <a name="read-printed-and-handwritten-text"></a>Číst vytištěné a ručně psaný text
 
-Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Kód v této části definuje metodu `ExtractTextUrl`, která používá objekt klienta k detekci a extrakci vytištěného nebo rukopisného textu v obrázku.
+Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Kód v této části definuje metodu, `ExtractTextUrl`, která používá objekt klienta k detekci a extrakci vytištěného nebo rukopisného textu v obrázku.
 
-Přidejte volání metody do metody `Main`.
+Přidejte do metody `Main` volání metody.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extracttextinmain)]
 

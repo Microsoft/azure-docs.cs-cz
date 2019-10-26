@@ -1,62 +1,62 @@
 ---
-title: Zvolte analýzy v reálném čase a streamování zpracování technologie v Azure
-description: Další informace o tom, jak vybrat přímo v reálném čase analýzy a zpracování technologie streamování pro sestavení aplikace v Azure.
+title: Volba řešení pro zpracování datových proudů v Azure v reálném čase
+description: Přečtěte si, jak zvolit správnou analýzu v reálném čase a technologii zpracování streamování pro sestavení vaší aplikace v Azure.
 author: zhongc
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f46a35d971c008b61d4899e30101ea562d3cefea
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 3bde2964c40553d02a56f57f9c459cc6afa3f660
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483405"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924898"
 ---
-# <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Zvolte analýzy v reálném čase a streamování zpracování technologie v Azure
+# <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Volba analýzy v reálném čase a technologie zpracování streamování v Azure
 
-Některé služby nejsou k dispozici pro zpracování datových proudů v Azure a analýzy v reálném čase. Tento článek obsahuje informace potřebné k rozhodování, technologii, která je nejvhodnější pro vaši aplikaci.
+K dispozici je několik služeb pro analýzy v reálném čase a zpracování streamování v Azure. Tento článek poskytuje informace, které potřebujete k rozhodnutí, kterou technologii nejlépe vyhovuje vaší aplikaci.
 
 ## <a name="when-to-use-azure-stream-analytics"></a>Kdy použít Azure Stream Analytics
 
-Azure Stream Analytics je doporučenou službu pro stream analytics v Azure. Je určená pro širokou škálu scénářů, které patří, ale nejsou omezené na:
+Azure Stream Analytics je doporučená služba pro Stream Analytics v Azure. Je určený pro široké spektrum scénářů, které zahrnují, ale nejsou omezené na:
 
 * Řídicí panely pro vizualizaci dat
-* V reálném čase [výstrahy](stream-analytics-set-up-alerts.md) z dočasné a prostorových vzorů nebo anomálií
+* [Výstrahy](stream-analytics-set-up-alerts.md) v reálném čase z dočasného a prostorového vzoru nebo anomálií
 * Extrakce, transformace, načítání (ETL)
-* [Model Event Sourcing](/azure/architecture/patterns/event-sourcing)
+* [Vzor zdroje událostí](/azure/architecture/patterns/event-sourcing)
 * [IoT Edge](stream-analytics-edge.md)
 
-Přidání Azure Stream Analytics úlohy do vaší aplikace je nejrychlejší způsob, jak získat streaming analytics nahoru a běží v Azure pomocí jazyka SQL už znáte. Azure Stream Analytics je služba úlohy, není potřeba trávit čas správu clusterů, takže není nutné se starat o výpadků díky 99,9 % podle smlouvy SLA na úrovni projektu. Fakturace se provádí taky na úrovni úlohy vytváření nízké náklady na spuštění (jednu jednotku streamování), ale škálovatelné (až 192 jednotek streamování). Je mnohem méně nákladné spustit několik úloh Stream Analytics, než je spustit a spravovat cluster.
+Přidání Azure Stream Analytics úlohy do aplikace je nejrychlejší způsob, jak pomocí jazyka SQL, který už znáte, analyzovat streamování v Azure v provozu. Azure Stream Analytics je služba úlohy, takže nemusíte ztrácet čas správou clusterů a nemusíte se starat o prostoje s 99,9% smlouvou SLA na úrovni úlohy. Fakturace se provádí taky na úrovni úlohy, která má nízké náklady na spuštění (jedna jednotka streamování), ale škálovatelná (až 192 jednotek streamování). Spuštění několika úloh Stream Analytics je mnohem efektivnější než spuštění a údržba clusteru.
 
-Azure Stream Analytics obsahuje celou řadu možností out-of-the-box. Můžete okamžitě využít následující funkce bez jakékoli další konfigurace:
+Azure Stream Analytics má bohatě připravený zážitek. Bez dalších nastavení můžete hned využít tyto funkce:
 
-* Integrované dočasné operátory, jako například [agregací](stream-analytics-window-functions.md), dočasná spojení a dočasné analytických funkcí.
-* Nativní Azure [vstupní](stream-analytics-add-inputs.md) a [výstup](stream-analytics-define-outputs.md) adaptéry
-* Podpora pro pomalé změnu [odkazují na data](stream-analytics-use-reference-data.md) (označované také jako tabulky vyhledávání), včetně spojením s geoprostorové referenčních dat pro monitorování geografických zón.
-* Integrovaná řešení, jako například [detekce anomálií](stream-analytics-machine-learning-anomaly-detection.md)
-* Více časových oken ve stejném dotazu
-* Možnost vytvořit více dočasné operátory v libovolné posloupnosti.
-* Pod 100 ms celkovou latenci ze vstupu přicházejících u služby Event Hubs do výstupního cílová ve službě Event Hubs, včetně zpoždění sítě z a do služby Event Hubs v Vysoká propustnost
+* Předdefinované dočasné operátory, jako jsou například [okna agregace](stream-analytics-window-functions.md), dočasná spojení a dočasné analytické funkce.
+* Nativní [vstupní](stream-analytics-add-inputs.md) a [výstupní](stream-analytics-define-outputs.md) adaptéry Azure
+* Podpora pro pomalé změny [referenčních dat](stream-analytics-use-reference-data.md) (označují se také jako vyhledávací tabulky), včetně spojení s geoprostorové referenčními daty pro monitorování geografických zón.
+* Integrovaná řešení, jako je [detekce anomálií](stream-analytics-machine-learning-anomaly-detection.md)
+* Několik časových oken ve stejném dotazu
+* Možnost vytvářet více dočasných operátorů v libovolných sekvencích.
+* V části 100-MS koncová latence ze vstupu přicházejících na Event Hubs, do výstupního odpočívadla v Event Hubs, včetně zpoždění sítě od a do Event Hubs, při trvalé vysoké propustnosti
 
 ## <a name="when-to-use-other-technologies"></a>Kdy použít jiné technologie
 
-### <a name="you-need-to-input-from-or-output-to-kafka"></a>Budete muset ze vstupních nebo výstupních k Kafka
+### <a name="you-need-to-input-from-or-output-to-kafka"></a>Musíte vstup nebo výstup do Kafka.
 
-Azure Stream Analytics není máte Apache Kafka vstup nebo výstup adaptér. Pokud máte události doručení nebo nutné odeslat Kafka a není nutné požadavek na spuštění clusteru Kafka, můžete pokračovat k odesílání událostí do služby Event Hubs pomocí rozhraní API Event Hubs Kafka beze změny odesílatele události použití Stream Analytics. Pokud je potřeba spouštět Kafka cluster, můžete použít strukturovaného streamování Sparku, která plně podporuje [Azure Databricks](../azure-databricks/index.yml), nebo Storm na [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md).
+Azure Stream Analytics nemá Apache Kafka vstupní nebo výstupní adaptér. Pokud máte události, které přidáváte nebo potřebujete odeslat do Kafka a nemáte požadavek na spuštění vlastního clusteru Kafka, můžete dál používat Stream Analytics odesláním událostí do Event Hubs pomocí rozhraní API Event Hubs Kafka, aniž byste museli měnit odesílatele události. Pokud potřebujete spustit vlastní cluster Kafka, můžete použít strukturované streamování Sparku, která je plně podporovaná na [Azure Databricks](../azure-databricks/index.yml)nebo v [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md).
 
-### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>Chcete zadat vlastní deserializers, funkcí UDF a UDA v jiném jazyce než v jazyce JavaScript neboC#
+### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>Chcete zapisovat UDF, Uda a vlastní deserializace v jiném jazyce než JavaScript neboC#
 
-Azure Stream Analytics podporuje uživatelem definované funkce (UDF) nebo uživatelem definované agregace (UDA) v jazyce JavaScript pro cloudové úlohy a C# pro úlohy IoT Edge. C#uživatelem definované deserializers jsou také podporovány. Pokud chcete implementovat deserializátor, uživatelem definovanou FUNKCI nebo UDA v jiných jazycích, jako je Java nebo Python, můžete použít strukturovaného streamování Sparku. Můžete také spustit službu Event Hubs **EventProcessorHost** na virtuálních počítačích pro zpracování libovolných datových proudů.
+Azure Stream Analytics podporuje uživatelsky definované funkce (UDF) nebo uživatelsky definované agregace (UDA) v JavaScriptu pro cloudové úlohy a C# pro IoT Edge úlohy. C#podporují se taky uživatelsky definované deserializace. Pokud chcete implementovat deserializaci, UDF nebo UDA v jiných jazycích, jako je Java nebo Python, můžete použít strukturované streamování Sparku. Můžete také spustit Event Hubs **EventProcessorHost** na svých vlastních virtuálních počítačích a dělat tak libovolné zpracování libovolného streamování.
 
-### <a name="your-solution-is-in-a-multi-cloud-or-on-premises-environment"></a>Je vaše řešení ve více cloudu nebo v místním prostředí
+### <a name="your-solution-is-in-a-multi-cloud-or-on-premises-environment"></a>Vaše řešení je v cloudu nebo v místním prostředí.
 
-Azure Stream Analytics je proprietární technologii od Microsoftu a je dostupná pouze na Azure. Pokud potřebujete řešení jeho přenositelnost napříč Cloudy nebo na místě, vezměte v úvahu opensourcových technologií, jako je například strukturovaného streamování Sparku nebo Storm.
+Azure Stream Analytics je proprietární technologie Microsoftu a je dostupná jenom v Azure. Pokud potřebujete, aby vaše řešení bylo přenosné napříč cloudy nebo místně, zvažte Open Source technologie, jako je například strukturovaný streamování Sparku nebo vyplavení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření úlohy Stream Analytics pomocí webu Azure portal](stream-analytics-quick-create-portal.md)
-* [Vytvoření úlohy Stream Analytics pomocí Azure Powershellu](stream-analytics-quick-create-powershell.md)
+* [Vytvoření Stream Analytics úlohy pomocí Azure Portal](stream-analytics-quick-create-portal.md)
+* [Vytvoření Stream Analytics úlohy pomocí Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Vytvoření úlohy Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Vytvoření úlohy Stream Analytics pomocí Visual Studio Code](quick-create-vs-code.md)
+* [Vytvoření Stream Analytics úlohy pomocí Visual Studio Code](quick-create-vs-code.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 40f73a6aabd3631bf2a2f8f1406d2ec9abd55e51
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 51202597aaee2940a764d0385d4d93c7409f4905
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757232"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935928"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza problematického materiálu v obsahu textu v jazyce C#
 
@@ -24,7 +24,7 @@ Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začí
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Předpoklady
-- Klíč předplatného Content Moderatoru. Podle pokynů v tématu [Vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru Content Moderatoru a získejte svůj klíč.
+- Klíč předplatného Content Moderatoru. Postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru Content moderator. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč a adresu URL koncového bodu s názvem `CONTENT_MODERATOR_SUBSCRIPTION_KEY` a `CONTENT_MODERATOR_ENDPOINT`, v uvedeném pořadí.
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 
 > [!NOTE]
@@ -48,19 +48,19 @@ Dále zkopírováním kódu z této příručky a jeho vložením do svého proj
 
 Na začátek souboru *Program.cs* přidejte následující příkazy `using`.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=1-8)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_using)]
 
 ### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Do souboru *Program.cs* přidejte následující kód, který pro vaše předplatné vytvoří zprostředkovatele klienta Content Moderatoru. Přidejte kód společně s třídou **Program** do stejného oboru názvů. Budete muset aktualizovat pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
+Do souboru *Program.cs* přidejte následující kód, který pro vaše předplatné vytvoří zprostředkovatele klienta Content Moderatoru. Přidejte třídu spolu se třídou **program** ve stejném oboru názvů. Pole **AzureBaseURL** a **CMSubscriptionKey** budete muset aktualizovat hodnotami adresy URL koncového bodu a klíče předplatného. Můžete je najít na kartě **rychlý Start** prostředku v Azure Portal.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=54-77)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_client)]
 
 ### <a name="set-up-input-and-output-targets"></a>Nastavení vstupních a výstupních cílů
 
 Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole určují soubory pro vstupní textový obsah a výstupní obsah JSON.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_fields)]
 
 Budete muset vytvořit vstupní soubor *textfile. txt* a aktualizovat jeho cestu (cesty jsou relativní vzhledem k adresáři spuštění). Otevřete soubor _TextFile.txt_ a přidejte text, který se má moderovat. V tomto rychlém startu se používá následující ukázkový text:
 
@@ -80,7 +80,7 @@ Do metody **Main** přidejte následující kód. Zásadní operací je metoda *
 
 Další informace o tom, co tyto operace dělají, najdete na odkazu v části [Další kroky](#next-steps).
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=23-48)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_main)]
 
 ## <a name="run-the-program"></a>Spuštění programu
 

@@ -1,17 +1,17 @@
 ---
-title: Použití spravované identity k ověření Azure Stream Analytics úlohy do Azure Blob Storage Output (Preview)
+title: Ověřit výstup objektu BLOB pomocí spravované identity Azure Stream Analytics
 description: Tento článek popisuje, jak pomocí spravovaných identit ověřit úlohu Azure Stream Analytics do výstupu služby Azure Blob Storage.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 2bde1e8556fb1255e27595630e061f6b80870ce1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4215dc85da6d507b08f23cf248044ea807fe5319
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278691"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935125"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Použití spravované identity k ověření Azure Stream Analytics úlohy do Azure Blob Storage Output (Preview)
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak povolit spravovanou identitu pro výstupy obje
 
    ![Konfigurace Stream Analytics spravované identity](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-enable-managed-identity.png)
 
-2. V okně Vlastnosti výstupu výstupní jímky služby Azure Blob Storage vyberte rozevírací seznam režim ověřování a zvolte **spravovaná identita**. Informace týkající se dalších vlastností výstup naleznete v tématu [Principy výstupů z Azure Stream Analytics](./stream-analytics-define-outputs.md). Až budete hotovi, klikněte na tlačítko **Uložit**.
+2. V okně Vlastnosti výstupu výstupní jímky služby Azure Blob Storage vyberte rozevírací seznam režim ověřování a zvolte **spravovaná identita**. Informace týkající se dalších vlastností výstup naleznete v tématu [Principy výstupů z Azure Stream Analytics](./stream-analytics-define-outputs.md). Po dokončení klikněte na **Uložit**.
 
    ![Konfigurace výstupu služby Azure Blob Storage](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
@@ -235,7 +235,7 @@ Níže jsou uvedena aktuální omezení této funkce:
 
 4. [Identita přiřazená uživateli](../active-directory/managed-identities-azure-resources/overview.md) není podporována. To znamená, že uživatel nemůže zadat vlastní instanční objekt, který bude používat jejich Stream Analytics úlohy. Instanční objekt musí být vygenerovaný Azure Stream Analytics.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Vysvětlení vytvořené jako výstupy z Azure Stream Analytics](./stream-analytics-define-outputs.md)
+* [Porozumění výstupům z Azure Stream Analytics](./stream-analytics-define-outputs.md)
 * [Azure Stream Analytics vlastní dělení výstupu objektů BLOB](./stream-analytics-custom-path-patterns-blob-storage-output.md)

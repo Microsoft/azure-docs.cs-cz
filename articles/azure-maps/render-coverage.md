@@ -1,6 +1,6 @@
 ---
-title: Zajištění pokrytí ve službě Azure Maps | Dokumentace Microsoftu
-description: Další informace o pokrytí vykreslovací ve službě Azure Maps
+title: Pokrytí vykreslování v Azure Maps | Microsoft Docs
+description: Další informace o pokrytí vykreslování v Azure Maps
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5affc9952cfe13ebfeede126051f2236499d1343
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869995"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934290"
 ---
-# <a name="azure-maps-render-coverage"></a>Zajištění vykreslování Azure Maps
+# <a name="azure-maps-render-coverage"></a>Pokrytí vykreslování Azure Maps
 
-K vytvoření mapy používá Azure Maps rastrové dlaždice a dlaždic vektorových. Nejnižší rozlišením celý svět vejde na jednu dlaždici. Nejvyšší rozlišením představuje jednu dlaždici 38 Čtvereček měřiče. Jak Přiblížit na mapě proto vidíte stále další podrobnosti o kontinentech, oblasti, města a jednotlivé ulice. Další informace najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
+Pro vytváření map používá Azure Maps rastrové dlaždice i vektorové dlaždice. V nejnižším rozlišení se celý svět vejde na jednu dlaždici. V jeho nejvyšším rozlišení jedna dlaždice představuje 38 čtvereční měřiče. Při přiblížení na mapě vám proto můžete zobrazit stále více podrobností o kontinentech, oblastech, městech a jednotlivých ulic. Další informace najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
 
-Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. Následující tabulka obsahuje informace o jaké úroveň vykreslené podrobností můžete očekávat od každé oblasti.
+Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. Následující tabulky obsahují informace o tom, jakou úroveň podrobností z jednotlivých oblastí se má vykreslovat.
 
-## <a name="legend"></a>Legenda
+## <a name="legend"></a>Popisek
 
-| Symbol | Význam |
+| Písmeno | Význam |
 |--------|---------|
-| ✓ | Oblast je reprezentována pomocí podrobné údaje.   |
-| Ø | Oblast je reprezentována pomocí jednodušší. |
+| ✓ | Oblast je zastoupena s podrobnými daty.   |
+| Ř | Oblast je reprezentována s zjednodušenými daty. |
 
 
 ## <a name="africa"></a>Afrika 
 
 
-| Země/oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
+| Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
 | Alžírsko                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
@@ -42,26 +42,26 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Burundi                          | ✓ | ✓ |
 | Cabo Verde                       | ✓ | ✓ |
 | Kamerun                         | ✓ | ✓ |
-| Středoafrická republika         | ✓ | Ø |
-| Čad                             | ✓ | Ø |
-| Komory                          | ✓ | Ø |
+| Středoafrická republika         | ✓ | Ř |
+| Čad                             | ✓ | Ř |
+| Komory                          | ✓ | Ř |
 | Demokratická republika Kongo | ✓ | ✓ |
-| Pobřeží slonoviny                    | ✓ | Ø |
-| Džibuti                         | ✓ | Ø |
+| Pobřeží slonoviny                    | ✓ | Ř |
+| Džibutsko                         | ✓ | Ř |
 | Egypt                            | ✓ | ✓ |
-| Rovníková Guinea                | ✓ | Ø |
-| Eritrea                          | ✓ | Ø |
-| Etiopie                         | ✓ | Ø |
+| Rovníková Guinea                | ✓ | Ř |
+| Eritrea                          | ✓ | Ř |
+| Etiopie                         | ✓ | Ř |
 | Gabon                            | ✓ | ✓ |
-| Gambie                           | ✓ | Ø |
+| Gambie                           | ✓ | Ř |
 | Ghana                            | ✓ | ✓ |
-| Guinea                           | ✓ | Ø |
-| Guinea-Bissau                    | ✓ | Ø |
+| Guinea                           | ✓ | Ř |
+| Guinea-Bissau                    | ✓ | Ř |
 | Keňa                            | ✓ | ✓ |
 | Lesotho                          | ✓ | ✓ |
-| Libérie                          | ✓ | Ø |
-| Libye                            | ✓ | Ø |
-| Madagaskar                       | ✓ | Ø |
+| Libérie                          | ✓ | Ř |
+| Libye                            | ✓ | Ř |
+| Madagaskar                       | ✓ | Ř |
 | Malawi                           | ✓ | ✓ |
 | Mali                             | ✓ | ✓ |
 | Mauritánie                       | ✓ | ✓ |
@@ -74,16 +74,16 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Nigérie                          | ✓ | ✓ |
 | Réunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
-| Svatá Helena, Ascensión a Tristan da Cunha | ✓ | Ø |
-| Svatý Tomáš a Princův ostrov            | ✓ | Ø |
+| Svatá Helena, Ascension a Tristan da Cunha | ✓ | Ř |
+| Svatý Tomáš a Princův ostrov            | ✓ | Ř |
 | Senegal                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
 | Somálsko                          | ✓ | ✓ |
-| Jižní Afrika                     | ✓ | ✓ |
+| Jihoafrická republika                     | ✓ | ✓ |
 | Jižní Súdán                      | ✓ | ✓ |
 | Súdán                            | ✓ | ✓ |
 | Svazijsko                        | ✓ | ✓ |
-| Sjednocená Tanzanská republika      | ✓ | ✓ |
+| Česká republika Tanzanie      | ✓ | ✓ |
 | Togo                             | ✓ | ✓ |
 | Tunisko                          | ✓ | ✓ |
 | Uganda                           | ✓ | ✓ |
@@ -92,7 +92,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 
 ## <a name="americas"></a>Amerika
 
-| Země/oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
+| Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
 | Anguilla                  | ✓ | ✓ |
 | Antigua a Barbuda       | ✓ | ✓ |
@@ -102,8 +102,8 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Barbados                  | ✓ | ✓ |
 | Belize                    | ✓ | ✓ |
 | Bermudy                   | ✓ | ✓ |
-| Mnohonárodní stát Bolívie | ✓ | ✓ |
-| Bonaire, Svatý Eustach a Saba | ✓ | ✓ |
+| Mnohonárodní okres Bolívie | ✓ | ✓ |
+| Bonaire, Sint Eustach a Saba | ✓ | ✓ |
 | Brazílie                    | ✓ | ✓ |
 | Kanada                    | ✓ | ✓ |
 | Kajmanské ostrovy            | ✓ | ✓ |
@@ -117,7 +117,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Ekvádor                   | ✓ | ✓ |
 | Falklandské ostrovy (Malvíny) | ✓ | ✓ |
 | Francouzská Guyana             | ✓ | ✓ |
-| Grónsko                 | ✓ | Ø |
+| Grónsko                 | ✓ | Ř |
 | Grenada                   | ✓ | ✓ |
 | Guadeloupe                | ✓ | ✓ |
 | Guatemala                 | ✓ | ✓ |
@@ -139,9 +139,9 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Svatý Kryštof a Nevis     | ✓ | ✓ |
 | Svatá Lucie               | ✓ | ✓ |
 | Svatý Martin (francouzština)     | ✓ | ✓ |
-| Saint Pierre a Miquelon | ✓ | ✓ |
+| Saint-Pierre a Miquelon | ✓ | ✓ |
 | Svatý Vincenc a Grenadiny | ✓ | ✓ |
-| Sint Maarten (holandština)      | ✓ | ✓ |
+| Svatý Martin (Nizozemsko)      | ✓ | ✓ |
 | Jižní Georgie a Jižní Sandwichovy ostrovy | ✓ | ✓ |
 | Surinam                  | ✓ | ✓ |
 | Trinidad a Tobago       | ✓ | ✓ |
@@ -154,99 +154,98 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 
 ## <a name="asia"></a>Asie 
 
-| Země/oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
+| Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
-| Afghánistán               |   | Ø |
+| Afghánistán               |   | Ř |
 | Bahrajn                   | ✓ | ✓ |
-| Bangladéš                |   | Ø |
-| Bhútán                    |   | Ø |
-| Britské území v Indickém oceánu |   | Ø |
-| Brunei                    | ✓ | ✓ |
-| Kambodža                  |   | Ø |
-| Čína                     |   | Ø |
-| Kokosové (Keelingovy) ostrovy   |   | Ø |
-| Korejská lidově demokratická republika |   | Ø |
-| Dokdo a Takeshima       |   | Ø |
-| Hongkong – zvláštní administrativní oblast             | ✓ | ✓ |
-| Indie                     | Ø | ✓ | 
+| Bangladéš                |   | Ř |
+| Bhútán                    |   | Ř |
+| Britské území v Indickém oceánu |   | Ř |
+| Sultanát                    | ✓ | ✓ |
+| Kambodža                  |   | Ř |
+| Čína                     |   | Ř |
+| Kokosové (Keelingovy) ostrovy   |   | Ř |
+| Korejská lidově demokratická republika |   | Ř |
+| Hongkong – zvláštní správní oblast             | ✓ | ✓ |
+| Indie                     | Ř | ✓ | 
 | Indonésie                 | ✓ | ✓ |
-| Írán                      |   | Ø |
+| Írán                      |   | Ř |
 | Irák                      | ✓ | ✓ |
 | Izrael                    |   | ✓ |
-| Japonsko                     |   | Ø |
+| Japonsko                     |   | Ř |
 | Jordánsko                    | ✓ | ✓ |
 | Kazachstán                |   | ✓ |
 | Kuvajt                    | ✓ | ✓ |
-| Kyrgyzstán                |   | Ø |
-| Laoská lidově demokratická republika |   | Ø |
+| Kyrgyzstán                |   | Ř |
+| Laoská lidově demokratická republika |   | Ř |
 | Libanon                   | ✓ | ✓ |
-| Macao – zvláštní administrativní oblast                 | ✓ | ✓ |
+| Macao – zvláštní správní oblast                 | ✓ | ✓ |
 | Malajsie                  | ✓ | ✓ |
-| Maledivy                  |   | Ø |
-| Mongolsko                  |   | Ø |
-| Myanmar                   |   | Ø |
-| Nepál                     |   | Ø |
+| Maledivy                  |   | Ř |
+| Mongolsko                  |   | Ř |
+| Myanmar                   |   | Ř |
+| Nepál                     |   | Ř |
 | Omán                      | ✓ | ✓ |
-| Pákistán                  |   | Ø |
+| Pákistán                  |   | Ř |
 | Filipíny               | ✓ | ✓ |
 | Katar                     | ✓ | ✓ |
-| Korejská republika         | ✓ | Ø |
+| Korejská republika         | ✓ | Ř |
 | Saúdská Arábie              | ✓ | ✓ |
 | Senkaku ostrovy           |   | ✓ |
 | Singapur                 | ✓ | ✓|
-| Srí Lanka                 |   | Ø |
-| Syrská arabská republika      |   | Ø |
+| Srí Lanka                 |   | Ř |
+| Syrská arabská republika      |   | Ř |
 | Tchaj-wan                    | ✓ | ✓ |
-| Tádžikistán                |   | Ø |
+| Tádžikistán                |   | Ř |
 | Thajsko                  | ✓ | ✓ |
-| Timor-Leste               |   | Ø |
-| Turkmenistán              |   | Ø |
+| Timor Leste               |   | Ř |
+| Turkmenistán              |   | Ř |
 | Spojené arabské emiráty      | ✓ | ✓ |
-| Menší odlehlé ostrovy Spojených států amerických |   | Ø |
-| Uzbekistán                |   | Ø |
+| Menší odlehlé ostrovy Spojených států amerických |   | Ř |
+| Uzbekistán                |   | Ř |
 | Vietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Oceánie
+## <a name="oceania"></a>Oceánie a
 
-| Země/oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
+| Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
 | Americká Samoa            |   | ✓ |
 | Austrálie                 | ✓ | ✓ |
-| Cookovy ostrovy              |   | Ø |
-| Fidži                      |   | Ø |
-| Francouzská Polynésie          |   | Ø |
+| Cookovy ostrovy              |   | Ř |
+| Fidži                      |   | Ř |
+| Francouzská Polynésie          |   | Ř |
 | Guam                      | ✓ | ✓ |
-| Kiribati                  |   | Ø |
-| Marshallovy ostrovy          |   | Ø |
-| Mikronésie                |   | Ø |
-| Nauru                     |   | Ø |
-| Nová Kaledonie             |   | Ø |
+| Kiribati                  |   | Ř |
+| Marshallovy ostrovy          |   | Ř |
+| Mikronésie                |   | Ř |
+| Nauru                     |   | Ř |
+| Nová Kaledonie             |   | Ř |
 | Nový Zéland               | ✓ | ✓ |
-| Niue                      |   | Ø |
-| Ostrova Norfolk            |   | Ø |
-| Palau                     |   | Ø |
-| Papua – Nová Guinea          |   | Ø |
-| Pitcairnovy                  |   | Ø |
-| Samoa                     |   | Ø |
-| Šalamounovy ostrovy           |   | Ø|
-| Tokelau                   |   | Ø |
-| Tonga                     |   | Ø |
-| Tuvalu                    |   | Ø |
-| Vanuatu                   |   | Ø |
-| Wallis a Futuna         |   | Ø |
+| Niue                      |   | Ř |
+| Ostrov Norfolk            |   | Ř |
+| Palau                     |   | Ř |
+| Papua – Nová Guinea          |   | Ř |
+| Pitcairnovy                  |   | Ř |
+| Samoa                     |   | Ř |
+| Šalamounovy ostrovy           |   | Ř|
+| Tokelau                   |   | Ř |
+| Tonga                     |   | Ř |
+| Tuvalu                    |   | Ř |
+| Vanuatu                   |   | Ř |
+| Wallis a Futuna         |   | Ř |
 
 
 ## <a name="europe"></a>Evropa
 
-| Země/oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
+| Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
 | Albánie                   | ✓ | ✓ |
 | Andorra                   | ✓ | ✓ |
-| Arménie                   | ✓ | Ø |
+| Arménie                   | ✓ | Ř |
 | Rakousko                   | ✓ | ✓ |
-| Ázerbájdžán                | ✓ | Ø |
-| Bělorusko                   | Ø | ✓ |
+| Ázerbájdžán                | ✓ | Ř |
+| Bělorusko                   | Ř | ✓ |
 | Belgie                   | ✓ | ✓ |
 | Bosna a Hercegovina        | ✓ | ✓ |
 | Bulharsko                  | ✓ | ✓ |
@@ -255,10 +254,10 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Česká republika            | ✓ | ✓ |
 | Dánsko                   | ✓ | ✓ |
 | Estonsko                   | ✓ | ✓ |
-| Faerské ostrovy             | ✓ | Ø |
+| Faerské ostrovy             | ✓ | Ř |
 | Finsko                   | ✓ | ✓ |
 | Francie                    | ✓ | ✓ |
-| Gruzie                   | ✓ | Ø |
+| Gruzie                   | ✓ | Ř |
 | Německo                   | ✓ | ✓ |
 | Gibraltar                 | ✓ | ✓ |
 | Řecko                    | ✓ | ✓ |
@@ -274,7 +273,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Lichtenštejnsko             | ✓ | ✓ |
 | Litva                 | ✓ | ✓ |
 | Lucembursko                | ✓ | ✓ |
-| Makedonie – sever           | ✓ | ✓ |
+| Severní Makedonie           | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
 | Moldavsko                   | ✓ | ✓ |
 | Monako                    | ✓ | ✓ |
@@ -285,7 +284,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Portugalsko                  | ✓ | ✓ |
 | Rumunsko                   | ✓ | ✓ |
 | Ruská federace        | ✓ | ✓ |
-| San Marino                | ✓ | ✓ |
+| Síť San Marino                | ✓ | ✓ |
 | Srbsko                    | ✓ | ✓ |
 | Slovensko                  | ✓ | ✓ |
 | Slovinsko                  | ✓ | ✓ |
@@ -299,8 +298,8 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Spojené království            | ✓ | ✓ |
 | Vatikán              | ✓ | ✓ |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Maps vykreslování najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
+Další informace o vykreslování Azure Maps najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
 
-Další informace o [pokrytí oblastí pro službu Maps, směrování služby](routing-coverage.md). 
+Přečtěte si o [oblastech pokrytí pro směrovací službu MAPS](routing-coverage.md). 

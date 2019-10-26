@@ -1,24 +1,18 @@
 ---
 title: Postup upgradu agenta závislostí Azure Monitor pro virtuální počítače | Microsoft Docs
 description: Tento článek popisuje, jak upgradovat agenta Azure Monitor pro virtuální počítače závislostí pomocí příkazového řádku, Průvodce instalací a dalších metod.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/30/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 37dcd21e17a47827f9bd4f6e5a756b321cf94495
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.date: 09/30/2019
+ms.openlocfilehash: f062dead8d479fe4da5de46b76b82cee9207bd83
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809835"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933715"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Postup upgradu agenta závislostí Azure Monitor pro virtuální počítače
 

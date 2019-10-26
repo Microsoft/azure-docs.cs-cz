@@ -1,6 +1,6 @@
 ---
-title: Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics
-description: Tento článek popisuje, jak používat SQL Database jako referenčního datového vstupu pro úlohy Azure Stream Analytics na portálu Azure portal a v sadě Visual Studio.
+title: Použití SQL Database referenčních dat v úloze Azure Stream Analytics
+description: Tento článek popisuje, jak použít SQL Database jako referenční datový vstup pro Azure Stream Analytics úlohu v Azure Portal a v aplikaci Visual Studio.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,71 +8,71 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: ae1954b99e268e8bc44c4ba29bbc79d7734fda6e
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 733ac7d1ff1d50e5fdcfa0dec2ad3fd3f30f6d86
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461736"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926677"
 ---
-# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics
+# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Použití referenčních dat z SQL Database pro úlohu Azure Stream Analytics
 
-Azure Stream Analytics podporuje Azure SQL Database jako zdroj vstupu pro referenční data. SQL Database můžete použít jako referenční data pro vaši úlohu Stream Analytics na portálu Azure portal a v sadě Visual Studio pomocí nástroje Stream Analytics. Tento článek ukazuje, jak provést obě metody.
+Azure Stream Analytics podporuje Azure SQL Database jako zdroj vstupu pro referenční data. Můžete použít SQL Database jako referenční data pro úlohu Stream Analytics v Azure Portal a v aplikaci Visual Studio s nástroji pro Stream Analytics. Tento článek ukazuje, jak provést obě metody.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure
 
-Chcete-li přidat Azure SQL Database jako vstupní zdroj odkazu pomocí webu Azure portal postupujte následovně:
+Pomocí následujících kroků přidejte Azure SQL Database jako vstupní zdroj odkazů pomocí Azure Portal:
 
-### <a name="portal-prerequisites"></a>Požadavky na portálu
+### <a name="portal-prerequisites"></a>Předpoklady pro portál
 
-1. Vytvoření úlohy Stream Analytics.
+1. Vytvořte úlohu Stream Analytics.
 
-2. Vytvoření účtu úložiště pro úlohy Stream Analytics.
+2. Vytvořte účet úložiště, který bude Stream Analytics úloha používat.
 
-3. Vytvoření Azure SQL Database s datovou sadou použije jako referenční data úlohy Stream Analytics.
+3. Vytvořte svůj Azure SQL Database s datovou sadou, která má být použita jako referenční data, úlohou Stream Analytics.
 
-### <a name="define-sql-database-reference-data-input"></a>Definování databázi SQL referenčního datového vstupu
+### <a name="define-sql-database-reference-data-input"></a>Definování datového vstupu SQL Database referenčních dat
 
-1. V úloze Stream Analytics, vyberte **vstupy** pod **topologie úlohy**. Klikněte na tlačítko **přidat odkaz na vstup** a zvolte **SQL Database**.
+1. V Stream Analytics úlohy vyberte **vstupy** v části **topologie úloh**. Klikněte na **Přidat vstup odkazu** a vyberte **SQL Database**.
 
-   ![Vstup úlohy Stream Analytics](./media/sql-reference-data/stream-analytics-inputs.png)
+   ![Stream Analytics vstup úlohy](./media/sql-reference-data/stream-analytics-inputs.png)
 
-2. Vyplňte konfigurace vstupní Stream Analytics. Vyberte název databáze, název serveru, uživatelské jméno a heslo. Pokud chcete data referenční vstup do pravidelně aktualizují, zvolte "On" a zadejte obnovovací frekvence v DD:HH:MM. Pokud máte velké sady dat s krátkou obnovovací frekvence, můžete použít [rozdílového dotazu](sql-reference-data.md#delta-query).
+2. Doplňte Stream Analytics vstupních konfigurací. Vyberte název databáze, název serveru, uživatelské jméno a heslo. Pokud chcete, aby se váš referenční datový vstup pravidelně aktualizoval, zvolte možnost Zapnuto a zadejte obnovovací frekvenci v DD: HH: MM. Pokud máte velké sady dat se zkrácenou frekvencí obnovení, můžete použít [rozdílový dotaz](sql-reference-data.md#delta-query).
 
-   ![Konfigurace referenčního SQL Database](./media/sql-reference-data/sql-input-config.png)
+   ![Konfigurace odkazu na SQL Database](./media/sql-reference-data/sql-input-config.png)
 
-3. Otestujte dotaz snímku v editoru dotazů SQL. Další informace najdete v tématu [připojení a dotazování dat pomocí editoru dotazů SQL webu Azure portal](../sql-database/sql-database-connect-query-portal.md)
+3. Otestujte dotaz na snímek v editoru dotazů SQL. Další informace najdete v tématu [použití Editoru dotazů SQL Azure Portal k připojení a dotazování dat](../sql-database/sql-database-connect-query-portal.md) .
 
-### <a name="specify-storage-account-in-job-config"></a>Zadejte účet úložiště v konfiguraci úlohy
+### <a name="specify-storage-account-in-job-config"></a>Zadat účet úložiště v konfiguraci úlohy
 
-Přejděte do **nastavení účtu úložiště** pod **konfigurovat** a vyberte **přidání účtu úložiště**.
+V části **Konfigurace** a vyberte **Přidat účet úložiště**přejděte do **Nastavení účtu úložiště** .
 
-   ![Nastavení účtu úložiště Stream Analytics](./media/sql-reference-data/storage-account-settings.png)
+   ![Stream Analytics nastavení účtu úložiště](./media/sql-reference-data/storage-account-settings.png)
 
 ### <a name="start-the-job"></a>Spuštění úlohy
 
-Až nakonfigurujete další vstupy, výstupy a dotaz, můžete spustit úlohu Stream Analytics.
+Jakmile nakonfigurujete jiné vstupy, výstupy a dotazy, můžete spustit úlohu Stream Analytics.
 
-## <a name="tools-for-visual-studio"></a>Nástroje pro sadu Visual Studio
+## <a name="tools-for-visual-studio"></a>Nástroje pro Visual Studio
 
-Pomocí následujících kroků můžete přidat Azure SQL Database jako vstupní zdroj odkazu pomocí sady Visual Studio:
+Pomocí následujících kroků přidejte Azure SQL Database jako vstupní zdroj odkazů pomocí sady Visual Studio:
 
-### <a name="visual-studio-prerequisites"></a>Požadavky na Visual Studio
+### <a name="visual-studio-prerequisites"></a>Požadavky sady Visual Studio
 
-1. [Nainstalujte nástroje Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md). Jsou podporovány následující verze sady Visual Studio:
+1. [Nainstalujte nástroje Stream Analytics Tools for Visual Studio](stream-analytics-tools-for-visual-studio-install.md). Podporují se tyto verze sady Visual Studio:
 
    * Visual Studio 2015
    * Visual Studio 2019
 
-2. Seznamte se s [nástroje Stream Analytics pro Visual Studio](stream-analytics-quick-create-vs.md) rychlý start.
+2. Seznamte se s [nástroji pro Stream Analytics pro](stream-analytics-quick-create-vs.md) rychlé zprovoznění sady Visual Studio.
 
-3. Vytvoření účtu úložiště.
+3. Vytvoření účtu úložiště
 
-### <a name="create-a-sql-database-table"></a>Vytvořit tabulky databáze SQL
+### <a name="create-a-sql-database-table"></a>Vytvoření tabulky SQL Database
 
-Vytvořte tabulku pro ukládání referenčních dat pomocí SQL Server Management Studio. Zobrazit [návrh první databáze Azure SQL pomocí SSMS](../sql-database/sql-database-design-first-database.md) podrobnosti.
+Pomocí SQL Server Management Studio můžete vytvořit tabulku, do které se budou ukládat referenční data. Podrobnosti najdete v tématu [Návrh první databáze SQL Azure s využitím SSMS](../sql-database/sql-database-design-first-database.md) .
 
-Příklad tabulka použitá v následujícím příkladu byl vytvořen z následujícího příkazu:
+Ukázková tabulka použitá v následujícím příkladu se vytvořila z následujícího příkazu:
 
 ```SQL
 create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
@@ -82,7 +82,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 1. V sadě Visual Studio v nabídce **Zobrazení** vyberte **Průzkumník serveru**.
 
-2. Klikněte pravým tlačítkem na **Azure**vyberte **připojit k předplatnému Microsoft Azure**a přihlaste se pomocí svého účtu Azure.
+2. Klikněte pravým tlačítkem na **Azure**, vyberte **připojit k předplatnému Microsoft Azure**a přihlaste se pomocí svého účtu Azure.
 
 ### <a name="create-a-stream-analytics-project"></a>Vytvoření projektu Stream Analytics
 
@@ -90,49 +90,49 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 2. V seznamu šablon na levé straně vyberte **Stream Analytics** a pak vyberte **Aplikace Azure Stream Analytics**. 
 
-3. Zadejte projekt **název**, **umístění**, a **název řešení**a vyberte **OK**.
+3. Zadejte **název**projektu, **umístění**a **název řešení**a vyberte **OK**.
 
-   ![Nový projekt Stream Analytics v sadě Visual Studio](./media/sql-reference-data/stream-analytics-vs-new-project.png)
+   ![Nový projekt Stream Analytics v aplikaci Visual Studio](./media/sql-reference-data/stream-analytics-vs-new-project.png)
 
-### <a name="define-sql-database-reference-data-input"></a>Definování databázi SQL referenčního datového vstupu
+### <a name="define-sql-database-reference-data-input"></a>Definování datového vstupu SQL Database referenčních dat
 
-1. Vytvořte nový vstup.
+1. Vytvoří nový vstup.
 
-   ![Nový vstup Stream Analytics v sadě Visual Studio](./media/sql-reference-data/stream-analytics-vs-input.png)
+   ![Nový vstup Stream Analytics v aplikaci Visual Studio](./media/sql-reference-data/stream-analytics-vs-input.png)
 
-2. Dvakrát klikněte na panel **Input.JSON vypadá** v **Průzkumníka řešení**.
+2. Dvakrát klikněte na **input. JSON** v **Průzkumník řešení**.
 
-3. Vyplňte **konfigurace vstupní Stream Analytics**. Vyberte název databáze, název serveru, typ obnovení a obnovovací frekvence. Zadejte interval ve formátu `DD:HH:MM`.
+3. Vyplňte **konfiguraci Stream Analyticsho vstupu**. Vyberte název databáze, název serveru, typ aktualizace a obnovovací frekvenci. Zadejte obnovovací frekvenci ve formátu `DD:HH:MM`.
 
-   ![Konfigurace vstupu Stream Analytics v sadě Visual Studio](./media/sql-reference-data/stream-analytics-vs-input-config.png)
+   ![Konfigurace vstupu Stream Analytics v aplikaci Visual Studio](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
-   Pokud vyberete možnost "Spustit jenom jednou" nebo "Spustit pravidelně", jeden soubor SQL CodeBehind s názvem **.snapshot.sql [vstupní Alias]** generováno v projektu **Input.json** uzel souboru.
+   Pokud zvolíte možnost spustit pouze jednou nebo spustit pravidelně, jeden soubor CodeBehind SQL s názvem **[vstupní alias]. Snapshot. SQL** se vygeneruje v projektu pod uzlem soubor **input. JSON** .
 
-   ![Vstupní kódu na pozadí v sadě Visual Studio](./media/sql-reference-data/once-or-periodically-codebehind.png)
+   ![Vstupní kód na pozadí v aplikaci Visual Studio](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
-   Pokud vyberete možnost "Aktualizovat pravidelně s rozdílovou", budou generovány dva soubory SQL CodeBehind: **[vstupní Alias].snapshot.sql** a **[vstupní Alias].delta.sql**.
+   Pokud zvolíte možnost pravidelně aktualizovat s rozdílem, budou se generovat dva soubory CodeBehind SQL: **[Input alias]. Snapshot. SQL** a **[Input alias]. Delta. SQL**.
 
-   ![Kódu na pozadí v Průzkumníku řešení](./media/sql-reference-data/periodically-delta-codebehind.png)
+   ![Kód na pozadí v Průzkumníkovi řešení](./media/sql-reference-data/periodically-delta-codebehind.png)
 
-4. Otevřete soubor SQL v editoru a napsat dotaz SQL.
+4. Otevřete soubor SQL v editoru a napište dotaz SQL.
 
-5. Pokud používáte Visual Studio 2019 a nainstalujete SQL Server Data tools, můžete otestovat dotaz kliknutím **Execute**. Průvodce okno objeví se při připojení k SQL database a výsledek dotazu se zobrazí v okně v dolní části.
+5. Pokud používáte Visual Studio 2019 a máte nainstalované nástroje SQL Server Data Tools, můžete otestovat dotaz kliknutím na **Spustit**. Otevře se okno průvodce, které vám pomůže se připojit k databázi SQL a výsledek dotazu se zobrazí v dolní části okna.
 
-### <a name="specify-storage-account"></a>Zadejte účet služby storage
+### <a name="specify-storage-account"></a>Zadat účet úložiště
 
-Otevřít **JobConfig.json** zadat účet úložiště pro ukládání snímků odkaz SQL.
+Otevřete **JobConfig. JSON** a určete účet úložiště pro ukládání snímků odkazů SQL.
 
-   ![Konfigurace úlohy Stream Analytics v sadě Visual Studio](./media/sql-reference-data/stream-analytics-job-config.png)
+   ![Konfigurace úlohy Stream Analytics v aplikaci Visual Studio](./media/sql-reference-data/stream-analytics-job-config.png)
 
-### <a name="test-locally-and-deploy-to-azure"></a>Místně ji otestovat a nasadit do Azure
+### <a name="test-locally-and-deploy-to-azure"></a>Místní test a nasazení do Azure
 
-Před nasazením úlohy do Azure, můžete otestovat logiku dotazu místně pro živá vstupní data. Další informace o této funkci najdete v tématu [testování živých dat místně pomocí nástroje Azure Stream Analytics pro Visual Studio (Preview)](stream-analytics-live-data-local-testing.md). Po dokončení testování, klikněte na tlačítko **odeslat do Azure**. Odkaz [vytvořit Stream Analytics pomocí Azure Stream Analytics tools for Visual Studio](stream-analytics-quick-create-vs.md) rychlém startu se naučíte spustit úlohu.
+Před nasazením úlohy do Azure můžete testovat logiku dotazu místně proti živým vstupním datům. Další informace o této funkci naleznete v tématu [test Live data místně pomocí Azure Stream Analyticsch nástrojů pro Visual Studio (Preview)](stream-analytics-live-data-local-testing.md). Až budete s testováním hotovi, klikněte na **Odeslat do Azure**. Pokud se chcete dozvědět, jak spustit úlohu, přečtěte si článek [vytvoření Stream Analytics pomocí Azure Stream Analytics nástrojů pro Visual Studio](stream-analytics-quick-create-vs.md) Starter.
 
 ## <a name="delta-query"></a>Rozdílový dotaz
 
-Při použití rozdílového dotazu [dočasných tabulek ve službě Azure SQL Database](../sql-database/sql-database-temporal-tables.md) doporučují.
+Při použití rozdílového dotazu jsou doporučeny [dočasné tabulky v Azure SQL Database](../sql-database/sql-database-temporal-tables.md) .
 
-1. Vytvořte dočasnou tabulku ve službě Azure SQL Database.
+1. Vytvořte dočasnou tabulku v Azure SQL Database.
    
    ```SQL 
       CREATE TABLE DeviceTemporal 
@@ -146,20 +146,20 @@ Při použití rozdílového dotazu [dočasných tabulek ve službě Azure SQL D
       )  
       WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.DeviceHistory));  -- DeviceHistory table will be used in Delta query
    ```
-2. Vytvoření snímku dotazu. 
+2. Vytvořte snímek dotazu. 
 
-   Použití  **\@snapshotTime** parametr dáte pokyn, aby modul runtime Stream Analytics získat referenční sady dat z SQL database dočasnou tabulku platnou v době systému. Pokud tento parametr nezadáte, riskujete získání nesprávné základní referenční sady dat kvůli časovým nepřesnostem. Níže je uveden příklad dotazu úplné snímku:
+   Pomocí parametru **\@snapshotTime** instruujte modul runtime Stream Analytics, aby získal referenční datovou sadu z dočasné tabulky SQL Database platné v systémovém čase. Pokud tento parametr nezadáte, riskujete získat nepřesnou datovou sadu základních referenčních dat z důvodu zešikmení hodin. Příklad úplného dotazu na snímek je uveden níže:
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
       FOR SYSTEM_TIME AS OF @snapshotTime
    ```
  
-2. Autor rozdílového dotazu. 
+2. Vytvořte rozdílový dotaz. 
    
-   Tento dotaz načte všechny řádky v databázi SQL, které bylo vloženo nebo odstraněno v době spuštění  **\@deltaStartTime**a koncový čas  **\@deltaEndTime**. Rozdílový dotaz musí vracet stejné sloupce jako snímek dotazu, stejně jako sloupec  **_operace_** . V tomto sloupci definuje, jestli se řádek je vloženo nebo odstraněno mezi  **\@deltaStartTime** a  **\@deltaEndTime**. Výsledné řádky se označí jako **1** Pokud záznamy byly vloženy, nebo **2** Pokud odstraněn. 
+   Tento dotaz načte všechny řádky ve vaší databázi SQL, které byly vložené nebo odstraněné v čase spuštění, **\@deltaStartTime**a koncový čas **\@deltaEndTime**. Rozdílový dotaz musí vracet stejné sloupce jako dotaz snímku a také **_operaci_** sloupce. Tento sloupec definuje, jestli se řádek vloží nebo odstraní mezi **\@deltaStartTime** a **\@deltaEndTime**. Výsledné řádky jsou označeny jako **1** , pokud byly záznamy vloženy, nebo **2** , pokud byly odstraněny. 
 
-   Pro záznamy, které byly aktualizovány dočasnou tabulku se účetnictví zachytáváním operace vložení a odstranění. Modul runtime Stream Analytics potom použije výsledky rozdílového dotazu s předchozím snímkem k udržení referenční data. Příkladem rozdílového dotazu se zobrazuje níže:
+   U záznamů, které byly aktualizovány, dočasná tabulka provádí účetnictví zachycením operace vložení a odstranění. Modul runtime Stream Analytics pak použije výsledky rozdílového dotazu na předchozí snímek, aby byla referenční data v aktuálním stavu. Příkladem rozdílového dotazu je znázorněno níže:
 
    ```SQL
       SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
@@ -171,36 +171,36 @@ Při použití rozdílového dotazu [dočasných tabulek ve službě Azure SQL D
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```
  
-   Všimněte si, že modul runtime Stream Analytics může pravidelně spuštění dotazu snímku kromě rozdílového dotazu k uložení kontrolní body.
+   Všimněte si, že modul runtime Stream Analytics může pravidelně spouštět dotaz na snímky společně s rozdílovým dotazem na ukládání kontrolních bodů.
 
 ## <a name="test-your-query"></a>Otestování dotazu
-   Je důležité ověřit, že dotaz vrací očekávaná datové sady úlohy Stream Analytics budete používat jako referenční data. Pokud chcete otestovat dotaz, přejděte na vstup v části topologie úlohy na portálu. Pak můžete vybrat ukázková Data na váš odkaz na databázi SQL vstup. Po vzorku bude k dispozici, můžete si stáhnout soubor a zkontrolujte, jestli data se vrací je jako očekávané. Pokud chcete optimalizace vývojových a testovacích iterací, doporučuje se použít [nástroje Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install). Můžete také jakýkoliv jiný nástroj z dáváte přednost nejprve ujistěte se, že dotaz vrací správných výsledků od vás Azure SQL Database a následné použití, které ve vaší úlohy Stream Analytics. 
+   Je důležité ověřit, že váš dotaz vrací očekávanou datovou sadu, kterou bude Stream Analytics úloha používat jako referenční data. Dotaz otestujete tak, že v části topologie úloh na portálu přejdete na vstup. Pak můžete vybrat ukázková data na SQL Database odkazem na vstup. Jakmile bude ukázka k dispozici, můžete stáhnout soubor a ověřit, zda jsou vracená data podle očekávání. Pokud chcete optimalizovat vaše iterace vývoje a testování, doporučuje se používat [nástroje Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install). Můžete také použít jakýkoli jiný nástroj vaší předvolby, abyste nejdřív zajistili, že dotaz vrací správné výsledky od vás Azure SQL Database a pak ho použijete v úloze Stream Analytics. 
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-**Budou účtovat dodatečné náklady s využitím SQL referenčního datového vstupu v Azure Stream Analytics?**
+**Účtují se vám dodatečné náklady pomocí vstupu SQL referenčních dat v Azure Stream Analytics?**
 
-Neexistují žádné další [cena za jednotky streamování](https://azure.microsoft.com/pricing/details/stream-analytics/) v úloze Stream Analytics. Úlohy Stream Analytics ale musíte mít účet přidruženého úložiště Azure. Úlohy Stream Analytics dotazuje databázi SQL (během úlohy spuštění a interval aktualizace) a získejte referenční sady dat a úložiště, která snímku v účtu úložiště. Ukládání tyto snímky budou účtovat další poplatky, které jsou podrobně popsané v [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/) pro účet úložiště Azure.
+V úloze Stream Analytics se neúčtují žádné další [náklady na jednotku streamování](https://azure.microsoft.com/pricing/details/stream-analytics/) . Úloha Stream Analytics ale musí mít přidružený účet úložiště Azure. Úloha Stream Analytics se dotazuje databáze SQL (při zahájení úlohy a intervalu aktualizace), aby získala referenční datovou sadu a ukládá tento snímek do účtu úložiště. Uložení těchto snímků bude mít za následek detailní podrobnější poplatky na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/) pro účet služby Azure Storage.
 
-**Jak zjistím, referenční data snímku se z databáze SQL dotazovat a používat v úloze Azure Stream Analytics?**
+**Návody informace o snímku referenčních dat se dotazuje z databáze SQL a používá se v úloze Azure Stream Analytics?**
 
-Existují dvě metriky filtrovat podle logického názvu (v rámci webu Azure Portal metriky), který můžete použít tak, aby monitorovala referenčních dat databáze SQL vstup.
+Existují dvě metriky filtrované podle logického názvu (v rámci metriky Azure Portal), pomocí kterých můžete monitorovat stav vstupu referenčních dat databáze SQL.
 
-   * Situací: Tato metrika měří počet načtených v SQL database referenční datové sady záznamů.
-   * InputEventBytes: Tato metrika měří velikost snímku referenční data načtena do paměti úlohy Stream Analytics. 
+   * InputEvents: Tato metrika měří počet záznamů načtených z referenční sady dat SQL Database.
+   * InputEventBytes: Tato metrika měří velikost snímku referenčních dat načteného v paměti Stream Analytics úlohy. 
 
-Kombinací obou tyto metriky můžete použít k odvození Pokud úloha dotazování databáze SQL k načtení referenční sady dat a potom načtením do paměti.
+Kombinaci obou těchto metrik lze použít k odvození, pokud se úloha dotazuje databáze SQL, aby načetla referenční datovou sadu a pak ji načetla do paměti.
 
-**Bude vyžadovat speciální typ služby Azure SQL Database?**
+**Vyžaduje se zvláštní typ Azure SQL Database?**
 
-Azure Stream Analytics bude fungovat s jakýmkoli typem služby Azure SQL Database. Je důležité pochopit, že obnovovací frekvence pro vaše referenčního datového vstupu může mít vliv na zatížení dotazu. Možnost dotazu rozdílů, se doporučuje použít dočasných tabulek ve službě Azure SQL Database.
+Azure Stream Analytics bude fungovat s jakýmkoli typem Azure SQL Database. Je ale důležité si uvědomit, že nastavená obnovovací frekvence pro váš vstupní datový vstup by mohla mít vliv na vaše zatížení dotazu. Chcete-li použít možnost rozdílového dotazu, doporučuje se použít dočasné tabulky v Azure SQL Database.
 
-**Proč Azure Stream Analytics ukládá snímky v účtu Azure Storage?**
+**Proč Azure Stream Analytics ukládají snímky v Azure Storagem účtu?**
 
-Stream Analytics zaručuje právě jedno zpracování událostí a minimálně jedno doručení událostí. V případech, kde přechodná vydá dopad úlohy je potřeba obnovit stav malé množství opakování. Povolit opakování, je potřeba mít tyto snímky se ukládají v účtu služby Azure Storage. Další informace o přehrání kontrolní bod, najdete v části [kontrolní bod a opětovného přehrání koncepty v úlohách Azure Stream Analytics](stream-analytics-concepts-checkpoint-replay.md).
+Stream Analytics zaručuje právě jedno zpracování událostí a minimálně jedno doručení událostí. V případech, kdy problémy s přechodnou úlohou ovlivňují, je pro stav obnovení zapotřebí malé množství opakování. Chcete-li povolit opakované přehrání, je nutné, aby tyto snímky byly uloženy v účtu Azure Storage. Další informace o opětovném přehrání kontrolního bodu najdete [v tématu Koncepty a přehrání konceptů v Azure Stream Analytics úlohách](stream-analytics-concepts-checkpoint-replay.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Pomocí referenčních dat pro vyhledávání ve službě Stream Analytics](stream-analytics-use-reference-data.md)
-* [Rychlé zprovoznění: Vytvoření úlohy Stream Analytics pomocí Azure Stream Analytics tools for Visual Studio](stream-analytics-quick-create-vs.md)
-* [Živá data test místně pomocí nástroje Azure Stream Analytics pro Visual Studio (Preview)](stream-analytics-live-data-local-testing.md)
+* [Použití referenčních dat pro vyhledávání v Stream Analytics](stream-analytics-use-reference-data.md)
+* [Rychlý Start: vytvoření úlohy Stream Analytics pomocí nástrojů Azure Stream Analytics pro Visual Studio](stream-analytics-quick-create-vs.md)
+* [Místní testování živých dat pomocí Azure Stream Analyticsch nástrojů pro Visual Studio (Preview)](stream-analytics-live-data-local-testing.md)

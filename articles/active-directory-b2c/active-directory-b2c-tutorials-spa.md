@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Povolení ověřování v jedné stránce aplikace – Azure Active Directory B2C'
+title: 'Kurz: povolení ověřování v jedné stránce aplikace – Azure Active Directory B2C'
 description: Naučte se používat Azure Active Directory B2C k poskytnutí přihlašovacích údajů uživatele pro aplikaci s jednou stránkou (JavaScript).
 services: active-directory-b2c
 author: mmacy
@@ -10,14 +10,14 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9b3d18a7f59415b27b1a70067c9a8a610140ca25
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 40b92f24922b146dfdc66c1b0a59aab748dea6f2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672927"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931372"
 ---
-# <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Kurz: Povolení ověřování v aplikaci s jednou stránkou pomocí Azure Active Directory B2C (Azure AD B2C)
+# <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Kurz: povolení ověřování v aplikaci s jednou stránkou pomocí Azure Active Directory B2C (Azure AD B2C)
 
 V tomto kurzu se dozvíte, jak používat Azure Active Directory B2C (Azure AD B2C) k přihlašování a registraci uživatelů v aplikaci s jednou stránkou (SPA). Azure AD B2C umožňuje vašim aplikacím ověřovat účty v sociálních sítích, podnikové účty a účty Azure Active Directory pomocí protokolů Open Standard.
 
@@ -30,12 +30,12 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v krocích v tomto kurzu, budete potřebovat následující Azure AD B2C prostředky:
 
 * [Tenant Azure AD B2C](tutorial-create-tenant.md)
-* [Aplikace](tutorial-register-applications.md) zaregistrovaná ve vašem tenantovi
+* [Aplikace zaregistrovaná](tutorial-register-applications.md) ve vašem tenantovi
 * [Toky uživatelů vytvořené](tutorial-create-user-flows.md) ve vašem tenantovi
 
 V místním vývojovém prostředí budete navíc potřebovat následující:
@@ -48,12 +48,12 @@ V místním vývojovém prostředí budete navíc potřebovat následující:
 
 V druhém kurzu, který jste dokončili v rámci požadavků, jste zaregistrovali webovou aplikaci v Azure AD B2C. Pokud chcete povolit komunikaci s ukázkou v tomto kurzu, musíte do aplikace v Azure AD B2C přidat identifikátor URI přesměrování.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace**a pak vyberte aplikaci *WebApp1* .
 1. V části **Adresa URL odpovědi**přidejte `http://localhost:6420`.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Na stránce vlastnosti si poznamenejte **ID aplikace**. ID aplikace použijete v pozdějším kroku, když aktualizujete kód ve webové aplikaci s jednou stránkou.
 
 ## <a name="get-the-sample-code"></a>Získání ukázkového kódu
@@ -70,8 +70,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 Teď, když jste získali ukázku, aktualizujte kód pomocí Azure AD B2C název tenanta a ID aplikace, které jste si poznamenali v předchozím kroku.
 
-1. `index.html` Otevřete soubor v kořenovém adresáři ukázkového adresáře.
-1. V definici upravte hodnotu ClientID pomocí ID aplikace, kterou jste si poznamenali v předchozím kroku. `msalConfig` Dále aktualizujte hodnotu identifikátoru URI autority pomocí vašeho názvu Azure AD B2C tenanta. Aktualizujte také identifikátor URI s názvem uživatelského toku pro registraci a přihlašování, který jste vytvořili v některém z požadavků (například *B2C_1_signupsignin1*).
+1. Otevřete soubor `index.html` v kořenovém adresáři ukázkového adresáře.
+1. V definici `msalConfig` upravte hodnotu **ClientID** pomocí ID aplikace, kterou jste si poznamenali v předchozím kroku. Dále aktualizujte hodnotu identifikátoru URI **autority** pomocí vašeho názvu Azure AD B2C tenanta. Aktualizujte také identifikátor URI s názvem uživatelského toku pro registraci a přihlašování, který jste vytvořili v některém z požadavků (například *B2C_1_signupsignin1*).
 
     ```javascript
     var msalConfig = {
@@ -87,11 +87,11 @@ Teď, když jste získali ukázku, aktualizujte kód pomocí Azure AD B2C název
     };
     ```
 
-    Název toku uživatele použitý v tomto kurzu je **B2C_1_signupsignin1**. Pokud používáte jiný název toku uživatele, zadejte tento název do `authority` hodnoty.
+    Název toku uživatele použitý v tomto kurzu je **B2C_1_signupsignin1**. Pokud používáte jiný název toku uživatele, zadejte tento název do hodnoty `authority`.
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku. Příklad:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku. Například:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -109,11 +109,14 @@ Teď, když jste získali ukázku, aktualizujte kód pomocí Azure AD B2C název
     Listening on port 6420...
     ```
 
-1. Chcete-li zobrazit aplikaci, otevřete vprohlížeči.`http://localhost:6420`
+1. Chcete-li zobrazit aplikaci, v prohlížeči přejdete na `http://localhost:6420`.
 
 Ukázka podporuje registraci, přihlašování, úpravy profilu a resetování hesla. Tento kurz se věnuje tomu, jak se uživatel zaregistruje pomocí e-mailové adresy.
 
 ### <a name="sign-up-using-an-email-address"></a>Registrace pomocí e-mailové adresy
+
+> [!WARNING]
+> Po registraci nebo přihlášení se může zobrazit [Chyba nedostatečného oprávnění](#error-insufficient-permissions). Z důvodu aktuální implementace ukázky kódu je tato chyba očekávána. Tento problém bude vyřešen v budoucí verzi ukázky kódu, ve které bude toto upozornění odebráno.
 
 1. Výběrem **přihlašovacího jména** zahajte uživatelský tok *B2C_1_signupsignin1* , který jste zadali v předchozím kroku.
 1. Azure AD B2C zobrazí přihlašovací stránku s odkazem na registraci. Vzhledem k tomu, že ještě nemáte účet, vyberte odkaz **Registrovat nyní** .
@@ -131,7 +134,7 @@ Pro přihlášení k aplikaci teď můžete použít svou e-mailovou adresu a he
 
 ### <a name="error-insufficient-permissions"></a>Chyba: nedostatečná oprávnění
 
-Po přihlášení se v aplikaci zobrazí chyba nedostatečné oprávnění – **očekává**se:
+Po přihlášení může aplikace vrátit nedostatečné oprávnění:
 
 ```Output
 ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.
@@ -139,7 +142,7 @@ Correlation ID: ce15bbcc-0000-0000-0000-494a52e95cd7
 Timestamp: 2019-07-20 22:17:27Z
 ```
 
-Tato chyba se zobrazí, protože webová aplikace se pokouší o přístup k webovému rozhraní API chráněnému adresářem demo, *fabrikamb2c*. Vzhledem k tomu, že váš přístupový token je platný jenom pro váš adresář služby Azure AD, volání rozhraní API je proto neautorizované.
+Tato chyba se zobrazí, protože webová aplikace se pokouší o přístup k webovému rozhraní API chráněnému adresářem demo, *fabrikamb2c*. Vzhledem k tomu, že váš přístupový token je platný jenom pro váš adresář služby Azure AD, volání rozhraní API je neautorizované.
 
 Pokud chcete tuto chybu opravit, pokračujte k dalšímu kurzu v řadě (viz [Další kroky](#next-steps)) a vytvořte pro svůj adresář chráněné webové rozhraní API.
 
@@ -155,4 +158,4 @@ V tomto článku jste zjistili, jak:
 Teď přejděte k dalšímu kurzu v řadě, abyste udělili přístup k chráněnému webovému rozhraní API z hesla SPA:
 
 > [!div class="nextstepaction"]
-> [Kurz: Udělení přístupu k ASP.NET Core webovému rozhraní API z hesla SPA pomocí Azure AD B2C >](active-directory-b2c-tutorials-spa-webapi.md)
+> [Kurz: poskytnutí přístupu k ASP.NET Core webovému rozhraní API z hesla SPA pomocí Azure AD B2C >](active-directory-b2c-tutorials-spa-webapi.md)

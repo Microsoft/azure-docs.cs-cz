@@ -7,12 +7,12 @@ ms.service: azure
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: nepeters
-ms.openlocfilehash: c53f3a31b46f00d3207cd8f47dcfbfa131c03666
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6f9b6a73e279ca5923e32c7c524f9a55e260526d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173516"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924813"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Vytvoření konfiguračního souboru Terraformu pro Azure
 
@@ -22,7 +22,7 @@ V tomto příkladu získáte zkušenosti s vytvořením konfigurace Terraformu a
 
 V této části vytvoříte konfiguraci pro instanci Azure Cosmos DB.
 
-Vyberte **vyzkoušet a teď** otevřete Azure Cloud Shell. Po otevření zadejte `code .` do a otevřete Editor kódu pro Cloud Shell.
+Vyberte **vyzkoušet a teď** otevřete Azure Cloud Shell. Po otevření zadejte do `code .`, aby se otevřel Editor kódu pro Cloud Shell.
 
 ```bash
 code .
@@ -32,7 +32,7 @@ Zkopírujte a vložte následující konfiguraci Terraformu.
 
 Tato konfigurace modeluje skupinu prostředků Azure, náhodné celé číslo a instanci Azure Cosmos DB. V názvu Cosmos DB instance se používá náhodné celé číslo. Nakonfigurovali jste taky několik nastavení Cosmos DB. Úplný seznam Cosmos DB konfiguracích Terraformu najdete v [referenčních informacích Cosmos DB terraformu](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html).
 
-`main.tf` Po dokončení soubor uložte. Tuto operaci lze provést pomocí tří teček v pravé horní části editoru kódu.
+Po dokončení soubor uložte jako `main.tf`. Tuto operaci lze provést pomocí tří teček v pravé horní části editoru kódu.
 
 ```hcl
 resource "azurerm_resource_group" "vote-resource-group" {
@@ -47,8 +47,8 @@ resource "random_integer" "ri" {
 
 resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
   name                = "tfex-cosmos-db-${random_integer.ri.result}"
-  location            = "${azurerm_resource_group.vote-resource-group.location}"
-  resource_group_name = "${azurerm_resource_group.vote-resource-group.name}"
+  location            = azurerm_resource_group.vote-resource-group.location
+  resource_group_name = azurerm_resource_group.vote-resource-group.name
   offer_type          = "Standard"
   kind                = "GlobalDocumentDB"
 
@@ -73,7 +73,7 @@ terraform init
 
 Pomocí příkazu [plán terraformu](https://www.terraform.io/docs/commands/plan.html) můžete ověřit, jestli je konfigurace správně naformátovaná, a vizualizovat, které prostředky se vytvoří, aktualizuje nebo zničí. Výsledky mohou být uloženy v souboru a později použity pro použití konfigurace.
 
-Spusťte `terraform plan` pro otestování nové konfigurace terraformu.
+Spusťte `terraform plan` pro otestování nové konfigurace Terraformu.
 
 ```bash
 terraform plan --out plan.out
@@ -91,9 +91,9 @@ Jakmile budete hotovi, uvidíte, že se vytvořila skupina prostředků a instan
 
 Aktualizujte konfiguraci tak, aby zahrnovala instanci kontejneru Azure. Kontejner spustí aplikaci, která čte a zapisuje data do Cosmos DB.
 
-Zkopírujte následující konfiguraci do dolní `main.tf` části souboru. Po dokončení soubor uložte.
+Zkopírujte následující konfiguraci do dolní části `main.tf` souboru. Po dokončení soubor uložte.
 
-Jsou nastaveny `COSMOS_DB_ENDPOINT` dvě proměnné prostředí a `COSMOS_DB_MASTERKEY`. Tyto proměnné uchovávají umístění a klíč pro přístup k databázi. Hodnoty pro tyto proměnné jsou získány z instance databáze vytvořené v posledním kroku. Tento proces se označuje jako interpolace. Další informace o interpolaci Terraformu naleznete v tématu [syntax interpolace](https://www.terraform.io/docs/configuration/interpolation.html).
+Jsou nastavené dvě proměnné prostředí `COSMOS_DB_ENDPOINT` a `COSMOS_DB_MASTERKEY`. Tyto proměnné uchovávají umístění a klíč pro přístup k databázi. Hodnoty pro tyto proměnné jsou získány z instance databáze vytvořené v posledním kroku. Tento proces se označuje jako interpolace. Další informace o interpolaci Terraformu naleznete v tématu [syntax interpolace](https://www.terraform.io/docs/configuration/interpolation.html).
 
 
 Konfigurace obsahuje taky výstupní blok, který vrací plně kvalifikovaný název domény (FQDN) instance kontejneru.
@@ -101,8 +101,8 @@ Konfigurace obsahuje taky výstupní blok, který vrací plně kvalifikovaný n�
 ```hcl
 resource "azurerm_container_group" "vote-aci" {
   name                = "vote-aci"
-  location            = "${azurerm_resource_group.vote-resource-group.location}"
-  resource_group_name = "${azurerm_resource_group.vote-resource-group.name}"
+  location            = azurerm_resource_group.vote-resource-group.location
+  resource_group_name = azurerm_resource_group.vote-resource-group.name
   ip_address_type     = "public"
   dns_name_label      = "vote-aci"
   os_type             = "linux"
@@ -118,8 +118,8 @@ resource "azurerm_container_group" "vote-aci" {
     }
 
     secure_environment_variables = {
-      "COSMOS_DB_ENDPOINT"  = "${azurerm_cosmosdb_account.vote-cosmos-db.endpoint}"
-      "COSMOS_DB_MASTERKEY" = "${azurerm_cosmosdb_account.vote-cosmos-db.primary_master_key}"
+      "COSMOS_DB_ENDPOINT"  = azurerm_cosmosdb_account.vote-cosmos-db.endpoint
+      "COSMOS_DB_MASTERKEY" = azurerm_cosmosdb_account.vote-cosmos-db.primary_master_key
       "TITLE"               = "Azure Voting App"
       "VOTE1VALUE"          = "Cats"
       "VOTE2VALUE"          = "Dogs"
@@ -128,17 +128,17 @@ resource "azurerm_container_group" "vote-aci" {
 }
 
 output "dns" {
-  value = "${azurerm_container_group.vote-aci.fqdn}"
+  value = azurerm_container_group.vote-aci.fqdn
 }
 ```
 
-Spusťte `terraform plan` , chcete-li vytvořit aktualizovaný plán a vizualizovat změny, které mají být provedeny. Měli byste vidět, že se do konfigurace přidal prostředek instance kontejneru Azure.
+Spusťte `terraform plan` a vytvořte aktualizovaný plán a vizualizujte změny, které se mají provést. Měli byste vidět, že se do konfigurace přidal prostředek instance kontejneru Azure.
 
 ```bash
 terraform plan --out plan.out
 ```
 
-Nakonec spusťte příkaz `terraform apply` pro použití konfigurace.
+Nakonec spusťte `terraform apply` pro použití konfigurace.
 
 ```bash
 terraform apply plan.out

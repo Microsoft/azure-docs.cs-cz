@@ -1,44 +1,38 @@
 ---
-title: Filtry v zobrazení monitorování Azure | Dokumentace Microsoftu
-description: Filtrování v zobrazení Azure Monitor umožňuje uživatelům k filtrování dat v zobrazení podle hodnoty určité vlastnosti beze změny samotného zobrazení.  Tento článek popisuje, jak pomocí filtru a přidejte ho do vlastního zobrazení.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Filtry v zobrazeních Azure Monitor | Microsoft Docs
+description: Filtr v zobrazení Azure Monitor umožňuje uživatelům filtrovat data v zobrazení podle hodnoty určité vlastnosti beze změny zobrazení.  Tento článek popisuje, jak použít filtr a přidat ho do vlastního zobrazení.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/22/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 31a902302ba806889854330c6517d9f5745f1c0c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/22/2018
+ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551693"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931984"
 ---
-# <a name="filters-in-azure-monitor-views"></a>Filtry v zobrazení monitorování Azure
-A **filtr** v [zobrazení monitorování Azure](view-designer.md) umožňuje uživatelům k filtrování dat v zobrazení podle hodnoty určité vlastnosti beze změny samotného zobrazení.  Například můžete umožnit uživatelům zobrazení filtrovat zobrazení dat jenom z určitého počítače nebo sadu počítačů.  Na jedno zobrazení umožňuje uživatelům můžete filtrovat podle několika vlastností můžete vytvořit více filtrů.  Tento článek popisuje, jak pomocí filtru a přidejte ho do vlastního zobrazení.
+# <a name="filters-in-azure-monitor-views"></a>Filtry v zobrazeních Azure Monitor
+**Filtr** v [zobrazení Azure monitor](view-designer.md) umožňuje uživatelům filtrovat data v zobrazení podle hodnoty určité vlastnosti beze změny zobrazení.  Můžete například uživatelům zobrazení dovolit filtrovat zobrazení dat pouze z konkrétního počítače nebo sady počítačů.  V jednom zobrazení můžete vytvořit více filtrů, které umožní uživatelům filtrovat podle více vlastností.  Tento článek popisuje, jak použít filtr a přidat ho do vlastního zobrazení.
 
-## <a name="using-a-filter"></a>Pomocí filtru
-Klikněte na datum časový rozsah v horní části zobrazení otevřete rozevírací nabídky, kde můžete změnit datum časový rozsah pro zobrazení.
+## <a name="using-a-filter"></a>Použití filtru
+Kliknutím na rozsah data a času v horní části zobrazení otevřete rozevírací nabídku, kde můžete změnit rozsah data a času pro zobrazení.
 
 ![Příklad filtru](media/view-designer-filters/filters-example-time.png)
 
-Klikněte na tlačítko **+** přidejte filtr pomocí vlastní filtry, které jsou definovány pro zobrazení. Hodnota pro filtr buď vyberte z rozevíracího seznamu nebo zadejte hodnotu. Pokračujte kliknutím na Přidat filtry **+** . 
+Kliknutím na **+** přidáte filtr pomocí vlastních filtrů, které jsou definovány pro zobrazení. Buď vyberte hodnotu pro filtr z rozevíracího seznamu, nebo zadejte hodnotu. Kliknutím na **+** pokračujte v přidávání filtrů. 
 
 
 ![Příklad filtru](media/view-designer-filters/filters-example-custom.png)
 
-Pokud odeberete všechny hodnoty filtru, bude použito už tento filtr.
+Pokud odeberete všechny hodnoty pro filtr, pak tento filtr nebude nadále použit.
 
 
 ## <a name="creating-a-filter"></a>Vytvoření filtru
 
-Vytvořit filtr ze sloupce **filtry** kartě při [zobrazení pro úpravy](view-designer.md).  Tento filtr je globální zobrazení a platí pro všechny části v zobrazení.  
+Při [úpravách zobrazení](view-designer.md)vytvořte filtr na kartě **filtry** .  Filtr je globální pro zobrazení a vztahuje se na všechny části v zobrazení.  
 
 ![Nastavení filtru](media/view-designer-filters/filters-settings.png)
 
@@ -46,37 +40,37 @@ Následující tabulka popisuje nastavení pro filtr.
 
 | Nastavení | Popis |
 |:---|:---|
-| Název pole | Název pole použít pro filtrování.  Toto pole musí odpovídat poli summarize v **dotaz na hodnoty**. |
-| Dotaz na hodnoty | Použijte dotaz pro spuštění k naplnění rozevíracího seznamu filtru pro uživatele.  Tento dotaz musí používat buď [shrnout](/azure/kusto/query/summarizeoperator) nebo [odlišné](/azure/kusto/query/distinctoperator) zadejte jedinečné hodnoty pro určité pole a musí odpovídat **název pole**.  Můžete použít [řazení](/azure/kusto/query/sortoperator) seřadíte hodnoty, které se zobrazí uživateli. |
-| Značka | Název pole, která se používá v dotazech podpora filtr a zobrazí se také pro uživatele. |
+| Název pole | Název pole, které se používá pro filtrování  Toto pole se musí shodovat s polem Shrnutí v **dotazu pro hodnoty**. |
+| Dotaz na hodnoty | Dotaz pro spuštění, který naplní rozevírací seznam filtru pro uživatele.  Tento dotaz musí k zadání jedinečných hodnot pro určité pole použít [Souhrn](/azure/kusto/query/summarizeoperator) nebo [jedinečnou](/azure/kusto/query/distinctoperator) hodnotu a musí se shodovat s **názvem pole**.  K řazení hodnot zobrazených uživateli můžete použít [řazení](/azure/kusto/query/sortoperator) . |
+| Tag | Název pole, které se používá v dotazech podporujících filtr a zobrazuje se také uživateli. |
 
 ### <a name="examples"></a>Příklady
 
-Následující tabulka obsahuje několik příkladů běžných filtry.  
+Následující tabulka obsahuje několik příkladů běžných filtrů.  
 
-| Název pole | Dotaz na hodnoty | Značka |
+| Název pole | Dotaz na hodnoty | Tag |
 |:--|:--|:--|
-| Computer   | Prezenční signál &#124; distinct Computer &#124; seřadit podle počítače asc | Počítače |
-| EventLevelName | Event &#124; distinct EventLevelName | Severity |
-| SeverityLevel | Syslog &#124; distinct SeverityLevel | Severity |
-| SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
+| Počítač   | Řazení &#124; samostatného &#124; počítače z prezenčního signálu podle počítače ASC | Počítače |
+| EventLevelName | Událost &#124; DISTINCT EventLevelName | Závažnost |
+| SeverityLevel | Protokol &#124; syslog DISTINCT SeverityLevel | Závažnost |
+| SvcChangeType | ConfigurationChange &#124; DISTINCT svcChangeType | ChangeType |
 
 
 ## <a name="modify-view-queries"></a>Upravit zobrazení dotazů
 
-Pro filtr nemá žádný vliv je třeba upravit všechny dotazy v zobrazení a filtrování podle vybraných hodnot.  Pokud nebudete muset měnit všechny dotazy v zobrazení, budou všechny hodnoty, které uživatel vybere nemají žádný vliv.
+Aby měl filtr nějaký vliv, musíte upravit všechny dotazy v zobrazení a filtrovat vybrané hodnoty.  Pokud žádné dotazy v zobrazení nezměníte, nebudou žádné hodnoty, které uživatel vybral, nijak ovlivněny.
 
-Syntaxe pro používání hodnota filtru v dotazu je následující: 
+Syntaxe pro použití hodnoty filtru v dotazu je: 
 
     where ${filter name}  
 
-Například, pokud zobrazení obsahuje dotaz, který vrátí události a využívá filtr volá _počítače_, můžete použít následující dotaz.
+Pokud například zobrazení obsahuje dotaz, který vrací události a používá filtr nazvaný _Computers_, můžete použít následující dotaz.
 
     Event | where ${Computers} | summarize count() by EventLevelName
 
-Pokud přidáte jiný filtr s názvem závažnost, můžete použít následující dotaz pomocí obou filtrů.
+Pokud jste přidali další filtr s názvem závažnost, můžete použít následující dotaz pro použití obou filtrů.
 
     Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [části vizualizace](view-designer-parts.md) můžete přidat do vlastních zobrazení.
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si další informace o [částech vizualizace](view-designer-parts.md) , které můžete přidat do vlastního zobrazení.

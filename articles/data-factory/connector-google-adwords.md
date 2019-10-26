@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Google AdWords pomocí Azure Data Factory (Preview) | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data z Google AdWords úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z Google AdWords pomocí Azure Data Factory | Microsoft Docs
+description: Naučte se, jak kopírovat data z Google AdWords na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,23 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 212f1bcc7bc2bb91a402461209dad4dc288106ad
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 65bf1fa37ecb8d9e862b0e5042bed29470d750e1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090340"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935642"
 ---
-# <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>Kopírování dat z Google AdWords pomocí Azure Data Factory (Preview)
+# <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Kopírování dat z Google AdWords pomocí Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z Google AdWords. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z Google AdWords. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
-> [!IMPORTANT]
-> Tento konektor je aktuálně ve verzi preview. Můžete vyzkoušet a poskytnout zpětnou vazbu. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
-
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
 Tento konektor Google AdWords se podporuje pro následující činnosti:
 
@@ -34,33 +31,33 @@ Tento konektor Google AdWords se podporuje pro následující činnosti:
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
 
-Kopírování dat z Google AdWords do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data z Google AdWords můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
+Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Google AdWords.
+Následující části obsahují podrobné informace o vlastnostech, které se používají k definování Data Factory entit specifických pro konektor Google AdWords.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Následující vlastnosti jsou podporovány pro Google AdWords propojené služby:
+Pro propojenou službu Google AdWords jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **GoogleAdWords** | Ano |
-| clientCustomerID | ID zákazníka klienta AdWords účtu, který chcete načíst data sestavy pro.  | Ano |
-| developerToken | Token pro vývojáře spojené s účtem správce, který použijete k udělení přístupu k rozhraní API AdWords.  Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z přihlašovacích údajů [v Key Vault Store](store-credentials-in-key-vault.md). | Ano |
-| authenticationType | Mechanismus ověřování OAuth 2.0 pro ověřování. ServiceAuthentication jde použít jenom v místním prostředí IR. <br/>Povolené hodnoty jsou: **ServiceAuthentication**, **UserAuthentication** | Ano |
-| refreshToken | Obnovovací token získaný z Googlu pro autorizaci přístupu ke AdWords pro UserAuthentication. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z přihlašovacích údajů [v Key Vault Store](store-credentials-in-key-vault.md). | Ne |
-| clientId | Id klienta aplikace google, slouží k získání tokenu obnovení. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z přihlašovacích údajů [v Key Vault Store](store-credentials-in-key-vault.md). | Ne |
-| clientSecret | Tajný kód klienta aplikace služby google slouží k získání tokenu obnovení. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z přihlašovacích údajů [v Key Vault Store](store-credentials-in-key-vault.md). | Ne |
-| email | ID e-mailu účtu služby, který se používá pro ServiceAuthentication a jde použít jenom v místním prostředí IR.  | Ne |
-| keyFilePath | Úplná cesta k souboru klíče .p12, který se používá k ověření e-mailovou adresu účtu služby a jde použít jenom v místním prostředí IR.  | Ne |
-| trustedCertPath | Úplná cesta soubor .pem obsahující certifikáty důvěryhodné CA pro ověření serveru, při připojení přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL v místním prostředí IR. Výchozí hodnota je soubor cacerts.pem součástí IR.  | Ne |
-| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační Autority ze systémového úložiště důvěryhodnosti nebo ze zadaného souboru PEM. Výchozí hodnota je false.  | Ne |
+| type | Vlastnost Type musí být nastavená na: **GoogleAdWords** . | Ano |
+| clientCustomerID | ID zákazníka klienta účtu AdWords, pro který chcete načíst data sestavy.  | Ano |
+| developerToken | Token pro vývojáře přidružený k účtu manažera, který slouží k udělení přístupu k rozhraní AdWords API.  Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ano |
+| authenticationType | Ověřovací mechanismus OAuth 2,0, který se používá k ověřování. ServiceAuthentication se dá použít jenom pro prostředí IR v místním prostředí. <br/>Povolené hodnoty jsou: **ServiceAuthentication**, **UserAuthentication** | Ano |
+| Refreshtoken kontextového tokenu | Obnovovací token získaný z Google pro autorizaci přístupu k AdWords pro UserAuthentication. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ne |
+| clientId | ID klienta aplikace Google použité k získání obnovovacího tokenu. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ne |
+| clientSecret | Tajný kód klienta aplikace Google, který se používá k získání obnovovacího tokenu. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ne |
+| e-mail | ID e-mailu účtu služby, který se používá pro ServiceAuthentication a dá se použít jenom pro prostředí IR v místním prostředí.  | Ne |
+| Cesta k souboru | Úplná cesta k souboru klíče. p12, který se používá k ověření e-mailové adresy účtu služby a dá se použít jenom na místním hostiteli IR.  | Ne |
+| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | Ne |
+| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je false (NEPRAVDA).  | Ne |
 
 **Příklad:**
 
@@ -100,14 +97,14 @@ Následující vlastnosti jsou podporovány pro Google AdWords propojené služb
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje Google AdWords datové sady.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných sadou Google AdWords DataSet.
 
-Ke zkopírování dat z Google AdWords, nastavte vlastnost typ datové sady na **GoogleAdWordsObject**. Podporovány jsou následující vlastnosti:
+Pokud chcete kopírovat data z Google AdWords, nastavte vlastnost Type datové sady na **GoogleAdWordsObject**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **GoogleAdWordsObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
+| type | Vlastnost Type datové sady musí být nastavená na: **GoogleAdWordsObject** . | Ano |
+| tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
 
@@ -129,16 +126,16 @@ Ke zkopírování dat z Google AdWords, nastavte vlastnost typ datové sady na *
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem Google AdWords.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem Google AdWords.
 
-### <a name="google-adwords-as-source"></a>Google AdWords jako zdroj
+### <a name="google-adwords-as-source"></a>Google AdWords as source
 
-Ke zkopírování dat z Google AdWords, nastavte typ zdroje v aktivitě kopírování do **GoogleAdWordsSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Pokud chcete kopírovat data z Google AdWords, nastavte typ zdroje v aktivitě kopírování na **GoogleAdWordsSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **GoogleAdWordsSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **GoogleAdWordsSource** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 
@@ -177,5 +174,5 @@ Ke zkopírování dat z Google AdWords, nastavte typ zdroje v aktivitě kopírov
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>Další postup
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>Další kroky
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

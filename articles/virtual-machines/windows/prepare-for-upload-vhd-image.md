@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 555b250f211cf22e766e64960b3359692f73c843
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d184201c21c31336e31dcba9884d84f6cc224ff8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285712"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924842"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava virtuálního pevného disku (VHD) nebo VHDX systému Windows pro nahrání do Azure
 
@@ -446,7 +446,7 @@ Následující nastavení neovlivní nahrávání VHD. Důrazně ale doporučuje
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -Force
    ```
   Pokud je k virtuálnímu počítači připojený datový disk, je písmeno jednotky dočasné jednotky obvykle *D*. Toto označení může být odlišné v závislosti na nastavení a počtu dostupných jednotek.
-  * Doporučujeme zakázat blokování skriptů, které mohou být poskytovány antivirovým softwarem. Můžou rušit a blokovat spuštění skriptů agenta zřizování Windows, když nasadíte nový virtuální počítač z image.
+  * Doporučujeme zakázat blokování skriptů, které mohou být poskytovány antivirovým softwarem. Můžou narušit a blokovat spuštění skriptů agenta zřizování systému Windows, když nasadíte nový virtuální počítač z image.
   
 ## <a name="next-steps"></a>Další kroky
 * [Nahrání image virtuálního počítače s Windows do Azure pro nasazení Správce prostředků](upload-generalized-managed.md)

@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor rozhraní API kolekce dat HTTP | Microsoft Docs
 description: Pomocí rozhraní API kolekce dat služby Azure Monitor HTTP můžete přidat data JSON do pracovního prostoru Log Analytics z libovolného klienta, který může volat REST API. Tento článek popisuje, jak používat rozhraní API a obsahuje příklady, jak publikovat data pomocí různých programovacích jazyků.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: ''
-ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 50f973de8d1ca983725bc9e9e64eefc9de5237fa
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 10/01/2019
+ms.openlocfilehash: 136644dbcfe9e2835f799b284d21263913bc67b4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802132"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932592"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslání dat protokolu do Azure Monitor pomocí rozhraní API kolekce dat HTTP (Public Preview)
 V tomto článku se dozvíte, jak pomocí rozhraní API kolekce dat HTTP odesílat data protokolu Azure Monitor z klienta REST API.  Popisuje, jak formátovat data shromážděná vaším skriptem nebo aplikací, jak je zahrnout do žádosti a které vyžadují autorizaci Azure Monitor.  Příklady jsou k dispozici pro C#PowerShell, a Python.
@@ -45,7 +39,7 @@ Pokud chcete použít rozhraní API kolekce dat HTTP, vytvoříte požadavek POS
 | Atribut | Vlastnost |
 |:--- |:--- |
 | Metoda |SPUŠTĚNÍ |
-| IDENTIFIKÁTOR URI |https://@no__t -0CustomerId\>.ods.opinsights.azure.com/API/logs? API-Version = 2016-04-01 |
+| IDENTIFIKÁTOR URI |https://\<KódZákazníka\>. ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Typ obsahu |application/json |
 
 ### <a name="request-uri-parameters"></a>Parametry identifikátoru URI žádosti
@@ -62,7 +56,7 @@ Pokud chcete použít rozhraní API kolekce dat HTTP, vytvoříte požadavek POS
 | Typ protokolu |Zadejte typ záznamu dat, která se odesílají. Může obsahovat pouze písmena, číslice a podtržítka (_) a nesmí překročit 100 znaků. |
 | x-MS-Date |Datum zpracování žádosti ve formátu RFC 1123. |
 | x-MS-AzureResourceId | ID prostředku prostředku Azure, ke kterému by se měla data přidružit Tím se naplní vlastnost [_ResourceId](log-standard-properties.md#_resourceid) a povolí zahrnutí dat do dotazů [kontextu prostředků](design-logs-deployment.md#access-mode) . Pokud toto pole není zadáno, data nebudou obsažena v dotazech kontextu prostředků. |
-| Pole vygenerované časem | Název pole v datech, které obsahuje časové razítko datové položky. Pokud zadáte pole, bude jeho obsah použit pro **TimeGenerated**. Pokud toto pole není zadané, výchozí hodnota pro **TimeGenerated** je čas, kdy se zpráva ingestuje. Obsah pole zpráva by měl odpovídat formátu ISO 8601 RRRR-MM-DDThh: mm: ssZ. |
+| pole vygenerované časem | Název pole v datech, které obsahuje časové razítko datové položky. Pokud zadáte pole, bude jeho obsah použit pro **TimeGenerated**. Pokud toto pole není zadané, výchozí hodnota pro **TimeGenerated** je čas, kdy se zpráva ingestuje. Obsah pole zpráva by měl odpovídat formátu ISO 8601 RRRR-MM-DDThh: mm: ssZ. |
 
 ## <a name="authorization"></a>Autorizace
 Všechny požadavky na Azure Monitor rozhraní API kolekce dat HTTP musí zahrnovat autorizační hlavičku. Chcete-li ověřit žádost, je nutné podepsat žádost buď s primárním, nebo sekundárním klíčem pracovního prostoru, který požadavek odeslal. Pak tento podpis předejte jako součást požadavku.   
@@ -143,7 +137,7 @@ Chcete-li identifikovat datový typ vlastnosti, Azure Monitor přidá příponu 
 |:--- |:--- |
 | Řetězec |_s |
 | Logická hodnota |_b |
-| klepat |_d |
+| Klepat |_d |
 | Datum a čas |_T |
 | GUID (uloženo jako řetězec) |_g |
 
@@ -171,7 +165,7 @@ Pokud jste potom před vytvořením typu záznamu odeslali následující polož
 ## <a name="reserved-properties"></a>Rezervované vlastnosti
 Následující vlastnosti jsou rezervované a neměly by se používat v typu vlastního záznamu. Pokud datová část obsahuje některý z těchto názvů vlastností, zobrazí se chyba.
 
-- Tenant
+- tenant
 
 ## <a name="data-limits"></a>Omezení dat
 Existují určitá omezení pro data odeslaná do Azure Monitor rozhraní API pro shromažďování dat.

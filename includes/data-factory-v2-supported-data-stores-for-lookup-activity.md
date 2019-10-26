@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/06/2019
+ms.date: 10/25/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: a2b00173f463cf5bf0cda321286042a516b7e322
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 527114adbe2422148605fd878723ae74fa7c3304
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70130073"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72958521"
 ---
 | Kategorie | Úložiště dat |
 |:--- |:--- |
@@ -25,19 +25,19 @@ ms.locfileid: "70130073"
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
-| &nbsp; |[Služba soubory Azure](../articles/data-factory/connector-azure-file-storage.md) |
+| &nbsp; |[Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
-| &nbsp; |[Spravovaná Instance Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
+| &nbsp; |[Spravovaná instance Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table storage](../articles/data-factory/connector-azure-table-storage.md) |
 | **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
-| &nbsp; |[Drill (Preview)](../articles/data-factory/connector-drill.md) |
+| &nbsp; |[Drob](../articles/data-factory/connector-drill.md) |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |
 | &nbsp; |[Greenplum](../articles/data-factory/connector-greenplum.md) |
 | &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |
 | &nbsp; |[Hive](../articles/data-factory/connector-hive.md) |
-| &nbsp; |[Apache Impala (Preview)](../articles/data-factory/connector-impala.md) |
+| &nbsp; |[Apache Impala](../articles/data-factory/connector-impala.md) |
 | &nbsp; |[Informix](../articles/data-factory/connector-informix.md) 
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |
 | &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |
@@ -67,32 +67,32 @@ ms.locfileid: "70130073"
 | **Obecný protokol** |[Obecná rozhraní HTTP](../articles/data-factory/connector-http.md) |
 | &nbsp; |[Obecná OData](../articles/data-factory/connector-odata.md) |
 | &nbsp; |[Obecná rozhraní ODBC](../articles/data-factory/connector-odbc.md) |
-| **Služby a aplikace** |[Amazon Marketplace Web Service (Preview)](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
+| **Služby a aplikace** |[Webová služba Amazon Marketplace](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
 | &nbsp; |[Common Data Service pro aplikace](../articles/data-factory/connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Concur (Preview)](../articles/data-factory/connector-concur.md) |
 | &nbsp; |[Dynamics 365](../articles/data-factory/connector-dynamics-crm-office-365.md) |
-| &nbsp; |[Dynamics AX (Preview)](../articles/data-factory/connector-dynamics-ax.md) |
+| &nbsp; |[Dynamics AX](../articles/data-factory/connector-dynamics-ax.md) |
 | &nbsp; |[Dynamics CRM](../articles/data-factory/connector-dynamics-crm-office-365.md) |
-| &nbsp; |[Google AdWords (Preview)](../articles/data-factory/connector-google-adwords.md) |
+| &nbsp; |[Google AdWords](../articles/data-factory/connector-google-adwords.md) |
 | &nbsp; |[HubSpot (Preview)](../articles/data-factory/connector-hubspot.md) |
-| &nbsp; |[Jira (Preview)](../articles/data-factory/connector-jira.md) |
+| &nbsp; |[JIRA](../articles/data-factory/connector-jira.md) |
 | &nbsp; |[Magento (Preview)](../articles/data-factory/connector-magento.md) |
 | &nbsp; |[Marketo (Preview)](../articles/data-factory/connector-marketo.md) |
 | &nbsp; |[Oracle Eloqua (Preview)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (Preview)](../articles/data-factory/connector-oracle-responsys.md) |
-| &nbsp; |[Oracle Cloud Service (Preview)](../articles/data-factory/connector-oracle-service-cloud.md) |
+| &nbsp; |[Cloud služby Oracle (Preview)](../articles/data-factory/connector-oracle-service-cloud.md) |
 | &nbsp; |[PayPal (Preview)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (Preview)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |
 | &nbsp; |[Cloud služeb Salesforce](../articles/data-factory/connector-salesforce-service-cloud.md) |
-| &nbsp; |[Salesforce Marketing Cloud (Preview)](../articles/data-factory/connector-salesforce-marketing-cloud.md) |
+| &nbsp; |[Marketingový Cloud Salesforce](../articles/data-factory/connector-salesforce-marketing-cloud.md) |
 | &nbsp; |[SAP Cloud for Customer (C4C)](../articles/data-factory/connector-sap-cloud-for-customer.md) |
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |
 | &nbsp; |[ServiceNow](../articles/data-factory/connector-servicenow.md) |
 | &nbsp; |[Shopify (Preview)](../articles/data-factory/connector-shopify.md) |
 | &nbsp; |[Square (Preview)](../articles/data-factory/connector-square.md) |
 | &nbsp; |[Webová tabulka (tabulka HTML)](../articles/data-factory/connector-web-table.md) 
-| &nbsp; |[Xero (Preview)](../articles/data-factory/connector-xero.md) |
+| &nbsp; |[Xero](../articles/data-factory/connector-xero.md) |
 | &nbsp; |[Zoho (Preview)](../articles/data-factory/connector-zoho.md) |
 
 > [!NOTE]

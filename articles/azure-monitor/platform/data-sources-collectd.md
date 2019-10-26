@@ -1,24 +1,18 @@
 ---
 title: Shromažďovat data shromážděná v Azure Monitor | Microsoft Docs
 description: Shromažďováno je open source démon pro Linux, který pravidelně shromažďuje data z aplikací a informací na úrovni systému.  Tento článek poskytuje informace o shromažďování dat z Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/27/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: b1f02e01fef95bdd06930aa30479dd16d40675ce
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 11/27/2018
+ms.openlocfilehash: 4bf58a7e446cb13366a230a35c83e6bf0acaa09a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812559"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932525"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Shromažďovat data shromážděná v agentech Linux v Azure Monitor
 [Shromažďováno](https://collectd.org/) je open source démon pro Linux, který pravidelně shromažďuje metriky výkonu z aplikací a informací na úrovni systému. Příklady aplikací zahrnují prostředí Java Virtual Machine (JVM), MySQL server a Nginx. Tento článek poskytuje informace o shromažďování údajů o výkonu ze sběru Azure Monitor.
@@ -52,12 +46,12 @@ Kromě toho, pokud použijete verze shromážděné před 5,5, použijte místo 
        </URL>
     </Plugin>
 
-Shromážděná konfigurace používá výchozí modul plug-in @ no__t-0 k odesílání dat metrik výkonu přes port 26000 pro Log Analytics agenta pro Linux. 
+Shromážděná konfigurace používá výchozí modul plug-in`write_http` k odesílání dat metrik výkonu přes port 26000 pro Log Analytics agenta pro Linux. 
 
 > [!NOTE]
 > Tento port můžete v případě potřeby nakonfigurovat na vlastní port definovaný.
 
-Agent Log Analytics pro Linux také naslouchá na portu 26000 pro shromážděné metriky a pak je převede na Azure Monitor metriky schématu. Toto je Log Analytics agenta pro konfiguraci Linux `collectd.conf`.
+Agent Log Analytics pro Linux také naslouchá na portu 26000 pro shromážděné metriky a pak je převede na Azure Monitor metriky schématu. Následuje příklad `collectd.conf`Log Analytics agenta pro konfiguraci Linux.
 
     <source>
       type http
@@ -86,7 +80,7 @@ Níže jsou uvedené základní kroky ke konfiguraci shromažďování shromáž
 
 ### <a name="configure-collectd-to-forward-data"></a>Konfigurace shromážděná na dopředná data 
 
-1. Aby bylo možné směrovat shromážděná data do agenta Log Analytics pro Linux, je třeba přidat `oms.conf` ke shromáždění konfiguračního adresáře. Cíl tohoto souboru závisí na distribuce Linux vašeho počítače.
+1. Aby bylo možné směrovat shromážděná data do agenta Log Analytics pro Linux, `oms.conf` je nutné přidat do adresáře konfigurace ke shromáždění. Cíl tohoto souboru závisí na distribuce Linux vašeho počítače.
 
     Pokud je váš adresář shromážděné konfigurace umístěný v/etc/collectd.d/:
 

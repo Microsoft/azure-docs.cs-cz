@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599950"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934022"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidání nebo odebrání certifikátů pro cluster Service Fabric v Azure
 Doporučujeme, abyste se seznámili s tím, jak Service Fabric využívá certifikáty X. 509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Než budete pokračovat, musíte pochopit, co je certifikát clusteru a k čemu se používá.
@@ -53,13 +53,13 @@ Pokud je vaším záměrem odebrat certifikát, který je označen jako primárn
 Tento postup předpokládá, že jste obeznámeni s tím, jak Správce prostředků funguje a že jste nasadili aspoň jeden Service Fabric cluster pomocí šablony Správce prostředků a máte šablonu, kterou jste použili k nastavení praktického clusteru. Také se předpokládá, že máte v kódu JSON pohodlí.
 
 > [!NOTE]
-> Pokud hledáte ukázkovou šablonu a parametry, které můžete použít k následnému nebo jako výchozímu bodu, Stáhněte si ho z tohoto [úložiště Git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 
+> Pokud hledáte ukázkovou šablonu a parametry, které můžete použít k následnému nebo jako výchozímu bodu, Stáhněte si ho z tohoto [úložiště Git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample). 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>Úprava šablony Správce prostředků
 
-Pro snadné provedení následujících ukázek 5-VM-1-NodeTypes-Secure_Step2. JSON obsahuje všechny úpravy, které budeme dělat. Tato ukázka je k dispozici v [úložišti Git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
+Pro snadné provedení následujících ukázek 5-VM-1-NodeTypes-Secure_Step2. JSON obsahuje všechny úpravy, které budeme dělat. Tato ukázka je k dispozici v [úložišti Git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
 
 **Ujistěte se, že provedete všechny kroky.**
 
@@ -117,7 +117,7 @@ Pro snadné provedení následujících ukázek 5-VM-1-NodeTypes-Secure_Step2. J
          }
     ``` 
 
-4. Proveďte změny v definicích prostředků **Microsoft. COMPUTE/virtualMachineScaleSets** – vyhledejte definici prostředků Microsoft. COMPUTE/virtualMachineScaleSets. Posuňte se na vydavatele: "Microsoft. Azure. ServiceFabric", v části "virtualMachineProfile".
+4. Proveďte **změny v** definicích prostředků **Microsoft. COMPUTE/virtualMachineScaleSets** – vyhledejte definici prostředků Microsoft. COMPUTE/virtualMachineScaleSets. V části "virtualMachineProfile" přejděte na vydavatele ": Microsoft. Azure. ServiceFabric".
 
     V nastavení vydavatele Service Fabric by se mělo zobrazit něco podobného.
     
@@ -155,7 +155,7 @@ Pro snadné provedení následujících ukázek 5-VM-1-NodeTypes-Secure_Step2. J
     Vlastnosti by teď měly vypadat takto.    
     ![Json_Pub_Setting3][Json_Pub_Setting3]
 
-5. Proveďte změny v definicích prostředků **Microsoft. COMPUTE/virtualMachineScaleSets** – vyhledejte definici prostředků Microsoft. COMPUTE/virtualMachineScaleSets. Posuňte se do části "vaultCertificates": v části "OSProfile". mělo by to vypadat nějak takto.
+5. Proveďte **změny v** definicích prostředků **Microsoft. COMPUTE/virtualMachineScaleSets** – vyhledejte definici prostředků Microsoft. COMPUTE/virtualMachineScaleSets. Posuňte se do části "vaultCertificates": v části "OSProfile". mělo by to vypadat nějak takto.
 
     ![Json_Pub_Setting4][Json_Pub_Setting4]
     
@@ -178,7 +178,7 @@ Pro snadné provedení následujících ukázek 5-VM-1-NodeTypes-Secure_Step2. J
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Upravte soubor šablony tak, aby odrážel nové parametry, které jste přidali výše.
-Pokud používáte ukázku z [úložiště Git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) , abyste mohli postupovat podle, můžete začít dělat změny v ukázce 5-VM-1-nodetypes-Secure. PARAMETERS_STEP2. JSON. 
+Pokud používáte ukázku z [úložiště Git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) , abyste mohli postupovat podle, můžete začít dělat změny v ukázce 5-VM-1-nodetypes-Secure. PARAMETERS_STEP2. JSON. 
 
 Upravte soubor parametrů šablony Správce prostředků přidejte dva nové parametry pro secCertificateThumbprint a secCertificateUrlValue. 
 
@@ -288,7 +288,7 @@ můžete zadat libovolný počet klientských certifikátů. Každé přidání 
 
 Chcete-li odebrat sekundární certifikát ze systému, který se používá pro zabezpečení clusteru, přejděte do části zabezpečení a vyberte možnost odstranit z kontextové nabídky u konkrétního certifikátu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o správě clusterů najdete v těchto článcích:
 
 * [Service Fabric proces upgradu clusteru a očekávání od vás](service-fabric-cluster-upgrade.md)

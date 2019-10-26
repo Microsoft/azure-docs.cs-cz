@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 99f8c2b40445fe282800d096353bee1c7a934ebe
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b644d293afd429bdc68fba66c119eb7146d0daf0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918129"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935464"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Spusťte Apache Oozie v clusterech HDInsight Hadoop s Balíček zabezpečení podniku
 
@@ -41,7 +41,7 @@ Další informace o Secure Shell (SSH) najdete v tématu [připojení ke služb�
    ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
    ```
 
-2. K ověření úspěšného ověřování pomocí protokolu Kerberos `klist` použijte příkaz. Pokud ne, použijte `kinit` ke spuštění ověřování protokolem Kerberos.
+2. K ověření úspěšného ověřování pomocí protokolu Kerberos použijte příkaz `klist`. Pokud ne, spusťte pomocí `kinit` ověřování protokolem Kerberos.
 
 3. Přihlaste se k bráně HDInsight a zaregistrujte token OAuth vyžadovaný pro přístup k Azure Data Lake Storage:   
      ```bash
@@ -61,9 +61,9 @@ Definice pracovních postupů Oozie jsou napsané v jazyce hPDL (Apache Hadoop p
    tar -xvf oozie-examples.tar.gz
    hdfs dfs -put examples /user/<DomainUser>/
    ```
-   Nahraďte `DomainUser` názvem doménového uživatele. 
-   Nahraďte `DomainUserPath` cestou k domovskému adresáři pro uživatele domény. 
-   Nahraďte `ClusterVersion` svou verzí HDP (Hortonworks data Platform) vašeho clusteru.
+   Položku `DomainUser` nahraďte uživatelským jménem domény.
+   Nahraďte `DomainUserPath` cestou k domovskému adresáři pro uživatele domény.
+   Nahraďte `ClusterVersion` verzí vaší datové platformy vašeho clusteru.
 
 2. Pomocí následujícího příkazu vytvořte a upravte nový soubor:
    ```bash
@@ -186,12 +186,12 @@ Definice pracovních postupů Oozie jsou napsané v jazyce hPDL (Apache Hadoop p
 
      Akce podregistru používají pověření definovaná v oddílu přihlašovací údaje pro ověřování pomocí klíčového slova `cred` v elementu Action.
 
-6. Pomocí následujícího příkazu zkopírujte `workflow.xml` soubor do: `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`
+6. K zkopírování `workflow.xml` souboru do `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`použijte následující příkaz:
      ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
      ```
 
-7. Nahraďte `domainuser` svým uživatelským jménem pro doménu.
+7. Nahraďte `domainuser` vaším uživatelským jménem pro doménu.
 
 ## <a name="define-the-properties-file-for-the-oozie-job"></a>Zadejte soubor vlastností pro úlohu Oozie
 
@@ -219,9 +219,9 @@ Definice pracovních postupů Oozie jsou napsané v jazyce hPDL (Apache Hadoop p
        hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   * Pokud jste Azure Data Lake Storage Gen1 jako primární `nameNode` úložiště clusteru, použijte identifikátorURIprovlastnost.`adl://home` Pokud používáte Azure Blob Storage, pak tuto akci změňte na `wasb://home`. Pokud používáte Azure Data Lake Storage Gen2, pak tuto akci změňte na `abfs://home`.
-   * Nahraďte `domainuser` svým uživatelským jménem pro doménu.  
-   * Nahraďte `ClusterShortName` krátkým názvem clusteru. Pokud je název clusteru například https:// *[example Link]* sechadoopcontoso.azurehdisnight.NET, `clustershortname` je prvních šest znaků clusteru: **sechad**.  
+   * Pokud jste Azure Data Lake Storage Gen1 jako primární úložiště clusteru, použijte `adl://home` identifikátor URI pro vlastnost `nameNode`. Pokud používáte Azure Blob Storage, změňte tuto akci na `wasb://home`. Pokud používáte Azure Data Lake Storage Gen2, změňte tuto akci na `abfs://home`.
+   * Nahraďte `domainuser` vaším uživatelským jménem pro doménu.  
+   * Nahraďte `ClusterShortName` krátkým názvem clusteru. Pokud je název clusteru například https:// *[example Link]* sechadoopcontoso.azurehdisnight.net, `clustershortname` je prvních šest znaků clusteru: **sechad**.  
    * Nahraďte `jdbcurlvalue` adresou URL JDBC z konfigurace podregistru. Příklad je JDBC: hive2://headnodehost: 10001/; transportMode = http.      
    * Pokud chcete soubor uložit, vyberte CTRL + X, zadejte `Y`a pak vyberte **ENTER**.
 
@@ -315,7 +315,7 @@ V protokolech auditu Ranger pro podregistr Server 2 se zobrazuje Oozie, který s
 
 ## <a name="configure-user-authorization-in-oozie"></a>Konfigurace autorizace uživatele v Oozie
 
-Oozie sám má konfiguraci autorizace uživatele, která může zablokovat uživatelům zastavit nebo odstranit úlohy jiných uživatelů. Chcete-li povolit tuto konfiguraci, `oozie.service.AuthorizationService.security.enabled` nastavte `true`na. 
+Oozie sám má konfiguraci autorizace uživatele, která může zablokovat uživatelům zastavit nebo odstranit úlohy jiných uživatelů. Pokud chcete tuto konfiguraci povolit, nastavte `oozie.service.AuthorizationService.security.enabled` na `true`. 
 
 Další informace najdete v tématu [instalace a konfigurace Apache Oozie](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 

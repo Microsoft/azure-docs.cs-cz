@@ -1,5 +1,5 @@
 ---
-title: Použití změny rozdělení na oddíly pro optimalizaci zpracování pomocí Azure Stream Analytics
+title: Optimalizace Azure Stream Analytics úloh pomocí změny rozdělení na oddíly
 description: Tento článek popisuje, jak pomocí změny rozdělení na oddíly optimalizovat Azure Stream Analytics úlohy, které se nedají paralelně rozdělit.
 ms.service: stream-analytics
 author: mamccrea
@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: fcbef434d3b88c20cdaaeab92a973e5fbe41680d
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: bbea71464e8a1f4e93e510106d372257f155b0c6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266444"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935048"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Použití změny rozdělení na oddíly pro optimalizaci zpracování pomocí Azure Stream Analytics
 

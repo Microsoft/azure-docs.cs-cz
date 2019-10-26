@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7f08c175972826a8b226d7e80f563ac71ba23db
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 78482b5d7013ffa3bbb0a34dd04c8c48626dc77a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514769"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926650"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -150,7 +150,7 @@ Pokud chcete lépe pochopit zástupný symbol [složka], přečtěte si prosím 
 
 Zkopírujte všechny intervaly do Blob Storage z Amazon Web Services (AWS) pomocí přístupového klíče a tokenu SAS. Nejdřív nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
-- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
+- AzCopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
 
 Zkopírujte všechny intervaly do Blob Storage z oblasti Amazon Web Services (AWS) pomocí přístupového klíče a tokenu SAS. Nejdřív nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
@@ -172,7 +172,7 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--check-Length**                         Zkontroluje délku souboru v cíli po přenosu. Pokud dojde ke neshodě mezi zdrojem a cílem, je přenos označený jako neúspěšný. (výchozí hodnota true)
 
-**--check-MD5** řetězec Určuje, jak by měly být při stahování ověřovány STRIKTNĚ hash MD5. K dispozici pouze při stahování. Dostupné možnosti: Nekontrolovat, přihlásit se, FailIfDifferent, FailIfDifferentOrMissing. (výchozí ' FailIfDifferent ') (výchozí "FailIfDifferent")
+**--check-MD5** řetězec Určuje, jak by měly být při stahování ověřovány STRIKTNĚ hash MD5. K dispozici pouze při stahování. Dostupné možnosti: Nekontrolovat, přihlásit se, FailIfDifferent, FailIfDifferentOrMissing. (výchozí "FailIfDifferent")
 
 **--dispoziční řetězec obsahu** nastaví hlavičku Content-Disposition. Vráceno při stažení.
 
@@ -204,15 +204,15 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--include – řetězec vzoru** zahrne při kopírování jenom tyto soubory. Tato možnost podporuje zástupné znaky (*). Oddělte soubory pomocí '; '.
 
-**--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu, dostupné úrovně: informace (všechny požadavky a odpovědi), upozornění (pomalé odezvy), chyby (pouze neúspěšné žádosti) a žádné (žádné protokoly výstupu). (výchozí informace). (výchozí "informace")
+**--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu, dostupné úrovně: informace (všechny požadavky a odpovědi), upozornění (pomalé odezvy), chyby (pouze neúspěšné žádosti) a žádné (žádné protokoly výstupu). (výchozí "informace")
 
 **–** nahrání řetězce metadat pro Azure Storage s těmito páry klíč-hodnota jako metadata.
 
 **--No-odhad-MIME-Type**                   Zabrání AzCopy zjištění typu obsahu založeného na příponě nebo obsahu souboru.
 
-**--přepsání** řetězce přepíše konfliktní soubory a objekty BLOB v cílovém umístění, pokud je tento příznak nastaven na hodnotu true. (výchozí hodnota true) Možné hodnoty zahrnují "true", "false" a "prompt". (výchozí hodnota true)
+**--přepsání** řetězce přepíše konfliktní soubory a objekty BLOB v cílovém umístění, pokud je tento příznak nastaven na hodnotu true. Možné hodnoty zahrnují "true", "false" a "prompt". (výchozí hodnota true)
 
-**--Page-BLOB-** Page nahrání objektu blob stránky pro Azure Storage pomocí této úrovně objektu BLOB. (výchozí možnost ' None '). (výchozí hodnota "none")
+**--Page-BLOB-** Page nahrání objektu blob stránky pro Azure Storage pomocí této úrovně objektu BLOB. (výchozí hodnota "none")
 
 **--Preserve – čas poslední změny**          K dispozici pouze v případě, že cílem je systém souborů.
 
@@ -222,9 +222,9 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--S2S-Detect-source-změněno**           Zkontroluje, jestli se zdroj po vyčíslení změnil.
 
-**--S2S-Handle-neplatný-řetězec metadat** určuje, jak se zpracovávají neplatné klíče metadat. Dostupné možnosti: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (výchozí ' ExcludeIfInvalid '). (výchozí "ExcludeIfInvalid")
+**--S2S-Handle-neplatný-řetězec metadat** určuje, jak se zpracovávají neplatné klíče metadat. Dostupné možnosti: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (výchozí "ExcludeIfInvalid")
 
-**--S2S-Preserve-úroveň přístupu**             Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si prosím [v Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) . V případech, kdy se nastavení úrovně přístupu nepodporuje, použijte s2sPreserveAccessTier = false, aby se přenechá kopírování úrovně přístupu. (výchozí hodnota true).  (výchozí hodnota true)
+**--S2S-Preserve-úroveň přístupu**             Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si prosím [v Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) . V případech, kdy se nastavení úrovně přístupu nepodporuje, použijte s2sPreserveAccessTier = false, aby se přenechá kopírování úrovně přístupu. (výchozí hodnota true)
 
 **--S2S-Preserve-Properties**              Zachovat úplné vlastnosti během kopírování Service to Service. V případě nesamostatného zdroje souborů AWS S3 a Azure File nevrátí operace list úplné vlastnosti objektů a souborů. Aby bylo možné zachovat úplné vlastnosti, AzCopy potřebuje odeslat jednu další žádost na jeden objekt nebo soubor. (výchozí hodnota true)
 

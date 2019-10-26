@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5739827f1f6cf65cfe5c4aa8303c9f37eb569854
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1ec1baa8797935b76963025f82d6c7df43a2a7d5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264403"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931558"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s Pythonem
 
@@ -22,7 +22,7 @@ V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto rychlého startu musíte mít:
 - Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) .
 - Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
@@ -65,7 +65,7 @@ Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure naučit model
     ```
 1. Uložte kód do souboru s příponou. py. Například *Form-Recognize-Train.py*.
 1. Otevřete okno příkazového řádku.
-1. Na příkazovém řádku použijte příkaz `python` ke spuštění ukázky. Například `python form-recognize-train.py`.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognize-train.py`.
 
 S tímto výstupem JSON obdržíte odpověď `200 (Success)`:
 
@@ -114,11 +114,11 @@ Všimněte si hodnoty `"modelId"`. Budete ho potřebovat pro následující krok
 
 Dále analyzujete dokument a z něj extrahujete páry klíč-hodnota a tabulky. Zavolejte **model – Analyzujte** rozhraní API spuštěním skriptu Pythonu, který následuje. Před spuštěním příkazu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formuláře. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání vašeho formuláře.
 1. Nahraďte `<path to your form>` cestou k souboru vašeho formuláře (například C:\temp\file.PDF). Pro účely tohoto rychlého startu můžete použít soubory ve složce **test** sady [ukázkových dat](https://go.microsoft.com/fwlink/?linkid=2090451).
 1. Nahraďte `<modelID>` číslem ID modelu, který jste obdrželi v předchozí části.
 1. Nahraďte `<file type>` typem souboru. Podporované typy: `application/pdf`, `image/jpeg` `image/png`.
-1. Nahraďte `<subscription key>` klíčem předplatného.
+1. Místo `<subscription key>` použijte váš klíč předplatného.
 
     ```python
     ########### Python Form Recognizer Analyze #############
@@ -147,9 +147,9 @@ Dále analyzujete dokument a z něj extrahujete páry klíč-hodnota a tabulky. 
 
 1. Uložte kód do souboru s příponou. py. Například *Form-Recognize-Analyze.py*.
 1. Otevřete okno příkazového řádku.
-1. Na příkazovém řádku použijte příkaz `python` ke spuštění ukázky. Například `python form-recognize-analyze.py`.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognize-analyze.py`.
 
-### <a name="examine-the-response"></a>Projděte si odpověď.
+### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
 Ve formátu JSON se vrátí odpověď na úspěch. Představuje páry klíč-hodnota a tabulky extrahované z formuláře:
 

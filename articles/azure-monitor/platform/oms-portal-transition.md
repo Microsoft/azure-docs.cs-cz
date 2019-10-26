@@ -1,23 +1,18 @@
 ---
 title: Přesun portálu OMS do Azure | Microsoft Docs
 description: Portál OMS se sunsetted se všemi funkcemi, které se přesunou do Azure Portal. Tento článek poskytuje podrobné informace o tomto přechodu.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 08/22/2019
+ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915870"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932149"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Přesun portálu OMS do Azure
 
@@ -66,7 +61,7 @@ V obou těchto případech musí správce ručně přiřadit příslušnou roli 
 |:---|:---|
 | ReadOnly | Čtenář Log Analytics |
 | Přispěvatel | Přispěvatel Log Analytics |
-| Správce | Owner | 
+| Správce | Vlastník | 
  
 
 ## <a name="new-workspaces"></a>Nové pracovní prostory
@@ -93,7 +88,7 @@ Mobilní aplikace OMS se sunsetted spolu s portálem OMS. Místo mobilní aplika
 
 V takovém případě je Application Insights Connector zastaralá a odebrána z Azure Marketplace společně s vyřazením portálu OMS do 30. března 2019. Stávající připojení budou fungovat i do 30. června 2019. V případě zastaralého portálu OMS neexistuje způsob, jak nakonfigurovat a odebrat existující připojení z portálu. Tato akce bude podporována pomocí REST API, která bude k dispozici v lednu 2019. oznámení budou odeslána na [Aktualizace Azure](https://azure.microsoft.com/updates/). 
 
-## <a name="azure-network-security-group-analytics"></a>Analýzy skupin zabezpečení sítě Azure
+## <a name="azure-network-security-group-analytics"></a>Azure Network Security Group Analytics
 [Řešení Azure Network Security Group Analytics](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) bude nahrazeno nedávno spuštěným [Analýza provozu](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) , které poskytuje přehled o aktivitách uživatelů a aplikací v cloudových sítích. Analýza provozu vám pomůže auditovat síťové aktivity vaší organizace, zabezpečit aplikace a data, optimalizovat výkon úloh a zachovat vyhovující předpisy. 
 
 Toto řešení analyzuje protokoly toků NSG a poskytuje přehledy o následujících položkách.
@@ -108,7 +103,7 @@ Toto řešení analyzuje protokoly toků NSG a poskytuje přehledy o následují
 Můžete se i nadále spoléhat na nastavení diagnostiky a odesílat protokoly NSG, aby bylo možné Log Analytics, takže stávající uložená hledání, upozornění a řídicí panely budou fungovat i nadále. Zákazníci, kteří už toto řešení nainstalovali, ho můžou dál používat, dokud si nevšimnete. Od 5. září se řešení analýzy skupin zabezpečení sítě odebere z webu Marketplace a zpřístupní se prostřednictvím komunity jako [Šablona Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-Pokud jste [Log Analytics skupinu pro správu Operations Manager k](om-agents.md), bude i nadále fungovat bez jakýchkoli změn. V případě nových připojení je potřeba při konfiguraci Operations Management Suite postupovat podle pokynů v sadě [Microsoft System Center Operations Manager Management Pack](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/).
+Pokud jste [Log Analytics skupinu pro správu Operations Manager k](om-agents.md), bude i nadále fungovat bez jakýchkoli změn. V případě nových připojení je potřeba při [konfiguraci Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/)postupovat podle pokynů v sadě Microsoft System Center Operations Manager Management Pack.
 
 ## <a name="next-steps"></a>Další kroky
 - V tématu [běžné otázky týkající se přechodu z portálu OMS na Azure Portal Log Analytics uživatele](oms-portal-faq.md) , kde najdete pokyny k přesunu z portálu oms do Azure Portal.

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 617e9a40c253d98c32ae8b4c9426f3148c23d125
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b265ec68039f03c09d45c9605965de8ce0baba99
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176137"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935879"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Python
 
@@ -29,7 +29,7 @@ Pomocí klientské knihovny obličeje pro Python:
 * Ověřit plošky
 * Pořídit snímek migrace dat
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)[ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)  | 
+[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)[ukázky](https://docs.microsoft.com/samples/browse/?products=azure&term=face)  | 
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -49,7 +49,7 @@ Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte 
  
 ### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
-Vytvořte nový skript Pythonu @ no__t-0*Quickstart-File.py*, například. Pak ho otevřete v preferovaném editoru nebo integrovaném vývojovém prostředí a importujte následující knihovny.
+Vytvořte nový skript Python&mdash;*Quickstart-File.py*, například. Pak ho otevřete v preferovaném editoru nebo integrovaném vývojovém prostředí a importujte následující knihovny.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 

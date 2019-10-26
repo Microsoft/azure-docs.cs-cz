@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.openlocfilehash: 33fa474d719ec8a20142f35f56cc697c11e03e86
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514656"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926638"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -207,6 +207,7 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 |-------|---------|
 |Austrálie – východ |LRS     |
 |Austrálie – jihovýchod|LRS |
+|Kanada – střed  |LRS     |
 |Střední Indie  |LRS     |
 |Východní Asie      |LRS     |
 |Východní USA *        |LRS     |
@@ -219,13 +220,13 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 |Západní USA *        |LRS     |
 |Západní USA 2      |LRS, ZRS|
 
-\* pro nové účty podporované, ne všechny stávající účty dokončily proces upgradu.
+\* pro nové účty podporované, ne všechny stávající účty dokončily proces upgradu. Můžete zjistit, jestli vaše stávající účty úložiště dokončily proces upgradu tím, že se pokusí [Povolit velké sdílené složky souborů](storage-files-how-to-create-large-file-share.md).
 
 Abychom vám pomohli upřednostnit nové oblasti a funkce, vyplňte prosím tento [průzkum](https://aka.ms/azurefilesatscalesurvey).
 
 ### <a name="enable-and-create-larger-file-shares"></a>Povolit a vytvořit větší sdílené složky
 
-Pokud chcete začít používat větší sdílené složky, přečtěte si článek [Povolení velkých sdílených složek](storage-files-how-to-create-large-file-share.md).
+Pokud chcete začít používat větší sdílené složky, přečtěte si náš článek [Jak povolit a vytvořit velké sdílené složky souborů](storage-files-how-to-create-large-file-share.md).
 
 ## <a name="data-growth-pattern"></a>Model růstu dat
 

@@ -9,24 +9,24 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fbc6d30f8bc161ecf1a4e4093d0b69e99eec527b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169821"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924993"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Použití Terraformu ke zřízení infrastruktury pomocí slotů nasazení Azure
 
 [Sloty nasazení Azure](/azure/app-service/deploy-staging-slots) můžete použít k přepínání mezi různými verzemi aplikace. Tato možnost vám pomůže minimalizovat dopad přerušených nasazení. 
 
-Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplikací prostřednictvím GitHubu a Azure. Jedna aplikace je hostovaná v produkčním slotu. Druhá aplikace je hostovaná v přípravném slotu. (Názvy "produkční" a "přípravný" jsou nahodilé a můžou se jmenovat i jinak, aby se hodily do vašeho scénáře.) Po dokončení konfigurace nasazovacích slotů můžete Terraform použít k přepínání mezi dvěma sloty podle potřeby.
+Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplikací prostřednictvím GitHubu a Azure. Jedna aplikace je hostovaná v produkčním slotu. Druhá aplikace je hostovaná v přípravném slotu. (Názvy "produkční" a "fázování" jsou libovolné a můžou být cokoli, co potřebujete, který představuje váš scénář.) Až nakonfigurujete sloty nasazení, můžete použít Terraformu k proměně mezi oběma sloty podle potřeby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Účet GitHub**: Potřebujete účet [GitHub](https://www.github.com) pro rozvětvení a používání úložiště GitHub test.
+- **Účet GitHub**: účet [GitHub](https://www.github.com) potřebujete k vytvoření forku a použití testovacího úložiště GitHub.
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Vytvoření a použití plánu Terraformu
 
@@ -85,8 +85,8 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
 
     resource "azurerm_app_service_plan" "slotDemo" {
         name                = "slotAppServicePlan"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
         sku {
             tier = "Standard"
             size = "S1"
@@ -95,17 +95,17 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
 
     resource "azurerm_app_service" "slotDemo" {
         name                = "slotAppService"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
     }
 
     resource "azurerm_app_service_slot" "slotDemo" {
         name                = "slotAppServiceSlotOne"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
-        app_service_name    = "${azurerm_app_service.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
+        app_service_name    = azurerm_app_service.slotDemo.name
     }
     ```
 

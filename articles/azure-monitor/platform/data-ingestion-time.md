@@ -1,23 +1,18 @@
 ---
 title: Doba přijímání dat protokolu v Azure Monitor | Microsoft Docs
 description: Vysvětluje různé faktory, které mají vliv na latenci při shromažďování dat protokolu v Azure Monitor.
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.service: log-analytics
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: 5947c4c28736f8488ea0e48941214df42c6af72a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 07/18/2019
+ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639487"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932568"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Doba přijímání dat protokolu v Azure Monitor
 Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. K dispozici jsou často dotazy týkající se času, po který se data protokolu budou k dispozici po shromáždění. Tento článek vysvětluje různé faktory, které mají vliv na tuto latenci.
@@ -39,7 +34,7 @@ Podrobnosti o různých latencích zavedených v tomto procesu jsou popsány ní
 Agenti a řešení pro správu používají různé strategie ke shromažďování dat z virtuálního počítače. to může mít vliv na latenci. Mezi konkrétní příklady patří následující:
 
 - Události Windows, události syslog a metriky výkonu se shromažďují hned. Čítače výkonu pro Linux se dotazují v intervalu 30 sekund.
-- Protokoly služby IIS a vlastní protokoly jsou shromažďovány po změně jejich časového razítka. V případě protokolů služby IIS je to ovlivněno plánem změny [nastaveným ve službě IIS](data-sources-iis-logs.md). 
+- Protokoly služby IIS a vlastní protokoly jsou shromažďovány po změně jejich časového razítka. V případě protokolů služby IIS je to ovlivněno [plánem změny nastaveným ve službě IIS](data-sources-iis-logs.md). 
 - Řešení replikace Active Directory provádí posouzení každých pět dní, zatímco Active Directory Assessment řešení provádí týdenní hodnocení infrastruktury služby Active Directory. Agent bude tyto protokoly shromažďovat až po dokončení posouzení.
 
 ### <a name="agent-upload-frequency"></a>Frekvence nahrávání agenta
@@ -101,7 +96,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
 
-Předchozí kontroly percentilu jsou vhodné pro hledání obecných trendů v latenci. Pro identifikaci krátkodobého špičky v latenci může být použití maxima (`max()`) efektivnější.
+Předchozí kontroly percentilu jsou vhodné pro hledání obecných trendů v latenci. Pro identifikaci krátkodobého špičky v latenci může být použití maximálního (`max()`) efektivnější.
 
 Chcete-li přejít k podrobnostem o době příjmu konkrétního počítače v časovém intervalu, použijte následující dotaz, který také vizualizuje data z minulého dne v grafu: 
 
@@ -147,6 +142,6 @@ Heartbeat
 | top 20 by NoHeartbeatPeriod desc 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si [smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) pro Azure monitor.
 

@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 856e2859c778c9f23bc093c2283571a1440ef701
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b98917e6f3c0ff6570251751a9958b202908ee3e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68598786"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933918"
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Kurz: Monitorování kontejnerů Windows na Service Fabric pomocí protokolů Azure Monitor
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Kurz: monitorování kontejnerů Windows na Service Fabric pomocí protokolů Azure Monitor
 
 Toto je třetí část kurzu a provede vás nastavením protokolů Azure Monitor pro monitorování vašich kontejnerů Windows, které jsou Orchestrované na Service Fabric.
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
@@ -186,7 +186,7 @@ Proveďte následující změny v souboru *template.json*.
     },
     ```
 
-[Tady](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) je ukázková šablona (použitá v první části tohoto kurzu) obsahující všechny tyto změny, kterou podle potřeby můžete použít jako vodítko. Těmito změnami se přidá pracovní prostor služby Log Analytics do vaší skupiny prostředků. Pracovní prostor se nakonfiguruje tak, aby sbíral události platformy Service Fabric z tabulek úložiště nakonfigurovaných pomocí agenta [Azure Diagnostics pro Windows](service-fabric-diagnostics-event-aggregation-wad.md). Do každého uzlu v clusteru se také přidal agent Log Analytics (Microsoft Monitoring Agent) jako rozšíření virtuálního počítače – to znamená, že při škálování clusteru se agent automaticky nakonfiguruje na každém počítači a připojí se ke stejnému pracovnímu prostoru.
+[Tady](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/d2ffa318581fc23ac7f1b0ab2b52db1a0d7b4ba7/5-VM-Windows-OMS-UnSecure/sfclusteroms.json) je ukázková šablona (použitá v první části tohoto kurzu) obsahující všechny tyto změny, kterou podle potřeby můžete použít jako vodítko. Těmito změnami se přidá pracovní prostor služby Log Analytics do vaší skupiny prostředků. Pracovní prostor se nakonfiguruje tak, aby sbíral události platformy Service Fabric z tabulek úložiště nakonfigurovaných pomocí agenta [Azure Diagnostics pro Windows](service-fabric-diagnostics-event-aggregation-wad.md). Do každého uzlu v clusteru se také přidal agent Log Analytics (Microsoft Monitoring Agent) jako rozšíření virtuálního počítače – to znamená, že při škálování clusteru se agent automaticky nakonfiguruje na každém počítači a připojí se ke stejnému pracovnímu prostoru.
 
 Nasazením šablony s provedenými změnami upgradujte svůj aktuální cluster. Po dokončení by se ve vaší skupině prostředků měly zobrazit prostředky Log Analytics. Až bude cluster připravený, nasaďte do něj svou kontejnerizovanou aplikaci. V dalším kroku nastavíme monitorování kontejnerů.
 
@@ -227,11 +227,11 @@ Tím přejdete do svého pracovního prostoru služby Log Analytics, kde můžet
 
 Za několik minut **aktualizujte** řešení pro monitorování kontejnerů. Měla by se vám začít zobrazovat příchozí data o *výkonu počítačů*. Ta vám pomůžou porozumět využití vašich prostředků. Tyto metriky můžete využít také k přijímání patřičných rozhodnutí o škálování clusteru nebo k potvrzení, jestli cluster vyrovnává zatížení podle očekávání.
 
-*Poznámka: Ujistěte se, že jsou vaše časové filtry nastavené tak, aby se tyto metriky využívaly.*
+*Poznámka: Abyste mohli využívat tyto metriky, ujistěte se, že máte správně nastavené filtry času.*
 
 ![Čítače výkonu 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
@@ -242,7 +242,7 @@ V tomto kurzu jste se naučili:
 
 Teď, když jste nastavili monitorování své kontejnerizované aplikace, vyzkoušejte následující:
 
-* Nastavte protokoly Azure Monitor pro cluster se systémem Linux, a to podle podobných kroků uvedených výše. Při provádění změn šablony Resource Manageru můžete jako vodítko použít [tuto šablonu](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
+* Nastavte protokoly Azure Monitor pro cluster se systémem Linux, a to podle podobných kroků uvedených výše. Při provádění změn šablony Resource Manageru můžete jako vodítko použít [tuto šablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS).
 * Nakonfigurujte protokoly Azure Monitor a nastavte [Automatické upozorňování](../log-analytics/log-analytics-alerts.md) , které pomáhají při zjišťování a diagnostice.
 * Prozkoumejte seznam [doporučených čítačů výkonů](service-fabric-diagnostics-event-generation-perf.md) Service Fabric, které můžete nakonfigurovat pro svůj cluster.
 * Seznamte se s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) , které nabízí jako součást protokolů Azure monitor.

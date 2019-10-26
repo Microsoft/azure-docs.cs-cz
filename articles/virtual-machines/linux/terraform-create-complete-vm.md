@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: b9e379907f28c0d8698eb11aacb88970cf8d6dc4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: bb4628477719d0aa2f176c466047531b42d7cfc3
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173861"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924894"
 ---
-# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Vytvoření úplné infrastruktury virtuálních počítačů s Linuxem v Azure s využitím Terraformu
+# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Vytvoření úplné infrastruktury virtuálního počítače se systémem Linux v Azure pomocí Terraformu
 
 Terraformu umožňuje definovat a vytvářet kompletní nasazení infrastruktury v Azure. Šablony Terraformu můžete vytvářet v uživatelsky čitelném formátu, který umožňuje vytvářet a konfigurovat prostředky Azure konzistentním a reprodukovatelným způsobem. V tomto článku se dozvíte, jak vytvořit úplné prostředí Linux a podpůrné prostředky pomocí Terraformu. Můžete si také přečíst, jak [nainstalovat a nakonfigurovat terraformu](terraform-install-configure.md).
 
@@ -30,7 +30,7 @@ Terraformu umožňuje definovat a vytvářet kompletní nasazení infrastruktury
 
 Pojďme si projít každý oddíl šablony Terraformu. Můžete také zobrazit úplnou verzi [šablony terraformu](#complete-terraform-script) , kterou můžete zkopírovat a vložit.
 
-`provider` Část oznamuje terraformu použití poskytovatele Azure. Pokud chcete získat hodnoty pro *subscription_id*, *client_id*, *client_secret*a *tenant_id*, přečtěte si téma [install and Configure terraformu](terraform-install-configure.md). 
+Část `provider` oznamuje Terraformu použití poskytovatele Azure. Pokud chcete získat hodnoty pro *subscription_id*, *client_id*, *client_secret*a *tenant_id*, přečtěte si téma [install and Configure terraformu](terraform-install-configure.md). 
 
 > [!TIP]
 > Pokud vytvoříte proměnné prostředí pro hodnoty nebo používáte prostředí [Azure Cloud Shell bash](/azure/cloud-shell/overview) , nemusíte do této části zahrnout deklarace proměnných.
@@ -44,7 +44,7 @@ provider "azurerm" {
 }
 ```
 
-V následující části se vytvoří skupina prostředků s `myResourceGroup` názvem `eastus` v umístění:
+V následující části se vytvoří skupina prostředků s názvem `myResourceGroup` v umístění `eastus`:
 
 ```hcl
 resource "azurerm_resource_group" "myterraformgroup" {
@@ -67,7 +67,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
     name                = "myVnet"
     address_space       = ["10.0.0.0/16"]
     location            = "eastus"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name = azurerm_resource_group.myterraformgroup.name
 
     tags = {
         environment = "Terraform Demo"
@@ -80,8 +80,8 @@ V následující části se vytvoří podsíť s názvem *mySubnet* ve virtuáln
 ```hcl
 resource "azurerm_subnet" "myterraformsubnet" {
     name                 = "mySubnet"
-    resource_group_name  = "${azurerm_resource_group.myterraformgroup.name}"
-    virtual_network_name = "${azurerm_virtual_network.myterraformnetwork.name}"
+    resource_group_name  = azurerm_resource_group.myterraformgroup.name
+    virtual_network_name = azurerm_virtual_network.myterraformnetwork.name
     address_prefix       = "10.0.2.0/24"
 }
 ```
@@ -94,7 +94,7 @@ Pokud chcete získat přístup k prostředkům přes Internet, vytvořte a při�
 resource "azurerm_public_ip" "myterraformpublicip" {
     name                         = "myPublicIP"
     location                     = "eastus"
-    resource_group_name          = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name          = azurerm_resource_group.myterraformgroup.name
     allocation_method            = "Dynamic"
 
     tags = {
@@ -111,7 +111,7 @@ Skupiny zabezpečení sítě řídí tok síťového provozu na VIRTUÁLNÍm po�
 resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myNetworkSecurityGroup"
     location            = "eastus"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name = azurerm_resource_group.myterraformgroup.name
     
     security_rule {
         name                       = "SSH"
@@ -137,10 +137,10 @@ Virtuální síťová karta (NIC) připojí virtuální počítač k dané virtu
 
 ```hcl
 resource "azurerm_network_interface" "myterraformnic" {
-    name                = "myNIC"
-    location            = "eastus"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
-    network_security_group_id = "${azurerm_network_security_group.myterraformnsg.id}"
+    name                        = "myNIC"
+    location                    = "eastus"
+    resource_group_name         = azurerm_resource_group.myterraformgroup.name
+    network_security_group_id   = azurerm_network_security_group.myterraformnsg.id
 
     ip_configuration {
         name                          = "myNicConfiguration"
@@ -163,7 +163,7 @@ K uložení diagnostiky spouštění pro virtuální počítač budete potřebov
 resource "random_id" "randomId" {
     keepers = {
         # Generate a new ID only when a new resource group is defined
-        resource_group = "${azurerm_resource_group.myterraformgroup.name}"
+        resource_group = azurerm_resource_group.myterraformgroup.name
     }
     
     byte_length = 8
@@ -174,11 +174,11 @@ Nyní můžete vytvořit účet úložiště. Následující část vytvoří ú
 
 ```hcl
 resource "azurerm_storage_account" "mystorageaccount" {
-    name                = "diag${random_id.randomId.hex}"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
-    location            = "eastus"
-    account_replication_type = "LRS"
-    account_tier = "Standard"
+    name                        = "diag${random_id.randomId.hex}"
+    resource_group_name         = azurerm_resource_group.myterraformgroup.name
+    location                    = "eastus"
+    account_replication_type    = "LRS"
+    account_tier                = "Standard"
 
     tags = {
         environment = "Terraform Demo"
@@ -197,8 +197,8 @@ Posledním krokem je vytvoření virtuálního počítače a použití všech vy
 resource "azurerm_virtual_machine" "myterraformvm" {
     name                  = "myVM"
     location              = "eastus"
-    resource_group_name   = "${azurerm_resource_group.myterraformgroup.name}"
-    network_interface_ids = ["${azurerm_network_interface.myterraformnic.id}"]
+    resource_group_name   = azurerm_resource_group.myterraformgroup.name
+    network_interface_ids = [azurerm_network_interface.myterraformnic.id]
     vm_size               = "Standard_DS1_v2"
 
     storage_os_disk {
@@ -230,7 +230,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 
     boot_diagnostics {
         enabled     = "true"
-        storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
+        storage_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
     }
 
     tags = {
@@ -267,7 +267,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
     name                = "myVnet"
     address_space       = ["10.0.0.0/16"]
     location            = "eastus"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name = azurerm_resource_group.myterraformgroup.name
 
     tags = {
         environment = "Terraform Demo"
@@ -277,8 +277,8 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 # Create subnet
 resource "azurerm_subnet" "myterraformsubnet" {
     name                 = "mySubnet"
-    resource_group_name  = "${azurerm_resource_group.myterraformgroup.name}"
-    virtual_network_name = "${azurerm_virtual_network.myterraformnetwork.name}"
+    resource_group_name  = azurerm_resource_group.myterraformgroup.name
+    virtual_network_name = azurerm_virtual_network.myterraformnetwork.name
     address_prefix       = "10.0.1.0/24"
 }
 
@@ -286,7 +286,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 resource "azurerm_public_ip" "myterraformpublicip" {
     name                         = "myPublicIP"
     location                     = "eastus"
-    resource_group_name          = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name          = azurerm_resource_group.myterraformgroup.name
     allocation_method            = "Dynamic"
 
     tags = {
@@ -298,7 +298,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myNetworkSecurityGroup"
     location            = "eastus"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name = azurerm_resource_group.myterraformgroup.name
     
     security_rule {
         name                       = "SSH"
@@ -321,14 +321,14 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 resource "azurerm_network_interface" "myterraformnic" {
     name                      = "myNIC"
     location                  = "eastus"
-    resource_group_name       = "${azurerm_resource_group.myterraformgroup.name}"
-    network_security_group_id = "${azurerm_network_security_group.myterraformnsg.id}"
+    resource_group_name       = azurerm_resource_group.myterraformgroup.name
+    network_security_group_id = azurerm_network_security_group.myterraformnsg.id
 
     ip_configuration {
         name                          = "myNicConfiguration"
-        subnet_id                     = "${azurerm_subnet.myterraformsubnet.id}"
+        subnet_id                     = azurerm_subnet.myterraformsubnet.id
         private_ip_address_allocation = "Dynamic"
-        public_ip_address_id          = "${azurerm_public_ip.myterraformpublicip.id}"
+        public_ip_address_id          = azurerm_public_ip.myterraformpublicip.id
     }
 
     tags = {
@@ -340,7 +340,7 @@ resource "azurerm_network_interface" "myterraformnic" {
 resource "random_id" "randomId" {
     keepers = {
         # Generate a new ID only when a new resource group is defined
-        resource_group = "${azurerm_resource_group.myterraformgroup.name}"
+        resource_group = azurerm_resource_group.myterraformgroup.name
     }
     
     byte_length = 8
@@ -349,7 +349,7 @@ resource "random_id" "randomId" {
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "mystorageaccount" {
     name                        = "diag${random_id.randomId.hex}"
-    resource_group_name         = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name         = azurerm_resource_group.myterraformgroup.name
     location                    = "eastus"
     account_tier                = "Standard"
     account_replication_type    = "LRS"
@@ -363,8 +363,8 @@ resource "azurerm_storage_account" "mystorageaccount" {
 resource "azurerm_virtual_machine" "myterraformvm" {
     name                  = "myVM"
     location              = "eastus"
-    resource_group_name   = "${azurerm_resource_group.myterraformgroup.name}"
-    network_interface_ids = ["${azurerm_network_interface.myterraformnic.id}"]
+    resource_group_name   = azurerm_resource_group.myterraformgroup.name
+    network_interface_ids = [azurerm_network_interface.myterraformnic.id]
     vm_size               = "Standard_DS1_v2"
 
     storage_os_disk {
@@ -396,7 +396,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 
     boot_diagnostics {
         enabled = "true"
-        storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
+        storage_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
     }
 
     tags = {
@@ -413,7 +413,7 @@ Když máte vytvořenou šablonu Terraformu, prvním krokem je inicializace Terr
 terraform init
 ```
 
-Dalším krokem je Terraformu přezkoumání a ověření šablony. Tento krok porovná požadované prostředky s informacemi o stavu uloženým v Terraformu a pak provede výstup plánovaného provedení. Prostředky se v Azure *nevytvářejí.*
+Dalším krokem je Terraformu přezkoumání a ověření šablony. Tento krok porovná požadované prostředky s informacemi o stavu uloženým v Terraformu a pak provede výstup plánovaného provedení. Prostředky se *v Azure nevytvářejí.*
 
 ```bash
 terraform plan

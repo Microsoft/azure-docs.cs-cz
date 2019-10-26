@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 6b1e1dfec69d73b7fe2648a1eb9ead2ae4622bc5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 39e1099f1700e9ade412bb4cb81bc38e814ecfae
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897752"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935643"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopírování dat do nebo ze systému souborů pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -100,21 +100,15 @@ Pro propojenou službu systému souborů jsou podporovány následující vlastn
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . 
 
-- Pro **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si část [Parquet, oddělený text, JSON, Avro a binární formát binárního formátu](#format-based-dataset) .
-- Pro jiné formáty, jako je **Formát ORC**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a>Datová sada Parquet, oddělený text, JSON, Avro a binární formát
-
-Chcete-li kopírovat data do a z **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si článek [Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. . Pro systém souborů jsou podporovány následující vlastnosti v nastavení `location` v datové sadě založené na formátu:
+Pro systém souborů jsou podporovány následující vlastnosti v nastavení `location` v datové sadě založené na formátu:
 
 | Vlastnost   | Popis                                                  | Požaduje se |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Vlastnost Type v objektu DataSet `location` v datové sadě musí být nastavena na hodnotu **FileServerLocation**. | Ano      |
 | folderPath | Cesta ke složce Pokud chcete použít zástupný znak k filtrování složky, toto nastavení nechejte a zadejte v nastavení zdroje aktivity. | Ne       |
 | fileName   | Název souboru pod daným folderPath. Pokud chcete použít zástupný znak k filtrování souborů, přeskočte toto nastavení a zadejte v nastavení zdroje aktivity. | Ne       |
-
-> [!NOTE]
-> Datová sada typu **Shared** s Parquet/textovým formátem, která je uvedená v dalším oddílu, je stále podporovaná tak, jak je pro aktivitu kopírování/vyhledávání nebo GetMetadata, ale nefunguje s tokem dat mapování. Budete navrženi, že budete chtít tento nový model použít a že uživatelské rozhraní pro vytváření ADF bylo přepnuto na generování těchto nových typů.
 
 **Příklad:**
 
@@ -142,9 +136,10 @@ Chcete-li kopírovat data do a z **Parquet, oddělený text, JSON, Avro a binár
 }
 ```
 
-### <a name="other-format-dataset"></a>Jiná Formátová datová sada
+### <a name="legacy-dataset-model"></a>Model zastaralé sady dat
 
-Chcete-li kopírovat data do systému souborů ve **formátu ORC**, jsou podporovány následující vlastnosti:
+>[!NOTE]
+>Následující model DataSet je stále podporován tak, jak je kvůli zpětné kompatibilitě. Navrhnete použití nového modelu uvedeného výše v oddílu dál a uživatelské rozhraní pro vytváření ADF bylo přepnuto na generování nového modelu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -198,12 +193,9 @@ Chcete-li kopírovat data do systému souborů ve **formátu ORC**, jsou podporo
 
 ### <a name="file-system-as-source"></a>Jako zdroj systému souborů
 
-- Chcete-li kopírovat z **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si část [zdrojové části Parquet, oddělovače text, JSON, Avro a Binary Format](#format-based-source) .
-- Chcete-li kopírovat z jiných formátů, jako je například **Formát ORC**, přečtěte si část [Další zdrojový formát](#other-format-source) .
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a>Parquet, oddělený text, JSON, Avro a binární formát formátu
-
-Chcete-li kopírovat data z **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si článek [Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro zdroj aktivity kopírování na základě formátu a podporovaný. možnost. Pro systém souborů jsou podporovány následující vlastnosti v nastavení `storeSettings` ve zdroji kopírování založeném na formátu:
+Pro systém souborů jsou podporovány následující vlastnosti v nastavení `storeSettings` ve zdroji kopírování založeném na formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -214,9 +206,6 @@ Chcete-li kopírovat data z **Parquet, oddělený text, JSON, Avro a binární f
 | modifiedDatetimeStart    | Filtr souborů na základě atributu: Naposledy změněno Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd`. Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu nebude použit filtr atributů souboru.  Pokud má hodnota DateTime hodnotu `modifiedDatetimeStart`, ale `modifiedDatetimeEnd` má hodnotu NULL, znamená to, že budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Pokud má hodnota DateTime hodnotu `modifiedDatetimeEnd`, ale `modifiedDatetimeStart` má hodnotu NULL, znamená to, že se jedná o soubory, jejichž atribut Last Modified je nižší, než je vybrána hodnota DateTime. | Ne                                            |
 | modifiedDatetimeEnd      | Stejné jako výše.                                               | Ne                                            |
 | maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne                                            |
-
-> [!NOTE]
-> Pro formát textu Parquet/s oddělovači, který je uveden v další části, je zdroj aktivity kopírování typu **FileSystemSource** stále podporován tak, jak je z důvodu zpětné kompatibility. Budete navrženi, že budete chtít tento nový model použít a že uživatelské rozhraní pro vytváření ADF bylo přepnuto na generování těchto nových typů.
 
 **Příklad:**
 
@@ -259,9 +248,10 @@ Chcete-li kopírovat data z **Parquet, oddělený text, JSON, Avro a binární f
 ]
 ```
 
-#### <a name="other-format-source"></a>Jiný zdroj formátu
+#### <a name="legacy-source-model"></a>Starší zdrojový model
 
-Chcete-li kopírovat data ze systému souborů ve **formátu ORC**, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
+>[!NOTE]
+>Následující zdrojový model kopírování je stále podporován tak, jak je kvůli zpětné kompatibilitě. Navrhnete použití nového modelu, který je uvedený výše, a uživatelské rozhraní pro vytváření ADF se přepnulo na generování nového modelu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -303,21 +293,15 @@ Chcete-li kopírovat data ze systému souborů ve **formátu ORC**, jsou v čás
 
 ### <a name="file-system-as-sink"></a>Systém souborů jako jímku
 
-- Pokud chcete kopírovat do **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si část [Parquet, oddělený text, JSON, Avro a binární formát](#format-based-sink) .
-- Chcete-li kopírovat do jiných formátů, jako je například **Formát ORC**, přečtěte si další část s [příjímky formátu](#other-format-sink) .
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-sink"></a>Jímka Parquet, oddělený text, JSON, Avro a binární formát
-
-Pokud chcete kopírovat data v **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si článek [Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro jímku aktivity kopírování založené na formátu a podpora. možnost. Následující vlastnosti systému souborů jsou podporovány v nastavení `storeSettings` v jímky kopírování na základě formátu:
+Následující vlastnosti systému souborů jsou podporovány v nastavení `storeSettings` v jímky kopírování na základě formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | Vlastnost Type v poli `storeSettings` musí být nastavena na hodnotu **FileServerWriteSetting**. | Ano      |
 | copyBehavior             | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru se zdrojovou složkou je shodná s relativní cestou cílového souboru do cílové složky.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Je-li zadán název souboru, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | Ne       |
 | maxConcurrentConnections | Počet připojení, která mají být souběžně propojena s úložištěm dat. Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne       |
-
-> [!NOTE]
-> V případě textového formátu Parquet/Unlimited je jímka aktivity kopírování typu **FileSystemSink** uvedená v další části stále podporovaná tak, jak je kvůli zpětné kompatibilitě. Budete navrženi, že budete chtít tento nový model použít a že uživatelské rozhraní pro vytváření ADF bylo přepnuto na generování těchto nových typů.
 
 **Příklad:**
 
@@ -354,9 +338,10 @@ Pokud chcete kopírovat data v **Parquet, oddělený text, JSON, Avro a binárn�
 ]
 ```
 
-#### <a name="other-format-sink"></a>Další jímka formátu
+#### <a name="legacy-sink-model"></a>Starší model jímky
 
-Chcete-li kopírovat data do systému souborů ve **formátu ORC**, jsou v části **jímky** podporovány následující vlastnosti:
+>[!NOTE]
+>Následující model kopie jímky je stále podporovaný, protože je z důvodu zpětné kompatibility. Navrhnete použití nového modelu, který je uvedený výše, a uživatelské rozhraní pro vytváření ADF se přepnulo na generování nového modelu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |

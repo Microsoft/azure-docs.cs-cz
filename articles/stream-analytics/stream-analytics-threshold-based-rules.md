@@ -1,6 +1,6 @@
 ---
-title: Pravidla ve službě Azure Stream Analytics na základě procesu konfigurovatelné prahové hodnoty
-description: Tento článek popisuje, jak použít referenční data k dosažení výstrah řešení, které se dají konfigurovat na základě prahových hodnot pravidla ve službě Azure Stream Analytics.
+title: Konfigurovatelná pravidla na základě prahové hodnoty v Azure Stream Analytics
+description: Tento článek popisuje, jak pomocí referenčních dat dosáhnout řešení upozornění, které má konfigurovatelné pravidla na základě prahové hodnoty v Azure Stream Analytics.
 services: stream-analytics
 author: zhongc
 ms.author: zhongc
@@ -9,43 +9,43 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: ce2cf6ebdfd74549114e94e4c7356e387576d3c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8fd21f411093e22b2b1dc5afd6da9cb26db6ff8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761722"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934261"
 ---
-# <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Zpracovat konfigurovatelných pravidel založené na prahových hodnotách ve službě Azure Stream Analytics
-Tento článek popisuje, jak použít referenční data k dosažení řešení, která používá konfigurovatelných pravidel založené na prahových hodnotách ve službě Azure Stream Analytics.
+# <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Zpracování konfigurovatelných pravidel na základě prahových hodnot v Azure Stream Analytics
+Tento článek popisuje, jak pomocí referenčních dat dosáhnout řešení upozornění, které používá konfigurovatelné pravidla na základě prahové hodnoty v Azure Stream Analytics.
 
-## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>Scénář: Výstrahy na základě přizpůsobitelná pravidla prahových hodnot
-Budete muset vytvořit výstrahu jako výstup po určitou hodnotu příchozí streamovaná události nebo když agregovanou hodnotu na základě proudu příchozích událostí překročí určitou prahovou hodnotu. Je snadné nastavení dotazu Stream Analytics, který porovnávané hodnoty na statickou prahovou hodnotu, která je pevná a předdefinovány. Oprava prahová hodnota může být pevně zakódovaný do datových proudů syntaxi dotazu pomocí jednoduchého číselné porovnání (větší než je menší než a rovnost).
+## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>Scénář: upozorňování na základě prahových hodnot upravitelných pravidel
+Je možné, že budete muset vytvořit výstrahu jako výstup, když příchozí datové proudy dosáhly určité hodnoty, nebo když agregovaná hodnota na základě událostí příchozího streamu překročí určitou prahovou hodnotu. Je jednoduché nastavit Stream Analytics dotaz, který porovnává hodnotu se statickou prahovou hodnotou, která je pevná a předem stanovená. Pevná prahová hodnota může být pevně zakódována do syntaxe dotazu streamování pomocí jednoduchých čísel porovnání (větší než, menší než a rovnost).
 
-V některých případech prahové hodnoty musí být snadno konfigurovatelné bez úprav syntaxi dotazu pokaždé, když se změní prahovou hodnotu. V ostatních případech můžete potřebovat řadu zařízení nebo uživatelů zpracovány stejný dotaz s každou z nich má různé prahové hodnoty na jednotlivé typy zařízení. 
+V některých případech je třeba prahové hodnoty snadněji konfigurovat bez nutnosti upravovat syntaxi dotazu pokaždé, když se změní prahová hodnota. V jiných případech možná budete potřebovat spoustu zařízení nebo uživatelů, kteří zpracovávají stejný dotaz, přičemž každý z nich má v každém typu zařízení různé mezní hodnoty. 
 
-Tento model umožňuje dynamicky konfigurovat mezní hodnoty, si zvolit typ zařízení, že prahová hodnota platit pomocí filtrování vstupních dat a si zvolit pole, která chcete zahrnout do výstupu.
+Tento model se dá použít k dynamické konfiguraci prahových hodnot, selektivně zvolit, který typ zařízení se prahová hodnota aplikuje filtrováním vstupních dat, a selektivně zvolit, která pole se mají zahrnout do výstupu.
 
-## <a name="recommended-design-pattern"></a>Doporučený návrhový vzor
-Pomocí referenčního datového vstupu do úlohy Stream Analytics k vyhledávání prahových hodnot výstrah:
-- Store prahové hodnoty v referenčních dat, jednu hodnotu pro klíč.
-- Připojte se k streamovaných událostí vstupní data pro referenční data na klíčový sloupec.
+## <a name="recommended-design-pattern"></a>Doporučený vzor návrhu
+Jako vyhledávání prahových hodnot výstrah použít vstup referenčních dat do Stream Analytics úlohy:
+- Uloží prahové hodnoty do referenčních dat, jednu hodnotu na klíč.
+- Zapojte události vstupu streamování dat do referenčních dat ve sloupci Key.
 - Použijte hodnotu s klíčem z referenčních dat jako prahovou hodnotu.
 
-## <a name="example-data-and-query"></a>Příklad dat a dotazování
-V tomto příkladu výstrahy jsou generovány, když agregaci dat přicházejících z zařízení v okně minutu získávaným odpovídá stanoveném hodnot v pravidle uvedené jako referenční data.
+## <a name="example-data-and-query"></a>Ukázková data a dotazy
+V tomto příkladu jsou výstrahy vygenerovány, když agregace datových proudů ze zařízení v minutovém okně odpovídá stanoveným hodnotám v pravidle, které jste zadali jako referenční data.
 
-V dotazu, pro každé ID zařízení a každou metricName podle ID zařízení můžete nakonfigurovat od 0 do 5 dimenzí pro GROUP BY. Pouze události s odpovídající hodnoty filtru jsou seskupeny. Jakmile seskupeny, Min, Max, Avg, agregace v okně se počítají přes 60 sekund aktivační událost pro přeskakující okno. Filtry na agregované hodnoty jsou pak vypočítá podle nakonfigurovanou prahovou hodnotu v referenční dokumentaci k vygenerování výstrahy výstupní událost.
+V dotazu, pro každý deviceId a každou hodnotu metric za deviceId, můžete nakonfigurovat od 0 do 5 dimenzí, podle kterých se SESKUPí. Seskupeny jsou pouze události, které mají odpovídající hodnoty filtru. Po seskupení jsou agregované agregované hodnoty min, Max, AVG, počítány v rámci 60 sekundového okna. Filtry agregovaných hodnot se pak vypočítávají podle nakonfigurované prahové hodnoty v odkazu, aby se vygenerovala událost výstupu výstrahy.
 
-Jako příklad předpokládejme je úlohu Stream Analytics, která má referenčního datového vstupu s názvem **pravidla**a datových proudů vstup dat s názvem **metriky**. 
+Předpokládejme například, že je k dispozici Stream Analytics úloha, která má referenční vstupní data s názvem **rules**a datový proud streamování s názvem **metriky**. 
 
 ## <a name="reference-data"></a>Referenční data
-Referenční data tento příklad ukazuje, jak můžou být reprezentované pravidlo založené na prahových hodnotách. Soubor JSON obsahuje referenční data a uložit do úložiště objektů blob v Azure, a tento kontejner objektů blob úložiště se používá jako referenčního datového vstupu s názvem **pravidla**. Může přepsat tento soubor JSON a nahradit konfigurace pravidla podle času nenastane, bez zastavení a spuštění úlohy streamování.
+Tento příklad referenčních dat ukazuje, jak je možné znázornit pravidlo na základě prahové hodnoty. Soubor JSON obsahuje referenční data a ukládá se do úložiště objektů BLOB v Azure a tento kontejner úložiště objektů BLOB se používá jako referenční datový vstup s názvem **rules**. Tento soubor JSON můžete přepsat a nahradit konfiguraci pravidla na čas, aniž byste museli zastavit nebo spustit úlohu streamování.
 
-- Příklad pravidla se používá k reprezentování měnitelné výstrahu, pokud využití procesoru překročí (průměr je větší než nebo rovno) hodnotu `90` procent. `value` Pole se dají konfigurovat podle potřeby.
-- Všimněte si, že má pravidlo **operátor** pole, které dynamicky interpretována v syntaxi dotazů později `AVGGREATEROREQUAL`. 
-- Pravidlo filtruje data na určitou klávesu dimenze `2` s hodnotou `C1`. Ostatní pole jsou prázdný řetězec označující není pro filtrování na základě těchto událostí polí vstupního datového proudu. Může nastavit další pravidla procesoru k filtrování další odpovídající pole, podle potřeby.
-- Ne všechny sloupce se mají být zahrnuty do výstupní událost upozornění. V takovém případě `includedDim` klíče číslo `2` zapnutý `TRUE` znázornit, že se data událostí v datovém proudu číslo 2 zahrnou kvalifikující události výstup. V ostatních polích nejsou součástí výstupu výstrahy, ale v seznamu polí je možné upravit.
+- Ukázkové pravidlo se používá k reprezentaci nastavitelného upozornění při překročení procesoru (průměr je větší než nebo rovno) hodnota `90` procent. Pole `value` lze podle potřeby konfigurovat.
+- Všimněte si, že pravidlo má pole **operátoru** , které je dynamicky interpretováno v syntaxi dotazu později v `AVGGREATEROREQUAL`. 
+- Pravidlo filtruje data na určitém klíči dimenze `2` s hodnotou `C1`. Další pole jsou prázdné řetězce, což značí, že se vstupním datovým proudem nefiltrují tato pole události. Můžete nastavit další pravidla procesoru pro filtrování dalších vyhovujících polí podle potřeby.
+- Do výstupní události výstrahy nejsou zahrnuty všechny sloupce. V takovém případě je `includedDim` číslo klíče `2` zapnuté `TRUE`, aby představovalo, že pole s číslem 2 dat událostí v datovém proudu bude zahrnuto do kvalifikačních výstupních událostí. Ostatní pole nejsou součástí výstupu výstrahy, ale seznam polí lze upravit.
 
 
 ```json
@@ -73,8 +73,8 @@ Referenční data tento příklad ukazuje, jak můžou být reprezentované prav
 }
 ```
 
-## <a name="example-streaming-query"></a>Příklad streamování dotazu
-Tento příklad dotazu Stream Analytics se připojí **pravidla** odkazují na data v příkladu výše, do vstupního datového proudu dat s názvem **metriky**.
+## <a name="example-streaming-query"></a>Ukázkový dotaz streamování
+V tomto příkladu se Stream Analytics dotazu spojí **pravidla** referenčních dat z výše uvedeného příkladu ke vstupnímu proudu dat s pojmenovanými **metrikami**.
 
 ```sql
 WITH transformedInput AS
@@ -134,14 +134,14 @@ HAVING
     )
 ```
 
-## <a name="example-streaming-input-event-data"></a>Příklad streamovaná data vstupní události
-Představuje JSON data v tomto příkladu **metriky** vstupní data, která se používá ve výše uvedeném dotazu datových proudů. 
+## <a name="example-streaming-input-event-data"></a>Příklad streamování vstupních dat událostí
+Tato ukázková data JSON představují vstupní data **metrik** , která se používají ve výše uvedeném dotazu streamování. 
 
-- V rámci časový interval 1 minuta, hodnoty jsou uvedeny tři příklady událostí `T14:50`. 
-- Všechny tři mají stejné `deviceId` hodnota `978648`.
-- Hodnoty metrik využití procesoru se liší v každé události `98`, `95`, `80` v uvedeném pořadí. Pouze první dva příklady událostí překročit pravidlo upozornění procesoru v pravidle.
-- Pole includeDim v pravidle výstrahy byla číslo klíče 2. Odpovídající pole klíče 2 v příklady událostí má název `NodeName`. Všechny tři příklad události mají hodnoty `N024`, `N024`, a `N014` v uvedeném pořadí. Ve výstupu se zobrazí pouze uzel `N024` jako, který je pouze data, která odpovídá kritéria výstrahy vysoké využití procesoru. `N014` nesplňuje prahovou hodnotu vysoké využití procesoru.
-- Pravidlo upozornění se nakonfigurují `filter` jenom na klíče číslo 2, které odpovídá `cluster` v ukázkové události. Všechny tři příklady událostí mají hodnotu `C1` a kritéria filtru.
+- Tři ukázkové události jsou uvedeny v rozmezí 1 – minuty `T14:50`hodnoty. 
+- Všechny tři mají stejnou `deviceId` hodnoty `978648`.
+- Hodnoty metrik CPU se v každé události liší, `98`, `95``80` v uvedeném pořadí. Pouze první dvě ukázkové události překračují pravidlo upozornění procesoru, které je v pravidle navázáno.
+- Pole includeDim v pravidle výstrahy bylo číslo klíče 2. Odpovídající pole klíč 2 v příkladech událostí má název `NodeName`. Tři ukázkové události mají hodnoty `N024`, `N024`a `N014` v uvedeném pořadí. Ve výstupu se zobrazí pouze uzel `N024` stejně jako jediná data, která odpovídají kritériím výstrahy pro vysoký procesor. `N014` nesplňuje maximální prahovou hodnotu procesoru.
+- Pravidlo výstrahy je nakonfigurované s `filter` jenom na klíčovém čísle 2, které odpovídá poli `cluster` v vzorových událostech. Tři ukázkové události mají hodnotu `C1` a odpovídají kritériím filtru.
 
 ```json
 {
@@ -285,7 +285,7 @@ Představuje JSON data v tomto příkladu **metriky** vstupní data, která se p
 ```
 
 ## <a name="example-output"></a>Příklad výstupu
-Tento příklad výstupu JSON daty se dozvíte, které bylo vytvořeno jednu událost výstrahy založené na pravidlo mezní hodnoty využití procesoru podle referenční data. Výstupní událost obsahuje název výstrahy a také agregované (průměrná, min, max) považovat za pole. Výstupní data události obsahují číslo pole klíče 2 `NodeName` hodnotu `N024` kvůli konfiguraci tohoto pravidla. (Ve formátu JSON byl změněn na Zobrazit konce řádků pro lepší čitelnost).
+V tomto příkladu jsou výstupní data JSON, která vygenerovala jednu událost výstrahy na základě pravidla prahové hodnoty CPU definované v referenčních datech. Výstupní událost obsahuje název výstrahy a také agregované (průměr, minimum, maximum) uvažovaného pole. Výstupní data události obsahují klíč pole číslo 2 `NodeName` hodnoty `N024` z důvodu konfigurace pravidla. (Kód JSON byl změněn tak, aby zobrazoval konce řádků pro čitelnost.)
 
 ```JSON
 {"time":"2018-05-01T02:03:00.0000000Z","deviceid":"978648","ruleid":1234,"metric":"CPU",

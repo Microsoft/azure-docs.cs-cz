@@ -1,24 +1,18 @@
 ---
 title: Odstranění a obnovení pracovního prostoru Azure Log Analytics | Microsoft Docs
 description: Naučte se, jak odstranit pracovní prostor Log Analytics v případě, že jste ho vytvořili v osobním předplatném nebo změníte uspořádání modelu pracovního prostoru.
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/11/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: fb6714a52a65ef5efe4725b99acb30cb67af20c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/11/2019
+ms.openlocfilehash: f15e9c2a5980c8fb6d98f7bf9187b030e6910523
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299283"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932374"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru služby Azure Log Analytics
 
@@ -52,9 +46,9 @@ Pracovní prostor můžete odstranit pomocí [PowerShellu](https://docs.microsof
 1. Pokud se chcete přihlásit, otevřete [Azure Portal](https://portal.azure.com). 
 2. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor a pak v horní části prostředního podokna klikněte na **Odstranit** .
-   @no__t – možnost 0Delete z podokna vlastností pracovního prostoru @ no__t-1
+   ![možnost odstranit z podokna vlastností pracovního prostoru](media/delete-workspace/log-analytics-delete-workspace.png)
 4. Až se zobrazí okno potvrzovací zpráva s výzvou, abyste potvrdili odstranění pracovního prostoru, klikněte na **Ano**.
-   @no__t 0Confirm odstranění pracovního prostoru @ no__t-1
+   ![Potvrdit odstranění pracovního prostoru](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 
 ## <a name="recover-workspace"></a>Obnovit pracovní prostor
 

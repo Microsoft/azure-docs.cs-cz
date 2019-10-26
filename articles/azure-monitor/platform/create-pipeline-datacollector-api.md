@@ -1,76 +1,70 @@
 ---
-title: Vytvoření datového kanálu pomocí rozhraní API kolekce dat monitorování Azure | Dokumentace Microsoftu
-description: Azure Monitor HTTP rozhraní API kolekce dat slouží k přidání dat POST JSON do pracovního prostoru Log Analytics z libovolného klienta, která může volat rozhraní REST API. Tento článek popisuje, jak nahrát data uložená v souborech automatizovaným způsobem.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Vytvoření datového kanálu s rozhraním API Azure Monitor kolekce dat | Microsoft Docs
+description: Rozhraní API kolekce dat Azure Monitor HTTP můžete použít k přidání dat JSON do pracovního prostoru Log Analytics z libovolného klienta, který může volat REST API. Tento článek popisuje, jak v automatizovaných způsobech nahrávat data uložená v souborech.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/09/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/09/2018
+ms.openlocfilehash: 8b739d86ec557ca8c7de7e0999c905b51d1d97a7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65603237"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932630"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Vytvoření datového kanálu pomocí rozhraní API kolekce dat
 
-[Rozhraní API kolekce dat Azure Monitor](data-collector-api.md) umožňuje importovat všechna data vlastního protokolu do pracovního prostoru Log Analytics ve službě Azure Monitor. Jediným požadavkem je, že data ve formátu JSON a rozdělení do 30 MB nebo méně segmenty. Toto je zcela flexibilní mechanismus, který může být připojeno do mnoha způsoby: z dat odesílaných přímo z vaší aplikace, odešle do jednorázové ad hoc. V tomto článku se popisují některé počáteční body pro běžné scénáře: potřeba nahrát data uložená v souborech na základě pravidelné a automatizované. Během kanálu uvedené tady nesmí být většina výkonné nebo jinak k optimalizaci, je určené k sloužit jako výchozí bod na vytváření procesních toků pro produkční vlastní.
+[Rozhraní Azure monitor API kolekce dat](data-collector-api.md) umožňuje importovat jakákoli vlastní data protokolu do pracovního prostoru Log Analytics v Azure monitor. Jedinými požadavky je, že data jsou ve formátu JSON a rozdělená na 30 MB nebo méně segmentů. Toto je zcela flexibilní mechanismus, který se dá zapojit do mnoha způsobů: od dat odesílaných přímo z vaší aplikace až po jednosměrná odeslání ad hoc. V tomto článku se dozvíte několik výchozích bodů pro běžný scénář: nutnost nahrávat data uložená v souborech pravidelně a automaticky. I když zde uvedený kanál nebude nejúčinnější ani neoptimalizovaný, je určený k tomu, aby sloužil jako výchozí bod k vytvoření vlastního produkčního kanálu.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>Příklad problému
-Pro zbývající část tohoto článku prozkoumáme data o zobrazeních stránek ve službě Application Insights. V tomto scénáři hypotetické chceme korelovat zeměpisné údaje shromážděné ve výchozím nastavení Application Insights SDK na vlastní data obsahují počet obyvatel každé země/oblasti na světě, s cílem identifikovat, kde jsme měli útraty Většina marketingové dolarech. 
+Ve zbývající části tohoto článku prohledáme data zobrazení stránky v Application Insights. V našem hypotetickém scénáři chceme, aby se v sadě Application Insights SDK pro vlastní data, která obsahuje populace každé země nebo oblasti na světě, shromáždily geografické údaje, které jsou ve výchozím nastavení shromažďovány, s cílem určit, kde bychom měli být útraty nejvíce marketingových dolarů. 
 
-Použijeme veřejný zdroj dat, jako [zrušení World naplnění potenciální zákazníky](https://esa.un.org/unpd/wpp/) pro tento účel. Data budou mít tyto jednoduché schéma:
+Pro tento účel používáme veřejný zdroj dat, jako je například [nadějný web](https://esa.un.org/unpd/wpp/) . Data budou mít následující jednoduché schéma:
 
-![Příklad jednoduché schéma](./media/create-pipeline-datacollector-api/example-simple-schema-01.png)
+![Příklad jednoduchého schématu](./media/create-pipeline-datacollector-api/example-simple-schema-01.png)
 
-V našem příkladu předpokládáme, že jsme nahraje nový soubor s daty nejzazší rok, jakmile bude k dispozici.
+V našem příkladu předpokládáme, že budeme nahrávat nový soubor s daty z posledního roku, jakmile bude k dispozici.
 
-## <a name="general-design"></a>Obecné návrhu
-Používáme classic ETL typ logiky navrhnout našeho kanálu. Architektura bude vypadat takto:
+## <a name="general-design"></a>Obecný návrh
+Pro návrh našeho kanálu používáme klasickou logiku typu ETL. Architektura bude vypadat následovně:
 
-![Architektura kanálu kolekce dat](./media/create-pipeline-datacollector-api/data-pipeline-dataflow-architecture.png)
+![Architektura kanálu shromažďování dat](./media/create-pipeline-datacollector-api/data-pipeline-dataflow-architecture.png)
 
-Tento článek se nevztahuje na tom, jak vytvořit data nebo [nahrajte ho do účtu služby Azure Blob Storage](../../storage/blobs/storage-upload-process-images.md). Místo toho vybíráme tok poté, co je do objektu blob nahraje nový soubor. Z tohoto:
+Tento článek nepopisuje, jak vytvářet data nebo [nahrávat je do účtu Azure Blob Storage](../../storage/blobs/storage-upload-process-images.md). Místo toho se postup vybere až do okamžiku, kdy se do objektu BLOB nahraje nový soubor. Z tohoto místa:
 
-1. Proces zjistí, že nová data se odeslal.  Naše Ukázka používá [aplikace logiky Azure](../../logic-apps/logic-apps-overview.md), který má k dispozici triggeru pro rozpoznávání nových dat odesílaných do objektu blob.
+1. Proces zjistí, že se nahrála nová data.  V našem příkladu se používá [Aplikace logiky Azure](../../logic-apps/logic-apps-overview.md), která má k dispozici aktivační událost pro detekci nových dat odesílaných do objektu BLOB.
 
-2. Procesor těmito novými daty čte a převede do formátu JSON, formát vyžaduje Azure Monitor v tomto příkladu, použijeme [funkce Azure Functions](../../azure-functions/functions-overview.md) jako jednoduché, nákladově efektivní způsob, jak provádění kódu pro zpracování. Funkce je vydáno ve stejné aplikaci logiky, kterou jste použili ke zjištění a nová data.
+2. Procesor přečte Tato nová data a převede je na JSON, formát vyžadovaný Azure Monitor v tomto příkladu používáme [Azure Function](../../azure-functions/functions-overview.md) jako odlehčený a cenově efektivní způsob, jakým se spouští náš kód pro zpracování. Funkce je spuštěna stejnou aplikací logiky, kterou jsme použili k detekci nových dat.
 
-3. A konečně Jakmile je objekt JSON je k dispozici, zasláním do Azure monitoru. Aplikace logiky odešle data do Azure monitoru pomocí integrovaného v aktivitě kolekce dat Log Analytics.
+3. Nakonec, jakmile je objekt JSON k dispozici, je odeslán do Azure Monitor. Stejná aplikace logiky odesílá data Azure Monitor pomocí předdefinované aktivity kolekce dat Log Analytics.
 
-Zatímco podrobné nastavení úložiště objektů blob, funkce Azure nebo aplikace logiky není popsané v tomto článku, podrobné pokyny jsou k dispozici na stránkách konkrétní produkty.
+I když není v tomto článku popsané nastavení úložiště objektů blob, aplikace logiky nebo funkce Azure, jsou podrobné pokyny k dispozici na stránkách konkrétní produkty.
 
-Sledovat tento kanál, použijeme k monitorování naší funkce Azure Application Insights [podrobnosti tady](../../azure-functions/functions-monitoring.md)a Azure Monitor k monitorování naší aplikace logiky [podrobnosti tady](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md). 
+K monitorování tohoto kanálu používáme Application Insights k monitorování [detailů](../../azure-functions/functions-monitoring.md)Azure Functions tady a Azure monitor k monitorování našich podrobností aplikace logiky [tady](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md). 
 
 ## <a name="setting-up-the-pipeline"></a>Nastavení kanálu
-Nastavení kanálu, nejprve zkontrolujte, zda že máte vytvořený a nakonfigurovaný kontejneru objektů blob. Podobně Ujistěte se, že se vytvoří pracovní prostor Log Analytics, ve kterém chcete odesílat data do.
+Abyste mohli kanál nastavit, nejdřív se ujistěte, že máte vytvořený a nakonfigurovaný kontejner objektů BLOB. Podobně se ujistěte, že je vytvořen Log Analytics pracovní prostor, do kterého chcete odeslat data.
 
-## <a name="ingesting-json-data"></a>Příjem dat JSON
-Příjem dat JSON je jednoduché s Logic Apps a protože žádná transformace musí proběhnout, jsme encase celý kanál v jedné aplikaci logiky. Po dokončení konfigurace kontejneru objektů blob a pracovní prostor Log Analytics vytvořit novou aplikaci logiky a nakonfigurujte následujícím způsobem:
+## <a name="ingesting-json-data"></a>Ingestování dat JSON
+Ingestování dat JSON je triviální pomocí Logic Apps a vzhledem k tomu, že není potřeba provádět žádnou transformaci, můžeme celý kanál uzavřou v jediné aplikaci logiky. Po nakonfigurování kontejneru objektů BLOB i Log Analytics pracovního prostoru vytvořte novou aplikaci logiky a nakonfigurujte ji takto:
 
-![Příklad pracovního postupu aplikace logiky](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-01.png)
+![Příklad pracovního postupu Logic Apps](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-01.png)
 
-Uložení aplikace logiky a pokračovat a otestovat ho.
+Uložte aplikaci logiky a pokračujte v testování.
 
-## <a name="ingesting-xml-csv-or-other-formats-of-data"></a>Ingestovat XML, CSV nebo jiných formátů data
-Logic Apps ještě dnes nemá vestavěné možnosti snadno transformovat XML, CSV nebo jiných typů do formátu JSON. Proto musíme použít jiný způsob k dokončení této transformace. Pro účely tohoto článku použijeme výpočetní prostředí funkce Azure Functions jako způsob velmi jednoduchý a podporou náklady tohoto postupu. 
+## <a name="ingesting-xml-csv-or-other-formats-of-data"></a>Ingestování souborů XML, CSV nebo jiných formátů dat
+Logic Apps dnes nemá integrované možnosti, jak snadno transformovat XML, CSV nebo jiné typy do formátu JSON. Proto je pro dokončení této transformace nutné použít jiný způsob. Pro účely tohoto článku používáme výpočetní funkce bez serveru Azure Functions jako velmi jednoduchý a finančně přívětivý způsob. 
 
-V tomto příkladu se nám analyzovat soubor CSV, ale můžete podobně zpracovat jakýkoli typ souboru. Při deserializaci část funkce Azure Functions tak, aby odrážely správnou logiku pro určitý datový typ. stačí upravte.
+V tomto příkladu analyzujeme soubor CSV, ale jakýkoli jiný typ souboru se může zpracovat podobně. Jednoduše upravte část deserializace funkce Azure Functions tak, aby odrážela správnou logiku konkrétního datového typu.
 
-1.  Vytvořit novou funkci Azure, pomocí funkce modulu runtime v1 a založenou na skutečné spotřebě při zobrazení výzvy.  Vyberte **triggeru HTTP** šablonu zacílenou na C# jako výchozí bod, který konfiguruje vazby, můžeme vyžadovat. 
-2.  Z **zobrazit soubory** kartu v pravém podokně, vytvořte nový soubor s názvem **project.json** a vložte následující kód z balíčků NuGet, které používáme:
+1.  Po zobrazení výzvy vytvořte novou funkci Azure pomocí modulu runtime funkce V1 a na základě spotřeby.  Vyberte šablonu **triggeru http** , která C# se zaměřuje na výchozí bod, který konfiguruje vaše vazby podle potřeby. 
+2.  Na kartě **Zobrazit soubory** v pravém podokně vytvořte nový soubor s názvem **Project. JSON** a vložte následující kód z balíčků NuGet, které používáme:
 
-    ![Příklad projektu Azure Functions](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
+    ![Azure Functions ukázkový projekt](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
     
     ``` JSON
     {
@@ -85,10 +79,10 @@ V tomto příkladu se nám analyzovat soubor CSV, ale můžete podobně zpracova
      }  
     ```
 
-3. Přepnout na **run.csx** v pravém podokně a nahraďte kód následujícím kódem. 
+3. V pravém podokně přepněte na **Run. csx** a nahraďte výchozí kód následujícím kódem. 
 
     >[!NOTE]
-    >Pro váš projekt budete muset nahraďte vlastní schéma dat záznamů modelu (třída "PopulationRecord").
+    >Pro váš projekt je nutné nahradit model záznamu (třídu "PopulationRecord") vlastními schématy dat.
     >
 
     ```   
@@ -128,24 +122,24 @@ V tomto příkladu se nám analyzovat soubor CSV, ale můžete podobně zpracova
      }  
     ```
 
-4. Uložte vaši funkci.
-5. Test funkce, ujistěte se, že kód funguje správně. Přepněte **testování** kartu v pravém podokně, konfigurace testu následujícím způsobem. Umístit odkaz na objekt blob se ukázkových dat. **text žádosti** textového pole. Po kliknutí na tlačítko **spustit**, JSON by se měla zobrazit výstup v **výstup** pole:
+4. Uložte funkci.
+5. Otestujte funkci, abyste se ujistili, že kód funguje správně. V pravém podokně přepněte na kartu **test** a nakonfigurujte test následujícím způsobem. Umístěte odkaz na objekt BLOB s ukázkovými daty do pole **text požadavku** . Po kliknutí na tlačítko **Spustit**by se v poli **výstup** měl zobrazit výstup JSON:
 
-    ![Aplikace Function App testování kódu](./media/create-pipeline-datacollector-api/functions-test-01.png)
+    ![Testovací kód aplikací Function App](./media/create-pipeline-datacollector-api/functions-test-01.png)
 
-Nyní potřebujeme vrátíte k úpravě aplikace logiky, můžeme začít vytvářet dříve zahrnout data ingestují a převést do formátu JSON.  Pomocí návrháře zobrazení, nakonfigurujte následujícím způsobem a pak uložte aplikaci logiky:
+Nyní potřebujeme přejít zpátky a upravit aplikaci logiky, kterou jsme začali sestavovat, aby zahrnovala data ingestovaná a převedená na formát JSON.  Pomocí návrháře zobrazení nakonfigurujte následující postup a pak uložte aplikaci logiky:
 
-![Kompletní příklad pracovního postupu Logic Apps](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
+![Příklad dokončeného pracovního postupu Logic Apps](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
 
 ## <a name="testing-the-pipeline"></a>Testování kanálu
-Teď můžete nahrát nový soubor do objektu blob nakonfigurovali v předchozích krocích a jeho monitoruje vaše aplikace logiky. By měla brzy, najdete v článku novou instanci aplikace logiky odstartoval, vyžadují pro vaši funkci Azure functions a úspěšně odeslat data do Azure monitoru. 
+Nyní můžete nahrát nový soubor do dříve nakonfigurovaného objektu BLOB a nechat ho monitorovat aplikace logiky. Brzy by se měla zobrazit nová instance aplikace logiky, zavolat do funkce Azure a pak úspěšně odeslat data do Azure Monitor. 
 
 >[!NOTE]
->Může trvat až 30 minut, než se data ve službě Azure Monitor zobrazí při prvním odeslání nového datového typu.
+>Může trvat až 30 minut, než se data objeví v Azure Monitor při prvním odeslání nového datového typu.
 
 
 ## <a name="correlating-with-other-data-in-log-analytics-and-application-insights"></a>Korelace s jinými daty v Log Analytics a Application Insights
-K dokončení cíl korelaci dat zobrazení stránky služby Application Insights s daty naplnění, které jsme ingestována z naší vlastní zdroj dat, spusťte následující dotaz z Application Insights Analytics období nebo pracovního prostoru Log Analytics:
+Pokud chcete dokončit náš cíl korelace Application Insightsch zobrazení stránky s daty populace, kterou jsme z našeho vlastního zdroje dat ingestoval, spusťte následující dotaz z okna analýzy Application Insights nebo z pracovního prostoru Log Analytics:
 
 ``` KQL
 app("fabrikamprod").pageViews
@@ -156,21 +150,21 @@ app("fabrikamprod").pageViews
 | project client_CountryOrRegion, numUsers, Population_d
 ```
 
-Výstup by měl zobrazit dva datové zdroje teď připojené.  
+Výstup by měl zobrazovat dva zdroje dat, které jsou nyní připojeny.  
 
-![Korelace narušenému důvěrnému data v příkladu výsledek vyhledávání](./media/create-pipeline-datacollector-api/correlating-disjoined-data-example-01.png)
+![Příklad korelace nepřipojených dat ve výsledku hledání](./media/create-pipeline-datacollector-api/correlating-disjoined-data-example-01.png)
 
-## <a name="suggested-improvements-for-a-production-pipeline"></a>Navržených vylepšení pro výrobu kanálu
-Tento článek zobrazí prototyp pracovní nedají použít logice true řešení produkční kvality. Pro toto vysoce kvalitní řešení se doporučuje následující vylepšení:
+## <a name="suggested-improvements-for-a-production-pipeline"></a>Navrhovaná vylepšení pro produkční kanál
+V tomto článku je uveden pracovní prototyp, což je logika, kterou je možné použít k skutečnému řešení produkční kvality. Pro řešení produkční kvality doporučujeme následující vylepšení:
 
-* Přidání zpracování chyb a logika opakování v aplikaci logiky a funkce.
-* Přidejte logiku a ujistěte se, že není překročen limit volání rozhraní API služby Log Analytics Ingestování 30MB/jednou. V případě potřeby rozdělte data do menších částí.
-* Nastavení zásady čištění v úložišti objektů blob. Jakmile úspěšně odeslána do pracovního prostoru Log Analytics, pokud byste chtěli zachovat nezpracovaná data, která je k dispozici pro účely archivace, neexistuje žádný důvod k dalšímu ukládání ho. 
-* Ověření monitorování je povoleno napříč úplný kanál přidání body sledování a výstrahy podle potřeby.
-* Využijte správy zdrojového kódu ke správě kódu pro funkce a aplikace logiky.
-* Ujistěte se, že je a potom zásadu správy správné změn, tak, že pokud se změní schéma, funkce a Logic Apps jsou upraveny.
-* Pokud nahráváte více různých datových typů, oddělit do jednotlivých složek v kontejneru objektů blob a vytvořit logiku pro ventilátor logiky si podle datového typu. 
+* Přidejte zpracování chyb a logiku opakování do své aplikace logiky a funkce.
+* Přidejte logiku, aby se zajistilo, že limit volání rozhraní API 30MB/Single Log Analytics nepřekračuje. V případě potřeby rozdělení dat na menší segmenty.
+* Nastavte na úložišti objektů BLOB čisticí zásadu. Po úspěšném odeslání do pracovního prostoru Log Analytics, pokud nechcete, aby nezpracovaná data zůstala k dispozici pro účely archivace, neexistuje důvod, abyste je ukládali. 
+* Ověřte, zda je monitorování povoleno v celém kanálu, podle potřeby přidejte body trasování a výstrahy.
+* Využijte správu zdrojového kódu ke správě kódu pro vaši funkci a aplikaci logiky.
+* Zajistěte, aby následovala správná zásada správy změn. to znamená, že pokud se schéma změní, funkce a Logic Apps se odpovídajícím způsobem upraví.
+* Pokud nahráváte více různých typů dat, oddělit je do jednotlivých složek v rámci kontejneru objektů BLOB a vytvořte logiku pro ventilátor na základě datového typu. 
 
 
-## <a name="next-steps"></a>Další postup
-Další informace o [rozhraní API kolekce dat](data-collector-api.md) zapsat data do pracovního prostoru Log Analytics z jakéhokoli klienta REST API.
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o [rozhraní API kolekce dat](data-collector-api.md) pro zápis dat do Log Analytics pracovního prostoru z libovolného klienta REST API.

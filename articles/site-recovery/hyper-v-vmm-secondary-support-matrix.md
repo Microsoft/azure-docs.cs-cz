@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813616"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933816"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
 
@@ -21,7 +21,9 @@ Tento článek shrnuje, co je podporováno při používání služby [Azure Sit
 > [!NOTE]
 > Replikaci do sekundární lokality můžete provést pouze v případě, že jsou hostitelé Hyper-V spravováni v cloudech VMM.
 
-  
+> [!WARNING]
+> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
+
 
 ## <a name="host-servers"></a>Hostitelské servery
 
@@ -65,13 +67,13 @@ Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
 Virtuální počítač hosta – více síťových karet | Ano
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 ### <a name="host-storage"></a>Úložiště hostitele
 
 **Úložiště (hostitel)** | **Podporuje se**
 --- | --- 
-NFS | Není k dispozici
+NFS | Nevztahuje se
 SMB 3.0 |  Ano
 SÍŤ SAN (ISCSI) | Ano
 Multipath (multi-Path) | Ano
@@ -80,15 +82,15 @@ Multipath (multi-Path) | Ano
 
 **Konfigurace** | **Podporuje se**
 --- | --- | 
-VMDK |  Není k dispozici
+FORMÁTU |  Nevztahuje se
 VHD/VHDX | Ano (až 16 disků)
 Virtuální počítač 2. generace | Ano
 Disk sdíleného clusteru | Ne
 Zašifrovaný disk | Ne
-UEFI| Není k dispozici
+UEFI| Nevztahuje se
 NFS | Ne
 SMB 3.0 | Ne
-RDM | Není k dispozici
+RDM | Nevztahuje se
 Disk > 1 TB | Ano
 Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano
 Prostory úložiště | Ano

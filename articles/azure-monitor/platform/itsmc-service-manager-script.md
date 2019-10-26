@@ -1,50 +1,44 @@
 ---
-title: Automatizované skript k vytvoření aplikace webového portálu Service Manager pro připojení s IT Service Management Connector v Azure | Dokumentace Microsoftu
-description: Vytvoření aplikace webového portálu Service Manager pomocí skriptu automatické připojení IT Service Management Connector v Azure a centrálně monitorovat a spravovat pracovní položky ITSM.
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Automatický skript pro vytvoření Service Manager webové aplikace pro připojení ke konektoru pro správu služeb IT v Azure | Microsoft Docs
+description: Pomocí automatizovaného skriptu pro připojení ke konektoru pro správu služeb IT v Azure můžete vytvořit webovou aplikaci Service Manager a centrálně monitorovat a spravovat pracovní položky ITSM.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/23/2018
+author: JYOTHIRMAISURI
 ms.author: v-jysur
-ms.openlocfilehash: 42adbf7a6f0e7bb462e6bc9b690c61d4ade0cae2
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 01/23/2018
+ms.openlocfilehash: 443fe6aa7e97e666075a2fbb985a9b8b00baf81a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479703"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932254"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření aplikace webového portálu Service Manager pomocí automatického skriptu
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření Service Manager webové aplikace pomocí automatizovaného skriptu
 
-Použijte následující skript k vytvoření webové aplikace pro vaši instanci portálu Service Manager. Další informace o připojení nástroje Service Manager je tady: [Aplikace webového portálu Service Manager](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+K vytvoření webové aplikace pro instanci Service Manager použijte následující skript. Další informace o Service Manager připojení najdete tady: [Service Manager Web App](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
-Spusťte skript tím, že poskytuje následující požadované podrobnosti:
+Spusťte skript zadáním následujících požadovaných podrobností:
 
-- Podrobnosti předplatného Azure
+- Podrobnosti o předplatném Azure
 - Název skupiny prostředků
-- Location
-- Podrobnosti serveru portálu Service Manager (název serveru, domény, uživatelské jméno a heslo)
-- Předpona názvu webu pro webové aplikace
-- ServiceBus Namespace.
+- Umístění
+- Podrobnosti Service Manager serveru (název serveru, doména, uživatelské jméno a heslo)
+- Předpona názvu webu pro vaši webovou aplikaci
+- Obor názvů ServiceBus
 
-Skript se vytvoří webová aplikace využívající název, který jste zadali (spolu s několika další řetězce pro zajištění jeho jedinečnosti). Generuje **adresa URL webové aplikace**, **ID klienta**, a **tajný kód klienta**.
+Skript vytvoří webovou aplikaci s názvem, který jste zadali (spolu s několika dalšími řetězci pro její jedinečné nastavení). Vygeneruje **adresu URL webové aplikace**, **ID klienta**a **tajný klíč klienta**.
 
-Uložte tyto hodnoty budete potřebovat tyto hodnoty při vytváření připojení s IT Service Management Connector.
+Tyto hodnoty uložte, budete je potřebovat při vytváření připojení ke konektoru pro správu služby IT.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
- Windows Management Framework 5.0 nebo novější.
-Windows 10 obsahuje 5.1 ve výchozím nastavení. Můžete stáhnout z rozhraní framework [tady](https://www.microsoft.com/download/details.aspx?id=50395):
+ Windows Management Framework 5,0 nebo vyšší.
+Windows 10 má ve výchozím nastavení 5,1. Rozhraní si můžete stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=50395):
 
-Pomocí následujícího skriptu:
+Použijte následující skript:
 
 ```powershell
 ####################################

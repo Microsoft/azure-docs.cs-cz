@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6276f347f0cc0ecc03acc95282e83c243679957a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8503b3c8a630575b917e3710ce4d7c5d6fbe70cb
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802432"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934036"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry upgradu aplikace
 Tento článek popisuje různé parametry, které se použijí při upgradu aplikace Service Fabric Azure. Parametry upgradu aplikace řídí časové limity a kontroly stavu, které se použijí během upgradu, a určují zásady, které se musí použít, když se upgrade nepovede. Parametry aplikace se vztahují na upgrady pomocí:
@@ -57,10 +57,6 @@ UnmonitoredManual | PS | Indikuje, že režim upgradu není monitorovaný ručn�
 ### <a name="optional-parameters"></a>Volitelné parametry
 
 Parametry vyhodnocení stavu jsou volitelné. Pokud kritéria hodnocení stavu nejsou určena při spuštění upgradu, Service Fabric používá zásady stavu aplikace zadané v souboru ApplicationManifest. XML instance aplikace.
-
-V dolní části tabulky použijte horizontální posuvník k zobrazení pole s úplným popisem.
-
-(PS = PowerShell, VS = Visual Studio)
 
 > [!div class="mx-tdBreakAll"]
 > | Parametr | Platí pro | Popis |

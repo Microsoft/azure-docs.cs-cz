@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0948edec05b97dd604393218e3eeb3302548af82
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099011"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933553"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace upozornění na stav prostředků pomocí šablon Správce prostředků
 
@@ -24,20 +24,20 @@ Azure Resource Health vás informují o aktuálním a historickém stavu vašich
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle pokynů na této stránce, musíte předem nastavit pár věcí:
 
 1. Je potřeba nainstalovat [modul Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) .
 2. Musíte [vytvořit nebo znovu použít skupinu akcí](../azure-monitor/platform/action-groups.md) nakonfigurovanou pro upozorňování
 
-## <a name="instructions"></a>Instrukce
+## <a name="instructions"></a>Pokyny
 1. Pomocí PowerShellu se přihlaste k Azure pomocí svého účtu a vyberte předplatné, se kterým chcete pracovat.
 
         Login-AzAccount
         Select-AzSubscription -Subscription <subscriptionId>
 
-    > Můžete použít `Get-AzSubscription` k vypsání předplatných, ke kterým máte přístup.
+    > K vypsání předplatných, ke kterým máte přístup, můžete použít `Get-AzSubscription`.
 
 2. Vyhledejte a uložte úplné ID Azure Resource Manager pro vaši skupinu akcí.
 
@@ -147,7 +147,7 @@ Výstrahy Resource Health lze nakonfigurovat pro monitorování událostí ve t�
  * Úroveň skupiny prostředků
  * Úroveň prostředků
 
-Šablona výstrahy je nakonfigurovaná na úrovni předplatného, ale pokud chcete, aby upozornění nakonfigurovali jenom na určité prostředky nebo prostředky v rámci určité skupiny prostředků, stačí změnit `scopes` výše uvedenou část. vzhledu.
+Šablona výstrahy je nakonfigurovaná na úrovni předplatného, ale pokud chcete, aby upozornění nakonfigurovali jenom na určité prostředky nebo prostředky v rámci určité skupiny prostředků, stačí ve výše uvedené šabloně upravit oddíl `scopes`.
 
 V případě oboru na úrovni skupiny prostředků by měl oddíl rozsahy vypadat takto:
 ```json
@@ -170,7 +170,7 @@ Příklad: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/
 
 ### <a name="adjusting-the-resource-types-which-alert-you"></a>Úprava typů prostředků, které vás upozorňují
 
-Výstrahy na úrovni předplatného nebo skupiny prostředků mohou mít různé druhy prostředků. Pokud chcete omezit výstrahy jenom z určité podmnožiny typů prostředků, můžete to definovat v `condition` části šablony, například takto:
+Výstrahy na úrovni předplatného nebo skupiny prostředků mohou mít různé druhy prostředků. Pokud chcete omezit výstrahy jenom z určité podmnožiny typů prostředků, můžete definovat, že v části `condition` v šabloně, třeba takto:
 
 ```json
 "condition": {
@@ -195,12 +195,12 @@ Výstrahy na úrovni předplatného nebo skupiny prostředků mohou mít různé
 },
 ```
 
-V `anyOf` tomto příkladu použijeme obálku, která umožňuje, aby výstraha o stavu prostředků odpovídala některé z podmínek, které zadáte, a umožňuje upozornění, která cílí na konkrétní typy prostředků.
+V tomto příkladu použijeme obálku `anyOf` k tomu, aby výstraha o stavu prostředků odpovídala některé z podmínek, které zadáte, a umožňuje upozornění, která cílí na konkrétní typy prostředků.
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Úprava Resource Healthch událostí, které vás upozorňují
-Když se prostředky dostanou události stavu, mohou projít řadou fází, které představují stav události stavu `Active`:, `InProgress`, `Updated`a `Resolved`.
+Když se prostředky dostanou události stavu, mohou projít řadou fází, které představují stav události stavu: `Active`, `In Progress`, `Updated`a `Resolved`.
 
-Je možné, že budete chtít být upozorněni pouze v případě, že prostředek není v pořádku. v takovém případě budete chtít výstrahu nakonfigurovat tak `status` , `Active`aby upozornila pouze v případě, že je. Pokud ale chcete být také informováni o dalších fázích, můžete tyto podrobnosti přidat, například:
+Je možné, že budete chtít být upozorněni pouze v případě, že prostředek není v pořádku. v takovém případě budete chtít výstrahu nakonfigurovat, aby upozornila pouze na to, kdy je `status` `Active`. Pokud ale chcete být také informováni o dalších fázích, můžete tyto podrobnosti přidat, například:
 
 ```json
 "condition": {
@@ -214,7 +214,7 @@ Je možné, že budete chtít být upozorněni pouze v případě, že prostřed
                 },
                 {
                     "field": "status",
-                    "equals": "InProgress"
+                    "equals": "In Progress"
                 },
                 {
                     "field": "status",
@@ -230,11 +230,11 @@ Je možné, že budete chtít být upozorněni pouze v případě, že prostřed
 }
 ```
 
-Pokud chcete být upozorněni na všechny čtyři fáze událostí stavu, můžete tuto podmínku odebrat dohromady a tato výstraha vás bude informovat bez ohledu na `status` vlastnost.
+Pokud chcete být upozorněni na všechny čtyři fáze událostí stavu, můžete tuto podmínku odebrat dohromady a tato výstraha vás upozorní bez ohledu na vlastnost `status`.
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Nastavení výstrah Resource Health, aby se předešlo neznámým událostem
 
-Azure Resource Health vám může ohlásit nejnovější stav svých prostředků tím, že je průběžně monitoruje pomocí Test Runner. Příslušné nahlášené stavy stavu: "Dostupné", "nedostupné" a "omezené". V situacích, kdy spouštěč a prostředek Azure nemůže komunikovat, je pro prostředek hlášen stav "Neznámý", který je považován za "aktivní" událost stavu.
+Azure Resource Health vám může ohlásit nejnovější stav svých prostředků tím, že je průběžně monitoruje pomocí Test Runner. Příslušné nahlášené stavy stavu jsou: "dostupné", "nedostupné" a "snížené". V situacích, kdy spouštěč a prostředek Azure nemůže komunikovat, je pro prostředek hlášen stav "Neznámý", který je považován za "aktivní" událost stavu.
 
 Pokud se ale zdroj ohlásí jako "Neznámý", je pravděpodobný, že se jeho stav od poslední přesné sestavy nezměnil. Pokud chcete eliminovat výstrahy na "neznámých" událostech, můžete tuto logiku zadat v šabloně:
 
@@ -409,7 +409,7 @@ Pomocí různých úprav popsaných v předchozí části najdete ukázkovou ša
                                 },
                                 {
                                     "field": "status",
-                                    "equals": "InProgress",
+                                    "equals": "In Progress",
                                     "containsAny": null
                                 },
                                 {
@@ -436,7 +436,7 @@ Pomocí různých úprav popsaných v předchozí části najdete ukázkovou ša
 
 Dozvíte se ale, co je pro vás nejvhodnější konfigurace, takže k vlastnímu přizpůsobení použijte výukové nástroje v této dokumentaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Resource Health:
 -  [Přehled Azure Resource Health](Resource-health-overview.md)
