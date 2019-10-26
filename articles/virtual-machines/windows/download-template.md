@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 37e833e5ba2fcbc9fcfe0a27d5b607a5c6cdd55b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39abe054869bf68a254b9305a680ecc892359300
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079532"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898872"
 ---
 # <a name="download-the-template-for-a-vm"></a>Stažení šablony pro virtuální počítač
 Když vytvoříte virtuální počítač v Azure pomocí portálu nebo PowerShellu, automaticky se vytvoří šablona Správce prostředků. Tuto šablonu můžete použít k rychlému duplikování nasazení. Šablona obsahuje informace o všech prostředcích ve skupině prostředků. V případě virtuálního počítače to znamená, že šablona obsahuje vše, co je vytvořeno v rámci podpory virtuálního počítače v dané skupině prostředků, včetně síťových prostředků.
@@ -32,22 +32,18 @@ Když vytvoříte virtuální počítač v Azure pomocí portálu nebo PowerShel
 5. V nabídce v horní části vyberte **Stáhnout** a uložte soubor. zip do svého místního počítače.
 6. Otevřete soubor. zip a extrahujte soubory do složky. Soubor. zip obsahuje:
    
-   * deploy.ps1
-   * deploy.sh 
-   * Deployer. RB
-   * DeploymentHelper.cs
-   * parameters.json
-   * template.json
+   * Parameters. JSON
+   * Template. JSON
 
 Soubor Template. JSON je šablona.
 
 ## <a name="download-the-template-using-powershell"></a>Stažení šablony pomocí PowerShellu
-Soubor šablony. JSON můžete také stáhnout pomocí rutiny [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) . Pomocí `-path` parametru můžete zadat název souboru a cestu k souboru. JSON. Tento příklad ukazuje, jak stáhnout šablonu pro skupinu prostředků s názvem **myResourceGroup** do složky **C:\users\public\downloads** na místním počítači.
+Soubor šablony. JSON můžete také stáhnout pomocí rutiny [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) . Pomocí parametru `-path` můžete zadat název souboru a cestu k souboru. JSON. Tento příklad ukazuje, jak stáhnout šablonu pro skupinu prostředků s názvem **myResourceGroup** do složky **C:\users\public\downloads** na místním počítači.
 
 ```powershell
     Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
-## <a name="next-steps"></a>Další postup
-Další informace o nasazení prostředků pomocí šablon naleznete v tématu [Správce prostředků návodu](../../azure-resource-manager/resource-manager-template-walkthrough.md)k šablonám.
+## <a name="next-steps"></a>Další kroky
+Další informace o nasazení prostředků pomocí šablon naleznete v tématu [Správce prostředků návodu k šablonám](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 

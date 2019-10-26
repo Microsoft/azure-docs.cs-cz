@@ -1,60 +1,55 @@
 ---
-title: Řešení potíží s nástrojů analýzy chování uživatelů ve službě Azure Application Insights
-description: Průvodce odstraňováním potíží – analýza webu a využití aplikace pomocí Application Insights.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Řešení potíží s nástroji pro analýzu chování uživatelů v Azure Application Insights
+description: Průvodce odstraňováním potíží – analýza využití webů a aplikací pomocí Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: eabc47c2acb33d8c6ee03477b5e8c7783edebbb7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9222f4611f87869c1bacf3084035c0ab9322fa40
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371848"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899353"
 ---
-# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Řešení potíží s nástrojů analýzy chování uživatelů ve službě Application Insights
-Máte otázky týkající [nástrojů analýzy chování uživatelů ve službě Application Insights](usage-overview.md): [Uživatelé, relace, události](usage-segmentation.md), [trychtýře](usage-funnels.md), [toky uživatelů](usage-flows.md), [uchování](usage-retention.md), nebo kohorty? Tady jsou odpovědi.
+# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Řešení potíží s nástroji pro analýzu chování uživatelů v Application Insights
+Máte dotazy týkající se [nástrojů pro analýzy chování uživatelů v Application Insights](usage-overview.md): [Uživatelé, relace, události](usage-segmentation.md), [trychtýře](usage-funnels.md), [toky uživatelů](usage-flows.md), [uchovávání](usage-retention.md)nebo kohorty? Tady jsou některé odpovědi.
 
 ## <a name="counting-users"></a>Počítání uživatelů
-**Nástroje analýzy chování uživatelů ukazují, že aplikace má jeden uživatel nebo relace, ale vím, že aplikace má mnoho uživatelů a relací. Jak můžete opravit tyto nesprávné počty?**
+**Nástroje pro analýzu chování uživatelů ukazují, že má moje aplikace jeden uživatel nebo relaci, ale ví, že moje aplikace má mnoho uživatelů a relací. Jak mohu tyto nesprávné počty opravit?**
 
-Mají všechny telemetrických událostí ve službě Application Insights [ID anonymního uživatele](../../azure-monitor/app/data-model-context.md) a [ID relace](../../azure-monitor/app/data-model-context.md) jako dvě z jejich standardní vlastnosti. Ve výchozím nastavení všechny nástrojů pro analýzu využití počet uživatelů a relací v závislosti na tyto identifikátory. Pokud tyto standardní vlastnosti nejsou připravují se jedinečné identifikátory pro každého uživatele a relace z vaší aplikace, zobrazí se vám nesprávnému počtu uživatelů a relací v nástrojích pro analýzu využití.
+Všechny události telemetrie v Application Insights mají [ID anonymního uživatele](../../azure-monitor/app/data-model-context.md) a [ID relace](../../azure-monitor/app/data-model-context.md) jako dvě z jejich standardních vlastností. Ve výchozím nastavení se všechny nástroje pro analýzu využití počítají jako uživatelé a relace na základě těchto ID. Pokud se tyto standardní vlastnosti neplní jedinečnými identifikátory pro každého uživatele a relaci vaší aplikace, uvidíte v nástrojích analýzy využití nesprávný počet uživatelů a relací.
 
-Pokud monitorujete webové aplikace, nejjednodušším řešením je přidat [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) do vaší aplikace a ujistěte se, že se načíst fragment skriptu na každé stránce, kterou chcete monitorovat. Sada JavaScript SDK automaticky generuje anonymní uživatel a ID relace a potom naplní telemetrické události mají tyto identifikátory jsou odeslané z vaší aplikace.
+Pokud sledujete webovou aplikaci, nejjednodušší řešení je přidat do aplikace [sadu Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) a zajistit, aby byl fragment skriptu načtený na každé stránce, kterou chcete monitorovat. Sada JavaScript SDK automaticky generuje identifikátory anonymního uživatele a relace a potom naplní události telemetrie pomocí těchto ID, jak jsou odesílány z vaší aplikace.
 
-Pokud monitorujete webové služby (bez uživatelského rozhraní), [vytvořit inicializátor telemetrie, který naplní vlastnosti anonymního uživatelského ID a relace ID](usage-send-user-context.md) podle svojí služby správy jedinečných uživatelů a relací.
+Pokud sledujete webovou službu (bez uživatelského rozhraní), [vytvořte inicializátor telemetrie, který naplní vlastnosti anonymního uživatele a ID relace](usage-send-user-context.md) podle pojmů jedinečných uživatelů a relací vaší služby.
 
-Pokud vaše aplikace odesílá [ověřit ID uživatelů](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), můžete počítat ověřeného uživatele na základě ID v nástroji pro uživatele. V rozevíracím seznamu "Show" zvolte možnost "Authenticated users".
+Pokud vaše aplikace posílá [ověřená ID uživatelů](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), můžete se na základě uživatelských identifikátorů uživatelů v nástroji uživatelů na základě ID ověřených uživatelů spolehnout. V rozevíracím seznamu Zobrazit Vyberte možnost ověření uživatelé.
 
-Nástroje analýzy chování uživatelů v současnosti nepodporujeme počítání uživatelů nebo relace na základě vlastností než ID anonymního uživatele, ID ověřeného uživatele nebo ID relace.
+Nástroje pro analýzu chování uživatelů v současné době nepodporují počítání uživatelů nebo relací na základě vlastností kromě anonymního ID uživatele, ověřeného ID uživatele nebo ID relace.
 
-## <a name="naming-events"></a>Pojmenování události
-**Moje aplikace má tisíce zobrazení různé stránky a názvy vlastních událostí. Je těžké k rozlišení mezi nimi a analytické nástroje chování uživatele často přestat reagovat. Jak můžete tyto zásady problémy řešit?**
+## <a name="naming-events"></a>Události pojmenování
+**Moje aplikace obsahuje tisíce různých zobrazení stránky a vlastní názvy událostí. Mezi nimi je těžké rozlišovat a časté nástroje pro analýzu chování uživatelů přestanou reagovat. Jak můžu opravit tyto problémy s pojmenování?**
 
-Názvy vlastních událostí a zobrazení stránky se používají v nástroje analýzy chování uživatelů. Názvy událostí a je velmi důležité k získání hodnoty z těchto nástrojů. Cílem je rovnováhu mezi s názvy příliš málo, příliš obecného ("kliknutí na tlačítko") a s příliš mnoho, zbytečně konkrétní názvy ("kliknutí na tlačítko Upravit na protokolu http:\//www.contoso.com/index").
+Zobrazení stránky a vlastní názvy událostí se používají v rámci nástrojů pro analýzu chování uživatelů. Pro získání hodnoty z těchto nástrojů je důležité, aby byly události pojmenovány správně. Cílem je zůstatek mezi příliš malými a obecně platnými názvy ("kliknutí na tlačítko") a s příliš velkým počtem nedostatečných názvů ("tlačítko pro úpravy" na http:\//www.contoso.com/index ").
 
-Žádné změny k zobrazení stránky a názvy vlastních událostí, které vaše aplikace odesílá, budete muset změnit zdrojový kód a opětovné nasazení vaší aplikace. **Veškerá telemetrie data ve službě Application Insights je uložena po dobu 90 dnů a nelze ji odstranit**, takže změny provedené názvy událostí bude trvat plně manifest 90 dní. Za 90 dnů po provedení změny názvu názvy staré a nové události se zobrazí v telemetrii, tak upravte dotazy a komunikaci v rámci vašich týmů odpovídajícím způsobem.
+Chcete-li provést změny zobrazení stránky a vlastních názvů událostí, které vaše aplikace posílá, je nutné změnit zdrojový kód aplikace a znovu nasadit. **Všechna data telemetrie v Application Insights jsou uložená po dobu 90 dnů a nejde je odstranit**, takže změny provedené v názvech událostí budou trvat 90 dnů, než se plně manifest zaplní. Po dobu 90 dnů od změny názvu se ve své telemetrii zobrazí staré i nové názvy událostí, takže podle potřeby upravte dotazy a sdělte v rámci svých týmů.
 
-Pokud vaše aplikace odesílá příliš mnoho názvů zobrazení stránky, zkontrolujte, zda jsou tyto názvy zobrazení stránek se ručně zadat v kódu nebo pokud se už odesíláno automaticky Application Insights JavaScript SDK:
+Pokud vaše aplikace odesílá příliš mnoho názvů zobrazení stránky, zkontrolujte, zda jsou tyto názvy zobrazení stránky zadány ručně v kódu nebo zda jsou automaticky odesílány Application Insights JavaScript SDK:
 
-* Je-li zobrazit názvy stránek jsou ručně zadané v kódu pomocí [ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md), změňte název, který má být specifické pro less. Vyhněte se běžných chyb, jako je uvedení adresu URL název zobrazení stránky. Místo toho použít parametr adresy URL `trackPageView` rozhraní API. Přesuňte další podrobnosti do vlastní vlastnosti názvu zobrazení stránky.
+* Pokud jsou názvy zobrazení stránky ručně zadány v kódu pomocí [rozhraní`trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md), změňte název tak, aby byl méně specifický. Vyhněte se běžným chybám, jako je vložení adresy URL do názvu zobrazení stránky. Místo toho použijte parametr URL `trackPageView` API. Přesuňte další podrobnosti z názvu zobrazení stránky do vlastních vlastností.
 
-* Pokud sadu Application Insights JavaScript SDK automaticky odesílá názvy zobrazení stránek, můžete změnit názvy vaše stránky nebo přepnout na odesílání ručně názvy zobrazení stránek. Sada SDK odesílá [název](https://developer.mozilla.org/docs/Web/HTML/Element/title) každé stránky jako název zobrazení stránky, ve výchozím nastavení. Můžete změnit nadpisy obecnější, ale mějte na paměti optimalizace pro vyhledávací weby a další dopady, které tato změna může mít. Ruční zadání zobrazení stránky s názvy `trackPageView` API přepíše shromažďují automaticky názvy, můžete odeslat další obecné názvy v telemetrii beze změny titulů.   
+* Pokud Application Insights JavaScript SDK automaticky odesílá názvy stránek, můžete buď změnit nadpisy stránek, nebo přepnout na ruční odesílání názvů zobrazení stránky. Sada SDK ve výchozím nastavení [odesílá název každé](https://developer.mozilla.org/docs/Web/HTML/Element/title) stránky jako název zobrazení stránky. Vaše tituly můžete změnit tak, aby byly obecnější, ale měli byste s vědomím SEO a dalšími dopady na tuto změnu. Ruční určení názvů zobrazení stránky pomocí rozhraní `trackPageView` API přepíše automaticky shromážděné názvy, takže můžete odeslat obecnější názvy v telemetrii beze změny názvů stránek.   
 
-Pokud vaše aplikace odesílá příliš mnoho názvů vlastních událostí, změňte název v byl kód méně konkrétní. Znovu Vyhněte se vložení adresy URL a jiných na stránku nebo dynamických informací v názvy vlastních událostí přímo. Místo toho přesunout tyto podrobnosti do vlastních vlastností vlastní událost se `trackEvent` rozhraní API. Například namísto z `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`, doporučujeme něco jako `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`.
+Pokud vaše aplikace odesílá příliš mnoho vlastních názvů událostí, změňte název v kódu tak, aby byl méně specifický. Znovu se vyhněte vkládání adres URL a dalších informací do vlastních názvů událostí přímo na stránce. Místo toho tyto podrobnosti přesuňte do vlastních vlastností vlastní události pomocí rozhraní `trackEvent` API. Například místo `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`navrhneme něco jako `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Přehled nástrojů analýzy chování uživatelů](usage-overview.md)
+* [Přehled nástrojů pro analýzu chování uživatelů](usage-overview.md)
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání nápovědy
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

@@ -1,33 +1,29 @@
 ---
-title: Napsání kódu pro sledování požadavků pomocí Azure Application Insights | Dokumentace Microsoftu
-description: Napsání kódu pro sledování požadavků pomocí nástroje Application Insights, abyste se mohli profilů pro vaše požadavky.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Napsat kód pro sledování požadavků pomocí Azure Application Insights | Microsoft Docs
+description: Napíšete kód pro sledování požadavků pomocí Application Insights, abyste mohli získat profily pro vaše požadavky.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 4782e560b580b7f565724dbb35ed9876bffdc256
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 3f449c98ed44f13fb6b3849ef2457cd8fbd916de
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730850"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900013"
 ---
-# <a name="write-code-to-track-requests-with-application-insights"></a>Napsání kódu pro sledování požadavků pomocí nástroje Application Insights
+# <a name="write-code-to-track-requests-with-application-insights"></a>Napsat kód pro sledování požadavků pomocí Application Insights
 
-Chcete-li zobrazit profily pro vaši aplikaci na stránce výkon, Azure Application Insights potřebuje ke sledování požadavků pro vaši aplikaci. Application Insights může automaticky sledovat žádosti o aplikace, které jsou postavené na již instrumentována architektur. Dva příklady jsou ASP.NET a ASP.NET Core. 
+Pokud chcete zobrazit profily pro vaši aplikaci na stránce výkon, Azure Application Insights potřebuje sledovat žádosti pro vaši aplikaci. Application Insights může automaticky sledovat žádosti o aplikace, které jsou postavené na již instrumentované architektuře. Dva příklady jsou ASP.NET a ASP.NET Core. 
 
-U ostatních aplikací, jako jsou role pracovního procesu Azure Cloud Services a Service Fabric bezstavové rozhraní API budete muset psát kód sdělit své žádosti, kde začít Application Insights a end. Poté, co jste napsali tento kód, telemetrie požadavky odeslána do služby Application Insights. Telemetrii můžete zobrazit na stránce výkon a profily se shromažďují, aby tyto požadavky. 
+U jiných aplikací, jako jsou role pracovních procesů Azure Cloud Services a Service Fabric bezstavových rozhraní API, je potřeba napsat kód, který sděluje Application Insights, kde vaše požadavky začínají a končí. Po dokončení zápisu tohoto kódu se do Application Insights odesílá žádost o telemetrii. Telemetrii můžete zobrazit na stránce výkon a profily jsou shromažďovány pro tyto požadavky. 
 
-Můžete manuálně sledovat žádosti, postupujte takto:
+Chcete-li ručně sledovat požadavky, postupujte následovně:
 
-  1. V rané fázi životního cyklu aplikací přidejte následující kód:  
+  1. V brzké době životnosti aplikace přidejte následující kód:  
 
         ```csharp
         using Microsoft.ApplicationInsights.Extensibility;
@@ -35,9 +31,9 @@ Můžete manuálně sledovat žádosti, postupujte takto:
         // Replace with your own Application Insights instrumentation key.
         TelemetryConfiguration.Active.InstrumentationKey = "00000000-0000-0000-0000-000000000000";
         ```
-      Další informace o této konfiguraci globální Instrumentační klíč najdete v části [pomocí Service Fabric pomocí Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
+      Další informace o této konfiguraci globálního instrumentace klíčů najdete v tématu [použití Service Fabric s Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  1. Pro jsou části kódu, který chcete instrumentovat, přidejte `StartOperation<RequestTelemetry>` **pomocí** příkaz kolem něj, jak je znázorněno v následujícím příkladu:
+  1. Pro libovolnou část kódu, kterou chcete instrumentovat, přidejte `StartOperation<RequestTelemetry>` **pomocí** příkazu, jak je znázorněno v následujícím příkladu:
 
         ```csharp
         using Microsoft.ApplicationInsights;
@@ -51,7 +47,7 @@ Můžete manuálně sledovat žádosti, postupujte takto:
         }
         ```
 
-        Volání `StartOperation<RequestTelemetry>` v jiném `StartOperation<RequestTelemetry>` obor se nepodporuje. Můžete použít `StartOperation<DependencyTelemetry>` místo ve vnořeném oboru. Příklad:  
+        Volání `StartOperation<RequestTelemetry>` v jiném oboru `StartOperation<RequestTelemetry>` se nepodporuje. Místo toho můžete použít `StartOperation<DependencyTelemetry>` ve vnořeném oboru. Například:  
         
         ```csharp
         using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))

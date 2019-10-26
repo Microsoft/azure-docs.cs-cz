@@ -1,77 +1,72 @@
 ---
-title: Zobrazení a analýza dat v Azure Log Analytics | Dokumentace Microsoftu
-description: Pomoc uživatelům prohledávání protokolu Log Analytics do prostředí Azure Monitor protokolu dotazu.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Zobrazení a analýza dat v Azure Log Analytics | Microsoft Docs
+description: Pomoc pro uživatele Log Analytics prohledávání protokolu pro Azure Monitor možnosti dotazování protokolu.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/16/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: dc3a754bd1a9f689f4b24b9ee2c1e4cbc0611684
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/16/2019
+ms.openlocfilehash: b738d532cb458506ca50a07dea11687040f99e02
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519896"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900331"
 ---
-# <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Přechod z prohledávání protokolu log Analytics do protokoly Azure monitoru
-Prohledávání protokolů v Log Analytics se nedávno nahrazena nové prostředí pro analýzy protokolů Azure Monitor. Na stránce vyhledávání protokolu je aktuálně stále přístupné prostřednictvím **protokoly (classic)** položky nabídky v **pracovních prostorů Log Analytics** stránky v Azure portal, ale odebere 15. února 2019. Tento článek popisuje rozdíly mezi oběma prostředími usnadňují přechod z prohledávání protokolů. 
+# <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Přechod z Log Analyticsho prohledávání protokolu do protokolů Azure Monitor
+Hledání protokolu v Log Analytics bylo nedávno nahrazeno novým prostředím pro analýzu Azure Monitor protokolů. Stránka pro prohledávání protokolu je nyní stále přístupná prostřednictvím položky nabídky **protokoly (Classic)** na stránce **Log Analytics pracovní prostory** v Azure Portal, ale bude odebrána 15. února 2019. Tento článek popisuje rozdíly mezi dvěma prostředími, které vám pomůžou při přechodu z prohledávání protokolu. 
 
 ## <a name="filter-results-of-a-query"></a>Filtrování výsledků dotazu
-V prohledávání protokolu se zobrazí seznam filtrů, jako jsou doručeny výsledky hledání. Vyberte filtr a klikněte na tlačítko **použít** spusťte dotaz s filtrem vybrané.
+V hledání v protokolu se zobrazí seznam filtrů, které budou doručeny do výsledků hledání. Vyberte filtr a kliknutím na **použít** spusťte dotaz s vybraným filtrem.
 
-![Vyhledávací filtr protokolu](media/log-search-transition/filter-log-search.png)
+![Filtr hledání v protokolu](media/log-search-transition/filter-log-search.png)
 
-V protokolech Azure Monitor, vyberte *filtru (preview)* pro zobrazení filtrů. Klikněte na ikonu filtru zobrazíte další filtry. Vyberte filtr a klikněte na tlačítko **použít & Spustit** spusťte dotaz s filtrem vybrané.
+V Azure Monitor protokoly vyberte *filtr (Preview)* a zobrazte filtry. Kliknutím na ikonu filtru zobrazíte filtry pro přidání. Vyberte filtr a kliknutím na **použít & spustit** spusťte dotaz s vybraným filtrem.
 
-![Filtrovat protokoly](media/log-search-transition/filter-logs.png)
+![Filtr protokolů](media/log-search-transition/filter-logs.png)
 
-## <a name="extract-custom-fields"></a>Extrahovat vlastní pole 
-V prohledávání protokolu extrahovat [vlastních polí](../platform/custom-fields.md) ze zobrazení seznamu, kde pole nabídky se týká také akce _extrahovat pole z tabulky_.
+## <a name="extract-custom-fields"></a>Extrahování vlastních polí 
+V části prohledávání protokolu můžete extrahovat [vlastní pole](../platform/custom-fields.md) ze zobrazení seznamu, kde nabídka pole obsahuje pole _extrahovat akce z tabulky_.
 
-![Protokolování hledání extrakce polí](media/log-search-transition/extract-fields-log-search.png)
+![Pole extrakce hledání v protokolu](media/log-search-transition/extract-fields-log-search.png)
 
-V protokolech monitorování Azure extrahujte vlastních polí ze zobrazení tabulky. Rozbalte položku záznamu kliknutím na šipku na levé straně a klikněte na tlačítko se třemi tečkami pro přístup k _extrahovat pole_ akce.
+V protokolu Azure Monitor můžete extrahovat vlastní pole ze zobrazení tabulky. Rozbalte záznam kliknutím na šipku vlevo a potom klikněte na tři tečky pro přístup k akci _extrahování polí_ .
 
-![Protokoly extrahovat pole](media/log-search-transition/extract-fields-logs.png)
+![Protokoly – pole extrahování](media/log-search-transition/extract-fields-logs.png)
 
-## <a name="functions-and-computer-groups"></a>Funkce a skupin počítačů
-Uložení hledání v prohledávání protokolu, vyberte **uložená hledání** a **přidat** zadali název, kategorie a text dotazu. Vytvoření [skupinu počítačů](../platform/computer-groups.md) přidáním alias funkce.
+## <a name="functions-and-computer-groups"></a>Funkce a skupiny počítačů
+Pokud chcete výsledky hledání uložit v hledání v protokolu, vyberte možnost **uložená hledání** a **Přidat** a zadejte název, kategorii a text dotazu. Vytvořte [skupinu počítačů](../platform/computer-groups.md) přidáním aliasu funkce.
 
-![Uložit hledání v protokolu](media/log-search-transition/save-search-log-search.png)
+![Uložit prohledávání protokolu](media/log-search-transition/save-search-log-search.png)
 
-Chcete-li uložit aktuální dotaz protokoly Azure monitoru, vyberte **Uložit**. Změnit **uložit jako** k _– funkce_ a zadejte **Alias funkce** k vytvoření [funkce](functions.md). Vyberte _uložit tento dotaz jako skupinu počítačů_ alias funkce pro použití [skupinu počítačů](../platform/computer-groups.md).
+Pokud chcete uložit aktuální dotaz do protokolů Azure Monitor, vyberte **Uložit**. Změňte **Uložit jako** na _funkci_ a zadejte **alias funkce** pro vytvoření [funkce](functions.md). Pokud chcete použít alias funkce pro [skupinu počítačů](../platform/computer-groups.md), vyberte _Uložit tento dotaz jako skupinu počítačů_ .
 
-![Uložit dotaz protokolu](media/log-search-transition/save-query-logs.png)
+![Uložit dotaz na protokol](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>Uložené dotazy
-V prohledávání protokolu, jsou k dispozici prostřednictvím položky panelu Akce uložené dotazy **uložená hledání**. V protokolech Azure Monitor, přístup k uložených dotazů z [Průzkumníka dotazů](../log-query/get-started-portal.md#save-queries).
+V hledání v protokolu jsou uložené dotazy k dispozici prostřednictvím **uloženého hledání**položky panelu akcí. V Azure Monitor protokoly získáte přístup k uloženým dotazům z [Průzkumníku dotazů](../log-query/get-started-portal.md#save-queries).
 
 ![Průzkumník dotazů](media/log-search-transition/query-explorer.png)
 
-## <a name="drill-down-on-summarized-rows"></a>K podrobnostem na souhrnné řádků
-V prohledávání protokolu můžete kliknutím na řádek v souhrnné dotazu a spusťte další dotaz, který obsahuje podrobné záznamy v daném řádku.
+## <a name="drill-down-on-summarized-rows"></a>Přechod k podrobnostem o shrnutých řádcích
+V hledání v protokolu můžete kliknout na řádek v souhrnném dotazu a spustit další dotaz, který obsahuje seznam podrobných záznamů v daném řádku.
 
-![Přejít k podrobnostem vyhledávání protokolu](media/log-search-transition/drilldown-search.png)
+![Podrobnosti hledání v protokolu](media/log-search-transition/drilldown-search.png)
 
-V protokolech Azure Monitor je třeba upravit dotaz, který vrací tyto záznamy. Rozbalte některou řádků ve výsledcích a klikněte **+** vedle hodnoty, které chcete přidat do dotazu. Poté komentář **shrnout** příkazů a spusťte dotaz znovu.
+V protokolu Azure Monitor musíte upravit dotaz, aby se tyto záznamy vracely. Rozbalte jeden z řádků ve výsledcích a kliknutím na **+** vedle hodnoty ho přidejte do dotazu. Pak z příkazu **Shrnutí** přidejte komentář a spusťte dotaz znovu.
 
-![Přejít k podrobnostem protokoly Azure monitoru](media/log-search-transition/drilldown-logs.png)
+![Podrobnosti o protokolu Azure Monitor](media/log-search-transition/drilldown-logs.png)
 
 ## <a name="take-action"></a>Provést akci
-V prohledávání protokolu můžete [spuštění sady runbook](take-action.md) z výsledku hledání tak, že vyberete **provést akci**.
+V hledání v protokolu můžete [Spustit sadu Runbook](take-action.md) z výsledků hledání výběrem **akce provést**.
 
 ![Provést akci](media/log-search-transition/take-action-log-search.png)
 
-V protokolech Azure Monitor [vytvořte výstrahu z dotazu protokolu](../platform/alerts-log.md). Skupiny akcí nakonfigurujte jednu nebo více akcí, které se spustí v reakci na upozornění.
+V Azure Monitor protokoly [vytvořte výstrahu z dotazu protokolu](../platform/alerts-log.md). Nakonfigurujte skupinu akcí s jednou nebo více akcemi, které se spustí v reakci na danou výstrahu.
 
 ![Skupina akcí](media/log-search-transition/action-group.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o novém [protokoly Azure monitoru prostředí](get-started-portal.md).
+- Přečtěte si další informace o nových [prostředích Azure monitor protokolů](get-started-portal.md).

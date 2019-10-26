@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/21/2019
-ms.openlocfilehash: 1e847fd2ac39c93b28925cff3fe0a4c17a69da9f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.date: 10/23/2019
+ms.openlocfilehash: bb47f0d2e02ce5cd055ebaae2e2a2f33ce77cd43
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750476"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901406"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -65,7 +65,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
   Do stejné skupiny převzetí služeb při selhání můžete umístit několik samostatných databází na stejném SQL Databaseovém serveru. Pokud přidáte do skupiny převzetí služeb při selhání jednu databázi, automaticky vytvoří sekundární databázi pomocí stejné edice a výpočetní velikosti na sekundárním serveru.  Tento server jste zadali při vytvoření skupiny převzetí služeb při selhání. Pokud přidáváte databázi, která už má sekundární databázi na sekundárním serveru, toto propojení geografické replikace je zděděné skupinou. Když přidáváte databázi, která už má sekundární databázi na serveru, který není součástí skupiny převzetí služeb při selhání, vytvoří se na sekundárním serveru nový sekundární objekt.
   
   > [!IMPORTANT]
-  > Ve spravované instanci jsou replikovány všechny uživatelské databáze. V této skupině převzetí služeb při selhání nelze vybrat podmnožinu uživatelských databází pro replikaci.
+  > Ujistěte se, že sekundární server nemá databázi se stejným názvem, pokud se nejedná o existující sekundární databázi. Ve skupinách převzetí služeb při selhání pro spravovanou instanci se replikují všechny uživatelské databáze. V této skupině převzetí služeb při selhání nelze vybrat podmnožinu uživatelských databází pro replikaci.
 
 - **Přidání databází do elastického fondu do skupiny převzetí služeb při selhání**
 
@@ -89,6 +89,9 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 - **Zásady automatického převzetí služeb při selhání**
 
   Ve výchozím nastavení je skupina převzetí služeb při selhání nakonfigurovaná se zásadami automatického převzetí služeb při selhání. Služba SQL Database aktivuje převzetí služeb při selhání po zjištění selhání a vypršení lhůty. Systém musí ověřit, jestli se výpadek nedá zmírnit vestavěnou [infrastrukturou vysoké dostupnosti služby SQL Database](sql-database-high-availability.md) z důvodu rozsahu dopadu. Pokud chcete řídit pracovní postup převzetí služeb při selhání z aplikace, můžete automatické převzetí služeb při selhání vypnout.
+  
+  > [!NOTE]
+  > Vzhledem k tomu, že ověřování škály výpadku a jak rychle se dá zmírnit, zahrnuje lidské akce tým provozu, období odkladu nelze nastavit pod jednu hodinu.  Toto omezení se vztahuje na všechny databáze ve skupině převzetí služeb při selhání bez ohledu na stav synchronizace dat. 
 
 - **Zásada převzetí služeb při selhání jen pro čtení**
 
@@ -150,7 +153,7 @@ Při navrhování služby s ohledem na provozní kontinuitu se řiďte těmito o
   Jednu nebo více skupin s podporou převzetí služeb při selhání je možné vytvořit mezi dvěma servery v různých oblastech (primární a sekundární servery). Každá skupina může zahrnovat jednu nebo několik databází, které jsou obnoveny jako jednotka v případě výpadku v primární oblasti, nebo některé primární databáze nebudou k dispozici. Skupina převzetí služeb při selhání vytvoří geograficky sekundární databázi se stejným cílem služby jako primární. Pokud přidáte existující relaci geografické replikace do skupiny převzetí služeb při selhání, ujistěte se, že je geograficky sekundární nakonfigurovaná se stejnou úrovní služeb a výpočetní velikostí jako primární.
   
   > [!IMPORTANT]
-  > Vytváření skupin převzetí služeb při selhání mezi dvěma servery v různých předplatných se v současné době nepodporuje u izolovaných databází a elastických fondů.
+  > Vytváření skupin převzetí služeb při selhání mezi dvěma servery v různých předplatných se v současné době nepodporuje u izolovaných databází a elastických fondů. Pokud primární nebo sekundární server přesunete do jiného předplatného po vytvoření skupiny převzetí služeb při selhání, může dojít k selhání požadavků na převzetí služeb při selhání a dalších operací.
 
 - **Použití naslouchacího procesu pro čtení i zápis pro úlohu OLTP**
 
@@ -326,7 +329,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 | Rutina | Popis |
 | --- | --- |
-| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Odebere skupinu převzetí služeb při selhání ze serveru a odstraní všechny sekundární databáze zahrnuté do skupiny. |
 | [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Načte konfiguraci skupiny převzetí služeb při selhání. |
 | [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání. |
@@ -342,7 +345,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 | Rutina | Popis |
 | --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
+| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání.|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Načte konfiguraci skupiny převzetí služeb při selhání.|
 | [Switch – AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server.|

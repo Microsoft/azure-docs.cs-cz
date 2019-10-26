@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 15ff84bf8a194c6172864601e3aefe78f9cc13a3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 51a6721c8bbac86e9c96ee392de3199b0456860f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140583"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901359"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Přírůstkové načtení dat ze zdrojového úložiště dat do cílového úložiště dat
 
@@ -54,12 +54,12 @@ V případě šablon se podívejte na tyto informace:
 - [Kopírovat nové soubory podle LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>Načítání nových souborů pouze pomocí dělené složky nebo názvu souboru.
-Můžete kopírovat pouze nové soubory, ve kterých již byl čas rozdělen soubory nebo složky s timeslice informacemi jako součást názvu souboru nebo složky (například/yyyy/MM/DD/File.csv). Je to nejvyšší výkon pro přírůstkové načítání nových souborů. 
+Můžete kopírovat pouze nové soubory, ve kterých již byl čas rozdělen soubory nebo složky s timeslice informacemi jako součást názvu souboru nebo složky (například/yyyy/MM/DD/File.csv). Je to nejvíce výkonného přístupu pro přírůstkové načítání nových souborů. 
 
 Podrobné pokyny najdete v následujícím kurzu: <br/>
 - [Přírůstkové kopírování nových souborů na základě času v dělené složce nebo názvu souboru z úložiště objektů BLOB v Azure do Azure Blob Storage](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přejděte k následujícímu kurzu: 
 
 > [!div class="nextstepaction"]

@@ -8,39 +8,40 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 99194c42dbc6ef07301be517021bf0fb4b4e7c23
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173511"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893943"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Vytvoření řešení Azure VMware pomocí služby CloudSimple
 
 Pokud chcete začít s řešením Azure VMware od CloudSimple, vytvořte v Azure Portal službu řešení Azure VMware podle CloudSimple.
 
-> [!IMPORTANT]
-> Před vytvořením služby CloudSimple musíte zaregistrovat poskytovatele prostředků Microsoft. VMwareCloudSimple ve vašem předplatném Azure. Postupujte podle kroků v části [povolení poskytovatele prostředků Microsoft. VMwareCloudSimple ve vašem předplatném Azure](enable-cloudsimple-service.md).
+## <a name="before-you-begin"></a>Než začnete
 
-## <a name="sign-in-to-azure"></a>Přihlaste se k Azure
+Přidělte bloku CIDR/28 pro podsíť brány. Pro každou službu CloudSimple se vyžaduje podsíť brány a je jedinečná pro oblast, ve které je vytvořená. Podsíť brány se používá pro služby hraniční sítě a vyžaduje blok CIDR/28. Adresní prostor podsítě brány musí být jedinečný. Nesmí se překrývat s žádnou sítí, která komunikuje s prostředím CloudSimple. Sítě, které komunikují s CloudSimple, zahrnují místní sítě a virtuální sítě Azure.
 
-Přihlaste se k [Azure Portal](https://portal.azure.com).
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-the-service"></a>Vytvoření služby
 
-1. Vyberte **všechny služby**.
+1. Vyberte **Všechny služby**.
 2. Vyhledejte **služby CloudSimple Services**.
-    Služba @no__t 0Search CloudSimple @ no__t-1
+    Služba ![Search CloudSimple](media/create-cloudsimple-service-search.png)
 3. Vyberte **CloudSimple Services**.
 4. Kliknutím na **Přidat** vytvořte novou službu.
-    Služba @no__t 0Add CloudSimple @ no__t-1
+    ![přidat](media/create-cloudsimple-service-add.png) služby CloudSimple
 5. Vyberte předplatné, ve kterém chcete vytvořit službu CloudSimple.
 6. Vyberte skupinu prostředků pro službu. Pokud chcete přidat novou skupinu prostředků, klikněte na **vytvořit novou**.
 7. Zadejte název pro identifikaci služby.
 8. Zadejte CIDR pro bránu služby. Zadejte podsíť/28, která se nepřekrývá s žádnou z vašich místních podsítí, podsítí Azure ani s plánovanými podsítěmi CloudSimple. Po vytvoření služby nemůžete změnit CIDR.
 
     ![Vytvoření služby CloudSimple](media/create-cloudsimple-service.png)
-9. Klikněte na tlačítko **OK**.
+9. Klikněte na **OK**.
 
 Služba je vytvořena a přidána do seznamu služeb.
 

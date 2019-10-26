@@ -4,19 +4,19 @@ description: Správa delegovaných prostředků v Azure umožňuje prostředí p
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/18/2019
+ms.date: 10/24/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8d7b1f24d5dcf3d66ffd04704c79a284c4810365
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: eb4ec10755b7ca2227623ba0842d2b1175635594
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598451"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901817"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
-Tento článek popisuje scénáře, které vám jako poskytovatel služeb můžou využít se [správou delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md) ke správě prostředků Azure pro více zákazníků v rámci vašeho vlastního tenanta v [Azure Portal](https://portal.azure.com).
+Jako poskytovatel služeb můžete použít [správu delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md) ke správě prostředků Azure pro více zákazníků v rámci vašeho vlastního tenanta v [Azure Portal](https://portal.azure.com). Většinu úkolů a služeb je možné provádět u delegovaných prostředků Azure ve spravovaných klientech. Tento článek popisuje některé z rozšířených scénářů, ve kterých může být efektivní správa delegovaných prostředků Azure.
 
 > [!NOTE]
 > Správu delegovaných prostředků Azure je možné použít i v rámci podniku, který má více tenantů, aby zjednodušila správu mezi klienty.
@@ -37,9 +37,15 @@ Pomocí delegované správy prostředků Azure se oprávnění uživatelé můž
 
 ![Prostředky zákazníka spravované prostřednictvím jednoho tenanta poskytovatele služeb](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
-## <a name="supported-services-and-scenarios"></a>Podporované služby a scénáře
+## <a name="apis-and-management-tool-support"></a>Podpora rozhraní API a nástrojů pro správu
 
-Prostředí pro správu mezi klienty v současné době podporuje v rámci delegovaných zákaznických prostředků následující scénáře:
+Úlohy správy můžete u delegovaných prostředků provádět buď přímo na portálu, nebo pomocí rozhraní API a nástrojů pro správu (například Azure CLI a Azure PowerShell). Všechna existující rozhraní API se dají použít při práci s delegovanými prostředky, pokud je tato funkce podporovaná pro správu mezi klienty a uživatel má příslušná oprávnění.
+
+Poskytujeme také rozhraní API k provádění úloh správy delegovaných prostředků Azure. Další informace najdete v části **reference** .
+
+## <a name="enhanced-services-and-scenarios"></a>Rozšířené služby a scénáře
+
+Většinu úkolů a služeb je možné provádět na delegovaných prostředcích ve spravovaných klientech. Níže jsou uvedeny některé z klíčových scénářů, ve kterých může být Správa mezi klienty efektivní.
 
 [Azure Automation](https://docs.microsoft.com/azure/automation/):
 
@@ -55,7 +61,7 @@ Prostředí pro správu mezi klienty v současné době podporuje v rámci deleg
 
 [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
-- Zobrazit výstrahy pro delegovaná předplatná v Azure Portal nebo programově prostřednictvím volání REST API, s možností zobrazovat výstrahy napříč všemi předplatnými
+- Zobrazit výstrahy pro delegovaná předplatná s možností zobrazovat výstrahy napříč všemi předplatnými
 - Zobrazit podrobnosti protokolu aktivit pro delegované odběry
 - Log Analytics: dotazování dat ze vzdálených pracovních prostorů zákazníka ve více klientech
 - Vytváření výstrah v klientech zákazníka, kteří spouštějí automatizaci, například Azure Automation Runbooky nebo Azure Functions v tenantovi poskytovatele služeb prostřednictvím webhooků
@@ -121,16 +127,9 @@ Prostředí pro správu mezi klienty v současné době podporuje v rámci deleg
 U všech scénářů Prosím mějte na paměti následující stávající omezení:
 
 - Požadavky, které jsou zpracovávány Azure Resource Manager, lze provádět pomocí delegované správy prostředků Azure. Identifikátory URI operace pro tyto požadavky začínají na `https://management.azure.com`. Nicméně požadavky, které jsou zpracovávány instancí typu prostředku (například přístup k tajným klíčům klíčů nebo přístup k datům úložiště), se nepodporují se správou delegovaných prostředků Azure. Operace s identifikátory URI pro tyto požadavky obvykle začínají adresou, která je pro vaši instanci jedinečná, například `https://myaccount.blob.core.windows.net` nebo `https://mykeyvault.vault.azure.net/`. Druhá z nich také obvykle slouží k operacím s daty a nikoli k operacím správy. 
-- Přiřazení rolí musí používat [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)řízení přístupu na základě role (RBAC). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastníka, správce přístupu uživatele nebo jakýchkoli integrovaných rolí s oprávněním [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Vlastní role a [role správců pro klasický odběr](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) se také nepodporují.
+- Přiřazení rolí musí používat [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)řízení přístupu na základě role (RBAC). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastníka nebo jakýchkoli integrovaných rolí s oprávněním pro [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Role správce přístupu uživatelů je podporovaná jenom pro omezené použití při [přiřazování rolí ke spravovaným identitám](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Vlastní role a [role správců pro klasický odběr](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nejsou podporovány.
 - V současné době nemůžete připojit předplatné (nebo skupinu prostředků v rámci předplatného) pro správu delegovaných prostředků Azure, pokud předplatné používá Azure Databricks. Podobně platí, že pokud bylo předplatné zaregistrované pro registraci u poskytovatele prostředků **Microsoft. ManagedServices** , nebudete moct v tomto okamžiku vytvořit pracovní prostor datacihly pro toto předplatné.
 - I když můžete připojit odběry a skupiny prostředků pro správu delegovaných prostředků Azure, které mají zámky prostředků, nebudou tyto zámky bránit provádění akcí uživatelům ve správě tenanta. [Zakažte přiřazení](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) , která chrání systémem spravované prostředky, jako jsou ty, které vytvořily spravované aplikace Azure nebo plány Azure (přiřazení zamítnutí přiřazení systémem), zabrání uživatelům ve správě tenanta na těchto prostředcích. Nicméně v tomto okamžiku nemohou uživatelé v tenantovi zákazníka vytvořit vlastní přiřazení odepřít (přiřazení odepřít uživateli).
-
-## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>Používání rozhraní API a nástrojů pro správu se správou mezi klienty
-
-U podporovaných služeb a scénářů uvedených výše můžete provádět úlohy správy buď přímo na portálu, nebo pomocí rozhraní API a nástrojů pro správu (například Azure CLI a Azure PowerShell). Všechna existující rozhraní API se dají použít při práci s delegovanými prostředky (pro podporované služby).
-
-K dispozici jsou také rozhraní API specifická pro provádění úloh správy delegovaných prostředků Azure. Další informace najdete v části **reference** .
-
 
 ## <a name="next-steps"></a>Další kroky
 

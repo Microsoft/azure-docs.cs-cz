@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c7257ec35f9a53f84edebd5e15b7144c49daf682
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 4acfe148e424d41308e310abd2a10e4e21133799
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514956"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900851"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v Node. js prostřednictvím IoT Hub datových proudů zařízení (Preview)
 
@@ -44,9 +44,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 
-*  **Střed USA**
-
-*  **Střed USA EUAP**
+  * Střední USA
+  * Střed USA EUAP
+  * Severní Evropa
+  * Jihovýchodní Asie
 
 Chcete-li spustit aplikaci na straně služby v tomto rychlém startu, potřebujete Node. js v10 za účelem. x. x nebo novější ve vývojovém počítači.
 

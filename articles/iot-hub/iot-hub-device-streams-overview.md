@@ -1,94 +1,94 @@
 ---
-title: Proudy zařízení Azure IoT Hub (preview) | Dokumentace Microsoftu
-description: Přehled datových proudů zařízení služby IoT Hub
+title: Datové proudy zařízení v Azure IoT Hub (Preview) | Microsoft Docs
+description: Přehled datových proudů zařízení IoT Hub
 author: robinsh
 services: iot-hub
 ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: 86f8c6e527f58a7c4cfca6233165f0ab05426409
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c71ca96ee657cd4d4d0d57e05dc31c03112dc848
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672577"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900727"
 ---
-# <a name="iot-hub-device-streams-preview"></a>IoT Hub zařízení datové proudy (preview)
+# <a name="iot-hub-device-streams-preview"></a>Datové proudy zařízení IoT Hub (Preview)
 
-Azure IoT Hub *datové proudy zařízení* usnadnění vytváření zabezpečenými tunely obousměrné TCP pro celou řadu scénářů komunikace typu cloud zařízení. Datový proud zařízení je zprostředkována služby IoT Hub *koncový bod streamování* který funguje jako proxy mezi zařízením a službou koncové body. Tento instalační program, znázorněný na obrázku níže, je užitečná, pokud zařízení jsou za síťovou bránu firewall nebo se nacházejí v privátní síti. V důsledku toho datové proudy zařízení služby IoT Hub pomáhají adresy zákazníků potřebuje k dosažení zařízení IoT, firewallem procházející způsobem a bez nutnosti široce vám otevírají příchozí nebo odchozí síťové porty brány firewall.
+*Datové proudy zařízení* Azure IoT Hub usnadňují vytváření zabezpečených obousměrných tunelů TCP pro nejrůznější scénáře komunikace z cloudu na zařízení. Datový proud zařízení je vyzpůsobený *koncovým bodem streamování* IoT Hub, který funguje jako proxy mezi koncovými body zařízení a služeb. Toto nastavení zobrazené v následujícím diagramu je zvlášť užitečné v případě, že zařízení jsou za síťovou bránou firewall nebo se nacházejí v privátní síti. V takovém případě IoT Hub datové proudy zařízení usnadňují adresování zákazníků, aby měli přístup k zařízením IoT v souladu s bránou firewall a bez nutnosti široce otevírat příchozí nebo odchozí porty brány firewall sítě.
 
-!["Přehled datových proudů zařízení služby IoT Hub"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png )
+![Přehled "IoT Hub datových proudů zařízení"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png )
 
-Použití streamů zařízení služby IoT Hub, zařízení zabezpečení a bude muset otevřít odchozí připojení TCP ke službě IoT hub koncový bod streamování přes port 443. Po vytvoření datového proudu aplikace straně služby a zařízení se mají programový přístup k objektu objektu websocket na straně klienta pro odesílání a přijímání nezpracovaná bajtů, které mají mezi sebou. Spolehlivost a poskytuje toto tunelové propojení zaručuje řazení je stejné jako TCP.
+Pomocí IoT Hub datových proudů zařízení zůstanou zařízení zabezpečená a bude potřeba otevřít jenom odchozí připojení TCP na koncový bod streamování služby IoT Hub přes port 443. Po navázání datového proudu budou mít aplikace na straně služby a na straně zařízení k dispozici programový přístup k objektu klienta WebSocket pro odesílání a příjem nezpracovaných bajtů do sebe. Záruky spolehlivosti a řazení poskytované tímto tunelovým propojením jsou v nominální hodnotě TCP.
 
 ## <a name="benefits"></a>Výhody
 
-Datové proudy zařízení služby IoT Hub poskytuje následující výhody:
+Datové proudy zařízení IoT Hub poskytují následující výhody:
 
-* **Firewallem procházející zabezpečené připojení:** Zařízení IoT můžete přejít z koncových bodů služby bez otevření brány firewall pro příchozí port na zařízení nebo sítě perimetry (jenom odchozí připojení ke službě IoT Hub je potřeba přes port 443).
+* **Zabezpečené připojení s bránou firewall:** K zařízením IoT se dá získat přístup z koncových bodů služby bez otevření portu příchozí brány firewall na hraničních zařízeních zařízení nebo sítě (pro port 443 se vyžaduje jenom odchozí připojení k IoT Hub).
 
-* **Ověřování:** Zařízení a služby konce tunelu muset provádět ověřování pomocí služby IoT Hub pomocí svých přihlašovacích údajů odpovídající.
+* **Ověřování:** Strany zařízení i služby tunelového propojení potřebují ověřit pomocí IoT Hub pomocí příslušných přihlašovacích údajů.
 
-* **Šifrování:** Ve výchozím nastavení používají datové proudy zařízení služby IoT Hub povolený protokol TLS připojení. Tím se zajistí, že provoz se šifruje vždy bez ohledu na to, zda aplikace používá šifrování, nebo ne.
+* **Šifrování:** IoT Hub datové proudy zařízení ve výchozím nastavení používají připojení s povoleným protokolem TLS. Tím se zajistí, že se přenosy vždycky šifrují bez ohledu na to, jestli aplikace používá šifrování nebo ne.
 
-* **Jednoduchost připojení:** V mnoha případech použití datových proudů zařízení eliminuje potřebu složité nastavení virtuální privátní sítě chcete umožnit připojení k zařízením IoT.
+* **Jednoduchost připojení:** V mnoha případech použití datových proudů zařízení eliminuje nutnost složitosti nastavení virtuálních privátních sítí, aby bylo možné povolit připojení k zařízením IoT.
 
-* **Kompatibilita s zásobník protokolu TCP/IP:** Datové proudy zařízení služby IoT Hub zvládne provozu aplikace protokolu TCP/IP. To znamená, že tuto funkci využít širokou škálu protokolů proprietární i standardizované.
+* **Kompatibilita se zásobníkem protokolu TCP/IP:** Datové proudy zařízení IoT Hub můžou vyhovovat provozu aplikace TCP/IP. To znamená, že tato funkce může využívat rozsáhlou škálu vlastních a také protokolů založených na standardech.
 
-* **Snadné použití v privátní síti nastavení:** Služba moct komunikovat se zařízením pomocí odkazu na ID zařízení, a nikoli IP adresu zařízení. To je užitečné v situacích, kdy zařízení se nachází v privátní síti a má privátní IP adresy nebo jeho IP adresa se dynamicky přiřadí a není známý na straně služby.
+* **Snadné použití v nastavení privátní sítě:** Služba může komunikovat se zařízením, a to tak, že odkazuje na ID zařízení, nikoli na IP adresu zařízení. To je užitečné v situacích, kdy se zařízení nachází uvnitř privátní sítě a má privátní IP adresu, nebo je adresa IP přiřazena dynamicky a je na straně služby neznámá.
 
-## <a name="device-stream-workflows"></a>Pracovní postupy datového proudu zařízení
+## <a name="device-stream-workflows"></a>Pracovní postupy streamování zařízení
 
-Datový proud zařízení platit, když služba žádostí o připojení k zařízení tím, že poskytuje jeho ID zařízení. Tento pracovní postup se obzvlášť zapadá do modelu komunikace klient/server, včetně SSH a protokolu RDP, kde uživatel si klade za cíl pro vzdálené připojení k serveru SSH nebo RDP spuštěného v příslušném zařízení pomocí protokolu SSH nebo RDP klientský program.
+Datový proud zařízení se iniciuje, když se služba pokusí o připojení k zařízení tím, že poskytuje ID zařízení. Tento pracovní postup zejména zapadá do komunikačního modelu typu klient/server, včetně SSH a RDP, kde se uživatel chce vzdáleně připojit k serveru SSH nebo RDP běžícímu na zařízení pomocí klientského programu SSH nebo RDP.
 
-Proces vytvoření datového proudu zařízení zahrnuje vyjednávání mezi zařízení, služby, hlavní služby IoT hub a koncové body streamování. Při vytváření datového proudu zařízení orchestruje hlavní koncový bod služby IoT hub zpracovává koncový bod streamování provozu, která probíhá mezi zařízení a služeb.
+Proces vytváření datových proudů zařízení zahrnuje vyjednávání mezi koncovými body pro zařízení, službu, hlavní a streamování služby IoT Hub. Zatímco hlavní koncový bod služby IoT Hub orchestruje vytváření streamu zařízení, koncový bod streamování zpracovává přenos dat, která se mezi službou a zařízením pracuje.
 
-### <a name="device-stream-creation-flow"></a>Zařízení stream vytvoření toku
+### <a name="device-stream-creation-flow"></a>Tok vytváření datových proudů zařízení
 
-Programové vytváření streamu zařízení pomocí sady SDK zahrnuje následující kroky, které jsou také znázorněné na následujícím obrázku:
+Programové vytvoření datového proudu zařízení pomocí sady SDK zahrnuje následující kroky, které jsou také znázorněny na následujícím obrázku:
 
-!["Zařízení stream metodou handshake"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-handshake.png)
+!["Proces handshake vysílání datového proudu zařízení"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-handshake.png)
 
-1. Aplikace zařízení zaregistruje zpětné volání předem chcete být upozorněni při zahájení nového datového proudu zařízení na zařízení. Tento krok obvykle probíhá při zařízení se spustí a připojí ke službě IoT Hub.
+1. Aplikace zařízení zaregistruje zpětné volání předem, aby bylo upozorněno na to, kdy je do zařízení inicializován nový datový proud zařízení. Tento krok se obvykle provádí při spuštění zařízení a připojení k IoT Hub.
 
-2. Straně služby program zahájí datovém proudu zařízení v případě potřeby zadáním ID zařízení (_není_ IP adresu).
+2. Program na straně služby inicializuje datový proud zařízení v případě potřeby tím, že poskytuje ID zařízení (_nikoli_ IP adresu).
 
-3. Služby IoT hub upozorní straně zařízení programu vyvoláním zpětného volání zaregistrovaný v kroku 1. Zařízení může přijmout nebo odmítnout žádosti o zahájení datového proudu. Tuto logiku mohou být specifické pro váš scénář aplikace. Pokud se požadavek streamu. zařízení, služby IoT Hub informuje službu. jinak postupujte podle následujících kroků.
+3. Služba IoT Hub upozorní program na straně zařízení vyvoláním zpětného volání registrovaného v kroku 1. Zařízení může přijmout nebo odmítnout požadavek na spuštění streamu. Tato logika může být specifická pro váš scénář aplikace. Pokud zařízení požadavek datového proudu odmítne, služba IoT Hub odpovídajícím způsobem informují. v opačném případě následují následující kroky.
 
-4. Zařízení vytvoří zabezpečené odchozí připojení TCP pro koncový bod streamování přes port 443 a upgraduje připojení na protokol WebSocket. Adresa URL koncového bodu streamování, stejně jako přihlašovací údaje používají k ověření jsou i k dispozici na zařízení ve službě IoT Hub jako součást požadavku odeslaného v kroku 3.
+4. Zařízení vytvoří zabezpečené odchozí připojení TCP ke koncovému bodu streamování přes port 443 a upgraduje připojení k objektu WebSocket. Adresa URL koncového bodu streamování a přihlašovací údaje, které se mají použít k ověřování, se do zařízení dodávají IoT Hub jako součást žádosti odeslané v kroku 3.
 
-5. Služba je informované o výsledku zařízení přijímá datový proud a pokračuje k vytvoření vlastního objektu websocket na straně klienta pro koncový bod streamování. Podobně obdrží streamování koncový bod adresy URL a ověřovací informace ze služby IoT Hub.
+5. Služba je informována o výsledku zařízení, které přijímá datový proud, a pokračuje v vytváření vlastního klienta protokolu WebSocket pro koncový bod streamování. Podobně přijímá adresu URL koncového bodu streamování a ověřovací informace z IoT Hub.
 
-V procesu metody handshake výše:
+V procesu handshake výše postupujte takto:
 
-* Procesu musí dokončit během 60 sekund (krok 2 až 5), jinak signalizace selže s časovým limitem a služba bude odpovídajícím způsobem uvědomen.
+* Proces handshake musí být dokončen do 60 sekund (krok 2 až 5), jinak se handshake nezdaří s časovým limitem a služba bude odpovídajícím způsobem oznámena.
 
-* Po dokončení vytváření toku datového proudu výše, koncový bod streamování bude fungovat jako proxy a přenášet provoz mezi službou a zařízení prostřednictvím jejich odpovídajících objekty Websocket.
+* Po dokončení toku vytváření datových proudů bude koncový bod streamování fungovat jako proxy server a bude přenášet provoz mezi službou a zařízením přes příslušné objekty WebSocket.
 
-* Zařízení a služby potřebují odchozí připojení k hlavní koncový bod služby IoT Hub, stejně jako koncový bod streamování přes port 443. Adresa URL z těchto koncových bodů je k dispozici na *přehled* karta na portálu služby IoT Hub.
+* Zařízení a služba potřebují odchozí připojení k hlavnímu koncovému bodu IoT Hub a také koncový bod streamování přes port 443. Adresa URL těchto koncových bodů je k dispozici na kartě *Přehled* na portálu IoT Hub.
 
-* Spolehlivost a zaručuje zavedené datového proudu řazení je stejné jako TCP.
+* Záruky spolehlivosti a řazení zavedeného datového proudu jsou v nominální hodnotě TCP.
 
-* Všechna připojení k službě IoT Hub a koncový bod streamování pomocí protokolu TLS a zašifrují.
+* Všechna připojení k IoT Hub a datovým koncovým bodem streamování používají TLS a jsou zašifrované.
 
-### <a name="termination-flow"></a>Ukončení toku
+### <a name="termination-flow"></a>Tok ukončení
 
-Zavedené datový proud je ukončeno buď TCP připojení k bráně jsou odpojené (pomocí služby nebo zařízení). To může proběhnout odpojit ukončením objektu WebSocket na zařízení nebo služba programy nebo nedobrovolně v případě selhání síťové připojení k vypršení časového limitu nebo proces. Po skončení zařízení nebo služby připojení na koncový bod streamování jiné připojení TCP také (nuceně) ukončí a zařízení a služeb odpovídají znovu vytvořit datový proud, v případě potřeby.
+Zavedený Stream se ukončí, když se některá z připojení TCP k bráně odpojí (pomocí služby nebo zařízení). To může probíhat dobrovolně tím, že se WebSocket uzavírá na zařízení nebo v programu služby nebo pokud nedošlo k vypršení časového limitu připojení k síti nebo selhání procesu. Po ukončení připojení zařízení nebo služby ke koncovému bodu streamování bude i další připojení TCP (vynuceně) ukončeno a služba a zařízení budou v případě potřeby v případě potřeby datového proudu znovu vytvářet.
 
 ## <a name="connectivity-requirements"></a>Požadavky na připojení
 
-Zařízení i ze strany služby stream zařízení musí být schopen vytvořit povolený protokol TLS připojení ke službě IoT Hub a její koncový bod streamování. To vyžaduje odchozí připojení přes port 443 s těmito koncovými body. Název hostitele spojené s těmito koncovými body najdete v *přehled* kartu služby IoT Hub, jak je znázorněno na následujícím obrázku:
+Zařízení i strany datového proudu zařízení musí být schopné vytvořit připojení s povoleným protokolem TLS pro IoT Hub a jeho koncový bod streamování. K těmto koncovým bodům vyžaduje odchozí připojení přes port 443. Název hostitele přidružený k těmto koncovým bodům lze najít na kartě *přehled* IoT Hub, jak je znázorněno na následujícím obrázku:
 
-!["Datový proud zařízení koncových bodů"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+!["Koncové body streamu zařízení"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-Můžete také informace o koncových bodech můžete získat pomocí rozhraní příkazového řádku Azure v části Vlastnosti centra konkrétně `property.hostname` a `property.deviceStreams` klíče.
+Alternativně lze informace o koncových bodech načíst pomocí rozhraní příkazového řádku Azure CLI v části vlastnosti rozbočovače, konkrétně `property.hostname` a `property.deviceStreams` klíče.
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
 ```
 
-Výstup je objekt JSON všechny koncové body, které vaše Centrum zařízení a služeb může být nutné připojit ke vytvořit datový proud zařízení.
+Výstupem je objekt JSON všech koncových bodů, ke kterým se musí zařízení a služba rozbočovače připojit, aby bylo možné vytvořit datový proud zařízení.
 
 ```json
 {
@@ -99,118 +99,118 @@ Výstup je objekt JSON všechny koncové body, které vaše Centrum zařízení 
 ```
 
 > [!NOTE]
-> Ověřte instalaci Azure CLI verze 2.0.57 nebo novější. Můžete stáhnout nejnovější verzi z [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) stránky.
+> Ujistěte se, že máte nainstalovanou verzi rozhraní příkazového řádku Azure CLI 2.0.57 nebo novější. Nejnovější verzi si můžete stáhnout ze stránky [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
 >
 
-## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Povolení odchozích připojení k zařízení koncové body streamování
+## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Povolení odchozího připojení k koncovým bodům streamování zařízení
 
-Jak už bylo zmíněno na začátku tohoto článku, vaše zařízení vytvoří odchozí připojení ke službě IoT Hub koncový bod streamování během procesu inicializace datové proudy zařízení. Brány firewall na zařízení nebo v jeho síti musíte povolit odchozí připojení k bráně streamování přes port 443 (Všimněte si, že komunikace probíhá přes připojení pomocí protokolu WebSocket, která je zašifrovaná pomocí protokolu TLS).
+Jak je uvedeno na začátku tohoto článku, vaše zařízení vytvoří odchozí připojení k IoT Hub koncový bod streamování během procesu inicializace datových proudů zařízení. Brány firewall na zařízení nebo v jeho síti musí umožňovat odchozí připojení k bráně streamování přes port 443 (Všimněte si, že komunikace probíhá přes připojení protokolu WebSocket šifrované pomocí protokolu TLS).
 
-Název hostitele koncového bodu streamování zařízení můžete najít na portálu Azure IoT Hub na kartě Přehled. !["Datový proud zařízení koncových bodů"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+Název hostitele koncového bodu streamování zařízení najdete na portálu Azure IoT Hub na kartě Přehled. !["koncové body streamu zařízení"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-Alternativně můžete najít tyto informace pomocí Azure CLI:
+Případně můžete tyto informace najít pomocí Azure CLI:
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Ověřte instalaci Azure CLI verze 2.0.57 nebo novější. Můžete stáhnout nejnovější verzi z [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) stránky.
+> Ujistěte se, že máte nainstalovanou verzi rozhraní příkazového řádku Azure CLI 2.0.57 nebo novější. Nejnovější verzi si můžete stáhnout ze stránky [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>Řešení potíží pomocí datové proudy zařízení protokolů aktivit
+## <a name="troubleshoot-via-device-streams-activity-logs"></a>Řešení potíží prostřednictvím protokolů aktivit datových proudů zařízení
 
-Protokoly Azure Monitor můžete nastavit ke shromažďování streamů zařízení protokolu aktivit ve službě IoT Hub. To může být velmi užitečné při řešení potíží se scénáři.
+Můžete nastavit protokoly Azure Monitor pro shromáždění protokolu aktivit datových proudů zařízení v IoT Hub. To může být velmi užitečné při řešení potíží.
 
-Postupujte podle pokynů níže nakonfigurujte protokoly Azure monitoru pro aktivity stream zařízení služby IoT Hub:
+Pomocí následujících kroků Nakonfigurujte protokoly Azure Monitor pro aktivity streamu zařízení IoT Hub:
 
-1. Přejděte *nastavení diagnostiky* kartě ve službě IoT Hub a klikněte na *zapnout diagnostiku* odkaz.
+1. V IoT Hub přejděte na kartu *nastavení diagnostiky* a klikněte na zapnout odkaz *zapnout diagnostiku* .
 
-   !["Povolování diagnostické protokoly"](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+   ![Povolení diagnostických protokolů](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
 
-2. Zadejte název pro nastavení diagnostiky a zvolte *odesílat do Log Analytics* možnost. Průvodce zvolte existující prostředek pracovního prostoru Log Analytics nebo vytvořte novou. Dále zkontrolujte, *DeviceStreams* ze seznamu.
+2. Zadejte název pro nastavení diagnostiky a vyberte možnost *Odeslat do Log Analytics* . Průvodce vám umožní zvolit existující prostředek pracovního prostoru Log Analytics nebo vytvořit nový. Dále si prohlédněte *DeviceStreams* ze seznamu.
 
-    !["Povolit protokoly datových proudů zařízení"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
+    ![Povolit protokoly datových proudů zařízení](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
 
-3. Teď umožňuje přistupovat k protokolům datové proudy zařízení v části *protokoly* karta na portálu služby IoT Hub. Zobrazí se v zařízení streamování protokolů aktivit `AzureDiagnostics` tabulky a mít `Category=DeviceStreams`.
+3. Teď máte přístup k protokolům datových proudů zařízení na kartě *protokoly* na portálu IoT Hub. Protokoly aktivit datových proudů zařízení se zobrazí v tabulce `AzureDiagnostics` a mají `Category=DeviceStreams`.
 
-   Jak je znázorněno níže, identita cílového zařízení a výsledek operace je také k dispozici v protokolech.
+   Jak vidíte níže, identita cílového zařízení a výsledek operace je také k dispozici v protokolech.
 
-   !["Přístup ke streamování protokolů zařízení"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
+   !["Přístup k protokolům datových proudů zařízení"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
 
 ## <a name="regional-availability"></a>Dostupnost podle oblastí
 
-Ve verzi public preview datové proudy IoT Hub zařízení jsou dostupné v oblastech střed USA a střed USA – EUAP. Ujistěte se prosím, že vytvoření centra v jedné z těchto oblastí.
+Během veřejné verze Preview jsou IoT Hub datové proudy zařízení dostupné v oblastech Střed USA, Střed USA EUAP, Severní Evropa a jihovýchodní Asie. Ujistěte se prosím, že jste vytvořili centrum v jedné z těchto oblastí.
 
 ## <a name="sdk-availability"></a>Dostupnost sady SDK
 
-Obou stran jednotlivých datových proudech (na straně zařízení a služby) pomocí sady SDK IoT Hub pro vytvoření tunelu. Ve verzi public preview Zákazníci si mohou vybrat z následujících jazyků sady SDK:
+Dvě strany každého streamu (na straně zařízení a služeb) používají k vytvoření tunelu sadu IoT Hub SDK. Během veřejné verze Preview si zákazníci můžou vybrat z těchto jazyků SDK:
 
-* C a C# SDK podporují datové proudy zařízení na straně zařízení.
+* Datové proudy C# zařízení podporujících jazyk C a SDK na straně zařízení.
 
-* Prostředí NodeJS a C# SDK podporují datové proudy zařízení na straně služby.
+* NodeJS a C# sada SDK podporují streamování zařízení na straně služby.
 
-## <a name="iot-hub-device-stream-samples"></a>Ukázky služby stream zařízení služby IoT Hub
+## <a name="iot-hub-device-stream-samples"></a>Ukázka streamu zařízení IoT Hub
 
-Existují dva [ukázky quickstart](/azure/iot-hub) k dispozici na stránce služby IoT Hub. Tyto aplikace ukazují použití datových proudů zařízení.
+Na stránce IoT Hub jsou k dispozici dva [ukázky rychlý Start](/azure/iot-hub) . Ty ukazují použití datových proudů zařízení podle aplikací.
 
-* *Echo* ukázce programové využívání datových proudů zařízení (pomocí přímého volání rozhraní API sady SDK).
+* Ukázka *ozvěny* znázorňuje programové použití datových proudů zařízení (přímým VOLÁNÍM rozhraní API SDK).
 
-* *Místní proxy* ukázce tunelování provozu aplikace předem připravená klient/server (například SSH, RDP i na webu) prostřednictvím datových proudů zařízení.
+* Ukázka *místního proxy serveru* demonstruje tunelování provozu klientských a serverových aplikací (například SSH, RDP nebo Web) prostřednictvím datových proudů zařízení.
 
-Tyto ukázky jsou zahrnuté podrobněji níže.
+Tyto ukázky jsou podrobněji popsány níže.
 
-### <a name="echo-sample"></a>Ukázka programu echo
+### <a name="echo-sample"></a>Ukázka ozvěny
 
-Echo ukázce programové využívání datových proudů zařízení k odesílání a příjem bajtů mezi aplikacemi na zařízení a služeb. Všimněte si, že můžete použít programy pro zařízení a služeb v různých jazycích. Například můžete použít zařízení programu jazyka C pomocí C# programu služby.
+Ukázka ozvěny znázorňuje programové použití datových proudů zařízení k posílání a přijímání bajtů mezi aplikacemi a aplikacemi pro zařízení. Všimněte si, že v různých jazycích můžete používat služby a programy zařízení. Například můžete použít program zařízení jazyka C s programem C# služby.
 
-Tady jsou ukázky echo:
+Tady jsou ukázky ozvěny:
 
-* [C#Služba a služba programu](quickstart-device-streams-echo-csharp.md)
+* [C#program služby a služby](quickstart-device-streams-echo-csharp.md)
 
-* [Aplikace služby Node.js](quickstart-device-streams-echo-nodejs.md)
+* [Program služby Node. js](quickstart-device-streams-echo-nodejs.md)
 
-* [Program pro zařízení jazyka C](quickstart-device-streams-echo-c.md)
+* [Program zařízení v jazyce C](quickstart-device-streams-echo-c.md)
 
-### <a name="local-proxy-sample-for-ssh-or-rdp"></a>Ukázka místní proxy (pro protokol RDP nebo SSH)
+### <a name="local-proxy-sample-for-ssh-or-rdp"></a>Ukázka místního proxy serveru (pro SSH nebo RDP)
 
-Místní proxy příklad znázorňuje způsob, jak povolit tunelování přenosů existující aplikaci, která zahrnuje komunikace mezi klientem a serverem programu. Toto nastavení platí pro protokoly klient/server, jako jsou SSH a protokolu RDP, kde straně služby slouží jako klient (spuštěné programy klienta SSH nebo RDP), a na straně zařízení jako serveru (běžícího proces démon programu SSH nebo RDP serverových programů).
+Ukázka místního proxy serveru demonstruje způsob, jak povolit tunelování provozu existující aplikace, který zahrnuje komunikaci mezi klientem a serverovým programem. Toto nastavení funguje u protokolů klienta a serveru, jako jsou SSH a RDP, kde se na straně služby chová jako klient (spouštějí se klientské programy SSH nebo RDP) a na straně zařízení funguje jako server (spouští se programy démona SSH nebo server RDP).
 
-Tato část popisuje použití datových proudů zařízení chcete povolit uživatele SSH k zařízení přes zařízení datové proudy (v případě protokolu RDP nebo jiné aplikace klient/server jsou podobné s použitím protokolu odpovídající port).
+Tato část popisuje použití datových proudů zařízení k tomu, aby uživatel mohl na zařízení přes datové proudy zařízení používat protokol RDP (případ protokolu RDP nebo jiná aplikace klienta/serveru je podobný pomocí odpovídajícího portu protokolu).
 
-Nastavení využívá dva *místní proxy* programy je vidět na obrázku níže, a to *zařízení místní proxy* a *místní službu proxy*. Místní proxy aplikací je odpovědný za provedení [zařízení stream zahájení handshake](#device-stream-creation-flow) pomocí služby IoT Hub a interakci s klientem SSH a proces démon programu SSH použití soketů regulární klient/server.
+Instalační program využívá dva *místní proxy* programy uvedené na následujícím obrázku, konkrétně *proxy servery* a *místní proxy služby*. Místní proxy programy zodpovídají za provádění [metody handshake iniciace datového proudu zařízení](#device-stream-creation-flow) pomocí IoT Hub a interakce s klientem SSH a démonem SSH pomocí běžných soketů klientů a serverů.
 
-!["Datový proud proxy nastavení zařízení pro protokol RDP/SSH"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
+!["Nastavení proxy streamu zařízení pro SSH/RDP"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 
-1. Uživatel spustí služba místní proxy server k zahájení datovém proudu zařízení na zařízení.
+1. Uživatel spustí místní proxy server služby, aby inicializoval datový proud zařízení do zařízení.
 
-2. Proxy pro místní zařízení přijme žádost o zahájení datového proudu a tunelu pro koncový bod streamování služby IoT Hub (jak je popsáno výše).
+2. Místní proxy zařízení přijme požadavek na spuštění datového proudu a tunel se naváže na IoT Hub koncový bod streamování (jak je popsáno výše).
 
-3. Proxy pro místní zařízení se připojí ke koncovému bodu démon procesu SSH naslouchá na portu 22 na zařízení.
+3. Místní proxy zařízení se připojí ke koncovému bodu démona SSH naslouchat na portu 22 na zařízení.
 
-4. Proxy místní služba naslouchá na určeném portu čekání na nová připojení SSH od uživatele (port 2222 použitý v ukázce, ale lze nastavit na jakýkoli dostupný port). Uživatel odkazuje klienta SSH na portu proxy serveru místní služby na místním hostiteli.
+4. Místní proxy server služby naslouchá na určeném portu, který čeká na nová připojení SSH od uživatele (ve vzorku se používá port 2222, ale dá se nakonfigurovat na jiný dostupný port). Uživatel odkazuje na port proxy serveru místní služby na místním hostiteli.
 
 ### <a name="notes"></a>Poznámky
 
-* Výše uvedené kroky provést začátku do konce tunelového propojení mezi klienta SSH (napravo) na proces démon programu SSH (na levé straně). Součástí této připojitelnosti začátku do konce zahrnuje odesílání provozu v rámci datového proudu zařízení do služby IoT Hub.
+* Výše uvedené kroky dokončí ucelené tunelové propojení mezi klientem SSH (na pravé straně) do démona SSH (na levé straně). Součástí tohoto kompletního připojení je odeslání provozu přes datový proud zařízení do IoT Hub.
 
-* Šipky na obrázku označují směr, ve kterém se vytvoří připojení mezi koncovými body. Konkrétně Všimněte si, že neexistuje žádná příchozí připojení na zařízení (to je často blokovat brána firewall).
+* Šipky na obrázku označují směr, ve kterém jsou propojení mezi koncovými body vytvořena. Konkrétně si všimněte, že neexistují žádná příchozí připojení, která na zařízení přestanou (to je často blokováno bránou firewall).
 
-* Používání port 2222 na místní službu proxy je na libovolnou volbu. Proxy server se dá používat další dostupný port.
+* Volba použití portu 2222 pro místní proxy služby je libovolná volba. Proxy server je možné nakonfigurovat tak, aby používal jakýkoli jiný dostupný port.
 
-* Výběr portu 22 v tomto případě je závislé na protokol a specifické pro SSH. V případě protokolu RDP musí použít na port 3389. To je možné nakonfigurovat v zadané ukázkové programy.
+* Volba portu 22 je závislá na protokolu a specifická pro SSH v tomto případě. V případě protokolu RDP je nutné použít port 3389. Tato možnost se dá nakonfigurovat v uvedených ukázkových programech.
 
-Pomocí odkazů níže pokyny o tom, jak spustit místní proxy programy v jazyce podle výběru. Podobně jako [echo ukázka](#echo-sample), spustíte místní zařízení a služby proxy aplikace v různých jazycích jsou plně interoperabilní.
+Použijte odkazy níže, kde najdete pokyny ke spuštění místních proxy programů v jazyce, který si vyberete. Podobně jako u [ukázky ozvěny](#echo-sample)můžete spouštět programy proxy v místním zařízení a službách v různých jazycích, protože jsou plně interoperabilní.
 
-* [C#Služba a služba programu](quickstart-device-streams-proxy-csharp.md)
+* [C#program služby a služby](quickstart-device-streams-proxy-csharp.md)
 
-* [Aplikace služby Node.js](quickstart-device-streams-proxy-nodejs.md)
+* [Program služby Node. js](quickstart-device-streams-proxy-nodejs.md)
 
-* [Program pro zařízení jazyka C](quickstart-device-streams-proxy-c.md)
+* [Program zařízení v jazyce C](quickstart-device-streams-proxy-c.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o datových proudů zařízení pomocí odkazů níže.
+Pomocí odkazů níže můžete získat další informace o datových proudech zařízení.
 
 > [!div class="nextstepaction"]
-> [Zobrazit datové proudy zařízení s využitím IoT (kanál 9)](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fchannel9.msdn.com%2FShows%2FInternet-of-Things-Show%2FAzure-IoT-Hub-Device-Streams&data=02%7C01%7Crezas%40microsoft.com%7Cc3486254a89a43edea7c08d67a88bcea%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636831125031268909&sdata=S6u9qiehBN4tmgII637uJeVubUll0IZ4p2ddtG5pDBc%3D&reserved=0)
+> [Datové proudy zařízení v IoT show (Channel 9)](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fchannel9.msdn.com%2FShows%2FInternet-of-Things-Show%2FAzure-IoT-Hub-Device-Streams&data=02%7C01%7Crezas%40microsoft.com%7Cc3486254a89a43edea7c08d67a88bcea%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636831125031268909&sdata=S6u9qiehBN4tmgII637uJeVubUll0IZ4p2ddtG5pDBc%3D&reserved=0)

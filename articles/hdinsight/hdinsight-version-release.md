@@ -1,18 +1,18 @@
 ---
 title: Přehled HDInsight 4,0 – Azure
 description: Porovnání funkcí a omezení mezi HDInsight 3.6 a HDInsight 4.0 a doporučení k upgradu
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 74cd6a6919db1c01535fb984d1e8e0d0ad2d5ade
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 10/22/2019
+ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879332"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901527"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Přehled Azure HDInsight 4,0
 
@@ -40,7 +40,7 @@ Hive teď podporuje dynamická materializovaná zobrazení, neboli předběžný
 
 HDI 4.0 obsahuje Apache Hive 3, který pro transakční tabulky, které se nacházejí ve skladu Hive, vyžaduje dodržování nedělitelnosti, konzistence, izolace a stálosti (ACID). Tabulky a tabulková data dodržující model ACID jsou používána a spravována produktem Hive. Data v tabulkách pro vytváření, načítání, aktualizaci a odstraňování (CRUD) musí být ve formátu souboru ORC (Optimized Row Column), ale tabulky určené jen pro vkládání podporují všechny formáty souborů.
 
-* V modelu ACID v2 došlo k navýšení výkonu jak u formátu úložiště, tak u prováděcího modulu. 
+* V modelu ACID v2 došlo k navýšení výkonu jak u formátu úložiště, tak u prováděcího modulu.
 
 * V modelu ACID je standardně povolená úplná podpora aktualizací dat.
 
@@ -71,7 +71,6 @@ Už nemusíte mít obavy, když se nechtěně pokusíte o přístup k transakčn
 
 Přečtěte si další informace o [Apache Sparku](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
-
 ### <a name="apache-oozie"></a>Apache Oozie
 
 Apache Oozie 4.3.1 je součástí HDI 4.0 s následujícími změnami:
@@ -91,9 +90,9 @@ Neexistuje žádná podporovaná cesta upgradu z předchozích verzí HDInsight 
 ## <a name="limitations"></a>Omezení
 
 * HDInsight 4,0 nepodporuje MapReduce pro Apache Hive. Místo toho použijte Apache Tez. Přečtěte si další informace o [Apache Tez](https://tez.apache.org/).
-* HDInsight 4,0 nepodporuje Apache Storm. 
-* Zobrazení podregistru už není dostupné v HDInsight 4,0. 
-* Překladač prostředí v Apache Zeppelin není podporovaný v clusterech Spark a Interactive Query.
+* HDInsight 4,0 nepodporuje Apache Storm.
+* Zobrazení podregistru už není dostupné v HDInsight 4,0.
+* Překladač prostředí v Apache Zeppelin se nepodporuje v clusterech Spark a interaktivních dotazech.
 * V clusteru Spark-LLAP není možné *zakázat* LLAP. LLAP můžete jenom vypnout.
 * Azure Data Lake Storage Gen2 nemůže v clusteru Spark ukládat poznámkové bloky Jupyter.
 

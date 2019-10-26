@@ -4,19 +4,19 @@ description: Vysvětlení běžných potíží s ochranou heslem Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690d49a94ff4f516e24494622ca378eb0794fee9
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 62395b0b6f1ed152292106a774c1e2f7c6d4f11f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314935"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893273"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Řešení potíží s ochranou hesel Azure AD
 
@@ -40,7 +40,7 @@ Hlavním příznakem tohoto problému jsou 30018 události v protokolu událost�
 
 1. Hostitelský počítač proxy blokuje přístup ke koncovému bodu RPC (dynamický nebo statický), na kterém naslouchá služba proxy.
 
-   Instalační program proxy ochrany heslem služby Azure AD automaticky vytvoří příchozí pravidlo brány Windows Firewall, které umožňuje přístup k jakýmkoli vstupním portům, na které naslouchá služba Azure AD Password Protection proxy. Pokud je toto pravidlo později odstraněno nebo zakázáno, agenti řadiče domény nebudou moci komunikovat se službou proxy. Pokud byla předdefinovaná brána Windows Firewall zakázaná místo jiného produktu firewallu, musíte bránu firewall nakonfigurovat tak, aby povolovala přístup k jakýmkoli vstupním portům, na které naslouchá služba Azure AD Password Protection proxy. Tato konfigurace může být konkrétnější, pokud byla proxy služba nakonfigurovaná tak, aby naslouchala konkrétnímu statickému portu RPC (pomocí `Set-AzureADPasswordProtectionProxyConfiguration` rutiny).
+   Instalační program proxy ochrany heslem služby Azure AD automaticky vytvoří příchozí pravidlo brány Windows Firewall, které umožňuje přístup k jakýmkoli vstupním portům, na které naslouchá služba Azure AD Password Protection proxy. Pokud je toto pravidlo později odstraněno nebo zakázáno, agenti řadiče domény nebudou moci komunikovat se službou proxy. Pokud byla předdefinovaná brána Windows Firewall zakázaná místo jiného produktu firewallu, musíte bránu firewall nakonfigurovat tak, aby povolovala přístup k jakýmkoli vstupním portům, na které naslouchá služba Azure AD Password Protection proxy. Tato konfigurace může být konkrétnější, pokud byla proxy služba nakonfigurovaná tak, aby naslouchala na specifickém statickém portu RPC (pomocí rutiny `Set-AzureADPasswordProtectionProxyConfiguration`).
 
 1. Hostitelský počítač proxy není nakonfigurovaný tak, aby umožňoval řadičům domény možnost přihlásit se k počítači. Toto chování se řídí pomocí přiřazování uživatelských oprávnění "přístup k tomuto počítači ze sítě". Toto oprávnění musí být uděleno všem řadičům domény ve všech doménách v doménové struktuře. Toto nastavení se často omezuje jako součást většího úsilí při posílení zabezpečení sítě.
 
@@ -50,9 +50,9 @@ Hlavním příznakem tohoto problému jsou 30018 události v protokolu událost�
 
 1. Ujistěte se, že je doménová struktura a všechny proxy servery zaregistrované u stejného tenanta Azure.
 
-   Tento požadavek můžete ověřit spuštěním `Get-AzureADPasswordProtectionProxy` rutin prostředí PowerShell a `Get-AzureADPasswordProtectionDCAgent` potom porovnejte `AzureTenant` vlastnost jednotlivých vrácených položek. Pro správnou operaci musí být nahlášený název tenanta stejný ve všech agentech DC a proxy serverech.
+   Tento požadavek můžete ověřit spuštěním rutin `Get-AzureADPasswordProtectionProxy` a `Get-AzureADPasswordProtectionDCAgent` prostředí PowerShell a potom porovnejte vlastnost `AzureTenant` každé vrácené položky. Pro správnou operaci musí být nahlášený název tenanta stejný ve všech agentech DC a proxy serverech.
 
-   Pokud neshoda s registrací tenanta Azure existuje, můžete tento problém vyřešit spuštěním `Register-AzureADPasswordProtectionProxy` rutin a/nebo `Register-AzureADPasswordProtectionForest` PowerShellu podle potřeby a tím, že použijete přihlašovací údaje ze stejného tenanta Azure pro všechny registrace.
+   Pokud existuje stav neshody registrace tenanta Azure, můžete tento problém vyřešit spuštěním rutin `Register-AzureADPasswordProtectionProxy` a/nebo `Register-AzureADPasswordProtectionForest` PowerShellu podle potřeby a tím, že použijete přihlašovací údaje ze stejného tenanta Azure pro všechny registrace.
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>Agent řadiče domény nemůže šifrovat nebo dešifrovat soubory zásad hesel.
 
@@ -166,7 +166,7 @@ Vzhledem k tomu, že konečný termín je kontrolován pouze při počátečním
 > [!IMPORTANT]
 > Microsoft doporučuje, aby agenti řadiče domény s vypršenou platností verze Public Preview byli hned upgradováni na nejnovější verzi.
 
-Snadný způsob, jak zjistit agenty řadiče domény v prostředí, které je potřeba upgradovat, je `Get-AzureADPasswordProtectionDCAgent` spuštění rutiny, třeba:
+Snadný způsob, jak zjistit agenty řadiče domény v prostředí, které je potřeba upgradovat, je spuštění rutiny `Get-AzureADPasswordProtectionDCAgent`, například:
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -187,7 +187,7 @@ PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-Software proxy ochrany heslem služby Azure AD není časově omezený v jakékoli verzi. Společnost Microsoft stále doporučuje, aby se řadiče DC i proxy upgradovali na nejnovější verze hned po jejich vydání. `Get-AzureADPasswordProtectionProxy` Rutina se dá použít k vyhledání agentů proxy, kteří vyžadují upgrady, podobně jako v příkladu výše pro agenty řadiče domény.
+Software proxy ochrany heslem služby Azure AD není časově omezený v jakékoli verzi. Společnost Microsoft stále doporučuje, aby se řadiče DC i proxy upgradovali na nejnovější verze hned po jejich vydání. Rutina `Get-AzureADPasswordProtectionProxy` se dá použít k vyhledání agentů proxy, kteří vyžadují upgrady, podobně jako v příkladu výše pro agenty řadiče domény.
 
 Další podrobnosti o konkrétních postupech upgradu najdete v tématu [Upgrade agenta řadiče domény](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) a [Upgrade agenta proxy serveru](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) .
 
@@ -197,7 +197,7 @@ Pokud dojde k situaci, kdy služba agenta DC způsobuje problémy, služba agent
 
 Další mírou nápravy by bylo nastavit režim povolení na ne na portálu ochrany hesel Azure AD. Po stažení aktualizovaných zásad přejde každá služba agenta řadiče domény do režimu quiescent, ve kterém jsou všechna hesla přijímána tak, jak je. Další informace najdete v tématu [režim Vynutilení](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
 
-## <a name="removal"></a>Odebrání
+## <a name="removal"></a>Instalační
 
 Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyčistit všechny související stavy z domén a doménových struktur, můžete tuto úlohu provést pomocí následujících kroků:
 
@@ -216,7 +216,7 @@ Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyč
 
    Vynechejte hvězdičku ("*") na konci hodnoty proměnné $keywords.
 
-   Výsledné objekty, které byly nalezeny prostřednictvím `Get-ADObject` příkazu, lze následně přesměrovat do `Remove-ADObject`kanálu nebo odstranit ručně.
+   Výsledný objekt (y) nalezený pomocí příkazu `Get-ADObject` lze následně přesměrovat do `Remove-ADObject`nebo odstranit ručně.
 
 4. Ručně odeberte všechny spojovací body agenta DC v každém názvovém kontextu domény. V závislosti na tom, jak rozsáhlá verze softwaru byla nasazena, může být jeden z těchto objektů na řadič domény v doménové struktuře. Umístění tohoto objektu může být zjištěno pomocí následujícího příkazu prostředí PowerShell služby Active Directory:
 
@@ -226,7 +226,7 @@ Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyč
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Výsledné objekty, které byly nalezeny prostřednictvím `Get-ADObject` příkazu, lze následně přesměrovat do `Remove-ADObject`kanálu nebo odstranit ručně.
+   Výsledný objekt (y) nalezený pomocí příkazu `Get-ADObject` lze následně přesměrovat do `Remove-ADObject`nebo odstranit ručně.
 
    Vynechejte hvězdičku ("*") na konci hodnoty proměnné $keywords.
 

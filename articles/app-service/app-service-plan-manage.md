@@ -5,22 +5,22 @@ keywords: App Service, Azure App Service, škálování, plán služby App Servi
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 10/24/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a5e69209c30eae816837ce8f00a065231a5fd821
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e8bdc749ee354e75a6043dbd6dac3f93a606f79e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067211"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898950"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Správa plánu App Service v Azure
 
@@ -33,23 +33,17 @@ ms.locfileid: "70067211"
 
 Můžete vytvořit prázdný plán App Service, nebo můžete vytvořit plán jako součást vytváření aplikací.
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **Nový** > **web a mobilní zařízení**a pak vyberte **Webová aplikace** nebo jiný typ aplikace App Service.
-
-2. Vyberte existující plán App Service nebo vytvořte plán pro novou aplikaci.
+1. V [Azure Portal](https://portal.azure.com)vyberte **Nový** > **webová aplikace** nebo jiný druh App Service aplikace.
 
    ![Vytvořte aplikaci v Azure Portal.][createWebApp]
 
-   Postup vytvoření plánu:
+2. Před konfigurací plánu App Service nakonfigurujte oddíl **podrobností instance** . Nastavení, jako je **publikování** a **operační systém** , může změnit dostupné cenové úrovně plánu App Service. **Oblast** určuje, kde se vytvoří plán App Service.
+   
+3. V části **plán App Service** vyberte existující plán nebo vytvořte plán výběrem možnosti **vytvořit nový**.
 
-   a. Vyberte **[+] vytvořit nové**.
+   ![Vytvořte plán App Service.][createASP] 
 
-      ![Vytvořte plán App Service.][createASP] 
-
-   b. V části **plán App Service**zadejte název plánu.
-
-   c. Jako **umístění**vyberte vhodné umístění.
-
-   d. Pro **cenovou úroveň**vyberte příslušnou cenovou úroveň pro službu. Výběrem **Zobrazit vše** zobrazíte další cenové možnosti, například **Free** a **Shared**. Po výběru cenové úrovně klikněte na tlačítko **Vybrat** .
+4. Při vytváření plánu můžete vybrat cenovou úroveň nového plánu. V části **SKU a velikost**vyberte **změnit velikost** , aby se změnila cenová úroveň. 
 
 <a name="move"></a>
 
@@ -65,25 +59,20 @@ Aplikaci můžete přesunout do jiného plánu App Service, pokud se zdrojový a
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do aplikace, kterou chcete přesunout.
 
-1. V nabídce vyhledejte část **App Service plán** .
+2. V nabídce vlevo vyberte **změnit App Service plán**.
 
-1. Vyberte **změnit App Service plán** pro otevření app Serviceho selektoru **plánu** .
+3. V rozevíracím seznamu **plán App Service** vyberte existující plán, do kterého chcete aplikaci přesunout. Rozevírací seznam zobrazuje jenom plány, které jsou ve stejné skupině prostředků a zeměpisné oblasti jako aktuální plán App Service. Pokud žádný takový plán neexistuje, můžete ve výchozím nastavení vytvořit plán. Nový plán můžete také vytvořit ručně výběrem možnosti **vytvořit nový**.
 
+4. Pokud vytvoříte plán, můžete vybrat cenovou úroveň nového plánu. V části **cenová úroveň**vyberte existující úroveň, kterou chcete změnit. 
+   
+   > [!IMPORTANT]
+   > Pokud přesouváte aplikaci z plánu s vyšší vrstvou na plán nižší úrovně, například z **D1** na **F1**, aplikace může přijít o určité možnosti v cílovém plánu. Pokud například vaše aplikace používá certifikáty SSL, může se zobrazit tato chybová zpráva:
+   >
+   > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+
+5. Po dokončení vyberte **OK**.
+   
    ![Selektor App Serviceho plánu][change] 
-
-1. V selektoru **App Serviceho plánování** vyberte existující plán, do kterého chcete tuto aplikaci přesunout.   
-
-Na stránce **Vybrat plán App Service** se zobrazují jenom plány, které jsou ve stejné skupině prostředků a zeměpisné oblasti jako plán App Service aktuální aplikace.
-
-Každý plán má svou vlastní cenovou úroveň. Například přesunutí lokality z **bezplatné** úrovně na úroveň **Standard** umožňuje všem aplikacím, které jsou k ní přiřazeny, používat funkce a prostředky úrovně **Standard** . Přesun aplikace z vyšší vrstvy do plánu nižší úrovně znamená, že už nebudete mít přístup k určitým funkcím. Pokud vaše aplikace používá funkci, která není v cílovém plánu k dispozici, zobrazí se chyba s informacemi o tom, která funkce je používána, která není k dispozici. 
-
-Například pokud jedna z vašich aplikací používá certifikáty SSL, může se zobrazit tato chybová zpráva:
-
-`Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
-
-V takovém případě, než budete moct aplikaci přesunout do cílového plánu, musíte mít jednu z těchto akcí:
-- Škálujte cenovou úroveň cílového plánu na **Basic** nebo vyšší.
-- Odeberte všechna připojení SSL k vaší aplikaci.
 
 ## <a name="move-an-app-to-a-different-region"></a>Přesunutí aplikace do jiné oblasti
 
@@ -96,7 +85,7 @@ Oblast, ve které vaše aplikace běží, je oblast plánu App Service. Nemůže
 
 ## <a name="scale-an-app-service-plan"></a>Škálování plánu App Service
 
-Postup horizontálního navýšení kapacity plánu App Service najdete v tématu věnovaném horizontálnímu navýšení [kapacity aplikace v Azure](manage-scale-up.md).
+Postup horizontálního navýšení kapacity plánu App Service najdete v tématu věnovaném [horizontálnímu navýšení kapacity aplikace v Azure](manage-scale-up.md).
 
 Pokud chcete škálovat počet instancí aplikace, přečtěte si téma [Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md).
 
@@ -112,7 +101,7 @@ Aby nedošlo k neočekávaným poplatkům, při odstranění poslední aplikace 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Škálování aplikace v Azure](manage-scale-up.md)
+> [Horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

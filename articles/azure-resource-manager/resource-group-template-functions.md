@@ -4,16 +4,17 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 10/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 968e55cc07d10a0d4b54d4a7e866417d18e98bb5
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 04358f21af79838f894dc50d5d9c165da67a332c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258886"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894166"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager funkce šablon
+
 Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manager. Informace o používání funkcí v šabloně najdete v tématu [syntaxe šablony](template-expressions.md).
 
 Chcete-li vytvořit vlastní funkce, přečtěte si téma [uživatelsky definované funkce](resource-group-authoring-templates.md#functions).
@@ -39,23 +40,23 @@ Chcete-li vytvořit vlastní funkce, přečtěte si téma [uživatelsky definova
 ## <a name="array-and-object-functions"></a>Funkce pole a objektu
 Správce prostředků poskytuje několik funkcí pro práci s poli a objekty.
 
-* [array](resource-group-template-functions-array.md#array)
-* [coalesce](resource-group-template-functions-array.md#coalesce)
-* [concat](resource-group-template-functions-array.md#concat)
-* [contains](resource-group-template-functions-array.md#contains)
+* [skupin](resource-group-template-functions-array.md#array)
+* [COALESCE](resource-group-template-functions-array.md#coalesce)
+* [spojuje](resource-group-template-functions-array.md#concat)
+* [zobrazí](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
-* [empty](resource-group-template-functions-array.md#empty)
-* [first](resource-group-template-functions-array.md#first)
+* [obsahovat](resource-group-template-functions-array.md#empty)
+* [první](resource-group-template-functions-array.md#first)
 * [průnik](resource-group-template-functions-array.md#intersection)
-* [json](resource-group-template-functions-array.md#json)
+* [JSON](resource-group-template-functions-array.md#json)
 * [posledního](resource-group-template-functions-array.md#last)
-* [length](resource-group-template-functions-array.md#length)
+* [časový](resource-group-template-functions-array.md#length)
 * [dlouhé](resource-group-template-functions-array.md#min)
-* [max](resource-group-template-functions-array.md#max)
-* [range](resource-group-template-functions-array.md#range)
-* [skip](resource-group-template-functions-array.md#skip)
-* [take](resource-group-template-functions-array.md#take)
-* [union](resource-group-template-functions-array.md#union)
+* [počet](resource-group-template-functions-array.md#max)
+* [oblasti](resource-group-template-functions-array.md#range)
+* [přímo](resource-group-template-functions-array.md#skip)
+* [nezbytná](resource-group-template-functions-array.md#take)
+* [sjednocovací](resource-group-template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -81,7 +82,7 @@ Správce prostředků poskytuje následující funkce pro získání hodnot z č
 
 * [prostředí](resource-group-template-functions-deployment.md#deployment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
-* [variables](resource-group-template-functions-deployment.md#variables)
+* [proměnné](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -94,9 +95,9 @@ Správce prostředků poskytuje následující funkce pro práci s logickými po
 
 * [ani](resource-group-template-functions-logical.md#and)
 * [logick](resource-group-template-functions-logical.md#bool)
-* [if](resource-group-template-functions-logical.md#if)
+* [Přestože](resource-group-template-functions-logical.md#if)
 * [mění](resource-group-template-functions-logical.md#not)
-* [nebo](resource-group-template-functions-logical.md#or)
+* [ani](resource-group-template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -114,15 +115,16 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 
 * [přidávání](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
-* [div](resource-group-template-functions-numeric.md#div)
+* [značek](resource-group-template-functions-numeric.md#div)
 * [Plovák](resource-group-template-functions-numeric.md#float)
 * [hmot](resource-group-template-functions-numeric.md#int)
 * [dlouhé](resource-group-template-functions-numeric.md#min)
-* [max](resource-group-template-functions-numeric.md#max)
+* [počet](resource-group-template-functions-numeric.md#max)
 * [střední](resource-group-template-functions-numeric.md#mod)
 * [mul](resource-group-template-functions-numeric.md#mul)
-* [sub](resource-group-template-functions-numeric.md#sub)
+* [jednotk](resource-group-template-functions-numeric.md#sub)
 
+<a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
 <a id="list" aria-hidden="true" />
 <a id="providers" aria-hidden="true" />
@@ -130,19 +132,24 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 <a id="resourcegroup" aria-hidden="true" />
 <a id="resourceid" aria-hidden="true" />
 <a id="subscription" aria-hidden="true" />
+<a id="subscriptionResourceId" aria-hidden="true" />
+<a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Funkce prostředků
-Resource Manager poskytuje následující funkce pro načtení prostředků hodnot:
+Správce prostředků poskytuje následující funkce pro získání hodnot prostředků:
 
+* [extensionResourceId](resource-group-template-functions-resource.md#extensionresourceid)
 * [listAccountSas](resource-group-template-functions-resource.md#list)
-* [klíče Listkey](resource-group-template-functions-resource.md#listkeys)
+* [Klíče listkey](resource-group-template-functions-resource.md#listkeys)
 * [listSecrets](resource-group-template-functions-resource.md#list)
-* [seznam *](resource-group-template-functions-resource.md#list)
-* [Zprostředkovatelé](resource-group-template-functions-resource.md#providers)
-* [Referenční dokumentace](resource-group-template-functions-resource.md#reference)
+* [seznamu](resource-group-template-functions-resource.md#list)
+* [dodavateli](resource-group-template-functions-resource.md#providers)
+* [odkaz](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
-* [ID prostředku](resource-group-template-functions-resource.md#resourceid)
+* [Prostředku](resource-group-template-functions-resource.md#resourceid)
 * [předplatné](resource-group-template-functions-resource.md#subscription)
+* [subscriptionResourceId](resource-group-template-functions-resource.md#subscriptionresourceid)
+* [tenantResourceId](resource-group-template-functions-resource.md#tenantresourceid)
 
 <a id="base64" aria-hidden="true" />
 <a id="base64tojson" aria-hidden="true" />
@@ -178,31 +185,31 @@ Resource Manager poskytuje následující funkce pro načtení prostředků hodn
 ## <a name="string-functions"></a>Funkce řetězců
 Správce prostředků poskytuje následující funkce pro práci s řetězci:
 
-* [base64](resource-group-template-functions-string.md#base64)
+* [Base](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
-* [concat](resource-group-template-functions-string.md#concat)
-* [contains](resource-group-template-functions-string.md#contains)
+* [spojuje](resource-group-template-functions-string.md#concat)
+* [zobrazí](resource-group-template-functions-string.md#contains)
 * [dataUri](resource-group-template-functions-string.md#datauri)
 * [dataUriToString](resource-group-template-functions-string.md#datauritostring)
-* [empty](resource-group-template-functions-string.md#empty)
+* [obsahovat](resource-group-template-functions-string.md#empty)
 * [endsWith](resource-group-template-functions-string.md#endswith)
-* [first](resource-group-template-functions-string.md#first)
-* [format](resource-group-template-functions-string.md#format)
-* [guid](resource-group-template-functions-string.md#guid)
+* [první](resource-group-template-functions-string.md#first)
+* [formátovat](resource-group-template-functions-string.md#format)
+* [hlavních](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
 * [posledního](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
-* [length](resource-group-template-functions-string.md#length)
+* [časový](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
-* [replace](resource-group-template-functions-string.md#replace)
-* [skip](resource-group-template-functions-string.md#skip)
+* [náhrady](resource-group-template-functions-string.md#replace)
+* [přímo](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [string](resource-group-template-functions-string.md#string)
-* [substring](resource-group-template-functions-string.md#substring)
-* [take](resource-group-template-functions-string.md#take)
+* [řetezce](resource-group-template-functions-string.md#string)
+* [podřetězec](resource-group-template-functions-string.md#substring)
+* [nezbytná](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
 * [sklon](resource-group-template-functions-string.md#trim)
@@ -212,7 +219,8 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci:
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
 * [utcNow](resource-group-template-functions-string.md#utcnow)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 * Popis sekcí v šabloně Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md) .
 * Chcete-li sloučit více šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md)
 * Informace o iteraci zadaného počtu výskytů při vytváření typu prostředku najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](resource-group-create-multiple.md)

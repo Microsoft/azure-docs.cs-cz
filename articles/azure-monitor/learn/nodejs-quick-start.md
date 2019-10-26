@@ -1,21 +1,19 @@
 ---
 title: 'Rychlý Start: monitorování pomocí Application Insights Azure'
 description: Pokyny pro rychlé nastavení webové aplikace Node.js pro monitorování s využitím Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
-ms.service: application-insights
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 84be9c2b1d8e28fb847e52bda36f9857bd28da28
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 23fdf326bd1d3deac56f138130c3767427d062e5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528895"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894945"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: spuštění sledování webové aplikace v Node. js pomocí Azure Application Insights
 
@@ -92,7 +90,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Application Insights mapa aplikace](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Vyberte ikonu **analýzy aplikace** ![Application ikonu mapy ](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **zobrazení v analýze**.  Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3. Vyberte ikonu **Analýza aplikace** ![ikona mapa aplikace](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **Zobrazit v analýze**.  Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
    ![Grafy Application Insights Analytics](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 

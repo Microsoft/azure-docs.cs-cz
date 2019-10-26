@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: a44f1e93302b90b88ef63030fab17433855af4ff
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f1ba54547b947e18d2d42520c0fb51a0855fb37c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143658"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901610"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
@@ -28,7 +28,7 @@ Kolik interaktivních relací, které může být aktivní současně, spoléhá
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Proč moje aplikace sestaví více relací Windows 10 Enterprise jako serverový operační systém?
 
-Windows 10 Enterprise Multi-Session je virtuální edice Windows 10 Enterprise. Jednou z rozdílů je, že tento operační systém (OS) hlásí [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) jako hodnotu 2, stejnou hodnotu jako Windows Server. Tato vlastnost udržuje kompatibilní s operačním systémem s existujícími nástroji pro správu vzdálené plochy, aplikacemi nepracujících s více relacemi a převážně optimalizacemi výkonu systému nižší úrovně pro prostředí vzdálené plochy. Některé instalační programy aplikací můžou blokovat instalaci ve více relacích s Windows 10 v závislosti na tom, jestli ProductType je nastavená na Client. Pokud se vaše aplikace nenainstaluje, obraťte se na dodavatele aplikace a požádejte o aktualizovanou verzi. 
+Windows 10 Enterprise Multi-Session je virtuální edice Windows 10 Enterprise. Jednou z rozdílů je, že tento operační systém (OS) hlásí [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) jako hodnotu 3, což je stejná hodnota jako Windows Server. Tato vlastnost udržuje kompatibilní s operačním systémem s existujícími nástroji pro správu vzdálené plochy, aplikacemi nepracujících s více relacemi a převážně optimalizacemi výkonu systému nižší úrovně pro prostředí vzdálené plochy. Některé instalační programy aplikací můžou blokovat instalaci ve více relacích s Windows 10 v závislosti na tom, jestli ProductType je nastavená na Client. Pokud se vaše aplikace nenainstaluje, obraťte se na dodavatele aplikace a požádejte o aktualizovanou verzi. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Můžu používat Windows 10 Enterprise s více relacemi v místním prostředí?
 

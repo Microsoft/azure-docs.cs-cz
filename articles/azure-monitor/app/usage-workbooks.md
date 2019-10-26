@@ -1,130 +1,125 @@
 ---
-title: Vytváření interaktivních sestav se sešity Azure Monitor | Dokumentace Microsoftu
-description: Zjednodušení složitých vytváření sestav pomocí předem připravená a vlastní parametry sešity
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Vytváření interaktivních sestav pomocí Azure Monitorch sešitů | Dokumentace Microsoftu
+description: Zjednodušení složitých sestav pomocí předem sestavených a vlastních parametrizovaných sešitů
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbbf511286c63acf4a939e0a0e7d9c3dc9efa75b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569599"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899380"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Vytváření interaktivních sestav se sešity Azure Monitor
+# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Vytváření interaktivních sestav pomocí Azure Monitorch sešitů
 
-Sešity kombinovat text, [analytických dotazů](https://docs.microsoft.com/azure/application-insights/app-insights-analytics), metriky Azure a parametrů do bohaté interaktivní sestavy. Sešity se upravovat jiným členem týmu, kteří mají přístup ke stejným prostředkům Azure.
+Sešity kombinují text, [analytické dotazy](https://docs.microsoft.com/azure/application-insights/app-insights-analytics), metriky Azure a parametry do propracovaných interaktivních sestav. Sešity mohou upravovat všichni ostatní členové týmu, kteří mají přístup ke stejným prostředkům Azure.
 
 Sešity jsou užitečné pro scénáře, jako jsou:
 
-* Zkoumání využití aplikací, pokud neznáte metriky, které vás zajímají předem: počet uživatelů, míry uchovávání dat, míry úspěšnosti atd. Na rozdíl od jiných nástrojů pro analýzu využití pracovní sešity umožňují kombinovat více typů vizualizace a analýzy, díky kterým jsou skvělé pro tento druh zkoumání volném.
-* Ke svému týmu vysvětlující, jaký je výkon nově vydané funkci, uživatelem zobrazují počty pro klíče interakce a další metriky.
-* Sdílení výsledků A / B experimentovat ve vaší aplikaci s dalšími členy týmu. Vysvětlete cíle pro experiment s textem a potom ukazují jednotlivých metrika využití a dotazu Analytics k vyhodnocení, experiment, spolu s vymazat značek pro Určuje, zda jednotlivé metriky se nad nebo pod cíl.
-* Dopad výpadku vyvářet využití aplikací, kombinování dat, text vysvětlení a diskuzi o dalších krocích, aby se zabránilo výpadkům v budoucnu.
+* Prozkoumejte využití vaší aplikace, když neznáte metriky, které vás zajímají předem: počet uživatelů, míry uchovávání, přepočítací tarify atd. Na rozdíl od jiných analytických nástrojů se vám sešity můžou kombinovat s několika různými typy vizualizací a analýz, takže jsou skvělé pro tento druh průzkumu volného tvaru.
+* Vysvětlení týmu, jak nově vydaná funkce probíhá, díky zobrazení počtů uživatelů pro klíčové interakce a další metriky.
+* Sdílení výsledků experimentu A/B v aplikaci s ostatními členy týmu. Můžete vysvětlit cíle experimentu s textem a pak zobrazit jednotlivé metriky využití a analytické dotazy použité k vyhodnocení experimentu spolu s jasnými voláními pro skutečnost, zda byla každá metrika nad nebo pod cílovou.
+* Oznamujeme dopad výpadku při používání vaší aplikace, kombinování dat, vysvětlení textu a diskuzi o dalších krocích, aby se předešlo výpadkům v budoucnosti.
 
-## <a name="starting-with-a-template-or-saved-workbook"></a>Od verze šablony nebo uložené sešitu
+## <a name="starting-with-a-template-or-saved-workbook"></a>Počínaje šablonou nebo uloženým sešitem
 
-Sešit je tvořené oddíly skládající se z nezávisle upravovat grafy, tabulky, text a vstupní ovládací prvky. Abyste lépe pochopili, pracovní sešity, je nejlepší otevřete jednu. 
+Sešit je tvořen oddíly, které se skládají z nezávisle upravitelných grafů, tabulek, textových a vstupních ovládacích prvků. Aby lépe porozuměl sešitům, je nejlepší ho otevřít. 
 
-Vyberte **sešity** z nabídky vlevo od uvnitř prostředí služby Application Insights pro vaši aplikaci.
+V nabídce na levé straně vyberte **sešity** z prostředí Application Insights pro vaši aplikaci.
 
-![Snímek obrazovky navigace do sešitů](./media/usage-workbooks/001-workbooks.png)
+![Snímek obrazovky s navigací k sešitům](./media/usage-workbooks/001-workbooks.png)
 
-Tím se spustí Galerie sešitu s celou řadou předem připravené pracovní sešity k vám pomůžou začít.
+Tím se spustí Galerie sešitů s několika předem sestavenými sešity, které vám pomůžou začít.
 
-![Snímek obrazovky Galerie sešitu](./media/usage-workbooks/002-workbook-gallery.png)
+![Snímek obrazovky Galerie sešitů](./media/usage-workbooks/002-workbook-gallery.png)
 
-Začneme **výchozí šablona**, který se nachází pod nadpisem **úvodní**.
+Začneme s **výchozí šablonou**, která je umístěná v části **rychlý Start**nadpisu.
 
-![Snímek obrazovky Galerie sešitu](./media/usage-workbooks/003-default-template.png)
+![Snímek obrazovky Galerie sešitů](./media/usage-workbooks/003-default-template.png)
 
-## <a name="editing-rearranging-cloning-and-deleting-workbook-sections"></a>Úpravy, uspořádání, klonování a odstranění sešitu oddíly
+## <a name="editing-rearranging-cloning-and-deleting-workbook-sections"></a>Úpravy, změna uspořádání, klonování a odstraňování oddílů sešitu
 
-Sešity mají dva režimy: **režimu úprav**, a **neupravuje**. Při prvním spuštění výchozí sešit se otevře v **režimu úprav**. Zobrazí veškerý obsah sešitu včetně všech kroků a parametrů, které jsou jinak skryté. **Režim čtení** představuje styl zobrazení zjednodušené sestavy. Můžete provádět abstrakci složitost, která jsou součástí vytváření sestav přitom stále má základní mechanismus jenom několika kliknutí v případě potřeby pro úpravy.
+Sešity mají dva režimy: **režim úprav**a **režim čtení**. Když se výchozí sešit poprvé spustí, otevře se v **režimu úprav**. Zobrazí se veškerý obsah sešitu včetně všech kroků a parametrů, které jsou jinak skryté. **Režim čtení** prezentuje zjednodušené zobrazení stylů sestav. To vám umožňuje předcházet složitou složitost, která se stala vytvořením sestavy, zatímco pořád má podkladovou mechaniku v případě potřeby k úpravám jenom několik kliknutí.
 
-![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/editing-controls-new.png)
+![Ovládací prvky pro úpravy oddílu Application Insights sešity](./media/usage-workbooks/editing-controls-new.png)
 
-1. Po dokončení úprav oddíl, klikněte na tlačítko **provést úpravy** v levém dolním rohu části.
+1. Až budete hotovi s úpravou oddílu, klikněte v levém dolním rohu oddílu na **hotové úpravy** .
 
-2. K vytvoření duplicitní oddíl, klikněte na tlačítko **klonovat tento oddíl** ikonu. Vytvoření duplicitní části je skvělý způsob, jak iterovat dotazu bez ztráty předchozími iteracemi.
+2. Chcete-li vytvořit duplikát oddílu, klikněte na ikonu **klonovat tuto část** . Vytváření duplicitních oddílů je skvělým způsobem, jak iterovat na dotaz, aniž by došlo ke ztrátě předchozích iterací.
 
-3. Posunout nahoru oddíl v sešitu, klikněte na tlačítko **nahoru** nebo **přesunout dolů** ikonu.
+3. Chcete-li v sešitu přesunout oddíl nahoru, klikněte na ikonu **Přesunout nahoru** nebo **Přesunout dolů** .
 
-4. Pokud chcete trvale odebrat oddíl, klikněte na tlačítko **odebrat** ikonu.
+4. Pokud chcete oddíl trvale odebrat, klikněte na ikonu **Odebrat** .
 
-## <a name="adding-text-and-markdown-sections"></a>Přidání textu a části Markdownu
+## <a name="adding-text-and-markdown-sections"></a>Přidání textových a Markdownuch oddílů
 
-Přidání záhlaví, vysvětlení a poznámky k sešity pomůže proměnit sadu tabulek a grafů komentáře. Části textu v sešitech technické podpory [syntaxe Markdownu](https://daringfireball.net/projects/markdown/) pro formátování textu, jako jsou nadpisy, tučné, kurzíva a seznamy s odrážkami.
+Přidávání nadpisů, vysvětlení a komentářů k vašim sešitům usnadňuje vytvoření sady tabulek a grafů do mluveného komentáře. Textové oddíly v sešitech podporují [syntaxi Markdownu](https://daringfireball.net/projects/markdown/) pro formátování textu, jako jsou nadpisy, tučné písmo, kurzíva a seznamy s odrážkami.
 
-Chcete-li přidat do sešitu část textu, použijte **přidat text** tlačítko v dolní části sešitu nebo v dolní části libovolné části.
+Chcete-li přidat textový oddíl do sešitu, použijte tlačítko **Přidat text** v dolní části sešitu nebo dolní část libovolné části.
 
-## <a name="adding-query-sections"></a>Přidání dotazu oddílů
+## <a name="adding-query-sections"></a>Přidávání sekcí dotazů
 
-![V sešitech části dotazu](./media/usage-workbooks/analytics-section-new.png)
+![Část dotazu v sešitech](./media/usage-workbooks/analytics-section-new.png)
 
-Chcete-li přidat do sešitu část dotazu, použijte **přidat dotaz** tlačítko v dolní části sešitu nebo v dolní části libovolné části.
+Chcete-li přidat do sešitu oddíl dotazu, použijte tlačítko **Přidat dotaz** ve spodní části sešitu nebo v dolní části části.
 
-Dotaz oddíly jsou vysoce flexibilní a umožňuje zodpovědět dotazy jako:
+Oddíly dotazů jsou vysoce flexibilní a dají se použít k zodpovězení otázek, jako je:
 
-* Kolik výjimky váš web vyvolat za stejné období jako pokles využití?
-* Jaký byl distribuční časy načtení stránek uživatelům, kteří zobrazují některé stránky?
-* Kolik uživatelů zobrazit některé sadu stránek na webu, ale není některých dalších nastavení stránek? To může být užitečné k pochopení, pokud máte clustery uživatelů, kteří používají různé podmnožiny funkčnosti vaší lokality (použít `join` operátor s `kind=leftanti` modifikátor v [Kusto dotazovací jazyk](/azure/kusto/query/)).
+* Kolik výjimek vyvolala vaše lokalita během stejného časového období jako pokles využití?
+* Jaká byla distribuce časů načítání stránky pro uživatele, kteří si stránku prohlížejí?
+* Kolik uživatelů navštívilo určitou sadu stránek na webu, ale ne některé jiné sady stránek? To může být užitečné pochopit, jestli máte clustery uživatelů, kteří používají různé podmnožiny funkcí vaší lokality (použijte operátor `join` s modifikátorem `kind=leftanti` v [dotazovacím jazyce Kusto](/azure/kusto/query/)).
 
-Můžete také nejsou pouze omezeni na dotazování v kontextu aplikace spustí ze sešitu. Můžete zadávat dotazy napříč více Application Insights monitorovat aplikace a zároveň pracovních prostorů Log Analytics, dokud máte přístupová oprávnění k těmto prostředkům.
+Nebudete se také omezovat jenom na dotazování z kontextu aplikace, ze které jste sešit spustili. Můžete zadávat dotazy na více Application Insights monitorovaných aplikací a také Log Analytics pracovní prostory, pokud máte přístupová oprávnění k těmto prostředkům.
 
-Dotaz z další externí použití prostředky Application Insights **aplikace** identifikátor.
+K dotazování z dalších externích prostředků Application Insights použijte identifikátor **aplikace** .
 
 ```
 union app('app01').requests, app('app02').requests, requests
 | summarize count() by bin(timestamp, 1h)
 ```  
 
-Tento dotaz je kombinování požadavků ze tří různých aplikací. Aplikace s názvem app01 aplikaci s názvem app02 a požadavky z místního prostředku Application Insights.
+Tento dotaz kombinuje požadavky ze tří různých aplikací. Aplikace s názvem app01, aplikace s názvem app02 a požadavky z prostředku místní Application Insights.
 
-Aby se načetla data z externí použití pracovního prostoru Log Analytics **pracovní prostor** identifikátor.
+Pokud chcete načíst data z externího pracovního prostoru Log Analytics použijte identifikátor **pracovního prostoru** .
 
-Další informace o dotazech napříč prostředky najdete [oficiální pokyny](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).
+Další informace o dotazech mezi prostředky najdete v [oficiálních pokynech](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).
 
-### <a name="advanced-analytic-query-settings"></a>Upřesňující nastavení analytického dotazu
+### <a name="advanced-analytic-query-settings"></a>Pokročilé nastavení analytického dotazu
 
-Každá část má svůj vlastní upřesňující nastavení, které jsou přístupné pomocí ikony nastavení ![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/005-settings.png) nachází na pravé straně **přidat parametry** tlačítko.
+Každá část má vlastní Rozšířená nastavení, která jsou přístupná prostřednictvím ikony nastavení ![Application Insights sešity editační ovládací prvky](./media/usage-workbooks/005-settings.png) umístěné napravo od tlačítka **přidat parametry** .
 
-![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/0006-settings-expanded.png)
+![Ovládací prvky pro úpravy oddílu Application Insights sešity](./media/usage-workbooks/0006-settings-expanded.png)
 
    |         |          |
    | ---------------- |:-----|
-   | **Vlastní šířky**    | Nastavení této možnosti nastavíte položku na libovolné velikosti, takže můžete přizpůsobit mnoho položek na jeden řádek, abyste mohli lépe uspořádat grafů a tabulek do bohaté interaktivní sestavy.  |
-   | **Jako podmíněně viditelnou** | Použijte tím skryjete kroky na základě parametru v režimu čtení. |
-   | **Exportovat parametr**| To umožňuje vybraný řádek v mřížce nebo grafu způsobit pozdější kroky změní hodnoty nebo viditelná.  |
-   | **Zobrazit dotaz, když neprobíhají úpravy** | Zobrazí se dotaz nad tento graf nebo tabulku i v režimu čtení.
-   | **Zobrazit otevřít v analytics tlačítko, pokud nepoužíváte režim úprav** | Tento postup přidá modrou ikonou ve tvaru Analytics na pravém horním rohu grafu umožňující přístup jedním kliknutím.|
+   | **Vlastní šířka**    | Tuto možnost nastavte, pokud chcete mít položku v libovolné velikosti, takže můžete umístit mnoho položek na jeden řádek, což vám umožní lépe uspořádat grafy a tabulky do propracovaných interaktivních sestav.  |
+   | **Podmíněně viditelné** | Tuto hodnotu použijte ke skrytí kroků na základě parametru v režimu čtení. |
+   | **Exportovat parametr**| Díky tomu může vybraný řádek v mřížce nebo grafu způsobit pozdější postup změny hodnot nebo zobrazení.  |
+   | **Zobrazit dotaz, pokud se neupravuje** | Tím se zobrazí dotaz nad graf nebo tabulka, i když v režimu čtení.
+   | **Při úpravách zobrazit tlačítko otevřít v analýze** | Tím se přidá ikona Blue Analytics do pravého horního rohu grafu umožňující přístup jedním kliknutím.|
 
-Většinu těchto nastavení jsou poměrně intuitivní, ale pro pochopení **exportovat parametr** je lepší prozkoumat sešitu která používá tuto funkci.
+Většina těchto nastavení je poměrně intuitivní, ale pro pochopení **exportu parametru** je lepší prozkoumávat sešit, který tuto funkci využívá.
 
-Jeden z předem připravené pracovní sešity obsahuje informace o aktivních uživatelů.
+Jeden z předem připravených sešitů poskytuje informace o aktivních uživatelích.
 
-První část sešitu je založena na datech analytického dotazu:
+První část sešitu je založena na analytických datech dotazů:
 
-![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/003-active-users.png)
+![Ovládací prvky pro úpravy oddílu Application Insights sešity](./media/usage-workbooks/003-active-users.png)
 
-Druhá část je taky založený na analytické dotazy na data, ale výběru řádku v první tabulce interaktivně aktualizuje obsah grafu:
+Druhá část je také založená na analytických dotazech, ale výběr řádku v první tabulce bude interaktivně aktualizovat obsah grafu:
 
-![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/004-active-users-trend.png)
+![Ovládací prvky pro úpravy oddílu Application Insights sešity](./media/usage-workbooks/004-active-users-trend.png)
 
- To je možné provádět prostřednictvím použití **při výběru položky exportovat parametr** upřesňující nastavení, které jsou povoleny v dotazu Analytics v tabulce.
+ To je možné v **případě, že je vybrána položka, exportovat** upřesňující nastavení parametrů, která jsou povolena v dotazu Analytics tabulky.
 
-![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/007-settings-export.png)
+![Ovládací prvky pro úpravy oddílu Application Insights sešity](./media/usage-workbooks/007-settings-export.png)
 
-Druhý dotaz analytics pak využívá exportovaných hodnot při výběru řádku. Pokud není vybrán žádný řádek, použije se výchozí řádek, který představuje celkové hodnoty. 
+Druhý analytický dotaz pak použije exportované hodnoty, když je vybrán řádek. Pokud není vybraný žádný řádek, použije se výchozí řádek, který představuje celkové hodnoty. 
 
 ```
 let start = startofday(ago({TimeRange} + {Metric}));
@@ -139,60 +134,60 @@ union customEvents, pageViews
 | render timechart 
 ```
 
-## <a name="adding-metrics-sections"></a>Přidání metriky oddílů
+## <a name="adding-metrics-sections"></a>Přidávání sekcí metriky
 
-Oddíly metrik získáte plný přístup k začlenění dat metrik Azure monitoru interaktivní sestavy. Řadu předem připravené pracovní sešity bude obsahovat analytické dotazy na data a data metriky, abyste mohli plně využít to nejlepší z obou funkcí vše na jednom místě. Máte také možnost, aby se načetla data metriky z prostředků ve všech předplatných, ke kterým máte přístup k.
+Oddíly metrik poskytují úplný přístup, který umožňuje začlenit do interaktivních sestav Azure Monitor data metrik. Mnohé z předem připravených sešitů budou obsahovat data analytických dotazů a data metriky, které vám umožní plně využít výhod obou funkcí na jednom místě. Máte také možnost přijímat data metrik z prostředků v libovolném z předplatných, ke kterým máte přístup.
 
-Tady je příklad dat virtuálních počítačů právě načetli do sešitu poskytnout vizualizaci mřížky výkon procesoru:
+Tady je příklad dat virtuálního počítače, která jsou načítána do sešitu, aby bylo možné vytvořit vizualizaci mřížky výkonu procesoru:
 
-![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/008-metrics-grid.png)
+![Ovládací prvky pro úpravy oddílu Application Insights sešity](./media/usage-workbooks/008-metrics-grid.png)
 
-## <a name="adding-parameter-sections"></a>Přidání parametru oddílů
+## <a name="adding-parameter-sections"></a>Přidávání oddílů parametrů
 
-Sešit parametry umožňují změnit bez nutnosti ručně upravit části dotazu nebo textové hodnoty v sešitu.  To eliminuje nutnost by bylo nutné pochopit základní dotazovací jazyk analytics a značně rozšíří potenciální cílovou skupinu na základě sešitu generování sestav.
+Parametry sešitu umožňují změnit hodnoty v sešitu bez nutnosti ručně upravovat oddíly dotazu nebo textu.  Tím se eliminuje nutnost potřebovat porozumět základnímu dotazovacímu jazyku a významně rozšířit potenciální cílovou skupinu vytváření sestav na základě sešitu.
 
-Hodnoty parametrů se nahradí v dotazu, text nebo jiné části parametr vložením název parametru ve složených závorkách, jako je ``{parameterName}``.  Názvy parametrů jsou omezené na podobnými pravidly jako identifikátory jazyka JavaScript, v podstatě abecední znaky nebo podtržítka, za nímž následuje alfanumerické znaky nebo podtržítka. Například **a1** může, ale **1a** není povolený.
+Hodnoty parametrů jsou nahrazeny v části Query, text nebo jiné oddíly parametrů vložením názvu parametru do složených závorek, například ``{parameterName}``.  Názvy parametrů jsou omezené na podobná pravidla jako identifikátory JavaScriptu, v podstatě abecední znaky nebo podtržítka, následované alfanumerickými znaky nebo podtržítky. Například **a1** je povoleno, ale **1a** není povoleno.
 
-Parametry jsou lineárně závislé, od horní části sešitu a odesílaných do dalších krocích.  Parametry deklarovanými jako později v sešitu můžete přepsat ty, které byly deklarovány další nahoru.  Díky tomu také další až dotazy použijte pro přístup k hodnoty z parametrů definovaných parametrů.  V rámci kroku parametr na samotný parametry jsou také lineární, zleva doprava, kde parametry na pravé straně může záviset na parametr deklarovaný dříve v tomto kroku stejné.
+Parametry jsou lineární, počínaje horním okrajem sešitu a natékání dolů na pozdější kroky.  Parametry deklarované později v sešitu mohou přepsat ty, které byly deklarovány dále.  To také umožňuje parametrům, které používají dotazy pro přístup k hodnotám z parametrů definovaných dále.  V samotném kroku parametru jsou parametry také lineární, zleva doprava, kde parametry vpravo mohou záviset na parametru deklarovaném dříve v tomto kroku.
  
 Existují čtyři různé typy parametrů, které jsou aktuálně podporovány:
 
   |         |          |
    | ---------------- |:-----|
-   | **text**    | Uživatel se upravit textové pole a volitelně může zadat dotaz vyplnit výchozí hodnotu. |
-   | **Rozevírací seznam** | Uživatel zvolí ze sady hodnot. |
-   | **Výběr časového rozsahu**| Uživatel vybírat předdefinovanou sadu hodnot rozsahu času, nebo si můžete vybrat z vlastní časový rozsah.|
-   | **Výběr prostředku** | Uživatel zvolí z prostředků vybrané pro sešit.|
+   | **Text**    | uživatel upraví textové pole a volitelně můžete zadat dotaz, který bude vyplnit výchozí hodnotu. |
+   | **Rozevírací seznam** | Uživatel se vybere ze sady hodnot. |
+   | **Výběr časového rozsahu**| Uživatel se vybere z předdefinované sady hodnot časového rozsahu nebo vybere z vlastního časového rozsahu.|
+   | **Výběr prostředku** | Uživatel se vybere z prostředků vybraných pro sešit.|
 
-### <a name="using-a-text-parameter"></a>Pomocí parametru text
+### <a name="using-a-text-parameter"></a>Použití textového parametru
 
-Hodnota, která nahrazuje uživatelské typy v textovém poli přímo v dotazu bez uvozovací znaky nebo uvozovky u. Pokud je hodnota, je třeba řetězec, dotaz by měl mít uvozovky kolem parametru (jako je **'{parameter}'** ).
+Hodnota uživatelské typy v textovém poli je nahrazena přímo v dotazu bez uvozovacích znaků nebo citací. Pokud je hodnota, kterou potřebujete, řetězec, dotaz by měl obsahovat uvozovky kolem parametru (například **{Parameter}** ).
 
-To umožňuje hodnotu v textovém poli, který se má použít kdekoli. Může být název tabulky, název sloupce, název funkce, operátor, atd.
+To umožňuje, aby se hodnota v textovém poli použila kdekoli. Může to být název tabulky, název sloupce, název funkce, operátor atd.
 
-Typ parametru text má nastavení **získat výchozí hodnotu z analytického dotazu**, což umožňuje Autor sešitu použít dotaz k naplnění výchozí hodnota tohoto textového pole.
+Typ textového parametru má nastavení **načíst výchozí hodnotu z analytického dotazu**, které umožňuje autorovi sešitu použít dotaz k naplnění výchozí hodnoty tohoto textového pole.
 
-Při použití výchozí hodnotu z analytického dotazu, pouze první hodnotu na prvním řádku (0 se sloupci 0) se používá jako výchozí hodnotu. Proto se doporučuje omezit dotaz vrátit jen jeden řádek a jeden sloupec. Žádná další data vrácená dotazem se ignoruje. 
+Při použití výchozí hodnoty z analytického dotazu je jako výchozí hodnota použita pouze první hodnota prvního řádku (řádek 0, sloupec 0). Proto je doporučeno omezit dotaz tak, aby vracel pouze jeden řádek a jeden sloupec. Všechna ostatní data vrácená dotazem jsou ignorována. 
 
-Všechno, co dotaz se vrátí hodnota se nahradí přímo bez uvozovací znaky nebo uvozovky u. Pokud dotaz vrací žádné řádky, výsledek parametru je buď prázdný řetězec (Pokud parametr není povinný) nebo nedefinovaný (Pokud je parametr povinný).
+Libovolná hodnota, kterou dotaz vrátí, se nahradí přímo bez uvozovacích znaků nebo citací. Pokud dotaz nevrátí žádné řádky, výsledek parametru je buď prázdný řetězec (Pokud parametr není požadován) nebo undefined (Pokud je parametr požadován).
 
-### <a name="using-a-dropdown"></a>Pomocí rozevíracího seznamu
+### <a name="using-a-dropdown"></a>Použití rozevíracího seznamu
 
-Typ parametru rozevíracího seznamu umožňuje vytvořit ovládací prvek rozevírací seznam, povolení výběru jednoho nebo více hodnot.
+Typ parametru rozevíracího seznamu umožňuje vytvořit ovládací prvek rozevíracího seznamu, který umožňuje výběr jedné nebo více hodnot.
 
-Rozevírací seznam je vyplněn analytický dotaz. Pokud dotaz vrací jeden sloupec, jsou hodnoty v tomto sloupci **hodnotu** a **popisek** v ovládacím prvku rozevíracího seznamu. Pokud dotaz vrací dva sloupce, na první sloupec je **hodnotu**, a druhý sloupec je **popisek** zobrazeny v rozevírací nabídce.  Pokud dotaz vrací tři sloupce, 3. sloupec slouží k označení výchozí výběr v této rozevírací nabídce.  V tomto sloupci může být libovolný typ, ale nejjednodušší je použití bool nebo číselné typy, kde 0 je NEPRAVDA a 1 je PRAVDA.
+Rozevírací seznam se naplní dotazem Analytics. Pokud dotaz vrátí jeden sloupec, hodnoty v tomto sloupci budou **hodnotou** a **popiskem** v ovládacím prvku rozevírací seznam. Pokud dotaz vrátí dva sloupce, je prvním sloupcem **hodnota**a druhý sloupec je **popisek** zobrazený v rozevíracím seznamu.  Pokud dotaz vrátí tři sloupce, použije se třetí sloupec k označení výchozího výběru v tomto rozevíracím seznamu.  Tento sloupec může být libovolného typu, ale nejjednodušší je použít bool nebo číselné typy, kde 0 je false a 1 je pravda.
 
- Pokud je ve sloupci Typ řetězce, hodnotu null nebo prázdný řetězec je považován za hodnotu false a jakoukoli jinou hodnotu je považován za hodnotu true. Ovládací prvek DropDowns jeden výběr první hodnota s hodnotou true slouží jako výchozí výběr.  Ovládací prvek DropDowns více výběr všechny hodnoty true hodnotou slouží jako výchozí vybraná sada. Položky v rozevírací nabídce se zobrazí v libovolném pořadí dotaz vrátil řádků. 
+ Pokud je sloupec typem řetězce, hodnota null nebo prázdný řetězec se považuje za false a jakákoli jiná hodnota se považuje za true. U rozevíracích seznamů s jedním výběrem se jako výchozí výběr použije první hodnota s hodnotou true.  U rozevíracích seznamů s vícenásobným výběrem se jako výchozí vybraná sada použije všechny hodnoty s hodnotou true. Položky v rozevíracím seznamu jsou zobrazeny v jakémkoli pořadí, ve kterém dotaz vrátil řádky. 
 
-Podívejme se na parametry, které jsou součástí sestavy aktivních uživatelů. Kliknutím na symbol upravit vedle **TimeRange**.
+Pojďme se podívat na parametry přítomné v sestavě aktivní uživatelé. Klikněte na symbol úprav vedle **TimeRange**.
 
-![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/009-time-range.png)
+![Ovládací prvky pro úpravy oddílu Application Insights sešity](./media/usage-workbooks/009-time-range.png)
 
-Tím se spustí položku nabídky Upravit parametr:
+Tím se spustí položka nabídky upravit parametr:
 
-![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/010-time-range-edit.png)
+![Ovládací prvky pro úpravy oddílu Application Insights sešity](./media/usage-workbooks/010-time-range-edit.png)
 
-Dotaz využívá dotazovací jazyk analytics volá funkce **datatable** , který umožňuje generovat libovolného tabulky, úplné obsahu z dynamického zajišťování air! Například následující dotaz analytics:
+Dotaz používá funkci dotazovacího jazyka Analytics s názvem **DataTable** , která umožňuje vygenerovat libovolnou tabulku s plným obsahem, z tenkého vzduchu. Například následující analytický dotaz:
 
 ```
 datatable( column1:string, column2:string )
@@ -204,9 +199,9 @@ datatable( column1:string, column2:string )
 
 Vygeneruje výsledek:
 
-![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/011-data-table.png)
+![Ovládací prvky pro úpravy oddílu Application Insights sešity](./media/usage-workbooks/011-data-table.png)
 
-Hodí víc příklad používá rozevírací seznam pro výběr z několika zemích nebo oblastech podle názvu:
+Více použitelným příkladem je použití rozevírací nabídky k výběru ze sady zemí nebo oblastí podle názvu:
 
 ```
 customEvents
@@ -217,49 +212,49 @@ customEvents
 | order by client_CountryOrRegion asc
 ```
 
-Výsledky se zobrazí dotaz následujícím způsobem:
+Dotaz zobrazí výsledky následujícím způsobem:
 
-![Rozevírací seznam země](./media/usage-workbooks/012-country-dropdown.png)
+![Rozevírací nabídka země](./media/usage-workbooks/012-country-dropdown.png)
 
-Rozevírací seznamy jsou velmi výkonné nástroje pro přizpůsobení a vytváření interaktivních sestav.
+Rozevírací seznamy jsou neuvěřitelně výkonné nástroje pro přizpůsobení a vytváření interaktivních sestav.
 
-### <a name="time-range-parameters"></a>Parametry rozsah času
+### <a name="time-range-parameters"></a>Parametry časového rozsahu
 
-Když provedete vlastní parametr vlastní časový rozsah přes typ parametru rozevírací seznam, můžete také typ parametru out-of-box časového rozsahu Pokud už nebudete potřebovat stejnou úroveň flexibilitu. 
+I když můžete vytvořit vlastní parametr časového rozsahu prostřednictvím rozevíracího seznamu, můžete použít také typ parametru časového rozsahu, pokud nepotřebujete stejnou míru flexibility. 
 
-Typy parametrů rozsah času mají 15 výchozí rozsahy, které přejít z pěti minut na poslední 90 dnů. Je také možnost povolit výběr vlastního časového rozsahu, který umožňuje operátorovi sestavy vyberte explicitní spuštění a zastavení hodnoty pro časový rozsah.
+Typy parametrů časového rozsahu mají 15 výchozích rozsahů, které přecházejí z pěti minut na posledních 90 dní. K dispozici je také možnost Povolit vlastní výběr časového rozsahu, který umožňuje operátorovi sestavy zvolit explicitní hodnoty spuštění a zastavení pro časový rozsah.
 
 ### <a name="resource-picker"></a>Výběr prostředku
 
-Typ prostředku pro výběr parametru dává možnost k určení oboru sestavy na určité typy prostředků. Je například předem připravených sešit, který využívá výběr typu prostředku **selhání Insights** sešitu.
+Typ parametru výběru prostředku vám umožní určit rozsah sestavy na určité typy prostředků. Příkladem předem sestaveného sešitu, který využívá typ výběru prostředku, je sešit s **přehledem selhání** .
 
-![Rozevírací seznam země](./media/usage-workbooks/013-resource-picker.png)
+![Rozevírací nabídka země](./media/usage-workbooks/013-resource-picker.png)
 
-## <a name="saving-and-sharing-workbooks-with-your-team"></a>Ukládání a sdílení sešitů s týmem
+## <a name="saving-and-sharing-workbooks-with-your-team"></a>Ukládání a sdílení sešitů ve vašem týmu
 
-Sešity jsou uloženy v rámci prostředku Application Insights, buď v **Moje sestavy** oddíl, který je pro vás nebo v privátní **sdílené sestavy** oddíl, který je přístupné všem uživatelům s přístupem k Prostředek služby Application Insights. Chcete-li zobrazit všechny soubory v prostředku, klikněte na tlačítko **otevřít** tlačítko na panelu akcí.
+Sešity se ukládají v rámci Application Insights prostředku, a to buď v části **Mé sestavy** , která je pro vás nebo v části **sdílené sestavy** přístupná pro všechny s přístupem k prostředku Application Insights. Chcete-li zobrazit všechny sešity v prostředku, klikněte na panelu akcí na tlačítko **otevřít** .
 
-Sdílet sešit, který je v současné době **Moje sestavy**:
+Sdílení sešitu, který je aktuálně v **Mé sestavy**:
 
-1. Klikněte na tlačítko **otevřít** na panelu akcí
-2. Klikněte na tlačítko "..." vedle sešit, který chcete sdílet
-3. Klikněte na tlačítko **přesunout do sdílených sestav**.
+1. Na panelu akcí klikněte na **otevřít** .
+2. Klikněte na "..." tlačítko vedle sešitu, který chcete sdílet
+3. Klikněte na **přesunout ke sdíleným sestavám**.
 
-Chcete-li sdílet sešit s odkazem nebo e-mailem, klikněte na tlačítko **sdílet** na panelu akcí. Uvědomte si, že příjemci odkazu potřebují přístup k tomuto prostředku na webu Azure Portal k zobrazení tohoto sešitu. K provádění úprav, příjemci potřebovat aspoň oprávnění přispěvatele pro prostředek.
+Pokud chcete sešit sdílet s odkazem nebo e-mailem, klikněte na panelu akcí na **sdílet** . Mějte na paměti, že příjemci odkazu potřebují k tomuto prostředku přístup v Azure Portal k zobrazení sešitu. K provedení úprav potřebují příjemci pro daný prostředek aspoň oprávnění Přispěvatel.
 
-Pokud chcete připnout odkaz k sešitu na řídicí panel Azure:
+Chcete-li připnout odkaz na sešit na řídicí panel Azure:
 
-1. Klikněte na tlačítko **otevřít** na panelu akcí
-2. Klikněte na tlačítko "..." vedle sešit, který chcete připnout
-3. Klikněte na tlačítko **připnout na řídicí panel**.
+1. Na panelu akcí klikněte na **otevřít** .
+2. Klikněte na "..." tlačítko vedle sešitu, který chcete připnout
+3. Klikněte na **Připnout na řídicí panel**.
 
-## <a name="contributing-workbook-templates"></a>Přispívání šablonách sešitů
+## <a name="contributing-workbook-templates"></a>Přispívat k šablonám sešitu
 
-Jste vytvořili šablonu Super sešitu máte a chcete ho sdílet s komunitou? Pokud chcete dozvědět víc, navštivte naši [úložiště GitHub se vzorovými](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md).
+Vytvořili jste šablonu superového sešitu a chcete ji sdílet s komunitou? Další informace najdete v našem [úložišti GitHub](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md).
 
-## <a name="next-steps"></a>Další postup
-- Povolit použití prostředí, spusťte odesílání [vlastních událostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Pokud jste již posílat vlastní události nebo zobrazení stránek, prozkoumejte nástroje využití se dozvíte, jak uživatelé vaši službu používat.
+## <a name="next-steps"></a>Další kroky
+- Chcete-li povolit prostředí používání, začněte odesílat [vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Pokud jste už odeslali vlastní události nebo zobrazení stránky, prozkoumejte nástroje využití a zjistěte, jak uživatelé používají vaši službu.
     - [Uživatelé, relace, události](../../azure-monitor/app/usage-segmentation.md)
     - [Trychtýře](../../azure-monitor/app/usage-funnels.md)
     - [Uchování](../../azure-monitor/app/usage-retention.md)

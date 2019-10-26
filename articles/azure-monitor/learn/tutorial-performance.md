@@ -1,21 +1,19 @@
 ---
 title: Diagnostika problémů s výkonem pomocí Azure Application Insights | Dokumentace Microsoftu
 description: Kurz popisující, jak v aplikaci vyhledat a diagnostikovat problémy s výkonem pomocí Azure Application Insights.
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 9768191d98bf1987ac24564869107cdd6bf19e8d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69032105"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900447"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -79,7 +77,7 @@ Application Insights shromažďuje podrobnosti o výkonu různých operací ve v
 ## <a name="use-logs-data-for-server"></a>Použít data protokolů pro server
  Protokoly poskytují bohatý dotazovací jazyk, který umožňuje analyzovat všechna data shromážděná v Application Insights. Můžete ho použít k provádění hloubkové analýzy dat o požadavcích a výkonu.
 
-1. Vraťte se na panel podrobností operace a klikněte na ![Logs](media/tutorial-performance/app-viewinlogs-icon.png)**zobrazení ikony v protokolech (analýza).**
+1. Vraťte se na panel podrobností o operaci a v části protokoly klikněte na možnost zobrazení ikon ![ch protokolů](media/tutorial-performance/app-viewinlogs-icon.png)**(analýza).**
 
 2. Protokoly se otevře s dotazem pro každé zobrazení na panelu.  Tyto dotazy můžete spustit tak, jak jsou, nebo je upravit podle vlastních potřeb.  První dotaz zobrazí dobu trvání této operace v průběhu času.
 
@@ -100,7 +98,7 @@ Kromě identifikace procesů serveru, které je potřeba optimalizovat, dokáže
 ## <a name="use-logs-data-for-client"></a>Použití dat protokolů pro klienta
 Stejně jako data shromážděná pro výkon serveru Application Insights zpřístupňují všechna data klienta pro hloubkovou analýzu pomocí protokolů.
 
-1. Vraťte se do souhrnu prohlížeče a klikněte na ikonu ![Logs ](media/tutorial-performance/app-viewinlogs-icon.png) **zobrazení v protokolech (Analytics).**
+1. Vraťte se do souhrnu prohlížeče a klikněte na ikonu ![protokoly](media/tutorial-performance/app-viewinlogs-icon.png) **zobrazení v protokolech (Analytics).**
 
 2. Protokoly se otevře s dotazem pro každé zobrazení na panelu. První dotaz zobrazí dobu trvání různých zobrazení stránek v průběhu času.
 

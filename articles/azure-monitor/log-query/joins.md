@@ -1,33 +1,27 @@
 ---
-title: Spojení v dotazů na protokoly Azure Monitor | Dokumentace Microsoftu
-description: Tento článek obsahuje lekce týkající se použití spojení ve dotazů na protokoly Azure monitoru.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Spojení v Azure Monitor dotazy protokolu | Microsoft Docs
+description: Tento článek obsahuje lekci o použití spojení v Azure Monitorch dotazech protokolu.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 2ea5b4e3af6591e6e25a863998baa7cecb3e29e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: 526c359367271c69ccd461e4421c3223b00fbc36
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60520120"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900288"
 ---
-# <a name="joins-in-azure-monitor-log-queries"></a>Spojení v dotazů na protokoly Azure monitoru
+# <a name="joins-in-azure-monitor-log-queries"></a>Spojení v Azure Monitor dotazy protokolu
 
 > [!NOTE]
-> By se měla Dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [dotazů na protokoly Azure monitoru](get-started-queries.md) před dokončením v této lekci.
+> Před dokončením této lekce byste měli dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [dotazy protokolu Azure monitor](get-started-queries.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Spojení umožňují analyzovat data z více tabulek, ve stejném dotazu. Sloučí řádky dvou datových sad porovnáním hodnot zadaných sloupců.
+Spojení umožňují analyzovat data z více tabulek ve stejném dotazu. Sloučí řádky dvou datových sad tak, že odpovídají hodnotám zadaných sloupců.
 
 
 ```Kusto
@@ -44,15 +38,15 @@ SecurityEvent
 | top 10 by Duration desc
 ```
 
-V tomto příkladu první datovou sadu filtrů pro všechny události přihlášení. To je spojen s druhou datovou sadu, která filtruje všech odhlašování přes protokol událostí. Předpokládané sloupce jsou _počítače_, _účet_, _TargetLogonId_, a _TimeGenerated_. Datové sady se korelují podle sdílené sloupce _TargetLogonId_. Výstup je jeden záznam za korelace, které mají čas přihlášení a odhlášení.
+V tomto příkladu se první datová sada filtruje pro všechny přihlašovací události. Je spojen s druhou datovou sadou, která filtruje všechny události odhlášení. Mezi plánované sloupce patří _Computer_, _account_, _TargetLogonId_a _TimeGenerated_. Datové sady jsou korelují sdíleným sloupcem, _TargetLogonId_. Výstupem je jeden záznam na korelační, který má jak přihlašovací, tak i čas odhlášení.
 
-Pokud obě datové sady sloupců se stejnými názvy, sloupce datové sady, na pravé straně by předávat číslo indexu, takže v tomto příkladu by zobrazil výsledky _TargetLogonId_ s hodnotami z levé tabulky a  _TargetLogonId1_ s hodnotami z tabulky na pravé straně. V takovém případě druhý _TargetLogonId1_ sloupec byl odebrán pomocí `project-away` operátor.
+Pokud obě datové sady mají sloupce se stejnými názvy, budou mít sloupce datové sady na pravé straně číslo indexu, takže v tomto příkladu by se výsledky zobrazovaly jako _TargetLogonId_ s hodnotami z levé tabulky a _TargetLogonId1_ s hodnotami. z tabulky na pravé straně. V tomto případě byl druhý sloupec _TargetLogonId1_ odstraněn pomocí operátoru `project-away`.
 
 > [!NOTE]
-> Kvůli zvýšení výkonu se zachovat relevantní sloupce připojené k doméně – sady dat, pomocí `project` operátor.
+> Chcete-li zvýšit výkon, zachovejte pouze příslušné sloupce spojených datových sad pomocí operátoru `project`.
 
 
-Použijte následující syntax k dvě datové sady a připojené k doméně klíč má jiný název mezi dvěma tabulkami:
+Použijte následující syntaxi pro spojení dvou datových sad a připojeného klíče má jiný název mezi dvěma tabulkami:
 ```
 Table1
 | join ( Table2 ) 
@@ -60,7 +54,7 @@ on $left.key1 == $right.key2
 ```
 
 ## <a name="lookup-tables"></a>Vyhledávací tabulky
-Běžné použití spojení je pomocí statické mapování hodnot pomocí `datatable` , které mohou pomoci při transformaci výsledky do více prezentovatelný způsobem. Například rozšířit zabezpečení dat událostí s názvem události pro každou jednotlivou událost ID.
+Společné použití spojení používá statické mapování hodnot pomocí `datatable`, které mohou pomoci při transformaci výsledků do více předodesílaných způsobů. Například pro rozšíření dat události zabezpečení s názvem události pro každé ID události.
 
 ```Kusto
 let DimTable = datatable(EventID:int, eventName:string)
@@ -81,35 +75,35 @@ SecurityEvent
 | summarize count() by eventName
 ```
 
-![Seznamte se s datatable](media/joins/dim-table.png)
+![Spojení s objektem DataTable](media/joins/dim-table.png)
 
-## <a name="join-kinds"></a>Připojte se k typy
-Zadejte typ spojení s _druh_ argument. Každý typ provádí různé shodné záznamy z dané tabulky, jak je popsáno v následující tabulce.
+## <a name="join-kinds"></a>Typy spojení
+Zadejte typ spojení s argumentem _druh_ . Každý typ provádí odlišnou shodu mezi záznamy v daných tabulkách, jak je popsáno v následující tabulce.
 
 | Typ spojení | Popis |
 |:---|:---|
-| innerunique | Toto je výchozí režim join. Nejprve jsou nalezeny hodnoty odpovídající sloupce v levé tabulce a duplicitní hodnoty se odeberou.  Pak sadu jedinečné hodnoty hledána pravé tabulky. |
-| vnitřní | Pouze odpovídající záznamy v obou tabulkách jsou zahrnuty ve výsledcích. |
-| leftouter | Všechny záznamy v levé tabulce a odpovídající záznamy v pravé tabulce jsou zahrnuty ve výsledcích. Bezkonkurenční výstupní vlastnosti obsahovat hodnoty Null.  |
-| leftanti | Záznamy z levé strany, které nemají shody zprava, jsou zahrnuty ve výsledcích. Tabulka výsledků obsahuje pouze sloupce z levé tabulky. |
-| leftsemi | Záznamy z levé strany, jejichž shody zprava, jsou zahrnuty ve výsledcích. Tabulka výsledků obsahuje pouze sloupce z levé tabulky. |
+| innerunique | Toto je výchozí režim připojení. Nejprve jsou nalezeny hodnoty odpovídající sloupce v levé tabulce a duplicitní hodnoty budou odebrány.  Pak se sada jedinečných hodnot bude shodovat s pravou tabulkou. |
+| vnořen | Ve výsledcích jsou zahrnuty pouze vyhovující záznamy v obou tabulkách. |
+| leftouter | Všechny záznamy v levé tabulce a vyhovující záznamy v pravé tabulce jsou zahrnuty ve výsledcích. Nespárované výstupní vlastnosti obsahují hodnoty null.  |
+| leftanti | Do výsledků jsou zahrnuty záznamy z levé strany, které nemají shodu s právem. Tabulka výsledků má pouze sloupce z levé tabulky. |
+| leftsemi | Do výsledků jsou zahrnuty záznamy z levé strany, které mají shodu s právem. Tabulka výsledků má pouze sloupce z levé tabulky. |
 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Vezměte v úvahu následující body pro zajištění optimálního výkonu:
+Pro zajištění optimálního výkonu Vezměte v úvahu následující body:
 
-- Použijte filtr času ke snížení záznamy, které musí být vyhodnocen pro spojení na každou tabulku.
-- Použití `where` a `project` ke snížení počtu řádků a sloupců ve vstupní tabulky před spojení.
-- Pokud jedna tabulka je vždy menší než ten druhý, použijte ho jako levé strany spojení.
+- V každé tabulce použijte časový filtr pro snížení záznamů, které je nutné pro spojení vyhodnotit.
+- Pomocí `where` a `project` snižte počet řádků a sloupců ve vstupních tabulkách před připojením.
+- Je-li jedna tabulka vždy menší než druhá, použijte ji jako levou stranu spojení.
 
 
-## <a name="next-steps"></a>Další postup
-Zobrazit další lekce pro používání dotazů na protokoly Azure monitoru:
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další lekce týkající se použití Azure Monitorch dotazů protokolu:
 
 - [Operace s řetězci](string-operations.md)
 - [Agregační funkce](aggregations.md)
 - [Pokročilé agregace](advanced-aggregations.md)
-- [JSON a datových struktur](json-data-structures.md)
-- [Zápis rozšířeného dotazu](advanced-query-writing.md)
-- [Grafy](charts.md)
+- [JSON a datové struktury](json-data-structures.md)
+- [Pokročilý zápis dotazů](advanced-query-writing.md)
+- [Spojnic](charts.md)

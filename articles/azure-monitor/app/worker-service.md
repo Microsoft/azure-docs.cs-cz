@@ -1,23 +1,18 @@
 ---
 title: Application Insights pro aplikace pracovní služby Worker (jiné aplikace než HTTP) | Microsoft Docs
 description: Monitorování aplikací .NET Core/. NET Framework bez protokolu HTTP pomocí Application Insights.
-services: application-insights
-documentationcenter: .net
-author: cijothomas
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/15/2019
+author: cijothomas
 ms.author: cithomas
-ms.openlocfilehash: 2185f5b0c4148e643e90741235054fd06fdbb151
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/15/2019
+ms.openlocfilehash: ccc7218575638c7ede2c56a99e41dd68cbd475c0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174613"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899235"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights pro aplikace služby Worker (aplikace jiného typu než HTTP)
 
@@ -135,10 +130,10 @@ Případně můžete zadat klíč instrumentace v některé z následujících p
 Příklad: `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 NEBO `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-@No__t-0 obvykle Určuje klíč instrumentace pro aplikace nasazené pro Web Apps jako webové úlohy.
+`APPINSIGHTS_INSTRUMENTATIONKEY` obvykle Určuje klíč instrumentace pro aplikace nasazené pro Web Apps jako webové úlohy.
 
 > [!NOTE]
-> Klíč instrumentace zadaný v kódu WINS přes proměnnou prostředí `APPINSIGHTS_INSTRUMENTATIONKEY`, který služba WINS překračuje jiné možnosti.
+> Klíč instrumentace zadaný v kódu služby WINS nad proměnnou prostředí `APPINSIGHTS_INSTRUMENTATIONKEY`, která služba WINS překračuje jiné možnosti.
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>ASP.NET Core úlohy na pozadí pomocí hostovaných služeb
 [Tento](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio) dokument popisuje, jak vytvořit úlohy na pozadí v aplikaci ASP.NET Core 2.1/2.2.
@@ -301,7 +296,7 @@ Tato Konzolová aplikace také používá stejné výchozí `TelemetryConfigurat
 
 Spusťte aplikaci. Ukázkové pracovní procesy ze všech výše uvedených výše provádí volání http každou sekundu do bing.com a generuje také několik protokolů pomocí ILogger. Tyto řádky jsou zabaleny do `StartOperation` volání `TelemetryClient`, které se používá k vytvoření operace (v tomto příkladu `RequestTelemetry` s názvem "operace"). Application Insights bude shromažďovat tyto protokoly ILogger (ve výchozím nastavení varování nebo vyšší) a závislosti a bude koreluje s `RequestTelemetry` s relací nadřazenosti a podřízenosti. Korelace taky funguje na hranici mezi procesy a sítě. Například pokud bylo volání provedeno na jinou monitorovanou součást, bude koreluje také s tímto nadřazeným prvkem.
 
-Tato vlastní operace `RequestTelemetry` se dá představit jako ekvivalent příchozího webového požadavku v typické webové aplikaci. I když není nutné použít operaci, je nejlepší pro [Application Insights relační datový model](https://docs.microsoft.com/azure/azure-monitor/app/correlation) – s `RequestTelemetry` fungující jako nadřazená operace a každá telemetrie vygenerovaná v iteraci pracovního procesu, která je považována za logickou. na stejnou operaci. Tento přístup také zajišťuje, že všechna vygenerovaná telemetrie (automatická a ruční) bude mít stejnou `operation_id`. Vzhledem k tomu, že vzorkování vychází z `operation_id`, algoritmus vzorkování buď udržuje, nebo vyřazuje veškerou telemetrii z jedné iterace.
+Tato vlastní operace `RequestTelemetry` se dá představit jako ekvivalent příchozího webového požadavku v typické webové aplikaci. I když není nutné použít operaci, je nejlepší pro [Application Insights relační datový model](https://docs.microsoft.com/azure/azure-monitor/app/correlation) – s `RequestTelemetry` fungující jako nadřazená operace a každá telemetrie vygenerovaná v iteraci pracovního procesu, která je považována za logickou. na stejnou operaci. Tento přístup také zajišťuje, že všechna vygenerovaná telemetrie (automatická a ruční) bude mít stejné `operation_id`. Jak vzorkování vychází z `operation_id`, algoritmus vzorkování buď udržuje, nebo vyřazuje veškerou telemetrii z jedné iterace.
 
 Následující seznam uvádí úplnou telemetrii automaticky shromážděnou nástrojem Application Insights.
 
@@ -319,7 +314,7 @@ Kolekce závislostí je ve výchozím nastavení povolená. [Tento](asp-net-depe
 
 ### <a name="eventcounter"></a>EventCounter
 
-@no__t – 0 je ve výchozím nastavení povolený a bude shromažďovat výchozí sadu čítačů z aplikací .NET Core 3,0. Kurz [EventCounter](eventcounters.md) obsahuje seznam výchozích sad čítačů, které jsou shromažďovány. Obsahuje také pokyny k přizpůsobení seznamu.
+`EventCounterCollectionModule` je ve výchozím nastavení povolená a bude shromažďovat výchozí sadu čítačů z aplikací .NET Core 3,0. Kurz [EventCounter](eventcounters.md) obsahuje seznam výchozích sad čítačů, které jsou shromažďovány. Obsahuje také pokyny k přizpůsobení seznamu.
 
 ### <a name="manually-tracking-additional-telemetry"></a>Ruční sledování další telemetrie
 
@@ -482,7 +477,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="disable-telemetry-dynamically"></a>Dynamické vypnutí telemetrie
 
-Pokud chcete vypnout telemetrii podmíněně a dynamicky, můžete vyřešit @no__t instanci s ASP.NET Core kontejnerem vkládání závislostí kdekoli v kódu a nastavit příznak `DisableTelemetry`.
+Pokud chcete vypnout telemetrii podmíněně a dynamicky, můžete vyřešit `TelemetryConfiguration` instanci pomocí kontejneru injektáže ASP.NET Core závislosti kdekoli v kódu a nastavit `DisableTelemetry` příznak.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)

@@ -1,21 +1,19 @@
 ---
 title: 'Rychlý start: Monitorování webů pomocí Azure Monitor Application Insights | Microsoft Docs'
 description: Pokyny pro rychlé nastavení monitorování webů na straně klienta nebo prohlížeče pomocí Azure Monitor Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/15/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: f423e96055c23ae1521466f0e697d7ad2254f8c0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: eecc3d739cb5500abdbd04a9aaca1ddcf86e352b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813898"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899272"
 ---
 # <a name="start-monitoring-your-website"></a>Zahájení monitorování webu
 
@@ -23,19 +21,19 @@ Azure Monitor Application Insights umožňuje snadné monitorování webu z hled
 
 Tento rychlý Start vás provede přidáním [Open source Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) , který vám umožní pochopit prostředí klienta nebo prohlížeče pro návštěvníky webu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 - Mít předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-## <a name="enable-application-insights"></a>Povolit Application Insights
+## <a name="enable-application-insights"></a>Povolení Application Insights
 
 Application Insights může shromažďovat telemetrická data ze všech aplikací připojených k internetu a spuštěných místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
@@ -46,13 +44,13 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
-    | Nastavení        | Value           | Popis  |
+    | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
-   | **Location** | East US | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-2. Klikněte na možnost **Vytvořit**.
+2. Klikněte na **Vytvořit**.
 
 ## <a name="create-an-html-file"></a>Vytvoření souboru HTML
 

@@ -1,26 +1,20 @@
 ---
 title: Analýza trendů v sadě Visual Studio | Dokumentace Microsoftu
 description: Analyzujte, vizualizujte a zkoumejte trendy v telemetrii služby Application Insights v sadě Visual Studio.
-services: application-insights
-documentationcenter: .net
-author: NumberByColors
-manager: carmonm
-ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
-ms.service: application-insights
-ms.custom: vs-azure
-ms.workload: azure-vs
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 2b08dfd87910cbb9f23f6b108a970d160612e1a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: vs-azure
+ms.openlocfilehash: da1cd3ed9d07b1eb1304f6b26999af92d2704537
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255890"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899320"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analýza trendů v sadě Visual Studio
 Nástroj Trendy Application Insights vizualizuje průběžné změny důležitých telemetrických událostí ve vaší webové aplikaci. Díky tomu můžete rychle identifikovat problémy a anomálie. Nástroj Trendy vám dodá podrobnější diagnostické informace, abyste mohli zlepšit výkon aplikace, sledovat příčiny výjimek a získat přehledy z vlastních událostí.
@@ -69,7 +63,7 @@ Potom klikněte na **Analyzovat telemetrii** a spusťte dotaz.
 Pokud chcete přecházet mezi bublinami ve vizualizaci, postupujte následovně:
 
 * Kliknutím vyberte bublinu, která aktualizuje filtry v dolní části okna a shrnuje jenom události, které nastaly během konkrétního časového období.
-* Poklikáním na bublinu přejděte do nástroje hledání a zobrazte všechny jednotlivé telemetrické události, ke kterým došlo během tohoto časového období
+* Dvojitým kliknutím na bublinu přejděte do nástroje hledání a zobrazte všechny jednotlivé události telemetrie, ke kterým došlo během tohoto časového období.
 * Pokud chcete zrušit výběr bubliny ve vizualizaci, podržte klávesu Ctrl a klikněte na bublinu.
 
 > [!TIP]
@@ -77,8 +71,8 @@ Pokud chcete přecházet mezi bublinami ve vizualizaci, postupujte následovně:
 > 
 > 
 
-## <a name="filter"></a>Filtr
-Pomocí ovládacích prvků filtru v dolní části okna můžete zjistit konkrétnější trendy. Pokud chcete filtr použít, klikněte na jeho název. Mezi různými filtry můžete rychle přepínat a zjišťovat tak trendy, které se můžou skrývat v konkrétní dimenzi telemetrie. Když filtr použijete v jedné dimenzi, například v typu výjimky, můžete na filtry v ostatních dimenzích stále klikat, i když jsou zobrazené šedě. Pokud chcete zrušit používání filtru, klikněte na něj znovu. Podržením klávesy Ctrl a následným klikáním můžete vybrat několik filtrů ve stejné dimenzi.
+## <a name="filter"></a>Filtrovat
+Pomocí ovládacích prvků filtru v dolní části okna můžete zjistit konkrétnější trendy. Pokud chcete filtr použít, klikněte na jeho název. Mezi různými filtry můžete rychle přepínat a zjišťovat tak trendy, které se můžou skrývat v konkrétní dimenzi telemetrie. Použijete-li filtr v jedné dimenzi, například typ výjimky, budou mít filtry v jiných dimenzích možnost kliknutí, i když jsou zobrazeny šedě. Chcete-li zrušit použití filtru, klikněte na něj znovu. Podržením klávesy Ctrl a následným klikáním můžete vybrat několik filtrů ve stejné dimenzi.
 
 ![Filtry trendů](./media/visual-studio-trends/TrendsFiltering-750.png)
 
@@ -94,7 +88,7 @@ Pokud chcete zrušit používání jednoho z těchto filtrů, klikněte u přís
 ![Několik filtrů](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Nalezení anomálií
-Nástroj Trendy může zvýraznit bubliny událostí, které jsou ve srovnání s jinými bublinami ve stejné časové řadě neobvyklé. V rozevírací nabídce Typ zobrazení vyberte **Počty v časovém intervalu (zvýraznit anomálie)** nebo **Procenta v časovém intervalu (zvýraznit anomálie)** . Červené bubliny označují anomálie. Anomálie se definují jako bubliny s počty/procenta, vyšší než 2,1 násobek směrodatné odchylky poměru počty/procenta, ke kterým došlo v minulosti dvou časových obdobích (48 hodin, pokud zobrazujete posledních 24 hodin atd.).
+Nástroj Trendy může zvýraznit bubliny událostí, které jsou ve srovnání s jinými bublinami ve stejné časové řadě neobvyklé. V rozevírací nabídce Typ zobrazení vyberte **Počty v časovém intervalu (zvýraznit anomálie)** nebo **Procenta v časovém intervalu (zvýraznit anomálie)** . Červené bubliny označují anomálie. Anomálie se definují jako bubliny s počty nebo procenty, které překračují 2,1 krát směrodatnou odchylku počtu nebo procent, ke kterým došlo v posledních dvou časových obdobích (48 hodin, pokud zobrazujete posledních 24 hodin atd.).
 
 ![Barevné tečky označují anomálie.](./media/visual-studio-trends/TrendsAnomalies-750.png)
 

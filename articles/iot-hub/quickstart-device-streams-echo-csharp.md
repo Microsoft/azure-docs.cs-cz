@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 85905f97500848be0e17da7d8a65209878713fc2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c994b77105fe94eef418c0befc4c135ec09ada14
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516531"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900933"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v C# přes IoT Hub streamy zařízení (Preview)
 
@@ -33,6 +33,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 * Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
   * Střední USA
   * Střed USA EUAP
+  * Severní Evropa
+  * Jihovýchodní Asie
 
 * Dvě ukázkové aplikace, které spustíte v rámci tohoto rychlého startu, jsou C#napsané v. Ve vývojovém počítači potřebujete .NET Core SDK 2.1.0 nebo novější.
   * Stáhněte si [.NET Core SDK pro více platforem od .NET](https://www.microsoft.com/net/download/all).

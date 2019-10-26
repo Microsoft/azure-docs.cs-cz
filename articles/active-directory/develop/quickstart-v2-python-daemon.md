@@ -17,12 +17,12 @@ ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db7b794166126d54ede0ee8eb67653d006a1619
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: HT
+ms.openlocfilehash: b47a96931cdf60eb40bd3d899dd7a6fb947ad553
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809957"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893301"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
@@ -141,10 +141,10 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 #### <a name="step-5-run-the-application"></a>Krok 5: spuštění aplikace
 
-MSAL Python budete muset nainstalovat jednou
+Budete muset nainstalovat závislosti této ukázky.
 
 ```console
-pip install msal
+pip install -r requirements.txt
 ```
 
 Pak spusťte aplikaci prostřednictvím příkazového řádku nebo konzoly:
@@ -167,7 +167,7 @@ Měli byste vidět, že výstup na konzole je nějaký fragment JSON, který př
  MSAL Python můžete nainstalovat spuštěním následujícího příkazu PIP.
 
 ```powershell
-pip install -r requirements.txt
+pip install msal
 ```
 
 ### <a name="msal-initialization"></a>Inicializace knihovny MSAL

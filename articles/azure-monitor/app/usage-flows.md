@@ -1,102 +1,97 @@
 ---
-title: Analýza vzorů navigace uživatele pomocí toků uživatelů ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Analyzujte, jak uživatelé přecházejí mezi stránky a funkce vaší webové aplikace.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Analýza uživatelských vzorů navigace pomocí Toky uživatelů v Azure Application Insights | Dokumentace Microsoftu
+description: Analyzujte, jak uživatelé přecházejí mezi stránkami a funkcemi vaší webové aplikace.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 91274fad4e56c69777333c81ea3b32dccdcf64ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4ebdfa692bb8727556a37698e3a280f40bc1b0f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373257"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899488"
 ---
-# <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analýza vzorů navigace uživatele pomocí toků uživatelů ve službě Application Insights
+# <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analýza uživatelských vzorů navigace pomocí Toky uživatelů v Application Insights
 
-![Nástroj Application Insights toky uživatelů](./media/usage-flows/00001-flows.png)
+![Nástroj Application Insights Toky uživatelů](./media/usage-flows/00001-flows.png)
 
-Nástroj toky uživatelů vizualizuje, jak uživatelé přecházejí mezi stránky a funkce vaší lokality. Je velmi vhodná pro odpovědi na otázky jako:
+Nástroj Toky uživatelů vizualizuje, jak uživatelé pohybují mezi stránkami a funkcemi vaší lokality. Je skvělé pro zodpovězení otázek, jako jsou:
 
 * Jak uživatelé přecházejí ze stránky na webu?
-* Co uživatelé kliknou na stránce na webu?
-* Kde jsou nejvíce místa, které změny uživatelů z vaší lokality?
-* Jsou místa, kde uživatelé pořád dokola opakujte stejnou akci?
+* Co uživatelé na webu na stránce klikní?
+* Kde jsou místa, která uživatelé na svém webu přecházejí?
+* Existují místa, kde uživatelé opakují stejnou akci přes a?
 
-Nástroj toky uživatelů začíná od zobrazení úvodní stránky, vlastní události nebo výjimku, která zadáte. Zadaný tento počáteční událost, toky uživatelů zobrazuje události, ke kterým došlo před a poté během uživatelské relace. Řádky různou tloušťky zobrazit kolikrát jednotlivé cesty následovalo uživatelů. Speciální **spuštěna relace** uzly ukazují, kde dalších uzlů zahájení relace. **Relace ukončeno** uzly ukazují, kolik uživatelů odesílá žádné zobrazení stránek nebo vlastní události po předchozím uzlu, zvýraznění, kde uživatelé pravděpodobně vlevo vašeho webu.
+Nástroj Toky uživatelů začíná od počátečního zobrazení stránky, vlastní události nebo výjimky, kterou zadáte. Při této počáteční události Toky uživatelů zobrazuje události, ke kterým došlo před a následně během uživatelských relací. Řádky s různou tloušťkou ukazují, kolikrát byly jednotlivé cesty následovány uživateli. V uzlech, které jsou **spuštěny** jinak, se zobrazí, kde následující uzly zahájily relaci. Uzly **ukončení relace** ukazují, kolik uživatelů neodeslalo žádné zobrazení stránky nebo vlastní události za předchozím uzlem a zvýrazní, kde uživatelé pravděpodobně webový server opustí.
 
 > [!NOTE]
-> Prostředek Application Insights může obsahovat zobrazení stránek nebo vlastní události a použít nástroj toky uživatelů. [Zjistěte, jak nastavit aplikaci shromažďovat zobrazení stránek automaticky pomocí Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md).
+> Váš Application Insights prostředek musí obsahovat zobrazení stránky nebo vlastní události pro použití nástroje Toky uživatelů. [Naučte se, jak nastavit aplikaci tak, aby automaticky shromáždila zobrazení stránek pomocí Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md).
 >
 >
 
-## <a name="start-by-choosing-an-initial-event"></a>Začněte tím, že vyberete nějakou počáteční událost.
+## <a name="start-by-choosing-an-initial-event"></a>Začněte tím, že vyberete počáteční událost.
 
-![Zvolte nějakou počáteční událost pro toky uživatelů](./media/usage-flows/00002-flows-initial-event.png)
+![Vyberte počáteční událost pro Toky uživatelů](./media/usage-flows/00002-flows-initial-event.png)
 
-Pokud chcete začít, odpovídání na dotazy pomocí nástroje toky uživatelů, zvolte zobrazení úvodní stránky, vlastní událost nebo výjimka, která bude sloužit jako výchozí bod pro vizualizaci:
+Chcete-li začít s odpovědí na dotazy pomocí nástroje Toky uživatelů, vyberte počáteční zobrazení stránky, vlastní událost nebo výjimku, která slouží jako výchozí bod pro vizualizaci:
 
-1. Klikněte na odkaz v **co uživatelé dělají poté...?**  nadpisu, nebo klikněte na tlačítko **upravit** tlačítko.
-2. Vyberte zobrazení stránky, vlastní událost nebo výjimka **počáteční událost** rozevíracího seznamu.
-3. Klikněte na tlačítko **vytvořit graf**.
+1. Klikněte na odkaz v nadpisu **co uživatelé vydávat po...?** nebo klikněte na tlačítko **Upravit** .
+2. V rozevíracím seznamu **Počáteční události** vyberte zobrazení stránky, vlastní událost nebo výjimku.
+3. Klikněte na **vytvořit graf**.
 
-Ve sloupci "Krok 1" vizualizace zobrazí, co uživatelé měli nejčastěji bezprostředně po počáteční událost seřazené shora dolů z největší na nejméně často. "Step 2" a dalších sloupců zobrazit, co uživatelé měli po tomto datu, vytváření obrázek všechny způsoby, jak uživatelé přešli svého webu.
+Sloupec "krok 1" ve vizualizaci ukazuje, co uživatelé provedli nejčastěji hned po počáteční události, seřazené shora dolů od nejmenších po nejnižší, jak často. V části "Step 2" a následující sloupce se dozvíte, co uživatelé provedli a vytvořili jsme obrázek všech způsobů, kterými uživatelé přešli přes web.
 
-Ve výchozím nastavení nástroj toky uživatelů náhodně ukázky pouze posledních 24 hodin zobrazení stránek a vlastní události z vaší lokality. Můžete zvýšit časový rozsah a změňte vyvážení výkonu a přesnosti pro náhodné vzorkování v nabídce Úpravy.
+Ve výchozím nastavení nástroj Toky uživatelů náhodně vzorkuje pouze posledních 24 hodin zobrazení stránky a vlastní událost z vašeho webu. Můžete zvýšit časový rozsah a změnit rovnováhu výkonu a přesnosti náhodného vzorkování v nabídce Upravit.
 
-Pokud některé zobrazení stránek, vlastní události a výjimky nejsou pro vás relevantní, klikněte na tlačítko **X** na uzlech, které chcete skrýt. Jakmile vyberete uzly, které chcete skrýt, klikněte na tlačítko **vytvořit graf** pod vizualizace. Pokud chcete zobrazit všechny uzly, které jste skryli, klikněte na tlačítko **upravit** tlačítko, pak si prohlédněte **vyloučené události** oddílu.
+Pokud se některé zobrazení stránky, vlastní události a výjimky netýkají, klikněte na **X** na uzlech, které chcete skrýt. Po výběru uzlů, které chcete skrýt, klikněte na tlačítko **vytvořit graf** pod vizualizací. Chcete-li zobrazit všechny uzly, které jste skryli, klikněte na tlačítko **Upravit** a podívejte se na část **vyloučené události** .
 
-Pokud vlastní události nebo zobrazení stránek chybí, které byste měli vidět ve vizualizaci:
+Pokud chybí zobrazení stránky nebo vlastní události, které očekáváte, že se zobrazí ve vizualizaci:
 
-* Zkontrolujte **vyloučené události** tématu **upravit** nabídky.
-* Pomocí tlačítka plus na **ostatní** uzly zahrnout méně časté události ve vizualizaci.
-* Pokud zobrazení stránky nebo vlastní události, které očekáváte, že uživatelé zřídka přijde, zkuste zvětšit časové rozmezí vizualizaci v **upravit** nabídky.
-* Ujistěte se, že zobrazení stránky, vlastní událost nebo výjimky, které očekáváte, že je nastavena na shromážděných službou Application Insights SDK ve zdrojovém kódu vašeho webu. [Další informace o shromažďování vlastního událostí.](../../azure-monitor/app/api-custom-events-metrics.md)
+* V nabídce **Upravit** se podívejte na část **vyloučené události** .
+* Pomocí tlačítek plus v **ostatních** uzlech zahrňte do vizualizace méně časté události.
+* Pokud uživatelé neočekávají zobrazení stránky nebo vlastní událost, zkuste zvýšit časový rozsah vizualizace v nabídce **Upravit** .
+* Ujistěte se, že zobrazení stránky, vlastní událost nebo výjimka, které očekáváte, se shromažďují sadou Application Insights SDK ve zdrojovém kódu vašeho webu. [Přečtěte si další informace o shromažďování vlastních událostí.](../../azure-monitor/app/api-custom-events-metrics.md)
 
-Pokud chcete zobrazit další kroky ve vizualizaci, použijte **předchozí kroky** a **další kroky** rozevírací seznamy nad vizualizací.
+Pokud chcete zobrazit další kroky ve vizualizaci, použijte v rozevíracích seznamech **předchozí kroky** a **Další kroky** nad vizualizací.
 
-## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Po přečtení informací na stránce nebo funkce, kde uživatelé a co kliknou?
+## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Po navštívení stránky nebo funkce, kde uživatelé přejdou a co na ně klikne?
 
-![Použijte, abyste pochopili, kde uživatelé kliknou na toky uživatelů](./media/usage-flows/00003-flows-one-step.png)
+![Použití Toky uživatelů k pochopení, kde uživatel klikne](./media/usage-flows/00003-flows-one-step.png)
 
-Pokud počáteční událost zobrazení stránky, na první sloupec ("krok 1") vizualizace je rychlý způsob, jak pochopit uživatelů měli okamžitě po na stránce. Otevřete svůj web v okně vedle vizualizace toky uživatelů. Porovnejte vaše očekávání jak uživatelé pracují s stránky a seznam událostí ve sloupci "Krok 1". Prvek uživatelského rozhraní na stránce zdá se, že nevýznamné váš tým často, může být mezi nejčastěji používaným na stránce. Může být skvělým výchozím bodem pro vylepšení návrhu na váš web.
+Pokud vaše počáteční událost představuje zobrazení stránky, je prvním sloupcem ("krok 1") vizualizace rychlý způsob, jak zjistit, co uživatelé ihned po návštěvě stránky navštívili. Zkuste otevřít web v okně vedle Toky uživatelů vizualizace. Porovnejte vaše očekávání, jak uživatelé pracují se stránkou, do seznamu událostí ve sloupci "krok 1". Často je prvek uživatelského rozhraní na stránce, který se jeví jako nevýznamný pro váš tým, může vycházet z nejvíce používaného na stránce. Může se jednat o skvělý výchozí bod pro vylepšení návrhu webu.
 
-Pokud je vaše počáteční událost vlastní událost, první sloupec zobrazuje, uživatelé měli právě po provedení této akce. Stejně jako u zobrazení stránek, zvažte, jestli zjištěnou chování uživatelů odpovídá očekávání a cílů vašeho týmu. Pokud vaše vybrané počáteční událost "Přidání položky do nákupního košíku", například vypadat a zjistěte, jestli "Přejít na rezervaci" a "Dokončení nákupu" se zobrazí ve vizualizaci po krátké době. Pokud uživatel chování se liší od vaše očekávání, použijte vizualizaci pochopit, jak se zobrazuje uživatelům "zachycena" současný návrh vašeho webu.
+Pokud je vaše počáteční událost vlastní událostí, zobrazí se v prvním sloupci, co uživatelé prováděli hned po provedení této akce. Stejně jako u zobrazení stránky zvažte, zda chování vašich uživatelů vyhovuje cílům a očekáváním vašeho týmu. Pokud vaše vybraná počáteční událost je "přidaná položka do nákupního košíku", například, podívejte se, jestli se ve vizualizaci krátce zobrazí možnost přejít na rezervaci a dokončený nákup. Pokud se chování uživatele liší od vašich očekávání, pomocí vizualizace porozumíte tomu, jak uživatelé získávají "zachycení" aktuálním návrhem vašeho webu.
 
-## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>Kde jsou nejvíce místa, které změny uživatelů z vaší lokality?
+## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>Kde jsou místa, která uživatelé na svém webu přecházejí?
 
-Sledujte **relace ukončena** uzly, které se zobrazují vysoce nahoru ve sloupci ve vizualizaci, zejména již v rané fázi v toku. To znamená, že mnoho uživatelů z vaší lokality pravděpodobně Měněná po provedení výše uvedená cesta stránek a interakce uživatelského rozhraní. Někdy se očekává – po dokončení nákupu na webu elektronického obchodování, například – ale obvykle je četnost změn znaménko problémy návrhu, nízkým výkonem nebo jiné problémy s webem, který se může zlepšit.
+Sledujte, že se ve sloupci ve vizualizaci **ukončí** uzly, které se ve vizualizaci nacházejí v horní části, obzvláště včas v toku. To znamená, že mnoho uživatelů se pravděpodobně z vaší lokality rozchází za následující cestu stránek a interakce uživatelského rozhraní. Někdy se očekává změny – po dokončení nákupu na webu elektronického obchodování, například, obvykle se jedná o znaménko problémů s návrhem, špatný výkon nebo jiné problémy s webem, které je možné zlepšit.
 
-Mějte na paměti, která **relace ukončena** uzly jsou založeny pouze na telemetrii shromažďovanou ve tomuto prostředku Application Insights. Pokud Application Insights nepřijímá telemetrii pro určité uživatelské interakce, uživatele může stále mají zpracovat váš web těmito způsoby po nástroj toky uživatelů říká relace ukončena.
+Pamatujte na to, že uzly **ukončené relace** jsou založené jenom na telemetrie shromážděné tímto Application InsightSM prostředku. Pokud Application Insights neobdrží telemetrie pro určité interakce s uživatelem, můžou uživatelé dál spolupracovat s webem, a to i po skončení Toky uživatelůho nástroje říká, že relace skončila.
 
-## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>Jsou místa, kde uživatelé pořád dokola opakujte stejnou akci?
+## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>Existují místa, kde uživatelé opakují stejnou akci přes a?
 
-Hledejte zobrazení stránky nebo vlastní událost, která se opakuje mnoha uživateli v dalších krocích ve vizualizaci. To obvykle znamená, že uživatelé provádíte opakované akce ve vaší lokalitě. Pokud zjistíte opakování, představte si změny návrhu vaší lokality nebo přidání nové funkce omezit opakování. Pokud zjistíte, uživatelů, kteří provádějí opakované akce na každém řádku table element, například přidáním hromadné úpravy funkce.
+Vyhledejte zobrazení stránky nebo vlastní událost, která se opakuje mnoha uživateli v dalších krocích ve vizualizaci. To obvykle znamená, že uživatelé na svém webu provádějí opakující se akce. Pokud zjistíte opakování, zamyslete se nad změnou návrhu webu nebo přidáním nových funkcí pro snížení opakování. Například přidání funkce hromadných úprav, pokud najdete uživatele, kteří provádějí opakující se akce na každém řádku elementu tabulky.
 
 ## <a name="common-questions"></a>Časté dotazy
 
-### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>Neobsahuje představují počáteční událost při prvním zobrazení události v relaci, nebo kdykoli, který se zobrazuje v relaci?
+### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>Představuje počáteční událost při prvním zobrazení události v relaci nebo při každém zobrazení v relaci?
 
-Počáteční událost na vizualizaci představuje pouze při prvním uživatel odeslal tohoto zobrazení stránky nebo vlastní událost během relace. Pokud uživatelé můžou posílat počáteční událost více než jednou v relaci, pak "Krok 1" sloupec zobrazuje pouze chování uživatelů po *první* instance počáteční událost, ne všechny instance.
+Počáteční událost na vizualizaci představuje pouze první, kdy uživatel poslal zobrazení stránky nebo vlastní událost během relace. Pokud uživatelé mohou v relaci několikrát odeslat počáteční událost, pak sloupec "krok 1" ukazuje pouze to, jak se uživatelé chovají po *první* instanci počáteční události, ne na všechny instance.
 
-### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>Některé z uzlů v mé vizualizace je příliš vysoké úrovně. Například uzel, který právě říká "Kliknutí na tlačítko." Jak můžu ho rozložit na jednotlivé do podrobnější uzlů?
+### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>Některé uzly ve vizualizaci jsou příliš vysoké úrovně. Například uzel, který přesně říká "kliknutí na tlačítko". Jak ho můžu rozdělit do podrobnějších uzlů?
 
-Použití **rozdělit podle** možnosti **upravit** nabídky:
+Použijte možnosti **rozdělit podle** v nabídce **Upravit** :
 
-1. Kliknutím na událost, kterou chcete rozdělit **události** nabídky.
-2. Vyberte dimenze v **dimenze** nabídky. Například pokud máte událost s názvem "Kliknutí na tlačítko", použijte vlastní vlastnost s názvem "Název tlačítka."
+1. V nabídce **událost** vyberte událost, kterou chcete rozdělit.
+2. V nabídce **dimenze** vyberte dimenzi. Například pokud máte událost s názvem "kliknuli na tlačítko", "Vyzkoušejte si vlastní vlastnost nazvanou" název tlačítka ".
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přehled využití](usage-overview.md)
 * [Uživatelé, relace a události](usage-segmentation.md)
 * [Uchování](usage-retention.md)
-* [Přidání vlastních událostí do vaší aplikace](../../azure-monitor/app/api-custom-events-metrics.md)
+* [Přidání vlastních událostí do aplikace](../../azure-monitor/app/api-custom-events-metrics.md)

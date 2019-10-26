@@ -12,18 +12,18 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 86bacbe22ce23fc4b0355374d81a96310e59178a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fbecb1d02c2d262487683cb493db2d5a8f0d1c3e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255017"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898947"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
 Tato příručka obsahuje informace o složitými rozhraními psaní Azure Functions pomocí JavaScriptu.
 
-Funkce JavaScriptu je exportovaná `function`, která se spustí, když se aktivuje ([triggery se konfigurují v Function. JSON](functions-triggers-bindings.md)). První argument předaný do každé funkce je objekt @no__t 0, který se používá pro příjem a odesílání dat vazby, protokolování a komunikaci s modulem runtime.
+Funkce JavaScriptu je exportovaná `function`, která se spustí, když se aktivuje ([triggery se konfigurují v Function. JSON](functions-triggers-bindings.md)). První argument předaný do každé funkce je objekt `context`, který se používá pro příjem a odesílání dat vazby, protokolování a komunikaci s modulem runtime.
 
 V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). Dokončete rychlý Start funkcí a vytvořte svoji první funkci pomocí [Visual Studio Code](functions-create-first-function-vs-code.md) nebo na [portálu](functions-create-first-azure-function.md).
 
@@ -270,7 +270,7 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-Umožňuje zapisovat do protokolů funkcí streamování na výchozí úrovni trasování. Na @no__t 0 jsou k dispozici další metody protokolování, které umožňují psát protokoly funkcí na jiných úrovních trasování:
+Umožňuje zapisovat do protokolů funkcí streamování na výchozí úrovni trasování. V `context.log`jsou k dispozici další metody protokolování, které umožňují psát protokoly funkcí na jiných úrovních trasování:
 
 
 | Metoda                 | Popis                                |
@@ -421,7 +421,7 @@ Následující tabulka ukazuje verzi Node. js, kterou používá každá hlavní
 | Verze funkcí | Verze Node. js | 
 |---|---|
 | verze | 6.11.2 (uzamčeno modulem runtime) |
-| 2.x  | _Aktivní LTS_ a _Údržba LTS_ verze Node. js (nedoporučuje se 10). Cílovou verzi v Azure můžete nastavit tak, že nastavíte [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) WEBSITE_NODE_DEFAULT_VERSION na hodnotu `~10`.|
+| 2.x  | _Aktivní LTS_ a _Údržba LTS_ verze Node. js (nedoporučuje se 10). Zaměřte se na verzi v Azure nastavením [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) WEBSITE_NODE_DEFAULT_VERSION na `~10`.|
 
 Aktuální verzi, kterou používá modul runtime, můžete zobrazit zkontrolováním výše uvedeného nastavení aplikace nebo tiskem `process.version` z jakékoli funkce.
 
@@ -449,7 +449,7 @@ Existují dva způsoby, jak nainstalovat balíčky do Function App:
 ### <a name="deploying-with-dependencies"></a>Nasazení pomocí závislostí
 1. Všechny požadované balíčky nainstalujte místně spuštěním `npm install`.
 
-2. Nasaďte kód a zajistěte, aby byla v nasazení zahrnutá složka `node_modules`. 
+2. Nasaďte kód a ujistěte se, že je do nasazení zahrnutá složka `node_modules`. 
 
 
 ### <a name="using-kudu"></a>Použití Kudu
@@ -503,7 +503,7 @@ FunctionApp
  | - package.json
 ```
 
-@No__t-0 pro `myNodeFunction` by měla zahrnovat vlastnost `scriptFile` ukazující na soubor s exportovanou funkcí, která se má spustit.
+`function.json` pro `myNodeFunction` by měla zahrnovat vlastnost `scriptFile` ukazující na soubor s exportovanou funkcí, která se má spustit.
 
 ```json
 {
@@ -677,8 +677,9 @@ const util = require('util');
 const readFileAsync = util.promisify(fs.readFile);
 
 module.exports = async function (context) {
+    let data;
     try {
-        const data = await readFileAsync('./hello.txt');
+        data = await readFileAsync('./hello.txt');
     } catch (err) {
         context.log.error('ERROR', err);
         // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation

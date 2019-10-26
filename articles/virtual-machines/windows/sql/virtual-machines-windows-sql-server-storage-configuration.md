@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828617"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896955"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurace úložiště pro virtuální počítače s SQL Server
 
@@ -62,7 +62,7 @@ Ukládání do *mezipaměti na disku* pro SSD úrovně Premium může být *jen 
 
 
    > [!TIP]
-   > Ujistěte se, že vaše konfigurace úložiště odpovídá omezením podle zvolené velikosti virtuálního počítače. Pokud zvolíte parametry úložiště, které překračují maximální výkon velikosti virtuálního počítače, dojde k chybě: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`. Buď snižte počet vstupně-výstupních operací změnou typu disku, nebo zvyšte omezení výkonu zakončení zvýšením velikosti virtuálního počítače. 
+   > Ujistěte se, že vaše konfigurace úložiště odpovídá omezením podle zvolené velikosti virtuálního počítače. Pokud zvolíte parametry úložiště, které překračují limit výkonu pro velikost virtuálního počítače, dojde k chybě: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`. Buď snižte počet vstupně-výstupních operací změnou typu disku, nebo zvyšte omezení výkonu zakončení zvýšením velikosti virtuálního počítače. 
 
 
 Na základě vašich voleb provede Azure po vytvoření virtuálního počítače tyto úlohy konfigurace úložiště:
@@ -130,15 +130,12 @@ Azure na SQL Server virtuálních počítačích vytvoří fond úložiště pom
 | Velikost disků |1 TB |
 | Mezipaměť |Čtení |
 | Velikost přidělení |velikost alokační jednotky systému souborů NTFS v 64 KB |
-| Okamžitá inicializace souboru |Povoleno |
-| Zamknout stránky v paměti |Povoleno |
-| Obnovení |Jednoduché obnovení (bez odolnosti) |
-| Počet sloupců |Počet datových disků<sup>1</sup> |
-| Umístění v databázi TempDB |Uloženo na datových discích<sup>2</sup> |
+| Obnovení | Jednoduché obnovení (bez odolnosti) |
+| Počet sloupců |Počet datových disků až do 8<sup>1</sup> |
+
 
 <sup>1</sup> po vytvoření fondu úložiště nemůžete změnit počet sloupců ve fondu úložiště.
 
-<sup>2</sup> toto nastavení se vztahuje jenom na první vytvořenou jednotku pomocí funkce konfigurace úložiště.
 
 ## <a name="workload-optimization-settings"></a>Nastavení optimalizace úloh
 

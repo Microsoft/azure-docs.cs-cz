@@ -12,23 +12,23 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 057fa4dc9080ea0216765d89fa6f9d54c60ccec1
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 74f4e8750497fc1ae9875caeb60de65b5f6cd808
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422774"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896023"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Konfigurace jednotného přihlašování založeného na SAML pro aplikace mimo galerii
 
-Když do podnikových aplikací Azure AD [přidáte aplikaci Galerie](add-gallery-app.md) nebo [webovou aplikaci mimo galerii](add-non-gallery-app.md) , jedna z možností jednotného přihlašování, kterou máte k dispozici, je [jednotné přihlašování založené na SAML](what-is-single-sign-on.md#saml-sso). Pokud je to možné, vyberte SAML vždy u aplikací, které se ověřují pomocí některého z protokolů SAML. Pomocí jednotného přihlašování SAML Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele. Azure AD komunikuje informace přihlašování k aplikaci pomocí připojení protokolu. Můžete mapovat uživatele na konkrétní aplikační role na základě pravidel, která definujete v deklaracích SAML. Tento článek popisuje, jak nakonfigurovat jednotné přihlašování založené na SAML pro aplikaci mimo galerii. 
+Když do podnikových aplikací Azure AD [přidáte aplikaci Galerie](add-gallery-app.md) nebo [webovou aplikaci mimo galerii](add-non-gallery-app.md) , jedna z možností jednotného přihlašování, kterou máte k dispozici, je [jednotné přihlašování založené na SAML](what-is-single-sign-on.md#saml-sso). Pokud je to možné, vyberte SAML vždy u aplikací, které se ověřují pomocí některého z protokolů SAML. Pomocí jednotného přihlašování SAML Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele. Azure AD komunikuje s přihlašovacími informacemi k aplikaci prostřednictvím protokolu připojení. Můžete mapovat uživatele na konkrétní aplikační role na základě pravidel, která definujete v deklaracích SAML. Tento článek popisuje, jak nakonfigurovat jednotné přihlašování založené na SAML pro aplikaci mimo galerii. 
 
 > [!NOTE]
 > Chcete přidat aplikaci Galerie? Podrobné pokyny k instalaci najdete v [seznamu výukových kurzů pro aplikace SaaS](../saas-apps/tutorial-list.md) .
 
 Pokud chcete pro aplikaci mimo galerii nakonfigurovat jednotné přihlašování SAML bez psaní kódu, musíte mít předplatné nebo Azure AD Premium a aplikace musí podporovat SAML 2,0. Další informace o verzích Azure AD najdete na stránce [ceny Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidání aplikace mimo galerii](add-non-gallery-app.md).
 
@@ -52,11 +52,11 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
 
     | Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Popis |
     |:--|:--|:--|:--|
-    | **Identifikátor (ID entity)** | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Aplikace jednoznačně identifikuje. Azure AD odešle identifikátor do aplikace jako parametr cílové skupiny tokenu SAML. Očekává se, že aplikace ověří tuto aplikaci. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací. *Tuto hodnotu můžete najít jako element vystavitele v **AuthnRequest** (žádost SAML) odesílaný aplikací.* |
-    | **Adresa URL odpovědi** | volitelná, | Požadováno | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |
-    | **Přihlašovací adresa URL** | Požadováno | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace ze sady Office 365 nebo přístupového panelu Azure AD. Pokud je toto pole prázdné, Azure AD provede přihlášení iniciované IdP, když uživatel spustí aplikaci z Office 365, přístupového panelu Azure AD nebo adresy URL jednotného přihlašování Azure AD.|
-    | **Stav přenosu** | volitelná, | volitelná, | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je hodnota platnou adresou URL pro aplikaci. Některé aplikace ale používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
-    | **Odhlašovací adresa URL** | volitelná, | volitelná, | Slouží k odeslání odpovědí na odhlášení SAML zpět do aplikace.
+    | **Identifikátor (ID entity)** | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Aplikace jednoznačně identifikuje. Azure AD odešle identifikátor do aplikace jako parametr cílové skupiny tokenu SAML. Očekává se, že aplikace ověří tuto aplikaci. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací. *Tuto hodnotu můžete najít jako element **vystavitele** v **AuthnRequest** (žádost SAML) odesílaný aplikací.* |
+    | **Adresa URL odpovědi** | Požaduje se | Požaduje se | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |
+    | **Přihlašovací adresa URL** | Požaduje se | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace ze sady Office 365 nebo přístupového panelu Azure AD. Pokud je toto pole prázdné, Azure AD provede přihlášení iniciované IdP, když uživatel spustí aplikaci z Office 365, přístupového panelu Azure AD nebo adresy URL jednotného přihlašování Azure AD.|
+    | **Stav přenosu** | Volitelné | Volitelné | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je hodnota platnou adresou URL pro aplikaci. Některé aplikace ale používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
+    | **Odhlašovací adresa URL** | Volitelné | Volitelné | Slouží k odeslání odpovědí na odhlášení SAML zpět do aplikace.
 
 Další informace najdete v tématu [protokol SAML jednotného přihlašování](../develop/single-sign-on-saml-protocol.md).
 
@@ -76,7 +76,7 @@ Když se uživatel do aplikace ověří, služba Azure AD vydá aplikaci token S
 
 5. Pokud chcete přidat deklaraci identity, vyberte v horní části stránky **Přidat novou deklaraci identity** . Zadejte **název** a vyberte příslušný zdroj. Pokud vyberete zdroj **atributu** , budete muset zvolit **zdrojový atribut** , který chcete použít. Pokud vyberete zdroj **překladu** , budete muset zvolit **transformaci** a **parametr 1** , který chcete použít. Podrobnosti najdete v tématu [Přidání deklarací specifických pro aplikaci](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#adding-application-specific-claims). Až budete hotovi, uložte změny. 
 
-6. Vyberte **Uložit**. Nová deklarace identity se zobrazí v tabulce.
+6. Vyberte **Save** (Uložit). Nová deklarace identity se zobrazí v tabulce.
 
    > [!NOTE]
    > Další způsoby přizpůsobení tokenu SAML z Azure AD do vaší aplikace najdete v následujících zdrojích.
@@ -102,7 +102,7 @@ Z Azure AD si můžete stáhnout aktivní certifikát ve formátu Base64 nebo RA
    - *Správná možnost podepisování a algoritmus.*
    - *Správná e-mailová adresa (y) oznámení.* Když se aktivní certifikát blíží datu vypršení platnosti, Azure AD pošle oznámení na e-mailovou adresu nakonfigurovanou v tomto poli.
 
-2. Chcete-li stáhnout certifikát, vyberte jednu z možností pro Formát Base64, nezpracovaný formát nebo XML federačních metadat. Azure AD taky poskytuje **adresu URL federačních metadat aplikace** , kde můžete získat přístup k metadatům specifickým pro aplikaci `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`ve formátu.
+2. Chcete-li stáhnout certifikát, vyberte jednu z možností pro Formát Base64, nezpracovaný formát nebo XML federačních metadat. Azure AD taky poskytuje **adresu URL federačních metadat aplikace** , kde můžete získat přístup k metadatům specifickým pro aplikaci ve formátu `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`.
 
 3. Pokud chcete spravovat, vytvořit nebo importovat certifikát, vyberte ikonu **Upravit** (tužka) v pravém horním rohu oddílu **podpisového certifikátu SAML** .
 
@@ -122,22 +122,22 @@ Z Azure AD si můžete stáhnout aktivní certifikát ve formátu Base64 nebo RA
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Krok 4. Nastavení aplikace pro použití Azure AD
 
-V části **nastavit \<> ApplicationName** jsou uvedeny hodnoty, které je třeba v aplikaci nakonfigurovat, aby se služba Azure AD používala jako poskytovatel identity SAML. Požadované hodnoty se liší v závislosti na aplikaci. Podrobnosti najdete v dokumentaci SAML aplikace. Pokud chcete najít dokumentaci, vyhledejte v nadpisu **nastavit \<název aplikace >** a vyberte **Zobrazit podrobné pokyny**. Dokumentace se zobrazí na stránce **Konfigurace přihlášení** . Tato stránka vás provede vyplněním **adresy URL pro přihlášení**, **identifikátoru služby Azure AD**a **adres URL** pro odhlášení v nadpisu **nastavit \<název aplikace >** .
+Oddíl **nastavit \<applicationName >** obsahuje seznam hodnot, které je třeba v aplikaci nakonfigurovat tak, aby používaly Azure AD jako zprostředkovatele identity SAML. Požadované hodnoty se liší v závislosti na aplikaci. Podrobnosti najdete v dokumentaci SAML aplikace. Pokud chcete najít dokumentaci, přečtěte si téma **nastavení \<název aplikace >** nadpis a vyberte **Zobrazit podrobné pokyny**. Dokumentace se zobrazí na stránce **Konfigurace přihlášení** . Tato stránka vás provede vyplněním **adresy URL pro přihlášení**, **identifikátoru služby Azure AD**a **adres URL pro odhlášení** v **Nastavení \<název aplikace >** nadpisu.
 
-1. Přejděte dolů do části **nastavení \<> ApplicationName** . 
+1. Přejděte dolů do části **nastavení > \<ApplicationName** . 
    
    ![Krok 4 nastavení aplikace](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 
 1. Podle potřeby Zkopírujte hodnotu z každého řádku v této části a postupujte podle pokynů pro konkrétní aplikaci pro přidání hodnoty do aplikace. V případě aplikací galerie můžete zobrazit dokumentaci tak, že vyberete **Zobrazit podrobné pokyny**. 
-   - Hodnoty **adresy** URL pro přihlášení a adresy **URL** pro odhlášení se obě překládají na stejný koncový bod, což je koncový bod pro zpracování požadavků SAML pro vaši instanci Azure AD. 
-   - **Identifikátor Azure AD** je hodnota vystavitele v  tokenu SAML, který je vydaný pro aplikaci.
+   - Hodnoty **adresy** URL pro přihlášení a adresy **URL pro odhlášení** se obě překládají na stejný koncový bod, což je koncový bod pro zpracování požadavků SAML pro vaši instanci Azure AD. 
+   - **Identifikátor Azure AD** je hodnota **vystavitele** v tokenu SAML, který je vydaný pro aplikaci.
 2. Po vložení všech hodnot do příslušných polí vyberte **Uložit**.
 
 ## <a name="step-5-validate-single-sign-on"></a>Krok 5. Ověřit jednotné přihlašování
 
 Jakmile nakonfigurujete aplikaci tak, aby používala Azure AD jako zprostředkovatele identity založeného na SAML, můžete otestovat nastavení a zjistit, jestli pro váš účet funguje jednotné přihlašování. 
 
-2. Posuňte se do části **ověření jednotného přihlašování <applicationName>**  .
+2. Posuňte se do části **ověření jednotného přihlašování pomocí <applicationName>** .
 
    ![Krok 5: ověření jednotného přihlašování](media/configure-single-sign-on-non-gallery-applications/step-five-validate.png)
 
@@ -150,7 +150,7 @@ Pokud se zobrazí chybová zpráva, proveďte následující kroky:
 
 1. Zkopírujte podrobnosti a vložte je do pole **Jak chyba vypadá?** .
 
-    ![Získat postup řešení](media/configure-single-sign-on-portal/error-guidance.png)
+    ![Získání postupu řešení](media/configure-single-sign-on-portal/error-guidance.png)
 
 2. Vyberte možnost **získat pokyny k řešení**. Zobrazí se pokyny k hlavní příčině a řešení.  V tomto příkladu uživatel nebyl přiřazen k aplikaci.
 
@@ -160,7 +160,7 @@ Pokud se zobrazí chybová zpráva, proveďte následující kroky:
 
 Další informace najdete v tématu [ladění jednotného přihlašování založeného na SAML pro aplikace v Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md)
 - [Konfigurace automatického zřizování uživatelských účtů](configure-automatic-user-provisioning-portal.md)

@@ -1,22 +1,18 @@
 ---
 title: Analýza využití pomocí Azure Application Insights | Dokumentace Microsoftu
 description: Pochopte uživatele a to, co dělají s vaší aplikací.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/19/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 77aa39ae68800128409beb17ce3eb636ddcf28d1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/19/2019
+ms.openlocfilehash: 7131cf1902cc92fed66ae4db59449700973c6913
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128965"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899440"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -77,7 +73,7 @@ Uchovávání vám pomůže pochopit, jak často se uživatelé budou vracet k p
 - Forma hypotézy založená na datech reálného uživatele 
 - Zjistěte, jestli je uchovávání problému v produktu. 
 
-![Udržení](./media/usage-overview/retention.png) 
+![Uchovávání](./media/usage-overview/retention.png) 
 
 Ovládací prvky uchování v horní části umožňují definovat konkrétní události a časový rozsah pro výpočet uchovávání. Graf uprostřed poskytuje vizuální znázornění celkového procenta uchování v zadaném časovém rozsahu. Graf v dolní části představuje individuální uchování v daném časovém období. Tato úroveň podrobností vám umožní pochopit, co dělají vaši uživatelé a co může ovlivnit vracení uživatelů na podrobnější členitost.  
 
@@ -159,9 +155,9 @@ V inicializátoru webové aplikace, jako je například Global.asax.cs:
 **Aplikace ASP.NET Core**
 
 > [!NOTE]
-> Přidání inicializátoru `ApplicationInsights.config` pomocí nebo `TelemetryConfiguration.Active` použití není pro ASP.NET Core aplikace platné. 
+> Přidání inicializátoru pomocí `ApplicationInsights.config` nebo použití `TelemetryConfiguration.Active` není pro ASP.NET Core aplikace platné. 
 
-U [ASP.NET Corech](asp-net-core.md#adding-telemetryinitializers) aplikací je přidání nového `TelemetryInitializer` provedeno přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metodě vaší `Startup.cs` třídy.
+U [ASP.NET Corech](asp-net-core.md#adding-telemetryinitializers) aplikací je přidání nového `TelemetryInitializer` provedeno přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metoda vaší `Startup.cs` třídy.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f260e019ffa6eb89e8a2c1e17d2bf239e74290c2
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026102"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900115"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánovače ve službě Azure Kubernetes Service (AKS)
 
 Při správě clusterů ve službě Azure Kubernetes (AKS) je často potřeba izolovat týmy a úlohy. Plánovač Kubernetes poskytuje pokročilé funkce, které vám umožní řídit, které lusky se můžou naplánovaly na určitých uzlech, nebo jak můžou být aplikace pro víc pod clusterem správně distribuované napříč clusterem. 
 
-Tento článek o osvědčených postupech se zaměřuje na pokročilé funkce plánování Kubernetes pro operátory clusterů. V tomto článku se dozvíte, jak:
+Tento článek o osvědčených postupech se zaměřuje na pokročilé funkce plánování Kubernetes pro operátory clusterů. V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Použití chuti a tolerování k omezení, které lusky je možné plánovat na uzlech
@@ -179,7 +179,7 @@ Dobrým příkladem je webová aplikace, která používá také službu Azure c
 | WebApp-1   | WebApp – 2   | WebApp-3   |
 | mezipaměť – 1    | mezipaměť – 2    | mezipaměť – 3    |
 
-Tento příklad je složitější nasazení než použití selektorů uzlů nebo spřažení uzlů. Nasazení vám umožní řídit, jak se Kubernetes plány v luskech uzlů a můžou logicky izolovat prostředky. Úplný příklad této webové aplikace s mezipamětí Azure cache pro Redis najdete v tématu [společné umístění lusků na stejném uzlu][k8s-pod-affinity].
+Tento příklad je složitější nasazení než použití selektorů uzlů nebo spřažení uzlů. Nasazení vám umožní řídit, jak se Kubernetes plány v luskech uzlů a můžou logicky izolovat prostředky. Úplný příklad této webové aplikace s mezipamětí Azure cache pro Redis najdete v tématu [společné umístění jednotlivých uzlů na stejný uzel][k8s-pod-affinity].
 
 ## <a name="next-steps"></a>Další kroky
 

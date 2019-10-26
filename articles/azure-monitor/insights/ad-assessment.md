@@ -1,24 +1,18 @@
 ---
 title: Optimalizujte prostředí Active Directory pomocí Azure Monitor | Microsoft Docs
 description: Řešení kontroly stavu služby Active Directory můžete použít k vyhodnocení rizik a stavu prostředí v pravidelných intervalech.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/10/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a0ffe7b8726ee78ca81751687bebd3c435365576
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/10/2019
+ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883080"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899191"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizujte prostředí Active Directory pomocí řešení kontroly stavu služby Active Directory v Azure Monitor
 
@@ -40,14 +34,14 @@ Po přidání řešení a dokončení kontroly se na řídicím panelu **kontrol
 
 ![Obrázek řídicího panelu kontroly stavu služby AD](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Řešení kontroly stavu služby Active Directory vyžaduje podporovanou verzi .NET Framework 4.5.2 nebo novější na každém počítači, který má agenta Log Analytics pro Windows (také označovaný jako Microsoft Monitoring Agent (MMA)).  Agent používá System Center 2016-Operations Manager, Operations Manager 2012 R2 a Azure Monitor.
 * Řešení podporuje řadiče domény se systémy Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2 a Windows Server 2016.
 * Pracovní prostor Log Analytics pro přidání řešení kontroly stavu služby Active Directory z webu Azure Marketplace v Azure Portal. Není vyžadována žádná další konfigurace.
 
   > [!NOTE]
-  > Po přidání řešení se soubor AdvisorAssessment. exe přidá na servery s agenty. Konfigurační data se čtou a pak se odesílají do Azure Monitor v cloudu ke zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data.
+  > Po přidání řešení se soubor AdvisorAssessment. exe přidá na servery s agenty. Konfigurační data se čtou a pak se odesílají do Azure Monitor v cloudu ke zpracování. Na přijatá data se aplikuje logika a cloudová služba data zaznamená.
   >
   >
 
@@ -63,8 +57,8 @@ Agent na vašem řadiči domény, který hlásí skupinu pro správu Operations 
 
 Při kontrole stavu služby Active Directory se shromažďují data z následujících zdrojů pomocí agenta, který jste povolili:
 
-- Registru
-- LDAP
+- Registr
+- ADRESÁŘOVÝ
 - .NET Framework
 - Protokol událostí
 - Rozhraní ADSI (Active Directory Service Interfaces)
@@ -161,7 +155,7 @@ Vyberte doporučení, která chcete ignorovat. V dalším postupu použijete hod
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>Ověření, že se doporučení ignorují
 
-Po dalším naplánovaném spuštění kontroly stavu každých 7 dnů jsou uvedená doporučení označena jako ignorovaná a na řídicím panelu se nezobrazí.
+Po dalším naplánovaném spuštění kontroly stavu každých 7 dnů jsou uvedená doporučení označena jako *ignorovaná* a na řídicím panelu se nezobrazí.
 
 1. Pomocí následujících dotazů protokolu můžete zobrazit seznam všech ignorovaných doporučení.
 
@@ -179,7 +173,7 @@ Po dalším naplánovaném spuštění kontroly stavu každých 7 dnů jsou uved
 
 *Existuje způsob, jak nakonfigurovat, jak často se má kontrolovat stav spouštění?*
 
-* V tuto chvíli to není možné.
+* V současnosti ne.
 
 *Pokud je po přidání řešení kontroly stavu zjištěn jiný server pro, bude zkontrolován*
 
@@ -191,7 +185,7 @@ Po dalším naplánovaném spuštění kontroly stavu každých 7 dnů jsou uved
 
 *Jaký je název procesu, který provádí shromažďování dat?*
 
-* AdvisorAssessment.exe
+* AdvisorAssessment. exe
 
 *Jak dlouho trvá shromažďování dat?*
 
@@ -199,7 +193,7 @@ Po dalším naplánovaném spuštění kontroly stavu každých 7 dnů jsou uved
 
 *Existuje způsob, jak nakonfigurovat, kdy se data shromažďují?*
 
-* V tuto chvíli to není možné.
+* V současnosti ne.
 
 *Proč zobrazit jenom 10 nejčastějších doporučení?*
 
@@ -209,6 +203,6 @@ Po dalším naplánovaném spuštění kontroly stavu každých 7 dnů jsou uved
 
 * Ano, podívejte se na část [Ignorovat doporučení](#ignore-recommendations) výše.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pomocí [Azure Monitorch dotazů protokolu](../log-query/log-query-overview.md) se dozvíte, jak analyzovat podrobné údaje o kontrole stavu a doporučení služby AD.

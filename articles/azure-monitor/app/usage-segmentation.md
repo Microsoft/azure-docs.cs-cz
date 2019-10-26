@@ -1,71 +1,66 @@
 ---
-title: Uživatele, relace a události analýzy ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Demografické analýza uživatelů vaší webové aplikace.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Analýza uživatele, relace a události v Azure Application Insights | Dokumentace Microsoftu
+description: Demografická analýza uživatelů vaší webové aplikace
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 16b0b734b6b680bea75786bfdbe77eac5e590cfe
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372277"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899400"
 ---
-# <a name="users-sessions-and-events-analysis-in-application-insights"></a>Uživatelé, relace a události analýzy ve službě Application Insights
+# <a name="users-sessions-and-events-analysis-in-application-insights"></a>Uživatelé, relace a analýza událostí v Application Insights
 
-Přečtěte si, když uživatelé používají webové aplikace, které stránky se nejvíce zajímají, kde se nachází vaši uživatelé, a jaké prohlížeče a operační systémy používají. Analýza telemetrie obchodní a využití pomocí [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
+Zjistěte, kdy uživatelé používají vaši webovou aplikaci, jaké stránky mají nejvíc zajímat, kde se nacházejí vaši uživatelé a jaké prohlížeče a operační systémy používají. Analýza firemních a využití telemetrie pomocí [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-![Snímek obrazovky uživatele Application Insights](./media/usage-segmentation/0001-users.png)
+![Snímek obrazovky Application Insights uživatelů](./media/usage-segmentation/0001-users.png)
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
-Pokud ještě se data v uživatelé, relace nebo události oknech na portálu služby Application Insights [zjistěte, jak začít pracovat s nástroji využití](usage-overview.md).
+Pokud se ještě nezobrazuje data v okně uživatelé, relace nebo události na portálu Application Insights, [Přečtěte si, jak začít s nástroji pro používání](usage-overview.md).
 
-## <a name="the-users-sessions-and-events-segmentation-tool"></a>Nástroj segmentaci uživatelů, relací a události
+## <a name="the-users-sessions-and-events-segmentation-tool"></a>Nástroj pro segmentaci uživatelů, relací a událostí
 
-Tři z použití oken použijte stejný nástroj k nařezání a rozčlenění telemetrii z vaší webové aplikace ze tří perspektivy. Pomocí filtrování a rozdělení dat, můžete získat informace o relativní využití různé stránky a funkce.
+Tři okna použití používají stejný nástroj k řezání telemetrie z vaší webové aplikace ze tří perspektiv. Filtrováním a rozdělením dat můžete odhalit přehledy o relativním používání různých stránek a funkcí.
 
-* **Nástroj Uživatelé**: Kolik uživatelů používá vaši aplikaci a její funkce.  Uživatelé se počítají pomocí anonymní ID uložené v souborech cookie prohlížeče. Jedna osoba pomocí různých prohlížečích nebo počítače se budou počítat jako více než jeden uživatel.
-* **Nástroj relace**: Kolik relací aktivity uživatelů obsahovat některé stránky a funkce vaší aplikace. Relace se počítá za půl hodiny nečinnosti uživatele, nebo za 24 hodin nepřetržitého užívání.
-* **Nástroj události**: Jak často se používají některé stránky a funkce vaší aplikace. Zobrazení stránky se počítá načtení stránku z vaší aplikace v prohlížeči předpokladu, že máte [instrumentována ho](../../azure-monitor/app/javascript.md). 
+* **Nástroj pro uživatele**: kolik lidí používalo vaši aplikaci a její funkce.  Uživatelům se počítá pomocí anonymních ID uložených v souborech cookie prohlížeče. Jedna osoba, která používá jiné prohlížeče nebo počítače, se bude počítat jako více než jeden uživatel.
+* **Session Tool**: kolik relací aktivity uživatelů zahrnovalo určité stránky a funkce vaší aplikace. Relace se počítá po půl hodiny neaktivity uživatele nebo po 24 hodinách nepřetržitém používání.
+* **Nástroj Events (události**): jak často se používají určité stránky a funkce vaší aplikace. Zobrazení stránky se počítá, když prohlížeč načte stránku z vaší aplikace za předpokladu, že jste [ho instrumentoval](../../azure-monitor/app/javascript.md). 
 
-    Vlastní událost představuje jeden výskyt něco děje ve vaše aplikace, často zásahu uživatele, jako je kliknutí na tlačítko nebo dokončení některých úkolů. Vložení kódu v aplikaci tak, aby [generování událostí na vlastní](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+    Vlastní událost představuje jeden výskyt něčeho, co se děje v aplikaci, často se jedná o interakci uživatele, jako je kliknutí na tlačítko nebo dokončení některé úlohy. Do své aplikace vložíte kód, abyste mohli [generovat vlastní události](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-## <a name="querying-for-certain-users"></a>Dotazování pro určité uživatele
+## <a name="querying-for-certain-users"></a>Dotazování na konkrétní uživatele
 
-Prozkoumejte různé skupiny uživatelů úpravou dotazu v horní části nástroj Uživatelé:
+Prozkoumejte různé skupiny uživatelů tak, že upravíte možnosti dotazu v horní části nástroje Uživatelé:
 
-* Zobrazit: Zvolte kohorta uživatelů k analýze.
-* Kdo používá: Zvolte vlastní události a zobrazení stránek.
-* Během: Zvolte časový rozsah.
-* Podle: Zvolte, jak kontejneru dat, určitou dobu nebo jiné vlastnosti, jako je například prohlížeč nebo město.
-* Rozděleno podle: Vyberte vlastnost podle kterého na dělené tunelové propojení nebo segment data. 
-* Přidáte filtry: Omezte dotaz určitých uživatelů, relací a události na základě jejich vlastností, jako je například prohlížeč nebo město. 
+* Zobrazit: vyberte kohorta uživatele, které chcete analyzovat.
+* Kdo používá: vyberte vlastní události a zobrazení stránek.
+* Během: vyberte časový rozsah.
+* Podle: Vyberte způsob, jakým se mají data zablokovat, a to buď v časovém intervalu, nebo jinou vlastností, jako je například prohlížeč nebo město.
+* Rozdělit podle: vyberte vlastnost, podle které chcete data rozdělit nebo segmentovat. 
+* Přidat filtry: Omezte dotaz na konkrétní uživatele, relace nebo události na základě jejich vlastností, jako je například prohlížeč nebo město. 
  
 ## <a name="saving-and-sharing-reports"></a>Ukládání a sdílení sestav 
-Uživatelé sestavy, privátní právě pro vás v části Moje sestavy nebo sdílené můžete uložit s ostatními s přístupem k tomuto prostředku Application Insights v části sdílených sestav.
+Můžete ukládat sestavy uživatelů, které jsou v části Mé sestavy, buď soukromé, nebo sdílené se všemi ostatními s přístupem k tomuto Application Insights prostředku v části sdílené sestavy.
 
-Sdílet odkaz na sestavu uživatelé, relace nebo události; Klikněte na tlačítko **sdílenou složku** na panelu nástrojů, zkopírujte odkaz.
+Sdílení odkazu na sestavu uživatelé, relace nebo události; na panelu nástrojů klikněte na **sdílet** a potom odkaz zkopírujte.
 
-Sdílet kopii dat v sestavě uživatelé, relace nebo události; Klikněte na tlačítko **sdílenou složku** na panelu nástrojů klikněte **ikona aplikace Word** vytvořit dokument aplikace Word s daty. Nebo klikněte na tlačítko **ikona aplikace Word** nad hlavním grafu.
+Chcete-li sdílet kopii dat v sestavě uživatelé, relace nebo události; na panelu nástrojů klikněte na **sdílet** a potom kliknutím na **ikonu Wordu** vytvořte wordový dokument s daty. Případně klikněte na **ikonu slova** nad hlavním grafem.
 
-## <a name="meet-your-users"></a>Podle uživatele
+## <a name="meet-your-users"></a>Vyhovět vašim uživatelům
 
-**Splňovat vaši uživatelé** části s informacemi o pět ukázkové uživatele odpovídá aktuální dotaz. Vzhledem k tomu a zkoumat chování osob, kromě agregací, může poskytnout přehled o tom, jak lidé skutečně používat vaší aplikace.
+V části **splnění uživatelů** se zobrazí informace o pěti ukázkových uživatelích odpovídajících aktuálním dotazům. Zvážení a zkoumání chování jednotlivců, kromě agregací, může poskytovat přehled o tom, jak uživatelé vaši aplikaci skutečně používají.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Povolit použití prostředí, spusťte odesílání [vlastních událostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Pokud jste již posílat vlastní události nebo zobrazení stránek, prozkoumejte nástroje využití se dozvíte, jak uživatelé vaši službu používat.
+- Chcete-li povolit prostředí používání, začněte odesílat [vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Pokud jste už odeslali vlastní události nebo zobrazení stránky, prozkoumejte nástroje využití a zjistěte, jak uživatelé používají vaši službu.
     - [Trychtýře](usage-funnels.md)
     - [Uchování](usage-retention.md)
     - [Toky uživatele](usage-flows.md)

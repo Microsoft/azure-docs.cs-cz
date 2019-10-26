@@ -1,24 +1,19 @@
 ---
 title: Správa využití a nákladů pro Azure Application Insights | Microsoft Docs
 description: Spravujte svazky telemetrie a sledujte náklady na Application Insights.
-services: application-insights
-documentationcenter: ''
-author: DaleKoetke
-manager: carmonm
-ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 10/03/2019
+author: DaleKoetke
 ms.author: dalek
-ms.openlocfilehash: f9d92f03b1f55ad9d1f1e272886095ae48033266
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.date: 10/03/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 5d8c0420f680371ab63a2ddd09071769586a42ca
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750383"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900026"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro Application Insights
 
@@ -77,13 +72,15 @@ Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakt
 
 Lepší porozumění vašemu využití najdete [na webu Azure Portal stažením vašeho využití](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). Ve stažených tabulkách vidíte využití podle prostředku Azure za den. V této excelové tabulce můžete využití vašich Application Insightsch prostředků najít při prvním filtrování ve sloupci měřiče měření, pokud chcete zobrazit Application Insights a Log Analytics, a pak přidat filtr na sloupec ID instance, který je "obsahuje". Microsoft. Insights/Components.  Většina využití Application Insights se oznamuje u měřičů s kategorií měřičů Log Analytics, protože pro všechny Azure Monitor komponenty existuje back-end s jedním protokolem.  Pouze Application Insights prostředky se staršími cenovými úrovněmi a webovými testy ve více krocích jsou hlášeny s kategorií měřičů Application Insights.  Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou další podrobnosti, které vám pomůžou [pochopit Microsoft Azureovou fakturaci](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
-## <a name="managing-your-data-volume"></a>Správa objemu dat 
+## <a name="understanding-ingested-data-volume"></a>Principy ingestných objemů dat
 
-Pokud chcete zjistit, kolik dat vaše aplikace posílá, můžete:
+Abyste porozuměli tomu, kolik dat se ingestují do Application Insights, můžete:
 
-* Přejděte na podokno **využití a odhadované náklady** , kde se zobrazí graf denního objemu dat. 
-* V Průzkumník metrik přidejte nový graf. U metriky grafu vyberte **svazek datového bodu**. Zapněte **seskupování**a pak proveďte seskupení podle **datového typu**.
-* Použijte datový typ `systemEvents`. Chcete-li například zobrazit objem dat zpracovaných za poslední den, dotaz by byl:
+1. Přejděte na podokno **využití a odhadované náklady** , abyste viděli graf denních objemů dat, jak je popsáno výše.
+2. V Průzkumník metrik přidejte nový graf. U metriky grafu vyberte **svazek datového bodu**. Zapněte **seskupování**a pak proveďte seskupení podle **datového typu**.
+3. Použijte tabulku `systemEvents`, jak je znázorněno níže. 
+
+V tabulce `systemEvents` můžete například zobrazit datový svazek ingestované za posledních 24 hodin s dotazem:
 
 ```kusto
 systemEvents 
@@ -94,7 +91,20 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes)
 ```
 
+Nebo chcete-li zobrazit graf objemu dat podle datového typu za posledních 30 dní, můžete použít:
+
+```kusto
+systemEvents 
+| where timestamp >= ago(30d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
+```
+
 Tento dotaz se dá použít v [upozornění protokolu Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) k nastavení výstrah na datových svazcích. 
+
+## <a name="managing-your-data-volume"></a>Správa objemu dat 
 
 Objem dat, která odesíláte, můžete spravovat pomocí následujících technik:
 
@@ -172,8 +182,6 @@ Pokud chcete změnit dobu uchovávání, z prostředku Application Insights pře
 
 Uchovávání je také možné [nastavit pomocí prostředí programově pomocí](powershell.md#set-the-data-retention) parametru `retentionInDays`. Pokud navíc nastavíte uchovávání dat na 30 dní, můžete spustit okamžité vymazání starších dat pomocí parametru `immediatePurgeDataOn30Days`, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce vyprázdnění se zveřejňuje jenom přes Azure Resource Manager a měla by se používat s mimořádnou péčí. 
 
-Když se fakturace začne po delší dobu od 15. prosince 2019, data uchovávaná déle než 90 dnů se budou účtovat jako stejná sazba, která se aktuálně účtuje za Azure Log Analytics uchovávání dat. Další informace najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). [Pro tento návrh](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)můžete mít přehled o průběhu proměnlivého uchovávání dat. 
-
 ## <a name="data-transfer-charges-using-application-insights"></a>Poplatky za přenos dat pomocí Application Insights
 
 Odesílání dat do Application Insights může mít za následek poplatky za šířku pásma dat. Jak je popsáno na [stránce ceny za Azure šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/), přenos dat mezi službami Azure v rámci dvou oblastí se v normální sazbě účtuje jako odchozí přenos dat. Příchozí přenos dat je zdarma. Tento poplatek je však velmi malý (několik%) v porovnání s náklady na Application Insights příjmu dat protokolu. V důsledku toho se řídí náklady na Log Analytics se musí soustředit na přijatý objem dat a máme vám Rady, jak to porozumět [.](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)   
@@ -250,4 +258,5 @@ Pomocí správy prostředků Azure můžete napsat skript pro nastavení cenové
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: ../../azure-monitor/app/app-insights-overview.md
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/

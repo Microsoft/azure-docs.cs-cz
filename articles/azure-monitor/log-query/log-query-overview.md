@@ -1,23 +1,23 @@
 ---
 title: Přehled dotazů protokolu v Azure Monitor | Microsoft Docs
 description: Odpoví na běžné otázky související s dotazy protokolu a pomůže vám s jejich pomocí začít.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 89633d77a6270b5c34cd9b4f52bc7286f84b1976
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.date: 06/19/2019
+ms.openlocfilehash: 08af0ff3121d6721c9f5c1457655c345f50f91e0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827302"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900273"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Přehled dotazů protokolu v Azure Monitor
 Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v [protokolech Azure monitor](../platform/data-platform-logs.md). Výkonný dotazovací jazyk umožňuje spojit data z více tabulek, agregovat velké sady dat a provádět komplexní operace s minimálním kódem. Prakticky všechny dotazy mohou být zodpovězeny a analýzou provedeny, pokud jsou shromážděna podpůrná data a rozumíte tomu, jak vytvořit správný dotaz.
 
-Některé funkce v Azure Monitor, jako [](../insights/insights-overview.md) jsou přehledy a [řešení](../insights/solutions-inventory.md) , zpracovávají data protokolu bez odhalení základních dotazů. Abyste mohli plně využít jiné funkce Azure Monitor, měli byste pochopit, jak se vytvářejí dotazy a jak je můžete používat k interaktivní analýze dat v protokolech Azure Monitor.
+Některé funkce v Azure Monitor, jako jsou [přehledy](../insights/insights-overview.md) a [řešení](../insights/solutions-inventory.md) , zpracovávají data protokolu bez odhalení základních dotazů. Abyste mohli plně využít jiné funkce Azure Monitor, měli byste pochopit, jak se vytvářejí dotazy a jak je můžete používat k interaktivní analýze dat v protokolech Azure Monitor.
 
 V tomto článku se dozvíte, jak se naučíte používat dotazy protokolu v Azure Monitor. Odpovídá na časté otázky a poskytuje odkazy na další dokumentaci, která poskytuje další podrobnosti a lekce.
 
@@ -94,9 +94,9 @@ Kromě interaktivní práce s dotazy protokolů a jejich výsledky v Log Analyti
 
 - **Pravidla výstrah.** [Pravidla výstrah](../platform/alerts-overview.md) proaktivně identifikují problémy z dat ve vašem pracovním prostoru.  Každé pravidlo výstrahy je založené na prohledávání protokolu, které se automaticky spouští v pravidelných intervalech.  Výsledky jsou zkontrolovány, aby bylo možné určit, zda má být vytvořena výstraha.
 - **Řídicí panely.** Výsledky jakéhokoli dotazu můžete připnout na [řídicí panel Azure](../learn/tutorial-logs-dashboards.md) , který vám umožní vizualizovat data protokolů a metrik společně a volitelně sdílet s ostatními uživateli Azure.
-- **Náhled.**  Vizualizace dat, která se mají zahrnout do uživatelských řídicích panelů, můžete vytvořit pomocí [návrháře zobrazení](../platform/view-designer.md).  Dotazy protokolu poskytují data používaná dlaždicemi [](../platform/view-designer-tiles.md) a [částmi vizualizace](../platform/view-designer-parts.md) v každém zobrazení.  
+- **Náhled.**  Vizualizace dat, která se mají zahrnout do uživatelských řídicích panelů, můžete vytvořit pomocí [návrháře zobrazení](../platform/view-designer.md).  Dotazy protokolu poskytují data používaná [dlaždicemi](../platform/view-designer-tiles.md) a [částmi vizualizace](../platform/view-designer-parts.md) v každém zobrazení.  
 - **Export.**  Když importujete data protokolu z Azure Monitor do aplikace Excel nebo [Power BI](../platform/powerbi.md), vytvoříte dotaz protokolu pro definování dat k exportu.
-- **PowerShell.** PowerShellový skript můžete spustit z příkazového řádku nebo Azure Automation Runbooku, který pomocí rutiny [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) načte data protokolu z Azure monitor.  Tato rutina vyžaduje dotaz k určení dat, která se mají načíst.
+- **Prostředí.** PowerShellový skript můžete spustit z příkazového řádku nebo Azure Automation Runbooku, který pomocí rutiny [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) načte data protokolu z Azure monitor.  Tato rutina vyžaduje dotaz k určení dat, která se mají načíst.
 - **Rozhraní API protokolů Azure Monitor.**  [Rozhraní API protokolů Azure monitor](https://dev.loganalytics.io) umožňuje každému klientovi REST API načíst data protokolu z pracovního prostoru.  Požadavek rozhraní API obsahuje dotaz, který se spouští proti Azure Monitor k určení dat, která se mají načíst.
 
 

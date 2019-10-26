@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights Snapshot Debugger pro aplikace .NET | Microsoft Docs
 description: Snímky ladění se automaticky shromažďují, pokud jsou výjimky vyvolané v produkčních aplikacích .NET.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: brahmnes
-ms.date: 10/23/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: c0d90d4eed7efb5c82ca9d61565bfe3f49e8aaa1
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: HT
+ms.date: 10/23/2019
+ms.reviewer: brahmnes
+ms.openlocfilehash: 33a9db5fa9f31a0c4548ecdeb6c0ca2f12ac8246
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809512"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899796"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladění snímků na výjimkách v aplikacích .NET
 Pokud dojde k výjimce, můžete automaticky shromáždit snímek ladění z živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnných v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger (Preview) v [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje telemetrii výjimek z vaší webové aplikace. Shromažďuje snímky na vašich vyvolané výjimce, takže budete mít k dispozici informace potřebné k diagnostice problémů v produkčním prostředí. Zahrňte do aplikace [balíček NuGet pro kolektor snímků](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a volitelně nakonfigurujte parametry kolekce v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimkách](../../azure-monitor/app/asp-net-exceptions.md) na portálu Application Insights.

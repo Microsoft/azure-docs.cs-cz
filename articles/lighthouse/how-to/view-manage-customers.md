@@ -4,15 +4,15 @@ description: Jako poskytovatel služeb s využitím delegované správy prostře
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: f6c98a67394db8028901f3f1f8e799af4c7a8c5f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302744"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898909"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Zobrazení a Správa zákazníků a delegovaných prostředků
 
@@ -20,7 +20,7 @@ Poskytovatelé služeb využívající [Azure delegovaných prostředků](../con
 
 Chcete-li získat přístup ke stránce **moji zákazníci** v Azure Portal, vyberte **všechny služby**a pak vyhledejte **Moje zákazníky** a vyberte ji. Můžete ji také najít zadáním "Moji zákazníci" do vyhledávacího pole v horní části Azure Portal.
 
-Mějte na paměti, že stránka **moji zákazníci** zobrazuje jenom informace o zákaznících, kteří mají delegované předplatné nebo skupiny prostředků. Pokud pracujete s ostatními zákazníky (například prostřednictvím [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview), neuvidíte informace o těchto zákaznících, pokud nepřipojíte své prostředky k delegované správě prostředků.
+Mějte na paměti, že horní část stránky **Customers** zobrazuje jenom informace o zákaznících, kteří mají delegované předplatné nebo skupiny prostředků. Pokud pracujete s ostatními zákazníky (například prostřednictvím [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview), neuvidíte informace o těchto zákaznících, pokud nepřipojíte své prostředky k delegované správě prostředků. Na stránce níže v části **poskytovatel cloudového řešení (Preview)** se zobrazí informace o fakturaci a prostředky pro zákazníky CSP, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) a jsou v rámci plánu Azure, ať už jsou nebo nejsou připojené. pro správu delegovaných prostředků Azure. Další informace najdete v tématu [Začínáme s fakturačním účtem Microsoft Partner Agreement](https://docs.microsoft.com/azure/billing/mpa-overview).
 
 > [!NOTE]
 > Vaši zákazníci mohou zobrazit informace o poskytovatelích služeb přechodem na **poskytovatele služeb** v Azure Portal. Další informace najdete v tématu [zobrazení a Správa poskytovatelů služeb](view-manage-service-providers.md).

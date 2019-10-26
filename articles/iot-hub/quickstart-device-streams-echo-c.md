@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 7187bc7a42971a86b31d663f0a3754a061a2421a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b0a23486d81ac6b48bf7bb256e3583973a338002
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515055"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900908"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v C prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
@@ -56,9 +56,10 @@ Potřebujete následující požadavky:
 
 Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
-* Střední USA
-
-* Střed USA EUAP
+  * Střední USA
+  * Střed USA EUAP
+  * Severní Evropa
+  * Jihovýchodní Asie
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
 

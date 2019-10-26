@@ -1,24 +1,18 @@
 ---
 title: Rozdíly v jazyce pro dotazování protokolu Azure Monitor | Microsoft Docs
 description: Referenční informace k dotazovacímu jazyku Kusto, který používá Azure Monitor. Obsahuje další prvky specifické pro Azure Monitor a elementy, které nejsou podporovány v dotazech protokolu Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 08/13/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 9892b8884d901033a80fae4168f25da97edb5a68
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d3c2daafc9116d23d837e86e60ca628bbe34647
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990180"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900387"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Rozdíly v jazyce dotazů protokolu Azure Monitor
 
@@ -31,16 +25,16 @@ Následující části popisují prvky dotazovacího jazyka Kusto, které nejsou
 
 ### <a name="statements-not-supported-in-azure-monitor"></a>Příkazy nejsou podporované v Azure Monitor
 
-* [Alias](/azure/kusto/query/aliasstatement)
+* [Zástupný](/azure/kusto/query/aliasstatement)
 * [Parametry dotazu](/azure/kusto/query/queryparametersstatement)
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>Funkce, které nejsou podporované v Azure Monitor
 
-* [cluster()](/azure/kusto/query/clusterfunction)
+* [cluster ()](/azure/kusto/query/clusterfunction)
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current(), current_cursor()](/azure/kusto/query/cursorcurrent)
-* [database()](/azure/kusto/query/databasefunction)
+* [databáze ()](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
@@ -59,10 +53,10 @@ Následující části popisují prvky dotazovacího jazyka Kusto, které nejsou
 ## <a name="additional-operators-in-azure-monitor"></a>Další operátory v Azure Monitor
 Následující operátory podporují konkrétní Azure Monitor funkce a nejsou k dispozici mimo Azure Monitor.
 
-* [app()](app-expression.md)
-* [workspace()](workspace-expression.md)
+* [aplikace ()](app-expression.md)
+* [pracovní prostor ()](workspace-expression.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Získejte odkazy na různé [prostředky pro zápis Azure Monitorch dotazů protokolu](query-language.md).
 - Přístup k kompletní [referenční dokumentaci pro dotazovací jazyk Kusto](/azure/kusto/query/).

@@ -1,21 +1,19 @@
 ---
 title: Diagnostika výjimek za běhu pomocí Azure Application Insights | Dokumentace Microsoftu
 description: Kurz popisující, jak v aplikaci vyhledat a diagnostikovat výjimky za běhu pomocí Azure Application Insights.
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 19455998ca13b9abf48bb1cb3856e38b5c47ef52
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 70ecc5dc95aced3eb901f24910339eb059ba0c17
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595606"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900473"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 
@@ -30,19 +28,19 @@ Azure Application Insights shromažďuje telemetrii z vaší aplikace, kterou m�
 > * Vytvoření nové pracovní položky pro opravu chybného kódu
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
-- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
+- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - Povolit [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger).
-- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
+- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
 - Kurz popisuje identifikaci výjimky ve vaší aplikaci, proto upravte kód ve vašem prostředí vývoj nebo testování, aby generoval výjimku. 
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 
@@ -75,7 +73,7 @@ Application Insights shromažďuje informace o selháních v aplikaci a umožňu
     ![Podrobnosti výjimky](media/tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Identifikace chyb kódu
-Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek v aplikaci, aby vám pomohl při diagnostice jejich hlavní příčiny v produkčním prostředí.  Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Později máte možnost ladit stažením snímku a otevřete ho v sadě Visual Studio Enterprise. 2019 zdrojový kód.
+Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek v aplikaci, aby vám pomohl při diagnostice jejich hlavní příčiny v produkčním prostředí.  Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Následně máte možnost ladit zdrojový kód stažením snímku a jeho otevřením v aplikaci Visual Studio 2019 Enterprise.
 
 1. Ve vlastnostech výjimky klikněte na tlačítko **Otevřít snímek ladění**.
 2. Otevře se panel **Snímek Ladění** se zásobníkem volání pro daný požadavek.  Kliknutím na kteroukoli metodu můžete zobrazit hodnoty všech místních proměnných v době požadavku.  Počínaje hlavní metodou v tomto příkladu vidíte místní proměnné, které nemají žádnou hodnotu.
@@ -86,9 +84,9 @@ Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek
 
     ![Snímek ladění](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Pak máte možnost stáhnout tento snímek do sady Visual Studio a najít tak skutečný kód, který je třeba opravit. Chcete-li tak učinit, klikněte na tlačítko **Stáhnout snímek**.
+4. Pak máte možnost stáhnout tento snímek do sady Visual Studio, kde můžeme najít skutečný kód, který je třeba opravit. Uděláte to tak, že kliknete na **Stáhnout snímek**.
 5. Snímek se načte do aplikace Visual Studio.
-6. Nyní můžete spustit relaci ladění v sadě Visual Studio Enterprise, která rychle najde řádek kódu, který způsobil výjimku.
+6. Nyní můžete spustit relaci ladění v Visual Studio Enterprise, která rychle identifikuje řádek kódu, který způsobil výjimku.
 
     ![Výjimka v kódu](media/tutorial-runtime-exceptions/exception-code.png)
 
@@ -111,7 +109,7 @@ Pokud propojíte Application Insights se sledovacím systémem, jako je Azure De
 
     ![Nová pracovní položka](media/tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Nyní, když jste se naučili, jak identifikovat výjimky za běhu, můžete přejít k dalšímu kurzu, ve kterém zjistíte, jak identifikovat a diagnostikovat potíže s výkonem.
 
 > [!div class="nextstepaction"]

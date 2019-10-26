@@ -4,26 +4,26 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 15ed78095cf3ff465b24d181d2fb2d4c4dde2f69
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4acf90a512634ebd3ed15d45c350b9f78ec82ae1
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175216"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72902140"
 ---
-## <a name="net-sample-code-repositories"></a>Úložiště kódu ukázky .NET
+## <a name="net-sample-code-repositories"></a>Ukázková úložiště kódu .NET
 
-Tady je seznam všech našich úložištích ukázka klientské knihovny Azure Storage pro .NET.
+Tady je seznam všech našich ukázkových úložišť pro knihovnu klienta Azure Storage .NET.
 
-* [Azure Blob Storage Fotogalerie webové aplikace](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)
-* [Ukázky pro úložiště objektů Blob v Azure pro .NET](https://azure.microsoft.com/resources/samples/storage-blob-dotnet-getting-started/)
-* [Zálohování virtuálních počítačů Azure disků s přírůstkovými snímky](https://azure.microsoft.com/resources/samples/storage-blob-dotnet-back-up-with-incremental-snapshots/)
-* [Začínáme s šifrování na straně klienta Azure v .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-client-side-encryption/)
-* [Začínáme se službou Azure File v .NET](https://azure.microsoft.com/resources/samples/storage-file-dotnet-getting-started/)
+* [Webová aplikace Fotogalerie pro Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)
+* [Ukázky pro Azure Blob Storage pro .NET](https://azure.microsoft.com/resources/samples/storage-blob-dotnet-getting-started/)
+* [Zálohování disků virtuálních počítačů Azure pomocí přírůstkových snímků](https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots)
+* [Začínáme se šifrováním na straně klienta Azure v .NET](https://github.com/Azure-Samples/storage-dotnet-client-side-encryption)
+* [Začínáme se službou Azure File Service v .NET](https://azure.microsoft.com/resources/samples/storage-file-dotnet-getting-started/)
 * [Začínáme se službou Azure Queue v .NET](https://azure.microsoft.com/resources/samples/storage-queue-dotnet-getting-started/)
-* [Začínáme s poskytovatelem prostředků služby Azure Storage v rozhraní .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/)
-* [Začínáme se službou Azure Table Storage pomocí rozhraní .NET](https://azure.microsoft.com/resources/samples/storage-table-dotnet-getting-started/)
-* [Začínáme s sdílené přístupové podpisy (SAS)](https://azure.microsoft.com/resources/samples/storage-dotnet-sas-getting-started/)
-* [Správa úloh importu a exportu prostřednictvím rozhraní API REST](https://azure.microsoft.com/resources/samples/storage-dotnet-import-export-job-management/)
-* [MyDriving – ukázková mobilní aplikace a služby Azure IOT](https://azure.microsoft.com/resources/samples/mydriving/)
-* [Ukázky knihovny klienta úložiště .NET](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted)
+* [Začínáme s poskytovatelem prostředků Azure Storage v .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/)
+* [Začínáme se službou Azure Table Storage pomocí rozhraní .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started)
+* [Začínáme se signaturami sdíleného přístupu (SAS)](https://azure.microsoft.com/resources/samples/storage-dotnet-sas-getting-started/)
+* [Správa úloh importu a exportu prostřednictvím rozhraní API REST](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
+* [MyDriving – ukázková aplikace pro Azure IOT a Mobile](https://github.com/Azure-Samples/mydriving/)
+* [Ukázky klientské knihovny pro úložiště .NET](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted)

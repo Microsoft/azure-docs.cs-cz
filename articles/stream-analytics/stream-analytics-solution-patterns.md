@@ -1,20 +1,20 @@
 ---
-title: Azure Stream Analytics způsoby řešení
-description: Přečtěte si o různých vzorech běžných řešení pro Azure Stream Analytics.
+title: Vzory řešení služby Azure Stream Analytics
+description: Přečtěte si o běžných vzorech řešení pro Azure Stream Analytics, jako jsou řídicí panely, zasílání zpráv o událostech, úložiště dat, rozšíření referenčních dat a monitorování.
 author: zhongc
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cbc9ffe9510cf0888e8d8b62ea112b6517117eed
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2d936a538a54edce9e3f13ea7865d57b8243c4a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173043"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901677"
 ---
-# <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics způsoby řešení
+# <a name="azure-stream-analytics-solution-patterns"></a>Vzory řešení služby Azure Stream Analytics
 
 Stejně jako v případě mnoha dalších služeb v Azure je Stream Analytics nejlépe využít jiné služby k vytvoření většího uceleného řešení. Tento článek popisuje jednoduchá Azure Stream Analytics řešení a různé modely architektury. Pro vývoj složitějších řešení můžete vytvořit tyto vzory. Vzory popsané v tomto článku se dají použít v nejrůznějších scénářích. Příklady vzorů specifických pro scénáře jsou k dispozici v [architektuře řešení Azure](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics).
 
@@ -68,7 +68,7 @@ V reálných aplikacích, kde je logika zpracování složitá a je potřeba upg
 
 ![Aplikace pro komplexní zdrojové události ASA](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
 
-Tento model zlepšuje odolnost a možnosti spravovatelnosti systému. Nicméně i když Stream Analytics garantuje, že se právě jednou zpracovává, dojde k malému pravděpodobnosti, že se v zprostředkovatelských Event Hubs můžou vycházet duplicitní události. Je důležité, aby úloha Stream Analytics pro příjem dat na odstranění duplicit pomocí logických klíčů v okně lookback. Další informace o doručování událostí najdete v tématu informace o zárukách pro [doručení událostí](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) .
+Tento model zlepšuje odolnost a možnosti spravovatelnosti systému. Nicméně i když Stream Analytics garantuje, že se právě jednou zpracovává, dojde k malému pravděpodobnosti, že se v zprostředkovatelských Event Hubs můžou vycházet duplicitní události. Je důležité, aby úloha Stream Analytics pro příjem dat na odstranění duplicit pomocí logických klíčů v okně lookback. Další informace o doručování událostí najdete v tématu informace o [zárukách pro doručení událostí](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) .
 
 ## <a name="use-reference-data-for-application-customization"></a>Použití referenčních dat pro přizpůsobení aplikace
 
@@ -174,7 +174,7 @@ Pro zpětnou zátěž je stále důležité aspoň dočasně zřídit více pros
 |**Mnoha**   |Vytvoří mezeru.    |OK pro krátký výpadek    |Použití při dlouhém výpadku |
 |**Upozorňování**   |Přípustná |OK pro krátký výpadek    |Není nutné |
 |**Aplikace pro zdroje událostí** |Přípustná |OK pro krátký výpadek    |Použití při dlouhém výpadku |
-|**Datového skladu**   |Ztráta dat  |Přípustná |Není nutné |
+|**Datové sklady**   |Ztráta dat  |Přípustná |Není nutné |
 |**Offline Analýza**  |Ztráta dat  |Přípustná |Není nutné|
 
 ## <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
@@ -183,7 +183,7 @@ Představte si, že všechny výše uvedené vzory řešení je možné kombinov
 
 Klíčem je navrhovat systém v sestavách, aby každý podsystém mohl být sestaven, testován, upgradován a obnovovat nezávisle.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď jste viděli celou řadu vzorů řešení pomocí Azure Stream Analytics. V dalším kroku se můžete do tématu ponořit hlouběji a vytvořit si svoji první úlohu Stream Analytics:
 

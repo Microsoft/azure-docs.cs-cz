@@ -1,62 +1,56 @@
 ---
-title: Odeslání kontextu uživatele ID umožňující použití prostředí ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Sledujte, jak se uživatelé přesunou prostřednictvím služby tak, že každý z nich přiřadíte jedinečný a trvalý řetězec ID ve službě Application Insights.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: csharp
+title: Odeslání ID kontextů uživatele pro povolení prostředí využití v Azure Application Insights | Microsoft Docs
+description: Sledujte, jak uživatelé přecházejí přes vaši službu tím, že jim přiřadí jedinečný a trvalý řetězec ID v Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7c458867b89a76a2f19bbd632c8a884c629f5765
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf639be5db90e3632b8931564ac397c42e1d8403
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371831"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899361"
 ---
-# <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslání kontextu uživatele ID Umožněte využití ve službě Azure Application Insights
+# <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslání ID kontextů uživatele pro povolení prostředí využití v Azure Application Insights
 
 ## <a name="tracking-users"></a>Sledování uživatelů
 
-Application Insights umožňuje monitorovat a sledovat uživatele přes sadu nástrojů pro využití produktu:
+Application Insights vám umožní monitorovat a sledovat uživatele pomocí sady nástrojů pro použití produktů:
 
 - [Uživatelé, relace, události](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [Trychtýře](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-- [Uchování](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) kohorty
+- [Uchovávání informací](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Kohorty
 - [Workbooks](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
-Aby bylo možné sledovat, co uživatel provede v čase, Application Insights musí ID pro každého uživatele nebo relace. Zahrňte následující ID každé vlastní událost nebo zobrazení stránky.
+Aby bylo možné sledovat, co uživatel pracuje v průběhu času, Application Insights potřebovat ID pro každého uživatele nebo relaci. Do každé vlastní události nebo zobrazení stránky zahrňte následující ID.
 
-- Uživatelé, trychtýře, uchovávání a kohorty: Zahrnují ID uživatele.
-- Relace: Zahrnují ID relace.
+- Uživatelé, trychtýře, uchovávání a kohorty: zahrnují ID uživatele.
+- Relace: zahrňte ID relace.
 
 > [!NOTE]
-> Toto je pokročilá článek sbalování ruční kroky pro sledování činnosti uživatelů pomocí Application Insights. U mnoha webových aplikací **tyto kroky nemusí být požadovaný**, jako výchozí server-side sady SDK ve spojení s [a prohlížeči klientů JavaScript SDK](../../azure-monitor/app/website-monitoring.md ), jsou často dostatečné pro automatické sledování aktivity uživatelů. Pokud jste nenakonfigurovali [monitorování na straně klienta](../../azure-monitor/app/website-monitoring.md ) kromě sady SDK na straně serveru, učiňte tak nyní a otestovat, pokud uživatel chování analytické nástroje fungují podle očekávání.
+> Toto je pokročilý článek s přehledem ručních kroků sledování aktivity uživatelů pomocí Application Insights. V případě mnoha webových aplikací se **tyto kroky nemusí vyžadovat**, protože výchozí sady SDK na straně serveru ve spojení se sadou [SDK na straně klienta nebo prohlížeče JavaScript](../../azure-monitor/app/website-monitoring.md )jsou často dostačující k automatickému sledování aktivity uživatelů. Pokud jste ještě nenakonfigurovali [monitorování na straně klienta](../../azure-monitor/app/website-monitoring.md ) kromě sady SDK na straně serveru, proveďte nejprve test a zjistěte, jestli se nástroje pro analýzu chování uživatelů provádějí podle očekávání.
 
-## <a name="choosing-user-ids"></a>Výběr ID uživatele
+## <a name="choosing-user-ids"></a>Výběr ID uživatelů
 
-ID uživatelů byste neměli zachovat napříč uživatelských relací ke sledování chování uživatelů v čase. Existují různé přístupy k uchování ID.
+ID uživatelů by měla být trvalá napříč uživatelskými relacemi a sledovat, jak se uživatelé budou chovat v průběhu času. Existují různé přístupy k uchování ID.
 
-- Definice jako uživatel, který už máte ve své službě.
-- Služba má přístup do prohlížeče, ho můžete předat do souboru cookie s ID prohlížeče v ní. ID se zachová pro za předpokladu, zůstane soubor cookie v prohlížeči uživatele.
-- V případě potřeby můžete použít nové ID každé relaci, ale výsledky o uživatelích budou omezené. Například nebudete moci zobrazit, jak mění chování uživatele v průběhu času.
+- Definice uživatele, který ve vaší službě již máte.
+- Pokud má služba přístup k prohlížeči, může předat do prohlížeče soubor cookie s ID. ID se uchová po delší dobu, než soubor cookie zůstane v prohlížeči uživatele.
+- V případě potřeby můžete pro každou relaci použít nové ID, ale výsledky pro uživatele budou omezené. Například nebudete moct zjistit, jak se chování uživatele v průběhu času mění.
 
-ID by měl být identifikátor Guid nebo jiným řetězcem dostatečně složité jedinečnou identifikaci jednotlivých uživatelů. Například to může být dlouhý náhodné číslo.
+ID by mělo být identifikátor GUID nebo jiný řetězec, který je dostatečně složitý pro identifikaci každého uživatele jedinečně. Může to být třeba dlouhé náhodné číslo.
 
-Obsahuje-li ID osobní identifikační údaje o uživateli, není odpovídající hodnotu k odeslání do Application Insights jako ID uživatele. Můžete odeslat toto ID jako [ověřit ID uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), ale nesplňuje požadavek na ID uživatele pro scénáře použití.
+Pokud ID obsahuje osobní identifikační údaje uživatele, není vhodná hodnota pro odeslání do Application Insights jako ID uživatele. Takové ID můžete odeslat jako [ID ověřeného uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), ale nesplňuje požadavky na ID uživatele pro scénáře používání.
 
-## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET apps: Nastavení ITelemetryInitializer uživatelský kontext
+## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>Aplikace ASP.NET: nastavení kontextu uživatele v ITelemetryInitializer
 
-Vytvořte inicializátoru telemetrie, jak je popsáno podrobněji [tady](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). Předejte ID relace prostřednictvím telemetrie žádostí a nastavte Context.User.Id a Context.Session.Id.
+Vytvořte inicializátor telemetrie, jak je popsáno [zde](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). Předejte ID relace prostřednictvím telemetrie požadavků a nastavte Context.User.Id a Context.Session.Id.
 
-V tomto příkladu nastaví ID uživatele pro identifikátor, jejíž platnost vyprší po relaci. Pokud je to možné použijte ID uživatele, které se uchovávají napříč relacemi.
+Tento příklad nastaví ID uživatele na identifikátor, jehož platnost vyprší po relaci. Pokud je to možné, použijte ID uživatele, které trvá napříč relacemi.
 
 ### <a name="telemetry-initializer"></a>Inicializátor telemetrie
 
@@ -134,10 +128,10 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Povolit použití prostředí, spusťte odesílání [vlastních událostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Pokud jste již posílat vlastní události nebo zobrazení stránek, prozkoumejte nástroje využití se dozvíte, jak uživatelé vaši službu používat.
+- Chcete-li povolit prostředí používání, začněte odesílat [vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Pokud jste už odeslali vlastní události nebo zobrazení stránky, prozkoumejte nástroje využití a zjistěte, jak uživatelé používají vaši službu.
     - [Přehled využití](usage-overview.md)
     - [Uživatelé, relace a události](usage-segmentation.md)
     - [Trychtýře](usage-funnels.md)

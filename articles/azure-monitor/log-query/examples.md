@@ -1,24 +1,18 @@
 ---
 title: Příklady dotazů Azure Monitor protokolu | Microsoft Docs
 description: Příklady dotazů protokolu v Azure Monitor pomocí dotazovacího jazyka Kusto
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.openlocfilehash: 2ded97e427c8ecf4584ee486408de14a26f014eb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718912"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900375"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Příklady dotazů Azure Monitor protokolu
 Tento článek obsahuje různé příklady [dotazů](log-query-overview.md) pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/) k načtení různých typů dat protokolu z Azure monitor. Pro konsolidaci a analýzu dat se používají různé metody, takže tyto ukázky můžete použít k identifikaci různých strategií, které můžete použít pro vlastní požadavky.  
@@ -79,7 +73,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Vyhledání chráněných záznamů o stavu pomocí záznamů prezenčního signálu
 
 Tento příklad najde související záznamy stavu ochrany a záznamy prezenčního signálu, které odpovídají v počítači i v čase.
-Všimněte si, že pole čas se zaokrouhluje na nejbližší minutu. Použili jsme výpočet běhového přihrádky k tomu, že: `round_time=bin(TimeGenerated, 1m)`.
+Všimněte si, že pole čas se zaokrouhluje na nejbližší minutu. Použili jsme výpočet běhového přihrádky k tomu: `round_time=bin(TimeGenerated, 1m)`.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -237,7 +231,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Počet událostí zabezpečení podle ID aktivity
 
 
-Tento příklad spoléhá na pevnou strukturu sloupce **Activity** : \<ID @ no__t-2 @ no__t-3 @ No__t-4Name @ no__t-5.
+Tento příklad spoléhá na pevnou strukturu sloupce **Activity** : \<ID\>-\<název\>.
 Analyzuje hodnotu **aktivity** na dva nové sloupce a spočítá výskyt jednotlivých **ActivityId**.
 
 ```Kusto
@@ -278,7 +272,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Název a ID aktivity analýzy
-Následující dva příklady jsou závislé na pevné struktuře sloupce **Activity** : \<ID @ no__t-2 @ no__t-3 @ No__t-4Name @ no__t-5. První příklad používá operátor **Parse** k přiřazení hodnot dvěma novým sloupcům: **ActivityId** a **activityDesc**.
+Následující dva příklady jsou závislé na pevné struktuře sloupce **aktivita** : \<ID\>-\<název\>. První příklad používá operátor **Parse** k přiřazení hodnot dvěma novým sloupcům: **ActivityId** a **activityDesc**.
 
 ```Kusto
 SecurityEvent

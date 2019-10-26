@@ -1,23 +1,18 @@
 ---
 title: Nejčastější dotazy – řešení Network Performance Monitor v Azure | Microsoft Docs
 description: Tento článek zachycuje Nejčastější dotazy týkající se Network Performance Monitor v Azure. Network Performance Monitor (NPM) vám pomůže monitorovat výkon sítí prakticky v reálném čase a zjišťovat a vyhledávat kritické body výkonu sítě.
-services: log-analytics
-documentationcenter: ''
-author: vinynigam
-manager: agummadi
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/12/2018
+author: vinynigam
 ms.author: vinigam
-ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
-ms.translationtype: MT
+ms.date: 10/12/2018
+ms.openlocfilehash: 26e9215c7e00eca59d33f7e8d259a689ad642f19
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782108"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898851"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -55,16 +50,16 @@ Pokud sledujete síť pomocí uzlů založených na Windows serveru, doporučuje
 
 Protokol ICMP se doporučuje u klientských počítačů s operačním systémem Windows nebo klientských uzlů. Tato platforma does'nt umožňuje odesílat data TCP přes nezpracované sokety, které NPM používá ke zjišťování síťové topologie.
 
-Můžete získat další podrobnosti o relativních výhodách jednotlivých protokolů. [](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)
+Můžete získat další podrobnosti o relativních výhodách [jednotlivých protokolů.](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)
 
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Jak můžu nakonfigurovat uzel pro podporu monitorování pomocí protokolu TCP?
 Pro uzel, který podporuje monitorování pomocí protokolu TCP: 
 * Ujistěte se, že platforma Node je Windows Server (2008 SP1 nebo novější).
-* Na uzlu spusťte skript prostředí PowerShell [EnableRules. ps1](https://aka.ms/npmpowershellscript) . Další [](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) podrobnosti najdete v pokynech.
+* Na uzlu spusťte skript prostředí PowerShell [EnableRules. ps1](https://aka.ms/npmpowershellscript) . Další podrobnosti najdete v [pokynech](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) .
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Jak můžu změnit port TCP používaný službou NPM ke sledování?
-Port TCP, který používá NPM pro monitorování, můžete změnit spuštěním skriptu [EnableRules. ps1](https://aka.ms/npmpowershellscript) . Je nutné zadat číslo portu, který chcete použít jako parametr. Chcete-li například povolit TCP na portu 8060, spusťte `EnableRules.ps1 8060`příkaz. Ujistěte se, že používáte stejný port TCP na všech uzlech, které jsou používány pro monitorování.
+Port TCP, který používá NPM pro monitorování, můžete změnit spuštěním skriptu [EnableRules. ps1](https://aka.ms/npmpowershellscript) . Je nutné zadat číslo portu, který chcete použít jako parametr. Pokud chcete například povolit TCP na portu 8060, spusťte `EnableRules.ps1 8060`. Ujistěte se, že používáte stejný port TCP na všech uzlech, které jsou používány pro monitorování.
 
 Skript nakonfiguruje pouze místní bránu firewall systému Windows. Pokud máte pravidla brány firewall sítě nebo skupiny zabezpečení sítě (NSG), ujistěte se, že povolují provoz určený pro port TCP používaný v NPM.
 
@@ -74,7 +69,7 @@ Pro každou podsíť, kterou chcete monitorovat, byste měli použít aspoň jed
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Jaký je maximální počet agentů, které můžu použít, nebo se zobrazuje chyba... dosáhli jste limitu konfigurace?
 NPM omezuje počet IP adres na jeden pracovní prostor na 5000. Pokud má uzel adresy IPv4 i IPv6, bude se tento uzel počítat jako 2 IP adresy. Proto tento limit 5000 IP adres určí horní limit počtu agentů. Neaktivních agentů můžete odstranit na kartě uzly v NPM > > nakonfigurovat. NPM také udržuje historii všech IP adres, které byly někdy přiřazeny k virtuálnímu počítači, který je hostitelem agenta, a každá z nich se počítá jako samostatná IP adresa přispívající k tomuto hornímu limitu 5000 IP adres. Pokud chcete pro svůj pracovní prostor uvolnit IP adresy, můžete pomocí stránky uzly odstranit IP adresy, které se nepoužívají.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="how-are-loss-and-latency-calculated"></a>Jak se počítají ztráty a latence
 Zdrojové agenti odesílají žádosti TCP SYN (Pokud je zvolen protokol TCP jako protokol pro monitorování) nebo požadavky na ODEZVu ICMP (Pokud je protokol ICMP zvolen jako protokol pro monitorování) do cílové IP adresy v pravidelných intervalech, aby se zajistilo, že všechny cesty mezi zdrojovým cílovým IP serverem je pokryta kombinace. Procento přijatých paketů a doba odezvy přenosu paketů se měří k výpočtu ztráty a latence každé cesty. Tato data se agreguje v intervalu cyklického dotazování a přes všechny cesty, aby se získaly agregované hodnoty ztráty a latence pro danou kombinaci IP adres pro konkrétní interval dotazování.
@@ -165,7 +160,7 @@ E2EMedianLatency je latence aktualizována každé tři minuty po agregaci výsl
 
 ### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Proč se čísla latence směrování mezi segmenty liší od HopLatencyValues 
 HopLatencyValues jsou zdrojem do koncového bodu.
-Příklad: Směrování – A, B, C. AvgHopLatency – 10, 15, 20. To znamená, že zdroj k latenci = 10, latenci pro zdroj B = 15 a latenci zdrojového kódu C je 20. Uživatelské rozhraní vypočítá latenci směrování A-B jako 5 v topologii.
+Příklad: směrování-A, B, C. AvgHopLatency – 10, 15, 20. To znamená, že zdroj k latenci = 10, latenci pro zdroj B = 15 a latenci zdrojového kódu C je 20. Uživatelské rozhraní vypočítá latenci směrování A-B jako 5 v topologii.
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>Toto řešení ukazuje 100% ztrátu, ale mezi zdrojem a cílem je připojení.
 K tomu může dojít, pokud hostitelská brána firewall nebo zprostředkující brána firewall (síťová brána firewall nebo Azure NSG) blokuje komunikaci mezi zdrojovým agentem a cílem přes port, který se používá pro monitorování nástrojem NPM (ve výchozím nastavení je port 8084, pokud zákazník toto změnil.)
@@ -175,7 +170,7 @@ K tomu může dojít, pokud hostitelská brána firewall nebo zprostředkující
 * Pokud chcete ověřit, jestli zprostředkující síťová brána firewall nebo Azure NSG neblokuje komunikaci na požadovaném portu, použijte nástroj PsPing třetí strany pomocí následujících pokynů:
   * Nástroj psping je k dispozici ke stažení [zde](https://technet.microsoft.com/sysinternals/psping.aspx) . 
   * Spusťte následující příkaz ze zdrojového uzlu.
-    * psping-n 15 \<cílový uzel IPAddress\>:p ortnumber ve výchozím nastavení npm používá port 8084. V případě, že jste je explicitně změnili pomocí skriptu EnableRules. ps1, zadejte vlastní číslo portu, které používáte). Toto je příkaz k odeslání z Azure Machine do místního počítače.
+    * psping-n 15 \<cílový uzel IPAddress\>:p ortNumber ve výchozím nastavení NPM používá port 8084. V případě, že jste je explicitně změnili pomocí skriptu EnableRules. ps1, zadejte vlastní číslo portu, které používáte). Toto je příkaz k odeslání z Azure Machine do místního počítače.
 * Ověřte, zda jsou příkazy if-Tests úspěšné. Pokud ne, znamená to, že zprostředkující síťová brána firewall nebo Azure NSG blokuje provoz na tomto portu.
 * Nyní spusťte příkaz z cílového uzlu na IP adresu zdrojového uzlu.
 
@@ -190,7 +185,7 @@ NPM nyní zjišťuje okruhy ExpressRoute a připojení partnerských vztahů ve 
 
 Může se jednat o scénář, ve kterém se nachází v pořádku mezi místními a uzly Azure, ale přenos nepřekračuje okruh ExpressRoute nakonfigurovaný pro monitorování pomocí NPM. 
 
-K tomu může dojít, pokud:
+K tomu může dojít v následujícím případě:
 
 * Okruh ER je mimo provoz.
 * Filtry tras jsou nakonfigurovány tak, aby měly přednost jiným trasám (například připojení VPN nebo jinému okruhu ExpressRoute) prostřednictvím zamýšleného okruhu ExpressRoute. 
@@ -228,7 +223,7 @@ Proces NPM je nakonfigurován tak, aby se zastavil, pokud využívá více než 
 NPM na uzlech, na kterých je spuštěný skript prostředí PowerShell EnableRules. ps1, vytvoří jenom místní pravidlo brány Windows Firewall, které agentům umožní vytvářet připojení TCP mezi sebou na zadaném portu. Řešení nemění pravidla brány firewall sítě ani skupiny zabezpečení sítě (NSG).
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Jak můžu ověřit stav uzlů používaných k monitorování?
-Stav uzlů používaných k monitorování můžete zobrazit v následujícím zobrazení: Network Performance Monitor-> Konfigurace > uzlů. Pokud uzel není v pořádku, můžete zobrazit podrobnosti o chybě a provést navrhovanou akci.
+Stav uzlů používaných k monitorování můžete zobrazit z následujícího zobrazení: Network Performance Monitor-> Konfigurace > uzlů. Pokud uzel není v pořádku, můžete zobrazit podrobnosti o chybě a provést navrhovanou akci.
 
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Může NPM zprávy o latenci v mikrosekundách?
 NPM zaokrouhlí čísla latence v uživatelském rozhraní a v milisekundách. Stejná data se ukládají s větší členitosti (někdy až na čtyři desetinná místa).

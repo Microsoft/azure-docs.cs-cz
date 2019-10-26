@@ -1,152 +1,147 @@
 ---
-title: Monitorování stavu vaší aplikace a využití pomocí Application Insights
-description: Začínáme s Application Insights. Analýza využití, dostupnosti a výkonu v místním nebo aplikace Microsoft Azure.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40650472-e860-4c1b-a589-9956245df307
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Monitorujte stav a využití vaší aplikace pomocí Application Insights
+description: Začínáme s Application Insights. Analyzujte využití, dostupnost a výkon vašich místních nebo Microsoft Azurech aplikací.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebf6fa6d3dac6c63dfaa349a77a08bc81d402ef8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372999"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899302"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
 
 
-Ujistěte se, že vaše aplikace je dobře a rychle zjistit o případných chybách. [Application Insights] [ start] popište všechny problémy s výkonem a výjimkami a umožňují najít a diagnostikovat hlavní příčiny.
+Ujistěte se, že aplikace správně funguje, a zjistěte, co se nepovede. [Application Insights][start] vás seznámí s případnými problémy s výkonem a výjimkami a pomůže vám najít a diagnostikovat hlavní příčiny.
 
-Application Insights můžete monitorovat webové aplikace Java a ASP.NET a služby, služby WCF. Může být hostovaná místně, na virtuálních počítačích, nebo jako Microsoft Azure websites. 
+Application Insights mohou monitorovat webové aplikace a služby v jazyce Java i ASP.NET, služby WCF. Můžou být hostované místně, na virtuálních počítačích nebo jako Microsoft Azure websites. 
 
-Na straně klienta Application Insights můžete využít telemetrii z webových stránek a širokou škálu zařízení včetně iOS, Android a Windows Store apps.
+Na straně klienta Application Insights může převzít telemetrii z webových stránek a širokou škálu zařízení, včetně aplikací pro iOS, Android a Windows Store.
 
 ## <a name="setup"></a>Nastavení sledování výkonu
-Pokud jste ještě nepřidali Application Insights do projektu (tj. Pokud soubor ApplicationInsights.config nemá), vyberte jednu z těchto způsobů, jak začít:
+Pokud jste ještě nepřidali Application Insights do projektu (tj. Pokud nemá ApplicationInsights. config), vyberte jeden z následujících způsobů, jak začít:
 
-* [Webové aplikace ASP.NET](../../azure-monitor/app/asp-net.md)
-  * [Přidat monitorování výjimky](../../azure-monitor/app/asp-net-exceptions.md)
+* [Webové aplikace v ASP.NET](../../azure-monitor/app/asp-net.md)
+  * [Přidat monitorování výjimek](../../azure-monitor/app/asp-net-exceptions.md)
   * [Přidat monitorování závislostí](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Webové aplikace Java EE](../../azure-monitor/app/java-get-started.md)
   * [Přidat monitorování závislostí](../../azure-monitor/app/java-agent.md)
 
-## <a name="view"></a>Zkoumání metrik výkonu
-V [na webu Azure portal](https://portal.azure.com), přejděte do prostředku Application Insights, které jste nastavili pro vaše aplikace. Okno přehledu zobrazí data základního výkonu:
+## <a name="view"></a>Prozkoumávání metrik výkonu
+V [Azure Portal](https://portal.azure.com)přejděte k prostředku Application Insights, který jste nastavili pro vaši aplikaci. Okno Přehled obsahuje základní údaje o výkonu:
 
-Kliknutím na libovolný graf zobrazíte další podrobnosti a zobrazit výsledky po delší dobu. Například, klikněte na dlaždici požadavků a pak vyberte časový rozsah:
+Kliknutím na libovolný graf zobrazíte více podrobností a zobrazíte výsledky po delší dobu. Klikněte například na dlaždici požadavky a pak vyberte časový rozsah:
 
-![Proklikejte se k většímu množství dat a vyberte časový rozsah](./media/web-monitor-performance/appinsights-48metrics.png)
+![Klikněte na více dat a vyberte časový rozsah.](./media/web-monitor-performance/appinsights-48metrics.png)
 
-Klikněte na graf. Chcete-li zvolit, které metriky se zobrazí, nebo přidejte nový graf a vyberte jeho metriky:
+Klikněte na graf pro výběr metrik, které se zobrazí, nebo přidejte nový graf a vyberte jeho metriky:
 
-![Klikněte na graf zvolit metriky](./media/web-monitor-performance/appinsights-61perfchoices.png)
+![Kliknutím na graf vyberte metriky.](./media/web-monitor-performance/appinsights-61perfchoices.png)
 
 > [!NOTE]
-> **Zrušte zaškrtnutí všech metrik** zobrazíte úplný výběr, který je k dispozici. Metriky spadají do skupiny. Při výběru člena skupiny se zobrazí pouze ostatní členové této skupiny.
+> **Zrušte výběr všech metrik** , abyste viděli kompletní výběr, který je k dispozici. Metriky spadají do skupin; Když je vybraný libovolný člen skupiny, zobrazí se jenom ostatní členové této skupiny.
 
-## <a name="metrics"></a>Jaké jsou všechny průměr? Dlaždice výkonu a sestavy
-Existují různé metriky výkonu, které můžete získat. Začněme s těmi, které se ve výchozím nastavení v okně aplikace.
+## <a name="metrics"></a>Co to znamená? Dlaždice výkonu a sestavy
+Můžete získat různé metriky výkonu. Pojďme začít s uživateli, kteří se ve výchozím nastavení zobrazují v okně aplikace.
 
 ### <a name="requests"></a>Požadavky
-Počet požadavků HTTP přijaté v zadaném období. Porovnat s výsledky na jiných sestav zobrazit, jak se vaše aplikace chová při zatížení se liší.
+Počet požadavků HTTP přijatých v zadaném období. Porovnejte je s výsledky na jiných sestavách a podívejte se, jak se vaše aplikace chová, protože se liší zatížení.
 
-Požadavky HTTP zahrnout všechny požadavky GET nebo POST pro stránky, data a obrázky.
+Požadavky HTTP zahrnují všechny požadavky GET nebo POST pro stránky, data a obrázky.
 
-Kliknutím na dlaždici zobrazíte počet pro konkrétní adresy URL.
+Kliknutím na dlaždici získáte počty pro konkrétní adresy URL.
 
 ### <a name="average-response-time"></a>Průměrná doba odezvy
-Měří čas mezi webovou žádost zadání vaší aplikace a vracené odpovědi.
+Měří čas mezi webovým požadavkem, který vstupuje do vaší aplikace, a vrácenou odpovědí.
 
-Body zobrazit klouzavý průměr. Pokud existuje velký počet požadavků, můžou nastat jiným se liší od průměrné bez zřejmé ve špičce nebo ponořit v grafu.
+Body ukazují klouzavý průměr. Pokud existuje mnoho požadavků, může dojít k určitým odchylám od průměru bez zjevné špičky nebo DIP v grafu.
 
-Vyhledejte neobvyklé špičky. Obecně platí očekávané doby odezvy roste s nárůst požadavků. Pokud je vzestupu nesoustředil příliš velký, může vaše aplikace dosažení limitu prostředků, jako je například využití procesoru nebo kapacity, které používá služba.
+Hledejte neobvyklé špičky. Obecně je možné očekávat dobu odezvy při nárůstu požadavků. Pokud je nárůst neúměrný, může být vaše aplikace v rámci omezení prostředků, jako je například CPU nebo kapacita služby, kterou používá.
 
-Kliknutím na dlaždici zobrazíte časy pro konkrétní adresy URL.
+Kliknutím na dlaždici získáte časy pro konkrétní adresy URL.
 
 ![](./media/web-monitor-performance/appinsights-42reqs.png)
 
-### <a name="slowest-requests"></a>Nejpomalejší žádosti
+### <a name="slowest-requests"></a>Nejpomalejší požadavky
 ![](./media/web-monitor-performance/appinsights-44slowest.png)
 
-Ukazuje, jaké požadavky může být třeba ladění výkonu.
+Zobrazuje, které požadavky můžou potřebovat vyladění výkonu.
 
 ### <a name="failed-requests"></a>Neúspěšné požadavky
 ![](./media/web-monitor-performance/appinsights-46failed.png)
 
-Počet požadavků, které vyvolala nezachycených výjimek.
+Počet požadavků, které vygenerovaly nezachycené výjimky.
 
-Kliknutím na dlaždici zobrazíte podrobnosti o specifických chybách a vybrat jednotlivý požadavek zobrazíte její podrobnosti. 
+Kliknutím na dlaždici zobrazíte podrobnosti o konkrétních selháních a výběrem jednotlivé žádosti zobrazíte její podrobnosti. 
 
-Pouze reprezentativní vzorek selhání je zachován z důvodu jednotlivých kontroly.
+Pouze reprezentativní vzorek selhání je uchován pro individuální kontrolu.
 
 ### <a name="other-metrics"></a>Jiné metriky
-Abyste zjistili, co nastavit jiné metriky můžete zobrazit, klikněte na graf a potom zrušte zaškrtnutí možnosti všechny metriky, abyste viděli plně k dispozici. Chcete-li zobrazit definici jednotlivé metriky klikněte na tlačítko (i).
+Pokud chcete zjistit, jaké další metriky můžete zobrazit, klikněte na graf a potom zrušte výběr všech metrik, aby se zobrazila úplná dostupná sada. Kliknutím (i) zobrazíte definici každé metriky.
 
-![Zruší výběr všech metrik zobrazíte celé sady](./media/web-monitor-performance/appinsights-62allchoices.png)
+![Zrušit výběr všech metrik pro zobrazení celé sady](./media/web-monitor-performance/appinsights-62allchoices.png)
 
-Výběrem libovolné metriky zakáže ostatní, které se nesmí objevit na stejném grafu.
+Výběrem jakékoli metriky zakážete ostatním uživatelům, kteří se nemůžou objevit ve stejném grafu.
 
-## <a name="set-alerts"></a>Nastavení upozornění
-Pokud chcete dostat e-mailu z neobvyklé hodnoty jakékoliv metriky, přidáte upozornění. Můžete zvolit buď k odeslání e-mailu pro účet správce nebo na konkrétní e-mailové adresy.
+## <a name="set-alerts"></a>Nastavení výstrah
+Pokud chcete dostávat oznámení e-mailem o neobvyklých hodnotách jakékoli metriky, přidejte upozornění. Můžete zvolit odeslání e-mailu správcům účtu nebo určitým e-mailovým adresám.
 
 ![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
-Nastavení prostředku před dalšími vlastnostmi. Neklikejte na tlačítko prostředky webového testu. Pokud chcete nastavit upozornění na metriky výkonu a využití.
+Nastavte prostředek před ostatními vlastnostmi. Nevybírejte prostředky webového testu, pokud chcete nastavit výstrahy týkající se výkonu nebo metrik využití.
 
-Věnujte jednotky, ve kterých budete vyzváni k zadání prahovou hodnotu.
+Nezapomeňte si uvědomit jednotky, ve kterých jste vyzváni k zadání prahové hodnoty.
 
-*Nevidím tlačítko Přidat oznámení.* – Je to skupina účet, ke kterým mají přístup jen pro čtení? Obraťte se na správce účtu.
+*Nevidím tlačítko Přidat výstrahu.* – Jedná se o účet skupiny, ke kterému máte přístup jen pro čtení? Obraťte se na správce účtu.
 
-## <a name="diagnosis"></a>Diagnostika problémů
-Tady je pár tipů pro vyhledání a Diagnostika problémů s výkonem:
+## <a name="diagnosis"></a>Diagnostikování problémů
+Tady je několik tipů pro hledání a diagnostiku problémů s výkonem:
 
-* Nastavit [webové testy] [ availability] se mají generovat výstrahy, pokud vaše webová stránka padá nebo reaguje pomalu nebo nesprávně. 
-* Porovnejte počet požadavků s ostatními metrikami a zjistěte, jestli selhání nebo pomalé odezvy se vztahují k načtení.
-* [Vložit a hledání trasování příkazy] [ diagnostic] v kódu k pomoci přesně určit problémy.
-* Monitorování webové aplikace v operaci s [Live Metrics Stream][livestream].
-* Zaznamenání stavu aplikace .NET s [Snapshot Debugger][snapshot].
+* Nastavte, aby byly [webové testy][availability] upozorňovány, pokud váš web přestane reagovat nebo je nereaguje nesprávně nebo pomalu. 
+* Porovnejte počet požadavků s ostatními metrikami, abyste viděli, jestli chyby nebo pomalé odezvy souvisejí s načtením.
+* [Vkládat a hledat příkazy trasování][diagnostic] v kódu, které vám pomůžou identifikovat problémy.
+* Monitorujte svou webovou aplikaci v provozu pomocí [Live Metrics Stream][livestream].
+* Zachyťte stav aplikace .NET pomocí [Snapshot Debugger][snapshot].
 
-## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Najít a opravit kritická místa výkonu pomocí možnosti pro zkoumání výkonu
+## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Hledání a oprava slabých míst výkonu pomocí prostředí pro zkoumání výkonu
 
-Možnosti pro zkoumání výkonu můžete použít ke kontrole pomalé provádění operací ve vaší webové aplikaci. Můžete rychle vybrat konkrétní pomalých operací a použít [Profiler](../../azure-monitor/app/profiler.md) do kořenového adresáře způsobit pomalých operací na kód. Pomocí rozdělení novou dobu trvání pro vybranou operaci zobrazit, že můžete rychle na první pohled vyhodnotit jak chybný výsledné prostředí funguje pro vaše zákazníky. Můžete zobrazit, kolik vaše interakce uživatele to mělo dopad na jednotlivých pomalých operací. V následujícím příkladu jsme jste se rozhodli podrobněji podíváme na prostředí pro operaci GET Customers/Details. V distribuci doby trvání vidíme, že existují tři špičky. Úplně vlevo zásobníku je přibližně 400 ms a představuje interaktivní prostředí. Střední zásobníku je kolem 1.2 s a představuje průměrné prostředí. Nakonec v 3.6 s máme jiný malé zásobníku, který představuje 99. percentilu prostředí, které by mohly způsobit, že naše zákazníky, ponechte nespokojen(a). Prostředí je desetkrát pomalejší než skvělé prostředí pro stejnou operaci. 
+Prostředí pro šetření výkonu můžete použít ke kontrole pomalých operací ve vaší webové aplikaci. Můžete rychle vybrat konkrétní pomalou operaci a použít [Profiler](../../azure-monitor/app/profiler.md) k hlavní příčině pomalé operace v kódu. Pomocí nové distribuce trvání zobrazené pro vybranou operaci můžete rychle na první pohled vyhodnotit, jak špatné je prostředí pro vaše zákazníky. Můžete zjistit, kolik vašich uživatelských interakcí bylo ovlivněno při každé pomalé operaci. V následujícím příkladu jsme se rozhodli, že se podíváme na možnosti získání zákazníků a podrobností. V rozdělení trvání vidíte, že existují tři špičky. Špička úplně vlevo je okolo 400 MS a představuje skvělé možnosti reakce. Střední špička je okolo 1,2 s a představuje mediocreé prostředí. Nakonec v 3,6 s máme další malý špičku, který představuje prostředí 99 percentilu, což pravděpodobně způsobí, že naši zákazníci odejdou nespokojenost. Toto prostředí je po deseti případech pomalejší než Skvělé prostředí pro stejnou operaci. 
 
-![GET Customers/Details tři doba trvání špičky](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
+![ZÍSKAT zákazníky/podrobnosti tři špičky trvání](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
-Chcete-li získat lepší představu o uživatelské prostředí pro tuto operaci, můžeme vybrat větší časový rozsah. Můžeme pak také zúžit v čase na konkrétní časový interval, ve kterém bylo pomalé v sítích operaci. V následujícím příkladu jsme přešli jsme od výchozí 24 hodin na 7 dní časový rozsah časový rozsah a pak zvětšili 9:47 až 12:47 časový interval mezi Út 12. a středa 13. Distribuce doby trvání a počtu vzorku a profiler trasování se aktualizovaly na pravé straně.
+Pro lepší představu o zkušenostech uživatelů pro tuto operaci můžeme vybrat větší časový rozsah. V určitém časovém intervalu se pak můžeme v čase prodloužit. V následujícím příkladu jsme přešli z výchozího časového rozmezí na 7 dní a pak se přiblížili k časovému intervalu 9:47 až 12:47 mezi Út 12. a nějak změnily 13. Napravo se aktualizovala jak rozdělení trvání, tak počet ukázek a trasování profileru.
 
-![GET Customers/Details tři doba trvání špičky za 7 dní v rozsahu s časovým intervalem](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![ZÍSKAT zákazníky/podrobnosti tři špičky trvání v rozmezí 7 dní s časovým intervalem](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
-Chcete-li zúžit v pomalé zkušenosti, jsme dále přiblížit doby trvání, které spadají do rozsahu mezi 95 a 99. percentilu. Tyto představují % 4, které byly pomalé interakcí s uživateli.
+Abychom se mohli zúžit na pomalé prostředí, příště přiblížíme dobu trvání, která se nachází mezi 95. a 99 percentilem. To představuje 4% interakcí uživatelů, které byly pomalé.
 
-![GET Customers/Details tři doba trvání špičky za 7 dní v rozsahu s časovým intervalem](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![ZÍSKAT zákazníky/podrobnosti tři špičky trvání v rozmezí 7 dní s časovým intervalem](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
-Můžeme teď buď podívat na ukázky, kliknutím na tlačítko ukázky nebo v trasování reprezentativní profileru po kliknutí na tlačítko trasování Profiler. V tomto příkladu jsou čtyři trasování, které byly shromážděny pro GET Customers/Details ve doba trvání okna a oblasti zájmu.
+Teď se můžeme podívat na zástupce ukázek, a to kliknutím na tlačítko ukázky nebo na základě zástupce trasování v profileru kliknutím na tlačítko trasování profileru. V tomto příkladu jsou k dispozici čtyři trasování, která jsou shromážděna pro získání zákazníků/podrobností v časovém intervalu a trvání rozsahu zájmu.
 
-Někdy nebude mít problém ve vašem kódu, ale místo toho v závislosti kód volá. Můžete přepnout na kartu závislosti v zobrazení pro posouzení výkonu prozkoumat tyto závislosti pomalé. Ve výchozím nastavení zobrazení výkonu je populární průměry, ale co vlastně chcete podívat na 95. percentil (nebo 99th, v případě, že monitorujete až po zralé služby). V následujícím příkladu jsme se zaměřili na pomalá závislost objektů BLOB v Azure, kde voláme PUT fabrikamaccount. Dobré prostředí clusteru přibližně 40 ms, pomalá volání na stejný závislost jsou třikrát pomalejší, clustering přibližně 120 ms. Nepřijímá mnohé z těchto volání to nasčítá způsobit příslušné operace výrazně zpomalit. Můžete zobrazit další podrobnosti reprezentativní vzorky a trasování profileru, stejně jako s kartou operace.
+V některých případech problém nebude ve vašem kódu, ale spíše v závislosti, kterou váš kód volá. Můžete přejít na kartu závislosti v zobrazení třídění výkonu a prozkoumat takové pomalé závislosti. Ve výchozím nastavení je zobrazení výkonu v trendech trendů, ale co opravdu chcete zobrazit, je 95. percentil (nebo 99 pro případ, že sledujete vyspělou službu). V následujícím příkladu jsme se zaměřili na pomalou závislost Azure BLOB, kde zavoláme PUT fabrikamaccount. Cluster s dobrým prostředím v rozmezí 40 MS, zatímco pomalé volání stejné závislosti je třikrát pomalejší, clustering kolem 120 MS. Nepřijímá mnoho z těchto volání k tomu, aby mohla příslušná operace výrazně zpomalit. Můžete přejít na zástupce ukázek a trasování profileru, stejně jako na kartě operace.
 
-![GET Customers/Details tři doba trvání špičky za 7 dní v rozsahu s časovým intervalem](./media/web-monitor-performance/SlowDependencies95thTrend.png)
+![ZÍSKAT zákazníky/podrobnosti tři špičky trvání v rozmezí 7 dní s časovým intervalem](./media/web-monitor-performance/SlowDependencies95thTrend.png)
 
-Možnosti pro zkoumání výkonu ukazuje sadu ukázek, které jste se rozhodli soustředit se na relevantní přehledy po straně. Přepnout na 30 dnů časový rozsah a pak vyberte celkové zobrazte analytická ve všech operacích za poslední měsíc je nejlepší způsob, jak zobrazit všechny dostupné informace.
+Prostředí pro zkoumání výkonu zobrazuje relevantní přehledy na straně ukázkové sady, na které jste se rozhodli zaměřit. Nejlepším způsobem, jak si prohlédnout všechny dostupné přehledy, je přepnout na 30 dní časového rozsahu a pak vybrat celkově a zobrazit si přehledy napříč všemi operacemi za minulý měsíc.
 
-![GET Customers/Details tři doba trvání špičky za 7 dní v rozsahu s časovým intervalem](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![ZÍSKAT zákazníky/podrobnosti tři špičky trvání v rozmezí 7 dní s časovým intervalem](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next"></a>Další kroky
-[Webové testy] [ availability] -mít webové požadavky odeslané do vaší aplikace v pravidelných intervalech z celého světa.
+[Webové testy][availability] – webové požadavky se odesílají do vaší aplikace v pravidelných intervalech z celého světa.
 
-[Zachycování a hledání trasování diagnostiky] [ diagnostic] – vložit volání trasování a probrat se výsledky pro identifikaci problémů.
+[Zachytávání a hledání diagnostických trasování][diagnostic] – vkládání trasování a prosévání prostřednictvím výsledků k určení problémů.
 
-[Sledování využití] [ usage] – zjistěte, jak ostatní používají vaše aplikace.
+[Sledování využití][usage] – Zjistěte, jak uživatelé používají vaši aplikaci.
 
-[Řešení potíží s] [ qna] – a Q & A
+[Řešení potíží][qna] – a Q & a
 
 
 

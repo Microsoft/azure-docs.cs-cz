@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15f7e830079c224e9e15dd45d14c1741376f8762
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6d28b9c31b8fbad8a565ff8cbdf717bfb3bc1309
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851698"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896476"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory
 
-Pokud chcete přiřadit uživatele nebo skupinu k podnikové aplikaci, musíte mít příslušná oprávnění ke správě podnikové aplikace a musíte být globálním správcem pro daný adresář. Pro aplikace Microsoftu (například aplikace Office 365) přiřaďte uživatele do podnikové aplikace pomocí PowerShellu.
+K přiřazení uživatele nebo skupiny k podnikové aplikaci byste měli mít přiřazenou některou z těchto rolí správce: globální správce, správce aplikace, správce cloudové aplikace nebo být přiřazeni jako vlastník podnikové aplikace.  Pro aplikace Microsoftu (například aplikace Office 365) přiřaďte uživatele do podnikové aplikace pomocí PowerShellu.
 
 > [!NOTE]
 > Licenční požadavky na funkce popsané v tomto článku najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
@@ -87,9 +87,9 @@ Je **vyžadováno přiřazení uživatele?** možnost:
 
 Další informace o tom, jak přiřadit uživatele k roli aplikace, najdete v dokumentaci pro [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) .
 
-Pokud chcete přiřadit skupinu k podnikové aplikaci, musíte ji nahradit `Get-AzureADUser`. `Get-AzureADGroup`
+Pokud chcete přiřadit skupinu k podnikové aplikaci, je potřeba nahradit `Get-AzureADUser` `Get-AzureADGroup`.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workplace Analytics](https://products.office.com/business/workplace-analytics) pomocí PowerShellu.
 
@@ -109,11 +109,11 @@ Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workpla
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
 
-1. Spusťte příkaz `$sp.AppRoles` pro zobrazení rolí dostupných pro aplikaci pracoviště Analytics. V tomto příkladu chceme přiřadit Britta Simon role analytik (s omezeným přístupem).
+1. Spusťte `$sp.AppRoles` příkazu, abyste zobrazili role dostupné pro aplikaci pracoviště Analytics. V tomto příkladu chceme přiřadit Britta Simon role analytik (s omezeným přístupem).
 
    ![Zobrazuje role dostupné uživateli pomocí role Analytics na pracovišti.](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
-1. Přiřaďte k `$app_role_name` proměnné název role.
+1. Přiřaďte název role k proměnné `$app_role_name`.
 
     ```powershell
     # Assign the values to the variables
@@ -128,7 +128,7 @@ Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workpla
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zobrazit všechny moje skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace](remove-user-or-group-access-portal.md)

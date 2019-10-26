@@ -1,5 +1,5 @@
 ---
-title: Vytvoření kontroly přístupu pro role prostředků Azure v PIM-Azure Active Directory | Microsoft Docs
+title: Vytvoření kontroly přístupu k rolím prostředků Azure v Privileged Identity Management-Azure Active Directory | Microsoft Docs
 description: Naučte se vytvářet kontrolu přístupu k rolím prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -11,26 +11,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/29/2019
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba674c143cd8d85b9764c8ade776b52dd1d3598d
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 56ccab2162a8f0ea9405d834e3f25558d8236b52
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804158"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895427"
 ---
-# <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>Vytvoření kontroly přístupu pro role prostředků Azure v PIM
+# <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Vytvoření kontroly přístupu pro role prostředků Azure v Privileged Identity Management
 
 Přístup k rolím privilegovaného prostředku Azure pro změny zaměstnanců v průběhu času. Chcete-li snížit riziko související se zastaralými přiřazeními rolí, měli byste pravidelně kontrolovat přístup. K vytváření kontrol přístupu pro privilegované role prostředků Azure můžete použít Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Můžete také nakonfigurovat opakované kontroly přístupu, ke kterým dochází automaticky.
 
 Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro privilegované role prostředků Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Otevřít recenze přístupů
 
@@ -38,17 +38,15 @@ Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro p
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. V nabídce vlevo klikněte na **prostředky Azure**.
+1. V nabídce vlevo vyberte **prostředky Azure**.
 
-1. Klikněte na prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
+1. Vyberte prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
 
-1. V části Spravovat klikněte na **recenze přístupů**.
+1. V části Spravovat vyberte **recenze přístupů**.
 
     ![Prostředky Azure – seznam kontrol přístupu zobrazuje stav všech revizí](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>Spustit kontrolu přístupu
 

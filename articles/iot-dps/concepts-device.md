@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: dc4ffc4965d6a3c05693c7566a2c51538584f372
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173388"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897589"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub Device Provisioning Service koncepty zařízení
 
-IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub, která slouží ke konfiguraci zařízení s nulovým dotykem pro zadané centrum IoT. Služba Device Provisioning umožňuje bezpečným a škálovatelným způsobem zřizovat miliony zařízení.
+IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub, která slouží ke konfiguraci zařízení s nulovým dotykem pro zadané centrum IoT. Se službou Device Provisioning můžete bezpečně a škálovatelně zřizovat miliony zařízení.
 
 Tento článek obsahuje přehled konceptů *zařízení* , které se týkají zřizování zařízení. Tento článek je nejdůležitější pro osoby zapojení do [výrobního kroku](about-iot-dps.md#manufacturing-step) , kdy je zařízení připravené k nasazení.
 
@@ -44,7 +44,7 @@ Tajné kódy zařízení je také možné ukládat v softwaru (paměti), ale jed
 
 ## <a name="registration-id"></a>ID registrace
 
-ID registrace slouží k jednoznačné identifikaci zařízení ve službě Device Provisioning. ID registrace musí být v [oboru ID](#id-scope)služby zřizování jedinečné. Každé zařízení musí mít ID registrace. ID registrace je alfanumerické a malými písmeny a může obsahovat spojovníky.
+ID registrace slouží k jednoznačné identifikaci zařízení ve službě Device Provisioning. ID zařízení musí být v [oboru ID](#id-scope)služby zřizování jedinečné. Každé zařízení musí mít ID registrace. ID registrace je alfanumerické, rozlišuje velká a malá písmena a může obsahovat speciální znaky, včetně dvojtečky, tečky, podtržítka a spojovníku.
 
 * V případě čipu TPM je ID registrace zajištěno samotným čipem TPM.
 * V případě ověřování na základě X. 509 se ID registrace poskytuje jako název subjektu certifikátu.

@@ -1,138 +1,132 @@
 ---
-title: Funkce monitorování výkonu v řešení Network Performance Monitor ve službě Azure Log Analytics | Dokumentace Microsoftu
-description: Funkce monitorování výkonu v nástroji Sledování výkonu sítě umožňuje monitorování síťového propojení mezi různými body ve vaší síti. Můžete monitorovat nasazení cloudu a místními umístěními, více datových center a firemní pobočky a nejdůležitější vícevrstvé aplikace nebo mikroslužeb.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Funkce sledování výkonu v Network Performance Monitor řešení v Azure Log Analytics | Microsoft Docs
+description: Funkce sledování výkonu v Network Performance Monitor pomáhá monitorovat síťové připojení mezi různými místy ve vaší síti. Můžete monitorovat cloudová nasazení a místní umístění, několik datových center a poboček a klíčové aplikace nebo mikroslužby s více vrstvami.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/20/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: bb99689409ddff311e556250083b99842bc59927
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/20/2018
+ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963477"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898834"
 ---
-# <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor řešení: Sledování výkonu
+# <a name="network-performance-monitor-solution-performance-monitoring"></a>Řešení Network Performance Monitor: sledování výkonu
 
-Funkce monitorování výkonu v [Network Performance Monitor](network-performance-monitor.md) vám pomůže s monitorováním připojení k síti přes různé body ve vaší síti. Můžete monitorovat nasazení cloudu a místními umístěními, více datových center a firemní pobočky a nejdůležitější vícevrstvé aplikace nebo mikroslužeb. Pomocí sledování výkonu dokáže detekovat problémy se sítí, předtím, než si vaši zákazníci začnou stěžovat. Klíčové výhody jsou, ke kterým můžete: 
+Funkce sledování výkonu v [Network Performance Monitor](network-performance-monitor.md) pomáhá monitorovat síťové připojení mezi různými místy ve vaší síti. Můžete monitorovat cloudová nasazení a místní umístění, několik datových center a poboček a klíčové aplikace nebo mikroslužby s více vrstvami. Pomocí nástroje sledování výkonu můžete detekovat problémy se sítí ještě předtím, než uživatelé podali stížnost. Mezi klíčové výhody patří: 
 
-- Monitorování ztrát a latence napříč různými podsítěmi a nastavení výstrah.
-- Monitorování všech cest (včetně redundantní cesty) v síti.
-- Řešení potíží s problémy se sítí přechodné a bodu v čase, které se těžko replikují.
-- Určení konkrétního segmentu sítě, což je důvodem sníženého výkonu.
-- Monitorování stavu sítě bez nutnosti využití SNMP.
+- Sledujte ztráty a latenci napříč různými podsítěmi a nastavte výstrahy.
+- Monitorujte všechny cesty (včetně redundantních cest) v síti.
+- Řešení přechodných a časově probíhajících síťových problémů, které je obtížné replikovat.
+- Určení konkrétního segmentu sítě, který je zodpovědný za snížený výkon.
+- Monitoruje stav sítě bez nutnosti SNMP.
 
 
 ![Sledování výkonu sítě](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>Konfigurace
-Chcete-li spustit nástroj konfigurace pro sledování výkonu sítě, otevřete [řešení Network Performance Monitor](network-performance-monitor.md)a vyberte **konfigurovat**.
+Chcete-li otevřít konfiguraci pro Network Performance Monitor, otevřete [řešení Network Performance Monitor](network-performance-monitor.md)a vyberte možnost **Konfigurovat**.
 
-![Konfigurace Network Performance Monitor](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
+![Konfigurace Network Performance Monitoru](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
 
 ### <a name="create-new-networks"></a>Vytváření nových sítí
 
-Sítě v nástroji Sledování výkonu sítě je logický kontejner pro podsítě. Pomůže vám uspořádání, sledování infrastruktury sítě podle vašich potřeb. Můžete vytvořit síť s popisným názvem a přidejte do ní podsítě podle obchodní logiku. Můžete například vytvořit síť s názvem Londýnské a přidat všechny podsítě v Londýně datovém centru. Nebo můžete vytvořit síť s názvem *ContosoFrontEnd* a přidejte k této síti všechny podsítě s názvem Contoso, které slouží front-endu vaší aplikace. Řešení automaticky vytváří výchozí síť, která obsahuje všechny podsítě prohledány ve vašem prostředí. 
+Síť v Network Performance Monitor je logický kontejner pro podsítě. Pomáhá organizovat monitorování síťové infrastruktury podle vašich potřeb. Můžete vytvořit síť s popisným názvem a přidat do ní podsítě podle vaší obchodní logiky. Můžete například vytvořit síť s názvem Londýn a přidat všechny podsítě v datovém centru Londýn. Nebo můžete vytvořit síť s názvem *ContosoFrontEnd* a přidat k této síti všechny podsítě s názvem contoso, které budou sloužit na front-end vaší aplikace. Řešení automaticky vytvoří výchozí síť, která obsahuje všechny podsítě zjištěné ve vašem prostředí. 
 
-Pokaždé, když vytvoříte síť, přidáte do ní podsíť. Poté této podsíti se odebere z výchozí síť. Při odstranění síť, všechny její podsítě se automaticky vrátí k síti výchozí. Výchozí síť funguje jako kontejner pro všechny podsítě, které nejsou součástí žádné uživatelem definované síti. Se nedají upravit ani odstranit výchozí síť. Vždy zůstane v systému. Můžete vytvořit tolik vlastní sítě podle potřeby. Ve většině případů jsou podsítě ve vaší organizaci uspořádány do více než jedna síť. Vytvořte jednu nebo více sítí, které chcete seskupit podsítě pro vaši obchodní logiku.
+Pokaždé, když vytvoříte síť, přidáte do ní podsíť. Pak se podsíť odebere z výchozí sítě. Pokud síť odstraníte, všechny její podsítě se automaticky vrátí do výchozí sítě. Výchozí síť slouží jako kontejner pro všechny podsítě, které nejsou obsaženy v žádné uživatelsky definované síti. Výchozí síť nelze upravit ani odstranit. Vždy zůstává v systému. V případě potřeby můžete vytvořit libovolný počet vlastních sítí. Ve většině případů jsou podsítě ve vaší organizaci uspořádány do více než jedné sítě. Vytvořte jednu nebo více sítí pro seskupení podsítí pro obchodní logiku.
 
-Chcete-li vytvořit novou síť:
-
-
-1. Vyberte **sítě** kartu.
-1. Vyberte **sítě přidat**a potom zadejte síťový název a popis. 
-2. Vyberte jednu nebo více podsítí a potom vyberte **přidat**. 
-3. Vyberte **Uložit** uložte konfiguraci. 
+Vytvoření nové sítě:
 
 
-### <a name="create-monitoring-rules"></a>Vytvoření pravidla monitorování 
+1. Vyberte kartu **sítě** .
+1. Vyberte **Přidat síť**a pak zadejte název a popis sítě. 
+2. Vyberte jednu nebo více podsítí a pak vyberte **Přidat**. 
+3. Kliknutím na **Uložit** uložte konfiguraci. 
 
-Sledování výkonu generuje události týkající se stavu, když prahové hodnoty výkonu síťová připojení mezi dvě podsítě, nebo mezi dvěma sítěmi dojde k porušení zabezpečení. Systém automaticky další tyto prahové hodnoty. Také můžete zadat vlastní prahové hodnoty. Systém automaticky vytváří výchozí pravidlo, které generuje událost stavu vždy, když ztráta nebo latence mezi nějaká dvojice sítě nebo podsítě propojí porušení prahové hodnoty se naučili systému. Tento proces pomáhá řešení monitorovat infrastrukturu sítě, dokud explicitně jste ještě nevytvořili žádná pravidla monitorování. Pokud je povolené výchozí pravidlo, všechny uzly odeslat do všech ostatních uzlů, které jste povolili monitorování syntetické transakce. Výchozí pravidlo je užitečný v případě malých sítích. Příkladem je scénář, kde máte malý počet serverů se systémem mikroslužby a chcete, aby se zajistilo, že všechny servery mají připojení k sobě navzájem.
+
+### <a name="create-monitoring-rules"></a>Vytvořit pravidla monitorování 
+
+Nástroj Sledování výkonu generuje události stavu, když dojde k porušení prahové hodnoty výkonu síťových připojení mezi dvěma podsítěmi nebo mezi dvěma sítěmi. Systém může tyto prahové hodnoty automaticky zjistit. Můžete také zadat vlastní prahové hodnoty. Systém automaticky vytvoří výchozí pravidlo, které generuje událost stavu vždy, když dojde ke ztrátě nebo latenci mezi libovolným párem sítě nebo podsítí v případě porušení prahové hodnoty zjištěné systémem. Tento proces pomůže řešení sledovat vaši síťovou infrastrukturu, dokud nevytvoříte žádná pravidla monitorování explicitně. Pokud je výchozí pravidlo povolené, všechny uzly odesílají syntetické transakce do všech ostatních uzlů, které jste povolili pro monitorování. Výchozí pravidlo je užitečné v malých sítích. Příkladem je situace, kdy máte malý počet serverů, na kterých běží mikroslužba, a chcete zajistit, aby všechny servery byly vzájemně připojené.
 
 >[!NOTE]
-> Doporučujeme zakázat pravidlo výchozí a vytvářet vlastní pravidla monitorování, hlavně u rozsáhlých sítí, kde používáte velký počet uzlů pro monitorování. Vlastní pravidla monitorování můžete omezit přenos generovaných řešení a usnadňují uspořádání monitorování vaší sítě.
+> Doporučujeme zakázat výchozí pravidlo a vytvořit vlastní pravidla monitorování, zejména ve velkých sítích, ve kterých používáte velký počet uzlů pro monitorování. Vlastní pravidla monitorování můžou snížit provoz vygenerovaný řešením a pomáhat vám při uspořádávání monitorování vaší sítě.
 
-Vytvoření pravidla monitorování podle obchodní logiku. Příkladem je, pokud chcete sledovat výkon síťového připojení dvou lokalit office s ústředím. Skupina všech podsítí v office web1 v síti O1. Potom proveďte seskupení všech podsítí v office site2 v síti O2. Nakonec skupině všech podsítí v ústředí v síti H. vytvořit dvě pravidla monitorování – mezi O1 a H a druhá mezi O2 a H. 
+Vytvořte pravidla monitorování podle vaší obchodní logiky. Příkladem je, že chcete monitorovat výkon síťového připojení dvou webů Office k ústředí. Seskupí všechny podsítě v sadě Office site1 v síti O1. Pak seskupte všechny podsítě v Office site2 v síti O2. Nakonec seskupte všechny podsítě v ústředí v síti H. Vytvořte dvě pravidla monitorování – jeden mezi O1 a H a druhý mezi O2 a H. 
 
-Chcete-li vytvořit vlastní pravidla monitorování:
+Postup při vytváření vlastních pravidel monitorování:
 
-1. Vyberte **přidat pravidlo** na **monitorování** kartu a zadejte název pravidla a popis.
-2. Vyberte dvojice sítě nebo podsítě. odkazy na monitorování ze seznamu. 
-3. Vyberte síť, která obsahuje podsítě, ke které chcete z rozevíracího seznamu síť. Ze seznamu odpovídající podsítě rozevíracího seznamu vyberte podsítím. Pokud chcete monitorovat všechny podsítě v síti odkaz, vyberte **všechny podsítě**. Podobným způsobem vyberte další podsítě, které chcete. Chcete-li vyloučit monitorování pro odkazy na konkrétní podsítě z vybrané možnosti, které jste provedli, vyberte **přidat výjimky**. 
-4. Zvolte mezi protokoly ICMP a TCP protokoly provádět syntetické transakce. 
-5. Pokud nechcete vytvořit stavu události pro položky jste vybrali, zrušte **povolit monitorování stavu na odkazů spadajících pod toto pravidlo**. 
-6. Vyberte sledování podmínek. Pokud chcete nastavit vlastní prahové hodnoty pro generování událost stavu, zadejte prahové hodnoty. Pokaždé, když se hodnota podmínky překračuje jeho zvolená prahová hodnota pro vybranou síť nebo pár podsítě, vygeneruje událost stavu. 
-7. Vyberte **Uložit** uložte konfiguraci. 
+1. Na kartě **monitorování** vyberte **Přidat pravidlo** a zadejte název pravidla a popis.
+2. Vyberte dvojici sítí nebo podsítí, které chcete monitorovat ze seznamů. 
+3. V rozevíracím seznamu síť vyberte síť, která obsahuje požadované podsítě. Pak vyberte podsítě z rozevíracího seznamu odpovídající podsítě. Pokud chcete monitorovat všechny podsítě v síťovém propojení, vyberte **všechny podsítě**. Podobně vyberte další podsítě, které chcete. Pokud chcete z vybraných výběrů vyloučit monitorování pro konkrétní odkazy na podsítě, vyberte **Přidat výjimku**. 
+4. Pro provádění syntetických transakcí si můžete vybrat mezi protokoly ICMP a TCP. 
+5. Pokud nechcete vytvářet události stavu pro vybrané položky, zrušte zaškrtnutí políčka **Povolit monitorování stavu u odkazů, které jsou předmětem tohoto pravidla**. 
+6. Vyberte možnost podmínky monitorování. Chcete-li nastavit vlastní prahové hodnoty pro generování událostí stavu, zadejte prahové hodnoty. Pokaždé, když hodnota podmínky překročí zvolenou prahovou hodnotu pro vybraný síťový pár nebo dvojici podsítí, dojde k vygenerování události stavu. 
+7. Kliknutím na **Uložit** uložte konfiguraci. 
 
-Po uložení pravidlo monitorování můžete integrovat tímto pravidlem se správou výstrah tak, že vyberete **vytvoření výstrahy**. Pravidlo upozornění se automaticky vytvoří pomocí vyhledávacího dotazu. Další požadované parametry jsou automaticky vyplněna. Pravidlo upozornění můžete dostávat e-mailových oznámení, kromě existující výstrahy v rámci Network Performance monitoru. Upozornění můžou také aktivovat nápravné akce pomocí runbooků nebo můžete integrovat s stávajících řešení pro správu služby pomocí webhooků. Vyberte **spravovat upozornění** úprava nastavení oznámení. 
+Po uložení pravidla monitorování můžete toto pravidlo integrovat s Alert Management tím, že vyberete **vytvořit výstrahu**. Pomocí vyhledávacího dotazu se automaticky vytvoří pravidlo upozornění. Další požadované parametry jsou automaticky vyplněny. Pomocí pravidla výstrahy můžete přijímat i e-mailové výstrahy, a to i s existujícími výstrahami v rámci Network Performance Monitor. Výstrahy také mohou aktivovat nápravné akce pomocí sad Runbook nebo je mohou integrovat s existujícími řešeními pro správu služeb pomocí webhooků. Vyberte **Spravovat upozornění** a upravte nastavení výstrah. 
 
-Teď můžete vytvořit další pravidla sledování výkonu nebo přejděte na řídicí panel řešení použít funkci.
+Teď můžete vytvořit další pravidla monitorování výkonu nebo přesunout na řídicí panel řešení a využít tak tuto možnost.
 
-### <a name="choose-the-protocol"></a>Vyberte protokol
+### <a name="choose-the-protocol"></a>Zvolit protokol
 
-Network Performance Monitor používá k výpočtu metriky výkonu sítě, jako jsou ztráty a odkaz latenci paketů syntetické transakce. Chcete-li lépe porozumět tento koncept, zvažte Network Performance Monitor agent, který je připojený k jednom konci síťového propojení. Tento agent Network Performance Monitor odešle pakety testu do druhého Network Performance Monitor agenta připojena k jiné koncové sítě. Druhý agenta odpoví odpovědí na žádost. Tento proces se opakuje několikrát. Na základě měření počtu odpovědí a čas potřebný k přijetí každé odpovědi, první Network Performance Monitor agent vyhodnocuje latence připojení a zahazování paketů. 
+Network Performance Monitor používá syntetické transakce pro výpočet metrik výkonu sítě, jako jsou ztráty paketů a latence propojení. Pokud chcete tento koncept lépe pochopit, zvažte Network Performance Monitor agenta připojeného k jednomu konci síťového propojení. Tento agent Network Performance Monitor odesílá pakety sondy druhému agentovi Network Performance Monitor připojenému k jinému konci sítě. Druhý agent odpoví pomocí paketů odpovědi. Tento proces se opakuje několikrát. Při měření počtu odpovědí a doby trvání přijetí každé odpovědi první agent Network Performance Monitor vyhodnocuje latenci propojení a pokles paketů. 
 
-Formát, velikosti a pořadí tyto pakety se určuje podle protokolu, který vyberete při vytváření pravidla monitorování. Na základě protokolu paketů, zprostředkující síťová zařízení, jako například routery a přepínače, může zpracovat tyto pakety odlišně. V důsledku toho podle vašeho výběru protokolu ovlivní přesnost výsledků. Podle vašeho výběru protokol také určuje, zda, je nutné provést jakékoli ruční kroky po nasazení řešení Network Performance Monitor. 
+Formát, velikost a posloupnost těchto paketů jsou určeny protokolem, který zvolíte při vytváření pravidel monitorování. Na základě protokolu paketů můžou zprostředkující síťová zařízení, jako jsou směrovače a přepínače, zpracovávat tyto pakety různě. V důsledku toho volba protokolu ovlivňuje přesnost výsledků. Volba protokolu také určuje, zda je nutné po nasazení řešení Network Performance Monitor provést jakékoli ruční kroky. 
 
-Network Performance Monitor vám nabízí možností volby mezi protokoly ICMP a TCP pro syntetické transakce provádění. Pokud vyberete možnost protokolu ICMP, když vytvoříte pravidlo syntetické transakce, agenti Network Performance Monitor využívat zprávy ODEZVU ICMP pro výpočet latence sítě a ztráta paketů. ODEZVU ICMP používá stejnou zprávu, která nástroj ping konvenční odesílají. Použijete-li jako protokol TCP, bude Network Performance Monitor agenty v síti odesílat TCP SYN pakety. Tento krok je následována dokončení ověření typu handshake protokolu TCP a odebrání připojení RVNÍ pakety. 
+Network Performance Monitor nabízí možnost výběru mezi protokoly ICMP a TCP pro provádění syntetických transakcí. Pokud při vytváření pravidla syntetické transakce zvolíte protokol ICMP, agenti Network Performance Monitor použijí zprávy ICMP ECHO k výpočtu latence sítě a ztráty paketů. ECHO protokol ICMP používá stejnou zprávu, kterou odesílá Nástroj pro konvenční test příkazů. Pokud jako protokol používáte protokol TCP, Network Performance Monitor agenti odesílají pakety TCP SYN přes síť. Tento krok následuje po dokončení TCP handshake a připojení se odebere pomocí paketů RST. 
 
-Než se rozhodnete protokol vezměte v úvahu následující informace: 
+Před zvolením protokolu zvažte následující informace: 
 
-* **Zjišťování několik síťových tras.** TCP je přesnější při zjištění několik tras a vyžaduje menší počet agentů v každé podsíti. Například jeden nebo dva agenty, které používají protokol TCP najdou všechny redundantní cesty mezi podsítěmi. Budete potřebovat několik agentů, které podobného výsledku dosáhnout pomocí protokolu ICMP. Pomocí protokolu ICMP, pokud máte několik tras mezi dvěma podsítěmi, budete potřebovat vyšší než u agentů 5N ve zdrojové nebo cílové podsíti.
+* **Zjišťování více síťových tras.** Protokol TCP je přesnější při zjišťování více tras a potřebuje méně agentů v každé podsíti. Například jeden nebo dva agenti, kteří používají protokol TCP, mohou zjišťovat všechny redundantní cesty mezi podsítěmi. K dosažení podobných výsledků potřebujete několik agentů používajících protokol ICMP. Pokud používáte několik tras mezi dvěma podsítěmi, budete potřebovat více než 5N agentů v buď zdrojové, nebo cílové podsíti.
 
-* **Přesnost výsledků.** Síťové směrovače a přepínače mají nižší prioritou přiřadit ODEZVU ICMP pakety ve srovnání s pakety protokolu TCP. V některých situacích Pokud síťová zařízení jsou silně zatížen, dat získaná TCP lépe odráží ztrát a latence mají aplikace. K tomu dochází, protože většina provozu aplikace toky přes protokol TCP. V takových případech ICMP poskytuje méně přesné výsledky ve srovnání s TCP. 
+* **Přesnost výsledků.** Směrovače a přepínače obvykle přiřazují k paketům s protokolem ICMP nižší prioritu v porovnání s pakety TCP. V některých situacích, kdy jsou síťová zařízení hodně načítána, data získaná protokolem TCP porážejí i ztrátu a latenci, které aplikace zaznamenaly. K tomu dochází, protože většina přenosů aplikací přes protokol TCP. V takových případech poskytuje ICMP méně přesné výsledky v porovnání s protokolem TCP. 
 
-* **Konfigurace brány firewall.** Protokolu TCP vyžaduje, aby TCP pakety odesílají na cílový port. Výchozí port je používán agenty Network Performance Monitor je 8084. Při konfiguraci agentů můžete port změnit. Ujistěte se, že síťové brány firewall nebo pravidlech skupiny (NSG) zabezpečení sítě (v Azure) umožňují přenosy na portu. Budete také muset Ujistěte se, že je místní brány firewall na počítačích, kde jsou nainstalovaní agenti nakonfigurovat pro povolení provozu na tomto portu. Konfigurace pravidel brány firewall na počítačích s Windows můžete použít skripty prostředí PowerShell, ale budete muset ručně konfigurovat bránu firewall vaší sítě. Naproti tomu ICMP nepracuje pomocí portu. Ve většině scénářů organizace je povolený provoz protokolu ICMP přes bránu firewall k tomu, abyste při použití nástroje pro diagnostiku sítě jako nástroj ping. Pokud odešlete zprávu ping z jiného jeden počítač, můžete použít protokol ICMP bez nutnosti ruční konfigurace brány firewall.
+* **Konfigurace brány firewall.** Protokol TCP vyžaduje, aby byly pakety TCP odesílány do cílového portu. Výchozí port používaný Network Performance Monitor agenty je 8084. Port můžete změnit při konfiguraci agentů. Ujistěte se, že brány firewall sítě nebo pravidla skupiny zabezpečení sítě (NSG) (v Azure) povolují provoz na portu. Musíte také zajistit, aby byla místní brána firewall na počítačích, kde jsou agenti nainstalováni, nakonfigurována tak, aby povolovala přenosy na tomto portu. Ke konfiguraci pravidel brány firewall na počítačích s Windows můžete použít skripty prostředí PowerShell, ale musíte ručně nakonfigurovat bránu firewall sítě. Naproti tomu protokol ICMP nefunguje pomocí portu. Ve většině podnikových scénářů je provoz ICMP povolený přes brány firewall, aby bylo možné používat nástroje pro diagnostiku sítě, jako je například nástroj příkazového testu. Pokud můžete provést příkaz k otestování jednoho počítače z jiného, můžete použít protokol ICMP bez nutnosti ruční konfigurace bran firewall.
 
 >[!NOTE] 
-> Některé brány firewall může blokovat ICMP, což může vést k opakování, jehož výsledkem velký počet událostí v zabezpečení informací a událostí systému pro správu. Ujistěte se, že není síťová brána firewall nebo NSG blokují protokol, kterou zvolíte. V opačném případě Network Performance Monitor nelze sledovat segmentu sítě. Doporučujeme použít TCP pro monitorování. Použijte ICMP ve scénářích, kdy nejde používat TCP, třeba při: 
+> Některé brány firewall můžou blokovat protokol ICMP, což by mohlo vést k opětovnému přenosu, což vede k velkému počtu událostí v systému pro správu informací a událostí. Ujistěte se, že protokol, který zvolíte, není blokovaný síťovou bránou firewall nebo NSG. V opačném případě Network Performance Monitor nemůže sledovat segment sítě. Pro monitorování doporučujeme používat protokol TCP. Protokol ICMP se používá v situacích, kdy nemůžete používat protokol TCP, například když: 
 >
-> - Použijete uzly na základě klienta Windows, protože nezpracovaná sockety TCP nejsou povoleny v klientech Windows.
-> - Síťová brána firewall nebo NSG blokuje TCP.
-> - Nevíte, jak přepnout na protokol.
+> - Používáte klientské uzly systému Windows, protože nezpracované sokety TCP nejsou povoleny v klientech systému Windows.
+> - Vaše síťová brána firewall nebo NSG blokují protokol TCP.
+> - Nevíte, jak protokol přepínat.
 
-Pokud jste se rozhodli použít protokol ICMP během nasazení, můžete přepnout na TCP kdykoli tak, že upravíte výchozí pravidlo monitorování.
+Pokud se rozhodnete používat protokol ICMP během nasazení, můžete kdykoli přejít na protokol TCP úpravou výchozího pravidla monitorování.
 
-1. Přejděte na **výkon sítě** > **monitorování** > **nakonfigurovat**   >  **Monitorování**. Potom vyberte **výchozí pravidlo**. 
-2. Přejděte **protokol** části a vyberte protokol, který chcete použít. 
-3. Vyberte **Uložit** použijte nastavení. 
+1. Přejít na **výkon sítě** > **monitorování** > **Konfigurace**  **monitorování**. Pak vyberte **výchozí pravidlo**. 
+2. Přejděte do části **protokol** a vyberte protokol, který chcete použít. 
+3. Vyberte **Uložit** a použijte nastavení. 
 
-I když výchozí pravidlo používá určitý protokol, můžete vytvořit nová pravidla s jiným protokolem. Můžete dokonce vytvořit kombinaci pravidla, kde některá pravidla používat protokol ICMP a ostatní použití protokolu TCP. 
+I v případě, že výchozí pravidlo používá konkrétní protokol, můžete vytvořit nová pravidla s jiným protokolem. Můžete dokonce vytvořit kombinaci pravidel, kde některá pravidla používají protokol ICMP a jiné používají protokol TCP. 
 
 ## <a name="walkthrough"></a>Názorný postup 
 
-Nyní se podívejte na jednoduché vyšetřování původní příčinu stavu události.
+Nyní se můžete podívat na jednoduché šetření hlavní příčiny události stavu.
 
-Na řídicím panelu řešení událost stavu ukazuje, že síťové propojení není v pořádku. K prošetření problému, vyberte **sítě propojuje, monitoruje** dlaždici.
+Na řídicím panelu řešení událost stavu ukazuje, že síťové propojení není v pořádku. Pokud chcete problém prozkoumat, vyberte dlaždici **monitorovaná síťová propojení** .
 
-Na stránce procházení ukazuje, že **DMZ2 DMZ1** síťového propojení není v pořádku. Vyberte **zobrazit odkazy na podsítě** pro toto síťové propojení. 
+Na stránce s podrobnostmi o přecházení se zobrazuje, že síťové propojení **DMZ2-DMZ1** není v pořádku. Vyberte **Zobrazit odkazy podsítě** pro toto síťové propojení. 
 
 
-Na stránce procházení podrobností se zobrazí všechna propojení podsítí ve **DMZ2 DMZ1** síťové propojení. Latence pro oba odkazy na podsítě, překročí prahovou hodnotu, takže síťového propojení není v pořádku. Také můžete zobrazit trendy latence z obou odkazy na podsítě. Použití v grafu a zaměřte se na požadovaný časový rozsah ovládacím prvku Výběr času. Zobrazí se čas při dosažení latence jeho ve špičce. Hledání protokolů později pro toto časové období k prošetření problému. Vyberte **zobrazit odkazy na uzly** k podrobnostem. 
+Stránka s podrobnostmi o prostupnosti zobrazuje všechna propojení podsítí v síťovém odkazu **DMZ2-DMZ1** . U odkazů na obě podsítě tato latence překročila prahovou hodnotu, což způsobí, že síťové propojení není v pořádku. Můžete také zobrazit trendy latence obou odkazů na podsítě. Pomocí ovládacího prvku Výběr času v grafu se zaměřte na požadovaný časový rozsah. Můžete zobrazit denní dobu, kdy latence dosáhla své špičky. Prozkoumejte protokoly později v tomto časovém období, abyste mohli problém prozkoumat. Vyberte **Zobrazit odkazy na uzly** a procházejte podrobněji. 
  
- ![Stránka odkazy podsítě.](media/network-performance-monitor-performance-monitor/subnetwork-links.png) 
+ ![Stránka odkazy na podsítě](media/network-performance-monitor-performance-monitor/subnetwork-links.png) 
 
-Podobně jako na předchozí stránku, na stránce procházení pro odkaz na konkrétní podsíť uvedeny odkazy na jeho základní uzel. Můžete provádět akce podobné tady, jako jste to udělali v předchozím kroku. Vyberte **zobrazení topologie** zobrazíte topologie mezi dvěma uzly. 
+Podobně jako na předchozí stránce je na stránce podrobností pro konkrétní síť uvedena jeho odkazy na uzel. Podobné akce můžete provádět jako v předchozím kroku. Vyberte **Zobrazit topologii** pro zobrazení topologie mezi dvěma uzly. 
  
- ![Stránka uzel propojení](media/network-performance-monitor-performance-monitor/node-links.png) 
+ ![Stránka odkazy na uzel](media/network-performance-monitor-performance-monitor/node-links.png) 
 
-Všechny cesty mezi dvěma vybrané uzly jsou zobrazeny na mapě topologie. Můžete vizualizovat hop-by-hop topologii tras mezi dvěma uzly na mapě topologie. Poskytuje přehledné informace o tom, kolik tras mezi dva uzly a jaká cesty trvat datových paketů. Kritické body výkonu sítě se zobrazí červeně. K vyhledání připojení k vadné síti nebo chybného síťového zařízení, podívejte se na červené prvků na mapě topologie. 
+Všechny cesty mezi dvěma vybranými uzly jsou vykresleny v mapě topologie. Topologii směrování mezi segmenty hop můžete vizualizovat mezi dvěma uzly na mapě topologie. Poskytuje jasný přehled o tom, kolik tras existuje mezi dvěma uzly a jaké cesty tyto datové pakety přebírají. Kritická místa výkonu sítě se zobrazují červeně. Pokud chcete najít vadné síťové připojení nebo vadné síťové zařízení, Prohlédněte si červené prvky na mapě topologie. 
 
- ![Řídicí panel topologie pomocí mapy topologie](media/network-performance-monitor-performance-monitor/topology-dashboard.png) 
+ ![Řídicí panel topologie s mapou topologie](media/network-performance-monitor-performance-monitor/topology-dashboard.png) 
 
-Můžete zkontrolovat ztrátu, latenci a počet segmentů směrování v každé cesty v **akce** podokně. Chcete-li zobrazit podrobnosti cesty není v pořádku pomocí posuvníku. Pomocí filtrů vybrat cesty s není v pořádku segment směrování tak, aby se vykreslí topologie pro pouze vybrané cesty. Chcete-li zvětšit nebo zmenšit mapu, použijte kolečko myši. 
+Můžete zkontrolovat ztrátu, latenci a počet segmentů směrování v každé cestě v podokně **Akce** . K zobrazení podrobností o nestavových cestách použijte posuvník. Pomocí filtrů vyberte cesty s nedobrým segmentem směrování, aby se vykreslila topologie jenom pro vybrané cesty. Chcete-li zvětšit nebo zmenšit mapu topologie, použijte kolečko myši. 
 
-Na následujícím obrázku hlavní příčinu problémových oblastí pro konkrétní části sítě zobrazí v red cesty a segmentů směrování. Vyberte uzel na mapě topologie zobrazíte vlastnosti uzlu, který obsahuje plně kvalifikovaný název domény a IP adresu. Výběr hop zobrazuje IP adresu směrování. 
+Na následujícím obrázku se v červené cestě a segmentech směrování zobrazí hlavní příčina problematických oblastí do konkrétní části sítě. Vyberte uzel na mapě topologie, abyste odhalili vlastnosti uzlu, který zahrnuje plně kvalifikovaný název domény a IP adresu. Výběrem směrování se zobrazí IP adresa směrování. 
  
-![Mapu s vybrané vlastnosti uzlu](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
+![Mapa topologie s vybranými vlastnostmi uzlu](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
-## <a name="next-steps"></a>Další postup
-[Hledání protokolů](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné sítě výkonu datových záznamů.
+## <a name="next-steps"></a>Další kroky
+V [protokolech hledání](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.

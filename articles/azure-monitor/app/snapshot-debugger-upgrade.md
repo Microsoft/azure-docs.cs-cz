@@ -1,59 +1,58 @@
 ---
-title: Azure Application Insights Snapshot debuggeru upgrade pro aplikace .NET | Dokumentace Microsoftu
-description: Jak upgradovat Snapshot Debugger na nejnovější verzi v Azure App Service, nebo prostřednictvím balíčků Nuget
-services: application-insights
-author: MarioHewardt
-manager: carmonm
-ms.service: application-insights
+title: Upgrade služby Azure Application Insights Snapshot Debugger pro aplikace .NET | Microsoft Docs
+description: Postup upgradu Snapshot Debugger na nejnovější verzi v Azure App Services nebo prostřednictvím balíčků NuGet
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/28/2019
+author: MarioHewardt
 ms.author: marioh
+ms.date: 03/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2dcf719e6c276c5641dc4c0040d8d7a808eeb3f2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e2b21b7cbb6b04da0c93e73c0cacb8a05c338bde
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706372"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899838"
 ---
-# <a name="upgrading-the-snapshot-debugger"></a>Upgradovat Snapshot Debugger
+# <a name="upgrading-the-snapshot-debugger"></a>Upgrade Snapshot Debugger
 
-Pro nejlepší možné zabezpečení pro vaše data, Microsoft pohybuje od TLS 1.0 a TLS 1.1, což se ukázalo se pak můžou útočníci určené. Pokud používáte starší verzi rozšíření webu, bude vyžadovat upgradu pokračovat v práci. Tento dokument popisuje kroky potřebné k upgradovat Snapshot debugger na nejnovější verzi. Existují dva primární cesty upgradu v závislosti na tom, pokud jste povolili ladicí program snímků pomocí rozšíření webu, nebo pokud jste použili Nuget sady SDK/přidané do vaší aplikace. Obě možnosti upgradu jsou popsány níže. 
+Abychom zajistili nejlepší možnou bezpečnost vašich dat, Microsoft se přesouvá od TLS 1,0 a TLS 1,1, které se ukázaly jako zranitelné vůči stanoveným útokům. Pokud používáte starší verzi rozšíření webu, bude vyžadovat upgrade, aby pokračoval v práci. Tento dokument popisuje kroky potřebné k upgradu ladicího programu snímků na nejnovější verzi. Existují dva primární cesty upgradu v závislosti na tom, jestli jste povolili Snapshot Debugger pomocí rozšíření webu nebo když jste do své aplikace použili sadu SDK/NuGet, kterou jste přidali. Obě cesty upgradu jsou popsány níže. 
 
 ## <a name="upgrading-the-site-extension"></a>Upgrade rozšíření webu
 
-Pokud jste povolili ladicí program snímků pomocí rozšíření webu, budete moct snadno upgradovat pomocí následujícího postupu:
+Pokud jste povolili program Snapshot debugger pomocí rozšíření lokality, můžete snadno upgradovat pomocí následujícího postupu:
 
 1. Přihlaste se k portálu Azure.
-2. Přejděte k prostředku, který má služba Application Insights a ladicí program snímků povolené. Například pro webovou aplikaci, přejděte k prostředku služby App Service:
+2. Přejděte k prostředku, který má povolenou Application Insights a Snapshot Debugger. Například pro webovou aplikaci přejděte na prostředek App Service:
 
-   ![Snímek obrazovky se jednotlivé prostředky App Service s názvem DiagService01](./media/snapshot-debugger-upgrade/app-service-resource.png)
+   ![Snímek obrazovky s jednotlivými App Service prostředky s názvem DiagService01](./media/snapshot-debugger-upgrade/app-service-resource.png)
 
-3. Jakmile jste přešli na váš prostředek, klikněte na Application Insights v kartě s přehledem:
+3. Po přechodu na prostředek klikněte v okně Přehled na Application Insights:
 
-   ![Snímek obrazovky tři tlačítka. Je vybráno tlačítko Center s názvem Application Insights](./media/snapshot-debugger-upgrade/application-insights-button.png)
+   ![Snímek obrazovky se třemi tlačítky Je vybrané prostřední tlačítko s názvem Application Insights.](./media/snapshot-debugger-upgrade/application-insights-button.png)
 
-4. Otevře se nové okno s aktuálním nastavením. Pokud budete chtít využít tuto příležitost a změnit nastavení, můžete je nechat, jak je. **Použít** ve výchozím nastavení není povolené tlačítko v dolní části okna a je nutné přepnout jednoho z nastavení aktivací tlačítka. Nemáte žádné skutečné nastavení změnit, místo toho můžete změnit nastavení a potom okamžitě ho změnit zpět. Doporučujeme, abyste při přepínání Profiler nastavení a pak vyberete **použít**.
+4. Otevře se nové okno s aktuálním nastavením. Pokud nechcete mít možnost změnit nastavení, můžete je nechat jako. Tlačítko **použít** v dolní části okna není ve výchozím nastavení povolené a vy budete muset zapnout tlačítko, abyste aktivovali jedno z nastavení. Nemusíte měnit žádná skutečná nastavení, místo toho můžete změnit nastavení a potom ho hned znovu změnit. Doporučujeme, abyste převedli nastavení profileru a pak vybrali **použít**.
 
-   ![Snímek obrazovky nástroje Konfigurace Application Insights aplikaci služby stránka se zvýrazní červeně tlačítko použít](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
+   ![Snímek obrazovky konfigurační stránky Application Insights App Service se zvýrazněným tlačítkem použít v červené](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
 
-5. Po kliknutí na **použít**, zobrazí se výzva k potvrzení změn.
+5. Po kliknutí na **použít**se zobrazí výzva k potvrzení změn.
 
     > [!NOTE]
-    > Web se restartuje jako součást procesu upgradu.
+    > Lokalita bude restartována v rámci procesu upgradu.
 
-   ![Snímek obrazovky ze služby App Service použít monitorování řádku. Textové pole zobrazí zprávu: "Můžeme se teď použít změny nastavení vaší aplikace a nainstalujte naše nástroje propojit prostředek Application Insights do webové aplikace. Tato operace restartuje Web. Opravdu chcete pokračovat?"](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
+   ![Snímek obrazovky s výzvou pro monitorování použití App Service V textovém poli se zobrazí zpráva: "v nastavení aplikace nyní použijeme změny a nainstalujeme naše nástroje, které propojí váš Application Insights prostředek s webovou aplikací. Tím se server restartuje. Chcete pokračovat? "](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
 
-6. Klikněte na tlačítko **Ano** změny se projeví. Během procesu se zobrazí oznámení, zobrazuje aplikují změny:
+6. Kliknutím na **Ano** změny aplikujte. Během procesu se zobrazí oznámení o tom, že se změny aplikují:
 
-   ![Snímek obrazovky se použít změny – aktualizuje se rozšíření zprávu, která se zobrazí v pravém horním rohu](./media/snapshot-debugger-upgrade/updating-extensions.png)
+   ![Snímek obrazovky s použitými změnami – aktualizace rozšíření, která se zobrazí v pravém horním rohu](./media/snapshot-debugger-upgrade/updating-extensions.png)
 
-Po dokončení, **"Změny se použijí"** se zobrazí oznámení.
+Po dokončení se zobrazí oznámení **"změny se použijí"** .
 
-   ![Snímek obrazovky zprávy s oznámením změny se použijí.](./media/snapshot-debugger-upgrade/changes-are-applied.png)
+   ![Snímek obrazovky s informacemi o změnách použitých ve zprávě](./media/snapshot-debugger-upgrade/changes-are-applied.png)
 
-Web se teď upgradoval a je připravený k použití.
+Lokalita je nyní upgradována a je připravena k použití.
 
-## <a name="upgrading-snapshot-debugger-using-sdknuget"></a>Upgrade pomocí sady SDK/Nuget Snapshot Debugger
+## <a name="upgrading-snapshot-debugger-using-sdknuget"></a>Upgrade Snapshot Debugger pomocí sady SDK/NuGet
 
-Pokud aplikace používá verzi `Microsoft.ApplicationInsights.SnapshotCollector` nižší než verze 1.3.1, ji budou muset upgradovat [novější verze](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pokračovat v práci.
+Pokud aplikace používá `Microsoft.ApplicationInsights.SnapshotCollector` verze nižší než 1.3.1, bude nutné ji upgradovat na [novější verzi](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) , aby pokračovala v práci.

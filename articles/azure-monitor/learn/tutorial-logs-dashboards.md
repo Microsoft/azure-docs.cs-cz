@@ -1,25 +1,19 @@
 ---
 title: Vytváření a sdílení řídicích panelů s daty Azure Log Analytics | Microsoft Docs
 description: V tomto kurzu se seznámíte s tím, jak Log Analytics řídicí panely mohou vizualizovat všechny vaše uložené dotazy v protokolu, což vám umožní zobrazit vaše prostředí jediným objektivem.
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: tutorial
-ms.date: 06/19/2019
+author: mgoedtel
 ms.author: magoedte
+ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: c859fb9b8b3509e8369559a3a9a4d45cb4e34125
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: baa510e060a3bca46110842600262345072b1a18
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414164"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894799"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Vytváření a sdílená řídicích panelů s daty Log Analytics
 
@@ -31,15 +25,15 @@ ms.locfileid: "68414164"
 > * Přidání dotazu protokolu na sdílený řídicí panel 
 > * Přizpůsobení dlaždice na sdíleném řídicím panelu
 
-K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru Log Analytics](quick-collect-azurevm.md).  
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru služby Log Analytics](quick-collect-azurevm.md).  
  
-## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Přihlásit se na Azure Portal
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-shared-dashboard"></a>Vytvoření sdíleného řídicího panelu
 Výběrem **řídicího panelu** otevřete výchozí [řídicí panel](../../azure-portal/azure-portal-dashboards.md). Řídicí panel bude vypadat jinak než v příkladu níže.
 
-![Řídicí panel Azure](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
+![Řídicí panel Azure Portal](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 Tady můžete kombinovat provozní data všech prostředků Azure, která jsou nejdůležitější pro IT, včetně telemetrie z Azure Log Analytics.  Než se podíváme na vizualizaci dotazu protokolu, nejdřív vytvoříme řídicí panel a nasdílíme ho.  Pak se můžeme zaměřit na náš ukázkový dotaz protokolu výkonu, který se vykreslí jako spojnicový graf a přidá se na řídicí panel.  
 
@@ -85,7 +79,7 @@ Když teď máte dotaz připnutý na řídicím panelu, všimněte si, že je po
 
 ![Dokončená konfigurace ukázkového řídicího panelu](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak vytvořit řídicí panel v Azure Portal a přidat do něj dotaz protokolu.  Přejděte k dalšímu kurzu, kde se seznámíte s různými odpověďmi, které můžete implementovat, na základě výsledků dotazu protokolu.  
 
 > [!div class="nextstepaction"]

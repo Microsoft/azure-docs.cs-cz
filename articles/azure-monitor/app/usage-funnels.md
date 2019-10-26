@@ -1,55 +1,50 @@
 ---
-title: Azure Application Insights trychtýře
-description: Zjistěte, jak můžete pomocí trychtýře ke zjištění, jak se zákazníky interagují s vaší aplikací.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Trychtýře Azure Application Insights
+description: Naučte se, jak můžete použít trychtýře k zjištění, jak zákazníci pracují s vaší aplikací.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/17/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 2cb7e15b701b53e74618c21bf219a355d495f985
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/17/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: d6a6e34f9688747891ac91401941a96b6e85d76a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372909"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899463"
 ---
-# <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Zjistit, jak zákazníci používají vaši aplikaci s Application Insights trychtýře
+# <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Zjistěte, jak zákazníci používají vaši aplikaci s Application Insights trychtýři.
 
-Principy prostředí pro zákazníky je naprosto pro vaši firmu. Pokud aplikace vyžaduje více fázích, je potřeba vědět, pokud postupují většina zákazníků provede celým procesem nebo jejich jsou ukončení procesu v určitém okamžiku. Jeho průběh prostřednictvím řady kroků ve webové aplikaci se označuje jako *trychtýřového grafu*. Můžete získat přehled o vašich uživatelů pomocí Azure Application Insights trychtýře a sledovat míry úspěšnosti krok za krokem. 
+Porozumění prostředí pro zákazníky má nejvyšší význam pro vaši firmu. Pokud vaše aplikace zahrnuje několik fází, je třeba zjistit, zda většina zákazníků projde celým procesem, nebo pokud se proces ukončuje v určitém bodě. Průběh v rámci řady kroků ve webové aplikaci se označuje jako *trychtýřový*. Pomocí trychtýřů Azure Application Insights můžete získat přehled o vašich uživatelích a monitorovat podrobné přepočítací převody. 
 
-## <a name="create-your-funnel"></a>Vytvoření vašeho trychtýřového grafu
-Před vytvořením svém trychtýři rozhodněte na otázku, kterou chcete odpovědět. Například můžete chtít vědět, kolik uživatelů se zobrazuje na domovské stránce Profil zákazníků zobrazení a vytváření lístku. V tomto příkladu vlastníci společnosti Fabrikam Fiber rádi procento zákazníky, kteří úspěšně vytvořit lístek zákazníka.
+## <a name="create-your-funnel"></a>Vytvoření trychtýře
+Před vytvořením trychtýře se rozhodněte na otázku, na kterou chcete odpovědět. Například můžete chtít zjistit, kolik uživatelů zobrazuje domovskou stránku, Zobrazit profil zákazníka a vytvořit lístek. V tomto příkladu si vlastníci společnosti Fabrikam Fiber Company chtějí zjistit procento zákazníků, kteří úspěšně vytvořili lístek zákazníka.
 
-Tady jsou kroky, které přebírají vytvořit jejich trychtýřového grafu.
+Tady jsou kroky, které jsou potřeba k vytvoření trychtýře.
 
-1. V nástroji Application Insights trychtýře vyberte **nový**.
-1. Z **časový rozsah** rozevírací nabídky vyberte **posledních 90 dnů**. Vyberte buď **Moje trychtýře** nebo **sdílené trychtýře**.
-1. Z **kroku 1** rozevíracího seznamu vyberte **Index**. 
-1. Z **kroku 2** seznamu vyberte **zákazníka**.
-1. Z **kroku 3** seznamu vyberte **vytvořit**.
-1. Přidání názvu trychtýřového grafu a výběr **Uložit**.
+1. V nástroji Application Insights trychtýře vyberte **Nový**.
+1. V rozevírací nabídce **časový rozsah** vyberte **posledních 90 dní**. Vyberte buď **Moje trychtýře** nebo **sdílené trychtýře**.
+1. V rozevíracím seznamu **Krok 1** vyberte možnost **index**. 
+1. V seznamu **2. krok** vyberte možnost **Zákazník**.
+1. V seznamu **3. krok** vyberte **vytvořit**.
+1. Přidejte do trychtýře název a vyberte **Uložit**.
 
-Následující snímek obrazovky ukazuje že příklad, jaká data nástroj trychtýře generuje. Vlastníci společnosti Fabrikam vidíme, že během posledních 90 dnů, 54.3 procent společností z žebříčku svým zákazníkům, kteří navštívili na domovské stránce vytvořit lístek zákazníka. Můžete také zjistit, že 2,700 svým zákazníkům přišel do indexu z domovské stránky. To může znamenat problém s aktualizací zobrazení.
+Následující snímek obrazovky ukazuje příklad druhu dat, které nástroj trychtýře vygeneruje. Vlastníci společnosti Fabrikam uvidí, že během posledních 90 dnů 54,3 procento svých zákazníků, kteří navštívili domovskou stránku, vytvořili lístek zákazníka. Můžou také vidět, že 2 700 jejich zákazníků z domovské stránky pocházejí do indexu. To může znamenat problém s aktualizací.
 
 
-![Nástroje trychtýře – snímek obrazovky s daty](media/usage-funnels/funnel1.png)
+![Snímek obrazovky s nástrojem trychtýře s daty](media/usage-funnels/funnel1.png)
 
 ### <a name="funnels-features"></a>Funkce trychtýře
-Na předchozím snímku obrazovky obsahuje pět zvýrazněné oblasti. Toto jsou funkce trychtýře. Následující seznam obsahuje další informace o každé odpovídající oblasti na snímku obrazovky:
-1. Pokud vaše aplikace vede, zobrazí se banner vzorkování. Vyberte informační zprávu se otevře podokno kontextu, s vysvětlením, jak vypnout vzorkování. 
-2. Můžete exportovat na svém trychtýři [Power BI](../../azure-monitor/app/export-power-bi.md ).
-3. Vyberte krok, abyste zobrazili další podrobnosti na pravé straně. 
-4. Historická konverze graf ukazuje míry úspěšnosti za posledních 90 dní. 
-5. Uživatelům lepší pochopení díky přístupu do nástroj Uživatelé. Pomocí filtrů v každém kroku. 
+Předchozí snímek obrazovky obsahuje pět zvýrazněných oblastí. Jedná se o funkce trychtýřů. Následující seznam vysvětluje více o všech odpovídajících oblastech na snímku obrazovky:
+1. Pokud je vaše aplikace Navzorkovaná, zobrazí se nápis vzorkování. Výběrem nápisu se otevře podokno kontextu, které vysvětluje, jak zapnout vzorkování. 
+2. Filtr můžete vyexportovat do [Power BI](../../azure-monitor/app/export-power-bi.md ).
+3. Kliknutím na krok zobrazíte další podrobnosti na pravé straně. 
+4. Graf s historickým převodem zobrazuje míry převodu za posledních 90 dní. 
+5. Přístup k nástroji pro uživatele vám umožní lépe pochopit uživatele. V každém kroku můžete použít filtry. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
   * [Přehled využití](usage-overview.md)
   * [Uživatelé, relace a události](usage-segmentation.md)
   * [Uchování](usage-retention.md)

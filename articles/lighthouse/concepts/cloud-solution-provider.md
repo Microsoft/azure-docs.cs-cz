@@ -4,15 +4,15 @@ description: Pro partnery CSP pomáhá Správa delegovaných prostředků Azure 
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/17/2019
+ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: cdb9eaf0b1f1a6e7a136432586ad186308e4e3d3
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cf9b834d79fa36bbe327a72089388b3f1a1a0c14
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550294"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901836"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Program Azure Lighthouse a Cloud Solution Provider
 
@@ -36,6 +36,11 @@ Pomocí delegované správy prostředků Azure můžete přiřadit různé skupi
 Registrace předplatného, které jste vytvořili prostřednictvím programu CSP, se řídí postupem popsaným v tématu připojení [předplatného ke správě delegovaných prostředků Azure](../how-to/onboard-customer.md). Tuto registraci může provádět libovolný uživatel, který má ve vašem tenantovi roli agenta správce.
 
 ![Správa tenanta pomocí ADMINISTRATE a správy delegovaných prostředků Azure](../media/csp-2.jpg)
+
+> [!NOTE]
+> Stránka [ **moji zákazníci** v Azure Portal](../how-to/view-manage-customers.md) nyní obsahuje oddíl **Cloud Solution Provider (Preview)** , který zobrazuje informace o fakturaci a prostředky pro zákazníky CSP, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) a jsou v rámci plánu Azure. Další informace najdete v tématu [Začínáme s fakturačním účtem Microsoft Partner Agreement](https://docs.microsoft.com/azure/billing/mpa-overview).
+>
+> Zákazníci CSP se můžou v této části vyskytnout bez ohledu na to, jestli jsou připojené ke správě delegovaných prostředků Azure. Pokud mají, pak se zobrazí také v části **zákazníci** , jak je popsáno v tématu [zobrazení a Správa zákazníků a delegovaných prostředků](../how-to/view-manage-customers.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Sestavy rizikových přihlášení na portálu Azure Active Directory | Dokumentace Microsoftu
+title: Sestava rizikových přihlášení na portálu | Microsoft Docs
 description: Informace o sestavách rizikových přihlášení na portálu Azure Active Directory
 services: active-directory
 author: cawrites
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72493400ba20ef3c838a636b66afdf26aa00ff62
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 31a002af32ac6c07e6358a3ccd0f1420d3e8c9ef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127423"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895189"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Sestavy rizikových přihlášení na portálu Azure Active Directory
 
@@ -30,7 +30,7 @@ K sestavám zabezpečení můžete přistupovat z [Azure Portal](https://portal.
 
 Existují dvě různé sestavy zabezpečení, které jsou vypočítány na základě detekce rizik:
 
-- **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
+- **Riziková přihlášení** – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
 
 - **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
 
@@ -44,7 +44,7 @@ Sestavy rizikových přihlášení jsou k dispozici uživatelům v následujíc�
 
 - Správce zabezpečení
 - Globální správce
-- Čtenář zabezpečení
+- Čtecí modul zabezpečení
 
 Další informace o přiřazování rolí pro správu uživateli v Azure Active Directory najdete v tématu [zobrazení a přiřazení rolí správce v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal).
 
@@ -98,7 +98,7 @@ Sestava rizikových přihlášení v edicích Azure AD Premium vám nabízí:
 
 Když vyberete detekci rizik, získáte podrobné zobrazení sestavy pro toto zjišťování rizik, které vám umožní:
 
-- Výběr možnosti konfigurace [zásad odstraňování rizik uživatelů](../identity-protection/howto-user-risk-policy.md)  
+- Možnost konfigurace [zásad odstraňování rizik uživatelů](../identity-protection/howto-user-risk-policy.md)  
 
 - Zkontrolujte časovou osu zjišťování pro detekci rizik.  
 
@@ -109,7 +109,7 @@ Když vyberete detekci rizik, získáte podrobné zobrazení sestavy pro toto zj
 ![Riziková přihlášení](./media/concept-risky-sign-ins/457.png)
 
 > [!IMPORTANT]
-> V případě, že se v [sestavě přihlášení](concept-sign-ins.md)může vyhledat riziko bez odpovídající položky přihlášení. Je to proto, že Identity Protection vyhodnocuje riziko pro **interaktivní** i neinteraktivní přihlášení, zatímco sestava přihlášení zobrazuje jenom interaktivní přihlášení.
+> V případě, že se v [sestavě přihlášení](concept-sign-ins.md)může vyhledat riziko bez odpovídající položky přihlášení. Je to proto, že Identity Protection vyhodnocuje riziko pro **interaktivní** i **neinteraktivní** přihlášení, zatímco sestava přihlášení zobrazuje jenom interaktivní přihlášení.
 
 Po výběru uživatele získáte podrobné zobrazení sestavy pro tohoto uživatele, které vám umožňuje:
 
@@ -128,7 +128,7 @@ Tím se otevře okno **Podrobnosti** pro toto zjišťování rizik. V okně **po
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/325.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Jak nakonfigurovat zásady rizik uživatelů](../identity-protection/howto-user-risk-policy.md)
 - [Jak nakonfigurovat zásady pro nápravu rizik](../identity-protection/howto-user-risk-policy.md)

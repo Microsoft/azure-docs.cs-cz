@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 4474a36c2b87a618a9f755d2f42e330e837568f4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5d610f14dc037d1585b7f8ec1e0dd28944847b7a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516496"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900858"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí aplikace proxy v jazyce C (Preview)
 
@@ -56,6 +56,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
   * Střední USA
   * Střed USA EUAP
+  * Severní Evropa
+  * Jihovýchodní Asie
 
 * Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/) s povoleným zatížením pro [desktopový vývoj C++ ](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
 * Nainstalujte nejnovější verzi [Git](https://git-scm.com/download/).
@@ -149,7 +151,7 @@ V této části vytvoříte ucelený Stream pro tunelování provozu SSH.
 
 ### <a name="run-the-device-local-proxy-application"></a>Spuštění aplikace místní proxy zařízení
 
-1. Upravte zdrojový soubor **iothub_client_c2d_streaming_proxy_sample. c** ve složce `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` a zadejte připojovací řetězec zařízení, IP adresu cílového zařízení nebo název hostitele a port SSH 22:
+1. Upravte zdrojový soubor **iothub_client_c2d_streaming_proxy_sample. c** ve složce `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`a zadejte připojovací řetězec zařízení, IP adresu cílového zařízení nebo název hostitele a port SSH 22:
 
    ```C
    /* Paste in your device connection string  */

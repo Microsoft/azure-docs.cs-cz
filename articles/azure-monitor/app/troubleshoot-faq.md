@@ -1,23 +1,18 @@
 ---
 title: Nejčastější dotazy k Azure Application Insights | Microsoft Docs
 description: Nejčastější dotazy týkající se Application Insights.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
-ms.service: application-insights
-ms.workload: mobile
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/16/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 09/16/2019
+ms.openlocfilehash: 55a096cd4971664e55bb2cfd17f9f8927d7c32f5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802292"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899527"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: nejčastější dotazy
 
@@ -90,7 +85,7 @@ Podrobnosti závisí na typu projektu. Pro webovou aplikaci:
 Přečtěte si [poznámky k verzi](release-notes.md) pro sadu SDK odpovídající vašemu typu aplikace.
 
 ## <a name="update"></a>Jak můžu změnit, na který prostředek Azure můj projekt odesílá data?
-V Průzkumník řešení klikněte pravým tlačítkem na `ApplicationInsights.config` a vyberte **aktualizovat Application Insights**. Data můžete odeslat do existujícího nebo nového prostředku v Azure. Průvodce aktualizací změní klíč instrumentace v souboru ApplicationInsights. config, který určuje, kde sada SDK serveru odesílá vaše data. Pokud nevyberete možnost Aktualizovat vše, změní se také klíč, ve kterém se zobrazí na webových stránkách.
+V Průzkumník řešení klikněte pravým tlačítkem myši na `ApplicationInsights.config` a vyberte možnost **aktualizovat Application Insights**. Data můžete odeslat do existujícího nebo nového prostředku v Azure. Průvodce aktualizací změní klíč instrumentace v souboru ApplicationInsights. config, který určuje, kde sada SDK serveru odesílá vaše data. Pokud nevyberete možnost Aktualizovat vše, změní se také klíč, ve kterém se zobrazí na webových stránkách.
 
 ## <a name="what-is-status-monitor"></a>Co je Monitorování stavu?
 
@@ -138,11 +133,11 @@ Další informace najdete v [ASP.NET](api-filtering-sampling.md) nebo [Java](jav
 IP adresu (IPv4 nebo IPv6) webového klienta vyhledáme pomocí [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 * Telemetrie prohlížeče: shromažďujeme IP adresu odesílatele.
-* Telemetrie serveru: modul Application Insights shromažďuje IP adresu klienta. Pokud je nastavená hodnota `X-Forwarded-For`, není shromažďována.
+* Telemetrie serveru: modul Application Insights shromažďuje IP adresu klienta. Není shromažďována, pokud je nastavena `X-Forwarded-For`.
 * Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-@No__t-0 můžete nastavit tak, aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesune server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN do `X-Originating-IP`. [Další informace](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+`ClientIpHeaderTelemetryInitializer` můžete nakonfigurovat tak, aby IP adresu převzala z jiného záhlaví. V některých systémech je například přesune server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN do `X-Originating-IP`. [Další informace](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 [Pomocí Power BI](export-power-bi.md ) můžete zobrazit telemetrii žádostí na mapě.
 
@@ -206,7 +201,7 @@ Pro všechny komponenty nebo role v jednom podnikovém systému použijte jeden 
 
 [Vzorkování](sampling.md) snižuje počet položek telemetrie (požadavky, vlastní události atd.), které jsou ve skutečnosti odesílány z vaší aplikace na portál. V části Hledat se zobrazí počet položek, které byly skutečně přijaty. V grafech metrik, které zobrazují počet událostí, se zobrazí počet původních událostí, ke kterým došlo. 
 
-Každé přenesené položce se přenáší vlastnost @no__t 0, která ukazuje, kolik původních událostí položka představuje. Pokud chcete sledovat vzorkování v provozu, můžete spustit tento dotaz v Analytics:
+Každá odeslaná položka nese `itemCount` vlastnost, která ukazuje, kolik původních událostí položka představuje. Pokud chcete sledovat vzorkování v provozu, můžete spustit tento dotaz v Analytics:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
@@ -265,7 +260,7 @@ Umožněte webovému serveru odesílat telemetrii do našich koncových bodů.
 Přesměrujte provoz z vašeho serveru do brány v intranetu přepsáním koncových bodů ve vaší konfiguraci.
 Pokud tyto vlastnosti Endpoint nejsou v konfiguraci k dispozici, budou tyto třídy používat výchozí hodnoty uvedené níže v příkladu ApplicationInsights. config. 
 
-Brána by měla směrovat provoz na základní adresu našeho koncového bodu. V konfiguraci nahraďte výchozí hodnoty hodnotou `http://<your.gateway.address>/<relative path>`.
+Brána by měla směrovat provoz na základní adresu našeho koncového bodu. V konfiguraci nahraďte výchozí hodnoty `http://<your.gateway.address>/<relative path>`.
 
 
 #### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Příklad ApplicationInsights. config s výchozími koncovými body:

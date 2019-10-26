@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API aC#'
+title: 'Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API aC#'
 titleSuffix: Azure Cognitive Services
 description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
@@ -10,24 +10,24 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: a2c121ed58882427022b716081b096c913d447f8
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
-ms.translationtype: MT
+ms.openlocfilehash: be9301bdc70279974bbdbb5d2cb874e5bccc9358
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423633"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898444"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API aC#
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API aC#
 
 V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá C# aplikace pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
-* Instalace `Newtonsoft.Json` jako balíčku NuGet v aplikaci Visual Studio:
+* Postup instalace `Newtonsoft.Json` jako balíčku NuGet v aplikaci Visual Studio:
     1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na soubor řešení.
     1. Vyberte **Spravovat balíčky NuGet pro řešení**.
-    1. `Newtonsoft.Json` Vyhledejte a nainstalujte balíček.
+    1. Vyhledejte `Newtonsoft.Json` a nainstalujte balíček.
 * Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
@@ -62,7 +62,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
     }
     ```
 
-3. Vytvořte proměnnou pro parametry hledání. Přidejte svůj kód na trhu `mkt=`po. Kód na trhu je země, ze které provedete požadavek. Také přidejte svůj režim kontroly pravopisu po `&mode=`. Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby `spell` ), nebo (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
+3. Vytvořte proměnnou pro parametry hledání. Po `mkt=`přidejte svůj kód na trhu. Kód na trhu je země, ze které provedete požadavek. Také po `&mode=`připojit režim kontroly pravopisu. Režim je buď `proof` (catch nejvíc pravopis/gramatické chyby) nebo `spell` (zachycuje většinu pravopisů, ale ne tolik gramatických chyb).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,15 +70,15 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 ## <a name="create-and-send-a-spell-check-request"></a>Vytvoření a odeslání žádosti o kontrolu pravopisu
 
-1. Vytvořte asynchronní funkci volanou `SpellCheck()` k odeslání žádosti do rozhraní API. Vytvořte a přidejte `Ocp-Apim-Subscription-Key` do záhlaví klíč předplatného. `HttpClient` Pak proveďte následující kroky v rámci této funkce.
+1. Vytvořte asynchronní funkci nazvanou `SpellCheck()` pro odeslání žádosti do rozhraní API. Vytvořte `HttpClient`a přidejte svůj klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`. Pak proveďte následující kroky v rámci této funkce.
 
     ```csharp
     async static void SpellCheck()
     {
-        HttpClient client = new HttpClient();
+        var client = new HttpClient();
         client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-        HttpResponseMessage response = new HttpResponseMessage();
+        HttpResponseMessage response = null;
         // add the rest of the code snippets here (except for main())...
     }
     ```
@@ -89,24 +89,21 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
     string uri = host + path + params_;
     ```
 
-3. Vytvoří seznam s `KeyValuePair` objektem, který obsahuje váš text, a použije ho k `FormUrlEncodedContent` vytvoření objektu. Nastavte informace záhlaví a použijte `PostAsync()` k odeslání žádosti.
+3. Vytvoří seznam s `KeyValuePair` objektem, který obsahuje váš text, a použije ho k vytvoření objektu `FormUrlEncodedContent`. Nastavte informace v hlavičce a použijte `PostAsync()` k odeslání žádosti.
 
     ```csharp
-    List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
-    values.Add(new KeyValuePair<string, string>("text", text));
+    var values = new Dictionary<string, string>();
+    values.Add("text", text);
     
-    using (FormUrlEncodedContent content = new FormUrlEncodedContent(values))
-    {
-        content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-        response = await client.PostAsync(uri, content);
-    }
+    content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+    response = await client.PostAsync(uri, new FormUrlEncodedContent(values));
     ```
 
 ## <a name="get-and-print-the-api-response"></a>Načtení a tisk odpovědi rozhraní API
 
 ### <a name="get-the-client-id-header"></a>Získat hlavičku ID klienta
 
-Pokud odpověď obsahuje `X-MSEdge-ClientID` hlavičku, získá hodnotu a vytiskne ji.
+Pokud odpověď obsahuje hlavičku `X-MSEdge-ClientID`, Získejte hodnotu a vytiskněte ji.
 
 ``` csharp
 string client_id;
@@ -182,7 +179,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](../tutorials/spellcheck.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 3876c6f80e9f18059ab4abac67732cdbf2ca24fa
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248303"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893438"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady hesel a uzamčení účtů ve spravovaných doménách
 
@@ -24,7 +24,10 @@ Pokud chcete spravovat zabezpečení uživatelů v Azure Active Directory Domain
 
 V tomto článku se dozvíte, jak vytvořit a nakonfigurovat jemně odstupňované zásady pro hesla v Azure služba AD DS pomocí Centrum správy služby Active Directory.
 
-## <a name="before-you-begin"></a>Před zahájením
+> [!NOTE]
+> Zásady hesel jsou dostupné jenom pro spravované domény Azure služba AD DS, které se vytvořily pomocí modelu nasazení Správce prostředků. Pro starší spravované domény vytvořené pomocí klasického nasazení [migrujte z modelu klasických virtuálních sítí na správce prostředků][migrate-from-classic].
+
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -34,6 +37,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
   * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
   * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+  * Instance Azure služba AD DS musí být vytvořená pomocí modelu nasazení Správce prostředků. V případě potřeby [migrujte z modelu klasických virtuálních sítí na správce prostředků][migrate-from-classic].
 * Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
   * V případě potřeby dokončete kurz a [vytvořte virtuální počítač pro správu][tutorial-create-management-vm].
 * Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
@@ -130,3 +134,4 @@ Další informace o zásadách hesel a používání Centra správy služby Acti
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[migrate-from-classic]: migrate-from-classic-vnet.md

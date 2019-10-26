@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Obnovení souborů a složek ze zálohy virtuálního počítače Azure'
+title: 'Azure Backup: obnovení souborů a složek ze zálohy virtuálního počítače Azure'
 description: Obnovení souborů z bodu obnovení virtuálního počítače Azure
 ms.reviewer: pullabhk
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1c0d470f12cf54c900fec3c453b7e5f07d0b2325
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210366"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900320"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -67,16 +67,16 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
     - download.microsoft.com
     - Adresy URL služby obnovení (geografické názvy) odkazují na oblast, ve které se nachází trezor služby Recovery Services.
-        - https:\//pod01-REC2.Geo-Name.Backup.windowsazure.com (pro Azure Public zeměpisných oblastech)
-        - https:\//pod01-REC2.Geo-Name.Backup.windowsazure.cn (pro Azure Čína 21Vianet)
-        - https:\//pod01-REC2.Geo-Name.Backup.windowsazure.us (pro státní správu USA Azure)
-        - https:\//pod01-REC2.Geo-Name.Backup.windowsazure.de (pro Německo Azure)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (pro Azure Public zeměpisných oblastech)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (pro Azure Čína 21Vianet)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (pro státní správu USA Azure)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (pro Německo Azure)
     - odchozí port 3260
 
 > [!Note]
 > 
-> * Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Pro například: Název staženého skriptu začíná \'\_\'\'identifikátorem\'VMname,jakojeContosoVM_wcus_12345678...\'.\'<br><br>
-> * Adresa URL by byla "https:\//pod01-REC2.wcus.Backup.windowsazure.com"
+> * Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Například: název staženého skriptu začíná na \'VMname\'\_\'jméno\'_\'GUID\', jako ContosoVM_wcus_12345678.....<br><br>
+> * Adresa URL by byla "https:\//pod01-rec2.wcus.backup.windowsazure.com"
 
 
    Pro Linux skript vyžaduje pro připojení k bodu obnovení komponenty "Open-iSCSI" a "lshw". Pokud komponenty v počítači, ve kterém je spuštěn skript, neexistují, skript si vyžádá oprávnění k instalaci součástí. Poskytněte souhlas pro instalaci nezbytných součástí.
@@ -89,7 +89,7 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
 #### <a name="for-windows"></a>Pro Windows
 
-Když spustíte spustitelný soubor, operační systém tyto nové svazky připojí a přiřadí písmena jednotek. K procházení těchto jednotek můžete použít Průzkumníka Windows nebo Průzkumníka souborů. Písmena jednotek přiřazená ke svazkům nemusí být stejná jako u původního virtuálního počítače. název svazku se ale zachová. Pokud je například svazek na původním virtuálním počítači "datový disk (E:`\`)", může být tento svazek připojen v místním počítači jako datový disk (libovolné písmeno ':`\`). Procházejte všemi svazky uvedenými ve výstupu skriptu, dokud nenajdete soubory/složky.  
+Když spustíte spustitelný soubor, operační systém tyto nové svazky připojí a přiřadí písmena jednotek. K procházení těchto jednotek můžete použít Průzkumníka Windows nebo Průzkumníka souborů. Písmena jednotek přiřazená ke svazkům nemusí být stejná jako u původního virtuálního počítače. název svazku se ale zachová. Pokud je například svazek na původním virtuálním počítači "datový disk (E:`\`)", může být tento svazek připojen v místním počítači jako datový disk (libovolné písmeno ":`\`). Procházejte všemi svazky uvedenými ve výstupu skriptu, dokud nenajdete soubory/složky.  
 
    ![Nabídka obnovení souborů](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -168,7 +168,7 @@ Následující příkaz zobrazí podrobnosti o všech discích RAID.
 $ mdadm –detail –scan
 ```
 
- Příslušný disk RAID se zobrazí jako`/dev/mdm/<RAID array name in the protected VM>`
+ Příslušný disk RAID se zobrazí jako `/dev/mdm/<RAID array name in the protected VM>`
 
 Použijte příkaz Mount, pokud má disk RAID fyzické svazky.
 
@@ -187,7 +187,7 @@ V následující tabulce je uvedena kompatibilita mezi operačním systémem ser
 
 |Operační systém serveru | Kompatibilní klientský operační systém  |
 | --------------- | ---- |
-| Windows Server 2016    | Windows 10 |
+| Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
 | Windows Server 2008 R2 | Windows 7   |
@@ -213,11 +213,40 @@ V systému Linux musí operační systém počítače používaného k obnovení
 
 Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
 
-|Komponenta | Version  |
+|Součást | Version  |
 | --------------- | ---- |
 | bash | 4 a vyšší |
-| python | 2.6.6 a vyšší  |
-| TLS | 1,2 by měla být podporovaná.  |
+| Python | 2.6.6 a vyšší  |
+| PROTOKOLY | 1,2 by měla být podporovaná.  |
+
+## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Obnovení souborů ze záloh virtuálních počítačů s velkými disky
+
+V této části se dozvíte, jak provést obnovení souborů ze záloh virtuálních počítačů Azure, jejichž počet disků je > 16 a že velikost každého disku je > 4 TB.
+
+Vzhledem k tomu, že proces obnovení souborů připojuje všechny disky ze zálohy, v případě velkého počtu disků (> 16) nebo velkých disků (> 4 TB) se doporučuje použít následující body akcí.
+
+- Pro obnovení souborů ponechte samostatný server pro obnovení (virtuální počítače Azure s D2v3). Můžete použít jenom obnovení souboru a pak vypnout, pokud není potřeba. Obnovení původního počítače se nedoporučuje, protože bude mít významný dopad na samotný virtuální počítač.
+- Pak skript spusťte jednou, abyste zkontrolovali, jestli je operace obnovení souborů úspěšná.
+- Pokud proces obnovení souboru přestane reagovat (disky nejsou nikdy připojeny nebo jsou připojené, ale svazky se neobjeví), proveďte následující kroky.
+  - Pokud je server pro obnovení virtuálním počítačem s Windows
+    - Ujistěte se, že je operační systém WS 2012 +.
+    - Zajistěte, aby byly na serveru pro obnovení nastaveny klíče registru, jak je navrženo, a nezapomeňte restartovat server. Číslo vedle identifikátoru GUID může být v rozsahu od 0001-0005. V následujícím příkladu je 0,0004. Procházejte cestou klíče registru do části Parameters (parametry).
+
+    ![iSCSI-reg-Key-Changes. png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+
+```registry
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+```
+
+- Pokud je server pro obnovení virtuálním počítačem se systémem Linux
+  - V souboru/etc/iSCSI/iscsid.conf změňte nastavení z
+    - Node. [0]. Timeo. noop_out_timeout = 5 to Node. [0]. Timeo. noop_out_timeout = 30
+- Po provedení následujícího skriptu teď skript spusťte znovu. U těchto změn je vysoce pravděpodobné, že se obnovení souboru zdaří.
+- Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. V případě velkých disků to bude trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat až 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
+- Po obnovení souboru se ujistěte, že se vrátíte na portál a kliknete na odpojit disky pro body obnovení, u kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -225,13 +254,13 @@ Pokud máte při obnovování souborů z virtuálních počítačů problémy, d
 
 | Chybová zpráva/scénář | Pravděpodobná příčina | Doporučená akce |
 | ------------------------ | -------------- | ------------------ |
-| Výstup exe: *Výjimka při připojování k cíli* |Skript nemůže získat přístup k bodu obnovení.    | Ověřte, zda počítač splňuje předchozí požadavky na přístup. |  
-| Výstup exe: *Cíl již byl přihlášen prostřednictvím relace iSCSI.* | Skript již byl spuštěn na stejném počítači a jednotky byly připojeny. | Svazky bodu obnovení již byly připojeny. Nemusí být připojené se stejnými písmeny jednotky původního virtuálního počítače. Procházejte všemi dostupnými svazky v Průzkumníkovi souborů pro váš soubor. |
-| Výstup exe: *Tento skript je neplatný, protože disky byly odpojeny přes portál nebo překročily limit 12 hodin. Stáhněte si nový skript z portálu.* |    Disky byly odpojeny z portálu nebo byl překročen limit 12 – hr. | Tento konkrétní exe je teď neplatný a nedá se spustit. Pokud chcete získat přístup k souborům tohoto bodu obnovení v čase, navštivte Portál pro nový exe.|
-| V počítači, kde je spuštěn spustitelný soubor: Po kliknutí na tlačítko Odpojit se nové svazky nepřipojí | Iniciátor iSCSI na počítači neodpovídá/neaktualizuje připojení k cíli a zachovává mezipaměť. |  Po kliknutí na **Odpojit**počkejte několik minut. Pokud nejsou nové svazky odpojené, procházejte všemi svazky. Procházení všech svazků vynutí, aby iniciátor aktualizoval připojení, a svazek je odpojený s chybovou zprávou, že disk není k dispozici.|
-| Výstup exe: Skript je úspěšně spuštěn, ale ve výstupu skriptu se nezobrazí "nové svazky připojené" |    Toto je přechodná chyba    | Svazky byly již připojeny. Otevřete Průzkumníka, který chcete procházet. Pokud používáte stejný počítač ke spouštění skriptů pokaždé, zvažte restartování počítače a seznam by se měl zobrazit v dalších spuštěních exe. |
-| Specifické pro Linux: Nemůžete zobrazit požadované svazky. | OPERAČNÍ systém počítače, ve kterém je spuštěný skript, nemusí rozpoznat podkladový systém souborů chráněného virtuálního počítače. | Ověřte, zda je bod obnovení konzistentní nebo konzistentní vzhledem k souborům. Pokud je soubor konzistentní, spusťte skript na jiném počítači, jehož operační systém rozpozná chráněný virtuální počítač. |
-| Specifické pro systém Windows: Nemůžete zobrazit požadované svazky. | Disky jsou možná připojené, ale svazky se nenakonfigurovaly. | Na obrazovce Správa disků Identifikujte další disky týkající se bodu obnovení. Pokud je některý z těchto disků ve stavu offline, zkuste je převést online tak, že kliknete pravým tlačítkem na disk a kliknete na online.|
+| Výstup exe: *výjimka při připojování k cíli* |Skript nemůže získat přístup k bodu obnovení.    | Ověřte, zda počítač splňuje předchozí požadavky na přístup. |  
+| Výstup exe: *cíl již byl přihlášen prostřednictvím relace iSCSI.* | Skript již byl spuštěn na stejném počítači a jednotky byly připojeny. | Svazky bodu obnovení již byly připojeny. Nemusí být připojené se stejnými písmeny jednotky původního virtuálního počítače. Procházejte všemi dostupnými svazky v Průzkumníkovi souborů pro váš soubor. |
+| Výstup z exe: *Tento skript je neplatný, protože disky byly odpojeny přes portál nebo překročily limit 12 hodin. Stáhněte si nový skript z portálu.* |    Disky byly odpojeny z portálu nebo byl překročen limit 12 – hr. | Tento konkrétní exe je teď neplatný a nedá se spustit. Pokud chcete získat přístup k souborům tohoto bodu obnovení v čase, navštivte Portál pro nový exe.|
+| V počítači, kde je spuštěn spustitelný soubor: po kliknutí na tlačítko Odpojit nejsou nové svazky odpojeny. | Iniciátor iSCSI na počítači neodpovídá/neaktualizuje připojení k cíli a zachovává mezipaměť. |  Po kliknutí na **Odpojit**počkejte několik minut. Pokud nejsou nové svazky odpojené, procházejte všemi svazky. Procházení všech svazků vynutí, aby iniciátor aktualizoval připojení, a svazek je odpojený s chybovou zprávou, že disk není k dispozici.|
+| Výstup exe: skript se úspěšně spustí, ale ve výstupu skriptu se nezobrazí nové připojené svazky. |    Toto je přechodná chyba    | Svazky byly již připojeny. Otevřete Průzkumníka, který chcete procházet. Pokud používáte stejný počítač ke spouštění skriptů pokaždé, zvažte restartování počítače a seznam by se měl zobrazit v dalších spuštěních exe. |
+| Specifické pro Linux: nemůžete zobrazit požadované svazky | OPERAČNÍ systém počítače, ve kterém je spuštěný skript, nemusí rozpoznat podkladový systém souborů chráněného virtuálního počítače. | Ověřte, zda je bod obnovení konzistentní nebo konzistentní vzhledem k souborům. Pokud je soubor konzistentní, spusťte skript na jiném počítači, jehož operační systém rozpozná chráněný virtuální počítač. |
+| Specifické pro systém Windows: nemůžete zobrazit požadované svazky | Disky jsou možná připojené, ale svazky se nenakonfigurovaly. | Na obrazovce Správa disků Identifikujte další disky týkající se bodu obnovení. Pokud je některý z těchto disků ve stavu offline, zkuste je převést online tak, že kliknete pravým tlačítkem na disk a kliknete na online.|
 
 ## <a name="security"></a>Zabezpečení
 

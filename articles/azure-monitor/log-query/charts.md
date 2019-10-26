@@ -1,36 +1,30 @@
 ---
-title: Vytváření grafů a diagramů z dotazů na protokoly Azure Monitor | Dokumentace Microsoftu
-description: Popisuje různé vizualizace ve službě Azure Monitor k zobrazení dat protokolů různými způsoby.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Vytváření grafů a diagramů z Azure Monitorch dotazů protokolu | Microsoft Docs
+description: Popisuje různé vizualizace v Azure Monitor k zobrazení dat protokolu různými způsoby.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 07d0866bd697587da170a00e8077a57035989d32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: 34975a1752467c61ea5b329210473eee266c98d1
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594019"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900406"
 ---
-# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Vytváření grafů a diagramů z dotazů na protokoly Azure monitoru
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Vytváření grafů a diagramů z Azure Monitorch dotazů protokolu
 
 > [!NOTE]
-> By se měla Dokončit [Advanced agregace v dotazů na protokoly Azure monitoru](advanced-aggregations.md) před dokončením v této lekci.
+> Před dokončením této lekce byste měli dokončit [Pokročilé agregace v Azure Monitorch dotazech protokolu](advanced-aggregations.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Tento článek popisuje různé vizualizace ve službě Azure Monitor k zobrazení dat protokolů různými způsoby.
+Tento článek popisuje různé vizualizace v Azure Monitor k zobrazení dat protokolu různými způsoby.
 
-## <a name="charting-the-results"></a>Vytvoření grafu výsledků
-Nejdřív si prostudujte kolika počítačích během poslední hodiny na operační systém, jsou:
+## <a name="charting-the-results"></a>Segrafování výsledků
+Začněte tím, že zkontrolujete, kolik počítačů v jednom operačním systému je během poslední hodiny:
 
 ```Kusto
 Heartbeat
@@ -38,17 +32,17 @@ Heartbeat
 | summarize count(Computer) by OSType  
 ```
 
-Ve výchozím nastavení zobrazí výsledky jako tabulka:
+Ve výchozím nastavení se výsledky zobrazují jako tabulka:
 
-![Table](media/charts/table-display.png)
+![Tabulka](media/charts/table-display.png)
 
-Chcete-li získat lepší zobrazení, vyberte **grafu**a zvolte **výsečový** možnost vizualizovat výsledky:
+Chcete-li získat lepší zobrazení, vyberte **graf**a zvolte možnost **výseč** k vizualizaci výsledků:
 
 ![Výsečový graf](media/charts/charts-and-diagrams-pie.png)
 
 
 ## <a name="timecharts"></a>Timecharts
-Zobrazit průměr, 50. a 95. percentily čas procesoru v přihrádky 1 hodina. Vygeneruje více řad dotaz a pak vyberete, které řady znázornit v grafu čas:
+Zobrazí průměrné, 50 a 95. percentily času procesoru v přihrádkách po 1 hodinách. Dotaz vygeneruje více řad a Vy pak můžete vybrat, které řady se mají zobrazit v časovém grafu:
 
 ```Kusto
 Perf
@@ -57,13 +51,13 @@ Perf
 | summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
 ```
 
-Vyberte **řádku** graf možnosti zobrazení:
+Vyberte možnost zobrazení **spojnicového** grafu:
 
 ![Spojnicový graf](media/charts/charts-and-diagrams-multiSeries.png)
 
-### <a name="reference-line"></a>Referenční čáry
+### <a name="reference-line"></a>Referenční čára
 
-Referenční čáry můžete snáze identifikovat metriku překročení konkrétních mezních hodnot. Přidání řádku do grafu, rozšiřte datovou sadu s konstantní sloupce:
+Referenční čára vám umožní snadno identifikovat, jestli metrika překročila konkrétní prahovou hodnotu. Chcete-li přidat čáru do grafu, zvětšete datovou sadu pomocí konstantního sloupce:
 
 ```Kusto
 Perf
@@ -73,10 +67,10 @@ Perf
 | extend Threshold = 20
 ```
 
-![Referenční čáry](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
+![Referenční čára](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>Více dimenzí
-Více výrazů v `by` klauzuli `summarize` vytvořit více řádků ve výsledcích, jeden pro každou kombinaci hodnot.
+Více výrazů v klauzuli `by` `summarize` ve výsledcích vytvoří více řádků, jednu pro každou kombinaci hodnot.
 
 ```Kusto
 SecurityEvent
@@ -84,21 +78,21 @@ SecurityEvent
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)
 ```
 
-Při zobrazení výsledků jako graf, použije první sloupec z `by` klauzuli. Následující příklad ukazuje použití skládaného sloupcového grafu _EventID._ Dimenze musí být `string` typ, tak v tomto příkladu _EventID_ byl přetypován na řetězec. 
+Při zobrazení výsledků jako grafu použije první sloupec z klauzule `by`. Následující příklad znázorňuje skládaný sloupcový graf s použitím _ID události._ Dimenze musí být typu `string`, takže v tomto příkladu je _ID události_ přetypování do řetězce. 
 
-![Identifikátor EventID pruhový graf](media/charts/charts-and-diagrams-multiDimension1.png)
+![ID události pruhového grafu](media/charts/charts-and-diagrams-multiDimension1.png)
 
-Můžete přepínat mezi tak, že vyberete rozevírací seznam s názvem sloupce. 
+Můžete přepínat mezi výběrem rozevírací nabídky s názvem sloupce. 
 
-![AccountType pruhový graf](media/charts/charts-and-diagrams-multiDimension2.png)
+![AccountType pruhového grafu](media/charts/charts-and-diagrams-multiDimension2.png)
 
-## <a name="next-steps"></a>Další postup
-Zobrazit další lekce pro použití [Kusto dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
+## <a name="next-steps"></a>Další kroky
+Podívejte se na další lekce týkající se používání [dotazovacího jazyka Kusto](/azure/kusto/query/) s využitím dat protokolu Azure monitor:
 
 - [Operace s řetězci](string-operations.md)
-- [Datum a čas operace](datetime-operations.md)
+- [Operace s datem a časem](datetime-operations.md)
 - [Agregační funkce](aggregations.md)
 - [Pokročilé agregace](advanced-aggregations.md)
-- [JSON a datových struktur](json-data-structures.md)
-- [Zápis rozšířeného dotazu](advanced-query-writing.md)
-- [Spojení](joins.md)
+- [JSON a datové struktury](json-data-structures.md)
+- [Pokročilý zápis dotazů](advanced-query-writing.md)
+- [Starat](joins.md)

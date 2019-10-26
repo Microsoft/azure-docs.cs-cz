@@ -1,18 +1,18 @@
 ---
 title: Struktura protokolů Azure Monitor | Microsoft Docs
 description: Vyžadujete, aby dotaz protokolu načetl data protokolu z Azure Monitor.  Tento článek popisuje, jak se v Azure Monitor používají nové dotazy protokolu, a poskytuje koncepty, které musíte před vytvořením porozumět.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: b1d22729724c2d1a8e3705e017762dcef588245e
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/22/2019
+ms.openlocfilehash: 091d7f598a9841ae45b4248ad8a07a355203445a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034873"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894255"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktura protokolů Azure Monitor
 Možnost rychle získat přehled o datech pomocí [dotazu protokolu](log-query-overview.md) je výkonná funkce Azure monitor. Chcete-li vytvořit efektivní a užitečné dotazy, měli byste pochopit některé základní koncepty, jako je například umístění dat, která potřebujete, a způsob jejího strukturování. Tento článek poskytuje základní koncepty, které potřebujete, abyste mohli začít.
@@ -53,18 +53,18 @@ Když vytvoříte aplikaci v Application Insights, automaticky se vytvoří odpo
 
 Na rozdíl od Log Analytics pracovního prostoru má Application Insights aplikace pevnou sadu tabulek. Nelze nakonfigurovat jiné zdroje dat pro zápis do aplikace, takže nelze vytvořit žádné další tabulky. 
 
-| Table | Popis | 
+| Tabulka | Popis | 
 |:---|:---|
 | availabilityResults | Souhrnná data z testů dostupnosti. |
 | browserTimings      | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat. |
 | customEvents        | Vlastní události vytvořené vaší aplikací |
 | customMetrics       | Vlastní metriky vytvořené vaší aplikací |
-| závislosti        | Volání z aplikace do externích součástí. |
-| výjimky          | Výjimky vyvolané modulem runtime aplikace |
-| pageViews           | Data o jednotlivých zobrazeních webu s informacemi v prohlížeči |
+| Závislosti        | Volání z aplikace do externích součástí. |
+| Výjimek          | Výjimky vyvolané modulem runtime aplikace |
+| PageViews           | Data o jednotlivých zobrazeních webu s informacemi v prohlížeči |
 | Čítače výkonu | Měření výkonu z výpočetních prostředků, které podporují aplikaci. |
-| požadavků            | Podrobnosti o jednotlivých žádostech o aplikaci  |
-| trasování              | Výsledky z distribuovaného trasování. |
+| požádal            | Podrobnosti o jednotlivých žádostech o aplikaci  |
+| Trasování              | Výsledky z distribuovaného trasování. |
 
 Schéma pro každou tabulku můžete zobrazit na kartě **schématu** v Log Analytics pro aplikaci.
 
@@ -75,8 +75,8 @@ Zatímco každá tabulka v protokolech Azure Monitor má vlastní schéma, exist
 
 | Pracovní prostor Log Analytics | Application Insights aplikace | Popis |
 |:---|:---|:---|
-| TimeGenerated | timestamp  | Datum a čas vytvoření záznamu |
-| type          | itemType   | Název tabulky, ze které byl záznam načten. |
+| TimeGenerated | časové razítko  | Datum a čas vytvoření záznamu |
+| Typ          | ItemType   | Název tabulky, ze které byl záznam načten. |
 | _ResourceId   |            | Jedinečný identifikátor prostředku, ke kterému je záznam přidružen. |
 | _IsBillable   |            | Určuje, zda jsou příjemovaná data fakturovatelná. |
 | _BilledSize   |            | Určuje velikost (v bajtech) dat, která se budou fakturovat. |

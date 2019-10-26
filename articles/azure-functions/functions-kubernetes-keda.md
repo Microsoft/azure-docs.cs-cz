@@ -10,16 +10,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: jehollan
-ms.openlocfilehash: b581d7c9b5876813e36ebbf41be713b44dd97735
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8e07032f84ead4bb003176af84cb4c731819ffa4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096093"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900069"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions v Kubernetes s KEDA
 
-Azure Functions runtime poskytuje flexibilitu při hostování tam, kde a jak chcete.  [Keda](https://github.com/kedacore/kore) (Kubernetes – automatické škálování založené na událostech) plynule s Azure Functions modulem runtime a nástroji pro zajištění škálování na základě událostí v Kubernetes.
+Azure Functions runtime poskytuje flexibilitu při hostování tam, kde a jak chcete.  [Keda](https://github.com/kedacore/kore) (automatické škálování založené na událostech založených na události Kubernetes) bez problémů s Azure Functions modulem runtime a nástroji pro zajištění škálování na základě událostí v Kubernetes.
 
 ## <a name="how-kubernetes-based-functions-work"></a>Jak fungují funkce založené na Kubernetes
 
@@ -43,7 +43,7 @@ func kubernetes install --namespace keda
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Nasazení aplikace Function App do Kubernetes
 
-Do clusteru Kubernetes se systémem KEDA můžete nasadit jakoukoli aplikaci Function App.  Vzhledem k tomu, že se vaše funkce spouštějí v kontejneru Docker, `Dockerfile`projekt potřebuje.  Pokud ještě žádný nemáte, můžete přidat souboru Dockerfile spuštěním následujícího příkazu v kořenu projektu Functions:
+Do clusteru Kubernetes se systémem KEDA můžete nasadit jakoukoli aplikaci Function App.  Vzhledem k tomu, že se vaše funkce spouštějí v kontejneru Docker, projekt potřebuje `Dockerfile`.  Pokud ještě žádný nemáte, můžete přidat souboru Dockerfile spuštěním následujícího příkazu v kořenu projektu Functions:
 
 ```cli
 func init --docker-only
@@ -51,17 +51,24 @@ func init --docker-only
 
 Pokud chcete vytvořit image a nasadit své funkce do Kubernetes, spusťte následující příkaz:
 
+> [!NOTE]
+> Základní nástroje budou k sestavení a publikování image využívat rozhraní Docker CLI. Ujistěte se, že je Docker nainstalovaný už a připojený k vašemu účtu pomocí `docker login`.
+
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
 
 > Nahraďte `<name-of-function-deployment>` názvem vaší aplikace Function App.
 
-Tím se vytvoří prostředek `Deployment` Kubernetes `ScaledObject` , prostředek a `Secrets` `local.settings.json` , což zahrnuje proměnné prostředí importované ze souboru.
+Tím se vytvoří prostředek Kubernetes `Deployment`, prostředek `ScaledObject` a `Secrets`, což zahrnuje proměnné prostředí importované ze souboru `local.settings.json`.
+
+### <a name="deploying-a-function-app-from-a-private-registry"></a>Nasazení aplikace Function App z privátního registru
+
+Výše uvedený tok funguje i u privátních registrů.  Pokud nasazujete image kontejneru z privátního registru, přidejte příznak `--pull-secret`, který odkazuje na tajný kód Kubernetes, který při spuštění `func kubernetes deploy`používá přihlašovací údaje soukromého registru.
 
 ## <a name="removing-a-function-app-from-kubernetes"></a>Odebrání aplikace Function App z Kubernetes
 
-Po nasazení můžete odebrat funkci odebráním přidruženého `Deployment`, `ScaledObject` `Secrets` vytvořeného.
+Po nasazení můžete odebrat funkci odebráním přidruženého `Deployment`, `ScaledObject`, vytvořeného `Secrets`.
 
 ```cli
 kubectl delete deploy <name-of-function-deployment>
@@ -87,7 +94,7 @@ KEDA je aktuálně ve verzi beta s podporou následujících aktivačních udál
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
 
 ## <a name="next-steps"></a>Další kroky
-Další informace naleznete v následujících materiálech:
+Další informace najdete v následujících materiálech:
 
 * [Vytvoření funkce s použitím vlastní image](functions-create-function-linux-custom-image.md)
 * [Místní psaní kódu a testování funkcí Azure Functions](functions-develop-local.md)

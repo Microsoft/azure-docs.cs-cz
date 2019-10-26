@@ -1,23 +1,18 @@
 ---
 title: Monitorování webu SharePointu pomocí Application Insights
 description: Zahájení monitorování nové aplikace s novým klíčem instrumentace
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2bfe5910-d673-4cf6-a5c1-4c115eae1be0
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/11/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 027d5485b29deb434953470023d8a290cc0af58a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/11/2018
+ms.openlocfilehash: 271ef590d7cdbefc824a7f80aef110b0c08b6d6d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60784551"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899871"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorování webu SharePointu pomocí Application Insights
 Služba Azure Application Insights monitoruje dostupnost, výkon a využití vaší aplikace. Zde se dozvíte, jak připravit prostředí pro web SharePointu.
@@ -50,7 +45,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 </script>
 ```
 
-Vložte skript těsně před značku &lt;/head&gt; každé stránky, kterou chcete sledovat. Pokud má daný web stránku předlohy, můžete se skript vložit. Například v projektu ASP.NET MVC ho vložíte do souboru View\Shared\_Layout.cshtml.
+Vložte skript těsně před &lt;značku&gt;/Head každé stránky, kterou chcete sledovat. Pokud má váš web stránku předlohy, můžete skript umístit sem. Například v projektu ASP.NET MVC ho vložíte do souboru View\Shared\_Layout.cshtml.
 
 Skript obsahuje klíč instrumentace, který nasměruje telemetrii pro daný prostředek Application Insights.
 

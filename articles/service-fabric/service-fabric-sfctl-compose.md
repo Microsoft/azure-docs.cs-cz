@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI – sfctl psaní | Microsoft Docs
 description: Popisuje příkazy Service Fabric CLI sfctl pro vytváření.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: dab844246d99b0ab80e1e86219c2064c79e74e4f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 561616fca7401f5251c4fbac67173260a665b602
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035117"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901657"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Vytvářejte, odstraňujte a spravujte aplikace Docker Compose.
@@ -27,13 +28,13 @@ Vytvářejte, odstraňujte a spravujte aplikace Docker Compose.
 
 |Příkaz|Popis|
 | --- | --- |
-| create | Vytvoří Service Fabric vytváření nasazení. |
+| vytvoření | Vytvoří Service Fabric vytváření nasazení. |
 | list | Získá seznam nasazení vytváření vytvořená v clusteru Service Fabric. |
-| odebrat | Odstraní existující Service Fabric vytvoření nasazení z clusteru. |
+| Odebrány | Odstraní existující Service Fabric vytvoření nasazení z clusteru. |
 | status | Načte informace o nasazení Service Fabricho vytváření. |
-| upgrade | Spustí upgrade nasazení vytváření v clusteru Service Fabric. |
+| Přejít | Spustí upgrade nasazení vytváření v clusteru Service Fabric. |
 | upgrade – vrácení zpět | Spustí vrácení upgradu nasazení do sestavení v clusteru Service Fabric. |
-| upgrade-status | Získá podrobnosti o posledním upgradu provedeném na tomto Service Fabric nasazení. |
+| upgrade – stav | Získá podrobnosti o posledním upgradu provedeném na tomto Service Fabric nasazení. |
 
 ## <a name="sfctl-compose-create"></a>Vytvoření sfctl
 Vytvoří Service Fabric vytváření nasazení.
@@ -45,8 +46,8 @@ Vytvoří Service Fabric vytváření nasazení.
 | --Deployment-Name [povinné] | Název nasazení. |
 | --File-Path [povinné] | Cesta k cílovému souboru Docker Compose. |
 | --šifrované – Pass | Namísto zobrazení výzvy pro heslo registru kontejneru použijte již zašifrovanou frázi Pass. |
-| --has-pass | Zobrazí výzvu k zadání hesla k registru kontejneru. |
-| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --má-Pass | Zobrazí výzvu k zadání hesla k registru kontejneru. |
+| --Timeout-t | Výchozí\: 60. |
 | --user | Uživatelské jméno pro připojení k registru kontejnerů. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -55,8 +56,8 @@ Vytvoří Service Fabric vytváření nasazení.
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-compose-list"></a>sfctl vytvořit seznam
@@ -70,7 +71,7 @@ Získá stav nasazení vytváření, která byla vytvořena nebo vytvořena v pr
 | --- | --- |
 | --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
 | --Max – výsledky | Maximální počet výsledků, které mají být vráceny v rámci stránkovaných dotazů. Tento parametr definuje horní mez počtu vrácených výsledků. Vrácené výsledky mohou být menší než zadané maximální výsledky, pokud se nevejdou do zprávy podle maximální velikosti omezení velikosti zprávy definované v konfiguraci. Pokud je tento parametr nula nebo není zadán, dotaz stránkovaného obsahu obsahuje tolik výsledků, kolik jich bylo možné do návratové zprávy. |
-| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -78,8 +79,8 @@ Získá stav nasazení vytváření, která byla vytvořena nebo vytvořena v pr
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-compose-remove"></a>sfctl vytváření a odstraňování
@@ -92,7 +93,7 @@ Odstraní existující nasazení Service Fabricho vytváření.
 |Argument|Popis|
 | --- | --- |
 | --Deployment-Name [povinné] | Identita nasazení. |
-| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -100,8 +101,8 @@ Odstraní existující nasazení Service Fabricho vytváření.
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-compose-status"></a>sfctl vytváření stavu
@@ -114,7 +115,7 @@ Vrátí stav nasazení vytváření, který byl vytvořen nebo vytvořen v proce
 |Argument|Popis|
 | --- | --- |
 | --Deployment-Name [povinné] | Identita nasazení. |
-| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -122,8 +123,8 @@ Vrátí stav nasazení vytváření, který byl vytvořen nebo vytvořen v proce
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-compose-upgrade"></a>sfctl vytváření upgradu
@@ -137,24 +138,24 @@ Ověří zadané parametry upgradu a spustí upgrade nasazení, pokud jsou param
 | --- | --- |
 | --Deployment-Name [povinné] | Název nasazení. |
 | --File-Path [povinné] | Cesta k cílovému souboru sestavení Docker. |
-| --default-svc-type-health-map | Slovník kódovaný ve formátu JSON, který popisuje zásady stavu používané k vyhodnocení stavu služeb. |
+| --Default-svc-Type-map-Health | Slovník kódovaný ve formátu JSON, který popisuje zásady stavu používané k vyhodnocení stavu služeb. |
 | --šifrované – Pass | Namísto zobrazení výzvy pro heslo registru kontejneru použijte již zašifrovanou frázi Pass. |
-| --Chyba – akce | Možné hodnoty zahrnují\: "neplatné", "Rollback", "Manual". |
+| --Chyba – akce | Možné hodnoty zahrnují\: ' invalid ', ' Rollback ', ' Manual '. |
 | --Force-restart | Procesy jsou během upgradu vynuceně restartovány i v případě, že se verze kódu nezměnila. <br><br> Upgrade pouze změní konfiguraci nebo data. |
-| --has-pass | Zobrazí výzvu k zadání hesla k registru kontejneru. |
-| --health-check-retry | Doba mezi pokusy o provedení kontrol stavu, pokud aplikace nebo cluster není v pořádku. |
+| --má-Pass | Zobrazí výzvu k zadání hesla k registru kontejneru. |
+| --Health-Check-opakování | Doba mezi pokusy o provedení kontrol stavu, pokud aplikace nebo cluster není v pořádku. |
 | --Health-Check-stabilní | Doba, po kterou musí aplikace nebo cluster zůstat v pořádku, než bude upgrade pokračovat na další upgradovací doménu. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
-| --health-check-wait | Doba, po kterou se má po dokončení upgradu domény počkat, než se spustí proces kontroly stavu. |
-| --replica-set-check | Maximální doba, po kterou se má blokovat zpracování upgradovací domény a zabránit ztrátě dostupnosti, pokud dojde k neočekávaným problémům. <br><br> Po vypršení časového limitu bude zpracování upgradovací domény pokračovat bez ohledu na problémy se ztrátou dostupnosti. Časový limit se resetuje na začátku každé upgradovací domény. Platné hodnoty jsou mezi 0 a 42949672925 včetně. |
-| --svc-type-health-map | Seznam objektů kódovaných pomocí JSON, které popisují zásady stavu používané k vyhodnocení stavu různých typů služeb. |
-| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --Health-Check-Wait | Doba, po kterou se má po dokončení upgradu domény počkat, než se spustí proces kontroly stavu. |
+| --replice-set-check | Maximální doba, po kterou se má blokovat zpracování upgradovací domény a zabránit ztrátě dostupnosti, pokud dojde k neočekávaným problémům. <br><br> Po vypršení časového limitu bude zpracování upgradovací domény pokračovat bez ohledu na problémy se ztrátou dostupnosti. Časový limit se resetuje na začátku každé upgradovací domény. Platné hodnoty jsou mezi 0 a 42949672925 včetně. |
+| --SVC-typ-mapa-stav | Seznam objektů kódovaných pomocí JSON, které popisují zásady stavu používané k vyhodnocení stavu různých typů služeb. |
+| --Timeout-t | Výchozí\: 60. |
 | --není v pořádku – aplikace | Maximální povolené procento nezdravých aplikací před Nahlášením chyby. <br><br> Například pokud chcete, aby 10% aplikací bylo ve špatném stavu, bude tato hodnota 10. Procento představuje maximální povolený procentuální podíl aplikací, které mohou být chybné, než se cluster bude považovat za chybu. Pokud je dodrženo procento, ale existuje aspoň jedna poškozená aplikace, stav se vyhodnotí jako varování. To se počítá vydělením počtu nezdravých aplikací nad celkovým počtem instancí aplikace v clusteru. |
-| --upgrade-domain-timeout | Doba, po kterou musí být každá upgradovací doména dokončena před provedením FailureAction. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
-| --upgrade-druh | Výchozí\: vracení. |
-| --upgrade-režim | Možné hodnoty zahrnují\: "Invalid", "UnmonitoredAuto", "UnmonitoredManual", "Monitored".  Výchozí\: UnmonitoredAuto. |
+| --upgrade-Domain – vypršel časový limit. | Doba, po kterou musí být každá upgradovací doména dokončena před provedením FailureAction. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
+| --upgrade-druh | Výchozí\:. |
+| --upgrade-režim | Možné hodnoty zahrnují\: ' invalid ', ' UnmonitoredAuto ', ' UnmonitoredManual ', ' Monitored '.  Výchozí\: UnmonitoredAuto. |
 | --upgrade – časový limit | Doba, po kterou musí být celkový upgrade dokončen před provedením FailureAction. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
 | --user | Uživatelské jméno pro připojení k registru kontejnerů. |
-| --warning-as-error | Označuje, zda jsou upozornění zpracována se stejnou závažností jako chyby. |
+| --Warning-as-Error | Označuje, zda jsou upozornění zpracována se stejnou závažností jako chyby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -162,8 +163,8 @@ Ověří zadané parametry upgradu a spustí upgrade nasazení, pokud jsou param
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-compose-upgrade-rollback"></a>upgrade sfctlování – vrácení zpět
@@ -176,7 +177,7 @@ Vrátit zpět upgrade nasazení Service fabricu
 |Argument|Popis|
 | --- | --- |
 | --Deployment-Name [povinné] | Identita nasazení. |
-| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -184,8 +185,8 @@ Vrátit zpět upgrade nasazení Service fabricu
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-compose-upgrade-status"></a>upgrade sfctl pro psaní – stav
@@ -198,7 +199,7 @@ Vrátí informace o stavu upgradu nasazení vytváření společně s podrobnost
 |Argument|Popis|
 | --- | --- |
 | --Deployment-Name [povinné] | Identita nasazení. |
-| --Timeout-t | Časový limit serveru v sekundách.  Výchozí\: hodnota je 60. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -206,11 +207,11 @@ Vrátí informace o stavu upgradu nasazení vytváření společně s podrobnost
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
 - Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

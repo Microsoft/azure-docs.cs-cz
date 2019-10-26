@@ -1,21 +1,19 @@
 ---
 title: Porozumění zákazníkům v Azure Application Insights | Microsoft Docs
 description: Kurz použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci.
-keywords: ''
-services: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 90357c13003820a25ee52aab5cda83029c9d85ff
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 08da1ad5d934116db8f110d7b75a8e0a60ffc84a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601554"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894671"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
 
@@ -31,19 +29,19 @@ Azure Application Insights shromažďuje informace o využití a pomáhá pochop
 > * Prozkoumání způsobu, jakým uživatelé procházejí vaši aplikaci
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
-- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
+- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
-- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
+- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
 - [Odesílat z aplikace telemetrii](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app) umožňující přidání vlastních zobrazení událostí a stránek.
 - Odesílat [kontext uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) umožňující sledovat aktivity uživatele v průběhu času a naplno využívat funkce využití.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="get-information-about-your-users"></a>Získání informací o uživatelích
@@ -59,11 +57,11 @@ Panel **Uživatelé** umožňuje různými způsoby porozumět důležitým podr
 
     ![Změna časového rozsahu](media/tutorial-users/TimeRange.png)
 
-4. Klikněte na rozevírací nabídku **Rozdělit podle** a přidejte do grafu rozpis podle jednotlivých vlastností uživatele.  Vyberte **Země nebo oblast**.  Graf obsahuje stejná data, ale umožňuje zobrazit rozpis počtu uživatelů pro každou zemi/oblast.
+4. Klikněte na rozevírací nabídku **Rozdělit podle** a přidejte do grafu rozpis podle jednotlivých vlastností uživatele.  Vyberte **Země nebo oblast**.  Graf obsahuje stejná data, ale umožňuje zobrazit rozpis počtu uživatelů pro každou zemi nebo oblast.
 
     ![Graf Země nebo oblast](media/tutorial-users/CountryorRegion.png)
 
-5. Umístěte kurzor na různé řádky v grafu a Všimněte si, že počet pro každou zemi/oblast odráží pouze časové okno reprezentována tento panel.
+5. Umístěte kurzor do různých pruhů v grafu a Všimněte si, že počet pro každou zemi nebo oblast odráží pouze časové okno reprezentované tímto pruhem.
 6. Podívejte se na sloupec **Přehledy** na pravé straně, který provádí analýzu dat o vašich uživatelích.  Najdete zde informace, jako je počet jedinečných relací v daném časovém období a záznamy se společnými vlastnostmi, které tvoří významnou část dat o uživatelích. 
 
     ![Sloupec Přehledy](media/tutorial-users/insights.png)
@@ -86,7 +84,7 @@ Panel **Relace** je podobný panelu **Uživatelé**.  Zatímco panel **Uživatel
     ![Časová osa relace](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Seskupení podobných uživatelů
-A **kohorta** představují sadu uživatelů, které jsou seskupeny na podobnou charakteristikou.  Kohorty můžete použít k filtrování dat na dalších panelech, což vám umožní analyzovat konkrétní skupiny uživatelů.  Můžete například chtít analyzovat pouze uživatele, kteří dokončili nákup.
+**Kohorta** je sada uživatelů seskupených podle podobných vlastností.  Kohorty můžete použít k filtrování dat na dalších panelech, což vám umožní analyzovat konkrétní skupiny uživatelů.  Můžete například chtít analyzovat pouze uživatele, kteří dokončili nákup.
 
 1.  V nabídce vyberte **Kohorty**.
 2.  Kliknutím na **Nová** vytvořte novou kohortu.
@@ -163,7 +161,7 @@ Zatímco předchozí panely se zaměřovaly na to, co prováděli uživatelé va
 6.  Kliknutím na **Přidat uživatele** přidejte graf s informacemi o uživatelích.  Pokud chcete, upravte podrobnosti grafu, a pak ho uložte kliknutím na **Úpravy hotovy**.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když jste zjistili, jak analyzovat uživatele, přejděte k dalšímu kurzu, ve kterém se dozvíte, jak vytvářet vlastní řídicí panely, které tyto informace kombinují s dalšími užitečnými daty o vaší aplikaci.
 
 > [!div class="nextstepaction"]

@@ -1,24 +1,18 @@
 ---
 title: Dotazování napříč prostředky pomocí Azure Monitor | Microsoft Docs
 description: Tento článek popisuje, jak se můžete dotazovat na prostředky z několika pracovních prostorů a aplikace App Insights v rámci vašeho předplatného.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/05/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a1ea4012b7cda5b5deab82027e5547a9c9ef786f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 06/05/2019
+ms.openlocfilehash: e74c81956ab0590b8b7237d3ecf60ae242a43b73
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650156"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894493"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Provádění dotazů protokolu pro více prostředků v Azure Monitor  
 
@@ -45,7 +39,7 @@ Určení pracovního prostoru lze provést jedním z několika způsobů:
 
     `workspace("contosoretail-it").Update | count`
 
-* Kvalifikovaný název – je úplný název pracovního prostoru, který se skládá z názvu předplatného, skupiny prostředků a názvu komponenty v tomto formátu: název předplatného/skupina prostředků */název součásti*. 
+* Kvalifikovaný název – je úplný název pracovního prostoru, který se skládá z názvu předplatného, skupiny prostředků a názvu komponenty v tomto formátu: název *předplatného/* skupina prostředků/název součásti. 
 
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
@@ -59,7 +53,7 @@ Určení pracovního prostoru lze provést jedním z několika způsobů:
 
 * ID prostředku Azure – jedinečná identita pracovního prostoru definovaná v Azure ID prostředku použijete, pokud je název prostředku dvojznačný.  U pracovních prostorů je ve formátu: */Subscriptions/SubscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/pracovní prostory/součásti*.  
 
-    Příklad:
+    Například:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -76,7 +70,7 @@ Určení aplikace v Application Insights lze provést pomocí výrazu *aplikace 
     >[!NOTE]
     >Identifikace aplikace podle názvu předpokládá jedinečnost napříč všemi přístupnými předplatnými. Pokud máte více aplikací se zadaným názvem, dotaz z důvodu nejednoznačnosti se nezdařil. V takovém případě je nutné použít jeden z ostatních identifikátorů.
 
-* Kvalifikovaný název – je celé jméno aplikace, složené z názvu předplatného, skupiny prostředků a názvu komponenty v tomto formátu: název předplatného/skupina prostředků */* název součásti. 
+* Kvalifikovaný název – je celé jméno aplikace, složené z názvu předplatného, skupiny prostředků a názvu komponenty v tomto formátu: název *předplatného/* skupina prostředků/název součásti. 
 
     `app("AI-Prototype/Fabrikam/fabrikamapp").requests | count`
 
@@ -90,7 +84,7 @@ Určení aplikace v Application Insights lze provést pomocí výrazu *aplikace 
 
 * ID prostředku Azure – jedinečná identita aplikace definovaná pro Azure ID prostředku použijete, pokud je název prostředku dvojznačný. Formát je: */Subscriptions/SubscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/Components/* Component.  
 
-    Příklad:
+    Například:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
@@ -110,7 +104,7 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Použití dotazu mezi prostředky pro více prostředků
 Při použití dotazů mezi prostředky ke korelaci dat z více Log Analyticsch pracovních prostorů a Application Insights prostředků může být dotaz složitý a obtížný. [Funkce v Azure Monitorch dotazech protokolu](functions.md) byste měli využít k oddělení logiky dotazů z oboru prostředků dotazů, což zjednodušuje strukturu dotazu. Následující příklad ukazuje, jak můžete monitorovat více prostředků Application Insights a vizualizovat počet neúspěšných žádostí podle názvu aplikace. 
 
-Vytvořte dotaz podobný následujícímu, který odkazuje na rozsah Application Insightsch prostředků. `withsource= SourceApp` Příkaz přidá sloupec, který určuje název aplikace, která protokol odeslala. [Uložte dotaz jako funkci](functions.md#create-a-function) s aliasem _applicationsScoping_.
+Vytvořte dotaz podobný následujícímu, který odkazuje na rozsah Application Insightsch prostředků. Příkaz `withsource= SourceApp` přidá sloupec, který určuje název aplikace, která protokol odeslala. [Uložte dotaz jako funkci](functions.md#create-a-function) s aliasem _applicationsScoping_.
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -141,7 +135,7 @@ applicationsScoping
 
 ![Timechart](media/cross-workspace-query/chart.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled dotazů protokolu a způsobu strukturování dat protokolu Azure Monitor najdete [v tématu Analýza dat protokolu v Azure monitor](log-query-overview.md) .
 - Projděte si [dotazy Azure monitor protokolu](query-language.md) , abyste zobrazili všechny prostředky pro dotazy protokolu Azure monitor.

@@ -1,25 +1,19 @@
 ---
 title: Reakce na události s využitím upozornění Azure Log Analytics | Microsoft Docs
 description: V tomto kurzu se naučíte používat upozornění služby Log Analytics ke zjišťování důležitých informací o vašem pracovním prostoru nebo k preventivnímu upozorňování na problémy a volání akcí, které se je pokusí opravit.
-services: log-analytics
-documentationcenter: log-analytics
-author: MGoedtel
-manager: carmonm
-editor: ''
-ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: tutorial
-ms.date: 10/05/2018
+author: MGoedtel
 ms.author: magoedte
+ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 6521688e595230951e0753fd67c2bf9b02e0a6ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a30b7569c14aaccb40b357cc5acb82b0e32d2895
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589894"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894660"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Reakce na události s upozorněními služby Azure Monitor
 Upozornění služby Azure Monitor zjišťují důležité informace v úložišti Log Analytics. Vytvářejí se na základě pravidel upozornění, která automaticky v pravidelných intervalech spouští prohledávání protokolů. Pokud výsledky prohledávání protokolů odpovídají určitým kritériím, vytvoří se záznam upozornění, který je možné nakonfigurovat, aby reagoval automaticky.  Tento kurz je pokračováním kurzu [Vytváření a sdílení řídicích panelů s daty Log Analytics](tutorial-logs-dashboards.md).   
@@ -32,7 +26,7 @@ V tomto kurzu se naučíte:
 
 K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru služby Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Přihlásit se na Azure Portal
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-alerts"></a>Vytváření upozornění
@@ -50,7 +44,7 @@ V následujícím příkladu vytvoříte pravidlo upozornění na naměřenou ho
    c. V části Aktivovat upozornění na základě vyberte **Po sobě jdoucí porušení**, v rozevíracím seznamu vyberte **Větší než** a zadejte hodnotu 3.  
    d. V části Hodnocení na základě upravte hodnotu **Období** na **30** minut. Pravidlo se spustí každých pět minut a vrátí záznamy vytvořené za posledních třicet minut od aktuálního času.  Nastavení delšího období zvyšuje potenciál latence dat a zajišťuje, aby dotaz vrátil data a aby se zabránilo falešně negativním hodnotám, kdy se výstraha nespustí.  
 6. Klikněte na **Hotovo** a dokončete pravidlo upozornění.<br><br> ![Konfigurace signálu upozornění](./media/tutorial-response/alert-signal-logic-02.png)<br> 
-7. Přejděte ke druhému kroku, ve kterém do pole **Název pravidla upozornění** zadáte název upozornění, například **Využití CPU na více než 90 procent**.  Do pole **Popis** zadejte podrobné informace o upozornění a v poli **Závažnost** vyberte **Kritické (záv. 0)**.<br><br> ![Konfigurace podrobností upozornění](./media/tutorial-response/alert-signal-logic-04.png)<br>
+7. Přejděte ke druhému kroku, ve kterém do pole **Název pravidla upozornění** zadáte název upozornění, například **Využití CPU na více než 90 procent**.  Do pole **Popis** zadejte podrobné informace o upozornění a v poli **Závažnost** vyberte **Kritické (záv. 0)** .<br><br> ![Konfigurace podrobností upozornění](./media/tutorial-response/alert-signal-logic-04.png)<br>
 8. Pokud chcete vytvořené pravidlo ihned aktivovat, potvrďte výchozí hodnotu přepínače **Po vytvoření povolit pravidlo**.
 9. Ve třetím a posledním kroku zadejte **Skupinu akcí**, abyste zajistili, že se při každé aktivaci upozornění provedou stejné akce. Skupinu akcí můžete použít pro každé definované pravidlo.  Ke konfiguraci nové skupiny akcí použijte následující informace:  
    a. Vyberte **Nová skupina akcí**. Zobrazí se podokno **Přidat skupinu akcí**.  
@@ -70,7 +64,7 @@ Vytvořená upozornění si v Azure můžete prohlédnout v jediném podokně, k
 
 Když se výstraha aktivuje, zobrazí se stav v tabulce, včetně informace o počtu výskytů ve vybraném časovém intervalu (výchozí je posledních šest hodin).  V doručené poště byste měli mít příslušný e-mail, který bude vypadat podobně jako následující příklad. Informuje o problematických virtuálních počítačích a nejdůležitějších výsledcích, které odpovídají nastavenému vyhledávacímu dotazu.<br><br> ![Příklad akce upozornění e-mailem](./media/tutorial-response/azure-alert-email-notification-01.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak můžou pravidla upozornění proaktivně identifikovat problémy spouštěním prohledávání protokolů v naplánovaných intervalech a reagovat na problémy v případě, že výsledky prohledávání splní konkrétní kritéria.
 
 Na tomto odkazu najdete předem připravené ukázky skriptů pro Log Analytics.  

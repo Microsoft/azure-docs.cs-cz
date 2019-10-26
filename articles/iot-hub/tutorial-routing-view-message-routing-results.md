@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f1dfbbc6036273e6ddf724e185e23073e7a78505
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: HT
+ms.openlocfilehash: 6d40f7d81faa77a48a32aadefdf44ed89e184efb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809117"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900780"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Kurz: část 2 – zobrazení směrovaných zpráv
 
@@ -116,9 +116,9 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-4. V části **topologie úlohy**vyberte **vstupy**.
+1. V části **topologie úlohy**vyberte **vstupy**.
 
-5. V podokně **vstupy** vyberte **Přidat vstup streamu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
+2. V podokně **vstupy** vyberte **Přidat vstup streamu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
 
    **Alias pro vstup:** Tento kurz používá **contosoinputs**.
 
@@ -138,7 +138,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    ![Nastavte vstupy pro úlohu Stream Analytics.](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-6. Vyberte **Save** (Uložit).
+3. Vyberte **Save** (Uložit).
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 

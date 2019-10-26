@@ -6,25 +6,24 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 10/01/2019
+ms.topic: article
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9994d5f882e7bf27ac822a69c4310bc7c6fabe1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
-ms.translationtype: HT
+ms.openlocfilehash: 4307c9036db45145a7c0e95cb5e55a667c6851eb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803455"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893400"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -43,7 +42,7 @@ Existují dva možné důvody, proč možná budete muset upravit deklarace iden
 * Aplikace vyžaduje, aby byla deklarace `NameIdentifier` nebo NameID na jinou hodnotu než uživatelské jméno (nebo hlavní název uživatele) uložené ve službě Azure AD.
 * Aplikace byla napsána tak, aby vyžadovala jinou sadu identifikátorů URI deklarace identity nebo hodnot deklarace identity.
 
-## <a name="editing-nameid"></a>Úpravy NameID
+## <a name="editing-nameid"></a>Úpravy nameID
 
 Postup úpravy NameID (hodnota identifikátoru názvu):
 
@@ -79,7 +78,7 @@ Vyberte požadovaný zdroj pro deklaraci identity `NameIdentifier` (nebo NameID)
 | Třídy | Hlavní název uživatele (UPN) uživatele |
 | onpremisessamaccount | Název účtu SAM, který byl synchronizovaný z místní služby Azure AD |
 | objektu | objectID uživatele v Azure AD |
-| zaměstnance | ČísloZaměstnance uživatele |
+| zaměstnance | ID zaměstnance uživatele |
 | Rozšíření adresáře | Rozšíření adresáře [synchronizovaná z místní služby Active Directory pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Atributy rozšíření 1-15 | Atributy místních rozšíření používaných k rozšíření schématu Azure AD |
 
@@ -91,7 +90,7 @@ Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakou
 
 1. Klikněte na požadovanou deklaraci identity, kterou chcete upravit.
 
-1. Zadejte hodnotu konstanty ve **zdrojovém atributu** dle vaší organizace a klikněte na **Uložit**.
+1. Zadejte konstantní hodnotu bez uvozovek ve **zdrojovém atributu** dle vaší organizace a klikněte na **Uložit**.
 
     ![V Azure Portal otevřete část atributy uživatele & deklarace identity.](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
@@ -118,19 +117,27 @@ Přidání deklarací specifických pro aplikaci:
 1. Zadejte **název** deklarací identity. Hodnota nemusí bezpodmínečně odpovídat vzoru identifikátoru URI podle specifikace SAML. Pokud potřebujete vzor identifikátoru URI, můžete ho umístit do pole **obor názvů** .
 1. Vyberte **zdroj** , ve kterém bude deklarace identity získávat svou hodnotu. Můžete vybrat atribut uživatele z rozevíracího seznamu zdrojový atribut nebo použít transformaci na atribut uživatele před jeho vygenerováním jako deklarace identity.
 
-### <a name="application-specific-claims---transformations"></a>Deklarace identity specifické pro aplikaci – transformace
+### <a name="claim-transformations"></a>Transformace deklarací identity
 
-Můžete také použít funkce transformace deklarací identity.
+Chcete-li použít transformaci na atribut uživatele:
+
+1. V části **Spravovat deklaraci identity**vyberte *transformovat* jako zdroj deklarace a otevřete stránku **Spravovat transformaci** .
+2. Vyberte funkci z rozevíracího seznamu transformace. V závislosti na vybrané funkci budete muset zadat parametry a konstantní hodnotu pro vyhodnocení v transformaci. Další informace o dostupných funkcích najdete v následující tabulce.
+3. Chcete-li použít více transformací, klikněte na tlačítko **Přidat transformaci**. Můžete použít maximálně dvě transformace na deklaraci identity. Například můžete nejprve extrahovat e-mailovou předponu `user.mail`. Pak zadejte řetězec na velká písmena.
+
+   ![Upravit hodnotu NameID (identifikátor názvu)](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+
+K transformaci deklarací lze použít následující funkce.
 
 | Funkce | Popis |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com). |
-| **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. |
+| **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. Pro transformaci deklarace NameID je spojení omezené na ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například jako hodnotu identifikátoru uživatele vyberete e-mail (joe_smith@contoso.com) a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com. |
 | **ToLower ()** | Převede znaky vybraného atributu na malá písmena. |
 | **ToUpper ()** | Převede znaky vybraného atributu na velká písmena. |
 | **Obsahuje ()** | Vytvoří výstup atributu nebo konstanty, pokud vstup odpovídá zadané hodnotě. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota e-mailová adresa uživatele, pokud obsahuje doménu "@contoso.com", jinak chcete vytvořit výstup hlavního názvu uživatele. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)* : User. email<br/>*Hodnota*: "@contoso.com"<br/>Parametr 2 (výstup): User. email<br/>Parametr 3 (výstup, pokud se neshoduje): User. userPrincipalName |
-| **EndWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstupní hodnota končí zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ČísloZaměstnance uživatele, pokud je hodnota ČísloZaměstnance na konci "000", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)* : User. ČísloZaměstnance<br/>*Hodnota*: "000"<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
-| **StartWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstup začíná zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ČísloZaměstnance uživatele, pokud země nebo oblast začíná řetězcem "US", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)* : User. Country<br/>*Hodnota*: US<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
+| **EndWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstupní hodnota končí zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud ID zaměstnance končí na "000", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)* : User. ČísloZaměstnance<br/>*Hodnota*: "000"<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
+| **StartWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstup začíná zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud země nebo oblast začíná řetězcem "US", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)* : User. Country<br/>*Hodnota*: US<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
 | **Extract () – po porovnání** | Vrátí podřetězec poté, co odpovídá zadané hodnotě.<br/>Pokud má například hodnota vstupu hodnotu "Finance_BSimon", odpovídá hodnota "Finance_", takže výstup deklarace identity je "BSimon". |
 | **Extract () – Před spárováním** | Vrátí dílčí řetězec, dokud neodpovídá zadané hodnotě.<br/>Pokud má například hodnota vstupu hodnotu "BSimon_US", odpovídá hodnota "_US", takže výstup deklarace identity je "BSimon". |
 | **Extract ()-Between – shoda** | Vrátí dílčí řetězec, dokud neodpovídá zadané hodnotě.<br/>Pokud je hodnota vstupu například "Finance_BSimon_US", první vyhovující hodnota je "Finance_", druhá hodnota pro porovnání je "_US", pak je výstup deklarace identity "BSimon". |
@@ -138,10 +145,39 @@ Můžete také použít funkce transformace deklarací identity.
 | **ExtractAlpha () – Přípona** | Vrátí příponu v abecedním pořadí řetězce.<br/>Pokud je například hodnota vstupu "123_Simon", pak vrátí "Simon". |
 | **ExtractNumeric () – předpona** | Vrátí číselnou část řetězce předpony.<br/>Pokud je například hodnota vstupu "123_BSimon", pak vrátí "123". |
 | **ExtractNumeric () – Přípona** | Vrátí číselnou část řetězce přípony.<br/>Pokud je například hodnota vstupu "BSimon_123", pak vrátí "123". |
-| **IfEmpty()** | Vytvoří výstup atributu nebo konstanty, pokud má vstup hodnotu null nebo je prázdný.<br/>Například pokud chcete výstupovat atribut uložený v ExtensionAttribute, pokud je pole ČísloZaměstnance pro daného uživatele prázdné. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>Parametr 1 (vstup): User. ČísloZaměstnance<br/>Parametr 2 (výstup): User. extensionAttribute1<br/>Parametr 3 (výstup, pokud se neshoduje): User. ČísloZaměstnance |
-| **IfNotEmpty()** | Vytvoří výstup atributu nebo konstanty, pokud vstupní hodnota není null nebo prázdná.<br/>Například pokud chcete výstupovat atribut uložený v ExtensionAttribute, pokud není pole ČísloZaměstnance pro daného uživatele prázdné. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>Parametr 1 (vstup): User. ČísloZaměstnance<br/>Parametr 2 (výstup): User. extensionAttribute1 |
+| **IfEmpty()** | Vytvoří výstup atributu nebo konstanty, pokud má vstup hodnotu null nebo je prázdný.<br/>Například pokud chcete výstupovat atribut uložený v ExtensionAttribute, pokud je ID zaměstnance pro daného uživatele prázdné. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>Parametr 1 (vstup): User. ČísloZaměstnance<br/>Parametr 2 (výstup): User. extensionAttribute1<br/>Parametr 3 (výstup, pokud se neshoduje): User. ČísloZaměstnance |
+| **IfNotEmpty()** | Vytvoří výstup atributu nebo konstanty, pokud vstupní hodnota není null nebo prázdná.<br/>Například pokud chcete výstupovat atribut uložený v ExtensionAttribute, pokud ID zaměstnance pro daného uživatele není prázdné. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>Parametr 1 (vstup): User. ČísloZaměstnance<br/>Parametr 2 (výstup): User. extensionAttribute1 |
 
 Pokud potřebujete další transformace, pošlete svůj nápad do fóra pro [názory ve službě Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) v kategorii *aplikace SaaS* .
+
+## <a name="emitting-claims-based-on-conditions"></a>Generování deklarací identity na základě podmínek
+
+Můžete zadat zdroj deklarace identity na základě typu uživatele a skupiny, do které uživatel patří. 
+
+Typ uživatele může být:
+- **Jakékoli**: všichni uživatelé mají povolený přístup k aplikaci.
+- **Členové**: nativní člen tenanta
+- **Všichni hosté**: uživatel se převezme z externí organizace s Azure AD nebo bez něj.
+- **Hosty AAD**: uživatel typu Host patří do jiné organizace, která používá službu Azure AD.
+- **Externí hosté**: uživatel typu Host patří do externí organizace, která nemá službu Azure AD.
+
+
+Jedním z situací, kdy je to užitečné, je, že je zdroj deklarace identity jiný pro hosta a zaměstnance, který přistupuje k aplikaci. Možná budete chtít určit, že pokud je uživatel zaměstnancem, NameID je od uživatele. e-mail, ale pokud je uživatel hostem, pak je NameID ze zdroje User. extensionAttribute1.
+
+Přidání podmínky deklarace identity:
+
+1. V části **Spravovat deklaraci identity**rozbalte podmínky deklarace identity.
+2. Vyberte typ uživatele.
+3. Vyberte skupiny, do kterých má uživatel patřit. V rámci všech deklarací pro danou aplikaci můžete vybrat až 10 jedinečných skupin. 
+4. Vyberte **zdroj** , ve kterém bude deklarace identity získávat svou hodnotu. Můžete vybrat atribut uživatele z rozevíracího seznamu zdrojový atribut nebo použít transformaci na atribut uživatele před jeho vygenerováním jako deklarace identity.
+
+Pořadí, ve kterém přidáte podmínky, je důležité. Azure AD vyhodnotí podmínky shora dolů a určí, která hodnota se má v deklaracích generovat. 
+
+Například Brita Simon je uživatel typu Host v tenantovi contoso. Patří do jiné organizace, která používá taky Azure AD. Když se Brita pokusí přihlásit k společnosti Fabrikam níže uvedená konfigurace, služba Azure AD bude podmínky vyhodnotit podle následujících pokynů.
+
+Služba Azure AD nejprve ověří, jestli je `All guests`typ uživatele Brita. Vzhledem k tomu je tato hodnota true, ale Azure AD přiřadí zdroji deklarace `user.extensionattribute1`. Za druhé Azure AD ověří, jestli je `AAD guests`typ uživatele Brita, protože to má taky hodnotu true, pak Azure AD přiřadí zdroji deklarace, která se má `user.mail`. Nakonec se deklarace identity vydává s hodnotou `user.email` pro Brita.
+
+![Podmíněné konfigurace deklarací identity](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: c6e7cf770e5f1639e676d232564809121a8c4e4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 43fbf7b13c75b9bdbaa810905ed9a25e8faa664f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561097"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898369"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Kurz: Spuštění modelu TensorFlow v Pythonu
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak po [exportování modelu TensorFlow](ht
 > [!NOTE]
 > Tento kurz se týká pouze modelů exportovaných z projektů klasifikace obrázků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz budete muset:
 
@@ -48,7 +48,7 @@ Stažený soubor ZIP obsahuje soubory model.pb a labels.txt. Tyto soubory předs
 import tensorflow as tf
 import os
 
-graph_def = tf.GraphDef()
+graph_def = tf.compat.v1.GraphDef()
 labels = []
 
 # These are set to the default names from exported models, update as needed.
@@ -56,7 +56,7 @@ filename = "model.pb"
 labels_filename = "labels.txt"
 
 # Import the TF graph
-with tf.gfile.GFile(filename, 'rb') as f:
+with tf.io.gfile.GFile(filename, 'rb') as f:
     graph_def.ParseFromString(f.read())
     tf.import_graph_def(graph_def, name='')
 
@@ -116,7 +116,7 @@ augmented_image = resize_to_256_square(max_square_image)
 
 ```Python
 # Get the input size of the model
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
     input_tensor_shape = sess.graph.get_tensor_by_name('Placeholder:0').shape.as_list()
 network_input_size = input_tensor_shape[1]
 
@@ -180,7 +180,7 @@ Jakmile se obrázek připraví jako tensor, můžeme ho poslat přes model před
 output_layer = 'loss:0'
 input_node = 'Placeholder:0'
 
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
     try:
         prob_tensor = sess.graph.get_tensor_by_name(output_layer)
         predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
@@ -208,7 +208,7 @@ Výsledky zpracování tensoru obrázku modelem pak bude potřeba namapovat zpě
         label_index += 1
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V dalším kroku se dozvíte, jak model zabalit do mobilní aplikace:
 * [Použití exportovaného modelu Tensorflow v aplikaci pro Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)

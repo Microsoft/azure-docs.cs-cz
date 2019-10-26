@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2f0fac5e1951f593ea769f73feb21a60afe9c02b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 433480b4a587b3a085c3b1c0ba4122ae98eb4508
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756194"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897720"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -246,9 +246,9 @@ Spusťte následující fragment kódu prostředí PowerShell:
   ```
 ---
 
-## <a name="register-the-sql-vm-resource-provider-with-a-subscription"></a>Registrace poskytovatele prostředků virtuálního počítače SQL pomocí předplatného 
+## <a name="register-subscription-with-rp"></a>Zaregistrovat předplatné s RP
 
-Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků virtuálního počítače SQL, musíte zaregistrovat poskytovatele prostředků u svého předplatného. Můžete to udělat pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu.
+Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků virtuálního počítače SQL, musíte nejdřív zaregistrovat předplatné u poskytovatele prostředků.  Můžete to udělat pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu.
 
 ### <a name="azure-portal"></a>Portál Azure
 

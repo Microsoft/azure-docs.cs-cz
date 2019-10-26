@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 00891122015bb3e6adb500b6f6c30fa031161b92
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598001"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901340"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption pro Windows (Microsoft. Azure. Security. AzureDiskEncryption)
 
@@ -36,11 +36,11 @@ Azure Disk Encryption využívá BitLocker k poskytování úplného šifrován�
 
 ## <a name="extension-schemata"></a>Schémat rozšíření
 
-K dispozici jsou dvě schémat pro Azure Disk Encryption: v 1.1, novější, Doporučené schéma, které nepoužívá vlastnosti Azure Active Directory (AAD) a v 0,1, starší schéma, které vyžaduje vlastnosti AAD. Je nutné použít verzi schématu odpovídající příponě, kterou používáte: Schema v 1.1 pro rozšíření AzureDiskEncryption verze 1,1, Schema v 0,1 pro rozšíření AzureDiskEncryption verze 0,1.
+Existují dva schémat rozšíření Windows AzureDiskEncryption: v 2.2, novější, Doporučené schéma, které nepoužívá vlastnosti Azure Active Directory (AAD) a v 1.1, starší schéma, které vyžaduje vlastnosti AAD. Je nutné použít verzi schématu odpovídající příponě, kterou používáte: Schema v 2.2 pro rozšíření AzureDiskEncryption verze 2,2, Schema v 1.1 pro rozšíření AzureDiskEncryption verze 1,1.
 
-### <a name="schema-v11-no-aad-recommended"></a>Schéma v 1.1: žádné AAD (doporučeno)
+### <a name="schema-v22-no-aad-recommended"></a>Schéma v 2.2: žádné AAD (doporučeno)
 
-Doporučuje se schéma v 1.1 a nevyžaduje Azure Active Directory vlastnosti.
+Schéma v 2.2 se doporučuje pro všechny nové virtuální počítače a nevyžaduje Azure Active Directory vlastnosti.
 
 ```json
 {
@@ -67,9 +67,9 @@ Doporučuje se schéma v 1.1 a nevyžaduje Azure Active Directory vlastnosti.
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Schéma v 0,1: s AAD 
+### <a name="schema-v11-with-aad"></a>Schéma v 1.1: s AAD 
 
-Schéma 0,1 vyžaduje `aadClientID` a buď `aadClientSecret`, nebo `AADClientCertificate`.
+Schéma 1,1 vyžaduje `aadClientID` a buď `aadClientSecret` nebo `AADClientCertificate`, a nedoporučuje se pro nové virtuální počítače.
 
 Použití `aadClientSecret`:
 
@@ -139,10 +139,10 @@ Použití `AADClientCertificate`:
 | apiVersion | 2015-06-15 | date |
 | Microsoft | Microsoft. Azure. Security | string |
 | type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0,1, 1,1 | int |
-| (schéma 0,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Hlavních | 
-| (schéma 0,1) AADClientSecret | heslo | string |
-| (schéma 0,1) AADClientCertificate | kryptografický | string |
+| typeHandlerVersion | 1,1, 2,2 | string |
+| (schéma 1,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Hlavních | 
+| (schéma 1,1) AADClientSecret | heslo | string |
+| (schéma 1,1) AADClientCertificate | kryptografický | string |
 | DiskFormatQuery | {"dev_path": "", "Name": "", "file_system": ""} | Slovník JSON |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | "RSA-VÝPLNĚ OAEP", "RSA-VÝPLNĚ OAEP-256", "RSA1_5" | string |

@@ -8,33 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 729b832c068dcd401fa6e9d2f4af9193d3859a83
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845549"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899019"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple uzly – přehled
 
 Uzly jsou stavebními bloky privátního cloudu. Uzel je:
 
 * Vyhrazený výpočetní hostitel na holém počítači, kde je nainstalovaný VMware ESXi hypervisor  
-* Jednotka computingu, kterou můžete koupit nebo rezervovat pro vytváření privátních cloudů
-* K dispozici pro nákup nebo rezervaci v oblasti, kde je k dispozici služba CloudSimple
+* Jednotka computingu, kterou můžete zřídit nebo rezervovat pro vytváření privátních cloudů
+* K dispozici pro zřízení nebo rezervaci v oblasti, kde je dostupná služba CloudSimple
 
-Privátní cloud vytvoříte z nakupovaných uzlů. K vytvoření privátního cloudu potřebujete minimálně tři uzly stejné SKU. Pokud chcete rozšířit privátní cloud, přidejte další uzly.  Uzly můžete přidat do existujícího clusteru nebo vytvořit nový cluster pomocí nákupu uzlů v Azure Portal a jejich přidružení ke službě CloudSimple.  Všechny koupené uzly jsou viditelné v rámci služby CloudSimple.  
+Privátní Cloud můžete vytvořit ze zřízené uzlů. K vytvoření privátního cloudu potřebujete minimálně tři uzly stejné SKU. Pokud chcete rozšířit privátní cloud, přidejte další uzly.  Uzly můžete přidat do existujícího clusteru nebo vytvořit nový cluster pomocí zřízení uzlů v Azure Portal a jejich přidružení ke službě CloudSimple.  Všechny zřízené uzly jsou viditelné v rámci služby CloudSimple.  
 
-## <a name="purchased-nodes"></a>Koupené uzly
+## <a name="provisioned-nodes"></a>Zřízené uzly
 
-Koupené uzly poskytují kapacitu s průběžnými platbami. Nákupy uzlů vám pomůžou rychle škálovat cluster VMware na vyžádání. Můžete přidat uzly podle potřeby nebo odstranit koupený uzel pro horizontální navýšení kapacity clusteru VMware. Koupené uzly se účtují měsíčně a účtují se do zakoupeného předplatného.
+Zřízené uzly poskytují kapacitu s průběžnými platbami. Zřizování uzlů vám pomůže rychle škálovat cluster VMware na vyžádání. Podle potřeby můžete přidávat uzly nebo odstranit zřízený uzel pro horizontální navýšení kapacity clusteru VMware. Zřízené uzly se účtují měsíčně a účtují se z předplatného, kde se zřídí.
 
 * Pokud platíte za předplatné Azure pomocí platební karty, karta se účtuje okamžitě.
 * Pokud se fakturuje podle faktury, účtují se poplatky na vaší další faktuře.
 
 ## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>SKU řešení VMware podle CloudSimple uzlů
 
-Pro nákup nebo rezervaci jsou k dispozici následující typy uzlů.
+Pro zřizování nebo rezervaci jsou k dispozici následující typy uzlů.
 
 | Skladová položka           | CS28 – uzel                 | CS36 – uzel                 | CS36m – uzel                |
 |---------------|-----------------------------|-----------------------------|-----------------------------|
@@ -58,5 +58,5 @@ Následující omezení uzlů platí pro privátní cloudy.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o [nákupu uzlů](create-nodes.md)
+* Naučte se [zřizovat uzly](create-nodes.md) .
 * Informace o [privátních cloudech](cloudsimple-private-cloud.md)

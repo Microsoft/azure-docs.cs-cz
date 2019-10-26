@@ -1,34 +1,28 @@
 ---
-title: Pokročilé dotazy ve službě Azure Monitor | Dokumentace Microsoftu
-description: Tento článek obsahuje kurz pro používání portálu Analytics psaní dotazů ve službě Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Rozšířené dotazy v Azure Monitor | Microsoft Docs
+description: Tento článek popisuje kurz použití portálu Analytics k zápisu dotazů v Azure Monitor.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 65713ed9c2d0635e776a7a7e5f205b6d55438ed4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/15/2018
+ms.openlocfilehash: 8895224bef037c8c3f8b28a6085359837478d924
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589595"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894500"
 ---
-# <a name="writing-advanced-queries-in-azure-monitor"></a>Zápis upřesňujících dotazů ve službě Azure Monitor
+# <a name="writing-advanced-queries-in-azure-monitor"></a>Zápis rozšířených dotazů v Azure Monitor
 
 > [!NOTE]
-> By se měla Dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [Začínáme s dotazy](get-started-queries.md) před dokončením v této lekci.
+> Před dokončením této lekce byste měli dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [Začínáme s dotazy](get-started-queries.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-## <a name="reusing-code-with-let"></a>Opětovné použití kódu pomocí let
-Použití `let` přiřadit výsledky k proměnné a si ji později v dotazu:
+## <a name="reusing-code-with-let"></a>Znovu použití kódu pomocí let
+Použijte `let` k přiřazení výsledků k proměnné a další informace najdete v dotazu později:
 
 ```Kusto
 // get all events that have level 2 (indicates warning level)
@@ -40,7 +34,7 @@ warning_events
 | summarize count() by Computer 
 ```
 
-Můžete také přiřadit konstantní hodnoty pro proměnné. Tento atribut podporuje metodu nastavit parametry pro pole, která je třeba změnit pokaždé, když dotaz spustíte. Podle potřeby upravte tyto parametry. Chcete-li například vypočítat volné místo na disku a volné paměti (v percentil), v rámci daného časového intervalu:
+K proměnným můžete také přiřadit konstantní hodnoty. To podporuje metodu nastavení parametrů pro pole, která je třeba změnit při každém spuštění dotazu. Upravte tyto parametry podle potřeby. Pokud například chcete vypočítat volné místo na disku a volnou paměť (v percentilech), v daném časovém intervalu:
 
 ```Kusto
 let startDate = datetime(2018-08-01T12:55:02);
@@ -58,10 +52,10 @@ Perf
 union FreeDiskSpace, FreeMemory
 ```
 
-To umožňuje snadno změnit počáteční čas ukončení při příštím spuštění dotazu.
+Díky tomu je možné snadno změnit začátek koncového času při příštím spuštění dotazu.
 
-### <a name="local-functions-and-parameters"></a>Parametry a lokální funkce
-Použití `let` příkazy k vytvoření funkce, které lze použít ve stejném dotazu. Například Definujte funkci, která přijímá pole Datum a čas (ve formátu UTC) a převede ho na standardní formát USA. 
+### <a name="local-functions-and-parameters"></a>Místní funkce a parametry
+Pomocí příkazů `let` můžete vytvořit funkce, které lze použít ve stejném dotazu. Například definujte funkci, která přijímá pole DateTime (ve formátu UTC) a převede ho na standardní formát US. 
 
 ```Kusto
 let utc_to_us_date_format = (t:datetime)
@@ -76,15 +70,15 @@ Event
 ```
 
 ## <a name="print"></a>Tisk
-`print` Vrátí tabulku s jedním sloupcem a jeden řádek, zobrazuje výsledek výpočtu. To se často používá v případech, kdy potřebujete jednoduchý výpočet. Chcete-li například najít aktuální čas v PST a přidat sloupec s ESTU:
+`print` vrátí tabulku s jedním sloupcem a jedním řádkem, která zobrazuje výsledek výpočtu. To se často používá v případech, kdy potřebujete jednoduchý výpočet. Pokud například chcete najít aktuální čas v souboru PST a přidat sloupec s nástrojem EST:
 
 ```Kusto
 print nowPst = now()-8h
 | extend nowEst = nowPst+3h
 ```
 
-## <a name="datatable"></a>Objekt DataTable
-`datatable` Umožňuje definovat sadu data. Zadejte schéma a sadu hodnot a potom přesměrujte tabulky do jiné elementy dotazu. Například k vytvoření tabulky využití paměti RAM a výpočet jejich průměrné hodnoty za hodinu:
+## <a name="datatable"></a>Objekt
+`datatable` umožňuje definovat sadu dat. Zadáte schéma a sadu hodnot a potom předáte tabulku do všech dalších prvků dotazu. Pokud například chcete vytvořit tabulku využití paměti RAM a vypočítat průměrnou hodnotu za hodinu:
 
 ```Kusto
 datatable (TimeGenerated: datetime, usage_percent: double)
@@ -101,7 +95,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 | summarize avg(usage_percent) by bin(TimeGenerated, 1h)
 ```
 
-Objekt DataTable konstrukce jsou velmi užitečné také při vytvoření vyhledávací tabulky. Například pro mapování tabulky dat, jako je například ID událostí z _SecurityEvent_ tabulky pro typy událostí uvedená jinde, vytvoření vyhledávací tabulky s typy událostí pomocí `datatable` a připojte se k tohoto objektu datatable s  _SecurityEvent_ dat:
+Konstrukce DataTable jsou také velmi užitečné při vytváření vyhledávací tabulky. Například pro mapování tabulkových dat, jako jsou ID událostí z tabulky _SecurityEvent_ , na typy událostí, které jsou uvedeny jinde, vytvořte vyhledávací tabulku s typy událostí pomocí `datatable` a připojte se k tomuto objektu DataTable s daty _SecurityEvent_ :
 
 ```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)
@@ -129,13 +123,13 @@ SecurityEvent
 | project TimeGenerated, Account, AccountType, Computer, EventType
 ```
 
-## <a name="next-steps"></a>Další postup
-Zobrazit další lekce pro použití [Kusto dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
+## <a name="next-steps"></a>Další kroky
+Podívejte se na další lekce týkající se používání [dotazovacího jazyka Kusto](/azure/kusto/query/) s využitím dat protokolu Azure monitor:
 
 - [Operace s řetězci](string-operations.md)
-- [Datum a čas operace](datetime-operations.md)
+- [Operace s datem a časem](datetime-operations.md)
 - [Agregační funkce](aggregations.md)
 - [Pokročilé agregace](advanced-aggregations.md)
-- [JSON a datových struktur](json-data-structures.md)
-- [Spojení](joins.md)
-- [Grafy](charts.md)
+- [JSON a datové struktury](json-data-structures.md)
+- [Starat](joins.md)
+- [Spojnic](charts.md)

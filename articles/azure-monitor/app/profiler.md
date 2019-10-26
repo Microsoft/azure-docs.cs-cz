@@ -1,66 +1,62 @@
 ---
-title: Profilování živých aplikací Azure App Service pomocí nástroje Application Insights | Dokumentace Microsoftu
-description: Profilování živých aplikací ve službě Azure App Service s Application Insights Profiler.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Profilování živých Azure App Service aplikací pomocí Application Insights | Microsoft Docs
+description: Profilujte živé aplikace na Azure App Service s využitím Application Insights Profiler.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 71a8a0e268c1b264a0a1a7f955f310bfddc830d2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: d463732fc8e8f488851a57fe520f138b101eb6cf
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439945"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899940"
 ---
-# <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilování živých aplikací Azure App Service pomocí nástroje Application Insights
+# <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilování aplikací v reálném čase Azure App Service s využitím Application Insights
 
-Můžete spustit Profiler technologie ASP.NET a ASP.NET Core aplikací, které jsou spuštěny ve službě Azure App Service při použití úrovně služby Basic nebo vyšší. Povolení Profiler v Linuxu je aktuálně možné jenom přes [tato metoda](profiler-aspnetcore-linux.md).
+Profiler můžete spustit v ASP.NET a aplikacích ASP.NET Core, které běží na Azure App Service pomocí úrovně Basic nebo vyšší. Povolení profileru v systému Linux je aktuálně možné pouze prostřednictvím [této metody](profiler-aspnetcore-linux.md).
 
-## <a id="installation"></a> Povolit Profiler pro vaši aplikaci
-Pokud chcete povolit Profiler pro aplikaci, postupujte podle pokynů níže. Pokud používáte jiný typ služby Azure, tady jsou pokyny pro povolení Profiler na jiné podporované platformy:
+## <a id="installation"></a>Povolení profileru pro vaši aplikaci
+Pokud chcete povolit profiler pro aplikaci, postupujte podle následujících pokynů. Pokud používáte jiný typ služby Azure, najdete tady pokyny k povolení profileru na jiných podporovaných platformách:
 * [Cloud Services](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Aplikace Service Fabric](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
+* [Service Fabric aplikací](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtual Machines](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Application Insights Profiler je již nainstalován jako součást modulu runtime služeb App Services. Jak se dá povolit pro službu App Service se zobrazí následující postup. I v případě, že jste zahrnuli App Insights SDK do vaší aplikace v době sestavení, postupujte podle těchto kroků.
+Application Insights Profiler je předem nainstalován jako součást modulu runtime App Services. Následující postup vám ukáže, jak ho pro App Service povolit. Postupujte podle těchto kroků i v případě, že jste do aplikace zahrnuli sadu App Insights SDK v době sestavení.
 
-1. Povolte nastavení "Always On" pro službu app service. Můžete aktualizovat nastavení na stránce konfigurace služby App Service v obecném nastavení.
-1. Přejděte **App Services** podokně webu Azure Portal.
-1. Přejděte do **Nastavení > Application Insights** podokně.
+1. U služby App Service povolte nastavení "Always On". Nastavení můžete aktualizovat na stránce konfigurace App Service v části Obecné nastavení.
+1. V Azure Portal otevřete podokno **App Services** .
+1. Přejděte do **nastavení > Application Insights** podokně.
 
-   ![Povolit App Insights na portálu služby App Services](./media/profiler/AppInsights-AppServices.png)
+   ![Povolení App Insights na portálu App Services](./media/profiler/AppInsights-AppServices.png)
 
-1. Buď podle pokynů a vytvořte nový prostředek nebo vyberte existující prostředek App Insights pro sledování aplikace podokna. Také se ujistěte, Profiler je **na**. Pokud váš prostředek Application Insights v jiném předplatném než službu App Service, nelze na této stránce Konfigurovat Application Insights. Stále to zvládnete ručně i když tak, že vytvoříte nastavení potřebné aplikace ručně. [Další část obsahuje pokyny pro ruční povolení Profiler.](#enable-profiler-manually-or-with-azure-resource-manager) 
+1. Podle pokynů v podokně vytvořte nový prostředek nebo vyberte existující prostředek App Insights, abyste mohli svoji aplikaci monitorovat. Také se ujistěte, že je profiler **zapnutý**. Pokud se prostředek Application Insights v jiném předplatném, než App Service, nemůžete tuto stránku použít ke konfiguraci Application Insights. Můžete to provést ručně, i když vytvoříte potřebná nastavení aplikace ručně. [V další části najdete pokyny pro ruční povolení profileru.](#enable-profiler-manually-or-with-azure-resource-manager) 
 
    ![Přidat rozšíření webu App Insights][Enablement UI]
 
-1. Profiler se teď aktivuje pomocí nastavení aplikace služby App.
+1. Profiler je teď povolený pomocí nastavení aplikace App Services.
 
-    ![Nastavení aplikace, které pro Profiler][profiler-app-setting]
+    ![Nastavení aplikace pro Profiler][profiler-app-setting]
 
-## <a name="enable-profiler-manually-or-with-azure-resource-manager"></a>Povolit Profiler ručně nebo pomocí Azure Resource Manageru
-Application Insights Profiler je možné povolit tak, že vytvoříte nastavení aplikace pro službu Azure App Service. Na stránce s možnostmi výše uvedené vytvoří nastavení aplikace za vás. Ale můžete automatizovat vytváření těchto nastavení pomocí šablony nebo jiným způsobem. Tato nastavení budou fungovat i pokud je váš prostředek Application Insights v jiném předplatném než Azure App Service.
-Tady je nastavení potřebná k povolení profileru:
+## <a name="enable-profiler-manually-or-with-azure-resource-manager"></a>Ruční povolení profileru nebo Azure Resource Manager
+Application Insights Profiler můžete povolit vytvořením nastavení aplikace pro Azure App Service. Stránka s výše uvedenými možnostmi vytvoří tato nastavení aplikace. Vytváření těchto nastavení ale můžete automatizovat pomocí šablony nebo jiným způsobem. Tato nastavení budou fungovat i v případě, že se váš Application Insights prostředek nachází v jiném předAzure App Service platném.
+Tady jsou nastavení potřebná k povolení profileru:
 
 |Nastavení aplikace    | Hodnota    |
 |---------------|----------|
-|APPINSIGHTS_INSTRUMENTATIONKEY         | Instrumentační klíč pro váš prostředek Application Insights    |
+|APPINSIGHTS_INSTRUMENTATIONKEY         | iKey pro prostředek Application Insights    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-|DiagnosticServices_EXTENSION_VERSION | ~3 |
+|DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-Můžete nastavit tyto hodnoty pomocí [šablon Azure Resource Manageru](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [prostředí Azure Powershell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
+Tyto hodnoty můžete nastavit pomocí [šablon Azure Resource Manager](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure PowerShellu](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)a rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
 
-### <a name="enabling-profiler-for-other-clouds-manually"></a>Ruční povolení Profiler pro jiné cloudy
+### <a name="enabling-profiler-for-other-clouds-manually"></a>Ruční povolení profileru pro ostatní cloudy
 
-Pokud chcete povolit profiler pro jiné cloudy, můžete použít následující nastavení aplikace.
+Pokud chcete Profiler povolit pro jiné cloudy, můžete použít následující nastavení aplikace.
 
 |Nastavení aplikace    | Hodnoty pro státní správu USA| Cloud Čína |   
 |---------------|---------------------|-------------|
@@ -69,18 +65,18 @@ Pokud chcete povolit profiler pro jiné cloudy, můžete použít následující
 
 ## <a name="disable-profiler"></a>Zakázat Profiler
 
-Pro zastavení nebo restartování Profiler pro jednotlivé aplikace instance, v části **webové úlohy**, přejděte na prostředek aplikace. Chcete-li odstranit Profiler, přejděte na **rozšíření**.
+Pokud chcete zastavit nebo restartovat profiler pro instanci jednotlivé aplikace, v části **webové úlohy**přejdete do prostředku aplikace. Profiler odstraníte tak, že přejdete na **rozšíření**.
 
-![Zakázat Profiler pro webové úlohy][disable-profiler-webjob]
+![Zakázat profiler pro webovou úlohu][disable-profiler-webjob]
 
-Doporučujeme, abyste měli Profiler povolená na všech svých aplikací se co nejdříve zjistit problémy s výkonem.
+Doporučujeme, abyste pro všechny vaše aplikace povolili Profiler, abyste zjistili případné problémy s výkonem co nejdříve.
 
-Profiler pro soubory můžete odstranit, při nasazení změny do vaší webové aplikace pomocí nástroje WebDeploy. Odstranění je možné zabránit vyloučením složku App_Data odstranit během nasazení. 
+Soubory profileru lze odstranit při použití nástroje WebDeploy k nasazení změn do vaší webové aplikace. Odstranění můžete zabránit tím, že zrušíte odstranění složky App_Data během nasazování. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Práce s Application Insights v sadě Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
+* [Práce s Application Insights v aplikaci Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
 
 [Enablement UI]: ./media/profiler/Enablement_UI.png
 [profiler-app-setting]:./media/profiler/profiler-app-setting.png

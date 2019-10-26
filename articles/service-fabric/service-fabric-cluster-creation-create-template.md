@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9030a1d9d0b1e3f9b84f6636b0d3d758ab4cfa3b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4a2fe8238a1ac6f668450aca4e2fd6d2b4ba04a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599984"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901537"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Vytvoření Správce prostředků šablony Service Fabric clusteru
 
@@ -38,7 +38,7 @@ Ukázkové šablony Správce prostředků jsou k dispozici v [ukázkách Azure n
 Tento článek používá příklad šablony a parametrů šablony [zabezpečeného clusteru s pěti uzly][service-fabric-secure-cluster-5-node-1-nodetype] . Stáhněte si do počítače *azuredeploy. JSON* a *azuredeploy. Parameters. JSON* a otevřete oba soubory ve svém oblíbeném textovém editoru.
 
 > [!NOTE]
-> Pro národní cloudy (Azure Government, Azure Čína, Azure Německo) byste měli taky do šablony přidat `fabricSettings` následující `AADTokenEndpointFormat` : `AADLoginEndpoint`a `AADCertEndpointFormat`.
+> Pro národní cloudy (Azure Government, Azure Čína, Azure Německo) byste měli taky do šablony přidat následující `fabricSettings`: `AADLoginEndpoint`, `AADTokenEndpointFormat` a `AADCertEndpointFormat`.
 
 ## <a name="add-certificates"></a>Přidat certifikáty
 Certifikáty se přidávají do šablony Správce prostředků clusteru odkazem na Trezor klíčů, který obsahuje klíče certifikátu. Přidejte tyto parametry a hodnoty trezoru klíčů do souboru parametrů šablony Správce prostředků (*azuredeploy. Parameters. JSON*).
@@ -146,7 +146,7 @@ Certifikát pro ověřování clusteru musí být nakonfigurovaný jak v prostř
 Konfiguraci služby Azure AD přidáte do šablony Správce prostředků clusteru odkazem na Trezor klíčů, který obsahuje klíče certifikátu. Přidejte parametry a hodnoty služby Azure AD do souboru parametrů šablony Správce prostředků (*azuredeploy. Parameters. JSON*). 
 
 > [!NOTE]
-> Před vytvořením clusteru je nutné vytvořit klienty a uživatele služby Azure AD.  Pokud potřebujete další informace, přečtěte si téma [Nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).
+> V systému Linux je nutné před vytvořením clusteru vytvořit klienty a uživatele služby Azure AD.  Pokud potřebujete další informace, přečtěte si téma [Nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).
 
 ```json
 {
@@ -258,15 +258,15 @@ Následující diagram znázorňuje, kde se váš Trezor klíčů a konfigurace 
 
 ![Mapa závislostí Správce prostředků][cluster-security-arm-dependency-map]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když máte šablonu pro váš cluster, zjistěte, jak [nasadit cluster do Azure](service-fabric-cluster-creation-via-arm.md).  Pokud jste to ještě neudělali, přečtěte si [Kontrolní seznam připravenosti výroby](service-fabric-production-readiness-checklist.md) ještě před nasazením produkčního clusteru.
 
 Další informace o syntaxi a vlastnostech JSON pro prostředky nasazené v tomto článku najdete v těchto tématech:
 
 * [Microsoft. ServiceFabric/clustery](/azure/templates/microsoft.servicefabric/clusters)
-* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
 * [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft. COMPUTE/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 

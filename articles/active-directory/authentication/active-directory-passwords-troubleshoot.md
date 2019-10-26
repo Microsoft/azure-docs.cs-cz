@@ -4,7 +4,7 @@ description: Řešení potíží samoobslužného resetování hesla služby Azu
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4f236f2f2fdbf2736f87f754f48387f9f41850d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 003ceb19fafade4972ebb0cf4e60ceda34dc1928
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024637"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893449"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s samoobslužným resetováním hesla
 
@@ -127,7 +127,7 @@ Osvědčeným postupem při odstraňování potíží se zpětným zápisem hesl
 | 31018| KeyPairCreationSuccess| Tato událost označuje, že jsme úspěšně vytvořili šifrovací klíč hesla. Tento klíč slouží k šifrování hesel z cloudu, které se mají odeslat do místního prostředí.|
 | 32000| UnknownError| Tato událost indikuje, že během operace správy hesel došlo k neznámé chybě. Další podrobnosti najdete v textu výjimky v události. Pokud máte problémy, zkuste zakázat a znovu povolit zpětný zápis hesla. Pokud to neuděláte, zahrňte do svého specialisty podpory kopii protokolu událostí společně se zadaným ID sledování programu Insider.|
 | 32001| ServiceError| Tato událost indikuje, že došlo k chybě při připojování ke službě cloudového resetování hesla. K této chybě obvykle dochází v případě, že se místní služba nemohla připojit k webové službě resetování hesla.|
-| 32002| ServiceBusError| Tato událost indikuje, že došlo k chybě při připojování k instanci Service Bus vašeho tenanta. K tomu může dojít, Pokud blokujete odchozí připojení v místním prostředí. Zkontrolujte bránu firewall, abyste měli jistotu, že povolíte připojení přes TCP 443 a https://ssprsbprodncu-sb.accesscontrol.windows.net/, a pak to zkuste znovu. Pokud stále dochází k problémům, zkuste zakázat a znovu povolit zpětný zápis hesla.|
+| 32002| ServiceBusError| Tato událost indikuje, že došlo k chybě při připojování k instanci Service Bus vašeho tenanta. K tomu může dojít, Pokud blokujete odchozí připojení v místním prostředí. Zkontrolujte bránu firewall, abyste měli jistotu, že povolíte připojení přes TCP 443 a https://ssprdedicatedsbprodncu.servicebus.windows.net , a zkuste to znovu. Pokud stále dochází k problémům, zkuste zakázat a znovu povolit zpětný zápis hesla.|
 | 32003| InPutValidationError| Tato událost označuje, že vstup předaný do našeho rozhraní API webové služby byl neplatný. Zkuste operaci zopakovat.|
 | 32004| DecryptionError| Tato událost označuje, že došlo k chybě při dešifrování hesla, které bylo doručeno z cloudu. Příčinou může být neshoda dešifrovacího klíče mezi cloudovou službou a místním prostředím. Pokud chcete tento problém vyřešit, zakažte a znovu povolte zpětný zápis hesla v místním prostředí.|
 | 32005| ConfigurationError| Během připojování ukládáme informace specifické pro tenanta do konfiguračního souboru ve vašem místním prostředí. Tato událost znamená, že při ukládání tohoto souboru nebo při spuštění služby došlo k chybě. při čtení souboru došlo k chybě. Pokud chcete tento problém vyřešit, zkuste zakázat a znovu povolit zpětný zápis hesla, aby se vynutilo přepsání konfiguračního souboru.|
@@ -135,14 +135,14 @@ Osvědčeným postupem při odstraňování potíží se zpětným zápisem hesl
 | 32008| ValidationError| Tato událost znamená, že jsme dostali neplatnou odpověď z webové služby pro resetování hesla. Pokud chcete tento problém vyřešit, zkuste zakázat a znovu povolit zpětný zápis hesla.|
 | 32009| AuthTokenError| Tato událost označuje, že se nám nepovedlo získat autorizační token pro účet globálního správce zadaný při Azure AD Connect instalaci. Tato chyba může být způsobena nesprávným uživatelským jménem nebo heslem určeným pro účet globálního správce. K této chybě může dojít také v případě, že zadaný účet globálního správce je federovaný. Pokud chcete tento problém vyřešit, spusťte znovu konfiguraci se správným uživatelským jménem a heslem a ujistěte se, že správce je účet spravovaný (jenom cloudový nebo synchronizovaný s heslem).|
 | 32010| CryptoError| Tato událost indikuje, že došlo k chybě při generování šifrovacího klíče pro heslo nebo při dešifrování hesla, které přicházejí z cloudové služby. Tato chyba zřejmě indikuje problém s vaším prostředím. Další informace o tom, jak tento problém vyřešit, najdete v podrobnostech v protokolu událostí. Můžete také zkusit zakázat a znovu povolit službu zpětného zápisu hesla.|
-| 32011| OnBoardingServiceError| Tato událost označuje, že místní služba nemohla správně komunikovat s webovou službou resetování hesla, aby zahájila proces připojování. K tomu může dojít v důsledku pravidla brány firewall nebo v případě, že došlo k potížím s získáním ověřovacího tokenu pro vašeho tenanta. Chcete-li tento problém vyřešit, ujistěte se, že neblokujete odchozí připojení přes TCP 443 a TCP 9350-9354 nebo https://ssprsbprodncu-sb.accesscontrol.windows.net/. Také se ujistěte, že účet správce Azure AD, který používáte k připojování, není federovaný.|
-| 32013| OffBoardingError| Tato událost označuje, že místní služba nemohla správně komunikovat s webovou službou resetování hesla, aby zahájila proces odhlašování. K tomu může dojít v důsledku pravidla brány firewall nebo v případě, že došlo k potížím s získáním autorizačního tokenu pro vašeho tenanta. Pokud chcete tento problém vyřešit, ujistěte se, že neblokujete odchozí připojení přes 443 nebo https://ssprsbprodncu-sb.accesscontrol.windows.net/ a že účet správce Azure Active Directory, který používáte k odpojení, není federovaný.|
+| 32011| OnBoardingServiceError| Tato událost označuje, že místní služba nemohla správně komunikovat s webovou službou resetování hesla, aby zahájila proces připojování. K tomu může dojít v důsledku pravidla brány firewall nebo v případě, že došlo k potížím s získáním ověřovacího tokenu pro vašeho tenanta. Chcete-li tento problém vyřešit, ujistěte se, že neblokujete odchozí připojení přes protokol TCP 443 a TCP 9350-9354 nebo https://ssprdedicatedsbprodncu.servicebus.windows.net. Také se ujistěte, že účet správce Azure AD, který používáte k připojování, není federovaný.|
+| 32013| OffBoardingError| Tato událost označuje, že místní služba nemohla správně komunikovat s webovou službou resetování hesla, aby zahájila proces odhlašování. K tomu může dojít v důsledku pravidla brány firewall nebo v případě, že došlo k potížím s získáním autorizačního tokenu pro vašeho tenanta. Pokud chcete tento problém vyřešit, ujistěte se, že neblokujete odchozí připojení přes 443 nebo https://ssprdedicatedsbprodncu.servicebus.windows.net a že účet správce Azure Active Directory, který používáte k odpojení, není federovaný.|
 | 32014| ServiceBusWarning| Tato událost označuje, že se musel znovu připojit k instanci Service Bus vašeho tenanta. Za běžných podmínek by to nemělo být obavy, ale pokud se tato událost několikrát zobrazí, zvažte možnost zkontrolovat připojení k síti Service Bus, zejména v případě, že se jedná o připojení s vysokou latencí nebo malou šířkou pásma.|
 | 32015| ReportServiceHealthError| Aby bylo možné monitorovat stav služby zpětného zápisu hesel, pošleme data prezenčního signálu do webové služby pro resetování hesla každých pět minut. Tato událost označuje, že při posílání těchto informací o stavu zpět do cloudové webové služby došlo k chybě. Tyto informace o stavu neobsahují data identifikovatelná z objektů (OII) nebo osobní údaje (PII) a jsou čistě prezenční a základní Statistika služby, aby bylo možné v cloudu poskytovat informace o stavu služby.|
 | 33001| ADUnKnownError| Tato událost označuje, že služba Active Directory vrátila neznámou chybu. Další informace najdete v protokolu událostí Azure AD Connect serveru pro události ze zdroje ADSync.|
 | 33002| ADUserNotFoundError| Tato událost označuje, že uživatel, který se pokouší resetovat nebo změnit heslo, nebyl nalezen v místním adresáři. K této chybě může dojít, když byl uživatel místně odstraněn, ale ne v cloudu. K této chybě může dojít také v případě, že dojde k potížím se synchronizací. Další informace najdete v protokolech synchronizace a v posledních několika podrobnostech o spuštění synchronizace.|
 | 33003| ADMutliMatchError| Když požadavek na resetování hesla nebo žádost o změnu pochází z cloudu, použijeme kotvy cloudu, které jste zadali během procesu instalace Azure AD Connect k určení, jak propojit tento požadavek zpět s uživatelem v místním prostředí. Tato událost označuje, že jsme v místním adresáři našli dva uživatele se stejným atributem kotvy cloudu. Další informace najdete v protokolech synchronizace a v posledních několika podrobnostech o spuštění synchronizace.|
-| 33004| ADPermissionsError| Tato událost označuje, že účet služby Agent pro správu služby Active Directory (ADMA) nemá v daném účtu příslušná oprávnění k nastavení nového hesla. Ujistěte se, že účet ADMA v doménové struktuře uživatele má oprávnění resetovat a změnit heslo pro všechny objekty v doménové struktuře. Další informace o tom, jak nastavit oprávnění, najdete v části Krok 4: nastavení příslušných oprávnění služby Active Directory.|
+| 33004| ADPermissionsError| Tato událost označuje, že účet služby Agent pro správu služby Active Directory (ADMA) nemá v daném účtu příslušná oprávnění k nastavení nového hesla. Ujistěte se, že účet ADMA v doménové struktuře uživatele má oprávnění resetovat a změnit heslo pro všechny objekty v doménové struktuře. Další informace o tom, jak nastavit oprávnění, najdete v části Krok 4: nastavení příslušných oprávnění služby Active Directory. K této chybě může dojít také v případě, že je atribut uživatele AdminCount nastaven na hodnotu 1.|
 | 33005| ADUserAccountDisabled| Tato událost označuje, že došlo k pokusu o resetování nebo změnu hesla k účtu, který byl zablokován místně. Povolte účet a zkuste operaci zopakovat.|
 | 33006| ADUserAccountLockedOut| Tato událost označuje, že došlo k pokusu o resetování nebo změnu hesla k účtu, který byl uzamčen místně. K uzamčení může dojít, když uživatel v krátké době vyzkouší příliš mnoho operací změna nebo resetování hesla. Odemkněte účet a zkuste operaci zopakovat.|
 | 33007| ADUserIncorrectPassword| Tato událost označuje, že při provádění operace změny hesla zadal uživatel nesprávné aktuální heslo. Zadejte správné aktuální heslo a zkuste to znovu.|
@@ -167,15 +167,15 @@ Nejběžnějším bodem selhání je to, že nejsou správně nakonfigurované p
 
 Pro Azure AD Connect verze verze 1.1.443.0 a novější potřebujete přístup odchozího protokolu HTTPS k následujícím akcím:
 
-* @no__t – 0.passwordreset.microsoftonline.com
-* @no__t – 0.servicebus.windows.net
+* \*. passwordreset.microsoftonline.com
+* \*. servicebus.windows.net
 
 V případě větší členitosti se na aktualizovaný seznam [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653) aktualizovala každou středu a vstoupí v platnost příští pondělí.
 
 Další informace najdete v článku požadavky na připojení v článku [požadavky pro Azure AD Connect](../hybrid/how-to-connect-install-prerequisites.md) .
 
 > [!NOTE]
-> SSPR může selhat i v případě, že se v účtu v služba AD DS v místním prostředí nakonfiguruje nastavení "heslo už nevypršelo" nebo "uživatel nemůže měnit heslo". 
+> SSPR může selhat i v případě, že se nastavení "heslo už nevyprší" nebo "uživatel nemůže změnit heslo" nakonfigurovaný v účtu v služba AD DS místním prostředí. 
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Restartujte službu Azure AD Connect Sync.
 
@@ -232,7 +232,7 @@ Pro zpětný zápis hesla vyžaduje Azure AD Connect oprávnění k **resetován
 
 1. Přihlaste se k serveru Azure AD Connect a spusťte **Synchronization Service Manager** pomocí možnosti **spustit** **synchronizační službu** > .
 1. Na kartě **konektory** vyberte konektor on-premises **Active Directory Domain Services** a pak vyberte **vlastnosti**.  
-   ![Synchronization Service Manager znázorňující úpravu vlastností @ no__t-1  
+   ![Synchronization Service Manager znázorňující úpravu vlastností](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
 1. V automaticky otevíraném okně vyberte **připojit k doménové struktuře služby Active Directory** a poznamenejte si vlastnost **uživatelské jméno** . Tato vlastnost je účet služba AD DS, který Azure AD Connect používá k provedení synchronizace adresářů. Aby Azure AD Connect mohl provést zpětný zápis hesla, musí mít účet služba AD DS oprávnění resetovat heslo.  
 

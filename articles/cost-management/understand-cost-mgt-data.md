@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 6870297eea194b89a84a89e1e8ef8decf5c1788e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0b93f898924d73636c31826b6b63a228f75fc8ba
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374536"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900162"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
 Tento článek vám pomůže lépe porozumět nákladům a datům o využití Azure, které jsou součástí Azure Cost Management. Vysvětluje, jak často se data zpracovávají, shromažďují, zobrazují a uzavřela. Účtují se za využití Azure za měsíc. I když fakturační cykly jsou měsíční období, počáteční a koncové datum cyklu se liší podle typu předplatného. Jak často Cost Management přijímat data o využití se liší v závislosti na různých faktorech. Tyto faktory zahrnují, jak dlouho trvá zpracování dat a jak často služby Azure emitují využití do fakturačního systému.
 
-Cost Management zahrnuje veškeré využití a nákupy, včetně rezervací a nabídek třetích stran pro účty smlouva Enterprise (EA). Účty Microsoft Custom Agreement (MCA) a jednotlivé předplatné s tarify průběžných plateb zahrnují jenom využití ze služeb Azure a Marketplace. Není zahrnutá podpora a další náklady. Náklady jsou odhadované, dokud se nevygeneruje faktura a nebere v kreditech žádný faktor.
+Cost Management zahrnuje veškeré využití a nákupy, včetně rezervací a nabídek třetích stran pro účty smlouva Enterprise (EA). Účty zákaznické smlouvy Microsoftu a jednotlivé předplatné s tarify průběžných plateb zahrnují jenom využití ze služeb Azure a Marketplace. Není zahrnutá podpora a další náklady. Náklady jsou odhadované, dokud se nevygeneruje faktura a nebere v kreditech žádný faktor.
 
 ## <a name="supported-microsoft-azure-offers"></a>Podporované nabídky Microsoft Azure
 
@@ -32,9 +32,9 @@ Následující informace zobrazují aktuálně podporované [Microsoft Azure nab
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | Květen 2014<sup>1</sup> |
 | **Smlouva Enterprise (EA)** | Enterprise pro vývoj/testování                                                        | MSDNDevTest_2014-09-01 | MS-AZR – 0148P | Květen 2014<sup>1</sup> |
 | **Smlouva Enterprise (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR – 0017P | Květen 2014<sup>1</sup> |
-| **Smlouva o zákaznících Microsoftu** | [Plán Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | Nevztahuje se | Březen 2019<sup>3</sup> |
-| **Smlouva o zákaznících Microsoftu** | [Microsoft Azure plán pro vývoj a testování](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | Nevztahuje se | Březen 2019<sup>3</sup> |
-| **Partnerská smlouva Microsoftu** | Plán Microsoft Azure | CSP_2015-05-01, CSP_MG_2017-12-01, CSPDEVTEST_2018-05-01 | Nevztahuje se | Říjen 2019 |
+| **Smlouva se zákazníkem Microsoftu** | [Plán Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | Nevztahuje se | Březen 2019<sup>3</sup> |
+| **Smlouva se zákazníkem Microsoftu** | [Microsoft Azure plán pro vývoj a testování](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | Nevztahuje se | Březen 2019<sup>3</sup> |
+| **Smlouva o zákaznících Microsoftu podporovaná partnery** | Plán Microsoft Azure | CSP_2015-05-01, CSP_MG_2017-12-01 a CSPDEVTEST_2018-05-01<br><br>ID kvóty se znovu použije pro zákaznickou smlouvu Microsoftu a starší verze CSP. V současné době se podporují jenom předplatná Zákaznická smlouva od Microsoftu. | Nevztahuje se | Říjen 2019 |
 | **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR – 0062P | 2\. října 2018<sup>2</sup> |
 | **Průběžné platby** | [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR – 0003P | 2\. října 2018<sup>2</sup> |
 | **Průběžné platby** | [Průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR – 0023P | 2\. října 2018<sup>2</sup> |

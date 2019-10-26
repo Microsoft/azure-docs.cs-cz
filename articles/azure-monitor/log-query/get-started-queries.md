@@ -1,24 +1,18 @@
 ---
 title: Začínáme s dotazy protokolu v Azure Monitor | Microsoft Docs
 description: Tento článek popisuje kurz Začínáme s psaním dotazů protokolu v Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/09/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: MT
+ms.date: 05/09/2019
+ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076760"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894307"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolu v Azure Monitor
 
@@ -63,7 +57,7 @@ Výše uvedený dotaz vrátí 10 výsledků z tabulky *SecurityEvent* , a to bez
 * Znak kanálu (|) odděluje příkazy, takže výstup prvního z nich se zadává do vstupu z následujícího příkazu. Můžete přidat libovolný počet prvků s potrubím.
 * Následující kanál je příkaz **přijmout** , který vrátí konkrétní počet libovolných záznamů z tabulky.
 
-Dotaz jsme mohli spustit i bez přidání `| take 10` -, který by byl stále platný, ale může vracet až 10 000 výsledků.
+Dotaz jsme mohli spustit i bez přidání `| take 10`, který by byl stále platný, ale mohl by vracet až 10 000 výsledků.
 
 ### <a name="search-queries"></a>Vyhledávací dotazy
 Vyhledávací dotazy jsou méně strukturované a obecně se hodí pro hledání záznamů, které obsahují konkrétní hodnotu v některém z jejich sloupců:
@@ -73,13 +67,13 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Tento dotaz vyhledá v tabulce *SecurityEvent* záznamy, které obsahují frázi "kryptografie". Z těchto záznamů se vrátí a zobrazí 10 záznamů. Pokud tuto `in (SecurityEvent)` část vynecháme a právě `search "Cryptographic"`ji spustíte, bude hledání probíhat na *všech* tabulkách, což by mohlo trvat déle a být méně efektivní.
+Tento dotaz vyhledá v tabulce *SecurityEvent* záznamy, které obsahují frázi "kryptografie". Z těchto záznamů se vrátí a zobrazí 10 záznamů. Pokud vynecháme část `in (SecurityEvent)` a stačí spustit `search "Cryptographic"`, bude hledání probíhat na *všech* tabulkách, které budou trvat déle a budou méně efektivní.
 
 > [!WARNING]
 > Vyhledávací dotazy jsou obvykle pomalejší než dotazy založené na tabulkách, protože musí zpracovávat více dat. 
 
 ## <a name="sort-and-top"></a>Seřadit a nahoru
-I když je užitečné získat pár záznamů, výsledky se vyberou a zobrazují se v žádném pořadí. Chcete-li získat seřazené zobrazení, můžete **Řadit** podle preferovaného sloupce:
+I **když je** užitečné získat pár záznamů, výsledky se vyberou a zobrazují se v žádném pořadí. Chcete-li získat seřazené zobrazení, můžete **Řadit** podle preferovaného sloupce:
 
 ```Kusto
 SecurityEvent   
@@ -112,11 +106,11 @@ SecurityEvent
 
 Při psaní podmínek filtrování můžete použít následující výrazy:
 
-| Výraz | Popis | Příklad |
+| Výraz | Popis | Příklad: |
 |:---|:---|:---|
 | == | Kontrolovat rovnost<br>(rozlišuje velká a malá písmena) | `Level == 8` |
 | =~ | Kontrolovat rovnost<br>(nerozlišuje velká a malá písmena) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| !=, <> | Kontrolovat nerovnost<br>(oba výrazy jsou identické) | `Level != 4` |
+| ! =, < > | Kontrolovat nerovnost<br>(oba výrazy jsou identické) | `Level != 4` |
 | *a*, *nebo* | Požadováno mezi podmínkami| `Level == 16 or CommandLine != ""` |
 
 Chcete-li filtrovat podle více podmínek, můžete buď použít **, a**:
@@ -135,7 +129,7 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Hodnoty mohou mít různé typy, takže je možná budete muset přetypovat na provedení porovnání se správným typem. Například sloupec *úrovně* SecurityEvent je typu String, takže je nutné jej přetypovat na číselný typ, jako je *int* nebo *Long*, předtím, než můžete použít numerické operátory:`SecurityEvent | where toint(Level) >= 10`
+> Hodnoty mohou mít různé typy, takže je možná budete muset přetypovat na provedení porovnání se správným typem. Například sloupec *úrovně* SecurityEvent je typu String, takže je nutné jej přetypovat na číselný typ, jako je *int* nebo *Long*, předtím, než můžete použít numerické operátory: `SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>Zadejte časový rozsah.
 
@@ -154,7 +148,7 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-Filtr `ago(30m)` ve výše uvedeném časovém intervalu znamená "před 30 minutami", takže dotaz vrátí pouze záznamy z posledních 30 minut. Mezi další jednotky času patří dny (2D), minuty (25m) a sekundy (desítkách).
+Ve výše uvedeném časovém filtru `ago(30m)` znamená "před 30 minutami", takže dotaz vrátí pouze záznamy z posledních 30 minut. Mezi další jednotky času patří dny (2D), minuty (25m) a sekundy (desítkách).
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Projekt a rozšířené: výběrové a výpočetní sloupce
@@ -226,7 +220,7 @@ Perf
 ```
 
 ### <a name="summarize-by-a-time-column"></a>Shrnout podle sloupce s časem
-Seskupení výsledků může být také založeno na časovém sloupci nebo jiné průběžné hodnotě. Jednoduché Shrnutí `by TimeGenerated` byste ale mohli vytvořit skupiny pro každou dobu v milisekundách v časovém rozsahu, protože se jedná o jedinečné hodnoty. 
+Seskupení výsledků může být také založeno na časovém sloupci nebo jiné průběžné hodnotě. Jednoduché Shrnutí `by TimeGenerated`, i když by se v časovém intervalu vytvořily skupiny pro každý jednotlivý milisekund, protože jsou to jedinečné hodnoty. 
 
 Chcete-li vytvořit skupiny založené na souvislých hodnotách, je nejlepší rozdělit rozsah na spravovatelné jednotky pomocí **přihrádky**. Následující dotaz analyzuje záznamy *výkonu* , které měří volnou paměť (*k dispozici v MB*) na určitém počítači. Vypočítá průměrnou hodnotu každé období 1 hodiny za posledních 7 dnů:
 

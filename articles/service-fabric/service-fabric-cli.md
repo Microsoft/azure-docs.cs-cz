@@ -2,18 +2,18 @@
 title: Začínáme s Azure Service Fabric CLI
 description: Naučte se používat Azure Service Fabric CLI. Zjistěte, jak se připojit ke clusteru a jak spravovat aplikace.
 services: service-fabric
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: e0146504bd06a3c56de8113cc59c9eedd375d06f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803240"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901364"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -21,11 +21,11 @@ Rozhraní příkazového řádku (CLI) Azure Service Fabric je nástroj příkaz
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před instalací se ujistěte, že je ve vašem prostředí nainstalovaný Python a pip. Další informace najdete v [úvodní dokumentaci nástroje pip](https://pip.pypa.io/en/latest/quickstart/) a oficiální [dokumentaci k instalaci Pythonu](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-Rozhraní příkazového řádku podporuje Python verze 2.7, 3.5, 3.6 a 3.7. Python 3.x je doporučená verze, protože Python 2.7 skončí jeho podpora brzy.
+Rozhraní příkazového řádku podporuje Python verze 2,7, 3,5, 3,6 a 3,7. Python 3. x je doporučená verze, protože Python 2,7 se brzy dokončí.
 
 ### <a name="service-fabric-target-runtime"></a>Cílový modul runtime Service Fabric
 
@@ -33,7 +33,8 @@ Smyslem Service Fabric CLI je podpora nejnovější verze modulu runtime sady Se
 
 | Verze rozhraní příkazového řádku   | Podporovaná verze modulu runtime |
 |---------------|---------------------------|
-| Latest (~=7)  | Nejnovější (~ = 6.4)            |
+| Nejnovější (~ = 8)  | Nejnovější (~ = 6,5)            |
+| 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
@@ -58,11 +59,11 @@ Na své platformě můžete pip a Python nainstalovat mnoha způsoby. Tady je n�
 
 Ve Windows 10, Windows Server 2016 a Windows Server 2012 R2 použijte standardní oficiální pokyny k instalaci. Instalační program Pythonu ve výchozím nastavení nainstaluje také pip.
 
-1. Přejděte na oficiální [stránku pro stažení Pythonu](https://www.python.org/downloads/)a stáhněte si nejnovější verzi Pythonu 3.7.
+1. Přejít na oficiální [stránku ke stažení v Pythonu](https://www.python.org/downloads/)a Stáhněte si nejnovější verzi pythonu 3,7.
 
 2. Spusťte instalační program.
 
-3. V dolní části příkazového řádku, vyberte **přidat Python 3.7 cestu**.
+3. V dolní části výzvy vyberte **Přidat Python 3,7 k cestě**.
 
 4. Vyberte **Install Now** (Nainstalovat) a dokončete instalaci.
 
@@ -73,7 +74,7 @@ python --version
 pip --version
 ```
 
-Spusťte následující příkaz k instalaci Azure Service Fabric CLI (sfctl) a zobrazit na stránce nápovědy rozhraní příkazového řádku:
+Pak spuštěním následujícího příkazu nainstalujte rozhraní příkazového řádku Azure Service Fabric CLI (sfctl) a zobrazte stránku s přehledem CLI:
 
 ```bat
 pip install sfctl
@@ -115,7 +116,7 @@ sudo pip3 install sfctl
 
 ### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (podpora Service Fabric ve verzi Preview)
 
-Pokud chcete nainstalovat Service Fabric CLI v systému Red Hat, spusťte následující příkazy:
+Pokud chcete nainstalovat Service Fabric CLI v Red Hat, spusťte následující příkazy:
 
 ```bash
 sudo yum install -y python34
@@ -124,7 +125,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-Pro účely testování instalace, můžete se podívat do kroky uvedené v **subsystém Ubuntu a Windows pro Linux** oddílu
+Při testování instalace se můžete podívat na postup uvedený v části **Ubuntu a subsystém Windows pro Linux** .
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
@@ -135,7 +136,7 @@ V systému MacOS doporučujeme použít [správce balíčků HomeBrew](https://b
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Potom z terminálu nainstalujte Python 3.7, pip a Service Fabric CLI spuštěním následujících příkazů:
+Pak z terminálu nainstalujte Python 3,7, PIP a Service Fabric CLI spuštěním následujících příkazů:
 
 ```bash
 brew install python3
@@ -241,7 +242,7 @@ Ověřte, že zadaný koncový bod clusteru je dostupný a naslouchá. Ověřte 
 
 ### <a name="detailed-logs"></a>Podrobné protokoly
 
-Podrobné protokoly jsou často užitečné při ladění nebo hlášení problému. `--debug` Příznak zvyšuje úroveň podrobností výstupu.
+Podrobné protokoly jsou často užitečné při ladění nebo hlášení problému. Příznak `--debug` zvyšuje úroveň podrobností výstupu.
 
 ### <a name="command-help-and-syntax"></a>Nápověda k příkazům a jejich syntaxe
 
@@ -266,7 +267,7 @@ pip uninstall sfctl
 pip install sfctl
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nasazení aplikace pomocí Azure Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 * [Začínáme se Service Fabric v Linuxu](service-fabric-get-started-linux.md)

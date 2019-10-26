@@ -1,150 +1,144 @@
 ---
-title: Network Performance Monitor řešení v Azure Log Analytics | Dokumentace Microsoftu
-description: Pomocí funkce monitorování ExpressRoute v Network Performance Monitor monitorovat začátku do konce připojení a výkon mezi vašimi pobočkami a Azure, přes Azure ExpressRoute.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Řešení Network Performance Monitor v Azure Log Analytics | Microsoft Docs
+description: Pomocí možnosti monitorování ExpressRoute v Network Performance Monitor můžete monitorovat komplexní připojení a výkon mezi vašimi pobočkami a Azure, a to prostřednictvím Azure ExpressRoute.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/27/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: 7f9c0d905a7b2bc81063e59229d78a1200894d47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/27/2018
+ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963866"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898886"
 ---
-# <a name="expressroute-monitor"></a>ExpressRoute Monitor
+# <a name="expressroute-monitor"></a>Monitorování ExpressRoute
 
-Můžete použít funkce monitorování Azure ExpressRoute v [Network Performance Monitor](network-performance-monitor.md) k monitorování připojení začátku do konce a výkon mezi vašimi pobočkami a Azure, přes Azure ExpressRoute. Jsou klíčové výhody: 
+Funkce Azure ExpressRoute monitor [Network Performance Monitor](network-performance-monitor.md) v nástroji můžete použít k monitorování komplexního připojení a výkonu mezi firemními pobočkami a Azure, a to prostřednictvím Azure ExpressRoute. Klíčové výhody: 
 
-- Okruhy ExpressRoute automatickou detekcí spojených s vaším předplatným.
+- Automatickou detekci okruhů ExpressRoute přidružených k vašemu předplatnému.
 - Sledování využití šířky pásma, ztrát a latence v okruhu, partnerského vztahu a úrovně Azure Virtual Network pro ExpressRoute.
 - Zjišťování síťové topologie okruhů ExpressRoute.
 
-![ExpressRoute Monitor](media/network-performance-monitor-expressroute/expressroute-intro.png)
+![Monitorování ExpressRoute](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>Konfigurace 
-Chcete-li spustit nástroj konfigurace pro sledování výkonu sítě, otevřete [řešení Network Performance Monitor](network-performance-monitor.md) a vyberte **konfigurovat**.
+Chcete-li otevřít konfiguraci pro Network Performance Monitor, otevřete [řešení Network Performance Monitor](network-performance-monitor.md) a vyberte **Konfigurovat**.
 
-### <a name="configure-network-security-group-rules"></a>Konfigurace pravidla skupiny zabezpečení sítě 
-Pro servery v Azure, které se používají pro monitorování prostřednictvím služby Network Performance Monitor nakonfigurujte skupiny (NSG) pravidla zabezpečení sítě umožňující provoz TCP na portu, používaný Network Performance Monitor pro syntetické transakce. Výchozí port je 8084. Tato konfigurace umožňuje agenta Log Analytics, který je nainstalován na virtuálních počítačích Azure ke komunikaci s místní agent monitorování. 
+### <a name="configure-network-security-group-rules"></a>Konfigurovat pravidla skupiny zabezpečení sítě 
+Pro servery v Azure, které se používají pro monitorování prostřednictvím Network Performance Monitor, nakonfigurujte pravidla skupiny zabezpečení sítě (NSG) tak, aby umožňovala přenosy TCP na portu používaném Network Performance Monitor pro syntetické transakce. Výchozí port je 8084. Tato konfigurace umožňuje, aby byl agent Log Analytics nainstalovaný na virtuálních počítačích Azure ke komunikaci s místním agentem monitorování. 
 
-Další informace o skupinách Nsg najdete v tématu [skupiny zabezpečení sítě](../../virtual-network/manage-network-security-group.md). 
+Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../../virtual-network/manage-network-security-group.md). 
 
 >[!NOTE]
-> Než budete pokračovat s tímto krokem, nainstalujte místního serveru agenta a agenta Azure server a spusťte Powershellový skript EnableRules.ps1. 
+> Než budete pokračovat v tomto kroku, nainstalujte agenta místního serveru a agenta serveru Azure a spusťte skript prostředí PowerShell EnableRules. ps1. 
 
  
-### <a name="discover-expressroute-peering-connections"></a>Zjistit partnerské vztahy ExpressRoute 
+### <a name="discover-expressroute-peering-connections"></a>Zjistit připojení partnerských vztahů ExpressRoute 
  
-1. Vyberte **partnerské vztahy ExpressRoute** zobrazení.
-2. Vyberte **zjistit nyní** ke zjišťování všech ExpressRoute privátní partnerské vztahy, které jsou připojené k virtuálním sítím v předplatném Azure, propojené s tímto pracovním prostorem Azure Log Analytics.
+1. Vyberte zobrazení **partnerské vztahy ExpressRoute** .
+2. Výběrem možnosti **vyhledat nyní** zjistíte všechny soukromé partnerské vztahy ExpressRoute, které jsou připojené k virtuálním sítím v předplatném Azure, které jsou propojené s tímto pracovním prostorem Azure Log Analytics.
 
     >[!NOTE]
-    > Řešení aktuálně zjišťuje pouze privátní partnerské vztahy ExpressRoute. 
+    > Řešení aktuálně zjišťuje pouze soukromé partnerské vztahy ExpressRoute. 
 
     >[!NOTE]
-    > Zjištění pouze privátní partnerské vztahy připojené k virtuálním sítím přidružené předplatné propojené s tímto pracovním prostorem Log Analytics. Pokud ExpressRoute je připojená k virtuálním sítím mimo předplatné propojené s Tento pracovní prostor, vytvořte pracovní prostor Log Analytics v těchto předplatných. Pak pomocí Network Performance Monitor monitorovat tyto partnerské vztahy. 
+    > Zjišťují se jenom privátní partnerské vztahy připojené k virtuálním sítím přidruženým k předplatnému, které jsou propojené s tímto Log Analytics pracovním prostorem. Pokud je ExpressRoute připojený k virtuálním sítím mimo předplatné propojené s tímto pracovním prostorem, vytvořte v těchto předplatných Log Analytics pracovní prostor. Pak použijte Network Performance Monitor k monitorování těchto partnerských vztahů. 
 
-    ![Konfigurace ExpressRoute monitoru](media/network-performance-monitor-expressroute/expressroute-configure.png)
+    ![Konfigurace monitoru ExpressRoute](media/network-performance-monitor-expressroute/expressroute-configure.png)
  
-   Po dokončení zjišťování zjištěné privátní připojení s partnerským vztahem jsou uvedeny v tabulce. Monitorování pro tyto partnerské vztahy zpočátku je v zakázaném stavu. 
+   Po dokončení zjišťování budou zjištěná připojení privátního partnerského vztahu uvedena v tabulce. Monitorování těchto partnerských vztahů je zpočátku v zakázaném stavu. 
 
-### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>Povolit monitorování partnerské vztahy ExpressRoute 
+### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>Povolit monitorování připojení partnerských vztahů ExpressRoute 
 
-1. Vyberte privátní připojení s partnerským vztahem, kterou chcete monitorovat.
-2. V podokně na pravé straně vyberte **monitorovat tento partnerský vztah** zaškrtávací políčko. 
-3. Pokud máte v úmyslu vytvořit stavu události pro toto připojení, vyberte **povolit monitorování stavu pro tento partnerský vztah**. 
-4. Vyberte sledování podmínek. Můžete nastavit vlastní prahové hodnoty pro generování události stavu tak, že zadáte prahové hodnoty. Pokaždé, když se hodnota podmínka překročí jeho zvolená prahová hodnota pro připojení s partnerským vztahem, vygeneruje událost stavu. 
-5. Vyberte **přidat agenty** zvolit agentů monitorování, které chcete využít pro monitorování tohoto připojení s partnerským vztahem. Ujistěte se, že přidáte agenty na obou koncích připojení. Budete potřebovat alespoň jednoho agenta do virtuální sítě připojené k tohoto partnerského vztahu. Budete také potřebovat aspoň jeden místní agent je připojený k tohoto partnerského vztahu. 
-6. Vyberte **Uložit** uložte konfiguraci. 
+1. Vyberte připojení privátního partnerského vztahu, které chcete monitorovat.
+2. V pravém podokně zaškrtněte políčko **monitorovat tento partnerský vztah** . 
+3. Pokud máte v úmyslu vytvořit události stavu pro toto připojení, vyberte **Povolit monitorování stavu pro tento partnerský vztah**. 
+4. Vyberte možnost podmínky monitorování. Můžete nastavit vlastní prahové hodnoty pro generování události stavu zadáním prahových hodnot. Pokaždé, když hodnota podmínky překročí zvolenou prahovou hodnotu pro připojení partnerského vztahu, bude vygenerována událost stavu. 
+5. Vyberte možnost **přidat agenty** a zvolte agenty monitorování, které chcete použít pro monitorování tohoto připojení partnerského vztahu. Ujistěte se, že jste přidali agenty na obou koncích připojení. Potřebujete aspoň jednoho agenta ve virtuální síti připojené k tomuto partnerskému vztahu. K tomuto partnerskému vztahu musíte taky připojit aspoň jeden místní agent. 
+6. Kliknutím na **Uložit** uložte konfiguraci. 
 
    ![Konfigurace monitorování ExpressRoute](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
 
 
-Po povolení pravidla a vyberte hodnoty a agenty, Počkejte přibližně 30 – 60 minut, než se hodnoty, které mají naplnit a **monitorování ExpressRoute** dlaždic, které se zobrazí. Když se zobrazí dlaždice monitorování, služba Network Performance Monitor monitorovat nyní okruhy ExpressRoute a připojení prostředků. 
+Po povolení pravidel a výběru hodnot a agentů Počkejte 30 až 60 minut, než se hodnoty naplní, a zobrazí se dlaždice **monitorování ExpressRoute** . Po zobrazení dlaždic monitorování jsou nyní vaše okruhy ExpressRoute a prostředky připojení monitorovány pomocí Network Performance Monitor. 
 
 >[!NOTE]
-> Tato funkce funguje spolehlivě na pracovní prostory, které se upgradovaly na nový dotazovací jazyk.
+> Tato funkce funguje spolehlivě v pracovních prostorech, které byly upgradovány na nový dotazovací jazyk.
 
 ## <a name="walkthrough"></a>Názorný postup 
 
-Network Performance Monitor řídicího panelu ukazuje přehled stavu okruhů ExpressRoute a připojení s partnerským vztahem. 
+Řídicí panel Network Performance Monitor zobrazuje přehled stavu okruhů ExpressRoute a připojení partnerských vztahů. 
 
-![Řídicí panel monitorování výkonu sítě](media/network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
+![Řídicí panel Network Performance Monitor](media/network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
 
-### <a name="circuits-list"></a>Seznam okruhy 
+### <a name="circuits-list"></a>Seznam okruhů 
 
-Pokud chcete zobrazit seznam všech monitorované okruhy ExpressRoute, vyberte dlaždici okruhů ExpressRoute. Můžete vybrat okruh a zobrazit její stav, grafy trendů využití šířky pásma, latence a ztráta paketů. Grafy jsou interaktivní. Můžete vybrat vlastní časový interval pro vykreslení grafy. Přetažením myši přes oblast na graf můžete přiblížit a zobrazit podrobné datových bodů. 
+Pokud chcete zobrazit seznam všech sledovaných okruhů ExpressRoute, vyberte dlaždici okruhy ExpressRoute. Můžete vybrat okruh a zobrazit jeho stav, diagramy trendů pro ztrátu paketů, využití šířky pásma a latenci. Grafy jsou interaktivní. Můžete vybrat vlastní časový interval pro vykreslení grafů. Přetažením myši na oblast v grafu se můžete přiblížit a zobrazit jemně odstupňované datové body. 
 
-![Seznam okruhy ExpressRoute](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
+![Seznam okruhů ExpressRoute](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
 
 ### <a name="trends-of-loss-latency-and-throughput"></a>Trendy ztráty, latence a propustnosti 
 
-Grafy využití, latence a ztráta šířky pásma jsou interaktivní. Do libovolné části tyto grafy můžete přiblížit pomocí myši ovládacích prvků. Také můžete zobrazit na šířku pásma, latence a ztráta dat jiné intervaly. V levém horním rohu pod **akce** tlačítka, vyberte **data a času**. 
+Grafy využití šířky pásma, latence a ztrát jsou interaktivní. Pomocí ovládacích prvků myši můžete přiblížit libovolný oddíl těchto grafů. Také se můžete podívat na data o šířce pásma, latenci a ztrátě pro jiné intervaly. V levém horním rohu pod tlačítkem **Akce** vyberte **Datum a čas**. 
 
 ![Latence ExpressRoute](media/network-performance-monitor-expressroute/expressroute-latency.png) 
 
 ### <a name="peerings-list"></a>Seznam partnerských vztahů 
 
-Zobrazíte seznam všech připojení k virtuálním sítím přes privátní partnerský vztah, vyberte **privátní partnerské vztahy** dlaždici na řídicím panelu. Tady můžete vybrat virtuální síťové připojení a zobrazit její stav, grafy trendů využití šířky pásma, latence a ztráta paketů. 
+Pokud chcete v rámci privátního partnerského vztahu zobrazit seznam všech připojení k virtuálním sítím, vyberte na řídicím panelu dlaždici **privátních partnerských vztahů** . Tady můžete vybrat připojení k virtuální síti a zobrazit jeho stav, diagramy trendů pro ztrátu paketů, využití šířky pásma a latenci. 
 
 ![Partnerské vztahy ExpressRoute](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 
-### <a name="circuit-topology"></a>Topologie okruh 
+### <a name="circuit-topology"></a>Topologie okruhů 
 
-Chcete-li zobrazit topologie okruhů, vyberte **topologie** dlaždici. Tím přejdete na zobrazení topologie zvolené okruhu nebo partnerského vztahu. Diagram topologie poskytuje latence pro každý segment v síti a každého směrování vrstvy 3 je reprezentována uzlu diagramu. Výběr hop zobrazí další podrobnosti o směrování. Pokud chcete zvýšit úroveň viditelnosti zahrnout segmenty směrování místní, přesuňte posuvník v části **FILTRY**. Přesunutí posuvník doleva nebo doprava zvyšuje nebo snižuje počet segmentů směrování v grafu topologie. Latence v každém segmentu je viditelná, který umožňuje rychlejší izolace vysokou latencí segmentů ve vaší síti.
+Pokud chcete zobrazit topologii okruhů, vyberte dlaždici **topologie** . Tato akce přejde k zobrazení topologie vybraného okruhu nebo partnerského vztahu. Diagram topologie poskytuje latenci pro jednotlivé segmenty v síti a všechny segmenty vrstvy 3 jsou reprezentovány uzlem diagramu. Výběr směrování odhalí další podrobnosti o směrování. Pokud chcete zvýšit úroveň viditelnosti tak, aby zahrnovala místní směrování, přesuňte posuvník v části **filtry**. Přesunutí posuvníku doleva nebo doprava se zvýší nebo sníží počet segmentů směrování v grafu topologie. Latence napříč každým segmentem je viditelná, což umožňuje rychlejší izolaci segmentů s vysokou latencí ve vaší síti.
 
 ![Topologie ExpressRoute](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
-### <a name="detailed-topology-view-of-a-circuit"></a>Zobrazení topologie podrobné okruhu 
+### <a name="detailed-topology-view-of-a-circuit"></a>Detailní zobrazení topologie okruhu 
 
-Toto zobrazení uvádí připojení virtuální sítě. 
+Toto zobrazení ukazuje připojení k virtuální síti. 
 
-![Připojení virtuální sítě ExpressRoute](media/network-performance-monitor-expressroute/expressroute-vnet.png)
+![Připojení k virtuální síti ExpressRoute](media/network-performance-monitor-expressroute/expressroute-vnet.png)
  
 ## <a name="diagnostics"></a>Diagnostika 
 
-Network Performance Monitor pomáhá diagnostikovat problémy s připojením několik okruhu. Níže jsou uvedeny některé problémy, které se zobrazí.
+Network Performance Monitor pomáhá diagnostikovat několik problémů s připojením okruhu. Některé problémy, které vidíte, jsou uvedeny níže.
 
-Můžete zobrazit kódy upozornění a nastavení upozornění na ně prostřednictvím **LogAnalytics**. Na **NPM diagnostiky** stránky, můžete zobrazit popisy pro všechny zprávy diagnostiky aktivuje.
+Můžete zobrazit kódy oznámení a nastavit výstrahy na nich prostřednictvím **LogAnalytics**. Na stránce **Diagnostika npm** uvidíte popisy každé aktivované zprávy diagnostiky.
 
-| Kód upozornění (protokoly) | Popis |
+| Kód oznámení (protokoly) | Popis |
 | --- | --- |
-| 5501 | Není průchodné sekundární připojení okruhu ExpressRoute |
-| 5502 | Není průchodné primární připojení okruhu ExpressRoute |
-| 5503 | Pro předplatné propojené s pracovním prostorem se nenašel žádný okruh | 
-| 5508 | Nejste schopni zjistit, jestli přenos prochází přes všechny okruhy pro cestu |
-| 5510 | Přenos neprochází přes zamýšlený okruh | 
-| 5511 | Přenos neprochází přes zamýšlenou virtuální síť | 
+| 5501 | Nejde procházet sekundárním připojením okruhu ExpressRoute. |
+| 5502 | Primární připojení okruhu ExpressRoute se nedá Procházet. |
+| 5503 | Pro předplatné propojené s pracovním prostorem se nenašel žádný okruh. | 
+| 5508 | Nepovedlo se určit, jestli provoz projde všemi okruhy pro cestu. |
+| 5510 | Přenos nepřechází přes zamýšlený okruh. | 
+| 5511 | Přenos nepřechází přes zamýšlenou virtuální síť. | 
 
-**Okruh je mimo provoz.** Network Performance Monitor vás upozorní, jakmile dojde ke ztrátě připojení mezi virtuálními sítěmi Azure a místních prostředků. Toto oznámení vám pomůže přijmout proaktivní opatření předtím, než se zobrazí uživateli eskalací a snížit prostoje.
+**Okruh je mimo provoz.** Network Performance Monitor vás upozorní, jakmile dojde ke ztrátě spojení mezi místními prostředky a virtuálními sítěmi Azure. Toto oznámení vám pomůže proniknout aktivní akci před přijetím eskalace uživatelů a snížením prostojů.
 
-![Okruh ExpressRoute je mimo provoz](media/network-performance-monitor-expressroute/expressroute-circuit-down.png)
+![Okruh ExpressRoute je mimo provoz.](media/network-performance-monitor-expressroute/expressroute-circuit-down.png)
  
 
-**Provoz není přes zamýšlený okruh.** Network Performance Monitor upozornění vždy, když neprobíhá provoz přes zamýšlený okruh ExpressRoute. Tento problém může dojít, pokud je okruh je mimo provoz a provoz se přenášejí prostřednictvím zálohování trasy. Je také může dojít, pokud nastane problém s směrování. Tyto informace pomáhají aktivně spravovat problémy s konfigurací v zásadách pro směrování a ujistěte se, že se používá směrování nejvíce optimální a zabezpečené. 
+**Provoz, který nepřechází přes zamýšlený okruh.** Network Performance Monitor vás upozorní, když přenos neprojde zamýšleným okruhem ExpressRoute. K tomuto problému může dojít, pokud je okruh mimo provoz a přenos prochází přes trasu zálohování. Může k tomu také dojít, pokud dojde k potížím s směrováním. Tyto informace vám pomůžou aktivně spravovat všechny problémy s konfigurací v zásadách směrování a zajistit, aby se používala optimální a zabezpečená trasa. 
 
  
 
-**Provoz není primární okruh.** Network Performance Monitor vás upozorní, když provoz se přenášejí prostřednictvím sekundární okruh ExpressRoute. I když nebude zaznamenáte jakékoli problémy s připojením v tomto případě, proaktivně řešení potíží s primární okruh vám umožňuje lépe připravený. 
+**Provoz nevedený přes primární okruh.** Network Performance Monitor vás upozorní, když přenos provádí tok přes sekundární okruh ExpressRoute. I když v takovém případě nebudete mít problémy s připojením, budete moct aktivně řešit problémy s primárním okruhem a lépe tak připravit. 
 
  
 ![Tok provozu ExpressRoute](media/network-performance-monitor-expressroute/expressroute-traffic-flow.png)
 
 
-**Snížení kvůli využití ve špičce.** Můžete porovnat trend využití šířky pásma s trend latence a zjistěte, jestli snížení sady funkcí Azure je z důvodu špičky ve využití šířky pásma, nebo ne. Potom můžete provést akci odpovídajícím způsobem.
+**Snížení výkonu z důvodu využití špičky** Trend využití šířky pásma s trendem latence můžete korelovat a zjistit, jestli je snížení zátěže úlohy Azure způsobené špičkou využití šířky pásma nebo ne. Pak můžete provést akci odpovídajícím způsobem.
 
 ![Využití šířky pásma ExpressRoute](media/network-performance-monitor-expressroute/expressroute-peak-utilization.png)
 
  
 
-## <a name="next-steps"></a>Další postup
-[Hledání protokolů](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné sítě výkonu datových záznamů.
+## <a name="next-steps"></a>Další kroky
+V [protokolech hledání](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.

@@ -1,75 +1,71 @@
 ---
-title: Parsovat text data v protokolech Azure Monitor | Dokumentace Microsoftu
-description: Popisuje různé možnosti pro analýzu dat protokolu v záznamech Azure Monitor, když data ingestují a když je načten v dotazu, porovnání relativní výhody pro každý.
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.service: log-analytics
+title: Analyzovat textová data v protokolech Azure Monitor | Microsoft Docs
+description: Popisuje různé možnosti analýzy dat protokolu v Azure Monitor záznamy, když se data ingestují a když se načtou v dotazu, a porovnává si relativní výhody pro každou z nich.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/04/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: ad4839a1b9e951a2bb206518254826a066330000
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/04/2018
+ms.openlocfilehash: 5a3b6852563955bfac940073bdda7d0afa02e77f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61426727"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900248"
 ---
-# <a name="parse-text-data-in-azure-monitor-logs"></a>Parsovat text data v protokolech Azure Monitor
-Některé protokolu data shromážděná službou Azure Monitor bude obsahovat více kusů informace v jedné vlastnosti. Analýza těchto dat do více vlastností usnadňují použít v dotazech. Běžným příkladem jsou [vlastního protokolu](../../log-analytics/log-analytics-data-sources-custom-logs.md) položku celý protokol s více hodnotami, které shromažďuje do vlastnosti jediné. Vytvoření samostatné vlastnosti pro různé hodnoty, můžete hledat a agregace v každém.
+# <a name="parse-text-data-in-azure-monitor-logs"></a>Analyzovat textová data v protokolech Azure Monitor
+Některá data protokolu shromážděná pomocí Azure Monitor budou obsahovat více informací v jedné vlastnosti. Analýza těchto dat na více vlastností usnadňuje jejich použití v dotazech. Běžným příkladem je [vlastní protokol](../../log-analytics/log-analytics-data-sources-custom-logs.md) , který shromažďuje celou položku protokolu s více hodnotami do jedné vlastnosti. Vytvořením samostatných vlastností pro různé hodnoty můžete vyhledávat a agregovat na každé z nich.
 
-Tento článek popisuje různé možnosti pro analýzu dat protokolu ve službě Azure Monitor, když data ingestují a když je načten v dotazu, porovnání relativní výhody pro každý.
+Tento článek popisuje různé možnosti analýzy dat protokolu v Azure Monitor, když se data ingestují a když se načtou v dotazu, a porovnává si relativní výhody pro každou z nich.
 
 
-## <a name="parsing-methods"></a>Analýza kódu metody
-Můžete analyzovat data v době příjmu, kdy data jsou shromažďována nebo na dotaz při analýze dat pomocí dotazu. Každé strategie zahrnuje jedinečné výhody, jak je popsáno níže.
+## <a name="parsing-methods"></a>Metody analýzy
+Data můžete analyzovat buď při příjmu dat, když jsou data shromažďována nebo v době dotazu při analýze dat pomocí dotazu. Každá strategie má jedinečné výhody, jak je popsáno níže.
 
-### <a name="parse-data-at-collection-time"></a>Analýza dat v době shromažďování
-Při analýze dat v době shromažďování nakonfigurujete [vlastní pole](../../log-analytics/log-analytics-custom-fields.md) , které v tabulce vytvořte nové vlastnosti. Dotazy nemusí obsahovat všechny analýzy logiky a tyto vlastnosti jednoduše používat jako jakékoli jiné pole v tabulce.
+### <a name="parse-data-at-collection-time"></a>Analyzovat data v době shromažďování
+Při analýze dat v době shromažďování můžete nakonfigurovat [vlastní pole](../../log-analytics/log-analytics-custom-fields.md) , která vytvoří nové vlastnosti v tabulce. Dotazy nemusejí zahrnovat žádnou logiku analýzy a jednoduše tyto vlastnosti použít jako jakékoli jiné pole v tabulce.
 
-Výhody této metody patří:
+Mezi výhody této metody patří následující:
 
-- Usnadňuje dotazu analyzovat shromážděná data, protože není nutné zahrnovat příkazy v dotazu.
-- Lepší výkon dotazů, protože dotaz není nutné provádět analýzy.
+- Snazší dotazování shromážděných dat, protože v dotazu nemusíte vkládat příkazy analýzy.
+- Lepší výkon dotazů, protože dotaz nemusí provádět analýzu.
  
-Nevýhody této metody patří:
+Nevýhodou této metody jsou následující:
 
-- Musí být předem definovaný. Nesmí obsahovat data, která již byla shromážděna.
-- Pokud změníte analýzy logiku, bude vztahovat jenom na nová data.
-- Možnosti analýzy na méně než je k dispozici v dotazech.
-- Latence dobu shromažďování dat se zvyšuje.
-- Chyby může být obtížné zpracovat.
+- Musí být definováno předem. Data, která jsou již shromážděna, nelze zahrnout.
+- Změníte-li logiku analýzy, bude použita pouze pro nová data.
+- Menší možnosti analýzy než dostupné v dotazech.
+- Zvyšuje čas latence při sběru dat.
+- Chyby může být obtížné zvládnout.
 
 
-### <a name="parse-data-at-query-time"></a>Analýza dat v době zpracování dotazu
-Při analýze dat v době zpracování dotazu zahrnete logiku dotazu k analýze dat do několika polí. Samotné tabulky se nezmění.
+### <a name="parse-data-at-query-time"></a>Analyzovat data v době dotazu
+Když analyzujete data v době dotazu, zahrnete do dotazu logiku, která analyzuje data do více polí. Samotná skutečná tabulka není upravena.
 
-Výhody této metody patří:
+Mezi výhody této metody patří následující:
 
-- Platí pro všechna data, včetně dat, která již byla shromážděna.
-- Změny v logiky můžete okamžitě použít pro všechna data.
-- Flexibilní možnosti včetně předdefinovaných logiku pro konkrétní datové struktury analýzy.
+- Platí pro všechna data, včetně dat, která jsou už shromážděná.
+- Změny v logice lze použít okamžitě pro všechna data.
+- Flexibilní možnosti analýzy, včetně předdefinované logiky pro konkrétní datové struktury.
  
-Nevýhody této metody patří:
+Nevýhodou této metody jsou následující:
 
-- Vyžaduje složitější dotazy. To lze zmírnit použitím [funkce pro simulaci tabulku](#use-function-to-simulate-a-table).
-- Musí replikovat analýzy logiky ve více dotazů. Můžete sdílet nějaké logiky prostřednictvím funkce.
-- Můžete vytvořit režie při spouštění velmi rozsáhlých záznam komplexní logiku nastaví (miliard záznamů).
+- Vyžaduje složitější dotazy. To lze zmírnit použitím [funkcí pro simulaci tabulky](#use-function-to-simulate-a-table).
+- Je nutné replikovat logiku analýzy ve více dotazech. Může sdílet některé logiky prostřednictvím funkcí.
+- Může vytvářet režijní náklady při spouštění komplexní logiky proti velmi rozsáhlým sadám záznamů (miliardy záznamů).
 
-## <a name="parse-data-as-its-collected"></a>Jak se shromažďují data analyzovat
-Zobrazit [vytvářet vlastní pole ve službě Azure Monitor](../platform/custom-fields.md) podrobné informace o analýze dat, jako jsou shromažďovány. Tím se vytvoří vlastní vlastnosti v tabulce, která mohou být využívána dotazy stejně jako jakoukoli jinou vlastnosti.
+## <a name="parse-data-as-its-collected"></a>Analyzovat data při jejich shromažďování
+Podrobnosti o analýze dat při jejich shromažďování najdete v tématu [Vytvoření vlastních polí v Azure monitor](../platform/custom-fields.md) . Tím se vytvoří vlastní vlastnosti v tabulce, které mohou být použity dotazy stejně jako jakákoli jiná vlastnost.
 
 ## <a name="parse-data-in-query-using-patterns"></a>Analyzovat data v dotazu pomocí vzorů
-Pokud chcete analyzovat data lze identifikovat podle vzoru opakuje napříč záznamy, můžete použít různé operátory ve [Kusto dotazovací jazyk](/azure/kusto/query/) extrahovat konkrétní data do jednoho nebo více nových vlastností.
+Pokud se data, která chcete analyzovat, dají identifikovat pomocí vzoru opakovaného v rámci záznamů, můžete použít různé operátory v [jazyce dotazů Kusto](/azure/kusto/query/) k extrakci konkrétních dat do jedné nebo více nových vlastností.
 
-### <a name="simple-text-patterns"></a>Jednoduchý text vzorce
+### <a name="simple-text-patterns"></a>Vzory jednoduchých textů
 
-Použití [analyzovat](/azure/kusto/query/parseoperator) operátor v dotazu, které se má vytvořit jeden nebo více vlastních vlastností, které může být extrahována z řetězcového výrazu. Určete vzor musí identifikovat a názvy vlastnosti, které chcete vytvořit. To je zvláště užitečná pro data s řetězci klíč hodnota se formulář podobný tomu _klíč = hodnota_.
+Pomocí operátoru [Parse](/azure/kusto/query/parseoperator) v dotazu vytvořte jednu nebo více vlastních vlastností, které lze extrahovat z řetězcového výrazu. Určíte vzor, který se má identifikovat, a názvy vlastností, které se mají vytvořit. To je zvlášť užitečné pro data s řetězci klíč-hodnota s formulářem podobným _klíčovým = hodnota_.
 
-Vezměte v úvahu vlastní protokol s daty v následujícím formátu.
+Zvažte vlastní protokol s daty v následujícím formátu.
 
 ```
 Time=2018-03-10 01:34:36 Event Code=207 Status=Success Message=Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
@@ -79,7 +75,7 @@ Time=2018-03-10 01:38:22 Event Code=302 Status=Error Message=Application could n
 Time=2018-03-10 01:31:34 Event Code=303 Status=Error Message=Application lost connection to database
 ```
 
-Následující dotaz by analyzovat tato data do jednotlivých vlastností. Řádek s _projektu_ přidá pouze vrátit vypočítané vlastnosti, ne _RawData_, což je jedinou vlastnost obsahující jednotlivé položky z vlastního protokolu.
+Následující dotaz by tato data analyzoval na jednotlivé vlastnosti. Řádek s _projektem_ je přidán, aby vracel pouze počítané vlastnosti, nikoli _rawData_, což je jediná vlastnost držící celou položku z vlastního protokolu.
 
 ```Kusto
 MyCustomLog_CL
@@ -87,7 +83,7 @@ MyCustomLog_CL
 | project EventTime, Code, Status, Message
 ```
 
-Tady je další příklad, který se dělí uživatelské jméno UPN v _AzureActivity_ tabulky.
+Následuje další příklad, který rozdělí uživatelské jméno hlavního názvu uživatele (UPN) do tabulky _AzureActivity_ .
 
 ```Kusto
 AzureActivity
@@ -98,7 +94,7 @@ AzureActivity
 
 
 ### <a name="regular-expressions"></a>Regulární výrazy
-Pokud vaše data lze identifikovat s regulárním výrazem, můžete použít [funkcí, které používají regulární výrazy](/azure/kusto/query/re2) extrahovat jednotlivé hodnoty. Následující příklad používá [extrahovat](/azure/kusto/query/extractfunction) rozdělit _UPN_ pole z _AzureActivity_ záznamy a pak se vraťte jedinečných uživatelů.
+Pokud se vaše data dají identifikovat pomocí regulárního výrazu, můžete použít [funkce, které používají regulární výrazy](/azure/kusto/query/re2) k extrakci jednotlivých hodnot. Následující příklad používá [extrakci](/azure/kusto/query/extractfunction) k rozdělení pole _hlavního názvu uživatele (UPN)_ ze záznamů _AzureActivity_ a vrácení jedinečných uživatelů.
 
 ```Kusto
 AzureActivity
@@ -106,14 +102,14 @@ AzureActivity
 | distinct UPNUserPart, Caller
 ```
 
-Umožňuje efektivní analýzy ve velkém měřítku, Azure Monitor používá re2 verzi regulárních výrazů, které je podobné, ale nejsou identické pro některé z dalších variant regulární výraz. Odkazovat [syntaxe výrazu re2](https://aka.ms/kql_re2syntax) podrobnosti.
+Aby bylo možné efektivně analyzovat ve velkém měřítku, Azure Monitor používá re2 verzi regulárních výrazů, která je podobná, ale není shodná s některými jinými variantami regulárních výrazů. Podrobnosti najdete v [syntaxi výrazu re2](https://aka.ms/kql_re2syntax) .
 
 
-## <a name="parse-delimited-data-in-a-query"></a>Analyzovat data s oddělovači v dotazu
-Data s oddělovači odděluje pole běžný znak, jako je čárka v souboru CSV. Použití [rozdělit](/azure/kusto/query/splitfunction) funkci parsování oddělovači dat pomocí oddělovače, který zadáte. To může být použito s [rozšířit](/azure/kusto/query/extendoperator) operátor vrátí všechna pole v datech nebo zadat jednotlivá pole mají být zahrnuty ve výstupu.
+## <a name="parse-delimited-data-in-a-query"></a>Analyzovat data oddělená v dotazu
+Oddělená data oddělují pole se společným znakem, jako je čárka v souboru CSV. Pomocí funkce [Split](/azure/kusto/query/splitfunction) můžete analyzovat data oddělená pomocí oddělovače, který zadáte. Pomocí operátoru [Extended](/azure/kusto/query/extendoperator) můžete vrátit všechna pole v datech nebo zadat jednotlivá pole, která chcete zahrnout do výstupu.
 
 > [!NOTE]
-> Protože rozdělení vrací dynamický objekt, výsledky se možná muset být explicitně přetypován na datové typy, například řetězec se používá v operátory a filtry.
+> Vzhledem k tomu, že funkce Split vrátí dynamický objekt, mohou být výsledky explicitně přetypování na datové typy, jako je například řetězec, který se má použít v operátorech a filtrech.
 
 Vezměte v úvahu vlastní protokol s daty v následujícím formátu CSV.
 
@@ -125,7 +121,7 @@ Vezměte v úvahu vlastní protokol s daty v následujícím formátu CSV.
 2018-03-10 01:31:34, 303,Error,Application lost connection to database
 ```
 
-Následující dotaz by tato data analyzovat a vytvořit souhrn podle série počítané vlastnosti. První řádek rozdělí _RawData_ vlastnost do pole řetězců. Každý další řádek poskytuje název pro jednotlivé vlastnosti a přidá je do výstupu je převést na správný typ dat pomocí funkcí.
+Následující dotaz by analyzoval tato data a sumarizuje je dvěma ze počítaných vlastností. První řádek rozdělí vlastnost _rawData_ do pole řetězce. Každý z dalších řádků obsahuje název jednotlivých vlastností a přidává je do výstupu pomocí funkcí pro jejich převod na příslušný datový typ.
 
 ```Kusto
 MyCustomCSVLog_CL
@@ -139,18 +135,18 @@ MyCustomCSVLog_CL
 ```
 
 ## <a name="parse-predefined-structures-in-a-query"></a>Analyzovat předdefinované struktury v dotazu
-Pokud data naformátovaná ve struktuře známé, je možné použít jednu z funkcí v [Kusto dotazovací jazyk](/azure/kusto/query/) k analýze předdefinované struktury:
+Pokud jsou data ve známé struktuře naformátovaná, možná budete moct použít jednu z funkcí v [dotazovacím jazyce Kusto](/azure/kusto/query/) k analýze předdefinovaných struktur:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)
 - [IPv4](/azure/kusto/query/parse-ipv4function)
 - [Adresa URL](/azure/kusto/query/parseurlfunction)
-- [Dotaz adresy URL](/azure/kusto/query/parseurlqueryfunction)
+- [Dotaz na adresu URL](/azure/kusto/query/parseurlqueryfunction)
 - [Cesta k souboru](/azure/kusto/query/parsepathfunction)
 - [Uživatelský agent](/azure/kusto/query/parse-useragentfunction)
 - [Řetězec verze](/azure/kusto/query/parse-versionfunction)
 
-Následující příklad dotazu analyzuje _vlastnosti_ pole _AzureActivity_ tabulku, která je rozdělen do formátu JSON. Uloží výsledky na dynamické vlastnost s názvem _parsedProp_, což zahrnuje uživatele se pojmenovaná hodnota v kódu JSON. Tyto hodnoty jsou použity pro filtrování a shrnutí výsledků dotazu.
+Následující příklad dotazu analyzuje pole _vlastností_ tabulky _AzureActivity_ , která je strukturována ve formátu JSON. Výsledky uloží do dynamické vlastnosti s názvem _parsedProp_, která zahrnuje jednotlivé pojmenované hodnoty ve formátu JSON. Tyto hodnoty slouží k filtrování a sumarizaci výsledků dotazu.
 
 ```Kusto
 AzureActivity
@@ -159,9 +155,9 @@ AzureActivity
 | summarize count() by ResourceGroup, tostring(parsedProp.tags.businessowner)
 ```
 
-Tyto analýzy funkce mohou být velmi náročná, procesoru, aby je bylo možné použít pouze v případě, že váš dotaz využívá více vlastností z formátovaná data. Jednoduché porovnávání vzorů zpracování v opačném případě bude rychlejší.
+Tyto funkce analýzy mohou být náročné na procesor, takže by měly být použity pouze v případě, že dotaz používá více vlastností ze formátovaných dat. V opačném případě bude jednodušší zpracování jednoduchých vzorů rychlejší.
 
-Následující příklad ukazuje rozpis řadič domény lístek TGT předběžného ověření typu. Typ existuje pouze v poli EventData, což je řetězec XML, ale je potřeba žádná další data z tohoto pole. V takovém případě [analyzovat](/azure/kusto/query/parseoperator) slouží k výběru požadované část data.
+Následující příklad ukazuje rozpis typu předběžného ověření TGT řadiče domény. Typ existuje pouze v poli EventData, což je řetězec XML, ale žádná jiná data z tohoto pole nejsou potřeba. V tomto případě se k výběru požadovaných částí dat používá [Analýza](/azure/kusto/query/parseoperator) .
 
 ```Kusto
 SecurityEvent
@@ -170,10 +166,10 @@ SecurityEvent
 | summarize count() by PreAuthType
 ```
 
-## <a name="use-function-to-simulate-a-table"></a>Pomocí funkce pro simulaci tabulku
-Můžete mít více dotazů, které provádějí stejné analýze určité tabulce. V takovém případě [vytvořit funkci](functions.md) , která vrací analyzovaná data namísto replikace analýzy logika v jednotlivých dotazů. Alias funkce namísto původní tabulky můžete pak použít v jiných dotazech.
+## <a name="use-function-to-simulate-a-table"></a>Použití funkce k simulaci tabulky
+Je možné, že máte více dotazů, které provádějí stejnou analýzu konkrétní tabulky. V takovém případě [vytvořte funkci](functions.md) , která vrátí Analyzovaná data namísto replikace logiky analýzy v každém dotazu. Pak můžete použít alias funkce místo původní tabulky v jiných dotazech.
 
-Vezměte v úvahu výše uvedený příklad vlastního protokolu oddělený čárkami. Chcete-li použít analyzovaná data ve více dotazů, vytvoření funkce pomocí následujícího dotazu a uložit ji s aliasem, který _MyCustomCSVLog_.
+Vezměte v úvahu příklad vlastního protokolu odděleného čárkami. Chcete-li použít Analyzovaná data ve více dotazech, vytvořte funkci pomocí následujícího dotazu a uložte ji s aliasem _MyCustomCSVLog_.
 
 ```Kusto
 MyCustomCSVLog_CL
@@ -184,7 +180,7 @@ MyCustomCSVLog_CL
 | extend Message   = tostring(CSVFields[3]) 
 ```
 
-Teď můžete použít alias _MyCustomCSVLog_ místo skutečný název tabulky v dotazech takto.
+Nyní můžete použít alias _MyCustomCSVLog_ místo skutečného názvu tabulky v dotazech, jako jsou následující.
 
 ```Kusto
 MyCustomCSVLog
@@ -192,5 +188,5 @@ MyCustomCSVLog
 ```
 
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [protokolu dotazy](log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si o [dotazech protokolů](log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.

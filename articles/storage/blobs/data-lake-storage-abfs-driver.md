@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6e74830a3a62ea54c5d8e7f9815fe2ba6eed6d58
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
-ms.translationtype: MT
+ms.openlocfilehash: 49567ae52b8ea706ebf7e093880e919cc8bbdbad
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166494"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901645"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů objektů BLOB v Azure (ABFS): vyhrazený ovladač Azure Storage pro Hadoop
 
@@ -54,11 +54,11 @@ Ovladač ABFS podporuje dvě formy ověřování, aby mohla aplikace Hadoop bezp
 
 Všechny konfigurace pro ovladač ABFS jsou uložené v konfiguračním souboru <code>core-site.xml</code>. V distribucích Hadoop s [Ambari](https://ambari.apache.org/)může být konfigurace spravovaná taky pomocí webového portálu nebo Ambari REST API.
 
-Podrobnosti o všech podporovaných položkách konfigurace jsou uvedeny v [oficiální dokumentaci k systému Hadoop](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html).
+Podrobnosti o všech podporovaných položkách konfigurace jsou uvedeny v [oficiální dokumentaci k systému Hadoop](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html).
 
 ### <a name="hadoop-documentation"></a>Dokumentace k Hadoop
 
-Ovladač ABFS je plně popsán v [oficiální dokumentaci k Hadoop](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html) .
+Ovladač ABFS je plně popsán v [oficiální dokumentaci k Hadoop](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html) .
 
 ## <a name="next-steps"></a>Další kroky
 

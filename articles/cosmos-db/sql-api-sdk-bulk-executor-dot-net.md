@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/11/2019
+ms.date: 10/24/2019
 ms.author: ramkris
-ms.openlocfilehash: 9da994550609b0be44362e0f0059844b288aabbd
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0ff281e54df0273cc4c72d1780f4a99fe9719aec
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388066"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900190"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu .NET: informace o stažení 
 
@@ -42,95 +42,99 @@ ms.locfileid: "72388066"
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-### <a name="a-name241-preview241-preview"></a>@no__t – 02.4.1 – Preview
+### <a name="a-name241-preview241-preview"></a><a name="2.4.1-preview"/>2.4.1 – Preview
 
 * Opravili TotalElapsedTime v reakci na BulkDelete pro správné měření celkového času včetně všech opakovaných pokusů.
 
-### <a name="a-name240-preview240-preview"></a>@no__t – 02.4.0 – Preview
+### <a name="a-name240-preview240-preview"></a><a name="2.4.0-preview"/>2.4.0 – Preview
 
 * Změna závislosti sady SDK na > = 2.5.1
 
-### <a name="a-name230-preview2230-preview2"></a>@no__t – 02.3.0 – preview2
+### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0 – preview2
 
 * Přidání podpory hromadného prováděcího modulu grafu pro příjem hodnoty TTL u vrcholů a hran
 
-### <a name="a-name220-preview2220-preview2"></a>@no__t – 02.2.0 – preview2
+### <a name="a-name220-preview2220-preview2"></a><a name="2.2.0-preview2"/>2.2.0 – preview2
 
 * Opravili jsme problém, což způsobilo výjimky během elastického škálování Azure Cosmos DB při spuštění v režimu brány. Tato oprava je funkčně ekvivalentní verzi 1.4.1.
 
-### <a name="a-name210-preview2210-preview2"></a>@no__t – 02.1.0 – preview2
+### <a name="a-name210-preview2210-preview2"></a><a name="2.1.0-preview2"/>2.1.0 – preview2
 
 * Přidali jsme podporu BulkDelete pro účty rozhraní SQL API k přijetí klíče oddílu, k odstranění řazených kolekcí členů dokumentu. Tato změna zajišťuje funkčně rovnocennou verzi 1.4.0.
 
-### <a name="a-name200-preview2200-preview2"></a>@no__t – 02.0.0 – preview2
+### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0 – preview2
 
 * Včetně MongoBulkExecutor pro podporu .NET Standard 2,0. Tato funkce je funkčně ekvivalentní verzi 1.3.0, s přidáním podpory .NET Standard 2,0 jako cílové rozhraní.
 
-### <a name="a-name200-preview200-preview"></a>@no__t – 02.0.0 – Preview
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0 – Preview
 
 * Přidání .NET Standard 2,0 jako jedné z podporovaných cílových rozhraní umožňuje, aby knihovna hromadného prováděcího modulu fungovala s aplikacemi .NET Core.
 
-### <a name="a-name184184"></a>@no__t – 01.8.4
+### <a name="a-name185185"></a><a name="1.8.5"/>1.8.5
+
+* Zámek na verzi sady SDK byl odebrán. Balíček je teď závislý na SDK > = 2.5.1.
+
+### <a name="a-name184184"></a><a name="1.8.4"/>1.8.4
 
 * Pevné zpracování identifikátorů při volání BulkImport se seznamem objektů POCO s číselnými hodnotami.
 
-### <a name="a-name183183"></a>@no__t – 01.8.3
+### <a name="a-name183183"></a><a name="1.8.3"/>1.8.3
 
 * Opravili TotalElapsedTime v reakci na BulkDelete pro správné měření celkového času včetně všech opakovaných pokusů.
 
-### <a name="a-name182182"></a>@no__t – 01.8.2
+### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
 * Pevná vysoká spotřeba procesoru v některých scénářích.
 * Trasování teď používá TraceSource. Uživatelé můžou definovat naslouchací procesy pro zdroj `BulkExecutorTrace`.
 * Opravili jsme vzácnou situaci, která by mohla způsobit zámek při posílání dokumentů s velikostí 2 MB.
 
-### <a name="a-name160160"></a>@no__t – 01.6.0
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 
 * Byl aktualizován hromadný prováděcí modul, aby nyní používal nejnovější verzi sady Azure Cosmos DB .NET SDK (2.4.0).
 
-### <a name="a-name150150"></a>@no__t – 01.5.0
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
 
 * Přidání podpory hromadného prováděcího modulu grafu pro příjem hodnoty TTL u vrcholů a hran
 
-### <a name="a-name141141"></a>@no__t – 01.4.1
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
 
 * Opravili jsme problém, což způsobilo výjimky během elastického škálování Azure Cosmos DB při spuštění v režimu brány.
 
-### <a name="a-name140140"></a>@no__t – 01.4.0
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
 
 * Přidali jsme podporu BulkDelete pro účty rozhraní SQL API k přijetí klíče oddílu, k odstranění řazených kolekcí členů dokumentu.
 
-### <a name="a-name130130"></a>@no__t – 01.3.0
+### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
 * Opravili jsme problém, což způsobilo problém s formátováním uživatelského agenta používaného hromadným vykonavatelem.
 
-### <a name="a-name120120"></a>@no__t – 01.2.0
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 
 * Nastavilo se zlepšení hromadného prováděcího modulu pro import a aktualizaci rozhraní API pro účely transparentního přizpůsobování elastického škálování Cosmos kontejneru, když úložiště překročí aktuální kapacitu bez vyvolání výjimek.
 
-### <a name="a-name112112"></a>@no__t – 01.1.2
+### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
 * DocumentDB závislost sady .NET SDK na verzi 2.1.3.
 
-### <a name="a-name111111"></a>@no__t – 01.1.1
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 
 * Opravili jsme problém, což způsobilo, že hromadný vykonavatel při importu do pevných kolekcí vyvolal chybu JSRT.
 
-### <a name="a-name110110"></a>@no__t – 01.1.0
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
 * Přidání podpory pro operaci BulkDelete pro účty Azure Cosmos DB rozhraní SQL API
 * Přidala se podpora pro BulkImport operace pro účty s rozhraním API Azure Cosmos DB pro MongoDB.
 * DocumentDB závislost sady .NET SDK na verzi 2.0.0. 
 
-### <a name="a-name102102"></a>@no__t – 01.0.2
+### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2
 
 * Přidání podpory pro operaci BulkImport pro účty rozhraní API pro Azure Cosmos DB Gremlin
 
-### <a name="a-name101101"></a>@no__t – 01.0.1
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 
 * Menší Oprava chyby BulkImport operace pro účty rozhraní SQL API Azure Cosmos DB.
 
-### <a name="a-name100100"></a>@no__t – 01.0.0
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
 * Přidání podpory pro operace BulkImport a BulkUpdate pro Azure Cosmos DB účty rozhraní SQL API
 

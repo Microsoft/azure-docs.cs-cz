@@ -1,31 +1,25 @@
 ---
-title: Zobrazení analytických dat Azure Web Apps | Dokumentace Microsoftu
-description: Řešení Azure Web Apps Analytics můžete použít k získání přehledu o službě Azure Web Apps shromažďováním různých metrik ve všech prostředcích Azure Web App.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Zobrazit analytická data služby Azure Web Apps | Microsoft Docs
+description: Pomocí řešení Azure Web Apps Analytics můžete získat přehled o službě Azure Web Apps shromažďováním různých metrik ve všech vašich prostředcích vaší webové aplikace Azure.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 07/02/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1ebe0b9d3cbe14bf35e05db3349a5aebb11b5716
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/02/2018
+ms.openlocfilehash: 6b0a4276e27cdcbfaad133a69ac2f4cc3b750805
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60494728"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899078"
 ---
-# <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Zobrazení analytických dat pro metriky ve všech prostředcích Azure Web App
+# <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Zobrazení analytických dat pro metriky napříč všemi vašimi prostředky vaší webové aplikace Azure
 
-![Symbol webové aplikace](./media/azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
+![Symbol Web Apps](./media/azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
 
 > [!NOTE]
-> Řešení Azure Web App Analytics byla přesunuta do podpory prostřednictvím komunity.  
->- Řešení už nejsou k dispozici z webu Azure Marketplace, ale můžete ji nainstalovat z [šablon rychlého startu Azure](https://azure.microsoft.com/resources/templates/101-webappazure-oms-monitoring/) kde je podporován komunitou.
->- Zákazníci, kteří už jste nainstalovali řešení můžete nadále používat ji se změnami.  
->- Microsoft doporučuje, abyste použili [Application Insights](../../azure-monitor/app/app-insights-overview.md) monitorování webových aplikací.
+> Řešení analýzy webových aplikací Azure se přesunulo na podporu komunity.  
+>- Řešení už není dostupné ze Azure Marketplace, ale dá se instalovat ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-webappazure-oms-monitoring/) , kde ho podporuje komunita.
+>- Zákazníci, kteří už toto řešení nainstalovali, ho můžou dál používat se změnami.  
+>- Společnost Microsoft doporučuje použít [Application Insights](../../azure-monitor/app/app-insights-overview.md) k monitorování webových aplikací.

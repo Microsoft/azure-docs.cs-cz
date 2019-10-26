@@ -1,24 +1,19 @@
 ---
 title: Vzorkování telemetrie v Azure Application Insights | Microsoft Docs
 description: Jak udržet množství telemetrie v rámci řízení.
-services: application-insights
-documentationcenter: windows
-author: cijothomas
-manager: carmonm
-ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: cijothomas
+ms.author: cithomas
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.author: cithomas
-ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 82c0855e3ea3b6a89c1b20569971b0dc6b3d449c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372565"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899859"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -33,7 +28,7 @@ Vzorkování snižuje náklady na provoz a data a pomáhá vyhnout se omezován�
 * Adaptivní vzorkování je ve výchozím nastavení povolené ve všech nejnovějších verzích ASP.NET ASP.NET Core a sadách SDK (Software Development Kit).
 * Vzorkování můžete také nastavit ručně. To se dá nakonfigurovat na portálu na *stránce využití a odhadované náklady*v sadě ASP.NET SDK v souboru ApplicationInsights. config v sadě sdk pro ASP.NET Core pomocí kódu nebo v sadě Java SDK v souboru ApplicationInsights. XML.
 * Pokud protokolovat vlastní události a potřebujete zajistit, aby byla sada událostí zachována nebo zahozena společně, musí mít události stejnou hodnotu OperationId.
-* U každého záznamu ve vlastnosti `itemCount` je hlášený dělitel vzorků *n* , který se v hledání zobrazí pod popisným názvem "počet požadavků" nebo "počet událostí". @no__t – vzorkování 0when není v operaci.
+* U každého záznamu ve vlastnosti `itemCount` je hlášený dělitel vzorků *n* , který se v hledání zobrazí pod popisným názvem "počet požadavků" nebo "počet událostí". `itemCount==1`, pokud vzorkování není v operaci.
 * Pokud píšete analytické dotazy, měli byste [vzít v úvahu vzorkování](../../azure-monitor/log-query/aggregations.md). Konkrétně místo pouhého počítání záznamů byste měli použít `summarize sum(itemCount)`.
 
 ## <a name="types-of-sampling"></a>Typy vzorkování
@@ -345,9 +340,9 @@ Typy telemetrie, které lze zahrnout nebo vyloučit z vzorkování, jsou: závis
 > 
 > 
 
-2. Jako součást konfigurace `Tracer` můžete zadat `sampler`. Pokud není zadaný žádný explicitní vzorkovník, použije se ve výchozím nastavení ProbabilitySampler. ProbabilitySampler by ve výchozím nastavení použila sazbu 1/10000, což znamená, že se do Application Insights pošle jeden z každých 10000 požadavků. Pokud chcete zadat vzorkovací frekvenci, přečtěte si níže.
+2. V rámci konfigurace `Tracer` můžete zadat vzorkovník `sampler`. Pokud není zadaný žádný explicitní vzorkovník, použije se ve výchozím nastavení ProbabilitySampler. ProbabilitySampler by ve výchozím nastavení použila sazbu 1/10000, což znamená, že se do Application Insights pošle jeden z každých 10000 požadavků. Informace o zadání vzorkovací frekvence najdete níže.
 
-3. Když zadáte vzorkovník, ujistěte se, že `Tracer` určuje vzorkovník s vzorkovací frekvencí mezi 0,0 a 1,0 včetně. Vzorkovací frekvence 1,0 představuje 100%, což znamená, že všechny vaše požadavky budou odeslány jako telemetrie do Application Insights.
+3. Při zadávání vzorkovníku se ujistěte, že hodnota `Tracer` určuje vzorkovník se vzorkovací frekvencí od 0.0 do 1.0 (včetně). Vzorkovací frekvence 1,0 představuje 100%, což znamená, že všechny vaše požadavky budou odeslány jako telemetrie do Application Insights.
 
     ```python
     tracer = Tracer(
@@ -381,7 +376,7 @@ Vzorkování ingestování nefunguje, pokud je operace vzorkování na základě
 ## <a name="sampling-for-web-pages-with-javascript"></a>Vzorkování pro webové stránky pomocí JavaScriptu
 Webové stránky pro vzorkování s pevnou sazbou můžete nakonfigurovat z libovolného serveru. 
 
-Když [nakonfigurujete webové stránky pro Application Insights](../../azure-monitor/app/javascript.md), upravte fragment JavaScriptu, který získáte z portálu Application Insights. (V aplikacích ASP.NET je fragment kódu typicky v _Layout. cshtml.)  Vložte řádek jako `samplingPercentage: 10,` před klíč instrumentace:
+Když [nakonfigurujete webové stránky pro Application Insights](../../azure-monitor/app/javascript.md), upravte fragment JavaScriptu, který získáte z portálu Application Insights. (V aplikacích ASP.NET je fragment kódu typicky v _Layout. cshtml.)  Vložit řádek jako `samplingPercentage: 10,` před klíč instrumentace:
 
     <script>
     var appInsights= ... 

@@ -1,158 +1,152 @@
 ---
-title: Monitorování stavu replikace služby Active Directory prostřednictvím služby Azure Monitor | Dokumentace Microsoftu
-description: Balíček řešení replikace Active Directory – stav pravidelně monitoruje prostředí služby Active Directory pro všechny chyby replikace.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Monitorovat stav replikace služby Active Directory pomocí Azure Monitor | Microsoft Docs
+description: Sada Active Directory Replication Status Pack řešení pravidelně monitoruje prostředí služby Active Directory při selhání replikace.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 01/24/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f7bbde98c6ef35021cc03b2646193d3601ca1cff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.date: 01/24/2018
+ms.openlocfilehash: 47f57fd9e9fe9cc84df5058794bc21e1d5cce11b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60495111"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899176"
 ---
-# <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitorování stavu replikace služby Active Directory prostřednictvím služby Azure Monitor
+# <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitorovat stav replikace služby Active Directory pomocí Azure Monitor
 
-![Symbol stav replikace AD](./media/ad-replication-status/ad-replication-status-symbol.png)
+![Symbol AD Replication Status](./media/ad-replication-status/ad-replication-status-symbol.png)
 
-Služba Active Directory je klíčovou součástí organizace IT prostředí. Chcete-li zajistit vysokou dostupnost a vysoký výkon, každý řadič domény má vlastní kopii databáze služby Active Directory. Řadiče domény replikovat mezi sebou k šíření změn napříč celým podnikem. V tomto procesu replikace mohou způsobit řadu problémů napříč celým podnikem.
+Active Directory je klíčová součást podnikového IT prostředí. Pro zajištění vysoké dostupnosti a vysokého výkonu má každý řadič domény svou vlastní kopii databáze služby Active Directory. Řadiče domény se vzájemně replikují za účelem rozšíření změn napříč podnikem. Selhání v rámci tohoto procesu replikace může způsobit nejrůznější problémy v celém podniku.
 
-Balíček stavem replikace AD řešení pravidelně monitoruje prostředí služby Active Directory pro všechny chyby replikace.
+Sada AD Replication Status Pack řešení pravidelně monitoruje prostředí služby Active Directory při selhání replikace.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
-### <a name="install-agents-on-domain-controllers"></a>Nainstalovat agenty na řadičích domény
-Musíte nainstalovat agenty na řadiče domény, které jsou členy domény, který se má vyhodnotit. Nebo, musíte nainstalovat agenty na členských serverech a konfigurace agentů k odesílání dat replikace AD do Azure monitoru. Chcete-li pochopit, jak připojit počítače s Windows do Azure monitoru, přečtěte si téma [počítače připojit Windows do Azure monitoru](../../azure-monitor/platform/agent-windows.md). Pokud řadiče domény už je součástí existujícího prostředí System Center Operations Manager, který chcete připojit k Azure Monitor, naleznete v tématu [připojení Operations Manageru do Azure monitoru](../../azure-monitor/platform/om-agents.md).
+### <a name="install-agents-on-domain-controllers"></a>Instalace agentů na řadičích domény
+Musíte nainstalovat agenty na řadiče domény, které jsou členy domény k vyhodnocení. Nebo musíte nainstalovat agenty na členské servery a nakonfigurovat agenty tak, aby odesílali data replikace AD na Azure Monitor. Informace o tom, jak připojit počítače s Windows k Azure Monitor najdete v tématu [připojení počítačů s Windows k Azure monitor](../../azure-monitor/platform/agent-windows.md). Pokud je váš řadič domény už součástí stávajícího System Center Operations Manager prostředí, ke kterému se chcete připojit Azure Monitor, přečtěte si téma [připojení Operations Manager k Azure monitor](../../azure-monitor/platform/om-agents.md).
 
-### <a name="enable-non-domain-controller"></a>Povolit řadiči domény
-Pokud nechcete, aby všechny řadiče domény připojit přímo do Azure monitoru, můžete použít jakýkoli jiný počítač v doméně připojené k Azure Monitor pro shromažďování dat pro balíček stavem replikace AD řešení a jeho odeslat data.
+### <a name="enable-non-domain-controller"></a>Povolit jiný řadič než řadič domény
+Pokud nechcete, aby se žádné řadiče domény připojovaly přímo k Azure Monitor, můžete použít jakýkoli jiný počítač ve vaší doméně, který je připojený k Azure Monitor ke shromažďování dat pro AD Replication Status balíček řešení a jeho odeslání.
 
-1. Ověřte, zda je počítač členem domény, který chcete monitorovat stav replikace AD řešení.
-2. [Připojte počítač Windows do Azure monitoru](../../azure-monitor/platform/om-agents.md) nebo [připojte se pomocí svého stávajícího prostředí nástroje Operations Manager do Azure monitoru](../../azure-monitor/platform/om-agents.md), pokud už není připojený.
-3. V tomto počítači nastavte následující klíč registru:<br>Klíč: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>Hodnota: **IsTarget**<br>Údaj hodnoty: **true**
+1. Ověřte, zda je počítač členem domény, kterou chcete monitorovat pomocí řešení AD Replication Status.
+2. [Připojte počítač se systémem Windows, aby se Azure monitor](../../azure-monitor/platform/om-agents.md) , nebo [ho propojte pomocí stávajícího Operations Manager prostředí s Azure monitor](../../azure-monitor/platform/om-agents.md), pokud ještě není připojený.
+3. V tomto počítači nastavte následující klíč registru:<br>Key: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management groups\<ManagementGroupName > \Solutions\ADReplication**<br>Hodnota: **cíl**<br>Údaj hodnoty: **true**
 
    > [!NOTE]
-   > Tyto změny neprojeví, dokud se nerestartuje služby Microsoft Monitoring Agent (HealthService.exe).
-   > ### <a name="install-solution"></a>Instalace řešení
-   > Postupujte podle procesu popsaného v [nainstalovat řešení pro monitorování](solutions.md#install-a-monitoring-solution) přidáte **stav replikace služby Active Directory** řešení do pracovního prostoru Log Analytics. Není nutná žádná další konfigurace.
+   > Tyto změny se projeví až po restartování služby Microsoft Monitoring Agent (HealthService. exe).
+   > ### <a name="install-solution"></a>Nainstalovat řešení
+   > Postupujte podle kroků popsaných v tématu [instalace řešení monitorování](solutions.md#install-a-monitoring-solution) a přidejte **Active Directory Replication status** řešení do pracovního prostoru Log Analytics. Není nutná žádná další konfigurace.
 
 
-## <a name="ad-replication-status-data-collection-details"></a>Podrobnosti kolekce dat stavu replikace AD
-V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak data se shromažďují pro stav replikace AD.
+## <a name="ad-replication-status-data-collection-details"></a>Podrobnosti o AD Replication Status shromažďování dat
+V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro AD Replication Status.
 
-| Platforma | Přímý Agent | Agent nástroje SCOM | Azure Storage | SCOM vyžaduje? | Data agenta nástroje SCOM odeslaná pomocí skupiny pro správu | Četnost shromažďování dat |
+| platformy | Přímý Agent | Agent SCOM | Azure Storage | Vyžaduje se SCOM? | Data agenta SCOM odesílaná prostřednictvím skupiny pro správu | Frekvence shromažďování |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |každých pět dní |
 
 
 
-## <a name="understanding-replication-errors"></a>Vysvětlení chyb replikace
+## <a name="understanding-replication-errors"></a>Porozumění chybám replikace
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-Stav replikace AD dlaždici se zobrazuje počet chyb replikace aktuálně máte. **Kritické chyby replikace** jsou chyby, které jsou dosahovalo nebo přesahovalo 75 % [životnosti objektů označených jako neplatné](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) pro vaši doménovou strukturu služby Active Directory.
+Na dlaždici AD Replication Status se zobrazuje počet chyb replikace, které aktuálně máte. **Kritické chyby replikace** jsou chyby, které jsou v doménové struktuře služby Active Directory nebo jsou vyšší než 75% [doby platnosti označení za neplatné](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) .
 
-![Dlaždice se stavem replikace AD](./media/ad-replication-status/oms-ad-replication-tile.png)
+![Dlaždice AD Replication Status](./media/ad-replication-status/oms-ad-replication-tile.png)
 
-Po kliknutí na dlaždici zobrazíte další informace o chybách.
-![Řídicí panel stav replikace AD](./media/ad-replication-status/oms-ad-replication-dash.png)
+Po kliknutí na dlaždici si můžete zobrazit další informace o chybách.
+řídicí panel AD Replication Status ![](./media/ad-replication-status/oms-ad-replication-dash.png)
 
 ### <a name="destination-server-status-and-source-server-status"></a>Stav cílového serveru a stav zdrojového serveru
-Tyto sloupce se zobrazí stav cílové servery a zdrojové servery, na kterých dochází k chybám replikace. Číslo za každý název řadiče domény označuje číslo chyby replikace na příslušném řadiči domény.
+Tyto sloupce zobrazují stav cílových serverů a zdrojových serverů, u kterých dochází k chybám replikace. Číslo po názvu každého řadiče domény indikuje počet chyb replikace v řadiči domény.
 
-Chyby pro servery zdrojové a cílové servery jsou zobrazit, protože některé problémy se snadněji řešit z perspektivy zdrojového serveru a další z hlediska cílový server.
+Zobrazí se chyby pro cílové servery i zdrojové servery, protože některé problémy se snáze odstraňují z perspektivy zdrojového serveru a dalších z perspektivy cílového serveru.
 
-V tomto příkladu vidíte, že mnoho cílových serverů mají přibližně stejný počet chyb, ale je jeden server zdroje (ADDC35), který má mnoho chyb více než všechny ostatní. Je pravděpodobné, že je něco v nepořádku v ADDC35, který je příčinou selhání k odesílání dat do jeho replikaci. Řešení potíží na ADDC35 vyřešit řadu chyb, které se zobrazí v oblasti cílový server.
+V tomto příkladu vidíte, že mnoho cílových serverů má zhruba stejný počet chyb, ale existuje jeden zdrojový server (ADDC35), který má mnoho dalších chyb než všechny ostatní. Je možné, že došlo k nějakému problému v ADDC35, který způsobuje, že se nepodaří odeslat data partnerům pro replikaci. Řešení problémů v ADDC35 může vyřešit mnoho chyb, které se zobrazují v oblasti cílového serveru.
 
 ### <a name="replication-error-types"></a>Typy chyb replikace
-Tato oblast poskytuje informace o typech chyby zjištěné v celé organizaci. Každá chyba má jedinečný číselný kód a napište zprávu, která vám pomohou určit hlavní příčinu chyby.
+Tato oblast vám poskytne informace o typech chyb zjištěných v celém podniku. Každá chyba má jedinečný číselný kód a zprávu, která vám může pomáhat určit hlavní příčinu chyby.
 
-Prstencový v horní části vám dává představu, z které chyby objevit více a méně často ve vašem prostředí.
+Prstenec v horní části poskytuje představu o tom, které chyby se ve vašem prostředí vyskytují častěji a méně často.
 
-To se dozvíte, když víc řadičů domény dojít ke stejné chybě replikace. V takovém případě může mít možnost zjistit nebo identifikovat řešení na jednom řadiči domény a potom opakovat na jiných řadičích domény, které jsou ovlivněny ke stejné chybě.
+Zobrazuje se v případě, že při více řadičích domény dochází k jedné chybě replikace. V takovém případě budete možná schopni zjistit nebo identifikovat řešení na jednom řadiči domény a pak ho opakovat na dalších řadičích domény ovlivněných stejnou chybou.
 
-### <a name="tombstone-lifetime"></a>Životnost objektů označených jako neplatné
-Životnost objektů označených jako neplatné Určuje, jak dlouho odstraněný objekt, označuje jako nepotřebná data, se uchovávají v databázi služby Active Directory. Když je odstraněný objekt úspěšné životnosti objektů označených jako neplatné, proces shromažďování uvolňování paměti ji automaticky odstraní z databáze služby Active Directory.
+### <a name="tombstone-lifetime"></a>Doba platnosti označení za neplatný
+Doba platnosti označení za neplatné určuje, jak dlouho se odstraněný objekt, na který se odkazuje jako na označenou jako neplatný, zachová v databázi služby Active Directory. Když odstraněný objekt předá dobu neaktivního označení, proces uvolňování paměti ho automaticky odebere z databáze služby Active Directory.
 
-Je výchozí dobu, po 180 dnech pro nejnovější verze systému Windows, ale byla 60 dní u starších verzí a lze jej změnit explicitně microsoftem nebo správcem Active Directory.
+Výchozí doba platnosti neaktivních položek je 180 dní pro nejnovější verze Windows, ale ve starších verzích bylo 60 dní a je možné ji explicitně změnit správcem služby Active Directory.
 
-Je důležité vědět, pokud máte chyby replikace, které se blíží nebo uplynula doba života objektů označených jako neplatné. Pokud dva řadiče domény, který bude zachován po dobu, po chybě replikace, replikace je zakázaná mezi tyto dva řadiče domény, i v případě, že podkladová chyba je pevná.
+Je důležité, abyste věděli, jestli máte chyby replikace, ke kterým se přiblížíte, nebo které jsou po dobu životnosti neplatné. Pokud se u dvou řadičů domény setkáte s chybou replikace, která přetrvává po dobu platnosti označení za neplatné, replikace se mezi těmito dvěma řadiči domény vypne, i když je opravená základní Chyba replikace.
 
-Oblasti životnosti objektů označených jako neplatné pomáhá identifikovat místa, kde je zakázané replikace nebezpečí děje. Všechny chyby v **více než 100 % TSL** kategorie představuje oddíl, který nebyla replikována mezi jeho zdrojový a cílový server pro alespoň životnosti objektů označených jako neplatné pro doménovou strukturu.
+Oblast životnosti označená jako neplatná vám pomůže identifikovat místa, kde dochází k nenebezpečí zakázané replikace. Každá chyba v kategorii **Over 100% TSL** představuje oddíl, který se nereplikuje mezi zdrojovým a cílovým serverem minimálně pro dobu života doménové struktury.
 
-V takovém případě stačí oprava chyby replikace nebude stačit. Přinejmenším budete muset ručně prozkoumat k identifikaci a vyčištění přetrvávání odstraněných objektů, než je možné restartovat replikaci. Můžete dokonce vyřadit z provozu řadiče domény.
+V takové situaci nebude stačit opravit chybu replikace. Aby bylo možné restartovat replikaci, je třeba ručně prozkoumat, abyste identifikovali a vyčistili své objekty. Možná budete muset i vyřadit z provozu řadič domény.
 
-Kromě identifikace chyby replikace, ke kterým nebyla uložena po dobu životnosti objektů označených jako neplatné, potřebujete věnovat pozornost nějaké chyby, které spadají do **50-75 % TSL** nebo **75 100 % TSL** kategorií.
+Kromě Identifikace chyb replikace, které byly trvale trvalé po dobu životnosti, je také vhodné věnovat pozornost jakýmkoli chybám, které spadají do kategorií **50-75% TSL** nebo **75-100% TSL** .
 
-Toto jsou chyby, které jsou jasně přetrvávajících odstraněných, není přechodná, proto potřebují pravděpodobně váš zásah, chcete-li vyřešit. Dobrou zprávou je, že se zatím nedosáhly životnosti objektů označených jako neplatné. Je-li vyřešit tyto problémy o tom bezodkladně informuje a *před* dosáhnou životnosti objektů označených jako neplatné, replikace můžete restartovat s minimálními ručního zásahu.
+Jedná se o chyby, které se jasně odstraňují, nejsou přechodné, takže pravděpodobně potřebují vyřešit váš zásah. Dobrá zpráva je, že ještě nedosáhla doby platnosti označení za neplatné. Pokud tyto problémy opravíte rychle a předtím, *než* dosáhnou doby neplatnosti, replikace se může restartovat s minimálním ručním zásahem.
 
-Jak je uvedeno výše, dlaždici řídicího panelu pro stav replikace AD řešení zobrazuje počet *kritické* chyby replikace ve vašem prostředí, která je definována jako chyby, které jsou více než 75 % životnosti objektů označených jako neplatné (včetně chyby které jsou více než 100 % protokol TLS). Přitom se snaží zachovat toto číslo na 0.
+Jak bylo uvedeno dříve, dlaždice řídicího panelu pro AD Replication Status řešení zobrazuje počet *kritických* chyb replikace ve vašem prostředí, které jsou definovány jako chyby, které jsou větší než 75% doby platnosti označení (včetně chyb, které jsou větší než 100% TSL). Snažte se zachovat toto číslo na 0.
 
 > [!NOTE]
-> Všechny výpočty značek odstraněných položek životnost procento jsou založené na skutečné neplatného pro vaši doménovou strukturu služby Active Directory, kterému můžete důvěřovat, že jsou tyto procenta přesné, i v případě, že je nutné nastavit hodnotu doby života vlastních značek odstraněných položek.
+> Všechny výpočetních procentuálních hodnot životnosti za neplatné jsou založené na skutečné době neaktivních operací v doménové struktuře služby Active Directory, takže můžete důvěřovat tomu, že tyto procentuální hodnoty jsou přesné, a to i v případě, že máte nastavenou hodnotu vlastní doby platnosti
 >
 >
 
 ### <a name="ad-replication-status-details"></a>Podrobnosti o stavu replikace AD
-Po kliknutí na libovolnou položku v jednom seznamu se zobrazí další podrobnosti o použití protokolu dotazu. Výsledky se filtrují na Zobrazit pouze chyby související s danou položku. Například pokud kliknete na první řadič domény se uveden v části **stav cílového serveru (ADDC02)** , se zobrazí výsledky dotazu vyfiltrovaný tak, aby zobrazit chyby se tento řadič domény uvedený jako cílový server:
+Když kliknete na libovolnou položku v seznamu, zobrazí se další podrobnosti s použitím dotazu protokolu. Výsledky se filtrují tak, aby se zobrazily jenom chyby související s touto položkou. Pokud například kliknete na první řadič domény uvedený pod položkou **Stav cílového serveru (ADDC02)** , zobrazí se výsledky dotazu, které zobrazí chyby s řadičem domény uvedeným jako cílový server:
 
 ![Chyby stavu replikace AD ve výsledcích dotazu](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-Z tohoto místa můžete dále filtrovat, upravte dotaz protokolu a podobně. Další informace o použití dotazů protokolu ve službě Azure Monitor, naleznete v tématu [analyzovat data protokolů ve službě Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
+Odsud můžete filtrovat další, upravovat dotaz protokolu a tak dále. Další informace o používání dotazů protokolu v Azure Monitor najdete v tématu [Analýza dat protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md).
 
-**HelpLink** poli se zobrazí adresa URL stránky TechNet s dalšími podrobnosti o této konkrétní chyba. Můžete zkopírovat a vložit tento odkaz do okna prohlížeče, pokud chcete zobrazit informace o řešení potíží a opravě chyby.
+V poli **HelpLink** se zobrazuje adresa URL stránky TechNet s dalšími podrobnostmi o této konkrétní chybě. Můžete zkopírovat a vložit tento odkaz do okna prohlížeče, abyste viděli informace o řešení potíží a opravení chyby.
 
-Můžete také kliknout na **exportovat** exportovat výsledky do Excelu. Export dat můžete vizualizovat data chyby replikace žádným způsobem, který byste chtěli.
+Můžete také kliknout na tlačítko **exportovat** a exportovat výsledky do aplikace Excel. Export dat vám umožní vizualizovat data o chybách replikace jakýmkoli způsobem, který byste chtěli.
 
-![exportované chyby stavu replikace AD v aplikaci Excel](./media/ad-replication-status/oms-ad-replication-export.png)
+![exportované chyby stavu replikace AD v Excelu](./media/ad-replication-status/oms-ad-replication-export.png)
 
-## <a name="ad-replication-status-faq"></a>Stav replikace AD – nejčastější dotazy
-**Otázka: Jak často se data Stav replikace AD aktualizovat?**
-Odpověď: Informace jsou aktualizovány každých pět dní.
+## <a name="ad-replication-status-faq"></a>Nejčastější dotazy k AD Replication Status
+**Otázka: jak často se aktualizují data stavu replikace AD?**
+Odpověď: informace se aktualizují každých pět dní.
 
-**Otázka: Existuje způsob, jak konfigurovat, jak často tato data se aktualizují?**
-Odpověď: V tuto chvíli to není možné.
+**Otázka: existuje způsob, jak nakonfigurovat, jak často se tato data aktualizují?**
+Odpověď: ne v tomto okamžiku.
 
-**Otázka: Je nutné přidat všechny moje řadičů domény do pracovního prostoru Log Analytics Chcete-li zobrazit stav replikace?**
-Odpověď: Ne, je nutné přidat jenom jeden řadič domény. Pokud máte víc řadičů domény ve vašem pracovním prostoru Log Analytics, data ze všech z nich se odesílají do Azure monitoru.
+**Otázka: musím do svého pracovního prostoru Log Analytics přidat všechny řadiče domény, aby se zobrazil stav replikace?**
+Odpověď: Ne, je nutné přidat pouze jeden řadič domény. Máte-li v pracovním prostoru Log Analytics více řadičů domény, budou do Azure Monitor odesílána data ze všech těchto řadičů.
 
-**Otázka: Nechcete přidat žádné řadiče domény do pracovního prostoru Log Analytics Použití řešení stav replikace AD**
+**Otázka: Nechci do pracovního prostoru Log Analytics přidat žádné řadiče domény. Můžu pořád používat řešení AD Replication Status?**
 
-Odpověď: Ano. Můžete nastavit jako hodnotu klíče registru, aby je. Zobrazit [povolit řadiči domény](#enable-non-domain-controller).
+Odpověď: Ano. Můžete nastavit hodnotu klíče registru, abyste ho mohli povolit. Viz [Povolení neřadič domény](#enable-non-domain-controller).
 
-**Otázka: Jaký je název procesu, která provádí sběr dat?**
-Odpověď: AdvisorAssessment.exe
+**Otázka: Jaký je název procesu, který provádí shromažďování dat?**
+Odpověď: AdvisorAssessment. exe
 
-**Otázka: Jak dlouho trvá shromažďování dat?**
-Odpověď: Doba shromažďování dat závisí na velikosti prostředí služby Active Directory, ale obvykle trvá méně než 15 minut.
+**Otázka: jak dlouho trvá shromažďování dat?**
+Odpověď: čas shromažďování dat závisí na velikosti prostředí služby Active Directory, ale obvykle trvá méně než 15 minut.
 
-**Otázka: Jaký typ dat se shromažďují?**
-Odpověď: Replikace informace jsou shromažďovány prostřednictvím protokolu LDAP.
+**Otázka: jaký typ dat se shromáždí?**
+Odpověď: informace o replikaci jsou shromažďovány prostřednictvím protokolu LDAP.
 
-**Otázka: Existuje způsob, jak konfigurovat, když se shromažďují data?**
-Odpověď: V tuto chvíli to není možné.
+**Otázka: existuje způsob, jak nakonfigurovat, kdy se data shromažďují?**
+Odpověď: ne v tomto okamžiku.
 
-**Otázka: Jaká oprávnění potřebuji pro shromažďování dat?**
-Odpověď: Postačují oprávněními běžných uživatelů do služby Active Directory.
+**Otázka: jaká oprávnění potřebuji ke shromažďování dat?**
+O: jsou dostatečná standardní uživatelská oprávnění ke službě Active Directory.
 
-## <a name="troubleshoot-data-collection-problems"></a>Poradce při potížích kolekce dat
-Aby bylo možné shromažďovat data, balíček řešení stav replikace AD vyžaduje aspoň jeden řadič domény k připojení k pracovnímu prostoru Log Analytics. Až se připojíte řadič domény, zobrazí se zpráva označující, že **data se stále shromažďují**.
+## <a name="troubleshoot-data-collection-problems"></a>Řešení problémů se shromažďováním dat
+Aby bylo možné shromažďovat data, AD Replication Status sada řešení vyžaduje, aby byl k pracovnímu prostoru Log Analytics připojen alespoň jeden řadič domény. Dokud nepřipojíte řadič domény, zobrazí se zpráva oznamující, že **se data stále shromažďují**.
 
-Pokud potřebujete pomoc s připojením jeden z řadičů domény, můžete zobrazit dokumentaci na [počítače připojit Windows do Azure monitoru](../../azure-monitor/platform/om-agents.md). Případně, pokud vaše řadiče domény je již připojen do existujícího prostředí System Center Operations Manager, dokumentaci si můžete prohlédnout v [připojení System Center Operations Manageru do Azure monitoru](../../azure-monitor/platform/om-agents.md).
+Pokud potřebujete pomoc s připojením k jednomu z řadičů domény, můžete zobrazit dokumentaci v části [připojení počítačů se systémem Windows k Azure monitor](../../azure-monitor/platform/om-agents.md). Případně, pokud je váš řadič domény už připojený k existujícímu System Center Operations Manager prostředí, můžete zobrazit dokumentaci na adrese [připojení System Center Operations Manager a Azure monitor](../../azure-monitor/platform/om-agents.md).
 
-Pokud nechcete, aby všechny řadiče domény připojit přímo do Azure Monitor nebo System Center Operations Manageru, najdete v článku [povolit řadiči domény](#enable-non-domain-controller).
+Pokud nechcete, aby se žádné řadiče domény připojovaly přímo k Azure Monitor nebo System Center Operations Manager, přečtěte si téma [povolení jiného řadiče](#enable-non-domain-controller)domény.
 
-## <a name="next-steps"></a>Další postup
-* Použití [protokolu dotazů ve službě Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné údaje o stavu replikace služby Active Directory.
+## <a name="next-steps"></a>Další kroky
+* K zobrazení podrobných dat o stavu replikace služby Active Directory použijte [dotazy protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md) .

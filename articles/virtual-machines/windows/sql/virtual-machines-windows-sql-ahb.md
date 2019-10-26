@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: aac20034fb4a528e48d5b383f39205a952878539
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262873"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900697"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Změna modelu licencí pro virtuální počítač s SQL Server v Azure
 Tento článek popisuje, jak změnit model licencí pro SQL Server virtuální počítač (VM) v Azure pomocí nového poskytovatele prostředků SQL VM, **Microsoft. SqlVirtualMachine**.
@@ -31,7 +31,7 @@ Model s průběžnými platbami znamená, že náklady na spuštění virtuáln�
 
 Zvýhodněné hybridní využití Azure umožňuje použití licencí SQL Server se Software Assurance ("kvalifikovaná licence") na virtuálních počítačích Azure. U Zvýhodněné hybridní využití Azure se zákazníkům neúčtují použití licence SQL Server na virtuálním počítači. Ale pořád musí platit za náklady na základní cloudové výpočetní prostředky (tj. základní sazba), úložiště a zálohy. Musí také platit za vstupně-výstupní operace spojené s jejich používáním služeb (podle potřeby).
 
-Podle podmínek produktu společnosti Microsoft: "Zákazníci musí naznačit, že používají Azure SQL Database (spravované instance, Elastický fond a Izolovaná databáze), Azure Data Factory, služba SSIS (SQL Server Integration Services) nebo SQL Server Virtual Machines v části Zvýhodněné hybridní využití Azure pro SQL Server při konfiguraci. úlohy v Azure. "
+Podle podmínek produktu společnosti Microsoft: "zákazníci musí značit, že používají Azure SQL Database (spravované instance, Elastický fond a Izolovaná databáze), Azure Data Factory, služba SSIS (SQL Server Integration Services) nebo SQL Server Virtual Machines v rámci Azure Zvýhodněné hybridní využití pro SQL Server při konfiguraci úloh v Azure
 
 Chcete-li určit použití Zvýhodněné hybridní využití Azure pro SQL Server na virtuálním počítači Azure a kompatibilní, máte tři možnosti:
 
@@ -41,10 +41,10 @@ Chcete-li určit použití Zvýhodněné hybridní využití Azure pro SQL Serve
 
 Typ licence SQL Server se nastaví při zřizování virtuálního počítače. Můžete ho kdykoli změnit. Přepínání modelů licencí nepřináší žádné výpadky, nerestartuje virtuální počítač, nepřidá žádné další náklady a okamžitě se projeví. Aktivace Zvýhodněné hybridní využití Azure *snižuje* náklady.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Použití poskytovatele prostředků virtuálního počítače SQL vyžaduje rozšíření SQL Server IaaS. V takovém případě potřebujete následující:
-- [Předplatného Azure](https://azure.microsoft.com/free/).
+- [Předplatné Azure](https://azure.microsoft.com/free/).
 - [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default). 
 - [SQL Server virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) zaregistrovaný u [poskytovatele prostředků virtuálního počítače SQL](virtual-machines-windows-sql-register-with-resource-provider.md).
 
@@ -149,12 +149,12 @@ Typ licence SQL Server virtuálního počítače můžete změnit jako průběž
 
 ## <a name="known-errors"></a>Známé chyby
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Nepovedlo se najít prostředek Microsoft. SqlVirtualMachine\</SqlVirtualMachines/Resource-Group > v části\<skupina prostředků% Resource-Group >.
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Prostředek "Microsoft. SqlVirtualMachine/SqlVirtualMachines/\<Resource-Group >" v části Skupina prostředků "\<> Resource-Group" nebyl nalezen.
 K této chybě dojde, když se pokusíte změnit model licence na virtuálním počítači s SQL Server, který nebyl zaregistrován u poskytovatele prostředků SQL VM:
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
-Musíte zaregistrovat poskytovatele prostředků do svého [předplatného](virtual-machines-windows-sql-register-with-resource-provider.md#register-the-sql-vm-resource-provider-with-a-subscription)a pak [zaregistrovat svůj SQL Server virtuální počítač s poskytovatelem prostředků](virtual-machines-windows-sql-register-with-resource-provider.md). 
+Budete muset zaregistrovat předplatné u poskytovatele prostředků a pak [zaregistrovat svůj SQL Server virtuální počítač s poskytovatelem prostředků](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>Nejde ověřit argument u parametru SKU.
 K této chybě může dojít při pokusu o změnu modelu licence SQL Server VM pomocí Azure PowerShell verzí novějších než 4,0:

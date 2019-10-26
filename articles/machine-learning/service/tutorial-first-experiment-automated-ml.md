@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 726ac906b5f237cfc40a8399b7b1bef3071f98f3
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72035681"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901805"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 
@@ -73,7 +73,7 @@ Na úvodní stránce pracovního prostoru jste dokončili následující kroky e
    Pole | Popis | Hodnota pro kurz
    ----|---|---
    Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|automl – COMPUTE
-   @No__t_1size Virtual &nbsp;machine| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
+   Velikost&nbsp;virtuálního&nbsp;ového počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
    Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
 
    >[!NOTE]
@@ -121,7 +121,7 @@ Na úvodní stránce pracovního prostoru jste dokončili následující kroky e
    Rozšířené &nbsp;settings|Popis|Hodnota &nbsp;for &nbsp;tutorial
    ------|---------|---
    Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
-   Výstupní kritéria| Pokud je splněno kritérium, úloha školení se zastaví. |@No__t_1time &nbsp;job školení: 5 <br> <br> Max &nbsp; # &nbsp;of &nbsp;iterations&#58;10
+   Výstupní kritéria| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;úlohy školení&nbsp;čas: 5 <br> <br> Max &nbsp; # &nbsp;of &nbsp;iterations&#58;10
    Předzpracování| Umožňuje předzpracování pomocí automatizovaného strojového učení. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
    Typ ověření | Vyberte typ křížového ověření.|K skládání křížového ověřování
    Počet ověření | Počet testů. | 2 křížová ověření 
@@ -169,6 +169,8 @@ V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model
     
 Nyní máte provozní webovou službu, která generuje předpovědi.
 
+Pokud chcete získat další informace o tom, jak používat novou webovou službu, a testovat předpovědi pomocí integrované Azure Machine Learning podpory Power BI, přejděte k [**dalším krokům**](#next-steps) .
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Soubory nasazení jsou větší než data a experimenty, takže se o jejich uložení budou mnohem lépe ukládat. Odstraňte pouze soubory nasazení, abyste minimalizovali náklady na váš účet, nebo pokud chcete zachovat pracovní prostor a soubory experimentů. Jinak odstraňte celou skupinu prostředků, pokud neplánujete použít žádný ze souborů.  
@@ -192,7 +194,7 @@ Pokud chcete zachovat skupinu prostředků a pracovní prostor pro další kurzy
 V tomto kurzu automatizovaného strojového učení jste pomocí cílové stránky pracovního prostoru vytvořili a nasadili klasifikační model. Další informace a další kroky najdete v těchto článcích:
 
 > [!div class="nextstepaction"]
-> [Využití webové služby](how-to-consume-web-service.md)
+> [Využití webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + Přečtěte si další informace o [předzpracování](how-to-create-portal-experiments.md#preprocess).
 + Přečtěte si další informace o [profilování dat](how-to-create-portal-experiments.md#profile).

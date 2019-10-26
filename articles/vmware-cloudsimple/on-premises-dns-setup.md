@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 52f86f85ec303d23a78fd942276bfe46d0f12832
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f00e7663c4ed2211927f5c8d1c131d85bc6c96dd
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030412"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900889"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurace DNS pro překlad IP adres pro přístup k vCenter privátního cloudu z místních pracovních stanic
 
@@ -23,7 +23,7 @@ Pokud chcete získat přístup k serveru vCenter v privátním cloudu CloudSimpl
 
 1. Přihlaste se k [portálu CloudSimple](access-cloudsimple-portal.md).
 
-2. Přejděte k **prostředkům**@no__t**privátním cloudům** – 1 a vyberte privátní cloud, ke kterému se chcete připojit.
+2. Přejděte k **prostředkům** > **privátních cloudech** a vyberte privátní cloud, ke kterému se chcete připojit.
 
 3. Na stránce **Souhrn** v privátním cloudu v části **základní informace**ZKOPÍRUJTE IP adresu serveru DNS privátního cloudu.
 
@@ -80,7 +80,7 @@ zone “cloudsimple.io”
 
 Podmíněný Server pro přeposílání všechny požadavky na překlad názvů DNS na určený server. Při této instalaci se všechny požadavky na *. cloudsimple.io předávají na servery DNS nacházející se v privátním cloudu. Následující příklady ukazují, jak nastavit servery pro směrování na různých typech serverů DNS.
 
-### <a name="create-a-conditional-forwarded-on-a-bind-dns-server"></a>Vytvoření podmíněného přesměrovaného na serveru DNS BIND
+### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Vytvoření podmíněného přesměrování na serveru DNS BIND
 
 Konkrétní soubor a parametry, které je potřeba nakonfigurovat, se můžou lišit v závislosti na vašem individuálním nastavení DNS.
 

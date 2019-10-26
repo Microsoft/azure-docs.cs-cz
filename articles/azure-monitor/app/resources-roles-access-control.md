@@ -1,133 +1,128 @@
 ---
-title: Prostředky, role a řízení přístupu ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Vlastníci, přispěvatelé a čtenáři přehledů, které vaší organizaci.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Prostředky, role a řízení přístupu v Azure Application Insights | Microsoft Docs
+description: Vlastníci, přispěvatelé a čtenáři přehledů vaší organizace.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/14/2019
+ms.openlocfilehash: eea991b553d69fce5c177c1eee48633484dc19db
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373652"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899965"
 ---
-# <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu ve službě Application Insights
+# <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu v Application Insights
 
-Můžete řídit, kdo má číst a aktualizovat přístup ke svým datům v Azure [Application Insights][start], s použitím [řízení přístupu na základě rolí ve službě Microsoft Azure](../../role-based-access-control/role-assignments-portal.md).
+Pomocí [řízení přístupu na základě rolí v Microsoft Azure](../../role-based-access-control/role-assignments-portal.md)můžete řídit, kdo má ke svým datům přístup pro čtení a aktualizace dat v Azure [Application Insights][start].
 
 > [!IMPORTANT]
-> Přiřadit uživatelům v přístupu **skupiny prostředků nebo předplatného** , ke které prostředek vaší aplikace patří - není v vlastní prostředek. Přiřazení **Přispěvatel součástí Application Insights** role. Tím se zajistí uniform řízení přístupu k webové testy a upozornění spolu s prostředek vaší aplikace. [Další informace](#access).
+> Přiřaďte přístup uživatelům ve **skupině prostředků nebo předplatném** , ke kterému patří váš prostředek aplikace – ne do samotného prostředku. Přiřaďte roli **Přispěvatel komponent Application Insights** . Tím se zajistí jednotné řízení přístupu k webovým testům a výstrahám spolu s vaším prostředkem aplikace. [Další informace](#access).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="resources-groups-and-subscriptions"></a>Prostředky, skupiny a předplatná
 
-První, definice:
+Nejprve některé definice:
 
-* **Prostředek** – instance služby Microsoft Azure. Prostředek Application Insights shromažďuje, analyzuje a zobrazuje telemetrická data odeslaná z aplikace.  Jiné typy prostředků Azure patří webové aplikace, databáze a virtuální počítače.
+* **Prostředek** – instance Microsoft Azure služby. Váš Application Insights prostředek shromažďuje, analyzuje a zobrazuje data telemetrie odesílaná z vaší aplikace.  Mezi další typy prostředků Azure patří webové aplikace, databáze a virtuální počítače.
   
-    Chcete-li zobrazit vaše prostředky, otevřete [webu Azure portal][portal], přihlaste se a klikněte na možnost všechny prostředky. Najít prostředek, napište část názvu do pole filtru.
+    Pokud chcete zobrazit prostředky, otevřete [Azure Portal][portal], přihlaste se a klikněte na všechny prostředky. Chcete-li najít prostředek, zadejte část názvu do pole Filtr.
   
     ![Seznam prostředků Azure](./media/resources-roles-access-control/10-browse.png)
 
 <a name="resource-group"></a>
 
-* [**Skupina prostředků** ] [ group] – každý prostředek patří do jedné skupiny. Skupina je pohodlný způsob, jak spravovat související prostředky, zejména pro řízení přístupu. Do jedné skupiny prostředků můžete například umístit webové aplikace, prostředek Application Insights pro monitorování aplikací a prostředků úložiště zachovat exportovaná data.
+* [**Skupina prostředků**][group] – každý prostředek patří do jedné skupiny. Skupina je pohodlný způsob, jak spravovat související prostředky, zejména pro řízení přístupu. Do jedné skupiny prostředků můžete například vložit webovou aplikaci, prostředek Application Insights pro monitorování aplikace a prostředek úložiště pro zachování exportovaných dat.
 
-* [**Předplatné** ](https://portal.azure.com) – Pokud chcete používat Application Insights nebo další prostředky Azure, přihlaste se k předplatnému Azure. Každá skupina prostředků patří na jedno předplatné Azure, kde vyberete balíčku cena a, pokud je předplatné organizace, zvolte členy a jejich přístupových oprávnění.
-* [**Účet Microsoft** ] [ account] – uživatelské jméno a heslo, které používáte pro přihlášení k Microsoft Azure předplatných, XBox Live, Outlook.com a dalším službám společnosti Microsoft.
+* [**Předplatné**](https://portal.azure.com) – Pokud chcete používat Application Insights nebo jiné prostředky Azure, přihlásíte se k předplatnému Azure. Každá skupina prostředků patří k jednomu předplatnému Azure, kde si zvolíte svůj cenový balíček, a pokud se jedná o předplatné organizace, vyberte členy a jejich přístupová oprávnění.
+* [**Účet Microsoft**][account] – uživatelské jméno a heslo, které používáte k přihlášení k předplatným Microsoft Azure, Xbox Live, Outlook.com a dalším službám Microsoftu.
 
-## <a name="access"></a> Řízení přístupu ve skupině prostředků
+## <a name="access"></a>Řízení přístupu ve skupině prostředků
 
-Je důležité pochopit, že kromě prostředku, který jste vytvořili pro vaši aplikaci, jsou k dispozici také samostatné prostředky skryté výstrahy a webové testy. Jsou připojeny ke stejné [skupiny prostředků](#resource-group) jako prostředek Application Insights. Jste může také umístili další služby Azure do něj, třeba websites nebo úložiště.
+Je důležité pochopit, že kromě prostředku, který jste vytvořili pro vaši aplikaci, existují také samostatné skryté prostředky pro výstrahy a webové testy. Jsou připojené ke stejné [skupině prostředků](#resource-group) jako prostředek Application Insights. Do této služby můžete také umístit další služby Azure, jako jsou weby nebo úložiště.
 
-Řízení přístupu k těmto prostředkům se proto doporučuje:
+Pro řízení přístupu k těmto prostředkům se proto doporučuje:
 
-* Řízení přístupu na **skupiny prostředků nebo předplatného** úroveň.
-* Přiřazení **komponenty Application Insights Přispěvatel** role pro uživatele. To jim umožňuje upravit webové testy, upozornění a prostředky Application Insights, bez poskytnutí přístupu k jiným službám ve skupině.
+* Řízení přístupu na úrovni **skupiny prostředků nebo předplatného** .
+* Přiřaďte uživatelům roli **Přispěvatel komponent Application Insights** . To jim umožní upravovat webové testy, výstrahy a Application Insights prostředky, aniž by museli mít přístup k žádným jiným službám ve skupině.
 
-## <a name="to-provide-access-to-another-user"></a>Pro zajištění přístupu k jiným uživatelem
+## <a name="to-provide-access-to-another-user"></a>Poskytnutí přístupu jinému uživateli
 
-Musíte mít práva vlastníka předplatného nebo skupiny prostředků.
+Musíte mít práva vlastníka k předplatnému nebo skupině prostředků.
 
-Uživatel musí mít [Account Microsoft][account], nebo přístup k jejich [Account organizace Microsoft](../../active-directory/fundamentals/sign-up-organization.md). Můžete poskytnout přístup jednotlivců a také skupiny uživatelů, které jsou definované v Azure Active Directory.
+Uživatel musí mít [účet Microsoft][account]nebo mít přístup ke svému [organizačnímu účtu Microsoft](../../active-directory/fundamentals/sign-up-organization.md). Můžete poskytnout přístup jednotlivcům a také skupinám uživatelů definovaným v Azure Active Directory.
 
-#### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>Přejděte do skupiny prostředků nebo přímo na vlastní prostředek
+#### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>Přejděte do skupiny prostředků nebo přímo k samotnému prostředku.
 
-Zvolte **řízení přístupu (IAM)** z nabídky na levé straně.
+V nabídce na levé straně vyberte **řízení přístupu (IAM)** .
 
-![Snímek obrazovky přístupu ovládacího prvku tlačítko na webu Azure portal](./media/resources-roles-access-control/0001-access-control.png)
+![Snímek obrazovky s tlačítkem řízení přístupu v Azure Portal](./media/resources-roles-access-control/0001-access-control.png)
 
-Vyberte **přidat přiřazení role**
+Vyberte **Přidat přiřazení role** .
 
-![Snímek obrazovky přístupu ovládací prvek nabídky pomocí tlačítka Přidat zvýrazněný červenou barvou](./media/resources-roles-access-control/0002-add.png)
+![Obrazovka nabídky řízení přístupu se zvýrazněným tlačítkem přidat na červenou](./media/resources-roles-access-control/0002-add.png)
 
-**Přidat oprávnění** zobrazení níže je primárně specifické pro prostředky Application Insights při prohlížení oprávnění pro řízení přístupu z vyšší úrovně, jako jsou skupiny prostředků, zobrazí se další mimo aplikaci Zaměřené na insights role.
+Zobrazení **Přidat oprávnění** níže je primárně specifické pro Application Insights prostředky. Pokud jste si prohlíželi oprávnění k řízení přístupu z vyšší úrovně, jako jsou skupiny prostředků, měli byste vidět další role orientované na jiné než Application Insights.
 
-Chcete-li zobrazit informace na všechny řízení přístupu na základě rolí Azure použít předdefinované role [oficiální referenční obsah](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Pokud chcete zobrazit informace o všech předdefinovaných rolích řízení přístupu na základě role Azure, použijte [oficiální referenční obsah](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
-![Seznam rolí uživatele – snímek obrazovky přístupu ovládacího prvku](./media/resources-roles-access-control/0003-user-roles.png)
+![Snímek obrazovky seznamu rolí uživatele řízení přístupu](./media/resources-roles-access-control/0003-user-roles.png)
 
-#### <a name="select-a-role"></a>Vyberte roli
+#### <a name="select-a-role"></a>Vybrat roli
 
-Případně odkaz na související oficiální dokumentaci.
+Tam, kde je to vhodné, odkazujeme na přidruženou oficiální referenční dokumentaci.
 
 | Role | Ve skupině prostředků |
 | --- | --- |
-| [Vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Můžete změnit všechno včetně přístupu uživatelů. |
-| [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Můžete upravit všechno včetně všech prostředků. |
-| [Přispěvatel aplikace součást Insights](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Můžete upravit prostředky Application Insights, webové testy a upozornění. |
-| [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Můžete zobrazit, ale nic nezměníte. |
-| [Application Insights Snapshot debuggeru.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Uděluje oprávnění uživatele používat funkce Application Insights Snapshot debuggeru. Všimněte si, že tato role je součástí rolí Přispěvatel ani vlastník. |
-| Přispěvatel správy vydaných verzí nasazení služby Azure | Role přispěvatele pro služby nasazení prostřednictvím nasazení služby Azure. |
-| [Data Purger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Zvláštní roli pro vymazání osobních údajů. Najdete v našich [pokyny ohledně osobních údajů](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) Další informace.   |
-| Správce ExpressRoute | Můžete odstranit vytvářet a spravovat tras express.|
-| [Přispěvatel log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Přispěvatel log Analytics může číst všechna data monitorování a upravit nastavení monitorování. Úprava nastavení monitorování, zahrnuje přidání rozšíření virtuálního počítače na virtuální počítače; čtení klíčů účtů úložiště, abyste mohli konfigurovat shromažďování protokolů ze služby Azure Storage; Vytvoření a konfigurace účtů služby Automation; přidávání řešení a konfigurace diagnostik Azure na všech prostředcích Azure.  |
-| [Čtenář log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Čtenář log Analytics můžete zobrazit a vyhledat všechna data monitorování a zobrazení nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. |
-| masterreader | Umožňuje uživateli zobrazit všechno, ale ne provádět změny. |
+| [Vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Může měnit cokoli, včetně přístupu uživatelů. |
+| [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Může upravovat cokoli, včetně všech prostředků. |
+| [Přispěvatel Application Insights komponent](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Může upravovat Application Insights prostředky, webové testy a výstrahy. |
+| [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Může zobrazovat, ale ne měnit. |
+| [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Udělí uživateli oprávnění použít Application Insights Snapshot Debugger funkce. Všimněte si, že tato role je zahrnutá ani v rolích vlastníka ani Přispěvatel. |
+| Přispěvatel Release Management nasazení služby Azure | Role Přispěvatel pro služby nasazování prostřednictvím Azure Service Deploy. |
+| [Nástroj pro vyprázdnění dat](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Speciální role pro vyprazdňování osobních údajů Další informace najdete v našich [pokynech k osobním datům](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) .   |
+| Správce ExpressRoute | Může vytvořit odstranění a spravovat expresní trasy.|
+| [Přispěvatel Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure.  |
+| [Čtecí modul Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. |
+| masterreader | Umožňuje uživateli zobrazit vše, ale nemůže provádět změny. |
 | [Přispěvatel monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Může číst všechna data monitorování a aktualizovat nastavení monitorování. |
-| [Monitorování metrik vydavatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Povolí publikování metrik pro prostředky Azure. |
-| [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Může číst všechna data monitorování. |
-| Přispěvatel zásad prostředků (Preview) | Obnovení uživatelé z EA s oprávněními vytvářet a upravovat zásady prostředků, vytvářet lístky podpory a číst prostředek a hierarchii.  |
-| [Správce uživatelských přístupů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Umožňuje uživateli spravovat přístup jiných uživatelů k prostředkům Azure.|
-| [Přispěvatel webů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Umožňuje správu webů (ne webových plánů), ale ne přístup k nim...|
+| [Monitorování vydavatele metrik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Povoluje publikování metrik pro prostředky Azure. |
+| [Čtečka monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Může číst všechna data monitorování. |
+| Přispěvatel zásad prostředků (Preview) | Uživatelé z EA, s právy k vytváření a úpravám zásad prostředků, vytvářejí lístek podpory a čtou prostředek/hierarchii.  |
+| [Správce uživatelských přístupů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Umožňuje uživateli spravovat přístup k prostředkům Azure ostatním uživatelům.|
+| [Přispěvatel webu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.|
 
-"Úpravy" zahrnuje vytváření, odstraňování a aktualizace:
+Úpravy obsahují vytváření, odstraňování a aktualizace:
 
-* Zdroje a prostředky
+* Materiály
 * Webové testy
 * Výstrahy
 * Průběžný export
 
-#### <a name="select-the-user"></a>Vyberte uživatele
+#### <a name="select-the-user"></a>Vybrat uživatele
 
-Pokud uživatel, kterého chcete, aby se v adresáři, můžete pozvat kdokoli s účtem Microsoft.
-(Pokud používají služby, jako je Outlook.com, OneDrive, Windows Phone nebo XBox Live, nemají účet Microsoft.)
+Pokud požadovaný uživatel v adresáři není, můžete pozvat kohokoli s účet Microsoft.
+(Pokud používají služby, jako jsou Outlook.com, OneDrive, Windows Phone nebo XBox Live, mají účet Microsoft.)
 
 ## <a name="related-content"></a>Související obsah
 
-* [Řízení přístupu v Azure na základě rolí](../../role-based-access-control/role-assignments-portal.md)
+* [Řízení přístupu na základě role v Azure](../../role-based-access-control/role-assignments-portal.md)
 
-## <a name="powershell-query-to-determine-role-membership"></a>Dotaz prostředí PowerShell pro určení členství v roli
+## <a name="powershell-query-to-determine-role-membership"></a>Dotaz PowerShellu k určení členství v rolích
 
-Vzhledem k tomu, že některé role může být propojený oznámení a e-mailové výstrahy může být užitečné mít možnost Generovat seznam uživatelů, kteří patří k dané roli. Abychom vám pomohli s generování tyto typy seznamů nabízíme následující ukázkové dotazy, které můžete upravit podle svých potřeb:
+Vzhledem k tomu, že některé role mohou být propojeny s oznámeními a e-mailovými výstrahami, může být užitečné, aby bylo možné vygenerovat seznam uživatelů, kteří patří k dané roli. Abychom vám pomohli vygenerovat tyto typy seznamů, nabízíme následující ukázkové dotazy, které je možné upravit podle konkrétních potřeb:
 
-### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>Dotaz celé předplatné pro role správce + role přispěvatele
+### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>Dotazování na celé předplatné pro role správců a role přispěvatele
 
 ```powershell
 (Get-AzRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
-### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>Dotazování v kontextu konkrétní prostředek Application Insights for vlastníci a přispěvatelé
+### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>Dotaz v kontextu konkrétního Application Insights prostředku pro vlastníky a přispěvatele
 
 ```powershell
 $resourceGroup = “RGNAME”
@@ -136,7 +131,7 @@ $resourceType = “microsoft.insights/components”
 (Get-AzRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
-### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>Dotazování v kontextu konkrétní skupině prostředků pro vlastníci a přispěvatelé
+### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>Dotaz v kontextu konkrétní skupiny prostředků pro vlastníky a přispěvatele
 
 ```powershell
 $resourceGroup = “RGNAME”

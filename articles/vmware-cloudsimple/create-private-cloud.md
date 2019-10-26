@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a6e3d466321fcd8f32f46359c97f67400a8f86c6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828160"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893928"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>Vytvoření privátního cloudu CloudSimple
 
@@ -31,13 +31,23 @@ Vytvoření privátního cloudu vám pomůže vyřešit celou řadu běžných p
 
 Při vytváření privátního cloudu získáte jeden cluster vSphere a všechny virtuální počítače pro správu, které jsou vytvořeny v tomto clusteru.
 
+## <a name="before-you-begin"></a>Než začnete
+
+Uzly musí být zřízené, aby bylo možné vytvořit privátní cloud. Další informace o zřizovacích uzlech najdete v tématu [zřízení uzlů pro řešení Azure VMware pomocí CloudSimple](create-nodes.md).
+
+Přidělte rozsah CIDR pro podsítě vSphere/síti vSAN pro privátní cloud. Privátní cloud se vytvoří jako izolované prostředí VMware Stack (s hostiteli ESXi, vCenter, síti vSAN a NSX), které spravuje Server vCenter. Součásti pro správu se nasazují v síti, která je vybraná pro vSphere/síti vSAN pro podsítě CIDR. Rozsah směrování sítě je v průběhu nasazení rozdělen do různých podsítí. Adresní prostor podsítě vSphere/síti vSAN musí být jedinečný. Nesmí se překrývat s žádnou sítí, která komunikuje s prostředím CloudSimple. Sítě, které komunikují s CloudSimple, zahrnují místní sítě a virtuální sítě Azure. Další informace o podsítích vSphere/síti vSAN najdete v tématu Přehled sítí VLAN a podsítí.
+
+* Minimální předpona rozsahu CIDR podsítě vSphere/síti vSAN:/24
+* Maximální předpona rozsahu CIDR podsítě vSphere/síti vSAN:/21
+
+
 ## <a name="access-the-cloudsimple-portal"></a>Přístup k portálu CloudSimple
 
 Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
 
 ## <a name="create-a-new-private-cloud"></a>Vytvoření nového privátního cloudu
 
-1. Vyberte **všechny služby**.
+1. Vyberte **Všechny služby**.
 2. Vyhledejte **služby CloudSimple Services**.
 3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
 4. V **přehledu**klikněte na **vytvořit privátní cloud** . otevře se nová karta prohlížeče pro CloudSimple portál. Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení do Azure.
@@ -46,7 +56,7 @@ Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
 
 5. Na portálu CloudSimple zadejte název vašeho privátního cloudu.
 6. Vyberte **umístění** privátního cloudu.
-7. Vyberte **typ uzlu**, který se shoduje s tím, co jste zakoupili v Azure.
+7. Vyberte **typ uzlu**konzistentní s tím, co jste zřídili v Azure.
 8. Zadejte **počet uzlů**.  K vytvoření privátního cloudu se vyžadují aspoň tři uzly.
 
     ![Vytvořit privátní cloud – základní informace](media/create-private-cloud-basic-info.png)
@@ -61,7 +71,7 @@ Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
 
 11. Klikněte na **Další: zkontrolovat a vytvořit**.
 12. Zkontrolujte nastavení. Pokud potřebujete změnit nějaké nastavení, klikněte na tlačítko **Předchozí**.
-13. Klikněte na **vytvořit**.
+13. Klikněte na **Vytvořit**.
 
 Spustí se proces zřizování privátního cloudu. Zřízení privátního cloudu může trvat až dvě hodiny.
 

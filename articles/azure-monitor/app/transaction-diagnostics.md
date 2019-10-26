@@ -1,105 +1,101 @@
 ---
-title: Diagnostika transakcí Azure Application Insights | Dokumentace Microsoftu
-description: Diagnostika transakcí začátku do konce Application Insights
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Diagnostika transakcí Azure Application Insights | Microsoft Docs
+description: Application Insights komplexní diagnostiku transakcí
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ed3713fe4a6c9403be13f444d0409af459a1e70
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783627"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899574"
 ---
-# <a name="unified-cross-component-transaction-diagnostics"></a>Diagnostika jednotné transakcí mezi komponentami
+# <a name="unified-cross-component-transaction-diagnostics"></a>Sjednocená Diagnostika transakcí mezi komponentami
 
-Diagnostika jednotné prostředí automaticky koreluje telemetrie na straně serveru z pro všechny součásti Application Insights monitoruje do jediného zobrazení. Nebude vadit, když máte více zdrojů pomocí samostatných instrumentačních klíčů. Application Insights zjistí základní vztah a umožňuje snadno diagnostikovat aplikace komponentu, závislost nebo výjimku, která způsobila transakce zpomalení nebo selhání.
+Sjednocené diagnostické prostředí automaticky koreluje telemetrie na straně serveru ze všech Application Insights monitorovaných komponent do jednoho zobrazení. Nezáleží na tom, jestli máte více prostředků s oddělenými klíči instrumentace. Application Insights detekuje základní vztah a umožňuje snadnou diagnostikovat komponentu, závislost nebo výjimku aplikace, které způsobily zpomalení nebo selhání transakce.
 
 ## <a name="what-is-a-component"></a>Co je komponenta?
 
-Součásti jsou umožňují nezávislé nasazení částí aplikace distribuovat/mikroslužeb. Vývojáři provozní týmy a týmy mají viditelnost na úrovni kódu nebo přístup k telemetrii generovanou těmito součásti aplikace.
+Komponenty jsou nezávisle nasaditelné části distribuované aplikace nebo mikroslužeb. Vývojáři a provozní týmy mají viditelnost na úrovni kódu nebo přístup k telemetrie generované těmito komponentami aplikací.
 
-* Komponenty se liší od "zjištěnou" externí závislosti, jako je SQL, atd centra událostí, které tým nebo organizace nemusí mít přístup k (kód nebo telemetrické údaje).
-* Komponenty jsou spuštěny na libovolný počet instancí role/server/kontejner.
-* Součástí může být samostatný instrumentačních klíčů Application Insights (i v případě, že předplatná se liší) nebo různé role, generování sestav na jeden Instrumentační klíč Application Insights. Nové prostředí obsahuje podrobnosti pro všechny součásti, bez ohledu na to, jak jsou již byly vytvořeny.
+* Komponenty se liší od "pozorovaných" vnějších závislostí, jako je například SQL, EventHub atd. který tým nebo organizace nemusí mít přístup k (kód nebo telemetrie).
+* Komponenty běží na jakémkoli počtu instancí serveru/role/kontejneru.
+* Komponenty mohou být odděleny Application Insights klíče instrumentace (i když se odběry liší) nebo různé role, které se hlásí do jediného klíče instrumentace Application Insights. Nové prostředí zobrazuje podrobnosti napříč všemi komponentami bez ohledu na to, jak byly nastaveny.
 
 > [!NOTE]
-> * **Chybějící odkazy na související položky?** Jsou všechny související telemetrii [horní](#cross-component-transaction-chart) a [dolní](#all-telemetry-with-this-operation-id) oddíly na levé straně. 
+> * **Chybí odkazy související položky?** Všechny související telemetrie jsou v [horních](#cross-component-transaction-chart) a [dolních](#all-telemetry-with-this-operation-id) částech levé strany. 
 
-## <a name="transaction-diagnostics-experience"></a>Diagnostika transakcí prostředí
-Toto zobrazení obsahuje čtyři klíčové části: výsledky seznamu, graf transakcí mezi komponentami, časový průběh seznam všechny telemetrické údaje vztahující se k této operaci a v podokně podrobností pro všechny položky vybrané telemetrie na levé straně.
+## <a name="transaction-diagnostics-experience"></a>Prostředí pro diagnostiku transakcí
+Toto zobrazení obsahuje čtyři klíčové části: seznam výsledků, graf transakcí mezi komponentami, seznam časových sekvencí všech telemetrie souvisejících s touto operací a podokno podrobností pro všechny vybrané položky telemetrie na levé straně.
 
 ![Klíčové části](media/transaction-diagnostics/4partsCrossComponent.png)
 
 ## <a name="cross-component-transaction-chart"></a>Graf transakcí mezi komponentami
 
-Tento graf obsahuje časovou osu s vodorovné pruhy po dobu trvání požadavků a závislostí mezi komponentami. Všechny výjimky, které se shromažďují jsou také označené na časové ose.
+Tento graf poskytuje časovou osu s vodorovnými pruhy po dobu trvání požadavků a závislostí napříč komponentami. Všechny shromažďované výjimky jsou také označeny na časové ose.
 
-* Horní řádek v tomto grafu představuje vstupní bod, příchozí požadavek na první komponenta volá se v této transakci. Doba trvání je celkovou dobu potřebnou k dokončení transakce.
-* Všechna volání do externí závislosti jsou jednoduché-sbalitelné řádky s ikonami představující typ závislosti.
-* Volání součásti jsou sbalitelné řádků. Každý řádek odpovídá konkrétní operace se vyvolala na komponentu.
-* Ve výchozím nastavení, požadavek, závislost nebo výjimku, který jste vybrali zobrazí na pravé straně.
-* Vyberte libovolný řádek zobrazíte jeho [podrobnosti na pravé straně](#details-of-the-selected-telemetry). 
+* Horní řádek v tomto grafu představuje vstupní bod, příchozí požadavek na první komponentu volanou v této transakci. Doba trvání je celková doba potřebná k dokončení transakce.
+* Všechna volání vnějších závislostí jsou jednoduché nesbalitelné řádky s ikonami, které představují typ závislosti.
+* Volání jiných komponent jsou sbalitelnými řádky. Každý řádek odpovídá konkrétní operaci vyvolanou v součásti.
+* Ve výchozím nastavení se na pravé straně zobrazí požadavek, závislost nebo výjimka, kterou jste vybrali.
+* Výběrem libovolného řádku zobrazíte jeho [Podrobnosti na pravé straně](#details-of-the-selected-telemetry). 
 
 > [!NOTE]
-> Volání na jiné komponenty obsahuje dva řádky: odchozích volání (závislosti) z komponenty volající představuje jeden řádek a druhý řádek odpovídá příchozí žádosti názvem komponenty. Přední ikonu a různé styly pruhy doba trvání pomoci rozlišit mezi nimi.
+> Volání jiných komponent mají dva řádky: jeden řádek představuje odchozí volání (závislost) ze součásti volajícího a druhý řádek odpovídá příchozímu požadavku na volané komponentě. Úvodní ikona a různé styly pruhů trvání mezi nimi můžou rozlišovat.
 
-## <a name="all-telemetry-with-this-operation-id"></a>Veškerá telemetrie s tímto Id operace
+## <a name="all-telemetry-with-this-operation-id"></a>Veškerá telemetrie s tímto ID operace
 
-Tato část uvádí seznam bez stromové struktury v čase posloupnost veškerá telemetrická data týkající se této transakce. Také ukazuje vlastní události a trasování, které nejsou zobrazeny v grafu transakce. Je tento seznam můžete filtrovat na telemetrii generovanou konkrétní součást a volání. Můžete vybrat všechny položky telemetrie v tomto seznamu chcete zobrazit odpovídající [podrobnosti na pravé straně](#details-of-the-selected-telemetry).
+Tato část ukazuje zobrazení plochého seznamu v časovém intervalu pro všechny telemetrie týkající se této transakce. Zobrazuje také vlastní události a trasování, které nejsou zobrazeny v transakčním grafu. Tento seznam můžete filtrovat na telemetrii vygenerovanou konkrétní součástí nebo voláním. Můžete vybrat libovolnou položku telemetrie v tomto seznamu, abyste viděli odpovídající [Podrobnosti na pravé straně](#details-of-the-selected-telemetry).
 
-![Čas posloupnost veškerou telemetrii](media/transaction-diagnostics/allTelemetryDrawerOpened.png)
+![Časová sekvence všech telemetrie](media/transaction-diagnostics/allTelemetryDrawerOpened.png)
 
-## <a name="details-of-the-selected-telemetry"></a>Podrobnosti vybrané telemetrických dat
+## <a name="details-of-the-selected-telemetry"></a>Podrobnosti vybrané telemetrie
 
-Tento sbalitelné podokně se zobrazí podrobnosti vybrané položky z grafu transakce, nebo v seznamu. "Zobrazit všechny" jsou uvedeny všechny standardní atributy, které byly shromážděny. Žádné vlastní atributy jsou uvedeny samostatně standardní sady. Klikněte na "..." níže okno trasování zásobníku získat možnost kopírování trasování. "Trasování profileru otevřít" nebo "Otevřít snímek ladění" zobrazuje úrovně diagnostiky kódu v odpovídající podokna podrobností.
+V tomto sbalitelném podokně se zobrazuje podrobnosti libovolné vybrané položky z transakčního grafu nebo seznamu. "Zobrazit vše" obsahuje seznam všech shromažďovaných standardních atributů. Všechny vlastní atributy jsou uvedeny samostatně pod standardní sadou. Klikněte na "..." pod oknem trasování zásobníku, abyste získali možnost zkopírovat trasování. "Otevřením trasování profileru" nebo "otevřít snímek ladění" se v příslušných podoknech podrobností zobrazí Diagnostika na úrovni kódu.
 
-![Podrobnosti o výjimce](media/transaction-diagnostics/exceptiondetail.png)
+![Podrobnosti výjimky](media/transaction-diagnostics/exceptiondetail.png)
 
 ## <a name="search-results"></a>Výsledky hledání
 
-V tomto podokně sbalitelné zobrazuje výsledky, které splňují kritéria filtru. Klikněte na libovolný výsledek aktualizace příslušné podrobnosti o 3 oddíly uvedené výše. Snažíme se najít ukázky, které bývají nejčastějším obsahují podrobné informace ze všech komponent k dispozici i v případě, že v žádném z nich je aktivní vzorkování. Tyto aspekty znázorňuje "doporučené" vzorků.
+V tomto sbalitelném podokně se zobrazují další výsledky, které splňují kritéria filtru. Kliknutím na libovolný výsledek aktualizujete příslušné podrobnosti o 3 výše uvedených částech. Pokusíme se najít ukázky, u kterých jsou pravděpodobně podrobnosti dostupné ze všech komponent, i když se vzorkování projeví v některém z nich. Ty jsou uvedené jako "navrhované" ukázky.
 
 ![Výsledky hledání](media/transaction-diagnostics/searchResults.png)
 
-## <a name="profiler-and-snapshot-debugger"></a>Profiler a snapshot debugger
+## <a name="profiler-and-snapshot-debugger"></a>Profiler a Snapshot Debugger
 
-[Application Insights profileru](../../azure-monitor/app/profiler.md) nebo [snapshot debuggeru](snapshot-debugger.md) pomoct s diagnostikou úroveň kódu systému problémy s výkonem a selhání. Pomocí této možnosti můžete zobrazit trasování profileru nebo klikněte na tlačítko snímky u každé komponenty s jedním.
+[Application Insights Profiler](../../azure-monitor/app/profiler.md) nebo [program Snapshot Debugger](snapshot-debugger.md) vám pomůžou diagnostikovat problémy s výkonem a selháním na úrovni kódu. Díky tomuto prostředí můžete zobrazit trasování a snímky profileru z jakékoli komponenty jediným kliknutím.
 
-Pokud Profiler práce nelze získat, obraťte se prosím **serviceprofilerhelp\@webu microsoft.com**
+Pokud se vám nepovedlo pracovat s profilerem, kontaktujte prosím **serviceprofilerhelp\@Microsoft.com**
 
-Pokud pracovní Snapshot Debugger nelze získat, obraťte se prosím **snapshothelp\@webu microsoft.com**
+Pokud se vám nepovedlo Snapshot Debugger pracovat, kontaktujte prosím **snapshothelp\@Microsoft.com**
 
-![Profiler integrace](media/transaction-diagnostics/profilerTraces.png)
+![Integrace profileru](media/transaction-diagnostics/profilerTraces.png)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
-*V grafu se zobrazuje jedinou komponentu a ostatní jsou zobrazeny pouze jako externí závislosti bez všech podrobností o co se stalo v rámci těchto komponent.*
+*Zobrazuje se v grafu jedna komponenta a ostatní se zobrazují jenom jako externí závislosti bez jakýchkoli podrobností o tom, co se v těchto součástech stalo.*
 
-Možné důvody:
+Potenciální důvody:
 
-* Jsou ostatní součásti neinstrumentují službou Application Insights?
-* Používají se nejnovější stabilní Application Insights SDK?
-* Pokud tyto součásti jsou samostatný prostředek Application Insights, máte požadovaný přístup k jejich telemetrie?
+* Jsou ostatní komponenty instrumentované pomocí Application Insights?
+* Používají nejnovější stabilní sadu Application Insights SDK?
+* Pokud jsou tyto součásti samostatné prostředky Application Insights, máte požadovaný přístup k jejich telemetrie?
 
-Pokud máte přístup a komponenty jsou vybaveny nejnovější sady SDK služby Application Insights, dejte nám vědět prostřednictvím kanálu horní pravé zpětnou vazbu.
+Pokud máte přístup a komponenty jsou instrumentované s nejnovějšími Application Insights SDK, dejte nám vědět prostřednictvím horního kanálu zpětné vazby.
 
-*Zobrazila se duplicitní řádky pro závislosti. Je to očekávání?*
+*Zobrazuje se pro závislosti duplicitní řádky. Je to očekávané?*
 
-V tuto chvíli jsme se zobrazují volání odchozí závislost odděleně od příchozího požadavku. Obvykle dvě volání vypadají stejně s pouze hodnotu doby trvání odlišné z důvodu síťové odezvy. Přední ikonu a různé styly pruhy doba trvání pomoci rozlišit mezi nimi. Tato prezentace dat je matoucí? Sdělte nám svůj názor!
+V tuto chvíli se zobrazuje volání odchozí závislosti oddělené od příchozího požadavku. Obvykle jsou dvě volání shodná s pouze hodnotou trvání odlišnou vzhledem k síťovému zpoždění. Úvodní ikona a různé styly pruhů trvání mezi nimi můžou rozlišovat. Je tato prezentace dat matoucí? Sdělte nám svůj názor!
 
-*A co zkosí hodiny napříč instancemi různé součásti?*
+*Kolik hodin se v různých instancích komponent mění?*
 
-Časové osy jsou upraveny pro nepřesnostem v grafu transakce. Zobrazí se přesný časová razítka v podokně podrobností nebo pomocí Analytics.
+Časové osy se upravují pro časově naklonění hodin v transakčním grafu. Přesná časová razítka můžete zobrazit v podokně podrobností nebo pomocí analýzy.
 
-*Proč je nové prostředí chybí většinu dotazů související položky?*
+*Proč v novém prostředí chybí většina dotazů souvisejících položek?*
 
-Jedná se o účel. Všechny související položky pro všechny součásti, jsou už k dispozici na levé straně (horní a dolní části). Nové prostředí má dva související položky, které nepokrývá na levé straně: veškerá telemetrie 5 minut před a po této události a časová osa uživatele.
+Toto chování je úmyslné. Všechny související položky napříč všemi komponentami jsou již na levé straně (v horních a dolních částech) k dispozici. Nové prostředí obsahuje dvě související položky, které levá strana nepokrývá: všechny telemetrie od pěti minut před a po této události a časovou osu uživatele.
