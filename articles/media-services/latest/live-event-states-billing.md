@@ -1,6 +1,6 @@
 ---
-title: Stavy Livestream a fakturace ve službě Azure Media Services | Dokumentace Microsoftu
-description: Toto téma poskytuje přehled o Azure Media Services Livestream stavy a fakturaci.
+title: Livestream stavy a fakturace v Azure Media Services | Microsoft Docs
+description: V tomto tématu najdete přehled Azure Media Services stavů a fakturace Livestream.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,20 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 10/24/2019
 ms.author: juliako
-ms.openlocfilehash: 2907b5be7f8d5fda3d510484179e80b065ab64b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af3d4b51dadfaa99a166ca0ce475c5a110d8f6e8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074898"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933684"
 ---
-# <a name="live-event-states-and-billing"></a>Živé události stavů a fakturace
+# <a name="live-event-states-and-billing"></a>Stavy a fakturace živých událostí
 
-Ve službě Azure Media Services, živá událost začne fakturace jako jeho stav přejde do **systémem**. Pokud chcete zastavit živá událost z fakturace, budete muset zastavit živá událost.
+V Azure Media Services zahájí živá událost účtování, jakmile se změní stav na **spuštěno**. Chcete-li zastavit živou událost z fakturace, je nutné zastavit živou událost.
 
-Při **LiveEventEncodingType** na vaše [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) nastavená na úroveň Standard nebo Premium1080p, automaticky nevypne živá událost, která je stále v Media Services **systémem** stavu 12 hodin poté, co dojde ke ztrátě vstupní kanál a neexistují žádné **Live výstup**s systémem. Však budou i nadále se vám účtovat čas živá událost byla v **systémem** stavu.
+Když je **LiveEventEncodingType** na [živé události](https://docs.microsoft.com/rest/api/media/liveevents) nastavené na Standard nebo Premium1080p, Media Services automaticky vypne veškerou živou událost, která je stále ve **spuštěném** stavu 12 hodin po ztrátě vstupního kanálu, a nebudete mít **živý výstup** . s běží. Stále se ale bude účtovat čas, kdy byla živá událost ve stavu **spuštěno** .
+
+> [!NOTE]
+> Průchozí živé události se automaticky nevypnou a musí se explicitně zastavit přes rozhraní API, aby se předešlo nadměrnému vyúčtování. 
 
 ## <a name="states"></a>Stavy
 
@@ -32,13 +35,13 @@ Při **LiveEventEncodingType** na vaše [živá událost](https://docs.microsoft
 
 |Stav|Popis|
 |---|---|
-|**Zastavení**| Toto je počáteční stav živá událost po vytvoření (Pokud autostart byl nastaven na hodnotu true.) Vyvolá se v tomto stavu bez fakturace. V tomto stavu je možné aktualizovat vlastnosti živá událost, ale streamování není povolené.|
-|**Spuštění**| Živá událost se spouští a přidělování prostředků. Vyvolá se v tomto stavu bez fakturace. Při tomto stavu nejsou povoleny aktualizace ani streamování. Pokud dojde k chybě, živá událost se vrátí do stavu Zastaveno.|
-|**Spuštění**| Živá událost prostředky byly přiděleny, ingestování a zobrazit jejich náhled adresy URL byly vytvořeny, a je schopná přijmout živých streamů. V tomto okamžiku fakturace je aktivní. Musíte explicitně volat Stop prostředku živá událost, která zastaví další fakturace.|
-|**Zastavení**| Živá událost se zastavuje a prostředky se zruší. Vyvolá se v tomto přechodném stavu bez fakturace. Při tomto stavu nejsou povoleny aktualizace ani streamování.|
-|**Odstraňuje se**| Živá událost se odstraňuje. Vyvolá se v tomto přechodném stavu bez fakturace. Při tomto stavu nejsou povoleny aktualizace ani streamování.|
+|**Ukončen**| Toto je počáteční stav události živého vysílání po vytvoření (pokud nebyl nastaven autostart na hodnotu true). V tomto stavu nedochází k žádnému fakturaci. V tomto stavu je možné aktualizovat vlastnosti živé události, ale streamování není povolené.|
+|**Začátek**| Spustí se živá událost a prostředky se přidělují. V tomto stavu nedochází k žádnému fakturaci. V tomto stavu nejsou povoleny aktualizace nebo streamování. Pokud dojde k chybě, živá událost se vrátí do stavu Zastaveno.|
+|**Instalovanou**| Prostředky živé události byly přiděleny, byly vygenerovány adresy URL ingestování a verze Preview a jsou schopny přijímat živé streamy. V tomto okamžiku je fakturace aktivní. Chcete-li zastavit další fakturaci, je nutné explicitně volat stop u prostředku živé události.|
+|**Zastaví**| Dojde k zastavení živé události a probíhá rušení prostředků. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povoleny aktualizace nebo streamování.|
+|**Odstraňuje**| Živá událost se odstraňuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povoleny aktualizace nebo streamování.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přehled živého streamování](live-streaming-overview.md)
-- [Živé streamování kurz](stream-live-tutorial-with-api.md)
+- [Kurz živého streamování](stream-live-tutorial-with-api.md)

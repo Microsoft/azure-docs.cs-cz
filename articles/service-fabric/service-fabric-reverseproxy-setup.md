@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 3fd1716fa7b9c32bb5b5e49598139b6a5e728692
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166583"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933898"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru v Azure Service Fabric
 Reverzní proxy je volitelná služba Azure Service Fabric, která pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http. Další informace najdete v tématu [reverzní proxy v Azure Service Fabric](service-fabric-reverseproxy.md). V tomto článku se dozvíte, jak nastavit a nakonfigurovat reverzní proxy server v clusteru. 
@@ -44,7 +44,7 @@ Pro clustery v Azure můžete použít šablonu Azure Resource Manager k povolen
 
 Pro nový cluster můžete [vytvořit vlastní šablonu správce prostředků](service-fabric-cluster-creation-via-arm.md) nebo můžete použít vzorovou šablonu. 
 
-Můžete najít ukázkovou Správce prostředků šablony, které vám pomůžou nakonfigurovat zabezpečený reverzní proxy pro cluster Azure na GitHubu v rámci [šablony pro zabezpečení reverzního proxy serveru](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample) . Pokyny a šablony, které se použijí ke konfiguraci zabezpečeného serveru reverzního proxy s certifikátem a ke zpracování změn certifikátů, najdete v tématu [Konfigurace reverzního proxy serveru HTTPS v zabezpečeném clusteru](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) v souboru Readme.
+Můžete najít ukázkovou Správce prostředků šablony, které vám pomůžou nakonfigurovat zabezpečený reverzní proxy pro cluster Azure na GitHubu v rámci [šablony pro zabezpečení reverzního proxy serveru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample) . Pokyny a šablony, které se použijí ke konfiguraci zabezpečeného serveru reverzního proxy s certifikátem a ke zpracování změn certifikátů, najdete v tématu [Konfigurace reverzního proxy serveru HTTPS v zabezpečeném clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) v souboru Readme.
 
 Pro existující cluster můžete exportovat šablonu Správce prostředků pro skupinu prostředků clusteru pomocí [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli).
 

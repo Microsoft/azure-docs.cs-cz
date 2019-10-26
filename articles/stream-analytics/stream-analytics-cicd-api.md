@@ -1,6 +1,6 @@
 ---
-title: Implementujte CI/CD pro Azure Stream Analytics na hraničních zařízeních IoT pomocí rozhraní REST API
-description: Zjistěte, jak implementovat průběžné integrace a nasazení kanálu pro Azure Stream Analytics pomocí rozhraní REST API.
+title: Použití rozhraní REST API k provedení CI/CD pro Azure Stream Analytics na IoT Edge
+description: Naučte se implementovat kanál průběžné integrace a nasazování pro Azure Stream Analytics pomocí rozhraní REST API.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,24 +8,24 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 40beb620e037061b189762a51e3c29d0fd251b27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94f124a1b2571a685de9da7f37b2ed50a2860da7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61362072"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925658"
 ---
-# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>Implementujte CI/CD pro Stream Analytics na hraničních zařízeních IoT pomocí rozhraní API
+# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>Implementace CI/CD pro Stream Analytics na IoT Edge pomocí rozhraní API
 
-Můžete povolit průběžnou integraci a nasazování pro úlohy Azure Stream Analytics pomocí rozhraní REST API. Tento článek obsahuje příklady, na které rozhraní API pro použití a způsob jejich použití. Rozhraní REST API nejsou podporované v Azure Cloud Shell.
+Můžete povolit průběžnou integraci a nasazování pro úlohy Azure Stream Analytics pomocí rozhraní REST API. Tento článek popisuje příklady použití rozhraní API a jejich použití. Rozhraní REST API nejsou v Azure Cloud Shell podporovaná.
 
-## <a name="call-apis-from-different-environments"></a>Volání rozhraní API z různých prostředích
+## <a name="call-apis-from-different-environments"></a>Volání rozhraní API z různých prostředí
 
-Rozhraní REST API můžete volat z Linux i Windows. Následující příkazy ukazují správnou syntaxi pro volání rozhraní API. Použití konkrétní rozhraní API budou popsané v předchozích částech tohoto článku.
+Rozhraní REST API je možné volat jak z Linux, tak z Windows. Následující příkazy ukazují správnou syntaxi pro volání rozhraní API. Konkrétní využití rozhraní API bude popsáno v dalších částech tohoto článku.
 
 ### <a name="linux"></a>Linux
 
-Pro Linux, můžete použít `Curl` nebo `Wget` příkazy:
+Pro Linux můžete použít příkazy `Curl` nebo `Wget`:
 
 ```bash
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body>}” { <url> }   
@@ -37,7 +37,7 @@ wget -q -O- --{ <method> }-data="<request body>”--header=Content-Type:applicat
  
 ### <a name="windows"></a>Windows
 
-Pokud používáte Windows, použijte prostředí Powershell: 
+Pro Windows použijte PowerShell: 
 
 ```powershell 
 $user = "<username>" 
@@ -52,21 +52,21 @@ $response = Invoke-RestMethod <url>-Method <method> -Body $content -Headers $Hea
 echo $response 
 ```
  
-## <a name="create-an-asa-job-on-edge"></a>Vytvořit úlohu Azure Stream Analytics na hraničních zařízeních 
+## <a name="create-an-asa-job-on-edge"></a>Vytvoření úlohy ASA na hraničních zařízeních 
  
-Chcete-li vytvořit úlohu Stream Analytics, zavolejte metodu PUT pomocí rozhraní API pro Stream Analytics.
+Chcete-li vytvořit úlohu Stream Analytics, zavolejte metodu PUT pomocí rozhraní Stream Analytics API.
 
 |Metoda|Adresa URL požadavku|
 |------|-----------|
-|PUT|https://management.azure.com/subscriptions/{**id předplatného**} /resourcegroups/ {**název skupiny prostředků**} / providers/Microsoft.StreamAnalytics/streamingjobs/ {**název úlohy**}? api-version = 2017-04-01-preview|
+|PŘEVÉST|https://management.azure.com/subscriptions/{**ID předplatného**}/ResourceGroups/{**Resource-Group-Name**}/Providers/Microsoft.StreamAnalytics/streamingjobs/{**název úlohy**}? API-Version = 2017-04 -01-Preview|
  
-Příklad použití příkazu **curl**:
+Příklad příkazu využívajícího **kudrlinkou**:
 
 ```curl
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body>}” https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
 ``` 
  
-Příklad těla žádosti JSON:
+Příklad textu žádosti ve formátu JSON:
 
 ```json
 { 
@@ -137,42 +137,42 @@ Příklad těla žádosti JSON:
 } 
 ```
  
-Další informace najdete v tématu [dokumentace k rozhraní API](/rest/api/streamanalytics/stream-analytics-job).  
+Další informace najdete v [dokumentaci k rozhraní API](/rest/api/streamanalytics/stream-analytics-job).  
  
-## <a name="publish-edge-package"></a>Publikování hraničního balíčku 
+## <a name="publish-edge-package"></a>Publikovat hraniční balíček 
  
-K publikování úlohu Stream Analytics na hraničních zařízeních IoT, zavolejte metodu POST pomocí API publikovat hraniční balíček.
+Pokud chcete publikovat úlohu Stream Analytics na IoT Edge, zavolejte metodu POST pomocí rozhraní API pro publikování balíčku Edge.
 
 |Metoda|Adresa URL požadavku|
 |------|-----------|
-|POST|https://management.azure.com/subscriptions/{**subscriptionid**} /resourceGroups/ {**resourcegroupname**} / providers/Microsoft.StreamAnalytics/streamingjobs/ {**jobname**} / publishedgepackage? api-version = 2017-04-01 - ve verzi Preview|
+|SPUŠTĚNÍ|https://management.azure.com/subscriptions/{**SubscriptionId**}/resourceGroups/{**ResourceGroupName**}/Providers/Microsoft.StreamAnalytics/streamingjobs/{**JobName**}/publishedgepackage? API-Version = 2017-04 -01-Preview|
 
-Tato asynchronní operace vrátí stav 202, dokud úloha byla úspěšně publikována. Hlavičky location odpovědi obsahuje identifikátor URI použitý k získání stavu procesu. Během procesu volání identifikátoru URI v hlavičce location vrátí stav 202. Až se proces dokončí, identifikátor URI v hlavičce location vrací stav 200. 
+Tato asynchronní operace vrátí stav 202 až do úspěšného publikování úlohy. Hlavička odpovědi umístění obsahuje identifikátor URI, který se používá k získání stavu procesu. Při běhu procesu vrátí volání identifikátoru URI v hlavičce umístění stav 202. Po dokončení procesu vrátí identifikátor URI v hlavičce umístění stav 200. 
 
-Příklad hraniční balíček publikovat pomocí volání **curl**: 
+Příklad balíčku Edge s voláním pro publikování pomocí objektu **kudrlinkou**: 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
 ```
  
-Po provedení volání POST, měli byste očekávat odpověď s prázdným textem zprávy. Vyhledejte adresu URL nachází v HLAVIČCE odpovědi a poznamenejte si ho pro další použití.
+Po provedení NÁSLEDNÉho volání byste měli očekávat odpověď s prázdným tělem. Vyhledejte adresu URL, která se nachází v HLAVIČCE odpovědi, a zaznamenejte ji pro další použití.
  
-Příklad adresy URL od záhlaví odpovědi:
+Příklad adresy URL z HLAVIČKY odpovědi:
 
 ```
 https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/StreamingJobs/{**resourcename**}/OperationResults/023a4d68-ffaf-4e16-8414-cb6f2e14fe23?api-version=2017-04-01-preview 
 ```
-Počkejte pár minut před spuštěním následujícího příkazu proveďte volání rozhraní API s adresou URL, který jste našli v HLAVIČCE odpovědi. Pokud nelze získat odpověď 200, opakujte příkaz.
+Počkejte jednu až dvě minuty, než spustíte následující příkaz, aby bylo volání rozhraní API s adresou URL, kterou jste nalezli v HLAVIČCE odpovědi. Pokud neobdržíte odpověď 200, zkuste příkaz zopakovat.
  
-Příklad volání rozhraní API se vrátí adresu URL s **curl**:
+Příklad volání rozhraní API s vrácenou adresou URL s **kudrlinkou**:
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 
 ```
 
-Odpověď obsahuje informace, které je potřeba přidat do skriptu nasazení Edge. Následující příklady ukazují, co informace, které potřebujete ke shromažďování a kam přidat v nasazení manifestu.
+Odpověď obsahuje informace, které je třeba přidat do skriptu nasazení Edge. Níže uvedené příklady obsahují informace, které potřebujete shromažďovat a kam je přidat v manifestu nasazení.
  
-Ukázkový text odpovědi po úspěšném publikování:
+Ukázka textu odpovědi po úspěšném publikování:
 
 ```json
 { 
@@ -253,11 +253,11 @@ Ukázka manifestu nasazení:
 } 
 ```
 
-Po konfiguraci manifest nasazení, přečtěte si [moduly nasazení Azure IoT Edge pomocí Azure CLI](../iot-edge/how-to-deploy-modules-cli.md) pro nasazení.
+Po konfiguraci manifestu nasazení si přečtěte téma [nasazení Azure IoT Edge modulů pomocí Azure CLI](../iot-edge/how-to-deploy-modules-cli.md) pro nasazení.
 
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
  
-* [Azure Stream Analytics na hraničních zařízeních IoT](stream-analytics-edge.md)
-* [Azure Stream Analytics na hraničních zařízeních IoT kurz](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Azure Stream Analytics na IoT Edge](stream-analytics-edge.md)
+* [Kurz k ASA v IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [Vývoj úloh Stream Analytics Edge pomocí nástrojů sady Visual Studio](stream-analytics-tools-for-visual-studio-edge-jobs.md)

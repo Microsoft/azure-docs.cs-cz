@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 49567ae52b8ea706ebf7e093880e919cc8bbdbad
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 370717e09e788faa56662c4c88e2e7c0de21eef7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901645"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933152"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů objektů BLOB v Azure (ABFS): vyhrazený ovladač Azure Storage pro Hadoop
 
@@ -49,6 +49,9 @@ Ovladač ABFS podporuje dvě formy ověřování, aby mohla aplikace Hadoop bezp
 - **Sdílený klíč:** To umožňuje uživatelům přístup ke všem prostředkům v účtu. Klíč je zašifrovaný a uložený v konfiguraci Hadoop.
 
 - **Azure Active Directory nosný token OAuth:** Tokeny nosiče Azure AD se získávají a aktualizují pomocí ovladače buď prostřednictvím identity koncového uživatele, nebo nakonfigurovaného instančního objektu. Pomocí tohoto modelu ověřování je veškerý přístup autorizovaný pro jednotlivá volání pomocí identity přidružené k zadanému tokenu a vyhodnocený na základě přiřazeného seznamu Access Control POSIX (ACL).
+
+   > [!NOTE] 
+   > Azure Data Lake Storage Gen2 podporuje pouze koncové body Azure AD v 1.0.
 
 ### <a name="configuration"></a>Konfigurace
 

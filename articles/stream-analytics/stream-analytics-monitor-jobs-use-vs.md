@@ -1,6 +1,6 @@
 ---
-title: Monitorování a Správa úloh Azure Stream Analytics pomocí sady Visual Studio
-description: Tento článek popisuje, jak pomocí sady Visual Studio ke sledování a správě úloh Azure Stream Analytics.
+title: Monitorování a Správa Azure Stream Analytics pomocí sady Visual Studio
+description: Tento článek popisuje, jak pomocí sady Visual Studio monitorovat a spravovat Azure Stream Analytics úlohy.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,44 +9,44 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e673d4f1c2d58a61c541cca4f8448dffc003f9fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 684f034393dd3f53900100dd964d9ea07d200897
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479396"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934979"
 ---
-# <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Monitorování a správa úlohy Stream Analytics pomocí sady Visual Studio
+# <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Monitorování a správa úloh Stream Analytics pomocí sady Visual Studio
 
-Tento článek ukazuje, jak monitorovat úlohu Stream Analytics v sadě Visual Studio. Nástroje Azure Stream Analytics pro Visual Studio poskytuje možnosti monitorování podobně jako na webu Azure portal bez nutnosti opouštět prostředí IDE. Můžete začít monitorovat úlohu Jakmile **odeslat do Azure** z vaší **Script.asaql**, nebo můžete sledovat existující projekty bez ohledu na to, jak byly vytvořeny. 
+Tento článek ukazuje, jak monitorovat úlohu Stream Analytics v aplikaci Visual Studio. Azure Stream Analytics Tools for Visual Studio nabízí prostředí pro monitorování, které se podobá Azure Portal bez nutnosti opustit IDE. Můžete začít monitorovat úlohu hned po **odeslání do Azure** ze **skriptu. asaql**, nebo můžete monitorovat existující úlohy bez ohledu na to, jak byly vytvořeny. 
 
 ## <a name="job-summary"></a>Souhrn úlohy
 
-**Souhrn úlohy** a **metriky úlohy** poskytují rychlý snímek vaší úlohy. Na první pohled můžete určit informace o stavu a událostí úlohy.]
+**Souhrn úlohy** a **metriky úloh** poskytují rychlý snímek úlohy. Na první pohled můžete určit stav úlohy a informace o událostech.]
 
 <img src="./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-job-summary-metrics.png" alt="Stream Analytics job summary and job metrics" width="300px"/> 
 
 
 ## <a name="job-metrics"></a>Metriky úlohy
 
-Můžete sbalit **Souhrn úlohy** a klikněte na tlačítko **metriky úlohy** kartu pro zobrazení grafu s důležité metriky. Kontrola a zrušte zaškrtnutí políčka metriky typy přidávat a odebírat z grafu.
+Můžete sbalit **Souhrn úlohy** a kliknout na kartu **metriky úlohy** a zobrazit graf s důležitými metrikami. Umožňuje zaškrtnout a zrušit kontrolu typů metriky, které chcete přidat a odebrat z grafu.
 
-![Stream Analytics metriky v sadě Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
+![Stream Analytics metriky v aplikaci Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
 
 
-## <a name="error-monitoring"></a>Monitorování chyb
+## <a name="error-monitoring"></a>Sledování chyb
 
-Můžete také sledovat chyby kliknutím na **chyby** kartu.
+Chyby můžete monitorovat také kliknutím na kartu **chyby** .
 
-![Stream Analytics chyby v sadě Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
+![Chyby Stream Analytics v aplikaci Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
 ## <a name="get-support"></a>Získat podporu
-Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
-## <a name="next-steps"></a>Další postup
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
-* [Vytvořit úlohu Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Instalace nástroje Azure Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 
+## <a name="next-steps"></a>Další kroky
+* [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
+* [Vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
+* [Nainstalovat Azure Stream Analytics nástroje pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 
 
 

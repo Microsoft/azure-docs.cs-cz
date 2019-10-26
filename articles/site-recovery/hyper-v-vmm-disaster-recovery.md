@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a2eb8bf10454ee01953ddd37025f0c0048d00a0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b0fa4dbc336067ee3e3b2baa49ec872f65a3154b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813759"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933533"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
 
@@ -29,7 +29,10 @@ V tomto článku se dozvíte, jak nastavit zotavení po havárii do sekundární
 > * Vytvoření zásady replikace
 > * Povolit replikaci virtuálního počítače
 
-## <a name="prerequisites"></a>Požadavky
+> [!WARNING]
+> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
+
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky pro dokončení tohoto scénáře:
 
@@ -38,7 +41,7 @@ Požadavky pro dokončení tohoto scénáře:
 - Zkontrolujte, že virtuální počítače, které chcete replikovat, odpovídají [podporovaným replikovaným počítačům](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support).
 - Připravte servery VMM na mapování sítě.
 
-### <a name="prepare-for-network-mapping"></a>Příprava mapování sítě
+### <a name="prepare-for-network-mapping"></a>Příprava na mapování sítě
 
 [Mapování sítě](hyper-v-vmm-network-mapping.md) provádí mapování mezi místními sítěmi virtuálních počítačů VMM ve zdrojových a cílových cloudech. Mapování provádí následující:
 
@@ -64,7 +67,7 @@ Připravte VMM následujícím způsobem:
 
 Vyberte, jak chcete počítače replikovat a kam je chcete replikovat.
 
-1. Klikněte na **Site Recovery** > **krok 1: Připravte** **cíl ochrany**infrastruktury. > 
+1. Klikněte na **Site Recovery** > **Krok 1: Příprava infrastruktury** > **Cíl ochrany**.
 2. Vyberte **Do lokality pro obnovení** a vyberte **Ano, s technologií Hyper-V**.
 3. Vyberte **Ano**, abyste určili, že ke správě hostitelů Hyper-V používáte VMM.
 4. Vyberte **Ano**, pokud máte sekundární server VMM. Pokud nasazujete replikaci mezi cloudy na jeden server VMM, klikněte na **Ne**. Pak klikněte na **OK**.
@@ -115,7 +118,7 @@ Vyberte cílový server VMM a cloud:
 1. Klikněte na **Připravit infrastrukturu** > **Cíl** a vyberte cílový server VMM.
 2. Zobrazí se cloudy VMM synchronizované se Site Recovery. Vyberte cílový cloud.
 
-   ![Target](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Výběr cílového umístění](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace
@@ -132,8 +135,8 @@ Než začnete, ujistěte se, že všichni hostitelé, na které se zásada vztah
 1. V části **Frekvence kopírování** určete, jak často chcete replikovat rozdílová data po počáteční replikaci (každých 30 sekund, 5 minut nebo 15 minut).
 2. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý bude interval uchovávání dat pro jednotlivé body obnovení. Replikované počítače je možné obnovit do libovolného bodu v rámci tohoto intervalu.
 3. V části **Frekvence pořizování snímků konzistentních vzhledem k aplikacím** určete, jak často (1–12 hodin) se mají vytvářet body obnovení obsahující snímky konzistentní vzhledem k aplikacím. Technologie Hyper-V používá dva typy snímků:
-    - **Standardní snímek**: Poskytuje přírůstkový snímek celého virtuálního počítače.
-    - **Snímek konzistentní vzhledem k aplikacím**: Vytvoří snímek dat aplikace v rámci virtuálního počítače v určitém časovém bodě. Služba Stínová kopie svazku (VSS) zajišťuje, že aplikace budou při pořízení snímku v konzistentním stavu. Povolení snímků konzistentních vzhledem k aplikacím má vliv na výkon aplikací na zdrojových virtuálních počítačích. Nastavte hodnotu menší než počet dalších bodů obnovení, které nakonfigurujete.
+    - **Standardní snímek:** Poskytuje přírůstkový snímek celého virtuálního počítače.
+    - **Snímek konzistentní vzhledem k aplikacím:** Pořizuje snímek dat aplikací ve virtuálním počítači v daném okamžiku. Služba Stínová kopie svazku (VSS) zajišťuje, že aplikace budou při pořízení snímku v konzistentním stavu. Povolení snímků konzistentních vzhledem k aplikacím má vliv na výkon aplikací na zdrojových virtuálních počítačích. Nastavte hodnotu menší než počet dalších bodů obnovení, které nakonfigurujete.
 4. V části **Komprese přenosu dat** určete, jestli se mají přenášená data replikace komprimovat.
 5. Výběrem možnosti **Odstranit repliku virtuálního počítače** určíte, že se má v případě, že zakážete ochranu zdrojového virtuálního počítače, odstranit jeho replika. Pokud povolíte toto nastavení, pak se v případě, že zakážete ochranu zdrojového virtuálního počítače, tento virtuální počítač odebere z konzoly Site Recovery, z konzoly VMM se odeberou nastavení Site Recovery pro VMM a odstraní se příslušná replika.
 6. Pokud provádíte replikaci přes síť, v části **Metoda počáteční replikace** určete, jestli se má spustit počáteční replikace, nebo ji naplánujte. Pokud chcete snížit využití šířky pásma, měli byste ji naplánovat na dobu mimo špičky. Pak klikněte na **OK**.

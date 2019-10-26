@@ -1,17 +1,17 @@
 ---
-title: Test Azure Stream Analytics dotazy místně pomocí Visual Studio Code (Preview)
+title: Testování Azure Stream Analytics dotazů pomocí Visual Studio Code
 description: Tento článek popisuje, jak testovat dotazy místně pomocí Azure Stream Analyticsch nástrojů pro Visual Studio Code.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 751cdf50fccc654dfab06b4d18428531312d08e6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 2791fb923f193815d718dbd2269cbcd11583a4ea
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673025"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924975"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>Test Stream Analytics dotazy místně pomocí Visual Studio Code
 
@@ -19,7 +19,7 @@ Pomocí Azure Stream Analytics nástrojů pro Visual Studio Code můžete testov
 
 V tomto [rychlém](quick-create-vs-code.md) startu se dozvíte, jak pomocí Visual Studio Code vytvořit úlohu Stream Analytics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Nainstalujte [sadu .NET Core SDK](https://dotnet.microsoft.com/download).
 * Restartujte Visual Studio Code.
  
@@ -27,7 +27,7 @@ V tomto [rychlém](quick-create-vs-code.md) startu se dozvíte, jak pomocí Visu
 
 Azure Stream Analytics rozšíření pro Visual Studio Code můžete použít k otestování Stream Analytics úloh místně s ukázkovými daty.
 
-1. Po vytvoření úlohy Stream Analytics použijte **kombinaci kláves CTRL + SHIFT + P** a otevřete paletu příkazů. Pak zadejte a vyberte **ASA: Přidejte vstup @ no__t-0.
+1. Po vytvoření úlohy Stream Analytics použijte **kombinaci kláves CTRL + SHIFT + P** a otevřete paletu příkazů. Pak zadejte a vyberte **ASA: přidat vstup**.
 
     ![Přidat vstup z ASA do Visual studia Code](./media/vscode-local-run/add-input.png)
 

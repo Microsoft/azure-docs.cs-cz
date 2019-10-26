@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9767282b3dd764a45f25a14d62af70a13c80b0ac
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6e3b368d1f5615c34a49b155d288d3c37c28bc26
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300271"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933137"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage-preview"></a>Přístup k více protokolům na Azure Data Lake Storage (verze Preview)
 
@@ -35,7 +35,7 @@ To zahrnuje i nástroje a aplikace třetích stran. Můžete je nasměrovat na �
 
 ## <a name="use-all-blob-storage-features"></a>Používání všech funkcí služby Blob Storage
 
-Funkce služby Blob Storage, jako je [protokolování diagnostiky](../common/storage-analytics-logging.md), [úrovně přístupu](storage-blob-storage-tiers.md)a [zásady správy životního cyklu úložiště objektů BLOB](storage-lifecycle-management-concepts.md) , teď fungují s účty, které mají hierarchický obor názvů. Proto můžete v účtech BLOB Storage povolit hierarchické obory názvů bez přístupu k těmto důležitým funkcím ztrátě. 
+Funkce služby Blob Storage, jako je [protokolování diagnostiky](../common/storage-analytics-logging.md), [úrovně přístupu](storage-blob-storage-tiers.md)a [zásady správy životního cyklu úložiště objektů BLOB](storage-lifecycle-management-concepts.md) , teď fungují s účty, které mají hierarchický obor názvů. Proto můžete v účtech BLOB Storage povolit hierarchické obory názvů bez ztráty přístupu k těmto důležitým funkcím. 
 
 > [!NOTE]
 > Chcete-li zkontrolovat omezení, přečtěte si článek [známé problémy](data-lake-storage-known-issues.md) .

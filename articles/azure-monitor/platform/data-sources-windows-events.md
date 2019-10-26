@@ -1,24 +1,18 @@
 ---
 title: Shromažďování a analýza protokolů událostí systému Windows v Azure Monitor | Microsoft Docs
 description: V této části najdete popis postupu konfigurace shromažďování protokolů událostí systému Windows Azure Monitor a podrobností záznamů, které vytvoří.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cc81a8d8023d0724f4ecb71c157e8f575aa9edc8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 11/28/2018
+ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997478"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932411"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí systému Windows v Azure Monitor
 Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů dat](agent-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací zapisuje do protokolu událostí systému Windows.  Kromě určení libovolných vlastních protokolů vytvořených aplikacemi, které je třeba monitorovat, můžete shromažďovat události ze standardních protokolů, jako je například systém a aplikace.
@@ -28,7 +22,7 @@ Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů
 ## <a name="configuring-windows-event-logs"></a>Konfigurace protokolů událostí systému Windows
 [V nabídce data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources)Nakonfigurujte protokoly událostí systému Windows.
 
-Azure Monitor shromažďuje pouze události z protokolů událostí systému Windows, které jsou zadány v nastavení.  Protokol událostí můžete přidat zadáním názvu protokolu a kliknutím **+** .  U každého protokolu se shromažďují jenom události s vybranými závažnostmi.  Ověřte závažnost konkrétního protokolu, který chcete shromáždit.  Nemůžete zadat žádná další kritéria pro filtrování událostí.
+Azure Monitor shromažďuje pouze události z protokolů událostí systému Windows, které jsou zadány v nastavení.  Protokol událostí můžete přidat zadáním názvu protokolu a kliknutím na **+** .  U každého protokolu se shromažďují jenom události s vybranými závažnostmi.  Ověřte závažnost konkrétního protokolu, který chcete shromáždit.  Nemůžete zadat žádná další kritéria pro filtrování událostí.
 
 Při zadávání názvu protokolu událostí Azure Monitor poskytuje návrhy běžných názvů protokolů událostí. Pokud se v seznamu nezobrazí protokol, který chcete přidat, můžete ho přidat tak, že zadáte úplný název protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí otevřete stránku *vlastností* protokolu a zkopírujte řetězec z pole *celé jméno* .
 
@@ -49,7 +43,7 @@ Záznamy událostí systému Windows mají typ **události** a mají vlastnosti 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Computer |Název počítače, ze kterého byla událost shromážděna. |
+| Počítač |Název počítače, ze kterého byla událost shromážděna. |
 | EventCategory |Kategorie události |
 | EventData |Všechna data události v nezpracovaném formátu. |
 | ID události |Číslo události |
@@ -57,12 +51,12 @@ Záznamy událostí systému Windows mají typ **události** a mají vlastnosti 
 | EventLevelName |Závažnost události v textovém formátu. |
 | EventLog |Název protokolu událostí, ze kterého byla událost shromážděna. |
 | ParameterXml |Hodnoty parametrů událostí ve formátu XML. |
-| ManagementGroupName |Název skupiny pro správu pro agenty System Center Operations Manager.  Pro jiné agenty je tato hodnota`AOI-<workspace ID>` |
+| ManagementGroupName |Název skupiny pro správu pro agenty System Center Operations Manager.  Pro jiné agenty je tato hodnota `AOI-<workspace ID>` |
 | RenderedDescription |Popis události s hodnotami parametrů |
-| Source |Zdroj události |
+| Zdroj |Zdroj události |
 | SourceSystem |Typ agenta, ze kterého byla událost shromážděna <br> OpsManager – Agent pro Windows, buď přímá připojení, nebo Operations Manager spravovaná <br> Linux – všichni agenti se systémem Linux  <br> AzureStorage – Azure Diagnostics |
 | TimeGenerated |Datum a čas vytvoření události v systému Windows. |
-| UserName |Uživatelské jméno účtu, který událost zaznamenal. |
+| Jmen |Uživatelské jméno účtu, který událost zaznamenal. |
 
 ## <a name="log-queries-with-windows-events"></a>Dotazy protokolu s událostmi systému Windows
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy událostí systému Windows.
@@ -71,11 +65,11 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 |:---|:---|
 | Událost |Všechny události systému Windows. |
 | Událost &#124; , kde EventLevelName = = "Error" |Všechny události systému Windows se závažností chyby. |
-| Event &#124; summarize count() by Source |Počet událostí systému Windows podle zdroje |
+| Souhrn &#124; událostí – počet () podle zdroje |Počet událostí systému Windows podle zdroje |
 | Událost &#124; , kde EventLevelName = = "Error &#124; " (souhrn) Count () podle zdroje |Počet událostí chyb systému Windows podle zdroje. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Nakonfigurujte Log Analytics pro shromažďování dalších [zdrojů dat](agent-data-sources.md) pro účely analýzy.
-* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.  
 * Nakonfigurujte [shromažďování čítačů výkonu](data-sources-performance-counters.md) z agentů Windows.

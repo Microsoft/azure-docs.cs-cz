@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 098dc5e2ab7d4b9533f58e03557db533eaa49a90
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264379"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931285"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou
 
@@ -22,7 +22,7 @@ V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto rychlého startu musíte mít:
 - Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) .
 - byl nainstalován [oblý](https://curl.haxx.se/windows/) .
@@ -38,7 +38,7 @@ Nejdřív budete potřebovat sadu školicích dat v objektu blob Azure Storage. 
 
 Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure naučit model pro rozpoznávání formulářů, zavolejte rozhraní API pro **vlak** spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formuláře. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání vašeho formuláře.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 1. Nahraďte `<SAS URL>` pomocí adresy URL sdíleného přístupového podpisu kontejneru Azure Blob Storage (SAS). Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
@@ -93,18 +93,18 @@ Všimněte si hodnoty `"modelId"`. Budete ho potřebovat v následujících kroc
 
 Dále analyzujete dokument a z něj extrahujete páry klíč-hodnota a tabulky. Zavolejte **model – Analyzujte** rozhraní API spuštěním příkazu složeného, který následuje. Před spuštěním příkazu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali z předplatného pro rozpoznávání formulářů.
 1. Nahraďte `<modelID>` číslem ID modelu, který jste obdrželi v předchozí části.
 1. Nahraďte `<path to your form>` cestou k souboru vašeho formuláře (například C:\temp\file.PDF). Pro účely tohoto rychlého startu můžete použít soubory ve složce **test** sady [ukázkových dat](https://go.microsoft.com/fwlink/?linkid=2090451).
 1. Nahraďte `<file type>` typem souboru. Podporované typy: `application/pdf`, `image/jpeg` `image/png`.
-1. Nahraďte `<subscription key>` klíčem předplatného.
+1. Místo `<subscription key>` použijte váš klíč předplatného.
 
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-### <a name="examine-the-response"></a>Projděte si odpověď.
+### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
 Ve formátu JSON se vrátí odpověď na úspěch. Představuje páry klíč-hodnota a tabulky extrahované z formuláře:
 

@@ -3,16 +3,16 @@ title: Nejčastější dotazy – řešení Network Performance Monitor v Azure 
 description: Tento článek zachycuje Nejčastější dotazy týkající se Network Performance Monitor v Azure. Network Performance Monitor (NPM) vám pomůže monitorovat výkon sítí prakticky v reálném čase a zjišťovat a vyhledávat kritické body výkonu sítě.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: article
+ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 26e9215c7e00eca59d33f7e8d259a689ad642f19
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: b451597d2d91117e11b1becd8b4ab96f981dade8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898851"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931318"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 

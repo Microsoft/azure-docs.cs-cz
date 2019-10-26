@@ -1,24 +1,18 @@
 ---
 title: Správa agenta Azure Log Analyticse | Microsoft Docs
 description: Tento článek popisuje různé úlohy správy, které se obvykle provádějí během životního cyklu Log Analytics agenta pro Windows nebo Linux nasazeného v počítači.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/14/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 06/14/2019
+ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67146293"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932791"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správa a údržba agenta Log Analytics pro systémy Windows a Linux
 
@@ -30,17 +24,17 @@ Agenta Log Analytics pro systém Windows a Linux lze upgradovat na nejnovější
 
 | Prostředí | Metoda instalace | Metoda upgradu |
 |--------|----------|-------------|
-| Azure VM | Rozšíření virtuálního počítače agenta Log Analytics pro Windows/Linux | Agent je automaticky upgradován ve výchozím nastavení, pokud nenakonfigurovali šablonu Azure Resource Manager tak, aby se odhlásila nastavením vlastnosti *autoUpgradeMinorVersion* na **hodnotu false**. |
+| Virtuální počítač Azure | Rozšíření virtuálního počítače agenta Log Analytics pro Windows/Linux | Agent je automaticky upgradován ve výchozím nastavení, pokud nenakonfigurovali šablonu Azure Resource Manager tak, aby se odhlásila nastavením vlastnosti *autoUpgradeMinorVersion* na **hodnotu false**. |
 | Vlastní image virtuálních počítačů Azure | Ruční instalace agenta Log Analytics pro systém Windows/Linux | Aktualizace virtuálních počítačů na nejnovější verzi agenta je třeba provést z příkazového řádku se spuštěným balíčkem Instalační služby systému Windows nebo pomocí automatického extrahování a instalovatelných sad prostředků prostředí pro systém Linux.|
 | Virtuální počítače mimo Azure | Ruční instalace agenta Log Analytics pro systém Windows/Linux | Aktualizace virtuálních počítačů na nejnovější verzi agenta je třeba provést z příkazového řádku se spuštěným balíčkem Instalační služby systému Windows nebo pomocí automatického extrahování a instalovatelných sad prostředků prostředí pro systém Linux. |
 
 ### <a name="upgrade-windows-agent"></a>Upgradovat agenta Windows 
 
-Pokud chcete aktualizovat agenta na virtuálním počítači s Windows na nejnovější verzi, která není nainstalovaná pomocí log Analyticsho rozšíření virtuálního počítače, můžete buď spustit z příkazového řádku, skriptu nebo jiného řešení automatizace, nebo\<pomocí\>instalačního programu MMASetup-Platform. msi. Tip.  
+Pokud chcete aktualizovat agenta na virtuálním počítači s Windows na nejnovější verzi, která není nainstalovaná pomocí Log Analyticsho rozšíření virtuálního počítače, buď spusťte z příkazového řádku, skriptu nebo jiného řešení automatizace, nebo pomocí Průvodce instalací MSI\>platformy MMASetup-\<.  
 
 Nejnovější verzi agenta pro Windows si můžete stáhnout z pracovního prostoru Log Analytics, a to provedením následujících kroků.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
@@ -58,11 +52,11 @@ Nejnovější verzi agenta pro Windows si můžete stáhnout z pracovního prost
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 
-2. Spuštěním příkazu **MMASetup\<-\>Platform. exe** spusťte Průvodce instalací nástroje.
+2. Spusťte Průvodce instalací nástroje **MMASetup-\<platform\>. exe** .
 
 3. Na první stránce Průvodce instalací klikněte na tlačítko **Další**.
 
-4. V dialogovém okně **instalace Microsoft Monitoring Agent** kliknutím na Souhlasím potvrďte souhlas s licenční smlouvou.
+4. V dialogovém okně **instalace Microsoft Monitoring Agent** **kliknutím na Souhlasím** potvrďte souhlas s licenční smlouvou.
 
 5. V dialogovém okně **nastavení Microsoft Monitoring Agent** klikněte na možnost **upgradovat**. Na stránce stav se zobrazuje průběh upgradu.
 
@@ -72,7 +66,7 @@ Nejnovější verzi agenta pro Windows si můžete stáhnout z pracovního prost
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 
-2. K extrakci instalačních souborů agenta se spustí `MMASetup-<platform>.exe /c` příkazový řádek se zvýšenými oprávněními a zobrazí výzvu k zadání cesty k extrakci souborů. Alternativně můžete zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.
+2. K extrakci instalačních souborů agenta můžete z příkazového řádku se zvýšenými oprávněními spustit `MMASetup-<platform>.exe /c` a zobrazí se výzva k zadání cesty k extrakci souborů. Alternativně můžete zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.
 
 3. Spusťte následující příkaz, kde D:\ je umístění souboru protokolu upgradu.
 
@@ -82,7 +76,7 @@ Nejnovější verzi agenta pro Windows si můžete stáhnout z pracovního prost
 
 ### <a name="upgrade-linux-agent"></a>Upgrade agenta pro Linux 
 
-Upgrade z předchozích verzí (> 1.0.0-47) je podporován. Při provádění instalace pomocí `--upgrade` příkazu se upgradují všechny součásti agenta na nejnovější verzi.
+Upgrade z předchozích verzí (> 1.0.0-47) je podporován. Při provádění instalace pomocí příkazu `--upgrade` se upgradují všechny součásti agenta na nejnovější verzi.
 
 Spusťte následující příkaz pro upgrade agenta.
 
@@ -137,7 +131,7 @@ $mma.ReloadConfiguration()
 ```
 
 >[!NOTE]
->Pokud jste dříve používali příkazový řádek nebo skript pro instalaci nebo konfiguraci agenta, `EnableAzureOperationalInsights` byl nahrazen nástrojem `AddCloudWorkspace` a `RemoveCloudWorkspace`.
+>Pokud jste pro instalaci nebo konfiguraci agenta používali příkazový řádek nebo skript, `EnableAzureOperationalInsights` byl nahrazen `AddCloudWorkspace` a `RemoveCloudWorkspace`.
 >
 
 ### <a name="linux-agent"></a>Agent pro Linux
@@ -244,16 +238,16 @@ Pomocí jednoho z následujících postupů odinstalujte agenta systému Windows
 3. V nabídce **programy a funkce**klikněte na **Microsoft Monitoring Agent**, klikněte na **odinstalovat**a potom klikněte na **Ano**.
 
 >[!NOTE]
->Průvodce instalací agenta lze spustit také dvojitým kliknutím na **MMASetup-\<\>Platform. exe**, který je k dispozici ke stažení z pracovního prostoru v Azure Portal.
+>Průvodce instalací agenta lze spustit také dvojitým kliknutím na **\<MMASetup platformu\>. exe**, která je k dispozici ke stažení z pracovního prostoru v Azure Portal.
 
 #### <a name="uninstall-from-the-command-line"></a>Odinstalace z příkazového řádku
 Stažený soubor pro agenta je samostatný instalační balíček vytvořený pomocí IExpress. Instalační program pro agenta a podpůrné soubory jsou obsaženy v balíčku a je třeba jej extrahovat, aby se správně odinstaloval pomocí příkazového řádku, který je znázorněn v následujícím příkladu.
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 
-2. K extrakci instalačních souborů agenta se spustí `extract MMASetup-<platform>.exe` příkazový řádek se zvýšenými oprávněními a zobrazí výzvu k zadání cesty k extrakci souborů. Alternativně můžete zadat cestu předáním argumentů `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Další informace o přepínačích příkazového řádku podporovaných v IExpress najdete v tématech [přepínače příkazového řádku pro IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) a pak aktualizujte příklad tak, aby odpovídal vašim potřebám.
+2. K extrakci instalačních souborů agenta můžete z příkazového řádku se zvýšenými oprávněními spustit `extract MMASetup-<platform>.exe` a zobrazí se výzva k zadání cesty k extrakci souborů. Alternativně můžete zadat cestu předáním argumentů `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Další informace o přepínačích příkazového řádku podporovaných v IExpress najdete v tématech [přepínače příkazového řádku pro IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) a pak aktualizujte příklad tak, aby odpovídal vašim potřebám.
 
-3. Na příkazovém řádku zadejte `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
+3. Do příkazového řádku zadejte `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
 
 ### <a name="linux-agent"></a>Agent pro Linux
 Pokud chcete agenta odebrat, spusťte v počítači s Linuxem následující příkaz. Argument *--purge* úplně odebere agenta a jeho konfiguraci.
@@ -292,13 +286,13 @@ Provedením následujících kroků nakonfigurujte agenta Log Analytics pro syst
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. Upravit soubor`/etc/opt/omi/conf/omiserver.conf`
+1. Upravte soubor `/etc/opt/omi/conf/omiserver.conf`
 
-2. Zajistěte, aby řádek `httpsport=` začínající řetězcem definoval port 1270. Například:`httpsport=1270`
+2. Ujistěte se, že řádek začínající `httpsport=` definuje port 1270. Například: `httpsport=1270`
 
-3. Restartujte server OMI:`sudo /opt/omi/bin/service_control restart`
+3. Restartujte server OMI: `sudo /opt/omi/bin/service_control restart`
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pokud narazíte na problémy při instalaci nebo správě agenta Linux, přečtěte si téma [řešení potíží s agentem pro Linux](agent-linux-troubleshoot.md) .
 

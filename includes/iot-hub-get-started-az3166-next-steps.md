@@ -4,17 +4,17 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 06/09/2018
 ms.author: liydu
-ms.openlocfilehash: 783921009a1668647a238f1c344885ec807d5b8a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 869d2170167651ee1c6b6e21ecb4b47959641162
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175662"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72958518"
 ---
-Chcete-li pokračovat, abyste mohli začít s Azure IoT Hub a prozkoumat další scénáře IoT pomocí IoT DevKit, naleznete v následujících tématech:
+Další informace o tom, jak začít s Azure IoT Hub a prozkoumat další scénáře IoT pomocí IoT DevKit, najdete v následujících tématech:
 
-- [IoT DevKit připojit k aplikaci Azure IoT Central](../articles/iot-central/howto-connect-devkit.md)
-- [IoT DevKit se připojit k akcelerátoru řešení vzdáleného monitorování Azure IoT](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
+- [Připojení IoT DevKit k aplikaci Azure IoT Central](../articles/iot-central/core/howto-connect-devkit.md)
+- [Připojení IoT DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 - [Překlad hlasové zprávy pomocí Azure Cognitive Services](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-translator.md)
 - [Načtení zprávy Twitteru s využitím Azure Functions](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 - [Odeslání zprávy serveru MQTT s využitím rozhraní API Eclipse Paho](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)

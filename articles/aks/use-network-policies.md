@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 6c7cf82381dfb895fdaa0f130e33b2dc9a6e7403
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169757"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928495"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak nainstalovat modul zásad sítě a vytvořit z
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Vyhledejte verzi spuštěním @ no__t-0. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 > [!TIP]
 > Pokud jste ve verzi Preview použili funkci síťové zásady, doporučujeme [vytvořit nový cluster](#create-an-aks-cluster-and-enable-network-policy).
@@ -69,7 +69,11 @@ Pokud chcete zobrazit zásady sítě v akci, vytvoříme a pak rozbalíme zásad
 * Povoluje provoz na základě popisků pod.
 * Povolte provoz založený na oboru názvů.
 
-Nejdřív vytvořte cluster AKS, který podporuje zásady sítě. Funkce zásady sítě se dá povolit, jenom když je cluster vytvořený. V existujícím clusteru AKS nemůžete povolit síťové zásady.
+Nejdřív vytvořte cluster AKS, který podporuje zásady sítě. 
+
+> [!IMPORTANT]
+>
+> Funkce zásady sítě se dá povolit, jenom když je cluster vytvořený. V existujícím clusteru AKS nemůžete povolit síťové zásady.
 
 Pokud chcete používat zásady sítě Azure, musíte použít [modul plug-in Azure CNI][azure-cni] a definovat vlastní virtuální síť a podsítě. Podrobnější informace o tom, jak naplánovat požadované rozsahy podsítí, najdete v tématu [Konfigurace pokročilých sítí][use-advanced-networking]. Zásady sítě Calico se daly použít buď s tímto stejným modulem plug-in Azure CNI, nebo s modulem plug-in Kubenet CNI.
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/25/2019
 ms.locfileid: "71261314"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a .NET
@@ -28,7 +28,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 ## <a name="networking"></a>Sítě
 <a id="direct-connection"></a>
 
-1. **Zásady připojení: Použít režim přímého připojení**
+1. **Zásady připojení: použít přímý režim připojení**
 
     Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, zejména v souvislosti s pozorovanou latencí na straně klienta. K dispozici jsou dvě nastavení konfigurace klíče pro konfiguraci zásad připojení klienta – *režim* připojení a *protokol*připojení.  K dispozici jsou dva režimy:
 
@@ -47,7 +47,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
      |Režim připojení  |Podporovaný protokol  |Podporované sady SDK  |Port API/Service  |
      |---------|---------|---------|---------|
      |brána  |   HTTPS    |  Všechny sady SDK    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
-     |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 10000 až 20000 |
+     |Direct    |     TCP    |  .NET SDK    | Porty v rozsahu 10000 až 20000 |
 
      Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful přes protokol HTTPS. Navíc nabízí efektivní protokol TCP, který se také RESTful ve svém komunikačním modelu a je dostupný prostřednictvím klientské sady SDK pro .NET. Přímý protokol TCP i HTTPS používají protokol SSL pro počáteční ověřování a šifrování provozu. Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
 
@@ -94,7 +94,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     Pokud je to možné, umístěte všechny aplikace, které volají Azure Cosmos DB ve stejné oblasti jako databáze Azure Cosmos. V případě přibližného porovnání se volání Azure Cosmos DB v rámci stejné oblasti dokončí v 1-2 MS, ale latence mezi západním a východním pobřežím USA je > 50 ms. Tato latence se může lišit od požadavku na vyžádání v závislosti na trasách, kterou požadavek prochází z klienta na hranici datacentra Azure. Nejnižší možná latence se dosahuje tím, že se zaručí, že se volající aplikace nachází ve stejné oblasti Azure jako koncový bod zřízené Azure Cosmos DB. Seznam oblastí, které jsou k dispozici, najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/#services).
 
-    ![Obrázek zásad Azure Cosmos DBho připojení](./media/performance-tips/same-region.png)
+    ![obrázek zásady připojení Azure Cosmos DB](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
 4. **Zvýšení počtu vláken/úloh**
 
@@ -102,7 +102,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
 5. **Povolit akcelerované síťové služby**
 
-   Aby se snížila latence a kolísání procesoru, doporučujeme, aby klientské virtuální počítače měly aktivované urychlení sítě. Pokud chcete povolit urychlené síťové služby, přečtěte si téma [Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-powershell.md) službami nebo [Vytvoření virtuálního počítače se systémem Linux s](../virtual-network/create-vm-accelerated-networking-cli.md) využitím akcelerovaných síťových článků.
+   Aby se snížila latence a kolísání procesoru, doporučujeme, aby klientské virtuální počítače měly aktivované urychlení sítě. Pokud chcete povolit urychlené síťové služby, přečtěte si téma [Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-powershell.md) službami nebo [Vytvoření virtuálního počítače se systémem Linux s využitím akcelerovaných síťových](../virtual-network/create-vm-accelerated-networking-cli.md) článků.
 
 
 ## <a name="sdk-usage"></a>Využití sady SDK
@@ -128,11 +128,11 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
      SQL .NET SDK verze 1.9.0 a vyšší podporují paralelní dotazy, které umožňují paralelní dotazování rozdělené kolekce. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) týkající se práce se sadami SDK. Paralelní dotazy jsou navržené tak, aby se zlepšila latence a propustnost dotazů v rámci svého sériového protějšku. Paralelní dotazy poskytují dva parametry, které mohou uživatelé ladit tak, aby vyhovovaly vlastním požadavkům, (a) Z MaxDegreeOfParallelism: pro kontrolu maximálního počtu oddílů, které lze následně dotazovat paralelně a (b) MaxBufferedItemCount: pro řízení počtu předem načtené výsledky.
 
-    (a) ***stupeň\: vyladění*** paralelní paralelní dotaz funguje tak, že dotazuje paralelně dotazování na více oddílů. Data z jednotlivého oddílu se ale v souvislosti s dotazem načítají do sériového tvaru. Nastavení v sadě [SDK v2](sql-api-sdk-dotnet.md) nebo `MaxConcurrency` v [sadě SDK V3](sql-api-sdk-dotnet-standard.md) na počet oddílů má maximální šanci na dosažení nejvíce výkonného dotazu za předpokladu, že všechny ostatní systémové podmínky zůstanou stejné. `MaxDegreeOfParallelism` Pokud neznáte počet oddílů, můžete nastavit míru paralelismu na vysoké číslo a systém zvolí minimální (počet oddílů, vstup zadaný uživatelem) jako stupeň paralelismu.
+    (a) ***stupeň vyladění paralelismu\:*** paralelní dotaz funguje tak, že dotazuje více oddílů paralelně. Data z jednotlivého oddílu se ale v souvislosti s dotazem načítají do sériového tvaru. Nastavení `MaxDegreeOfParallelism` v [sadě SDK v2](sql-api-sdk-dotnet.md) nebo `MaxConcurrency` v [sadě SDK V3](sql-api-sdk-dotnet-standard.md) na počet oddílů má maximální šanci na dosažení nejvíce výkonného dotazu, pokud všechny ostatní systémové podmínky zůstanou stejné. Pokud neznáte počet oddílů, můžete nastavit míru paralelismu na vysoké číslo a systém zvolí minimální (počet oddílů, vstup zadaný uživatelem) jako stupeň paralelismu.
 
     Je důležité si uvědomit, že paralelní dotazy poskytují nejlepší výhody, pokud jsou data rovnoměrně rozložena napříč všemi oddíly v souvislosti s dotazem. Pokud je dělená kolekce rozdělena takovým způsobem, že všechna nebo většina dat vrácených dotazem je soustředěna v několika oddílech (jeden oddíl v nejhorším případě), výkon dotazu by tyto oddíly měl být kritický.
 
-    (b) ***optimalizace\:***  paralelního dotazu MaxBufferedItemCount je navržena tak, aby se výsledky předem načetly, zatímco je aktuální dávka výsledků zpracovávána klientem. Předběžné načítání pomáhá při celkové latenci v rámci dotazu. MaxBufferedItemCount je parametr pro omezení počtu předběžně načtených výsledků. Nastavení MaxBufferedItemCount na očekávaný počet vrácených výsledků (nebo vyšší číslo) umožňuje, aby dotaz získal maximální přínos před načtením.
+    (b) ***vyladění MaxBufferedItemCount\:*** paralelní dotaz je navržený tak, aby se výsledky předem načetly, zatímco aktuální dávka výsledků zpracovává klient. Předběžné načítání pomáhá při celkové latenci v rámci dotazu. MaxBufferedItemCount je parametr pro omezení počtu předběžně načtených výsledků. Nastavení MaxBufferedItemCount na očekávaný počet vrácených výsledků (nebo vyšší číslo) umožňuje, aby dotaz získal maximální přínos před načtením.
 
     Předběžné načítání funguje stejným způsobem bez ohledu na stupeň paralelismu a existuje jedna vyrovnávací paměť pro data ze všech oddílů.  
 6. **Zapnout GC na straně serveru**
@@ -165,13 +165,13 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
    > [!NOTE] 
    > Vlastnost maxItemCount by se neměla používat jenom pro účely stránkování. Je to hlavní využití pro zlepšení výkonu dotazů snížením maximálního počtu položek vrácených na jednu stránku.  
 
-   Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) v FeedOptions umožňuje nastavit maximální počet položek, které mají být vráceny v rámci operace výčtu. Když `maxItemCount` je nastavená hodnota-1, sada SDK automaticky najde optimální hodnotu v závislosti na velikosti dokumentu. Příklad:
+   Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) v FeedOptions umožňuje nastavit maximální počet položek, které mají být vráceny v rámci operace výčtu. Pokud je `maxItemCount` nastaveno na hodnotu-1, sada SDK automaticky najde optimální hodnotu v závislosti na velikosti dokumentu. Například:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
    ```
     
-   Při spuštění dotazu jsou výsledná data odeslána v rámci paketu TCP. Pokud zadáte příliš nízkou hodnotu pro `maxItemCount`, je počet cest nutných k odeslání dat v rámci paketu TCP vysoký, což ovlivňuje výkon. Takže pokud si nejste jistí, jakou hodnotu má `maxItemCount` vlastnost nastavit, je nejlepší ji nastavit na-1 a nechat sadu SDK, aby zvolila výchozí hodnotu. 
+   Při spuštění dotazu jsou výsledná data odeslána v rámci paketu TCP. Pokud zadáte pro `maxItemCount`příliš nízkou hodnotu, počet cest potřebných k odeslání dat v rámci paketu TCP je vysoký, což ovlivňuje výkon. Takže pokud si nejste jistí, jaká hodnota má být nastavena pro vlastnost `maxItemCount`, je nejlepší ji nastavit na hodnotu-1 a nechat sadu SDK, aby zvolila výchozí hodnotu. 
 
 11. **Zvýšení počtu vláken/úloh**
 
@@ -183,13 +183,13 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     - U spustitelných aplikací to lze provést zrušením rezervace možnosti **preferovat 32** v okně **Vlastnosti projektu** na kartě **sestavení** .
 
-    - Pro projekty testů založené na VSTest lze to provést tak, že v nabídce **test sady Visual Studio** vyberete možnost**Nastavení**-> **testu**->**výchozí architektura procesoru jako x64**.
+    - Pro projekty testů založené na VSTest lze to provést tak, že v nabídce **test sady Visual Studio** vyberete možnost **test**->**nastavení testu**->**výchozí architekturu procesoru jako x64**.
 
-    - Pro lokálně nasazené webové aplikace v ASP.NET se to dá udělat tak, že zkontrolujete **použití 64 verze IIS Express pro weby a projekty**v nabídce **nástroje**->**Možnosti**->**projekty a řešení** . **Webové projekty**. ->
+    - Pro lokálně nasazené webové aplikace v ASP.NET se to dá udělat tak, že zkontrolujete **použití 64 verze IIS Express pro weby a projekty**v části **nástroje**->**možnosti**->**projekty a řešení**-> **Webové projekty**.
 
     - Pro webové aplikace ASP.NET nasazené v Azure to můžete udělat tak, že v **nastavení aplikace** na Azure Portal vyberete možnost **platforma jako 64-bit** .
 
-## <a name="indexing-policy"></a>Zásada indexování
+## <a name="indexing-policy"></a>Zásady indexování
  
 1. **Vyloučení nepoužívaných cest z indexování za účelem zrychlení zápisu**
 
@@ -215,7 +215,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     Složitost dotazu ovlivňuje počet spotřebovaných jednotek požadavků pro určitou operaci. Počet predikátů, povaha predikátů, počet UDF a velikost zdrojové sady dat ovlivňují náklady na operace dotazů.
 
-    Pro měření režie jakékoli operace (vytvoření, aktualizace nebo odstranění) Zkontrolujte záhlaví [x-MS-Request-poplatek](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (nebo ekvivalentní vlastnost RequestCharge v ResourceResponse\<T > nebo FeedResponse\<t > v sadě .NET SDK) na Změřte počet jednotek žádostí spotřebovaných těmito operacemi.
+    Pro měření režie jakékoli operace (vytvoření, aktualizace nebo odstranění) Zkontrolujte záhlaví [x-MS-Request-poplatek](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (nebo ekvivalentní vlastnost RequestCharge v ResourceResponse\<t > nebo FeedResponse\<t > v sadě .NET SDK) pro měření počet jednotek žádostí spotřebovaných těmito operacemi.
 
     ```csharp
     // Measure the performance (request units) of writes

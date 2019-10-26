@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 50fbd0a2169fb120424d76e786a6269243eeb3e1
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273950"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931804"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Zálohování databáze SAP HANA do Azure
 
@@ -23,9 +23,9 @@ ms.locfileid: "72273950"
 
 ## <a name="scenario-support"></a>Podpora scénářů
 
-**Pracovníky** | **Zobrazí**
+**Podpora** | **Podrobnosti**
 --- | ---
-**Podporované zeměpisných oblastech** | Austrálie – jihovýchod, východní Austrálie <br> Brazílie – jih <br> Kanada – střed, Kanada – východ <br> Jižní Východní Asie Východní Asie <br> Východní USA, Východní USA 2, Středozápadní USA, Západní USA, Západní USA 2, Střed USA – sever, Střed USA, Střed USA – jih<br> Indie – střed, Indie – jih <br> Japonsko – východ, Japonsko – západ<br> Korea – střed, Korea – jih <br> Severní Evropa Západní Evropa <br> Velká Británie – jih Velká Británie – západ
+**Podporované zeměpisných oblastech** | Austrálie – jihovýchod, východní Austrálie <br> Brazílie – jih <br> Kanada – střed, Kanada – východ <br> Jižní Východní Asie Východní Asie <br> Východní USA, Východní USA 2, Středozápadní USA, Západní USA, Západní USA 2, Střed USA – sever, Střed USA, Střed USA – jih<br> Indie – střed, Indie – jih <br> Japonsko – západ, Japonsko – východ<br> Jižní Korea – střed, Jižní Korea – jih <br> Severní Evropa, Západní Evropa <br> Velká Británie – jih Velká Británie – západ
 **Podporované operační systémy virtuálních počítačů** | SLES 12 s aktualizací SP2, SP3 nebo SP4.
 **Podporované verze HANA** | SDC v HANA 1. x, MDC na HANA 2. x < = SPS04 rev 43
 
@@ -43,7 +43,7 @@ ms.locfileid: "72273950"
   - Pokud chcete vytvořit novou zásadu, klikněte v trezoru na **zásady** > **zásady zálohování** >  **+ Přidat**SAP HANA  > **na virtuálním počítači Azure**a určete nastavení zásad.
   - Pokud chcete přiřadit jinou zásadu, ve vlastnostech virtuálního počítače, na kterém je spuštěná databáze, klikněte na název aktuální zásady. Pak na stránce **zásady zálohování** můžete vybrat jinou zásadu, která se má použít pro zálohování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před konfigurací zálohování se ujistěte, že jste provedli následující:
 
@@ -53,6 +53,9 @@ Před konfigurací zálohování se ujistěte, že jste provedli následující:
     sudo zypper update
     sudo zypper install unixODBC
     ```
+
+    > [!NOTE]
+    > Pokud neaktualizujete úložiště, ujistěte se, že verze unixODBC má minimální hodnotu 2.3.4. Pokud chcete zjistit verzi uniXODBC, spusťte ```odbcinst -j``` jako kořen.
 
 2. Umožněte připojení z virtuálního počítače k Internetu, aby bylo možné dosáhnout Azure, jak je popsáno v [následujícím](#set-up-network-connectivity)postupu.
 

@@ -1,24 +1,18 @@
 ---
 title: Konfigurace zdrojů dat agenta v Azure Monitor | Microsoft Docs
 description: Zdroje dat definují data protokolu, která Azure Monitor shromažďuje z agentů a dalších připojených zdrojů.  Tento článek popisuje koncept způsobu, jakým Azure Monitor používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat, a poskytuje souhrn různých zdrojů dat, které jsou k dispozici.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 67710115-c861-40f8-a377-57c7fa6909b4
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f4e86a3a7b6a0781ea6c020bd0afc9364b7132f7
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 11/28/2018
+ms.openlocfilehash: f7960adca1c3665dbf8737cb10a898c58b1542ec
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839340"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932822"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Zdroje dat agenta v Azure Monitor
 Data, která Azure Monitor shromažďuje z agentů, jsou definována zdroji dat, které nakonfigurujete.  Data z agentů jsou ukládána jako [data protokolu](data-platform-logs.md) se sadou záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
@@ -36,7 +30,7 @@ V následující tabulce jsou uvedeny zdroje dat agenta, které jsou aktuálně 
 | [Protokoly IIS](data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |závisí na nastavení pro výměnu souborů protokolu. |
 | [Čítače výkonu](data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |Jak naplánováno, minimálně 10 sekund |
 | [Čítače výkonu](data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |Jak naplánováno, minimálně 10 sekund |
-| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z úložiště Azure: 10 minut; od agenta: při doručení |
+| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z Azure Storage: 10 minut; od agenta: při doručení |
 | [Protokoly událostí systému Windows](data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | při doručení |
 
 

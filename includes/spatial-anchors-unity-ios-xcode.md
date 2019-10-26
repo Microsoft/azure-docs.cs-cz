@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: d8b6b1bfcbceb1168d0f74c73e72bd42b41bb2ec
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b052772bbfe9d69e430d9f722d8db56b48db7610
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562475"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933479"
 ---
 Vyberte **sestavení**. V dialogovém okně, které se otevře, vyberte složku, do které chcete exportovat projekt Xcode.
 
@@ -26,27 +26,30 @@ V exportované složce projektu Xcode spusťte tento příkaz v terminálu a nai
 pod install --repo-update
 ```
 
-Nyní můžete otevřít `Unity-iPhone.xcworkspace` a otevřít projekt v Xcode:
+Nyní můžete otevřít `Unity-iPhone.xcworkspace` pro otevření projektu v Xcode:
 
 ```bash
 open ./Unity-iPhone.xcworkspace
 ```
 
 > [!NOTE]
-> Pokud se zobrazí `library not found for -lPods-Unity-iPhone` chyba, pravděpodobně jste `.xcodeproj` soubor otevřeli místo `.xcworkspace` souboru. 
+> Pokud máte CocoaPod problémy po upgradu na macOS Catalina (10,15), Projděte [si postup](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015) řešení potíží.
 
 Vyberte uzel root **Unity-iPhone** pro zobrazení nastavení projektu a pak vyberte kartu **Obecné** .
 
 V části **podepisování**se ujistěte, že je povoleno **Automatické řízení podepisování** . Pokud není, povolte ji a potom v dialogovém okně, které se zobrazí, vyberte **Povolit automatické** obnovení nastavení sestavení.
 
-V části **informace o nasazení**zajistěte, aby byl **cíl nasazení** nastaven na `11.0`hodnotu.
+V části **informace o nasazení**ověřte, že je **cíl nasazení** nastaven na `11.0`.
 
 ### <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do zařízení s iOS
 
 Připojte zařízení s iOS k počítači Mac a nastavte **aktivní schéma** na zařízení s iOS.
 
-![Vybrat zařízení](./media/spatial-anchors-unity/select-device.png)
+![Vyberte zařízení.](./media/spatial-anchors-unity/select-device.png)
 
 Vyberte **Sestavit a potom spusťte aktuální schéma**.
 
 ![Nasazení a spuštění](./media/spatial-anchors-unity/deploy-run.png)
+
+> [!NOTE]
+> Pokud se zobrazí chyba `library not found for -lPods-Unity-iPhone`, pravděpodobně jste otevřeli soubor `.xcodeproj` namísto souboru `.xcworkspace`.

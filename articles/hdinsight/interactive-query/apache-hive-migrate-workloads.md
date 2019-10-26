@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0363f2d8da1ca1371fd55107c6487c3d96f6d00e
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1b270663a83461ecd777599fead9d717e93482c0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091457"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72930894"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
@@ -30,14 +30,14 @@ Tento článek se zabývá následujícími tématy:
 Jednou z výhod podregistru je schopnost exportovat metadata do externí databáze (označované jako metastore podregistru). **Podregistr metastore** zodpovídá za ukládání statistik tabulky, včetně umístění úložiště tabulky, názvů sloupců a informací o indexu tabulky. Schéma databáze metastore se mezi verzemi podregistru liší. Proveďte následující postup k upgradu metastore podregistru HDInsight 3,6 tak, aby byl kompatibilní se službou HDInsight 4,0.
 
 1. Vytvořte novou kopii vašich externích metastore. HDInsight 3,6 a HDInsight 4,0 vyžadují různá schémata metastore a nemůžou sdílet jeden metastore. Další informace o připojení externích metastore ke clusteru HDInsight najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](../hdinsight-use-external-metadata-stores.md) . 
-2. Spusťte akci skriptu pro cluster HDI 3,6 s "hlavními uzly" jako typ uzlu pro provedení. Vložte následující identifikátor URI do textového pole označeného "bash skriptu URI" https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh:. Do textového pole označeného "arguments" zadejte servername, databázi, uživatelské jméno a heslo pro **zkopírované** metastore Hive, oddělené mezerami. Při zadávání servername nezahrnujte ". database.windows.net".
+2. Spusťte akci skriptu pro cluster HDI 3,6 s "hlavními uzly" jako typ uzlu pro provedení. Do textového pole označeného "bash Script URI" vložte následující identifikátor URI: https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh. Do textového pole označeného "arguments" zadejte servername, databázi, uživatelské jméno a heslo pro **zkopírované** metastore Hive, oddělené mezerami. Při zadávání servername nezahrnujte ". database.windows.net".
 
 > [!Warning]
 > Upgrade, který převede schéma metadat HDInsight 3,6 na schéma HDInsight 4,0, nejde vrátit zpět.
 
 ## <a name="migrate-hive-tables-to-hdinsight-40"></a>Migrace tabulek podregistru do HDInsight 4,0
 
-Po dokončení předchozí sady kroků pro migraci metastore do prostředí HDInsight 4,0 budou tabulky a databáze zaznamenané v metastore viditelné z clusteru HDInsight 4,0 spuštěním `show tables` nebo `show databases` z clusteru. . Informace o spuštění dotazů v clusterech HDInsight 4,0 najdete v tématu [provádění dotazů napříč verzemi HDInsight](#query-execution-across-hdinsight-versions) .
+Po dokončení předchozí sady kroků pro migraci metastore do prostředí HDInsight 4,0 budou tabulky a databáze zaznamenané v metastore viditelné v rámci clusteru HDInsight 4,0 spuštěním `show tables` nebo `show databases` z clusteru. Informace o spuštění dotazů v clusterech HDInsight 4,0 najdete v tématu [provádění dotazů napříč verzemi HDInsight](#query-execution-across-hdinsight-versions) .
 
 Skutečná data z tabulek však nejsou přístupná, dokud cluster nemá přístup k potřebným účtům úložiště. Abyste se ujistili, že cluster HDInsight 4,0 má přístup ke stejným datům jako starý cluster HDInsight 3,6, proveďte následující kroky:
 
@@ -66,8 +66,8 @@ Před provedením migrace možná budete muset upravit vlastnosti datového skla
 Po správném nastavení vlastností tabulky spusťte nástroj pro migraci datového skladu z jednoho z hlavních clusteru pomocí prostředí SSH:
 
 1. Připojte se ke clusteru hlavnímu uzlu pomocí SSH. Pokyny najdete v tématu [připojení ke službě HDInsight pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) .
-1. Spusťte prostředí přihlášení jako uživatel podregistru spuštěním`sudo su - hive`
-1. Pomocí příkazu `ls /usr/hdp`určete verzi zásobníku datové platformy Hortonworks. Tím se zobrazí řetězec verze, který byste měli použít v příkazu Next.
+1. Spusťte prostředí pro přihlášení jako uživatel podregistru spuštěním `sudo su - hive`
+1. Určete verzi zásobníku datové platformy spuštěním `ls /usr/hdp`. Tím se zobrazí řetězec verze, který byste měli použít v příkazu Next.
 1. Z prostředí spusťte následující příkaz. Nahraďte `${{STACK_VERSION}}` řetězcem verze z předchozího kroku:
 
 ```bash

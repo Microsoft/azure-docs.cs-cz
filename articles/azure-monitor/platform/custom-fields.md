@@ -1,24 +1,18 @@
 ---
 title: Vlastní pole v Azure Monitor | Microsoft Docs
 description: Funkce vlastní pole Azure Monitor umožňuje vytvořit vlastní hledaná pole ze záznamů v pracovním prostoru Log Analytics, který se přidává do vlastností shromážděného záznamu.  Tento článek popisuje proces vytvoření vlastního pole a poskytuje podrobný návod s ukázkovou událostí.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/23/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f6b9c21a3d65e75abe11e705eba058b1d1fb17ff
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 08/23/2019
+ms.openlocfilehash: 1fa8fb8ee944103626966839def358e68a55d8ac
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012739"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932615"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Vytváření vlastních polí v pracovním prostoru Log Analytics v Azure Monitor
 
@@ -57,7 +51,7 @@ Prvním krokem je identifikace záznamů, které získají vlastní pole.  Začn
 ### <a name="step-2---perform-initial-extract"></a>Krok 2 – proveďte počáteční extrakci.
 Jakmile identifikujete záznamy, které budou mít vlastní pole, identifikujte data, která chcete extrahovat.  Log Analytics budou tyto informace používat k identifikaci podobných vzorů v podobných záznamech.  V tomto kroku budete moci ověřit výsledky a poskytnout další podrobnosti, které Log Analytics použít při analýze.
 
-1. Zvýrazněte text v ukázkovém záznamu, který chcete vyplnit vlastní pole.  Pak se zobrazí dialogové okno, kde můžete zadat název a datový typ pro pole a provést počáteční extrakci.  **Znaky\_CR** budou automaticky připojeny.
+1. Zvýrazněte text v ukázkovém záznamu, který chcete vyplnit vlastní pole.  Pak se zobrazí dialogové okno, kde můžete zadat název a datový typ pro pole a provést počáteční extrakci.  Znaky **\_CF** budou automaticky připojeny.
 2. Kliknutím na **extrahovat** proveďte analýzu shromážděných záznamů.  
 3. V sekcích **Souhrn** a **výsledky hledání** se zobrazují výsledky extrakce, abyste mohli zkontrolovat jeho přesnost.  **Souhrn** zobrazuje kritéria sloužící k identifikaci záznamů a počtu identifikovaných hodnot dat.  **Výsledky hledání** obsahují podrobný seznam záznamů, které odpovídají kritériím.
 
@@ -105,7 +99,7 @@ Ve vlastnosti **RenderedDescription** se zvýrazní název služby a k identifik
 
 Uvidíme, že název služby je pro některé záznamy správně identifikovaný, ale ne pro jiné.   Ve **výsledcích hledání** se nevybere část názvu **adaptéru výkonu služby WMI** .  V **souhrnu** se zobrazí, že místo **instalačního programu pro moduly systému Windows**jeden záznam identifikoval **moduly** .  
 
-![Výsledky vyhledávání](media/custom-fields/search-results-01.png)
+![Výsledky hledání](media/custom-fields/search-results-01.png)
 
 Začneme záznamem **adaptéru výkonu služby WMI** .  Kliknu na ikonu pro úpravu a pak na **změnit toto zvýraznění**.  
 
@@ -117,7 +111,7 @@ Zvětšili jsme zvýraznění tak, aby obsahovalo **rozhraní WMI** pro Word, a 
 
 Vidíte, že položky pro **adaptér výkonu WMI** byly opraveny, a Log Analytics také tyto informace použít k opravě záznamů pro **Instalační službu modulu systému Windows**.
 
-![Výsledky vyhledávání](media/custom-fields/search-results-02.png)
+![Výsledky hledání](media/custom-fields/search-results-02.png)
 
 Teď můžeme spustit dotaz, který ověří **Service_CF** , ale ještě není přidaný do žádných záznamů. Důvodem je skutečnost, že vlastní pole nefunguje u stávajících záznamů, takže musíme počkat na shromáždění nových záznamů.
 

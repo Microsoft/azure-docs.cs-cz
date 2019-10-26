@@ -1,47 +1,47 @@
 ---
-title: Prozkoumejte úlohy Azure Stream Analytics pomocí Visual Studio Code (Preview)
-description: Tento článek ukazuje, jak exportovat úlohy Azure Stream Analytics na místní projekt, seznam úloh a zobrazení úloh entity.
+title: Prozkoumejte úlohy Azure Stream Analytics v Visual Studio Code
+description: V tomto článku se dozvíte, jak exportovat úlohu Azure Stream Analytics do místního projektu, vypsat úlohy a zobrazit entity úloh.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8674d478646c8f9be6b32521c6624752ac6df052
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d3a02d3778f9b4113767c5f755d675aeadd901b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827797"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934221"
 ---
-# <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Prozkoumejte službu Azure Stream Analytics pomocí sady Visual Studio Code (Preview)
+# <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Prozkoumat Azure Stream Analytics s využitím Visual Studio Code (Preview)
 
-Azure Stream Analytics pro Visual Studio Code příponou vývojářům poskytuje zjednodušené prostředí pro správu svých úloh Stream Analytics. Je možné na Windows, Mac a Linux. Rozšíření Azure Stream Analytics vám umožní:
+Rozšíření Azure Stream Analytics for Visual Studio Code poskytuje vývojářům zjednodušené prostředí pro správu Stream Analytics úloh. Dá se použít v systémech Windows, Mac a Linux. S rozšířením Azure Stream Analytics můžete:
 
-- [Vytvoření](quick-create-vs-code.md), spuštění a zastavení úlohy
-- Exportovat stávající úlohy do místní projekt
-- Zobrazení seznamu úloh a zobrazení úlohy entity
+- [Vytváření](quick-create-vs-code.md), spouštění a zastavování úloh
+- Exportovat existující úlohy do místního projektu
+- Vypsání úloh a zobrazení entit úloh
 
-## <a name="export-a-job-to-a-local-project"></a>Exportovat úlohy do místní projekt
+## <a name="export-a-job-to-a-local-project"></a>Export úlohy do místního projektu
 
-Exportovat úlohu do místní projekt, vyhledejte úlohu chcete exportovat **Průzkumníku Stream Analytics** ve Visual Studio Code. Potom vyberte složku pro váš projekt. Projekt se exportují do vámi vybrané složky. proto můžete nadále spravovat úlohy z Visual Studio Code. Další informace o použití ke správě úlohy Stream Analytics Visual Studio Code najdete v tématu Visual Studio Code [rychlý Start](quick-create-vs-code.md).
+Chcete-li exportovat úlohu do místního projektu, vyhledejte úlohu, kterou chcete exportovat, v **průzkumníkovi Stream Analytics** v Visual Studio Code. Pak vyberte složku pro svůj projekt. Projekt se exportuje do vybrané složky a můžete dál spravovat úlohu z Visual Studio Code. Další informace o použití Visual Studio Code ke správě úloh Stream Analytics najdete v tématu [rychlý Start](quick-create-vs-code.md)pro Visual Studio Code.
 
-![Exportovat úlohy Azure Stream Analytics ve Visual Studio Code](./media/vscode-explore-jobs/export-job.png)
+![Exportovat úlohu ASA v Visual Studio Code](./media/vscode-explore-jobs/export-job.png)
 
-## <a name="list-job-and-view-job-entities"></a>Zobrazení seznamu úloh a zobrazení úloh entity
+## <a name="list-job-and-view-job-entities"></a>Vypsat úlohy a zobrazit entity úloh
 
-Zobrazení úloh můžete použít k interakci s úlohy Azure Stream Analytics ze sady Visual Studio.
+Můžete použít zobrazení úlohy k interakci s Azure Stream Analytics úlohami ze sady Visual Studio.
 
 
-1. Klikněte na tlačítko **Azure** ikonu na řádku aktivita kódu Visual Studio a potom rozbalte **Stream Analytics uzel**. Úlohy by se zobrazit v rámci vašich předplatných.
+1. Klikněte na ikonu **Azure** na řádku Visual Studio Code aktivity a potom rozbalte **uzel Stream Analytics**. Vaše úlohy by se měly zobrazit v rámci vašich předplatných.
 
-   ![Průzkumníka otevřete Stream Analytics](./media/vscode-explore-jobs/open-explorer.png)
+   ![Otevřít Stream Analytics Explorer](./media/vscode-explore-jobs/open-explorer.png)
 
-2. Rozbalte uzel projektu, můžete otevřít a zobrazit dotaz na úlohu, konfiguraci, vstupy, výstupy a funkce. 
+2. Rozbalte uzel úlohy, můžete otevřít a zobrazit dotaz úlohy, konfiguraci, vstupy, výstupy a funkce. 
 
-3. Klikněte pravým tlačítkem na uzel projektu a zvolte **otevřete zobrazení úloh portálu** uzlu otevřete zobrazení úloh na webu Azure Portal.
+3. Klikněte pravým tlačítkem na uzel úlohy a vyberte **Otevřít zobrazení úlohy v uzlu portál** a otevřete zobrazení úlohy v Azure Portal.
 
-   ![Volná zobrazení portálu](./media/vscode-explore-jobs/open-job-view.png)
+   ![Otevřít zobrazení úlohy na portálu](./media/vscode-explore-jobs/open-job-view.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Vytvořit úlohu Azure Stream Analytics cloudu ve Visual Studio Code (Preview)](quick-create-vs-code.md)
+* [Vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code (Preview)](quick-create-vs-code.md)
