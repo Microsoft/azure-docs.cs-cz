@@ -1,49 +1,43 @@
 ---
-title: Network Performance Monitor řešení v Azure Log Analytics | Dokumentace Microsoftu
-description: Monitorování připojení k síti pro libovolný koncový bod, který má otevřený port TCP pomocí funkce monitorování připojení služby v nástroji Sledování výkonu sítě.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Řešení Network Performance Monitor v Azure Log Analytics | Microsoft Docs
+description: Pomocí možnosti monitorování připojení služby v Network Performance Monitor můžete monitorovat síťové připojení ke koncovému bodu, který má otevřený port TCP.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/20/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: c5285ac95a2f5813949f22aae3849fd7f55b1ada
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/20/2018
+ms.openlocfilehash: dd02dad6d0f5b42181ad0bb27201384a6336ed6e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052089"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898823"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
-Můžete použít funkci monitorování připojení služby v [Network Performance Monitor](network-performance-monitor.md) k monitorování připojení k síti pro libovolný koncový bod, který má otevřený port TCP. Tyto koncové body můžou být webů, aplikací SaaS, PaaS aplikací a databází SQL. 
+Pomocí možnosti monitorování připojení služby v nástroji [Network Performance Monitor](network-performance-monitor.md) můžete monitorovat síťové připojení ke koncovému bodu, který má otevřený port TCP. K takovým koncovým bodům patří weby, aplikace SaaS, PaaS aplikace a databáze SQL. 
 
-Můžete provádět následující funkce se monitorování připojení služby: 
+S monitorováním připojení služby můžete provádět následující funkce: 
 
-- Monitorujte síťové připojení k vašim aplikacím a síťových služeb z více firemní pobočky nebo umístění. Aplikace a síťové služby patří Office 365, Dynamics CRM, interní-obchodní aplikace a databáze SQL.
-- Použití integrované testy monitorovat síťové připojení ke koncovým bodům služeb Office 365 a Dynamics 365. 
-- Určení doby odezvy, latence sítě a ztráta paketů zkušenosti při připojování ke koncovému bodu.
-- Určení, zda je nízký výkon aplikace z důvodu sítě nebo z důvodu problému na konci poskytovatele aplikace.
-- Identifikace hotspotů v síti, které můžou způsobovat nízký výkon aplikace zobrazením latence z každého směrování na mapu.
+- Monitorujte síťové připojení k vašim aplikacím a síťovým službám z několika poboček nebo umístění. Mezi aplikace a síťové služby patří Office 365, Dynamics CRM, interní obchodní aplikace a databáze SQL.
+- Pomocí integrovaných testů můžete monitorovat síťové připojení k koncovým bodům Office 365 a Dynamics 365. 
+- Určete dobu odezvy, latenci sítě a ztrátu paketů, které se při připojování ke koncovému bodu vyskytly.
+- Určete, zda je slabý výkon aplikace z důvodu sítě nebo kvůli nějakému problému na konci poskytovatele aplikace.
+- Identifikujte aktivní body v síti, které mohou způsobovat špatný výkon aplikace, zobrazením latence, na kterou přispělo každé směrování na mapě topologie.
 
 
 ![Monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfigurace 
-Chcete-li spustit nástroj konfigurace pro sledování výkonu sítě, otevřete [řešení Network Performance Monitor](network-performance-monitor.md) a vyberte **konfigurovat**.
+Chcete-li otevřít konfiguraci pro Network Performance Monitor, otevřete [řešení Network Performance Monitor](network-performance-monitor.md) a vyberte **Konfigurovat**.
 
-![Konfigurace Network Performance Monitor](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
+![Konfigurace Network Performance Monitoru](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
 
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurace agentů Log Analytics pro monitorování
-Povolte následující pravidla brány firewall na uzlech používá pro monitorování tak, že řešení najdou topologie z uzly do koncového bodu služby: 
+U uzlů používaných pro monitorování Povolte následující pravidla brány firewall, aby řešení mohlo zjistit topologii z vašich uzlů do koncového bodu služby: 
 
 ```
 netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow 
@@ -56,88 +50,88 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 ### <a name="create-service-connectivity-monitor-tests"></a>Vytvořit testy monitorování připojení služby 
 
-Začněte vytvářet testy monitorování síťové připojení ke koncovým bodům služby.
+Začněte vytvářet testy pro monitorování síťového připojení k koncovým bodům služby.
 
-1. Vyberte **monitorování připojení služby** kartu.
-2. Vyberte **přidat Test**a zadejte název testu a popis. Můžete vytvořit maximální 450 testů za jednotlivé pracovní prostory. 
+1. Vyberte kartu **monitorování připojení služby** .
+2. Vyberte **Přidat test**a zadejte název a popis testu. Můžete vytvořit maximálně 450 testů na jeden pracovní prostor. 
 3. Vyberte typ testu:<br>
 
-    * Vyberte **webové** k monitorování připojení ke službě, která bude reagovat na požadavky HTTP/S, třeba outlook.office365.com nebo bing.com.<br>
-    * Vyberte **sítě** k monitorování připojení ke službě, která reaguje na požadavky protokolu TCP ale nereaguje na požadavky HTTP/S, jako je například SQL server, FTP server nebo SSH port. 
-    * Příklad: Pokud chcete vytvořit test webu do účtu úložiště blob, vyberte **webové** a zadejte cíl jako *yourstorageaccount*. blob.core.windows.net. Podobně můžete vytvořit testy pro dalších table storage, úložiště fronty a soubory Azure pomocí [tento odkaz.](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)
-4. Pokud nechcete provést měření sítě, jako je latence sítě, ztráta paketů a zjišťování topologie, zrušte zaškrtnutí políčka **provést měření sítě** zaškrtávací políčko. Zachovat jeho vybrané získat maximální výhody z funkce. 
-5. V **cílové**, zadejte adresu URL nebo plně kvalifikovaný název domény nebo IP adresu, ke které chcete monitorovat síťové připojení.
-6. V **číslo portu**, zadejte číslo portu, cílové služby. 
-7. V **frekvence testování**, zadejte hodnotu pro jak často chcete, aby test spuštěn. 
-8. Vyberte uzly, ze kterých chcete monitorovat síťové připojení ke službě. Ujistěte se, že počet agentů, které jsou přidány za test je míň než 150. Maximální 150 koncové body nebo agenty můžete otestovat všemi agenty.
+    * Vyberte **Web** a sledujte připojení ke službě, která reaguje na požadavky HTTP/S, jako je například outlook.office365.com nebo Bing.com.<br>
+    * Vyberte **síť** pro monitorování připojení ke službě, která reaguje na požadavky TCP, ale nereaguje na požadavky HTTP/S, jako je třeba SQL Server, server FTP nebo port SSH. 
+    * Příklad: Chcete-li vytvořit webový test na účet úložiště objektů blob, vyberte možnost **Web** a zadejte cíl jako *yourstorageaccount*. blob.Core.Windows.NET. Podobně můžete pomocí [tohoto odkazu](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints) vytvořit testy pro jiné úložiště tabulek, úložiště front a soubory Azure.
+4. Pokud nechcete provádět měření sítě, například latence sítě, ztráty paketů a zjišťování topologie, zrušte zaškrtnutí políčka **provádět měření sítě** . Nechte si ho nechat vybraný, aby bylo možné získat maximální výhodu z této schopnosti. 
+5. V části **cíl**zadejte adresu URL/plně kvalifikovaný název domény nebo IP adresu, na které chcete monitorovat síťové připojení.
+6. Do pole **číslo portu**zadejte číslo portu cílové služby. 
+7. V části **frekvence testování**zadejte hodnotu, jak často chcete spustit test. 
+8. Vyberte uzly, ze kterých chcete monitorovat síťové připojení ke službě. Zajistěte, aby byl počet přidaných agentů na test menší než 150. Každý agent může testovat maximálně 150 koncových bodů a agentů.
 
     >[!NOTE]
-    > Pro uzly Windows na serveru používá funkce založené na TCP požadavky k měření sítě. Pro uzly Windows na základě klienta používá funkce ICMP podle požadavků k měření sítě. V některých případech je cílová aplikace blokuje příchozí žádosti na základě protokolu ICMP, při uzly jsou Windows, na základě klienta. Řešení není schopen provést měření sítě. Doporučujeme používat Windows serverových uzlů v takových případech. 
+    > Pro uzly založené na Windows serveru funkce pro měření sítě využívá požadavky založené na protokolu TCP. Pro klientské uzly systému Windows využívá funkce k provedení měření sítě požadavky založené na protokolu ICMP. V některých případech cílová aplikace blokuje příchozí požadavky založené na protokolu ICMP, pokud jsou uzly na bázi klienta systému Windows. Řešení nemůže provádět měření sítě. V takových případech doporučujeme používat uzly založené na Windows serveru. 
 
-9. Pokud nechcete vytvořit události stavu pro položky můžete vybrat, zrušte **povolit monitorování stavu v cílech kontrolovaných tímto testem**. 
-10. Vyberte sledování podmínek. Můžete nastavit vlastní prahové hodnoty pro generování událost stavu tak, že zadáte prahové hodnoty. Pokaždé, když se hodnota podmínka překročí jeho zvolená prahová hodnota pro vybranou síť nebo pár podsítě, vygeneruje událost stavu. 
-11. Vyberte **Uložit** uložte konfiguraci. 
+9. Pokud nechcete vytvářet události stavu pro vybrané položky, zrušte zaškrtnutí políčka **Povolit monitorování stavu v cílech, na které se tento test vztahuje**. 
+10. Vyberte možnost podmínky monitorování. Můžete nastavit vlastní prahové hodnoty pro generování událostí stavu zadáním prahových hodnot. Pokaždé, když hodnota podmínky překročí zvolenou prahovou hodnotu pro vybranou síť nebo pár podsítí, bude vygenerována událost stavu. 
+11. Kliknutím na **Uložit** uložte konfiguraci. 
 
-    ![Konfigurace testů monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
+    ![Konfigurace testu monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
 
 
 
 ## <a name="walkthrough"></a>Názorný postup 
 
-Přejděte do zobrazení řídicích panelů sledování výkonu sítě. Pokud chcete získat přehled o stavu jiné testy, které jste vytvořili, podívejte se na **monitorování připojení služby** stránky. 
+Přejít do zobrazení řídicího panelu Network Performance Monitor. Chcete-li získat souhrn stavu různých testů, které jste vytvořili, podívejte se na stránku **monitorování připojení služby** . 
 
 ![Stránka monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-blade.png)
 
-Vyberte tuto dlaždici zobrazíte podrobnosti o testy na **testy** stránky. V tabulce na levé straně můžete zobrazit stav bodu v čase a hodnota služby doba odezvy, latence sítě a ztráta paketů pro všechny testy. Chcete-li zobrazit snímek sítě později, v minulosti pomocí ovládacího prvku záznam stavu sítě. Výběrem testu v tabulce, kterou chcete prozkoumat. V grafu v podokně na pravé straně se zobrazí Historický trend ztráty, latence a hodnoty času odezvy. Vyberte **Podrobnosti testu** odkaz umožňující zobrazení výkonu z každého uzlu.
+Výběrem dlaždice zobrazíte podrobnosti o testech na stránce **testy** . V tabulce na levé straně můžete zobrazit stav a hodnotu doby odezvy služby, latenci sítě a ztráty paketů pro všechny testy. Pomocí ovládacího prvku pro záznam o stavu sítě můžete snímek sítě zobrazit v jinou dobu v minulosti. V tabulce, kterou chcete prozkoumat, vyberte test. V grafech v pravém podokně můžete zobrazit historický trend hodnot doby ztráty, latence a doby odezvy. Vyberte odkaz **Podrobnosti testu** pro zobrazení výkonu z každého uzlu.
 
 ![Testy monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-tests.png)
 
-V **testovací uzly** zobrazení, můžete sledovat připojení k síti z jednotlivých uzlů. Vyberte uzel, který má snížení výkonu. Toto je uzel, ve kterém se vyskytuje aplikace běží pomalu.
+V zobrazení **testovacích uzlů** můžete sledovat připojení k síti z každého uzlu. Vyberte uzel, který má snížení výkonu. Toto je uzel, ve kterém je aplikace spuštěna pomalu.
 
-Zjistit, zda nízký výkon aplikace je z důvodu sítě nebo problém na straně aplikace zprostředkovatele pozorováním korelace mezi latence sítě a doba odezvy aplikace. 
+Zjistěte, jestli je nízký výkon aplikace v důsledku sítě nebo problému na konci poskytovatele aplikace, a to tak, že budete pozorovat korelaci mezi dobou odezvy aplikace a latencí sítě. 
 
-* **Problém s aplikací:** Prudký nárůst doby odezvy, ale konzistence v sítích s latencí naznačuje, že síť správně funguje a problémem může být kvůli problému na konci aplikace. 
+* **Problém s aplikací:** Špička v době odezvy, ale konzistence v případě latence sítě naznačuje, že síť funguje správně a problém může být způsoben problémem na konci aplikace. 
 
-    ![Problém s aplikací monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
+    ![Monitorování připojení služby – problém aplikace](media/network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
 
-* **Potíže se sítí:** Prudký nárůst společně s odpovídající zásobníku v sítích s latencí doby odezvy naznačuje, že z důvodu zvýšení latence sítě může být zvýšení doby odezvy. 
+* **Problém se sítí:** Špička v době odezvy spolu s odpovídající špičkou v latenci sítě naznačuje, že nárůst doby odezvy může být způsoben nárůstem latence sítě. 
 
-    ![Potíže se sítí monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
+    ![Řešení potíží se sítí monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 
-Pokud zjistíte, že problém je z důvodu sítě, vyberte **topologie** odkaz zobrazení k identifikaci problémových směrování na mapě topologie. Příklad je uveden na následujícím obrázku. Mimo 105 ms celkovou latenci mezi uzlem a koncový bod aplikace je 96 ms kvůli směrování označeny červeně. Po identifikaci problémových směrování, můžete využít nápravné opatření. 
+Až zjistíte, že se jedná o problém z důvodu sítě, vyberte odkaz zobrazení **topologie** a Identifikujte komplikované směrování na mapě topologie. Příklad je znázorněn na následujícím obrázku. Z celkové latence 105-MS mezi uzlem a koncovým bodem aplikace je 96 MS z důvodu směrování označeného červeně. Po určení směrování komplikované můžete provést nápravná opatření. 
 
 ![Testy monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnostika 
 
-Pokud zjistíte anomálií, postupujte podle těchto kroků:
+Pokud obdržíte nezvyklosti, postupujte podle následujících kroků:
 
-* Pokud doba odezvy služby, ztráta sítě a prodleva jsou zobrazeny jako není k dispozici, mohou být příčinou nejméně jednu z následujících důvodů:
+* Pokud se doba odezvy, ztráta sítě a latence zobrazují jako NA, jeden nebo více z následujících důvodů může být příčinou:
 
-    - Aplikace je mimo provoz.
-    - Uzel použít pro kontrolu síťové připojení ke službě je mimo provoz.
-    - Cíl zadaný v konfiguraci testu je nesprávný.
-    - Uzel nemá žádné připojení k síti.
+    - Aplikace nefunguje.
+    - Uzel, který se používá pro kontrolu připojení k síti ke službě, je mimo provoz.
+    - Cíl zadaný v konfiguraci testu není správný.
+    - Uzel nemá žádné síťové připojení.
 
-* Pokud se zobrazí čas odezvy platný, ale ztráty v síti, jakož i latenci, jsou uvedeny jako není k dispozici, může být příčinou nejméně jednu z následujících důvodů:
+* Pokud se zobrazí platná doba odezvy služby, ale ztráta sítě a latence se zobrazí jako na, jeden nebo více z následujících důvodů může být příčinou:
 
-    - Pokud je uzel použít pro kontrolu síťové připojení ke službě klientské počítače s Windows, Cílová služba neblokuje požadavky ICMP nebo síťová brána firewall neblokuje požadavky protokolu ICMP, které pocházejí z uzlu.
-    - **Provést měření sítě** zaškrtávací políčko je prázdný v konfiguraci testu. 
+    - Pokud uzel použitý k ověření síťového připojení ke službě je klientský počítač Windows, znamená to, že cílová služba blokuje žádosti ICMP, nebo síťová brána firewall blokuje žádosti ICMP, které pocházejí z uzlu.
+    - Zaškrtávací políčko **provádět měření sítě** je v konfiguraci testu prázdné. 
 
-* Pokud je doba odezvy služby není k dispozici, ale platí ztráty v síti, jakož i latence, Cílová služba nemusí být webové aplikace. Upravte konfiguraci testu a zvolte typ testu jako **sítě** místo **webové**. 
+* Pokud je doba odezvy služby NA, ale ztráta sítě a latence je platná, cílová služba nemusí být webová aplikace. Upravte konfiguraci testu a jako místo **webu**vyberte typ testu **síť** . 
 
-* Pokud aplikace běží pomalu, určete, zda je nízký výkon aplikace z důvodu sítě nebo problém na straně aplikace zprostředkovatele.
+* Pokud je aplikace spuštěná pomalu, zjistěte, jestli je slabý výkon aplikace v důsledku sítě nebo problému na konci poskytovatele aplikace.
 
-## <a name="gcc-office-urls-for-us-government-customers"></a>GCC adresy URL Office pro státní správu USA
-Pro oblast US Government Virginie pouze adresy URL ministerstva obrany USA jsou předdefinované NPM. Zákazníci, kteří používají GCC adresy URL je nutné vytvořit vlastní testy a přidat jednotlivé adresy URL jednotlivě.
+## <a name="gcc-office-urls-for-us-government-customers"></a>Adresy URL Office v RSZ pro zákazníky státní správy USA
+Pro oblast) – Virginia pro státní správu USA jsou integrované NPMy jenom adresy URL DOD. Zákazníci, kteří používají adresy URL RSZ, potřebují vytvořit vlastní testy a přidat každou adresu URL jednotlivě.
 
-| Pole | GCC |
+| Pole | RSZ |
 |:---   |:--- |
-| Portál Office 365 a sdílené | portal.apps.mil |
-| Ověřování Office 365 a identita | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
-| Office Online | * adminwebservice.gov.us.microsoftonline.com <br>  * adminwebservice-s1-bn1a.microsoftonline.com <br> * adminwebservice-s1-dm2a.microsoftonline.com <br> * becws.gov.us.microsoftonline.com <br> * provisioningapi.gov.us.microsoftonline.com <br> * officehome.msocdn.us <br> * prod.msocdn.us <br> * portal.office365.us <br> * webshell.suite.office365.us <br> * www. office365.us <br> * activation.sls.microsoft.com <br> * crl.microsoft.com <br> * go.microsoft.com <br> * insertmedia.bing.office.net <br> * ocsa.officeapps.live.com <br> * ocsredir.officeapps.live.com <br> * ocws.officeapps.live.com <br> * office15client.microsoft.com <br>* officecdn.microsoft.com <br> * officecdn.microsoft.com.edgesuite.net <br> * officepreviewredir.microsoft.com <br> * officeredir.microsoft.com <br> * ols.officeapps.live.com  <br> * r.office.microsoft.com <br> * cdn.odc.officeapps.live.com <br> * odc.officeapps.live.com <br> * officeclient.microsoft.com |
+| Portál Office 365 a sdílený | portal.apps.mil |
+| Ověřování a identita pro Office 365 | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
+| Online Office | * adminwebservice.gov.us.microsoftonline.com <br>  * adminwebservice-s1-bn1a.microsoftonline.com <br> * adminwebservice-s1-dm2a.microsoftonline.com <br> * becws.gov.us.microsoftonline.com <br> * provisioningapi.gov.us.microsoftonline.com <br> * officehome.msocdn.us <br> * prod.msocdn.us <br> * portal.office365.us <br> * webshell.suite.office365.us <br> * www. office365.us <br> * activation.sls.microsoft.com <br> * crl.microsoft.com <br> * go.microsoft.com <br> * insertmedia.bing.office.net <br> * ocsa.officeapps.live.com <br> * ocsredir.officeapps.live.com <br> * ocws.officeapps.live.com <br> * office15client.microsoft.com <br>* officecdn.microsoft.com <br> * officecdn.microsoft.com.edgesuite.net <br> * officepreviewredir.microsoft.com <br> * officeredir.microsoft.com <br> * ols.officeapps.live.com  <br> * r.office.microsoft.com <br> * cdn.odc.officeapps.live.com <br> * odc.officeapps.live.com <br> * officeclient.microsoft.com |
 | Exchange Online | * outlook.office365.us <br> * attachments.office365-net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
 | MS Teams | gov.teams.microsoft.us | 
 
-## <a name="next-steps"></a>Další postup
-[Hledání protokolů](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné sítě výkonu datových záznamů.
+## <a name="next-steps"></a>Další kroky
+V [protokolech hledání](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.

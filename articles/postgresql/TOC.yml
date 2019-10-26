@@ -251,6 +251,10 @@
           items:
             - name: portál Azure
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Řešení potíží
+          items:
+            - name: Řešení chyb připojení
+              href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: Referenční informace
   items:
     - name: Azure CLI
