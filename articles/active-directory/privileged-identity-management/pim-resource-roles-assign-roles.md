@@ -1,5 +1,5 @@
 ---
-title: Přiřazení rolí prostředků Azure v PIM-Azure Active Directory | Microsoft Docs
+title: Přiřazení rolí prostředků Azure v Privileged Identity Management-Azure Active Directory | Microsoft Docs
 description: Naučte se přiřazovat role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2850f17c96ef031f9e1b8e11558ab369e4175b0
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 34051a31c6ccf69356f330d7c5ecb009f760857a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804286"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895952"
 ---
-# <a name="assign-azure-resource-roles-in-pim"></a>Přiřazení rolí prostředků Azure v PIM
+# <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Přiřazení rolí prostředků Azure v Privileged Identity Management
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) může spravovat předdefinované role prostředků Azure i vlastní role, včetně (ale ne omezení):
 
-- Owner
-- Správce uživatelských přístupů
+- Vlastník
+- Správce přístupu uživatelů
 - Přispěvatel
 - Správce zabezpečení
-- Správce zabezpečení a další
+- Správce zabezpečení
 
 > [!NOTE]
-> Uživatelé nebo členové skupiny přiřazení rolí vlastník nebo správce přístupu uživatelů a globální správci, kteří umožňují správu předplatného ve službě Azure AD, jsou správci prostředků. Tito správci mohou přiřazovat role, konfigurovat nastavení rolí a kontrolovat přístup pomocí PIM pro prostředky Azure. To znamená, že účet nebude mít práva pro správu PIM pro prostředky, pokud uživatel nemá roli správce prostředků. Prohlédněte si seznam [předdefinovaných rolí pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
+> Uživatelé nebo členové skupiny, kteří jsou přiřazeni k rolím předplatného vlastník nebo správce přístupu uživatelů a globálním správcům služby Azure AD, kteří umožňují správu předplatného ve službě Azure AD, mají ve výchozím nastavení oprávnění správce prostředků. Tito správci můžou přiřadit role, konfigurovat nastavení rolí a kontrolovat přístup pomocí Privileged Identity Management pro prostředky Azure. Uživatel nemůže spravovat Privileged Identity Management pro prostředky bez oprávnění správce prostředků. Prohlédněte si seznam [předdefinovaných rolí pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="assign-a-role"></a>Přiřazení role
 
@@ -41,35 +41,33 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění k roli prost�
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem, který je členem role [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 
-    Informace o tom, jak udělit přístup jinému správci ke správě PIM, najdete v tématu [udělení přístupu jiným správcům pro správu PIM](pim-how-to-give-access-to-pim.md).
+    Informace o tom, jak udělit přístup jinému správci ke správě Privileged Identity Management, najdete v tématu [udělení přístupu jiným správcům pro správu Privileged Identity Management](pim-how-to-give-access-to-pim.md).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
-    Pokud jste v Azure Portal ještě nezahájili PIM, pokračujte na [začátek používání PIM](pim-getting-started.md).
-
-1. Klikněte na **prostředky Azure**.
+1. Vyberte **prostředky Azure**.
 
 1. Pomocí **filtru prostředků** vyfiltrujte seznam spravovaných prostředků.
 
     ![Seznam prostředků Azure, které se mají spravovat](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-1. Klikněte na prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
+1. Vyberte prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
 
-1. V části Spravovat klikněte na **role** . zobrazí se seznam rolí pro prostředky Azure.
+1. V části Spravovat vyberte **role** , abyste viděli seznam rolí pro prostředky Azure.
 
     ![Role prostředků Azure](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-1. Kliknutím na **Přidat člena** otevřete nové podokno přiřazení.
+1. Vyberte **Přidat člena** a otevřete tak podokno nové přiřazení.
 
-1. Kliknutím na **Vybrat roli** otevřete podokno vybrat roli.
+1. Vyberte **Vybrat roli** a otevřete tak podokno vybrat roli.
 
     ![Podokno nového přiřazení](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-1. Klikněte na roli, kterou chcete přiřadit, a potom klikněte na **Vybrat**.
+1. Vyberte roli, kterou chcete přiřadit, a potom klikněte na **Vybrat**.
 
     Otevře se podokno vybrat člena nebo skupinu.
 
-1. Klikněte na člena nebo skupinu, které chcete přiřadit k roli, a potom klikněte na **Vybrat**.
+1. Vyberte člena nebo skupinu, které chcete přiřadit k roli, a potom klikněte na **Vybrat**.
 
     ![Vybrat člena nebo podokno skupiny](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
@@ -79,7 +77,7 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění k roli prost�
 
     ![Podokno nastavení členství](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
-    PIM pro prostředky Azure nabízí dva odlišné typy přiřazení:
+    Privileged Identity Management pro prostředky Azure nabízí dva odlišné typy přiřazení:
 
     - **Způsobilá** přiřazení vyžadují, aby člen role prováděl akci pro použití role. Akce můžou zahrnovat provádění kontroly vícefaktorového ověřování (MFA), poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů.
 
@@ -93,11 +91,11 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění k roli prost�
 
     ![Nastavení členství – datum a čas](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
 
-1. Jakmile budete hotovi, klikněte na **Hotovo**.
+1. Po dokončení vyberte **Hotovo**.
 
     ![Nové přiřazení – přidat](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
-1. Chcete-li vytvořit nové přiřazení role, klikněte na tlačítko **Přidat**. Zobrazí se oznámení o stavu.
+1. Chcete-li vytvořit nové přiřazení role, vyberte **Přidat**. Zobrazí se oznámení o stavu.
 
     ![Nové přiřazení – oznámení](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 
@@ -107,26 +105,26 @@ Pomocí těchto kroků aktualizujete nebo odeberete existující přiřazení ro
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Klikněte na **prostředky Azure**.
+1. Vyberte **prostředky Azure**.
 
-1. Klikněte na prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
+1. Vyberte prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
 
-1. V části Spravovat klikněte na **role** . zobrazí se seznam rolí pro prostředky Azure.
+1. V části Spravovat vyberte **role** , abyste viděli seznam rolí pro prostředky Azure.
 
     ![Role prostředků Azure – vybrat roli](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 
-1. Klikněte na roli, kterou chcete aktualizovat nebo odebrat.
+1. Vyberte roli, kterou chcete aktualizovat nebo odebrat.
 
 1. Vyhledejte přiřazení role na kartách **opravňující role** nebo **aktivní role** .
 
     ![Aktualizovat nebo odebrat přiřazení role](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
 
-1. Kliknutím na **aktualizovat** nebo **Odebrat** můžete aktualizovat nebo odebrat přiřazení role.
+1. Pokud chcete aktualizovat nebo odebrat přiřazení role, vyberte **aktualizovat** nebo **Odebrat** .
 
-    Informace o rozšíření přiřazení role najdete v tématu [rozšíření a obnovení rolí prostředků Azure v PIM](pim-resource-roles-renew-extend.md).
+    Informace o rozšíření přiřazení role najdete v tématu [rozšíření nebo obnovení rolí prostředků Azure v Privileged Identity Management](pim-resource-roles-renew-extend.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Rozšiřování nebo obnovení rolí prostředků Azure v PIM](pim-resource-roles-renew-extend.md)
-- [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)
-- [Přiřazení rolí Azure AD v PIM](pim-how-to-add-role-to-user.md)
+- [Rozšiřování nebo obnovení rolí prostředků Azure v Privileged Identity Management](pim-resource-roles-renew-extend.md)
+- [Konfigurace nastavení role prostředků Azure v Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
+- [Přiřazení rolí Azure AD v Privileged Identity Management](pim-how-to-add-role-to-user.md)
