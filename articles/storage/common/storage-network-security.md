@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 908e44ef17dcfcf7042eab32cfd6d1fc3a565ac7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: af5b2a8c6894846ec529763f80c78bc50debabe6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927119"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965511"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace Azure Storage bran firewall a virtuálních sítí
 
@@ -358,11 +358,11 @@ Pravidla sítě IP pro účty úložiště můžete spravovat pomocí Azure Port
 
 ## <a name="exceptions"></a>Výjimky
 
-Síťová pravidla usnadňují vytvoření zabezpečeného prostředí pro přístup mezi vašimi aplikacemi a daty pro většinu scénářů. Některé aplikace ale používají služby, které se nedají jedinečně izolovat prostřednictvím pravidel virtuální sítě nebo IP adres. Tyto služby se ale musí udělit účtu úložiště, aby se povolily úplné funkce aplikace. K povolení některých scénářů přístupu k datům, protokolům nebo analýzám můžete použít výjimku ***Povolit důvěryhodné služby společnosti Microsoft...***
+Síťová pravidla usnadňují vytvoření zabezpečeného prostředí pro připojení mezi vašimi aplikacemi a Vašimi daty pro většinu scénářů. Některé aplikace ale používají služby, které se nedají jedinečně izolovat prostřednictvím pravidel virtuální sítě nebo IP adres. Takové služby ale musí být udělené do úložiště, aby se povolily úplné funkce aplikace. V takových situacích můžete použít nastavení ***Povolit důvěryhodné služby Microsoftu...*** a povolit přístup k vašim datům, protokolům nebo analýzám.
 
 ### <a name="trusted-microsoft-services"></a>Důvěryhodné služby Microsoftu
 
-Některé služby společnosti Microsoft provozované ze sítí nelze udělit přístup prostřednictvím stávajících síťových pravidel. Můžete umožnit podmnožině takových důvěryhodných služeb Microsoftu přístup k účtu úložiště a přitom zachovat Síťová pravidla pro ostatní aplikace. Tyto služby pak můžou použít silné ověřování pro připojení k účtu úložiště. Pro služby Microsoftu povolíme dva typy důvěryhodných přístupů.
+Některé služby společnosti Microsoft pracují z sítí, které nelze zahrnout do síťových pravidel. Můžete umožnit podmnožině takových důvěryhodných služeb Microsoftu přístup k účtu úložiště a přitom zachovat Síťová pravidla pro ostatní aplikace. Tyto služby se pak můžou pomocí silného ověřování připojit k účtu úložiště bezpečně. Pro služby Microsoftu povolíme dva typy důvěryhodných přístupů.
 
 - Prostředkům některých služeb lze udělit přístup pro vybrané operace, jako je například zápis protokolů nebo zálohování.
 - Konkrétní instanci některých služeb je možné udělit přístup [přiřazením role RBAC](storage-auth-aad.md#assign-rbac-roles-for-access-rights) k instanci prostředku.
@@ -396,7 +396,7 @@ Výjimka **Povolit důvěryhodné služby společnosti Microsoft...** umožňuje
 
 ### <a name="storage-analytics-data-access"></a>Přístup k datům Analytics Storage
 
-V některých případech se přístup pro čtení diagnostických protokolů a metrik vyžaduje mimo hranici sítě. Když konfigurujete přístup důvěryhodných služeb k účtu úložiště, můžete pro soubory protokolů, tabulky metrik nebo obojí dovolit přístup pro čtení. [Přečtěte si další informace o práci s analýzou úložiště.](/azure/storage/storage-analytics)
+V některých případech se přístup ke čtení diagnostických protokolů a metrik vyžaduje mimo hranici sítě. Když konfigurujete přístup důvěryhodných služeb k účtu úložiště, můžete pro soubory protokolů, tabulky metrik nebo obojí dovolit přístup pro čtení. [Přečtěte si další informace o práci s analýzou úložiště.](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>Správa výjimek
 

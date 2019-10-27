@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
-ms.openlocfilehash: 2d00ccdeb89ba5d983e4a3e089e78a8d748e4092
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597959"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965179"
 ---
 # <a name="reserved-public-ipv6-address-prefix-preview"></a>Vyhrazená předpona veřejných adres IPv6 (Preview)
 
@@ -46,7 +46,7 @@ Velikost předpony je zadaná jako velikost masky CIDR (Classless Inter-Domain R
 Náklady spojené s používáním veřejných IP adres Azure, individuálních IP adres a rozsahů IP adres najdete v tématu [ceny veřejných IP adres](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
 ## <a name="limitations"></a>Omezení
-Protokol IPv6 se podporuje jenom u základních veřejných IP adres, které jsou jenom v případě "dynamického" přidělení, což znamená, že se adresa IPv6 změní, když v Azure odstraníte a znovu nasadíte svoji aplikaci (nebo nástroje pro vyrovnávání zatížení). Jenom standardní IP adresa Standard IPv6 podporuje jak dynamické, tak statické (rezervované) přidělení.
+Protokol IPv6 se podporuje jenom u základních veřejných IP adres, které jsou jenom v případě "dynamického" přidělení, což znamená, že se adresa IPv6 změní, když v Azure odstraníte a znovu nasadíte svoji aplikaci (nebo nástroje pro vyrovnávání zatížení). Standardní podpora veřejné IP adresy IPv6 je výhradně statická (rezervovaná) alokace, i když standardní interní nástroje pro vyrovnávání zatížení můžou podporovat dynamické přidělování i v rámci podsítě, ke které jsou přiřazené.  
 
 Jako osvědčený postup doporučujeme, abyste pro aplikace IPv6 používali standardní veřejné IP adresy a standardní nástroje pro vyrovnávání zatížení.
 

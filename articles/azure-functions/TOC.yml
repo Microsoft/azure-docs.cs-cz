@@ -245,8 +245,12 @@
         - name: Vypnutí funkce
           href: disable-function.md
     - name: Monitorování
-      href: functions-monitoring.md
-      displayName: 'App Insights, Application Insights, logs, logging'
+      items:
+        - name: Monitorování funkcí
+          href: functions-monitoring.md
+          displayName: 'App Insights, Application Insights, logs, logging'
+        - name: Analýza protokolů
+          href: functions-monitor-log-analytics.md
     - name: Zabezpečení
       items:
         - name: Zakoupení certifikátů SSL

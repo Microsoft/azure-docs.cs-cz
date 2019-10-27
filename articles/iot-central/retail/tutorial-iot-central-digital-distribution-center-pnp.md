@@ -6,18 +6,16 @@ ms.author: nandab
 ms.service: iot-central
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 20ed04efc1d10e419148cb4f6c75c3eab4ab40a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d5b132be2a3719f746af253439f1d1bdff1c3c40
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957913"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965078"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace digitálního distribučního centra
 
 V tomto kurzu se dozvíte, jak začít tím, že nasadíte šablonu aplikace IoT Central **digital Distribution Center** . Naučíte se, jak nasadit šablonu, co je součástí okna a co byste chtěli udělat dál.
-
-## <a name="details"></a>Podrobnosti
 
 V tomto kurzu se naučíte, 
 * Vytvořit aplikaci digital Distribution Center 
@@ -47,16 +45,14 @@ Aplikaci můžete vytvořit pomocí následujících kroků.
 > [!div class="mx-imgBorder"]
 > ![](./media/tutorial-iot-central-ddc/ddc-create.png) digital Distribution Center
 
-## <a name="walk-through-the-application"></a>Procházení aplikací 
-
-## <a name="dashboard"></a>Řídicí panel 
+## <a name="walk-through-the-application-dashboard"></a>Procházení řídicím panelem aplikace 
 
 Po úspěšném nasazení šablony aplikace je výchozím řídicím panelem operátor distribučního centra, který se zaměřuje na portál. Northwind obchodník je fiktivním poskytovatelem řešení distribučního centra, které spravuje systémy dopravníků. 
 
-V tomto řídicím panelu uvidíte jednu hraniční bránu a jednu kameru, která funguje jako zařízení IoT. Brána poskytuje telemetrii o balíčcích, jako je třeba platný, neplatný, neidentifikovaný a velikost spolu s přidruženými dvojitými vlastnostmi zařízení. Všechny příkazy pro příjem dat jsou spouštěny v zařízeních IoT, jako je třeba fotoaparát. Tento řídicí panel je předem nakonfigurovaný tak, aby předvedl kritické aktivity zařízení v distribučním centru.
+V tomto řídicím panelu se zobrazí jedna brána a jedna kamera, která funguje jako zařízení IoT. Brána poskytuje telemetrii o balíčcích, jako je třeba platný, neplatný, neidentifikovaný a velikost spolu s přidruženými dvojitými vlastnostmi zařízení. Všechny příkazy pro příjem dat jsou spouštěny v zařízeních IoT, jako je třeba fotoaparát. Tento řídicí panel je předem nakonfigurovaný tak, aby předvedl kritické aktivity zařízení v distribučním centru.
 
-Řídicí panel je logicky uspořádaný tak, aby zobrazoval možnosti správy zařízení Azure IoT Edge brány a zařízení IoT.  
-   * Příkazy hraniční brány můžete provádět & úlohách řízení
+Řídicí panel je logicky uspořádaný tak, aby zobrazoval možnosti správy zařízení v bráně Azure IoT Gateway a v zařízení IoT.  
+   * Příkazy brány můžete provádět & úlohách řízení.
    * Spravujte všechny fotoaparáty, které jsou součástí řešení. 
 
 > [!div class="mx-imgBorder"]
@@ -64,36 +60,21 @@ V tomto řídicím panelu uvidíte jednu hraniční bránu a jednu kameru, kter�
 
 ## <a name="device-template"></a>Šablona zařízení
 
-Klikněte na kartu **šablony zařízení** a zobrazí se různé šablony zařízení Azure IoT Edge & fotoaparát. 
-
-Šablona zařízení Azure IoT Edge brány představuje podrobný plán, který definuje charakteristiky a chování zařízení hraniční brány. Některé součásti hraničního zařízení jsou,
-   * Manifest nasazení
-   * Vztah k zařízením s podřízenými zařízeními
-   * Softwarové moduly
-   * Moduly – vlastnosti & příkazy 
-
-V manifestu nasazení se nachází seznam softwarových modulů, které se spustí na Azure IoT Edge zařízení & modulu má na vlákna nastavené požadované vlastnosti. Pomocí manifestu nasazení, který je součástí šablony zařízení, Azure IoT Edge čas spuštění ví, které moduly se mají nainstalovat a jak je nakonfigurovat tak, aby společně spolupracovaly.
+Klikněte na kartu šablony zařízení a zobrazí se model schopností brány. Model schopností je strukturovaný kolem dvou různých rozhraní **kamery** a **brány digitální distribuce** .
 
 > [!div class="mx-imgBorder"]
 > ![](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png) digital Distribution Center
 
-V této šabloně zařízení se můžete podívat na to, že se modely schopností zařízení modulu generují z manifestu nasazení. 
+**Kamera** – toto rozhraní uspořádá všechny možnosti příkazu specifické pro fotoaparát. 
 
 > [!div class="mx-imgBorder"]
-> ![](./media/tutorial-iot-central-ddc/ddc-devicetemplate2.png) digital Distribution Center
+> ![](./media/tutorial-iot-central-ddc/ddc-camera.png) digital Distribution Center
 
-Tady můžete přidat vztahy zařízení pro příjem dat, vlastnost cloudu a vytvořit zobrazení společně s možnostmi přizpůsobení modulů a zařízení.
-
-> [!div class="mx-imgBorder"]
-> ![](./media/tutorial-iot-central-ddc/ddc-moduletemplate.png) digital Distribution Center
-
-Klikněte na kartu **zařízení** a vyberte zařízení **Ddcgateway** přidružené k digitálnímu centru distribuce Azure IoT Edge. Tady zobrazíte vlastní hraniční moduly & navazujících fotoaparátů, které jsou součástí vztahu zařízení. IoT Edge moduly jsou nejmenší výpočetní jednotka a může obsahovat služby Azure (například Azure Stream Analytics, moduly AI) nebo kód specifický pro řešení.
+**Brána digitální distribuce** – toto rozhraní představuje veškerou telemetrii, která přichází z kamery, využívané vlastnosti cloudového zařízení a informace o bráně.
 
 > [!div class="mx-imgBorder"]
-> ![](./media/tutorial-iot-central-ddc/ddc-modules.png) digital Distribution Center
+> ![](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png) digital Distribution Center
 
-> [!div class="mx-imgBorder"]
-> ![](./media/tutorial-iot-central-ddc/ddc-downstream.png) digital Distribution Center
 
 ## <a name="gateway-commands"></a>Příkazy brány
 Toto rozhraní uspořádá všechny možnosti příkazů brány.
@@ -103,6 +84,7 @@ Toto rozhraní uspořádá všechny možnosti příkazů brány.
 
 ## <a name="rules"></a>Pravidla
 Vyberte kartu pravidla a podívejte se na dvě různá pravidla, která existují v této šabloně aplikace. Tato pravidla jsou nakonfigurovaná tak, aby se pro další šetření použila e-mailová oznámení pro operátory.
+
  **Upozornění na příliš mnoho neplatných balíčků** – toto pravidlo se aktivuje, když fotoaparát detekuje vysoký počet neplatných balíčků v rámci systému dopravníkových toků.
  
 **Velký balíček** – toto pravidlo se aktivuje, pokud fotoaparát detekuje velký balíček, u kterého se nedá zkontrolovat kvalita. 

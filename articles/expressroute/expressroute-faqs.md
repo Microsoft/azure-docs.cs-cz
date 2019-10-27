@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 4fd27acc58f5aaeb9b7680062ad97aaba22dec51
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: df8b1c8fd31eed0a09b878f09faadb23f6b72aaa
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686994"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965450"
 ---
 # <a name="expressroute-faq"></a>Nejčastější dotazy k ExpressRoute
 
@@ -86,6 +86,14 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
     * Azure Front Door
     * Multi-Factor Authentication Server (starší verze)
     * Traffic Manager
+
+### <a name="why-i-see-advertised-public-prefixes-status-as-validation-needed-while-configuring-microsoft-peering"></a>Proč se při konfiguraci partnerského vztahu Microsoftu zobrazuje stav inzerovat veřejné předpony jako nutné ověření?
+
+Microsoft ověří, jestli se vám v registru směrování Internetu přiřadí zadané "inzerované veřejné předpony" a "partnerské číslo ASN" (nebo číslo ASN zákazníka). Pokud získáváte veřejné předpony z jiné entity a pokud přiřazení není zaznamenané u registru směrování, automatické ověřování se nedokončí a bude vyžadovat ruční ověření. Pokud se automatické ověření nezdaří, zobrazí se zpráva "vyžadováno ověření".
+
+Pokud se zobrazí zpráva potřebná pro ověření, shromážděte dokumenty, které zobrazují veřejné předpony, do vaší organizace podle entity, která je uvedena jako vlastník předpon v registru směrování, a odešlete tyto dokumenty k ručnímu ověření pomocí Otevřete lístek podpory, jak je znázorněno níže.
+
+![](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Je Dynamics 365 podporován na ExpressRoute?
 
@@ -266,7 +274,7 @@ Bude také nutné dodržet poskytovatele připojení, aby bylo zajištěno, že 
 ExpressRoute Premium je kolekce následujících funkcí:
 
 * Zvýšil se limit směrovací tabulky z 4000 tras na 10 000 tras pro privátní partnerské vztahy.
-* Vyšší počet virtuální sítě a Global REACH ExpressRoute připojení, která je možné povolit u okruhu ExpressRoute (výchozí hodnota je 10). Další informace najdete v tabulce [omezení ExpressRoute](#limits) .
+* Vyšší počet virtuální sítě a Global Reach ExpressRoute připojení, která je možné povolit u okruhu ExpressRoute (výchozí hodnota je 10). Další informace najdete v tabulce [omezení ExpressRoute](#limits) .
 * Připojení k Office 365
 * Globální konektivita přes Microsoft Core Network. Nyní můžete propojit virtuální síť v jedné geopolitické oblasti s okruhem ExpressRoute v jiné oblasti.<br>
     **4.6**
@@ -277,7 +285,7 @@ ExpressRoute Premium je kolekce následujících funkcí:
 
 ### <a name="limits"></a>Kolik připojení virtuální sítě a ExpressRoute Global Reach můžu povolit u okruhu ExpressRoute, pokud jsem povolil ExpressRoute Premium?
 
-V následujících tabulkách jsou uvedena omezení ExpressRoute a počet virtuální sítě a Global REACH ExpressRoute připojení na ExpressRoute okruh:
+V následujících tabulkách jsou uvedena omezení ExpressRoute a počet virtuální sítě a Global Reach ExpressRoute připojení na ExpressRoute okruh:
 
 [!INCLUDE [ExpressRoute limits](../../includes/expressroute-limits.md)]
 

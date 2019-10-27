@@ -11,16 +11,16 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ab3971b4fb6065701d693debf55242be7b15295e
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390699"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965974"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
-Cílem architektury vysoké dostupnosti v Azure SQL Database je zaručit, že je vaše databáze v provozu a bude běžet 99,99% času, aniž byste se museli starat o dopad na operace údržby a výpadky. Azure automaticky zpracovává důležité úlohy údržby, jako jsou třeba opravy, zálohování, upgrady Windows a SQL a také neplánované události, jako je například základní hardware, software nebo chyba sítě.  Pokud je podkladová instance SQL opravena nebo převezme služby při selhání, nemůžete si všimnout, pokud ve své aplikaci použijete [logiku opakování](sql-database-develop-overview.md#resiliency) . Azure SQL Database můžete rychle obnovit i v nejdůležitějších případech, které zajistí, že vaše data jsou vždycky k dispozici.
+Cílem architektury vysoké dostupnosti v Azure SQL Database je zaručit, že je vaše databáze v provozu a bude běžet 99,99% času, aniž byste se museli starat o dopad na operace údržby a výpadky. Azure automaticky zpracovává důležité úlohy údržby, jako jsou třeba opravy, zálohování, upgrady Windows a SQL, a také neplánované události, jako je například základní hardware, software nebo selhání sítě.  Pokud je podkladová instance SQL opravena nebo převezme služby při selhání, nemůžete si všimnout, pokud ve své aplikaci použijete [logiku opakování](sql-database-develop-overview.md#resiliency) . Azure SQL Database můžete rychle obnovit i v nejdůležitějších případech, které zajistí, že vaše data jsou vždycky k dispozici.
 
 Řešení vysoké dostupnosti je navrženo tak, aby se zajistilo, že potvrzená data nejsou nikdy ztracena z důvodu selhání, že operace údržby neovlivní vaše zatížení a že databáze nebude v rámci softwarové architektury jediným bodem selhání. Neexistují žádná časová období údržby ani výpadky, které by měly vyžadovat, abyste při upgradu nebo údržbě databáze zastavili úlohy. 
 
@@ -39,7 +39,7 @@ Tyto úrovně služeb využívají standardní architekturu dostupnosti. Násled
 
 Standardní model dostupnosti obsahuje dvě vrstvy:
 
-- Bezstavová výpočetní vrstva, která spouští proces @no__t 0 a obsahuje jenom přechodná a uložená data v mezipaměti, jako je TempDB, modelové databáze na připojené SSD a mezipaměť plánu, fond vyrovnávacích pamětí a fond columnstore v paměti. Tento bezstavový uzel provozuje služba Azure Service Fabric, která inicializuje `sqlservr.exe`, řídí stav uzlu a v případě potřeby provádí převzetí služeb při selhání jiným uzlem.
+- Bezstavová výpočetní vrstva, která spouští proces `sqlservr.exe` a obsahuje pouze přechodná a data uložená v mezipaměti, jako je například TempDB, modelové databáze na připojené SSD a mezipaměť plánu, fond vyrovnávací paměti a fond columnstore v paměti. Tento bezstavový uzel provozuje služba Azure Service Fabric, která inicializuje `sqlservr.exe`, řídí stav uzlu a v případě potřeby provádí převzetí služeb při selhání jiným uzlem.
 - Stavová Datová vrstva s databázovými soubory (. mdf/. ldf), které jsou uložené v úložišti objektů BLOB v Azure. Služba Azure Blob Storage má vestavěnou funkci dostupnosti dat a redundance. Zaručuje, že každý záznam v souboru protokolu nebo na stránce v datovém souboru se zachová i v případě selhání procesu SQL Server.
 
 Pokaždé, když je databázový stroj nebo operační systém upgradovaný, nebo dojde k selhání, Azure Service Fabric přesune bezstavový proces SQL Server na jiný bezstavový výpočetní uzel s dostatečnou volnou kapacitou. Data v úložišti objektů BLOB v Azure nejsou ovlivněná přesunem a soubory dat a protokolů jsou připojené k nově inicializovanému procesu SQL Server. Tento proces garantuje 99,99% dostupnost, ale během přechodu může dojít k výraznému snížení výkonu, protože nová instance SQL Server začíná studenou mezipamětí.
@@ -63,7 +63,7 @@ Architektura vrstvy služeb s více instancemi je popsaná v tématu [Architektu
 Model dostupnosti v rámci škálování zahrnuje čtyři vrstvy:
 
 - Bezstavová výpočetní vrstva, která spouští procesy `sqlservr.exe` a obsahuje pouze přechodná a uložená data v mezipaměti, jako například nepokrývání mezipaměti RBPEX cache, TempDB, modelová databáze atd. na připojené SSD a v mezipaměti plánů, fond vyrovnávacích pamětí a fond columnstore v paměti. Tato Bezstavová vrstva zahrnuje primární repliku COMPUTE a volitelně také počet sekundárních výpočetních replik, které můžou sloužit jako cíle převzetí služeb při selhání.
-- Bezstavová vrstva úložiště vytvořená stránkami serverů. Tato vrstva je distribuovaný modul úložiště pro procesy @no__t 0, které běží na výpočetních replikách. Každý server stránky obsahuje jenom přechodná data a data uložená v mezipaměti, jako je třeba pokrytí RBPEX cache na připojené SSD a datových stránek uložených v paměti. Každý server stránky má spárovaný stránkovací Server v konfiguraci aktivní-aktivní, aby poskytoval vyrovnávání zatížení, redundanci a vysokou dostupnost.
+- Bezstavová vrstva úložiště vytvořená stránkami serverů. Tato vrstva je distribuovaný modul úložiště pro `sqlservr.exe` procesy běžící na výpočetních replikách. Každý server stránky obsahuje jenom přechodná data a data uložená v mezipaměti, jako je třeba pokrytí RBPEX cache na připojené SSD a datových stránek uložených v paměti. Každý server stránky má spárovaný stránkovací Server v konfiguraci aktivní-aktivní, aby poskytoval vyrovnávání zatížení, redundanci a vysokou dostupnost.
 - Vrstva úložiště protokolu stavových transakcí vytvořená výpočetním uzlem, na kterém běží proces služby protokolování, zóna pro vykládku protokolu transakcí a dlouhodobé ukládání transakčního protokolu. Cílová zóna a dlouhodobé úložiště používají Azure Storage, což poskytuje dostupnost a [redundanci](https://docs.microsoft.com/azure/storage/common/storage-redundancy) transakčního protokolu, což zajišťuje odolnost dat pro potvrzené transakce.
 - Stavová vrstva úložiště dat s databázovými soubory (. mdf/. NDF), které jsou uložené v Azure Storage a jsou aktualizovány pomocí stránkových serverů. Tato vrstva používá funkce pro dostupnost a [redundanci](https://docs.microsoft.com/azure/storage/common/storage-redundancy) dat Azure Storage. Zaručuje, že každá stránka v datovém souboru se zachová i v případě, že procesy v jiných vrstvách selže nebo dojde k selhání výpočetních uzlů.
 
@@ -89,12 +89,14 @@ Redundantní verze architektury s vysokou dostupností v zóně je znázorněna 
 
 [Accelerated Database Recovery (ADR)](sql-database-accelerated-database-recovery.md) je nová funkce stroje SQL Database, která významně vylepšuje dostupnost databáze, zejména v případě dlouhotrvajících transakcí. Pro jednotlivé databáze, elastické fondy a Azure SQL Data Warehouse jsou aktuálně k dispozici pravidla automatického nasazení.
 
-## <a name="testing-database-fault-resiliency"></a>Testování odolnosti proti chybám databáze
+## <a name="testing-application-fault-resiliency"></a>Testování odolnosti proti chybám aplikace
 
-Vysoká dostupnost je fundamenental součástí platformy Azure SQL Database a funguje transparentně pro vaši databázovou aplikaci. Nicméně víme, že možná budete chtít otestovat, jak budou operace automatického převzetí služeb při selhání iniciované během plánovaných nebo neplánovaných událostí mít vliv na aplikaci předtím, než ji nasadíte do produkčního prostředí. Můžete zavolat speciální rozhraní API pro restartování databáze nebo elastického fondu, ve kterém se zase aktivuje převzetí služeb při selhání. V případě redundantní databáze nebo elastického fondu zóny by volání rozhraní API mělo za následek přesměrování připojení klientů k nové primární části v jiném AZ. Takže kromě testování toho, jak převzetí služeb při selhání ovlivňuje stávající relace databáze, můžete také ověřit, jestli má dopad na koncový výkon. Vzhledem k tomu, že je operace restartování rušivá a velký počet jejich prostředků by mohl zdůraznit, je pro každou databázi nebo elastický fond povolené jenom jedno volání převzetí služeb při selhání každé 30 minut. Podrobnosti najdete v tématu převzetí služeb při selhání [databáze](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) a [elastického fondu](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover).       
+Vysoká dostupnost je základní součástí Azure SQL Database platformy, která je transparentně vhodná pro vaši databázovou aplikaci. Nicméně víme, že možná budete chtít otestovat, jak budou operace automatického převzetí služeb při selhání iniciované během plánovaných nebo neplánovaných událostí mít vliv na aplikaci předtím, než ji nasadíte do produkčního prostředí. Můžete zavolat speciální rozhraní API pro restartování databáze nebo elastického fondu, ve kterém se zase aktivuje převzetí služeb při selhání. V případě redundantní databáze nebo elastického fondu zóny by volání rozhraní API mělo za následek přesměrování připojení klientů k nové primární databázi v zóně dostupnosti odlišnou od zóny dostupnosti staré primární služby. Takže kromě testování toho, jak převzetí služeb při selhání ovlivňuje stávající databázové relace, můžete také ověřit, jestli se v důsledku změn v latenci sítě změní na koncový výkon. Vzhledem k tomu, že operace restartování je rušivá a velké množství těchto prostředků by mohlo navýšit platformu, pro každou databázi nebo elastický fond je každých 30 minut povoleno pouze jedno volání převzetí služeb při selhání. 
+
+Převzetí služeb při selhání se dá iniciovat pomocí REST API nebo PowerShellu. REST API najdete v tématu převzetí služeb při selhání [databáze](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) a [elastického fondu](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover). Informace o PowerShellu najdete v tématu [Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) a [Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover). Volání REST API lze také provést z Azure CLI pomocí příkazu [AZ REST](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest) Command.
 
 > [!IMPORTANT]
-> Příkaz pro převzetí služeb při selhání není pro databáze Hypescale a spravovaných instancses aktuálně k dispozici.  
+> Příkaz pro převzetí služeb při selhání není v současnosti k dispozici v úrovni služby a pro spravovanou instanci.
 
 ## <a name="conclusion"></a>Závěr
 

@@ -110,13 +110,7 @@
 - name: Návody
   items:
     - name: Registrace zařízení IoT Edge
-      items:
-        - name: portál Azure
-          href: how-to-register-device-portal.md
-        - name: Azure CLI
-          href: how-to-register-device-cli.md
-        - name: Visual Studio Code
-          href: how-to-register-device-vscode.md
+      href: how-to-register-device.md
     - name: Instalace a správa IoT Edge
       items:
         - name: Linux

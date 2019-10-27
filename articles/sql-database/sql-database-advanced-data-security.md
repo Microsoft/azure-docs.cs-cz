@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: a8b380355d7eee6b79bff01d29160fdd3b42800d
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 40e556b5d0fe22629eeca9a088d10ea5fc9b95ac
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285817"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965496"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Rozšířené zabezpečení dat pro Azure SQL Database
 
@@ -26,7 +26,7 @@ Rozšířené zabezpečení dat je jednotný balíček pro pokročilé funkce za
 
 Služba ADS (Advanced Data Security) poskytuje sadu pokročilých funkcí zabezpečení SQL, včetně klasifikace dat & klasifikace, posouzení ohrožení zabezpečení a rozšířené ochrany před internetovými útoky.
 
-- [Klasifikace & Discovery dat](sql-database-data-discovery-and-classification.md) (aktuálně ve verzi Preview) poskytuje možnosti integrované do Azure SQL Database pro zjišťování, klasifikaci a označování & ochrany citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
+- [Klasifikace & Discovery dat](sql-database-data-discovery-and-classification.md) poskytuje možnosti integrované do Azure SQL Database pro zjišťování, klasifikaci a označování & ochrany citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
 - [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je jednoduchá konfigurace služby, která může zjišťovat, sledovat a pomáhat při nápravě potenciálních ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
 - [Rozšířená ochrana před internetovými útoky](sql-database-threat-detection-overview.md) detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázi nebo jejím zneužití. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Výstrahy rozšířené ochrany před internetovými útoky poskytují podrobné informace o podezřelé aktivitě a doporučuje akci, jak tuto hrozbu prozkoumat a zmírnit.
 

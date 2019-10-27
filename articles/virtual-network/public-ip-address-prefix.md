@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: d33ad5782b78fc7f9ba4803c85f1b17be60e8561
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 964bc915347d11e087da0b34a8d4160d807a4158
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194890"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965406"
 ---
-# <a name="public-ip-address-prefix"></a>Předpona veřejné IP adresy
+# <a name="public-ip-address-prefix"></a>Předpony veřejných IP adres
 
 Předpona veřejných IP adres je vyhrazený rozsah IP adres pro vaše veřejné koncové body v Azure. Azure přiděluje souvislý rozsah adres k vašemu předplatnému na základě toho, kolik zadáte. Pokud nejste obeznámeni s veřejnými adresami, přečtěte si téma [veřejné IP adresy.](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
 
@@ -46,19 +46,18 @@ Když vytvoříte prostředky veřejné IP adresy, Azure přiřadí dostupnou ve
 ## <a name="scenarios"></a>Scénáře
 K statické veřejné IP adrese můžete přidružit následující prostředky z předpony:
 
-|Resource|Scénář|Kroky|
+|Prostředek|Scénář|Kroky|
 |---|---|---|
-|Virtuální počítače| Přidružení veřejných IP adres od předpony k virtuálním počítačům v Azure snižuje režijní náklady na správu, pokud jde o seznam povolených IP adres v bráně firewall. Můžete jednoduše přidružit celou předponu s jedním pravidlem brány firewall. Při škálování s virtuálními počítači v Azure můžete přidružit IP adresy ze stejné předpony ukládání nákladů, času a režijních nákladů na správu.| Přidružení IP adres k virtuálnímu počítači z předpony: 1. [Vytvořte předponu.](manage-public-ip-address-prefix.md) 2. [Vytvořte IP adresu z předpony.](manage-public-ip-address-prefix.md) 3. [Přiřaďte IP adresu k síťovému rozhraní virtuálního počítače.](virtual-network-network-interface-addresses.md#add-ip-addresses)
+|Služba Virtual Machines| Přidružení veřejných IP adres od předpony k virtuálním počítačům v Azure snižuje režijní náklady na správu, pokud jde o seznam povolených IP adres v bráně firewall. Můžete jednoduše přidružit celou předponu s jedním pravidlem brány firewall. Při škálování s virtuálními počítači v Azure můžete přidružit IP adresy ze stejné předpony ukládání nákladů, času a režijních nákladů na správu.| K přidružení IP adres k virtuálnímu počítači z předpony: 1. [Vytvořte předponu.](manage-public-ip-address-prefix.md) 2. [Vytvořte IP adresu z předpony.](manage-public-ip-address-prefix.md) 3. [Přiřaďte IP adresu k síťovému rozhraní virtuálního počítače.](virtual-network-network-interface-addresses.md#add-ip-addresses)
 | Standardní nástroje pro vyrovnávání zatížení | Přidružení veřejných IP adres z předpony na konfiguraci IP adresy front-endu nebo odchozí pravidlo pro Load Balancer zajišťuje zjednodušení vašeho prostoru veřejných IP adres Azure. Můžete zjednodušit scénář vymazáním odchozích připojení z rozsahu souvislých IP adres definovaných předponou veřejné IP adresy. | K přidružení IP adresy z předpony k vašemu nástroji pro vyrovnávání zatížení: 1. [Vytvořte předponu.](manage-public-ip-address-prefix.md) 2. [Vytvořte IP adresu z předpony.](manage-public-ip-address-prefix.md) 3. Při vytváření Load Balancer vyberte nebo aktualizujte IP adresu vytvořenou v kroku 2 výše jako front-endové IP adresy vašeho Load Balancer. |
-| Brána Azure Firewall | Veřejnou IP adresu můžete použít z předpony pro odchozí SNAT. To znamená, že veškerý odchozí provoz virtuální sítě se převede na [Azure firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veřejnou IP adresu. Vzhledem k tomu, že tato IP adresa pochází z předem vymezené předpony, je velmi snadné znát čas, který vaše veřejná IP adresa v Azure bude vypadat jako. | 1. [Vytvořte předponu.](manage-public-ip-address-prefix.md) 2. [Vytvořte IP adresu z předpony.](manage-public-ip-address-prefix.md) 3. Když nasadíte [bránu Azure firewall](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), nezapomeňte vybrat IP adresu, kterou jste dříve přidělili z předpony.|
-| Application Gateway v2 | Veřejnou IP adresu můžete použít z předpony pro vaše automatické škálování a redundantní Aplikační bránu v2. Vzhledem k tomu, že tato IP adresa pochází z předem vymezené předpony, je velmi snadné znát čas, který vaše veřejná IP adresa v Azure bude vypadat jako. | 1. [Vytvořte předponu.](manage-public-ip-address-prefix.md) 2. [Vytvořte IP adresu z předpony.](manage-public-ip-address-prefix.md) 3. Když nasadíte [Application Gateway](../application-gateway/quick-create-portal.md#create-an-application-gateway), nezapomeňte vybrat IP adresu, kterou jste dříve přidělili z předpony.|
+| Azure Firewall | Veřejnou IP adresu můžete použít z předpony pro odchozí SNAT. To znamená, že veškerý odchozí provoz virtuální sítě se převede na [Azure firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veřejnou IP adresu. Vzhledem k tomu, že tato IP adresa pochází z předem vymezené předpony, je velmi snadné znát čas, který vaše veřejná IP adresa v Azure bude vypadat jako. | 1. [vytvořte předponu.](manage-public-ip-address-prefix.md) 2. [Vytvořte IP adresu z předpony.](manage-public-ip-address-prefix.md) 3. Když [nasadíte bránu Azure firewall](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), nezapomeňte vybrat IP adresu, kterou jste dříve přidělili z předpony.|
+| Application Gateway v2 | Veřejnou IP adresu můžete použít z předpony pro vaše automatické škálování a redundantní Aplikační bránu v2. Vzhledem k tomu, že tato IP adresa pochází z předem vymezené předpony, je velmi snadné znát čas, který vaše veřejná IP adresa v Azure bude vypadat jako. | 1. [vytvořte předponu.](manage-public-ip-address-prefix.md) 2. [Vytvořte IP adresu z předpony.](manage-public-ip-address-prefix.md) 3. Když [nasadíte Application Gateway](../application-gateway/quick-create-portal.md#create-an-application-gateway), nezapomeňte vybrat IP adresu, kterou jste dříve přidělili z předpony.|
 
 ## <a name="constraints"></a>Omezení
 
 - Nemůžete zadat IP adresy pro předponu. Azure přiděluje IP adresy pro předponu na základě velikosti, kterou zadáte.
 - Můžete vytvořit předponu IP adres až 16 nebo/28. Další informace najdete v tématu [omezení Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Po vytvoření předpony nemůžete rozsah změnit.
-- Tento rozsah slouží jenom pro adresy IPv4. Rozsah neobsahuje adresy IPv6.
 - Z rozsahu předpony lze přiřadit pouze statické veřejné IP adresy, které byly vytvořeny pomocí standardní SKU. Další informace o SKU veřejných IP adres najdete v tématu [Veřejná IP adresa](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 - Adresy z rozsahu lze přiřadit pouze k prostředkům Azure Resource Manager. Adresy nelze přiřadit k prostředkům v modelu nasazení Classic.
 - Všechny veřejné IP adresy vytvořené z předpony musí existovat ve stejné oblasti a předplatném Azure jako předpona a musí být přiřazené k prostředkům ve stejné oblasti a předplatném.

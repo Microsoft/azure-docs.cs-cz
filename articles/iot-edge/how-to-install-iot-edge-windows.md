@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: c1b507398a2edd839b610a7c52892e23a88481a0
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ae3f866ff5e4266983117e93f2aab5982065947e
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516611"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964390"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Instalace modulu runtime Azure IoT Edge ve Windows
 
@@ -76,9 +76,9 @@ Tento příklad ukazuje ruční instalaci pomocí kontejnerů Windows:
 
 1. Pokud jste to ještě neudělali, zaregistrujte nové zařízení IoT Edge a načtěte **připojovací řetězec zařízení**. Zkopírujte připojovací řetězec pro pozdější použití v této části. Tento krok můžete provést pomocí následujících nástrojů:
 
-   * [Azure Portal](how-to-register-device-portal.md)
-   * [Azure CLI](how-to-register-device-cli.md)
-   * [Visual Studio Code](how-to-register-device-vscode.md)
+   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
+   * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. Spusťte PowerShell jako správce.
 
@@ -123,7 +123,7 @@ Další informace o těchto možnostech instalace najdete v informacích o [vše
 
 V této druhé možnosti zřídíte zařízení pomocí IoT Hub Device Provisioning Service. Zadejte **ID oboru** z instance služby Device Provisioning spolu s dalšími informacemi, které jsou specifické pro váš preferovaný [mechanismus ověřování](../iot-dps/concepts-security.md#attestation-mechanism):
 
-* [Vytvoření a zřízení simulovaného zařízení TPM na hraničních zařízeních v systému Windows](how-to-auto-provision-simulated-device-windows.md)
+* [Vytvoření a zřízení simulovaného IoT Edge zařízení s virtuálním čipem TPM ve Windows](how-to-auto-provision-simulated-device-windows.md)
 * [Vytvoření a zřízení zařízení IoT Edge pomocí ověřování symetrického klíče](how-to-auto-provision-symmetric-keys.md)
 
 Když instalujete a zřídíte zařízení automaticky, můžete pomocí dalších parametrů upravit instalaci, včetně:

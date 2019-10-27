@@ -216,6 +216,8 @@
           href: managed-disks-overview.md
         - name: Výběr typu disku pro virtuální počítače IaaS
           href: disks-types.md
+        - name: Šifrování
+          href: disk-encryption.md
         - name: Návrh pro vysoký výkon
           href: premium-storage-performance.md
         - name: Cíle škálovatelnosti pro disky

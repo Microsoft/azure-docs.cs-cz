@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2019
 ms.author: kumud
-ms.openlocfilehash: 47f73ca8ece8db5fad3f8a7709d8787db42626f4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 907a6de2ff89ddd3c2cb5bdab67e1deb984141dc
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791186"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965242"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Upgrade aplikace IPv4 na IPv6 ve službě Azure Virtual Network – PowerShell (Preview)
 
-V tomto článku se dozvíte, jak přidat IPv6 adresy do aplikace, která používá veřejnou IP adresu IPv4 ve virtuální síti Azure pro Standard Load Balancer. Místní upgrade zahrnuje virtuální síť a podsíť, Standard Load Balancer s konfiguracemi front-endu IPv4 + IPV6, virtuálních počítačů se síťovými kartami, které mají konfigurace IPv4 + IPv6, skupiny zabezpečení sítě a veřejné IP adresy.
+V tomto článku se dozvíte, jak přidat připojení IPv6 do existující aplikace IPv4 ve virtuální síti Azure pomocí Standard Load Balancer a veřejné IP adresy. Místní upgrade zahrnuje:
+- Adresní prostor IPv6 pro virtuální síť a podsíť
+- Standard Load Balancer s konfiguracemi front-endu IPv4 i IPV6
+- Virtuální počítače se síťovými kartami, které mají konfiguraci IPv4 i IPv6
+- Služba IPv Public IP, aby nástroj pro vyrovnávání zatížení měl připojení IPv6 k Internetu
 
 > [!Important]
 > Podpora protokolu IPv6 pro Azure Virtual Network je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -81,7 +85,7 @@ Vytvořte veřejnou IPv6 adresu pomocí [New-AzPublicIpAddress](/powershell/modu
 
 ## <a name="configure-load-balancer-frontend"></a>Konfigurace front-endu nástroje pro vyrovnávání zatížení
 
-Načtěte existující konfiguraci služby Vyrovnávání zatížení a nakonfigurujte ji pomocí nové IP adresy IPv6 pomocí příkazu [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/Add-AzLoadBalancerFrontendIpConfig) následujícím způsobem:
+Načtěte existující konfiguraci služby Vyrovnávání zatížení a přidejte novou IP adresu IPv6 pomocí příkazu [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/Add-AzLoadBalancerFrontendIpConfig) následujícím způsobem:
 
 ```azurepowershell
 # Retrieve the load balancer configuration
@@ -124,7 +128,7 @@ $lb | Set-AzLoadBalancer
 ```
 ## <a name="add-ipv6-address-ranges"></a>Přidat rozsahy IPv6 adres
 
-Přidejte rozsahy IPv6 adres do virtuální sítě a podsítě hostující Nástroj pro vyrovnávání zatížení následujícím způsobem:
+Přidejte rozsahy IPv6 adres do virtuální sítě a podsítě hostující virtuální počítače následujícím způsobem:
 
 ```azurepowershell
 #Add IPv6 ranges to the VNET and subnet
@@ -145,7 +149,7 @@ $vnet |  Set-AzVirtualNetwork
 ```
 ## <a name="add-ipv6-configuration-to-nic"></a>Přidat konfiguraci IPv6 do síťové karty
 
-Nakonfigurujte oba síťové karty virtuálních počítačů s adresou IPv6 pomocí příkazu [Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/Add-AzNetworkInterfaceIpConfig) následujícím způsobem:
+Nakonfigurujte všechny síťové karty virtuálních počítačů s adresou IPv6 pomocí příkazu [Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/Add-AzNetworkInterfaceIpConfig) následujícím způsobem:
 
 ```azurepowershell
 
@@ -185,4 +189,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste aktualizovali existující Standard Load Balancer s konfigurací protokolu IP front-endu IPv4 na konfiguraci duálního zásobníku (IPv4 a IPv6). Do síťových karet virtuálních počítačů ve fondu back-end se přidaly taky konfigurace IPv6. Další informace o podpoře IPv6 ve virtuálních sítích Azure najdete v tématu [co je IPv6 pro Azure Virtual Network?](ipv6-overview.md)
+V tomto článku jste aktualizovali existující Standard Load Balancer s konfigurací protokolu IP front-endu IPv4 na konfiguraci duálního zásobníku (IPv4 a IPv6). Do síťových karet virtuálních počítačů ve fondu back-endu a do Virtual Network, která je hostuje, jste přidali taky konfigurace IPv6. Další informace o podpoře IPv6 ve virtuálních sítích Azure najdete v tématu [co je IPv6 pro Azure Virtual Network?](ipv6-overview.md)

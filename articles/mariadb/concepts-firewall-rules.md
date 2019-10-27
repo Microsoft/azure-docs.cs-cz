@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/22/2019
-ms.openlocfilehash: 89c4bce33b80e988a9da363a89854e921bee30b0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/25/2019
+ms.openlocfilehash: 82e07edc615fd8c1ef0ebc84cf57035727bbcdf6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973663"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965261"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Pravidla brány firewall serveru Azure Database for MariaDB
 Brány firewall zabraňují všem přístupům k databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě zdrojové IP adresy jednotlivých požadavků.
@@ -43,10 +43,13 @@ Pokud chcete aplikacím z Azure povolit připojení k vašemu Azure Database for
 
 ![Konfigurace povolení přístupu ke službám Azure na portálu](./media/concepts-firewall-rules/allow-azure-services.png)
 
+### <a name="connecting-from-a-vnet"></a>Připojení z virtuální sítě
+Pokud chcete bezpečně připojit k serveru Azure Database for MariaDB z virtuální sítě, zvažte použití [koncových bodů služby virtuální](./concepts-data-access-security-vnet.md)sítě. 
+
 ## <a name="programmatically-managing-firewall-rules"></a>Programová správa pravidel brány firewall
 Kromě Azure Portal můžete pravidla brány firewall spravovat programově pomocí rozhraní příkazového řádku Azure CLI. 
 
-<!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
+Viz také [vytváření a Správa pravidel brány firewall Azure Database for MariaDB pomocí Azure CLI](./howto-manage-firewall-cli.md).
 
 ## <a name="troubleshooting-firewall-issues"></a>Řešení potíží s bránou firewall
 V případě, že se přístup k Microsoft Azure databázi pro službu serveru MariaDB nechová podle očekávání, vezměte v úvahu následující body:
@@ -65,6 +68,5 @@ V případě, že se přístup k Microsoft Azure databázi pro službu serveru M
 
 ## <a name="next-steps"></a>Další kroky
 - [Vytváření a Správa Azure Database for MariaDB pravidel brány firewall pomocí Azure Portal](./howto-manage-firewall-portal.md)
-
-<!--
-- [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md) -->
+- [Vytvoření a Správa pravidel brány firewall Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure](./howto-manage-firewall-cli.md)
+- [Koncové body služby virtuální sítě v Azure Database for MariaDB](./concepts-data-access-security-vnet.md)

@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: twhitney
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e11e47952f70ce0cd212ca93eff1c38f2b3993a8
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 2704a6e1af2f06b49b1d3817ad7a30bf53419ffe
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678056"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964003"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý Start: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlášení uživatelů a zavolání rozhraní API pro Microsoft Graph z aplikace pro Android
 
 V tomto rychlém startu se používá ukázka kódu, která předvádí, jak se aplikace pro Android může přihlašovat pomocí osobních, pracovních nebo školních účtů, a pak získá přístupový token a zavolá rozhraní Microsoft Graph API.
 
 ![Screenshoft ukázkové aplikace](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
-> **Požadovaný**
+> **Požadavky**
 > * Android Studio 
 > * Vyžaduje se Android 16 +.
 
@@ -42,11 +42,11 @@ V tomto rychlém startu se používá ukázka kódu, která předvádí, jak se 
 
 Chcete-li zaregistrovat objekt aplikace a přidat registrační informace objektu aplikace do ukázkového projektu, postupujte podle následujících kroků:
 
-1. Přejít na [Azure Portal](https://aka.ms/MobileAppReg).
+1. Přejděte na [Azure Portal](https://aka.ms/MobileAppReg).
 1. Otevřete okno [Registrace aplikací](https://portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) a klikněte na **+ Nová registrace**.
 1. Zadejte **název** registrace aplikace a pak bez nastavení identifikátoru URI přesměrování klikněte na **zaregistrovat**.
 1. V části **Spravovat** vyberte **ověřování** >  **+ Přidat platformu** > **Android**. (Pro zobrazení této obrazovky možná budete muset vybrat **vyzkoušet nové prostředí** v horní části okna.)
-1. Zadejte **název balíčku**projektu, což je `com.azuresamples.msalandroidapp`.
+1. Zadejte **název balíčku**projektu, který je `com.azuresamples.msalandroidapp`.
 1. V části **hash podpisu** na stránce **Konfigurace aplikace pro Android** klikněte na **vygenerovat hodnotu hash signatury pro vývoj**a zkopírujte příkaz nástroje klíče, který použijete pro platformu, kterou používáte k vývoji vaší aplikace pro Android.
 
    > [!Note]
@@ -54,12 +54,12 @@ Chcete-li zaregistrovat objekt aplikace a přidat registrační informace objekt
 
 1. Spusťte příkaz nástroje, který jste zkopírovali z portálu v okně terminálu.
 1. Zadejte hodnotu hash vygenerované signatury na portál pod položkou **hodnota hash podpisu**.
-1. Klikněte na `Configure` a vytvořte kopii **Konfigurace MSAL**. Tento soubor zkopírujete a vložíte do konfiguračního souboru v dalším kroku. Klikněte na **Hotovo**.
+1. Klikněte na `Configure` a vytvořte kopii **Konfigurace MSAL**. Tento soubor zkopírujete a vložíte do konfiguračního souboru v dalším kroku. Klikněte na **Done** (Hotovo).
 
 ## <a name="step-3-add-your-app-registration"></a>Krok 3: Přidání registrace vaší aplikace
 
 1. Otevřete vzorový projekt v Android Studio.
-1. Uvnitř **aplikace** > **res** > **raw**otevřete **auth_config_multiple_account. JSON**.  Vložte obsah konfigurace MSAL. Tím se na portálu přidá ID klienta, ID tenanta a identifikátor redirect_uri. Bude vypadat přibližně takto, ale s hodnotami, které jsou vyplněny pro ID klienta, ID tenanta a identifikátor redirect_uri:
+1. V **aplikaci** >  ** > ** **raw**otevřete **auth_config_multiple_account. JSON**.  Vložte obsah konfigurace MSAL. Tím se na portálu přidá ID klienta, ID tenanta a identifikátor redirect_uri. Bude vypadat přibližně takto, ale s hodnotami, které jsou vyplněny pro ID klienta, ID tenanta a identifikátor redirect_uri:
 
     ```json
     {
@@ -81,7 +81,7 @@ Chcete-li zaregistrovat objekt aplikace a přidat registrační informace objekt
     ```
 
 1. Otevřete **app** > **res** > **raw**, otevřete **AUTH_CONFIG_SINGLE_ACCOUNT. JSON**a vložte obsah konfigurace MSAL. Bude vypadat jako v souboru **auth_config_multiple_account. JSON** výše.
-1. V **aplikaci app** > **manifestes** > **souboru androidmanifest. XML**vyhledejte aktivitu `BrowserTabActivity`. Tato položka umožňuje, aby Microsoft po dokončení ověřování vrátil zpět do vaší aplikace:
+1. V **aplikaci** > **Manifests** > **souboru androidmanifest. XML**vyhledejte aktivitu `BrowserTabActivity`. Tato položka umožňuje, aby Microsoft po dokončení ověřování vrátil zpět do vaší aplikace:
 
     ```xml
     ...
@@ -138,7 +138,7 @@ V režimu více účtů můžete opakovat stejný postup.  Kromě toho můžete 
 
 Kód je uspořádaný na fragmenty, které ukazují, jak napsat jednu a více účtů MSAL aplikaci. Soubory s kódem jsou uspořádány takto:
 
-| Soubor  | Demonstruje  |
+| Soubor  | Monstr  |
 |---------|---------|
 | MainActivity | Spravuje uživatelské rozhraní. |
 | MSGraphRequestWrapper  | Volá rozhraní API Microsoft Graph pomocí tokenu poskytnutého funkcí MSAL. |
@@ -172,7 +172,7 @@ Tím se dá Gradle stáhnout a sestavit MSAL z Maven Central.
 
 ### <a name="msal-imports"></a>MSAL importy
 
-Importy, které jsou relevantní pro knihovnu MSAL, jsou `com.microsoft.identity.client.*`.  Například uvidíte `import com.microsoft.identity.client.PublicClientApplication;`, což je obor názvů pro třídu `PublicClientApplication`, která představuje vaši klientskou aplikaci vaší veřejné aplikace.
+Importy, které jsou relevantní pro knihovnu MSAL, jsou `com.microsoft.identity.client.*`.  Například uvidíte `import com.microsoft.identity.client.PublicClientApplication;` což je obor názvů pro třídu `PublicClientApplication`, která představuje vaši veřejnou klientskou aplikaci.
 
 ### <a name="singleaccountmodefragmentjava"></a>SingleAccountModeFragment. Java
 
@@ -182,7 +182,7 @@ Aplikace s jedním účtem používá jenom jeden uživatel.  Například může
 
 #### <a name="single-account-msal-initialization"></a>MSAL inicializace jednoho účtu
 
-V `onCreateView()` se vytvoří jeden účet `PublicClientApplication` s použitím konfiguračních informací uložených v souboru `auth_config_single_account.json`.  Tímto způsobem inicializujete knihovnu MSAL pro použití v aplikaci MSAL s jedním účtem:
+V `onCreateView()`se pomocí informací o konfiguraci uložených v souboru `auth_config_single_account.json` vytvoří jeden účet `PublicClientApplication`.  Tímto způsobem inicializujete knihovnu MSAL pro použití v aplikaci MSAL s jedním účtem:
 
 ```java
 ...
@@ -209,9 +209,9 @@ PublicClientApplication.createSingleAccountPublicClientApplication(getContext(),
 
 #### <a name="sign-in-a-user"></a>Přihlášení uživatele
 
-Kód pro přihlášení uživatele je v `initializeUI()` v obslužné rutině pro kliknutí `signInButton`.
+Kód pro přihlášení uživatele je v `initializeUI()`v `signInButton` obslužná rutina Click.
 
-Než se pokusíte získat tokeny, volejte `signIn()`. `signIn()` se chová stejně, jako by se volala `acquireToken()`. Výsledkem je interaktivní výzva pro uživatele, aby se přihlásil.
+Než se pokusíte získat tokeny, zavolejte `signIn()`. `signIn()` se chová, jako by byla volána `acquireToken()` a výsledkem je interaktivní výzva pro uživatele, aby se přihlásili.
 
 Přihlášení uživatele je asynchronní operace. Zpětné volání, které volá rozhraní Microsoft Graph API a aktualizuje uživatelské rozhraní po přihlášení uživatele:
 
@@ -221,7 +221,7 @@ mSingleAccountApp.signIn(getActivity(), null, getScopes(), getAuthInteractiveCal
 
 #### <a name="sign-out-a-user"></a>Odhlásit uživatele
 
-Kód pro odhlášení uživatele je v `initializeUI()` v obslužné rutině Click `signOutButton`.  Podepsání uživatele je asynchronní operace. Podepsáním uživatele se taky vymaže mezipaměť tokenu pro tento účet. Po odhlášení uživatelského účtu se vytvoří zpětné volání, které aktualizuje uživatelské rozhraní:
+Kód pro odhlášení uživatele je v `initializeUI()`v `signOutButton` obslužná rutina Click.  Podepsání uživatele je asynchronní operace. Podepsáním uživatele se taky vymaže mezipaměť tokenu pro tento účet. Po odhlášení uživatelského účtu se vytvoří zpětné volání, které aktualizuje uživatelské rozhraní:
 
 ```java
 mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() {
@@ -240,7 +240,7 @@ mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallb
 
 #### <a name="get-a-token-interactively-or-silently"></a>Interaktivní nebo tiché získání tokenu
 
-K získání nejmenšího počtu výzev uživateli obvykle obdržíte token v tichém režimu. Pokud dojde k chybě, pokusí se získat interaktivní token. Když aplikace poprvé volá `signIn()`, efektivně funguje jako volání `acquireToken()`, které uživateli vyzve k zadání přihlašovacích údajů.
+K získání nejmenšího počtu výzev uživateli obvykle obdržíte token v tichém režimu. Pokud dojde k chybě, pokusí se získat interaktivní token. Při prvním volání aplikace `signIn()`aplikace účinně funguje jako volání `acquireToken()`, které uživateli vyzve k zadání přihlašovacích údajů.
 
 Některé situace, kdy se uživatel může zobrazit výzva k výběru účtu, zadání přihlašovacích údajů nebo vyjádření souhlasu s oprávněními, které vaše aplikace požaduje:
 
@@ -251,7 +251,7 @@ Některé situace, kdy se uživatel může zobrazit výzva k výběru účtu, za
 * Když vaše aplikace požaduje při prvním pokusu o přístup k prostředku
 * Pokud jsou vyžadovány MFA nebo jiné zásady podmíněného přístupu
 
-Kód pro interaktivní získání tokenu, který je s uživatelským ROZHRANÍm, které bude zahrnovat uživatele, je v `initializeUI()` v obslužné rutině `callGraphApiInteractiveButton` pro kliknutí:
+Kód pro interaktivní získání tokenu, který je s uživatelským ROZHRANÍm, které bude zahrnovat uživatele, je v `initializeUI()`v `callGraphApiInteractiveButton` obslužná rutina Click:
 
 ```java
 /**
@@ -266,7 +266,7 @@ Kód pro interaktivní získání tokenu, který je s uživatelským ROZHRANÍm,
 mSingleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Pokud se uživatel už přihlásil, `acquireTokenSilentAsync()` umožňuje aplikacím, aby vyžádala tokeny v tichém režimu, jak je znázorněno v `initializeUI()`, v obslužné rutině `callGraphApiSilentButton`:
+Pokud se uživatel už přihlásil, `acquireTokenSilentAsync()` umožňuje aplikacím, aby požádaly o tokeny v tichém režimu, jak je znázorněno v `initializeUI()`, v `callGraphApiSilentButton` obslužná rutina kliknutí:
 
 ```java
 /**
@@ -308,7 +308,7 @@ private void loadAccount() {
 
 #### <a name="call-microsoft-graph"></a>Microsoft Graph volání
 
-Když je uživatel přihlášený, volání Microsoft Graph se provádí prostřednictvím požadavku HTTP pomocí `callGraphAPI()`. Tato funkce je obálkou, která zjednodušuje vzorek provedením některých úkolů, jako je získání přístupového tokenu z `authenticationResult` a zabalení volání do MSGraphRequestWrapper a zobrazení výsledků volání.
+Když je uživatel přihlášený, volání Microsoft Graph se provádí prostřednictvím požadavku HTTP `callGraphAPI()`. Tato funkce je obálkou, která zjednodušuje vzorek provedením některých úkolů, jako je například získání přístupového tokenu z `authenticationResult` a zabalení volání do MSGraphRequestWrapper a zobrazení výsledků volání.
 
 ```java
 private void callGraphAPI(final IAuthenticationResult authenticationResult) {
@@ -367,7 +367,7 @@ Příkladem aplikace s více účty je e-mailová aplikace, která umožňuje pr
 
 #### <a name="multiple-account-msal-initialization"></a>Vícenásobná inicializace MSAL účtu
 
-V `onCreateView()` se vytvoří objekt aplikace s více účty (`IMultipleAccountPublicClientApplication`) s použitím informací o konfiguraci uložených v `auth_config_multiple_account.json file`:
+V `onCreateView()`se vytvoří objekt aplikace s více účty (`IMultipleAccountPublicClientApplication`) s použitím informací o konfiguraci uložených v `auth_config_multiple_account.json file`:
 
 ```java
 // Creates a PublicClientApplication object with res/raw/auth_config_single_account.json
@@ -391,7 +391,7 @@ Vytvořený objekt `MultipleAccountPublicClientApplication` je uložen v proměn
 
 #### <a name="load-an-account"></a>Načtení účtu
 
-Pro výběr účtu, který se má použít pro operace MSAL, je obvykle volání `GetAccounts()` na více účtů. Kód pro načtení účtu je v `loadAccount()`.  Načtení účtu uživatele je asynchronní operace. Proto zpětné volání zpracovává situace při načtení účtu, změny nebo dojde k chybě.
+Více aplikací účtu obvykle volá `GetAccounts()` pro výběr účtu, který se má použít pro operace MSAL. Kód pro načtení účtu je v `loadAccount()`.  Načtení účtu uživatele je asynchronní operace. Proto zpětné volání zpracovává situace při načtení účtu, změny nebo dojde k chybě.
 
 ```java
 /**
@@ -420,14 +420,14 @@ private void loadAccount() {
 
 Některé situace, kdy se uživatel může zobrazit výzva k výběru účtu, zadání přihlašovacích údajů nebo vyjádření souhlasu s oprávněními, které vaše aplikace požaduje:
 
-* Když se uživatel poprvé přihlásí k aplikaci
+* Při prvním přihlášení k aplikaci
 * Pokud uživatel resetuje heslo, bude muset zadat své přihlašovací údaje. 
 * Pokud je souhlas odvolán 
 * Pokud vaše aplikace explicitně vyžaduje souhlas 
 * Když vaše aplikace požaduje při prvním pokusu o přístup k prostředku
 * Pokud jsou vyžadovány MFA nebo jiné zásady podmíněného přístupu
 
-K interaktivnímu získávání tokenů by měly být obvykle vyvolány aplikace s více účty, což je uživatelské rozhraní, které zahrnuje uživatele, se zavoláním `acquireToken()`.  Kód pro interaktivní získání tokenu je v `initializeUI()` v obslužné rutině Click-1 `callGraphApiInteractiveButton`:
+K interaktivnímu získávání tokenů by měly být obvykle vyvolány aplikace s více účty, což je uživatelské rozhraní, které zahrnuje uživatele, se zavoláním `acquireToken()`.  Kód pro interaktivní získání tokenu je v `initializeUI()`v `callGraphApiInteractiveButton` obslužná rutina Click:
 
 ```java
 /**
@@ -444,7 +444,7 @@ K interaktivnímu získávání tokenů by měly být obvykle vyvolány aplikace
 mMultipleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Aplikace by neměly vyžadovat, aby se uživatelé přihlásili pokaždé, když požadují token. Pokud se uživatel už přihlásil, `acquireTokenSilentAsync()` umožňuje aplikacím žádat o tokeny bez zobrazení výzvy uživateli, jak je znázorněno v `initializeUI()` v obslužné rutině Click-2 pro `callGraphApiSilentButton`:
+Aplikace by neměly vyžadovat, aby se uživatelé přihlásili pokaždé, když požadují token. Pokud se uživatel už přihlásil, `acquireTokenSilentAsync()` umožňuje aplikacím žádat o tokeny bez zobrazení výzvy uživateli, jak je znázorněno v `initializeUI()` v `callGraphApiSilentButton` obslužná rutina Click:
 
 ```java
 /**
@@ -461,7 +461,7 @@ getAuthSilentCallback());
 
 #### <a name="remove-an-account"></a>Odebrat účet
 
-Kód pro odebrání účtu a všechny tokeny uložené v mezipaměti pro účet jsou v `initializeUI()` v obslužné rutině pro tlačítko Odebrat účet. Než budete moct účet odebrat, budete potřebovat objekt účtu, který získáte z MSAL funkcí, jako je `getAccounts()` a `acquireToken()`. Vzhledem k tomu, že odebrání účtu je asynchronní operace, je k aktualizaci uživatelského rozhraní zadáno zpětné volání `onRemoved`.
+Kód pro odebrání účtu a všechny tokeny uložené v mezipaměti pro účet jsou v `initializeUI()` v obslužné rutině pro tlačítko Odebrat účet. Než budete moct účet odebrat, budete potřebovat objekt účtu, který získáte z MSAL funkcí, jako je `getAccounts()` a `acquireToken()`. Vzhledem k tomu, že odebrání účtu je asynchronní operace, je k aktualizaci uživatelského rozhraní zadáno `onRemoved` zpětné volání.
 
 ```java
 /**
@@ -512,19 +512,19 @@ Na rozdíl od konfiguračního souboru [auth_config_single_account. JSON](#auth_
 
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Naučte se postup vytvoření aplikace používané v tomto rychlém startu.
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Zjistěte, jak vytvořit aplikaci použitou v tomto rychlém startu
 
-Vyzkoušejte si kurz k Androidu, kde najdete kompletní podrobný průvodce vytvářením aplikací a nových funkcí, včetně úplného vysvětlení tohoto rychlého startu.
+Vyzkoušejte kurz pro Android, kde najdete podrobný návod k vytváření aplikací a nových funkcí, včetně úplného popisu tohoto rychlého startu.
 
 > [!div class="nextstepaction"]
-> [Kurz pro volání Graph API Android](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
+> [Kurz volání Graph API pro Android](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
 
-### <a name="msal-for-android-library-wiki"></a>MSAL pro wiki knihovny pro Android
+### <a name="msal-for-android-library-wiki"></a>Wiki knihovny MSAL pro Android
 
 Přečtěte si další informace o knihovně MSAL pro Android:
 
 > [!div class="nextstepaction"]
-> [MSAL pro wiki knihovny pro Android](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
+> [Wiki knihovny MSAL pro Android](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

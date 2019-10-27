@@ -4,14 +4,14 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 10/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf791bd262849cd93a155a19ade8f8fc377f8da6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dc39c727526f55039a5e18a8fd2aeeb4f25234a6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894201"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965633"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkce prostředků pro šablony Azure Resource Manager
 
@@ -749,6 +749,12 @@ ID prostředku se vrátí v následujícím formátu:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+Při použití v [nasazení na úrovni předplatného](deploy-to-subscription.md)se ID prostředku vrátí v následujícím formátu:
+
+```json
+/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 Chcete-li získat ID v jiných formátech, přečtěte si:

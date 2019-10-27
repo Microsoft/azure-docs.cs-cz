@@ -1,5 +1,5 @@
 ---
-title: Řešení obecných potíží s výkonem pro virtuální počítač Azure se systémem Linux nebo Windows
+title: Řešení potíží s výkonem virtuálních počítačů Azure v systému Linux nebo Windows
 description: Tento článek popisuje obecný Poradce při potížích s výkonem virtuálních počítačů prostřednictvím monitorování a dodržování kritických bodů a poskytuje možnou nápravu problémů, ke kterým může dojít.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 3fdac123ee7bda9d91d96940aebd6bddf4ea00f8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790779"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965471"
 ---
-# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Řešení obecných problémů s výkonem virtuálního počítače Azure se systémem Linux nebo Windows
+# <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Řešení potíží s výkonem virtuálních počítačů Azure v systému Linux nebo Windows
 
 Tento článek popisuje obecný Poradce při potížích s výkonem virtuálních počítačů prostřednictvím monitorování a dodržování kritických bodů a poskytuje možnou nápravu problémů, ke kterým může dojít. Kromě monitorování můžete použít také Perfinsights, který může poskytnout zprávu s doporučenými doporučeními a klíčovými body pro vstupně-výstupní operace/procesor/paměť. Perfinsights je k dispozici pro virtuální počítač se [systémem Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) i [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) v Azure.
 

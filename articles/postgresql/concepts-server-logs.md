@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: cc796733c9b0b1effd8043c49540f9b489610067
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 10/25/2019
+ms.openlocfilehash: 9e8b1d08e950849773c9d8413c3ba4188d257d5b
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331302"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965929"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokoly v Azure Database for PostgreSQL – jeden server
 Azure Database for PostgreSQL umožňuje konfigurovat a přistupovat ke standardním protokolům Postgres. Protokoly je možné použít k identifikaci, odstraňování potíží a opravě chyb konfigurace a k zajištění optimálního výkonu. Protokolovací informace, které můžete konfigurovat, a přístup zahrnují chyby, informace o dotazech, autovaku záznamů, připojení a kontrolní body. (Přístup k protokolům transakcí není k dispozici).
@@ -20,7 +20,7 @@ Protokolování auditu se zpřístupňuje prostřednictvím rozšíření Postgr
 
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování 
-Na serveru můžete nakonfigurovat standardní protokolování Postgres pomocí parametrů protokolovacího serveru. Na každém serveru Azure Database for PostgreSQL je ve výchozím nastavení zapnutá `log_checkpoints` a `log_connections`. Existují další parametry, které je možné upravit, aby vyhovovaly vašim požadavkům na přihlášení: 
+Na serveru můžete nakonfigurovat standardní protokolování Postgres pomocí parametrů protokolovacího serveru. Na každém Azure Database for PostgreSQLovém serveru jsou `log_checkpoints` a `log_connections` ve výchozím nastavení zapnuté. Existují další parametry, které je možné upravit, aby vyhovovaly vašim požadavkům na přihlášení: 
 
 ![Azure Database for PostgreSQL – parametry protokolování](./media/concepts-server-logs/log-parameters.png)
 
@@ -44,7 +44,7 @@ Dobu uchovávání dat pro toto krátkodobé úložiště protokolu můžete nas
 
 Pro dlouhodobé uchovávání protokolů a analýzy protokolů můžete stáhnout soubory. log a přesunout je do služby třetí strany. Soubory si můžete stáhnout pomocí [Azure Portal](howto-configure-server-logs-in-portal.md) [Azure CLI](howto-configure-server-logs-using-cli.md). Případně můžete nakonfigurovat nastavení diagnostiky Azure Monitor, které automaticky generuje vaše protokoly (ve formátu JSON) do dlouhodobých umístění. Další informace o této možnosti najdete v níže uvedené části. 
 
-Generování souborů. log můžete zastavit nastavením parametru `logging_collector` na OFF (vypnuto). Vypnutí. generování souboru protokolu se doporučuje, pokud používáte Azure Monitor nastavení diagnostiky. Tato konfigurace sníží dopad dalšího protokolování na výkon.
+Generování souborů. log můžete zastavit nastavením parametru `logging_collector` vypnuto. Vypnutí. generování souboru protokolu se doporučuje, pokud používáte Azure Monitor nastavení diagnostiky. Tato konfigurace sníží dopad dalšího protokolování na výkon.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 Azure Database for PostgreSQL je integrován s nastavením diagnostiky Azure Monitor. Nastavení diagnostiky umožňuje odeslat protokoly Postgres ve formátu JSON, abyste Azure Monitor protokoly pro analýzy a upozorňování, Event Hubs pro streamování a Azure Storage k archivaci. 
@@ -82,12 +82,13 @@ AzureDiagnostics
 | where TimeGenerated > ago(1d) 
 ```
 
-Vyhledat všechny chyby pro všechny Postgres servery v tomto pracovním prostoru za posledních 6 hodin
+Vyhledat všechny pokusy o připojení jiného typu než localhost
 ```
 AzureDiagnostics
-| where errorLevel_s == "error" and category == "PostgreSQLogs"
-| where TimeGenerated > ago(6h)
+| where Message contains "connection received" and Message !contains "host=127.0.0.1"
+| where Category == "PostgreSQLLogs" and TimeGenerated > ago(6h)
 ```
+Výše uvedený dotaz zobrazí výsledky za posledních 6 hodin pro všechny přihlašování Postgres serveru v tomto pracovním prostoru.
 
 ### <a name="log-format"></a>Formát protokolu
 

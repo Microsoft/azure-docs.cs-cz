@@ -3,25 +3,26 @@ title: Vytvoření obrázku Azure Container Registry z aplikace
 description: Pomocí příkazu AZ ACR Pack Build sestavíte image kontejneru z aplikace a nahrajete ji do Azure Container Registry bez použití souboru Dockerfile.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 10/24/2019
 ms.author: danlep
-ms.openlocfilehash: b544820a0c496e0814de44790ea9c28878031a7d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 34ef0fe4be00cfa7ce3e73c23eec636784071e56
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293903"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965899"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Sestavení a vložení obrázku z aplikace pomocí cloudového nativního Buildpacku
 
 Příkaz Azure CLI `az acr pack build` používá k sestavení aplikace a vložení jeho image do služby Azure Container Registry nástroj příkazového řádku [`pack`](https://github.com/buildpack/pack) z [Buildpacks](https://buildpacks.io/). Tato funkce poskytuje možnost rychlého sestavení image kontejneru ze zdrojového kódu vaší aplikace v Node. js, Java a dalších jazycích bez nutnosti definovat souboru Dockerfile.
 
-Příklady v tomto článku můžete spustit pomocí Azure Cloud Shell nebo místní instalace rozhraní příkazového řádku Azure CLI. Pokud ho chcete používat místně, je potřeba verze 2.0.70 nebo novější. Pokud chcete zjistit verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][azure-cli-install].
+Příklady v tomto článku můžete spustit pomocí Azure Cloud Shell nebo místní instalace rozhraní příkazového řádku Azure CLI. Pokud ho chcete používat místně, je potřeba verze 2.0.70 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 > [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview. Verze Preview jsou k dispozici na základě podmínky, že souhlasíte s [doplňkovými podmínkami použití][terms-of-use]. Některé aspekty této funkce se mohou změnit před všeobecnou dostupností (GA).
+> Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 ## <a name="use-the-build-command"></a>Použití příkazu Build
 
@@ -32,25 +33,23 @@ Při spuštění `az acr pack build` zadejte minimálně následující:
 * Registr kontejnerů Azure, kde spustíte příkaz
 * Název a značka obrázku pro výsledný obrázek
 * Jedno z [podporovaných umístění kontextu](container-registry-tasks-overview.md#context-locations) pro ACR úlohy, jako je například místní adresář, úložiště GitHub nebo vzdálené tarballu
-* Název obrázku Buildpack Builder, například `cloudfoundry/cnb:0.0.12-bionic`.  
+* Název obrázku tvůrce Buildpack, který je vhodný pro vaši aplikaci. Azure Container Registry ukládá do mezipaměti image tvůrce, jako je například `cloudfoundry/cnb:0.0.34-cflinuxfs3` pro rychlejší sestavení.  
 
-@no__t – 0 podporuje další funkce příkazů úloh ACR, včetně [proměnných pro spuštění](container-registry-tasks-reference-yaml.md#run-variables) a [protokolů spuštění úloh](container-registry-tasks-overview.md#view-task-logs) , které jsou streamované a také uložené pro pozdější načtení.
+`az acr pack build` podporuje další funkce příkazů úloh ACR, včetně [proměnných pro spuštění](container-registry-tasks-reference-yaml.md#run-variables) a [protokolů spuštění úloh](container-registry-tasks-overview.md#view-task-logs) , které jsou streamované a také uložené pro pozdější načtení.
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Příklad: sestavení obrázku Node. js pomocí nástroje Cloud Foundry Builder
 
-Následující příklad vytvoří image kontejneru z aplikace Node. js v úložišti [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) pomocí Tvůrce `cloudfoundry/cnb:0.0.12-bionic`:
+Následující příklad vytvoří image kontejneru z aplikace Node. js v úložišti [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) pomocí Tvůrce `cloudfoundry/cnb:0.0.34-cflinuxfs3`. Tento tvůrce ukládá do mezipaměti Azure Container Registry, takže parametr `--pull` není povinný:
 
 ```azurecli
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --pull --builder cloudfoundry/cnb:0.0.12-bionic \
+    --builder cloudfoundry/cnb:0.0.34-cflinuxfs3 \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-Tento příklad vytvoří bitovou kopii `node-app` pomocí značky `1.0` a vloží ji do registru kontejneru *myregistry* . V tomto případě je název cílového registru explicitně připojen k názvu bitové kopie. Pokud tento parametr nezadáte, adresa URL registru se automaticky přidá do názvu image.
-
-Parametr `--pull` určuje, že příkaz vyžádá nejnovější obrázek tvůrce.
+Tento příklad vytvoří bitovou kopii `node-app` pomocí značky `1.0` a vloží ji do registru kontejneru *myregistry* . V tomto příkladu je název cílového registru explicitně připojen k názvu bitové kopie. Pokud tento parametr nezadáte, název přihlašovacího serveru registru se automaticky přidá do názvu image.
 
 Výstup příkazu zobrazuje průběh sestavení a vložení image. 
 
@@ -66,11 +65,11 @@ Spusťte bitovou kopii:
 docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 ```
 
-Pokud si chcete prohlédnout ukázkovou webovou aplikaci, přejděte do složky `localhost:1337` v oblíbeném prohlížeči. Stisknutím `[Ctrl]+[C]` kontejner zastavíte.
+Pokud si chcete prohlédnout ukázkovou webovou aplikaci, přejděte do složky `localhost:1337` v oblíbeném prohlížeči. Kontejner zastavíte stisknutím `[Ctrl]+[C]`.
 
 ## <a name="example-build-java-image-with-heroku-builder"></a>Příklad: sestavení image Java pomocí Tvůrce Heroku
 
-Následující příklad vytvoří image kontejneru z aplikace Java v úložišti [buildpack/Sample-Java-App](https://github.com/buildpack/sample-java-app) pomocí Tvůrce `heroku/buildpacks:18`:
+Následující příklad vytvoří image kontejneru z aplikace Java v úložišti [buildpack/Sample-Java-App](https://github.com/buildpack/sample-java-app) pomocí nástroje `heroku/buildpacks:18` Builder. Parametr `--pull` určuje, že by příkaz měl načíst nejnovější image tvůrce. 
 
 ```azurecli
 az acr pack build \
@@ -81,8 +80,6 @@ az acr pack build \
 ```
 
 Tento příklad vytvoří obrázek `java-app` označený s ID spuštění příkazu a vloží ho do registru kontejneru *myregistry* .
-
-Parametr `--pull` určuje, že příkaz vyžádá nejnovější obrázek tvůrce.
 
 Výstup příkazu zobrazuje průběh sestavení a vložení image. 
 
@@ -98,7 +95,7 @@ Spusťte image a nahraďte značku image pro *RunId*:
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 ```
 
-Pokud si chcete prohlédnout ukázkovou webovou aplikaci, přejděte do složky `localhost:8080` v oblíbeném prohlížeči. Stisknutím `[Ctrl]+[C]` kontejner zastavíte.
+Pokud si chcete prohlédnout ukázkovou webovou aplikaci, přejděte do složky `localhost:8080` v oblíbeném prohlížeči. Kontejner zastavíte stisknutím `[Ctrl]+[C]`.
 
 
 ## <a name="next-steps"></a>Další kroky

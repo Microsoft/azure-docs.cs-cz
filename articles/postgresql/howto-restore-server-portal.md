@@ -1,95 +1,100 @@
 ---
-title: Postup obnovení serveru ve službě Azure Database for PostgreSQL – jeden Server
-description: Tento článek popisuje, jak obnovit server ve službě Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal.
+title: Postup obnovení serveru v Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje, jak obnovit server v Azure Database for PostgreSQL-Single server pomocí Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 1950b43e0922eebe34463c06db9a5d67dce76f56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/25/2019
+ms.openlocfilehash: 22522a3f577e8d0533f7c8926de12bd464cc2d92
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068880"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965786"
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Zálohování a obnovení serveru ve službě Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for PostgreSQL-Single server pomocí Azure Portal
 
-## <a name="backup-happens-automatically"></a>Zálohování se automaticky stane
-Azure Database for PostgreSQL servery se pravidelně zálohují k povolení funkce obnovení. Pomocí této funkce může obnovení serveru a jeho databázím do starší v daném okamžiku, na novém serveru.
+## <a name="backup-happens-automatically"></a>K zálohování dochází automaticky
+Azure Database for PostgreSQL servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
-## <a name="set-backup-configuration"></a>Nastavit konfiguraci zálohování
+## <a name="set-backup-configuration"></a>Nastavení konfigurace zálohování
 
-Zkontrolujte výběr mezi konfigurací v serveru pro místně redundantní zálohy nebo geograficky redundantní zálohy při vytváření serveru **cenová úroveň** okna.
+V okně **cenová úroveň** můžete vybrat konfiguraci serveru pro buď místně redundantní zálohy, nebo geograficky redundantní zálohy při vytváření serveru.
 
 > [!NOTE]
-> Po vytvoření serveru, typ redundance, které obsahuje, není možné přepnout místně redundantní, geograficky redundantní vs.
+> Po vytvoření serveru se nedá přepnout druh redundance, který je geograficky redundantní vs místně redundantní.
 >
 
-Při vytváření serveru na webu Azure portal, **cenová úroveň** je okno, kde můžete buď vybrat **místně redundantní** nebo **geograficky redundantní** zálohy váš server. Toto okno se také vybíráte **období uchování zálohy** – jak dlouho (ve dnech) má server zálohy uložené pro.
+Při vytváření serveru prostřednictvím Azure Portal v okně **cenová úroveň** vyberete buď **místně redundantní** , nebo **geograficky redundantní** zálohy pro váš server. V tomto okně můžete také vybrat **dobu uchování zálohy** – jak dlouho (za kolik dní) chcete ukládat zálohy serveru.
 
-   ![Cenová úroveň - zvolte redundance zálohy](./media/howto-restore-server-portal/pricing-tier.png)
+   ![Cenová úroveň – výběr redundance zálohy](./media/howto-restore-server-portal/pricing-tier.png)
 
-Další informace o nastavení tyto hodnoty během vytváření, najdete v článku [– Azure Database for postgresql – Rychlý začátek server](quickstart-create-server-database-portal.md).
+Další informace o nastavení těchto hodnot během vytváření najdete v [rychlém startu Azure Database for PostgreSQL serveru](quickstart-create-server-database-portal.md).
 
-Období uchování zálohy serveru lze změnit pomocí následujících kroků:
+Dobu uchovávání záloh serveru lze změnit pomocí následujících kroků:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte svůj server Azure Database for PostgreSQL. Tato akce otevře **přehled** stránky.
-3. Vyberte **cenová úroveň** v nabídce v části **nastavení**. Použijte jezdce můžete změnit **období uchování zálohy** dle požadavků mezi 7 až 35 dnů.
-V následujícím snímku obrazovky to bylo zvýšeno na 34 dnů.
-![Zvýšení doby uchovávání záloh](./media/howto-restore-server-portal/3-increase-backup-days.png)
+2. Vyberte svůj server Azure Database for PostgreSQL. Tato akce otevře stránku s **přehledem** .
+3. V nabídce v části **Nastavení**vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
+Na snímku obrazovky níže byl zvýšen na 34 dní.
+období uchování zálohy ![zvýšené](./media/howto-restore-server-portal/3-increase-backup-days.png)
 
-4. Klikněte na tlačítko **OK** pro potvrzení změny.
+4. Potvrďte změnu kliknutím na tlačítko **OK** .
 
-Období uchování zálohy se řídí jak daleko zpět v čase, které mohou být načteny obnovení bodu v čase, protože je založen na dostupné zálohy. Obnovení k určitému bodu v čase je popsána dále v následující části. 
+Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v čase dá načíst, protože je založené na dostupných zálohách. Obnovení k bodu v čase je popsáno dále v následující části. 
 
-## <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
-Azure Database for PostgreSQL umožňuje obnovení serveru zpět v daném okamžiku a do novou kopii na serveru. Můžete použít tento nový server pro obnovení dat nebo mít vaší klientské aplikace, přejděte na tento nový server.
+## <a name="point-in-time-restore"></a>Obnovení k určitému časovému okamžiku
+Azure Database for PostgreSQL umožňuje obnovení serveru zpět k určitému bodu v čase a k nové kopii serveru. Tento nový server můžete použít k obnovení dat nebo k tomu, aby klientské aplikace odkazovaly na tento nový server.
 
-Například pokud tabulku omylem v poledne v současné době můžete obnovit do doby před polednem a načíst chybějící tabulku a data z této nové kopie serveru. Obnovení k určitému bodu v čase není na serveru úrovně, na úrovni databáze.
+Pokud se například tabulka omylem zahodila v poledne, můžete ji obnovit do času těsně před poledne a načíst chybějící tabulku a data z této nové kopie serveru. Obnovení k bodu v čase probíhá na úrovni serveru, nikoli na úrovni databáze.
 
-Následující kroky obnoví ukázkový server k určitému bodu v čase:
-1. Na webu Azure Portal vyberte váš server Azure Database for PostgreSQL. 
+Následující kroky obnovují ukázkový Server k určitému bodu v čase:
+1. V Azure Portal vyberte server Azure Database for PostgreSQL. 
 
-2. Na panelu nástrojů na server **přehled** stránce **obnovení**.
+2. Na panelu nástrojů na stránce **Přehled** serveru vyberte **obnovit**.
 
-   ![Azure Database for PostgreSQL – přehled – obnovení tlačítko](./media/howto-restore-server-portal/2-server.png)
+   ![Azure Database for PostgreSQL – přehled – tlačítko obnovit](./media/howto-restore-server-portal/2-server.png)
 
-3. Vyplňte formulář obnovit požadované údaje:
+3. Vyplňte formulář obnovení požadovanými informacemi:
 
-   ![Azure Database for PostgreSQL – informace o obnovení](./media/howto-restore-server-portal/3-restore.png)
-   - **Bod obnovení**: Vyberte v daném okamžiku, kterou chcete obnovit.
-   - **Cílový server**: Zadejte název pro nový server.
-   - **Umístění**: Nejde vyberte oblast. Ve výchozím nastavení je stejná jako u zdrojového serveru.
-   - **Cenová úroveň**: Při obnovení bodu v čase nelze změnit tyto parametry. Je stejná jako u zdrojového serveru. 
+   ![Informace o obnovení Azure Database for PostgreSQL](./media/howto-restore-server-portal/3-restore.png)
+   - **Bod obnovení**: Vyberte bod v čase, který chcete obnovit.
+   - **Cílový server**: zadejte název nového serveru.
+   - **Umístění**: oblast nelze vybrat. Ve výchozím nastavení je stejný jako zdrojový server.
+   - **Cenová úroveň**: při obnovení k určitému bodu v čase nelze tyto parametry změnit. Je stejná jako u zdrojového serveru. 
 
-4. Klikněte na tlačítko **OK** k obnovení serveru k obnovení v daném okamžiku. 
+4. Kliknutím na tlačítko **OK** obnovte server, který chcete obnovit do bodu v čase. 
 
-5. Po dokončení obnovení vyhledejte nový server, který je vytvořen, chcete-li ověřit, že se že data obnovila podle očekávání.
+5. Až se obnovení dokončí, najděte nově vytvořený server, abyste ověřili, že se data obnovila podle očekávání.
 
->[!Note]
->Nový server vytvořil obnovení k určitému bodu v čase má stejné přihlašovací jméno správce serveru a zvolili hesla, která byla platná pro existující server v bodu v čase. Můžete změnit heslo z nového serveru **přehled** stránky.
+Nový server vytvořený nástrojem obnovení k bodu v čase má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době, kdy je zvolený časový okamžik. Heslo můžete změnit na stránce **Přehled** nového serveru.
+
+Nový server vytvořený během obnovy nemá pravidla brány firewall nebo koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba nastavit samostatně pro tento nový server.
+
 
 ## <a name="geo-restore"></a>Geografické obnovení
-Pokud jste nakonfigurovali server pro geograficky redundantní zálohy, lze vytvořit nový server ze zálohy existujícího serveru. Tento nový server lze vytvořit v libovolné oblasti Azure Database for PostgreSQL je k dispozici.  
+
+Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete vytvořit nový server ze zálohy stávajícího serveru. Tento nový server se dá vytvořit v libovolné oblasti, kterou Azure Database for PostgreSQL k dispozici.  
 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu. Vyberte **Databáze** > **Azure Database for PostgreSQL**.
 
    ![Možnost Azure Database for PostgreSQL](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
 
-2. Do formuláře **vybrat zdroj** rozevíracím seznamu zvolte **zálohování**. Tato akce načte seznam serverů, které mají geograficky redundantní zálohy povolena. Vyberte jednu z těchto záloh sloužit jako zdroj pro nový server.
-   ![Vyberte zdroj: Zálohování a seznam geograficky redundantní zálohy](./media/howto-restore-server-portal/2-georestore.png)
+2. V rozevíracím seznamu **Vybrat zdroj vyberte** možnost **zálohovat**. Tato akce načte seznam serverů, u kterých je povoleno geograficky redundantní zálohy. Vyberte jeden z těchto záloh, který bude zdrojem nového serveru.
+   ![vybrat zdroj: zálohování a seznam geograficky redundantních záloh](./media/howto-restore-server-portal/2-georestore.png)
 
    > [!NOTE]
-   > Při prvním vytvoření serveru nemusí být hned dostupné pro geografické obnovení. Může trvat několik hodin nezbytných metadat, který se má naplnit.
+   > Při prvním vytvoření serveru nemusí být pro geografickou obnovu k dispozici okamžitě. Naplnění potřebných metadat může trvat několik hodin.
    >
 
-3. Vyplňte zbývající část Formulář s předvolby. Můžete vybrat libovolný **umístění**. Až vyberete umístění, můžete vybrat **cenová úroveň**. Ve výchozím nastavení se zobrazují parametry obnovovaný z existující server. Můžete kliknout na **OK** bez jakýchkoli změn pro dědění nastavení. Nebo můžete změnit **výpočetní generaci** (Pokud k dispozici v oblasti jste vybrali), počet **virtuálních jader**, **období uchování zálohy**, a **zálohování Možnosti redundance**. Změna **cenová úroveň** (Basic, obecné účely nebo k paměťově optimalizovaným) nebo **úložiště** velikost během obnovení se nepodporuje.
-
->[!Note]
->Nový server vytvořil geografické obnovení má stejný přihlašovací jméno správce serveru a hesla, která byla platná pro existující server v době, kdy bylo zahájeno obnovení. Heslo lze změnit z nového serveru **přehled** stránky.
+3. Vyplňte zbytek formuláře vlastními preferencemi. Můžete vybrat libovolné **umístění**. Po výběru umístění můžete vybrat **cenovou úroveň**. Ve výchozím nastavení se zobrazí parametry pro existující server, který obnovujete. Můžete kliknout na tlačítko **OK** bez provedení změn, které by zdědily tato nastavení. Můžete také změnit **výpočetní generaci** (Pokud je k dispozici v oblasti, kterou jste zvolili), **počet virtuální jádra**, **dobu uchování zálohy**a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
 
 
-## <a name="next-steps"></a>Další postup
-- Další informace týkající se služby [zálohy](concepts-backup.md).
-- Další informace o [kontinuita podnikových procesů](concepts-business-continuity.md) možnosti.
+Nový server vytvořený geografickým obnovením má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době zahájení obnovení. Heslo lze změnit na stránce **Přehled** nového serveru.
+
+Nový server vytvořený během obnovy nemá pravidla brány firewall nebo koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba nastavit samostatně pro tento nový server.
+
+
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si další informace o [zálohování](concepts-backup.md)služby.
+- Přečtěte si další informace o možnostech [kontinuity podnikových aplikací](concepts-business-continuity.md) .

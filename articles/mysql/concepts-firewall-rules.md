@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/22/2019
-ms.openlocfilehash: 1d75b9e7d997b0c62c7e235187907f0556318efe
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/25/2019
+ms.openlocfilehash: 434ecbcf5158009b8e74ae392aeea95b5ea8b281
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970410"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72963437"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Pravidla brány firewall serveru Azure Database for MySQL
 Brány firewall zabraňují všem přístupům k databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě zdrojové IP adresy jednotlivých požadavků.
@@ -43,6 +43,9 @@ Pokud chcete aplikacím z Azure povolit připojení k vašemu Azure Database for
 
 ![Konfigurace povolení přístupu ke službám Azure na portálu](./media/concepts-firewall-rules/allow-azure-services.png)
 
+### <a name="connecting-from-a-vnet"></a>Připojení z virtuální sítě
+Pokud chcete bezpečně připojit k serveru Azure Database for MySQL z virtuální sítě, zvažte použití [koncových bodů služby virtuální](./concepts-data-access-and-security-vnet.md)sítě. 
+
 ## <a name="programmatically-managing-firewall-rules"></a>Programová správa pravidel brány firewall
 Kromě Azure Portal můžete pravidla brány firewall spravovat programově pomocí rozhraní příkazového řádku Azure CLI. Viz také [Vytvoření a Správa pravidel brány firewall Azure Database for MySQL pomocí Azure CLI](./howto-manage-firewall-using-cli.md) .
 
@@ -65,3 +68,4 @@ Pokud se přístup ke službě Microsoft Azure Database for MySQL server nechov�
 
 * [Vytváření a Správa Azure Database for MySQL pravidel brány firewall pomocí Azure Portal](./howto-manage-firewall-using-portal.md)
 * [Vytvoření a Správa pravidel brány firewall Azure Database for MySQL pomocí rozhraní příkazového řádku Azure](./howto-manage-firewall-using-cli.md)
+- [Koncové body služby virtuální sítě v Azure Database for MySQL](./concepts-data-access-and-security-vnet.md)

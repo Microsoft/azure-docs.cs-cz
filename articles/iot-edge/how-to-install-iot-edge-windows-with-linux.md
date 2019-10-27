@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 3cf30b53f950ff18dd6dcde332b7e97e332133aa
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 649c4271b2786eca506460551cfad956eeadf3c5
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516568"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964412"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Použití IoT Edge ve Windows ke spouštění kontejnerů Linux
 
@@ -57,9 +57,9 @@ Další informace o různých možnostech instalace a parametrech najdete v čl�
 
 1. Pokud jste to ještě neudělali, zaregistrujte nové zařízení IoT Edge a načtěte připojovací řetězec zařízení. Zkopírujte připojovací řetězec pro pozdější použití v této části. Tento krok můžete provést pomocí následujících nástrojů:
 
-   * [Azure Portal](how-to-register-device-portal.md)
-   * [Azure CLI](how-to-register-device-cli.md)
-   * [Visual Studio Code](how-to-register-device-vscode.md)
+   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
+   * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. Spusťte PowerShell jako správce.
 

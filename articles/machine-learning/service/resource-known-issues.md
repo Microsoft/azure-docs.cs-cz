@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a3ba28960327f1e0a56b1ac838b2cb90ab6ac72a
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 0dd0b8cf39da8039b3a59bf243284e0d5062bd78
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675634"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965601"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -43,7 +43,7 @@ Možná budete chtít spustit experiment pouze s datovou sadou, která bude vizu
  
 Před opravou můžete datovou sadu připojit k jakémukoli modulu transformace dat (výběr sloupců v datové sadě, upravit metadata, rozdělit data atd.) a spustit experiment. Pak můžete vizualizovat datovou sadu. 
 
-Následující obrázek ukazuje, jak: ![visulize-data ](./media/resource-known-issues/aml-visualize-data.png)
+Následující obrázek ukazuje, jak: ![visulize-data](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>Problémy s instalací sady SDK
 
@@ -86,6 +86,16 @@ Služba tensor Flow automatizovaného strojového učení v současné době nep
 ### <a name="experiment-charts"></a>Grafy experimentů
 
 Binární klasifikační grafy (přesnost-odvolání, ROC, křivka získání atd.) zobrazené v automatizovaných iteracích experimentu se v uživatelském rozhraní nevykreslují správně, od 4/12. V grafu jsou v současné době zobrazeny inverzní výsledky, kde je lepší provádět modely s nižšími výsledky. Řešení je v šetření.
+
+## <a name="datasets-and-data-preparation"></a>Datové sady a Příprava dat
+
+### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Nepodařilo se přečíst soubor Parquet z HTTP nebo ADLS Gen 2.
+
+Došlo k známému problému v rámci sady 1.1.25 služby AzureML pro přípravu dat, který způsobuje selhání při vytváření datové sady, a to čtením souborů Parquet z protokolu HTTP nebo ADLS Gen 2. Pokud chcete tento problém vyřešit, upgradujte prosím na verzi vyšší než 1.1.26, nebo downgradujte na verzi nižší než 1.1.24.
+
+```python
+pip install --upgrade azureml-dataprep
+```
 
 ## <a name="databricks"></a>Databricks
 
@@ -183,7 +193,7 @@ Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos da
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Služby WebServices ve službě Azure Kubernetes – chyby 
 
-Mnoho selhání webové služby ve službě Azure Kubernetes se dá ladit připojením ke clusteru pomocí `kubectl`. @No__t_0 pro cluster služby Azure Kubernetes můžete získat spuštěním
+Mnoho selhání webové služby ve službě Azure Kubernetes se dá ladit připojením ke clusteru pomocí `kubectl`. `kubeconfig.json` pro cluster služby Azure Kubernetes můžete získat spuštěním
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -232,7 +242,7 @@ Na základě obecného sledování najdete tady doporučení Azure ML, kde můž
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (žádný modul s názvem)
 Pokud při odesílání experimentů v Azure ML pracujete v ModuleErrors, znamená to, že skript školení očekává instalaci balíčku, ale nepřidá se. Až zadáte název balíčku, Azure ML nainstaluje balíček do prostředí, které se používá pro vaše školení. 
 
-Pokud používáte [odhady](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) k odesílání experimentů, můžete zadat název balíčku pomocí `pip_packages` nebo `conda_packages` parametr v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí `conda_dependencies_file`or vypsat všechny požadavky PIP v souboru txt pomocí parametru `pip_requirements_file`.
+Pokud používáte [odhady](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) k odesílání experimentů, můžete zadat název balíčku pomocí `pip_packages` nebo `conda_packages` parametr v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí `conda_dependencies_file`nebo vypsat všechny požadavky PIP v souboru txt pomocí parametru `pip_requirements_file`.
 
 Azure ML také poskytuje odhady specifickou architekturu pro Tensorflow, PyTorch, chainer a skriptu sklearn. Pomocí těchto odhady se ujistěte, že se závislosti rozhraní instalují vaším jménem do prostředí používaného pro školení. Máte možnost zadat další závislosti, jak je popsáno výše. 
  
