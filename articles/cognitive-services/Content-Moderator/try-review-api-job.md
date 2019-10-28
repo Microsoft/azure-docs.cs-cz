@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 4eded22d5f7a8f19f286f9e90185d695b4c28fc6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755287"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935939"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Definování a použití úloh moderování (REST)
 
@@ -28,7 +28,7 @@ ms.locfileid: "72755287"
 
 ## <a name="create-a-job"></a>Vytvoření úlohy
 
-Chcete-li vytvořit úlohu moderování, klikněte na referenční stránku pro [úlohu – vytvořit](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) rozhraní API a vyberte tlačítko pro vaši oblast klíče (na stránce **přihlašovací údaje** v [nástroji pro kontrolu](https://contentmoderator.cognitive.microsoft.com/)najdete na adrese URL koncového bodu). Spustí se konzola rozhraní API, kde můžete snadno sestavit a spustit REST API volání.
+Pokud chcete vytvořit úlohu moderování, klikněte na referenční stránku pro [úlohu vytvořit](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) rozhraní API a vyberte tlačítko pro vaši oblast předplatného (najdete ho na stránce s **přihlašovacími údaji** v [nástroji pro kontrolu](https://contentmoderator.cognitive.microsoft.com/)na adrese URL koncového bodu). Spustí se konzola rozhraní API, kde můžete snadno sestavit a spustit REST API volání.
 
 ![Úloha – vytvoření výběru oblasti stránky](images/test-drive-job-1.png)
 
