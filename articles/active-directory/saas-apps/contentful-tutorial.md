@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ffad0656169c49268eac6aa4a107f3445cba614
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fd218c61114c1e15009ace5a9a9bd7a536996e86
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600354"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968671"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím obsahu
 
@@ -48,7 +48,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Contentd podporuje zřizování uživatelů **jenom v čase** .
 
 > [!NOTE]
-> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+> Identifikátorem této aplikace je pevná řetězcová hodnota. V jednom tenantovi se dá nakonfigurovat jenom jedna instance.
 
 ## <a name="adding-contentful-from-the-gallery"></a>Přidávání obsahu z Galerie
 
@@ -59,7 +59,7 @@ Pokud chcete nakonfigurovat integraci obsahu do Azure AD, musíte do seznamu spr
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **obsah** .
-1. Na panelu výsledků vyberte **contentd** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V části výsledky vyberte **obsah** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-contentful"></a>Konfigurace a testování jednotného přihlašování Azure AD pro obsah
 
@@ -84,24 +84,24 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://be.contentful.com/sso/<organization_id>/consume`
+    - V textovém poli **Adresa URL odpovědi** zkopírujte adresu URL služby ACS (služba vyhodnocení zákazníka) na stránce pro nastavení jednotného přihlašování v obsahu. Bude vypadat nějak takto: `https://be.contentful.com/sso/<organization_id>/consume`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://be.contentful.com/sso/<organization_id>/login`
+    - Do textového pole **Adresa URL pro přihlášení** zkopírujte stejnou adresu URL služby ACS (služba pro vyhodnocení zákazníka). Bude vypadat nějak takto: `https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienty s obsahem](mailto:support@contentful.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL tak, že na stránce pro nastavení jednotného přihlašování nakopírujete adresu URL služby ACS (kontrolní výraz).
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (RAW)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz na stažení certifikátu](common/certificateraw.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. V části **Nastavení obsahu** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+1. V části **nastavit obsah** zkopírujte přihlašovací adresu URL, abyste mohli nakonfigurovat obsah s jednotným přihlašováním.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](media/contentful-tutorial/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -129,13 +129,22 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části stránky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části stránky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-contentful-sso"></a>Konfigurace obsahu jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na straně **obsahu** je potřeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory obsahu](mailto:support@contentful.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pomocí těchto kroků můžete nakonfigurovat jednotné přihlašování na straně s **obsahem** .
+
+1. V části [contentd (obsah](https://app.contentful.com)) přejděte na stránku nastavení jednotného přihlašování v části **Nastavení organizace**.
+1. Klikněte na **nastavit jednotné přihlašování**.
+1. Zkopírujte přihlašovací adresu URL z oddílu **Nastavení obsahu** v Azure AD a vložte ji.
+1. Zkopírujte a vložte certifikát ze souboru certifikátu Base64, který jste stáhli ze služby Azure AD.
+1. Nastavte název jednotného přihlašování pro přihlášení iniciované v SP.
+1. Klikněte na **Povolit jednotné přihlašování**.
+
+Pokud to nepomůže, můžete se obrátit na [tým podpory pro obsah](mailto:support@contentful.com).
 
 ### <a name="create-contentful-test-user"></a>Vytvořit testovacího uživatele s obsahem
 
@@ -151,7 +160,7 @@ Když kliknete na dlaždici s obsahem na přístupovém panelu, měli byste se a
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

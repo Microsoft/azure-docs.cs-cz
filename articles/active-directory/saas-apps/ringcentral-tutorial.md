@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s RingCentral | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RingCentral.
+title: 'Kurz: Azure Active Directory integrace s RingCentral | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RingCentral.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,102 +13,142 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/09/2019
+ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: c374c9e8fd91d50b7e6589f22f9bed09fbe0de39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de7cf57d177902efdbb44524703481e8c65c75c5
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092860"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991477"
 ---
-# <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Kurz: RingCentral integrovat s Azure Active Directory
+# <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Kurz: integrace RingCentral s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat RingCentral s Azure Active Directory (Azure AD). Při integraci RingCentral s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat RingCentral s Azure Active Directory (Azure AD). Když integrujete RingCentral s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k RingCentral.
-* Aby uživatelé mohli být automaticky přihlášeni k RingCentral pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k RingCentral.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k RingCentral svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat měsíční zkušební verze [tady](https://azure.microsoft.com/pricing/free-trial/).
-* RingCentral jednotné přihlašování (SSO) povolené předplatné.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* RingCentral odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje RingCentral **IDP** jednotné přihlašování zahájené pomocí
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+
+* RingCentral podporuje jednotné přihlašování **IDP** .
 
 ## <a name="adding-ringcentral-from-the-gallery"></a>Přidání RingCentral z Galerie
 
-Konfigurace integrace RingCentral do služby Azure AD, budete muset přidat RingCentral z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci RingCentral do služby Azure AD, musíte přidat RingCentral z Galerie do svého seznamu spravovaných aplikací SaaS.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **RingCentral** do vyhledávacího pole.
-1. Vyberte **RingCentral** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **RingCentral** .
+1. Na panelu výsledků vyberte **RingCentral** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s RingCentral pomocí testovacího uživatele volá **Britta Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v RingCentral.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí RingCentral pomocí testovacího uživatele s názvem **Britta Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v RingCentral.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s RingCentral, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí RingCentral, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace jednotného přihlašování RingCentral](#configure-ringcentral-sso)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele RingCentral](#create-ringcentral-test-user)**  – Pokud chcete mít protějšek Britta Simon RingCentral, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte RINGCENTRAL SSO](#configure-ringcentral-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    * **[Vytvořte RingCentral Test User](#create-ringcentral-test-user)** -to, abyste měli protějšek B. Simon v RingCentral, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **RingCentral** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **RingCentral** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** části, pokud máte **soubor metadat poskytovatele služeb**, proveďte následující kroky:
+1. Pokud máte **soubor metadat poskytovatele služeb**v **základní části Konfigurace SAML** , proveďte následující kroky:
 
-    1. Klikněte na tlačítko **nahrát soubor metadat**.
-    1. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
-    1. Po úspěšném odeslání souboru metadat **identifikátor** a **adresy URL odpovědi** hodnoty získat automaticky vyplní v **základní konfiguraci SAML** oddílu.
+    1. Klikněte na **nahrát soubor metadat**.
+    1. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát**.
+    1. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** pro **identifikátor** a odpověď získají automaticky v **základní části Konfigurace SAML** .
 
     > [!Note]
-    > Můžete získat **soubor metadat poskytovatele služeb** na stránce Konfigurace jednotného přihlašování RingCentral, který je vysvětlen později v tomto kurzu.
+    > **Soubor metadat poskytovatele služeb** získáte na stránce konfigurace jednotného přihlašování RingCentral, která je vysvětlena dále v tomto kurzu.
 
-1. Pokud nemáte **soubor metadat poskytovatele služeb**, zadejte hodnoty pro následující pole:
+1. Pokud nemáte **soubor metadat poskytovatele služby**, zadejte hodnoty následujících polí:
 
-    a. V **identifikátor** textového pole zadejte adresu URL:
+    a. Do textového pole **identifikátor** zadejte adresu URL:
 
     | |
     |--|
     |  `https://sso.ringcentral.com` |
     | `https://ssoeuro.ringcentral.com` |
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL:
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:
 
     | |
     |--|
     | `https://sso.ringcentral.com/sp/ACS.saml2` |
     | `https://ssoeuro.ringcentral.com/sp/ACS.saml2` |
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-ringcentral-sso"></a>Konfigurace jednotného přihlašování RingCentral
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-1. V okně jiné webové prohlížeče Přihlaste se k RingCentral jako správce zabezpečení.
+V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
+
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `Britta Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k RingCentral.
+
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **RingCentral**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelů položku **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-ringcentral-sso"></a>Konfigurace jednotného přihlašování RingCentral
+
+1. Pokud chcete automatizovat konfiguraci v rámci RingCentral, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+1. Po přidání rozšíření do prohlížeče klikněte na **nastavit RingCentral** , které vás přesměruje do aplikace RingCentral. Odtud zadejte přihlašovací údaje správce, které se přihlásí k RingCentral. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-7.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+1. Pokud chcete nastavit RingCentral ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu RingCentral společnosti jako správce a proveďte následující kroky:
 
 1. V horní části klikněte na **nástroje**.
 
@@ -118,78 +158,50 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     ![image](./media/ringcentral-tutorial/ringcentral2.png)
 
-1. Na **Single Sign-on** stránce v části **Konfigurace jednotného přihlašování** části z **kroku 1** klikněte na tlačítko **upravit** a proveďte následující kroky:
+1. Na stránce **jednotného přihlašování** v části **Konfigurace jednotného přihlašování** klikněte v **kroku 1** na **Upravit** a proveďte následující kroky:
 
     ![image](./media/ringcentral-tutorial/ringcentral3.png)
 
-1. Na **nastavit jednotné přihlašování** stránce, proveďte následující kroky:
+1. Na stránce **nastavit jednotné přihlašování** proveďte následující kroky:
 
     ![image](./media/ringcentral-tutorial/ringcentral4.png)
 
-    a. Klikněte na tlačítko **Procházet** nahrát soubor metadat, který jste si stáhli z webu Azure portal.
+    a. Klikněte na tlačítko **Procházet** a nahrajte soubor metadat, který jste stáhli z Azure Portal.
 
-    b. Po nahrání metadat získat hodnoty automaticky dosadí **jednotného přihlašování obecné informace o** oddílu.
+    b. Po nahrání metadat se hodnoty získají automaticky vyplněné v části **Obecné informace jednotného přihlašování** .
 
-    c. V části **mapování atributů** vyberte **mapu e-mailu atributu** jako `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. V části **mapování atributů** vyberte **mapovat atribut e-mailu na** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     d. Klikněte na **Uložit**.
 
-    e. Z **kroku 2** klikněte na tlačítko **Stáhnout** ke stažení **soubor metadat poskytovatele služeb** a nahrajte ho v **základní konfiguraci SAML** oddílu Chcete-li automaticky vyplnit pole **identifikátor** a **adresy URL odpovědi** hodnoty na webu Azure portal.
+    e. V **kroku 2** klikněte na **Stáhnout** a stáhněte **si soubor metadat poskytovatele služby** a nahrajte ho do **základního konfiguračního oddílu SAML** , aby se automaticky vyplnily hodnoty **identifikátoru** **URL pro odpovědi** v Azure Portal.
 
     ![image](./media/ringcentral-tutorial/ringcentral6.png) 
 
-    f. Přejděte na stejné stránce **povolit jednotné přihlašování** části a proveďte následující kroky:
+    f. Na stejné stránce přejděte k části **povolení jednotného přihlašování** a proveďte následující kroky:
 
     ![image](./media/ringcentral-tutorial/ringcentral5.png)
 
-    * Vyberte **povolení jednotného přihlašování služby**.
+    * Vyberte možnost **Povolit službu jednotného přihlašování**.
 
-    * Vyberte **umožňují uživatelům přihlásit se prostřednictvím přihlašovacích údajů pro jednotné přihlašování nebo RingCentral**.
+    * Vyberte možnost **dovolit uživatelům přihlášení pomocí jednotného přihlašování nebo přihlašovacích údajů RingCentral**.
 
     * Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-ringcentral-test-user"></a>Vytvořit testovacího uživatele RingCentral
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá Britta Simon.
-
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
-   1. Do pole **Název** zadejte `Britta Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části se budou moci používat jednotné přihlašování Azure díky udělení přístupu k RingCentral Britta Simon.
-
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **RingCentral**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
-
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
-1. V **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
-
-### <a name="create-ringcentral-test-user"></a>Vytvoření RingCentral testovacího uživatele
-
-V této části vytvoříte uživatele v RingCentral jako Britta Simon. Práce s [tým podpory RingCentral klienta](https://success.ringcentral.com/RCContactSupp) přidat uživatele na platformě RingCentral. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v RingCentral. Pokud chcete přidat uživatele na platformě RingCentral, pracujte s [týmem podpory klienta RingCentral](https://success.ringcentral.com/RCContactSupp) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-sso"></a>Test SSO
 
-Při výběru dlaždice RingCentral na přístupovém panelu, můžete by měl být automaticky přihlášeni k RingCentral, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici RingCentral, měli byste se automaticky přihlásit k RingCentral, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si RingCentral s Azure AD](https://aad.portal.azure.com/)

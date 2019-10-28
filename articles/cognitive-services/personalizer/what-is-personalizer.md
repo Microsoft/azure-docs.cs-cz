@@ -10,22 +10,21 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8a0b0dde50de1806762076025e4f74f19388f81b
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203787"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989599"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
-Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nejvhodnější prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.
+Přizpůsobování Azure je cloudová služba API, která umožňuje vybrat nejlepší prostředí pro zobrazování vašich uživatelů a seznámit se s jejich celkovým chováním v reálném čase.
 
 * Poskytněte informace o uživatelích a obsahu a dostanete nejvyšší akci pro zobrazení uživatelů. 
 * Před použitím přizpůsobeného přizpůsobování nemusíte data čistit a označovat.
 * Poskytněte vám zpětnou vazbu k přizpůsobenému uživateli, když vám to bude vyhovovat. 
 * Zobrazení analýz v reálném čase. 
-* Přizpůsobte si použití přizpůsobeného v rámci většího úsilí v oblasti datové vědy k ověření stávajících experimentů.
 
 ## <a name="how-does-personalizer-work"></a>Jak funguje přizpůsobování?
 
@@ -37,9 +36,9 @@ Přizpůsobení používá modely strojového učení k zjištění, jaká akce 
 
 1. Vyberte si prostředí pro přizpůsobení aplikace.
 1. Vytvořte a nakonfigurujte instanci služby přizpůsobení ve Azure Portal. Každá instance je smyčkou přizpůsobování.
-1. Pomocí sady SDK můžete volat přizpůsobení s informacemi (_funkcemi_) týkajícími se vašich uživatelů a obsahem (_Akce_). Před použitím přizpůsobeného přizpůsobování nemusíte zadávat vyčištěná a označená data. 
+1. [Rozhraní API pro řazení](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) použijte k volání individuálního nastavení s informacemi (_funkcemi_) o vašich uživatelích a obsahu (_Akce_). Před použitím přizpůsobeného přizpůsobování nemusíte zadávat vyčištěná a označená data. Rozhraní API je možné volat přímo nebo pomocí sad SDK, které jsou k dispozici pro různé programovací jazyky.
 1. V klientské aplikaci Zobrazte uživatele podle vlastní akce.
-1. Pomocí sady SDK můžete poskytnout zpětnou vazbu k přizpůsobenému objektu, který označuje, jestli akce přizpůsobené uživatelem vybrala vlastní nastavení. Toto je _[skóre záměna](concept-rewards.md)_ .
+1. Použijte [API pro odměnu](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) a poskytněte zpětnou vazbu k přizpůsobenému objektu, který označuje, jestli akce přizpůsobené uživatelem vybrala uživatel. Toto je _[skóre záměna](concept-rewards.md)_ .
 1. Podívejte se na analýzy v Azure Portal, abyste vyhodnotili, jak systém funguje a jak vaše data pomáhají přizpůsobit.
 
 ## <a name="where-can-i-use-personalizer"></a>Kde můžu použít přizpůsobování?

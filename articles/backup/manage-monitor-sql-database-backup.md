@@ -1,5 +1,5 @@
 ---
-title: Správa a monitorování SQL Serverch databází na virtuálním počítači Azure pomocí Azure Backup
+title: Správa a sledování SQL Server databáze na virtuálním počítači Azure – Azure Backup
 description: Tento článek popisuje, jak spravovat a monitorovat databáze SQL Server, které běží na virtuálním počítači Azure.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7440859748a613f7d6af751974e07289175ed7ac
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934763"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968371"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a sledování zálohovaných SQL Server databází
 
@@ -32,7 +32,6 @@ Azure Backup zobrazí všechny ručně aktivované úlohy na portálu **úlohy z
 
 Podrobné informace o scénářích monitorování najdete [v části monitorování v Azure Portal](backup-azure-monitoring-built-in-monitor.md) a [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).  
 
-
 ## <a name="view-backup-alerts"></a>Zobrazit výstrahy zálohování
 
 Vzhledem k tomu, že se zálohy protokolů vyskytují každých 15 minut, může být monitorování úloh zálohování zdlouhavé. Azure Backup usnadňuje monitorování odesláním e-mailových upozornění. E-mailová upozornění:
@@ -43,7 +42,7 @@ Vzhledem k tomu, že se zálohy protokolů vyskytují každých 15 minut, může
 
 Monitorování výstrah zálohování databáze:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. Na řídicím panelu trezoru vyberte **výstrahy a události**.
 
@@ -57,14 +56,14 @@ Monitorování výstrah zálohování databáze:
 
 Můžete zastavit zálohování databáze SQL Server několika způsoby:
 
-* Zastavte všechny budoucí úlohy zálohování a odstraňte všechny body obnovení.
-* Zastavte všechny budoucí úlohy zálohování a ponechte body obnovení beze změny.
+- Zastavte všechny budoucí úlohy zálohování a odstraňte všechny body obnovení.
+- Zastavte všechny budoucí úlohy zálohování a ponechte body obnovení beze změny.
 
 Pokud se rozhodnete zachovat body obnovení, mějte na paměti tyto informace:
 
-* Všechny body obnovení zůstanou nedotčeny trvale, všechna vyřazení se zastaví při zastavení ochrany s uchováním dat.
-* Bude se vám účtovat za chráněnou instanci a spotřebované úložiště. Další informace najdete v tématu [Azure Backup ceny](https://azure.microsoft.com/pricing/details/backup/).
-* Pokud odstraníte zdroj dat bez zastavení zálohování, nové zálohování se nezdaří.
+- Všechny body obnovení zůstanou nedotčeny trvale, všechna vyřazení se zastaví při zastavení ochrany s uchováním dat.
+- Bude se vám účtovat za chráněnou instanci a spotřebované úložiště. Další informace najdete v tématu [Azure Backup ceny](https://azure.microsoft.com/pricing/details/backup/).
+- Pokud odstraníte zdroj dat bez zastavení zálohování, nové zálohování se nezdaří.
 
 Zastavení ochrany databáze:
 
@@ -82,22 +81,20 @@ Zastavení ochrany databáze:
 
     ![Vyberte Zastavit zálohování.](./media/backup-azure-sql-database/stop-db-button.png)
 
-
 5. V nabídce **Zastavit zálohování** vyberte, jestli se mají data zachovat nebo odstranit. Pokud chcete, zadejte důvod a komentář.
 
     ![Uchování nebo odstranění dat v nabídce zastavit zálohování](./media/backup-azure-sql-database/stop-backup-button.png)
 
 6. Vyberte **Zastavit zálohování**.
 
-
 > [!NOTE]
 >
 >Další informace o možnosti odstranit data najdete v následujících nejčastějších dotazech:
->* [Když odstraním databázi z autoprotected instance, co se stane se zálohami?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
->* [Když zabráním operaci zálohování funkce autoprotected Database, která bude její chování?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>
+>- [Když odstraním databázi z autoprotected instance, co se stane se zálohami?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>- [Když zabráním operaci zálohování funkce autoprotected Database, která bude její chování?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
-
 
 ## <a name="resume-protection-for-a-sql-database"></a>Obnovení ochrany databáze SQL
 
@@ -115,12 +112,13 @@ Obnovení ochrany databáze SQL:
 
 Můžete spouštět různé typy zálohování na vyžádání:
 
-* Úplné zálohování
-* Úplná záloha jenom pro kopírování
-* Rozdílové zálohování
-* Zálohování protokolů
+- Úplné zálohování
+- Úplná záloha jenom pro kopírování
+- Rozdílové zálohování
+- Zálohování protokolů
 
-I když potřebujete zadat dobu uchování pro úplné zálohování, rozsah uchování pro ad hoc úplné zálohování bude automaticky nastaven na 45 dní od aktuálního času. <br/>
+I když potřebujete zadat dobu uchování pro úplné zálohování, rozsah uchování pro ad hoc úplné zálohování bude automaticky nastaven na 45 dní od aktuálního času.
+
 Další informace najdete v tématu [SQL Server typy zálohování](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Zrušení registrace instance SQL Server
@@ -141,37 +139,36 @@ Zrušení registrace instance SQL Server po zakázání ochrany, ale před odstr
 
    ![Vybrat odstranit](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
-
 ## <a name="modify-policy"></a>Upravit zásadu
+
 Upravte zásadu pro změnu četnosti zálohování nebo rozsahu uchovávání.
 
 > [!NOTE]
 > Jakákoli změna v období uchování se použije zpět na všechny starší body obnovení kromě nových.
 
-Na řídicím panelu trezoru klikněte na **Spravovat** > **zásady zálohování** a vyberte zásadu, kterou chcete upravit.
+Na řídicím panelu trezoru klikněte na **spravovat** > **zásady zálohování** a vyberte zásadu, kterou chcete upravit.
 
   ![Spravovat zásady zálohování](./media/backup-azure-sql-database/modify-backup-policy.png)
 
   ![Upravit zásady zálohování](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-Změna zásad ovlivní všechny přidružené zálohované položky a spustí odpovídající úlohy **Konfigurace ochrany** . 
+Změna zásad ovlivní všechny přidružené zálohované položky a spustí odpovídající úlohy **Konfigurace ochrany** .
 
-#### <a name="inconsistent-policy"></a>Nekonzistentní zásady 
+### <a name="inconsistent-policy"></a>Nekonzistentní zásady
 
 V některých případech může operace upravit zásady vést k **nekonzistentní** verzi zásad pro některé zálohované položky. K tomu dojde v případě, že se po aktivaci operace Upravit zásadu pro zálohovanou položku nezdařila odpovídající úloha **Konfigurace ochrany** . V zobrazení zálohovaná položka se zobrazí takto:
- 
+
   ![Nekonzistentní zásady](./media/backup-azure-sql-database/inconsistent-policy.png)
 
 Verzi zásad můžete u všech ovlivněných položek opravit jedním kliknutím:
 
   ![Opravit nekonzistentní zásady](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
- 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Opětovné zaregistrování rozšíření na SQL Serverm virtuálním počítači
 
-V některých případech může mít rozšíření úlohy na virtuálním počítači vliv na jeden důvod nebo na druhý. V takových případech se začnou zdařit všechny operace aktivované na virtuálním počítači. Pak možná budete muset znovu zaregistrovat rozšíření na virtuálním počítači. Operace **opětovného registrace znovu** nainstaluje rozšíření zálohování úlohy na virtuálním počítači, aby operace pokračovaly.  <br>
+V některých případech může mít rozšíření úlohy na virtuálním počítači vliv na jeden důvod nebo na druhý. V takových případech se začnou zdařit všechny operace aktivované na virtuálním počítači. Pak možná budete muset znovu zaregistrovat rozšíření na virtuálním počítači. Operace **opětovného registrace znovu** nainstaluje rozšíření zálohování úlohy na virtuálním počítači, aby operace pokračovaly.
 
-Tuto možnost používejte opatrně. Pokud se aktivuje na virtuálním počítači s již nedobrým rozšířením, tato operace způsobí restartování rozšíření. To může vést k selhání všech probíhajících úloh. Před aktivací operace opětovného registrace zkontrolujte, zda [](backup-sql-server-azure-troubleshoot.md#re-registration-failures) některé z těchto symptomů existuje.
+Tuto možnost používejte opatrně. Pokud se aktivuje na virtuálním počítači s již nedobrým rozšířením, tato operace způsobí restartování rozšíření. To může vést k selhání všech probíhajících úloh. Před aktivací operace opětovného registrace zkontrolujte, zda některé z těchto [symptomů](backup-sql-server-azure-troubleshoot.md#re-registration-failures) existuje.
 
 ## <a name="next-steps"></a>Další kroky
 

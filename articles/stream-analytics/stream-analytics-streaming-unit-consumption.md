@@ -8,13 +8,13 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: a4811da398fde869d8eb5457db11a592006c59a9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/28/2019
+ms.openlocfilehash: d9c4169176707f98181f2a479e470cf89ff2e04f
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934275"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988230"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Pochopení a úprava jednotek streamování
 
@@ -34,6 +34,7 @@ Metrika využití SU%, která je v rozsahu od 0% do 100%, popisuje spotřebu pam
     ![Konfigurace úlohy Azure Portal Stream Analytics][img.stream.analytics.preview.portal.settings.scale]
     
 4. Pomocí posuvníku nastavte službu SUs pro úlohu. Všimněte si, že jste omezeni na konkrétní nastavení SU. 
+5. Počet služby SUs přiřazené k vaší úloze můžete změnit i v případě, že je spuštěný. To není možné, pokud vaše úloha používá [výstup bez oddílů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) nebo má [dotaz s více kroky s jiným oddílem podle hodnot](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values). Úloha by měla mít aspoň 6 služby SUs, aby toto nastavení bylo možné změnit, když je úloha spuštěná. Je možné, že při spuštění úlohy budete moci vybrat ze sady hodnot SU omezení. 
 
 ## <a name="monitor-job-performance"></a>Monitorování výkonu úlohy
 Pomocí Azure Portal můžete sledovat propustnost úlohy:

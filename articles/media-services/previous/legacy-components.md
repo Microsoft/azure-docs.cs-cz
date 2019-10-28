@@ -11,29 +11,36 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 10/27/2019
 ms.author: juliako
-ms.openlocfilehash: e4ff157f58a68c68f8610c6c473f5d69897650ad
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 30e8fa51df42d202d77ecdbc6a31fe3c7aaac6f4
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338416"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968627"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services starší součásti
 
 V průběhu času byla k dispozici stabilní vylepšení a vylepšení komponent Media Service. V důsledku toho byly některé starší komponenty vyřazeny. Pokyny, jak migrovat aplikaci ze starší verze na aktuální komponentu, najdete v následujících článcích.
 
-## <a name="legacy-components-and-migration-guidance"></a>Starší verze komponent a pokyny k migraci
+## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Plány vyřazení zastaralých součástí a pokyny k migraci
 
 Oznamujeme vyřazení *Windows Azure Media Encoder* (WAME) a *Azure Media Encoderch* (ázev) mediálních procesorů. Tyto procesory se zařadí do 30. listopadu 2019.
 
 * [Migrace z Windows Azure Media Encoder na Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [Migrace z Azure Media Encoder na Media Encoder Standard](migrate-azure-media-encoder.md)
 
-Oznamujeme také vyřazení *Azure Media Indexer v1* a *Azure Media Indexer v2 Preview*. Procesor médií [Azure Media Indexer v1](media-services-index-content.md) bude vyřazení od 1. října 2020. Od 1. ledna 2019 se vyřadí procesory médií[verze Preview [Azure Media Indexer v2](media-services-process-content-with-indexer2.md) .  [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+Také oznamujeme vyřazení následujících Media Analytics mediálních procesorů: 
 
-* [Migrujte z Azure Media Indexer V1 a Azure Media Indexer v2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
+|Název procesoru médií|Datum vyřazení|Další poznámky|
+|---|---|
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| Od 1. ledna 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer 2 do Azure Media Services video indexer](migrate-indexer-v1-v2.md).|
+|[Azure Media Indexer](media-services-index-content.md)|1\. října z 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer do Azure Media Services video indexer](migrate-indexer-v1-v2.md)
+|[Azure Media Face Detector](media-services-face-and-emotion-detection.md)|1\. února 2020|Tento procesor Media Analytics ve verzi Preview bude vyřazen a nebude přesunut do všeobecné dostupnosti. Budeme vyhodnocovat své scénáře a případy použití se zákazníky při budoucích investicích.|
+|[Azure Media Motion Detector](media-services-motion-detection.md)|1\. února 2020|Tento procesor Media Analytics ve verzi Preview bude vyřazen a nebude přesunut do všeobecné dostupnosti. Budeme vyhodnocovat své scénáře a případy použití se zákazníky při budoucích investicích.|
+|[Azure Media OCR](media-services-video-optical-character-recognition.md)|1\. února 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) a [přednastaveným analyzátorem videa rozhraní API pro Azure Media Services V3](../latest/analyzing-video-audio-files-concept.md).|
+|[Azure Media Video Thumbnails](media-services-video-summarization.md)|1\. února 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) a [přednastaveným analyzátorem videa rozhraní API pro Azure Media Services V3](../latest/analyzing-video-audio-files-concept.md).|
 
 ## <a name="next-steps"></a>Další kroky
 

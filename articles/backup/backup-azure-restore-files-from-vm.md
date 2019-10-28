@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1c0d470f12cf54c900fec3c453b7e5f07d0b2325
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: df8e309ecb2a81205684c60076015f79ac8c4c8f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900320"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968487"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -74,10 +74,9 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
     - odchozí port 3260
 
 > [!Note]
-> 
-> * Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Například: název staženého skriptu začíná na \'VMname\'\_\'jméno\'_\'GUID\', jako ContosoVM_wcus_12345678.....<br><br>
-> * Adresa URL by byla "https:\//pod01-rec2.wcus.backup.windowsazure.com"
-
+>
+> - Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Například: název staženého skriptu začíná na \'VMname\'\_\'jméno\'_\'GUID\', jako ContosoVM_wcus_12345678.....<br><br>
+> - Adresa URL by byla "https:\//pod01-rec2.wcus.backup.windowsazure.com"
 
    Pro Linux skript vyžaduje pro připojení k bodu obnovení komponenty "Open-iSCSI" a "lshw". Pokud komponenty v počítači, ve kterém je spuštěn skript, neexistují, skript si vyžádá oprávnění k instalaci součástí. Poskytněte souhlas pro instalaci nezbytných součástí.
 
@@ -223,7 +222,7 @@ Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečn
 
 V této části se dozvíte, jak provést obnovení souborů ze záloh virtuálních počítačů Azure, jejichž počet disků je > 16 a že velikost každého disku je > 4 TB.
 
-Vzhledem k tomu, že proces obnovení souborů připojuje všechny disky ze zálohy, v případě velkého počtu disků (> 16) nebo velkých disků (> 4 TB) se doporučuje použít následující body akcí.
+Vzhledem k tomu, že proces obnovení souborů připojí všechny disky ze zálohy, v případě velkého počtu disků (> 16) nebo velkých disků (> 4 TB) se doporučuje následující body akcí.
 
 - Pro obnovení souborů ponechte samostatný server pro obnovení (virtuální počítače Azure s D2v3). Můžete použít jenom obnovení souboru a pak vypnout, pokud není potřeba. Obnovení původního počítače se nedoporučuje, protože bude mít významný dopad na samotný virtuální počítač.
 - Pak skript spusťte jednou, abyste zkontrolovali, jestli je operace obnovení souborů úspěšná.
@@ -276,7 +275,7 @@ Tato funkce byla sestavena pro přístup k datům virtuálních počítačů, an
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Vybrat bod obnovení (který může vygenerovat skript)
 
-Skript poskytuje přístup k datům virtuálních počítačů, je důležité regulovat, kdo ho může vygenerovat na prvním místě. Jedna se musí přihlásit k Azure Portal a měla by mít [oprávnění](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) ke generování skriptu na RBAC.
+Skript poskytuje přístup k datům virtuálních počítačů, je důležité regulovat, kdo ho může vygenerovat na prvním místě. Jeden se musí přihlásit do Azure Portal a měl by být [autorizovaný](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) pro vygenerování skriptu na RBAC.
 
 Obnovení souborů vyžaduje stejnou úroveň autorizace, jakou vyžaduje obnovení virtuálních počítačů a obnovení disků. Jinými slovy, data virtuálních počítačů mohou být vygenerována pouze oprávnění uživatelé.
 

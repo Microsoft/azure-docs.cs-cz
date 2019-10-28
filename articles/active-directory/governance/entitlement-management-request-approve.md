@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/18/2019
+ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78243f02cbbe3d06b94ee52d6193865dbfa27121
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: da3e1b6439b033742af62d548775cfb628e955b7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489004"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990713"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Schválení nebo zamítnutí žádostí o přístup ve správě nároků Azure AD (Preview)
 
@@ -36,7 +36,7 @@ Díky správě nároků ve službě Azure AD můžete nakonfigurovat zásady, kt
 
 Prvním krokem ke schválení nebo zamítnutí žádostí o přístup je vyhledání a otevření žádosti o přístup, která čeká na schválení. Existují dva způsoby, jak otevřít žádost o přístup.
 
-**Požadovaná role:** Schvalovatel
+**Požadovaná role:** Uživatelem
 
 1. Vyhledejte e-mail od Microsoft Azure, který vás vyzve ke schválení nebo zamítnutí žádosti. Tady je příklad e-mailu:
 
@@ -48,17 +48,17 @@ Prvním krokem ke schválení nebo zamítnutí žádostí o přístup je vyhled�
 
 Pokud nemáte e-mail, můžete podle následujících kroků najít žádosti o přístup, které čekají na schválení.
 
-1. Přihlaste se na portál My Access [https://myaccess.microsoft.com](https://myaccess.microsoft.com)na adrese.
+1. Přihlaste se na portál pro přístup na [https://myaccess.microsoft.com](https://myaccess.microsoft.com).
 
 1. V nabídce vlevo klikněte na **schválení** . zobrazí se seznam žádostí o přístup, které čekají na schválení.
 
-1. Na kartě **čeká** na vyřízení žádost.
+1. Na kartě **čeká na vyřízení** žádost.
 
 ## <a name="approve-or-deny-request"></a>Schválit nebo zamítnout žádost
 
 Po otevření žádosti o přístup se zobrazí podrobnosti, které vám pomohou učinit rozhodnutí o schválení nebo zamítnutí.
 
-**Požadovaná role:** Schvalovatel
+**Požadovaná role:** Uživatelem
 
 1. Kliknutím na odkaz **Zobrazit** otevřete podokno žádost o přístup.
 
@@ -70,7 +70,7 @@ Po otevření žádosti o přístup se zobrazí podrobnosti, které vám pomohou
 
 1. V případě potřeby zadejte důvod.
 
-    ![Můj portál pro přístup – žádost o přístup](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![Můj portál pro přístup – žádost o přístup](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. Kliknutím na **Odeslat** odešlete rozhodnutí.
 

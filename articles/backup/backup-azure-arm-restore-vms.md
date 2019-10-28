@@ -9,18 +9,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 759be3691ba44c92033ec71fd031f9c6e47d6cb4
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: ac6354c96035689dd12b7e86f9b9b0e44ad9c1ae
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311898"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968576"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
 Tento článek popisuje, jak obnovit data virtuálních počítačů Azure z bodů obnovení uložených v [Azure Backup](backup-overview.md) Recovery Services trezory.
-
-
 
 ## <a name="restore-options"></a>Možnosti obnovení
 
@@ -31,7 +29,6 @@ Azure Backup poskytuje několik způsobů, jak obnovit virtuální počítač.
 **Vytvoření nového virtuálního počítače** | Rychle vytvoří a načte základní virtuální počítač v bodu obnovení a spustí ho.<br/><br/> Můžete zadat název virtuálního počítače, vybrat skupinu prostředků a virtuální síť (VNet), do které se bude umístit, a zadat účet úložiště pro obnovený virtuální počítač. Nový virtuální počítač musí být vytvořený ve stejné oblasti jako zdrojový virtuální počítač.
 **Obnovit disk** | Obnoví disk virtuálního počítače, který se pak dá použít k vytvoření nového virtuálního počítače.<br/><br/> Azure Backup poskytuje šablonu, která vám umožní přizpůsobit a vytvořit virtuální počítač. <br/><br> Úloha obnovení vygeneruje šablonu, kterou si můžete stáhnout a použít k určení vlastního nastavení virtuálního počítače, a vytvořit virtuální počítač.<br/><br/> Disky se zkopírují do zadaného účtu úložiště.<br/><br/> Případně můžete disk připojit k existujícímu virtuálnímu počítači nebo vytvořit nový virtuální počítač pomocí prostředí PowerShell.<br/><br/> Tato možnost je užitečná, pokud chcete virtuální počítač přizpůsobit, přidat nastavení konfigurace, která se v době zálohování nevyskytla, nebo přidat nastavení, která se musí nakonfigurovat pomocí šablony nebo PowerShellu.
 **Nahradit existující** | Disk můžete obnovit a použít ho k nahrazení disku na stávajícím virtuálním počítači.<br/><br/> Aktuální virtuální počítač musí existovat. Pokud je tato možnost odstraněna, nelze ji použít.<br/><br/> Před nahrazením disku Azure Backup pořizuje stávající virtuální počítač a uloží ho do pracovního umístění, které zadáte. Existující disky připojené k virtuálnímu počítači se nahradily vybraným bodem obnovení.<br/><br/> Snímek se zkopíruje do trezoru a zachová se podle zásad uchovávání informací. <br/><br/> Nahradit existující se podporuje pro nešifrované spravované virtuální počítače. U nespravovaných disků, [zobecněných virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)nebo u virtuálních počítačů [vytvořených pomocí vlastních imagí](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)se nepodporuje.<br/><br/> Pokud má bod obnovení více nebo méně disků než aktuální virtuální počítač, bude počet disků v bodu obnovení odpovídat pouze konfiguraci virtuálního počítače.<br/><br/>
-
 
 > [!NOTE]
 > Můžete také obnovit konkrétní soubory a složky na virtuálním počítači Azure. [Další informace](backup-azure-restore-files-from-vm.md).
@@ -47,19 +44,16 @@ Některé podrobnosti o účtech úložiště:
 - **Výměna disku**: když nahradíte disk na EXISTUJÍCÍm virtuálním počítači, Azure Backup před nahrazením disku vybere snímek existujícího virtuálního počítače. Snímek je uložený v pracovním umístění (účet úložiště), které zadáte. Tento účet úložiště se používá k dočasnému uložení snímku během procesu obnovení a doporučujeme vám vytvořit nový účet, který pak bude možné snadno odebrat.
 - **Umístění účtu úložiště**: účet úložiště musí být ve stejné oblasti jako trezor. Zobrazí se pouze tyto účty. Pokud v tomto umístění nejsou žádné účty úložiště, budete ho muset vytvořit.
 - **Typ úložiště**: BLOB Storage není podporovaný.
-- **Redundance úložiště**: zóna redundantní úložiště (ZRS) se nepodporuje. Informace o replikaci a redundanci účtu se zobrazí v závorkách za názvem účtu. 
+- **Redundance úložiště**: zóna redundantní úložiště (ZRS) se nepodporuje. Informace o replikaci a redundanci účtu se zobrazí v závorkách za názvem účtu.
 - **Premium Storage**:
-    - Při obnovování virtuálních počítačů, které nejsou Premium, se nepodporuje účty úložiště úrovně Premium.
-    - Při obnovování spravovaných virtuálních počítačů se účty Premium Storage nakonfigurované pomocí pravidel sítě nepodporují.
-
+  - Při obnovování virtuálních počítačů, které nejsou Premium, se nepodporuje účty úložiště úrovně Premium.
+  - Při obnovování spravovaných virtuálních počítačů se účty Premium Storage nakonfigurované pomocí pravidel sítě nepodporují.
 
 ## <a name="before-you-start"></a>Než začnete
 
 Pokud chcete obnovit virtuální počítač (vytvořte nový virtuální počítač), ujistěte se, že máte správná [oprávnění](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) řízení přístupu na základě role (RBAC) pro operaci obnovení virtuálního počítače.
 
 Pokud nemáte oprávnění, můžete [disk obnovit](#restore-disks)a po obnovení disku můžete [použít šablonu](#use-templates-to-customize-a-restored-vm) , která byla vygenerována jako součást operace obnovení, a vytvořit tak nový virtuální počítač.
-
-
 
 ## <a name="select-a-restore-point"></a>Vybrat bod obnovení
 
@@ -94,7 +88,6 @@ Jako jednu z [možností obnovení](#restore-options)můžete vytvořit virtuál
     ![Průvodce obnovením konfigurace](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
 6. V **nastavení obnovit konfiguraci**vyberte **OK**. V části **obnovit**klikněte na **obnovit** , aby se spustila operace obnovení.
-
 
 ## <a name="restore-disks"></a>Obnovit disky
 
@@ -135,7 +128,6 @@ Po obnovení disku použijte šablonu generovanou jako součást operace obnoven
 
    ![Odeslat nasazení šablony](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
-
 ## <a name="replace-existing-disks"></a>Nahradit existující disky
 
 Jako jednu z [možností obnovení](#restore-options)můžete stávající disk virtuálního počítače nahradit vybraným bodem obnovení. [Zkontrolujte](#restore-options) všechny možnosti obnovení.
@@ -145,7 +137,6 @@ Jako jednu z [možností obnovení](#restore-options)můžete stávající disk 
 3. V části **pracovní umístění**určete, kam se mají během procesu obnovení ukládat snímky aktuálních spravovaných disků. [Další informace](#storage-accounts).
 
    ![Průvodce obnovením konfigurace nahradit existující](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
-
 
 ## <a name="restore-vms-with-special-configurations"></a>Obnovení virtuálních počítačů se speciálními konfiguracemi
 
@@ -164,6 +155,7 @@ K dispozici je řada běžných scénářů, ve kterých může být nutné obno
 **Virtuální počítače připojené k zóně** | Azure Backup podporuje zálohování a obnovení připnutých virtuálních počítačů v zóně. [Další informace](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>Sledovat operaci obnovení
+
 Po aktivaci operace obnovení vytvoří služba Backup úlohu pro sledování. Azure Backup zobrazuje oznámení o úloze na portálu. Pokud nejsou viditelné, vyberte symbol **oznámení** a pak výběrem **Zobrazit všechny úlohy** zobrazte stav procesu obnovení.
 
 ![Obnovení aktivované](./media/backup-azure-arm-restore-vms/restore-notification1.png)
@@ -189,11 +181,11 @@ Po obnovení virtuálního počítače je potřeba poznamenat si několik věcí
 - Obnovený virtuální počítač nemá skupinu dostupnosti. Pokud použijete možnost obnovit disk, můžete [zadat skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) při vytváření virtuálního počítače z disku pomocí zadané šablony nebo PowerShellu.
 - Pokud používáte distribuci Linux založenou na cloudu, jako je například Ubuntu, z důvodu zabezpečení je heslo po obnovení zablokované. K [resetování hesla](../virtual-machines/linux/reset-password.md)použijte rozšíření VMAccess na OBNOVENém virtuálním počítači. V těchto distribucích doporučujeme používat klíče SSH, takže po obnovení nemusíte heslo resetovat.
 - Pokud nemůžete získat přístup k virtuálnímu počítači po obnovení z důvodu přerušeného vztahu k virtuálnímu počítači s řadičem domény, postupujte podle následujících kroků a zajistěte si virtuální počítač:
-    - Připojte disk s operačním systémem jako datový disk k obnovenému virtuálnímu počítači.
-    - Ručně nainstalujte agenta virtuálního počítače, pokud se zjistí, že agent Azure přestane reagovat pomocí tohoto [odkazu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
-    - Povolení přístupu k VIRTUÁLNÍmu počítači z příkazového řádku na virtuálním počítači přes sériovou konzolu
-    
-  ```
+  - Připojte disk s operačním systémem jako datový disk k obnovenému virtuálnímu počítači.
+  - Ručně nainstalujte agenta virtuálního počítače, pokud se zjistí, že agent Azure přestane reagovat pomocí tohoto [odkazu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+  - Povolení přístupu k virtuálnímu počítači z příkazového řádku na virtuálním počítači přes sériovou konzolu
+
+  ```cmd
     bcdedit /store <drive letter>:\boot\bcd /enum
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5
@@ -201,11 +193,12 @@ Po obnovení virtuálního počítače je potřeba poznamenat si několik věcí
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<<BOOT LOADER IDENTIFIER>>} ON
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
     ```
-    - Při opakovaném sestavení virtuálního počítače použijte Azure Portal k resetování účtu místního správce a hesla
-    - K odpojení virtuálního počítače z domény použijte Sériová konzola přístup a CMD.
 
-    ```
-    cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force" 
+  - Při opakovaném sestavení virtuálního počítače použijte Azure Portal k resetování účtu místního správce a hesla
+  - K odpojení virtuálního počítače z domény použijte Sériová konzola přístup a CMD.
+
+    ```cmd
+    cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
     ```
 
 - Až se virtuální počítač odpojí a restartuje, budete moct úspěšně RDP na virtuální počítač s přihlašovacími údaji místního správce a úspěšně znovu připojit virtuální počítač k doméně.

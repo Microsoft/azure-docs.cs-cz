@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Backup k obnovení zálohovaných databází SQL Server na virtuálním počítači Azure | Microsoft Docs
+title: Obnovení databází SQL Server na virtuálním počítači Azure pomocí Azure Backup
 description: Tento článek popisuje, jak obnovit SQL Server databáze, které běží na virtuálním počítači Azure a které se zálohují s Azure Backup.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71867e520d9c98b4af4d4f18f3d08c9e8cc4a8c4
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8bdc77ba81c5a9ec47a02ef5a1ede82365314941
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639542"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968858"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází SQL Server na virtuálních počítačích Azure
 
@@ -27,8 +27,7 @@ Azure Backup může obnovit databáze SQL Server, které běží na virtuálníc
 - Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
 - Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před obnovením databáze mějte na paměti následující:
 
@@ -36,8 +35,8 @@ Před obnovením databáze mějte na paměti následující:
 - Cílový server musí být zaregistrován ve stejném trezoru jako zdroj.
 - Chcete-li obnovit TDE šifrovanou databázi do jiné SQL Server, je nutné nejprve [obnovit certifikát na cílový server](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
 - Než obnovíte hlavní databázi, spusťte instanci SQL Server v jednouživatelském režimu pomocí možnosti Startup **-m AzureWorkloadBackup**.
-    - Hodnota pro **-m** je název klienta.
-    - Připojení může otevřít pouze zadaný název klienta.
+  - Hodnota pro **-m** je název klienta.
+  - Připojení může otevřít pouze zadaný název klienta.
 - Pro všechny systémové databáze (model, hlavní počítač, msdb) zastavte službu agenta SQL Server před aktivací obnovení.
 - Ukončete všechny aplikace, které se mohou pokusit připojit k některé z těchto databází.
 - Pokud máte na serveru spuštěných víc instancí, měly by být všechny instance spuštěné a spuštěné, jinak se server neobjeví v seznamu cílových serverů, na který se má obnovit databáze.
@@ -46,13 +45,14 @@ Před obnovením databáze mějte na paměti následující:
 
 K obnovení potřebujete následující oprávnění:
 
-* Oprávnění **operátora zálohování** v trezoru, ve kterém provádíte obnovení.
-* **Přispěvatel (Write)** přístup ke ZDROJOVÉmu virtuálnímu počítači, který se zálohuje.
-* **Přispěvatel (zápis)** k CÍLOVÉmu virtuálnímu počítači:
-    - Pokud provádíte obnovení do stejného virtuálního počítače, jedná se o zdrojový virtuální počítač.
-    - Pokud provádíte obnovení do alternativního umístění, jedná se o nový cílový virtuální počítač.
+- Oprávnění **operátora zálohování** v trezoru, ve kterém provádíte obnovení.
+- **Přispěvatel (Write)** přístup ke ZDROJOVÉmu virtuálnímu počítači, který se zálohuje.
+- **Přispěvatel (zápis)** k CÍLOVÉmu virtuálnímu počítači:
+  - Pokud provádíte obnovení do stejného virtuálního počítače, jedná se o zdrojový virtuální počítač.
+  - Pokud provádíte obnovení do alternativního umístění, jedná se o nový cílový virtuální počítač.
 
 Obnovte následujícím způsobem:
+
 1. Otevřete trezor, ve kterém je virtuální počítač SQL Server zaregistrován.
 2. Na řídicím panelu trezoru v části **využití**vyberte **zálohované položky**.
 3. V části **zálohované položky**v části **typ správy zálohování**vyberte **SQL na virtuálním počítači Azure**.
@@ -65,8 +65,8 @@ Obnovte následujícím způsobem:
 
 5. Projděte si nabídku databáze. Poskytuje informace o zálohování databáze, včetně:
 
-    * Nejstarší a nejnovější body obnovení.
-    * Stav zálohování protokolu za posledních 24 hodin pro databáze, které jsou v režimu úplného a hromadně protokolovaného obnovení a které jsou nakonfigurovány pro transakční zálohy protokolů.
+    - Nejstarší a nejnovější body obnovení.
+    - Stav zálohování protokolu za posledních 24 hodin pro databáze, které jsou v režimu úplného a hromadně protokolovaného obnovení a které jsou nakonfigurovány pro transakční zálohy protokolů.
 
 6. Vyberte **obnovit databázi**.
 
@@ -92,7 +92,7 @@ Obnovte následujícím způsobem:
 
     ![Zadejte hodnoty pro nabídku obnovit konfiguraci.](./media/backup-azure-sql-database/restore-configuration-menu.png)
 
-2. V **části vybrat bod obnovení**vyberte, jestli se má [obnovit k určitému bodu v čase](#restore-to-a-specific-point-in-time) , nebo jestli se má [obnovit na určitý bod obnovení](#restore-to-a-specific-restore-point).
+6. V **části vybrat bod obnovení**vyberte, jestli se má [obnovit k určitému bodu v čase](#restore-to-a-specific-point-in-time) , nebo jestli se má [obnovit na určitý bod obnovení](#restore-to-a-specific-restore-point).
 
     > [!NOTE]
     > Obnovení k bodu v čase je k dispozici pouze pro zálohy protokolu pro databáze, které jsou v režimu úplného a hromadně protokolovaného obnovení.
@@ -112,7 +112,7 @@ Obnovte následujícím způsobem:
 
 Pokud jste jako typ obnovení vybrali možnost **protokoly (časový okamžik)** , udělejte toto:
 
-1.  V části **Datum/čas obnovení**otevřete kalendář. V kalendáři se data, která mají body obnovení, zobrazují tučně a aktuální datum je zvýrazněno.
+1. V části **Datum/čas obnovení**otevřete kalendář. V kalendáři se data, která mají body obnovení, zobrazují tučně a aktuální datum je zvýrazněno.
 1. Vyberte datum, které obsahuje body obnovení. Nemůžete vybrat data, která nemají žádné body obnovení.
 
     ![Otevřít kalendář](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
@@ -121,7 +121,6 @@ Pokud jste jako typ obnovení vybrali možnost **protokoly (časový okamžik)**
 1. Zadejte čas pro obnovení na grafu časové osy nebo vyberte čas. Pak vyberte **OK**.
 
     ![Vyberte čas obnovení.](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
-
 
 1. Pokud chcete po obnovení zachovat databázi neprovozované v nabídce **Upřesnit konfiguraci** , povolte **obnovení pomocí NORECOVERY**.
 1. Pokud chcete změnit umístění pro obnovení na cílovém serveru, zadejte novou cílovou cestu.
@@ -159,7 +158,6 @@ Pokud je celková velikost řetězce souborů v databázi větší než [určit�
 
   ![Obnovení databáze s velkým souborem](./media/backup-azure-sql-database/restore-large-files.jpg)
 
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Správa a monitorování](manage-monitor-sql-database-backup.md) SQL Server databáze zálohované pomocí Azure Backup.

@@ -1,5 +1,5 @@
 ---
-title: Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
+title: Zálohování serveru Exchange Server pro Azure Backup přes System Center DPM
 description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí softwaru System Center 2012 R2 DPM.
 ms.reviewer: kasinh
 author: dcurwin
@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0c8975aed79e78b4bb66ce1516b85ceeb78628e8
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 21f38105913e03adfbf400e82d3572e6e5084538
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689427"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968505"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
+
 Tento článek popisuje, jak nakonfigurovat server System Center 2012 R2 Data Protection Manager (DPM) pro zálohování serveru Microsoft Exchange pro Azure Backup.  
 
-## <a name="updates"></a>Aktuální zprávy
+## <a name="updates"></a>Aktualizace
+
 Chcete-li úspěšně zaregistrovat server aplikace DPM pomocí Azure Backup, je nutné nainstalovat nejnovější kumulativní aktualizaci pro System Center 2012 R2 DPM a nejnovější verzi agenta Azure Backup. Získejte nejnovější kumulativní aktualizaci z [katalogu Microsoftu](https://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
 
 > [!NOTE]
@@ -26,7 +28,8 @@ Chcete-li úspěšně zaregistrovat server aplikace DPM pomocí Azure Backup, je
 >
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
+
 Než budete pokračovat, ujistěte se, že byly splněny všechny [požadavky](backup-azure-dpm-introduction.md#prerequisites-and-limitations) pro použití Microsoft Azure Backup k ochraně úloh. Mezi tyto požadavky patří následující:
 
 * Vytvořili jste úložiště záloh na webu Azure.
@@ -36,14 +39,16 @@ Než budete pokračovat, ujistěte se, že byly splněny všechny [požadavky](b
 * Pokud chráníte Exchange 2016, upgradujte prosím na DPM 2012 R2 UR9 nebo novější.
 
 ## <a name="dpm-protection-agent"></a>Agent ochrany aplikace DPM
+
 Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujte podle následujících kroků:
 
 1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://technet.microsoft.com/library/Hh758204.aspx).
 2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > instalaci** v konzola správce aplikace DPM. Podrobné pokyny najdete v tématu [instalace agenta ochrany aplikace DPM](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Vytvoření skupiny ochrany pro server Exchange
+
 1. V Konzola správce aplikace DPM klikněte na **ochrana**a pak na pásu karet nástroje klikněte na **Nový** . otevře se průvodce **vytvořením nové skupiny ochrany** .
-2. Na **úvodní** obrazovce průvodce klikněte na **Další**.
+2. Na **úvodní** obrazovce průvodce klikněte na tlačítko **Další**.
 3. Na obrazovce **Vybrat typ skupiny ochrany** vyberte **servery** a klikněte na **Další**.
 4. Vyberte databázi systému Exchange Server, kterou chcete chránit, a klikněte na tlačítko **Další**.
 
@@ -82,10 +87,10 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
 11. Zkontrolujte dostupné místo na disku a potom klikněte na tlačítko **Další**.
 12. Vyberte čas, kdy bude server DPM vytvořit počáteční replikaci, a poté klikněte na tlačítko **Další**.
 13. Vyberte možnosti kontroly konzistence a potom klikněte na tlačítko **Další**.
-14. Zvolte databázi, kterou chcete zálohovat do Azure, a potom klikněte na **Další**. Příklad:
+14. Zvolte databázi, kterou chcete zálohovat do Azure, a potom klikněte na **Další**. Například:
 
     ![Zadat data online ochrany](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Zadejte plán pro **Azure Backup**a potom klikněte na tlačítko **Další**. Příklad:
+15. Zadejte plán pro **Azure Backup**a potom klikněte na tlačítko **Další**. Například:
 
     ![Zadat plán online zálohování](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -103,6 +108,7 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
 19. Klikněte na **Zavřít**.
 
 ## <a name="recover-the-exchange-database"></a>Obnovení databáze Exchange
+
 1. Chcete-li obnovit databázi systému Exchange, klikněte na tlačítko **obnovit** v konzola správce aplikace DPM.
 2. Vyhledejte databázi serveru Exchange, kterou chcete obnovit.
 3. V rozevíracím seznamu *čas obnovení* vyberte bod obnovení online.
@@ -118,5 +124,6 @@ Pro body obnovení online existuje pět typů obnovení:
 
     ![Zvolit online replikaci](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 * [Nejčastější dotazy k Azure Backup](backup-azure-backup-faq.md)

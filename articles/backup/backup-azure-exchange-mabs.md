@@ -8,28 +8,32 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 89ad5cac462384e8c688ae9ca68c5ae309249a71
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ed88f069c110795c2c5561196c41d3d75640bd53
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689282"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968470"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Zálohování serveru Exchange do Azure pomocí Azure Backup Server
+
 Tento článek popisuje, jak nakonfigurovat Microsoft Azure Backup Server (MABS) pro zálohování Microsoft Exchange serveru do Azure.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
+
 Než budete pokračovat, ujistěte se, že jsou [nainstalované a připravené](backup-azure-microsoft-azure-backup.md)Azure Backup Server.
 
 ## <a name="mabs-protection-agent"></a>MABS Protection Agent
+
 Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte podle následujících kroků:
 
 1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://technet.microsoft.com/library/Hh758204.aspx).
 2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > nainstalovat** v konzole pro správu MABS. Podrobné pokyny najdete v tématu [instalace agenta MABS Protection](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Vytvoření skupiny ochrany pro server Exchange
+
 1. V konzole pro správu MABS klikněte na **ochrana**a pak na pásu karet nástroje klikněte na **Nový** . otevře se průvodce **vytvořením nové skupiny ochrany** .
-2. Na **úvodní** obrazovce průvodce klikněte na **Další**.
+2. Na **úvodní** obrazovce průvodce klikněte na tlačítko **Další**.
 3. Na obrazovce **Vybrat typ skupiny ochrany** vyberte **servery** a klikněte na **Další**.
 4. Vyberte databázi systému Exchange Server, kterou chcete chránit, a klikněte na tlačítko **Další**.
 
@@ -68,10 +72,10 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
 11. Zkontrolujte dostupné místo na disku a potom klikněte na tlačítko **Další**.
 12. Vyberte čas, kdy bude server MAB vytvořit počáteční replikaci, a poté klikněte na tlačítko **Další**.
 13. Vyberte možnosti kontroly konzistence a potom klikněte na tlačítko **Další**.
-14. Zvolte databázi, kterou chcete zálohovat do Azure, a potom klikněte na **Další**. Příklad:
+14. Zvolte databázi, kterou chcete zálohovat do Azure, a potom klikněte na **Další**. Například:
 
     ![Zadat data online ochrany](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Zadejte plán pro **Azure Backup**a potom klikněte na tlačítko **Další**. Příklad:
+15. Zadejte plán pro **Azure Backup**a potom klikněte na tlačítko **Další**. Například:
 
     ![Zadat plán online zálohování](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -89,6 +93,7 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
 19. Klikněte na **Zavřít**.
 
 ## <a name="recover-the-exchange-database"></a>Obnovení databáze Exchange
+
 1. Databázi Exchange obnovíte kliknutím na **obnovení** v konzole pro správu MABS.
 2. Vyhledejte databázi serveru Exchange, kterou chcete obnovit.
 3. V rozevíracím seznamu *čas obnovení* vyberte bod obnovení online.
@@ -104,5 +109,6 @@ Pro body obnovení online existuje pět typů obnovení:
 
     ![Zvolit online replikaci](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 * [Nejčastější dotazy k Azure Backup](backup-azure-backup-faq.md)

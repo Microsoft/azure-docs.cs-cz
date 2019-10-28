@@ -1,5 +1,5 @@
 ---
-title: Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu – Azure Backup
+title: SQL DB v zálohování virtuálních počítačů Azure & obnovení přes PowerShell – Azure Backup
 description: Zálohujte a obnovte databáze SQL ve virtuálních počítačích Azure pomocí Azure Backup a PowerShellu.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 242eaf06b9cd0b3783a626ab13eb0cb92300652f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 229d960f7851b5fab8504b6c2a109bece6c7b31f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249056"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969096"
 ---
-# <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
+# <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
 Tento článek popisuje, jak použít Azure PowerShell k zálohování a obnovení databáze SQL ve virtuálním počítači Azure pomocí služby [Azure Backup](backup-overview.md) Recovery Services trezoru.
 
-V tomto kurzu se dozvíte, jak:
+Tento kurz vysvětluje následující postupy:
 
 > [!div class="checklist"]
 > * Nastavte PowerShell a zaregistrujte poskytovatele služby Azure Recovery Services.
-> * Vytvořte Trezor Recovery Services.
+> * Vytvořte trezor služby Recovery Services.
 > * Konfigurace zálohování databáze SQL na virtuálním počítači Azure.
 > * Spusťte úlohu zálohování.
 > * Obnovte zálohovanou databázi SQL.
@@ -87,7 +87,7 @@ Nastavte PowerShell následujícím způsobem:
 
 9. Ve výstupu příkazu ověřte, že **RegistrationState** změny se **zaregistrují**. Pokud ne, spusťte znovu rutinu **Register-AzResourceProvider** .
 
-## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 Pomocí těchto kroků můžete vytvořit trezor Recovery Services.
 
@@ -140,7 +140,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 Uložte objekt trezoru do proměnné a nastavte kontext trezoru.
 
 * Mnoho rutin Azure Backup vyžaduje jako vstup objekt Recovery Services trezoru, takže je vhodné uložit objekt trezoru do proměnné.
-* Kontext trezoru je typ dat chráněný v trezoru. Nastavte ji pomocí [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). Po nastavení je kontext použit pro všechny následné rutiny.
+* Kontext trezoru představuje typ chráněných dat v trezoru. Nastavte ji pomocí [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). Po nastavení je kontext použit pro všechny následné rutiny.
 
 Následující příklad nastaví kontext trezoru pro **testvault**.
 
@@ -471,7 +471,7 @@ Pokud se výstup ztratí nebo pokud chcete získat příslušné ID úlohy, [Zí
 
 ### <a name="change-policy-for-backup-items"></a>Změnit zásady pro zálohované položky
 
-Uživatel může buď upravit existující zásady, nebo změnit zásadu zálohované položky z Policy1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, jednoduše načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) s položkou Backup jako parametr.
+Uživatel může buď upravit existující zásady, nebo změnit zásadu zálohované položky z Policy1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) s položkou Backup jako parametr.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -510,7 +510,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Odstranit data zálohy
+#### <a name="delete-backup-data"></a>Odstranění zálohovaných dat
 
 Pokud chcete uložená zálohovaná data z trezoru úplně odebrat, stačí přidat příznak/RemoveRecoveryPoints nebo přepnout na [příkaz "Zakázat" ochranu](#retain-data).
 

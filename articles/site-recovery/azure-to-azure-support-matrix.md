@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/15/2019
+ms.date: 10/26/2019
 ms.author: raynew
-ms.openlocfilehash: f0b66806138311508725d377b59b83c1b1365674
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d689d25b9c9c7704047ccd3cfc98aa2ea583d20b
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553548"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968808"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiné
 
@@ -47,7 +47,7 @@ Virtuální počítače můžete replikovat a obnovovat mezi dvěma oblastmi v r
 **Geografický cluster** | **Oblasti Azure**
 -- | --
 Používaný | Kanada – východ, Kanada – střed, Střed USA – jih, Středozápadní USA, Východní USA, Východní USA 2, Západní USA, Západní USA 2, Střed USA, Střed USA – sever
-Evropa | Velká Británie – západ, Velká Británie – jih, Severní Evropa, Západní Evropa, Francie – střed, Francie – jih, Jižní Afrika – západ, Jižní Afrika – sever
+Evropa | Velká Británie – západ, Velká Británie – jih, Severní Evropa, Západní Evropa, Francie – střed, Francie – jih, Jižní Afrika – západ, Jižní Afrika – sever, Norsko – východ, Norsko – západ
 Asie | Jižní Indie, Střed Indie, Západní Indie, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih, střed USA (Spojené arabské emiráty), Spojené arabské emiráty sever
 Austrálie   | Austrálie – východ, Austrálie – jihovýchod, Austrálie – střed, Austrálie – střed 2
 Azure Government    | US GOV) – Virginia, US GOV Iowa, US GOV Arizona, US GOV Texas, US DOD – východ, US DOD – střed 

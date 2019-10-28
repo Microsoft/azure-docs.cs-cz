@@ -10,23 +10,29 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 10/27/2019
 ms.author: juliako
-ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672662"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968720"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
-Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
+V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vývojem.
 
-* Nejnovější vydané verzi
+* Nejnovější verze
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="october-2019"></a>Říjen 2019
+ 
+* Hledání animovaných znaků v galerii
+
+    Při indexování animovaných znaků je teď můžete vyhledat v zobrazení videa účtu. Další informace najdete v tématu [rozpoznávání animovaných znaků](animated-characters-recognition.md).
 
 ## <a name="september-2019"></a>Září 2019
  
@@ -37,7 +43,7 @@ V daty IBC 2019 bylo oznámeno více předběžných.
     Možnost rozpoznávat znaky skupinových reklam v animovaném obsahu prostřednictvím integrace s vlastními vizemi. Další informace naleznete v tématu [animovaná detekce znaků](animated-characters-recognition.md).
 * Identifikace ve více jazycích (Public Preview)
 
-    Detekuje segmenty v různých jazycích zvukové stopy a na základě nich vytvoří vícejazyčný přepis. Počáteční podpora: Angličtina, španělština, němčina a francouzština. Další informace najdete v tématu [Automatické určení a přepisovat vícejazyčného obsahu](multi-language-identification-transcription.md).
+    Detekuje segmenty v různých jazycích zvukové stopy a na základě nich vytvoří vícejazyčný přepis. Počáteční podpora: angličtina, španělština, němčina a francouzština. Další informace najdete v tématu [Automatické určení a přepisovat vícejazyčného obsahu](multi-language-identification-transcription.md).
 * Extrakce pojmenovaná entita pro lidi a umístění
 
     Extrahuje značky, umístění a lidi z mluvené řeči a vizuálního textu prostřednictvím zpracování přirozeného jazyka (NLP).
@@ -95,7 +101,7 @@ Editor AI Video Indexer je teď k dispozici jako widget, který se má vložit d
 
 Zákazníci můžou jako vstup pro jazykové modely na stránce vlastní nastavení portálu zadat formáty souborů VTT, SRT aplikace a TTML.
 
-## <a name="june-2019"></a>Červeně 2019
+## <a name="june-2019"></a>Červen 2019
 
 ### <a name="video-indexer-deployed-to-japan-east"></a>Video Indexer nasazené do Japonska – východ
 

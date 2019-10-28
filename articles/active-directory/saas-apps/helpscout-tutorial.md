@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Scout Nápověda | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pomáhají Scout.
+title: 'Kurz: Azure Active Directory integrace s Help Scout | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a help Scout.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,226 +12,225 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/15/2019
+ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3625a6bbf22a2d51546a91e8a5f7c58b7fbb264f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6db6389eac1d7ccc2f81cabbd7d56d0650343aa
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101172"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988692"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Kurz: Integrace Azure Active Directory s pomáhají Scout
+# <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Kurz: Azure Active Directory integrace s Help Scout
 
-V tomto kurzu se dozvíte, jak integrovat Azure Active Directory (Azure AD) pomáhají Scout.
-Integrace s Azure AD pomoct Scout poskytuje následující výhody:
+V tomto kurzu se naučíte integrovat Help Scout s Azure Active Directory (Azure AD).
+Integrace Help Scout s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k nápovědě Scout.
-* Uživatelům se automaticky přihlášeni k nápovědě Scout (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k nápovědě Scout.
+* Můžete uživatelům povolit, aby se automaticky přihlásili k aplikaci Scout (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s pomáhají Scout, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD pomocí programu Help Scout budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Nápověda Scout jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Přihlašování k předplatnému s jednotným přihlašováním v Scout
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje Scout nápovědy **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
-* Podporuje Scout nápovědy **JIT** zřizování uživatelů
+* Help Scout podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování
+* Help Scout podporuje zřizování uživatelů **jenom v čase**
 
-## <a name="adding-help-scout-from-the-gallery"></a>Přidání pomáhají Scout z Galerie
+## <a name="adding-help-scout-from-the-gallery"></a>Přidání Help Scout z Galerie
 
-Pokud chcete nakonfigurovat integrace pomůže Scout do služby Azure AD, potřebujete přidat pomáhají Scout z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Help Scout do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat Help Scout z galerie.
 
-**Nápověda Scout přidat z galerie, postupujte následovně:**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **help Scout** .
+1. Vyberte **help Scout** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí programu Help Scout na základě testovacího uživatele s názvem **B. Simon**.
+Aby jednotné přihlašování fungovalo, je potřeba vytvořit odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v nápovědě Scout.
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Help Scout, musíte dokončit tyto stavební bloky:
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte Help Scout SSO](#configure-help-scout-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    * **[Vytvořte Help Scout Test User](#create-help-scout-test-user)** – Pokud chcete mít protějšek B. Simon v nápovědě Scout, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **pomáhají Scout**vyberte **pomáhají Scout** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Help Scout, proveďte následující kroky:
 
-     ![Nápověda Scout v seznamu výsledků](common/search-new-app.png)
+1. V [Azure Portal](https://portal.azure.com/)na stránce aplikace **help Scout** Application Integration vyberte **jednotné přihlašování**.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí pomáhají Scout podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele v nápovědě Scout.
+1. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Scout nápovědy, které potřebujete k dokončení následujících stavebních bloků:
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace pomoci Scout Single Sign-On](#configure-help-scout-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele pomáhají Scout](#create-help-scout-test-user)**  – Pokud chcete mít protějšek Britta Simon pomáhají Scout, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-Ke konfiguraci Azure AD jednotné přihlašování s pomáhají Scout, proveďte následující kroky:
+    ![Informace o jednotném přihlašování k doméně Scout a adresám URL](common/idp-intiated.png)
 
-1. V [webu Azure portal](https://portal.azure.com/)na **pomáhají Scout** integrace stránce aplikace vyberte **jednotného přihlašování**.
+    a. **Identifikátor** je identifikátor **URI cílové skupiny (ID entity poskytovatele služeb)** z Help Scout, začíná na `urn:`
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
-
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
-
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
-
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
-
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
-
-    ![Nápověda Scout domény a adresy URL jednotné přihlašování](common/idp-intiated.png)
-
-    a. **Identifikátor** je **identifikátor URI cílové skupiny (ID Entity poskytovatele služeb)** začíná od pomáhají Scout `urn:`
-
-    b. **Adresa URL pro odpověď** je **po adresy URL (adresa URL služby příjemce kontrolního výrazu)** začíná od pomáhají Scout `https://` 
+    b. **Adresa URL odpovědi** je **Adresa URL pro zpětné odeslání (adresa URL služby potvrzení)** z tématu Help Scout, začíná na `https://` 
 
     > [!NOTE]
-    > Hodnoty v těchto adres URL jsou pouze ukázku. Je potřeba aktualizovat tyto hodnoty z skutečnou odpověď URL a identifikátor. Získání těchto hodnot z **Single Sign-On** kartu v části ověřování, který je vysvětlen později v tomto kurzu.
+    > Hodnoty v těchto adresách URL jsou pouze pro ukázku. Tyto hodnoty je potřeba aktualizovat ze skutečné adresy URL a identifikátoru odpovědi. Tyto hodnoty získáte na kartě **jednotného přihlašování** v části ověřování, které jsou vysvětleny dále v tomto kurzu.
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Nápověda Scout domény a adresy URL jednotné přihlašování](common/metadata-upload-additional-signon.png)
+    ![Informace o jednotném přihlašování k doméně Scout a adresám URL](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL jako: `https://secure.helpscout.net/members/login/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL jako: `https://secure.helpscout.net/members/login/`
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-7. Na **nastavení nápovědy Scout** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+1. V části **nastavit Help Scout** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
-    c. Adresa URL – odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-help-scout-single-sign-on"></a>Konfigurace nápovědy Scout jednotného přihlašování
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-1. V okně jiné webové prohlížeče Přihlaste se k serveru vaší společnosti pomůžou Scout jako správce.
+Cílem této části je vytvořit testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-2. Klikněte na **spravovat** v horní nabídce a pak vyberte **společnosti** z rozevírací nabídky.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+
+2. V horní části obrazovky vyberte **Nový uživatel** .
+
+    ![Tlačítko pro nového uživatele](common/new-user.png)
+
+3. Ve vlastnostech uživatele proveďte následující kroky.
+
+    ![Uživatelský dialog](common/user-properties.png)
+
+    a. Do pole **název** zadejte **B. Simon**.
+  
+    b. Do pole **uživatelské jméno** zadejte **B. Simon\@yourcompanydomain. extension.**  
+    Například B.Simon@contoso.com.
+
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+
+    d. Klikněte na **Vytvořit**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k nápovědě Scout.
+
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **help Scout**.
+
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
+
+2. V seznamu aplikace vyberte **help Scout**.
+
+    ![Odkaz Help Scout v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
+
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-help-scout-sso"></a>Konfigurace Help Scout SSO
+
+1. Chcete-li automatizovat konfiguraci v rámci programu Help Scout, je nutné nainstalovat **rozšíření prohlížeče zabezpečeného přihlašování aplikace** kliknutím na tlačítko **nainstalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+1. Po přidání rozšíření do prohlížeče klikněte na tlačítko **nastavit pomoc Scout** . budete přesměrováni na aplikaci Help Scout. Odtud zadejte přihlašovací údaje správce pro přihlášení k nápovědě Scout. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-7.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+1. Pokud chcete nastavit aplikaci Help Scout ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu Help Scout společnosti jako správce a proveďte následující kroky:
+
+1. V horní nabídce klikněte na možnost **Spravovat** a v rozevírací nabídce vyberte možnost **Společnost** .
 
     ![Konfigurace jednotného přihlašování](./media/helpscout-tutorial/settings1.png)
 
-3. Vyberte **ověřování** v levém navigačním podokně.
+1. V levém navigačním podokně vyberte **ověřování** .
 
     ![Konfigurace jednotného přihlašování](./media/helpscout-tutorial/settings2.png)
 
-4. Tím přejdete do části Nastavení SAML a proveďte následující kroky:
+1. Tím přejdete do části nastavení SAML a provedete následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/helpscout-tutorial/settings3.png)
 
-    a. Kopírovat **po adresy URL (adresa URL služby příjemce kontrolního výrazu)** hodnotu a vložte tuto hodnotu v **adresy URL odpovědi** textové pole **základní konfiguraci SAML** oddíl ve službě Azure portál.
+    a. Zkopírujte hodnotu **adresy URL pro zpětný příspěvek (URL služby assertion Consumer Service)** a vložte ji do textového pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
 
-    b. Kopírovat **identifikátor URI cílové skupiny (ID Entity poskytovatele služeb)** hodnotu a vložte tuto hodnotu v **identifikátor** textové pole **základní konfiguraci SAML** části webu Azure Portal.
+    b. Zkopírujte hodnotu **identifikátor URI cílové skupiny (ID entity poskytovatele služby)** a vložte hodnotu do textového pole **identifikátor** v části **základní konfigurace SAML** v Azure Portal.
 
-5. Přepnout **povolit SAML** na a proveďte následující kroky:
+1. Přepněte na **Povolit SAML** v a proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/helpscout-tutorial/settings4.png)
 
-    a. V **přihlašovací adresu URL jednotného** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    a. Do textového pole **Adresa URL jednotného přihlašování** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
 
-    b. Klikněte na tlačítko **nahrát certifikát** k nahrání **Certificate(Base64)** stáhnout z webu Azure portal.
+    b. Kliknutím na **nahrát certifikát** nahrajte **certifikát (Base64)** stažený z Azure Portal.
 
-    c. Zadejte vaše organizace e-mailových domén např - `contoso.com` v **e-mailových domén** textového pole. Více domén můžete oddělit čárkou. Kdykoli pomáhají Scout uživatel nebo správce, který zadá na tuto konkrétní doménu [pomáhají Scout přihlašovací stránka](https://secure.helpscout.net/members/login/) přesměruje se ke zprostředkovateli Identity kvůli ověření pomocí svých přihlašovacích údajů.
+    c. Do textového pole **e-mailové domény** zadejte e-mailové domény vaší organizace e.x. `contoso.com`. Více domén můžete oddělit čárkou. Kdykoli vám pomůže uživatel nebo správce Scout, který zadá konkrétní doménu na přihlašovací [stránce help Scout](https://secure.helpscout.net/members/login/) , směrovat do zprostředkovatele identity, aby se ověřil s jejich přihlašovacími údaji.
 
-    d. A konečně, můžete přepínat **přihlašování SAML platnost** , aby uživatelé přihlašovat pouze k nápovědě Scout prostřednictvím prostřednictvím této metody. Pokud stále chcete ponechte možnost pro ně se přihlásit pomocí svých přihlašovacích údajů pomůžou Scout, můžete nechat ji přepínat vypnout. I v případě, že je tato možnost povolena, vlastníka účtu vždy bude moct přihlásit k nápovědě Scout s své heslo účtu.
+    d. Nakonec můžete přepnout **vynucené přihlášení** pomocí protokolu SAML, pokud chcete, aby se uživatelé přihlásili jenom k nápovědě Scout prostřednictvím této metody. Pokud si chcete ponechat možnost, aby se přihlásili pomocí přihlašovacích údajů pro nápovědu Scout, můžete je nechat zapnuté. I když je tato možnost povolená, vlastník účtu se vždycky bude moct přihlásit k nápovědě Scout s heslem k účtu.
 
     e. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-help-scout-test-user"></a>Vytvoření Help Scout Test User
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části se v nápovědě Scout vytvoří uživatel s názvem B. Simon. Help Scout podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v nápovědě Scout neexistuje, vytvoří se po ověření nový.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+### <a name="test-sso"></a>Test SSO
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+Po kliknutí na dlaždici Help Scout na přístupovém panelu byste se měli automaticky přihlášeni k nápovědě Scout, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+## <a name="additional-resources"></a>Další materiály
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
-  
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k nápovědě Scout.
-
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **pomáhají Scout**.
-
-    ![Okno aplikace organizace](common/enterprise-applications.png)
-
-2. V seznamu aplikací vyberte **pomáhají Scout**.
-
-    ![Na odkaz Nápověda Scout v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
-
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
-
-### <a name="create-help-scout-test-user"></a>Vytvořit testovacího uživatele pomáhají Scout
-
-V této části se vytvoří uživateli Britta Simon v nápovědě Scout. Nápověda Scout podporuje zřizování uživatelů v čase, je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel ještě neexistuje v nápovědě Scout, se po ověření vytvoří nový.
-
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
-
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
-
-Když kliknete na dlaždici Nápověda Scout na přístupovém panelu, by měl být automaticky přihlásíte k nápovědě Scout, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
-
-## <a name="additional-resources"></a>Další prostředky
-
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si Help Scout s Azure AD](https://aad.portal.azure.com/)

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: 2c9ca71816d6688881de465a575a8a0eef3cde1f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: bfaecc5fe9fbbd68ba0f138b7b40b2507d729635
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650444"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968638"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Zálohování a obnovení souborů Azure pomocí PowerShellu
 
-Tento článek popisuje, jak pomocí Azure PowerShell zálohovat a obnovovat sdílenou složku souborů Azure pomocí trezoru služby [Azure Backup](backup-overview.md) Recovery Services. 
+Tento článek popisuje, jak pomocí Azure PowerShell zálohovat a obnovovat sdílenou složku souborů Azure pomocí trezoru služby [Azure Backup](backup-overview.md) Recovery Services.
 
 Tento kurz vysvětluje následující postupy:
 
@@ -29,13 +29,11 @@ Tento kurz vysvětluje následující postupy:
 > * Obnovte zálohovanou sdílenou složku Azure nebo jednotlivé soubory ze sdílené složky.
 > * Monitorujte úlohy zálohování a obnovení.
 
-
 ## <a name="before-you-start"></a>Než začnete
 
-- [Přečtěte si další informace](backup-azure-recovery-services-vault-overview.md) o úložištích Recovery Services.
-- Přečtěte si o možnostech verze Preview pro [Zálohování sdílených složek Azure](backup-azure-files.md).
-- Zkontrolujte hierarchii objektů PowerShell pro Recovery Services.
-
+* [Přečtěte si další informace](backup-azure-recovery-services-vault-overview.md) o úložištích Recovery Services.
+* Přečtěte si o možnostech verze Preview pro [Zálohování sdílených složek Azure](backup-azure-files.md).
+* Zkontrolujte hierarchii objektů PowerShell pro Recovery Services.
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services hierarchie objektů
 
@@ -43,8 +41,7 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 
 ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](/powershell/module/az.recoveryservices) v knihovně Azure.
-
+Přečtěte si referenční informace k [rutině](/powershell/module/az.recoveryservices) **AZ. RecoveryServices** v knihovně Azure.
 
 ## <a name="set-up-and-install"></a>Nastavení a instalace
 
@@ -59,57 +56,59 @@ Nastavte PowerShell následujícím způsobem:
     ```powershell
     Get-Command *azrecoveryservices*
     ```
+
 3. Zkontrolujte aliasy a rutiny pro Azure Backup, Azure Site Recovery a Recovery Services trezor. Tady je příklad toho, co se vám může zobrazit. Nejedná se o úplný seznam rutin.
 
     ![Seznam rutin Recovery Services](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-3. Přihlaste se ke svému účtu Azure pomocí **Connect-AzAccount**.
-4. Na zobrazené webové stránce budete vyzváni k zadání přihlašovacích údajů k účtu.
+4. Přihlaste se ke svému účtu Azure pomocí **Connect-AzAccount**.
+5. Na zobrazené webové stránce budete vyzváni k zadání přihlašovacích údajů k účtu.
 
-    - Alternativně můžete zahrnout přihlašovací údaje účtu jako parametr v rutině **Connect-AzAccount** s parametrem **-Credential**.
-    - Pokud jste partner CSP jménem tenanta, zadejte zákazníka jako tenanta pomocí názvu primární domény tenantID nebo tenanta. Příkladem je **Connect-AzAccount-Tenant** Fabrikam.com.
+    * Alternativně můžete zahrnout přihlašovací údaje účtu jako parametr v rutině **Connect-AzAccount** s parametrem **-Credential**.
+    * Pokud jste partner CSP jménem tenanta, zadejte zákazníka jako tenanta pomocí názvu primární domény tenantID nebo tenanta. Příkladem je **Connect-AzAccount-Tenant** Fabrikam.com.
 
-4. Přidružte předplatné, které chcete používat s účtem, protože účet může mít několik předplatných.
+6. Přidružte předplatné, které chcete používat s účtem, protože účet může mít několik předplatných.
 
     ```powershell
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. Pokud používáte Azure Backup poprvé, zaregistrujte poskytovatele služby Azure Recovery Services s vaším předplatným pomocí rutiny **Register-AzResourceProvider** .
+7. Pokud používáte Azure Backup poprvé, zaregistrujte poskytovatele služby Azure Recovery Services s vaším předplatným pomocí rutiny **Register-AzResourceProvider** .
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-6. Ověřte, zda poskytovatelé úspěšně zaregistrovali:
+8. Ověřte, zda poskytovatelé úspěšně zaregistrovali:
 
     ```powershell
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-7. Ve výstupu příkazu ověřte, že **RegistrationState** změny se zaregistrují. Pokud ne, spusťte znovu rutinu **Register-AzResourceProvider** .
 
-
+9. Ve výstupu příkazu ověřte, že **RegistrationState** změny se **zaregistrují**. Pokud ne, spusťte znovu rutinu **Register-AzResourceProvider** .
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-Pomocí těchto kroků můžete vytvořit trezor Recovery Services.
+Recovery Services trezor je prostředek Správce prostředků, takže ho musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků, nebo můžete vytvořit skupinu prostředků pomocí rutiny **New-AzResourceGroup** . Při vytváření skupiny prostředků zadejte název a umístění skupiny prostředků.
 
-- Recovery Services trezor je prostředek Správce prostředků, takže ho musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků, nebo můžete vytvořit skupinu prostředků pomocí rutiny **New-AzResourceGroup** . Při vytváření skupiny prostředků zadejte název a umístění skupiny prostředků. 
+Pomocí těchto kroků můžete vytvořit trezor Recovery Services.
 
 1. Trezor se umístí do skupiny prostředků. Pokud nemáte existující skupinu prostředků, vytvořte novou pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0). V tomto příkladu vytvoříme novou skupinu prostředků v Západní USA oblasti.
 
    ```powershell
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
+
 2. K vytvoření trezoru použijte rutinu [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) . Zadejte stejné umístění pro trezor, které bylo použito pro skupinu prostředků.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
+
 3. Zadejte typ redundance, který se použije pro úložiště trezoru.
 
-   - Můžete použít [místně redundantní úložiště](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště](../storage/common/storage-redundancy-grs.md).
-   - Následující příklad nastaví možnost **-BackupStorageRedundancy** pro příkaz[set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd pro **testvault** nastavenou na geograficky **redundantní**.
+   * Můžete použít [místně redundantní úložiště](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště](../storage/common/storage-redundancy-grs.md).
+   * Následující příklad nastaví možnost **-BackupStorageRedundancy** pro příkaz[set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd pro **testvault** nastavenou na geograficky **redundantní**.
 
      ```powershell
      $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -140,9 +139,8 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 Uložte objekt trezoru do proměnné a nastavte kontext trezoru.
 
-- Mnoho rutin Azure Backup vyžaduje jako vstup objekt Recovery Services trezoru, takže je vhodné uložit objekt trezoru do proměnné.
-- Kontext trezoru představuje typ chráněných dat v trezoru. Nastavte ji pomocí [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). Po nastavení je kontext použit pro všechny následné rutiny.
-
+* Mnoho rutin Azure Backup vyžaduje jako vstup objekt Recovery Services trezoru, takže je vhodné uložit objekt trezoru do proměnné.
+* Kontext trezoru představuje typ chráněných dat v trezoru. Nastavte ji pomocí [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). Po nastavení je kontext použit pro všechny následné rutiny.
 
 Následující příklad nastaví kontext trezoru pro **testvault**.
 
@@ -163,10 +161,10 @@ New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType 
 
 Zásady zálohování určují plán zálohování a dobu, po kterou mají být udržovány body obnovení zálohy:
 
-- Zásada zálohování je přidružená minimálně k jedné zásadě uchovávání informací. Zásady uchovávání informací definují, jak dlouho je bod obnovení udržován před jeho odstraněním.
-- Podívejte se na výchozí uchování zásad zálohování pomocí [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0).
-- Seznamte se s výchozím plánem zásad zálohování pomocí [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0).
--  Pomocí rutiny [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) vytvoříte nové zásady zálohování. Zadáváte objekty zásad plánování a uchovávání dat.
+* Zásada zálohování je přidružená minimálně k jedné zásadě uchovávání informací. Zásady uchovávání informací definují, jak dlouho je bod obnovení udržován před jeho odstraněním.
+* Podívejte se na výchozí uchování zásad zálohování pomocí [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0).
+* Seznamte se s výchozím plánem zásad zálohování pomocí [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0).
+* Pomocí rutiny [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) vytvoříte nové zásady zálohování. Zadáváte objekty zásad plánování a uchovávání dat.
 
 Ve výchozím nastavení je v objektu zásad plánování definován počáteční čas. Pomocí následujícího příkladu změňte čas spuštění na požadovaný čas zahájení. Požadovaný čas spuštění by měl být také ve formátu UTC. Následující příklad předpokládá, že požadovaný počáteční čas je 01:00 UTC pro denní zálohy.
 
@@ -258,7 +256,7 @@ Pomocí rutiny [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/
 3. Spusťte zálohování na vyžádání pomocí rutiny[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
 
 Zálohování na vyžádání spusťte následujícím způsobem:
-    
+
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
 $afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
@@ -279,7 +277,7 @@ Snímky sdílené složky Azure se používají v době, kdy se provádí záloh
 
 Zálohy na vyžádání se dají použít k uchování snímků po dobu 10 let. Plánovače se dají použít ke spouštění skriptů PowerShellu na vyžádání s vybraným uchováváním, takže snímky se v pravidelných intervalech přijímají každý týden, měsíc nebo rok. Při vytváření běžných snímků se řiďte [omezeními zálohování na vyžádání](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share-) pomocí služby Azure Backup.
 
-Pokud hledáte ukázkové skripty, můžete se podívat na ukázkový skript na GitHubu (https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) pomocí Azure Automation Runbooku, který vám umožní pravidelně plánovat zálohy a uchovávat je ještě po dobu 10 let.
+Pokud hledáte ukázkové skripty, můžete se podívat na ukázkový skript na GitHubu (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)> pomocí sady Azure Automation Runbook, která vám umožní pravidelně plánovat zálohy a uchovávat je ještě až 10 let.
 
 ### <a name="modify-the-protection-policy"></a>Upravit zásady ochrany
 
@@ -296,7 +294,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 
 ## <a name="restore-azure-file-shares-and-files"></a>Obnovení sdílených složek a souborů Azure
 
-Můžete obnovit celou sdílenou složku nebo konkrétní soubory ve sdílené složce. Můžete obnovit do původního umístění nebo do alternativního umístění. 
+Můžete obnovit celou sdílenou složku nebo konkrétní soubory ve sdílené složce. Můžete obnovit do původního umístění nebo do alternativního umístění.
 
 ### <a name="fetch-recovery-points"></a>Načíst body obnovení
 
@@ -304,10 +302,10 @@ K vypsání všech bodů obnovení pro zálohovanou položku použijte [příkaz
 
 V následujícím skriptu:
 
-- Proměnná **$RP** je pole bodů obnovení pro vybranou zálohovanou položku z posledních sedmi dnů.
-- Pole je seřazené v opačném pořadí s nejnovějším bodem obnovení na indexu **0**.
-- Pro výběr bodu obnovení použijte standardní indexování pole v PowerShellu.
-- V příkladu **$RP [0]** vybere nejnovější bod obnovení.
+* Proměnná **$RP** je pole bodů obnovení pro vybranou zálohovanou položku z posledních sedmi dnů.
+* Pole je seřazené v opačném pořadí s nejnovějším bodem obnovení na indexu **0**.
+* Pro výběr bodu obnovení použijte standardní indexování pole v PowerShellu.
+* V příkladu **$RP [0]** vybere nejnovější bod obnovení.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -332,16 +330,17 @@ ContainerName        : storage;teststorageRG;testStorageAcct
 ContainerType        : AzureStorage
 BackupManagementType : AzureStorage
 ```
+
 Po výběru příslušného bodu obnovení obnovte sdílenou složku nebo soubor do původního umístění nebo do alternativního umístění.
 
 ### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Obnovení sdílené složky Azure do alternativního umístění
 
-K obnovení do vybraného bodu obnovení použijte [příkaz Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) . Zadejte tyto parametry pro identifikaci alternativního umístění: 
+K obnovení do vybraného bodu obnovení použijte [příkaz Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) . Zadejte tyto parametry pro identifikaci alternativního umístění:
 
-- **TargetStorageAccountName**: Účet úložiště, do kterého se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
-- **TargetFileShareName**: Sdílené složky v rámci cílového účtu úložiště, do kterého se obnoví zálohovaný obsah.
-- **TargetFolder**: Složka ve sdílené složce, do které se mají obnovit data Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnoty cílové složky jako prázdný řetězec.
-- **ResolveConflict selhalo**: Instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
+* **TargetStorageAccountName**: účet úložiště, do kterého se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
+* **TargetFileShareName**: sdílené složky v rámci cílového účtu úložiště, do kterého se obnoví zálohovaný obsah.
+* **TargetFolder**: složka ve sdílené složce, do které se budou data obnovovat. Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnoty cílové složky jako prázdný řetězec.
+* **ResolveConflict selhalo**: instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
 
 Spusťte rutinu s parametry následujícím způsobem:
 
@@ -361,12 +360,12 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 K obnovení do vybraného bodu obnovení použijte [příkaz Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) . Určete tyto parametry k identifikaci alternativního umístění a k jedinečné identifikaci souboru, který chcete obnovit.
 
-* **TargetStorageAccountName**: Účet úložiště, do kterého se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
-* **TargetFileShareName**: Sdílené složky v rámci cílového účtu úložiště, do kterého se obnoví zálohovaný obsah.
-* **TargetFolder**: Složka ve sdílené složce, do které se mají obnovit data Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnoty cílové složky jako prázdný řetězec.
-* **SourceFilePath**: Absolutní cesta k souboru, který má být obnoven ve sdílené složce, jako řetězec. Tato cesta je stejná jako cesta použitá v rutině PowerShellu **Get-AzStorageFile** .
-* **SourceFileType**: Zda je vybrán adresář nebo soubor. Přijímá **adresář** nebo **soubor**.
-* **ResolveConflict selhalo**: Instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
+* **TargetStorageAccountName**: účet úložiště, do kterého se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
+* **TargetFileShareName**: sdílené složky v rámci cílového účtu úložiště, do kterého se obnoví zálohovaný obsah.
+* **TargetFolder**: složka ve sdílené složce, do které se budou data obnovovat. Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnoty cílové složky jako prázdný řetězec.
+* **SourceFilePath**: absolutní cesta k souboru, která se má obnovit v rámci sdílené složky jako řetězec. Tato cesta je stejná jako cesta použitá v rutině PowerShellu **Get-AzStorageFile** .
+* **SourceFileType**: Určuje, zda je vybrán adresář nebo soubor. Přijímá **adresář** nebo **soubor**.
+* **ResolveConflict selhalo**: instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
 
 Další parametry (SourceFilePath a SourceFileType) se týkají pouze jednotlivých souborů, které chcete obnovit.
 
@@ -421,5 +420,7 @@ $job.ErrorDetails
  --------- ------------                                          ---------------
 1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.
 ```
-## <a name="next-steps"></a>Další postup
+
+## <a name="next-steps"></a>Další kroky
+
 [Přečtěte si o](backup-azure-files.md) zálohování souborů Azure v Azure Portal.

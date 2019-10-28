@@ -1,5 +1,5 @@
 ---
-title: Matice podpory pro Microsoft Azure Backup Server a System Center DPM
+title: Tabulka podpory aplikace Microsoft Azure Backup Server & System Center DPM
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup Server nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 author: dcurwin
 ms.service: backup
@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: d14cd996fe0e5a67cc3b554fe1e12146cd6b8e1c
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: cb3561030cfd86137d7d668ca14db605cc365e86
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981089"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969010"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -156,7 +156,7 @@ Následující tabulka shrnuje, co se dá zálohovat na MABS z místních počí
 
 **Backup** | **Zachovávaných** | **MABS** | **Podrobnosti** |
 --- | --- | --- | --- |
-**Windows 10 @ no__t-1Windows 8.1 @ no__t-2Windows 8 @ no__t-3Windows 7**<br/><br/>(32/64 bitů) | MABS v3, v2 | Místně. | Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit.<br/><br/> Svazky musí mít aspoň 1 GB a NTFS. |
+**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 bitů) | MABS v3, v2 | Místně. | Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit.<br/><br/> Svazky musí mít aspoň 1 GB a NTFS. |
 **Windows Server 2016 (Datacenter, Standard, ne nano)**<br/><br/> 64/32 bitů | MABS v3, v2 | Místní/virtuální počítač Azure.| Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> Podporované svazky s odstraněním duplicit. |
 **Windows Server 2012 R2 (Datacenter a Standard)**<br/><br/> 64/32 bitů | MABS v3, v2 | Místní/virtuální počítač Azure. | **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Azure VMprotection**: svazek/sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
 **Windows Server 2012 s aktualizací SP1 (Datacenter a Standard)**<br/><br/> 64/32 bitů | MABS v3, v2 <br/><br/> Je třeba nainstalovat [rozhraní Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) . | Místní/virtuální počítač Azure. | **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálních počítačů Azure**: svazek/sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
@@ -178,7 +178,7 @@ Následující tabulka shrnuje, co je možné zálohovat do DPM z místních po�
 
 **Backup** | **DPM** | **Podrobnosti**
 --- | --- | ---
-**Windows 10 @ no__t-1Windows 8.1 @ no__t-2Windows 8 @ no__t-3Windows 7**<br/><br/>(32/64 bitů) | Pouze místní.<br/><br/> Pro zálohování Windows 10 s DPM 2012 R2 doporučujeme nainstalovat [Update 11](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager). | Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit.<br/><br/> Svazky musí mít aspoň 1 GB a NTFS.
+**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 bitů) | Pouze místní.<br/><br/> Pro zálohování Windows 10 s DPM 2012 R2 doporučujeme nainstalovat [Update 11](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager). | Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit.<br/><br/> Svazky musí mít aspoň 1 GB a NTFS.
 **Windows Server 2016 (Datacenter, Standard, ne nano)**<br/><br/> 64/32 bitů | Místní/virtuální počítač Azure.<br/><br/> Jenom DPM 2016.| Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> Podporované svazky s odstraněním duplicit.
 **Windows Server 2012 R2 (Datacenter a Standard)**<br/><br/> 64/32 bitů | Místní/virtuální počítač Azure. | **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálních počítačů Azure**: svazek/sdílená složka/složka/soubor.<br/><br/> Svazky s odstraněnými duplicitami podporované DPM 2012 R2 a novějším.
 **Windows Server 2012 s aktualizací SP1 (Datacenter a Standard)**<br/><br/> 64/32 bitů | Místní/virtuální počítač Azure. | **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálních počítačů Azure**: svazek/sdílená složka/složka/soubor.<br/><br/> Svazky s odstraněnými duplicitami podporované DPM 2012 R2 a novějším.

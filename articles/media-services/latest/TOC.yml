@@ -5,6 +5,7 @@
     - name: Informace o Media Services
       href: media-services-overview.md
     - name: Co je nového v Media Services
+      displayName: release notes
       href: release-notes.md
 - name: Kurzy
   expanded: true

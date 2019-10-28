@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: 8a26e369783da8b59837e669dcd45a338ce82722
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934998"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990222"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
  
@@ -71,6 +71,9 @@ Chcete-li vytvořit jednoduchou uživatelem definovanou funkci jazyka JavaScript
 6.  Vyberte **Save** (Uložit). Daná funkce se zobrazí v seznamu funkcí.
 7.  Vyberte novou funkci **hex2Int** a zkontrolujte definici funkce. U všech funkcí je k aliasu funkce přidaná předpona **UDF**. Při volání funkce v dotazu Stream Analytics je nutné *zahrnout předponu*. V tomto případě byste volali **UDF.hex2Int**.
 
+## <a name="testing-javascript-udfs"></a>Testování UDF JavaScriptu 
+Logiku JavaScriptu pro systém souborů JavaScript můžete testovat a ladit v jakémkoli prohlížeči. Ladění a testování logiky těchto uživatelsky definovaných funkcí se v současnosti na portálu Stream Analytics nepodporuje. Jakmile funkce funguje podle očekávání, můžete ji přidat do Stream Analytics úlohy, jak je uvedeno výše, a pak ji vyvolat přímo z dotazu.
+
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Volání uživatelem definované funkce jazyka JavaScript v dotazu
 
 1. V editoru dotazů vyberte v záhlaví **topologie úlohy** možnost **dotaz**.
@@ -125,7 +128,6 @@ Jazyk JavaScript rozlišuje velká a malá písmena a velikost polí objektu v k
 
 ## <a name="troubleshooting"></a>Řešení potíží
 Chyby jazyka JavaScript za běhu se považují za závažné a zobrazují se prostřednictvím protokolu aktivit. Pokud chcete protokol načíst, přejděte na portálu Azure Portal na příslušnou úlohu a vyberte **Protokol aktivit**.
-
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Další vzory uživatelem definovaných funkcí jazyka JavaScript
 

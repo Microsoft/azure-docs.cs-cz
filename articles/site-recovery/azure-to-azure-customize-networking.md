@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8038f7c909cfeaf15039afa7335dd6b0460a2622
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 191161c8185f45712052000285013a6e61c9fa6a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293460"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968916"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Přizpůsobení síťových konfigurací cílového virtuálního počítače Azure
 
@@ -31,15 +31,12 @@ Při replikaci virtuálních počítačů Azure můžete pro virtuální počít
 - [Veřejná IP adresa](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Skupina zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) pro podsíť i pro síťovou kartu
 
- > [!IMPORTANT]
-  > Tato nastavení se v současnosti podporují jenom v operaci převzetí služeb při selhání, a ne pro testovací převzetí služeb při selhání.
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že vaše konfigurace na straně obnovení naplánujete předem.
 - Vytvořte si síťové prostředky předem. Poskytněte ji jako vstup, aby služba Azure Site Recovery mohla přijmout tato nastavení a zajistit, aby se virtuální počítač s podporou převzetí služeb při selhání dodržoval s těmito nastaveními.
 
-## <a name="customize-failover-networking-configurations"></a>Přizpůsobení síťových konfigurací s podporou převzetí služeb při selhání
+## <a name="customize-failover-and-test-failover-networking-configurations"></a>Přizpůsobení konfigurací převzetí služeb při selhání a testovacího převzetí služeb
 
 1. Přejít na **replikované položky**. 
 2. Vyberte požadovaný virtuální počítač Azure.
@@ -47,15 +44,18 @@ Při replikaci virtuálních počítačů Azure můžete pro virtuální počít
 
      ![Přizpůsobení síťových konfigurací převzetí služeb při selhání](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Vyberte **Upravit** u síťového adaptéru, který chcete konfigurovat. V dalším okně, které se otevře, vyberte odpovídající předem vytvořené prostředky v cíli.
+4. Vyberte virtuální síť testovacího převzetí služeb při selhání. Můžete ho nechat prázdné a vybrat ho v době testovacího převzetí služeb při selhání.
+5. Síť s podporou převzetí služeb při selhání je výběr **Upravit** u síťového adaptéru, který chcete konfigurovat. V dalším okně, které se otevře, vyberte odpovídající předem vytvořené prostředky v části testovací převzetí služeb při selhání a umístění pro převzetí služeb při selhání.
 
     ![Úprava konfigurace síťové karty](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-5. Vyberte **OK**.
+6. Vyberte **OK**.
 
 Site Recovery teď budou dodržovat tato nastavení a zajistěte, aby se virtuální počítač pro převzetí služeb při selhání připojil k vybranému prostředku přes odpovídající síťové rozhraní.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+Při aktivaci testovacího převzetí služeb při selhání prostřednictvím plánu obnovení se vždy požádá o virtuální síť Azure. Tato virtuální síť se použije pro testovací převzetí služeb při selhání pro počítače, které nemají předem nakonfigurovaná nastavení testovacího převzetí služeb při selhání.
+
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="unable-to-view-or-select-a-resource"></a>Nepovedlo se zobrazit nebo vybrat prostředek.
 
@@ -72,9 +72,8 @@ Ověření interního nástroje pro vyrovnávání zatížení:
 - Pokud je cílový virtuální počítač umístěný v zóně dostupnosti, zkontrolujte, jestli je nástroj pro vyrovnávání zatížení v zóně redundantní nebo součástí žádné zóny dostupnosti. (Základní nástroje pro vyrovnávání zatížení SKU nepodporují zóny a v tomto případě se v rozevíracím seznamu nezobrazí.)
 - Ujistěte se, že interní nástroj pro vyrovnávání zatížení má předem vytvořený fond back-end a konfiguraci front-endu.
 
-
 Veřejná IP adresa:
-    
+
 - Předplatné a oblast veřejné IP adresy a cílového virtuálního počítače by měly být stejné.
 - SKU veřejné IP adresy cílového virtuálního počítače a SKU interního nástroje pro vyrovnávání zatížení by měly být stejné.
 

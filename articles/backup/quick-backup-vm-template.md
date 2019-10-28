@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/14/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 7075e127192635c08aa2da2b4798dea6d6abb13b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f027926a7b90ac99b04456ad3635466a6e27655
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639410"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968794"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Zálohování virtuálního počítače v Azure pomocí šablony Správce prostředků
 
@@ -58,7 +58,7 @@ Chcete-li monitorovat úlohu zálohování, přečtěte si téma [monitorování
 
 Pokud už nepotřebujete zálohovat virtuální počítač, můžete ho vyčistit.
 
-- Pokud chcete vyzkoušet obnovení virtuálního počítače, přeskočte vyčištění.
+- Pokud chcete vyzkoušet obnovení virtuálního počítače, vynechejte vyčištění.
 - Pokud jste použili existující virtuální počítač, můžete přeskočit poslední rutinu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) a ponechat skupinu prostředků a virtuální počítač na místě.
 
 Zakažte ochranu, odeberte body obnovení a trezor. Pak odstraňte skupinu prostředků a související prostředky virtuálního počítače následujícím způsobem:
@@ -70,9 +70,9 @@ Remove-AzRecoveryServicesVault -Vault $vault
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili trezor služby Recovery Services, povolili ochranu virtuálního počítače a vytvořili prvotní bod obnovení.
 
-- Naučte se, [jak](tutorial-backup-vm-at-scale.md) zálohovat virtuální počítače v Azure Portal.
+- [Naučte](tutorial-backup-vm-at-scale.md) se, jak zálohovat virtuální počítače v Azure Portal.
 - [Zjistěte, jak](tutorial-restore-disk.md) rychle obnovit virtuální počítač.

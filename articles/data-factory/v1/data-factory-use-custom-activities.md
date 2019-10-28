@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 2174e359f739cfdf3791c8ec64d1a95be2873555
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930912"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990657"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -556,7 +556,7 @@ V tomto kroku vytvoříte datové sady, které reprezentují vstupní a výstupn
    | 4 |2016-11 – 16T03:00:00 |2016-11 – 16 -03. txt |
    | 5 |2016-11 – 16T04:00:00 |2016-11 – 16 -04. txt |
 
-    Mějte na paměti, že všechny soubory ve vstupní složce jsou součástí řezu s časy zahájení uvedenými výše. Při zpracování tohoto řezu vlastní aktivita projde jednotlivé soubory a vytvoří ve výstupním souboru řádek s počtem výskytů hledaného výrazu ("Microsoft"). Pokud jsou v inputfolder tři soubory, ve výstupním souboru jsou tři řádky pro každý hodinový řez: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt atd.
+    Mějte na paměti, že všechny soubory ve vstupní složce jsou součástí řezu s časy zahájení uvedenými výše. Při zpracování tohoto řezu vlastní aktivita projde jednotlivé soubory a vytvoří ve výstupním souboru řádek s počtem výskytů hledaného výrazu ("Microsoft"). Pokud vstupní složka obsahuje tři soubory, ve výstupním souboru jsou tři řádky pro každý hodinový řez: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt atd.
 3. **OutputDataset**nasadíte kliknutím na **nasadit** na panelu příkazů.
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Vytvoření a spuštění kanálu, který používá vlastní aktivitu

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: 983b66be6b51c9af5987e539ea1175a65c9269b3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862041"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968741"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Automatické určení a přepisovat obsahu s více jazyky (Preview)
 
@@ -39,7 +39,7 @@ Můžete zvolit **rozpoznávání více jazyků** při nahrávání a indexován
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>Výběr vícejazyčné identifikace při indexování pomocí rozhraní API
 
-Při indexování nebo [přeindexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) videa pomocí rozhraní API vyberte `multi-language detection` možnost v `sourceLanguage` parametru.
+Při indexování nebo [přeindexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) videa pomocí rozhraní API vyberte v parametru `sourceLanguage` možnost `multi-language detection`.
 
 ### <a name="model-output"></a>Výstup modelu
 
@@ -75,7 +75,7 @@ Kromě toho všechny instance v oddílu přepisu budou zahrnovat jazyk, ve kter�
 
 ## <a name="guidelines-and-limitations"></a>Pokyny a omezení
 
-* Sada podporovaných jazyků: Angličtina, francouzština, němčina, španělština.
+* Sada podporovaných jazyků: angličtina, francouzština, němčina, španělština.
 * Podpora vícejazyčného obsahu s až třemi podporovanými jazyky.
 * Pokud zvuk obsahuje jiné jazyky než seznam podporované, výsledek je neočekávaný.
 * Minimální délka segmentu, která se má detekovat pro každý jazyk – 15 sekund
@@ -86,9 +86,8 @@ Kromě toho všechny instance v oddílu přepisu budou zahrnovat jazyk, ve kter�
 * Vytváření a úpravy projektů nejsou aktuálně k dispozici pro videa s více jazyky.
 * Vlastní jazykové modely nejsou k dispozici při použití rozpoznávání více jazyků.
 * Přidávání klíčových slov se nepodporuje.
-* rozhraní API pro aktualizaci přepisu se nepodporuje.
 * Při exportování souborů titulků se nezobrazí označení jazyka.
-
+* Rozhraní API pro aktualizaci přepisu nepodporuje soubory s více jazyky.
 
 ## <a name="next-steps"></a>Další kroky
 

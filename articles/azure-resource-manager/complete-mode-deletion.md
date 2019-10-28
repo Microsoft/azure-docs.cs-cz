@@ -4,14 +4,14 @@ description: Ukazuje, jak typy prostředků zpracovávají úplné odstraňován
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: de1b5080e72f79626ca0c749efe4122721f14922
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 03e91e4be967e822d17144af848f51e73851b1e6
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528586"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969187"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Odstranění prostředků Azure pro nasazení v úplném režimu
 
@@ -61,7 +61,6 @@ Přejít na obor názvů poskytovatele prostředků:
 > - [Microsoft. ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft. ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft. ContainerService](#microsoftcontainerservice)
-> - [Microsoft. ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft. CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft. CostManagement](#microsoftcostmanagement)
 > - [Microsoft. CustomerLockbox](#microsoftcustomerlockbox)
@@ -277,6 +276,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | dataaliasy | Ne |
 > | denyAssignments | Ne |
 > | elevateAccess | Ne |
+> | findOrphanRoleAssignments | Ne |
 > | Počtu | Ne |
 > | nastaven | Ne |
 > | policyAssignments | Ne |
@@ -394,6 +394,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | billingAccounts/createBillingRoleAssignment | Ne |
 > | billingAccounts/createInvoiceSectionOperations | Ne |
 > | billingAccounts/zákazníci | Ne |
+> | billingAccounts/Customers/billingPermissions | Ne |
 > | billingAccounts/Customers/billingSubscriptions | Ne |
 > | billingAccounts/Customers/initiateTransfer | Ne |
 > | billingAccounts/Customers/policies | Ne |
@@ -451,6 +452,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | blockchainMembers | Ano |
+> | cordaMembers | Ano |
 > | diváků | Ano |
 
 ## <a name="microsoftblueprint"></a>Microsoft. detail
@@ -641,6 +643,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | proximityPlacementGroups | Ano |
 > | restorePointCollections | Ano |
 > | restorePointCollections/restorePoints | Ne |
+> | sharedVMExtensions | Ano |
+> | sharedVMExtensions/verze | Ne |
 > | sharedVMImages | Ano |
 > | sharedVMImages/verze | Ne |
 > | snímky | Ano |
@@ -700,6 +704,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Registry/buildTasks | Ano |
 > | Registry/buildTasks/kroky | Ne |
 > | Registry/eventGridFilters | Ne |
+> | Registry/generateCredentials | Ne |
 > | Registry/getBuildSourceUploadUrl | Ne |
 > | Registry/getpřihlašovací údaje | Ne |
 > | Registry/importImage | Ne |
@@ -710,7 +715,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Registry/běhy | Ne |
 > | Registry/spuštění/zrušit | Ne |
 > | Registry/scheduleRun | Ne |
+> | Registry/scopeMaps | Ne |
 > | Registry/úlohy | Ano |
+> | Registry a tokeny | Ne |
 > | Registry/updatePolicies | Ne |
 > | Registry a Webhooky | Ano |
 > | Registry/Webhooky/getCallbackConfig | Ne |
@@ -724,14 +731,6 @@ Přejít na obor názvů poskytovatele prostředků:
 > | containerServices | Ano |
 > | managedClusters | Ano |
 > | openShiftManagedClusters | Ano |
-
-## <a name="microsoftcontentmoderator"></a>Microsoft. ContentModerator
-
-> [!div class="mx-tableFixed"]
-> | Typ prostředku | Úplné odstranění režimu |
-> | ------------- | ----------- |
-> | aplikací | Ano |
-> | updateCommunicationPreference | Ne |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft. CortanaAnalytics
 
@@ -821,8 +820,6 @@ Přejít na obor názvů poskytovatele prostředků:
 > | datacatalogs/zdroje dat/kontroly | Ne |
 > | datové katalogy/zdroje dat/kontroly/datové sady | Ne |
 > | datacatalogs/zdroje dat/kontroly/triggery | Ne |
-> | datacatalogs/scantargets | Ne |
-> | datové katalogy/scantargets/datové sady | Ne |
 
 ## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
@@ -887,6 +884,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | servery | Ano |
 > | servery/poradci | Ne |
+> | servery/privateEndpointConnectionProxies | Ne |
+> | servery/privateEndpointConnections | Ne |
+> | servery/privateLinkResources | Ne |
 > | servery/queryTexts | Ne |
 > | servery/recoverableServers | Ne |
 > | servery/topQueryStatistics | Ne |
@@ -900,6 +900,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | servery | Ano |
 > | servery/poradci | Ne |
+> | servery/privateEndpointConnectionProxies | Ne |
+> | servery/privateEndpointConnections | Ne |
+> | servery/privateLinkResources | Ne |
 > | servery/queryTexts | Ne |
 > | servery/recoverableServers | Ne |
 > | servery/topQueryStatistics | Ne |
@@ -914,6 +917,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | serverGroups | Ano |
 > | servery | Ano |
 > | servery/poradci | Ne |
+> | servery/klíče | Ne |
 > | servery/privateEndpointConnectionProxies | Ne |
 > | servery/privateEndpointConnections | Ne |
 > | servery/privateLinkResources | Ne |
@@ -943,6 +947,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | applicationgroups | Ano |
 > | applicationgroups/aplikace | Ne |
+> | applicationgroups/desktopy | Ne |
 > | applicationgroups/startmenuitems | Ne |
 > | hostpools | Ano |
 > | hostpools/sessionhosts | Ne |
@@ -1088,6 +1093,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | autoManagedVmConfigurationProfiles | Ano |
+> | configurationProfileAssignments | Ne |
 > | guestConfigurationAssignments | Ne |
 > | Vybavení | Ne |
 > | softwareUpdateProfile | Ne |
@@ -1129,6 +1135,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | virtuální | Ano |
+> | počítače/rozšíření | Ano |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
@@ -1235,6 +1242,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | pracovní prostory | Ano |
 > | pracovní prostory a výpočetní prostředky | Ne |
+> | pracovní prostory/eventGridFilters | Ne |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
@@ -1322,6 +1330,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | MediaServices/liveEvents | Ano |
 > | MediaServices/liveEvents/liveOutputs | Ne |
 > | MediaServices/liveOutputOperations | Ne |
+> | MediaServices/mediaGraphs | Ne |
 > | MediaServices/streamingEndpointOperations | Ne |
 > | MediaServices/starají | Ano |
 > | MediaServices/streamingLocators | Ne |
@@ -1520,6 +1529,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | policyEvents | Ne |
+> | policyMetadata | Ne |
 > | policyStates | Ne |
 > | policyTrackedResources | Ne |
 > | nápravy | Ne |
@@ -1610,6 +1620,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | Nasazení | Ne |
 > | nasazení/operace | Ne |
+> | deploymentScripts | Ano |
+> | deploymentScripts/protokoly | Ne |
 > | odkazy | Ne |
 > | notifyResourceJobs | Ne |
 > | Dodavateli | Ne |
@@ -1659,6 +1671,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | applicationWhitelistings | Ne |
 > | assessmentMetadata | Ne |
 > | posouzení | Ne |
+> | automatizace | Ano |
 > | AutoProvisioningSettings | Ne |
 > | Předpisů | Ne |
 > | dataCollectionAgents | Ne |

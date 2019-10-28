@@ -16,10 +16,10 @@ ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 9c6458eea2b1352e7d13ea6691eac4498182ecd3
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 10/28/2019
 ms.locfileid: "71680075"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Kurz: monitorování virtuálního počítače se systémem Linux v Azure
@@ -30,29 +30,29 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Povolení diagnostiky spouštění na virtuálním počítači
-> * Zobrazit diagnostiku spouštění
-> * Zobrazit metriky hostitele virtuálních počítačů
+> * Zobrazení diagnostiky spouštění
+> * Zobrazení metrik hostitele virtuálního počítače
 > * Povolit Azure Monitor pro virtuální počítače
 > * Zobrazit metriky výkonu virtuálních počítačů
-> * Vytvořit výstrahu
+> * Vytvoření upozornění
 
-## <a name="launch-azure-cloud-shell"></a>Spustit Azure Cloud Shell
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
-Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění kroků v tomto článku. Má společné nástroje Azure, které jsou předinstalované a nakonfigurované pro použití s vaším účtem. 
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.30 nebo novější. Pokud chcete zjistit verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-## <a name="create-vm"></a>Vytvořit virtuální počítač
+## <a name="create-vm"></a>Vytvoření virtuálního počítače
 
-Pokud chcete zobrazit diagnostiku a metriky v akci, potřebujete virtuální počítač. Nejdřív vytvořte skupinu prostředků pomocí [AZ Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupMonitor* v umístění *eastus* .
+Pokud chcete vidět, jak funguje diagnostika a metriky, potřebujete virtuální počítač. Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create). Následující příklad vytvoří skupinu prostředků *myResourceGroupMonitor* v umístění *eastus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-Nyní vytvořte virtuální počítač pomocí [AZ VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). Následující příklad vytvoří virtuální počítač s názvem *myVM* a vygeneruje klíče SSH, pokud ještě neexistují v *~/.ssh/* :
+Nyní vytvořte virtuální počítač pomocí příkazu [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). Následující příklad vytvoří virtuální počítač *myVM*, a pokud klíče SSH ještě neexistují, vytvoří je v umístění *~/.ssh/* :
 
 ```azurecli-interactive
 az vm create \
@@ -63,11 +63,11 @@ az vm create \
   --generate-ssh-keys
 ```
 
-## <a name="enable-boot-diagnostics"></a>Povolit diagnostiku spouštění
+## <a name="enable-boot-diagnostics"></a>Povolení diagnostiky spouštění
 
-Po spuštění virtuálních počítačů se systémem Linux zachytí spouštěcí rozšíření spouštění výstup spouštění a uloží ho do služby Azure Storage. Tato data lze použít k řešení potíží se spouštěním virtuálního počítače. Při vytváření virtuálního počítače se systémem Linux pomocí rozhraní příkazového řádku Azure se Diagnostika spouštění nepovolí automaticky.
+Při spouštění virtuálních počítačů s Linuxem zaznamenává diagnostické rozšíření výstup spouštění a uloží ho v úložišti Azure. Tato data můžete použít k odstraňování problémů při spouštění virtuálních počítačů. Po vytvoření virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure není diagnostika spouštění automaticky povolená.
 
-Než povolíte diagnostiku spouštění, je potřeba vytvořit účet úložiště pro ukládání protokolů spuštění. Účty úložiště musí mít globálně jedinečný název, musí být dlouhý 3 až 24 znaků a musí obsahovat jenom číslice a malá písmena. Vytvořte účet úložiště pomocí příkazu [AZ Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) . V tomto příkladu se k vytvoření jedinečného názvu účtu úložiště používá náhodný řetězec.
+Před povolením diagnostiky spouštění je třeba vytvořit účet úložiště pro ukládání protokolů spouštění. Účty úložiště musí mít globální jedinečný název v rozmezí 3 až 24 znaků a musí obsahovat pouze čísla a malá písmena. Účet úložiště vytvoříte příkazem [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). V tomto příkladu se k vytvoření jedinečného názvu účtu úložiště použil náhodný řetězec.
 
 ```azurecli-interactive
 storageacct=mydiagdata$RANDOM
@@ -79,13 +79,13 @@ az storage account create \
   --location eastus
 ```
 
-Při povolování diagnostiky spouštění je potřeba identifikátor URI kontejneru úložiště objektů BLOB. Následující příkaz se dotazuje na účet úložiště, který vrátí tento identifikátor URI. Hodnota identifikátoru URI je uložena v názvech proměnných *bloburi*, které se používají v dalším kroku.
+Při povolování diagnostiky spouštění je potřeba identifikátor URI pro kontejner úložiště objektů blob. Následující příkaz se dotazuje na účet úložiště za účelem vrácení tohoto identifikátoru URI. Hodnota identifikátoru URI je uložená v názvech proměnných *bloburi*, které se používají v dalším kroku.
 
 ```azurecli-interactive
 bloburi=$(az storage account show --resource-group myResourceGroupMonitor --name $storageacct --query 'primaryEndpoints.blob' -o tsv)
 ```
 
-Teď povolte diagnostiku spouštění pomocí [AZ VM Boot-Diagnostics Enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-enable). Hodnota `--storage` je identifikátor URI objektu BLOB shromážděného v předchozím kroku.
+Teď povolte diagnostiku spouštění pomocí příkazu [az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-enable). Hodnota `--storage` je identifikátor URI objektu blob získaný v předchozím kroku.
 
 ```azurecli-interactive
 az vm boot-diagnostics enable \
@@ -94,40 +94,40 @@ az vm boot-diagnostics enable \
   --storage $bloburi
 ```
 
-## <a name="view-boot-diagnostics"></a>Zobrazit diagnostiku spouštění
+## <a name="view-boot-diagnostics"></a>Zobrazení diagnostiky spouštění
 
-Když je povolená Diagnostika spouštění, při každém zastavení a spuštění virtuálního počítače se informace o procesu spouštění zapisují do souboru protokolu. V tomto příkladu napřed nasaďte virtuální počítač pomocí příkazu [AZ VM unallocate](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-deallocate) následujícím způsobem:
+Pokud je povolená diagnostika spouštění, zapíše se při každém spuštění a vypnutí virtuálního počítače informace o procesu spouštění do souboru protokolu. V tomto příkladu nejprve zrušte přidělení virtuálního počítače příkazem [az OM deallocate](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-deallocate) takto:
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 ```
 
-Nyní spusťte virtuální počítač pomocí příkazu [AZ VM Start](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-start) , a to takto:
+Nyní spusťte virtuální počítač pomocí příkazu [az vm start](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-start) následujícím způsobem:
 
 ```azurecli-interactive
 az vm start --resource-group myResourceGroupMonitor --name myVM
 ```
 
-Data diagnostiky spouštění pro *myVM* můžete získat pomocí příkazu [AZ VM Boot-Diagnostics Get-Boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-get-boot-log) následujícím způsobem:
+Data diagnostiky spouštění pro *myVM* můžete získat pomocí příkazu [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-get-boot-log) takto:
 
 ```azurecli-interactive
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --name myVM
 ```
 
-## <a name="view-host-metrics"></a>Zobrazit metriky hostitele
+## <a name="view-host-metrics"></a>Zobrazení metrik hostitele
 
-Virtuální počítač se systémem Linux má vyhrazeného hostitele v Azure, se kterým komunikuje. Metriky se automaticky shromažďují pro hostitele a dají se zobrazit v Azure Portal následujícím způsobem:
+Virtuální počítač s Linuxem má vyhrazeného hostitele v Azure, který s ním komunikuje. Metriky se pro hostitele shromažďují automaticky a lze je zobrazit na portálu Azure Portal následujícím způsobem:
 
-1. V Azure Portal vyberte **skupiny prostředků**, zvolte **myResourceGroupMonitor**a potom v seznamu prostředků vyberte **myVM** .
-1. Pokud chcete zjistit, jak se provádí hostitelský virtuální počítač, vyberte v okně virtuálního počítače **metriky** a pak v části **dostupné metriky**zvolte některou z metrik *[hostitel]* .
+1. Na webu Azure Portal vyberte **Skupiny prostředků**, zvolte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
+1. Pokud chcete získat informace o výkonu virtuálního počítače hostitele, vyberte v okně virtuálního počítače **Metriky** a potom v části **Dostupné metriky** vyberte některou z metrik *[hostitele]* .
 
-    ![Zobrazit metriky hostitele](./media/tutorial-monitoring/monitor-host-metrics.png)
+    ![Zobrazení metrik hostitele](./media/tutorial-monitoring/monitor-host-metrics.png)
 
 ## <a name="enable-advanced-monitoring"></a>Povolit rozšířené monitorování
 
 Postup povolení monitorování virtuálního počítače Azure pomocí Azure Monitor pro virtuální počítače:
 
-1. V Azure Portal klikněte na **skupiny prostředků**, vyberte **myResourceGroupMonitor**a potom v seznamu prostředků vyberte **myVM** .
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 
 2. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)** .
 
@@ -150,7 +150,7 @@ Po povolení monitorování může být nutné počkat několik minut, než bude
 
 Azure Monitor pro virtuální počítače obsahuje sadu grafů výkonu, které cílí na několik klíčových ukazatelů výkonu (KPI), které vám pomůžou určit, jak dobře je virtuální počítač prováděn. Pokud chcete získat přístup z virtuálního počítače, proveďte následující kroky.
 
-1. V Azure Portal klikněte na **skupiny prostředků**, vyberte **myResourceGroupMonitor**a potom v seznamu prostředků vyberte **myVM** .
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 
 2. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)** .
 
@@ -158,38 +158,38 @@ Azure Monitor pro virtuální počítače obsahuje sadu grafů výkonu, které c
 
 Tato stránka nejen zahrnuje grafy využití výkonu, ale také tabulku ukazující pro každý zjištěný logický disk, jeho kapacitu, využití a celkový průměr podle jednotlivých měr.
 
-## <a name="create-alerts"></a>Vytváření výstrah
+## <a name="create-alerts"></a>Vytváření upozornění
 
-Můžete vytvářet výstrahy na základě konkrétních metrik výkonu. Výstrahy můžete použít k upozornění, když průměrné využití procesoru překročí určitou prahovou hodnotu nebo je dostupné volné místo na disku pod určitou velikostí, například. Výstrahy se zobrazují v Azure Portal nebo je lze odeslat e-mailem. V reakci na vygenerované výstrahy můžete také aktivovat Azure Automation Runbooky nebo Azure Logic Apps.
+Na základě konkrétních metrik výkonu můžete vytvořit výstrahy. Výstrahy lze například použít k upozornění, že průměrné využití procesoru překračuje prahovou hodnotu nebo že volné místo na disku kleslo pod určitou velikost. Výstrahy ze zobrazují v portálu Azure Portal nebo je lze odeslat e-mailem. V reakci na vygenerované výstrahy můžete také aktivovat runbooky Azure Automation nebo Azure Logic Apps.
 
-Následující příklad vytvoří výstrahu pro průměrné využití procesoru.
+Následující příklad vytvoří výstrahu týkající se průměrného využití procesoru.
 
-1. V Azure Portal klikněte na **skupiny prostředků**, vyberte **myResourceGroupMonitor**a potom v seznamu prostředků vyberte **myVM** .
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 
-2. V okně virtuálního počítače klikněte na **pravidla výstrah** a pak v horní části okna výstrahy klikněte na **Přidat upozornění na metriku** .
+2. Klikněte na tlačítko **Pravidla výstrah** v okně virtuálního počítače a potom na **Přidat upozornění metriky** v horní části okna výstrahy.
 
-3. Zadejte **název** upozornění, například *myAlertRule* .
+3. Zadejte **Název** výstrahy, například *mojePravidloVystrahy*.
 
-4. Pokud chcete aktivovat upozornění, když procento procesoru překročí 1,0 po dobu pěti minut, ponechte vybrané ostatní výchozí hodnoty.
+4. Pokud chcete spustit výstrahu, pokud procento využití procesoru překročí hodnotu 1,0 po dobu pěti minut, ponechte výchozí výběr všech ostatních nastavení.
 
-5. Volitelně můžete zaškrtnout políčko *vlastníkům e-mailu, přispěvatelům a čtenářům* poslat oznámení e-mailem. Výchozí akcí je zobrazení oznámení na portálu.
+5. Volitelně můžete zaškrtnutím políčka *Vlastníci, přispěvatelé a čtenáři e-mailů* odesílat oznámení e-mailem. Výchozí akce je zobrazení oznámení na portálu.
 
-6. Klikněte na tlačítko **OK** .
+6. Klikněte na tlačítko **OK**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali a prohlíželi výkon svého virtuálního počítače. Zjistili jste, jak:
+V tomto kurzu jste nakonfigurovali a prohlíželi výkon svého virtuálního počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření skupiny prostředků a virtuálního počítače
-> * Povolení diagnostiky spouštění na virtuálním počítači
-> * Zobrazit diagnostiku spouštění
-> * Zobrazit metriky hostitele
+> * Povolení diagnostiky spouštění ve virtuálním počítači
+> * Zobrazení diagnostiky spouštění
+> * Zobrazení metrik hostitele
 > * Povolit Azure Monitor pro virtuální počítače
-> * Zobrazit metriky virtuálních počítačů
-> * Vytvořit výstrahu
+> * Zobrazení metrik virtuálního počítače
+> * Vytvoření upozornění
 
-V dalším kurzu se dozvíte o Azure Security Center.
+V dalším kurzu se dozvíte něco o Azure Security Center.
 
 > [!div class="nextstepaction"]
 > [Správa zabezpečení virtuálních počítačů](../../security/fundamentals/overview.md)

@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 3/29/2019
+ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 9c65d6055807ee2735f1915e8ca289dc0754535b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: fc97f9d78e84882675c3dd011a64e1e50c4cc907
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736401"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968332"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O sítích v Azure do replikace Azure
 
@@ -48,7 +48,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 **Adresa URL** | **Podrobnosti**  
 --- | ---
-*.blob.core.windows.net | Vyžaduje se, aby se data mohla zapsat do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete místo *. blob.core.windows.net v seznamu povolit konkrétní adresy URL účtu úložiště (např.: cache1.blob.core.windows.net a cache2.blob.core.windows.net).
+*.blob.core.windows.net | Vyžaduje se, aby se data mohla zapsat do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete přístup k určitým adresám URL účtu úložiště (např.: cache1.blob.core.windows.net a cache2.blob.core.windows.net) zpřístupnit místo *. blob.core.windows.net
 login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování adres URL služby Site Recovery.
 *.hypervrecoverymanager.windowsazure.com | Vyžaduje se, aby na virtuálním počítači mohla probíhat komunikace služby Site Recovery. Pokud proxy server firewall podporuje IP adresy, můžete použít odpovídající Site Recovery IP adresu.
 *.servicebus.windows.net | Požadováno, aby se z virtuálního počítače mohla zapisovat data monitorování Site Recovery a diagnostická data. V případě, že proxy server brány firewall podporuje IP adresy, můžete použít odpovídající "Site Recovery monitorování IP adres".
@@ -60,9 +60,9 @@ Pokud používáte proxy server brány firewall založený na protokolu IP nebo 
 - Všechny rozsahy IP adres, které odpovídají účtům úložiště ve zdrojové oblasti
     - Vytvořte pravidlo NSG založené na [značce služby úložiště](../virtual-network/security-overview.md#service-tags) pro zdrojovou oblast.
     - Povolte tyto adresy, aby bylo možné do účtu úložiště mezipaměti zapsat data z virtuálního počítače.
-- Vytvoření [značky služby Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na základě pravidel skupiny zabezpečení sítě umožňující přístup ke všem IP adresám v odpovídající službě AAD
-    - Pokud do Azure Active Directory (AAD) se přidají nové adresy v budoucnu, musíte vytvořit nová pravidla skupiny zabezpečení sítě.
-- Site Recovery IP adresy koncového bodu služby – k dispozici v [souboru XML](https://aka.ms/site-recovery-public-ips) a závisí na cílovém umístění.
+- Vytvořit pravidlo NSG založené na [značce služby pro Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají AAD
+    - Pokud v budoucnu přidáte do Azure Active Directory (AAD) nové adresy, budete muset vytvořit nová pravidla NSG.
+- Site Recovery IP adresy koncového bodu služby – k dispozici v [souboru XML](https://aka.ms/site-recovery-public-ips) a závisí na cílovém umístění. Pro přístup ke službě Site Recovery se doporučuje udělit přístup ke značce **"AzureSiteRecovery"** .
 - Doporučujeme, abyste vytvořili požadovaná pravidla NSG na NSG testu a ověřili, že neexistují žádné problémy předtím, než vytvoříte pravidla na produkčním NSG.
 
 
@@ -72,16 +72,16 @@ Site Recovery rozsahy IP adres jsou následující:
    --- | --- | ---
    Východní Asie | 52.175.17.132 | 13.94.47.61
    Jihovýchodní Asie | 52.187.58.193 | 13.76.179.223
-   Střed Indie | 52.172.187.37 | 104.211.98.185
+   Střední Indie | 52.172.187.37 | 104.211.98.185
    Jižní Indie | 52.172.46.220 | 104.211.224.190
-   Střed USA – sever | 23.96.195.247 | 168.62.249.226
+   Středoseverní USA | 23.96.195.247 | 168.62.249.226
    Severní Evropa | 40.69.212.238 | 52.169.18.8
    Západní Evropa | 52.166.13.64 | 40.68.93.145
-   East US | 13.82.88.226 | 104.45.147.24
-   USA – západ | 40.83.179.48 | 104.40.26.199
-   Střed USA – jih | 13.84.148.14 | 104.210.146.250
-   Střed USA | 40.69.144.231 | 52.165.34.144
-   Východní USA 2 | 52.184.158.163 | 40.79.44.59
+   USA – východ | 13.82.88.226 | 104.45.147.24
+   Západní USA | 40.83.179.48 | 104.40.26.199
+   Středojižní USA | 13.84.148.14 | 104.210.146.250
+   Střední USA | 40.69.144.231 | 52.165.34.144
+   Východ USA 2 | 52.184.158.163 | 40.79.44.59
    Japonsko – východ | 52.185.150.140 | 138.91.1.105
    Japonsko – západ | 52.175.146.69 | 138.91.17.38
    Brazílie – jih | 191.234.185.172 | 23.97.97.36
@@ -89,25 +89,25 @@ Site Recovery rozsahy IP adres jsou následující:
    Austrálie – jihovýchod | 13.70.159.158 | 191.239.160.45
    Kanada – střed | 52.228.36.192 | 40.85.226.62
    Kanada – východ | 52.229.125.98 | 40.86.225.142
-   Západní střed USA | 52.161.20.168 | 13.78.149.209
-   USA – západ 2 | 52.183.45.166 | 13.66.228.204
-   Spojené království – západ | 51.141.3.203 | 51.141.14.113
+   Středozápadní USA | 52.161.20.168 | 13.78.149.209
+   Západní USA 2 | 52.183.45.166 | 13.66.228.204
+   Velká Británie – západ | 51.141.3.203 | 51.141.14.113
    Velká Británie – jih | 51.140.43.158 | 51.140.189.52
    Spojené království – jih 2 | 13.87.37.4| 13.87.34.139
    Spojené království – sever | 51.142.209.167 | 13.87.102.68
-   Jižní Korea – střed | 52.231.28.253 | 52.231.32.85
-   Jižní Korea – jih | 52.231.198.185 | 52.231.200.144
+   Korea – střed | 52.231.28.253 | 52.231.32.85
+   Korea – jih | 52.231.198.185 | 52.231.200.144
    Francie – střed | 52.143.138.106 | 52.143.136.55
    Francie – jih | 52.136.139.227 |52.136.136.62
    Austrálie – střed| 20.36.34.70 | 20.36.46.142
    Austrálie – střed 2| 20.36.69.62 | 20.36.74.130
    Jižní Afrika – západ | 102.133.72.51 | 102.133.26.128
    Jižní Afrika – sever | 102.133.160.44 | 102.133.154.128
-   USA (Gov) – Virginia | 52.227.178.114 | 23.97.0.197
-   US Gov – Iowa | 13.72.184.23 | 23.97.16.186
-   USA (Gov) – Arizona | 52.244.205.45 | 52.244.48.85
-   USA (Gov) – Texas | 52.238.119.218 | 52.238.116.60
-   US DoD – východ | 52.181.164.103 | 52.181.162.129
+   USA – Virginie | 52.227.178.114 | 23.97.0.197
+   USA – Iowa | 13.72.184.23 | 23.97.16.186
+   US Gov – Arizona | 52.244.205.45 | 52.244.48.85
+   US Gov – Texas | 52.238.119.218 | 52.238.116.60
+   Ministerstvo obrany USA – východ | 52.181.164.103 | 52.181.162.129
    US DoD – střed | 52.182.95.237 | 52.182.90.133
    Čína – sever | 40.125.202.254 | 42.159.4.151
    Čína – sever 2 | 40.73.35.193 | 40.73.33.230
@@ -117,6 +117,8 @@ Site Recovery rozsahy IP adres jsou následující:
    Německo – středozápad | 51.116.156.176 | 51.116.154.192
    Švýcarsko – západ | 51.107.231.223| 51.107.154.128
    Švýcarsko – sever | 51.107.68.31| 51.107.58.128
+   Norsko – východ | 51.120.100.64| 51.120.98.128
+   Norsko – západ | 51.120.220.65| 51.120.218.160
 
 ## <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
 
@@ -124,6 +126,9 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
 - Pokud používáte pravidla NSG k řízení odchozího připojení, použijte pravidla "povolení odchozího přenosu HTTPS" na port: 443 pro všechny požadované rozsahy IP adres.
 - V příkladu se předpokládá, že umístění zdroje virtuálního počítače je "Východní USA" a cílové umístění je "Střed USA".
+
+> [!NOTE]
+> Pro povolení přístupu k **Site Recovery službě**se doporučuje použít **značku AzureSiteRecovery** místo IP adres.
 
 ### <a name="nsg-rules---east-us"></a>Pravidla NSG – Východní USA
 
@@ -133,13 +138,13 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
 2. Vytvořte pravidlo zabezpečení odchozího HTTPS (443) pro "Azureactivedirectory selhala" na NSG, jak je znázorněno na snímku obrazovky níže.
 
-      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![AAD – značka](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. Vytvořit odchozí pravidla HTTPS (443) pro Site Recovery IP adresy, které odpovídají cílovému umístění:
 
-   **Location** | **Site Recovery IP adresa** |  **IP adresa monitorování Site Recovery**
+   **Umístění** | **Site Recovery IP adresa** |  **IP adresa monitorování Site Recovery**
     --- | --- | ---
-   Střed USA | 40.69.144.231 | 52.165.34.144
+   Střední USA | 40.69.144.231 | 52.165.34.144
 
 ### <a name="nsg-rules---central-us"></a>Pravidla NSG – Střed USA
 
@@ -151,9 +156,10 @@ Tato pravidla jsou nutná, aby bylo možné replikaci z cílové oblasti do zdro
 
 3. Vytvořit odchozí pravidla HTTPS (443) pro Site Recovery IP adresy, které odpovídají zdrojovému umístění:
 
-   **Location** | **Site Recovery IP adresa** |  **IP adresa monitorování Site Recovery**
+   **Umístění** | **Site Recovery IP adresa** |  **IP adresa monitorování Site Recovery**
     --- | --- | ---
-   East US | 13.82.88.226 | 104.45.147.24
+   USA – východ | 13.82.88.226 | 104.45.147.24
+
 
 ## <a name="network-virtual-appliance-configuration"></a>Konfigurace síťového virtuálního zařízení
 
@@ -172,11 +178,11 @@ V rámci virtuální sítě můžete vytvořit koncový bod síťové služby pr
 >[!NOTE]
 >Neomezovat přístup k virtuální síti pro účty úložiště používané pro ASR. Měli byste mít povolený přístup ze všech sítí.
 
-### <a name="forced-tunneling"></a>Vynucené tunelování
+### <a name="forced-tunneling"></a>Vynucené tunelové propojení
 
 Výchozí systémovou trasu Azure pro předponu adresy 0.0.0.0/0 můžete přepsat [vlastní trasou](../virtual-network/virtual-networks-udr-overview.md#custom-routes) a přesměrováním provozu virtuálního počítače do místního síťového virtuálního zařízení (síťové virtuální zařízení), ale tato konfigurace se nedoporučuje pro Site Recovery replikaci. Pokud používáte vlastní trasy, měli byste ve virtuální síti [vytvořit koncový bod služby virtuální sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) pro úložiště, aby provoz replikace neopouští hranice Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Začněte chránit své úlohy [replikací virtuálních počítačů Azure](site-recovery-azure-to-azure.md).
 - Další informace o [uchovávání IP adres](site-recovery-retain-ip-azure-vm-failover.md) pro převzetí služeb při selhání virtuálního počítače Azure
 - Přečtěte si další informace o zotavení po havárii [virtuálních počítačů Azure pomocí ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md).
