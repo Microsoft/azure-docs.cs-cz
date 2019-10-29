@@ -1,0 +1,43 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Service Health
+summary: Azure Service Health je sada prostředí, která poskytují individuální pokyny a podporu na míru v situacích, kdy vás ovlivňují nebo v budoucnu mohou ovlivňovat problémy ve službách Azure. Službu Azure Service Health tvoří stav Azure, služba Service Health a služba Resource Health.
+metadata:
+  title: Dokumentace ke službě Azure Service Health
+  description: Azure Service Health je sada prostředí, která poskytují pokyny a podporu na míru v situacích, kdy vás ovlivňují problémy ve službách Azure. Azure Service Health vás může upozornit, pomůže vám zjistit dopad případných potíží a bude vás informovat o průběhu jejich řešení. Azure Service Health vám pomůže připravit se na plánovanou údržbu a změny, které by mohly ovlivnit dostupnost vašich prostředků.
+  services: service-health
+  ms.service: service-health
+  ms.topic: landing-page
+  author: rboucher
+  ms.author: robb
+  ms.date: 10/08/2019
+  ms.openlocfilehash: 83380e57a5d67431fccf1d808b8c8f69eddc5962
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72966001"
+landingContent:
+- title: Informace o službě Azure Service Health
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Service Health
+      url: overview.md
+    - text: Stav Azure
+      url: azure-status-overview.md
+    - text: Služba Service Health
+      url: service-health-overview.md
+    - text: Resource Health
+      url: resource-health-overview.md
+  - linkListType: video
+    links:
+    - text: Úvodní video ke službě Azure Service Health
+      url: https://www.microsoft.com/videoplayer/embed/RE2OgX6
+- title: Oznamování
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Oznamování, když vás ovlivní problém se službou Azure
+      url: alerts-activity-log-service-notifications.md
+    - text: Oznamování, když váš prostředek Azure přestane být dostupný
+      url: resource-health-alert-arm-template-guide.md

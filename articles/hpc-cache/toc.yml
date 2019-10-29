@@ -32,9 +32,13 @@
                   href: hpc-cache-ingest-manual.md
     - name: Připojení k mezipaměti
       href: hpc-cache-mount.md
+    - name: Správa mezipaměti
+      href: hpc-cache-manage.md
 - name: Zdroje a prostředky
   items:
     - name: Otevření lístku podpory
       href: hpc-cache-support-ticket.md
     - name: Zotavení z oblastního výpadku
       href: hpc-region-recovery.md
+    - name: Použití Azure NetApp Files se službou Azure HPC Cache
+      href: hpc-cache-netapp.md

@@ -1,36 +1,132 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace k řešení Azure IoT Central
+### YamlMime:Hub
+title: Dokumentace k řešením IoT Central
+summary: Projděte si dokumentaci k řešením a službě Azure IoT Central.
+brand: azure
 metadata:
-  title: 'Dokumentace k řešení Azure IoT Central – kurzy, reference k rozhraní API | Microsoft Docs'
-  description: 'Azure IoT Central je plně spravované řešení SaaS (software jako služba), které usnadňuje propojení, monitorování a správu vašich prostředků IoT i ve velkém měřítku. Azure IoT Central zjednodušuje počáteční nastavení vašeho řešení IoT a snižuje zátěž související se správou, provozními náklady a režií obvyklou pro projekty IoT. Naše rychlé starty a kurzy vás naučí vytvářet, přizpůsobovat, spravovat a využívat aplikace Azure IoT Central.'
-  author: dominicbetts
-  ms.topic: landing-page
-  ms.date: 11/08/2017
-  ms.author: dobett
+  title: Centrum dokumentace ke službě Azure IoT Central
+  description: Projděte si dokumentaci k řešením a službě Azure IoT Central.
   ms.service: iot-central
-  services: iot-central
-  manager: timlt
-abstract:
-  description: 'Azure IoT Central je plně spravované řešení SaaS (software jako služba), které usnadňuje propojení, monitorování a správu vašich prostředků IoT i ve velkém měřítku. Azure IoT Central zjednodušuje počáteční nastavení vašeho řešení IoT a snižuje zátěž související se správou, provozními náklady a režií obvyklou pro projekty IoT. Naše rychlé starty a kurzy vás naučí vytvářet, přizpůsobovat, spravovat a využívat aplikace Azure IoT Central.'
-sections:
-  - title: Upozornění na funkce
-    items:
-      - type: paragraph
-        text: 'Aplikace Azure IoT Central přešla na využívání služby Azure IoT Hub Device Provisioning Service (DPS) pro všechna připojená zařízení. Pro registraci a připojení zařízení k aplikaci Azure IoT Central budete muset používat DPS SDK. <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">Další informace o možnostech připojení zařízení v aplikaci Azure IoT Central</a> Pro všechny aplikace používající funkci průběžného exportu dat a/nebo šablonu řešení Power BI se bude muset změnit cílový kontejner úložiště a vytvořit nová šablona řešení.'
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Další informace o <a href="quick-deploy-iot-central">vytvoření nové aplikace Azure IoT Central</a>
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Naučte se přizpůsobovat a využívat aplikace Azure IoT Central.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-define-device-type">Definování nového typu zařízení</a>
-          - html: <a href="tutorial-configure-rules">Konfigurace pravidel</a>
-          - html: <a href="tutorial-customize-operator">Přizpůsobení zobrazení operátora</a>
-          - html: <a href="tutorial-monitor-devices">Monitorování vašich zařízení</a>
-          - html: <a href="tutorial-add-device">Přidání skutečného zařízení</a>
+  ms.topic: hub-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: e60c4da08d92cce1cd5964f78e8198f6c04069ef
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965890"
+highlightedContent:
+  items:
+  - title: Co je IoT Central?
+    itemType: overview
+    url: ./core/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Co jsou šablony aplikací?
+    itemType: concept
+    url: ./core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Architektura služby Azure IoT Central
+    itemType: architecture
+    url: ./core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Vytvoření nové aplikace
+    itemType: quickstart
+    url: ./core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Definování typu zařízení a přidání zařízení
+    itemType: tutorial
+    url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Monitorování zařízení
+    itemType: tutorial
+    url: ./core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+conceptualContent:
+  items:
+  - title: Připojování (funkce Preview)
+    links:
+    - url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Nastavení šablony zařízení
+    - url: ./core/tutorial-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: tutorial
+      text: Připojení zařízení IoT Plug and Play
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Další informace
+  - title: Stále připojení (funkce Preview)
+    links:
+    - url: ./core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Použití skupin zařízení
+    - url: ./core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: správu zařízení
+    - url: ./core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: concept
+      text: Jak spustit úlohu
+    - url: ./core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Analýza dat zařízení
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Další informace
+  - title: Transformace (funkce Preview)
+    links:
+    - url: ./core/howto-create-telemetry-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Vytvoření pravidla telemetrie
+    - url: ./core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Konfigurace nepřetržitého exportu dat
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Další informace
+productDirectory:
+  title: Začínáme sestavovat s využitím šablon oborových aplikací
+  summary: Jste připravení začít sestavovat? Projděte si naše šablony oborových aplikací sestavené pro tvůrce řešení.
+  items:
+  - title: Sestavování pro maloobchod
+    imageSrc: ./retail/media/index/iot-central-retail.svg
+    links:
+    - text: Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
+      url: ./retail/overview-iot-central-retail-pnp.md
+    - text: Vytvoření aplikace pro maloobchod
+      url: ./retail/tutorial-in-store-analytics-create-app-pnp.md
+    - text: Vytvoření aplikace pro inteligentní řízení zásob
+      url: ./retail/tutorial-iot-central-smart-inventory-management-pnp.md
+    - text: Vytvoření aplikace pro propojenou logistiku
+      url: ./retail/tutorial-iot-central-connected-logistics-pnp.md
+    - text: Vytvoření aplikace pro digitální distribuční centrum
+      url: ./retail/tutorial-iot-central-digital-distribution-center-pnp.md
+  - title: Sestavování pro zdravotnictví
+    imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
+    links:
+    - url: ./healthcare/overview-iot-central-healthcare.md
+      text: Sestavování řešení pro zdravotnictví s využitím služby IoT Central
+    - url: ./healthcare/tutorial-continuous-patient-monitoring.md
+      text: Vytvoření aplikace pro průběžné monitorování pacientů
+  - title: Sestavování pro energetiku
+    imageSrc: ./energy/media/index/iot-central-energy.svg
+    links:
+    - url: ./energy/overview-iot-central-energy.md
+      text: Sestavování řešení pro energetiku s využitím služby IoT Central
+    - url: ./energy/tutorial-smart-meter-app.md
+      text: Vytvoření aplikace pro inteligentní monitorování měřičů
+    - url: ./energy/tutorial-solar-panel-app.md
+      text: Vytvoření aplikace pro monitorování solárních panelů
+  - title: Sestavování pro státní správu
+    imageSrc: ./government/media/index/iot-central-government.svg
+    links:
+    - url: ./government/overview-iot-central-government.md
+      text: Vytváření řešení pro státní správu s využitím služby IoT Central
+    - url: ./government/tutorial-water-quality-monitoring.md
+      text: Vytvoření aplikace pro monitorování kvality vody
+    - url: ./government/tutorial-water-consumption-monitoring.md
+      text: Vytvoření aplikace pro monitorování spotřeby vody
+    - url: ./government/tutorial-connected-waste-management.md
+      text: Vytvoření aplikace pro propojené nakládání s odpady
+additionalContent:
+  sections:
+  - items:
+    - title: Rozhraní API služby IoT Central
+      summary: Projděte si rozhraní API služby IoT Central.
+      url: https://docs.microsoft.com/rest/api/azure/
+    - title: IoT Central na Microsoft Learn
+      summary: Projděte si IoT Central v bezplatném prostředí sandboxu.
+      url: https://aka.ms/iotcentralapimslearnjourney

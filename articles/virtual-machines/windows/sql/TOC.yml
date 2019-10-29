@@ -62,22 +62,31 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Použití Azure Powershell
           href: virtual-machines-windows-ps-sql-create.md
-    - name: Registrace s využitím poskytovatele prostředků
-      href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: Změna modelu licencování
-      href: virtual-machines-windows-sql-ahb.md
-    - name: Změna edice
-      href: virtual-machines-windows-sql-change-edition.md
+    - name: Registrace s využitím SQL VM RP
+      displayName: 'resource provider, registration'
+      items:
+        - name: Jeden virtuální počítač
+          href: virtual-machines-windows-sql-register-with-resource-provider.md
+        - name: Hromadná registrace několika virtuálních počítačů
+          href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
+    - name: Spravovat
+      items:
+        - name: Model licencování
+          displayName: 'ahb, ahub, payg, change, modify, update'
+          href: virtual-machines-windows-sql-ahb.md
+        - name: Edice
+          displayName: 'change, modify, update'
+          href: virtual-machines-windows-sql-change-edition.md
+        - name: Azure Storage pro zálohování a obnovení
+          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
     - name: Migrace
       items:
-        - name: Migrace databáze SQL Serveru
+        - name: Databáze SQL Serveru do virtuálního počítače
           href: virtual-machines-windows-migrate-sql.md
         - name: Virtuální počítač do nové oblasti
           href: virtual-machines-windows-sql-move-different-region.md
     - name: Konfigurace vysoké dostupnosti
       items:
-        - name: Použití služby Azure Storage pro zálohování a obnovení
-          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
         - name: Skupina dostupnosti Always On
           items:
             - name: Rozhraní Azure SQL VM CLI

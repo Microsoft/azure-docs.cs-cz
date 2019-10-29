@@ -361,6 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: Spravovat
           items:
+            - name: Podrobnosti o chystaném vyřazení podpory konfigurací SCVMM v ASR z provozu
+              href: scvmm-site-recovery-deprecation.md
             - name: Upgrade Windows Serverů nakonfigurovaných s využitím Site Recovery
               href: upgrade-2012R2-to-2016.md
             - name: Odebrání serverů a zakázání ochrany

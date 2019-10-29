@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: af20c9e3a50c0c60135b1e447e7e1cba1fc36526
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: fe4a2082647ef1325d03ce4eec428ed1579704c5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815732"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755989"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
@@ -100,7 +100,7 @@ blob_input_data = DataReference(
     path_on_datastore="20newsgroups/20news.pkl")
 ```
 
-Mezilehlé údaje (nebo výstup kroku) jsou reprezentovány objektem [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) . `output_data1` se vytvoří jako výstup kroku a použije se jako vstup jednoho nebo více budoucích kroků. `PipelineData` zavádí závislost mezi jednotlivými kroky a vytvoří v kanálu implicitní pořadí spouštění.
+Mezilehlé údaje (nebo výstup kroku) jsou reprezentovány objektem [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) . `output_data1` se vytvoří jako výstup kroku a použije se jako vstup jednoho nebo více budoucích kroků. `PipelineData` zavádí datovou závislost mezi kroky a vytvoří v kanálu implicitní pořadí provádění.
 
 ```python
 from azureml.pipeline.core import PipelineData
@@ -259,7 +259,7 @@ except ComputeTargetException:
 Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka.ms/pl-adla) na GitHubu.
 
 > [!TIP]
-> Kanály Azure Machine Learning můžou pracovat jenom s daty uloženými ve výchozím úložišti dat účtu Data Lake Analytics. Pokud data, která potřebujete k práci, jsou v nevýchozím úložišti, můžete k kopírování dat před školením použít [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) .
+> Kanály Azure Machine Learning můžou pracovat jenom s daty uloženými ve výchozím úložišti dat účtu Data Lake Analytics. Pokud jsou data, se kterými pracujete, v nevýchozím úložišti, můžete použít [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) ke zkopírování dat před školením.
 
 ## <a id="steps"></a>Vytvoření postupu kanálu
 
@@ -278,7 +278,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-Použití předchozích výsledků (`allow_reuse`) je klíč při použití kanálů v prostředí pro spolupráci, protože odstranění zbytečných opakovaných spuštění nabízí flexibilitu. Opakované použití je výchozí chování, pokud script_name, vstupy a parametry kroku zůstanou stejné. Když se výstup kroku znovu použije, úloha se neodešle do výpočetního prostředí, ale výsledky z předchozího běhu jsou hned dostupné pro spuštění dalšího kroku. Je-li hodnota `allow_reuse` nastavená na hodnotu false, bude při provádění kanálu vždy vygenerován nový běh pro tento krok. 
+Použití předchozích výsledků (`allow_reuse`) je klíč při použití kanálů v prostředí pro spolupráci, protože odstranění zbytečných opakovaných spuštění nabízí flexibilitu. Opakované použití je výchozí chování, pokud script_name, vstupy a parametry kroku zůstanou stejné. Když se výstup kroku znovu použije, úloha se neodešle do výpočetního prostředí, ale výsledky z předchozího běhu jsou hned dostupné pro spuštění dalšího kroku. Pokud je `allow_reuse` nastavené na false, při provádění kanálu se vždy vygeneruje nový běh pro tento krok. 
 
 Po definování kroků sestavíte kanál pomocí některých nebo všech těchto kroků.
 
@@ -354,7 +354,7 @@ Další informace najdete v referenčních informacích ke [třídě experimentu
 
 ## <a name="github-tracking-and-integration"></a>Sledování a integrace GitHubu
 
-Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Například aktuální ID potvrzení pro úložiště je protokolováno jako součást historie.
+Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Další informace najdete v tématu [integrace Gitu pro Azure Machine Learning](concept-train-model-git-integration.md).
 
 ## <a name="publish-a-pipeline"></a>Publikování kanálu
 
@@ -413,7 +413,7 @@ Podívejte se na seznam všech publikovaných kanálů a jejich podrobnosti o sp
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. [Zobrazte svůj pracovní prostor](how-to-manage-workspace.md#view) a najděte seznam kanálů.
- @no__t – 0list kanálů strojového učení @ no__t-1
+ ![seznam kanálů strojového učení](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Výběrem konkrétního kanálu zobrazíte výsledky spuštění.
 
@@ -429,17 +429,17 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-Můžete ji znovu povolit s `p.enable()`. Další informace naleznete v tématu [PublishedPipeline Class Reference třídy](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) .
+Můžete ji znovu povolit pomocí `p.enable()`. Další informace naleznete v tématu [PublishedPipeline Class Reference třídy](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) .
 
 
 ## <a name="caching--reuse"></a>Ukládání do mezipaměti & opakované použití  
 
 Aby bylo možné optimalizovat a přizpůsobit chování kanálů, můžete provést několik věcí při ukládání do mezipaměti a opakovaném použití. Můžete například zvolit:
 + **Vypněte výchozí opakované použití pro krok spustit výstup** nastavením `allow_reuse=False` během [definice kroku](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Při použití kanálů ve spolupráci prostředí je klíč znovu použitelný, protože odstranění zbytečných běhů nabízí flexibilitu. Můžete se ale odhlásit z opakovaného použití.
-+ **Rozšíříte hashování mimo skript**, aby zahrnovalo také absolutní cestu nebo relativní cesty k source_directory do jiných souborů a adresářů pomocí `hash_paths=['<file or directory']`. 
++ **Rozšíříte hashování mimo skript**, aby zahrnovalo také absolutní cestu nebo relativní cesty k source_directory k ostatním souborům a adresářům pomocí `hash_paths=['<file or directory']` 
 + **Vynutit generování výstupu pro všechny kroky v běhu** s `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-Ve výchozím nastavení je `allow_reuse` pro kroky povolený a jenom hlavní soubor skriptu má hodnotu hash. Takže pokud skript pro daný krok zůstane stejný (`script_name`, vstupy a parametry), bude výstup spuštění předchozího kroku znovu použit, úloha není odeslána do výpočetního výkonu a výsledky z předchozího běhu jsou okamžitě k dispozici pro další krok.  
+Ve výchozím nastavení je `allow_reuse` pro kroky povolený a jenom hlavní soubor skriptu má hodnotu hash. Takže pokud skript pro daný krok zůstane stejný (`script_name`, vstupy a parametry), pak se znovu použije výstup spuštění předchozího kroku, úloha se neodešle do výpočetní služby a výsledky z předchozího běhu jsou hned k dispozici pro další krok.  
 
 ```python
 step = PythonScriptStep(name="Hello World",

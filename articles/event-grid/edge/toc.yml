@@ -1,0 +1,62 @@
+- name: Dokumentace k Event Gridu ve službě IoT Edge
+  href: index.yml
+- name: Přepnutí na dokumentaci k Event Gridu
+  href: ../overview.md
+- name: Přehled
+  items:
+    - name: Co je Event Grid ve službě IoT Edge?
+      href: overview.md
+- name: Kurzy
+  items:
+    - name: Publikování a přihlášení k odběru událostí v místním prostředí
+      href: pub-sub-events-webhook-local.md
+    - name: Publikování a přihlášení k odběru událostí v cloudu
+      href: pub-sub-events-webhook-cloud.md
+    - name: Přesměrování událostí do Azure Event Gridu
+      href: forward-events-event-grid-cloud.md
+    - name: Přesměrování událostí do Azure IoT Hubu
+      href: forward-events-iothub.md
+    - name: Reakce na události služby Blob Storage v místním prostředí
+      href: react-blob-storage-events-locally.md
+- name: Ukázky
+  href: 'https://github.com/Azure/event-grid-iot-edge'
+- name: Koncepty
+  items:
+    - name: Koncepty Event Grid
+      href: concepts.md
+    - name: Zabezpečení a ověřování
+      href: security-authentication.md
+    - name: Schémata událostí
+      href: event-schemas.md
+    - name: Doručování a opakované pokusy
+      href: delivery-retry.md
+    - name: Dávkování výstupu
+      href: delivery-output-batching.md
+    - name: Rozšířené filtrování
+      href: advanced-filtering.md
+- name: Návody
+  items:
+    - name: Uchování stavu
+      items:
+        - name: Linux
+          href: persist-state-linux.md
+        - name: Windows
+          href: persist-state-windows.md
+    - name: Konfigurace protokolů rozhraní API
+      href: configure-api-protocol.md
+    - name: Konfigurace ověřování klientů
+      href: configure-client-auth.md
+    - name: Konfigurace ověřování odběratelů webhooků
+      href: configure-webhook-subscriber-auth.md
+    - name: Konfigurace ověřování identit
+      href: configure-identity-auth.md
+    - name: Řešení potíží
+      href: troubleshoot.md
+- name: Referenční informace
+  items:
+    - name: REST API
+      href: api.md
+    - name: Konfigurace Event Gridu
+      href: configure-event-grid.md
+    - name: Schéma konfigurace dvojčat modulů
+      href: twin-json.md

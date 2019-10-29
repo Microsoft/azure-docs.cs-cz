@@ -23,6 +23,10 @@
               href: quickstarts/python-receipts.md
     - name: S využitím .NET SDK
       href: quickstarts/dotnet-sdk.md
+- name: Kurzy
+  items:
+    - name: Použití Rozpoznávání formulářů se službou Logic Apps
+      href: tutorial-form-recognizer-with-logic-apps.md
 - name: Návody
   items:
     - name: Vytvoření trénovací sady dat

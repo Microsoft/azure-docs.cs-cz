@@ -53,8 +53,10 @@
       href: resource-scenario-status.md
     - name: Přehled požadavků
       href: pre-reqs.md
-    - name: Síťové topologie pro migrace spravované instance Azure SQL DB
+    - name: Síťové topologie pro migrace Azure SQL DB MI
       href: resource-network-topologies.md
+    - name: Vlastní role pro online migrace z SQL Serveru do Azure SQL DB MI
+      href: resource-custom-roles-sql-db-managed-instance.md
     - name: Řešení potíží a známé problémy
       items:
         - name: Řešení potíží s možnostmi připojení zdrojové databáze

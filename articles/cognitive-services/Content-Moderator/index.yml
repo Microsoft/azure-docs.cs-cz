@@ -1,101 +1,164 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke Content Moderatoru
+summary: Rozhraní API Azure Content Moderatoru je služba Cognitive Services, která kontroluje potenciálně urážlivý, rizikový nebo jinak nežádoucí materiál v textu, obrázcích a videích. Pokud se takový materiál najde, použije služba pro obsah odpovídající popisky (příznaky). Vaše aplikace pak může obsah označený příznakem zpracovat a zajistit tak dodržování předpisů nebo zachování zamýšleného prostředí pro uživatele.
 metadata:
-  title: 'Dokumentace ke Content Moderatoru – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs'
-  description: 'Naučte se využívat Content Moderator ke kontrole potenciálně urážlivého, rizikového nebo jinak nežádoucí materiálu v textu, obrázcích a videích.'
+  title: Dokumentace ke Content Moderatoru – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  description: Rozhraní API Azure Content Moderatoru je služba Cognitive Services, která kontroluje potenciálně urážlivý, rizikový nebo jinak nežádoucí materiál v textu, obrázcích a videích. Pokud se takový materiál najde, použije služba pro obsah odpovídající popisky (příznaky). Vaše aplikace pak může obsah označený příznakem zpracovat a zajistit tak dodržování předpisů nebo zachování zamýšleného prostředí pro uživatele.
   services: cognitive-services
-  author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: content-moderator
   ms.topic: landing-page
-  ms.date: 12/20/2018
-  ms.author: nitinme
-abstract:
-  description: 'Rozhraní API Azure Content Moderatoru je služba Cognitive Services, která kontroluje potenciálně urážlivý, rizikový nebo jinak nežádoucí materiál v textu, obrázcích a videích. Pokud se takový materiál najde, použije služba pro obsah odpovídající popisky (příznaky). Vaše aplikace pak může obsah označený příznakem zpracovat a zajistit tak dodržování předpisů nebo zachování zamýšleného prostředí pro uživatele.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/content-moderator-landing-page-video.png
-      width: 250
-    title: 'Moderování videa s využitím Content Moderatoru (15:42)'
-    href: 'https://channel9.msdn.com/Shows/AI-Show/Video-Moderation-with-Content-Moderator?term=content%20moderator&lang-en=true'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/content-moderator/overview
-            html: <p>Další informace o rozhraní API Content Moderatoru</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Co je Content Moderator?
-          - href: /azure/cognitive-services/content-moderator/text-moderation-api
-            html: <p>Další informace o moderování textu</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Rozhraní API pro moderování textu
-          - href: /azure/cognitive-services/content-moderator/image-moderation-api
-            html: <p>Další informace o moderování obrázků</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Rozhraní API pro moderování obrázků
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Další informace o zahájení práce s Content Moderatorem výběrem příslušného odkazu <img src="images/index/link.jpg" height="15" width="15"></img>.
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: images/index/i_portal.svg
-          - image:
-              src: images/index/logo_csharp.svg
-          - image:
-              src: images/index/logo_python.svg
-        rows:
-          - title: Analýza obsahu textu
-            values:
-              - href: quick-start
-              - href: text-moderation-quickstart-dotnet
-              - href: text-moderation-quickstart-python
-          - title: Analýza obsahu obrázků
-            values:
-              - href: null
-              - href: image-moderation-quickstart-dotnet
-              - href: null
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučte se vyvíjet aplikace s využitím Content Moderatoru:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="ecommerce-retail-catalog-moderation.md">Moderování obrázků produktů elektronického obchodování</a>
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: 'Ukázky pro rozhraní API Content Moderatoru:'
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator&sort=Relevance">Ukázky kódu</a>'
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Rozhraní API
-            html: '<p><a href="https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference">REST API</a></p>'
-          - title: Sady SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator">Go</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Rozhraní příkazového řádku
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 486badfa18f461a8dce9733593a8979318364e12
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931722"
+landingContent:
+- title: Informace o Content Moderatoru
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Content Moderator?
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: Moderování videa s využitím Content Moderatoru
+      url: https://channel9.msdn.com/Shows/AI-Show/Video-Moderation-with-Content-Moderator?term=content%20moderator&lang-en=true
+- title: Analýza obsahu obrázků
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Moderování obrázků
+      url: image-moderation-api.md
+  - linkListType: quickstart
+    links:
+    - text: S využitím .NET SDK
+      url: image-moderation-quickstart-dotnet.md
+    - text: Používání sady Python SDK
+      url: python-sdk-quickstart.md
+    - text: Používání sady Java SDK
+      url: java-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: Použití konzoly API
+      url: try-image-api.md
+  - linkListType: tutorial
+    links:
+    - text: Moderování obrázků produktů v elektronickém obchodování
+      url: ecommerce-retail-catalog-moderation.md
+- title: Použití seznamů vlastních obrázků
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: S využitím .NET SDK
+      url: image-lists-quickstart-dotnet.md
+    - text: Používání sady Python SDK
+      url: python-sdk-quickstart.md
+    - text: Používání sady Java SDK
+      url: java-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: Použití konzoly API
+      url: try-image-list-api.md
+- title: Analýza obsahu textu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Moderování textu
+      url: text-moderation-api.md
+  - linkListType: quickstart
+    links:
+    - text: S využitím .NET SDK
+      url: text-moderation-quickstart-dotnet.md
+    - text: Používání sady Python SDK
+      url: python-sdk-quickstart.md
+    - text: Používání sady Java SDK
+      url: java-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: Použití konzoly API
+      url: try-text-api.md
+- title: Použití seznamů vlastních termínů
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: S využitím .NET SDK
+      url: term-lists-quickstart-dotnet.md
+    - text: Používání sady Python SDK
+      url: python-sdk-quickstart.md
+    - text: Používání sady Java SDK
+      url: java-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: Použití konzoly API
+      url: try-terms-list-api.md
+- title: Analýza obsahu videa
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: S využitím .NET SDK
+      url: video-moderation-api.md
+  - linkListType: tutorial
+    links:
+    - text: Moderování videí a přepisů
+      url: video-transcript-moderation-review-tutorial-dotnet.md
+  - linkListType: video
+    links:
+    - text: Moderování videa s využitím Content Moderatoru
+      url: https://channel9.msdn.com/Shows/AI-Show/Video-Moderation-with-Content-Moderator?term=content%20moderator&lang-en=true
+- title: Použití revizí, pracovních postupů a úloh
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Nástroj pro revize
+      url: Review-Tool-User-Guide/human-in-the-loop.md
+    - text: Revize, pracovní postupy a úlohy
+      url: review-api.md
+  - linkListType: quickstart
+    links:
+    - text: Vytváření revizí s využitím sady Python SDK
+      url: python-sdk-quickstart.md
+    - text: Vytváření revizí s využitím sady Java SDK
+      url: java-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: Definice a používání revizí (nástroj pro revize)
+      url: Review-Tool-User-Guide/review-moderated-images.md
+    - text: Definice a používání pracovních postupů (nástroj pro revize)
+      url: Review-Tool-User-Guide/workflows.md
+    - text: Definice a používání úloh (konzola API)
+      url: try-review-api-job.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Rozhraní API Content Moderatoru
+      url: https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet
+    - text: Python SDK
+      url: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/?view=azure-python
+    - text: Java SDK
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable
+    - text: Node.js SDK
+      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest
+    - text: Go SDK
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Rozhraní příkazového řádku Azure (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: Nápověda a zpětná vazba
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/559960-content-moderator
+    - text: Znalostní báze
+      url: https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

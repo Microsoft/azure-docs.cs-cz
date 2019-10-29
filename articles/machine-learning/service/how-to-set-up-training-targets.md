@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: bce04a14a13d5b3615963f298f35af0d2fc480bb
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
-ms.translationtype: MT
+ms.openlocfilehash: 95ded3c184836ac58a0f97d1bf30dd2e3c123ccb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244437"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755971"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 
@@ -106,7 +106,7 @@ Při plánování běhu nebo jako trvalého prostředku můžete vytvořit prost
 V době běhu můžete vytvořit Azure Machine Learning COMPUTE jako cíl výpočtu. Výpočty se automaticky vytvoří pro váš běh. Výpočty se odstraní automaticky po dokončení spuštění. 
 
 > [!NOTE]
-> Chcete-li určit maximální počet uzlů, které mají být použity, je obvykle nastaveno `node_count` na počet uzlů. V současné době (04/04/2019) dojde k chybě, která brání v práci. Jako alternativní řešení použijte vlastnost `amlcompute._cluster_max_node_count` konfigurace spuštění. Například, `run_config.amlcompute._cluster_max_node_count = 5`.
+> Chcete-li určit maximální počet uzlů, které se mají použít, je obvykle nastaveno `node_count` na počet uzlů. V současné době (04/04/2019) dojde k chybě, která brání v práci. Alternativním řešením je použít vlastnost `amlcompute._cluster_max_node_count` konfigurace spuštění. Například, `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Vytváření Azure Machine Learning výpočtů na základě spuštění je momentálně ve verzi Preview. Nepoužívejte vytváření založené na spuštění, pokud používáte automatizované ladění parametrů nebo automatizované strojové učení. Pokud chcete použít ladění pomocí parametrů nebo automatizované strojové učení, vytvořte místo toho [trvalý cíl výpočtů](#persistent) .
@@ -154,7 +154,7 @@ Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako vir
     > [!WARNING]
     > Azure Machine Learning podporuje jenom virtuální počítače, které spouštějí Ubuntu. Když vytváříte virtuální počítač nebo zvolíte existující virtuální počítač, musíte vybrat virtuální počítač, který používá Ubuntu.
 
-1. **Připojit**: Chcete-li připojit existující virtuální počítač jako cíl služby COMPUTE, je nutné zadat plně kvalifikovaný název domény (FQDN), uživatelské jméno a heslo pro virtuální počítač. V tomto příkladu nahraďte \<fqdn > veřejným plně kvalifikovaným názvem domény virtuálního počítače nebo veřejnou IP adresou. > @No__t 0username a @no__t-> 1Password nahraďte uživatelským jménem a heslem SSH pro virtuální počítač.
+1. **Připojit**: Chcete-li připojit existující virtuální počítač jako cíl služby COMPUTE, je nutné zadat plně kvalifikovaný název domény (FQDN), uživatelské jméno a heslo pro virtuální počítač. V tomto příkladu nahraďte \<fqdn > veřejným plně kvalifikovaným názvem domény virtuálního počítače nebo veřejnou IP adresou. Pro tento virtuální počítač nahraďte \<username > a \<heslo > a uživatelské jméno a heslo SSH.
 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
@@ -198,7 +198,7 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
     
     Po vytvoření clusteru se k němu připojte pomocí názvu hostitele \<clustername >-ssh.azurehdinsight.net, kde \<clustername > je název, který jste zadali pro cluster. 
 
-1. **Připojit**: Pokud chcete připojit cluster HDInsight jako cíl výpočetní služby, musíte zadat název hostitele, uživatelské jméno a heslo pro cluster HDInsight. Následující příklad používá sadu SDK k připojení clusteru k vašemu pracovnímu prostoru. V příkladu nahraďte \<clustername > názvem vašeho clusteru. > @No__t 0username a @no__t-> 1Password nahraďte uživatelským jménem a heslem SSH pro cluster.
+1. **Připojit**: Pokud chcete připojit cluster HDInsight jako cíl výpočetní služby, musíte zadat název hostitele, uživatelské jméno a heslo pro cluster HDInsight. Následující příklad používá sadu SDK k připojení clusteru k vašemu pracovnímu prostoru. V příkladu nahraďte \<clustername > názvem vašeho clusteru. Pro tento cluster nahraďte \<username > a \<heslo > a uživatelské jméno a heslo SSH.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -295,7 +295,7 @@ Chcete-li zobrazit výpočetní cíle pro váš pracovní prostor, použijte ná
  
 1. V části __aplikace__vyberte __COMPUTE__.
 
-    [karta COMPUTE @no__t – 1View](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [karta COMPUTE![zobrazení](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Vytvořit cíl výpočtů
 
@@ -391,7 +391,7 @@ Nejdřív vytvořte experiment v pracovním prostoru.
 
 ### <a name="submit-the-experiment"></a>Odeslání experimentu
 
-Odešlete experiment s objektem @no__t 0.  Tento objekt obsahuje:
+Odešlete experiment s objektem `ScriptRunConfig`.  Tento objekt obsahuje:
 
 * **source_directory**: zdrojový adresář, který obsahuje školicí skript
 * **skript**: identifikace školicího skriptu
@@ -414,7 +414,7 @@ Přepněte stejný experiment ke spuštění v jiném výpočetním cíli pomoc�
 
 Nebo můžete:
 
-* Odešlete experiment s objektem @no__t 0, jak je znázorněno v [modelech vlak ml pomocí odhady](how-to-train-ml-models.md).
+* Odešlete experiment s objektem `Estimator`, jak je znázorněno v [modelech vlak ml pomocí odhady](how-to-train-ml-models.md).
 * Odešlete HyperDrive spuštění pro [ladění pomocí parametrů](how-to-tune-hyperparameters.md).
 * Odešlete experiment prostřednictvím [rozšíření vs Code](how-to-vscode-tools.md#train-and-tune-models).
 
@@ -493,13 +493,13 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 Všimněte si oddílu *argumenty* v RunConfig a *prostoru parametrů* v souboru Hyperdrive config. Obsahují argumenty příkazového řádku, které se mají předat skriptu pro školení. Hodnota v RunConfig zůstává pro každou iteraci stejná, zatímco rozsah v HyperDrive config se prochází. Nezadávejte v obou souborech stejný argument.
 
-Další podrobnosti o těchto příkazech @no__t 0 a úplné sadě argumentů naleznete v [referenční dokumentaci](reference-azure-machine-learning-cli.md).
+Další podrobnosti o těchto ```az ml``` příkazy rozhraní příkazového řádku a úplnou sadu argumentů naleznete v [referenční dokumentaci](reference-azure-machine-learning-cli.md).
 
 <a id="gitintegration"></a>
 
 ## <a name="git-tracking-and-integration"></a>Sledování a integrace Git
 
-Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Například aktuální ID potvrzení pro úložiště je protokolováno jako součást historie.
+Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Další informace najdete v tématu [integrace Gitu pro Azure Machine Learning](concept-train-model-git-integration.md).
 
 ## <a name="notebook-examples"></a>Příklady poznámkových bloků
 

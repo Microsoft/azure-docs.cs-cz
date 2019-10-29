@@ -36,7 +36,7 @@
           href: log-query/get-started-portal.md
         - name: Dotazy na protokoly
           href: log-query/get-started-queries.md
-        - name: Vizualizace dat protokolu
+        - name: Řídicí panel s daty protokolů
           href: learn/tutorial-logs-dashboards.md
         - name: Upozornění na data protokolů
           href: learn/tutorial-response.md
@@ -50,7 +50,7 @@
           href: learn/tutorial-alert.md
         - name: Vysvětlení uživatelů aplikací
           href: learn/tutorial-users.md
-        - name: Vytvoření vlastních řídicích panelů
+        - name: Řídicí panel s daty aplikací
           href: learn/tutorial-app-dashboards.md
     - name: Archivace metrik platformy a dat protokolů
       href: learn/tutorial-archive-data.md
@@ -889,7 +889,11 @@
         - name: Workbooks
           href: app/usage-workbooks.md
         - name: Řídicí panely
-          href: app/app-insights-dashboards.md
+          items:
+            - name: Řídicí panel s využitím dat protokolů
+              href: learn/tutorial-logs-dashboards.md
+            - name: Řídicí panel s využitím dat aplikací
+              href: learn/tutorial-app-dashboards.md
         - name: Odeslání dat do Grafany
           href: platform/grafana-plugin.md
     - name: Zobrazení výstrah
@@ -1098,10 +1102,8 @@
           href: platform/metrics-supported.md
         - name: Podporované metriky pro novější upozornění
           href: platform/alerts-metric-near-real-time.md
-    - name: Diagnostické protokoly
-      items:
-        - name: 'Služby, kategorie a schémata pro diagnostické protokoly'
-          href: platform/diagnostic-logs-schema.md
+    - name: 'Služby, kategorie a schémata pro protokoly prostředků'
+      href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI – Application Insights (Preview)
@@ -1110,9 +1112,11 @@
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell
       items:
+        - name: 'Upozornění, metriky, protokol aktivit, automatické škálování'
+          href: /powershell/module/az.monitor
         - name: Application Insights
           href: /powershell/module/az.applicationinsights
-        - name: Protokoly
+        - name: Log Analytics
           href: /powershell/module/az.operationalinsights
     - name: REST API
       items:

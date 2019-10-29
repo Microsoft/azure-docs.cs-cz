@@ -1,0 +1,138 @@
+- name: Dokumentace k řešení Azure IoT Central pro maloobchod
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
+      href: overview-iot-central-retail-pnp.md
+- name: Kurzy
+  items:
+    - name: Kontrola analýz v obchodech
+      items:
+        - name: 1. Vytvoření aplikace pro maloobchod
+          href: tutorial-in-store-analytics-create-app-pnp.md
+        - name: 2. Přizpůsobení řídicího panelu operátora
+          href: tutorial-in-store-analytics-customize-dashboard-pnp.md
+        - name: 3. Export dat a vizualizace přehledů
+          href: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+    - name: Inteligentní řízení zásob
+      items:
+        - name: Vytvoření aplikace pro inteligentní řízení zásob
+          href: tutorial-iot-central-smart-inventory-management-pnp.md
+    - name: Propojená logistika
+      items:
+        - name: Vytvoření aplikace pro propojenou logistiku
+          href: tutorial-iot-central-connected-logistics-pnp.md
+    - name: Digitální distribuční centrum
+      items:
+        - name: Vytvoření aplikace pro digitální distribuční centrum
+          href: tutorial-iot-central-digital-distribution-center-pnp.md
+- name: Koncepty
+  items:
+    - name: Architektura šablony aplikace pro propojenou logistiku
+      href: architecture-connected-logistics-pnp.md
+    - name: Architektura šablony aplikace pro digitální distribuční centrum
+      href: architecture-digital-distribution-center-pnp.md
+    - name: Architektura šablony aplikace pro inteligentní řízení zásob
+      href: architecture-smart-inventory-management-pnp.md
+    - name: Architektura analýz obchodů
+      href: store-analytics-architecture.md
+    - name: Připojení
+      href: ../core/overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Co jsou šablony aplikací?
+      href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+- name: Návody
+  items:
+    - name: Připojení zařízení
+      items:
+        - name: Příprava a připojení sady MXChip IoT DevKit
+          href: ../core/howto-connect-devkit-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Příprava a připojení Rigado Cascade 500
+          href: ../core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Příprava a připojení zařízení RuuviTag
+          href: ../core/howto-connect-ruuvi-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Monitorování připojení zařízení s využitím Azure CLI
+          href: ../core/howto-monitor-devices-azure-cli-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Správa zařízení
+      items:
+        - name: správu zařízení
+          href: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Spuštění úlohy
+          href: ../core/howto-run-a-job.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Použití skupin zařízení
+          href: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Vytváření verzí šablon zařízení
+          href: ../core/howto-version-device-template-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Sledování a analýza
+      items:
+        - name: Analýza dat zařízení
+          href: ../core/howto-create-analytics-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Vytváření webhooků pro pravidla
+          href: ../core/howto-create-webhooks-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Akce a rozšiřitelnost
+      items:
+        - name: Konfigurace nepřetržitého exportu dat
+          href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Vytvoření vlastních rolí
+          href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Vytváření vlastních analýz s využitím Databricks
+          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Správa
+      items:
+        - name: Změna nastavení aplikace
+          href: ../core/howto-administer-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Export vaší aplikace
+          href: ../core/howto-use-app-templates-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Správa uživatelů a skupin
+          href: ../core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Správa vyúčtování
+          href: ../core/howto-view-bill-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Přizpůsobení uživatelského rozhraní aplikací
+          href: ../core/howto-customize-ui-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Přidání dlaždic na řídicí panel
+          href: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Správa z webu Azure Portal
+          href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Správa z Azure CLI
+          href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Správa z Azure PowerShellu
+          href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Správa z portálu CSP
+          href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Personalizace
+      items:
+        - name: Vytvoření osobních řídicích panelů Azure IoT Central
+          href: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Správa vašich osobních předvoleb
+          href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Přepnutí živého chatu
+          href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+- name: Související
+  items:
+    - name: Služby platformy
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Sady SDK pro služby
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: Zdroje a prostředky
+  items:
+    - name: Referenční dokumentace k rozhraní API
+      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
+    - name: Požadavky na zákaznická data
+      href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Podporované prohlížeče
+      href: ../core/iot-central-supported-browsers.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json

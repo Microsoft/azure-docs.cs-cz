@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: Dokumentace k Event Gridu ve službě IoT Edge
+summary: Naučte se využívat Event Grid ve službě IoT Edge k reakcím na relevantní události vygenerované na hraničních zařízeních téměř v reálném čase.
+metadata:
+  title: Dokumentace k Event Gridu ve službě IoT Edge
+  description: Naučte se využívat Event Grid ve službě IoT Edge k reakcím na relevantní události vygenerované na hraničních zařízeních téměř v reálném čase.
+  services: event-grid
+  ms.service: event-grid
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 10/12/2019
+  ms.openlocfilehash: 4b79d64240b96ed41b535f8dbcd1155d67e76282
+  ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/28/2019
+  ms.locfileid: "72991609"
+landingContent:
+- title: Informace o Event Gridu ve službě IoT Edge
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Event Grid ve službě IoT Edge?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Koncepty Event Grid
+      url: concepts.md
+    - text: Schémata událostí
+      url: event-schemas.md
+    - text: Dávkování výstupu
+      url: delivery-output-batching.md
+    - text: Rozšířené filtrování
+      url: advanced-filtering.md
+    - text: Doručování a opakované pokusy
+      url: delivery-retry.md
+- title: Scénáře
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Publikování a přihlášení k odběru událostí v místním prostředí
+      url: pub-sub-events-webhook-local.md
+    - text: Publikování a přihlášení k odběru událostí v cloudu
+      url: pub-sub-events-webhook-cloud.md
+    - text: Přesměrování událostí do Azure Event Gridu
+      url: forward-events-event-grid-cloud.md
+    - text: Přesměrování událostí do Azure IoT Hubu
+      url: forward-events-event-grid-cloud.md
+    - text: Reakce na události služby Azure Blob Storage v místním prostředí
+      url: react-blob-storage-events-locally.md
+- title: Zabezpečení
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zabezpečení a ověřování
+      url: security-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace ověřování klientů
+      url: configure-client-auth.md
+    - text: Konfigurace ověřování odběratelů webhooků
+      url: configure-webhook-subscriber-auth.md
+    - text: Konfigurace ověřování identit
+      url: configure-identity-auth.md

@@ -27,8 +27,10 @@
       href: stream-analytics-javascript-user-defined-functions.md
     - name: 4. Nasazení s využitím průběžné integrace a doručování v Azure Pipelines
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5. Spuštění UDF C# na IoT Edge'
+    - name: '5. Spuštění UDF v C#'
       href: stream-analytics-edge-csharp-udf.md
+    - name: 6. Vytvoření vlastního deserializátoru .NET
+      href: custom-deserializer.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -47,6 +49,8 @@
           href: stream-analytics-define-inputs.md
         - name: Referenční datové výstupy
           href: stream-analytics-use-reference-data.md
+        - name: Psaní vlastních deserializátorů .NET
+          href: custom-deserializer-examples.md
     - name: Výstupní typy pro úlohu
       items:
         - name: Přehled výstupů
@@ -173,7 +177,7 @@
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Nastavení kanálu CI/CD
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: Zápis UDF .NET pro Edge
+        - name: Psaní UDF v .NET
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:

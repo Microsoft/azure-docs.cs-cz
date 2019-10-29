@@ -2,7 +2,7 @@
 title: Dokumentace k počítačovému zpracování obrazu
 summary: Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývojářům přístup k pokročilým algoritmům pro zpracování obrázků a vrácení informací. Na základě nahrání obrázku nebo zadání adresy URL obrázku mohou algoritmy Microsoftu pro počítačové zpracování obrazu různými způsoby analyzovat vizuální obsah, a to v závislosti na vstupech a volbách uživatelů. Pomocí rychlých zprovoznění, kurzů a ukázek se naučíte různými způsoby analyzovat vizuální obsah.
 metadata:
-  title: Dokumentace k počítačovému zpracování obrazu
+  title: Dokumentace k počítačovému zpracování obrazu – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   description: Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývojářům přístup k pokročilým algoritmům pro zpracování obrázků a vrácení informací. Na základě nahrání obrázku nebo zadání adresy URL obrázku mohou algoritmy Microsoftu pro počítačové zpracování obrazu různými způsoby analyzovat vizuální obsah, a to v závislosti na vstupech a volbách uživatelů. Pomocí rychlých zprovoznění, kurzů a ukázek se naučíte různými způsoby analyzovat vizuální obsah.
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: 8c09125fde66c62ecbb1560d2327c6b9671accf8
-  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+  ms.openlocfilehash: 115f02f82e598db227541c44f69954b1f3805f71
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/09/2019
-  ms.locfileid: "72176282"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931797"
 landingContent:
 - title: Informace o počítačovém zpracování obrazu
   linkLists:
@@ -44,6 +44,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: Používání sady Node SDK
       url: quickstarts-sdk/node-sdk.md
+    - text: Použití sady Go SDK
+      url: quickstarts-sdk/go-sdk.md
 - title: Detekce objektů v obrázcích
   linkLists:
   - linkListType: concept
@@ -60,6 +62,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: Používání sady Node SDK
       url: quickstarts-sdk/node-sdk.md
+    - text: Použití sady Go SDK
+      url: quickstarts-sdk/go-sdk.md
 - title: Používání značek obsahu pro obrázky
   linkLists:
   - linkListType: concept
@@ -76,6 +80,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: Používání sady Node SDK
       url: quickstarts-sdk/node-sdk.md
+    - text: Použití sady Go SDK
+      url: quickstarts-sdk/go-sdk.md
 - title: Použití kontejnerů
   linkLists:
   - linkListType: get-started
@@ -108,6 +114,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: Používání sady Node SDK
       url: quickstarts-sdk/node-sdk.md
+    - text: Použití sady Go SDK
+      url: quickstarts-sdk/go-sdk.md
 - title: Referenční informace
   linkLists:
   - linkListType: reference
@@ -132,3 +140,11 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Rozhraní příkazového řádku Azure (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: Nápověda a zpětná vazba
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/430309-computer-vision-api
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

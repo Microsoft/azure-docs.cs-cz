@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c886289f098eb41f4b215b4abc2e206db93a27f9
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 706f76c00022c5f5661ea261a5bb35eedc13d5ba
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710141"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756032"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -23,7 +23,7 @@ Přečtěte si o architektuře, konceptech a pracovním postupu pro Azure Machin
 
 ![Azure Machine Learning architektura a pracovní postup](./media/concept-azure-machine-learning-architecture/workflow.png)
 
-## <a name="workflow"></a>Pracovního postupu
+## <a name="workflow"></a>Pracovní postupy
 
 Pracovní postup modelu Machine Learning se obvykle řídí tímto pořadím:
 
@@ -34,7 +34,7 @@ Pracovní postup modelu Machine Learning se obvykle řídí tímto pořadím:
 
 1. **Balíček** – po nalezení uspokojivého spuštění Zaregistrujte trvalý model v **registru modelu**.
 
-1. **Ověří** - **dotaz na experiment** pro zaznamenané metriky z aktuálního a minulého spuštění. Pokud metriky nenaznačují požadovaný výsledek, vraťte se ke kroku 1 a Iterujte na svých skriptech.
+1. **Ověřte** - **dotazování experimentu** u protokolovaných metrik z aktuálních a minulých spuštění. Pokud metriky nenaznačují požadovaný výsledek, vraťte se ke kroku 1 a Iterujte na svých skriptech.
 
 1. **Nasazení** – vývoj vyhodnocovacího skriptu, který používá model a **nasazení modelu** jako **webové služby** v Azure nebo do **zařízení IoT Edge**.
 
@@ -52,17 +52,17 @@ Použijte tyto nástroje pro Azure Machine Learning:
 > [!NOTE]
 > I když tento článek popisuje pojmy a koncepty, které používá Azure Machine Learning, nedefinuje pojmy a koncepty pro platformu Azure. Další informace o terminologii platforem Azure najdete v tématu [Microsoft Azure Glosář](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
-## <a name="glossary"></a>Slovníček
+## <a name="glossary"></a>Glosář
 + <a href="#activities">Aktivita</a>
 + <a href="#compute-targets">Cíle výpočtů</a>
 + <a href="#datasets-and-datastores">Datová sada & úložiště dat</a>
 + <a href="#deployment">Nasazení</a>
 + <a href="#environments">Environment</a>
 + [Odhady](#estimators)
-+ <a href="#experiments">Pokusný</a>
++ <a href="#experiments">Experimenty</a>
 + <a href="#github-tracking-and-integration">Sledování Gitu</a>
 + <a href="#iot-module-deployments">Moduly IoT</a>
-+ <a href="#logging">Protokolování</a>
++ <a href="#logging">Protokolu</a>
 + <a href="#ml-pipelines">Kanály ML</a>
 + <a href="#models">Vzor</a>
 + <a href="#runs">Spouštěl</a>
@@ -119,7 +119,7 @@ Pokud jste povolili monitorování, Azure shromáždí data telemetrie z modelu 
 
 Azure IoT Edge zajistí, že je váš modul spuštěný, a monitoruje zařízení, které ho hostuje.
 
-### <a name="environments"></a>Environment
+### <a name="environments"></a>Prostředí
 
 Prostředí Azure ML se používají k určení konfigurace (Docker/Python/Spark/atd.), která slouží k vytvoření reprodukovatelného prostředí pro přípravu dat, školení modelů a obsluhu modelů. Jsou spravované a se správou verzí v rámci vašeho pracovního prostoru Azure Machine Learning umožňují reprodukovatelné pracovní postupy, které lze auditovat a přenosné strojové učení napříč různými výpočetními cíli.
 
@@ -140,7 +140,7 @@ Další informace najdete v následujících článcích:
 * [TensorFlow modely a zaregistrujte se ve velkém měřítku pomocí Azure Machine Learning](how-to-train-tensorflow.md).
 * [Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning](how-to-train-chainer.md).
 
-### <a name="experiments"></a>Pokusný
+### <a name="experiments"></a>Experimenty
 
 Experiment je seskupení mnoha běhů ze zadaného skriptu. Vždycky patří do pracovního prostoru. Po odeslání běhu zadáte název experimentu. Informace pro běh jsou uloženy v rámci tohoto experimentu. Pokud odešlete běh a určíte název experimentu, který neexistuje, automaticky se vytvoří nový experiment s tímto nově zadaným názvem.
 
@@ -149,10 +149,11 @@ Příklad použití experimentu najdete v tématu [kurz: výuka prvního modelu]
 
 ### <a name="github-tracking-and-integration"></a>Sledování a integrace GitHubu
 
-Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Například aktuální ID potvrzení pro úložiště je protokolováno jako součást historie. Tato funkce funguje s poslanými běhy s použitím kanálu Estimator, ML nebo spuštění skriptu. Funguje taky pro spuštění odeslaná ze sady SDK nebo rozhraní příkazového řádku Machine Learning.
+Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Tato funkce funguje s poslanými běhy s použitím kanálu Estimator, ML nebo spuštění skriptu. Funguje taky pro spuštění odeslaná ze sady SDK nebo rozhraní příkazového řádku Machine Learning.
 
+Další informace najdete v tématu [integrace Gitu pro Azure Machine Learning](concept-train-model-git-integration.md).
 
-### <a name="logging"></a>protokolování
+### <a name="logging"></a>Protokolování
 
 Při vývoji řešení použijte sadu Azure Machine Learning Python SDK ve vašem skriptu Pythonu k protokolování libovolných metrik. Po spuštění dotazu na metriky určete, zda běh vytvořil model, který chcete nasadit.
 
@@ -188,7 +189,7 @@ Registrovaný model, který je používán aktivním nasazením, nelze odstranit
 Příklad registrace modelu naleznete v tématu [výuka modelu klasifikace obrázku pomocí Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 
-### <a name="runs"></a>Provede
+### <a name="runs"></a>Spuštění
 
 Spuštění je jediné spuštění školicího skriptu. Azure Machine Learning zaznamenává všechna spuštění a ukládá následující informace:
 
@@ -206,7 +207,7 @@ Konfigurace spuštění je sada instrukcí, které definují, jak by měl skript
 Konfiguraci spuštění lze zachovat do souboru v adresáři, který obsahuje školicí skript, nebo může být vytvořen jako objekt v paměti a použit k odeslání běhu.
 
 Například konfigurace spuštění najdete v tématu [Výběr a použití výpočetní cíle ke školení modelu](how-to-set-up-training-targets.md).
-### <a name="snapshots"></a>snímky
+### <a name="snapshots"></a>Snímky
 
 Když odešlete běh, Azure Machine Learning zkomprimuje adresář, který obsahuje skript jako soubor zip, a odešle ho do cíle služby Compute. Pak se soubor zip extrahuje a v něm se spustí skript. Azure Machine Learning také ukládá soubor ZIP jako snímek jako součást záznamu spuštění. Kdokoli s přístupem k pracovnímu prostoru může procházet záznam spuštění a stáhnout snímek.
 

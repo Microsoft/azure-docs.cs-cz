@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 73887c39ebcee2efc4a31925f4aacfffb3c53ca7
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 087e1cd84aa182a0aae1bef6ba3dd38f369d5189
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828060"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755944"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Výuka modelů pomocí Azure Machine Learning s využitím Estimator
 
@@ -37,7 +37,7 @@ Tento článek se zaměřuje na kroky 4-5. Postup 1-3 najdete v [kurzu o výukov
 
 ### <a name="single-node-training"></a>Školení s jedním uzlem
 
-Použití `Estimator` pro školení s jedním uzlem spouštěné ve vzdálené výpočetní službě v Azure pro model scikit-učení. Měl by již být vytvořen objekt [cíle výpočtů](how-to-set-up-training-targets.md#amlcompute) `compute_target` a objekt [úložiště dat](how-to-access-data.md) `ds`.
+Použití `Estimator` pro školení s jedním uzlem se spouští ve vzdálené výpočetní službě Azure pro model scikit-učení. Měli byste už mít vytvořený objekt [cíle výpočetního](how-to-set-up-training-targets.md#amlcompute) objektu `compute_target` a váš objekt [úložiště dat](how-to-access-data.md) `ds`.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -59,14 +59,14 @@ Tento fragment kódu určuje následující parametry konstruktoru `Estimator`.
 Parametr | Popis
 --|--
 `source_directory`| Místní adresář, který obsahuje veškerý váš kód potřebný pro školicí úlohu. Tato složka se zkopíruje z místního počítače do vzdálené výpočetní služby.
-`script_params`| Slovník určující argumenty příkazového řádku, které se mají předat skriptu pro školení `entry_script` ve formě párů `<command-line argument, value>`. Chcete-li zadat příznak verbose v `script_params`, použijte `<command-line argument, "">`.
+`script_params`| Slovník určující argumenty příkazového řádku, které se mají předat vašemu školicímu skriptu `entry_script`ve formě dvojice `<command-line argument, value>` Chcete-li zadat příznak verbose v `script_params`, použijte `<command-line argument, "">`.
 `compute_target`| Vzdálený výpočetní cíl, na kterém se váš školicí skript spustí, v tomto případě cluster Azure Machine Learning COMPUTE ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)). (Pamatujte na to, že cluster AmlCompute se běžně používá, je také možné zvolit jiné typy výpočetních cílů, jako jsou například virtuální počítače Azure nebo i místní počítač.)
 `entry_script`| FilePath (vzhledem k `source_directory`) školicího skriptu, který se má spustit na vzdáleném výpočetním prostředí. Tento soubor a všechny další soubory, na kterých závisí, by měly být umístěny v této složce.
 `conda_packages`| Seznam balíčků Pythonu, které se mají nainstalovat přes Conda, kterou vyžaduje váš školicí skript.  
 
-Konstruktor má jiný parametr s názvem `pip_packages`, který používáte pro všechny potřebné balíčky PIP.
+Konstruktor má jiný parametr nazvaný `pip_packages`, který používáte pro všechny potřebné balíčky PIP.
 
-Teď, když jste vytvořili objekt `Estimator`, odešlete školicí úlohu, která se spustí ve vzdáleném výpočetním prostředí, s voláním funkce `submit` v objektu [experimentu](concept-azure-machine-learning-architecture.md#experiments) `experiment`. 
+Teď, když jste vytvořili objekt `Estimator`, odešlete úlohu školení, která se spustí ve vzdáleném výpočetním prostředí, a voláním funkce `submit` na svém objektu [experimentu](concept-azure-machine-learning-architecture.md#experiments) `experiment`. 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -74,23 +74,23 @@ print(run.get_portal_url())
 ```
 
 > [!IMPORTANT]
-> **Speciální složky** Dvě složky, *výstupy* a *protokoly*dostanou zvláštní zacházení Azure Machine Learning. Když při školení zapisujete soubory do složek s názvem *výstupy* a *protokoly* , které jsou relativní vzhledem ke kořenovému adresáři (`./outputs` a `./logs`, v uvedeném pořadí), soubory se automaticky nahrají do historie spuštění, abyste k nim měli přístup jenom jednou. vaše spuštění bylo dokončeno.
+> **Speciální složky** Dvě složky, *výstupy* a *protokoly*dostanou zvláštní zacházení Azure Machine Learning. Když při výuce zapisujete soubory do složek s názvem *výstupy* a *protokoly* , které jsou relativní vzhledem ke kořenovému adresáři (`./outputs` a `./logs`, v uvedeném pořadí), soubory se automaticky nahrají do historie spuštění, abyste k nim měli přístup jenom jednou. vaše spuštění bylo dokončeno.
 >
 > Chcete-li během školení vytvořit artefakty (například soubory modelů, kontrolní body, datové soubory nebo vykreslené bitové kopie), zapište je do složky `./outputs`.
 >
-> Podobně můžete do složky `./logs` zapisovat libovolné protokoly z vašeho školicího běhu. Aby bylo možné využívat Azure Machine Learning [integrace TensorBoard](https://aka.ms/aml-notebook-tb) , nezapomeňte zapisovat do této složky protokoly TensorBoard. Během probíhajícího běhu budete moct spouštět TensorBoard a streamovat tyto protokoly.  Později také budete moci obnovit protokoly z libovolného z předchozích spuštění.
+> Podobně můžete v rámci školicích běhů zapisovat libovolné protokoly do složky `./logs`. Aby bylo možné využívat Azure Machine Learning [integrace TensorBoard](https://aka.ms/aml-notebook-tb) , nezapomeňte zapisovat do této složky protokoly TensorBoard. Během probíhajícího běhu budete moct spouštět TensorBoard a streamovat tyto protokoly.  Později také budete moci obnovit protokoly z libovolného z předchozích spuštění.
 >
 > Například pro stažení souboru zapsaného do složky *výstupy* do místního počítače po spuštění vzdáleného školení: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
 ### <a name="distributed-training-and-custom-docker-images"></a>Distribuované školení a vlastní image Docker
 
-Existují dva další školicí scénáře, které můžete provést s `Estimator`:
+Existují dva další školicí scénáře, které můžete provádět s `Estimator`:
 * Použití vlastní image Docker
 * Distribuované školení v clusteru s více uzly
 
-Následující kód ukazuje, jak provést distribuované školení pro model Keras. Kromě toho místo používání výchozích Azure Machine Learning imagí určuje vlastní Docker image z Docker Hub `continuumio/miniconda` pro školení.
+Následující kód ukazuje, jak provést distribuované školení pro model Keras. Kromě toho se místo používání výchozích Azure Machine Learning imagí určuje vlastní image Docker z Docker Hub `continuumio/miniconda` pro školení.
 
-Měli byste už mít vytvořený cílový objekt služby [compute](how-to-set-up-training-targets.md#amlcompute) `compute_target`. Estimator vytvoříte takto:
+Měli byste už mít vytvořený objekt [cíle výpočetního](how-to-set-up-training-targets.md#amlcompute) objektu `compute_target`. Estimator vytvoříte takto:
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -112,7 +112,7 @@ Parametr | Popis | Výchozí
 --|--|--
 `custom_docker_image`| Název obrázku, který chcete použít. Poskytněte jenom image dostupné ve veřejných úložištích Docker (v tomto případě Docker Hub). Pokud chcete použít image z privátního úložiště Docker, použijte místo toho parametr `environment_definition` konstruktoru. [Viz příklad](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
 `node_count`| Počet uzlů, které se mají použít pro úlohu školení | `1`
-`process_count_per_node`| Počet procesů (nebo "pracovní procesy"), které mají být spuštěny na jednotlivých uzlech. V takovém případě použijete rozhraní GPU `2` dostupné na každém uzlu.| `1`
+`process_count_per_node`| Počet procesů (nebo "pracovní procesy"), které mají být spuštěny na jednotlivých uzlech. V takovém případě použijete `2` GPU dostupné na každém uzlu.| `1`
 `distributed_training`| [MPIConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) objekt pro spouštění distribuovaného školení pomocí back-endu MPI.  | `None`
 
 
@@ -124,7 +124,7 @@ print(run.get_portal_url())
 
 ## <a name="github-tracking-and-integration"></a>Sledování a integrace GitHubu
 
-Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Například aktuální ID potvrzení pro úložiště je protokolováno jako součást historie.
+Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Další informace najdete v tématu [integrace Gitu pro Azure Machine Learning](concept-train-model-git-integration.md).
 
 ## <a name="examples"></a>Příklady
 Poznámkový blok, který zobrazuje základy Estimator vzoru, najdete v těchto tématech:

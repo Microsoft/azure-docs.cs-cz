@@ -304,10 +304,14 @@
           href: resource-group-template-functions-resource.md
         - name: Funkce řetězců
           href: resource-group-template-functions-string.md
-    - name: Úplné odstranění režimu
-      href: complete-mode-deletion.md
-    - name: Omezení instancí prostředků
-      href: resources-without-rg-limit.md
+    - name: Možnosti prostředků
+      items:
+        - name: Úplné odstranění režimu
+          href: complete-mode-deletion.md
+        - name: Typy prostředků rozšíření
+          href: extension-resource-types.md
+        - name: Omezení instancí prostředků
+          href: resources-without-rg-limit.md
     - name: Poskytovatelé prostředků podle služeb
       href: azure-services-resource-providers.md
     - name: REST – Resource Manager

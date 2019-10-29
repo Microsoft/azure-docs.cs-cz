@@ -42,6 +42,8 @@
           items:
             - name: Delegování na autory katalogu
               href: entitlement-management-delegate-catalog.md
+            - name: Přidání připojené organizace
+              href: entitlement-management-organization.md
             - name: Řízení přístupu pro externí uživatele
               href: entitlement-management-external-users.md
             - name: Zobrazení sestav a protokolů

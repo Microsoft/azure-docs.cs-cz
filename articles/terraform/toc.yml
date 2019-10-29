@@ -10,13 +10,19 @@
     - name: Instalace a konfigurace Terraformu
       href: /azure/virtual-machines/linux/terraform-install-configure
       maintainContext: true
-    - name: Vytvoření aplikace s více službami
-      href: terrafom-quickstart.md
+    - name: Vytvoření konfigurace Terraformu
+      href: terraform-create-configuration.md
     - name: Vytvoření virtuálního počítače s Linuxem
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
 - name: Kurzy
   items:
+    - name: Nastavení a konfigurace
+      items:
+        - name: Uložení stavu Terraformu ve službě Azure Storage
+          href: terraform-backend.md
+        - name: Konfigurace Azure Cloud Shellu pro Terraform
+          href: terraform-cloud-shell.md
     - name: App Service
       items:
         - name: Terraform a sloty nasazení zprostředkovatele Azure
@@ -29,8 +35,8 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Infrastruktura
       items:
-        - name: Vytvoření virtuálního počítače Terraform s povolenou službou MSI
-          href: terraform-vm-msi.md
+        - name: Vytvoření virtuálního počítače Terraform s povolenými spravovanými identitami pro prostředky Azure
+          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: Vytvoření clusteru virtuálních počítačů s využitím modulů Terraformu
           href: terraform-create-vm-cluster-module.md
         - name: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
@@ -67,10 +73,6 @@
   items:
     - name: Šablony konfigurace
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: Návody
-  items:
-    - name: Ukládání stavu ve službě Azure Storage
-      href: terraform-backend.md
 - name: Referenční informace
   items:
     - name: Registr modulů Azure

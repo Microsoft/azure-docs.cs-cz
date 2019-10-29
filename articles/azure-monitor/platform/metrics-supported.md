@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 4e2cd3b66385d37815d0fc51a70ca31aba25db29
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
-ms.translationtype: HT
+ms.openlocfilehash: aab5d9a4cb7527e8a2085f826febc64bbd74854c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528613"
+ms.locfileid: "72551961"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -1437,68 +1437,78 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 |Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádné dimenze|
-|physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádné dimenze|
-|log_write_percent|Procentní hodnota protokolu v/v|Procento|Průměr|Procentní hodnota protokolu v/v. Neplatí pro datové sklady.|Žádné dimenze|
-|dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU Platí pro databáze založené na DTU.|Žádné dimenze|
-|úložiště|Využité místo pro data|Psaný|Maximum|Celková velikost databáze Neplatí pro datové sklady.|Žádné dimenze|
-|connection_successful|Úspěšná připojení|Počet|Celkem|Úspěšná připojení|Žádné dimenze|
-|connection_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné dimenze|
-|blocked_by_firewall|Blokováno bránou firewall|Počet|Celkem|Blokováno bránou firewall|Žádné dimenze|
-|Ukončení|Zablokování|Počet|Celkem|Zablokování. Neplatí pro datové sklady.|Žádné dimenze|
-|storage_percent|Procento využitého datového prostoru|Procento|Maximum|Procento velikosti databáze. Neplatí pro datové sklady nebo databáze na úrovni dat.|Žádné dimenze|
-|xtp_storage_percent|Procentuální hodnota úložiště OLTP v paměti|Procento|Průměr|Procentuální hodnota úložiště OLTP v paměti Neplatí pro datové sklady.|Žádné dimenze|
-|workers_percent|Procento pracovních procesů|Procento|Průměr|Procento pracovních procesů Neplatí pro datové sklady.|Žádné dimenze|
-|sessions_percent|Procento relací|Procento|Průměr|Procento relací Neplatí pro datové sklady.|Žádné dimenze|
-|dtu_limit|Limit DTU|Počet|Průměr|Limit DTU. Platí pro databáze založené na DTU.|Žádné dimenze|
-|dtu_used|Využité DTU|Počet|Průměr|Používá se DTU. Platí pro databáze založené na DTU.|Žádné dimenze|
-|cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru. Platí pro databáze založené na vCore.|Žádné dimenze|
-|cpu_used|Využitý procesor|Počet|Průměr|Využitý procesor. Platí pro databáze založené na vCore.|Žádné dimenze|
-|dwu_limit|DWU limit|Počet|Maximum|DWU limit. Platí jenom pro datové sklady.|Žádné dimenze|
-|dwu_consumption_percent|Procento DWU|Procento|Maximum|Procento DWU Platí jenom pro datové sklady.|Žádné dimenze|
-|dwu_used|DWU použito|Počet|Maximum|DWU použito. Platí jenom pro datové sklady.|Žádné dimenze|
-|dw_cpu_percent|Procento CPU na úrovni uzlu DW|Procento|Průměr|Procento CPU na úrovni uzlu DW|DwLogicalNodeId|
-|dw_physical_data_read_percent|Procento vstupně-výstupních operací dat na úrovni uzlu DW|Procento|Průměr|Procento vstupně-výstupních operací dat na úrovni uzlu DW|DwLogicalNodeId|
-|cache_hit_percent|Procento přístupů do mezipaměti|Procento|Maximum|Procento přístupů do mezipaměti Platí jenom pro datové sklady.|Žádné dimenze|
-|cache_used_percent|Procento využité mezipaměti|Procento|Maximum|Procento využité mezipaměti Platí jenom pro datové sklady.|Žádné dimenze|
-|local_tempdb_usage_percent|Místní procento databáze tempdb|Procento|Průměr|Místní procento databáze tempdb. Platí jenom pro datové sklady.|Žádné dimenze|
+|allocated_data_storage|Přidělené datové místo|Psaný|Průměr|Přidělené datové místo Neplatí pro datové sklady.|Žádné dimenze|
 |app_cpu_billed|CPU aplikace se fakturuje.|Počet|Celkem|CPU aplikace se fakturuje. Platí pro databáze bez serveru.|Žádné dimenze|
 |app_cpu_percent|Procento využití procesoru aplikací|Procento|Průměr|Procento využití procesoru aplikací Platí pro databáze bez serveru.|Žádné dimenze|
 |app_memory_percent|Procento využité paměti aplikace|Procento|Průměr|Procento využité paměti aplikace Platí pro databáze bez serveru.|Žádné dimenze|
-|allocated_data_storage|Přidělené datové místo|Psaný|Průměr|Přidělené datové místo Neplatí pro datové sklady.|Žádné dimenze|
+|blocked_by_firewall|Blokováno bránou firewall|Počet|Celkem|Blokováno bránou firewall|Žádné dimenze|
+|cache_hit_percent|Procento přístupů do mezipaměti|Procento|Maximum|Procento přístupů do mezipaměti Platí jenom pro datové sklady.|Žádné dimenze|
+|cache_used_percent|Procento využité mezipaměti|Procento|Maximum|Procento využité mezipaměti Platí jenom pro datové sklady.|Žádné dimenze|
+|connection_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné dimenze|
+|connection_successful|Úspěšná připojení|Počet|Celkem|Úspěšná připojení|Žádné dimenze|
+|cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádné dimenze|
+|cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru. Platí pro databáze založené na vCore.|Žádné dimenze|
+|cpu_used|Využitý procesor|Počet|Průměr|Využitý procesor. Platí pro databáze založené na vCore.|Žádné dimenze|
+|Ukončení|Zablokování|Počet|Celkem|Zablokování. Neplatí pro datové sklady.|Žádné dimenze|
+|dtu_limit|Limit DTU|Počet|Průměr|Limit DTU. Platí pro databáze založené na DTU.|Žádné dimenze|
+|dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU Platí pro databáze založené na DTU.|Žádné dimenze|
+|dtu_used|Využité DTU|Počet|Průměr|Používá se DTU. Platí pro databáze založené na DTU.|Žádné dimenze|
+|dw_cpu_percent|Procento CPU na úrovni uzlu DW|Procento|Průměr|Procento CPU na úrovni uzlu DW|DwLogicalNodeId|
+|dw_physical_data_read_percent|Procento vstupně-výstupních operací dat na úrovni uzlu DW|Procento|Průměr|Procento vstupně-výstupních operací dat na úrovni uzlu DW|DwLogicalNodeId|
+|dwu_consumption_percent|Procento DWU|Procento|Maximum|Procento DWU Platí jenom pro datové sklady.|Žádné dimenze|
+|dwu_limit|DWU limit|Počet|Maximum|DWU limit. Platí jenom pro datové sklady.|Žádné dimenze|
+|dwu_used|DWU použito|Počet|Maximum|DWU použito. Platí jenom pro datové sklady.|Žádné dimenze|
+|local_tempdb_usage_percent|Místní procento databáze tempdb|Procento|Průměr|Místní procento databáze tempdb. Platí jenom pro datové sklady.|Žádné dimenze|
+|log_write_percent|Procentní hodnota protokolu v/v|Procento|Průměr|Procentní hodnota protokolu v/v. Neplatí pro datové sklady.|Žádné dimenze|
+|physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádné dimenze|
+|sessions_percent|Procento relací|Procento|Průměr|Procento relací Neplatí pro datové sklady.|Žádné dimenze|
+|sqlserver_process_core_percent|Základní procento procesu SQL Server|Procento|Maximum|Tato metrika je zástupný symbol a v tuto chvíli se neplní.|Žádné dimenze|
+|sqlserver_process_memory_percent|% SQL Server paměti procesu|Procento|Maximum|Tato metrika je zástupný symbol a v tuto chvíli se neplní.|Žádné dimenze|
+|úložiště|Využité místo pro data|Psaný|Maximum|Celková velikost databáze Neplatí pro datové sklady.|Žádné dimenze|
+|storage_percent|Procento využitého datového prostoru|Procento|Maximum|Procento velikosti databáze. Neplatí pro datové sklady nebo databáze na úrovni dat.|Žádné dimenze|
+|tempdb_data_size|Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Velikost datového souboru tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU.|Žádné dimenze|
+|tempdb_log_size|Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Velikost souboru protokolu tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU.|Žádné dimenze|
+|tempdb_log_used_percent|Použit protokol tempdb v procentech|Procento|Maximum|Byl použit protokol tempdb Percent. Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU.|Žádné dimenze|
+|workers_percent|Procento pracovních procesů|Procento|Průměr|Procento pracovních procesů Neplatí pro datové sklady.|Žádné dimenze|
+|xtp_storage_percent|Procentuální hodnota úložiště OLTP v paměti|Procento|Průměr|Procentuální hodnota úložiště OLTP v paměti Neplatí pro datové sklady.|Žádné dimenze|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/servery/elasticPools
 
 |Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádné dimenze|
-|physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádné dimenze|
-|log_write_percent|Procentní hodnota protokolu v/v|Procento|Průměr|Procentní hodnota protokolu v/v|Žádné dimenze|
-|dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU Platí pro elastické fondy založené na DTU.|Žádné dimenze|
-|storage_percent|Procento využitého datového prostoru||Procento|Průměr|Procento úložiště|Žádné dimenze|
-|workers_percent|Procento pracovních procesů|Procento|Průměr|Procento pracovních procesů|Žádné dimenze|
-|sessions_percent|Procento relací|Procento|Průměr|Procento relací|Žádné dimenze|
-|eDTU_limit|limit eDTU|Počet|Průměr|limit eDTU. Platí pro elastické fondy založené na DTU.|Žádné dimenze|
-|storage_limit|Maximální velikost dat|Psaný|Průměr|Omezení úložiště|Žádné dimenze|
-|eDTU_used|využité eDTU|Počet|Průměr|používá se eDTU. Platí pro elastické fondy založené na DTU.|Žádné dimenze|
-|storage_used|Využité místo pro data|Psaný|Průměr|Využité úložiště|Žádné dimenze|
-|xtp_storage_percent|Procentuální hodnota úložiště OLTP v paměti|Procento|Průměr|Procentuální hodnota úložiště OLTP v paměti|Žádné dimenze|
-|cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru. Platí pro elastické fondy založené na vCore.|Žádné dimenze|
-|cpu_used|Využitý procesor|Počet|Průměr|Využitý procesor. Platí pro elastické fondy založené na vCore.|Žádné dimenze|
 |allocated_data_storage|Přidělené datové místo|Psaný|Průměr|Přidělené datové místo|Žádné dimenze|
 |allocated_data_storage_percent|Procentuální hodnota přiděleného datového prostoru|Procento|Maximum|Procentuální hodnota přiděleného datového prostoru|Žádné dimenze|
+|cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru. Platí pro elastické fondy založené na vCore.|Žádné dimenze|
+|cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádné dimenze|
+|cpu_used|Využitý procesor|Počet|Průměr|Využitý procesor. Platí pro elastické fondy založené na vCore.|Žádné dimenze|
+|dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU Platí pro elastické fondy založené na DTU.|Žádné dimenze|
+|eDTU_limit|limit eDTU|Počet|Průměr|limit eDTU. Platí pro elastické fondy založené na DTU.|Žádné dimenze|
+|eDTU_used|využité eDTU|Počet|Průměr|používá se eDTU. Platí pro elastické fondy založené na DTU.|Žádné dimenze|
+|log_write_percent|Procentní hodnota protokolu v/v|Procento|Průměr|Procentní hodnota protokolu v/v|Žádné dimenze|
+|physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádné dimenze|
+|sessions_percent|Procento relací|Procento|Průměr|Procento relací|Žádné dimenze|
+|storage_limit|Maximální velikost dat|Psaný|Průměr|Omezení úložiště|Žádné dimenze|
+|storage_percent|Procento využitého datového prostoru||Procento|Průměr|Procento úložiště|Žádné dimenze|
+|storage_used|Využité místo pro data|Psaný|Průměr|Využité úložiště|Žádné dimenze|
+|sqlserver_process_core_percent|Základní procento procesu SQL Server|Procento|Maximum|Tato metrika je zástupný symbol a v tuto chvíli se neplní.|Žádné dimenze|
+|sqlserver_process_memory_percent|% SQL Server paměti procesu|Procento|Maximum|Tato metrika je zástupný symbol a v tuto chvíli se neplní.|Žádné dimenze|
+|tempdb_data_size|Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Velikost datového souboru tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU.|Žádné dimenze|
+|tempdb_log_size|Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Velikost souboru protokolu tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU.|Žádné dimenze|
+|tempdb_log_used_percent|Použit protokol tempdb v procentech|Procento|Maximum|Byl použit protokol tempdb Percent. Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU.|Žádné dimenze|
+|workers_percent|Procento pracovních procesů|Procento|Průměr|Procento pracovních procesů|Žádné dimenze|
+|xtp_storage_percent|Procentuální hodnota úložiště OLTP v paměti|Procento|Průměr|Procentuální hodnota úložiště OLTP v paměti|Žádné dimenze|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
 |Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|virtual_core_count|Počet virtuálních jader|Počet|Průměr|Počet virtuálních jader|Žádné dimenze|
 |avg_cpu_percent|Průměrné procento procesoru|Procento|Průměr|Průměrné procento procesoru|Žádné dimenze|
+|io_bytes_read|Přečtené vstupně-výstupní bajty|Psaný|Průměr|Přečtené vstupně-výstupní bajty|Žádné dimenze|
+|io_requests|Počet požadavků v/v|Počet|Průměr|Počet požadavků v/v|Žádné dimenze|
+|io_bytes_written|Zapsané vstupně-výstupní bajty|Psaný|Průměr|Zapsané vstupně-výstupní bajty|Žádné dimenze|
 |reserved_storage_mb|Rezervované místo v úložišti|Počet|Průměr|Rezervované místo v úložišti|Žádné dimenze|
 |storage_space_used_mb|Využité místo úložiště|Počet|Průměr|Využité místo úložiště|Žádné dimenze|
-|io_requests|Počet požadavků v/v|Počet|Průměr|Počet požadavků v/v|Žádné dimenze|
-|io_bytes_read|Přečtené vstupně-výstupní bajty|Psaný|Průměr|Přečtené vstupně-výstupní bajty|Žádné dimenze|
-|io_bytes_written|Zapsané vstupně-výstupní bajty|Psaný|Průměr|Zapsané vstupně-výstupní bajty|Žádné dimenze|
+|virtual_core_count|Počet virtuálních jader|Počet|Průměr|Počet virtuálních jader|Žádné dimenze|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 

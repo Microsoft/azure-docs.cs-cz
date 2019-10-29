@@ -2,7 +2,7 @@
 title: Dokumentace ke Custom Vision
 summary: Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Třídění obrázků je služba AI, která obrázkům v závislosti na jejich vizuálních vlastnostech dává popisky (které reprezentují třídy).
 metadata:
-  title: Dokumentace ke Custom Vision
+  title: Dokumentace ke Custom Vision – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   description: Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Třídění obrázků je služba AI, která obrázkům v závislosti na jejich vizuálních vlastnostech dává popisky (které reprezentují třídy).
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 5be5dcd64345de32e37413932869574391573c60
-  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+  ms.openlocfilehash: 21e4c324b947cb863614f50bb2ee0bfe09246372
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/09/2019
-  ms.locfileid: "72176176"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931640"
 landingContent:
 - title: Informace o Custom Vision
   linkLists:
@@ -128,3 +128,11 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Rozhraní příkazového řádku Azure (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: Nápověda a zpětná vazba
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/598141-custom-vision-service
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

@@ -1,24 +1,18 @@
 ---
 title: Jak vynést výkon grafu pomocí Azure Monitor pro virtuální počítače (Preview) | Microsoft Docs
 description: Výkon je funkce Azure Monitor pro virtuální počítače, která automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek poskytuje podrobné informace o tom, jak ho používat v různých scénářích.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: cdfc0115beecd69ec50e8b7fd026563d145e1761
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.date: 10/15/2019
+ms.openlocfilehash: f8879ac2d7827732112fa1a7504484209461b196
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515315"
+ms.locfileid: "72555173"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak vynést výkon grafu pomocí Azure Monitor pro virtuální počítače (Preview)
 

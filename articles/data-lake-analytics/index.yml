@@ -12,12 +12,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 789144730d99a0686856cee29f77227698154cbc
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 59f8fcefd48425fb49d6a828046764a213bea18f
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71220014"
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965722"
 landingContent:
 - title: Informace o Data Lake Analytics
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
     - text: Přidání uživatele na webu Azure Portal
       url: data-lake-analytics-add-users.md
     - text: Správa Azure Data Lake Analytics s využitím zásad
-      url: data-lake-analytics-policies.md
+      url: data-lake-analytics-account-policies.md
 - title: Průběžná integrace a průběžné nasazování
   linkLists:
   - linkListType: how-to-guide
@@ -89,3 +89,13 @@ landingContent:
       url: data-lake-analytics-cicd-test.md
     - text: Použití U-SQL SDK
       url: data-lake-analytics-u-sql-sdk.md
+- title: Vysvětlení Sparku pro vývojáře v U-SQL
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vysvětlení Apache Sparku pro vývojáře v U-SQL
+      url: data-lake-analytics-understand-spark-for-usql-developers.md
+    - text: Vysvětlení datových formátů Apache Sparku
+      url: data-lake-analytics-understand-spark-data-formats.md
+    - text: Vysvětlení koncepce kódu Apache Sparku
+      url: data-lake-analytics-understand-spark-code-concepts.md

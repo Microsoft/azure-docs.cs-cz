@@ -1,60 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k zabezpečenému vývoji
+summary: Naše ukázkové aplikace, osvědčené postupy a pokyny vám ukážou, jak vyvíjet a nasazovat zabezpečené aplikace v Azure.
 metadata:
-  document_id: null
   title: Dokumentace k zabezpečenému vývoji v Microsoft Azure
-  meta.description: Learn how to develop secure apps on Azure.
+  description: Další informace o vývoji zabezpečených aplikací v Azure
   services: security
-  author: TerryLanfear
-  manager: rkarlin
   ms.service: security
   ms.subservice: develop
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/30/2019
+  author: TerryLanfear
   ms.author: terrylan
-abstract:
-  description: 'Naše ukázkové aplikace, osvědčené postupy a pokyny vám ukážou, jak vyvíjet a nasazovat zabezpečené aplikace v Azure.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/security/develop/secure-dev-overview
-            html: <p>Vývoj zabezpečené webové aplikace v Azure</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
-            title: Začínáme
-          - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
-            html: <p>Pět hlavních položek zabezpečení pro webové aplikace</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
-            title: Získávání dovedností pomocí Microsoft Learn
-  - title: Zabezpečení ukázkových aplikací
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-web-app">Webová aplikace v linuxovém kontejneru</a>
-          - html: <a href="/azure/security/develop/secure-aad-app">Webová aplikace s Azure Active Directory</a>
-          - html: <a href="/azure/security/develop/secure-pci-web-app">Odvětví platebních karet</a>
-  - title: Koncepty
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-dev-overview">Osvědčené postupy zabezpečeného vývoje</a>
-  - title: Zdroje a prostředky
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/security-code-analysis-overview">Analýza kódu zabezpečení Microsoftu</a>
-          - html: <a href="/azure/security/develop/threat-modeling-tool">Nástroj pro modelování hrozeb</a>
+  manager: rkarlin
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 53e59e7d5ef28d8cb09015b7de296b298af9c3f7
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72934070"
+landingContent:
+- title: Vývoj zabezpečených ukázkových aplikací
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Webová aplikace v linuxovém kontejneru
+      url: secure-web-app.md
+    - text: Webová aplikace s Azure Active Directory
+      url: secure-aad-app.md
+    - text: Odvětví platebních karet
+      url: secure-pci-web-app.md
+- title: Začínáme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Osvědčené postupy zabezpečeného vývoje
+      url: secure-dev-overview.md
+    - text: Fáze návrhu
+      url: secure-design.md
+    - text: Fáze vývoje
+      url: secure-develop.md
+    - text: Fáze nasazení
+      url: secure-deploy.md
+- title: Přidání analytických nástrojů k zabezpečenému vývoji
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Analýza kódu zabezpečení
+      url: security-code-analysis-overview.md
+    - text: Modelování hrozeb
+      url: threat-modeling-tool.md
+- title: Získávání dovedností
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 5 hlavních položek zabezpečení
+      url: https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider
+    - text: Zabezpečení cloudových aplikací v Azure
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps

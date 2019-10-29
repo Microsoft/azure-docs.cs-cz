@@ -1,24 +1,18 @@
 ---
 title: Vytváření interaktivních sestav pomocí Azure Monitorch sešitů | Microsoft Docs
 description: Zjednodušte vytváření složitých sestav s předdefinovanými a vlastními parametrizovanými sešity pro Azure Monitor pro virtuální počítače.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 9e1427ce8cd83b49f4b9b39fa82eff1e8a32cd10
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.date: 10/15/2019
+ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515390"
+ms.locfileid: "72553733"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Vytváření interaktivních sestav pomocí Azure Monitorch sešitů
 
@@ -111,7 +105,7 @@ Chcete-li zahrnout data z jiných Log Analytics pracovních prostorů nebo z kon
 
 ### <a name="advanced-analytic-query-settings"></a>Pokročilé nastavení analytického dotazu
 
-Každá část má vlastní Rozšířená nastavení, která jsou přístupná prostřednictvím ovládacích prvků ![Workbooks pro úpravy oddílu ](media/vminsights-workbooks/006-settings.png) ikonu umístěnou vpravo od tlačítka **přidat parametry** .
+Každá část má vlastní Rozšířená nastavení, která jsou přístupná přes ovládací prvky nastavení ![pracovní sešity](media/vminsights-workbooks/006-settings.png) ikonu umístěnou napravo od tlačítka **přidat parametry** .
 
 ![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/007-settings-expanded.png)
 

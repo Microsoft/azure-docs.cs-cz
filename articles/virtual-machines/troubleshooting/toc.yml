@@ -65,10 +65,12 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Běžné chybové zprávy
   href: error-messages.md
-- name: Problémy s výkonem virtuálních počítačů
-  href: performance-diagnostics.md
-- name: Řešení obecných problémů s výkonem virtuálního počítače Azure se systémem Linux nebo Windows
-  href: troubleshoot-performance-virtual-machine-linux-windows.md
+- name: Řešení potíží s výkonem virtuálních počítačů Azure
+  items:
+    - name: Problémy s výkonem v Linuxu nebo ve Windows
+      href: troubleshoot-performance-virtual-machine-linux-windows.md
+    - name: Diagnostika výkonu
+      href: performance-diagnostics.md
 - name: Podpora 32bitových operačních systémů
   href: support-32-bit-operating-systems-virtual-machines.md
 - name: PerfInsights
