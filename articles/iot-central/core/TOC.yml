@@ -8,8 +8,6 @@
       href: overview-iot-options.md
     - name: Prohlídka uživatelského rozhraní
       href: overview-iot-central-tour.md
-    - name: Stálé připojení
-      href: concepts-stay-connected.md
 - name: Šablony Rychlý start
   expanded: true
   items:

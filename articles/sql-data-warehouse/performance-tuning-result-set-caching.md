@@ -12,7 +12,7 @@ ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.openlocfilehash: 3e6af57840cf60516aba994a6b5728bfb7b35f09
 ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2019
 ms.locfileid: "72553527"
