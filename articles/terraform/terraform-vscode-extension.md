@@ -1,37 +1,34 @@
 ---
-title: Instalace a použití rozšíření Azure Terraform editoru Visual Studio Code
+title: Kurz – konfigurace rozšíření Visual Studio Code služby Azure Terraformu
 description: Zjistěte, jak nainstalovat a používat rozšíření Azure Terraform editoru Visual Studio Code.
-services: terraform
-ms.service: azure
-keywords: terraform, azure, devops, visual studio code, rozšíření
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 7dd87f38ca5dfb1c2fdd38b56b314e0cbbe3ce12
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 93ec85a2e37350ef56ff8c2e1a0ea16bb3be355e
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169927"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969303"
 ---
-# <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Instalace a použití rozšíření Azure Terraform editoru Visual Studio Code
+# <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>Kurz: Konfigurace rozšíření Azure Terraformu Visual Studio Code
 
-Rozšíření Microsoft Azure Terraform editoru Visual Studio Code je navržené ke zvýšení produktivity vývojářů při vytváření, testování a používání Terraformu s Azure. Toto rozšíření poskytuje podporu příkazů Terraformu, vizualizaci grafů prostředků a integraci služby Cloud Shell do editoru Visual Studio Code.
+Rozšíření Azure Terraformu Visual Studio Code umožňuje pracovat s Terraformu z editoru. S tímto rozšířením můžete vytvářet, testovat a spouštět konfigurace Terraformu. Rozšíření podporuje také vizualizaci grafu prostředků.
 
 V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
-> * Použití Terraformu k automatizaci a zjednodušení zřizování služeb Azure
-> * Instalace a použití rozšíření Microsoft Terraform editoru Visual Studio Code pro služby Azure
-> * Použití editoru Visual Studio Code ke psaní, plánování a provádění plánů Terraform
+> * Automatizace zřizování služeb Azure pomocí Terraformu
+> * Nainstalujte a použijte rozšíření Terraformu Visual Studio Code pro služby Azure.
+> * Použijte Visual Studio Code k zápisu, plánování a spouštění plánů Terraformu.
 
-## <a name="prerequisites"></a>Požadavky
-- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+## <a name="prerequisites"></a>Předpoklady
+- **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Terraformu**: [Nainstalujte a nakonfigurujte terraformu](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [Nainstalujte si a nakonfigurujte Terraform](/azure/virtual-machines/linux/terraform-install-configure).
 
-- **Visual Studio Code**: Nainstalujte verzi [Visual Studio Code](https://code.visualstudio.com/download) , která je vhodná pro vaše prostředí.
+- **Visual Studio Code**: Nainstalujte vhodnou verzi editoru [Visual Studio Code](https://code.visualstudio.com/download) pro vaše prostředí.
 
 ## <a name="prepare-your-dev-environment"></a>Příprava vývojového prostředí
 
@@ -95,7 +92,7 @@ Rozšíření Azure Terraform se objeví na seznamu nainstalovaných rozšířen
 
 Všechny příkazy Terraformu, které podporuje prostředí Cloud Shell, teď můžete spouštět z editoru Visual Studio Code.
 
-## <a name="exercise-1-basic-terraform-commands-walk-through"></a>Cvičení 1: Podrobný postup pro základní příkazy Terraformu
+## <a name="exercise-1-basic-terraform-commands-walk-through"></a>Cvičení 1: Průvodce základními příkazy Terraformu
 
 V tomto cvičení vytvoříte a spustíte základní konfigurační soubor Terraformu, který zřídí novou skupinu prostředků Azure.
 
@@ -127,7 +124,7 @@ V tomto cvičení vytvoříte a spustíte základní konfigurační soubor Terra
 
     ![Uložení souboru main.tf](media/terraform-vscode-extension/tf-save-as-main.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Z řádku nabídek vyberte **File > Open Folder** (Soubor > Otevřít složku). Přejděte do adresáře s novou složkou, kterou jste vytvořili, a vyberte ji.
 
 ### <a name="run-terraform-init-command"></a>Spuštění příkazu terraform *init*
@@ -138,13 +135,13 @@ V tomto cvičení vytvoříte a spustíte základní konfigurační soubor Terra
 
     ![Soubor main.tf](media/terraform-vscode-extension/tf-main-tf.png)
 
-1. V řádku nabídek vyberte **Zobrazit > paleta příkazů... > Azure Terraformu: Init**.
+1. Z řádku nabídek vyberte **View > Command Palette... > Azure Terraform: Init** (Zobrazení > Paleta příkazů... > Azure Terraform: Init).
 
 1. Když se zobrazí potvrzení, vyberte **OK**.
 
     ![Chcete otevřít Cloud Shell?](media/terraform-vscode-extension/tf-do-you-want-to-open-cloud-shell.png)
 
-1. Při prvním spuštění Cloud Shellu z nové složky se vám zobrazí výzva k nastavení webové aplikace. Vyberte **Open** (Otevřít).
+1. Když Cloud Shell spustíte poprvé z nové složky, budete vyzváni k vytvoření webové aplikace. Vyberte **Open** (Otevřít).
 
     ![První spuštění Cloud Shellu](media/terraform-vscode-extension/tf-first-launch-of-cloud-shell.png)
 
@@ -173,7 +170,7 @@ V tomto cvičení vytvoříte a spustíte základní konfigurační soubor Terra
 
 Dříve v tomto kurzu jste nainstalovali GraphViz. Terraform může GraphViz použít ke generování vizuálního znázornění konfigurace či plánu provádění. Rozšíření Azure Terraform editoru Visual Studio Code tuto funkci implementuje prostřednictvím příkazu *visualize*.
 
-- V řádku nabídek vyberte **Zobrazit > paleta příkazů > Azure terraformu:** Vizualizovat.
+- Z řádku nabídek vyberte **View > Command Palette > Azure Terraform: Visualize** (Zobrazení > Paleta příkazů... > Azure Terraform: Visualize).
 
     ![Vizualizace plánu](media/terraform-vscode-extension/tf-graph.png)
 
@@ -235,7 +232,7 @@ Pokud si chcete ověřit, že Terraform novou skupinu prostředků úspěšně o
 
     ![Ověření odstranění skupiny prostředků](media/terraform-vscode-extension/tf-refresh-resource-groups-button.png)
 
-## <a name="exercise-2-terraform-compute-module"></a>Cvičení 2: Modul terraformu *COMPUTE*
+## <a name="exercise-2-terraform-compute-module"></a>Cvičení 2: Modul *compute* nástroje Terraform
 
 V tomto cvičení se dozvíte, jak načíst modul *compute* nástroje Terraform do prostředí editoru Visual Studio Code.
 
@@ -258,7 +255,7 @@ V tomto cvičení se dozvíte, jak načíst modul *compute* nástroje Terraform 
 
     ![Složka terraform-azurerm-compute](media/terraform-vscode-extension/tf-terraform-azurerm-compute-folder.png)
 
-### <a name="initialize-terraform"></a>Inicializace Terraformu
+### <a name="initialize-terraform"></a>Inicializovat Terraform
 
 Než budete moct začít používat příkazy nástroje Terraform z editoru Visual Studio Code, musíte si stáhnout moduly plug-in pro dva poskytovatele Azure: random a azurerm.
 
@@ -270,7 +267,7 @@ Než budete moct začít používat příkazy nástroje Terraform z editoru Visu
 
 ### <a name="module-test-lint"></a>Test modulu: *lint*
 
-1. V řádku nabídek vyberte **Zobrazit > paleta příkazů > Azure terraformu: Provést test**.
+1. Z řádku nabídek vyberte **View > Command Palette > Azure Terraform: Execute Test** (Zobrazení > Paleta příkazů... > Azure Terraform: Execute Test).
 
 1. Ze seznamu možností typu testu vyberte **lint**.
 
@@ -287,9 +284,9 @@ Po chvíli uvidíte v podokně terminálu výpis, který bude vypadat nějak tak
 
 ![Výsledky testu lint](media/terraform-vscode-extension/tf-lint-test-results.png)
 
-### <a name="module-test-end-to-end"></a>Test modulu: *end-to-end*
+### <a name="test-the-module"></a>Test modulu
 
-1. V řádku nabídek vyberte **Zobrazit > paleta příkazů > Azure terraformu: Provést test**.
+1. Z řádku nabídek vyberte **View > Command Palette > Azure Terraform: Execute Test** (Zobrazení > Paleta příkazů... > Azure Terraform: Execute Test).
 
 1. Ze seznamu možností typu testu vyberte **end to end**.
 
@@ -304,7 +301,7 @@ Po chvíli uvidíte v podokně terminálu výpis, který bude vypadat nějak tak
 
 Po chvíli uvidíte v podokně terminálu výpis, který bude vypadat nějak takto:
 
-![Výsledky testu end-to-end](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
+![Výsledky testu](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]

@@ -1,35 +1,34 @@
 ---
-title: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
-description: Použijte Terraform a jazyk konfigurace společnosti HashiCorp (HCL) k vytvoření clusteru virtuálních počítačů s Linuxem a nástrojem pro vyrovnávání zatížení v Azure.
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuální počítač, síť, moduly
+title: Kurz – vytvoření clusteru virtuálních počítačů Azure s Terraformu a HCL
+description: Použití Terraformu a HCL k vytvoření clusteru virtuálních počítačů se systémem Linux s nástrojem pro vyrovnávání zatížení v Azure
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 7adf3afe993a01357abcae846f19f602a49862bc
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173462"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969472"
 ---
-# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Kurz: Vytvoření clusteru virtuálních počítačů Azure s Terraformu a HCL
 
-Tento kurz ukazuje, jak pomocí [jazyka konfigurace společnosti HashiCorp](https://www.terraform.io/docs/configuration/syntax.html) (HCL) vytvořit malý výpočetní cluster. Konfigurace vytvoří nástroj pro vyrovnávání zatížení, dva virtuální počítače s Linuxem ve [skupině dostupnosti](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) a všechny potřebné síťové prostředky.
+V tomto kurzu vidíte, jak vytvořit malý výpočetní cluster pomocí [HCL](https://www.terraform.io/docs/configuration/syntax.html). 
 
-V tomto kurzu se naučíte:
+Naučíte se, jak provádět následující úlohy:
 
 > [!div class="checklist"]
-> * Nastavení ověřování Azure
-> * Vytvořit konfigurační soubor Terraformu
-> * Inicializovat Terraform
-> * Vytvořit plán provádění Terraformu
-> * Použití plánu provádění Terraformu
+> * Nastavte ověřování Azure.
+> * Vytvořte konfigurační soubor Terraformu.
+> * K vytvoření nástroje pro vyrovnávání zatížení použijte konfigurační soubor Terraformu.
+> * Použijte konfigurační soubor Terraformu k nasazení dvou virtuálních počítačů se systémem Linux ve skupině dostupnosti.
+> * Inicializujte Terraform.
+> * Vytvořte plán spuštění Terraformu.
+> * Použijte plán spuštění Terraformu k vytvoření prostředků Azure.
 
-## <a name="1-set-up-azure-authentication"></a>1. Nastavení ověřování Azure
+## <a name="1-set-up-azure-authentication"></a>1. nastavení ověřování Azure
 
 > [!NOTE]
 > Pokud [používáte proměnné prostředí nástroje Terraform](/azure/virtual-machines/linux/terraform-install-configure) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](terraform-cloud-shell.md), tuto část přeskočte.
@@ -53,16 +52,16 @@ V této části vygenerujete instanční objekt Azure a dva konfigurační soubo
    variable client_secret {}
   
    provider "azurerm" {
-      subscription_id = "${var.subscription_id}"
-      tenant_id = "${var.tenant_id}"
-      client_id = "${var.client_id}"
-      client_secret = "${var.client_secret}"
+      subscription_id = var.subscription_id
+      tenant_id = var.tenant_id
+      client_id = var.client_id
+      client_secret = var.client_secret
    }
    ```
 
-6. Vytvořte nový soubor, který bude obsahovat hodnoty proměnných Terraformu. Běžně se soubor proměnných Terraformu pojmenovává `terraform.tfvars`, protože Terraform soubor pojmenovaný `terraform.tfvars` (nebo s tvarem `*.auto.tfvars`) načte automaticky, pokud se nachází v aktuálním adresáři. 
+6. Vytvořte nový soubor, který bude obsahovat hodnoty proměnných Terraformu. Je běžné pojmenování `terraform.tfvars` souboru proměnných Terraformu, protože Terraformu automaticky načte libovolný soubor s názvem `terraform.tfvars` (nebo je podle vzoru `*.auto.tfvars`), pokud se nachází v aktuálním adresáři. 
 
-7. Do souboru proměnných zkopírujte následující kód. Zástupné symboly Nezapomeňte nahradit následujícím způsobem: V případě použijte ID předplatného Azure, které jste zadali při spuštění `az account set`. `subscription_id` U `tenant_id` použijte hodnotu `tenant` vrácenou příkazem `az ad sp create-for-rbac`. U `client_id` použijte hodnotu `appId` vrácenou příkazem `az ad sp create-for-rbac`. U `client_secret` použijte hodnotu `password` vrácenou příkazem `az ad sp create-for-rbac`.
+7. Do souboru proměnných zkopírujte následující kód. Nezapomeňte následovně nahradit zástupné hodnoty: U `subscription_id` použijte ID předplatného Azure, které jste zadali při spuštění `az account set`. U `tenant_id` použijte hodnotu `tenant` vrácenou příkazem `az ad sp create-for-rbac`. U `client_id` použijte hodnotu `appId` vrácenou příkazem `az ad sp create-for-rbac`. U `client_secret` použijte hodnotu `password` vrácenou příkazem `az ad sp create-for-rbac`.
 
    ```hcl
    subscription_id = "<azure-subscription-id>"
@@ -71,7 +70,7 @@ V této části vygenerujete instanční objekt Azure a dva konfigurační soubo
    client_secret = "<password-returned-from-creating-a-service-principal>"
    ```
 
-## <a name="2-create-a-terraform-configuration-file"></a>2. Vytvoření konfiguračního souboru Terraformu
+## <a name="2-create-a-terraform-configuration-file"></a>2. vytvoření konfiguračního souboru Terraformu
 
 V této části vytvoříte soubor obsahující definice prostředků pro vaši infrastrukturu.
 
@@ -88,60 +87,60 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
    resource "azurerm_virtual_network" "test" {
     name                = "acctvn"
     address_space       = ["10.0.0.0/16"]
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
    }
 
    resource "azurerm_subnet" "test" {
     name                 = "acctsub"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
-    virtual_network_name = "${azurerm_virtual_network.test.name}"
+    resource_group_name  = azurerm_resource_group.test.name
+    virtual_network_name = azurerm_virtual_network.test.name
     address_prefix       = "10.0.2.0/24"
    }
 
    resource "azurerm_public_ip" "test" {
     name                         = "publicIPForLB"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {
     name                = "loadBalancer"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     frontend_ip_configuration {
       name                 = "publicIPAddress"
-      public_ip_address_id = "${azurerm_public_ip.test.id}"
+      public_ip_address_id = azurerm_public_ip.test.id
     }
    }
 
    resource "azurerm_lb_backend_address_pool" "test" {
-    resource_group_name = "${azurerm_resource_group.test.name}"
-    loadbalancer_id     = "${azurerm_lb.test.id}"
+    resource_group_name = azurerm_resource_group.test.name
+    loadbalancer_id     = azurerm_lb.test.id
     name                = "BackEndAddressPool"
    }
 
    resource "azurerm_network_interface" "test" {
     count               = 2
     name                = "acctni${count.index}"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     ip_configuration {
       name                          = "testConfiguration"
-      subnet_id                     = "${azurerm_subnet.test.id}"
+      subnet_id                     = azurerm_subnet.test.id
       private_ip_address_allocation = "dynamic"
-      load_balancer_backend_address_pools_ids = ["${azurerm_lb_backend_address_pool.test.id}"]
+      load_balancer_backend_address_pools_ids = [azurerm_lb_backend_address_pool.test.id]
     }
    }
 
    resource "azurerm_managed_disk" "test" {
     count                = 2
     name                 = "datadisk_existing_${count.index}"
-    location             = "${azurerm_resource_group.test.location}"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
+    location             = azurerm_resource_group.test.location
+    resource_group_name  = azurerm_resource_group.test.name
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
     disk_size_gb         = "1023"
@@ -149,8 +148,8 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
 
    resource "azurerm_availability_set" "avset" {
     name                         = "avset"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     platform_fault_domain_count  = 2
     platform_update_domain_count = 2
     managed                      = true
@@ -159,10 +158,10 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
    resource "azurerm_virtual_machine" "test" {
     count                 = 2
     name                  = "acctvm${count.index}"
-    location              = "${azurerm_resource_group.test.location}"
-    availability_set_id   = "${azurerm_availability_set.avset.id}"
-    resource_group_name   = "${azurerm_resource_group.test.name}"
-    network_interface_ids = ["${element(azurerm_network_interface.test.*.id, count.index)}"]
+    location              = azurerm_resource_group.test.location
+    availability_set_id   = azurerm_availability_set.avset.id
+    resource_group_name   = azurerm_resource_group.test.name
+    network_interface_ids = [element(azurerm_network_interface.test.*.id, count.index)]
     vm_size               = "Standard_DS1_v2"
 
     # Uncomment this line to delete the OS disk automatically when deleting the VM
@@ -195,11 +194,11 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
     }
 
     storage_data_disk {
-      name            = "${element(azurerm_managed_disk.test.*.name, count.index)}"
-      managed_disk_id = "${element(azurerm_managed_disk.test.*.id, count.index)}"
+      name            = element(azurerm_managed_disk.test.*.name, count.index)
+      managed_disk_id = element(azurerm_managed_disk.test.*.id, count.index)
       create_option   = "Attach"
       lun             = 1
-      disk_size_gb    = "${element(azurerm_managed_disk.test.*.disk_size_gb, count.index)}"
+      disk_size_gb    = element(azurerm_managed_disk.test.*.disk_size_gb, count.index)
     }
 
     os_profile {
@@ -218,9 +217,9 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
    }
    ```
 
-## <a name="3-initialize-terraform"></a>3. Inicializovat Terraform 
+## <a name="3-initialize-terraform"></a>3. inicializace Terraformu 
 
-[Příkaz terraform init](https://www.terraform.io/docs/commands/init.html) se používá k inicializaci adresáře, který obsahuje konfigurační soubory Terraformu – soubory vytvořené v předchozích částech. Příkaz `terraform init` je dobrým zvykem spouštět vždy po zapsání nové konfigurace Terraformu. 
+[Příkaz terraform init](https://www.terraform.io/docs/commands/init.html) se používá k inicializaci adresáře, který obsahuje konfigurační soubory Terraformu – soubory vytvořené v předchozích částech. Je dobrým zvykem, abyste při psaní nové konfigurace Terraformu vždy spouštěli příkaz `terraform init`. 
 
 > [!TIP]
 > Příkaz `terraform init` je idempotentní, což znamená, že ho můžete opakovaně volat a vždy dojde ke stejnému výsledku. Proto pokud pracujete v prostředí podporujícím spolupráci a myslíte si, že konfigurační soubory mohl někdo změnit, je vždy vhodné před provedením nebo použitím plánu příkaz `terraform init` zavolat.
@@ -233,31 +232,48 @@ Terraform inicializujete spuštěním následujícího příkazu:
 
   ![Inicializace Terraformu](media/terraform-create-vm-cluster-with-infrastructure/terraform-init.png)
 
-## <a name="4-create-a-terraform-execution-plan"></a>4. Vytvoření plánu provádění Terraformu
+## <a name="4-create-a-terraform-execution-plan"></a>4. vytvoření plánu spuštění Terraformu
 
 [Příkaz terraform plan](https://www.terraform.io/docs/commands/plan.html) se používá k vytvoření plánu provádění. Když chcete vygenerovat plán provádění, Terraform agreguje všechny soubory `.tf` do aktuálního adresáře. 
 
-Pokud pracujete v prostředí podporujícím spolupráci, kde se konfigurace může změnit mezi dobou, kdy plán provádění vytvoříte a dobou, kdy plán provádění použijete, měli byste u [příkazu terraform plan použít parametr -out](https://www.terraform.io/docs/commands/plan.html#out-path), abyste plán provádění uložili do souboru. Pokud ale v prostředí pracujete sami, můžete parametr `-out` vynechat.
+[Parametr-out](https://www.terraform.io/docs/commands/plan.html#out-path) uloží plán spouštění do výstupního souboru. Tato funkce řeší problémy souběžnosti společné ve více vývojových prostředích. Takový problém řešený výstupním souborem je následující scénář:
 
-Pokud se soubor proměnných Terraformu nejmenuje `terraform.tfvars` a není ve formátu `*.auto.tfvars`, musíte název souboru při spuštění příkazu `terraform plan` zadat pomocí [parametru -var-file příkazu terraform plan](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
+1. Vývoj 1 vytvoří konfigurační soubor.
+1. Vývoj 2 upravuje konfigurační soubor.
+1. Dev 1 aplikuje (spustí) konfigurační soubor.
+1. Vývoj 1 získá neočekávané výsledky, které se neshodují s tím, že vývoj změnil 2.
 
-Když se příkaz `terraform plan` zpracovává, Terraform provede aktualizaci a určí, jaké akce jsou potřeba k dosažení požadovaného stavu zadaného v konfiguračních souborech.
+Dev 1 určení výstupního souboru brání dev 2 v tom, že má vliv na dev 1. 
 
-Pokud svůj plán provádění ukládat nepotřebujete, spusťte následující příkaz:
+Pokud nepotřebujete svůj plán spuštění uložit, spusťte následující příkaz:
 
   ```bash
   terraform plan
   ```
 
-Pokud plán provádění uložit potřebujete, spusťte tento příkaz (zástupný text &lt;path> nahraďte požadovanou výstupní cestou):
+Pokud potřebujete uložit svůj plán spuštění, spusťte následující příkaz. Zástupné symboly nahraďte odpovídajícími hodnotami pro vaše prostředí.
 
   ```bash
   terraform plan -out=<path>
   ```
 
+Dalším užitečným parametrem je [-var-File](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
+
+Ve výchozím nastavení se Terraformu pokusil najít soubor proměnných následujícím způsobem:
+- Soubor s názvem `terraform.tfvars`
+- Soubor s názvem s použitím následujícího vzoru: `*.auto.tfvars`
+
+Soubor proměnných ale nemusí následovat po obou předchozích konvencích. V takovém případě zadejte název souboru proměnných s parametrem `-var-file`. Následující příklad ilustruje tento bod:
+
+```hcl
+terraform plan -var-file <my-variables-file.tf>
+```
+
+Terraformu určuje akce potřebné k dosažení stavu určeného v konfiguračním souboru.
+
 ![Vytvoření plánu provádění Terraformu](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
-## <a name="5-apply-the-terraform-execution-plan"></a>5. Použití plánu provádění Terraformu
+## <a name="5-apply-the-terraform-execution-plan"></a>5. použití plánu spuštění Terraformu
 
 Posledním krokem tohoto kurzu je spuštění [příkazu terraform apply](https://www.terraform.io/docs/commands/apply.html), který sadu akcí vygenerovanou příkazem `terraform plan` použije.
 
@@ -267,7 +283,7 @@ Pokud chcete nejnovější plán provádění použít, spusťte následující 
   terraform apply
   ```
 
-Pokud chcete použít dříve uložený plán provádění, spusťte tento příkaz (zástupný text &lt;path> nahraďte cestou, kde se uložený plán provádění nachází):
+Pokud chcete použít dříve uložený plán spuštění, spusťte následující příkaz. Zástupné symboly nahraďte odpovídajícími hodnotami pro vaše prostředí:
 
   ```bash
   terraform apply <path>
@@ -277,5 +293,5 @@ Pokud chcete použít dříve uložený plán provádění, spusťte tento pří
 
 ## <a name="next-steps"></a>Další kroky
 
-- Projděte si seznam [modulů Terraformu pro Azure](https://registry.terraform.io/modules/Azure).
-- Vytvořte [pomocí Terraformu škálovací sadu virtuálních počítačů](terraform-create-vm-scaleset-network-disks-hcl.md).
+> [!div class="nextstepaction"] 
+> [Vytvoření sady škálování virtuálních počítačů Azure pomocí Terraformu](terraform-create-vm-scaleset-network-disks-hcl.md)

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f8493794df2ec0c6123a85cc5405b18fbe1f6786
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: dfb550fd0bc93a6b865495bf2c19f394fb0737ed
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957808"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987880"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Co je Azure IoT Central (funkce verze Preview)?
 
@@ -26,10 +26,6 @@ ms.locfileid: "72957808"
 Azure IoT Central je aplikační platforma IoT, která snižuje zatížení a náklady na vývoj, správu a údržbu řešení IoT na podnikové úrovni. Když zvolíte sestavení pomocí Azure IoT Central máte možnost soustředit se na čas, peníze a energii při transformaci vaší firmy na data IoT, nikoli jenom spravovat a aktualizovat složitou a nepřetržitou vývojovou infrastrukturu IoT.
 
 Webové uživatelské rozhraní umožňuje monitorovat podmínky zařízení, vytvářet pravidla a spravovat miliony zařízení a jejich data v průběhu svého životního cyklu. Kromě toho vám umožňuje reagovat na přehledy zařízení díky rozšíření IoT Intelligence do obchodních aplikací.
-
-Následující video obsahuje přehled Azure IoT Central:
-
->[!VIDEO https://azure.microsoft.com/resources/videos/iot-central-updates/]
 
 Tento článek popisuje, jak IoT Central Azure:
 

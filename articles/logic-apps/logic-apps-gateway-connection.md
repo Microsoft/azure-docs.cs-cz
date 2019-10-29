@@ -1,6 +1,6 @@
 ---
-title: Přístup ke zdrojům dat místně z Azure Logic Apps
-description: Připojení k místním zdrojům dat z Logic Apps vytvořením místní brány dat
+title: Přístup ke zdrojům dat místně – Azure Logic Apps
+description: Připojení k místním zdrojům dat z Azure Logic Apps vytvořením prostředku místní brány dat Azure
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 4b333df740fbd4c2243ea3f166593ca0a6f4bbad
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6a01999eff6accf1b8d7f56729d9dce77fbedb0a
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675680"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988715"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
@@ -77,7 +77,7 @@ Po instalaci brány na místní počítač vytvořte prostředek Azure pro vaši
 
 1. V části **místní brány dat**vyberte **Přidat**.
 
-   ![Přidat bránu dat](./media/logic-apps-gateway-connection/add-gateway.png)
+   ![Přidat nový prostředek Azure pro bránu dat](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
 1. V části **vytvořit bránu připojení**zadejte tyto informace pro prostředek brány. Až to budete mít, vyberte **Vytvořit**.
 
@@ -92,7 +92,7 @@ Po instalaci brány na místní počítač vytvořte prostředek Azure pro vaši
 
    Tady je příklad, který ukazuje instalaci brány, která je ve stejné oblasti jako prostředek brány a je propojená se stejným účtem Azure:
 
-   ![Zadání podrobností pro vytvoření prostředku brány dat](./media/logic-apps-gateway-connection/gateway-details.png)
+   ![Zadání podrobností pro vytvoření prostředku brány dat](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -155,7 +155,7 @@ Pokud chcete vytvořit jiný prostředek brány, propojte instalaci brány s jin
 
    Například:
 
-   ![Odstranit bránu](./media/logic-apps-gateway-connection/gateway-delete.png)
+   ![Odstranění prostředku brány v Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 
 <a name="faq"></a>
 

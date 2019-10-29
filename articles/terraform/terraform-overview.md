@@ -1,24 +1,21 @@
 ---
 title: Použití Terraformu v Azure
 description: Seznámení s používáním Terraformu k nasazení a nasazení infrastruktury Azure.
-services: terraform
-ms.service: azure
-keywords: terraform, devops, přehled, plánování, použití, automatizace
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 4e51b8b5aa1cd00fcdd2481d73c40458d01d38c4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.topic: overview
+ms.date: 10/26/2019
+ms.openlocfilehash: 1c6ac9b67f556b039b9ffd5ed725ea1f24aeeb3a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173065"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969246"
 ---
 # <a name="terraform-with-azure"></a>Terraform v Azure
 
-[Terraform od společnosti HashiCorp](https://www.terraform.io/) je opensourcový nástroj sloužící ke zřizování a správě cloudové infrastruktury. Kodifikuje infrastrukturu v konfiguračních souborech, které popisují topologii cloudových prostředků, jako jsou virtuální počítače, účty úložiště a síťová rozhraní. Rozhraní příkazového řádku nástroje Terraform poskytuje jednoduchý mechanismus k nasazování konfiguračních souborů do Azure nebo jiného podporovaného cloudu a správě jejich verzí.
+[Terraform od společnosti HashiCorp](https://www.terraform.io/) je opensourcový nástroj sloužící ke zřizování a správě cloudové infrastruktury. Kodifikovaly infrastrukturu v konfiguračních souborech, které popisují topologii cloudových prostředků. Mezi tyto prostředky patří virtuální počítače, účty úložiště a síťová rozhraní. Terraformu CLI poskytuje jednoduchý mechanismus pro nasazování a správu konfiguračních souborů do Azure.
 
 Tento článek popisuje výhody použití Terraformu ke správě infrastruktury Azure.
 
@@ -30,23 +27,22 @@ Konfigurační soubory nástroje Terraform založené na šablonách vám umož�
 - Vícekrát nasadí stejnou šablonu a vytvoří tak identická vývojová, testovací a produkční prostředí.
 - Snižuje náklady na vývojová a testovací prostředí tím, že je vytváří na vyžádání.
 
-## <a name="understand-infrastructure-changes-before-they-are-applied"></a>Pochopení změn v infrastruktuře před jejich nasazením 
+## <a name="understand-infrastructure-changes-before-being-applied"></a>Porozumění změnám infrastruktury před použitím
 
 Čím je topologie prostředku složitější, tím obtížnější může být pochopení významu a důsledků změn v infrastruktuře.
 
-Terraform poskytuje rozhraní příkazového řádku, které umožňuje uživatelům ověřit změny v infrastruktuře před samotným nasazením a zobrazit jejich náhled. Náhled na změny v infrastruktuře bezpečným a produktivním způsobem má několik výhod:
+Rozhraní příkazového řádku Terraformu umožňuje uživatelům ověřit a zobrazit náhled změn infrastruktury před aplikací. Bezpečný přístup ke změnám infrastruktury má několik výhod:
 - Když členové týmu rychle pochopí navrhované změny a jejich dopad, mohou spolupracovat efektivněji.
 - Nežádoucí změny lze zachytit v rané fázi vývoje.
 
-
 ## <a name="deploy-infrastructure-to-multiple-clouds"></a>Nasazení infrastruktury do několika cloudů
 
-Terraform je oblíbeným nástrojem pro multicloudové scénáře, kdy se nasadí podobná infrastruktura do Azure a do dalších cloudů od poskytovatelů cloudových služeb nebo do místních datacenter. Vývojářům to umožňuje používat ke správě infrastruktury u několika poskytovatelů cloudových služeb stejné nástroje a konfigurační soubory.
+Terraformu je dobře při nasazení infrastruktury napříč více poskytovateli cloudu. Umožňuje vývojářům pomocí konzistentních nástrojů spravovat jednotlivé definice infrastruktury.
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečetli jste si přehled a výhody nástroje Terraform a tady jsou doporučené další kroky:
 
-- Začněte [instalací nástroje Terraform a jeho konfigurací, aby používal Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure).
-- [Vytvořte pomocí Terraformu virtuální počítač Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm).
+- Začněte [instalací nástroje Terraform a jeho konfigurací, aby používal Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- [Vytvořte pomocí Terraformu virtuální počítač Azure](/azure/virtual-machines/linux/terraform-create-complete-vm).
 - Prozkoumejte [modul Azure Resource Manageru pro Terraform](https://www.terraform.io/docs/providers/azurerm/). 

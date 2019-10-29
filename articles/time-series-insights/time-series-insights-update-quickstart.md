@@ -1,24 +1,23 @@
 ---
-title: 'Rychlý start: Prozkoumejte ukázkové prostředí Azure Time Series Insights Preview | Microsoft Docs'
+title: 'Rychlý Start: Prozkoumejte ukázkové prostředí pro Azure Time Series Insights Preview | Microsoft Docs'
 description: Rychlý Start pro pochopení ukázkového prostředí Azure Time Series Insights Preview
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: dpalled
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 09/23/2019
-ms.openlocfilehash: 633eb00b479c6d2e2bf233b42aff7d393b110fd2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 10/24/2019
+ms.openlocfilehash: da0c4d6cd4b923033761a275e93c5a4d8a184647
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258420"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991059"
 ---
-# <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rychlý start: Prozkoumat ukázkové prostředí Azure Time Series Insights Preview
+# <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rychlý Start: Prozkoumejte ukázkové prostředí Azure Time Series Insights Preview
 
 Tento rychlý Start vám pomůže začít s prostředím Azure Time Series Insights Preview. V bezplatné ukázce provedete klíčové funkce, které byly přidány do Time Series Insights Preview.
 
@@ -27,7 +26,7 @@ Ukázkové prostředí Time Series Insights Preview obsahuje firmu společnosti 
 V tomto rychlém startu se dozvíte, jak pomocí Time Series Insights najít užitečné poznatky v datech společnosti Contoso. K lepšímu odhadu kritických chyb a k provedení údržby se taky provádí krátká hlavní příčina.
 
 > [!IMPORTANT]
-> Vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Azure, pokud ho nemáte.
+> Vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , pokud ho ještě nemáte.
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Prozkoumat Průzkumníka Time Series Insights v ukázkovém prostředí
 
@@ -41,36 +40,36 @@ Průzkumník Preview Time Series Insights ukazuje historická data a hlavní př
 
 1. Ve **společnosti Contoso 1**se podívejte na vítr turbín **W7**.  
 
-   1. Změňte rozsah zobrazení na **1/1/17 20:00 na 3/10/17 20:00 (UTC)** .
+   1. Změňte rozsah zobrazení na **1/1/17 20:00:00.00 na 3/10/17 20:00:00.00 (UTC)** .
    1. Pokud chcete vybrat senzor, vyberte **Contoso závod 1** > **W7** > **generátor System** > **GeneratorSpeed**. Pak zkontrolujte zobrazené hodnoty.
 
-      [![W7 ve společnosti Contoso – rostlina 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
+      [![W7 ve společnosti Contoso 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
-1. V poslední době společnost Contoso našla požár v větrné turbíně. Názory se liší v tom, co způsobilo požár. V Time Series Insights vidíte, že senzor výstrah při požáru byl aktivován.
+1. V poslední době společnost Contoso našla požár v větrné **turbíně**. Názory se liší v tom, co způsobilo požár. V Time Series Insights vidíte, že senzor výstrah při požáru byl aktivován.
 
-   1. Změňte rozsah zobrazení na **3/9/17 20:00 na 3/10/17 20:00 (UTC)** .
-   1. Vyberte **zabezpečení systému** > **FireAlert**.
+   1. Změňte rozsah zobrazení na **3/9/17 20:00:00.00 na 3/10/17 20:00:00.00 (UTC)** .
+   1. Vyberte možnost **zabezpečení systému** > **FireAlert**.
 
-      [![Společnost Contoso našla požár v větrné turbíně](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
+      [![contoso nalezl požár v větrné turbíně](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
 
 1. Zkontrolujte další události v době trvání požáru a zjistěte, co se stalo. Tlak v oleji a aktivní upozornění jsou ve špičkách těsně před požárem.
 
    1. Vyberte **Rozteč systému** > **HydraulicOilPressure**.
    1. Vyberte **Rozteč systému** > **ActiveWarning**.
 
-      [![Kontrola dalších událostí okolo stejné doby](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
+      [![kontrolovat další události přibližně ve stejnou dobu](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
 
 1. Tlak v oleji a senzory aktivního upozornění se dopravují přímo před požárem. Rozbalením zobrazené časové řady zobrazíte další příznaky, které byly patrné na oheň. Oba senzory se v průběhu času pohybovaly konzistentně. Kolísání označují trvalý a worrisome vzorek.
 
-    * Změňte rozsah zobrazení na **2/24/17 20:00 na 3/10/17 20:00 (UTC)** .
+    * Změňte rozsah zobrazení na **2/24/17 20:00:00.00 na 3/10/17 20:00:00.00 (UTC)** .
 
-      [![V oleji se také přeroste tlak a aktivní senzory upozornění.](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
+      [Vy![také zatížení ropných a aktivních výstražných senzorů](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
 1. Zkoumání dvou let historických dat odhalí další požární událost, která má stejné výkyvy snímačů.
 
     * Změňte rozsah zobrazení na **1/1/16 na 12/31/17** (všechna data).
 
-      [![Hledání historických vzorů](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
+      [![hledání historických vzorů](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
 
 Díky Time Series Insights a telemetrii senzorů jsme zjistili, že v historických datech jsme skryli dlouhodobě a problematický trend. Díky těmto novým přehledům můžeme:
 
@@ -82,10 +81,10 @@ Díky Time Series Insights a telemetrii senzorů jsme zjistili, že v historick�
 
 1. Některé scénáře vyžadují propracované analýzy k odhalení drobných pokrytí dat. Vyberte Windmill **W6** na datum **6/25**.
 
-    1. Změňte rozsah zobrazení na **6/1/17 20:00 na 7/1/17 20:00 (UTC)** .
-    1. Vyberte **Contoso rostlinolékařský 1** > **W6** > **Safety System** > **VoltageActuatorSwitchWarning**.
+    1. Změňte rozsah zobrazení na **6/1/17 20:00:00.00 na 7/1/17 20:00:00.00 (UTC)** .
+    1. Vyberte **Contoso rostlina 1** > **W6** > **bezpečnostní systém** > **VoltageActuatorSwitchWarning**.
 
-       [![Změňte rozsah zobrazení a vyberte W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
+       [![změnit rozsah zobrazení a vybrat možnost W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
 1. Upozornění indikuje problém s napětím výstupu generátorem. Celkový výstup tohoto generátoru je v současné době funkční v rámci normálního parametru. Zvýšením našeho intervalu se objeví další vzor. K určitému odkládacímu umístění je zřejmé.
 
@@ -93,20 +92,20 @@ Díky Time Series Insights a telemetrii senzorů jsme zjistili, že v historick�
     1. Vyberte **generátor System** > **ActivePower**.
     1. Změňte interval na **3D**.
 
-       [![Změna intervalu na 3D](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
+       [![změnit interval na 3D](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
 
 1. Rozšířením časového rozsahu můžeme určit, jestli se problém zastavil, nebo jestli bude pokračovat.
 
     * Prodlužte časový rozsah až 60 dní.
 
-      [![Prodloužení časového intervalu na 60 dní](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
+      [![prodloužení časového rozsahu na 60 dní](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
 
 1. K zajištění většího kontextu je možné přidat další datové body snímačů. Další senzory, které jsme si vyrozuměli, je úplným porozuměním problému. Pojďme vyřadit značku, aby se zobrazily skutečné hodnoty. 
 
     1. Vyberte **systém generátoru**a potom vyberte tři senzory: **GridVoltagePhase1**, **GridVoltagePhase2**a **GridVoltagePhase3**.
     1. Přetáhněte značku k poslednímu datovému bodu v viditelné oblasti.
 
-       [![Odstranit značku](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [![umístit značku](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
 
     Dva senzory napětí pracují srovnatelně a v normálních parametrech. Vypadá to, že senzor **GridVoltagePhase3** je příčinou.
 
@@ -114,7 +113,7 @@ Díky Time Series Insights a telemetrii senzorů jsme zjistili, že v historick�
 
     * Změnou zobrazení překryjete všechny senzory **systému generátorů** ve stejné škále grafu.
 
-      [![Změnit zobrazení tak, aby zahrnovalo vše](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+      [![změnit zobrazení tak, aby zahrnovalo vše](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

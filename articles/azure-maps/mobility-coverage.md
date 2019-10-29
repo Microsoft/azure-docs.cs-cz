@@ -1,6 +1,6 @@
 ---
-title: Pokrytí nastavení mobilních zařízení ve službě Azure Maps | Dokumentace Microsoftu
-description: Další informace o pokrytí nastavení mobilních zařízení ve službě Azure Maps
+title: Pokrytí mobility v Azure Maps | Microsoft Docs
+description: Přečtěte si o pokrytí mobility v Azure Maps
 author: walsehgal
 ms.author: v-musehg
 ms.date: 06/05/2019
@@ -8,149 +8,149 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 11ebaec75b1220f39fe059ea7825cdccafda2f5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5d214d58c1d2123acabda797b576e8ad961d3f2
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735613"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990809"
 ---
-# <a name="azure-maps-mobility-coverage"></a>Azure Maps Mobility pokrytí
+# <a name="azure-maps-mobility-coverage"></a>Pokrytí Azure Maps mobility
 
-Azure Maps [služby Mobility](https://aka.ms/AzureMapsMobilityService) umožňuje funkce pro veřejné přenosu, sdílení kol a sdílené složky scooter směrování s Multimodální dojít možnosti plánování. Tato služba nabízí pro veřejné přenosu, vyhledávání blízkých stanice, zastaví, řádky a poskytuje informace, jako jsou veřejné plánované a v reálném čase přenosu příchozích, seznam zastaví a trasy vodítka, stejně jako podrobnější a Multimodální podrobné itineráře a výstrahy služeb. Služba mobility také vrátí hodnotu v reálném čase a sdílet informace o statických dostupnosti do auta vozidel a sdílené kola a skútry.
+[Služba Azure Maps mobility](https://aka.ms/AzureMapsMobilityService) umožňuje funkce pro veřejné průjezdy, sdílení kol a Scooter sdílení s možnostmi Multimodal pro plánování cest. Pro veřejný přenos služba nabízí hledání okolních stanic, zastavení a řádků a poskytuje informace, jako jsou například přihlašování a příjem veřejných přenosů v reálném čase, seznam zastavení a Průvodce směrováním, a také podrobné a Multimodal krok za krokem cesty. výstrahy služby. Služba mobility vrátí také informace o dostupnosti v reálném čase a statickou dostupnost pro automobilovou sdílenou složku a sdílenou kola a Scooters.
 
-Azure Maps nemá stejnou úroveň informací a přesnost pro všechny země/oblasti a města. Možnost volat přenosu dat závisí na město a dat nemusí obsahovat všechny veřejné přenosu možnosti a úřadů, které slouží jako město.
+Azure Maps nemá stejnou úroveň informací a přesnost pro všechna města a země nebo oblasti. Možnost volat přenosové údaje závisí na městech a data nemusí zahrnovat všechny možnosti veřejného přenosu a organizace, které slouží jako město.
 
-Následující tabulka obsahuje informace o pokrytí pro služby Azure Maps Mobility.
+Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobility.
 
 
-| Symbol | Význam |
+| Písmeno | Význam |
 |--------|---------|
-| *      |Téměř úplné pokrytí pro danou zemi nebo oblast.|
+| *      |Skoro úplné pokrytí země nebo oblasti.|
 
 ## <a name="americas"></a>Amerika
 
-| Země/oblast |  Město (Metro oblast) |
+| Země/oblast |  Město (pole metro) |
 |----------------|---------|
-| Argentina       | <p>Bahía Blanca, Buenos Aires, Caleta Olivia, Chivilcoy, Comodoro Rivadavia, Córdoba, Corrientes, obecné Pico, La Rioja, března del Plata, Mendoza, Miramar, Neuquén, Oberá, Olavarría, Paraná, Posadas, Rio Tercero, Rosario, Salta, Bariloche de Carlos po síti San, Luis po síti San, Pedro po síti SAN, Santa Fe, Tandil, Ushuaia, Victoria, Villa María</p>|
-| Barbados       |  Barbados* |
-| Brazílie         | <p>Angra dos Reis Anápolis, Apucarana, Aracaju, Araraquara, Araxa, Araçatuba, Bage, Barretos, Bauru, Belem, Belo Horizonte, Blumenau, Boa Vista, Brazílie, Caldas Novas, Campina Grande, Campinas, Campo Belo, Campo Grande, Caraguatatuba, Cascavel, Cataguases, Leopoldina e Região Catalão, Caxias Sul, Chapecó, Cianorte, Conselheiro Lafaiete, Corumbá, Criciúma proveďte Cruzeiro proveďte Sul, Cuiabá, Curitiba, Curitibanos, Curvelo, Diamantina, Divinópolis, Dourados, Estrela, ostrov Fernando de Noronha, Florianópolis, Fortaleza, Proveďte Foz Iguaçu franca obchodu, Garanhuns, Goiania, Governador Valadares, Guarapuava, Imperatriz, Ipatinga, Irati, Itabira, Itabuna, Itajaí, Ituiutaba, proveďte Jaraguá Sul, Joao Pessoa, Joinville, proveďte Norte Juazeiro, Juiz de Fora, Jundiaí, Lages, Londrina, Macapa, Macaé, Maceió Mafra e Rio Negro Manaus, Manhuacu, Maringá, Marília, Monte Carmelo, Montes Claros, Mossoró, Natal, Osorio, Ourinhos, Ouro Preto, Palmas, Paracatu, Parnaíba, Passo Fundo, Passos, Patos de Minas Patrocínio, Pelotas, Piracicaba, Pocos de Caldas, Ponta Grossa, Alegre portu, Ferreira portu, Seguro portu, Velho portu, Praie Grande, Arrecife, Ribeirão Preto, Rio, Rio Branco, Rondonópolis, Salinas, Salvador, Santa společnosti do Sul Santa Marie, Santa Ritě proveďte Sapucaí Santarem, Santos, Sao Gabrielem proveďte Oeste, Sao Joao del Rei , Tiradentes e Regiao, Sao Jose proveďte Rio Preto, Sao Mateus, Sao Paulo, Sorocaba, Svatý Carlos, Svatý Francisco do Sul, Svatý José dos Campos, Svatý Lourenço, Svatý Luís, Taubaté, Telemaco Borba, Teofilo Otoni, Teresina, Toledo, Três Lagoas, Tucurui, Ubatuba Uberaba, Uberlândia Ubá, Uruguaiana, Varginha, Vicosa, Videira & Fraiburgo, Vitória, Vitória da Conquista, Volta Redonda, Votuporanga </p>|
-| Kanada | Banff (AB), Brandon (MB), Calgary (AB), údolí Comox (BC), Cowichan Valley (BC), Edmonton (AB), Fort Saint John, Fredericton (NB), větší Sudbury (zapnuto), větší Vancouver (BC), Halifax (NS), Kamloops (BC), Kelowna (BC), Kingston (na), Londýn (na), Moncton (NB) Montreal (QC), Nanaimo (BC), Ottawa (zapnuto), ostrov Prince George (BC), Québec města (QC), jelenů Red (AB), Regina (SK), Rimouski (QC), Saskatoon (SK), Sherbrooke (QC), Squamish (BC), Saint John's (NL), pobřeží slunečno, pozice trochu rozjela... (zapnuto), Toronto (na), Victoria (BC), Whistleru (BC ), Windsor (zapnuto), Winnipeg (MB), Woodstock</p>|
-| Chile  | <p>Antofagasta, Arica, Aysén, Chillán, Concepción, Constitución, Copiapó, Curicó, Iquique, La Serenou y Coquimbo, Linares, Los Angeles (Chile), Los Lagos, Punta Arenas, Rancagua, Santiago, Talca, Temuco, Valdivia, Valparaíso, března Viña del</p>|
-| Columbia | <p>Barranquilla, Bogotá, Bucaramanga, Cali, Cartagena, Ibagué, Medellín, Pasto, Popayán, Santa Marta, Sincelejo, Valledupar</p>|  
-| Kostarika | San José|
+| Argentina       | <p>Bahía Blanca, Buenos Aires, Caleta Olivia, Chivilcoy, Comodoro Rivadavia, Córdoba, Corrientes, obecné Pico, La Rioja, březen del Plata, Mendoza, Miramar, Neuquén, Oberá, Olavarría, Paraná, Posadas, Rio tercero, Rosario, Salta, San Carlos de Bariloche, San Luis, San Pedro, Santa Fe, Tandil, Ushuaia, Victoria, Villa María</p>|
+| Barbados       |  Barbados |
+| Brazílie         | <p>Angra dos Reis, Anápolis, Apucarana, Aracaju, Araraquara, Araxa, Araçatuba, Bage, Barretos, Bauru, Belem, Belo Horizonte, Blumenau, Boa Vista, Brazílie, Caldas Novas, Campina Grande, Campinas, Campo Belo, Campo Grande, Caraguatatuba, Cascavel, Cataguases, Leopoldina e Região, Catalão, Caxias do Sul, Chapecó, Cianorte, Conselheiro Lafaiete, Corumbá, Criciúma, Cruzeiro do Sul, Cuiabá, Curitiba, Curitibanos, Curvelo, Diamantina, Divinópolis, Dourados, Estrela, Fernando de Noronha, Florianópolis, Fortaleza, Foz do Iguaçu, Franca, Garanhuns, Goiania, Governador Valadares, Guarapuava, Imperatriz, Ipatinga, Irati, Itabira, Itabuna, Itajaí, Ituiutaba, Jaraguá do Sul, Joao Pessoa, Joinville, Juazeiro do Norte, Juiz de Fora, Jundiaí, Lages, Londrina, Macapa, Macaé, Maceió, Mafra e Rio Negro, Manaus, Manhuacu, Maringá, Marília, Monte Carmelo, Montes Claros, Mossoró, Natal, Osorio, Ourinhos, Ouro Preto, Palmas, Paracatu, Parnaíba, Passo Fundo, Passos, Patos de Minas, Patrocínio, Pelotas, Piracicaba, pocos de Caldas, Ponta Grossa, Porto Alegre, Porto Ferreira, Porto Seguro, Porto Velho, Praia Grande, Recife, Ribeirão Preto, Rio, Rio Branco, Rondonópolis, Salinas, Salvador, Santa Cruz do Sul, Santa Marie, Santa Rita do Sapucaí, Santarem, Santos, Svatý Gabrielem do Oeste, Svatý Joao del Rei , Tiradentes e Regiao, Svatý Jose do Rio Preto, Svatý Mateus, Svatý Paulo, Sorocaba, svatého Carlos, svatého Francisco do Sul, svatého Campos DOS Lourenço, svatého Luís, svatého Taubaté, Telemaco, Borba Teofilo, Otoni Teresina, Toledo, Três, Lagoas Tucurui, Ubatuba, Uberaba,, Uberlândia, Ubá, Uruguaiana, Varginha, Vicosa, Videira & Fraiburgo, Vitória, Vitória da Conquista, Volta Redonda, Votuporanga </p>|
+| Kanada | Banff (AB); Brandon (MB); Calgary (AB), Comox sedl (BC), Cowichan sedlo (BC), Edmonton (AB), Fort St. John, Fredericton (NB), větší Sudbury (ON), větší Vancouver (BC), Halifax (NS), Kamloops (BC), Kelowna (BC), Kingston (ON), Londýn (ON), Moncton (NB), Montrealský (QC), Nanaimo (BC), Ottawa (ZAPNUTo), Prince Jiří (BC), Québec City (QC), Red Deer (AB), Regina (SK), Rimouski (QC), Saskatoon (SK), Sherbrooke (QC), Squamish (BC), St. John 's (NL), slunečno pobřeží, Thunder Bay (ON), Toronto (ON), Victoria (na), Whistler (BC), Whistler (BC ), Windsor (ON), Winnipeg (MB), Woodstock</p>|
+| Chile  | <p>Antofagasta, Arica, Aysén, Chillán, Concepción, Constitución, Copiapó, Curicó, Iquique, La Serena y Coquimbo, Linares, Los Angeles (Chile), Los Lagos, Punta Arenas, Rancagua, Santiago de Chile, Talca, Temuco, Valdivia, Valparaíso, Viña del březen</p>|
+| Kolumbie | <p>Barranquilla, Bogotá, Bucaramanga, Cali, Kartagenské, Ibagué, Medellín, Pasto, Popayán, Santa Marta, Sincelejo, Valledupar</p>|  
+| Kostarika | Síť San|
 | Ekvádor | Cuenca, Guayaquil, Manta|
-| Mexiko | Aguascalientes, Mexico City, Guadalajara, Lion, Merida, Monterrey, Puebla, Querétaro, San Luis Potosi|
+| Mexiko | Aguascalientes, Mexiko, Guadalajara, Lion, Merida, Monterrey, Puebla, Querétaro, San Luis Potosi|
 | Nikaragua | Managua | 
-| Panamá | Panamá*| 
+| Panama | Panama| 
 | Peru | Cusco, Lima |
-| Portoriko | San Juan |
-| Uruguay | Montevideo, Punta del Este |
-| Spojené státy americké | <p>Albany (USA), Albuquerque (NM), ukotvení (AK) Appleton Neenah Oshkosh (WI), Asheville (NC), (OH) Atény, Atlantu (GA), Austin (USA), Bakersfield (CA), Baltimore), Bellevue (WA), Berkshire Kraj (MA), Birmingham (AI), Bloomingtonu (Indie), Boise (ID), Boston () MA), Boulder (ko) Brevard Kraj (USA), Buffalo (USA), Butte (MT), Cabo Cod), Centrum Kraj (PA), Champaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (TN), Cheyenne (WY), Chicago (IL), Cincinnati (no) Citrusových Kraj (USA), Cleveland (OH), Coachella Valley (CA), Coloradu pružiny (ko), Kolumbie (TN), Kolumbův (no), souhrnu Christi (USA), Dallas/dále vhodné (USA), Daytonské (OH), Delaware, Denver (ko), Moines Des (i), Detroitu (IU), Duluth (MN), El Paso (USA), Eugene (OR ), Fairbanks (AK), Fargo (ND), Fayetteville (NC), Flagstaff (AZ), Collins Fort tvrdou (IU) (ko), Wayne Fort (Indie), Fresno (CA), Gainesville (USA), Grand větve (ND) Grand Rapids (IU), zelená pozice (WI), Greensboro (NC), Greenville (SC), Gunnison (ko), Hampton cest (VA ), Hanford (CA), Hartford (Dal), kraje Hernando (USA), Brně (Ahoj), Houston (USA), kraje Humboldtově (CA), Huntsville (AI), Indianapolis (Indie), Ithaca (USA), Jackson (MS), Jackson (TN), verzí Jacksonville – St. John's Kraj (USA), Johnsonem města (TN) Jonesboro (AR), Joplin (měsíc), Juneau (AK), Kalamazoo (IU), Kansas City (měsíc), Kauai (Ahoj), Ketchum (ID), Knoxville (TN), Lafayette (Indie), univerzitě (PA), Lansing (IU), Las Vegas (NV), Lawrence (Lokálně), County Lee (USA), Lexington (KY), Lincoln Kraj (nebo), Little Rock (AR), Los Angeles) Certifikační Autorita), Louisville (KY), Madison (WI), McAllen (USA), Memphis (TN), Miami (USA), Milwaukee/Waukesha (WI), SV Minneapolis. (MN), Missoula (MT), Modesto (USA), Moline (IL), Monroe Kraj (PA), Montgomery (AI), Morgantown (WV), americkém Nashvillu (TN), Navajo národ), Nové Haven (Dal), nový Orleans (LA), NYC NJ), Ocala (USA), Okaloosa Kraj (USA), Oklahoma města (OK), Omaha (NE), Orlando (USA), City Panama (USA), Pensacola (USA), Peoria (IL), Philadelphia (PA), Phoenix (AZ), Pensylvánském (PA), Portland, (ME), Portland (nebo), Racine (w) Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke Valley (VA - Lynchburg), Rochester (USA), skalní Mountain národní Park), podvodné Valley (nebo), Roseburg (nebo), Roseville (CA), Sacramento (CA), Salem (nebo), hodnota Salt Lake města (UT), San Antonio (USA), () po síti San Diegu Certifikační Autority), síť San Luis Obispo (CA), Design Santa (CA), Santa Fe (NM), Sarasota (USA), Savannah (GA), Seacoast oblasti (NH), Seattle Bellevue Tacoma (WA) SF pozice oblasti (CA), Sioux města (i), Sioux spadající do určité (SS), Sitka (AK), Spokane (WA), Springfieldu (IL), Springfieldu (velkokapacitních) Svatý George (UT), St. Louis (měsíc), Stockton (CA), Syrakusách Utica (USA), Tallahassee (USA), Tampa St. Petersburg (USA), Terre Haute (Indie), Toledo (OH), Topeka (Lokálně), přechod města (IU), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Volusia Kraj (USA), Waco (USA) Washington (DC), Waterbury (Dal), Wichita (Lokálně), Wilmington (NC), Yakima (WA), York Kraj (PA), Yuma Kraj (AZ)</p>|
-| \+ USA Panenské ostrovy | USA Panenské ostrovy * |
+| Portoriko | Juan San |
+| Uruguay | Montevideo (, Punta del Este |
+| USA Amerika | <p>Albany (NY), Albuquerque (NM), úchyt (AK), Appleton-Oshkosh-Neenah (WI), Asheville (NC), Atény (OH), Brno (GA), Austin (TX), Bakersfield (CA), Baltimore), Bellevue (v), Berkshire (ID), Birmingham ( MA), Boulder (CO) Brevard okres (FL), buvolí (NY), Butte (MT), mysu COD), okres (PA), Champaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (c), Cheyenne (TN), WY (Cincinnati), Chicago (IL), ( Citrusový okres (FL), Cleveland (OH), Coachella sedl (CA), Coloradu pružiny (CO), Kolumbie (TN), Columbus (OH), Corpus Christi (TX), v Dallasu/tam (TX), Dayton (OH), Delaware, Denver (CO), Des Moines (IA), Detroit (MI), Duluth (MN), Paso ( ), Fairbanks (AK), Fargo (ND), Fayetteville (NC), Flagstaff (AZ), Kamínk (MI) Fort Collins (CO), Fort Wayne (IN), Fresno (CA), Gainesville (FL), y (ND), Rapids (CO), Greensboro (a), Greenville ), Hanford (CA), Hartford (CT), Hernando okres (FL), Honolulu (HI), Houstonu (TX), Humboldt okres (CA), Huntsville (AL), Indianapolis (IN), Ithaca (NY), Jacksonův diagram (MS), Jacksonův diagram (TN), Jacksonville-St. Jan okres (FL), Johnsonem City (TN), Jonesboro (AR), Joplin (MO), Juneau (AK), Kalamazoo (MI), Kansas City (MO), Kauai (HI), Ketchum (ID), Knoxville (TN), Lafayette (IN), Lancasteru (PA), Lansing (MI), Las Vegas (NV), Lawrence (KS), Stoklasa okres (FL), Lexington (KY), Lincoln okres (nebo), Little Rock (AR), Los Angeles ( CA), Louisville (KY), Madison (WI), McAllen (TX), Memphis (TN), Miami (FL), Milwaukee/Waukesha (WI), Minneapolis-St. Paul (MN), Missoula (MT), Modesto (USA), Moline (IL), Monroe okres (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), světle krémová New některé (CT), New Orleans (LA), NYC-NEWARKU), Ocala (FL), Okaloosa okres (FL), Oklahoma City (OK), Omaha (NE), Orlandu (FL), Panama město (FL), Pensacola (FL), Peoria (IL), Philadelphia (PA), Phoenix (AZ), pensylvánském (PA), Portland (nebo), Racine (WI), Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke sedl (VA-Lynchburg), Rochester (NY), Rocky horských parků), neautorizovaný sedl (nebo), Roseburg (nebo), Roseville (CA), Sacramento (CA), Salem (nebo), sůl Lake City (UT), San Antonio (), San Diegu ( CA), San Luis Obispo (CA), Santa Barbara (CA), Santa Fe (NM), Sarasota (FL), Savannah (GA), Seacoast region (NH), Seattle-Tacoma-Bellevue (WA), oblast SF (certifikační autorita), Sioux (IA), Sioux (pro velké objemy), Sitka (AK), Spokane (WA), Springfieldu (IL), Springfieldu (hmotnost), Svatý Jiří (UT), St. Louis (MO), Stockton (CA), Syracuse-Utica (NY), Tallahassee (FL), Tampa-St. Petěrburg (FL), Terre Haute (IN), Toledo (OH), Topeka (KS), procházet města (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Volusia okres (FL), Waco (TX); Washington (DC), Waterbury (CT), Wichita (KS), Wilmington (NC), Yakima (WA), York okres (PA), Yuma okres (AZ)</p>|
+| \+ Americké Panenské ostrovy | Americké Panenské ostrovy * |
 
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-| Země/oblast |  Město (Metro oblast) |
+| Země/oblast |  Město (pole metro) |
 |--------|---------|
-| Austrálie      | <p>Adelaide, pružiny Alice, Bowen, Brisbane, Bundaberg QLD, Burnie, Cairns, Canbeře, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackayovou, magnetické ostrov, pozice Maryborough Hervey, Melbourne, Nový Jižní Wales, Perth, RockHampton, Jižní východní Queensland, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
-| Čína | <p> Changchun, Changsha, Chengdu, Čchung-čching, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanking, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Šanghaj, Peking, Zhengzhou Guangzhou Shenzhen,</P>| 
-| Hongkong – zvláštní administrativní oblast | Hongkong – *|
-| Macau | Macau*|
-| Indie | Ahmedabad, Bengaluru, Delhi, Mumbai, Mysuru|
-| Indonésie | Bandung Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
-| Japonsko | Shizuoka Ósaka, Tokio, Wakkanai Yamanashi – Prefektura |
+| Austrálie      | <p>Adelaide, Alice pružiny, Bowen, Brisbane, Bundaberg QLD, hořák, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackayovou, magnetické ostrovy, Maryborough-Hervey Bay, Melbourne, New Jižní Wales, Perth, RockHampton, jižní východ Queenslandu, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
+| Čína | <p> Changchun, Changsha, Chengdu, Čchung-čching, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanking, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, yixing, Zhuhai, Shanghai, Peking, Guangzhou, Shenzhen, Zhengzhou</P>| 
+| Hongkong – zvláštní správní oblast | Hongkong – zvláštní správní oblast *|
+| Macao – zvláštní správní oblast | Macao – zvláštní správní oblast *|
+| Indie | Ahmedabad, Bengaluru, Dillís, Bombaj, Mysuru|
+| Indonésie | Bandung, Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
+| Japonsko | Shizuoka Prefektura, Tokio, Wakkanai, Yamanashi Prefektura |
 | Malajsie | Ipoh, Johar Bahru, Kuala Lumpur, Penang |
 | Nový Zéland | Auckland, Christchurch, Dunedin, Queenstown, Timaru, Wellington|
 | Filipíny | Manila |
-| Singapur | Singapur * |
+| Singapur | Singapurský |
 | Jižní Korea | Busan, Soul |
-| Tchaj-wan | Changhua County, Tchaj-pej | 
-| Thajsko | Bangkok, provincie Chiang Mai | 
-| Vietnam | Hanoi, Ho Chi Minh City | 
+| Tchaj-wan | Changhua okres, Taipei | 
+| Thajsko | Bangkok, Chiang Mai | 
+| Vietnam | Hanoj, do chí Minovo City | 
 
 
 ## <a name="europe"></a>Evropa
 
-| Země/oblast |  Město (Metro oblast) |
+| Země/oblast |  Město (pole metro) |
 |----------------|---------|
-| Andorra        | Andorra la Vella |
+| Andorra        | Andorry la Vella |
 | Atény         | Chios | 
-| Rakousko        | Vídeň |
-| Bělorusko        | Gomel Grodno, Polotsk & Novopolotsk, Zhlobin, Vileyka, Maladziečna, Minsk, Rechytsa | 
-| Belgie        | Belgie * |
+| Rakousko        | Vídni |
+| Bělorusko        | Gomel, Grodno, Polotsk & Novopolotsk, Zhlobin, Vileyka, Maladziečna, Minsk, Rechytsa | 
+| Belgie        | Belgie |
 | Bolívie        | La Paz, Santa Cruz de la Sierra | 
 | Bosna a Hercegovina | Sarajevo | 
-| Bulharsko       | <p>Balchik, Blagoevgrad, Burgas, Dobrich, Gabrovo, Haskovo, Kardzhali, Lovech, Nessebar, Pazardzhik, Pleven, Plovdiv, Ruse, Shumen, Sliven, Stara Zagora, Vratsa, Yambol, Varna, Veliko, Sofie</P> |
-| Chorvatsko | Crikvenica Dubrovnik, Rijeka, Slovanski Brod, Záhřeb | 
-| Kypr | Larnaca, Limassol, Nicosia | 
-| Česká republika | Brno, Jablonec, Karlovy lišit, Praha Liberec Ostrava, | 
-| Dánsko   | Dánsko * |
-| Estonsko   | Estonsko * |   
-| Finsko   | Hämeenlinna, Helsinky, Joensuu, Jyväskylä, Kajaani, Kouvola - Kotka Kuopio, Lappeenranta Mikkeli Oulu, Seinäjoki, zasedání, Turku, Vaasa|
-| Francie    | <p>Amberieu-en-Bugey Amiens, Angers, Annecy, Annonay, Arras, Aubenas, Bayonne, Besançon, Blois, Bordeaux, Boulogne sur Mer, Brest, Briançon, cannes, Châlons-en šampaňské Chartres, Clermont-Ferrand, Colmar, Dax, Dijon, Grenoble, Haguenau, La Seignettovy, Le Oddíl, Lille, Lorient, Lyon, počítače Mac, Marseille & Provence, Mety, Millau, Mont-de-Marsan, Montpellier, Mulhouse, Nancy rozumí Nantes dobrý, Nimes, Normandy, Nyons, Paříž, Poitiers, Privas, Quimper, Rennes, Svatý Malo, Svatý Étienne, Saint-Nazaire, Saintes Sarrebourg, Sete, Štrasburku, Tarbes, Toulouse, kurzy</P> | 
+| Bulharsko       | <p>Balchik, Blagoevgrad, Burgas, Dobrich, Gabrovo, Haskovo, Kardzhali, lovech, Nessebar, Pazardzhik, Pleven, Plovdiv, Ruse, Shumen, Sliven, Stara Zagora, Vratsa, Yambol, Varna, Veliko, Sofie</P> |
+| Chorvatsko | Crikvenica, Dubrovnik, Rijeka, Slovanski Brod, Záhřeb | 
+| Kypr | Larnaca, Limassol, Nikósie | 
+| Česká republika | Brno, Jablonec, Karlovy se liší, Liberec, Ostrava, Praha | 
+| Dánsko   | Dánsku |
+| Estonsko   | Estonsko |   
+| Finsko   | Hämeenlinna, Helsinky, Joensuu, Jyväskylä, Kajaani, Kouvola-Kotka, Kuopio, Lappeenranta, Mikkeli, Oulu, Seinäjoki, úmyslně, Turku, Vaasa|
+| Francie    | <p>Amberieu-en-Bugey, Amiens, Angers, Annecy, Annonay, Arras, Aubenas, Bayonne, Besançon, Blois, Bordeaux, Boulogne sur Mer, Brest, Briançon, Cannes, Châlons-en-Champagne, Chartres, Clermont-Ferrand, Colmar, DAX, Dijon, Grenoble, Haguenau, La Rochelle, Le Mans, Lens, Lille, Lorient, Lyon, Mac, Marseille & Provence, Metz, Millau, Mont-de-Marsan, Montpellier, Mulhouse, Jana, Nantes, Nice, Nimes, Normandy, Nyons,, Paříž, Poitiers, Privas, Quimper, Rennes, Svatý Malo, Svatý-Étienne, Saint-Nazaire, Saintes, Sarrebourg, Sete, Štrasburku, Tarbes, Toulouse, prohlídky</P> | 
 | \+ Francouzská Guyana | Cayenne |
 | \+ Nová Kaledonie | Nouméa  |
 | Gruzie | Tbilisi | 
-| Německo | <p>Berlín, Braniborsko, Bremen & Niedersachsen, Kolín, Eisenach, Frankfurt, Hamburk, Karlsruhe, Mainz, München - Mnichově Rýn Neckar oblasti Rýn Ruhr oblasti Stuttgart, Titisee-Neustadt, Ulm</P> | 
-| Řecko | <p>Atény, Arta, Amorgos, Chania, Korfu, Chios Kos, Heraklion, Ioannina, Kavala, Kalamata, Komotini, Kos, Larissa, Meganisi, Mykonos, Patra, Rethimno, Rhodu, Santorini, Séres, Syros, Tinos, Soluni, Veria, Volos, Xanthi </P> |
-| Maďarsko | Budapest, Szeged, Székesfehérvár |
-| Island | Ísland – Islandu * | 
-| Irsko | Irsko * |   
-| Itálie   | <p>Agrigento, Alessandria, všechny, Bari, Bologna – Bologne, Cagliari – Sardinie, Campobasso, Catania e Messina, Cosenza, Crema, Cremona, Crotone, Cuneo, Janov Firenze - Genova Florencie, Foggia, -, Iglesias, La Spezia, Lecce, Matera, Milano – Milán, Napoli – Kodaň , Padova Palermo, Parma, Perugia, Pescara, Pisa, Potenza, Syrakusách Roma - Siracusa Řím, Siena e Grosseto, -, Taranto, Benátky Torino – Turín, Trento, Trieste, Udine, Venezia – </p> |
+| Německo | <p>Berlín, Brandenburg, Bremen & Niedersachsen, Cologne, Eisenach, Frankfurt, Hamburg, Karlsruhe, Mainz, München-Mnichov, Rhein-Neckar region, Rhein-Ruhr region, Stuttgart, Titisee-Neustadt, Ulm</P> | 
+| Řecko | <p>Atény, Arta, Amorgos, Chania, Corfu, Chios Kos, Heraklion, Ioannina, Kavala, Kalamata, Komotini, Kos, Larissa, Meganisi, Mykonos, patra, Rethimno, Rhodes, Santorini, Serres, Syros, Tinos, Thessaloniki, Veria, Volos, Xanthi </P> |
+| Maďarsko | Budapešť, Szeged, Székesfehérvár |
+| Island | Ísland – Island * | 
+| Irsko | Irsko |   
+| Itálie   | <p>Agrigento, Alessandria, Ancona, Bari, Bologna-Bologne, Cagliari-Sardinie, Campobasso, Catania e Messina, Cosenza, Crema, Cremona, Crotone, Cuneo, Firenze-Florencie, Foggia, Genova-Genoa, Iglesias, La Spezia, Lecce, Matera, Milano-Milán, Napoli-Naples , Padova, Palermo, Parma, Perugia, Pescara, Pisa, Potenza, Roma – Řím, Siena e Grosseto, Siracusa-Syracuse, Taranto, Torino-Turin, Trento, Trieste, Udine, Venezia-Venice, </p> |
 | Lotyšsko | Rīga |
 | Litva | Druskininkai, Kauno, Klaipėda, Panevėžys, Vilnius |
-| Lucembursko | Lucembursko * |
+| Lucembursko | Lucembursko |
 | Moldavsko | Kišiněv |
 | Černá Hora | Podgorica |
-| Nizozemsko | Nizozemsko * |
-| Norsko | Norsko * | 
-| Polsko | <p>Wrocław Białystok, Bydgoszcz, Elbląg, Gorzow, Kętrzyna, Krakow, Leszno, Lodz, Lublin, Mrągowo, Olsztyn, Poznań, Rzeszów, Sanok, Starachowice, Świonujście, Štětína Tricity, Varšava, Wodzisław Śląski, Wrocław, Zakopane</p> |
+| Nizozemsko | Nizozemska |
+| Norsko | Norsko | 
+| Polsko | <p>Wrocław, Białystok, Bydgoszcz, Elbląg, Gorzow, Kętrzyna, Krakow, Leszno, Lodz, Lublin, Mrągowo, Olsztyn, Poznań, Rzeszów, Sanok, Starachowice, Świonujście, Szczecin, Tricity, Varšava, Wodzisław Śląski, Wrocław, Zakopane</p> |
 | Portugalsko | Bragança, Coimbra, Funchal, Leiria, Lisboa, Portimao, Porto|
-| Republika Malta | Malta* | 
-| Rumunsko | <p>Alba Iulia, Arad, Bistrița, Brăila, Braşov, Bukurešť, Buzau, Cluj Napoca, Constanța, Craiova, Deva, Focșani, Galati, Iaşi, Miercurea Ciuc, Oradea, Piatra Neamt, Pitești, Ploieşti, Reșița, So klisny, Sibiu, Suceava, Targu Mures, Timisoara, Tulcea, Zalau</p> | 
-| Rusko  | Rostov-on-Don, Volgograd, sverdlovská oblast, Kazaň, Kirov, Krasnodar, Moskva, Nalchik, Nižnij Novgorod, Novosibirsk, Noyabrsk, Omsk, oprávnění, St. Petersburg, Tver, tomská oblast |
-| Srbsko  | Beograd, Kragujevac, Nis, Novi Sad, Valjevo, Subotica | 
-| Slovensko | Banská Bystrica, Bratislava, Košice, Prešov, Prievidza, Trencin | 
-| Slovinsko | Koper, Lublaň | 
-| Španělsko    | <p>Corunna, Alicante, Almería, Asturii, Avila, Badajoz, pozice Cadiz, Barcelona, Bilbao, Burgos, Caceres, Campo de Gibraltar, Castellon de la Plana, Ceuta, Ciudad Real, zlatá, Cuenca, El Hierro, Ferrol, Gran Canaria, Granada, Huelva, Huesca, Ibiza, Jaén - Úbeda , La Palma, Lanzarote, Lleida, Logroño, Lugo, Madrid, Malaga, Mallorca – Majorca, Mellila, Menorca, Merida, Murcia, Palencia, Pamplona, Salamanca, Sebastian po síti San, Santander, dnech, Segovia, Sevilla, Soria, Tarragona – Reus, Tenerife, Toledo, Valencie, Valladolid, Vigu, Vittoria Gasteiz, Zaragoza - Saragossa</p> |
-| Švédsko | Goteborg/Göteborgu/Jonkoping Malmö kommun - Malmö, Norrköping och Linköping, Stockholm, Sundsvall |
-| Švýcarsko | Je Basel, Geneva, Yverdon-les-Bains Curych | 
+| Malta | Malta | 
+| Rumunsko | <p>Alba Iulia, Arad, Bistrița, Brăila, Braşov, Bukurešť, Buzau, Cluj Kluž, Constanța, Craiova, Deva, Focșani, Galati, Iaşi, Miercurea Ciuc, Oradea, Piatra, Neamt, Pitești, Ploieşti, Reșița, Satu Mare, Sibiu, Suceava, Targu Mures, Timisoara, Tulcea, Zalau</p> | 
+| Rusko  | Rostov-li-li, Volgograd, Jekatěrinburg, Kazan, Kirov, Krasnodar, Moskva, Nalchik, Nižnij Novgorod, Novosibirsk, Noyabrsk, Omsk, permit, Petrohrad, Tver, Tomská oblast |
+| Srbsko  | Beograd, Kragujevac, NIS, Novi JSD, Valjevo, Subotica | 
+| Slovensko | Banská Bystrica, Bratislava, Kosice, Presov, Prievidza, Trencin | 
+| Slovinsko | Koper, Bělehrad | 
+| Španělsko    | <p>Corunna, Alicante, Almería, Asturias, Avila, Badajoz, pozice Cadiz, Barceloně, Bilbao, Burgos, Caceres, Campo de Gibraltar, Castellon de la Plana, Ceuta, Ciudad Real, Cordoba, Cuenca, El Hierro, Ferrol, Gran Canaria, Granada, Huelva, Huesca, Ibiza, Jaén-Úbeda , La Palma, Lanzarote, Lleida, Logroño, Lugo, Madrid, Malaga, Mallorca-Majorca, Melilla, Menorca, Merida, Murcia, Palencia, Pamplona, Salamanca, San Sebastian, Santander, Santiago de Chile de Compostela, Segovia, Seville, Soria, Tarragona-Reus, Tenerife, Toledo, Valencie, Valladolid, Vigo, Vitoria-Gasteiz, Zaragoza-Saragossa</p> |
+| Švédsko | Goteborg/Gothenburg/Jonkoping, Malmö kommun-Malmö, Norrköping Och Linköping, Stockholm, Sundsvall |
+| Švýcarsko | Basel, Ženeva, Yverdon-Les-Bains, Curych | 
 | Turecko | Adana-Mersin, Ankara, Antalya, Balıkesir, Bilecik, Bolu, Bursa, Denizli, Duzce, Elazig, Eskisehir, Istanbul, Izmir-Aydin, Kahramanmaras, Kayseri, Konya, Malatya, Muğla, Samsun, Şanlıurfa |    
-| Spojené království | Praha, východní Midlands, Londýn a jihovýchodní, severovýchodní, severozápad, Severní Irsko, Skotska, jihozápadní, Wales, západní Midlands, Yorkshire |
-| Ukrajina | Kharkiv Zhytomyr, Kyjev, Lviv, Chernivtsi |
+| Spojené království | Východní Anglia, východní Midlands, Londýn a jižní východ, USA – východ, USA – západ, Severní Irsko, Skotsko, Jižní západ, Wales, západ Midlands, Yorkshire |
+| Ukrajina | Kharkiv, Zhytomyr, Kyjev, Lviv, Chernivtsi |
 
 
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
-| Země/oblast |  Město (Metro oblast) |
+| Země/oblast |  Město (pole metro) |
 |---------|---------|
-| Bahrajn | Bahrajn * |
-| Egypt | Káhira    |
-| Izrael| Israel*  |
+| Bahrajn | Bahrajn |
+| Egypt | Cairo    |
+| Izrael| Izrael  |
 | Keňa | Nairobi  | 
 | Madagaskar | Antananarivo |
 | Maroko | Casablanca, Khouribga, Tétouan|
 | Saúdská Arábie | Thuwal |
-| Jižní Afrika | Kapské město |
+| Jihoafrická republika | Kapské město |
 | Tunisko | Kairouan |
 | Spojené arabské emiráty  | Abú Dhabi, Dubaj |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak požádat o přenosu dat pomocí služby Mobility:
-
-> [!div class="nextstepaction"]
-> [Jak si vyžádat přenosu dat](how-to-request-transit-data.md)
-
-Zjistěte, jak požádat o data v reálném čase pomocí služby Mobility:
+Informace o tom, jak požadovat přenosová data pomocí služby mobility:
 
 > [!div class="nextstepaction"]
-> [Jak si vyžádat data v reálném čase](how-to-request-real-time-data.md)
+> [Požadavky na přenosová data](how-to-request-transit-data.md)
 
-Projděte si dokumentaci rozhraní API služby Mobility Azure Maps
+Informace o tom, jak vyžádat data v reálném čase pomocí služby mobility:
+
+> [!div class="nextstepaction"]
+> [Jak vyžádat data v reálném čase](how-to-request-real-time-data.md)
+
+Prozkoumejte dokumentaci k rozhraní API služby Azure Maps mobility
 
 > [!div class="nextstepaction"]
 > [Dokumentace k rozhraní API služby mobility](https://aka.ms/AzureMapsMobilityService)

@@ -1,22 +1,19 @@
 ---
-title: Testování modulů Terraformu v Azure pomocí Terratest
+title: Kurz – testování modulů Terraformu v Azure pomocí Terratest
 description: Zjistěte, jak pomocí Terratestu testovat moduly Terraformu.
-services: terraform
-ms.service: azure
-keywords: terraform, devops, storage account, azure, terratest, unit test, integration test
+ms.service: terraform
 author: tomarchermsft
-manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/23/2019
-ms.openlocfilehash: e4965ba47a99e3cd189763d994bef6381badd9ba
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.date: 10/26/2019
+ms.openlocfilehash: bdb76fe2f87806c02a861ea84361b61a3e94b554
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881776"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969216"
 ---
-# <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Testování modulů Terraformu v Azure pomocí Terratest
+# <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Kurz: testování modulů Terraformu v Azure pomocí Terratest
 
 > [!NOTE]
 > Vzorový kód v tomto článku nepracuje s verzí 0,12 (a vyšší).
@@ -40,7 +37,7 @@ Než začnete, nainstalujte následující software:
 
 - **Jazyk programovacího jazyka**: terraformu testové případy jsou zapsané v [cestách](https://golang.org/dl/).
 - **dep:** [dep](https://github.com/golang/dep#installation) je nástroj pro správu závislostí pro Go.
-- **Azure CLI**: [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) je nástroj příkazového řádku, který můžete použít ke správě prostředků Azure. (Terraformu podporuje ověřování v Azure prostřednictvím instančního objektu nebo [prostřednictvím rozhraní příkazového řádku Azure CLI](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html))
+- **Azure CLI**: [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) je nástroj příkazového řádku, který můžete použít ke správě prostředků Azure. (Terraformu podporuje ověřování v Azure prostřednictvím instančního objektu nebo [prostřednictvím rozhraní příkazového řádku Azure CLI](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html))
 - **Mage**: používáme [spustitelný soubor Mage](https://github.com/magefile/mage/releases) k tomu, abychom vám ukázali, jak zjednodušit spuštění Terratest případů. 
 
 ## <a name="create-a-static-webpage-module"></a>Vytvoření modulu statického webu
@@ -91,7 +88,7 @@ Jak jsme se už dozvěděli v tomto článku, tento modul také vypíše adresu 
 
 ```hcl
 output "homepage_url" {
-  value = "${azurerm_storage_blob.homepage.url}"
+  value = azurerm_storage_blob.homepage.url
 }
 ```
 
@@ -106,30 +103,30 @@ Logika modulu statického webu se implementuje v souboru `./main.tf`:
 ```hcl
 resource "azurerm_resource_group" "main" {
   name     = "${var.website_name}-staging-rg"
-  location = "${var.location}"
+  location = var.location
 }
 
 resource "azurerm_storage_account" "main" {
   name                     = "${lower(replace(var.website_name, "/[[:^alnum:]]/", ""))}data001"
-  resource_group_name      = "${azurerm_resource_group.main.name}"
-  location                 = "${azurerm_resource_group.main.location}"
+  resource_group_name      = azurerm_resource_group.main.name
+  location                 = azurerm_resource_group.main.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
 resource "azurerm_storage_container" "main" {
   name                  = "wwwroot"
-  resource_group_name   = "${azurerm_resource_group.main.name}"
-  storage_account_name  = "${azurerm_storage_account.main.name}"
+  resource_group_name   = azurerm_resource_group.main.name
+  storage_account_name  = azurerm_storage_account.main.name
   container_access_type = "blob"
 }
 
 resource "azurerm_storage_blob" "homepage" {
   name                   = "index.html"
-  resource_group_name    = "${azurerm_resource_group.main.name}"
-  storage_account_name   = "${azurerm_storage_account.main.name}"
-  storage_container_name = "${azurerm_storage_container.main.name}"
-  source                 = "${var.html_path}"
+  resource_group_name    = azurerm_resource_group.main.name
+  storage_account_name   = azurerm_storage_account.main.name
+  storage_container_name = azurerm_storage_container.main.name
+  source                 = var.html_path
   type                   = "block"
   content_type           = "text/html"
 }
@@ -173,7 +170,7 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
   html_path    = "empty.html"
 }
 ```
@@ -317,11 +314,11 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
 }
 
 output "homepage" {
-  value = "${module.staticwebpage.homepage_url}"
+  value = module.staticwebpage.homepage_url
 }
 ```
 
@@ -521,5 +518,5 @@ Místo spouštění `az login` před testy můžete dokončit ověřování Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o Terratest najdete na [stránce GitHubu Terratest](https://github.com/gruntwork-io/terratest).
-* Informace o Mage najdete na [stránce GitHubu Mage](https://github.com/magefile/mage) a na [webu Mage](https://magefile.org/).
+> [!div class="nextstepaction"] 
+> [Stránka GitHubu Terratest](https://github.com/gruntwork-io/terratest)

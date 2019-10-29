@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: d16df46ada2254f5bfc671db55e82fc89ef450b6
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c6051508a067e17afbc25702c26608da4cd4ca2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679045"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968919"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a Microsoft Flow
 
@@ -252,7 +252,7 @@ Například můžete odkazovat na výstupy z jedné akce a používat tato data 
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Vrátí text pro určitou část výstupu akce, která má více částí. |
 | [činnosti](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Vrátí výstup akce za běhu. |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Vrátí hodnotu parametru, který je popsán v definici pracovního postupu. |
-| [vyústit](../logic-apps/workflow-definition-language-functions-reference.md#result) | Vrátí vstupy a výstupy ze všech akcí uvnitř zadané akce s vymezeným oborem, například `For_each`, `Until` a `Scope`. |
+| [vyústit](../logic-apps/workflow-definition-language-functions-reference.md#result) | Vrátí vstupy a výstupy ze všech akcí uvnitř zadané akce s vymezeným oborem, například `For_each`, `Until`a `Scope`. |
 | [signálu](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Vrátí výstup triggeru za běhu nebo jiné páry název-hodnota JSON. Viz také [triggerOutputs](#triggerOutputs) a [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Vrátí výstup triggeru `body` za běhu. Viz [Trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Vrátí jednu hodnotu odpovídající názvu klíče v výstupech triggerů *form-data* nebo *Form-Encoded* . |
@@ -491,7 +491,7 @@ add(<summand_1>, <summand_2>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2* > | Ano | Integer, float nebo mixed | Čísla, která mají být přidána |
+| <*summand_1*>, <*summand_2*> | Ano | Integer, float nebo mixed | Čísla, která mají být přidána |
 |||||
 
 | Návratová hodnota | Typ | Popis |
@@ -1237,7 +1237,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko* > | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
-| <*destinationTimeZone* > | Ano | Řetězec | Název cílového časového pásma. Další informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*destinationTimeZone* > | Ano | Řetězec | Název cílového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
 | < >*formátu* | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
@@ -1279,8 +1279,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko* > | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
-| <*sourceTimeZone* > | Ano | Řetězec | Název zdrojového časového pásma. Další informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
-| <*destinationTimeZone* > | Ano | Řetězec | Název cílového časového pásma. Další informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*sourceTimeZone* > | Ano | Řetězec | Název zdrojového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
+| <*destinationTimeZone* > | Ano | Řetězec | Název cílového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
 | < >*formátu* | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
@@ -1322,7 +1322,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko* > | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
-| <*sourceTimeZone* > | Ano | Řetězec | Název zdrojového časového pásma. Další informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*sourceTimeZone* > | Ano | Řetězec | Název zdrojového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
 | < >*formátu* | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
@@ -3318,7 +3318,7 @@ Tady je aktualizovaný objekt JSON:
 
 ### <a name="result"></a>Vyústit
 
-Vrátí vstupy a výstupy ze všech akcí, které jsou uvnitř zadané akce s vymezeným oborem, například `For_each`, `Until` nebo akce `Scope`. Tato funkce je užitečná pro vrácení výsledků z neúspěšné akce, abyste mohli diagnostikovat a zpracovávat výjimky. Další informace najdete v tématu [získání kontextu a výsledků pro selhání](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+Vrátí vstupy a výstupy ze všech akcí, které jsou uvnitř zadané akce s vymezeným oborem, například `For_each`, `Until`nebo akce `Scope`. Tato funkce je užitečná pro vrácení výsledků z neúspěšné akce, abyste mohli diagnostikovat a zpracovávat výjimky. Další informace najdete v tématu [získání kontextu a výsledků pro selhání](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
 
 ```
 result('<scopedActionName>')

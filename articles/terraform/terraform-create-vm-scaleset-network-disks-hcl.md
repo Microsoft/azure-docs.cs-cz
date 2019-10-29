@@ -1,25 +1,23 @@
 ---
-title: Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure
-description: Kurz o použití Terraformu ke konfiguraci a správě verzí škálovací sady virtuálních počítačů Azure s virtuální sítí a spravovanými připojenými disky
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuální počítač, Azure, škálovací sada, síť, úložiště, moduly
+title: Kurz – vytvoření sady škálování virtuálních počítačů Azure pomocí Terraformu
+description: Naučte se používat Terraformu ke konfiguraci a verzi sady škálování virtuálních počítačů Azure.
+ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: a6bc0879d07cadc6c5b0b1a21b11b3075ec69719
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 205cf7610bd9f86bf36fc738ced71fc8175ccdc9
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169874"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969458"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure
+# <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Kurz: vytvoření sady škálování virtuálních počítačů Azure pomocí Terraformu
 
-[Škálovací sady virtuálních počítačů Azure](/azure/virtual-machine-scale-sets)-vám umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení, u kterých se může počet instancí virtuálních počítačů podle zatížení či definovaného plánu automaticky zvýšit nebo snížit.
+[Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets) vám umožní nakonfigurovat identické virtuální počítače. Počet instancí virtuálních počítačů se může upravovat na základě poptávky nebo plánu. Další informace najdete v tématu [Automatické škálování sady škálování virtuálních počítačů v Azure Portal](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal).
 
-V tomto kurzu zjistíte, jak pomocí služby [Azure Cloud Shell](/azure/cloud-shell/overview) provést následující úlohy:
+V tomto kurzu se naučíte, jak pomocí [Azure Cloud Shell](/azure/cloud-shell/overview) provádět následující úlohy:
 
 > [!div class="checklist"]
 > * Nastavit nasazení Terraformu
@@ -31,13 +29,13 @@ V tomto kurzu zjistíte, jak pomocí služby [Azure Cloud Shell](/azure/cloud-sh
 > [!NOTE]
 > Nejnovější verze konfiguračních souborů Terraformu používaných v tomto článku se nachází v [úložišti Super terraformu na GitHubu](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Nainstalovat terraformu**: Postupujte podle pokynů v článku [terraformu a nakonfigurujte přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure) .
+- **Nainstalovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](/azure/virtual-machines/linux/terraform-install-configure).
 
-- **Vytvořte pár klíčů ssh**: Pokud ještě nemáte pár klíčů SSH, postupujte podle pokynů v článku, [jak vytvořit a použít dvojici veřejného a privátního klíče SSH pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **Vytvoření páru klíčů ssh**: Další informace najdete v tématu [jak vytvořit a použít dvojici veřejného a privátního klíče SSH pro virtuální počítače se systémem Linux v Azure](/azure/virtual-machines/linux/mac-create-ssh-keys).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
@@ -68,15 +66,13 @@ V tomto kurzu zjistíte, jak pomocí služby [Azure Cloud Shell](/azure/cloud-sh
 ## <a name="create-the-variables-definitions-file"></a>Vytvoření souboru definic proměnných
 V této části definujete proměnné, které přizpůsobí prostředky vytvořené nástrojem Terraform.
 
-Ve službě Azure Cloud Shell proveďte následující kroky:
+V Azure Cloud Shell proveďte následující kroky:
 
 1. Vytvořte soubor s názvem `variables.tf`.
 
     ```bash
-    vi variables.tf
+    code variables.tf
     ```
-
-1. Stisknutím klávesy I přejděte do režimu vkládání.
 
 1. Do editoru vložte následující kód:
 
@@ -100,43 +96,29 @@ Ve službě Azure Cloud Shell proveďte následující kroky:
    }
    ```
 
-1. Stisknutím klávesy Esc ukončete režim vkládání.
-
-1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
-
-    ```bash
-    :wq
-    ```
+1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
 
 ## <a name="create-the-output-definitions-file"></a>Vytvoření výstupního souboru definic
 V této části vytvoříte soubor, který po nasazení popisuje výstup.
 
-Ve službě Azure Cloud Shell proveďte následující kroky:
+V Azure Cloud Shell proveďte následující kroky:
 
 1. Vytvořte soubor s názvem `output.tf`.
 
     ```bash
-    vi output.tf
+    code output.tf
     ```
-
-1. Stisknutím klávesy I přejděte do režimu vkládání.
 
 1. Do editoru vložte následující kód, abyste virtuálním počítačům zveřejnili plně kvalifikovaný název domény (FQDN).
    :
 
    ```hcl
     output "vmss_public_ip" {
-        value = "${azurerm_public_ip.vmss.fqdn}"
+        value = azurerm_public_ip.vmss.fqdn
     }
    ```
 
-1. Stisknutím klávesy Esc ukončete režim vkládání.
-
-1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
-
-    ```bash
-    :wq
-    ```
+1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>Definování infrastruktury sítě v šabloně
 V této části vytvoříte v nové skupině prostředků Azure následující síťovou infrastrukturu:
@@ -145,23 +127,21 @@ V této části vytvoříte v nové skupině prostředků Azure následující s
   - Jednu podsíť s adresním prostorem 10.0.2.0/24
   - Dvě veřejné IP adresy – jednu pro nástroj pro vyrovnávání zatížení škálovací sady virtuálních počítačů a druhou pro připojení k jumpboxu SSH
 
-Ve službě Azure Cloud Shell proveďte následující kroky:
+V Azure Cloud Shell proveďte následující kroky:
 
 1. Vytvořte soubor s názvem `vmss.tf`, který bude popisovat infrastrukturu škálovací sady virtuálních počítačů.
 
     ```bash
-    vi vmss.tf
+    code vmss.tf
     ```
-
-1. Stisknutím klávesy I přejděte do režimu vkládání.
 
 1. Na konec tohoto souboru vložte následující kód, abyste virtuálním počítačům zveřejnili plně kvalifikovaný název domény (FQDN).
 
    ```hcl
    resource "azurerm_resource_group" "vmss" {
-    name     = "${var.resource_group_name}"
-    location = "${var.location}"
-    tags     = "${var.tags}"
+    name     = var.resource_group_name
+    location = var.location
+    tags     = var.tags
    }
 
    resource "random_string" "fqdn" {
@@ -174,38 +154,32 @@ Ve službě Azure Cloud Shell proveďte následující kroky:
    resource "azurerm_virtual_network" "vmss" {
     name                = "vmss-vnet"
     address_space       = ["10.0.0.0/16"]
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
-    tags                = "${var.tags}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
+    tags                = var.tags
    }
 
    resource "azurerm_subnet" "vmss" {
     name                 = "vmss-subnet"
-    resource_group_name  = "${azurerm_resource_group.vmss.name}"
-    virtual_network_name = "${azurerm_virtual_network.vmss.name}"
+    resource_group_name  = azurerm_resource_group.vmss.name
+    virtual_network_name = azurerm_virtual_network.vmss.name
     address_prefix       = "10.0.2.0/24"
    }
 
    resource "azurerm_public_ip" "vmss" {
     name                         = "vmss-public-ip"
-    location                     = "${var.location}"
-    resource_group_name          = "${azurerm_resource_group.vmss.name}"
+    location                     = var.location
+    resource_group_name          = azurerm_resource_group.vmss.name
     allocation_method = "Static"
-    domain_name_label            = "${random_string.fqdn.result}"
-    tags                         = "${var.tags}"
+    domain_name_label            = random_string.fqdn.result
+    tags                         = var.tags
    }
    ```
 
-1. Stisknutím klávesy Esc ukončete režim vkládání.
-
-1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
-
-   ```bash
-   :wq
-   ```
+1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
 
 ## <a name="provision-the-network-infrastructure"></a>Zřízení síťové infrastruktury
-Pomocí služby Azure Cloud Shell proveďte v adresáři, ve kterém jste vytvořili konfigurační soubory (.tf), následující kroky:
+Pomocí Azure Cloud Shell z adresáře, ve kterém jste vytvořili konfigurační soubory (. TF), proveďte následující kroky:
 
 1. Inicializujte Terraform.
 
@@ -219,11 +193,11 @@ Pomocí služby Azure Cloud Shell proveďte v adresáři, ve kterém jste vytvo�
    terraform apply
    ```
 
-   Vzhledem k tomu, že proměnná **location** (umístění) je v souboru `variables.tf` definovaná, ale není nikdy nastavená, vyzve vás Terraform k jejímu zadání. Můžete zadat libovolné platné umístění – například „Západní USA“ – a potom stisknout Enter. (U každé hodnoty s mezerami používejte závorky.)
+   Terraformu vás vyzve k zadání hodnoty `location`, protože `location` proměnná je definována v `variables.tf`, ale není nikdy nastavena. Můžete zadat libovolné platné umístění – například „Západní USA“ – a potom stisknout Enter. (U každé hodnoty s mezerami používejte závorky.)
 
-1. Terraform zobrazí výstup definovaný v souboru `output.tf`. Jak můžete vidět na následujícím snímku obrazovky, plně kvalifikovaný název domény má tuto podobu: &lt;id>.&lt;umístění>.cloudapp.azure.com. Hodnota id je vypočítanou hodnotou a umístění má stejnou hodnotu, jako jste zadali při spuštění Terraformu.
+1. Terraform zobrazí výstup definovaný v souboru `output.tf`. Jak je znázorněno na následujícím snímku obrazovky, plně kvalifikovaný název domény má následující formát: `<ID>.<location>.cloudapp.azure.com`. ID je vypočítaná hodnota a umístění je hodnota, která je k dispozici při spuštění Terraformu.
 
-   ![Plně kvalifikovaný název domény škálovací sady virtuálních počítačů pro veřejnou IP adresu](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
+   ![Plně kvalifikovaný název domény sady škálování virtuálního počítače pro veřejnou IP adresu](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
 
 1. Na webu Azure Portal vyberte z hlavní nabídky **Skupiny prostředků**.
 
@@ -240,12 +214,12 @@ V této části se dozvíte, jak do šablony přidat následující prostředky:
 - Škálovací sada virtuálních počítačů, která se nachází za nástrojem pro vyrovnávání zatížení a běží na virtuální síti nasazené dříve v tomto článku.
 - Server [Nginx](https://nginx.org/) na uzlech škálovací sady virtuálních počítačů používající [cloud-init](https://cloudinit.readthedocs.io/en/latest/).
 
-V Cloud Shellu proveďte následující kroky:
+V Cloud Shell proveďte následující kroky:
 
 1. Otevřete konfigurační soubor `vmss.tf`.
 
    ```bash
-   vi vmss.tf
+   code vmss.tf
    ```
 
 1. Přejděte na konec souboru a vybráním klávesy A přejděte do režimu přidávání.
@@ -255,46 +229,46 @@ V Cloud Shellu proveďte následující kroky:
    ```hcl
    resource "azurerm_lb" "vmss" {
     name                = "vmss-lb"
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
 
     frontend_ip_configuration {
       name                 = "PublicIPAddress"
-      public_ip_address_id = "${azurerm_public_ip.vmss.id}"
+      public_ip_address_id = azurerm_public_ip.vmss.id
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
 
    resource "azurerm_lb_backend_address_pool" "bpepool" {
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
-    loadbalancer_id     = "${azurerm_lb.vmss.id}"
+    resource_group_name = azurerm_resource_group.vmss.name
+    loadbalancer_id     = azurerm_lb.vmss.id
     name                = "BackEndAddressPool"
    }
 
    resource "azurerm_lb_probe" "vmss" {
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
-    loadbalancer_id     = "${azurerm_lb.vmss.id}"
+    resource_group_name = azurerm_resource_group.vmss.name
+    loadbalancer_id     = azurerm_lb.vmss.id
     name                = "ssh-running-probe"
-    port                = "${var.application_port}"
+    port                = var.application_port
    }
 
    resource "azurerm_lb_rule" "lbnatrule" {
-      resource_group_name            = "${azurerm_resource_group.vmss.name}"
-      loadbalancer_id                = "${azurerm_lb.vmss.id}"
+      resource_group_name            = azurerm_resource_group.vmss.name
+      loadbalancer_id                = azurerm_lb.vmss.id
       name                           = "http"
       protocol                       = "Tcp"
-      frontend_port                  = "${var.application_port}"
-      backend_port                   = "${var.application_port}"
-      backend_address_pool_id        = "${azurerm_lb_backend_address_pool.bpepool.id}"
+      frontend_port                  = var.application_port
+      backend_port                   = var.application_port
+      backend_address_pool_id        = azurerm_lb_backend_address_pool.bpepool.id
       frontend_ip_configuration_name = "PublicIPAddress"
-      probe_id                       = "${azurerm_lb_probe.vmss.id}"
+      probe_id                       = azurerm_lb_probe.vmss.id
    }
 
    resource "azurerm_virtual_machine_scale_set" "vmss" {
     name                = "vmscaleset"
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
     upgrade_policy_mode = "Manual"
 
     sku {
@@ -326,9 +300,9 @@ V Cloud Shellu proveďte následující kroky:
 
     os_profile {
       computer_name_prefix = "vmlab"
-      admin_username       = "${var.admin_user}"
-      admin_password       = "${var.admin_password}"
-      custom_data          = "${file("web.conf")}"
+      admin_username       = var.admin_user
+      admin_password       = var.admin_password
+      custom_data          = file("web.conf")
     }
 
     os_profile_linux_config {
@@ -341,17 +315,15 @@ V Cloud Shellu proveďte následující kroky:
 
       ip_configuration {
         name                                   = "IPConfiguration"
-        subnet_id                              = "${azurerm_subnet.vmss.id}"
-        load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+        subnet_id                              = azurerm_subnet.vmss.id
+        load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
         primary = true
       }
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
    ```
-
-1. Stisknutím klávesy Esc ukončete režim vkládání.
 
 1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
 
@@ -362,10 +334,8 @@ V Cloud Shellu proveďte následující kroky:
 1. Vytvořte soubor s názvem `web.conf`, který bude sloužit jako konfigurace cloud-init pro virtuální počítače, které jsou součástí škálovací sady.
 
     ```bash
-    vi web.conf
+    code web.conf
     ```
-
-1. Stisknutím klávesy I přejděte do režimu vkládání.
 
 1. Do editoru vložte následující kód:
 
@@ -374,8 +344,6 @@ V Cloud Shellu proveďte následující kroky:
    packages:
     - nginx
    ```
-
-1. Stisknutím klávesy Esc ukončete režim vkládání.
 
 1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
 
@@ -386,7 +354,7 @@ V Cloud Shellu proveďte následující kroky:
 1. Otevřete konfigurační soubor `variables.tf`.
 
     ```bash
-    vi variables.tf
+    code variables.tf
     ```
 
 1. Přejděte na konec souboru a vybráním klávesy A přejděte do režimu přidávání.
@@ -409,13 +377,7 @@ V Cloud Shellu proveďte následující kroky:
     }
     ```
 
-1. Stisknutím klávesy Esc ukončete režim vkládání.
-
-1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
-
-     ```bash
-     :wq
-     ```
+1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
 
 1. Vytvořte plán Terraformu k vizualizaci nasazení škálovací sady virtuálních počítačů. (Budete muset zadat vlastní heslo a umístění pro vaše prostředky.)
 
@@ -435,14 +397,14 @@ V Cloud Shellu proveďte následující kroky:
 
     Výstup příkazu by se měl podobat následujícímu snímku obrazovky:
 
-    ![Skupina prostředků škálovací sady virtuálních počítačů Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
+    ![Skupina prostředků Terraformu škálovací sady virtuálních počítačů](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
 
 1. Otevřete prohlížeč a připojte se k plně kvalifikovanému názvu domény vrácenému příkazem.
 
     ![Výsledky přejití na plně kvalifikovaný název domény](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
 ## <a name="add-an-ssh-jumpbox"></a>Přidání jumpboxu SSH
-*Jumpbox* SSH je samostatný server, kterým můžete „proskočit“ a získat přístup k ostatním serverům v síti. V tomto kroku nakonfigurujete následující prostředky:
+*JUMPBOX* SSH je jeden server, který můžete "Přeskočit" a získat tak přístup k jiným serverům v síti. V tomto kroku nakonfigurujete následující prostředky:
 
 - Síťové rozhraní (neboli jumpbox) připojené ke stejné podsíti jako škálovací sada virtuálních počítačů
 
@@ -451,7 +413,7 @@ V Cloud Shellu proveďte následující kroky:
 1. Otevřete konfigurační soubor `vmss.tf`.
 
    ```bash
-   vi vmss.tf
+   code vmss.tf
    ```
 
 1. Přejděte na konec souboru a vybráním klávesy A přejděte do režimu přidávání.
@@ -461,33 +423,33 @@ V Cloud Shellu proveďte následující kroky:
    ```hcl
    resource "azurerm_public_ip" "jumpbox" {
     name                         = "jumpbox-public-ip"
-    location                     = "${var.location}"
-    resource_group_name          = "${azurerm_resource_group.vmss.name}"
+    location                     = var.location
+    resource_group_name          = azurerm_resource_group.vmss.name
     allocation_method = "Static"
     domain_name_label            = "${random_string.fqdn.result}-ssh"
-    tags                         = "${var.tags}"
+    tags                         = var.tags}
    }
 
    resource "azurerm_network_interface" "jumpbox" {
     name                = "jumpbox-nic"
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
 
     ip_configuration {
       name                          = "IPConfiguration"
-      subnet_id                     = "${azurerm_subnet.vmss.id}"
+      subnet_id                     = azurerm_subnet.vmss.id
       private_ip_address_allocation = "dynamic"
-      public_ip_address_id          = "${azurerm_public_ip.jumpbox.id}"
+      public_ip_address_id          = azurerm_public_ip.jumpbox.id
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
 
    resource "azurerm_virtual_machine" "jumpbox" {
     name                  = "jumpbox"
-    location              = "${var.location}"
-    resource_group_name   = "${azurerm_resource_group.vmss.name}"
-    network_interface_ids = ["${azurerm_network_interface.jumpbox.id}"]
+    location              = var.location
+    resource_group_name   = azurerm_resource_group.vmss.name
+    network_interface_ids = [azurerm_network_interface.jumpbox.id]
     vm_size               = "Standard_DS1_v2"
 
     storage_image_reference {
@@ -506,22 +468,22 @@ V Cloud Shellu proveďte následující kroky:
 
     os_profile {
       computer_name  = "jumpbox"
-      admin_username = "${var.admin_user}"
-      admin_password = "${var.admin_password}"
+      admin_username = var.admin_user
+      admin_password = var.admin_password
     }
 
     os_profile_linux_config {
       disable_password_authentication = false
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
    ```
 
 1. Otevřete konfigurační soubor `output.tf`.
 
    ```bash
-   vi output.tf
+   code output.tf
    ```
 
 1. Přejděte na konec souboru a vybráním klávesy A přejděte do režimu přidávání.
@@ -530,17 +492,11 @@ V Cloud Shellu proveďte následující kroky:
 
    ```hcl
    output "jumpbox_public_ip" {
-      value = "${azurerm_public_ip.jumpbox.fqdn}"
+      value = azurerm_public_ip.jumpbox.fqdn
    }
    ```
 
-1. Stisknutím klávesy Esc ukončete režim vkládání.
-
-1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
-
-    ```bash
-    :wq
-    ```
+1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
 
 1. Nasaďte jumpbox.
 
@@ -550,7 +506,7 @@ V Cloud Shellu proveďte následující kroky:
 
 Po dokončení nasazení se bude obsah skupiny prostředků podobat následujícímu snímku obrazovky:
 
-![Skupina prostředků škálovací sady virtuálních počítačů Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents-final.png)
+![Skupina prostředků Terraformu škálovací sady virtuálních počítačů](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents-final.png)
 
 > [!NOTE]
 > Možnost přihlásit se pomocí hesla je u nasazeného jumpboxu a škálovací sady virtuálních počítačů zakázaná. Přihlaste se pomocí SSH, abyste získali přístup k virtuálnímu počítači / virtuálním počítačům.
@@ -566,9 +522,6 @@ terraform destroy
 Odstranění můžete trvat i několik minut.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak použit Terraform k vytvoření škálovací sady virtuálních počítačů Azure. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky:
 
-[Centrum terraformu v](https://docs.microsoft.com/azure/terraform/)
-[dokumentaci k](https://aka.ms/terraform)
-poskytovateli Azure Microsoft.com terraformu[terraformu source](https://aka.ms/tfgit)
-Provider[terraformu modules Azure](https://aka.ms/tfmodules)
+> [!div class="nextstepaction"] 
+> [Terraformu v Azure](/azure/ansible/)

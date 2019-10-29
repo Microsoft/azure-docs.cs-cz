@@ -1,41 +1,39 @@
 ---
-title: Vytvoření základní šablony Terraformu v Azure pomocí Yeoman
+title: Kurz – vytvoření základní šablony Terraformu v Azure pomocí Yeoman
 description: Naučte se vytvořit základní šablonu Terraformu v Azure pomocí Yeoman.
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuální počítač, azure, yeoman
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 7a628eb02170346a826cab19498d6fdf40cebddd
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 2f8cbc495a4b46255e7eb31bc1ff8b04fffcad15
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173381"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969270"
 ---
-# <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Vytvoření základní šablony Terraformu v Azure pomocí Yeoman
+# <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>Kurz: Vytvoření základní šablony Terraformu v Azure pomocí Yeoman
 
-[Terraform](https://docs.microsoft.com/azure/terraform/
-) poskytuje způsob, jak snadno vytvořit infrastrukturu v Azure. [Yeoman](https://yeoman.io/) výrazně usnadňuje úlohy vývojáře modulu při vytváření modulů Terraformu a současně poskytuje vynikající *rámec osvědčených postupů*.
+V tomto kurzu se naučíte používat kombinaci [terraformu](/azure/terraform/) a [Yeoman](https://yeoman.io/). Terraformu je nástroj pro vytváření infrastruktury v Azure. Yeoman umožňuje snadno vytvářet moduly Terraformu.
 
-V tomto článku se dozvíte, jak používat generátor modulů Yeoman k vytvoření základní šablony Terraform. Pak se dozvíte, jak otestovat novou šablonu Terraformu pomocí dvou různých metod:
+V tomto článku se dozvíte, jak provádět následující úlohy:
+> [!div class="checklist"]
+> * Vytvořte základní šablonu Terraformu pomocí generátoru modulu Yeoman.
+> * Otestujte šablonu Terraformu pomocí dvou různých metod.
+> * Spusťte modul Terraformu pomocí souboru Docker.
+> * Spusťte v Azure Cloud Shell nativně modul Terraformu.
 
-- Spusťte modul Terraformu pomocí souboru Docker, který jste vytvořili v tomto článku.
-- Spusťte v Azure Cloud Shell nativně modul Terraformu.
+## <a name="prerequisites"></a>Předpoklady
 
-## <a name="prerequisites"></a>Požadavky
-
-- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-- **Visual Studio Code**: K prohlédnutí souborů vytvořených generátorem Yeoman budeme používat [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) . Můžete však použít libovolný editor kódu podle vašeho výběru.
-- **Terraformu**: K spuštění modulu vytvořeného pomocí Yeoman budete potřebovat instalaci [terraformu](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) .
-- **Docker**: K spuštění modulu vytvořeného generátorem Yeoman budeme používat [Docker](https://www.docker.com/get-started) . (Pokud tomu dáváte přednost, můžete použít Ruby místo Dockeru pro spuštění vzorového modulu.)
-- **Programovací jazyk**, který je na cestách: Budete potřebovat instalaci nástroje [Přejít](https://golang.org/) , protože testovací případy vygenerované službou Yeoman jsou zapsané v cestách.
+- **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- **Visual Studio Code**: [Stáhněte si Visual Studio Code](https://code.visualstudio.com/download) pro vaši platformu.
+- **Terraformu**: [nainstalujte terraformu](/azure/virtual-machines/linux/terraform-install-configure ) a spusťte modul vytvořený nástrojem Yeoman.
+- **Docker**: [nainstalujte Docker](https://www.docker.com/get-started) a spusťte modul vytvořený generátorem Yeoman.
+- **Jazyk programovacího jazyka**: [instalace přejít](https://golang.org/) jako Yeoman testové případy je kód pomocí jazyka přejít.
 
 >[!NOTE]
->Většina procedur v tomto tutoriálu zahrnuje položky příkazového řádku. Kroky popsané zde platí pro všechny operační systémy a nástroje příkazového řádku. V našich příkladech jsme se rozhodli použít PowerShell pro místní prostředí a Git bash pro prostředí cloud Shell.
+>Většina postupů v tomto kurzu se týká rozhraní příkazového řádku. Popsané kroky se vztahují na všechny operační systémy a nástroje příkazového řádku. V příkladech byl vybrán PowerShell pro místní prostředí a Git bash pro prostředí cloud Shell.
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
@@ -48,66 +46,78 @@ Abyste mohli Terraform používat ve službě Cloud Shell, musíte si [nainstalo
 
 ### <a name="install-yeoman"></a>Nainstalovat Yeoman
 
-V příkazovém řádku zadejte `npm install -g yo`
+Spusťte následující příkaz:
+
+```bash
+npm install -g yo
+```
 
 ![Nainstalovat Yeoman](media/terraform-vscode-module-generator/ymg-npm-install-yo.png)
 
 ### <a name="install-the-yeoman-template-for-terraform-module"></a>Nainstalujte šablony Yeoman pro modul Terraform
 
-Na příkazovém řádku zadejte `npm install -g generator-az-terra-module`.
+Spusťte následující příkaz:
+
+```bash
+npm install -g generator-az-terra-module
+```
 
 ![Nainstalujte generátor – az-terra – modul](media/terraform-vscode-module-generator/ymg-pm-install-generator-module.png)
 
->[!NOTE]
->K ověření, že je nainstalovaný Yeoman, v okně terminálu zadejte `yo --version`.
+Chcete-li ověřit, zda je Yeoman nainstalován, spusťte následující příkaz:
 
-### <a name="create-an-empty-folder-to-hold-the-yeoman-generated-module"></a>Vytvořte prázdnou složku pro uložení modulu generujícího Yeoman
+```bash
+yo --version
+```
 
-Šablona Yeoman generuje soubory do **aktuálního adresáře**. Z tohoto důvodu je potřeba vytvořit adresář.
+### <a name="create-a-directory-for-the-yeoman-generated-module"></a>Vytvoření adresáře pro modul generovaný Yeoman
 
->[!Note]
->Tento adresář prázdný je potřeba umístit pod $GOPATH/src. Najdete pokyny [zde](https://github.com/golang/go/wiki/SettingGOPATH), abyste provedli tuto akci.
+Šablona Yeoman generuje soubory v aktuálním adresáři. Z tohoto důvodu je potřeba vytvořit adresář.
 
-Z příkazovém řádku zadejte:
+Tento adresář prázdný je potřeba umístit pod $GOPATH/src. Další informace o této cestě naleznete v článku [Nastavení gopath tak](https://github.com/golang/go/wiki/SettingGOPATH).
 
-1. Přejděte do nadřazeného adresáře, který má obsahovat nový, prázdný adresář, který se chystáte vytvořit.
-1. Zadejte `mkdir <new-directory-name>`.
+1. Přejděte do nadřazeného adresáře, ze kterého chcete vytvořit nový adresář.
 
-    > [!NOTE]
-    > Nahraďte `<new-directory-name>` názvem vašeho nového adresáře. V tomto příkladu jsme pojmenovali nový adresář`GeneratorDocSample`.
+1. Spusťte následující příkaz, který nahradí zástupný text. V tomto příkladu se používá název adresáře `GeneratorDocSample`.
+
+    ```bash
+    mkdir <new-directory-name>
+    ```
 
     ![mkdir](media/terraform-vscode-module-generator/ymg-mkdir-GeneratorDocSample.png)
 
-1. Přejděte do nového adresáře tak, že zadáte `cd <new directory's name>`a pak stisknete **enter**.
+1. Přejděte do nového adresáře:
+
+    ```bash
+    cd <new-directory-name>
+    ```
 
     ![Přejdete do nového adresáře](media/terraform-vscode-module-generator/ymg-cd-GeneratorDocSample.png)
 
-    >[!NOTE]
-    >K ujištění, že je tento adresář je prázdný, zadejte `ls`. Neměly by existovat žádné soubory uvedené ve výsledném výstupu tohoto příkazu.
-
 ## <a name="create-a-base-module-template"></a>Vytvořte šablonu základního modulu
 
-Z příkazovém řádku zadejte:
+1. Spusťte následující příkaz:
 
-1. Zadejte `yo az-terra-module`.
+    ```bash
+    yo az-terra-module
+    ```
 
 1. Použijte pokyny na obrazovce pokynů zadejte následující informace:
 
-    - *Název modulu projektu Terraform*
+    - **Název projektu modulu terraformu** – pro příklad se používá hodnota `doc-sample-module`.
 
         ![Název projektu](media/terraform-vscode-module-generator/ymg-project-name.png)       
 
-        >[!NOTE]
-        >V tomto příkladu jsme zadali `doc-sample-module`.
 
-    - *Chcete zahrnout soubor Docker image?*
+    - **Chcete zahrnout soubor Docker image?** -Zadejte `y`. Pokud vyberete `n`, vygenerovaný kód modulu bude podporovat spouštění pouze v nativním režimu.
 
         ![Zahrnout soubor Docker image?](media/terraform-vscode-module-generator/ymg-include-docker-image-file.png) 
 
-        >[!NOTE]
-        >Zadejte `y`. Pokud vyberete **n**, vygenerovaný kód modulu bude podporovat spouštění pouze v nativním režimu.
+1. Výpis obsahu adresáře pro zobrazení výsledných souborů, které jsou vytvořeny:
 
-3. Zadejte `ls` k zobrazení výsledných souborů, které byly vytvořeny.
+    ```bash
+    ls
+    ```
 
     ![Seznam vytvořených souborů](media/terraform-vscode-module-generator/ymg-ls-GeneratorDocSample-files.png)
 
@@ -119,42 +129,27 @@ Z příkazovém řádku zadejte:
 
     ![Visual Studio Code](media/terraform-vscode-module-generator/ymg-open-in-vscode.png)
 
-Podívejte se na některé soubory, které byly vytvořeny podle generátorem modulu Yeoman.
+Generátor modulu Yeoman vytvořil následující soubory. Další informace o těchto souborech a jejich použití najdete v tématu [Terratest v terraformuch modulech.](https://mseng.visualstudio.com/VSJava/_git/Terraform?path=%2FTerratest%20Introduction.md&version=GBmaster)
 
->[!Note]
->V tomto článku použijeme main.tf, variables.tf a souborů outputs.tf, vytvořené generátorem modulu Yeoman. Ale při vytváření vlastních modulů můžete upravit tyto souborů tak, aby vyhovovaly funkci modulů Terraformu. Další podrobné informace o těchto souborech a jejich použití naleznete v tématu [Terratest u modulů Terraformu.](https://mseng.visualstudio.com/VSJava/_git/Terraform?path=%2FTerratest%20Introduction.md&version=GBmaster)
-
-### <a name="maintf"></a>main.TF
-
-Definuje modul s názvem *náhodné random-shuffle*. Vstupem je *string_list*. Výstup je počtem permutací.
-
-### <a name="variablestf"></a>variables.tf
-
-Definuje vstupní a výstupní proměnné použité modulem.
-
-### <a name="outputstf"></a>outputs.TF
-
-Definuje, co modul vydává. Zde je to hodnota vrácená prostřednictvím **random_shuffle**, což je integrovaný modul Terraform.
-
-### <a name="rakefile"></a>Rakefile
-
-Definuje kroky sestavení. Tyto kroky zahrnují:
-
-- **sestavení**: Ověří formátování souboru main.tf.
-- **jednotka**: Vygenerovaná kostra modulu nezahrnuje kód pro testování částí. Pokud chcete specifikovat scénář testování jednotky, přidejte sem kód.
-- **e2e**: Spustí kompletní test modulu.
-
-### <a name="test"></a>test
-
-- Testovací případy jsou napsané v Go.
-- Všechny kódy v testu jsou testy end-to-end.
-- Testy end-to-end se pokouší použít Terraform ke zřízení všech položek definovaných v části  **příslušenství** a pak porovná výstup v **template_output.go** kódu pomocí předem definovaných očekávaných hodnot.
-- **Gopkg. Lock** a **Gopkg. toml**: Definujte závislosti. 
+- `main.tf` – definuje modul s názvem `random-shuffle`. Vstup je `string_list`. Výstup je počtem permutací.
+- `variables.tf` – definuje vstupní a výstupní proměnné používané modulem.
+- `outputs.tf` – definuje výstupy modulu. Tady je hodnota vrácená `random_shuffle`, což je vestavěný modul Terraformu.
+- `Rakefile` – definuje kroky sestavení. Tyto kroky zahrnují:
+    - `build` – ověří formátování souboru main.tf.
+    - `unit` – vygenerovaná kostra modulu neobsahuje kód pro testování částí. Pokud chcete specifikovat scénář testování jednotky, přidejte sem kód.
+    - `e2e` – spustí kompletní test modulu.
+- `test`
+    - Testovací případy jsou napsané v Go.
+    - Všechny kódy v testu jsou testy end-to-end.
+    - Ucelené testy se snaží zřídit všechny položky definované v části `fixture`. Výsledky v souboru `template_output.go` jsou porovnávány s předem definovanými očekávanými hodnotami.
+    - `Gopkg.lock` a `Gopkg.toml`: definuje závislosti. 
 
 ## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Otestování nového modulu Terraformu pomocí souboru Docker
 
+V této části se dozvíte, jak otestovat modul Terraformu pomocí souboru Docker.
+
 >[!NOTE]
->V našem příkladu jsme se modul spustili jako místní modul bez zásahu do Azure.
+>V tomto příkladu se modul spouští místně; ne v Azure.
 
 ### <a name="confirm-docker-is-installed-and-running"></a>Potvrďte, že je Docker nainstalovaný a spuštěný
 
@@ -176,65 +171,61 @@ Chcete-li ověřit, že Dockeru skutečně běží, zadejte `docker info`.
 
     Zpráva **, která je úspěšně integrovaná,** se zobrazí.
 
-    ![Úspěšně integrováno](media/terraform-vscode-module-generator/ymg-successfully-built.png)
+    ![Zpráva indikující úspěšné sestavení](media/terraform-vscode-module-generator/ymg-successfully-built.png)
 
-1. Na příkazovém řádku zadejte `docker image ls`.
+1. Na příkazovém řádku zadejte `docker image ls` pro zobrazení seznamu vytvořených `terra-mod-example`.
 
-    V seznamu se zobrazí se nově vytvořený modul *terra-mod-example*.
+    ![Seznam obsahující nový modul](media/terraform-vscode-module-generator/ymg-repository-results.png)
 
-    ![Úložiště výsledků](media/terraform-vscode-module-generator/ymg-repository-results.png)
+1. Zadejte `docker run -it terra-mod-example /bin/sh`. Po spuštění příkazu `docker run` se nacházíte v prostředí Docker. V tomto okamžiku můžete soubor zjistit pomocí příkazu `ls`.
 
-    >[!NOTE]
-    >Název modulu *terra-mod-example*, byl zadaný v příkazu, který jste zadali v kroku 1 výše.
-
-1. Zadejte `docker run -it terra-mod-example /bin/sh`.
-
-    Nyní jsou spuštěné v Dockeru a výpis souboru můžete zobrazit tak, že zadáte `ls`.
-
-    ![Soubor se seznamem Dockeru](media/terraform-vscode-module-generator/ymg-list-docker-file.png)
+    ![Seznam souborů v Docker](media/terraform-vscode-module-generator/ymg-list-docker-file.png)
 
 ### <a name="build-the-module"></a>Sestavit modul
 
-1. Zadejte `bundle install`.
+1. Spusťte následující příkaz:
 
-    Počkejte na zprávu **dokončení sady** a potom pokračujte dalším krokem.
+    ```bash
+    bundle install
+    ```
 
-1. Zadejte `rake build`.
+1. Spusťte následující příkaz:
+
+    ```bash
+    rake build
+    ```
 
     ![Integrace Rake](media/terraform-vscode-module-generator/ymg-rake-build.png)
 
 ### <a name="run-the-end-to-end-test"></a>Spuštění kompletního testu
 
-1. Zadejte `rake e2e`.
+1. Spusťte následující příkaz:
+
+    ```bash
+    rake e2e
+    ```
 
 1. Po chvíli se zobrazí zpráva **PASS**.
 
-    ![ÚSPĚCH](media/terraform-vscode-module-generator/ymg-pass.png)
+    ![PASS](media/terraform-vscode-module-generator/ymg-pass.png)
 
-1. Zadejte `exit` , chcete-li dokončit kompletní test a ukončit prostředí Docker.
+1. Zadejte `exit` pro dokončení testu a ukončení prostředí Docker.
 
 ## <a name="use-yeoman-generator-to-create-and-test-a-module-in-cloud-shell"></a>Vytvoření a otestování modulu v Cloud Shell pomocí generátoru Yeoman
 
-V předchozí části jste zjistili, jak otestovat modul Terraformu pomocí souboru Docker. V této části použijete generátor Yeoman k vytvoření a otestování modulu v Cloud Shell.
+V této části se generátor Yeoman používá k vytvoření a otestování modulu v Cloud Shell. Použití Cloud Shell místo použití souboru Docker výrazně zjednodušuje proces. Pomocí Cloud Shell jsou všechny následující produkty předem nainstalovány:
 
-Použití Cloud Shell místo použití souboru Docker výrazně zjednodušuje proces. Použití Cloud Shell:
-
-- Nemusíte instalovat Node. js.
-- Nemusíte instalovat Yeoman
-- Nemusíte instalovat Terraformu
-
-Všechny tyto položky jsou předem nainstalovány v Cloud Shell.
+- Node.js
+- Yeoman
+- Terraform
 
 ### <a name="start-a-cloud-shell-session"></a>Spustit relaci Cloud Shell
 
 1. Spusťte Azure Cloud Shell relaci prostřednictvím [Azure Portal](https://portal.azure.com/), [Shell.Azure.com](https://shell.azure.com)nebo [mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/).
 
-1. Otevře se stránka **Vítá vás Azure Cloud Shell** . Vyberte **bash (Linux)** . (Power Shell se nepodporuje.)
+1. Otevře se stránka **Vítá vás Azure Cloud Shell** . Vyberte **bash (Linux)** .
 
     ![Vítá vás Azure Cloud Shell.](media/terraform-vscode-module-generator/ymg-welcome-to-azure-cloud-shell.png)
-
-    >[!NOTE]
-    >V tomto příkladu jsme vybrali Bash (Linux).
 
 1. Pokud ještě nemáte nastavený účet Azure Storage, zobrazí se následující obrazovka. Vyberte **Create storage** (Vytvořit úložiště).
 
@@ -244,43 +235,61 @@ Všechny tyto položky jsou předem nainstalovány v Cloud Shell.
 
     ![Cloudová jednotka je vytvořená.](media/terraform-vscode-module-generator/ymg-your-cloud-drive-has-been-created-in.png)
 
-### <a name="prepare-a-folder-to-hold-your-terraform-module"></a>Příprava složky pro uložení modulu Terraformu
+### <a name="prepare-a-directory-to-hold-your-terraform-module"></a>Příprava adresáře pro uložení modulu Terraformu
 
-1. V tuto chvíli se Cloud Shell už v proměnných prostředí nakonfigurovali GOPATH tak. Cestu zobrazíte tak, že `go env`zadáte.
+1. V tuto chvíli se Cloud Shell už v proměnných prostředí nakonfigurovali GOPATH tak. Cestu zobrazíte zadáním `go env`.
 
-1. Vytvořte složku $GOPATH, pokud ještě neexistuje: Zadejte `mkdir ~/go`.
+1. Pokud ještě neexistuje, vytvořte adresář $GOPATH: zadejte `mkdir ~/go`.
 
-1. Vytvořte složku ve složce $GOPATH: Zadejte `mkdir ~/go/src`. Tato složka se použije k uchování a uspořádání různých složek projektu, které můžete vytvořit, jako je `<your-module-name>` například složka, kterou vytvoříme v dalším kroku.
+1. Vytvořte adresář v adresáři $GOPATH. Tento adresář slouží k uložení různých adresářů projektu vytvořených v tomto příkladu. 
 
-1. Vytvořte složku pro uložení vašeho modulu Terraformu: Zadejte `mkdir ~/go/src/<your-module-name>`.
+    ```bash
+    mkdir ~/go/src
+    ```
 
-    >[!NOTE]
-    >V tomto příkladu jsme zvolili `my-module-name` název složky.
+1. Vytvořte adresář, který bude obsahovat modul Terraformu, který nahradí zástupný text. V tomto příkladu se používá název adresáře `my-module-name`.
 
-1. Přejděte do složky modulu: Napište`cd ~/go/src/<your-module-name>`
+    ```bash
+    mkdir ~/go/src/<your-module-name>
+    ```
+
+1. Přejděte do adresáře modulu: 
+
+    ```bash
+    cd ~/go/src/<your-module-name>
+    ```
 
 ### <a name="create-and-test-your-terraform-module"></a>Vytvoření a otestování modulu Terraformu
 
-1. Zadejte `yo az-terra-module` a postupujte podle pokynů v průvodci.
+1. Spusťte následující příkaz a postupujte podle pokynů. Když se zobrazí dotaz, jestli chcete vytvořit soubory Docker, zadáte `N`.
 
-    >[!NOTE]
-    >Po zobrazení dotazu, jestli chcete vytvořit soubory Docker, můžete zadat `N`.
+    ```bash
+    yo az-terra-module
+    ```
 
-1. Zadejte `bundle install` , chcete-li nainstalovat závislosti.
+1. Spuštěním následujícího příkazu nainstalujte závislosti:
 
-    Počkejte na zprávu **dokončení sady** a potom pokračujte dalším krokem.
+    ```bash
+    bundle install
+    ```
 
-1. Zadejte `rake build` , chcete-li vytvořit modul.
+1. Spuštěním následujícího příkazu Sestavte modul:
+
+    ```bash
+    rake build
+    ```
 
     ![Integrace Rake](media/terraform-vscode-module-generator/ymg-rake-build.png)
 
-1. Zadejte `rake e2e` , chcete-li spustit kompletní test.
+1. Spusťte následující příkaz, který spustí text:
 
-1. Po chvíli se zobrazí zpráva **PASS**.
+    ```bash
+    rake e2e
+    ```
 
-    ![ÚSPĚCH](media/terraform-vscode-module-generator/ymg-pass.png)
+    ![Výsledky testu – průchod](media/terraform-vscode-module-generator/ymg-pass.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nainstalujte a použijte rozšíření Azure Terraformu Visual Studio Code.](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)
+> [Nainstalujte a použijte rozšíření Azure terraformu Visual Studio Code](/azure/terraform/terraform-vscode-extension).

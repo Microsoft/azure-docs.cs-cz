@@ -3,20 +3,19 @@ title: Sdílení vlastních zobrazení Azure Time Series Insights pomocí parame
 description: Tento článek popisuje vývoj parametrizovaných adres URL ve službě Azure Time Series Insights za účelem snadného sdílení zobrazení zákazníka.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: e862cd604263c5125259344baf2e990ad56a3291
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: e62455a0c8412a579c0fab9d7fabd6016f47dbf3
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675833"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991113"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
@@ -78,7 +77,7 @@ Parametr `timeSeriesDefinitions=<collection of term objects>` určuje Time Serie
 
 * Dvojice klíč-hodnota `multiChartStack=<true/false>` povoluje vrstvení v grafu.
 * Dvojice klíč-hodnota `multiChartSameScale=<true/false>` umožňuje stejné škálování osy Y napříč podmínkami v rámci volitelného parametru.  
-* @No__t_0 vám umožňuje upravit posuvník intervalu, aby bylo možné podrobnější nebo hladší a agregované zobrazení grafu.  
+* `timeBucketUnit=<Unit>&timeBucketSize=<integer>` vám umožňuje upravit posuvník intervalu, aby bylo možné podrobnější nebo hladší a agregované zobrazení grafu.  
 * Parametr `timezoneOffset=<integer>` umožňuje nastavit časové pásmo, které se má v grafu zobrazit jako posun na čas UTC.
 
 | Páry | Popis |
@@ -114,11 +113,11 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 Výše uvedená adresa URL popisuje a vytvoří zobrazení Průzkumníka Time Series Insights:
 
-[Terms Explorer pro ![Time Series Insights](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+[![Time Series Insights Explorer – výrazy](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
 
 Úplné zobrazení (včetně grafu):
 
-[zobrazení ![Chart](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+[zobrazení grafu![](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 

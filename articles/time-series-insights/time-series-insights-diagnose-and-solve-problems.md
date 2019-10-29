@@ -3,7 +3,7 @@ title: Diagnostika, řešení potíží a řešení problémů v Azure Time Seri
 description: Tento článek popisuje, jak diagnostikovat, řešit problémy a řešit běžné problémy, se kterými se můžete setkat v prostředí Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78a991fb310c635648513e6472543b9f5c01119d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7c9dcdf43e819e20126f948fa08f4f8f476036ac
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330849"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991258"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostikujte a řešte problémy v prostředí Time Series Insights.
 
@@ -40,11 +40,11 @@ Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v té
 
 * Pro službu IoT Hub v Azure IoT Hub musíte zadat klíč, který má oprávnění **služby Connect** . Obě zásady **iothubowner** nebo **služby** budou fungovat, protože obě mají oprávnění **k připojení ke službě** .
 
-   [@no__t – oprávnění k připojení služby centra 1IoT](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [oprávnění k připojení služby![IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * V případě centra událostí v Azure Event Hubs musíte zadat klíč, který má oprávnění k **naslouchání** . Obě zásady **pro čtení** nebo **správu** budou fungovat, protože obě mají oprávnění k **naslouchání** .
 
-   [@no__t – oprávnění k naslouchání centra 1Event](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [![oprávnění k naslouchání centra událostí](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Příčina C: zadaná skupina příjemců není výhradně Time Series Insights
 
@@ -69,7 +69,7 @@ Omezení omezování se vynutilo na základě typu SKU a kapacity prostředí. V
 
 Následující obrázek ukazuje Time Series Insights prostředí, které má SKU S1 a kapacitu 3. Může to mít až 3 000 000 událostí za den.
 
-[aktuální kapacita @no__t 1Environment SKU](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[aktuální kapacita SKU![prostředí](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Předpokládejme například, že prostředí přijímá zprávy z centra událostí. Frekvence denních přenosů je ~ 67 000 zpráv. Tato rychlost překládá na přibližně 46 zpráv každou minutu. 
 

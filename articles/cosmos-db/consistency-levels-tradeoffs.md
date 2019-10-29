@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755186"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990621"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy mezi konzistencí, dostupností a výkonem 
 
@@ -62,6 +62,10 @@ Následující tabulka definuje vztah mezi modelem konzistence a odolností dat 
 *K* = počet verzí *"K"* (tj. aktualizace) položky.
 
 *T* = časový interval *"t"* od poslední aktualizace.
+
+## <a name="strong-consistency-and-multi-master"></a>Silná konzistence a vícenásobný hlavní
+
+Účty Cosmos nakonfigurované pro sadu multi-Master nelze nakonfigurovat pro zajištění vysoké konzistence, protože distribuovaný systém nemůže poskytnout RPO s hodnotou 0 a RTO nula. Navíc neexistují žádné výhody latence zápisu pro použití silné konzistence s více hlavními servery, které by měly být replikovány do jakékoli oblasti a jsou potvrzeny do všech nakonfigurovaných oblastí v rámci daného účtu. Výsledkem je stejná latence zápisu jako jeden hlavní účet.
 
 ## <a name="next-steps"></a>Další kroky
 

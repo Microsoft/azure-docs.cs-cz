@@ -1,15 +1,16 @@
 ---
 ms.topic: include
 ms.service: time-series-insights
-author: kingdomofends
-ms.author: adgera
+author: deepakpalled
+ms.author: dpalled
+manager: cshankar
 ms.date: 10/09/2019
-ms.openlocfilehash: 61842a8f410d972c21614f625f7d4f36476cb239
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 038d25a01c02799f48b8430fb6ac3facc1cd3bd6
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72259094"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990880"
 ---
 ## <a name="business-disaster-recovery"></a>Zotavení po havárii podniku
 
@@ -23,7 +24,7 @@ Další funkce s vysokou dostupností poskytované prostřednictvím Azure (a ta
 
 - **Převzetí služeb při selhání**: Azure zajišťuje [geografickou replikaci a vyrovnávání zatížení](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region).
 - Obnovení **dat** a **obnovení úložiště**: Azure nabízí [několik možností, jak uchovávat a obnovovat data](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption).
-- **Site Recovery**: Azure poskytuje funkce Site Recovery prostřednictvím [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
+- **Azure Site Recovery**: Azure poskytuje funkce Site Recovery prostřednictvím [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
 - **Azure Backup**: [Azure Backup](https://docs.microsoft.com/azure/backup/backup-architecture) podporuje místní i cloudové zálohování virtuálních počítačů Azure.
 
 Ujistěte se, že jste povolili příslušné funkce Azure a zajistili globální a vysokou dostupnost pro vaše zařízení a uživatele v různých oblastech.
@@ -35,8 +36,8 @@ Ujistěte se, že jste povolili příslušné funkce Azure a zajistili globáln�
 
 Mezi některé služby Azure IoT patří také integrované funkce pro obnovení obchodních havárií:
 
-- [IoT Hub zotavení po havárii s vysokou dostupností](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), včetně redundance uvnitř oblasti
-- [Zásady Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
+- [Zotavení po havárii s vysokou dostupností v Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), což zahrnuje redundanci uvnitř oblasti
+- [Zásady Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
 - [Azure Storage redundance](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 Integrace Time Series Insights s ostatními službami nabízí další možnosti zotavení po havárii. Například telemetrii poslaná do centra událostí může být trvalá v zálohování databáze úložiště objektů BLOB v Azure.
@@ -50,13 +51,13 @@ Je ale možné, že se vyžaduje také kompletní záložní kopie prostředí A
 - Jako *instance převzetí služeb při selhání* specifickou pro Time Series Insights pro přesměrování dat a provozu do
 - Zachování informací o datech a auditování
 
-Obecně platí, že nejlepším způsobem, jak duplikovat Time Series Insights prostředí, je vytvořit druhé prostředí Time Series Insights v rámci zálohování v oblasti Azure. Události se také odesílají do tohoto sekundárního prostředí z primárního zdroje událostí. Ujistěte se, že používáte druhou, vyhrazenou skupinu uživatelů. Postupujte podle pokynů pro zotavení po havárii tohoto zdroje, jak je popsáno výše.
+Obecně platí, že nejlepším způsobem, jak duplikovat Time Series Insights prostředí, je vytvořit druhé prostředí Time Series Insights v rámci zálohování v oblasti Azure. Události se také odesílají do tohoto sekundárního prostředí z primárního zdroje událostí. Ujistěte se, že používáte druhou vyhrazenou skupinu uživatelů. Postupujte podle pokynů pro zotavení po havárii tohoto zdroje, jak je popsáno výše.
 
 Vytvoření duplicitního prostředí:
 
 1. Vytvořte prostředí ve druhé oblasti. Další informace najdete v tématu [Vytvoření nového Time Series Insightsho prostředí v Azure Portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
 1. Vytvořte druhou vyhrazenou skupinu uživatelů pro zdroj události.
-1. Připojte tento zdroj událostí k novému prostředí. Ujistěte se, že určíte druhou, vyhrazenou skupinu uživatelů.
+1. Připojte tento zdroj událostí k novému prostředí. Ujistěte se, že určíte druhou vyhrazenou skupinu uživatelů.
 1. Přečtěte si dokumentaci Time Series Insights [IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) a [Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) .
 
 Pokud dojde k události:

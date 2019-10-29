@@ -3,7 +3,7 @@ title: Postup přidání zdroje událostí služby IoT Hub do Azure Time Series 
 description: Tento článek popisuje, jak přidat zdroj událostí, který je připojený ke službě IoT Hub, do vašeho prostředí Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaac2e3e2fc489b364729711da151c28cde86d6c
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f9dd79bacf2d21e0c7e7681e5217d5e874b2b30e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274700"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991195"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Přidání zdroje událostí služby IoT Hub do prostředí Time Series Insights
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak pomocí Azure Portal přidat zdroj událostí, kter
 > [!NOTE]
 > Pokyny v tomto článku se vztahují na Azure Time Series Insights GA i Time Series Insights prostředí Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte [Azure Time Series Insights prostředí](time-series-insights-update-create-environment.md).
 * Vytvořte [Centrum IoT pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md).
@@ -42,21 +42,21 @@ Přidání nové skupiny uživatelů do služby IoT Hub:
 
 1. V části **Nastavení**vyberte **Předdefinované koncové body**a pak vyberte koncový bod **události** .
 
-   [@no__t – 1On na stránce koncové body sestavení vyberte tlačítko události.](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png#lightbox)
+   [![na stránce koncové body sestavení vyberte tlačítko události.](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png#lightbox)
 
 1. V části **skupiny příjemců**zadejte jedinečný název pro skupinu příjemců. Při vytváření nového zdroje událostí použijte stejný název v prostředí Time Series Insights.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="add-a-new-event-source"></a>Přidat nový zdroj události
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-1. V nabídce vlevo vyberte **všechny prostředky**. Vyberte prostředí Time Series Insights.
+1. V nabídce vlevo vyberte **Všechny prostředky**. Vyberte vaše prostředí Time Series Insights.
 
 1. V části **topologie prostředí**vyberte **zdroje událostí**a pak vyberte **Přidat**.
 
-   [@no__t 1Select zdroje událostí a potom vyberte tlačítko Přidat.](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png#lightbox)
+   [![vybrat zdroje událostí a pak vybrat tlačítko Přidat](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png#lightbox)
 
 1. V podokně **nový zdroj událostí** pro **název zdroje události**zadejte název, který je jedinečný pro toto Time Series Insights prostředí. Zadejte například **událost-Stream**.
 
@@ -66,15 +66,15 @@ Přidání nové skupiny uživatelů do služby IoT Hub:
 
    * Pokud už máte centrum IoT v jednom z vašich předplatných, vyberte **použít IoT Hub z dostupných předplatných**. Tato možnost představuje nejjednodušší přístup.
    
-     [@no__t – možnosti 1Select v novém podokně zdroje událostí](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png#lightbox)
+     [![vyberte možnosti v podokně nový zdroj událostí.](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png#lightbox)
 
     * Následující tabulka popisuje vlastnosti, které jsou požadovány pro možnost **použít IoT Hub z dostupných předplatných** :
 
-       [@no__t – podokno zdroje událostí – vlastnosti, které se mají nastavit v možnosti použít IoT Hub z dostupných předplatných](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png#lightbox)
+       [![nové podokno zdroje událostí – vlastnosti, které se mají nastavit v možnosti použít IoT Hub z dostupných předplatných](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png#lightbox)
 
        | Vlastnost | Popis |
        | --- | --- |
-       | Formě | Předplatné, ke kterému patří požadované centrum IoT Hub. |
+       | Předplatné | Předplatné, ke kterému patří požadované centrum IoT Hub. |
        | Název centra IoT Hub | Název vybraného centra IoT Hub. |
        | Název zásad centra IoT Hub | Vyberte zásadu sdíleného přístupu. Zásadu sdíleného přístupu najdete na kartě Nastavení centra IoT. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj události *musí* mít oprávnění **služby Connect** . |
        | Klíč zásad centra IoT Hub | Klíč je předem vyplněný. |
@@ -102,7 +102,7 @@ Přidání nové skupiny uživatelů do služby IoT Hub:
 
 1. Přidejte do služby IoT Hub název vyhrazené Time Series Insights skupiny uživatelů, kterou jste přidali.
 
-1. Vyberte **vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 1. Po vytvoření zdroje událostí Time Series Insights automaticky spouštět streamovaná data do vašeho prostředí.
 

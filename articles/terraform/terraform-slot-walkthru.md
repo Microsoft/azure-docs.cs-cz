@@ -1,26 +1,23 @@
 ---
-title: Terraform se sloty nasazení zprostředkovatele Azure
+title: Kurz – zřizování infrastruktury s sloty nasazení Azure pomocí Terraformu
 description: Kurz o používání Terraformu se sloty nasazení zprostředkovatele Azure
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuální počítač, Azure, sloty nasazení
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: fbc6d30f8bc161ecf1a4e4093d0b69e99eec527b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/26/2019
+ms.openlocfilehash: 209bc23c6f8e96734506e3017ed2b16e51c77a00
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924993"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969276"
 ---
-# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Použití Terraformu ke zřízení infrastruktury pomocí slotů nasazení Azure
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Kurz: zřízení infrastruktury pomocí slotů nasazení Azure pomocí Terraformu
 
 [Sloty nasazení Azure](/azure/app-service/deploy-staging-slots) můžete použít k přepínání mezi různými verzemi aplikace. Tato možnost vám pomůže minimalizovat dopad přerušených nasazení. 
 
-Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplikací prostřednictvím GitHubu a Azure. Jedna aplikace je hostovaná v produkčním slotu. Druhá aplikace je hostovaná v přípravném slotu. (Názvy "produkční" a "fázování" jsou libovolné a můžou být cokoli, co potřebujete, který představuje váš scénář.) Až nakonfigurujete sloty nasazení, můžete použít Terraformu k proměně mezi oběma sloty podle potřeby.
+Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplikací prostřednictvím GitHubu a Azure. Jedna aplikace je hostovaná v produkčním slotu. Druhá aplikace je hostovaná v přípravném slotu. (Názvy "produkční" a "fázování" jsou libovolné. Můžou to být libovolná vhodná pro váš scénář.) Až nakonfigurujete sloty nasazení, použijete Terraformu k proměně mezi oběma sloty podle potřeby.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -64,13 +61,11 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
     cd deploy
     ```
 
-1. Pomocí [editoru vi](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html) vytvořte soubor s názvem `deploy.tf`. Tento soubor bude obsahovat [konfiguraci Terraformu](https://www.terraform.io/docs/configuration/index.html).
+1. Ve službě Cloud Shell vytvořte soubor s názvem `deploy.tf`.
 
     ```bash
-    vi deploy.tf
+    code deploy.tf
     ```
-
-1. Stisknutím klávesy I přejděte do režimu vkládání.
 
 1. Do editoru vložte následující kód:
 
@@ -109,13 +104,7 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
     }
     ```
 
-1. Stisknutím klávesy Esc ukončete režim vkládání.
-
-1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
-
-    ```bash
-    :wq
-    ```
+1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
 
 1. Když máte soubor vytvořený, ověřte jeho obsah.
 
@@ -207,7 +196,7 @@ Po vytvoření forku úložiště projektu testů nakonfigurujte sloty nasazení
 
 1. Na kartě **Možnosti nasazení** vyberte **OK**.
 
-Momentálně máte nasazený produkční slot. Pokud chcete nasadit přípravný slot, proveďte všechny předchozí kroky v této části s těmito změnami:
+V tomto okamžiku jste nasadili produkční slot. K nasazení přípravného slotu proveďte předchozí kroky s následujícími úpravami:
 
 - V kroku 3 vyberte prostředek **slotAppServiceSlotOne**.
 
@@ -219,8 +208,6 @@ Momentálně máte nasazený produkční slot. Pokud chcete nasadit přípravný
 
 V předchozích částech jste nastavili dva sloty – **slotAppService** a **slotAppServiceSlotOne** – které se nasadí z různých větví na GitHubu. Pojďme si zobrazit náhled webových aplikací, abychom si ověřili, že se úspěšně nasadily.
 
-Následující kroky proveďte dvakrát. V kroku 3 vyberete poprvé **slotAppService** a podruhé vyberte **slotAppServiceSlotOne**.
-
 1. Na webu Azure Portal vyberte v hlavní nabídce možnost **Skupiny prostředků**.
 
 1. Vyberte **slotDemoResourceGroup**.
@@ -231,18 +218,15 @@ Následující kroky proveďte dvakrát. V kroku 3 vyberete poprvé **slotAppSer
 
     ![Výběr URL na kartě přehledu pro vykreslení aplikace](./media/terraform-slot-walkthru/resource-url.png)
 
-> [!NOTE]
-> Může to trvat několik minut, než Azure web z GitHubu sestaví a nasadí.
->
->
+1. V závislosti na vybrané aplikaci se zobrazí následující výsledky:
+    - Webová aplikace **slotAppService** – modrá Stránka s názvem stránky pro **ukázkovou aplikaci slotu 1** 
+    - Webová aplikace **slotAppServiceSlotOne** – zelená Stránka s názvem stránky **demonstrační aplikace slotu 2**
 
-U webové aplikace **slotAppService** uvidíte modrou stránku s nadpisem **Slot Demo App 1**. U webové aplikace **slotAppServiceSlotOne** uvidíte zelenou stránku s nadpisem **Slot Demo App 2**.
-
-![Náhled aplikací pro otestování správného nasazení](./media/terraform-slot-walkthru/app-preview.png)
+    ![Náhled aplikací pro otestování správného nasazení](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>Prohození dvou slotů nasazení
 
-Prohození dvou slotů nasazení otestujete následovně:
+Chcete-li otestovat záměnu těchto dvou slotů nasazení, proveďte následující kroky:
  
 1. Přepněte se na kartu prohlížeče, na které běží **slotAppService** (aplikace s modrou stránkou). 
 
@@ -256,13 +240,11 @@ Prohození dvou slotů nasazení otestujete následovně:
     cd clouddrive/swap
     ```
 
-1. Pomocí editoru vi vytvořte soubor s názvem `swap.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `swap.tf`.
 
     ```bash
-    vi swap.tf
+    code swap.tf
     ```
-
-1. Stisknutím klávesy I přejděte do režimu vkládání.
 
 1. Do editoru vložte následující kód:
 
@@ -278,13 +260,7 @@ Prohození dvou slotů nasazení otestujete následovně:
     }
     ```
 
-1. Stisknutím klávesy Esc ukončete režim vkládání.
-
-1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
-
-    ```bash
-    :wq
-    ```
+1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
 
 1. Inicializujte Terraform.
 
@@ -304,7 +280,7 @@ Prohození dvou slotů nasazení otestujete následovně:
     terraform apply
     ```
 
-1. Jakmile Terraform prohození slotů dokončí, přejděte na kartu prohlížeče, která vykresluje webovou aplikaci **slotAppService** a stránku aktualizujte. 
+1. Jakmile Terraformu zamění sloty, vraťte se do prohlížeče. Aktualizujte stránku. 
 
 Webová aplikace v přípravném slotu **slotAppServiceSlotOne** se nyní prohodila s aplikací v produkčním slotu a je nyní vykreslená zeleně. 
 
@@ -317,3 +293,8 @@ terraform apply
 ```
 
 Po prohození aplikace uvidíte původní konfiguraci.
+
+## <a name="next-steps"></a>Další kroky
+
+> [!div class="nextstepaction"] 
+> [Terraformu v Azure](/azure/ansible/)

@@ -3,20 +3,19 @@ title: 'Rychlý Start: Azure Time Series Insights Explorer | Microsoft Docs'
 description: V tomto rychlém startu se dozvíte, jak začít s Průzkumníkem Azure Time Series Insights ve webovém prohlížeči, abyste mohli vizualizovat velké objemy dat IoT. Prohlédněte si klíčové funkce v ukázkovém prostředí.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/23/2019
-ms.openlocfilehash: 83446facc734c0bfa24b7e78916d652467d01415
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 156e95c88bc3c66890ba9c8baf9b281330b60186
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978686"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990907"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Rychlý start: Prozkoumání služby Azure Time Series Insights
 
@@ -39,45 +38,45 @@ Tento rychlý Start Time Series Insights Exploreru nabízí Průvodce funkcemi, 
 
 1. Zobrazí se stránka Time Series Insights Rychlá prohlídka. Kliknutím na tlačítko **Další** zahájíte rychlou prohlídku.
 
-   [@no__t – 1Select Next](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
+   [![vybrat další](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
 
 ## <a name="explore-the-demo-environment"></a>Prozkoumat ukázkové prostředí
 
 1. Zobrazí se **panel pro výběr času** . Pomocí tohoto panelu vyberte časový rámec, který chcete vizualizovat.
 
-   [panel pro výběr @no__t – 1Time](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [panel pro výběr![ho času](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
 
 1. Vyberte časový rámec a přetáhněte ho do oblasti. Pak vyberte **Hledat**.
 
-   [@no__t – 1Select časový rámec](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [![výběr časového rámce](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
 
    Time Series Insights zobrazí vizualizaci grafu pro zadaný časový rámec. V rámci spojnicového grafu můžete provádět různé akce. Můžete například filtrovat, připnout, řadit a Stack.
 
    Chcete-li se vrátit na **panel pro výběr času**, vyberte šipku dolů, jak je znázorněno níže:
 
-   [@no__t – 1Chart](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [![graf](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
 
 1. Vyberte **Přidat** na **panelu podmínky** a přidejte nový hledaný výraz.
 
-   [@no__t – položka 1Add](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [![přidat položku](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
 
 1. V grafu můžete vybrat oblast, kliknout na ni pravým tlačítkem a vybrat **Prozkoumat události**.
 
-   [Události @no__t – 1Explore](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [![prozkoumat události](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
 
    Z oblasti, kterou zkoumáte, se zobrazí mřížka nezpracovaných dat.
 
-   [@no__t – zobrazení 1Grid](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [zobrazení mřížky![](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>Výběr a filtrování dat
 
 1. Upravte své výrazy a změňte hodnoty v grafu. Přidejte další termín pro křížovou korelaci různých typů hodnot.
 
-   [@no__t – 1Add termín](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [![přidat termín](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
 
 1. Do pole **filtrovat řady** pro filtrování řady Improvised Zadejte termín filtru. Pro účely tohoto rychlého startu zadejte **Station5**, aby se provedla vzájemná korelace teploty a tlaku pro příslušnou stanici.
 
-   [@no__t – řada 1Filter](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+   [řady![filtru](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
 
 Po dokončení tohoto rychlého startu můžete experimentovat s ukázkovou sadou dat a vytvářet různé vizualizace.
 

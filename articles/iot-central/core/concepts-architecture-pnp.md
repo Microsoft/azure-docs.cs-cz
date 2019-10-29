@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a9d74d94e139427027f68b2c26675447ae6da18c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3dacea5c1d77bfead85e42ae312bfafbe70d8ca1
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954874"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990380"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Architektura Azure IoT Central (funkce ve verzi Preview)
 
@@ -32,7 +32,7 @@ Zařízení vyměňují data v aplikaci Azure IoT Central. Zařízení může:
 
 V Azure IoT Central se data, která zařízení můžou vyměňovat s vaší aplikací, zadává v šabloně zařízení. Další informace o šablonách zařízení najdete v tématu [Správa metadat](#metadata-management).
 
-Další informace o tom, jak se zařízení připojují k aplikaci Azure IoT Central, najdete v tématu [připojení zařízení](concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+Další informace o tom, jak se zařízení připojují k aplikaci Azure IoT Central, najdete v tématu [připojení zařízení](overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
 ## <a name="cloud-gateway"></a>Cloudová brána
 
@@ -44,7 +44,7 @@ Azure IoT Central používá Azure IoT Hub jako cloudovou bránu, která umožň
 
 Další informace o IoT Hub najdete v tématu [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
 
-Další informace o připojení zařízení v Azure IoT Central najdete v tématu [připojení zařízení](concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+Další informace o připojení zařízení v Azure IoT Central najdete v tématu [připojení zařízení](overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
 ## <a name="data-stores"></a>Úložiště dat
 
@@ -110,4 +110,4 @@ Operátor může vytvářet přizpůsobené řídicí panely aplikací. Můžete
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se dozvěděli o architektuře Azure IoT Central, je doporučeným dalším krokem informace o [připojení zařízení](concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) ve službě Azure IoT Central.
+Teď, když jste se dozvěděli o architektuře Azure IoT Central, je doporučeným dalším krokem informace o [připojení zařízení](overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) ve službě Azure IoT Central.

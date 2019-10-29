@@ -1,22 +1,19 @@
 ---
-title: Vytvoření zařízení virtuální sítě rozbočovače pomocí Terraformu v Azure
+title: Kurz – vytvoření zařízení virtuální sítě rozbočovače v Azure pomocí Terraformu
 description: Kurz implementuje vytvoření virtuální sítě rozbočovače, která funguje jako společný bod připojení mezi všemi ostatními sítěmi.
-services: terraform
-ms.service: azure
-keywords: terraformu, hub a paprsek, sítě, hybridní sítě, DevOps, virtuální počítač, Azure, partnerský vztah virtuálních sítí, středový paprsek a centrum.
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 1fae21e9a60f533533607e74609853ef68348daf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 5696ee20f6f306d45c5d7ba04552b9206f2a5429
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173411"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969375"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>Kurz: Vytvoření zařízení virtuální sítě rozbočovače pomocí Terraformu v Azure
+# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Kurz: vytvoření zařízení virtuální sítě rozbočovače v Azure pomocí Terraformu
 
 **Zařízení VPN** je zařízení, které poskytuje externí připojení k místní síti. Zařízení VPN může být hardwarové zařízení nebo softwarové řešení. Jedním z příkladů softwarového řešení je služba Směrování a vzdálený přístup (RRAS) ve Windows Serveru 2012. Další informace o zařízeních VPN najdete v tématu [informace o zařízeních VPN pro připojení typu Site-to-site VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
 
@@ -30,7 +27,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Použití Terraformu k povolení tras pomocí rozšíření CustomScript
 > * Použití Terraformu k vytvoření směrovacích tabulek brány hub a paprsků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Vytvořte topologii hybridní sítě rozbočovače a paprsku pomocí terraformu v Azure](./terraform-hub-spoke-introduction.md).
 1. [Vytvořte si místní virtuální síť s terraformu v Azure](./terraform-hub-spoke-on-prem.md).
@@ -77,37 +74,37 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje místní virtuáln�
 
     resource "azurerm_resource_group" "hub-nva-rg" {
       name     = "${local.prefix-hub-nva}-rg"
-      location = "${local.hub-nva-location}"
+      location = local.hub-nva-location
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_network_interface" "hub-nva-nic" {
       name                 = "${local.prefix-hub-nva}-nic"
-      location             = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name  = "${azurerm_resource_group.hub-nva-rg.name}"
+      location             = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name  = azurerm_resource_group.hub-nva-rg.name
       enable_ip_forwarding = true
 
       ip_configuration {
-        name                          = "${local.prefix-hub-nva}"
-        subnet_id                     = "${azurerm_subnet.hub-dmz.id}"
+        name                          = local.prefix-hub-nva
+        subnet_id                     = azurerm_subnet.hub-dmz.id
         private_ip_address_allocation = "Static"
         private_ip_address            = "10.0.0.36"
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_virtual_machine" "hub-nva-vm" {
       name                  = "${local.prefix-hub-nva}-vm"
-      location              = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name   = "${azurerm_resource_group.hub-nva-rg.name}"
-      network_interface_ids = ["${azurerm_network_interface.hub-nva-nic.id}"]
-      vm_size               = "${var.vmsize}"
+      location              = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name   = azurerm_resource_group.hub-nva-rg.name
+      network_interface_ids = [azurerm_network_interface.hub-nva-nic.id]
+      vm_size               = var.vmsize
 
       storage_image_reference {
         publisher = "Canonical"
@@ -125,8 +122,8 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje místní virtuáln�
 
       os_profile {
         computer_name  = "${local.prefix-hub-nva}-vm"
-        admin_username = "${var.username}"
-        admin_password = "${var.password}"
+        admin_username = var.username
+        admin_password = var.password
       }
 
       os_profile_linux_config {
@@ -134,15 +131,15 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje místní virtuáln�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_virtual_machine_extension" "enable-routes" {
       name                 = "enable-iptables-routes"
-      location             = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name  = "${azurerm_resource_group.hub-nva-rg.name}"
-      virtual_machine_name = "${azurerm_virtual_machine.hub-nva-vm.name}"
+      location             = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name  = azurerm_resource_group.hub-nva-rg.name
+      virtual_machine_name = azurerm_virtual_machine.hub-nva-vm.name
       publisher            = "Microsoft.Azure.Extensions"
       type                 = "CustomScript"
       type_handler_version = "2.0"
@@ -157,14 +154,14 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje místní virtuáln�
     SETTINGS
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_route_table" "hub-gateway-rt" {
       name                          = "hub-gateway-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -188,20 +185,20 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje místní virtuáln�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "hub-gateway-rt-hub-vnet-gateway-subnet" {
-      subnet_id      = "${azurerm_subnet.hub-gateway-subnet.id}"
-      route_table_id = "${azurerm_route_table.hub-gateway-rt.id}"
+      subnet_id      = azurerm_subnet.hub-gateway-subnet.id
+      route_table_id = azurerm_route_table.hub-gateway-rt.id
       depends_on = ["azurerm_subnet.hub-gateway-subnet"]
     }
 
     resource "azurerm_route_table" "spoke1-rt" {
       name                          = "spoke1-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -218,26 +215,26 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje místní virtuáln�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "spoke1-rt-spoke1-vnet-mgmt" {
-      subnet_id      = "${azurerm_subnet.spoke1-mgmt.id}"
-      route_table_id = "${azurerm_route_table.spoke1-rt.id}"
+      subnet_id      = azurerm_subnet.spoke1-mgmt.id
+      route_table_id = azurerm_route_table.spoke1-rt.id
       depends_on = ["azurerm_subnet.spoke1-mgmt"]
     }
 
     resource "azurerm_subnet_route_table_association" "spoke1-rt-spoke1-vnet-workload" {
-      subnet_id      = "${azurerm_subnet.spoke1-workload.id}"
-      route_table_id = "${azurerm_route_table.spoke1-rt.id}"
+      subnet_id      = azurerm_subnet.spoke1-workload.id
+      route_table_id = azurerm_route_table.spoke1-rt.id
       depends_on = ["azurerm_subnet.spoke1-workload"]
     }
 
     resource "azurerm_route_table" "spoke2-rt" {
       name                          = "spoke2-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -254,19 +251,19 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje místní virtuáln�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "spoke2-rt-spoke2-vnet-mgmt" {
-      subnet_id      = "${azurerm_subnet.spoke2-mgmt.id}"
-      route_table_id = "${azurerm_route_table.spoke2-rt.id}"
+      subnet_id      = azurerm_subnet.spoke2-mgmt.id
+      route_table_id = azurerm_route_table.spoke2-rt.id
       depends_on = ["azurerm_subnet.spoke2-mgmt"]
     }
 
     resource "azurerm_subnet_route_table_association" "spoke2-rt-spoke2-vnet-workload" {
-      subnet_id      = "${azurerm_subnet.spoke2-workload.id}"
-      route_table_id = "${azurerm_route_table.spoke2-rt.id}"
+      subnet_id      = azurerm_subnet.spoke2-workload.id
+      route_table_id = azurerm_route_table.spoke2-rt.id
       depends_on = ["azurerm_subnet.spoke2-workload"]
     }
 

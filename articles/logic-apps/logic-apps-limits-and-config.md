@@ -1,6 +1,6 @@
 ---
 title: Omezení a konfigurace – Azure Logic Apps
-description: Omezení služby a hodnoty konfigurace pro Azure Logic Apps
+description: Omezení služeb, jako je doba trvání, propustnost a kapacita, plus hodnoty konfigurace, jako jsou například IP adresy, které mají být povoleny, pro Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 5399ebaa9526bd2c92a8d12eaa5cd8e5f53b1037
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 52e1594f40917519d80f042a4ace77532186758b
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799365"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968602"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -146,7 +146,7 @@ Některé operace konektoru provádějí asynchronní volání nebo naslouchán�
 | Name (Název) | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
 |------|--------------------|---------------------------------------|-------|
 | Velikost zprávy | 100 MB | 200 MB | Pokud chcete tento limit obejít, přečtěte si téma [zpracování velkých zpráv pomocí bloků dat](../logic-apps/logic-apps-handle-large-messages.md). Některé konektory a rozhraní API ale nemusí podporovat blokování nebo ani výchozí omezení. |
-| Velikost zprávy pomocí bloků dat | 1 GB | 5 GB | Toto omezení se vztahuje na akce, které nativně podporují dělení na bloky dat, nebo umožňují povolit v konfiguraci modulu runtime vytváření bloků dat. <p>Pro prostředí integrační služby podporuje modul Logic Apps tento limit, ale konektory mají vlastní meze omezení na modul, například v tématu [Azure Blob Storage Connector](/connectors/azureblob/). Další informace najdete v tématu [zpracování velkých zpráv pomocí bloků dat](../logic-apps/logic-apps-handle-large-messages.md). |
+| Velikost zprávy pomocí bloků dat | 1 GB | 5 GB | Toto omezení se vztahuje na akce, které nativně podporují dělení na bloky dat, nebo umožňují povolit v konfiguraci modulu runtime vytváření bloků dat. <p>Pro prostředí integrační služby podporuje modul Logic Apps tento limit, ale konektory mají vlastní meze omezení na modul, například v [referenčních informacích k rozhraní API konektoru Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/). Další informace najdete v tématu [zpracování velkých zpráv pomocí bloků dat](../logic-apps/logic-apps-handle-large-messages.md). |
 | Omezení vyhodnocení výrazu | 131 072 znaků | 131 072 znaků | Výrazy `@concat()`, `@base64()` `@string()` nemůžou být delší než tento limit. |
 |||||
 

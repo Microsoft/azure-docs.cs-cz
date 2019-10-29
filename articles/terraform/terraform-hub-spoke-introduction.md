@@ -1,22 +1,19 @@
 ---
-title: Vytvoření topologie hybridní sítě rozbočovače a paprsků pomocí Terraformu v Azure
+title: Kurz – vytvoření hybridní síťové topologie centra a paprsků v Azure pomocí Terraformu
 description: Kurz ilustrující postup vytvoření celé hybridní síťové referenční architektury v Azure pomocí Terraformu
-services: terraform
-ms.service: azure
-keywords: terraformu, hub a paprsek, sítě, hybridní sítě, DevOps, virtuální počítač, Azure, partnerský vztah virtuálních sítí, síťové virtuální zařízení
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 5c2a61dd9da6d233a4b1410042f2125a1c300758
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 8d85163e746f1d2d0713a9a4f247a2061e0029b8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173453"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969398"
 ---
-# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>Kurz: Vytvoření topologie hybridní sítě rozbočovače a paprsků pomocí Terraformu v Azure
+# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Kurz: Vytvoření hybridní síťové topologie centra a paprsků v Azure pomocí Terraformu
 
 V této sérii kurzů se dozvíte, jak používat Terraformu k implementaci v Azure a hvězdicové [síťové topologii](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). 
 
@@ -32,11 +29,11 @@ Tento kurz se zabývá následujícími úkony:
 > * Použití Terraformu k navázání bran a připojení mezi místním prostředím a sítěmi Azure
 > * Použití Terraformu k vytváření partnerských vztahů virtuálních sítí pro sítě paprsků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Instalace a konfigurace terraformu**: Postup při zřizování virtuálních počítačů a jiné infrastruktury v Azure, [instalace a konfigurace terraformu](/azure/virtual-machines/linux/terraform-install-configure)
+- **Instalace a konfigurace terraformu**: zřizování virtuálních počítačů a jiné infrastruktury v Azure, [instalace a konfigurace terraformu](/azure/virtual-machines/linux/terraform-install-configure)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>Architektura topologie rozbočovače a paprsků
 
