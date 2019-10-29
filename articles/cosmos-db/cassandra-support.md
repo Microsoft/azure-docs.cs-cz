@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 66a972e66c35cdd5b8dedceefbe3dbd008380da9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b48384b8333a5affc76d8af8e057bd911f14068b
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327144"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043491"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 
@@ -140,7 +140,7 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 * BATCH – podporují se jen neprotokolované příkazy. 
 * DELETE
 
-Všechny operace CRUD, když se spustí prostřednictvím sady SDK kompatibilní s CQLV4, vrátí další informace o chybě, spotřebované jednotky žádosti. Příkazy DELETE a Update je potřeba zpracovat s ohledem na dodržování zásad správného řízení prostředků, aby nedocházelo ke správnému používání zřízené propustnosti. 
+Všechny operace CRUD, když se spustí prostřednictvím sady SDK kompatibilní s CQLV4, vrátí další informace o chybě, spotřebované jednotky žádosti. Příkazy DELETE a Update je potřeba zpracovat s ohledem na dodržování zásad správného řízení prostředků, aby se zajistilo správné použití zřízené propustnosti. 
 * Poznámka: Pokud je zadaná hodnota gc_grace_seconds, musí být nulová.
 
 ```csharp

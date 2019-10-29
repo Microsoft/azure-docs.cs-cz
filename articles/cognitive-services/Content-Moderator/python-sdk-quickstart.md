@@ -1,5 +1,6 @@
 ---
 title: 'Rychlý Start: Content Moderator klientskou knihovnu pro Python | Microsoft Docs'
+titleSuffix: Azure Cognitive Services
 description: Začněte s knihovnou klienta Content Moderator pro Python.
 services: cognitive-services
 author: PatrickFarley
@@ -7,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 28c70e7d226e8f4b2458234e1f14754cdbb1825c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755259"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044033"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Rychlý Start: Content Moderator klientskou knihovnu pro Python
 
@@ -44,7 +45,7 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 * Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu sedmi dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Zobrazení prostředku na [Azure Portal](https://portal.azure.com/)
 
-Až dostanete klíč ze zkušebního předplatného nebo prostředku, [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíčovou adresu URL klíče a koncového bodu s názvem `CONTENT_MODERATOR_SUBSCRIPTION_KEY` a `CONTENT_MODERATOR_ENDPOINT` v uvedeném pořadí.
+Až dostanete klíč ze zkušebního předplatného nebo prostředku, [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíčovou adresu URL klíče a koncového bodu s názvem `CONTENT_MODERATOR_SUBSCRIPTION_KEY` a `CONTENT_MODERATOR_ENDPOINT`v uvedeném pořadí.
  
 ### <a name="create-a-python-script"></a>Vytvoření skriptu v jazyce Python
 
@@ -295,7 +296,7 @@ Pomocí následujícího kódu odstraňte daný seznam obrázků.
 
 ## <a name="create-a-review"></a>Vytvořit recenzi
 
-Můžete použít sadu SDK Content Moderator Pythonu k zakládání obsahu do [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com) , aby ho lidé mohli zkontrolovat. Další informace o nástroji pro kontrolu najdete v [koncepční příručce](./review-tool-user-guide/human-in-the-loop.md).
+Můžete použít sadu SDK Content Moderator Pythonu k zakládání obsahu do [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com) , aby ho lidé mohli zkontrolovat. Další informace o nástroji pro kontrolu najdete v [koncepční příručce k nástroji pro kontrolu](./review-tool-user-guide/human-in-the-loop.md).
 
 Následující kód používá třídu [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) k vytvoření revize, načtení jeho ID a kontrolu jeho podrobností po přijetí lidského vstupu prostřednictvím webového portálu nástroje pro kontrolu.
 
@@ -312,7 +313,7 @@ Přidejte následující kód k vytvoření a odeslání revize pro danou adresu
 
 ### <a name="get-review-details"></a>Získat podrobnosti o kontrole
 
-Pomocí následujícího kódu zkontrolujte podrobnosti dané recenze. Po vytvoření recenze můžete přejít k nástroji pro kontrolu sami a interagovat s obsahem. Až budete hotovi, můžete znovu spustit tento kód a načte výsledky procesu kontroly.
+Pomocí následujícího kódu zkontrolujte podrobnosti dané recenze. Po vytvoření recenze můžete přejít k nástroji pro kontrolu sami a interagovat s obsahem. Informace o tom, jak to provést, najdete v [příručce k recenzi](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). Až budete hotovi, můžete znovu spustit tento kód a načte výsledky procesu kontroly.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 

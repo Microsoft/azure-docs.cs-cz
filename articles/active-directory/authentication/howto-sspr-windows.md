@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab46bd29aef2fab26c744e1e4c199f6c9a9fff1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 0aa0480e95fa072b6fa87aea8debd3dafc8ebcab
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304196"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042061"
 ---
-# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Postup: Povolení resetování hesla z přihlašovací obrazovky Windows
+# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Postupy: povolení resetování hesla z přihlašovací obrazovky Windows
 
 V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povolit resetování hesla na přihlašovací obrazovce systému Windows. Uživatelé už nemusí najít zařízení s webovým prohlížečem pro přístup k [portálu SSPR](https://aka.ms/sspr).
 
@@ -30,15 +30,14 @@ V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povol
 - **Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.**
 - Požadavky na síťový proxy server
    - Zařízení s Windows 10 
-       - Port 443 až `passwordreset.microsoftonline.com` a`ajax.aspnetcdn.com`
+       - Port 443 pro `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com`
        - Zařízení s Windows 10 podporují jenom konfiguraci proxy serveru na úrovni počítače.
    - Zařízení se systémem Windows 7, 8 a 8,1
-       - Port 443 až`passwordreset.microsoftonline.com`
+       - Port 443 pro `passwordreset.microsoftonline.com`
 
 ## <a name="general-limitations"></a>Obecná omezení
 
 - Resetování hesla není v současné době podporováno ze vzdálené plochy nebo z rozšířených relací technologie Hyper-V.
-- Odemčení účtu, oznámení mobilní aplikace a kód mobilní aplikace nejsou podporovány.
 - Tato funkce nefunguje pro sítě s nasazeným ověřováním sítě 802.1 x a možnost provést těsně před přihlášením uživatele. Pro povolení této funkce doporučujeme, aby se sítě s nasazeným ověřováním pomocí sítě 802.1 x používaly ověřování počítače.
 
 ## <a name="windows-10-password-reset"></a>Resetování hesla Windows 10
@@ -59,7 +58,7 @@ V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povol
     - EnableLostMode je nastavené na zařízení.
     - Explorer. exe se nahradí vlastním prostředím.
 - Tato funkce může způsobit, že tato funkce nefunguje v kombinaci následujících tří nastavení.
-    - Interaktivní přihlášení: Nevyžadovat CTRL + ALT + DEL = zakázáno
+    - Interaktivní přihlašování: Nevyžadovat CTRL + ALT + DEL = zakázáno
     - DisableLockScreenAppNotifications = 1 nebo povoleno
     - IsContentDeliveryPolicyEnforced = 1 nebo true 
 
@@ -84,7 +83,7 @@ Nasazení změny konfigurace, která umožní resetování hesla z přihlašovac
       - Jako **Hodnota** nastavte **1**.
       - Klikněte na tlačítko **OK**.
    - Klikněte na tlačítko **OK**.
-1. Klikněte na **Vytvořit**.
+1. Klikněte na **Vytvořit**
 1. Tato zásada se dá přiřadit konkrétním uživatelům, zařízením nebo skupinám. Další informace najdete v článku [přiřazení profilů uživatelů a zařízení v Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
 
 ### <a name="enable-for-windows-10-using-the-registry"></a>Povolení pro Windows 10 pomocí registru
@@ -102,7 +101,7 @@ Protokol auditu služby Azure AD bude obsahovat informace o IP adrese a typu kli
 
 ![Příklad resetování hesla systému Windows 7 v protokolu auditu Azure AD](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Windows 10, vytvoří se dočasný účet s nízkou úrovní oprávnění s `defaultuser1` názvem. Tento účet se používá k zabezpečení procesu resetování hesla. Samotný účet má náhodně generované heslo, nezobrazuje se pro přihlášení k zařízení a automaticky se odebere po resetování hesla uživatelem. Může `defaultuser` existovat více profilů, ale lze je bezpečně ignorovat.
+Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Windows 10, vytvoří se dočasný účet s nízkou úrovní oprávnění s názvem `defaultuser1`. Tento účet se používá k zabezpečení procesu resetování hesla. Samotný účet má náhodně generované heslo, nezobrazuje se pro přihlášení k zařízení a automaticky se odebere po resetování hesla uživatelem. Může existovat více profilů `defaultuser`, ale lze je bezpečně ignorovat.
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Resetování hesla Windows 7, 8 a 8,1
 
@@ -118,7 +117,7 @@ Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Win
 ### <a name="install"></a>Instalace
 
 1. Stáhněte si odpovídající instalační program pro verzi systému Windows, kterou chcete povolit.
-   - Software je k dispozici na webu Microsoft Download Center na adrese[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+   - Software je k dispozici na webu Microsoft Download Center na [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
 1. Přihlaste se k počítači, do kterého chcete nainstalovat, a spusťte instalační program.
 1. Po instalaci se důrazně doporučuje restartování počítače.
 1. Po restartování počítače na přihlašovací obrazovce vyberte uživatele a klikněte na tlačítko zapomenuté heslo. Pro zahájení pracovního postupu pro resetování hesla.
@@ -142,7 +141,7 @@ Pokud se vyžaduje další protokolování, můžete změnit klíč registru v p
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
 - Chcete-li povolit podrobné protokolování, vytvořte `REG_DWORD: “EnableLogging”`a nastavte jej na hodnotu 1.
-- Chcete-li zakázat podrobné protokolování, změňte `REG_DWORD: “EnableLogging”` hodnotu na 0.
+- Chcete-li zakázat podrobné protokolování, změňte `REG_DWORD: “EnableLogging”` na hodnotu 0.
 
 ## <a name="what-do-users-see"></a>Co vidí uživatelé
 

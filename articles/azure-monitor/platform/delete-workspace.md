@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 10/11/2019
-ms.openlocfilehash: f15e9c2a5980c8fb6d98f7bf9187b030e6910523
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/28/2019
+ms.openlocfilehash: 709d63b2c764049a698bc538d9ec451b4e75feaa
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932374"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044245"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru služby Azure Log Analytics
 
@@ -54,12 +54,14 @@ Pracovní prostor můžete odstranit pomocí [PowerShellu](https://docs.microsof
 
 Pokud máte oprávnění přispěvatele u předplatného a skupiny prostředků, ve které byl pracovní prostor přidružený před operací obnovitelného odstranění, můžete ho obnovit během období obnovitelného odstranění, včetně jeho dat, konfigurace a připojených agentů. Po období obnovitelného odstranění je pracovní prostor neobnovitelná a přiřazený k trvalému odstranění. Názvy odstraněných pracovních prostorů se během období obnovitelného odstranění uchovávají a nedají se použít při pokusu o vytvoření nového pracovního prostoru.  
 
-Pracovní prostor můžete obnovit tak, že znovu vytvoříte pracovní prostor pomocí PowerShellu Create Methods [PowerShellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) nebo [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , pokud jsou tyto vlastnosti naplněny s použitím informací o odstraněných pracovních prostorů, včetně:
+Pracovní prostor můžete obnovit tak, že ho znovu vytvoříte pomocí následujících metod Create v pracovním prostoru: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) nebo [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , pokud jsou vyplněny následující vlastnosti s podrobnostmi o odstraněných pracovních prostorů:
 
 * ID předplatného
 * Název skupiny prostředků
 * Název pracovního prostoru
 * Oblast
+
+Pracovní prostor a všechna jeho data se po operaci obnovení vrátí zpět. Řešení a propojené služby byly při odstranění trvale odebrány z pracovního prostoru a měly by být překonfigurovány, aby byl pracovní prostor nastaven do dříve nakonfigurovaného stavu. Některá data nemusí být k dispozici pro dotaz po obnovení pracovního prostoru, dokud nebudou přidružená řešení znovu nainstalována a jejich schémata jsou přidána do pracovního prostoru.
 
 > [!NOTE]
 > * Obnovení pracovního prostoru není v [Azure Portal](https://portal.azure.com)podporováno. 

@@ -1,5 +1,5 @@
 ---
-title: Nástroje pro Apache Hadoop a Data Lake pro Visual Studio – Azure HDInsight
+title: Apache Hadoop & Visual Studio Data Lake Tools – Azure HDInsight
 description: Naučte se instalovat a používat nástroje Data Lake pro Visual Studio pro připojení k Apache Hadoopm clusterům ve službě Azure HDInsight a následné spuštění dotazů na podregistr.
 keywords: hadoop tools, hive query, visual studio, visual studio hadoop
 services: hdinsight
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 44a076ee6979e207ac3992f76d3b89cc188d53b8
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 7386250cf09d1cfbce8c34f85eaa57d07e67ed35
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076294"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044550"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Použití Data Lake nástrojů pro Visual Studio pro připojení k Azure HDInsight a spouštění dotazů Apache Hive
 
@@ -27,7 +27,7 @@ Další informace o připojení ke clusteru Apache Storm najdete v tématu [výv
 
 Pomocí nástrojů Data Lake pro Visual Studio můžete přistupovat ke službě Azure Data Lake Analytics i HDInsight. Informace o nástrojích Data Lake najdete v tématu [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku a použití Data Lakech nástrojů pro Visual Studio potřebujete následující položky:
 
@@ -56,9 +56,9 @@ K dokončení tohoto článku a použití Data Lakech nástrojů pro Visual Stud
 
 ## <a name="update-data-lake-tools-for-visual-studio"></a>Aktualizace Data Lakech nástrojů pro Visual Studio  
 
-1. Otevřít Visual Studio.
+1. Otevřete sadu Visual Studio.
 
-2. Z řádku nabídek přejděte na **nástroje** > **rozšíření a aktualizace...** .
+2. V řádku nabídek přejděte na **nástroje** > **rozšíření a aktualizace...** .
 
 3. V okně **rozšíření a aktualizace** rozbalte vlevo možnost **aktualizace** .
 
@@ -75,7 +75,7 @@ Pomocí nástrojů Data Lake pro Visual Studio se můžete připojit ke cluster�
 
 Připojení k předplatnému Azure:
 
-1. Otevřít Visual Studio.
+1. Otevřete sadu Visual Studio.
 
 2. V řádku nabídek přejděte k **zobrazení** > **Průzkumník serveru**.
 
@@ -83,7 +83,7 @@ Připojení k předplatnému Azure:
 
 4. Z Průzkumník serveru se zobrazí seznam stávajících clusterů HDInsight. Pokud nemáte žádné clustery, můžete nějaký vytvořit pomocí webu Azure Portal, Azure PowerShellu nebo sady SDK HDInsight. Další informace najdete v tématu [Vytvoření clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
-   ![Seznam data Lakech nástrojů pro cluster sady Visual Studio v Průzkumník serveru](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "Seznam data Lakech nástrojů pro cluster sady Visual Studio v Průzkumník serveru")
+   ![Seznam Data Lakech nástrojů pro cluster sady Visual Studio v Průzkumník serveru](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "Seznam Data Lakech nástrojů pro cluster sady Visual Studio v Průzkumník serveru")
 
 5. Rozbalte cluster služby HDInsight. Zobrazí se **databáze podregistru**, výchozí účet úložiště, propojené účty úložiště a **protokol služby Hadoop** . Entity můžete dále rozšířit.
 
@@ -134,9 +134,9 @@ Z Průzkumník serveru přejděte na **Azure** > **HDInsight** a vyberte svůj c
 ### <a name="view-hivesampletable"></a>Zobrazit hivesampletable
 Všechny clustery HDInsight mají výchozí ukázkovou tabulku podregistru s názvem `hivesampletable`.  
 
-Z clusteru přejděte do **podregistru databáze** > **výchozí** > **hivesampletable**.
+Z clusteru přejděte na **databáze podregistru** > **výchozí** > **hivesampletable**.
 
-* Zobrazení `hivesampletable` schématu:  
+* Postup zobrazení `hivesampletable` schématu:  
 Rozbalte **hivesampletable**.
 
 * Zobrazení `hivesampletable` dat:  
@@ -146,12 +146,12 @@ Klikněte pravým tlačítkem na **hivesampletable**a vyberte **Zobrazit prvníc
 
   Počet řádků můžete přizpůsobit.
 
-  ![Snímek obrazovky s dotazem na schéma HDInsight Hive v sadě Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-hive-schema.png "Výsledky dotazu Hive")
+  ![Snímek obrazovky s dotazem schématu sady Visual Studio pro podregistr HDInsight](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-hive-schema.png "Výsledky dotazu na podregistr")
 
 ### <a name="create-hive-tables"></a>Vytváření tabulek Hive
 K vytvoření tabulky Hive můžete použít grafické rozhraní (GUI) nebo dotazy Hive. Informace o použití dotazů na podregistry najdete v tématu [spuštění dotazů Apache Hive](#run.queries).
 
-1. Z clusteru přejděte na >  **databáze podregistru** **výchozí**.
+1. Z clusteru přejděte na **databáze podregistru** > **výchozí**.
 
 2. Klikněte pravým tlačítkem na **výchozí**a vyberte **vytvořit tabulku**.
 
@@ -159,7 +159,7 @@ K vytvoření tabulky Hive můžete použít grafické rozhraní (GUI) nebo dota
 
 4. Vyberte **Vytvořit tabulku** a odešlete úlohu pro vytvoření nové tabulky Hive.
 
-    ![Snímek obrazovky s oknem Vytvoření tabulky ve Visual Studio Tools pro HDInsight](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-create-hive-table.png "Vytvoření tabulky Hive")
+    ![Snímek obrazovky okna pro vytvoření tabulky HDInsight Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-create-hive-table.png "Vytvořit tabulku podregistru")
 
 ### <a name="run.queries"></a>Vytvoření a spuštění dotazů na podregistr
 Vytvářet a spouštět dotazy Hive můžete dvěma způsoby:
@@ -180,11 +180,11 @@ Vytvoření a spuštění dotazů ad hoc:
     ORDER BY devicemodel
     ```
 
-    Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud například zadáte `SELECT * FROM`, IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF.
+    Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Například pokud zadáte `SELECT * FROM`, IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF.
 
-    ![Snímek obrazovky s IntelliSense ve Visual Studio Tools pro HDInsight – příklad 1](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png "U-SQL IntelliSense")
+    ![Snímek obrazovky Visual Studio Tools HDInsight IntelliSense – příklad 1](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png "IntelliSense U-SQL")
 
-    ![Snímek obrazovky s IntelliSense ve Visual Studio Tools pro HDInsight – příklad 2](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-column-names.png "U-SQL IntelliSense")
+    ![Snímek obrazovky s Visual Studio Tools HDInsight IntelliSense – příklad 2](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-column-names.png "IntelliSense U-SQL")
 
    > [!NOTE]  
    > IntelliSense navrhuje pouze metadata clusteru vybraného na panelu nástrojů služby HDInsight.
@@ -203,20 +203,20 @@ Vytvoření a spuštění dotazů ad hoc:
 
       ![Možnosti dotazů a dávek v aplikaci Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
-      ![Snímek obrazovky s dotazem Hive v HDInsight Hadoop](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "Odeslání dotazů")
+      ![Snímek obrazovky s dotazem na podregistr HDInsight Hadoop](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "Odeslat dotazy")
 
       > [!NOTE]  
       > Do clusterů interaktivních dotazů nelze odesílat dávky.  Je nutné použít interaktivní režim.
 
 Vytvoření a spuštění řešení Hive:
 
-1. Z řádku nabídek přejděte na **soubor** > **Nový** > **projekt...** .
+1. V řádku nabídek přejděte na **soubor** > **Nový** > **projekt...** .
 
-2. V levém podokně přejděte do části **nainstalovaný** > **Azure Data Lake** > **podregistr (HDInsight)** .  
+2. V levém podokně přejděte do části **nainstalované** > **Azure Data Lake** > **podregistr (HDInsight)** .  
 
 3. V prostředním podokně vyberte **Aplikace Hive**. Zadejte vlastnosti a pak vyberte **OK**.
 
-    ![Snímek obrazovky s novým projektem Hive ve Visual Studio Tools pro HDInsight](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png "Vytvoření aplikací Hive v sadě Visual Studio")
+    ![Snímek obrazovky projektu HDInsight Visual Studio Tools nového podregistru](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png "Vytváření aplikací z podregistru ze sady Visual Studio")
 
 4. V **Průzkumníku řešení** dvojím kliknutím otevřete skript **Script.hql**.
 
@@ -240,11 +240,11 @@ V současné době jsou grafy úloh zobrazeny pouze pro úlohy podregistru, kter
 
 Pokud chcete zobrazit všechny operátory uvnitř vrcholu, dvakrát klikněte na vrcholy grafu úlohy. Můžete také ukázat na konkrétní operátor a zobrazit tak další podrobnosti o tomto operátoru.
 
-Graf úlohy se nesmí zobrazit ani v případě, že je jako spouštěcí modul zadán tez, pokud se nespustí žádná aplikace TEZ.  K tomu může dojít, protože úloha neobsahuje příkazy DML nebo příkazy DML mohou vracet bez spuštění aplikace TEZ. Například `SELECT * FROM table1` nebude spouštět aplikaci TEZ.
+Graf úlohy se nesmí zobrazit ani v případě, že je jako spouštěcí modul zadán tez, pokud se nespustí žádná aplikace TEZ.  K tomu může dojít, protože úloha neobsahuje příkazy DML nebo příkazy DML mohou vracet bez spuštění aplikace TEZ. `SELECT * FROM table1` například nebude spouštět aplikaci TEZ.
 
 ![Graf úlohy Apache Hive sady Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png "Souhrn úlohy podregistru")
 
-### <a name="task-execution-detail"></a>Podrobnosti o provedení úkolu
+### <a name="task-execution-detail"></a>Podrobnosti provádění úlohy
 
 Z grafu úlohy můžete vybrat **Podrobnosti spuštění úlohy** a získat tak strukturované a vizuální informace pro úlohy podregistru. Můžete také získat další podrobnosti o úloze. Pokud dojde k problémům s výkonem, můžete pomocí tohoto zobrazení získat další podrobnosti o problému. Například můžete získat informace o tom, jak jednotlivé úlohy fungují, a podrobné informace o jednotlivých úlohách (zápis/čtení dat, naplánovaný/počáteční/konečný čas atd.). Na základě vizualizovaných informací můžete tyto informace využít k ladění konfigurací úloh nebo architektury systémy.
 
@@ -266,14 +266,14 @@ Zobrazení úloh Hive:
     - **Protokol úlohy**  
     - **Protokol Yarn**
 
-    ![Snímek obrazovky s oknem Zobrazení úloh Hive ve Visual Studio Tools pro HDInsight](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-view-hive-jobs.png "Zobrazení úloh Hive")
+    ![Snímek obrazovky s oknem úlohy podregistru zobrazení Visual Studio Tools HDInsight](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-view-hive-jobs.png "Zobrazení úloh Hive")
 
 
 ## <a name="run-apache-pig-scripts"></a>Spustit skripty Apache prasete
 
-1. Z řádku nabídek přejděte na **soubor** > **Nový** > **projekt...** .
+1. V řádku nabídek přejděte na **soubor** > **Nový** > **projekt...** .
 
-2. V levém podokně přejděte na **nainstalované** > **Azure Data Lake** > **prase (HDInsight)** .  
+2. V levém podokně přejděte do části **nainstalované** > **Azure Data Lake** > **prase (HDInsight)** .  
 
 3. V prostředním podokně vyberte **aplikace pro prase**. Zadejte vlastnosti a pak vyberte **OK**.
 
@@ -283,7 +283,7 @@ Zobrazení úloh Hive:
 * Opravili jsme problém, kdy se nezobrazovaly výsledky začínající hodnotami null. Pokud vás tento problém blokuje, kontaktujte tým podpory.
 * Skript HQL, který sada Visual Studio vytváří, je zakódovaný v závislosti na nastavení pro místní oblast uživatele. Skript se nespustí správně, pokud ho nahrajete do clusteru jako binární soubor.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak se pomocí balíčku nástrojů Data Lake pro Visual Studio připojit ke clusterům HDInsight ze sady Visual Studio. Také jste se naučili spustit dotaz Hive. Další informace najdete v těchto článcích:
 
 * [Spouštění dotazů Apache Hivu pomocí Nástrojů Data Lake pro Visual Studio](apache-hadoop-use-hive-visual-studio.md)

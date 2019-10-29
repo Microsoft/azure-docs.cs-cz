@@ -1,5 +1,5 @@
 ---
-title: Naučte se používat Apache Hadoop emulátor izolovaného prostoru (sandbox) – Azure HDInsight
+title: Naučte se používat Apache Hadoop izolovaného prostoru (sandbox), emulátor – Azure HDInsight
 description: 'Pokud chcete začít s používáním Apache Hadoop ekosystému, můžete nastavit izolovaný prostor Hadoop z Hortonworks na virtuálním počítači Azure. '
 keywords: emulátor Hadoop, izolovaný prostor Hadoop
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066690"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044773"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop izolovaným prostorem (sandbox), emulátor na virtuálním počítači
 
 Přečtěte si, jak nainstalovat Apache Hadoop izolovaného prostoru (sandbox) z Hortonworks na virtuálním počítači, abyste se seznámili s ekosystémem Hadoop. Izolovaný prostor (sandbox) poskytuje místní vývojové prostředí pro další informace o Hadoop, Hadoop systém souborů DFS (Distributed File System) (HDFS) a odeslání úlohy. Jakmile budete s Hadoop obeznámeni, můžete začít používat Hadoop v Azure tím, že vytvoříte cluster HDInsight. Další informace o tom, jak začít, najdete v tématu Začínáme [se systémem Hadoop ve službě HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Oracle VirtualBox](https://www.virtualbox.org/). Stáhněte si ho a nainstalujte [odsud.](https://www.virtualbox.org/wiki/Downloads)
 
@@ -51,7 +51,7 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 1. V kroku **Začínáme** na stránce izolovaného prostoru (Hortonworks) vyberte **Zobrazit upřesňující možnosti**. Pomocí informací na této stránce se přihlaste k izolovanému prostoru pomocí SSH. Použijte zadané jméno a heslo.
 
    > [!NOTE]
-   > Pokud nemáte nainstalovaného klienta SSH, můžete použít webový protokol SSH, který je k dispozici na virtuálním počítači v **http://localhost:4200/** .
+   > Pokud nemáte nainstalovaného klienta SSH, můžete použít webový protokol SSH, který je k dispozici na virtuálním počítači na **http://localhost:4200/** .
 
     Při prvním připojení pomocí SSH se zobrazí výzva, abyste změnili heslo pro kořenový účet. Zadejte nové heslo, které použijete při přihlášení pomocí SSH.
 
@@ -73,7 +73,7 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 
         select * from sample_07 limit 10;
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Naučte se používat Visual Studio s izolovaným prostorem Hortonworks](../hdinsight-hadoop-emulator-visual-studio.md)
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5b9011e2a95dc1bdb86311111123db3c994f3aee
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827610"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044941"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight – Nejčastější dotazy
 
@@ -114,7 +114,7 @@ Ne, Apache Kafka a Apache Spark na stejném clusteru HDInsight není možné spu
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Návody změnit časové pásmo v Ambari?
 
-1. Otevřete webové uživatelské rozhraní Ambari v https://CLUSTERNAME.azurehdinsight.net, kde název_clusteru je název vašeho clusteru.
+1. Otevřete webové uživatelské rozhraní Ambari na https://CLUSTERNAME.azurehdinsight.net, kde název_clusteru je název vašeho clusteru.
 2. V pravém horním rohu vyberte Správce | Možnost. 
 
    ![Nastavení Ambari](media/hdinsight-faq/ambari-settings.png)
@@ -179,7 +179,7 @@ Ano, můžete nasadit další virtuální počítač ve stejné podsíti jako cl
 
 - Hraniční uzly: do clusteru můžete přidat další hraniční uzel, jak je popsáno v tématu [použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDInsight](hdinsight-apps-use-edge-node.md).
 
-- Samostatné uzly: můžete přidat samostatný virtuální počítač ke stejné podsíti a přistupovat ke clusteru z tohoto virtuálního počítače pomocí privátního koncového bodu `https://<CLUSTERNAME>-int.azurehdinsight.net`. Další informace najdete v tématu [řízení síťového provozu](hdinsight-plan-virtual-network-deployment.md#networktraffic).
+- Samostatné uzly: můžete přidat samostatný virtuální počítač ke stejné podsíti a přistupovat ke clusteru z tohoto virtuálního počítače pomocí `https://<CLUSTERNAME>-int.azurehdinsight.net`privátního koncového bodu. Další informace najdete v tématu [řízení síťového provozu](hdinsight-plan-virtual-network-deployment.md#networktraffic).
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Můžu přidat existující cluster HDInsight do jiné virtuální sítě?
 
@@ -238,6 +238,13 @@ V situacích, kdy je nutné řídit plán, můžete použít následující post
    `/usr/local/bin/azsecd manual -s clamav`
 
 Další informace o tom, jak nastavit a spustit úlohu cron, najdete v tématu [návody nastavení úlohy cron](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)?
+
+### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Proč je LLAP k dispozici v clusterech Spark ESP?
+V clusterech ESP Spark je LLAP povolený z bezpečnostních důvodů (tj. Apache Ranger), nikoli výkonu. Měli byste použít virtuální počítače s větším uzlem pro přizpůsobení využití prostředků LLAP (např. minimální D13V2). 
+
+### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Jak můžu přidat skupiny AAD další po vytvoření clusteru ESP?
+Toho lze dosáhnout dvěma způsoby: 1 – cluster můžete znovu vytvořit a přidat další skupinu v době vytváření clusteru. Pokud v AAD-DS používáte vymezenou synchronizaci, ujistěte se, že je skupina B zahrnutá v rámci synchronizace s vymezeným oborem.
+2 – přidejte skupinu jako vnořenou dílčí skupinu předchozí skupiny, která se použila k vytvoření clusteru ESP. Pokud jste například vytvořili cluster ESP se skupinami `A`, můžete později přidat skupinu `B` jako vnořenou podskupinu `A` a po přibližně jednu hodinu bude synchronizována a k dispozici v clusteru automaticky. 
 
 ## <a name="storage"></a>Úložiště
 
@@ -310,14 +317,14 @@ Trvalé skripty můžete použít k přizpůsobení nových pracovních uzlů p�
 
 Pomocí následujících koncových bodů REST můžete načíst informace potřebné ve formátu JSON. K provedení požadavků použijte hlavičky základního ověřování.
 
-- Tez Zobrazení dotazu: *https: \/ @ no__t-2 @ no__t-3cluster name >. azurehdinsight. NET/WS/v1/Timeline/HIVE_QUERY_ID/*
-- Tez DAG View: *https: \/ @ no__t-2 @ no__t-3cluster název >. azurehdinsight. NET/WS/v1/Timeline/TEZ_DAG_ID/*
+- Tez Zobrazení dotazu: *https:\//\<název clusteru >. azurehdinsight. NET/WS/v1/Timeline/HIVE_QUERY_ID/*
+- Tez DAG View: *https:\//\<název clusteru >. azurehdinsight. NET/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Návody načíst podrobnosti o konfiguraci z clusteru HDI pomocí Azure Active Directoryho uživatele?
 
 Pokud chcete s vaším uživatelem AAD vyjednávat správné ověřovací tokeny, Projděte bránu pomocí následujícího formátu:
 
-* https://@no__t – 0.azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https://`<cluster dnsname>`. azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Návody k monitorování výkonu PŘÍZu použít rozhraní RESTful API Ambari?
 

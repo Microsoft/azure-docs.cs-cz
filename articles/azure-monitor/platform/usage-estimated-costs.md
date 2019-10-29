@@ -5,16 +5,16 @@ author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 56dd58afa49296ab097dfd8a6560a7191ac8c644
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 48abf95e65b6185f5c95a1f5d942091ed0f33122
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932033"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044196"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorování využití a odhadovaných nákladů v Azure Monitor
 
@@ -27,7 +27,7 @@ ms.locfileid: "72932033"
 
 Model fakturace Basic Azure Monitor je uživatelsky přívětivé ceny založené na spotřebě ("průběžné platby"). Platíte jenom za to, co používáte. Podrobnosti o cenách jsou k dispozici pro [výstrahy, metriky, oznámení](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) a [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
 
-Kromě modelu průběžných plateb pro data protokolu Log Analytics má rezervace kapacity, které vám umožní v porovnání s průběžnými platbami ušetřit až 25%. Cena za rezervaci kapacity vám umožní koupit rezervaci od 100 GB za den. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách rezervací kapacity.
+Kromě modelu průběžných plateb pro data protokolu Log Analytics má rezervace kapacity, což vám umožní v porovnání s průběžnými platbami ušetřit až 25%. Cena za rezervaci kapacity vám umožní koupit rezervaci od 100 GB za den. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách rezervací kapacity.
 
 Někteří zákazníci budou mít přístup ke [starším úrovním Log Analytics cenové úrovně](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers) a [starší verze Enterprise Application Insights cenové úrovně](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier). 
 
@@ -41,13 +41,13 @@ Pokud protokoly Azure Monitor ještě nepoužíváte, můžete pomocí [cenové 
 
 - Dotazy a výstrahy metriky  
 - Log Analytics
-- Application Insights 
+- Application Insights
 
-V každém z těchto řešení vám cenová Kalkulačka pomůže odhadnout náklady na základě očekávaného využití. 
+V každém z těchto řešení vám cenová Kalkulačka pomůže odhadnout náklady na základě očekávaného využití.
 
-Například pomocí Log Analytics můžete zadat počet virtuálních počítačů a GB dat, která chcete shromažďovat z každého virtuálního počítače. Z typického virtuálního počítače Azure se typicky ingestují 1 až 3 GB datového měsíce. Pokud už vyhodnocujete Azure Monitor protokoly, můžete použít statistiku dat z vlastního prostředí. Níže najdete informace o tom, jak určit [Počet monitorovaných virtuálních počítačů](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data) a objem dat, na které [váš pracovní prostor pracuje](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume). 
+Například pomocí Log Analytics můžete zadat počet virtuálních počítačů a GB dat, která chcete shromažďovat z každého virtuálního počítače. Od typického virtuálního počítače Azure se typicky odchází 1 GB až 3 GB datového měsíce. Pokud už vyhodnocujete Azure Monitor protokoly, můžete použít statistiku dat z vlastního prostředí. Níže najdete informace o tom, jak určit [Počet monitorovaných virtuálních počítačů](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data) a objem dat, na které [váš pracovní prostor pracuje](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume).
 
-Podobně jako u Application Insights, pokud povolíte funkci "objem dat odhadu na základě aktivity aplikace", můžete zadat vstupy o vaší aplikaci (požadavky za měsíc a zobrazení stránek měsíčně), pokud budete shromažďovat telemetrii na straně klienta). Kalkulačka vám pak sdělí medián a 90. percentil dat shromažďovaných podobnými aplikacemi. Tyto aplikace jsou v rámci rozsahu konfigurace Application Insights (například některé mají výchozí vzorkování, některé nemají žádné vzorkování atd.), takže stále máte k dispozici ovládací prvek ke snížení objemu dat, která jsou až na střední úrovni, pomocí vzorkování. Ale jedná se o výchozí bod, který vám pomůže pochopit, co podobné zákazníky vidí. [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-monitor/app/pricing#estimating-the-costs-to-manage-your-application) o odhadu nákladů na Application Insights.
+Podobně jako u Application Insights, pokud povolíte funkci "objem dat odhadu na základě aktivity aplikace", můžete zadat vstupy o vaší aplikaci (požadavky za měsíc a zobrazení stránek měsíčně), pokud budete shromažďovat telemetrii na straně klienta). Kalkulačka vám pak sdělí medián a 90. percentil dat shromažďovaných podobnými aplikacemi. Tyto aplikace rozcházejí z rozsahu konfigurace Application Insights (například některé mají výchozí vzorkování, některé nemají žádné vzorkování atd.), takže stále máte kontrolu nad tím, jak omezit objem dat, která jsou až na střední úrovni, a to pomocí vzorkování. Ale jedná se o výchozí bod, který vám pomůže pochopit, co podobné zákazníky vidí. [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-monitor/app/pricing#estimating-the-costs-to-manage-your-application) o odhadu nákladů na Application Insights.
 
 ### <a name="understanding-your-usage-and-estimated-costs"></a>Princip využití a odhadovaných nákladů
 
@@ -55,7 +55,7 @@ Je důležité pochopit a sledovat vaše využití jednou pomocí Azure Monitor 
 
 Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakturace](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Po otevření centra **Azure cost management + fakturace** klikněte na **cost management** a vyberte [obor](https://docs.microsoft.com/azure/cost-management/understand-work-scopes) (sadu prostředků, které se mají prozkoumat). 
 
-Pokud chcete zobrazit Azure Monitor náklady za posledních 30 dní, klikněte na dlaždici akumulované náklady, v části relativní kalendářní data vyberte posledních 30 dní a přidejte filtr, který vybere názvy služeb:
+Pokud chcete zobrazit Azure Monitor náklady za posledních 30 dní, klikněte na dlaždici **denní náklady** , v části relativní datum vyberte posledních 30 dní a přidejte filtr, který vybere názvy služeb:
 
 1. Azure Monitor
 2. Application Insights
@@ -66,12 +66,12 @@ Výsledkem je zobrazení, jako například:
 
 ![Snímek obrazovky Azure Cost Management](./media/usage-estimated-costs/010.png)
 
-Odsud si můžete projít z tohoto souhrnného souhrnu nákladů a získat tak přesnější informace v zobrazení náklady podle prostředků. 
+Odtud můžete přejít z tohoto souhrnného souhrnu nákladů a získat tak přesnější podrobnosti v zobrazení náklady podle prostředku. V aktuální cenové úrovni se data protokolu Azure účtují na stejné sadě měřičů, ať už pochází z Log Analytics nebo Application Insights. Pokud chcete oddělit náklady od Log Analytics nebo Application Insights využití, můžete přidat filtr na **typ prostředku**. Pokud chcete zobrazit všechny náklady na Application Insights, vyfiltrujte typ prostředku na "Microsoft. Insights/Components", a pokud chcete Log Analytics náklady, filtrujte typ prostředku na Microsoft. operationalinsights/Workspaces. 
 
-Ještě hlubší porozumění využití se dá získat [stažením vašeho využití na webu Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). Ve stažených tabulkách vidíte využití podle prostředku Azure za den. V této excelové tabulce můžete využití vašich Application Insightsch prostředků najít při prvním filtrování ve sloupci měřiče měření, pokud chcete zobrazit Application Insights a Log Analytics, a pak přidat filtr na sloupec ID instance, který je "obsahuje". Microsoft. Insights/Components.  Většina využití Application Insights se oznamuje u měřičů s kategorií měřičů Log Analytics, protože pro všechny Azure Monitor komponenty existuje back-end s jedním protokolem.  Pouze Application Insights prostředky se staršími cenovými úrovněmi a webovými testy ve více krocích jsou hlášeny s kategorií měřičů Application Insights.  Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou další podrobnosti, které vám pomůžou [pochopit Microsoft Azureovou fakturaci](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+Podrobnější informace o využití najdete na stránce [stažení vašeho využití z Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). Ve stažených tabulkách můžete zobrazit využití podle prostředku Azure za den. V této excelové tabulce můžete využití vašich Application Insightsch prostředků najít při prvním filtrování ve sloupci měřiče měření, pokud chcete zobrazit Application Insights a Log Analytics, a pak přidat filtr na sloupec ID instance, který je "obsahuje". Microsoft. Insights/Components.  Většina využití Application Insights se oznamuje u měřičů s kategorií měřičů Log Analytics, protože pro všechny Azure Monitor komponenty existuje back-end s jedním protokolem.  Pouze Application Insights prostředky se staršími cenovými úrovněmi a webovými testy ve více krocích jsou hlášeny s kategorií měřičů Application Insights.  Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou další podrobnosti, které vám pomůžou [pochopit Microsoft Azureovou fakturaci](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
 > [!NOTE]
-> Použití **cost management** v centru **fakturace Azure cost management +** je upřednostňovaným přístupem k rozsáhlému porozumění nákladům na monitorování.  Prostředí pro **využití a odhadované náklady** [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs) a [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#understand-your-usage-and-estimate-costs) poskytují hlubší přehledy pro každou z těchto částí Azure monitor. 
+> Použití **cost management** v centru **fakturace Azure cost management +** je upřednostňovaným přístupem k rozsáhlému porozumění nákladům na monitorování.  Prostředí pro **využití a odhadované náklady** [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs) a [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#understand-your-usage-and-estimate-costs) poskytují hlubší přehledy pro každou z těchto částí Azure monitor.
 
 Další možností zobrazení Azure Monitor využití jsou stránky **využití a odhadované náklady** v centru monitorování. Zobrazuje se tím použití základních monitorovacích funkcí, jako jsou například [výstrahy, metriky, oznámení](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)a [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). Pro zákazníky, kteří mají cenové tarify k dispozici před dubna 2018, to zahrnuje i Log Analytics využití zakoupené prostřednictvím nabídky Insights a Analytics.
 
@@ -95,6 +95,5 @@ Zákazníci, kteří si zakoupili Microsoft Operations Management Suite E1 a E2,
 V závislosti na počtu uzlů sady, kterou vaše organizace zakoupila, může být výhodné přesunout některá předplatná do cenové úrovně s průběžnými platbami (za GB), ale to vyžaduje pečlivou pozornost.
 
 > [!WARNING]
-> Pokud vaše organizace zakoupila Microsoft Operations Management Suite E1 a E2, většinou je nejlepší udržovat pracovní prostory v Log Analytics v cenové úrovni pro jednotlivé uzly (OMS) a vaše Application Insights prostředky v cenové úrovni "Enterprise". 
+> Pokud má vaše organizace aktuální Microsoft Operations Management Suite E1 a E2, většinou je nejlepší udržovat pracovní prostory v Log Analytics v cenové úrovni pro jednotlivé uzly (OMS) a vaše Application Insights prostředky v cenové úrovni "Enterprise". 
 >
-

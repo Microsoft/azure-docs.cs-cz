@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: e3a8a537ae8c971119cfd08fbf80dc169df1d384
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f1759bd2cc82073378c5668682f4cecf8482c2d3
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619303"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042265"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services
 
@@ -85,8 +85,8 @@ Zařízení je možné připojit k Azure AD s hybridním nasazením nebo bez ně
 | **Typ zařízení**                                        | **Platformy zařízení**             | **Mechanismy**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
 | Osobní zařízení                                          | Windows 10, iOS, Android, Mac OS | Registrace Azure AD    |
-| Zařízení vlastněné organizací nepřipojená k místnímu služba AD DS | Windows 10                       | Připojeno k Azure AD        |
-| Zařízení vlastněné organizací připojené k místnímu služba AD DS  | Windows 10                       | Připojeno k hybridní službě Azure AD |
+| Zařízení vlastněné organizací nepřipojená k místnímu služba AD DS | Windows 10                       | Připojeno k Azure AD        |
+| Zařízení vlastněné organizací připojené k místnímu služba AD DS  | Windows 10                       | Připojeno k hybridní službě Azure AD |
 
 V případě zařízení připojeného k Azure AD se k ověřování uživatelů používá moderní protokoly založené na protokolu OAuth/OpenID Connect. Tyto protokoly jsou navržené tak, aby fungovaly přes Internet, takže jsou skvělé pro mobilní scénáře, kdy uživatelé přistupují k podnikovým prostředkům odkudkoli. U zařízení připojených k Azure služba AD DS můžou aplikace používat protokoly Kerberos a NTLM pro ověřování, takže v rámci strategie navýšení a posunutí můžou podporovat starší verze aplikací, které se migrují na spouštění na virtuálních počítačích Azure. V následující tabulce jsou uvedeny rozdíly v tom, jak se zařízení reprezentují a můžou se ověřovat proti adresáři:
 
@@ -94,12 +94,12 @@ V případě zařízení připojeného k Azure AD se k ověřování uživatelů
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Zařízení, které ovládá            | Azure AD                                            | Spravovaná doména Azure služba AD DS                                                |
 | Reprezentace v adresáři | Objekty zařízení v adresáři služby Azure AD            | Objekty počítače ve spravované doméně Azure služba AD DS                        |
-| Ověřování                  | Protokoly založené na protokolu OAuth/OpenID Connect              | Protokoly Kerberos a NTLM                                               |
-| Správa                      | Software pro správu mobilních zařízení (MDM), jako je Intune | Zásada skupiny                                                              |
-| Sítě                      | Funguje přes Internet                             | Vyžaduje, aby počítače byly ve stejné virtuální síti jako spravovaná doména. |
+| Ověření                  | Protokoly založené na protokolu OAuth/OpenID Connect              | Protokoly Kerberos a NTLM                                               |
+| Správa                      | Software pro správu mobilních zařízení (MDM), jako je Intune | Zásady skupiny                                                              |
+| Sítě                      | Funguje přes Internet                             | Musí být připojen k virtuální síti, ve které je nasazena spravovaná doména, nebo s partnerským vztahem. |
 | Skvělé pro...                    | Mobilní zařízení koncových uživatelů nebo stolních počítačů                  | Serverové virtuální počítače nasazené v Azure                                              |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít používat Azure služba AD DS, [vytvořte pomocí Azure Portal spravované domény azure služba AD DS][tutorial-create].
 

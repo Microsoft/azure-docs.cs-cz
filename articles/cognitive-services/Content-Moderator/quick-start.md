@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bb4fc076d01c1108278cea0cebba958b4ea94660
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757370"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044052"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý Start: Vyzkoušejte Content Moderator na webu
 
@@ -68,6 +68,6 @@ Nebo pokračujte dalšími kroky, abyste mohli začít používat rozhraní API 
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se používat rozhraní API pro moderování ve vaší aplikaci.
-- Implementujte moderování imagí. Použijte [konzolu rozhraní API](try-image-api.md) nebo [ C# rychlý Start](image-moderation-quickstart-dotnet.md) pro skenování imagí a detekci potenciálního dospělého a pikantní obsahu pomocí značek, hodnocení spolehlivosti a dalších extrahovaných informací.
-- Implementujte moderování textu. Použijte [konzolu rozhraní API](try-text-api.md) nebo pomocí [ C# rychlého](text-moderation-quickstart-dotnet.md) startu naskenujte textový obsah pro potenciální vulgární výrazy, nepotřebnou klasifikaci textu s asistencí pro počítače (Preview) a osobní údaje.
+- Implementujte moderování imagí. Použijte [konzolu rozhraní API](try-image-api.md) nebo postupujte podle pokynů k [rychlému zprovoznění sady .NET SDK](dotnet-sdk-quickstart.md) a pomocí značek, hodnocení spolehlivosti a dalších extrahovaných informací vyhledejte potenciální obsah pro dospělé a pikantní.
+- Implementujte moderování textu. Použijte [konzolu rozhraní API](try-text-api.md) nebo spusťte průvodce [.NET SDK](dotnet-sdk-quickstart.md) pro kontrolu nad obsahem textu pro potenciální vulgární výrazy, nepotřebnou klasifikaci textu s asistencí počítače (Preview) a osobní údaje.
 - Implementujte moderování videa. Postupujte podle pokynů v tématu [Průvodce moderováním videa pro C# ](video-moderation-api.md) vyhledávání videí a detekci potenciálního dospělého a pikantní obsahu. 

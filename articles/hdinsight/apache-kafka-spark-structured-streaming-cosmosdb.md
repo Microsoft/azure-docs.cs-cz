@@ -1,5 +1,5 @@
 ---
-title: Apache Spark dat z Apache Kafka do Azure Cosmos DB – Azure HDInsight
+title: Apache Spark & Apache Kafka s Cosmos DB – Azure HDInsight
 description: Naučte se používat strukturované streamování Apache Spark ke čtení dat z Apache Kafka a jejich následnému uložení do Azure Cosmos DB. V tomto příkladu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0d8c6929705ab29ced25a847bf7c5a72d57aa49b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: faae65c6664123bd673711674a36edc928c74278
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037295"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044899"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Použití strukturovaného streamování Apache Spark s Apache Kafka a Azure Cosmos DB
 
@@ -69,28 +69,28 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
 
     ![Hodnoty vlastního nasazení HDInsight](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-    * **Předplatné:** Vyberte své předplatné Azure.
+    * **Předplatné**: Vyberte své předplatné Azure.
 
-    * **Skupina prostředků**: Vytvořte skupinu nebo vyberte některou existující. Tato skupina obsahuje cluster HDInsight.
+    * **Skupina prostředků**: Vytvořte skupinu nebo vyberte existující. Tato skupina obsahuje cluster HDInsight.
 
-    * **Umístění**: Vyberte umístění geograficky blízko vás.
+    * **Umístění**: vyberte umístění geograficky blízko vás.
 
-    * **Název účtu Cosmos DB**: Tato hodnota se používá jako název účtu Cosmos DB.
+    * **Cosmos DB název účtu**: Tato hodnota se používá jako název účtu Cosmos DB.
 
     * **Základní název clusteru**: Tato hodnota se používá jako základní název pro clustery Spark a Kafka. Například zadáním **myhdi** se vytvoří cluster Spark s názvem __Spark-Myhdi__ a cluster Kafka s názvem **Kafka-myhdi**.
 
-    * **Verze clusteru**: Verze clusteru HDInsight.
+    * **Verze clusteru**: verze clusteru HDInsight.
 
         > [!IMPORTANT]  
         > Tento příklad je testován pomocí HDInsight 3,6 a nemusí fungovat s jinými typy clusterů.
 
-    * **Uživatelské jméno přihlášení clusteru**: Uživatelské jméno správce pro clustery Spark a Kafka.
+    * **Uživatelské jméno přihlášení clusteru**: uživatelské jméno správce pro clustery Spark a Kafka.
 
-    * **Heslo pro přihlášení ke clusteru**: Heslo uživatele správce pro clustery Spark a Kafka.
+    * **Heslo pro přihlášení ke clusteru**: heslo správce pro clustery Spark a Kafka.
 
-    * **Uživatelské jméno SSH**: Uživatel SSH, který se má vytvořit pro clustery Sparku a Kafka.
+    * **Uživatelské jméno SSH**: uživatel SSH, který se má vytvořit pro clustery Sparku a Kafka.
 
-    * **Heslo SSH**: Heslo pro uživatele SSH pro clustery Spark a Kafka
+    * **Heslo SSH**: heslo pro uživatele SSH pro clustery Spark a Kafka.
 
 3. Přečtěte si **Podmínky a ujednání** a pak vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**.
 
@@ -103,7 +103,7 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
 
 Projekt použitý v tomto dokumentu ukládá data v Cosmos DB. Před spuštěním kódu musíte nejprve vytvořit _databázi_ a _kolekci_ v instanci Cosmos DB. Také je nutné načíst koncový bod dokumentu a _klíč_ , který slouží k ověření požadavků na Cosmos DB. 
 
-Jedním ze způsobů, jak to provést, je použití rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). V následujícím skriptu se vytvoří databáze s názvem `kafkadata` a kolekcí s názvem `kafkacollection`. Pak vrátí primární klíč.
+Jedním ze způsobů, jak to provést, je použití rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). Pomocí následujícího skriptu se vytvoří databáze s názvem `kafkadata` a kolekce s názvem `kafkacollection`. Pak vrátí primární klíč.
 
 ```azurecli
 #!/bin/bash
@@ -158,7 +158,7 @@ $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ```
 
 > [!NOTE]  
-> Bash příklad očekává `$CLUSTERNAME` , že bude obsahovat název clusteru Kafka.
+> Bash příklad očekává, že `$CLUSTERNAME` obsahovat název clusteru Kafka.
 >
 > Tento příklad používá nástroj [JQ](https://stedolan.github.io/jq/) k analýze dat z dokumentu JSON.
 
@@ -202,7 +202,7 @@ Po nahrání souborů vyberte položku __Stream-taxislužby-data-to-Kafka. ipynb
 
 Na domovské stránce [Jupyter notebook](https://jupyter.org/) vyberte položku __datový proud-data-from-Kafka-to-Cosmos-DB. ipynb__ . Postupujte podle kroků v poznámkovém bloku pro streamování dat z Kafka a do Azure Cosmos DB pomocí strukturovaného streamování Sparku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se seznámili s používáním Apache Spark strukturovaného streamování, najdete v následujících dokumentech Další informace o práci s Apache Spark, Apache Kafka a Azure Cosmos DB:
 

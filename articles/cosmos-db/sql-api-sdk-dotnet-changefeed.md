@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: ea6de5f42910457efa5ca6c458d7af63faa38e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2392eb1f02ede13aca88419c00ea33ae38cfd8ab
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637746"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023889"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK pro procesor změn v rozhraní .NET: Poznámky ke stažení a verzi
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK pro rozhraní Change feed pro .NET: stažení a poznámky k verzi
 
 > [!div class="op_single_selector"]
 >
@@ -37,11 +37,20 @@ ms.locfileid: "68637746"
 |**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní API pro změnu knihovny procesoru v informačním kanálu](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
 |**Začínáme**|[Začínáme s rozhraním .NET SDK Change feed Processor](change-feed.md)|
-|**Aktuální podporované architektury**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+|**Aktuální podporovaná architektura**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>V2 sestavení
+
+### <a name="a-name228228"></a><a name="2.2.8"/>2.2.8
+* Vylepšení stability a diagnostiky:
+  * Přidala se podpora pro detekci kanálu změny čtení a trvá to dlouhou dobu. Pokud trvá déle než hodnota zadaná vlastností `ChangeFeedProcessorOptions.ChangeFeedTimeout`, provedou se tyto kroky:
+    * Operace čtení kanálu změn u problematického oddílu se přerušila.
+    * Instance procesoru změny kanálu převezme vlastnictví problematického zapůjčení. Zrušené zapůjčení se vybere během příštího kroku získání zapůjčení, který bude proveden stejnou nebo jinou instancí Change feed Processor. Tímto způsobem se zahájí čtení kanálu změn.
+    * Monitorování stavu oznamuje problém. Výchozí monitorování stavu odesílá všechny nahlášené problémy do protokolu trasování.
+  * Přidání nové veřejné vlastnosti: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Výchozí hodnota této vlastnosti je 10 minut.
+  * Byla přidána nová hodnota veřejného výčtu: `Monitoring.MonitoredOperation.ReadChangeFeed`. Je-li hodnota `HealthMonitoringRecord.Operation` nastavena na hodnotu `Monitoring.MonitoredOperation.ReadChangeFeed`, znamená to, že problém se stavem souvisí se čtením kanálu změn.
 
 ### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
 * Vylepšená strategie vyrovnávání zatížení pro situaci, kdy se u všech zapůjčení trvá déle než interval vypršení platnosti zapůjčení, např. kvůli problémům se sítí:
@@ -80,7 +89,7 @@ ms.locfileid: "68637746"
 * Menší vylepšení diagnostiky.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Bylo přidáno nové rozhraní API&lt;,&lt;Task&gt; IReadOnlyList RemainingPartitionWork&gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). To se dá použít k získání odhadované práce pro každý oddíl.
+* Bylo přidáno nové rozhraní API, Task&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). To se dá použít k získání odhadované práce pro každý oddíl.
 * Podporuje Microsoft. Azure. DocumentDB SDK 2,0. Vyžaduje Microsoft. Azure. DocumentDB 2,0 nebo novější.
 
 ### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
@@ -98,10 +107,10 @@ ms.locfileid: "68637746"
   * Rozhraní GetEstimatedRemainingWork API vrátilo hodnotu 0, pokud v kolekci zapůjčení nebylo přítomno žádné zapůjčení.
 
 * Následující výjimky jsou zveřejněny. Rozšíření implementující IPartitionProcessor můžou tyto výjimky vyvolat.
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. LeaseLostException. 
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. PartitionException. 
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. PartitionNotFoundException.
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. PartitionSplitException. 
 
 ### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2 – Předběžná verze
 * Dílčí změny rozhraní API:
@@ -142,7 +151,7 @@ ms.locfileid: "68637746"
 * Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1,21 a vyšší.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Přidá podporu pro .NET Standard 2,0. Balíček teď podporuje `netstandard2.0` a `net451` monikery rozhraní.
+* Přidá podporu pro .NET Standard 2,0. Balíček teď podporuje `netstandard2.0` a monikery rozhraní `net451` Framework.
 * Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.17.0 a vyšší.
 * Kompatibilní s verzemi [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1 a vyšší.
 
@@ -160,22 +169,23 @@ ms.locfileid: "68637746"
 
 ## <a name="release--retirement-dates"></a>Data vyřazení & vydání
 
-Microsoft bude poskytovat oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.
+Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** .
 
 Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
 
-Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítnuty službou.
+Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou odmítnuty.
 
 <br/>
 
-| Verze | Datum vydání | Datum vyřazení z provozu |
+| Version | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [2.2.8](#2.2.8) |28. října 2019 |--- |
 | [2.2.7](#2.2.7) |14. května 2019 |--- |
 | [2.2.6](#2.2.6) |29. ledna 2019 |--- |
 | [2.2.5](#2.2.5) |13. prosince 2018 |--- |
 | [2.2.4](#2.2.4) |29. listopadu 2018 |--- |
 | [2.2.3](#2.2.3) |19. listopadu 2018 |--- |
-| [2.2.2](#2.2.2) |31. října 2018 |--- |
+| [bodě](#2.2.2) |31. října 2018 |--- |
 | [2.2.1](#2.2.1) |24. října 2018 |--- |
 | [1.3.3](#1.3.3) |8\. května 2018 |--- |
 | [1.3.2](#1.3.2) |18. dubna 2018 |--- |
@@ -185,10 +195,10 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | [1.1.0](#1.1.0) |13. srpna 2017 |--- |
 | [1.0.0](#1.0.0) |7\. července 2017 |--- |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-Další informace o službě Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby.
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .

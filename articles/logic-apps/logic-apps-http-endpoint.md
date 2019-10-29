@@ -12,12 +12,12 @@ ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.openlocfilehash: 6e5a8eda3891b3b356e0cbd7b6d2e22e4a70c278
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4fc20c4b1314d953ea979192c81b2c264292d3af
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799720"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73041958"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Volání, triggery nebo vnořování aplikací logiky pomocí koncových bodů HTTP v Azure Logic Apps
 
@@ -62,7 +62,7 @@ Pokud chcete vytvořit koncový bod HTTP, přidejte Trigger, který může přij
     }
     ```
 
-   ![Přidat akci žádosti](./media/logic-apps-http-endpoint/manualtrigger.png)
+   ![Zadat schéma JSON pro akci žádosti](./media/logic-apps-http-endpoint/manual-request-trigger-schema.png)
 
    > [!TIP]
    >
@@ -95,7 +95,7 @@ Pokud chcete vytvořit koncový bod HTTP, přidejte Trigger, který může přij
 
    Tato adresa URL obsahuje klíč sdíleného přístupového podpisu (SAS) v parametrech dotazu, který se používá pro ověřování. Adresu URL koncového bodu HTTP můžete také získat z přehledu aplikace logiky v Azure Portal. V části **Historie aktivační události**vyberte aktivační událost:
 
-   ![Získat adresu URL koncového bodu HTTP z Azure Portal](./media/logic-apps-http-endpoint/manualtriggerurl.png)
+   ![Získat adresu URL koncového bodu HTTP z Azure Portal](./media/logic-apps-http-endpoint/find-manual-trigger-url.png)
 
    Můžete také získat adresu URL tím, že zadáte toto volání:
 
@@ -117,7 +117,7 @@ Ve výchozím nastavení očekává **aktivační událost požadavek HTTP** pos
    > [!NOTE]
    > Můžete vybrat jakoukoli jinou metodu HTTP nebo zadat vlastní metodu pro vlastní aplikaci logiky.
 
-   ![Změnit metodu HTTP](./media/logic-apps-http-endpoint/change-method.png)
+   ![Vyberte metodu HTTP, která se má použít pro požadavek.](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
 ## <a name="accept-parameters-through-your-http-endpoint-url"></a>Přijmout parametry prostřednictvím adresy URL koncového bodu HTTP
 
@@ -132,7 +132,7 @@ Pokud chcete, aby adresa URL koncového bodu HTTP přijímala parametry, přizp�
 
 3. V části **relativní cesta**zadejte relativní cestu k parametru, který by měla adresa URL přijmout, například `customers/{customerID}`.
 
-   ![Zadejte metodu HTTP a relativní cestu pro parametr](./media/logic-apps-http-endpoint/relativeurl.png)
+   ![Zadejte metodu HTTP a relativní cestu pro parametr](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
 4. Pokud chcete použít parametr, přidejte do aplikace logiky akci **odpovědi** . (V rámci triggeru vyberte **Nový krok**  > **přidat akci**  > **odpověď**) 
 
@@ -140,11 +140,11 @@ Pokud chcete, aby adresa URL koncového bodu HTTP přijímala parametry, přizp�
 
    Pokud například chcete vrátit `Hello {customerID}`, aktualizujte **tělo** odpovědi pomocí `Hello {customerID token}`. Seznam dynamického obsahu by se měl zobrazit a zobrazit `customerID` token, který můžete vybrat.
 
-   ![Přidat parametr do textu odpovědi](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+   ![Přidat parametr do textu odpovědi](./media/logic-apps-http-endpoint/relative-url-with-parameter-token.png)
 
    Váš **text** by měl vypadat jako v tomto příkladu:
 
-   ![Tělo odpovědi s parametrem](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
+   ![Příklad těla odpovědi s parametrem](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
 6. Uložte svou aplikaci logiky. 
 
@@ -194,7 +194,7 @@ Toto je kompletní schéma JSON:
 
 Pracovní postupy můžete v aplikaci logiky vnořovat přidáním dalších aplikací logiky, které můžou přijímat požadavky. Pokud chcete zahrnout tyto aplikace logiky, přidejte **Azure Logic Apps – vyberte akci pracovního postupu Logic Apps** pro aktivační událost. Pak můžete vybrat z oprávněných aplikací logiky.
 
-![Přidat další aplikaci logiky](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
+![Vnoření aplikace logiky do aktuální aplikace logiky](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
 ## <a name="call-or-trigger-logic-apps-through-http-endpoints"></a>Volání nebo spuštění Logic Apps prostřednictvím koncových bodů HTTP
 
@@ -233,7 +233,7 @@ Je možné, že budete chtít reagovat na určité požadavky, které spustí ap
 
 V těle odpovědi můžete zahrnout více než jednu hlavičku a jakýkoliv typ obsahu. V příkladu odpovědi záhlaví určuje, že odpověď má typ obsahu `application/json`. a tělo obsahuje `title` a `name` na základě schématu JSON aktualizovaného dříve pro aktivační událost **žádosti** .
 
-![Akce odpovědi HTTP](./media/logic-apps-http-endpoint/response.png)
+![Poskytnout obsah odpovědi pro akci odpovědi HTTP](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
 Odpovědi mají tyto vlastnosti:
 

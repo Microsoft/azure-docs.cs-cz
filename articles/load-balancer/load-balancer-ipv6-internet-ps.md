@@ -5,7 +5,7 @@ description: Zjistěte, jak vytvořit internetový nástroj pro vyrovnávání z
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
+keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, nativní IPv6, mobilní zařízení, IoT
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 12f9b8d3031d3b64e2f39f07763f7a75164aad25
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 9f2bd24955cc378deed5dbc0423488645632a958
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274989"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025792"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení s protokolem IPv6 pomocí prostředí PowerShell pro Správce prostředků
 
@@ -28,12 +28,14 @@ ms.locfileid: "68274989"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Šablona](load-balancer-ipv6-internet-template.md)
 
+>[! Poznámka: Změna v osvědčených postupech pro protokol IPv6] Tento článek popisuje úvodní funkci IPv6, která umožňuje základním nástrojům pro vyrovnávání zatížení poskytovat připojení protokolem IPv4 i IPv6.  K dispozici jsou teď komplexnější možnosti připojení pomocí protokolu IPv6 [pro Azure virtuální sítě](../virtual-network/ipv6-overview.md) , které integrují připojení IPv6 k vašim virtuálním sítím a obsahuje klíčové funkce, jako jsou pravidla skupiny zabezpečení sítě IPv6, uživatelem definované směrování IPv6, IPv6 Basic a Vyrovnávání zatížení úrovně Standard a další.  Protokol IPv6 pro Azure virtuální sítě je doporučeným osvědčeným postupem pro aplikace IPv6 v Azure. 
+>[Nasazení PowerShellu pro virtuální síť Azure najdete v protokolu IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) . 
 
 Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroj pro vyrovnávání zatížení poskytuje vysokou dostupnost díky distribuci příchozích přenosů mezi instance služeb, které jsou v pořádku, v cloudových službách nebo virtuálních počítačích v sadě nástroje pro vyrovnávání zatížení. Azure Load Balancer můžete také tyto služby prezentovat na více portech, více IP adresách nebo obojím.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="example-deployment-scenario"></a>Příklad scénáře nasazení
+## <a name="example-deployment-scenario"></a>Ukázkový scénář nasazení
 
 Následující diagram znázorňuje řešení vyrovnávání zatížení, které je nasazené v tomto článku.
 
@@ -42,10 +44,10 @@ Následující diagram znázorňuje řešení vyrovnávání zatížení, které
 V tomto scénáři vytvoříte následující prostředky Azure:
 
 * Internetový Load Balancer s IPv4 a veřejnou IP adresou IPv6
-* Dvě pravidla vyrovnávání zatížení pro mapování veřejných virtuálních IP adres na privátní koncové body
+* dvě pravidla vyrovnávání zatížení pro mapování veřejných virtuálních IP adres na privátní koncové body
 * Skupina dostupnosti, která obsahuje dva virtuální počítače
-* Dva virtuální počítače
-* Virtuální síťové rozhraní pro každý virtuální počítač s přiřazenými adresami IPv4 i IPv6
+* dva virtuální počítače
+* virtuální síťové rozhraní pro každý virtuální počítač s přiřazenými adresami IPv4 i IPv6
 
 ## <a name="deploying-the-solution-using-the-azure-powershell"></a>Nasazení řešení pomocí Azure PowerShell
 
@@ -100,7 +102,7 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Ma
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. Vytvořte prostředky služby Azure Public IP adresa (PIP) pro fond front-end IP adres. `-DomainNameLabel` Před spuštěním následujících příkazů nezapomeňte změnit hodnotu. Hodnota musí být jedinečná v rámci oblasti Azure.
+2. Vytvořte prostředky služby Azure Public IP adresa (PIP) pro fond front-end IP adres. Před spuštěním následujících příkazů nezapomeňte změnit hodnotu pro `-DomainNameLabel`. Hodnota musí být jedinečná v rámci oblasti Azure.
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4
@@ -230,10 +232,4 @@ Další informace o vytvoření virtuálního počítače najdete v tématu [Vyt
     New-AzVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>Další kroky
 
-[Začínáme s konfigurací interního nástroje pro vyrovnávání zatížení](load-balancer-get-started-ilb-arm-ps.md)
-
-[Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md)
-
-[Konfigurace nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md)

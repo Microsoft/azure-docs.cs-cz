@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 61149392368fc34fe388709dd5867250f3542fbc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f31d54314c6d6bd7a7f9ae2d134c1281bfe9294
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935986"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044093"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Rychlý Start: Content Moderator Klientská knihovna pro Java
 
@@ -125,14 +125,14 @@ V metodě `main` aplikace vytvořte objekt [ContentModeratorClient](https://docs
 
 ### <a name="get-images"></a>Získat obrázky
 
-V části **Src/Main/** složka projektu vytvořte složku **Resources (prostředky** ) a přejděte na ni. Pak vytvořte nový textový soubor *ImageFiles. txt*. V tomto souboru přidáte adresy URL obrázků k analýze&mdash;jednu adresu URL na každém řádku. Můžete použít následující ukázkový obsah:
+V části **Src/Main/** složka projektu vytvořte složku **Resources (prostředky** ) a přejděte na ni. Pak vytvořte nový textový soubor *ImageFiles. txt*. V tomto souboru přidáte adresy URL obrázků k analýze&mdash;jednu adresu URL na každém řádku. Můžete použít následující ukázkové obrázky:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
 
-### <a name="use-helper-class"></a>Použít pomocnou třídu
+### <a name="define-helper-class"></a>Definovat pomocnou třídu
 
 Potom v souboru *ContentModeratorQuickstart. Java* přidejte do třídy **ContentModeratorQuickstart** následující definici třídy. Tato vnitřní třída bude použita později v procesu moderování obrázku.
 

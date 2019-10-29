@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8ae5c9b6b52ea13e3d0981664e8c920cc5b47a01
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 2e96a2a2dd5504c906b5fb84b643467a83518f21
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263560"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027582"
 ---
 # <a name="overview-custom-rules-for-web-application-firewall-v2"></a>Přehled: vlastní pravidla pro webový Application firewall v2
 
@@ -32,6 +32,9 @@ Pokud chcete použít *nebo* pro dvě různé podmínky, musí být tyto dvě po
 > Maximální počet vlastních pravidel WAF je 100. Další informace o omezeních Application Gateway najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md#application-gateway-limits).
 
 Regulární výrazy jsou také podporovány ve vlastních pravidlech, stejně jako jsou v základních sadách pravidel. Příklady těchto pravidel naleznete v části "Příklad 3" a "Příklad 5" v tématu [Vytvoření a použití vlastních pravidel firewallu webových aplikací](create-custom-waf-rules.md).
+
+> [!NOTE]
+> Vlastní pravidla nejsou k dispozici v WAF SKU v1.
 
 ## <a name="allowing-or-blocking-traffic"></a>Povolení nebo blokování provozu
 
@@ -126,14 +129,14 @@ Operátor musí být jeden z následujících:
 
 - IPMatch: Tento operátor se používá pouze v případě, že je proměnná porovnávání *RemoteAddr*.
 - Equals: vstup je stejný jako MatchValue.
-- Obsahuje
+- Contains
 - LessThan
 - GreaterThan
 - LessThanOrEqual
 - GreaterThanOrEqual
 - Filtr začíná na
 - EndsWith
-- Regulární výraz
+- regulární
 
 ### <a name="negate-condition-optional"></a>Podmínka negace (volitelné)
 
@@ -143,7 +146,7 @@ Negace aktuální podmínky.
 
 Seznam řetězců s názvy transformací, které mají být dokončeny před pokusem o shodu. Mezi transformace patří:
 
-- Malá
+- Malá písmena
 - Sklon
 - UrlDecode
 - UrlEncode 

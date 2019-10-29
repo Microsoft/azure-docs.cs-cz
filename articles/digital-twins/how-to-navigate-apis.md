@@ -7,19 +7,19 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/29/2019
-ms.openlocfilehash: b01b83ab0e673254da19888210d9678e313acca2
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 10/27/2019
+ms.openlocfilehash: 03554ed6cbfc2edf9d08f0928484a805acb4607e
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949861"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044423"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak používat rozhraní API pro správu digitálních vláken Azure
 
 Rozhraní API pro správu digitálních vláken Azure poskytují výkonné funkce pro vaše aplikace IoT. V tomto článku se dozvíte, jak procházet strukturu rozhraní API.  
 
-## <a name="api-summary"></a>Přehled rozhraní API
+## <a name="api-summary"></a>Souhrn rozhraní API
 
 Následující seznam obsahuje komponenty rozhraní API digitálních vláken.
 
@@ -74,16 +74,16 @@ Rozhraní API digitálních vláken podporují filtrování a navigaci v celém 
 
 ### <a name="examples"></a>Příklady
 
-V následujícím seznamu jsou uvedeny některé příklady navigace prostřednictvím rozhraní [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) API. Všimněte si, že zástupný symbol `YOUR_MANAGEMENT_API_URL` odkazuje na identifikátor URI digitálních vláken rozhraní API ve formátu `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`, kde `YOUR_INSTANCE_NAME` je název instance digitálního vlákna Azure a `YOUR_LOCATION` je oblast, ve které je vaše instance hostovaná.
+V následujícím seznamu jsou uvedeny některé příklady navigace prostřednictvím rozhraní [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) API. Všimněte si, že zástupný `YOUR_MANAGEMENT_API_URL` odkazuje na identifikátor URI digitálních vláken rozhraní API ve formátu `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`, kde `YOUR_INSTANCE_NAME` je název instance digitálního vlákna v Azure a `YOUR_LOCATION` je oblast, ve které je vaše instance hostovaná.
 
 - `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1` vrátí všechna zařízení připojená ke kořenovým prostorům.
 - `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4` vrátí všechna zařízení připojená k prostorům úrovně 2, 3 nebo 4.
 - `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId` vrátí všechna zařízení přímo připojená k mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down` vrátí všechna zařízení připojená k mySpaceId nebo jednomu z jeho potomků.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down` vrátí všechna zařízení připojená k mySpaceId nebo k jednomu z jeho potomků.
 - `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true` vrátí všechna zařízení připojená k následníkům mySpaceId, s výjimkou mySpaceId.
 - `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true` vrátí všechna zařízení připojená k přímým podřízeným položkám mySpaceId.
 - `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true` vrátí všechna zařízení připojená k jednomu z nadřazených prvků mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5` vrátí všechna zařízení připojená k následníkům mySpaceId, které jsou na úrovni menší nebo rovny 5.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5` vrátí všechna zařízení připojená k následníkům mySpaceId, která jsou na úrovni menší nebo rovna 5.
 - `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true` vrátí všechna zařízení připojená k mezerám, které jsou na stejné úrovni jako mySpaceId.
 
 
@@ -104,11 +104,11 @@ Většina rozhraní API, která vracejí kolekce, jako je například volání G
 Následující seznam znázorňuje několik dotazů s platnou syntaxí OData:
 
 - `YOUR_MANAGEMENT_API_URL/devices?$top=3&$orderby=Name desc`
-- `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,’space’)`
-- `YOUR_MANAGEMENT_API_URL/propertykeys?$filter=Scope ne ‘Spaces’`
-- `YOUR_MANAGEMENT_API_URL/resources?$filter=Size gt ‘M’`
-- `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,’k’)&$orderby=LastName`
-- `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor’,Name)`
+- `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,'space')`
+- `YOUR_MANAGEMENT_API_URL/devices?$filter=TypeId eq 2`
+- `YOUR_MANAGEMENT_API_URL/resources?$filter=StatusId eq 2`
+- `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,'k')&$orderby=LastName`
+- `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor',Name)`
  
 ## <a name="next-steps"></a>Další kroky
 

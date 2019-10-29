@@ -1,5 +1,5 @@
 ---
-title: Uživatelsky definovaná funkce Java (UDF) s Apache Hive ve službě HDInsight – Azure
+title: Uživatelsky definovaná funkce Java (UDF) s Apache Hivem Azure HDInsight
 description: Naučte se vytvořit uživatelsky definovanou funkci (UDF) založenou na jazyce Java, která funguje s Apache Hive. V tomto příkladu UDF převede tabulku textových řetězců na malá.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,23 +8,23 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 43208636fb275c38573f820ef8245d7652b4aa86
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 5690f2cc5bc85d7bcdbf1d05930a05bcc2e764c0
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181177"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044783"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Použití Java UDF s Apache Hive v HDInsight
 
 Naučte se vytvořit uživatelsky definovanou funkci (UDF) založenou na jazyce Java, která funguje s Apache Hive. Jazyk Java UDF v tomto příkladu převede tabulku textových řetězců na všechny znaky s malými písmeny.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
-* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To je wasb://pro Azure Storage, abfs://pro Azure Data Lake Storage Gen2 nebo adl://pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To je wasb://pro Azure Storage, abfs://pro Azure Data Lake Storage Gen2 nebo adl://pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, `wasbs://`identifikátor URI.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
 * Textový editor nebo Java IDE
 
@@ -58,13 +58,13 @@ cd C:\HDI
     rmdir /S /Q "src/test"
     ```
 
-3. Otevřete `pom.xml` zadáním následujícího příkazu:
+3. Zadáním následujícího příkazu otevřete `pom.xml`:
 
     ```cmd
     notepad pom.xml
     ```
 
-    Pak existující `<dependencies>` položku nahraďte následujícím kódem XML:
+    Pak existující položku `<dependencies>` nahraďte následujícím kódem XML:
 
     ```xml
     <dependencies>
@@ -85,7 +85,7 @@ cd C:\HDI
 
     Tyto položky určují verzi Hadoop a podregistr, který je součástí HDInsight 3,6. Můžete najít informace o verzích Hadoop a podregistru dodaných v HDInsight z dokumentu [správy verzí komponent HDInsight](../hdinsight-component-versioning.md) .
 
-    `<build>` Přidejte oddíl`</project>` před řádek na konci souboru. Tato část by měla obsahovat následující kód XML:
+    Přidejte část `<build>` před `</project>` řádek na konci souboru. Tato část by měla obsahovat následující kód XML:
 
     ```xml
     <build>
@@ -188,9 +188,9 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
     mvn compile package
     ```
 
-    Tento příkaz sestaví a zabalí systém `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` souborů UDF do souboru.
+    Tento příkaz sestaví a zabalí systém souborů UDF do souboru `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar`.
 
-2. `scp` Pomocí příkazu zkopírujte soubor do clusteru HDInsight zadáním následujícího příkazu:
+2. Pomocí příkazu `scp` zkopírujte soubor do clusteru HDInsight zadáním následujícího příkazu:
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
@@ -218,7 +218,7 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
 
     Tento příkaz předpokládá, že jste pro svůj cluster použili výchozí účet **správce** .
 
-2. Až se `jdbc:hive2://localhost:10001/>` zobrazí výzva, zadejte následující příkaz pro přidání systému souborů UDF do podregistru a jeho vystavení jako funkce.
+2. Po přijetí `jdbc:hive2://localhost:10001/>` výzvy zadejte následující text a přidejte ho do podregistru a vystavte ho jako funkci.
 
     ```hiveql
     ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;

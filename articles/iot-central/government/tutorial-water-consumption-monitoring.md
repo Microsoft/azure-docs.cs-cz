@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 543d019628e0f3c8423a71a4aa8d5b24a60e82e3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 59dae65d32f1b816e59ee883cb4529c6f1fd212c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956716"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026564"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Kurz: Vytvoření aplikace monitorování spotřeby vody v IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 V tomto kurzu Vás provedeme vytvořením aplikace monitorování spotřeby ve službě Azure IoT Central voda ze šablony aplikace monitorování využití vody IoT Central. 
 
@@ -47,7 +49,7 @@ Vytvoření nové aplikace monitorování spotřeby v Azure IoT Centrale:
 
     ![Zadání účtu organizace](media/tutorial-waterconsumptionmonitoring/sign-in.png)
 
-2. V levé navigační nabídce klikněte na **sestavovat** a vyberte kartu **státní správa** . Stránka pro státní správu zobrazuje několik šablon aplikací pro státní správu.
+2. V levém podokně klikněte na **sestavovat** a vyberte kartu **státní správa** . Stránka pro státní správu zobrazuje několik šablon aplikací pro státní správu.
 
    ![Vytváření šablon aplikací pro státní správu](./media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png)
 
@@ -241,7 +243,7 @@ Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatels
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte aplikaci pomocí následujících kroků:
 
-1. Otevřete kartu Správa z levé navigační nabídky aplikace IoT Central. 
+1. Otevřete kartu Správa v levém podokně aplikace IoT Central. 
 2. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky. 
 
 

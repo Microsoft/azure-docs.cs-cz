@@ -3,8 +3,8 @@ title: Experimenty protokolu ML & metriky
 titleSuffix: Azure Machine Learning
 description: Sledujte experimenty Azure ML a sledujte metriky spuštění, abyste vylepšili proces vytváření modelů. Přidání protokolování do školicího skriptu a zobrazení protokolovaných výsledků spuštění.  Použijte run. log, spusťte. start_logging nebo ScriptRunConfig.
 services: machine-learning
-author: heatherbshapiro
-ms.author: hshapiro
+author: sdgilley
+ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c72de809dc5818cced95be2cbd6b47308bad4f22
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002708"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045209"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitorování běhů a metriky Azure ML
 
@@ -28,31 +28,31 @@ Vylepšete proces vytváření modelů sledováním experimentů a monitorován�
 
 ## <a name="available-metrics-to-track"></a>Dostupné metriky ke sledování
 
-Pro spuštění při školení experiment lze přidat následující metriky. Chcete-li zobrazit podrobnější seznam co lze sledovat na běh, najdete v článku [spuštění třídy referenční dokumentaci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
+Následující metriky je možné přidat ke spuštění během školení experimentu. Podrobné informace o tom, co lze sledovat při spuštění, naleznete v [dokumentaci třídy Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
-|Typ| Funkce jazyka Python | Poznámky|
+|Typ| Funkce Pythonu | Poznámky|
 |----|:----|:----|
-|Skalární hodnoty |Funkce:<br>`run.log(name, value, description='')`<br><br>Příklad:<br>Run.log ("přesnost", 0,95) |Protokol a číselné nebo řetězcová hodnota pro spouštění s daným názvem. Protokolování metriky o spuštění způsobí, že tuto metriku, který bude uložen do běhu záznam v experimentu.  Stejné metriky můžete přihlásit více než jednou v rámci spuštěný proces, výsledek se považuje za vektor tuto metriku.|
-|Seznamy|Funkce:<br>`run.log_list(name, value, description='')`<br><br>Příklad:<br>Run.log_list ("přesností" [0.6, 0,7, 0.87]) | Přihlaste se seznam hodnot pro spouštění s daným názvem.|
-|Řádek|Funkce:<br>`run.log_row(name, description=None, **kwargs)`<br>Příklad:<br>Run.log_row ("Y nad X", x = 1, y = 0.4) | Pomocí *log_row* vytvoří metriku s více sloupců, jak je popsáno v kwargs. Každý pojmenovaný parametr generuje sloupec s hodnotou.  *log_row* může být volána jednou pro přihlášení libovolné řazené kolekce členů nebo více než jednou ve smyčce pro generování celou tabulku.|
-|Table|Funkce:<br>`run.log_table(name, value, description='')`<br><br>Příklad:<br>Run.log_table ("Y nad X", {"x": [1, 2, 3], "y": [0.6, 0,7, 0.89]}) | Přihlaste se na objekt slovníku běh s daným názvem. |
-|Image|Funkce:<br>`run.log_image(name, path=None, plot=None)`<br><br>Příklad:<br>`run.log_image("ROC", plt)` | Přihlaste se image spusťte záznam. Použití k protokolování soubor obrázku nebo matplotlib log_image vykreslení spustit.  Tyto Image budou viditelné a srovnatelné v běhu záznamu.|
-|Označení spuštění|Funkce:<br>`run.tag(key, value=None)`<br><br>Příklad:<br>Run.tag ("vybrat", "Ano") | Označte běh s klíčem řetězce a volitelný řetězec.|
-|Nahrát soubor nebo adresář|Funkce:<br>`run.upload_file(name, path_or_stream)`<br> <br> Příklad:<br>Run.upload_file ("best_model.pkl", ". / model.pkl") | Nahrání souboru do běhu záznamu. Spuštění automaticky zachytávací soubor v zadané výstupní adresář, kde je použit výchozí ". / výstupy" pro většinu spuštění typy.  Není zadána upload_file použijte jenom v případě, že budete muset nahrát další soubory nebo výstupní adresář. Doporučujeme přidat `outputs` název tak, že nahrán do adresáře výstupy. Můžete vytvořit seznam všech souborů, které jsou spojeny s tímto spustit záznam podle volá `run.get_file_names()`|
+|Skalární hodnoty |Slouží<br>`run.log(name, value, description='')`<br><br>Příklad:<br>Run. log ("přesnost", 0,95) |Zaprotokoluje do běhu číselnou hodnotu nebo řetězec s daným názvem. Protokolování metriky do běhu způsobí, že se metrika uloží do záznamu spuštění v experimentu.  Stejnou metriku můžete v rámci spuštění zaprotokolovat několikrát, výsledek je považován za vektor této metriky.|
+|Vytvoří|Slouží<br>`run.log_list(name, value, description='')`<br><br>Příklad:<br>Run. log _List ("přesností"; [0,6, 0,7, 0,87]) | Protokoluje seznam hodnot pro běh se zadaným názvem.|
+|řadě|Slouží<br>`run.log_row(name, description=None, **kwargs)`<br>Příklad:<br>Run. log _row ("Y over X", X = 1, Y = 0.4) | Použití *log_row* vytvoří metriku s více sloupci, jak je popsáno v kwargs. Každý pojmenovaný parametr vygeneruje sloupec se zadanou hodnotou.  *log_row* se dá volat jednou pro zaznamenání libovolné řazené kolekce členů nebo víckrát ve smyčce, aby se vygenerovala úplná tabulka.|
+|Tabulka|Slouží<br>`run.log_table(name, value, description='')`<br><br>Příklad:<br>Run. log _table ("Y over X"; {"X": [1; 2; 3]; "Y": [0,6, 0,7, 0,89]}) | Zaprotokoluje objekt Dictionary do běhu s daným názvem. |
+|Image|Slouží<br>`run.log_image(name, path=None, plot=None)`<br><br>Příklad:<br>`run.log_image("ROC", plt)` | Zaprotokoluje obrázek do záznamu spuštění. Pomocí log_image Zaprotokolujte soubor obrázku nebo matplotlib vykreslení do běhu.  Tyto obrázky budou viditelné a srovnatelné v záznamu spuštění.|
+|Označení běhu|Slouží<br>`run.tag(key, value=None)`<br><br>Příklad:<br>Run. Tag ("Selected"; "Yes") | Označte běh pomocí klíče řetězce a volitelné řetězcové hodnoty.|
+|Odeslat soubor nebo adresář|Slouží<br>`run.upload_file(name, path_or_stream)`<br> <br> Příklad:<br>Run. upload_file ("best_model. pkl"; "./model.pkl") | Nahrajte soubor na záznam spuštění. Spustí automaticky zachytávání souboru v zadaném výstupním adresáři, který pro většinu typů spuštění nastaví jako výchozí hodnotu "./Outputs".  Upload_file použijte jenom v případě, že je potřeba nahrát další soubory nebo není zadaný výstupní adresář. Doporučujeme přidat `outputs` k názvu, aby se nahrál do adresáře výstupy. Můžete zobrazit seznam všech souborů, které jsou přidruženy k tomuto záznamu spuštění pomocí metody `run.get_file_names()`|
 
 > [!NOTE]
-> Metriky pro skaláry, seznamy, řádků a tabulky může mít typ: float, celé číslo nebo řetězec.
+> Metriky pro skalární hodnoty, seznamy, řádky a tabulky mohou mít typ: float, Integer nebo String.
 
 ## <a name="choose-a-logging-option"></a>Zvolit možnost protokolování
 
-Pokud chcete sledovat nebo sledovat experimentu, musíte přidat kód pro spuštění protokolování při odesílání příkazu run. Následují způsoby, jak aktivovat spuštění odeslání:
-* __Run.start_logging__ – přidání funkce protokolování do trénovací skript a spustit relaci interactive protokolování v zadané experimentu. **start_logging** vytvoří interaktivní spuštění pro použití ve scénářích, jako je například poznámkových bloků. Všechny metriky, které jsou zaznamenány během relace jsou přidány do běhu záznam v experimentu.
-* __ScriptRunConfig__ – přidání funkce protokolování do trénovací skript a načíst složku celý skript s spuštění.  **ScriptRunConfig** je třída pro nastavení konfigurace pro skript spustí. Pomocí této možnosti přidáte kód monitorování, abyste dostávali oznámení o dokončení nebo chcete-li získat vizuální pomůcky pro monitorování.
+Pokud chcete sledovat nebo monitorovat experiment, je nutné přidat kód pro spuštění protokolování při odeslání běhu. Níže jsou uvedené způsoby, jak spustit odeslání spuštění:
+* __Spusťte. start_logging__ – přidejte funkce protokolování do školicího skriptu a spusťte interaktivní protokolovací relaci v zadaném experimentu. **start_logging** vytvoří interaktivní běh pro použití ve scénářích, jako jsou třeba poznámkové bloky. Všechny metriky, které jsou protokolovány během relace, jsou přidány do záznamu spuštění v experimentu.
+* __ScriptRunConfig__ – přidejte funkce protokolování do školicího skriptu a načtěte celou složku skriptu pomocí běhu.  **ScriptRunConfig** je třída pro nastavení konfigurací pro spuštění skriptu. Pomocí této možnosti můžete přidat kód monitorování, který bude upozorněn na dokončení nebo získat vizuální pomůcku k monitorování.
 
-## <a name="set-up-the-workspace"></a>Nastavit pracovní prostor
-Před přidáním protokolování a odeslání experimentu, musíte nastavit pracovní prostor.
+## <a name="set-up-the-workspace"></a>Nastavení pracovního prostoru
+Před přidáním protokolování a odeslání experimentu musíte nastavit pracovní prostor.
 
-1. Načtení pracovního prostoru. Další informace o nastavení konfigurace pracovního prostoru najdete v tématu [konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
+1. Načtěte pracovní prostor. Další informace o nastavení konfigurace pracovního prostoru najdete v tématu [konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -61,13 +61,13 @@ Před přidáním protokolování a odeslání experimentu, musíte nastavit pra
    ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-start_logging"></a>Možnost 1: Použití start_logging
+## <a name="option-1-use-start_logging"></a>Možnost 1: použití start_logging
 
-**start_logging** vytvoří interaktivní spuštění pro použití ve scénářích, jako je například poznámkových bloků. Všechny metriky, které jsou zaznamenány během relace jsou přidány do běhu záznam v experimentu.
+**start_logging** vytvoří interaktivní běh pro použití ve scénářích, jako jsou třeba poznámkové bloky. Všechny metriky, které jsou protokolovány během relace, jsou přidány do záznamu spuštění v experimentu.
 
-Následující příklad trénovat jednoduchý model skriptu sklearn Ridge místně v místní aplikace Jupyter notebook. Další informace o odesílání experimentů do různých prostředí najdete v tématu [Nastavení výpočetních cílů pro školení modelů s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
+Následující příklad vytvoří jednoduchý Ridge model skriptu sklearn místně v místním poznámkovém bloku Jupyter. Další informace o odesílání experimentů do různých prostředí najdete v tématu [Nastavení výpočetních cílů pro školení modelů s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
 
-1. Vytvoření trénovací skript v místní aplikace Jupyter notebook. 
+1. Vytvořte školicí skript v místním Jupyter poznámkovém bloku. 
 
    ```python
    # load diabetes dataset, a well-known small dataset that comes with scikit-learn
@@ -91,7 +91,7 @@ Následující příklad trénovat jednoduchý model skriptu sklearn Ridge míst
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. Přidejte sledování experimentů pomocí Azure Machine Learning SDK a nahrajte trvalý model do záznamu experimentálního spuštění. Následující kód přidá značky, protokoly a nahraje soubor modelu pro běh experimentu.
+2. Přidejte sledování experimentů pomocí Azure Machine Learning SDK a nahrajte trvalý model do záznamu experimentálního spuštění. Následující kód přidá značky, protokoly a nahraje soubor modelu do běhu experimentu.
 
    ```python
     # Get an experiment object from Azure Machine Learning
@@ -123,13 +123,13 @@ Následující příklad trénovat jednoduchý model skriptu sklearn Ridge míst
     run.complete()
    ```
 
-    Skript končí ```run.complete()```, spustit označí jako dokončenou.  Tato funkce se obvykle používá ve scénářích interaktivní poznámkového bloku.
+    Skript končí na ```run.complete()```, který označí běh jako dokončený.  Tato funkce se obvykle používá v interaktivních scénářích poznámkových bloků.
 
-## <a name="option-2-use-scriptrunconfig"></a>Možnost 2: Použití ScriptRunConfig
+## <a name="option-2-use-scriptrunconfig"></a>Možnost 2: použití ScriptRunConfig
 
-[**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) je třída pro nastavení konfigurací pro spuštění skriptu. Pomocí této možnosti přidáte kód monitorování, abyste dostávali oznámení o dokončení nebo chcete-li získat vizuální pomůcky pro monitorování.
+[**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) je třída pro nastavení konfigurací pro spuštění skriptu. Pomocí této možnosti můžete přidat kód monitorování, který bude upozorněn na dokončení nebo získat vizuální pomůcku k monitorování.
 
-Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Provádí jednoduché parametr parametrů k vyčištění přes alfa hodnoty modelu, který má zachytávat metriky a trénované modely ve spuštění v rámci testu. V příkladu spustí místně prostředí spravované uživatele. 
+Tento příklad rozšiřuje základní model skriptu sklearn Ridge z výše uvedeného. Pro zachycení metrik a školených modelů v rámci experimentu používá jednoduché rozmazání parametrů pro setrvání hodnot alfa modelu. Příklad se spouští místně na uživatelsky spravovaném prostředí. 
 
 1. Vytvořte školicí skript `train.py`.
 
@@ -185,7 +185,7 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
   
    ```
 
-2. `train.py` Odkaz`mylib.py` na skript, který umožňuje získat seznam hodnot alfa pro použití v modelu Ridge.
+2. Skript `train.py` odkazuje na `mylib.py`, které vám umožní získat seznam hodnot Alpha pro použití v modelu Ridge.
 
    ```python
    # mylib.py
@@ -197,7 +197,7 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
       return np.arange(0.0, 1.0, 0.05)
    ```
 
-3. Nakonfigurujte uživatele spravovat místní prostředí.
+3. Konfigurace místního prostředí spravovaného uživatelem
 
    ```python
    from azureml.core import Environment
@@ -211,7 +211,7 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
    #user_managed_env.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
    ```
 
-4. Odeslání ```train.py``` skript ke spuštění v prostředí spravované uživatele. Tato složka celý skript se odešle ke školení, včetně ```mylib.py``` souboru.
+4. Odešlete skript ```train.py```, který se spustí v prostředí spravovaném uživatelem. Tato složka pro všechny skripty je odeslána pro školení, včetně souboru ```mylib.py```.
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -226,19 +226,19 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
 
 Články týkající se [spuštění, sledování a zrušení školicích programů](how-to-manage-runs.md) zvýrazňují konkrétní Azure Machine Learning pracovní postupy pro správu experimentů.
 
-## <a name="view-run-details"></a>Zobrazení podrobností o spuštění
+## <a name="view-run-details"></a>Zobrazit podrobnosti o spuštění
 
 ### <a name="monitor-run-with-jupyter-notebook-widget"></a>Monitorovat běh pomocí widgetu pro Poznámkový blok Jupyter
 Když použijete metodu **ScriptRunConfig** k odeslání spuštění, můžete sledovat průběh běhu s [pomůckou Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Podobně jako odeslání spuštění je tento widget asynchronní a poskytuje průběžné aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
 
-1. Při čekání na dokončení běhu zobrazte widgetu Jupyter.
+1. Zobrazit widget Jupyter při čekání na dokončení běhu.
 
    ```python
    from azureml.widgets import RunDetails
    RunDetails(run).show()
    ```
 
-   ![Snímek obrazovky aplikace Jupyter notebook widgetu](./media/how-to-track-experiments/run-details-widget.png)
+   ![Snímek obrazovky s pomůckou pro Poznámkový blok Jupyter](./media/how-to-track-experiments/run-details-widget.png)
 
 Můžete také získat odkaz na stejný displej v pracovním prostoru.
 
@@ -246,7 +246,7 @@ Můžete také získat odkaz na stejný displej v pracovním prostoru.
 print(run.get_portal_url())
 ```
 
-2. **[Pro automatizované strojového učení spuštění]**  Pro přístup k grafy z předchozích spuštění. Nahraďte `<<experiment_name>>` názvem vhodného experimentu:
+2. **[Pro automatizované běhy strojového učení]** Pro přístup k grafům z předchozího běhu. Nahraďte `<<experiment_name>>` vhodným názvem experimentu:
 
    ``` 
    from azureml.widgets import RunDetails
@@ -258,58 +258,58 @@ print(run.get_portal_url())
    RunDetails(run).show()
    ```
 
-   ![Widget poznámkového bloku Jupyter pro automatizované Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+   ![Widget pro Jupyter Poznámkový blok pro automatizované Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
-Chcete-li zobrazit další podrobnosti klikněte na kanál ke kanálu chcete data prozkoumat v tabulce a grafy se vykreslují v místní nabídce na webu Azure Portal.
+Pokud chcete zobrazit další podrobnosti o kanálu, klikněte na kanál, který chcete prozkoumat v tabulce, a grafy se vykreslí v automaticky otevíraném okně Azure Portal.
 
 ### <a name="get-log-results-upon-completion"></a>Získání protokolu výsledků při dokončení
 
-Model školení a monitorování probíhá na pozadí tak, aby můžete spouštět další úlohy, zatímco čekáte. Můžete také počkat, dokud modelu byla dokončena školení před spuštěním další kód. Při použití **ScriptRunConfig**, můžete použít ```run.wait_for_completion(show_output = True)``` zobrazíte po dokončení cvičení modelu. ```show_output``` Příznak vám poskytne podrobný výstup. 
+Školení a monitorování modelů probíhá na pozadí, takže můžete spouštět další úlohy při čekání. Před spuštěním více kódů můžete také počkat na dokončení školení modelu. Když použijete **ScriptRunConfig**, můžete použít ```run.wait_for_completion(show_output = True)``` k zobrazení po dokončení školení modelu. Příznak ```show_output``` poskytuje podrobný výstup. 
 
 
-### <a name="query-run-metrics"></a>Dotaz spustit metriky
+### <a name="query-run-metrics"></a>Metriky spuštění dotazu
 
-Metriky trénovaný model použití lze zobrazit ```run.get_metrics()```. Teď můžete získat všechny metriky, které byly zaznamenány v příkladu výše k určení nejvhodnějšího modelu.
+Metriky proučeného modelu můžete zobrazit pomocí ```run.get_metrics()```. Nyní můžete získat všechny metriky, které byly zaprotokolovány výše v předchozím příkladu, a určit tak nejlepší model.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 ## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Zobrazit experiment na Azure Portal nebo na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com)
 
-Po dokončení spuštění experimentu můžete přejít na zaznamenané experiment spustit záznam. K historii můžete přistupovat dvěma způsoby:
+Po dokončení experimentu můžete přejít na zaznamenaný záznam spuštění experimentu. K historii můžete přistupovat dvěma způsoby:
 
 * Získat adresu URL pro spuštění přímo ```print(run.get_portal_url())```
-* Zobrazit podrobnosti o spuštění, odešlete název běhu (v tomto případě ```run```). Tímto způsobem můžete odkazuje na název experimentu, ID, typ, stav, stránka s podrobnostmi o, odkaz na webu Azure portal a odkaz na dokumentaci.
+* Zobrazení podrobností o spuštění odesláním názvu běhu (v tomto případě ```run```). Tímto způsobem odkazujete na stránku název experimentu, ID, typ, stav, podrobnosti, odkaz na Azure Portal a odkaz na dokumentaci.
 
-Odkaz pro spuštění disponuje přímo na stránku Podrobnosti o spuštění na webu Azure Portal. Zde můžete zobrazit vlastnosti, sledované metriky, obrázky a grafy, které se protokolují v experimentu. V tomto případě jsme do protokolu zapíše MSE a hodnoty alfa.
+Odkaz na spuštění vás přesune přímo na stránku podrobností o spuštění v Azure Portal. Tady vidíte všechny vlastnosti, sledované metriky, obrázky a grafy, které se v experimentu přihlásily. V tomto případě jsme nahlásili hodnoty MSE a alfa.
 
-  ![Podrobnosti o spuštění na webu Azure Portal](./media/how-to-track-experiments/run-details-page.png)
+  ![Podrobnosti o spuštění Azure Portal](./media/how-to-track-experiments/run-details-page.png)
 
-Můžete také zobrazit všechny výstupy a protokoly pro spuštění nebo stáhnout snímek experiment, který jste odeslali, složce experimentu můžete sdílet s ostatními.
+Můžete také zobrazit všechny výstupy nebo protokoly pro spuštění nebo si stáhnout snímek experimentu, který jste odeslali, abyste mohli sdílet složku experimentů s ostatními.
 
-### <a name="viewing-charts-in-run-details"></a>Zobrazení grafů v podrobnosti o spuštění
+### <a name="viewing-charts-in-run-details"></a>Zobrazení grafů v podrobnostech o běhu
 
-Existují různé způsoby, jak používat protokolování rozhraní API pro různé typy záznamů metrik během spuštění a zobrazit jako grafy na webu Azure Portal. 
+Existují různé způsoby, jak použít rozhraní API protokolování k nahrávání různých typů metrik během běhu a jejich zobrazení jako grafů v Azure Portal. 
 
-|Zaznamenané hodnoty|Příklad kódu| Zobrazit v portálu|
+|Hodnota protokolu|Příklad kódu| Zobrazit na portálu|
 |----|----|----|
-|Protokol pole číselných hodnot| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Single-variable spojnicový graf|
-|Přihlásit se stejným názvem metriky opakovaně použít jednu numerickou hodnotu (jako v rámci smyčky for)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Single-variable spojnicový graf|
-|Opakovaným odesláním řádek 2 číselné sloupce|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Dvě proměnné spojnicový graf|
-|Tabulku protokolu s 2 číselné sloupce|`run.log_table(name='Sine Wave', value=sines)`|Dvě proměnné spojnicový graf|
+|Protokolování pole číselných hodnot| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Spojnicový graf s jednou proměnnou|
+|Zaprotokoluje jednu číselnou hodnotu se stejným názvem metriky, který se opakovaně používá (například v rámci smyčky for).| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Spojnicový graf s jednou proměnnou|
+|Opakované zaznamenání řádku se dvěma číselnými sloupci|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Spojnicový graf se dvěma proměnnými|
+|Tabulka protokolu se dvěma číselnými sloupci|`run.log_table(name='Sine Wave', value=sines)`|Spojnicový graf se dvěma proměnnými|
 
 
-## <a name="example-notebooks"></a>Příklad poznámkové bloky
-Tyto poznámkové bloky předvedení konceptů v tomto článku:
-* [How-to-use-azureml/Training/Train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [How-to-use-azureml/Training/Train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+## <a name="example-notebooks"></a>Ukázkové poznámkové bloky
+Následující poznámkové bloky ukazují koncepty v tomto článku:
+* [Postupy: použití-AzureML/školení/výuka v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
+* [Postupy: použití-AzureML/školení/výuka v místním prostředí](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [How-to-use-AzureML/Training/Logging-API/Logging-API. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte tyto další kroky pro další informace o použití sady SDK Azure Machine Learning pro Python:
+Pokud se chcete dozvědět, jak používat sadu SDK Azure Machine Learning pro Python, zkuste použít následující postup:
 
-* Příklad toho, jak zaregistrovat tento nejlepší model a nasadit ho v tomto kurzu [trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md).
+* Podívejte se na příklad, jak registrovat nejlepší model a nasadit ho v kurzu, [Naučte si model klasifikace imagí pomocí Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-* Zjistěte, jak [trénování modelů PyTorch službou Azure Machine Learning](how-to-train-pytorch.md).
+* Naučte se, jak [pomocí Azure Machine Learning naučit modely PyTorch](how-to-train-pytorch.md).

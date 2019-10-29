@@ -18,31 +18,31 @@ ms.author: ryanwi
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fb4342e024d826c65ed33184aaf33012d09190a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a467593d16c54e73d58f9cb2b67a4fa31eb0179e
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545197"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042317"
 ---
-# <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory verze 1.0
+# <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory v 1.0
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
 Azure Active Directory (Azure AD) ve velké míře využívá oprávnění v tocích OAuth i OpenID Connect (OIDC). Když vaše aplikace obdrží přístupový token ze služby Azure AD, bude tento přístupový token obsahovat deklarace identity popisující oprávnění vaší aplikace ve vztahu ke konkrétnímu prostředku.
 
-*Oprávnění*, označované také jako *obory*, usnadňují autorizace pro prostředek vzhledem k tomu, že prostředek pouze musí zkontrolovat, že token obsahuje příslušná oprávnění pro jakékoli rozhraní API je volání aplikace.
+*Oprávnění*, která se označují také jako *obory*, usnadňují autorizaci prostředku, protože prostředek musí zkontrolovat, že token obsahuje příslušné oprávnění pro jakékoli rozhraní API, které aplikace volá.
 
 ## <a name="types-of-permissions"></a>Typy oprávnění
 
 Azure AD definuje dva typy oprávnění:
 
-* **Delegovaná oprávnění** – Používají je aplikace, ve kterých je přihlášený uživatel. V případě těchto aplikací uživatel nebo správce udělí souhlas s oprávněními, která aplikace požaduje, a aplikaci se deleguje oprávnění k tomu, aby při volání rozhraní API fungovala jako přihlášený uživatel. V závislosti na rozhraní API, uživatel nebude možné souhlas přímo do rozhraní API a místo toho by [vyžadují správce poskytnout "souhlas správce"](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
-* **Oprávnění aplikací** – Používají je aplikace spuštěné bez přihlášeného uživatele, například aplikace spuštěné jako služby na pozadí nebo procesy démon. Oprávnění aplikací může [odsouhlasit pouze správce](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant), protože jsou obvykle mocná a umožňují přístup k datům různých uživatelů nebo datům, ke kterým by jinak měl přístup pouze správce.
+* **Delegovaná oprávnění** – Používají je aplikace, ve kterých je přihlášený uživatel. V případě těchto aplikací uživatel nebo správce udělí souhlas s oprávněními, která aplikace požaduje, a aplikaci se deleguje oprávnění k tomu, aby při volání rozhraní API fungovala jako přihlášený uživatel. V závislosti na rozhraní API nemusí uživatel být schopný získat souhlas s rozhraním API přímo a místo toho vyžaduje, [aby správce poskytoval souhlas správce](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+* **Oprávnění aplikací** – Používají je aplikace spuštěné bez přihlášeného uživatele, například aplikace spuštěné jako služby na pozadí nebo procesy démon. Oprávnění aplikací můžou být odsouhlasená jenom [správcům](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant) , protože jsou obvykle výkonné a umožňují přístup k datům přes hranice uživatele nebo data, která by jinak byla omezená na správce. Uživatelé, kteří jsou definováni jako vlastníci aplikace prostředků (tj. rozhraní API, které publikují oprávnění), také mohou udělovat oprávnění aplikace pro rozhraní API, které vlastní.
 
 Efektivní oprávnění jsou oprávnění, která bude mít vaše aplikace při posílání požadavků do rozhraní API. 
 
-* V případě delegovaných oprávnění budou efektivní oprávnění vaší aplikace představovat průnik nejnižších oprávnění udělených aplikaci (prostřednictvím souhlasu) a oprávnění aktuálně přihlášeného uživatele. Aplikace nemůže mít nikdy více oprávnění než přihlášený uživatel. V rámci organizací je možné oprávnění přihlášeného uživatele určit pomocí zásady nebo členství v jedné nebo několika rolích správce. Informace o tom, které správce rolí můžou udělit souhlas s delegovaná oprávnění, najdete v článku [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+* V případě delegovaných oprávnění budou efektivní oprávnění vaší aplikace představovat průnik nejnižších oprávnění udělených aplikaci (prostřednictvím souhlasu) a oprávnění aktuálně přihlášeného uživatele. Aplikace nemůže mít nikdy více oprávnění než přihlášený uživatel. V rámci organizací je možné oprávnění přihlášeného uživatele určit pomocí zásady nebo členství v jedné nebo několika rolích správce. Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
     Předpokládejme například, že má vaše aplikace udělené delegované oprávnění `User.ReadWrite.All` v Microsoft Graphu. Toto oprávnění vaší aplikaci výslovně uděluje oprávnění ke čtení a aktualizaci profilu každého uživatele v organizaci. Pokud je přihlášený uživatel globální správce, vaše aplikace bude moct aktualizovat profil každého uživatele v organizaci. Pokud však přihlášený uživatel není v roli správce, vaše aplikace bude moct aktualizovat pouze profil přihlášeného uživatele. Nebude moct aktualizovat profily ostatních uživatelů v organizaci, protože uživatel, jehož jménem má aplikace oprávnění jednat, tato oprávnění nemá.
 * V případě oprávnění aplikací představují efektivní oprávnění vaší aplikace plný rozsah implikovaných oprávnění. Například aplikace s oprávněním aplikace `User.ReadWrite.All` může aktualizovat profil každého uživatele v organizaci.
 
@@ -64,7 +64,7 @@ Oprávnění ve službě Azure AD mají řadu vlastností, které uživatelům, 
 | Název vlastnosti | Popis | Příklad: |
 | --- | --- | --- |
 | `ID` | Hodnota GUID, která jednoznačně identifikuje toto oprávnění. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
-| `IsEnabled` | Určuje, jestli je toto oprávnění k dispozici pro použití. | true (pravda) |
+| `IsEnabled` | Určuje, jestli je toto oprávnění k dispozici pro použití. | true |
 | `Type` | Určuje, jestli toto oprávnění vyžaduje souhlas uživatele nebo souhlas správce. | Uživatel |
 | `AdminConsentDescription` | Popis, který se zobrazí správcům při udělování souhlasu správce. | Umožňuje aplikaci číst e-maily v poštovních schránkách uživatelů. |
 | `AdminConsentDisplayName` | Popisný název, který se zobrazí správcům při udělování souhlasu správce. | Čtení pošty uživatelů |
@@ -82,7 +82,7 @@ Aplikace ve službě Azure AD získávají přístup k potřebným prostředkům
 * **Dynamický souhlas uživatele** – Jedná se o funkci modelu aplikace Azure AD v2. V tomto scénáři vaše aplikace vyžaduje sadu potřebných oprávnění v [autorizačním toku OAuth 2.0 pro aplikace v2](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent). Pokud uživatel ještě neudělil souhlas, v tuto chvíli se zobrazí výzva k vyjádření souhlasu. [Další informace o dynamickém souhlasu](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
 
     > [!IMPORTANT]
-    > Dynamický souhlas může být praktický, ale představuje velkou výzvu pro oprávnění vyžadující souhlas správce, protože prostředí pro udělení souhlasu správce v době vyjádření souhlasu nemá informace o těchto oprávněních. Pokud budete potřebovat oprávnění správce privilegovaných nebo pokud vaše aplikace používá dynamické souhlas, je nutné zaregistrovat všechna oprávnění na webu Azure Portal (ne jen dílčí sadu oprávnění, která vyžadují souhlas správce). To umožňuje správci tenanta souhlas jménem všech svých uživatelů.
+    > Dynamický souhlas může být praktický, ale představuje velkou výzvu pro oprávnění vyžadující souhlas správce, protože prostředí pro udělení souhlasu správce v době vyjádření souhlasu nemá informace o těchto oprávněních. Pokud požadujete oprávnění správce nebo pokud vaše aplikace používá dynamický souhlas, musíte zaregistrovat všechna oprávnění v Azure Portal (ne jenom podmnožinu oprávnění, která vyžaduje souhlas správce). To správcům tenanta umožňuje vyjádřit souhlas jménem všech uživatelů.
   
 * **Souhlas správce** – Vyžaduje se v případě, že vaše aplikace potřebuje přístup k určitým vysoce privilegovaným oprávněním. Souhlas správce zajistí, aby správci měli k dispozici několik dalších ovládacích prvků, než autorizují přístup aplikací nebo uživatelů k vysoce privilegovaným datům organizace. [Další informace o udělování souhlasu správce](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
@@ -102,11 +102,11 @@ Aplikace ve službě Azure AD získávají přístup k potřebným prostředkům
 - Oprávnění `Read` a `ReadWrite` by prostředky měly definovat explicitně a zvlášť.
 - Prostředky by měly všechna oprávnění povolující přístup k datům různých uživatelů označovat jako oprávnění `Admin`.
 - Prostředky by měly dodržovat formát pojmenování `Subject.Permission[.Modifier]`, kde:
-  - `Subject` odpovídá typu dat, která je k dispozici
-  - `Permission` odpovídá akci, která uživatel může trvat na tato data
-  - `Modifier` Volitelně slouží k popisu specializace jiné oprávnění
+  - `Subject` odpovídá typu dat, která jsou k dispozici.
+  - `Permission` odpovídá akci, kterou uživatel může na těchto datech použít.
+  - `Modifier` se volitelně používá k popisu specializací jiného oprávnění.
     
-    Příklad:
+    Například:
   - Mail.Read – Umožňuje uživatelům číst poštu.
   - Mail.ReadWrite – Umožňuje uživatelům číst nebo psát poštu.
   - Mail.ReadWrite.All – Umožňuje správci nebo uživateli přístup k poště v organizaci.

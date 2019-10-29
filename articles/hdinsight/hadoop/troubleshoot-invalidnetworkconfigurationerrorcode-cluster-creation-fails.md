@@ -1,5 +1,5 @@
 ---
-title: InvalidNetworkConfigurationErrorCode z vytváření clusteru ve službě Azure HDInsight
+title: Chyba InvalidNetworkConfigurationErrorCode – Azure HDInsight
 description: Různé důvody pro neúspěšné vytváření clusterů pomocí InvalidNetworkConfigurationErrorCode ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: a6b207086325018deb63383a0775af8dfe195ac4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5b8d031af9dbe6019d71e2a1caa3d3f25d4024ea
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091722"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044454"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Vytvoření clusteru selhalo s InvalidNetworkConfigurationErrorCode ve službě Azure HDInsight
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
-Pokud se zobrazí kód `InvalidNetworkConfigurationErrorCode` chyby s popisem "konfigurace Virtual Network není kompatibilní s požadavkem HDInsight", obvykle to znamená problém s [konfigurací virtuální sítě](../hdinsight-plan-virtual-network-deployment.md) pro váš cluster. Na základě zbytku popisu chyby použijte následující části k vyřešení vašeho problému.
+Pokud se zobrazí kód chyby `InvalidNetworkConfigurationErrorCode` s popisem "Virtual Network konfigurace není kompatibilní s požadavkem HDInsight", obvykle to znamená problém s [konfigurací virtuální sítě](../hdinsight-plan-virtual-network-deployment.md) pro váš cluster. Na základě zbytku popisu chyby použijte následující části k vyřešení vašeho problému.
 
 ## <a name="hostname-resolution-failed"></a>"Překlad názvu hostitele se nezdařil"
 
@@ -30,13 +30,13 @@ Popis chyby obsahuje "překlad názvu hostitele se nezdařil".
 
 Tato chyba odkazuje na problém s vlastní konfigurací DNS. Servery DNS v rámci virtuální sítě můžou předávat dotazy DNS do rekurzivních překladačů Azure za účelem překladu názvů hostitelů v této virtuální síti (podrobnosti najdete [v tématu překlad IP adres ve virtuálních sítích](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ). Přístup k rekurzivním překladačům Azure se poskytuje prostřednictvím virtuální IP adresy 168.63.129.16. Tato IP adresa je dostupná jenom z virtuálních počítačů Azure. Takže nebude fungovat, pokud používáte server DNS OnPrem nebo server DNS je virtuální počítač Azure, který není součástí virtuální sítě clusteru.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
-1. Připojte se přes SSH k virtuálnímu počítači, který je součástí clusteru, a `hostname -f`spusťte příkaz. Tato akce vrátí plně kvalifikovaný název domény hostitele (dále jen `<host_fqdn>` v následujících pokynech).
+1. Připojte se přes SSH k virtuálnímu počítači, který je součástí clusteru, a spusťte příkaz `hostname -f`. Tím se vrátí plně kvalifikovaný název domény hostitele (v následujících pokynech se označuje jako `<host_fqdn>`).
 
-1. Pak spusťte příkaz `nslookup <host_fqdn>` ( `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`například). Pokud tento příkaz přeloží název na IP adresu, znamená to, že váš server DNS funguje správně. V takovém případě získáte případ podpory v HDInsight a my vám prozkoumáme váš problém. Ve svém případu podpory zahrňte kroky pro řešení potíží, které jste provedli. Tím se nám pomůžete problém vyřešit rychleji.
+1. Pak spusťte příkaz `nslookup <host_fqdn>` (například `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Pokud tento příkaz přeloží název na IP adresu, znamená to, že váš server DNS funguje správně. V takovém případě získáte případ podpory v HDInsight a my vám prozkoumáme váš problém. Ve svém případu podpory zahrňte kroky pro řešení potíží, které jste provedli. Tím se nám pomůžete problém vyřešit rychleji.
 
-1. Pokud výše uvedený příkaz nevrátí IP adresu, spusťte `nslookup <host_fqdn> 168.63.129.16` příkaz ( `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`například). Pokud je tento příkaz schopný přeložit IP adresu, znamená to, že buď server DNS nepředává dotaz do DNS Azure, nebo není virtuálním počítačem, který je součástí stejné virtuální sítě jako cluster.
+1. Pokud výše uvedený příkaz nevrátí IP adresu, spusťte `nslookup <host_fqdn> 168.63.129.16` (například `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Pokud je tento příkaz schopný přeložit IP adresu, znamená to, že buď server DNS nepředává dotaz do DNS Azure, nebo není virtuálním počítačem, který je součástí stejné virtuální sítě jako cluster.
 
 1. Pokud nemáte virtuální počítač Azure, který může fungovat jako vlastní server DNS ve virtuální síti clusteru, musíte ho nejdřív přidat. Vytvořte virtuální počítač ve virtuální síti, který se nakonfiguruje jako služba DNS pro přeposílání.
 
@@ -56,7 +56,7 @@ Popis chyby obsahuje "připojení k účtu Azure Storage se nepovedlo nebo se ne
 
 Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí připojení ke všem IP adresám, aby bylo možné získat přístup k těmto službám. Přesný postup řešení závisí na tom, jestli jste nastavili skupinu zabezpečení sítě (NSG) nebo uživatelsky definovaná pravidla (UDR). Podrobnosti o těchto konfiguracích najdete v části [řízení síťového provozu pomocí služby HDInsight se skupinami zabezpečení sítě a uživatelsky definovanými trasami](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) .
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 * Pokud váš cluster používá [skupinu zabezpečení sítě (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
@@ -70,12 +70,12 @@ Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí př
 
 ---
 
-### <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

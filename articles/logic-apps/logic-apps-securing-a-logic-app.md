@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: f9b23e00c954e8babb1fe920bca1aa2ea5f9298e
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b219eb50254ecd347f731d332c3236be028834ba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799488"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045032"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -266,11 +266,11 @@ Mnoho triggerů a akcí má nastavení pro skrytí vstupů, výstupů nebo oboj�
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   ![Otevřít ukázkovou aplikaci logiky](./media/logic-apps-securing-a-logic-app/sample-logic-app.png)
+   ![Otevření aplikace logiky v návrháři aplikace logiky](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
 1. V aktivační události nebo akci, kde chcete zabezpečit data, vyberte tlačítko se třemi tečkami ( **...** ) a pak vyberte **Nastavení**.
 
-   ![Otevřete nastavení.](./media/logic-apps-securing-a-logic-app/open-settings.png)
+   ![Otevřít nastavení triggeru nebo akce](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
 1. Zapněte buď **zabezpečené vstupy**, **zabezpečené výstupy**, nebo obojí. Jakmile budete hotovi, vyberte **Hotovo**.
 
@@ -278,11 +278,11 @@ Mnoho triggerů a akcí má nastavení pro skrytí vstupů, výstupů nebo oboj�
 
    Akce nebo aktivační událost nyní zobrazuje ikonu zámku v záhlaví.
 
-   ![Ikona zámku v záhlaví](./media/logic-apps-securing-a-logic-app/title-bar-lock-icon.png)
+   ![Záhlaví akce nebo aktivační události zobrazuje ikonu zámku](./media/logic-apps-securing-a-logic-app/lock-icon-action-trigger-title-bar.png)
 
    Tokeny, které představují zabezpečené výstupy z předchozích akcí, také zobrazují ikony zámku. Když například vyberete takový výstup ze seznamu dynamického obsahu, který chcete použít v akci, tento token zobrazí ikonu zámku.
 
-   ![Vybrat výstup](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
+   ![Vyberte token pro zabezpečený výstup.](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
 
 1. Po spuštění aplikace logiky můžete zobrazit historii pro daný běh.
 
@@ -292,7 +292,7 @@ Mnoho triggerů a akcí má nastavení pro skrytí vstupů, výstupů nebo oboj�
 
       Pokud se rozhodnete zabezpečit vstupy i výstupy, zobrazí se nyní tyto hodnoty jako skryté.
 
-      ![Skrytá data v historii spuštění](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
+      ![Skryté vstupy a výstupy v historii spuštění](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
@@ -349,7 +349,7 @@ Tady je několik [důležitých informací, které](#obfuscation-considerations)
 
   Když ručně zapnete **zabezpečené vstupy** v triggeru nebo akci, Logic Apps tyto vstupy zabezpečit v historii spuštění. Pokud akce pro příjem dat explicitně používá viditelné výstupy z této triggeru nebo akce jako vstupy, Logic Apps v historii spuštění skrýt vstupy pro navazující akce, ale *nepovolí* v této akci **zabezpečené vstupy** a neskryje tuto akci. činnosti.
 
-  ![Zabezpečené vstupy a důsledky pro všechny akce](./media/logic-apps-securing-a-logic-app/secure-inputs-flow.png)
+  ![Zabezpečené vstupy a důsledky pro všechny akce](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
   Pokud akce vytvořit, analyzovat JSON a odpověď explicitně použijí viditelné výstupy z triggeru nebo akce, která má zabezpečené vstupy, Logic Apps skryje tyto vstupy a výstupy těchto akcí, ale *nepovolí* tyto **zabezpečené vstupy** těchto akcí. nastavením. Pokud akce pro příjem dat explicitně používá skryté výstupy z akcí vytvořit, analyzovat JSON nebo odpovědět jako vstupy, Logic Apps *neskryje tyto vstupy a výstupy této akce*.
 

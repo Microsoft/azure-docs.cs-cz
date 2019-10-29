@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314995"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024011"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure AD Domain Services
 
@@ -59,10 +59,10 @@ Jak je uvedeno v předchozí části, můžete v Azure vytvořit jenom Azure AD 
 
 Aplikační úlohy hostované v jiných virtuálních sítích Azure můžete připojit pomocí jedné z následujících metod:
 
-* Partnerské vztahy virtuálních sítí
+* Partnerský vztah virtuální sítě
 * Virtuální privátní sítě (VPN)
 
-### <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
+### <a name="virtual-network-peering"></a>Virtual Network partnerský vztah
 
 Partnerský vztah virtuálních sítí je mechanismus, který propojuje dvě virtuální sítě ve stejné oblasti prostřednictvím páteřní sítě Azure. Globální partnerské vztahy virtuálních sítí se můžou připojit k virtuální síti napříč oblastmi Azure. Po navázání partnerského vztahu mezi dvěma virtuálními sítěmi umožníte komunikaci přímo pomocí privátních IP adres, jako jsou třeba virtuální počítače. Pomocí partnerského vztahu virtuálních sítí můžete nasadit Azure služba AD DS spravované domény pomocí úloh aplikací nasazených v jiných virtuálních sítích.
 
@@ -91,8 +91,8 @@ Spravovaná doména Azure služba AD DS během nasazení vytvoří několik sí�
 | Prostředek Azure                          | Popis |
 |:----------------------------------------|:---|
 | Síťová karta                  | Azure služba AD DS hostuje spravovanou doménu na dvou řadičích domény (DCs), které běží na Windows serveru jako virtuální počítače Azure. Každý virtuální počítač má virtuální síťové rozhraní, které se připojuje k podsíti virtuální sítě. |
-| Dynamická základní veřejná IP adresa         | Azure služba AD DS komunikuje se službou synchronizace a správou pomocí veřejné IP adresy základní SKU. Další informace o veřejných IP adresách najdete v tématu [typy IP adres a metody přidělování v Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
-| Nástroj pro vyrovnávání zatížení Azure úrovně Basic               | Azure služba AD DS využívá základní nástroj pro vyrovnávání zatížení SKU pro překlad adres (NAT) a vyrovnávání zatížení (při použití se zabezpečeným protokolem LDAP). Další informace o nástrojích pro vyrovnávání zatížení Azure najdete v tématu [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
+| Dynamická standardní veřejná IP adresa         | Azure služba AD DS komunikuje se službou synchronizace a správy pomocí veřejné IP adresy standardní SKU. Další informace o veřejných IP adresách najdete v tématu [typy IP adres a metody přidělování v Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
+| Azure Load Balancer úrovně Standard               | Azure služba AD DS používá nástroj pro vyrovnávání zatížení Standard SKU pro překlad síťových adres (NAT) a vyrovnávání zatížení (při použití se zabezpečeným protokolem LDAP). Další informace o nástrojích pro vyrovnávání zatížení Azure najdete v tématu [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
 | Pravidla překladu síťových adres (NAT) | Azure služba AD DS vytvoří a použije tři pravidla překladu adres (NAT) pro nástroj pro vyrovnávání zatížení – jedno pravidlo pro zabezpečený provoz HTTP a dvě pravidla pro zabezpečenou vzdálenou komunikaci PowerShellu. |
 | Pravidla nástroje pro vyrovnávání zatížení                     | Když je na serveru TCP 636 spravovaná doména spravované službou Azure služba AD DS, vytvoří se při distribuci provozu tři pravidla a použijí se na nástroji pro vyrovnávání zatížení. |
 
@@ -105,12 +105,12 @@ Spravovaná doména Azure služba AD DS během nasazení vytvoří několik sí�
 
 Pro Azure služba AD DS k poskytování služeb ověřování a správy se vyžadují následující pravidla skupiny zabezpečení sítě. Neupravujte ani neodstraňujte tato pravidla skupiny zabezpečení sítě pro podsíť virtuální sítě, ve které je vaše spravovaná doména Azure služba AD DS nasazená.
 
-| Číslo portu | Protocol | Zdroj                             | Destination | Action | Požadováno | Účel |
+| Číslo portu | Protocol (Protokol) | Zdroj                             | Cíl | Akce | Požaduje se | Účel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ano      | Synchronizace s vaším klientem služby Azure AD. |
-| 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Ano      | Správa vaší domény. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ano      | Správa vaší domény. |
-| 636         | TCP      | Any                                | Any         | Allow  | Ne       | Povoluje se jenom při konfiguraci zabezpečení LDAP (LDAPs). |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Synchronizace s vaším klientem služby Azure AD. |
+| 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Ano      | Správa vaší domény. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Správa vaší domény. |
+| 636         | TCP      | Všechny                                | Všechny         | Povolit  | Ne       | Povoluje se jenom při konfiguraci zabezpečení LDAP (LDAPs). |
 
 > [!WARNING]
 > Neupravujte ručně tyto síťové prostředky a konfigurace. Když přiřadíte nesprávně nakonfigurovanou skupinu zabezpečení sítě nebo uživatelem definovanou tabulku směrování s podsítí, ve které je nasazená služba Azure služba AD DS, můžete přerušit schopnost služby a správy domény od Microsoftu. Dojde také k přerušení synchronizace mezi vaším klientem služby Azure AD a službou Azure služba AD DS spravované domény.
@@ -142,7 +142,7 @@ Pro Azure služba AD DS k poskytování služeb ověřování a správy se vyža
 * Slouží k provádění úloh správy pomocí vzdálené komunikace PowerShellu ve spravované doméně Azure služba AD DS.
 * Bez přístupu k tomuto portu se vaše spravovaná doména Azure služba AD DS nedá aktualizovat, konfigurovat, zálohovat ani sledovat.
 * Pro Azure služba AD DS spravované domény, které používají virtuální síť založenou na Správce prostředků, můžete omezit příchozí přístup k tomuto portu na značku služby *AzureActiveDirectoryDomainServices* .
-    * Pro starší verze Azure služba AD DS spravované domény pomocí klasické virtuální sítě můžete omezit příchozí přístup k tomuto portu na následující zdrojové IP adresy: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*a *104.40.87.209*.
+    * Pro starší verze Azure služba AD DS spravované domény pomocí klasické virtuální sítě můžete omezit příchozí přístup k tomuto portu na následující zdrojové IP adresy: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223* , *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*a *104.40.87.209*.
 
 ## <a name="user-defined-routes"></a>Trasy definované uživatelem
 

@@ -10,12 +10,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 02d9a33018f87e6dbb9c7a797c16e5484c523b11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 81a31c0a03ef836d95a5a4f3cd4f4cd7b7e113e2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955099"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027350"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Kurz: přizpůsobení řídicího panelu operátora a Správa zařízení v Azure IoT Central
 
@@ -36,14 +36,14 @@ V tomto kurzu se naučíte:
 
 Než začnete s tímto kurzem, měl by tvůrce dokončit první kurz a vytvořit aplikaci Azure IoT Central in-Store Analytics a přidat zařízení:
 
-* [Vytvoření analytické aplikace v obchodě v Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) (povinné)
+* [Vytvoření analytické aplikace v obchodě v Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) (povinné)
 
 ## <a name="change-the-dashboard-name"></a>Změnit název řídicího panelu
 Chcete-li přizpůsobit řídicí panel operátora, upravte výchozí řídicí panel v aplikaci. Volitelně můžete vytvořit další nové řídicí panely. Prvním krokem pro přizpůsobení řídicího panelu ve vaší aplikaci je změna názvu.
 
 1. Přejděte na web [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) .
 
-1. Otevřete aplikaci pro monitorování stavu, kterou jste vytvořili v části [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) kurzu.
+1. Otevřete aplikaci pro monitorování stavu, kterou jste vytvořili v části [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) kurzu.
 
 1. Na panelu nástrojů řídicí panel vyberte **Upravit** . V režimu úprav můžete přizpůsobit vzhled, rozložení a obsah řídicího panelu.
 
@@ -142,7 +142,7 @@ Změna uspořádání zbývajících dlaždic:
 ## <a name="add-telemetry-tiles-to-display-conditions"></a>Přidat dlaždice telemetrie pro zobrazované podmínky
 Po přizpůsobení rozložení řídicího panelu jste připraveni přidat dlaždice pro zobrazení telemetrie. Chcete-li vytvořit dlaždici telemetrie, vyberte šablonu zařízení a instanci zařízení a pak vyberte telemetrii pro konkrétní zařízení, která se zobrazí na dlaždici. Šablona aplikace **s rezervací v rámci obchodu** obsahuje na řídicím panelu několik dlaždic telemetrie. Čtyři dlaždice ve dvou zónách pro rezervaci zobrazují telemetrii ze senzoru simulovaného obsazení. Dlaždice **provoz osob** zobrazuje počty ve dvou zónách rezervace. 
 
-V této části přidáte dvě další dlaždice telemetrie pro zobrazení telemetrie z prostředí RuuviTag senzorů, které jste přidali v tématu [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) kurzu. 
+V této části přidáte dvě další dlaždice telemetrie pro zobrazení telemetrie z prostředí RuuviTag senzorů, které jste přidali v tématu [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) kurzu. 
 
 Přidání dlaždic pro zobrazení dat o životním prostředí ze senzorů RuuviTag:
 
@@ -259,4 +259,4 @@ V tomto kurzu jste se naučili:
 Teď, když jste přizpůsobili řídicí panel v aplikaci Azure IoT Central v rámci služby Azure Analytics, je zde doporučený další krok:
 
 > [!div class="nextstepaction"]
-> [Export dat a vizualizace přehledů](./tutorial-in-store-analytics-export-data-visualize-insights-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)
+> [Export dat a vizualizace přehledů](./tutorial-in-store-analytics-export-data-visualize-insights-pnp.md)

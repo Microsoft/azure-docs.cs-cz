@@ -1,5 +1,5 @@
 ---
-title: Generování doporučení pomocí Apache Mahout a HDInsight (SSH) – Azure
+title: Generování doporučení pomocí Apache Mahout ve službě Azure HDInsight
 description: Naučte se používat knihovnu Machine Learning pro Apache Mahout ke generování doporučení filmů pomocí HDInsight (Hadoop).
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: a3919cf84714b69776222fa35d3163e0915869f7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 3923abd10fc3a64773d561b1f375f9e2f00a7e56
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881976"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044561"
 ---
 # <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Generování filmových doporučení pomocí Apache Mahout s Apache Hadoop v HDInsight (SSH)
 
@@ -23,7 +23,7 @@ Naučte se používat knihovnu Machine Learning pro [Apache Mahout](https://maho
 
 Mahout je knihovna [strojového učení](https://en.wikipedia.org/wiki/Machine_learning) pro Apache Hadoop. Mahout obsahuje algoritmy pro zpracování dat, jako je filtrování, klasifikace a clusteringu. V tomto článku využijete modul pro doporučení ke generování filmových doporučení založených na videích, které vaši přátelé viděli.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -39,19 +39,19 @@ Jednou z funkcí, které poskytuje Mahout, je modul doporučení. Tento modul p�
 
 Následující pracovní postup je zjednodušený příklad, který používá data filmu:
 
-* **Společný výskyt**: Jana, Alice a Bob mají všechny se *konflikty hvězdičkami*, *Empire se*zastará zpět a *vrátí Jedi*. Mahout určuje, že uživatelé, kteří jako kterýkoli z těchto filmů líbí jeden z těchto filmů, mají také další dva.
+* **Navracení**: Jana, Alice a Bob mají všechny *konflikty hvězdiček*, *Empire se*přestará zpět a *vrátí Jedi*. Mahout určuje, že uživatelé, kteří jako kterýkoli z těchto filmů líbí jeden z těchto filmů, mají také další dva.
 
-* **Společný výskyt**: Bob a Alice se také líbilo *s fiktivním Menace*, *útokem klonů*a *Revengeem Sith*. Mahout určuje, že uživatelé, kteří se k předchozím třem filmům líbí, stejně jako tyto tři filmy.
+* **Společný výskyt**: Bob a Alice se také staly *fiktivním Menace*, *útokem klonů*a *Revengeem Sith*. Mahout určuje, že uživatelé, kteří se k předchozím třem filmům líbí, stejně jako tyto tři filmy.
 
-* **Doporučení podobnosti**: Vzhledem k tomu, že Jana se mi líbilo s prvními tři filmy, Mahout vyhledá videa, která se líbí ostatním uživatelům s podobnými preferencemi, ale Jana nesledoval (a). V tomto případě Mahout doporučuje *fiktivní Menace*, *útok klonů*a *Revengey Sith*.
+* **Doporučení na podobnost**: vzhledem k tomu, že Jana se líbí prvnímu třimu videu, Mahout podívá se na videa s podobnými preferencemi, ale Jana nesledoval (a). V tomto případě Mahout doporučuje *fiktivní Menace*, *útok klonů*a *Revengey Sith*.
 
 ### <a name="understanding-the-data"></a>Porozumění datům
 
-[GroupLens Research](https://grouplens.org/datasets/movielens/) poskytuje data hodnocení pro filmy ve formátu, který je kompatibilní s Mahout. Tato data jsou k dispozici ve výchozím úložišti clusteru na `/HdiSamples/HdiSamples/MahoutMovieData`adrese.
+[GroupLens Research](https://grouplens.org/datasets/movielens/) poskytuje data hodnocení pro filmy ve formátu, který je kompatibilní s Mahout. Tato data jsou k dispozici ve výchozím úložišti clusteru na `/HdiSamples/HdiSamples/MahoutMovieData`.
 
-Existují dva soubory, `moviedb.txt` a. `user-ratings.txt` `user-ratings.txt` Soubor se používá při analýze. `moviedb.txt` Slouží k poskytnutí informací o textu uživatelsky přívětivé při prohlížení výsledků.
+Existují dva soubory `moviedb.txt` a `user-ratings.txt`. Soubor `user-ratings.txt` se používá při analýze. `moviedb.txt` slouží k poskytnutí informací o textu uživatelsky přívětivé při prohlížení výsledků.
 
-Data obsažená v `userID`User-ratings. txt mají strukturu, `movieID`, `userRating` `timestamp`a, která indikuje, jak vysoké má každý uživatel hodnocení filmu. Tady je příklad dat:
+Data obsažená v User-ratings. txt mají strukturu `userID`, `movieID`, `userRating`a `timestamp`, která určují, jak vysoké mají jednotliví uživatelé hodnocení filmu. Tady je příklad dat:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -85,7 +85,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
         3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
         4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-    První sloupec je `userID`. Hodnoty obsažené v ' [' a '] ' jsou `movieId`:.`recommendationScore`
+    První sloupec je `userID`. Hodnoty obsažené v ' [' a '] ' jsou `movieId`:`recommendationScore`.
 
 2. K poskytnutí dalších informací o doporučeních můžete použít výstup spolu s MovieDB. txt. Nejprve zkopírujte soubory místně pomocí následujících příkazů:
 
@@ -178,7 +178,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
 ## <a name="delete-temporary-data"></a>Odstranit dočasná data
 
-Úlohy Mahout neodstraňují dočasná data vytvořená během zpracování úlohy. `--tempDir` Parametr je zadán v příkladu úlohy pro izolaci dočasných souborů do konkrétní cesty pro snadné odstranění. Chcete-li odstranit dočasné soubory, použijte následující příkaz:
+Úlohy Mahout neodstraňují dočasná data vytvořená během zpracování úlohy. Parametr `--tempDir` je zadán v příkladu úlohy pro izolaci dočasných souborů do konkrétní cesty pro snadné odstranění. Chcete-li odstranit dočasné soubory, použijte následující příkaz:
 
 ```bash
 hdfs dfs -rm -f -r /temp/mahouttemp
@@ -190,7 +190,7 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili, jak používat Mahout, můžete zjistit další způsoby práce s daty v HDInsight:
 

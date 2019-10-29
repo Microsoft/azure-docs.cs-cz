@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: dd7e3ed767539f8de46e5f77a39b1e7bac0cb3b0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b408d2cc0754cc1f2dd8671d037d4f9d348e883b
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965812"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027635"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Kurz: vytvoření a Projděte si šablonu aplikace pro monitorování panelu slunečního příběhu 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 V tomto kurzu Vás provedeme procesem vytvoření aplikace pro monitorování na panelu slunečního prostředí, která zahrnuje Vzorový model zařízení se simulovanými daty. V tomto kurzu se naučíte:
 
@@ -41,8 +43,8 @@ Tuto aplikaci můžete vytvořit ve třech jednoduchých krocích:
 
 2. Vyberte kartu **energie** a klikněte na **vytvořit aplikaci** na dlaždici monitorování aplikace na **panelu inflace** . 
 
-    > [!div class="mx-imgBorder"]
-    > ![Build App](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
+    [!div class="mx-imgBorder"]
+    ![Build App](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
 3. Při **Vytvoření aplikace** se otevře formulář **nové aplikace** . Vyplňte požadované podrobnosti, jak je znázorněno na následujícím obrázku:
     * **Název aplikace**: vyberte název aplikace IoT Central. 
@@ -70,37 +72,37 @@ Adatum je fiktivní energetická společnost, která monitoruje a spravuje slune
 * Sledovat celkové energetické generace pro účely plánování a fakturace
 * Operace s příkazy a ovládacími prvky, jako je například panel aktivace a verze aktualizovaného firmwaru. V šabloně se na příkazových tlačítkách zobrazují možné funkce a neodesílají skutečné příkazy.
 
-> [!div class="mx-imgBorder"]
-> řídicí panel monitorování ![ho slunečního panelu](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
+[!div class="mx-imgBorder"]
+řídicí panel monitorování ![ho slunečního panelu](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
 
 ### <a name="devices"></a>Zařízení
 Aplikace přichází s ukázkovým zařízením slunečního zařízení. Podrobnosti o zařízení uvidíte kliknutím na kartu **zařízení** .
 
-> [!div class="mx-imgBorder"]
-> zařízení ![slunečního panelu](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
+[!div class="mx-imgBorder"]
+zařízení ![slunečního panelu](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
 
 
 Kliknutím na odkaz ukázkový **SP0123456789** zařízení zobrazíte podrobnosti o zařízení. Na stránce **aktualizovat vlastnosti** můžete aktualizovat vlastnosti zařízení s možností zápisu a vizualizovat aktualizované hodnoty na řídicím panelu. 
 
-> [!div class="mx-imgBorder"]
-> Vlastnosti panelu ![ho slunečníku](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
+[!div class="mx-imgBorder"]
+Vlastnosti panelu ![ho slunečníku](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
 
 
 ### <a name="device-template"></a>Šablona zařízení
 Kliknutím na kartu **šablony zařízení** zobrazíte model zařízení slunečního panelu. Model má předem definované rozhraní pro data, vlastnosti, příkazy a zobrazení.
 
-> [!div class="mx-imgBorder"]
-> Šablona zařízení panelu ![slunečního pří](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
+[!div class="mx-imgBorder"]
+Šablona zařízení panelu ![slunečního pří](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud se rozhodnete, že tuto aplikaci nebudete používat, odstraňte aplikaci pomocí následujících kroků:
 
-1. V nabídce na levé straně otevřete kartu Správa.
+1. V levém podokně otevřete kartu Správa.
 2. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky. 
 
-    > [!div class="mx-imgBorder"]
-    > ![odstranit](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png) aplikace
+    [!div class="mx-imgBorder"]
+    ![odstranit](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png) aplikace
 
 
 ## <a name="next-steps"></a>Další kroky

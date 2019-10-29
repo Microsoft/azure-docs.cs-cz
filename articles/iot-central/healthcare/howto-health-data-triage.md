@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: c30f939aa353ae5809a8ba6e9c2b2d7f376ddc0d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cbbfc13cd818c3f29ed306beab49d101c70f562b
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956660"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026492"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Kurz: sestavení řídicího panelu poskytovatele Power BI
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Při sestavování řešení pro monitorování nepřetržitého pacienta můžete také vytvořit řídicí panel pro tým ústavní péče, který bude vizualizovat data pacienta. Tento kurz vás provede jednotlivými kroky, které vám pomohou vytvořit Power BI řídicí panel pro streamování v reálném čase ze své IoT Central šablony aplikace pro monitorování nepřetržitého pacienta.
 

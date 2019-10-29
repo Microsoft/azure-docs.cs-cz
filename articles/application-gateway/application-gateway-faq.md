@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858526"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025006"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -134,7 +135,7 @@ Ano. Můžete nastavit vyprazdňování připojení pro změnu členů ve fondu 
 
 Ano. Azure distribuuje instance napříč doménami aktualizace a selhání, aby se zajistilo, že instance selžou ve stejnou dobu. Application Gateway podporuje škálování přidáním více instancí stejné brány pro sdílení zatížení.
 
-## <a name="configuration"></a>Konfiguraci
+## <a name="configuration"></a>Konfigurace
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Je Application Gateway vždycky nasazené ve virtuální síti?
 
@@ -186,7 +187,7 @@ Viz [pořadí pravidel zpracování](https://docs.microsoft.com/azure/applicatio
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Pro vlastní testy, co pole hostitel označuje?
 
-Pole hostitel Určuje název, do kterého se má odeslat sonda při konfiguraci nasazení ve více lokalitách na Application Gateway. Jinak použijte 127.0.0.1. Tato hodnota se liší od názvu hostitele virtuálního počítače. Jeho formát je \<protokol\>://\<hostitel\>\>:\<cesta\<k portu.\>
+Pole hostitel Určuje název, do kterého se má odeslat sonda při konfiguraci nasazení ve více lokalitách na Application Gateway. Jinak použijte 127.0.0.1. Tato hodnota se liší od názvu hostitele virtuálního počítače. Formát je \<protokolu\>://\<hostitel\>:\<port\>\<cesta\>.
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Můžu Application Gateway přístup k jenom několika zdrojovým IP adresám?
 
@@ -269,7 +270,7 @@ Application Gateway podporuje až 100 certifikátů SSL.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Kolik ověřovacích certifikátů pro opakované šifrování back-endu Application Gateway podporu?
 
-Application Gateway podporuje až 10 ověřovacích certifikátů. Výchozí hodnota je 5.
+Application Gateway podporuje až 100 ověřovacích certifikátů.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Je Application Gateway nativně integrována s Azure Key Vault?
 
@@ -333,15 +334,15 @@ Ano. Podrobnosti najdete v tématu [migrace služby Azure Application Gateway a 
 
 Application Gateway poskytuje tři protokoly: 
 
-* **ApplicationGatewayAccessLog**: Protokol přístupu obsahuje všechny požadavky odeslané do front-endu služby Application Gateway. Mezi tato data patří IP adresa volajícího, požadovaná adresa URL, latence odezvy, návratový kód a bajtů. Protokol přístupu se shromáždí každých 300 sekund. Obsahuje jeden záznam na aplikační bránu.
-* **ApplicationGatewayPerformanceLog**: Protokol výkonu zachycuje informace o výkonu pro každou bránu aplikace. Informace zahrnují propustnost v bajtech, celkový počet zpracovaných požadavků, počet neúspěšných požadavků a stav back-endu, který není v pořádku.
-* **ApplicationGatewayFirewallLog**: U bran Application Gateway, které nakonfigurujete pomocí WAF, obsahuje protokol brány firewall požadavky, které se protokolují buď pomocí režimu detekce, nebo režimu prevence.
+* **ApplicationGatewayAccessLog**: protokol Access obsahuje všechny požadavky odeslané do front-endu služby Application Gateway. Mezi tato data patří IP adresa volajícího, požadovaná adresa URL, latence odezvy, návratový kód a bajtů. Protokol přístupu se shromáždí každých 300 sekund. Obsahuje jeden záznam na aplikační bránu.
+* **ApplicationGatewayPerformanceLog**: protokol výkonu zachycuje informace o výkonu pro každou bránu aplikace. Informace zahrnují propustnost v bajtech, celkový počet zpracovaných požadavků, počet neúspěšných požadavků a stav back-endu, který není v pořádku.
+* **ApplicationGatewayFirewallLog**: pro brány aplikací, které nakonfigurujete pomocí WAF, obsahuje protokol brány firewall požadavky, které se protokolují buď v režimu detekce, nebo v režimu prevence.
 
 Další informace najdete v tématu [stav back-endu, diagnostické protokoly a metriky pro Application Gateway](application-gateway-diagnostics.md).
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Návody zjistit, jestli jsou členové fondu back-endu v pořádku?
 
-Ověřte stav pomocí rutiny `Get-AzApplicationGatewayBackendHealth` prostředí PowerShell nebo portálu. Další informace najdete v tématu [diagnostika Application Gateway](application-gateway-diagnostics.md).
+Ověřte stav pomocí rutiny prostředí PowerShell `Get-AzApplicationGatewayBackendHealth` nebo portálu. Další informace najdete v tématu [diagnostika Application Gateway](application-gateway-diagnostics.md).
 
 ### <a name="whats-the-retention-policy-for-the-diagnostic-logs"></a>Jaké jsou zásady uchovávání informací pro diagnostické protokoly?
 
@@ -372,6 +373,6 @@ Ano. Pokud vaše konfigurace odpovídá následujícímu scénáři, neuvidíte 
 - Máte NSGu v podsíti služby Application Gateway.
 - Povolili jste protokoly toku NSG na těchto NSG.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Application Gateway najdete v tématu [co je Azure Application Gateway?](overview.md).

@@ -9,14 +9,17 @@ ms.service: iot-central
 services: iot-central
 ms.custom:
 - iot-p0-scenario
-ms.openlocfilehash: 5db494b17b131e79bc84ccd6cfa2888bf3632e1d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b0200be389e6f0d59690f041695da368de6828ba
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957451"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027395"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Vytváření maloobchodních řešení s využitím Azure IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 Azure IoT Central je aplikační platforma pro Internet věcí (IoT) pro sestavovatele řešení, která zjednodušuje problémy při sestavování & správě škálovatelných aplikací. V tomto článku vyzvýrazníme několik šablon aplikací specifických pro maloobchodní prodej v rámci IoT Central. Tvůrci řešení můžou pomocí publikovaných šablon sestavovat řešení IoT pro optimalizaci dodavatelského řetězce, zlepšit prostředí v obchodě pro zákazníky a efektivněji sledovat inventář.
 
 > [!div class="mx-imgBorder"]

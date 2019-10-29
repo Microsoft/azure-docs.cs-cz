@@ -8,19 +8,22 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 61a2b00bee7b16e3cc62a010ca454466cb0292a0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: bf109d91582bc08a3922d8c84e9ffab904dbb94c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965584"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026779"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Architektura aplikace panelu Azure IoT Central-slunečního panelu
 
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
+
 Tento článek poskytuje přehled architektury šablon aplikací pro monitorování v panelu slunečního vstupu. Následující diagram ukazuje běžně použitou architekturu pro aplikaci slunečního panelu v Azure s využitím IoT Central platformy.
 
-> [!div class="mx-imgBorder"]
-> ![architektury inteligentního měření](media/concept-iot-central-solar-panel/solar-panel-app-architecture.png)
+[!div class="mx-imgBorder"]
+![architektury inteligentního měření](media/concept-iot-central-solar-panel/solar-panel-app-architecture.png)
 
 Tato architektura se skládá z následujících komponent. Některé aplikace nemusí vyžadovat všechny zde uvedené komponenty.
 

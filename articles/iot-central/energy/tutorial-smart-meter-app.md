@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: fd6062250b288f9c1f04b7e7853e7fdd84d612c0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 06b4fe3b716f2252f064a5b36fcde7dd7198db2d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965831"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026743"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Kurz: vytvoření a procházení šablony aplikace pro monitorování inteligentního měření 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Tento kurz vás provede procesem vytvoření aplikace pro monitorování inteligentního měření, která zahrnuje ukázkový model zařízení se simulovanými daty. V tomto kurzu se naučíte:
 
@@ -39,8 +41,8 @@ Tuto aplikaci můžete vytvořit ve třech jednoduchých krocích:
 
 2. Vyberte kartu **energie** a klikněte na **vytvořit aplikaci** na dlaždici aplikace **monitorování inteligentního měření** .
 
-    > [!div class="mx-imgBorder"]
-    > ![Build App](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
+    [!div class="mx-imgBorder"]
+    ![Build App](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
 3. Při **Vytvoření aplikace** se otevře formulář **nové aplikace** . Vyplňte požadované podrobnosti, jak je znázorněno na následujícím obrázku:
@@ -70,31 +72,31 @@ Adatum je fiktivní energetická společnost, která monitoruje a spravuje intel
 * Sledování celkové spotřeby energie pro účely plánování a fakturace
 * Operace s příkazy a ovládacími prvky, jako je třeba měřič připojení a verze firmwaru aktualizace. V šabloně se na příkazových tlačítkách zobrazují možné funkce a neodesílají skutečné příkazy. 
 
-> [!div class="mx-imgBorder"]
-> řídicí panel monitorování inteligentního měření ![](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
+[!div class="mx-imgBorder"]
+řídicí panel monitorování inteligentního měření ![](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
 
 ### <a name="devices"></a>Zařízení
 Aplikace přichází s ukázkovým zařízením inteligentního měření. Podrobnosti o zařízení uvidíte kliknutím na kartu **zařízení** .
 
-> [!div class="mx-imgBorder"]
-> ![zařízení inteligentního měření](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
+[!div class="mx-imgBorder"]
+![zařízení inteligentního měření](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
 
 Kliknutím na odkaz ukázkový **SM0123456789** zařízení zobrazíte podrobnosti o zařízení. Můžete aktualizovat vlastnosti zařízení s možností zápisu na stránce **aktualizace vlastností** a vizualizovat aktualizované hodnoty na řídicím panelu.
 
-> [!div class="mx-imgBorder"]
-> ![vlastnosti inteligentního měřiče](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
+[!div class="mx-imgBorder"]
+![vlastnosti inteligentního měřiče](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
 
 ### <a name="device-template"></a>Šablona zařízení
 Pokud chcete zobrazit model zařízení inteligentního měření, klikněte na kartu **šablony zařízení** . Model má předem definované rozhraní pro data, vlastnosti, příkazy a zobrazení.
 
-> [!div class="mx-imgBorder"]
-> ![šablony zařízení inteligentního měření](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
+[!div class="mx-imgBorder"]
+![šablony zařízení inteligentního měření](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud se rozhodnete, že tuto aplikaci nebudete používat, odstraňte aplikaci pomocí následujících kroků:
 
-1. V nabídce na levé straně otevřete kartu Správa.
+1. V levém podokně otevřete kartu Správa.
 2. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky. 
 
     > [!div class="mx-imgBorder"]

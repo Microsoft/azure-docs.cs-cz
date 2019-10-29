@@ -1,5 +1,5 @@
 ---
-title: Použití C# s Apache Hive a Apache prasetem v Apache Hadoop ve službě HDInsight – Azure
+title: C#Apache Hive & Apache prasete v Apache Hadoop – Azure HDInsight
 description: Naučte se používat C# uživatelsky definované funkce (UDF) s Apache Hive a Apache vepřovým streamem v Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: fa40f206447f631c78052bda085b26a56e481194
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 222b91b2efefa81186d32fee7229aa0cc4f13a63
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066924"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044591"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Použití C# uživatelsky definovaných funkcí s Apache Hive a Apache prasetem v Apache Hadoop ve službě HDInsight
 
@@ -22,9 +22,9 @@ Naučte se používat C# uživatelsky definované funkce (UDF) s Apache Hive a A
 > [!IMPORTANT]
 > Kroky v tomto dokumentu fungují s clustery HDInsight se systémem Linux i Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponent HDInsight](../hdinsight-component-versioning.md).
 
-Podregistr i prase mohou předat data externím aplikacím ke zpracování. Tento proces se označuje jako _streamování_. Při použití aplikace .NET se data předávají do aplikace na vstupu a aplikace vrátí výsledky na STDOUT. Chcete-li číst a zapisovat ze standardního vstupu a STDOUT, `Console.ReadLine()` můžete `Console.WriteLine()` použít a z konzolové aplikace.
+Podregistr i prase mohou předat data externím aplikacím ke zpracování. Tento proces se označuje jako _streamování_. Při použití aplikace .NET se data předávají do aplikace na vstupu a aplikace vrátí výsledky na STDOUT. Chcete-li číst a zapisovat ze standardního vstupu a STDOUT, můžete použít `Console.ReadLine()` a `Console.WriteLine()` z konzolové aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Znalost psaní a vytváření C# kódu, který cílí na .NET Framework 4,5.
 
@@ -42,7 +42,7 @@ Podregistr i prase mohou předat data externím aplikacím ke zpracování. Tent
 
 ## <a name="net-on-hdinsight"></a>.NET v HDInsight
 
-* Clustery __HDInsight se systémem Linux__ využívající [mono https://mono-project.com) (](https://mono-project.com) pro spouštění aplikací .NET. Mono verze 4.2.1 je součástí HDInsight verze 3,6.
+* Clustery __HDInsight se systémem Linux__ využívající [Mono (https://mono-project.com)](https://mono-project.com) pro spouštění aplikací .NET. Mono verze 4.2.1 je součástí HDInsight verze 3,6.
 
     Další informace o kompatibilitě mono s .NET Framework verzí naleznete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -50,7 +50,7 @@ Podregistr i prase mohou předat data externím aplikacím ke zpracování. Tent
 
 Další informace o verzi rozhraní .NET Framework a mono, které jsou součástí verze služby HDInsight, najdete v tématu [verze komponent HDInsight](../hdinsight-component-versioning.md).
 
-## <a name="create-the-c-projects"></a>Vytvoření projektů v\# jazyce C
+## <a name="create-the-c-projects"></a>Vytvoření projektů\# v jazyce C
 
 ### <a name="apache-hive-udf"></a>Apache Hive UDF
 
@@ -147,7 +147,7 @@ Další informace o verzi rozhraní .NET Framework a mono, které jsou součást
     }
     ```
 
-    Tento kód analyzuje řádky odesílané z prasete a znovu formátuje řádky, které začínají `java.lang.Exception`na.
+    Tento kód analyzuje řádky odesílané z prasete a přeformátuje řádky, které začínají na `java.lang.Exception`.
 
 3. Uložte **program.cs**a pak Sestavte projekt.
 
@@ -203,9 +203,9 @@ Další informace o verzi rozhraní .NET Framework a mono, které jsou součást
     ```
 
     > [!IMPORTANT]
-    > Odkomentujte `add file` příkaz, který odpovídá typu výchozího úložiště, který se používá pro váš cluster.
+    > Odkomentujte příkaz `add file`, který odpovídá typu výchozího úložiště používaného pro váš cluster.
 
-    Tento dotaz vybere `clientid` `devicemodel` pole, `devicemake`a z `hivesampletable`a předá pole aplikaci HiveCSharp. exe. Dotaz očekává, že aplikace vrátí tři pole, která jsou uložena jako `clientid`, `phoneLabel`a `phoneHash`. Dotaz také očekává, že se HiveCSharp. exe najde v kořenovém adresáři výchozího kontejneru úložiště.
+    Tento dotaz vybere pole `clientid`, `devicemake`a `devicemodel` ze `hivesampletable`a předá pole aplikaci HiveCSharp. exe. Dotaz očekává, že aplikace vrátí tři pole, která jsou uložena jako `clientid`, `phoneLabel`a `phoneHash`. Dotaz také očekává, že se HiveCSharp. exe najde v kořenovém adresáři výchozího kontejneru úložiště.
 
 5. Kliknutím na **Odeslat** odešlete úlohu do clusteru HDInsight. Otevře se okno **Souhrn úlohy podregistru** .
 
@@ -226,7 +226,7 @@ Další informace o verzi rozhraní .NET Framework a mono, které jsou součást
     > bin\pig
     > ```
 
-    Zobrazí `grunt>` se výzva.
+    Zobrazí se výzva `grunt>`.
 
 3. Chcete-li spustit úlohu prasete, která používá aplikaci .NET Framework, zadejte následující:
 
@@ -236,10 +236,10 @@ Další informace o verzi rozhraní .NET Framework a mono, které jsou součást
         DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
         DUMP DETAILS;
 
-    Příkaz vytvoří alias pro aplikace pigudf. exe a `CACHE` načte ho z výchozího úložiště pro cluster. `streamer` `DEFINE` `streamer` Později se `STREAM` s operátorem používá ke zpracování jednoduchých řádků obsažených v protokolu a vrátí data jako řadu sloupců.
+    Příkaz `DEFINE` vytvoří alias `streamer` pro aplikace pigudf. exe a `CACHE` ho načte z výchozího úložiště pro cluster. Později se `streamer` používá s operátorem `STREAM` ke zpracování jednoduchých řádků obsažených v protokolu a vrácení dat jako řady sloupců.
 
     > [!NOTE]
-    > Název aplikace, který se používá pro streamování, musí být při použití \` aliasu ohraničen znakem (znakem zaškrtnutí) a ' (jednoduchá uvozovka), `SHIP`Pokud se používá s.
+    > Název aplikace, který se používá pro streamování, musí být při použití s `SHIP`ohraničen znakem \` (znakem zaškrtnutí) a ' (jednoduchá uvozovka).
 
 4. Po zadání posledního řádku by se měla úloha spustit. Vrátí výstup podobný následujícímu textu:
 
@@ -249,7 +249,7 @@ Další informace o verzi rozhraní .NET Framework a mono, které jsou součást
         (2012-02-03 20:11:56 SampleClass5 [TRACE] verbose detail for id 1737534798)
         (2012-02-03 20:11:56 SampleClass7 [DEBUG] detail for id 1475865947)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto dokumentu jste se seznámili s postupem použití .NET Framework aplikace z podregistru a vepřového sádla v HDInsight. Pokud se chcete dozvědět, jak používat Python s podregistru a vepřovým nástrojem, přečtěte si téma [použití Pythonu s Apache Hive a Apache prasete v HDInsight](python-udf-hdinsight.md).
 

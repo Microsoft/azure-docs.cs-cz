@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 5ae7aa2dfbab5ff62f9ce56bc3a790294e369529
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: b2e7b9f28c84b769fe64be82f91418cc2a7d634f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686826"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044374"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Co je nového v Azure Application Gateway?
 
@@ -27,8 +27,9 @@ Azure Application Gateway se průběžně aktualizuje. V tomto článku najdete 
 
 |Funkce  |Popis  |Datum přidání  |
 |---------|---------|---------|
+|Vylepšení testu paměti |Díky vylepšením vlastních sond ve službě Application Gateway v2 SKU jsme zjednodušili [konfiguraci testu paměti](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku), usnadnili jsme [testy stavu back-endu na vyžádání](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe) a přidali jsme [Další diagnostické informace](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages) , které vám pomůžou při řešení problémů se stavem back-endu. Chyba.  |Říjen 2019 |
 |Další metriky |Přidali jsme následující nové metriky, které vám pomůžou monitorovat SKU Application Gateway v2: [metriky související s časováním](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics), stav odpovědi back-endu, přijaté bajty, odeslané bajty, protokol TLS klienta a aktuální výpočetní jednotky. Podívejte se [na metriky podporované Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku). |Srpen 2019 |
-|Vlastní pravidla WAF |Application Gateway WAF_v2 nyní podporuje vytváření vlastních pravidel. Viz [Application Gateway vlastní pravidla](custom-waf-rules-overview.md). |Červeně 2019 |
+|Vlastní pravidla WAF |Application Gateway WAF_v2 nyní podporuje vytváření vlastních pravidel. Viz [Application Gateway vlastní pravidla](custom-waf-rules-overview.md). |Červen 2019 |
 |Automatické škálování, redundance zóny, statická VIP podpora GA |Obecná dostupnost pro SKU v2, která podporuje automatické škálování, redundanci zóny, zvýšení výkonu, statické VIP Key Vault, přepisování hlaviček. Viz [Application Gateway dokumentace automatického škálování](application-gateway-autoscaling-zone-redundant.md). |Duben 2019 |
 |Integrace Key Vault |Application Gateway teď podporuje integraci s Key Vault (ve verzi Public Preview) pro certifikáty serveru, které jsou připojené k naslouchacím procesům s povoleným protokolem HTTPS. Přečtěte si téma [ukončení SSL s certifikáty Key Vault](key-vault-certs.md). |Duben 2019 |
 |CRUD a Přepisy záhlaví     |Nyní můžete přepsat hlavičky HTTP. Další informace najdete v tématu [kurz: vytvoření služby Application Gateway a přepsání hlaviček protokolu HTTP](tutorial-http-header-rewrite-powershell.md) .|Prosinec 2018|

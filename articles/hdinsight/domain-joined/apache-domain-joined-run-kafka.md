@@ -1,18 +1,18 @@
 ---
-title: Kurz – Apache Kafka s Balíček zabezpečení podniku ve službě Azure HDInsight
+title: Kurz – Apache Kafka & Enterprise Security – Azure HDInsight
 description: Kurz – Naučte se konfigurovat zásady Apache Ranger pro Kafka v Azure HDInsight pomocí Balíček zabezpečení podniku.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 6d92ebc743bae97ecfa1591add27f470792dcafc
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: cb99b747cb5de01c616c4cab0ac6c14823f7d4db
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037176"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044632"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Konfigurace zásad Apache Kafka v HDInsight pomocí Balíček zabezpečení podniku (Preview)
 
@@ -48,13 +48,13 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
 1. Otevřete **Uživatelské rozhraní správce Ranger**.
 
-2. V části **Kafka**vyberte  **\<název_clusteru > _kafka** . Může být uvedena jedna předem nakonfigurovaná zásada.
+2. V části **Kafka**vyberte **\<název_clusteru > _kafka** . Může být uvedena jedna předem nakonfigurovaná zásada.
 
 3. Vyberte **Přidat novou zásadu** a zadejte následující hodnoty:
 
    |Nastavení  |Navrhovaná hodnota  |
    |---------|---------|
-   |Název zásad  |  hdi sales* policy   |
+   |Název zásady  |  hdi sales* policy   |
    |Téma   |  sales* |
    |Vybrat uživatele  |  sales_user1 |
    |Oprávnění  | publish, consume, create (publikovat, využívat, vytvářet) |
@@ -74,7 +74,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
    |Nastavení  |Navrhovaná hodnota  |
    |---------|---------|
-   |Název zásad  |  hdi marketing policy   |
+   |Název zásady  |  hdi marketing policy   |
    |Téma   |  marketingspend |
    |Vybrat uživatele  |  marketing_user1 |
    |Oprávnění  | publish, consume, create (publikovat, využívat, vytvářet) |
@@ -85,7 +85,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>Vytvoření témat v clusteru Kafka pomocí ESP
 
-Chcete-li vytvořit dvě `salesevents` témata `marketingspend`a:
+Chcete-li vytvořit dvě témata `salesevents` a `marketingspend`:
 
 1. Navažte připojení SSH ke clusteru použitím následujícího příkazu:
 
@@ -93,7 +93,7 @@ Chcete-li vytvořit dvě `salesevents` témata `marketingspend`a:
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Nahraďte `DOMAINADMIN` uživatelem s oprávněními správce pro váš cluster nakonfigurovaný během [vytváření clusteru](./apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)a nahraďte `CLUSTERNAME` názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte heslo pro uživatelský účet správce. Další informace o použití `SSH` se službou HDInsight najdete v tématu [Použití SSH se službou HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+   Položku `DOMAINADMIN` nahraďte uživatelem s oprávněními správce pro váš cluster nakonfigurovaný během [vytváření clusteru](./apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)a nahraďte `CLUSTERNAME` názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte heslo pro uživatelský účet správce. Další informace o použití `SSH` se službou HDInsight najdete v tématu [Použití SSH se službou HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Pomocí následujících příkazů uložte název clusteru do proměnné a nainstalujte nástroj pro parsování JSON `jq`. Po zobrazení výzvy zadejte název clusteru Kafka.
 
@@ -112,7 +112,7 @@ Chcete-li vytvořit dvě `salesevents` témata `marketingspend`a:
 
 1. Stáhněte si [příklady pro producenta a konzumenta Apache Kafka připojené k doméně](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-1. Postupujte podle kroků 2 a 3 v části **sestavení a nasaďte příklad** v [kurzu: Použití rozhraní API pro Apache Kafka výrobce a příjemce](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)
+1. Postupujte podle kroků 2 a 3 v části **Sestavení a nasazení příkladu** v [kurzu použití rozhraní Apache Kafka Producer and Consumer API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example).
 
 1. Spusťte následující příkazy:
 
@@ -123,7 +123,7 @@ Chcete-li vytvořit dvě `salesevents` témata `marketingspend`a:
 
 ## <a name="test-the-ranger-policies"></a>Testování zásad Ranger
 
-V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytvářet a spotřebovávat téma `salesevents` , ale ne `marketingspend`téma. Naopak **marketing_user** může vytvářet a spotřebovávat téma `marketingspend` , ale ne téma. `salesevents`
+V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** použít téma pro vytváření a zpracování `salesevents` ale nikoli pro `marketingspend`tématu. Naopak **marketing_user** může vytvářet a spotřebovávat téma `marketingspend` ale nikoli `salesevents`tématu.
 
 1. Otevřete nové připojení SSH ke clusteru. Pomocí následujícího příkazu se přihlaste jako uživatel **sales_user1**:
 
@@ -145,15 +145,15 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytv
 
    Příklad: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Postupujte podle kroků 3 v části **sestavení a nasaďte příklad** v [kurzu: Použijte rozhraní API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) pro Apache Kafka výrobce a příjemce `kafka-producer-consumer.jar` , abyste měli jistotu, že je k dispozici i pro **sales_user**.
+4. Postupujte podle kroků 3 v části **sestavení a nasazení příkladu** v [kurzu: pomocí rozhraní API pro Apache Kafka výrobce a příjemce](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) ověřte, zda je `kafka-producer-consumer.jar` také k dispozici pro **sales_user**.
 
-5. Spuštěním následujícího příkazu ověřte, že sales_user1 `salesevents` může vydávat k tématu:
+5. Spuštěním následujícího příkazu ověřte, že **sales_user1** může vydávat k tématu `salesevents`:
 
    ```bash
    java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-6. Spusťte následující příkaz, který se má využít `salesevents`v tématu:
+6. Spusťte následující příkaz, který bude využívat `salesevents`v tématu:
 
    ```bash
    java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
@@ -161,7 +161,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytv
 
    Ověřte, zda je možné číst zprávy.
 
-7. Spuštěním následujícího příkazu ve stejném okně SSH ověřte `marketingspend` , že sales_user1 nemůže způsobit vytvoření tématu.
+7. Spuštěním následujícího příkazu ve stejném okně SSH ověřte, že **sales_user1** neumožňuje vytvoření tématu `marketingspend`.
 
    ```bash
    java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
@@ -169,11 +169,11 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytv
 
    Dojde k chybě autorizace, kterou můžete ignorovat.
 
-8. Všimněte si, že **marketing_user1** nemůže spotřebovávat `salesevents`z tématu.
+8. Všimněte si, že **marketing_user1** nemůže spotřebovávat z tématu `salesevents`.
 
    Opakujte kroky 1-4 výše, ale tentokrát jako **marketing_user1**.
 
-   Spusťte následující příkaz, který se má využít `salesevents`v tématu:
+   Spusťte následující příkaz, který bude využívat `salesevents`v tématu:
 
    ```bash
    java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
@@ -189,13 +189,13 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytv
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster Kafka, který jste vytvořili, pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 1. V části **služby**vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu. 
-1. Klikněte na tlačítko **odstranit**. Klikněte na **Ano**.
+1. Klikněte na **Odstranit**. Klikněte na **Ano**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Přineste si vlastní klíč k Apache Kafka](../kafka/apache-kafka-byok.md)

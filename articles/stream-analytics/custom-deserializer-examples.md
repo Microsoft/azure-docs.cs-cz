@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 6c7d94761e4c5d5087dc8ac4e10854989a18f0fc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: HT
+ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992103"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024944"
 ---
 # <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>Použití deserializátorů .NET pro úlohy Azure Stream Analytics
 
@@ -40,7 +40,7 @@ Přeskočené chyby by se měly vysílat pomocí `IStreamingDiagnostics` předan
 
 1. T je třída nebo struktura.
 1. Všechna veřejná pole v T jsou buď
-    1. Jedna z hodnot [Long, DateTime, String, Double] nebo jejich ekvivalenty s možnou hodnotou null.
+    1. Jedna z hodnot [SByte, Byte, Short, UShort, int, uint, Long, DateTime, String, float, Double] nebo jejich ekvivalentů s možnou hodnotou null.
     1. Jiná struktura nebo třída za stejnými pravidly.
     1. Pole typu `T2`, které se řídí stejnými pravidly
     1. IList`T2`, kde T2 dodržuje stejná pravidla.
@@ -226,12 +226,12 @@ Následující kód jazyka JavaScript je příkladem formátu serializace deseri
 
 Tato funkce je k dispozici v následujících oblastech:
 
-* Západní Evropa
-* USA – východ
-* Severní Evropa
-* Západní USA
-* Východ USA 2
-* Středozápadní USA
+* Středozápadní USA (k dispozici)
+* Severní Evropa (k dispozici)
+* Východní USA (k dispozici)
+* Západní USA (brzy)
+* Východní USA 2 (brzy)
+* Západní Evropa (brzy)
 
 Můžete [požádat o podporu](https://aka.ms/ccodereqregion) pro další oblasti.
 
@@ -244,10 +244,6 @@ Tato funkce je k dispozici v 6 oblastech (podpora #region). Pokud vás zajímá 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Můžu získat přístup k MetadataPropertyValue ze svých vstupů, podobně jako funkce GetMetadataPropertyValue?
 
 Tato funkce není podporována. Pokud tuto funkci potřebujete, můžete hlasovat o této žádosti na [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese).
-
-### <a name="streamdeserializer-deserializes-a-stream-into-object-of-type-t-can-the-public-fields-in-t-be-any-supported-type-in-net"></a>StreamDeserializer deserializace Stream do objektu typu T. Mohou být veřejná pole v T v rozhraní .NET libovolného podporovaného typu?
-
-Podpora všech podporovaných typů v rozhraní .NET je k dispozici v plánu.
 
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Můžu svou implementaci deserializace sdílet s komunitou, aby k nim ostatní mohli těžit?
 

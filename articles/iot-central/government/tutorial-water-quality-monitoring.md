@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c2e68e83999ace4094d060a21e91b87347b03e9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 94e8695e01ca5e5c456ce230c4cc84b41685fd9c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955106"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026528"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování kvality vody v IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Tento kurz vás provede vytvořením aplikace monitorování kvality služby Azure IoT Central voda ze šablony IoT Central monitorování kvality vody. 
 
@@ -50,7 +52,7 @@ Vytvoření nové aplikace pro monitorování kvality IoT Central v Azure:
 
     ![Zadání účtu organizace](./media/tutorial-waterqualitymonitoring/sign-in.png)
 
-2. V levé navigační nabídce klikněte na **sestavovat** a vyberte kartu **státní správa** . Stránka pro státní správu zobrazuje několik šablon aplikací pro státní správu.
+2. V levém podokně klikněte na **sestavovat** a vyberte kartu **státní správa** . Stránka pro státní správu zobrazuje několik šablon aplikací pro státní správu.
 
     ![Vytváření šablon aplikací pro státní správu](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
@@ -254,8 +256,8 @@ Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatels
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte aplikaci pomocí následujících kroků:
 
-1. Otevřete kartu Správa z levé navigační nabídky aplikace IoT Central. 
-2. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky. 
+1. Otevřete kartu Správa v levém podokně aplikace IoT Central.
+2. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky.
 
     ![Odstranění aplikace](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)        
 

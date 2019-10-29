@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 9cded164b63bbb72e4a353e9a542c9e054c14d93
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b1ec40485e775b7e50b5f7d82014aef77f14fb3e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821141"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025274"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Rozhraní API pro splnění SaaS verze 2 
 
@@ -87,7 +87,7 @@ V následující tabulce jsou uvedeny definice běžných parametrů a entit pou
 | `offerId`                | Jedinečný identifikátor řetězce pro každou nabídku (například: "offer1").  |
 | `planId`                 | Jedinečný identifikátor řetězce pro každý plán/SKU (například: "stříbrné"). |
 | `operationId`            | Identifikátor GUID konkrétní operace.  |
-|  `action`                | Akce prováděná na prostředku, buď `unsubscribe`, `suspend`, `reinstate` nebo `changePlan`, `changeQuantity` `transfer`.  |
+|  `action`                | Akce prováděná na prostředku, buď `Unsubscribe`, `Suspend`, `Reinstate`nebo `ChangePlan`, `ChangeQuantity``Transfer`. |
 |   |   |
 
 Globálně jedinečné identifikátory ([GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) jsou 128 (32 – šestnáctková) čísel, která se obvykle generují automaticky. 
@@ -707,7 +707,7 @@ Došlo k vnitřní chybě serveru.
 
 #### <a name="get-operation-status"></a>Získat stav operace
 
-Umožňuje vydavateli sledovat stav zadané aktivované asynchronní operace (například `subscribe`, `unsubscribe`, `changePlan` nebo `changeQuantity`).
+Umožňuje vydavateli sledovat stav zadané aktivované asynchronní operace (například `Subscribe`, `Unsubscribe`, `ChangePlan`nebo `ChangeQuantity`).
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Získejte<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,11 +850,11 @@ Vydavatel musí implementovat Webhook v této službě SaaS, aby proaktivně upo
 }
 ```
 Kde může být akce jedna z následujících: 
-- `unsubscribe` (při odstranění prostředku)
-- `changePlan` (po dokončení operace změnit plán)
-- `changeQuantity` (po dokončení operace změny množství)
-- `suspend` (pokud byl prostředek pozastaven)
-- `reinstate` (Pokud se prostředek po pozastavení znovu nastavil)
+- `Unsubscribe` (při odstranění prostředku)
+- `ChangePlan` (po dokončení operace změnit plán)
+- `ChangeQuantity` (po dokončení operace změny množství)
+- `Suspend` (pokud byl prostředek pozastaven)
+- `Reinstate` (Pokud se prostředek po pozastavení znovu nastavil)
 
 Kde může být stav jedna z následujících: 
 - **NotStarted** <br>

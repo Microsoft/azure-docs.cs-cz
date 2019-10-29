@@ -6,14 +6,16 @@ ms.author: nandab
 ms.service: iot-central
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: f48ebe9ca6477bc2151c9ca3fed76be152cf648a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e462d879ea1c7756021cd3a241920fb0028a2e4f
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957500"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026391"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>Architektura šablony logistické aplikace IoT Central připojené
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Partneři & zákazník může využít šablonu aplikace & následující pokyny pro vývoj koncových řešení, která se dokončí koncovým **připojením**.
 

@@ -1,20 +1,20 @@
 ---
-title: Jak monitorovat dostupnost clusteru pomocí protokolů Ambari a Azure Monitor
+title: 'Monitorování: Apache Ambari & Azure Monitor logs – Azure HDInsight'
 description: Naučte se používat protokoly Ambari a Azure Monitor ke sledování stavu a dostupnosti clusteru.
 keywords: monitorování, Ambari, monitorování, Log Analytics, výstrahy, dostupnost, stav
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-author: tylerfox
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: tyfox
-ms.openlocfilehash: 153c28dc8a06968dc9dd3cfda021496672a094d5
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: eeaef8851035bbb8d2f39bcf9f366118545fcf0f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076555"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044483"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Jak monitorovat dostupnost clusteru pomocí protokolů Ambari a Azure Monitor
 
@@ -26,7 +26,7 @@ V tomto dokumentu se dozvíte, jak pomocí těchto nástrojů monitorovat cluste
 
 ### <a name="dashboard"></a>Řídicí panel
 
-Na řídicí panel Ambari se dostanete tak, že kliknete na odkaz **Ambari domů** v části **řídicí panely clusteru** v okně přehled služby HDInsight v Azure Portal, jak je znázorněno níže. Případně můžete k němu přistupovat zadáním následující adresy URL v prohlížeči [https://\<název_clusteru\>. azurehdinsight.NET.](https://clustername.azurehdinsight.net/)
+Na řídicí panel Ambari se dostanete tak, že kliknete na odkaz **Ambari domů** v části **řídicí panely clusteru** v okně přehled služby HDInsight v Azure Portal, jak je znázorněno níže. Případně můžete k němu přejít zadáním následující adresy URL v prohlížeči [https://\<název_clusteru\>. azurehdinsight.NET](https://clustername.azurehdinsight.net/)
 
 ![Zobrazení portálu prostředků HDInsight](media/hdinsight-cluster-availability/portal-oms-overview1.png)
 
@@ -83,7 +83,7 @@ Volitelně můžete také nakonfigurovat e-mailová oznámení pro Ambari výstr
 
 ![Akce spravovat oznámení Ambari](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Otevře se dialogové okno pro správu oznámení výstrah. **+** Klikněte v dolní části dialogového okna a vyplňte požadovaná pole a poskytněte Ambari podrobnosti e-mailového serveru, ze kterých se mají posílat e-maily.
+Otevře se dialogové okno pro správu oznámení výstrah. V dolní části dialogového okna klikněte na **+** a vyplňte požadovaná pole a zadejte podrobnosti o e-mailovém serveru, ze kterého se mají posílat e-maily.
 
 > [!TIP]
 > Nastavení e-mailových oznámení Ambari může být dobrým způsobem, jak přijímat výstrahy na jednom místě při správě mnoha clusterů HDInsight.
@@ -92,7 +92,7 @@ Otevře se dialogové okno pro správu oznámení výstrah. **+** Klikněte v do
 
 Protokoly Azure Monitor umožňují shromažďování a agregaci dat vygenerovaných několika prostředky, jako jsou clustery HDInsight, na jednom místě, abyste dosáhli jednotného prostředí pro monitorování.
 
-Za předpokladu budete potřebovat Log Analytics pracovní prostor pro ukládání shromážděných dat. Pokud jste ho ještě nevytvořili, můžete postupovat podle pokynů: [Vytvořte pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Za předpokladu budete potřebovat Log Analytics pracovní prostor pro ukládání shromážděných dat. Pokud jste ho ještě nevytvořili, můžete postupovat podle pokynů zde: [Vytvoření pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Povolit integraci protokolů Azure Monitor HDInsight
 
@@ -123,7 +123,7 @@ Příklad: Spusťte dotaz ukázka **míry dostupnosti** kliknutím na **Spustit*
 > [!NOTE] 
 > Míra dostupnosti se měří v průběhu 24 hodin, takže cluster bude muset běžet aspoň 24 hodin, než uvidíte správné sazby dostupnosti.
 
-Tuto tabulku můžete připnout na sdílený řídicí panel tak, že kliknete na **připnout** v pravém horním rohu. Pokud nemáte žádné zapisovatelné řídicí panely, uvidíte, jak ho vytvořit: [Vytváření a sdílení řídicích panelů v Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
+Tuto tabulku můžete připnout na sdílený řídicí panel tak, že kliknete na **připnout** v pravém horním rohu. Pokud nemáte žádné zapisovatelné řídicí panely, uvidíte, jak ho vytvořit: [vytváření a sdílení řídicích panelů v Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
 
 ### <a name="azure-monitor-alerts"></a>Výstrahy Azure Monitor
 
@@ -147,7 +147,7 @@ Tím se otevře okno **Konfigurovat logiku signálu** .
 
 Nastavte oddíl **Alert Logic** následujícím způsobem:
 
-*Založené na: Počet výsledků, podmínka: Větší než, prahová hodnota: 0,8.*
+*Podle: počet výsledků, podmínka: větší než, prahová hodnota: 0.*
 
 Vzhledem k tomu, že tento dotaz vrátí nedostupné uzly jako výsledky, pokud je počet výsledků stále větší než 0, výstraha by se měla aktivovat.
 
@@ -192,5 +192,5 @@ Kliknutím na seskupení závažnosti (tj. **závažnost 1, jak je** zvýrazněn
 
 ![Závažnost upozornění na pracovní prostor Log Analytics 1](media/hdinsight-cluster-availability/portal-oms-alerts-sev1.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight](hdinsight-high-availability-linux.md)

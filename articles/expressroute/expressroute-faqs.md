@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 50617eda56c2eaec9fac315013114f173e85edbc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 920419bf10634e8be15e05a89d547a5a9d1430b7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990790"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027787"
 ---
 # <a name="expressroute-faq"></a>Nejčastější dotazy k ExpressRoute
 
@@ -312,7 +312,7 @@ Ano. Poplatky za ExpressRoute Premium se vztahují na poplatky za okruhy Express
 
 ## <a name="expressroute-local"></a>ExpressRoute místní
 ### <a name="what-is-expressroute-local"></a>Co je ExpressRoute místní?
-ExpressRoute Local je SKU okruhu ExpressRoute, který je k dispozici v [ExpressRoute Direct](expressroute-erdirect-about.md). Klíčovou funkcí místní je, že místní okruh v umístění partnerského vztahu ExpressRoute poskytuje přístup pouze k jedné nebo dvěma oblastem Azure v nebo téměř stejné Metro. Na rozdíl od standardního okruhu získáte přístup ke všem oblastem Azure v geopolitické oblasti a okruhu Premium pro všechny oblasti Azure globálně. 
+ExpressRoute Local je SKU okruhu ExpressRoute, kromě standardní SKU a SKU úrovně Premium. Klíčovou funkcí místní je, že místní okruh v umístění partnerského vztahu ExpressRoute poskytuje přístup pouze k jedné nebo dvěma oblastem Azure v nebo téměř stejné Metro. Na rozdíl od standardního okruhu získáte přístup ke všem oblastem Azure v geopolitické oblasti a okruhu Premium pro všechny oblasti Azure globálně. 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Jaké jsou výhody ExpressRoute Local?
 I když potřebujete platit přenos odchozích dat pro okruh Standard nebo Premium ExpressRoute, nebudete za váš přenos odchozích dat platit samostatně pro místní okruh ExpressRoute. Jinými slovy, cena za ExpressRoute Local zahrnuje poplatky za přenos dat. ExpressRoute Local je výhodnější řešení, pokud máte obrovské množství dat, která se mají přenést, a můžete přenést data prostřednictvím privátního připojení k umístění partnerského vztahu ExpressRoute v blízkosti požadovaných oblastí Azure. 
@@ -323,9 +323,6 @@ V porovnání se standardním okruhem ExpressRoute má místní okruh stejnou sa
 * ExpressRoute Global Reach není k dispozici v místním prostředí.
 
 ExpressRoute Local má také stejné limity pro prostředky (např. počet virtuální sítě na okruh) jako standard. 
-
-### <a name="how-to-configure-expressroute-local"></a>Jak nakonfigurovat místní ExpressRoute? 
-ExpressRoute Local je k dispozici pouze na ExpressRoute Direct. Nejdřív musíte nakonfigurovat port ExpressRoute Direct. Po vytvoření přímého portu můžete vytvořit místní okruh podle pokynů uvedených [tady](expressroute-howto-erdirect.md).
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Kde je ExpressRoute k dispozici místní a u kterých oblastí Azure je každé umístění partnerského vztahu namapované?
 ExpressRoute Local je k dispozici v umístěních partnerských vztahů, kde jedna nebo dvě oblasti Azure jsou blízko. Není k dispozici v umístění partnerského vztahu, kde neexistuje oblast Azure v tomto státě nebo provincii nebo zemi. Přečtěte si prosím přesná mapování na [stránce umístění](expressroute-locations-providers.md).  

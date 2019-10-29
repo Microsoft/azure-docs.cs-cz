@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dd8858786d59563542c95d43d4e480ab1c11383
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933784"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024787"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak spravovat životní cyklus skupin Office 365 n
 
 Jakmile nastavíte vypršení platnosti skupiny:
 
-- Skupiny s aktivitami uživatele se automaticky Obnovují jako vypršení platnosti (Preview).
+- Skupiny s aktivitami uživatele se automaticky Obnovují jako vypršení platnosti v blízkosti
 - Vlastníci skupiny se oznamují, aby obnovili skupinu, pokud se skupina automaticky neobnovuje.
 - Odstraní se libovolná skupina, která není obnovená.
 - Všechny odstraněné skupiny Office 365 je možné obnovit do 30 dnů vlastníky skupiny nebo správcem.
@@ -40,7 +40,7 @@ V současné době je možné nakonfigurovat pro všechny skupiny Office 365 v o
 
 Informace o tom, jak stáhnout a nainstalovat rutiny Azure AD PowerShellu, najdete v tématu [Azure Active Directory PowerShellu pro graf 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
-## <a name="activity-based-automatic-renewal-preview"></a>Automatické obnovení na základě aktivit (Preview)
+## <a name="activity-based-automatic-renewal"></a>Automatické obnovení na základě aktivit
 
 Pomocí služby Azure AD Intelligence se teď skupiny automaticky Obnovují na základě toho, jestli jsou v nedávné době použity. Tato funkce eliminuje nutnost ručních akcí podle vlastníků skupin, protože je založená na aktivitě uživatelů ve skupinách napříč službami Office 365, jako je Outlook, SharePoint, teams nebo Yammer. Pokud například vlastník nebo člen skupiny nahraje dokument do SharePointu, navštíví kanál týmů nebo pošle e-mailovou zprávu do skupiny v Outlooku, skupina se automaticky obnoví a vlastník nezíská žádná oznámení o obnovení.
 

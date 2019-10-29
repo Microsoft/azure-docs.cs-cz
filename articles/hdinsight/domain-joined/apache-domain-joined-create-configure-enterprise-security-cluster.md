@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a konfigurace clusterů Balíček zabezpečení podniku ve službě Azure HDInsight
+title: Vytvoření, konfigurace Balíček zabezpečení podniku clusterů – Azure
 description: Naučte se vytvářet a konfigurovat clustery Balíček zabezpečení podniku ve službě Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: aed656c65fc70946f7d91cb4354e1c081954e68c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6247a6b2eeeb421773400cc60d05696f973a1dff
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030391"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044677"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Vytvoření a konfigurace clusterů Balíček zabezpečení podniku ve službě Azure HDInsight
 
@@ -146,7 +146,7 @@ Teď nakonfigurujete tenanta Azure AD tak, aby bylo možné synchronizovat uživ
 
     1. Zadejte heslo pro uživatele. Potom vyberte **Vytvořit**.
 
-1. Pokud chcete změnit heslo nově vytvořeného uživatele \< @ no__t-1 >, přihlaste se k Azure Portal pomocí identity. Pak se zobrazí výzva ke změně hesla.
+1. Pokud chcete změnit heslo nově vytvořeného uživatele \<fabrikamazureadmin@hdifabrikam.com>, přihlaste se k Azure Portal pomocí identity. Pak se zobrazí výzva ke změně hesla.
 
 ## <a name="sync-on-premises-users-to-azure-ad"></a>Synchronizace místních uživatelů s Azure AD
 
@@ -174,14 +174,14 @@ Teď nakonfigurujete tenanta Azure AD tak, aby bylo možné synchronizovat uživ
 
    ![Stránka připojení ke službě Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. Na stránce **Konfigurace přihlášení k Azure AD** vyberte **Další**.
-   @no__t – 0The "Konfigurace přihlášení ke službě Azure AD @ no__t-1
+   ![stránku konfigurace přihlášení ke službě Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
 
 1. Na stránce **připraveno ke konfiguraci** vyberte **instalovat**.
 
    ![Stránka připraveno ke konfiguraci](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
 
 1. Na stránce **Konfigurace byla dokončena** vyberte možnost **ukončit**.
-   ![The "konfigurace dokončena" stránka @ no__t-1
+   ![stránku "dokončení konfigurace"](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. Po dokončení synchronizace potvrďte, že uživatelé, které jste vytvořili v adresáři IaaS, se synchronizují do Azure AD.
    1. Přihlaste se k portálu Azure.
@@ -326,7 +326,7 @@ Ověřte, zda je certifikát nainstalován v **osobním** úložišti počítač
         | Rozsah cílových portů | 636 |
         | Protocol (Protokol) | Všechny |
         | Akce | Povolit |
-        | Priorita | @no__t – 0Desired číslo > |
+        | Priorita | \<požadované číslo > |
         | Name (Název) | Port_LDAP_636 |
 
     ![Dialogové okno Přidat příchozí pravidlo zabezpečení](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)

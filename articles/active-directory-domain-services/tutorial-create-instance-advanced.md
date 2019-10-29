@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 2ed488f5f4380c44772d63d208e2c7a68934aca8
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5b6543326fe7f44bc75545894a1d2a1d324be0e8
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757907"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023972"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Kurz: vytvoření a konfigurace instance Azure Active Directory Domain Services s pokročilými možnostmi konfigurace
 
@@ -88,7 +88,11 @@ Platí taky následující omezení názvů DNS:
 Dokončete pole v okně *základy* Azure Portal a vytvořte instanci Azure služba AD DS:
 
 1. Zadejte **název domény DNS** pro spravovanou doménu a vezměte v úvahu předchozí body.
-1. Vyberte **umístění** Azure, ve kterém se má spravovaná doména vytvořit.
+1. Vyberte **umístění** Azure, ve kterém se má spravovaná doména vytvořit. Pokud zvolíte oblast, která podporuje Zóny dostupnosti, prostředky Azure služba AD DS se rozdělují mezi zóny, aby se mohla zvýšit redundance.
+
+    Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech.
+
+    Není tu nic, co byste mohli nakonfigurovat pro Azure služba AD DS k distribuci mezi zónami. Platforma Azure automaticky zpracovává distribuci prostředků v zóně. Další informace a informace o dostupnosti oblastí najdete v tématu [co jsou zóny dostupnosti v Azure?][availability-zones]
 
     ![Konfigurace základního nastavení instance Azure AD Domain Services](./media/tutorial-create-instance-advanced/basics-window.png)
 
@@ -167,7 +171,7 @@ Na stránce **Souhrn** v průvodci zkontrolujte nastavení konfigurace pro sprav
 
     ![Stav služby Domain Services po úspěšném zřízení](./media/tutorial-create-instance-advanced/successfully-provisioned.png)
 
-Během procesu zřizování vytvoří Azure služba AD DS v adresáři dvě podnikové aplikace s názvem *služby řadiče domény* a *AzureActiveDirectoryDomainControllerServices* . Tyto podnikové aplikace jsou potřeba k obsluhování vaší spravované domény. Je nezbytné, aby tyto aplikace nebyly odstraněny kdykoli.
+Spravovaná doména je přidružená k vašemu tenantovi služby Azure AD. Během procesu zřizování vytvoří Azure služba AD DS dvě podnikové aplikace s názvem *Služba řadiče domény* a *AzureActiveDirectoryDomainControllerServices* v tenantovi Azure AD. Tyto podnikové aplikace jsou potřeba k obsluhování vaší spravované domény. Tyto aplikace neodstraňujte.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Aktualizace nastavení DNS pro virtuální síť Azure
 
@@ -238,6 +242,7 @@ Pokud chcete tuto spravovanou doménu zobrazit v akci, vytvořte virtuální po�
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

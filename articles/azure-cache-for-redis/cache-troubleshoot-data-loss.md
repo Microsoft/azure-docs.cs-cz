@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yegu
-ms.openlocfilehash: 523f4a302eb1f4679eb34bc959efc895fa5408ec
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4fee7c84b394e84369b28d2a4191d0e581f3beba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821037"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044364"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-data-loss"></a>Řešení potíží s Azure cache pro Redis ztrátu dat
 
@@ -101,7 +101,7 @@ Pokud zjistíte, že z mezipaměti zmizela většina nebo všechny klíče, mů�
 |---|---|
 | [Vyprazdňování klíče](#key-flushing) | Klíče byly ručně vyprázdněny |
 | [Nesprávný výběr databáze](#incorrect-database-selection) | Redis je nastavená na použití jiné než výchozí databáze. |
-| [Selhání instance Redis](#redis-instance-failure) | Klíče jsou odebrány pomocí explicitních příkazů DELETE. |
+| [Selhání instance Redis](#redis-instance-failure) | Server Redis je nedostupný. |
 
 ### <a name="key-flushing"></a>Vyprazdňování klíče
 

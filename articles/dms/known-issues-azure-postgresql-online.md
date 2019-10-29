@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/03/2019
-ms.openlocfilehash: 891e8a261e092de0ffcef3941dd48f01942a8030
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 10/27/2019
+ms.openlocfilehash: e25e31a9ed656d625d2025d8d0086d23ecf10682
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802590"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043209"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Známé problémy/omezení migrace pro online migrace z PostgreSQL do Azure DB pro PostgreSQL-Single server
 
@@ -152,6 +152,9 @@ ALTER USER PG_User SET search_path = fnRenames, pg_catalog, "$user", public;
 -- ALTER USER PG_User SET search_path TO DEFAULT;
 COMMIT;
 ```
+
+  > [!NOTE]
+  > V předchozím skriptu "PG_User" odkazuje na uživatelské jméno používané pro připojení ke zdroji migrace.
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>Omezení při migraci online z AWS VP PostgreSQL
 

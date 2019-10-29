@@ -1,5 +1,5 @@
 ---
-title: Apache Hive s Data Lake Tools for Visual Studio – Azure HDInsight
+title: Apache Hive & Data Lake Tools for Visual Studio – Azure HDInsight
 description: Naučte se používat nástroje Data Lake pro Visual Studio ke spouštění dotazů Apache Hive s Apache Hadoop ve službě Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 37652a8ca9750e6b33bd2744bda386eaba92b025
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076287"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044534"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Apache Hive pomocí nástrojů Data Lake pro Visual Studio
 
@@ -61,25 +61,25 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
     ![Snímek odesílání dotazu Hive](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
-    Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud například zadáte `SELECT * FROM`, IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF. IntelliSense navrhuje pouze metadata clusteru vybraného na panelu nástrojů služby HDInsight.
+    Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Například pokud zadáte `SELECT * FROM`, IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF. IntelliSense navrhuje pouze metadata clusteru vybraného na panelu nástrojů služby HDInsight.
 
-    ![Snímek obrazovky s IntelliSense ve Visual Studio Tools pro HDInsight – příklad 1](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
+    ![Snímek obrazovky Visual Studio Tools HDInsight IntelliSense – příklad 1](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "IntelliSense U-SQL")
    
-    ![Snímek obrazovky s IntelliSense ve Visual Studio Tools pro HDInsight – příklad 2](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
+    ![Snímek obrazovky s Visual Studio Tools HDInsight IntelliSense – příklad 2](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "IntelliSense U-SQL")
 
 7. Vyberte **Odeslat** nebo **Odeslat (rozšířené)** .
 
    Pokud jste použili možnost rozšířeného odeslání, nakonfigurujte pro skript **Název úlohy**, **Argumenty**, **Další konfigurace** a **Stavový adresář**:
 
-    ![Snímek obrazovky s dotazem Hive v HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Odeslání dotazů")
+    ![Snímek obrazovky s dotazem na podregistr HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Odeslat dotazy")
 
 ### <a name="hive-application"></a>Aplikace podregistru
 
 1. Otevřete **Visual Studio**.
 
-2. Z řádku nabídek přejděte na **soubor** > **Nový** > **projekt**.
+2. V řádku nabídek přejděte na **soubor** > **Nový** > **projekt**.
 
-3. V okně **Nový projekt** přejděte do části **šablony** > **Azure Data Lake** > podregistr **(HDInsight)**  > **aplikace**. 
+3. V okně **Nový projekt** přejděte do části **šablony** > **Azure Data Lake** > **podregistr (HDInsight)**  > aplikace v **podregistru**. 
 
 4. Zadejte název tohoto projektu a pak vyberte **OK**.
 
@@ -105,13 +105,13 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
      >
      > Vyřazení externí tabulky **neodstraní data** , pouze definici tabulky.
 
-   * `ROW FORMAT`: Instruuje podregistr, jak jsou data formátovaná. V tomto případě jsou pole v každém protokolu oddělená mezerou.
+   * `ROW FORMAT`: oznamuje podregistru, jak jsou data formátována. V tomto případě jsou pole v každém protokolu oddělená mezerou.
 
-   * `STORED AS TEXTFILE LOCATION`: Říká podregistru, že data jsou uložená v příkladu nebo v datovém adresáři a že se ukládají jako text.
+   * `STORED AS TEXTFILE LOCATION`: říká podregistru, že data jsou uložená v příkladu nebo v datovém adresáři a že se ukládají jako text.
 
-   * `SELECT`: Vyberte počet všech řádků, ve kterých sloupec `t4` obsahuje hodnotu. `[ERROR]` Tento příkaz vrátí hodnotu `3` , protože existují tři řádky, které obsahují tuto hodnotu.
+   * `SELECT`: Vyberte počet všech řádků, ve kterých `t4` sloupec obsahuje hodnotu `[ERROR]`. Tento příkaz vrátí hodnotu `3`, protože existují tři řádky, které obsahují tuto hodnotu.
 
-   * `INPUT__FILE__NAME LIKE '%.log'`– Instruuje podregistr, že bychom měli vracet jenom data ze souborů, které končí. log. Tato klauzule omezí hledání na soubor Sample. log, který obsahuje data.
+   * `INPUT__FILE__NAME LIKE '%.log'` – vydává informace o podregistru, které by měly vracet pouze data ze souborů končících log. log. Tato klauzule omezí hledání na soubor Sample. log, který obsahuje data.
 
 6. Na panelu nástrojů vyberte **cluster HDInsight** , který chcete použít pro tento dotaz. Vyberte **Odeslat** a spusťte příkazy jako úlohu podregistru.
 
@@ -121,7 +121,7 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
    ![Souhrn úlohy znázorňující dokončenou úlohu](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-8. Výstup této úlohy můžete zobrazit pomocí odkazu **výstup úlohy** . Zobrazuje `[ERROR] 3`se hodnota vrácená tímto dotazem.
+8. Výstup této úlohy můžete zobrazit pomocí odkazu **výstup úlohy** . Zobrazuje `[ERROR] 3`, což je hodnota vrácená tímto dotazem.
 
 ### <a name="additional-example"></a>Další příklad
 
@@ -139,18 +139,18 @@ Tento příklad spoléhá na `log4jLogs` tabulku vytvořenou v předchozím krok
 
     Tyto příkazy provádějí následující akce:
 
-    * `CREATE TABLE IF NOT EXISTS`: Vytvoří tabulku, pokud ještě neexistuje. `EXTERNAL` Protože klíčové slovo není použito, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uloženy v datovém skladu podregistru a jsou spravovány podregistru.
+    * `CREATE TABLE IF NOT EXISTS`: vytvoří tabulku, pokud ještě neexistuje. Protože klíčové slovo `EXTERNAL` nepoužíváte, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uloženy v datovém skladu podregistru a jsou spravovány podregistru.
     
     > [!NOTE]  
-    > Na rozdíl `EXTERNAL` od tabulek vyřazení interní tabulky také odstraní podkladová data.
+    > Na rozdíl od `EXTERNAL` tabulek odstraní interní tabulka také podkladová data.
 
-    * `STORED AS ORC`: Ukládá data ve formátu optimalizovaného řádku (ORC). ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.
+    * `STORED AS ORC`: ukládá data ve formátu optimalizovaného řádku (ORC). ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.
     
-    * `INSERT OVERWRITE ... SELECT`: Vybere řádky z `log4jLogs` tabulky, která obsahuje `[ERROR]`, a pak data `errorLogs` vloží do tabulky.
+    * `INSERT OVERWRITE ... SELECT`: Vybere řádky z tabulky `log4jLogs`, která obsahuje `[ERROR]`, a pak vloží data do tabulky `errorLogs`.
 
 3. Spusťte dotaz v režimu **dávky** .
 
-4. Pokud chcete ověřit, že úloha vytvořila tabulku, použijte **Průzkumník serveru** a rozbalte službu **Azure** > **HDInsight** > ve**výchozím nastavení**clusteru HDInsight > >  **databáze podregistru**. Zobrazí **se tabulka chyb a** tabulka **log4jLogs** .
+4. Pokud chcete ověřit, že úloha vytvořila tabulku, použijte **Průzkumník serveru** a **rozbalte Azure** > **HDInsight** > > databáze pro **podregistr** služby HDInsight > **výchozí**. Zobrazí **se tabulka chyb a** tabulka **log4jLogs** .
 
 ## <a id="nextsteps"></a>Další kroky
 

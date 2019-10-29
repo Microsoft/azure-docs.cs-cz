@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: K provedení online migrace PostgreSQL použijte Azure Database Migration Service pro Azure Database for PostgreSQL | Microsoft Docs'
+title: 'Kurz: použití Azure Database Migration Service k provedení online migrace PostgreSQL do Azure Database for PostgreSQL | Microsoft Docs'
 description: Přečtěte si, jak provést online migraci z místního PostgreSQL do Azure Database for PostgreSQL pomocí Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -10,15 +10,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 09/06/2019
-ms.openlocfilehash: 5888555e93c28c96445bed1936deda022b0a4b94
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.date: 10/28/2019
+ms.openlocfilehash: 1b4eebafadcdbebfc89ce7265f4d4f77f4f5ac8c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734591"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043230"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Migrace PostgreSQL do Azure Database for PostgreSQL online pomocí DMS
+# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Online migrace PostgreSQL do služby Azure Database for PostgreSQL pomocí DMS
 
 Pomocí Azure Database Migration Service můžete migrovat databáze z místní instance PostgreSQL a [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) s minimálními výpadky. Jinými slovy, migraci je možné dosáhnout s minimálními výpadky aplikace. V tomto kurzu migrujete ukázkovou databázi pro **pronájem DVD** z místní instance PostgreSQL 9,6 na Azure Database for PostgreSQL pomocí online aktivity migrace v Azure Database Migration Service.
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 > [!IMPORTANT]
 > Pro optimální prostředí migrace doporučuje Microsoft vytvořit instanci Azure Database Migration Service ve stejné oblasti Azure jako cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -63,7 +63,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 * Vytvořte [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru pro Azure Database for PostgreSQL, které povolí Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
 * Existují dvě metody pro vyvolání rozhraní příkazového řádku:
 
-  * V nabídce v pravém horním rohu webu Azure Portal, zvolte tlačítko Cloud Shell:
+  * V pravém horním rohu Azure Portal vyberte tlačítko Cloud Shell:
 
        ![Tlačítko Cloud Shell na webu Azure Portal](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
@@ -106,7 +106,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    Příklad:
+    Například:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
@@ -208,9 +208,9 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
    Například následující příkaz vytvoří službu v:
 
-   * Oblasti USA – východ 2
+   * Umístění: USA – východ 2
    * Předplatné: 97181df2-909d-420b-ab93-1bff15acb6b7
-   * Název skupiny prostředků: PostgresDemo
+   * Název skupina prostředků: PostgresDemo
    * Název služby DMS: PostgresCLI
 
    ```
@@ -225,7 +225,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    Příklad:
+    Například:
 
     ```
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
@@ -257,8 +257,8 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
     Například následující příkaz vytvoří projekt s použitím těchto parametrů:
 
-   * Oblasti Západní střed USA
-   * Název skupiny prostředků: PostgresDemo
+   * Umístění: USA – středozápad
+   * Název skupina prostředků: PostgresDemo
    * Název služby: PostgresCLI
    * Název projektu: PGMigration
    * Zdrojová platforma: PostgreSQL
@@ -471,7 +471,7 @@ Aby byla všechna data zachycena, ověřte počet řádků mezi zdrojovými a c�
     az dms project task cutover -h
     ```
 
-    Příklad:
+    Například:
 
     ```
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --database-name Inventory
@@ -519,7 +519,7 @@ Pokud potřebujete zrušit nebo odstranit všechny úlohy, projekt nebo služby 
     az dms delete -g ProgresDemo -n PostgresCLI
      ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o známých problémech a omezeních při provádění online migrací do služby Azure Database for PostgreSQL najdete v článku [Známé problémy s online migracemi do služby Azure Database for PostgreSQLa jejich řešení](known-issues-azure-postgresql-online.md).
 * Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

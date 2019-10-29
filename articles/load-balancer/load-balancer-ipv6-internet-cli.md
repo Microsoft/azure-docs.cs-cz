@@ -1,11 +1,11 @@
 ---
-title: Vytvořte veřejný load balancer s IPv6 – rozhraní příkazového řádku Azure
+title: Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6 – Azure CLI
 titlesuffix: Azure Load Balancer
-description: Informace o vytvoření veřejného load balanceru s protokolem IPv6 pomocí rozhraní příkazového řádku Azure.
+description: Naučte se vytvořit veřejný Nástroj pro vyrovnávání zatížení s protokolem IPv6 pomocí Azure CLI.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
+keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, nativní IPv6, mobilní zařízení, IoT
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,51 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 0ee85a92753845e0e67fff22da894a048acb1b14
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 3d92f1a7067d4b3717ecdfd5b8cb16ec0234bdec
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274959"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025710"
 ---
-# <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejného load balanceru s protokolem IPv6 pomocí rozhraní příkazového řádku Azure
+# <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejného nástroje pro vyrovnávání zatížení s protokolem IPv6 pomocí Azure CLI
 
+>[! Poznámka: Změna v osvědčených postupech pro protokol IPv6] Tento článek popisuje úvodní funkci IPv6, která umožňuje základním nástrojům pro vyrovnávání zatížení poskytovat připojení protokolem IPv4 i IPv6.  K dispozici jsou teď komplexnější možnosti připojení pomocí protokolu IPv6 [pro Azure virtuální sítě](../virtual-network/ipv6-overview.md) , které integrují připojení IPv6 k vašim virtuálním sítím a obsahuje klíčové funkce, jako jsou pravidla skupiny zabezpečení sítě IPv6, uživatelem definované směrování IPv6, IPv6 Basic a Vyrovnávání zatížení úrovně Standard a další.  Protokol IPv6 pro Azure virtuální sítě je doporučeným osvědčeným postupem pro aplikace IPv6 v Azure. 
+>Nasazení rozhraní příkazového [řádku Azure VNET najdete v protokolu IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md) .
 
-Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroje pro vyrovnávání zatížení poskytuje vysokou dostupnost díky distribuci příchozích přenosů mezi funkční instance cloud services nebo virtual machines v sadě nástroje pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení ale může také představovat tyto služby ve více portech, více IP adres nebo obojí.
+Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroje pro vyrovnávání zatížení poskytují vysokou dostupnost distribucí příchozího provozu mezi funkční instance služby v cloudových službách nebo virtuálních počítačích v sadě nástrojů pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení můžou tyto služby také prezentovat na několika portech nebo několika IP adresách nebo obojím.
 
-## <a name="example-deployment-scenario"></a>Příklad scénáře nasazení
+## <a name="example-deployment-scenario"></a>Ukázkový scénář nasazení
 
-Následující diagram znázorňuje řešení, která se nasazuje s použitím Ukázková šablona popsaných v tomto článku Vyrovnávání zatížení.
+Následující diagram znázorňuje řešení vyrovnávání zatížení, které je nasazené pomocí ukázkové šablony popsané v tomto článku.
 
 ![Scénář nástroje pro vyrovnávání zatížení](./media/load-balancer-ipv6-internet-cli/lb-ipv6-scenario-cli.png)
 
 V tomto scénáři vytvoříte následující prostředky Azure:
 
-* Dva virtuální počítače (VM)
-* Rozhraní virtuální sítě pro každý virtuální počítač s protokoly IPv4 a IPv6 adresy přiřazené
-* Nástroj pro vyrovnávání zatížení veřejnou adresu IPv4 a IPv6 veřejnou IP adresu
-* Skupinu dostupnosti, která obsahuje dva virtuální počítače
-* Dvě pravidla vyrovnávání přiřadit privátní koncových bodů veřejných virtuálních IP adres zatížení
+* dva virtuální počítače
+* virtuální síťové rozhraní pro každý virtuální počítač s přiřazenými adresami IPv4 i IPv6
+* Veřejný Nástroj pro vyrovnávání zatížení s IPv4 a veřejnou IP adresou IPv6
+* Skupina dostupnosti, která obsahuje dva virtuální počítače
+* dvě pravidla vyrovnávání zatížení pro mapování veřejných virtuálních IP adres na privátní koncové body
 
-## <a name="deploy-the-solution-by-using-azure-cli"></a>Nasazení řešení pomocí Azure CLI
+## <a name="deploy-the-solution-by-using-azure-cli"></a>Nasazení řešení pomocí rozhraní příkazového řádku Azure
 
-Následující kroky ukazují postup vytvoření veřejného load balanceru úrovně pomocí Azure CLI. Pomocí rozhraní příkazového řádku, vytvoříte a nakonfigurujete každý objekt jednotlivě a potom se spojí dohromady a vytvoří prostředek je.
+Následující kroky ukazují, jak vytvořit veřejný Nástroj pro vyrovnávání zatížení pomocí rozhraní příkazového řádku Azure CLI. Pomocí rozhraní příkazového řádku můžete vytvořit a nakonfigurovat jednotlivé objekty jednotlivě a pak je umístit dohromady a vytvořit prostředek.
 
 Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonfigurujte následující objekty:
 
-* **Konfigurace front-endové IP adresy**: Obsahuje veřejné IP adresy pro příchozí síťový provoz.
-* **Fond back-endové adresy**: Obsahuje síťová rozhraní (nic), ve kterých virtuální počítače přijímají síťový provoz z nástroje pro vyrovnávání zatížení.
-* **Pravidla vyrovnávání zatížení**: Obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port ve fondu back-end adres.
-* **Pravidla příchozího překladu adres (NAT)** : Obsahuje pravidla překladu síťových adres (NAT), která mapují veřejný port v nástroji pro vyrovnávání zatížení na port pro konkrétní virtuální počítač ve fondu back-end adres.
-* **Sondy**: Obsahuje sondy stavu, které slouží ke kontrole dostupnosti instancí virtuálních počítačů ve fondu back-end adres.
+* **Konfigurace front-ENDOVÉ IP**adresy: obsahuje veřejné IP adresy pro příchozí síťový provoz.
+* **Fond back-endové adresy**: obsahuje síťová rozhraní (nic) pro virtuální počítače pro příjem síťového provozu z nástroje pro vyrovnávání zatížení.
+* **Pravidla vyrovnávání zatížení**: obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port ve fondu back-end adres.
+* **Pravidla příchozího překladu adres**(NAT): obsahuje pravidla překladu síťových adres (NAT), která mapují veřejný port v nástroji pro vyrovnávání zatížení na port pro konkrétní virtuální počítač v rámci fondu back-end adres.
+* **Sondy**: obsahuje sondy stavu, které slouží ke kontrole dostupnosti instancí virtuálních počítačů ve fondu back-end adres.
 
 ## <a name="set-up-azure-cli"></a>Nastavení rozhraní příkazového řádku Azure
 
-V tomto příkladu spustíte nástroje Azure CLI v příkazovém okně prostředí PowerShell. Pokud chcete zlepšit čitelnost a opakované použití, použijete možností skriptování Powershellu, ne rutiny Azure Powershellu.
+V tomto příkladu spustíte nástroje rozhraní příkazového řádku Azure CLI v příkazovém okně PowerShellu. Pro zlepšení čitelnosti a opakovaného použití využívají skriptovací možnosti prostředí PowerShell, nikoli rutiny Azure PowerShell.
 
-1. [Instalace a konfigurace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) pomocí následujících kroků v odkazovaném článku a přihlaste se ke svému účtu Azure.
+1. [Nainstalujte a nakonfigurujte Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) podle kroků v propojeném článku a přihlaste se ke svému účtu Azure.
 
-2. Nastavte proměnné prostředí PowerShell pro použití s příkazy rozhraní příkazového řádku Azure:
+2. Nastavení proměnných PowerShellu pro použití s příkazy Azure CLI:
 
     ```powershell
     $subscriptionid = "########-####-####-####-############"  # enter subscription id
@@ -74,7 +76,7 @@ V tomto příkladu spustíte nástroje Azure CLI v příkazovém okně prostřed
     $lbName = "myIPv4IPv6Lb"
     ```
 
-## <a name="create-a-resource-group-a-load-balancer-a-virtual-network-and-subnets"></a>Vytvořit skupinu prostředků, nástroj pro vyrovnávání zatížení, virtuální sítě a podsítě
+## <a name="create-a-resource-group-a-load-balancer-a-virtual-network-and-subnets"></a>Vytvoření skupiny prostředků, nástroje pro vyrovnávání zatížení, virtuální sítě a podsítí
 
 1. Vytvořte skupinu prostředků:
 
@@ -82,7 +84,7 @@ V tomto příkladu spustíte nástroje Azure CLI v příkazovém okně prostřed
     az group create --name $rgName --location $location
     ```
 
-2. Vytvoření load balanceru úrovně:
+2. Vytvořte Nástroj pro vyrovnávání zatížení:
 
     ```azurecli
     $lb = az network lb create --resource-group $rgname --location $location --name $lbName
@@ -101,16 +103,16 @@ V tomto příkladu spustíte nástroje Azure CLI v příkazovém okně prostřed
     $subnet2 = az network vnet subnet create --resource-group $rgname --name $subnet2Name --address-prefix $subnet2Prefix --vnet-name $vnetName
     ```
 
-## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Vytvoření veřejné IP adresy pro front-endový fond
+## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Vytvořit veřejné IP adresy pro front-end fond
 
-1. Nastavte proměnné prostředí PowerShell:
+1. Nastavte proměnné PowerShellu:
 
     ```powershell
     $publicIpv4Name = "myIPv4Vip"
     $publicIpv6Name = "myIPv6Vip"
     ```
 
-2. Vytvoření veřejné IP adresy pro front-endový fond IP adres:
+2. Vytvořte veřejnou IP adresu pro front-end fond IP adres:
 
     ```azurecli
     $publicipV4 = az network public-ip create --resource-group $rgname --name $publicIpv4Name --location $location --version IPv4 --allocation-method Dynamic --dns-name $dnsLabel
@@ -118,17 +120,17 @@ V tomto příkladu spustíte nástroje Azure CLI v příkazovém okně prostřed
     ```
 
     > [!IMPORTANT]
-    > Nástroje pro vyrovnávání zatížení používá název domény veřejné IP adresy jako svůj plně kvalifikovaný název domény (FQDN). To změnit z modelu nasazení classic, který používá cloudovou službu pojmenujte jako plně kvalifikovaný název domény pro vyrovnávání zatížení.
+    > Nástroj pro vyrovnávání zatížení používá označení domény veřejné IP adresy jako plně kvalifikovaného názvu domény (FQDN). Tím se změní nastavení klasického nasazení, které jako plně kvalifikovaný název domény nástroje pro vyrovnávání zatížení používá název cloudové služby.
     >
-    > V tomto příkladu plně kvalifikovaný název domény je *contoso09152016.southcentralus.cloudapp.azure.com*.
+    > V tomto příkladu je plně kvalifikovaný název domény *contoso09152016.southcentralus.cloudapp.Azure.com*.
 
-## <a name="create-front-end-and-back-end-pools"></a>Vytvořte front-endovými a back endové fondy
+## <a name="create-front-end-and-back-end-pools"></a>Vytvoření front-endové a back-endové fondy
 
-V této části vytvoříte tyto fondy IP adres:
-* Front-endového fondu IP, která bude přijímat příchozí síťový provoz do nástroje pro vyrovnávání zatížení.
-* Back endového fondu IP kam front-endový fond odesílá síťový provoz s vyrovnáváním zatížení.
+V této části vytvoříte následující fondy IP adres:
+* Front-end fond IP adres, který přijímá příchozí síťový provoz v nástroji pro vyrovnávání zatížení.
+* Fond back-end IP adres, kde front-end fond odesílá síťový provoz s vyrovnáváním zatížení.
 
-1. Nastavte proměnné prostředí PowerShell:
+1. Nastavte proměnné PowerShellu:
 
     ```powershell
     $frontendV4Name = "FrontendVipIPv4"
@@ -137,7 +139,7 @@ V této části vytvoříte tyto fondy IP adres:
     $backendAddressPoolV6Name = "BackendPoolIPv6"
     ```
 
-2. Vytvořte front-endový fond IP adres a přidružte jej k veřejné IP adresy, kterou jste vytvořili v předchozím kroku a nástroje pro vyrovnávání zatížení.
+2. Vytvořte front-end fond IP adres a přidružte ho k veřejné IP adrese, kterou jste vytvořili v předchozím kroku a nástroji pro vyrovnávání zatížení.
 
     ```azurecli
     $frontendV4 = az network lb frontend-ip create --resource-group $rgname --name $frontendV4Name --public-ip-address $publicIpv4Name --lb-name $lbName
@@ -146,18 +148,18 @@ V této části vytvoříte tyto fondy IP adres:
     $backendAddressPoolV6 = az network lb address-pool create --resource-group $rgname --name $backendAddressPoolV6Name --lb-name $lbName
     ```
 
-## <a name="create-the-probe-nat-rules-and-load-balancer-rules"></a>Vytvoření testu, pravidla překladu adres a pravidla služby load balancer
+## <a name="create-the-probe-nat-rules-and-load-balancer-rules"></a>Vytvoření sondy, pravidel překladu adres (NAT) a pravidel nástroje pro vyrovnávání zatížení
 
 Tento příklad vytvoří následující položky:
 
-* Pravidlo testu, zkontrolujte připojení k portu TCP 80.
-* Pravidlo NAT pro převod veškerý příchozí provoz na portu 3389 na port 3389 pro protokol RDP.\*
-* Pravidlo NAT pro převod veškerý příchozí provoz na portu 3391 na port 3389 pro protokol remote desktop protocol (RDP).\*
-* Pravidlo nástroje pro vyrovnávání zatížení, které veškerý příchozí provoz na portu 80 na port 80 na adresách v back endového fondu.
+* Pravidlo testu pro kontrolu připojení k portu TCP 80.
+* Pravidlo překladu adres (NAT) pro překlad veškerého příchozího provozu na portu 3389 na port 3389 pro protokol RDP.\*
+* Pravidlo překladu adres (NAT) pro překlad veškerého příchozího provozu na portu 3391 na port 3389 pro protokol RDP (Remote Desktop Protocol).\*
+* Pravidlo nástroje pro vyrovnávání zatížení, které vyrovnává veškerý příchozí provoz na portu 80 na port 80 u adres ve fondu back-end.
 
-\* Pravidla NAT jsou spojeny s konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz přicházející na portu 3389 je odeslána do konkrétního virtuálního počítače a port, který má přidružená k pravidlu překladu adres. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Na stejný port nelze přiřadit oba protokoly.
+\* pravidla překladu adres (NAT) jsou přidružená ke konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz, který se dorazí na port 3389, se pošle na konkrétní virtuální počítač a port, který je přidružený k pravidlu NAT. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Ke stejnému portu nemůžete přiřadit oba protokoly.
 
-1. Nastavte proměnné prostředí PowerShell:
+1. Nastavte proměnné PowerShellu:
 
     ```powershell
     $probeV4V6Name = "ProbeForIPv4AndIPv6"
@@ -167,29 +169,29 @@ Tento příklad vytvoří následující položky:
     $lbRule1V6Name = "LBRuleForIPv6-Port80"
     ```
 
-2. Vytvořte test paměti.
+2. Vytvořte sondu.
 
-    Následující příklad vytvoří sondu protokolu TCP, který kontroluje pro připojení k back-end port TCP 80 každých 15 sekund. Po dvou po sobě následujících selhání označí prostředek back-end jako nedostupné.
+    Následující příklad vytvoří test TCP, který po 15 sekundách kontroluje připojení k back-endovému portu TCP 80. Po dvou po sobě jdoucích selhání označí prostředek back-end jako nedostupný.
 
     ```azurecli
     $probeV4V6 = az network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --threshold 2 --lb-name $lbName
     ```
 
-3. Vytvoření příchozích pravidel NAT, které umožňují připojení RDP k back endové prostředky:
+3. Vytvořte pravidla příchozího překladu adres (NAT), která povolí připojení RDP k prostředkům back-endu:
 
     ```azurecli
     $inboundNatRuleRdp1 = az network lb inbound-nat-rule create --resource-group $rgname --name $natRule1V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3389 --backend-port 3389 --lb-name $lbName
     $inboundNatRuleRdp2 = az network lb inbound-nat-rule create --resource-group $rgname --name $natRule2V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3391 --backend-port 3389 --lb-name $lbName
     ```
 
-4. Vytvoření pravidla nástroje pro vyrovnávání zatížení, odesílat provoz na různé back endové porty, v závislosti na front-endu, který přijal požadavek.
+4. Vytvořte pravidla nástroje pro vyrovnávání zatížení, která odesílají provoz na různé porty back-endu v závislosti na front-endu, který požadavek přijal.
 
     ```azurecli
     $lbruleIPv4 = az network lb rule create --resource-group $rgname --name $lbRule1V4Name --frontend-ip-name $frontendV4Name --backend-pool-name $backendAddressPoolV4Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 80 --lb-name $lbName
     $lbruleIPv6 = az network lb rule create --resource-group $rgname --name $lbRule1V6Name --frontend-ip-name $frontendV6Name --backend-pool-name $backendAddressPoolV6Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 8080 --lb-name $lbName
     ```
 
-5. Zkontrolujte nastavení:
+5. Ověřte nastavení:
 
     ```azurecli
     az network lb show --resource-group $rgName --name $lbName
@@ -237,9 +239,9 @@ Tento příklad vytvoří následující položky:
 
 ## <a name="create-nics"></a>Vytvoření síťových rozhraní
 
-Vytvoření síťových rozhraní a přiřaďte je k pravidla NAT, pravidla nástroje pro vyrovnávání zatížení a testům.
+Vytvořte nic a přidružte je k pravidlům NAT, pravidlům nástroje pro vyrovnávání zatížení a testům.
 
-1. Nastavte proměnné prostředí PowerShell:
+1. Nastavte proměnné PowerShellu:
 
     ```powershell
     $nic1Name = "myIPv4IPv6Nic1"
@@ -252,7 +254,7 @@ Vytvoření síťových rozhraní a přiřaďte je k pravidla NAT, pravidla nás
     $natRule2V4Id = "/subscriptions/$subscriptionid/resourceGroups/$rgname/providers/Microsoft.Network/loadbalancers/$lbName/inboundNatRules/$natRule2V4Name"
     ```
 
-2. Vytvořte síťové rozhraní pro každý back-end a přidání konfigurace protokolu IPv6:
+2. Vytvořte síťovou kartu pro každý back-end a přidejte konfiguraci IPv6:
 
     ```azurecli
     $nic1 = az network nic create --name $nic1Name --resource-group $rgname --location $location --private-ip-address-version "IPv4" --subnet $subnet1Id --lb-address-pools $backendAddressPoolV4Id --lb-inbound-nat-rules $natRule1V4Id
@@ -262,11 +264,11 @@ Vytvoření síťových rozhraní a přiřaďte je k pravidla NAT, pravidla nás
     $nic2IPv6 = az network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-address-version "IPv6" --lb-address-pools $backendAddressPoolV6Id --nic-name $nic2Name
     ```
 
-## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Vytvoření back endové prostředky virtuálního počítače a připojení každé síťové rozhraní
+## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Vytvořte prostředky záložního virtuálního počítače a připojte jednotlivé síťové karty.
 
-Pokud chcete vytvořit virtuální počítače, musíte mít účet úložiště. Pro vyrovnávání zatížení virtuálních počítačů musí být členy skupiny dostupnosti. Další informace o vytváření virtuálních počítačů najdete v tématu [vytvoření virtuálního počítače Azure pomocí prostředí PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+Pokud chcete vytvořit virtuální počítače, musíte mít účet úložiště. Pro vyrovnávání zatížení musí být virtuální počítače členy skupiny dostupnosti. Další informace o vytváření virtuálních počítačů najdete v tématu [Vytvoření virtuálního počítače Azure pomocí PowerShellu](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
-1. Nastavte proměnné prostředí PowerShell:
+1. Nastavte proměnné PowerShellu:
 
     ```powershell
     $availabilitySetName = "myIPv4IPv6AvailabilitySet"
@@ -280,7 +282,7 @@ Pokud chcete vytvořit virtuální počítače, musíte mít účet úložiště
     ```
 
     > [!WARNING]
-    > Tento příklad používá uživatelské jméno a heslo pro virtuální počítače v nešifrovaném textu. Využijte opatrní při použití tyto přihlašovací údaje v nešifrovaném textu. Bezpečnější způsob zpracování pověření v prostředí PowerShell, najdete v článku [ `Get-Credential` ](https://technet.microsoft.com/library/hh849815.aspx) rutiny.
+    > V tomto příkladu se pro virtuální počítače používá uživatelské jméno a heslo v nešifrovaném textu. Pokud tyto přihlašovací údaje použijete v nešifrovaném textu, postupujte opatrně. Bezpečnější metoda zpracování přihlašovacích údajů v PowerShellu najdete v tématu rutina [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) .
 
 2. Vytvořte skupinu dostupnosti:
 
@@ -288,7 +290,7 @@ Pokud chcete vytvořit virtuální počítače, musíte mít účet úložiště
     $availabilitySet = az vm availability-set create --name $availabilitySetName --resource-group $rgName --location $location
     ```
 
-3. Vytvoření virtuálních počítačů s přidružených síťových karet:
+3. Vytvořte virtuální počítače s přidruženými síťovými kartami:
 
     ```azurecli
     az vm create --resource-group $rgname --name $vm1Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic1Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
@@ -296,8 +298,4 @@ Pokud chcete vytvořit virtuální počítače, musíte mít účet úložiště
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
 
-## <a name="next-steps"></a>Další postup
 
-[Začínáme s konfigurací interního nástroje pro vyrovnávání zatížení](load-balancer-get-started-ilb-arm-cli.md)  
-[Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md)  
-[Konfigurace nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md)

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: d6063daa649b507057fd2a4468c32dad1cd35eec
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b741e928ed80a045b61d79f99d2436577ca864b0
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030428"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027710"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hive
 
@@ -53,25 +53,27 @@ kinit <username>
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
 ```
 
-Nahraďte `<username>` názvem účtu v doméně s oprávněními pro přístup ke clusteru. Nahraďte `<AAD-DOMAIN>` názvem Azure Active Directory (AAD), ke které je cluster připojený. Pro hodnotu @no__t 0 použijte řetězec velkého písmene, jinak se přihlašovací údaje nenaleznou. V případě potřeby vyhledejte v názvech sféry `/etc/krb5.conf`.
+Nahraďte `<username>` názvem účtu v doméně s oprávněními pro přístup ke clusteru. Nahraďte `<AAD-DOMAIN>` názvem Azure Active Directory (AAD), ke které je cluster připojený. Pro hodnotu `<AAD-DOMAIN>` použijte velká písmena, jinak se přihlašovací údaje nenašly. V případě potřeby vyhledejte v názvech sféry `/etc/krb5.conf`.
 
 ---
 
 ### <a name="over-public-or-private-endpoints"></a>Přes veřejné nebo soukromé koncové body
 
-Při připojování ke clusteru pomocí veřejných nebo privátních koncových bodů je nutné zadat název přihlašovacího účtu clusteru (výchozí `admin`) a heslo. Například pomocí Beeline z klientského systému se připojte k adrese @no__t 0. Toto připojení se provádí přes port `443` a je šifrované pomocí protokolu SSL:
+Při připojování ke clusteru pomocí veřejných nebo privátních koncových bodů je nutné zadat název přihlašovacího účtu clusteru (výchozí `admin`) a heslo. Například pomocí Beeline z klientského systému se připojte k `<clustername>.azurehdinsight.net` adrese. Toto připojení se provádí přes port `443` a je šifrované pomocí protokolu SSL:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
 ```
 
 nebo pro soukromý koncový bod:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
 ```
 
-Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` přihlašovacím účtem clusteru pro váš cluster. Nahraďte `password` heslem pro přihlašovací účet clusteru.
+Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `<username>` účtem přihlášení clusteru pro váš cluster. Poznámka: clustery ESP používají celý hlavní název uživatele (např. user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
+
+Privátní koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v [tomto](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) tématu. Pomocí příkazu `curl` s možností `-v` můžete vyřešit potíže s připojením k s veřejnými nebo soukromými koncovými body před použitím Beeline.
 
 ---
 
@@ -84,16 +86,18 @@ Apache Spark poskytuje vlastní implementaci HiveServer2, která se někdy ozna�
 Použitý připojovací řetězec je trochu odlišný. Místo obsahujícího `httpPath=/hive2` je `httpPath/sparkhive2`:
 
 ```bash 
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
 nebo pro soukromý koncový bod:
 
 ```bash 
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
-Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` přihlašovacím účtem clusteru pro váš cluster. Nahraďte `password` heslem pro přihlašovací účet clusteru.
+Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `<username>` účtem přihlášení clusteru pro váš cluster. Poznámka: clustery ESP používají celý hlavní název uživatele (např. user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
+
+Privátní koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v [tomto](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) tématu. Pomocí příkazu `curl` s možností `-v` můžete vyřešit potíže s připojením k s veřejnými nebo soukromými koncovými body před použitím Beeline.
 
 ---
 
@@ -133,7 +137,7 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-3. Příkazy Beeline začínají znakem `!`, například `!help` zobrazí nápovědu. @No__t-0 však lze pro některé příkazy vynechat. Například `help` funguje také.
+3. Příkazy Beeline začínají znakem `!`, například `!help` zobrazí nápovědu. Pro některé příkazy však může být `!` vynecháno. Například `help` funguje také.
 
     K provedení příkazů HiveQL se používá `!sql`. HiveQL je ale často používaný, takže můžete vynechat předchozí `!sql`. Následující dva příkazy jsou ekvivalentní:
 
@@ -201,7 +205,7 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
 
     * `SELECT` – vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento dotaz vrátí hodnotu **3** , protože jsou tři řádky, které obsahují tuto hodnotu.
 
-    * `INPUT__FILE__NAME LIKE '%.log'`-podregistr se pokusí použít schéma pro všechny soubory v adresáři. V tomto případě adresář obsahuje soubory, které neodpovídají schématu. Aby se zabránilo uvolňování dat ve výsledcích, tento příkaz oznamuje podregistru, že by měl vracet pouze data ze souborů končících log. log.
+    * `INPUT__FILE__NAME LIKE '%.log'` – podregistr se pokusí použít schéma pro všechny soubory v adresáři. V tomto případě adresář obsahuje soubory, které neodpovídají schématu. Aby se zabránilo uvolňování dat ve výsledcích, tento příkaz oznamuje podregistru, že by měl vracet pouze data ze souborů končících log. log.
 
    > [!NOTE]  
    > Externí tabulky by měly být použity, pokud očekáváte, že budou zdrojová data aktualizována externím zdrojem. Například automatizovaný proces odesílání dat nebo operace MapReduce.

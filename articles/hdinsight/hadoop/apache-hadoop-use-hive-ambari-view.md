@@ -1,5 +1,5 @@
 ---
-title: Použití zobrazení Apache Ambari k práci s podregistrum v HDInsight (Apache Hadoop) – Azure
+title: Použití zobrazení podregistru Apache Ambari s Apache Hadoop ve službě Azure HDInsight
 description: Naučte se používat zobrazení podregistru z webového prohlížeče k odesílání dotazů na podregistr. Zobrazení podregistru je součástí webového uživatelského rozhraní Ambari, které je k dispozici v clusteru HDInsight se systémem Linux.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077014"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044814"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení podregistru Apache Ambari s Apache Hadoop ve službě HDInsight
 
@@ -21,7 +21,7 @@ ms.locfileid: "71077014"
 
 Naučte se spouštět dotazy na podregistry pomocí zobrazení podregistru Apache Ambari. Zobrazení podregistru umožňuje vytvářet, optimalizovat a spouštět dotazy na podregistr z webového prohlížeče.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * Webový prohlížeč
@@ -30,7 +30,7 @@ Naučte se spouštět dotazy na podregistry pomocí zobrazení podregistru Apach
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster.  Pokyny najdete v tématu [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters) . Cluster se otevře v novém okně portálu.
 
-2. Z **řídicích panelů clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte název a heslo přihlášení clusteru `admin`(výchozí), které jste zadali při vytváření clusteru.
+2. Z **řídicích panelů clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte název a heslo přihlášení clusteru (výchozí `admin`), které jste zadali při vytváření clusteru.
 
 3. V seznamu zobrazení vyberte __zobrazení podregistru__.
 
@@ -61,16 +61,16 @@ Naučte se spouštět dotazy na podregistry pomocí zobrazení podregistru Apach
 
     Tyto příkazy provádějí následující akce:
 
-   * `DROP TABLE`: Odstraní tabulku a datový soubor pro případ, že tabulka již existuje.
+   * `DROP TABLE`: odstraní tabulku a datový soubor pro případ, že tabulka již existuje.
 
    * `CREATE EXTERNAL TABLE`: Vytvoří novou "externí" tabulku v podregistru.
      Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.
 
-   * `ROW FORMAT`: Ukazuje, jak jsou data formátována. V tomto případě jsou pole v každém protokolu oddělená mezerou.
+   * `ROW FORMAT`: ukazuje, jak jsou data formátována. V tomto případě jsou pole v každém protokolu oddělená mezerou.
 
-   * `STORED AS TEXTFILE LOCATION`: Zobrazuje, kde jsou data uložená, a že je uložená jako text.
+   * `STORED AS TEXTFILE LOCATION`: zobrazuje, kde jsou data uložená, a že je uložená jako text.
 
-   * `SELECT`: Vybere počet všech řádků, ve kterých sloupec T4 obsahuje hodnotu [Chyba].
+   * `SELECT`: vybere počet všech řádků, ve kterých sloupec T4 obsahuje hodnotu [Chyba].
 
    > [!IMPORTANT]  
    > Ponechte výběr __databáze__ ve __výchozím nastavení__. Příklady v tomto dokumentu používají výchozí databázi, která je součástí HDInsight.
@@ -119,7 +119,7 @@ Na kartě **dotaz** můžete volitelně ukládat dotazy. Po uložení se dotaz d
 ![Karta zobrazení uložených dotazů Apache Hive](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> Uložené dotazy jsou uloženy ve výchozím úložišti clusteru. Uložené dotazy můžete najít pod cestou `/user/<username>/hive/scripts`. Tyto soubory jsou uloženy jako soubory ve `.hql` formátu prostého textu.
+> Uložené dotazy jsou uloženy ve výchozím úložišti clusteru. Uložené dotazy můžete najít pod cestou `/user/<username>/hive/scripts`. Jsou uloženy jako soubory `.hql` prostého textu.
 >
 > Pokud cluster odstraníte, ale zachováte ho, můžete k načtení dotazů použít nástroj, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nebo data Lake Storage Explorer (na webu [Azure Portal](https://portal.azure.com)).
 

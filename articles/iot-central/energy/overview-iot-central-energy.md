@@ -8,14 +8,18 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a8f8b91e2990b85f5bcbd5aef5d70d3b6fb800e1
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: aaf591bcc75521cb83d8c74f5220d37f77f1f349
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965548"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027657"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Sestavujte energetická řešení pomocí IoT Central 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
+
 Inteligentní měřiče a sluneční panely hrají důležitou roli v transformaci z energetického odvětví. Inteligentní měřiče poskytují více ovládacích prvků a přehledy o spotřebě energie a růstu slunečních panelů, což roste při obnovitelné výrobě energie. Aplikace pro monitorování inteligentního měření a slunečního panelu jsou ukázkové šablony, které znázorňují různé možnosti. Partneři můžou tyto šablony využít k sestavování energetických řešení pomocí IoT Central pro jejich konkrétní potřeby. Pro nasazení a používání těchto aplikací nejsou potřeba žádné nové kódování a žádné další náklady. Přečtěte si další informace o šablonách energetické aplikace a jejich schopnostech.
 
 
@@ -36,8 +40,8 @@ Funkce klíče aplikace:
 
 Po nasazení aplikace se na řídicím panelu zobrazí Simulovaná data měřiče, jak je znázorněno na následujícím obrázku. Tato šablona je ukázková aplikace, kterou můžete snadno zvětšit a přizpůsobit pro konkrétní případy použití.
 
-> [!div class="mx-imgBorder"]
-> ](media/overview-iot-central-energy/smart-meter-app-dashboard.png) řídicí panel aplikace ![Smart měřiče
+[!div class="mx-imgBorder"]
+](media/overview-iot-central-energy/smart-meter-app-dashboard.png) řídicí panel aplikace ![Smart měřiče
 
 
 ## <a name="what-is-the-solar-panel-monitoring-application"></a>Co je aplikace pro monitorování panelu slunečního pří?

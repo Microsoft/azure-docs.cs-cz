@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 7533b391917175fd9dea395f58906a9f78a61488
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6467937e2aca08e234cb136c5f610503627921fb
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675693"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042221"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -89,15 +89,15 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 1. Po otevření instalačního programu vyberte **Další**.
 
-   ![Úvod k instalačnímu programu](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![Úvodní obrazovka pro instalační program brány](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
 1. Vyberte **místní bránu dat (doporučeno)** , což je standardní režim, a pak vyberte **Další**.
 
-   ![Vybrat režim brány](./media/logic-apps-gateway-install/select-gateway-mode.png)
+   ![Vyberte režim spuštění pro bránu dat.](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. Zkontrolujte minimální požadavky, ponechte výchozí instalační cestu, přijměte podmínky použití a pak vyberte **nainstalovat**.
 
-   ![Kontrola požadavků a přijetí podmínek použití](./media/logic-apps-gateway-install/accept-terms.png)
+   ![Kontrola požadavků a přijetí podmínek použití](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
 1. Po úspěšné instalaci brány zadejte e-mailovou adresu účtu Azure a pak vyberte **Přihlásit**se, například:
 
@@ -107,7 +107,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 1. Vyberte možnost **zaregistrovat novou bránu na tomto počítači** > **Další**. Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
 
-   ![Registrovat bránu](./media/logic-apps-gateway-install/register-gateway.png)
+   ![Registrovat bránu v místním počítači](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
 1. Zadejte tyto informace pro instalaci brány:
 
@@ -115,7 +115,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
    * Obnovovací klíč, který musí obsahovat alespoň osm znaků, které chcete použít
    * Potvrzení obnovovacího klíče
 
-   ![Nastavení brány](./media/logic-apps-gateway-install/set-up-gateway.png)
+   ![Zadání informací pro instalaci brány](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
    > Uložte a zachovejte obnovovací klíč na bezpečném místě. Tento klíč budete potřebovat, pokud někdy chcete změnit umístění, přesunout, obnovit nebo převzít instalaci brány.
@@ -124,7 +124,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 1. Ověřte oblast pro cloudovou službu brány a [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) , kterou používá instalace brány. Ve výchozím nastavení má tato oblast stejné umístění jako tenant Azure AD pro váš účet Azure.
 
-   ![Kontrolní oblast](./media/logic-apps-gateway-install/check-region.png)
+   ![Potvrdit oblast pro službu brány a Service Bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
 1. Pokud chcete přijmout výchozí oblast, vyberte **Konfigurovat**. Pokud však výchozí oblast není ta, která je pro vás nejblíže, můžete změnit oblast.
 
@@ -134,15 +134,15 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
    1. Vedle aktuální oblasti vyberte **změnit oblast**.
 
-      ![Změna oblasti](./media/logic-apps-gateway-install/change-region.png)
+      ![Změna aktuální oblasti brány](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
    1. Na další stránce otevřete seznam **Vybrat oblast** , vyberte požadovanou oblast a vyberte **Hotovo**.
 
-      ![Vyberte jinou oblast.](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Vyberte jinou oblast pro službu brány](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
 1. Přečtěte si informace v okně poslední potvrzení. V tomto příkladu se používá stejný účet pro Logic Apps, Power BI, PowerApps a Microsoft Flow, takže brána je dostupná pro všechny tyto služby. Až budete připraveni, vyberte **Zavřít**.
 
-   ![Dokončená brána](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Potvrzení informací o bráně dat](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
 1. Nyní [vytvořte prostředek Azure pro instalaci brány](../logic-apps/logic-apps-gateway-connection.md).
 
@@ -185,7 +185,7 @@ Pokud musíte změnit umístění brány, přesunout instalaci brány do nového
 
 1. Vyberte z dostupných clusterů a bran a zadejte obnovovací klíč pro vybranou bránu, například:
 
-   ![Vybrat bránu](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Vybrat bránu a zadat obnovovací klíč](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
 1. Chcete-li změnit oblast, vyberte možnost **změnit oblast**a vyberte novou oblast.
 
@@ -270,9 +270,9 @@ Tady jsou způsoby, jak můžete porovnat místní účty Active Directory se sl
 
 Další informace najdete v těchto tématech:
 
-* [Nejčastější dotazy k místní bráně dat](/data-integration/gateway/service-gateway-onprem-faq)
-* [Řešení potíží s místní bránou dat](/data-integration/gateway/service-gateway-tshoot)
-* [Monitorování a optimalizace výkonu brány](/data-integration/gateway/service-gateway-performance)
+* [Nejčastější dotazy k místní bráně dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Řešení potíží s místní bránou dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Monitorování a optimalizace výkonu brány](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Další kroky
 

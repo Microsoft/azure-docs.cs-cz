@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f01d4a3a53ac9acf1350e4eea0526cf8584140a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789107"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034542"
 ---
 Při navrhování systému je důležité pochopit potenciální hrozby pro daný systém a odpovídajícím způsobem přidat patřičnou ochranu, protože systém je navržený a navržený. Je důležité navrhnout produkt od začátku s ohledem na zabezpečení, protože porozumět tomu, jak útočník může ohrozit zabezpečení systému, pomáhá zajistit, aby byla na začátku vhodná omezení.
 
@@ -116,7 +116,7 @@ Brána pole se liší od pouhého směrovače provozu v tom, že má aktivní ro
 
 ### <a name="the-cloud-gateway-zone"></a>Zóna cloudové brány
 
-Cloud Gateway je systém, který umožňuje vzdálenou komunikaci z a do zařízení nebo bran polí z několika různých lokalit ve veřejném síťovém prostoru, a to obvykle do cloudového ovládacího prvku a systému pro analýzu dat, což je federace těchto systémů. V některých případech může cloudová brána okamžitě usnadnit přístup k zařízením se speciálním účelem z terminálů, jako jsou tablety nebo telefony. V kontextu, který je zde popsán, se jedná o "Cloud", který odkazuje na vyhrazený systém zpracování dat, který není vázán na stejnou lokalitu jako připojená zařízení nebo brány polí. V zóně cloudu navíc provozní míry brání cílenému fyzickému přístupu a nemusí být nutně vystavené infrastruktuře "veřejného cloudu".  
+Cloudová brána je systém, který umožňuje vzdálenou komunikaci z a do zařízení nebo bran polí z několika různých lokalit ve veřejném síťovém prostoru, a to obvykle do cloudového ovládacího prvku a analytického systému dat, což je federace takových systémů. V některých případech může cloudová brána okamžitě usnadnit přístup k zařízením se speciálním účelem z terminálů, jako jsou tablety nebo telefony. V kontextu, který je zde popsán, se jedná o "Cloud", který odkazuje na vyhrazený systém zpracování dat, který není vázán na stejnou lokalitu jako připojená zařízení nebo brány polí. V zóně cloudu navíc provozní míry brání cílenému fyzickému přístupu a nemusí být nutně vystavené infrastruktuře "veřejného cloudu".  
 
 Cloudová brána může být namapována na překrytí virtualizace sítě, která umožňuje izolaci cloudové brány a všech připojených zařízení nebo bran polí z jakéhokoli jiného síťového provozu. Samotná cloudová brána není systémem pro řízení zařízení nebo se zařízením pro zpracování nebo úložiště pro data zařízení. rozhraní těchto zařízení s cloudovou bránou. Zóna cloudové brány zahrnuje samotnou cloudovou bránu spolu se všemi branami a zařízeními, která jsou k ní přímo nebo nepřímo připojená. Okraj zóny je odlišná oblast povrchu, ve které všechny externí strany komunikují.
 
@@ -253,7 +253,7 @@ Každé zařízení a brána pole mají určitou formu úložiště (dočasné p
 
 ### <a name="device-and-event-processingcloud-gateway-zone"></a>Zařízení a zpracování událostí/zóna cloudové brány
 
-Cloudová brána je systém, který umožňuje vzdálenou komunikaci ze zařízení a zařízení nebo bran polí z několika různých lokalit ve veřejném síťovém prostoru, a to obvykle do cloudového ovládacího prvku a analytického systému dat, což je federace takových systémů. V některých případech může cloudová brána okamžitě usnadnit přístup k zařízením se speciálním účelem z terminálů, jako jsou tablety nebo telefony. V kontextu, který je zde popsán, se jedná o pojem "Cloud", který odkazuje na vyhrazený systém zpracování dat, který není vázán na stejnou lokalitu jako připojená zařízení nebo brány polí a kde provozní míry brání cílenému fyzickému přístupu, ale nemusí nutně být " veřejné cloudové infrastruktury. Cloudová brána může být namapována na překrytí virtualizace sítě, která umožňuje izolaci cloudové brány a všech připojených zařízení nebo bran polí z jakéhokoli jiného síťového provozu. Samotná cloudová brána není systémem pro řízení zařízení nebo se zařízením pro zpracování nebo úložiště pro data zařízení. rozhraní těchto zařízení s cloudovou bránou. Zóna cloudové brány zahrnuje samotnou cloudovou bránu spolu se všemi branami a zařízeními, která jsou k ní přímo nebo nepřímo připojená.
+Cloudová brána je systém, který umožňuje vzdálenou komunikaci z a do zařízení nebo bran polí z několika různých lokalit ve veřejném síťovém prostoru, a to obvykle do cloudového ovládacího prvku a analytického systému dat, což je federace takových systémů. V některých případech může cloudová brána okamžitě usnadnit přístup k zařízením se speciálním účelem z terminálů, jako jsou tablety nebo telefony. V kontextu, který je zde popsán, se jedná o pojem "Cloud", který odkazuje na vyhrazený systém zpracování dat, který není vázán na stejnou lokalitu jako připojená zařízení nebo brány polí a kde provozní míry brání cílenému fyzickému přístupu, ale nemusí nutně být " veřejné cloudové infrastruktury. Cloudová brána může být namapována na překrytí virtualizace sítě, která umožňuje izolaci cloudové brány a všech připojených zařízení nebo bran polí z jakéhokoli jiného síťového provozu. Samotná cloudová brána není systémem pro řízení zařízení nebo se zařízením pro zpracování nebo úložiště pro data zařízení. rozhraní těchto zařízení s cloudovou bránou. Zóna cloudové brány zahrnuje samotnou cloudovou bránu spolu se všemi branami a zařízeními, která jsou k ní přímo nebo nepřímo připojená.
 
 Cloud Gateway je většinou vlastní sestavený software, který je spuštěný jako služba s vystavenými koncovými body, ke kterým se připojí brána pole a zařízení. V takovém případě musí být navržený s ohledem na zabezpečení. Pro návrh a sestavování této služby Sledujte proces [SDL](https://www.microsoft.com/sdl) .
 

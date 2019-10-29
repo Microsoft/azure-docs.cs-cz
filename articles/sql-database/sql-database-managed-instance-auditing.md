@@ -13,12 +13,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 23e3a15ac26cdf0950ee31fddad2af4a3b7414c2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958507"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025389"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s Azure SQL Database auditování spravované instance
 
@@ -59,7 +59,7 @@ V následující části je popsána konfigurace auditování na spravované ins
 
         ![Tlačítko Vlastnosti kontejneru objektů BLOB](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. Zkopírujte adresu URL kontejneru kliknutím na ikonu kopírování a uložte adresu URL (například v poznámkovém bloku) pro budoucí použití. Formát adresy URL kontejneru by měl být`https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. Zkopírujte adresu URL kontejneru kliknutím na ikonu kopírování a uložte adresu URL (například v poznámkovém bloku) pro budoucí použití. Formát adresy URL kontejneru by měl být `https://<StorageName>.blob.core.windows.net/<ContainerName>`
 
         ![Adresa URL pro kopírování kontejneru objektů BLOB](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
@@ -73,7 +73,7 @@ V následující části je popsána konfigurace auditování na spravované ins
 
         - SAS nakonfigurujte následujícím způsobem:
 
-          - **Povolené služby**: Blob
+          - **Povolené služby**: BLOB
 
           - **Počáteční datum**: aby nedocházelo k problémům souvisejícím s časovými pásmy, doporučujeme použít včerejší datum.
 
@@ -153,7 +153,7 @@ V následující části je popsána konfigurace auditování na spravované ins
 
 Další informace:
 
-- [Rozdíly v auditování mezi izolovanými databázemi, elastickými fondy, s a spravovanými instancemi v Azure SQL Database a databázemi v SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [Rozdíly v auditování mezi izolovanými databázemi, elastickými fondy a spravovanými instancemi v Azure SQL Database a databázích v SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [VYTVOŘIT AUDIT SERVERU](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -202,7 +202,7 @@ Protokoly auditu ze spravované instance je možné odesílat i do hub nebo Azur
 
 Existuje několik metod, pomocí kterých můžete zobrazit protokoly auditování objektů BLOB.
 
-- Pomocí funkce `sys.fn_get_audit_file` System (T-SQL) Vraťte data protokolu auditu v tabulkovém formátu. Další informace o použití této funkce najdete v [dokumentaci k nástroji sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
+- Použijte funkci System Function `sys.fn_get_audit_file` (T-SQL), chcete-li vrátit data protokolu auditu v tabulkovém formátu. Další informace o použití této funkce najdete v [dokumentaci k nástroji sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - Protokoly auditu můžete prozkoumat pomocí nástroje, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). V Azure Storage se protokoly auditování ukládají jako kolekce souborů objektů BLOB v kontejneru, který jste definovali pro uložení protokolů auditu. Další podrobnosti o hierarchii složky úložiště, konvencí pojmenování a formátu protokolu najdete v referenčních informacích o [formátu protokolu auditu objektů BLOB](https://go.microsoft.com/fwlink/?linkid=829599).
 
@@ -214,7 +214,7 @@ Aby bylo možné využívat protokoly auditu z centra událostí, budete muset n
 
 ### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Využití a analýza protokolů uložených v protokolech Azure Monitor
 
-Pokud jsou protokoly auditu zapisovány do protokolů Azure Monitor, jsou k dispozici v pracovním prostoru Log Analytics, kde můžete spustit pokročilé vyhledávání dat auditu. Jako výchozí bod přejděte do pracovního prostoru Log Analytics a v části *Obecné* klikněte na *protokoly* a zadejte jednoduchý dotaz, například: `search "SQLSecurityAuditEvents"` k zobrazení protokolů auditu.  
+Pokud jsou protokoly auditu zapisovány do protokolů Azure Monitor, jsou k dispozici v pracovním prostoru Log Analytics, kde můžete spustit pokročilé vyhledávání dat auditu. Jako výchozí bod přejděte do pracovního prostoru Log Analytics a v části *Obecné* klikněte na *protokoly* a zadejte jednoduchý dotaz, například: `search "SQLSecurityAuditEvents"` pro zobrazení protokolů auditu.  
 
 Protokoly Azure Monitor poskytují informace o provozu v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, které umožňují snadno analyzovat miliony záznamů napříč všemi vašimi úlohami a servery. Další užitečné informace o tom, jak hledat jazyk a příkazy protokolu Azure Monitor naleznete v tématu [Azure monitor v protokolech hledání](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
@@ -224,19 +224,18 @@ Protokoly Azure Monitor poskytují informace o provozu v reálném čase pomocí
 
 Hlavní rozdíly mezi auditováním v databázích v Azure SQL Database a databázích v SQL Server jsou:
 
-- S možností nasazení Managed instance v Azure SQL Database funguje auditování na úrovni serveru a ukládá `.xel` soubory protokolů v úložišti objektů BLOB v Azure.
-- S možností nasazení jedna databáze a elastický fond v Azure SQL Database funguje auditování na úrovni databáze.
+- S možností nasazení Managed instance v Azure SQL Database funguje auditování na úrovni serveru a ukládá soubory protokolu `.xel` v úložišti objektů BLOB v Azure.
 - V SQL Server místní nebo virtuální počítače funguje audit na úrovni serveru, ale ukládá události do souborů protokolů událostí systému nebo Windows.
 
 Auditování XEvent ve spravované instanci podporuje cíle služby Azure Blob Storage. Soubory a protokoly systému Windows nejsou **podporovány**.
 
-Hlavní rozdíly v `CREATE AUDIT` syntaxi pro auditování do úložiště objektů BLOB v Azure jsou:
+Hlavní rozdíly v syntaxi `CREATE AUDIT` pro auditování do úložiště objektů BLOB v Azure jsou:
 
-- K dispozici `TO URL` je nová syntaxe, která umožňuje zadat adresu URL kontejneru úložiště objektů BLOB v Azure `.xel` , ve kterém jsou soubory umístěné.
-- K dispozici `TO EXTERNAL MONITOR` je nová syntaxe, která umožňuje, aby byly cílení na rozbočovač a Azure monitor protokoly.
+- K dispozici je nová syntaxe `TO URL` a umožňuje zadat adresu URL kontejneru úložiště objektů BLOB v Azure, kde jsou umístěny soubory `.xel`.
+- K dispozici je nová syntaxe `TO EXTERNAL MONITOR`, která povoluje cílení na rozbočovač a Azure Monitor protokoly.
 - Syntaxe `TO FILE` není **podporována** , protože SQL Database nemá přístup ke sdíleným složkám souborů systému Windows.
 - Možnost vypnutí není **podporována**.
-- `queue_delay`hodnota 0 není **podporována**.
+- `queue_delay` 0 se **nepodporuje**.
 
 ## <a name="next-steps"></a>Další kroky
 

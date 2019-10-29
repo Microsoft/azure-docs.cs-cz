@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/24/2019
-  ms.openlocfilehash: 486badfa18f461a8dce9733593a8979318364e12
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 9a09bb92f38e5678f71e1126617d39471479940c
+  ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72931722"
+  ms.lasthandoff: 10/29/2019
+  ms.locfileid: "73044062"
 landingContent:
 - title: Informace o Content Moderatoru
   linkLists:
@@ -37,7 +37,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S využitím .NET SDK
-      url: image-moderation-quickstart-dotnet.md
+      url: dotnet-sdk-quickstart.md
     - text: Používání sady Python SDK
       url: python-sdk-quickstart.md
     - text: Používání sady Java SDK
@@ -58,8 +58,6 @@ landingContent:
       url: image-lists-quickstart-dotnet.md
     - text: Používání sady Python SDK
       url: python-sdk-quickstart.md
-    - text: Používání sady Java SDK
-      url: java-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: Použití konzoly API
@@ -73,11 +71,9 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S využitím .NET SDK
-      url: text-moderation-quickstart-dotnet.md
+      url: dotnet-sdk-quickstart.md
     - text: Používání sady Python SDK
       url: python-sdk-quickstart.md
-    - text: Používání sady Java SDK
-      url: java-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: Použití konzoly API
@@ -90,8 +86,6 @@ landingContent:
       url: term-lists-quickstart-dotnet.md
     - text: Používání sady Python SDK
       url: python-sdk-quickstart.md
-    - text: Používání sady Java SDK
-      url: java-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: Použití konzoly API
@@ -122,8 +116,6 @@ landingContent:
     links:
     - text: Vytváření revizí s využitím sady Python SDK
       url: python-sdk-quickstart.md
-    - text: Vytváření revizí s využitím sady Java SDK
-      url: java-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: Definice a používání revizí (nástroj pro revize)

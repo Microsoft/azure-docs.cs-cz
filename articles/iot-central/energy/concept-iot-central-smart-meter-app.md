@@ -8,19 +8,21 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: f87e1a7893fa8c2ea22711f90696a5d2836eb3ac
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 8272764e967fccfbfa88d54e688f9d7aaf4e0917
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965614"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027686"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central – architektura aplikací inteligentního měření
 
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 Tento článek poskytuje přehled architektury šablon aplikace monitorování inteligentního měření. Následující diagram znázorňuje běžně použitou architekturu pro aplikace inteligentního měření v Azure pomocí IoT Central platformy.
 
-> [!div class="mx-imgBorder"]
-> ![architektury inteligentního měření](media/concept-iot-central-smart-meter/smart-meter-app-architecture.png)
+[!div class="mx-imgBorder"]
+![architektury inteligentního měření](media/concept-iot-central-smart-meter/smart-meter-app-architecture.png)
 
 Tato architektura se skládá z následujících komponent. Některá řešení nemusí vyžadovat všechny součásti, které jsou tady uvedené.
 

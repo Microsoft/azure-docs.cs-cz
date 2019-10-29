@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 190d697dca56fa51d92987f32db0146aa79881aa
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 808faaed76ff63d69feb8170eaac72021c7bd49d
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70162403"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042109"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication v cloudu
 
@@ -39,33 +39,9 @@ Jako správce, který má přiřazenou roli Správce ověřování, můžete vy�
    - Když se uživatel poprvé přihlásí, bude se vyžadovat, aby si ho **znovu zaregistroval** . v takovém případě bude požádán o nastavení nové metody ověřování MFA.
    - **Odvolání relací MFA** vymaže relace uživatele, které se pamatuje, a vyžaduje, aby při dalším požadavku na zařízení prováděli MFA.
 
-## <a name="require-users-to-provide-contact-methods-again"></a>Vyžadovat od uživatelů opětovné poskytnutí metod kontaktu
-
-Toto nastavení vynutí, aby uživatel znovu dokončil proces registrace. Neprohlížečové aplikace budou fungovat i v případě, že pro ně uživatel obsahuje hesla aplikací.  Hesla aplikací uživatelů můžete odstranit také tak, že vyberete možnost **Odstranit všechna existující hesla aplikací vygenerovaná vybranými uživateli**.
-
-### <a name="how-to-require-users-to-provide-contact-methods-again"></a>Jak vyžadovat, aby uživatelé mohli znovu zadat metody kontaktu
-
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory**  > **Uživatelé**  > **všech uživatelích**.
-3. Na pravé straně vyberte **Multi-Factor Authentication** na panelu nástrojů. Otevře se stránka Multi-Factor Authentication.
-4. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
-5. Vyberte **Spravovat uživatelská nastavení**.
-6. Zaškrtněte políčko, pokud **chcete, aby vybraní uživatelé znovu poskytovali metody kontaktu**.
-   ![Require uživatelům poskytnout metody kontaktu znovu ](./media/howto-mfa-userdevicesettings/reproofup.png)
-7. Klikněte na **Uložit**.
-8. Klikněte na **Zavřít**.
-
-Organizace mohou tento postup provést pomocí prostředí PowerShell následujícím způsobem jako vodítko pro vymazání atributu `StrongAuthenticationMethods`:
-
-```PowerShell
-$Upn = "theuser@domain.com"
-$noMfaConfig = @()
-Set-MsolUser -UserPrincipalName $Upn -StrongAuthenticationMethods $noMfaConfig
-```
-
 ## <a name="delete-users-existing-app-passwords"></a>Odstranit stávající hesla uživatelů aplikací
 
-Toto nastavení odstraní všechna hesla aplikací, která uživatel vytvořil. Neprohlížečové aplikace, které jsou přidružené k těmto heslům aplikace, přestanou fungovat, dokud se nevytvoří nové heslo aplikace.
+Toto nastavení odstraní všechna hesla aplikací, která uživatel vytvořil. Neprohlížečové aplikace, které jsou přidružené k těmto heslům aplikace, přestanou fungovat, dokud se nevytvoří nové heslo aplikace. K provedení této akce jsou vyžadována oprávnění globálního správce.
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>Jak odstranit existující hesla aplikací pro uživatele
 
@@ -75,27 +51,7 @@ Toto nastavení odstraní všechna hesla aplikací, která uživatel vytvořil. 
 4. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
 5. Vyberte **Spravovat uživatelská nastavení**.
 6. Zaškrtněte políčko pro **odstranění všech existujících hesel aplikací generovaných vybranými uživateli**.
-   ![Delete všechna existující hesla aplikací ](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
-7. Klikněte na **Uložit**.
-8. Klikněte na **Zavřít**.
-
-## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>Obnovení MFA na všech zapamatovaných zařízeních pro uživatele
-
-Jednou z konfigurovatelných funkcí služby Azure Multi-Factor Authentication je poskytnout uživatelům možnost označit zařízení jako důvěryhodnou. Další informace najdete v tématu [Konfigurace nastavení služby Azure Multi-Factor Authentication](howto-mfa-mfasettings.md#remember-multi-factor-authentication).
-
-Uživatelé se můžou na jejich běžných zařízeních odhlásit pomocí dvoustupňového ověřování na konfigurovatelný počet dnů. Pokud dojde k ohrožení bezpečnosti účtu nebo dojde ke ztrátě důvěryhodného zařízení, je nutné, abyste byli schopni odebrat důvěryhodný stav a znovu vyžadovat dvoustupňové ověřování.
-
-Při zaškrtnutí políčka **obnovit vícefaktorové ověřování u všech zapamatovaných zařízení** , které uživatelé potřebují k provedení dvoustupňového ověřování při příštím přihlášení, a to i v případě, že jsou zařízení označená jako důvěryhodná.
-
-### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Postup obnovení MFA na všech pozastavených zařízeních pro uživatele
-
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory**  > **Uživatelé**  > **všech uživatelích**.
-3. Na pravé straně vyberte **Multi-Factor Authentication** na panelu nástrojů. Otevře se stránka Multi-Factor Authentication.
-4. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
-5. Vyberte **Spravovat uživatelská nastavení**.
-6. Zaškrtněte políčko pro **obnovení Multi-Factor Authentication na všech zapamatovaných zařízeních** 
-    ![Restore vícefaktorové ověřování na všech zapamatovaných zařízeních ](./media/howto-mfa-userdevicesettings/rememberdevices.png)
+   ![odstranit všechna existující hesla aplikací](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. Klikněte na **Uložit**.
 8. Klikněte na **Zavřít**.
 
