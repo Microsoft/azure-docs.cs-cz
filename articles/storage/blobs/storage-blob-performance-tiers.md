@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: ac483a338b7d71142b89b13e41fc048346ac037f
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: e0d746f1b01784bc383c12543936f06dae66ca09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802654"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063255"
 ---
 # <a name="azure-block-blob-storage-performance-tiers"></a>Úroveň výkonu úložiště objektů blob bloku Azure
 
@@ -28,7 +28,7 @@ Následující požadavky platí pro různé úrovně výkonu:
 
 - Standardní výkon je k dispozici ve všech [oblastech Azure](https://azure.microsoft.com/global-infrastructure/services/?products=storage). Výkon Premium je k dispozici ve [vybraných oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 - Premium Performance poskytuje optimalizované ceny pro aplikace s vysokými nároky na transakce, které vám pomůžou [snížit celkové náklady na úložiště](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/) pro tyto úlohy.
-- Premium Performance vyžaduje použití účtů úložiště objektů blob bloku, které podporují objekty blob bloku a doplňovací objekty blob.
+- Chcete-li získat špičkový výkon pro objekty blob bloku, je nutné použít typ účtu BlockBlobStorage.
 - Standardní výkon je k dispozici pro Pro obecné účely V1, Pro obecné účely v2 a účty BLOB Storage.
 - Výkon úrovně Premium a Standard podporují [objekty blob bloku s vysokou propustností](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/). Objekty blob bloku s vysokou propustností jsou k dispozici pro výkon Premium na více než 256 KiB. Objekty blob bloku s vysokou propustností jsou k dispozici pro standardní výkon ve více než 4 bloku umístění MiB nebo velikosti objektů BLOB.
 - Špičkový výkon je momentálně dostupný jenom pro místně redundantní úložiště (LRS).

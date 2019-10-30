@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 58c63c229510b476ea19a9650c8eed0fc2d72ac2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 089b37761c11c02e34c35eb378c64862bc4fbc98
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677819"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064138"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights funkce [Azure monitor](../overview.md)je rozšiřitelná služba správy výkonu aplikací (APM) pro webové vývojáře na různých platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js a Java EE, hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -106,6 +106,7 @@ Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vy
   * [Konzolové aplikace .NET](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
+  * [Python (Preview)](../../azure-monitor/app/opencensus-python.md)
   * [Jiné platformy](../../azure-monitor/app/platforms.md)
 * **[Instrumentujte webové stránky](../../azure-monitor/app/javascript.md)** pro zobrazení stránky, AJAX a další telemetrie na straně klienta.
 * **[Analýza využití mobilních aplikací](../../azure-monitor/learn/mobile-center-quickstart.md)** díky integraci s Visual Studio App Center.
@@ -124,6 +125,8 @@ Začínáme při vývoji:
 * [Jádro ASP.NET](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
+* [Python (Preview)](../../azure-monitor/app/opencensus-python.md)
+
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 * Otázky a problémy:

@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 8e22bf53a81d94c5204a76c58b43fed63e32b136
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45cf7b7d9383de467f72769465a3ad382fe9d589
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803404"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064030"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Po vytvoření účtu Azure Cosmos v rámci svého předplatného můžete sprav
 
 Cosmos kontejner (nebo sdílená databáze propustnosti) musí mít minimální propustnost 400 ru. Při zvětšování kontejneru závisí minimální podporovaná propustnost i na následujících faktorech:
 
-* Minimální propustnost, kterou můžete nastavit na kontejneru, závisí na maximální propustnosti, která je v kontejneru trvale zřízena. Služba podporuje snížení propustnosti kontejneru na 10% poskytnutého maxima. Pokud se například propustnost zvýšila na 10000 ru, pak bude nejnižší možná zajištěná propustnost 1000 ru
+* Minimální propustnost, kterou můžete nastavit na kontejneru, závisí na maximální propustnosti, která je v kontejneru trvale zřízena. Pokud se například propustnost zvýšila na 10000 ru, pak bude nejnižší možná zajištěná propustnost 1000 ru
 * Minimální propustnost ve sdílené databázi propustnosti také závisí na celkovém počtu kontejnerů, které jste dříve vytvořili ve sdílené databázi propustnosti měřenou v 100 ru na kontejner. Pokud jste například vytvořili pět kontejnerů v rámci sdílené databáze propustnosti, musí být propustnost alespoň 500 ru.
 
 Aktuální a minimální propustnost kontejneru nebo databáze lze načíst z Azure Portal nebo sad SDK. Další informace najdete v tématu [zřízení propustnosti u kontejnerů a databází](set-throughput.md). 

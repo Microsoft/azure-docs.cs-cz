@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 772fccc96f757c6165238e4041ce98c17c647880
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992298"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098685"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Kurz: přeposílání událostí do IoTHub
 
@@ -160,7 +160,9 @@ Aktualizujte trasu hraničního centra pro přeposílání událostí odběru ud
 
 ## <a name="setup-iot-hub-route"></a>Nastavit IoT Hub trasu
 
-V kurzu IoT Hub [Směrování](../../iot-hub/tutorial-routing.md) můžete nastavit trasu ze služby IoT Hub, abyste mohli zobrazit události předané z modulu Event Grid.
+V [kurzu IoT Hub směrování](../../iot-hub/tutorial-routing.md) můžete nastavit trasu ze služby IoT Hub, abyste mohli zobrazit události předané z modulu Event Grid. Použijte `true` pro dotaz, aby byl kurz jednoduchý.  
+
+
 
 ## <a name="publish-an-event"></a>Publikování události
 
@@ -205,6 +207,7 @@ Postup zobrazení událostí najdete v [kurzu IoT Hub směrování](../../iot-hu
 
 V tomto kurzu jste vytvořili téma Event gridu, předplatné centra Edge a publikované události. Teď, když znáte základní kroky pro přeposílání do hraničního centra, si přečtěte následující články:
 
+* Řešení potíží s používáním Azure Event Grid v IoT Edge najdete v tématu [Průvodce odstraňováním potíží](troubleshoot.md).
 * Použití filtrů tras [hraničního centra](../../iot-edge/module-composition.md) k dělení událostí
 * Nastavení trvalosti modulu Event Grid v systému [Linux](persist-state-linux.md) nebo [Windows](persist-state-windows.md)
 * Podle [dokumentace](configure-client-auth.md) nakonfigurujte ověřování klientů.

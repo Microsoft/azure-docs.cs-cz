@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/09/2019
+ms.date: 10/29/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466660a1e064ef41eb330b36107dbdcb1d097498
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e5ee40f6fcd77465b67a7c409493027fefa48ca9
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477304"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062964"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Rychlý start: Přidání aplikace do tenanta Azure Active Directory
 
@@ -27,7 +27,7 @@ Po přidání aplikace do tenanta Azure AD můžete:
 - Umožňuje spravovat přístup uživatelů k aplikaci pomocí zásad podmíněného přístupu.
 - Konfigurovat jednotné přihlašování uživatelů k aplikaci pomocí jejich účtů Azure AD.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K přidání aplikace do tenanta budete potřebovat:
 
@@ -43,24 +43,26 @@ K testování postupů v tomto kurzu doporučujeme použít neprodukční prost�
 Přidání aplikace z galerie do tenanta Azure AD:
 
 1. V [Azure Portal](https://portal.azure.com)v levém navigačním panelu vyberte možnost **Azure Active Directory**.
-1. V podokně **Azure Active Directory** vyberte možnost **podnikové aplikace**.
-1. Otevře se podokno **všechny aplikace** , ve kterém se zobrazí náhodná ukázka aplikací v TENANTOVI Azure AD. V horní části podokna **všechny aplikace** vyberte **Nová aplikace** a přidejte do svého tenanta aplikaci Galerie.
+
+2. V podokně **Azure Active Directory** vyberte možnost **podnikové aplikace**. Otevře se podokno **všechny aplikace** a zobrazí se náhodná ukázka aplikací v TENANTOVI Azure AD.
+
+3. Chcete-li přidat aplikaci Galerie do svého tenanta, vyberte možnost **Nová aplikace**. 
 
     ![Vyberte Nová aplikace a přidejte do svého tenanta aplikaci Galerie.](media/add-application-portal/new-application.png)
 
-1. V podokně **kategorie** uvidíte ikony v oblasti **vybrané aplikace** , které jsou náhodnou ukázkou aplikací v galerii. Pokud chcete zobrazit více aplikací, můžete vybrat **Zobrazit více** , ale nedoporučujeme si tento způsob prohledávat, protože galerie obsahuje tisíce aplikací.
+ 4. Přepněte na nové prostředí verze Preview: v banneru v horní části **stránky přidat aplikaci**vyberte odkaz, který uvádí, jestli **chcete vyzkoušet novou a vylepšenou galerii aplikací kliknutím sem**.
 
-    ![Hledání aplikace podle názvu nebo kategorie](media/add-application-portal/categories.png)
+5. Otevře se podokno **Procházet Azure AD Gallery (Preview)** a zobrazí dlaždice pro cloudové platformy, místní aplikace a doporučené aplikace. Všimněte si, že aplikace uvedené v části **vybrané aplikace** obsahují ikony, které označují, jestli podporují federované jednotné přihlašování (SSO) a zřizování.
 
-1. Chcete-li vyhledat aplikaci, zadejte v části **Přidat z Galerie**název aplikace, kterou chcete přidat. Vyberte aplikaci z výsledků a vyberte **Přidat**. Následující příklad ukazuje formulář **Přidat aplikaci** , který se zobrazí po hledání GitHub.com.
+    ![Hledání aplikace podle názvu nebo kategorie](media/add-application-portal/browse-gallery.png)
 
-    ![Ukazuje, jak přidat aplikaci z galerie.](media/add-application-portal/add-an-application.png)
+6. Můžete procházet galerii pro aplikaci, kterou chcete přidat, nebo vyhledat aplikaci zadáním jejího názvu do vyhledávacího pole. Pak vyberte aplikaci z výsledků. Ve formuláři můžete upravit název aplikace tak, aby odpovídala potřebám vaší organizace. V tomto příkladu jsme změnili název na **GitHub-test**.
 
-1. Ve formuláři pro konkrétní aplikaci můžete změnit informace o vlastnostech. Například můžete upravit název aplikace, aby odpovídal potřebám vaší organizace. V tomto příkladu se používá název **GitHub-test**.
-1. Až dokončíte provádění změn vlastností, vyberte **Přidat**.
-1. Zobrazí se stránka Začínáme s možnostmi konfigurace aplikace pro vaši organizaci.
+    ![Ukazuje, jak přidat aplikaci z galerie.](media/add-application-portal/create-application.png)
 
-Dokončili jste přidávání aplikace. Můžete si udělat pauzu. V následujících částech se dozvíte, jak změnit logo a upravit další vlastnosti aplikace.
+7. Vyberte **Create** (Vytvořit). Zobrazí se stránka Začínáme s možnostmi konfigurace aplikace pro vaši organizaci.
+
+Dokončili jste přidávání aplikace. V následujících částech se dozvíte, jak změnit logo a upravit další vlastnosti aplikace.
 
 ## <a name="find-your-azure-ad-tenant-application"></a>Vyhledání aplikace tenanta Azure AD
 
@@ -81,17 +83,17 @@ Teď, když jste našli aplikaci, ji můžete otevřít a nakonfigurovat její v
 Úprava vlastností aplikace:
 
 1. Vyberte aplikaci a otevřete ji.
-1. Výběrem **vlastnosti** otevřete podokno vlastnosti pro úpravy.
+2. Výběrem **vlastnosti** otevřete podokno vlastnosti pro úpravy.
 
     ![Zobrazí vlastnosti obrazovky a upravitelné vlastnosti aplikace.](media/add-application-portal/edit-properties.png)
 
-1. Seznamte se s možnostmi přihlašování. Možnosti určují, jak se uživatelé, kteří jsou přiřazeni nebo nepřiřazeni k aplikaci, mohou přihlásit do aplikace. A také možnosti určují, jestli uživatel uvidí aplikaci na přístupovém panelu.
+3. Seznamte se s možnostmi přihlašování. Možnosti určují, jak se uživatelé, kteří jsou přiřazeni nebo nepřiřazeni k aplikaci, mohou přihlásit do aplikace. A také možnosti určují, jestli uživatel uvidí aplikaci na přístupovém panelu.
 
-    - Možnost **Mohou se uživatelé přihlásit?** určuje, jestli se můžou přihlásit uživatelé přiřazení k aplikaci.
-    - **Vyžadováno přiřazení uživatele** určuje, jestli se uživatelé, kteří nejsou přiřazeni k aplikaci, můžou přihlásit.
-    - Možnost **Uvidí ji uživatelé?** určuje, jestli se uživatelům přiřazeným k aplikaci zobrazí aplikace na přístupovém panelu a ve spouštěči O365.
+    - **Povolit uživatelům přihlášení?** Určuje, zda se může přihlásit uživatel přiřazený k aplikaci.
+    - Je **vyžadováno přiřazení uživatele?** Určuje, jestli se uživatelé, kteří nejsou přiřazeni k aplikaci, můžou přihlásit.
+    - **Viditelná pro uživatele?** Určuje, jestli se uživatelé přiřazení k aplikaci můžou zobrazit na přístupovém panelu a ve Spouštěči O365.
 
-1. Následující tabulky vám pomůžou zvolit nejvhodnější možnosti pro vaše potřeby.
+4. Následující tabulky vám pomůžou zvolit nejvhodnější možnosti pro vaše potřeby.
 
    - Chování pro **přiřazené** uživatele:
 
@@ -131,9 +133,12 @@ Použití vlastního loga:
 1. Vzhledem k tomu, že jste aplikaci již našli, vyberte ji.
 1. V levém podokně vyberte možnost **vlastnosti**.
 1. Nahrajte logo.
-1. Až budete hotovi, vyberte **Uložit**.
+1. Až budete hotovi, vyberte **Uložit**. 
 
     ![Ukazuje, jak změnit logo na stránce vlastností aplikace.](media/add-application-portal/change-logo.png)
+
+   > [!NOTE]
+   > Miniatura zobrazená v tomto podokně **vlastností** není hned aktualizována. Chcete-li zobrazit aktualizovanou ikonu, můžete zavřít a znovu otevřít vlastnosti.
 
 ## <a name="next-steps"></a>Další kroky
 

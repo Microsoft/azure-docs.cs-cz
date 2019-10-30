@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f50ace6d707db35dfd7cf9f14026d755093a038c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802440"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062254"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
@@ -59,10 +59,10 @@ Pokud chcete upravit roli Správce zařízení, nakonfigurujte **Další místn�
 >[!NOTE]
 > Tato možnost vyžaduje klienta Azure AD Premium. 
 
-Správci zařízení mají přiřazená všechna zařízení připojená k Azure AD. Nemůžete nastavit rozsah správců zařízení na určitou sadu zařízení. Aktualizace role Správce zařízení nutně nemá bezprostřední dopad na ovlivněné uživatele. Pro zařízení je už uživatel přihlášený k, probíhá aktualizace oprávnění:
+Správci zařízení mají přiřazená všechna zařízení připojená k Azure AD. Nemůžete nastavit rozsah správců zařízení na určitou sadu zařízení. Aktualizace role Správce zařízení nutně nemá bezprostřední dopad na ovlivněné uživatele. V zařízeních, ve kterých je uživatel již přihlášen *, dojde k aktualizaci oprávnění při následujících* akcích:
 
-- Když se uživatel odhlásí.
-- Při vydání nového primárního obnovovacího tokenu po 4 hodinách. 
+- do 4 hodin bylo předáno, aby služba Azure AD vydávala nový primární obnovovací token s příslušnými oprávněními. 
+- Pokud chcete aktualizovat svůj profil, odhlaste se a přihlaste se k němu, ne zamknout nebo odemknout.
 
 ## <a name="manage-regular-users"></a>Správa běžných uživatelů
 

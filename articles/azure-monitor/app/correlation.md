@@ -8,16 +8,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755356"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063955"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
-V celém světě mikroslužeb vyžaduje každá Logická operace provedení práce v různých součástech služby. Každou z těchto součástí je možné monitorovat samostatně pomocí [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Komponenta webové aplikace komunikuje s komponentou poskytovatele ověřování a ověří přihlašovací údaje uživatele a pomocí komponenty rozhraní API načte data pro vizualizaci. Komponenta rozhraní API se může dotazovat na data z jiných služeb a používat komponenty zprostředkovatele mezipaměti k oznamování fakturační komponenty s tímto voláním. Application Insights podporuje korelaci distribuované telemetrie, kterou použijete k detekci, která komponenta zodpovídá za selhání nebo snížení výkonu.
+V celém světě mikroslužeb vyžaduje každá Logická operace provedení práce v různých součástech služby. Každou z těchto součástí je možné monitorovat samostatně pomocí [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights podporuje korelaci distribuované telemetrie, kterou použijete k detekci, která komponenta zodpovídá za selhání nebo snížení výkonu.
 
 Tento článek vysvětluje datový model používaný Application Insights ke korelaci telemetrie odesílaného více komponentami. Zahrnuje postupy a protokoly šíření kontextu. Zahrnuje také implementaci principů korelace v různých jazycích a platformách.
 
@@ -25,11 +25,11 @@ Tento článek vysvětluje datový model používaný Application Insights ke ko
 
 Application Insights definuje [datový model](../../azure-monitor/app/data-model.md) pro korelaci distribuovaných telemetrie. Pro přidružení telemetrie k logické operaci má každá položka telemetrie kontextové pole s názvem `operation_Id`. Tento identifikátor je sdílen všemi položkami telemetrie v distribuovaném trasování. Takže i v případě ztráty telemetrie z jedné vrstvy můžete stále přidružit telemetrii nahlášenou jinými komponentami.
 
-Distribuovaná Logická operace se typicky skládá ze sady menších operací, které jsou požadavky zpracovávané jednou z komponent. Tyto operace jsou definovány [telemetrie požadavků](../../azure-monitor/app/data-model-request-telemetry.md). Každá telemetrie žádostí má vlastní `id`, která ji jednoznačně identifikuje a globálně. A všechny položky telemetrie (například trasování a výjimky), které jsou přidruženy k této žádosti, by měly nastavit `operation_parentId` na hodnotu `id` žádosti.
+Distribuovaná Logická operace se typicky skládá ze sady menších operací, které jsou požadavky zpracovávané jednou z komponent. Tyto operace jsou definovány [telemetrie požadavků](../../azure-monitor/app/data-model-request-telemetry.md). Každá telemetrie žádostí má vlastní `id`, která ji jednoznačně identifikuje a globálně. A všechny položky telemetrie (například trasování a výjimky), které jsou přidruženy k této žádosti, by měly nastavit `operation_parentId` na hodnotu `id`žádosti.
 
 Každá odchozí operace, jako je volání HTTP jiné součásti, je reprezentována [telemetrie závislosti](../../azure-monitor/app/data-model-dependency-telemetry.md). Telemetrie závislostí také definuje vlastní `id` globálně jedinečný. Požadavek telemetrie, iniciované tímto voláním závislosti, používá tento `id` jako jeho `operation_parentId`.
 
-Můžete sestavit zobrazení distribuované logické operace pomocí `operation_Id`, `operation_parentId` a `request.id` s `dependency.id`. Tato pole také definují pořadí volání telemetrie.
+Můžete sestavit zobrazení distribuované logické operace pomocí `operation_Id`, `operation_parentId`a `request.id` s `dependency.id`. Tato pole také definují pořadí volání telemetrie.
 
 V prostředí mikroslužeb můžou trasování z komponent přejít na jiné položky úložiště. Každá součást může mít vlastní klíč instrumentace v Application Insights. Pro získání telemetrie pro logickou operaci Application Insights UX dotazuje data z každé položky úložiště. Pokud je počet položek úložiště obrovský, budete potřebovat nápovědu, kde můžete hledat další. Datový model Application Insights definuje dvě pole pro vyřešení tohoto problému: `request.source` a `dependency.target`. První pole identifikuje komponentu, která iniciovala požadavek závislosti, a druhý identifikuje, která komponenta vrátila odpověď na volání závislostí.
 
@@ -221,7 +221,7 @@ OpenCensus Python sleduje specifikace datového modelu `OpenTracing` popsané v�
 
 ### <a name="incoming-request-correlation"></a>Korelace příchozích požadavků
 
-OpenCensus Python koreluje hlavičky kontextu trasování W3C z příchozích požadavků do rozsahů, které jsou generovány z požadavků samotných. OpenCensus to provede automaticky s integrací pro oblíbené webové aplikace, jako jsou `flask`, `django` a `pyramid`. Hlavičky kontextu trasování W3C stačí vyplnit [správným formátem](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)a odeslat žádost. Níže je uveden příklad `flask` aplikace, která to demonstruje.
+OpenCensus Python koreluje hlavičky kontextu trasování W3C z příchozích požadavků do rozsahů, které jsou generovány z požadavků samotných. OpenCensus to provede automaticky s integrací pro následující oblíbené architektury webových aplikací: `flask`, `django` a `pyramid`. Hlavičky kontextu trasování W3C stačí vyplnit [správným formátem](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) a odeslat žádost. Níže je uveden příklad `flask` aplikace, která to demonstruje.
 
 ```python
 from flask import Flask
@@ -253,7 +253,7 @@ Při prohlížení [formátu hlavičky kontextu trasování](https://www.w3.org/
  `parent-id/span-id`: `00f067aa0ba902b7` 
  0: 1
 
-Pokud se podíváme na záznam žádosti, který byl odeslán do Azure Monitor, uvidíme pole vyplněná informacemi v hlavičce trasování.
+Pokud se podíváme na záznam žádosti, který byl odeslán do Azure Monitor, uvidíme pole vyplněná informacemi v hlavičce trasování. Tato data najdete v části protokoly (Analytics) v prostředku Azure Monitor Application Insights.
 
 ![Snímek z telemetrie požadavků v protokolech (Analytics) se zvýrazněnými poli hlavičky trasování ve červených polích](./media/opencensus-python/0011-correlation.png)
 
@@ -290,6 +290,8 @@ Po spuštění tohoto kódu se v konzole zobrazí následující:
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
 Sledujte, jak je přítomný spanId pro zprávu protokolu, která je v rozpětí, což je stejný spanId, který patří do rozpětí s názvem `hello`.
+
+Data protokolu můžete exportovat pomocí `AzureLogHandler`. Další informace najdete [tady](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs).
 
 ## <a name="telemetry-correlation-in-net"></a>Korelace telemetrie v .NET
 

@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: HT
+ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053286"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064106"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
 
@@ -105,6 +105,7 @@ K této chybě dochází, pokud váš Azure Functions projekt (nebo jakýkoli od
 Chcete-li tuto situaci vyřešit, odeberte ručně vytvořený odkaz NuGet a nechejte odkaz Azure Cosmos DB SDK vyřešit prostřednictvím balíčku rozšíření Azure Functions Cosmos DB.
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Změna intervalu dotazování funkce Azure Functions pro zjišťování změn
+
 Jak už bylo vysvětleno dříve, [Pokud moje změny trvá příliš dlouho](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), služba Azure Functions se ve výchozím nastavení v režimu spánku po dobu (5 sekund), než začne kontrolovat nové změny (aby se zabránilo vysoké spotřebě v řádu ru). Tuto dobu do režimu spánku můžete nakonfigurovat pomocí nastavení `FeedPollDelay/feedPollDelay` v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) vašeho triggeru (hodnota by měla být v milisekundách).
 
 ## <a name="next-steps"></a>Další kroky

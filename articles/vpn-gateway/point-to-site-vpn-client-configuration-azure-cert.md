@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 095c7c4bf2a0fb08c0a7fe7e0a8118e76732c9c7
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fb6c484e234b4641a521bd876acdfeb4df562260
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961604"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063119"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro konfigurace nativního ověřování certifikátů Azure P2S
 
@@ -27,7 +27,7 @@ Konfigurační soubory klienta jsou specifické pro konfiguraci sítě VPN pro v
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="generate"></a>Generování souborů konfigurace klienta VPN
+## <a name="generate"></a>Generování konfiguračních souborů klienta VPN
 
 Než začnete, ujistěte se, že všichni připojující se uživatelé mají na zařízení uživatele nainstalovaný platný certifikát. Další informace o instalaci klientského certifikátu najdete v tématu [instalace klientského certifikátu](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
@@ -56,7 +56,7 @@ Konfigurační soubory klienta můžete vygenerovat pomocí PowerShellu nebo pom
    ```
 2. Zkopírujte adresu URL do prohlížeče a Stáhněte soubor zip a potom rozbalte soubor, abyste viděli složky.
 
-## <a name="installwin"></a>Windows
+## <a name="installwin"></a>Systému
 
 Stejný konfigurační balíček klienta VPN můžete použít na každém klientském počítači s Windows, pokud verze odpovídá architektuře pro klienta. Seznam podporovaných klientských operačních systémů najdete v části [Nejčastější dotazy k VPN Gateway](vpn-gateway-vpn-faq.md#P2S)v části Point-to-site.
 
@@ -94,7 +94,7 @@ Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN n
 
    Hodnota **rozhraní** je VPN a **Typ VPN Type** je IKEv2. Do pole **název služby** zadejte název profilu a potom kliknutím na **vytvořit** vytvořte profil připojení klienta VPN.
 
-   ![síť](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![Sítě](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. V **Obecné** složce ze souboru **VpnSettings. XML** Zkopírujte hodnotu značky **VpnServer** . Vložte tuto hodnotu do polí **Adresa serveru** a **vzdálený identifikátor** v profilu.
 
    ![informace o serveru](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -106,10 +106,10 @@ Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN n
    ![certifikát](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Volba identity** zobrazí seznam certifikátů, ze kterých si můžete vybrat. Vyberte vhodný certifikát a potom klikněte na **pokračovat**.
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![identita](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Do pole **místní ID** zadejte název certifikátu (z kroku 6). V tomto příkladu je to "ikev2Client.com". Potom kliknutím na tlačítko **použít** uložte změny.
 
-   ![použít](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![vyrovnat](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. V dialogovém okně **síť** klikněte na **použít** a uložte všechny změny. Pak klikněte na **připojit** a spusťte připojení P2S k virtuální síti Azure.
 
 ## <a name="linuxgui"></a>Linux (grafické rozhraní klient strongswan)
@@ -136,7 +136,7 @@ V Ubuntu 18.0.4 byly vytvořeny následující pokyny. Ubuntu 16.0.10 nepodporuj
 2. Vyberte **Nastavení** a pak vybrat **síť**.
 
    ![Upravit připojení](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
-3. Kliknutím na **+** tlačítko vytvořte nové připojení.
+3. Kliknutím na tlačítko **+** vytvořte nové připojení.
 
    ![Přidat připojení](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
 4. V nabídce vyberte **IPSec/IKEv2 (klient strongswan)** a dvakrát klikněte na tlačítko. V tomto kroku můžete své připojení pojmenovat.
@@ -146,7 +146,7 @@ V Ubuntu 18.0.4 byly vytvořeny následující pokyny. Ubuntu 16.0.10 nepodporuj
 
    ![Kopírovat název](./media/point-to-site-vpn-client-configuration-azure-cert/vpnserver.png)
 6. Tento název vložte do pole **adresa** nového připojení k síti VPN v části **Brána** . V dalším kroku vyberte ikonu složky na konci pole **certifikát** , přejděte do složky **Obecné** a vyberte soubor **VpnServerRoot** .
-7. V části **klient** tohoto připojení vyberte pro **ověřování** **certifikát/privátní klíč**. V části **certifikát** a **privátní klíč**vyberte certifikát a privátní klíč, který jste vytvořili dříve. V **Možnosti**vyberte možnost **požádat o vnitřní IP adresu**. Potom klikněte na **přidat**.
+7. V části **klient** tohoto připojení vyberte pro **ověřování** **certifikát/privátní klíč**. V části **certifikát** a **privátní klíč**vyberte certifikát a privátní klíč, který jste vytvořili dříve. V **Možnosti**vyberte možnost **požádat o vnitřní IP adresu**. Pak klikněte na tlačítko **Přidat**.
 
    ![požádat o vnitřní IP adresu](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
 8. Zapněte připojení **.**
@@ -169,22 +169,22 @@ Pokud jste ještě vygenerovali certifikáty, použijte následující postup:
 2. Extrahujte soubor.
 3. Z **Obecné** složky zkopírujte nebo přesuňte VpnServerRoot. cer do/etc/IPSec.d/cacerts.
 4. Kopírovat nebo přesunout klienta CP Client. p12 na/etc/IPSec.d/Private/. Tento soubor je klientský certifikát pro Azure VPN Gateway.
-5. Otevřete soubor VpnSettings. XML a zkopírujte `<VpnServer>` hodnotu. Tuto hodnotu použijete v dalším kroku.
+5. Otevřete soubor VpnSettings. XML a zkopírujte hodnotu `<VpnServer>`. Tuto hodnotu použijete v dalším kroku.
 6. Upravte hodnoty v následujícím příkladu a pak přidejte příklad do konfigurace/etc/IPSec.conf.
   
    ```
    conn azure
-   keyexchange=ikev2
-   type=tunnel
-   leftfirewall=yes
-   left=%any
-   leftauth=eap-tls
-   leftid=%client # use the DNS alternative name prefixed with the %
-   right= Enter the VPN Server value here# Azure VPN gateway address
-   rightid=% # Enter the VPN Server value here# Azure VPN gateway FQDN with %
-   rightsubnet=0.0.0.0/0
-   leftsourceip=%config
-   auto=add
+         keyexchange=ikev2
+         type=tunnel
+         leftfirewall=yes
+         left=%any
+         leftauth=eap-tls
+         leftid=%client # use the DNS alternative name prefixed with the %
+         right= Enter the VPN Server value here# Azure VPN gateway address
+         rightid=% # Enter the VPN Server value here# Azure VPN gateway FQDN with %
+         rightsubnet=0.0.0.0/0
+         leftsourceip=%config
+         auto=add
    ```
 6. Do */etc/IPSec.Secrets*přidejte následující.
 

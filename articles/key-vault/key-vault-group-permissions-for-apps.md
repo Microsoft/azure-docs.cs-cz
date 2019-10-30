@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b472d36f17853549f2bfc773bdcb65faf0421b3f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718990"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73102370"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Zajištění Key Vault ověřování pomocí zásad řízení přístupu
 
@@ -80,10 +80,10 @@ Identifikátor objectId bude uveden ve výstupu jako `Id` (není `ApplicationId`
 
 Do skupiny Azure AD můžete přidat víc aplikací a uživatelů a pak skupině udělit přístup k trezoru klíčů.  Další podrobnosti najdete v části [Vytvoření a přidání členů do skupiny Azure AD](#creating-and-adding-members-to-an-azure-ad-group) níže.
 
-Pokud chcete najít ID objektu skupiny Azure AD pomocí Azure CLI, použijte příkaz [AZ AD Group list](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) . Vzhledem k velkému počtu skupin, které mohou být ve vaší organizaci, byste měli také zadat vyhledávací řetězec pro parametr `--display-name`.
+Pokud chcete najít ID objektu skupiny Azure AD pomocí Azure CLI, použijte příkaz [AZ AD Group list](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) . Z důvodu velkého počtu skupin, které mohou být ve vaší organizaci, byste měli také zadat vyhledávací řetězec pro parametr `--display-name`.
 
 ```azurecli-interactive
-az ad group list --displayname <search-string>
+az ad group list --display-name <search-string>
 ```
 Identifikátor objectId bude vrácen ve formátu JSON:
 
@@ -111,7 +111,7 @@ Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 
 Můžete také přidat jednotlivé uživatele do zásad řízení přístupu trezoru klíčů. **Nedoporučujeme to.** Místo toho doporučujeme přidat uživatele do skupiny Azure AD a přidat skupinu do těchto zásad.
 
-Pokud si přesto přejete najít uživatele pomocí Azure CLI, použijte příkaz [AZ AD User show](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-show) a předejte e-mailovou adresu uživatelů parametru `--id`.
+Pokud si přesto přejete najít uživatele pomocí Azure CLI, použijte příkaz [AZ AD User show](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-show) , který předáte e-mailovou adresu uživatele do parametru `--id`.
 
 
 ```azurecli-interactive
@@ -191,7 +191,7 @@ Můžete najít objectId vašich aplikací pomocí rozhraní příkazového řá
 az ad sp list --show-mine
 ```
 
-Azure PowerShell pomocí rutiny [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal?view=azps-2.7.0) Najděte řetězce objectID vašich aplikací a předejte do parametru `-SearchString` hledaný řetězec.
+Vyhledejte objectId vašich aplikací pomocí Azure PowerShell pomocí rutiny [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal?view=azps-2.7.0) a předejte vyhledávací řetězec do parametru `-SearchString`.
 
 ```azurepowershell-interactive
 Get-AzADServicePrincipal -SearchString <search-string>

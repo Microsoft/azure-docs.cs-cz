@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa42c63809472e1681a820031e48fe4f86fb584
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756536"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062531"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén pomocí Azure Proxy aplikací služby AD
 
@@ -77,38 +77,40 @@ Podrobnější pokyny najdete v tématu [Přidání vlastního názvu domény po
 
 Publikování aplikace prostřednictvím proxy aplikací s vlastní doménou:
 
-1. U nové aplikace v Azure Active Directory v levém navigačním panelu vyberte **podnikové aplikace** , vyberte **Nová aplikace**a pak vyberte místní **aplikace**. 
+1. V případě nové aplikace v Azure Active Directory v levém navigačním panelu vyberte **podnikové aplikace** . Vyberte **Nová aplikace**. V části místní **aplikace** vyberte **Přidat místní aplikaci**. 
    
    Pro aplikaci, která už je v **podnikových aplikacích**, vyberte ji ze seznamu a potom v levém navigačním panelu vyberte **proxy aplikace** . 
 
-1. Na stránce **proxy aplikace** v poli **interní adresa URL** zadejte interní adresu URL pro vaši aplikaci. 
+2. Na stránce nastavení proxy aplikace zadejte **název** , pokud přidáváte vlastní místní aplikaci.
+
+3.  Do pole **interní adresa URL** zadejte interní adresu URL pro vaši aplikaci.
    
-1. V poli **externí adresa URL** vyřaďte seznam a vyberte vlastní doménu, kterou chcete použít.
+4. V poli **externí adresa URL** vyřaďte seznam a vyberte vlastní doménu, kterou chcete použít.
    
-1. Vyberte **Save** (Uložit).
+5. Vyberte **Přidat**.
    
    ![Vybrat vlastní doménu](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-1. Pokud již doména obsahuje certifikát, zobrazí se v poli **certifikát** informace o certifikátu. V opačném případě vyberte pole **certifikát** . 
+6. Pokud již doména obsahuje certifikát, zobrazí se v poli **certifikát** informace o certifikátu. V opačném případě vyberte pole **certifikát** . 
    
    ![Kliknutím Nahrajte certifikát.](./media/application-proxy-configure-custom-domain/certificate.png)
    
-1. Na stránce **certifikát SSL** vyhledejte a vyberte soubor certifikátu PFX. Zadejte heslo pro certifikát a vyberte **Odeslat certifikát**. Další informace o certifikátech najdete v části [certifikáty pro vlastní domény](#certificates-for-custom-domains) .
+7. Na stránce **certifikát SSL** vyhledejte a vyberte soubor certifikátu PFX. Zadejte heslo pro certifikát a vyberte **Odeslat certifikát**. Další informace o certifikátech najdete v části [certifikáty pro vlastní domény](#certificates-for-custom-domains) .
    
    ![Nahrát certifikát](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > Vlastní doména vyžaduje, aby se certifikát nahrál jenom jednou. Nahraný certifikát se pak použije automaticky, když použijete vlastní doménu pro jiné aplikace.
    
-1. Pokud jste přidali certifikát, na stránce **proxy aplikace** vyberte **Uložit**. 
+8. Pokud jste přidali certifikát, na stránce **proxy aplikace** vyberte **Uložit**. 
    
-1. Na informačním panelu na stránce **proxy aplikace** si poznamenejte záznam CNAME, který potřebujete přidat do zóny DNS. 
+9. Na informačním panelu na stránce **proxy aplikace** si poznamenejte záznam CNAME, který potřebujete přidat do zóny DNS. 
    
    ![Přidat záznam DNS CNAME](./media/application-proxy-configure-custom-domain/dns-info.png)
    
-1. Postupujte podle pokynů v tématu [Správa záznamů a sad záznamů DNS pomocí Azure Portal](../../dns/dns-operations-recordsets-portal.md) k přidání záznamu DNS, který přesměruje novou externí adresu URL do domény *msappproxy.NET* .
+10. Postupujte podle pokynů v tématu [Správa záznamů a sad záznamů DNS pomocí Azure Portal](../../dns/dns-operations-recordsets-portal.md) k přidání záznamu DNS, který přesměruje novou externí adresu URL do domény *msappproxy.NET* .
    
-1. Pokud chcete zkontrolovat, jestli je záznam DNS správně nakonfigurovaný, pomocí příkazu [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) potvrďte, že je vaše externí adresa URL dostupná, a doména *msapproxy.NET* se zobrazí jako alias.
+11. Pokud chcete zkontrolovat, jestli je záznam DNS správně nakonfigurovaný, pomocí příkazu [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) potvrďte, že je vaše externí adresa URL dostupná, a doména *msapproxy.NET* se zobrazí jako alias.
 
 Vaše aplikace je teď nastavená tak, aby používala vlastní doménu. Nezapomeňte přiřadit uživatele k aplikaci, než ji otestujete nebo vydáte. 
 

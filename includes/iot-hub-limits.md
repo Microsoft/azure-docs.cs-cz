@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391593"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73083729"
 ---
 V následující tabulce jsou uvedené limity spojené s různými úrovněmi služeb S1, S2, S3 a F1. Informace o nákladech na každou *jednotku* v každé úrovni najdete v tématu [ceny za Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -27,7 +27,7 @@ Následující tabulka uvádí omezení, která platí pro IoT Hub prostředky.
 
 | Prostředek | škálování |
 | --- | --- |
-| Maximální počet placených služeb IoT Hub na předplatné Azure |50 |
+| Maximální počet placených služeb IoT Hub na předplatné Azure |100 |
 | Maximální počet bezplatných služeb IoT Hub na předplatné Azure |1\. místo |
 | Maximální počet znaků v ID zařízení | 128 |
 | Maximální počet identit zařízení<br/> vrácených v jednom volání |1 000 |
@@ -53,7 +53,7 @@ Následující tabulka uvádí omezení, která platí pro IoT Hub prostředky.
 | Maximální přenos dat datového proudu zařízení | 300 MB za den (jenom pro S1, S2, S3 a F1) |
 
 > [!NOTE]
-> Pokud v předplatném Azure potřebujete více než 50 placených Center IoT Hub, kontaktujte podpora Microsoftu.
+> Pokud v předplatném Azure potřebujete více než 100 placených Center IoT Hub, kontaktujte podpora Microsoftu.
 
 > [!NOTE]
 > V současné době je celkový počet zařízení plus modulů, které se dají zaregistrovat do jednoho centra IoT, omezené na 1 000 000. Pokud chcete tento limit zvýšit, kontaktujte [Podpora Microsoftu](https://azure.microsoft.com/support/options/).

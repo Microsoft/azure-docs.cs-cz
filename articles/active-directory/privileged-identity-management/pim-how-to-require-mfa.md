@@ -14,18 +14,18 @@ ms.date: 08/31/2018
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12b6cd17fac77361fa20d3b3e048e64228a2ed3d
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 2aa58c354198e648227b9b0b43d1f60546f87d32
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809025"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063067"
 ---
 # <a name="multi-factor-authentication-and-privileged-identity-management"></a>Multi-Factor Authentication a Privileged Identity Management
 
 Pro všechny správce doporučujeme vyžadovat vícefaktorové ověřování (MFA). Tím se snižuje riziko útoku kvůli napadenému heslu.
 
-Můžete vyžadovat, aby uživatelé při přihlášení dokončili ověřování s více faktory ověřování. Můžete také vyžadovat, aby uživatelé při aktivaci role v Azure Active Directory (Azure AD) Privileged Identity Management (PIM) dokončili výzvu k ověření více = Factor Authentication. Tímto způsobem se zobrazí výzva k tomu, že pokud uživatel nedokončil ověřování pomocí aplikace Multi-Factor Authentication po přihlášení, zobrazí se jim výzva k tomu, Privileged Identity Management.
+Můžete vyžadovat, aby uživatelé při přihlášení dokončili výzvu k ověření pomocí aplikace Multi-Factor Authentication. Můžete také vyžadovat, aby uživatelé při aktivaci role v Azure Active Directory (Azure AD) Privileged Identity Management (PIM) dokončili výzvu k ověřování pomocí služby Multi-Factor Authentication. Tímto způsobem se zobrazí výzva k tomu, že pokud uživatel po přihlášení nedokončil výzvu k ověření službou Multi-Factor Authentication, bude k tomu vyzván Privileged Identity Management.
 
 > [!IMPORTANT]
 > V současné době Azure Multi-Factor Authentication funguje jenom s pracovními nebo školními účty, ne s osobními účty Microsoft (obvykle se jedná o osobní účet, který se používá k přihlašování ke službám Microsoftu, jako je Skype, Xbox nebo Outlook.com). Z tohoto důvodu nemůže být kdokoli, kdo používá osobní účet, oprávněným správcem, protože nemůže k aktivaci svých rolí použít službu Multi-Factor Authentication. Pokud tito uživatelé potřebují dál spravovat úlohy pomocí účet Microsoft, prozatím je přezvyšte na trvalé správce.

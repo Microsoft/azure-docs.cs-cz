@@ -9,12 +9,12 @@ ms.date: 10/02/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 851b5607ad5413cd1a594f788cb294ee7790e8eb
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a074abf494e155e0dc088d0db6af7eba0b3cf3c2
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043166"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100242"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Kurz: reakce na události Blob Storage v IoT Edge (Preview)
 V tomto článku se dozvíte, jak nasadit modul Azure Blob Storage do služby IoT, který by sloužil jako Event Grid Vydavatel k posílání událostí při vytváření objektů BLOB a odstraňování objektů blob do Event Grid.  
@@ -167,7 +167,10 @@ V této části se dozvíte, jak nasadit modul Blob Storage Azure, který se bud
 5. Klikněte na **Uložit**.
 6. Kliknutím na tlačítko **Další** pokračujte v části trasy.
 
- ### <a name="setup-routes"></a>Nastavení tras
+    > [!NOTE]
+    > Pokud jako hraniční zařízení používáte virtuální počítač Azure, přidejte pravidlo příchozího portu, které povolí příchozí provoz na portech hostitele používaných v tomto kurzu: 4438, 5888, 8080 a 11002. Pokyny k přidání pravidla najdete v tématu [Postup otevření portů pro virtuální počítač](../../virtual-machines/windows/nsg-quickstart-portal.md).
+
+### <a name="setup-routes"></a>Nastavení tras
 
 Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části Kontrola.
 
@@ -184,7 +187,7 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
 
    Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
 
-## <a name="publish-created-and-deleted-events"></a>Publikování vytvořených a odstraněných událostí
+## <a name="publish-blobcreated-and-blobdeleted-events"></a>Publikování událostí BlobCreated a BlobDeleted
 
 1. Tento modul automaticky vytvoří téma **MicrosoftStorage**. Ověřte, že existuje
     ```sh

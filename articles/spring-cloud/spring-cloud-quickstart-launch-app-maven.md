@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: v-vasuke
-ms.openlocfilehash: e773b997cca3fa9a1f11fec2ac449e1fc11c5364
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: MT
+ms.openlocfilehash: 5777d728f61b3ffe7d0fdaaac1391f600dca12fd
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554568"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097835"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-by-using-the-maven-plug-in"></a>Rychlý Start: spuštění aplikace pro jarní Cloud z Azure pomocí modulu plug-in Maven
 
@@ -31,7 +31,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalujte JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
 3. [Nainstalujte Maven 3,0 nebo novější](https://maven.apache.org/download.cgi).
-4. [Nainstalujte rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+4. [Nainstalujte Azure CLI verze 2.0.67 nebo novější](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 5. [Zaregistrujte si bezplatné předplatné Azure](https://azure.microsoft.com/free/).
 
 ## <a name="install-the-azure-cli-extension"></a>Instalace rozšíření Azure CLI

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: cc0539462fad0a73d5fc7eb75d2078e513df4e5d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 12976e2b2dd37b640efe1823fc8d2ca7048ebcdb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926540"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097360"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
 
@@ -126,7 +126,7 @@ Některé distribuce Linuxu ještě nepodporují funkce šifrování v protokolu
 
 ### <a name="solution"></a>Řešení
 
-Funkce šifrování pro protokol SMB 3.0 pro Linux se zavedla v jádru verze 4.11. Tato funkce umožňuje připojení sdílené složky Azure z místního prostředí nebo z jiné oblasti Azure. Tato funkce je součástí distribucí Linuxu uvedených v části [Minimální doporučené verze s odpovídajícími možnostmi připojení (protokol SMB verze 2.1 vs. protokol SMB verze 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30). Ostatní distribuce vyžadují jádro verze 4.11 nebo novější.
+Funkce šifrování pro protokol SMB 3.0 pro Linux se zavedla v jádru verze 4.11. Tato funkce umožňuje připojení sdílené složky Azure z místního prostředí nebo z jiné oblasti Azure. Některé distribuce systému Linux mohou mít nepřesné změny od jádra 4,11 až po starší verze jádra Linux, které udržují. Informace o tom, jestli vaše verze Linux podporuje SMB 3,0 se šifrováním, najdete v části [použití souborů Azure se systémem Linux](storage-how-to-use-files-linux.md). 
 
 Pokud váš linuxový klient SMB nepodporuje šifrování, připojte službu Azure Files pomocí protokolu SMB 2.1 z virtuálního počítače Azure s Linuxem, který je ve stejném datacentru jako sdílená složka. Ověřte, že je pro účet úložiště zakázané nastavení [Vyžadovat zabezpečený přenos]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer). 
 
@@ -281,7 +281,7 @@ Tento problém s opětovným připojením v jádru Linuxu je teď opravený v r�
 - [CIFS: Oprava možného poškození paměti během opětovného připojení](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: Oprava možného dvojitého zamykání mutex během opětovného připojení (pro jádro v 4.9 a novější)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Tyto změny se však ještě nemusely přenést do všech distribucí Linuxu. Tuto opravu a další opravy opětovného připojení najdete v části [Minimální doporučené verze s odpovídajícími možnostmi připojení (protokol SMB verze 2.1 vs. protokol SMB verze 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) článku [Použití služby Azure Files s Linuxem](storage-how-to-use-files-linux.md). Tuto opravu můžete získat upgradem na některou z těchto doporučených verzí jádra.
+Tyto změny se však ještě nemusely přenést do všech distribucí Linuxu. Pokud používáte oblíbenou distribuci pro Linux, můžete se podívat na téma [použití souborů Azure se systémem Linux](storage-how-to-use-files-linux.md) k zobrazení, která verze distribuce má potřebné změny jádra.
 
 ### <a name="workaround"></a>Alternativní řešení
 

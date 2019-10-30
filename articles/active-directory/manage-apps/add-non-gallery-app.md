@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8d8d6df16c5df7e29d8bb870c5d5eda6d8a2d3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477265"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062774"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Přidání aplikace, která není v seznamu (galerie), do vaší organizace Azure AD
 
@@ -28,26 +28,41 @@ Kromě možností v [galerii aplikací Azure AD](https://azure.microsoft.com/doc
 - Samoobslužné připojení aplikací, které používají [systém pro protokol SCIM (Domain Identity Management) pro zřizování uživatelů](use-scim-to-provision-users-and-groups.md)
 - Možnost Přidat odkazy na libovolnou aplikaci ve [Spouštěči aplikací Office 365](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) nebo na [panelu přístup k Azure AD](what-is-single-sign-on.md#linked-sign-on)
 
-Tento článek popisuje, jak přidat aplikaci mimo galerii do podnikových **aplikací** v Azure Portal bez psaní kódu. Pokud místo toho hledáte pokyny pro vývojáře, jak integrovat vlastní aplikace se službou Azure AD, přečtěte si téma [scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md). Když vyvíjíte aplikaci, která používá moderní protokol, jako je [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) k ověřování uživatelů, můžete ji zaregistrovat na platformě Microsoft identity pomocí prostředí [Registrace aplikací](../develop/quickstart-register-app.md) v Azure Portal.
+Tento článek popisuje, jak přidat aplikaci mimo galerii do **podnikových aplikací** v Azure Portal bez psaní kódu. Pokud místo toho hledáte pokyny pro vývojáře, jak integrovat vlastní aplikace se službou Azure AD, přečtěte si téma [scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md). Když vyvíjíte aplikaci, která používá moderní protokol, jako je [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) k ověřování uživatelů, můžete ji zaregistrovat na platformě Microsoft identity pomocí prostředí [Registrace aplikací](../develop/quickstart-register-app.md) v Azure Portal.
 
 ## <a name="add-a-non-gallery-application"></a>Přidat aplikaci mimo galerii
 
 1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/) pomocí účtu správce Microsoft Identity Platform.
-1. Vyberte možnost **podnikové aplikace** > **Nová aplikace**.
-2. (Volitelné, ale doporučené) Do vyhledávacího pole **Přidat z Galerie** zadejte zobrazovaný název aplikace. Pokud se aplikace zobrazí ve výsledcích hledání, vyberte ji a přeskočte zbytek tohoto postupu.
-3. Vyberte **aplikaci mimo galerii**. Zobrazí se stránka **Přidat vlastní aplikaci** .
 
-   ![Přidat aplikaci](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-5. Zadejte zobrazovaný název pro novou aplikaci.
-6. Vyberte **Přidat**. Otevře se  Stránka s přehledem aplikace.
+2. Vyberte **podnikové aplikace** > **novou aplikaci**.
+
+3. (Volitelné, ale doporučené) Do vyhledávacího pole **Procházet galerii Azure AD** zadejte zobrazovaný název aplikace. 
+
+4. Vyberte **vytvořit vlastní aplikaci**. Zobrazí se stránka **vytvořit vlastní aplikaci** .
+
+   ![Přidání aplikace](media/add-non-gallery-app/create-your-own-application.png)
+
+5. Začněte psát zobrazované jméno pro novou aplikaci. Pokud existují aplikace Galerie s podobným názvem, zobrazí se v seznamu výsledků hledání.
+
+   > [!NOTE]
+   > Pokud je to možné, doporučujeme použít verzi Galerie vaší aplikace. Pokud se ve výsledcích hledání zobrazí aplikace, kterou chcete přidat, vyberte aplikaci a přeskočte zbytek tohoto postupu.
+
+6. V části **co chcete s vaší aplikací dělat?** vyberte možnost **integrace jakékoli jiné aplikace, kterou v galerii nenajdete**. Tato možnost se obvykle používá pro aplikace SAML a WS-nakrmené.
+
+   > [!NOTE]
+   > Další dvě možnosti jsou používány v následujících scénářích:
+   >* **Konfigurace proxy aplikací pro zabezpečený vzdálený přístup k místní aplikaci** otevře stránku konfigurace pro Azure proxy aplikací služby AD a konektory.
+   >* **Zaregistrujte aplikaci, na které pracujete, abyste mohli integrovat s Azure AD** , otevřete stránku **Registrace aplikací** . Tato možnost se obvykle používá pro aplikace OpenID Connect.
+
+7. Vyberte **Create** (Vytvořit). Otevře se stránka s **přehledem** aplikace.
 
 ## <a name="configure-user-sign-in-properties"></a>Konfigurace vlastností přihlašování uživatelů
 
 1. Výběrem **vlastnosti** otevřete podokno vlastnosti pro úpravy.
 
-    ![Upravit podokno vlastností](media/add-application-portal/edit-properties.png)
+    ![Upravit podokno vlastností](media/add-non-gallery-app/edit-properties.png)
 
-1. Nastavte následující možnosti, chcete-li určit, jak se uživatelé, kteří jsou přiřazeni nebo nepřiřazeni k aplikaci, mohou přihlásit k aplikaci a uživatel může aplikaci zobrazit na přístupovém panelu.
+2. Nastavte následující možnosti, chcete-li určit, jak se uživatelé, kteří jsou přiřazeni nebo nepřiřazeni k aplikaci, mohou přihlásit k aplikaci a uživatel může aplikaci zobrazit na přístupovém panelu.
 
     - Možnost **Mohou se uživatelé přihlásit?** určuje, jestli se můžou přihlásit uživatelé přiřazení k aplikaci.
     - **Vyžadováno přiřazení uživatele** určuje, jestli se uživatelé, kteří nejsou přiřazeni k aplikaci, můžou přihlásit.
@@ -83,13 +98,13 @@ Tento článek popisuje, jak přidat aplikaci mimo galerii do podnikových **apl
 
      \* Zobrazí se aplikace uživateli na přístupovém panelu a ve spouštěči aplikací Office 365?
 
-1. Pokud chcete použít vlastní logo, vytvořte logo 215 215 pixelů a uložte ho ve formátu PNG. Pak přejděte k logu a nahrajte ho.
+3. Pokud chcete použít vlastní logo, vytvořte logo 215 215 pixelů a uložte ho ve formátu PNG. Pak přejděte k logu a nahrajte ho.
 
-    ![Změna loga](media/add-application-portal/change-logo.png)
+    ![Změna loga](media/add-non-gallery-app/change-logo.png)
 
-1. Až budete hotovi, vyberte **Uložit**.
+4. Až budete hotovi, vyberte **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste přidali aplikaci do vaší organizace Azure AD, [Vyberte metodu jednotného přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method) , kterou chcete použít, a podívejte se na příslušný článek níže:
 

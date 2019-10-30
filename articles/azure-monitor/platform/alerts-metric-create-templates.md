@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f341a3599607e527556f90626dd866418910f61e
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052328"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099755"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -27,8 +27,9 @@ V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Mana
 Základní postup je následující:
 
 1. Použijte jednu z níže uvedených šablon jako soubor JSON, který popisuje, jak vytvořit výstrahu.
-2. Upravit a použít odpovídající soubor parametrů jako JSON pro přizpůsobení výstrahy
-3. Nasaďte šablonu pomocí [libovolné metody nasazení](../../azure-resource-manager/resource-group-template-deploy.md).
+2. Upravte a použijte odpovídající soubor parametrů jako JSON pro přizpůsobení výstrahy.
+3. Parametr `metricName` najdete v tématu dostupné metriky v [Azure monitor podporovaných metrikách](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+4. Nasaďte šablonu pomocí [libovolné metody nasazení](../../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Šablona pro jednoduchou výstrahu metriky se statickou prahovou hodnotou
 

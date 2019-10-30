@@ -7,15 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: a876269b2746a1065cee2639cfc5804aff0b3446
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: HT
+ms.date: 10/29/2019
+ms.openlocfilehash: 33302f3760cc750bfc41386aaf17368abc15ba5d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027703"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063294"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat ve službě Azure HDInsight
+
+HDInsight umožňuje převzít kontrolu nad daty a metadaty nasazením klíčových řešení metadat a databází pro správu do externích úložišť dat. Tato funkce je aktuálně dostupná pro [Apache Hive metastore](#custom-metastore), [Apache Oozie metastore](#apache-oozie-metastore) a [Apache Ambari Database](#custom-ambari-db).
 
 Apache Hive metastore v HDInsight je důležitou součástí architektury Apache Hadoop. Metastore je centrální úložiště schémat, které můžou používat jiné nástroje pro přístup k velkým datům, jako jsou Apache Spark, interaktivní dotazy (LLAP), presto nebo Apache prasete. HDInsight používá jako metastore Hive Azure SQL Database.
 
@@ -92,6 +94,10 @@ Tady jsou některé obecné metastore Hive osvědčené postupy pro HDInsight:
 Apache Oozie je systém koordinace pracovních postupů, který spravuje úlohy Hadoop.  Oozie podporuje úlohy Hadoop pro Apache MapReduce, prase, podregistr a další.  Oozie používá metastore k ukládání podrobností o aktuálních a dokončených pracovních postupech. Pokud chcete zvýšit výkon při použití Oozie, můžete použít Azure SQL Database jako vlastní metastore. Metastore může také po odstranění clusteru poskytnout přístup k datům úlohy Oozie.
 
 Pokyny k vytvoření Oozie metastore pomocí Azure SQL Database najdete v tématu [použití Apache Oozie pro pracovní postupy](hdinsight-use-oozie-linux-mac.md).
+
+## <a name="custom-ambari-db"></a>Vlastní Ambari DB
+
+Pokud chcete používat svou vlastní externí databázi s Apache Ambari ve službě HDInsight, podívejte se na [vlastní databázi Apache Ambari](hdinsight-custom-ambari-db.md).
 
 ## <a name="next-steps"></a>Další kroky
 

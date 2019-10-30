@@ -1,7 +1,7 @@
 ---
 title: Obsáhlý Learning a strojové učení
 titleSuffix: Azure Machine Learning
-description: Přečtěte si o hloubkovém učení a strojovém učení a o tom, jak se obě koncepce vztahují na umělou analýzu. Obsáhlý Learning se dá použít ve scénářích, jako je odhalování podvodů, rozpoznávání hlasu a obličeje, analýza mínění a prognózování časových řad.
+description: Seznamte se s tím, jak obsáhlý Learning souvisí se strojovým učením a umělou logikou. Obsáhlý Learning se používá ve scénářích, jako je odhalování podvodů, rozpoznávání hlasových &, rozpoznávání obličeje, analýza mínění a prognózování časových řad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ffc71cf8b2f60568e3c4bc63a3751bc44be66e58
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123147"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063140"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Obsáhlý Learning a strojové učení
 
@@ -22,9 +22,9 @@ Tento článek vám pomůže porovnat hloubkové učení a strojové učení. Do
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Obsáhlý Learning, strojové učení a AI
 
-![Diagram vztahů: AI a strojové učení vs. obsáhlý Learning](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
+![Diagram vztahů: AI vs. Machine Learning vs. obsáhlý Learning](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
 
-Zvažte následující definice pro pochopení hloubkového učení vs. strojové učení vs. AI
+Zvažte následující definice pro pochopení hloubkového učení vs. strojové učení vs. AI:
 
 - **Obsáhlý Learning** je podmnožinou strojového učení založeného na umělých neuronovéch sítích. _Proces výuky_ je _hluboký_ , protože struktura umělých neuronové sítí sestává z několika vstupních, výstupních a skrytých vrstev. Každá vrstva obsahuje jednotky, které transformují vstupní data na informace, které může další vrstva použít pro určitou prediktivní úlohu. Díky této struktuře se může počítač seznámit s vlastním zpracováním dat.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 901542e2a69d2c7880825d76c1d69d3795713ed2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 003cc54a07455118969a2dd497e9b963c03f68f2
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231170"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099491"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přesun z Media Services V2 na V3
 
@@ -45,7 +45,7 @@ Pokud máte k dispozici službu video Service na [starší verzi rozhraní api M
 
 * Pro zpracování úloh založených na souborech můžete jako vstup použít adresu URL HTTP (S).<br/>Nemusíte mít již uložený obsah v Azure, ani nemusíte vytvářet prostředky.
 * Zavádí koncepci [transformací](transforms-jobs-concept.md) pro zpracování úloh založených na souborech. Transformaci lze použít k vytvoření opakovaně použitelných konfigurací, k vytvoření Azure Resource Manager šablon a k izolaci nastavení zpracování mezi několika zákazníky nebo klienty.
-* Asset může mít několik [lokátorů streamování](streaming-locators-concept.md) s různými nastaveními dynamického [balení](dynamic-packaging-overview.md) a dynamického šifrování.
+* Asset může mít několik [lokátorů streamování](streaming-locators-concept.md) s různými nastaveními [dynamického balení](dynamic-packaging-overview.md) a dynamického šifrování.
 * [Content Protection](content-key-policy-concept.md) podporuje více klíčových funkcí.
 * Při použití Media Services pro překódování informačního kanálu s jedním přenosovou rychlostí do výstupního datového proudu s více přenosovými rychlostmi můžete streamovat živé události, které jsou až 24 hodin dlouhé.
 * Nová podpora živého streamování s nízkou latencí pro živé události Další informace najdete v tématu [latence](live-event-latency.md).
@@ -73,10 +73,11 @@ Pokud máte k dispozici službu video Service na [starší verzi rozhraní api M
     * Živá událost nahrazuje kanál.<br/>Účtování živých událostí je založeno na měřičích živých kanálů. Další informace najdete v tématu [fakturace](live-event-states-billing.md) a [ceny](https://azure.microsoft.com/pricing/details/media-services/).
     * Živý výstup nahrazuje program.
 * Živé výstupy začínají při vytváření a při odstranění se zastaví. Programy fungují jinak v rozhraních API v2, musely se spustit po vytvoření.
-*  Chcete-li získat informace o úloze, je nutné znát název transformace, pod kterou byla úloha vytvořena. 
+* Chcete-li získat informace o úloze, je nutné znát název transformace, pod kterou byla úloha vytvořena. 
+* Ve verzích v2 se [vstupní](../previous/media-services-input-metadata-schema.md) a [výstupní](../previous/media-services-output-metadata-schema.md) soubory metadat XML generují jako výsledek úlohy kódování. V v3 se formát metadat změnil z XML na JSON. 
 
 > [!NOTE]
-> Projděte si zásady vytváření názvů, které se vztahují k [prostředkům Media Services V3](media-services-apis-overview.md#naming-conventions). Přečtěte si také pojmenování [objektů BLOB](assets-concept.md#naming-blobs).
+> Projděte si zásady vytváření názvů, které se vztahují k [prostředkům Media Services V3](media-services-apis-overview.md#naming-conventions). Přečtěte si také [pojmenování objektů BLOB](assets-concept.md#naming-blobs).
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Mezery funkcí v souvislosti s rozhraními API v2
 
@@ -86,7 +87,7 @@ Rozhraní V3 API má následující mezery v souvislosti s rozhraním API v2. Uz
 * Mnohé z [pokročilých funkcí Media Encoder standard v](../previous/media-services-advanced-encoding-with-mes.md) rozhraních API v2 v současnosti nejsou v systému V3 k dispozici, například:
   
     * Sešity prostředků
-    * Překrytí
+    * Překryvy
     * Jej
     * Sprite miniatur
     * Vložení tiché zvukové stopy, když vstup nemá žádný zvuk
@@ -100,11 +101,11 @@ Rozhraní V3 API má následující mezery v souvislosti s rozhraním API v2. Uz
 
 V následující tabulce jsou uvedeny rozdíly v kódu mezi v2 a v3 pro běžné scénáře.
 
-|Scénář|V2 API|V3 API|
+|Scénář|V2 API|ROZHRANÍ V3 API|
 |---|---|---|
 |Vytvoření assetu a nahrání souboru |[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Odeslat úlohu|[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Ukazuje, jak nejdřív vytvořit transformaci a pak odeslat úlohu.|
-|Publikování assetu pomocí šifrování AES |1. Create ContentKeyAuthorizationPolicyOption<br/>2. Vytvořit ContentKeyAuthorizationPolicy<br/>3. Vytvořit AssetDeliveryPolicy<br/>4. Vytvoření Assetu a nahrání obsahu nebo odeslání úlohy a použití výstupního prostředku<br/>5. Přidružte AssetDeliveryPolicy k Assetu.<br/>6. Vytvořit ContentKey<br/>7. Připojit ContentKey k Assetu<br/>8. Vytvořit AccessPolicy<br/>9. Vytvořit Lokátor<br/><br/>[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Vytvořit zásady pro klíč obsahu<br/>2. Vytvořit Asset<br/>3. Nahrání obsahu nebo použití Assetu jako JobOutput<br/>4. Vytvořit Lokátor streamování<br/><br/>[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Publikování assetu pomocí šifrování AES |1. vytvoření ContentKeyAuthorizationPolicyOption<br/>2. vytvoření ContentKeyAuthorizationPolicy<br/>3. vytvoření AssetDeliveryPolicy<br/>4. vytvoření Assetu a nahrání obsahu nebo odeslání úlohy a použití výstupního prostředku<br/>5. přidružte AssetDeliveryPolicy k Assetu.<br/>6. vytvoření ContentKey<br/>7. připojení ContentKey k Assetu<br/>8. vytvoření AccessPolicy<br/>9. vytvořit Lokátor<br/><br/>[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. vytvoření zásad klíče obsahu<br/>2. vytvoření Assetu<br/>3. nahrání obsahu nebo použití Assetu jako JobOutput<br/>4. vytvoření lokátoru streamování<br/><br/>[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 |Získat podrobnosti o úloze a spravovat úlohy |[Správa úloh s v2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Správa úloh pomocí v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 ## <a name="known-issues"></a>Známé problémy

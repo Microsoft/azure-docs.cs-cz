@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7dfd7e29b119b5fe98b649b2e5f5f45b422c4634
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: HT
+ms.openlocfilehash: febd97d1c0b296ab281f9ce0ac8dff7de1fd75d6
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053428"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063343"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -159,11 +159,14 @@ Clustering s podporou převzetí služeb při selhání ve Windows serveru podpo
 
 ### <a name="data-deduplication"></a>Odstranění duplicitních dat
 **Verze agenta 5.0.2.0 nebo novější**   
-Odstranění duplicitních dat se podporuje u svazků s povoleným vytvářením vrstev cloudu v systémech Windows Server 2016 a Windows Server 2019. Povolení odstranění duplicitních dat u svazku s povoleným vrstvou cloudu umožňuje ukládat do mezipaměti více souborů bez nutnosti zajistit další úložiště. 
+Odstranění duplicitních dat je podporováno u svazků s povoleným vytvářením vrstev cloudu v systému Windows Server 2016. Povolení odstranění duplicitních dat u svazku s povoleným vrstvou cloudu umožňuje ukládat do mezipaměti více souborů bez nutnosti zajistit další úložiště. 
 
 Když je u svazku s povoleným vrstvou cloudu povolené odstranění duplicitních dat, bude v umístění koncového bodu serveru na základě nastavení zásad cloudu vyčištěné duplicitní soubory ve stejném umístění. Jakmile budou optimalizované soubory odstranění duplicit vrstveny, úloha uvolňování paměti při odstranění duplicitních dat se automaticky spustí, aby se uvolní místo na disku, a to odebráním nepotřebných bloků dat, na které už neodkazuje jiné soubory na svazku.
 
 Všimněte si, že úspory svazku se vztahují jenom na server. vaše data ve sdílené složce Azure nebudou Odstraněná duplicitovaná.
+
+> [!Note]  
+> Odstranění duplicitních dat a vrstvení cloudu se na stejném svazku na serveru 2019 aktuálně nepodporují kvůli chybě, která bude opravena v budoucí aktualizaci.
 
 **Windows Server 2012 R2 nebo starší verze agenta**  
 U svazků, které nemají povolené vrstvení cloudu, Azure File Sync podporuje odstranění duplicitních dat Windows serveru, které je na svazku zapnuté.

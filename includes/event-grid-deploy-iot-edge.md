@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fab9a8a8c28f2f75e7e5af69b70229c1de74c684
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992285"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098681"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Nasadit modul Event Grid IoT Edge
 
@@ -24,7 +24,7 @@ Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge, a všec
 
 >[!IMPORTANT]
 > V tomto kurzu se Event Grid modul nasadí s vypnutým ověřováním klienta a povolí předplatitele HTTP. Pro produkční úlohy doporučujeme povolit pouze žádosti a předplatitele HTTPS s povoleným ověřováním klienta. Další informace o tom, jak bezpečně nakonfigurovat Event Grid modul, najdete v tématu [zabezpečení a ověřování](../articles/event-grid/edge/security-authentication.md).
-
+ 
 ### <a name="select-your-iot-edge-device"></a>Vyberte zařízení IoT Edge
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
@@ -67,6 +67,10 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
 
  1. Klikněte na **Uložit**.
  1. Kliknutím na tlačítko **Další** pokračujte v části trasy.
+
+    > [!NOTE]
+    > Pokud jako hraniční zařízení používáte virtuální počítač Azure, přidejte pravidlo příchozího portu, které povolí příchozí provoz na portu 4438. Pokyny k přidání pravidla najdete v tématu [Postup otevření portů pro virtuální počítač](../articles/virtual-machines/windows/nsg-quickstart-portal.md).
+
 
 ### <a name="setup-routes"></a>Nastavení tras
 

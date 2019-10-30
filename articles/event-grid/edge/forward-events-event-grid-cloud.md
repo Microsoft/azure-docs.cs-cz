@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: d73f64463d3e56d7bd2e59fcb719c6320cbc6321
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992350"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100657"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Kurz: přeposílání událostí do cloudu Event Grid
 
@@ -102,7 +102,7 @@ Například pokud jste vytvořili téma s názvem `testegcloudtopic` v Západní
    ```
 
    >[!NOTE]
-   > **EndpointUrl** určuje, že adresa URL tématu Event Grid v cloudu. **SasKey** odkazuje na klíč tématu Event Grid cloudu. Hodnota v **části** prokládá se použije k označení všech odchozích událostí, které se mají Event Grid. To může být užitečné při odeslání do tématu Event Grid domény. Další informace o tématu Event Grid doméně najdete v tématu [události událostí]] (.. /event-domains.md)
+   > **EndpointUrl** určuje, že adresa URL tématu Event Grid v cloudu. **SasKey** odkazuje na klíč tématu Event Grid cloudu. Hodnota v **části** prokládá se použije k označení všech odchozích událostí, které se mají Event Grid. To může být užitečné při odeslání do tématu Event Grid domény. Další informace o Event Grid doméně najdete v tématu věnovaném [doménám událostí](../event-domains.md) .
 
     Například:
   
@@ -198,5 +198,6 @@ Informace o zobrazení událostí doručených v tématu o cloudu najdete v tomt
 
 V tomto kurzu jste publikovali událost na hranici a předáváte ji Event Grid v cloudu Azure. Teď, když znáte základní kroky pro přeposílání do Event Grid v cloudu:
 
+* Řešení potíží s používáním Azure Event Grid v IoT Edge najdete v tématu [Průvodce odstraňováním potíží](troubleshoot.md).
 * Předejte události do IoTHub pomocí tohoto [kurzu](forward-events-iothub.md) .
 * Předejte události do Webhooku v cloudu pomocí tohoto [kurzu](pub-sub-events-webhook-cloud.md) .

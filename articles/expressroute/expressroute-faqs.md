@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 920419bf10634e8be15e05a89d547a5a9d1430b7
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: HT
+ms.openlocfilehash: 4dd4831d6437b7026459dc358455335dd0fa221b
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027787"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063103"
 ---
 # <a name="expressroute-faq"></a>Nejčastější dotazy k ExpressRoute
 
@@ -43,7 +43,7 @@ Ne. Připojení k síti VPN libovolné rychlosti můžete koupit od svého posky
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Pokud platíte za okruh ExpressRoute dané šířky pásma, mám v případě potřeby možnost zvýšit zatížení na vyšší rychlost?
 
-Ano. Okruhy ExpressRoute jsou nakonfigurované tak, aby vám umožnily nárůst limitu šířky pásma na více než dvě. Pokud chcete zjistit, jestli podporují tuto funkci, obraťte se na svého poskytovatele služeb. Nejedná se o trvalou dobu a není zaručena. 
+Ano. Okruhy ExpressRoute jsou nakonfigurované tak, aby vám umožnily nárůst limitu šířky pásma na více než dvě. Pokud chcete zjistit, jestli podporují tuto funkci, obraťte se na svého poskytovatele služeb. Nejedná se o trvalou dobu a není zaručena.  Pokud provoz přes bránu ExpressRoute, je šířka pásma pro SKU pevná a nedá se roztékat.
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Můžu současně použít stejné privátní síťové připojení k virtuální síti a dalším službám Azure?
 

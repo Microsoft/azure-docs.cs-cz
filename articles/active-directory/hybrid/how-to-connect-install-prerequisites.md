@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2db8d5881b5847adca4fffb72c0a678e1ec550c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3a1906b8ac281620381176a2a11dff3841069f69
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596323"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062675"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Předpoklady pro Azure AD Connect
 Toto téma popisuje předpoklady a požadavky na hardware pro Azure AD Connect.
@@ -85,7 +85,7 @@ Další informace naleznete v tématu:
 * Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Ve výchozím nastavení je nainstalovaná SQL Server 2012 Express LocalDB (světlá verze SQL Server Express). SQL Server Express má limit velikosti 10GB, který umožňuje spravovat přibližně 100 000 objektů. Pokud potřebujete spravovat větší objem objektů adresáře, musíte Průvodce instalací nasměrovat na jinou instalaci SQL Server. Typ SQL Server instalace může mít vliv na [výkon Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
 * Pokud používáte jinou instalaci SQL Server, platí tyto požadavky:
   * Azure AD Connect podporuje všechny verze Microsoft SQL Server z 2008 R2 (s nejnovější aktualizací Service Pack) do SQL Server 2019. Microsoft Azure SQL Database není **podporován** jako databáze.
-  * Je nutné použít kolaci SQL nerozlišující malá a velká písmena. Tyto kolace se identifikují pomocí \_CI_ v názvu. Použití kolace citlivého **na velká** a malá písmena, které identifikuje \_CS_ v názvu.
+  * Je nutné použít kolaci SQL nerozlišující malá a velká písmena. Tyto kolace se identifikují pomocí \_CI_ v názvu. Použití kolace citlivého na velká a malá písmena, která se identifikují \_CS_, se v názvu **nepodporují** .
   * Můžete mít jenom jeden synchronizační modul na jednu instanci SQL. Pro sdílení instance SQL s nástrojem FIM/MIM Sync, DirSync nebo Azure AD Sync **není podporována** .
 
 ### <a name="accounts"></a>Účty
@@ -221,7 +221,7 @@ Následující tabulka uvádí minimální požadavky na počítač Azure AD Con
 | 300 000 – 600 000 |1,6 GHz |32 GB |450 GB |
 | Více než 600 000 |1,6 GHz |32 GB |500 GB |
 
-Minimální požadavky na počítače se spuštěným AD FS nebo webovými aplikačními servery jsou následující:
+Minimální požadavky na počítače se systémem AD FS nebo proxy servery webových aplikací jsou následující:
 
 * Procesor: Dual Core 1,6 GHz nebo vyšší
 * PAMĚŤ: 2 GB nebo vyšší

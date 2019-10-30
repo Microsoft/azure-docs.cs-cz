@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 02a1c12957570f0e798c5abfd88562128ea1cf76
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053068"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101409"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -175,21 +175,21 @@ Azure AD Identity Protection poskytuje dvě důležité sestavy, které byste m�
 
 Uživatelé mohou být vyzrazeni na napadený web nebo aplikace, které získají přístup k informacím o profilu a uživatelským datům, jako je například jejich e-mailová adresa. Škodlivý objekt actor může použít odsouhlasená oprávnění, která obdržela k šifrování obsahu poštovní schránky a vyžádání Ransom k opětovnému získání dat poštovní schránky. [Správci by měli kontrolovat a auditovat](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) oprávnění udělená uživateli.
 
-## <a name="step-5---enable-end-user-self-help"></a>Krok 5 – povolení samoobslužné podpory pro koncové uživatele
+## <a name="step-5---enable-end-user-self-service"></a>Krok 5 – povolení samoobslužné služby pro koncové uživatele
 
-Jak je to možné, budete chtít zabezpečení vyrovnávat s produktivitou. Na stejném řádku, který se blíží vaší cestě, k místo, že nastavujete základ pro zabezpečení v dlouhodobém běhu, můžete z vaší organizace odebrat tření, a to díky tomu, že budete mít k disostražitíu své uživatele. 
+Jak je to možné, budete chtít zabezpečení vyrovnávat s produktivitou. Na stejném řádku, který se blíží vaší cestě, k místo, že nastavujete základ pro zabezpečení v dlouhodobém běhu, můžete z vaší organizace odebrat tření, a to díky tomu, že budete mít k disostražitíu své uživatele.
 
 ### <a name="implement-self-service-password-reset"></a>Implementace samoobslužného resetování hesla
 
-[Samoobslužné resetování hesla (SSPR)](../../active-directory/authentication/quickstart-sspr.md) v Azure nabízí správcům IT jednoduchý způsob, jak uživatelům dovolit resetování nebo odemknutí svých hesel nebo účtů bez zásahu správce. Tento systém zahrnuje generování podrobných sestav, které sledují, kdy uživatelé k systému přistupují, spolu s oznámeními, která upozorňují na zneužití. 
+[Samoobslužné resetování hesla Azure AD (SSPR)](../../active-directory/authentication/quickstart-sspr.md) nabízí správcům IT jednoduchý způsob, jak uživatelům dovolit resetování nebo odemknutí svých hesel nebo účtů bez zásahu z helpdesku nebo správce. Systém zahrnuje podrobné vytváření sestav, které sleduje, kdy uživatelé obnovili hesla, spolu s oznámeními, která upozorňují na zneužití nebo zneužití.
 
-### <a name="implement-self-service-group-management"></a>Implementace samoobslužné správy skupin
+### <a name="implement-self-service-group-and-application-access"></a>Implementace samoobslužné skupiny a přístupu k aplikacím
 
-Azure AD poskytuje možnost spravovat přístup k prostředkům pomocí skupin zabezpečení a skupin Office 365. Tyto skupiny můžou spravovat vlastníci skupiny místo správců IT. Tato funkce se označuje jako [Samoobslužná správa skupin](../../active-directory/users-groups-roles/groups-self-service-management.md), která umožňuje vlastníkům skupin, kterým není přiřazená role pro správu, vytvářet a spravovat skupiny, aniž by se museli spoléhat na to, že jejich požadavky budou zpracovávat správci.
+Azure AD poskytuje správcům oprávnění ke správě přístupu k prostředkům pomocí skupin zabezpečení, skupin Office 365, aplikačních rolí a přístupových katalogů balíčků.  [Samoobslužná správa skupin](../../active-directory/users-groups-roles/groups-self-service-management.md) umožňuje vlastníkům skupin spravovat vlastní skupiny, aniž by museli být přiřazeni k roli správce. Uživatelé můžou také vytvářet a spravovat skupiny Office 365, aniž by se museli spoléhat na to, že správci budou zpracovávat své požadavky, a automaticky vyprší platnost nevyužívaných skupin.  [Správa nároků Azure AD](../../active-directory/governance/entitlement-management-overview.md) dále umožňuje delegování a viditelnost s komplexními pracovními postupy žádostí o přístup a automatickým vypršením platnosti.  Můžete delegovat na nesprávcům možnost konfigurovat vlastní balíčky přístupu pro skupiny, týmy, aplikace a weby SharePointu Online, které vlastní, s vlastními zásadami, které jsou nutné ke schválení přístupu, včetně konfigurace zaměstnanců manažeři a obchodní partneři sponzoři jako schvalovatelé.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Implementace kontrol přístupu Azure AD
 
-Pomocí kontrol [přístupu ke službě Azure AD](../../active-directory/governance/access-reviews-overview.md)můžete spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazení privilegovaných rolí, abyste měli jistotu, že udržujete standard zabezpečení, který uživatelům nedává přístup po delší dobu, kdy ne. potřebujete.
+Pomocí kontrol [přístupu ke službě Azure AD](../../active-directory/governance/access-reviews-overview.md)můžete spravovat přístup k balíčku a členství ve skupinách, přístup k podnikovým aplikacím a přiřazení privilegovaných rolí, abyste měli jistotu, že udržujete standard zabezpečení.  Vlastníci, vlastníci a kontroloři a jiní kontroloři mají jistotu, že si uživatelé neuchovávají přístup po delší dobu, kdy je už nepotřebují.
 
 ## <a name="summary"></a>Souhrn
 

@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: e03c68854d9150c25019fe198fe855a011750844
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b7015b3e861aea3a33ea26d6a8c1a31f7f17b8c4
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566555"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063078"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování jednoho databázového prostředku v Azure SQL Database
 
-Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky úložiště dostupné pro jednu databázi v zřízené výpočetní úrovni. Alternativně [výpočetní úroveň bez serveru (Preview)](sql-database-serverless.md) poskytuje výpočetní automatické škálování a počet faktur za sekundu pro využité výpočetní prostředky.
+Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky úložiště dostupné pro Azure SQL Database v zřízené výpočetní úrovni. Alternativně [výpočetní úroveň bez serveru (Preview)](sql-database-serverless.md) poskytuje výpočetní automatické škálování a počet faktur za sekundu pro využité výpočetní prostředky.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -36,22 +36,22 @@ Následující video ukazuje dynamicky se měnící úroveň služby a výpočet
 >
 
 > [!IMPORTANT]
-> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Dopad změny úrovně služby nebo změna velikosti výpočetní velikosti
 
-Změna úrovně služby nebo výpočetní velikosti izolované databáze zahrnuje hlavně službu, která provádí následující kroky:
+Změna úrovně služby nebo výpočetní velikosti hlavně zahrnuje službu, která provádí následující kroky:
 
 1. Vytvořit novou výpočetní instanci pro databázi  
 
-    Vytvoří se nová instance COMPUTE pro databázi s požadovanou úrovní služeb a výpočetní velikostí. V případě některých kombinací úrovně služeb a výpočtů velikosti se musí replika databáze vytvořit v nové výpočetní instanci, která zahrnuje kopírování dat a může silně ovlivnit celkovou latenci. Bez ohledu na to, že databáze zůstane v průběhu tohoto kroku online, připojení budou dál směrována do databáze v původní výpočetní instanci.
+    Vytvoří se nová instance COMPUTE s požadovanou úrovní služeb a výpočetní velikostí. V případě některých kombinací úrovně služeb a výpočtů velikosti se musí replika databáze vytvořit v nové výpočetní instanci, která zahrnuje kopírování dat a může silně ovlivnit celkovou latenci. Bez ohledu na to, že databáze zůstane v průběhu tohoto kroku online, připojení budou dál směrována do databáze v původní výpočetní instanci.
 
 2. Přepnout směrování připojení na novou výpočetní instanci
 
     Existující připojení k databázi v původní výpočetní instanci jsou vyhozena. Všechna nová připojení jsou navázána na databázi v nové instanci Compute. V případě některých kombinací úrovně služby a velikosti výpočetních souborů jsou soubory databáze odpojeny a připojeny během přepínače.  Přepínač může mít za následek krátké přerušení služby, když databáze není k dispozici, obvykle po dobu kratší než 30 sekund a často jenom pár sekund. Pokud při vyřazení připojení dojde k nespuštěným transakcím, může trvat delší dobu trvání tohoto kroku, aby bylo možné obnovit přerušené transakce. [Urychlené obnovení databáze](sql-database-accelerated-database-recovery.md) může snížit dopad přerušení dlouho probíhajících transakcí.
 
 > [!IMPORTANT]
-> Během žádného kroku pracovního postupu nebudou ztracena žádná data.
+> Během žádného kroku pracovního postupu nebudou ztracena žádná data. Ujistěte se, že jste implementovali nějakou [logiku opakování](sql-database-connectivity-issues.md) v aplikacích a součástech, které při změně úrovně služby používají Azure SQL Database.
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Latence změny úrovně služby nebo změna velikosti výpočetní velikosti
 
@@ -59,18 +59,18 @@ Odhadovaná latence změny úrovně služby nebo změna velikosti výpočetní v
 
 |Úroveň služby|Jednoduchá databáze úrovně Basic,</br>Standard (S0-S1)|Elastický fond úrovně Basic,</br>Standard (S2-S12), </br>Hyperškálovatelný </br>Pro obecné účely izolovanou databázi nebo elastický fond|Izolovaná databáze nebo elastický fond úrovně Premium nebo Pro důležité obchodní informace|
 |:---|:---|:---|:---|
-|**Basic Single Database</br> Standard (S0-S1)**|&bull;&nbsp;Konstantní latence v čase nezávisle na využitém prostoru</br>&bull;&nbsp;Obvykle méně než 5 minut|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|
-|**Základní elastický fond </br>, Standard (S2-S12) </br>, škálovatelná </br>, pro obecné účely izolovaná databáze nebo elastický fond**|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Konstantní latence v čase nezávisle na využitém prostoru</br>&bull;&nbsp;Obvykle méně než 5 minut|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|
-|**Izolovaná databáze nebo elastický fond úrovně Premium nebo Pro důležité obchodní informace**|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|
+|**Základní samostatná databáze</br> Standard (S0-S1)**|&bull; &nbsp;konstantní časovou latenci nezávisle na využitém prostoru</br>&bull; &nbsp;obvykle, méně než 5 minut|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|
+|**Základní elastický fond, </br>Standard (S2-S12), </br>AutoScale, </br>Pro obecné účely jedna databáze nebo elastický fond**|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|&bull; &nbsp;konstantní časovou latenci nezávisle na využitém prostoru</br>&bull; &nbsp;obvykle, méně než 5 minut|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|
+|**Izolovaná databáze nebo elastický fond úrovně Premium nebo Pro důležité obchodní informace**|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|
 
 > [!TIP]
-> Informace o monitorování probíhajících operací najdete v těchto tématech: [Správa operací pomocí REST API SQL](https://docs.microsoft.com/rest/api/sql/operations/list), [Správa operací pomocí](/cli/azure/sql/db/op)rozhraní příkazového řádku, [monitorování operací pomocí T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a těchto dvou příkazů PowerShellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Informace o monitorování probíhajících operací najdete v tématu [: Správa operací pomocí příkazu SQL REST API](https://docs.microsoft.com/rest/api/sql/operations/list), [Správa operací pomocí](/cli/azure/sql/db/op)rozhraní příkazového řádku a [monitorování operací pomocí T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a těchto dvou příkazů PowerShellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [ Stop – AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Rušení změn úrovně služeb nebo operací přeškálování výpočetních prostředků
 
 Operaci změny měřítka úrovně služby nebo operace přeškálování výpočetních prostředků je možné zrušit.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure
 
 V okně Přehled databáze přejděte na **oznámení** a klikněte na dlaždici, která indikuje, že se jedná o probíhající operaci:
 
@@ -121,27 +121,27 @@ Fakturuje se vám každá hodina existence databáze na nejvyšší úrovni slu�
 - Cena za úložiště pro izolovanou databázi je součtem částek úložiště dat a protokolů úložiště vynásobené jednotkovou cenou za jednotku služby. Cena databáze TempDB je zahrnutá v ceně vCore. Podrobnosti o ceně dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 
-- Cena DTU pro jednu databázi zahrnuje určité množství úložiště bez dalších poplatků. Dodatečné úložiště nad rámec zahrnuté částky se dá zřídit za dodatečné náklady až do limitu maximální velikosti v přírůstcích po 250 GB až do 1 TB a potom v přírůstcích po 256 GB po 1 TB. Zahrnuté množství úložišť a omezení maximální velikosti najdete v [tématu samostatná databáze: Velikosti úložiště a velikosti](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)výpočtů.
-- Dodatečné úložiště pro izolovanou databázi lze zřídit zvýšením jeho maximální velikosti pomocí Azure Portal, [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), PowerShellu [](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
+- Cena DTU pro jednu databázi zahrnuje určité množství úložiště bez dalších poplatků. Dodatečné úložiště nad rámec zahrnuté částky se dá zřídit za dodatečné náklady až do limitu maximální velikosti v přírůstcích po 250 GB až do 1 TB a potom v přírůstcích po 256 GB po 1 TB. Zahrnuté množství úložišť a omezení maximální velikosti najdete v tématu izolovaná [databáze: velikosti úložiště a výpočetní velikosti](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
+- Dodatečné úložiště pro izolovanou databázi lze zřídit zvýšením jeho maximální velikosti pomocí Azure Portal, [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
 - Cena za dodatečné úložiště pro izolovanou databázi je dodatečná hodnota úložiště vynásobená dodatečnou jednotkou ceny za službu Storage úrovně služby. Podrobnosti o ceně dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>Omezení P11 a P15, pokud je maximální velikost větší než 1 TB
 
-Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium, kromě těchto: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správa USA – střed. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB. Následující hlediska a omezení se vztahují na databáze P11 a P15 s maximální velikostí větší než 1 TB:
+Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB. Následující hlediska a omezení se vztahují na databáze P11 a P15 s maximální velikostí větší než 1 TB:
 
 - Pokud byla maximální velikost databáze P11 nebo P15 nastavena na hodnotu větší než 1 TB, pak ji lze obnovit nebo zkopírovat pouze do databáze P11 nebo P15.  V důsledku toho může být databáze znovu škálovaná na jinou výpočetní velikost, a to za předpokladu, že množství místa přidělené v době operace změny škálování nepřekračuje omezení maximální velikosti nové výpočetní velikosti.
 - Scénáře aktivní geografické replikace:
-  - Nastavuje se vztah geografické replikace: Pokud je primární databáze P11 nebo P15, sekundární (y) musí být také P11 nebo P15; nižší výpočetní velikost je odmítnuta jako sekundární, protože nepodporují více než 1 TB.
-  - Probíhá upgrade primární databáze v relaci geografické replikace: Změna maximální velikosti na více než 1 TB u primární databáze spustí stejnou změnu v sekundární databázi. Aby se změny na primárním počítači projevily, musí být oba upgrady úspěšné. Omezení oblastí pro možnost použít více než 1 TB. Pokud je sekundární v oblasti, která nepodporuje více než 1 TB, primární verze se neupgraduje.
+  - Nastavení vztahu geografické replikace: Pokud je primární databáze P11 nebo P15, sekundární (y) musí být také P11 nebo P15; nižší výpočetní velikost je odmítnuta jako sekundární, protože nepodporují více než 1 TB.
+  - Upgrade primární databáze v relaci geografické replikace: Změna maximální velikosti na více než 1 TB v primární databázi spustí stejnou změnu v sekundární databázi. Aby se změny na primárním počítači projevily, musí být oba upgrady úspěšné. Omezení oblastí pro možnost použít více než 1 TB. Pokud je sekundární v oblasti, která nepodporuje více než 1 TB, primární verze se neupgraduje.
 - Používání služby Import/export pro načítání databází P11/P15 s více než 1 TB se nepodporuje. K [importu](sql-database-import.md) a [exportu](sql-database-export.md) dat použijte SqlPackage. exe.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Celkové omezení prostředků najdete v tématu [SQL Database omezení prostředků na základě Vcore – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [SQL Database omezení prostředků na základě DTU – elastické fondy](sql-database-dtu-resource-limits-single-databases.md).

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: b510b697fbf8b53e9e55e96f60b27967f90893f1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 3eec2d208e97cc33c318e4a45ae85074fbc2583c
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104623"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101619"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>Zakázání zásad sítě pro privátní koncové body
 
@@ -20,7 +20,7 @@ Zásady sítě, jako jsou skupiny zabezpečení sítě (NSG), nejsou podporován
  
 Když použijete portál k vytvoření privátního koncového bodu, toto nastavení se automaticky zakáže jako součást procesu vytvoření. Nasazení pomocí jiných klientů vyžaduje další krok ke změně tohoto nastavení. Nastavení můžete zakázat pomocí služby Cloud Shell z Azure Portal nebo místní instalace Azure PowerShell, rozhraní příkazového řádku Azure nebo pomocí šablon Azure Resource Manager.  
  
-Následující příklady popisují, jak `PrivateEndpointNetworkPolicies` zakázat virtuální síť s názvem *myVirtualNetwork* s *výchozí* podsítí hostovanou ve skupině prostředků s názvem *myResourceGroup*.
+Následující příklady popisují, jak zakázat `PrivateEndpointNetworkPolicies` pro virtuální síť s názvem *myVirtualNetwork* s *výchozí* podsítí hostovanou ve skupině prostředků s názvem *myResourceGroup*.
 
 ## <a name="using-azure-powershell"></a>Použití Azure Powershell
 Tato část popisuje, jak zakázat zásady privátního koncového bodu podsítě pomocí Azure PowerShell.
@@ -30,9 +30,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
   -ResourceGroupName "myResourceGroup"  
    
-($virtualNetwork ` 
-  | Select -ExpandProperty subnets ` 
-  | Where-Object  {$_.Name -eq 'default'} ).PrivateEndpointNetworkPolicies = "Disabled" 
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq 'default'} ).PrivateEndpointNetworkPolicies = "Disabled" 
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
@@ -71,6 +69,6 @@ Tato část popisuje, jak zakázat zásady privátního koncového bodu podsít�
           } 
 } 
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [privátním koncovém bodu Azure](private-endpoint-overview.md)
  

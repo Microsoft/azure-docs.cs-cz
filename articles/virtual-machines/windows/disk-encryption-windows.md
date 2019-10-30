@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 948712b684d1cd1b072862b7253d745f89b0cc56
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b4795eeb24d1d0ac373a700a6b60b8facec0e37d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244990"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064011"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -26,15 +26,12 @@ Diskové šifrování můžete použít jenom pro virtuální počítače s [pod
 - [Zásady skupiny požadavky](disk-encryption-overview.md#group-policy-requirements)
 - [Požadavky na úložiště šifrovacího klíče](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-
-
 >[!IMPORTANT]
 > - Pokud jste předtím používali Azure Disk Encryption se službou Azure AD k šifrování virtuálního počítače, musíte tuto možnost použít k zašifrování virtuálního počítače. Podrobnosti najdete v tématu [Azure Disk Encryption s Azure AD (předchozí verze)](disk-encryption-overview-aad.md) . 
 >
 > - Předtím, než se disky zašifrují, byste měli [udělat snímek](snapshot-copy-managed-disk.md) nebo vytvořit zálohu. Zálohování zajišťuje možnost obnovení, pokud během šifrování dojde k neočekávané chybě. Virtuální počítače se spravovanými disky vyžadují zálohování před tím, než dojde k šifrování. Po provedení zálohy můžete použít [rutinu Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) k šifrování spravovaných disků zadáním parametru-skipVmBackup. Další informace o zálohování a obnovení šifrovaných virtuálních počítačů najdete v tématu [zálohování a obnovení šifrovaného virtuálního počítače Azure](../../backup/backup-azure-vms-encryption.md). 
 >
 > - Šifrování nebo zakázání šifrování může způsobit, že se virtuální počítač restartuje.
-
 
 ## <a name="install-tools-and-connect-to-azure"></a>Nainstalovat nástroje a připojit se k Azure
 
@@ -139,7 +136,7 @@ V následující tabulce jsou uvedeny parametry šablon Správce prostředků pr
 | vmName | Název virtuálního počítače, pro který se má spustit operace šifrování |
 | keyVaultName | Název trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazu rozhraní příkazového řádku Azure CLI `az keyvault list --resource-group "MyKeyVaultResourceGroup"`.|
 | keyVaultResourceGroup | Název skupiny prostředků, která obsahuje Trezor klíčů|
-|  keyEncryptionKeyURL | Adresa URL šifrovacího klíče klíče ve formátu https://@no__t -0keyvault-name&gt;.vault.azure.net/Key/&lt;key-Name @ no__t-3. Pokud nechcete používat KEK, nechte toto pole prázdné. |
+|  keyEncryptionKeyURL | Adresa URL šifrovacího klíče klíče ve formátu https://&lt;název trezoru klíčů&gt;. vault.azure.net/key/&lt;&gt;. Pokud nechcete používat KEK, nechte toto pole prázdné. |
 | volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_a _vše_. 
 | forceUpdateTag | Pokaždé, když je potřeba vynutit spuštění operace, předat jedinečnou hodnotu, třeba identifikátor GUID. |
 | resizeOSDisk | Měl by se změnit velikost oddílu operačního systému tak, aby zabírala plný virtuální pevný disk s operačním systémem, než se rozdělí systémový svazek. |
@@ -244,7 +241,8 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 Azure Disk Encryption nefunguje v následujících scénářích, funkcích a technologiích:
 
 - Šifrování virtuálních počítačů nebo virtuálních počítačů na úrovni Basic vytvořených prostřednictvím metody vytváření virtuálních počítačů
-- Šifrování virtuálních počítačů s Windows nakonfigurovaných s využitím softwarových systémů RAID.
+- Šifrování virtuálních počítačů nakonfigurovaných s využitím softwarových systémů RAID.
+- Šifrování virtuálních počítačů nakonfigurovaných s využitím Prostory úložiště s přímým přístupem (S2D) nebo verzí Windows serveru před 2016 nakonfigurovaným pomocí prostorů úložiště Windows.
 - Integrace s místním systémem správy klíčů.
 - Soubory Azure (sdílený systém souborů).
 - Systém souborů NFS (Network File System).

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 60127a8aebaf45969ba78a65676093210ea6de78
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: e53b139f2820fe48f72121e3b216fda6b0a138ed
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804216"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101584"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
@@ -34,6 +34,8 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 
 [BT](https://www.globalservices.bt.com/en/aboutus/news-press/bt-named-one-of-the-first-global-managed-service-providers-for-a-new-microsoft-azure-networking-virtual-wan-services/)
 
+[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)
+
 [Data dimenze](https://www.dimensiondata.com/)
 
 [Equinix](https://www.equinix.com/)
@@ -48,13 +50,21 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 
 [KINX](https://www.kinx.net/service/cloud/?lang=en)
 
+[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)
+
 [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
+
+[OmniClouds](https://omniclouds.com/services/)
 
 [Cloud Services v jádru]( https://www.oncore.cloud/services/ue-for-expressroute/)
 
 [Orixcom]( https://www.orixcom.com/cloud-solutions/)
 
+[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)
+
 [Tata komunikace](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)
+
+[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
 
 [Vandis](https://www.vandis.com/microsoft-azure-practice/)
 

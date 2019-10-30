@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bdf275bbafa9c46cfc4577ac2843da0be74c7ef
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: af0a826c499790c86a20ea7061075a6c3e66b3a4
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477270"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062588"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Přidání aplikace Galerie do vaší organizace Azure AD
 
@@ -34,27 +34,30 @@ Azure Active Directory (Azure AD) obsahuje galerii obsahující tisíce předem 
 
 1. V podokně **Azure Active Directory** vyberte možnost **podnikové aplikace**.
 
-    ![Otevřené podnikové aplikace](media/add-application-portal/open-enterprise-apps.png)
+    ![Otevřené podnikové aplikace](media/add-gallery-app/open-enterprise-apps.png)
 
-1. Vyberte **Nová aplikace**.
 
-    ![Nová aplikace](media/add-application-portal/new-application.png)
+3. Chcete-li přidat aplikaci Galerie do svého tenanta, vyberte možnost **Nová aplikace**.
 
-1. V části **Přidat z Galerie**do vyhledávacího pole zadejte název aplikace, kterou chcete přidat. 
+    ![Vyberte Nová aplikace a přidejte do svého tenanta aplikaci Galerie.](media/add-gallery-app/new-application.png)
 
-    ![Hledání podle názvu nebo kategorie](media/add-application-portal/categories.png)
+ 4. Přepněte na nové prostředí verze Preview: v banneru v horní části **stránky přidat aplikaci**vyberte odkaz, který uvádí, jestli **chcete vyzkoušet novou a vylepšenou galerii aplikací kliknutím sem**.
 
-1. Vyberte aplikaci z výsledků.
+5. Otevře se podokno **Procházet galerii Azure AD** a zobrazí dlaždice pro cloudové platformy, místní aplikace a doporučené aplikace. Všimněte si, že aplikace uvedené v části **vybrané aplikace** obsahují ikony, které označují, jestli podporují federované jednotné přihlašování (SSO) a zřizování.
 
-1. Volitelné Ve formuláři specifickém pro aplikaci můžete upravit název aplikace tak, aby odpovídala potřebám vaší organizace.
+    ![Hledání aplikace podle názvu nebo kategorie](media/add-gallery-app/browse-gallery.png)
 
-1. Vyberte **Přidat**. Otevře se  Stránka s přehledem aplikace.
+6. Přejděte do Galerie aplikace, kterou chcete přidat, nebo vyhledejte aplikaci zadáním jejího názvu do vyhledávacího pole. Pak vyberte aplikaci z výsledků. Volitelné Ve formuláři můžete upravit název aplikace tak, aby odpovídal potřebám vaší organizace.
+
+    ![Ukazuje, jak přidat aplikaci z galerie.](media/add-gallery-app/create-application.png)
+
+7. Vyberte **Create** (Vytvořit). Zobrazí se stránka Začínáme s možnostmi konfigurace aplikace pro vaši organizaci.
 
 ## <a name="configure-user-sign-in-properties"></a>Konfigurace vlastností přihlašování uživatelů
 
 1. Výběrem **vlastnosti** otevřete podokno vlastnosti pro úpravy.
 
-    ![Upravit podokno vlastností](media/add-application-portal/edit-properties.png)
+    ![Upravit podokno vlastností](media/add-gallery-app/edit-properties.png)
 
 1. Nastavte následující možnosti, chcete-li určit, jak se uživatelé, kteří jsou přiřazeni nebo nepřiřazeni k aplikaci, mohou přihlásit k aplikaci a uživatel může aplikaci zobrazit na přístupovém panelu.
 
@@ -94,11 +97,11 @@ Azure Active Directory (Azure AD) obsahuje galerii obsahující tisíce předem 
 
 1. Pokud chcete použít vlastní logo, vytvořte logo 215 215 pixelů a uložte ho ve formátu PNG. Pak přejděte k logu a nahrajte ho.
 
-    ![Změna loga](media/add-application-portal/change-logo.png)
+    ![Změna loga](media/add-gallery-app/change-logo.png)
 
 1. Až budete hotovi, vyberte **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste přidali aplikaci do vaší organizace Azure AD, [Vyberte metodu jednotného přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method) , kterou chcete použít, a podívejte se na příslušný článek níže:
 

@@ -11,21 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5152a2d65ea3921f0fef7f3a020bcea80d1769
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: d004d1183c9f5c1aec2dae7ab2d638528f164cd9
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421255"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062504"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Jednotné přihlašování SAML pro místní aplikace s proxy aplikací
 
-Můžete poskytnout jednotné přihlašování (SSO) k místním aplikacím, které jsou zabezpečené pomocí ověřování SAML, a poskytovat vzdálený přístup k těmto aplikacím prostřednictvím proxy aplikací. Při jednotném přihlašování SAML se Azure Active Directory (Azure AD) ověřuje v aplikaci pomocí účtu Azure AD uživatele. Azure AD komunikuje informace přihlašování k aplikaci pomocí připojení protokolu. Uživatele můžete také namapovat na konkrétní aplikační role na základě pravidel, která definujete v deklaracích SAML. Povolením proxy aplikací kromě jednotného přihlašování SAML budou mít uživatelé externí přístup k aplikaci a bezproblémové možnosti jednotného přihlašování.
+Můžete poskytnout jednotné přihlašování (SSO) k místním aplikacím, které jsou zabezpečené pomocí ověřování SAML, a poskytovat vzdálený přístup k těmto aplikacím prostřednictvím proxy aplikací. Při jednotném přihlašování SAML se Azure Active Directory (Azure AD) ověřuje v aplikaci pomocí účtu Azure AD uživatele. Azure AD komunikuje s přihlašovacími informacemi k aplikaci prostřednictvím protokolu připojení. Uživatele můžete také namapovat na konkrétní aplikační role na základě pravidel, která definujete v deklaracích SAML. Povolením proxy aplikací kromě jednotného přihlašování SAML budou mít uživatelé externí přístup k aplikaci a bezproblémové možnosti jednotného přihlašování.
 
 Aplikace musí být schopné využívat tokeny SAML vydané **Azure Active Directory**. Tato konfigurace se nevztahuje na aplikace, které používají místní zprostředkovatele identity. V těchto scénářích doporučujeme zkontrolovat [prostředky pro migraci aplikací do Azure AD](migration-resources.md).
 
@@ -41,7 +41,7 @@ Níže uvedené diagramy protokolu popisují posloupnost jednotného přihlašov
 
 1. V Azure Portal vyberte **Azure Active Directory > podnikové aplikace** a vyberte **Nová aplikace**.
 
-2. V části **Přidat vlastní aplikaci**vyberte **aplikaci mimo galerii**.
+2. V části místní **aplikace** vyberte **Přidat místní aplikaci**.
 
 3. Zadejte zobrazovaný název pro novou aplikaci a pak vyberte **Přidat**.
 
@@ -64,7 +64,7 @@ Před poskytnutím jednotného přihlašování pro místní aplikace je potřeb
    > [!NOTE]
    > Osvědčeným postupem je použití vlastních domén, kdykoli je to možné pro optimalizované uživatelské prostředí. Přečtěte si další informace o [práci s vlastními doménami v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md).
 
-2. Jako metodu předběžného **ověření** pro aplikaci vyberte **Azure Active Directory** .
+2. Jako metodu **předběžného ověření** pro aplikaci vyberte **Azure Active Directory** .
 
 3. Zkopírujte **externí adresu URL** pro aplikaci. Tuto adresu URL budete potřebovat k dokončení konfigurace SAML.
 
@@ -74,9 +74,9 @@ Před poskytnutím jednotného přihlašování pro místní aplikace je potřeb
 
 1. Když je aplikace v Azure Portal stále otevřená, vyberte **jednotné přihlašování**. 
 
-2. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete záhlaví **základní konfigurace SAML** a vyberte jeho ikonu pro **Úpravy** (tužka). **Externí adresa URL** , kterou jste nakonfigurovali v proxy aplikaci, automaticky vyplní pole **identifikátor**, **Adresa URL odpovědi**a **Adresa URL** pro odhlášení. Tyto adresy URL neupravujte, protože jsou potřebné k tomu, aby proxy aplikací fungovalo správně.
+2. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete záhlaví **základní konfigurace SAML** a vyberte jeho ikonu pro **Úpravy** (tužka). **Externí adresa URL** , kterou jste nakonfigurovali v proxy aplikaci, automaticky vyplní pole **identifikátor**, **Adresa URL odpovědi**a **Adresa URL pro odhlášení** . Tyto adresy URL neupravujte, protože jsou potřebné k tomu, aby proxy aplikací fungovalo správně.
 
-3. Upravte **adresu URL odpovědi** nakonfigurovanou dříve, aby její doména byla dosažitelná proxy aplikací. Pokud je `https://contosotravel-f128.msappproxy.net` například vaše **externí adresa URL** a `https://contosotravel.com/acs`původní **Adresa URL odpovědi** , bude nutné aktualizovat původní **adresu URL odpovědi** na `https://contosotravel-f128.msappproxy.net/acs`. 
+3. Upravte **adresu URL odpovědi** nakonfigurovanou dříve, aby její doména byla dosažitelná proxy aplikací. Pokud se například vaše **externí adresa url** `https://contosotravel-f128.msappproxy.net` a původní **adresa url odpovědi** byla `https://contosotravel.com/acs`, bude nutné aktualizovat původní **adresu URL odpovědi** na `https://contosotravel-f128.msappproxy.net/acs`. 
 
     ![Zadejte základní konfigurační data SAML.](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
@@ -92,12 +92,12 @@ Před poskytnutím jednotného přihlašování pro místní aplikace je potřeb
     
 ## <a name="test-your-app"></a>Testování aplikace
 
-Po dokončení těchto kroků, by vaše aplikace do provozu. Testování aplikace:
+Po dokončení všech těchto kroků by vaše aplikace měla být spuštěná. Testování aplikace:
 
 1. Otevřete prohlížeč a přejděte na **externí adresu URL** , kterou jste vytvořili při publikování aplikace. 
-1. Přihlaste se pomocí testovacího účtu, který jste přiřadili do aplikace. Měli byste být schopni načíst aplikaci a mít v aplikaci jednotné přihlašování.
+1. Přihlaste se pomocí testovacího účtu, který jste přiřadili k aplikaci. Měli byste být schopni načíst aplikaci a mít v aplikaci jednotné přihlašování.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Jak Proxy aplikací Azure AD poskytuje jednotné přihlašování?](application-proxy-single-sign-on.md)
-- [Poradce při potížích s Proxy aplikací](application-proxy-troubleshoot.md)
+- [Jak Azure Proxy aplikací služby AD poskytuje jednotné přihlašování?](application-proxy-single-sign-on.md)
+- [Řešení potíží s proxy aplikací](application-proxy-troubleshoot.md)

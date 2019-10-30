@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 610e0088fe97bdda1dce7f7391530c5128428b29
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529025"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73096960"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
 
@@ -102,6 +102,8 @@ Pokud nasazujete omezená zařízení s omezenou dostupnou pamětí, můžete na
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Neoptimalizujte pro výkon u omezených zařízení.
 
 Ve výchozím nastavení je centrum IoT Edge optimalizované pro výkon, takže se pokusí přidělit velké bloky paměti. Tato konfigurace může způsobit problémy s stabilitou na menších zařízeních, jako je třeba malin. PI. Pokud nasazujete zařízení s omezenými prostředky, možná budete chtít nastavit proměnnou prostředí **OptimizeForPerformance** na **hodnotu false** v centru IoT Edge. 
+
+Pokud je **OptimizeForPerformance** nastaveno na **hodnotu true**, hlavička protokolu MQTT používá PooledByteBufferAllocator, který má lepší výkon, ale přiděluje více paměti. Alokátor nefunguje dobře na 32 bitových operačních systémech nebo na zařízeních s nedostatkem paměti. Kromě toho, pokud je optimalizován pro výkon, RocksDb přiděluje více paměti pro svou roli jako místní poskytovatel úložiště. 
 
 Další informace najdete v tématu [problémy se stabilitou na omezených zařízeních prostředků](troubleshoot.md#stability-issues-on-resource-constrained-devices).
 

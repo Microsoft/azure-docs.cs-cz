@@ -1,62 +1,70 @@
 ---
 title: Referenční dokumentace pro vývojáře v jazyce Java pro Azure Functions | Microsoft Docs
 description: Naučte se vyvíjet funkce pomocí Java.
-services: functions
-documentationcenter: na
-author: rloutlaw
-manager: justhe
+author: ggailey777
+manager: gwallace
 keywords: Azure Functions, Functions, zpracování událostí, Webhooky, dynamická výpočetní prostředí, architektura bez serveru, Java
 ms.service: azure-functions
-ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: routlaw
-ms.openlocfilehash: e3ab825fbf5b5dba74b67eaa894a38c74ed0b62a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: glenga
+ms.openlocfilehash: fa811c6bd89bf1c8ce9e0b9b4a7cebe9397aaf7f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299383"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062138"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
 Modul runtime Azure Functions podporuje [jazyk Java se 8 LTS (Zulu 8.31.0.2-JRE 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Tato příručka obsahuje informace o složitými rozhraními psaní Azure Functions pomocí jazyka Java.
 
-Vzhledem k tomu, že se jedná o jiné jazyky, Function App může mít jednu nebo více funkcí. Funkce jazyka Java je `public` metoda upravená s poznámkou. `@FunctionName` Tato metoda definuje položku pro funkci jazyka Java a musí být v určitém balíčku jedinečná. Jeden Function App napsaný v jazyce Java může mít více tříd s více veřejnými metodami `@FunctionName`, které jsou opatřeny poznámkami.
+Vzhledem k tomu, že se jedná o jiné jazyky, Function App může mít jednu nebo více funkcí. Funkce jazyka Java je `public` metoda dekorovaná pomocí `@FunctionName`poznámek. Tato metoda definuje položku pro funkci jazyka Java a musí být v určitém balíčku jedinečná. Jeden Function App napsaný v jazyce Java může mít více tříd s více veřejnými metodami popsanými v `@FunctionName`.
 
 V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). Měli byste také dokončit rychlé zprovoznění funkcí a vytvořit svou první funkci pomocí [Visual Studio Code](functions-create-first-function-vs-code.md) nebo [Maven](functions-create-first-java-maven.md).
 
 ## <a name="programming-model"></a>Programovací model 
 
-Koncepty triggerů [a vazeb](functions-triggers-bindings.md) jsou zásadní pro Azure Functions. Triggery spustí provádění kódu. Vazby poskytují způsob, jak předávat data a vracet data z funkce, aniž byste museli psát vlastní přístup k datům.
+Koncepty [triggerů a vazeb](functions-triggers-bindings.md) jsou zásadní pro Azure Functions. Triggery spustí provádění kódu. Vazby poskytují způsob, jak předávat data a vracet data z funkce, aniž byste museli psát vlastní přístup k datům.
 
-## <a name="project-scaffolding"></a>Generování uživatelského rozhraní pro projekt
+## <a name="create-java-functions"></a>Vytváření funkcí jazyka Java
 
-Nejjednodušší způsob, jak vytvořit generátor projektu Azure Functions založeného na jazyce Java `Apache Maven` , je použití archetypes. Můžete také vyhledat Průvodce generování projektu na Visual Studio Code a sady nástrojů Azure pro zatmění a IntelliJ.
+Aby bylo snazší vytvářet funkce jazyka Java, existují nástroje založené na Maven a archetypes, které používají předdefinované šablony Java, které vám pomohou vytvořit projekty s určitou triggerem funkce.    
 
-V současné době jsou k dispozici dvě Azure Functions archetypes pro Maven:
+### <a name="maven-based-tooling"></a>Nástroje založené na Maven
 
-### <a name="java-archetype"></a>Java Archetype
+Následující vývojářské prostředí má nástroje, které umožňují vytvářet projekty funkcí jazyka Java: 
 
-Tento Archetype se zveřejňuje v rámci následujících identifikátorů ID skupiny a artifactId [com. Microsoft. Azure: Azure-Functions-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/).
++ [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
++ [Eclipse](functions-create-maven-eclipse.md)
++ [IntelliJ](functions-create-maven-intellij.md)
 
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
-```
+Výše uvedené odkazy na články ukazují, jak vytvořit své první funkce pomocí integrovaného vývojového prostředí (IDE) podle vašeho výběru. 
 
-### <a name="kotlin-archetype-preview"></a>Kotlin Archetype (Preview)
+### <a name="project-scaffolding"></a>Generování uživatelského rozhraní pro projekt
 
-Tento Archetype se zveřejňuje v rámci následujících identifikátorů ID skupiny a artifactId [com. Microsoft. Azure: Azure-Functions-Kotlin-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/).
+Pokud dáváte přednost vývoji příkazového řádku od terminálu, nejjednodušší způsob, jak vygenerovat projekty funkcí založených na jazyce Java, je použít `Apache Maven` archetypes. V současné době existují dvě funkce archetypes pro Maven:
 
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-kotlin-archetype
-```
++ **Java Archetype**: Publikováno v rámci následujících identifikátorů ID skupiny a artifactId [com. Microsoft. Azure: Azure-Functions-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/):
+
+    ```
+    mvn archetype:generate \
+        -DarchetypeGroupId=com.microsoft.azure \
+        -DarchetypeArtifactId=azure-functions-archetype 
+    ```
+
+    Pokud chcete začít s tímto Archetype, přečtěte si [rychlý Start Java](functions-create-first-java-maven.md). 
+
++ **Kotlin Archetype (Preview)** Publikováno v následujících identifikátorech ID skupiny a artifactId [com. Microsoft. Azure: Azure-Functions-Kotlin-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/):
+
+    ```
+    mvn archetype:generate \
+        -DarchetypeGroupId=com.microsoft.azure \
+        -DarchetypeArtifactId=azure-functions-kotlin-archetype
+    ```
 
 Zdrojový kód těchto archetypes najdete v [úložišti GitHub Azure Maven archetypes](https://github.com/microsoft/azure-maven-archetypes).
+
 
 ## <a name="folder-structure"></a>Struktura složek
 
@@ -88,7 +96,7 @@ _* Projekt Kotlin vypadá velmi podobně, protože je stále Maven_
 
 Ke konfiguraci aplikace Function App můžete použít sdílený soubor [Host. JSON](functions-host-json.md) . Každá funkce má svůj vlastní soubor kódu (. Java) a konfigurační soubor vazby (Function. JSON).
 
-Do projektu lze umístit více než jednu funkci. Vyhněte se vkládání funkcí do samostatných jar. `FunctionApp` V cílovém adresáři je to, co se nasadí do vaší aplikace Function App v Azure.
+Do projektu lze umístit více než jednu funkci. Vyhněte se vkládání funkcí do samostatných jar. `FunctionApp` v cílovém adresáři je to, co se v Azure nasadí do vaší aplikace Function App.
 
 ## <a name="triggers-and-annotations"></a>Aktivační události a poznámky
 
@@ -111,7 +119,7 @@ public class Function {
 }
 ```
 
-Tady je vygenerovaný odpovídající `function.json` modul [Azure-Functions-Maven-plugin](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin):
+Tady je vygenerovaný odpovídající `function.json` modulem [Azure-Functions-Maven-plugin](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin):
 
 ```json
 {
@@ -153,30 +161,30 @@ Funkce umožňují přizpůsobit virtuální počítač Java (JVM), který se po
 
 Další argumenty můžete zadat v nastavení aplikace s názvem `JAVA_OPTS`. Do aplikace Function App nasazenou do Azure můžete přidat nastavení aplikace v Azure Portal nebo v rozhraní příkazového řádku Azure.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
-V [Azure Portal](https://portal.azure.com)přidejte `JAVA_OPTS` nastavení pomocí [karty nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) .
+V [Azure Portal](https://portal.azure.com)přidejte nastavení `JAVA_OPTS` pomocí [karty nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) .
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) můžete nastavit `JAVA_OPTS`, jak je uvedeno v následujícím příkladu:
+Pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) můžete nastavit `JAVA_OPTS`, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <APP_NAME> \
 --resource-group <RESOURCE_GROUP> \
 --settings "JAVA_OPTS=-Djava.awt.headless=true"
 ```
-Tento příklad povolí bezobslužný režim. Nahraďte `<APP_NAME>` názvem vaší aplikace Function App a `<RESOURCE_GROUP>` skupinou prostředků.
+Tento příklad povolí bezobslužný režim. Nahraďte `<APP_NAME>` názvem vaší aplikace Function App a `<RESOURCE_GROUP>` se skupinou prostředků.
 
 > [!WARNING]  
-> V [plánu spotřeby](functions-scale.md#consumption-plan)je nutné přidat `WEBSITE_USE_PLACEHOLDER` nastavení `0`s hodnotou.  
+> V [plánu spotřeby](functions-scale.md#consumption-plan)je nutné přidat nastavení `WEBSITE_USE_PLACEHOLDER` s hodnotou `0`.  
 Toto nastavení zvyšuje dobu studeného startu pro funkce jazyka Java.
 
 ## <a name="third-party-libraries"></a>Knihovny třetích stran 
 
-Azure Functions podporuje použití knihoven třetích stran. Ve výchozím nastavení jsou všechny závislosti zadané v souboru `pom.xml` projektu automaticky seskupeny během tohoto [`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) cíle. Pro knihovny, které nejsou zadané jako závislosti `pom.xml` v souboru, je umístěte `lib` do adresáře v kořenovém adresáři funkce. Závislosti, které jsou `lib` umístěny v adresáři, jsou přidány do zaváděcího programu Systémové třídy za běhu.
+Azure Functions podporuje použití knihoven třetích stran. Ve výchozím nastavení jsou všechny závislosti zadané ve vašem projektu `pom.xml` souboru během [`mvn package`ho](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) cíle automaticky zabalené. Pro knihovny, které nejsou zadané jako závislosti v souboru `pom.xml`, je umístěte do adresáře `lib` v kořenovém adresáři funkce. Závislosti, které jsou umístěny v adresáři `lib`, jsou přidány do zaváděcího programu Systémové třídy za běhu.
 
-Tato `com.microsoft.azure.functions:azure-functions-java-library` závislost je ve výchozím nastavení k dispozici u třídy classpath a není nutné ji do tohoto `lib` adresáře zahrnout. [Azure-Functions-Java-Worker](https://github.com/Azure/azure-functions-java-worker) také přidává [zde](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) uvedené závislosti do cesty k cestě.
+Ve výchozím nastavení je pro cestu k cestě k dispozici `com.microsoft.azure.functions:azure-functions-java-library` závislost a není nutné ji zahrnovat do `lib` adresáře. [Azure-Functions-Java-Worker](https://github.com/Azure/azure-functions-java-worker) také přidává [zde](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) uvedené závislosti do cesty k cestě.
 
 ## <a name="data-type-support"></a>Podpora datových typů
 
@@ -184,11 +192,11 @@ Můžete použít prosté staré objekty Java (POJO), typy definované v `azure-
 
 ### <a name="pojos"></a>Pojo
 
-Pro převod vstupních dat na POJO [Azure-Functions-Java-Work](https://github.com/Azure/azure-functions-java-worker) používá knihovnu [gson](https://github.com/google/gson) . Typy POJO používané jako vstupy pro funkce by měly `public`být.
+Pro převod vstupních dat na POJO [Azure-Functions-Java-Work](https://github.com/Azure/azure-functions-java-worker) používá knihovnu [gson](https://github.com/google/gson) . POJO typy používané jako vstupy pro funkce by měly být `public`.
 
 ### <a name="binary-data"></a>Binární data
 
-Vytvořte vazby na binární vstupy nebo `byte[]`výstupy na, `dataType` nastavením pole v souboru Function. JSON `binary`na:
+Navázání binárních vstupů nebo výstupů do `byte[]`nastavením pole `dataType` v souboru Function. JSON na `binary`:
 
 ```java
    @FunctionName("BlobTrigger")
@@ -245,10 +253,10 @@ public class Function {
 ```
 
 Tuto funkci vyvoláte s požadavkem HTTP. 
-- Datová část požadavku HTTP je předána `String` jako argument pro `inputReq`argument.
-- Jedna položka je načtena z tabulkového úložiště a je předána jako `TestInputData` argument. `inputData`
+- Datová část požadavku HTTP je předána jako `String` pro `inputReq`argumentu.
+- Jedna položka je načtena z úložiště tabulek a je předána jako `TestInputData` k argumentu `inputData`.
 
-Pokud chcete dostávat dávku vstupů, můžete vytvořit vazby `String[]`na `POJO[]` `List<String>`,, nebo `List<POJO>`.
+Pokud chcete dostávat dávku vstupů, můžete vytvořit vazby na `String[]`, `POJO[]`, `List<String>`nebo `List<POJO>`.
 
 ```java
 @FunctionName("ProcessIotMessages")
@@ -265,7 +273,7 @@ Pokud chcete dostávat dávku vstupů, můžete vytvořit vazby `String[]`na `PO
 
 ```
 
-Tato funkce se aktivuje pokaždé, když se v nakonfigurovaném centru událostí nacházejí nová data. Vzhledem k tomu, že `MANY` jenastavenana,funkcedostanedávkuzprávzcentraudálostí.`cardinality` `EventData`z centra událostí se převede na `TestEventData` pro provádění funkce.
+Tato funkce se aktivuje pokaždé, když se v nakonfigurovaném centru událostí nacházejí nová data. Vzhledem k tomu, že je `cardinality` nastavená na `MANY`, funkce dostane dávku zpráv z centra událostí. `EventData` z centra událostí se převede na `TestEventData` pro provádění funkce.
 
 ### <a name="output-binding-example"></a>Příklad výstupní vazby
 
@@ -288,7 +296,7 @@ public class Function {
 
 Pokud existuje více výstupních vazeb, použijte vrácenou hodnotu pouze pro jednu z nich.
 
-K odeslání více výstupních hodnot použijte `OutputBinding<T>` definici `azure-functions-java-library` v balíčku. 
+K odeslání více výstupních hodnot použijte `OutputBinding<T>` definované v balíčku `azure-functions-java-library`. 
 
 ```java
 @FunctionName("QueueOutputPOJOList")
@@ -328,14 +336,14 @@ Tuto funkci jste vyvolali na HttpRequest. Zapisuje do fronty úložiště více 
 
  Ty jsou definované v `azure-functions-java-library`. Jsou pomocné typy pro práci s HttpTrigger funkcemi.
 
-| Specializovaný typ      |       Target        | Typické použití                  |
+| Specializovaný typ      |       Výběr cílového umístění        | Typické použití                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    Trigger HTTP     | Načte metodu, hlavičky nebo dotazy |
 | `HttpResponseMessage` | Výstupní vazba HTTP | Vrátí stav jiný než 200.   |
 
 ## <a name="metadata"></a>Metadata
 
-Několik triggerů odesílá [metadata triggeru](/azure/azure-functions/functions-triggers-bindings) spolu se vstupními daty. K navázání `@BindingName` aktivačních metadat můžete použít poznámku.
+Několik triggerů odesílá [metadata triggeru](/azure/azure-functions/functions-triggers-bindings) spolu se vstupními daty. K navázání aktivačních metadat můžete použít anotaci `@BindingName`.
 
 
 ```Java
@@ -355,7 +363,7 @@ public class Function {
     }
 }
 ```
-V předchozím příkladu `queryValue` je svázán s parametrem `name` řetězce dotazu v adrese URL požadavku HTTP, `http://{example.host}/api/metadata?name=test`. Tady je další příklad, ve kterém se dozvíte `Id` , jak vytvořit vazby z metadat triggeru fronty.
+V předchozím příkladu je `queryValue` svázán s parametrem řetězce dotazu `name` v adrese URL požadavku HTTP `http://{example.host}/api/metadata?name=test`. Tady je další příklad, ve kterém se dozvíte, jak vytvořit vazby `Id` z metadat triggeru fronty.
 
 ```java
  @FunctionName("QueueTriggerMetadata")
@@ -378,9 +386,9 @@ V předchozím příkladu `queryValue` je svázán s parametrem `name` řetězce
 
 `ExecutionContext`definované v `azure-functions-java-library`obsahuje pomocné metody pro komunikaci s modulem runtime Functions.
 
-### <a name="logger"></a>Protokolovací nástroj
+### <a name="logger"></a>Nástroj
 
-Použijte `getLogger`definované v `ExecutionContext`, k zápisu protokolů z kódu funkce.
+Použijte `getLogger`definované v `ExecutionContext`k zápisu protokolů z kódu funkce.
 
 Příklad:
 
@@ -414,7 +422,7 @@ Pokud chcete streamovat výstup protokolování pro aplikaci Function App pomoc�
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
-Příkaz [AZ WebApp log Tail](/cli/azure/webapp/log) obsahuje možnosti pro filtrování výstupu pomocí `--provider` možnosti. 
+Příkaz [AZ WebApp log Tail](/cli/azure/webapp/log) obsahuje možnosti pro filtrování výstupu pomocí možnosti `--provider`. 
 
 Pokud chcete soubory protokolu stáhnout jako jeden soubor ZIP pomocí rozhraní příkazového řádku Azure, otevřete nový příkazový řádek, bash nebo relaci Terminálové služby a zadejte tento příkaz:
 
@@ -426,7 +434,7 @@ Před spuštěním tohoto příkazu je nutné povolit protokolování systému s
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-V funkcích jsou [nastavení aplikace](functions-app-settings.md), jako jsou například připojovací řetězce služby, vystavena jako proměnné prostředí během provádění. K těmto nastavením můžete přistupovat pomocí, `System.getenv("AzureWebJobsStorage")`.
+V funkcích jsou [nastavení aplikace](functions-app-settings.md), jako jsou například připojovací řetězce služby, vystavena jako proměnné prostředí během provádění. K těmto nastavením můžete přistupovat pomocí `System.getenv("AzureWebJobsStorage")`.
 
 Následující příklad získá [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings)s klíčem s názvem `myAppSetting`:
 
@@ -451,4 +459,4 @@ Další informace o Azure Functions vývoj v jazyce Java najdete v následujíc�
 * Místní vývoj a ladění pomocí [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md)a [zatmění](functions-create-maven-eclipse.md)
 * [Vzdálené ladění Java Azure Functions s Visual Studio Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
 * [Modul plug-in Maven pro Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
-* Zjednodušte vytváření funkcí prostřednictvím `azure-functions:add` cíle a připravte pracovní adresář pro [nasazení souboru ZIP](deployment-zip-push.md).
+* Zjednodušte vytváření funkcí prostřednictvím `azure-functions:add`ho cíle a připravte pracovní adresář pro [nasazení souboru ZIP](deployment-zip-push.md).

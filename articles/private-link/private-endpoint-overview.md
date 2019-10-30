@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7f0d846a83312e28c305100e7c8dc74cc8140d7d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 32814b7478fac9530cc74fba605a096881229102
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023850"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101332"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -81,7 +81,7 @@ Vlastník prostředku privátního propojení může provést následující akc
 > Pouze privátní koncový bod ve schváleném stavu může odesílat provoz do daného prostředku privátního propojení. 
 
 ### <a name="connecting-using-alias"></a>Připojování pomocí aliasu
-Alias je jedinečný moniker, který se generuje, když vlastník služby vytvoří službu privátního propojení za standardním nástrojem pro vyrovnávání zatížení. Vlastník služby může tento alias sdílet se svými spotřebiteli offline. Příjemci můžou požádat o připojení ke službě privátního propojení buď pomocí identifikátoru URI prostředku, nebo aliasu. Pokud se chcete připojit pomocí aliasu, musíte vytvořit privátní koncový bod pomocí metody ručního schválení připojení. Pro použití metody schvalování ručního připojení nastavte parametr ruční požadavek na hodnotu true během vytváření toku privátního koncového bodu. Podrobnosti najdete v [New-AzPrivateEndpoint](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) a [AZ Network Private-Endpoint Create](https://docs.microsoft.com/en-us/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) . 
+Alias je jedinečný moniker, který se generuje, když vlastník služby vytvoří službu privátního propojení za standardním nástrojem pro vyrovnávání zatížení. Vlastník služby může tento alias sdílet se svými spotřebiteli offline. Příjemci můžou požádat o připojení ke službě privátního propojení buď pomocí identifikátoru URI prostředku, nebo aliasu. Pokud se chcete připojit pomocí aliasu, musíte vytvořit privátní koncový bod pomocí metody ručního schválení připojení. Pro použití metody schvalování ručního připojení nastavte parametr ruční požadavek na hodnotu true během vytváření toku privátního koncového bodu. Podrobnosti najdete v [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) a [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) . 
 
 ## <a name="dns-configuration"></a>Konfigurace DNS 
 Při připojování k prostředku privátního propojení pomocí plně kvalifikovaného názvu domény (FQDN) jako součásti připojovacího řetězce je důležité správně nakonfigurovat nastavení DNS tak, aby se přeložilo na přidělenou privátní IP adresu. Existující služby Azure už můžou mít konfiguraci DNS, která se má použít při připojování přes Veřejný koncový bod. To je nutné přepsat pro připojení pomocí privátního koncového bodu. 
@@ -91,7 +91,7 @@ Síťové rozhraní přidružené k privátnímu koncovému bodu obsahuje úplno
 Pomocí následujících možností můžete nakonfigurovat nastavení DNS privátních koncových bodů: 
 - **Použijte soubor hostitele (doporučeno pouze pro testování)** . K přepsání DNS můžete použít soubor hostitele na virtuálním počítači.  
 - **Použijte privátní ZÓNU DNS**. K přepsání překladu DNS pro daný privátní koncový bod můžete použít soukromé zóny DNS. Privátní zóna DNS se dá propojit s vaší virtuální sítí a vyřešit konkrétní domény.
-- **Použijte vlastní server DNS**. Pomocí vlastního serveru DNS můžete přepsat překlad DNS pro daný prostředek privátního propojení. Pokud je váš [Server DNS](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server) hostovaný ve virtuální síti, můžete vytvořit předávací pravidlo DNS pro použití privátní zóny DNS a zjednodušit tak konfiguraci všech prostředků privátního propojení.
+- **Použijte vlastní server DNS**. Pomocí vlastního serveru DNS můžete přepsat překlad DNS pro daný prostředek privátního propojení. Pokud je váš [Server DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) hostovaný ve virtuální síti, můžete vytvořit předávací pravidlo DNS pro použití privátní zóny DNS a zjednodušit tak konfiguraci všech prostředků privátního propojení.
  
 > [!IMPORTANT]
 > Nedoporučujeme potlačit zónu, která je aktivně používána k řešení veřejných koncových bodů. Připojení k prostředkům nebude možné správně přeložit bez předávání DNS do veřejného serveru DNS. Pokud se chcete vyhnout problémům, vytvořte jiný název domény nebo použijte navrhovaný název pro každou službu níže. 

@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 879404b264e9ea6c544c6edf509001b38997bb0c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d8606ad9afb6642fa29cc3cae523c31e129c7ebd
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874329"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73061490"
 ---
-# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace stávající infrastruktury serveru NPS se službou Azure Multi-Factor Authentication
+# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace stávající infrastruktury serveru NPS do Azure Multi-Factor Authentication
 
 Rozšíření serveru NPS (Network Policy Server) pro Azure MFA přidává cloudové možnosti MFA do vaší ověřovací infrastruktury pomocí stávajících serverů. S rozšířením NPS můžete přidat ověřování pomocí telefonního hovoru, textové zprávy nebo aplikace pro telefon do stávajícího toku ověřování, aniž byste museli instalovat, konfigurovat a udržovat nové servery. 
 
@@ -43,13 +43,13 @@ V případě potřeby můžete vytvořit libovolný počet serverů NPS s povole
 
 Servery VPN směrují žádosti o ověření, takže potřebují vědět o nových serverech NPS s povolenou službou Azure MFA.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Rozšíření serveru NPS je určeno pro práci s vaší stávající infrastrukturou. Než začnete, ujistěte se, že máte následující předpoklady.
 
-### <a name="licenses"></a>Licence
+### <a name="licenses"></a>Vázaný
 
-Rozšíření serveru NPS pro Azure MFA je dostupné pro zákazníky, kteří mají [licence pro Azure Multi-Factor Authentication](multi-factor-authentication.md) (včetně samostatné licence pro Azure AD Premium, EMS nebo MFA). Licence založené na spotřebě pro Azure MFA, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. 
+Rozšíření serveru NPS pro Azure MFA je dostupné pro zákazníky, kteří mají [licence pro azure Multi-Factor Authentication](multi-factor-authentication.md) (jsou součástí Azure AD Premium, EMS nebo samostatné licence MFA). Licence založené na spotřebě pro Azure MFA, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. 
 
 ### <a name="software"></a>Software
 
@@ -68,7 +68,7 @@ Modul Microsoft Azure Active Directory pro Windows PowerShell je nainstalován, 
 
 Každý, kdo používá rozšíření serveru NPS, musí být synchronizovaný Azure Active Directory pomocí Azure AD Connect a musí být registrovaný pro MFA.
 
-Když nainstalujete rozšíření, budete potřebovat ID adresáře a přihlašovací údaje správce pro vašeho tenanta Azure AD. Do své ID adresáře můžete najít [webu Azure portal](https://portal.azure.com). Přihlaste se jako správce, na levé straně vyberte ikonu **Azure Active Directory** a pak vyberte **vlastnosti**. Zkopírujte identifikátor GUID do pole **ID adresáře** a uložte ho. Tento identifikátor GUID použijete jako ID tenanta při instalaci rozšíření serveru NPS.
+Když nainstalujete rozšíření, budete potřebovat ID adresáře a přihlašovací údaje správce pro vašeho tenanta Azure AD. ID vašeho adresáře najdete v [Azure Portal](https://portal.azure.com). Přihlaste se jako správce, na levé straně vyberte ikonu **Azure Active Directory** a pak vyberte **vlastnosti**. Zkopírujte identifikátor GUID do pole **ID adresáře** a uložte ho. Tento identifikátor GUID použijete jako ID tenanta při instalaci rozšíření serveru NPS.
 
 ![V části vlastnosti Azure Active Directory Najděte ID vašeho adresáře.](./media/howto-mfa-nps-extension/find-directory-id.png)
 
@@ -109,17 +109,17 @@ V závislosti na použitém řešení sítě VPN se liší postup konfigurace z�
 Tento krok již může být dokončen ve vašem tenantovi, ale je vhodné považovat kontrolu, že Azure AD Connect nedávno synchronizoval vaše databáze.
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Vybrat **Azure Active Directory** > **Azure AD Connect**
-3. Ověřte, že je povolený stav synchronizace a že poslední synchronizace proběhla před méně než hodinou.
+2. Vyberte **Azure Active Directory** > **Azure AD Connect**
+3. Ověřte, že je **povolený** stav synchronizace a že poslední synchronizace proběhla před méně než hodinou.
 
-Pokud potřebujete zahájit novou část synchronizace, postupujte podle pokynů v [Azure AD Connect synchronizace: Plánovač](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
+Pokud potřebujete zahájit novou část synchronizace, postupujte podle pokynů v tématu [Azure AD Connect Sync: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
 
 ### <a name="determine-which-authentication-methods-your-users-can-use"></a>Určení metod ověřování, které můžou vaši uživatelé používat
 
 Existují dva faktory, které mají vliv na to, které metody ověřování jsou k dispozici v nasazení rozšíření serveru NPS:
 
 1. Šifrovací algoritmus hesla, který se používá mezi klientem RADIUS (VPN, NetScaler serverem nebo jiným) a servery NPS.
-   - Protokol **PAP** podporuje všechny metody ověřování Azure MFA v cloudu: telefonní hovor, jednosměrná textová zpráva, oznámení o mobilní aplikaci a ověřovací kód mobilní aplikace.
+   - Protokol **PAP** podporuje všechny metody ověřování Azure MFA v cloudu: telefonní hovor, jednosměrná textová zpráva, oznámení mobilní aplikace, tokeny hardwaru Oath a ověřovací kód mobilní aplikace.
    - Protokol **CHAPv2** a **EAP** podporují telefonní hovor a oznámení mobilní aplikace.
 
       > [!NOTE]
@@ -134,11 +134,11 @@ V Azure můžete [Zakázat nepodporované metody ověřování](howto-mfa-mfaset
 
 ### <a name="register-users-for-mfa"></a>Registrace uživatelů pro MFA
 
-Než nasadíte a použijete rozšíření serveru NPS, je potřeba, aby se uživatelé, kteří potřebují provést dvoustupňové ověřování, zaregistrovali pro MFA. K otestování rozšíření hned po jeho nasazení budete potřebovat alespoň jeden testovací účet, který je plně zaregistrován pro službu Multi-Factor Authentication.
+Než nasadíte a použijete rozšíření serveru NPS, je potřeba, aby se uživatelé, kteří potřebují provést dvoustupňové ověřování, zaregistrovali pro MFA. K otestování rozšíření hned po jeho nasazení budete potřebovat alespoň jeden testovací účet, který je plně zaregistrován pro Multi-Factor Authentication.
 
 Pomocí těchto kroků si můžete spustit testovací účet:
 
-1. Přihlaste [https://aka.ms/mfasetup](https://aka.ms/mfasetup) se k pomocí testovacího účtu.
+1. Přihlaste se k [https://aka.ms/mfasetup](https://aka.ms/mfasetup) pomocí testovacího účtu.
 2. Podle pokynů nastavte metodu ověřování.
 3. [Vytvořte zásady podmíněného přístupu](howto-mfa-getstarted.md#create-conditional-access-policy) , které budou vyžadovat službu Multi-Factor Authentication pro testovací účet.
 
@@ -191,15 +191,15 @@ Opakujte tyto kroky na všech dalších serverech NPS, které chcete nastavit pr
 Pokud uplynula platnost předchozího certifikátu počítače a vygeneroval se nový certifikát, měli byste odstranit všechny certifikáty s vypršenou platností. Máte-li certifikáty s vypršenou platností, můžete způsobit problémy s počátkem rozšíření serveru NPS
 
 > [!NOTE]
-> Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **\<CN = TenantID\>, OU = rozšíření Microsoft NPS**. 
+> Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **CN =\<TenantID\>, OU = rozšíření Microsoft NPS**. 
 
 ### <a name="certificate-rollover"></a>Změna certifikátu
 
 S verzí 1.0.1.32 rozšíření serveru NPS se teď podporuje čtení více certifikátů. Tato funkce pomůže zajistit průběžné aktualizace certifikátů před jejich vypršením platnosti. Pokud vaše organizace používá předchozí verzi rozšíření serveru NPS, měli byste upgradovat na verzi 1.0.1.32 nebo novější.
 
-Certifikáty vytvořené `AzureMfaNpsExtnConfigSetup.ps1` skriptem jsou platné 2 roky. IT organizace by měli monitorovat certifikáty pro vypršení platnosti. Certifikáty pro rozšíření serveru NPS se nacházejí v úložišti certifikátů místního počítače v části osobní a jsou vydávány pro ID tenanta poskytnuté ke skriptu.
+Certifikáty vytvořené skriptem `AzureMfaNpsExtnConfigSetup.ps1` jsou platné 2 roky. IT organizace by měli monitorovat certifikáty pro vypršení platnosti. Certifikáty pro rozšíření serveru NPS se nacházejí v úložišti certifikátů místního počítače v části osobní a jsou vydávány pro ID tenanta poskytnuté ke skriptu.
 
-Když se certifikát blíží k datu vypršení platnosti, měl by se vytvořit nový certifikát, který ho nahradí.  Tento proces se provádí tak, že `AzureMfaNpsExtnConfigSetup.ps1` se znovu spustí a po zobrazení výzvy zůstane stejné ID tenanta. Tento postup by se měl opakovat na každém serveru NPS ve vašem prostředí.
+Když se certifikát blíží k datu vypršení platnosti, měl by se vytvořit nový certifikát, který ho nahradí.  Tento proces se provádí tak, že po zobrazení výzvy znovu spustíte `AzureMfaNpsExtnConfigSetup.ps1` a zachováte stejné ID tenanta. Tento postup by se měl opakovat na každém serveru NPS ve vašem prostředí.
 
 ## <a name="configure-your-nps-extension"></a>Konfigurace rozšíření serveru NPS
 
@@ -208,7 +208,7 @@ Tato část obsahuje doporučení a návrhy pro úspěšná nasazení rozšíře
 ### <a name="configuration-limitations"></a>Omezení konfigurace
 
 - Rozšíření serveru NPS pro Azure MFA nezahrnuje nástroje pro migraci uživatelů a nastavení z MFA serveru do cloudu. Z tohoto důvodu doporučujeme použít rozšíření pro nová nasazení, nikoli stávající nasazení. Pokud rozšíření použijete pro existující nasazení, uživatelé musí znovu provést kontrolu a naplnit své podrobnosti MFA v cloudu.  
-- Rozšíření serveru NPS používá hlavní název uživatele (UPN) z místní služby Active Directory k identifikaci uživatele v Azure MFA pro provádění sekundárního ověřování. Rozšíření se dá nakonfigurovat tak, aby používalo jiný identifikátor, jako je alternativní přihlašovací ID nebo vlastní jiné pole služby Active Directory než hlavní název uživatele (UPN). Další informace najdete v článku [Rozšířené možnosti konfigurace pro rozšíření serveru NPS pro službu Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md).
+- Rozšíření serveru NPS používá hlavní název uživatele (UPN) z místní služby Active Directory k identifikaci uživatele v Azure MFA pro provádění sekundárního ověřování. Rozšíření se dá nakonfigurovat tak, aby používalo jiný identifikátor, jako je alternativní přihlašovací ID nebo vlastní jiné pole služby Active Directory než hlavní název uživatele (UPN). Další informace najdete v článku [Rozšířené možnosti konfigurace pro rozšíření serveru NPS pro Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md).
 - Ne všechny šifrovací protokoly podporují všechny metody ověřování.
    - **PAP** podporuje telefonní hovor, jednosměrnou textovou zprávu, oznámení mobilní aplikace a ověřovací kód mobilní aplikace.
    - Protokol **CHAPv2** a **EAP** Podpora telefonního hovoru a oznámení mobilní aplikace
@@ -221,7 +221,7 @@ Jakmile povolíte MFA pro klienta RADIUS pomocí rozšíření serveru NPS, budo
 
 Pokud máte uživatele, kteří nejsou zaregistrovaní pro MFA, můžete určit, co se stane při pokusu o ověření. Pro řízení chování funkcí použijte nastavení registru *REQUIRE_USER_MATCH* v cestě registru *HKLM\Software\Microsoft\AzureMFA* . Toto nastavení má jedinou možnost konfigurace:
 
-| Klíč | Value | Výchozí |
+| Klíč | Hodnota | Výchozí |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE NEBO FALSE | Nenastaveno (ekvivalent hodnoty TRUE) |
 
@@ -241,7 +241,7 @@ Následující skript je k dispozici v Galerii TechNet k provedení základních
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Návody ověřte, zda je certifikát klienta nainstalován podle očekávání?
 
-Vyhledejte certifikát podepsaný svým držitelem vytvořeného instalačním programem v úložišti certifikátů a zkontrolujte, zda má privátní klíč oprávnění udělená **síťové službě**uživatele. Certifikát má název subjektu  **\<CN tenantid\>, OU = rozšíření Microsoft NPS** .
+Vyhledejte certifikát podepsaný svým držitelem vytvořeného instalačním programem v úložišti certifikátů a zkontrolujte, zda má privátní klíč oprávnění udělená **síťové službě**uživatele. Certifikát má název subjektu **CN \<tenantid\>, OU = rozšíření Microsoft NPS** .
 
 Certifikáty podepsané svým držitelem generované skriptem *AzureMfaNpsExtnConfigSetup. ps1* mají také životnost po dobu dvou let. Při ověřování, zda je certifikát nainstalován, byste měli také ověřit, zda nevypršela platnost certifikátu.
 
@@ -318,7 +318,7 @@ Další pokyny k odstraňování potíží a možná řešení najdete v článk
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nakonfigurujte alternativní ID pro přihlášení nebo nastavte seznam výjimek pro IP adresy, které by se nemusely provádět dvoustupňové ověřování v [pokročilých možnostech konfigurace pro rozšíření serveru NPS pro službu Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md) .
+- Nakonfigurujte alternativní ID pro přihlášení nebo nastavte seznam výjimek pro IP adresy, které by se nemusely provádět dvoustupňové ověřování v [pokročilých možnostech konfigurace pro rozšíření serveru NPS pro Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)
 
 - Naučte se integrovat servery [Brána vzdálené plochy](howto-mfa-nps-extension-rdg.md) a [VPN](howto-mfa-nps-extension-vpn.md) pomocí rozšíření NPS.
 

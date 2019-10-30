@@ -1,7 +1,7 @@
 ---
 title: Změna přístupových klíčů účtu úložiště
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak změnit přístupové klávesy pro účet Azure Storage používaný vaším pracovním prostorem. Azure Machine Learning používá k ukládání dat a modelů účet Azure Storage. Po opětovném vygenerování přístupového klíče pro účet úložiště musíte aktualizovat Azure Machine Learning pro použití nových klíčů.
+description: Naučte se, jak změnit přístupové klávesy pro účet Azure Storage používaný vaším pracovním prostorem. Azure Machine Learning používá k ukládání dat a modelů účet Azure Storage.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 77cafceee35f00a81b2e07b59f0f4a13146fd906
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034955"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063323"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 
@@ -23,7 +23,7 @@ Naučte se, jak změnit přístupové klávesy pro účty Azure Storage použív
 
 Z bezpečnostních důvodů možná budete muset změnit přístupové klávesy pro účet Azure Storage. Po opětovném vygenerování přístupového klíče je nutné aktualizovat Azure Machine Learning, aby používala nový klíč. Azure Machine Learning může používat účet úložiště pro úložiště modelů i jako úložiště dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 
@@ -64,9 +64,9 @@ for name, ds in datastores.items():
 
 Tento kód vyhledá všechna registrovaná úložiště dat, která používají Azure Storage, a zobrazí následující informace:
 
-* Název úložiště dat: Název úložiště dat, pod kterým je účet úložiště zaregistrován
-* Název účtu úložiště: Název Azure Storage účtu.
-* Vnitřního Kontejner v účtu úložiště, který se používá v této registraci.
+* Název úložiště dat: název úložiště dat, pod kterým je účet úložiště zaregistrován.
+* Název účtu úložiště: název účtu Azure Storage.
+* Container: kontejner v účtu úložiště, který se používá v této registraci.
 
 Označuje také, zda je úložiště dat pro objekt blob Azure nebo sdílenou složku Azure, protože existují různé metody, jak znovu zaregistrovat každý typ úložiště dat.
 
@@ -89,7 +89,7 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
         az login
         ```
 
-    1. Pokud chcete pracovní prostor aktualizovat tak, aby používal nový klíč, použijte následující příkaz. Nahraďte `myworkspace` názvem svého pracovního prostoru Azure Machine Learning a nahraďte `myresourcegroup` názvem skupiny prostředků Azure, která obsahuje pracovní prostor.
+    1. Pokud chcete pracovní prostor aktualizovat tak, aby používal nový klíč, použijte následující příkaz. Nahraďte `myworkspace` názvem pracovního prostoru Azure Machine Learning a nahraďte `myresourcegroup` názvem skupiny prostředků Azure, která obsahuje pracovní prostor.
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
@@ -119,8 +119,8 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
     
     ```
 
-    Protože `overwrite=True` je zadán, tento kód přepíše existující registraci a aktualizuje ji, aby používala nový klíč.
+    Vzhledem k tomu, že je zadána `overwrite=True`, tento kód přepíše existující registraci a aktualizuje ji, aby používala nový klíč.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o registraci úložišť dat najdete v odkazu na [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) třídu.
+Další informace o registraci úložiště dat naleznete v tématu [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) Class Reference třídy.

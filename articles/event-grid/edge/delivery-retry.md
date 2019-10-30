@@ -5,20 +5,20 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 0a678023b1097c4bdec70d866632da6ae4ad57bb
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992389"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100715"
 ---
 # <a name="delivery-and-retry"></a>Doručování a opakované pokusy
 
-Event Grid poskytuje trvalé doručování. Pokusí se okamžitě doručovat každou zprávu alespoň jednou pro každé vyhovující předplatné. Pokud koncový bod předplatitele nepotvrdí příjem události nebo dojde k selhání, Event Grid pokusy o doručení na základě pevného **plánu opakování** a **zásady opakování**.  V současné době Event Grid modul doručuje událost současně do odběratele. Datová část je však pole s jedinou událostí.
+Event Grid poskytuje trvalé doručování. Pokusí se okamžitě doručovat každou zprávu alespoň jednou pro každé vyhovující předplatné. Pokud koncový bod předplatitele nepotvrdí příjem události nebo dojde k selhání, Event Grid pokusy o doručení na základě pevného **plánu opakování** a **zásady opakování**.  Ve výchozím nastavení modul Event Grid poskytuje odběrateli jednu událost současně. Datová část je však pole s jedinou událostí. Modul může současně poskytovat více než jednu událost tím, že povoluje výstupní dávkování funkce. Podrobnosti o této funkci najdete v tématu [výstupní dávkování](delivery-output-batching.md).  
 
 > [!IMPORTANT]
 >Pro data událostí neexistuje žádná podpora trvalosti. To znamená, že při opětovném nasazení nebo restartování modulu Event Grid dojde ke ztrátě všech událostí, které ještě nejsou doručeny.
