@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: MT
+ms.openlocfilehash: 5b9011e2a95dc1bdb86311111123db3c994f3aee
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052516"
+ms.locfileid: "73044941"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight – Nejčastější dotazy
 
@@ -387,7 +387,3 @@ Informace o možnostech integrace zpracování datových proudů ve službě Azu
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>Existuje způsob, jak dynamicky ukončit hlavní uzel clusteru, když je cluster nečinný po určitou dobu?
 
 Nemůžete to provést s clustery HDInsight. V těchto scénářích můžete použít Azure Data Factory.
-
-### <a name="what-compliance-offerings-does-hdinsight-offer"></a>Jaké nabídky se týkají dodržování předpisů nabízí HDInsight?
-
-Informace o kompatibilitě najdete na [webu Microsoft Trust Center](https://www.microsoft.com/trust-center) a v tématu [přehled dodržování předpisů Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
