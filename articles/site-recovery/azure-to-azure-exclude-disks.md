@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 81d22250262351e3c1bbb2fe28960b3d158bbf57
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 317a8ba48851ebf65fe52e79f6cf9d9c45786f6f
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147048"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053409"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Vyloučení disků z replikace PowerShellu virtuálních počítačů Azure
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak vyloučit disky při replikaci virtuálních počí
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, potřebujete:
 
@@ -29,6 +29,7 @@ Než začnete, potřebujete:
 - Zkontrolujte [požadavky na podporu](azure-to-azure-support-matrix.md) pro všechny komponenty.
 - Ujistěte se, že máte modul PowerShell AzureRm "AZ". Pokud chcete nainstalovat nebo aktualizovat PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Ujistěte se, že jste aspoň jednou vytvořili trezor služby Recovery Services a chráněné virtuální počítače. Pokud jste tyto věci neudělali, postupujte podle pokynů v části [Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure PowerShell](azure-to-azure-powershell.md).
+- Pokud hledáte informace o přidávání disků do virtuálního počítače Azure, který je k dispozici pro replikaci, [Přečtěte si tento článek](azure-to-azure-enable-replication-added-disk.md).
 
 ## <a name="why-exclude-disks-from-replication"></a>Důvody vyloučení disků z replikace
 Je možné, že budete chtít vyloučit disky z replikace z těchto důvodů:

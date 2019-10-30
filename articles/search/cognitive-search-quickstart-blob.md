@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: e542d4685829886084bbc8adf6831647b9a1256a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 28d813e2f137ecf721165e9ea5af2e36efee872a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809670"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053485"
 ---
 # <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Rychlý Start: vytvoření kanálu rozšíření AI pomocí dovedností rozpoznávání v Azure Search
 
-Azure Search se integruje s [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), přidáním extrakce obsahu, zpracováním přirozeného jazyka (NLP) a dovedností pro zpracování obrázků do kanálu indexování Azure Search, aby bylo možné prohledávat neprohledávatelné nebo nestrukturovaný obsah. 
+Azure Search se integruje s [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), přidává se extrakce obsahu, zpracování přirozeného jazyka (NLP) a zpracování obrazu (označení obrazu, rozpoznávání objektů, rozpoznávání OCR), dovednosti do kanálu indexování Azure Search, neprohledávatelné nebo nestrukturovaný obsah bude lépe prohledávatelné. 
 
-Mnoho prostředků Cognitive Services – například [optické rozpoznávání znaků (OCR](cognitive-search-skill-ocr.md)), [rozpoznání jazyka](cognitive-search-skill-language-detection.md), [rozpoznávání entit](cognitive-search-skill-entity-recognition.md) pro pojmenování může být připojeno k procesu indexování. Algoritmy AI Cognitive Services se používají k hledání vzorů, funkcí a vlastností ve zdrojových datech, vracení struktur a textových obsahu, které se dají používat v řešeních fulltextového vyhledávání založeném na Azure Search.
+Mnoho Cognitive Servicesch prostředků (například [označování obrázků](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-tagging-images), [detekce objektů](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-object-detection), [rozpoznávání OCR](cognitive-search-skill-ocr.md), rozpoznávání [jazyka](cognitive-search-skill-language-detection.md), [rozpoznávání entit](cognitive-search-skill-entity-recognition.md) pro pojmenování) může být připojeno k procesu indexování. Algoritmy AI Cognitive Services se používají k hledání vzorů, funkcí a vlastností ve zdrojových datech, vracení struktur a textových obsahu, které se dají používat v řešeních fulltextového vyhledávání založeném na Azure Search.
 
 V tomto rychlém startu vytvořte svůj první kanál pro rozšíření v [Azure Portal](https://portal.azure.com) před zápisem jediného řádku kódu:
 

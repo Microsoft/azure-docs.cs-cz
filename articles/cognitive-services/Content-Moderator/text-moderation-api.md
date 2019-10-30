@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: c5127d0f16a12840cda735d1682cb578266441fe
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1d147dcee31fa4b84b28ab62e8cd41aebc134a9b
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757237"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043944"
 ---
 # <a name="learn-text-moderation-concepts"></a>Základní informace o principech moderování textu
 
@@ -34,7 +34,7 @@ Odpověď služby zahrnuje následující informace:
 
 ## <a name="profanity"></a>Vulgárních výrazů
 
-Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporovaných jazyků](Text-Moderation-API-Languages.md), jsou tyto výrazy součástí odpovědi. Odpověď také obsahuje jejich umístění (`Index`) v původním textu. @No__t_0 v následujícím ukázkovém formátu JSON odkazuje na podmínky nalezené v [seznamech vlastních podmínek](try-terms-list-api.md) , pokud jsou k dispozici.
+Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporovaných jazyků](Text-Moderation-API-Languages.md), jsou tyto výrazy součástí odpovědi. Odpověď také obsahuje jejich umístění (`Index`) v původním textu. `ListId` v následujícím ukázkovém formátu JSON odkazuje na podmínky nalezené v [seznamech vlastních podmínek](try-terms-list-api.md) , pokud jsou k dispozici.
 
     "Terms": [
     {
@@ -184,4 +184,4 @@ Content Moderator poskytuje [rozhraní API pro seznam termínů](https://westus.
 
 ## <a name="next-steps"></a>Další kroky
 
-Otestujte [konzolu rozhraní API pro moderování textu](try-text-api.md) a použijte ukázky kódu REST API. Pokud jste obeznámeni se sadou Visual Studio a C#, přečtěte si také [rychlý Start pro moderování textu .NET](text-moderation-quickstart-dotnet.md) .
+Otestujte [konzolu rozhraní API pro moderování textu](try-text-api.md) a použijte ukázky kódu REST API. Pokud jste obeznámeni se sadou Visual Studio a C#, podívejte se také na oddíl moderování textu sady [.NET SDK pro rychlý Start](dotnet-sdk-quickstart.md) .

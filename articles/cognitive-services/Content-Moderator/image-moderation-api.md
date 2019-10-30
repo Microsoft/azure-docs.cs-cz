@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 3bc5bc99984367b44b38a65266d2915c47ca6fd0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757342"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044103"
 ---
 # <a name="learn-image-moderation-concepts"></a>Základní informace o principech moderování obrázků
 
@@ -147,4 +147,4 @@ Pro více případů odlišit použijte [Nástroj pro kontrolu](Review-Tool-User
 
 ## <a name="next-steps"></a>Další kroky
 
-Otestujte [konzolu rozhraní API pro moderování imagí](try-image-api.md) a použijte ukázky kódu REST API. Pokud jste obeznámeni se sadou Visual Studio a C#, podívejte se také na [rychlý Start pro moderování image .NET](image-moderation-quickstart-dotnet.md) .
+Otestujte [konzolu rozhraní API pro moderování imagí](try-image-api.md) a použijte ukázky kódu REST API. Pokud jste obeznámeni se sadou Visual Studio a C#, podívejte se také na oddíl moderování imagí v sadě [.NET SDK pro rychlý Start](dotnet-sdk-quickstart.md) .

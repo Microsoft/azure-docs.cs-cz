@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f85dd3abae8f6e4b3ccc10654e6da8363e80b3d3
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: cb234f9fa2fc5df68fb2bf4dde3a377ea15532eb
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968277"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053386"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak pro virtuální počítač Azure spustit postup z
 > * Spuštění testovacího převzetí služeb při selhání pro jeden virtuální počítač
 
 > [!NOTE]
-> Cílem tohoto kurzu je provést uživatele postupem provedení postupu zotavení po havárii s minimálním počtem kroků. Pokud se chcete dozvědět více o různých aspektech souvisejících s provedením postupu zotavení po havárii, včetně důležitých aspektů sítí, automatizace nebo řešení potíží, prostudujte si dokumenty v části Postupy pro virtuální počítače Azure.
+> Tento kurz vám pomůže udělat postup zotavení po havárii s minimálními kroky. v případě, že se chcete dozvědět víc o různých aspektech spojených s prováděním postupu zotavení po havárii, včetně informací o sítích, automatizaci nebo řešení potíží, přečtěte si dokumenty v části How to for Azure pro virtuální počítače Azure.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -42,9 +42,10 @@ V tomto kurzu se dozvíte, jak pro virtuální počítač Azure spustit postup z
 
 2. V části **Testovací převzetí služeb při selhání** vyberte bod obnovení, který se má pro převzetí služeb při selhání použít:
 
-   - **Nejnovější zpracovaný:** Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Zobrazí se časové razítko. S touto možností se neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
+    - **Nejnovější**: zpracovává všechna data v Site Recovery a poskytuje nejnižší RTO (cíl doby obnovení).
+    - **Nejnovější zpracovaný**: Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Zobrazí se časové razítko. S touto možností se neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
    - **Nejnovější konzistentní vzhledem k aplikacím:** Tato možnost vrátí všechny virtuální počítače k nejnovějšímu bodu obnovení konzistentnímu vzhledem k aplikacím. Zobrazí se časové razítko.
-   - **Vlastní:** Vyberete si libovolný bod obnovení.
+   - **Vlastní**: převzetí služeb při selhání konkrétním bodem obnovení. Vlastní je dostupná jenom v případě, že převezmete služby při selhání jednoho virtuálního počítače, a ne pro převzetí služeb při selhání s plánem obnovení
 
 3. Vyberte cílovou virtuální síť Azure, ke které se připojí virtuální počítače Azure v sekundární oblasti po převzetí služeb při selhání.
 

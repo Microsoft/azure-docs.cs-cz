@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 24812b8d97080d59fd50f4dc528117b3020fd8dc
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753269"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053363"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizujte zřízené náklady na propustnost v Azure Cosmos DB
 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 Nativní sady SDK (.NET/.NET Core, Java, Node. js a Python) implicitně zachytí tuto odpověď, a to s ohledem na server, který je zadaný na základě opakování, a zkuste požadavek zopakovat. Pokud k účtu nebudete mít souběžně více klientů, další pokus bude úspěšný.
 
-Pokud máte více než jednoho klienta, který je v současné době trvale spuštěný nad sazbou požadavků, výchozí počet opakování aktuálně nastavený na 9 nemusí být dostatečný. V takovém případě klient vyvolá `DocumentClientException` se stavovým kódem 429 pro aplikaci. Výchozí počet opakování lze změnit nastavením `RetryOptions` v instanci ConnectionPolicy. Ve výchozím nastavení se `DocumentClientException` se stavovým kódem 429 vrátí po kumulativní čekací době 30 sekund, pokud požadavek nadále funguje nad sazbou požadavku. K tomu dojde i v případě, že aktuální počet opakování je menší než maximální počet opakování, výchozí hodnota je 9 nebo uživatelem definovaná hodnota. 
+Pokud máte více než jednoho klienta, který se v současné době průběžně pracuje konzistentně nad rámec požadavků, výchozí počet opakování, který je aktuálně nastavený na 9, nemusí být dostatečný. V takových případech klient vyvolá `RequestRateTooLargeException` se stavovým kódem 429 pro aplikaci. Výchozí počet opakování lze změnit nastavením `RetryOptions` v instanci ConnectionPolicy. Ve výchozím nastavení se `RequestRateTooLargeException` se stavovým kódem 429 vrátí po kumulativní čekací době 30 sekund, pokud požadavek nadále funguje nad sazbou požadavku. K tomu dojde i v případě, že aktuální počet opakování je menší než maximální počet opakování, výchozí hodnota je 9 nebo uživatelem definovaná hodnota. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti kontejneru, operace požadavku se třikrát pokusí vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavená na 60, takže v tomto případě je výjimka kumulativního opakování pokusu v sekundách od prvního požadavku delší než 60 sekund.
 

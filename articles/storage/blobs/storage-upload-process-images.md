@@ -1,23 +1,23 @@
 ---
 title: Odeslání dat obrázků do cloudu v Azure Storage | Microsoft Docs
-description: Použití úložiště objektů Blob v Azure pomocí služby web app pro ukládání dat aplikací
+description: Použití úložiště objektů BLOB v Azure s webovou aplikací k ukládání dat aplikací
 author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 11/26/2018
-ms.author: normesta
+ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 7185d118c9f4419713ebe1291dd55c44635f0c56
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: afa4672d2a8f65b61d634b95b695d1c9814bf991
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844949"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053450"
 ---
-# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: Odeslání dat obrázků do cloudu v Azure Storage
+# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: nahrání obrazových dat v cloudu pomocí Azure Storage
 
-Tento kurz je první částí série. V tomto kurzu se dozvíte, jak nasadit webovou aplikaci, která používá Klientská knihovna pro úložiště Azure můžete nahrávat obrázky do účtu úložiště. Jakmile budete hotovi, budete mít webovou aplikaci, která ukládá a zobrazuje obrázky ze služby Azure storage.
+Tento kurz je první částí série. V tomto kurzu se naučíte, jak nasadit webovou aplikaci, která používá knihovnu klienta Azure Storage k nahrání imagí do účtu úložiště. Až budete hotovi, budete mít webovou aplikaci, která bude ukládat a zobrazovat obrázky z Azure Storage.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![Aplikace pro změně velikosti obrázků v .NET](media/storage-upload-process-images/figure2.png)
@@ -40,13 +40,13 @@ V první části této série se naučíte:
 > * Konfigurace nastavení aplikace
 > * Interakce s webovou aplikací
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto kurzu potřebujete předplatné Azure. Vytvoření [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) předtím, než začnete.
+K dokončení tohoto kurzu potřebujete předplatné Azure. Než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Chcete-li nainstalovat a používat rozhraní příkazového řádku místně, tento kurz vyžaduje, abyste spustili Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Pokud chcete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků 
 
@@ -63,9 +63,9 @@ az group create --name myResourceGroup --location southeastasia
 Ukázka nahrává obrázky do kontejneru objektů blob v účtu služby Azure Storage. Účet služby Storage poskytuje jedinečný obor názvů pro ukládání datových objektů Azure Storage a přístup k nim. Ve skupině prostředků, kterou jste vytvořili vytvořte účet úložiště pomocí příkazu [az storage account create](/cli/azure/storage/account).
 
 > [!IMPORTANT]
-> V části 2 tohoto kurzu použijete úložiště objektů Blob v Azure Event Grid. Ujistěte se, že k vytvoření účtu úložiště v oblasti Azure, která podporuje služby Event Grid. Seznam podporovaných oblastí najdete v tématu [produkty Azure podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
+> V části 2 tohoto kurzu používáte Azure Event Grid s úložištěm objektů BLOB. Ujistěte se, že jste svůj účet úložiště vytvořili v oblasti Azure, která podporuje Event Grid. Seznam podporovaných oblastí najdete v tématu [produkty Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
-V následujícím příkazu nahraďte vlastním globálně jedinečným názvem pro účet Blob storage, kde uvidíte `<blob_storage_account>` zástupný symbol.  
+V následujícím příkazu nahraďte vlastní globálně jedinečný název účtu služby Blob Storage, kde vidíte zástupný symbol `<blob_storage_account>`.  
 
 ```azurecli-interactive
 blobStorageAccount=<blob_storage_account>
@@ -75,13 +75,13 @@ az storage account create --name $blobStorageAccount \
 --sku Standard_LRS --kind blobstorage --access-tier hot 
 ```
 
-## <a name="create-blob-storage-containers"></a>Vytvořit kontejnery úložiště objektů Blob
+## <a name="create-blob-storage-containers"></a>Vytvoření kontejnerů úložiště objektů BLOB
 
-Aplikace používá v účtu služby Blob Storage dva kontejnery. Kontejnery jsou podobné složkám a ukládání objektů BLOB. Aplikace nahrává obrázky v plném rozlišení do kontejneru *images*. V pozdější části série aplikace funkcí Azure nahraje miniatury obrázků se změněnou velikostí do kontejneru *thumbnails*.
+Aplikace používá v účtu služby Blob Storage dva kontejnery. Kontejnery jsou podobné složkám a objektům blob úložiště. Aplikace nahrává obrázky v plném rozlišení do kontejneru *images*. V pozdější části série aplikace funkcí Azure nahraje miniatury obrázků se změněnou velikostí do kontejneru *thumbnails*.
 
-Pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys) zjistěte klíč účtu úložiště. Potom tento klíč použít k vytvoření dvou kontejnerů pomocí [vytvořit kontejner úložiště az](/cli/azure/storage/container) příkazu.  
+Pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys) zjistěte klíč účtu úložiště. Potom pomocí tohoto klíče vytvořte dva kontejnery pomocí příkazu [AZ Storage Container Create](/cli/azure/storage/container) .  
 
-*Image* kontejneru veřejného přístupu nastavená na `off`. *Miniatury* kontejneru veřejného přístupu nastavená na `container`. `container` Nastavení veřejného přístupu umožňuje uživatelům, kteří naleznete na webové stránce, chcete-li zobrazit miniatury.
+Veřejný přístup kontejneru *images* je nastavený na `off`. Veřejný přístup kontejneru *miniatur* je nastaven na `container`. Nastavení `container` veřejný přístup umožňuje uživatelům, kteří navštíví webovou stránku, zobrazit miniatury.
 
 ```azurecli-interactive
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
@@ -97,7 +97,7 @@ echo "Make a note of your Blob storage account key..."
 echo $blobStorageAccountKey
 ```
 
-Poznamenejte si název účtu služby Blob storage a klíč. Ukázková aplikace používá tato nastavení pro připojení k účtu úložiště k nahrání obrázku. 
+Poznamenejte si název a klíč účtu služby Blob Storage. Ukázková aplikace používá tato nastavení pro připojení k účtu úložiště pro nahrání imagí. 
 
 ## <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
@@ -111,11 +111,11 @@ Následující příklad vytvoří plán služby App Service s názvem `myAppSer
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
-## <a name="create-a-web-app"></a>Vytvoření webové aplikace
+## <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 
-Webová aplikace poskytuje prostor hostitele pro kód ukázkové aplikace, která se nasadí z ukázkového úložiště Githubu. Pomocí příkazu [az webapp create](/cli/azure/webapp) vytvořte [webovou aplikaci](../../app-service/overview.md) v plánu služby App Service `myAppServicePlan`.  
+Webová aplikace poskytuje prostor pro hostování kódu ukázkové aplikace, který je nasazený z ukázkového úložiště GitHubu. Pomocí příkazu [az webapp create](/cli/azure/webapp) vytvořte [webovou aplikaci](../../app-service/overview.md) v plánu služby App Service `myAppServicePlan`.  
 
-V následujícím příkazu nahraďte `<web_app>` s jedinečným názvem. Platné znaky jsou `a-z`, `0-9` a `-`. Pokud `<web_app>` není jedinečný, zobrazí se chybová zpráva: _Web se zadaným názvem `<web_app>` již existuje._ Výchozí adresa URL webové aplikace je `https://<web_app>.azurewebsites.net`.  
+V následujícím příkazu nahraďte `<web_app>` jedinečným názvem. Platné znaky jsou `a-z`, `0-9` a `-`. Pokud není název `<web_app>` jedinečný, zobrazí se chybová zpráva _Web se zadaným názvem `<web_app>` už existuje._ Výchozí adresa URL webové aplikace je `https://<web_app>.azurewebsites.net`.  
 
 ```azurecli-interactive
 webapp=<web_app>
@@ -129,7 +129,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 Služba App Service podporuje několik způsobů nasazení obsahu do webové aplikace. V tomto kurzu nasadíte webovou aplikaci z [veřejného úložiště ukázek GitHubu](https://github.com/Azure-Samples/storage-blob-upload-from-webapp). Nakonfigurujte nasazení z GitHubu do webové aplikace pomocí příkazu [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
-Ukázkový projekt obsahuje [ASP.NET MVC](https://www.asp.net/mvc) aplikace. Aplikace přijme obrázek, uloží ho do účtu úložiště a zobrazí obrázky z kontejneru miniatur. Webová aplikace používá k interakci se službou Azure Storage obory názvů Microsoft. [Azure. Storage](/dotnet/api/overview/azure/storage), [Microsoft. Azure. Storage. blob](/dotnet/api/microsoft.azure.storage.blob)a Microsoft. Azure. Storage. Auth z klientské knihovny Azure Storage.
+Vzorový projekt obsahuje aplikaci [ASP.NET MVC](https://www.asp.net/mvc) . Aplikace akceptuje obrázek, uloží ho do účtu úložiště a zobrazí obrázky z kontejneru miniatur. Webová aplikace používá k interakci se službou Azure Storage obory názvů Microsoft. [Azure. Storage](/dotnet/api/overview/azure/storage), [Microsoft. Azure. Storage. blob](/dotnet/api/microsoft.azure.storage.blob)a Microsoft. Azure. Storage. Auth z klientské knihovny Azure Storage.
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp \
@@ -161,7 +161,7 @@ az webapp deployment source config --name $webapp \
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-Ukázková webová aplikace zadává požadavek na přístupové tokeny, které slouží k nahrávání obrázků, pomocí [klientské knihovny Azure Storage](/dotnet/api/overview/azure/storage). Přihlašovací údaje účtu úložiště používat sadou Storage SDK se nastavují v nastavení aplikace pro webovou aplikaci. Přidat nastavení aplikace s nasazenou aplikaci [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) příkazu.
+Ukázková webová aplikace zadává požadavek na přístupové tokeny, které slouží k nahrávání obrázků, pomocí [klientské knihovny Azure Storage](/dotnet/api/overview/azure/storage). Přihlašovací údaje účtu úložiště používané sadou SDK pro úložiště se nastavují v nastavení aplikace pro webovou aplikaci. Do nasazené aplikace přidejte nastavení aplikace pomocí příkazu [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings) .
 
 ```azurecli-interactive
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -173,7 +173,7 @@ AzureStorageConfig__AccountKey=$blobStorageAccountKey
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 
-Ukázková webová aplikace zadává požadavek na přístupové tokeny, které slouží k nahrávání obrázků, pomocí [klientské knihovny Azure Storage](https://docs.microsoft.com/javascript/api/azure-storage). Přihlašovací údaje účtu úložiště používat sadou Storage SDK se nastavují v nastavení aplikace pro webovou aplikaci. Přidat nastavení aplikace s nasazenou aplikaci [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) příkazu.
+Ukázková webová aplikace zadává požadavek na přístupové tokeny, které slouží k nahrávání obrázků, pomocí [klientské knihovny Azure Storage](https://docs.microsoft.com/javascript/api/azure-storage). Přihlašovací údaje účtu úložiště používané sadou SDK pro úložiště se nastavují v nastavení aplikace pro webovou aplikaci. Do nasazené aplikace přidejte nastavení aplikace pomocí příkazu [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings) .
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
@@ -189,7 +189,7 @@ AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
 
-Ukázková webová aplikace zadává požadavek na přístupové tokeny, které slouží k nahrávání obrázků, pomocí [klientské knihovny Azure Storage](https://github.com/Azure/azure-storage-js). Přihlašovací údaje účtu úložiště používat sadou Storage SDK se nastavují v nastavení aplikace pro webovou aplikaci. Přidat nastavení aplikace s nasazenou aplikaci [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) příkazu.
+Ukázková webová aplikace zadává požadavek na přístupové tokeny, které slouží k nahrávání obrázků, pomocí [klientské knihovny Azure Storage](https://github.com/Azure/azure-storage-js). Přihlašovací údaje účtu úložiště používané sadou SDK pro úložiště se nastavují v nastavení aplikace pro webovou aplikaci. Do nasazené aplikace přidejte nastavení aplikace pomocí příkazu [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings) .
 
 ```azurecli-interactive
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -199,19 +199,19 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
 
 ---
 
-Po nasazení a konfigurace webové aplikace, můžete v aplikaci otestovat funkci nahrávání obrázků.
+Po nasazení a konfiguraci webové aplikace můžete testovat funkci nahrávání obrázků v aplikaci.
 
-## <a name="upload-an-image"></a>Nahrání image
+## <a name="upload-an-image"></a>Nahrání obrázku
 
 Pokud chcete otestovat webovou aplikaci, přejděte na adresu URL publikované aplikace. Výchozí adresa URL webové aplikace je `https://<web_app>.azurewebsites.net`.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-Vyberte **mohl odesílat fotky** oblasti vybrat a nahrát soubor nebo soubor přetáhněte do oblasti. Obrázek po úspěšném nahrání zmizí. Oddíl **vygenerované miniatury** zůstane prázdný, dokud ho neotestujete dále v tomto tématu.
+Vyberte oblast **nahrát fotografie** pro výběr a nahrání souboru nebo přetáhněte soubor do oblasti. Obrázek po úspěšném nahrání zmizí. Oddíl **vygenerované miniatury** zůstane prázdný, dokud ho neotestujete dále v tomto tématu.
 
 ![Nahrávání fotek v .NET](media/storage-upload-process-images/figure1.png)
 
-Ve vzorovém kódu `UploadFiletoStorage` úlohy v *Storagehelper.cs* soubor slouží k nahrání obrázku do *image* kontejneru v účtu úložiště pomocí [ UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) metody. Úlohu `UploadFiletoStorage` obsahuje následující vzorek kódu.
+V ukázkovém kódu se `UploadFiletoStorage` úloha v souboru *Storagehelper.cs* slouží k nahrání imagí do kontejneru *images* v rámci účtu úložiště pomocí metody [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) . Úlohu `UploadFiletoStorage` obsahuje následující vzorek kódu.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName, AzureStorageConfig _storageConfig)
@@ -256,13 +256,13 @@ Vyberte možnost **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat
 
 Ve vzorovém kódu je za nahrání obrázku do kontejneru objektů blob zodpovědná trasa `post`. Tato trasa při zpracování nahrávání využívá následující moduly:
 
-- [multer](https://github.com/expressjs/multer) implementuje strategii odeslání obslužné rutině trasy.
-- [do datového proudu](https://github.com/sindresorhus/into-stream) převede vyrovnávací paměti do datového proudu podle požadavků [Createblockblobfromlocalfile]. ()https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)
+- [multer](https://github.com/expressjs/multer) implementuje strategii nahrávání pro obslužnou rutinu trasy.
+- [do datového proudu](https://github.com/sindresorhus/into-stream) převede vyrovnávací paměť na datový proud podle požadavků [createBlockBlobFromStream]. (https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)
 
-Soubor je odeslané na trasu, zůstávají obsah souboru v paměti, dokud se soubor nahraje do kontejneru objektů blob.
+Jakmile se soubor pošle do trasy, obsah souboru zůstane v paměti, dokud se soubor neodešle do kontejneru objektů BLOB.
 
 > [!IMPORTANT]
-> Načítání velkých souborů do paměti může mít negativní vliv na výkon vaší webové aplikace. Pokud očekáváte, že uživatelé k odeslání velkých souborů, můžete zvážit pracovní soubory v systému souborů webového serveru a plánování nahrávání do úložiště objektů Blob. Jakmile jsou soubory v úložišti objektů Blob, můžete ho odebrat ze systému souborů serveru.
+> Načítání velkých souborů do paměti může mít negativní vliv na výkon vaší webové aplikace. Pokud očekáváte, že uživatelé budou posílat velké soubory, zvažte, že budete chtít zvážit pracovní soubory v systému souborů webového serveru a pak naplánujete nahrávání do úložiště objektů BLOB. Jakmile jsou soubory v úložišti objektů blob, můžete je odebrat ze systému souborů serveru.
 
 ```javascript
 const
@@ -320,13 +320,13 @@ Vyberte možnost **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat
 
 Ve vzorovém kódu je za nahrání obrázku do kontejneru objektů blob zodpovědná trasa `post`. Tato trasa při zpracování nahrávání využívá následující moduly:
 
-- [multer](https://github.com/expressjs/multer) implementuje strategii odeslání obslužné rutině trasy.
+- [multer](https://github.com/expressjs/multer) implementuje strategii nahrávání pro obslužnou rutinu trasy.
 - [do datového proudu](https://github.com/sindresorhus/into-stream) převede vyrovnávací paměť na datový proud, jak to vyžaduje [createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html).
 
-Soubor je odeslané na trasu, zůstávají obsah souboru v paměti, dokud se soubor nahraje do kontejneru objektů blob.
+Jakmile se soubor pošle do trasy, obsah souboru zůstane v paměti, dokud se soubor neodešle do kontejneru objektů BLOB.
 
 > [!IMPORTANT]
-> Načítání velkých souborů do paměti může mít negativní vliv na výkon vaší webové aplikace. Pokud očekáváte, že uživatelé k odeslání velkých souborů, můžete zvážit pracovní soubory v systému souborů webového serveru a plánování nahrávání do úložiště objektů Blob. Jakmile jsou soubory v úložišti objektů Blob, můžete ho odebrat ze systému souborů serveru.
+> Načítání velkých souborů do paměti může mít negativní vliv na výkon vaší webové aplikace. Pokud očekáváte, že uživatelé budou posílat velké soubory, zvažte, že budete chtít zvážit pracovní soubory v systému souborů webového serveru a pak naplánujete nahrávání do úložiště objektů BLOB. Jakmile jsou soubory v úložišti objektů blob, můžete je odebrat ze systému souborů serveru.
 
 ```javascript
 const {
@@ -394,7 +394,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>Kontrola zobrazení obrázku v účtu úložiště
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com). V nabídce vlevo vyberte **Účty úložiště** a potom vyberte název svého účtu úložiště. V části **služby Blob Service**vyberte **objekty BLOB**, vyberte **imagí** kontejneru.
+Přihlaste se na web [Azure Portal](https://portal.azure.com). V nabídce vlevo vyberte **Účty úložiště** a potom vyberte název svého účtu úložiště. V části **BLOB Service**vyberte **bloby**a pak vyberte kontejner **imagí** .
 
 Zkontrolujte, jestli se obrázek v kontejneru zobrazuje.
 
@@ -402,11 +402,11 @@ Zkontrolujte, jestli se obrázek v kontejneru zobrazuje.
 
 ## <a name="test-thumbnail-viewing"></a>Test zobrazení miniatury
 
-K otestování zobrazení miniatury nahrajete obrázek, který se **miniatury** kontejneru ke kontrole, jestli aplikace můžou číst **miniatury** kontejneru.
+Chcete-li otestovat zobrazení miniatur, Nahrajte obrázek do kontejneru **miniatury** , abyste zkontrolovali, jestli aplikace může číst kontejner **miniatur** .
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com). V nabídce vlevo vyberte **Účty úložiště** a potom vyberte název svého účtu úložiště. V části **služby Blob Service**vyberte **objekty BLOB**a pak **miniatury** kontejneru. Výběrem položky **Nahrát** otevřete podokno **Nahrát objekt blob**.
+Přihlaste se na web [Azure Portal](https://portal.azure.com). V nabídce vlevo vyberte **Účty úložiště** a potom vyberte název svého účtu úložiště. V části **BLOB Service**vyberte **objekty blob**a pak vyberte kontejner **miniatury** . Výběrem položky **Nahrát** otevřete podokno **Nahrát objekt blob**.
 
-Pomocí nástroje pro výběr souborů vyberte soubor a vyberte **nahrát**.
+Zvolte soubor pomocí nástroje pro výběr souborů a vyberte **Odeslat**.
 
 Vraťte se do své aplikace a zkontrolujte, jestli je viditelný obrázek nahraný do kontejneru **thumbnails**.
 
@@ -421,15 +421,15 @@ Vraťte se do své aplikace a zkontrolujte, jestli je viditelný obrázek nahran
 
 ---
 
-Ve druhé části série můžete automatizovat vytváření obrázků miniatur, takže není nutné tuto bitovou kopii. V kontejneru **thumbnails** na webu Azure Portal vyberte obrázek, který jste nahráli, a výběrem možnosti **Odstranit** ho odstraňte. 
+Ve druhé části série můžete automatizovat vytváření obrázků miniatur, takže tuto image nebudete potřebovat. V kontejneru **thumbnails** na webu Azure Portal vyberte obrázek, který jste nahráli, a výběrem možnosti **Odstranit** ho odstraňte. 
 
-Můžete povolit CDN k ukládání obsahu do mezipaměti z vašeho účtu úložiště Azure. Další informace o tom, jak povolit CDN pomocí svého účtu Azure storage najdete v tématu [integrace účtu služby Azure storage s Azure CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md).
+CDN můžete povolit ukládání obsahu do mezipaměti z vašeho účtu úložiště Azure. Další informace o tom, jak povolit CDN s účtem služby Azure Storage, najdete v tématu [integrace účtu Azure Storage s Azure CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V první části této série jste zjistili, jak nakonfigurovat webovou aplikaci pro interakci s úložištěm.
+V první části série jste se dozvěděli, jak nakonfigurovat webovou aplikaci pro práci s úložištěm.
 
-Přejděte k druhé části se dozvíte, jak pomocí Event gridu aktivovat funkci Azure pro změnu velikosti obrázku.
+Pokud se chcete dozvědět víc o použití Event Grid k aktivaci funkce Azure pro změnu velikosti obrázku, přečtěte si část dvě série.
 
 > [!div class="nextstepaction"]
 > [Aktivace funkce Azure pro změnu velikosti obrázku pomocí Event Gridu](../../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

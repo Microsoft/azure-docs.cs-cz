@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 7a7085eccf05fb65bf7b9036c738a1d17e91a433
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 467bf7fe26df2f826d6d44d42a9e30b98795232f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935911"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043933"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Střední text z konzoly API
 
@@ -173,4 +173,4 @@ Podrobné vysvětlení všech sekcí v odpovědi JSON najdete v koncepční př�
 
 ## <a name="next-steps"></a>Další kroky
 
-Použijte REST API ve vašem kódu nebo začněte s aplikací pro [rychlý Start s moderováním .NET](text-moderation-quickstart-dotnet.md) pro integraci s vaší aplikací.
+Použijte REST API ve vašem kódu nebo postupujte podle pokynů pro [rychlý Start .NET SDK](dotnet-sdk-quickstart.md) pro integraci s vaší aplikací.

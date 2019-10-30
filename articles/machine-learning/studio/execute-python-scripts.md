@@ -1,7 +1,7 @@
 ---
 title: Spouštění skriptů strojového učení v Pythonu
 titleSuffix: Azure Machine Learning Studio
-description: Naučte se používat Python v Azure Machine Learning Studio.
+description: Naučte se používat modul spouštěného skriptu Pythonu pro použití kódu Pythonu v Machine Learning Studio (klasických) experimentech a webových službách.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 64030cac73b6fbd750b2ed681d85642cc6ad1146
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bfc2efca0786838d528b3019a3aff405f46ef645
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308866"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053785"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Spouštění skriptů strojového učení v Pythonu v nástroji Azure Machine Learning Studio
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak pomocí modulu spouštěného skriptu Pythonu použ
 
 ## <a name="using-the-execute-python-script-module"></a>Použití modulu spuštění skriptu Pythonu
 
-Primární rozhraní pro Python v nástroji Studio je prostřednictvím modulu [spuštění skriptu Pythonu][execute-python-script] . Akceptuje až tři vstupy a vytvoří až dva výstupy, podobně jako modul [spuštění skriptu jazyka R][execute-r-script] . Kód Pythonu je zadán do pole parametru prostřednictvím speciálně pojmenované funkce `azureml_main`vstupního bodu.
+Primární rozhraní pro Python v nástroji Studio je prostřednictvím modulu [spuštění skriptu Pythonu][execute-python-script] . Akceptuje až tři vstupy a vytvoří až dva výstupy, podobně jako modul [spuštění skriptu jazyka R][execute-r-script] . Kód Pythonu je zadán do pole parametru prostřednictvím speciálně pojmenované funkce vstupního bodu s názvem `azureml_main`.
 
 ![Spustit modul Python Script](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -33,7 +33,7 @@ Primární rozhraní pro Python v nástroji Studio je prostřednictvím modulu [
 
 ### <a name="input-parameters"></a>Vstupní parametry
 
-Vstupy modulu Pythonu se zveřejňují jako Pandaselné datarámce. `azureml_main` Funkce přijímá až dva volitelné PANDAS dataframes jako parametry.
+Vstupy modulu Pythonu se zveřejňují jako Pandaselné datarámce. Funkce `azureml_main` přijímá až dva volitelné PANDAS dataframes jako parametry.
 
 Mapování mezi vstupními porty a parametry funkce jsou pozice:
 
@@ -41,13 +41,13 @@ Mapování mezi vstupními porty a parametry funkce jsou pozice:
 - Druhý vstup (Pokud je připojen) je namapován na druhý parametr funkce.
 - Třetí vstup se používá k [importu dalších modulů Pythonu](#import-modules).
 
-Podrobnější sémantika způsobu, jakým jsou vstupní porty mapovány na parametry `azureml_main` funkce, jsou uvedeny níže.
+Podrobnější sémantika způsobu, jakým jsou porty vstupu mapovány na parametry funkce `azureml_main`, jsou uvedeny níže.
 
 ![Tabulka vstupních konfigurací portů a výsledný podpis v jazyce Python](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
 ### <a name="output-return-values"></a>Výstupní návratové hodnoty
 
-Funkce musí vracet jeden PANDAS dataframe zabalený v rámci sekvence Pythonu, jako je například řazená kolekce členů, seznam nebo pole numpy. [](https://docs.python.org/2/c-api/sequence.html) `azureml_main` První prvek této sekvence se vrátí na první výstupní port modulu. Druhý výstupní port modulu se používá pro [vizualizace](#visualizations) a nevyžaduje návratovou hodnotu. Toto schéma je uvedené níže.
+Funkce `azureml_main` musí vracet jeden PANDAS dataframe zabalený do [sekvence](https://docs.python.org/2/c-api/sequence.html) Pythonu, jako je například řazená kolekce členů, seznam nebo pole numpy. První prvek této sekvence se vrátí na první výstupní port modulu. Druhý výstupní port modulu se používá pro [vizualizace](#visualizations) a nevyžaduje návratovou hodnotu. Toto schéma je uvedené níže.
 
 ![Mapování vstupních portů na parametry a návratovou hodnotu na výstupní port](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
@@ -60,16 +60,16 @@ Datové sady studia nejsou stejné jako v případě Panda dataframes. V důsled
 | Řetězce a číslice| Přeloženo tak, jak je |
 | PANDAS ' NEDEF ' | Přeloženo jako chybějící hodnota |
 | Vektory indexu | Neplatné |
-| Názvy sloupců bez řetězců | Zavolat `str` na názvy sloupců |
+| Názvy sloupců bez řetězců | `str` volání u názvů sloupců |
 | Duplicitní názvy sloupců | Přidat číselnou příponu: (1), (2), (3) atd.
 
-**Všechny vstupní datové rámce ve funkci Pythonu mají vždycky 64 bitů číselného indexu od 0 do počtu řádků minus 1.*
+**všechny vstupní datové rámce ve funkci Pythonu mají vždycky 64 bitů číselného indexu od 0 do počtu řádků minus 1* .
 
 ## <a id="import-modules"></a>Importují se existující moduly skriptu Pythonu.
 
 Back-end používaný ke spuštění Pythonu vychází z [Anaconda](https://www.anaconda.com/distribution/), široce používaného vědecké distribuce Pythonu. Obsahuje téměř 200 nejčastějších balíčků Python používaných v úlohách orientovaných na data. Studio v současné době nepodporuje pro instalaci a správu externích knihoven použití systémů správy balíčků, jako je PIP nebo conda.  Pokud potřebujete přidat další knihovny, použijte jako vodítko následující scénář.
 
-Běžným případem použití je zahrnutí stávajících skriptů Pythonu do experimentů studia. Modul [spuštění skriptu Pythonu][execute-python-script] přijímá soubor zip, který obsahuje moduly Pythonu na třetím vstupním portu. Soubor je v době běhu extrahován rozhraním a obsah se přidá do cesty knihovny interpretu Pythonu. Funkce `azureml_main` vstupního bodu pak může tyto moduly importovat přímo. 
+Běžným případem použití je zahrnutí stávajících skriptů Pythonu do experimentů studia. Modul [spuštění skriptu Pythonu][execute-python-script] přijímá soubor zip, který obsahuje moduly Pythonu na třetím vstupním portu. Soubor je v době běhu extrahován rozhraním a obsah se přidá do cesty knihovny interpretu Pythonu. Funkce vstupního bodu `azureml_main` pak může tyto moduly importovat přímo. 
 
 Například zvažte, že soubor Hello.py obsahující jednoduchou funkci "Hello, World".
 
@@ -85,7 +85,7 @@ Nahrajte soubor ZIP jako datovou sadu do studia. Pak vytvořte a spusťte experi
 
 ![Uživatelsky definovaný kód Pythonu nahraný jako soubor zip](./media/execute-python-scripts/figure6b.png)
 
-Výstup modulu ukazuje, že se soubor zip rozbalí a že je funkce `print_hello` spuštěná.
+Výstup modulu ukazuje, že se soubor zip rozbalí a že funkce `print_hello` byla spuštěna.
 
 ![Výstup modulu zobrazující uživatelsky definovanou funkci](./media/execute-python-scripts/figure7.png)
 
@@ -95,7 +95,7 @@ K datům uloženým v účtu Azure Blob Storage můžete přistupovat pomocí t�
 
 1. Stáhněte si [balíček Azure Blob Storage pro Python](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) místně.
 1. Nahrajte soubor zip do pracovního prostoru studia jako datovou sadu.
-1. Vytvoření objektu BlobService pomocí`protocol='http'`
+1. Vytvořte objekt BlobService pomocí `protocol='http'`
 
 ```
 from azure.storage.blob import BlockBlobService
@@ -179,7 +179,7 @@ Vstupní bod Pythonu smí vracet pouze jeden datový rámec jako výstup. V tuto
 
 V současné době je jediným způsobem, jak přidat vlastní moduly Pythonu, prostřednictvím mechanismu souboru ZIP popsaného výše. I když je to pro malé moduly vhodné, je náročné pro velké moduly (zejména moduly s nativními knihovnami DLL) nebo velký počet modulů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete ve [Středisku pro vývojáře Python](https://azure.microsoft.com/develop/python/).
 
