@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: Základní dokumentace k zabezpečení Azure
+summary: Seznamte se s našimi osvědčenými postupy a pokyny pro zabezpečení cloudových řešení v Azure.
+metadata:
+  title: Základní dokumentace k zabezpečení Azure
+  description: Zjistěte, jak zabezpečit vaše cloudová řešení v Azure.
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 10/28/2019
+  ms.openlocfilehash: 4744c6668de55b28725f1e1662f93030b5f61007
+  ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/29/2019
+  ms.locfileid: "73055907"
+landingContent:
+- title: Informace o zabezpečení Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Seznámení se zabezpečením Azure
+      url: overview.md
+    - text: Technické možnosti zabezpečení
+      url: technical-capabilities.md
+  - linkListType: concept
+    links:
+    - text: Jak Microsoft zabezpečuje infrastrukturu Azure
+      url: infrastructure.md
+- title: Začínáme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Sdílená odpovědnost v cloudu
+      url: shared-responsibility.md
+    - text: Technologie a služby zabezpečení
+      url: services-technologies.md
+    - text: Integrované ovládací prvky zabezpečení
+      url: security-controls.md
+- title: Zmírnění hrozeb
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Security Center
+      url: ../../security-center/security-center-intro.md
+  - linkListType: concept
+    links:
+    - text: Správa a monitorování
+      url: management-monitoring-overview.md
+    - text: Pokročilá detekce hrozeb
+      url: threat-detection.md
+- title: Osvědčené postupy pro zabezpečení vašich cloudových řešení
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zabezpečení sítě
+      url: network-best-practices.md
+    - text: Úlohy IaaS
+      url: iaas.md
+    - text: Správa identit a řízení přístupu
+      url: identity-management-best-practices.md
+    - text: Zabezpečení databází
+      url: database-best-practices.md
+    - text: Nasazení PaaS
+      url: paas-deployments.md
+    - text: Zabezpečení a šifrování dat
+      url: data-encryption-best-practices.md
+    - text: Provozní zabezpečení
+      url: operational-best-practices.md
+- title: Ochrana prostředků Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Šifrování v klidovém stavu
+      url: encryption-atrest.md
+    - text: Ochrana dat
+      url: database-security-overview.md
+    - text: Zabezpečení sítě
+      url: network-overview.md
+    - text: Zabezpečení virtuálních počítačů
+      url: virtual-machines-overview.md
+    - text: Zabezpečení správy identit
+      url: identity-management-overview.md
+  - linkListType: learn
+    links:
+    - text: Zabezpečení cloudových aplikací
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps/
+- title: Vybudování dovedností v oblasti zabezpečení
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Implementace zabezpečení sítě
+      url: https://docs.microsoft.com/learn/paths/implement-network-security
+    - text: Správa identit a přístupu
+      url: https://docs.microsoft.com/learn/paths/manage-identity-and-access
+    - text: Implementace zabezpečení správy prostředků
+      url: https://docs.microsoft.com/learn/paths/implement-resource-mgmt-security
+    - text: Implementace zabezpečení hostitelů pro virtuální počítače
+      url: https://docs.microsoft.com/learn/paths/implement-host-security

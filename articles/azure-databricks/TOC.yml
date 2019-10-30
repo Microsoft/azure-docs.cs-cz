@@ -37,6 +37,9 @@
         - name: Začínáme s Azure Databricks
           href: /azure/databricks/getting-started/quick-start
           maintainContext: true
+        - name: Přehled dat
+          href: /azure/databricks/getting-started/data
+          maintainContext: true
         - name: Koncepty Azure Databricks
           href: /azure/databricks/getting-started/concepts
           maintainContext: true
@@ -72,6 +75,425 @@
         - name: Podporované prohlížeče
           href: /azure/databricks/getting-started/supported-browsers
           maintainContext: true
+    - name: Moduly runtime Databricks
+      items:
+        - name: Přehled modulů runtime
+          href: /azure/databricks/runtime/index
+          maintainContext: true
+        - name: Modul runtime Databricks
+          href: /azure/databricks/runtime/dbr
+          maintainContext: true
+        - name: Databricks Runtime se systémem Conda
+          href: /azure/databricks/runtime/conda
+          maintainContext: true
+        - name: Modul runtime Databricks pro strojové učení
+          href: /azure/databricks/runtime/mlruntime
+          maintainContext: true
+        - name: Databricks Runtime pro Genomics
+          href: /azure/databricks/runtime/genomicsruntime
+          maintainContext: true
+        - name: Databricks Light
+          href: /azure/databricks/runtime/light
+          maintainContext: true
+    - name: Pracovní prostor
+      items:
+        - name: Prozkoumání pracovního prostoru Azure Databricks
+          href: /azure/databricks/workspace/index
+          maintainContext: true
+        - name: Prostředky pracovního prostoru
+          href: /azure/databricks/workspace/workspace-assets
+          maintainContext: true
+        - name: Práce s objekty pracovního prostoru
+          href: /azure/databricks/workspace/workspace-objects
+          maintainContext: true
+        - name: 'Získání identifikátorů úloh, pracovních prostorů, clusterů a poznámkových bloků'
+          href: /azure/databricks/workspace/workspace-details
+          maintainContext: true
+    - name: Clustery
+      items:
+        - name: Přehled clusterů
+          href: /azure/databricks/clusters/index
+          maintainContext: true
+        - name: Vytvoření clusteru
+          href: /azure/databricks/clusters/create
+          maintainContext: true
+        - name: Správa clusterů
+          href: /azure/databricks/clusters/clusters-manage
+          maintainContext: true
+        - name: Konfigurace clusterů
+          href: /azure/databricks/clusters/configure
+          maintainContext: true
+        - name: Inicializace uzlů clusteru
+          href: /azure/databricks/clusters/init-scripts
+          maintainContext: true
+        - name: Vlastní kontejnery
+          href: /azure/databricks/clusters/custom-containers
+          maintainContext: true
+        - name: Clustery s podporou GPU
+          href: /azure/databricks/clusters/gpu
+          maintainContext: true
+        - name: Fondy
+          items:
+            - name: Přehled fondů
+              href: /azure/databricks/clusters/instance-pools/index
+              maintainContext: true
+            - name: Zobrazení fondů
+              href: /azure/databricks/clusters/instance-pools/display
+              maintainContext: true
+            - name: Vytvoření fondu
+              href: /azure/databricks/clusters/instance-pools/create
+              maintainContext: true
+            - name: Konfigurace fondu
+              href: /azure/databricks/clusters/instance-pools/configure
+              maintainContext: true
+            - name: Úprava fondu
+              href: /azure/databricks/clusters/instance-pools/edit
+              maintainContext: true
+            - name: Odstranění fondu
+              href: /azure/databricks/clusters/instance-pools/delete
+              maintainContext: true
+            - name: Použití fondu
+              href: /azure/databricks/clusters/instance-pools/cluster-instance-pool
+              maintainContext: true
+    - name: Notebooks
+      items:
+        - name: Přehled poznámkových bloků
+          href: /azure/databricks/notebooks/index
+          maintainContext: true
+        - name: Správa poznámkových bloků
+          href: /azure/databricks/notebooks/notebooks-manage
+          maintainContext: true
+        - name: Použití poznámkových bloků
+          href: /azure/databricks/notebooks/notebooks-use
+          maintainContext: true
+        - name: Správa verzí
+          items:
+            - name: Správa verzí s využitím Azure DevOps
+              href: /azure/databricks/notebooks/azure-devops-services-version-control
+              maintainContext: true
+            - name: Správa verzí s využitím Bitbucket Cloudu
+              href: /azure/databricks/notebooks/bitbucket-cloud-version-control
+              maintainContext: true
+            - name: Správa verzí s využitím GitHubu
+              href: /azure/databricks/notebooks/github-version-control
+              maintainContext: true
+        - name: Vizualizace
+          items:
+            - name: Vizualizace dat
+              href: /azure/databricks/notebooks/visualizations/index
+              maintainContext: true
+            - name: Migrace zastaralých spojnicových grafů
+              href: /azure/databricks/notebooks/visualizations/migrate-charts
+              maintainContext: true
+            - name: Vizualizace v Pythonu podrobně
+              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-python
+              maintainContext: true
+            - name: Vizualizace v jazyce Scala podrobně
+              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-scala
+              maintainContext: true
+            - name: 'HTML, D3 a SVG v poznámkových blocích'
+              href: /azure/databricks/notebooks/visualizations/html-d3-and-svg
+              maintainContext: true
+            - name: Bokeh v poznámkových blocích v Pythonu
+              href: /azure/databricks/notebooks/visualizations/bokeh
+              maintainContext: true
+            - name: Matplotlib a ggplot v poznámkových blocích v Pythonu
+              href: /azure/databricks/notebooks/visualizations/matplotlib-and-ggplot
+              maintainContext: true
+            - name: htmlwidgets v poznámkových blocích v R
+              href: /azure/databricks/notebooks/visualizations/htmlwidgets
+              maintainContext: true
+            - name: Plotly v poznámkových blocích v Pythonu a R
+              href: /azure/databricks/notebooks/visualizations/plotly
+              maintainContext: true
+        - name: Řídicí panely
+          href: /azure/databricks/notebooks/dashboards
+          maintainContext: true
+        - name: Widgety
+          href: /azure/databricks/notebooks/widgets
+          maintainContext: true
+        - name: Pracovní postupy pro poznámkové bloky
+          href: /azure/databricks/notebooks/notebook-workflows
+          maintainContext: true
+        - name: Buňky balíčků
+          href: /azure/databricks/notebooks/package-cells
+          maintainContext: true
+    - name: Úlohy
+      href: /azure/databricks/jobs
+      maintainContext: true
+    - name: Knihovny
+      href: /azure/databricks/libraries
+      maintainContext: true
+    - name: Data
+      items:
+        - name: Systém souborů Databricks
+          href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
+        - name: Databáze a tabulky
+          href: /azure/databricks/data/tables
+          maintainContext: true
+        - name: Metastory
+          items:
+            - name: Externí metastore Hive
+              href: /azure/databricks/data/metastores/external-hive-metastore
+              maintainContext: true
+        - name: Zdroje dat
+          items:
+            - name: Databáze SQL s využitím JDBC
+              href: /azure/databricks/data/data-sources/sql-databases
+              maintainContext: true
+            - name: Azure SQL Database s využitím konektoru Apache Spark
+              href: /azure/databricks/data/data-sources/sql-databases-azure
+              maintainContext: true
+            - name: Azure Blob Storage
+              href: /azure/databricks/data/data-sources/azure/azure-storage
+              maintainContext: true
+            - name: Azure Data Lake Storage Gen2
+              href: /azure/databricks/data/data-sources/azure/azure-datalake-gen2
+              maintainContext: true
+            - name: Azure Data Lake Storage
+              href: /azure/databricks/data/data-sources/azure/azure-datalake
+              maintainContext: true
+            - name: Průchod Azure Data Lake Storage
+              href: /azure/databricks/data/data-sources/azure/adls-passthrough
+              maintainContext: true
+            - name: Databáze Cosmos
+              href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
+              maintainContext: true
+            - name: SQL Data Warehouse
+              href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
+              maintainContext: true
+            - name: Binární soubory
+              href: /azure/databricks/data/data-sources/binary-file
+              maintainContext: true
+            - name: Cassandra
+              href: /azure/databricks/data/data-sources/cassandra
+              maintainContext: true
+            - name: Couchbase
+              href: /azure/databricks/data/data-sources/couchbase
+              maintainContext: true
+            - name: Elastické vyhledávání
+              href: /azure/databricks/data/data-sources/elasticsearch
+              maintainContext: true
+            - name: Image
+              href: /azure/databricks/data/data-sources/image
+              maintainContext: true
+            - name: Tabulky Hive
+              href: /azure/databricks/data/data-sources/hive-tables
+              maintainContext: true
+            - name: Experiment MLflow
+              href: /azure/databricks/data/data-sources/mlflow-experiment
+              maintainContext: true
+            - name: MongoDb
+              href: /azure/databricks/data/data-sources/mongodb
+              maintainContext: true
+            - name: Neo4j
+              href: /azure/databricks/data/data-sources/neo4j
+              maintainContext: true
+            - name: Soubory Avro
+              href: /azure/databricks/data/data-sources/read-avro
+              maintainContext: true
+            - name: Soubory CSV
+              href: /azure/databricks/data/data-sources/read-csv
+              maintainContext: true
+            - name: Soubory JSON
+              href: /azure/databricks/data/data-sources/read-json
+              maintainContext: true
+            - name: Komprimované soubory LZO
+              href: /azure/databricks/data/data-sources/read-lzo
+              maintainContext: true
+            - name: Soubory Parquet
+              href: /azure/databricks/data/data-sources/read-parquet
+              maintainContext: true
+            - name: Redis
+              href: /azure/databricks/data/data-sources/redis
+              maintainContext: true
+            - name: Riak Time Series
+              href: /azure/databricks/data/data-sources/riak-ts
+              maintainContext: true
+            - name: Snowflake
+              href: /azure/databricks/data/data-sources/snowflake
+              maintainContext: true
+            - name: Soubory ZIP
+              href: /azure/databricks/data/data-sources/zip-files
+              maintainContext: true
+        - name: FileStore
+          href: /azure/databricks/data/filestore
+          maintainContext: true
+    - name: Nástroje pro business intelligence
+      items:
+        - name: Propojení nástrojů pro BI
+          href: /azure/databricks/bi/jdbc-odbc-bi
+          maintainContext: true
+        - name: Tableau
+          href: /azure/databricks/bi/tableau
+          maintainContext: true
+        - name: Power BI
+          href: /azure/databricks/bi/power-bi
+          maintainContext: true
+        - name: Alteryx
+          href: /azure/databricks/bi/alteryx
+          maintainContext: true
+        - name: Looker
+          href: /azure/databricks/bi/looker
+          maintainContext: true
+        - name: SQL Workbench/J
+          href: /azure/databricks/bi/workbenchj
+          maintainContext: true
+    - name: Delta Lake
+      items:
+        - name: Seznámení s Delta Lake
+          href: /azure/databricks/delta/delta-intro
+          maintainContext: true
+        - name: Začínáme s Delta Lake
+          href: /azure/databricks/delta/quick-start
+          maintainContext: true
+        - name: Úvodní poznámkové bloky
+          href: /azure/databricks/delta/intro-notebooks
+          maintainContext: true
+        - name: Dávkové čtení a zápisy tabulek
+          href: /azure/databricks/delta/delta-batch
+          maintainContext: true
+        - name: Streamování čtení a zápisů tabulek
+          href: /azure/databricks/delta/delta-streaming
+          maintainContext: true
+        - name: 'Odstranění, aktualizace a sloučení tabulek'
+          href: /azure/databricks/delta/delta-update
+          maintainContext: true
+        - name: Příkazy tabulkových nástrojů
+          href: /azure/databricks/delta/delta-utility
+          maintainContext: true
+        - name: Reference k rozhraní API Delta Lake
+          href: /azure/databricks/delta/delta-apidoc
+          maintainContext: true
+        - name: Řízení souběžnosti
+          href: /azure/databricks/delta/concurrency-control
+          maintainContext: true
+        - name: Optimalizace
+          items:
+            - name: Přehled optimalizací
+              href: /azure/databricks/delta/optimizations/index
+              maintainContext: true
+            - name: Optimalizace výkonu s využitím správy souborů
+              href: /azure/databricks/delta/optimizations/file-mgmt
+              maintainContext: true
+            - name: Automatická optimalizace
+              href: /azure/databricks/delta/optimizations/auto-optimize
+              maintainContext: true
+            - name: Optimalizace výkonu s ukládáním do mezipaměti
+              href: /azure/databricks/delta/optimizations/delta-cache
+              maintainContext: true
+            - name: Úrovně izolace
+              href: /azure/databricks/delta/optimizations/isolation-level
+              maintainContext: true
+            - name: Replikace tabulek MySQL do tabulek Delta Lake
+              href: /azure/databricks/delta/optimizations/mysql-delta
+              maintainContext: true
+            - name: Optimalizace výkonu spojení
+              items:
+                - name: Přehled optimalizace výkonu spojení
+                  href: /azure/databricks/delta/join-performance/index
+                  maintainContext: true
+                - name: Optimalizace spojování pro rozsahy
+                  href: /azure/databricks/delta/join-performance/range-join
+                  maintainContext: true
+                - name: Optimalizace spojování pro nerovnoměrné distribuce
+                  href: /azure/databricks/delta/join-performance/skew-join
+                  maintainContext: true
+            - name: Optimalizovaná transformace dat
+              items:
+                - name: Přehled optimalizované transformace dat
+                  href: /azure/databricks/delta/data-transformation/index
+                  maintainContext: true
+                - name: Funkce vyššího řádu
+                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
+                  maintainContext: true
+                - name: Transformace složitých datových typů
+                  href: /azure/databricks/delta/data-transformation/complex-types
+                  maintainContext: true
+            - name: Osvědčené postupy
+              href: /azure/databricks/delta/best-practices
+              maintainContext: true
+            - name: Správa verzí tabulek
+              href: /azure/databricks/delta/optimizations/versioning
+              maintainContext: true
+            - name: Příklady optimalizace
+              href: /azure/databricks/delta/optimizations/optimization-examples
+              maintainContext: true
+        - name: Nejčastější dotazy
+          href: /azure/databricks/delta/delta-faq
+          maintainContext: true
+        - name: Další zdroje Delta
+          href: /azure/databricks/delta/delta-resources
+          maintainContext: true
+    - name: Datové rámce a datové sady
+      items:
+        - name: Přehled datových rámců a datových sad
+          href: /azure/databricks/spark/latest/dataframes-datasets/index
+          maintainContext: true
+        - name: Seznámení s datovými rámci Python
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-python
+          maintainContext: true
+        - name: Seznámení s datovými rámci Scala
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-scala
+          maintainContext: true
+        - name: Seznámení s datovými sadami
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-datasets
+          maintainContext: true
+        - name: Složitá a vnořená data
+          href: /azure/databricks/spark/latest/dataframes-datasets/complex-nested-data
+          maintainContext: true
+        - name: Agregátory
+          href: /azure/databricks/spark/latest/dataframes-datasets/aggregators
+          maintainContext: true
+    - name: Strukturované streamování
+      items:
+        - name: Přehled strukturovaného streamování
+          href: /azure/databricks/spark/latest/structured-streaming/index
+          maintainContext: true
+        - name: Úvodní poznámkové bloky
+          href: /azure/databricks/spark/latest/structured-streaming/demo-notebooks
+          maintainContext: true
+        - name: Jímky a zdroje dat streamování
+          items:
+            - name: Přehled zdrojů a jímek
+              href: /azure/databricks/spark/latest/structured-streaming/data-sources
+              maintainContext: true
+            - name: Apache Kafka
+              href: /azure/databricks/spark/latest/structured-streaming/kafka
+              maintainContext: true
+            - name: Azure Event Hubs
+              href: /azure/databricks/spark/latest/structured-streaming/streaming-event-hubs
+              maintainContext: true
+            - name: Tabulky Delta Lake
+              href: /azure/databricks/spark/latest/structured-streaming/delta
+              maintainContext: true
+            - name: Čtení a zápis streamovaných dat Avro s využitím datových rámců
+              href: /azure/databricks/spark/latest/structured-streaming/avro-dataframe
+              maintainContext: true
+            - name: Zápis do libovolných datových jímek
+              href: /azure/databricks/spark/latest/structured-streaming/foreach
+              maintainContext: true
+            - name: Optimalizovaná služba Azure Blob Storage se službou Azure Queue Storage
+              href: /azure/databricks/spark/latest/structured-streaming/aqs
+              maintainContext: true
+        - name: Strukturované streamování v produkčním prostředí
+          href: /azure/databricks/spark/latest/structured-streaming/production
+          maintainContext: true
+        - name: Příklady streamování
+          href: /azure/databricks/spark/latest/structured-streaming/examples
+          maintainContext: true
+        - name: Streamování Sparku (starší verze)
+          items:
+            - name: Přehled streamování Sparku (starší verze)
+              href: /azure/databricks/spark/latest/rdd-streaming/index
+              maintainContext: true
+            - name: Ladění aplikací se streamováním Sparku
+              href: /azure/databricks/spark/latest/rdd-streaming/debugging-streaming-applications
+              maintainContext: true
+            - name: Osvědčené postupy pro vývoj stremovacích aplikací
+              href: /azure/databricks/spark/latest/rdd-streaming/developing-streaming-applications
+              maintainContext: true
     - name: SQL
       items:
         - name: Přehled SQL
@@ -115,7 +537,7 @@
             - name: Create View
               href: /azure/databricks/spark/latest/spark-sql/language-manual/create-view
               maintainContext: true
-            - name: Delete from (Delta Lake v Azure Databricks)
+            - name: Delete From (Delta Lake v Azure Databricks)
               href: /azure/databricks/spark/latest/spark-sql/language-manual/delete-from
               maintainContext: true
             - name: Describe Database
@@ -273,422 +695,6 @@
         - name: RStudio v Azure Databricks
           href: /azure/databricks/spark/latest/sparkr/rstudio
           maintainContext: true
-    - name: Moduly runtime Databricks
-      items:
-        - name: Přehled modulů runtime
-          href: /azure/databricks/runtime/index
-          maintainContext: true
-        - name: Modul runtime Databricks
-          href: /azure/databricks/runtime/dbr
-          maintainContext: true
-        - name: Databricks Runtime se systémem Conda
-          href: /azure/databricks/runtime/conda
-          maintainContext: true
-        - name: Modul runtime Databricks pro strojové učení
-          href: /azure/databricks/runtime/mlruntime
-          maintainContext: true
-        - name: Modul runtime Databricks pro zdravotnictví a lékařské technologie
-          href: /azure/databricks/runtime/hlsruntime
-          maintainContext: true
-        - name: Databricks Light
-          href: /azure/databricks/runtime/light
-          maintainContext: true
-    - name: Pracovní prostor
-      items:
-        - name: Prozkoumání pracovního prostoru Azure Databricks
-          href: /azure/databricks/workspace/index
-          maintainContext: true
-        - name: 'Získání identifikátorů úloh, pracovních prostorů, clusterů a poznámkových bloků'
-          href: /azure/databricks/workspace/workspace-details
-          maintainContext: true
-        - name: Práce s objekty pracovního prostoru
-          href: /azure/databricks/workspace/workspace-objects
-          maintainContext: true
-    - name: Clustery
-      items:
-        - name: Přehled clusterů
-          href: /azure/databricks/clusters/index
-          maintainContext: true
-        - name: Správa clusterů
-          href: /azure/databricks/clusters/clusters-manage
-          maintainContext: true
-        - name: Vytvoření clusteru
-          href: /azure/databricks/clusters/create
-          maintainContext: true
-        - name: Konfigurace clusterů
-          href: /azure/databricks/clusters/configure
-          maintainContext: true
-        - name: Inicializace uzlů clusteru
-          href: /azure/databricks/clusters/init-scripts
-          maintainContext: true
-        - name: Vlastní kontejnery
-          href: /azure/databricks/clusters/custom-containers
-          maintainContext: true
-        - name: Clustery s podporou GPU
-          href: /azure/databricks/clusters/gpu
-          maintainContext: true
-        - name: Fondy
-          items:
-            - name: Přehled fondů
-              href: /azure/databricks/clusters/instance-pools/index
-              maintainContext: true
-            - name: Zobrazení fondů
-              href: /azure/databricks/clusters/instance-pools/display
-              maintainContext: true
-            - name: Vytvoření fondu
-              href: /azure/databricks/clusters/instance-pools/create
-              maintainContext: true
-            - name: Konfigurace fondu
-              href: /azure/databricks/clusters/instance-pools/configure
-              maintainContext: true
-            - name: Úprava fondu
-              href: /azure/databricks/clusters/instance-pools/edit
-              maintainContext: true
-            - name: Odstranění fondu
-              href: /azure/databricks/clusters/instance-pools/delete
-              maintainContext: true
-            - name: Použití fondu
-              href: /azure/databricks/clusters/instance-pools/cluster-instance-pool
-              maintainContext: true
-    - name: Notebooks
-      items:
-        - name: Přehled poznámkových bloků
-          href: /azure/databricks/notebooks/index
-          maintainContext: true
-        - name: Použití poznámkových bloků
-          href: /azure/databricks/notebooks/notebooks-use
-          maintainContext: true
-        - name: Správa poznámkových bloků
-          href: /azure/databricks/notebooks/notebooks-manage
-          maintainContext: true
-        - name: Správa verzí
-          items:
-            - name: Správa verzí s využitím Azure DevOps
-              href: /azure/databricks/notebooks/azure-devops-services-version-control
-              maintainContext: true
-            - name: Správa verzí s využitím Bitbucket Cloudu
-              href: /azure/databricks/notebooks/bitbucket-cloud-version-control
-              maintainContext: true
-            - name: Správa verzí s využitím GitHubu
-              href: /azure/databricks/notebooks/github-version-control
-              maintainContext: true
-        - name: Vizualizace
-          items:
-            - name: Vizualizace dat
-              href: /azure/databricks/notebooks/visualizations/index
-              maintainContext: true
-            - name: Migrace zastaralých spojnicových grafů
-              href: /azure/databricks/notebooks/visualizations/migrate-charts
-              maintainContext: true
-            - name: Vizualizace v Pythonu podrobně
-              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-python
-              maintainContext: true
-            - name: Vizualizace v jazyce Scala podrobně
-              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-scala
-              maintainContext: true
-            - name: 'HTML, D3 a SVG v poznámkových blocích'
-              href: /azure/databricks/notebooks/visualizations/html-d3-and-svg
-              maintainContext: true
-            - name: Bokeh v poznámkových blocích v Pythonu
-              href: /azure/databricks/notebooks/visualizations/bokeh
-              maintainContext: true
-            - name: Matplotlib a ggplot v poznámkových blocích v Pythonu
-              href: /azure/databricks/notebooks/visualizations/matplotlib-and-ggplot
-              maintainContext: true
-            - name: htmlwidgets v poznámkových blocích v R
-              href: /azure/databricks/notebooks/visualizations/htmlwidgets
-              maintainContext: true
-            - name: Plotly v poznámkových blocích v Pythonu a R
-              href: /azure/databricks/notebooks/visualizations/plotly
-              maintainContext: true
-        - name: Řídicí panely
-          href: /azure/databricks/notebooks/dashboards
-          maintainContext: true
-        - name: Vstupní widgety
-          href: /azure/databricks/notebooks/widgets
-          maintainContext: true
-        - name: Implementace pracovních postupů s poznámkovými bloky
-          href: /azure/databricks/notebooks/notebook-workflows
-          maintainContext: true
-        - name: Buňky balíčků
-          href: /azure/databricks/notebooks/package-cells
-          maintainContext: true
-    - name: Použití úloh Azure Databricks
-      href: /azure/databricks/jobs
-      maintainContext: true
-    - name: Použití knihoven Azure Databricks
-      href: /azure/databricks/libraries
-      maintainContext: true
-    - name: Data
-      items:
-        - name: Systém souborů Databricks
-          href: /azure/databricks/data/databricks-file-system
-          maintainContext: true
-        - name: Přístup k datům
-          href: /azure/databricks/data/access-data
-          maintainContext: true
-        - name: Použití databází a tabulek
-          href: /azure/databricks/data/tables
-          maintainContext: true
-        - name: FileStore
-          href: /azure/databricks/data/filestore
-          maintainContext: true
-        - name: Zdroje dat
-          items:
-            - name: Binární soubory
-              href: /azure/databricks/data/data-sources/binary-file
-              maintainContext: true
-            - name: Cassandra
-              href: /azure/databricks/data/data-sources/cassandra
-              maintainContext: true
-            - name: Couchbase
-              href: /azure/databricks/data/data-sources/couchbase
-              maintainContext: true
-            - name: Elastické vyhledávání
-              href: /azure/databricks/data/data-sources/elasticsearch
-              maintainContext: true
-            - name: Image
-              href: /azure/databricks/data/data-sources/image
-              maintainContext: true
-            - name: Import tabulek Hive
-              href: /azure/databricks/data/data-sources/importing-hive-tables
-              maintainContext: true
-            - name: Experiment MLflow
-              href: /azure/databricks/data/data-sources/mlflow-experiment
-              maintainContext: true
-            - name: MongoDb
-              href: /azure/databricks/data/data-sources/mongodb
-              maintainContext: true
-            - name: Neo4j
-              href: /azure/databricks/data/data-sources/neo4j
-              maintainContext: true
-            - name: Soubory Avro
-              href: /azure/databricks/data/data-sources/read-avro
-              maintainContext: true
-            - name: Soubory CSV
-              href: /azure/databricks/data/data-sources/read-csv
-              maintainContext: true
-            - name: Soubory JSON
-              href: /azure/databricks/data/data-sources/read-json
-              maintainContext: true
-            - name: Komprimované soubory LZO
-              href: /azure/databricks/data/data-sources/read-lzo
-              maintainContext: true
-            - name: Soubory Parquet
-              href: /azure/databricks/data/data-sources/read-parquet
-              maintainContext: true
-            - name: Redis
-              href: /azure/databricks/data/data-sources/redis
-              maintainContext: true
-            - name: Riak Time Series
-              href: /azure/databricks/data/data-sources/riak-ts
-              maintainContext: true
-            - name: Snowflake
-              href: /azure/databricks/data/data-sources/snowflake
-              maintainContext: true
-            - name: Azure SQL Database
-              href: /azure/databricks/data/data-sources/sql-databases-azure
-              maintainContext: true
-            - name: Databáze SQL
-              href: /azure/databricks/data/data-sources/sql-databases
-              maintainContext: true
-            - name: Soubory ZIP
-              href: /azure/databricks/data/data-sources/zip-files
-              maintainContext: true
-            - name: Průchod Azure Data Lake Storage
-              href: /azure/databricks/data/data-sources/azure/adls-passthrough
-              maintainContext: true
-            - name: Azure Data Lake Storage Gen2
-              href: /azure/databricks/data/data-sources/azure/azure-datalake-gen2
-              maintainContext: true
-            - name: Azure Data Lake Storage
-              href: /azure/databricks/data/data-sources/azure/azure-datalake
-              maintainContext: true
-            - name: Úložiště Azure
-              href: /azure/databricks/data/data-sources/azure/azure-storage
-              maintainContext: true
-            - name: Konektor Cosmos DB
-              href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
-              maintainContext: true
-            - name: SQL Data Warehouse
-              href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
-              maintainContext: true
-        - name: Metastory
-          items:
-            - name: Externí metastore Hive
-              href: /azure/databricks/data/metastores/external-hive-metastore
-              maintainContext: true
-    - name: Nástroje pro business intelligence
-      items:
-        - name: Propojení nástrojů pro BI
-          href: /azure/databricks/bi/jdbc-odbc-bi
-          maintainContext: true
-        - name: Tableau
-          href: /azure/databricks/bi/tableau
-          maintainContext: true
-        - name: Power BI
-          href: /azure/databricks/bi/power-bi
-          maintainContext: true
-        - name: Alteryx
-          href: /azure/databricks/bi/alteryx
-          maintainContext: true
-        - name: Looker
-          href: /azure/databricks/bi/looker
-          maintainContext: true
-        - name: SQL Workbench/J
-          href: /azure/databricks/bi/workbenchj
-          maintainContext: true
-    - name: Delta Lake
-      items:
-        - name: Seznámení s Delta Lake
-          href: /azure/databricks/delta/delta-intro
-          maintainContext: true
-        - name: Začínáme s Delta Lake
-          href: /azure/databricks/delta/quick-start
-          maintainContext: true
-        - name: Úvodní poznámkové bloky
-          href: /azure/databricks/delta/intro-notebooks
-          maintainContext: true
-        - name: Dávkové čtení a zápisy tabulek
-          href: /azure/databricks/delta/delta-batch
-          maintainContext: true
-        - name: Streamování čtení a zápisů tabulek
-          href: /azure/databricks/delta/delta-streaming
-          maintainContext: true
-        - name: 'Odstranění, aktualizace a sloučení tabulek'
-          href: /azure/databricks/delta/delta-update
-          maintainContext: true
-        - name: Příkazy tabulkových nástrojů
-          href: /azure/databricks/delta/delta-utility
-          maintainContext: true
-        - name: Reference k rozhraní API Delta Lake
-          href: /azure/databricks/delta/delta-apidoc
-          maintainContext: true
-        - name: Řízení souběžnosti
-          href: /azure/databricks/delta/concurrency-control
-          maintainContext: true
-        - name: Optimalizace
-          items:
-            - name: Přehled optimalizací
-              href: /azure/databricks/delta/optimizations/index
-              maintainContext: true
-            - name: Optimalizace výkonu s využitím správy souborů
-              href: /azure/databricks/delta/optimizations/file-mgmt
-              maintainContext: true
-            - name: Automatická optimalizace
-              href: /azure/databricks/delta/optimizations/auto-optimize
-              maintainContext: true
-            - name: Optimalizace výkonu s ukládáním do mezipaměti
-              href: /azure/databricks/delta/optimizations/delta-cache
-              maintainContext: true
-            - name: Úrovně izolace
-              href: /azure/databricks/delta/optimizations/isolation-level
-              maintainContext: true
-            - name: Replikace tabulek MySQL do tabulek Delta Lake
-              href: /azure/databricks/delta/optimizations/mysql-delta
-              maintainContext: true
-            - name: Optimalizace výkonu spojení
-              items:
-                - name: Přehled optimalizace výkonu spojení
-                  href: /azure/databricks/delta/join-performance/index
-                  maintainContext: true
-                - name: Optimalizace spojování pro rozsahy
-                  href: /azure/databricks/delta/join-performance/range-join
-                  maintainContext: true
-                - name: Optimalizace spojování pro nerovnoměrné distribuce
-                  href: /azure/databricks/delta/join-performance/skew-join
-                  maintainContext: true
-            - name: Optimalizovaná transformace dat
-              items:
-                - name: Přehled optimalizované transformace dat
-                  href: /azure/databricks/delta/data-transformation/index
-                  maintainContext: true
-                - name: Funkce vyššího řádu
-                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
-                  maintainContext: true
-                - name: Transformace složitých datových typů
-                  href: /azure/databricks/delta/data-transformation/complex-types
-                  maintainContext: true
-            - name: Správa verzí tabulek
-              href: /azure/databricks/delta/optimizations/versioning
-              maintainContext: true
-            - name: Příklady optimalizace
-              href: /azure/databricks/delta/optimizations/optimization-examples
-              maintainContext: true
-        - name: Nejčastější dotazy
-          href: /azure/databricks/delta/delta-faq
-          maintainContext: true
-        - name: Další zdroje Delta
-          href: /azure/databricks/delta/delta-resources
-          maintainContext: true
-    - name: Datové rámce a datové sady
-      items:
-        - name: Přehled datových rámců a datových sad
-          href: /azure/databricks/spark/latest/dataframes-datasets/index
-          maintainContext: true
-        - name: Seznámení s datovými rámci Python
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-python
-          maintainContext: true
-        - name: Seznámení s datovými rámci Scala
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-scala
-          maintainContext: true
-        - name: Seznámení s datovými sadami
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-datasets
-          maintainContext: true
-        - name: Složitá a vnořená data
-          href: /azure/databricks/spark/latest/dataframes-datasets/complex-nested-data
-          maintainContext: true
-        - name: Agregátory
-          href: /azure/databricks/spark/latest/dataframes-datasets/aggregators
-          maintainContext: true
-    - name: Strukturované streamování
-      items:
-        - name: Přehled strukturovaného streamování
-          href: /azure/databricks/spark/latest/structured-streaming/index
-          maintainContext: true
-        - name: Úvodní poznámkové bloky
-          href: /azure/databricks/spark/latest/structured-streaming/demo-notebooks
-          maintainContext: true
-        - name: Jímky a zdroje dat streamování
-          items:
-            - name: Přehled zdrojů a jímek
-              href: /azure/databricks/spark/latest/structured-streaming/data-sources
-              maintainContext: true
-            - name: Apache Kafka
-              href: /azure/databricks/spark/latest/structured-streaming/kafka
-              maintainContext: true
-            - name: Azure Event Hubs
-              href: /azure/databricks/spark/latest/structured-streaming/streaming-event-hubs
-              maintainContext: true
-            - name: Tabulky Delta Lake
-              href: /azure/databricks/spark/latest/structured-streaming/delta
-              maintainContext: true
-            - name: Čtení a zápis streamovaných dat Avro s využitím datových rámců
-              href: /azure/databricks/spark/latest/structured-streaming/avro-dataframe
-              maintainContext: true
-            - name: Zápis do libovolných datových jímek
-              href: /azure/databricks/spark/latest/structured-streaming/foreach
-              maintainContext: true
-            - name: Optimalizovaná služba Azure Blob Storage se službou Azure Queue Storage
-              href: /azure/databricks/spark/latest/structured-streaming/aqs
-              maintainContext: true
-        - name: Strukturované streamování v produkčním prostředí
-          href: /azure/databricks/spark/latest/structured-streaming/production
-          maintainContext: true
-        - name: Příklady streamování
-          href: /azure/databricks/spark/latest/structured-streaming/examples
-          maintainContext: true
-        - name: Streamování Sparku (starší verze)
-          items:
-            - name: Přehled streamování Sparku (starší verze)
-              href: /azure/databricks/spark/latest/rdd-streaming/index
-              maintainContext: true
-            - name: Ladění aplikací se streamováním Sparku
-              href: /azure/databricks/spark/latest/rdd-streaming/debugging-streaming-applications
-              maintainContext: true
-            - name: Osvědčené postupy pro vývoj stremovacích aplikací
-              href: /azure/databricks/spark/latest/rdd-streaming/developing-streaming-applications
-              maintainContext: true
     - name: Strojové učení
       items:
         - name: Přehled služby Machine Learning
@@ -708,7 +714,7 @@
             - name: Příklad MLib pro pokročilé
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
-        - name: AutoML
+        - name: Automatizované strojové učení
           items:
             - name: Hyperopt
               items:
@@ -823,21 +829,6 @@
         - name: Začínáme s MLflow
           href: /azure/databricks/applications/mlflow/quick-start
           maintainContext: true
-        - name: Sledování tréninkových spuštění strojového učení
-          href: /azure/databricks/applications/mlflow/tracking
-          maintainContext: true
-        - name: Externí přístup ke sledování
-          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
-          maintainContext: true
-        - name: 'Ukládání, nahrávání a nasazování modelů'
-          href: /azure/databricks/applications/mlflow/models
-          maintainContext: true
-        - name: Opakování spuštění s projekty MLflow
-          href: /azure/databricks/applications/mlflow/projects
-          maintainContext: true
-        - name: Příklady modelu MLflow
-          href: /azure/databricks/applications/mlflow/model-examples
-          maintainContext: true
         - name: Začínáme s Javou a Scalou v MLflow
           href: /azure/databricks/applications/mlflow/quick-start-java-scala
           maintainContext: true
@@ -847,8 +838,23 @@
         - name: Začínáme s R v MLflow
           href: /azure/databricks/applications/mlflow/quick-start-r
           maintainContext: true
+        - name: Sledování tréninkových spuštění strojového učení
+          href: /azure/databricks/applications/mlflow/tracking
+          maintainContext: true
         - name: Příklady sledování MLflow
           href: /azure/databricks/applications/mlflow/tracking-examples
+          maintainContext: true
+        - name: Externí přístup ke sledování
+          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
+          maintainContext: true
+        - name: 'Ukládání, nahrávání a nasazování modelů'
+          href: /azure/databricks/applications/mlflow/models
+          maintainContext: true
+        - name: Příklady modelu MLflow
+          href: /azure/databricks/applications/mlflow/model-examples
+          maintainContext: true
+        - name: Opakování spuštění s projekty MLflow
+          href: /azure/databricks/applications/mlflow/projects
           maintainContext: true
     - name: Analýzy grafů
       items:
@@ -937,10 +943,13 @@
             - name: Knihovny statistik Pythonu
               href: /azure/databricks/applications/genomics/tertiary/pandas-udf
               maintainContext: true
+            - name: SAIGE
+              href: /azure/databricks/applications/genomics/tertiary/saige
+              maintainContext: true
             - name: Hail 0.2
               href: /azure/databricks/applications/genomics/tertiary/hail
               maintainContext: true
-    - name: Průvodci migrací
+    - name: Migrace
       items:
         - name: Migrace produkčních úloh
           href: /azure/databricks/migration/production
@@ -951,7 +960,7 @@
         - name: Migrace úloh do Delta Lake
           href: /azure/databricks/delta/porting
           maintainContext: true
-    - name: Zabezpečení
+    - name: Zabezpečení a soukromí
       items:
         - name: Přehled zabezpečení
           href: /azure/databricks/security/index
@@ -976,9 +985,6 @@
             - name: Příklad pracovního postupu s tajnými kódy
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
-    - name: Delegování ověřování na služby třetích stran
-      href: /azure/databricks/delegated-auth
-      maintainContext: true
     - name: Správa
       items:
         - name: Přehled správy
@@ -1136,6 +1142,9 @@
             - name: Neočekávané ukončení clusteru
               href: /azure/databricks/kb/clusters/termination-reasons
               maintainContext: true
+            - name: Uživatelské rozhraní Apache Sparku ukazuje méně než celkovou paměť uzlů
+              href: /azure/databricks/kb/clusters/spark-shows-less-memory
+              maintainContext: true
         - name: Správa dat
           items:
             - name: Připojení k datovému rámci
@@ -1227,6 +1236,9 @@
               maintainContext: true
             - name: Přemístění spravované tabulky Delta Lake
               href: /azure/databricks/kb/delta/drop-delta-table
+              maintainContext: true
+            - name: Dotaz UPDATE selže s výjimkou IllegalStateException
+              href: /azure/databricks/kb/delta/update-query-fails
               maintainContext: true
         - name: Vývojářské nástroje
           items:
@@ -1358,6 +1370,14 @@
             - name: Po zrušení buňky streamování nejde spustit poznámkový blok
               href: /azure/databricks/kb/notebooks/streaming-notebook-stuck
               maintainContext: true
+            - name: Řešení potíží s příkazem pro zrušení
+              href: /azure/databricks/kb/notebooks/troubleshoot-cancel-command
+              maintainContext: true
+        - name: Zabezpečení a oprávnění
+          items:
+            - name: Selhání vytvoření tabulky s výjimkou zabezpečení
+              href: /azure/databricks/kb/security/table-create-security-exception
+              maintainContext: true
         - name: Python
           items:
             - name: Vytvoření clusteru s využitím Anacondy
@@ -1372,7 +1392,7 @@
             - name: Po instalaci Bokehu příkaz selže
               href: /azure/databricks/kb/python/python-cmd-fails-tornado-version
               maintainContext: true
-            - name: Zrušení příkazu kvůli konfliktu knihovny
+            - name: Zrušení příkazu kvůli konfliktu knihoven
               href: /azure/databricks/kb/python/python-command-cancelled
               maintainContext: true
             - name: Selhání příkazu s chybou AttributeError
@@ -1420,8 +1440,8 @@
             - name: Tabulka nebo zobrazení se nenašly
               href: /azure/databricks/kb/sql/global-temp-view-not-found
               maintainContext: true
-            - name: Streamování
-              items: null
+        - name: Streamování
+          items:
             - name: Zotavení po změně kontrolního bodu nebo výstupního adresáře
               href: /azure/databricks/kb/streaming/file-sink-streaming
               maintainContext: true
@@ -1436,7 +1456,7 @@
     - name: Vývojářské nástroje
       items:
         - name: Databricks Connect
-          href: /azure/databricks/dev-tools/db-connect
+          href: /azure/databricks/dev-tools/databricks-connect
           maintainContext: true
         - name: Správa závislostí v datových kanálech
           href: /azure/databricks/dev-tools/data-pipelines
@@ -1486,14 +1506,14 @@
             - name: Pracovní prostor
               href: /azure/databricks/dev-tools/api/latest/workspace
               maintainContext: true
-        - name: Řetězec verze runtime pro volání rozhraní REST API
-          href: /azure/databricks/dev-tools/api/latest/runtime-version-string
-          maintainContext: true
+            - name: Řetězec verze runtime pro volání rozhraní REST API
+              href: /azure/databricks/dev-tools/api/latest/runtime-version-string
+              maintainContext: true
         - name: REST API 1.2
           href: /azure/databricks/dev-tools/api/1.2/index
           maintainContext: true
     - name: Nástroje Databricks
-      href: /azure/databricks/dev-tools/dbutils
+      href: /azure/databricks/dev-tools/databricks-utils
       maintainContext: true
     - name: Databricks CLI
       href: /azure/databricks/dev-tools/databricks-cli
@@ -1503,10 +1523,8 @@
       maintainContext: true
     - name: Azure Databricks REST API
       href: /azure/databricks//rest/api/databricks
-      maintainContext: true
     - name: Šablona Resource Manageru
       href: /azure/databricks//azure/templates/microsoft.databricks/workspaces
-      maintainContext: true
 - name: Zdroje a prostředky
   items:
     - name: "Poznámky k\_verzi"
@@ -1515,6 +1533,9 @@
           items:
             - name: Poznámky k verzi platformy
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Říjen 2019
+              href: /azure/databricks/release-notes/product/2019/october
               maintainContext: true
             - name: Září 2019
               href: /azure/databricks/release-notes/product/2019/september
@@ -1683,7 +1704,6 @@
           maintainContext: true
     - name: Příručka pro vývojáře v R
       href: /azure/machine-learning/r-developers-guide
-      maintainContext: true
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: Ceny

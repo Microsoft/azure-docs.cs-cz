@@ -6,14 +6,12 @@
       href: overview-iot-central-government.md
 - name: Kurzy
   items:
-    - name: Kontrola analýz v obchodech
-      items:
-        - name: Vytvoření aplikace pro propojené nakládání s odpady
-          href: tutorial-connected-waste-management.md
-        - name: Vytvoření aplikace pro monitorování spotřeby vody
-          href: tutorial-water-consumption-monitoring.md
-        - name: Vytvoření aplikace pro monitorování kvality vody
-          href: tutorial-water-quality-monitoring.md
+    - name: Vytvoření aplikace pro propojené nakládání s odpady
+      href: tutorial-connected-waste-management.md
+    - name: Vytvoření aplikace pro monitorování spotřeby vody
+      href: tutorial-water-consumption-monitoring.md
+    - name: Vytvoření aplikace pro monitorování kvality vody
+      href: tutorial-water-quality-monitoring.md
 - name: Koncepty
   items:
     - name: Referenční architektura propojeného monitorování odpadů
@@ -22,10 +20,10 @@
       href: concepts-waterconsumptionmonitoring-architecture.md
     - name: Referenční architektura monitorování kvality vody
       href: concepts-waterqualitymonitoring-architecture.md
-    - name: Připojení
-      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
 - name: Návody
   items:
+    - name: Připojení aplikace s Dynamics 365 Field Services
+      href: how-to-configure-connected-field-services.md
     - name: Připojení zařízení
       items:
         - name: Příprava a připojení sady MXChip IoT DevKit
@@ -56,8 +54,6 @@
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Vytvoření vlastních rolí
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
-        - name: Vytváření vlastních analýz s využitím Databricks
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Vytváření vlastních analýz s využitím Databricks
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Správa
@@ -114,8 +110,6 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
-    - name: Referenční dokumentace k rozhraní API
-      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
     - name: Požadavky na zákaznická data
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Podporované prohlížeče

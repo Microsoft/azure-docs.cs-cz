@@ -54,6 +54,8 @@
       href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
     - name: Nastavení obměny klíčů a auditování
       href: key-vault-key-rotation-log-monitoring.md
+    - name: Monitorování událostí služby Key Vault s využitím Event Gridu
+      href: event-grid-overview.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -74,6 +76,8 @@
           href: key-vault-security-controls.md
     - name: Obnovitelné odstranění
       href: key-vault-ovw-soft-delete.md
+    - name: Monitorování událostí služby Key Vault
+      href: event-grid-overview.md
     - name: Throttling
       href: key-vault-ovw-throttling.md
     - name: Koncové body služby pro virtuální síť
@@ -104,6 +108,8 @@
           href: managed-identity.md
         - name: Použití zásad řízení přístupu
           href: key-vault-group-permissions-for-apps.md
+    - name: Směrování oznámení trezoru klíčů s využitím Event Gridu
+      href: event-grid-tutorial.md
     - name: Protokolování v Azure Key Vaultu
       href: key-vault-logging.md
     - name: Přístup přes bránu firewall

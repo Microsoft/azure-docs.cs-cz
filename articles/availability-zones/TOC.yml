@@ -61,7 +61,7 @@
           items:
             - name: Zóny dostupnosti pro SQL Database
               href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
-        - name: Úložiště
+        - name: Storage
           items:
             - name: Zónově redundantní úložiště
               href: ../storage/common/storage-redundancy-zrs.md
@@ -81,6 +81,10 @@
           items:
             - name: Vytvoření zónově redundantní brány virtuální sítě
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: Identita
+          items:
+            - name: Vytvoření instance Azure Active Directory Domain Services
+              href: ../active-directory-domain-services/tutorial-create-instance.md
 - name: Zotavení po havárii
   items:
     - name: Použití Azure Site Recovery

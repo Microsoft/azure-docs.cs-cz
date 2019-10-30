@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: e60c4da08d92cce1cd5964f78e8198f6c04069ef
-  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.openlocfilehash: 0deccf53fba8d9250832f8b543b8201fcbecab64
+  ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/27/2019
-  ms.locfileid: "72965890"
+  ms.lasthandoff: 10/29/2019
+  ms.locfileid: "73042050"
 highlightedContent:
   items:
   - title: Co je IoT Central?
@@ -23,7 +23,7 @@ highlightedContent:
     url: ./core/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
   - title: Co jsou šablony aplikací?
     itemType: concept
-    url: ./core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./core/concepts-app-templates.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
   - title: Architektura služby Azure IoT Central
     itemType: architecture
     url: ./core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
@@ -86,7 +86,7 @@ productDirectory:
     links:
     - text: Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
       url: ./retail/overview-iot-central-retail-pnp.md
-    - text: Vytvoření aplikace pro maloobchod
+    - text: Vytvoření aplikace pro analýzu v obchodě
       url: ./retail/tutorial-in-store-analytics-create-app-pnp.md
     - text: Vytvoření aplikace pro inteligentní řízení zásob
       url: ./retail/tutorial-iot-central-smart-inventory-management-pnp.md
@@ -126,7 +126,7 @@ additionalContent:
   - items:
     - title: Rozhraní API služby IoT Central
       summary: Projděte si rozhraní API služby IoT Central.
-      url: https://docs.microsoft.com/rest/api/azure/
+      url: https://docs.microsoft.com/rest/api/iotcentral/
     - title: IoT Central na Microsoft Learn
       summary: Projděte si IoT Central v bezplatném prostředí sandboxu.
-      url: https://aka.ms/iotcentralapimslearnjourney
+      url: https://docs.microsoft.com/learn/browse/?products=azure-iot-central

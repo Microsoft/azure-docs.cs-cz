@@ -1,5 +1,5 @@
 - name: Základní dokumentace
-  href: index.md
+  href: index.yml
 - name: Architektura a návrh
   href: overview.md
   expanded: false
@@ -40,7 +40,8 @@
           href: data-encryption-best-practices.md
         - name: Šifrování neaktivních dat
           href: encryption-atrest.md
-        - name: Azure Disk Encryption pro virtuální počítače a škálovací sady virtuálních počítačů
+        - name: Azure Disk Encryption pro virtuální počítače
+          displayName: virtual machines and virtual machine scale sets
           href: azure-disk-encryption-vms-vmss.md
     - name: Příručka zabezpečení úložiště
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
