@@ -2,18 +2,18 @@
 title: Použití zobrazení podregistru Apache Ambari s Apache Hadoop ve službě Azure HDInsight
 description: Naučte se používat zobrazení podregistru z webového prohlížeče k odesílání dotazů na podregistr. Zobrazení podregistru je součástí webového uživatelského rozhraní Ambari, které je k dispozici v clusteru HDInsight se systémem Linux.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 10/24/2019
+ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044814"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097103"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení podregistru Apache Ambari s Apache Hadoop ve službě HDInsight
 
@@ -30,9 +30,9 @@ Naučte se spouštět dotazy na podregistry pomocí zobrazení podregistru Apach
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster.  Pokyny najdete v tématu [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters) . Cluster se otevře v novém okně portálu.
 
-2. Z **řídicích panelů clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte název a heslo přihlášení clusteru (výchozí `admin`), které jste zadali při vytváření clusteru.
+1. Z **řídicích panelů clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte název a heslo přihlášení clusteru (výchozí `admin`), které jste zadali při vytváření clusteru. Případně přejděte na `https://CLUSTERNAME.azurehdinsight.net/#/main/views` v prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru.
 
-3. V seznamu zobrazení vyberte __zobrazení podregistru__.
+1. V seznamu zobrazení vyberte __zobrazení podregistru__.
 
     ![Ambari, výběr zobrazení Apache Hive pro Apache](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
@@ -40,7 +40,7 @@ Naučte se spouštět dotazy na podregistry pomocí zobrazení podregistru Apach
 
     ![Obrázek listu dotazu pro zobrazení podregistru](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-4. Na kartě __dotaz__ vložte následující příkazy HiveQL do listu:
+1. Na kartě __dotaz__ vložte následující příkazy HiveQL do listu:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -54,8 +54,8 @@ Naučte se spouštět dotazy na podregistry pomocí zobrazení podregistru Apach
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' 
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]'
         GROUP BY t4;
     ```
 
@@ -75,9 +75,9 @@ Naučte se spouštět dotazy na podregistry pomocí zobrazení podregistru Apach
    > [!IMPORTANT]  
    > Ponechte výběr __databáze__ ve __výchozím nastavení__. Příklady v tomto dokumentu používají výchozí databázi, která je součástí HDInsight.
 
-5. Chcete-li spustit dotaz, vyberte možnost **Spustit** pod listem. Tlačítko se změní na oranžová a text se změní na **Zastaveno**.
+1. Chcete-li spustit dotaz, vyberte možnost **Spustit** pod listem. Tlačítko se změní na oranžová a text se změní na **Zastaveno**.
 
-6. Po dokončení dotazu se na kartě **výsledky** zobrazí výsledky operace. Následující text je výsledkem dotazu:
+1. Po dokončení dotazu se na kartě **výsledky** zobrazí výsledky operace. Následující text je výsledkem dotazu:
 
         loglevel       count
         [ERROR]        3

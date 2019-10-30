@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: b484306504af8f83a393feb0469fff5b524948ab
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992207"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098619"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Kurz: publikování, přihlášení k odběru událostí v místním prostředí
 
@@ -81,6 +81,8 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
 
     >[!IMPORTANT]
     > V tomto kurzu nasadíte modul Event Grid s povoleným ověřováním klienta a povolíte předplatitele HTTP. Pro produkční úlohy doporučujeme povolit ověřování klientů a povolit pouze předplatitele HTTPs. Další informace o tom, jak bezpečně nakonfigurovat Event Grid modul, najdete v tématu [zabezpečení a ověřování](security-authentication.md).
+    > 
+    > Pokud jako hraniční zařízení používáte virtuální počítač Azure, přidejte pravidlo příchozího portu, které povolí příchozí provoz na portu 4438. Pokyny k přidání pravidla najdete v tématu [Postup otevření portů pro virtuální počítač](../../virtual-machines/windows/nsg-quickstart-portal.md).
     
 
 ## <a name="deploy-azure-function-iot-edge-module"></a>Nasadit modul IoT Edge služby Azure Functions
@@ -257,7 +259,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
     V systému Windows spusťte následující příkaz:
 
     ```sh
-    iotedge logs subscriber -f
+    docker -H npipe:////./pipe/iotedge_moby_engine container logs subscriber
     ```
 
    V systému Linux spusťte následující příkaz:
@@ -299,6 +301,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste vytvořili téma Event gridu, předplatné a publikované události. Teď, když znáte základní postup, najdete v následujících článcích: 
 
+- Řešení potíží s používáním Azure Event Grid v IoT Edge najdete v tématu [Průvodce odstraňováním potíží](troubleshoot.md).
 - Vytvoří nebo aktualizuje předplatné s [filtry](advanced-filtering.md).
 - Povolení trvalosti modulu Event Grid v systému [Linux](persist-state-linux.md) nebo [Windows](persist-state-windows.md)
 - Podle [dokumentace](configure-client-auth.md) nakonfigurujte ověřování klientů.

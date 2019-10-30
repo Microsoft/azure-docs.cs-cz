@@ -29,7 +29,7 @@
     - name: Registrace pro resetování hesla
       href: active-directory-passwords-reset-register.md
     - name: Resetování hesla
-      href: user-help-reset-password.md
+      href: active-directory-passwords-update-your-own-password.md
 - name: Nápověda k aplikaci Microsoft Authenticator
   items:
     - name: Přehled

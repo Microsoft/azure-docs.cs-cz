@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: d7a9f365c9e2b6039451375f4ad50a7ce04cdd5b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c4faa29e092c7cbb550bca1daa87ce369bf03a14
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029730"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099529"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -27,7 +27,7 @@ V tomto rychlém startu zařadíte do webové aplikace ASP.NET Core službu Azur
 
 Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET Core. Bez problémů se integrují s konfigurací aplikací prostřednictvím poskytovatele konfigurace .NET Core.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [.NET Core SDK](https://dotnet.microsoft.com/download).
@@ -38,15 +38,15 @@ Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou 
 
 6. Vyberte **správce funkcí** >  **+ Přidat** a přidejte následující příznaky funkcí:
 
-    | Key | Stav |
+    | Klíč | Stav |
     |---|---|
-    | Testování | Off |
+    | Beta | Vypnuto |
 
-## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace v ASP.NET Core
+## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
 K vytvoření nového projektu webové aplikace ASP.NET Core MVC použijete [rozhraní příkazového řádku .NET Core (CLI)](https://docs.microsoft.com/dotnet/core/tools/) . Výhodou použití .NET Core CLI místo sady Visual Studio je, že .NET Core CLI je k dispozici v rámci platforem Windows, macOS a Linux.
 
-1. Vytvořte pro svůj projekt novou složku. V tomto rychlém startu pojmenujte ho *TestFeatureFlags*.
+1. Vytvořte novou složku pro váš projekt. V tomto rychlém startu pojmenujte ho *TestFeatureFlags*.
 
 1. V nové složce spusťte následující příkaz pro vytvoření nového projektu webové aplikace ASP.NET Core MVC:
 
@@ -56,7 +56,7 @@ K vytvoření nového projektu webové aplikace ASP.NET Core MVC použijete [roz
 
 ## <a name="add-secret-manager"></a>Přidat správce tajných klíčů
 
-Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microsoft.com/aspnet/core/security/app-secrets) . Nástroj Správce tajných klíčů ukládá citlivá data pro vývojovou práci mimo strom projektu. Tento přístup pomáhá zabránit nechtěnému sdílení tajných kódů aplikace v rámci zdrojového kódu.
+Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microsoft.com/aspnet/core/security/app-secrets) . Nástroj Správce tajných klíčů ukládá citlivá data pro vývojovou práci mimo strom projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
 
 1. Otevřete soubor *. csproj* .
 1. Přidejte prvek `UserSecretsId`, jak je znázorněno v následujícím příkladu, a nahraďte jeho hodnotu vlastním, což je obvykle identifikátor GUID:
@@ -96,9 +96,9 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
 
 1. Přidejte tajný klíč s názvem **connectionStrings: appconfig** do správce tajných klíčů.
 
-    Tento tajný klíč obsahuje připojovací řetězec pro přístup k úložišti konfigurace aplikace. V následujícím příkazu nahraďte hodnotu `<your_connection_string>` připojovacím řetězcem pro úložiště konfigurace aplikace.
+    Tento tajný klíč obsahuje připojovací řetězec pro přístup k úložišti konfigurace aplikace. Hodnotu `<your_connection_string>` v následujícím příkazu nahraďte připojovacím řetězcem pro úložiště konfigurace aplikace.
 
-    Tento příkaz musí být spuštěn ve stejném adresáři jako soubor *. csproj* .
+    Tento příkaz se musí spustit ve stejném adresáři jako soubor *.csproj*.
 
     ```
     dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
@@ -115,6 +115,11 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
     ```
 
 1. Aktualizujte metodu `CreateWebHostBuilder` pro použití konfigurace aplikace voláním metody `config.AddAzureAppConfiguration()`.
+    
+    > [!IMPORTANT]
+    > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
+
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>Aktualizace `CreateWebHostBuilder` pro .NET Core 2. x
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -122,13 +127,25 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(options => {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .UseFeatureFlags();
-                });
+                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
             })
             .UseStartup<Startup>();
     ```
+
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>Aktualizace `CreateHostBuilder` pro .NET Core 3. x
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+        })
+        .UseStartup<Startup>());
+    ```
+
 
 1. Otevřete *Startup.cs*a přidejte odkazy na správce funkcí .NET Core:
 
@@ -200,7 +217,7 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Otevřete *_Layout. cshtml* v *zobrazeních* *sdílený* adresář \\ a v části `<body>` @ no__t-6 @ no__t-7 Nahraďte čárový kód `<nav>` s následujícím kódem:
+1. Otevřete *_Layout. cshtml* v *zobrazeních*\\*sdíleném* adresáři a nahraďte `<nav>` čárový kód v `<body>` > `<header>` s následujícím kódem:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -259,15 +276,15 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
 
-    | Key | Stav |
+    | Klíč | Stav |
     |---|---|
-    | Testování | On |
+    | Beta | Zapnuto |
 
-1. Restartujte aplikaci tak, že přepnete zpět na příkazový řádek a stisknutím `Ctrl-C` zrušíte spuštěný proces `dotnet` a znovu spustíte `dotnet run`.
+1. Restartujte aplikaci tak, že přepnete zpět na příkazový řádek a stisknete `Ctrl-C`, čímž zrušíte spuštěný proces `dotnet` a pak znovu spustíte `dotnet run`.
 
 1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace.
 
