@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: ff50619d7b3d5bc803e8ee8d9e4cbf4389a4191f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 47258f27f44b6a21c5da72e4631591e695024400
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978088"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053280"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -29,7 +29,7 @@ Než začnete se zaměřením na dodržování předpisů, Podívejme se na to, 
 
 ## <a name="evaluation-triggers"></a>Aktivační události vyhodnocení
 
-Výsledky dokončeného cyklu vyhodnocení jsou k dispozici v poskytovateli prostředků `Microsoft.PolicyInsights` prostřednictvím operací `PolicyStates` a `PolicyEvents`. Další informace o operacích REST API Azure Policy Insights najdete v tématu [Azure Policy Insights](/rest/api/policy-insights/).
+Výsledky dokončeného cyklu vyhodnocení jsou k dispozici v `Microsoft.PolicyInsights` poskytovatel prostředků prostřednictvím operací `PolicyStates` a `PolicyEvents`. Další informace o operacích REST API Azure Policy Insights najdete v tématu [Azure Policy Insights](/rest/api/policy-insights/).
 
 K vyhodnocení přiřazených zásad a iniciativ dojde v důsledku různých událostí:
 
@@ -74,7 +74,7 @@ Volání vrátí stav **přijato 202** . Zahrnuté v hlavičce odpovědi je vlas
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
 ```
 
-`{ResourceContainerGUID}` se staticky generuje pro požadovaný rozsah. Pokud je v oboru již spuštěno prohledávání na vyžádání, nová kontrola není spuštěna. Místo toho nový požadavek poskytne pro stav stejný identifikátor URI **umístění** `{ResourceContainerGUID}`. Příkaz REST API **Get** do identifikátoru URI pro **umístění** vrací **202 přijatý** , zatímco probíhá vyhodnocení. Po dokončení kontroly vyhodnocení vrátí stav **200 OK** . Tělo dokončeného prohledávání je odpověď JSON se stavem:
+`{ResourceContainerGUID}` se staticky vygeneroval pro požadovaný rozsah. Pokud je v oboru již spuštěno prohledávání na vyžádání, nová kontrola není spuštěna. Místo toho se nové žádosti dodávají pro stav stejný identifikátor URI `{ResourceContainerGUID}` **umístění** . Příkaz REST API **Get** do identifikátoru URI pro **umístění** vrací **202 přijatý** , zatímco probíhá vyhodnocení. Po dokončení kontroly vyhodnocení vrátí stav **200 OK** . Tělo dokončeného prohledávání je odpověď JSON se stavem:
 
 ```json
 {
@@ -145,32 +145,10 @@ Pokud je zjištěno, že prostředky nejsou **kompatibilní**, existuje mnoho mo
 
 ## <a name="command-line"></a>Příkazový řádek
 
-Stejné informace, které jsou k dispozici na portálu, lze načíst pomocí REST API (včetně [ARMClient](https://github.com/projectkudu/ARMClient)) nebo Azure PowerShell. Úplné podrobnosti o REST API najdete v referenčních informacích k [Azure Policy Insights](/rest/api/policy-insights/) . Referenční stránky REST API mají zeleně stisknuté tlačítko vyzkoušet u každé operace, která vám umožní vyzkoušet si ho přímo v prohlížeči.
+Stejné informace, které jsou k dispozici na portálu, lze načíst pomocí REST API (včetně [ARMClient](https://github.com/projectkudu/ARMClient)), Azure PowerShell a Azure CLI (Preview).
+Úplné podrobnosti o REST API najdete v referenčních informacích k [Azure Policy Insights](/rest/api/policy-insights/) . Referenční stránky REST API mají zeleně stisknuté tlačítko vyzkoušet u každé operace, která vám umožní vyzkoušet si ho přímo v prohlížeči.
 
-Chcete-li použít následující příklady v Azure PowerShell, sestavte ověřovací token pomocí tohoto ukázkového kódu. Potom nahraďte $restUri řetězcem v příkladech k získání objektu JSON, který lze následně analyzovat.
-
-```azurepowershell-interactive
-# Login first with Connect-AzAccount if not using Cloud Shell
-
-$azContext = Get-AzContext
-$azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-$profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
-$token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
-$authHeader = @{
-    'Content-Type'='application/json'
-    'Authorization'='Bearer ' + $token.AccessToken
-}
-
-# Define the REST API to communicate with
-# Use double quotes for $restUri as some endpoints take strings passed in single quotes
-$restUri = "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04"
-
-# Invoke the REST API
-$response = Invoke-RestMethod -Uri $restUri -Method POST -Headers $authHeader
-
-# View the response object (as JSON)
-$response
-```
+Použijte ARMClient nebo podobný nástroj pro zpracování ověřování v Azure pro REST API příklady.
 
 ### <a name="summarize-results"></a>Shrnutí výsledků
 
@@ -403,7 +381,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-Pole **PrincipalOid** lze použít k získání konkrétního uživatele pomocí rutiny Azure PowerShell `Get-AzADUser`. Nahraďte **{principalOid}** odpovědí, kterou jste dostali z předchozího příkladu.
+Pole **PrincipalOid** lze použít k získání konkrétního uživatele s rutinou Azure PowerShell `Get-AzADUser`. Nahraďte **{principalOid}** odpovědí, kterou jste dostali z předchozího příkladu.
 
 ```azurepowershell-interactive
 PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
@@ -412,7 +390,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z [řešení Activity Log Analytics](../../../azure-monitor/platform/activity-log-collect.md) svázaného s vaším předplatným, můžete také výsledky nedodržování předpisů zobrazit v rámci zkušebního cyklu pomocí jednoduchých dotazů Kusto a tabulky `AzureActivity`. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
+Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/platform/activity-log-collect.md) svázaného s vaším předplatným, můžete si také zobrazit výsledky nedodržování předpisů z cyklu vyhodnocení pomocí jednoduchých dotazů Kusto a tabulky `AzureActivity`. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
 
 
 ![Azure Policy dodržování předpisů pomocí protokolů Azure Monitor](../media/getting-compliance-data/compliance-loganalytics.png)

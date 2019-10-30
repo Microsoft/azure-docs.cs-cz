@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 62d8de4f36ab110f7bd871c9de0e5d843516970c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f248fe125873b4ed1e930e56865e4e403bcceea6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529015"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053839"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Vytvoření a publikování definice spravované aplikace
 
@@ -87,7 +87,7 @@ Uložte soubor mainTemplate.json.
 
 ## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Definování prostředí pro vytváření pomocí CreateUiDefinition. JSON
 
-Jako vydavatel definujete své prostředí pro vytváření pomocí souboru **createUiDefinition. JSON** , který vygeneruje rozhraní pro uživatele, kteří vytvářejí spravované aplikace. Definujete, jak uživatelé zadávají zadání pro každý parametr pomocí [Control Elements] (create-uidefinition-elements.md) včetně rozevíracích polí, textových polí a hesel.
+Jako vydavatel definujete své prostředí pro vytváření pomocí souboru **createUiDefinition. JSON** , který vygeneruje rozhraní pro uživatele, kteří vytvářejí spravované aplikace. Definujete, jak uživatelé poskytují vstup pro každý parametr pomocí [ovládacích prvků](create-uidefinition-elements.md) , včetně rozevíracích seznamů, textových polí a polí pro hesla.
 
 Vytvoří soubor s názvem **createUiDefinition. JSON** (u tohoto názvu se rozlišují velká a malá písmena).
 

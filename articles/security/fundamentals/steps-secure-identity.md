@@ -8,16 +8,16 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/18/2018
+ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 02a1c12957570f0e798c5abfd88562128ea1cf76
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129316"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053068"
 ---
-# <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků k zabezpečení infrastruktury identit
+# <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
 Pokud čtete tento dokument, máte na paměti význam zabezpečení. Je možné, že už máte odpovědnost za zabezpečení vaší organizace. Pokud potřebujete přesvědčit jiné důležité informace o zabezpečení, pošlete jim, abyste si přečetli nejnovější [sestavu Microsoft Security Intelligence](https://go.microsoft.com/fwlink/p/?linkid=2073747).
 
@@ -31,18 +31,23 @@ Tento kontrolní seznam vám pomůže rychle nasadit kritické doporučené akce
 * Zvyšte povědomí o auditování a monitorování.
 * Umožněte větší předvídatelné a úplné zabezpečení koncových uživatelů díky samoobslužné nápovědě.
 
+Ujistěte se, že sledujete, které funkce a kroky jsou dokončeny při čtení tohoto kontrolního seznamu.
+
 > [!NOTE]
 > Mnohé z doporučení v tomto dokumentu platí jenom pro aplikace, které jsou nakonfigurované pro použití Azure Active Directory jako jejich zprostředkovatel identity. Konfigurace aplikací pro jednotné přihlašování zajišťuje výhody zásad pro přihlašovací údaje, detekci hrozeb, auditování, protokolování a další funkce, které se do těchto aplikací přidávají. [Jednotné přihlašování prostřednictvím Azure Active Directory](../../active-directory/manage-apps/configure-single-sign-on-portal.md) je základem, na kterém jsou založená všechna tato doporučení.
 
-Doporučení v tomto dokumentu jsou zarovnaná se známkou pro [identitu identity](../../active-directory/fundamentals/identity-secure-score.md), automatizované vyhodnocení konfigurace zabezpečení identity TENANTA Azure AD. Organizace můžou na portálu Azure AD pomocí stránky identita zabezpečeného skóre identity najít mezery v aktuální konfiguraci zabezpečení, aby se zajistilo, že budou dodržovat aktuální osvědčené postupy Microsoftu pro zabezpečení. Implementace každého doporučení na stránce bezpečné skóre zvýší vaše skóre a umožní vám sledovat váš pokrok a pomůže vám porovnat vaši implementaci s jinými podobnými organizacemi nebo v oboru.
+Doporučení v tomto dokumentu jsou zarovnaná se [známkou pro identitu identity](../../active-directory/fundamentals/identity-secure-score.md), automatizované vyhodnocení konfigurace zabezpečení identity TENANTA Azure AD. Organizace můžou na portálu Azure AD pomocí stránky identita zabezpečeného skóre identity najít mezery v aktuální konfiguraci zabezpečení, aby se zajistilo, že budou dodržovat aktuální [osvědčené postupy](identity-management-best-practices.md) Microsoftu pro zabezpečení. Implementace každého doporučení na stránce bezpečné skóre zvýší vaše skóre a umožní vám sledovat váš pokrok a pomůže vám porovnat vaši implementaci s jinými podobnými organizacemi nebo v oboru.
 
-![Identity Secure Score](./media/steps-secure-identity/azure-ad-sec-steps0.png)
+![Skóre Secure identity](./media/steps-secure-identity/azure-ad-sec-steps0.png)
 
-## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Než začnete: Ochrana privilegovaných účtů pomocí vícefaktorového ověřování
+> [!NOTE]
+> Mnohé z těchto funkcí popsaných tady vyžadují předplatné Azure AD Premium, zatímco některé jsou bezplatné. Další informace najdete v našich [Azure Active Directory cenách](https://azure.microsoft.com/pricing/details/active-directory/) a v [kontrolním seznamu nasazení služby Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2) .
+
+## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Než začnete: chránit privilegované účty pomocí MFA
 
 Před zahájením tohoto kontrolního seznamu se ujistěte, že při čtení tohoto kontrolního seznamu nedošlo k ohrožení zabezpečení. Nejdřív musíte chránit privilegované účty.
 
-Útočníci, kteří získají kontrolu nad privilegovanými účty, můžou dělat obrovský škodu, takže je důležité tyto účty nejdřív chránit. Povolte a vyžadovat [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) pro všechny správce ve vaší organizaci pomocí [základní ochrany](../../active-directory/conditional-access/baseline-protection.md). Pokud jste neimplementovali MFA, udělejte to teď! Je to důležité.
+Útočníci, kteří získají kontrolu nad privilegovanými účty, můžou dělat obrovský škodu, takže je důležité tyto účty nejdřív chránit. Povolte a vyžadovat [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) pro všechny správce ve vaší organizaci pomocí [výchozích hodnot zabezpečení Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md) nebo [podmíněného přístupu](../../active-directory/conditional-access/plan-conditional-access.md). Pokud jste neimplementovali MFA, udělejte to teď! Je to důležité.
 
 Vše nastavené? Pojďme začít v kontrolním seznamu.
 
@@ -51,15 +56,17 @@ Vše nastavené? Pojďme začít v kontrolním seznamu.
 Většina porušení podnikového zabezpečení pocházela z některého z několik metod, jako je například postřik hesla, porušení narušení nebo útok phishing. Přečtěte si další informace o těchto útocích v tomto videu (45 min):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
 
-### <a name="make-sure-your-organization-use-strong-authentication"></a>Ujistěte se, že vaše organizace používá silné ověřování.
+### <a name="make-sure-your-organization-uses-strong-authentication"></a>Ujistěte se, že vaše organizace používá silné ověřování.
 
 Vzhledem k tomu, že se četnost vyladěného, podvodného, odcizeného malwaru nebo opětovného použití znovu využije, je důležité, abyste heslo zálohovali pomocí nějaké formy silných přihlašovacích údajů – další informace o [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
 
+Pokud chcete snadno povolit základní úroveň zabezpečení identity, můžete použít povolení jedním kliknutím s [výchozími nastaveními zabezpečení Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md). Výchozí nastavení zabezpečení vynutilo Azure MFA pro všechny uživatele v tenantovi a blokují přihlášení ze starších protokolů v celém tenantovi.
+
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Spustit zaměnit často hesla pro útoky a vypnout tradiční složitost a pravidla vypršení platnosti.
 
-Mnoho organizací používá tradiční složitost (vyžaduje speciální znaky, číslice, Velká písmena a malá písmena) a pravidla vypršení platnosti hesla. [](https://aka.ms/passwordguidance) Tyto zásady ukázaly, že uživatelé si můžou vybrat hesla, která se budou snáze uhodnout.
+Mnoho organizací používá tradiční složitost (vyžaduje speciální znaky, číslice, Velká písmena a malá písmena) a pravidla vypršení platnosti hesla. Tyto [zásady ukázaly](https://aka.ms/passwordguidance) , že uživatelé si můžou vybrat hesla, která se budou snáze uhodnout.
 
-Funkce dynamického [hesla](../../active-directory/authentication/concept-password-ban-bad.md) služby Azure AD používá aktuální chování útočníka k tomu, aby uživatelé nemohli nastavovat hesla, která se dají snadno odhadnout. Tato funkce je vždycky zapnutá při vytváření uživatelů v cloudu, ale je teď dostupná i pro hybridní organizace při nasazení [ochrany hesel Azure AD pro Windows Server Active Directory](../../active-directory/authentication/concept-password-ban-bad-on-premises.md). Ochrana heslem Azure AD zablokuje uživatelům možnost zvolit si tato běžná hesla a dá se rozšířit tak, aby zablokovala heslo, které obsahuje zadaná uživatelská klíčová slova Uživatelům můžete například zabránit v volbě hesla, která obsahují názvy produktů vaší společnosti nebo místní tým sport.
+Funkce [dynamického hesla](../../active-directory/authentication/concept-password-ban-bad.md) služby Azure AD používá aktuální chování útočníka k tomu, aby uživatelé nemohli nastavovat hesla, která se dají snadno odhadnout. Tato funkce je vždycky zapnutá při vytváření uživatelů v cloudu, ale je teď dostupná i pro hybridní organizace při nasazení [ochrany hesel Azure AD pro Windows Server Active Directory](../../active-directory/authentication/concept-password-ban-bad-on-premises.md). Ochrana heslem Azure AD zablokuje uživatelům možnost zvolit si tato běžná hesla a dá se rozšířit tak, aby zablokovala heslo, které obsahuje zadaná uživatelská klíčová slova Uživatelům můžete například zabránit v volbě hesla, která obsahují názvy produktů vaší společnosti nebo místní tým sport.
 
 Microsoft doporučuje přijmout následující moderní zásady hesel na základě [pokynů pro NIST](https://pages.nist.gov/800-63-3/sp800-63b.html):
 
@@ -67,14 +74,14 @@ Microsoft doporučuje přijmout následující moderní zásady hesel na základ
 2. Zakáže pravidla vypršení platnosti, která uživatelům umožňují snadno uhodnout hesla, jako je třeba **Spring2019!**
 3. Zakažte požadavky na složení znaků a zabraňte uživatelům v výběru často napadených hesel, protože uživatelé můžou zvolit předvídatelné nahrazování znaků v heslech.
 
-Pomocí PowerShellu můžete [zabránit vypršení platnosti hesel](../../active-directory/authentication/concept-sspr-policy.md) pro uživatele, pokud vytvoříte identity přímo ve službě Azure AD. Hybridní organizace by tyto zásady měly implementovat pomocí [nastavení zásad skupiny domény](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) nebo [Windows PowerShellu](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
+Pomocí [PowerShellu můžete zabránit vypršení platnosti hesel](../../active-directory/authentication/concept-sspr-policy.md) pro uživatele, pokud vytvoříte identity přímo ve službě Azure AD. Hybridní organizace by tyto zásady měly implementovat pomocí [nastavení zásad skupiny domény](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) nebo [Windows PowerShellu](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>Ochrana proti nevráceným přihlašovacím údajům a přidání odolnosti proti výpadkům
 
 Pokud vaše organizace používá řešení hybridní identity s předávacím ověřováním nebo federaci, měli byste povolit synchronizaci hodnot hash hesel z následujících dvou důvodů:
 
 * Zpráva [Uživatelé s nevrácenými přihlašovacími údaji](../../active-directory/reports-monitoring/concept-risk-events.md) ve správě Azure AD vás upozorní na páry uživatelské jméno a heslo, které jsou vystavené na "tmavém webu". Nenáročné množství hesel se nevrací prostřednictvím útoků phishing, malwaru a hesla na webech třetích stran, které jsou později porušené. Společnost Microsoft nalezne mnoho z těchto nevrácených přihlašovacích údajů a oznámí vám v této sestavě, jestli se shodují s přihlašovacími údaji ve vaší organizaci – ale jenom v případě, že jste [povolili synchronizaci hodnot hash hesel](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
-* V případě výpadku místního výpadku (například při útoku ransomwarem) budete moct přepnout na použití [cloudového ověřování pomocí synchronizace hodnot hash hesel](choose-ad-authn.md). Tato metoda ověřování záloh vám umožní pokračovat v přístupu k aplikacím nakonfigurovaným pro ověřování pomocí Azure Active Directory, včetně Office 365. V takovém případě se pracovníci IT nebudou muset rozsazovat na osobní e-mailové účty pro sdílení dat, dokud se nevyřeší místní výpadek.
+* V případě výpadku místního výpadku (například při útoku ransomwarem) můžete přepínat na použití [cloudového ověřování pomocí synchronizace hodnot hash hesel](choose-ad-authn.md). Tato metoda ověřování záloh vám umožní pokračovat v přístupu k aplikacím nakonfigurovaným pro ověřování pomocí Azure Active Directory, včetně Office 365. V takovém případě pracovníci IT nebudou muset na osobní e-mailové účty sdílet data, dokud nedojde k vyřešení místního výpadku.
 
 Přečtěte si další informace o tom, jak funguje [synchronizace hodnot hash hesel](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) .
 
@@ -99,7 +106,7 @@ Aplikace, které používají své vlastní starší metody k ověřování pomo
 
 1. Zablokovat [starší ověřování, pokud používáte AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Nastavte [SharePoint Online a Exchange Online pro použití moderního ověřování](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
-3. Pomocí [zásad podmíněného přístupu zablokujte starší ověřování](../../active-directory/conditional-access/conditions.md).
+3. Pokud máte Azure AD Premium, pomocí [zásad podmíněného přístupu](../../active-directory/conditional-access/conditions.md) zablokujte starší verze ověřování, jinak použijte [výchozí nastavení zabezpečení Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blokovat neplatné vstupní body ověřování
 
@@ -107,7 +114,7 @@ S využitím duševního vlastnictví byste měli snížit dopad napadených už
 
 ### <a name="block-end-user-consent"></a>Zablokovat souhlas koncového uživatele
 
-Ve výchozím nastavení mají všichni uživatelé ve službě Azure AD povolený přístup k aplikacím, které využívají OAuth 2,0 a oprávnění k přístupu k firemním datům v [rámci souhlasu](../../active-directory/develop/consent-framework.md) Microsoft identity. Zatímco souhlas s tím umožňuje uživatelům snadno získat užitečné aplikace, které se integrují s Microsoft 365 a Azure, může představovat riziko, pokud se nepoužívá a pečlivě monitoruje. [Zakázáním všech budoucích operací pro vyjádření souhlasu s uživateli](../../active-directory/manage-apps/methods-for-removing-user-access.md) můžete snížit plochu a zmírnit toto riziko. Pokud je souhlas koncového uživatele zakázaný, bude se i tak akceptovat předchozí granty, ale všechny budoucí operace souhlasu musí udělat správce. Než tuto funkci zakážete, doporučujeme, aby uživatelé pochopili, jak požádat o schválení správce pro nové aplikace. To by mělo přispět ke snížení tření uživatelů, minimalizaci objemu podpory a zajistěte, aby se uživatelé nepřihlašovali k aplikacím pomocí přihlašovacích údajů jiných než Azure AD.
+Ve výchozím nastavení mají všichni uživatelé ve službě Azure AD povolený přístup k aplikacím, které využívají OAuth 2,0 a oprávnění k přístupu k firemním datům v [rámci souhlasu](../../active-directory/develop/consent-framework.md) Microsoft identity. Zatímco souhlas s tím umožňuje uživatelům snadno získat užitečné aplikace, které se integrují s Microsoft 365 a Azure, může představovat riziko, pokud se nepoužívá a pečlivě monitoruje. [Zakázáním všech budoucích operací pro vyjádření souhlasu s uživateli](../../active-directory/manage-apps/methods-for-removing-user-access.md) můžete snížit plochu a zmírnit toto riziko. Pokud je souhlas koncového uživatele zakázaný, bude se i tak akceptovat předchozí granty, ale všechny budoucí operace souhlasu musí udělat správce. Než tuto funkci zakážete, doporučujeme, abyste zajistili, že uživatelé budou porozumět tomu, jak požádat o schválení správce pro nové aplikace. To by mělo přispět ke snížení tření uživatelů, minimalizaci objemu podpory a zajistěte, aby se uživatelé nemuseli registrovat k aplikacím pomocí přihlašovacích údajů jiných než Azure AD.
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Implementovat Azure AD Privileged Identity Management
 
@@ -122,7 +129,7 @@ Dalším dopadem "předpokládat porušení" je nutnost minimalizovat pravděpod
 
 Povolte Azure AD PIM a pak si prohlédněte uživatele, kteří mají přiřazené administrativní role, a odeberte v těchto rolích zbytečné účty. U zbývajících privilegovaných uživatelů je přesuňte z trvalého na nárok. Nakonec vytvořte vhodné zásady, abyste se ujistili, že potřebují získat přístup k těmto privilegovaným rolím, a to tak, aby je bylo možné bezpečně provést s nezbytným ovládacím prvkem pro změnu.
 
-V rámci nasazení vašeho privilegovaného účtu postupujte podle osvědčeného postupu [](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) , abyste měli jistotu, že budete mít přístup k Azure AD, když si sami nezamknete.
+V rámci nasazení vašeho privilegovaného účtu postupujte podle [osvědčeného](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) postupu, abyste měli jistotu, že budete mít přístup k Azure AD, když si sami nezamknete.
 
 ## <a name="step-3---automate-threat-response"></a>Krok 3 – automatizace reakce na hrozby
 
@@ -142,7 +149,7 @@ Riziko přihlášení je pravděpodobnost, že se přihlašujete pomocí této i
 
 ## <a name="step-4---increase-your-awareness"></a>Krok 4 – zvýšení povědomí
 
-Auditování a protokolování událostí souvisejících se zabezpečením a souvisejících výstrah jsou základními součástmi efektivní strategie ochrany. Protokoly zabezpečení a sestavy poskytují elektronický záznam o podezřelých aktivitách a umožňují detekovat vzory, které mohou označovat pokus nebo úspěšné vnější průnik sítě a interní útoky. Pomocí auditování můžete sledovat činnost uživatelů, dokumentovat dodržování předpisů, provádět analýzy forenzní a další. Výstrahy obsahují oznámení o událostech zabezpečení.
+Auditování a protokolování událostí souvisejících se zabezpečením a souvisejících výstrah jsou základními součástmi efektivní strategie ochrany. Protokoly zabezpečení a sestavy poskytují elektronický záznam o podezřelých aktivitách a umožňují detekovat vzory, které mohou označovat pokus nebo úspěšné vnější průnik sítě a interní útoky. Pomocí auditování můžete sledovat činnost uživatelů, dokumentovat dodržování předpisů, provádět analýzu forenzní a provádět další akce. Výstrahy obsahují oznámení o událostech zabezpečení.
 
 ### <a name="monitor-azure-ad"></a>Monitorování Azure AD
 
@@ -166,7 +173,7 @@ Azure AD Identity Protection poskytuje dvě důležité sestavy, které byste m�
 
 ### <a name="audit-apps-and-consented-permissions"></a>Auditovat aplikace a souhlasná oprávnění
 
-Uživatelé mohou být vyzrazeni při přechodu na ohrožený web nebo aplikace, které získají přístup k informacím o profilu a datům uživatelů, jako je například jejich e-mailová adresa. Škodlivý objekt actor může použít odsouhlasená oprávnění, která obdržela k šifrování obsahu poštovní schránky a vyžádání Ransom k opětovnému získání dat poštovní schránky. [Správci by měli kontrolovat a auditovat](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) oprávnění udělená uživateli.
+Uživatelé mohou být vyzrazeni na napadený web nebo aplikace, které získají přístup k informacím o profilu a uživatelským datům, jako je například jejich e-mailová adresa. Škodlivý objekt actor může použít odsouhlasená oprávnění, která obdržela k šifrování obsahu poštovní schránky a vyžádání Ransom k opětovnému získání dat poštovní schránky. [Správci by měli kontrolovat a auditovat](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) oprávnění udělená uživateli.
 
 ## <a name="step-5---enable-end-user-self-help"></a>Krok 5 – povolení samoobslužné podpory pro koncové uživatele
 
@@ -174,7 +181,7 @@ Jak je to možné, budete chtít zabezpečení vyrovnávat s produktivitou. Na s
 
 ### <a name="implement-self-service-password-reset"></a>Implementace samoobslužného resetování hesla
 
-Samoobslužné [resetování hesla (SSPR)](../../active-directory/authentication/quickstart-sspr.md) v Azure nabízí správcům IT jednoduchý způsob, jak uživatelům dovolit resetování nebo odemknutí svých hesel nebo účtů bez zásahu správce. Tento systém zahrnuje generování podrobných sestav, které sledují, kdy uživatelé k systému přistupují, spolu s oznámeními, která upozorňují na zneužití. 
+[Samoobslužné resetování hesla (SSPR)](../../active-directory/authentication/quickstart-sspr.md) v Azure nabízí správcům IT jednoduchý způsob, jak uživatelům dovolit resetování nebo odemknutí svých hesel nebo účtů bez zásahu správce. Tento systém zahrnuje generování podrobných sestav, které sledují, kdy uživatelé k systému přistupují, spolu s oznámeními, která upozorňují na zneužití. 
 
 ### <a name="implement-self-service-group-management"></a>Implementace samoobslužné správy skupin
 
@@ -196,5 +203,8 @@ Existuje mnoho aspektů zabezpečení infrastruktury identity, ale tento kontrol
 
 Vážíme si, jak vážně proberete zabezpečení identity a doufáme, že tento dokument je užitečným plánem pro bezpečnější stav vaší organizace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 Pokud potřebujete pomoc s plánováním a nasazením doporučení, požádejte o pomoc [plány nasazení projektu Azure AD](https://aka.ms/deploymentplans) .
+
+Pokud jste si jisti, že jsou všechny tyto kroky splněné, použijte [hodnocení identity](../../active-directory/fundamentals/identity-secure-score.md)od Microsoftu, které vám bude zachovávat [nejnovější osvědčené postupy](identity-management-best-practices.md) a bezpečnostní hrozby.

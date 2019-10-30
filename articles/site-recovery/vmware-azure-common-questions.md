@@ -1,19 +1,19 @@
 ---
-title: Běžné dotazy týkající se zotavení po havárii VMware do Azure pomocí Azure Site Recovery | Microsoft Docs
+title: Běžné dotazy týkající se zotavení po havárii VMware do Azure pomocí Azure Site Recovery
 description: Získejte odpovědi na běžné dotazy týkající se zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 06/27/2019
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f09acb0110f436e7af936d79da9db1bab4ea23a9
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002277"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053681"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné dotazy týkající se replikace z VMware do Azure
 
@@ -189,7 +189,7 @@ Ne, Site Recovery nepodporuje replikaci do Azure Storage ve virtuálních sítí
 
 ## <a name="component-upgrade"></a>Upgrade součásti
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Moje verze agenta služeb mobility nebo konfiguračního serveru je stará a můj upgrade se nezdařil. Co mám udělat?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Moje verze agenta služeb mobility nebo konfiguračního serveru je stará a můj upgrade se nezdařil. Co mám dělat?
 
 Site Recovery se řídí modelem podpory N-4. [Přečtěte si další informace](https://aka.ms/asr_support_statement) o tom, jak upgradovat z velmi starých verzí.
 
@@ -287,7 +287,7 @@ Ano, ale Upozorňujeme, že fyzický počítač se může vrátit zpátky jenom 
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Kde můžu stahovat registrační klíče trezoru?
 
-V trezoru Recovery Services v části**Správa** **infrastruktury** > Site Recovery vyberte **konfigurační servery** . Pak na stránce **servery**vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
+V Recovery Services trezoru vyberte **konfigurační servery** v **Site Recovery infrastruktuře** > **Spravovat**. Pak na stránce **servery**vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Může být pro ochranu více instancí vCenter použit jediný konfigurační server?
 
@@ -297,7 +297,7 @@ Ano, jeden konfigurační server může chránit virtuální počítače napří
 
 Ano, Azure Site Recovery mohou chránit virtuální počítače v různých clusterech.
 
-## <a name="process-server"></a>Procesový server
+## <a name="process-server"></a>Procesový Server
 
 ### <a name="why-am-i-unable-to-select-the-process-server-when-i-enable-replication"></a>Proč se mi při povolování replikace nedá vybrat procesový Server?
 

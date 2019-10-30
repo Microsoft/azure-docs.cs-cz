@@ -1,19 +1,19 @@
 ---
 title: Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 description: Naučte se používat šablonu Správce prostředků k vytvoření upozornění na metriku.
-author: snehithm
+author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 9/27/2018
-ms.author: snmuvva
+ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: b08c7d1b91f89aba4c9cb8a23bb5c688521cb37e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: f341a3599607e527556f90626dd866418910f61e
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372779"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052328"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -2970,6 +2970,9 @@ Následující kód JSON uložte jako availabilityalert. JSON pro účely tohoto
     },
     "actionGroupId": {
       "type": "string"
+    },
+    "location": {
+      "type": "string"
     }
   },
   "variables": {
@@ -2981,7 +2984,7 @@ Následující kód JSON uložte jako availabilityalert. JSON pro účely tohoto
       "name": "[variables('pingTestName')]",
       "type": "Microsoft.Insights/webtests",
       "apiVersion": "2014-04-01",
-      "location": "West Central US",
+      "location": "[parameters('location')]",
       "tags": {
         "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource"
       },
@@ -3060,13 +3063,16 @@ Níže uvedený formát JSON uložte jako availabilityalert. Parameters. JSON a 
     "contentVersion": "1.0.0.0",
     "parameters": {
         "appName": {
-            "value": "Replace with your Application Insights component name"
+            "value": "Replace with your Application Insights resource name"
         },
         "pingURL": {
             "value": "https://www.yoursite.com"
         },
         "actionGroupId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourceGroup-name/providers/microsoft.insights/actiongroups/replace-with-action-group-name"
+        },
+        "location": {
+            "value": "Replace with the location of your Application Insights resource"
         }
     }
 }

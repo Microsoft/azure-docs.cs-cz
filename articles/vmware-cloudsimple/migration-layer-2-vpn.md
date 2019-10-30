@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 34b26dd1b9b8990da9e84c8d7cfc993d8bbe85a7
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 37f337f158c3ca53170d963f1304801a12b732da
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72376306"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053893"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrace úloh pomocí roztažené sítě vrstvy 2
 
@@ -137,7 +137,7 @@ Následující kroky ukazují, jak načíst ID logického směrovače Tier0 DR i
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Načtení IDENTIFIKÁTORu logického přepínače potřebného pro L2VPN
 
 1. Přihlaste se ke [Správci NSX-T](https://nsx-t-manager-ip-address).
-2. Vyberte **sítě**  > **přepínání**  > **přepínačů** > * * < přepínačem \Logical \> * * **Přehled**>.
+2. Vyberte **sítě** > **přepínání** > **přepínačů** >  **< přepínač \Logical**\>**Přehled**.
 3. Poznamenejte si identifikátor UUID roztaženého logického přepínače, který se při konfiguraci L2VPN vyžaduje.
 
     ![získat výstup logického směrovače](media/l2vpn-fetch-switch01.png)
@@ -165,7 +165,7 @@ Aby bylo možné vytvořit síť VPN založenou na trasách protokolu IPsec mezi
 
 4. Přihlaste se ke Správci NSX-T a vyberte **sítě**  > **směrování**  > **směrovače**  > **Provider-LR**  > **Routing**  > **routers**1**BGP** . Vyberte první sousední uzel. Klikněte na **Upravit** **řady adres** > . V případě řady IPv4 upravte sloupec **Filtr pro výstup** a vyberte seznam předpon IP adres, který jste vytvořili. Klikněte na **Uložit**. Tento krok opakujte pro druhý sousední uzel.
 
-    ![Attach seznam předpon IP adres 1 ](media/l2vpn-routing-security03.png) ![Attach seznam předpon IP adres 2 ](media/l2vpn-routing-security04.png)
+    ![připojit seznam předpon IP adres 1](media/l2vpn-routing-security03.png) ![připojit seznam předpon IP adres 2](media/l2vpn-routing-security04.png)
 
 5. Znovu distribuujte statickou trasu null do protokolu BGP. Chcete-li inzerovat směrování rozhraní zpětné smyčky do Underlay, je nutné znovu distribuovat statickou trasu null do protokolu BGP. Přihlaste se ke Správci NSX-T a vyberte **sítě**  > **směrování**  > **směrovače**  > **zprostředkovatele-LR**  > **Směrování**  >  směrování**trasy** 1**okolí**. Vyberte **Provider-LR-Route_Redistribution** a klikněte na **Upravit**. Zaškrtněte políčko **static** a klikněte na **Uložit**.
 
@@ -430,7 +430,7 @@ Před nasazením ověřte, že vaše místní pravidla brány firewall umožňuj
 
 2. Přejít do složky se všemi extrahovaných souborů. Vyberte všechna VMDK (NSX-l2t-Client-large. MF a NSX-l2t-client-large. ovf pro velkou velikost zařízení nebo NSX-l2t-Client-XLarge. MF a NSX-l2t-client-Xlarge. ovf pro největší velikost zařízení s velkou velikostí). Klikněte na **Další**.
 
-    Šablona šablony ![Select ](media/l2vpn-deploy-client02.png) ![Select ](media/l2vpn-deploy-client03.png)
+    ![vyberte šablonu](media/l2vpn-deploy-client02.png) ![vyberte šablonu](media/l2vpn-deploy-client03.png)
 
 3. Zadejte název samostatného klienta NSX-T a klikněte na **Další**.
 
@@ -460,8 +460,8 @@ Před nasazením ověřte, že vaše místní pravidla brány firewall umožňuj
     * **Délka předpony**. Zadejte délku předpony pro síť VLAN nebo podsíť pro odesílání.
     * Rozhraní **CLI správce/povolení/heslo uživatele root**. Nastavte heslo pro účet správce/Enable/root.
 
-      Šablona ![Customize ](media/l2vpn-deploy-client08.png)
-       ![Customize šablonu – další ](media/l2vpn-deploy-client09.png)
+      ![přizpůsobení šablony](media/l2vpn-deploy-client08.png)
+      ![přizpůsobit šablonu – další](media/l2vpn-deploy-client09.png)
 
 7. Zkontrolujte nastavení a klikněte na **Dokončit**.
 

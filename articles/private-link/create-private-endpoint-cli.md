@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 30394ba7b71d7dcb4233e5dca341dda47fd9ffa7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 477f7d4824d3165357228d200dca9e556a072744
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376319"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053509"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Vytvoření privátního koncového bodu pomocí Azure CLI
 Soukromý koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení. V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač ve virtuální síti, SQL Database Server s privátním koncovým bodem pomocí Azure CLI. Pak můžete k virtuálnímu počítači přistupovat a získat zabezpečený přístup k prostředku privátního propojení (privátní Azure SQL Database Server v tomto příkladu). 
@@ -39,7 +39,7 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 ## <a name="disable-subnet-private-endpoint-policies"></a>Zakázat zásady privátního koncového bodu podsítě 
-Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu. Aktualizace konfigurace podsítě s názvem *mySubnet* with [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -49,7 +49,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač. 
-Vytvořte virtuální počítač pomocí AZ VM Create. Po zobrazení výzvy zadejte heslo, které se použije jako přihlašovací údaje pro virtuální počítač. Tento příklad vytvoří virtuální počítač s názvem *myVm*: 
+Vytvořte virtuální počítač pomocí AZ VM Create. Po zobrazení výzvy zadejte heslo, které se použije jako přihlašovací údaje pro virtuální počítač. Tento příklad vytvoří virtuální počítač s názvem *myVm*: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
@@ -81,7 +81,7 @@ az sql db create \
     --capacity 1 
 ```
 
-Všimněte si, že ID SQL Server se podobá @ no__t-0 v dalším kroku použijete ID SQL Server. 
+Všimněte si, že ID SQL Server se podobá ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` v dalším kroku budete používat ID SQL Server. 
 
 ## <a name="create-the-private-endpoint"></a>Vytvoření privátního koncového bodu 
 Vytvořte v Virtual Network privátní koncový bod pro server SQL Database: 
@@ -148,8 +148,8 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 V této části se připojíte k serveru SQL Database z virtuálního počítače pomocí privátního koncového bodu.
 
- 1. Ve vzdálené ploše *myVM*otevřete PowerShell.
- 2. Zadejte příkaz nslookup MyServer. Database. Windows. NET @ no__t-0. zobrazí se zpráva podobná této: 
+ 1. Ve vzdálené ploše *myVM*otevřete PowerShell.
+ 2. Zadejte nslookup myserver.database.windows.net  obdržíte zprávu podobnou této: 
 
 ```
       Server:  UnKnown 
@@ -165,7 +165,7 @@ V této části se připojíte k serveru SQL Database z virtuálního počítač
  Heslo: zadejte heslo, které jste zadali při vytváření.
  Pamatovat heslo: vyberte Ano.
  
- 5. Vyberte **připojit**.
+ 5. Vyberte **Connect** (Připojit).
  6. Procházet **databáze** z levé nabídky
  7. Volitelně Vytvoření nebo dotazování informací z *MyDatabase*
  8. Zavřete připojení ke vzdálené ploše pro *myVm*.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: df6926a8f50d7ffb2765557cdf75ed6d09b3810b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 40a2443419fab5d0a89d704312d880e344597b8b
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428036"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053899"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -38,7 +38,7 @@ Azure SQL Database vychází z architektury SQL Server databázového stroje, kt
 
 - Podpora až 100 TB velikosti databáze
 - Skoro okamžité zálohování databáze (na základě snímků souborů uložených v úložišti objektů BLOB v Azure) bez ohledu na velikost bez vstupně-výstupních operací na výpočetních prostředcích  
-- Rychlá obnova databáze (na základě snímků souborů) v řádu minut a nikoli hodin nebo dnů (nejedná se o velikost datové operace)
+- Rychlá obnova databáze k určitému bodu v čase (na základě snímků souborů) v minutách, ne hodin nebo dnů (nejedná se o velikost datové operace)
 - Vyšší celkový výkon z důvodu vyšší propustnosti protokolů a rychlejšího potvrzování transakcí bez ohledu na objemy dat
 - Rychlé horizontální navýšení kapacity – můžete zřídit jeden nebo víc uzlů jen pro čtení pro přesměrování zatížení a použít jako aktivní pohotovostní režim.
 - Rychlé horizontální navýšení kapacity – můžete v konstantním čase škálovat výpočetní prostředky tak, aby vyhovovaly velkým objemům úloh, a to v případě potřeby a následně škálovat výpočetní prostředky zpátky, pokud to nepotřebujete.
@@ -241,7 +241,7 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Podokno Správa zálohování na logickém serveru nezobrazuje databáze s škálovatelným škálováním, které se budou filtrovat z SQL serveru.  | Vlastní škálování má samostatnou metodu pro správu záloh a jako takové dlouhodobé uchovávání a nastavení uchovávání záloh v čase se nevztahují nebo neověřují. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování. |
 | Obnovení k určitému časovému okamžiku | Jakmile se databáze migruje do vrstvy služby s vlastním škálováním, obnovení k určitému bodu v čase před migrací se nepodporuje.|
 | Obnovení databáze bez škálování na Hypserscale a naopak | Nemůžete obnovit databázi škálování v databázi s neškálovatelnými škálováními, ani nemůžete obnovit databázi s neškálovatelným škálováním do databáze v rámci škálování na více databází.|
-| Pokud má databáze minimálně jeden datový soubor větší než 1 TB, migrace se nezdařila | V některých případech je možné tento problém obejít tak, že velké soubory zmenšíte na méně než 1 TB. Pokud migrujete databázi používanou během procesu migrace, ujistěte se, že žádný soubor nezíská větší velikost než 1 TB. Pomocí následujícího dotazu určete velikost databázových souborů. @no__t – 0;|
+| Pokud má databáze minimálně jeden datový soubor větší než 1 TB, migrace se nezdařila | V některých případech je možné tento problém obejít tak, že velké soubory zmenšíte na méně než 1 TB. Pokud migrujete databázi používanou během procesu migrace, ujistěte se, že žádný soubor nezíská větší velikost než 1 TB. Pomocí následujícího dotazu určete velikost databázových souborů. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Managed Instance | Služba Azure SQL Database Managed instance se v současné době nepodporuje u databází s podporou škálování na více instancí. |
 | Elastické fondy |  Elastické fondy se v současnosti nepodporují u SQL Databaseho škálování.|
 | Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nedá se migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BACPAC nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.).|

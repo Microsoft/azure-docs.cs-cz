@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c8be547790452774992b9226ca8010532263aaff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8eb329ae019f125b98c475b4a77d19e9cafe23fa
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814511"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053825"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Navrácení služeb po obnovení virtuálního počítače Azure mezi oblastmi Azure
 
@@ -46,9 +46,9 @@ Po opětovném zapnutí ochrany virtuálních počítačů můžete v případě
 
 2. V části **replikované položky**vyberte virtuální počítač a pak vyberte **převzetí služeb při selhání**.
 3. V části **převzetí služeb při selhání**vyberte bod obnovení, který převezme služby při selhání:
-    - **Nejnovější (výchozí)** : Zpracovává všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO).
-    - **Poslední zpracovaná**: Vrátí virtuální počítač k nejnovějšímu bodu obnovení, který byl zpracován Site Recovery.
-    - **Vlastní**: Převezme převzetí služeb při selhání konkrétního bodu obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
+    - **Nejnovější (výchozí)** : zpracovává všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO).
+    - **Poslední zpracování**: vrátí virtuální počítač k nejnovějšímu bodu obnovení, který byl zpracován Site Recovery.
+    - **Vlastní**: převzetí služeb při selhání pro určitý bod obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
 4. Vyberte **vypnout počítač před spuštěním převzetí služeb při selhání** , pokud chcete, aby se Site Recovery před aktivací převzetí služeb při selhání vypnul virtuální počítače v oblasti zotavení po havárii. Převzetí služeb při selhání pokračuje i v případě selhání vypnutí. 
 5. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 6. Po dokončení převzetí služeb při selhání ověřte virtuální počítač tím, že se k němu přihlásíte. Bod obnovení můžete podle potřeby změnit.
@@ -57,6 +57,9 @@ Po opětovném zapnutí ochrany virtuálních počítačů můžete v případě
 
     ![Virtuální počítač v primárních a sekundárních oblastech](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
-## <a name="next-steps"></a>Další postup
+> [!NOTE]
+> Pro počítače, na kterých běží rozšíření Site Recovery 9.28. x. x, [kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery vyčistí počítače v sekundární oblasti zotavení po havárii, nafter navrácení služeb po obnovení je dokončené a virtuální počítače se znovu chrání. Nemusíte ručně odstraňovat virtuální počítače a síťové karty.
+
+## <a name="next-steps"></a>Další kroky
 
 [Přečtěte si další informace](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) o toku ochrany.

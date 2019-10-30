@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/03/2019
-ms.openlocfilehash: bc37c7cb11b973f89695b5631ec9569ff6b94608
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: cc7e510d9a6db93edc211799eda8df79116236a7
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71801785"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053657"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Známé problémy/omezení migrace pro online migrace z Oracle do Azure DB pro PostgreSQL – jeden server
 
@@ -63,7 +63,7 @@ Prázdné sloupce objektů BLOB a datový typ CLOB jsou také mapovány na hodno
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
-- Zákazníci musí použít SYSDB k připojení k Oracle.
+- Zákazníci musí použít SYSDBA k připojení k Oracle.
 - Změny dat vyplývající z operací oddílů a dílčího oddílu (přidání, vyřazení, výměna a ZKRÁCENí) nebudou migrovány a mohou způsobit následující chyby:
   - U přidání operací může aktualizace a odstranění u přidaných dat vracet upozornění "0 řádků, které jsou ovlivněny".
   - U operací DROP a ZKRÁCENí může nová vložení způsobit chyby "duplicity".

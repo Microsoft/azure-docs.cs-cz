@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 33078439e8f055d746fad9949a9b0d7651e120f7
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 001a6d5ef742874698cd7a67014179a2f8528fc6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543823"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053465"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Co je protokol IPv6 pro Azure Virtual Network? (Preview)
 
@@ -35,7 +35,7 @@ Následující diagram znázorňuje jednoduché nasazení duálního zásobníku
 
 ## <a name="benefits"></a>Výhody
 
-Výhody Azure Virtual Network IPv6:
+Protokol IPv6 pro výhody virtuální sítě Azure:
 
 - Pomáhá rozšířit dosah vašich aplikací hostovaných v Azure na rostoucí mobilní a Internet věcí trhy.
 - Duální skládané virtuální počítače IPv4/IPv6 poskytují maximální flexibilitu nasazení služeb. Jedna instance služby se může připojit k internetovým klientům podporujícím IPv4 i IPv6.
@@ -44,34 +44,39 @@ Výhody Azure Virtual Network IPv6:
 
 ## <a name="capabilities"></a>Možnosti
 
-Protokol IPv6 pro virtuální síť obsahuje následující funkce:
+Protokol IPv6 pro virtuální síť Azure zahrnuje tyto funkce:
 
 - Zákazníci Azure můžou definovat vlastní adresní prostor virtuální sítě IPv6, který bude vyhovovat potřebám svých aplikací, zákazníkům nebo bezproblémové integraci do svého místního IP prostoru.
 - Virtuální sítě duálního zásobníku (IPv4 a IPv6) s podsítěmi s duálním zásobníkem umožňují aplikacím připojení pomocí prostředků IPv4 i IPv6 ve své virtuální síti nebo v Internetu.
     > [!IMPORTANT]
-    > Podsítě pro protokol IPv6 musí mít velikost přesně/64.  Tím se zajistí kompatibilita, pokud se rozhodnete povolit směrování podsítě do místní sítě, protože některé směrovače můžou přijímat trasy IPv6 jenom/64.  
+    > Podsítě pro protokol IPv6 musí mít velikost přesně/64.  To zajistí budoucí kompatibilitu, pokud se rozhodnete povolit směrování podsítě do místní sítě, protože některé směrovače můžou přijmout jenom trasy IPv6 (/64).  
 - Chraňte své prostředky pomocí pravidel IPv6 pro skupiny zabezpečení sítě.
+    - A ochrana distribuovaných služeb DOS (DDoS) platformy Azure se rozšiřuje na internetovou veřejnou IP adresu.
 - Přizpůsobte směrování provozu protokolu IPv6 ve virtuální síti pomocí uživatelem definovaných tras – zejména při využití síťových virtuálních zařízení k rozšíření vaší aplikace.
-- Umožněte internetovým klientům bezproblémový přístup k aplikaci s duálním zásobníkem pomocí vlastního protokolu, který je Azure DNS podpora záznamů IPv6 (AAAA). 
-- Standardní podpora IPv6 veřejných nástrojů pro vyrovnávání zatížení k vytváření odolných a škálovatelných aplikací, která zahrnuje:
-    - Volitelná sonda stavu protokolu IPv6, která určuje, které instance fondu back-endu jsou v pořádku, a tedy může přijímat nové toky. .  
+- Linux a Windows Virtual Machines můžou všechny používat protokol IPv6 pro virtuální síť Azure.
+- [Standardní podpora veřejných Load Balancer protokolu IPv6](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) pro vytváření odolných a škálovatelných aplikací, mezi které patří:
+    - Volitelná sonda stavu protokolu IPv6, která určuje, které instance fondu back-endu jsou v pořádku, a tedy může přijímat nové toky.
     - Volitelná odchozí pravidla, která poskytují úplnou deklarativní kontrolu nad odchozím připojením ke škálování a optimalizaci této možnosti podle vašich konkrétních potřeb.
     - Volitelné vícenásobné konfigurace front-endu, které umožňují, aby jeden nástroj pro vyrovnávání zatížení používal více veřejných IP adres IPv6 – stejný protokol a port front-end je možné znovu použít napříč adresami front-endu.
+    - Volitelné porty IPv6 se dají znovu použít na back-endové instance pomocí *plovoucí IP* funkce pravidel vyrovnávání zatížení. 
+- [Standardní podpora interních Load Balancer IPv6](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) pro vytváření odolných vícevrstvých aplikací v rámci služby Azure virtuální sítě.  
+- Základní podpora protokolu IPv6 Public Load Balancer pro kompatibilitu se staršími nasazeními
+- [Vyhrazené veřejné IP adresy a rozsahy adres IPv6](ipv6-public-ip-address-prefix.md) poskytují stabilní a předvídatelné adresy IPv6, které usnadňují seznamování vašich aplikací hostovaných v Azure pro vaši firmu a zákazníky.
 - Veřejná IP adresa na úrovni instance poskytuje připojení k Internetu IPv6 přímo k jednotlivým virtuálním počítačům.
-- Můžete snadno přidat připojení IPv6 k existujícím nasazením jenom s protokolem IPv4 s upgradem na místě.
-- Vytvářejte aplikace s duálním zásobníkem, které se automaticky škálují na vaše zatížení pomocí služby Virtual Machine Scale Sets.
-- Podpora portálu pro verzi Preview zahrnuje interaktivní vytváření, úpravy a odstraňování virtuálních sítí a podsítí pro duální zásobníky (IPv4 + IPv6), pravidla skupiny zabezpečení sítě IPv6, trasy definované uživatelem protokolu IPv6 a veřejné IP adresy IPv6.  
+- [Přidat IPv6 do existujících nasazení jenom s protokolem IPv4](ipv6-add-to-existing-vnet-powershell.md)– Tato funkce umožňuje snadno přidat připojení IPv6 k existujícím nasazením jenom s protokolem IPv4, aniž by bylo potřeba znovu vytvářet nasazení.  Síťový provoz IPv4 není během tohoto procesu ovlivněný, takže v závislosti na vaší aplikaci a operačním systému budete moct protokol IPv6 přidat i do živých služeb.    
+- Umožněte internetovým klientům bezproblémový přístup k aplikaci s duálním zásobníkem pomocí vlastního protokolu, který je Azure DNS podpora záznamů IPv6 (AAAA). 
+- Vytvářejte aplikace s duálním zásobníkem, které se automaticky škálují na zatížení pomocí služby Virtual Machine Scale Sets s protokolem IPv6.
+- [Partnerský vztah Virtual Network (VNET)](virtual-network-peering-overview.md) – v rámci regionálního i globálního partnerského vztahu – umožňuje bezproblémové připojit duální zásobník virtuální sítě – koncové body IPv4 a IPv6 na virtuálních počítačích v partnerských sítích budou moct vzájemně komunikovat. Můžete dokonce i partnerský duální zásobník s virtuální sítě jenom s protokolem IPv4, protože přecházíte mezi nasazeními do duálního zásobníku. 
+- Řešení potíží a diagnostiky protokolu IPv6 jsou k dispozici s metrikami vyrovnávání zátěže/výstrahami a Network Watcher funkcemi, jako je zachycení paketů, protokoly toků NSG, řešení potíží s připojením a monitorování připojení.   
+
+## <a name="scope"></a>Rozsah
+Protokol IPv6 pro virtuální síť Azure je základní sada funkcí, která zákazníkům umožňuje hostovat aplikace s duálním zásobníkem (IPv4 + IPv6) v Azure.  Chystáme se přidat podporu protokolu IPv6 do více síťových funkcí Azure v průběhu času a nakonec nabízet duální verze služby Azure PaaS, ale mezitím všechny služby Azure PaaS lze využívat prostřednictvím koncových bodů IPv4 v duálním zásobníku Virtual Machines.   
 
 ## <a name="limitations"></a>Omezení
-Verze Preview protokolu IPv6 pro službu Azure Virtual Network má tato omezení:
-- Protokol IPv6 pro Azure Virtual Network (Preview) je k dispozici ve všech globálních oblastech Azure, ale jenom v globálním cloudu Azure, nikoli v cloudech státní správy.
-- Podpora portálu pro Standard Load Balancer komponenty je jen pro čtení.  Plná podpora a dokumentace (s ukázkami) je ale k dispozici pro Standard Load Balancer nasazení pomocí Azure PowerShellu a rozhraní příkazového řádku (CLI).   
-- Podpora Network Watcher pro verzi Preview je omezená na protokoly toku NSG a Zachytávání síťových paketů.
-- Partnerský vztah virtuální sítě (regionální nebo globálně) není ve verzi Preview podporován.
-- Při použití standardního externího Load Balancer IPv6 platí následující omezení: 
-  - Odchozí pravidla můžou odkazovat na několik veřejných IP adres front-endu , ale nemusí odkazovat na veřejnou předponu IPv6. Veřejná Předpona protokolu IP podporuje pouze předpony protokolu IPv4.
-  - Pravidla vyrovnávání zatížení IPv6 nesmí používat funkci *plovoucí IP adresy* . Opětovné použití portu na back-end instancí se podporuje jenom s protokolem IPv4.
-- Funkce předpony veřejných IP adres Azure nepodporuje rezervaci bloku internetových adres IPv6.
+Aktuální protokol IPv6 pro vydanou verzi služby Azure Virtual Network má následující omezení:
+- Protokol IPv6 pro Azure Virtual Network (Preview) je k dispozici ve všech globálních oblastech Azure, ale v cloudech státní správy je jenom v globálním Azure.
+- V síti VNET s povoleným protokolem IPv6 se nedají používat Express Route a brány VPN Gateway, a to buď přímo, nebo s partnerským vztahem "UseRemoteGateway". 
+- Platforma Azure (AKS atd.) nepodporuje komunikaci IPv6 pro kontejnery.  
 
 ## <a name="pricing"></a>Ceny
 
@@ -79,5 +84,6 @@ Prostředky a šířka pásma Azure Azure se účtují stejnou sazbou jako IPv4.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [nasadit aplikaci s duálním zásobníkem IPv6 pomocí Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-powershell.md).
-- Naučte se, jak [pomocí Azure CLI nasadit aplikaci s duálním zásobníkem IPv6](virtual-network-ipv4-ipv6-dual-stack-cli.md).
+- Přečtěte si, jak [nasadit aplikaci s duálním zásobníkem IPv6 pomocí Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
+- Naučte se, jak [pomocí Azure CLI nasadit aplikaci s duálním zásobníkem IPv6](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
+- Přečtěte si, jak [nasadit aplikaci s duálním zásobníkem IPv6 pomocí šablon Správce prostředků (JSON)](ipv6-configure-standard-load-balancer-template-json.md) .

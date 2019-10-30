@@ -1,18 +1,18 @@
 ---
-title: Řešení potíží s navrácením služeb po havárii v místním prostředí během zotavení virtuálního počítače VMware do Azure pomocí Azure Site Recovery | Microsoft Docs
+title: Řešení potíží s navrácením služeb po havárii v místním prostředí během zotavení virtuálního počítače VMware do Azure pomocí Azure Site Recovery
 description: V tomto článku se dozvíte, jak řešit problémy navrácení služeb po obnovení a zotavení po havárii virtuálního počítače VMware do Azure pomocí Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: raynew
-ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970857"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053851"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>Řešení potíží se selháním zjišťování vCenter
 
@@ -20,7 +20,7 @@ Tento článek vám pomůže při řešení problémů, ke kterým dochází kv�
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Jiné než číselné hodnoty ve vlastnosti maxSnapShots
 
-Ve verzích starších než 9,20 se vCenter odpojí, když načte nečíselnou hodnotu vlastnosti @no__t vlastnost-0 na virtuálním počítači.
+Ve verzích starších než 9,20 se vCenter odpojí, když načte nečíselnou hodnotu vlastnosti `snapshot.maxSnapShots` vlastnosti na virtuálním počítači.
 
 Tento problém je identifikovaný ID chyby 95126.
 
@@ -46,8 +46,8 @@ Obecně platí, že se proxy server používá ke komunikaci s veřejnými sít�
 
 Při výskytu tohoto problému dojde k následujícím situacím:
 
-- > VCenter serveru \<vCenter není dosažitelný kvůli chybě: vzdálený server vrátil chybu: (503) Server není k dispozici.
-- > VCenter serveru \<vCenter není dosažitelný kvůli chybě: vzdálený server vrátil chybu: Nepodařilo se připojit ke vzdálenému serveru.
+- Server vCenter \<> vCenter není dosažitelný kvůli chybě: vzdálený server vrátil chybu: (503) Server není k dispozici.
+- Server vCenter \<> vCenter není dosažitelný kvůli chybě: vzdálený server vrátil chybu: Nepodařilo se připojit ke vzdálenému serveru.
 - Nepovedlo se připojit k serveru vCenter/ESXi.
 
 Problém vyřešíte takto:

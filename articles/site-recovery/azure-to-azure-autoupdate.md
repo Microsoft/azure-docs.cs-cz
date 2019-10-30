@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 79a11a58f11486f3eda0205e62e7a4a92ff070b2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0a8f47e0eea8908fcf6aa11c694e09efef14bbf1
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933938"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053534"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatické aktualizace služby mobility v Azure do Azure – replikace
 
@@ -31,7 +31,7 @@ Když ke správě aktualizací použijete Site Recovery, nasadí globální Runb
 Výchozí plán Runbooku se opakuje každý den v 12:00 v časovém pásmu geograficky replikovaného virtuálního počítače. Můžete také změnit plán Runbooku prostřednictvím účtu Automation.
 
 > [!NOTE]
-> Počínaje kumulativní aktualizací 35 můžete zvolit existující účet Automation, který se bude používat pro aktualizace. Před touto aktualizací Site Recovery tento účet ve výchozím nastavení vytvořil. Tato možnost je dostupná, když povolíte replikaci pro virtuální počítač. Pokud toto nastavení změníte, bude platit pro všechny virtuální počítače Azure chráněné ve stejném trezoru.
+> Počínaje kumulativní aktualizací 35 můžete zvolit existující účet Automation, který se bude používat pro aktualizace. Před touto aktualizací Site Recovery tento účet ve výchozím nastavení vytvořil. Všimněte si, že tuto možnost můžete vybrat jenom v případě, že pro virtuální počítač povolíte replikaci. Není k dispozici pro replikační virtuální počítač. Nastavení, které vyberete, se použije u všech virtuálních počítačů Azure chráněných ve stejném trezoru.
  
 > Zapnutí automatických aktualizací nevyžaduje restartování virtuálních počítačů Azure nebo vlivu na probíhající replikaci.
 

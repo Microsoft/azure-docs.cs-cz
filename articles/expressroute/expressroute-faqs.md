@@ -10,7 +10,7 @@ ms.author: jaredro
 ms.custom: seodec18
 ms.openlocfilehash: 920419bf10634e8be15e05a89d547a5a9d1430b7
 ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/29/2019
 ms.locfileid: "73027787"

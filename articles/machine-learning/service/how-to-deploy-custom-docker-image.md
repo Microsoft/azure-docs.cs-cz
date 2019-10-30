@@ -1,7 +1,7 @@
 ---
 title: Nasazení modelů pomocí vlastního základního obrázku Docker
 titleSuffix: Azure Machine Learning
-description: Naučte se používat vlastní základní image Docker při nasazení Azure Machine Learningch modelů. Při nasazování proučeného modelu se nasadí základní image kontejneru pro spuštění modelu pro odvození. I když Azure Machine Learning k dispozici výchozí základní image, můžete použít také vlastní základní image.
+description: Naučte se používat vlastní základní image Docker při nasazení Azure Machine Learningch modelů. I když Azure Machine Learning k dispozici výchozí základní image, můžete použít také vlastní základní image.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 84567b68c85a48d0fc02f6f6a4986d8092215a92
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 47387108de09c9b24471c4afc06a25fa0cbeca00
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326493"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053391"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 
@@ -37,14 +37,14 @@ Obvykle vytvoříte vlastní základní bitovou kopii, pokud chcete použít Doc
 
 Tento dokument je rozdělen do dvou částí:
 
-* Vytvoření vlastní základní Image: Poskytuje informace správcům a DevOpsům při vytváření vlastní image a konfiguraci ověřování pro Azure Container Registry pomocí rozhraní příkazového řádku Azure CLI a Machine Learning CLI.
-* Nasazení modelu pomocí vlastní základní Image: Poskytuje informace pro odborníky přes data a inženýry DevOps/ml na používání vlastních imagí při nasazení vyškolené modelu ze sady Python SDK nebo ml CLI.
+* Vytvoření vlastní základní Image: poskytuje informace správcům a DevOpsům při vytváření vlastní image a konfiguraci ověřování pro Azure Container Registry pomocí rozhraní příkazového řádku Azure CLI a Machine Learning CLI.
+* Nasazení modelu pomocí vlastní základní Image: poskytuje informace pro odborníky na data a inženýry DevOps/ML na používání vlastních imagí při nasazení vyučeného modelu ze sady Python SDK nebo ML CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní skupina Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 * [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
-* [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * [Azure Container Registry](/azure/container-registry) nebo jiný registr Docker, který je přístupný na internetu.
 * Kroky v tomto dokumentu předpokládají, že máte zkušenosti s vytvářením a používáním objektu __Konfigurace odvození__ jako součást nasazení modelu. Další informace najdete v části Příprava na nasazení v tématu [nasazení a jak](how-to-deploy-and-where.md#prepare-to-deploy).
@@ -68,9 +68,9 @@ Informace v této části předpokládají, že používáte Azure Container Reg
 
     Informace o používání instančních objektů s Azure Container Registry najdete v tématu [ověřování Azure Container Registry pomocí instančních objektů](/azure/container-registry/container-registry-auth-service-principal).
 
-* Informace o Azure Container Registry a imagi: Zadejte název image pro kohokoli, kdo ho musí používat. Například Image s názvem `myimage`, která je uložena v registru s názvem `myregistry`, je odkazována jako `myregistry.azurecr.io/myimage` při použití image pro nasazení modelu.
+* Informace o Azure Container Registry a obrázku: zadejte název image pro kohokoli, kdo ji musí použít. Například obrázek s názvem `myimage`uložený v registru s názvem `myregistry`je odkazován jako `myregistry.azurecr.io/myimage` při použití image pro nasazení modelu.
 
-* Požadavky na bitovou kopii: Azure Machine Learning podporuje pouze image Docker, které poskytují následující software:
+* Požadavky na Image: Azure Machine Learning podporuje jenom image Docker, které poskytují následující software:
 
     * Ubuntu 16,04 nebo vyšší.
     * Conda 4.5. # nebo vyšší.
@@ -95,7 +95,7 @@ Pokud jste už provedli nebo nasadili modely pomocí Azure Machine Learning, vyt
 
     Postupujte podle výzev k ověření předplatného.
 
-2. K vypsání registru kontejneru pro pracovní prostor použijte následující příkaz. Nahraďte `<myworkspace>` názvem svého pracovního prostoru Azure Machine Learning. Nahraďte `<resourcegroup>` skupinou prostředků Azure, která obsahuje váš pracovní prostor:
+2. K vypsání registru kontejneru pro pracovní prostor použijte následující příkaz. Nahraďte `<myworkspace>` názvem pracovního prostoru Azure Machine Learning. Nahraďte `<resourcegroup>` skupinou prostředků Azure, která obsahuje váš pracovní prostor:
 
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
@@ -109,7 +109,7 @@ Pokud jste už provedli nebo nasadili modely pomocí Azure Machine Learning, vyt
     /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.ContainerRegistry/registries/<registry_name>
     ```
 
-    `<registry_name>` Hodnota je název Azure Container registry pro váš pracovní prostor.
+    Hodnota `<registry_name>` je název Azure Container Registry pro váš pracovní prostor.
 
 ### <a name="build-a-custom-base-image"></a>Vytvoření vlastní základní image
 
@@ -142,13 +142,13 @@ Postup v této části vás seznámí s vytvořením vlastní image Docker ve va
         find / -type d -name __pycache__ -prune -exec rm -rf {} \;
     ```
 
-2. V prostředí nebo příkazovém řádku použijte následující příkaz k ověření Azure Container Registry. `<registry_name>` Nahraďte názvem registru kontejneru, do kterého chcete uložit Image:
+2. V prostředí nebo příkazovém řádku použijte následující příkaz k ověření Azure Container Registry. Nahraďte `<registry_name>` názvem registru kontejneru, do kterého chcete uložit bitovou kopii:
 
     ```azurecli-interactive
     az acr login --name <registry_name>
     ```
 
-3. Pokud chcete nahrát souboru Dockerfile a sestavit ho, použijte následující příkaz. Nahraďte `<registry_name>` názvem registru kontejneru, do kterého chcete uložit Image:
+3. Pokud chcete nahrát souboru Dockerfile a sestavit ho, použijte následující příkaz. Nahraďte `<registry_name>` názvem registru kontejneru, do kterého chcete uložit bitovou kopii:
 
     ```azurecli-interactive
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
@@ -168,7 +168,7 @@ Další informace o nahrání existujících imagí do Azure Container Registry 
 
 Pokud chcete použít vlastní image, potřebujete tyto informace:
 
-* __Název Image__ Například `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` je cesta k základní imagi Docker, kterou poskytuje Microsoft.
+* __Název Image__ `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` je například cesta k základní imagi Docker, kterou poskytuje Microsoft.
 * Pokud je obrázek v __privátním úložišti__, budete potřebovat následující informace:
 
     * __Adresa__registru. Například, `myregistry.azureecr.io`.
@@ -209,7 +209,7 @@ Další informace najdete v tématu [Azure Machine Learning Containers](https://
 Pokud chcete použít image uloženou v **Azure Container registry pro váš pracovní prostor**nebo **kontejner kontejneru, který je veřejně přístupný**, nastavte následující atributy [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) :
 
 + `docker.enabled=True`
-+ `docker.base_image`: Nastavte na registr a cestu k imagi.
++ `docker.base_image`: nastavte registr a cestu k imagi.
 
 ```python
 from azureml.core import Environment
@@ -220,7 +220,7 @@ myenv.docker.enabled = True
 myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-Pokud chcete použít image z __privátního registru kontejnerů__ , který není ve vašem pracovním prostoru, musíte `docker.base_image_registry` použít k zadání adresy úložiště a uživatelského jména a hesla:
+Pokud chcete použít image z __privátního registru kontejnerů__ , který není ve vašem pracovním prostoru, musíte pomocí `docker.base_image_registry` zadat adresu úložiště a uživatelské jméno a heslo:
 
 ```python
 # Set the container registry information
@@ -271,7 +271,7 @@ Při nasazování modelu pomocí Machine Learning CLI zadáte odvozený konfigur
 }
 ```
 
-Tento soubor se používá spolu s `az ml model deploy` příkazem. `--ic` Parametr se používá k určení konfiguračního souboru odvození.
+Tento soubor se používá s příkazem `az ml model deploy`. Parametr `--ic` slouží k určení konfiguračního souboru odvození.
 
 ```azurecli
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget

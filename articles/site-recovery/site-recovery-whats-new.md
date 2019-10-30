@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: b9d8abb34c6ba2b6df5b9cb3fe4069d1034ec538
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 144050bd29e8d2ec56c1347d60fd7452ea60b9cf
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882200"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053627"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -55,7 +55,7 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 ### <a name="update-rollup-40"></a>Kumulativní aktualizace 40
 
-[Kumulativní aktualizace 40](h https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) poskytuje následující aktualizace.
+[Kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) poskytuje následující aktualizace.
 
 **Aktualizace** | **Podrobnosti**
 --- | ---

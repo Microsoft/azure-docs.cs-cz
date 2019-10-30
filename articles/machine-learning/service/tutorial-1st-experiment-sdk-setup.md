@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: vytvoření prvního experimentu ML: nastavení'
 titleSuffix: Azure Machine Learning
-description: V této sérii kurzů dokončíte kompletní kroky, které vám pomohou začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter.  První část pokrývá vytvoření prostředí serveru cloudového poznámkového bloku a vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení.
+description: V tomto kurzu se naučíte, jak začít používat sadu SDK Azure Machine Learning Python spuštěnou v poznámkových blocích Jupyter.  V části 1 vytvoříte pracovní prostor, ve kterém budete spravovat experimenty a modely ML.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 3bbda22689bb330acc836173162a64b840f1bbd8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: fc26b224a2af6ab4f1f6bf5551381d4739831351
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828036"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053877"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 
@@ -62,7 +62,7 @@ Provedete následující kroky experimentování a spuštění na úvodní strá
 
 1. Pro každého uživatele, který přistupuje k pracovnímu prostoru, se zobrazí složka.  Vyberte složku pro naklonování složky **kurzu** .
 
-## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a><a name="open">Select virtuálního počítače pro spuštění poznámkového bloku
+## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a><a name="open">vyberte virtuální počítač pro spuštění poznámkového bloku.
 
 1. V části **uživatelské soubory** otevřete složku a otevřete složku klonované **kurzy** .
 
@@ -93,7 +93,7 @@ V tomto kurzu jste dokončili tyto úkoly:
 * Byl vytvořen Azure Machine Learning pracovní prostor.
 * Vytvořili a nakonfigurovali jste v pracovním prostoru Server cloudového poznámkového bloku.
 
-V **druhé části** kurzu spustíte kód v `tutorial-1st-experiment-sdk-train.ipynb` pro výuku modelu Machine Learning. 
+V **druhé části** kurzu spustíte kód v `tutorial-1st-experiment-sdk-train.ipynb`, abyste mohli naučit model strojového učení. 
 
 > [!div class="nextstepaction"]
 > [Kurz: výuka prvního modelu](tutorial-1st-experiment-sdk-train.md)

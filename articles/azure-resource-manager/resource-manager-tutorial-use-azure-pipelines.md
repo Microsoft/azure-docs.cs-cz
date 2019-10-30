@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/15/2019
+ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b176e97a546335f597d4cf424d7feb4f5fa0f775
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597222"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052208"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines
 
@@ -223,7 +223,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Název je to, co jste zadali v souboru YAML kanálu.  Uvidíte, že se vytvořil jeden účet úložiště.  Název účtu úložiště začíná na **Storu**.
 1. Vyberte název účtu úložiště, který chcete otevřít.
-1. Vyberte **Vlastnosti**. Všimněte si, že **SKU** je **Standard_LRS**.
+1. Vyberte **Vlastnosti**. Všimněte si, že **replikace** je **místně redundantní úložiště (LRS)** .
 
     ![Azure Resource Manager ověřování portálu Azure Pipelines Azure DevOps](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 
@@ -250,7 +250,7 @@ Když aktualizujete šablonu a nahrajete změny do vzdáleného úložiště, ka
 
     Když se hlavní větev vzdáleného úložiště aktualizuje, kanál se znovu aktivuje.
 
-Chcete-li ověřit změny, můžete zkontrolovat SKU účtu úložiště.  Viz [Ověření nasazení](#verify-the-deployment).
+Chcete-li ověřit změny, můžete zkontrolovat vlastnost replikace účtu úložiště.  Viz [Ověření nasazení](#verify-the-deployment).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

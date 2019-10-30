@@ -10,7 +10,7 @@ ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: b48384b8333a5affc76d8af8e057bd911f14068b
 ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/29/2019
 ms.locfileid: "73043491"

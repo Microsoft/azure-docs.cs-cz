@@ -1,6 +1,6 @@
 ---
-title: Načtení dat do prostředí Azure storage – vědecké zpracování týmových dat
-description: Přesun dat z a do služby Azure Blob Storage
+title: Načtení dat do prostředí Azure Storage – vědecký proces týmového zpracování dat
+description: Přečtěte si, jak ingestovat data do různých cílových prostředí, kde se data ukládají a zpracovávají.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,24 +11,24 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 56c45bf6db79ded64574a44399712951e82c1c3e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 515decfafe46ad0c1b5b90743688abc26a975903
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303583"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053258"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>Načtení dat do prostředí úložiště pro analýzu
 
-Vědecké zpracování týmových dat vyžaduje, aby se data ingestují nebo načtena do celé řady různých úložiště prostředí ji zpracovat nebo analyzovat nejvhodnějším způsobem v každé fázi procesu. Cíle dat, běžně používá pro zpracování patří Azure Blob Storage, databáze SQL Azure, SQL Server na virtuálním počítači Azure, HDInsight (Hadoop) a Azure Machine Learning. 
+Vědecké zpracování týmových dat vyžaduje, aby data byla v jednotlivých fázích procesu zpracovávána nebo načtena do různých různých úložných prostředí, aby je bylo možné zpracovat nebo analyzovat. K cílům dat běžně používaným ke zpracování patří Blob Storage Azure, databáze SQL Azure, SQL Server na virtuálním počítači Azure, HDInsight (Hadoop) a Azure Machine Learning. 
 
-Následující články popisují, jak ingestovat data do různých cílových prostředích, kde je data uložena a zpracována.
+Následující články popisují, jak ingestovat data do různých cílových prostředí, kde se data ukládají a zpracovávají.
 
-* Z/[úložiště objektů Blob v Azure](move-azure-blob.md)
-* K [systému SQL Server na virtuálním počítači Azure](move-sql-server-virtual-machine.md)
-* K [Azure SQL database](move-sql-azure.md)
-* K [tabulky Hive](move-hive-tables.md)
-* K [dělené tabulky SQL](parallel-load-sql-partitioned-tables.md)
-* Z [místního SQL serveru](move-sql-azure-adf.md)
+* Do/z [Azure Blob Storage](move-azure-blob.md)
+* [SQL Server na virtuálním počítači Azure](move-sql-server-virtual-machine.md)
+* Do [Azure SQL Database](move-sql-azure.md)
+* Do [tabulek podregistru](move-hive-tables.md)
+* Do [dělených tabulek SQL](parallel-load-sql-partitioned-tables.md)
+* Z [místních SQL Server](move-sql-azure-adf.md)
 
-Naformátujte technické a obchodní potřeby, stejně jako počáteční umístění a velikost dat určuje cílových prostředí, ve které je potřeba data ingestování k dosažení cílů analýzy. Není, scénář tak, aby vyžadovala data přesunout mezi několika prostředích k dosažení různých úloh potřebných k vytvoření prediktivního modelu. Toto pořadí úloh může obsahovat například zkoumání dat, předběžné zpracování, čištění, vzorkování dolů a cvičení modelu.
+Technické a obchodní potřeby, jakož i počáteční umístění, formát a velikost vašich dat, určují cílová prostředí, do kterých se musí data ingestovat, aby se dosáhlo cílů vaší analýzy. Scénář, který vyžaduje přesun dat mezi několika prostředími, je neobvyklý, aby bylo možné dosáhnout nejrůznějších úloh potřebných k vytvoření prediktivního modelu. Tato posloupnost úkolů může zahrnovat například zkoumání dat, předzpracování, vyčištění, snížení počtu vzorků a školení modelů.

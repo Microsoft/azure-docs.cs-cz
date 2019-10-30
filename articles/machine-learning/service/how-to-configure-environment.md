@@ -1,7 +1,7 @@
 ---
 title: Nastavení vývojového prostředí v Pythonu
 titleSuffix: Azure Machine Learning
-description: Naučte se konfigurovat vývojové prostředí při práci s Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvářet konfigurační soubory a konfigurovat vlastní cloudový notebook Jupyter, poznámkové bloky, Azure Databricks, IDEs, editory kódu a Data Science Virtual Machine.
+description: Naučte se konfigurovat vývojové prostředí pro Azure Machine Learning. Používejte prostředí Conda, vytvářejte konfigurační soubory a nakonfigurujete svůj vlastní cloudový server, Poznámkový blok Jupyter, Azure Databricks, IDEs, editory kódu a Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 7ad9d721b102ab48f2ebb9c0361153bc3974492a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804144"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053568"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace vývojového prostředí pro Azure Machine Learning
 
@@ -185,7 +185,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
 
 1. K instalaci balíčků použijte následující příkazy:
 
-    Tento příkaz nainstaluje základní sadu Azure Machine Learning SDK s poznámkovým blokem a `automl`mi doplňky. @No__t_0 extra je velká instalace a dá se odebrat z závorek, pokud nechcete spouštět automatizované experimenty strojového učení. @No__t_0 navíc zahrnuje také Azure Machine Learning sadu SDK pro přípravu dat jako závislost.
+    Tento příkaz nainstaluje základní sadu Azure Machine Learning SDK s poznámkovým blokem a `automl`mi doplňky. `automl` extra je velká instalace a dá se odebrat z závorek, pokud nechcete spouštět automatizované experimenty strojového učení. `automl` navíc zahrnuje také Azure Machine Learning sadu SDK pro přípravu dat jako závislost.
 
     ```shell
     pip install azureml-sdk[notebooks,automl]
@@ -320,7 +320,7 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
 
 1. Zvolit **jenom jednu** možnost (žádná jiná instalace sady SDK není podporovaná)
 
-   |@No__t_1extras &nbsp;package SDK|Zdroj|PyPi &nbsp;Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
+   |Sada SDK&nbsp;balíčku&nbsp;Extras|Zdroj|PyPi &nbsp;Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
    |----|---|---|
    |Pro datacihly| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [datacihly]|
    |Pro datacihly – with-<br> Automatické možnosti ML| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [automl]|
