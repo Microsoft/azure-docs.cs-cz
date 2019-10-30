@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 7a9f726273dc3c5b336b22588d49704ffc2d8192
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043378"
+ms.locfileid: "73053286"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
 
@@ -105,7 +105,7 @@ K této chybě dochází, pokud váš Azure Functions projekt (nebo jakýkoli od
 Chcete-li tuto situaci vyřešit, odeberte ručně vytvořený odkaz NuGet a nechejte odkaz Azure Cosmos DB SDK vyřešit prostřednictvím balíčku rozšíření Azure Functions Cosmos DB.
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Změna intervalu dotazování funkce Azure Functions pro zjišťování změn
-Jak je vysvětleno dříve pro [# # # Moje změny trvají příliš dlouho](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-be-received), služba Azure Functions se ve výchozím nastavení do režimu spánku (5 sekund) před kontrolou nových změn (aby nedocházelo k vysoké spotřebě v řádu ru). Tuto dobu do režimu spánku můžete nakonfigurovat pomocí nastavení `FeedPollDelay/feedPollDelay` v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) vašeho triggeru (hodnota by měla být v milisekundách).
+Jak už bylo vysvětleno dříve, [Pokud moje změny trvá příliš dlouho](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), služba Azure Functions se ve výchozím nastavení v režimu spánku po dobu (5 sekund), než začne kontrolovat nové změny (aby se zabránilo vysoké spotřebě v řádu ru). Tuto dobu do režimu spánku můžete nakonfigurovat pomocí nastavení `FeedPollDelay/feedPollDelay` v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) vašeho triggeru (hodnota by měla být v milisekundách).
 
 ## <a name="next-steps"></a>Další kroky
 

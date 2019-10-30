@@ -51,72 +51,72 @@
       href: ../iot-central/core/concepts-app-templates.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
 - name: Návody
   items:
-    - name: Připojení zařízení
+    - name: Připojování
       items:
         - name: Příprava a připojení sady MXChip IoT DevKit
           href: ../iot-central/core/howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Příprava a připojení Rigado Cascade 500
           href: ../iot-central/core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: Stálé připojení
+      items:
         - name: Monitorování připojení zařízení s využitím Azure CLI
           href: ../iot-central/core/howto-monitor-devices-azure-cli-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - name: Správa zařízení
-      items:
+        - name: Vytváření verzí šablon zařízení
+          href: ../iot-central/core/howto-version-device-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: správu zařízení
           href: ../iot-central/core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Přidání dlaždic na řídicí panel
+          href: ../iot-central/core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Vytvoření osobních řídicích panelů Azure IoT Central
+          href: ../iot-central/core/howto-create-personal-dashboards.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Spuštění úlohy
           href: ../iot-central/core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Použití skupin zařízení
           href: ../iot-central/core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Vytváření verzí šablon zařízení
-          href: ../iot-central/core/howto-version-device-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - name: Sledování a analýza
-      items:
         - name: Analýza dat zařízení
           href: ../iot-central/core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: Transformace
+      items:
+        - name: Konfigurace nepřetržitého exportu dat
+          href: ../iot-central/core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Vytváření webhooků pro pravidla
           href: ../iot-central/core/howto-create-webhooks-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Připojení skupin akcí Azure Monitoru k pravidlům
           href: ../iot-central/core/howto-use-action-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - name: Akce a rozšiřitelnost
-      items:
-        - name: Konfigurace nepřetržitého exportu dat
-          href: ../iot-central/core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Vytvoření vlastních rolí
           href: ../iot-central/core/howto-create-custom-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Vytváření vlastních analýz s využitím Databricks
           href: ../iot-central/core/howto-create-custom-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Vytváření vlastních analýz s využitím Databricks
-          href: ../iot-central/core/howto-create-custom-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Správa
       items:
-        - name: Změna nastavení aplikace
-          href: ../iot-central/core/howto-administer-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Export vaší aplikace
-          href: ../iot-central/core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Správa uživatelů a skupin
-          href: ../iot-central/core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Správa vyúčtování
-          href: ../iot-central/core/howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Přizpůsobení uživatelského rozhraní aplikací
-          href: ../iot-central/core/howto-customize-ui-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Přidání dlaždic na řídicí panel
-          href: ../iot-central/core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Správa z webu Azure Portal
-          href: ../iot-central/core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Správa z Azure CLI
-          href: ../iot-central/core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Správa z Azure PowerShellu
-          href: ../iot-central/core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Správa z portálu CSP
-          href: ../iot-central/core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - name: Personalizace
-      items:
-        - name: Vytvoření osobních řídicích panelů Azure IoT Central
-          href: ../iot-central/core/howto-create-personal-dashboards.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Správa vašich osobních předvoleb
-          href: ../iot-central/core/howto-manage-preferences.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-        - name: Přepnutí živého chatu
-          href: ../iot-central/core/howto-show-hide-chat.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Správa vaší aplikace
+          items:
+            - name: Změna nastavení aplikace
+              href: ../iot-central/core/howto-administer-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+            - name: Správa uživatelů a skupin
+              href: ../iot-central/core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+            - name: Správa vyúčtování
+              href: ../iot-central/core/howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+            - name: Přizpůsobení uživatelského rozhraní aplikací
+              href: ../iot-central/core/howto-customize-ui-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+            - name: Export vaší aplikace
+              href: ../iot-central/core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Správa z jiných míst
+          items:
+            - name: Správa z webu Azure Portal
+              href: ../iot-central/core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+            - name: Správa z Azure CLI
+              href: ../iot-central/core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+            - name: Správa z Azure PowerShellu
+              href: ../iot-central/core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+            - name: Správa z portálu CSP
+              href: ../iot-central/core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Přizpůsobení aplikace
+          items:
+            - name: Správa vašich osobních předvoleb
+              href: ../iot-central/core/howto-manage-preferences.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+            - name: Přepnutí živého chatu
+              href: ../iot-central/core/howto-show-hide-chat.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
 - name: Související
   items:
     - name: Služby platformy
@@ -141,8 +141,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
-    - name: Referenční dokumentace k rozhraní API
-      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Požadavky na zákaznická data
       href: ../iot-central/core/iot-central-customer-data-requests.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Podporované prohlížeče

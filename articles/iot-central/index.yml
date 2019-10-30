@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 0deccf53fba8d9250832f8b543b8201fcbecab64
-  ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+  ms.openlocfilehash: a27fa47333739e688e879b936a6e3b25a4d3c749
+  ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/29/2019
-  ms.locfileid: "73042050"
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72968965"
 highlightedContent:
   items:
   - title: Co je IoT Central?
@@ -126,7 +126,7 @@ additionalContent:
   - items:
     - title: Rozhraní API služby IoT Central
       summary: Projděte si rozhraní API služby IoT Central.
-      url: https://docs.microsoft.com/rest/api/iotcentral/
+      url: https://docs.microsoft.com/rest/api/azure/
     - title: IoT Central na Microsoft Learn
       summary: Projděte si IoT Central v bezplatném prostředí sandboxu.
-      url: https://docs.microsoft.com/learn/browse/?products=azure-iot-central
+      url: https://aka.ms/iotcentralapimslearnjourney
