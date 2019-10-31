@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d59a850f590ee71be7e6ab23281cbfdf57147c61
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: c90052d1d75ba65a8e0b0e7a2cd26a279019a82d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062688"
+ms.locfileid: "73173154"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je Azure AD Identity Governance?
 
@@ -97,7 +97,7 @@ Osvědčeným postupem je použití minimální privilegované role k prováděn
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je Správa nároků Azure AD? Tisk](entitlement-management-overview.md)
+- [Co je správa nároků Azure AD?](entitlement-management-overview.md)
 - [Co jsou kontroly přístupu Azure AD?](access-reviews-overview.md)
 - [Co je Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
 - [Co můžu dělat s podmínkami použití?](active-directory-tou.md)

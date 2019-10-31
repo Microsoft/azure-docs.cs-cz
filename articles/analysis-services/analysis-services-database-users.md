@@ -4,15 +4,15 @@ description: Naučte se spravovat databázové role a uživatele na Analysis Ser
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 426b69173994fc94a52ef0fcccb0dbc6315de14a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301150"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147008"
 ---
 # <a name="manage-database-roles-and-users"></a>Správa databázových rolí a uživatelů
 
@@ -25,16 +25,16 @@ Oprávnění role zahrnují:
 *  **Proces** – uživatelé se mohou k databázi připojit a provádět operace procesu a analyzovat data databáze modelu.
 *  **Čtení** – uživatelé můžou použít klientskou aplikaci pro připojení k datům databáze modelu a k jejich analýze.
 
-Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte uživatele nebo skupiny k těmto rolím pomocí Správce rolí v nástroji SQL Server Data Tools (SSDT). Při nasazení na server můžete k přidávání a odebírání rolí a uživatelských členů použít rutiny SQL Server Management Studio (SSMS), [Analysis Services rutiny prostředí PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)nebo TMSL ( [Tabular model Scripting Language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) ).
+Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte uživatele nebo skupiny k těmto rolím pomocí Správce rolí v aplikaci Visual Studio s Analysis Services projekty. Při nasazení na server můžete k přidávání a odebírání rolí a uživatelských členů použít rutiny SQL Server Management Studio (SSMS), [Analysis Services rutiny prostředí PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)nebo TMSL ( [Tabular model Scripting Language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) ).
 
 **Skupiny zabezpečení** musí být [povolené poštou](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) s vlastností `MailEnabled` nastavenou na `True`. Při zadávání e-mailové adresy Group by použijte `obj:groupid@tenantid`.
 
 
-## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Přidání nebo Správa rolí a uživatelů v SSDT  
+## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Přidání nebo Správa rolí a uživatelů v aplikaci Visual Studio  
   
-1.  V Průzkumníku SSDT > **tabulkovém modelu**klikněte pravým tlačítkem na **role**.  
+1.  V **Průzkumníku tabulkových modelů**klikněte pravým tlačítkem na **role**.  
   
-2.  Ve **Správci rolí**klikněte na **Nový**.  
+2.  Ve **Správci rolí** klikněte na **Nový**.  
   
 3.  Zadejte název role.  
   
@@ -45,7 +45,7 @@ Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte u
     |Oprávnění|Popis|  
     |----------------|-----------------|  
     |**NTato**|Členové nemohou upravovat schéma modelu a nemohou zadávat dotazy na data.|  
-    |**Read**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
+    |**Čtení**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
     |**Čtení a zpracování**|Členové mohou zadávat dotazy na data (na základě filtrů na úrovni řádků) a spouštět proces a zpracovávat všechny operace, ale nemohou upravovat schéma modelu.|  
     |**Přihlášení**|Členové mohou spustit proces a zpracovat všechny operace. Schéma modelu nelze upravovat a nelze zadávat dotazy na data.|  
     |**Správce**|Členové mohou upravit schéma modelu a dotazovat se na všechna data.|   
@@ -75,11 +75,11 @@ Chcete-li přidat role a uživatele do nasazené databáze modelů, musíte být
    |----------------|-----------------|  
    |**Úplné řízení (správce)**|Členové můžou upravovat schéma modelu, proces a můžou se dotazovat na všechna data.| 
    |**Zpracovat databázi**|Členové mohou spustit proces a zpracovat všechny operace. Schéma modelu nelze upravovat a nelze zadávat dotazy na data.|  
-   |**Read**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
+   |**Čtení**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
   
 4. Klikněte na **členství**a pak zadejte uživatele nebo skupinu do svého TENANTA Azure AD podle e-mailové adresy.
 
-     ![Přidat uživatele](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
+     ![Přidání uživatele](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
 5. Pokud má role, kterou vytváříte, oprávnění ke čtení, můžete přidat filtry řádků pomocí vzorce DAX. Klikněte na **filtry řádků**, vyberte tabulku a potom do pole **Filtr DAX** zadejte vzorec DAX. 
 
@@ -121,7 +121,7 @@ V této ukázce je externí uživatel B2B a skupina přidaný do role analytika 
 
 Modul [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) poskytuje rutiny pro správu databáze specifické pro úlohu a rutinu Invoke ASCmd pro obecné účely, která přijímá dotaz nebo skript TMSL (Tabular model Scripting Language). Následující rutiny se používají ke správě databázových rolí a uživatelů.
   
-|Rutiny|Popis|
+|Rutina|Popis|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Přidejte člena do databázové role.| 
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Odebere člena z databázové role.|   
@@ -139,7 +139,7 @@ Filtry řádků se použijí na zadané řádky a související řádky. Pokud m
   
 |Tabulka|Výraz DAX|  
 |-----------|--------------------|  
-|Věřitel|= Region [Země] = "USA"|  
+|Oblast|= Region [Země] = "USA"|  
 |ProductCategory|= ProductCategory [název] = "jízdní kola"|  
 |Transakce|= Transakcí [rok] = 2016|  
   

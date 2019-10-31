@@ -6,18 +6,18 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 3877648723a8866ec7d9c5f1987ae3a276114d5e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898719"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152058"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog nejčastějších dotazech
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Data Catalog.
 
 ## <a name="what-is-azure-data-catalog"></a>Co je Azure Data Catalog?
-Data Catalog je plně spravovaná služba, která je hostovaná v Microsoft Azure, která slouží jako systém registrace a zjišťování pro podnikové zdroje dat. Pomocí katalogu Data Catalog každý uživatel, od analytiků datových vědců a vývojářů, může zaregistrovat, zjišťovat, pochopit a využívat zdroje dat.
+Data Catalog je plně spravovaná služba, která je hostovaná v Microsoft Azure, která slouží jako systém registrace a zjišťování pro podnikové zdroje dat. S Data Catalog může každý uživatel, od analytiků až po odborníky na data a vývojáře, registrovat, zjišťovat, pochopit a využívat zdroje dat.
 
 ## <a name="what-customer-challenges-does-it-solve"></a>Jaké problémy se zákazníky vyřeší?
 Data Catalog řeší výzvy zjišťování zdrojů dat a "tmavě data", aby uživatelé mohli zjišťovat a rozumět podnikovým zdrojům dat.
@@ -25,16 +25,16 @@ Data Catalog řeší výzvy zjišťování zdrojů dat a "tmavě data", aby uži
 ## <a name="what-are-its-target-audiences"></a>Jaké jsou cílové skupiny?
 Data Catalog je navržená pro technické a netechnické uživatele, včetně těchto:
 
-* Vývojáři dat a odborníci na BI a analýzy: Lidé, kteří zodpovídají za vytváření dat a analytických obsahu pro jiné využívání.
-* Stewards dat: Lidé, kteří mají zkušenosti s daty, co to znamená a jak se mají použít.
-* Příjemci dat: Lidé, kteří potřebují mít možnost snadno zjišťovat, rozumět a připojovat se k datům, která potřebují ke své práci, pomocí nástroje podle svého výběru.
-* Centrální IT: Lidé, kteří potřebují učinit stovky zdrojů dat zjistitelných obchodními uživateli a kteří potřebují udržovat dohled nad tím, jak se data používají a kdy.
+* Vývojáři dat a odborníci na BI a analytika: lidé, kteří zodpovídají za vytváření dat a analytického obsahu pro jiné využívání.
+* Data Stewards: lidé, kteří mají znalosti o datech, co to znamená a jak se mají použít.
+* Spotřebitelé dat: lidé, kteří potřebují mít možnost snadno zjišťovat, rozumět a připojovat se k datům, která potřebují ke své práci, pomocí nástroje podle svého výběru.
+* Střed IT: lidé, kteří potřebují udělat stovky zdrojů dat zjistitelných obchodními uživateli a kteří potřebují zajistit dohled nad tím, jak se data používají a kdy.
 
 ## <a name="what-is-its-availability-by-region"></a>Jaká je její dostupnost podle oblastí?
 Služba Data Catalog Services je aktuálně dostupná v následujících datových centrech:
 
-* USA – západ
-* East US
+* Západní USA
+* USA – východ
 * Západní Evropa
 * Severní Evropa
 * Austrálie – východ
@@ -75,7 +75,7 @@ Chcete-li zaregistrovat data v Data Catalog:
 Konkrétní vlastnosti se liší od zdroje dat až po zdroj dat, ale obecně platí, že služba publikování Data Catalog extrahuje následující informace:
 
 * Název assetu
-* Typ assetu
+* Typ prostředku
 * Popis prostředku
 * Názvy atributů a sloupců
 * Datové typy atributu/sloupce
@@ -87,7 +87,7 @@ Konkrétní vlastnosti se liší od zdroje dat až po zdroj dat, ale obecně pla
 >
 
 > [!NOTE]
-> Pro zdroje dat, jako je například SQL Server Analysis Services, které mají vlastnost **Popis** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu této vlastnosti. U SQL Server relačních databází, které neobsahují vlastnost **Description** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu z rozšířené vlastnosti **MS_Description** pro objekty a sloupce. Další informace najdete v tématu [použití rozšířených vlastností u databázových objektů](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Pro zdroje dat, jako je například SQL Server Analysis Services, které mají vlastnost **Popis** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu této vlastnosti. U *místních* SQL Server relačních databází, které neobsahují vlastnost **popisu** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu z rozšířené vlastnosti **MS_Description** pro objekty a sloupce. Další informace najdete v tématu [použití rozšířených vlastností u databázových objektů](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
 >
 >
 

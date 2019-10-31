@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: f1c5bb6f8a4c7705940f8659575690939c3e5433
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 603c407f93294f2c9697dcee4c3d5d829033d5d9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964987"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176959"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Nasazení služby Azure Blob Storage v modulu IoT Edge do zařízení
 
@@ -78,7 +78,7 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
 
    - Nahraďte `<your storage account name>` názvem, který si můžete pamatovat. Názvy účtů by měly mít délku 3 až 24 znaků a malými písmeny a číslicemi. Žádné mezery.
 
-   - Nahraďte `<your storage account key>` klíčem Base64 64-byte. Klíč můžete vygenerovat pomocí nástrojů, jako je [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Tyto přihlašovací údaje použijete pro přístup k úložišti objektů BLOB z jiných modulů.
+   - Nahraďte `<your storage account key>` klíčem Base64 64-byte. Klíč můžete vygenerovat pomocí nástrojů, jako je [GeneratePlus](https://generate.plus/en/base64). Tyto přihlašovací údaje použijete pro přístup k úložišti objektů BLOB z jiných modulů.
 
    - V závislosti na operačním systému vašeho kontejneru nahraďte `<storage mount>`. Zadejte název [svazku](https://docs.docker.com/storage/volumes/) nebo absolutní cestu k adresáři na zařízení IoT Edge, kde chcete, aby modul BLOB ukládal svá data. Připojení úložiště mapuje umístění v zařízení, které zadáte do umístění sady v modulu.
 
@@ -191,7 +191,7 @@ Azure IoT Edge poskytuje šablony v Visual Studio Code, které vám pomůžou vy
 
 1. Nahraďte `<your storage account name>` názvem, který si můžete pamatovat. Názvy účtů by měly mít délku 3 až 24 znaků a malými písmeny a číslicemi. Žádné mezery.
 
-1. Nahraďte `<your storage account key>` klíčem Base64 64-byte. Klíč můžete vygenerovat pomocí nástrojů, jako je [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Tyto přihlašovací údaje použijete pro přístup k úložišti objektů BLOB z jiných modulů.
+1. Nahraďte `<your storage account key>` klíčem Base64 64-byte. Klíč můžete vygenerovat pomocí nástrojů, jako je [GeneratePlus](https://generate.plus/en/base64). Tyto přihlašovací údaje použijete pro přístup k úložišti objektů BLOB z jiných modulů.
 
 1. V závislosti na operačním systému vašeho kontejneru nahraďte `<storage mount>`. Zadejte název [svazku](https://docs.docker.com/storage/volumes/) nebo absolutní cestu k adresáři na zařízení IoT Edge, kde chcete, aby modul BLOB ukládal svá data. Připojení úložiště mapuje umístění v zařízení, které zadáte do umístění sady v modulu.  
 

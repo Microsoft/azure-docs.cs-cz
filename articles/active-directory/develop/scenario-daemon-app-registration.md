@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fddd95564e3683aaee067f0442573c41e93376dd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 8d0d88f72cca45280bd76ac7bb9d7a6e0a1d37fb
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264380"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175444"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Aplikace démona, která volá webová rozhraní API – registrace aplikace
 
@@ -36,7 +36,7 @@ Vzhledem k tom, že aplikace démona dávají smysl jenom v klientech Azure AD, 
 
 ## <a name="authentication---no-reply-uri-needed"></a>Ověřování-není potřeba žádný identifikátor URI pro odpověď
 
-V případě, že vaše důvěrná klientská aplikace používá **jenom** tok přihlašovacích údajů klienta, adresa URL odpovědi nemusí být zaregistrovaná. Není nutné ani pro konfiguraci a konstrukci aplikace. Tok přihlašovacích údajů klienta ho nepoužívá.
+V případě, že vaše důvěrná klientská aplikace používá **pouze** tok přihlašovacích údajů klienta, identifikátor URI odpovědi nemusí být zaregistrován. Není nutné ani pro konfiguraci a konstrukci aplikace. Tok přihlašovacích údajů klienta ho nepoužívá.
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>Oprávnění rozhraní API – oprávnění aplikace a souhlas správce
 
@@ -45,7 +45,7 @@ Aplikace démona může požadovat oprávnění aplikace jenom pro rozhraní API
 ![Oprávnění aplikace a souhlas správce](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> Webové rozhraní API, které chcete volat, musí definovat **oprávnění aplikace (aplikační role)** , ne delegovaná oprávnění. Podrobnosti o tom, jak vystavit takové rozhraní API [, najdete v tématu Protected Web API: Registrace aplikace – když je webové rozhraní API voláno aplikací démona](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)
+> Webové rozhraní API, které chcete volat, musí definovat **oprávnění aplikace (aplikační role)** , ne delegovaná oprávnění. Podrobnosti o tom, jak vystavit takové rozhraní API, najdete v tématu [Protected Web API: registrace aplikace – když je webové rozhraní API voláno aplikací démona.](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)
 
 Aplikace démona vyžadují, aby aplikace, která volá webové rozhraní API, měla předem souhlas správce tenanta. Tento souhlas je k dispozici na stejné stránce **oprávnění API** správcem tenanta, který v  ***naší organizaci* vybere udělení souhlasu správce** .
 

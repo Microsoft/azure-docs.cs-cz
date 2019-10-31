@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64524960e584907b1e761a36f8ceb1461a7771c7
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5cc4eb0084e0606251d3fbd80d08723701c6a260
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802606"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175620"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Otázky specifické pro Xamarin iOS s MSAL.NET
 V systému Xamarin iOS je při používání MSAL.NET potřeba vzít v úvahu několik důležitých informací.

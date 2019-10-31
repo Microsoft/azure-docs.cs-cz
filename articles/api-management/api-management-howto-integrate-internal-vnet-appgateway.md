@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: b994f75327cb78cd422d75682ee68ea7840a87e8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193951"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176741"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace API Management v interní virtuální síti s Application Gateway
 
@@ -34,7 +34,7 @@ Kombinování API Management zřízené v interní virtuální síti s Applicati
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,8 +63,8 @@ V prvním příkladu instalace jsou všechna vaše rozhraní API spravovaná jen
 * **Fond back-end serverů:** Toto je interní virtuální IP adresa služby API Management.
 * **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se aplikují na všechny servery v rámci fondu.
 * **Port front-end:** Toto je veřejný port, který se otevírá ve službě Application Gateway. Provoz se přesměruje na jeden ze serverů back-end.
-* **Služby** Naslouchací proces má front-end port, protokol (http nebo https, u těchto hodnot se rozlišují malá a velká písmena) a název certifikátu SSL (Pokud se konfiguruje přesměrování zpracování SSL).
-* **Pravidlo** Pravidlo váže naslouchací proces na fond back-end serverů.
+* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, u těchto hodnot se rozlišují malá a velká písmena) a název certifikátu SSL (pokud se konfiguruje přesměrování zpracování SSL).
+* **Pravidlo:** Pravidlo váže naslouchací proces na fond back-end serverů.
 * **Vlastní sonda stavu:** Application Gateway ve výchozím nastavení používá ke zjištění, které servery v BackendAddressPool jsou aktivní, nástroje testy založené na IP adresách. Služba API Management reaguje jenom na žádosti se správnou hlavičkou hostitele, takže výchozí sondy selžou. Je potřeba definovat vlastní sondu stavu, která bude pomáhat aplikační bráně zjistit, jestli je služba aktivní, a měla by překládat požadavky.
 * **Vlastní certifikáty domény:** Chcete-li získat přístup k API Management z Internetu, je třeba vytvořit mapování CNAME svého názvu hostitele na Application Gateway název DNS front-endu. Tím se zajistí, že záhlaví a certifikát hostitele odeslaného do Application Gateway, který předáte do API Management, je jedním APIM, který může rozpoznat jako platný. V tomto příkladu použijeme dva certifikáty – pro back-end a portál pro vývojáře.  
 
@@ -86,13 +86,13 @@ V této příručce zveřejníme také portál pro **vývojáře** pro externí 
 > Pokud používáte ověřování Azure AD nebo třetí strany, povolte v Application Gateway funkci [spřažení relace na základě souborů cookie](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) .
 
 > [!WARNING]
-> Chcete-li zabránit Application Gateway WAF z narušení stahování specifikace OpenAPI na portálu pro vývojáře, je nutné zakázat pravidlo `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`brány firewall.
+> Chcete-li zabránit Application Gateway WAF z narušení stahování specifikace OpenAPI na portálu pro vývojáře, je nutné zakázat `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`pravidla brány firewall.
 
-## <a name="create-a-resource-group-for-resource-manager"></a>Vytvoření skupiny prostředků pro Resource Manager
+## <a name="create-a-resource-group-for-resource-manager"></a>Vytvořte skupinu prostředků pro Resource Manager
 
 ### <a name="step-1"></a>Krok 1
 
-Přihlášení k Azure
+Přihlaste se k Azure.
 
 ```powershell
 Connect-AzAccount
@@ -123,7 +123,7 @@ Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umí
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Vytvoření Virtual Network a podsítě pro aplikační bránu
 
-Následující příklad ukazuje, jak vytvořit Virtual Network pomocí Resource Manageru.
+Následující příklad ukazuje, jak vytvořit Virtual Network pomocí Správce prostředků.
 
 ### <a name="step-1"></a>Krok 1
 
@@ -187,7 +187,7 @@ Po úspěšném provedení výše uvedeného příkazu se podívejte na [konfigu
 
 ### <a name="step-1"></a>Krok 1
 
-Inicializujte následující proměnné s podrobnostmi o certifikátech a soukromých klíčích pro domény. V tomto příkladu použijeme `api.contoso.net` a. `portal.contoso.net`  
+Inicializujte následující proměnné s podrobnostmi o certifikátech a soukromých klíčích pro domény. V tomto příkladu použijeme `api.contoso.net` a `portal.contoso.net`.  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -208,12 +208,15 @@ Vytvořte a nastavte konfigurační objekty hostname pro proxy server a portál.
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
-$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType Portal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
+$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType DeveloperPortal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
 
 $apimService.ProxyCustomHostnameConfiguration = $proxyHostnameConfig
 $apimService.PortalCustomHostnameConfiguration = $portalHostnameConfig
 Set-AzApiManagement -InputObject $apimService
 ```
+
+> [!NOTE]
+> Ke konfiguraci staršího připojení portálu pro vývojáře je potřeba nahradit `-HostnameType DeveloperPortal` `-HostnameType Portal`.
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Vytvoření veřejné IP adresy pro front-end konfiguraci
 
@@ -273,10 +276,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>Krok 6
 
-Vytvořte vlastní testy pro koncový bod domény proxy `ContosoApi` serveru služby API Management. Tato cesta `/status-0123456789abcdef` je výchozím koncovým bodem stavu hostovaným na všech službách API Management. Nastavte `api.contoso.net` jako vlastní název hostitele testu, abyste ho zabezpečili pomocí certifikátu SSL.
+Vytvořte vlastní testy pro službu API Management `ContosoApi` koncový bod domény proxy serveru. Cesta `/status-0123456789abcdef` je výchozím koncovým bodem stavu hostovaným ve všech API Managementch službách. Nastavte `api.contoso.net` jako vlastní název hostitele testu, abyste ho zabezpečili pomocí certifikátu SSL.
 
 > [!NOTE]
-> Název hostitele `contosoapi.azure-api.net` je výchozím názvem proxy hostitele nakonfigurovaným při vytvoření služby `contosoapi` s názvem ve veřejném Azure.
+> `contosoapi.azure-api.net` názvu hostitele je výchozí název hostitele proxy serveru, který je nakonfigurovaný při vytváření služby s názvem `contosoapi` ve veřejném Azure.
 >
 
 ```powershell
@@ -350,7 +353,7 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 
 Po vytvoření brány je dalším krokem konfigurace front-endu pro komunikaci. Při použití veřejné IP adresy Application Gateway vyžaduje dynamicky přiřazený název DNS, který možná nebude možné snadno použít.
 
-Název DNS Application Gateway by měl být použit k vytvoření záznamu CNAME, který odkazuje na název hostitele proxy serveru APIM (např. `api.contoso.net` v předchozích příkladech) na tento název DNS. Pokud chcete nakonfigurovat záznam CNAME protokolu IP, načtěte podrobnosti o Application Gateway a jeho přidruženém názvu IP/DNS pomocí elementu PublicIPAddress. Použití záznamů A se nedoporučuje, protože VIP se může při restartování brány změnit.
+K vytvoření záznamu CNAME, který odkazuje na název hostitele proxy serveru APIM (např. `api.contoso.net` ve výše uvedených příkladech) na tento název DNS, by se měl použít název DNS Application Gateway. Pokud chcete nakonfigurovat záznam CNAME protokolu IP, načtěte podrobnosti o Application Gateway a jeho přidruženém názvu IP/DNS pomocí elementu PublicIPAddress. Použití záznamů A se nedoporučuje, protože VIP se může při restartování brány změnit.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"

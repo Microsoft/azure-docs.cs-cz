@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží se správou nároků Azure AD (Preview) – Azure Active Directory
-description: Přečtěte si o některých položkách, které byste měli ověřit, abyste vám pomohli vyřešit Azure Active Directory správu nároků (Preview).
+title: Řešení potíží se správou nároků Azure AD – Azure Active Directory
+description: Přečtěte si o některých položkách, které byste měli ověřit, abyste vám pomohli vyřešit Azure Active Directory správu nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -10,52 +10,58 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 05/30/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea979731c27a8d332102c3215e80510994f2ab3f
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 0f7e5e6168e8b365a04040f595f30e68e4e82f0a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430234"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173329"
 ---
-# <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Řešení potíží se správou nároků Azure AD (Preview)
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="troubleshoot-azure-ad-entitlement-management"></a>Řešení potíží se správou nároků Azure AD
 
 Tento článek popisuje některé položky, které byste měli ověřit, abyste mohli řešit problémy se správou oprávnění Azure Active Directory (Azure AD).
 
-## <a name="checklist-for-entitlement-management-administration"></a>Kontrolní seznam pro správu správy nároků
+## <a name="administration"></a>Správa
 
-* Pokud se při konfiguraci správy opravňují zobrazí zpráva o odepření přístupu a Vy jste globálním správcem, ujistěte se, že má váš adresář [Azure AD Premium licenci P2 (nebo EMS E5)](entitlement-management-overview.md#license-requirements).  
-* Pokud se při vytváření nebo zobrazování balíčků pro přístup zobrazí zpráva o odepření přístupu a jste členem skupiny Creator Creator, musíte vytvořit katalog před vytvořením prvního přístupového balíčku.
+* Pokud se při konfiguraci správy opravňují zobrazí zpráva o odepření přístupu a Vy jste globálním správcem, ujistěte se, že má váš adresář [Azure AD Premium licenci P2 (nebo EMS E5)](entitlement-management-overview.md#license-requirements).
 
-## <a name="checklist-for-adding-a-resource"></a>Kontrolní seznam pro přidání prostředku
+* Pokud se při vytváření nebo zobrazování balíčků pro přístup zobrazí zpráva o odepření přístupu a jste členem skupiny Creator Creator, musíte [vytvořit katalog](entitlement-management-catalog-create.md) před vytvořením prvního přístupového balíčku.
 
-* Aby aplikace mohla být prostředkem v přístupovém balíčku, musí mít alespoň jednu roli prostředku, kterou je možné přiřadit. Role jsou definované aplikací a jsou spravované ve službě Azure AD. Všimněte si, že Azure Portal může také zobrazit instanční objekty pro služby, které nelze vybrat jako aplikace.  Konkrétně **Exchange Online** a **SharePoint Online** jsou služby, ne aplikace, které mají v adresáři role prostředků, takže je nejde zahrnout do balíčku pro přístup.  Místo toho použijte licencování na základě skupin k navázání vhodné licence pro uživatele, který potřebuje přístup k těmto službám.
+## <a name="resources"></a>Materiály
+
+* Role pro aplikace jsou definované aplikací a jsou spravované v Azure AD. Pokud aplikace nemá žádné role prostředků, Správa nároků přiřadí uživatelům **výchozí roli přístupu** .
+
+    Všimněte si, že Azure Portal může také zobrazit instanční objekty pro služby, které nelze vybrat jako aplikace.  Konkrétně **Exchange Online** a **SharePoint Online** jsou služby, ne aplikace, které mají v adresáři role prostředků, takže je nejde zahrnout do balíčku pro přístup.  Místo toho použijte licencování na základě skupin k navázání vhodné licence pro uživatele, který potřebuje přístup k těmto službám.
 
 * Aby skupina mohla být prostředkem v přístupovém balíčku, musí být schopna být upravitelná v Azure AD.  Skupiny, které pocházejí z místní služby Active Directory, se nedají přiřadit jako prostředky, protože jejich vlastník nebo atributy členů nejde změnit v Azure AD.   Skupiny, které pocházejí z Exchange Online jako distribuční skupiny, se nedají ve službě Azure AD upravovat ani v nich. 
 
-* Knihovny dokumentů SharePointu Online a jednotlivé dokumenty nelze přidat jako prostředky.  Místo toho vytvořte skupinu zabezpečení Azure AD, zahrňte tuto skupinu a roli lokality do balíčku pro přístup a v SharePointu Online použijte tuto skupinu k řízení přístupu k knihovně dokumentů nebo dokumentu.
+* Knihovny dokumentů SharePointu Online a jednotlivé dokumenty nelze přidat jako prostředky.  Místo toho vytvořte [skupinu zabezpečení Azure AD](../fundamentals/active-directory-groups-create-azure-portal.md), zahrňte tuto skupinu a roli lokality do balíčku pro přístup a v SharePointu Online použijte tuto skupinu k řízení přístupu k knihovně dokumentů nebo dokumentu.
 
 * Pokud jsou uživatelé, kteří už byli přiřazeni k prostředku, který chcete spravovat pomocí balíčku pro přístup, ujistěte se, že jsou uživatelé přiřazeni k balíčku přístupu s odpovídajícími zásadami. Například můžete chtít zahrnout skupinu do balíčku pro přístup, který již má uživatele ve skupině. Pokud tito uživatelé ve skupině potřebují pokračovat v přístupu, musí mít odpovídající zásady pro přístupové balíčky, aby neztratily přístup ke skupině. Balíček pro přístup můžete přiřadit tak, že požádáte uživatele, aby si vyžádali balíček pro přístup, který tento prostředek obsahuje, nebo ho přímo přiřadí do balíčku pro přístup. Další informace najdete v tématu [Nastavení žádostí o změnu a schvalování balíčku pro přístup](entitlement-management-access-package-request-policy.md).
 
-## <a name="checklist-for-providing-external-users-access"></a>Kontrolní seznam pro poskytování přístupu externích uživatelů
+* Když odeberete člena týmu, odstraní se i ze skupiny Office 365. Odebrání funkcí chatu týmu může být zpožděné. Další informace najdete v tématu [členství ve skupině](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
-* Pokud existuje [seznam povolených](../b2b/allow-deny-list.md)B2B, uživatelé, jejichž adresáře nejsou povolené, nebudou moct požádat o přístup.
+* Ujistěte se, že váš adresář není nakonfigurovaný pro více geografických umístění. Správa nároků aktuálně nepodporuje více geografických umístění pro SharePoint Online. Weby SharePointu Online musí být ve výchozím geografickém umístění, které se má řídit správou oprávnění. Další informace najdete v tématu [s více geografickými možnostmi na OneDrivu a SharePointu Online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
-* Zajistěte, aby nedocházelo k žádným [zásadám podmíněného přístupu](../conditional-access/require-managed-devices.md) , které by externím uživatelům zabránily v požadování přístupu nebo používání aplikací v balíčcích přístupu.
+## <a name="external-users"></a>Externí uživatelé
 
-## <a name="checklist-for-request-issues"></a>Kontrolní seznam pro žádosti o problémy
+* Když chce externí uživatel požádat o přístup k balíčku přístupu, ujistěte se, že používají **odkaz Můj portál přístupu** pro balíček přístupu. Další informace najdete v tématu [sdílení odkazu pro vyžádání balíčku přístupu](entitlement-management-access-package-settings.md). Pokud externí uživatel navštíví **myAccess.Microsoft.com** a nepoužívá úplný odkaz na portál pro přístup k portálu, zobrazí se jim dostupné balíčky pro přístup ve vlastní organizaci, a ne ve vaší organizaci.
 
-* Když chce uživatel požádat o přístup k balíčku přístupu, ujistěte se, že používají **odkaz Můj portál přístupu** pro balíček přístupu. Další informace najdete v tématu [sdílení odkazu pro vyžádání balíčku přístupu](entitlement-management-access-package-settings.md).  Pokud **myAccess.Microsoft.com**navštíví externí uživatel, zobrazí se jim balíčky pro přístup k nim ve své vlastní organizaci.
+* Pokud externí uživatel nemůže požádat o přístup k balíčku pro přístup nebo k prostředkům nemá přístup, nezapomeňte zkontrolovat [nastavení pro externí uživatele](entitlement-management-external-users.md#settings-for-external-users).
+
+* Pokud nový externí uživatel, který se dřív nepodepsal v adresáři, obdrží balíček pro přístup, včetně webu SharePointu Online, zobrazí se jeho balíček pro přístup jako neúplně doručené, dokud se jejich účet nezřídí v SharePointu Online. Další informace o nastavení sdílení najdete v tématu [Kontrola nastavení externího sdílení na SharePointu Online](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings).
+
+## <a name="requests"></a>Požadavky
+
+* Když chce uživatel požádat o přístup k balíčku přístupu, ujistěte se, že používají **odkaz Můj portál přístupu** pro balíček přístupu. Další informace najdete v tématu [sdílení odkazu pro vyžádání balíčku přístupu](entitlement-management-access-package-settings.md).
+
+* Pokud otevřete portál pro přístup s prohlížečem nastaveným na privátní nebo anonymním režim, může to být v konfliktu s chováním při přihlašování. Při návštěvě portálu pro přístup doporučujeme, abyste nepoužívali privátní nebo anonymním režim pro váš prohlížeč.
 
 * Když se uživatel, který ještě není ve vašem adresáři, přihlásí na portál My Access, aby si vyžádal balíček pro přístup, ujistěte se, že se ověřuje pomocí účtu organizace. Účet organizace může být buď účet v adresáři prostředků, nebo v adresáři, který je zahrnutý v jedné ze zásad balíčku přístupu. Pokud účet uživatele není účet organizace nebo pokud se v zásadě nezahrne adresář, ve kterém se ověřuje, uživatel neuvidí balíček pro přístup. Další informace najdete v tématu [vyžádání přístupu k balíčku přístupu](entitlement-management-request-access.md).
 
@@ -63,9 +69,76 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 * Pokud je uživatel v portálu pro přístup žadatelem i schvalovatelem, nezobrazí se na stránce **schválení** žádost o přístup k balíčku pro přístup. Toto chování je záměrné – uživatel nemůže schvalovat svoji vlastní žádost. Ujistěte se, že přístupový balíček, který požaduje, má pro tuto zásadu nakonfigurované další schvalovatele. Další informace najdete v tématu [Nastavení žádostí o změnu a schvalování balíčku pro přístup](entitlement-management-access-package-request-policy.md).
 
-* Pokud nový externí uživatel, který se dřív nepodepsal v adresáři, obdrží balíček pro přístup, včetně webu SharePointu Online, zobrazí se jeho balíček pro přístup jako neúplně doručené, dokud se jejich účet nezřídí v SharePointu Online.
+### <a name="view-a-requests-delivery-errors"></a>Zobrazit chyby doručení žádosti
+
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+
+1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
+
+1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
+
+1. Klikněte na **požadavky**.
+
+1. Vyberte žádost, kterou chcete zobrazit.
+
+    Pokud v žádosti dojde k žádným chybám doručení, stav žádosti se **nedoručení** nebo **částečně doručí**.
+
+    Pokud dojde k chybám doručení, v podokně podrobností žádosti dojde k počtu chyb doručení.
+
+1. Kliknutím na počet zobrazíte všechny chyby doručení žádosti.
+
+### <a name="reprocess-a-request"></a>Znovu zpracovat požadavek
+
+Pokud v požadavku dojde k chybě, můžete žádost znovu zpracovat a znovu ji vyzkoušet. Můžete zpracovat pouze požadavek se stavem **doručení se nezdařilo** nebo byl **částečně doručen** a datum dokončení je kratší než jeden týden.
+
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+
+1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
+
+1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
+
+1. Klikněte na **požadavky**.
+
+1. Klikněte na žádost, kterou chcete znovu zpracovat.
+
+1. V podokně podrobností žádosti klikněte na znovu **zpracovat požadavek**.
+
+    ![Znovu zpracovat neúspěšnou žádost](./media/entitlement-management-troubleshoot/reprocess-request.png)
+
+### <a name="cancel-a-pending-request"></a>Zrušení žádosti, která čeká na vyřízení
+
+Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena, nebo jejíž doručení se nezdařilo.
+
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+
+1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
+
+1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
+
+1. Klikněte na **požadavky**.
+
+1. Klikněte na žádost, kterou chcete zrušit.
+
+1. V podokně podrobností žádosti klikněte na **Zrušit požadavek**.
+
+## <a name="multiple-policies"></a>Více zásad
+
+* Správa nároků se řídí minimálně osvědčenými postupy pro oprávnění. Když si uživatel vyžádá přístup k balíčku pro přístup, který má víc zásad, které platí, Správa nároků zahrnuje logiku, která vám pomůžou zajistit, aby byly přísnější nebo konkrétnější zásady Upřednostněné nad obecnými zásadami. Pokud je zásada obecná, Správa nároků nemusí zobrazit zásady žadateli nebo může automaticky vybrat přísnější zásadu.
+
+* Představte si například balíček pro přístup se dvěma zásadami pro interní zaměstnance, u kterých se obě zásady vztahují na žadatele. První zásada je určena pro konkrétní uživatele, kteří obsahují žadatele. Druhá zásada je určena všem uživatelům v adresáři, na kterém je žadatel členem. V tomto scénáři se první zásada vybere automaticky pro žadatele, protože je přísnější. Žadateli není dána možnost výběru druhé zásady.
+
+* Když se uplatní víc zásad, vybere se automaticky vybraná zásada nebo zásady, které se zobrazí žadateli, na základě následující prioritní logiky:
+
+    | Priorita zásad | Rozsah |
+    | --- | --- |
+    | P1 | Konkrétní uživatelé a skupiny v adresáři nebo konkrétní připojené organizace |
+    | P2 | Všichni členové adresáře (kromě hostů) |
+    | P3 | Všichni uživatelé v adresáři (včetně hostů) nebo konkrétní spojené organizace |
+    | P4 | Všechny připojené organizace nebo všichni uživatelé (všechny připojené organizace a všichni noví externí uživatelé) |
+    
+    Pokud je některá zásada v kategorii s vyšší prioritou, kategorie s nižší prioritou se ignorují. Příklad toho, jak se v žadateli zobrazují různé zásady se stejnou prioritou, najdete v tématu [Výběr zásady](entitlement-management-request-access.md#select-a-policy).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zobrazit zprávy o tom, jak uživatelé získali přístup ve správě nároků](entitlement-management-reports.md)
 - [Řízení přístupu pro externí uživatele](entitlement-management-external-users.md)
+- [Zobrazit zprávy o tom, jak uživatelé získali přístup ve správě nároků](entitlement-management-reports.md)

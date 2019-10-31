@@ -8,12 +8,12 @@ ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: efa44df378e88b870654111295c10bec06539adb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b6a437af33e3e85b8dc07de223b6e1fd7ce6cb03
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950519"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176248"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Exportujte data do Azure Blob Storage
 
@@ -85,7 +85,7 @@ Teď, když máte cíl úložiště pro export dat, postupujte podle těchto kro
 
 9. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **zapnutý přepínač pro** **Export dat** . Vyberte **Save** (Uložit).
 
-   ![Konfigurace průběžného exportu dat](media/howto-export-data/export-list-blob2.png)
+   ![Konfigurace nepřetržitého exportu dat](media/howto-export-data/export-list-blob2.png)
 
 10. Po několika minutách se vaše data zobrazí ve vašem účtu úložiště.
 
@@ -132,7 +132,7 @@ Následující příklad ukazuje záznam v Dekódovatelné Avro souboru:
 Pokud je nejprve zapnutý průběžný export dat, je exportován jeden snímek se všemi zařízeními. Každé zařízení zahrnuje:
 - `id` zařízení v IoT Central
 - `name` zařízení
-- `deviceId` ze [služby Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
+- `deviceId` ze [služby Device Provisioning Service](/azure/iot-central/core/howto-connect-nodejs)
 - Informace o šabloně zařízení
 - Hodnoty vlastností
 - Nastavení hodnot

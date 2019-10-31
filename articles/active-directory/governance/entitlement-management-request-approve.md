@@ -1,6 +1,6 @@
 ---
-title: Schválení nebo zamítnutí žádostí o přístup ve správě nároků Azure AD (Preview) – Azure Active Directory
-description: Naučte se používat portál pro přístup ke schválení nebo zamítnutí žádostí o přístup k balíčku přístupu v Azure Active Directory Správa nároků (Preview).
+title: Schválení nebo zamítnutí žádostí o přístup v řízení nároků v Azure AD – Azure Active Directory
+description: Naučte se, jak pomocí portálu pro přístup schvalovat nebo odmítat žádosti na balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da3e1b6439b033742af62d548775cfb628e955b7
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: MT
+ms.openlocfilehash: 3bf254f06c14afa7ee32f27d6632ab33665cf31c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990713"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173454"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Schválení nebo zamítnutí žádostí o přístup ve správě nároků Azure AD (Preview)
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Schválení nebo zamítnutí žádostí o přístup v Azure AD – Správa nároků
 
 Díky správě nároků ve službě Azure AD můžete nakonfigurovat zásady, které vyžadují schválení balíčků přístupu, a vybrat jednoho nebo více schvalovatelů. Tento článek popisuje, jak můžou určení schvalovatelé schvalovat nebo odmítat žádosti o přístup k balíčkům.
 

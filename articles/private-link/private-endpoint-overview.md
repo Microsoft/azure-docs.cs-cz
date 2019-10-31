@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 32814b7478fac9530cc74fba605a096881229102
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101332"
+ms.locfileid: "73172981"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -122,8 +122,6 @@ Následující tabulka obsahuje seznam známých omezení při použití privát
 |Omezení |Popis |Omezení rizik  |
 |---------|---------|---------|
 |Pravidla skupiny zabezpečení sítě (NSG) a uživatelsky definované trasy se nevztahují na soukromý koncový bod.    |NSG se nepodporuje u privátních koncových bodů. V případě, že k podsítím obsahujícím soukromý koncový bod může být přidruženo NSG, pravidla nebudou platná pro přenosy zpracovávané privátním koncovým bodem. K nasazení privátních koncových bodů v podsíti je nutné, aby bylo [vynucování zásad sítě zakázané](disable-private-endpoint-network-policy.md) . NSG se pořád vynutil na jiných úlohách hostovaných ve stejné podsíti. Při směrování v každé podsíti klienta bude použita předpona/32, změna výchozího chování směrování vyžaduje podobný UDR  | Řízení provozu pomocí pravidel NSG pro odchozí přenosy na zdrojových klientech. Nasaďte jednotlivé trasy s předponou/32 a přepište trasy privátních koncových bodů.        |
-|V podsítích povolených pro koncový bod služby nebo specializované úlohy nelze vytvořit privátní koncové body.    |V podsítích, které jsou povolené pro koncové body služby nebo podsítě delegované na specializované úlohy, nejde nasadit privátní koncové body.|  Vytvořte samostatnou podsíť pro nasazení privátních koncových bodů.        |
-|privátní koncový bod se dá mapovat jenom na službu privátního propojení (vlastněné zákazníkem) ve stejné oblasti.    |   Připojení ke službě privátního propojení (vlastní) z jiné oblasti se nepodporuje.       |  Ve verzi Preview je nutné nasadit službu privátního propojení ve stejné oblasti.        |
 |  Partnerský Virtual Network s privátními koncovými body se nepodporují.   |   Při připojování k privátním koncovým bodům na Virtual Network s partnerským vztahem bez nutnosti jiné úlohy není podporovaná.       | Nasazení jediného virtuálního počítače v partnerském Virtual Network pro povolení připojení |
 |Specializované úlohy nemůžou přistupovat k privátním koncovým bodům.    |   Následující služby nasazené do vaší virtuální sítě nemají přístup k jakémukoli prostředku privátního propojení pomocí privátních koncových bodů:<br>Plán služby App Service</br>Instance kontejneru Azure</br>Azure NetApp Files</br>Rezervované HSM Azure<br>       |   Ve verzi Preview není žádné zmírnění.       |
 

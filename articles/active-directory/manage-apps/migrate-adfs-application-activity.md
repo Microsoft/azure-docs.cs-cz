@@ -1,0 +1,129 @@
+---
+title: Pomocí sestavy aktivita můžete přesunout AD FS aplikace do Azure Active Directory | Microsoft Docs
+description: Sestava aktivity aplikace Active Directory Federation Services (AD FS) (AD FS) umožňuje rychle migrovat aplikace z AD FS na Azure Active Directory (Azure AD). Tento nástroj pro migraci pro AD FS identifikuje kompatibilitu s Azure AD a poskytuje pokyny k migraci.
+services: active-directory
+author: msmimart
+manager: CelesteDG
+ms.service: active-directory
+ms.subservice: app-mgmt
+ms.topic: conceptual
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.date: 10/30/2019
+ms.author: mimart
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 10a267811b7e7ac8715b6823a24c2b3a1f0d430c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73180534"
+---
+# <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Použití sestavy aktivity aplikace AD FS (Preview) k migraci aplikací do služby Azure AD
+
+Mnoho organizací používá Active Directory Federation Services (AD FS) (AD FS) k zajištění jednotného přihlašování ke cloudovým aplikacím. Při přesunu AD FSch aplikací do Azure AD se k ověřování připravují významné výhody, zejména v souvislosti se správou nákladů, řízením rizik, produktivitou, dodržováním předpisů a zásadami správného řízení. Ale porozumění aplikacím, které jsou kompatibilní s Azure AD, a určením konkrétních kroků migrace může být časově náročné.
+
+Sestava aktivita aplikace AD FS (Preview) v Azure Portal umožňuje rychle určit, které z vašich aplikací je možné migrovat do služby Azure AD. Posuzuje všechny AD FS aplikace kvůli kompatibilitě s Azure AD, kontroluje případné problémy a poskytuje pokyny k přípravě jednotlivých aplikací pro migraci. Pomocí sestavy aktivity aplikace AD FS můžete:
+
+* **Zjištění AD FS aplikací a určení rozsahu migrace** Sestava aktivita aplikace AD FS obsahuje seznam všech aplikací AD FS ve vaší organizaci a označuje jejich připravenost na migraci do služby Azure AD.
+* **Určete prioritu aplikací pro migraci.** Získejte počet jedinečných uživatelů, kteří se přihlásili k aplikaci za posledních 1, 7 nebo 30 dní, abyste mohli určit závažnost nebo riziko migrace aplikace.
+* **Spusťte testy migrace a opravte problémy.** Služba generování sestav automaticky spouští testy, aby zjistila, zda je aplikace připravena k migraci. Výsledky se zobrazí v sestavě aktivita aplikace AD FS jako stav migrace. Pokud se identifikují potenciální problémy s migrací, získáte konkrétní pokyny, jak tyto problémy vyřešit.
+
+Data aktivity aplikace AD FS jsou k dispozici uživatelům, kteří mají přiřazenou některou z těchto rolí správce: globální správce, čtenář sestav, čtenář zabezpečení, správce aplikace nebo správce cloudové aplikace.
+
+## <a name="prerequisites"></a>Předpoklady
+
+* Vaše organizace musí aktuálně používat AD FS k přístupu k aplikacím.
+* Azure AD Connect Health musí být ve vašem tenantovi Azure AD povolené.
+   * [Další informace o Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)
+   * [Začínáme s nastavením Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+
+## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>Zjištění AD FSch aplikací, které se dají migrovat 
+
+Sestava aktivity aplikace AD FS je k dispozici v Azure Portal v části Azure AD **Usage & Insights** Reporting. Sestava aktivity aplikace AD FS aplikace analyzuje každou aplikaci AD FS a určí, jestli se dá migrovat tak, jak je, nebo pokud je potřeba další recenze. 
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí role správce, která má přístup k datům aktivity aplikace AD FS (globální správce, čtenář sestav, čtecí modul zabezpečení, Správce aplikací nebo správce cloudové aplikace).
+
+2. Vyberte **Azure Active Directory**a pak vyberte **podnikové aplikace**.
+
+3. V části **aktivita**vyberte **využití & přehledy (Preview)** a pak vyberte **AD FS aktivita aplikace** a otevřete tak seznam všech AD FS aplikací ve vaší organizaci.
+
+   ![Aktivita aplikace AD FS](media/migrate-adfs-application-activity/adfs-application-activity.png)
+
+4. Pro každou aplikaci v seznamu AD FS aktivity aplikace zobrazte **stav migrace**:
+
+   * **Připraveno k migraci** znamená, že konfigurace aplikace AD FS je plně podporovaná ve službě Azure AD a dá se migrovat tak, jak je.
+
+   * **Je potřeba zkontrolovat** , že některá z nastavení aplikace se dají migrovat do Azure AD, ale budete muset zkontrolovat nastavení, která se nedají migrovat tak, jak je.
+
+   * **Vyžadování dalších kroků** znamená, že Azure AD nepodporuje některá nastavení aplikace, takže aplikaci nelze migrovat v jejím aktuálním stavu.
+
+## <a name="evaluate-the-readiness-of-an-application-for-migration"></a>Vyhodnocení připravenosti aplikace na migraci 
+
+1. V seznamu AD FS aktivity aplikace kliknutím na stav ve sloupci **stav migrace** otevřete podrobnosti migrace. Zobrazí se souhrn konfiguračních testů, které byly úspěšné, a případné případné problémy s migrací.
+
+   ![Podrobnosti o migraci](media/migrate-adfs-application-activity/migration-details.png)
+
+2. Kliknutím na zprávu otevřete další podrobnosti pravidla migrace. Úplný seznam testovaných vlastností naleznete níže v tabulce [AD FS testy konfigurace aplikací](#ad-fs-application-configuration-tests) níže.
+
+   ![Podrobnosti pravidla migrace](media/migrate-adfs-application-activity/migration-rule-details.png)
+
+### <a name="ad-fs-application-configuration-tests"></a>AD FS testy konfigurace aplikace
+
+V následující tabulce jsou uvedeny všechny testy konfigurace, které se provádí v AD FSch aplikacích.
+
+|Vlastnost  |Stav  |Popis  |
+|---------|---------|---------|
+|Pro AdditionalAuthentication se zjistilo aspoň jedno pravidlo, které není migrovat.       | Úspěch/upozornění          | Předávající strana v AD FS používá místního poskytovatele MFA. Pokud chcete přejít na Azure AD, doporučujeme přejít na Azure MFA nebo vlastní ovládací prvky, které se budou integrovat s poskytovatelem vícefaktorového ověřování od jiného výrobce.  [Přečtěte si další informace o Azure MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).        |
+|Předávající strana má AdditionalWSFedEndpoint nastavenou na hodnotu true.       | Úspěch/selhání          | Předávající strana v AD FS umožňuje více koncových bodů kontrolního výrazu WS-dodávání. Azure AD podporuje (1) jednu z nich dnes. Pokud máte scénář, kde zablokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
+|Předávající strana má nastavenou AllowedAuthenticationClassReferences.       | Úspěch/selhání          | Toto je nastavení v AD FS, které umožňuje určit, jestli je aplikace nakonfigurovaná tak, aby povolovala jenom určité typy ověřování. Azure AD tuto službu ještě dnes nepodporuje. Pokud máte scénář, kde zablokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication).          |
+|AlwaysRequireAuthentication se nastaví.      | Úspěch/selhání          | Určuje, jestli je aplikace nakonfigurovaná tak, aby ignorovala soubory cookie jednotného přihlašování, a vždycky vyzvat k ověření. Služba Azure AD ještě není podporována.          |
+|Předávající strana má AutoUpdateEnabled nastavenou na hodnotu true.       | Úspěch/upozornění          | Toto je nastavení v AD FS, které umožňuje určit, jestli je AD FS nakonfigurovaná tak, aby automaticky aktualizovala aplikaci na základě změn v metadatech federace. Azure AD tuto službu ještě dnes nepodporuje, ale neměla by blokovat migraci aplikace do Azure AD.           |
+|Předávající strana má povolených víc ClaimsProviders.       | Úspěch/selhání          | Předávající strana je nakonfigurovaná na zdrojové deklarace identity od poskytovatele deklarace identity jiného než Active Directory.  V Azure AD to není podporováno. Pokud máte scénář, kde zablokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire).          |
+|DelegationAuthorization je platný      | Úspěch/selhání          | Aplikace má definované vlastní autorizační pravidla delegování. Azure AD tuto službu ještě dnes nepodporuje. Pokud máte scénář, kde zablokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695747-allow-to-define-delegation-authorization-rules).          |
+|Předávající strana má ADFSRPImpersonationAuthorizationRules       | Úspěch/upozornění          | Aplikace má definovaná vlastní autorizační pravidla zosobnění. Azure AD tuto službu ještě dnes nepodporuje, ale neměla by blokovat migraci aplikace do Azure AD.          |
+|Pro IssuanceAuthorization se zjistilo aspoň jedno pravidlo, které není migrovat.       | Úspěch/upozornění          | Aplikace má vlastní autorizační pravidla vystavování, která jsou definována v AD FS. Azure AD podporuje tuto funkci pomocí podmíněného přístupu Azure AD. [Přečtěte si další informace o podmíněném přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview). V Azure AD taky můžete omezit přístup k aplikaci podle uživatelů nebo skupin přiřazených k aplikaci. [Přečtěte si další informace o přiřazování uživatelů a skupin pro přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups). Informace o nezpracovaných pravidlech IssuanceAuthorization nakonfigurovaných v AD FS najdete v tabulce [testy pro pravidla deklarace identity](#check-the-results-of-claim-rule-tests)níže.           |
+|Pro IssuanceTransform se zjistilo aspoň jedno pravidlo, které není migrovat.       | Úspěch/upozornění          | Aplikace má vlastní pravidla transformace vystavování, která jsou definována v AD FS. Azure AD podporuje přizpůsobení deklarací identity vystavených v tokenu. Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).  Informace o nezpracovaných pravidlech IssuanceTransformation nakonfigurovaných v AD FS najdete v tabulce [testy pro pravidla deklarace identity](#check-the-results-of-claim-rule-tests)níže.          |
+|Předávající strana má parametry monitoringenabled nastavenou na hodnotu true.       | Úspěch/upozornění          | Toto je nastavení v AD FS, které umožňuje určit, jestli je AD FS nakonfigurované pro monitorování federačních metadat pro tuto aplikaci. Služba Azure AD to nepodporuje, ale neměla by blokovat migraci aplikace do Azure AD.          |
+|Předávající strana má nastavené NotBeforeSkew.      | Úspěch/upozornění          | AD FS umožňuje časové zkosení na základě časů NotBefore a NotOnOrAfter v tokenu SAML. Azure AD tuto službu ještě dnes nepodporuje, ale neměla by blokovat migraci aplikace do Azure AD.          |
+|Předávající strana má RequestMFAFromClaimsProviders nastavenou na hodnotu true.       | Úspěch/upozornění          | Toto je nastavení v AD FS, které umožňuje určit, jestli se aplikace pevně zakódované na jiného zprostředkovatele deklarací identity a vyžaduje MFA. Pokud chcete přejít na Azure AD, doporučujeme přejít na Azure MFA nebo na vlastní ovládací prvky, které se budou integrovat s poskytovatelem vícefaktorového ověřování třetích stran.  [Přečtěte si další informace o Azure MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).          |
+|Předávající strana má SignedSamlRequestsRequired nastavenou na hodnotu true.       | Úspěch/selhání          | Aplikace je nakonfigurovaná v AD FS k ověření podpisu v žádosti SAML. Toto nastavení je volitelné a nemělo by zablokovat migraci. Azure Active Directory používá adresy URL odpovědí k ověření poskytovatele služby.  Pokud máte scénář, kde zablokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/13394589-saml-signature).          |
+|TokenLifetimeCheckResult        | Úspěch/selhání         | Aplikace je nakonfigurována pro vlastní životnost tokenu. AD FS výchozí hodnota je 1 hodina. Azure AD tuto funkci podporuje pomocí podmíněného přístupu. Další informace najdete v tématu [Konfigurace správy relace ověřování pomocí podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).          |
+|Předávající strana je nastavená na šifrování deklarací identity. Tato služba je podporovaná službou Azure AD.       | Dána          | Pomocí Azure AD můžete zašifrovat odeslání tokenu do aplikace. Další informace najdete v tématu [Konfigurace šifrování tokenů SAML v Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).          |
+|Předávající strana je nastavená na šifrování NameID v tokenu SAML.      | Úspěch/selhání          | Aplikace je nakonfigurovaná k šifrování deklarace identity nameID v tokenu SAML. Pomocí Azure AD můžete šifrovat celý token odeslaný do aplikace. Šifrování konkrétních deklarací se ještě nepodporuje. Další informace najdete v tématu [Konfigurace šifrování tokenů SAML v Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).         |
+
+## <a name="check-the-results-of-claim-rule-tests"></a>Zkontroluje výsledky testů pravidla deklarace identity.
+
+Pokud jste nakonfigurovali pravidlo deklarace identity pro aplikaci v AD FS, bude prostředí poskytovat podrobnou analýzu pro všechna pravidla deklarace identity. Uvidíte, která pravidla deklarace identity se dají přesunout do Azure AD a které vyžadují další kontrolu.
+
+1. V seznamu AD FS aktivity aplikace kliknutím na stav ve sloupci **stav migrace** otevřete podrobnosti migrace. Zobrazí se souhrn konfiguračních testů, které byly úspěšné, a případné případné problémy s migrací.
+
+2. Na stránce **Podrobnosti pravidla migrace** rozbalte výsledky pro zobrazení podrobností o potenciálních problémech s migrací a získejte další doprovodné materiály. Podrobný seznam všech testovaných pravidel deklarací identity najdete níže v tabulce [kontroly výsledků testů pro pravidla deklarací identity](#check-the-results-of-claim-rule-tests) .
+
+   Následující příklad ukazuje Podrobnosti pravidla migrace pro pravidlo IssuanceTransform. Obsahuje seznam specifických částí deklarace identity, které je třeba před migrací do služby Azure AD zkontrolovat a vyřešit.
+
+   ![Podrobnosti pravidla migrace – další doprovodné materiály](media/migrate-adfs-application-activity/migration-rule-details-guidance.png)
+
+### <a name="claim-rule-tests"></a>Testy pravidla deklarace identity
+
+V následující tabulce jsou uvedeny všechny testy pravidel deklarací identity, které se provádí v AD FSch aplikacích.
+
+|Vlastnost  |Popis  |
+|---------|---------|
+|UNSUPPORTED_CONDITION_PARAMETER      | Příkaz podmínky používá regulární výrazy k vyhodnocení, zda deklarace identity odpovídá určitému vzoru.  Pokud chcete dosáhnout podobných funkcí v Azure AD, můžete použít předdefinovanou transformaci, jako je IfEmpty (), StartWith (), Contains (), a to mimo jiné. Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).          |
+|UNSUPPORTED_CONDITION_CLASS      | Příkaz Condition obsahuje více podmínek, které je třeba vyhodnotit před spuštěním příkazu k vystavení. Služba Azure AD může tuto funkci podporovat s transformačními funkcemi deklarace identity, kde můžete vyhodnotit více hodnot deklarace identity.  Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).          |
+|UNSUPPORTED_RULE_TYPE      | Nebylo možné rozpoznat pravidlo deklarace identity. Další informace o tom, jak nakonfigurovat deklarace identity ve službě Azure AD, najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).          |
+|CONDITION_MATCHES_UNSUPPORTED_ISSUER      | Příkaz podmínky používá vystavitele, který není ve službě Azure AD podporován. V současné době Azure AD nepoužívá zdrojové deklarace identity z obchodů, které mají jinou službu Active Directory nebo Azure AD. Pokud vás zablokuje migrace aplikací do služby Azure AD, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire).         |
+|UNSUPPORTED_CONDITION_FUNCTION      | Příkaz podmínky používá agregační funkci k vystavení nebo přidání jediné deklarace identity bez ohledu na počet shod.  Ve službě Azure AD můžete vyhodnotit atribut uživatele a rozhodnout se, jakou hodnotu použít pro deklaraci identity s funkcemi jako IfEmpty (), StartWith (), obsahuje (), a to mimo jiné. Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).          |
+|RESTRICTED_CLAIM_ISSUED      | Příkaz podmínky používá deklaraci identity, která je omezená v Azure AD. Může být možné vystavit omezenou deklaraci identity, ale nemůžete změnit její zdroj ani použít žádnou transformaci. Další informace najdete v tématu [přizpůsobení deklarací identity emitovaných v tokenech pro konkrétní aplikaci v Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping).          |
+|EXTERNAL_ATTRIBUTE_STORE      | Příkaz vystavení používá úložiště atributů, které se liší v rámci služby Active Directory. V současné době Azure AD nepoužívá zdrojové deklarace identity z obchodů, které mají jinou službu Active Directory nebo Azure AD. Pokud vás zablokuje migrace aplikací do služby Azure AD, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire).          |
+|UNSUPPORTED_ISSUANCE_CLASS      | Příkaz vystavení pomocí příkazu přidat přidá deklarace do příchozí sady deklarací. V Azure AD to může být nakonfigurované jako vícenásobné transformace deklarací identity.  Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping).         |
+|UNSUPPORTED_ISSUANCE_TRANSFORMATION      | Příkaz vystavení používá regulární výrazy k transformaci hodnoty deklarace, která se má vygenerovat. Chcete-li dosáhnout podobných funkcí v Azure AD, můžete použít předdefinovanou transformaci, jako je například Extract (), trim (), ToLower, mimo jiné. Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).          |
+
+
+## <a name="next-steps"></a>Další kroky
+
+- [Správa aplikací pomocí Azure Active Directory](what-is-application-management.md)
+- [Správa přístupu k aplikacím](what-is-access-management.md)
+- [Federace služby Azure AD Connect](../hybrid/how-to-connect-fed-whatis.md)

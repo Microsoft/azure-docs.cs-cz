@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: efb668971bc4a8c5a0968836aab71107aa6b88d5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072655"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176904"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Šablony aplikací v Azure API Management
 Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru dle vašeho výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a poskytnuté sady lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md)máte skvělou flexibilitu při konfiguraci obsah stránek se zobrazí podle svých potřeb pomocí těchto šablon.  
@@ -27,10 +27,12 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 -   [Seznam aplikací](#ProductList)  
   
--   [Aplikace](#Application)  
+-   [Použití](#Application)  
   
 > [!NOTE]
 >  Ukázkové výchozí šablony jsou uvedené v následující dokumentaci, ale můžou se změnit z důvodu průběžných vylepšení. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
@@ -72,9 +74,9 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Šablona může používat následující [ovládací prvky stránky.](api-management-page-controls.md) `Product list`  
+ Šablona `Product list` může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Datový model  
   
@@ -82,7 +84,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 |--------------|----------|-----------------|  
 |`Paging`|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce aplikací.|  
 |`Applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace viditelné pro aktuálního uživatele.|  
-|`CategoryName`|řetězec|Kategorie aplikace|  
+|`CategoryName`|string|Kategorie aplikace|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -179,7 +181,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Šablona nepovoluje použití žádných [ovládacích prvků stránky.](api-management-page-controls.md) `Application`  
+ Šablona `Application` nepovoluje použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datový model  
  Entita [aplikace](api-management-template-data-model-reference.md#Application)  
@@ -221,5 +223,5 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }  
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).

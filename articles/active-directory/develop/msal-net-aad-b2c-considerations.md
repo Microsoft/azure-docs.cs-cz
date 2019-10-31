@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
-ms.author: twhitney
+ms.date: 10/29/2019
+ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a30f792a74ffc3aa983d84d902fa736a3f9b015
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0996c5635223800a981497256654b7e418bf4163
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802948"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175598"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 
@@ -36,12 +36,13 @@ Tato stránka je určena pro MSAL 3. x. Pokud vás zajímá MSAL 2. x, přečtě
 
 ## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Autorita pro klienta Azure AD B2C a zásady
 
-Autorita, která se má použít, je `https://login.microsoftonline.com/tfp/{tenant}/{policyName}`, kde:
+Autorita, která se má použít, je `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`, kde:
 
-- `tenant` je název tenanta Azure AD B2C, 
-- `policyName` název zásady, která se má použít (například "b2c_1_susi" pro přihlášení nebo přihlášení).
+- `azureADB2CHostname` je název tenanta Azure AD B2C a hostitele (například `{your-tenant-name}.b2clogin.com`),
+- `tenant` je úplný název tenanta Azure AD B2C (například `{your-tenant-name}.onmicrosoft.com`) nebo identifikátor GUID klienta. 
+- `policyName` název zásady nebo toku uživatele, který se má použít (například "b2c_1_susi" pro registraci a přihlášení).
 
-Aktuální pokyny z Azure AD B2C je použití `b2clogin.com` jako autorita. Například, `$"https://{your-tenant-name}.b2clogin.com/tfp/{your-tenant-ID}/{policyname}"`. Další informace najdete v této [dokumentaci](/azure/active-directory-b2c/b2clogin).
+Další informace o Azure AD B2C autoritách najdete v této [dokumentaci](/azure/active-directory-b2c/b2clogin).
 
 ## <a name="instantiating-the-application"></a>Vytvoření instance aplikace
 
@@ -50,12 +51,13 @@ Při sestavování aplikace je potřeba zadat autoritu.
 ```csharp
 // Azure AD B2C Coordinates
 public static string Tenant = "fabrikamb2c.onmicrosoft.com";
+public static string AzureADB2CHostname = "fabrikamb2c.b2clogin.com";
 public static string ClientID = "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6";
 public static string PolicySignUpSignIn = "b2c_1_susi";
 public static string PolicyEditProfile = "b2c_1_edit_profile";
 public static string PolicyResetPassword = "b2c_1_reset";
 
-public static string AuthorityBase = $"https://fabrikamb2c.b2clogin.com/tfp/{Tenant}/";
+public static string AuthorityBase = $"https://{AzureADB2CHostname}/tfp/{Tenant}/";
 public static string Authority = $"{AuthorityBase}{PolicySignUpSignIn}";
 public static string AuthorityEditProfile = $"{AuthorityBase}{PolicyEditProfile}";
 public static string AuthorityPasswordReset = $"{AuthorityBase}{PolicyResetPassword}";
@@ -71,14 +73,16 @@ Získání tokenu pro Azure AD B2C Protected API ve veřejné klientské aplikac
 
 ```csharp
 IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application .AcquireToken(scopes, parentWindow)
+AuthenticationResult ar = await application .AcquireTokenInteractive(scopes)
                                             .WithAccount(GetAccountByPolicy(accounts, policy))
+                                            .WithParentActivityOrWindow(ParentActivityOrWindow)
                                             .ExecuteAsync();
 ```
 
 textem:
 
 - `policy` je jeden z předchozích řetězců (pro `PolicySignUpSignIn`instance).
+- pro Android (aktivita) se vyžaduje `ParentActivityOrWindow` a volitelné pro jiné platformy, které podporují nadřazené uživatelské rozhraní, jako je Windows v systému Windows a UIViewController v iOS. Další informace najdete [v dialogovém okně uživatelského rozhraní](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow).
 - `GetAccountByPolicy(IEnumerable<IAccount>, string)` je metoda, která najde účet pro danou zásadu. Například:
 
   ```csharp
@@ -94,11 +98,11 @@ textem:
   }
   ```
 
-Použití zásad (například umožnění, aby koncoví uživatelé upravili svůj profil nebo resetování hesla) je aktuálně prováděno voláním `AcquireTokenInteractive`. V případě těchto dvou zásad nepoužívejte výsledek vráceného tokenu nebo ověřování.
+Použití zásad nebo toku uživatele (například umožnění, aby koncový uživatel upravil svůj profil nebo resetování hesla), je v současné době proveden voláním `AcquireTokenInteractive`. V případě těchto dvou zásad nepoužívejte výsledek vráceného tokenu nebo ověřování.
 
 ## <a name="special-case-of-editprofile-and-resetpassword-policies"></a>Zvláštní případ zásad EditProfile a ResetPassword
 
-Pokud chcete zajistit prostředí, kde se koncoví uživatelé přihlásí pomocí sociální identity, a pak upravte svůj profil, který chcete použít Azure AD B2C zásady EditProfile. To lze provést tak, že zavoláte `AcquireTokenInteractive` se specifickou autoritou pro tuto zásadu a zobrazí se výzva nastavená na `Prompt.NoPrompt`, aby se zabránilo zobrazení dialogu pro výběr účtu (když je uživatel už přihlášený).
+Pokud chcete zajistit, aby se koncoví uživatelé přihlásili pomocí sociální identity a pak upravili svůj profil, chcete použít Azure AD B2C upravit zásadu profilu. To můžete udělat tak, že zavoláte `AcquireTokenInteractive` se specifickou autoritou pro danou zásadu a zobrazí se výzva nastavená na `Prompt.NoPrompt`, aby se zabránilo zobrazení dialogu pro výběr účtu (když je uživatel už přihlášený a má aktivní relaci souborů cookie).
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
@@ -124,8 +128,8 @@ Další podrobnosti o toku ROPC najdete v této [dokumentaci](v2-oauth-ropc.md).
 
 Tento tok se **nedoporučuje** , protože aplikace, která žádá uživatele o heslo, není zabezpečená. Další informace o tomto problému najdete v [tomto článku](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
 
-Pomocí uživatelského jména a hesla máte k dispozici několik věcí:
-- základní klienti moderní identity: heslo se zachová a přehraje. Protože máme tento koncept sdíleného tajného kódu, který se dá zachytit. Nejedná se o nekompatibilní bez hesla.
+Pomocí uživatelského jména a hesla získáte několik věcí:
+- základní principy moderní identity: heslo se zachová a přehraje. Protože máme tento koncept sdíleného tajného kódu, který se dá zachytit. Nejedná se o nekompatibilní bez hesla.
 - Uživatelé, kteří potřebují provést MFA, se nebudou moct přihlásit (protože žádná interakce není).
 - Uživatelé nebudou moct provádět jednotné přihlašování.
 
@@ -149,13 +153,12 @@ Nezapomeňte použít autoritu, která obsahuje zásady ROPC.
 
 ### <a name="limitations-of-the-ropc-flow"></a>Omezení toku ROPC
  - Tok ROPC **funguje jenom pro místní účty** (kde se zaregistrujete ve službě Azure AD B2C pomocí e-mailu nebo uživatelského jména). Tento tok nefunguje, pokud federování na kteréhokoli zprostředkovatele identity, který podporuje Azure AD B2C (Facebook, Google atd.).
- - V současné době není Azure AD B2C při implementaci toku ROPC z MSALu **vrácen žádný id_token** . To znamená, že objekt účtu se nedá vytvořit, takže v mezipaměti nebude žádný účet ani uživatel. Tok AcquireTokenSilent nebude v tomto scénáři fungovat. ROPC ale nezobrazuje uživatelské rozhraní, takže nebude mít vliv na činnost koncového uživatele.
 
 ## <a name="google-auth-and-embedded-webview"></a>Google auth a vložené WebView
 
 Pokud jste vývojář Azure AD B2C, který používá Google jako poskytovatele identity, provedete to tak, že použijete prohlížeč systému, protože Google neumožňuje [ověřování z vložených webviews](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). V současné době je `login.microsoftonline.com` důvěryhodnou autoritou s Google. Použití této autority bude fungovat s vloženým webviewem. Použití `b2clogin.com` ale není důvěryhodnou autoritou s Google, takže se uživatelé nebudou moct ověřit.
 
-Pokud se něco změní, budeme na wikiwebu poskytovat aktualizaci wiki a tento [problém](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) .
+Pokud dojde ke změně, poskytneme vám aktualizaci tohoto [problému](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) .
 
 ## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Ukládání do mezipaměti s Azure AD B2C v MSAL.Net 
 

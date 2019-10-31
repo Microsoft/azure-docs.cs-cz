@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b94d376ee107f9acd45dff5b96fc43722f2fe208
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 00de95f3b3e6eddd1f45be830202ba3ec8772bfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965465"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176162"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Použití privátních koncových bodů pro Azure Storage (Preview)
 
@@ -48,7 +48,7 @@ Při vytváření privátního koncového bodu musíte zadat účet úložiště
 > [!TIP]
 > Vytvořte samostatný privátní koncový bod pro sekundární instanci služby úložiště pro lepší výkon při čtení účtů RA-GRS.
 
-Pro čtení v [účtu geograficky redundantního úložiště s přístupem pro čtení](storage-redundancy-grs.md#read-access-geo-redundant-storage)budete potřebovat samostatné koncové body pro primární i sekundární instance služby. Nemusíte vytvářet privátní koncový bod pro sekundární instanci pro převzetí služeb při selhání. Po převzetí služeb při selhání se privátní koncový bod automaticky připojí k nové primární instanci.
+Pro čtení v [účtu geograficky redundantního úložiště s přístupem pro čtení](storage-redundancy-grs.md#read-access-geo-redundant-storage)budete potřebovat samostatné koncové body pro primární i sekundární instance služby. Nemusíte vytvářet privátní koncový bod pro sekundární instanci pro **převzetí služeb při selhání**. Po převzetí služeb při selhání se privátní koncový bod automaticky připojí k nové primární instanci. Git 
 
 #### <a name="resources"></a>Materiály
 
@@ -91,14 +91,14 @@ Tento přístup umožňuje přístup k účtu úložiště pomocí stejného př
 
 Doporučené názvy zón DNS pro privátní koncové body služby Storage jsou:
 
-| Služba úložiště       | Název zóny                          |
-| :-------------------- | :--------------------------------- |
-| Blob Service          | privatelink.blob.core.windows.net  |
-| Data Lake systému souborů | privatelink.dfe.core.windows.net   |
-| Souborová služba          | privatelink.file.core.windows.net  |
-| Služba front         | privatelink.queue.core.windows.net |
-| Table service         | privatelink.table.core.windows.net |
-| Statické weby       | privatelink.web.core.windows.net   |
+| Služba úložiště        | Název zóny                            |
+| :--------------------- | :----------------------------------- |
+| Blob Service           | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
+| Souborová služba           | `privatelink.file.core.windows.net`  |
+| Služba front          | `privatelink.queue.core.windows.net` |
+| Table service          | `privatelink.table.core.windows.net` |
+| Statické weby        | `privatelink.web.core.windows.net`   |
 
 ## <a name="pricing"></a>Ceny
 
@@ -119,6 +119,6 @@ Klienti v virtuální sítě se stávajícími omezeními tváře privátních k
 
 Toto omezení je výsledkem změn DNS provedených při vytváření privátního koncového bodu z účtu a2.
 
-### <a name="network-security-group-rules-on-subnets-with-private-endpoints"></a>Pravidla skupiny zabezpečení sítě v podsítích s privátními koncovými body
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Pravidla skupiny zabezpečení sítě pro podsítě s privátními koncovými body
 
-Pravidla [skupiny zabezpečení sítě](../../virtual-network/security-overview.md) (NSG) nelze konfigurovat pro podsítě s privátními koncovými body v tomto okamžiku. Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.
+V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sítě](../../virtual-network/security-overview.md) (NSG) pro podsítě s privátními koncovými body. Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.

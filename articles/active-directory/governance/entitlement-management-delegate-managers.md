@@ -1,5 +1,5 @@
 ---
-title: Zásady správného řízení přístupu delegáta pro přístup ke správcům balíčků ve správě nároků Azure AD (Preview) – Azure Active Directory
+title: Řízení přístupu delegáta pro přístup ke správcům balíčků ve správě nároků Azure AD – Azure Active Directory
 description: Naučte se delegovat řízení přístupu od správců IT a získat přístup k správcům balíčků a vedoucím projektu, aby mohli spravovat přístup sami.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a2b6bfdb4904e11ffba3a9fe1097c7f5cfe9d6
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170734"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174369"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management-preview"></a>Přístup ke Správci balíčků ve správě nároků Azure AD (Preview) prostřednictvím delegování zásad správného řízení přístupu
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.
-> Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Řízení přístupu k zásadám přístupu pro správce balíčků ve správě nároků Azure AD
 
 Chcete-li delegovat vytváření a správu balíčků přístupu v katalogu, přidejte uživatele do role správce balíčků přístupu. Správci balíčků přístupu musí být obeznámeni s potřebou uživatelů vyžadovat přístup k prostředkům v katalogu. Například pokud se katalog používá pro projekt, pak vedoucí projektu může být správce balíčků přístupu pro tento katalog.  Správci balíčků přístupu nemůžou přidávat prostředky do katalogu, ale můžou spravovat balíčky a zásady přístupu v katalogu.  Při delegování do Správce balíčků přístupu může tato osoba následně odpovídat za:
 

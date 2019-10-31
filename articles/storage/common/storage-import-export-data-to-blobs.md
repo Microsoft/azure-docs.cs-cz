@@ -1,6 +1,6 @@
 ---
-title: Přenos dat do objektů BLOB systému Azure pomocí Azure Import/Export | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit import a export projektů na webu Azure portal k přenosu dat do a z objektů BLOB Azure.
+title: Použití Azure import/export k přenosu dat do objektů blob Azure | Microsoft Docs
+description: Naučte se vytvářet úlohy importu a exportu v Azure Portal pro přenos dat do a z objektů blob Azure.
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,144 +8,144 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 72a91fefc26e9c0b6d5a91223119815c4fcb9551
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd15e406cdbee57112ff8ecba158d503e908b73f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808582"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73178014"
 ---
-# <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
+# <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Použití služby Azure import/export k importu dat do Azure Blob Storage
 
-Tento článek obsahuje podrobné pokyny o tom, jak bezpečně importovat velké objemy dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export. K importu dat do objektů BLOB Azure, služba vyžaduje, aby dodat šifrované disky obsahující data do datacentra Azure.  
+Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu v Azure bezpečně importovat velké objemy dat do úložiště objektů BLOB v Azure. Aby bylo možné importovat data do objektů blob Azure, služba vyžaduje, abyste dodali šifrované diskové jednotky obsahující vaše data do datacentra Azure.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete vytvářet úlohy importu pro přenos dat do služby Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadovaných součástí pro tuto službu. Musíte mít:
+Než vytvoříte úlohu importu pro přenos dat do Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadavků pro tuto službu. Musíte:
 
-- Máte aktivní předplatné Azure, který lze použít pro službu Import/Export.
-- Máte alespoň jeden účet úložiště Azure se kontejner úložiště. Zobrazit seznam [nepodporuje účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). 
-    - Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-quickstart-create-account.md). 
-    - Informace o kontejneru úložiště, přejděte na [vytvořit kontejner úložiště](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
-- Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks). 
-- K dispozici systém Windows [verze operačního systému nepodporuje](storage-import-export-requirements.md#supported-operating-systems). 
-- Povolení nástroje BitLocker v systému Windows. Zobrazit [jak zapnout BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-- [Stáhněte si WAImportExport verze 1](https://aka.ms/waiev1) v systému Windows. Rozbalte do výchozí složky `waimportexportv1`. Například, `C:\WaImportExportV1`.
-- Máte účet FedEx/DHL. Pokud chcete použít dopravce než FedEx/DHL, obraťte se na tým Azure Data Box operací na adrese `adbops@microsoft.com`.  
-    - Účet musí být platná, by měl mít vyrovnávání a musí mít vrácení funkce.
-    - Generovat sledovací číslo pro úlohu exportu.
-    - Každá úloha by měl mít samostatný sledovací číslo. Více úloh se stejným číslem sledování nejsou podporovány.
-    - Pokud nemáte účet přepravce, přejděte na:
-        - [Vytvoření účtu FedEX](https://www.fedex.com/en-us/create-account.html), nebo 
-        - [Vytvoření účtu DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
+- Mít aktivní předplatné Azure, které se dá použít pro službu import/export.
+- Musí mít aspoň jeden Azure Storage účet s kontejnerem úložiště. Podívejte se na seznam [podporovaných účtů úložiště a typů úložiště pro službu import/export](storage-import-export-requirements.md). 
+    - Informace o vytvoření nového účtu úložiště najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md). 
+    - Informace o kontejneru úložiště najdete v pro [vytvoření kontejneru úložiště](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
+- Mít dostatečný počet disků [podporovaných typů](storage-import-export-requirements.md#supported-disks). 
+- Má systém Windows s [podporovanou verzí operačního systému](storage-import-export-requirements.md#supported-operating-systems). 
+- Povolte nástroj BitLocker v systému Windows. Přečtěte si téma [Jak povolit nástroj BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+- [Stáhněte si WAImportExport verze 1](https://www.microsoft.com/download/details.aspx?id=42659) v systému Windows. Rozbalte do výchozí složky `waimportexportv1`. Například, `C:\WaImportExportV1`.
+- Mít účet FedEx/DHL. Pokud chcete použít nosný operátor jiný než FedEx/DHL, obraťte se na Azure Data Box provozní tým na `adbops@microsoft.com`.  
+    - Účet musí být platný, měl by mít zůstatek a musí mít možnosti vrácení expedice.
+    - Vygenerujte sledovací číslo pro úlohu exportu.
+    - Každá úloha by měla mít samostatné sledovací číslo. Více úloh se stejným číslem sledování se nepodporuje.
+    - Pokud nemáte účet dopravce, přečtěte si:
+        - [Vytvořte účet FedEx](https://www.fedex.com/en-us/create-account.html)nebo 
+        - [Vytvořte účet DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
-## <a name="step-1-prepare-the-drives"></a>Krok 1: Příprava jednotky
+## <a name="step-1-prepare-the-drives"></a>Krok 1: Příprava jednotek
 
-Tento krok generuje soubor deníku. Soubor deníku obsahuje základní informace, jako je sériové číslo jednotky, šifrovací klíč a podrobnosti o účtu úložiště. 
+Tento krok generuje soubor deníku. Soubor deníku ukládá základní informace, jako jsou sériové číslo jednotky, šifrovací klíč a podrobnosti účtu úložiště. 
 
-Proveďte následující kroky pro přípravu disků.
+K přípravě jednotek proveďte následující kroky.
 
-1.  Připojte diskové jednotky systému Windows přes SATA konektory.
-1.  Vytvořte jeden svazek NTFS na každou jednotku. Přiřazení písmene jednotky svazku. Nepoužívejte přípojné body.
-2.  Povolíte šifrování nástrojem BitLocker na svazku NTFS. Pokud používáte systém Windows Server, postupujte podle pokynů v [jak zapnout BitLocker ve Windows serveru 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-3.  Kopírování dat do zašifrovaného svazku. Pomocí přetahování nebo Robocopy nebo takový nástroj pro kopírování.
-4.  Otevřete okno Powershellu nebo příkazového řádku s oprávněními správce. Přejít ke složce rozbaleny, spusťte následující příkaz:
+1.  Připojte diskové jednotky k systému Windows přes konektory SATA.
+1.  Na každé jednotce vytvořte jeden svazek NTFS. Přiřaďte ke svazku písmeno jednotky. Nepoužívejte mountpoints.
+2.  Povolte šifrování BitLockeru na svazku NTFS. Pokud používáte systém Windows Server, postupujte podle pokynů v tématu [Postup povolení nástroje BitLocker v systému Windows server 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+3.  Kopírovat data do šifrovaného svazku. Použijte přetažení nebo příkaz Robocopy nebo jakýkoli takový nástroj pro kopírování.
+4.  Otevřete okno PowerShellu nebo příkazového řádku s oprávněními správce. Chcete-li změnit adresář na složku unzip, spusťte následující příkaz:
     
     `cd C:\WaImportExportV1`
-5.  Pokud chcete získat klíče Bitlockeru na jednotce, spusťte následující příkaz:
+5.  Klíč BitLockeru jednotky získáte spuštěním následujícího příkazu:
     
     `manage-bde -protectors -get <DriveLetter>:`
-6.  Příprava na disk, spusťte následující příkaz. **V závislosti na velikosti dat může to trvat několik hodin na dny.** 
+6.  Pokud chcete disk připravit, spusťte následující příkaz. **V závislosti na velikosti dat to může trvat několik hodin až dnů.** 
 
     ```
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite 
     ```
-    Soubor deníku se vytvoří ve stejné složce, kam jste nástroj spustili. Také se vytvoří dva další soubory – *.xml* soubor (složku, ve kterém spouštíte nástroj) a *jednotky manifest.xml* soubor (složku, ve které se nachází data).
+    Soubor deníku se vytvoří ve stejné složce, ve které jste spustili nástroj. Vytvoří se také další dva soubory – soubor *. XML* (složka, ve které jste spustili nástroj), a soubor *Drive-manifest. XML* (složka, ve které jsou data uložena).
     
-    Parametry použité jsou popsány v následující tabulce:
+    Použité parametry jsou popsány v následující tabulce:
 
     |Možnost  |Popis  |
     |---------|---------|
-    |/j:     |Název souboru deníku s příponou .jrn. Na jednotku je vygenerován soubor deníku. Doporučujeme použít jako název souboru deníku sériové číslo disku.         |
-    |/ID:     |ID relace. Pro každou instanci tohoto příkazu použijte jedinečné relace číslo.      |
-    |/t:     |Písmeno jednotky disku k odeslání. Třeba jednotka `D`.         |
-    |/bk:     |Klíč nástroje BitLocker pro jednotku. Jeho číselné heslo z výstupu `manage-bde -protectors -get D:`      |
-    |/srcdir:     |Písmeno jednotky disku budou zaslány, za nímž následuje `:\`. Například, `D:\`.         |
-    |/dstdir:     |Název cílový kontejner ve službě Azure Storage.         |
-    |/blobtype:     |Tato možnost určuje typ objektů BLOB, kterou chcete importovat data. Pro objekty BLOB bloku, to je `BlockBlob` a pro objekty BLOB stránky je `PagaBlob`.         |
-    |/skipwrite:     |Abyste byli připraveni je možnost, která určuje, že neexistuje žádná nová data muset zkopírovat a existující data na disku.          |
-    |/enablecontentmd5:     |Možnost při povolené, zajistí, že je vypočítán a nastavit jako MD5 `Content-md5` vlastnost pro každý objekt blob. Tuto možnost použijte pouze v případě, že chcete použít `Content-md5` pole po nahrání dat do Azure. <br> Tato možnost nemá vliv na kontrolu integrity dat (nacházející se ve výchozím nastavení). Nastavení zvýšit čas potřebný k nahrání dat do cloudu.          |
-7. Opakujte předchozí krok u každého disku, který potřebuje k odeslání. Pro každé spuštění příkazového řádku se vytvoří soubor deníku se zadaným názvem.
+    |/j     |Název souboru deníku s příponou. jrn. Vygeneruje se soubor deníku na jednotku. Doporučujeme použít sériové číslo disku jako název souboru deníku.         |
+    |/ID     |ID relace Pro každou instanci příkazu použijte jedinečné číslo relace.      |
+    |parametr     |Písmeno jednotky disku, který má být dodán. Například jednotku `D`.         |
+    |/bk:     |Klíč BitLockeru pro jednotku. Jeho číselné heslo z výstupu `manage-bde -protectors -get D:`      |
+    |/srcdir:     |Písmeno jednotky disku, který se má odeslat, a `:\`. Například, `D:\`.         |
+    |/dstdir:     |Název cílového kontejneru v Azure Storage.         |
+    |/blobtype:     |Tato možnost určuje typ objektů blob, do kterých chcete importovat data. Pro objekty blob bloku je to `BlockBlob` a pro objekty blob stránky je `PagaBlob`.         |
+    |/skipwrite:     |Možnost, která určuje, že se nevyžadují žádná nová data ke zkopírování a stávající data na disku se připravují.          |
+    |/enablecontentmd5:     |Možnost, pokud je povolená, zajistí, že se algoritmus MD5 vypočítá a nastaví jako `Content-md5` vlastnost u každého objektu BLOB. Tuto možnost použijte pouze v případě, že po nahrání dat do Azure chcete použít pole `Content-md5`. <br> Tato možnost nemá vliv na kontrolu integrity dat (ke které dochází ve výchozím nastavení). Nastavení zvyšuje čas potřebný k nahrání dat do cloudu.          |
+7. Opakujte předchozí krok pro každý disk, který je třeba odeslat. Soubor deníku se zadaným názvem se vytvoří pro každé spuštění příkazového řádku.
     
     > [!IMPORTANT]
-    > - Spolu s soubor deníku `<Journal file name>_DriveInfo_<Drive serial ID>.xml` souboru se také vytvoří ve stejné složce, ve kterém se nástroj nachází. Soubor XML se používá místo soubor deníku při vytvoření úlohy, pokud je příliš velký soubor deníku. 
+    > - Spolu se souborem deníku je soubor `<Journal file name>_DriveInfo_<Drive serial ID>.xml` také vytvořen ve stejné složce, ve které se nástroj nachází. Soubor. XML se používá místo souboru deníku při vytváření úlohy, pokud je soubor deníku příliš velký. 
 
-## <a name="step-2-create-an-import-job"></a>Krok 2: Vytvořit úlohu importu
+## <a name="step-2-create-an-import-job"></a>Krok 2: vytvoření úlohy importu
 
-Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal.
+Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
 1. Přihlaste se k https://portal.azure.com/.
-2. Přejděte na **všechny služby > úložiště > úlohy Import/export**. 
+2. **> Úlohy import/export přejít na všechny služby > úložiště**. 
     
-    ![Přejít na úlohy Import/export](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Přejít na úlohy importu/exportu](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. Klikněte na tlačítko **vytvořit úlohu importu/exportu**.
+3. Klikněte na **vytvořit úlohu importu/exportu**.
 
-    ![Klikněte na úlohu vytvoření importu/exportu](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Klikněte na vytvořit úlohu importu/exportu.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. V **Základy**:
+4. **Základní informace**:
 
-   - Vyberte **Import do Azure**.
-   - Zadejte popisný název úlohy importu. Použijte název sledovat průběh úlohy.
-       - Název může obsahovat jenom malá písmena, číslice a pomlčky.
+   - Vyberte **importovat do Azure**.
+   - Zadejte popisný název úlohy importu. Pomocí názvu můžete sledovat průběh úloh.
+       - Název může obsahovat jenom malá písmena, číslice a spojovníky.
        - Název musí začínat písmenem a nesmí obsahovat mezery.
    - Vyberte předplatné.
    - Zadejte nebo vyberte skupinu prostředků.  
 
-     ![Vytvoření úlohy importu – krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![Vytvořit úlohu importu – krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-3. V **podrobnosti úlohy**:
+3. V **podrobnostech úlohy**:
 
-    - Nahrajte soubory deníku jednotky, které jste získali během kroku přípravy jednotky. Pokud `waimportexport.exe version1` byl použit, nahrát jeden soubor pro každou jednotku, kterou jste připravili. Pokud velikost deníku soubor je větší než 2 MB, pak můžete použít `<Journal file name>_DriveInfo_<Drive serial ID>.xml` také vytvoří se soubor deníku. 
-    - Vyberte cílový účet úložiště, ve kterém budou uložena data. 
-    - Umístění dropoff se automaticky vyplní podle oblasti pro vybraný účet úložiště.
+    - Nahrajte soubory deníku jednotky, které jste získali během kroku přípravy na jednotku. Pokud byl použit `waimportexport.exe version1`, nahrajte jeden soubor pro každou diskovou jednotku, kterou jste připravili. Pokud velikost souboru deníku přesáhne 2 MB, můžete použít také `<Journal file name>_DriveInfo_<Drive serial ID>.xml` vytvořené se souborem deníku. 
+    - Vyberte cílový účet úložiště, ve kterém se budou data nacházet. 
+    - Umístění dropoff se automaticky vyplní podle oblasti vybraného účtu úložiště.
    
    ![Vytvoření úlohy importu – krok 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. V **vrátí informace o expedici**:
+4. V **informace o expedici zpět**:
 
-   - Z rozevíracího seznamu vyberte operátorovi. Pokud chcete použít dopravce než FedEx/DHL, zvolte existující možnost z rozevíracího seznamu. Kontaktní Azure Data Box operace týmu na `adbops@microsoft.com` o informace týkající se operátorovi, plánujete použít.
-   - Zadejte číslo účtu dopravce platný, kterou jste vytvořili pomocí tohoto operátora. Tento účet Microsoft používá k odeslání jednotky zpět po dokončení úlohy import. Pokud nemáte číslo účtu, vytvořte [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL](https://www.dhl.com/) účtu dopravce.
-   - Zadejte úplné a platné jméno kontaktní osoby, telefonu, e-mailu, adresu, Město, zip, stát/kraj a země/oblast. 
+   - V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým na `adbops@microsoft.com` s informacemi o nosiči, který plánujete použít.
+   - Zadejte platné číslo účtu dopravce, který jste vytvořili pomocí tohoto dopravce. Společnost Microsoft používá tento účet k dodávání jednotek zpátky po dokončení úlohy importu. Pokud nemáte číslo účtu, vytvořte účet dopravce [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL](https://www.dhl.com/) .
+   - Zadejte celé a platné kontaktní jméno, telefonní číslo, e-mail, ulici, město, PSČ, kraj a zemi/oblast. 
         
        > [!TIP] 
-       > Místo zadání e-mailovou adresu pro jednoho uživatele, zadejte e-mailů skupiny. Tím se zajistí, že budete dostávat oznámení, i když opustí správcem.
+       > Místo zadání e-mailové adresy pro jednoho uživatele zadejte skupinu. Tím zajistíte, že budete dostávat oznámení i v případě, že správce opustí.
 
-     ![Vytvoření úlohy importu – krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![Vytvořit úlohu importu – krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
-5. V **Souhrn**:
+5. V **souhrnu**:
 
-   - Projděte si informace o úlohách, které jsou k dispozici v souhrnu. Poznamenejte si název úlohy a datového centra Azure dodací adresa dodávat disky zpátky do Azure. Tyto informace se použije v pozdější na Expediční štítek.
-   - Klikněte na tlačítko **OK** k vytvoření úlohy importu.
+   - Projděte si informace o úloze uvedené v souhrnu. Poznamenejte si název úlohy a dodací adresu datacentra Azure k dodávání disků zpátky do Azure. Tyto informace se používají později u expedičního štítku.
+   - Kliknutím na tlačítko **OK** vytvořte úlohu importu.
 
-     ![Vytvoření úlohy importu – krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![Vytvořit úlohu importu – krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives"></a>Krok 3: Dodávejte jednotky 
+## <a name="step-3-ship-the-drives"></a>Krok 3: dodání jednotek 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>Krok 4: Informace o sledování aktualizace úlohy
+## <a name="step-4-update-the-job-with-tracking-information"></a>Krok 4: aktualizace úlohy pomocí informací o sledování
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5: Ověření nahrání dat do Azure
+## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5: ověření nahrávání dat do Azure
 
-Sledujte úlohy do konce. Po dokončení úlohy ověřte, že vaše data nahráli do Azure. Odstraňte data v místním, až si ověříte, že načtení bylo úspěšné.
+Sledujte úlohu k dokončení. Po dokončení úlohy ověřte, že se data nahrála do Azure. Místní data odstraňte až po ověření úspěšného odeslání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zobrazení stavu úlohy a jednotky](storage-import-export-view-drive-status.md)
-* [Kontrola požadavků na Import/Export](storage-import-export-requirements.md)
+* [Kontrola požadavků na import/export](storage-import-export-requirements.md)
 
 

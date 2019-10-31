@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: glenga
-ms.openlocfilehash: fa811c6bd89bf1c8ce9e0b9b4a7cebe9397aaf7f
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 97c721c504c460856796e296fefc33bf01f002f8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062138"
+ms.locfileid: "73176430"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
@@ -33,7 +33,7 @@ Aby bylo snazší vytvářet funkce jazyka Java, existují nástroje založené 
 
 ### <a name="maven-based-tooling"></a>Nástroje založené na Maven
 
-Následující vývojářské prostředí má nástroje, které umožňují vytvářet projekty funkcí jazyka Java: 
+Následující prostředí pro vývojáře mají Azure Functions nástrojů, které vám umožní vytvářet projekty funkcí Java: 
 
 + [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
 + [Eclipse](functions-create-maven-eclipse.md)

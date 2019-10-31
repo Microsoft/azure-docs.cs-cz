@@ -1,5 +1,5 @@
 ---
-title: Přidání propojené organizace ve správě nároků Azure AD (Preview) – Azure Active Directory
+title: Přidání propojené organizace ve správě nároků Azure AD – Azure Active Directory
 description: Naučte se, jak umožnit lidem mimo vaši organizaci žádat o přístup k balíčkům, abyste mohli spolupracovat na projektech.
 services: active-directory
 documentationCenter: ''
@@ -16,14 +16,14 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d45db1f62b370a2692ed932572e16c247b8903
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952482"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174137"
 ---
-# <a name="add-a-connected-organization-in-azure-ad-entitlement-management-preview"></a>Přidání propojené organizace ve správě nároků Azure AD (Preview)
+# <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
 Správa opravňujících k Azure AD umožňuje spolupracovat s lidmi mimo vaši organizaci. Pokud často spolupracujete s uživateli v externím adresáři služby Azure AD nebo v doméně, můžete je přidat jako připojenou organizaci. Tento článek popisuje, jak přidat propojenou organizaci, abyste mohli uživatelům mimo vaši organizaci umožnit vyžádat si prostředky v adresáři.
 
@@ -39,13 +39,11 @@ Můžete nakonfigurovat dvě připojené organizace – jednu pro Graphics desig
 
 Jak budou uživatelé z adresáře nebo domény služby Azure AD ověřeni, závisí na typu ověřování. Typy ověřování pro připojené organizace jsou následující:
 
-| Typ ověřování | Stav |
-| --- | --- |
-| Azure AD | Podporováno |
-| [Přímá federace](../b2b/direct-federation.md) | Preview |
-| [Jednorázové heslo](../b2b/one-time-passcode.md) (doména) | Preview |
+- Azure AD
+- [Přímá federace](../b2b/direct-federation.md)
+- [Jednorázové heslo](../b2b/one-time-passcode.md) (doména)
 
-## <a name="add-a-connected-organization"></a>Přidat připojenou organizaci
+## <a name="add-a-connected-organization"></a>Přidání připojené organizace
 
 Pomocí těchto kroků přidáte externí adresář služby Azure AD nebo doménu jako připojenou organizaci.
 

@@ -1,6 +1,6 @@
 ---
-title: Webové aplikace, že volání webových rozhraní API (volání webového rozhraní API) - platforma identit Microsoft
-description: Zjistěte, jak sestavit webovou aplikaci, která volá webové rozhraní API (volání webového rozhraní API)
+title: Webová aplikace, která volá webová rozhraní API (volání webového rozhraní API) – Microsoft Identity Platform
+description: Zjistěte, jak vytvořit webovou aplikaci, která volá webová rozhraní API (volání webového rozhraní API).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: d971ec3c7cd82d6e028d0f96c8f52b897cedc351
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785462"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175305"
 ---
-# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Webovou aplikaci, která volá webové rozhraní API – volání webového rozhraní API
+# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Webová aplikace, která volá webová rozhraní API – volá webové rozhraní API.
 
-Teď, když máte token, můžete volat chráněné webové rozhraní API.
+Teď, když máte token, můžete zavolat chráněné webové rozhraní API.
 
-## <a name="aspnet-core"></a>ASP.NET Core
+# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
-Tady je zjednodušené kód akce `HomeController`. Tento kód získá tokenu pro volání Microsoft Graphu. Tento kód se úspěšně přidala ukazující, jak volání Microsoft Graphu jako rozhraní REST API. Adresa URL pro rozhraní graph API najdete v `appsettings.json` souboru a číst v proměnné s názvem `webOptions`:
+Tady je zjednodušený kód akce `HomeController`. Tento kód získá token pro volání Microsoft Graph. Tento kód času byl přidán a ukazuje, jak volat Microsoft Graph jako REST API. Adresa URL pro rozhraní Graph API je k dispozici v souboru `appsettings.json` a číst v proměnné s názvem `webOptions`:
 
 ```JSon
 {
@@ -83,11 +83,54 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> Stejný princip můžete použít k volání jakékoli webové rozhraní API.
+> Stejný princip můžete použít pro volání libovolného webového rozhraní API.
 >
-> Většinu služeb Azure webové rozhraní API poskytnout sadu SDK, která zjednodušuje volání. To platí také z Microsoft Graphu. Kde najít kurz ilustrující tyto aspekty se získáte informace v následujícím článku.
+> Většina webových rozhraní API Azure poskytuje sadu SDK, která zjednodušuje její volání. To je také případ Microsoft Graph. V dalším článku se naučíte, jak najít kurz ilustrující tyto aspekty.
 
-## <a name="next-steps"></a>Další postup
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```Java
+private String getUserInfoFromGraph(String accessToken) throws Exception {
+    // Microsoft Graph user endpoint
+    URL url = new URL("https://graph.microsoft.com/v1.0/me");
+
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+    // Set the appropriate header fields in the request header.
+    conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+    conn.setRequestProperty("Accept", "application/json");
+
+    String response = HttpClientHelper.getResponseStringFromConn(conn);
+
+    int responseCode = conn.getResponseCode();
+    if(responseCode != HttpURLConnection.HTTP_OK) {
+        throw new IOException(response);
+    }
+
+    JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
+    return responseObject.toString();
+}
+
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+@app.route("/graphcall")
+def graphcall():
+    token = _get_token_from_cache(app_config.SCOPE)
+    if not token:
+        return redirect(url_for("login"))
+    graph_data = requests.get(  # Use token to call downstream service
+        app_config.ENDPOINT,
+        headers={'Authorization': 'Bearer ' + token['access_token']},
+        ).json()
+    return render_template('display.html', result=graph_data)
+```
+
+---
+
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přejít do produkčního prostředí](scenario-web-app-call-api-production.md)
+> [Přesunout do produkčního prostředí](scenario-web-app-call-api-production.md)

@@ -1,39 +1,39 @@
 ---
-title: Připojení knihoven pro službu Azure Database for MySQL
-description: Tento článek uvádí každou knihovnu nebo ovladač, klientských programů můžete použít při připojování ke službě Azure Database for MySQL.
+title: Knihovny připojení pro Azure Database for MySQL
+description: V tomto článku jsou uvedeny všechny knihovny nebo ovladače, které mohou klientské programy použít při připojování k Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 6ce0f2c761ede7d326f52f4d93d7f1b0bfa98cb2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2eda6986f0c7c2ab58849a5da6c355d458714f37
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525555"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177761"
 ---
-# <a name="connection-libraries-for-azure-database-for-mysql"></a>Připojení knihoven pro službu Azure Database for MySQL
-Tento článek uvádí každou knihovnu nebo ovladač, klientských programů můžete použít při připojování ke službě Azure Database for MySQL.
+# <a name="connection-libraries-for-azure-database-for-mysql"></a>Knihovny připojení pro Azure Database for MySQL
+V tomto článku jsou uvedeny všechny knihovny nebo ovladače, které mohou klientské programy použít při připojování k Azure Database for MySQL.
 
 ## <a name="client-interfaces"></a>Klientská rozhraní
-MySQL nabízí připojení k ovladači standardní databázi pro MySQL pomocí aplikace a nástroje, které jsou kompatibilní se standardy rozhraní ODBC a JDBC. MySQL můžete použít libovolný systém, který funguje s ODBC nebo JDBC.
+MySQL nabízí standardní připojení ovladače databáze pro použití MySQL s aplikacemi a nástroji, které jsou kompatibilní s oborovými standardy ODBC a JDBC. Pro všechny systémy, které pracují s rozhraním ODBC nebo JDBC, může použít MySQL.
 
-| **Jazyk** | **Platforma** | **Další zdroje** | **Stáhnout** |
+| **Jazyk** | **Platformy** | **Další prostředek** | **Stáhnout** |
 | :----------- | :------------| :-----------------------| :------------|
-| PHP | Windows, Linux | [Nativní ovladače MySQL pro jazyk PHP - mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [Stáhnout](https://secure.php.net/downloads.php) |
-| ODBC | Platformy Windows, Linux, Mac OS X a Unix | [Příručka pro vývojáře MySQL Connector/ODBC](https://dev.mysql.com/doc/connector-odbc/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/odbc/) |
-| ADO.NET | Windows | [Příručka pro vývojáře MySQL Connector/Net](https://dev.mysql.com/doc/connector-net/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/net/) |
-| JDBC | Nezávislé na platformě | [Příručka pro vývojáře MySQL Connector/J 5.1](https://dev.mysql.com/doc/connector-j/5.1/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) |
-| Node.js | Windows, Linux, Mac OS X | [sidorares/node-mysql2](https://github.com/sidorares/node-mysql2/tree/master/documentation) | [Stáhnout](https://github.com/sidorares/node-mysql2) |
-| Python | Windows, Linux, Mac OS X | [Příručka pro vývojáře MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/python/) |
-| C++ | Windows, Linux, Mac OS X | [Příručka pro vývojáře MySQL Connector/C++](https://dev.mysql.com/doc/connector-cpp/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/python/) |
-| C | Windows, Linux, Mac OS X | [Příručka pro vývojáře MySQL Connector/C](https://dev.mysql.com/doc/connector-c/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/c/)
-| Perl | Platformy Windows, Linux, Mac OS X a Unix | [DBD::MySQL](https://metacpan.org/pod/DBD::mysql) | [Stáhnout](https://metacpan.org/pod/DBD::mysql) |
+| PHP | Windows, Linux | [Nativní ovladač MySQL pro PHP – mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [Stáhnout](https://secure.php.net/downloads.php) |
+| ODBC | Platformy Windows, Linux, Mac OS X a UNIX | [Konektor MySQL/příručka pro vývojáře rozhraní ODBC](https://dev.mysql.com/doc/connector-odbc/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/odbc/) |
+| ADO.NET | Windows | [Konektor MySQL/příručka pro vývojáře v síti](https://dev.mysql.com/doc/connector-net/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/net/) |
+| JDBC | Nezávislá platforma | [Příručka pro vývojáře MySQL Connector/J 5,1](https://dev.mysql.com/doc/connector-j/5.1/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) |
+| Node.js | Windows, Linux, Mac OS X | [sidorares/Node – mysql2](https://github.com/sidorares/node-mysql2/tree/master/documentation) | [Stáhnout](https://github.com/sidorares/node-mysql2) |
+| Python | Windows, Linux, Mac OS X | [Konektor MySQL/příručka pro vývojáře v Pythonu](https://dev.mysql.com/doc/connector-python/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/python/) |
+| C++ | Windows, Linux, Mac OS X | [Konektor MySQL/C++ příručka pro vývojáře](https://dev.mysql.com/doc/connector-cpp/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/python/) |
+| C | Windows, Linux, Mac OS X | [Konektor MySQL/příručka pro vývojáře v jazyce C](https://dev.mysql.com/doc/refman/8.0/en/c-api.html) | [Stáhnout](https://dev.mysql.com/downloads/connector/c/)
+| Perl | Platformy Windows, Linux, Mac OS X a UNIX | [DBD:: MySQL](https://metacpan.org/pod/DBD::mysql) | [Stáhnout](https://metacpan.org/pod/DBD::mysql) |
 
 
-## <a name="next-steps"></a>Další postup
-Přečtěte si v těchto rychlých startech o tom, jak připojení a dotazování – Azure Database for MySQL s použitím svůj jazyk:
+## <a name="next-steps"></a>Další kroky
+Přečtěte si tyto rychlé starty, jak se připojit k a dotazovat Azure Database for MySQL pomocí vašeho jazyka podle vlastního výběru:
 
-[PHP](./connect-php.md) | [Java](./connect-java.md) |  [.NET (C#)](./connect-csharp.md) | [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md)  |  [Ruby](./connect-ruby.md) | [C++](connect-cpp.md) | [přejít](./connect-go.md)
+[Php](./connect-php.md) | [Java](./connect-java.md) |  [.NET (C#)](./connect-csharp.md) | [Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Ruby](./connect-ruby.md) | [C++](connect-cpp.md) | [Přejít](./connect-go.md)
 

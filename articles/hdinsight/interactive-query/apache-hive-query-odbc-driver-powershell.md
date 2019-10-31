@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4ec580c3d4c30fa4d86c24defb7eaded464dea3b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122178"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177312"
 ---
-# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Kurz: Dotazování Apache Hive pomocí rozhraní ODBC a prostředí PowerShell
+# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Kurz: dotazování Apache Hive pomocí rozhraní ODBC a prostředí PowerShell
 
 Ovladače Microsoft ODBC poskytují flexibilní způsob, jak pracovat s různými druhy zdrojů dat, včetně Apache Hive. Můžete psát kód ve skriptovacích jazycích, jako je například prostředí PowerShell, které používá ovladače rozhraní ODBC k otevření připojení k vašemu clusteru podregistru, předat dotaz podle vašeho výběru a zobrazit výsledky.
 
@@ -28,7 +28,7 @@ V tomto kurzu provedete následující úlohy:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu musíte mít tyto položky:
 
@@ -36,13 +36,13 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Nainstalovat ovladač Microsoft podregistr ODBC Driver
 
-Stáhněte a nainstalujte [Microsoft Hive ODBC Driver](https://go.microsoft.com/fwlink/?LinkID=286698).
+Stáhněte a nainstalujte [Microsoft Hive ODBC Driver](https://www.microsoft.com/download/details.aspx?id=40886).
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Vytvoření zdroje dat Apache Hive ODBC
 
 Následující kroky ukazují, jak vytvořit zdroj dat Apache Hive ODBC.
 
-1. V systému Windows přejděte k možnosti **Spustit** > **nástroje** > pro správu systému Windows**ODBC zdroje dat (32bitová verze)/(64bitová verze)** .  Otevře se okno **Správce zdrojů dat ODBC** .
+1. V systému Windows přejděte na **začátek** > **Nástroje pro správu systému Windows** > **zdroje dat ODBC (32bitová verze)/(64 bitů)** .  Otevře se okno **Správce zdrojů dat ODBC** .
 
     ![Správce zdroje dat OBDC](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Konfigurace DSN pomocí Správce zdrojů dat ODBC")
 
@@ -62,7 +62,7 @@ Následující kroky ukazují, jak vytvořit zdroj dat Apache Hive ODBC.
    |  Uživatelské jméno |Zadejte uživatelské jméno uživatele clusteru HDInsight HTTP. Výchozí uživatelské jméno **admin**. |
    |  Heslo |Zadejte uživatelské heslo pro cluster HDInsight. Zaškrtněte políčko **Uložit heslo (šifrované)** .|
 
-1. Volitelné: Vyberte **Upřesnit možnosti**.  
+1. Volitelné: vyberte **Rozšířené možnosti**.  
 
    | Parametr | Popis |
    | --- | --- |

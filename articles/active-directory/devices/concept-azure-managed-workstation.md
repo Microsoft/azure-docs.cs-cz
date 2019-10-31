@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba53049d580f3f90499dc0471b9ac981f4a374f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562170"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175156"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Pochopení zabezpečení pracovních stanic spravovaných Azure
 
@@ -37,7 +37,7 @@ Většina útočníků se řídí těmito kroky:
 
 1. Rekognoskace pro nalezení způsobu, který je často určený pro odvětví.
 1. Analýza pro shromažďování informací a určení nejlepšího způsobu, jak vyfiltrovat pracovní stanici, která je vnímaná jako nízká hodnota.
-1. Trvalost pro hledání prostředků k pozdějšímu přesunutí [](https://en.wikipedia.org/wiki/Network_Lateral_Movement).
+1. Trvalost pro hledání prostředků k [pozdějšímu](https://en.wikipedia.org/wiki/Network_Lateral_Movement)přesunutí.
 1. Exfiltrace důvěrných a citlivých dat.
 
 V průběhu rekognoskace útočníci často nefiltrují zařízení, která se zdají být nízké nebo mají hodnotu s nízkou rizikovostí. Používají tato zranitelná zařízení k vyhledání příležitosti pro příčný pohyb a k nalezení administrativních uživatelů a zařízení. Po získání přístupu k privilegovaným rolím uživatelů identifikují útočníci data s vysokou hodnotou a úspěšně exfiltrovat tato data.
@@ -85,7 +85,7 @@ Základem pro zabezpečenou pracovní stanici je řešení dodavatelského řet�
 ## <a name="device-roles-and-profiles"></a>Role a profily zařízení
 
 Tento návod odkazuje na několik profilů zabezpečení a rolí, které vám pomůžou vytvořit bezpečnější řešení pro uživatele, vývojáře a pracovníky IT. Tyto profily vyrovnávají použitelnost a rizika pro běžné uživatele, kteří můžou využívat rozšířenou nebo zabezpečenou pracovní stanici. Zde uvedené konfigurace nastavení jsou založené na standardech, které byly přijaty v oborech. V těchto pokynech se dozvíte, jak posílit Windows 10 a snížit rizika spojená s ohrožením zařízení nebo uživatele. K tomu slouží zásady a technologie, které vám pomůžou se správou bezpečnostních funkcí a rizik.
-![Úrovně zabezpečení pracovních stanic](./media/concept-azure-managed-workstation/seccon-levels.png)
+![úrovní zabezpečených pracovních stanic](./media/concept-azure-managed-workstation/seccon-levels.png)
 
 * **Nízká úroveň zabezpečení** – spravovaná standardní pracovní stanice nabízí dobrý výchozí bod pro většinu domácích a malých obchodních použití. Tato zařízení jsou registrovaná v Azure AD a spravovaná pomocí Intune. Tento profil umožňuje uživatelům spouštět libovolné aplikace a procházet libovolný web. Mělo by být povoleno řešení ochrany proti malwaru, jako je [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) .
 

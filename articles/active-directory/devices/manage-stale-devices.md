@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ddda8ff67cfdfebcf19f53c307c689884baf4d
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a2e92ca85c485f8c93fc9202b9084ec37d7506e1
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942899"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175066"
 ---
-# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Jak: Správa zastaralých zařízení ve službě Azure AD
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Postupy: Správa zastaralých zařízení v Azure AD
 
 Registrace zařízení, která už nejsou zapotřebí, měla se kvůli dokončení jejich životního cyklu měla v ideálním případě zrušit. Avšak například kvůli ztraceným, odcizeným a poškozeným zařízením nebo přeinstalaci operačního systému zpravidla ve svém prostředí máte zastaralá zařízení. Jako správce IT budete zřejmě potřebovat nějakou metodu pro odebrání zastaralých zařízení, abyste se mohli soustředit na správu zařízení, která to opravdu potřebují.
 
@@ -70,12 +70,12 @@ Pokud chcete ve svém prostředí efektivně uklidit zastaralá zařízení, mě
 K aktualizaci zařízení ve službě Azure AD potřebujete účet, který má přiřazenu jednu z následujících rolí:
 
 - Globální správce
-- Správce cloudových zařízení
+- Správce cloudového zařízení
 - Správce služby Intune
 
 V zásadách úklidu vyberte účty, které mají přiřazené požadované role. 
 
-### <a name="timeframe"></a>Časové období
+### <a name="timeframe"></a>Časový rámec
 
 Definujte časové období, které je ukazatelem zastaralého zařízení. Při definování časového rámce přihlaste okno, ve kterém se aktualizuje časové razítko aktivity, na svou hodnotu. Například byste neměli považovat časové razítko mladší než 21 dní (zahrnuje odchylku) jako indikátor pro zastaralé zařízení. V určitých situacích se zařízení může jevit jako zastaralé, přestože není. Vlastník takového zařízení může být například na dovolené nebo na nemocenské,  která přesahuje časové období pro zastaralá zařízení.
 
@@ -180,6 +180,6 @@ Všechna ověřování, kdy se zařízení používá k ověřování vůči slu
 - **Zařízení připojená k Azure AD** – uživatelé nemůžou používat zařízení k přihlášení. 
 - **Mobilní zařízení** – uživatel nemá přístup k prostředkům Azure AD, jako je Office 365. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přehled správy zařízení na webu Azure Portal najdete v tématu věnovaném [správě zařízení pomocí webu Azure Portal](device-management-azure-portal.md).

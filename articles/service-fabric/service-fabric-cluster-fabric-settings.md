@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: e361ba4c7275a783b9211def5047a5a755f5a8b8
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: d0d87b42232a19d6bcd3c225fb4a4f8f8b459350
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882004"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177789"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení Service Fabricho nastavení clusteru
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete upravit nastavení aktualizací souboru *ClusterConfig. JSON* a provést upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -131,14 +131,14 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |AppEtwTraceDeletionAgeInDays |Int, výchozí hodnota je 3 | Dynamický |Počet dní, po které odstraníme staré soubory ETL, které obsahují trasování ETW aplikace |
 |ApplicationLogsFormatVersion |int, výchozí hodnota je 0 | Dynamický |Verze pro formát protokolů aplikací Podporovány jsou hodnoty 0 a 1. Verze 1 obsahuje více polí z záznamu události ETW než verze 0. |
 |AuditHttpRequests |Logická hodnota, výchozí hodnota je false. | Dynamický | Zapnout nebo vypnout auditování protokolu HTTP. Účelem auditování je zobrazit aktivity, které byly provedeny v clusteru. včetně toho, kdo žádost inicioval. Všimněte si, že se jedná o osvědčené protokolování; a mohlo by dojít ke ztrátě trasování. Požadavky HTTP s ověřováním "uživatel" nejsou zaznamenávány. |
-|CaptureHttpTelemetry|Logická hodnota, výchozí hodnota je false. | Dynamický | Zapnutí nebo vypnutí telemetrie HTTP Účelem telemetrie je Service Fabric, aby bylo možné zachytit data telemetrie, abyste mohli naplánovat budoucí práci a identifikovat problematické oblasti. Telemetrie nezaznamenává žádná osobní data ani tělo žádosti. Telemetrie zachycuje všechny požadavky HTTP, pokud není nakonfigurované jinak. |
+|CaptureHttpTelemetry|Logická hodnota, výchozí hodnota je true. | Dynamický | Zapnutí nebo vypnutí telemetrie HTTP Účelem telemetrie je Service Fabric, aby bylo možné zachytit data telemetrie, abyste mohli naplánovat budoucí práci a identifikovat problematické oblasti. Telemetrie nezaznamenává žádná osobní data ani tělo žádosti. Telemetrie zachycuje všechny požadavky HTTP, pokud není nakonfigurované jinak. |
 |ClusterId |Řetězec | Dynamický |Jedinečné ID clusteru Tato funkce je generována při vytvoření clusteru. |
 |ConsumerInstances |Řetězec | Dynamický |Seznam instancí příjemce DCA |
 |DiskFullSafetySpaceInMB |Int, výchozí hodnota je 1024 | Dynamický |Zbývající místo na disku v MB pro ochranu před použitím DCA. |
 |EnableCircularTraceSession |Logická hodnota, výchozí hodnota je false. | Statický |Příznak označuje, zda by měly být použity cyklické relace trasování. |
 |EnablePlatformEventsFileSink |Logická hodnota, výchozí hodnota je false. | Statický |Povolit nebo zakázat zapsané události platformy na disk |
 |Konfiguračního EnableTelemetry |Logická hodnota, výchozí hodnota je true. | Dynamický |Tím se povolí nebo zakáže telemetrie. |
-|FailuresOnlyHttpTelemetry | Logická hodnota, výchozí hodnota je true. | Dynamický | Pokud je povoleno zachycení telemetrie HTTP; zachytávání pouze neúspěšných žádostí To vám umožní snížit počet událostí vygenerovaných pro telemetrii. |
+|FailuresOnlyHttpTelemetry | Logická hodnota, výchozí hodnota je false. | Dynamický | Pokud je povoleno zachycení telemetrie HTTP; zachytávání pouze neúspěšných žádostí To vám umožní snížit počet událostí vygenerovaných pro telemetrii. |
 |HttpTelemetryCapturePercentage | int, výchozí hodnota je 50 | Dynamický | Pokud je povoleno zachycení telemetrie HTTP; zachytit jenom náhodné procento požadavků. To vám umožní snížit počet událostí vygenerovaných pro telemetrii. |
 |MaxDiskQuotaInMB |Int, výchozí hodnota je 65536 | Dynamický |Disková kvóta v MB pro soubory protokolu Windows Fabric. |
 |ProducerInstances |Řetězec | Dynamický |Seznam instancí výrobců DCA. |

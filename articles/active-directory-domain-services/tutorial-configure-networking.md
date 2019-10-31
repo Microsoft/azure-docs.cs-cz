@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: b9f8573513f3a049f425dad0275b8d8aa180bc37
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73061493"
+ms.locfileid: "73172642"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>Kurz: Konfigurace virtuální sítě pro instanci Azure Active Directory Domain Services
 

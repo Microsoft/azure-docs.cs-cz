@@ -8,21 +8,21 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5fa13f209d6f4df0ebd531f803e75cdb657abf5c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299868"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163118"
 ---
-# <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: Vytvoření a nasazení vlastních modulů IoT Edge
+# <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
 
 > [!NOTE]
 > Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
 
 V tomto článku vytvoříme tři IoT Edge moduly, které přijímají zprávy ze zařízení ze seznamu, spustíte data prostřednictvím modelu strojového učení a pak dodáte přehledy k IoT Hub.
 
-Centrum IoT Edge usnadňuje komunikaci s modulem. Použití centra IoT Edge jako zprostředkovatele zpráv uchovává moduly nezávislé na sobě. Moduly stačí zadat vstupy, na kterých přijetí zprávy a výstupy, ke kterým se zápis zpráv.
+Centrum IoT Edge usnadňuje komunikaci s modulem. Použití centra IoT Edge jako zprostředkovatele zpráv uchovává moduly nezávislé na sobě. Moduly stačí pouze zadat vstupy, na kterých přijímá zprávy, a výstupy, na které zapisují zprávy.
 
 Chceme, aby zařízení IoT Edge pro nás dosáhlo čtyř věcí:
 
@@ -60,7 +60,7 @@ Během provádění druhé z našich dvou Azure Notebooks jsme vytvořili a publ
 
 1. Otevřete na svém vývojovém počítači relaci vzdálené plochy.
 
-2. Otevřete složku **C:\\source\\IoTEdgeAndMlSample** v Visual Studio Code.
+2. Otevřete složku **C:\\zdrojové\\IoTEdgeAndMlSample** v Visual Studio Code.
 
 3. Klikněte pravým tlačítkem na panel Průzkumník (v prázdném prostoru) a vyberte **nový IoT Edge řešení**.
 
@@ -87,12 +87,12 @@ Během provádění druhé z našich dvou Azure Notebooks jsme vytvořili a publ
          "<your registry>": {
            "username": "$CONTAINER_REGISTRY_USERNAME_<your registry>",
            "password": "$CONTAINER_REGISTRY_PASSWORD_<your registry>",
-           "address": "<your registry>.azurecr.io”
+           "address": "<your registry>.azurecr.io"
          }
        }
        ```
 
-     * **Aktualizuj** Tato část obsahuje sadu uživatelsky definovaných modulů, které procházejí tímto řešením. Všimněte si, že tato část v současné době obsahuje dva moduly: SimulatedTemperatureSensor a turbofanRulClassifier. SimulatedTemperatureSensor byl nainstalován šablonou Visual Studio Code, ale pro toto řešení ji nepotřebujeme. Definici modulu SimulatedTemperatureSensor můžete z části moduly odstranit. Všimněte si, že definice modulu turbofanRulClassifier odkazuje na Image ve vašem registru kontejneru. Když do řešení přidáte více modulů, zobrazí se v této části.
+     * **Moduly:** Tato část obsahuje sadu uživatelsky definovaných modulů, které procházejí tímto řešením. Všimněte si, že v této části jsou aktuálně dva moduly: SimulatedTemperatureSensor a turbofanRulClassifier. SimulatedTemperatureSensor byl nainstalován šablonou Visual Studio Code, ale pro toto řešení ji nepotřebujeme. Definici modulu SimulatedTemperatureSensor můžete z části moduly odstranit. Všimněte si, že definice modulu turbofanRulClassifier odkazuje na Image ve vašem registru kontejneru. Když do řešení přidáte více modulů, zobrazí se v této části.
 
        ```json
        "modules": {
@@ -169,18 +169,18 @@ V dalším kroku přidáme modul směrovače do našeho řešení. Modul směrov
 
 3. Pojmenujte modul **turbofanRouter**.
 
-4. Po zobrazení výzvy pro úložiště imagí Docker použijte registr z pracovního prostoru Machine Learning (registr najdete v uzlu registryCredentials souboru *Deployment. template. JSON* ). Tato hodnota je plně kvalifikovaná adresa registru,  **\<například\>Registry. azurecr.IO/turbofanrouter**.
+4. Po zobrazení výzvy pro úložiště imagí Docker použijte registr z pracovního prostoru Machine Learning (registr najdete v uzlu registryCredentials souboru *Deployment. template. JSON* ). Tato hodnota je plně kvalifikovaná adresa registru, například **\<registru\>. azurecr.IO/turbofanrouter**.
 
     > [!NOTE]
     > V tomto článku používáme Azure Container Registry vytvořeného pracovním prostorem služby Azure Machine Learning, který jsme použili ke školení a nasazení našeho třídění. To je čistě pro pohodlí. Mohli jsme vytvořit nový registr kontejnerů a publikovat naše moduly tam.
 
-5. Otevřete nové okno terminálu v Visual Studio Code (**zobrazení** > **terminálu**) a zkopírujte soubory z adresáře modulů.
+5. Otevřete nové okno terminálu v Visual Studio Code (**zobrazit** > **terminálu**) a zkopírujte soubory z adresáře modulů.
 
     ```cmd
     copy c:\source\IoTEdgeAndMlSample\EdgeModules\modules\turbofanRouter\*.cs c:\source\IoTEdgeAndMlSample\EdgeSolution\modules\turbofanRouter\
     ```
 
-6. Až se zobrazí výzva k přepsání program.cs `y` , stiskněte a `Enter`pak stiskněte a potom stiskněte.
+6. Po zobrazení výzvy k přepsání program.cs stiskněte `y` a potom stiskněte `Enter`.
 
 ### <a name="build-router-module"></a>Modul směrovače sestavení
 
@@ -221,7 +221,7 @@ V dalším kroku přidáme modul směrovače do našeho řešení. Modul směrov
 
 5. Uložte a zavřete Tasks. JSON.
 
-6. Spusťte úlohu sestavení `Ctrl + Shift + B` pomocí nebo spuštění sestavení **Terminálové** > **úlohy**.
+6. Spusťte sestavování pomocí `Ctrl + Shift + B` nebo **terminálu** > **Spustit úlohu sestavení**.
 
 ### <a name="set-up-module-routes"></a>Nastavení směrování modulů
 
@@ -314,7 +314,7 @@ Modul pro zápis Avro má dvě zodpovědnosti v našem řešení, aby bylo možn
 
 ### <a name="create-module-and-copy-files"></a>Vytvořit modul a kopírovat soubory
 
-1. V paletě příkazů vyhledejte a vyberte **Python: Vyberte Interpret**.
+1. V paletě příkazů vyhledejte a vyberte **Python: vybrat Interpret**.
 
 1. Vyberte překladač nalezený v C:\\Python37.
 
@@ -322,7 +322,7 @@ Modul pro zápis Avro má dvě zodpovědnosti v našem řešení, aby bylo možn
 
 1. Po zobrazení výzvy vyberte **příkazový řádek**.
 
-1. Otevřete nové Terminálové prostředí, **terminál** > **Nový**terminál.
+1. Otevřete nové Terminálové prostředí, **terminál** > **nového terminálu**.
 
 1. Klikněte pravým tlačítkem na složku moduly v Visual Studio Code a vyberte **přidat IoT Edge modul**.
 
@@ -338,7 +338,7 @@ Modul pro zápis Avro má dvě zodpovědnosti v našem řešení, aby bylo možn
    copy C:\source\IoTEdgeAndMlSample\EdgeModules\modules\avroFileWriter\*.py C:\source\IoTEdgeAndMlSample\EdgeSolution\modules\avroFileWriter\
    ```
 
-1. Pokud se zobrazí výzva k přepsání Main.py `y` , zadejte a `Enter`potom stiskněte.
+1. Pokud se zobrazí výzva k přepsání main.py, zadejte `y` a potom stiskněte `Enter`.
 
 1. Všimněte si, že filemanager.py a schema.py byly přidány do řešení a aktualizace main.py byla aktualizována.
 
@@ -379,7 +379,7 @@ Jak je uvedeno v úvodu, modul zapisovače závisí na přítomnosti připojení
 
 #### <a name="add-directory-to-the-module"></a>Přidat adresář do modulu
 
-Pro přidání adresáře do kontejneru modulu změníme fázemi přidružené k modulu avroFileWriter. K modulu jsou přidruženy tři fázemi: Souboru Dockerfile. AMD64, souboru Dockerfile. amd64. Debug a souboru Dockerfile. arm32v7. Tyto soubory by měly být uchovávány v synchronizaci v případě, že chceme ladit nebo nasazovat na zařízení arm32. V tomto článku se zaměřte jenom na souboru Dockerfile. amd64.
+Pro přidání adresáře do kontejneru modulu změníme fázemi přidružené k modulu avroFileWriter. K modulu jsou přidruženy tři fázemi: souboru Dockerfile. AMD64, souboru Dockerfile. amd64. Debug a souboru Dockerfile. arm32v7. Tyto soubory by měly být uchovávány v synchronizaci v případě, že chceme ladit nebo nasazovat na zařízení arm32. V tomto článku se zaměřte jenom na souboru Dockerfile. amd64.
 
 1. Na svém vývojovém počítači otevřete soubor **souboru Dockerfile. amd64** .
 
@@ -406,7 +406,7 @@ Pro přidání adresáře do kontejneru modulu změníme fázemi přidružené k
    CMD [ "python3", "-u", "./main.py" ]
    ```
 
-   Příkazy `mkdir` a`chown` instruují proces sestavení Docker, aby vytvořil v imagi adresář nejvyšší úrovně s názvem/avrofiles a pak moduleuser vlastníka tohoto adresáře. Je důležité, aby tyto příkazy byly vloženy po přidání uživatele modulu do Image pomocí `useradd` příkazu a před přepnutím kontextu do moduleuser (User moduleuser).
+   Příkazy `mkdir` a `chown` instruují proces sestavení Docker, aby vytvořil adresář nejvyšší úrovně s názvem/avrofiles v imagi a pak moduleuser vlastníka tohoto adresáře. Je důležité, aby tyto příkazy byly vloženy po přidání uživatele modulu do obrázku pomocí příkazu `useradd` a před přepnutím kontextu do moduleuser (USER moduleuser).
 
 3. Proveďte odpovídající změny v souboru Dockerfile. amd64. Debug a souboru Dockerfile. arm32v7.
 
@@ -416,7 +416,7 @@ Posledním krokem při vytváření vazby je aktualizace souborů Deployment. te
 
 1. Otevřete Deployment. template. JSON.
 
-2. Upravte definici modulu pro avroFileWriter přidáním `Binds` parametru, který ukazuje adresář kontejneru/avrofiles do místního adresáře na hraničním zařízení. Definice modulu by měla odpovídat následujícímu příkladu:
+2. Upravte definici modulu pro avroFileWriter přidáním parametru `Binds`, který ukazuje adresář kontejneru/avrofiles na místní adresář na hraničním zařízení. Definice modulu by měla odpovídat následujícímu příkladu:
 
    ```json
    "avroFileWriter": {
@@ -441,7 +441,7 @@ Posledním krokem při vytváření vazby je aktualizace souborů Deployment. te
 
 ### <a name="bind-mount-for-access-to-configyaml"></a>Připojení ke svázání pro přístup ke config. yaml
 
-Musíme pro modul zapisovače přidat ještě jednu další datovou vazby. Tato vazba poskytuje modulu přístup ke čtení připojovacího řetězce ze souboru/etc/iotedge/config.yaml na zařízení IoT Edge. K vytvoření IoTHubClient potřebujeme připojovací řetězec, abychom mohli volat asynchronní metodu nahrání\_objektu BLOB\_pro nahrání souborů do služby IoT Hub. Postup pro přidání této vazby je podobný těm, které jsou uvedené v předchozí části.
+Musíme pro modul zapisovače přidat ještě jednu další datovou vazby. Tato vazba poskytuje modulu přístup ke čtení připojovacího řetězce ze souboru/etc/iotedge/config.yaml na zařízení IoT Edge. K vytvoření IoTHubClient potřebujeme připojovací řetězec, abychom mohli volat metodu upload\_BLOB\_Async k nahrání souborů do služby IoT Hub. Postup pro přidání této vazby je podobný těm, které jsou uvedené v předchozí části.
 
 #### <a name="update-directory-permission"></a>Aktualizovat oprávnění adresáře
 
@@ -469,7 +469,7 @@ Musíme pro modul zapisovače přidat ještě jednu další datovou vazby. Tato 
 
 1. Na svém vývojovém počítači otevřete soubor **souboru Dockerfile. amd64** .
 
-2. Přidejte do souboru další sadu `mkdir` příkazů `chown` a, aby vypadala takto:
+2. Přidejte další sadu `mkdir` a `chown` příkazů do souboru tak, aby vypadala takto:
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -500,7 +500,7 @@ Musíme pro modul zapisovače přidat ještě jednu další datovou vazby. Tato 
 
 1. Otevřete soubor **Deployment. template. JSON** .
 
-2. Upravte definici modulu pro avroFileWriter přidáním druhého řádku do `Binds` parametru, který odkazuje adresář kontejneru (/App/iotconfig) na místní adresář na zařízení (/etc/iotedge).
+2. Upravte definici modulu pro avroFileWriter přidáním druhého řádku do parametru `Binds`, který odkazuje adresář kontejneru (/App/iotconfig) na místní adresář na zařízení (/etc/iotedge).
 
    ```json
    "avroFileWriter": {
@@ -537,7 +537,7 @@ Modul zapisovače přebírá závislost na dvou knihovnách Pythonu, fastavro a 
    pyyaml
    ```
 
-2. Otevřete soubor **souboru Dockerfile. amd64** a přidejte `pip install` příkaz pro upgrade setuptools.
+2. Otevřete soubor **souboru Dockerfile. amd64** a přidejte příkaz `pip install` pro upgrade setuptools.
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -614,7 +614,7 @@ Když je směrovač a klasifikátor zavedený, očekáváme, že budete dostáva
 
 7. Vyberte vybrat **kontejner**.
 
-8. Vyberte účet úložiště, který se používá v celém rámci tohoto kurzu, který se jmenuje jako **iotedgeandml\<Unique přípona\>** .
+8. Vyberte účet úložiště, který se používá v celém rámci tohoto kurzu, který se jmenuje jako **iotedgeandml\<jedinečných\>přípon** .
 
 9. Zvolte kontejner **ruldata** a klikněte na **Vybrat**.
 
@@ -691,7 +691,7 @@ Nechceme směrovat nová data předpovědi do našeho starého umístění úlo�
 
 5. Vyberte možnost **testovací trasa**. Pokud je test úspěšný, zobrazí se zpráva, že dotaz odpovídá dotazu.
 
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 ### <a name="configure-file-upload"></a>Konfigurace odesílání souborů
 
@@ -705,7 +705,7 @@ Nakonfigurujte funkci nahrávání souborů IoT Hub, aby modul zapisovače soubo
 
 4. Vyberte kontejner **uploadturbofanfiles** a klikněte na **Vybrat**.
 
-5. Vyberte **Uložit**. Portál vás upozorní, až se uložení dokončí.
+5. Vyberte **Save** (Uložit). Portál vás upozorní, až se uložení dokončí.
 
 > [!Note]
 > Pro tento kurz nezapneme oznámení o nahrání, ale další informace o tom, jak zpracovávat oznámení o nahrávání souborů, najdete v tématu [přijetí oznámení o nahrání souboru](../iot-hub/iot-hub-java-java-file-upload.md#receive-a-file-upload-notification) .

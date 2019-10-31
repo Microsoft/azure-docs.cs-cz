@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: baefc16c821c0e335707430763b5025abf4c001b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a7daf460e65c294b464f9a5deb5d9676b762c5f7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298048"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163585"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Nasazení rozhraní Microsoft Cloud pro přijetí v ukázce pro Azure Foundation podrobný plán
 
@@ -121,7 +121,7 @@ Teď, když jste si prohlédli postup nasazení ukázky podrobného plánu CAF F
 > [!div class="nextstepaction"]
 > [Podrobný plán CAF Foundation – přehled](./index.md)
 
-Další články věnované podrobným plánům a postupu jejich využití:
+Další články o semodrotiskych a jejich použití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

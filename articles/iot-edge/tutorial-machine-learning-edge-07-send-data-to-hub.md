@@ -8,14 +8,14 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0fe05131268b8a6a6c61323289d3017231e49706
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 224afe19e50e52c56c223ff1a52f9989943ce712
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299806"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163104"
 ---
-# <a name="tutorial-send-data-via-transparent-gateway"></a>Kurz: Posílání dat přes transparentní bránu
+# <a name="tutorial-send-data-via-transparent-gateway"></a>Kurz: posílání dat přes transparentní bránu
 
 > [!NOTE]
 > Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
@@ -37,7 +37,7 @@ Podívejte se na kód a podívejte se, jak jsou tyto dvě položky implementová
 
 1. Na vývojovém počítači otevřete Visual Studio Code.
 
-2. Pomocí**otevřené složky** \\souborů otevřete **soubor** > C: Source\\IoTEdgeAndMlSample\\DeviceHarness.
+2. Použijte **soubor** > **Otevřít složku...** a otevřete C:\\zdroj\\IoTEdgeAndMlSample\\DeviceHarness.
 
 3. Podívejte se na metodu InstallCertificate () v Program.cs.
 
@@ -53,11 +53,11 @@ Podívejte se na kód a podívejte se, jak jsou tyto dvě položky implementová
 
 ## <a name="build-and-run-leaf-device"></a>Sestavování a spouštění zařízení typu list
 
-1. Když je projekt DeviceHarness stále otevřený v Visual Studio Code, sestavte projekt (CTRL + SHIFT + B > nebo**Spustit úlohu sestavení terminálu...** ) a v dialogovém okně vyberte **Build (sestavit** ).
+1. Když je projekt DeviceHarness stále otevřený v Visual Studio Code, sestavte projekt (CTRL + SHIFT + B nebo **Terminal** > **Spustit úlohu sestavení...** ) a v dialogovém okně vyberte **sestavit** .
 
 2. Najděte plně kvalifikovaný název domény (FQDN) pro bránu Edge tak, že přejdete na virtuální počítač IoT Edge zařízení na portálu a z přehledu zkopírujete hodnotu pro **název DNS** .
 
-3. Otevřete Visual Studio Code terminálu (**terminál** > **Nový**terminál) a spusťte následující příkaz a nahraďte `<edge_device_fqdn>` názvem DNS, který jste zkopírovali z virtuálního počítače:
+3. Otevřete Visual Studio Code terminálu (**terminál** > **nový terminál**) a spusťte následující příkaz a nahraďte `<edge_device_fqdn>` názvem DNS, který jste zkopírovali z virtuálního počítače:
 
    ```cmd
    dotnet run -- --gateway-host-name "<edge_device_fqdn>" --certificate C:\edgecertificates\certs\azure-iot-test-only.root.ca.cert.pem --max-devices 1
@@ -103,7 +103,7 @@ Výstup z modulu avroFileWriter se dá snadno pozorovat tak, že se podíváte n
 
    V závislosti na časování běhu můžete mít více než jeden soubor.
 
-4. Věnujte pozornost časovým razítkům. Modul avroFileWriter nahrává soubory do cloudu, jakmile je čas poslední změny v minulosti více než 10 minut (viz časový limit upraveného\_souboru\_v Uploader.py v modulu avroFileWriter).
+4. Věnujte pozornost časovým razítkům. Modul avroFileWriter nahrává soubory do cloudu, jakmile je čas poslední změny v minulosti více než 10 minut (viz UPRAVENý\_soubor\_časový limit v uploader.py v modulu avroFileWriter).
 
 5. Po uplynutí 10 minut by měl modul nahrávat soubory. Pokud je nahrání úspěšné, odstraní soubory z disku.
 
@@ -119,7 +119,7 @@ Na základě účtů úložiště, ve kterých očekáváme, že se data mají s
 
 4. Od práce, kterou jsme provedli v předchozí části tohoto kurzu, očekáváme, že kontejner **ruldata** by měl obsahovat zprávy s RUL. Rozbalte uzel **ruldata** .
 
-5. Zobrazí se jeden nebo více souborů objektů BLOB s názvem, `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`jako je:.
+5. Zobrazí se jeden nebo více souborů objektů BLOB s názvem: `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`.
 
 6. Klikněte pravým tlačítkem na jeden ze souborů a vyberte **Stáhnout objekt BLOB** a uložte soubor do vývojového počítače.
 
@@ -213,7 +213,7 @@ Zahrnuli jsme jednoduchý nástroj příkazového řádku pro čtení souboru Av
            "ConnectionDeviceId": "Client_001",
            "CorrelationId": "70df0c98-0958-4c8f-a422-77c2a599594f",
            "CreationTimeUtc": "0001-01-01T00:00:00+00:00",
-           "EnqueuedTimeUtc": “<time>”
+           "EnqueuedTimeUtc": "<time>"
    }
    ```
 

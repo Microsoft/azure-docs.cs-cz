@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 5d221664669e9af647cca4e242d7763ed74cd3c9
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d880bcc7c0c3f1b9cf647242a54cc779ba8945e1
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023967"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172383"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Kurz: vytvoření a konfigurace instance Azure Active Directory Domain Services
 

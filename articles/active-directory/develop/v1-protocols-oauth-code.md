@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0184aa7bff4203f50d834f603bed5fd2af52e4c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 051565d984196edce0404b12677cf27de9006f29
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514421"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175216"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím Azure Active Directory s využitím toku poskytování kódů OAuth 2.0
 
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |Požadovanou |ID aplikace přiřazené vaší aplikaci, když ji zaregistrujete ve službě Azure AD. Najdete ho na webu Azure Portal. Klikněte na tlačítko **Azure Active Directory** na bočním panelu služby klikněte na položku **Registrace aplikací**a vyberte aplikaci. |
 | response_type |Požadovanou |Musí zahrnovat `code` pro tok autorizačního kódu. |
 | identifikátor |Doporučil |Identifikátor redirect_uri vaší aplikace, kde lze odesílat a přijímat odpovědi na ověřování vaší aplikací. Musí přesně odpovídat jednomu z redirect_uris, který jste zaregistrovali na portálu, s výjimkou musí být zakódovaný URL. Pro nativní & mobilní aplikace byste měli použít výchozí hodnotu `urn:ietf:wg:oauth:2.0:oob`. |
-| response_mode |Volitelné |Určuje metodu, která se má použít k odeslání výsledného tokenu zpátky do vaší aplikace. Může být `query`, `fragment` nebo `form_post`. `query` poskytuje kód jako parametr řetězce dotazu v identifikátoru URI přesměrování. Pokud požadujete token ID pomocí implicitního toku, nemůžete použít `query`, jak je uvedeno ve [specifikaci OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete pouze kód, můžete použít `query`, `fragment` nebo `form_post`. `form_post` spustí příspěvek obsahující kód pro identifikátor URI přesměrování. Výchozí hodnota je `query` pro tok kódu.  |
+| response_mode |Volitelné |Určuje metodu, která se má použít k odeslání výsledného tokenu zpátky do vaší aplikace. Může být `query`, `fragment`nebo `form_post`. `query` poskytuje kód jako parametr řetězce dotazu v identifikátoru URI přesměrování. Pokud požadujete token ID pomocí implicitního toku, nemůžete použít `query`, jak je uvedeno ve [specifikaci OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete pouze kód, můžete použít `query`, `fragment`nebo `form_post`. `form_post` spustí příspěvek obsahující kód pro identifikátor URI přesměrování. Výchozí hodnota je `query` pro tok kódu.  |
 | state |Doporučil |Hodnota obsažená v požadavku, která je také vrácena v odpovědi tokenu. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k [prevenci útoků proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
 | Partner | Doporučil |Identifikátor URI ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) Identifikátor URI ID aplikace najdete tak, že na webu Azure Portal kliknete **Azure Active Directory**, kliknete na **Registrace aplikací**, otevřete stránku **Nastavení** aplikace a pak kliknete na **vlastnosti**. Může to být také externí prostředek, například `https://graph.microsoft.com`. Tato možnost je vyžadována v jednom z požadavků na autorizaci nebo token. Aby se zajistilo méně výzev k ověřování, umístěte ho do autorizační žádosti, aby se zajistilo, že uživatel obdrží souhlas. |
 | scope | **přeskočen** | V případě aplikací v1 Azure AD musí být obory staticky nakonfigurované na webu Azure Portal v **Nastavení**aplikace, **požadovaná oprávnění**. |
@@ -148,8 +148,8 @@ grant_type=authorization_code
 | tenant |Požadovanou |Hodnotu `{tenant}` v cestě k žádosti lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou identifikátory klientů, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na tenantovi. |
 | client_id |Požadovanou |ID aplikace přiřazené vaší aplikaci, když ji zaregistrujete ve službě Azure AD. Najdete ho v Azure Portal. ID aplikace se zobrazí v nastavení registrace aplikace. |
 | parametr grant_type |Požadovanou |Pro tok autorizačního kódu musí být `authorization_code`. |
-| Znakovou |Požadovanou |@No__t_0, kterou jste získali v předchozí části |
-| identifikátor |Požadovanou | @No__t_0registered v klientské aplikaci. |
+| Znakovou |Požadovanou |`authorization_code`, kterou jste získali v předchozí části |
+| identifikátor |Požadovanou | `redirect_uri`zaregistrován v klientské aplikaci. |
 | client_secret |vyžadováno pro webové aplikace, není povoleno pro veřejné klienty. |Tajný klíč aplikace, který jste vytvořili na webu Azure Portal pro vaši aplikaci v části **klíče** Nedá se použít v nativní aplikaci (veřejném klientovi), protože client_secrets nejde na zařízeních spolehlivě uložit. Vyžaduje se pro webové aplikace a webová rozhraní API (u všech důvěrných klientů), které mají možnost bezpečně ukládat `client_secret` na straně serveru. Client_secret by měl být před odesláním zakódovaný na adrese URL. |
 | Partner | Doporučil |Identifikátor URI ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) Identifikátor URI ID aplikace najdete tak, že na webu Azure Portal kliknete **Azure Active Directory**, kliknete na **Registrace aplikací**, otevřete stránku **Nastavení** aplikace a pak kliknete na **vlastnosti**. Může to být také externí prostředek, například `https://graph.microsoft.com`. Tato možnost je vyžadována v jednom z požadavků na autorizaci nebo token. Aby se zajistilo méně výzev k ověřování, umístěte ho do autorizační žádosti, aby se zajistilo, že uživatel obdrží souhlas. V žádosti o autorizaci i v žádosti o token se musí parametry prostředku shodovat. | 
 | code_verifier | Volitelné | Stejný code_verifier, který byl použit k získání authorization_code. Vyžaduje se, pokud se v žádosti o udělení autorizačního kódu použil PKCE. Další informace najdete v [dokumentu RFC pro PKCE](https://tools.ietf.org/html/rfc7636) .   |
@@ -188,7 +188,7 @@ Pokud prostředek webového rozhraní API vrátí kód chyby `invalid_token`, m�
 | refresh_token |Obnovovací token OAuth 2,0. Aplikace může tento token použít k získání dalších přístupových tokenů po vypršení platnosti aktuálního přístupového tokenu. Aktualizační tokeny jsou dlouhodobé a dají se použít k uchování přístupu k prostředkům po delší dobu. |
 | id_token |Nepodepsaný JSON Web Token (JWT) představující [token ID](id-tokens.md). Aplikace může base64Url dekódovat segmentů tohoto tokenu, aby vyžádala informace o uživateli, který se přihlásil. Aplikace může hodnoty ukládat do mezipaměti a zobrazovat je, ale nemělo by je spoléhat na jakékoli autorizace nebo hranice zabezpečení. |
 
-Další informace o webových tokenech JSON najdete v článku [specifikace pro verzi JWT IETF](https://go.microsoft.com/fwlink/?LinkId=392344).   Další informace o `id_tokens` najdete v tématu [Postup připojení OpenID v 1.0](v1-protocols-openid-connect-code.md).
+Další informace o webových tokenech JSON najdete v článku [specifikace pro verzi JWT IETF](https://go.microsoft.com/fwlink/?LinkId=392344).   Další informace o `id_tokens`najdete v tématu [Postup připojení OpenID v 1.0](v1-protocols-openid-connect-code.md).
 
 ### <a name="error-response"></a>Chybová odezva
 Chyby koncového bodu vystavení tokenu jsou kódy chyb HTTP, protože klient volá koncový bod vystavení tokenu přímo. Kromě stavového kódu HTTP vrátí koncový bod vystavení tokenu Azure AD také dokument JSON s objekty, které popisují chybu.
@@ -240,7 +240,7 @@ V následující tabulce jsou uvedeny stavové kódy HTTP, které vrátí koncov
 | temporarily_unavailable |Server je dočasně zaneprázdněný pro zpracování žádosti. |Opakujte požadavek. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděna z důvodu dočasné podmínky. |
 
 ## <a name="use-the-access-token-to-access-the-resource"></a>Přístup k prostředku pomocí přístupového tokenu
-Po úspěšném získání `access_token` můžete token v žádosti do webových rozhraní API použít tak, že ho zahrnete do hlavičky `Authorization`. Specifikace [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) vysvětluje, jak použít tokeny nosiče v požadavcích http pro přístup k chráněným prostředkům.
+Po úspěšném získání `access_token`můžete token v žádosti do webových rozhraní API použít tak, že ho zahrnete do hlavičky `Authorization`. Specifikace [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) vysvětluje, jak použít tokeny nosiče v požadavcích http pro přístup k chráněným prostředkům.
 
 ### <a name="sample-request"></a>Ukázková žádost
 ```
@@ -279,7 +279,7 @@ Specifikace RFC 6750 definuje následující chyby pro prostředky, které použ
 
 ## <a name="refreshing-the-access-tokens"></a>Aktualizace přístupových tokenů
 
-Přístupové tokeny jsou krátkodobé a po uplynutí jejich platnosti musí být obnoveny, aby bylo možné pokračovat v přístupu k prostředkům. @No__t_0 můžete aktualizovat tak, že odešlete další `POST` žádost do koncového bodu `/token`, ale tentokrát zadáte `refresh_token` místo `code`.  Aktualizační tokeny jsou platné pro všechny prostředky, na které váš klient již udělil souhlas s přístupem. k vyžádání nového přístupového tokenu pro `resource=https://contoso.com/api` lze použít obnovovací token vydaný u žádosti o `resource=https://graph.microsoft.com`. 
+Přístupové tokeny jsou krátkodobé a po uplynutí jejich platnosti musí být obnoveny, aby bylo možné pokračovat v přístupu k prostředkům. `access_token` můžete aktualizovat tak, že odešlete další `POST` žádost do koncového bodu `/token`, ale tentokrát zadáte `refresh_token` místo `code`.  Aktualizační tokeny jsou platné pro všechny prostředky, na které váš klient již udělil souhlas s přístupem. k vyžádání nového přístupového tokenu pro `resource=https://contoso.com/api` lze použít obnovovací token vydaný u žádosti o `resource=https://graph.microsoft.com`. 
 
 Aktualizační tokeny nemají zadané životnosti. Obvykle jsou životnosti aktualizačních tokenů poměrně dlouhé. V některých případech ale platnost tokenů aktualizace vyprší, odvolají se nebo nemají dostatečná oprávnění pro požadovanou akci. Vaše aplikace musí očekávat a zpracovat chyby vrácené koncovým bodem vystavení tokenu správně.
 

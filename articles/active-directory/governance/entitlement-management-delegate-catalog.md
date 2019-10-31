@@ -1,5 +1,5 @@
 ---
-title: Delegování zásad správného řízení přístupu k tvůrcům katalogu ve správě nároků Azure AD (Preview) – Azure Active Directory
+title: Delegování zásad správného řízení přístupu k tvůrcům katalogu ve správě nároků Azure AD – Azure Active Directory
 description: Naučte se delegovat řízení přístupu od správců IT na tvůrce katalogu a vedoucích projektů, aby mohli spravovat přístup sami.
 services: active-directory
 documentationCenter: ''
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/07/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da6183599f2dacd1a98d8fe359edda741b903b50
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f71007b886d3cc25a7cf9dc23d784144ed4e1fbd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170760"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174374"
 ---
-# <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management-preview"></a>Delegování zásad správného řízení přístupu k tvůrcům katalogu ve správě nároků Azure AD (Preview)
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.
-> Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+# <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Delegování zásad správného řízení přístupu tvůrcům katalogu v Azure AD – Správa nároků
 
 Chcete-li delegovat na uživatele, kteří nejsou správci, aby mohli vytvářet své vlastní katalogy, můžete tyto uživatele přidat do role tvůrce katalogu na základě správy nároků služby Azure AD. Můžete přidat jednotlivé uživatele nebo můžete přidat skupinu, jejíž členové pak mohou vytvářet katalogy.
 
@@ -44,13 +39,27 @@ Pomocí těchto kroků přiřaďte uživatele k roli tvůrce katalogu.
 
 1. Klikněte na **Upravit**.
 
-    ![Nastavení pro přidání tvůrců katalogu](./media/entitlement-management-delegate/settings-delegate.png)
+    ![Nastavení pro přidání tvůrců katalogu](./media/entitlement-management-delegate-catalog/settings-delegate.png)
 
 1. V části **Správa nároků delegáta** klikněte na **Přidat tvůrci katalogu** a vyberte uživatele nebo skupiny, kterým chcete delegovat tuto roli správy oprávnění.
 
 1. Klikněte na **Vybrat**.
 
 1. Klikněte na **Uložit**.
+
+## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>Umožnění přístupu k Azure Portal delegovaným rolím
+
+Abyste povolili delegované role, jako jsou tvůrci katalogu a správci balíčků přístupu, pro přístup k Azure Portal ke správě balíčků přístupu, byste měli zaškrtnout nastavení portálu pro správu.
+
+**Požadovaná role:** Globální správce nebo Správce uživatelů
+
+1. V Azure Portal klikněte na **Azure Active Directory** a potom klikněte na **Uživatelé**.
+
+1. V nabídce vlevo klikněte na **nastavení uživatele**.
+
+1. Ujistěte se, že **omezení přístupu k portálu pro správu Azure AD** je nastavené na **ne**.
+
+    ![Nastavení uživatele Azure AD – portál pro správu](./media/entitlement-management-delegate-catalog/user-settings.png)
 
 ## <a name="next-steps"></a>Další kroky
 

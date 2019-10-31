@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598873"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177981"
 ---
-# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric se systémem Windows do virtuální sítě Azure
+# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: nasazení clusteru Service Fabric se systémem Windows do virtuální sítě Azure
 
 Tento kurz je první částí série. Naučíte se, jak nasadit cluster Azure Service Fabric se systémem Windows do [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) a [skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) pomocí PowerShellu a šablony. Až budete hotovi, budete mít cluster spuštěný v cloudu, do kterého můžete nasazovat aplikace. Pokud chcete vytvořit cluster se systémem Linux, který používá rozhraní příkazového řádku Azure, přečtěte si téma [Vytvoření zabezpečeného clusteru Linux v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
@@ -38,9 +38,9 @@ V tomto kurzu se naučíte:
 > * Nastavení služby Eventstoru
 > * Nastavení protokolů Azure Monitor
 > * Vytvoření zabezpečeného clusteru Service Fabric v Azure PowerShellu
-> * Zabezpečení clusteru pomocí certifikátu X.509
+> * Zabezpečit cluster pomocí certifikátu X.509
 > * Připojení ke clusteru pomocí prostředí PowerShell
-> * Odebrání clusteru
+> * Odebrat cluster
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
@@ -53,7 +53,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -80,24 +80,24 @@ V prostředku **Microsoft.ServiceFabric/clusters** se konfiguruje cluster s Wind
 
 * Tři typy uzlů.
 * Pět uzlů v primárním uzlu typ (konfigurovatelné v parametrech šablony) a jeden uzel v každém z dalších dvou typů uzlů.
-* Operační systém: Windows Server 2016 Datacenter s kontejnery (konfigurovatelné v parametrech šablony).
+* OPERAČNÍ systém: Windows Server 2016 Datacenter s kontejnery (konfigurovatelné v parametrech šablony).
 * Zabezpečený certifikát (lze konfigurovat v parametrech šablony).
 * [Reverzní proxy](service-fabric-reverseproxy.md) je povolený.
 * [Služba DNS](service-fabric-dnsservice.md) je povolena.
 * Bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (konfigurovatelné v parametrech šablony)
 * [Úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) stříbrného (konfigurovatelné v parametrech šablony).
 * Koncový bod připojení klienta: 19000 (konfigurovatelné v parametrech šablony).
-* Koncový bod služby HTTP Gateway: 19080 (konfigurovatelné v parametrech šablony).
+* Koncový bod brány HTTP: 19080 (konfigurovatelné v parametrech šablony).
 
-### <a name="azure-load-balancer"></a>Azure Load Balancer
+### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 
 V prostředku **Microsoft. Network/loadBalancers** je nakonfigurován Nástroj pro vyrovnávání zatížení. Testy a pravidla se nastavují pro následující porty:
 
 * Koncový bod připojení klienta: 19000
-* Koncový bod služby HTTP Gateway: 19080
+* koncový bod brány HTTP: 19080
 * Port aplikace: 80
 * Port aplikace: 443
-* Service Fabric reverzní proxy: 19081
+* reverzní proxy server Service Fabric: 19081
 
 Pokud jsou potřeba další porty aplikací, budete muset upravit prostředek **Microsoft. Network/loadBalancers** a prostředek **Microsoft. Network/networkSecurityGroups** , aby se provoz povolil.
 
@@ -106,15 +106,14 @@ Pokud jsou potřeba další porty aplikací, budete muset upravit prostředek **
 Názvy virtuální sítě, podsítě a skupiny zabezpečení sítě jsou deklarované v parametrech šablony. Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks**:
 
 * Adresní prostor virtuální sítě: 172.16.0.0/20
-* Service Fabric adresní prostor podsítě: 172.16.2.0/23
+* adresní prostor podsítě Service Fabric: 172.16.2.0/23
 
 V prostředku **Microsoft.Network/networkSecurityGroups** jsou povolená následující pravidla pro příchozí provoz. Hodnoty portů můžete změnit změnou proměnných šablony.
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
-* SMB: 445
 * Internodecommunication: 1025, 1026, 1027
-* Rozsah dočasných portů: 49152 až 65534 (potřebujete minimálně porty 256).
+* Rozsah dočasných portů: 49152 až 65534 (vyžaduje minimálně porty 256).
 * Porty pro použití aplikací: 80 a 443
 * Rozsah portů aplikace: 49152 až 65534 (používá se pro komunikaci mezi službami. V nástroji pro vyrovnávání zatížení nejsou otevřeny jiné porty).
 * Všechny ostatní porty jsou blokované
@@ -122,7 +121,7 @@ V prostředku **Microsoft.Network/networkSecurityGroups** jsou povolená násled
 Pokud jsou potřeba další porty aplikací, budete muset upravit prostředek **Microsoft. Network/loadBalancers** a prostředek **Microsoft. Network/networkSecurityGroups** , aby se provoz povolil.
 
 ### <a name="windows-defender"></a>Windows Defender
-Ve výchozím nastavení je [antivirový program v programu Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) nainstalovaný a funkční na Windows serveru 2016. Uživatelské rozhraní je ve výchozím nastavení nainstalováno u některých SKU, ale není vyžadováno. Pro každý typ uzlu/sadu škálování virtuálního počítače, který je v šabloně deklarovaný, se k vyloučení Service Fabric adresářů a procesů používá antimalwarové [rozšíření Azure VM](/azure/virtual-machines/extensions/iaas-antimalware-windows) :
+Ve výchozím nastavení je [antivirový program v programu Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) nainstalovaný a funkční na Windows serveru 2016. Uživatelské rozhraní je ve výchozím nastavení nainstalováno u některých SKU, ale není vyžadováno. Pro každý typ uzlu/sadu škálování virtuálního počítače, který je v šabloně deklarovaný, se k vyloučení Service Fabric adresářů a procesů používá [antimalwarové rozšíření Azure VM](/azure/virtual-machines/extensions/iaas-antimalware-windows) :
 
 ```json
 {
@@ -154,14 +153,14 @@ Ve výchozím nastavení je [antivirový program v programu Windows Defender](/w
 
 Soubor parametrů [azuredeploy. Parameters. JSON][parameters] deklaruje mnoho hodnot, které se používají k nasazení clusteru a přidružených prostředků. Níže jsou uvedené parametry, které je potřeba upravit pro vaše nasazení:
 
-**Parametr** | **Ukázková hodnota** | **Poznámky** 
+**Ukazatele** | **Ukázková hodnota** | **Poznámky** 
 |---|---|---|
 |adminUserName|vmadmin| Uživatelské jméno správce pro virtuální počítače clusteru. [Požadavky na uživatelské jméno pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm) |
 |adminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru. [Požadavky na heslo pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| Název clusteru. Může obsahovat jenom písmena a číslice. Může mít délku 3 až 23 znaků.|
 |location|southcentralus| Umístění clusteru. |
 |certificateThumbprint|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který se dříve odeslal do trezoru klíčů, vyplňte hodnotu kryptografického otisku certifikátu SHA1. Příklad: „6190390162C988701DB5676EB81083EA608DCCF3“.</p> |
-|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná. </p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https:\//mykeyvault.Vault.Azure.NET:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná. </p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu zdrojového trezoru. Například: /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT</p>|
 
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Nastavení ověřování klienta Azure Active Directory
@@ -169,7 +168,7 @@ U clusterů Service Fabric nasazených ve veřejné síti hostované v Azure je 
 * Pro identitu klienta použijte Azure Active Directory.
 * Použijte certifikát pro identitu serveru a šifrování SSL komunikace HTTP.
 
-Nastavení Azure Active Directory (Azure AD) pro ověřování klientů pro Service Fabric cluster se musí provést před vytvořením [clusteru](#createvaultandcert). Azure AD umožňuje organizacím (označovaným jako klienti) spravovat přístup uživatelů k aplikacím. 
+Nastavení Azure Active Directory (Azure AD) pro ověřování klientů pro Service Fabric cluster se musí provést před [vytvořením clusteru](#createvaultandcert). Azure AD umožňuje organizacím (označovaným jako klienti) spravovat přístup uživatelů k aplikacím. 
 
 Cluster Service Fabric nabízí několik vstupních bodů ke svým funkcím správy, včetně webových [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) a sady [Visual Studio](service-fabric-manage-application-in-visual-studio.md). V důsledku toho vytvoříte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci.  Po vytvoření aplikací přiřadíte uživatele k rolím jen pro čtení a správcům.
 
@@ -181,9 +180,9 @@ V tomto článku předpokládáme, že jste už tenanta vytvořili. Pokud jste t
 Pro zjednodušení kroků týkajících se konfigurace služby Azure AD pomocí Service Fabricho clusteru jsme vytvořili sadu skriptů prostředí Windows PowerShell. [Stáhněte si skripty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) do svého počítače.
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Vytváření aplikací Azure AD a přiřazení uživatelů k rolím
-Vytvořte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci. Po vytvoření aplikací, které reprezentují váš cluster, přiřaďte uživatele k rolím, které [podporuje Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
+Vytvořte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci. Po vytvoření aplikací, které reprezentují váš cluster, přiřaďte uživatele k [rolím, které podporuje Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
 
-Spusťte `SetupApplications.ps1`příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Příklad:
+Spusťte `SetupApplications.ps1`a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Například:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -192,20 +191,20 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 ```
 
 > [!NOTE]
-> Pro národní cloudy (například Azure Government, Azure Čína, Azure Německo) zadejte `-Location` parametr.
+> Pro národní cloudy (například Azure Government, Azure Čína, Azure Německo) zadejte parametr `-Location`.
 
-*TenantId*nebo ID adresáře můžete najít v [Azure Portal](https://portal.azure.com). Vyberte **Azure Active Directory** > **vlastnosti** a zkopírujte hodnotu **ID adresáře** .
+*TenantId*nebo ID adresáře můžete najít v [Azure Portal](https://portal.azure.com). Vyberte **Azure Active Directory** **vlastnosti** > a zkopírujte hodnotu **ID adresáře** .
 
 *Název_clusteru* slouží k vytvoření předpony aplikací služby Azure AD, které jsou vytvořeny pomocí skriptu. Nemusí přesně odpovídat skutečnému názvu clusteru. Usnadňuje mapování artefaktů Azure AD na Service Fabric používaný cluster.
 
 *WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrátí vašim uživatelům po dokončení přihlášení. Nastavte tento koncový bod jako koncový bod Service Fabric Explorer pro váš cluster, který je ve výchozím nastavení:
 
-https://&lt;cluster_domain&gt;:19080/Explorer
+https://&lt;cluster_domain&gt;: 19080/Explorer
 
 Budete vyzváni k přihlášení k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení vytvoří skript webové a nativní aplikace, které reprezentují váš Service Fabric cluster. V aplikacích klienta v [Azure Portal](https://portal.azure.com)byste měli vidět dvě nové položky:
 
-   * *Cluster název_clusteru*\_
-   * *Klient název_clusteru*\_
+   * *Cluster\_clusteru*
+   * *Název_clusteru*\_klienta
 
 Skript vytiskne JSON vyžadovaný šablonou Správce prostředků při vytváření clusteru, takže je vhodné ponechat okno PowerShellu otevřené.
 
@@ -260,7 +259,7 @@ V [azuredeploy. JSON][template]NAKONFIGURUJTE Azure AD v části **Microsoft. Se
 }
 ```
 
-Přidejte hodnoty parametrů do souboru parametrů [azuredeploy. Parameters. JSON][parameters] . Příklad:
+Přidejte hodnoty parametrů do souboru parametrů [azuredeploy. Parameters. JSON][parameters] . Například:
 
 ```json
 "aadTenantId": {
@@ -444,7 +443,7 @@ Pokud chcete ve svém clusteru povolit službu Eventstoru, přidejte do vlastnos
 
 Protokoly Azure Monitor jsou naše doporučení pro monitorování událostí na úrovni clusteru. Chcete-li nastavit protokoly Azure Monitor pro monitorování clusteru, je nutné mít [povolenou diagnostiku pro zobrazení událostí na úrovni clusteru](#configure-diagnostics-collection-on-the-cluster).  
 
-Pracovní prostor se musí být připojen k diagnostická data z vašeho clusteru.  Tato data protokolu se ukládají v účtu úložiště *applicationDiagnosticsStorageAccountName* v tabulkách WADServiceFabric * Event, WADWindowsEventLogsTable a WADETWEventTable.
+Pracovní prostor musí být připojený ke diagnostická data, která přicházejí z vašeho clusteru.  Tato data protokolu se ukládají v účtu úložiště *applicationDiagnosticsStorageAccountName* v tabulkách WADServiceFabric * Event, WADWindowsEventLogsTable a WADETWEventTable.
 
 Přidejte pracovní prostor Azure Log Analytics a přidejte řešení do pracovního prostoru:
 
@@ -716,7 +715,7 @@ Get-ServiceFabricClusterHealth
 
 V dalších článcích v této sérii kurzů se používá cluster, který jste vytvořili. Pokud nechcete ihned pokračovat dalším článkem, můžete [cluster odstranit](service-fabric-cluster-delete.md), aby se vám neúčtovaly poplatky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět, jak škálovat cluster, přejděte k následujícímu kurzu.
 
@@ -728,9 +727,9 @@ Pokud se chcete dozvědět, jak škálovat cluster, přejděte k následujícím
 > * Nastavení služby Eventstoru
 > * Nastavení protokolů Azure Monitor
 > * Vytvoření zabezpečeného clusteru Service Fabric v Azure PowerShellu
-> * Zabezpečení clusteru pomocí certifikátu X.509
+> * Zabezpečit cluster pomocí certifikátu X.509
 > * Připojení ke clusteru pomocí prostředí PowerShell
-> * Odebrání clusteru
+> * Odebrat cluster
 
 Potom přejděte k následujícímu kurzu, kde se dozvíte, jak monitorovat cluster.
 > [!div class="nextstepaction"]

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 34ff075a604afdcbef67c7b10ce1ef8cbe2924e7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: adc7b65b4e079c55b9400b06603625971efc3ea3
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137031"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177672"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -79,10 +79,10 @@ V definici JSON přijímá kanál dva parametry: **sourceBlobContainer** a **sin
 Kanál můžete ručně spustit některým z následujících způsobů:
 - .NET SDK
 - Modul Azure PowerShellu
-- REST API
+- Rozhraní REST API
 - Python SDK
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 Následující ukázkový příkaz ukazuje ruční spuštění kanálu pomocí rozhraní REST API:
 
 ```
@@ -90,7 +90,7 @@ POST
 https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory/pipelines/copyPipeline/createRun?api-version=2017-03-01-preview
 ```
 
-Úplnou ukázku najdete v tématu [rychlý Start: Vytvořte datovou továrnu pomocí REST API](quickstart-create-data-factory-rest-api.md).
+Úplnou ukázku najdete v tématu [Rychlý start: Vytvoření datové továrny pomocí rozhraní REST API](quickstart-create-data-factory-rest-api.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -119,7 +119,7 @@ Datová část odpovědi představuje jedinečné ID spuštění kanálu:
 }
 ```
 
-Úplnou ukázku najdete v tématu [rychlý Start: Vytvořte datovou továrnu pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md).
+Úplnou ukázku najdete v tématu [Rychlý start: Vytvoření datové továrny pomocí Azure Powershellu](quickstart-create-data-factory-powershell.md).
 
 ### <a name="net-sdk"></a>.NET SDK
 Následující ukázkové volání ukazuje ruční spuštění kanálu pomocí sady .NET SDK:
@@ -128,7 +128,7 @@ Následující ukázkové volání ukazuje ruční spuštění kanálu pomocí s
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
 ```
 
-Úplnou ukázku najdete v tématu [rychlý Start: Vytvoření datové továrny pomocí sady .NET SDK](quickstart-create-data-factory-dot-net.md).
+Úplnou ukázku najdete v tématu [Rychlý start: Vytvoření datové továrny pomocí sady .NET SDK](quickstart-create-data-factory-dot-net.md).
 
 > [!NOTE]
 > Sadu .NET SDK můžete použít k volání kanálů Data Factory ze služby Azure Functions, vlastních webových služeb atd.
@@ -136,13 +136,13 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 <h2 id="triggers">Spuštění pomocí aktivační události</h2>
 Aktivační události představují další způsob spuštění kanálu. Aktivační události jsou jednotkou zpracování, která určuje, kdy se má zahájit provádění kanálu. V současné době služba Data Factory podporuje tři typy aktivačních událostí:
 
-- Aktivační událost plánovače: Aktivační událost, která vyvolá kanál na základě plánu hodinových taktů.
+- Aktivační událost plánovače: Aktivační událost, která volá kanál podle časového plánu.
 
-- Aktivační událost bubnového okna: Aktivační událost, která pracuje v pravidelných intervalech, ale také uchovává stav.
+- Aktivační událost pro přeskakující okno: Aktivační událost, která funguje v pravidelných intervalech a přitom si zachovává svůj stav.
 
-- Aktivační událost založená na událostech: Aktivační událost, která reaguje na událost.
+- Aktivační událost na základě události: Aktivační událost, která reaguje na událost.
 
-Mezi kanály a aktivačními událostmi existuje vztah n-m. Více aktivačních událostí může aktivovat jeden kanál a jedna aktivační událost může aktivovat více kanálů. V následující definici aktivační události vlastnost **pipelines** odkazuje na seznam kanálů aktivovaných konkrétní aktivační událostí. Definice vlastnosti obsahuje hodnoty parametrů kanálu.
+Kanály a triggery mají relaci m:n (s výjimkou aktivační události pro bubnové okno). Několik aktivačních událostí může aktivovat jeden kanál, nebo jedna aktivační událost může aktivovat více kanálů. V následující definici aktivační události vlastnost **pipelines** odkazuje na seznam kanálů aktivovaných konkrétní aktivační událostí. Definice vlastnosti obsahuje hodnoty parametrů kanálu.
 
 ### <a name="basic-trigger-definition"></a>Definice základní aktivační události
 
@@ -276,13 +276,13 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 ### <a name="schema-defaults-limits-and-examples"></a>Výchozí hodnoty, omezení a příklady schématu
 
-| Vlastnost JSON | type | Požadováno | Výchozí hodnota | Platné hodnoty | Příklad |
+| Vlastnost JSON | Typ | Požaduje se | Výchozí hodnota | Platné hodnoty | Příklad: |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | řetězec | Ano | Žádné | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | objekt | Ano | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | číslo | Ne | 1 | 1 až 1 000 | `"interval":10` |
-| **endTime** | řetězec | Ano | Žádné | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | objekt | Ne | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | string | Ano | Žádné | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | object | Ano | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | číslo | Ne | 1\. místo | 1 až 1 000 | `"interval":10` |
+| **endTime** | string | Ano | Žádné | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | object | Ne | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Vlastnost startTime
 Následující tabulka ukazuje, jakým způsobem vlastnost **startTime** ovládá spouštění aktivační události:
@@ -292,7 +292,7 @@ Následující tabulka ukazuje, jakým způsobem vlastnost **startTime** ovlád�
 | **Čas začátku je v minulosti** | Vypočítá první čas spuštění v budoucnosti následující po čase začátku a v tomto čase se spustí.<br /><br />Zahájí další spuštění vypočítaná z posledního času spuštění.<br /><br />Prohlédněte si příklad pod touto tabulkou. | Aktivační událost se spustí _až po_ zadaném čase začátku. První výskyt vychází z plánu vypočítaného z času začátku.<br /><br />Zahájí další spuštění na základě plánu opakování. |
 | **Čas začátku je v budoucnosti nebo aktuální čas** | Spustí se jednou v zadaný čas začátku.<br /><br />Zahájí další spuštění vypočítaná z posledního času spuštění. | Aktivační událost se spustí _až po_ zadaném čase začátku. První výskyt vychází z plánu a je vypočítaný z času začátku.<br /><br />Zahájí další spuštění na základě plánu opakování. |
 
-Podívejme se na příklad toho, co se stane, když je čas začátku v minulosti a je nastaveno opakování, ale žádný plán. Předpokládejme, že aktuální čas je 8. 4. 2017 13:00, čas začátku je 7. 4. 2017 14:00 a opakování je nastaveno na každé dva dny. (Hodnota **recurrence** je definovaná nastavením vlastnosti **frequency** na hodnotu „day“ (den) vlastnosti **interval** na hodnotu 2.) Všimněte si, že hodnota **startTime** je v minulosti a předchází aktuálnímu času.
+Podívejme se na příklad toho, co se stane, když je čas začátku v minulosti a je nastaveno opakování, ale žádný plán. Předpokládejme, že aktuální čas je 8. 4. 2017 13:00, čas začátku je 7. 4. 2017 14:00 a opakování je nastaveno na každé dva dny. (Hodnota **opakování** je definována nastavením vlastnosti **frekvence** na hodnotu "Day" (den) a vlastnost **interval** na 2.) Všimněte si, že hodnota **StartTime** je v minulosti a nastane před aktuálním časem.
 
 Za těchto podmínek je první spuštění 2017-04-09 na 14:00. Modul plánovače vypočítá výskyty spuštění na základě času začátku. Všechny instance v minulosti se zahodí. Modul použije další instanci, která nastane v budoucnosti. V tomto scénáři je čas začátku 7. 4. 2017 ve 14:00. Další instance nastane o dva dny později, tedy 9. 4. 2017 ve 14:00.
 
@@ -314,7 +314,7 @@ Následující tabulka obsahuje podrobný popis elementů **schedule**:
 | **minutes** | Minuty v hodině, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel|
 | **hours** | Hodiny dne, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel|
 | **weekDays** | Dny v týdnu, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při týdenní frekvenci.|<br />– Monday (Pondělí)<br />– Tuesday (Úterý)<br />– Wednesday (Středa)<br />– Thursday (Čtvrtek)<br />– Friday (Pátek)<br />– Saturday (Sobota)<br />– Sunday (Neděle)<br />– Pole hodnot dní (maximální velikost pole je 7)<br /><br />V hodnotách dní se nerozlišují malá a velká písmena|
-| **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |-Array objektů **monthlyOccurrence** :`{ "day": day, "occurrence": occurrence }`<br />– Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.<br />– Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.|
+| **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |-Array objektů **monthlyOccurrence** : `{ "day": day, "occurrence": occurrence }`<br />– Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.<br />– Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.|
 | **monthDays** | Dan v měsíci, ve kterém se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |– Libovolná hodnota <= −1 a >= −31<br />– Libovolná hodnota >= 1 a <= 31<br />– Pole hodnot|
 
 ## <a name="tumbling-window-trigger"></a>Aktivační událost pro přeskakující okno
@@ -333,7 +333,7 @@ Tato část obsahuje příklady plánů opakování. Zaměřuje se na objekt **s
 
 V příkladech se předpokládá, že vlastnost **interval** má hodnotu 1 a vlastnost **frequency** má správnou hodnotu s ohledem na definici plánu. Například není možné, aby vlastnost **frequency** měla hodnotu „day“ a zároveň objekt **schedule** obsahoval úpravu atributu **monthDays**. Tyto typy omezení jsou popsané v tabulce v předchozí části.
 
-| Příklad | Popis |
+| Příklad: | Popis |
 |:--- |:--- |
 | `{"hours":[5]}` | Spuštění každý den v 5:00. |
 | `{"minutes":[15], "hours":[5]}` | Spuštění každý den v 5:15. |
@@ -371,14 +371,14 @@ Následující tabulka obsahuje porovnání aktivační události pro přeskakuj
 |:--- |:--- |:--- |
 | **Scénáře obnovení dat** | Podporuje se. Spuštění kanálu je možné naplánovat i pro okna v minulosti. | Nepodporuje se. Spuštění kanálu je možné provést pouze v časová období od současnosti do budoucnosti. |
 | **Spolehlivost** | 100% spolehlivost. Spuštění kanálu je možné plánovat pro všechna okna od zadaného času začátku, a to bez mezer. | Menší spolehlivost. |
-| **Možnost opakování** | Podporuje se. Spuštění kanálu, která selžou, mají výchozí zásadu opakování 0 nebo zásadu zadanou uživatelem v definici aktivační události. Automaticky opakuje pokus, když spuštění kanálu selže z důvodu omezení souběžnosti, serveru a omezení (tj. stavových kódů 400: Chyba uživatele, 429: Příliš mnoho požadavků a 500: Vnitřní chyba serveru). | Nepodporuje se. |
+| **Možnost opakování** | Podporuje se. Spuštění kanálu, která selžou, mají výchozí zásadu opakování 0 nebo zásadu zadanou uživatelem v definici aktivační události. Automaticky opakuje pokus, když spuštění kanálu selže kvůli omezením souběžnosti, serveru nebo využití sítě (tedy stavové kódy 400: Chyba uživatele, 429: Příliš mnoho požadavků a 500: Vnitřní chyba serveru). | Nepodporuje se. |
 | **Souběžnost** | Podporuje se. Uživatelé můžou pro aktivační událost explicitně nastavit omezení souběžnosti. Umožňuje 1 až 50 souběžně aktivovaných spuštění kanálu. | Nepodporuje se. |
 | **Systémové proměnné** | Podporuje použití systémových proměnných **WindowStart** a **WindowEnd**. Uživatelé mají v definici aktivační události přístup k `triggerOutputs().windowStartTime` a `triggerOutputs().windowEndTime` jako systémovým proměnným aktivační události. Tyto hodnoty se používají v čase začátku okna a v čase konce okna. Například pro aktivační událost pro přeskakující okno, která se spouští každou hodinu, je definice okna od 1:00 do 2:00 následující: `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` a `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Nepodporuje se. |
 | **Vztah mezi kanálem a aktivační událostí** | Podporuje vztah 1:1. Je možné aktivovat pouze jeden kanál. | Podporuje vztahy M:N. Víc aktivačních událostí může aktivovat jeden kanál. Jedna aktivační událost může aktivovat více kanálů. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Projděte si tyto kurzy:
 
-- [Rychlé zprovoznění: Vytvoření datové továrny pomocí sady .NET SDK](quickstart-create-data-factory-dot-net.md)
+- [Rychlý start: Vytvoření datové továrny pomocí sady .NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Vytvoření aktivační události plánovače](how-to-create-schedule-trigger.md)
 - [Vytvoření aktivační události pro přeskakující okno](how-to-create-tumbling-window-trigger.md)

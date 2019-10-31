@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 10/16/2019
-ms.openlocfilehash: 82409bbe2f40e42a8331cd801649b93987a923d2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550700"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177647"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa ověřování Azure Active Directory pomocí SQL
 
@@ -208,7 +208,7 @@ Následující dva postupy vám ukážou, jak zřídit správce Azure Active Dir
 
 ### <a name="azure-portal"></a>Portál Azure
 
-1. V [Azure Portal](https://portal.azure.com/)v pravém horním rohu výběrem svého připojení vyrozevíracíte seznam možných aktivních adresářů. Vyberte správnou službu Active Directory jako výchozí službu Azure AD. Tento krok propojí službu Active Directory přidruženou k předplatnému se službou Azure SQL Server, která zajišťuje, že se stejné předplatné používá pro Azure AD i SQL Server. (Server SQL Azure je možné hostovat buď Azure SQL Database nebo Azure SQL Data Warehouse.)  ![choose – AD ][8]
+1. V [Azure Portal](https://portal.azure.com/)v pravém horním rohu výběrem svého připojení vyrozevíracíte seznam možných aktivních adresářů. Vyberte správnou službu Active Directory jako výchozí službu Azure AD. Tento krok propojí službu Active Directory přidruženou k předplatnému se službou Azure SQL Server, která zajišťuje, že se stejné předplatné používá pro Azure AD i SQL Server. (Server SQL Azure je možné hostovat buď Azure SQL Database nebo Azure SQL Data Warehouse.) ![zvolit-AD][8]
 
 2. V levém proužku vyberte **všechny služby**a v typu filtru v **SQL serveru**. Vyberte **SQL servery**.
 
@@ -218,13 +218,13 @@ Následující dva postupy vám ukážou, jak zřídit správce Azure Active Dir
     > Na této stránce před výběrem **SQL serveru**můžete vybrat **hvězdičku** vedle názvu *, abyste kategorii mohli přidat* a přidat **SQL servery** do levého navigačního panelu.
 
 3. Na stránce **SQL Server** vyberte možnost **Správce služby Active Directory**.
-4. Na stránce **Správce služby Active Directory** vyberte **nastavit správce**.   ![select Active Directory ](./media/sql-database-aad-authentication/select-active-directory.png)  
+4. Na stránce **Správce služby Active Directory** vyberte **nastavit správce**.  ![vybrat službu Active Directory](./media/sql-database-aad-authentication/select-active-directory.png)  
 
 5. Na stránce **přidat správce** vyhledejte uživatele, vyberte uživatele nebo skupinu, které mají být správcem, a pak vyberte **Vybrat**. (Na stránce Správce služby Active Directory se zobrazují všichni členové a skupiny služby Active Directory. Uživatele nebo skupiny, které jsou šedé, nelze vybrat, protože nejsou podporovány jako správci služby Azure AD. (Další informace najdete v seznamu podporovaných správců v části **funkce a omezení služby Azure AD** tématu [použití Azure Active Directory ověřování pro ověřování pomocí SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication.md).) Řízení přístupu na základě role (RBAC) se vztahuje jenom na portál a nešíří se na SQL Server.
-    ](./media/sql-database-aad-authentication/select-admin.png) správce ![select  
+    ![vybrat správce](./media/sql-database-aad-authentication/select-admin.png)  
 
 6. V horní části stránky **Správce služby Active Directory** vyberte **Uložit**.
-    ](./media/sql-database-aad-authentication/save-admin.png) správce ![save
+    ![Uložit](./media/sql-database-aad-authentication/save-admin.png) správce
 
 Proces změny správce může trvat několik minut. Pak se nový správce zobrazí v poli **Správce služby Active Directory** .
 
@@ -465,7 +465,7 @@ Další informace najdete v [blogu o SQL Server zabezpečení](https://blogs.msd
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-Následující příkazy se připojují pomocí nástroje Sqlcmd verze 13,1, který je k dispozici na [webu Download Center](https://go.microsoft.com/fwlink/?LinkID=825643).
+Následující příkazy se připojují pomocí nástroje Sqlcmd verze 13,1, který je k dispozici na [webu Download Center](https://www.microsoft.com/download/details.aspx?id=53591).
 
 > [!NOTE]
 > `sqlcmd` s příkazem `-G` nefunguje u systémových identit a vyžaduje přihlášení k hlavnímu uživateli.

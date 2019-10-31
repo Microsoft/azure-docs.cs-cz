@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0926e6800dbcd81d2e542e27afe3afb1240cff22
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6baf7d21748b5b524745f26302e70612dab29a8d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268420"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175431"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Aplikace klasické pracovní plochy, která volá webové rozhraní API – konfigurace kódu
 
@@ -28,13 +28,22 @@ Teď, když jste vytvořili aplikaci, se dozvíte, jak nakonfigurovat kód pomoc
 
 ## <a name="msal-libraries"></a>Knihovny MSAL
 
-Jediná knihovna MSAL podporující desktopové aplikace na více platformách je dnes MSAL.NET.
+Knihovny Microsoftu podporující desktopové aplikace jsou:
 
-MSAL pro iOS a macOS podporuje desktopové aplikace běžící jenom na macOS. 
+  Knihovna MSAL | Popis
+  ------------ | ----------
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporuje vytváření desktopových aplikací na různých platformách – Linux, Windows a MacOS.
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podporuje vytváření desktopových aplikací na různých platformách. Vývoj v průběhu verze Public Preview
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Podporuje vytváření desktopových aplikací na různých platformách. Vývoj v průběhu verze Public Preview
+  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Podporuje jenom desktopové aplikace běžící jenom na macOS.
 
-## <a name="public-client-application-with-msalnet"></a>Veřejná klientská aplikace s MSAL.NET
+## <a name="public-client-application"></a>Veřejná klientská aplikace
 
-Z hlediska kódu jsou desktopové aplikace veřejné klientské aplikace a proto je vhodné sestavovat a manipulovat s MSAL.NET `IPublicClientApplication`. Nové věci budou trochu odlišné, ať už používáte interaktivní ověřování, nebo ne.
+Z hlediska kódu jsou desktopové aplikace veřejné klientské aplikace. Konfigurace se trochu liší v závislosti na tom, zda používáte interaktivní ověřování, nebo ne.
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
+Budete muset sestavit a manipulovat s `IPublicClientApplication`MSAL.NET.
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
@@ -47,7 +56,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Pokud máte v úmyslu používat interaktivní ověřování nebo tok kódu zařízení, jak vidíte výše, chcete použít `.WithRedirectUri` modifikátor:
+Pokud máte v úmyslu používat interaktivní ověřování nebo tok kódu zařízení, jak vidíte výše, chcete použít modifikátor `.WithRedirectUri`:
 
 ```CSharp
 IPublicClientApplication app;
@@ -98,16 +107,16 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Víc se uč
+### <a name="learn-more"></a>Další informace
 
 Další informace o tom, jak nakonfigurovat desktopovou aplikaci MSAL.NET:
 
-- Seznam všech modifikátorů dostupných na `PublicClientApplicationBuilder`najdete v referenční dokumentaci [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) .
-- Popis všech možností vystavených v `PublicClientApplicationOptions` tématu [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)najdete v referenční dokumentaci.
+- Seznam všech modifikátorů dostupných v `PublicClientApplicationBuilder`najdete v referenční dokumentaci [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) .
+- Popis všech možností vystavených v `PublicClientApplicationOptions` naleznete v tématu [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)v referenční dokumentaci.
 
-## <a name="complete-example-with-configuration-options"></a>Kompletní příklad s možnostmi konfigurace
+### <a name="complete-example-with-configuration-options"></a>Kompletní příklad s možnostmi konfigurace
 
-Představte si konzolovou aplikaci .NET Core, `appsettings.json` která má následující konfigurační soubor:
+Představte si konzolovou aplikaci .NET Core, která má následující konfigurační soubor `appsettings.json`:
 
 ```JSon
 {
@@ -175,9 +184,32 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-a před voláním `.Build()` metody můžete přepsat vaši konfiguraci `.WithXXX` voláním metod, jak se zobrazily dříve.
+a před voláním metody `.Build()` můžete přepsat vaši konfiguraci voláním `.WithXXX` metod, jak se zobrazily dříve.
 
-## <a name="public-client-application-with-msal-for-ios-and-macos"></a>Veřejná klientská aplikace s MSAL pro iOS a macOS
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Tady je třída, která se používá v MSAL ukázek Java ke konfiguraci ukázek: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+
+```Java
+PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
+        .authority(TestData.AUTHORITY_COMMON)
+        .build();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+config = json.load(open(sys.argv[1]))
+
+app = msal.PublicClientApplication(
+    config["client_id"], authority=config["authority"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
 Následující kód vytvoří instanci veřejné klientské aplikace, přihlašuje uživatele ve veřejném cloudu Microsoft Azure, pomocí pracovního a školního účtu nebo osobního účet Microsoft.
 
@@ -187,12 +219,12 @@ Cíl-C:
 
 ```objc
 NSError *msalError = nil;
-    
+
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
 
-Swift:
+SWIFT
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
@@ -210,25 +242,26 @@ MSALAADAuthority *aadAuthority =
                                                    audienceType:MSALAzureADMultipleOrgsAudience
                                                       rawTenant:nil
                                                           error:nil];
-                                                          
+
 MSALPublicClientApplicationConfig *config =
                 [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
                                                                 redirectUri:@"<your-redirect-uri-here>"
                                                                   authority:aadAuthority];
-                                                                  
+
 NSError *applicationError = nil;
 MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
-        
+
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```
+---
 
 ## <a name="next-steps"></a>Další kroky
 

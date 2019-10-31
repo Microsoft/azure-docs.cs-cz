@@ -17,16 +17,16 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1ed81c03e7c5ba30b813897dac5796c550ed23
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679825"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175654"
 ---
 # <a name="brokered-auth-in-android"></a>Zprostředkované ověřování v Androidu
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
 Abyste se mohli zapojit do jednotného přihlašování (SSO) v jednotném zařízení, musíte použít jednoho z zprostředkovatelů ověřování od Microsoftu a vyhovět zásadám podmíněného přístupu na úrovni organizace. Integrace se zprostředkovatelem přináší následující výhody:
 
@@ -62,9 +62,9 @@ Pokud na zařízení ještě není nainstalovaná aplikace zprostředkovatele, M
 
 ### <a name="when-a-broker-is-installed"></a>Při instalaci zprostředkovatele
 
-Když je na zařízení nainstalovaný zprostředkovatel, budou všechny následné požadavky na interaktivní tokeny (volání `acquireToken()`) zpracovávány zprostředkovatelem spíše než místně pomocí MSAL. Pro zprostředkovatele není k dispozici jakýkoli stav jednotného přihlašování, který je dřív dostupný pro MSAL. V důsledku toho se uživatel bude muset znovu ověřit nebo vybrat účet ze stávajícího seznamu účtů, které zařízení zná.
+Když je v zařízení nainstalován zprostředkovatel, budou všechny následné požadavky na interaktivní tokeny (volání do `acquireToken()`) zpracovávány zprostředkovatelem spíše než místně pomocí MSAL. Pro zprostředkovatele není k dispozici jakýkoli stav jednotného přihlašování, který je dřív dostupný pro MSAL. V důsledku toho se uživatel bude muset znovu ověřit nebo vybrat účet ze stávajícího seznamu účtů, které zařízení zná.
 
-Instalace zprostředkovatele nepožaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit `MsalUiRequiredException`, bude další požadavek přejít do služby Broker. `MsalUiRequiredException` se vyvolal z několika důvodů a musí se přeložit interaktivně. Jedná se o některé běžné důvody:
+Instalace zprostředkovatele nepožaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException` se vyvolal z několika důvodů a musí se přeložit interaktivně. Jedná se o některé běžné důvody:
 
 - Uživatel změnil heslo přidružené k účtu.
 - Uživatelský účet už nesplňuje zásady podmíněného přístupu.
@@ -124,7 +124,7 @@ MSAL komunikuje se zprostředkovatelem dvěma způsoby:
 
 MSAL nejprve používá službu přivázané na zprostředkovatele, protože volání této služby nevyžaduje žádná oprávnění Androidu. Pokud se vazba na vázanou službu nezdaří, MSAL použije rozhraní Android ke správci účtů API. MSAL to dělá pouze v případě, že aplikace již byla udělena oprávnění `"READ_CONTACTS"`.
 
-Pokud získáte `MsalClientException` s kódem chyby `"BROKER_BIND_FAILURE"`, jsou k dispozici dvě možnosti:
+Pokud se zobrazí `MsalClientException` s kódem chyby `"BROKER_BIND_FAILURE"`, jsou k dispozici dvě možnosti:
 
 - Požádejte uživatele, aby zakázal optimalizaci výkonu pro aplikaci Microsoft Authenticator a Portál společnosti Intune.
 - Požádejte uživatele, aby udělil oprávnění `"READ_CONTACTS"`.

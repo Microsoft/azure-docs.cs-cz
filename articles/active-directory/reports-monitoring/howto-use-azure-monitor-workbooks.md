@@ -11,17 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 10/29/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5e498dcb39f62fc870bc7efa989b91caeac0dedc
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
-ms.translationtype: MT
+ms.openlocfilehash: a073a476043fc6570a42cc142e01f2c6f98c7741
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819716"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175917"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Použití Azure Monitorch sešitů pro sestavy Azure Active Directory
+
+> [!IMPORTANT]
+> Aby bylo možné optimalizovat podkladové dotazy v tomto sešitu, klikněte na tlačítko Upravit, klikněte na ikonu nastavení a vyberte pracovní prostor, ve kterém chcete spustit tyto dotazy. V sešitech ve výchozím nastavení se vyberou všechny pracovní prostory, ve kterých směrujete protokoly služby Azure AD. 
 
 Chcete:
 
@@ -31,7 +34,17 @@ Chcete:
 
 - Víte, kdo pro přihlášení k prostředí používá starší verze ověřování? ( [Blokováním staršího ověřování](../conditional-access/block-legacy-authentication.md)můžete zlepšit ochranu vašeho klienta.)
 
-Aby bylo možné vyřešit tyto otázky, služba Active Directory poskytuje sešity pro monitorování. [Azure monitor sešity](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinují text, analytické dotazy, metriky a parametry do propracovaných interaktivních sestav. 
+- Potřebujete pochopit dopad zásad podmíněného přístupu ve vašem tenantovi?
+
+- Chcete mít možnost kontrolovat: dotazy protokolu přihlášení, sešit, na kolik uživatelům bylo uděleno nebo odepřen přístup, a také počet uživatelů, kteří se při přístupu k prostředkům používají zásady podmíněného přístupu?
+
+- Zajímá Vás hlubší porozumění: podrobnosti o sešitu za podmínku, aby bylo možné určit dopad zásad v kontextu na podmínku, včetně platformy zařízení, stavu zařízení, klientské aplikace, rizika přihlašování, umístění a aplikace?
+
+- Získejte podrobnější přehled o dotazech na přihlášení. Tento sešit oznamuje, kolik uživatelů bylo uděleno nebo odepřeno přístupu, a kolik uživatelů při přístupu k prostředkům nepoužívá zásady podmíněného přístupu.
+
+- Aby bylo možné vyřešit tyto otázky, služba Active Directory poskytuje sešity pro monitorování. [Azure monitor sešity](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinují text, analytické dotazy, metriky a parametry do propracovaných interaktivních sestav.
+
+
 
 Tento článek:
 
@@ -57,7 +70,7 @@ Pokud chcete používat monitorované sešity, potřebujete:
     - Globální správce
 
 ## <a name="roles"></a>Role
-Musíte být v jedné z následujících rolí a mít [přístup k podkladovým Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) pracovním prostorům pro správu sešitů:
+Musíte být v jedné z následujících rolí a mít [přístup k podkladovým Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) pracovním prostorům pro správu sešitů:
 -   Globální správce
 -   Správce zabezpečení
 -   Čtecí modul zabezpečení
@@ -170,7 +183,43 @@ Pro zakázaná přihlášení získáte rozpis stavu podmíněného přístupu.
 ![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
+## <a name="conditional-access-insights"></a>Přehled podmíněného přístupu
 
+### <a name="overview"></a>Přehled
+
+Sešity obsahují dotazy protokolu přihlášení, které správcům IT pomůžou monitorovat dopad zásad podmíněného přístupu ve svém tenantovi. Máte možnost nahlásit, kolik uživatelů bylo uděleno nebo odepřeno přístupu. Sešit obsahuje přehledy o tom, kolik uživatelů se v době přihlášení na základě atributů těchto uživatelů vynechá. Obsahuje podrobnosti za podmínku, takže dopad zásad může být kontextem na podmínku, včetně platformy zařízení, stavu zařízení, klientské aplikace, rizika přihlášení, umístění a aplikace.
+
+### <a name="instructions"></a>Pokyny 
+Pokud chcete získat přístup k sešitu pro přehledy podmíněného přístupu, vyberte v části Podmíněný přístup sešit s **informacemi o podmíněném** přístupu. V tomto sešitu se zobrazuje očekávaný dopad na jednotlivé zásady podmíněného přístupu ve vašem tenantovi. V rozevíracím seznamu vyberte jednu nebo více zásad podmíněného přístupu a zužte rozsah sešitu použitím následujících filtrů: 
+
+- **Časový rozsah**
+
+- **Uživatelský**
+
+- **Můžou**
+
+- **Zobrazení dat**
+
+![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+
+
+Souhrn dopadů zobrazuje počet uživatelů nebo přihlášení, pro které měly vybrané zásady určitý výsledek. Total je počet uživatelů nebo přihlášení, pro které se vybrané zásady vyhodnotily ve vybraném časovém rozsahu. Kliknutím na dlaždici vyfiltrujete data v sešitu podle tohoto typu výsledku. 
+
+![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+
+V tomto sešitu se také zobrazuje dopad vybraných zásad, které jsou rozdělené podle všech šesti podmínek: 
+- **Stav zařízení**
+- **Platforma zařízení**
+- **Klientské aplikace**
+- **Riziko přihlášení**
+- **Umístění**
+- **Aplikace**
+
+![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+
+Můžete také prozkoumat jednotlivá přihlášení filtrovaná podle parametrů vybraných v sešitu. Vyhledávejte jednotlivé uživatele, seřazené podle četnosti přihlašování a Prohlédněte si jejich odpovídající přihlašovací události. 
+
+![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 
 
@@ -211,7 +260,7 @@ Pro každý trend získáte rozpis podle aplikace a protokolu.
 
 ## <a name="sign-ins-failure-analysis"></a>Analýza selhání přihlášení
 
-Pomocí sešitu **analýzy selhání přihlášení** můžete řešit chyby s následujícím:
+Použijte sešit **analýzy selhání přihlášení** k řešení chyb s:
 
 - Přihlášení
 - Zásady podmíněného přístupu

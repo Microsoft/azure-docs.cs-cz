@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 0e5bec7d3e1ecd63541a319cd5a9151560ef4139
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: fec39a9e788debcd9c3ac707a0431e268d87ed35
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964644"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146196"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spuštění Azure IoT Edge v Ubuntu Virtual Machines
 
@@ -36,7 +36,7 @@ Při prvním spuštění předinstaluje Azure IoT Edge na virtuálním počíta�
     1.  Z IoT Edge zařízení vytvořeného v IoT Hub zkopírujte připojovací řetězec zařízení. Pokud tento proces neznáte, můžete postupovat podle pokynů k [Načtení připojovacího řetězce v Azure Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) .
     1.  Vyberte nově vytvořený prostředek virtuálního počítače z Azure Portal a otevřete možnost **Spustit příkaz** .
     1.  Vyberte možnost **RunShellScript**
-    1.  Spusťte skript níže prostřednictvím příkazového okna s připojovacím řetězcem zařízení: `/etc/iotedge/configedge.sh “{device_connection_string}”`
+    1.  Spusťte skript níže prostřednictvím příkazového okna s připojovacím řetězcem zařízení: `/etc/iotedge/configedge.sh "{device_connection_string}"`
     1.  Vyberte **Spustit** .
     1.  Chvíli počkejte a obrazovka by pak měla poskytnout zprávu o úspěchu, která indikuje, že se připojovací řetězec úspěšně nastavil.
 

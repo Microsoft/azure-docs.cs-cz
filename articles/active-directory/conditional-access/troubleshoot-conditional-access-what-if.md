@@ -11,20 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d463bc889385f8f157ebb9892acc7a4a8b2a2e
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278530"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175796"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Řešení potíží s podmíněným přístupem pomocí nástroje What If
 
 [Nástroj what if](what-if-tool.md) v podmíněném přístupu je výkonný, když se snažíte pochopit, proč zásada byla nebo nebyla pro uživatele v konkrétní situaci použita, nebo pokud by se zásada použila ve známém stavu.
 
-Nástroj what if se nachází v**What If** **Azure Portal** > **Azure Active Directory** > **podmíněného přístupu** > .
+Nástroj What If se nachází v **Azure Portal** > **Azure Active Directory** > **podmíněný přístup** > **What If**.
 
 ![Nástroj pro What If podmíněného přístupu ve výchozím stavu](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
+
+> [!NOTE]
+> Nástroj What If aktuálně nevyhodnocuje zásady v režimu pouze sestavy.
 
 ## <a name="gathering-information"></a>Shromažďování informací
 
@@ -34,7 +37,7 @@ Následující další informace jsou volitelné, ale pomůžou vám zúžit roz
 
 * Cloudové aplikace nebo akce
 * IP adresa 
-* Country
+* Země
 * Platforma zařízení
 * Klientské aplikace (Preview)
 * Stav zařízení (Preview) 
@@ -70,7 +73,7 @@ V této instanci by měl uživatel zablokován přístup k libovolné cloudové 
 
 Tento test se dá rozšířit tak, aby zahrnoval další datové body, abyste mohli zúžit rozsah.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Co je podmíněný přístup?](overview.md)
 * [Co je Azure Active Directory Identity Protection?](../identity-protection/overview-v2.md)

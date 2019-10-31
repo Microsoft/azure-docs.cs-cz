@@ -1,6 +1,6 @@
 ---
-title: Změna rolí prostředků pro balíček pro přístup ve správě nároků Azure AD (Preview) – Azure Active Directory
-description: Naučte se, jak změnit role prostředků pro existující balíček přístupu v Azure Active Directory Správa nároků (Preview).
+title: Změna rolí prostředků pro balíček pro přístup ve správě nároků Azure AD – Azure Active Directory
+description: Naučte se, jak změnit role prostředků pro existující balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b719546ec598f2e99061597e99a3d4e875b12cf
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429807"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174655"
 ---
-# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Změna rolí prostředků pro balíček pro přístup ve správě nároků Azure AD (Preview)
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Změna rolí prostředků pro balíček přístupu v Azure AD – Správa nároků
 
 Jako správce balíčků přístupu můžete kdykoli změnit prostředky v balíčku pro přístup, aniž byste se museli starat o přístup uživatelů k novým prostředkům nebo odebrat jeho přístup z předchozích zdrojů. Tento článek popisuje, jak změnit role prostředků pro existující balíček přístupu.
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: 7e155df62d05045ceed4479643ed13a8ba6fa06d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bf6efbdbe19be28c005e2081c99827734ef10174
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958298"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176989"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Kurz: použití nástroje pro rozpoznávání formulářů s Azure Logic Apps k analýze faktur
 
@@ -62,7 +62,7 @@ Tento kontejner použijete k nahrání ukázkových dat, která jsou nutná pro 
 
 Stáhněte si ukázková data dostupná na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090451). Extrahujte data do místní složky a nahrajte obsah složky **/Train** do **formrecocontainer** , který jste vytvořili dříve. Podle pokynů v části [nahrání objektu blob bloku](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) nahrajte data do kontejneru.
 
-Zkopírujte adresu URL kontejneru. Tento kurz budete potřebovat později v tomto kurzu. Pokud jste vytvořili účet úložiště a kontejner se stejnými názvy, jak je uvedeno v tomto kurzu, adresa URL bude *https://formrecostorage.blob.core.windows.net/formrecocontainer/* .
+Zkopírujte adresu URL kontejneru. Tento kurz budete potřebovat později v tomto kurzu. Pokud jste vytvořili účet úložiště a kontejner se stejnými názvy, jako jsou uvedené v tomto kurzu, adresa URL bude *https:\//formrecostorage.blob.Core.Windows.NET/formrecocontainer/* .
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 

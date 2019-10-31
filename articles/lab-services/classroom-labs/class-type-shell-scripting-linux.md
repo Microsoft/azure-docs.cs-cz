@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 147d3dba2e2dc271d5b7422d7ba2b28c04f583af
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9502a81149df11ffa378bf8ffc2c377f4bb22d7f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330642"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177111"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Nastavení testovacího prostředí pro učení skriptování prostředí v systému Linux
 V tomto článku se dozvíte, jak nastavit testovací prostředí pro učení skriptování prostředí v systému Linux. Skriptování je užitečnou součástí správy systému, která správcům umožňuje vyhnout se opakovaným úlohám. V tomto ukázkovém scénáři třída pokrývá tradiční skripty bash a rozšířené skripty. Rozšířené skripty jsou skripty, které kombinují příkazy bash a Ruby. Tento přístup umožňuje Ruby předávat data kolem a bash příkazů pro interakci s prostředím. 
@@ -32,19 +32,19 @@ Po vytvoření účtu testovacího prostředí povolte v účtu testovacího pro
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | ----------- | ------------ |  
-| Image Marketplace | Povolte image [Ubuntu serveru 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) pro použití v rámci vašeho účtu testovacího prostředí. Další informace najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) . | 
+| Image Marketplace | Povolte image [Ubuntu serveru 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) pro použití v rámci vašeho účtu testovacího prostředí. Další informace najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) . | 
 
 Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací prostředí a použijte následující nastavení:
 
 | Nastavení testovacího prostředí | Hodnota/pokyny | 
 | ------------ | ------------------ |
 | Velikost virtuálního počítače (VM) | Malé  |
-| Image virtuálního počítače | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) |
+| Image virtuálního počítače | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
 | Povolit připojení ke vzdálené ploše | Aby. <p>Povolením tohoto nastavení umožníte učitelům a studentům připojit se ke svým virtuálním počítačům pomocí vzdálené plochy (RDP). Další informace najdete v tématu [Povolení služby Vzdálená plocha pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>Instalace desktopu a xrdp
-V imagi [LTS serveru Ubuntu server 18,04](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) není ve výchozím nastavení nainstalován server vzdálené plochy. Postupujte podle pokynů v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md) a nainstalujte balíčky, které jsou potřeba na počítači šablony pro připojení přes protokol vzdálené plochy.
+V imagi [LTS serveru Ubuntu server 18,04](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) není ve výchozím nastavení nainstalován server vzdálené plochy. Postupujte podle pokynů v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md) a nainstalujte balíčky, které jsou potřeba na počítači šablony pro připojení přes protokol vzdálené plochy.
 
 ## <a name="install-ruby"></a>Instalace Ruby
 Ruby je open source dynamický jazyk, který se dá kombinovat s bash skripty. V této části se dozvíte, jak pomocí `apt-get` nainstalovat nejnovější verzi [Ruby](https://www.ruby-lang.org/).

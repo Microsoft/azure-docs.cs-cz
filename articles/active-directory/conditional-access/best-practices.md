@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980504"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175777"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -53,7 +53,7 @@ Všechny zásady se vynutily ve dvou fázích:
 
 - Ve **druhé** fázi se zobrazí výzva, abyste splnili požadavky, které jste nevyhověli. Pokud některá z těchto zásad blokuje přístup, zablokují se a nezobrazí se výzva k navýšení jiných ovládacích prvků zásad. Pokud vám žádná z těchto zásad neblokuje, budete vyzváni k tomu, abyste naplnili jiné ovládací prvky zásad v tomto pořadí:
 
-   ![Pořadí](./media/best-practices/06.png)
+   ![Objednávka](./media/best-practices/06.png)
     
    Další poskytovatelé MFA a podmínek použití jsou další.
 

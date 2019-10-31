@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 3ea1b97855e5c060b6cbb6c43ce5111506bf4c20
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 99cd9fc1da009660023a246c5210e7f54bdebcfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676919"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177424"
 ---
-# <a name="virtual-network-tap"></a>Klepnutí na virtuální síť
+# <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
 
 KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuje nepřetržitě streamovat síťový provoz virtuálního počítače do nástroje pro shromažďování síťových paketů nebo pro analýzu. Sběrač nebo nástroj pro analýzu poskytuje síťový partner pro [síťové virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/) . Seznam partnerských řešení, která jsou ověřená pro práci s virtuální sítí, najdete v tématu [Partnerská řešení](#virtual-network-tap-partner-solutions).
 
 > [!IMPORTANT]
-> Klepnutí na virtuální síť je v tuto chvíli ve všech oblastech Azure ve verzi Preview. Pokud chcete použít virtuální síť, musíte se zaregistrovat ve verzi Preview odesláním e-mailu na adresu @ no__t-0 s ID vašeho předplatného. Až se vaše předplatné zaregistruje, dostanete e-mail zpátky. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Další informace o Microsoft Azure verzích Preview  for najdete v tématu s [doplňkovými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Klepnutí na virtuální síť je v tuto chvíli ve všech oblastech Azure ve verzi Preview. Pokud chcete použít virtuální síť, musíte se zaregistrovat ve verzi Preview odesláním e-mailu <azurevnettap@microsoft.com> s vaším ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v tématu [dodatečné informace o použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview .
 
 ## <a name="virtual-network-tap-partner-solutions"></a>Virtuální síť – klepněte na Partnerská řešení
 
@@ -43,7 +43,7 @@ KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuj
 - [Zabezpečení spánku](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cloud Cisco Stealthwatch](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
-- [ExtraHop se odhalí (x)](https://www.extrahop.com/company/tech-partners/microsoft/)
+- [ExtraHop se odhalí (x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
 - [Fidelis kyberbezpečnosti](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
@@ -56,7 +56,7 @@ Následující obrázek ukazuje, jak funguje virtuální síť. Můžete přidat
 
 ![Jak funguje na virtuální síti](./media/virtual-network-tap/architecture.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než vytvoříte virtuální síť, musíte přijmout potvrzovací e-mail, který jste zaregistrovali ve verzi Preview, a mít jeden nebo více virtuálních počítačů vytvořených pomocí modelu nasazení [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a partnerského řešení pro agregaci Klepněte na provoz ve stejné oblasti Azure. Pokud ve vaší virtuální síti nemáte Partnerské řešení, přečtěte si článek o [partnerských řešeních](#virtual-network-tap-partner-solutions) k nasazení. K agregaci provozu z více síťových rozhraní ve stejných nebo různých předplatných můžete použít stejnou virtuální síť. klepněte na prostředek. Pokud jsou monitorovaná síťová rozhraní v různých předplatných, musí být odběry přidruženy ke stejnému Azure Active Directory tenantovi. Monitorovaná síťová rozhraní a cílový koncový bod pro agregaci přenosů po klepnutí se navíc můžou nacházet v partnerských virtuálních sítích ve stejné oblasti. Pokud používáte tento model nasazení, zajistěte, aby bylo povoleno vytváření [partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) před konfigurací klepnutí na virtuální síť.
 
@@ -64,7 +64,7 @@ Předtím, než vytvoříte virtuální síť, musíte přijmout potvrzovací e-
 
 Účty, které použijete k použití konfigurace na síťových rozhraních, musí být přiřazeny roli [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k potřebným akcím z následující tabulky:
 
-| Akce | Name |
+| Akce | Name (Název) |
 |---|---|
 | Microsoft. Network/virtualNetworkTaps/* | Vyžaduje se pro vytvoření, aktualizaci, čtení a odstranění virtuální sítě klepnutím na prostředek. |
 | Microsoft. Network/networkInterfaces/Read | Vyžaduje se ke čtení prostředku síťového rozhraní, na kterém se bude konfigurovat klepnutím. |

@@ -6,12 +6,12 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 2e76da32e25451084d595b10698fe663c55b6a4b
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: f024fd7886ec6f192c440cca6951e3aeb66ad22d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969524"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177810"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Kurz: uložení stavu Terraformu do Azure Storage
 
@@ -70,7 +70,7 @@ Vytvořte proměnnou prostředí s názvem `ARM_ACCESS_KEY` s hodnotou přístup
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Pokud chcete dál chránit přístupový klíč účtu Azure Storage, uložte ho do Azure Key Vault. Proměnnou prostředí lze následně nastavit pomocí příkazu podobného následujícímu. Další informace o Azure Key Vault naleznete v dokumentaci [Azure Key Vault] [.. /key-vault/quick-create-cli.md].
+Pokud chcete dál chránit přístupový klíč účtu Azure Storage, uložte ho do Azure Key Vault. Proměnnou prostředí lze následně nastavit pomocí příkazu podobného následujícímu. Další informace o Azure Key Vault najdete v dokumentaci k [Azure Key Vault](../key-vault/quick-create-cli.md).
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
@@ -110,7 +110,7 @@ Stavový soubor teď můžete najít v Azure Storage Blob.
 
 Objekty bloby Azure Storage jsou automaticky uzamčené před všemi operacemi, které zapisují stav. Tento model zabraňuje souběžným stavovým operacím, což může způsobit poškození. 
 
-Další informace najdete v tématu [uzamykání stavu] [https://www.terraform.io/docs/state/locking.html ] v dokumentaci k Terraformu.
+Další informace najdete v tématu [uzamykání stavu](https://www.terraform.io/docs/state/locking.html) v dokumentaci k terraformu.
 
 Zámek se dá zobrazit při prozkoumávání objektu BLOB prostřednictvím Azure Portal nebo jiných nástrojů pro správu Azure.
 
@@ -120,7 +120,7 @@ Zámek se dá zobrazit při prozkoumávání objektu BLOB prostřednictvím Azur
 
 Data uložená v objektu blob Azure se před trvalým zašifrováním šifrují. V případě potřeby Terraformu načte stav z back-endu a uloží ho do místní paměti. Při použití tohoto modelu se stav nikdy nezapíše na místní disk.
 
-Další informace o šifrování Azure Storage najdete v části [šifrování služby Azure Storage pro data v klidovém umístění] [.. /storage/common/storage-service-encryption.md].
+Další informace o šifrování Azure Storage najdete v části [Azure Storage šifrování služby pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 05418cde7b31392c1a55f64945764e978daba1bf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056324"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175405"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Aplikace démona, která volá webová rozhraní API – přesun do produkčního prostředí
 
@@ -63,11 +63,10 @@ Tady je několik odkazů, které vám pomohou získat další informace:
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL Python je momentálně ve verzi Public Preview.
-Další informace najdete v tématu [ukázky v úložišti MSAL Pythonu](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample).
+Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace](./quickstart-v2-python-daemon.md).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j (MSAL. Java) je aktuálně ve verzi Public Preview. Další informace najdete v tématu [ukázky MSAL Java v úložišti](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+MSAL Java je aktuálně ve verzi Public Preview. Další informace najdete v tématu [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
 
 ---

@@ -132,7 +132,7 @@ Potřebujete adresy URL zdrojového a cílového účtu úložiště. Adresy URL
 
 Adresu URL můžete získat pomocí Azure Portal nebo Azure PowerShellu:
 
-* **Portál**: ** > ** Kliknětena >  **všechny služby**účty úložiště objekty blob účtu úložiště a zdrojový soubor VHD se pravděpodobně nacházejí v kontejneru VHD. ** > ** **>** Klikněte na **vlastnosti** kontejneru a zkopírujte text označený **Adresa URL**. Budete potřebovat adresy URL zdrojového i cílového kontejneru. 
+* **Portál**: ** > ** Kliknětena > **všechny služby**účty úložiště objekty blob účtu úložiště a zdrojový soubor VHD se pravděpodobně nacházejí v kontejneru VHD. ** > ** **>** Klikněte na **vlastnosti** kontejneru a zkopírujte text označený **Adresa URL**. Budete potřebovat adresy URL zdrojového i cílového kontejneru. 
 * **PowerShell**: K získání informací o virtuálním počítači s názvem **myVM** ve skupině prostředků **myResourceGroup**použijte [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) . Ve výsledcích vyhledejte část **profil úložiště** pro **identifikátor URI virtuálního pevného disku**. První část identifikátoru URI je adresa URL kontejneru a poslední část je název virtuálního pevného disku operačního systému pro virtuální počítač.
 
 ```powershell

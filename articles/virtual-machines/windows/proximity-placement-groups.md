@@ -1,35 +1,28 @@
 ---
-title: Použití skupin umístění blízkosti pro virtuální počítače s Windows | Microsoft Docs
+title: Použití skupin umístění blízkosti pro virtuální počítače s Windows
 description: Seznamte se s vytvářením a používáním skupin umístění blízkosti pro virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: af75b3f98232d6507fc8b0fda179bebc75828086
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6d0c35737151b060dcffba8944f4a1361d36dc14
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088828"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171219"
 ---
-# <a name="preview-deploy-vms-to-proximity-placement-groups-using-powershell"></a>Verze Preview: Nasazení virtuálních počítačů do skupin umístění Proximity pomocí prostředí PowerShell
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Nasazení virtuálních počítačů do skupin umístění Proximity pomocí prostředí PowerShell
 
 
-Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](co-location.md#preview-proximity-placement-groups).
+Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](co-location.md#proximity-placement-groups).
 
 Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěné blízko sebe. Skupiny umístění blízkosti jsou užitečné pro úlohy, u kterých je minimální latence požadavek.
-
-> [!IMPORTANT]
-> Skupiny umístění blízkosti jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> Skupiny umístění blízkosti nejsou v těchto oblastech k dispozici v průběhu verze Preview: **Japonsko – východ**, **Austrálie – východ** a **Indie – střed**
 
 
 ## <a name="create-a-proximity-placement-group"></a>Vytvoření skupiny umístění bezkontaktní komunikace
@@ -58,7 +51,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Pokud k vytvoření virtuálního počítače použijete `-ProximityPlacementGroup $ppg.Id` [příkaz New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) , ve skupině umístění blízkosti se vytvoří virtuální počítač, který bude odkazovat na ID skupiny umístění blízkosti.
+Pokud k vytvoření virtuálního počítače použijete [příkaz New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) , ve `-ProximityPlacementGroup $ppg.Id` skupině umístění blízkosti se vytvoří virtuální počítač, který bude odkazovat na ID skupiny umístění blízkosti.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -78,12 +71,12 @@ Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
     Format-Table -Property VirtualMachines -Wrap
 ```
 
-## <a name="availability-sets"></a>Sady dostupnosti
-Ve skupině umístění blízkosti můžete také vytvořit skupinu dostupnosti. Použijte stejný `-ProximityPlacementGroup` parametr s rutinou [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) k vytvoření skupiny dostupnosti a všechny virtuální počítače vytvořené ve skupině dostupnosti se vytvoří i ve stejné skupině umístění blízkosti.
+## <a name="availability-sets"></a>Skupiny dostupnosti
+Ve skupině umístění blízkosti můžete také vytvořit skupinu dostupnosti. Pomocí rutiny [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) použijte stejný parametr `-ProximityPlacementGroup` k vytvoření skupiny dostupnosti a všechny virtuální počítače vytvořené ve skupině dostupnosti se vytvoří i ve stejné skupině umístění blízkosti.
 
 ## <a name="scale-sets"></a>Škálovací sady
 
-Ve skupině umístění blízkosti můžete také vytvořit sadu škálování. Použijte stejný `-ProximityPlacementGroup` parametr s [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) k vytvoření sady škálování a všechny instance se vytvoří ve stejné skupině umístění blízkosti.
+Ve skupině umístění blízkosti můžete také vytvořit sadu škálování. Použijte stejný parametr `-ProximityPlacementGroup` s [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) k vytvoření sady škálování a všechny instance se vytvoří ve stejné skupině umístění blízkosti.
 
 ## <a name="next-steps"></a>Další kroky
 

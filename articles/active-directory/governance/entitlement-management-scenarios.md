@@ -1,6 +1,6 @@
 ---
-title: Běžné scénáře správy nároků ve službě Azure AD (Preview) – Azure Active Directory
-description: Seznamte se se základními kroky, které byste měli dodržovat v části běžné scénáře v Azure Active Directory Správa nároků (Preview).
+title: Běžné scénáře správy nároků ve službě Azure AD – Azure Active Directory
+description: Seznamte se se základními kroky, které byste měli postupovat při běžných scénářích Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,116 +12,146 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/23/2019
+ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81382ebecdff6c7b146386b3ae2b0768a7c834bf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 24d2dc82d0e81c9ac374d96387677774dc916b8c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389069"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173503"
 ---
-# <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Běžné scénáře správy nároků ve službě Azure AD (Preview)
+# <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Běžné scénáře správy nároků ve službě Azure AD
 
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro vaši organizaci. Pokud však teprve začínáte, je vhodné porozumět běžným scénářům správců, vlastníkům katalogu, správcům balíčků, schvalovatelům a žadatelům.
 
-Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro vaši organizaci. Pokud však teprve začínáte, je vhodné porozumět běžným scénářům pro správce, schvalovatele a žadatele.
+## <a name="delegate"></a>dostával
 
-## <a name="administrators"></a>Správci
+### <a name="administrator-delegate-management-of-resources"></a>Správce: delegování správy prostředků
 
-### <a name="im-new-to-entitlement-management-and-i-want-help-with-getting-started"></a>Jsem novým řízením nároků a chci pomáhat s zahájením práce
+1. [Přehrát video: delegování z něho do oddělení IT Manager](https://www.microsoft.com/videoplayer/embed/RE3Lq00)
+1. [Delegovat uživatele na roli tvůrce katalogu](entitlement-management-delegate-catalog.md)
 
-> [!div class="mx-tableFixed"]
-> | Kroky | Příklad: |
-> | --- | --- |
-> | [Postup vytvoření prvního balíčku pro přístup podle kurzu](entitlement-management-access-package-first.md) | [@no__t – ikona portálu 1Azure](./media/entitlement-management-scenarios/azure-portal.png)](./media/entitlement-management-scenarios/azure-portal-expanded.png#lightbox) |
+### <a name="catalog-creator-delegate-management-of-resources"></a>Tvůrce katalogu: delegování správy prostředků
 
-### <a name="i-want-to-allow-users-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Chci uživatelům v mém adresáři dovolit požádat o přístup ke skupinám, aplikacím nebo webům SharePointu
+- [Vytvořit nový katalog](entitlement-management-catalog-create.md#create-a-catalog)
 
-> [!div class="mx-tableFixed"]
-> | Kroky | Příklad: |
-> | --- | --- |
-> | **1.** [Vytvoření nového přístupového balíčku v katalogu](entitlement-management-access-package-create.md#start-new-access-package) | ![Vytvoření balíčku pro přístup](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [přidejte role prostředků pro přístup k balíčku](entitlement-management-access-package-resources.md#add-resource-roles)<ul><li>Skupiny</li><li>Aplikace</li><li>Weby SharePoint</li></ul> | ![Přidat role prostředků](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [přidejte zásadu](entitlement-management-access-package-request-policy.md#for-users-in-your-directory) .<ul><li>Pro uživatele ve vašem adresáři</li><li>Vyžadovat schválení</li><li>Nastavení životního cyklu</li></ul> | ![Přidání zásad](./media/entitlement-management-scenarios/policy.png) |
+### <a name="catalog-owner-delegate-management-of-resources"></a>Vlastník katalogu: delegování správy prostředků
 
-### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Chci uživatelům v adresáři Moje obchodní partneři (včetně uživatelů, kteří ještě nejsou v adresáři adresáře) dovolit přístup k přístupu ke skupinám, aplikacím nebo webům SharePointu.
+1. [Přidat spoluvlastníky do katalogu](entitlement-management-catalog-create.md#add-additional-catalog-owners)
+1. [Přidání prostředků do katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog)
 
-> [!div class="mx-tableFixed"]
-> | Kroky | Příklad: |
-> | --- | --- |
-> | **1.** [Vytvoření nového přístupového balíčku v katalogu](entitlement-management-access-package-create.md#start-new-access-package) | ![Vytvoření balíčku pro přístup](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [přidejte role prostředků pro přístup k balíčku](entitlement-management-access-package-resources.md#add-resource-roles) | ![Přidat role prostředků](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [přidejte zásadu pro externí uživatele](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory) .<ul><li>Pro uživatele, kteří nejsou ve vašem adresáři</li><li>Vyžadovat schválení</li><li>Nastavení životního cyklu</li></ul> | ![Přidat zásady pro externí uživatele](./media/entitlement-management-scenarios/policy-external.png) |
-> | **4.** [odeslání odkazu pro vyžádání balíčku pro přístup vašemu obchodnímu partnerovi](entitlement-management-access-package-settings.md)<ul><li>Obchodní partner může sdílet propojení se svými uživateli.</li></ul> |  |
+### <a name="catalog-owner-delegate-management-of-access-packages"></a>Vlastník katalogu: delegování správy balíčků přístupu
 
-### <a name="i-want-to-change-the-groups-applications-or-sharepoint-sites-in-an-access-package"></a>Chci změnit skupiny, aplikace nebo weby SharePointu v balíčku pro přístup
+1. [Přehrát video: delegování z vlastníka katalogu na přístup správce balíčků](https://www.microsoft.com/videoplayer/embed/RE3Lq08)
+1. [Delegovat uživatelům přístup k roli správce balíčků](entitlement-management-delegate-managers.md)
 
-> [!div class="mx-tableFixed"]
-> | Kroky | Příklad: |
-> | --- | --- |
-> | **1.** otevřete balíček pro přístup. | ![Přidat role prostředků](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [Přidání nebo odebrání rolí prostředků](entitlement-management-access-package-resources.md#add-resource-roles) | ![Přidat role prostředků](./media/entitlement-management-scenarios/resource-roles-add.png) |
+## <a name="govern-access-for-users-in-your-organization"></a>Řízení přístupu pro uživatele ve vaší organizaci
 
-### <a name="i-want-to-view-who-has-an-assignment-to-groups-applications-or-sharepoint-sites"></a>Chci zobrazit, kdo má přiřazení ke skupinám, aplikacím nebo webům SharePointu
+### <a name="access-package-manager-allow-employees-in-your-organization-to-request-access-to-resources"></a>Přístup správce balíčků: umožňuje zaměstnancům ve vaší organizaci požádat o přístup k prostředkům.
 
-> [!div class="mx-tableFixed"]
-> | Kroky | Příklad: |
-> | --- | --- |
-> | **1.** otevřete balíček pro přístup. | ![Přidat role prostředků](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [zobrazení přiřazení](entitlement-management-access-package-assignments.md#view-who-has-an-assignment)<ul><li>Zobrazit, kteří uživatelé mají přístup k balíčku přístupu</li><li>Zobrazit platnost přístupu uživatele</li></ul> |  |
+1. [Vytvoření nového přístupového balíčku](entitlement-management-access-package-create.md#start-new-access-package)
+1. [Přidání skupin, týmů, aplikací nebo webů SharePointu pro přístup k balíčku](entitlement-management-access-package-create.md#resource-roles)
+1. [Přidejte zásadu žádosti, která uživatelům ve vašem adresáři umožní požádat o přístup.](entitlement-management-access-package-create.md#for-users-in-your-directory)
+1. [Zadat nastavení vypršení platnosti](entitlement-management-access-package-create.md#lifecycle)
 
-### <a name="i-want-to-view-groups-applications-or-sharepoint-sites-a-user-has-access-to"></a>Chci zobrazit skupiny, aplikace nebo weby SharePointu, ke kterým má uživatel přístup
+### <a name="requestor-request-access-to-resources"></a>Žadatel: vyžádání přístupu k prostředkům
 
-> [!div class="mx-tableFixed"]
-> | Kroky | Příklad: |
-> | --- | --- |
-> | [Zobrazit sestavu přiřazení uživatelů](entitlement-management-reports.md)<ul><li>Zobrazit, kdy požadoval a kdo schválil</li></ul> |  |
+1. [Přihlášení k portálu pro přístup](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. Najít balíček pro přístup
+1. [Požádat o přístup](entitlement-management-request-access.md#request-an-access-package)
 
-## <a name="approvers"></a>Schvalovatelé
+### <a name="approver-approve-requests-to-resources"></a>Schvalovatel: schválení žádostí na prostředky
 
-### <a name="i-want-to-approve-requests-to-access-groups-applications-or-sharepoint-sites"></a>Chci schvalovat žádosti o přístup ke skupinám, aplikacím nebo webům SharePointu
+1. [Otevřít žádost na portálu pro přístup](entitlement-management-request-approve.md#open-request)
+1. [Schválit nebo zamítnout žádost o přístup](entitlement-management-request-approve.md#approve-or-deny-request)
 
-> [!div class="mx-tableFixed"]
-> | Kroky | Příklad: |
-> | --- | --- |
-> | **1.** [otevření žádosti na portálu pro přístup](entitlement-management-request-approve.md#open-request) | [@no__t – ikona portálu pro přístup k 1My](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** [schvalte žádost o přístup](entitlement-management-request-approve.md#approve-or-deny-request) . | ![Schválit přístup](./media/entitlement-management-scenarios/approve-access.png) |
+### <a name="requestor-view-the-resources-you-already-have-access-to"></a>Žadatel: zobrazení prostředků, ke kterým už máte přístup
 
-## <a name="requestors"></a>Žadatelé
+1. [Přihlášení k portálu pro přístup](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. Zobrazit balíčky aktivního přístupu
 
-### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-available-to-me-and-request-access"></a>Chci zobrazit skupiny, aplikace nebo weby služby SharePoint, které jsou pro mě dostupné, a požádat o přístup
+## <a name="govern-access-for-users-outside-your-organization"></a>Řízení přístupu pro uživatele mimo vaši organizaci
 
-> [!div class="mx-tableFixed"]
-> | Kroky | Příklad: |
-> | --- | --- |
-> | **1.** [Přihlaste se na portál My Access](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [@no__t – ikona portálu pro přístup k 1My](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** vyhledání balíčku pro přístup |  |
-> | **3.** [požádat o přístup](entitlement-management-request-access.md#request-an-access-package) | ![Vyžádání přístup](./media/entitlement-management-scenarios/request-access.png) |
+### <a name="administrator-collaborate-with-an-external-partner-organization"></a>Správce: spolupráce s externí partnerskou organizací
 
-### <a name="im-an-external-user-and-i-want-to-request-access-to-groups-applications-or-sharepoint-sites-with-a-direct-link"></a>Jsem externí uživatel a chci požádat o přístup ke skupinám, aplikacím nebo webům SharePointu s přímým odkazem
+1. [Přečtěte si, jak funguje přístup pro externí uživatele](entitlement-management-external-users.md#how-access-works-for-external-users)
+1. [Kontrola nastavení pro externí uživatele](entitlement-management-external-users.md#settings-for-external-users)
+1. [Přidání připojení k externí organizaci](entitlement-management-organization.md)
 
-> [!div class="mx-tableFixed"]
-> | Kroky | Příklad: |
-> | --- | --- |
-> | **1.** [Najděte přijatý odkaz na balíček přístupu](entitlement-management-access-package-settings.md) . |  |
-> | **2.** [Přihlaste se na portál My Access](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [@no__t – ikona portálu pro přístup k 1My](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **3.** [požádat o přístup](entitlement-management-request-access.md#request-an-access-package) | ![Požádat o přístup k externímu uživateli](./media/entitlement-management-scenarios/request-access-external.png) |
+### <a name="access-package-manager-collaborate-with-an-external-partner-organization"></a>Přístup ke Správci balíčků: spolupráce s externí organizací partnera
 
-### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-i-already-have-access-to"></a>Chci zobrazit skupiny, aplikace nebo weby SharePointu, ke kterým už mám přístup
+1. [Vytvoření nového přístupového balíčku](entitlement-management-access-package-create.md#start-new-access-package)
+1. [Přidání skupin, týmů, aplikací nebo webů SharePointu pro přístup k balíčku](entitlement-management-access-package-resources.md#add-resource-roles)
+1. [Přidejte zásadu žádosti, která uživatelům, kteří nejsou ve vašem adresáři, umožní požádat o přístup.](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
+1. [Zadat nastavení vypršení platnosti](entitlement-management-access-package-create.md#lifecycle)
+1. [Zkopírovat odkaz pro vyžádání přístupového balíčku](entitlement-management-access-package-settings.md)
+1. Poslat odkaz na externího partnera kontaktní osoby pro sdílení s uživateli
 
-> [!div class="mx-tableFixed"]
-> | Kroky | Příklad: |
-> | --- | --- |
-> | **1.** [Přihlaste se na portál My Access](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [@no__t – ikona portálu pro přístup k 1My](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** zobrazení balíčků aktivních přístupů |  |
+### <a name="requestor-request-access-to-resources-as-an-external-user"></a>Žadatel: vyžádat přístup k prostředkům jako externí uživatel
+
+1. Najít odkaz na balíček přístupu, který jste dostali od svého kontaktu
+1. [Přihlášení k portálu pro přístup](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. [Požádat o přístup](entitlement-management-request-access.md#request-an-access-package)
+
+### <a name="approver-approve-requests-to-resources"></a>Schvalovatel: schválení žádostí na prostředky
+
+1. [Otevřít žádost na portálu pro přístup](entitlement-management-request-approve.md#open-request)
+1. [Schválit nebo zamítnout žádost o přístup](entitlement-management-request-approve.md#approve-or-deny-request)
+
+### <a name="requestor-view-the-resources-your-already-have-access-to"></a>Žadatel: zobrazení prostředků, ke kterým už máte přístup
+
+1. [Přihlášení k portálu pro přístup](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. Zobrazit balíčky aktivního přístupu
+
+## <a name="day-to-day-management"></a>Každodenní správa
+
+### <a name="access-package-manager-update-the-resources-for-a-project"></a>Přístup správce balíčků: aktualizace prostředků projektu
+
+1. [Přehrát video: každodenní správa: věci se změnily](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. Otevření balíčku pro přístup
+1. [Přidání nebo odebrání skupin, týmů, aplikací nebo webů SharePointu](entitlement-management-access-package-resources.md#add-resource-roles)
+
+### <a name="access-package-manager-update-the-duration-for-a-project"></a>Přístup správce balíčků: aktualizace doby trvání projektu
+
+1. [Přehrát video: každodenní správa: věci se změnily](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. Otevření balíčku pro přístup
+1. [Otevřete nastavení životního cyklu.](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
+1. [Aktualizace nastavení vypršení platnosti](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+
+### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>Přístup správce balíčků: aktualizace způsobu schválení přístupu pro projekt
+
+1. [Přehrát video: každodenní správa: věci se změnily](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. [Otevře existující zásadu nastavení požadavků a schválení.](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [Aktualizace nastavení schválení](entitlement-management-access-package-request-policy.md#approval)
+
+### <a name="access-package-manager-update-the-people-for-a-project"></a>Přístup správce balíčků: aktualizace uživatelů pro projekt
+
+1. [Přehrát video: každodenní správa: věci se změnily](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. [Odebrat uživatele, kteří už nepotřebují přístup](entitlement-management-access-package-assignments.md)
+1. [Otevře existující zásadu nastavení požadavků a schválení.](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [Přidat uživatele, kteří potřebují přístup](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
+
+### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>Přístup správce balíčků: přímé přiřazení konkrétních uživatelů k balíčku pro přístup
+
+1. [Pokud uživatelé potřebují jiné nastavení životního cyklu, přidejte do balíčku pro přístup novou zásadu.](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [Přímo přiřadit konkrétní uživatele k balíčku pro přístup](entitlement-management-access-package-assignments.md#directly-assign-a-user)
+
+## <a name="assignments-and-reports"></a>Přiřazení a sestavy
+
+### <a name="administrator-view-who-has-assignments-to-an-access-package"></a>Správce: zobrazení, kdo má přiřazení k balíčku přístupu
+
+1. Otevření balíčku pro přístup
+1. [Zobrazit přiřazení](entitlement-management-access-package-assignments.md#view-who-has-an-assignment)
+
+### <a name="administrator-view-resources-assigned-to-users"></a>Správce: zobrazení prostředků přiřazených uživatelům
+
+1. [Zobrazit balíčky pro přístup pro uživatele](entitlement-management-reports.md#view-access-packages-for-a-user)
+1. [Zobrazení přiřazení prostředků pro uživatele](entitlement-management-reports.md#view-resource-assignments-for-a-user)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: vytvoření prvního balíčku pro přístup](entitlement-management-access-package-first.md)
 - [Delegování a role](entitlement-management-delegate.md)
+- [Žádost o proces a e-mailová oznámení](entitlement-management-process.md)

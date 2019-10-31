@@ -7,13 +7,13 @@ ms.topic: tutorial
 ms.reviewer: jeconnoc
 ms.author: v-vasuke
 author: v-vasuke
-ms.date: 08/08/2019
-ms.openlocfilehash: 31ef82976a1c6938ae0bf591b2f8c8b1a0040466
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/18/2019
+ms.openlocfilehash: 3a091c22f49ec31029a1808c10e675a4d0960fb4
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928944"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177877"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>Kurz: nastavení jarního cloudového konfiguračního serveru pro vaši službu
 
@@ -52,7 +52,7 @@ Při použití veřejného úložiště budou konfigurovatelné vlastnosti omeze
 Všechny konfigurovatelné vlastnosti používané k nastavení veřejného úložiště `Git` jsou uvedeny níže.
 
 > [!NOTE]
-> Použití spojovníku ("-") k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Použijte například `default-label` not `defaultLabel`.
+> Použití spojovníku ("-") k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Můžete například použít `default-label`, ale ne `defaultLabel`.
 
 | Vlastnost        | Požaduje se | Funkce                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
@@ -67,7 +67,7 @@ Všechny konfigurovatelné vlastnosti používané k nastavení veřejného úlo
 Všechny konfigurovatelné vlastnosti používané k nastavení privátního úložiště `Git` s `Ssh` jsou uvedeny níže.
 
 > [!NOTE]
-> Použití spojovníku ("-") k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Použijte například `default-label` not `defaultLabel`.
+> Použití spojovníku ("-") k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Můžete například použít `default-label`, ale ne `defaultLabel`.
 
 | Vlastnost                   | Požaduje se | Funkce                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
@@ -121,10 +121,6 @@ Všechny konfigurovatelné vlastnosti používané k nastavení úložišť Git 
 | `repos."host-key-algorithm"`       | `no`             | Algoritmus klíče hostitele by měl být `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`nebo `ecdsa-sha2-nistp521`. __Vyžaduje__ se jenom v případě, že existuje `host-key`. |
 | `repos."strict-host-key-checking"` | `no`             | Určuje, zda se má při využití privátního `host-key`spustit konfigurační server. Měla by být `true` (výchozí hodnota) nebo `false`. |
 
-### <a name="import-applicationyml-file-from-spring-cloud-config"></a>Importovat soubor `application.yml` ze jarní konfigurace cloudu
-
-Můžete importovat některá výchozí nastavení serveru konfigurace přímo z webu [jarní konfigurace cloudu](https://spring.io/projects/spring-cloud-config) . Můžete to provést přímo z Azure Portal, takže nemusíte nyní provádět žádné kroky k přípravě souborů nebo úložiště konfiguračního serveru.
-
 ## <a name="attaching-your-config-server-repository-to-azure-spring-cloud"></a>Připojení úložiště konfiguračního serveru k Azure jaře cloudu
 
 Teď, když máte konfigurační soubory uložené v úložišti, musíte k ní připojit jarní cloud Azure.
@@ -135,19 +131,60 @@ Teď, když máte konfigurační soubory uložené v úložišti, musíte k ní 
 
 1. Přejděte na kartu **konfigurační server** v záhlaví **Nastavení** v nabídce na levé straně.
 
-### <a name="public-repository"></a>Veřejné úložiště
+![snímek obrazovky okna](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
-Pokud je vaše úložiště veřejné, stačí kliknout na tlačítko **veřejné** a vložit adresu URL.
+### <a name="input-repository-information-directly-to-the-azure-portal"></a>Informace o vstupním úložišti přímo do Azure Portal
 
-### <a name="private-repository"></a>Soukromé úložiště
+#### <a name="default-repository"></a>Výchozí úložiště
 
-Azure jarní Cloud podporuje ověřování SSH. Pokud chcete přidat veřejný klíč do úložiště, postupujte podle pokynů v Azure Portal. Pak nezapomeňte do konfiguračního souboru zahrnout svůj privátní klíč.
+* Veřejné úložiště: v části **výchozí úložiště** vložte identifikátor URI úložiště do oddílu **URI** a ujistěte se, že nastavení **ověřování** je **veřejné**. Pak klikněte na tlačítko **použít** k dokončení. 
 
-Kliknutím na **použít** dokončete nastavování konfiguračního serveru.
+* Soukromé úložiště: Azure jaře Cloud podporuje základní ověřování pomocí hesla nebo tokenu a SSH.
+
+    * Základní ověřování: v části **výchozí úložiště** vložte identifikátor URI úložiště do oddílu **URI** a pak klikněte na **ověřování**. Jako **typ ověřování** vyberte **základní** a zadejte své uživatelské jméno a heslo nebo token pro udělení přístupu k jarnímu cloudu Azure. Klikněte na **OK** a **použijte** k dokončení nastavení konfiguračního serveru.
+
+    ![snímek obrazovky okna](media/spring-cloud-tutorial-config-server/basic-auth.png)
+    
+    > [!CAUTION]
+    > Některé servery úložiště Git, jako je GitHub, používají `personal-token` nebo `access-token` jako heslo pro **základní ověřování**. Tento typ tokenu můžete použít jako heslo v Azure jaře cloudu, protože nikdy nevyprší platnost. U jiných serverů úložiště Git, jako je BitBucket a Azure DevOps, vyprší platnost `access-token` za jednu nebo dvě hodiny. To znamená, že při použití těchto serverů úložiště se službou Azure Pramenitého cloudu není možnost životaschopná.]
+
+    * SSH: v části **výchozí úložiště** vložte identifikátor URI úložiště do oddílu **URI** a pak klikněte na **ověřování**. Jako **typ ověřování** vyberte **SSH** a zadejte svůj **privátní klíč**. Volitelně můžete zadat **klíč hostitele** a **algoritmus hostitelského klíče**. Nezapomeňte do svého úložiště konfiguračního serveru zahrnout svůj veřejný klíč. Klikněte na **OK** a **použijte** k dokončení nastavení konfiguračního serveru.
+
+    ![snímek obrazovky okna](media/spring-cloud-tutorial-config-server/ssh-auth.png)
+
+#### <a name="pattern-repository"></a>Úložiště vzorků
+
+Pokud chcete použít volitelné **úložiště vzorků** ke konfiguraci služby, zadejte **identifikátor URI** a **ověřování** stejným způsobem jako **výchozí úložiště**. Nezapomeňte zadat **název** pro váš vzor a pak kliknutím na **použít** ho připojte k instanci. 
+
+### <a name="enter-repository-information-into-a-yaml-file"></a>Zadejte informace o úložišti do souboru YAML.
+
+Pokud jste napsali soubor YAML s nastavením úložiště, můžete importovat soubor YAML přímo z místního počítače do jarního cloudu Azure. Jednoduchý soubor YAML pro privátní úložiště se základním ověřováním by vypadal takto:
+
+```yml
+spring:
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/azure-spring-cloud-samples/config-server-repository.git
+                    username: <username>
+                    password: <password/token>
+
+```
+
+Klikněte na tlačítko **importovat nastavení** a potom vyberte soubor `.yml` z adresáře projektu. Klikněte na **importovat**, potom se v oznámení zobrazí `async` operace z vašich **oznámení** . Po 1-2 minutách by se mělo ohlásit úspěch.
+
+![snímek obrazovky okna](media/spring-cloud-tutorial-config-server/local-yml-success.png)
+
+
+Měli byste vidět informace ze souboru YAML, který se zobrazuje v Azure Portal. Klikněte na tlačítko **použít** k dokončení. 
+
 
 ## <a name="delete-your-app-configuration"></a>Odstranění konfigurace aplikace
 
 Po uložení konfiguračního souboru se na kartě **Konfigurace** zobrazí tlačítko **Odstranit konfiguraci aplikace** . Tím se úplně smaže stávající nastavení. To byste měli udělat, pokud chcete připojit konfigurační server k jinému zdroji, například přesun z GitHubu do Azure DevOps.
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

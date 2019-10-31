@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 021560f9538d2a95492ee04467e8733caa226eec
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 38d9a2dda945f3a9459aa8e3360012c6ef422608
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679427"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163316"
 ---
-# <a name="windows-virtual-desktop-powershell"></a>Prostředí PowerShell pro virtuální plochu Windows
+# <a name="windows-virtual-desktop-powershell"></a>PowerShell pro Windows Virtual Desktop
 
 Pomocí tohoto článku můžete vyřešit chyby a problémy při používání PowerShellu s virtuálním počítačem s Windows. Další informace o PowerShellu služby Vzdálená plocha najdete v tématu [prostředí PowerShell pro virtuální počítače s Windows](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/).
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
@@ -39,7 +39,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 ### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Chyba: příkaz Add-RdsAppGroupUser – zadaná hodnota UserPrincipalName neexistuje v Azure Active Directory přidružená k tenantovi vzdálené plochy.
 
 ```PowerShell
-Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName “Desktop Application Group” -UserPrincipalName <UserPrincipalName>
+Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName "Desktop Application Group" -UserPrincipalName <UserPrincipalName>
 ```
 
 **Příčina:** Uživatele zadaného parametrem-UserPrincipalName nelze nalézt v Azure Active Directory vázaných na klienta virtuální plochy systému Windows.
@@ -58,7 +58,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **Příčina:** -parametr tenant
 
-**Oprava:** Vydejte příkaz Get-RdsDiagnosticActivities s-tenant \<TenantName >.
+**Oprava:** Vydejte příkaz Get-RdsDiagnosticActivities s-tenant \<tenant >.
 
 ### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities--uživatel nemá oprávnění pro dotaz na službu správy.
 
@@ -68,7 +68,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **Příčina:** Přepínač-Deployment
 
-**Oprava:** – přepínač nasazení může být používán pouze správci nasazení. Tito správci jsou obvykle členy týmu vzdálené plochy služby Vzdálená plocha nebo Windows. Přepínač-Deployment nahraďte parametrem-tenant \<TenantName >.
+**Oprava:** – přepínač nasazení může být používán pouze správci nasazení. Tito správci jsou obvykle členy týmu vzdálené plochy služby Vzdálená plocha nebo Windows. Přepínač-Deployment nahraďte parametrem-tenant \<tenant >.
 
 ### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: New-RdsRoleAssignment--uživatel nemá oprávnění pro dotaz na službu správy.
 

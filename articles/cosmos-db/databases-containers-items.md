@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0823b4b7e19bec9d8efc83dbb3996076425cb4f1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4d970e61fc2628843ef847526dcdb4e44bf9796f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756885"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176930"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Práce s databázemi, kontejnery a položkami v Azure Cosmos DB
 
@@ -82,10 +82,10 @@ Kontejner Azure Cosmos obsahuje sadu vlastností definovaných systémem. V záv
 
 | Vlastnost definovaná systémem | Uživatelsky vygenerované nebo uživatelsky konfigurovatelné | Účel | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | Generované systémem | Jedinečný identifikátor kontejneru | Ano | Ne | Ne | Ne | Ne |
-|\_etag | Generované systémem | Značka entity použitá pro optimistické řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
-|\_ts | Generované systémem | Poslední aktualizované časové razítko kontejneru | Ano | Ne | Ne | Ne | Ne |
-|\_self | Generované systémem | Adresovatelný identifikátor URI kontejneru | Ano | Ne | Ne | Ne | Ne |
+|ID \_ | Generované systémem | Jedinečný identifikátor kontejneru | Ano | Ne | Ne | Ne | Ne |
+|\_ETag | Generované systémem | Značka entity použitá pro optimistické řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
+|\_TS | Generované systémem | Poslední aktualizované časové razítko kontejneru | Ano | Ne | Ne | Ne | Ne |
+|\_samy sebe | Generované systémem | Adresovatelný identifikátor URI kontejneru | Ano | Ne | Ne | Ne | Ne |
 |id | Uživatelsky konfigurovatelné | Uživatelsky definovaný jedinečný název kontejneru | Ano | Ano | Ano | Ano | Ano |
 |indexingPolicy | Uživatelsky konfigurovatelné | Poskytuje možnost změnit cestu indexu, typ indexu a režim indexu. | Ano | Ne | Ne | Ne | Ano |
 |TimeToLive | Uživatelsky konfigurovatelné | Poskytuje možnost automaticky odstraňovat položky z kontejneru po nastaveném časovém období. Podrobnosti najdete v tématu [Time to Live](time-to-live.md). | Ano | Ne | Ne | Ne | Ano |
@@ -118,11 +118,11 @@ Každá položka Azure Cosmos má následující vlastnosti definované systéme
 
 | Vlastnost definovaná systémem | Uživatelsky vygenerované nebo uživatelsky konfigurovatelné| Účel | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | Generované systémem | Jedinečný identifikátor položky | Ano | Ne | Ne | Ne | Ne |
-|\_etag | Generované systémem | Značka entity použitá pro optimistické řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
-|\_ts | Generované systémem | Časové razítko poslední aktualizace položky | Ano | Ne | Ne | Ne | Ne |
-|\_self | Generované systémem | Adresovatelný identifikátor URI položky | Ano | Ne | Ne | Ne | Ne |
-|id | Buď | Uživatelsky definovaný jedinečný název v logickém oddílu. Pokud uživatel nezadá ID, systém ho automaticky vygeneruje. | Ano | Ano | Ano | Ano | Ano |
+|ID \_ | Generované systémem | Jedinečný identifikátor položky | Ano | Ne | Ne | Ne | Ne |
+|\_ETag | Generované systémem | Značka entity použitá pro optimistické řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
+|\_TS | Generované systémem | Časové razítko poslední aktualizace položky | Ano | Ne | Ne | Ne | Ne |
+|\_samy sebe | Generované systémem | Adresovatelný identifikátor URI položky | Ano | Ne | Ne | Ne | Ne |
+|id | Buď | Uživatelsky definovaný jedinečný název v logickém oddílu. | Ano | Ano | Ano | Ano | Ano |
 |Libovolné uživatelsky definované vlastnosti | Definované uživatelem | Uživatelsky definované vlastnosti reprezentované v rozhraní API – nativní reprezentace (včetně JSON, BSON a CQL) | Ano | Ano | Ano | Ano | Ano |
 
 > [!NOTE]

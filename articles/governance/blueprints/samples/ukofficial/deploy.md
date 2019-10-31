@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: ea58ef49aa4d901339bf87343f0eea8eb517011d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1898820276d1906a49a95bc513a6689fce177f7d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299027"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162931"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Nasazení ukázek pro Spojené království a ukázky pro Spojené království NHS podrobný plán
 
@@ -66,17 +66,17 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
-   - Práce
+   - Základy
 
      - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
      - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Změňte podle potřeby nebo ponechte tak, jak je.
-     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Azure Blueprint používá tuto spravovanou identitu k nasazení všech artefaktů v přiřazeném podrobném plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 
-     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace najdete v tématu [uzamykání prostředků v modrotisky](../../concepts/resource-locking.md).
+     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
@@ -98,8 +98,8 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
 |Iniciativa pro Spojené království a oficiální nebo Velká Británie NHS|Přiřazení zásad |Typy prostředků pro audit diagnostických protokolů (zásady: podrobný plán iniciativ pro Spojené království a oficiální nebo Velká Británie NHS) |Seznam typů prostředků, které se mají auditovat, pokud je v nastavení diagnostického protokolu zapnutá možnost Poznámka  Přijatelné hodnoty najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
-|\[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které jsou podporované operačním systémem Linux pro přidání do oboru (Policy: \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru (zásada: \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které podporují Linux OS pro přidání do oboru (Policy: \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru (zásady: \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -111,8 +111,8 @@ Teď, když jste si prohlédli kroky k nasazení ukázek OFICIÁLNÍch a NHS pod
 
 Další články o semodrotiskych a jejich použití:
 
-- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
-- Naučte se používat [statické a dynamické parametry](../../concepts/parameters.md).
-- Naučte se přizpůsobit [pořadí klasifikace](../../concepts/sequencing-order.md)podrobného plánu.
-- Zjistěte, jak využít [uzamykání prostředků](../../concepts/resource-locking.md)podrobného plánu.
-- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).
+- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)

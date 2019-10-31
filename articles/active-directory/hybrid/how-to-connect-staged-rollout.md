@@ -10,12 +10,12 @@ ms.date: 10/28/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254fa924ea2104e76a475c106f16f4672dd1eec1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: HT
+ms.openlocfilehash: 24efd9d67e5bcc083ce1a02dcf0850a39189afe8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033313"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173109"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>Cloudové ověřování: fáze zavedení (Public Preview)
 
@@ -80,6 +80,8 @@ Tyto scénáře nejsou podporované pro fáze zavedení:
 ## <a name="get-started-with-staged-rollout"></a>Začínáme s fází uvedení do provozu
 
 Pokud chcete testovat synchronizaci hodnot hash hesel (KOSMETICE) pomocí připraveného zavedení, dokončete prosím níže uvedenou předběžnou práci, aby se aktivovala fáze zavedení synchronizace hodnot hash hesel.
+
+Další informace o použitých rutinách PowerShellu najdete v článku [AzureAD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout) .
 
 ## <a name="pre-work-for-password-hash-sync"></a>Předběžná práce pro synchronizaci hodnot hash hesel
 
@@ -239,3 +241,6 @@ Tady je postup, jak můžete sledovat přihlašování uživatelů, ke kterým d
 -   **Otázka: můžeme použít PowerShell k provádění připraveného zavedení?**
 
 -   Odpověď: Ano, přečtěte si dokumentaci k použití prostředí PowerShell k provedení připraveného zavedení.
+
+## <a name="next-steps"></a>Další kroky
+- [AzureAD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

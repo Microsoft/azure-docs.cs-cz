@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512765"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147087"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení k Azure Analysis Services
 
-Klientské knihovny jsou nezbytné pro připojení klientských aplikací a nástrojů k Analysis Servicesovým serverům. Klientské aplikace Microsoftu, jako jsou Power BI Desktop, Excel, SQL Server Management Studio (SSMS) a SQL Server Data Tools (SSDT), instalují všechny tři klientské knihovny a aktualizují je spolu s pravidelnými aktualizacemi aplikací. V některých případech může být nutné nainstalovat novější verze klientských knihoven. Vlastní klientské aplikace také vyžadují instalaci klientských knihoven.
+Klientské knihovny jsou nezbytné pro připojení klientských aplikací a nástrojů k Analysis Servicesovým serverům. Klientské aplikace Microsoftu, jako jsou Power BI Desktop, Excel, SQL Server Management Studio (SSMS) a Analysis Servicesové rozšíření projektů pro Visual Studio, instalují všechny tři klientské knihovny a aktualizují je spolu s pravidelnými aktualizacemi aplikací. V některých případech může být nutné nainstalovat novější verze klientských knihoven. Vlastní klientské aplikace také vyžadují instalaci klientských knihoven.
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Stažení nejnovějších klientských knihoven (Instalační služba systému Windows)  
 
@@ -58,7 +58,7 @@ Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat
 
 ### <a name="amo"></a>AMO  
 
- AMO je spravovaná Klientská knihovna, která se používá pro správu serveru a definici dat. Je nainstalována a používána nástroji a klientskými aplikacemi. Například SQL Server Management Studio (SSMS) používá nástroj AMO pro připojení k Analysis Services. Připojení pomocí AMO má obvykle minimální hodnotu, která se skládá z `"data source=\<servername>"`. Po navázání připojení použijete rozhraní API pro práci s kolekcemi databáze a hlavními objekty. SSDT i SSMS používají pro připojení k instanci Analysis Services AMO.  
+ AMO je spravovaná Klientská knihovna, která se používá pro správu serveru a definici dat. Je nainstalována a používána nástroji a klientskými aplikacemi. Například SQL Server Management Studio (SSMS) používá nástroj AMO pro připojení k Analysis Services. Připojení pomocí AMO má obvykle minimální hodnotu, která se skládá z `"data source=\<servername>"`. Po navázání připojení použijete rozhraní API pro práci s kolekcemi databáze a hlavními objekty. Visual Studio i SSMS používají pro připojení k instanci Analysis Services sadu AMO.  
 
   
 ### <a name="adomd"></a>ADOMD

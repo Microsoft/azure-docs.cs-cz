@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a6a8c68edd658e5c207b88b48ee09c6472441e78
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
-ms.translationtype: MT
+ms.openlocfilehash: f8a9d9e8a3d2b69d846bc4f4bc1750e6d23aaab4
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688161"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176589"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Směrování webového provozu podle adresy URL pomocí Azure PowerShellu
 
@@ -24,9 +24,9 @@ Pokud chcete směrování provozu povolit, vytvořte [pravidla směrování](app
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Nastavit síť
+> * Nastavení sítě
 > * Vytvořit naslouchací procesy, mapu cest adres URL a pravidla
-> * Vytvořit škálovatelné back-endové fondy
+> * Vytvářet škálovatelné back-endové fondy
 
 ![Příklad směrování na základě adresy URL](./media/tutorial-url-route-powershell/scenario.png)
 
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek verzi modulu Azure PowerShell 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, musíte také spustit `Login-AzAccount` vytvořit připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek verzi modulu Azure PowerShell 1.0.0 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit `Login-AzAccount` a vytvořit připojení k Azure.
 
 Z důvodu času potřebného k vytváření prostředků může tento postup trvat až 90 minut.
 
@@ -81,7 +81,7 @@ $pip = New-AzPublicIpAddress `
   -Sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
 
 V této části vytvoříte prostředky, které podporují bránu Application Gateway, a nakonec vytvoříte bránu samotnou. Mezi prostředky, které vytvoříte, patří:
 
@@ -119,13 +119,13 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-default-pool-and-settings"></a>Vytvoření výchozího fondu a nastavení
 
-Vytvořte výchozí back-end fond s názvem *appGatewayBackendPool* pro aplikační bránu pomocí [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Nakonfigurujte nastavení pro back-end fond pomocí [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
+Vytvořte výchozí back-end fond s názvem *appGatewayBackendPool* pro aplikační bránu pomocí [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Nakonfigurujte nastavení pro back-end fond pomocí [New-AzApplicationGatewayBackendHttpSetting](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
   -Name appGatewayBackendPool
 
-$poolSettings = New-AzApplicationGatewayBackendHttpSettings `
+$poolSettings = New-AzApplicationGatewayBackendHttpSetting `
   -Name myPoolSettings `
   -Port 80 `
   -Protocol Http `
@@ -135,11 +135,11 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>Vytvoření výchozího naslouchacího procesu a pravidla
 
-Naslouchací proces je potřebný k tomu, aby aplikační brána správně směrovala provoz na back-endový fond. V tomto článku vytvoříte dva naslouchací procesy. První základní naslouchací proces, který vytvoříte, naslouchá provozu na kořenové adrese URL. Druhý naslouchací proces, který vytvoříte, naslouchá provozu na konkrétních adresách URL.
+Naslouchací proces je potřeba k tomu, aby brána Application Gateway mohla správně směrovat provoz na back-endový fond. V tomto článku vytvoříte dva naslouchací procesy. První základní naslouchací proces, který vytvoříte, naslouchá provozu na kořenové adrese URL. Druhý naslouchací proces, který vytvoříte, naslouchá provozu na konkrétních adresách URL.
 
 Vytvořte výchozí naslouchací proces s názvem *myDefaultListener* pomocí [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) s konfigurací front-endu a portem front-endu, který jste vytvořili dříve. 
 
-Pravidlo je potřeba k tomu, aby naslouchací proces poznal, který back-endový fond má použít pro příchozí provoz. Vytvořte základní pravidlo s názvem *rule1* pomocí [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Aby naslouchací proces věděl, který back-endový fond se má použít pro příchozí provoz, potřebuje pravidlo. Vytvořte základní pravidlo s názvem *rule1* pomocí [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -184,7 +184,7 @@ Vytvoření aplikační brány může trvat až 30 minut. Před přechodem k dal
 
 V tomto okamžiku máte Aplikační bránu, která naslouchá provozu na portu 80 a odesílá provoz do výchozího fondu serverů.
 
-### <a name="add-image-and-video-backend-pools-and-port"></a>Přidání back-endových fondů a portu pro obrázky a videa
+### <a name="add-image-and-video-backend-pools-and-port"></a>Přidání back-endových fondů a portu pro obrázky a video
 
 Přidejte back-end fondy s názvem *imagesBackendPool* a *videoBackendPool* do služby Application Gateway[Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Port front-endu pro fondy přidejte pomocí [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport). Odešlete změny do aplikační brány pomocí [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway).
 
@@ -246,7 +246,7 @@ $appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$poolSettings = Get-AzApplicationGatewayBackendHttpSettings `
+$poolSettings = Get-AzApplicationGatewayBackendHttpSetting `
   -ApplicationGateway $appgw `
   -Name myPoolSettings
 
@@ -313,7 +313,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři vytvořené back-endové fondy. Škálovací sady, které vytvoříte, se jmenují *myvmss1*, *myvmss2* a *myvmss3*. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
+V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři vytvořené back-endové fondy. Vytvořené škálovací sady se budou jmenovat *myvmss1*, *myvmss2* a *myvmss3*. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -412,21 +412,21 @@ for ($i=1; $i -le 3; $i++)
 }
 ```
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-K získání veřejné IP adresy služby Application Gateway použijte [příkaz Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`nebo. `http://52.168.55.24:8080/video/test.htm`
+K získání veřejné IP adresy služby Application Gateway použijte [příkaz Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`nebo `http://52.168.55.24:8080/video/test.htm`.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-![Otestování základní adresy URL v aplikační bráně](./media/tutorial-url-route-powershell/application-gateway-iistest.png)
+![Testování základní adresy URL v bráně Application Gateway](./media/tutorial-url-route-powershell/application-gateway-iistest.png)
 
-Změňte adresu URL na http://&lt;IP-address&gt;: 8080/images/test.htm, &lt;nahraďte svou IP adresu IP-address&gt;a měli byste vidět něco jako v následujícím příkladu:
+Změňte adresu URL na http://&lt;IP-Address&gt;: 8080/images/test.htm, nahraďte svou IP adresu &lt;&gt;IP adres a měli byste vidět něco jako v následujícím příkladu:
 
 ![Testování adresy URL obrázků v aplikační bráně](./media/tutorial-url-route-powershell/application-gateway-iistest-images.png)
 
-Změňte adresu URL na http://&lt;IP-address&gt;: 8080/video/test.htm, &lt;nahraďte svou IP adresu IP-address&gt;a měli byste vidět něco jako v následujícím příkladu:
+Změňte adresu URL na http://&lt;IP-Address&gt;: 8080/video/test.htm, nahraďte svou IP adresu &lt;&gt;IP adres a měli byste vidět něco jako v následujícím příkladu:
 
 ![Testování adresy URL videa v aplikační bráně](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
 
@@ -438,6 +438,6 @@ Pokud už je nepotřebujete, odeberte skupinu prostředků, aplikační bránu a
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přesměrování webového provozu podle adresy URL](./tutorial-url-redirect-powershell.md)

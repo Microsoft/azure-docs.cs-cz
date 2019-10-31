@@ -1,6 +1,6 @@
 ---
-title: Žádost o proces a e-mailová oznámení ve správě nároků Azure AD (Preview) – Azure Active Directory
-description: Přečtěte si o procesu požadavků pro balíček pro přístup a při posílání e-mailových oznámení v Azure Active Directory správě nároků (Preview).
+title: Žádost o proces a e-mailová oznámení v Azure AD – Správa nároků – Azure Active Directory
+description: Přečtěte si o procesu požadavků pro balíček pro přístup a při posílání e-mailových oznámení v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb5f322d8bc974274f7f2da7811b124499224635
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: MT
+ms.openlocfilehash: 6a1ce3b2cb72a7b57e556e09264cb5bd421eda0f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678129"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173755"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Žádost o proces a e-mailová oznámení ve správě nároků Azure AD (Preview)
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Žádost o proces a e-mailová oznámení v Azure AD – Správa nároků
 
 Když uživatel odešle požadavek do balíčku pro přístup, spustí se proces, který tuto žádost doručí. Správa nároků na Azure AD taky posílá schvalovatelům a žadatelům e-mailová oznámení v případě, že během procesu dojde k klíčovým událostem.
 
@@ -42,10 +37,10 @@ Uživatel, který potřebuje přístup k přístupovému balíčku, může odesl
 
 | Stav | Popis |
 | --- | --- |
-| Odesláno | Uživatel odešle požadavek. |
+| Předán | Uživatel odešle požadavek. |
 | Čeká na schválení | Pokud zásada pro balíček pro přístup vyžaduje schválení, požadavek se přesune na čeká na schválení. |
-| Vypršela platnost | Pokud žádný schvalovatel neschválí žádost v rámci časového limitu žádosti o schválení, vyprší platnost žádosti. Chcete-li akci opakovat, bude uživatel muset odeslat žádost znovu. |
-| Odmítnuté | Schvalovatel odepře požadavek. |
+| Platnost vypršela | Pokud žádný schvalovatel neschválí žádost v rámci časového limitu žádosti o schválení, vyprší platnost žádosti. Chcete-li akci opakovat, bude uživatel muset odeslat žádost znovu. |
+| Odepřen | Schvalovatel odepře požadavek. |
 | Schválené | Schvalovatel schválí žádost. |
 | Doručování | Uživatel **nemá** přiřazený přístup ke všem prostředkům v balíčku pro přístup. Pokud se jedná o externího uživatele, uživatel se ještě možná nepřipojil k adresáři prostředků a nepřijal výzvu k vyjádření souhlasu. |
 | Doručeno | Uživatel má přiřazený přístup ke všem prostředkům v balíčku pro přístup. |
@@ -62,14 +57,14 @@ Následující tabulka poskytuje další podrobnosti o každé z těchto e-mailo
 
 | # | Předmět e-mailu | Při odeslání | Odesláno do |
 | --- | --- | --- | --- |
-| 1 | Požaduje se akce: Kontrola žádosti o přístup z *[žadatel]* na *[přístup k balíčku]* v *[Date]* | Když žadatel odešle požadavek na balíček pro přístup | Všichni schvalovatelé |
-| 2 | Požaduje se akce: Kontrola žádosti o přístup z *[žadatel]* na *[přístup k balíčku]* v *[Date]* | X dní před vypršením časového limitu žádosti o schválení | Všichni schvalovatelé |
-| 3 | Oznámení o stavu: platnost žádosti o přístup *[žadatel]* na *[přístup k balíčku]* vypršela. | Když schvalovatelé neschválí nebo zamítnou žádost o přístup v rámci trvání žádosti | Žadatel |
+| 1\. místo | Požaduje se akce: Kontrola žádosti o přístup z *[žadatel]* na *[přístup k balíčku]* pomocí *[Date]* | Když žadatel odešle požadavek na balíček pro přístup | Všichni schvalovatelé |
+| 2 | Požaduje se akce: Kontrola žádosti o přístup z *[žadatel]* na *[přístup k balíčku]* pomocí *[Date]* | X dní před vypršením časového limitu žádosti o schválení | Všichni schvalovatelé |
+| 3 | Oznámení o stavu: platnost žádosti o přístup *[žadatel]* na *[přístup k balíčku]* vypršela. | Když schvalovatelé neschválí nebo zamítnou žádost o přístup v rámci trvání žádosti | Žadatele |
 | 4 | Oznámení o stavu: *[žadatel]* žádost o přístup k *[přístup k balíčku]* byl dokončen. | Když první Schvalovatel schválí nebo zamítne žádost o přístup. | Všichni schvalovatelé |
-| 5 | Byl odepřen přístup k *[přístup k balíčku]* . | Když žadateli byl zamítnut přístup k balíčku přístupu | Žadatel |
-| 6 | Teď máte přístup k *[přístup k balíčku]* .  | Když žadateli byl udělen přístup ke všem prostředkům v balíčku pro přístup | Žadatel |
-| 7 | Váš přístup k *[přístup k balíčku]* vyprší za X dní. | X dní předtím, než vyprší přístup žadatele k balíčku přístupu | Žadatel |
-| 8 | Platnost vašeho přístupu k *[přístupového balíčku]* vypršela. | Když vyprší platnost přístupu žadatele k balíčku přístupu | Žadatel |
+| 5 | Byl odepřen přístup k *[přístup k balíčku]* . | Když žadateli byl zamítnut přístup k balíčku přístupu | Žadatele |
+| 6 | Teď máte přístup k *[přístup k balíčku]* .  | Když žadateli byl udělen přístup ke všem prostředkům v balíčku pro přístup | Žadatele |
+| 7 | Váš přístup k *[přístup k balíčku]* vyprší za X dní. | X dní předtím, než vyprší přístup žadatele k balíčku přístupu | Žadatele |
+| 8 | Platnost vašeho přístupu k *[přístupového balíčku]* vypršela. | Když vyprší platnost přístupu žadatele k balíčku přístupu | Žadatele |
 
 ### <a name="access-request-emails"></a>E-maily žádostí o přístup
 
@@ -91,7 +86,7 @@ Po odepření žádosti o přístup se žadateli pošle e-mailové oznámení. T
 
 ![E-mail s žádostí o přístup vypršel](./media/entitlement-management-process/email-expired-access-request.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vyžádat přístup k balíčku přístupu](entitlement-management-request-access.md)
 - [Schválení nebo zamítnutí žádostí o přístup](entitlement-management-request-approve.md)

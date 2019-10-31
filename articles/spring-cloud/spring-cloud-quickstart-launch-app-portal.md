@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: e6a1dba603cbeea276dc6153f82ae599e3d29b3d
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
-ms.translationtype: HT
+ms.openlocfilehash: 87826b4c898f67873c2ec8188b934abd467c8a5b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101340"
+ms.locfileid: "73162809"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal
 
@@ -34,7 +34,7 @@ Po tomto rychlém startu se dozvíte, jak:
 ## <a name="prerequisites"></a>Předpoklady
 
 >[!Note]
-> Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview požádáme zákazníky, aby se na nás dostali, abychom mohli přidat vaše předplatné do našeho seznamu povolených.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, obraťte se na nás e-mailem: azure-spring-cloud@service.microsoft.com.
+> Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview požádáme zákazníky, aby se na nás dostali, abychom mohli přidat vaše předplatné do našeho seznamu povolených.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, vyplňte a odešlete [formulář zájmu Azure jaře Cloud (Private Preview)](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u). I když je ve verzi Preview Azure jaře Cloud, nabízí Microsoft omezená podpora bez smlouvy SLA.  Další informace o podpoře v rámci verzí Preview najdete v těchto [nejčastějších dotazech k podpoře](https://azure.microsoft.com/support/faq/).
 
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku.  Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Git, JDK, Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .

@@ -9,19 +9,19 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 5777d728f61b3ffe7d0fdaaac1391f600dca12fd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
-ms.translationtype: HT
+ms.openlocfilehash: ce07d43a289cf527664b120dd832cf832fb2b05e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097835"
+ms.locfileid: "73161411"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-by-using-the-maven-plug-in"></a>Rychlý Start: spuštění aplikace pro jarní Cloud z Azure pomocí modulu plug-in Maven
 
 S modulem plug-in Azure jaře Cloud Maven můžete snadno vytvářet a aktualizovat aplikace služby jarní cloudové služby Azure. Když nasadíte konfiguraci, můžete nasadit aplikace do své stávající služby pro jarní cloudy Azure. V tomto článku můžete tuto funkci předvést pomocí ukázkové aplikace s názvem PiggyMetrics.
 
 >[!Note]
-> Než začnete s tímto rychlým startem, ujistěte se, že vaše předplatné Azure má přístup k jarnímu cloudu Azure. Jako služba ve verzi Preview vás zve na nás, abychom mohli přidat vaše předplatné do seznamu povolených adres. Pokud chcete prozkoumat možnosti Azure jarního cloudu, vyplňte a odešlete [formulář zájmu Azure jaře Cloud (Private Preview)](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).
+> Než začnete s tímto rychlým startem, ujistěte se, že vaše předplatné Azure má přístup k jarnímu cloudu Azure. Jako služba ve verzi Preview vás zve na nás, abychom mohli přidat vaše předplatné do seznamu povolených adres. Pokud chcete prozkoumat možnosti Azure jarního cloudu, vyplňte a odešlete [formulář zájmu Azure jaře Cloud (Private Preview)](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u). I když je ve verzi Preview Azure jaře Cloud, nabízí Microsoft omezená podpora bez smlouvy SLA.  Další informace o podpoře v rámci verzí Preview najdete v těchto [nejčastějších dotazech k podpoře](https://azure.microsoft.com/support/faq/).
 
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění příkazů v tomto článku. Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Gitu, sady Java Development Kit (JDK), Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com). Další informace najdete v tématu [přehled Azure Cloud Shell](../cloud-shell/overview.md).

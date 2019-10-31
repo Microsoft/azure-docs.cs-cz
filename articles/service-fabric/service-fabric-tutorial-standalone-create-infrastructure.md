@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302477"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177827"
 ---
-# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury AWS k hostování clusteru Service Fabric
+# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury AWS pro hostování clusteru Service Fabric
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS a nainstalujete do něj aplikaci.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „jakýkoli operační systém a cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS a nainstalujete do něj aplikaci.
 
 Tento kurz je první částí série. V tomto článku vygenerujeme prostředky AWS potřebné pro hostování vašeho samostatného clusteru Service Fabric. V dalších článcích bude třeba nainstalovat samostatnou sadu Service Fabric, nainstalovat do clusteru ukázkovou aplikaci a nakonec cluster vyčistit.
 
@@ -33,16 +33,16 @@ V první části této série se naučíte:
 > [!div class="checklist"]
 > * Vytvoření sady instancí EC2
 > * Úprava skupiny zabezpečení
-> * Přihlaste se k některé z instancí
+> * Přihlaste se k jedné z instancí
 > * Příprava instance pro Service Fabric
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete mít účet AWS.  Pokud účet ještě nemáte, vytvořte si ho na stránce [AWS Console](https://aws.amazon.com/).
 
 ## <a name="create-ec2-instances"></a>Vytvoření instancí EC2
 
-Přihlaste se ke konzole AWS > Enter **EC2** do vyhledávacího pole > **EC2 virtuální servery v cloudu**
+Přihlaste se ke konzole AWS > do vyhledávacího pole zadejte **EC2** > **EC2 virtuálních serverů v cloudu** .
 
 ![Vyhledávání v konzole AWS][aws-console]
 
@@ -50,7 +50,7 @@ Vyberte **Launch Instance** (Spustit instanci), na další obrazovce zvolte **Se
 
 ![Výběr instance EC2][aws-ec2instance]
 
-Vyberte **t2.medium**a pak vyberte **Další: Nakonfigurujte podrobnosti Instance**na na další obrazovce změnit počet instancí `3`a pak vyberte **Rozšířené podrobnosti** tím ji rozbalíte.
+Vyberte **t2.medium**, pak vyberte **Next: Configure Instance Details** (Další: Konfigurace podrobností instancí), na další obrazovce změňte počet instancí na `3`, pak vyberte **Advanced Details** (Rozšířené) a rozbalte tuto část.
 
 Pro propojení virtuálních počítačů do Service Fabric je třeba, aby virtuální počítače hostující vaši infrastrukturu měly stejné přihlašovací údaje.  Existují dva běžné způsoby, jak zajistit konzistenci přihlašovacích údajů: připojení všech virtuálních počítačů do stejné domény nebo nastavení stejného hesla správce na každém počítači.  V tomto kurzu nastavíme stejné heslo ke všem instancím EC2 pomocí uživatelského datového skriptu.  V produkčním prostředí je bezpečnější připojení hostitelů k doméně systému Windows.
 
@@ -82,7 +82,7 @@ Service Fabric mezi hostiteli v clusteru celou řadu otevřených portů. Chcete
 
 Nechcete-li tyto porty otevřít pro celý svět, můžete je místo otevřít jen pro hostitele ve stejné skupině zabezpečení. Poznamenejte si ID skupiny zabezpečení, v tomto příkladu je to **sg c4fb1eba**.  Pak vyberte **Edit** (Upravit).
 
-Dále přidejte do skupiny zabezpečení čtyři pravidla pro závislosti služeb a pak tři další pro samotnou službu Service Fabric. První pravidlo umožňuje provoz protokolu ICMP pro základní kontrolu připojení. Ostatní pravidla otvírají potřebné porty, které umožní protokoly SMB a Remote Registry.
+Dále přidejte do skupiny zabezpečení čtyři pravidla pro závislosti služeb a pak tři další pro samotnou službu Service Fabric. První pravidlo umožňuje provoz protokolu ICMP pro základní kontrolu připojení. Ostatní pravidla otevřou požadované porty pro povolení vzdáleného registru.
 
 Pro první pravidlo vyberte **Add Rule** (Přidat pravidlo) a z rozevíracího seznamu vyberte **All ICMP – IPv4**. Zaškrtněte políčko vedle pole pro vlastní data a zadejte ID skupiny zabezpečení, viz výše.
 
@@ -98,7 +98,7 @@ Poslední dvě pravidla by měla Service Fabric zpřístupnit světu, abyste clu
 
 Nakonec potřebujeme otevřít port 8080, abyste viděli aplikaci po nasazení. Vyberte **Add Rule** (Přidat pravidlo), z rozevíracího seznamu vyberte možnost **Custom TCP Rule** (Vlastní pravidlo TCP), jako rozsah portů zadejte `8080` a v rozevíracím seznamu Source (Zdroj) vyberte možnost Anywhere (Libovolný).
 
-Všechna pravidla jsou nyní nastavená. Vyberte **Uložit**.
+Všechna pravidla jsou nyní nastavená. Vyberte **Save** (Uložit).
 
 ## <a name="connect-to-an-instance-and-validate-connectivity"></a>Připojení k instanci a ověření připojení
 
@@ -110,7 +110,7 @@ Až budete mít všechny IP adresy, vyberte jednu z instancí, ke které se při
 
 Po úspěšném připojení k vaší instanci ověřte, že funguje spojení mezi instancemi a sdílení souborů.  Máte shromážděné IP adresy všech instancí, vyberte tedy jednu, ke které právě nejste připojeni. Otevřete nabídku **Start**, zadejte `cmd` a vyberte **Příkazový řádek**.
 
-V těchto příkladech bylo vytvořeno připojení RDP k následující IP adresy: 172.31.21.141. Všechna připojení k testování pak dojít na IP adresu: 172.31.20.163.
+V těchto příkladech bylo navázáno spojení RDP s IP adresou 172.31.21.141. Testy připojení budou prováděny s IP adresou 172.31.20.163.
 
 K ověření, jestli základní připojení funguje, použijeme příkaz ping.
 
@@ -118,40 +118,28 @@ K ověření, jestli základní připojení funguje, použijeme příkaz ping.
 ping 172.31.20.163
 ```
 
-Pokud jeho výstup vypadá takto `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` a opakuje se čtyřikrát, pak spojení mezi instancemi funguje.  Nyní následujícím příkazem ověřte, jestli funguje sdílení SMB:
-
-```
-net use * \\172.31.20.163\c$
-```
-
-Výstupem by mělo být `Drive Z: is now connected to \\172.31.20.163\c$.`.
+Pokud jeho výstup vypadá takto `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` a opakuje se čtyřikrát, pak spojení mezi instancemi funguje.  
 
 ## <a name="prep-instances-for-service-fabric"></a>Příprava instancí pro Service Fabric
 
-Pokud jste tento postup prováděli „na zelené louce“, musíte udělat ještě pár kroků navíc.  Konkrétně potřebujete ověřit, že funguje vzdálený registr, povolit protokol SMB a otevřít porty požadované pro SMB a vzdálený registr.
+Pokud jste tento postup prováděli „na zelené louce“, musíte udělat ještě pár kroků navíc.  Konkrétně je potřeba ověřit, že vzdálený registr běžel, a otevřít požadované porty.
 
 Pro usnadnění můžete tohle všechno provést při spouštění instancí pomocí uživatelského skriptu.
-
-K povolení SMB použijte tento příkaz PowerShellu:
-
-```powershell
-netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-```
 
 Pro otevření portů v bráně firewall zase slouží tento příkaz PowerShellu:
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V první části této série jste se naučili, jak spustit tři instance EC2 a nakonfigurovat je pro instalaci služby Service Fabric:
 
 > [!div class="checklist"]
 > * Vytvoření sady instancí EC2
 > * Úprava skupiny zabezpečení
-> * Přihlaste se k některé z instancí
+> * Přihlaste se k jedné z instancí
 > * Příprava instance pro Service Fabric
 
 Pokračujte druhou částí konfigurace služby Service Fabric v clusteru.

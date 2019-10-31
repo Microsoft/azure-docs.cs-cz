@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení stylu stránky na portálu pro vývojáře ve službě Azure API Management | Microsoft Docs
+title: Přizpůsobení stylu stránky na webu Azure API Management starší verze portálu pro vývojáře | Microsoft Docs
 description: Podle kroků v tomto rychlém startu můžete přizpůsobit styl elementů na portálu pro vývojáře ve službě Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -11,43 +11,41 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 047e724fe3e1c2e4738e5964326bf7719281f4af
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 779d1228393cdc88f88820d8a335cb2e32424c14
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073699"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176858"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Přizpůsobení stylu stránek portálu pro vývojáře
 
-Existují tři nejběžnější způsoby, jak přizpůsobit portál pro vývojáře ve službě Azure API Management:
+Existují tři nejběžnější způsoby přizpůsobení portálu pro vývojáře v Azure API Management:
  
 * [Úprava obsahu statických stránek a elementů rozložení stránek](api-management-modify-content-layout.md)
 * Aktualizace stylů použitých pro elementy stránek napříč portálem pro vývojáře (vysvětlení obsahuje tato příručka)
 * [Úprava šablon použitých pro stránky generované portálem](api-management-developer-portal-templates.md) (například dokumentace rozhraní API, produkty, ověřování uživatelů)
 
-V tomto kurzu se naučíte:
-
-> [!div class="checklist"]
-> * Přizpůsobení stylu stránek elementů na stránkách portálu pro **vývojáře**
-> * Zobrazení změn
+V tomto článku se dozvíte, jak přizpůsobit styl prvků na stránkách staršího portálu pro **vývojáře** a jak zobrazit vaše změny.
 
 ![přizpůsobení stylu](./media/modify-developer-portal-style/developer_portal.png)
 
-## <a name="prerequisites"></a>Požadavky
-
-+ Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
-+ Také proveďte následující kurz: [Importujte a publikujte své první rozhraní API](import-and-publish.md).
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+## <a name="prerequisites"></a>Předpoklady
+
++ Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
++ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
++ Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 ## <a name="customize-the-developer-portal"></a>Přizpůsobení portálu pro vývojáře
 
 1. Vyberte **Přehled**.
-2. V horní části okna **Přehled** klikněte na tlačítko **Portál pro vývojáře**. Případně můžete kliknout na odkaz **Adresa URL portálu pro vývojáře**.
+2. V horní části okna **Přehled** klikněte na tlačítko **portál pro vývojáře (starší verze)** .
 3. V levé horní části obrazovky se zobrazí ikona se dvěma štětci. Najeďte na tuto ikonu myší a otevřete nabídku přizpůsobení portálu.
 
     ![přizpůsobení stylu](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
@@ -56,11 +54,11 @@ V tomto kurzu se naučíte:
     Na stránce se zobrazí všechny elementy, které můžete přizpůsobit pomocí **stylů**.
 5. Do pole **Změna hodnot proměnných pro přizpůsobení vzhledu portálu pro vývojáře** zadejte headings-color.
 
-    Element  **záhlaví-barvasezobrazínastránce.\@** Tato proměnná řídí barvu textu.
+    Prvek **\@záhlaví – barva** se zobrazí na stránce. Tato proměnná řídí barvu textu.
 
     ![přizpůsobení stylu](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Klikněte na pole pro  **\@proměnnou nadpis-barva** . 
+6. Klikněte na pole pro **\@záhlaví-barva** proměnné. 
     
     Otevře se rozevírací nabídka editoru barev.
 7. V rozevírací nabídce editoru barev vyberte novou barvu.
@@ -76,12 +74,6 @@ V tomto kurzu se naučíte:
 1. Přejděte na portál pro vývojáře.
 2. Zobrazí se provedené změny.
 
-## <a name="next-steps"></a>Další postup
-
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Přizpůsobení stylu stránek elementů na stránkách portálu pro **vývojáře**
-> * Zobrazení změn
+## <a name="next-steps"></a>Další kroky
 
 Mohli byste mít také zájem naučit se, jak [přizpůsobit portál pro vývojáře Azure API Management pomocí šablon](api-management-developer-portal-templates.md).

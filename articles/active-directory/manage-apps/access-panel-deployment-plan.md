@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2019
+ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41cc8114061ff7d23951baa3e6215d4332dff0ed
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258506"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176057"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Plánování nasazení přístupového panelu Azure Active Directory
 
@@ -36,30 +36,30 @@ Pomocí přístupového panelu Azure AD můžete:
 
 Umožňuje správcům taky spravovat tyto možnosti:
 
-* Podmínky služby
-* Organizace
-* Kontroly přístupu
+* Podmínka služby
+* Subjekt
+* Revize přístupu
 
 
 ## <a name="benefits-of-azure-ad-access-panel-integration"></a>Výhody integrace na přístupovém panelu Azure AD
 
 Přístupový panel Azure AD přináší firmy následujícími způsoby:
 
-**Poskytuje intuitivní uživatelské prostředí**: Přístupový panel poskytuje jednu platformu pro všechny aplikace připojené k jednotného přihlašování pomocí jednotného přihlašování (SSO) Azure. Máte jednotný portál, ve kterém najdete stávající nastavení a nové funkce, jako je Správa skupin a Samoobslužné resetování hesla, jak se přidávají. Intuitivní prostředí umožňuje uživatelům vrátit se rychleji a zvýšit produktivitu a zároveň omezit jejich frustrace.
+**Poskytuje intuitivní uživatelské prostředí**: přístupový panel poskytuje jednu platformu pro všechny aplikace připojené k jednotnému přihlašování pomocí jednotného přihlašování (SSO) Azure. Máte jednotný portál, ve kterém najdete stávající nastavení a nové funkce, jako je Správa skupin a Samoobslužné resetování hesla, jak se přidávají. Intuitivní prostředí umožňuje uživatelům vrátit se rychleji a zvýšit produktivitu a zároveň omezit jejich frustrace.
 
-**Zvýšení produktivity**: Všechny uživatelské aplikace na přístupovém panelu mají povolený jednotné přihlašování. Povolení jednotného přihlašování v rámci podnikových aplikací a Office 365 vytvoří nadřazené prostředí pro přihlašování tím, že se bude snižovat nebo eliminovat další výzvy k přihlášení. Přístupový panel používá samoobslužné a dynamické členství a vylepšuje celkové zabezpečení systému identity. Tím zajistíte, že oprávnění ke správě přístupu k aplikacím mají správná osoba. Přístupový panel slouží jako souvislá cílová stránka pro rychlé vyhledání prostředků a pokračování pracovních úloh.
+**Zvýšení produktivity**: všechny uživatelské aplikace na přístupovém panelu mají povolený jednotné přihlašování. Povolení jednotného přihlašování v rámci podnikových aplikací a Office 365 vytvoří nadřazené prostředí pro přihlašování tím, že se bude snižovat nebo eliminovat další výzvy k přihlášení. Přístupový panel používá samoobslužné a dynamické členství a vylepšuje celkové zabezpečení systému identity. Tím zajistíte, že oprávnění ke správě přístupu k aplikacím mají správná osoba. Přístupový panel slouží jako souvislá cílová stránka pro rychlé vyhledání prostředků a pokračování pracovních úloh.
 
-**Spravuje náklady**: Povolení přístupového panelu ve službě Azure AD může pomáhat s doplněním místních infrastruktur. Snižuje náklady na podporu tím, že vám poskytne konzistentní portál pro hledání všech vašich aplikací, vyžádat přístup k prostředkům a spravovat účty.
+**Spravuje náklady**: povolení přístupového panelu k Azure AD může pomáhat s doplněním místních infrastruktur. Snižuje náklady na podporu tím, že vám poskytne konzistentní portál pro hledání všech vašich aplikací, vyžádat přístup k prostředkům a spravovat účty.
 
-**Zvyšuje flexibilitu a zabezpečení**: Přístupový panel poskytuje přístup k zabezpečení a flexibilitě, které poskytuje cloudová platforma. Správci můžou snadno měnit nastavení aplikací a prostředků a můžou vyhovovat novým požadavkům na zabezpečení, aniž by to ovlivnilo uživatele.
+**Zvyšuje flexibilitu a zabezpečení**: přístupový panel vám poskytne přístup k zabezpečení a flexibilitě, které poskytuje cloudová platforma. Správci můžou snadno měnit nastavení aplikací a prostředků a můžou vyhovovat novým požadavkům na zabezpečení, aniž by to ovlivnilo uživatele.
 
-**Umožňuje robustní auditování a sledování využití**: Auditování a sledování využití všech uživatelských možností vám umožní zjistit, jestli uživatelé používají své prostředky, a zajistit, aby bylo možné vyhodnotit zabezpečení.
+**Umožňuje robustní auditování a sledování využití**: auditování a sledování využití u všech uživatelských možností vám umožní zjistit, jestli uživatelé používají své prostředky, a zajistit, aby bylo možné vyhodnotit zabezpečení.
 
 ### <a name="licensing-considerations"></a>Požadavky na licencování
 
 Přístupový panel je zdarma a nevyžaduje žádné licence k použití na základní úrovni. Nicméně počet objektů ve vašem adresáři a další funkce, které chcete nasadit, můžou vyžadovat další licence. Mezi běžné scénáře služby Azure AD, které mají požadavky na licencování, patří následující funkce zabezpečení:
 
-* [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
+* [Multi-Factor Authentication Azure](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
 
 * [Členství na základě skupin](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
@@ -83,8 +83,8 @@ Následující tabulka popisuje klíčové případy použití pro nasazení př
 
 | Oblast| Popis |
 | - | - |
-| Access| Portál přístupového panelu je přístupný z firemních i osobních zařízení v podnikové síti. |
-|Access | Portál přístupového panelu je přístupný z firemních zařízení mimo podnikovou síť. |
+| Přístup| Portál přístupového panelu je přístupný z firemních i osobních zařízení v podnikové síti. |
+|Přístup | Portál přístupového panelu je přístupný z firemních zařízení mimo podnikovou síť. |
 | Auditování| Data o využití se stáhnou do podnikových systémů aspoň každých 29 dní. |
 | Zásady správného řízení| Životní cyklus přiřazení uživatelů k aplikacím a skupinám připojeným k Azure AD je definován a monitorován. |
 | Zabezpečení| Přístup k prostředkům je řízen pomocí přiřazení uživatelů a skupin. Přístup k prostředkům můžou spravovat jenom autorizovaní uživatelé. |
@@ -113,7 +113,7 @@ Funkce přístupového panelu se dá povolit postupně. Doporučujeme následuj�
 
 1. Moje skupiny
    * Samoobslužná správa skupin
-1. Kontroly přístupu
+1. Revize přístupu
    * Správa kontroly přístupu
 
 Počínaje aplikací Moje aplikace zavádí uživatele na portál jako běžné místo pro přístup k prostředkům. Přidání samoobslužného zjišťování aplikací do prostředí moje aplikace Moje skupiny a kontroly přístupu sestavují funkce samoobslužné služby.
@@ -122,7 +122,7 @@ Počínaje aplikací Moje aplikace zavádí uživatele na portál jako běžné 
 
 Následující tabulka uvádí několik důležitých konfigurací přístupových panelů a typické hodnoty, které můžete použít:
 
-| Konfiguraci| Typické hodnoty |
+| Konfigurace| Typické hodnoty |
 | - | - |
 | Určení pilotních skupin| Identifikujte skupinu zabezpečení Azure AD, která se má použít, a ujistěte se, že všichni pilotní členové jsou součástí skupiny. |
 | Určete skupinu nebo skupiny, které mají být povoleny v produkčním prostředí.| Identifikujte skupiny zabezpečení Azure AD nebo skupiny služby Active Directory synchronizované se službou Azure AD, které se mají použít. Zajistěte, aby všichni pilotní členové byli součástí skupiny. |
@@ -181,7 +181,7 @@ Azure AD podporuje tři různé způsoby, jak [v aplikacích povolit jednotné p
     * Povolí další vytváření sestav ve službě Azure AD, když tam budou aplikace spuštěné. 
     * Zahrnuje použití služby Azure Application proxy a připojeného režimu jednotného přihlašování.
 
-Informace o tom, jak nakonfigurovat režim jednotného přihlašování aplikace, najdete tady: [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Přečtěte si, jak tady nakonfigurovat režim jednotného přihlašování aplikace: [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 Pro dosažení co nejlepších zkušeností se stránkou moje aplikace Začněte s integrací cloudových aplikací, které jsou k dispozici pro federované jednotné přihlašování. Federované jednotné přihlašování umožňuje uživatelům, aby v rámci svých aplikací měli konzistentní možnosti jediného kliknutí a v řízení konfigurace je lépe robustní.
 
@@ -193,7 +193,7 @@ Další informace o tom, jak nasadit a nakonfigurovat aplikace SaaS, najdete v [
 
 Když se uživatelé přihlásí k aplikacím jednotného přihlašování na základě hesla, musí nainstalovat a použít rozšíření pro zabezpečené přihlašování k aplikacím. Toto rozšíření spustí skript, který přenáší heslo do formuláře pro přihlášení k aplikaci. Uživatelům se zobrazí výzva k instalaci rozšíření při prvním spuštění aplikace jednotného přihlašování založeného na heslech. Další informace o rozšíření najdete v této dokumentaci týkající [se instalace rozšíření prohlížeče přístupového panelu](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav).
 
-Pokud potřebujete integrovat aplikace jednotného přihlašování založené na heslech, měli byste definovat mechanismus nasazení rozšíření ve velkém měřítku s [podporovanými prohlížeči](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Vaše možnosti jsou:
+Pokud potřebujete integrovat aplikace jednotného přihlašování založené na heslech, měli byste definovat mechanismus nasazení rozšíření ve velkém měřítku s [podporovanými prohlížeči](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Mezi možnosti patří:
 
 * [Zásady skupiny pro Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 
@@ -201,7 +201,7 @@ Pokud potřebujete integrovat aplikace jednotného přihlašování založené n
 
 * [Stažení a konfigurace na základě uživatele pro Chrome, Firefox, Microsoft Edge nebo IE](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-Další informace: [Jak nakonfigurovat jednotné přihlašování pro heslo](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)
+Další informace: [jak nakonfigurovat jednotné přihlašování k heslům](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)
 
 Pro uživatele, kteří nepoužívají aplikace jednotného přihlašování založené na heslech, je také výhoda rozšíření. Mezi tyto výhody patří možnost spuštění libovolné aplikace z panelu hledání, vyhledání přístupu k nedávno používaným aplikacím a odkaz na stránku Moje aplikace.
 
@@ -211,11 +211,11 @@ Zde je uvedeno, co se uživateli zobrazí při prvním spuštění aplikace jedn
 
 #### <a name="plan-for-mobile-access"></a>Plánování mobilního přístupu
 
-Prohlížeč chráněný zásadami Intune (Microsoft Edge nebo Intune Managed Browser) je nutný pro mobilní uživatele, kteří spouštějí aplikace jednotného přihlašování založené na heslech. Prohlížeč chráněný zásadami povoluje přenos hesla uloženého pro aplikaci. Microsoft Edge nebo Managed Browser poskytují sadu funkcí ochrany webových dat. Na zařízeních s iOS a Androidem můžete také používat Microsoft Edge pro podnikové scénáře. Microsoft Edge podporuje stejné scénáře správy jako Intune Managed Browser a zlepšuje činnost koncového uživatele. Další informace: [Spravujte webový přístup pomocí Microsoft Intune prohlížeče chráněného zásadami](https://docs.microsoft.com/intune/app-configuration-managed-browser).
+Prohlížeč chráněný zásadami Intune (Microsoft Edge nebo Intune Managed Browser) je nutný pro mobilní uživatele, kteří spouštějí aplikace jednotného přihlašování založené na heslech. Prohlížeč chráněný zásadami povoluje přenos hesla uloženého pro aplikaci. Microsoft Edge nebo Managed Browser poskytují sadu funkcí ochrany webových dat. Na zařízeních s iOS a Androidem můžete také používat Microsoft Edge pro podnikové scénáře. Microsoft Edge podporuje stejné scénáře správy jako Intune Managed Browser a zlepšuje činnost koncového uživatele. Další informace: [Správa webového přístupu pomocí Microsoft Intune prohlížeče chráněného zásadami](https://docs.microsoft.com/intune/app-configuration-managed-browser).
 
 ## <a name="plan-your-my-apps-deployment"></a>Plánování nasazení mých aplikací
 
-Základem přístupového panelu je spouštěč aplikací Moje aplikace, ke kterým uživatelé přistupují [https://myapps.microsoft.com](https://myapps.microsoft.com/). Stránky Moje aplikace přidávají uživatelům jediné místo pro zahájení práce a nastanou k potřebným aplikacím. Tady uživatelé vyhledají seznam všech aplikací, ke kterým mají přístup s jednotným přihlašováním. 
+Základem přístupového panelu je spouštěč aplikací Moje aplikace, ke kterým uživatelé mají přístup na [https://myapps.microsoft.com](https://myapps.microsoft.com/). Stránky Moje aplikace přidávají uživatelům jediné místo pro zahájení práce a nastanou k potřebným aplikacím. Tady uživatelé vyhledají seznam všech aplikací, ke kterým mají přístup s jednotným přihlašováním. 
 
 ![Snímek obrazovky s panelem aplikace](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 
@@ -226,6 +226,10 @@ Naplánujte pořadí, ve kterém přidáte aplikace do spouštěče moje aplikac
 #### <a name="add-applications-to-the-my-apps-panel"></a>Přidat aplikace na panel Moje aplikace
 
 Do spouštěče moje aplikace se dá přidat libovolná aplikace s povoleným PŘIHLÁŠENÍm k Azure AD. Další aplikace se přidávají pomocí propojené možnosti jednotného přihlašování. Můžete nakonfigurovat dlaždici aplikace, která odkazuje na adresu URL vaší existující webové aplikace. Propojené jednotné přihlašování umožňuje zahájit přesměrování uživatelů na portál moje aplikace bez migrace všech aplikací do jednotného přihlašování služby Azure AD. Můžete postupně přecházet na aplikace konfigurované pro jednotné přihlašování služby Azure AD, aniž by došlo k přerušení činnosti uživatelů.
+
+#### <a name="use-my-apps-workspaces-preview"></a>Použití pracovních prostorů moje aplikace (Preview)
+
+Ve výchozím nastavení jsou všechny aplikace uvedeny společně na jedné stránce. Pracovní prostory ale můžete použít k seskupení souvisejících aplikací a jejich zobrazení na samostatné kartě, což usnadňuje jejich vyhledání. Pracovní prostory můžete například použít k vytvoření logických skupin aplikací pro konkrétní role úlohy, úkoly, projekty a tak dále. Informace najdete v tématu [Jak používat pracovní prostory moje aplikace k přizpůsobení panelů přístupu uživatele (Preview)](access-panel-workspaces.md). 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Plánování, jestli se mají používat moje aplikace nebo stávající portál
 
@@ -282,7 +286,7 @@ Pokud při testování nebo nasazení chcete přidat skupiny, ale ještě nechce
 
 Pro aplikace Office 365 obdrží uživatelé kopii Office na základě licencí, které jsou jim přiřazeny. Předpokladem pro přístup k aplikacím Office je, aby se uživatelům přiřadily správné licence vázané na aplikace Office. Když uživateli přiřadíte licenci, automaticky uvidí aplikace, které jsou přidružené k licenci na stránce Moje aplikace a ve Spouštěči aplikací Office 365.
 
-Pokud chcete skrýt sadu aplikací Office od uživatelů, je k dispozici možnost skrýt aplikace na portálu moje aplikace a přitom přitom povolit přístup z portálu Office 365. Tato nastavení najdete v části aplikace s uživatelskými nastaveními. Další informace: [Skrýt aplikaci ze zkušeností uživatele v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
+Pokud chcete skrýt sadu aplikací Office od uživatelů, je k dispozici možnost skrýt aplikace na portálu moje aplikace a přitom přitom povolit přístup z portálu Office 365. Tato nastavení najdete v části aplikace s uživatelskými nastaveními. Další informace: [skrytí aplikace z uživatelského prostředí v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
 
 ![Snímek obrazovky s konfigurací způsobu skrývání aplikací](media/access-panel-deployment-plan/ap-dp-o365-portal.png)
 

@@ -7,24 +7,24 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 811fdd0b177e3a255ca91145e39005de1d2328ad
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e2d2da5e2c8c0236a4f42bc69a521891616df0d4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676453"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163299"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Vytvoření fondu tenanta a hostitele
+# <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
 Tento článek popisuje problémy při počátečním nastavení tenanta virtuální plochy Windows a související infrastruktury fondu hostitelů relací.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Získání bitové kopie Windows 10 Enterprise s více relacemi
 
-Pokud chcete použít image s více relacemi pro Windows 10 Enterprise, přečtěte si Azure Marketplace **, vyberte začínáme** > **Microsoft Windows 10** > a [Windows 10 Enterprise pro virtuální plochy verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
+Pokud chcete použít bitovou kopii Windows 10 Enterprise s více relacemi, **Přečtěte si Azure Marketplace, vyberte začínáme** > **Microsoft Windows 10** > a [Windows 10 Enterprise pro virtuální plochy verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
 ![Snímek obrazovky s výběrem Windows 10 Enterprise pro virtuální plochy verze 1809](media/AzureMarketPlace.png)
 
@@ -97,7 +97,7 @@ Při řešení neúspěšného nasazení Azure Resource Manager šablon a prost�
 3. Po identifikaci chyby použijte chybovou zprávu a prostředky v tématu [řešení běžných chyb nasazení Azure pomocí Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors) k vyřešení problému.
 4. Odstraňte všechny prostředky vytvořené během předchozího nasazení a zkuste šablonu znovu nasadit.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: nasazení nebylo úspěšné... \<hostname >/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: nasazení nebylo úspěšné...\<název hostitele >/JoinDomain
 
 ![Nasazování se nepovedlo snímek obrazovky.](media/e72df4d5c05d390620e07f0d7328d50f.png)
 
@@ -310,13 +310,13 @@ The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d2
 **Oprava:** Uživatel, který vytvořil tenanta virtuálních klientů Windows, musí se přihlásit k prostředí PowerShell virtuální plochy Windows a přiřadit pokusy o přiřazení role uživateli. Pokud používáte parametry šablony Azure Resource Manager GitHubu, postupujte podle těchto pokynů pomocí příkazů PowerShellu:
 
 ```PowerShell
-Add-RdsAccount -DeploymentUrl “https://rdbroker.wvd.microsoft.com”
-New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName “RDS Contributor” -SignInName <UPN>
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
 ### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Chyba: uživatel vyžaduje Azure Multi-Factor Authentication (MFA).
 
-![Snímek obrazovky vašeho nasazení selhal kvůli nedostatku služby Multi-Factor Authentication (MFA).](media/MFARequiredError.png)
+![Snímek obrazovky nasazení se nezdařil z důvodu nedostatku Multi-Factor Authentication (MFA)](media/MFARequiredError.png)
 
 Příklad nezpracované chyby:
 

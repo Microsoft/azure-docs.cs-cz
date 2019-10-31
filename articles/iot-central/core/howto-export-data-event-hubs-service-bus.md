@@ -8,12 +8,12 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: df1263e2cc13f875819c9bb16b5eb7399368b7f5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4a0959c7562c3868825e26366ae08e9b87f92319
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953522"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177214"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportujte data v Azure IoT Central
 
@@ -160,7 +160,7 @@ Zprávy obsahující data zařízení se odesílají do centra událostí nebo d
 Každá zpráva představuje jednu nebo více změn zařízení od poslední exportované zprávy. Mezi informace, které se odešlou v každé zprávě, patří:
 - `id` zařízení v IoT Central
 - `name` zařízení
-- `deviceId` ze [služby Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
+- `deviceId` ze [služby Device Provisioning Service](/azure/iot-central/core/howto-connect-nodejs)
 - Informace o šabloně zařízení
 - Hodnoty vlastností
 - Nastavení hodnot

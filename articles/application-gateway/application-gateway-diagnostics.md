@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 72549a2df3490344987567d1e62c65f76f151097
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7b9cbd4e84f60b42e8eb6cb250a9b25f398fd4a0
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693270"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176446"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
@@ -216,7 +216,7 @@ V případě Application Gateway a WAF v2 se v protokolech zobrazí další info
 |timeTaken| Doba (v milisekundách), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje dobu, po kterou se pakety požadavků a odpovědí cestují po síti. |
 |sslEnabled| Zda komunikace s back-end fondy používala protokol SSL. Platné hodnoty jsou zapnuté a vypnuté.|
 |sslCipher| Šifrovací sada používaná pro komunikaci SSL (Pokud je povolený protokol SSL).|
-|sslProtocol| Používá se protokol SSL (Pokud je povolený protokol SSL).|
+|sslProtocol| Používaný protokol SSL/TLS (Pokud je povolený protokol SSL).|
 |serverRouted| Back-end Server, na který Aplikační brána směruje požadavek.|
 |serverStatus| Stavový kód HTTP back-end serveru.|
 |serverResponseLatency| Latence odpovědi ze serveru back-end.|

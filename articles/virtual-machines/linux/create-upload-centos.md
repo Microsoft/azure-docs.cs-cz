@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: cfbd687e59a9a852fe1bf01386dac221f040d0f4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6c3bb16e249d84f1da94b6b827bbaf6f8e9df1a1
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083628"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171256"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na CentOS pro Azure
 
@@ -29,7 +29,7 @@ Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsah
 * [Příprava virtuálního počítače s CentOS 7.0 pro Azure](#centos-70)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podobný odvozený) operační systém Linux na virtuální pevný disk. Pro vytváření souborů. VHD, například virtualizačního řešení, jako je například Hyper-V, existuje více nástrojů. Pokyny najdete v tématu [instalace role Hyper-V a konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
@@ -39,11 +39,11 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
 * Formát VHDX není v Azure podporovaný, jenom **pevný virtuální pevný disk**.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny Convert-VHD. Pokud používáte VirtualBox, znamená to, že při vytváření disku vyberete **pevnou velikost** na rozdíl od výchozího dynamicky přiděleného disku.
 * Při instalaci systému Linux *doporučujeme* místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete konfliktům LVM názvů s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému stejnému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou používat na datových discích.
 * Vyžaduje se podpora jádra pro připojení systémů souborů UDF. Při prvním spuštění v Azure se konfigurace zřizování předává virtuálnímu počítači Linux přes médium ve formátu UDF, které je připojené k hostu. Agent Azure Linux musí být schopný připojit systém souborů UDF ke čtení konfigurace a zřídit virtuální počítač.
-* Verze jádra systému Linux pod 2.6.37 nepodporují architekturu NUMA na technologii Hyper-V s většími velikostmi virtuálních počítačů. Tento problém se týká především starších distribucí pomocí nadřazeného jádra Red Hat 2.6.32 a byl opraven v RHEL 6,6 (kernel-2.6.32-504). Systémy s vlastními jádry staršími než 2.6.37 nebo jádry založenými na RHEL, které jsou starší než 2.6.32-504 `numa=off` , musí nastavit parametr boot v příkazovém řádku jádra v souboru GRUB. conf. Další informace najdete v článku Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
+* Verze jádra systému Linux pod 2.6.37 nepodporují architekturu NUMA na technologii Hyper-V s většími velikostmi virtuálních počítačů. Tento problém se týká především starších distribucí pomocí nadřazeného jádra Red Hat 2.6.32 a byl opraven v RHEL 6,6 (kernel-2.6.32-504). Systémy s vlastními jádry staršími než 2.6.37 nebo jádry založenými na RHEL, které jsou starší než 2.6.32-504, musí nastavit parametr spouštění `numa=off` v příkazovém řádku jádra v souboru GRUB. conf. Další informace najdete v článku Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.
-* Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v poznámkách k [instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
+* Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
 
-## <a name="centos-6x"></a>CentOS 6.x
+## <a name="centos-6x"></a>CentOS 6. x
 
 1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
 
@@ -87,7 +87,7 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
     sudo chkconfig network on
     ```
 
-8. Pokud chcete použít OpenLogic zrcadly, které jsou hostovány v datacentrech Azure, nahraďte `/etc/yum.repos.d/CentOS-Base.repo` soubor následujícími úložištěmi.  Tím se také přidá úložiště **[OpenLogic]** , které zahrnuje další balíčky, jako je například agent Azure Linux:
+8. Pokud chcete použít OpenLogic zrcadly, které jsou hostovány v datacentrech Azure, nahraďte soubor `/etc/yum.repos.d/CentOS-Base.repo` následujícím úložištěm.  Tím se také přidá úložiště **[OpenLogic]** , které zahrnuje další balíčky, jako je například agent Azure Linux:
 
    ```console
    [openlogic]
@@ -139,7 +139,7 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
    ```
 
     > [!Note]
-    > Zbývající část tohoto průvodce se předpokládá, že používáte aspoň `[openlogic]` úložiště, které se použije k instalaci agenta Azure Linux níže.
+    > Zbývající část tohoto průvodce vám bude předpokládat, že používáte aspoň `[openlogic]` úložiště, které se použije k instalaci agenta Azure Linux níže.
 
 9. Přidejte následující řádek do/etc/yum.conf:
 
@@ -171,7 +171,7 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
     sudo yum install microsoft-hyper-v
     ```
 
-    Případně můžete postupovat podle pokynů k ruční instalaci na [stránce pro stažení aplikace LIS](https://go.microsoft.com/fwlink/?linkid=403033) a nainstalovat na virtuální počítač službu ot./min.
+    Případně můžete postupovat podle pokynů k ruční instalaci na [stránce pro stažení aplikace LIS](https://www.microsoft.com/download/details.aspx?id=51612) a nainstalovat na virtuální počítač službu ot./min.
 
 12. Nainstalujte agenta a závislosti pro Azure Linux. Spusťte a povolte službu waagent:
 
@@ -184,7 +184,7 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
 
     Balíček WALinuxAgent odstraní balíčky NetworkManager a NetworkManager-GNOME, pokud již nebyly odebrány, jak je popsáno v kroku 3.
 
-13. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Provedete to tak `/boot/grub/menu.lst` , že otevřete v textovém editoru a zajistěte, aby výchozí jádro zahrnovalo následující parametry:
+13. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Provedete to tak, že v textovém editoru otevřete `/boot/grub/menu.lst` a zajistěte, aby výchozí jádro zahrnovalo následující parametry:
 
     ```console
     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
@@ -198,16 +198,16 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
     rhgb quiet crashkernel=auto
     ```
 
-    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port.  `crashkernel` Možnost může být ponechána v případě potřeby nakonfigurovaná, ale Všimněte si, že tento parametr sníží velikost dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port.  V případě potřeby může být možnost `crashkernel` nakonfigurované, ale Všimněte si, že tento parametr sníží velikost dostupné paměti virtuálního počítače o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
     > [!Important]
-    > CentOS 6,5 a starší musí také nastavit parametr `numa=off`jádra. Podívejte se na Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
+    > CentOS 6,5 a starší musí také nastavit parametr jádra `numa=off`. Podívejte se na Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 
 14. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění.  Obvykle se jedná o výchozí nastavení.
 
 15. Nevytvářejte odkládací místo na disku s operačním systémem.
 
-    Agent Azure Linux může automaticky nakonfigurovat odkládací prostor pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že místní disk prostředků je *dočasný* disk a při zrušení zřízení virtuálního počítače může dojít k jeho vyprázdnění. Po instalaci agenta Azure Linux (viz předchozí krok) upravte `/etc/waagent.conf` odpovídajícím způsobem následující parametry:
+    Agent Azure Linux může automaticky nakonfigurovat odkládací prostor pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že místní disk prostředků je *dočasný* disk a při zrušení zřízení virtuálního počítače může dojít k jeho vyprázdnění. Po instalaci agenta Azure Linux (viz předchozí krok) upravte v `/etc/waagent.conf` odpovídajícím způsobem následující parametry:
 
     ```console
     ResourceDisk.Format=y
@@ -271,7 +271,7 @@ Příprava virtuálního počítače s CentOS 7 pro Azure je velmi podobná Cent
     sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
     ```
 
-6. Pokud chcete použít OpenLogic zrcadly, které jsou hostovány v datacentrech Azure, nahraďte `/etc/yum.repos.d/CentOS-Base.repo` soubor následujícími úložištěmi.  Tím se také přidá úložiště **[OpenLogic]** zahrnující balíčky pro agenta Azure Linux:
+6. Pokud chcete použít OpenLogic zrcadly, které jsou hostovány v datacentrech Azure, nahraďte soubor `/etc/yum.repos.d/CentOS-Base.repo` následujícím úložištěm.  Tím se také přidá úložiště **[OpenLogic]** zahrnující balíčky pro agenta Azure Linux:
 
    ```console
    [openlogic]
@@ -314,7 +314,7 @@ Příprava virtuálního počítače s CentOS 7 pro Azure je velmi podobná Cent
    ```
     
    > [!Note]
-   > Zbývající část tohoto průvodce se předpokládá, že používáte aspoň `[openlogic]` úložiště, které se použije k instalaci agenta Azure Linux níže.
+   > Zbývající část tohoto průvodce vám bude předpokládat, že používáte aspoň `[openlogic]` úložiště, které se použije k instalaci agenta Azure Linux níže.
 
 7. Spusťte následující příkaz, který vymaže aktuální metadata Yumu a nainstaluje aktualizace:
 
@@ -330,7 +330,7 @@ Příprava virtuálního počítače s CentOS 7 pro Azure je velmi podobná Cent
 
     Po spuštění tohoto příkazu se možná vyžaduje restart.
 
-8. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Provedete to tak `/etc/default/grub` , že otevřete v textovém editoru a `GRUB_CMDLINE_LINUX` upravíte parametr, například:
+8. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Provedete to tak, že v textovém editoru otevřete `/etc/default/grub` a upravíte parametr `GRUB_CMDLINE_LINUX`, například:
 
     ```console
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -342,20 +342,20 @@ Příprava virtuálního počítače s CentOS 7 pro Azure je velmi podobná Cent
     rhgb quiet crashkernel=auto
     ```
 
-    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. `crashkernel` Možnost může být ponechána v případě potřeby nakonfigurovaná, ale Všimněte si, že tento parametr sníží velikost dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. V případě potřeby může být možnost `crashkernel` nakonfigurované, ale Všimněte si, že tento parametr sníží velikost dostupné paměti virtuálního počítače o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
-9. Po dokončení úprav `/etc/default/grub` na výše spusťte následující příkaz pro opětovné sestavení konfigurace grub:
+9. Po dokončení úprav `/etc/default/grub` na výše spusťte následující příkaz, který znovu sestaví konfiguraci grub:
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-10. Při sestavování image z **VMware, VirtualBox nebo KVM:** Zajistěte, aby byly ovladače technologie Hyper-V součástí initramfs:
+10. Při sestavování image z **VMware, VirtualBox nebo KVM:** zajistěte, aby byly ovladače Hyper-V součástí initramfs:
 
     Upravit `/etc/dracut.conf`, přidat obsah:
 
     ```console
-    add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
+    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
     ```
 
     Znovu sestavte initramfs:
@@ -373,7 +373,7 @@ Příprava virtuálního počítače s CentOS 7 pro Azure je velmi podobná Cent
 
 12. Nevytvářejte odkládací místo na disku s operačním systémem.
 
-    Agent Azure Linux může automaticky nakonfigurovat odkládací prostor pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že místní disk prostředků je *dočasný* disk a při zrušení zřízení virtuálního počítače může dojít k jeho vyprázdnění. Po instalaci agenta Azure Linux (viz předchozí krok) upravte `/etc/waagent.conf` odpovídajícím způsobem následující parametry:
+    Agent Azure Linux může automaticky nakonfigurovat odkládací prostor pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že místní disk prostředků je *dočasný* disk a při zrušení zřízení virtuálního počítače může dojít k jeho vyprázdnění. Po instalaci agenta Azure Linux (viz předchozí krok) upravte v `/etc/waagent.conf` odpovídajícím způsobem následující parametry:
 
     ```console
     ResourceDisk.Format=y
@@ -393,6 +393,6 @@ Příprava virtuálního počítače s CentOS 7 pro Azure je velmi podobná Cent
 
 14. Klikněte na **Akce – > vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nyní jste připraveni k vytváření nových virtuálních počítačů v Azure pomocí virtuálního pevného disku s CentOS Linux. Pokud soubor. VHD do Azure nahráváte poprvé, přečtěte si článek [Vytvoření virtuálního počítače se systémem Linux z vlastního disku](upload-vhd.md#option-1-upload-a-vhd).

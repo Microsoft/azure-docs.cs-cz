@@ -1,6 +1,6 @@
 ---
-title: Odkaz pro sdílení pro vyžádání balíčku přístupu ve správě nároků Azure AD (Preview) – Azure Active Directory
-description: Naučte se sdílet odkaz pro vyžádání balíčku přístupu v Azure Active Directory Správa nároků (Preview).
+title: Odkaz pro sdílení pro vyžádání balíčku přístupu ve správě nároků Azure AD – Azure Active Directory
+description: Naučte se sdílet odkaz pro vyžádání balíčku přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91b98df1f93991d4781283bc38b02dc20d11268d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 94d32bf26def6832f51b4e09c697bca885162dc2
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392329"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174416"
 ---
-# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management-preview"></a>Odkaz pro sdílení pro vyžádání balíčku přístupu ve správě nároků Azure AD (Preview)
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Odkaz pro sdílení pro vyžádání balíčku přístupu ve správě nároků Azure AD
 
 Většina uživatelů v adresáři se může přihlásit k portálu pro přístup a automaticky uvidí seznam balíčků pro přístup, které si můžou vyžádat. U externích partnerských uživatelů, kteří ještě nejsou ve vašem adresáři, je ale budete muset poslat odkaz, který může použít k vyžádání přístupového balíčku. 
 

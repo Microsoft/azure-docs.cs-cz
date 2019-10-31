@@ -18,12 +18,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d9f178df5e5fd9d2b70b7791588cfdc0652b217
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5059acea753b4b8b7db80bfc79b4bb9718e0484e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802777"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175575"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
@@ -83,7 +83,7 @@ MSAL.NET má více explicitních výjimek. Pokud například v knihovně ADAL do
 ```csharp
 catch(AdalException exception)
 {
- if (exception.ErrorCode == “user_interaction_required”)
+ if (exception.ErrorCode == "user_interaction_required")
  {
   try
   {“try to authenticate interactively”}}
@@ -182,7 +182,7 @@ Pokud chcete číst a zapisovat pomocí MSAL.NET Azure Active Directory pomocí 
 
 ```csharp
 ResourceId = "https://graph.windows.net/";
-var scopes = new [] { ResourceId + “Directory.Read”, ResourceID + “Directory.Write”}
+var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Upozornění: v oboru, který odpovídá webovému rozhraní API v 1.0, by mělo být jedno nebo dvě lomítka

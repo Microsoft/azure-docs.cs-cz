@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: e2c061b69771214a770b3b42626d28672bd9fe77
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 22806f497283c1885446eadd5f444dacf3769c12
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297812"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163325"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Nasazení ukázek pro Kanadu federální PBMM podrobný plán
 
@@ -97,14 +97,14 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
 Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|\[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Log Analytics pracovní prostor pro virtuální počítače se systémem Linux |Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru |Prázdné pole se dá použít k označení žádných volitelných parametrů: `[]` |
-|\[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru |Prázdné pole se dá použít k označení žádných volitelných parametrů: `[]` |
-|\[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows |Přiřazení zásad |Log Analytics pracovní prostor pro virtuální počítače s Windows |Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview @ no__t-1: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálního počítače pro podporu požadavků auditu |Přiřazení zásad |ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat |Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat. |
-|\[Preview @ no__t-1: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálního počítače pro podporu požadavků auditu |Přiřazení zásad |Seznam typů prostředků, které by měly mít povolené diagnostické protokoly |Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
-|\[Preview @ no__t-1: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálního počítače pro podporu požadavků auditu |Přiřazení zásad |Skupina Administrators |Skupiny. Příklad: `Administrator; myUser1; myUser2` |
-|\[Preview @ no__t-1: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálního počítače pro podporu požadavků auditu |Přiřazení zásad |Seznam uživatelů, které by měly být zahrnuté ve skupině Správci virtuálních počítačů s Windows |Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Příklad: `Administrator; myUser1; myUser2` |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Log Analytics pracovní prostor pro virtuální počítače se systémem Linux |Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru |Prázdné pole se dá použít k označení žádných volitelných parametrů: `[]` |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru |Prázdné pole se dá použít k označení žádných volitelných parametrů: `[]` |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows |Přiřazení zásad |Log Analytics pracovní prostor pro virtuální počítače s Windows |Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Preview\]: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat |Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat. |
+|\[Preview\]: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |Seznam typů prostředků, které by měly mít povolené diagnostické protokoly |Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
+|\[Preview\]: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |Skupina Administrators |Skupiny. Příklad: `Administrator; myUser1; myUser2` |
+|\[Preview\]: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |Seznam uživatelů, které by měly být zahrnuté ve skupině Správci virtuálních počítačů s Windows |Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Příklad: `Administrator; myUser1; myUser2` |
 |Nasazení rozšířené ochrany před internetovými útoky na účty úložiště |Přiřazení zásad |Efekt |Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md). |
 |Nasazení auditování na SQL serverech |Přiřazení zásad |Hodnota v dnech doby uchování (0 označuje neomezené uchovávání) |Počet dnů uchování (volitelné, _180_ dní, pokud není zadaný) |
 |Nasazení auditování na SQL serverech |Přiřazení zásad |Název skupiny prostředků pro účet úložiště pro auditování SQL serveru |Auditování zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který sdílí všechny servery v této oblasti). Důležité: Pokud chcete, aby řádná operace auditování neodstranila ani nepřejmenovala skupinu prostředků nebo účty úložiště. |
@@ -119,7 +119,7 @@ Teď, když jste si prohlédli postup nasazení ukázky Federal PBMM pro Kanadu,
 > [Kanada – federální PBMM modrotisky – přehled](./index.md)
 > [Kanada federální PBMM modrotisky – mapování ovládacích prvků](./control-mapping.md)
 
-Další články věnované podrobným plánům a postupu jejich využití:
+Další články o semodrotiskych a jejich použití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)

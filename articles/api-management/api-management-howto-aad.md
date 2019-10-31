@@ -10,29 +10,29 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6116ece6035b326440108c1f2b2effd1b6bb9258
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1def431bd24019c5f7d15cf7ac0e7550b85d17c4
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072548"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176733"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory v Azure API Management
 
 V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře pro uživatele z Azure Active Directory (Azure AD). Tato příručka také ukazuje, jak spravovat skupiny uživatelů Azure AD přidáním externích skupin, které obsahují uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
+- Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
 - Import a publikování instance služby Azure API Management. Další informace najdete v tématu [Import a publikování](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autorizace vývojářských účtů pomocí Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 2. Vyberte ![šipka](./media/api-management-howto-aad/arrow.png).
 3. Do vyhledávacího pole zadejte **API** .
 4. Vyberte **API Management Services**.
@@ -59,7 +59,7 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
 
 14.  Po zaregistrování aplikace zkopírujte na stránce **Přehled** **ID aplikace (klienta)** . 
 15. Vraťte se k instanci API Management. V okně **Přidat zprostředkovatele identity** vložte hodnotu **ID aplikace (klienta)** do pole **ID klienta** .
-16. Přepněte zpátky do konfigurace Azure AD, v části **Spravovat**vyberte **certifikáty & tajných** kódů. Vyberte tlačítko **nový tajný klíč klienta** . Zadejte hodnotu v **popisu**, vyberte možnost pro vypršení **platnosti** a zvolte **Přidat**. Před zavřením stránky zkopírujte hodnotu tajného klíče klienta. Budete je potřebovat v dalším kroku. 
+16. Přepněte zpátky do konfigurace Azure AD, v části **Spravovat**vyberte **certifikáty & tajných** kódů. Vyberte tlačítko **nový tajný klíč klienta** . Zadejte hodnotu v **popisu**, vyberte možnost pro **vypršení platnosti** a zvolte **Přidat**. Před zavřením stránky zkopírujte hodnotu tajného klíče klienta. Budete je potřebovat v dalším kroku. 
 17. V části **Spravovat**vyberte **ověřování** a v části **implicitní udělení** vyberte **tokeny ID** .
 18. Vraťte se do své instance API Management a vložte tajný klíč do pole **tajný kód klienta** .
 
@@ -71,9 +71,9 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
 19. Okno **Přidat zprostředkovatele identity** obsahuje taky textové pole **povolené klienty** . Zde zadejte domény instancí služby Azure AD, kterým chcete udělit přístup k rozhraním API instance služby API Management. Více domén můžete oddělit newlines, mezerami nebo čárkami.
 
 > [!NOTE]
-> V části **Povolení klienti** můžete zadat více domén. Předtím, než se uživatel může přihlásit z jiné domény, než je původní doména, ve které byla aplikace zaregistrována, musí globální správce jiné domény udělit oprávnění aplikaci pro přístup k datům adresáře. Aby bylo možné udělit oprávnění, globální správce by měl: a. Přejít na `https://<URL of your developer portal>/aadadminconsent` ( https://contoso.portal.azure-api.net/aadadminconsent) například.
+> V části **Povolení klienti** můžete zadat více domén. Předtím, než se uživatel může přihlásit z jiné domény, než je původní doména, ve které byla aplikace zaregistrována, musí globální správce jiné domény udělit oprávnění aplikaci pro přístup k datům adresáře. Aby bylo možné udělit oprávnění, globální správce by měl: a. Přejít na `https://<URL of your developer portal>/aadadminconsent` (například https://contoso.portal.azure-api.net/aadadminconsent).
 > b. Zadejte název domény tenanta Azure AD, kterému chcete udělit přístup.
-> c. Vyberte **odeslat**. 
+> c. Vyberte **Odeslat**. 
 
 20.  Po zadání požadované konfigurace vyberte **Přidat**.
 
@@ -84,13 +84,13 @@ Po uložení změn se uživatelé ze zadané instance služby Azure AD mohou př
 Po povolení přístupu pro uživatele v instanci Azure AD můžete přidat skupiny služby Azure AD v API Management. Pak můžete snadněji spravovat přidružení vývojářů ve skupině k požadovaným produktům.
 
  > [!IMPORTANT]
- > Pokud chcete přidat externí skupinu Azure AD, musíte nejdřív na kartě **identity** nakonfigurovat instanci Azure AD podle postupu v předchozí části. Kromě toho musí být aplikaci udělen přístup k Graph API Azure AD s `Directory.Read.All` oprávněním. 
+ > Pokud chcete přidat externí skupinu Azure AD, musíte nejdřív na kartě **identity** nakonfigurovat instanci Azure AD podle postupu v předchozí části. Kromě toho musí být aplikaci udělen přístup k Graph API Azure AD s oprávněním `Directory.Read.All`. 
 
 Externí skupiny služby Azure AD přidáte na kartě **skupiny** vaší instance API Management.
 
 1. Vyberte kartu **Skupiny**.
 2. Vyberte tlačítko **Přidat skupinu AAD** .
-   ![Tlačítko Přidat skupinu AAD](./media/api-management-howto-aad/api-management-with-aad008.png)
+   ![tlačítko Přidat skupinu AAD](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. Vyberte skupinu, kterou chcete přidat.
 4. Stiskněte tlačítko **Vybrat** .
 
@@ -98,7 +98,17 @@ Po přidání externí skupiny služby Azure AD můžete zkontrolovat a nakonfig
  
 Uživatelé z nakonfigurované instance služby Azure AD se teď můžou přihlásit k portálu pro vývojáře. Můžou zobrazit a přihlásit se k odběru všech skupin, pro které mají viditelnost.
 
-## <a name="a-idlog_in_to_dev_portalsign-in-to-the-developer-portal-by-using-an-azure-ad-account"></a><a id="log_in_to_dev_portal"/>Přihlaste se k portálu pro vývojáře pomocí účtu Azure AD.
+## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a>portál pro vývojáře <a id="log_in_to_dev_portal"/> – přidání ověřování účtu Azure AD
+
+Pokud chcete povolit přihlášení pomocí AAD na portálu pro vývojáře, musíte do formuláře pro přihlášení přidat pomůcku **tlačítek OAuth** .
+
+![Pomůcka tlačítek AAD](./media/api-management-howto-aad/portal-oauth-widget.png)
+
+I když se nový účet automaticky vytvoří pokaždé, když se přihlásí nový uživatel pomocí AAD, můžete zvážit přidání stejného widgetu do formuláře pro registraci.
+
+## <a name="legacy-developer-portal---how-to-sign-in-with-azure-ad"></a>Starší portál pro vývojáře – jak se přihlásit pomocí Azure AD
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 Pokud se chcete přihlásit k portálu pro vývojáře pomocí účtu Azure AD, který jste nakonfigurovali v předchozích částech:
 

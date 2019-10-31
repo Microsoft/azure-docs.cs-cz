@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: v-vasuke
 ms.custom: mvc
-ms.openlocfilehash: d9db71a1b64ea6bf2dc73500160ce8e5e6022ef6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385024"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177728"
 ---
-# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury virtuálních počítačů Azure pro hostování Service Fabric clusteru
+# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: vytvoření infrastruktury virtuálních počítačů Azure pro hostování Service Fabricho clusteru
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na virtuálních počítačích Azure a nainstalujete do něj aplikaci.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „jakýkoli operační systém a cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na virtuálních počítačích Azure a nainstalujete do něj aplikaci.
 
 Tento kurz je první částí série. V tomto článku vygenerujete prostředky virtuálních počítačů Azure, které jsou potřeba pro hostování samostatného clusteru Service Fabric. V dalších článcích bude třeba nainstalovat samostatnou sadu Service Fabric, nainstalovat do clusteru ukázkovou aplikaci a nakonec cluster vyčistit.
 
@@ -36,7 +36,7 @@ V první části této série se naučíte:
 > * Přihlášení k jedné z instancí
 > * Příprava instance pro Service Fabric
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete předplatné Azure.  Pokud účet ještě nemáte, můžete ho vytvořit tak, že přejdete na [Azure Portal](https://portal.azure.com) .
 
@@ -90,23 +90,17 @@ Spusťte ještě dva **Virtual Machines**. Ujistěte se, že jste zachovali stej
  
 4. Otevřete soubor RDP a po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste zadali v nastavení virtuálního počítače.
 
-5. Jakmile budete připojeni k instanci, je nutné ověřit, zda byl spuštěn vzdálený registr, povolit protokol SMB a otevřít požadované porty pro protokol SMB a vzdálený registr.
-
-   Pokud chcete povolit protokol SMB, jedná se o příkaz prostředí PowerShell:
-
-   ```powershell
-   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-   ```
+5. Jakmile budete připojeni k instanci, je třeba ověřit, zda byl spuštěn vzdálený registr, a otevřít požadované porty.
 
 6. Pro otevření portů v bráně firewall zase slouží tento příkaz PowerShellu:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
    ```
 
 7. Tento postup opakujte pro své jiné instance a znovu se zaznamenáte o privátních IP adresách.
 
-## <a name="verify-your-settings"></a>Ověřit nastavení
+## <a name="verify-your-settings"></a>Ověření nastavení
 
 1. Pokud chcete ověřit základní připojení, připojte se k některému z virtuálních počítačů pomocí protokolu RDP.
 
@@ -118,18 +112,9 @@ Spusťte ještě dva **Virtual Machines**. Ujistěte se, že jste zachovali stej
 
    Pokud jeho výstup vypadá takto `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` a opakuje se čtyřikrát, pak spojení mezi instancemi funguje.
 
-3. Nyní následujícím příkazem ověřte, jestli funguje sdílení SMB:
-
-   ```
-   net use * \\172.31.20.163\c$
-   ```
-
-   Výstupem by mělo být `Drive Z: is now connected to \\172.31.20.163\c$.`.
-
-
    Teď jsou vaše instance správně připravené pro Service Fabric.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V první části série jste zjistili, jak spustit tři instance virtuálních počítačů Azure a jak je nakonfigurovat pro instalaci Service Fabric:
 

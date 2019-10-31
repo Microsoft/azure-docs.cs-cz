@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa0480e95fa072b6fa87aea8debd3dafc8ebcab
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 519993be873e7864dab4de4f66919c56aebfc379
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042061"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171860"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Postupy: povolení resetování hesla z přihlašovací obrazovky Windows
 
@@ -24,29 +24,10 @@ V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povol
 
 ![Příklady přihlašovacích obrazovek Windows 7 a 10 se zobrazeným odkazem na SSPR](./media/howto-sspr-windows/windows-reset-password.png)
 
-## <a name="general-prerequisites"></a>Obecné požadavky
-
-- Správce musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal.
-- **Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.**
-- Požadavky na síťový proxy server
-   - Zařízení s Windows 10 
-       - Port 443 pro `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com`
-       - Zařízení s Windows 10 podporují jenom konfiguraci proxy serveru na úrovni počítače.
-   - Zařízení se systémem Windows 7, 8 a 8,1
-       - Port 443 pro `passwordreset.microsoftonline.com`
-
 ## <a name="general-limitations"></a>Obecná omezení
 
 - Resetování hesla není v současné době podporováno ze vzdálené plochy nebo z rozšířených relací technologie Hyper-V.
 - Tato funkce nefunguje pro sítě s nasazeným ověřováním sítě 802.1 x a možnost provést těsně před přihlášením uživatele. Pro povolení této funkce doporučujeme, aby se sítě s nasazeným ověřováním pomocí sítě 802.1 x používaly ověřování počítače.
-
-## <a name="windows-10-password-reset"></a>Resetování hesla Windows 10
-
-### <a name="windows-10-specific-prerequisites"></a>Požadavky specifické pro Windows 10
-
-- Spusťte aspoň Windows 10, verze z dubna 2018 Update (v1803) a zařízení musí být buď:
-    - Připojeno k Azure AD
-    - Připojeno k hybridní službě Azure AD
 - Počítače připojené k hybridní službě Azure AD musí mít na řadiči domény linku připojení k síti, aby bylo možné použít nové heslo a aktualizovat přihlašovací údaje uložené v mezipaměti.
 - Pokud použijete image, před provedením kroku CopyProfile zajistěte, aby byla mezipaměť webu pro předdefinovaný správce vymazána. Další informace o tomto kroku najdete v článku o [výkonu nekvalitního výkonu při používání vlastního výchozího uživatelského profilu](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - U následujících nastavení je známo, že se bude rušit možnost používat a resetovat hesla na zařízeních s Windows 10.
@@ -60,7 +41,21 @@ V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povol
 - Tato funkce může způsobit, že tato funkce nefunguje v kombinaci následujících tří nastavení.
     - Interaktivní přihlašování: Nevyžadovat CTRL + ALT + DEL = zakázáno
     - DisableLockScreenAppNotifications = 1 nebo povoleno
-    - IsContentDeliveryPolicyEnforced = 1 nebo true 
+    - IsContentDeliveryPolicyEnforced = 1 nebo true
+
+## <a name="windows-10-password-reset"></a>Resetování hesla Windows 10
+
+### <a name="windows-10-prerequisites"></a>Požadavky Windows 10
+
+- Správce musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal.
+- **Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.**
+- Požadavky na síťový proxy server
+   - Zařízení s Windows 10 
+       - Port 443 pro `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com`
+       - Zařízení s Windows 10 podporují jenom konfiguraci proxy serveru na úrovni počítače.
+- Spusťte aspoň Windows 10, verze z dubna 2018 Update (v1803) a zařízení musí být buď:
+    - Připojeno k Azure AD
+    - Připojeno k hybridní službě Azure AD
 
 ### <a name="enable-for-windows-10-using-intune"></a>Povolení pro Windows 10 pomocí Intune
 
@@ -94,7 +89,6 @@ Nasazení změny konfigurace, která umožní resetování hesla z přihlašovac
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-
 #### <a name="troubleshooting-windows-10-password-reset"></a>Řešení potíží s resetováním hesla Windows 10
 
 Protokol auditu služby Azure AD bude obsahovat informace o IP adrese a typu klienta, kde došlo k resetování hesla.
@@ -105,8 +99,13 @@ Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Win
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Resetování hesla Windows 7, 8 a 8,1
 
-### <a name="windows-7-8-and-81-specific-prerequisites"></a>Specifické požadavky pro Windows 7, 8 a 8,1
+### <a name="windows-7-8-and-81-prerequisites"></a>Požadavky pro Windows 7, 8 a 8,1
 
+- Správce musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal.
+- **Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.**
+- Požadavky na síťový proxy server
+   - Zařízení se systémem Windows 7, 8 a 8,1
+       - Port 443 pro `passwordreset.microsoftonline.com`
 - Opraven operační systém Windows 7 nebo Windows 8.1.
 - Protokol TLS 1,2 povolený pomocí pokynů uvedených v [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12).
 - Pokud je na vašem počítači povolený víc než jeden poskytovatel přihlašovacích údajů třetích stran, zobrazí se uživatelům na přihlašovací obrazovce víc než jeden profil uživatele.
@@ -151,7 +150,7 @@ Teď, když jste nakonfigurovali resetování hesla pro zařízení s Windows, k
 
 Když se uživatel pokusí přihlásit, zobrazí se jim odkaz pro **resetování** hesla nebo **zapomenuté heslo** , který otevře možnosti samoobslužného resetování hesla na přihlašovací obrazovce. Tato funkce umožňuje uživatelům resetovat své heslo, aniž by museli použít jiné zařízení pro přístup k webovému prohlížeči.
 
-Vaši uživatelé najdou pokyny k použití této funkce v tématu popisujícím [resetování hesla k pracovnímu nebo školnímu účtu](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in).
+Vaši uživatelé najdou pokyny k použití této funkce v tématu popisujícím [resetování hesla k pracovnímu nebo školnímu účtu](../user-help/active-directory-passwords-update-your-own-password.md).
 
 ## <a name="next-steps"></a>Další kroky
 

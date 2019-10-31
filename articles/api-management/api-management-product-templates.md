@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 637d4e7bc75537d99538048700673192534613dc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073383"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176577"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Šablony produktů v Azure API Management
 
@@ -32,6 +32,8 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 > [!NOTE]
 >  Ukázkové výchozí šablony jsou uvedené v následující dokumentaci, ale můžou se změnit z důvodu průběžných vylepšení. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
@@ -69,11 +71,11 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Šablona může používat následující [ovládací prvky stránky.](api-management-page-controls.md) `Product list`  
+ Šablona `Product list` může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
--   [search-control](api-management-page-controls.md#search-control)  
+-   [hledání – ovládací prvek](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Datový model  
   
@@ -196,25 +198,25 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- Šablona může používat následující [ovládací prvky stránky.](api-management-page-controls.md) `Product list`  
+ Šablona `Product list` může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [subscribe-button](api-management-page-controls.md#subscribe-button)  
+-   [přihlášení k odběru – tlačítko](api-management-page-controls.md#subscribe-button)  
   
 ### <a name="data-model"></a>Datový model  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |Produkt|[Produktu](api-management-template-data-model-reference.md#Product)|Zadaný produkt.|  
-|IsDeveloperSubscribed|boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  
-|SubscriptionState|číslo|Stav předplatného. Možné stavy:<br /><br /> -   `0 - suspended`– předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br />-   `1 - active`– předplatné je aktivní.<br />-   `2 - expired`– předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted`– žádost o odběr byla vytvořena vývojářem, ale ještě nebyla schválena nebo odmítnuta.<br />-   `4 - rejected`– žádost o předplatné byla zamítnuta správcem.<br />-   `5 - cancelled`– předplatné zrušila vývojář nebo správce.|  
-|Omezení|array|Tato vlastnost je zastaralá a neměla by se používat.|  
-|DelegatedSubscriptionEnabled|boolean|Zda je pro toto předplatné povoleno [delegování](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) .|  
-|DelegatedSubscriptionUrl|řetězec|Pokud je povoleno delegování, adresa URL delegovaného předplatného.|  
-|Souhlasí|boolean|Pokud má produkt nějaké výrazy, bez ohledu na to, jestli aktuální uživatel souhlasil s podmínkami.|  
-|Předplatná|Kolekce [souhrnných](api-management-template-data-model-reference.md#SubscriptionSummary) entit předplatného|Odběry produktu.|  
+|IsDeveloperSubscribed|Boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  
+|SubscriptionState|číslo|Stav předplatného. Možné stavy:<br /><br /> -   `0 - suspended` – předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br />-   `1 - active` – předplatné je aktivní.<br />-   `2 - expired` – předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted` – žádost o předplatné udělal vývojář, ale ještě nebyla schválená ani zamítnutá.<br />-   `4 - rejected` – žádost o předplatné byla zamítnuta správcem.<br />-   `5 - cancelled` – předplatné zrušila vývojář nebo správce.|  
+|Omezení|pole|Tato vlastnost je zastaralá a neměla by se používat.|  
+|DelegatedSubscriptionEnabled|Boolean|Zda je pro toto předplatné povoleno [delegování](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) .|  
+|DelegatedSubscriptionUrl|string|Pokud je povoleno delegování, adresa URL delegovaného předplatného.|  
+|Souhlasí|Boolean|Pokud má produkt nějaké výrazy, bez ohledu na to, jestli aktuální uživatel souhlasil s podmínkami.|  
+|Předplatná|Kolekce [souhrnných entit předplatného](api-management-template-data-model-reference.md#SubscriptionSummary)|Odběry produktu.|  
 |Třídy|Kolekce entit [rozhraní API](api-management-template-data-model-reference.md#API) .|Rozhraní API v tomto produktu.|  
-|CannotAddBecauseSubscriptionNumberLimitReached|boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na limit předplatného.|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na více než více předplatných povolených.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|Boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na limit předplatného.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|Boolean|Zda má aktuální uživatel nárok na přihlášení k odběru tohoto produktu s ohledem na více než více předplatných povolených.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   

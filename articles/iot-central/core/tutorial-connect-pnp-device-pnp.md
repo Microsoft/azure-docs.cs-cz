@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: fdf4b68bfb10ff02ae4f90ee4c1668274ed30e79
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f4bb7bd3b1cd024c71d5c1ab7329437716755f88
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957031"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177195"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Kurz: použití modelu schopností zařízení k vytvoření zařízení IoT technologie Plug and Play a jeho připojení k aplikaci IoT Central
 
@@ -191,4 +191,4 @@ V tomto kurzu jste zjistili, jak připojit zařízení IoT technologie Plug and 
 Pokud se chcete dozvědět víc o DCMs a vytváření vlastních modelů, přejděte k Průvodci postupy:
 
 > [!div class="nextstepaction"]
-> [Nastavení a Správa šablony zařízení](./howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Vytvoření skupiny zařízení](./tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ff36230095b90418a2619bbf1c5bb02863072b5
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 83c185a6ba8f1c5e6edf095db5baf575f750fa3b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372834"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176466"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění Runbooků na Hybrid Runbook Worker
 
 Ve struktuře runbooků, které běží v Azure Automation a runbooky, které běží na Hybrid Runbook Worker, není žádný rozdíl. Sady Runbook, které používáte s nejpravděpodobnějším rozdílem, se výrazně liší. Důvodem je to, že Runbooky, které cílí na Hybrid Runbook Worker, obvykle spravují prostředky v místním počítači nebo k prostředkům v místním prostředí, kde je nasazený. Runbooky v Azure Automation obvykle spravují prostředky v cloudu Azure.
 
-Když vytváříte Runbooky, které mají běžet na Hybrid Runbook Worker, měli byste Runbooky upravovat a testovat v počítači, který je hostitelem hybridního pracovního procesu. Hostitelský počítač má všechny moduly PowerShellu a přístup k síti, které potřebujete pro správu a přístup k místním prostředkům. Jakmile se Runbook na hybridním pracovním počítači testuje, můžete ho nahrát do prostředí Azure Automation, kde je možné ho spustit v hybridním pracovním procesu. Je důležité, abyste věděli, že úlohy spuštěné pod účtem místního systému pro Windows nebo speciální uživatelský účet `nxautomation` v systému Linux. V systému Linux to znamená, že je nutné zajistit, aby účet `nxautomation` měl přístup k umístění, kam ukládáte své moduly. Když použijete rutinu [install-Module](/powershell/module/powershellget/install-module) , zadejte **AllUsers** k parametru `-Scope` a potvrďte tak, že má účet `naxautomation` přístup.
+Když vytváříte Runbooky, které mají běžet na Hybrid Runbook Worker, měli byste Runbooky upravovat a testovat v počítači, který je hostitelem hybridního pracovního procesu. Hostitelský počítač má všechny moduly PowerShellu a přístup k síti, které potřebujete pro správu a přístup k místním prostředkům. Jakmile se Runbook na hybridním pracovním počítači testuje, můžete ho nahrát do prostředí Azure Automation, kde je možné ho spustit v hybridním pracovním procesu. Je důležité, abyste věděli, že úlohy spuštěné pod účtem místního systému pro Windows nebo speciální uživatelský účet `nxautomation` v systému Linux. V systému Linux to znamená, že je nutné zajistit, aby účet `nxautomation` měl přístup k umístění, kam ukládáte své moduly. Když použijete rutinu [install-Module](/powershell/module/powershellget/install-module) , zadejte **AllUsers** k parametru `-Scope` a ověřte tak, že má účet `nxautomation` přístup.
 
 Další informace o PowerShellu v systému Linux najdete v tématu [známé problémy pro prostředí PowerShell na platformách jiných než Windows](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
@@ -284,7 +284,7 @@ sudo chown -R nxautomation ~/.gnupg
 
 #### <a name="make-the-keyring-available-the-hybrid-runbook-worker"></a>Zpřístupnění Hybrid Runbook Workerho klíčů
 
-Jakmile se vytvoří Správce klíčů, budete ho muset zpřístupnit Hybrid Runbook Worker. Upravte soubor nastavení `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf`, aby obsahoval následující příklad v části `[worker-optional]`.
+Jakmile se vytvoří Správce klíčů, budete ho muset zpřístupnit Hybrid Runbook Worker. Upravte soubor nastavení `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf` tak, aby obsahoval následující příklad v části `[worker-optional]`
 
 ```bash
 gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx

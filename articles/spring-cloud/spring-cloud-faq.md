@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 12ef5586ac1e7ecf27824f95add3355451cf555a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592315"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163766"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -66,13 +66,13 @@ Tady jsou známá omezení Azure jaře cloudu, když je služba ve verzi Preview
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Jak můžu sdělit svůj názor a ohlásit problémy?
 
-Pokud jste vytvořili instance služby pružiny v Azure jaře cloudu, můžete vytvořit [žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Pokud jste ještě nepřipojili k jarnímu cloudu Azure, můžete přejít na [zpětnou vazbu Azure](https://feedback.azure.com/) a vyžádat si funkce nebo poskytnout zpětnou vazbu.
+Pokud narazíte na nějaké problémy se službou Azure Pramenitého cloudu, vytvořte prosím [žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). U žádostí o funkce si prosím přečtěte [názory na Azure](https://feedback.azure.com/forums/34192--general-feedback) , které vám pomůžou požádat o funkce nebo o poskytnutí zpětné vazby.
 
 ## <a name="development"></a>Vývoj
 
 ### <a name="i-am-a-spring-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-aazure-spring-cloud-application"></a>Jsem vývojář pružiny, ale novinkou v Azure, jaký je nejrychlejší způsob, jak se chci naučit vyvíjet Rezervovanéou cloudovou aplikaci pro jaře?
 
-Nejrychlejší způsob, jak začít s jarním cloudem v Azure, je postupovat podle [tohoto rychlého startu](spring-cloud-quickstart-launch-app-portal.md).
+Nejrychlejší způsob, jak začít s jarním cloudem v Azure, je postupovat podle [tohoto](spring-cloud-quickstart-launch-app-portal.md)rychlého startu.
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Jaký běhový modul Java podporuje Azure jaře Cloud?
 

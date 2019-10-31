@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4bd1386c68f3173c19b282c1e01ecff545c4bcd7
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 39746032fd012de8e0868c3bc7f810cd8e780b68
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972053"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176371"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro QnA Maker obsah
 
@@ -29,8 +29,8 @@ Následující tabulka shrnuje typy obsahu a formátů souborů, které jsou pod
 
 |Typ zdroje|Typ obsahu| Příklady|
 |--|--|--|
-|Adresa URL|Nejčastější dotazy<br> (Plochý, s oddíly nebo s domovskou stránkou témat)<br>Stránky podpory <br> (Články s návody na jednu stranu, články týkající se řešení potíží atd.)|[Jednoduché Nejčastější dotazy](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs) <br>[Nejčastější dotazy s odkazy](https://www.microsoft.com/software-download/faq)<br> [Nejčastější dotazy s domovskou stránkou s tématy](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Článek podpory](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
-|PDF/DOC|Nejčastější<br> Ruční produkt,<br> Brožury,<br> Formátech<br> Zásady oznámení<br> Průvodce podporou,<br> Strukturované QnA,<br> atd.|[Strukturované QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka ručního produktu. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Ukázka semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka dokumentu White Paper. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf),<br>[Ukázka multi-Turn. docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
+|Adresa URL|Nejčastější dotazy<br> (Plochý, s oddíly nebo s domovskou stránkou témat)<br>Stránky podpory <br> (Články s návody na jednu stranu, články týkající se řešení potíží atd.)|[Jednoduché Nejčastější dotazy](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs) <br>[Nejčastější dotazy s odkazy](https://www.microsoft.com/en-us/software-download/faq)<br> [Nejčastější dotazy s domovskou stránkou s tématy](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Článek podpory](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|PDF/DOC|Nejčastější<br> Ruční produkt,<br> brožury,<br> Formátech<br> Zásady oznámení<br> Průvodce podporou,<br> Strukturované QnA,<br> atd.|[Strukturované QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka ručního produktu. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Ukázka semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka dokumentu White Paper. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf),<br>[Ukázka multi-Turn. docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
 |\* Excel|Strukturovaný soubor QnA<br> (včetně formátu RTF, HTML support)|[Ukázka nejčastějších dotazů QnA. xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |\* TXT/TSV|Strukturovaný soubor QnA|[Ukázka Chit-Chat. TSV](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
@@ -184,7 +184,7 @@ Pokud nemáte již existující obsah k naplnění znalostní báze, můžete do
 
 ## <a name="formatting-considerations"></a>Požadavky na formátování
 
-Po importu souboru nebo adresy URL QnA Maker převádí a ukládá obsah ve [formátu Markdownu](https://en.wikipedia.org/wiki/Markdown). Proces převodu přidá do textu nové řádky, například `\n\n`. Znalost formátu Markdownu vám pomůže pochopit převedený obsah a spravovat obsah znalostní báze. 
+Po importu souboru nebo adresy URL QnA Maker převádí a ukládá obsah ve [formátu Markdownu](https://en.wikipedia.org/wiki/Markdown). Proces převodu přidá nové řádky do textu, například `\n\n`. Znalost formátu Markdownu vám pomůže pochopit převedený obsah a spravovat obsah znalostní báze. 
 
 Pokud přidáte nebo upravíte svůj obsah přímo ve znalostní bázi, použijte **formátování Markdownu** k vytvoření formátovaného textu nebo změňte obsah formátu Markdownu, který je již v odpovědi. QnA Maker podporuje většinu formátu Markdownu, aby bylo možné do obsahu dostat možnosti formátovaného textu. Klientská aplikace, jako je například robot pro chat, nemusí podporovat stejnou sadu formátů Markdownu. Je důležité otestovat zobrazení odpovědí klientské aplikace. 
 
@@ -193,7 +193,7 @@ Následuje seznam formátů Markdownu, které můžete použít v QnA Maker:
 |Účel|Formát|Příklad Markdownu|Vykreslování<br>Jak se zobrazuje v robotovi pro chat|
 |--|--|--|--|
 Nový řádek mezi 2 větami.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![naformátovat nový řádek mezi dvěma větami](../media/qnamaker-concepts-datasources/format-newline.png)|
-|Hlavičky z H1 do h6, počet `#` značí, které záhlaví. 1 `#` je H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![formátování pomocí hlaviček Markdownu](../media/qnamaker-concepts-datasources/format-headers.png)<br>![formátování pomocí hlaviček Markdownu H1 na H5](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
+|Hlavičky z H1 do h6, počet `#` označuje, která záhlaví jsou. 1 `#` je H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![formátování pomocí hlaviček Markdownu](../media/qnamaker-concepts-datasources/format-headers.png)<br>![formátování pomocí hlaviček Markdownu H1 na H5](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
 |Kurzívu |`*text*`|`How do I create a bot with *QnA Maker*?`|![formátování pomocí kurzív](../media/qnamaker-concepts-datasources/format-italics.png)|
 |Řetězec (tučně)|`**text**`|`How do I create a bot with **QnA Maker**?`|![formát se silným označením pro tučné písmo](../media/qnamaker-concepts-datasources/format-strong.png)|
 |Adresa URL odkazu|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![formát pro adresu URL (hypertextový odkaz)](../media/qnamaker-concepts-datasources/format-url.png)|
@@ -205,7 +205,7 @@ Nový řádek mezi 2 větami.|`\n\n`|`How can I create a bot with \n\n QnA Maker
 |Řídicí symboly Markdownu|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![formát pro adresu URL kurzívou](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Seřazený seznam|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Předchozí příklad používá automatické číslování integrovaný do Markdownu.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Předchozí příklad používá explicitní číslování.|![formát pro uspořádaný seznam](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
 |Neuspořádaný seznam|`\n * item1 \n * item2`<br>nebo<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![formát pro neuspořádaný seznam](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
-|Vnořené seznamy|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Můžete vnořit seřazené a neuspořádané seznamy dohromady. Karta `\t` označuje úroveň odsazení podřízeného prvku.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![formát pro vnořený seznam neuspořádaných](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![formát pro vnořený uspořádaný seznam](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
+|Vnořené seznamy|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Můžete vnořit seřazené a neuspořádané seznamy dohromady. Karta, `\t`, označuje úroveň odsazení podřízeného prvku.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![formát pro vnořený seznam neuspořádaných](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![formát pro vnořený uspořádaný seznam](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 \* QnA Maker nezpracovává bitovou kopii jakýmkoli způsobem. Je to role klientské aplikace pro vykreslení image. 
 
@@ -213,10 +213,10 @@ Pokud chcete přidat obsah pomocí rozhraní API pro shodu aktualizací nebo nah
 
 | Zachovat HTML  | Reprezentace v žádosti rozhraní API  | Reprezentace v KB |
 |-----------|---------|-------------------------|
-| Ano | \&LT; br @ no__t-1gt; | @no__t – 0br @ no__t-1 |
-| Ano | \&LT; H3 @ no__t-1gt; Header @ no__t-2LT;/H3 @ no__t-3gt; | &lt;h3 @ no__t-1header @ no__t-2/H3 @ no__t-3 |
+| Ano | \&lt; br\&gt; | &lt;br&gt; |
+| Ano | \&lt; H3\&gt; Header\&lt;/H3\&gt; | &lt;H3&gt;záhlaví&lt;/H3&gt; |
 
-Znaky CR (\r\n) se navíc v KB převádějí na \n. LF (\n) se udržuje tak, jak je. Pokud chcete řídicí sekvenci Escape, třeba \t nebo \n, můžete použít zpětné lomítko, například: "\\ @ no__t-1R @ no__t-2 @ no__t-3N" a "\\ @ no__t-5t"
+Znaky CR (\r\n) se navíc v KB převádějí na \n. LF (\n) se udržuje tak, jak je. Chcete-li vytvořit řídicí sekvenci Escape, například \t nebo \n, můžete použít zpětné lomítko, například: '\\\\r\\\\n ' a '\\\\t '
 
 ## <a name="editing-your-knowledge-base-locally"></a>Místní úprava znalostní báze
 

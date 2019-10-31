@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f558ecf583c96f36b8bbee19c7c9cbb2ee57aa31
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f52fc70b54c27362575bef00c39a93d13e77cc2e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596735"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175351"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Webová aplikace, která přihlásí uživatele – konfigurace kódu
 
@@ -34,7 +34,7 @@ Knihovny používané k ochraně webové aplikace (a webového rozhraní API) js
 | Platforma | Knihovna | Popis |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Rozšíření modelu identity pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Microsoft Identity Extensions for .NET, který používá přímo ASP.NET a ASP.NET Core, navrhuje sadu knihoven DLL běžících jak v .NET Framework a .NET Core. Z webové aplikace ASP.NET/ASP.NET Core můžete řídit ověření tokenu pomocí třídy **TokenValidationParameters** (zejména v některých scénářích ISV). |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [msal4j](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | MSAL pro jazyk Java v současnosti ve verzi Public Preview |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | MSAL pro jazyk Java v současnosti ve verzi Public Preview |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | MSAL pro Python – aktuálně ve verzi Public Preview |
 
 Vyberte kartu odpovídající platformě, které vás zajímá:
@@ -53,7 +53,7 @@ Můžete chtít použít tuto ukázku k tomu, abyste si mohli zobrazit úplné p
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Fragmenty kódu v tomto článku a níže jsou extrahovány z [webové aplikace Java volání Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp) msal4j Web App Sample
+Fragmenty kódu v tomto článku a níže jsou extrahovány z [webové aplikace Java volání Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp) MSAL Java Web App Sample
 
 Můžete chtít použít tuto ukázku k tomu, abyste si mohli zobrazit úplné podrobnosti implementace.
 
@@ -137,7 +137,7 @@ V ASP.NET Core existuje další [properties\launchSettings.JSON](https://github.
 ```
 
 V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL; To znamená, že pro dva konfigurační soubory výše by se `https://localhost:44321/signin-oidc`, že je ApplicationUrl nebyla `http://localhost:3110`, ale je zadaný `sslPort` (44321), a `CallbackPath` je `/signin-oidc` podle definice v `appsettings.json`.
-  
+
 Stejným způsobem by byl identifikátor URI pro odhlášení nastaven na `https://localhost:44321/signout-callback-oidc`.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
@@ -175,10 +175,10 @@ aad.clientId=Enter_the_Application_Id_here
 aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 aad.secretKey=Enter_the_Client_Secret_Here
 aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-aad.redirectUriGraphUsers=http://localhost:8080/msal4jsample/graph/users
+aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat redirectUris definované aplikaci, která je `http://localhost:8080/msal4jsample/secure/aad` a `http://localhost:8080/msal4jsample/graph/users`
+V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat redirectUris definované aplikaci, která je `http://localhost:8080/msal4jsample/secure/aad` a `http://localhost:8080/msal4jsample/graph/me`
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -194,7 +194,8 @@ SESSION_TYPE = "filesystem"  # So token cache will be stored in server-side sess
 ```
 
 > [!NOTE]
-> V tomto rychlém startu se navrhuje Uložit tajný klíč klienta do konfiguračního souboru pro zjednodušení. V produkční aplikaci byste chtěli použít jiné způsoby ukládání tajného klíče, jako je třeba Trezor klíčů nebo proměnná prostředí, jak je popsáno v dokumentaci k baňce: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
+> V tomto rychlém startu se navrhuje Uložit tajný klíč klienta do konfiguračního souboru pro zjednodušení.
+> V produkční aplikaci byste chtěli použít jiné způsoby ukládání tajného klíče, jako je třeba Trezor klíčů nebo proměnná prostředí, jak je popsáno v dokumentaci k baňce: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
 >
 > ```python
 > CLIENT_SECRET = os.getenv("CLIENT_SECRET")
@@ -215,7 +216,7 @@ V ASP.NET Core Web Apps (a webových rozhraních API) je aplikace chráněná, p
   > [!NOTE]
   > Pokud spustíte projekt pomocí výchozího webového projektu ASP.NET Core v sadě Visual Studio nebo pomocí `dotnet new mvc` `AddAzureAD` metoda je ve výchozím nastavení k dispozici, protože související balíčky jsou automaticky načteny.
   > Pokud však sestavíte projekt od začátku a pokoušíte se použít níže uvedený kód, doporučujeme vám přidat balíček NuGet **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** do svého projektu, aby byla k dispozici metoda `AddAzureAD`.
-  
+
 Následující kód je k dispozici z [Startup. cs # L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34)
 
 ```CSharp
@@ -229,7 +230,7 @@ public class Startup
     ...
       // Sign-in users with the Microsoft identity platform
       services.AddMicrosoftIdentityPlatformAuthentication(Configuration);
-  
+
       services.AddMvc(options =>
       {
           var policy = new AuthorizationPolicyBuilder()
@@ -241,13 +242,13 @@ public class Startup
     }
 ```
 
-@No__t_0 je rozšiřující metoda definovaná v [Microsoft. identity. Web/WebAppServiceCollectionExtensions. cs # L23](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23). Její
+`AddMicrosoftIdentityPlatformAuthentication` je rozšiřující metoda definovaná v [Microsoft. identity. Web/WebAppServiceCollectionExtensions. cs # L23](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23). Její
 
 - Přidá ověřovací službu.
 - konfigurovat možnosti pro čtení konfiguračního souboru
 - nakonfiguruje možnosti připojení OpenID, aby použitá autorita byla koncovým bodem Microsoft Identity Platform (dřív Azure AD v 2.0).
 - Vystavitel tokenu je ověřený.
-- deklarace identity odpovídající názvu se mapují z deklarace identity preferred_username v tokenu ID. 
+- deklarace identity odpovídající názvu se mapují z deklarace identity preferred_username v tokenu ID.
 
 Kromě konfigurace můžete zadat při volání `AddMicrosoftIdentityPlatformAuthentication`:
 
@@ -347,7 +348,7 @@ Ukázka Java používá architekturu pružiny. Aplikace je chráněna, protože 
 
 - ověří, jestli je uživatel ověřený (`isAuthenticated()` metoda).
 - Pokud uživatel není ověřený, vypočítá adresu URL koncových bodů autorizace Azure AD a přesměruje prohlížeč na tento identifikátor URI.
-- když odpověď dorazí, která obsahuje tok kódu ověřování, umožňuje msal4j získat token.
+- když odpověď dorazí, obsahuje kód ověřování, který získá token pomocí MSAL Java.
 - Pokud nakonec obdrží token z koncového bodu tokenu (na identifikátoru URI přesměrování), je uživatel přihlášený.
 
 Podrobnosti najdete v tématu metoda `doFilter()` v [AuthFilter. Java.](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)

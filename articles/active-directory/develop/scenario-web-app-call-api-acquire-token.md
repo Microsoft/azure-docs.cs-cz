@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f30194592989b74aca96a5a483e9128cd3a86eb5
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a259fbcf3fde84edccafbcd2fd6594ddb623edfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274468"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175324"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webová aplikace, která volá webová rozhraní API – získá token pro aplikaci.
 
@@ -29,9 +29,9 @@ Teď, když jste vytvořili objekt klientské aplikace, ho použijete k získán
 - Získání tokenu pro webové rozhraní API pomocí mezipaměti tokenů Chcete-li získat tento token, zavoláte `AcquireTokenSilent`.
 - Volání chráněného rozhraní API pomocí přístupového tokenu.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
-Metody kontroleru jsou chráněné pomocí atributu `[Authorize]`, který vynucuje ověřování uživatelů pro používání webové aplikace. Zde je kód, který volá Microsoft Graph.
+Metody kontroleru jsou chráněné atributem `[Authorize]`, který vynutí, aby se uživatelé k používání webové aplikace ověřili. Zde je kód, který volá Microsoft Graph.
 
 ```CSharp
 [Authorize]
@@ -81,7 +81,7 @@ Tyto rozšířené kroky jsou zpracovávány v kapitole 3 kurzu [3 – WebApp-mu
 
 Věci jsou podobné v ASP.NET:
 
-- Akce kontroleru chráněná atributem [autorizovat] extrahuje ID tenanta a ID uživatele `ClaimsPrincipal` člena kontroleru. (ASP.NET používá `HttpContext.User`.)
+- Akce kontroleru chráněná atributem [autorizovat] extrahuje ID tenanta a ID uživatele `ClaimsPrincipal`ho člena kontroleru. (ASP.NET používá `HttpContext.User`.)
 - Odtud vytvoří MSAL.NET `IConfidentialClientApplication`.
 - Nakonec zavolá metodu `AcquireTokenSilent` důvěrné klientské aplikace.
 
@@ -94,40 +94,59 @@ V ukázce Java kód, který volá rozhraní API, je v metodě getUsersFromGraph 
 Pokusí se zavolat `getAuthResultBySilentFlow`. Pokud uživatel musí souhlasit s více rozsahy, kód zpracovává `MsalInteractionRequiredException` pro výzvu uživateli.
 
 ```java
-@RequestMapping("/msal4jsample/graph/users")
-    public ModelAndView getUsersFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
-            throws Throwable {
+@RequestMapping("/msal4jsample/graph/me")
+public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
+        throws Throwable {
 
-        IAuthenticationResult result;
-        ModelAndView mav;
-        try {
-            result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
-        } catch (ExecutionException e) {
-            if (e.getCause() instanceof MsalInteractionRequiredException) {
+    IAuthenticationResult result;
+    ModelAndView mav;
+    try {
+        result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
+    } catch (ExecutionException e) {
+        if (e.getCause() instanceof MsalInteractionRequiredException) {
 
-                // If silent call returns MsalInteractionRequired, then redirect to Authorization endpoint
-                // so user can consent to new scopes
-                String state = UUID.randomUUID().toString();
-                String nonce = UUID.randomUUID().toString();
+            // If silent call returns MsalInteractionRequired, then redirect to Authorization endpoint
+            // so user can consent to new scopes
+            String state = UUID.randomUUID().toString();
+            String nonce = UUID.randomUUID().toString();
 
-                SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
+            SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
 
-                String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
-                        httpRequest.getParameter("claims"),
-                        "User.ReadBasic.all",
-                        authHelper.getRedirectUriGraphUsers(),
-                        state,
-                        nonce);
+            String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
+                    httpRequest.getParameter("claims"),
+                    "User.Read",
+                    authHelper.getRedirectUriGraph(),
+                    state,
+                    nonce);
 
-                return new ModelAndView("redirect:" + authorizationCodeUrl);
-            } else {
+            return new ModelAndView("redirect:" + authorizationCodeUrl);
+        } else {
 
-                mav = new ModelAndView("error");
-                mav.addObject("error", e);
-                return mav;
-            }
+            mav = new ModelAndView("error");
+            mav.addObject("error", e);
+            return mav;
         }
-    // Code omitted here.
+    }
+
+    if (result == null) {
+        mav = new ModelAndView("error");
+        mav.addObject("error", new Exception("AuthenticationResult not found in session."));
+    } else {
+        mav = new ModelAndView("auth_page");
+        setAccountInfo(mav, httpRequest);
+
+        try {
+            mav.addObject("userInfo", getUserInfoFromGraph(result.accessToken()));
+
+            return mav;
+        } catch (Exception e) {
+            mav = new ModelAndView("error");
+            mav.addObject("error", e);
+        }
+    }
+    return mav;
+}
+// Code omitted here.
 ```
 
 # <a name="pythontabpython"></a>[Python](#tab/python)

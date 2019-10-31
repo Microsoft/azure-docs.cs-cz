@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a správa katalogu prostředků ve správě nároků Azure AD (Preview) – Azure Active Directory
-description: Naučte se vytvořit nový kontejner prostředků a přistupovat k balíčkům v Azure Active Directory Správa nároků (Preview).
+title: Vytvoření a správa katalogu prostředků ve správě nároků Azure AD – Azure Active Directory
+description: Naučte se vytvořit nový kontejner prostředků a přistupovat k balíčkům v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b66e3dee83ccf4a857fda9d5804848108c0cc251
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429614"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174435"
 ---
-# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Vytvoření a správa katalogu prostředků ve správě nároků Azure AD (Preview)
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Vytvoření a správa katalogu prostředků v Azure AD – Správa nároků
 
 ## <a name="create-a-catalog"></a>Vytvoření katalogu
 

@@ -1,6 +1,6 @@
 ---
-title: Požádat o přístup k balíčku přístupu ve správě nároků Azure AD (Preview) – Azure Active Directory
-description: Naučte se používat portál pro přístup k vyžádání přístupu k balíčku přístupu v Azure Active Directory správě nároků (Preview).
+title: Požádat o přístup k balíčku přístupu ve správě nároků Azure AD – Azure Active Directory
+description: Naučte se používat portál pro přístup k vyžádání přístupu k balíčku přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e57a216efee39df0ad22712b281073a68600e0df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990749"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173698"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Požádat o přístup k balíčku přístupu ve správě nároků Azure AD (Preview)
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Požádat o přístup k balíčku přístupu v Azure AD – Správa nároků
 
 Díky správě opravňujících k Azure AD umožňuje balíček pro přístup jednorázovou instalaci prostředků a zásad, které automaticky spravují přístup po dobu života balíčku přístupu. 
 

@@ -7,16 +7,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f2edd99c50de332890fe862e7fb5e2405e2d369
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 41e61376d12d447dd480a39ef7200db6af7cca89
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014031"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172861"
 ---
-# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Kurz: Povolit synchronizaci hesel v Azure Active Directory Domain Services pro hybridní prostředí
+# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Kurz: povolení synchronizace hesel v Azure Active Directory Domain Services pro hybridní prostředí
 
 U hybridních prostředí je možné nakonfigurovat klienta Azure Active Directory (Azure AD) na synchronizaci s místním prostředím Active Directory Domain Services (služba AD DS) pomocí Azure AD Connect. Ve výchozím nastavení Azure AD Connect nesynchronizuje starší verze systému NT LAN Manager (NTLM) a hodnoty hash hesla protokolu Kerberos, které jsou potřeba pro Azure Active Directory Domain Services (Azure služba AD DS).
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující zdroje:
 
@@ -68,7 +68,7 @@ Když je služba Azure AD Connect nainstalovaná a nakonfigurovaná pro synchron
     * Konektor Azure AD má název *contoso.onmicrosoft.com-AAD* .
     * Konektor on-premises služba AD DS má název *OnPrem.contoso.com* .
 
-1. Zkopírujte následující skript prostředí PowerShell a vložte ho do počítače s nainstalovaným Azure AD Connect. Skript spustí úplnou synchronizaci hesla, která zahrnuje starší hodnoty hash hesel. Aktualizujte proměnné `$adConnector`apomocí názvů konektorů z předchozího kroku. `$azureadConnector`
+1. Zkopírujte následující skript prostředí PowerShell a vložte ho do počítače s nainstalovaným Azure AD Connect. Skript spustí úplnou synchronizaci hesla, která zahrnuje starší hodnoty hash hesel. Aktualizujte proměnné `$azureadConnector` a `$adConnector` s názvy konektorů z předchozího kroku.
 
     Spuštěním tohoto skriptu v každé doménové struktuře AD synchronizujete hodnoty hash hesla protokolu NTLM a Kerberos do služby Azure AD.
 

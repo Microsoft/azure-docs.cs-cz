@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154719"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161769"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: Nejčastější dotazy
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: nejčastější dotazy
 
 Tento článek obsahuje nejčastější dotazy týkající se problémů s konfigurací a správou pro [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informace o velikosti najdete také na [stránce Cloud Services velikosti virtuálního počítače](cloud-services-sizes-specs.md) .
 
@@ -52,7 +52,7 @@ Tento článek obsahuje nejčastější dotazy týkající se problémů s konfi
 **Oprávnění**
 
 - [Můžou interní technici z Microsoftu do cloudových instancí služby Microsoft Desktop bez oprávnění?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [Nejde vzdáleně připojit k VIRTUÁLNÍmu počítači cloudové služby pomocí souboru RDP. Zobrazí se následující chyba: Došlo k chybě ověřování (kód: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [Nejde vzdáleně připojit k VIRTUÁLNÍmu počítači cloudové služby pomocí souboru RDP. Zobrazí se následující chyba: došlo k chybě ověřování (kód: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **Škálování**
 
@@ -100,7 +100,7 @@ K obnovení certifikátů pro správu můžete použít následující příkazy
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-**Příkaz Get-AzurePublishSettingsFile** vytvoří nový certifikát pro správu v**certifikátech správy** předplatných > v Azure Portal. Název nového certifikátu vypadá jako "YourSubscriptionNam]-[CurrentDate]-přihlašovací údaje".
+**Příkaz Get-AzurePublishSettingsFile** vytvoří nový certifikát pro správu v **předplatném** > **certifikáty pro správu** v Azure Portal. Název nového certifikátu vypadá jako "YourSubscriptionNam]-[CurrentDate]-přihlašovací údaje".
 
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak automatizovat instalaci hlavního certifikátu SSL (. pfx) a zprostředkujícího certifikátu (. P7B)?
 
@@ -169,7 +169,7 @@ Můžete zadat časový limit v souboru definice služby (csdef) takto:
     </Endpoints>
   </WorkerRole>
 ```
-Zobrazit [nové: Konfigurovatelný časový limit nečinnosti](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) pro Azure Load Balancer pro další informace.
+Další informace najdete v tématu [New: konfigurovatelný časový limit nečinnosti pro Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) .
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Návody přidružit ke cloudové službě statickou IP adresu?
 Chcete-li nastavit statickou IP adresu, je nutné vytvořit vyhrazenou IP adresu. Tato vyhrazená IP adresa může být přidružená k nové cloudové službě nebo ke stávajícímu nasazení. Podrobnosti najdete v následujících dokumentech:
@@ -193,12 +193,12 @@ Systémy Windows 10 a Windows Server 2016 obsahují podporu protokolu HTTP/2 na 
 3. Vytvořte novou hodnotu DWORD s názvem **DuoEnabled**.
 4. Nastavte jeho hodnotu na 1.
 5. Restartujte server.
-6. Ve svém **výchozím** webu a v části Bindings ( **vazby**) vytvořte novou vazbu TLS s právě vytvořeným certifikátem podepsaným svým držitelem. 
+6. Ve svém **výchozím** webu a v části **Bindings (vazby**) vytvořte novou vazbu TLS s právě vytvořeným certifikátem podepsaným svým držitelem. 
 
-Další informace naleznete v tématu:
+Další informace:
 
 - [HTTP/2 ve službě IIS](https://blogs.iis.net/davidso/http2)
-- [Video: HTTP/2 ve Windows 10: Prohlížeč, aplikace a webový server](https://channel9.msdn.com/Events/Build/2015/3-88)
+- [Video: HTTP/2 ve Windows 10: prohlížeč, aplikace a webový server](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
 Tyto kroky může být automatizované prostřednictvím úlohy po spuštění, takže když se vytvoří nová instance PaaS, může to provést výše uvedené změny v registru systému. Další informace najdete v tématu [Konfigurace a spouštění úloh po spuštění pro cloudovou službu](cloud-services-startup-tasks.md).
@@ -223,7 +223,7 @@ Přečtěte si téma [porozumění různým rolím v Azure](../role-based-access
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Můžou interní technici z Microsoftu do cloudových instancí služby Microsoft Desktop bez oprávnění?
 Společnost Microsoft se skládá z striktního procesu, který neumožní interním technikům na vzdálenou plochu do vaší cloudové služby bez písemného svolení (e-mailu nebo jiné písemné komunikace) od vlastníka nebo jeho zmocnění.
 
-### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Nejde vzdáleně připojit k VIRTUÁLNÍmu počítači cloudové služby pomocí souboru RDP. Zobrazí se následující chyba: Došlo k chybě ověřování (kód: 0x80004005)
+### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Nejde vzdáleně připojit k VIRTUÁLNÍmu počítači cloudové služby pomocí souboru RDP. Zobrazí se následující chyba: došlo k chybě ověřování (kód: 0x80004005)
 
 K této chybě může dojít, pokud použijete soubor RDP z počítače, který je připojený k Azure Active Directory. Pokud chcete tento problém vyřešit, postupujte následovně:
 
@@ -249,7 +249,7 @@ Další informace o povolení Application Insights pro Cloud Services najdete v 
 
 Další informace o tom, jak povolit protokolování Azure Diagnostics pro Cloud Services, najdete v tématu [nastavení diagnostiky pro Azure Cloud Services a virtuální počítače](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them) .
 
-## <a name="generic"></a>Obecné
+## <a name="generic"></a>Obecněji
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Návody do svého webu přidat "insniffer"?
 Chcete-li klientům zabránit v sledování typů MIME, přidejte do souboru *Web. config* nastavení.
@@ -281,7 +281,7 @@ Viz [omezení pro konkrétní služby](../azure-subscription-service-limits.md#s
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Proč jednotka na virtuálním počítači cloudové služby zobrazuje hodně volného místa na disku?
 Jedná se o očekávané chování, které by nemělo způsobovat žádné potíže s vaší aplikací. Deník je zapnutý pro jednotku% AppRoot% ve virtuálních počítačích Azure PaaS, která v podstatě spotřebovává dvojnásobek velikosti místa, které soubory obvykle zabírají. Existuje však několik věcí, které je třeba si uvědomit, že v podstatě tuto chybu zapínají na neproblém.
 
-Velikost jednotky% AppRoot% se počítá jako \<velikost. cspkg + maximální velikost deníku a velikost volného místa > nebo 1,5 GB, podle toho, co je větší. Velikost virtuálního počítače nemá žádný vliv na tento výpočet. (Velikost virtuálního počítače ovlivňuje pouze velikost dočasné jednotky C:.) 
+Velikost jednotky% AppRoot% se počítá jako velikost \<. cspkg + maximální velikost deníku + okraj volného místa > nebo 1,5 GB, podle toho, co je větší. Velikost virtuálního počítače nemá žádný vliv na tento výpočet. (Velikost virtuálního počítače ovlivňuje pouze velikost dočasné jednotky C:.) 
 
 Zápis na jednotku% AppRoot% není podporován. Pokud píšete do virtuálního počítače Azure, musíte to udělat v dočasném prostředku LocalStorage (nebo jiné možnosti, jako je BLOB Storage, soubory Azure atd.). Takže množství volného místa ve složce% AppRoot% není smysluplné. Pokud si nejste jistí, jestli vaše aplikace zapisuje na jednotku% AppRoot%, můžete vždycky nechat službu běžet po dobu několika dní a pak porovnat velikosti před a po. 
 
@@ -296,13 +296,13 @@ V úloze po spuštění můžete povolit antimalwarové rozšíření pomocí sk
 - [Vytvoření spouštěcí úlohy PowerShellu](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-Další informace o scénářích antimalwarového nasazení a o tom, jak je povolit z portálu, najdete v tématu [scénáře nasazení](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)antimalwaru.
+Další informace o scénářích antimalwarového nasazení a o tom, jak je povolit z portálu, najdete v tématu [scénáře nasazení antimalwaru](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios).
 
 ### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Jak povolit Indikace názvu serveru (SNI) pro Cloud Services?
 
 SNI můžete povolit v Cloud Services pomocí jedné z následujících metod:
 
-**Metoda 1: Použití PowerShellu**
+**Metoda 1: použití PowerShellu**
 
 Vazbu SNI můžete nakonfigurovat pomocí rutiny prostředí PowerShell **New-webbinding** v úloze po spuštění pro instanci role cloudové služby, jak je uvedeno níže:
     
@@ -310,14 +310,14 @@ Vazbu SNI můžete nakonfigurovat pomocí rutiny prostředí PowerShell **New-we
     
 Jak je popsáno [zde](https://technet.microsoft.com/library/ee790567.aspx), $sslFlags může být jednou z následujících hodnot:
 
-|Value|Význam|
+|Hodnota|Význam|
 ------|------
 |0|Žádné SNI|
-|1|SNI povolen |
-|2 |SNI vazba, která používá centrální úložiště certifikátů|
-|3|SNI vazba, která používá centrální úložiště certifikátů |
+|1\. místo|SNI povolen|
+|2|SNI vazba, která používá centrální úložiště certifikátů|
+|3|SNI vazba, která používá centrální úložiště certifikátů|
  
-**Metoda 2: Použít kód**
+**Metoda 2: použití kódu**
 
 Vazbu SNI můžete také nakonfigurovat prostřednictvím kódu ve spuštění role, jak je popsáno v tomto [blogovém příspěvku](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
 
@@ -325,8 +325,8 @@ Vazbu SNI můžete také nakonfigurovat prostřednictvím kódu ve spuštění r
     //<code snip> 
                     var serverManager = new ServerManager(); 
                     var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(“:443:www.test1.com”, newCert.GetCertHash(), “My”); 
-                    binding.SetAttributeValue(“sslFlags”, 1); //enables the SNI 
+                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
                     serverManager.CommitChanges(); 
     //</code snip> 
     
@@ -348,7 +348,7 @@ Už nasazená cloudová služba se účtuje za výpočetní výkon a úložišt�
 
 Tady je postup, ve kterém můžete snížit svou fakturaci, aniž byste ztratili IP adresu pro vaši službu:
 
-1. Před odstraněním nasazení [si IP adresu](../virtual-network/virtual-networks-reserved-public-ip.md) vyhradit.  Bude se vám účtovat jenom tato IP adresa. Další informace o fakturaci IP adres najdete v tématu [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses/).
+1. Před odstraněním nasazení [si IP adresu vyhradit](../virtual-network/virtual-networks-reserved-public-ip.md) .  Bude se vám účtovat jenom tato IP adresa. Další informace o fakturaci IP adres najdete v tématu [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses/).
 2. Odstraňte nasazení. Neodstraňujte xxx.cloudapp.net, abyste ho mohli použít pro budoucnost.
 3. Pokud chcete cloudovou službu znovu nasadit pomocí stejné rezervované IP adresy, kterou jste rezervovali ve vašem předplatném, přečtěte si téma [vyhrazená IP adresa adres Cloud Services a Virtual Machines](https://azure.microsoft.com/blog/reserved-ip-addresses/).
 

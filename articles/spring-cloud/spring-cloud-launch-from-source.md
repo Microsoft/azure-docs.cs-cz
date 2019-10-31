@@ -4,24 +4,34 @@ description: Naučte se, jak spustit cloudovou aplikaci Azure pro jaře přímo 
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 9/27/2019
+ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 573baa242c06868326568a82bc358e136f1ece2c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170535"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177971"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Spustit svou jarní cloudovou aplikaci ze zdrojového kódu
 
+Jarní cloud Azure umožňuje snadné spouštění aplikací mikroslužeb založených na jarních cloudech v Azure.
+
 Jarní cloud Azure umožňuje spustit aplikaci přímo ze zdrojového kódu Java nebo z předem připraveného JAR. Tento článek vás provede potřebnými kroky.
+
+Po tomto rychlém startu se dozvíte, jak:
+
+> [!div class="checklist"]
+> * Zřízení instance služby
+> * Nastavení konfiguračního serveru pro instanci
+> * Místní sestavení aplikace mikroslužeb
+> * Nasazení jednotlivých mikroslužeb
+> * Přiřazení veřejného koncového bodu vaší aplikaci
 
 ## <a name="prerequisites"></a>Předpoklady
 
 >[!Note]
-> Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview se na nás zeptáme, abychom vám mohli přidat vaše předplatné do seznamu povolených adres.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, [vyplňte prosím tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-).
+> Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview se na nás zeptáme, abychom vám mohli přidat vaše předplatné do seznamu povolených adres.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, [vyplňte prosím tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).  I když je ve verzi Preview Azure jaře Cloud, nabízí Microsoft omezená podpora bez smlouvy SLA.  Další informace o podpoře v rámci verzí Preview najdete v těchto [nejčastějších dotazech k podpoře](https://azure.microsoft.com/support/faq/).
 
 Než začnete, ujistěte se, že vaše předplatné Azure má požadované závislosti:
 

@@ -7,20 +7,20 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: victorh
-ms.openlocfilehash: fe12a1a9f954718dfacb59ae0ed54e69309da650
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 352a63e611e3823e03bedb01a9c1a5071d628c4f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293794"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163827"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátní zóny DNS Azure pomocí Azure Portal
 
 Tento rychlý Start vás provede kroky k vytvoření první privátní zóny DNS a záznamu pomocí Azure Portal.
 
-Zóna DNS se používá k hostování záznamů DNS pro konkrétní doménu. Pokud chcete začít hostovat vaši doménu v Azure DNS, musíte pro tento název domény vytvořit zónu DNS. Každý záznam DNS pro vaši doménu se pak vytvoří v této zóně DNS. Pokud chcete publikovat privátní zónu DNS do vaší virtuální sítě, zadáte seznam virtuálních sítí, které mají povolené řešení záznamů v rámci zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
+Zóna DNS se používá k hostování záznamů DNS pro konkrétní doménu. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
 
-V tomto rychlém startu se dozvíte, jak:
+V tomto rychlém startu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření privátní zóny DNS
@@ -54,7 +54,7 @@ Zóna DNS obsahuje záznamy DNS pro doménu. Pokud chcete začít hostovat vaši
 
 1. Vyberte **zkontrolovat + vytvořit**.
 
-1. Vyberte **vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 Vytvoření zóny může trvat několik minut.
 
@@ -82,7 +82,7 @@ Pokud chcete propojit privátní zónu DNS s virtuální sítí, vytvořte odkaz
 
 ## <a name="create-the-test-virtual-machines"></a>Vytvoření testovacích virtuálních počítačů
 
-Teď vytvořte dva virtuální počítače, abyste mohli testovat svoji privátní zónu DNS:
+Teď vytvořte dva virtuální počítače, abyste mohli privátní zónu DNS otestovat:
 
 1. Na stránce portálu nahoře vlevo vyberte **vytvořit prostředek**a pak vyberte **Windows Server 2016 Datacenter**.
 1. Jako skupinu prostředků vyberte **MyAzureResourceGroup** .
@@ -117,26 +117,26 @@ Dokončení obou virtuálních počítačů bude trvat několik minut.
 
 Teď můžete testovat překlad IP adres pro privátní zónu **Private.contoso.com** .
 
-### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurace virtuálních počítačů pro povolení příchozího protokolu ICMP
+### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurace virtuálních počítačů pro povolení příchozích přenosů ICMP
 
-K otestování překladu názvů můžete použít příkaz příkazu. Proto nakonfigurujte bránu firewall na obou virtuálních počítačích tak, aby povolovala příchozí pakety protokolu ICMP.
+Překlad adres můžete otestovat pomocí příkazu ping. Za tím účelem nakonfigurujte bránu firewall na obou virtuálních počítačích tak, aby povolovala příchozí pakety ICMP.
 
-1. Připojte se k myVM01 a otevřete okno Windows PowerShellu s oprávněními správce.
+1. Připojte se k počítači myVM01 a otevřete okno Windows PowerShellu s oprávněními správce.
 2. Spusťte následující příkaz:
 
    ```powershell
-   New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+   New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
    ```
 
-Opakujte pro myVM02.
+Totéž zopakujte pro virtuální počítač myVM02.
 
-### <a name="ping-the-vms-by-name"></a>Pomocí příkazů otestujete virtuální počítače podle názvu
+### <a name="ping-the-vms-by-name"></a>Odeslání příkazu ping na virtuální počítače podle názvu
 
-1. Z příkazového řádku myVM02 prostředí Windows PowerShell otestujte pomocí automaticky registrovaného názvu hostitele příkaz myVM01.
+1. Z příkazového řádku ve Windows PowerShellu virtuálního počítače myVM02 odešlete příkaz ping do virtuálního počítače myVM01 a použijte v něm automaticky zaregistrovaný název hostitele:
    ```
    ping myVM01.private.contoso.com
    ```
-   Měl by se zobrazit výstup, který vypadá nějak takto:
+   Zobrazený výstup by měl vypadat zhruba takto:
    ```
    PS C:\> ping myvm01.private.contoso.com
 
@@ -152,11 +152,11 @@ Opakujte pro myVM02.
        Minimum = 0ms, Maximum = 1ms, Average = 0ms
    PS C:\>
    ```
-2. Nyní otestujte název **databáze** , který jste vytvořili dříve:
+2. Teď odešlete příkaz ping na název **db**, který jste předtím vytvořili:
    ```
    ping db.private.contoso.com
    ```
-   Měl by se zobrazit výstup, který vypadá nějak takto:
+   Zobrazený výstup by měl vypadat zhruba takto:
    ```
    PS C:\> ping db.private.contoso.com
 
@@ -173,7 +173,7 @@ Opakujte pro myVM02.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Odstranit všechny prostředky
+## <a name="delete-all-resources"></a>Odstranění všech prostředků
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků **MyAzureResourceGroup** a odstraňte prostředky vytvořené v rámci tohoto rychlého startu.
 

@@ -7,16 +7,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193329"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172778"
 ---
-# <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace protokolu Secure LDAP pro Azure Active Directory Domain Services spravovanou doménu
+# <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
 Ke komunikaci se spravovanou doménou Azure Active Directory Domain Services (Azure služba AD DS) se používá protokol LDAP (Lightweight Directory Access Protocol). Ve výchozím nastavení nejsou přenosy LDAP šifrované, což je bezpečnostní zabezpečení pro mnoho prostředí. V případě Azure služba AD DS můžete nakonfigurovat spravovanou doménu tak, aby používala zabezpečený protokol LDAPs (Lightweight Directory Access Protocol). Pokud používáte zabezpečený protokol LDAP, přenos se zašifruje. Protokol Secure LDAP se také označuje jako protokol LDAP over SSL (Secure Sockets Layer) (SSL)/TLS (Transport Layer Security).
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -68,7 +68,7 @@ Certifikát, který požadujete nebo vytvoříte, musí splňovat následující
 * **Použití klíče** – certifikát musí být nakonfigurovaný pro *digitální podpisy* a *šifrování klíče*.
 * **Účel certifikátu** – certifikát musí být platný pro ověřování serveru SSL.
 
-V tomto kurzu vytvoříme certifikát podepsaný svým držitelem pro zabezpečení LDAP pomocí PowerShellu. Otevřete okno PowerShellu jako **správce** a spusťte následující příkazy. Nahraďte *$DnsName* PROMĚNNOU názvem DNS použitým vaší vlastní spravovanou doménou, například *contoso.com*:
+V tomto kurzu vytvoříme certifikát podepsaný svým držitelem pro zabezpečení LDAP pomocí rutiny [New-SelfSignedCertificate][New-SelfSignedCertificate] . Otevřete okno PowerShellu jako **správce** a spusťte následující příkazy. Nahraďte *$DnsName* PROMĚNNOU názvem DNS použitým vaší vlastní spravovanou doménou, například *contoso.com*:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -176,7 +176,7 @@ Rozhraní *.* Soubor certifikátu CER se teď dá distribuovat do klientských p
 
 Pomocí digitálního certifikátu vytvořeného a exportovaného, který obsahuje privátní klíč, a klientského počítače, který je nastavený tak, aby připojení důvěřoval, teď povolte zabezpečený protokol LDAP ve spravované doméně Azure služba AD DS. Pokud chcete povolit zabezpečený protokol LDAP ve spravované doméně Azure služba AD DS, proveďte následující kroky konfigurace:
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte *služby domény* v poli **Hledat prostředky** . Ve výsledcích hledání vyberte **Azure AD Domain Services** .
+1. V [Azure Portal](https://portal.azure.com)zadejte *Domain Services* do pole **Hledat prostředky** . Ve výsledcích hledání vyberte **Azure AD Domain Services** .
 
     ![Vyhledejte a vyberte spravovanou doménu Azure služba AD DS v Azure Portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
@@ -207,21 +207,21 @@ Když povolíte zabezpečený přístup pomocí protokolu LDAP přes Internet do
 Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup LDAP přes port TCP 636 ze zadané sady IP adres. Výchozí pravidlo *denyall* s nižší prioritou se vztahuje na všechny ostatní příchozí přenosy z Internetu, takže jenom zadané adresy se můžou dostihnout do spravované domény Azure služba AD DS pomocí zabezpečeného LDAP.
 
 1. V Azure Portal na levé straně navigace vyberte *skupiny prostředků* .
-1. Zvolte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte skupinu zabezpečení sítě, třeba *AADDS-contoso.com-NSG*.
+1. Zvolte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte skupinu zabezpečení sítě, třeba *aaads-NSG*.
 1. Zobrazí se seznam existujících příchozích a odchozích pravidel zabezpečení. Na levé straně okna skupiny zabezpečení sítě vyberte **zabezpečení > příchozí pravidla zabezpečení**.
 1. Vyberte **Přidat**a pak vytvořit pravidlo, které povolí port TCP *636*. Pro lepší zabezpečení zvolte zdroj jako *IP adresy* a pak zadejte vlastní platnou IP adresu nebo rozsah pro vaši organizaci.
 
-    | Nastavení                           | Value        |
+    | Nastavení                           | Hodnota        |
     |-----------------------------------|--------------|
-    | Source                            | Adresy IP |
+    | Zdroj                            | IP adresy |
     | Zdrojové IP adresy/rozsahy CIDR | Platná IP adresa nebo rozsah pro vaše prostředí |
-    | Source port ranges                | *            |
-    | Cíl                       | Any          |
+    | Rozsahy zdrojových portů                | *            |
+    | Cíl                       | Všechny          |
     | Rozsahy cílových portů           | 636          |
-    | Protocol                          | TCP          |
-    | Action                            | Allow        |
-    | Priority                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Protocol (Protokol)                          | TCP          |
+    | Akce                            | Povolit        |
+    | Priorita                          | 401          |
+    | Name (Název)                              | AllowLDAPS   |
 
 1. Až budete připraveni, vyberte **Přidat** a uložte a použijte pravidlo.
 
@@ -233,7 +233,7 @@ Když je přístup přes Internet zabezpečený pomocí protokolu LDAP, aktualiz
 
 ![Podívejte se na externí IP adresu zabezpečeného protokolu LDAP pro spravovanou doménu Azure služba AD DS v Azure Portal](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
 
-Nakonfigurujte externího poskytovatele DNS tak, aby vytvořil záznam hostitele, například *LDAPS*, který se bude překládat na tuto externí IP adresu. K místnímu testování na svém počítači můžete vytvořit položku v souboru hostitelů systému Windows. Pokud chcete úspěšně upravit soubor hostitelů na místním počítači, otevřete Poznámkový *blok* jako správce a pak otevřete soubor *C:\WINDOWS\SYSTEM32\DRIVERS\ETC* .
+Nakonfigurujte externího poskytovatele DNS tak, aby vytvořil záznam hostitele, například *LDAPS*, který se bude překládat na tuto externí IP adresu. K místnímu testování na svém počítači můžete vytvořit položku v souboru hostitelů systému Windows. Pokud chcete úspěšně upravit soubor hostitelů na místním počítači, otevřete *Poznámkový blok* jako správce a pak otevřete soubor *C:\WINDOWS\SYSTEM32\DRIVERS\ETC* .
 
 Následující příklad položky DNS, buď s vaším externím poskytovatelem DNS, nebo v místním souboru hostitelů, vyřeší přenos pro *LDAPS.contoso.com* na externí IP adresu *40.121.19.239*:
 
@@ -271,11 +271,11 @@ Chcete-li přímo zadat dotaz na konkrétní kontejner, můžete v nabídce **zo
 
 Pokud jste přidali položku DNS do souboru místní hostitelé vašeho počítače pro otestování připojení k tomuto kurzu, odeberte tuto položku a přidejte formální záznam do zóny DNS. Chcete-li odebrat záznam z místního souboru hostitelů, proveďte následující kroky:
 
-1. Na místním počítači otevřete Poznámkový *blok* jako správce.
+1. Na místním počítači otevřete *Poznámkový blok* jako správce.
 1. Vyhledejte a otevřete soubor *C:\WINDOWS\SYSTEM32\DRIVERS\ETC*
-1. Odstraňte řádek pro záznam, který jste přidali, například`40.121.19.239    ldaps.contoso.com`
+1. Odstraňte řádek pro záznam, který jste přidali, například `40.121.19.239    ldaps.contoso.com`
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
@@ -297,3 +297,4 @@ V tomto kurzu jste se naučili:
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
+[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate

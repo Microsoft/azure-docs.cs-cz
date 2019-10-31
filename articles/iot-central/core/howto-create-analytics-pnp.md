@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 040874f0ba5e2766aab8aa399bcae65a6676fa53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bcf19956d998ace88efbd4e1c9d787f1baeef642
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951130"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177386"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Analýza dat zařízení pomocí analýzy
 
@@ -39,7 +39,7 @@ Uživatelské rozhraní analýzy se skládá ze tří hlavních součástí:
 
 Musíte začít volbou **skupiny zařízení**a telemetrie, kterou chcete analyzovat. Až budete hotovi, vyberte **analyzovat** a začněte vizualizovat data.
 
-- **Skupina zařízení:** [Skupina zařízení](howto-use-device-groups-pnp.md) je uživatelem definovaná skupina vašich zařízení. Například všechny chladničky v Oakland nebo všechny verze 2,0 větrné turbíny.
+- **Skupina zařízení:** [Skupina zařízení](tutorial-use-device-groups-pnp.md) je uživatelem definovaná skupina vašich zařízení. Například všechny chladničky v Oakland nebo všechny verze 2,0 větrné turbíny.
 
 - **Telemetrie:** Vyberte telemetrii, kterou chcete analyzovat a prozkoumat. Můžete vybrat více telemetrií a analyzovat je dohromady. Výchozí agregační metoda je nastavená na průměr pro číselnou hodnotu a počet pro datový typ String v uvedeném pořadí. Podporované metody agregace pro číselné datové typy jsou Average, Max, minim, Count a Sum.  Podporované metody agregace pro datový typ String jsou Count.
 

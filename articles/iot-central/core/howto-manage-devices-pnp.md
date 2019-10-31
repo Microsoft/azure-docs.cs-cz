@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 01346ba518a07da1ebb606393c2834994cfb42e2
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: b5e4e27e059cdc84370bbf7dbf7c6bc651b1968e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990348"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177350"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-preview-features"></a>Správa zařízení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -179,6 +179,6 @@ Vlastnosti cloudu jsou metadata zařízení přidružená k zařízení, jako je
 Teď, když jste se naučili, jak spravovat zařízení v aplikaci Azure IoT Central, je tady doporučený další krok:
 
 > [!div class="nextstepaction"]
-> [Jak používat sady zařízení](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Používání skupin zařízení](tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
 
 <!-- Next how-tos in the sequence -->

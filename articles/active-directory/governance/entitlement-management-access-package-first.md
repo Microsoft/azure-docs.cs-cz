@@ -1,6 +1,6 @@
 ---
-title: Kurz – vytvoření prvního balíčku přístupu ve správě nároků Azure AD (Preview) – Azure Active Directory
-description: Podrobný návod, jak vytvořit první balíček přístupu v Azure Active Directory Správa nároků (Preview).
+title: Kurz – vytvoření prvního balíčku přístupu ve správě nároků Azure AD – Azure Active Directory
+description: Podrobný návod, jak vytvořit první balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25213305e2bf73bfe6980c0a09ffc73bd4f94ae
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893638"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174874"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků ve službě Azure AD (Preview)
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
 Správa přístupu ke všem zdrojům prostředků, jako jsou skupiny, aplikace a weby, je důležitou funkcí pro organizace. Chcete zaměstnancům udělit správnou úroveň přístupu, které potřebují k zajištění produktivity, a odebrat svůj přístup, když už ho nepotřebujete.
 
@@ -49,7 +44,7 @@ Podrobný příklad procesu nasazení správy opravňujících Azure Active Dire
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete používat správu nároků na Azure AD (Preview), musíte mít jednu z těchto licencí:
+Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
 
 - Azure AD Premium P2
 - Licence pro Enterprise Mobility + Security (EMS) E5

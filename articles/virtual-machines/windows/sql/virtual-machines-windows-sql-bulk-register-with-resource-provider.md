@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3a8cfeb237b0e5e662f8fbaef4347f4346db1787
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
-ms.translationtype: MT
+ms.openlocfilehash: b9d4b99447e7c814d737def54dce03c4acc0e5ca
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045125"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172973"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Hromadné registraci virtuálních počítačů SQL v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -225,7 +225,12 @@ Při registraci SQL Server virtuálních počítačů pomocí poskytovatele pros
 - K překonání transparentních chyb je integrovaná logika opakování. Pokud je virtuální počítač úspěšně zaregistrován, jedná se o rychlou operaci. Pokud se ale registrace nezdaří, bude se každý virtuální počítač opakovat.  V takovém případě byste měli pro dokončení procesu registrace poskytnout značnou dobu – i když je požadavek na skutečný čas závislý na typu a počtu chyb. 
 
 ## <a name="full-script"></a>Celý skript
+
 Úplný skript na GitHubu najdete v tématu [hromadné registraci virtuálních počítačů SQL pomocí AZ PowerShell](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1). 
+
+
+[!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
+
 
 
 ## <a name="next-steps"></a>Další kroky

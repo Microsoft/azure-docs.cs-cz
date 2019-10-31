@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: a8b250c45716146c505a803046b18bf5d05cf116
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9657414c56296ee710f17663bf0bbdd3a4d67ac8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073774"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176809"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Postup přizpůsobení portálu Azure API Management pro vývojáře pomocí šablon
 
@@ -26,9 +26,11 @@ Existují tři základní způsoby, kterými jde přizpůsobit portál pro vývo
 
 * [Úprava obsahu statických stránek a elementů rozložení stránek][modify-content-layout]
 * [Aktualizace stylů použitých pro prvky stránky napříč portálem pro vývojáře][customize-styles]
-* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (vysvětluje tento průvodce)
+* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (vysvětlení v této příručce)
 
 Šablony slouží k přizpůsobení obsahu stránek portálu pro vývojáře vygenerovaných systémem (například dokumentace k rozhraní API, produkty, ověřování uživatelů atd.). Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a poskytnuté sady lokalizovaných řetězcových prostředků, ikon a ovládacích prvků stránky máte skvělou flexibilitu při konfiguraci obsahu stránek podle potřeby.
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -54,7 +56,7 @@ Některé šablony, například šablony **profilů uživatelů** , přizpůsobu
 
 Editor pro jednotlivé šablony portálu pro vývojáře obsahuje dva oddíly, které se zobrazují v dolní části stránky. Na levé straně se zobrazí podokno úprav pro šablonu a na pravé straně se zobrazí datový model pro šablonu.
 
-Podokno pro úpravu šablony obsahuje značky, které řídí vzhled a chování odpovídající stránky na portálu pro vývojáře. Označení v šabloně používá syntaxi [DotLiquid](http://dotliquidmarkup.org/) . Jedním z oblíbených editorů pro DotLiquid je [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Všechny změny provedené v šabloně během úprav se v prohlížeči zobrazují v reálném čase, ale nevidíte pro vaše zákazníky, dokud šablonu neuložíte a [nepublikujete](#to-publish-a-template) . [](#to-save-a-template)
+Podokno pro úpravu šablony obsahuje značky, které řídí vzhled a chování odpovídající stránky na portálu pro vývojáře. Označení v šabloně používá syntaxi [DotLiquid](http://dotliquidmarkup.org/) . Jedním z oblíbených editorů pro DotLiquid je [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Všechny změny provedené v šabloně během úprav se v prohlížeči zobrazují v reálném čase, ale nevidíte pro vaše zákazníky, dokud šablonu [neuložíte](#to-save-a-template) a [nepublikujete](#to-publish-a-template) .
 
 ![Kód šablony][api-management-template]
 
@@ -100,7 +102,7 @@ V předchozím příkladu jsou na portálu pro vývojáře zobrazeny dva produkt
 }
 ```
 
-Označení v šabloně **seznamu produktů** zpracovává data, aby poskytovala požadovaný výstup tím, že provede iteraci kolekcí produktů, aby zobrazila informace a odkaz na každý jednotlivý produkt. Poznamenejte si `<page-control>` prvky avoznačení.`<search-control>` Tento ovládací prvek zobrazuje na stránce ovládací prvky hledání a stránkování. `ProductsStrings|PageTitleProducts`je lokalizovaný odkaz na řetězec, který obsahuje `h2` text záhlaví stránky. Seznam prostředků řetězců, ovládacích prvků stránky a ikon dostupných pro použití v šablonách portálu pro vývojáře naleznete v tématu [API Management Reference k šablonám portálu pro vývojáře](api-management-developer-portal-templates-reference.md).
+Označení v šabloně **seznamu produktů** zpracovává data, aby poskytovala požadovaný výstup tím, že provede iteraci kolekcí produktů, aby zobrazila informace a odkaz na každý jednotlivý produkt. Poznamenejte si prvky `<search-control>` a `<page-control>` v kódu. Tento ovládací prvek zobrazuje na stránce ovládací prvky hledání a stránkování. `ProductsStrings|PageTitleProducts` je lokalizovaný odkaz na řetězec, který obsahuje text záhlaví `h2` stránky. Seznam prostředků řetězců, ovládacích prvků stránky a ikon dostupných pro použití v šablonách portálu pro vývojáře naleznete v tématu [API Management Reference k šablonám portálu pro vývojáře](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>

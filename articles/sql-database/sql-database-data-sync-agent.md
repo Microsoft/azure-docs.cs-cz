@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: de7858be4ac4e392b4fb92cacf55882378ba9813
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568981"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177710"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizace dat pro Azure Synchronizace dat SQL
 
@@ -35,7 +35,7 @@ K tiché instalaci agenta synchronizace dat z příkazového řádku zadejte př
 
 - Pokud nezadáte hodnotu pro **targetDir**, výchozí hodnota je `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`.
 
-- Pokud zadáte `LocalSystem` hodnotu **SERVICEACCOUNT**, použijte ověřování SQL Server, když nakonfigurujete agenta tak, aby se připojil k místnímu SQL Server.
+- Pokud zadáte `LocalSystem` jako hodnotu **SERVICEACCOUNT**, použijte ověřování SQL Server, když nakonfigurujete agenta pro připojení k místnímu SQL Server.
 
 - Pokud jako hodnotu **SERVICEACCOUNT**zadáte účet uživatele domény nebo místní uživatelský účet, musíte zadat také heslo s argumentem **SERVICEPASSWORD** . Například, `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
@@ -99,10 +99,10 @@ Pokud chcete spustit místního agenta z jiného počítače, než který je v s
 
 - **Příčina**: Tato chyba může způsobovat mnoho scénářů. Pokud chcete zjistit konkrétní příčinu této chyby, podívejte se do protokolů.
 
-- **Řešení**. Chcete-li zjistit konkrétní příčinu selhání, vygenerujte a podívejte se na protokoly Instalační služba systému Windows. Protokolování můžete zapnout na příkazovém řádku. Například pokud je `SQLDataSyncAgent-2.0-x86-ENU.msi`stažený instalační soubor, vygenerujte a prověřte soubory protokolu pomocí následujících příkazových řádků:
+- **Řešení**. Chcete-li zjistit konkrétní příčinu selhání, vygenerujte a podívejte se na protokoly Instalační služba systému Windows. Protokolování můžete zapnout na příkazovém řádku. Pokud je například stažený instalační soubor `SQLDataSyncAgent-2.0-x86-ENU.msi`, vygenerujte a prověřte soubory protokolu pomocí následujících příkazových řádků:
 
-  - Pro instalaci:`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-  - Pro odinstalaci:`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Pro instalaci: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Pro odinstalaci: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Můžete také zapnout protokolování pro všechny instalace, které provádí Instalační služba systému Windows. Článek znalostní báze Microsoft Knowledge Base, [Jak povolit protokolování Instalační služba systému Windows](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) , nabízí řešení jedním kliknutím pro zapnutí protokolování pro instalační služba systému Windows. Poskytuje také umístění protokolů.
 
@@ -115,7 +115,7 @@ Agent klienta nefunguje, i když zrušíte odinstalaci.
 - **Řešení**. Můžete si vyzkoušet tato dvě řešení:
 
     -   Pomocí služby Services. msc znovu zadejte přihlašovací údaje pro klientského agenta.
-    -   Odinstalujte tohoto agenta klienta a pak nainstalujte nové. Stáhněte si a nainstalujte nejnovějšího klientského agenta z [webu Download Center](https://go.microsoft.com/fwlink/?linkid=221479).
+    -   Odinstalujte tohoto agenta klienta a pak nainstalujte nové. Stáhněte si a nainstalujte nejnovějšího klientského agenta z [webu Download Center](https://www.microsoft.com/download/details.aspx?id=27693).
 
 ### <a name="agent-list"></a>Moje databáze není uvedená v seznamu agentů
 
@@ -138,7 +138,7 @@ Příčinou těchto scénářů může být tento problém:
 
 ### <a name="agent-start"></a>Agent klienta se nespustí (chyba 1069)
 
-Zjistíte, že agent neběží na počítači, který je hostitelem SQL Server. Při pokusu o ruční spuštění agenta se zobrazí dialogové okno, ve kterém se zobrazí zpráva "Chyba 1069: Služba se nespustila z důvodu neúspěšného přihlášení. "
+Zjistíte, že agent neběží na počítači, který je hostitelem SQL Server. Při pokusu o ruční spuštění agenta se zobrazí dialogové okno, ve kterém se zobrazí zpráva "Error 1069: služba nebyla spuštěna z důvodu neúspěšného přihlášení".
 
 ![Dialogové okno Chyba synchronizace dat 1069](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -147,7 +147,7 @@ Zjistíte, že agent neběží na počítači, který je hostitelem SQL Server. 
 - **Řešení**. Aktualizujte heslo agenta na aktuální heslo serveru:
 
   1. Vyhledejte Synchronizace dat SQL službu agenta klienta.  
-    a. Vyberte **Start**.  
+    a. Vyberte **Spustit**.  
     b. Do vyhledávacího pole zadejte **Services. msc**.  
     c. Ve výsledcích hledání vyberte **služby**.  
     d. V okně **služby** se posuňte na položku **synchronizace dat SQL agenta**.  
@@ -156,7 +156,7 @@ Zjistíte, že agent neběží na počítači, který je hostitelem SQL Server. 
   1. Na **synchronizace dat SQL vlastnosti agenta**vyberte kartu **Přihlásit** se.
   1. Do pole **heslo** zadejte své heslo.
   1. Do pole **Potvrdit heslo** zadejte znovu heslo.
-  1. Vyberte **použít**a pak vyberte **OK**.
+  1. Vyberte **Apply** (Použít) a pak vyberte **OK**.
   1. V okně **služby** klikněte pravým tlačítkem na službu **agenta synchronizace dat SQL** a potom klikněte na **Spustit**.
   1. Zavřete okno **služby** .
 
@@ -166,7 +166,7 @@ Po vytvoření nebo opětovném vytvoření klíče pro agenta se pokusíte odes
 
 ![Dialogové okno chyby synchronizace – nepovedlo se odeslat klíč agenta.](media/sql-database-troubleshoot-data-sync/sync-error-cant-submit-agent-key.png)
 
-- **Požadavky**. Než budete pokračovat, ověřte následující požadavky:
+- **Požadavky**: Než budete pokračovat, ověřte následující požadavky:
 
   - Služba Synchronizace dat SQL Windows je spuštěná.
 
@@ -188,7 +188,7 @@ Po vytvoření nebo opětovném vytvoření klíče pro agenta se pokusíte odes
 
   Postup použití nového klíče pro agenta:
 
-  1. V Průzkumníku souborů přejdete do instalačního adresáře agenta. Výchozí instalační adresář je C:\\Program Files (x86)\\Microsoft synchronizace dat SQL.
+  1. V Průzkumníku souborů přejdete do instalačního adresáře agenta. Výchozí instalační adresář je C:\\Program Files (x86)\\Synchronizace dat SQL Microsoftu.
   1. Dvakrát klikněte na podadresář bin.
   1. Otevřete aplikaci SqlAzureDataSyncAgent.
   1. Vyberte **Odeslat klíč agenta**.
@@ -205,7 +205,7 @@ Pokud je místní koncový bod (tj. databáze), který je zaregistrován u agent
 - **Řešení**. K odstranění nedostupné databáze použijte možnost vynutit odstranění.
 
 > [!NOTE]
-> Pokud tabulka metadat synchronizace zůstane po "vynutit odstranění", použijte `deprovisioningutil.exe` k jejich vyčištění.
+> Pokud jsou tabulky metadat synchronizace po "vynutit odstranění", použijte `deprovisioningutil.exe` k jejich vyčištění.
 
 ### <a name="agent-connect"></a>Místní aplikace agenta synchronizace se nemůže připojit k místní službě synchronizace.
 
@@ -225,13 +225,13 @@ Z příkazového řádku můžete spustit následující příkazy agenta synchr
 
 ### <a name="ping-the-service"></a>Odeslání služby testu na službu
 
-#### <a name="usage"></a>Použití
+#### <a name="usage"></a>Využití
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action pingsyncservice
 ```
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action "pingsyncservice"
@@ -239,13 +239,13 @@ SqlDataSyncAgentCommand.exe -action "pingsyncservice"
 
 ### <a name="display-registered-databases"></a>Zobrazit registrované databáze
 
-#### <a name="usage"></a>Použití
+#### <a name="usage"></a>Využití
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action displayregistereddatabases
 ```
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action "displayregistereddatabases"
@@ -253,13 +253,13 @@ SqlDataSyncAgentCommand.exe -action "displayregistereddatabases"
 
 ### <a name="submit-the-agent-key"></a>Odeslat klíč agenta
 
-#### <a name="usage"></a>Použití
+#### <a name="usage"></a>Využití
 
 ```cmd
 Usage: SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key]  -username [user name] -password [password]
 ```
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key generated from portal, PowerShell, or API] -username [user name to sync metadata database] -password [user name to sync metadata database]
@@ -267,7 +267,7 @@ SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key generate
 
 ### <a name="register-a-database"></a>Registrace databáze
 
-#### <a name="usage"></a>Použití
+#### <a name="usage"></a>Využití
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action registerdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]  -username [domain\\username] -password [password] -authentication [sql or windows] -encryption [true or false]
@@ -286,21 +286,21 @@ SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -da
 
 Když použijete tento příkaz k zrušení registrace databáze, odklade databázi zcela. Pokud se databáze účastní jiných skupin synchronizace, tato operace zruší ostatní skupiny synchronizace.
 
-#### <a name="usage"></a>Použití
+#### <a name="usage"></a>Využití
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action unregisterdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]
 ```
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action "unregisterdatabase" -serverName localhost -databaseName testdb
 ```
 
-### <a name="update-credentials"></a>Aktualizovat přihlašovací údaje
+### <a name="update-credentials"></a>Aktualizace přihlašovacích údajů
 
-#### <a name="usage"></a>Použití
+#### <a name="usage"></a>Využití
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action updatecredential -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]  -username [domain\\username] -password [password] -authentication [sql or windows] -encryption [true or false]
@@ -320,9 +320,9 @@ Další informace o Synchronizace dat SQL najdete v následujících článcích
 
 -   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: Nastavení Synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním prostředí](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](sql-database-get-started-sql-data-sync.md) prostředím
     - S využitím PowerShellu
-        -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [Synchronizace mezi několika databázemi Azure SQL pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Osvědčené postupy – [osvědčené postupy pro Azure synchronizace dat SQL](sql-database-best-practices-data-sync.md)
 -   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](sql-database-sync-monitor-oms.md)

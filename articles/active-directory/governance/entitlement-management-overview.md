@@ -1,5 +1,5 @@
 ---
-title: Co je správa nároků Azure AD? (Preview) – Azure Active Directory
+title: Co je správa nároků Azure AD? -Azure Active Directory
 description: Získejte přehled o Azure Active Directory správě nároků a o tom, jak ho můžete používat ke správě přístupu ke skupinám, aplikacím a webům SharePointu Online pro interní a externí uživatele.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7a8df09322def77037575b78ddbff3fae374229
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b1c054bf354b5cdc5e0803ba6849af19fab40f3c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062738"
+ms.locfileid: "73174157"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je správa nároků Azure AD? (Preview)
-
-> [!IMPORTANT]
-> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
 Správa nároků na Azure Active Directory (Azure AD) je funkce [zásad správného řízení identity](identity-governance-overview.md) , která organizacím umožňuje spravovat životní cyklus identit a přístupu, a to díky automatizaci pracovních postupů pro přístup k žádostem o přístup, přiřazení přístupu, kontrolám a vypršení platnosti.
 
@@ -137,7 +132,7 @@ Chcete-li lépe pochopit správu nároků a její dokumentaci, můžete se vrát
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Specializované cloudy, například Azure Government, Azure Německo a Azure Čína 21Vianet, nejsou v tuto chvíli k dispozici pro použití v této verzi Preview.
+Specializované cloudy, jako jsou Azure Government, Azure Německo a Azure Čína 21Vianet, nejsou aktuálně dostupné pro použití.
 
 ### <a name="which-users-must-have-licenses"></a>Kteří uživatelé musí mít licence?
 

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a353b4577f8cfa9ba279ad2793e1a7ab8b27e55
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268325"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175551"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API – přesun do produkčního prostředí
 
@@ -37,16 +37,16 @@ V různých tocích jste se naučili, jak zpracovávat chyby pro tiché toky (ja
 > [!NOTE]
 > Získání souhlasu pro několik prostředků funguje pro platformu Microsoft identity, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
 
-Koncový bod Microsoft Identity Platform (v 2.0) neumožňuje získat token pro několik prostředků najednou. `scopes` Proto parametr může obsahovat pouze obory pro jeden prostředek. Můžete zajistit, aby uživatel mohl předběžně odeslat několik prostředků pomocí `extraScopesToConsent` parametru.
+Koncový bod Microsoft Identity Platform (v 2.0) neumožňuje získat token pro několik prostředků najednou. Proto parametr `scopes` může obsahovat pouze obory pro jeden prostředek. Pomocí parametru `extraScopesToConsent` můžete zajistit, aby se uživatel předem poslal několika prostředkům.
 
 Například pokud máte dva prostředky, které mají dva obory:
 
-- `https://mytenant.onmicrosoft.com/customerapi`– se dvěma obory `customer.read` a`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`– se dvěma obory `vendor.read` a`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` – 2 obory `customer.read` a `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` – 2 obory `vendor.read` a `vendor.write`
 
-Měli byste použít `.WithAdditionalPromptToConsent` modifikátor, který `extraScopesToConsent` má parametr.
+Měli byste použít modifikátor `.WithAdditionalPromptToConsent`, který má parametr `extraScopesToConsent`.
 
-Příklad:
+Např.:
 
 ### <a name="in-msalnet"></a>V MSAL.NET
 
@@ -76,24 +76,24 @@ Cíl-C:
 ```objc
 NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
                                 @"https://mytenant.onmicrosoft.com/customerapi/customer.write"];
-    
+
 NSArray *scopesForVendorApi = @[@"https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
                               @"https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
-    
+
 MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopesForCustomerApi webviewParameters:[MSALWebviewParameters new]];
 interactiveParams.extraScopesToConsent = scopesForVendorApi;
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
                             "https://mytenant.onmicrosoft.com/customerapi/customer.write"]
-        
+
 let scopesForVendorApi = ["https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
                           "https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
-        
+
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopesForCustomerApi, webviewParameters: MSALWebviewParameters())
 interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
@@ -101,7 +101,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Toto volání vám poskytne přístupový token pro první webové rozhraní API.
 
-Pokud potřebujete zavolat druhé webové rozhraní API, můžete zavolat `AcquireTokenSilent` rozhraní API:
+Pokud potřebujete zavolat druhé webové rozhraní API, můžete volat `AcquireTokenSilent` rozhraní API:
 
 ```CSharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

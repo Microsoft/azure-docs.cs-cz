@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/30/2019
 ms.author: helohr
-ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b62351f1d99ef54d2416a2427264aea225afc5a8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300153"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171601"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -71,6 +71,16 @@ deviceTRUST je poskytovatel služeb s přidanou hodnotou pro virtuální počít
 deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextovou technologií zabezpečení. deviceTRUST umožňuje podmíněný přístup pro zabezpečený přístup k virtuálním plochám Windows, podmíněný přístup k aplikacím v rámci virtuálních ploch Windows a k aplikování podmíněné zásady virtuálních počítačů s Windows bez jakékoli další infrastruktury. Použití deviceTRUST umožňuje mobilní a flexibilní pracovní prostor, který splňuje všechny požadavky na zabezpečení, dodržování předpisů a předpisy. 
 
 - [Přejít na web partnera](https://devicetrust.com/wvd).
+
+## <a name="ivanti"></a>Ivanti
+
+![Logo Ivanti](./media/partners/ivanti.png)
+
+Správce pracovního prostoru uživatele Ivanti je služba s přidanou hodnotou pro virtuální počítače s Windows, která usnadňuje nasazení a správu stolních počítačů oddělením uživatelských dat z plochy pro bezproblémové přenositelnosti. Díky Ivanti můžou uživatelé poskytovat komplexní projekty, jako je migrace na Windows 10, přijímání Office 365 nebo přesouvání služeb do cloudu rychleji. 
+
+Při použití s virtuálním počítačem s Windows Ivanti Správce pracovních prostorů uživatelů poskytuje jednoduchou kontextovou správu možností práce s počítačem, eliminují dlouhé časy přihlášení a eradikace Nightmares zásad skupiny. Předem připravené šablony pro uživatele Ivanti User Workspace zjednodušují instalaci pro uživatele prostřednictvím agentů a stávající konzoly. Správce pracovních prostorů uživatele Ivanti nabízí reagovat, zabezpečené plochy, které uživatelé chtějí, ušetřit peníze na serverech, efektivněji spravovat uživatele a snižovat riziko zabezpečení koncového bodu. 
+
+- [Přejít na web partnera](https://www.ivanti.com/products/user-workspace-manager).
 
 ## <a name="lakeside-software"></a>Lakeside software
 
@@ -133,6 +143,26 @@ PrinterLogic platforma, která je k dispozici jako SaaS nebo jako webový zásob
 
 - [Přejít na web partnera](https://www.printerlogic.com).
 
+## <a name="numecent"></a>Numecent
+
+![Logo Numecent](./media/partners/numecent.png)
+
+Numecent je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který významně snižuje celkové provozní náklady díky rychlé registraci a migraci složitých nebo nekompatibilních aplikací pro Windows v prostředích virtuálních počítačů s Windows. Numecent také minimalizuje množství konfiguračních uživatelů, které musí dělat, zmenšuje aktualizace aplikací a zjednodušuje složité procesy. Vzhledem k tomu, že Numecent Cloudpaging podporuje více aplikací bez problémů s jakýmkoli jiným nástrojem pro doručování aplikací, zkracuje čas a pracovní zatížení v prostředích s různou sadou aplikací. 
+
+Při použití s virtuálním počítačem s Windows Cloudpaging dále snižuje náklady tím, že v nasazení dokončí životní cyklus softwarového assetu pro upgrade, měření a odebírání aplikací. Cloudpaging zjednodušuje správu imagí tím, že je v reálném čase pro nasazení virtuálních klientů Windows dynamicky zřizovat aplikace podle potřeby. Cloudpaging pomáhá aplikacím běžet bez nutnosti správy nebo zásahu prostřednictvím pravidelných aktualizací Windows 10. Cloudpaging také snižuje náklady na náklad na nákladné aplikace tím, že umožňuje efektivnější nasazení a používání těchto aplikací. 
+
+- [Přejít na web partnera](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+
+## <a name="rdpsoft"></a>RDPSoft
+
+![Logo RDPSoft](./media/partners/rdpsoft.png)
+
+RDPSoft je partner s virtuálními počítači s Windows, který poskytuje výkonné a levné řešení pro monitorování, správu a vytváření sestav. Nabídky pro správce vzdálených klientů umožňují odborníkům v oblasti IT získat přehled o stavu, výkonu, aktivitě uživatelů, licencování a zabezpečení nasazení virtuálních ploch v systému Windows. 
+ 
+Řešení pro RDPSoft Remote Desktop Commander zlepšují správu virtuálních ploch Windows. Funkce Premium Management zjednodušují delegování úloh správy virtuálních klientů Windows na pracovníky podpory, protože zajišťuje vzdálenou pomoc, relaci uživatelů a správu procesů. Ve stejnou chvíli sada funkcí pro vzdálenou plochu shromažďuje bohatou metriku týkající se výkonu a zatížení jednotlivých uživatelů, aktivit uživatelů a auditování, kvality připojení k virtuálním plochám Windows (latence a šířka pásma), licencování a zabezpečení do centrální databáze SQL Azure. instance databáze pro kontrolu. Díky RDPSoft máte k dispozici bohatě historické sestavy a komplexní řídicí panely hned po kliknutí.
+
+- [Přejít na web partnera](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
 ## <a name="thinprint"></a>ThinPrint
 
 ![Logo ThinPrint](./media/partners/thinprint.png)
@@ -143,6 +173,16 @@ ThinPrint řešení ezeep rozšiřuje hodnotu virtuální plochy Windows tím, �
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
 - [Přejít na web partnera](https://www.ezeep.com/wvd-printing).
+
+## <a name="tricerat"></a>Tricerat
+
+![Logo Tricerat](./media/partners/tricerat.png)
+
+Tricerat nabízí vynikající řešení pro správu tisku pro virtuální počítače s Windows a další desktopové platformy. Tricerat software má robustní funkce a nabízí lepší možnosti pro uživatele i správce. Správci získají efektivitu prostřednictvím kompletní správy ovladačů, zjednodušeného nasazení tiskových front a konzistentní správy napříč hybridními platformami. Činnost koncového uživatele se zlepšuje s kratším počtem přihlášení, inteligentními tiskovými frontami založenými na uživateli, zařízení a umístění v síti a samoobslužnými možnostmi pro rychlý výběr tiskárny. 
+
+V Tricerat je tisk na virtuálním počítači s Windows a mimo něj bezproblémové. Tricerat software umožňuje správcům snadno připojovat místní tiskárny ke cloudu a rozšiřovat správu podnikových tiskáren z tradičních prostředí na nové moderní pracovní prostory.
+
+- [Přejít na web partnera](https://www.tricerat.com/solutions/wvd-microsoft/).
 
 ## <a name="workspot"></a>Workspot
 

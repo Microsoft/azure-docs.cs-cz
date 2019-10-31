@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 6b1f226fba43428cdf5f46d41425ac534219de7f
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 6270237e2319c42ed30fc347b7ab9c1c2a008314
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619058"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177747"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování Service Fabric clusteru v Azure
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
 Tento kurz je třetí částí série, kde se dozvíte, jak škálovat stávající cluster na úrovni a v nástroji. Po dokončení budete vědět, jak škálovat cluster a jak vyčistit všechny zbylé prostředky.  Další informace o škálování clusteru běžícího v Azure najdete v tématu [škálování Service Fabric clusterů](service-fabric-cluster-scaling.md).
 
@@ -44,7 +44,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -71,7 +71,7 @@ Při škálování clusteru Azure mějte na paměti následující pokyny:
 * Každý typ uzlu [úrovně trvanlivosti][durability] Gold nebo stříbrného by měl mít vždy pět nebo více uzlů.
 * Pokud při škálování (odebírání uzlů z) primární typ uzlu, neměli byste nikdy snížit počet instancí na méně, než jakou vyžaduje [úroveň spolehlivosti][reliability] .
 
-Další informace najdete v tématu [doprovodné](service-fabric-cluster-capacity.md)materiály ke kapacitě clusteru.
+Další informace najdete v tématu [doprovodné materiály ke kapacitě clusteru](service-fabric-cluster-capacity.md).
 
 ## <a name="export-the-template-for-the-resource-group"></a>Vyexportování šablony pro skupinu prostředků
 
@@ -95,7 +95,7 @@ Změna velikosti a zmenšení nebo horizontální škálování mění počet uz
 
 Pokud tedy aktualizujete hodnotu *nt1InstanceCount* , změníte počet uzlů v druhém typu uzlu.  Nezapomeňte, že nemůžete škálovat typ uzlu na více než 100 uzlů.  Neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů. Neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
 
-Pokud provádíte horizontální navýšení kapacity, při odebírání uzlů z, typu na bronzové [úrovni trvanlivosti][durability] musíte [ručně odebrat stav těchto uzlů](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Pro stříbro a zlatou úroveň odolnosti se tyto kroky provádí automaticky na platformě.
+Pokud provádíte horizontální [navýšení][durability] kapacity, při odebírání uzlů z, typu na bronzové úrovni trvanlivosti musíte [ručně odebrat stav těchto uzlů](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Pro stříbro a zlatou úroveň odolnosti se tyto kroky provádí automaticky na platformě.
 
 ### <a name="deploy-the-updated-template"></a>Nasazení aktualizované šablony
 Uložte všechny změny v souborech *template. JSON* a *Parameters. JSON* .  Aktualizovanou šablonu nasadíte spuštěním následujícího příkazu:
@@ -387,20 +387,6 @@ V souboru *template. JSON* přidejte novou skupinu zabezpečení sítě a prost�
     },
     "properties": {
         "securityRules": [
-            {
-                "name": "allowSvcFabSMB",
-                "properties": {
-                    "access": "Allow",
-                    "destinationAddressPrefix": "*",
-                    "destinationPortRange": "445",
-                    "direction": "Inbound",
-                    "priority": 3950,
-                    "protocol": "*",
-                    "sourceAddressPrefix": "VirtualNetwork",
-                    "sourcePortRange": "*",
-                    "description": "allow SMB traffic within the net, used by fabric to move packages around"
-                }
-            },
             {
                 "name": "allowSvcFabCluser",
                 "properties": {
@@ -871,7 +857,7 @@ Nebo následující příkaz Azure CLI:
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0f7c1987cd4184ba6cda37d4d1894f0dba0b2f1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: ea38317868d183bd02958398b51ef906eb78e799
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024635"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177028"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -236,6 +236,10 @@ Uživatelé v této roli můžou číst nastavení a informace pro správu např
 > Tyto funkce jsou momentálně ve vývoji.
 >
 
+### <a name="group-administratorgroup-administrator"></a>[Správce skupiny](#group-administrator)
+
+Uživatelé v této roli můžou vytvářet a spravovat skupiny a její nastavení, jako jsou zásady pro pojmenování a vypršení platnosti. Je důležité pochopit, že přiřazení uživatele k této roli dává možnost spravovat všechny skupiny v tenantovi napříč různými úlohami, jako jsou týmy, SharePoint, Yammer kromě Outlooku. Uživatel také bude moci spravovat různá nastavení skupin na různých portálech pro správu, jako je například centrum pro správu Microsoft, Azure Portal a také konkrétní úlohy, jako jsou týmy a centra pro správu služby SharePoint.
+
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Pozvánka hosta](#guest-inviter-permissions)
 
 Uživatelé v této roli můžou spravovat Azure Active Directory pozvání uživatele hosta B2B, když **můžou členové pozvat** uživatele na hodnotu ne. Další informace o spolupráci B2B v rámci spolupráce B2B v [Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Nezahrnuje žádná další oprávnění.
@@ -286,6 +290,10 @@ Uživatelé v této roli můžou monitorovat všechna oznámení v centru zpráv
 ### <a name="message-center-readermessage-center-reader-permissions"></a>[Čtenář centra zpráv](#message-center-reader-permissions)
 
 Uživatelé v této roli můžou monitorovat oznámení a poradenské aktualizace stavu v [centru zpráv Office 365](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) pro jejich organizaci na konfigurovaných službách, jako je Exchange, Intune a Microsoft Teams. Čtečky centra zpráv obdrží týdenní e-mailové zprávy o příspěvcích, aktualizacích a můžou sdílet příspěvky centra zpráv v Office 365. Uživatelé přiřazení k této roli ve službě Azure AD budou mít přístup jen pro čtení ke službám Azure AD, jako jsou uživatelé a skupiny. Tato role nemá přístup k zobrazení, vytvoření nebo správě lístků podpory.
+
+### <a name="office-apps-administratoroffice-apps-administrator-permissions"></a>[Správce aplikací Office](#office-apps-administrator-permissions)
+
+Uživatelé v této roli můžou spravovat nastavení cloudu pro aplikace Office 365. To zahrnuje správu zásad cloudu, samoobslužné správy stahování a možnosti Zobrazit sestavu související s aplikacemi Office. Tato role navíc uděluje možnost spravovat lístky podpory a monitorovat stav služby v hlavním centru pro správu. Uživatelé přiřazení k této roli můžou také spravovat komunikaci s novými funkcemi v aplikacích Office. 
 
 ### <a name="partner-tier1-supportpartner-tier1-support-permissions"></a>[Podpora partnerů Tier1](#partner-tier1-support-permissions)
 
@@ -1060,6 +1068,28 @@ Může číst vše, co globální správce může, ale ne nic upravovat.
 | Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
 | Microsoft. Office 365. WebPort/allEntities/Standard/Read   | Načte standardní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
+### <a name="group-administrator"></a>Správce skupiny
+Může spravovat všechny aspekty skupin a nastavení skupiny, jako jsou zásady pojmenování a vypršení platnosti.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| Microsoft. Directory/Groups/Basic/Read | Přečte standardní vlastnosti pro skupiny v Azure Active Directory.  |
+| Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
+| Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
+| Microsoft. Directory/Groups/createAsOwner | Vytvořte skupiny v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
+| Microsoft. Directory/Groups/DELETE | Odstraní skupiny v Azure Active Directory. |
+| Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
+| Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
+| Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
+| Microsoft. Directory/skupiny/obnovení | Obnovte skupiny v Azure Active Directory. |
+| Microsoft. Directory/Groups/Settings/Update | Aktualizuje vlastnost groups. Settings v Azure Active Directory. |
+| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
+| Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
+| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
+
 ### <a name="guest-inviter-permissions"></a>Oprávnění pozvat hosta
 Může pozvat uživatele typu Host bez ohledu na nastavení členové můžou pozvat hosty.
 
@@ -1201,6 +1231,25 @@ Může číst zprávy a aktualizace pro svou organizaci jenom v centru zpráv Of
 | --- | --- |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+
+### <a name="office-apps-administrator-permissions"></a>Oprávnění správce aplikací Office
+Může spravovat cloudové služby aplikací Office, včetně správy zásad a nastavení, a spravovat možnost výběru, zrušení výběru a publikování obsahu funkcí co je nového pro zařízení koncových uživatelů.
+
+> [!NOTE]
+> Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
+>
+>
+
+| **Akce** | **Popis** |
+| --- | --- |
+| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
+| Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
+| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
+| Microsoft. Office 365. userCommunication/allEntities/allTasks | Přečtěte si a aktualizujte viditelnost nových zpráv. |
+| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="partner-tier1-support-permissions"></a>Oprávnění podpory partnerského Tier1u
 
@@ -1636,6 +1685,7 @@ Zapisovače adresářů | Zapisovače adresářů | 9360feb5-f418-4baa-8175-e2a0
 Správce služby Exchange | Správce Exchange | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Správce externích zprostředkovatelů identity | Správce externích zprostředkovatelů identity | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Globální čtenář | Globální čtenář | f2ef992c-3afb-46b9-b7cf-a126ee74c451
+Správce skupiny | Správce skupiny | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Pozvánka hosta | Pozvánka hosta | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Správce helpdesku | Správce hesel | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Správce služby Intune | Správce Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
@@ -1644,6 +1694,7 @@ Správce licencí | Správce licencí | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Správce služby Lync | Správce Skypu pro firmy | 75941009-915a-4869-abe7-691bff18279e
 Čtenář ochrany osobních údajů centra zpráv | Čtenář ochrany osobních údajů centra zpráv | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Čtenář centra zpráv | Čtenář centra zpráv | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Správce aplikací Office | Správce aplikací Office | 2b745bdf-0803-4d80-aa65-822c4493daac
 Podpora partnerů Tier1 | Podpora partnerů Tier1 | 4ba39ca4-527c-499a-b93d-d9b492c50246
 Podpora partnerů 2 | Podpora partnerů 2 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Správce hesel | Správce hesel | 966707d0-3269-4727-9be2-8c3a10f19b9d
