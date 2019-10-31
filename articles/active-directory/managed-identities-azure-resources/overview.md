@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596da9cfe0e914183bd3b2603ffa1047f1d9352b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: f5a9f83a8f6e8d5e83f30d30da2b1c4c0f722dc3
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310009"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063044"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Co jsou spravované identity prostředků Azure?
 
@@ -63,7 +63,7 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 | Vytvořena |  Vytvořené jako součást prostředku Azure (například virtuální počítač Azure nebo Azure App Service) | Vytvoří se jako samostatný prostředek Azure. |
 | Životní cyklus | Sdílený životní cyklus s prostředkem Azure, pomocí kterého se vytvořila spravovaná identita. <br/> Při odstranění nadřazeného prostředku se odstraní také spravovaná identita. | Nezávislé životní cykly. <br/> Je nutné explicitně odstranit. |
 | Sdílení napříč prostředky Azure | Nelze sdílet. <br/> Dá se přidružit jenom k jednomu prostředku Azure. | Může být sdíleno <br/> Stejná uživatelem přiřazená spravovaná identita může být přidružená k více než jednomu prostředku Azure. |
-| Běžné případy použití | Úlohy, které jsou obsaženy v rámci jednoho prostředku Azure <br/> Úlohy, pro které potřebujete nezávislé identity. <br/> Například aplikace, která běží na jednom virtuálním počítači | Úlohy, které běží na několika prostředcích a které můžou sdílet jedinou identitu. <br/> Úlohy, které vyžadují předběžnou autorizaci zabezpečeného prostředku jako součást toku zřizování. <br/> Úlohy, kde se prostředky recyklují často, ale oprávnění by měla zůstat konzistentní. <br/> Například zatížení, ve kterém více virtuálních počítačů potřebuje přístup ke stejnému prostředku | 
+| Případy běžného použití | Úlohy, které jsou obsaženy v rámci jednoho prostředku Azure <br/> Úlohy, pro které potřebujete nezávislé identity. <br/> Například aplikace, která běží na jednom virtuálním počítači | Úlohy, které běží na několika prostředcích a které můžou sdílet jedinou identitu. <br/> Úlohy, které vyžadují předběžnou autorizaci zabezpečeného prostředku jako součást toku zřizování. <br/> Úlohy, kde se prostředky recyklují často, ale oprávnění by měla zůstat konzistentní. <br/> Například zatížení, ve kterém více virtuálních počítačů potřebuje přístup ke stejnému prostředku | 
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>Jak funguje spravovaná identita přiřazená systémem s virtuálním počítačem Azure
 
@@ -75,7 +75,7 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 
 4. Jakmile bude virtuální počítač mít identitu, s použitím informací o instančním objektu udělte virtuálnímu počítači přístup k prostředkům Azure. Pokud chcete volat Azure Resource Manager, přiřaďte k instančnímu objektu virtuálního počítače odpovídající roli pomocí řízení přístupu na základě role (RBAC) v Azure AD. Pokud chcete volat službu Key Vault, udělte kódu přístup ke konkrétnímu tajnému kódu nebo klíči ve službě Key Vault.
 
-5. Váš kód, který běží na virtuálním počítači, může požádat o token z koncového bodu služby metadat instance Azure, který je přístupný jenom z virtuálního počítače:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. Váš kód, který běží na virtuálním počítači, může požádat o token z koncového bodu služby metadat instance Azure, který je přístupný jenom z virtuálního počítače: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Parametr resource (prostředek) určuje službu, do které se token odešle. K ověření v Azure Resource Manageru použijte `resource=https://management.azure.com/`.
     - Parametr verze rozhraní API určuje verzi IMDS. Použijte api-version=2018-02-01 nebo novější.
 
@@ -96,7 +96,7 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
    > [!Note]
    > Tento krok můžete provést také před krokem 3.
 
-5. Váš kód, který běží na virtuálním počítači, může požádat o token z koncového bodu Azure Instance Metadata Service identity přístupný jenom z virtuálního počítače:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. Váš kód, který běží na virtuálním počítači, může požádat o token z koncového bodu Azure Instance Metadata Service identity přístupný jenom z virtuálního počítače: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Parametr resource (prostředek) určuje službu, do které se token odešle. K ověření v Azure Resource Manageru použijte `resource=https://management.azure.com/`.
     - Parametr ID klienta určuje identitu, pro kterou se token požaduje. Tato hodnota je nutná k jednoznačnému určení v případě, že je na jednom virtuálním počítači více identit přiřazených uživatelem.
     - Parametr verze rozhraní API určuje verzi služby Azure Instance Metadata Service. Použijte `api-version=2018-02-01` nebo novější.
@@ -122,23 +122,25 @@ Informace o použití spravované identity ve virtuálním počítači s Windows
 
 Informace o použití spravované identity ve virtuálním počítači s Linuxem:
 
+* [Přístup Azure Container Registry](../../container-registry/container-registry-authentication-managed-identity.md)
 * [Přístup ke službě Azure Data Lake Store](tutorial-linux-vm-access-datalake.md)
 * [Přístup k Azure Resource Manageru](tutorial-linux-vm-access-arm.md)
 * [Přístup ke službě Azure Storage pomocí přístupové klávesy](tutorial-linux-vm-access-storage.md)
 * [Přístup ke službě Azure Storage pomocí sdílených přístupových podpisů](tutorial-linux-vm-access-storage-sas.md)
 * [Přístup k prostředku mimo Azure AD pomocí služby Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
-* [Přístup Azure Container Registry](../../container-registry/container-registry-authentication-managed-identity.md)
 
 Informace o použití spravované identity s dalšími službami Azure:
 
 * [Azure App Service](/azure/app-service/overview-managed-identity)
-* [Azure Functions](/azure/app-service/overview-managed-identity)
-* [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
-* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
-* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
 * [Azure Container Registry úlohy](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
+* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
+* [Azure Functions](/azure/app-service/overview-managed-identity)
+* [Azure Kubernetes Service](/azure/aks/use-managed-identity)
+* [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
+* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
+
 
 ## Které služby Azure tuto funkci podporují?<a name="which-azure-services-support-managed-identity"></a>
 
