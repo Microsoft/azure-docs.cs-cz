@@ -1,5 +1,5 @@
 ---
-title: Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků | Microsoft Docs
+title: Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků
 description: Vytvořte nastavení diagnostiky pomocí šablony Správce prostředků pro přeposílání protokolů platformy Azure do protokolů Azure Monitor, Azure Storage nebo Azure Event Hubs.
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0cb4cee732b1784de489d97769294c455cfd5efd
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597290"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200484"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků
 [Protokoly platforem](platform-logs-overview.md) v Azure poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Tento článek poskytuje podrobné informace o použití [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení diagnostiky pro shromažďování protokolů platforem do různých umístění. To umožňuje automatické spuštění shromažďování protokolů platforem při vytvoření prostředku.

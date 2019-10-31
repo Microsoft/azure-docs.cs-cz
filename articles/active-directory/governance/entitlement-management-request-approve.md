@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf254f06c14afa7ee32f27d6632ab33665cf31c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 3eb7960d58723d6fdd165841baea3416d5a84348
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173454"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199793"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Schválení nebo zamítnutí žádostí o přístup v Azure AD – Správa nároků
 
@@ -35,7 +35,7 @@ Prvním krokem ke schválení nebo zamítnutí žádostí o přístup je vyhled�
 
 1. Vyhledejte e-mail od Microsoft Azure, který vás vyzve ke schválení nebo zamítnutí žádosti. Tady je příklad e-mailu:
 
-    ![Schválit žádost o přístup k e-mailu balíčku](./media/entitlement-management-shared/email-approve-request.png)
+    ![Schválit žádost o přístup k e-mailu balíčku](./media/entitlement-management-shared/approver-request-email.png)
 
 1. Kliknutím na odkaz **schválit nebo odmítnout** otevřete žádost o přístup.
 

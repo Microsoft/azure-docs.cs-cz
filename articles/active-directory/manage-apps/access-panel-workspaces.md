@@ -16,19 +16,19 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9efe76f15e2f07495a9d95f69b0c21d2bca4ea8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180547"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199822"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>Vytváření pracovních prostorů na portálu moje aplikace (Preview)
 
 Uživatelé můžou pomocí portálu moje aplikace (Preview) zobrazovat a spouštět cloudové aplikace, ke kterým mají přístup. Ve výchozím nastavení jsou všechny aplikace, ke kterým má uživatel přístup, uvedené na jedné stránce. Pro lepší uspořádání této stránky pro uživatele, pokud máte licenci Azure AD Premium P1 nebo P2, můžete nastavit pracovní prostory. V pracovním prostoru můžete seskupit aplikace, které souvisejí (například podle role úlohy, úkolu nebo projektu) a zobrazit je na samostatné kartě. Pracovní prostor v podstatě používá filtr pro aplikace, které uživatel už může mít přístup, takže uživatel uvidí jenom aplikace v pracovním prostoru, které jim byly přiřazeny.
 
 > [!NOTE]
-> Tento článek popisuje, jak může správce povolit a vytvořit pracovní prostory. Informace o tom, jak používat portál a pracovní prostory moje aplikace, najdete v tématu věnovaném [přístupu a používání pracovních prostorů](https://docs.microsoft.com/azure/active-directory/user-help/).
+> Tento článek popisuje, jak může správce povolit a vytvořit pracovní prostory. Informace o tom, jak používat portál a pracovní prostory moje aplikace, najdete v tématu věnovaném [přístupu a používání pracovních prostorů](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
 
 ## <a name="enable-my-apps-preview-features"></a>Povolit funkce verze Preview pro moje aplikace
 

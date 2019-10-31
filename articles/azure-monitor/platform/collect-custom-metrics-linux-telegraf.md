@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e8164a111b9ad5ebcc67c248586e2576046334b0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 05cc1dcb2a6fa4e7790fa57cd2136d21d94b8a0b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883247"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200519"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf
 
@@ -29,7 +29,7 @@ Pomocí Azure Monitor můžete shromažďovat vlastní metriky prostřednictvím
 
 V tomto kurzu nasadíme virtuální počítač Linux, na kterém běží operační systém Ubuntu 16,04 LTS. Agent telegraf se podporuje pro většinu operačních systémů Linux. Balíčky Debian i ot./min. jsou k dispozici společně s nebalenými binárními soubory Linux na [portálu pro stažení InfluxData](https://portal.influxdata.com/downloads). Další pokyny k instalaci a možnosti najdete v této [příručce k instalaci telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 Vytvořte nový virtuální počítač pro Linux: 
 
@@ -47,13 +47,13 @@ Vytvořte nový virtuální počítač pro Linux:
 
     ![Přehled pro velikost vytelegrafního agenta pro virtuální počítače](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. Na stránce **Nastavení** > ve**skupině** > zabezpečení síťové sítě**Vyberte veřejné příchozí porty**, vyberte **http** a **SSH (22)** . Pro ostatní nastavení nechte zvolené výchozí hodnoty a vyberte **OK**. 
+1. Na stránce **Nastavení** ve **skupině zabezpečení** **sítě > sítě** > **Vyberte veřejné příchozí porty**, vyberte **http** a **SSH (22)** . Pro ostatní nastavení nechte zvolené výchozí hodnoty a vyberte **OK**. 
 
 1. Na stránce Souhrn výběrem možnosti **Vytvořit** spusťte nasazení virtuálního počítače. 
 
 1. Virtuální počítač se připne na řídicí panel webu Azure Portal. Po dokončení nasazení se automaticky otevře okno Souhrn virtuálního počítače. 
 
-1. V podokně virtuální počítač přejděte na kartu **Identita** . Ujistěte se, že váš virtuální počítač má identitu přiřazenou systémem, která je nastavená na zapnuto. 
+1. V podokně virtuální počítač přejděte na kartu **Identita** . Ujistěte se, že váš virtuální počítač má identitu přiřazenou systémem, která je nastavená na **zapnuto**. 
  
     ![Identita virtuálního počítače telegraf ve verzi Preview](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
@@ -130,7 +130,7 @@ V tomto návodu jste navíc použili agenta telegraf k vygenerování metrik o v
 
 Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků pro virtuální počítač a vyberete **Odstranit**. Pak potvrďte název skupiny prostředků, která se má odstranit. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
 
 

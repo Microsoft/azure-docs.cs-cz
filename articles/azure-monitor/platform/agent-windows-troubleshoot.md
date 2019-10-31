@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s agentem Log Analytics pro systém Windows | Microsoft Docs
+title: Řešení potíží s agentem Log Analytics pro Windows
 description: Popište příznaky, příčiny a řešení nejběžnějších problémů s agentem Log Analytics pro systém Windows v Azure Monitor.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 06/12/2019
-ms.openlocfilehash: a218ac09c7a0983796700229c65ae523b61dae10
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7bf0c8429eaecd6cba83872cbea5876cc0c31221
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932766"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199008"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Řešení potíží s agentem Log Analytics pro Windows 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cf384f29bcc82c80c94e1408f535c592b8b728cb
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285726"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182194"
 ---
 ## <a name="rootcert"></a>Vytvoření kořenového certifikátu podepsaného svým držitelem
 
@@ -58,7 +58,7 @@ Pokud vytváříte další klientské certifikáty nebo nepoužíváte stejnou r
 1. Identifikujte kořenový certifikát podepsaný svým držitelem, který je nainstalovaný v počítači. Tato rutina vrátí seznam certifikátů, které jsou nainstalované ve vašem počítači.
 
    ```powershell
-   Get-ChildItem -Path “Cert:\CurrentUser\My”
+   Get-ChildItem -Path "Cert:\CurrentUser\My"
    ```
 2. Vyhledejte název subjektu ze seznamu vrácených a potom zkopírujte kryptografický otisk, který se nachází vedle něj, do textového souboru. V následujícím příkladu jsou k dispozici dva certifikáty. Název CN je název kořenového certifikátu podepsaného svým držitelem, ze kterého chcete vygenerovat podřízený certifikát. V tomto případě "P2SRootCert".
 

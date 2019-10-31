@@ -12,26 +12,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/30/2019
+ms.date: 10/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1ce3b2cb72a7b57e556e09264cb5bd421eda0f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: e34d2c69cc808552a3b0c604804f3cd2597b379b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173755"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199899"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Žádost o proces a e-mailová oznámení v Azure AD – Správa nároků
 
-Když uživatel odešle požadavek do balíčku pro přístup, spustí se proces, který tuto žádost doručí. Správa nároků na Azure AD taky posílá schvalovatelům a žadatelům e-mailová oznámení v případě, že během procesu dojde k klíčovým událostem.
-
-Tento článek popisuje proces žádosti a e-mailová oznámení, která se odesílají.
+Když uživatel odešle požadavek do balíčku pro přístup, zahájí proces doručení žádosti o přístup. Správa nároků na Azure AD posílá schvalovatelům a žadatelům e-mailová oznámení, když během procesu dojde k klíčovým událostem. Tento článek popisuje proces žádosti a e-mailová oznámení, která se odesílají.
 
 ## <a name="request-process"></a>Proces žádosti
 
-Uživatel, který potřebuje přístup k přístupovému balíčku, může odeslat žádost o přístup. V závislosti na konfiguraci zásady může požadavek vyžadovat schválení. Při schválení žádosti proces začne přiřazovat přístup uživatelů ke každému prostředku v balíčku pro přístup. Následující diagram znázorňuje přehled procesu a různých stavů.
+Uživatel, který potřebuje přístup k přístupovému balíčku, může odeslat žádost o přístup. V závislosti na konfiguraci zásady může požadavek vyžadovat schválení. Při schválení žádosti proces začne přiřazovat přístup uživatelů ke každému prostředku v balíčku pro přístup. Následující diagram znázorňuje přehled procesu a různých stavů:
 
 ![Diagram procesu schválení](./media/entitlement-management-process/request-process.png)
 
@@ -49,42 +47,84 @@ Uživatel, který potřebuje přístup k přístupovému balíčku, může odesl
 
 ## <a name="email-notifications"></a>E-mailová oznámení
 
-Pokud jste schvalovatelem, pošleme vám e-mailová oznámení, když potřebujete schválit žádost o přístup a kdy se žádost o přístup dokončila. Pokud jste žadatel, poslali jste e-mailová oznámení, která označují stav vaší žádosti. Následující diagram znázorňuje odeslání těchto e-mailových oznámení.
+Pokud jste schvalovatelem, pošleme vám e-mailová oznámení, když potřebujete schválit žádost o přístup a kdy se žádost o přístup dokončila. Pokud jste žadatel, poslali jste e-mailová oznámení, která označují stav vaší žádosti.
 
-![E-mailový proces správy nároků](./media/entitlement-management-process/email-notifications.png)
+Následující diagramy ukazují, kdy jsou tato e-mailová oznámení odeslána schvalovatelům nebo žadateli. V [tabulce e-mailových oznámení](entitlement-management-process.md#email-notifications-table) vyhledejte odpovídající číslo pro e-mailová oznámení zobrazená v diagramech.
 
-Následující tabulka poskytuje další podrobnosti o každé z těchto e-mailových oznámení.
+### <a name="primary-approvers-and-alternate-approvers"></a>Primární schvalovatelé a alternativní schvalovatelé
+Následující diagram znázorňuje prostředí primárních schvalovatelů a alternativních schvalovatelů a e-mailová oznámení, která obdrží během procesu žádosti:
+
+![Tok procesu primárního a alternativního schvalovatele](./media/entitlement-management-process/primary-approvers-and-alternate-with-escalation-flow.png)
+
+### <a name="requestors"></a>Žadatelé
+Následující diagram znázorňuje prostředí žadatelů a e-mailová oznámení, která obdrží během procesu žádosti:
+
+![Tok procesu žadatele](./media/entitlement-management-process/requestor-approval-and-expiration-request-flow.png)
+
+### <a name="email-notifications-table"></a>Tabulka e-mailových oznámení
+Následující tabulka poskytuje další podrobnosti o každé z těchto e-mailových oznámení. Pokud chcete tyto e-maily spravovat, můžete použít pravidla. Například v Outlooku můžete vytvořit pravidla pro přesun e-mailů do složky, pokud předmět obsahuje slova z této tabulky:
 
 | # | Předmět e-mailu | Při odeslání | Odesláno do |
 | --- | --- | --- | --- |
-| 1\. místo | Požaduje se akce: Kontrola žádosti o přístup z *[žadatel]* na *[přístup k balíčku]* pomocí *[Date]* | Když žadatel odešle požadavek na balíček pro přístup | Všichni schvalovatelé |
-| 2 | Požaduje se akce: Kontrola žádosti o přístup z *[žadatel]* na *[přístup k balíčku]* pomocí *[Date]* | X dní před vypršením časového limitu žádosti o schválení | Všichni schvalovatelé |
-| 3 | Oznámení o stavu: platnost žádosti o přístup *[žadatel]* na *[přístup k balíčku]* vypršela. | Když schvalovatelé neschválí nebo zamítnou žádost o přístup v rámci trvání žádosti | Žadatele |
-| 4 | Oznámení o stavu: *[žadatel]* žádost o přístup k *[přístup k balíčku]* byl dokončen. | Když první Schvalovatel schválí nebo zamítne žádost o přístup. | Všichni schvalovatelé |
-| 5 | Byl odepřen přístup k *[přístup k balíčku]* . | Když žadateli byl zamítnut přístup k balíčku přístupu | Žadatele |
-| 6 | Teď máte přístup k *[přístup k balíčku]* .  | Když žadateli byl udělen přístup ke všem prostředkům v balíčku pro přístup | Žadatele |
-| 7 | Váš přístup k *[přístup k balíčku]* vyprší za X dní. | X dní předtím, než vyprší přístup žadatele k balíčku přístupu | Žadatele |
-| 8 | Platnost vašeho přístupu k *[přístupového balíčku]* vypršela. | Když vyprší platnost přístupu žadatele k balíčku přístupu | Žadatele |
+| 1\. místo | Požaduje se akce: schválení nebo zamítnutí přesměrovaného požadavku uživatelem *[Date]* | Tento e-mail se pošle alternativním schvalovatelům fáze-1 (po eskalaci žádosti), aby provedl akci. | Fáze 1 alternativní schvalovatel |
+| 2 | Požaduje se akce: schválit nebo odepřít požadavek podle *[Date]* | Tento e-mail se pošle primárním schvalovatelům fáze 1, pokud je eskalace zakázaná, aby se akce mohla provést. | Fáze 1 primárního schvalovatele |
+| 3 | Připomenutí: schvalte nebo odepřete požadavek pomocí *[Date]* pro *[žadatel]* . | Tento e-mail s připomenutím se pošle primárním schvalovatelům fáze 1, pokud je eskalace zakázaná, a to v případě, že ještě neudělali nějakou akci. | Fáze 1 primárního schvalovatele |
+| 4 | Schválit nebo zamítnout žádost pomocí *[Time]* dne *[Date]* | Tento e-mail se pošle primárním schvalovatelům fáze 1 (Pokud je povolená eskalace), aby mohl provést akci. | Fáze 1 primárního schvalovatele |
+| 5 | Připomenutí vyžadované akcí: schvalte nebo odepřete požadavek podle *[Date]* pro *[žadatel]* . | Tento e-mail s připomenutím se pošle primárním schvalovatelům fáze 1, pokud je povoleno zvýšení úrovně, a to v případě, že ještě neučinili nějakou akci. | Fáze 1 primárního schvalovatele |
+| 6 | Vypršela platnost žádosti pro *[access_package]* | Tento e-mail se pošle primárním schvalovatelům fáze-1 nebo alternativním schvalovatelům fáze-1 pro jednu fázi nebo požadavek na více fází po vypršení platnosti žádosti. | Fáze 1 primárního schvalovatele, fáze 1, alternativní schvalovatel |
+| 7 | Žádost schválená pro *[žadatel]* na *[access_package]* | Po dokončení žádosti se tento e-mail pošle na primární schvalovatele fáze 1 nebo do sekundárního schvalovatele fáze-1. | Fáze 1 primárního schvalovatele, fáze 1, alternativní schvalovatel |
+| 8 | Žádost schválená pro *[žadatel]* na *[access_package]* | Tento e-mail se pošle primárním schvalovatelům fáze-1 nebo alternativním schvalovatelům fáze-1 s žádostí o 2 fáze, a to pouze v případě, že je schválena fáze 1. | Fáze 1 primárního schvalovatele, fáze 1, alternativní schvalovatel |
+| 9 | Žádost byla zamítnuta *[access_package]* | Tento e-mail se pošle žadateli jenom v případě, že je jeho žádost zamítnutá. | Žadatele |
+| 10 | Platnost vaší žádosti vypršela pro *[access_package]* . | Po vypršení platnosti žádosti se tento e-mail pošle žadateli na konci fáze 1 v rámci jedné fáze nebo žádosti o více fází. | Žadatele |
+| 18 | Teď máte přístup k *[access_package]* . | Tento e-mail se pošle koncovým uživatelům, aby mohli začít používat svůj přístup. | Žadatele |
+| 19 | Rozšíří přístup pro *[access_package]* do *[Date]* . | Tento e-mail se pošle koncovým uživatelům předtím, než vyprší platnost přístupu. | Žadatele |
+| 20 | Pro *[access_package]* skončil přístup. | Tento e-mail se pošle koncovým uživatelům po vypršení platnosti přístupu. | Žadatele |
 
 ### <a name="access-request-emails"></a>E-maily žádostí o přístup
 
-Když žadatel odešle žádost o přístup k balíčku, který je nakonfigurovaný tak, aby vyžadoval schválení, všichni schvalovatelé, kteří jsou nakonfigurovaní v zásadách, obdrží e-mailové oznámení s podrobnostmi o žádosti. Podrobnosti zahrnují jméno žadatele, organizaci, počáteční a koncové datum, pokud jsou k dispozici, obchodní odůvodnění, čas odeslání žádosti a čas vypršení platnosti žádosti. E-mail obsahuje odkaz, kde schvalovatelé můžou žádost o přístup schválit nebo zamítnout. Tady je ukázka e-mailového oznámení, které se pošle schvalovateli, když žadatel podá žádost o přístup.
+Když žadatel pošle žádost o přístup balíčku pro přístup nakonfigurovaného tak, aby vyžadoval schválení, všichni schvalovatelé přidaní k zásadě obdrží e-mailové oznámení s podrobnostmi o žádosti. Podrobnosti zahrnují jméno žadatele, organizaci, počáteční a koncové datum (Pokud je k dispozici), obchodní odůvodnění, čas odeslání žádosti a čas vypršení platnosti žádosti.
 
-![Zkontrolovat e-mail s požadavkem na přístup](./media/entitlement-management-shared/email-approve-request.png)
+E-mail obsahuje schvalovatele odkazů, kteří můžou kliknout na myAccess (Přejít na) a schválit nebo zamítnout žádost o přístup. Tady je ukázka e-mailového oznámení, které se pošle schvalovateli, když žadatel odešle žádost o přístup:
+
+![Schválit žádost o přístup k e-mailu balíčku](./media/entitlement-management-shared/approver-request-email.png)
+
+Primárním schvalovatelům se také pošle e-mailové oznámení s připomenutím k provedení akce a rozhodnutí pro požadavek. Tady je ukázka e-mailu primárních schvalovatelů oznámení, které jim přiřadí upozornění na provedení akce:
+
+![E-mail s požadavkem na přístup k připomenutí](./media/entitlement-management-process/approver-access-request-reminder-email.png)
+
+### <a name="alternate-approver-request-emails"></a>Alternativní e-maily žádostí o schvalovatele
+
+Pokud je v případě, že žádost stále čeká na vyřízení, je přesměrování na alternativní schvalovatele povoleno, požadavek se přepošle. Alternativní schvalovatel dostane e-mail s oznámením o schválení nebo zamítnutí žádosti. Zde je příklad e-mailu oznámení, které alternativní schvalovatelé obdrží:
+
+![Alternativní e-mail žádosti o schvalovatele](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
+
+Primární schvalovatelé i alternativní schvalovatelé můžou žádost schválit nebo zamítnout.
 
 ### <a name="approved-or-denied-emails"></a>Schválené nebo zakázané e-maily
 
-Žadateli jsou upozorňováni, když je žádost o přístup schválena a k dispozici pro přístup, nebo když je žádost o přístup zamítnuta. Když schvalovatel obdrží žádost o přístup odeslanou žadatelem, může žádost o přístup schválit nebo zamítnout. Schvalovatel potřebuje k rozhodnutí přidat obchodní odůvodnění.
+Žadateli jsou upozorňováni, když je žádost o přístup schválena a k dispozici pro přístup, nebo když je žádost o přístup zamítnuta. Když schvalovatel obdrží žádost o přístup odeslanou žadatelem, může žádost o přístup schválit nebo zamítnout. Schvalovatel potřebuje k rozhodnutí přidat obchodní odůvodnění. Tady je ukázka e-mailu odeslaného primárnímu nebo alternativnímu schvalovateli po schválení žádosti:
 
-Pokud je žádost o přístup schválena, Správa nároků spustí proces udělení přístupu žadateli ke každému z prostředků v balíčku pro přístup. Jakmile žadateli získá přístup ke každému prostředku v balíčku pro přístup, pošle se mu e-mailové oznámení, že žádost o přístup byla schválena a že teď mají přístup k přístupovému balíčku. Tady je ukázka e-mailového oznámení, které se pošle žadateli, když se jim udělí přístup k balíčku pro přístup.
+![Zkontrolovat e-mail s požadavkem na přístup](./media/entitlement-management-process/approver-request-email-approved.png)
 
-Po odepření žádosti o přístup se žadateli pošle e-mailové oznámení. Tady je ukázka e-mailového oznámení, které se pošle žadateli při odepření žádosti o přístup.
+Po schválení žádosti o přístup a jejím přístupu se žadateli pošle e-mailové oznámení, že teď mají přístup k balíčku přístupu. Tady je ukázka e-mailového oznámení, které se pošle žadateli, když se jim udělí přístup k balíčku pro přístup:
+
+![E-mail s žádostí o přístup vypršel](./media/entitlement-management-process/requestor-email-approved.png)
+
+Po odepření žádosti o přístup se žadateli pošle e-mailové oznámení. Tady je ukázka e-mailového oznámení, které se pošle žadateli při odepření žádosti o přístup:
+
+![Žádost žadatele o zamítnutí e-mailu](./media/entitlement-management-process/requestor-email-denied.png)
 
 ### <a name="expired-access-request-emails"></a>E-mail s žádostí o přístup s vypršenou platností
 
-Žadateli jsou po vypršení platnosti žádosti o přístup upozorněni. Když žadatel odešle žádost o přístup, bude mít žádost po dobu, po jejímž uplynutí vyprší. Pokud nejsou k dispozici žádní schvalovatelé, kteří odešlou rozhodnutí o schválení nebo zamítnutí, bude tato žádost nadále zůstat ve stavu čekání na schválení. Když požadavek dosáhne nastavené doby vypršení platnosti, platnost žádosti vyprší a nelze je nadále schvalovat nebo odepřít schvalovateli. V takovém případě požadavek přejde do stavu s vypršenou platností. Žádost, jejíž platnost vypršela, již nelze schválit nebo odepřít. Žadateli se pošle e-mailové oznámení, že jeho žádost o přístup vypršela a že musí žádost o přístup znovu odeslat. Tady je ukázka e-mailového oznámení, které se pošle žadateli v případě vypršení platnosti žádosti o přístup.
+Žádosti o přístup můžou vypršet, pokud žádný schvalovatel žádost neschválil nebo nezamítl. 
 
-![E-mail s žádostí o přístup vypršel](./media/entitlement-management-process/email-expired-access-request.png)
+Když požadavek dosáhne svého nakonfigurovaného data a vypršení platnosti, už ho schvalovatelé nemůžou schválit nebo odepřít. Tady je ukázka e-mailu oznámení odeslaného všem primárním a alternativním schvalovatelům:
+
+ ![E-mail žádosti o přístup pro schvalovatele vypršel](./media/entitlement-management-process/approver-request-email-expired.png)
+
+ Žadateli se také pošle e-mailové oznámení, které jim oznámí, že vypršela platnost žádosti o přístup a že musí žádost o přístup znovu odeslat. Tady je ukázka e-mailového oznámení, které se pošle žadateli v případě vypršení platnosti žádosti o přístup:
+
+![E-mail s požadavkem na přístup žadatele vypršel](./media/entitlement-management-process/requestor-email-request-expired.png)
 
 ## <a name="next-steps"></a>Další kroky
 

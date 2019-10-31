@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b1b44a7df499dc0b6ce4370bf74ece35c99a4493
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860902"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200242"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení pomocí Azure Portal
 
@@ -136,6 +136,7 @@ Pokud chcete zařízení povolit nebo zakázat, máte dvě možnosti:
 
 - Aby bylo možné zařízení povolit nebo zakázat, musíte být ve službě Azure AD globálním správcem nebo správcem cloudového zařízení. 
 - Vypnutí zařízení brání úspěšnému ověření zařízení ve službě Azure AD, takže zařízení nebude mít přístup k prostředkům služby Azure AD, které jsou chráněné pomocí certifikační autority zařízení nebo pomocí přihlašovacích údajů WH4B.
+- Zakázáním zařízení se na zařízení odvolá primární obnovovací token (PRT) a všechny obnovovací tokeny (RT).
 
 ### <a name="delete-an-azure-ad-device"></a>Odstranění zařízení Azure AD
 
@@ -173,12 +174,12 @@ Můžete zobrazit a zkopírovat klíče nástroje BitLocker, které uživatelům
 
 Chcete-li zobrazit nebo zkopírovat klíče nástroje BitLocker, musíte být buď vlastníkem zařízení, nebo uživatelem, který má přiřazenu alespoň jednu z následujících rolí:
 
-- Správce cloudových zařízení
+- Správce cloudového zařízení
 - Globální správce
-- Správce technické podpory
+- Správce helpdesku
 - Správce služby Intune
 - Správce zabezpečení
-- Čtenář zabezpečení
+- Čtecí modul zabezpečení
 
 > [!NOTE]
 > Hybridní zařízení s Windows 10 připojená k Azure AD nemají vlastníka. Takže pokud hledáte zařízení podle vlastníka a nenalezli jste ho, vyhledejte ID zařízení.
@@ -214,7 +215,7 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 - Typ prostředku aktivity
 - Aktivita
 - Rozsah dat
-- Target
+- Výběr cílového umístění
 - Iniciované uživatelem (actor)
 
 Kromě filtrů můžete vyhledat konkrétní položky.

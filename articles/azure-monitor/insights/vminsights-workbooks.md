@@ -1,5 +1,5 @@
 ---
-title: Vytváření interaktivních sestav pomocí Azure Monitorch sešitů | Microsoft Docs
+title: Vytváření interaktivních sestav Azure Monitor pro virtuální počítače se sešity | Microsoft Docs
 description: Zjednodušte vytváření složitých sestav s předdefinovanými a vlastními parametrizovanými sešity pro Azure Monitor pro virtuální počítače.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553733"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200549"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Vytváření interaktivních sestav pomocí Azure Monitorch sešitů
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Vytváření interaktivních sestav Azure Monitor pro virtuální počítače se sešity
 
 Sešity kombinují text, [dotazy protokolů](../log-query/query-language.md), metriky a parametry do propracovaných interaktivních sestav. Sešity mohou upravovat všichni ostatní členové týmu, kteří mají přístup ke stejným prostředkům Azure.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529168"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200588"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -68,13 +68,7 @@ Každý typ clusteru má sadu typů uzlů a každý typ uzlu má konkrétní mo�
 
 Chcete-li určit optimální velikost clusteru pro vaši aplikaci, můžete otestovat kapacitu clusteru benchmark a zvětšit uvedenou velikost. Můžete například použít simulované úlohy nebo *testovací dotaz*. Díky simulovaným úlohám spouštíte očekávané úlohy v různých velikostních clusterech a postupně zvyšují velikost, dokud se nedosáhne požadovaného výkonu. Do ostatních provozních dotazů se dá pravidelně vkládat dotaz, který ukazuje, jestli cluster má dostatek prostředků.
 
-Velikost a typ virtuálního počítače závisí na výkonu procesoru, velikosti paměti RAM a latenci sítě:
-
-* CPU: velikost virtuálního počítače určuje počet jader. Víc jader, tím větší je stupeň paralelního výpočtu, který každý uzel může dosáhnout. Některé typy virtuálních počítačů navíc mají rychlejší jádra.
-
-* RAM: velikost virtuálního počítače také určí velikost paměti RAM dostupné ve virtuálním počítači. Pro úlohy, které ukládají data do paměti pro zpracování, nikoli čtení z disku, ujistěte se, že vaše pracovní uzly mají dostatek paměti pro přizpůsobení dat.
-
-* Síť: u většiny typů clusterů data zpracovaná clusterem nejsou na místním disku, ale ne v externí službě úložiště, jako je Data Lake Storage nebo Azure Storage. Vezměte v úvahu šířku pásma a propustnost sítě mezi virtuálním počítačem uzlu a službou úložiště. Šířka pásma sítě, která je k dispozici pro virtuální počítač, se obvykle zvětšuje o větší velikost. Podrobnosti najdete v tématu [Přehled velikostí virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+Další informace o tom, jak zvolit správnou rodinu virtuálních počítačů pro vaše zatížení, najdete v tématu [Výběr správné velikosti virtuálních počítačů pro váš cluster](hdinsight-selecting-vm-size.md).
 
 ## <a name="choose-the-cluster-scale"></a>Výběr škálování clusteru
 
@@ -104,10 +98,11 @@ Po určení velikosti virtuálního počítače clusteru, škálování a typu o
 1. V levé dolní části stránky vyberte **help + support** .
 1. Vyberte **Nová žádost o podporu**.
 1. Na stránce **Nová žádost o podporu** na kartě **základy** vyberte následující možnosti:
+
    - **Typ problému**: **omezení služby a předplatného (kvóty)**
    - **Předplatné**: předplatné, které chcete upravit.
    - **Typ kvóty**: **HDInsight**
-    
+
      ![Vytvoření žádosti o podporu pro zvýšení kvóty jádra HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. Vyberte **Další: řešení > >** .

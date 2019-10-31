@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b9d4b99447e7c814d737def54dce03c4acc0e5ca
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 80a1ac3ebe5f49d6a63f47e08e0b16114d75e91f
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172973"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199214"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Hromadné registraci virtuálních počítačů SQL v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -37,6 +37,7 @@ Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem pr
 - [Předplatné Azure](https://azure.microsoft.com/free/) , které je [zaregistrované u poskytovatele prostředků](virtual-machines-windows-sql-register-with-resource-provider.md#register-subscription-with-rp) a obsahuje neregistrované virtuální počítače SQL Server. 
 - Pověření klienta používaná k registraci virtuálních počítačů existují v kterékoli z následujících rolí RBAC: přispěvatel, **Přispěvatel**nebo **vlastník** **virtuálního počítače**. 
 - Nejnovější verzi [AZ PowerShellu](/powershell/azure/new-azureps-module-az) 
+- Nejnovější verze [az. SqlVirtualMachine] (https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -228,6 +229,7 @@ Při registraci SQL Server virtuálních počítačů pomocí poskytovatele pros
 
 Úplný skript na GitHubu najdete v tématu [hromadné registraci virtuálních počítačů SQL pomocí AZ PowerShell](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1). 
 
+Zkopírujte celý skript a uložte ho jako `RegisterSqLVMs.psm1`.
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
 

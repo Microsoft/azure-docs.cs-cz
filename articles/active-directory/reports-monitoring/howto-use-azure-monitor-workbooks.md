@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a073a476043fc6570a42cc142e01f2c6f98c7741
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: b88648ce68a7359a842ec975d8633d6200b1a507
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175917"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200133"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Použití Azure Monitorch sešitů pro sestavy Azure Active Directory
 
@@ -65,7 +65,7 @@ Pokud chcete používat monitorované sešity, potřebujete:
 - [Přístup](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) k pracovnímu prostoru Log Analytics
 - Následující role v Azure Active Directory (Pokud přistupujete Log Analytics prostřednictvím Azure Active Directoryového portálu)
     - Správce zabezpečení
-    - Čtecí modul zabezpečení
+    - Čtenář zabezpečení
     - Čtečka sestav
     - Globální správce
 
@@ -73,10 +73,9 @@ Pokud chcete používat monitorované sešity, potřebujete:
 Musíte být v jedné z následujících rolí a mít [přístup k podkladovým Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) pracovním prostorům pro správu sešitů:
 -   Globální správce
 -   Správce zabezpečení
--   Čtecí modul zabezpečení
+-   Čtenář zabezpečení
 -   Čtečka sestav
 -   Správce aplikace
-
 
 ## <a name="workbook-access"></a>Přístup k sešitu 
 
@@ -84,16 +83,11 @@ Přístup k sešitům:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-2. V levém navigačním podokně vyberte **Azure Active Directory**.
+1. Přejděte na **Azure Active Directory** > **monitorování** > **sešity**. 
 
-3. V části **monitorování** vyberte **sešity**. 
+1. Vyberte sestavu nebo šablonu nebo na panelu nástrojů vyberte **otevřít**. 
 
-    ![Vybrat přehledy](./media/howto-use-azure-monitor-workbooks/41.png)
-
-4. Vyberte sestavu nebo šablonu nebo na panelu nástrojů vyberte **otevřít**. 
-
-    ![Vyberte otevřít.](./media/howto-use-azure-monitor-workbooks/42.png)
-
+![Hledání sešitů Azure Monitor ve službě Azure AD](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Analýza přihlášení
 
@@ -187,7 +181,7 @@ Pro zakázaná přihlášení získáte rozpis stavu podmíněného přístupu.
 
 ### <a name="overview"></a>Přehled
 
-Sešity obsahují dotazy protokolu přihlášení, které správcům IT pomůžou monitorovat dopad zásad podmíněného přístupu ve svém tenantovi. Máte možnost nahlásit, kolik uživatelů bylo uděleno nebo odepřeno přístupu. Sešit obsahuje přehledy o tom, kolik uživatelů se v době přihlášení na základě atributů těchto uživatelů vynechá. Obsahuje podrobnosti za podmínku, takže dopad zásad může být kontextem na podmínku, včetně platformy zařízení, stavu zařízení, klientské aplikace, rizika přihlášení, umístění a aplikace.
+Sešity obsahují dotazy protokolu přihlášení, které mohou správcům IT pomáhat monitorovat dopad zásad podmíněného přístupu ve svém tenantovi. Máte možnost nahlásit, kolik uživatelů bylo uděleno nebo odepřeno přístupu. Sešit obsahuje přehledy o tom, kolik uživatelů se v době přihlášení na základě atributů těchto uživatelů vynechá. Obsahuje podrobnosti za podmínku, takže dopad zásad může být kontextem na podmínku, včetně platformy zařízení, stavu zařízení, klientské aplikace, rizika přihlášení, umístění a aplikace.
 
 ### <a name="instructions"></a>Pokyny 
 Pokud chcete získat přístup k sešitu pro přehledy podmíněného přístupu, vyberte v části Podmíněný přístup sešit s **informacemi o podmíněném** přístupu. V tomto sešitu se zobrazuje očekávaný dopad na jednotlivé zásady podmíněného přístupu ve vašem tenantovi. V rozevíracím seznamu vyberte jednu nebo více zásad podmíněného přístupu a zužte rozsah sešitu použitím následujících filtrů: 

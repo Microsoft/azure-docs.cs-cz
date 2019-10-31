@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: a27fa47333739e688e879b936a6e3b25a4d3c749
-  ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+  ms.openlocfilehash: cf720d7a526a913cc4c06ee160de3eecbe92e0a1
+  ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/27/2019
-  ms.locfileid: "72968965"
+  ms.lasthandoff: 10/30/2019
+  ms.locfileid: "73176114"
 highlightedContent:
   items:
   - title: Co je IoT Central?
@@ -51,7 +51,7 @@ conceptualContent:
       text: Další informace
   - title: Stále připojení (funkce Preview)
     links:
-    - url: ./core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./core/tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
       itemType: how-to-guide
       text: Použití skupin zařízení
     - url: ./core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
@@ -126,7 +126,7 @@ additionalContent:
   - items:
     - title: Rozhraní API služby IoT Central
       summary: Projděte si rozhraní API služby IoT Central.
-      url: https://docs.microsoft.com/rest/api/azure/
+      url: https://docs.microsoft.com/rest/api/iotcentral/
     - title: IoT Central na Microsoft Learn
       summary: Projděte si IoT Central v bezplatném prostředí sandboxu.
-      url: https://aka.ms/iotcentralapimslearnjourney
+      url: https://docs.microsoft.com/learn/browse/?products=azure-iot-central

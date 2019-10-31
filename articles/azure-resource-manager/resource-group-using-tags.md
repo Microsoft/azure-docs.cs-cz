@@ -4,20 +4,20 @@ description: Ukazuje, jak použít značky k uspořádání prostředků Azure k
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9bcbfe1bdb501cac6ff31156db5382d1174eb8ad
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e7763889ecf69231b7a4daf31e6899b33f3e2b36
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146841"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199152"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Používání značek k uspořádání prostředků Azure
 
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
-Pro použití značek u prostředků musí mít uživatel k tomuto typu prostředku přístup pro zápis. Chcete-li použít značky pro všechny typy prostředků, použijte roli [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) . Pokud chcete použít Tagy jenom pro jeden typ prostředku, použijte pro tento prostředek roli přispěvatele. Pokud například chcete použít značky pro virtuální počítače, použijte přispěvatele [virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+Pro použití značek u prostředků musí mít uživatel k tomuto typu prostředku přístup pro zápis. Chcete-li použít značky pro všechny typy prostředků, použijte roli [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) . Pokud chcete použít Tagy jenom pro jeden typ prostředku, použijte pro tento prostředek roli přispěvatele. Pokud například chcete použít značky pro virtuální počítače, použijte [přispěvatele virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
@@ -107,7 +107,7 @@ $r.Tags.Add("Status", "Approved")
 Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-Pokud chcete použít všechny značky ze skupiny prostředků na prostředky a nezachovat *existující značky prostředků*, použijte tento skript:
+Pokud chcete použít všechny značky ze skupiny prostředků na prostředky a *nezachovat existující značky prostředků*, použijte tento skript:
 
 ```azurepowershell-interactive
 $groups = Get-AzResourceGroup
@@ -180,13 +180,13 @@ Při procházení kolekcí prostředků je vhodné zobrazit prostředek podle ID
 az resource show --id <resource-id> --query tags
 ```
 
-Chcete-li získat skupiny prostředků s konkrétní značkou, `az group list`použijte:
+Chcete-li získat skupiny prostředků s konkrétní značkou, použijte `az group list`:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-Chcete-li získat všechny prostředky, které mají určitou značku a hodnotu, `az resource list`použijte:
+Chcete-li získat všechny prostředky, které mají určitou značku a hodnotu, použijte `az resource list`:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -214,7 +214,7 @@ rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Pokud chcete použít všechny značky ze skupiny prostředků na prostředky a nezachovat *existující značky prostředků*, použijte tento skript:
+Pokud chcete použít všechny značky ze skupiny prostředků na prostředky a *nezachovat existující značky prostředků*, použijte tento skript:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -250,7 +250,7 @@ done
 
 ## <a name="templates"></a>Šablony
 
-K označení prostředku během nasazení přidejte `tags` element do prostředku, který nasazujete. Zadejte název a hodnotu značky.
+Chcete-li během nasazování označit prostředek, přidejte `tags` element do prostředku, který nasazujete. Zadejte název a hodnotu značky.
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>Použití literálové hodnoty na název značky
 
@@ -361,7 +361,7 @@ Pokud chcete uložit mnoho hodnot v jedné značce, použijte řetězec JSON, kt
 
 ### <a name="apply-tags-from-resource-group"></a>Použít značky ze skupiny prostředků
 
-Chcete-li použít značky ze skupiny prostředků na prostředek, použijte funkci [Resource](resource-group-template-functions-resource.md#resourcegroup) . Při získávání hodnoty značky použijte `tags.[tag-name]` syntaxi namísto `tags.tag-name` syntaxe, protože některé znaky nejsou v zápisu tečky správně analyzovány.
+Chcete-li použít značky ze skupiny prostředků na prostředek, použijte funkci [Resource](resource-group-template-functions-resource.md#resourcegroup) . Při získávání hodnoty značky použijte místo syntaxe `tags.tag-name` syntaxi `tags.[tag-name]`, protože některé znaky se v zápisu tečky neanalyzují správně.
 
 ```json
 {
@@ -397,7 +397,7 @@ Chcete-li použít značky ze skupiny prostředků na prostředek, použijte fun
 
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 Azure Portal a PowerShell používají [Správce prostředků REST API](https://docs.microsoft.com/rest/api/resources/) na pozadí. Pokud potřebujete integrovat označování do jiného prostředí, můžete získat značky pomocí metody **Get** pro ID prostředku a aktualizovat sadu značek pomocí volání **opravy** .
 
@@ -407,7 +407,7 @@ K seskupení fakturačních dat můžete použít značky. Pokud například spo
 
 Můžete načítat informace o značkách prostřednictvím [rozhraní API pro využití prostředků Azure a ratecard](../billing/billing-usage-rate-card-overview.md) nebo souborů hodnot oddělených čárkami (CSV). Soubor využití si můžete stáhnout z [centrum účtů Azure](https://account.azure.com/Subscriptions) nebo Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../billing/billing-download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
 
-Informace o REST API operacích najdete v referenčních informacích o [fakturačních REST API Azure](/rest/api/billing/).
+Informace o REST API operacích najdete v [referenčních informacích o fakturačních REST API Azure](/rest/api/billing/).
 
 ## <a name="next-steps"></a>Další kroky
 

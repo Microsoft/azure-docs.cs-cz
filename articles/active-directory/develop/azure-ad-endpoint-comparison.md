@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815ff980abdde7ab91861d8550030476312fb6d3
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 975c7f18da9797305b0af3f81b00acca1ba14a1a
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835159"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200313"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč se má aktualizovat platforma Microsoft Identity Platform (v 2.0)?
 
@@ -36,7 +36,7 @@ Při vývoji nové aplikace je důležité znát rozdíly mezi koncovými body M
 
 * Koncový bod v 1.0 umožňuje přihlásit se k vaší aplikaci (Azure AD) pouze pracovní a školní účet.
 * Koncový bod platformy Microsoft Identity umožňuje pracovní a školní účty z Azure AD a osobních účtů Microsoft (MSA), jako je hotmail.com, outlook.com a msn.com, pro přihlášení.
-* Oba koncové body také přijímají přihlášení *[uživatelů typu Host](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* v adresáři Azure AD pro aplikace nakonfigurované jako *[jeden tenant](single-and-multi-tenant-apps.md)* nebo pro *víceklientské* aplikace nakonfigurované tak, aby odkazovaly na koncový bod pro konkrétního`https://login.microsoftonline.com/{TenantId_or_Name}`klienta ().
+* Oba koncové body také přijímají přihlášení *[uživatelů typu Host](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* v adresáři Azure AD pro aplikace nakonfigurované jako *[jeden tenant](single-and-multi-tenant-apps.md)* nebo pro *víceklientské* aplikace nakonfigurované tak, aby odkazovaly na koncový bod pro konkrétního klienta (`https://login.microsoftonline.com/{TenantId_or_Name}`).
 
 Koncový bod platformy Microsoft Identity umožňuje psát aplikace, které přijímají přihlášení z osobních účtů Microsoft a pracovních a školních účtů. Díky tomu máte možnost napsat si aplikaci kompletně s účtem – nezávislá. Například pokud vaše aplikace volá [Microsoft Graph](https://graph.microsoft.io), budou k dispozici některé další funkce a data pro pracovní účty, jako jsou například weby služby SharePoint nebo data adresáře. Ale u mnoha akcí, jako je [čtení e-mailů uživatele](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages), může stejný kód přistupovat k e-mailu pro osobní i pracovní a školní účty.
 
@@ -54,9 +54,9 @@ Oprávnění nastavená přímo na registraci aplikace jsou **statická**. I kdy
 
 * Aplikace potřebuje znát všechny prostředky, ke kterým by někdy měl přístup před časem. Bylo obtížné vytvořit aplikace, které by mohly získat přístup k libovolnému počtu prostředků.
 
-Pomocí koncového bodu Microsoft Identity Platform můžete ignorovat statická oprávnění definovaná v informacích o registraci aplikace v Azure Portal a místo toho požádat o oprávnění, což znamená, že se požádá o minimální sadu oprávnění předem. a roste více času, protože zákazník používá další funkce aplikace. V takovém případě můžete určit rozsahy, které vaše aplikace potřebuje, a to tak, že při vyžádání přístupového tokenu použijete nové obory v `scope` parametru, aniž byste je museli předem definovat v informacích o registraci aplikace. Pokud uživatel ještě nesouhlasí s novými obory přidanými do žádosti, zobrazí se jim výzva k vyjádření souhlasu pouze s novými oprávněními. Další informace najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md).
+Pomocí koncového bodu Microsoft Identity Platform můžete ignorovat statická oprávnění definovaná v informacích o registraci aplikace v Azure Portal a místo toho požádat o oprávnění, což znamená, že se požádá o minimální sadu oprávnění předem. a roste více času, protože zákazník používá další funkce aplikace. V takovém případě můžete určit rozsahy, které aplikace potřebuje, a to tak, že zahrnete nové obory v parametru `scope` při vyžádání přístupového tokenu – aniž byste je museli předem definovat v informacích o registraci aplikace. Pokud uživatel ještě nesouhlasí s novými obory přidanými do žádosti, zobrazí se jim výzva k vyjádření souhlasu pouze s novými oprávněními. Další informace najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md).
 
-Umožnění aplikace dynamicky požádat o oprávnění prostřednictvím `scope` parametru poskytne vývojářům plnou kontrolu nad uživatelským prostředím. Můžete také předem načítat své vyjádření souhlasu a požádat o všechna oprávnění v jedné počáteční žádosti o autorizaci. Pokud vaše aplikace vyžaduje velký počet oprávnění, můžete tato oprávnění shromáždit od uživatele přírůstkově, protože se snaží v průběhu času používat určité funkce aplikace.
+Umožnění aplikace dynamicky požádat o oprávnění prostřednictvím parametru `scope` poskytne vývojářům plnou kontrolu nad uživatelským prostředím. Můžete také předem načítat své vyjádření souhlasu a požádat o všechna oprávnění v jedné počáteční žádosti o autorizaci. Pokud vaše aplikace vyžaduje velký počet oprávnění, můžete tato oprávnění shromáždit od uživatele přírůstkově, protože se snaží v průběhu času používat určité funkce aplikace.
 
 Souhlas správce, který se provádí jménem organizace, pořád vyžaduje statická oprávnění registrovaná pro aplikaci, takže byste měli nastavit tato oprávnění pro aplikace na portálu pro registraci aplikací, pokud potřebujete správce o udělení souhlasu jménem celé organizace. Tím se omezí cykly, které správce organizace potřebuje k nastavení aplikace.
 
@@ -64,7 +64,7 @@ Souhlas správce, který se provádí jménem organizace, pořád vyžaduje stat
 
 U aplikací využívajících koncový bod verze 1.0 se aplikace může chovat jako **prostředek**nebo příjemce tokenů. Prostředek může definovat počet **oborů** nebo **oAuth2Permissions** , které rozumí, a umožnit tak klientským aplikacím žádat o tokeny z daného prostředku na určitou sadu oborů. Jako příklad prostředku zvažte Graph API Azure AD:
 
-* Identifikátor prostředku nebo `AppID URI`:`https://graph.windows.net/`
+* Identifikátor prostředku nebo `AppID URI`: `https://graph.windows.net/`
 * Rozsahy nebo `oAuth2Permissions`: `Directory.Read`, `Directory.Write`a tak dále.
 
 To platí pro koncový bod Microsoft Identity Platform. Aplikace se může stále chovat jako prostředek, definovat obory a identifikovat pomocí identifikátoru URI. Klientské aplikace si stále můžou vyžádat přístup k těmto oborům. Nicméně způsob, jakým klient požaduje tato oprávnění, se změnil.
@@ -89,28 +89,28 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-Tady je parametr **Scope (obor** ) indikuje, který prostředek a oprávnění aplikace požaduje autorizaci. Požadovaný prostředek se stále nachází v žádosti – je obsažený v každé z hodnot parametru Scope. Použití parametru scope tímto způsobem umožňuje, aby byl koncový bod platformy Microsoft Identity lépe kompatibilní se specifikací OAuth 2,0 a přesněji zarovnává s běžnými průmyslovými postupy. Umožňuje také aplikacím provádět přírůstkové [souhlasu](#incremental-and-dynamic-consent) – požaduje oprávnění pouze v případě, že je aplikace požaduje, a to na rozdíl od začátku.
+Tady je parametr **Scope (obor** ) indikuje, který prostředek a oprávnění aplikace požaduje autorizaci. Požadovaný prostředek se stále nachází v žádosti – je obsažený v každé z hodnot parametru Scope. Použití parametru scope tímto způsobem umožňuje, aby byl koncový bod platformy Microsoft Identity lépe kompatibilní se specifikací OAuth 2,0 a přesněji zarovnává s běžnými průmyslovými postupy. Umožňuje také aplikacím provádět [přírůstkové souhlasu](#incremental-and-dynamic-consent) – požaduje oprávnění pouze v případě, že je aplikace požaduje, a to na rozdíl od začátku.
 
 ## <a name="well-known-scopes"></a>Známé obory
 
 ### <a name="offline-access"></a>Offline přístup
 
-Aplikace, které používají koncový bod platformy Microsoft identity, můžou vyžadovat použití nového dobře známého oprávnění pro aplikace – `offline_access` rozsah. Všechny aplikace budou muset požádat o toto oprávnění, pokud potřebují přístup k prostředkům jménem uživatele za delší dobu, a to i v případě, že uživatel nemusí aplikaci aktivně používat. Obor se uživateli zobrazí v dialogových oknech pro vyjádření souhlasu s **přístupem k datům kdykoli**a uživatel musí souhlasit. `offline_access` `offline_access` Vyžádání oprávnění umožní vaší webové aplikaci přijímat OAuth 2,0 refresh_tokens z koncového bodu Microsoft Identity Platform. Aktualizační tokeny jsou dlouhodobé a dají se vyměňovat za nové přístupové tokeny OAuth 2,0 pro rozšířená období přístupu.
+Aplikace, které používají koncový bod platformy Microsoft identity, můžou vyžadovat použití nového známého oprávnění pro aplikace – `offline_access` rozsahu. Všechny aplikace budou muset požádat o toto oprávnění, pokud potřebují přístup k prostředkům jménem uživatele za delší dobu, a to i v případě, že uživatel nemusí aplikaci aktivně používat. Obor `offline_access` se uživateli zobrazí v dialogových oknech pro vyjádření souhlasu s **přístupem k datům kdykoli**a uživatel musí souhlasit. Vyžádáním oprávnění `offline_access` umožníte, aby webová aplikace přijímala OAuth 2,0 refresh_tokens z koncového bodu Microsoft Identity Platform. Aktualizační tokeny jsou dlouhodobé a dají se vyměňovat za nové přístupové tokeny OAuth 2,0 pro rozšířená období přístupu.
 
-Pokud vaše aplikace nepožaduje `offline_access` rozsah, neobdrží aktualizační tokeny. To znamená, že při uplatnění autorizačního kódu v toku autorizačního kódu OAuth 2,0 obdržíte jenom přístupový token z `/token` koncového bodu. Přístupový token zůstane po krátkou dobu platný (obvykle jednou za hodinu), ale nakonec vyprší jeho platnost. V tomto okamžiku bude vaše aplikace muset přesměrovat uživatele zpátky na `/authorize` koncový bod a načíst nový autorizační kód. Během tohoto přesměrování může uživatel nebo nemusí později zadat svoje přihlašovací údaje nebo znovu vyjádřit souhlas s oprávněními v závislosti na typu aplikace.
+Pokud vaše aplikace nepožaduje obor `offline_access`, neobdrží aktualizační tokeny. To znamená, že při uplatnění autorizačního kódu v toku autorizačního kódu OAuth 2,0 obdržíte jenom přístupový token z `/token`ho koncového bodu. Přístupový token zůstane po krátkou dobu platný (obvykle jednou za hodinu), ale nakonec vyprší jeho platnost. V tomto okamžiku bude vaše aplikace muset přesměrovat uživatele zpátky na `/authorize` koncový bod a načíst nový autorizační kód. Během tohoto přesměrování může uživatel nebo nemusí později zadat svoje přihlašovací údaje nebo znovu vyjádřit souhlas s oprávněními v závislosti na typu aplikace.
 
-Další informace o OAuth 2,0, `refresh_tokens`a `access_tokens`najdete v referenčních informacích o [protokolu platformy Microsoft Identity Platform](active-directory-v2-protocols.md).
+Další informace o OAuth 2,0, `refresh_tokens`a `access_tokens`, najdete v referenčních informacích k [protokolu platformy Microsoft Identity Platform](active-directory-v2-protocols.md).
 
 ### <a name="openid-profile-and-email"></a>OpenID, profil a e-mail
 
 Z historického hlediska je nejzákladnější tok přihlašování OpenID Connect s platformou Microsoft identity, který poskytuje velké množství informací o uživateli ve výsledných *id_token*. Deklarace ve id_token můžou zahrnovat jméno uživatele, upřednostňované uživatelské jméno, e-mailovou adresu, ID objektu a další.
 
-K informacím, ke `openid` kterým má aplikace přístup, se teď omezuje přístup. `openid` Rozsah umožní vaší aplikaci přihlašovat se uživateli a získat pro uživatele identifikátor specifický pro aplikaci. Pokud chcete získat osobní údaje o uživateli v aplikaci, aplikace musí požádat uživatele o další oprávnění. Dva nové obory `email` a `profile`, vám umožní požádat o další oprávnění.
+Informace, na které `openid` rozsah poskytují přístup k aplikaci, jsou teď omezené. Obor `openid` umožní, aby se aplikace přihlásila uživateli a získala pro uživatele identifikátor specifický pro aplikaci. Pokud chcete získat osobní údaje o uživateli v aplikaci, aplikace musí požádat uživatele o další oprávnění. Dva nové obory, `email` a `profile`, vám umožní požádat o další oprávnění.
 
-* Rozsah umožňuje aplikaci přístup k primární e-mailové adrese uživatele `email` prostřednictvím deklarace v id_token, za předpokladu, že uživatel má adresovatelnou e-mailovou adresu. `email`
-* `profile` Obor poskytuje vaší aplikaci přístup ke všem dalším základním informacím o uživateli, jako je například jeho jméno, upřednostňované uživatelské jméno, ID objektu a tak dále, v id_token.
+* Obor `email` umožňuje vaší aplikaci přístup k primární e-mailové adrese uživatele prostřednictvím deklarace identity `email` v id_token, za předpokladu, že uživatel má adresovatelnou e-mailovou adresu.
+* Obor `profile` poskytuje vaší aplikaci přístup ke všem dalším základním informacím o uživateli, jako je například jeho jméno, upřednostňované uživatelské jméno, ID objektu a tak dále, v id_token.
 
-Tyto obory vám umožňují nakódovat aplikaci při minimálním zpřístupnění, abyste se mohli pouze uživatele zeptat na sadu informací, které vaše aplikace potřebuje ke své práci. Další informace o těchto oborech najdete v referenčních informacích o [oboru platformy Microsoft Identity](v2-permissions-and-consent.md).
+Tyto obory vám umožňují nakódovat aplikaci při minimálním zpřístupnění, abyste se mohli pouze uživatele zeptat na sadu informací, které vaše aplikace potřebuje ke své práci. Další informace o těchto oborech najdete v [referenčních informacích o oboru platformy Microsoft Identity](v2-permissions-and-consent.md).
 
 ## <a name="token-claims"></a>Deklarace identity tokenu
 
@@ -144,7 +144,7 @@ Registrace aplikací, které podporují pracovní a školní účty a osobní ú
 
 ### <a name="restrictions-on-redirect-urls"></a>Omezení adres URL pro přesměrování
 
-Aplikace registrované pro platformu Microsoft identity jsou omezené na omezenou sadu hodnot adresy URL pro přesměrování. Adresa URL pro přesměrování webových aplikací a služeb musí začínat schématem `https`a všechny hodnoty adresy URL pro přesměrování musí sdílet jednu doménu DNS.  Registrační systém porovnává celý název DNS stávající adresy URL pro přesměrování na název DNS adresy URL pro přesměrování, kterou přidáváte. `http://localhost`je také podporován jako adresa URL pro přesměrování.  
+Aplikace registrované pro platformu Microsoft identity jsou omezené na omezenou sadu hodnot adresy URL pro přesměrování. Adresa URL pro přesměrování webových aplikací a služeb musí začínat schématem `https`a všechny hodnoty adresy URL pro přesměrování musí sdílet jednu doménu DNS.  Registrační systém porovnává celý název DNS stávající adresy URL pro přesměrování na název DNS adresy URL pro přesměrování, kterou přidáváte. `http://localhost` se také podporuje jako adresa URL pro přesměrování.  
 
 Požadavek na přidání názvu DNS selže, pokud platí některá z následujících podmínek:  
 
@@ -153,7 +153,7 @@ Požadavek na přidání názvu DNS selže, pokud platí některá z následují
 
 #### <a name="example-1"></a>Příklad 1
 
-Pokud má aplikace adresu URL pro `https://login.contoso.com`přesměrování, můžete přidat adresu URL pro přesměrování, kde se název DNS přesně shoduje, jak je znázorněno v následujícím příkladu:
+Pokud má aplikace adresu URL pro přesměrování `https://login.contoso.com`, můžete přidat adresu URL pro přesměrování, kde se název DNS přesně shoduje, jak je znázorněno v následujícím příkladu:
 
 `https://login.contoso.com/new`
 
@@ -163,7 +163,7 @@ Nebo můžete odkazovat na subdoménu DNS login.contoso.com, jak je znázorněno
 
 #### <a name="example-2"></a>Příklad 2
 
-Pokud chcete mít aplikaci, která má `login-east.contoso.com` a `login-west.contoso.com` jako adresy URL přesměrování, musíte tyto adresy URL pro přesměrování přidat v tomto pořadí:
+Pokud chcete mít aplikaci, která má `login-east.contoso.com` a `login-west.contoso.com` jako adresy URL pro přesměrování, musíte tyto adresy URL pro přesměrování přidat v tomto pořadí:
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
@@ -183,15 +183,15 @@ V současné době je podpora knihoven u koncového bodu Microsoft Identity Plat
 * Pokud vytváříte desktopovou nebo mobilní aplikaci, můžete použít jednu z knihoven Microsoft Authentication Library (MSAL). Tyto knihovny jsou všeobecně dostupné nebo ve verzi Preview podporované v produkčním prostředí, takže je bezpečné je používat v produkčních aplikacích. Další informace o podmínek verze Preview a dostupných knihovnách najdete v referenčních informacích ke [knihovnám ověřování](reference-v2-libraries.md).
 * Pro platformy, které nejsou pokryté knihovnami Microsoftu, můžete integrovat s koncovým bodem platformy Microsoft identity, a to přímým odesíláním a přijímáním zpráv protokolu v kódu aplikace. Protokoly OpenID Connect a OAuth [jsou explicitně zdokumentovány](active-directory-v2-protocols.md) , aby vám usnadnily takovou integraci.
 * Nakonec můžete pomocí Open Source knihoven OpenID Connect a OAuth integrovat s koncovým bodem Microsoft Identity Platform. Koncový bod platformy Microsoft identity by měl být kompatibilní s mnoha Open-Source knihovnami protokolů beze změn. Dostupnost těchto typů knihoven se liší v závislosti na jazyku a platformě. Weby [OpenID Connect](https://openid.net/connect/) a [OAuth 2,0](https://oauth.net/2/) uchovávají seznam oblíbených implementací. Další informace najdete v tématech [Microsoft Identity Platform a Authentication](reference-v2-libraries.md)Librarys a seznam Open Source klientských knihoven a ukázek, které byly testovány pomocí koncového bodu Microsoft Identity Platform.
-* Pro referenci `.well-known` je `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`koncový bod pro běžný koncový bod platformy Microsoft Identity Platform. Nahraďte `common` ID tenanta, abyste získali data specifická pro vašeho tenanta.  
+* Pro referenci se `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`koncový bod `.well-known` pro běžný koncový bod platformy Microsoft identity. Pokud chcete získat data specifická pro vašeho tenanta, nahraďte `common` vaším ID tenanta.  
 
 ### <a name="protocol-changes"></a>Změny protokolu
 
 Koncový bod Microsoft Identity Platform nepodporuje SAML ani WS-Federation; podporuje jenom OpenID Connect a OAuth 2,0.  Významné změny v protokolech OAuth 2,0 z koncového bodu verze 1.0 jsou tyto: 
 
-* Deklarace identity se vrátí, pokud je nakonfigurovaná volitelná deklarace identity nebo v žádosti je zadaný rozsah = e-mail. `email` 
-* Parametr je nyní podporován místo `resource` parametru. `scope`  
-* Mnoho odpovědí bylo upraveno tak, aby byly lépe kompatibilní se specifikací OAuth 2,0, například tak, že se `expires_in` správně vrátí jako int namísto řetězce.  
+* Deklarace `email` se vrátí, pokud je nakonfigurovaná volitelná deklarace identity **nebo** v žádosti je zadaný obor = e-mail. 
+* Parametr `scope` se teď podporuje místo parametru `resource`.  
+* Mnoho odpovědí bylo upraveno, aby byly lépe kompatibilní se specifikací OAuth 2,0, například správné vrácení `expires_in` jako int namísto řetězce.  
 
 Pro lepší pochopení rozsahu funkčnosti protokolu podporovaného koncovým bodem platformy Microsoft identity, přečtěte si [odkaz OpenID Connect and OAuth 2,0 Protocol reference](active-directory-v2-protocols.md).
 

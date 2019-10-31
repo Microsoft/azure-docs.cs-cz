@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 2abc5434f11bf00c6872775b1336694c04972e95
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175156"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200213"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Pochopení zabezpečení pracovních stanic spravovaných Azure
 
@@ -91,7 +91,7 @@ Tento návod odkazuje na několik profilů zabezpečení a rolí, které vám po
 
 * **Rozšířené zabezpečení** – toto chráněné řešení je vhodné pro domácí uživatele, malé firmy a obecné vývojáře.
 
-   Rozšířená pracovní stanice je způsob, jak zvýšit zabezpečení nízkého profilu zabezpečení na základě zásad. Poskytuje zabezpečené prostředky pro práci s Zákaznickými daty a zároveň používá nástroje pro zvýšení produktivity, jako jsou e-maily a procházení webu. Pomocí zásad auditu a Intune můžete monitorovat rozšířenou pracovní stanici pro chování uživatelů a používání profilů. Rozšířený profil pracovní stanice nasadíte pomocí skriptu Windows10 (1809) a využijete pokročilou ochranu proti malwaru pomocí [rozšířené ochrany před internetovými útoky (ATP)](https://docs.microsoft.com/office365/securitycompliance/office-365-atp).
+   Rozšířená pracovní stanice je způsob, jak zvýšit zabezpečení nízkého profilu zabezpečení na základě zásad. Poskytuje zabezpečené prostředky pro práci s Zákaznickými daty a zároveň používá nástroje pro zvýšení produktivity, jako jsou e-maily a procházení webu. Pomocí zásad auditu a Intune můžete monitorovat rozšířenou pracovní stanici pro chování uživatelů a používání profilů. Rozšířený profil pracovní stanice nasadíte pomocí skriptu Windows10 (1809) a využijete pokročilou ochranu proti malwaru pomocí [rozšířené ochrany před internetovými útoky (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection).
 
 * **Vysoké zabezpečení** – nejúčinnější způsob, jak omezit prostor pro útok na pracovní stanici, je odebrat možnost samoobslužně spravovat pracovní stanici. Odebrání oprávnění místního správce je krok, který vylepšuje zabezpečení, ale může mít vliv na produktivitu, pokud je nesprávně implementován. Profil vysokého zabezpečení se vytváří v rozšířeném profilu zabezpečení s jednou významnou změnou: odebrání místního správce. Tento profil je určený pro uživatele s vysokým profilem: vedoucí pracovníky, mzdy a citlivá data uživatelů, schvalovatele pro služby a procesy.
 

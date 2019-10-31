@@ -1,5 +1,5 @@
 ---
-title: Shromažďování dat z hybridního počítače s Windows pomocí Azure Monitor | Microsoft Docs
+title: Shromažďování dat z hybridního počítače s Windows pomocí Azure Monitor
 description: V tomto rychlém startu se dozvíte, jak nasadit agenta Log Analytics pro počítače se systémem Windows, na kterých běží mimo Azure, a jak povolit shromažďování dat pomocí protokolů Azure Monitor.
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677225"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199022"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače s Windows v hybridním prostředí pomocí Azure Monitor
 
@@ -99,7 +99,7 @@ Následující postup nainstaluje a nakonfiguruje agenta pro Log Analytics v Azu
 
 10. Na stránce **Konfigurace byla úspěšně dokončena** vyberte **Dokončit**.
 
-Po dokončení instalace a nastavení se Microsoft Monitoring Agent zobrazí v Ovládacích panelech. Můžete zkontrolovat svou konfiguraci a ověřit, zda je agent připojen k pracovnímu prostoru Log Analytics. Po připojení se na kartě **Azure Log Analytics** Agent zobrazí tato zpráva: **Microsoft Monitoring Agent se úspěšně připojil ke službě Microsoft Log Analytics.**<br><br> ![MMA stav připojení ](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+Po dokončení instalace a nastavení se Microsoft Monitoring Agent zobrazí v Ovládacích panelech. Můžete zkontrolovat svou konfiguraci a ověřit, zda je agent připojen k pracovnímu prostoru Log Analytics. Po připojení se na kartě **Azure Log Analytics** Agent zobrazí tato zpráva: **Microsoft Monitoring Agent se úspěšně připojil ke službě Microsoft Log Analytics.**<br><br> ![stav připojení MMA](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 ## <a name="collect-event-and-performance-data"></a>Shromažďování dat o událostech a výkonu
 

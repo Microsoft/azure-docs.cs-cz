@@ -447,7 +447,11 @@
         - name: Vysoká dostupnost
           href: manage-availability.md
         - name: Vytvoření skupiny umístění bezkontaktní komunikace
-          href: proximity-placement-groups.md
+          items:
+            - name: Portál
+              href: proximity-placement-groups-portal.md
+            - name: PowerShell
+              href: proximity-placement-groups.md
         - name: Vertikální škálování
           items:
             - name: PowerShell

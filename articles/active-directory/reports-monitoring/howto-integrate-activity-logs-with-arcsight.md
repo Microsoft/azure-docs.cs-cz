@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037240e6006b5e0625bf8fb75492d8e458899a8e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 9b6a65eee10c7c5547cc433c663a4294ec842047
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820896"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199731"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrace protokolů Azure Active Directory s využitím ArcSight pomocí Azure Monitor
 
@@ -59,4 +59,4 @@ Stáhněte si a otevřete [Průvodce konfigurací pro ArcSight SmartConnector pr
 
 ## <a name="next-steps"></a>Další kroky
 
-[Průvodce konfigurací pro ArcSight SmartConnector pro centrum událostí Azure Monitor](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[Průvodce konfigurací pro ArcSight SmartConnector pro centrum událostí Azure Monitor](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)

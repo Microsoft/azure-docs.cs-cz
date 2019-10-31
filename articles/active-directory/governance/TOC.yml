@@ -5,7 +5,7 @@
   items:
     - name: Co jsou zásady správného řízení identit?
       href: identity-governance-overview.md
-    - name: Co je správa nároků? (Preview)
+    - name: Co je správa nároků?
       href: entitlement-management-overview.md
     - name: Co jsou kontroly přístupu?
       href: access-reviews-overview.md
