@@ -68,7 +68,7 @@
       items:
         - name: Tabulkové modelování
           href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
-        - name: Nasazení ze sady Visual Studio (SSDT)
+        - name: Nasazení ze sady Visual Studio
           href: analysis-services-deploy.md
         - name: Aktualizace pomocí REST API
           href: analysis-services-async-refresh.md

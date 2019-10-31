@@ -1,6 +1,6 @@
 ---
-title: Konfigurace ExpressRoute přímo – Azure | Dokumentace Microsoftu
-description: Tato stránka vám pomůže nakonfigurovat ExpressRoute přímo.
+title: Konfigurace ExpressRoute Direct – Azure | Microsoft Docs
+description: Tato stránka vám pomůže nakonfigurovat ExpressRoute Direct.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9dcefb2d47b6862466b64b3568e1a530a2fdb8cb
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964258"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161598"
 ---
-# <a name="how-to-configure-expressroute-direct"></a>Konfigurace ExpressRoute přímo
+# <a name="how-to-configure-expressroute-direct"></a>Jak nakonfigurovat ExpressRoute Direct
 
-Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Další informace najdete v tématu [informace o ExpressRoute přímé připojení](expressroute-erdirect-about.md).
+ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Microsoftu při partnerských umístěních, která jsou strategicky distribuována po celém světě. Další informace najdete v tématu [informace o přímém připojení ExpressRoute](expressroute-erdirect-about.md).
 
 ## <a name="resources"></a>Vytvoření prostředku
 
-1. Přihlaste se k Azure a vyberte předplatné. Prostředek přímo ExpressRoute a okruhy ExpressRoute musí být ve stejném předplatném.
+1. Přihlaste se k Azure a vyberte předplatné. Okruhy prostředků ExpressRoute Direct a ExpressRoute musí být ve stejném předplatném.
 
    ```powershell
    Connect-AzAccount 
 
-   Select-AzSubscription -Subscription “<SubscriptionID or SubscriptionName>”
+   Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. Výpis všech umístění, kde se podporuje přímý ExpressRoute.
+2. Vypíše všechna umístění, kde se podporuje ExpressRoute Direct.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -61,7 +61,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. Pokud výše uvedené umístění určila dostupnou šířku pásma
+3. Zjistit, jestli výše uvedená umístění má dostupnou šířku pásma
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -83,14 +83,14 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
                           }
                         ]
    ```
-4. Vytvoření prostředku ExpressRoute přímo na základě umístění zvoleno výše
+4. Vytvoření prostředku ExpressRoute Direct na základě výše zvoleného umístění
 
-   Přímé ExpressRoute podporuje QinQ a Dot1Q zapouzdření. Vybrali QinQ každý okruh ExpressRoute se dynamicky přiřadí značku S a bude jedinečný v rámci prostředku ExpressRoute přímo. Každá značka C na okruh musí být jedinečný v okruhu, ale ne přes ExpressRoute přímo.  
+   ExpressRoute Direct podporuje zapouzdření QinQ i Dot1Q. Pokud je vybraná možnost QinQ, bude se každému okruhu ExpressRoute dynamicky přiřazovat značka S-a bude jedinečný v celém prostředku ExpressRoute Direct. Každé označení C na okruhu musí být v okruhu jedinečné, ale ne přes ExpressRoute Direct.  
 
-   Vybrali Dot1Q zapouzdření musíte spravovat jedinečnost C – značka (VLAN) přes celý zdroj přímo ExpressRoute.  
+   Pokud je vybraná možnost zapouzdření Dot1Q, musíte spravovat jedinečnost značky C (VLAN) napříč celým prostředkem ExpressRoute Direct.  
 
    > [!IMPORTANT]
-   > Přímé ExpressRoute může být pouze jeden typ zapouzdření. Zapouzdření nelze změnit po vytvoření přímé ExpressRoute.
+   > ExpressRoute Direct může být jenom jeden typ zapouzdření. Po přímém vytvoření ExpressRoute se zapouzdření nedá změnit.
    > 
  
    ```powershell 
@@ -150,23 +150,23 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
    Circuits                   : []
    ```
 
-## <a name="state"></a>Změnit stav správce odkazů
+## <a name="state"></a>Změnit stav Správce odkazů
 
-  Tento proces by měla sloužit k provedení testu vrstvy 1, zajistit, aby každý křížové připojení správně opravený do směrovače pro primární a sekundární.
-1. Získáte přímé ExpressRoute podrobnosti.
+  Tento proces by měl být použit k provedení testu vrstvy 1, čímž se zajistí, že každé připojení mezi jednotlivými směrovači je u primárních a sekundárních zařízení správně opraveno.
+1. Získat podrobnosti o ExpressRoute
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
    ```
-2. Nastavit odkaz na povoleno. Opakujte tento krok nastavit každý odkaz na povoleno.
+2. Nastavte odkaz na povoleno. Zopakováním tohoto kroku nastavte všechna propojení na povoleno.
 
-   Odkazy [0] je primární port a odkazy [1] je sekundární port.
+   Odkazy [0] je primární port a propojení [1] je sekundární port.
 
    ```powershell
-   $ERDirect.Links[0].AdminState = “Enabled”
+   $ERDirect.Links[0].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
-   $ERDirect.Links[1].AdminState = “Enabled”
+   $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
    **Příklad výstupu:**
@@ -218,25 +218,25 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
    Circuits                   : []
    ```
 
-   Použijte stejný postup s `AdminState = “Disabled”` Chcete-li snížit porty.
+   Pro vypnutí portů použijte stejný postup jako u `AdminState = "Disabled"`.
 
 ## <a name="circuit"></a>Vytvoření okruhu
 
-Ve výchozím nastavení můžete vytvořit v rámci předplatného, ve kterém je prostředek přímo ExpressRoute 10 okruhy. To jde navýšit o podporu. Které nesou odpovědnost za sledování zřízená a využité šířky pásma. Přenosového pásma je součet šířky pásma všechny okruhy ExpressRoute přímo prostředku a využívaných šířky pásma fyzického využití základní fyzické rozhraní.
+Ve výchozím nastavení můžete vytvořit 10 okruhů v rámci předplatného, kde je prostředek ExpressRoute Direct. To se dá zvýšit podporou. Zodpovídáte za sledování zřízené i využité šířky pásma. Zřízená šířka pásma je celková šířka šířky pásma všech okruhů v prostředku ExpressRoute Direct a využité šířky pásma je fyzické využití základních fyzických rozhraní.
 
-Existují další okruh šířky pásma, které můžete využít na ExpressRoute přímo pouze do podpory scénářů uvedených výše. Toto jsou: 40Gbps a 100Gbps.
+K dispozici jsou další šířky pásma okruhů, které je možné využít na ExpressRoute přímo pro podporu scénářů uvedených výše. Jsou to tyto: 40Gbps a 100Gbps.
 
-**SkuTier** může být místní, Standard nebo Premium.
+**SkuTier** může být Local, Standard nebo Premium.
 
-**SkuFamily** musí být MeteredData jako neomezená nepodporuje přímé ExpressRoute.
+**SkuFamily** musí být MeteredData pouze v případě, že v ExpressRoute Direct není podporována žádná neomezená velikost.
 
-Vytvoření okruhu ExpressRoute přímo prostředku.
+Vytvořte okruh na prostředku ExpressRoute Direct.
 
   ```powershell
   New-AzExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
-  Další šířek pásma patří: 5.0, 10.0 a 40.0
+  Mezi další šířky pásma patří: 5,0, 10,0 a 40,0.
 
   **Příklad výstupu:**
 
@@ -270,6 +270,6 @@ Vytvoření okruhu ExpressRoute přímo prostředku.
   GatewayManagerEtag     
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o ExpressRoute Direct, najdete v článku [přehled](expressroute-erdirect-about.md).
+Další informace o ExpressRoute Direct najdete v [přehledu](expressroute-erdirect-about.md).

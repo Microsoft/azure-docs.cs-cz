@@ -68,6 +68,8 @@
       href: environment-setup.md
     - name: Doporučené šířky pásma pro vzdálené relace
       href: bandwidth-recommendations.md
+    - name: Určení latence připojení uživatele
+      href: connection-latency.md
     - name: Delegovaný přístup ve Windows Virtual Desktop
       href: delegated-access-virtual-desktop.md
     - name: Metody vyrovnávání zatížení fondu hostitelů

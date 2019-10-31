@@ -6,18 +6,18 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 1fab1ebee03f48434fd0fb8ccb1bf1be708370e5
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 016d4a8e0f7bc71a7db01426eb514db32bd5624a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299077"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161425"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>Mapování ovládacího prvku NIST SP 800-53 R4 – ukázka
 
 Následující článek podrobně popisuje, jak se ukázka Azure modrotisky NIST SP 800-53 R4. mapuje na ovládací prvky NIST SP 800-53 R4. Další informace o ovládacích prvcích najdete v tématu [NIST SP 800-53](https://nvd.nist.gov/800-53).
 
-Následující mapování jsou k ovládacím prvkům **NIST SP 800-53 (rev. 4)** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\[Preview @ no__t-2: audit NIST SP 800-53 R4 Controls a nasaďte specifická rozšíření virtuálního počítače pro podporu požadavků na** integrovanou iniciativu zásad pro audit.
+Následující mapování jsou k ovládacím prvkům **NIST SP 800-53 (rev. 4)** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\[Preview\]: Auditovat NIST SP 800-53 R4 řízení a nasaďte specifická rozšíření virtuálních počítačů, aby podporovaly** integrovanou zásadu požadavky na audit.
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/nist-sp-800-53-rev4/control-mapping.md).
@@ -30,7 +30,7 @@ Tento podrobný plán vám pomůže zkontrolovat účty, které nemusí být v r
 - Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
-- Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
+- Z předplatného by se měly odebrat externí účty s oprávněními pro zápis
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Správa účtů | Schémata založená na rolích
 
@@ -77,18 +77,18 @@ Azure implementuje [řízení přístupu na základě role](../../../../role-bas
 
 ## <a name="ac-16-security-attributes"></a>Atributy zabezpečení AC-16
 
-Funkce zjišťování a klasifikace dat pro rozšířené zabezpečení dat pro Azure SQL Database poskytuje možnosti pro zjišťování, klasifikaci, označování a ochranu citlivých dat ve vašich databázích. Dá se použít k zajištění viditelnosti stavu klasifikace databáze a ke sledování přístupu k citlivým datům v rámci databáze a nad rámec jejího ohraničení. Pokročilé zabezpečení dat vám může pomáhat zajistit informace, které jsou přidruženy k příslušným atributům zabezpečení vaší organizace. Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice pro monitorování a prosazování použití pokročilých zabezpečení dat na SQL serveru. 
+Funkce zjišťování a klasifikace dat pro rozšířené zabezpečení dat pro Azure SQL Database poskytuje možnosti pro zjišťování, klasifikaci, označování a ochranu citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni. Pokročilé zabezpečení dat vám může pomáhat zajistit informace, které jsou přidruženy k příslušným atributům zabezpečení vaší organizace. Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice pro monitorování a prosazování použití pokročilých zabezpečení dat na SQL serveru. 
 
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
+- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 
 ## <a name="ac-17-1-remote-access--automated-monitoring--control"></a>AC-17 (1) vzdálený přístup | Automatizované monitorování a řízení
 
 Tento podrobný plán vám pomůže s monitorováním a řízením vzdáleného přístupu přiřazením [Azure Policy](../../../policy/overview.md) definic pro monitorování, že vzdálené ladění pro Azure App Service aplikace je vypnuté. Podrobný plán také přiřazuje definice zásad, které auditují virtuální počítače se systémem Linux, které umožňují vzdálená připojení z účtů bez hesel. Plán navíc přiřadí definici Azure Policy, která vám pomůže monitorovat neomezený přístup k účtům úložiště. Monitorování těchto indikátorů vám umožní zajistit, aby metody vzdáleného přístupu dodržovaly vaše zásady zabezpečení.
 
-- \[Preview @ no__t-1: Auditovat virtuální počítače se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
-- \[Preview @ no__t-1: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
+- \[Preview\]: Auditovat virtuální počítače Linux, které umožňují vzdálená připojení z účtů bez hesel
+- \[Preview\]: nasazení požadavků pro auditování virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
 - Auditování neomezeného síťového přístupu k účtům úložiště
 - Pro aplikaci API by mělo být vypnuto vzdálené ladění.
 - Vzdálené ladění by mělo být pro Function App vypnuté.
@@ -98,50 +98,50 @@ Tento podrobný plán vám pomůže s monitorováním a řízením vzdáleného 
 
 Data protokolu shromážděná pomocí Azure Monitor jsou uložená v pracovním prostoru Log Analytics, který umožňuje centralizovanou konfiguraci a správu. Tento podrobný plán vám pomůže zajistit, aby se události protokoloval pomocí přiřazování [Azure Policy](../../../policy/overview.md) definic, které auditují a vynutily nasazení agenta Log Analytics na virtuálních počítačích Azure.
 
-- \[Preview @ no__t-1: audit Log Analytics nasazení agenta – image virtuálního počítače (OS) není v seznamu.
-- \[Preview @ no__t-1: audit Log Analytics nasazení agenta v VMSS-VM Image (OS) není v seznamu.
-- \[Preview @ no__t-1: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestav
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
+- \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
+- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
+- \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>Reakce AU-5 na selhání zpracování auditu
 
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které monitorují konfigurace auditu a protokolování událostí. Monitorování těchto konfigurací může poskytnout indikátor selhání systému nebo chybnou konfiguraci a pomáhat s provedením nápravných akcí.
 
-- Nastavení diagnostiky auditu
+- Auditování nastavení diagnostiky
 - Auditovat nastavení auditování na úrovni SQL serveru
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
+- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) revize auditu, analýza a vytváření sestav | Centrální kontrola a analýza
 
 Data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním prostoru Log Analytics umožňující centralizované generování sestav a analýzu. Tento podrobný plán vám pomůže zajistit, aby se události protokoloval pomocí přiřazování [Azure Policy](../../../policy/overview.md) definic, které auditují a vynutily nasazení agenta Log Analytics na virtuálních počítačích Azure.
 
-- \[Preview @ no__t-1: audit Log Analytics nasazení agenta – image virtuálního počítače (OS) není v seznamu.
-- \[Preview @ no__t-1: audit Log Analytics nasazení agenta v VMSS-VM Image (OS) není v seznamu.
-- \[Preview @ no__t-1: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestav
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
+- \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
+- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
+- \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
 
 ## <a name="au-12-audit-generation"></a>Generování auditu AU-12
 
 Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaznamenávány přiřazením [Azure Policy](../../../policy/overview.md) definicí, které auditují nastavení protokolů v prostředcích Azure. Tyto definice zásad auditují a vynutily nasazení Log Analytics agenta na virtuálních počítačích Azure a konfiguraci nastavení auditu pro jiné typy prostředků Azure. Tyto definice zásad také auditují konfiguraci diagnostických protokolů a poskytují přehled o operacích, které se provádějí v rámci prostředků Azure. Kromě toho jsou na SQL serverech nakonfigurovaná auditování a rozšířené zabezpečení dat.
 
-- \[Preview @ no__t-1: audit Log Analytics nasazení agenta – image virtuálního počítače (OS) není v seznamu.
-- \[Preview @ no__t-1: audit Log Analytics nasazení agenta v VMSS-VM Image (OS) není v seznamu.
-- \[Preview @ no__t-1: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestav
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows
-- Nastavení diagnostiky auditu
+- \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
+- \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
+- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
+- \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- Auditování nastavení diagnostiky
 - Auditovat nastavení auditování na úrovni SQL serveru
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
+- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - Nasazení auditování na SQL serverech
 - Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě
@@ -187,36 +187,36 @@ Tento podrobný plán vám pomůže omezit a řídit přístup přiřazením def
 
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které auditují virtuální počítače se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla nebo mají nastavená nesprávná oprávnění pro soubor passwd. Tento podrobný plán také přiřazuje definice zásad, které auditují konfiguraci typu šifrování hesla pro virtuální počítače s Windows. Monitorování těchto ukazatelů vám pomůže zajistit, aby ověřovatelé systému dodržovali zásady pro identifikaci a ověřování vaší organizace.
 
-- \[Preview @ no__t-1: Auditovat virtuální počítače Linux, které nemají oprávnění k souboru passwd nastavené na 0644
-- \[Preview @ no__t-1: Auditovat virtuální počítače Linux s účty bez hesla
-- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které neukládají hesla pomocí reverzibilního šifrování
-- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů se systémem Linux, které nemají oprávnění k souboru passwd nastavené na 0644.
-- \[Preview @ no__t-1: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
-- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování.
+- \[Preview\]: Auditovat virtuální počítače Linux, které nemají oprávnění k souboru passwd nastavené na 0644
+- \[Preview\]: Auditovat virtuální počítače Linux s účty bez hesel
+- \[Preview\]: Auditovat virtuální počítače s Windows, které neukládají hesla pomocí reverzibilního šifrování
+- \[Preview\]: nasaďte požadavky na auditování virtuálních počítačů se systémem Linux, které nemají oprávnění k souboru passwd nastavené na 0644.
+- \[Preview\]: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesel
+- \[Preview\]: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování.
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Správa ověřovatele | Ověřování založené na heslech
 
 Tento podrobný plán vám pomůže vynutilit silná hesla tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které auditují virtuální počítače s Windows, které nevyžadují minimální sílu a jiné požadavky na heslo. Povědomí o problémech s virtuálními počítači, které jsou v rozporu s zásadami složitosti hesla, vám pomůžou provést nápravné akce, které zajistí, aby hesla všech uživatelských účtů virtuálních počítačů byla v pořádku se zásadami hesel vaší organizace.
 
-- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které umožňují opakované použití předchozích 24 hesel
-- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní
-- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den
-- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, u kterých není povolené nastavení složitosti hesla
-- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků
-- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které neukládají hesla pomocí reverzibilního šifrování
-- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel.
-- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které nemají maximální stáří hesla 70 dní.
-- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které nemají minimální stáří hesla 1 den.
-- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla.
-- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků.
-- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování.
+- \[Preview\]: Auditovat virtuální počítače s Windows, které umožňují opakované použití předchozích 24 hesel
+- \[Preview\]: Auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dnů.
+- \[Preview\]: Auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den.
+- \[Preview\]: Auditovat virtuální počítače s Windows, u kterých není povolené nastavení složitosti hesla
+- \[Preview\]: Auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků
+- \[Preview\]: Auditovat virtuální počítače s Windows, které neukládají hesla pomocí reverzibilního šifrování
+- \[Preview\]: nasaďte požadavky na audit virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel.
+- \[Preview\]: nasaďte požadavky na auditování virtuálních počítačů s Windows, které nemají maximální stáří hesla 70 dní.
+- \[Preview\]: nasaďte požadavky na auditování virtuálních počítačů s Windows, které nemají minimální stáří hesla 1 den.
+- \[Preview\]: nasaďte požadavky na auditování virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla.
+- \[Preview\]: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků.
+- \[Preview\]: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování.
 
 ## <a name="ra-5-vulnerability-scanning"></a>Kontrola ohrožení zabezpečení RA-5
 
 Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policy](../../../policy/overview.md) definicí, které sledují chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase. Tento podrobný plán také přiřazuje definice zásad, které auditují a vynutily pokročilou zabezpečení dat na SQL serverech. Pokročilé zabezpečení dat zahrnuje posouzení ohrožení zabezpečení a rozšířené možnosti ochrany před internetovými útoky, které vám pomůžou pochopit ohrožení zabezpečení v nasazených prostředcích.
 
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
+- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - Oprava ohrožení zabezpečení v konfiguraci zabezpečení na virtuálních počítačích by měla být opravena
@@ -268,7 +268,7 @@ Tento podrobný plán vám pomůže chránit důvěrnou a integritu odesílanýc
 Tento podrobný plán vám pomůže vyhovět zásadám používání ovládacích prvků cryptograph k ochraně informací v klidovém prostředí tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které vynutily konkrétní ovládací prvky cryptograph a auditují použití slabého nastavení kryptografie. Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptografické konfigurace, můžou podniknout nápravné akce, které zajistí konfiguraci prostředků v souladu s vašimi zásadami zabezpečení informací. Konkrétně definice zásad přiřazené tímto plánem vyžaduje šifrování pro účty Data Lake Storage. vyžadovat transparentní šifrování dat na databázích SQL; a auditovat chybějící šifrování pro databáze SQL, disky virtuálních počítačů a proměnné účtu Automation.
 
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
+- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - Nasazení transparentního šifrování dat databáze SQL
 - Na virtuálních počítačích by se mělo použít šifrování disku
@@ -306,15 +306,15 @@ Tento podrobný plán vám pomůže spravovat službu Endpoint Protection, včet
 
 Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a vynucování protokolování a zabezpečení dat napříč prostředky Azure. Konkrétně zásady přiřazují audit a vynutily nasazení agenta Log Analytics a rozšířené nastavení zabezpečení pro databáze SQL, účty úložiště a síťové prostředky. Tyto funkce vám pomůžou detekovat neobvyklé chování a indikátory útoků, abyste mohli podniknout příslušné akce.
 
-- \[Preview @ no__t-1: audit Log Analytics nasazení agenta – image virtuálního počítače (OS) není v seznamu.
-- \[Preview @ no__t-1: audit Log Analytics nasazení agenta v VMSS-VM Image (OS) není v seznamu.
-- \[Preview @ no__t-1: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestav
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows
+- \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
+- \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
+- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
+- \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
+- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - Nasazení rozšířené ochrany před internetovými útoky na účty úložiště
 - Nasazení auditování na SQL serverech
@@ -340,8 +340,8 @@ Teď, když jste zkontrolovali mapování ovládacího prvku NIST SP 800-53 R4, 
 
 Další články o semodrotiskych a jejich použití:
 
-- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
-- Naučte se používat [statické a dynamické parametry](../../concepts/parameters.md).
-- Naučte se přizpůsobit [pořadí klasifikace](../../concepts/sequencing-order.md)podrobného plánu.
-- Zjistěte, jak využít [uzamykání prostředků](../../concepts/resource-locking.md)podrobného plánu.
-- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).
+- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)

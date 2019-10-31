@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2c7cd377929d1dd6d2e6ed8831597695ae02d21c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512607"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146240"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -200,9 +200,9 @@ Pokud se o službě Azure Security chcete dozvědět víc, podívejte se na [Mic
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Vyvíjejte a nasazujte modely pomocí bezplatného rozšíření [SQL Server Data Tools (SSDT) pro Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt). Rozšíření SSDT zahrnuje šablony projektů Analysis Services, které vám pomůžou s rychlým zprovozněním. SSDT nyní obsahuje moderní dotaz get data source a funkce hybridních dat pro tabelární modely 1400. Pokud už znáte funkci Získání dat v aplikacích Power BI Desktop a Excel 2016, tak už víte, jak snadné je vytvářet vysoce přizpůsobené dotazy na zdroj dat. 
+Vývoj a nasazení modelů pomocí sady Visual Studio s Analysis Services projekty. Rozšíření Analysis Servicesch projektů zahrnuje šablony a průvodce, které vám pomohou rychle získat a rychle začít. Prostředí pro vytváření modelů v aplikaci Visual Studio teď zahrnuje moderní dotaz get data source a hybridní funkce pro tabelární modely 1400 a vyšší. Pokud už znáte funkci Získání dat v aplikacích Power BI Desktop a Excel 2016, tak už víte, jak snadné je vytvářet vysoce přizpůsobené dotazy na zdroj dat. 
 
-Pokud používáte sadu Visual Studio 2017 nebo novější, jsou projekty Microsoft Analysis Services k dispozici jako bezplatný instalovatelný balíček VSIX. [Můžete si je stáhnout z webu Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+Projekty Microsoft Analysis Services jsou k dispozici jako bezplatný balíček VSIX, který lze instalovat. [Můžete si je stáhnout z webu Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). Rozšíření funguje s libovolnou verzí sady Visual Studio 2017 nebo novější, včetně bezplatné edice Community.
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 

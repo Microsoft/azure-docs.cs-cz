@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 6f7bb1cfdb36bcaa8545fba8767b20d974c8e073
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 57e8eab6413efa25eb03c48a968ca2b671b8c8d6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968386"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162113"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -25,6 +25,9 @@ Azure Backup používá agenta MARS k zálohování dat z místních počítač�
 - Spouštějte na místních počítačích s Windows, aby se mohly zálohovat přímo do trezoru služby Backup Recovery Services v Azure.
 - Spusťte na virtuálních počítačích s Windows, aby se mohly zálohovat přímo do trezoru.
 - Spusťte na serveru Microsoft Azure Backup (MABS) nebo na serveru System Center Data Protection Manager (DPM). V tomto scénáři se počítače a úlohy zálohují do MABS nebo na server DPM. Agent MARS pak zálohuje tento server do trezoru v Azure.
+
+> [!NOTE]
+>Azure Backup nepodporuje automatickou úpravu času pro letní čas (DST). Upravte zásady, abyste zajistili, že se budou brát v úvahu letní úspory, aby nedocházelo k nesouladu mezi skutečným časem a plánovaným časem zálohování.
 
 Možnosti zálohování závisí na tom, kde je agent nainstalovaný. Další informace najdete v tématu [architektura Azure Backup pomocí agenta Mars](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Informace o architektuře zálohování MABS a DPM najdete v tématu [zálohování do DPM nebo MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Viz také [požadavky](backup-support-matrix-mabs-dpm.md) na architekturu zálohování.
 

@@ -27,6 +27,8 @@
       href: storage-files-planning.md
     - name: Plánování nasazení Synchronizace souborů Azure
       href: storage-sync-files-planning.md
+    - name: Aspekty sítí pro přímý přístup
+      href: storage-files-networking-overview.md
     - name: Informace o vrstvení cloudu
       href: storage-sync-cloud-tiering.md
     - name: Informace o účtech úložiště
@@ -101,6 +103,8 @@
           href: storage-sync-files-deployment-guide.md
         - name: Nastavení brány firewall a proxy služby Synchronizace souborů
           href: storage-sync-files-firewall-and-proxy.md
+        - name: FCI SQL Serveru se sdílenými složkami úrovně Premium
+          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Připojení
       items:
         - name: Použití služby Soubory Azure s Windows
@@ -109,6 +113,14 @@
           href: storage-how-to-use-files-linux.md
         - name: Použití služby Soubory Azure s macOS
           href: storage-how-to-use-files-mac.md
+    - name: Síť
+      items:
+        - name: Konfigurace VPN typu site-to-site
+          href: storage-files-configure-s2s-vpn.md
+        - name: Konfigurace VPN typu point-to-site ve Windows
+          href: storage-files-configure-p2s-vpn-windows.md
+        - name: Konfigurace VPN typu point-to-site v Linuxu
+          href: storage-files-configure-p2s-vpn-linux.md
     - name: Spravovat
       items:
         - name: Registrace serveru pomocí Synchronizace souborů Azure
@@ -169,6 +181,8 @@
           href: storage-troubleshooting-files-performance.md
         - name: Řešení problémů se Synchronizací souborů Azure
           href: storage-sync-files-troubleshoot.md
+        - name: Řešení potíží s odstraňováním služby Azure Files
+          href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

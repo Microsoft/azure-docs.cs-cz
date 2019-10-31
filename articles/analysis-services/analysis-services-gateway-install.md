@@ -4,15 +4,15 @@ description: Přečtěte si, jak nainstalovat a nakonfigurovat místní bránu d
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6f182976ac655692f8c50d4e7560aa21444ce848
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 99b5a0ff9cc0fd7fdc3b8a0e453ed287c45e1c60
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298645"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147125"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 

@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 10/24/2019
-ms.openlocfilehash: ba0ee29b48be259bddd898c3d1119b77f6ee5228
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/30/2019
+ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932304"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162013"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
 
@@ -22,7 +22,7 @@ ms.locfileid: "72932304"
 
 Tento článek popisuje, jak nakonfigurovat komunikaci s Azure Automation a Azure Monitor pomocí brány Log Analytics, když jsou počítače, které jsou přímo připojené nebo monitorované Operations Manager, nemají přístup k Internetu. 
 
-Log Analytics brána je předávací proxy HTTP, který podporuje tunelování HTTP pomocí příkazu HTTP CONNECT. Tato brána odesílá data do Azure Automation a pracovní prostor Log Analytics v Azure Monitor jménem počítačů, které se nemohou přímo připojit k Internetu. Neukládá data z agentů do mezipaměti a Agent zpracovává data do mezipaměti v této situaci až do obnovení komunikace.
+Log Analytics brána je předávací proxy HTTP, který podporuje tunelování HTTP pomocí příkazu HTTP CONNECT. Tato brána odesílá data do Azure Automation a pracovní prostor Log Analytics v Azure Monitor jménem počítačů, které se nemohou přímo připojit k Internetu. 
 
 Brána Log Analytics podporuje:
 
@@ -33,7 +33,7 @@ Brána Log Analytics podporuje:
 
 Některé zásady zabezpečení IT neumožňují připojení k Internetu pro síťové počítače. Tyto nepřipojené počítače by mohly být například zařízení v prodeji (POS) nebo servery podporující IT služby. Pokud chcete tato zařízení připojit k Azure Automation nebo pracovnímu prostoru Log Analytics, abyste je mohli spravovat a monitorovat, můžete je nakonfigurovat tak, aby komunikovaly přímo s Log Analytics bránou. Brána Log Analytics může dostávat informace o konfiguraci a přeposlání dat jejich jménem. Pokud jsou počítače nakonfigurované s agentem Log Analytics pro přímé připojení k pracovnímu prostoru Log Analytics, počítače místo toho komunikují s bránou Log Analytics.  
 
-Brána Log Analytics přenáší data z agentů přímo do služby. Neanalyzuje žádná data při přenosu.
+Brána Log Analytics přenáší data z agentů přímo do služby. Neanalyzuje žádné přenášená data a brána neukládá data do mezipaměti, když ztratí připojení ke službě. Pokud brána nemůže komunikovat se službou, Agent pokračuje v běhu a zařadí shromážděná data do fronty na disk monitorovaného počítače. Po obnovení připojení agent pošle data uložená v mezipaměti, která jsou shromážděna do Azure Monitor.
 
 Pokud je skupina pro správu Operations Manager integrovaná s Log Analytics, servery pro správu je možné nakonfigurovat tak, aby se připojovaly k Log Analytics bráně a přijímaly informace o konfiguraci a odesílali shromážděná data v závislosti na řešení, které jste povolili. .  Agenti Operations Manager odesílají data do management server. Například agenti mohou odesílat výstrahy Operations Manager, data vyhodnocení konfigurace, data prostoru instancí a data o kapacitě. Další data s vysokým objemem, jako jsou protokoly Internetová informační služba (IIS), data o výkonu a události zabezpečení, se odesílají přímo do Log Analytics brány. 
 
@@ -167,7 +167,7 @@ V následující tabulce jsou vysvětlené parametry podporované instalačním 
 Pokud chcete bránu nainstalovat tiše a nakonfigurovat ji pomocí konkrétní adresy proxy, čísla portu, zadejte následující příkaz:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 LicenseAccepted=1 
 ```
 
 Použití možnosti příkazového řádku/qn skrývá instalaci,/QB zobrazuje instalační program během bezobslužné instalace.  
@@ -175,7 +175,7 @@ Použití možnosti příkazového řádku/qn skrývá instalaci,/QB zobrazuje i
 Pokud potřebujete zadat pověření pro ověření u proxy serveru, zadejte následující příkaz:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
 Po instalaci můžete potvrdit, že se nastavení akceptují (exlcuding uživatelské jméno a heslo) pomocí následujících rutin PowerShellu:

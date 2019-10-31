@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: eaf4ba303caa405a170322828add944487908365
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 6b64eb955476a8ab5307b7d508484c290fd7660a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968584"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162169"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů.
@@ -749,7 +749,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | oddělení | Ne | Ne |
 > | Dimenze | Ne | Ne |
 > | enrollmentAccounts | Ne | Ne |
-> | Vývozních | Ne | Ne |
+> | Exporty | Ne | Ne |
 > | ExternalBillingAccounts | Ne | Ne |
 > | ExternalBillingAccounts/výstrahy | Ne | Ne |
 > | ExternalBillingAccounts/dimenzí | Ne | Ne |
@@ -1445,7 +1445,6 @@ Přejít na obor názvů poskytovatele prostředků:
 > | publicIPPrefixes | Ano | Ano |
 > | routeFilters | Ano | Ano |
 > | routeTables | Ano | Ano |
-> | secureGateways | Ano | Ano |
 > | serviceEndpointPolicies | Ano | Ano |
 > | trafficManagerGeographicHierarchies | Ne | Ne |
 > | trafficmanagerprofiles | Ano | Ano |

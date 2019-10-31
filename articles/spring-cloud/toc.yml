@@ -38,6 +38,8 @@
       href: spring-cloud-quotas.md
     - name: Principy metrik v Azure Spring Cloudu
       href: spring-cloud-concept-metrics.md
+    - name: Plán pro zotavení po havárii
+      href: disaster-recovery.md
 - name: Návody
   items:
     - name: 'Jak spustit, zastavit a odstranit aplikaci Azure Spring Cloud'

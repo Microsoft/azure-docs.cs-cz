@@ -68,7 +68,7 @@
               href: entitlement-management-access-package-request-policy.md
             - name: Změnit nastavení životního cyklu
               href: entitlement-management-access-package-lifecycle-policy.md
-            - name: Zobrazení a správa žádostí
+            - name: Zobrazení požadavků
               href: entitlement-management-access-package-requests.md
             - name: 'Zobrazení, přidání a odebrání přiřazení'
               href: entitlement-management-access-package-assignments.md

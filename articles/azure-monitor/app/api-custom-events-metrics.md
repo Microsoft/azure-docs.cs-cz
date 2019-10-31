@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: ca77cf6b838d2e10eab422f37ff55fbb43a2dba0
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 515d1da5333bb29237baa4bd941275f32ba754d3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677848"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161571"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights rozhraní API pro vlastní události a metriky
 
@@ -614,7 +614,7 @@ Pokud je [vzorkování](../../azure-monitor/app/sampling.md) v provozu, vlastnos
 
 ## <a name="trackdependency"></a>TrackDependency
 
-Použijte volání TrackDependency ke sledování doby odezvy a míry úspěšnosti volání do externí části kódu. Výsledky se zobrazí v grafech závislostí na portálu.
+Použijte volání TrackDependency ke sledování doby odezvy a míry úspěšnosti volání do externí části kódu. Výsledky se zobrazí v grafech závislostí na portálu. Následující fragment kódu je nutné přidat všude, kde je provedeno volání závislosti.
 
 *C#*
 

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8c27e340-2b25-47b6-bf1f-438be4c14f93
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9265a5951ceb7b0cb757e392c2e26aa19bfefd06
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7886c863dd50fd3f09d782f892bdebabceb73546
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678497"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160095"
 ---
-# <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Kurz: Integrace Qlik Sense Enterprise s Azure Active Directory
+# <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Kurz: integrace Qlik Sense Enterprise s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat Qlik Sense Enterprise s Azure Active Directory (Azure AD). Když integrujete Qlikal Enterprise s Azure AD, můžete:
 
@@ -32,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat Qlik Sense Enterprise s Azure Active D
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -54,7 +55,7 @@ Pokud chcete nakonfigurovat integraci Qlikho druhu Enterprise do služby Azure A
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Qlik Sense Enterprise** .
 1. Z panelu výsledků vyberte **Qlik Sense Enterprise** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Qlik Sense Enterprise pomocí testovacího uživatele s názvem **Britta Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Qlik smyslu Enterprise.
 
@@ -62,8 +63,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
 2. **[Nakonfigurujte Qlik Sense Enterprise SSO](#configure-qlik-sense-enterprise-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte Qlik (Enterprise Test User](#create-qlik-sense-enterprise-test-user)** ), abyste měli protějšek Britta Simon v Qliki Enterprise, který je propojený s reprezentací uživatele Azure AD.
 6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
@@ -79,9 +80,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/hub`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/hub`
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
     | |
     |--|
@@ -98,7 +99,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte z daných možností **XML federačních metadat** podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
 ### <a name="configure-qlik-sense-enterprise-sso"></a>Konfigurace Qlikho podnikového jednotného přihlašování
 
@@ -137,7 +138,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Pole **Popis** je popisný název pro konfiguraci virtuálního proxy serveru.  Zadejte hodnotu pro popis.
 
-    b. V poli Předpona se určuje koncový bod virtuálního proxy serveru pro připojení k Qlik smyslu pomocí jednotného přihlašování služby Azure AD.  Zadejte jedinečný název předpony pro tento virtuální proxy server.
+    b. V poli **předpona** se určuje koncový bod virtuálního proxy serveru pro připojení k Qlik smyslu pomocí jednotného přihlašování služby Azure AD.  Zadejte jedinečný název předpony pro tento virtuální proxy server.
 
     c. **Časový limit nečinnosti relace (minuty)** je časový limit pro připojení prostřednictvím tohoto virtuálního proxy serveru.
 
@@ -157,7 +158,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     e. **Metadata IDP SAML** je soubor upravený dříve v části **Upravit metadata federace z Azure AD Configuration** .  **Před nahráním metadat IDP je potřeba upravit soubor,** aby se odebraly informace, aby se zajistila správná operace mezi Azure AD a serverem Qlik Sense.  **Pokud je soubor ještě upravován, přečtěte si prosím pokyny výše.**  Pokud je soubor upravený, klikněte na tlačítko Procházet a vyberte upravený soubor metadat, který chcete odeslat do konfigurace virtuálního proxy serveru.
 
-    f. Zadejte název atributu nebo odkaz na schéma pro atribut SAML představující **ID uživatele** Azure AD, který je odesílán na Qlik Server pro rozpoznávání.  Referenční informace schématu jsou k dispozici na stránce Azure App screens po konfiguraci.  Chcete-li použít atribut Name, `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`zadejte.
+    f. Zadejte název atributu nebo odkaz na schéma pro atribut SAML představující **ID uživatele** Azure AD, který je odesílán na Qlik Server pro rozpoznávání.  Referenční informace schématu jsou k dispozici na stránce Azure App screens po konfiguraci.  Chcete-li použít atribut Name, zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     g. Zadejte hodnotu pro **adresář uživatele** , který se připojí uživatelům při ověřování k serveru Qlik Sense prostřednictvím služby Azure AD.  Hodnoty pevně zakódované musí být obklopeny **hranatými závorkami []** .  Pokud chcete použít atribut odeslaný v kontrolním výrazu SAML služby Azure AD, zadejte název atributu do tohoto textového pole **bez** hranatých závorek.
 
@@ -165,7 +166,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     i. Oddíl mapování atributů SAML umožňuje, aby se pro použití v pravidlech zabezpečení odesílaly další atributy, jako jsou skupiny, které se mají odeslat Qlik smyslu.
 
-8. Klikněte na možnost nabídky vyrovnávání **zatížení** , aby se zobrazila.  Zobrazí se obrazovka vyrovnávání zatížení.
+8. Klikněte na možnost nabídky **VYrovnávání zatížení** , aby se zobrazila.  Zobrazí se obrazovka vyrovnávání zatížení.
 
     ![QlikSense][qs11]
 
@@ -213,23 +214,23 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![QlikSense][qs52]
 
-19. Otevřete soubor metadat SP.  Sledujte položku **entityID** a položku **AssertionConsumerService** .  Tyto hodnoty jsou ekvivalentní identifikátoru, **přihlašovací adrese URL** a **adrese URL odpovědi** v konfiguraci aplikace Azure AD. Tyto hodnoty vložte v části **Qlik Sense Enterprise doména a adresy URL** v konfiguraci aplikace Azure AD, pokud se neshodují, a pak je nahraďte v průvodci konfigurací aplikace Azure AD.
+19. Otevřete soubor metadat SP.  Sledujte položku **entityID** a položku **AssertionConsumerService** .  Tyto hodnoty jsou ekvivalentní **identifikátoru**, **přihlašovací adrese URL** a **adrese URL odpovědi** v konfiguraci aplikace Azure AD. Tyto hodnoty vložte v části **Qlik Sense Enterprise doména a adresy URL** v konfiguraci aplikace Azure AD, pokud se neshodují, a pak je nahraďte v průvodci konfigurací aplikace Azure AD.
 
     ![QlikSense][qs53]
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Qliki Enterprise.
 
@@ -237,7 +238,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 1. V seznamu aplikace vyberte **Qlik Sense Enterprise**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -249,15 +250,15 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Vytvořit testovacího uživatele Qlik Sense Enterprise
 
-V této části vytvoříte uživatele s názvem Britta Simon v Qliku Enterprise. Pokud chcete přidat uživatele na platformě Qlik Sense Enterprise, pracujte s [týmem Qlik Sense Enterprise support](https://www.qlik.com/us/services/support) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v Qliku Enterprise. Pokud chcete přidat uživatele na platformě Qlik Sense Enterprise, pracujte s [týmem Qlik Sense Enterprise support](https://www.qlik.com/us/services/support) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-sso"></a>Test SSO
 
 Když na přístupovém panelu vyberete dlaždici Qlik Sense Enterprise, měli byste být automaticky přihlášeni ke Qlik, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

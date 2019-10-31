@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/08/2019
-ms.openlocfilehash: 63ddb329e37ea3da589e7d2eeaebabb42aa2b467
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 24a2b8a3c190ed440684ea3aa0ab35ebbf93fca0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555514"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161972"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží s Azure Diagnostics
 Tento článek popisuje informace o odstraňování potíží, které souvisí s používáním Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -30,13 +30,13 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 | Artefakt | Cesta |
 | --- | --- |
-| **Konfigurační soubor Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \Config.txt |
+| **Konfigurační soubor Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verze > \Config.txt |
 | **Soubory protokolu** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \ |
 | **Místní úložiště pro diagnostická data** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Tables |
 | **Konfigurační soubor agenta monitorování** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Balíček rozšíření Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > |
+| **Balíček rozšíření Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verze > |
 | **Cesta k nástroji pro shromažďování protokolů** | %SystemDrive%\Packages\GuestAgent\ |
-| **Soubor protokolu MonAgentHost** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **Soubor protokolu MonAgentHost** | > C:\Resources\Directory\<CloudServiceDeploymentID.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ### <a name="virtual-machines"></a>Virtuální počítače
 | Artefakt | Cesta |
@@ -48,7 +48,7 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 | **Stavový soubor** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \Status |
 | **Balíček rozšíření Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion >|
 | **Cesta k nástroji pro shromažďování protokolů** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **Soubor protokolu MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **Soubor protokolu MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Data metriky se nezobrazí v Azure Portal
 Azure Diagnostics poskytuje data metrik, která se dají zobrazit v Azure Portal. Pokud máte problémy se zobrazením dat na portálu, podívejte se do tabulky WADMetrics \* v účtu úložiště Azure Diagnostics a podívejte se, jestli tam jsou odpovídající záznamy metriky.
@@ -64,14 +64,14 @@ Pokud nejsou k dispozici žádná data pro specifickou metriku, zkontrolujte **k
 - \ ASP.NET aplikace (__celkem__) \Errors celkem/s
 - \ASP.NET\Requests ve frontě
 - \ASP.NET\Requests zamítnuto
-- \Processor (W3wp) \% procesorový čas
+- \Processor (W3wp)\% procesorový čas
 - \Process (W3wp) \Private bajty
-- \Process (WaIISHost) \% procesorový čas
+- \Process (WaIISHost)\% procesorový čas
 - \Process (WaIISHost) \Private bajty
-- \Process (WaWorkerHost) \% procesorový čas
+- \Process (WaWorkerHost)\% procesorový čas
 - \Process (WaWorkerHost) \Private bajty
 - \Memory\Page chyby za sekundu
-- \.NET paměti CLR (_Global_) \% čas v GC
+- \.paměti .NET CLR (_Global_)\% času v GC
 - \ Logický disk (C:) \ zapsané bajty/s
 - \ Logický disk (C:) \ čtení v bajtech/s
 - \ Logický disk (D:) \ zapsané bajty/s
@@ -208,8 +208,8 @@ Tento kód generuje čtyři tabulky:
 
 | Událost | Název tabulky |
 | --- | --- |
-| Provider = "Prov1" &lt;Event ID = "1"/&gt; |WADEvent + MD5 ("Prov1") + "1" |
-| Provider = "Prov1" &lt;Event ID = "2" eventDestination = "dest1"/&gt; |WADdest1 |
+| Provider = "Prov1" &lt;události ID = "1"/&gt; |WADEvent + MD5 ("Prov1") + "1" |
+| Provider = "Prov1" &lt;událost ID = "2" eventDestination = "dest1"/&gt; |WADdest1 |
 | Provider = "Prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("Prov1") |
 | Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
@@ -260,7 +260,7 @@ Agent monitorování shromažďuje protokoly a artefakty jako soubory `.tsf`. So
 Nový soubor s názvem `<relevantLogFile>.csv` se vytvoří ve stejné cestě jako odpovídající soubor `.tsf`.
 
 >[!NOTE]
-> Tento nástroj je nutné spustit pouze proti hlavnímu souboru. TSF (například PerformanceCountersTable. TSF). Doprovodné soubory (například PerformanceCountersTables_ \* \*001. TSF, PerformanceCountersTables_ \* \*002. TSF atd.) jsou automaticky zpracovány.
+> Tento nástroj je nutné spustit pouze proti hlavnímu souboru. TSF (například PerformanceCountersTable. TSF). Budou automaticky zpracovány doprovodné soubory (například PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF atd.).
 
 ### <a name="more-about-missing-trace-logs"></a>Další informace o chybějících protokolech trasování
 

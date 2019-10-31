@@ -11,12 +11,12 @@ manager: carmonm
 ms.topic: conceptual
 tags: connectors
 ms.date: 10/14/2019
-ms.openlocfilehash: 6c86ef26bbf7bd9dbce8aa77aef2213b14b57f5f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 880ae4b661d247889815fc5b9ad08a759fe0aa5b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311935"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161605"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro SQL Server nebo Azure SQL Database pomocí Azure Logic Apps
 
@@ -68,7 +68,7 @@ V Azure Logic Apps musí každá aplikace logiky začínat [triggerem](../logic-
 
 1. Nastavte vlastnosti **intervalu** a **četnosti** , které určují, jak často aplikace logiky kontroluje tabulku.
 
-   Tato aktivační událost vrátí pouze jeden řádek z vybrané tabulky bez dalšího. Chcete-li provést další úkoly, přidejte další akce, které provádějí požadované úkoly. Pokud například chcete zobrazit data na tomto řádku, můžete přidat další akce, které vytvoří soubor, který obsahuje pole ze vráceného řádku, a pak pošle e-mailové výstrahy. Další informace o dalších dostupných akcích pro tento konektor najdete na [referenční stránce konektoru](/connectors/sql/).
+   Tato aktivační událost vrátí pouze jeden řádek z vybrané tabulky bez dalšího. Chcete-li provést další úkoly, přidejte další akce, které provádějí požadované úkoly. Pokud například chcete zobrazit data na tomto řádku, můžete přidat další akce, které vytvoří soubor, který obsahuje pole ze vráceného řádku, a pak pošle e-mailové výstrahy. Další informace o dalších dostupných akcích pro tento konektor najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/sql/).
 
 1. Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
 
@@ -84,7 +84,7 @@ V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
 1. V rámci triggeru nebo akce, kam chcete přidat akci SQL, vyberte **Nový krok**.
 
-   ![Vyberte nový krok.](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
+   ![Přidání nového kroku do aplikace logiky](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
    Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
@@ -92,13 +92,13 @@ V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    V tomto příkladu se používá akce **získat řádek** , která získá jeden záznam.
 
-   ![Najít a vybrat akci SQL "získat řádek"](./media/connectors-create-api-sqlazure/select-sql-get-row.png)
+   ![Najít a vybrat akci SQL "získat řádek"](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
 
-   Tato akce vrátí pouze jeden řádek z vybrané tabulky bez dalšího. Pokud chcete zobrazit data na tomto řádku, můžete přidat další akce, které vytvoří soubor, který obsahuje pole ze vráceného řádku, a uložit tento soubor do účtu cloudového úložiště. Další informace o dalších dostupných akcích pro tento konektor najdete na [referenční stránce konektoru](/connectors/sql/).
+   Tato akce vrátí pouze jeden řádek z vybrané tabulky bez dalšího. Pokud chcete zobrazit data na tomto řádku, můžete přidat další akce, které vytvoří soubor, který obsahuje pole ze vráceného řádku, a uložit tento soubor do účtu cloudového úložiště. Další informace o dalších dostupných akcích pro tento konektor najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/sql/).
 
 1. Pokud se zobrazí výzva k vytvoření připojení, [vytvořte připojení k SQL hned teď](#create-connection). Pokud připojení existuje, vyberte **název tabulky**a zadejte **ID řádku** požadovaného záznamu.
 
-   ![Zadejte název a ID řádku tabulky.](./media/connectors-create-api-sqlazure/table-row-id.png)
+   ![Zadejte název a ID řádku tabulky.](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
 
 1. Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
 
@@ -132,7 +132,7 @@ V některých případech je nutné pracovat se sadami výsledků, takže konekt
 
 ## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 
-Technické informace o aktivačních událostech, akcích a omezeních tohoto konektoru najdete na [referenční stránce konektoru](/connectors/sql/).
+Technické informace o aktivačních událostech, akcích a omezeních tohoto konektoru najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/sql/).
 
 ## <a name="next-steps"></a>Další kroky
 

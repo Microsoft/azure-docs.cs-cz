@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: v-fehase
-ms.openlocfilehash: 87df7824a182e68d849fdf967f96b2974b7e0c16
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148169"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159847"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Vývoj zabezpečené aplikace pro aplikaci Azure AD
 ## <a name="overview"></a>Přehled
@@ -71,7 +71,7 @@ Některé ukázkové hrozby a potenciální ohrožení zabezpečení, které ná
 
 ![Výstup modelu hrozeb](./media/secure-aad-app/threat-model-output.png)
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Chcete-li aplikaci nainstalovat a spustit, je nutné nainstalovat tyto nástroje:
 
 - Editor kódu pro úpravu a zobrazení kódu aplikace. [Visual Studio Code](https://code.visualstudio.com/) je open-source možnost.
@@ -235,7 +235,7 @@ $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1
 
 #Configure the HTTP settings for the application gateway back end
 
-$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name "setting01" -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
 
 #Create a load-balancer routing rule that configures the load balancer
 
@@ -259,13 +259,13 @@ Azure App Service umožňuje sestavovat a hostovat webové aplikace s použitím
 #### <a name="create-an-app-service-plan-in-free-tier"></a>Vytvoření plánu App Service na bezplatné úrovni
     New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $webappname -Tier Free
 
-#### <a name="create-a-web-app"></a>Vytvoření webové aplikace
+#### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
     New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $webappname
 
     Write-Host "Configure a CNAME record that maps $fqdn to $webappname.azurewebsites.net"
     Read-Host "Press [Enter] key when ready ..."
 
-#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Než budete pokračovat, přejděte do uživatelského rozhraní konfigurace Azure Domain Name System pro vaši vlastní doménu a postupujte podle pokynů https://aka.ms/appservicecustomdns v tématu Konfigurace záznamu CNAME pro název hostitele "www" a nasměrujte ho na výchozí název domény vaší webové aplikace.
+#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Než budete pokračovat, přejděte do uživatelského rozhraní konfigurace Azure Domain Name System pro vaši vlastní doménu a podle pokynů v tématu https://aka.ms/appservicecustomdns nakonfigurujte záznam CNAME pro název hostitele "www" a nasměrujte ho na výchozí název domény vaší webové aplikace.
 
 #### <a name="upgrade-app-service-plan-to-shared-tier-minimum-required-by-custom-domains"></a>Upgradovat App Service plán na sdílenou úroveň (minimální počet vyžadovaná vlastními doménami)
     Set-AzAppServicePlan -Name $webappname -ResourceGroupName $webappname -Tier Shared
@@ -293,7 +293,7 @@ Instance App Service lze integrovat s virtuálními sítěmi. Tato integrace umo
     *Nová integrace virtuální sítě pro App Service*
 1. Na další stránce vyberte **Přidat virtuální síť (Preview)** .
 
-1. V další nabídce vyberte virtuální síť vytvořenou v nasazení, které začíná `aad-vnet`na. Můžete buď vytvořit novou podsíť, nebo vybrat některou z existujících.
+1. V další nabídce vyberte virtuální síť vytvořenou v nasazení, která začíná na `aad-vnet`. Můžete buď vytvořit novou podsíť, nebo vybrat některou z existujících.
    V takovém případě vytvořte novou podsíť. Nastavte **Rozsah adres** na **10.0.3.0/24** a pojmenujte podsíť **AppDomain App-Subnet**.
 
    ![Konfigurace App Service virtuální sítě](./media/secure-web-app/app-vnet-config.png)
@@ -320,7 +320,7 @@ Teď, když jste povolili integraci virtuální sítě, můžete do naší aplik
 
    *Konfigurace NSG*
 
-4. Do odchozích pravidel pro bránu NSG přidejte pravidlo, které umožňuje odchozí připojení k instanci App Service vytvořením pravidla, které cílí na tag služby.`AppService`
+4. V odchozích pravidlech pro bránu NSG přidejte pravidlo, které umožňuje odchozí připojení k instanci App Service vytvořením pravidla, které cílí na tag služby `AppService`
 
    ![Přidat odchozí pravidla pro NSG](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
@@ -350,7 +350,7 @@ Chcete-li použít nastavení, přejděte na kartu App Service síť, vyberte ka
 *Pro přístup k App Service Povolte jenom IP adresu brány.*
 
 ### <a name="azure-domain-name-system"></a>Azure Domain Name System 
-K překladu (nebo překladu) názvu webu nebo služby na jeho IP adresu zodpovídá Azure Domain Name System nebo Azure Domain Name System. Azure Domain Name System (https://docs.microsoft.com/azure/dns/dns-overview) je hostitelská služba pro domény systému názvů domén, která poskytuje překlad adres IP pomocí infrastruktury Azure. Díky hostování domén v Azure můžou uživatelé spravovat záznamy DNS v systému pomocí stejných přihlašovacích údajů, rozhraní API, nástrojů a fakturace jako jiné služby Azure. Azure Domain Name System podporuje také domény systému privátních názvů domén.
+K překladu (nebo překladu) názvu webu nebo služby na jeho IP adresu zodpovídá Azure Domain Name System nebo Azure Domain Name System. Azure Domain Name System (https://docs.microsoft.com/azure/dns/dns-overview) je hostitelská služba pro domény Domain Name System, která poskytuje překlad adres IP pomocí infrastruktury Azure. Díky hostování domén v Azure můžou uživatelé spravovat záznamy DNS v systému pomocí stejných přihlašovacích údajů, rozhraní API, nástrojů a fakturace jako jiné služby Azure. Azure Domain Name System podporuje také domény systému privátních názvů domén.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 Azure Disk Encryption využívá funkci nástroje BitLocker systému Windows k poskytování šifrování svazku pro datové disky. Řešení se integruje s Azure Key Vault, které vám pomůžou řídit a spravovat šifrovací klíče disku.
@@ -372,7 +372,7 @@ Následující technologie poskytují možnosti pro správu přístupu k datům 
    - Pomocí Key Vault můžete spravovat certifikáty TLS pomocí automatické obnovy. 
    - Diagnostické protokoly pro Key Vault jsou povolené s dobou uchování minimálně 365 dní.
    - Povolené kryptografické operace pro klíče jsou omezené na ty, které jsou povinné.
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="azure-security-center"></a>Centrum zabezpečení Azure
 Díky Azure Security Center můžou zákazníci centrálně používat a spravovat zásady zabezpečení napříč úlohami, omezovat vystavení hrozeb a rozpoznávat a reagovat na útoky. Také 
    - Azure Security Center přistupuje k existujícím konfiguracím služeb Azure a poskytuje doporučení ke konfiguraci a službám, které vám pomůžou zlepšit zabezpečení stav a chránit data.
    - Azure Security Center využívá celou řadu možností detekce pro upozornění zákazníků na potenciální útoky, které cílí na jejich prostředí. Tyto výstrahy obsahují cenné informace o tom, co výstrahu aktivovalo, o prostředcích na které cílí, a o zdroji útoku. Azure Security Center má sadu předdefinovaných výstrah zabezpečení, které se aktivují při výskytu hrozby nebo podezřelé aktivity. Vlastní pravidla výstrah v Azure Security Center umožňují zákazníkům definovat nové výstrahy zabezpečení na základě dat, která už jsou z jejich prostředí shromážděná.
@@ -389,16 +389,16 @@ Díky Azure Security Center můžou zákazníci centrálně používat a spravov
    - Azure Security Center a Azure Advisor poskytují dodatečnou ochranu a oznámení. Azure Security Center také nabízí systém reputace.
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 Služba Azure výrazně zaznamenává činnost systému a uživatele a také stav systému:
-   - Protokoly aktivit: [Protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují přehled o operacích provedených u prostředků v rámci předplatného. Protokoly aktivit můžou přispět k určení iniciátoru operace, času výskytu a stavu.
-   - Diagnostické protokoly: [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly Azure Storage, Key Vault protokoly auditu a protokoly Application Gateway přístupu a brány firewall. Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uchovávání dat je uživatelsky konfigurovatelné, až 730 dní, aby se splnily požadavky na uchovávání specifické pro konkrétní organizaci.
+   - Protokoly aktivit: [protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují přehled o operacích provedených u prostředků v rámci předplatného. Protokoly aktivit můžou přispět k určení iniciátoru operace, času výskytu a stavu.
+   - Diagnostické protokoly: [protokoly diagnostiky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly Azure Storage, Key Vault protokoly auditu a protokoly Application Gateway přístupu a brány firewall. Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uchovávání dat je uživatelsky konfigurovatelné, až 730 dní, aby se splnily požadavky na uchovávání specifické pro konkrétní organizaci.
 ### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
    Tyto protokoly jsou konsolidovány v [protokolech Azure monitor](https://azure.microsoft.com/services/log-analytics/) pro zpracování, ukládání a vytváření sestav řídicích panelů. Po shromáždění jsou data uspořádaná do samostatných tabulek pro každý datový typ v rámci Log Analyticsch pracovních prostorů, což umožňuje analyzovat všechna data bez ohledu na její původní zdroj. Kromě toho Azure Security Center integruje s protokoly Azure Monitor a umožňuje zákazníkům používat dotazy Kusto pro přístup k datům událostí zabezpečení a kombinovat je s daty z jiných služeb.
 
    Součástí této architektury jsou tato [řešení monitorování](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) Azure.
 
-   - [Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Řešení kontroly stavu služby Active Directory posuzuje rizika a stav serverových prostředí v pravidelných intervalech a nabízí seznam doporučení specifických pro nasazenou serverovou infrastrukturu.
-   - [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Agent Health řešení oznamuje, kolik agentů je nasazeno a jejich geografickou distribuci, a také počet agentů, kteří nereagují a počet agentů, kteří odesílají provozní data.
-   - [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Řešení Activity Log Analytics pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure pro zákazníka.
+   - [Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): řešení kontroly stavu služby Active Directory posuzuje rizika a stav serverových prostředí v pravidelných intervalech a nabízí seznam doporučení specifických pro nasazenou serverovou infrastrukturu.
+   - [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): řešení agent Health zaznamenává počet nasazených agentů a jejich geografickou distribuci, jakož i počet agentů, kteří nereagují a počet agentů, kteří odesílají provozní data.
+   - [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): řešení Activity Log Analytics pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure pro zákazníka.
 ### <a name="azure-monitor"></a>Azure Monitor
    [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/)pomáhá uživatelům sledovat výkon, udržovat zabezpečení a identifikovat trendy tím, že umožňují organizacím auditovat, vytvářet výstrahy a archivovat data, včetně sledovacích volání rozhraní API ve svých prostředcích Azure.
 ### <a name="application-insights"></a>Application Insights 
@@ -443,14 +443,14 @@ Služba Azure výrazně zaznamenává činnost systému a uživatele a také sta
 1.  Přejděte zpět na Azure Portal. V levém navigačním podokně vyberte službu Azure Active Directory a pak vyberte Registrace aplikací.
 2.  Na výsledné obrazovce vyberte WebApp-OpenIDConnect-DotNet-Code-v2 aplikace.
 3.  Na kartě ověřování v části identifikátory URI přesměrování vyberte možnost Web v poli se seznamem a přidejte následující identifikátory URI pro přesměrování.
-    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.nethttps://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o v části Rozšířená nastavení nastavte URL pro odhlášení na https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
-4.  Na kartě značky o aktualizujte adresu URL domovské stránky na adresu vaší služby App Service, https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net například.
+    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o v části Upřesnit nastavení nastavte adresu URL pro odhlášení na https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
+4.  Na kartě značky o aktualizujte adresu URL domovské stránky na adresu vaší služby App Service, například https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net.
         o uložení konfigurace.
 5.  Pokud vaše aplikace volá webové rozhraní API, nezapomeňte použít potřebné změny v projektu appSettings. JSON, takže volá publikovanou adresu URL API namísto localhost.
 Publikování ukázky
     1.  Na kartě Přehled App Service stáhněte profil publikování kliknutím na odkaz získat profil publikování a uložte ho. Lze také použít jiné mechanismy nasazení, jako je například ze správy zdrojového kódu.
     2.  Přepněte do sady Visual Studio a přejděte do projektu WebApp-OpenIDConnect-DotNet-Code-v2. Klikněte pravým tlačítkem na projekt v Průzkumník řešení a vyberte publikovat. Klikněte na tlačítko Importovat profil na dolním panelu a importujte profil publikování, který jste si stáhli dříve.
-    3.  Klikněte na tlačítko konfigurovat a na kartě připojení aktualizujte cílovou adresu URL tak, aby se jedná o protokol HTTPS na adrese URL domovské stránky, https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net například. Klikněte na Další.
+    3.  Klikněte na tlačítko konfigurovat a na kartě připojení aktualizujte cílovou adresu URL tak, aby se jedná o protokol HTTPS v adrese URL domovské stránky, například https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net. Klikněte na Další.
     4.  Na kartě nastavení se ujistěte, že není vybraná možnost povolit ověřování organizace. Klikněte na Uložit. Na hlavní obrazovce klikněte na publikovat.
     5.  Visual Studio projekt publikuje a automaticky otevře prohlížeč na adrese URL projektu. Pokud se zobrazí výchozí webová stránka projektu, publikace byla úspěšně dokončena.
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Implementovat Multi-Factor Authentication pro Azure Active Directory
@@ -512,7 +512,7 @@ Vytvoření tohoto pracovního prostoru
    *Hledání Log Analytics pracovních prostorů*
 
    2. Na další stránce vyberte **Přidat** a potom zadejte název, skupinu prostředků a umístění pro pracovní prostor.
-   ![Vytvoření pracovního prostoru Log Analytics](./media/secure-aad-app/sentinel-log-analytics-create.png)
+   ![vytvořit pracovní prostor Log Analytics](./media/secure-aad-app/sentinel-log-analytics-create.png)
 
    *Vytvoření pracovního prostoru Log Analytics*
 
@@ -544,7 +544,7 @@ Vytvoření tohoto pracovního prostoru
          
    *Přidat diagnostiku Application Gateway*
 
-   4. Na stránce **nastavení diagnostiky** vyberte pracovní prostor Log Analytics, který jste vytvořili, a pak vyberte všechny metriky, které chcete shromáždit a odeslat do Azure Sentinel. Vyberte **Uložit**.
+   4. Na stránce **nastavení diagnostiky** vyberte pracovní prostor Log Analytics, který jste vytvořili, a pak vyberte všechny metriky, které chcete shromáždit a odeslat do Azure Sentinel. Vyberte **Save** (Uložit).
 
    ![Nastavení konektoru služby Azure Sentinel](./media/secure-aad-app/sentinel-connector-settings.png)
 

@@ -125,6 +125,8 @@
     - name: Údržba a aktualizace
       href: ../virtual-machines/windows/maintenance-and-updates.md
       maintainContext: true
+    - name: Režimy orchestrace
+      href: orchestration-modes.md
     - name: Diskové úložiště
       items:
         - name: Spravované disky

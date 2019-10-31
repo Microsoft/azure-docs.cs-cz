@@ -4,15 +4,15 @@ description: Naučte se spravovat Analysis Services Server v Azure.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 63591da8d7661f7f3a29b321c20a2e05351c71fd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6846eaedc7f20f5a7597ee889193e977e86a5ed6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298592"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146839"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
 Po vytvoření Analysis Servicesho serveru v Azure můžou nastat některé úlohy správy a správy, které potřebujete udělat hned nebo po dobu provozu. Například spusťte zpracování na data aktualizace, řízení, kdo má přístup k modelům na vašem serveru, nebo můžete monitorovat stav svého serveru. Některé úlohy správy lze provádět pouze v Azure Portal, dalších v SQL Server Management Studio (SSMS) a některé úlohy lze provádět v obou.

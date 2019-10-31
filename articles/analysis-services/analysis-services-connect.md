@@ -4,25 +4,25 @@ description: Naučte se, jak se připojit k serveru Analysis Services v Azure a 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295182"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147314"
 ---
 # <a name="connecting-to-servers"></a>Připojení k serverům
 
-V tomto článku se dozvíte, jak se připojit k serveru pomocí aplikací pro modelování a správy dat, jako je SQL Server Management Studio (SSMS) nebo SQL Server Data Tools (SSDT). Nebo s aplikacemi klienta pro vytváření sestav, jako je Microsoft Excel, Power BI Desktop nebo vlastní aplikace. Připojení k Azure Analysis Services používají protokol HTTPS.
+V tomto článku se dozvíte, jak se připojit k serveru pomocí aplikací pro modelování a správy dat, jako je SQL Server Management Studio (SSMS) nebo Visual Studio s Analysis Services projekty, nebo s aplikacemi klienta pro vytváření sestav, jako je Microsoft Excel Power BI Stolní počítače nebo vlastní aplikace. Připojení k Azure Analysis Services používají protokol HTTPS.
 
 ## <a name="client-libraries"></a>Klientské knihovny
 
 [Získat nejnovější klientské knihovny](analysis-services-data-providers.md)
 
-Všechna připojení k serveru bez ohledu na typ vyžadují aktualizované knihovny AMO, ADOMD.NET a klienta OLEDB pro připojení k serveru Analysis Services a jeho rozhraní. V případě SSMS, SSDT, Excel 2016 a novějších a Power BI jsou nainstalovány nebo aktualizovány nejnovější klientské knihovny pomocí měsíčních vydání. V některých případech je však možné, že aplikace nebude mít nejnovější verzi. Například při zpoždění aktualizace zásad nebo aktualizací Office 365 jsou na odloženém kanálu.
+Všechna připojení k serveru bez ohledu na typ vyžadují aktualizované knihovny AMO, ADOMD.NET a klienta OLEDB pro připojení k serveru Analysis Services a jeho rozhraní. V případě aplikací SSMS, Visual Studio, Excel 2016 a novějších a Power BI jsou nejnovější klientské knihovny nainstalovány nebo aktualizovány pomocí měsíčních vydání. V některých případech je však možné, že aplikace nebude mít nejnovější verzi. Například při zpoždění aktualizace zásad nebo aktualizací Office 365 jsou na odloženém kanálu.
 
 ## <a name="server-name"></a>Název serveru
 

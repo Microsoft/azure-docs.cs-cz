@@ -81,6 +81,8 @@
           href: how-to/upgrade-tools.md
         - name: Použití CI/CD s Azure Dev Spaces
           href: how-to/setup-cicd.md
+        - name: Použití akcí GitHubu s Azure Dev Spaces (Preview)
+          href: how-to/github-actions.md
         - name: Použití modulu plug-in Azure Dev Spaces pro Jenkinse
           href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Provozní kontinuita a zotavení po havárii pro Azure Dev Spaces
@@ -89,6 +91,8 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Použití traefiku pro vlastní příchozí přenos dat a HTTPS
           href: how-to/ingress-https-traefik.md
+        - name: Použití nástroje Azure Dev Spaces Connect (Preview)
+          href: how-to/connect.md
     - name: Řešení potíží
       href: troubleshooting.md
     - name: Nejčastější dotazy

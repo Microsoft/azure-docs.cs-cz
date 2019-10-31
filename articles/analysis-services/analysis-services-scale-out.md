@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0e6a234e8b69eb48f00687916d4a7b48d3ba1040
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: af1a0db397510014301a58aea7238b695a6c0740
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301183"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146447"
 ---
-# <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services škálování na více instancí
+# <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
 
 Díky škálování na více instancí je možné klientské dotazy distribuovat mezi několik *replik dotazů* ve *fondu dotazů*a zkrátit tak dobu odezvy během úloh s vysokým počtem dotazů. Můžete také oddělit zpracování z fondu dotazů a zajistit, aby dotazy klienta nepříznivě ovlivnily operace zpracování. Horizontální navýšení kapacity lze nakonfigurovat v Azure Portal nebo pomocí REST API Analysis Services.
 
@@ -66,7 +66,7 @@ Další užitečnou metrikou ke sledování je průměrná QPUa podle ServerReso
 3. Klikněte na **použít rozdělení**. 
 4. V **hodnoty**vyberte **ServerResourceType**.  
 
-Další informace najdete v tématu [monitorování metrik serveru](analysis-services-monitor.md).
+Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md).
 
 ## <a name="configure-scale-out"></a>Konfigurace škálování na více instancí
 
@@ -92,7 +92,7 @@ V **přehledu** > model > **synchronizovat model**.
 
 ![Posuvník horizontálního navýšení kapacity](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Použijte operaci **synchronizace** .
 
@@ -109,11 +109,11 @@ Vrátit stavové kódy:
 
 |Kód  |Popis  |
 |---------|---------|
-|– 1     |  Není       |
-|0,8     | Replikaci        |
-|první     |  Dosazování dat       |
-|odst     |   Byla dokončena       |
-|3     |   Nepovedlo se      |
+|– 1     |  Neplatný       |
+|0     | Replikaci        |
+|1\. místo     |  Dosazování dat       |
+|2     |   Dokončeno       |
+|3     |   Selhalo      |
 |4     |    Dokončuje     |
 |||
 
@@ -138,7 +138,7 @@ Na stránce Přehled vašeho serveru jsou k dispozici dva názvy serverů. Pokud
 
 Pro klientská připojení koncových uživatelů, jako jsou Power BI Desktop, Excel a vlastní aplikace, použijte **název serveru**. 
 
-Pro SSMS, SSDT a připojovací řetězce v prostředí PowerShell, Azure Function Apps a AMO použijte **název serveru pro správu**. Název management server obsahuje speciální kvalifikátor `:rw` (pro čtení i zápis). Všechny operace zpracování se vyskytují na primárním management server.
+V případě SSMS, sady Visual Studio a připojovacích řetězců v prostředí PowerShell, Azure Function Apps a AMO použijte **název serveru pro správu**. Název management server obsahuje speciální kvalifikátor `:rw` (pro čtení i zápis). Všechny operace zpracování se vyskytují na primárním management server.
 
 ![Názvy serverů](media/analysis-services-scale-out/aas-scale-out-name.png)
 

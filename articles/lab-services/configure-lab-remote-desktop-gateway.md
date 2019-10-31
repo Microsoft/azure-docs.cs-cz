@@ -1,6 +1,6 @@
 ---
-title: Konfigurace testovacího prostředí pro použití služby Brána vzdálené plochy v Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat testovacího prostředí ve službě Azure DevTest Labs Brána vzdálené plochy zajistit zabezpečený přístup k testovacímu prostředí virtuálních počítačů, aniž byste museli zveřejnit RDP port.
+title: Konfigurace testovacího prostředí pro použití Brána vzdálené plochy v Azure DevTest Labs | Microsoft Docs
+description: Naučte se, jak nakonfigurovat testovací prostředí v Azure DevTest Labs pomocí brány vzdálené plochy, která zajišťuje zabezpečený přístup k testovacím virtuálním počítačům bez nutnosti vystavit port RDP.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,105 +12,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 430734878c01d10a4e7dd385dc75d8d502a2d82c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0f879a6389c7a77708e8041dd8b82dc3785679fa
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078999"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162628"
 ---
-# <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurace testovacího prostředí v Azure DevTest Labs můžete pomocí služby Brána vzdálené plochy
-Ve službě Azure DevTest Labs můžete nakonfigurovat Brána vzdálené plochy pro testovací prostředí k zajištění zabezpečeného přístupu k prostředí virtuálních počítačů (VM) bez nutnosti zveřejnit RDP port. Testovací prostředí poskytuje centrální místo, kde uživatelé testovacího prostředí zobrazit a připojit se k všechny virtuální počítače, které mají přístup k. **Připojit** tlačítko **virtuálního počítače** stránka vytvoří soubor protokolu RDP specifické pro počítač, který můžete otevřít pro připojení k počítači. Můžete dále přizpůsobit a zabezpečené připojení RDP propojíte testovacího prostředí služby Brána vzdálené plochy. 
+# <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurace testovacího prostředí v Azure DevTest Labs pro použití brány vzdálené plochy
+V Azure DevTest Labs můžete nakonfigurovat bránu vzdálené plochy pro testovací prostředí, aby se zajistil zabezpečený přístup k virtuálním počítačům testovacího prostředí, aniž by bylo nutné vystavit port protokolu RDP. Testovací prostředí poskytuje centrální místo pro uživatele testovacího prostředí pro zobrazení a připojení ke všem virtuálním počítačům, ke kterým mají přístup. Tlačítko **připojit** na stránce **virtuální počítač** vytvoří soubor RDP specifický pro počítač, který můžete otevřít pro připojení k počítači. Připojení RDP můžete dál upravovat a zabezpečovat tak, že testovací prostředí připojíte k bráně vzdálené plochy. 
 
-Tento přístup je bezpečnější, protože testovací prostředí uživatele ověří přímo k počítači brány nebo pomocí přihlašovacích údajů společnosti na počítači připojeném k doméně brány pro připojení ke svým počítačům. Testovací prostředí podporuje také použití ověřování pomocí tokenu k počítači brány, který umožňuje uživatelům připojit se ke svým virtuálním počítačům testovacího prostředí bez nutnosti port RDP, který je přístupný z Internetu. Tento článek vás provede příkladem o tom, jak nastavení testovacího prostředí, která používá ověřování pomocí tokenu pro připojení k testovacích počítačů.
+Tento přístup je bezpečnější, protože se uživatel testovacího prostředí ověřuje přímo na počítači brány nebo může použít přihlašovací údaje společnosti na počítači brány připojeném k doméně pro připojení ke svým počítačům. Testovací prostředí také podporuje ověřování pomocí tokenu pro počítač brány, který umožňuje uživatelům připojit se ke svým testovacím virtuálním počítačům, aniž by byl port RDP přístupný na internetu. V tomto článku se dozvíte, jak nastavit testovací prostředí, které používá ověřování pomocí tokenu pro připojení k testovacím počítačům.
 
-## <a name="architecture-of-the-solution"></a>Architektury řešení
+## <a name="architecture-of-the-solution"></a>Architektura řešení
 
-![Architektury řešení](./media/configure-lab-remote-desktop-gateway/architecture.png)
+![Architektura řešení](./media/configure-lab-remote-desktop-gateway/architecture.png)
 
-1. [Obsah souboru RDP získat](/rest/api/dtl/virtualmachines/getrdpfilecontents) akce je volána, když vyberete **připojit** button.1. 
-1. Vyvolá akci obsah souboru RDP získat `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` k vyžádání tokenu ověření.
-    1. `{gateway-hostname}` je zadaný v názvu hostitele brány **nastavení testovacího prostředí** stránky pro vaše testovací prostředí na webu Azure Portal. 
-    1. `{lab-machine-name}` je název počítače, který se snažíte připojit.
-    1. `{port-number}` je port, na kterém musí být přijata připojení. Obvykle je tento port 3389. Pokud testovací prostředí používá virtuální počítač [sdílených IP](devtest-lab-shared-ip.md) funkcí ve službě DevTest Labs, port, který se bude lišit.
-1. Brána vzdálené plochy odloží volání z `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` k funkci Azure pro vygenerování ověřovacího tokenu. Služba DevTest Labs automaticky zahrnuje funkční klávesy v hlavičce požadavku. Funkční klávesy má být uložena ve službě key vault testovacího prostředí. Název pro tento tajný kód, který se zobrazí jako **tajný klíč tokenu služby brány** na **nastavení testovacího prostředí** stránky pro testovací prostředí.
-1. Funkce Azure Functions se očekává navrácení token pro token ověřování pomocí certifikátů na počítači brány.  
-1. Soubor RDP získat obsah akce a vrátí úplný soubor RDP, včetně informací o ověřování.
-1. Otevřete soubor RDP pomocí upřednostňované programu připojení RDP. Mějte na paměti, že ne všechny programy připojení RDP podporují ověřování pomocí tokenu. Ověřovací token mají datum vypršení platnosti, nastavením aplikace function app. Vytvoření připojení k testovací virtuální počítač, před vypršením platnosti tokenu.
-1. Jakmile počítač služby Brána vzdálené plochy se ověří token v souboru RDP, připojení je předán do počítače testovacího prostředí.
+1. Akce [získat obsah souboru RDP](/rest/api/dtl/virtualmachines/getrdpfilecontents) se zavolá, když vyberete tlačítko **připojit** . 1. 
+1. Akce získat obsah souboru protokolu RDP vyvolá `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` pro vyžádání ověřovacího tokenu.
+    1. `{gateway-hostname}` je název hostitele brány, který je zadaný na stránce **Nastavení testovacího prostředí** pro testovací prostředí v Azure Portal. 
+    1. `{lab-machine-name}` je název počítače, ke kterému se pokoušíte připojit.
+    1. `{port-number}` je port, na kterém je nutné vytvořit připojení. Obvykle je tento port 3389. Pokud virtuální počítač testovacího prostředí používá funkci [sdílené IP adresy](devtest-lab-shared-ip.md) v DevTest Labs, port se liší.
+1. Brána vzdálené plochy odloží volání z `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` do funkce Azure, aby vygenerovala ověřovací token. Služba DevTest Labs automaticky obsahuje klíč funkce v hlavičce požadavku. Klíč funkce se uloží do trezoru klíčů testovacího prostředí. Název tohoto tajného klíče, který se má zobrazit jako **tajný klíč tokenu brány** na stránce **Nastavení testovacího** prostředí pro testovací prostředí.
+1. Očekává se, že funkce Azure vrátí token pro ověřování tokenů založeného na certifikátech na počítači brány.  
+1. Akce získat obsah souboru RDP pak vrátí úplný soubor RDP, včetně ověřovacích informací.
+1. Soubor RDP otevřete pomocí upřednostňovaného programu pro připojení RDP. Pamatujte, že ne všechny programy připojení RDP podporují ověřování tokenu. Ověřovací token má datum vypršení platnosti nastavené aplikací Function App. Než vyprší platnost tokenu, vytvořte připojení k virtuálnímu počítači testovacího prostředí.
+1. Jakmile počítač brány vzdálené plochy ověří token v souboru RDP, připojení se přepošle do vašeho testovacího počítače.
 
-### <a name="solution-requirements"></a>Požadavky na řešení
-Pro práci s funkcí ověřování pomocí tokenu DevTest Labs, existuje pár požadavky na konfiguraci pro počítače brány, služeb názvů domén (DNS) a funkce.
+### <a name="solution-requirements"></a>Požadavky řešení
+Pro práci s funkcí ověřování tokenů DevTest Labs existuje několik požadavků na konfiguraci pro počítače brány, službu DNS (Domain Name Services) a funkce.
 
-### <a name="requirements-for-remote-desktop-gateway-machines"></a>Požadavky na počítače se Brána vzdálené plochy
-- Certifikát SSL musí být nainstalována na počítači brány pro zpracování komunikaci přes protokol HTTPS. Certifikát musí odpovídat plně kvalifikovaný název domény (FQDN) nástroje pro vyrovnávání zatížení pro farmy brány nebo plně kvalifikovaný název domény celý počítač, pokud existuje jenom jeden počítač. Zástupný znak – certifikáty SSL nefungují.  
-- Podpisový certifikát nainstalovat na počítače brány. Vytvoření podpisový certifikát s použitím [vytvořit SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) skriptu.
-- Nainstalujte [PAM](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) modul, který podporuje ověřování pomocí tokenu pro služby Brána vzdálené plochy. Příkladem takové modul je `RDGatewayFedAuth.msi` , který je součástí [System Center Virtual Machine Manager (VMM) imagí](/system-center/vmm/install-console?view=sc-vmm-1807). Další informace o produktu System Center najdete v tématu [dokumentace pro System Center](https://docs.microsoft.com/system-center/) a [podrobnosti o cenách](https://www.microsoft.com/cloud-platform/system-center-pricing).  
-- Server brány dokáže zpracovat požadavky na `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`.
+### <a name="requirements-for-remote-desktop-gateway-machines"></a>Požadavky na počítače brány vzdálené plochy
+- Pro zpracování provozu HTTPS musí být na počítači brány nainstalovaný certifikát SSL. Certifikát musí odpovídat plně kvalifikovanému názvu domény nástroje pro vyrovnávání zatížení pro farmu brány nebo plně kvalifikovaného názvu domény samotného počítače, pokud existuje pouze jeden počítač. Certifikáty SSL se zástupnými kartami nefungují.  
+- Podpisový certifikát nainstalovaný na počítačích s bránou. Pomocí skriptu [Create-SigningCertificate. ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) vytvořte podpisový certifikát.
+- Nainstalujte modul pro [připojení](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) k síti, který podporuje ověřování tokenu pro bránu Vzdálená plocha. Jedním z příkladů takového modulu je `RDGatewayFedAuth.msi`, které jsou součástí [imagí System Center Virtual Machine Manager (VMM)](/system-center/vmm/install-console?view=sc-vmm-1807). Další informace o produktu System Center najdete v [dokumentaci k nástroji System Center](https://docs.microsoft.com/system-center/) a v [podrobnostech o cenách](https://www.microsoft.com/cloud-platform/system-center-pricing).  
+- Server brány může zpracovávat požadavky vytvořené na `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`.
 
-    Název hostitele brány se plně kvalifikovaný název domény nástroje pro vyrovnávání zatížení farmy brány nebo plně kvalifikovaný název domény počítače, vlastní, pokud existuje jenom jeden počítač. `{lab-machine-name}` Je název počítače testovacího prostředí, který se snažíte připojit, a `{port-number}` je port, na kterém bude proveden připojení.  Ve výchozím nastavení je tento port 3389.  Nicméně pokud virtuální počítač používá [sdílených IP](devtest-lab-shared-ip.md) funkcí ve službě DevTest Labs, port, který se bude lišit.
-- [Směrování žádostí na aplikace](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) modulu pro Internet Information Server (IIS) je možné přesměrovat `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` žádosti o funkce azure Functions, která zpracovává požadavek na získání tokenu pro ověření.
+    Brána-hostname je plně kvalifikovaný název domény nástroje pro vyrovnávání zatížení farmy brány nebo plně kvalifikovaný název domény samotného počítače, pokud existuje jenom jeden počítač. `{lab-machine-name}` je název testovacího počítače, ke kterému se pokoušíte připojit, a `{port-number}` je port, na kterém bude vytvořeno připojení.  Ve výchozím nastavení je to port 3389.  Pokud ale virtuální počítač používá funkci [sdílené IP adresy](devtest-lab-shared-ip.md) v DevTest Labs, port se liší.
+- Modul [žádosti o směrování aplikace](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) pro Internet Information Server (IIS) se dá použít k přesměrování `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` požadavků na funkci Azure, která zpracovává požadavek na získání tokenu pro ověření.
 
 
-## <a name="requirements-for-azure-function"></a>Požadavky pro Azure – funkce
-Funkce Azure Functions obslužné rutiny žádosti s formátem `https://{function-app-uri}/app/host/{lab-machine-name}/port/{port-number}` a vrátí token ověřování založené na stejné podpisový certifikát nainstalován v počítačích brány. `{function-app-uri}` Je identifikátor uri pro přístup k funkci. Klíč funkce je automaticky předávat v hlavičce požadavku. Ukázkové funkce, najdete v části [ https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs ](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs). 
+## <a name="requirements-for-azure-function"></a>Požadavky na funkci Azure Functions
+Funkce Azure zpracovává požadavek s formátem `https://{function-app-uri}/app/host/{lab-machine-name}/port/{port-number}` a vrací ověřovací token na základě stejného podpisového certifikátu nainstalovaného na počítačích brány. `{function-app-uri}` je identifikátor URI, který se používá pro přístup k funkci. Klíč funkce se automaticky předává v hlavičce žádosti. Ukázkovou funkci naleznete v tématu [https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs). 
 
 
 ## <a name="requirements-for-network"></a>Požadavky na síť
 
-- Služba DNS pro plně kvalifikovaný název domény přidružený k certifikátu SSL nainstalovaném na počítačích bránu musí směrovat provoz na počítači brány nebo nástroje pro vyrovnávání zatížení počítače farmy brány.
-- Pokud počítač testovacího prostředí používá privátní IP adresy, musí být síťová cesta z počítače brány k počítači testovacího prostředí, buď prostřednictvím sdílení stejné virtuální síti, nebo pomocí partnerských virtuálních sítích.
+- DNS pro plně kvalifikovaný název domény, který je přidružený k certifikátu SSL nainstalovanému na počítačích brány, musí směrovat provoz na počítač brány nebo na nástroj pro vyrovnávání zatížení farmy počítačů brány.
+- Pokud testovací počítač používá privátní IP adresy, musí existovat síťová cesta z počítače brány k testovacímu počítači, a to buď prostřednictvím sdílení stejné virtuální sítě, nebo pomocí partnerských virtuálních sítí.
 
-## <a name="configure-the-lab-to-use-token-authentication"></a>Konfigurace testovacího prostředí a pomocí ověření tokenu 
-Tato část ukazuje postup při konfiguraci testovacího prostředí použít počítač služby Brána vzdálené plochy, který podporuje ověřování pomocí tokenu. Tato část nezahrnuje jak vytvořit farmu služby Brána vzdálené plochy, samotného. Informace najdete v tématu [vzorek k vytvoření služby Brána vzdálené plochy](#sample-to-create-a-remote-desktop-gateway) oddílu na konci tohoto článku. 
+## <a name="configure-the-lab-to-use-token-authentication"></a>Konfigurace testovacího prostředí pro použití ověřování pomocí tokenu 
+V této části se dozvíte, jak nakonfigurovat testovací prostředí pro použití počítače brány vzdálené plochy, který podporuje ověřování pomocí tokenu. Tato část nepopisuje, jak nastavit samotnou farmu brány vzdálené plochy. Tyto informace najdete v části [Ukázka vytvoření brány vzdálené plochy](#sample-to-create-a-remote-desktop-gateway) na konci tohoto článku. 
 
-Než budete aktualizovat nastavení testovacího prostředí, uložení klíče potřebné k úspěšné spuštění funkce k vrácení tokenu ověření ve službě key vault testovacího prostředí. Hodnota klíče funkce můžete získat **spravovat** stránky pro funkce na webu Azure Portal. Další informace o tom, jak uložit tajného klíče v trezoru klíčů, naleznete v tématu [do služby Key Vault přidat tajný klíč](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault). Uložte název tajného klíče pro pozdější použití.
+Před aktualizací nastavení testovacího prostředí uložte klíč potřebný k úspěšnému provedení funkce a vraťte ověřovací token v trezoru klíčů testovacího prostředí. Hodnotu klíče funkce můžete získat na stránce **Správa** pro funkci v Azure Portal. Další informace o tom, jak uložit tajný klíč v trezoru klíčů, najdete v tématu [Přidání tajného klíče do Key Vault](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault). Uložte název tajného kódu pro pozdější použití.
 
-Pokud chcete najít ID služby key vault testovacího prostředí, spusťte následující příkaz rozhraní příkazového řádku Azure: 
+ID trezoru klíčů testovacího prostředí zjistíte spuštěním následujícího příkazu rozhraní příkazového řádku Azure: 
 
 ```azurecli
 az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' --resource-group {lab-resource-group-name} --query properties.vaultName
 ```
 
-Konfigurace testovacího prostředí a ověřování tokenem pomocí těchto kroků:
+Nakonfigurujte testovací prostředí tak, aby používalo ověřování tokenu pomocí těchto kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
-1. V seznamu testovacích prostředí, vyberte vaše **lab**.
-1. Na stránce testovacího prostředí, vyberte možnost **konfigurace a zásad**.
-1. V nabídce vlevo v **nastavení** vyberte **nastavení testovacího prostředí**.
-1. V **vzdálené plochy** části, zadejte plně kvalifikovaný název domény (FQDN) nebo IP adresu počítače brány vzdálené plochy nebo farmy pro **název hostitele brány** pole. Tato hodnota musí odpovídat plně kvalifikovaný název domény certifikát SSL používaný na počítače brány.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. V seznamu cvičení vyberte **testovací prostředí**.
+1. Na stránce testovacího prostředí vyberte **Konfigurace a zásady**.
+1. V nabídce vlevo v části **Nastavení** vyberte **Nastavení testovacího prostředí**.
+1. V části **Vzdálená plocha** zadejte plně kvalifikovaný název domény (FQDN) nebo IP adresu počítače nebo farmy brány vzdálené plochy pro pole **název hostitele brány** . Tato hodnota musí odpovídat plně kvalifikovanému názvu domény certifikátu SSL, který se používá na počítačích brány.
 
-    ![Možnosti vzdáleného klasické pracovní plochy v nastavení testovacího prostředí](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
-1. V **vzdálené plochy** části pro **token brány** tajný klíč, zadejte název tajného kódu vytvořili dříve. Tato hodnota není funkční klávesy, samotný, ale název tajného klíče v trezoru klíčů testovacího prostředí, který obsahuje klíč funkce.
+    ![Možnosti vzdálené plochy v nastavení testovacího prostředí](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
+1. V části **Vzdálená plocha** pro tajný klíč **tokenu brány** zadejte název tajného klíče, který jste vytvořili dříve. Tato hodnota není samotný klíč funkce, ale název tajného klíče v trezoru klíčů testovacího prostředí, který obsahuje klíč funkce.
 
     ![Tajný klíč tokenu brány v nastavení testovacího prostředí](./media/configure-lab-remote-desktop-gateway/gateway-token-secret.png)
-1. **Uložit** změny.
+1. **Uložit** Provedeny.
 
     > [!NOTE] 
-    > Kliknutím na **Uložit**, vyjadřujete souhlas s [Brána vzdálené plochy na licenční podmínky](https://www.microsoft.com/licensing/product-licensing/products). Další informace o vzdálené brány najdete v tématu [Vítá vás služba Vzdálená plocha](https://aka.ms/rds) a [nasazení prostředí vzdálené plochy](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+    > Kliknutím na **Uložit**vyjadřujete souhlas s [licenčními podmínkami Brána vzdálené plochy](https://www.microsoft.com/licensing/product-licensing/products). Další informace o vzdálené bráně najdete v tématu [Vítá vás služba Vzdálená plocha](https://aka.ms/rds) a [nasazení prostředí vzdálené plochy](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 
-Konfigurace testovacího prostředí pomocí automatizace, je-li zobrazit [Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) vzorový skript prostředí PowerShell k nastavení **název hostitele brány** a **tajný klíč tokenu brány**nastavení. [Úložiště Azure DevTest Labs GitHub](https://github.com/Azure/azure-devtestlab) poskytuje také šablonu Azure Resource Manageru, která vytvoří nebo aktualizuje testovacího prostředí se **název hostitele brány** a **tajný klíč tokenu brány**nastavení.
+Pokud upřednostňujete konfiguraci testovacího prostředí prostřednictvím automatizace, přečtěte si v tématu [set-DevTestLabGateway. ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) vzorový skript PowerShellu, který nastaví nastavení **názvu hostitele brány** a **tajného klíče tokenu brány** . [Úložiště GitHub Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) taky poskytuje šablonu Azure Resource Manager, která vytvoří nebo aktualizuje testovací prostředí s nastavením **názvu hostitele brány** a **tajného klíče tokenu brány** .
 
-## <a name="configure-network-security-group"></a>Nakonfigurovat skupinu zabezpečení sítě
-Zabezpečit ještě víc, testovací prostředí, můžete přidat skupinu zabezpečení sítě (NSG) k virtuální síti, které jsou používány virtuálními počítači testovacího prostředí. Pokyny k nastavení skupiny zabezpečení sítě, naleznete v tématu [vytvořit, změnit nebo odstranit skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md).
+## <a name="configure-network-security-group"></a>Konfigurovat skupinu zabezpečení sítě
+K dalšímu zabezpečení testovacího prostředí je možné přidat skupinu zabezpečení sítě (NSG) do virtuální sítě používané virtuálními počítači testovacího prostředí. Pokyny, jak nastavit NSG, najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md).
 
-Tady je příklad NSG, která povoluje jenom provoz, který nejprve prochází přes bránu pro dosažení testovacích počítačů. Zdroj v toto pravidlo je na IP adresu počítače jednu bránu nebo IP adresu nástroje pro vyrovnávání zatížení před počítače brány.
+Tady je příklad NSG, který umožňuje jenom provoz, který nejdřív projde bránou, aby se dosáhlo testovacích počítačů. Zdrojem v tomto pravidle je IP adresa počítače s jedinou bránou nebo IP adresa nástroje pro vyrovnávání zatížení před počítači brány.
 
 ![Skupina zabezpečení sítě – pravidla](./media/configure-lab-remote-desktop-gateway/network-security-group-rules.png)
 
-## <a name="sample-to-create-a-remote-desktop-gateway"></a>Vzorek k vytvoření služby Brána vzdálené plochy
+## <a name="sample-to-create-a-remote-desktop-gateway"></a>Ukázka vytvoření brány vzdálené plochy
 
 > [!NOTE] 
-> Pomocí ukázkových šablon, vyjadřujete souhlas s [Brána vzdálené plochy na licenční podmínky](https://www.microsoft.com/licensing/product-licensing/products). Další informace o vzdálené brány najdete v tématu [Vítá vás služba Vzdálená plocha](https://aka.ms/rds) a [nasazení prostředí vzdálené plochy](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+> Pomocí vzorových šablon souhlasíte s [licenčními podmínkami Brána vzdálené plochy](https://www.microsoft.com/licensing/product-licensing/products). Další informace o vzdálené bráně najdete v tématu [Vítá vás služba Vzdálená plocha](https://aka.ms/rds) a [nasazení prostředí vzdálené plochy](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
-[Úložiště Azure DevTest Labs GitHub](https://github.com/Azure/azure-devtestlab) najdete několik vzorových usnadňují instalační program prostředky potřebné pro použití ověřování pomocí tokenu a služby Brána vzdálené plochy s DevTest Labs. Tyto ukázky zahrnují šablony Azure Resource Manageru pro počítače brány, nastavení testovacího prostředí a aplikace function app.
+[Úložiště GitHub Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) nabízí několik ukázek, které vám pomůžou nastavit prostředky potřebné k použití ověřování tokenu a brány vzdálené plochy s DevTest Labs. Tyto ukázky zahrnují šablony Azure Resource Manager pro počítače brány, nastavení testovacího prostředí a aplikace Function App.
 
-Postupujte podle těchto pokynů nastavte si ukázkové řešení pro farmu služby Brána vzdálené plochy.
+Pomocí těchto kroků můžete nastavit ukázkové řešení pro farmu služby Brána vzdálené plochy.
 
-1. Vytvoření podpisového certifikátu.  Spustit [vytvořit SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1). Uložte kryptografický otisk, heslo a kódování Base64 vytvořeného certifikátu.
-2. Získejte certifikát SSL. Plně kvalifikovaný název domény přidružený certifikát SSL musí být pro doménu, kterou řídíte. Uložte kryptografický otisk, heslo a tento certifikát kódování Base64. Pokud chcete získat kryptografický otisk pomocí Powershellu, použijte následující příkazy.
+1. Vytvořte podpisový certifikát.  Spusťte [Create-SigningCertificate. ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1). Uložte kryptografický otisk, heslo a kódování Base64 vytvořeného certifikátu.
+2. Získejte certifikát SSL. Plně kvalifikovaný název domény přidružený k certifikátu SSL musí být pro doménu, kterou ovládáte. Uložte kryptografický otisk, heslo a kódování Base64 pro tento certifikát. Chcete-li získat kryptografický otisk pomocí prostředí PowerShell, použijte následující příkazy.
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -118,55 +118,55 @@ Postupujte podle těchto pokynů nastavte si ukázkové řešení pro farmu slu�
     $hash = $cer.GetCertHashString()
     ```
 
-    Chcete-li získat kódování Base64, pomocí Powershellu, použijte následující příkaz.
+    Pokud chcete získat kódování Base64 pomocí PowerShellu, použijte následující příkaz.
 
     ```powershell
     [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(‘path-to-certificate’))
     ```
-3. Stažení souborů ze [ https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway).
+3. Stažení souborů z [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway).
 
-    Šablona vyžaduje přístup k několika šablon Resource Manageru a související prostředky na stejný základní identifikátor URI. Zkopírujte všechny soubory z [ https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway ](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway) a RDGatewayFedAuth.msi na kontejner objektů blob v účtu úložiště.  
-4. Nasazení **azuredeploy.json** z [ https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway). Šablony mají následující parametry:
+    Šablona vyžaduje přístup k několika jiným Správce prostředků šablonám a souvisejícím prostředkům na stejném základním identifikátoru URI. Zkopírujte všechny soubory z [https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway) a RDGatewayFedAuth. msi do kontejneru objektů BLOB v účtu úložiště.  
+4. Nasaďte **azuredeploy. JSON** z [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway). Šablona používá následující parametry:
     - adminUsername – povinné.  Uživatelské jméno správce pro počítače brány.
-    - adminPassword – povinné. Heslo pro účet správce pro počítače brány.
-    - instanceCount – počet počítače brány k vytvoření.  
-    - alwaysOn – uvádí, zda budou vytvořenou aplikaci Azure Functions v záložním stavu, nebo ne. Zachovat aplikaci Azure Functions zabrání zpoždění, když uživatelé se nejprve pokusí připojit k jejich testovací virtuální počítač, ale nemá vliv na náklady.  
-    - tokenLifetime – délka dobu, po kterou bude vytvořený token platný. Formát je HH: mm:.
-    - sslCertificate – The Base64 kódování certifikátu protokolu SSL pro počítač brány.
-    - heslo certifikátu SSL – heslo certifikátu SSL pro počítač brány.
-    - sslCertificateThumbprint – kryptografický otisk certifikátu pro identifikaci v místním úložišti certifikátů certifikátu protokolu SSL.
-    - signCertificate – The Base64 kódování pro podepsání certifikátu pro počítač brány.
+    - adminPassword – povinný. Heslo pro účet správce pro počítače brány.
+    - instanceCount – počet počítačů brány, které se mají vytvořit.  
+    - alwaysOn – určuje, jestli se má vytvořená Azure Functions aplikace uchovávat v neteplém stavu. Udržování aplikace Azure Functions zabrání prodlevám, když se uživatel poprvé pokusí připojit ke svému testovacímu virtuálnímu počítači, ale má vliv na náklady.  
+    - tokenLifetime – doba, po kterou bude vytvořený token platný Formát je HH: MM: SS.
+    - sslCertificate – kódování Base64 certifikátu SSL pro počítač brány.
+    - sslCertificatePassword – heslo certifikátu SSL pro počítač brány.
+    - sslCertificateThumbprint – kryptografický otisk certifikátu pro identifikaci v místním úložišti certifikátů certifikátu SSL.
+    - signCertificate – kódování Base64 pro podpisový certifikát pro počítač brány.
     - signCertificatePassword – heslo pro podpisový certifikát pro počítač brány.
     - signCertificateThumbprint – kryptografický otisk certifikátu pro identifikaci v místním úložišti certifikátů podpisového certifikátu.
-    - _artifactsLocation – identifikátor URI umístění, kde můžete najít všechny podpůrné prostředky. Tato hodnota musí být plně kvalifikovaný UIR, nikoli relativní cestu.
-    - _artifactsLocationSasToken – token the sdíleného přístupového podpisu (SAS) pro přístup k podpůrné prostředky, pokud je umístění účtu úložiště Azure.
+    - _artifactsLocation – umístění identifikátoru URI, kde se dají najít všechny podpůrné prostředky. Tato hodnota musí být plně kvalifikovaný UIR, ne relativní cesta.
+    - _artifactsLocationSasToken – token sdíleného přístupového podpisu (SAS), který se používá pro přístup k podpůrným prostředkům, pokud se jedná o účet úložiště Azure.
 
-    Šablona se dá nasadit pomocí rozhraní příkazového řádku Azure s použitím následujícího příkazu:
+    Šablonu je možné nasadit pomocí Azure CLI pomocí následujícího příkazu:
 
     ```azurecli
-    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation=”{storage-account-endpoint}/{container-name}” -–parameters _artifactsLocationSasToken = “?{sas-token}”
+    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
     ```
 
     Tady jsou popisy parametrů:
 
-    - {– Účet – koncový bod úložiště} můžete získat spuštěním `az storage account show --name {storage-acct-name} --query primaryEndpoints.blob`.  {-Acct – Název úložiště} je název účtu úložiště, který obsahuje soubory, které jste nahráli.  
-    - {Container-name} je název kontejneru v {-acct – Název úložiště}, která obsahuje soubory, které jste nahráli.  
-    - {-Sas token} můžete získat spuštěním `az storage container generate-sas --name {container-name} --account-name {storage-acct-name} --https-only –permissions drlw –expiry {utc-expiration-date}`. 
-        - {-Acct – Název úložiště} je název účtu úložiště, který obsahuje soubory, které jste nahráli.  
-        - {Container-name} je název kontejneru v {-acct – Název úložiště}, která obsahuje soubory, které jste nahráli.  
-        - {Utc datum vypršení platnosti-} je datum ve formátu UTC, kdy vyprší platnost tokenu SAS a SAS token je už nebude možné pro přístup k účtu úložiště.
+    - Účet {Storage-Account-Endpoint} se dá získat spuštěním `az storage account show --name {storage-acct-name} --query primaryEndpoints.blob`.  Pole {Storage-ACCT-Name} je název účtu úložiště, který obsahuje soubory, které jste nahráli.  
+    - {Container-Name} je název kontejneru v úložišti {Storage-ACCT-Name}, který obsahuje soubory, které jste nahráli.  
+    - {SAS-token} se dá získat spuštěním `az storage container generate-sas --name {container-name} --account-name {storage-acct-name} --https-only –permissions drlw –expiry {utc-expiration-date}`. 
+        - Pole {Storage-ACCT-Name} je název účtu úložiště, který obsahuje soubory, které jste nahráli.  
+        - {Container-Name} je název kontejneru v úložišti {Storage-ACCT-Name}, který obsahuje soubory, které jste nahráli.  
+        - {UTC-vypršení platnosti} je datum ve standardu UTC, na kterém vyprší platnost tokenu SAS, a token SAS se už nebude moct pro přístup k účtu úložiště použít.
 
-    Poznamenejte si hodnoty pro gatewayFQDN a gatewayIP z výstupu šablony nasazení. Také budete muset uložit hodnotu funkční klávesy pro nově vytvořené funkci, který se nachází v [fungovat nastavení aplikace](../azure-functions/functions-how-to-use-azure-function-app-settings.md) kartu.
-5. Konfigurace DNS, takže tento certifikát SSL plně kvalifikovaný název domény se odkazovalo na IP adresu gatewayIP z předchozího kroku.
+    Zaznamenejte hodnoty pro gatewayFQDN a gatewayIP z výstupu nasazení šablony. Také je nutné uložit hodnotu funkčního klíče pro nově vytvořenou funkci, která je k dispozici na kartě [nastavení aplikace Function App](../azure-functions/functions-how-to-use-azure-function-app-settings.md) .
+5. Nakonfigurujte DNS tak, aby plně kvalifikovaný název domény certifikátu SSL směroval na IP adresu gatewayIP z předchozího kroku.
 
-    Po vytvoření farmy služby Brána vzdálené plochy a provádějí příslušné aktualizace služby DNS, je připravená k použití v testovacím prostředí v DevTest Labs. **Název hostitele brány** a **tajný klíč tokenu služby brány** nastavení musí být nakonfigurován pro použití brány počítače jste nasadili. 
+    Po vytvoření farmy Brána vzdálené plochy a provedení příslušných aktualizací DNS je budete moct používat v laboratoři v DevTest Labs. Nastavení tajného kódu **hostitele brány** a **tajného klíče tokenu brány** musí být nakonfigurované na používání počítačů s bránou, které jste nasadili. 
 
     > [!NOTE]
-    > Pokud počítač testovacího prostředí používá privátní IP adresy, musí být síťová cesta z počítače brány k počítači testovacího prostředí, buď prostřednictvím sdílení stejné virtuální síti, nebo pomocí partnerské virtuální síti.
+    > Pokud testovací počítač používá privátní IP adresy, musí existovat síťová cesta z počítače brány k testovacímu počítači, a to buď prostřednictvím sdílení stejné virtuální sítě, nebo pomocí partnerské virtuální sítě.
 
-    Po nakonfigurování brány a lab vytvoří soubor připojení při testovacím uživatel klikne na **připojit** budou automaticky zahrnovat informace potřebné pro připojení pomocí ověřování tokenu.     
+    Po nakonfigurování brány i testovacího prostředí budou soubory připojení vytvořené, když uživatel testovacího prostředí klikne na **připojit** , automaticky zahrnovat informace potřebné k připojení pomocí ověření tokenu.     
 
-## <a name="next-steps"></a>Další postup
-Zobrazit další informace o službě Vzdálená plocha v následujícím článku: [Dokumentace k vzdálené ploše](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
+## <a name="next-steps"></a>Další kroky
+Další informace o službě Vzdálená plocha najdete v následujícím článku. [dokumentace ke službě Vzdálená plocha](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
 
 

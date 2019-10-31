@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512458"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146937"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované v Azure Analysis Services
 
@@ -38,7 +38,7 @@ Zdroje dat a konektory zobrazené v průvodci získat data nebo importovat v apl
 <a name="gen2">4</a> adls Gen2 v tuto chvíli není podporovaná.
 
 
-@No__t_1 **zprostředkovatele**  
+  **zprostředkovatele**  
 Modely v paměti a DirectQuery, které se připojují ke zdrojům dat Azure, používají .NET Framework Zprostředkovatel dat SQL Server.
 
 ## <a name="other-data-sources"></a>Další zdroje dat
@@ -97,12 +97,12 @@ Při migraci místního SQL Server Analysis Services tabulkového modelu do Azur
 
 **Určení poskytovatele**
 
-1. V Průzkumníku SSDT > **tabulkovém modelu**  > **zdroje dat**klikněte pravým tlačítkem na připojení ke zdroji dat a pak klikněte na **Upravit zdroj dat**.
+1. V **průzkumníku > tabulkových modelů** sady Visual Studio > **zdroje dat**klikněte pravým tlačítkem na připojení ke zdroji dat a pak klikněte na **Upravit zdroj dat**.
 2. V části **Upravit připojení**kliknutím na **Upřesnit** otevřete okno Vlastnosti pro upřesnění.
 3. V části **nastavit upřesňující vlastnosti** > **poskytovatelé**vyberte příslušného poskytovatele.
 
 ## <a name="impersonation"></a>Zosobnění
-V některých případech může být nutné zadat jiný účet zosobnění. Účet zosobnění lze zadat v aplikaci Visual Studio (SSDT) nebo v SSMS.
+V některých případech může být nutné zadat jiný účet zosobnění. Účet zosobnění lze zadat v aplikaci Visual Studio nebo SSMS.
 
 Pro místní zdroje dat:
 

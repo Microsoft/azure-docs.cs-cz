@@ -82,7 +82,7 @@
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
     - name: Transformace dat s využitím toků dat mapování
       href: tutorial-data-flow.md
-    - name: Transformace dat v cloudu
+    - name: Externí transformace
       items:
         - name: HDInsight Spark
           items:
@@ -94,7 +94,7 @@
           items:
             - name: Uživatelské rozhraní
               href: transform-data-using-databricks-notebook.md
-    - name: Transformace dat ve virtuální síti
+    - name: Transformace Hivu ve virtuální síti
       items:
         - name: Uživatelské rozhraní
           href: tutorial-transform-data-hive-virtual-network-portal.md
@@ -622,6 +622,8 @@
       items:
         - name: Zpracování textových souborů s pevnou šířkou
           href: how-to-fixed-width.md
+        - name: Zpracování chybového řádku
+          href: how-to-data-flow-error-rows.md
     - name: Migrace SSIS z místního prostředí
       items:
         - name: Přehled migrace SSIS

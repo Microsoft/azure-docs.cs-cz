@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 202d608e5d994cabd3d7e2e9a0887c8aab75af31
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e5d24c35fd2fafc27f2339af5b1c92875b0138d9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437834"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162198"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -45,20 +45,10 @@ Než začnete, ověřte následující:
 **Podpora** | **Podrobnosti**
 --- | ---
 **Podporovaná nasazení** | Virtuální počítače Azure Marketplace a virtuální počítače mimo Marketplace (SQL Server ručně nainstalované) jsou podporované.
-**Podporované zeměpisných oblastech** | Austrálie – jihovýchod (pomocného mechanismu), východní Austrálie (AE), Austrálie – střed (AC), Austrálie – střed 2 (AC) <br> Brazílie – jih (BRS)<br> Kanada – střed (CNC), Kanada – východ (CE)<br> Jižní Východní Asie (moře), Východní Asie (EA) <br> Východní USA (EUS), Východní USA 2 (EUS2), Středozápadní USA (WCUS), Západní USA (WUS); Západní USA 2 (WUS 2) Střed USA – sever (NCUS) Střed USA (kapacitní jednotky) Střed USA – jih (SCUS) <br> Indie – střed (INC), Indie – jih (in), Indie – západ <br> Japonsko – východ (JPE), Japonsko – západ (JPW) <br> Korea – střed (KRC), Korea – jih (KRS) <br> Severní Evropa (NE), Západní Evropa <br> Velká Británie – jih (UKS), Velká Británie – západ (UKW) <br> US Gov – Arizona, US Gov – Virginie, US Gov – Texas, US DoD – střed US DoD – východ <br> Německo – sever Německo – středozápad <br> Švýcarsko – sever Švýcarsko – západ
-**Podporované operační systémy** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux není aktuálně podporován.
-**Podporované verze SQL Server** | SQL Server 2017, jak je popsáno [zde](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 a SPS, jak je uvedeno [zde](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, web, Developer, Express.
-**Podporované verze rozhraní .NET** | .NET Framework 4.5.2 a vyšší nainstalované na virtuálním počítači
-
-### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Podpora SQL Server 2008 a SQL Server 2008 R2
-
-Azure Backup nedávno oznámila podporu [EOSch SQL severs](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) – SQL Server 2008 a SQL Server 2008 R2. Řešení je momentálně ve verzi Preview pro EOS SQL Server a podporuje následující konfiguraci:
-
-1. SQL Server 2008 a SQL Server 2008 R2 spuštěné v systému Windows 2008 R2 SP1
-2. Na virtuálním počítači musí být nainstalovaný .NET Framework 4.5.2 a novější.
-3. Zálohování pro FCI a zrcadlené databáze se nepodporuje.
-
-Uživatelům se tato funkce nebude účtovat až do doby, kdy je všeobecně dostupná. Všechny ostatní [požadavky a omezení funkcí](#feature-consideration-and-limitations) se vztahují také na tyto verze. Před konfigurací ochrany na SQL serverech 2008 a 2008 R2 si zajděte na [požadavky](backup-sql-server-database-azure-vms.md#prerequisites) .
+**Podporované zeměpisných oblastech** | Austrálie – jihovýchod (pomocného mechanismu), východní Austrálie (AE), Austrálie – střed (AC), Austrálie – střed 2 (AC) <br> Brazílie – jih (BRS)<br> Kanada – střed (CNC), Kanada – východ (CE)<br> Jižní Východní Asie (moře), Východní Asie (EA) <br> Východní USA (EUS), Východní USA 2 (EUS2), Středozápadní USA (WCUS), Západní USA (WUS); Západní USA 2 (WUS 2) Střed USA – sever (NCUS) Střed USA (kapacitní jednotky) Střed USA – jih (SCUS) <br> Indie – střed (INC), Indie – jih (in), Indie – západ <br> Japonsko – východ (JPE), Japonsko – západ (JPW) <br> Korea – střed (KRC), Korea – jih (KRS) <br> Severní Evropa (NE), Západní Evropa <br> Velká Británie – jih (UKS), Velká Británie – západ (UKW) <br> US Gov – Arizona, US Gov – Virginie, US Gov – Texas, US DoD – střed US DoD – východ <br> Německo – sever Německo – středozápad <br> Švýcarsko – sever Švýcarsko – západ <br> Francie – střed <br> Čína – východ Čína – východ 2 Čína – sever Čína – sever 2
+**Podporované operační systémy** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux není aktuálně podporován.
+**Podporované verze SQL Server** | SQL Server 2019 SQL Server 2017 na [stránce prohledat životní cyklus produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 a SPS, jak je podrobně popsán na [stránce hledání životního cyklu produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, web, Developer, Express.
+**Podporované verze rozhraní .NET** | Na virtuálním počítači je nainstalovaný .NET Framework 4.5.2 nebo novější.
 
 ## <a name="feature-consideration-and-limitations"></a>Aspekty a omezení funkcí
 
@@ -190,7 +180,7 @@ Přidejte do instance SQL Server přihlašovací údaje pro **NT AUTHORITY\SYSTE
 
 7. Klikněte na tlačítko OK.
 8. Zopakováním stejné posloupnosti kroků (1-7 výše) přidejte přihlášení NT Service\AzureWLBackupPluginSvc do instance SQL Server. Pokud přihlášení již existuje, ujistěte se, že má roli serveru sysadmin a v části stav uděluje oprávnění připojit se k databázovému stroji a přihlásit se jako povolené.
-9. Po udělení oprávnění znovu **zjišťovat databáze** na portálu **@no__t** : úloha **->** infrastruktury zálohování na virtuálním počítači Azure:
+9. Po udělení oprávnění si znovu pročtěte **databáze** na portálu: **->** úlohy úložiště **->** trezoru zálohování na virtuálním počítači Azure:
 
     ![Znovu zjišťovat databáze v Azure Portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 

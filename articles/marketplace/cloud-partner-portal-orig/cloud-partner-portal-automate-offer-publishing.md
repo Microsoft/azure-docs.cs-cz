@@ -1,33 +1,33 @@
 ---
-title: Automatizace publikování nabídky | Azure Marketplace
-description: Vysvětluje, jak prostřednictvím kódu programu automatizovat pracovní postupy publikování virtuálního počítače.
+title: Automatizace nabídky pro publikování | Azure Marketplace
+description: Vysvětluje, jak prostřednictvím kódu programu automatizovat pracovní postup publikování virtuálních počítačů.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 0a927c72a82c6aa3c79988c599ea8b840821a2b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50b785ed9456b0b112dea01a219e988b81094571
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935900"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154652"
 ---
-<a name="automate-offer-publishing"></a>Automatizace publikování nabídky
+<a name="automate-offer-publishing"></a>Automatizace publikování nabídek
 =========================
 
-Můžete také programově automatizovat virtuální počítač publikování pracovního postupu, pomocí rozhraní API v [Reference k rozhraní API](./cloud-partner-portal-api-overview.md) oddílu. Existují dva různé scénáře, které je třeba zvážit při plánování automatizace: počáteční publikování a následné nabídka publikování.
+Pracovní postup publikování virtuálních počítačů můžete také programově automatizovat pomocí rozhraní API v části [Reference k rozhraní API](./cloud-partner-portal-api-overview.md) . Existují dva různé scénáře, které je potřeba vzít v úvahu při plánování automatizace: nabízet úvodní publikování a následné publikování nabídek.
 
 
-<a name="offer-initial-publishing"></a>Počáteční publikování nabídky
+<a name="offer-initial-publishing"></a>Nabídka prvotního publikování
 -------------------------
 
-Při publikování nabídky poprvé, vyžaduje několik další kroky před nahráním na webu Marketplace.  Například musíte připravit metadata a vytvořit koncept služby nabídky. Počáteční pracovní postup publikování se zobrazí v následujícím diagramu.
+Při prvním publikování nabídky se před odesláním na web Marketplace vyžaduje několik dalších kroků.  Například musíte připravit metadata a vytvořit koncept nabídky. Úvodní pracovní postup publikování je zobrazený v následujícím diagramu.
 
-![Interakce počáteční nabízejí publikace](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
+![Interakce prvotní publikace nabídky](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
 
-Následující ukázkový kód demonstruje tyto kroky.
+Následující vzorový kód znázorňuje tyto kroky.
 
 ``` csharp
   CreateOfferAndPublish()
@@ -55,7 +55,7 @@ Následující ukázkový kód demonstruje tyto kroky.
   ValidateAndGoLive()    
   {
       // Confirm the version in preview slot is the version that needs to go live
-      offer = CloudPartnerPortal.Client.GetOffer(offerName, “Preview”);
+      offer = CloudPartnerPortal.Client.GetOffer(offerName, "Preview");
       if(!offer[skuName].containsVersion(VMDisk.Version))
       {
           UpdateOfferAndPublish()
@@ -74,12 +74,12 @@ Následující ukázkový kód demonstruje tyto kroky.
 ```
 
 
-<a name="subsequent-offer-publishing"></a>Další nabídky publikování
+<a name="subsequent-offer-publishing"></a>Publikování následné nabídky
 ---------------------------
 
-Jakmile nabídky virtuálních počítačů (VM) je integrovaná do kanálu průběžné integrace, můžete automatizovat pracovní postup publikování spustit pokaždé, když je vytvořen nový virtuální pevný disk (VHD).  Tento pracovní postup je znázorněn v následujícím diagramu a ukázky kódu.
+Po integraci nabídky virtuálního počítače do kanálu průběžné integrace můžete automatizovat pracovní postup publikování tak, aby se spouštěl při každém vytvoření nového virtuálního pevného disku (VHD).  Tento pracovní postup je znázorněný následujícím diagramem a ukázkovým kódem.
 
-![Interakce publikace následné nabídky](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
+![Interakce dalších publikací nabídky](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
 
 ``` csharp
     UpdateOfferAndPublish()
@@ -127,7 +127,7 @@ Jakmile nabídky virtuálních počítačů (VM) je integrovaná do kanálu prů
     ValidateAndGoLive()
     {
         // Confirm the version in preview slot is the version that needs to go live
-        offer = CloudPartnerPortal.Client.GetOffer(offerName, “Preview”);
+        offer = CloudPartnerPortal.Client.GetOffer(offerName, "Preview");
         if(!offer[skuName].containsVersion(VMDisk.Version))
         {
             UpdateOfferAndPublish()

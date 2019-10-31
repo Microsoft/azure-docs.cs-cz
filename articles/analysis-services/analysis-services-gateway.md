@@ -4,15 +4,15 @@ description: Místní brána je nutná v případě, že se Server Analysis Serv
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8d9df32070ff252dff791650788888d1d9a6ce84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 35ffc7f3c97ca7ab14f94c3607560ffb6ea0b399
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294935"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146845"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 
@@ -50,7 +50,7 @@ Při instalaci pro prostředí Azure Analysis Services je důležité postupovat
 
 Brána vytvoří odchozí připojení k Azure Service Bus. Komunikuje na odchozích portech: TCP 443 (výchozí), 5671, 5672, 9350 až 9354.  Brána nevyžaduje příchozí porty.
 
-Možná budete muset v bráně firewall povolit IP adresy pro vaši oblast dat. [Seznam IP adres Microsoft Azure datacentra](https://www.microsoft.com/download/details.aspx?id=41653)si můžete stáhnout. Tento seznam se každý týden aktualizuje. IP adresy, které jsou uvedené v seznamu IP adres datového centra Azure, jsou v notaci CIDR. Další informace najdete v tématu [směrování mezi doménami bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Možná budete muset v bráně firewall zahrnout IP adresy pro vaši oblast dat. [Seznam IP adres Microsoft Azure datacentra](https://www.microsoft.com/download/details.aspx?id=41653)si můžete stáhnout. Tento seznam se každý týden aktualizuje. IP adresy, které jsou uvedené v seznamu IP adres datového centra Azure, jsou v notaci CIDR. Další informace najdete v tématu [směrování mezi doménami bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 Níže jsou uvedené plně kvalifikované názvy domény používané bránou.
 

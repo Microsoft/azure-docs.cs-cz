@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f263e3b57103174f0084ab3d25430d8c47359fd
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 569a1c83562a995f15e12013c864ef4c0447d963
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707300"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161693"
 ---
-# <a name="api"></a>rozhraní API
+# <a name="api"></a>API
 
-Azure Custom Decision Service poskytuje dvě rozhraní API, která jsou volána pro každé rozhodnutí: [rozhraní API pro hodnocení](#ranking-api) k zadání pořadí akcí a [API](#reward-api) pro odměnu pro výstup. Kromě toho poskytujeme [rozhraní API sady akcí](#action-set-api-customer-provided) , které určuje akce pro Azure Custom Decision Service. Tento článek se zabývá těmito třemi rozhraními API. Níže se používá Typický scénář, který ukazuje, kdy Custom Decision Service optimalizuje hodnocení článků.
+Azure Custom Decision Service poskytuje dvě rozhraní API, která jsou volána pro každé rozhodnutí: [rozhraní API pro hodnocení](#ranking-api) k zadání pořadí akcí a [API pro odměnu](#reward-api) pro výstup. Kromě toho poskytujeme [rozhraní API sady akcí](#action-set-api-customer-provided) , které určuje akce pro Azure Custom Decision Service. Tento článek se zabývá těmito třemi rozhraními API. Níže se používá Typický scénář, který ukazuje, kdy Custom Decision Service optimalizuje hodnocení článků.
 
 ## <a name="ranking-api"></a>Rozhraní API pro řazení
 
@@ -45,7 +45,7 @@ Vložte tento fragment kódu do HTML head stránky (kde se zobrazí individuáln
 > Funkce zpětného volání musí být definována před voláním rozhraní API pro řazení.
 
 > [!TIP]
-> Pro zvýšení latence je rozhraní API pro hodnocení zveřejněné přes protokol HTTP místo protokolu HTTPS, `https://ds.microsoft.com/api/v2/<appId>/rank/*`jako v.
+> Pro zvýšení latence je rozhraní API pro hodnocení zveřejněné přes protokol HTTP místo protokolu HTTPS, jako v `https://ds.microsoft.com/api/v2/<appId>/rank/*`.
 > Koncový bod HTTPS je však nutné použít, pokud je Front-Page obsluhován prostřednictvím protokolu HTTPS.
 
 Pokud se nepoužívají parametry, odpověď HTTP z rozhraní API pro hodnocení je řetězec ve formátu JSONP:
@@ -63,32 +63,32 @@ Prohlížeč pak spustí tento řetězec jako volání funkce `callback()`.
 
 Parametr funkce zpětného volání v předchozím příkladu má následující schéma:
 
-- `ranking`poskytuje pořadí adres URL, které se mají zobrazit.
-- `eventId`se interně používá Custom Decision Service k tomu, aby odpovídala tomuto hodnocení s odpovídajícími kliknutími.
-- `appId`umožňuje funkci zpětného volání rozlišovat mezi několika aplikacemi Custom Decision Service spuštěnými na stejné webové stránce.
-- `actionSets`Vypíše každou sadu akcí použitou v volání rozhraní API řazení společně s časovým razítkem UTC poslední úspěšné aktualizace. Custom Decision Service pravidelně aktualizuje informační kanály sady akcí. Například pokud některé sady akcí nejsou aktuální, může být nutné, aby funkce zpětného volání mohla přejít zpět na výchozí hodnocení.
+- `ranking` poskytuje pořadí adres URL, které se mají zobrazit.
+- `eventId` se interně používá Custom Decision Service k tomu, aby odpovídala tomuto hodnocení s odpovídajícími kliknutími.
+- `appId` umožňuje funkci zpětného volání rozlišovat mezi několika aplikacemi Custom Decision Service spuštěnými na stejné webové stránce.
+- `actionSets` vypíše každou sadu akcí použitou ve volání rozhraní API řazení společně s časovým razítkem UTC poslední úspěšné aktualizace. Custom Decision Service pravidelně aktualizuje informační kanály sady akcí. Například pokud některé sady akcí nejsou aktuální, může být nutné, aby funkce zpětného volání mohla přejít zpět na výchozí hodnocení.
 
 > [!IMPORTANT]
 > Zadané sady akcí jsou zpracovávány a pravděpodobně vyřazení, aby bylo možné vytvořit výchozí pořadí článků. Výchozí hodnocení pak bude přeobjednáno a vráceno v odpovědi HTTP. Výchozí hodnocení je definováno zde:
 >
 > - V rámci každé sady akcí se články vyřadí do 15 nejnovějších článků (Pokud se vrátí víc než 15).
 > - Pokud je zadáno více sad akcí, jsou sloučeny ve stejném pořadí jako v volání rozhraní API. Původní pořadí článků se zachová v každé sadě akcí. Duplicity se odeberou namísto předchozích kopií.
-> - První `n` články jsou uchovávány ze sloučeného seznamu článků, kde `n=20` jsou ve výchozím nastavení.
+> - První `n` články jsou uchovávány ze sloučeného seznamu článků, kde `n=20` ve výchozím nastavení.
 
 ### <a name="ranking-api-with-parameters"></a>Rozhraní API pro řazení s parametry
 
 Rozhraní API pro hodnocení umožňuje tyto parametry:
 
-- `details=1`a `details=2` vloží další podrobnosti o každém článku uvedeném v `ranking`tématu.
-- `limit=<n>`Určuje maximální počet článků ve výchozím hodnocení. `n`musí být v `2` rozsahu `30` až (nebo jinak je zkrácen na `2` nebo `30`v uvedeném pořadí).
-- `dnt=1`zakáže soubory cookie uživatele.
+- `details=1` a `details=2` vloží další podrobnosti o každém článku uvedeném v `ranking`.
+- `limit=<n>` určuje maximální počet článků ve výchozím hodnocení. `n` musí být mezi `2` a `30` (nebo se zkrátí na `2` nebo `30`v uvedeném pořadí).
+- `dnt=1` zakáže soubory cookie uživatele.
 
-Parametry lze kombinovat v kombinaci se standardem, syntaxí řetězce dotazu `details=2&dnt=1`, například.
+Parametry lze kombinovat v kombinaci se standardem, syntaxí řetězce dotazu, například `details=2&dnt=1`.
 
 > [!IMPORTANT]
-> Výchozí nastavení v Evropě by mělo být `dnt=1` , dokud zákazník nesouhlasí s hlavičkou cookie. Mělo by se také jednat o výchozí nastavení pro weby, které cílí na nezletilé. Další informace najdete v tématu věnovaném [podmínkám použití](https://www.microsoft.com/cognitive-services/en-us/legal/CognitiveServicesTerms20160804).
+> Výchozí nastavení v Evropě by mělo být `dnt=1`, dokud zákazník nesouhlasí s hlavičkou souboru cookie. Mělo by se také jednat o výchozí nastavení pro weby, které cílí na nezletilé. Další informace najdete v tématu věnovaném [podmínkám použití](https://www.microsoft.com/cognitive-services/en-us/legal/CognitiveServicesTerms20160804).
 
-Element vloží každý `guid`článek, pokud je obsluhován rozhraním API sady akcí. `details=1` Odpověď HTTP:
+Element `details=1` vloží `guid`každého článku, pokud je obsluhován rozhraním API sady akcí. Odpověď HTTP:
 
 ```json
 callback({
@@ -101,12 +101,12 @@ callback({
                  {"id":"<A2>","lastRefresh":"timeStamp2"}]});
 ```
 
-Element přidá další podrobnosti, které Custom Decision Service mohou extrahovat z článku "SEO MetaTags [featurization Code:](https://github.com/Microsoft/mwt-ds/tree/master/Crawl) `details=2`
+Element `details=2` přidá další podrobnosti, které Custom Decision Service může extrahovat z článku "SEO MetaTags [featurization Code](https://github.com/Microsoft/mwt-ds/tree/master/Crawl):
 
-- `title`z `<meta property="og:title" content="..." />` nebo `<meta property="twitter:title" content="..." />` nebo`<title>...</title>`
-- `description`z `<meta property="og:description" ... />` nebo `<meta property="twitter:description" content="..." />` nebo`<meta property="description" content="..." />`
-- `image`Výsledkem`<meta property="og:image" content="..." />`
-- `ds_id`Výsledkem`<meta name=”microsoft:ds_id” content="..." />`
+- `title` z `<meta property="og:title" content="..." />` nebo `<meta property="twitter:title" content="..." />` nebo `<title>...</title>`
+- `description` z `<meta property="og:description" ... />` nebo `<meta property="twitter:description" content="..." />` nebo `<meta property="description" content="..." />`
+- `image` z `<meta property="og:image" content="..." />`
+- `ds_id` z `<meta name="microsoft:ds_id" content="..." />`
 
 Odpověď HTTP:
 
@@ -121,7 +121,7 @@ callback({
                  {"id":"<A2>","lastRefresh":"timeStamp2"}]});
 ```
 
-`<details>` Element:
+Element `<details>`:
 
 ```json
 [{"guid":"123"}, {"description":"some text", "ds_id":"234", "image":"ImageUrl1", "title":"some text"}]
@@ -140,7 +140,7 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-Tady `data` je argument `callback()` funkce, jak je popsáno výše. Použití `data` v kódu pro zpracování Click vyžaduje péči. V tomto [kurzu](custom-decision-service-tutorial-news.md#use-the-apis)se zobrazí příklad.
+Zde `data` je argument funkce `callback()`, jak je popsáno výše. Použití `data` v kódu pro zpracování Click vyžaduje péči. V tomto [kurzu](custom-decision-service-tutorial-news.md#use-the-apis)se zobrazí příklad.
 
 Pro pouze testování je možné rozhraní API pro odměnu volat prostřednictvím [oblé](https://en.wikipedia.org/wiki/CURL):
 
@@ -172,16 +172,16 @@ Každé rozhraní API sady akcí se dá implementovat dvěma způsoby: jako kan�
 </rss>
 ```
 
-Každý element nejvyšší úrovně `<item>` popisuje akci:
+Každá `<item>` element nejvyšší úrovně popisuje akci:
 
-- `<link>`je povinný a používá se jako ID akce.
-- `<date>`ignoruje se, pokud je menší nebo rovno 15 položkám; v opačném případě je povinná.
+- `<link>` je povinný a používá se jako ID akce.
+- `<date>` se ignoruje, pokud je menší nebo rovno 15 položkám; v opačném případě je povinná.
   - Pokud existuje více než 15 položek, použije se 15 nejnovějších.
   - Musí být ve standardním formátu pro RSS nebo Atom, v uvedeném pořadí:
-    - [RFC 822](https://tools.ietf.org/html/rfc822) pro RSS: například`"Fri, 28 Apr 2017 18:02:06 GMT"`
-    - [RFC 3339](https://tools.ietf.org/html/rfc3339) pro Atom: například`"2016-12-19T16:39:57-08:00"`
-- `<title>`je volitelná a slouží ke generování funkcí, které popisují článek.
-- `<guid>`je volitelná a předána systémem do funkce zpětného volání (Pokud `?details` je parametr zadán v volání rozhraní API pro řazení).
+    - [RFC 822](https://tools.ietf.org/html/rfc822) pro technologii RSS: například `"Fri, 28 Apr 2017 18:02:06 GMT"`
+    - [RFC 3339](https://tools.ietf.org/html/rfc3339) pro Atom: například `"2016-12-19T16:39:57-08:00"`
+- `<title>` je volitelná a používá se ke generování funkcí popisujících článek.
+- `<guid>` je volitelná a předána systémem do funkce zpětného volání (Pokud je parametr `?details` zadán v volání rozhraní API pro řazení).
 
 Ostatní prvky uvnitř `<item>` jsou ignorovány.
 

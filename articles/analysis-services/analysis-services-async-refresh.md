@@ -4,17 +4,17 @@ description: Naučte se, jak kódovat asynchronní aktualizace pomocí REST API.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: daa25ecd12cb4c3b6ba72164c36cef01001448cf
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5fbb3f2cbc0e53ab1bc04d57b583802e26b92a60
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301157"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147360"
 ---
-# <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s REST API
+# <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
 
 Pomocí libovolného programovacího jazyka, který podporuje volání REST, můžete provádět asynchronní operace aktualizace dat na vašich Azure Analysis Services tabelárních modelech. To zahrnuje synchronizaci replik jen pro čtení pro horizontální navýšení kapacity dotazů. 
 
@@ -56,7 +56,7 @@ Můžete například použít příkaz POST v kolekci reaktuálnosti k proveden�
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověření
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2) v autorizační hlavičce a musí splňovat následující požadavky:
 
@@ -97,13 +97,13 @@ Tělo může vypadat takto:
 
 Určení parametrů není vyžadováno. Použije se výchozí hodnota.
 
-| Name             | Typ  | Popis  |Výchozí  |
+| Name (Název)             | Typ  | Popis  |Výchozí  |
 |------------------|-------|--------------|---------|
-| `Type`           | Výčet  | Typ zpracování, které má být provedeno. Typy jsou zarovnány s TMSL typy [příkazů pro obnovení](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) : Full, clearValues, vypočítat, dataonly, Automatic a defragmentovat. Typ přidání není podporován.      |   automatická      |
+| `Type`           | Výčet  | Typ zpracování, které má být provedeno. Typy jsou zarovnány s TMSL typy [příkazů pro obnovení](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) : Full, clearValues, vypočítat, dataonly, Automatic a defragmentovat. Typ přidání není podporován.      |   Automatické      |
 | `CommitMode`     | Výčet  | Určuje, zda budou objekty potvrzeny v dávkách nebo pouze v případě, že jsou dokončeny. Mezi režimy patří: Default, Transaction, partialBatch.  |  doručen       |
-| `MaxParallelism` | Hmot   | Tato hodnota určuje maximální počet vláken, ve kterých se paralelně spouští příkazy zpracování. Tato hodnota je zarovnána s vlastností MaxParallelism, kterou lze nastavit v [příkazu TMSL Sequence](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) nebo pomocí jiných metod.       | 10pruhový        |
-| `RetryCount`     | Hmot   | Určuje počet pokusů, kolikrát operace proběhne znovu, než dojde k selhání.      |     0,8    |
-| `Objects`        | skupin | Pole objektů, které mají být zpracovány. Každý objekt obsahuje: "Table" při zpracovávání celé tabulky nebo tabulky "a" partition "při zpracování oddílu. Nejsou-li zadány žádné objekty, je obnoven celý model. |   Zpracování celého modelu      |
+| `MaxParallelism` | Hmot   | Tato hodnota určuje maximální počet vláken, ve kterých se paralelně spouští příkazy zpracování. Tato hodnota je zarovnána s vlastností MaxParallelism, kterou lze nastavit v [příkazu TMSL Sequence](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) nebo pomocí jiných metod.       | 10        |
+| `RetryCount`     | Hmot   | Určuje počet pokusů, kolikrát operace proběhne znovu, než dojde k selhání.      |     0    |
+| `Objects`        | Pole | Pole objektů, které mají být zpracovány. Každý objekt obsahuje: "Table" při zpracovávání celé tabulky nebo tabulky "a" partition "při zpracování oddílu. Nejsou-li zadány žádné objekty, je obnoven celý model. |   Zpracování celého modelu      |
 
 CommitMode se rovná partialBatch. Používá se při počátečním zatížení velkých datových sad, které mohou trvat hodiny. Pokud operace aktualizace selže po úspěšném potvrzení jedné nebo více dávek, všechny úspěšně potvrzené dávky zůstanou popsány (nevrátí úspěšně potvrzené dávky).
 
@@ -211,7 +211,7 @@ Další informace o tom, jak nastavit instanční objekt a přiřadit potřebná
 3.  Spusťte ukázku.
 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Ukázky](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

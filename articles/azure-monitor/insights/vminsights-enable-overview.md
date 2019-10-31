@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 09/24/2019
-ms.openlocfilehash: 83c2264cd3aa3025e911db5079747930d1ae096b
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.date: 10/29/2019
+ms.openlocfilehash: 7e3dad5405289ee2d1f4ec8f7a586da70db9d56f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809459"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162253"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Přehled povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -37,14 +37,20 @@ Než začnete, ujistěte se, že rozumíte informacím v následujících část
 Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analytics v následujících oblastech:
 
 - Středozápadní USA
+- Západní USA<sup>1</sup>
 - Západní USA 2<sup>1</sup>
+- Střed USA – jih<sup>1</sup>
 - USA – východ
 - Východ USA 2<sup>1</sup>
+- Střed USA<sup>1</sup>
+- Střed USA – sever<sup>1</sup>
 - Kanada – střed
 - Velká Británie – jih
 - Severní Evropa<sup>1</sup>
 - Západní Evropa
+- Východní Asie<sup>1</sup>
 - Jihovýchodní Asie
+- Střed Indie<sup>1</sup>
 - Japonsko – východ<sup>1</sup>
 - Austrálie – východ<sup>1</sup>
 - Austrálie – jihovýchod<sup>1</sup>
@@ -199,6 +205,9 @@ Povolte Azure Monitor pro virtuální počítače pomocí jedné z metod popsan�
 ## <a name="performance-counters-enabled"></a>Čítače výkonu povoleny 
 
 Azure Monitor pro virtuální počítače nakonfiguruje pracovní prostor Log Analytics pro shromažďování čítačů výkonu, které používá. V následujících tabulkách jsou uvedeny objekty a čítače, které se shromažďují každých 60 sekund.
+
+>[!NOTE]
+>Následující seznam čítačů výkonu povolených v Azure Monitor pro virtuální počítače neomezuje možnost povolit další čítače, které potřebujete pro shromažďování sestav z virtuálních počítačů, které jsou součástí pracovního prostoru. Pokud tyto čítače zakážete, zabrání sada grafů výkonu, které jsou součástí funkce Performance, ze zobrazení využití prostředků z vašich virtuálních počítačů.
 
 ### <a name="windows-performance-counters"></a>Čítače výkonu Windows
 

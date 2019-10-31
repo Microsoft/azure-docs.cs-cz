@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c07daf4cf9f355e8eccfe618262dd06b4216106e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514021"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146389"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rychlý Start: obnovení databáze do spravované instance
 
@@ -35,12 +35,12 @@ Tento rychlý start:
 - Používá prostředky z rychlého startu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) .
 - Vyžaduje, aby byl v počítači nainstalován nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) .
 - Vyžaduje použití SSMS k připojení ke spravované instanci. V těchto rychlých startech se můžete podívat, jak se připojit:
+  - [Povolit veřejný koncový bod](sql-database-managed-instance-public-endpoint-configure.md) na spravované instanci – jedná se o doporučený postup pro tento kurz.
   - [Připojení ke spravované instanci Azure SQL Database z virtuálního počítače Azure](sql-database-managed-instance-configure-vm.md)
   - [Nakonfigurujte připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí](sql-database-managed-instance-configure-p2s.md).
-- Vyžaduje účet Azure Blob Storage (například Standard_LRS v2) na **veřejné IP adrese** chráněné s **přihlašovacími údaji SAS** , které mají `rw` oprávnění. [Privátní IP adresy pro úložiště objektů BLOB chráněné bránou firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) a koncovými body služby Azure Blob Storage se v tuto chvíli nepodporují.
 
 > [!NOTE]
-> Další informace o zálohování a obnovení databáze SQL Server pomocí služby Azure Blob Storage a [klíče sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)najdete v tématu [SQL Server zálohování na adresu URL](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
+> Další informace o zálohování a obnovení databáze SQL Server pomocí služby Azure Blob Storage a [klíče sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)najdete v tématu [SQL Server zálohování na adresu URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
 
 ## <a name="restore-the-database-from-a-backup-file"></a>Obnovení databáze ze záložního souboru
 
@@ -86,7 +86,11 @@ V SSMS postupujte podle těchto kroků a obnovte databázi World Importers do sp
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. Po dokončení obnovení zobrazte databázi v Průzkumníku objektů.
+7. Až se obnovení dokončí, zobrazte databázi v Průzkumník objektů. Pomocí zobrazení [Sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) můžete ověřit, že se obnovení databáze dokončilo.
+
+> [!NOTE]
+> Operace obnovení databáze je asynchronní a vyvolaly. Pokud dojde k přerušení připojení nebo k vypršení časového limitu, může dojít SQL Server Management Studio k chybě. Azure SQL Database se nadále snaží obnovit databázi na pozadí a průběh obnovy můžete sledovat pomocí zobrazení [Sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [Sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) .
+> V některých fázích procesu obnovení se v systémových zobrazeních zobrazí jedinečný identifikátor místo skutečného názvu databáze. Další informace o rozdílech chování příkazů `RESTORE` [najdete tady](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement).
 
 ## <a name="next-steps"></a>Další kroky
 

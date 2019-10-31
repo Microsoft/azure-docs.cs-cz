@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/10/2019
-ms.openlocfilehash: 7363f1ec11974dab3e0c0149c18ac4f0bf1c86ee
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/29/2019
+ms.openlocfilehash: 69ed49c0e1b90b4086a40bd15f5d276c6cfe137f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555190"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162216"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Dotazování protokolů z Azure Monitor pro virtuální počítače (Preview)
 Azure Monitor pro virtuální počítače shromažďuje metriky výkonu a připojení, data inventáře počítače a procesu a informace o stavu a předávají je do pracovního prostoru Log Analytics v Azure Monitor.  Tato data jsou k dispozici pro [dotazy](../../azure-monitor/log-query/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
@@ -25,7 +25,7 @@ K dispozici jsou interně generované vlastnosti, které můžete použít k ide
 - Počítač: pomocí *ResourceID* nebo *ResourceName_s* můžete jedinečně identifikovat počítač v rámci Log Analytics pracovního prostoru.
 - Proces: použijte *ResourceID* k jednoznačné identifikaci procesu v rámci Log Analytics pracovního prostoru. *ResourceName_s* je jedinečný v rámci kontextu počítače, na kterém je spuštěný proces (MachineResourceName_s). 
 
-Vzhledem k tomu, že pro zadaný proces a počítač v zadaném časovém rozsahu může existovat více záznamů, můžou dotazy vracet více než jeden záznam pro stejný počítač nebo proces. Pokud chcete zahrnout jenom poslední záznam, přidejte | odstranění duplicitních dat ResourceId do dotazu.
+Vzhledem k tomu, že pro zadaný proces a počítač v zadaném časovém rozsahu může existovat více záznamů, můžou dotazy vracet více než jeden záznam pro stejný počítač nebo proces. Chcete-li zahrnout pouze nejaktuálnější záznam, přidejte `| summarize arg_max(TimeGenerated, *) by ResourceId` do dotazu.
 
 ### <a name="connections-and-ports"></a>Připojení a porty
 Funkce metriky připojení zavádí dvě nové tabulky v Azure Monitor logs – VMConnection a VMBoundPort. Tyto tabulky obsahují informace o připojeních pro určitý počítač (příchozí a odchozí) a také porty serveru, které jsou na nich otevřené/aktivní. ConnectionMetrics se také zveřejňují prostřednictvím rozhraní API, která poskytují prostředky pro získání konkrétní metriky během časového intervalu. Připojení TCP vyplývající z *přijetí* na naslouchajícím soketu jsou příchozí, zatímco ta vytvořená *připojením* k dané IP adrese a portu jsou odchozí. Směr připojení je reprezentován vlastností Direction, která může být nastavena na hodnotu **příchozí** nebo **odchozí**. 
@@ -198,82 +198,82 @@ Záznamy s typem *ServiceMapProcess_CL* mají data inventáře pro procesy přip
 
 ### <a name="list-all-known-machines"></a>Zobrazit seznam všech známých počítačů
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="when-was-the-vm-last-rebooted"></a>Kdy byl virtuální počítač naposledy restartován
 ```kusto
-let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc
 ```
 
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Shrnutí virtuálních počítačů Azure podle image, umístění a SKU
 ```kusto
-ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s
 ```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Vypíše kapacitu fyzické paměti pro všechny spravované počítače.
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
 ```
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Vypíše název počítače, DNS, IP adresu a operační systém.
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 ```
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Najde všechny procesy pomocí SQL na příkazovém řádku.
 ```kusto
-ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Vyhledání počítače (nejaktuálnější záznam) podle názvu prostředku
 ```kusto
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Vyhledání počítače (nejaktuálnější záznam) podle IP adresy
 ```kusto
-search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Vypíše všechny známé procesy v zadaném počítači.
 ```kusto
-ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="list-all-computers-running-sql-server"></a>Vypíše všechny počítače se systémem SQL Server.
 ```kusto
-ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
 ```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Vypíše všechny jedinečné verze produktu ve vaší datacentru.
 ```kusto
-ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
 ```
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Vytvoření skupiny počítačů na všech počítačích se systémem CentOS
 ```kusto
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 ```
 
 ### <a name="bytes-sent-and-received-trends"></a>Odeslané bajty a přijaté trendy
 ```kusto
-VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart
 ```
 
 ### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>Které virtuální počítače Azure přenáší nejvíc bajtů
 ```kusto
-VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc
 ```
 
 ### <a name="link-status-trends"></a>Trendy stavu propojení
 ```kusto
-VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart
 ```
 
 ### <a name="connection-failures-trend"></a>Trend selhání připojení
 ```kusto
-VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart
 ```
 
 ### <a name="bound-ports"></a>Porty svázané
@@ -357,4 +357,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>Další kroky
 * Pokud s psaním dotazů protokolu v Azure Monitor začínáte, přečtěte si téma [použití Log Analytics](../../azure-monitor/log-query/get-started-portal.md) v Azure Portal k zápisu dotazů protokolu.
+
 * Přečtěte si informace o [zápisu vyhledávacích dotazů](../../azure-monitor/log-query/search-queries.md).

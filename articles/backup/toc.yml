@@ -232,6 +232,8 @@
           href: backup-azure-restore-windows-server.md
         - name: Obnovení stavu systému Windows Server
           href: backup-azure-restore-system-state.md
+        - name: Správa zálohování souborů a složek Windows Serveru
+          href: backup-azure-manage-mars.md
     - name: Trezor služby Recovery Services
       items:
         - name: Přehled trezorů služby Recovery Services

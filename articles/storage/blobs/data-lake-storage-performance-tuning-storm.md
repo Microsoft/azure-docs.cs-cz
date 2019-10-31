@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: ed13735b4da4818e969c4dddff68b55af6e71a15
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 108eeb03c0ed484e40b884372018bbbef686ee62
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855426"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159855"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Pokyny k ladění výkonu pro zaplavení v HDInsight a Azure Data Lake Storage Gen2
 
 Seznamte se s faktory, které byste měli vzít v úvahu při ladění výkonu topologie Azure. Je například důležité pochopit charakteristiky práce prováděné spoutů a šrouby (zda je práce v/v nebo v paměti). Tento článek obsahuje řadu pokynů pro ladění výkonu, včetně řešení běžných potíží.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: Vytvořte účet úložiště pro analytickou](data-lake-storage-quickstart-create-account.md)sestavu.
+* **Účet Azure Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření účtu úložiště pro analýzu](data-lake-storage-quickstart-create-account.md).
 * **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen2. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
 * **Spuštění clusteru nečinnosti v Data Lake Storage Gen2**. Další informace najdete v tématu zaplavení [v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
 * **Pokyny k ladění výkonu na data Lake Storage Gen2**.  Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen2 doprovodné materiály k ladění výkonu](data-lake-storage-performance-tuning-guidance.md).   
@@ -99,7 +99,7 @@ I když je vaše topologie spuštěná, můžete ji monitorovat v uživatelském
 
 ## <a name="troubleshoot-common-problems"></a>Řešení běžných problémů
 Tady je několik běžných scénářů řešení potíží.
-* **Pro mnoho řazených kolekcí členů vypršel časový limit.** Podívejte se na každý uzel v topologii, abyste zjistili, kde je kritický bod. Nejběžnějším důvodem je to, že šrouby není možné udržet s spoutů. To vede k řazené kolekci členů k ukládání vnitřních vyrovnávacích pamětí při čekání na zpracování. Zvažte zvýšení hodnoty časového limitu nebo snížení maximálního počtu vyspoutch čeká na vyřízení.
+* Pro **mnoho řazených kolekcí členů vypršel časový limit.** Podívejte se na každý uzel v topologii, abyste zjistili, kde je kritický bod. Nejběžnějším důvodem je to, že šrouby není možné udržet s spoutů. To vede k řazené kolekci členů k ukládání vnitřních vyrovnávacích pamětí při čekání na zpracování. Zvažte zvýšení hodnoty časového limitu nebo snížení maximálního počtu vyspoutch čeká na vyřízení.
 
 * **Existuje vysoká latence provádění procesu, ale nízká latence procesu.** V tomto případě je možné, že se řazené kolekce členů dostatečně rychle nepotvrzují. Ověřte, zda je k dispozici dostatečný počet potvrzování. Další možností je, že čekají ve frontě na příliš dlouhou dobu, než je tento šrouby začne zpracovávat. Snižte maximální počet Spout čeká na vyřízení.
 
@@ -110,10 +110,10 @@ Pokud jste dosáhli limitu šířky pásma poskytovaného Data Lake Storage Gen2
 
 Pokud chcete zjistit, jestli se vám omezilo omezení, povolte protokolování ladění na straně klienta:
 
-1. V **Ambari** >  **&lt;&gt;** zaplavekonfigurace > Advanced-Work-log4j, změňte kořenovou úroveň = "informace" na kořenovou úroveň = >   **&lt; "ladění"&gt;** . Restartujte všechny uzly/služby, aby se konfigurace projevila.
-2. Sledujte protokoly rozplavení v uzlech pracovních procesů (&lt;pod/var/log/Storm/Worker-artifacts/em&gt;&gt;/&lt;/Worker.log portu) pro výjimky omezování Data Lake Storage Gen2.
+1. V **Ambari** ** > á** > **config** > **Rozšířené možnosti pro vyrovnávání na pracovní proces-log4j**, změňte **&lt;root level = "info"&gt;** na **&lt;root level = "debug"&gt;** . Restartujte všechny uzly/služby, aby se konfigurace projevila.
+2. Pro&gt;výjimky omezení Sledujte protokoly topologie zahlcení v pracovních uzlech (v části/var/log/Storm/Worker-artifacts/&lt;&gt;/&lt;port Data Lake Storage Gen2/Worker.log).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Na [tomto blogu](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)se dá odkazovat na další ladění výkonu pro zaplavení.
 
 Další příklad ke spuštění najdete [v tomto tématu na GitHubu](https://github.com/hdinsight/storm-performance-automation).

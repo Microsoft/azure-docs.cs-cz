@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 512da03e6b473055e3a14d64a9ac0e25b8efca56
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 9dd3f6490d1e9f6bdd20e99025545d83bca191fb
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838919"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162321"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions triggerů HTTP a vazeb
 
@@ -49,16 +49,7 @@ Ve výchozím nastavení Trigger HTTP vrátí HTTP 200 OK s prázdným textem ve
 
 ## <a name="trigger---example"></a>Aktivační procedura – příklad
 
-Podívejte se na příklad konkrétního jazyka:
-
-* [C#](#trigger---c-example)
-* [C#skript (. csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-examples)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Aktivační procedura C# – příklad
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která vyhledává parametr `name` buď v řetězci dotazu, nebo v těle požadavku HTTP. Všimněte si, že návratová hodnota se používá pro výstupní vazbu, ale atribut návratové hodnoty není povinný.
 
@@ -82,7 +73,7 @@ public static async Task<IActionResult> Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Aktivační procedura C# – příklad skriptu
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
 Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu. Funkce vyhledá parametr `name` buď v řetězci dotazu, nebo v těle požadavku HTTP.
 
@@ -139,7 +130,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-Můžete vytvořit navázání na vlastní objekt místo `HttpRequest`. Tento objekt se vytvoří z těla žádosti a analyzuje se jako JSON. Podobně lze typ předat výstupní vazbě odpovědi HTTP a vrátí se jako tělo odpovědi spolu s kódem stavu 200.
+Místo `HttpRequest`můžete vytvořit vazby na vlastní objekt. Tento objekt se vytvoří z těla žádosti a analyzuje se jako JSON. Podobně lze typ předat výstupní vazbě odpovědi HTTP a vrátí se jako tělo odpovědi spolu s kódem stavu 200.
 
 ```csharp
 using System.Net;
@@ -158,73 +149,7 @@ public class Person {
 }
 ```
 
-### <a name="trigger---f-example"></a>Aktivační procedura F# – příklad
-
-Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [ F# funkci](functions-reference-fsharp.md) , která používá vazbu. Funkce vyhledá parametr `name` buď v řetězci dotazu, nebo v těle požadavku HTTP.
-
-Tady je soubor *Function. JSON* :
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "res",
-      "type": "http",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#trigger---configuration) .
-
-Zde je F# kód:
-
-```fsharp
-open System.Net
-open System.Net.Http
-open FSharp.Interop.Dynamic
-
-let Run(req: HttpRequestMessage) =
-    async {
-        let q =
-            req.GetQueryNameValuePairs()
-                |> Seq.tryFind (fun kv -> kv.Key = "name")
-        match q with
-        | Some kv ->
-            return req.CreateResponse(HttpStatusCode.OK, "Hello " + kv.Value)
-        | None ->
-            let! data = Async.AwaitTask(req.Content.ReadAsAsync<obj>())
-            try
-                return req.CreateResponse(HttpStatusCode.OK, "Hello " + data?name)
-            with e ->
-                return req.CreateErrorResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
-    } |> Async.StartAsTask
-```
-
-Potřebujete soubor `project.json`, který používá NuGet k odkazování na sestavení `FSharp.Interop.Dynamic` a `Dynamitey`, jak je znázorněno v následujícím příkladu:
-
-```json
-{
-  "frameworks": {
-    "net46": {
-      "dependencies": {
-        "Dynamitey": "1.0.2",
-        "FSharp.Interop.Dynamic": "3.0.0"
-      }
-    }
-  }
-}
-```
-
-### <a name="trigger---javascript-example"></a>Trigger – příklad JavaScriptu
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce vyhledá parametr `name` buď v řetězci dotazu, nebo v těle požadavku HTTP.
 
@@ -273,7 +198,7 @@ module.exports = function(context, req) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Trigger – příklad Pythonu
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Funkce vyhledá parametr `name` buď v řetězci dotazu, nebo v těle požadavku HTTP.
 
@@ -329,12 +254,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-### <a name="trigger---java-examples"></a>Trigger – příklady jazyka Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
-* [Načíst parametr z řetězce dotazu](#read-parameter-from-the-query-string-java)
-* [Přečíst tělo žádosti POST](#read-body-from-a-post-request-java)
-* [Načíst parametr z trasy](#read-parameter-from-a-route-java)
-* [Číst tělo POJO z požadavku POST](#read-pojo-body-from-a-post-request-java)
+* [Načíst parametr z řetězce dotazu](#read-parameter-from-the-query-string)
+* [Přečíst tělo žádosti POST](#read-body-from-a-post-request)
+* [Načíst parametr z trasy](#read-parameter-from-a-route)
+* [Číst tělo POJO z požadavku POST](#read-pojo-body-from-a-post-request)
 
 Následující příklady znázorňují vazbu triggeru HTTP v souboru *Function. JSON* a příslušné [funkce jazyka Java](functions-reference-java.md) , které používají vazbu. 
 
@@ -359,48 +284,48 @@ Tady je soubor *Function. JSON* :
 }
 ```
 
-#### <a name="read-parameter-from-the-query-string-java"></a>Načíst parametr z řetězce dotazu (Java)  
+#### <a name="read-parameter-from-the-query-string"></a>Načíst parametr z řetězce dotazu
 
-Tento příklad přečte parametr s názvem ```id``` z řetězce dotazu a použije ho k sestavení dokumentu JSON vráceného klientovi s typem obsahu ```application/json```. 
+Tento příklad přečte parametr s názvem ```id```, z řetězce dotazu a použije ho k sestavení dokumentu JSON vráceného klientovi, s typem obsahu ```application/json```. 
 
 ```java
-    @FunctionName("TriggerStringGet")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", 
-              methods = {HttpMethod.GET}, 
-              authLevel = AuthorizationLevel.ANONYMOUS)
-            HttpRequestMessage<Optional<String>> request,
-            final ExecutionContext context) {
-        
-        // Item list
-        context.getLogger().info("GET parameters are: " + request.getQueryParameters());
+@FunctionName("TriggerStringGet")
+public HttpResponseMessage run(
+        @HttpTrigger(name = "req", 
+            methods = {HttpMethod.GET}, 
+            authLevel = AuthorizationLevel.ANONYMOUS)
+        HttpRequestMessage<Optional<String>> request,
+        final ExecutionContext context) {
+    
+    // Item list
+    context.getLogger().info("GET parameters are: " + request.getQueryParameters());
 
-        // Get named parameter
-        String id = request.getQueryParameters().getOrDefault("id", "");
+    // Get named parameter
+    String id = request.getQueryParameters().getOrDefault("id", "");
 
-        // Convert and display
-        if (id.isEmpty()) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
-                          .body("Document not found.")
-                          .build();
-        } 
-        else {
-            // return JSON from to the client
-            // Generate document
-            final String name = "fake_name";
-            final String jsonDocument = "{\"id\":\"" + id + "\", " + 
-                                         "\"description\": \"" + name + "\"}";
-            return request.createResponseBuilder(HttpStatus.OK)
-                          .header("Content-Type", "application/json")
-                          .body(jsonDocument)
-                          .build();
-        }
+    // Convert and display
+    if (id.isEmpty()) {
+        return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                        .body("Document not found.")
+                        .build();
+    } 
+    else {
+        // return JSON from to the client
+        // Generate document
+        final String name = "fake_name";
+        final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                        "\"description\": \"" + name + "\"}";
+        return request.createResponseBuilder(HttpStatus.OK)
+                        .header("Content-Type", "application/json")
+                        .body(jsonDocument)
+                        .build();
     }
+}
 ```
 
-#### <a name="read-body-from-a-post-request-java"></a>Přečíst tělo žádosti POST (Java)  
+#### <a name="read-body-from-a-post-request"></a>Přečíst tělo žádosti POST
 
-V tomto příkladu se přečte tělo žádosti POST jako ```String``` a použije se k sestavení dokumentu JSON vráceného klientovi s typem obsahu ```application/json```.
+V tomto příkladu se přečte tělo žádosti POST, jako ```String```a použije se k sestavení dokumentu JSON vráceného klientovi s typem obsahu ```application/json```.
 
 ```java
     @FunctionName("TriggerStringPost")
@@ -434,45 +359,45 @@ V tomto příkladu se přečte tělo žádosti POST jako ```String``` a použije
     }
 ```
 
-#### <a name="read-parameter-from-a-route-java"></a>Číst parametr z trasy (Java)  
+#### <a name="read-parameter-from-a-route"></a>Načíst parametr z trasy
 
-Tento příklad přečte povinný parametr s názvem ```id``` a volitelný parametr ```name``` z cesty trasy a použije je k sestavení dokumentu JSON vráceného klientovi s typem obsahu ```application/json```. bil.
+Tento příklad přečte povinný parametr s názvem ```id```a volitelný parametr ```name``` z cesty trasy a použije je k sestavení dokumentu JSON vráceného klientovi s typem obsahu ```application/json```. bil.
 
 ```java
-    @FunctionName("TriggerStringRoute")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", 
-              methods = {HttpMethod.GET}, 
-              authLevel = AuthorizationLevel.ANONYMOUS,
-              route = "trigger/{id}/{name=EMPTY}") // name is optional and defaults to EMPTY
-            HttpRequestMessage<Optional<String>> request,
-            @BindingName("id") String id,
-            @BindingName("name") String name,
-            final ExecutionContext context) {
-        
-        // Item list
-        context.getLogger().info("Route parameters are: " + id);
+@FunctionName("TriggerStringRoute")
+public HttpResponseMessage run(
+        @HttpTrigger(name = "req", 
+            methods = {HttpMethod.GET}, 
+            authLevel = AuthorizationLevel.ANONYMOUS,
+            route = "trigger/{id}/{name=EMPTY}") // name is optional and defaults to EMPTY
+        HttpRequestMessage<Optional<String>> request,
+        @BindingName("id") String id,
+        @BindingName("name") String name,
+        final ExecutionContext context) {
+    
+    // Item list
+    context.getLogger().info("Route parameters are: " + id);
 
-        // Convert and display
-        if (id == null) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
-                          .body("Document not found.")
-                          .build();
-        } 
-        else {
-            // return JSON from to the client
-            // Generate document
-            final String jsonDocument = "{\"id\":\"" + id + "\", " + 
-                                         "\"description\": \"" + name + "\"}";
-            return request.createResponseBuilder(HttpStatus.OK)
-                          .header("Content-Type", "application/json")
-                          .body(jsonDocument)
-                          .build();
-        }
+    // Convert and display
+    if (id == null) {
+        return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                        .body("Document not found.")
+                        .build();
+    } 
+    else {
+        // return JSON from to the client
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                        "\"description\": \"" + name + "\"}";
+        return request.createResponseBuilder(HttpStatus.OK)
+                        .header("Content-Type", "application/json")
+                        .body(jsonDocument)
+                        .build();
     }
+}
 ```
 
-#### <a name="read-pojo-body-from-a-post-request-java"></a>Číst tělo POJO z požadavku POST (Java)  
+#### <a name="read-pojo-body-from-a-post-request"></a>Číst tělo POJO z požadavku POST
 
 Zde je kód pro třídu ```ToDoItem```, na kterou se odkazuje v tomto příkladu:
 
@@ -504,43 +429,49 @@ public class ToDoItem {
 
 ```
 
-Tento příklad přečte tělo žádosti POST. Text žádosti se automaticky rozdělí do objektu @no__t 0 a vrátí se klientovi s typem obsahu ```application/json```. Parametr ```ToDoItem``` je serializován modulem runtime Functions, protože je přiřazen vlastnosti ```body``` třídy ```HttpMessageResponse.Builder```.
+Tento příklad přečte tělo žádosti POST. Text žádosti se automaticky rozdělí do objektu ```ToDoItem``` a vrátí se klientovi s typem obsahu ```application/json```. Parametr ```ToDoItem``` je serializován modulem runtime Functions, protože je přiřazen vlastnosti ```body``` třídy ```HttpMessageResponse.Builder```.
 
 ```java
-    @FunctionName("TriggerPojoPost")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", 
-              methods = {HttpMethod.POST}, 
-              authLevel = AuthorizationLevel.ANONYMOUS)
-            HttpRequestMessage<Optional<ToDoItem>> request,
-            final ExecutionContext context) {
-        
-        // Item list
-        context.getLogger().info("Request body is: " + request.getBody().orElse(null));
+@FunctionName("TriggerPojoPost")
+public HttpResponseMessage run(
+        @HttpTrigger(name = "req", 
+            methods = {HttpMethod.POST}, 
+            authLevel = AuthorizationLevel.ANONYMOUS)
+        HttpRequestMessage<Optional<ToDoItem>> request,
+        final ExecutionContext context) {
+    
+    // Item list
+    context.getLogger().info("Request body is: " + request.getBody().orElse(null));
 
-        // Check request body
-        if (!request.getBody().isPresent()) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
-                          .body("Document not found.")
-                          .build();
-        } 
-        else {
-            // return JSON from to the client
-            // Generate document
-            final ToDoItem body = request.getBody().get();
-            return request.createResponseBuilder(HttpStatus.OK)
-                          .header("Content-Type", "application/json")
-                          .body(body)
-                          .build();
-        }
+    // Check request body
+    if (!request.getBody().isPresent()) {
+        return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                        .body("Document not found.")
+                        .build();
+    } 
+    else {
+        // return JSON from to the client
+        // Generate document
+        final ToDoItem body = request.getBody().get();
+        return request.createResponseBuilder(HttpStatus.OK)
+                        .header("Content-Type", "application/json")
+                        .body(body)
+                        .build();
     }
+}
 ```
+
+---
 
 ## <a name="trigger---attributes"></a>Aktivační atributy
 
-V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) .
+V [ C# knihovnách tříd](functions-dotnet-class-library.md) a Java je k dispozici atribut `HttpTrigger` pro konfiguraci funkce.
 
-Můžete nastavit úroveň autorizace a povolené metody HTTP v parametrech konstruktoru atributu a existují vlastnosti pro typ Webhooku a šablonu směrování. Další informace o těchto nastaveních najdete v tématu [Trigger-Configuration](#trigger---configuration). Tady je atribut `HttpTrigger` v signatuře metody:
+Můžete nastavit úroveň autorizace a povolené metody HTTP v parametrech konstruktoru atributu, typ Webhooku a šablonu směrování. Další informace o těchto nastaveních najdete v tématu [Trigger-Configuration](#trigger---configuration).
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Tento příklad ukazuje, jak použít atribut [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) .
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
@@ -551,7 +482,39 @@ public static Task<IActionResult> Run(
 }
 ```
 
-Úplný příklad najdete v tématu [Trigger – C# příklad](#trigger---c-example).
+Úplný příklad najdete v [příkladu triggeru](#trigger---example).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+
+C# Skript nepodporuje atributy.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atributy nejsou podporovány jazykem JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python nepodporuje atributy.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Tento příklad ukazuje, jak použít atribut [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) .
+
+```java
+@FunctionName("HttpTriggerJava")
+public HttpResponseMessage<String> HttpTrigger(
+        @HttpTrigger(name = "req",
+                     methods = {"get"},
+                     authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<String> request,
+        final ExecutionContext context) {
+
+    ...
+}
+```
+
+Úplný příklad najdete v [příkladu triggeru](#trigger---example).
+
+---
 
 ## <a name="trigger---configuration"></a>Aktivační událost – konfigurace
 
@@ -562,24 +525,22 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 | **type** | –| Požadováno – musí být nastavené na `httpTrigger`. |
 | **direction** | –| Požadováno – musí být nastavené na `in`. |
 | **Jméno** | –| Required – název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. |
-| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Určuje, které klíče (pokud existují) musí být k žádosti přítomny, aby bylo možné funkci vyvolat. Úroveň autorizace může být jedna z následujících hodnot: <ul><li>vyžaduje se <code>anonymous</code> @ no__t-1No API Key.</li><li><code>function</code> @ no__t-1A – vyžaduje se klíč rozhraní API pro konkrétní funkci. Toto je výchozí hodnota, pokud není zadána žádná.</li><li><code>admin</code> @ no__t-1The hlavní klíč je povinný.</li></ul> Další informace najdete v části o [autorizačních klíčích](#authorization-keys). |
+| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Určuje, které klíče (pokud existují) musí být k žádosti přítomny, aby bylo možné funkci vyvolat. Úroveň autorizace může být jedna z následujících hodnot: <ul><li><code>anonymous</code>&mdash;není vyžadován žádný klíč rozhraní API.</li><li><code>function</code>&mdash;je vyžadován klíč rozhraní API specifický pro danou funkci. Toto je výchozí hodnota, pokud není zadána žádná.</li><li><code>admin</code>&mdash;je vyžadován hlavní klíč.</li></ul> Další informace najdete v části o [autorizačních klíčích](#authorization-keys). |
 | **způsobů** |**Způsobů** | Pole metod HTTP, na které funkce reaguje. Pokud není zadaný, funkce reaguje na všechny metody HTTP. Viz [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
-| **cestě** | **Cestě** | Definuje šablonu směrování, která řídí, které adresy URL žádostí vaše funkce reaguje. Pokud není zadaná žádná výchozí hodnota, je `<functionname>`. Další informace najdete v tématu [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
-| **webHookType** | **WebHookType** | _Podporováno pouze pro modul runtime verze 1. x._<br/><br/>Nakonfiguruje Trigger HTTP tak, aby sloužil jako přijímač [Webhooku](https://en.wikipedia.org/wiki/Webhook) pro zadaného zprostředkovatele. Pokud jste nastavili tuto vlastnost, nenastavujte vlastnost `methods`. Typ Webhooku může být jedna z následujících hodnot:<ul><li><code>genericJson</code> @ no__t-1A – koncový bod Webhooku pro obecné účely bez logiky pro konkrétního poskytovatele. Toto nastavení omezuje požadavky jenom na ty, které používají HTTP POST a typ obsahu `application/json`.</li><li>funkce <code>github</code> @ no__t-1The reaguje na [Webhooky GitHubu](https://developer.github.com/webhooks/). Nepoužívejte vlastnost _authLevel_ s Webhooky GitHubu. Další informace najdete v části Webhooky GitHubu dále v tomto článku.</li><li>funkce <code>slack</code> @ no__t-1The reaguje na [Webhooky časové rezervy](https://api.slack.com/outgoing-webhooks). Nepoužívejte vlastnost _authLevel_ s Webhooky časové rezervy. Další informace najdete v části časová pole webhooků dále v tomto článku.</li></ul>|
+| **cestě** | **Cestě** | Definuje šablonu směrování, která řídí, které adresy URL žádostí vaše funkce reaguje. Výchozí hodnota, pokud není zadána, je `<functionname>`. Další informace najdete v tématu [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
+| **webHookType** | **WebHookType** | _Podporováno pouze pro modul runtime verze 1. x._<br/><br/>Nakonfiguruje Trigger HTTP tak, aby sloužil jako přijímač [Webhooku](https://en.wikipedia.org/wiki/Webhook) pro zadaného zprostředkovatele. Pokud jste tuto vlastnost nastavili, nenastavujte vlastnost `methods`. Typ Webhooku může být jedna z následujících hodnot:<ul><li><code>genericJson</code>&mdash;koncový bod Webhooku pro obecné účely bez logiky pro konkrétního poskytovatele. Toto nastavení omezuje požadavky jenom na ty, které používají HTTP POST a s typem obsahu `application/json`.</li><li><code>github</code>&mdash;funkce reaguje na [Webhooky GitHubu](https://developer.github.com/webhooks/). Nepoužívejte vlastnost _authLevel_ s Webhooky GitHubu. Další informace najdete v části Webhooky GitHubu dále v tomto článku.</li><li><code>slack</code>&mdash;funkce reaguje na [Webhooky časové rezervy](https://api.slack.com/outgoing-webhooks). Nepoužívejte vlastnost _authLevel_ s Webhooky časové rezervy. Další informace najdete v části časová pole webhooků dále v tomto článku.</li></ul>|
 
 ## <a name="trigger---usage"></a>Aktivační událost – využití
 
-Pro C# funkce F# a můžete deklarovat typ vstupu triggeru tak, aby byl buď `HttpRequest`, nebo vlastní typ. Pokud zvolíte možnost `HttpRequest`, získáte úplný přístup k objektu Request. Pro vlastní typ se modul runtime pokusí analyzovat tělo požadavku JSON pro nastavení vlastností objektu.
-
-Pro funkce JavaScriptu poskytuje modul runtime Functions text žádosti místo objektu Request. Další informace najdete v [příkladu triggeru JavaScriptu](#trigger---javascript-example).
+Vstupní typ triggeru je deklarován jako buď `HttpRequest`, nebo jako vlastní typ. Pokud zvolíte možnost `HttpRequest`, získáte úplný přístup k objektu Request. Pro vlastní typ se modul runtime pokusí analyzovat tělo požadavku JSON pro nastavení vlastností objektu.
 
 ### <a name="customize-the-http-endpoint"></a>Přizpůsobení koncového bodu HTTP
 
 Ve výchozím nastavení platí, že když vytvoříte funkci triggeru HTTP, funkce je adresovat s cestou formuláře:
 
-    http://<yourapp>.azurewebsites.net/api/<funcname>
+    http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
 
-Tuto trasu můžete přizpůsobit pomocí volitelné vlastnosti `route` u vstupní vazby triggeru protokolu HTTP. Například následující soubor *Function. JSON* definuje vlastnost `route` pro aktivační událost protokolu http:
+Tuto trasu můžete přizpůsobit pomocí vlastnosti volitelné `route` vstupní vazby triggeru protokolu HTTP. Například následující soubor *Function. JSON* definuje vlastnost `route` pro Trigger http:
 
 ```json
 {
@@ -603,52 +564,116 @@ Tuto trasu můžete přizpůsobit pomocí volitelné vlastnosti `route` u vstupn
 Pomocí této konfigurace je nyní funkce adresovat s následujícím směrováním místo původní trasy.
 
 ```
-http://<yourapp>.azurewebsites.net/api/products/electronics/357
+http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-To umožňuje, aby kód funkce podporoval dva parametry v adrese, _kategorii_ a _ID_. Pomocí parametrů můžete použít jakékoli [omezení trasy webového rozhraní API](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) . Následující C# kód funkce využívá oba parametry.
+To umožňuje, aby kód funkce podporoval dva parametry v adrese, _kategorii_ a _ID_.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Pomocí parametrů můžete použít jakékoli [omezení trasy webového rozhraní API](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) . Následující C# kód funkce využívá oba parametry.
 
 ```csharp
-public static Task<IActionResult> Run(HttpRequest req, string category, int? id, ILogger log)
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+
+public static IActionResult Run(HttpRequest req, string category, int? id, ILogger log)
 {
-    if (id == null)
-    {
-        return (ActionResult)new OkObjectResult($"All {category} items were requested.");
-    }
-    else
-    {
-        return (ActionResult)new OkObjectResult($"{category} item with id = {id} has been requested.");
-    }
-    
-    // -----
-    log.LogInformation($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
+    var message = String.Format($"Category: {category}, ID: {id}");
+    return (ActionResult)new OkObjectResult(message);
 }
 ```
 
-Tady je funkce Node. js, která používá stejné parametry směrování.
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+
+Pomocí parametrů můžete použít jakékoli [omezení trasy webového rozhraní API](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) . Následující C# kód funkce využívá oba parametry.
+
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+
+public static IActionResult Run(HttpRequest req, string category, int? id, ILogger log)
+{
+    var message = String.Format($"Category: {category}, ID: {id}");
+    return (ActionResult)new OkObjectResult(message);
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+V uzlu poskytuje modul runtime Functions tělo žádosti z objektu `context`. Další informace najdete v [příkladu triggeru JavaScriptu](#trigger---example).
+
+Následující příklad ukazuje, jak číst parametry směrování z `context.bindingData`.
 
 ```javascript
 module.exports = function (context, req) {
 
     var category = context.bindingData.category;
     var id = context.bindingData.id;
+    var message = `Category: ${category}, ID: ${id}`;
 
-    if (!id) {
-        context.res = {
-            // status defaults to 200 */
-            body: "All " + category + " items were requested."
-        };
-    }
-    else {
-        context.res = {
-            // status defaults to 200 */
-            body: category + " item with id = " + id + " was requested."
-        };
+    context.res = {
+        body: message;
     }
 
     context.done();
 }
 ```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Kontext spuštění funkce je zveřejněn prostřednictvím parametru deklarovaného jako `func.HttpRequest`. Tato instance umožňuje funkci přistupovat k parametrům datových tras, hodnotám řetězce dotazu a metodám, které umožňují vracet odpovědi HTTP.
+
+Po definování jsou parametry směrování k dispozici funkci voláním metody `route_params`.
+
+```python
+import logging
+
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    category = req.route_params.get('category')
+    id = req.route_params.get('id')
+    message = f"Category: {category}, ID: {id}"
+
+    return func.HttpResponse(message)
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Kontext spuštění funkce je vlastnosti deklarované v atributu `HttpTrigger`. Atribut umožňuje definovat parametry směrování, úrovně autorizace, příkazy HTTP a instanci příchozího požadavku.
+
+Parametry směrování jsou definovány pomocí atributu `HttpTrigger`.
+
+```java
+package com.function;
+
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class HttpTriggerJava {
+    public HttpResponseMessage<String> HttpTrigger(
+            @HttpTrigger(name = "req",
+                         methods = {"get"},
+                         authLevel = AuthorizationLevel.FUNCTION,
+                         route = "products/{category:alpha}/{id:int}") HttpRequestMessage<String> request,
+            @BindingName("category") String category,
+            @BindingName("id") int id,
+            final ExecutionContext context) {
+
+        String message = String.format("Category  %s, ID: %d", category, id);
+        return request.createResponseBuilder(HttpStatus.OK).body(message).build();
+    }
+}
+```
+
+---
 
 Ve výchozím nastavení jsou všechny trasy funkcí s předponou *rozhraní API*. Můžete také přizpůsobit nebo odebrat předponu pomocí vlastnosti `http.routePrefix` v souboru [Host. JSON](functions-host-json.md) . Následující příklad odebere předponu trasy *rozhraní API* pomocí prázdného řetězce pro předponu v souboru *Host. JSON* .
 
@@ -666,7 +691,41 @@ Pokud vaše aplikace Function App používá [App Service ověřování/autoriza
 
 Tyto informace můžete také přečíst z dat vazby. Tato funkce je k dispozici pouze pro modul runtime Functions 2. x. K dispozici je také v současnosti jenom pro jazyky .NET.
 
-V jazycích .NET jsou tyto informace k dispozici jako [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). ClaimsPrincipal je k dispozici jako součást kontextu požadavku, jak je znázorněno v následujícím příkladu:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Informace týkající se ověřených klientů jsou k dispozici jako [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). ClaimsPrincipal je k dispozici jako součást kontextu požadavku, jak je znázorněno v následujícím příkladu:
+
+```csharp
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+public static IActionResult Run(HttpRequest req, ILogger log)
+{
+    ClaimsPrincipal identities = req.HttpContext.User;
+    // ...
+    return new OkObjectResult();
+}
+```
+
+Alternativně je možné ClaimsPrincipal jednoduše zahrnout jako další parametr v signatuře funkce:
+
+```csharp
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
+{
+    // ...
+    return;
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+
+Informace týkající se ověřených klientů jsou k dispozici jako [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). ClaimsPrincipal je k dispozici jako součást kontextu požadavku, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 using System.Net;
@@ -696,8 +755,21 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
     // ...
     return;
 }
-
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
+
+---
 
 ### <a name="authorization-keys"></a>Autorizační klíče
 
@@ -716,7 +788,7 @@ Existují dva typy klíčů:
 
 Každý klíč má název pro referenci a výchozí klíč (s názvem "výchozí") na úrovni funkce a hostitele. Klíče funkcí mají přednost před klíči hostitele. Pokud jsou definovány dva klíče se stejným názvem, je klíč funkce vždy použit.
 
-Každá aplikace Function App má také speciální **hlavní klíč**. Tento klíč je hostitelským klíčem s názvem `_master`, který poskytuje přístup pro správu rozhraní API modulu runtime. Tento klíč nelze odvolat. Když nastavíte úroveň autorizace `admin`, žádosti musí používat hlavní klíč. jakýkoli jiný klíč způsobí selhání autorizace.
+Každá aplikace Function App má také speciální **hlavní klíč**. Tento klíč je hostitelský klíč s názvem `_master`, který poskytuje přístup pro správu rozhraní API modulu runtime. Tento klíč nelze odvolat. Když nastavíte úroveň autorizace `admin`, musí žádosti používat hlavní klíč. jakýkoli jiný klíč způsobí selhání autorizace.
 
 > [!CAUTION]  
 > Vzhledem ke zvýšeným oprávněním v aplikaci Function App udělené hlavním klíčem byste tento klíč neměli sdílet s třetími stranami nebo ho distribuovat v nativních klientských aplikacích. Při volbě úrovně autorizace Správce buďte opatrní.
@@ -735,7 +807,7 @@ Většina šablon triggeru HTTP vyžaduje v žádosti klíč rozhraní API. Vaš
 
     https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
 
-Klíč lze zahrnout do proměnné řetězce dotazu s názvem `code`, jak je uvedeno výše. Může být také zahrnutá v hlavičce HTTP `x-functions-key`. Hodnotou klíče může být libovolný klíč funkce definovaný pro funkci nebo libovolný klíč hostitele.
+Klíč lze zahrnout do proměnné řetězce dotazu s názvem `code`, jak je uvedeno výše. Může být také zahrnutá v hlavičce `x-functions-key` HTTP. Hodnotou klíče může být libovolný klíč funkce definovaný pro funkci nebo libovolný klíč hostitele.
 
 Můžete povolit anonymní požadavky, které nevyžadují klíče. Můžete také vyžadovat, aby byl hlavní klíč použit. Výchozí úroveň autorizace se mění pomocí vlastnosti `authLevel` ve formátu JSON vazby. Další informace najdete v tématu [Trigger-Configuration](#trigger---configuration).
 
@@ -781,7 +853,7 @@ Autorizace Webhooku se zpracovává komponentou přijímače Webhooku, součást
 
 ## <a name="trigger---limits"></a>Aktivační události – omezení
 
-Délka požadavku HTTP je omezená na 100 MB (104 857 600 bajtů) a délka adresy URL je omezená na 4 KB (4 096 bajtů). Tato omezení jsou určena prvkem `httpRuntime` [souboru Web. config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)modulu runtime.
+Délka požadavku HTTP je omezená na 100 MB (104 857 600 bajtů) a délka adresy URL je omezená na 4 KB (4 096 bajtů). Tato omezení jsou určena `httpRuntime` prvkem [souboru Web. config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)modulu runtime.
 
 Pokud funkce, která používá Trigger HTTP, nebude dokončena během přibližně 2,5 minut, brána vyprší a vrátí chybu HTTP 502. Funkce bude pokračovat v běhu, ale nebude moci vrátit odpověď HTTP. U dlouhotrvajících funkcí doporučujeme, abyste provedli asynchronní vzorce a vraceli umístění, kde můžete testovat stav žádosti pomocí příkazového testu. Informace o tom, jak dlouho může funkce běžet, najdete v tématu [škálování a plán využití hostování](functions-scale.md#timeout).
 
@@ -803,11 +875,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|
 | **type** |Musí být nastavené na `http`. |
 | **direction** | Musí být nastavené na `out`. |
-|**Jméno** | Název proměnné použitý v kódu funkce pro odpověď, nebo `$return` pro použití návratové hodnoty. |
+|**Jméno** | Název proměnné použitý v kódu funkce pro odpověď nebo `$return` pro použití návratové hodnoty. |
 
 ## <a name="output---usage"></a>Výstup – využití
 
-K odeslání odpovědi HTTP použijte standardní vzory odezvy jazyka. V C# nebo C# skriptu nastavte funkci na návratový typ `IActionResult` nebo `Task<IActionResult>`. V C#nástroji není atribut návratové hodnoty požadován.
+K odeslání odpovědi HTTP použijte standardní vzory odezvy jazyka. V C# nebo C# skriptu, nastavte návratový typ funkce `IActionResult` nebo `Task<IActionResult>`. V C#nástroji není atribut návratové hodnoty požadován.
 
 Například odpovědi najdete v [příkladu triggeru](#trigger---example).
 

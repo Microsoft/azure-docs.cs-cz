@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e6973ee311f1d3f5ba19714695f67bd321d953b7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c104af3bcfddb4b0863f69b6571d4cd62ca9c2b8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295040"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147115"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Rychlý start: Vytvoření serveru – portál
 
@@ -45,7 +45,7 @@ Tento rychlý start popisuje, jak pomocí portálu vytvořit prostředek serveru
    * **Nastavení úložiště zálohování:** Volitelné. Pokud už máte [účet úložiště](../storage/common/storage-introduction.md), můžete ho zadat jako výchozí účet úložiště pro zálohování modelové databáze. Později můžete zadat také nastavení [zálohování a obnovení](analysis-services-backup.md).
    * **Vypršení platnosti klíče úložiště:** Volitelné. Zadejte dobu platnosti klíče úložiště.
 
-Vytvoření serveru obvykle trvá necelou minutu. Pokud jste vybrali možnost **Přidat na portál**, přejděte na portál a prohlédněte si nový server. Případně přejděte do části **Všechny služby** > **Analysis Services** a zkontrolujte, jestli je server připravený. Servery podporují tabelární modely na úrovni kompatibility 1200 a vyšší. Úroveň kompatibility modelu je určena v SSDT nebo SSMS.
+Vytvoření serveru obvykle trvá necelou minutu. Pokud jste vybrali možnost **Přidat na portál**, přejděte na portál a prohlédněte si nový server. Případně přejděte do části **Všechny služby** > **Analysis Services** a zkontrolujte, jestli je server připravený. Servery podporují tabelární modely na úrovni kompatibility 1200 a vyšší. Úroveň kompatibility modelu je určena v aplikaci Visual Studio nebo SSMS.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

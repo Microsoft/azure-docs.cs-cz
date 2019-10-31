@@ -4,17 +4,17 @@ description: Naučte se spravovat správce serveru pro Analysis Services Server 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fbb7d339c5c3c12990a49d6ebd53760e101f4eb7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f597bc9e34a606a6e40a57e5fc7af791d972c68e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301091"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146270"
 ---
-# <a name="manage-server-administrators"></a>Správa správců serverů
+# <a name="manage-server-administrators"></a>Správa správců serveru
 
 Správci serveru musí být platný uživatel nebo skupina zabezpečení v Azure Active Directory (Azure AD) pro tenanta, ve kterém se server nachází. Správce serverů můžete spravovat pomocí **Analysis Services správci** serveru v Azure Portal, vlastností serveru v SSMS, PowerShellu nebo REST API. 
 
@@ -43,7 +43,7 @@ Správci serveru musí být platný uživatel nebo skupina zabezpečení v Azure
 K určení parametru správce při vytváření nového serveru použijte rutinu [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) . <br>
 Pomocí rutiny [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) můžete změnit parametr správce existujícího serveru.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 K určení vlastnosti asAdministrator při vytváření nového serveru použijte [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) . <br>
 K určení vlastnosti asAdministrator při úpravách stávajícího serveru použijte [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update) . <br>
@@ -54,5 +54,5 @@ K určení vlastnosti asAdministrator při úpravách stávajícího serveru pou
 
 [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md)  
 [Správa databázových rolí a uživatelů](analysis-services-database-users.md)  
-[Access Control na základě rolí](../role-based-access-control/overview.md)  
+[Řízení přístupu na základě role](../role-based-access-control/overview.md)  
 

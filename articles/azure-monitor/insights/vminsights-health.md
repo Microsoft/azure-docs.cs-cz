@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: c9dfd3bfcacc1f50bb9be04c927bf3cbb4895f6d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: e19ba55e48c537974ad4136d40505514b92d387d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555253"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162293"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Pochopení stavu virtuálních počítačů Azure
 
@@ -339,7 +339,7 @@ Chcete-li identifikovat *monitorId* pro konkrétní kritéria stavu, následují
 2. Zadáním následujícího příkazu načtete všechna aktivní kritéria stavu na konkrétním virtuálním počítači a určíte hodnotu vlastnosti *monitorId* :
 
     ```
-    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
+    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview"
     ```
 
     Následující příklad ukazuje výstup příkazu *ARMCLIENT Get* . Poznamenejte si hodnotu *MonitorId*. Tato hodnota je vyžadována pro další krok, kde je nutné zadat ID kritérií stavu a upravit její vlastnost k vytvoření výstrahy.

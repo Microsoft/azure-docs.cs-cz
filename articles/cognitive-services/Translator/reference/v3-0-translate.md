@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: 24f27dfde34413d1ac98f795eddc07103d3cbf3c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b809171549a8f3cbbbb6ccad1553608598afa345
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515260"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161714"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3,0: přeložit
 
@@ -510,7 +510,7 @@ Pokud už znáte překlad, který chcete použít pro slovo nebo frázi, můžet
 Značka, která se má dodat, používá následující syntaxi.
 
 ``` 
-<mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+<mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 ```
 
 Například je třeba vzít v úvahu anglickou větu "slovo wordomatic je položka slovníku". Pokud chcete zachovat slovo _wordomatic_ v překladu, pošlete žádost:
@@ -525,7 +525,7 @@ Výsledek je následující:
 [
     {
         "translations":[
-            {"text":"Das Wort "wordomatic" ist ein Wörterbucheintrag.","to":"de"}
+            {"text":"Das Wort \"wordomatic\" ist ein Wörterbucheintrag.","to":"de"}
         ]
     }
 ]

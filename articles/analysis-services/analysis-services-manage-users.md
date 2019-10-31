@@ -4,15 +4,15 @@ description: Přečtěte si o ověřování a uživatelských oprávněních v A
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc66b34492b34a6e0f239d19ee10fbd79b683a14
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a48292b7600d8b9e400bf1e2d61aec313ce29f4b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294923"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146869"
 ---
 # <a name="authentication-and-user-permissions"></a>Ověřování a uživatelská oprávnění
 
@@ -28,11 +28,11 @@ Všechny klientské aplikace a nástroje používají k připojení k serveru je
 
 Všechny tři klientské knihovny podporují jak interaktivní tok Azure AD, tak i neinteraktivní metody ověřování. Dvě neinteraktivní metody, heslo služby Active Directory a integrované metody ověřování služby Active Directory, se dají použít v aplikacích, které využívají AMOMD a MSOLAP. Tyto dvě metody nikdy nevedou k místním dialogovým oknům.
 
-Klientské aplikace, jako je Excel a Power BI Desktop, a nástroje jako SSMS a SSDT instalují nejnovější verze knihoven, když se aktualizují na nejnovější verzi. Power BI Desktop, SSMS a SSDT se aktualizují měsíčně. Excel je [aktualizovaný pomocí Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Aktualizace Office 365 jsou méně časté a některé organizace používají odložený kanál, což znamená, že aktualizace jsou odložené až na tři měsíce.
+Klientské aplikace, jako je Excel a Power BI Desktop, a nástroje, jako je například SSMS a Analysis Services Project Extensions pro sadu Visual Studio, nainstalují nejnovější verze knihoven až po aktualizaci na nejnovější verzi. Rozšíření projektů Power BI Desktop, SSMS a Analysis Services se aktualizují měsíčně. Excel je [aktualizovaný pomocí Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Aktualizace Office 365 jsou méně časté a některé organizace používají odložený kanál, což znamená, že aktualizace jsou odložené až na tři měsíce.
 
 V závislosti na klientské aplikaci nebo nástroji, které používáte, se typ ověřování a způsob, jakým se přihlašujete, může lišit. Každá aplikace může podporovat různé funkce pro připojení ke cloudovým službám, jako je Azure Analysis Services.
 
-Power BI Desktop, SSDT a SSMS podporují univerzální ověřování služby Active Directory, interaktivní metodu, která také podporuje Azure Multi-Factor Authentication (MFA). Azure MFA pomáhá chránit přístup k datům a aplikacím a současně poskytuje jednoduchý proces přihlašování. Zajišťuje silné ověřování s několika možnostmi ověřování (telefonní hovor, textová zpráva, čipové karty s kódem PIN nebo oznámením v mobilní aplikaci). Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření. **Doporučuje se univerzální ověřování**.
+Power BI Desktop, Visual Studio a SSMS podporují univerzální ověřování služby Active Directory, což je interaktivní metoda, která podporuje taky Azure Multi-Factor Authentication (MFA). Azure MFA pomáhá chránit přístup k datům a aplikacím a současně poskytuje jednoduchý proces přihlašování. Zajišťuje silné ověřování s několika možnostmi ověřování (telefonní hovor, textová zpráva, čipové karty s kódem PIN nebo oznámením v mobilní aplikaci). Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření. **Doporučuje se univerzální ověřování**.
 
 Pokud se přihlašujete k Azure pomocí účtu systému Windows a univerzální ověřování není vybráno nebo není k dispozici (Excel), je požadováno [Active Directory Federation Services (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) . U federace se uživatelé Azure AD a Office 365 ověřují pomocí místních přihlašovacích údajů a můžou získat přístup k prostředkům Azure.
 
@@ -46,9 +46,9 @@ Servery Azure Analysis Services podporují připojení ze [SSMS v 17.1](https://
 
 *  Podporuje Multi-Factor Authentication (MFA). Azure MFA pomáhá chránit přístup k datům a aplikacím pomocí škály možností ověřování: telefonní hovor, textová zpráva, čipové karty a PIN kód nebo oznámení mobilní aplikace. Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření.
 
-### <a name="sql-server-data-tools-ssdt"></a>SQL Server Data Tools (SSDT)
+### <a name="visual-studio"></a>Visual Studio
 
-SSDT se připojuje k Azure Analysis Services pomocí univerzálního ověřování služby Active Directory s podporou VÍCEFAKTOROVÉHO ověřování. Uživatelům se při prvním nasazení zobrazí výzva, abyste se přihlásili k Azure. Uživatelé se musí přihlásit k Azure pomocí účtu s oprávněními správce serveru na serveru, na kterém nasazují. Při prvním přihlášení k Azure se přiřadí token. SSDT ukládá do mezipaměti token v paměti pro budoucí opětovné připojení.
+Visual Studio se připojuje k Azure Analysis Services pomocí univerzálního ověřování služby Active Directory s podporou VÍCEFAKTOROVÉHO ověřování. Uživatelům se při prvním nasazení zobrazí výzva, abyste se přihlásili k Azure. Uživatelé se musí přihlásit k Azure pomocí účtu s oprávněními správce serveru na serveru, na kterém nasazují. Při prvním přihlášení k Azure se přiřadí token. Token se v paměti ukládá do mezipaměti pro budoucí opětovné připojení.
 
 ### <a name="power-bi-desktop"></a>Power BI Desktop
 
@@ -60,7 +60,7 @@ Uživatelé Excelu se můžou připojit k serveru pomocí účtu systému Window
 
 ## <a name="user-permissions"></a>Uživatelská oprávnění
 
-**Správci serveru** jsou specifické pro instanci serveru Azure Analysis Services. Připojují se pomocí nástrojů, jako jsou Azure Portal, SSMS a SSDT, k provádění úloh, jako je přidávání databází a Správa rolí uživatelů. Ve výchozím nastavení se uživatel, který vytváří Server, automaticky přidá jako správce serveru Analysis Services. Ostatní správce je možné přidat pomocí Azure Portal nebo SSMS. Správci serveru musí mít v tenantovi Azure AD ve stejném předplatném účet. Další informace najdete v tématu [Správa správců serverů](analysis-services-server-admins.md). 
+**Správci serveru** jsou specifické pro instanci serveru Azure Analysis Services. Připojují se pomocí nástrojů, jako jsou Azure Portal, SSMS a Visual Studio, k provádění úloh, jako je přidávání databází a Správa rolí uživatelů. Ve výchozím nastavení se uživatel, který vytváří Server, automaticky přidá jako správce serveru Analysis Services. Ostatní správce je možné přidat pomocí Azure Portal nebo SSMS. Správci serveru musí mít v tenantovi Azure AD ve stejném předplatném účet. Další informace najdete v tématu [Správa správců serverů](analysis-services-server-admins.md). 
 
 **Uživatelé databáze** se připojují k modelovým databázím pomocí klientských aplikací, jako je Excel nebo Power BI. Uživatelé musí být přidáni do databázových rolí. Databázové role definují oprávnění správce, procesu nebo čtení pro databázi. Je důležité pochopit uživatele databáze v roli s oprávněními správce, které se liší od správců serverů. Ve výchozím nastavení jsou však správci serveru také správci databáze. Další informace najdete v tématu [Správa databázových rolí a uživatelů](analysis-services-database-users.md).
 
@@ -74,7 +74,7 @@ Role na této úrovni se vztahují na uživatele nebo účty, které potřebují
 
  Role definované pro tabelární model jsou databázové role. To znamená, že role obsahují členy sestávající z uživatelů Azure AD a skupin zabezpečení, které mají specifická oprávnění definující akci, kterou mohou členové provádět v databázi modelu. Databázová role se vytvoří jako samostatný objekt v databázi a použije se pouze na databázi, ve které byla vytvořena.   
   
- Ve výchozím nastavení platí, že při vytváření nového projektu s tabelárním modelem nemá projekt modelu žádné role. Role se dají definovat pomocí dialogového okna Správce rolí v SSDT. Pokud jsou role definovány během návrhu projektu modelu, jsou aplikovány pouze na databázi pracovního prostoru modelu. Při nasazení modelu se stejné role aplikují na nasazený model. Po nasazení modelu mohou správci serveru a databáze spravovat role a členy pomocí SSMS. Další informace najdete v tématu [Správa databázových rolí a uživatelů](analysis-services-database-users.md).
+ Ve výchozím nastavení platí, že při vytváření nového projektu s tabelárním modelem nemá projekt modelu žádné role. Role lze definovat pomocí dialogového okna Správce rolí v aplikaci Visual Studio. Pokud jsou role definovány během návrhu projektu modelu, jsou aplikovány pouze na databázi pracovního prostoru modelu. Při nasazení modelu se stejné role aplikují na nasazený model. Po nasazení modelu mohou správci serveru a databáze spravovat role a členy pomocí SSMS. Další informace najdete v tématu [Správa databázových rolí a uživatelů](analysis-services-database-users.md).
   
 ## <a name="next-steps"></a>Další kroky
 

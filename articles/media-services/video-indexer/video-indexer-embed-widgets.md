@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 74518fb891c5ecb25e818b9642d31e3daaf828de
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71036630"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162612"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Vložení Video Indexer widgetů do vašich aplikací
 
@@ -253,7 +253,7 @@ Například:
 
 Ve výchozím nastavení používá Video Indexer Player automaticky generované skryté titulky založené na přepisu videa. Přepis se extrahuje z videa se zdrojovým jazykem, který jste vybrali při nahrávání videa.
 
-Pokud chcete vkládat v jiném jazyce, můžete přidat `&captions=< Language | ”all” | “false” >` do adresy URL přehrávače pro vložení. Pokud chcete titulky ve všech dostupných jazycích titulky, použijte hodnotu `all`. Pokud chcete, aby se popisky zobrazovaly ve výchozím nastavení, můžete předat `&showCaptions=true`.
+Pokud chcete vkládat v jiném jazyce, můžete přidat `&captions=< Language | "all" | "false" >` do adresy URL přehrávače pro vložení. Pokud chcete titulky ve všech dostupných jazycích titulky, použijte hodnotu `all`. Pokud chcete, aby se popisky zobrazovaly ve výchozím nastavení, můžete předat `&showCaptions=true`.
 
 Adresa URL pro vložení bude vypadat takto: 
 

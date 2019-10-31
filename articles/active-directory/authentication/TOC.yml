@@ -43,6 +43,8 @@
       items:
         - name: Jak funguje MFA
           href: concept-mfa-howitworks.md
+        - name: Povolení MFA
+          href: concept-mfa-get-started.md
         - name: Licencování uživatelů
           href: concept-mfa-licensing.md
         - name: Správa poskytovatele ověřování
@@ -135,6 +137,10 @@
           href: howto-authentication-passwordless-deployment.md
         - name: Klíče zabezpečení bez hesla
           href: howto-authentication-passwordless-security-key.md
+        - name: Windows 10 bez hesla
+          href: howto-authentication-passwordless-security-key-windows.md
+        - name: Místní prostředí bez hesla
+          href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Přihlašování telefonem bez hesla
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello pro firmy

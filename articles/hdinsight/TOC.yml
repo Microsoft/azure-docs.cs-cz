@@ -137,6 +137,8 @@
               href: ./hdinsight-autoscale-clusters.md
             - name: Použití externích úložišť metadat
               href: ./hdinsight-use-external-metadata-stores.md
+            - name: Vlastní Ambari DB
+              href: ./hdinsight-custom-ambari-db.md
             - name: Správa protokolů pro cluster HDInsight
               href: ./hdinsight-log-management.md
             - name: Přidání účtů úložiště

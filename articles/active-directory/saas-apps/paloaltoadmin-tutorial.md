@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Palo Alto Networks – uživatelské rozhraní správce | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Palo Alto Networks – uživatelské rozhraní správce.
+title: 'Kurz: Azure Active Directory integrace s Palo Alto Networks – uživatelské rozhraní pro správu | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Palo Alto Networks – uživatelské rozhraní pro správu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: a826eaec-15af-4c85-8855-8a3374d1efb9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,308 +16,308 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd0ca3bb356319f4661e24b192a5f7e776d14cd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c77678c20cb9eed01e2cfa86014963f453a4839
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095070"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160185"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Kurz: Integrace Azure Active Directory s Palo Alto Networks – uživatelské rozhraní správce
+# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Kurz: Azure Active Directory integrace s Palo Alto Networks – uživatelské rozhraní pro správu
 
-V tomto kurzu se dozvíte, jak integrovat Palo Alto Networks – uživatelské rozhraní správce se službou Azure Active Directory (Azure AD).
-Integrace Palo Alto Networks – uživatelské rozhraní správce Azure AD poskytuje následující výhody:
+V tomto kurzu se naučíte, jak integrovat Palo Alto Networks – uživatelské rozhraní pro správu pomocí Azure Active Directory (Azure AD).
+Integrace Palo Alto Networks – uživatelské rozhraní pro správu s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Palo Alto Networks – uživatelské rozhraní správce.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k Palo Alto Networks – uživatelské rozhraní správce (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit v Azure AD, který má přístup k sítím Palo Alto Networks – uživatelské rozhraní pro správu.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k Palo Alto Networks – uživatelské rozhraní správce (jednotné přihlašování) se svými účty Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s Palo Alto Networks - uživatelskému rozhraní správce, potřebujete následující položky:
+Pokud chcete nakonfigurovat integraci Azure AD s uživatelským rozhraním Palo Alto Networks-admin, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Palo Alto Networks - uživatelskému rozhraní správce jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Palo Alto Networks – odběr s povoleným jednotným přihlašováním uživatelského rozhraní pro správu
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje uživatelské rozhraní správce Palo Alto Networks - **SP** jednotné přihlašování zahájené pomocí
-* Podporuje uživatelské rozhraní správce Palo Alto Networks - **JIT** zřizování uživatelů
+* Palo Alto Networks – uživatelské rozhraní pro správu podporuje jednotné přihlašování se spuštěným **SP**
+* Palo Alto Networks – uživatelské rozhraní pro správu podporuje **pouze dobu** zřizování uživatelů
 
-## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>Přidání Palo Alto Networks – uživatelské rozhraní správce z Galerie
+## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>Přidání sítě Palo Alto – uživatelské rozhraní správce z Galerie
 
-Konfigurace integrace Palo Alto Networks – uživatelské rozhraní správce do služby Azure AD, budete muset přidat Palo Alto Networks – uživatelské rozhraní správce z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Palo Alto Networks – uživatelské rozhraní pro správu do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Palo Alto Networks – uživatelské rozhraní správce z galerie.
 
-**Chcete-li přidat Palo Alto Networks – uživatelské rozhraní správce z galerie, postupujte následovně:**
+**Chcete-li přidat Palo Alto Networks – uživatelské rozhraní správce z Galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Palo Alto Networks – uživatelské rozhraní správce**vyberte **Palo Alto Networks – uživatelské rozhraní správce** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Palo Alto Networks-admin UI**, vyberte **Palo Alto Networks – uživatelské rozhraní správce** z panelu výsledek a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Palo Alto Networks – uživatelské rozhraní správce v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části, nakonfigurovat a otestovat Azure AD jednotné přihlašování s Palo Alto Networks – uživatelské rozhraní správce podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování k práci, vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Palo Alto Networks – je potřeba navázat uživatelskému rozhraní správce.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Palo Alto Networks – uživatelské rozhraní pro správu založené na testovacím uživateli s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Palo Alto Networks – uživatelské rozhraní pro správu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Palo Alto Networks - uživatelskému rozhraní správce, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Palo Alto Networks – uživatelské rozhraní pro správu, je nutné dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Palo Alto Networks - správce uživatelského rozhraní Single Sign-On](#configure-palo-alto-networks---admin-ui-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření Palo Alto Networks - uživatelskému rozhraní správce testovacího uživatele](#create-palo-alto-networks---admin-ui-test-user)**  – Pokud chcete mít protějšek Britta Simon Palo Alto Networks - uživatelskému rozhraní správce, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte Palo Alto Networks – jednotné přihlašování pro uživatelské rozhraní pro správu](#configure-palo-alto-networks---admin-ui-single-sign-on)** a nakonfigurujte nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvoření Palo Alto Networks – uživatel testu uživatelského rozhraní pro správce](#create-palo-alto-networks---admin-ui-test-user)** – bude mít protějšek Britta Simon v Palo Alto Networks – uživatelské rozhraní pro správu, které je propojené s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Palo Alto Networks - uživatelskému rozhraní správce, postupujte následovně:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Palo Alto Networks – uživatelské rozhraní pro správu, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Palo Alto Networks – uživatelské rozhraní správce** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce aplikace **Palo Alto Networks-admin UI** Application Integration UI vyberte **jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Palo Alto sítě - správce domény uživatelského rozhraní a adresy URL jednotné přihlašování – informace](common/sp-identifier-reply.png)
+    ![Palo Alto Networks – informace o jednotném přihlašování pro doménu uživatelského rozhraní a adresy URL pro správu](common/sp-identifier-reply.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<Customer Firewall FQDN>/php/login.php`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<Customer Firewall FQDN>/php/login.php`
 
-    b. V **identifikátor** pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<Customer Firewall FQDN>:443/SAML20/SP`
+    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<Customer Firewall FQDN>:443/SAML20/SP`
 
-    c. V **adresy URL odpovědi** textové pole, zadejte adresu URL Assertion Consumer Service (ACS) v následujícím formátu: `https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL služby assertion Consumer Service (ACS) v následujícím formátu: `https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi. Kontakt [Palo Alto Networks - tým podpory klient uživatelského rozhraní pro správu](https://support.paloaltonetworks.com/support) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Chcete-li získat tyto hodnoty, kontaktujte [Palo Alto Networks – tým podpory klientů pro správu uživatelského rozhraní](https://support.paloaltonetworks.com/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Palo Alto Networks – uživatelské rozhraní správce aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+5. Palo Alto Networks – aplikace uživatelského rozhraní pro správu očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na tlačítko **Upravit** a otevřete dialog **uživatelské atributy** .
 
     ![image](common/edit-attribute.png)
 
    > [!NOTE]
-   > Vzhledem k tomu, že hodnoty atributů jsou jen příklady, namapujte příslušné hodnoty pro *uživatelské jméno* a *adminrole*. Existuje jiný volitelný atribut, *accessdomain*, který se používá k omezení přístupu správce ke konkrétní virtuálních systémů v bráně firewall.
+   > Vzhledem k tomu, že hodnoty atributu jsou pouze příklady, namapujte příslušné hodnoty pro *username* a *adminrole*. K dispozici je jiný volitelný atribut *accessdomain*, který slouží k omezení přístupu správce ke konkrétním virtuálním systémům v bráně firewall.
    >
 
-6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Name |  Zdrojový atribut|
+    | Name (Název) |  Zdrojový atribut|
     | --- | --- |
-    | username jméno | user.userprincipalname |
+    | uživatelské jméno | User. userPrincipalName |
     | adminrole | customadmin |
     | | |
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Nechte **Namespace** prázdné.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Vyberte zdroj jako **atribut**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
-    f. Klikněte na tlačítko **Ok**
+    f. Klikněte na **OK** .
 
     g. Klikněte na **Uložit**.
 
     > [!NOTE]
-    > Další informace o atributech najdete v následujících článcích:
-    > * [Profil pro správu role pro uživatelské rozhraní správce (adminrole)](https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/firewall-administration/manage-firewall-administrators/configure-an-admin-role-profile)
-    > * [Doména zařízení přístup k uživatelskému rozhraní správce (accessdomain)](https://www.paloaltonetworks.com/documentation/80/pan-os/web-interface-help/device/device-access-domain)
+    > Další informace o atributech naleznete v následujících článcích:
+    > * [Profil role správce pro uživatelské rozhraní správce (adminrole)](https://www.paloaltonetworks.com/documentation/80/pan-os/pan-os/firewall-administration/manage-firewall-administrators/configure-an-admin-role-profile)
+    > * [Doména přístupu k zařízení pro uživatelské rozhraní správce (accessdomain)](https://www.paloaltonetworks.com/documentation/80/pan-os/web-interface-help/device/device-access-domain)
 
-7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-8. Na **nastavení Palo Alto Networks – uživatelské rozhraní správce** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+8. V části **nastavení sítě Palo Alto Networks – uživatelské rozhraní pro správu** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
-    c. Adresa URL – odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-palo-alto-networks---admin-ui-single-sign-on"></a>Konfigurace Palo Alto Networks – uživatelské rozhraní správce jednotného přihlašování
+### <a name="configure-palo-alto-networks---admin-ui-single-sign-on"></a>Konfigurace Palo Alto Networks – jednotné přihlašování správce uživatelského rozhraní
 
-1. Otevřete uživatelské rozhraní Správce brány Firewall sítě Palo Alto jako správce v novém okně.
+1. Otevřete uživatelské rozhraní pro správu brány firewall Palo Alto Networks jako správce v novém okně.
 
-2. Vyberte **zařízení** kartu.
+2. Vyberte kartu **zařízení** .
 
-    ![Na kartě zařízení](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin1.png)
+    ![Karta zařízení](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-3. V levém podokně vyberte **zprostředkovatele Identity SAML**a pak vyberte **importovat** importovat soubor metadat.
+3. V levém podokně vyberte **zprostředkovatel identity SAML**a pak vyberte **importovat** a importujte soubor metadat.
 
-    ![Tlačítko importovat metadata souboru](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin2.png)
+    ![Tlačítko importovat soubor metadat](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin2.png)
 
-4. V **SAML identifikovat zprostředkovatele Server profilu Import** okno, postupujte takto:
+4. V okně pro **import profilu serveru pro identifikaci SAML** postupujte takto:
 
-    ![V okně "SAML identifikovat zprostředkovatele Server profilu Import"](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
+    ![Okno pro import profilu serveru poskytovatele s identifikací SAML](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
-    a. V **název profilu** pole, zadejte název (například **uživatelskému rozhraní správce Azure AD**).
+    a. Do pole **název profilu** zadejte název (například **uživatelské rozhraní správce AzureAD**).
     
-    b. V části **metadat zprostředkovatele Identity**vyberte **Procházet**a vyberte soubor metadata.xml, který jste předtím stáhli z portálu Azure portal.
+    b. V části **metadata zprostředkovatele identity**vyberte **Procházet**a vyberte soubor metadata. XML, který jste si stáhli dříve z Azure Portal.
     
-    c. Zrušte **ověřit certifikát poskytovatele Identity** zaškrtávací políčko.
+    c. Zrušte zaškrtnutí políčka **ověřit certifikát poskytovatele identity** .
     
     d. Vyberte **OK**.
     
-    e. K provedení konfigurace v bráně firewall, vyberte **potvrzení**.
+    e. Chcete-li potvrdit konfigurace v bráně firewall, vyberte **Potvrdit**.
 
-5. V levém podokně vyberte **zprostředkovatele Identity SAML**a potom vyberte profil SAML zprostředkovatele Identity (třeba **uživatelskému rozhraní správce Azure AD**), který jste vytvořili v předchozím kroku.
+5. V levém podokně vyberte **zprostředkovatel identity SAML**a potom vyberte profil zprostředkovatele identity SAML (například **uživatelské rozhraní správce AzureAD**), které jste vytvořili v předchozím kroku.
 
-    ![Profil SAML zprostředkovatele Identity](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
+    ![Profil zprostředkovatele identity SAML](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
 
-6. V **profilu serveru zprostředkovatele Identity SAML** okno, postupujte takto:
+6. V okně **profil serveru zprostředkovatele identity SAML** udělejte toto:
 
-    ![V okně "Profil serveru zprostředkovatele Identity SAML"](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
+    ![Okno profil serveru zprostředkovatele identity SAML](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
-    a. V **adresa URL cíle na úrovni služby pro zprostředkovatele Identity** přepište dříve importovaná adresa URL cíle na úrovni služby s následující adresou URL: `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
+    a. V poli **Adresa URL poskytovatele identity objektu slo** nahraďte dříve IMPORTOVANOU adresu URL objektu slo následující adresou url: `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
   
     b. Vyberte **OK**.
 
-7. Na bránu Firewall sítě Palo Alto uživatelskému rozhraní správce, vyberte **zařízení**a pak vyberte **rolí administrátora**.
+7. V uživatelském rozhraní správce Palo Alto Networks firewallu vyberte **zařízení**a pak vyberte **role správce**.
 
-8. Vyberte **přidat** tlačítko.
+8. Vyberte tlačítko **Přidat** .
 
-9. V **profil Role správce** okno v **název** zadejte název pro roli správce (například **fwadmin**). Název role Správce by měl odpovídat názvu atributu Role správce SAML, odeslané poskytovatelem Identity. Název role správce a hodnoty, které byly vytvořeny v **atributy uživatele** části webu Azure Portal.
+9. V okně **profilu role správce** do pole **název** zadejte název role správce (například **fwadmin**). Název role správce by měl odpovídat názvu atributu role správce SAML, který byl odeslán zprostředkovatelem identity. Název a hodnota role správce se vytvořily v části **atributy uživatele** v Azure Portal.
 
-    ![Konfigurace Role správce sítě Palo Alto](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
+    ![Konfigurace role správce sítě Palo Alto](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
   
-10. Na uživatelské rozhraní Správce brány Firewall, vyberte **zařízení**a pak vyberte **ověřování profilu**.
+10. V uživatelském rozhraní pro správu brány firewall vyberte **zařízení**a pak vyberte **profil ověřování**.
 
-11. Vyberte **přidat** tlačítko.
+11. Vyberte tlačítko **Přidat** .
 
-12. V **ověřování profilu** okno, postupujte takto: 
+12. V okně **ověřovací profil** proveďte následující akce: 
 
-    ![V okně "Ověřování profilu"](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
+    ![Okno ověřovací profil](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
 
-    a. V **název** pole, zadejte název (například **AzureSAML_Admin_AuthProfile**).
+    a. Do pole **název** zadejte název (například **AzureSAML_Admin_AuthProfile**).
 
-    b. V **typ** rozevíracího seznamu vyberte **SAML**. 
+    b. V rozevíracím seznamu **typ** vyberte **SAML**. 
 
-    c. V **profilu serveru zprostředkovatele identity** rozevírací seznam, vyberte příslušný profil serveru zprostředkovatele Identity SAML (například **uživatelskému rozhraní správce Azure AD**).
+    c. V rozevíracím seznamu **profil serveru IDP** vyberte příslušný profil serveru poskytovatele identity SAML (například **uživatelské rozhraní správce AzureAD**).
 
-    c. Vyberte **povolit jednotné odhlašování** zaškrtávací políčko.
+    c. Zaškrtněte políčko **Povolit jednotné odhlášení** .
 
-    d. V **atributu Role správce** pole, zadejte název (například **adminrole**).
+    d. Do pole **atribut role správce** zadejte název atributu (například **adminrole**).
 
-    e. Vyberte **Upřesnit** kartu a potom v nabídce **seznam povolených disků**vyberte **přidat**.
+    e. Vyberte kartu **Upřesnit** a potom v části **povolený seznam**vyberte **Přidat**.
 
     ![Tlačítko Přidat na kartě Upřesnit](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_allowlist.png)
 
-    f. Vyberte **všechny** zaškrtněte políčko, nebo vyberte uživatele a skupiny, kteří můžou ověřovat s tímto profilem.  
-    Při ověření uživatele, brána firewall odpovídá přidružené uživatelské jméno nebo skupinu pro položky v tomto seznamu. Pokud nechcete přidat položky, můžete ověřovat žádní uživatelé.
+    f. Zaškrtněte políčko **vše** nebo vyberte uživatele a skupiny, které se mohou s tímto profilem ověřit.  
+    Když se uživatel ověří, brána firewall se shoduje s přidruženým uživatelským jménem nebo skupinou na položkách v tomto seznamu. Pokud nepřidáte položky, nebudete moct ověřovat žádné uživatele.
 
     g. Vyberte **OK**.
 
-13. Aby správci mohli používat jednotné přihlašování SAML pomocí služby Azure, vyberte **zařízení** > **nastavení**. V **nastavení** podokně, vyberte **správy** kartu a potom v nabídce **nastavení ověřování**, vyberte **nastavení** tlačítko ("zařízení") .
+13. Pokud chcete správcům povolit použití jednotného přihlašování SAML pomocí Azure, vyberte **zařízení** > **Setup**. V podokně **Nastavení** vyberte kartu **Správa** a potom v části **nastavení ověřování**vyberte tlačítko **Nastavení** (ozubené kolo).
 
-    ![Tlačítko Nastavení](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
+    ![Tlačítko nastavení](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 
-14. Vyberte profil ověřování SAML, který jste vytvořili v okně profilu ověření systému (například **AzureSAML_Admin_AuthProfile**).
+14. Vyberte profil ověřování SAML, který jste vytvořili v okně profilu ověřování (například **AzureSAML_Admin_AuthProfile**).
 
-    ![Pole ověřování profilu](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
+    ![Pole profil ověřování](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
 
 15. Vyberte **OK**.
 
-16. Pro potvrzení konfigurace, vyberte **potvrzení**.
+16. Nastavení potvrďte tak, že vyberete **Potvrdit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon udělení přístupu k Palo Alto Networks – uživatelské rozhraní správce používá jednotné přihlašování Azure.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup ke Palo Alto Networks – uživatelské rozhraní pro správu.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Palo Alto Networks – uživatelské rozhraní správce**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Palo Alto Networks – uživatelské rozhraní správce**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Palo Alto Networks – uživatelské rozhraní správce**.
+2. V seznamu aplikace vyberte **Palo Alto Networks – uživatelské rozhraní pro správu**.
 
-    ![Sítě Palo Alto – uživatelské rozhraní správce odkaz v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na uživatelské rozhraní pro správce sítě Palo Alto v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-palo-alto-networks---admin-ui-test-user"></a>Vytvoření Palo Alto Networks - uživatelskému rozhraní správce testovacího uživatele
+### <a name="create-palo-alto-networks---admin-ui-test-user"></a>Vytvoření Palo Alto Networks – uživatel testu uživatelského rozhraní pro správu
 
-Palo Alto Networks – uživatelské rozhraní správce podporuje zřizování uživatelů just-in-time. Pokud uživatel ještě neexistuje, automaticky vytvoří se v systému po úspěšném ověření. Nemusíte nic dělat z k vytvoření uživatele.
+Palo Alto Networks – uživatelské rozhraní pro správu podporuje zřizování uživatelů za běhu. Pokud uživatel ještě neexistuje, automaticky se vytvoří v systému po úspěšném ověření. Od vás není potřeba nic dělat, abyste mohli vytvořit uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na Palo Alto Networks – uživatelské rozhraní správce dlaždici na přístupovém panelu, vám by měl být automaticky přihlášeni ke Palo Alto Networks – uživatelské rozhraní správce, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici uživatelského rozhraní Palo Alto Networks – správce na přístupovém panelu byste měli být automaticky přihlášeni k uživatelskému rozhraní správce Palo Alto Networks – admin, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

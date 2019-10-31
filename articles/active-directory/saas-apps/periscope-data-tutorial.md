@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s daty přes aplikaci Periscope | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Data přes aplikaci Periscope.
+title: 'Kurz: Azure Active Directory integrace s daty Periscope | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Periscope daty.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,230 +8,231 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3f378edb-9ac9-494d-a84a-03357b923ee1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: efde1f1dafc62576398c5225ad1c652438fc0c31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094505"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160193"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Kurz: Integrace Azure Active Directory s daty přes aplikaci Periscope
+# <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Kurz: Azure Active Directory integrace s daty Periscope
 
-V tomto kurzu se dozvíte, jak integrovat Data přes aplikaci Periscope s Azure Active Directory (Azure AD).
-Integrace dat přes aplikaci Periscope s Azure AD poskytuje následující výhody:
+V tomto kurzu se naučíte, jak integrovat data Periscope pomocí Azure Active Directory (Azure AD).
+Integrace dat Periscope s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k datům přes aplikaci Periscope.
-* Uživatelům se automaticky přihlášeni k datům přes aplikaci Periscope (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k Periscope datům.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k Periscope datům (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s daty přes aplikaci Periscope, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s Periscope daty potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Data přes aplikaci periscope jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné Periscope data s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje Data přes aplikaci periscope **SP** jednotné přihlašování zahájené pomocí
+* Data Periscope podporují jednotné přihlašování v **SP** .
 
-## <a name="adding-periscope-data-from-the-gallery"></a>Přidání dat přes aplikaci Periscope z Galerie
+## <a name="adding-periscope-data-from-the-gallery"></a>Přidání dat Periscope z Galerie
 
-Konfigurace integrace přes aplikaci Periscope Data do služby Azure AD, budete muset přidat Data přes aplikaci Periscope z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci dat Periscope do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Periscope data z galerie.
 
-**Chcete-li přidat Data přes aplikaci Periscope z galerie, postupujte následovně:**
+**Chcete-li přidat Periscope data z Galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Data přes aplikaci Periscope**vyberte **Data přes aplikaci Periscope** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Periscope data**, vyberte **Periscope data** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Data přes aplikaci periscope v seznamu výsledků](common/search-new-app.png)
+     ![Periscope data v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části, konfigurace a testování Azure AD jednotného přihlašování přes aplikaci Periscope dat na základě testovací uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v datech přes aplikaci Periscope.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Periscope dat na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Periscope datech.
 
-Nakonfigurovat a otestovat Azure AD jednotného přihlašování přes aplikaci Periscope daty, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Periscope dat, je potřeba, abyste dokončili tyto stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurovat přes aplikaci Periscope Data Single Sign-On](#configure-periscope-data-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Data přes aplikaci Periscope](#create-periscope-data-test-user)**  – Pokud chcete mít protějšek Britta Simon přes aplikaci Periscope dat, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování Periscope data](#configure-periscope-data-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte Periscope data Test User](#create-periscope-data-test-user)** -to, abyste měli protějšek Britta Simon v datech Periscope, který se odkazuje na reprezentaci uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s daty přes aplikaci Periscope, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Periscope dat, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Data přes aplikaci Periscope** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce **Periscope data** Application Integration vyberte **jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Přes aplikaci periscope dat domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
+    ![Informace o jednotném přihlašování Periscope dat v doméně a adresách URL](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte některý z adresy URL:
+    a. Do textového pole **přihlašovací adresa URL** zadejte libovolnou z těchto adres URL:
     
     | |
     |--|
     | `https://app.periscopedata.com/` |
     | `https://app.periscopedata.com/app/<SITENAME>` |
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://app.periscopedata.com/<SITENAME>/sso`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://app.periscopedata.com/<SITENAME>/sso`
 
     > [!NOTE]
-    > Přihlašovací adresa URL není skutečný. Aktualizujte hodnoty skutečné přihlašovací adresu URL. Kontakt [tým podpory přes aplikaci Periscope dat klienta](mailto:support@periscopedata.com) získat tuto hodnotu a hodnotu identifikátoru budou optimálnímu **konfigurovat přes aplikaci Periscope Data jednotného přihlašování** oddílu, který je vysvětlen později v tomto kurzu. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota adresy URL pro přihlášení není v reálném čase. Aktualizujte hodnoty pomocí skutečné přihlašovací adresy URL. Obraťte se na [tým podpory Periscope data Client](mailto:support@periscopedata.com) , aby získal tuto hodnotu a hodnotu identifikátoru z oddílu **Konfigurace Periscope dat pro jednotné přihlašování** , které se vysvětlí později v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-periscope-data-single-sign-on"></a>Konfigurovat přes aplikaci Periscope Data jednotného přihlašování
+### <a name="configure-periscope-data-single-sign-on"></a>Konfigurace jednotného přihlašování pro Periscope data
 
-1. V okně jiné webové prohlížeče Přihlaste se k datům přes aplikaci Periscope jako správce.
+1. V jiném okně webového prohlížeče se přihlaste k datům Periscope jako správce.
 
-2. Otevřete nabídku ozubeného kolečka v levém dolním a otevřete **fakturace** > **zabezpečení** nabídky a proveďte následující kroky. Pouze správci mají k těmto nastavením přístup.
+2. V levém dolním rohu otevřete nabídku ozubeného kolečka a otevřete nabídku **fakturace** > **zabezpečení** a proveďte následující kroky. K těmto nastavením mají přístup jenom správci.
 
-    ![Informace o konfiguraci dat přes aplikaci periscope](./media/periscope-data-tutorial/configure01.png)
+    ![Informace o konfiguraci Periscope dat](./media/periscope-data-tutorial/configure01.png)
 
-    a. Kopírovat **adresa URL federačních metadat aplikace** z kroku #5 **podpisový certifikát SAML** a otevřít ji v prohlížeči. Tím se otevře dokument XML.
+    a. Zkopírujte **adresu URL federačních metadat aplikace** z kroku #5 **podpisový certifikát SAML** a otevřete ho v prohlížeči. Tím se otevře dokument XML.
 
-    b. V **Single Sign-On** textové pole, vyberte **Azure Active Directory**.
+    b. V textovém poli **jednotného přihlašování** vyberte **Azure Active Directory**.
 
-    c. Požadovanou značku **SingleSignOnService** a vložte **umístění** hodnotu **adresu URL jednotného přihlašování** textového pole.
+    c. Vyhledejte tag **SingleSignOnService** a vložte hodnotu **umístění** do textového pole **URL jednotného přihlašování** .
 
-    d. Požadovanou značku **SingleLogoutService** a vložte **umístění** hodnotu **adresa URL cíle na úrovni služby** textového pole.
+    d. Vyhledejte tag **SingleLogoutService** a vložte hodnotu **umístění** do textového pole **URL objektu slo** .
 
-    e. Kopírovat **identifikátor** hodnotu pro vaši instanci a vložte ji **identifikátor (Entity ID)** textové pole z **základní konfiguraci SAML** části na webu Azure portal.
+    e. Zkopírujte hodnotu **identifikátoru** instance a vložte ji do textového pole **identifikátor (ID entity)** **základního konfiguračního oddílu SAML** na Azure Portal.
 
-    f. První značku souboru XML, zkopírujte hodnotu **entityID** a vložte ji **vystavitele** textového pole.
+    f. Vyhledejte první značku souboru XML, zkopírujte hodnotu **entityID** a vložte ji do textového pole **vystavitele** .
 
-    g. Požadovanou značku **IDPSSODescriptor** pomocí protokolu SAML. V této části najdete značky **KeyDescriptor** s **použít = podepisování**. Zkopírujte hodnotu **certifikátu x 509** a vložte ji **certifikát** textového pole.
+    g. Vyhledejte tag **IDPSSODescriptor** s protokolem SAML. V této části Najděte **popisovač** klíč značek pomocí **Use = Signing**. Zkopírujte hodnotu **certifikátu x509** a vložte ji do textového pole **certifikátu** .
 
-    h. Servery s více prostory můžete zvolit místo výchozí z **výchozí místo** rozevírací seznam. Bude jím místo, které noví uživatelé přidají do při přihlášení k datům přes aplikaci Periscope poprvé a jsou zřízené prostřednictvím Active Directory jednotného přihlašování.
+    h. Lokality s více mezerami můžou zvolit výchozí prostor z rozevíracího seznamu **výchozí prostor** . Toto je místo, kde se nové uživatele přidají, když se přihlásí k Periscope dat poprvé a zřídí se pomocí jednotného přihlašování služby Active Directory.
 
-    i. Nakonec klikněte na tlačítko **Uložit** a **potvrďte** změnit nastavení jednotného přihlašování tak, že zadáte **odhlášení**.
+    i. Nakonec klikněte na **Uložit** a **potvrďte** změnu nastavení jednotného přihlašování, a to zadáním **odhlášení**.
 
-    ![Informace o konfiguraci dat přes aplikaci periscope](./media/periscope-data-tutorial/configure02.png)
+    ![Informace o konfiguraci Periscope dat](./media/periscope-data-tutorial/configure02.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k datům přes aplikaci Periscope.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k datům Periscope.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Data přes aplikaci Periscope**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Periscope data**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Data přes aplikaci Periscope**.
+2. V seznamu aplikace vyberte **Periscope data**.
 
-    ![Propojení dat přes aplikaci Periscope v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na data Periscope v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-periscope-data-test-user"></a>Vytvořit testovacího uživatele Data přes aplikaci Periscope
+### <a name="create-periscope-data-test-user"></a>Vytvořit uživatele Periscope data test
 
-Přihlaste se k datům přes aplikaci Periscope Azure AD uživatelům umožnit, musí být zřízená data přes aplikaci Periscope. V datech přes aplikaci Periscope zřizování je ruční úloha.
+Aby se uživatelé Azure AD mohli přihlašovat k Periscope datům, musí se zřídit do Periscope dat. V Periscope data je zřizování ručním úkolem.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se k datům přes aplikaci Periscope jako správce.
+1. Přihlaste se k datům Periscope jako správce.
 
-2. Klikněte na **nastavení** ikony v levé dolní části nabídky a přejděte do **oprávnění**.
+2. Klikněte na ikonu **Nastavení** v levém dolním rohu nabídky a přejděte na **oprávnění**.
 
-    ![Informace o konfiguraci dat přes aplikaci periscope](./media/periscope-data-tutorial/configure03.png)
+    ![Informace o konfiguraci Periscope dat](./media/periscope-data-tutorial/configure03.png)
 
-3. Klikněte na **přidat uživatele** a proveďte následující kroky:
+3. Klikněte na **Přidat uživatele** a proveďte následující kroky:
 
-      ![Informace o konfiguraci dat přes aplikaci periscope](./media/periscope-data-tutorial/configure04.png)
+      ![Informace o konfiguraci Periscope dat](./media/periscope-data-tutorial/configure04.png)
 
-    a. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je **Britta**.
+    a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta**.
 
-    b. V **příjmení** textové pole, zadejte příjmení uživatele, jako je **Simon**.
+    b. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
-    c. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
+    c. Do textového pole **e-mail** zadejte e-maily uživatele, jako je **brittasimon\@contoso.com**.
 
-    d. Klikněte na tlačítko **přidat**.
+    d. Klikněte na tlačítko **Přidat**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici přes aplikaci Periscope Data na přístupovém panelu, vám by měl být automaticky přihlášeni k datům přes aplikaci Periscope, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici data Periscope na přístupovém panelu, měli byste se automaticky přihlásit k Periscope datům, pro která jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

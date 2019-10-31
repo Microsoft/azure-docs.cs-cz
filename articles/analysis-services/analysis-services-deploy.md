@@ -1,65 +1,65 @@
 ---
-title: Nasazení do Azure Analysis Services pomocí sady Visual Studio (SSDT) | Microsoft Docs
-description: Naučte se, jak nasadit tabulkový model na Azure Analysis Services Server pomocí SSDT.
+title: Nasazení na Azure Analysis Services pomocí sady Visual Studio | Microsoft Docs
+description: Naučte se, jak nasadit tabulkový model na Azure Analysis Services Server pomocí sady Visual Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 759d85db26ac7370c0b884d2e4839d3045384673
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 60681739854515078a521a4ff795e52aa7d74183
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301131"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146963"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Nasazení modelu ze sady Visual Studio
 
-Po vytvoření serveru v předplatném Azure jste připraveni nasadit do něj databázi tabelárních modelů. K vytvoření a nasazení projektu s tabelárním modelem, na kterém pracujete, můžete použít nástroje SQL Server Data Tools (SSDT). 
+Jakmile ve svém předplatném Azure vytvoříte server, můžete na něj nasadit databázi tabulkového modelu. Můžete použít Visual Studio s projekty Analysis Services k sestavení a nasazení projektu tabelárního modelu, na kterém pracujete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli začít, budete potřebovat:
+Na začátek budete potřebovat:
 
-* **Analysis Services Server** v Azure. Další informace najdete v tématu [vytvoření serveru Azure Analysis Services](analysis-services-create-server.md).
-* **Projekt tabelárního modelu** v SSDT nebo existující tabulkový model na úrovni kompatibility 1200 nebo vyšší. Nikdy jste ho nevytvořili? Vyzkoušejte [kurz tabelárního modelování Adventure Works Internet Sales](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial).
-* Místní **Brána** – Pokud je jeden nebo více zdrojů dat v síti vaší organizace v místním prostředí, je nutné nainstalovat [místní bránu dat](analysis-services-gateway.md). Brána je nutná pro váš server v cloudu, který se připojuje k místním zdrojům dat a zpracovává a aktualizuje data v modelu.
+* **Server služby Analysis Services** v Azure Další informace najdete v tématu [Vytvoření serveru služby Azure Analysis Services](analysis-services-create-server.md).
+* **Projekt tabelárního modelu** v aplikaci Visual Studio nebo existující tabulkový model na úrovni kompatibility 1200 nebo vyšší. Nikdy jste ho nevytvářeli? Vyzkoušejte [Kurz tabulkového modelování Adventure Works Internet Sales](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial).
+* **Místní brána** – Pokud máte jeden nebo více místních zdrojů dat v síti organizace, budete si muset nainstalovat [místní bránu dat](analysis-services-gateway.md). Brána je nezbytná pro server v cloudu, aby se mohl připojit k místním zdrojům dat a mohl tak zpracovat a aktualizovat data v modelu.
 
 > [!TIP]
-> Před nasazením se ujistěte, že můžete zpracovat data v tabulkách. V SSDT klikněte na **Model** > **proces** > **zpracovat vše**. Pokud se zpracování nezdaří, nebudete moct úspěšně nasadit.
+> Než začnete provádět nasazení, ujistěte se, že zvládnete zpracovat data v tabulkách. V aplikaci Visual Studio klikněte na **Model** > **procesu** > **zpracovat vše**. Pokud se zpracování nepodaří, nebudete moct provést úspěšné nasazení.
 > 
 > 
 
 ## <a name="get-the-server-name"></a>Získání názvu serveru
 
-V **Azure Portal** > serveru > **Přehled** > **název serveru**zkopírujte název serveru.
+Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopírujte název serveru.
    
-![Získat název serveru v Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
+![Získání názvu serveru v Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
-## <a name="to-deploy-from-ssdt"></a>Nasazení z SSDT
+## <a name="to-deploy-from-visual-studio"></a>Nasazení ze sady Visual Studio
 
-1. V SSDT > **Průzkumník řešení**klikněte pravým tlačítkem myši na **vlastnosti**> projektu. Potom v části **nasazení** > **Server** vložte název serveru.   
+1. V aplikaci Visual Studio > **Průzkumník řešení**klikněte pravým tlačítkem myši na **vlastnosti**projektu >. Potom v **Nasazení** > **Server** vložte název serveru.   
    
-    ![Vložení názvu serveru do vlastnosti serveru nasazení](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
-2. V **Průzkumník řešení**klikněte pravým tlačítkem na **vlastnosti**a pak klikněte na **nasadit**. Může se zobrazit výzva k přihlášení do Azure.
+    ![Vložení názvu serveru do vlastnosti nasazení serveru](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
+2. V **Průzkumníku řešení** klikněte pravým tlačítkem na **Vlastnosti** a pak klikněte na **Nasadit**. Může se zobrazit výzva k přihlášení do Azure.
    
-    ![Nasadit na server](./media/analysis-services-deploy/aas-deploy-deploy.png)
+    ![Nasazení na server](./media/analysis-services-deploy/aas-deploy-deploy.png)
    
-    Stav nasazení se zobrazí v okně výstup i v nasazení.
+    Stav nasazení se zobrazí v okně výstupu a nasazení.
    
     ![Stav nasazení](./media/analysis-services-deploy/aas-deploy-status.png)
 
 A je to!
 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud nasazení selhalo při nasazování metadat, je pravděpodobně proto, že SSDT se nemůže připojit k vašemu serveru. Ujistěte se, že se můžete připojit k serveru pomocí SSMS. Pak se ujistěte, že je vlastnost serveru pro nasazení pro projekt správná.
+Pokud nasazení selhalo při nasazování metadat, je pravděpodobně proto, že se Visual Studio nemůže připojit k vašemu serveru. Ujistěte se, že se k serveru můžete připojit pomocí aplikace SSMS. Potom zkontrolujte, jestli je vlastnost Server nasazení projektu správná.
 
-Pokud se nasazení v tabulce nepovede, je pravděpodobně proto, že se server nemohl připojit ke zdroji dat. Pokud je váš zdroj dat místní v síti vaší organizace, nezapomeňte nainstalovat [místní bránu dat](analysis-services-gateway.md).
+Pokud nasazení selže u tabulky, bude to pravděpodobně tím, že se server nemohl připojit ke zdroji dat. Pokud je váš zdroj dat místní v síti organizace, nezapomeňte nainstalovat [místní bránu dat](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte tabulkový model nasazený na váš server, jste připraveni se k němu připojit. Můžete se [k němu připojit pomocí SSMS](analysis-services-manage.md) a spravovat ho. A můžete [se k němu připojit pomocí klientského nástroje](analysis-services-connect.md) , jako je Power BI, Power BI Desktop nebo Excel, a začít vytvářet sestavy.
+Teď když jste tabulkový model nasadili na váš server, můžete se k němu připojit. Můžete se [k němu připojit pomocí SQL Server Management Studio (SSMS)](analysis-services-manage.md) , abyste ho mohli spravovat. Můžete [se k němu připojit také pomocí klientského nástroje](analysis-services-connect.md), jako je například Power BI, Power BI Desktop nebo Excel, a začít vytvářet sestavy.
 
