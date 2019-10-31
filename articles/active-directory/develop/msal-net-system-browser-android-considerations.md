@@ -1,7 +1,7 @@
 ---
-title: Předpoklady pro Xamarin Android (Microsoft Authentication Library pro .NET)
+title: Požadavky na prohlížeč systému Xamarin Android (Microsoft Authentication Library pro .NET)
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o konkrétních doporučeních pro použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
+description: Přečtěte si o konkrétních požadavcích při použití systémových prohlížečů v Xamarin Android při použití knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5caad4b136c9ef2686cc4befc70e6720e27855
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f83283cc02c60eb452d0e414c0b21843b48f343b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802751"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150357"
 ---
-# <a name="xamarin-android-specific-considerations-with-msalnet"></a>Doporučení pro Xamarin Android týkající se MSAL.NET
+#  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Doporučení pro prohlížeč systému Xamarin Android s MSAL.NET
+
 Tento článek popisuje konkrétní informace týkající se použití prohlížeče systému v Xamarin Android s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 
 Od verze MSAL.NET 2.4.0-Preview MSAL.NET podporuje prohlížeče jiné než Chrome a už nevyžadují, aby se na zařízení s Androidem nainstalovala aplikace Chrome pro ověřování.

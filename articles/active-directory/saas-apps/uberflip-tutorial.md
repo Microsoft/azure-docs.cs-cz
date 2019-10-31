@@ -8,20 +8,21 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8760606c981f494b38d4eb8ac1b2cd50ceb8582c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6710344e73e3c0ea6f9b3491209689871cc14a4f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852109"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160952"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Kurz: Integrace Azure Active Directory s Uberflip
+# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Kurz: Azure Active Directory integrace s Uberflip
 
 V tomto kurzu se dozvíte, jak integrovat Uberflip s Azure Active Directory (Azure AD).
 
@@ -33,7 +34,7 @@ Integrace Uberflip s Azure AD poskytuje následující výhody:
 
 Podrobnosti o integraci aplikací SaaS (software jako služba) se službou Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Uberflip potřebujete následující položky:
 
@@ -53,7 +54,7 @@ Uberflip podporuje následující funkce:
 
 Pokud chcete nakonfigurovat integraci Uberflip do služby Azure AD, musíte přidat Uberflip z Azure Marketplace do seznamu spravovaných aplikací SaaS:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V levém podokně vyberte **Azure Active Directory**.
 
    ![Možnost Azure Active Directory](common/select-azuread.png)
@@ -70,7 +71,7 @@ Pokud chcete nakonfigurovat integraci Uberflip do služby Azure AD, musíte při
 
    ![Uberflip v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Uberflip na základě testovacího uživatele s názvem **B Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Uberflip.
 
@@ -83,7 +84,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[Vytvořte testovacího uživatele Uberflip](#create-an-uberflip-test-user)** , aby byl uživatel s názvem b. Simon v Uberflip, který je propojený s uživatelem služby Azure AD s názvem b. Simon.
 1. **[Otestujte jednotné přihlašování](#test-single-sign-on)** a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
@@ -134,11 +135,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Uberflip
 
 Ke konfiguraci jednotného přihlašování na straně Uberflip je potřeba odeslat stažený soubor XML federačních metadat a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Uberflip](mailto:support@uberflip.com). Tým Uberflip zajistí, že připojení SAML SSO je na obou stranách správně nastavené.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory**  > **uživatelů**  > **všech uživatelích**.
 
     ![Možnosti uživatelé a všichni uživatelé](common/users.png)
 
@@ -152,17 +153,17 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 
     1. Do pole **název** zadejte **BSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BSimon\@\<yourcompanydomain >.\< > rozšíření**. Například **BSimon\@contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **BSimon\@\<yourcompanydomain >.\<rozšíření >** . Například **BSimon\@contoso.com**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
 
-    1. Vyberte **Vytvořit**.
+    1. Vyberte **Create** (Vytvořit).
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Uberflip.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace** > **Uberflip**.
+1. V Azure Portal vyberte **podnikové aplikace** > **všechny aplikace** > **Uberflip**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -176,7 +177,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Vyberte **+ Přidat uživatele**a pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
 1. V podokně **Uživatelé a skupiny** v seznamu **Uživatelé** vyberte **B Simon** a v dolní části podokna zvolte **Vybrat** .
 
@@ -197,7 +198,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když vyberete **Uberflip** na portálu moje aplikace, měli byste být automaticky přihlášeni k předplatnému Uberflip, pro které jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

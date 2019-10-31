@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7684acbd26848bbccb09416df44a9669965dcfe9
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f76a2eb098e2d96f617d19de089e56c7e8a497fd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720136"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162769"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -29,8 +29,8 @@ Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích 
 
 Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy problémů, které vás zaovlivňují. Pokud chcete ohlásit problém nebo položit otázky, odešlete příspěvek na [Azure Media Services Fórum MSDN]. 
 
-## <a name="a-idissuesknown-issues"></a>problémy s @no__t 0Known
-### <a name="a-idgeneral_issuesmedia-services-general-issues"></a>Obecné problémy s @no__t 0Media Services
+## <a name="a-idissuesknown-issues"></a><a id="issues"/>známé problémy
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services Obecné problémy
 
 | Problém | Popis |
 | --- | --- |
@@ -43,7 +43,7 @@ Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy pro
 | Objekty sady .NET SDK Media Services nejde serializovat a v důsledku toho nefungují s Azure cache pro Redis. |Pokud se pokusíte serializovat objekt sady SDK Assetcollection a přidat ho do mezipaměti Azure pro Redis, je vyvolána výjimka. |
 |REST API odpoví chybovou zprávou, že při pokusu o získání filtru na úrovni prostředku nebo účtu není v této verzi rozhraní REST API přístup k filtru.|Filtr byl vytvořen nebo upraven novější verzí rozhraní API, než se používá k pokusu o získání filtru. K tomu může dojít, pokud jsou dvě verze rozhraní API používány kódem nebo nástroji používanými zákazníkem.  Nejlepším řešením je upgradovat kód nebo nástroje na použití novějších nebo těchto dvou verzí rozhraní API.|
 
-## <a name="a-idrest_version_historyrest-api-version-history"></a>Historie verzí rozhraní API pro @no__t 0REST
+## <a name="a-idrest_version_historyrest-api-version-history"></a>Historie verzí <a id="rest_version_history"/>REST API
 Informace o historii verze REST API Media Services najdete v části [Odkaz na Azure Media Services REST API].
 
 ## <a name="september-2019"></a>Září 2019
@@ -153,7 +153,7 @@ Další informace o těchto vlastnostech naleznete v tématu [StreamingEndpoint]
 
  Nyní můžete použít Media Services pro přístup k datům telemetrie/metrik pro své služby. Pomocí aktuální verze Media Services můžete shromažďovat data telemetrie pro entity streamování, streamování a archivace za provozu. Další informace najdete v tématu [Media Services telemetrie](media-services-telemetry-overview.md).
 
-## <a name="a-idjuly_changes16july-2016-release"></a>@no__t – 0July 2016 verze
+## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>vydání z července 2016
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Aktualizuje soubor manifestu (*. ISM) generovaných úlohami kódování
 Když je odeslána úloha kódování do Media Encoder Standard nebo kodéru Media Encoder Premium, úloha kódování vygeneruje [soubor manifestu streamování](media-services-deliver-content-overview.md) (*. ISM) ve výstupním prostředku. V nejnovější verzi služby se aktualizovala syntaxe tohoto souboru manifestu streamování.
 
@@ -455,13 +455,13 @@ V [nástrojích Azure SDK](https://github.com/Azure/azure-sdk-tools)jsou teď za
     Příklad: `Get-AzureMediaServicesAccount`
 * New-AzureMediaServicesAccount 
   
-    Příklad: `New-AzureMediaServicesAccount -Name “MediaAccountName” -Location “Region” -StorageAccountName “StorageAccountName”`
+    Příklad: `New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
 * New-AzureMediaServicesKey 
   
-    Příklad: `New-AzureMediaServicesKey -Name “MediaAccountName” -KeyType Secondary -Force`
+    Příklad: `New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
 * Remove-AzureMediaServicesAccount 
   
-    Příklad: `Remove-AzureMediaServicesAccount -Name “MediaAccountName” -Force`
+    Příklad: `Remove-AzureMediaServicesAccount -Name "MediaAccountName" -Force`
 
 ## <a id="june_changes_13"></a>Verze z června 2013
 ### <a name="june_13_general_changes"></a>Media Services změny

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4beb6709cafeb4160afcb01ad0b9d449e4f00f7b
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 834ac1d6e35169689a767a95bbef09673454c46a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887179"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73148887"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
@@ -150,7 +150,7 @@ V případě úspěchu tato akce vrátí ověřovací token.
 Chcete-li volat rozhraní API, vytvořte hlavičku s následujícím parametrem:
 
 ```
-`Authorization`=”<token_type> <access_token>"
+`Authorization`="<token_type> <access_token>"
 ```
 
 Při ověřování můžete v vráceném tokenu najít typ tokenu a přístupový token.

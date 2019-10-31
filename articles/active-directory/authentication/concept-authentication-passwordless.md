@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac59dbed0ba2766f3367e19c5fddeed52e250a5b
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: e17a99a522c6ab960c2ccd0cc2729076c54ed07f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880159"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151844"
 ---
 # <a name="passwordless-authentication-options"></a>Možnosti ověřování s heslem
 
@@ -28,13 +28,13 @@ Multi-Factor Authentication (MFA) je skvělý způsob, jak zabezpečit vaši org
 
 Každá organizace má při ověřování jiné požadavky. Microsoft nabízí tři možnosti ověřování s nehesly:
 
-- Windows Hello pro firmy 
-- Aplikace Microsoft Authenticator 
+- Windows Hello pro firmy
+- Aplikace Microsoft Authenticator
 - FIDO2 klíče zabezpečení
 
 ![Ověřování: zabezpečení a pohodlí](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>Windows Hello pro firmy 
+## <a name="windows-hello-for-business"></a>Windows Hello pro firmy
 
 Windows Hello pro firmy je ideální pro informační pracovníky, kteří mají vlastní určený počítač s Windows. Biometrika a kód PIN jsou přímo vázané na počítač uživatele, který brání přístupu od někoho jiného než vlastník. S integrací infrastruktury veřejných klíčů a integrovanou podporou jednotného přihlašování (SSO) nabízí Windows Hello pro firmy jednoduchou a pohodlnou metodu pro bezproblémové přístup k podnikovým prostředkům místně a v cloudu.
 
@@ -52,7 +52,7 @@ Přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů be
 
 Klíče zabezpečení FIDO2 jsou nenáročné metody ověřování bez hesla založené na standardech, které mohou být v libovolném formuláři. Rychlá identita online (FIDO) je otevřený standard pro ověřování neheslem. Umožňuje uživatelům a organizacím využít standard pro přihlášení ke svým prostředkům bez uživatelského jména nebo hesla pomocí externího bezpečnostního klíče nebo klíče platformy integrovaného do zařízení.
 
-Ve verzi Public Preview můžou zaměstnanci použít externí bezpečnostní klíče pro přihlášení ke svým Azure Active Directory připojeným počítačům s Windows 10 (se spuštěnou verzí 1809 nebo vyšší) a k získání jednotného přihlašování ke svým cloudovým prostředkům. Můžou se také přihlásit k podporovaným prohlížečům.
+Ve verzi Public Preview můžou zaměstnanci použít bezpečnostní klíče pro přihlášení ke svým zařízením s Windows 10 připojeným k Azure AD nebo k hybridnímu připojení Azure AD a získat jednotné přihlášení ke svým cloudovým a místním prostředkům. Můžou se také přihlásit k podporovaným prohlížečům.
 
 ![Přihlaste se k Microsoft Edge pomocí bezpečnostního klíče.](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -78,6 +78,9 @@ Následující poskytovatelé nabízejí bezpečnostní klíče FIDO2 různých 
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 
+> [!NOTE]
+> Pokud si koupíte a plánujete použít bezpečnostní klíče založené na NFC, budete potřebovat podporovanou čtečku NFC.
+
 Pokud jste dodavatel a chcete v tomto seznamu získat své zařízení, obraťte se na [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
 
 Klíče zabezpečení FIDO2 představují skvělou možnost pro podniky, které jsou velmi citlivé na zabezpečení, nebo které mají scénáře nebo zaměstnanci, kteří nejsou ochotni nebo nedokázali používat svůj telefon jako druhý faktor.
@@ -89,7 +92,7 @@ Klíče zabezpečení FIDO2 představují skvělou možnost pro podniky, které 
 - Koncoví uživatelé můžou tyto metody ověřování s heslem zaregistrovat a spravovat na portálu účtů.
 - Koncoví uživatelé se můžou přihlásit pomocí těchto metod ověřování bez hesla.
    - Microsoft Authenticator aplikace: budou fungovat ve scénářích, kdy se používá ověřování Azure AD, včetně všech prohlížečů, během instalace Windows 10 z počítače (OOBE) a s integrovanými mobilními aplikacemi v jakémkoli operačním systému.
-   - Klíče zabezpečení: budou fungovat na zamykací obrazovce pro Windows 10 verze 1809 nebo vyšší a na webu v podporovaných prohlížečích, jako je Microsoft Edge.
+   - Klíče zabezpečení: budou fungovat na zamykací obrazovce pro Windows 10 a na webu v podporovaných prohlížečích, jako je Microsoft Edge.
 
 ## <a name="next-steps"></a>Další kroky
 

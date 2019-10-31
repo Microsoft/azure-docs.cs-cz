@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: c659db91b8ca1ad65b00124bed347b8046328d2e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 6dd3172dd9098db0cb7ec09e812eec65f717340a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044999"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163206"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Ladění výkonu s využitím mezipaměti sady výsledků  
 Pokud je povoleno ukládání sady výsledků do mezipaměti, Azure SQL Data Warehouse automaticky ukládá do mezipaměti výsledky dotazu v uživatelské databázi pro opakované použití.  To umožňuje následným provedením dotazů získat výsledky přímo z trvalé mezipaměti, aby se ještě nevyžadovalo jejich recompute.   Ukládání sady výsledků do mezipaměti vylepšuje výkon dotazů a snižuje využití prostředků v výpočetním prostředí.  Dotazy, které používají sadu výsledků uložených v mezipaměti, nepoužívají žádné přihrádky souběžnosti, a proto se nepočítají proti stávajícím limitům souběžnosti. Z důvodu zabezpečení mají uživatelé přístup k výsledkům uloženým v mezipaměti pouze v případě, že mají stejná oprávnění k přístupu k datům, jako uživatelé, kteří vytvářejí výsledky v mezipaměti.  
@@ -37,7 +37,24 @@ Když je pro databázi zapnuté ukládání výsledků do mezipaměti, výsledky
 - Dotazy, které používají tabulky se zabezpečením na úrovni řádků nebo na úrovni sloupce povolené
 - Dotazy vracející data s velikostí řádku větší než 64 KB
 
-Dotazy s velkými sadami výsledků dotazu (například > 1 000 000 řádků) můžou při prvním spuštění při vytváření mezipaměti výsledků docházet k nižšímu výkonu.
+> [!IMPORTANT]
+> Operace pro vytvoření mezipaměti sady výsledků a načtení dat z mezipaměti se vyskytují v uzlu Control instance datového skladu. Když je zapnuté ukládání sady výsledků do mezipaměti, spouštění dotazů, které vracejí velkou sadu výsledků (například > 1 milion řádků), může způsobit vysoké využití procesoru v uzlu Control a zpomalit celkovou odpověď na instanci.  Tyto dotazy se běžně používají při zkoumání dat nebo při operacích ETL. Aby nedošlo k přerušení řídicího uzlu a mohl by dojít k problémům s výkonem, měli by uživatelé před spuštěním těchto typů dotazů vypnout ukládání sady výsledků do mezipaměti v databázi.  
+
+Spustit tento dotaz pro dobu, kterou zadalo operace ukládání sady výsledků do mezipaměti pro dotaz:
+
+```sql
+SELECT step_index, operation_type, location_type, status, total_elapsed_time, command 
+FROM sys.dm_pdw_request_steps 
+WHERE request_id  = <'request_id'>; 
+```
+
+Tady je příklad výstupu pro dotaz, který se spustil s povoleným ukládáním sady výsledků dotazu.
+
+![Dotaz-kroky-with-RSC – disabled](media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+
+Tady je příklad výstupu dotazu spuštěného s povoleným ukládáním sady výsledků.
+
+![Dotaz-kroky-with-RSC – povoleno](media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>Když se použijí výsledky uložené v mezipaměti
 

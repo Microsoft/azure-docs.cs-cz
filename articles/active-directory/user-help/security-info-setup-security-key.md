@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717384"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160710"
 ---
 # <a name="set-up-security-info-to-use-a-security-key-preview"></a>Nastavení bezpečnostních údajů pro použití bezpečnostního klíče (Preview)
 
@@ -37,7 +37,7 @@ Správce nebo vaše organizace vám poskytne klíč zabezpečení, pokud to vyž
 > [!Note]
 > Pokud nemůžete použít bezpečnostní klíč FIDO2, můžete použít i jiné metody ověřování bez hesla, jako je například aplikace Microsoft Authenticator nebo Windows Hello. Další informace o aplikaci Microsoft Authenticator najdete v tématu [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md). Další informace o Windows Hello najdete v tématu [Přehled Windows Hello](https://www.microsoft.com/windows/windows-hello).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Předtím, než budete moci zaregistrovat klíč zabezpečení, musí být splněny následující podmínky:
 
@@ -47,11 +47,11 @@ Předtím, než budete moci zaregistrovat klíč zabezpečení, musí být spln�
 
 - Máte fyzický bezpečnostní klíč schválený vaším správcem nebo vaší organizací. Bezpečnostní klíč musí být FIDO2 i Microsoft. Pokud máte nějaké dotazy týkající se vašeho bezpečnostního klíče a jestli je kompatibilní, obraťte se na oddělení technické podpory vaší organizace.
 
-## <a name="register-your-security-key"></a>Zaregistrovat klíč zabezpečení
+## <a name="register-your-security-key"></a>Zaregistrujte si bezpečnostní klíč
 
 Abyste se mohli přihlásit ke svému pracovnímu nebo školnímu účtu pomocí klíče, musíte si vytvořit svůj bezpečnostní klíč a dát mu jedinečný kód PIN. K vašemu účtu můžete mít zaregistrovaných až 10 klíčů. 
 
-1. Pokud jste to ještě neudělali https://myprofile.microsoft.com , klikněte na stránku **můj profil** a přihlaste se.
+1. Na stránce **můj profil** na https://myprofile.microsoft.com a přihlaste se, pokud jste to ještě neudělali.
 
 2. Vyberte **informace o zabezpečení**, vyberte **Přidat metodu**a pak v rozevíracím seznamu **Přidat metodu** vyberte **klíč zabezpečení** .
 
@@ -96,7 +96,7 @@ Abyste se mohli přihlásit ke svému pracovnímu nebo školnímu účtu pomocí
 
 ## <a name="delete-a-security-key-from-your-security-info"></a>Odstraní bezpečnostní klíč z bezpečnostních údajů.
 
-Pokud přestanete nebo už nechcete používat bezpečnostní klíč, můžete klíč odstranit z bezpečnostních údajů. I když se tím zabrání použití klíče zabezpečení pro váš pracovní nebo školní účet, klíč zabezpečení bude dál ukládat vaše data a informace o přihlašovacích údajích. Chcete-li odstranit data a informace o přihlašovacích údajích z samotného klíče zabezpečení, je nutné postupovat podle pokynů v části [resetování bezpečnostního klíče kompatibilního](#reset-your-security-key) s Microsoftem v tomto článku.
+Pokud přestanete nebo už nechcete používat bezpečnostní klíč, můžete klíč odstranit z bezpečnostních údajů. I když se tím zabrání použití klíče zabezpečení pro váš pracovní nebo školní účet, klíč zabezpečení bude dál ukládat vaše data a informace o přihlašovacích údajích. Chcete-li odstranit data a informace o přihlašovacích údajích z samotného klíče zabezpečení, je nutné postupovat podle pokynů v části [resetování bezpečnostního klíče kompatibilního s Microsoftem](#reset-your-security-key) v tomto článku.
 
 1. Vyberte odkaz **Odstranit** z bezpečnostního klíče, který chcete odebrat.
 
@@ -148,12 +148,12 @@ Pro svůj bezpečnostní klíč můžete vytvořit nový PIN klíč pro zabezpe�
 
 Aby bylo možné zaregistrovat klíč zabezpečení, musíte mít zaregistrovanou alespoň jednu metodu dalšího ověření zabezpečení. Další informace najdete v [části Přehled](security-info-add-update-methods-overview.md) . 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o metodách ověřování bez hesla najdete na [webu Azure AD, který začíná ve verzi Public Preview klíčů zabezpečení FIDO2, povolení](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogu pro přihlášení bez hesla nebo Přečtěte si článek [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md) [. ](https://www.microsoft.com/windows/windows-hello)Články s přehledem Windows Hello.
+- Další informace o metodách ověřování bez hesla najdete na [webu Azure AD, který začíná ve verzi Public Preview klíčů zabezpečení FIDO2, povolení](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogu pro přihlášení bez hesla nebo Přečtěte si článek [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md) [. Články s přehledem Windows Hello](https://www.microsoft.com/windows/windows-hello) .
 
 - Podrobnější informace o [bezpečnostních klíčích kompatibilních se společností Microsoft](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 
-- Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](user-help-reset-password.md) .
+- Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md) .
 
-- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se nemůžete [přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .
+- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se [nemůžete přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .

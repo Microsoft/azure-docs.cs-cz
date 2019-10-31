@@ -1,10 +1,10 @@
 ---
 title: Izolace ve veřejném cloudu Azure | Microsoft Docs
-description: Přečtěte si o cloudových výpočetních službách, které zahrnují nejrůznější výpočetní instance & služby, které se můžou automaticky škálovat a snížit tak, aby vyhovovaly potřebám vaší aplikace nebo podniku.
+description: Přečtěte si, jak Azure poskytuje izolaci proti uživatelům se zlými úmysly i bez škodlivých uživatelů a nabízí různé možnosti izolace pro architekty.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,38 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123055"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159754"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
-##  <a name="introduction"></a>Úvod
-### <a name="overview"></a>Přehled
-Pro pomoc aktuálním a potenciálním zákazníkům Azure se seznámíte s různými možnostmi zabezpečení dostupnými v a okolím platformy Azure, společnost Microsoft vyvinula řadu dokumentů White Paper, přehledů zabezpečení, osvědčených postupů a Kontrolní seznamy.
-Témata v oblasti široké a hloubkové oblasti a jsou pravidelně aktualizovány. Tento dokument je součástí této řady, jak je shrnuto v následující části.
+Azure umožňuje spouštět aplikace a virtuální počítače na sdílené fyzické infrastruktuře. Jednou z primárních motivů pro spouštění aplikací v cloudovém prostředí je schopnost distribuovat náklady na sdílené prostředky mezi více zákazníků. Tento postup víceklientské architektury vylepšuje efektivitu díky multiplexování prostředků mezi různými zákazníky s nízkými náklady. Bohužel taky představuje riziko sdílení fyzických serverů a dalších prostředků infrastruktury ke spouštění citlivých aplikací a virtuálních počítačů, které můžou patřit k libovolnému a potenciálně škodlivému uživateli.
 
-### <a name="azure-platform"></a>Platforma Azure
-Azure je otevřená a flexibilní platforma cloudových služeb, která podporuje nejširší škálu operačních systémů, programovacích jazyků, architektur, nástrojů, databází a zařízení. Můžete například provést následující věci:
-- Spouštění kontejnerů Linux s integrací Docker
-- Vytvářejte aplikace pomocí jazyků JavaScript, Python, .NET, PHP, Java a Node. js; ani
-- Vytvořte back-endy pro zařízení s iOS, Androidem a Windows.
-
-Microsoft Azure podporuje stejné technologie jako miliony pro vývojáře a odborníky na IT, kteří už využívají a důvěřují jim.
-
-Při sestavování nebo migraci IT prostředků do, poskytovatele veřejné cloudové služby, se spoléháte na možnosti organizace, které chrání vaše aplikace a data se službami a ovládacími prvky, které poskytují ke správě zabezpečení cloudových prostředků.
-
-Infrastruktura Azure je od zařízení až po aplikace navržena tak, aby umožňovala hostování milionů zákazníků současně a poskytovala důvěryhodný základ pro splnění potřeb zabezpečení jednotlivých podniků. Azure navíc poskytuje širokou škálu konfigurovatelných možností zabezpečení a umožňuje jejich nastavování, takže můžete zabezpečení přizpůsobit jedinečným požadavkům svého nasazení. Tento dokument vám pomůže splnit tyto požadavky.
-
-### <a name="abstract"></a>Abstraktní
-
-Microsoft Azure umožňuje spouštět aplikace a virtuální počítače na sdílené fyzické infrastruktuře. Jednou z primárních motivů pro spouštění aplikací v cloudovém prostředí je schopnost distribuovat náklady na sdílené prostředky mezi více zákazníků. Tento postup víceklientské architektury vylepšuje efektivitu díky multiplexování prostředků mezi různými zákazníky s nízkými náklady. Bohužel taky představuje riziko sdílení fyzických serverů a dalších prostředků infrastruktury ke spouštění citlivých aplikací a virtuálních počítačů, které můžou patřit k libovolnému a potenciálně škodlivému uživateli.
-
-Tento článek popisuje, jak Microsoft Azure poskytuje izolaci proti zlomyslným i nebezpečným uživatelům a slouží jako vodítko pro navrhování cloudových řešení tím, že nabízí různé možnosti izolace architektům. Tento dokument White Paper se zaměřuje na technologii řízení zabezpečení na platformě Azure i na zákazníky a nepokouší se řešit SLA, cenové modely a DevOps postupy.
+Tento článek popisuje, jak Azure poskytuje izolaci proti zlomyslným i nebezpečným uživatelům a slouží jako vodítko pro navrhování cloudových řešení tím, že nabízí různé možnosti izolace architektům.
 
 ## <a name="tenant-level-isolation"></a>Izolace na úrovni tenanta
 Jednou z hlavních výhod cloud computingu je koncept sdílené a běžné infrastruktury napříč mnoha zákazníky současně, což vede k úsporám rozsahu. Tento koncept se nazývá víceklientská architektura. Microsoft pracuje nepřetržitě, aby se zajistilo, že architektura Microsoft Cloud Azure pro více tenantů podporuje zabezpečení, důvěrnost, ochranu osobních údajů, integritu a dostupnost.
@@ -245,7 +226,7 @@ V případě mnoha organizací je [šifrování dat v klidovém](isolation-choic
 Řešení podporuje následující scénáře pro virtuální počítače s IaaS, když jsou povolené v Microsoft Azure:
 -   Integrace s Azure Key Vault
 
--   Virtuální počítače úrovně Standard: Virtuální počítače řady a, D, DS, G, GS a tak dále, Series IaaS
+-   Virtuální počítače úrovně Standard: a, D, DS, G, GS a tak dále, řady IaaS Series
 
 -   Povolení šifrování na virtuálních počítačích s Windows a Linux IaaS
 
@@ -284,7 +265,7 @@ SQL Database je služba v cloudu Microsoftu poskytující relační databáze za
 
 [SQL Azure Microsoftu](../../sql-database/sql-database-single-database-get-started.md) Database je cloudová služba relačních databází založená na SQL Server technologiích. Poskytuje vysoce dostupnou a škálovatelnou databázovou službu pro více tenantů, která je hostována Microsoftem v cloudu.
 
-Z perspektivy aplikace SQL Azure poskytuje následující hierarchii: Každá úroveň má omezení 1: n níže.
+Z perspektivy aplikace SQL Azure poskytuje následující hierarchii: Každá úroveň má jednu z níže uvedených úrovní.
 
 ![SQL Azure aplikační model](./media/isolation-choices/azure-isolation-fig10.png)
 
@@ -350,4 +331,3 @@ Microsoft Azure poskytuje různé cloudové výpočetní služby, které zahrnuj
 - [Izolace úložiště](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
 Microsoft Azure odděluje výpočet založený na virtuálním počítači od zákazníka od úložiště. Toto oddělení umožňuje nezávisle škálovat výpočetní a úložné úložiště, což usnadňuje zajištění víceklientské architektury a izolace. Proto Azure Storage spouští na samostatném hardwaru bez připojení k síti Azure COMPUTE s výjimkou logických. Všechny požadavky běží přes HTTP nebo HTTPS na základě výběru zákazníka.
-

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: ff6fd45e0a68a3e93e4c62eb31a566a6dffa2344
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494947"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159696"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Přehled zásad sítě Azure Kubernetes
 
@@ -51,7 +51,7 @@ Následující příklad konfigurace JSON vytvoří novou virtuální síť a po
   "properties": {
     "orchestratorProfile": {
       "orchestratorType": "Kubernetes",
-      “kubernetesConfig”: {
+      "kubernetesConfig": {
          "networkPolicy": "azure"
        }
     },
@@ -89,7 +89,7 @@ Následující příklad konfigurace JSON vytvoří novou virtuální síť a po
 ### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Vytvoření vlastního clusteru Kubernetes v Azure
 Implementace se dá použít k poskytování zásad sítě pro lusky v clusterech Kubernetes, které nasadíte sami, aniž byste se museli spoléhat na nástroje, jako je služba ACS-Engine. V takovém případě nejdřív nainstalujete modul plug-in CNI a povolíte ho na každém virtuálním počítači v clusteru. Podrobné pokyny najdete v tématu o [nasazení modulu plug-in v clusteru Kubernetes, který nasazujete sami](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 
-Po nasazení clusteru spusťte následující `kubectl` příkaz ke stažení a použití zásad sítě Azure *daemonset* do clusteru.
+Po nasazení clusteru spusťte následující příkaz `kubectl` ke stažení a použití zásad sítě Azure *daemonset* do clusteru.
 
   ```
   kubectl apply -f https://raw.githubusercontent.com/Azure/acs-engine/master/parts/k8s/addons/kubernetesmasteraddons-azure-npm-daemonset.yaml
@@ -99,7 +99,7 @@ Po nasazení clusteru spusťte následující `kubectl` příkaz ke stažení a 
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si o [službě Azure Kubernetes](../aks/intro-kubernetes.md).
 -  Přečtěte si o [sítích kontejnerů](container-networking-overview.md).
 - [Nasaďte modul plug-in](deploy-container-networking.md) pro clustery Kubernetes nebo kontejnery Docker.

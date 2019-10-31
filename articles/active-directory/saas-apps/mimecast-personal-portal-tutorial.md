@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory pomocí portálu osobní Mimecast | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a osobní Mimecast portálu.
+title: 'Kurz: Azure Active Directory integrace s osobním portálem Mimecast | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a osobním portálem Mimecast.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 345b22be-d87e-45a4-b4c0-70a67eaf9bfd
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,278 +16,278 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfafa1157619e151f97fcf9c8a410a0644354b80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 259635613855e4d7687cf569c94bbd3dd04027fe
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097381"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160622"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Kurz: Integrace Azure Active Directory s Mimecast osobní portálu
+# <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Kurz: Azure Active Directory integrace s osobním portálem Mimecast
 
-V tomto kurzu se dozvíte, jak integrovat Mimecast osobní portálu Azure Active Directory (Azure AD).
-Integrace s Azure AD Portal osobní Mimecast poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat osobní portál Mimecast s Azure Active Directory (Azure AD).
+Integrace osobního portálu Mimecast s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k portálu Mimecast osobní.
-* Uživatelům se automaticky přihlášeni k Mimecast osobní portálu (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, která má přístup k osobnímu portálu Mimecast.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k osobnímu portálu Mimecast (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD pomocí portálu osobní Mimecast, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD pomocí osobního portálu Mimecast potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Osobní portálu Mimecast jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné s podporou jednotného přihlašování Mimecast osobního portálu
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Mimecast osobní portál podporuje **SP** jednotné přihlašování zahájené pomocí
+* Mimecast Personal Portal podporuje jednotné přihlašování (SSO) iniciované **SP**
 
-## <a name="adding-mimecast-personal-portal-from-the-gallery"></a>Přidání portálu osobní Mimecast z Galerie
+## <a name="adding-mimecast-personal-portal-from-the-gallery"></a>Přidání osobního portálu Mimecast z Galerie
 
-Konfigurovat integraci portálu osobní Mimecast do služby Azure AD, budete muset přidat portál osobní Mimecast z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci osobního portálu Mimecast do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat osobní portál Mimecast z galerie.
 
-**Chcete-li přidat portál osobní Mimecast z galerie, postupujte následovně:**
+**K přidání osobního portálu Mimecast z Galerie proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **osobní portál Mimecast**vyberte **osobní portál Mimecast** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Mimecast Personal Portal**, vyberte z panelu výsledků možnost **osobní portál Mimecast** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Osobní portálu Mimecast v seznamu výsledků](common/search-new-app.png)
+     ![Mimecast osobní portál v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Mimecast osobní portál na základě testovací uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské Mimecast osobní portálu.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí osobního portálu Mimecast na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz mezi uživatelem služby Azure AD a souvisejícím uživatelem v osobním portálu Mimecast.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí osobního portálu Mimecast, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí osobního portálu Mimecast, musíte dokončit tyto stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Mimecast osobní portál Single Sign-On](#configure-mimecast-personal-portal-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Mimecast osobní portál](#create-mimecast-personal-portal-test-user)**  – Pokud chcete mít protějšek Britta Simon Mimecast osobní portálu, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování na osobním portálu Mimecast](#configure-mimecast-personal-portal-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte testovacího uživatele osobního portálu Mimecast](#create-mimecast-personal-portal-test-user)** , abyste měli protějšek Britta Simon na osobním portálu Mimecast, který se odkazuje na reprezentaci uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování pomocí portálu osobní Mimecast, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí osobního portálu Mimecast, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **osobní portál Mimecast** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **osobního portálu Mimecast** vyberte **jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Mimecast osobní portál domény a adresy URL jednotného přihlašování – informace](common/sp-identifier-reply.png)
+    ![Informace o jednotném přihlašování domény a adresy URL osobního portálu Mimecast](common/sp-identifier-reply.png)
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL: 
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL: 
 
     | Oblast  |  Hodnota | 
     | --------------- | --------------- | 
     | Evropa          | `https://eu-api.mimecast.com/login/saml`|
     | Spojené státy   | `https://us-api.mimecast.com/login/saml`|
-    | Jižní Afrika    | `https://za-api.mimecast.com/login/saml`|
+    | Jihoafrická republika    | `https://za-api.mimecast.com/login/saml`|
     | Austrálie       | `https://au-api.mimecast.com/login/saml`|
-    | Poskytuje        | `https://jer-api.mimecast.com/login/saml`|
+    | Prací        | `https://jer-api.mimecast.com/login/saml`|
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
     | Oblast  |  Hodnota | 
     | --------------- | --------------- |
     | Evropa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
     | Spojené státy   | `https://us-api.mimecast.com/sso/<accountcode>`|    
-    | Jižní Afrika    | `https://za-api.mimecast.com/sso/<accountcode>`|
+    | Jihoafrická republika    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | Austrálie       | `https://au-api.mimecast.com/sso/<accountcode>`|
-    | Poskytuje        | `https://jer-api.mimecast.com/sso/<accountcode>`|
+    | Prací        | `https://jer-api.mimecast.com/sso/<accountcode>`|
 
-    c. V **adresy URL odpovědi** textového pole zadejte adresu URL: 
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL: 
 
     | Oblast  |  Hodnota | 
     | --------------- | --------------- | 
     | Evropa          | `https://eu-api.mimecast.com/login/saml`|
     | Spojené státy   | `https://us-api.mimecast.com/login/saml`|
-    | Jižní Afrika    | `https://za-api.mimecast.com/login/saml`|
+    | Jihoafrická republika    | `https://za-api.mimecast.com/login/saml`|
     | Austrálie       | `https://au-api.mimecast.com/login/saml`|
-    | Poskytuje        | `https://jer-api.mimecast.com/login/saml`|
+    | Prací        | `https://jer-api.mimecast.com/login/saml`|
 
     > [!NOTE]
-    > Hodnota identifikátoru není skutečný. Identifikátor skutečné zaktualizujte příslušnou hodnotu. Kontakt [tým podpory osobní klienta portálu Mimecast](https://www.mimecast.com/customer-success/technical-support/) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota identifikátoru není reálné číslo. Aktualizujte hodnotu skutečným identifikátorem. Pokud chcete získat hodnotu, kontaktujte [tým podpory Mimecast osobního portálu](https://www.mimecast.com/customer-success/technical-support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-6. Na **nastavení portálu osobní Mimecast** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **nastavení osobního portálu Mimecast** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
-    c. Adresa URL – odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-mimecast-personal-portal-single-sign-on"></a>Konfigurace Mimecast osobní portálu jednotného přihlašování
+### <a name="configure-mimecast-personal-portal-single-sign-on"></a>Konfigurace jednotného přihlašování osobního portálu Mimecast
 
-1. V okně jiné webové prohlížeče Přihlaste se ke Mimecast osobní portálu jako správce.
+1. V jiném okně webového prohlížeče se přihlaste k osobnímu portálu Mimecast jako správce.
 
-2. Přejděte na **služby \> aplikací**.
+2. Přejít na **služby \> aplikací**.
    
-    ![Aplikace](./media/mimecast-personal-portal-tutorial/ic794998.png "aplikací")
+    ![Aplikace](./media/mimecast-personal-portal-tutorial/ic794998.png "Aplikace")
 
-3. Klikněte na tlačítko **ověřování profilů**.
+3. Klikněte na **profily ověřování**.
    
-    ![Ověřování profilů](./media/mimecast-personal-portal-tutorial/ic794999.png "ověřování profilů")
+    ![Profily ověřování](./media/mimecast-personal-portal-tutorial/ic794999.png "Profily ověřování")
 
-4. Klikněte na tlačítko **nový profil ověřování**.
+4. Klikněte na **Nový profil ověřování**.
    
-    ![Nový profil ověřování](./media/mimecast-personal-portal-tutorial/ic795000.png "nový profil ověřování")
+    ![Nový ověřovací profil](./media/mimecast-personal-portal-tutorial/ic795000.png "Nový ověřovací profil")
 
-5. V **ověřování profilu** části, proveďte následující kroky:
+5. V části **profil ověřování** proveďte následující kroky:
    
-    ![Profil ověření](./media/mimecast-personal-portal-tutorial/ic795001.png "profilu ověření systému")
+    ![Ověřovací profil](./media/mimecast-personal-portal-tutorial/ic795001.png "Ověřovací profil")
    
-    a. V **popis** textového pole zadejte název pro vaši konfiguraci.
+    a. Do textového pole **Popis** zadejte název konfigurace.
    
-    b. Vyberte **vynutit ověřování SAML pro osobní Mimecast portál**.
+    b. Vyberte **vynutil ověřování SAML pro osobní portál Mimecast**.
    
-    c. Jako **poskytovatele**vyberte **Azure Active Directory**.
+    c. Jako **zprostředkovatel**vyberte **Azure Active Directory**.
    
-    d. V **URL vystavitele** textového pole vložte hodnotu **Azure Ad identifikátor**, který jste zkopírovali z portálu Azure portal.
+    d. Do textového pole **Adresa URL vystavitele** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
    
-    e. V **přihlašovací adresa URL** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    e. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
    
-    f. V **odhlašovací adresa URL** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    f. Do textového pole **Adresa URL pro odhlášení** vložte hodnotu **URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
 
-    g. Otevřete váš **base-64** kódovaného certifikátu v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **certifikát zprostředkovatele Identity (Metadata)** textového pole.
+    g. Otevřete v programu Poznámkový blok certifikát s kódováním **Base-64** stažený z Azure Portal, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikát poskytovatele identity (metadata)** .
 
-    h. Vyberte **povolit jednotné přihlašování na**.
+    h. Vyberte možnost **povolení jednotného přihlašování**.
    
     i. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu na portál Mimecast osobní.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k osobním portálu Mimecast.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **osobní portál Mimecast**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **osobní portál Mimecast**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
 2. V seznamu aplikace zadejte a vyberte **osobní portál Mimecast**.
 
-    ![Osobní portálu Mimecast odkaz v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na osobního portálu Mimecast v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-mimecast-personal-portal-test-user"></a>Vytvořit osobní portál Mimecast testovacího uživatele
+### <a name="create-mimecast-personal-portal-test-user"></a>Vytvořit testovacího uživatele osobního portálu Mimecast
 
-Chcete-li povolit Azure AD uživatelům přihlásit do portálu osobní Mimecast, musí být zřízená Mimecast osobní portál. V případě Mimecast osobní portál je zřizování úlohu.
+Aby se uživatelé Azure AD mohli přihlásit k osobnímu portálu Mimecast, musí být zřízené na osobním portálu Mimecast. V případě osobního portálu Mimecast je zřizování ručním úkolem.
 
-Budete muset zaregistrovat k doméně, než budete moct vytvořit uživatele.
+Než budete moct vytvořit uživatele, musíte zaregistrovat doménu.
 
-**Konfigurace zřizování uživatelů, proveďte následující kroky:**
+**Při konfiguraci zřizování uživatelů proveďte následující kroky:**
 
-1. Přihlaste se k vaší **osobní portál Mimecast** jako správce.
+1. Přihlaste se k **osobnímu portálu Mimecast** jako správce.
 
-2. Přejděte na **adresáře \> interní**.
+2. Přejděte do **adresáře \> interní**.
    
-    ![Adresáře](./media/mimecast-personal-portal-tutorial/ic795003.png "adresáře")
+    ![Adresáře](./media/mimecast-personal-portal-tutorial/ic795003.png "Adresáře")
 
-3. Klikněte na tlačítko **zaregistrovat novou doménu**.
+3. Klikněte na **zaregistrovat novou doménu**.
    
-    ![Register New Domain](./media/mimecast-personal-portal-tutorial/ic795004.png "Register New Domain")
+    ![Zaregistrovat novou doménu](./media/mimecast-personal-portal-tutorial/ic795004.png "Zaregistrovat novou doménu")
 
-4. Po vytvoření nové domény, klikněte na tlačítko **novou adresu**.
+4. Po vytvoření nové domény klikněte na **Nová adresa**.
    
-    ![Nová adresa](./media/mimecast-personal-portal-tutorial/ic795005.png "novou adresu")
+    ![Nová adresa](./media/mimecast-personal-portal-tutorial/ic795005.png "Nová adresa")
 
-5. V dialogovém okně Nový adresy, proveďte následující kroky platný Azure ke zřízení účtu AD:
+5. V dialogovém okně Nová adresa proveďte následující kroky platného účtu Azure AD, který chcete zřídit:
    
-    ![Uložit](./media/mimecast-personal-portal-tutorial/ic795006.png "uložit")
+    ![Uloží](./media/mimecast-personal-portal-tutorial/ic795006.png "Uložit")
    
-    a. V **e-mailovou adresu** textové pole, typ **e-mailovou adresu** uživatele jako datový typ **BrittaSimon\@contoso.com**.
+    a. Do textového pole **e-mailová adresa** zadejte **e-mailovou adresu** uživatele jako **BrittaSimon\@contoso.com**.
     
-    b. V **globální název** textové pole, typ **uživatelské jméno** jako **BrittaSimon**.
+    b. Do textového pole **globální název** zadejte **uživatelské jméno** jako **BrittaSimon**.
 
-    c. V **heslo**, a **potvrzení hesla** textová pole, typ **heslo** uživatele.
+    c. Do textového pole **heslo**a **potvrzení hesla** zadejte **heslo** uživatele.
    
     b. Klikněte na **Uložit**.
 
 >[!NOTE]
->Další nástroje pro tvorbu účtu uživatele Mimecast osobní portálu nebo rozhraní API poskytovaných Mimecast osobní portálu můžete použít ke zřízení uživatelských účtů služby Azure AD.
+>K zřizování uživatelských účtů Azure AD můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů nebo rozhraní API osobního portálu Mimecast, které poskytuje osobní portál Mimecast.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Mimecast osobní portál na přístupovém panelu, by měly být automaticky přihlásíte k portálu osobní Mimecast, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici osobního portálu Mimecast na přístupovém panelu byste měli být automaticky přihlášeni k osobnímu portálu Mimecast, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

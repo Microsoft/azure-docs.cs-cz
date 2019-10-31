@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933117"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151629"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Dokončení nasazení ověřování pomocí hesla
 
@@ -104,18 +104,27 @@ Klíče zabezpečení umožňují přístup k vašim prostředkům a měli byste
 
 Povolení přihlášení Windows 10 pomocí klíčů zabezpečení FIDO2 vyžaduje povolení funkcí poskytovatele přihlašovacích údajů ve Windows 10. Povolte ji jedním ze dvou způsobů:
 
-- [Povolení poskytovatele přihlašovacích údajů přes cílené nasazení Intune](howto-authentication-passwordless-security-key.md#enable-targeted-intune-deployment)
-   - Pro Azure Active Directory připojené počítače je doporučena možnost nasazení Intune.
-- [Povolení poskytovatele přihlašovacích údajů prostřednictvím zřizovacího balíčku](howto-authentication-passwordless-security-key.md#enable-credential-provider-via-provisioning-package)
+- [Povolení poskytovatele přihlašovacích údajů v Intune](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
+   - Doporučovaná možnost nasazení Intune.
+- [Povolení poskytovatele přihlašovacích údajů pomocí zřizovacího balíčku](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Pokud není nasazení Intune možné, musí správci nasadit balíček do každého počítače, aby se povolily funkce poskytovatele přihlašovacích údajů. Instalaci balíčku lze provést pomocí jedné z následujících možností:
       - Zásady skupiny nebo System Center Configuration Manager (SCCM)
       - Místní instalace na počítači s Windows 10
+- [Povolení poskytovatele pověření pomocí Zásady skupiny](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
+   - Podporuje se jenom pro zařízení připojená k hybridní službě Azure AD.
+
+#### <a name="enable-on-premises-integration"></a>Povolit místní integraci
+
+Pokud chcete povolit přístup k místním prostředkům, postupujte podle kroků v článku [Povolení přihlašování k místním prostředkům (Preview) pomocí klíče zabezpečení s nezabezpečenými hesly](howto-authentication-passwordless-security-key-on-premises.md) .
+
+> [!IMPORTANT]
+> Tyto kroky je potřeba provést taky pro všechna zařízení připojená k hybridní službě Azure AD, která využívají klíče zabezpečení FIDO2 pro přihlášení Windows 10.
 
 ### <a name="register-security-keys"></a>Registrovat klíče zabezpečení
 
 Uživatelé musí zaregistrovat svůj bezpečnostní klíč na každé Azure Active Directory připojené počítače s Windows 10.
 
-Další informace najdete v tématu [registrace uživatelů a Správa klíčů zabezpečení FIDO2](howto-authentication-passwordless-security-key.md).
+Další informace najdete v tématu [registrace uživatelů a Správa klíčů zabezpečení FIDO2](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys).
 
 ### <a name="licensing-for-passwordless-authentication"></a>Licencování pro ověřování neheslem
 
@@ -257,7 +266,7 @@ Postupujte podle kroků v článku a [Povolte přihlášení bez hesla pomocí a
 ### <a name="deploy-fido2-security-key-sign-in"></a>Nasadit FIDO2 bezpečnostní klíč – přihlášení
 
 Postupujte podle kroků v článku a [Povolte přihlášení klíče zabezpečení bez hesla pro službu Azure AD](howto-authentication-passwordless-security-key.md) a povolte klíče zabezpečení FIDO2 jako metody ověřování bez hesla ve vaší organizaci.
- 
+
 ### <a name="troubleshoot-phone-sign-in"></a>Řešení potíží s přihlášením telefonem
 
 | Scénář | Řešení |

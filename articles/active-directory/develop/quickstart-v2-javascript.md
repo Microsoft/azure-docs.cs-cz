@@ -1,5 +1,6 @@
 ---
-title: Microsoft Identity Platform JavaScript – rychlý Start – Azure
+title: Přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript | Azure
+titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak můžou aplikace JavaScriptu volat rozhraní API, které vyžaduje přístupové tokeny pomocí platformy Microsoft Identity Platform.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,14 +17,14 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51ef62d84d2744b595cfb946b7720f8b2a5dcd77
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: ad79ee0fd1d421c7e869424ccb8daa595e51a970
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964054"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149408"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu z jednostránkové aplikace v JavaScriptu
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
 V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové aplikace v JavaScriptu (SPA) můžou přihlašovat uživatelům osobních účtů, pracovních účtů a školních účtů. K volání rozhraní API pro Microsoft Graph nebo libovolné webové rozhraní API může získat přístupový token, a to prostřednictvím JavaScriptu. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 

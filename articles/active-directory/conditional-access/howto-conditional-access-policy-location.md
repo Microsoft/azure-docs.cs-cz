@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c782c8bb2807017053375b45560685acf78161e7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 64b7add9ddb1734d763c46e93d6788ce21a2c321
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169971"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150889"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Podmíněný přístup: blokovat přístup podle umístění
 
@@ -43,8 +43,8 @@ Další informace o podmínkách umístění v podmíněném přístupu najdete 
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
-   1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**@no__t **-1**zadejte **všechny cloudové aplikace**a vyberte **Hotovo**.
+   1. Vyberte **Done** (Hotovo).
+1. V části **cloudové aplikace nebo akce** > **Zahrnout**, vyberte **všechny cloudové aplikace**a vyberte **Hotovo**.
 1. V části **podmínky** > **umístění**.
    1. Nastavte **Konfigurovat** na **Ano** .
    1. **Zahrnout** výběr **vybraných umístění**

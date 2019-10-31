@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 371ba46b477b5dba245a116d2ea9d21d2b732a97
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 41cb27096782f525a531f38efda539c065fa4c72
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337660"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163593"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro Poznámkový blok Jupyter na clusterech s Apache Spark ve službě Azure HDInsight
 
@@ -26,7 +26,7 @@ Clustery HDInsight Spark poskytují jádra, která můžete použít s poznámko
 
 V tomto článku se naučíte používat tyto jádra a výhody jejich používání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -53,13 +53,13 @@ Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [Vytváření cluster
 
 Tady je několik výhod používání nových jader s poznámkovým blokem Jupyter v clusterech Spark HDInsight.
 
-- **Přednastavené kontexty**. V prostředích **PySpark**, **PySpark3**nebo **Sparku** nemusíte před zahájením práce s aplikacemi nastavovat kontexty Sparku nebo podregistru explicitně. Jsou k dispozici ve výchozím nastavení. Kontexty jsou:
+- **Přednastavené kontexty**. V prostředích **PySpark**, **PySpark3**nebo **Sparku** nemusíte před zahájením práce s aplikacemi nastavovat kontexty Sparku nebo podregistru explicitně. Jsou k dispozici ve výchozím nastavení. Tyto kontexty jsou:
 
-  * **SC** – pro kontext Spark
-  * **kontext SqlContext** – pro kontext podregistru
-   
+  - **SC** – pro kontext Spark
+  - **kontext SqlContext** – pro kontext podregistru
+
     Takže nemusíte při nastavování kontextů provádět příkazy, jako je následující:
-   
+
          sc = SparkContext('yarn-client')
          sqlContext = HiveContext(sc)
 
@@ -69,15 +69,15 @@ Tady je několik výhod používání nových jader s poznámkovým blokem Jupyt
 
     V následující tabulce jsou uvedeny různé Magic dostupné prostřednictvím jader.
 
-   | Paket | Příklad | Popis |
+   | Paket | Příklad: | Popis |
    | --- | --- | --- |
-   | Nápověda |`%%help` |Vygeneruje tabulku všech dostupných MAGICS s příkladem a popisem. |
-   | info |`%%info` |Vytvoří výstup informací o relaci pro aktuální koncový bod Livy. |
-   | konfigurovat |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry pro vytvoření relace. Příznak Force (-f) je povinný, pokud už je relace vytvořená, což zajistí, že se relace vynechá a znovu vytvoří. Seznam platných parametrů najdete v [textu žádosti post/Sessions pro Livy](https://github.com/cloudera/livy#request-body) . Parametry musí být předány jako řetězec JSON a musí být na dalším řádku po Magic, jak je znázorněno v příkladu sloupce. |
-   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz Hive proti kontext sqlContext. Pokud je předán parametr `-o`, výsledek dotazu je trvalý v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. |
-   | místní |`%%local`<br>`a=1` |Veškerý kód v následných řádcích se spustí místně. Kód musí být platný Python2 kód, a to i bez ohledu na používané jádro. Takže i když jste při vytváření poznámkového bloku vybrali **PySpark3** nebo **Spark** , v případě, že v buňce použijete rozhraní Magic `%%local`, musí mít tato buňka platný Python2 kód. |
-   | logs |`%%logs` |Vytvoří výstup protokolů pro aktuální relaci Livy. |
-   | delete |`%%delete -f -s <session number>` |Odstraní konkrétní relaci aktuálního koncového bodu Livy. Nejde odstranit relaci, která je inicializovaná pro jádro samotné. |
+   | Pomoc |`%%help` |Vygeneruje tabulku všech dostupných MAGICS s příkladem a popisem. |
+   | Příjemce |`%%info` |Vytvoří výstup informací o relaci pro aktuální koncový bod Livy. |
+   | Konfigurace |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry pro vytvoření relace. Příznak Force (-f) je povinný, pokud už je relace vytvořená, což zajistí, že se relace vynechá a znovu vytvoří. Seznam platných parametrů najdete v [textu žádosti post/Sessions pro Livy](https://github.com/cloudera/livy#request-body) . Parametry musí být předány jako řetězec JSON a musí být na dalším řádku po Magic, jak je znázorněno v příkladu sloupce. |
+   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz na podregistr pro kontext SqlContext. Pokud je předán parametr `-o`, výsledek dotazu je trvalý v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. |
+   | místní |`%%local`<br>`a=1` |Veškerý kód v následných řádcích se spustí místně. Kód musí být platný Python2 kód, a to i bez ohledu na používané jádro. Takže i když jste při vytváření poznámkového bloku vybrali **PySpark3** nebo **Spark** , v případě, že v buňce použijete `%%local` Magic, musí mít tato buňka platný Python2 kód. |
+   | Protokoly |`%%logs` |Vytvoří výstup protokolů pro aktuální relaci Livy. |
+   | delete |`%%delete -f -s <session number>` |Odstraní konkrétní relaci aktuálního koncového bodu Livy. Nemůžete odstranit relaci, která je inicializovaná pro jádro samotné. |
    | Vyčištění |`%%cleanup -f` |Odstraní všechny relace pro aktuální koncový bod Livy, včetně relace tohoto poznámkového bloku. Příznak Force-f je povinný. |
 
    > [!NOTE]  
@@ -87,15 +87,15 @@ Tady je několik výhod používání nových jader s poznámkovým blokem Jupyt
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>Parametry podporované s%% SQL Magic
 
-@No__t-0 Magic podporuje různé parametry, které lze použít k řízení typu výstupu, který jste obdrželi při spouštění dotazů. V následující tabulce je uveden výstup.
+`%%sql` Magic podporuje různé parametry, které lze použít k řízení typu výstupu, který jste obdrželi při spouštění dotazů. V následující tabulce je uveden výstup.
 
-| Parametr | Příklad | Popis |
+| Parametr | Příklad: | Popis |
 | --- | --- | --- |
 | – o |`-o <VARIABLE NAME>` |Tento parametr použijte k uchování výsledku dotazu v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. Název proměnné datového rámce je název proměnné, kterou zadáte. |
-| -q |`-q` |Pomocí této vlastnosti můžete pro buňku vypnout vizualizace. Pokud nechcete, aby se obsah buňky využíval, a chcete ji pouze zachytit jako datový rámec, použijte `-q -o <VARIABLE>`. Chcete-li vypnout vizualizace bez zachycení výsledků (například pro spuštění dotazu SQL, jako je například příkaz `CREATE TABLE`), použijte `-q` bez zadání argumentu `-o`. |
-| -m |`-m <METHOD>` |Kde **Metoda** je buď buď **převzít** , nebo **vzorek** (výchozí **nastavení je)** . Pokud metoda **trvá**, jádro vybere prvky z horní části sady výsledků dat určené v MAXROWS (popsané dále v této tabulce). Pokud je metoda **ukázková**, jádro náhodně vypíše prvky datové sady podle parametru `-r` popsaných dále v této tabulce. |
+| -q |`-q` |Pomocí této vlastnosti můžete pro buňku vypnout vizualizace. Pokud nechcete, aby se obsah buňky využíval, a chcete ji pouze zachytit jako datový rámec, použijte `-q -o <VARIABLE>`. Pokud chcete vypnout vizualizace bez zachycení výsledků (například pro spuštění dotazu SQL, jako je například příkaz `CREATE TABLE`), použijte `-q` bez zadání argumentu `-o`. |
+| -m |`-m <METHOD>` |Kde **Metoda** je buď buď **převzít** , nebo **vzorek** (výchozí **nastavení je)** . Pokud metoda **trvá**, jádro vybere prvky z horní části sady výsledků dat určené v MAXROWS (popsané dále v této tabulce). Pokud je metoda **ukázková**, jádro náhodně vypíše prvky datové sady podle parametru `-r`, popsaného dále v této tabulce. |
 | -r |`-r <FRACTION>` |Pro **zlomek** je číslo s plovoucí desetinnou čárkou v rozsahu od 0,0 do 1,0. Pokud je metoda ukázky pro dotaz SQL `sample`, pak jádro náhodně vyvzorkuje zadaný zlomek prvků sady výsledků. Například pokud spustíte dotaz SQL s argumenty `-m sample -r 0.01`, pak 1% řádků výsledků je náhodně vzorkovat. |
-| -n |`-n <MAXROWS>` |**MAXROWS** je celočíselná hodnota. Jádro omezuje počet výstupních řádků na **MAXROWS**. Pokud **MAXROWS** je záporné číslo, jako je hodnota **-1**, počet řádků v sadě výsledků dotazu není omezen. |
+| -n |`-n <MAXROWS>` |**MAXROWS** je celočíselná hodnota. Jádro omezuje počet výstupních řádků na **MAXROWS**. Pokud je **MAXROWS** záporné číslo, jako je hodnota **-1**, počet řádků v sadě výsledků není omezený. |
 
 **Příklad:**
 
@@ -104,18 +104,18 @@ Tady je několik výhod používání nových jader s poznámkovým blokem Jupyt
 
 Výše uvedený příkaz provede následující akce:
 
-* Vybere všechny záznamy z **hivesampletable**.
-* Protože používáme-q, vypne se vizuálně.
-* Protože používáme `-m sample -r 0.1 -n 500`, náhodně vyvzorkuje 10% řádků v hivesampletable a omezí velikost sady výsledků na 500 řádků.
-* A konečně, protože jsme použili `-o query2`, výstup také ukládá do dataframe s názvem **query2**.
+- Vybere všechny záznamy z **hivesampletable**.
+- Protože používáme-q, vypne se vizuálně.
+- Protože používáme `-m sample -r 0.1 -n 500` náhodně vyvzorkuje 10% řádků v hivesampletable a omezí velikost sady výsledků na 500 řádků.
+- A konečně, protože jsme použili `-o query2` ukládá také výstup do dataframe s názvem **query2**.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Předpoklady při používání nových jader
 
-Bez ohledu na to, kterou jádro použijete, ponechání poznámkových bloků se systémem spotřebovává prostředky clusteru.  Vzhledem k tomu, že jsou kontexty předvolby, protože kontexty jsou přednastavené, pouhým ukončením poznámkových bloků nedojde ke zrušení kontextu, takže se prostředky clusteru budou dál používat. Dobrým postupem je použít možnost **Zavřít a zastavit** z nabídky **soubor** poznámkového bloku, když jste dokončili používání poznámkového bloku, který ukončuje kontext a pak ukončí Poznámkový blok.
+Bez ohledu na to, kterou jádro použijete, ponechání poznámkových bloků se systémem spotřebovává prostředky clusteru.  Vzhledem k tomu, že kontexty jsou přednastavené, protože kontexty jsou přednastavené, pouhým ukončením poznámkových bloků nedojde ke zrušení kontextu, takže se prostředky clusteru budou dál používat. Dobrým postupem je použít možnost **Zavřít a zastavit** z nabídky **soubor** poznámkového bloku, když jste dokončili používání poznámkového bloku, který ukončuje kontext a potom Poznámkový blok ukončí.
 
 ## <a name="where-are-the-notebooks-stored"></a>Kde jsou poznámkové bloky uložené?
 
-Pokud váš cluster používá Azure Storage jako výchozí účet úložiště, poznámkové bloky Jupyter se uloží do účtu úložiště ve složce **/HdiNotebooks** .  Poznámkové bloky, textové soubory a složky, které vytvoříte v rámci Jupyter, jsou přístupné z účtu úložiště.  Pokud například použijete Jupyter k vytvoření složky **myFolder** a poznámkového bloku **myFolder/MyNotebook. ipynb**, získáte přístup k tomuto poznámkovému bloku na adrese `/HdiNotebooks/myfolder/mynotebook.ipynb` v rámci účtu úložiště.  To znamená, že Pokud nahrajete Poznámkový blok přímo do účtu úložiště na adrese `/HdiNotebooks/mynotebook1.ipynb`, Poznámkový blok se také zobrazí z Jupyter.  Poznámkové bloky zůstávají v účtu úložiště i po odstranění clusteru.
+Pokud váš cluster používá Azure Storage jako výchozí účet úložiště, poznámkové bloky Jupyter se uloží do účtu úložiště ve složce **/HdiNotebooks** .  Poznámkové bloky, textové soubory a složky, které vytvoříte v rámci Jupyter, jsou přístupné z účtu úložiště.  Pokud například použijete Jupyter k vytvoření složky **myFolder** a poznámkového bloku **myFolder/MyNotebook. ipynb**, můžete k tomuto poznámkovém bloku získat přístup `/HdiNotebooks/myfolder/mynotebook.ipynb` v rámci účtu úložiště.  To znamená, že Pokud nahrajete Poznámkový blok přímo na účet úložiště na `/HdiNotebooks/mynotebook1.ipynb`, Poznámkový blok se také zobrazí z Jupyter.  Poznámkové bloky zůstávají v účtu úložiště i po odstranění clusteru.
 
 > [!NOTE]  
 > Clustery HDInsight s Azure Data Lake Storage jako výchozí úložiště neukládají poznámkové bloky do přidruženého úložiště.
@@ -126,7 +126,7 @@ Způsob ukládání poznámkových bloků do účtu úložiště je kompatibiln�
     hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
     hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
-Bez ohledu na to, jestli cluster používá Azure Storage nebo Azure Data Lake Storage jako výchozí účet úložiště, poznámkové bloky se také ukládají do clusteru hlavnímu uzlu v `/var/lib/jupyter`.
+Bez ohledu na to, jestli cluster používá Azure Storage nebo Azure Data Lake Storage jako výchozí účet úložiště, poznámkové bloky se také ukládají do clusteru hlavnímu uzlu na `/var/lib/jupyter`.
 
 ## <a name="supported-browser"></a>Podporovaný prohlížeč
 
@@ -138,29 +138,29 @@ Nové jádra jsou v rozvíjející se fázi a budou v průběhu času. To by tak
 
 ## <a name="seealso"></a>Viz také
 
-* [Přehled Apache Spark ve službě Azure HDInsight](apache-spark-overview.md)
+- [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
 
-* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: Použití Sparku ve službě HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
-* [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
+- [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI.](apache-spark-use-bi-tools.md)
+- [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
+- [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+- [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 
-* [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
+- [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
+- [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 
-* [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
+- [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
+- [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+- [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
+- [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+- [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Spravovat prostředky
+### <a name="manage-resources"></a>Správa prostředků
 
-* [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
-* [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)
+- [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
+- [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)

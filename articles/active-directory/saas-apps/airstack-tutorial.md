@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s využitím zásobníku | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integrace se službou Stack | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a front-Stack.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 6a7b5675-f09d-4c1f-8f20-1a60cb8f9187
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9497a85ba82cb0605b9e931a4af539c6c9b4c45
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 310a6a14cf8d1dbe66c28e6529e4ae6993896177
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879765"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73153685"
 ---
-# <a name="tutorial-integrate-airstack-with-azure-active-directory"></a>Kurz: Integrace mikrostacku s Azure Active Directory
+# <a name="tutorial-integrate-airstack-with-azure-active-directory"></a>Kurz: integrace mikrostacku s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat službu stack s Azure Active Directory (Azure AD). Když integrujete službu ve službě Azure AD, můžete:
 
@@ -32,11 +33,11 @@ V tomto kurzu se dozvíte, jak integrovat službu stack s Azure Active Directory
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma bezplatnou zkušební verzi. [](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * Předplatné s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -54,9 +55,9 @@ Pokud chcete nakonfigurovat integraci služby Stack do Azure AD, musíte do sezn
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **Stack** .
-1. Vyberte z panelu výsledků možnost kostack a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. Vyberte z panelu výsledků možnost **kostack** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí služby test Stack pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v zásobníku.
 
@@ -66,7 +67,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 2. **[Konfigurace jednotného přihlašování k zásobníku](#configure-airstack-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-5. Vytvořte si uživatele s testovacím prostředím ve službě **[test Stack](#create-airstack-test-user)** , který bude mít protějšek B. Simon ve službě ve frontě, která je propojená s reprezentací uživatele v Azure AD.
+5. **[Vytvořte si uživatele s testovacím prostředím ve službě test Stack](#create-airstack-test-user)** , který bude mít protějšek B. Simon ve službě ve frontě, která je propojená s reprezentací uživatele v Azure AD.
 6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
@@ -85,34 +86,34 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://airstack.lenovosoftware.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu url: `https://airstack.lenovosoftware.com`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [tým podpory pro klienta](mailto:jsinger@lenovo.com) ve službě vzložené. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [tým podpory pro klienta ve službě vzložené](mailto:jsinger@lenovo.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Klikněte na **Uložit**.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
 ### <a name="configure-airstack-sso"></a>Konfigurace jednotného přihlašování k frontám
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně průchozího **zásobníku** , musíte poslat **adresu URL federačních metadat aplikace** [týmu podpory](mailto:jsinger@lenovo.com)pro mikrozásobníky. Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně průchozího **zásobníku** , musíte poslat **adresu URL federačních metadat aplikace** [týmu podpory pro mikrozásobníky](mailto:jsinger@lenovo.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup ke službě průchozího zásobníku.
 
@@ -120,7 +121,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. V seznamu aplikace vyberte možnost **kostack**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -132,15 +133,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ### <a name="create-airstack-test-user"></a>Vytvořit uživatele testu služby test Stack
 
-V této části vytvoříte uživatele s názvem B. Simon ve front-Stack. Pokud chcete přidat uživatele do platformy pro mikrozásobníky, pracujte s [týmem podpory](mailto:jsinger@lenovo.com) ve službě Stack. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem B. Simon ve front-Stack. Pokud chcete přidat uživatele do platformy pro mikrozásobníky, pracujte s [týmem podpory](mailto:jsinger@lenovo.com) ve službě Stack. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-sso"></a>Test SSO
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když kliknete na dlaždici kostack na přístupovém panelu, měli byste se automaticky přihlásit do zásobníku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

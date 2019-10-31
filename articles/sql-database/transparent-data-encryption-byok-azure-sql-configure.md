@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell a rozhraní příkazového řádku: Povolit SQL TDE – s využitím Azure Key Vault – Přineste si vlastní klíč – Azure SQL Database | Microsoft Docs'
+title: 'PowerShell a rozhraní příkazového řádku: povolení SQL TDE – pomocí Azure Key Vault-Přineste si vlastní klíč – Azure SQL Database | Microsoft Docs'
 description: Naučte se konfigurovat Azure SQL Database a datový sklad, abyste mohli začít používat transparentní šifrování dat (TDE) pro šifrování v klidovém formátu pomocí PowerShellu nebo rozhraní příkazového řádku.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: f191a9f589f54bdd657c017060f501b176a8647d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: beeb5fa4f979ac457db8a779dd8f8f2e94ef87f5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596721"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163848"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku: Povolit transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku: povolení transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
 
 Tento článek vás seznámí s postupem použití klíče z Azure Key Vault pro transparentní šifrování dat (TDE) na SQL Database nebo na datovém skladu. Další informace o TDE s podporou Azure Key Vault Integration-Bring Your Own Key (BYOK) najdete v části [TDE s klíči spravovanými zákazníky v Azure Key Vault](transparent-data-encryption-byok-azure-sql.md). 
 
@@ -153,7 +153,7 @@ Použijte [příkaz Get-AzSqlDatabaseTransparentDataEncryption](/powershell/modu
    -ServerName <LogicalServerName> `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -DatabaseName <DatabaseName> `
-   -State "Disabled”
+   -State "Disabled"
    ```
  
 - Pomocí rutiny [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) vraťte seznam Key Vault klíčů přidaných na server.
@@ -189,10 +189,10 @@ Pokud dojde k problému, podívejte se na následující:
    - Klíč by neměl mít datum vypršení platnosti.
    - Klíč musí mít povolené operace *Get*, *Wrap Key*a *Unwrap Key* .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak otočit ochranu TDE serveru tak, aby splňovala požadavky na zabezpečení: [Otočte ochranu transparentní šifrování dat pomocí PowerShellu](transparent-data-encryption-byok-azure-sql-key-rotation.md).
-- V případě bezpečnostního rizika se dozvíte, jak odebrat potenciálně ohrožené ochrany TDE: [Odeberte potenciálně ohrožený klíč](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
+- Naučte se, jak otočit ochranu TDE serveru tak, aby splňovala požadavky na zabezpečení: [otočení transparentní šifrování dat ochrany pomocí PowerShellu](transparent-data-encryption-byok-azure-sql-key-rotation.md).
+- V případě bezpečnostního rizika se dozvíte, jak odebrat potenciálně ohrožený TDE ochranu: [Odebrání potenciálně ohroženého klíče](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
 
 ## <a name="prerequisites-for-cli"></a>Předpoklady pro rozhraní příkazového řádku
 
@@ -203,7 +203,7 @@ Pokud dojde k problému, podívejte se na následující:
   - [Správa Key Vault pomocí CLI 2,0](../key-vault/key-vault-manage-with-cli2.md)
   - [Pokyny k používání modulu hardwarového zabezpečení (HSM) a Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
     - Trezor klíčů musí mít následující vlastnost, která se má použít pro TDE:
-  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+  - [Obnovitelné odstranění](../key-vault/key-vault-ovw-soft-delete.md)
   - [Jak používat obnovitelné odstranění Key Vaultu s využitím CLI](../key-vault/key-vault-soft-delete-cli.md) 
 - Klíč musí mít následující atributy, které se mají použít pro TDE:
    - Žádné datum vypršení platnosti

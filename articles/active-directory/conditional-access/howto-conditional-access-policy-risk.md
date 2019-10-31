@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cf3281e00560a289fbb4adfe57083644e1a86e3
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 102371f8af45a1a51715dbfb11afc3f0f4e457d7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125429"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150697"
 ---
-# <a name="conditional-access-risk-based-conditional-access"></a>Podmíněný přístup: Podmíněný přístup podle rizika
+# <a name="conditional-access-risk-based-conditional-access"></a>Podmíněný přístup: podmíněný přístup na základě rizik
 
 Organizace s Azure AD Premium licencemi P2 můžou vytvářet zásady podmíněného přístupu, které obsahují Azure AD Identity Protection detekce rizik. Existují tři výchozí zásady, které mohou být povoleny v poli. 
 
@@ -30,21 +30,21 @@ Organizace s Azure AD Premium licencemi P2 můžou vytvářet zásady podmíněn
 
 Povolení této zásady bude vyžadovat, aby se všichni uživatelé zaregistrovali pro Azure Multi-Factor Authentication do 14 dnů. 
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se na web **Azure Portal**.
 1. Klikněte na **Všechny služby** a přejděte na **Azure AD Identity Protection**.
 1. Klikněte na **Registrace MFA**.
 1. V části **přiřazení**vyberte **Uživatelé**.
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Vybrat vyloučené uživatele**, zvolte nouzový přístup nebo účty pro přerušení vaší organizace a vyberte **Vybrat**. 
    1. Vyberte **Done** (Hotovo).
-1. Nastavte **zásadu** vynutilit na **zapnuto**.
+1. Nastavte **zásadu Vynutilit** na **zapnuto**.
 1. Klikněte na **Uložit**.
 
 ## <a name="require-a-password-change-high-risk-users"></a>Vyžadovat změnu hesla s vysokým rizikem uživatelů
 
 Microsoft spolupracuje při vyhledávání dvojic uživatelských jmen a hesel s výzkumnými pracovníky, orgány zajišťujícími vymáhání zákona, různými týmy zabezpečení v Microsoftu a dalšími důvěryhodnými zdroji. Když některá dvojice odpovídá účtu ve vašem prostředí, může se následující zásadou aktivovat změna hesla na základě rizikové události.
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se na web **Azure Portal**.
 1. Klikněte na **Všechny služby** a přejděte na **Azure AD Identity Protection**.
 1. Klikněte na **zásady rizika pro uživatele**.
 1. V části **přiřazení**vyberte **Uživatelé** .
@@ -53,16 +53,16 @@ Microsoft spolupracuje při vyhledávání dvojic uživatelských jmen a hesel s
    1. Vyberte **Done** (Hotovo).
 1. V části **podmínky**vyberte **riziko pro uživatele**a pak zvolte **Vysoká**.
    1. Klikněte na **Vybrat** a potom na **Hotovo**.
-1. V části **ovládací prvky** > **přístup**zvolte možnost **povolený přístup**a pak vyberte **vyžadovat změnu hesla**.
-   1. Klikněte na tlačítko **vyberte**.
-1. Nastavte **zásadu** vynutilit na **zapnuto**.
+1. V části **ovládací prvky** > **přístup**zvolte možnost **Povolení přístupu**a pak vyberte možnost **vyžadovat změnu hesla**.
+   1. Klikněte na **Vybrat**.
+1. Nastavte **zásadu Vynutilit** na **zapnuto**.
 1. Klikněte na **Uložit**.
 
 ## <a name="require-mfa-medium-or-high-sign-in-risk-users"></a>Vyžadovat, aby se pro rizikové uživatele MFA nebo vysokého přihlašování
 
 Většina uživatelů se chová běžným způsobem, který je možné sledovat. Když se mimo tento běžný způsob vychýlí, může být nebezpečné jim povolit se normálně přihlásit. Je možné, že budete chtít tohoto uživatele zablokovat nebo ho můžete jednoduše požádat, aby provedl ověřování pomocí vícefaktorového ověřování, aby prokázal, že jsou ve skutečnosti, na kterých říkají. Vyžádání vícefaktorového ověření při zjištění rizikového přihlášení zapnete povolením následující zásady.
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se na web **Azure Portal**.
 1. Klikněte na **Všechny služby** a přejděte na **Azure AD Identity Protection**.
 1. Klikněte na **zásady rizik přihlašování** .
 1. V části **přiřazení**vyberte **Uživatelé** .
@@ -71,9 +71,9 @@ Většina uživatelů se chová běžným způsobem, který je možné sledovat.
    1. Vyberte **Done** (Hotovo).
 1. V části **podmínky**vyberte možnost **riziko přihlášení**a pak zvolte **střední a vyšší**.
    1. Klikněte na **Vybrat** a potom na **Hotovo**.
-1. V části **ovládací prvky** > **přístup**zvolte možnost **povolený přístup**a pak vyberte **vyžadovat vícefaktorové ověřování**.
-   1. Klikněte na tlačítko **vyberte**.
-1. Nastavte **zásadu** vynutilit na **zapnuto**.
+1. V části **ovládací prvky** > **přístup**zvolte možnost **Povolení přístupu**a pak vyberte možnost **vyžadovat vícefaktorové ověřování**.
+   1. Klikněte na **Vybrat**.
+1. Nastavte **zásadu Vynutilit** na **zapnuto**.
 1. Klikněte na **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky

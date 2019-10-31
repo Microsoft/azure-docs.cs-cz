@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 7e732f1d35097730d4468b43a2d9804fe7a18514
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ec32dfbe9aac13a9b3c08922b73b9a23d668d744
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753172"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152268"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům v Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Následující ukázka kódu ukazuje, jak použít koncový bod účtu Cosmos DB
 //NB > Keep these values in a safe and secure location. Together they provide Administrative access to your DocDB account.
 
 private static readonly string endpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
-private static readonly SecureString authorizationKey = ToSecureString(ConfigurationManager.AppSettings["AuthorizationKey"]);
+private static readonly string authorizationKey = ConfigurationManager.AppSettings["AuthorizationKey"];
 
 client = new DocumentClient(new Uri(endpointUrl), authorizationKey);
 

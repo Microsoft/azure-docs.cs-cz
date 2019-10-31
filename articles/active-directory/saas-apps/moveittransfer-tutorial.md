@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s přenosem MOVEit – integrace služby Azure AD | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a přenos MOVEit – integrace služby Azure AD.
+title: 'Kurz: Azure Active Directory integrace s přenosem MOVEit – integrace služby Azure AD | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a přenosem MOVEit – integraci Azure AD.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,245 +8,246 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8ff7102d-be73-4888-ae81-d8e3d01dd534
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 76f1f0d99b47b0a57f97f4fcdf721a78a77ba9b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43383e82d983c998d159728997da4757cc364999
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096898"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161323"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Kurz: Integrace Azure Active Directory s přenosem MOVEit – integrace služby Azure AD
+# <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Kurz: Azure Active Directory integrace s přenosem MOVEit – Integrace Azure AD
 
-V tomto kurzu se dozvíte, jak integrovat MOVEit přenosy – integrace služby Azure AD se službou Azure Active Directory (Azure AD).
-Integrace MOVEit přenosy – integrace služby Azure AD službou Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat MOVEit přenos – Azure AD Integration with Azure Active Directory (Azure AD).
+Integrace MOVEit transferu – integrace služby Azure AD s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k MOVEit přenosy – integrace služby Azure AD.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k MOVEit přenosy – integrace Azure AD (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit v Azure AD, který má přístup k MOVEit přenosu – Azure AD Integration.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k MOVEit přenosu – integraci Azure AD (jednotné přihlašování) se svými účty Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s přenosem MOVEit – integrace služby Azure AD, potřebujete následující položky:
+Pokud chcete nakonfigurovat integraci Azure AD s MOVEit přenosem Azure AD, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* MOVEit přenosu – Azure AD integraci jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* MOVEit Transfer – odběr služby Azure AD Integration Single Signing
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Přenosy MOVEit – integrace služby Azure AD podporuje **SP** jednotné přihlašování zahájené pomocí
+* MOVEit Transfer – integrace služby Azure AD podporuje jednotné přihlašování se spuštěnou službou **SP**
 
-## <a name="adding-moveit-transfer---azure-ad-integration-from-the-gallery"></a>Přidání MOVEit přenosy – integrace služby Azure AD z Galerie
+## <a name="adding-moveit-transfer---azure-ad-integration-from-the-gallery"></a>Přidání přenosu MOVEit – Integrace Azure AD z Galerie
 
-Konfigurace integrace MOVEit přenosy – integrace služby Azure AD do služby Azure AD, budete muset přidat MOVEit přenosy – integrace služby Azure AD z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci MOVEit přenosu – Integrace Azure AD do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat MOVEit přenos – Azure AD Integration z galerie.
 
-**Chcete-li přidat MOVEit přenosy – integrace služby Azure AD z galerie, postupujte následovně:**
+**Pokud chcete přidat MOVEit přenos – integraci Azure AD z Galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **MOVEit přenosy – integrace služby Azure AD**vyberte **MOVEit přenosy – integrace služby Azure AD** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **MOVEit Transfer – Azure AD Integration**, vyberte **MOVEit Transfer – Integrace Azure AD** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Přenosy MOVEit – integrace služby Azure AD v seznamu výsledků](common/search-new-app.png)
+     ![MOVEit Transfer – Integrace Azure AD v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části, konfiguraci a testování Azure AD jednotné přihlašování s přenosem MOVEit – integrace služby Azure AD na základě testovací uživatele volá **Britta Simon**.
-Pro jednotné přihlašování k práci, vztah odkazu mezi uživatele služby Azure AD a související uživatelské v MOVEit přenosy – integrace služby Azure AD je potřeba navázat.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s využitím služby MOVEit Transfer – Integrace Azure AD na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v MOVEit přenosu – integrace služby Azure AD.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s přenosem MOVEit – integrace služby Azure AD, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí služby MOVEit Transfer – Azure AD Integration, je potřeba, abyste dokončili tyto stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace MOVEit přenosy – integrace služby Azure AD Single Sign-On](#configure-moveit-transfer---azure-ad-integration-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření MOVEit přenosu – Azure AD integrace testovacího uživatele](#create-moveit-transfer---azure-ad-integration-test-user)**  – Pokud chcete mít protějšek Britta Simon MOVEit přenosy – integrace služby Azure AD, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte MOVEit Transfer – jednotné přihlašování Azure AD Integration](#configure-moveit-transfer---azure-ad-integration-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvoření MOVEit transferu – testovací uživatel pro integraci se službou Azure AD](#create-moveit-transfer---azure-ad-integration-test-user)** – Pokud má protějšek Britta Simon v přenosu MOVEit – integrace služby Azure AD, která je propojená s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-K Azure AD nakonfigurovat jednotné přihlašování s přenosem MOVEit – integrace služby Azure AD, postupujte následovně:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s integrací služby MOVEit Transfer – Azure AD, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **MOVEit přenosy – integrace služby Azure AD** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **MOVEit Transfer – Azure AD** vyberte **jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud máte **soubor metadat poskytovatele služeb**, proveďte následující kroky:
+4. Pokud máte **soubor metadat poskytovatele služeb**v **základní části Konfigurace SAML** , proveďte následující kroky:
 
-    a. Klikněte na tlačítko **nahrát soubor metadat**.
+    a. Klikněte na **nahrát soubor metadat**.
 
     ![Nahrát soubor metadat](common/upload-metadata.png)
 
-    b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
+    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát**.
 
-    ![Zvolte soubor metadat](common/browse-upload-metadata.png)
+    ![zvolit soubor metadat](common/browse-upload-metadata.png)
 
-    c. Po úspěšném odeslání souboru metadat **identifikátor** a **adresy URL odpovědi** hodnotu získá automaticky vyplní v **základní konfiguraci SAML** části:
+    c. Po úspěšném nahrání souboru metadat se hodnota **Adresa URL** pro **identifikátor** a odpověď automaticky naplní v **základní části Konfigurace SAML** :
 
-    ![Přenosy MOVEit – integrace služby Azure AD domény a adresy URL jednotné přihlašování – informace](common/sp-identifier-reply.png)
+    ![MOVEit Transfer – informace o jednotném přihlašování v doméně Integrace Azure AD a adresách URL](common/sp-identifier-reply.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://contoso.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://contoso.com`
 
     > [!NOTE]
-    > **Přihlašovací adresa URL** není skutečnou hodnotu. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [MOVEit přenosy – integrace služby Azure AD podpora klientů](https://community.ipswitch.com/s/support) týmu k získání hodnoty. Si můžete stáhnout **soubor metadat zprostředkovatelů služby** z **adresa URL služby zprostředkovatele metadat** je vysvětlen později v **konfigurovat přenos MOVEit – integrace služby Azure AD jednoho Přihlašování** části kurzu. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota **přihlašovací adresy URL** není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Kontaktujte [MOVEit Transfer – tým podpory klienta Azure AD Integration](https://community.ipswitch.com/s/support) pro získání hodnoty. **Soubor metadat poskytovatele služby** si můžete stáhnout z **adresy URL metadat poskytovatele služby** , která je vysvětlená dále v části **Konfigurace MOVEit přenosu – jednotné přihlašování Azure AD** v kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavení MOVEit přenosy – integrace služby Azure AD** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **nastavení přenosu MOVEit – integrace služby Azure AD** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
     b. Identifikátor Azure AD
 
-    c. Adresa URL – odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-moveit-transfer---azure-ad-integration-single-sign-on"></a>Konfigurace MOVEit přenosy – integrace služby Azure AD jednotného přihlašování
+### <a name="configure-moveit-transfer---azure-ad-integration-single-sign-on"></a>Konfigurace přenosu MOVEit – jednotné přihlašování Azure AD Integration
 
-1. Přihlaste se k tenantovi MOVEit přenos jako správce.
+1. Přihlaste se ke klientovi MOVEit Transfer jako správce.
 
-2. V levém navigačním podokně klikněte na tlačítko **nastavení**.
+2. V levém navigačním podokně klikněte na **Nastavení**.
 
-    ![Části v aplikaci nastavení na straně](./media/moveittransfer-tutorial/tutorial_moveittransfer_000.png)
+    ![Oddíl nastavení na straně aplikace](./media/moveittransfer-tutorial/tutorial_moveittransfer_000.png)
 
-3. Klikněte na tlačítko **jednotné přihlášení** odkaz, který je v části **zásady zabezpečení -> uživatele Auth**.
+3. Klikněte na odkaz na **jeden jednotného** , který se nachází v **zásadách zabezpečení – > ověření uživatele**.
 
-    ![Zabezpečení zásady na aplikaci na straně](./media/moveittransfer-tutorial/tutorial_moveittransfer_001.png)
+    ![Zásady zabezpečení na straně aplikace](./media/moveittransfer-tutorial/tutorial_moveittransfer_001.png)
 
-4. Klikněte na adresu URL metadat. odkaz ke stažení dokumentů metadat.
+4. Pro stažení dokumentu metadat klikněte na odkaz adresa URL metadat.
 
-    ![Adresa URL služby zprostředkovatele metadat](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
+    ![Adresa URL metadat poskytovatele služby](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
-   * Ověřte **entityID** odpovídá **identifikátor** v **základní konfiguraci SAML** oddílu.
-   * Ověřte **AssertionConsumerService** adresa URL umístění odpovídá **adresy URL odpovědi** v **základní konfiguraci SAML** oddílu.
+   * Ověřte, že **entityID** odpovídá **identifikátoru** v části **základní konfigurace SAML** .
+   * V části **základní konfigurace SAML** ověřte, že adresa URL umístění **AssertionConsumerService** odpovídá **adrese URL odpovědi** .
     
-     ![Nakonfigurovat jednotné přihlašování v aplikaci na straně](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
+     ![Konfigurace jednotného přihlašování na straně aplikace](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
-5. Klikněte na tlačítko **přidat zprostředkovatele Identity** tlačítko pro přidání nového poskytovatele federované Identity.
+5. Klikněte na tlačítko **Přidat zprostředkovatele identity** a přidejte nového federovaného zprostředkovatele identity.
 
-    ![Přidat zprostředkovatele Identity](./media/moveittransfer-tutorial/tutorial_moveittransfer_003.png)
+    ![Přidat zprostředkovatele identity](./media/moveittransfer-tutorial/tutorial_moveittransfer_003.png)
 
-6. Klikněte na tlačítko **Procházet...**  Pokud chcete vybrat soubor metadat, který jste si stáhli z webu Azure portal, pak klikněte na tlačítko **přidat zprostředkovatele Identity** nahrát staženého souboru.
+6. Klikněte na **Procházet...** a vyberte soubor metadat, který jste stáhli z Azure Portal, a pak kliknutím na **Přidat zprostředkovatele identity** nahrajte stažený soubor.
 
-    ![Zprostředkovatele Identity SAML](./media/moveittransfer-tutorial/tutorial_moveittransfer_004.png)
+    ![Zprostředkovatel identity SAML](./media/moveittransfer-tutorial/tutorial_moveittransfer_004.png)
 
-7. Vyberte "**Ano**" jako **povolené** v **Upravit federované nastavení zprostředkovatele Identity...**  stránky a klikněte na tlačítko **Uložit**.
+7. Vyberte možnost**Ano**, pokud je **povolená** na stránce **Upravit nastavení zprostředkovatele federovaných identit...** a klikněte na **Uložit**.
 
-    ![Nastavení poskytovatele federované Identity](./media/moveittransfer-tutorial/tutorial_moveittransfer_005.png)
+    ![Nastavení zprostředkovatele federovaných identit](./media/moveittransfer-tutorial/tutorial_moveittransfer_005.png)
 
-8. V **upravit Federated Identity uživatele nastavení poskytovatele** stránce, udělejte toto:
+8. Na stránce **Upravit uživatelská nastavení zprostředkovatele federovaných identit** proveďte následující akce:
     
-    ![Upravit nastavení poskytovatele federované Identity](./media/moveittransfer-tutorial/tutorial_moveittransfer_006.png)
+    ![Upravit nastavení federovaného zprostředkovatele identity](./media/moveittransfer-tutorial/tutorial_moveittransfer_006.png)
     
-    a. Vyberte **SAML NameID** jako **přihlašovací jméno**.
+    a. Jako **přihlašovací jméno**vyberte **SAML NameId** .
     
-    b. Vyberte **jiných** jako **jméno a příjmení** a **název atributu** vložte hodnotu do textového pole: `http://schemas.microsoft.com/identity/claims/displayname`.
+    b. Vyberte možnost **jiné** jako **celé jméno** a do textového pole **název atributu** zadejte hodnotu: `http://schemas.microsoft.com/identity/claims/displayname`.
     
-    c. Vyberte **jiných** jako **e-mailu** a **název atributu** vložte hodnotu do textového pole: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. Vyberte možnost **jiné** jako **e-mail** a v textovém poli **název atributu** zadejte hodnotu: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
     
-    d. Vyberte **Ano** jako **automatické vytvoření účtu na Sign-on**.
+    d. V jednotného vyberte **Ano** jako **automaticky vytvořit účet**.
     
-    e. Klikněte na tlačítko **Uložit** tlačítko.
+    e. Klikněte na tlačítko **Uložit** .
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k MOVEit přenosy – integrace služby Azure AD.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k integraci MOVEit – Azure AD.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **MOVEit přenosy – integrace služby Azure AD**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Moveit přenos – Integrace Azure AD**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **MOVEit přenosy – integrace služby Azure AD**.
+2. V seznamu aplikace vyberte **MOVEit přenos – integrace služby Azure AD**.
 
-    ![Přenosy MOVEit – integrace služby Azure AD odkaz v seznamu aplikací](common/all-applications.png)
+    ![Odkaz MOVEit Transfer – Azure AD Integration v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-moveit-transfer---azure-ad-integration-test-user"></a>Vytvoření MOVEit přenosu – Azure AD integrace testovacího uživatele
+### <a name="create-moveit-transfer---azure-ad-integration-test-user"></a>Vytvoření MOVEit transferu – testovací uživatel pro integraci Azure AD
 
-Cílem této části je vytvořte uživatele Britta Simon v MOVEit přenosy – integrace služby Azure AD. Přenosy MOVEit – integrace služby Azure AD podporuje just-in-time zřizování, které jste povolili. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k MOVEit přenosy – integrace služby Azure AD, pokud ještě neexistuje.
+Cílem této části je vytvořit uživatele s názvem Britta Simon v článku věnovaném přenosu MOVEit – Integrace Azure AD. MOVEit Transfer – integrace služby Azure AD podporuje zřizování za běhu, které jste povolili. V této části není žádná položka akce. Při pokusu o přístup k MOVEit přenosu – Azure AD Pokud ještě neexistuje, vytvoří se nový uživatel.
 
 >[!NOTE]
->Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [MOVEit přenosy – tým podpory integrace klienta služby Azure AD](https://community.ipswitch.com/s/support).
+>Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory služby MOVEit Transfer – Azure AD Integration Client](https://community.ipswitch.com/s/support).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na přenosy MOVEit – dlaždice integrace Azure AD na přístupovém panelu, vám by měl být automaticky přihlášeni k přenosu MOVEit – integrace služby Azure AD, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici MOVEit Transfer – integrace služby Azure AD na přístupovém panelu byste měli být automaticky přihlášeni k integraci MOVEit přenosu – Azure AD, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -1,5 +1,5 @@
 ---
-title: Správa tokenů (Microsoft Authentication Library)
+title: Získání a ukládání tokenů do mezipaměti pomocí MSAL
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o získání a ukládání tokenů do mezipaměti pomocí knihovny Microsoft Authentication Library (MSAL).
 services: active-directory
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa6a939fce3eae8b1367c2d01e947e813fa5437
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0d47fa92de8365ed3a5e0349b78899ff7fde1375
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803297"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150644"
 ---
-# <a name="acquiring-and-caching-tokens-using-msal"></a>Získání a ukládání tokenů do mezipaměti pomocí MSAL
+# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Získání a ukládání tokenů do mezipaměti pomocí knihovny Microsoft Authentication Library (MSAL)
+
 [Přístupové tokeny](access-tokens.md) umožňují klientům bezpečně volat webová rozhraní API chráněná Azure. Existuje mnoho způsobů, jak získat token pomocí knihovny Microsoft Authentication Library (MSAL). Některé způsoby vyžadují interakci s uživatelem prostřednictvím webového prohlížeče. Některé nevyžadují interakci s uživatelem. Obecně platí, že způsob získání tokenu závisí na tom, jestli je aplikace veřejná klientská aplikace (desktopová nebo mobilní aplikace), nebo důvěrná klientská aplikace (webová aplikace, webové rozhraní API nebo aplikace démona, jako je například služba systému Windows).
 
 MSAL uloží token po jeho získání.  Kód aplikace by se měl v tichém pokusu získat token (z mezipaměti), nejdřív před získáním tokenu jiným způsobem.

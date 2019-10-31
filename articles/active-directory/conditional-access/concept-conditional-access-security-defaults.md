@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 502fb8b49770b4933c44aa1eb447abb746943c0d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bde1741d12cc7ef181fb60bc7eecbec1fed8cbd0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554823"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151217"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
@@ -32,7 +32,7 @@ Ve vašem tenantovi budou zapnuté následující konfigurace zabezpečení.
 
 ## <a name="unified-multi-factor-authentication-registration"></a>Registrace sjednocené Multi-Factor Authentication
 
-Všichni uživatelé ve vašem tenantovi se musí zaregistrovat pro vícefaktorové ověřování (MFA) ve formě služby Azure Multi-Factor Authentication. K registraci Multi-Factor Authentication pomocí aplikace Microsoft Authenticator mají uživatelé 14 dní. Po uplynutí 14 dnů se uživatel nebude moct přihlásit, dokud se nedokončí Multi-Factor Authentication registrace.
+Všichni uživatelé ve vašem tenantovi musí zaregistrovat službu Multi-Factor Authentication (MFA) ve formě služby Azure Multi-Factor Authentication. K registraci Multi-Factor Authentication pomocí aplikace Microsoft Authenticator mají uživatelé 14 dní. Po uplynutí 14 dnů se uživatel nebude moct přihlásit, dokud se nedokončí Multi-Factor Authentication registrace.
 
 Chápeme, že někteří uživatelé můžou být mimo kancelář nebo se nebudou přihlašovat během 14 dnů hned po povolení výchozích hodnot zabezpečení. Aby bylo zajištěno, že každý uživatel má dostatek času na registraci Multi-Factor Authentication, je období 14 dní pro každého uživatele jedinečné. Po povolení výchozích hodnot zabezpečení začíná období 14 dní uživatele od prvního úspěšného interaktivního přihlášení.
 
@@ -113,6 +113,7 @@ Tady jsou podrobné návody, jak můžete pomocí podmíněného přístupu nako
 - [Vyžadovat MFA pro správce](howto-conditional-access-policy-admin-mfa.md)
 - [Vyžadovat vícefaktorové ověřování pro správu Azure](howto-conditional-access-policy-azure-management.md)
 - [Blokovat starší verze ověřování](howto-conditional-access-policy-block-legacy.md)
+- [Vyžadovat MFA pro všechny uživatele](howto-conditional-access-policy-all-users-mfa.md)
 
 ## <a name="enabling-security-defaults"></a>Povolení výchozích hodnot zabezpečení
 

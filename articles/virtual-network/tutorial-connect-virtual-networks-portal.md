@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515716"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73164050"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal
 
@@ -54,7 +54,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
     |Oblast| Vyberte **USA – východ**.|
     |Name (Název)|myVirtualNetwork1|
-    ! [Konfigurace základního nastavení virtuální sítě] (
+   
 4. Na stránce **IP adresy** zadejte 10.0.0.0/16 pro pole **adresní prostor** . Klikněte na tlačítko **Přidat podsíť** níže a jako **Rozsah adres podsítě**zadejte Subnet1 pro **název podsítě** a 10.0.0.0/24.
    
 5. Zopakujte kroky 1 až 3 s následujícími změnami:
@@ -147,7 +147,7 @@ Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte ve zb
 6. V pozdějším kroku se ke komunikaci s virtuálním počítačem *myVm2* z virtuálního počítače *myVm1* používá příkaz ping. Příkaz ping využívá protokol ICMP (Internet Control Message Protocol), který má ve výchozím nastavení zakázaný průchod bránou Windows Firewall. Na virtuálním počítači *myVm1* povolte průchod protokolu ICMP bránou Windows Firewall, abyste v pozdějším kroku mohli tento virtuální počítač otestovat pomocí příkazu ping v PowerShellu z virtuálního počítače *myVm2*:
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
     
     Přestože se ke komunikaci mezi virtuálními počítači v tomto kurzu používá příkaz ping, povolení průchodu protokolu ICMP bránou Windows Firewall v produkčních prostředích se nedoporučuje.

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcf9c8ea62610b6e4eb4ad642107df81ae712054
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 3125f5b9075a69289bd6a44d62c3d06d5e6d910d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950405"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Kurz: Azure Active Directory integrace s TOPdesk – Secure
 
@@ -32,9 +33,9 @@ Integrace TOPdesk-Secure s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s TOPdesk-Secure budete potřebovat následující položky:
 
@@ -105,11 +106,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk 
 
     ![TOPdesk – informace jednotného přihlašování v doméně a adresách URL](common/sp-identifier-reply.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.topdesk.net`.
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.topdesk.net`
 
     b. V poli **Adresa URL identifikátoru** zadejte adresu URL metadat TopDesk, kterou můžete načíst z konfigurace TopDesk. Měl by používat následující vzor: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
 
-    r. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.topdesk.net/tas/secure/login/verify`.
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.topdesk.net/tas/secure/login/verify`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, kontaktujte [TopDesk – tým podpory pro zabezpečené klienty](https://www.topdesk.com/us/support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -126,7 +127,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk 
 
     b. Identifikátor Azure AD
 
-    r. Odhlašovací adresa URL
+    c. Odhlašovací adresa URL
 
 ### <a name="configure-topdesk---secure-single-sign-on"></a>Konfigurace jednotného přihlašování TOPdesk – Secure
 
@@ -134,11 +135,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk 
 
 2. V nabídce **TopDesk** klikněte na **Nastavení**.
 
-    ![Nastavení nastavení](./media/topdesk-secure-tutorial/ic790598.png "")
+    ![Nastavení](./media/topdesk-secure-tutorial/ic790598.png "Nastavení")
 
 3. Klikněte na tlačítko **Nastavení přihlášení**.
 
-    Nastavení ![přihlášení přihlašovacích](./media/topdesk-secure-tutorial/ic790599.png "") údajů
+    ![Nastavení přihlášení](./media/topdesk-secure-tutorial/ic790599.png "Nastavení přihlášení")
 
 4. Rozbalte nabídku **Nastavení přihlášení** a pak klikněte na **Obecné**.
 
@@ -146,49 +147,49 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk 
 
 5. V části **zabezpečení** v části konfigurace **přihlášení SAML** proveďte následující kroky:
 
-    (./media/topdesk-secure-tutorial/ic790855.png "Technické") nastavení ![technické nastavení]
+    ![Technické nastavení](./media/topdesk-secure-tutorial/ic790855.png "Technické nastavení")
 
     a. Klikněte na tlačítko **Stáhnout** a Stáhněte si soubor veřejné metadat a uložte ho místně na svém počítači.
 
     b. Otevřete soubor metadat a vyhledejte uzel **AssertionConsumerService** .
 
-    ![](./media/topdesk-secure-tutorial/ic790856.png "Služba příjemce kontrolního výrazu") kontrolního výrazu
+    ![Služba příjemce kontrolního výrazu](./media/topdesk-secure-tutorial/ic790856.png "Služba příjemce kontrolního výrazu")
 
-    r. Zkopírujte hodnotu **AssertionConsumerService** a vložte tuto hodnotu do textového pole Adresa URL odpovědi v části **TopDesk – zabezpečení domény a adresy URL** .
+    c. Zkopírujte hodnotu **AssertionConsumerService** a vložte tuto hodnotu do textového pole Adresa URL odpovědi v části **TopDesk – zabezpečení domény a adresy URL** .
 
 6. Chcete-li vytvořit soubor certifikátu, proveďte následující kroky:
 
-    ![](./media/topdesk-secure-tutorial/ic790606.png "Certifikát") certifikátu
+    ![Certifikát](./media/topdesk-secure-tutorial/ic790606.png "Certifikát")
 
     a. Otevřete stažený soubor metadat z Azure Portal.
 
     b. Rozbalte uzel **RoleDescriptor** , který má **atribut xsi: Type** dodaný **: ApplicationServiceType**.
 
-    r. Zkopírujte hodnotu uzlu **certifikátu x509** .
+    c. Zkopírujte hodnotu uzlu **certifikátu x509** .
 
-    trojrozměrné. Uložte zkopírovanou hodnotu **certifikátu x509** lokálně na svém počítači do souboru.
+    d. Uložte zkopírovanou hodnotu **certifikátu x509** lokálně na svém počítači do souboru.
 
 7. V části **Public** klikněte na **Přidat**.
 
-    ![Přidat](./media/topdesk-secure-tutorial/ic790607.png "Přidat")
+    ![Přidávání](./media/topdesk-secure-tutorial/ic790607.png "Přidat")
 
 8. Na stránce **Průvodce konfigurací SAML** proveďte následující kroky:
 
-    Pomocník ![pro]konfiguraci SAML Průvodce konfigurací(./media/topdesk-secure-tutorial/ic790608.png "SAML")
+    ![Pomocník pro konfiguraci SAML](./media/topdesk-secure-tutorial/ic790608.png "Pomocník pro konfiguraci SAML")
 
     a. Pokud chcete nahrát stažený soubor metadat z Azure Portal, klikněte v části **federační metadata**na **Procházet**.
 
     b. Pokud chcete nahrát soubor certifikátu, klikněte v části **certifikát (RSA)** na **Procházet**.
 
-    r. U **privátního klíče (RSA, PKCS8, der)** můžete nahrát svůj vlastní privátní klíč, nebo můžete kontaktovat [tým podpory TopDesk – zabezpečeného klienta](https://www.topdesk.com/us/support) , abyste získali privátní klíč.
+    c. U **privátního klíče (RSA, PKCS8, der)** můžete nahrát svůj vlastní privátní klíč, nebo můžete kontaktovat [tým podpory TopDesk – zabezpečeného klienta](https://www.topdesk.com/us/support) , abyste získali privátní klíč.
 
-    trojrozměrné. Pokud chcete nahrát soubor loga, který jste dostali z týmu podpory TOPdesk, klikněte v části **ikona loga**na **Procházet**.
+    d. Pokud chcete nahrát soubor loga, který jste dostali z týmu podpory TOPdesk, klikněte v části **ikona loga**na **Procházet**.
 
-    cerebrální. Do textového pole **atributu uživatelské jméno** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    e. Do textového pole **atributu uživatelské jméno** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    FJ. Do textového pole **Zobrazovaný název** zadejte název konfigurace.
+    f. Do textového pole **Zobrazovaný název** zadejte název konfigurace.
 
-    věcn. Klikněte na **Uložit**.
+    g. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -208,12 +209,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon @ no__t-2yourcompanydomain. extension.**  
-    Třeba BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    Například BrittaSimon@contoso.com.
 
-    r. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    trojrozměrné. Klikněte na **vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -250,38 +251,38 @@ V případě TOPdesk-Secure je zřizování ručním úkolem.
 
 1. Přihlaste se k webu společnosti **TopDesk** jako správce.
 
-2. V nabídce v horní části klikněte na **TOPdesk \> nové soubory podpory \>-2 – operátor \>** .
+2. V nabídce v horní části klikněte na **TOPdesk \> nové \> support Files \> operator**.
 
-    ![](./media/topdesk-secure-tutorial/ic790610.png "Operátor") operátora
+    ![Podnikatel](./media/topdesk-secure-tutorial/ic790610.png "Operátor")
 
 3. V dialogovém okně **Nový operátor** proveďte následující kroky:
 
-    ![New]–(./media/topdesk-secure-tutorial/ic790611.png "operátor New")
+    ![New – operátor](./media/topdesk-secure-tutorial/ic790611.png "New – operátor")
 
     a. Klikněte na kartu **Obecné** .
 
     b. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
-    r. V části **umístění** vyberte **lokalitu** pro účet.
+    c. V části **umístění** vyberte **lokalitu** pro účet.
 
-    trojrozměrné. Do textového pole **přihlašovací jméno** v části **přihlášení TopDesk** zadejte přihlašovací jméno uživatele.
+    d. Do textového pole **přihlašovací jméno** v části **přihlášení TopDesk** zadejte přihlašovací jméno uživatele.
 
-    cerebrální. Klikněte na **Uložit**.
+    e. Klikněte na **Uložit**.
 
 > [!NOTE]
 > K zřizování uživatelských účtů AAD můžete použít jakýkoli jiný TOPdesk nástrojů pro vytváření uživatelských účtů nebo rozhraní API, které poskytuje TOPdesk – Secure.
 
-### <a name="test-single-sign-on"></a>Testování jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Po kliknutí na dlaždici TOPdesk-Secure na přístupovém panelu byste se měli automaticky přihlášeni k TOPdesk – zabezpečení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

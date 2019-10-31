@@ -4,17 +4,17 @@ description: Tato příručka pomáhá CEOs, ředitelé informačních technolog
 keywords: ''
 author: martincoetzer
 ms.author: martinco
-ms.date: 04/12/2018
+ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 524e923f005e2631e42f1d6b89b13cafdd646c2a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529396"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159704"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity. 
 
@@ -73,9 +73,9 @@ Podrobnosti o rozhodovacích otázkách:
 4. Služba Azure AD nepodporuje funkce přihlašování nativně:
    * Přihlaste se pomocí čipových karet nebo certifikátů.
    * Přihlaste se pomocí místního MFA serveru.
-   * Přihlaste se pomocí řešení ověřování třetích stran.
+   * Přihlaste se pomocí řešení ověřování třetí strany.
    * Řešení místního ověřování pro více webů.
-5. Azure AD Identity Protection vyžaduje synchronizaci hodnot hash hesel bez ohledu na to, kterou metodu přihlašování zvolíte, a poskytněte *uživatelům nevrácené zprávy s přihlašovacími údaji* . Organizace můžou přecházet do synchronizace hodnot hash hesel, pokud jejich primární metoda přihlašování selže a byla nakonfigurovaná před událostí selhání.
+5. Azure AD Identity Protection vyžaduje synchronizaci hodnot hash hesel bez ohledu na to, kterou metodu přihlašování zvolíte, a poskytněte *uživatelům nevrácené zprávy s přihlašovacími údaji* . Organizace můžou převzít služby při selhání synchronizace hodnot hash hesel, pokud jejich primární metoda přihlašování selže a byla nakonfigurovaná před událostí selhání.
 
 > [!NOTE]
 > Azure AD Identity Protection vyžadují licence [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) .
@@ -90,7 +90,7 @@ Podrobnosti o rozhodovacích otázkách:
 
 * **Pokročilé scénáře**. Pokud organizace zvolí, je možné využít přehledy z identit a Azure AD Identity Protection sestav pomocí Azure AD Premium P2. Příkladem je nevrácená sestava přihlašovacích údajů. Windows Hello pro firmy má [specifické požadavky, pokud používáte synchronizaci hodnot hash hesel](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) vyžaduje synchronizaci hodnot hash hesel, aby bylo možné zřídit uživatele se svými podnikovými přihlašovacími údaji ve spravované doméně.
 
-    Organizace, které vyžadují vícefaktorové ověřování pomocí synchronizace hodnot hash hesel, musí používat vícefaktorové ověřování Azure AD nebo [vlastní ovládací prvky podmíněného přístupu](../../active-directory/conditional-access/controls.md#custom-controls-preview). Tyto organizace nemůžou používat metody třetích stran nebo místní vícefaktorové ověřování, které spoléhají na federaci.
+    Organizace, které vyžadují vícefaktorové ověřování pomocí synchronizace hodnot hash hesel, musí používat vícefaktorové ověřování Azure AD nebo [vlastní ovládací prvky podmíněného přístupu](../../active-directory/conditional-access/controls.md#custom-controls-preview). Tyto organizace nemůžou používat jiné metody ověřování, které se spoléhají na federace.
 
 > [!NOTE]
 > Podmíněný přístup Azure AD vyžaduje licence [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) .
@@ -120,7 +120,7 @@ Postup nasazení najdete v tématu [implementace synchronizace hodnot hash hesel
 
     Kromě předávacího ověřování existuje další výhoda pro nasazení synchronizace hodnot hash hesel. Funguje jako metoda ověření zálohy, když primární metoda ověřování již není k dispozici.
 
-* **Požadavky**. Můžete použít synchronizaci hodnot hash hesel jako metodu ověření zálohování pro předávací ověřování, když agenti nemohou ověřit přihlašovací údaje uživatele z důvodu významného místního selhání. Převzetí služeb při selhání při synchronizaci hodnot hash hesel se neprovádí automaticky a je nutné použít Azure AD Connect k ručnímu přepínání metody přihlášení. 
+* **Požadavky**. Můžete použít synchronizaci hodnot hash hesel jako metodu ověření zálohování pro předávací ověřování, když agenti nemohou ověřit přihlašovací údaje uživatele z důvodu významného místního selhání. Převzetí služeb při selhání na synchronizaci hodnoty hash hesla se neprovádí automaticky a je nutné použít Azure AD Connect k ručnímu přepínání metody přihlášení. 
 
     Další informace o předávacím ověřování, včetně podpory alternativních ID, najdete v tématu [Nejčastější dotazy](../../active-directory/hybrid/how-to-connect-pta-faq.md).
 
@@ -178,7 +178,7 @@ Následující diagramy popisují komponenty architektury nejvyšší úrovně, 
 |Existuje požadavek na certifikát SSL?|Ne|Ne|Ano|
 |Existuje nějaké řešení pro monitorování stavu?|Nepožaduje se|Stav agenta poskytnutý [centrem pro správu Azure Active Directory](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |Přihlašuje uživatelé k prostředkům cloudu jednotné přihlašování ze zařízení připojených k doméně v podnikové síti?|Ano, [bez problémů s jednotným PŘIhlašováním](../../active-directory/hybrid/how-to-connect-sso.md)|Ano, [bez problémů s jednotným PŘIhlašováním](../../active-directory/hybrid/how-to-connect-sso.md)|Ano|
-|Jaké typy přihlašování se podporují?|UserPrincipalName + heslo<br><br>Integrované ověřování systému Windows pomocí [bezproblémového jednotného PŘIhlašování](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternativní ID přihlášení](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + heslo<br><br>Integrované ověřování systému Windows pomocí [bezproblémového jednotného PŘIhlašování](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternativní ID přihlášení](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + heslo<br><br>sAMAccountName + heslo<br><br>Integrované ověřování systému Windows<br><br>[Ověřování pomocí certifikátu a čipové karty](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternativní ID přihlášení](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Jaké typy přihlašování se podporují?|UserPrincipalName + heslo<br><br>Integrované ověřování systému Windows pomocí [bezproblémového jednotného PŘIhlašování](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternativní ID přihlášení](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + heslo<br><br>Integrované ověřování systému Windows pomocí [bezproblémového jednotného PŘIhlašování](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternativní ID přihlášení](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + heslo<br><br>sAMAccountName + heslo<br><br>Ověřování systému Windows – integrované<br><br>[Ověřování pomocí certifikátu a čipové karty](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternativní ID přihlášení](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Podporuje se Windows Hello pro firmy?|[Klíčový model vztahu důvěryhodnosti](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Klíčový model vztahu důvěryhodnosti](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Vyžaduje úroveň funkčnosti domény Windows Server 2016.*|[Klíčový model vztahu důvěryhodnosti](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model vztahu důvěryhodnosti certifikátu](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Jaké jsou možnosti vícefaktorového ověřování?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Vlastní ovládací prvky s podmíněným přístupem *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Vlastní ovládací prvky s podmíněným přístupem *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA Server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Vícefaktorové ověřování třetích stran](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Vlastní ovládací prvky s podmíněným přístupem *](../../active-directory/conditional-access/controls.md)|
 |Jaké stavy uživatelských účtů se podporují?|Zakázané účty<br>(až 30 minut zpoždění)|Zakázané účty<br><br>Účet uzamčen<br><br>Platnost účtu vypršela.<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|Zakázané účty<br><br>Účet uzamčen<br><br>Platnost účtu vypršela.<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|
@@ -203,11 +203,9 @@ Použijte nebo povolte synchronizaci hodnot hash hesel podle zvolené metody ov�
 
    * Organizace, které dříve aktivovaly synchronizaci hodnot hash hesel, změnily metodu ověřování tak, aby používaly synchronizaci hodnot hash hesel. Během několika hodin byly zpět online. Pomocí přístupu k e-mailu přes Office 365 pracovali s cílem vyřešit problémy a přistupovat k dalším cloudovým úlohám.
 
-   * Organizace, které dříve nepovolily synchronizaci hodnot hash hesel, musely při komunikaci s řešeními problémů nedůvěřovat externím e-mailovým systémům externích uživatelů. V těchto případech trvalo, že tyto týdny obnoví svoji místní infrastrukturu identity, než se uživatelé můžou znovu přihlásit ke cloudovým aplikacím.
+   * Organizace, které dříve nepovolily synchronizaci hodnot hash hesel, musely při komunikaci s řešeními problémů nedůvěřovat externím e-mailovým systémům externích uživatelů. V těchto případech trvalo, že jsou týdny obnoveny místní infrastruktury identit, než se uživatelé budou moci znovu přihlásit ke cloudovým aplikacím.
 
 3. **Identity Protection**. Jedním z nejlepších způsobů ochrany uživatelů v cloudu je Azure AD Identity Protection s Azure AD Premium P2. Microsoft nepřetržitě vyhledává v Internetu seznam uživatelů a hesel, které jsou v tmavém webu k dispozici jako chybné. Azure AD může tyto informace využít k tomu, aby ověřil, jestli jsou některá z uživatelských jmen a hesel ve vaší organizaci ohrožená. Proto je důležité povolit synchronizaci hodnot hash hesel bez ohledu na to, jakou metodu ověřování používáte, ať už se jedná o federované nebo předávací ověřování. Nevrácená pověření jsou uvedena jako sestava. Tyto informace slouží k blokování nebo vynucení změn hesel uživatelů při pokusu o přihlášení pomocí nevrácených hesel.
-
-V souladu s [Gartner](https://info.microsoft.com/landingIAMGartnerreportregistration.html)má společnost Microsoft nejvíce plnohodnotnou sadu funkcí pro správu identit a přístupu. Microsoft zpracovává [450 000 000 000 žádostí o ověření](https://www.microsoft.com/en-us/security/intelligence-report) každý měsíc, aby poskytovali přístup k tisícům aplikací SaaS, jako je Office 365 z prakticky jakéhokoli zařízení. 
 
 ## <a name="conclusion"></a>Závěr
 
@@ -221,4 +219,4 @@ V dnešním světě jsou hrozby k dispozici 24 hodin denně a pocházejí od vš
 
 [Začněte s Azure](../../active-directory/fundamentals/get-started-azure-ad.md) AD a nasaďte správné řešení ověřování pro vaši organizaci.
 
-Pokud uvažujete o migraci z federovaných na cloudové ověřování, přečtěte si další informace o tom, jak [se mění Metoda přihlašování](../../active-directory/hybrid/plan-connect-user-signin.md). Pro snazší plánování a implementaci migrace použijte [tyto plány nasazení projektu](https://aka.ms/deploymentplans).
+Pokud uvažujete o migraci z federovaných na cloudové ověřování, přečtěte si další informace o tom, jak [se mění Metoda přihlašování](../../active-directory/hybrid/plan-connect-user-signin.md). Abychom vám pomohli naplánovat a implementovat migraci, použít [tyto plány nasazení projektu](https://aka.ms/deploymentplans) nebo zvážit použití nové [fáze přípravy](../../active-directory/hybrid/how-to-connect-staged-rollout.md) pro migraci federovaných uživatelů na použití cloudového ověřování v rámci dvoufázového přístupu.

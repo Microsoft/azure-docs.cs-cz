@@ -13,29 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9ed2d00d6f229d958e0df024c70381051840548c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726998"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162748"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Přehled správy a monitorování zabezpečení Azure
 Tento článek obsahuje přehled funkcí a služeb zabezpečení, které Azure poskytuje, aby vám pomohly při správě a monitorování cloudových služeb a virtuálních počítačů Azure.
-
-## <a name="shared-responsibility"></a>Sdílená odpovědnost
-
-Zabezpečení cloudových služeb Microsoftu je partnerství a sdílená odpovědnost mezi vámi a společností Microsoft. Společnost Microsoft zodpovídá za platformu Azure a fyzického zabezpečení svých Datacenter (pomocí ochrany zabezpečení, jako jsou dveře, zámky a ochranné údaje o zamčených položkách. Azure poskytuje na softwarové vrstvě silné úrovně zabezpečení cloudu, které splňují požadavky zákazníků na zabezpečení, ochranu osobních údajů a dodržování předpisů.
-
-Vaše data a identity, odpovědnost za jejich ochranu, zabezpečení vašich místních prostředků a zabezpečení cloudových součástí, na kterých máte kontrolu, můžete vlastnit. Microsoft poskytuje bezpečnostní kontrolu a možnosti, které vám pomůžou chránit vaše data a aplikace. Váš stupeň zodpovědnosti za zabezpečení je založený na typu cloudové služby.
-
-Následující tabulka shrnuje bilanci zodpovědnosti mezi společností Microsoft a zákazníkem.
-
-![Sdílená odpovědnost](./media/management-monitoring-overview/shared-responsibility.png)
-
-Další informace o správě zabezpečení najdete v tématu [Správa zabezpečení v Azure](management.md).
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
 
@@ -52,7 +40,7 @@ S Azure můžete použít antimalwarový software od hlavních dodavatelů zabez
 
 Microsoft Antimalware pro Azure Cloud Services a Virtual Machines nabízí možnost instalace antimalwarového agenta pro role PaaS i pro virtuální počítače. Na základě Endpoint Protection System Center tato funkce přináší ověřenou místní technologii zabezpečení do cloudu.
 
-Nabízíme také rozsáhlou integraci pro [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) produkty trendu [a na](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) platformu Azure. Důkladné zabezpečení je antivirové řešení a SecureCloud je řešení šifrování. Hloubkové zabezpečení je nasazeno v rámci virtuálních počítačů prostřednictvím modelu rozšíření. Pomocí uživatelského rozhraní Azure Portal a PowerShellu se můžete rozhodnout použít hloubkové zabezpečení uvnitř nových virtuálních počítačů, které se prosazují, nebo existující virtuální počítače, které jsou už nasazené.
+Nabízíme [také rozsáhlou](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) integraci pro [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) produkty trendu a na platformu Azure. Důkladné zabezpečení je antivirové řešení a SecureCloud je řešení šifrování. Hloubkové zabezpečení je nasazeno v rámci virtuálních počítačů prostřednictvím modelu rozšíření. Pomocí uživatelského rozhraní Azure Portal a PowerShellu se můžete rozhodnout použít hloubkové zabezpečení uvnitř nových virtuálních počítačů, které se prosazují, nebo existující virtuální počítače, které jsou už nasazené.
 
 Společnost Symantec Endpoint Protection (SEP) je také podporována v Azure. Prostřednictvím integrace portálu můžete určit, že chcete na virtuálním počítači použít SEP. SEP se dá nainstalovat na nový virtuální počítač prostřednictvím Azure Portal, nebo se dá nainstalovat na existující virtuální počítač přes PowerShell.
 
@@ -66,9 +54,9 @@ Další informace:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Ověřování Azure Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování. Přičítá se kritická druhá vrstva zabezpečení pro přihlášení a transakce uživatelů.
+Azure Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování. Přičítá se kritická druhá vrstva zabezpečení pro přihlášení a transakce uživatelů.
 
-Služba Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně splňuje požadavky uživatelů na jednoduchý proces přihlašování. Zajišťuje silné ověřování prostřednictvím řady možností ověřování (telefonní hovor, textová zpráva nebo oznámení mobilní aplikace nebo ověřovací kód) a tokeny OATH třetích stran.
+Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně plnit požadavky uživatelů na jednoduchý proces přihlašování. Zajišťuje silné ověřování prostřednictvím řady možností ověřování (telefonní hovor, textová zpráva nebo oznámení mobilní aplikace nebo ověřovací kód) a tokeny OATH třetích stran.
 
 Další informace:
 
@@ -112,7 +100,7 @@ Další informace:
 * [Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Začínáme s Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md)
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>Ochrany identit
 
 Azure AD Identity Protection poskytuje ucelený přehled o podezřelých přihlašovacích aktivitách a potenciálních ohroženích zabezpečení, které vám pomůžou ochránit vaši firmu. Identity Protection detekuje podezřelé aktivity uživatelů a privilegovaných identit (správců) na základě signálů, jako jsou:
 
@@ -125,7 +113,7 @@ Díky poskytování oznámení a doporučené nápravy pomáhá ochrana identity
 Další informace:
 
 * [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
-* [Kanál 9: Azure AD a zobrazení identity: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Kanál 9: Azure AD a identity show: identita Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
 
@@ -150,3 +138,7 @@ Intelligent Security Graph poskytuje ochranu před hrozbami v reálném čase v 
 
 * [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 
+## <a name="next-steps"></a>Další kroky
+Seznamte se s [modelem sdílené zodpovědnosti](shared-responsibility.md) a o tom, které úlohy zabezpečení jsou zpracovávány společností Microsoft a které úlohy jsou zpracovávány vámi.
+
+Další informace o správě zabezpečení najdete v tématu [Správa zabezpečení v Azure](management.md).

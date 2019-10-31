@@ -13,21 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 10/25/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20c62d379006382d4208e4b111202581bc75454f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c239b88a67e1be19e3a95130839ab6fd4598fe77
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380752"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150042"
 ---
-# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rychlý start: Vytvoření jednostránkové aplikace AngularJS pro přihlášení a odhlášení pomocí Azure Active Directory
+# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rychlý start: Vytvoření jednostránková aplikace AngularJS pro přihlašování a odhlašování pomocí Azure Active Directory
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
+
+> [!IMPORTANT]
+> [Platforma Microsoft Identity Platform](v2-overview.md) je vývoj platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání rozhraní API od Microsoftu, jako jsou Microsoft Graph nebo rozhraní API, která vytvořili vývojáři.
+> Pokud potřebujete kromě pracovních a školních účtů povolit přihlašování pro osobní účty, můžete použít *[koncový bod platformy Microsoft Identity](azure-ad-endpoint-comparison.md)* .
+> Tento rychlý Start je pro starší koncový bod Azure AD v 1.0. Pro nové projekty doporučujeme použít koncový bod v 2.0. Další informace najdete v [tomto kurzu pro JavaScript Spa](tutorial-v2-javascript-spa.md) a v [tomto článku](active-directory-v2-limitations.md) vysvětlení *koncového bodu Microsoft Identity Platform*.
 
 Azure Active Directory (Azure AD) vám umožňuje snadno a jasně přidat do jednostránkových aplikací volání API pro přihlášení, odhlášení a zabezpečené OAuth. Umožňuje aplikacím ověřovat uživatele pomocí jejich účtů Windows Server Active Directory a využívat všechna webová rozhraní API, která Azure AD pomáhá chránit, například rozhraní API Office 365 nebo rozhraní API Azure.
 
@@ -46,35 +51,32 @@ Pokud chcete sestavit úplnou funkční aplikaci, budete k tomu potřebovat:
 2. Nainstalovat ADAL a konfigurovat jednostránkovou aplikaci
 3. Použít ADAL k zabezpečení stránek v jednostránkové aplikaci
 
-> [!NOTE]
-> Pokud potřebujete kromě pracovních a školních účtů povolit přihlášení k osobním účtům, můžete použít *[koncový bod platformy Microsoft Identity](azure-ad-endpoint-comparison.md)* . Další informace najdete v [tomto kurzu pro JavaScript Spa](tutorial-v2-javascript-spa.md) a v [tomto článku](active-directory-v2-limitations.md) vysvětlení koncového *bodu Microsoft Identity Platform*. 
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte splnit následující požadavky:
 
 * Stáhnout si [kostru aplikace](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) nebo [úplnou ukázku](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
 * Tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ho ještě nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
 
-## <a name="step-1-register-the-directorysearcher-application"></a>Krok 1: Registrace aplikace rámci
+## <a name="step-1-register-the-directorysearcher-application"></a>Krok 1: Registrace aplikace DirectorySearcher
 
 Pokud chcete aplikaci umožnit ověřování uživatelů a získání tokenů, musíte ji nejdřív zaregistrovat ve vašem tenantovi Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Pokud jste přihlášení k více adresářům, měli byste zajistit, že máte zobrazený správný adresář. Provedete to tak, že na horním panelu kliknete na svůj účet. Ze seznamu **Adresář** vyberte tenanta Azure AD, do kterého chcete aplikaci zaregistrovat.
 1. V levém podokně klikněte na **Všechny služby** a pak vyberte **Azure Active Directory**.
 1. Klikněte na **Registrace aplikací**a pak vyberte **Nová registrace**.
 1. Po zobrazení stránky **Registrovat aplikaci** zadejte název vaší aplikace.
 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
-1. V části **identifikátor URI pro přesměrování** vyberte `https://localhost:44326/` **webovou** platformu a nastavte hodnotu (umístění, do kterého budou služby Azure AD vracet tokeny).
+1. V části **identifikátor URI pro přesměrování** vyberte **webovou** platformu a nastavte hodnotu na `https://localhost:44326/` (umístění, do kterého budou služby Azure AD vracet tokeny).
 1. Až budete hotovi, vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** .
 1. Adal.js používá implicitní tok OAuth ke komunikaci s Azure AD. Pro aplikaci je nutné povolit implicitní tok. V levém navigačním podokně registrované aplikace vyberte **ověřování**.
 1. V části **Upřesnit nastavení**v části **implicitní udělení**povolte zaškrtávací políčka **tokeny ID** i **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Udělte oprávnění pro aplikaci napříč vaším tenantem. V nabídce **oprávnění k rozhraní API**vyberte tlačítko **udělení souhlasu správce** v rámci **souhlasu udělit**.
-1. Odstranění potvrďte výběrem **Ano**.
+1. Výběrem **Ano** potvrďte.
 
-## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Krok 2: Instalace knihovny ADAL a konfigurace jednostránkové aplikace
+## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Krok 2: Instalace ADALu a konfigurace jednostránkové aplikace
 
 Když už máte v Azure AD aplikaci, můžete nainstalovat knihovnu adal.js a zapsat svůj kód související s identitou.
 
@@ -98,9 +100,9 @@ Začněte tím, že přidáte adal.js do projektu TodoSPA pomocí konzoly Správ
 Aby API seznamu úkolů back-endu jednostránkové aplikace přijímalo tokeny z prohlížeče, potřebuje back-end konfigurační informace o registraci aplikace. V projektu TodoSPA otevřete `web.config`. Nahraďte hodnoty prvků v části `<appSettings>` tak, aby odrážely hodnoty, které jste použili na portálu Azure Portal. Váš kód bude tyto hodnoty využívat vždy, když bude používat ADAL.
 
    * `ida:Tenant` je doména tenanta Azure AD – například contoso.onmicrosoft.com.
-   * `ida:Audience` je ID klienta vaší aplikace, které jste zkopírovali z webu Azure Portal.
+   * `ida:Audience` je ID klienta vaší aplikace, které jste zkopírovali z portálu.
 
-## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Krok 3: Použití ADAL k usnadnění zabezpečení stránek v jednostránkové aplikaci
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Krok 3: Použití ADALu k zabezpečení stránek v jednostránkové aplikaci
 
 Adal.js se integruje s trasou AngularJS a zprostředkovateli protokolu HTTP, abyste mohli pomáhat zabezpečit jednotlivá zobrazení v jednostránkové aplikaci.
 
@@ -177,7 +179,7 @@ Adal.js zahrnutí běžných funkcí identity do aplikace usnadňuje. Udělá za
 
 Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) k dispozici na [GitHubu](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Můžete teď přejít na další scénáře.
 

@@ -1,6 +1,6 @@
 ---
-title: Směrování síťového provozu Azure Powershellu | Dokumentace Microsoftu
-description: V tomto článku se dozvíte, jak ke směrování síťového provozu s směrovací tabulky pomocí prostředí PowerShell.
+title: Směrovat síťový provoz Azure PowerShell | Microsoft Docs
+description: V tomto článku se dozvíte, jak směrovat síťový provoz pomocí směrovací tabulky pomocí PowerShellu.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -17,14 +17,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: cd13b3a7a3bc4d5a80e44d146e08c14e81ffdb60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 986371e479f7718fff2e1699401987cb0ca8f623
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730068"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163987"
 ---
-# <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Směrování provozu sítě s směrovací tabulky pomocí Powershellu
+# <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Směrování síťového provozu pomocí směrovací tabulky pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -42,17 +42,17 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek verzi modulu Azure PowerShell 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-route-table"></a>Vytvoření směrovací tabulky
 
-Než vytvoříte směrovací tabulku, vytvořte skupinu prostředků s [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* pro všechny prostředky vytvořené v tomto článku.
+Než budete moct vytvořit směrovací tabulku, vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* pro všechny prostředky vytvořené v tomto článku.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Vytvoření směrovací tabulky s [New-AzRouteTable](/powershell/module/az.network/new-azroutetable). Následující příklad vytvoří směrovací tabulku s názvem *myRouteTablePublic*.
+Vytvořte směrovací tabulku pomocí [New-AzRouteTable](/powershell/module/az.network/new-azroutetable). Následující příklad vytvoří směrovací tabulku s názvem *myRouteTablePublic*.
 
 ```azurepowershell-interactive
 $routeTablePublic = New-AzRouteTable `
@@ -63,7 +63,7 @@ $routeTablePublic = New-AzRouteTable `
 
 ## <a name="create-a-route"></a>Vytvoření trasy
 
-Vytvořit trasu načtením objekt směrovací tabulky s [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable), vytvořit trasu s [přidat AzRouteConfig](/powershell/module/az.network/add-azrouteconfig), pak zápis konfigurace trasy do směrovací tabulky s [ Set-AzRouteTable](/powershell/module/az.network/set-azroutetable).
+Vytvořte trasu načtením objektu směrovací tabulky pomocí [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable), vytvořte trasu pomocí [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig)a pak zapište konfiguraci směrování do tabulky směrování pomocí [set-AzRouteTable](/powershell/module/az.network/set-azroutetable).
 
 ```azurepowershell-interactive
 Get-AzRouteTable `
@@ -79,7 +79,7 @@ Get-AzRouteTable `
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Přidružení směrovací tabulky k podsíti
 
-Než budete moct přidružit směrovací tabulky k podsíti, budete muset vytvořit virtuální síť a podsíť. Vytvoření virtuální sítě s [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVirtualNetwork* s předponou adresy *10.0.0.0/16*.
+Předtím, než budete moci přidružit směrovací tabulku k podsíti, je nutné vytvořit virtuální síť a podsíť. Vytvořte virtuální síť pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVirtualNetwork* s předponou adresy *10.0.0.0/16*.
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -89,7 +89,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Vytvořte tři podsítě tak, že vytvoříte tři Konfigurace podsítí s [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Následující příklad vytvoří tři Konfigurace podsítí pro *veřejné*, *privátní*, a *DMZ* podsítě:
+Vytvořte tři podsítě vytvořením tří konfigurací podsítí pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Následující příklad vytvoří tři konfigurace podsítí pro *veřejné*, *privátní*a *DMZ* podsítě:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -108,13 +108,13 @@ $subnetConfigDmz = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-Zápis Konfigurace podsítí pro virtuální síť s [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork), vytváří podsítí ve virtuální síti:
+Zapište konfigurace podsítě do virtuální sítě pomocí [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork), který vytvoří podsítě ve virtuální síti:
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-Přidružit *myRouteTablePublic* tabulky tras, abyste *veřejné* podsíť s [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) a zapište konfiguraci podsítě, která virtuální síť s [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork).
+Přiřaďte tabulku směrování *myRouteTablePublic* k *veřejné* podsíti pomocí [set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) a pak zapište konfiguraci podsítě do virtuální sítě pomocí [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork).
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
@@ -129,11 +129,11 @@ Set-AzVirtualNetwork
 
 Síťové virtuální zařízení je virtuální počítač, který provádí síťovou funkci, jako je směrování, brána firewall nebo optimalizace sítě WAN.
 
-Před vytvořením virtuálního počítače, vytvořte síťové rozhraní.
+Před vytvořením virtuálního počítače vytvořte síťové rozhraní.
 
-### <a name="create-a-network-interface"></a>Vytvořte síťové rozhraní
+### <a name="create-a-network-interface"></a>Vytvoření síťového rozhraní
 
-Před vytvořením síťového rozhraní, je nutné načíst virtuální sítě s Id [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork), pak podsíť Id s [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig). Vytvořte síťové rozhraní s [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) v *DMZ* podsítě s povoleným předáváním IP:
+Před vytvořením síťového rozhraní musíte načíst ID virtuální sítě pomocí [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)a pak ID podsítě pomocí [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig). Vytvořte síťové rozhraní s [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) v podsíti *DMZ* s povoleným předáváním IP:
 
 ```azurepowershell-interactive
 # Retrieve the virtual network object into a variable.
@@ -157,7 +157,7 @@ $nic = New-AzNetworkInterface `
 
 ### <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Chcete-li vytvořit virtuální počítač a připojit se k němu existující síťové rozhraní, musíte nejdřív vytvořit konfiguraci virtuálního počítače s [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). Konfigurace zahrnuje síťové rozhraní vytvořené v předchozím kroku. Po zobrazení výzvy k zadání uživatelského jména a hesla, vyberte uživatelské jméno a heslo, které chcete se přihlásit k virtuálnímu počítači s.
+Pokud chcete vytvořit virtuální počítač a připojit k němu stávající síťové rozhraní, musíte nejdřív vytvořit konfiguraci virtuálního počítače pomocí [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). Tato konfigurace zahrnuje síťové rozhraní vytvořené v předchozím kroku. Po zobrazení výzvy k zadání uživatelského jména a hesla vyberte uživatelské jméno a heslo, pomocí kterého se chcete přihlásit k virtuálnímu počítači.
 
 ```azurepowershell-interactive
 # Create a credential object.
@@ -178,7 +178,7 @@ $vmConfig = New-AzVMConfig `
   Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-Vytvoření virtuálního počítače pomocí konfigurace virtuálního počítače s [rutiny New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVmNva*.
+Vytvořte virtuální počítač s použitím konfigurace virtuálního počítače pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVmNva*.
 
 ```azurepowershell-interactive
 $vmNva = New-AzVM `
@@ -188,13 +188,13 @@ $vmNva = New-AzVM `
   -AsJob
 ```
 
-`-AsJob` Možnost se virtuální počítač vytvoří na pozadí, takže můžete pokračovat k dalšímu kroku.
+Možnost `-AsJob` vytvoří virtuální počítač na pozadí, takže můžete pokračovat k dalšímu kroku.
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-Vytvoření dvou virtuálních počítačů ve virtuální síti, abyste mohli ověřit provozu z *veřejné* podsítě se směruje na *privátní* podsítě přes síťové virtuální zařízení v pozdějším kroku.
+Vytvořte ve virtuální síti dva virtuální počítače, abyste mohli ověřit, že provoz z *veřejné* podsítě je směrován do *privátní* podsítě prostřednictvím síťového virtuálního zařízení v pozdějším kroku.
 
-Vytvářet virtuální počítače *veřejné* podsíť s [rutiny New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVmPublic* v *veřejné* podsíti *myVirtualNetwork* virtuální sítě.
+Vytvořte virtuální počítač ve *veřejné* podsíti pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVmPublic* ve *veřejné* podsíti virtuální sítě *myVirtualNetwork* .
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -207,7 +207,7 @@ New-AzVm `
   -AsJob
 ```
 
-Vytvářet virtuální počítače *privátní* podsítě.
+Vytvořte virtuální počítač v *privátní* podsíti.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -219,11 +219,11 @@ New-AzVm `
   -Name "myVmPrivate"
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Nemusíte pokračovat dalším krokem, dokud se vytvoří virtuální počítač a prostředí PowerShell vrátí výstupní Azure.
+Vytvoření virtuálního počítače trvá několik minut. V dalším kroku nepokračujte, dokud se virtuální počítač nevytvoří a Azure vrátí výstup do PowerShellu.
 
 ## <a name="route-traffic-through-an-nva"></a>Směrování provozu přes síťové virtuální zařízení
 
-Použití [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) vrátit veřejnou IP adresu *myVmPrivate* virtuálního počítače. Následující příklad vrátí veřejnou IP adresu *myVmPrivate* virtuálního počítače:
+K vrácení veřejné IP adresy virtuálního počítače *myVmPrivate* použijte [příkaz Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) . Následující příklad vrátí veřejnou IP adresu virtuálního počítače *myVmPrivate* :
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -232,7 +232,7 @@ Get-AzPublicIpAddress `
   | Select IpAddress
 ```
 
-Použijte následující příkaz k vytvoření relace vzdálené plochy s *myVmPrivate* virtuálního počítače ze svého místního počítače. Nahraďte `<publicIpAddress>` IP adresou vrácenou předchozím příkazem.
+Pomocí následujícího příkazu vytvořte relaci vzdálené plochy s virtuálním počítačem s *myVmPrivate* z místního počítače. Nahraďte `<publicIpAddress>` IP adresou vrácenou předchozím příkazem.
 
 ```
 mstsc /v:<publicIpAddress>
@@ -242,17 +242,17 @@ Otevřete stažený soubor RDP. Pokud se zobrazí výzva, vyberte **Připojit**.
 
 Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače (abyste mohli zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače, možná budete muset vybrat **Další možnosti** a pak **Použít jiný účet**), a pak vyberte **OK**. Během procesu přihlášení se může zobrazit upozornění certifikátu. Vyberte **Ano** a pokračujte v připojování.
 
-V pozdějším kroku `tracert.exe` příkaz slouží k otestování směrování. Tracert používá ovládací prvek zpráva ICMP (Internet Protocol), který byl odepřen přes bránu Windows Firewall. Povolte průchod protokolu ICMP bránou Windows Firewall zadáním následujícího příkazu v PowerShellu na virtuálním počítači *myVmPrivate*:
+V pozdějším kroku se k otestování směrování používá příkaz `tracert.exe`. Tracert používá protokol ICMP (Internet Control Message Protocol), který je odepřen prostřednictvím brány Windows Firewall. Povolte průchod protokolu ICMP bránou Windows Firewall zadáním následujícího příkazu v PowerShellu na virtuálním počítači *myVmPrivate*:
 
 ```powershell
 New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 ```
 
-Přestože k otestování směrování v tomto článku se používá trasování tras, povolení průchodu protokolu ICMP bránou Windows Firewall v produkčních prostředích se nedoporučuje.
+I když se k testování směrování v tomto článku používá trasa trasování, nedoporučuje se povolit protokol ICMP prostřednictvím brány Windows Firewall pro produkční nasazení.
 
-Jste povolili předávání IP v rámci Azure pro síťové rozhraní Virtuálního počítače v povolit předávání IP. Operační systém nebo aplikace spuštěná v rámci virtuálního počítače musí také být schopné směrovat síťový provoz. Povolení předávání IP v rámci operačního systému *myVmNva*.
+V rámci Azure jste povolili předávání IP pro síťové rozhraní virtuálního počítače v nástroji povolit předávání IP. Operační systém nebo aplikace spuštěná v rámci virtuálního počítače musí také být schopné směrovat síťový provoz. Povolte předávání IP v rámci operačního systému *myVmNva*.
 
-Z příkazového řádku na *myVmPrivate* virtuálního počítače, připojení k vzdálené plochy *myVmNva*:
+Z příkazového řádku na virtuálním počítači s *myVmPrivate* : Vzdálená plocha na *myVmNva*:
 
 ``` 
 mstsc /v:myvmnva
@@ -275,7 +275,7 @@ mstsc /v:myVmPublic
 Povolte průchod protokolu ICMP bránou Windows Firewall zadáním následujícího příkazu v PowerShellu na virtuálním počítači *myVmPublic*:
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
 ```
 
 Pokud chcete otestovat směrování síťového provozu z virtuálního počítače *myVmPublic* do virtuálního počítače *myVmPrivate*, v PowerShellu na virtuálním počítači *myVmPublic* zadejte následující příkaz:
@@ -323,14 +323,14 @@ Ukončete relaci vzdálené plochy k virtuálnímu počítači *myVmPrivate*.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, použijte [odebrat AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje.
+Pokud už je nepotřebujete, odeberte skupinu prostředků a všechny prostředky, které obsahuje, pomocí [Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) .
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořili směrovací tabulku a přidruženou k podsíti. Vytvořili jste jednoduché síťové virtuální zařízení, které směrovalo provoz z veřejné podsítě do privátní podsítě. Nasadit různá předem nakonfigurovaná síťová virtuální zařízení, která provádí síťové funkce, jako jsou brány firewall a optimalizace sítě WAN z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Další informace o směrování najdete v tématech [Přehled směrování](virtual-networks-udr-overview.md) a [Správa směrovací tabulky](manage-route-table.md).
+V tomto článku jste vytvořili směrovací tabulku a přidružili ji k podsíti. Vytvořili jste jednoduché síťové virtuální zařízení, které směruje provoz z veřejné podsítě do privátní podsítě. Nasaďte celou řadu předem nakonfigurovaných síťových virtuálních zařízení, která v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)provádí síťové funkce, jako je brána firewall a optimalizace sítě WAN. Další informace o směrování najdete v tématech [Přehled směrování](virtual-networks-udr-overview.md) a [Správa směrovací tabulky](manage-route-table.md).
 
-Přestože v rámci virtuální sítě můžete nasadit řadu prostředků Azure, prostředky některých služeb Azure PaaS do virtuální sítě nasadit nejde. Přesto můžete omezit přístup k prostředkům některých služeb Azure PaaS pouze pro provoz z podsítě virtuální sítě. Další informace o postupu [omezení síťového přístupu k prostředkům PaaS](tutorial-restrict-network-access-to-resources-powershell.md).
+Přestože v rámci virtuální sítě můžete nasadit řadu prostředků Azure, prostředky některých služeb Azure PaaS do virtuální sítě nasadit nejde. Přesto můžete omezit přístup k prostředkům některých služeb Azure PaaS pouze pro provoz z podsítě virtuální sítě. Další informace najdete v tématu [omezení síťového přístupu k prostředkům PaaS](tutorial-restrict-network-access-to-resources-powershell.md).

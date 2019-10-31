@@ -5,26 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd2259dc715fb54122b721ce40a715c6987947d2
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ad44cc83d65206ec1f199e57685b0dcc3cbb07a5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170113"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151168"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Podmíněný přístup: vyžadovat MFA pro správu Azure
 
 Organizace využívají celou řadu služeb Azure a spravují je od Azure Resource Managerch nástrojů, jako jsou:
 
-* Azure Portal
+* Portál Azure
 * Azure PowerShell
-* Rozhraní příkazového řádku Azure
+* Azure CLI
 
 Tyto nástroje můžou poskytovat vysoce privilegovaný přístup k prostředkům, které můžou upravovat konfigurace, nastavení služeb a fakturace pro předplatné na úrovni předplatného. Z důvodu ochrany těchto privilegovaných prostředků doporučuje společnost Microsoft vyžadovat službu Multi-Factor Authentication pro všechny uživatele, kteří k těmto prostředkům přistupují.
 
@@ -48,9 +48,9 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
-   1. Vyberte **Hotovo**.
-1. V **části cloudové aplikace nebo akce**@no__t **-1**vyberte **vybrat aplikace**, zvolte **Microsoft Azure Správa**a vyberte **Vybrat** a pak **Hotovo**.
-1. V části **řízení přístupu**@no__t**udělení**přístupu vyberte **udělit přístup**, **vyžadovat službu Multi-Factor Authentication**a vyberte **Vybrat**.
+   1. Vyberte **Done** (Hotovo).
+1. V části **cloudové aplikace nebo akce** > **Zahrnout**vyberte **vybrat aplikace**, zvolte **Microsoft Azure Správa**a pak vyberte **Vybrat** a **Hotovo**.
+1. V části **řízení přístupu** > **udělení**vyberte **udělit přístup**, **vyžadovat službu Multi-Factor Authentication**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 

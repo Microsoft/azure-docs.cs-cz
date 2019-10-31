@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Můj tým Sub/horní horní ocenění body | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Můj tým Sub/horní horní ocenění body.
+title: 'Kurz: Azure Active Directory integrací s body ocenění nahoře/nejvyšším týmem | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a v horním nebo horním týmu bodů ocenění.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,192 +8,193 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a7a08eed-7a6b-4a83-8f8e-0add6d2fb8cf
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 32095f76dbcdf2afd716daab096b9dd8d18d1bb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1de9e394dd1e6b4c47b8de3175dd1e8fba1d87e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096586"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161337"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Kurz: Integrace Azure Active Directory s Můj tým Sub/horní horní ocenění body
+# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Kurz: Azure Active Directory integrací s body ocenění nahoru a týmem nahoře
 
-V tomto kurzu se dozvíte, jak integrovat Můj tým Sub/horní horní ocenění body se službou Azure Active Directory (Azure AD).
-Můj tým Sub/horní horní ocenění bodů integrace s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak v Azure Active Directory (Azure AD) integrovat hlavní a horní tým pro body ocenění.
+Integrace bodů ocenění Top sub/Top tým s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Můj tým Sub/horní horní ocenění body.
-* Uživatelům se automaticky přihlášeni Moje ocenění body horní Sub/horní týmu (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k hlavnímu nebo hornímu týmu bodů ocenění.
+* Můžete uživatelům povolit, aby se automaticky přihlásili k mým koncovým a horním týmu (jednotné přihlašování) k účtům Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s Můj tým Sub/horní horní ocenění body, potřebujete následující položky:
+K nakonfigurování integrace služby Azure AD s nejvyšším dílčím a horním týmem pro body ocenění potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Moje ocenění body horní Sub/horní týmu jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Moje ocenění v horním/horním týmu s povoleným jednorázovým přihlášením
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje mého týmu ocenění body horní Sub/horní **SP** jednotné přihlašování zahájené pomocí
+* V horním a horním týmu pro body ocenění je podporována aktualizace SSO iniciovaná v **SP**
 
-## <a name="adding-my-award-points-top-subtop-team-from-the-gallery"></a>Přidání Můj tým Sub/horní horní ocenění body z Galerie
+## <a name="adding-my-award-points-top-subtop-team-from-the-gallery"></a>Z Galerie se přidávají hlavní dílčí a hlavní tým pro body ocenění
 
-Pokud chcete nakonfigurovat integrace Můj tým Sub/horní horní ocenění body do služby Azure AD, potřebujete přidat Můj tým Sub/horní horní ocenění body z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete v rámci služby Azure AD nakonfigurovat integraci mých hlavních a nejvyšších bodů ocenění do Azure AD, musíte z Galerie přidat své body ocenění Top sub a top Team do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Můj tým Sub/horní horní ocenění body z galerie, postupujte následovně:**
+**Pokud chcete z Galerie přidat body ocenění nahoru a nahoru, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Můj tým Sub/horní horní ocenění body**vyberte **Můj tým Sub/horní horní ocenění body** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte text **body ocenění nahoře sub/Top Team**, vyberte z panelu výsledků možnost **body ocenění horní/horní tým** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Sub/horní týmu ocenění body nahoru v seznamu výsledků](common/search-new-app.png)
+     ![V seznamu výsledků mají hlavní tým a body ocenění nahoře podřízený tým](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části, konfigurace a testování Azure AD jednotné přihlašování s Moje ocenění body horní Sub/horní týmu na základě testu uživateli **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatel v mé ocenění body horní Sub/horní týmu.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s body ocenění v horním nebo horním týmu na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz mezi uživatelem služby Azure AD a souvisejícím uživatelem v mých dílčích a nejvyšších fázích Award.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Můj tým Sub/horní horní ocenění body, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí nejdůležitějších dílčích a nejvyšších bodů ocenění, je nutné dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **Konfigurace Moje ocenění body horní Sub/horní týmu jednotného přihlašování** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **Vytvořit testovacího uživatele Můj tým Sub/horní horní ocenění body** – Pokud chcete mít protějšek Britta Simon v mé ocenění body horní Sub/horní tým, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. Pokud chcete konfigurovat nastavení jednotného přihlašování na straně aplikace, **nakonfigurujte v horním nebo horním rámci týmu jednotné přihlašování** .
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. Vytvořte si hlavní a horní tým **testovacích bodů pro uživatele** , kteří mají protějšek Britta Simon v seznamu mých ocenění v horním/horním týmu, který se odkazuje na reprezentaci uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Můj tým Sub/horní horní ocenění body, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD v horním nebo horním týmu bodů ocenění, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Můj tým Sub/horní horní ocenění body** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce **Moje ocenění nahoře sub/Top Team** Application Integration, vyberte **jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Moje ocenění body horní Sub/horní týmu domény a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
+    ![Informace o jednotném přihlašování v hlavních/horních týmových doménách a adresách URL](common/sp-signonurl.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<Azure AD Identifier>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<Azure AD Identifier>`
 
     > [!NOTE]
-    > Hodnota není skutečný. Zobrazí se `<Azure AD Identifier>` hodnotu v dalších krocích v tomto kurzu.
+    > Hodnota není reálné číslo. V pozdějších krocích tohoto kurzu získáte `<Azure AD Identifier>` hodnotu.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavení Můj tým Sub/horní horní ocenění body** tématu, zkopírujte příslušné adresy URL podle vašich požadavků. 
+6. V části **nastavení bodů ocenění nahoře a v nejvyšším týmu** zkopírujte příslušné adresy URL podle vašich požadavků. 
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
     b. Identifikátor Azure AD
 
-    c. Adresa URL – odhlášení
+    c. Odhlašovací adresa URL
 
     >[!NOTE]
-    >Připojení zkopírované hodnota identifikátoru Azure AD se adresa URL místo hodnoty přihlašování `<Azure AD Identifier>` v **základní konfiguraci SAML** části webu Azure Portal.
+    >Připojením zkopírované hodnoty identifikátoru Azure AD pomocí přihlašovací adresy URL na místo `<Azure AD Identifier>` v části **základní konfigurace SAML** v Azure Portal.
 
-### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>Konfigurace hlavních mé body ocenění Sub/horní týmu jednotného přihlašování
+### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>Nakonfigurovat jednotné přihlašování pro body ocenění Top/Top Team
 
-Ke konfiguraci jednotného přihlašování na **Můj tým Sub/horní horní ocenění body** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [Moje ocenění Tým podpory horní Sub/horní týmu body](mailto:myawardpoints@biworldwide.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na straně **začátku a horního týmu pro body ocenění** je potřeba odeslat stažená **metadata federačních metadat** a příslušné zkopírované adresy URL z Azure Portal na [tým podpory v horním nebo horním](mailto:myawardpoints@biworldwide.com)týmu. Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu Můj tým Sub/horní horní ocenění body.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k hornímu nebo hornímu týmu bodů ocenění.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Můj tým Sub/horní horní ocenění body**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **body ocenění horní/horní tým**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Můj tým Sub/horní horní ocenění body**.
+2. V seznamu aplikace vyberte možnost **body ocenění horní dílčí/vrchní tým**.
 
-    ![Odkaz Můj tým Sub/horní horní ocenění body v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na horní/horní tým pro body ocenění v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-my-award-points-top-subtop-team-test-user"></a>Vytvoření Můj tým Sub/horní horní ocenění body testovacího uživatele
+### <a name="create-my-award-points-top-subtop-team-test-user"></a>Vytvořit body ocenění v horním/horním týmu testovacího uživatele
 
-V této části vytvořte uživatele Britta Simon v Můj tým Sub/horní horní ocenění body. Práce s [tým podpory Můj tým Sub/horní horní ocenění body](mailto:myawardpoints@biworldwide.com) přidat uživatele na platformě Můj tým Sub/horní horní ocenění body. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v části body ocenění v horním nebo horním týmu. S využitím [týmových a nejaktivnějších pracovních bodů](mailto:myawardpoints@biworldwide.com) v oblasti mých odměn můžete přidat uživatele na přední hlavní platformě a na nejvyšší úrovni vaší společnosti. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Můj tým Sub/horní horní ocenění body na přístupovém panelu, vám by měl být automaticky přihlášeni Moje ocenění body horní Sub/horní týmu pro kterou můžete nastavit jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici horních a nejvyšších bodů ocenění, měli byste být automaticky přihlášeni k hornímu a hornímu týmu bodů ocenění, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

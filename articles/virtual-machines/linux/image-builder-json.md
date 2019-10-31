@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 240e0dadaebde6725974604b578328ede0b20652
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 13392644ebe5e163e946deceeec5fcab8f5085cc
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129064"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159719"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -44,29 +44,29 @@ Toto je základní formát šablony:
 
 ## <a name="type-and-api-version"></a>Typ a verze rozhraní API
 
-Je typ prostředku, který musí být `"Microsoft.VirtualMachineImages/imageTemplates"`. `type` V `apiVersion` průběhu času se změny rozhraní API změní, ale měla by být `"2019-05-01-preview"` pro verzi Preview.
+`type` je typ prostředku, který musí být `"Microsoft.VirtualMachineImages/imageTemplates"`. `apiVersion` se v průběhu času změní rozhraní API, ale měla by být `"2019-05-01-preview"` pro verzi Preview.
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
     "apiVersion": "2019-05-01-preview",
 ```
 
-## <a name="location"></a>Location
+## <a name="location"></a>Umístění
 
 Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imagí se podporují tyto oblasti:
 
-- East US
-- Východní USA 2
-- Západní střed USA
-- USA – západ
-- USA – západ 2
+- USA – východ
+- Východ USA 2
+- Středozápadní USA
+- Západní USA
+- Západní USA 2
 
 
 ```json
     "location": "<region>",
 ```
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>Značky
 
 Jedná se o páry klíč/hodnota, které můžete zadat pro vygenerovanou bitovou kopii.
 
@@ -104,7 +104,7 @@ Další informace o nasazení této funkce najdete v tématu [Konfigurace spravo
 
 ## <a name="properties-source"></a>Vlastnosti: zdroj
 
-`source` Část obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí.
+Část `source` obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí.
 
 Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení image, v současné době existují tři typy:
 - ISO – použijte tuto hodnotu, pokud je zdrojem RHEL ISO.
@@ -115,7 +115,7 @@ Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení ima
 ### <a name="iso-source"></a>Zdroj ISO
 
 Azure image Builder podporuje pro náhled jenom použití publikované Red Hat Enterprise Linux 7. x Binary DVD soubory ISO. Nástroj image Builder podporuje:
-- RHEL 7.3 
+- RHEL 7,3 
 - RHEL 7,4 
 - RHEL 7.5 
  
@@ -127,9 +127,9 @@ Azure image Builder podporuje pro náhled jenom použití publikované Red Hat E
 }
 ```
 
-Hodnoty `sourceURI` a `sha256Checksum` získáte tak, `https://access.redhat.com/downloads` že vyberete produkt **Red Hat Enterprise Linux**a podporovanou verzi. 
+Chcete-li získat hodnoty `sourceURI` a `sha256Checksum`, zadejte `https://access.redhat.com/downloads`, vyberte **Red Hat Enterprise Linux**produktu a podporovanou verzi. 
 
-V seznamu instalačních **programů a imagí pro Red Hat Enterprise Linux Server**je nutné zkopírovat odkaz pro binární DVD Red Hat Enterprise Linux 7. x a kontrolní součet.
+V seznamu **instalačních programů a imagí pro Red Hat Enterprise Linux Server**je nutné zkopírovat odkaz pro binární DVD Red Hat Enterprise Linux 7. x a kontrolní součet.
 
 > [!NOTE]
 > Přístupové tokeny těchto propojení se aktualizují v častých intervalech, takže pokaždé, když chcete odeslat šablonu, musíte ověřit, jestli se změnila adresa odkazu RH.
@@ -139,9 +139,9 @@ Azure image Builder podporuje následující image Azure Marketplace:
 * Ubuntu 18.04
 * Ubuntu 16.04
 * RHEL 7,6
-* CentOS 7.6
+* CentOS 7,6
 * Windows 2016
-* Windows 2019
+* Systém Windows 2019
 
 ```json
         "source": {
@@ -174,7 +174,7 @@ Nastaví zdrojovou Image jako existující spravovanou bitovou kopii zobecněné
         }
 ```
 
-`imageId` By měl být ResourceID spravované image. Slouží `az image list` k vypsání dostupných imagí.
+`imageId` by měl být ResourceId spravované image. K vypsání dostupných imagí použijte `az image list`.
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion zdroj
@@ -187,7 +187,7 @@ Nastaví zdrojovou bitovou kopii existující verze image v galerii sdílených 
    } 
 ```
 
-`imageVersionId` Měla by být ResourceID verze image. K vypsání verzí imagí použijte příkaz [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) .
+`imageVersionId` by měl být ResourceId verze image. K vypsání verzí imagí použijte příkaz [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) .
 
 ## <a name="properties-buildtimeoutinminutes"></a>Vlastnosti: buildTimeoutInMinutes
 
@@ -208,7 +208,7 @@ Pokud zjistíte, že k dokončení úprav potřebujete víc času, nastavte to p
 Image Builder podporuje několik "úprav". Vlastníci jsou funkce, které se používají k přizpůsobení image, jako je spouštění skriptů nebo restartování serverů. 
 
 Při použití `customize`: 
-- Můžete použít více úprav, ale musí mít jedinečné `name`.
+- Můžete použít více úprav, ale musí mít jedinečný `name`.
 - Úpravci provádějí v pořadí zadaném v šabloně.
 - Pokud jeden z úprav selže, celá komponenta přizpůsobení selže a ohlásí chybu.
 - Důrazně doporučujeme skript před jeho použitím v šabloně důkladně otestovat. Ladění skriptu na vlastním VIRTUÁLNÍm počítači bude snazší.
@@ -258,7 +258,7 @@ Oddíl Customization je pole. Azure image Builder se spustí prostřednictvím �
     ], 
 ```
 
-Podpora operačního systému: Linux 
+Podpora OS: Linux 
  
 Přizpůsobení vlastností:
 
@@ -282,13 +282,13 @@ Přizpůsobení vlastností:
          }],
 ```
 
-Podpora operačního systému: Windows
+Podpora OS: Windows
  
 Přizpůsobení vlastností:
 - **Zadejte**: WindowsRestart
-- **restartCommand** – příkaz pro spuštění restartování (volitelné). Výchozí hodnota je `'shutdown /r /f /t 0 /c \"packer restart\"'`.
+- **restartCommand** – příkaz pro spuštění restartování (volitelné). Výchozí formát je `'shutdown /r /f /t 0 /c \"packer restart\"'`.
 - **restartCheckCommand** – příkaz pro kontrolu úspěšnosti restartování (volitelné). 
-- **rečas_spuštění** – byl zadán časový limit restartování jako řetězec velikosti a jednotky. Například `5m` (5 minut) nebo `2h` (2 hodiny). Výchozí hodnota je: 5 min
+- **rečas_spuštění** – byl zadán časový limit restartování jako řetězec velikosti a jednotky. Například `5m` (5 minut) nebo `2h` (2 hodiny). Výchozí hodnota je: ' 5 min '
 
 
 ### <a name="powershell-customizer"></a>Úpravám PowerShellu 
@@ -310,7 +310,7 @@ Přizpůsobení vlastností:
     ], 
 ```
 
-Podpora operačního systému: Windows a Linux
+Podpora OS: Windows a Linux
 
 Přizpůsobení vlastností:
 
@@ -334,7 +334,7 @@ Přizpůsobení vlastností:
      ]
 ```
 
-Podpora operačního systému: Linux a Windows 
+Podpora OS: Linux a Windows 
 
 Vlastnosti úprav souborů:
 
@@ -349,7 +349,7 @@ To je podporováno v adresářích systému Windows a cestách pro Linux, ale ex
 Pokud při pokusu o stažení souboru nebo jeho umístění do zadaného adresáře dojde k chybě, krok přizpůsobení selže a bude v souboru Customization. log.
 
 > [!NOTE]
-> Soubor úprav souborů je vhodný jenom pro stahování malých souborů, < 20MB. U větších souborů ke stažení použijte skript nebo vložený příkaz, ke stažení souborů, jako je Linux `wget` nebo `curl`Windows, `Invoke-WebRequest`použijte kód.
+> Soubor úprav souborů je vhodný jenom pro stahování malých souborů, < 20MB. U větších souborů ke stažení použijte skript nebo vložený příkaz, ke stažení souborů použijte kód, například `wget` Linux nebo `curl`, Windows `Invoke-WebRequest`.
 
 Soubory v úpravách souborů je možné stáhnout z Azure Storage pomocí [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
@@ -393,11 +393,11 @@ Azure image Builder podporuje tři cíle distribuce:
 
 - Image spravovaná **managedImage**
 - Galerie sdílených imagí **sharedImage**
-- VHD – VHD v účtu úložiště
+- **VHD – VHD** v účtu úložiště
 
 Můžete distribuovat obrázek do obou cílových typů ve stejné konfiguraci, viz [Příklady](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
 
-Vzhledem k tomu, že můžete mít více než jeden cíl pro distribuci do nástroje, nástroj image Builder udržuje stav pro každý cíl distribuce, ke kterému lze `runOutputName`přistup pomocí dotazování na.  `runOutputName` Je objekt, který můžete odeslat dotazem na distribuci pro informace o této distribuci. Můžete například zadat dotaz na umístění virtuálního pevného disku nebo oblasti, do kterých byla verze bitové kopie replikována. Toto je vlastnost všech cílů distribuce. `runOutputName` Musí být jedinečný pro každý cíl distribuce.
+Vzhledem k tomu, že můžete mít více než jeden cíl pro distribuci do nástroje, nástroj image Builder udržuje stav pro každý cíl distribuce, ke kterému se dá dostat dotazování `runOutputName`.  `runOutputName` je objekt, který můžete zadat dotazem na distribuci příspěvku, kde najdete informace o této distribuci. Můžete například zadat dotaz na umístění virtuálního pevného disku nebo oblasti, do kterých byla verze bitové kopie replikována. Toto je vlastnost všech cílů distribuce. `runOutputName` musí být pro každý cíl distribuce jedinečný.
  
 ### <a name="distribute-managedimage"></a>Distribuovat: managedImage
 
@@ -419,7 +419,7 @@ Výstupem obrázku bude prostředek spravované image.
  
 Vlastnosti distribuce:
 - **typ** – managedImage 
-- **imageId** – ID prostředku cílového obrázku, očekávaný formát:/subscriptions/\<SubscriptionId >/resourceGroups/\<destinationResourceGroupName >/Providers/Microsoft.COMPUTE/images/\< imageName >
+- **imageId** – ID prostředku cílového obrázku, očekávaný formát:/subscriptions/\<SubscriptionId >/ResourceGroups/\<destinationResourceGroupName >/Providers/Microsoft.COMPUTE/images/\<ImageName >
 - **umístění** – umístění spravované image.  
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
 - **artifactTags** – volitelné uživatelsky definované páry klíč-hodnota.
@@ -442,23 +442,24 @@ Než budete moct distribuovat do galerie imagí, musíte vytvořit galerii a def
 
 ```json
 {
-     "type": "sharedImage",
-     "galleryImageId": “<resource ID>”,
-     "runOutputName": "<name>",
-     "artifactTags": {
-          "<name": "<value>",
-           "<name>": "<value>"
-             }
-     "replicationRegions": [
+    "type": "sharedImage",
+    "galleryImageId": "<resource ID>",
+    "runOutputName": "<name>",
+    "artifactTags": {
+        "<name>": "<value>",
+        "<name>": "<value>"
+    },
+    "replicationRegions": [
         "<region where the gallery is deployed>",
         "<region>"
-    ]}
+    ]
+}
 ``` 
 
 Distribuovat vlastnosti pro galerie sdílených imagí:
 
 - **typ** – sharedImage  
-- **galleryImageId** – ID Galerie sdílených imagí \<Formát je:/subscriptions/SubscriptionId >/resourceGroups/\<resourceGroupName >/Providers/Microsoft.COMPUTE/Galleries/\<sharedImageGalleryName >/images/\< imageGalleryName >.
+- **galleryImageId** – ID Galerie sdílených imagí Formát je:/subscriptions/\<subscriptionId >/resourceGroups/\<resourceGroupName >/providers/Microsoft.Compute/galleries/\<sharedImageGalleryName >/images/\<imageGalleryName >.
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
 - **artifactTags** – volitelné uživatelsky definované páry klíč-hodnota.
 - **replicationRegions** – pole oblastí pro replikaci. Jedna z oblastí musí být oblast, ve které je galerie nasazena.
@@ -466,21 +467,21 @@ Distribuovat vlastnosti pro galerie sdílených imagí:
 > [!NOTE]
 > Pro galerii můžete použít Azure image Builder v jiné oblasti, ale služba Azure image Builder bude potřebovat přenést image mezi datacentry a to bude trvat déle. Nástroj image Builder automaticky nastaví verzi obrázku na základě monotónní celého čísla, nemůžete ho aktuálně zadat. 
 
-### <a name="distribute-vhd"></a>Rozložení VIRTUÁLNÍHO  
+### <a name="distribute-vhd"></a>Distribuovat: VHD  
 Můžete vytvořit výstup do virtuálního pevného disku. Pak můžete zkopírovat VHD a použít ho k publikování na webu Azure MarketPlace nebo použít s Azure Stack.  
 
 ```json
- { 
-     "type": "VHD",
-     "runOutputName": "<VHD name>",
-     "tags": {
-          "<name": "<value>",
-           "<name>": "<value>"
-             }
- }
+{ 
+    "type": "VHD",
+    "runOutputName": "<VHD name>",
+    "tags": {
+        "<name": "<value>",
+        "<name>": "<value>"
+    }
+}
 ```
  
-Podpora operačního systému: Windows a Linux
+Podpora OS: Windows a Linux
 
 Distribuovat parametry VHD:
 
@@ -500,7 +501,7 @@ az resource show \
  
 ## <a name="next-steps"></a>Další kroky
 
-V GitHubu pro [Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder)jsou k dispozici ukázkové soubory. JSON pro různé scénáře.
+V [GitHubu pro Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder)jsou k dispozici ukázkové soubory. JSON pro různé scénáře.
  
  
  

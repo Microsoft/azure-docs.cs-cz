@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.openlocfilehash: 3767ea10d777a0ea7ad88a2ffa4793e866ffbe6c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 10/28/2019
+ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091471"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162880"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura Apache Hadoop v HDInsightu
 
@@ -24,20 +24,20 @@ ms.locfileid: "71091471"
 
 Tento článek představuje nitě a způsob, jakým koordinuje spouštění aplikací v HDInsight.
 
-## <a name="apache-hadoop-yarn-basics"></a>Základy Apache Hadoop nitě 
+## <a name="apache-hadoop-yarn-basics"></a>Základy Apache Hadoop nitě
 
-PŘÍZe řídí a orchestruje zpracování dat v Hadoop. PŘÍZ má dvě základní služby, které běží jako procesy na uzlech v clusteru: 
+PŘÍZe řídí a orchestruje zpracování dat v Hadoop. PŘÍZ má dvě základní služby, které běží jako procesy na uzlech v clusteru:
 
-* ResourceManager 
+* ResourceManager
 * NodeManager
 
-Správce prostředků uděluje výpočetní prostředky clusteru aplikacím jako MapReduce úlohy. Správce prostředků tyto prostředky uděluje jako kontejnery, kde se každý kontejner skládá z přidělení PROCESORových jader a paměti RAM. Pokud jste spojili všechny prostředky, které jsou k dispozici v clusteru, a poté byly distribuovány jádra a paměť v blocích, každý blok prostředků je kontejnerem. Každý uzel v clusteru má kapacitu pro určitý počet kontejnerů, proto má cluster pevný limit počtu dostupných kontejnerů. Plnění prostředků v kontejneru lze konfigurovat. 
+Správce prostředků uděluje výpočetní prostředky clusteru aplikacím jako MapReduce úlohy. Správce prostředků tyto prostředky uděluje jako kontejnery, kde se každý kontejner skládá z přidělení PROCESORových jader a paměti RAM. Pokud jste spojili všechny prostředky, které jsou k dispozici v clusteru, a poté byly distribuovány jádra a paměť v blocích, každý blok prostředků je kontejnerem. Každý uzel v clusteru má kapacitu pro určitý počet kontejnerů, proto má cluster pevný limit počtu dostupných kontejnerů. Plnění prostředků v kontejneru lze konfigurovat.
 
-Když aplikace MapReduce běží na clusteru, správce prostředků poskytne aplikaci kontejnery, ve kterých se má provést. Správce prostředků sleduje stav spuštěných aplikací, dostupnou kapacitu clusteru a sleduje aplikace podle jejich dokončení a uvolní své prostředky. 
+Když aplikace MapReduce běží na clusteru, správce prostředků poskytne aplikaci kontejnery, ve kterých se má provést. Správce prostředků sleduje stav spuštěných aplikací, dostupnou kapacitu clusteru a sleduje aplikace podle jejich dokončení a uvolní své prostředky.
 
 Správce prostředků taky spouští proces webového serveru, který poskytuje webové uživatelské rozhraní pro monitorování stavu aplikací.
 
-Když uživatel odešle aplikaci MapReduce ke spuštění v clusteru, aplikace se odešle do Správce prostředků. Správce prostředků pak přiděluje kontejner na dostupných uzlech NodeManager. Uzly NodeManager jsou místo, kde se aplikace skutečně spouští. První přidělený kontejner spustí speciální aplikaci s názvem ApplicationMaster. Tento ApplicationMaster zodpovídá za získání prostředků ve formě dalších kontejnerů potřebných ke spuštění odeslané aplikace. ApplicationMaster prověřuje fáze aplikace, jako je například fáze mapy a zmenšení fáze, a okolnosti, kolik dat je potřeba zpracovat. ApplicationMaster pak vyžádá (*vyjednávat*) prostředky od správce prostředků jménem aplikace. Správce prostředků pak udělí prostředky z NodeManagers v clusteru do ApplicationMaster, aby ho mohl použít při spouštění aplikace. 
+Když uživatel odešle aplikaci MapReduce ke spuštění v clusteru, aplikace se odešle do Správce prostředků. Správce prostředků pak přiděluje kontejner na dostupných uzlech NodeManager. Uzly NodeManager jsou místo, kde se aplikace skutečně spouští. První přidělený kontejner spustí speciální aplikaci s názvem ApplicationMaster. Tento ApplicationMaster zodpovídá za získání prostředků ve formě dalších kontejnerů potřebných ke spuštění odeslané aplikace. ApplicationMaster prověřuje fáze aplikace, jako je například fáze mapy a zmenšení fáze, a okolnosti, kolik dat je potřeba zpracovat. ApplicationMaster pak vyžádá (*vyjednávat*) prostředky od správce prostředků jménem aplikace. Správce prostředků pak udělí prostředky z NodeManagers v clusteru do ApplicationMaster, aby ho mohl použít při spouštění aplikace.
 
 NodeManagers spustí úlohy, které tvoří aplikaci, a pak oznámí jejich průběh a stav zpět do ApplicationMaster. ApplicationMaster v nástroji zase hlásí stav aplikace zpět do Správce prostředků. Správce prostředků vrátí všechny výsledky klientovi.
 
@@ -47,7 +47,7 @@ Všechny typy clusterů HDInsight nasazují PŘÍZi. Správce prostředků je na
 
 ![Apache PŘÍZe v Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Použití MapReduce v Apache Hadoopu ve službě HDInsight](hadoop/hdinsight-use-mapreduce.md)
 * [Seznámení se službou Azure HDInsight](hadoop/apache-hadoop-introduction.md)

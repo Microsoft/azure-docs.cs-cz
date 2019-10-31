@@ -1,12 +1,13 @@
 ---
-title: Příručka pro správce od společnosti Atlassian Jira/Confluence – Azure Active Directory | Dokumentace Microsoftu
-description: Příručka pro správce pro použití s Azure Active Directory (Azure AD) od společnosti Atlassian Jira a Confluence...
+title: Příručka pro správce Atlassian JIRA/Confluence – Azure Active Directory | Microsoft Docs
+description: Průvodce pro správu, který používá Atlassian JIRA a Confluence s Azure Active Directory (Azure AD)..
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: daveba
 ms.reviewer: joflore
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,64 +15,64 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60935761"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161206"
 ---
-# <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Od společnosti Atlassian Jira a Confluence příručky pro správce Azure Active Directory
+# <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian JIRA a příručka pro správce Confluence pro Azure Active Directory
 
 ## <a name="overview"></a>Přehled
 
-Azure Active Directory (Azure AD) jednotné přihlašování (SSO) modul plug-in umožňuje zákazníkům Microsoft Azure AD používat svůj pracovní nebo školní účet pro přihlášení k Atlassian Jira a Confluence serverových produktů. Implementuje jednotné přihlašování založené na SAML 2.0.
+Modul plug-in Azure Active Directory (Azure AD) jednotného přihlašování (SSO) umožňuje Microsoft Azure AD zákazníkům používat pracovní nebo školní účet pro přihlašování k produktům Atlassian JIRA a Confluence serverem. Implementuje jednotné přihlašování založené na SAML 2,0.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Když uživatelé mají k přihlášení do aplikace od společnosti Atlassian Jira nebo Confluence, zobrazí se mu **přihlášení pomocí Azure AD** tlačítko na přihlašovací stránku. Když vyberou ji, musí se přihlásit pomocí Azure AD organizace přihlašovací stránky (to znamená, že jejich pracovní nebo školní účet).
+Když se uživatelé chtějí přihlašovat k aplikaci Atlassian JIRA nebo Confluence, uvidí na přihlašovací stránce tlačítko **Přihlásit se pomocí Azure AD** . Když je vyberou, musí se přihlásit pomocí přihlašovací stránky organizace Azure AD (tj. pracovní nebo školní účet).
 
-Po ověření uživatele, třeba moct přihlásit k aplikaci. Pokud je již ověřen s ID a heslo ke svému pracovnímu nebo školnímu účtu, potom přímo přihlášení k aplikaci. 
+Po ověření uživatelů by se měli být schopni přihlásit k aplikaci. Pokud jsou už ověřené pomocí ID a hesla pro svůj pracovní nebo školní účet, přihlaste se přímo k aplikaci. 
 
-Přihlašování funguje napříč Jira a Confluence. Pokud jsou uživatelé přihlášení do aplikace systému Jira a ve stejném okně prohlížeče se otevře Confluence, nemají zadejte přihlašovací údaje pro jinou aplikaci. 
+Přihlašování funguje napříč JIRA a Confluence. Pokud se uživatelé přihlásí do aplikace JIRA a ve stejném okně prohlížeče se otevře Confluence, nemusí zadávat přihlašovací údaje pro jinou aplikaci. 
 
-Také se uživatelé dostanou na produkt od společnosti Atlassian prostřednictvím Moje aplikace v rámci pracovního nebo školního účtu. By měl být přihlášeni bez požádaná, pro přihlašovací údaje.
+Uživatelé se také můžou k Atlassian produktu dostat prostřednictvím svých aplikací v pracovním nebo školním účtu. Měly by být přihlášeni bez výzvy k zadání přihlašovacích údajů.
 
 > [!NOTE]
-> Zřizování uživatelů se provádí prostřednictvím modulu plug-in.
+> Zřizování uživatelů se neprovádí pomocí modulu plug-in.
 
 ## <a name="audience"></a>Cílová skupina
 
-Správci systému Jira a Confluence můžete použít modul plug-in pro povolení jednotného přihlašování pomocí Azure AD.
+Správci JIRA a Confluence můžou pomocí tohoto modulu plug-in povolit jednotné přihlašování pomocí služby Azure AD.
 
 ## <a name="assumptions"></a>Předpoklady
 
-* Jira a Confluence instance jsou povolené HTTPS.
-* Uživatelé jsou už vytvořené v systému Jira nebo Confluence.
-* Uživatelé mají přiřazené v systému Jira nebo Confluence role.
-* Správci mají přístup k informacím, které jsou potřeba ke konfiguraci modulu plug-in.
-* Jira nebo Confluence je k dispozici mimo podnikovou síť.
-* Modul plug-in funguje s místní verzí systému Jira a Confluence.
+* Instance JIRA a Confluence mají povolený protokol HTTPS.
+* Uživatelé jsou již vytvořeni v JIRA nebo Confluence.
+* Uživatelé mají přiřazené role v JIRA nebo Confluence.
+* Správci mají přístup k informacím vyžadovaným ke konfiguraci modulu plug-in.
+* JIRA nebo Confluence je k dispozici i mimo podnikovou síť.
+* Modul plug-in funguje jenom s místní verzí JIRA a Confluence.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než nainstalujete modul plug-in, mějte na paměti následující informace:
+Před instalací modulu plug-in si všimněte následujících informací:
 
-* Jira a Confluence jsou nainstalovány na verzi Windows 64-bit.
-* Jira a Confluence verze jsou povolené HTTPS.
-* Jira a Confluence jsou dostupné na Internetu.
-* Přihlašovací údaje správce jsou nastavené pro Jira a Confluence.
-* Přihlašovací údaje správce jsou na místě pro službu Azure AD.
-* WebSudo je v systému Jira a Confluence zakázaná.
+* JIRA a Confluence jsou nainstalovány v 64 verze systému Windows.
+* Verze JIRA a Confluence jsou povoleny pomocí protokolu HTTPS.
+* JIRA a Confluence jsou k dispozici na internetu.
+* Přihlašovací údaje správce jsou pro JIRA a Confluence.
+* Pro Azure AD jsou k dismístě přihlašovací údaje správce.
+* WebSudo je v JIRA a Confluence zakázaný.
 
-## <a name="supported-versions-of-jira-and-confluence"></a>Podporované verze systému Jira a Confluence
+## <a name="supported-versions-of-jira-and-confluence"></a>Podporované verze systémů JIRA a Confluence
 
-Modul plug-in podporuje následující verze systému Jira a Confluence:
+Modul plug-in podporuje následující verze JIRA a Confluence:
 
-* Základní Jira a Software: 6.0 k 7.12
-* Oddělení služeb Jira: 3.0.0 k 3.5.0
-* JIRA podporuje také 5.2. Další podrobnosti získáte kliknutím [Microsoft Azure Active Directory jednotného přihlašování pro JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence: 5.0 k 5.10
+* JIRA Core a software: 6,0 až 7,12
+* Oddělení služeb JIRA: 3.0.0 na 3.5.0
+* JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) .
+* Confluence: 5,0 až 5,10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
 * Confluence: 6.2.1
@@ -88,108 +89,108 @@ Modul plug-in podporuje následující verze systému Jira a Confluence:
 
 ## <a name="installation"></a>Instalace
 
-Pokud chcete nainstalovat modul plug-in, postupujte takto:
+Chcete-li nainstalovat modul plug-in, postupujte podle následujících kroků:
 
-1. Přihlaste se k vaší instanci Jira nebo Confluence jako správce.
+1. Přihlaste se ke své instanci JIRA nebo Confluence jako správce.
 
-2. Přejděte do konzoly pro správu systému Jira/Confluence a vyberte **doplňky**.
+2. Otevřete konzolu pro správu JIRA/Confluence a vyberte možnost **Doplňky**.
 
-3. Stáhnout z webu Microsoft Download Center [modulu plug-in Microsoft SAML jednotného přihlašování pro Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [modulu plug-in Microsoft SAML jednotného přihlašování pro Confluence](https://www.microsoft.com/download/details.aspx?id=56503).
+3. Na webu Microsoft Download Center Stáhněte modul [Plug-in Microsoft SAML SSO pro Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [modul Microsoft SAML SSO plugin pro Confluence](https://www.microsoft.com/download/details.aspx?id=56503).
 
-   Příslušnou verzi modulu plug-in se zobrazí ve výsledcích hledání.
+   Ve výsledcích hledání se zobrazí příslušná verze modulu plug-in.
 
-4. Vyberte modul plug-in a univerzální modul Plug-in Manager (UPM) nainstaluje ho.
+4. Vyberte modul plug-in a správce univerzálního modulu plug-in (UPM) ho nainstaluje.
 
-Po instalaci modulu plug-in se zobrazí v **nainstalovaná doplňky uživatele** část **spravovat doplňky**.
+Po instalaci modulu plug-in se tato položka zobrazí v části **doplňky nainstalované uživatelem** tématu **Správa doplňků**.
 
 ## <a name="plug-in-configuration"></a>Konfigurace modulu plug-in
 
-Než začnete používat modul plug-in, je nutné nakonfigurovat. Modul plug-in, vyberte **konfigurovat** tlačítko a zajištění podrobných konfiguračních informací.
+Než začnete používat modul plug-in, musíte ho nakonfigurovat. Vyberte modul plug-in, klikněte na tlačítko **Konfigurovat** a zadejte podrobnosti o konfiguraci.
 
-Na obrazovce pro konfiguraci v systému Jira a Confluence na následujícím obrázku:
+Následující obrázek znázorňuje konfigurační obrazovku v JIRA i Confluence:
 
-![Obrazovka Konfigurace modulu plug-in](./media/ms-confluence-jira-plugin-adminguide/jira.png)
+![Obrazovka konfigurace modulu plug-in](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-* **Adresa URL metadat**: Adresa URL federačních metadat získat ze služby Azure AD.
+* **Adresa URL metadat**: adresa URL pro získání federačních metadat z Azure AD.
 
-* **Identifikátory**: Adresa URL, která používá Azure AD ověřit zdroj požadavku. Mapuje **identifikátor** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domény: port >* /.
+* **Identifikátory**: adresa URL, kterou služba Azure AD používá k ověření zdroje žádosti. Mapuje se na element **identifikátoru** ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<doméně: port >* /.
 
-* **Adresa URL pro odpověď**: Adresa URL odpovědi ve zprostředkovateli identity (IdP), která inicializuje přihlášení SAML. Mapuje **adresy URL odpovědi** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domény: port >* /plugins/servlet/saml/auth.
+* **Adresa URL odpovědi**: adresa URL odpovědi ve Vašem zprostředkovateli identity (IDP), která iniciuje přihlášení SAML. Mapuje se na element **adresy URL odpovědi** ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<doméně: port >* /plugins/servlet/SAML/auth.
 
-* **Přihlašovací adresa URL**: Přihlašovací adresa URL v svého zprostředkovatele identity, který iniciuje přihlášení SAML. Mapuje **přihlašování** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domény: port >* /plugins/servlet/saml/auth.
+* **Adresa URL pro přihlášení**: přihlašovací adresa URL v IDP, která iniciuje přihlášení SAML. Mapuje se na element **Signing** v Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<doméně: port >* /plugins/servlet/SAML/auth.
 
-* **ID IdP Entity**: ID entity, která používá svého zprostředkovatele identity. Toto pole se vyplní když adresa URL metadat je vyřešený.
+* **ID entity IDP**: ID entity, kterou používá vaše IDP. Toto pole se vyplní, když se vyřeší adresa URL metadat.
 
-* **Adresa URL pro přihlášení**: Přihlašovací adresa URL ze svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
+* **Přihlašovací adresa URL**: přihlašovací adresa URL z vaší IDP. Toto pole se vyplní z Azure AD, když se vyřeší adresa URL metadat.
 
-* **Odhlašovací adresa URL**: Odhlašovací adresa URL ze svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
+* **Odhlašovací adresa**URL: odhlašovací URL z vaší IDP. Toto pole se vyplní z Azure AD, když se vyřeší adresa URL metadat.
 
-* **Certifikát X.509**: Certifikát X.509 svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
+* **Certifikát x. 509**: váš IDP certifikát x. 509. Toto pole se vyplní z Azure AD, když se vyřeší adresa URL metadat.
 
-* **Přihlašovací jméno tlačítko**: Název tlačítka přihlašování, které vaše organizace chce, aby se uživatelům zobrazit na přihlašovací stránku.
+* **Název tlačítka pro přihlášení**: název přihlašovacího tlačítka, které vaše organizace chce, aby na přihlašovací stránce viděli uživatele.
 
-* **Umístění ID uživatele SAML**: Umístění, kde se očekává ID uživatele Jira nebo Confluence odpověď SAML. Může být v **NameID** nebo v názvu vlastního atributu.
+* **Umístění ID uživatele SAML**: umístění, kde se v odpovědi SAML očekává ID uživatele JIRA nebo Confluence. Může to být v **NameId** nebo ve vlastním názvu atributu.
 
-* **Atribut název**: Název atributu, kde se očekává ID uživatele.
+* **Název atributu**: název atributu, u kterého se očekává ID uživatele.
 
-* **Zjišťování povolit domovské sféry**: Výběr, ujistěte se, pokud společnost používá služby Active Directory Federation Services (AD FS) - based sign - v.
+* **Povolit zjišťování domovské sféry**: výběr, který se má použít k tomu, aby společnost používala přihlašování založené na Active Directory Federation Services (AD FS) (AD FS).
 
-* **Domain Name**: Pokud přihlášení je název domény na základě služby AD FS.
+* **Název domény**: název domény, pokud se AD FS na základě přihlášení.
 
-* **Povolit jednotné odhlášení**: Ujistěte se, pokud se chcete odhlásit se ze služby Azure AD při odhlášení uživatele ze systému Jira nebo Confluence výběru.
+* **Povolit jednotné přihlašování**: výběr, který se má udělat, pokud se chcete odhlásit ze služby Azure AD, když se uživatel odhlásí z JIRA nebo Confluence.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-* **Více chyby certifikátu**: Přihlaste se k Azure AD a odebrat víc certifikátů, které jsou k dispozici pro aplikaci. Ujistěte se, že je k dispozici pouze jeden certifikát.
+* Máte k dispozici **více chyb certifikátu**: Přihlaste se do služby Azure AD a odeberte více certifikátů, které jsou pro aplikaci k dispozici. Zajistěte, aby byl přítomen pouze jeden certifikát.
 
-* **Certifikátu brzy vyprší platnost ve službě Azure AD**: Doplňky se postará o automatické výměny certifikátu. Pokud certifikátu brzy vyprší platnost, nový certifikát by měl být označena jako aktivní a nepoužívané certifikáty by měly být odstraněny. Když uživatel se pokusí přihlásit do nástroje Jira v tomto scénáři, modul plug-in načte a uloží nový certifikát.
+* **Platnost certifikátu brzy vyprší ve službě Azure AD**: Doplňky se postará o automatický přechod na certifikát. Pokud brzy vyprší platnost certifikátu, měl by být nový certifikát označený jako aktivní a nepoužívané certifikáty by se měly odstranit. Když se uživatel pokusí přihlásit k JIRA v tomto scénáři, modul plug-in načte a uloží nový certifikát.
 
-* **Chcete zakázat WebSudo (zakázání relace zabezpečení správce)** :
+* **Chcete zakázat WebSudo (zakažte relaci zabezpečeného správce)** :
 
-  * Pro Jira jsou ve výchozím nastavení povoleno zabezpečené Správce relací (to znamená, potvrzení hesla před přístupem k funkcím pro správu). Pokud chcete odebrat tuto možnost v instanci systému Jira, zadejte následující řádek v souboru jira config.properties: `ira.websudo.is.disabled = true`
+  * Pro JIRA jsou ve výchozím nastavení povolené relace zabezpečeného správce (tj. potvrzení hesla před přístupem k funkcím pro správu). Pokud chcete tuto schopnost v instanci JIRA odebrat, zadejte v souboru JIRA-config. Properties následující řádek: `ira.websudo.is.disabled = true`
 
-  * Confluence, postupujte podle pokynů [web podpory Confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
+  * V případě Confluence postupujte podle pokynů na [webu podpory Confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
 
-* **Pole, která mají být vyplněn adresa URL metadat získávání naplněny**:
+* **Pole, která by měla být naplněna pomocí adresy URL metadat, nejsou naplněna**:
 
-  * Zkontrolujte, jestli je adresa URL správná. Zaškrtněte, pokud jste namapovali správné ID tenanta a aplikace.
+  * Zkontroluje, jestli je adresa URL správná. Ověřte, jestli jste namapovali správné ID tenanta a aplikace.
 
-  * Zadejte adresu URL v prohlížeči a zobrazit, pokud se zobrazí kód XML metadat federace.
+  * Zadejte adresu URL v prohlížeči a podívejte se, jestli se vám zobrazuje kód XML federačních metadat.
 
-* **Je interní chybu serveru**: Zkontrolujte protokoly v adresáři protokolu instalace. Pokud dochází k chybě při pokusu uživatele o přihlášení pomocí jednotného přihlašování k Azure AD, můžete protokoly sdílet se na tým podpory.
+* **Došlo k vnitřní chybě serveru**: Projděte si protokoly v adresáři protokolu instalace. Pokud se zobrazí chyba, když se uživatel pokusí přihlásit pomocí jednotného přihlašování služby Azure AD, můžete protokoly sdílet s týmem podpory.
 
-* **Když se uživatel pokusí přihlásit dochází k chybě "ID uživatele nebyl nalezen"** : Vytvořte ID uživatele v systému Jira nebo Confluence.
+* **Při pokusu uživatele o přihlášení došlo k chybě "ID uživatele nebylo nalezeno"** : vytvořte ID uživatele v JIRA nebo Confluence.
 
-* **Ve službě Azure AD je chyba "Aplikace nebyla nalezena"** : Podívejte se, pokud příslušné adrese URL se mapuje na aplikaci ve službě Azure AD.
+* **V Azure AD se vyskytla chyba aplikace nenalezena**: Podívejte se, jestli je příslušná adresa URL namapovaná na aplikaci ve službě Azure AD.
 
-* **Potřebujete podporu**: Oslovení [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Tým odpovídá ve 24 nebo 48 pracovní doby.
+* **Potřebujete podporu**: nahlaste se k [integrování týmu jednotného přihlašování v Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Tým odpoví v 24-48 pracovní době.
 
-  Můžete také zvýšit lístek podpory s Microsoftem přes Azure portal kanál.
+  Lístek podpory můžete také vyvolat se společností Microsoft prostřednictvím kanálu Azure Portal.
 
-## <a name="plug-in-faq"></a>Modul plug-in – nejčastější dotazy
+## <a name="plug-in-faq"></a>Nejčastější dotazy k modulu plug-in
 
-Pokud máte dotazy ohledně této najdete pod nejčastější dotazy k modulu plug-in.
+Pokud máte dotazy týkající se tohoto modulu plug-in, přečtěte si následující Nejčastější dotazy.
 
-### <a name="what-does-the-plug-in-do"></a>Co dělá modulu plug-in?
+### <a name="what-does-the-plug-in-do"></a>Co modul plug-in dělá?
 
-Modul plug-in poskytuje jednotné přihlašování (SSO) od společnosti Atlassian Jira (včetně jádra Jira, rozšiřují Software jira, Jira oddělení služeb) a Confluence u místního softwaru. Modul plug-in funguje s Azure Active Directory (Azure AD) jako zprostředkovatele identity (IdP).
+Modul plug-in poskytuje funkci jednotného přihlašování (SSO) pro Atlassian JIRA (včetně JIRA Core, JIRA softwaru, JIRA oddělení služeb) a Confluence místního softwaru. Modul plug-in funguje s Azure Active Directory (Azure AD) jako poskytovatelem identity (IdP).
 
-### <a name="which-atlassian-products-does-the-plug-in-work-with"></a>Které produkty od společnosti Atlassian modul plug-in funguje s?
+### <a name="which-atlassian-products-does-the-plug-in-work-with"></a>U kterých produktů Atlassian funguje modul plug-in?
 
-Modul plug-in funguje s místní verzí systému Jira a Confluence.
+Modul plug-in funguje s místními verzemi JIRA a Confluence.
 
-### <a name="does-the-plug-in-work-on-cloud-versions"></a>Modul plug-in funguje v cloudu verze?
+### <a name="does-the-plug-in-work-on-cloud-versions"></a>Funguje modul plug-in ve verzích cloudu?
 
-Ne. Modul plug-in podporuje jenom místní verze systému Jira a Confluence.
+Ne. Modul plug-in podporuje jenom místní verze JIRA a Confluence.
 
-### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Které verze systému Jira a Confluence podporuje modul plug-in podporu?
+### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Které verze JIRA a Confluence podporuje modul plug-in?
 
 Modul plug-in podporuje tyto verze:
 
-* Základní Jira a Software: 6.0 k 7.12
-* Oddělení služeb Jira: 3.0.0 k 3.5.0
-* JIRA podporuje také 5.2. Další podrobnosti získáte kliknutím [Microsoft Azure Active Directory jednotného přihlašování pro JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence: 5.0 k 5.10
+* JIRA Core a software: 6,0 až 7,12
+* Oddělení služeb JIRA: 3.0.0 na 3.5.0
+* JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) .
+* Confluence: 5,0 až 5,10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
 * Confluence: 6.2.1
@@ -204,40 +205,40 @@ Modul plug-in podporuje tyto verze:
 * Confluence: 6.11.0
 * Confluence: 6.12.0
 
-### <a name="is-the-plug-in-free-or-paid"></a>Je modul plug-in bezplatné nebo placené?
+### <a name="is-the-plug-in-free-or-paid"></a>Je modul plug-in bezplatný nebo placený?
 
-Je bezplatný doplněk.
+Je to bezplatný doplněk.
 
-### <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Je potřeba restartovat Jira nebo Confluence nasadit modul plug-in?
+### <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Musím po nasazení modulu plug-in restartovat JIRA nebo Confluence?
 
-Restartování se nevyžaduje. Chcete-li začít, použitím modulu plug-in okamžitě.
+Restartování se nevyžaduje. Můžete začít používat modul plug-in hned.
 
-### <a name="how-do-i-get-support-for-the-plug-in"></a>Jak získat podporu pro modul plug-in?
+### <a name="how-do-i-get-support-for-the-plug-in"></a>Návody získat podporu pro modul plug-in?
 
-Abyste se obrátili na [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) jakoukoli podporu v případě pro tento modul plug-in. Tým odpovídá ve 24 nebo 48 pracovní doby.
+Můžete se obrátit na [integrační tým jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) , kde najdete veškerou podporu pro tento modul plug-in. Tým odpoví v 24-48 pracovní době.
 
-Můžete také zvýšit lístek podpory s Microsoftem přes Azure portal kanál.
+Lístek podpory můžete také vyvolat se společností Microsoft prostřednictvím kanálu Azure Portal.
 
-### <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>Modul plug-in práce na Mac nebo Ubuntu instalaci systému Jira a Confluence by?
+### <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>Funguje modul plug-in na instalaci Mac nebo Ubuntu pro JIRA a Confluence?
 
-Jsme testovali jenom v 64bitových instalacích systému Windows Server ze systému Jira a Confluence modulu plug-in.
+Otestovali jsme modul plug-in pouze na 64 instalacích systému Windows Server JIRA a Confluence.
 
-### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Modul plug-in funguje s zprostředkovatelů identity než Azure AD?
+### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Funguje modul plug-in s jiným zprostředkovatelů identity než Azure AD?
 
-Ne. Funguje pouze s Azure AD.
+Ne. Funguje pouze se službou Azure AD.
 
-### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Jakou verzi SAML modul plug-in funguje s?
+### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Jakou verzi SAML funguje modul plug-in?
 
-Funguje to SAML 2.0.
+Funguje s SAML 2,0.
 
-### <a name="does-the-plug-in-do-user-provisioning"></a>Modul plug-in dělá zřizování uživatelů?
+### <a name="does-the-plug-in-do-user-provisioning"></a>Provádí modul plug-in zřizování uživatelů?
 
-Ne. Modul plug-in obsahuje pouze na základě SAML 2.0 SSO. Uživatel se musí zřídit v aplikaci před přihlášení SSO.
+Ne. Modul plug-in poskytuje pouze jednotné přihlašování založené na SAML 2,0. Uživatel musí být v aplikaci zřízen před přihlášením jednotného přihlašování.
 
-### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>Podporuje verze modulu plug-in podpora clusteru Jira a Confluence?
+### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>Podporuje modul plug-in Clusterové verze JIRA a Confluence?
 
-Ne. Modul plug-in funguje s místní verzí systému Jira a Confluence.
+Ne. Modul plug-in funguje s místními verzemi JIRA a Confluence.
 
-### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>Modul plug-in funguje s verzemi HTTP Jira a Confluence?
+### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>Funguje modul plug-in s verzemi HTTP JIRA a Confluence?
 
-Ne. Modul plug-in funguje s povolenou komunikací HTTPS pouze zařízení.
+Ne. Modul plug-in funguje jenom s instalací podporujícími protokol HTTPS.

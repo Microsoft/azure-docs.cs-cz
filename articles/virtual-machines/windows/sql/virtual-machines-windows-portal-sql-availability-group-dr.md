@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: f74f9ba55f3593ed31994b83bb9bda1501445e0a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9949c389ad0511c3ed5923e0451bc96e7063621f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100672"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159742"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurace skupiny dostupnosti Always On na virtuálních počítačích Azure v různých oblastech
 
@@ -130,7 +130,7 @@ Spusťte skript prostředí PowerShell s názvem sítě clusteru, IP adresou a p
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
    $IPResourceName = "<IPResourceName>" # The cluster name for the new IP Address resource.
-   $ILBIP = “<n.n.n.n>” # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
+   $ILBIP = "<n.n.n.n>" # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
    [int]$ProbePort = <nnnnn> # The probe port you set on the ILB.
 
    Import-Module FailoverClusters
@@ -142,9 +142,9 @@ Spusťte skript prostředí PowerShell s názvem sítě clusteru, IP adresou a p
 
 Replika ve vzdáleném datovém centru je součástí skupiny dostupnosti, ale je v jiné podsíti. Pokud se tato replika stává primární replikou, může dojít k vypršení časového limitu připojení k aplikacím. Toto chování je stejné jako místní skupina dostupnosti v nasazení s více podsítěmi. Chcete-li v klientských aplikacích umožňovat připojení, buď aktualizujte připojení klienta, nebo nakonfigurujte ukládání názvů překladu IP adres do prostředku s názvem sítě v clusteru.
 
-V případě potřeby aktualizujte připojovací řetězce klienta na `MultiSubnetFailover=Yes`hodnotu nastavit. Viz téma [připojení pomocí MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0).
+V případě potřeby aktualizujte připojovací řetězce klienta, aby bylo možné nastavit `MultiSubnetFailover=Yes`. Viz téma [připojení pomocí MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0).
 
-Pokud připojovací řetězce upravovat nemůžete, můžete nakonfigurovat ukládání názvů do mezipaměti. Podívejte se [na téma chyba vypršení časového limitu a nemůžete se připojit k naslouchacího procesu skupiny dostupnosti AlwaysOn SQL Server 2012 v prostředí s více](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)podsítěmi.
+Pokud připojovací řetězce upravovat nemůžete, můžete nakonfigurovat ukládání názvů do mezipaměti. Podívejte se [na téma chyba vypršení časového limitu a nemůžete se připojit k naslouchacího procesu skupiny dostupnosti AlwaysOn SQL Server 2012 v prostředí s více podsítěmi](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av).
 
 ## <a name="fail-over-to-remote-region"></a>Převzetí služeb při selhání do vzdálené oblasti
 
@@ -164,16 +164,16 @@ Pokud chcete otestovat připojení naslouchacího procesu ke vzdálené oblasti,
 
 Po otestování připojení přesuňte primární repliku zpátky do svého primárního datového centra a nastavte režim dostupnosti zpět na normální provozní nastavení. Následující tabulka ukazuje normální provozní nastavení pro architekturu popsanou v tomto dokumentu:
 
-| Location | Instance serveru | Role | Režim dostupnosti | Režim převzetí služeb při selhání
+| Umístění | Instance serveru | Role | Režim dostupnosti | Režim převzetí služeb při selhání
 | ----- | ----- | ----- | ----- | -----
-| Primární datové centrum | SQL-1 | Primární | Synchronizace | Automatické
-| Primární datové centrum | SQL-2 | Sekundární | Synchronizace | Automatické
-| Sekundární nebo vzdálené datové centrum | SQL-3 | Sekundární | Asynchronně | Ručně
+| Primární datové centrum | SQL-1 | Primární | Synchronizace | Automaticky
+| Primární datové centrum | SQL-2 | Sekundární | Synchronizace | Automaticky
+| Sekundární nebo vzdálené datové centrum | SQL-3 | Sekundární | Asynchronně | Manual
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Další informace o plánovaném a vynuceném ručním převzetí služeb při selhání
 
-Další informace naleznete v následujících tématech:
+Další informace najdete v následujících tématech:
 
 - [Provedení plánovaného ručního převzetí služeb při selhání skupiny dostupnosti (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [Provedení vynuceného ručního převzetí služeb při selhání skupiny dostupnosti (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)

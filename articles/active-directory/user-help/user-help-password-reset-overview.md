@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66cb7218b5217565529e1e15d875c23dff10e06f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15fbc526822f3b6659bc190ee67c6c17ff96b067
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382265"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160599"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Přehled resetování vlastního pracovního nebo školního hesla
 
@@ -35,4 +35,4 @@ Podrobné informace a pokyny k registraci vašeho účtu pro resetování hesla 
 |Článek |Popis |
 |------|------------|
 | [Registrace pro Samoobslužné resetování hesla](active-directory-passwords-reset-register.md) ] Pokyny k ověření metod ověřování a registraci k samoobslužnému resetování hesla, abyste mohli resetovat vlastní heslo.|
-| [Resetování hesla](user-help-reset-password.md) ] Pokyny, jak resetovat nebo odemknout heslo pro pracovní nebo školní účet.|
+| [Resetování hesla](active-directory-passwords-update-your-own-password.md) ] Pokyny, jak resetovat nebo odemknout heslo pro pracovní nebo školní účet.|

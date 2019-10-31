@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Marketo | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Marketo.
+title: 'Kurz: Azure Active Directory integrace se službou Marketo | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Marketo.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,297 +8,298 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: b88c45f5-d288-4717-835c-ca965add8735
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 28dd21bac2c1fb1602fd66ca237b230cdb12bdac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0488fd1e9bc10d61d6660745acfc8c39becf3a89
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097637"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159472"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Kurz: Integrace Azure Active Directory s platformy Marketo
+# <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Kurz: Azure Active Directory integrace se službou Marketo
 
-V tomto kurzu se dozvíte, jak integrovat služby Marketo se službou Azure Active Directory (Azure AD).
-Integrace platformy Marketo s Azure AD poskytuje následující výhody:
+V tomto kurzu se naučíte integrovat Marketo s Azure Active Directory (Azure AD).
+Integrování Marketo se službou Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k službě Marketo.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k službě Marketo (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k Marketo.
+* Uživatelům můžete povolit, aby se automaticky přihlásili ke službě Marketo (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD pomocí služby Marketo, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD se službou Marketo potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Marketo jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné s povoleným jednotným přihlašováním na úrovni Market
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje platformy Marketo **IDP** jednotné přihlašování zahájené pomocí
+* Marketo podporuje **IDP** jednotné přihlašování.
 
-## <a name="adding-marketo-from-the-gallery"></a>Přidání služby Marketo z Galerie
+## <a name="adding-marketo-from-the-gallery"></a>Přidání Marketo z Galerie
 
-Pokud chcete nakonfigurovat integraci platformy Marketo do služby Azure AD, budete muset přidat Marketo z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci služby Marketo do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat Marketo z galerie.
 
-**Přidání služby Marketo z galerie, postupujte následovně:**
+**Pokud chcete přidat Marketo z Galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Marketo**vyberte **Marketo** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Marketo**, vyberte **Marketo** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Marketo v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části, konfigurace a testování Azure AD jednotného přihlašování pomocí služby Marketo podle testu uživateli **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské služby marketo.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD se službou Marketo na základě testovacího uživatele s názvem **Britta Simon**.
+Aby bylo jednotné přihlašování fungovat, je třeba vytvořit odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem ve službě Marketo.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí služby Marketo, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby Marketo, musíte dokončit tyto stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace služby Marketo Single Sign-On](#configure-marketo-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Marketo](#create-marketo-test-user)**  – Pokud chcete mít protějšek Britta Simon služby marketo, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování na Marketo](#configure-marketo-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte testovacího uživatele Marketo](#create-marketo-test-user)** , abyste měli protějšek Britta Simon ve službě Marketo, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování pomocí služby Marketo, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby Marketo, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Marketo** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **Marketo** vyberte **jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránce, proveďte následující kroky:
+4. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte následující kroky:
 
-    ![Marketo domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Informace o jednotném přihlašování k doméně Marketo a adresám URL](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://saml.marketo.com/sp`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://saml.marketo.com/sp`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://login.marketo.com/saml/assertion/\<munchkinid\>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://login.marketo.com/saml/assertion/\<munchkinid\>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory klientu Marketo](https://investors.marketo.com/contactus.cfm) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pro získání těchto hodnot kontaktujte [tým podpory Marketo pro klienty](https://investors.marketo.com/contactus.cfm) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-6. Na **nastavení Marketo** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavení Marketo** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
     b. Identifikátor Azure AD
 
-    c. Adresa URL – odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-marketo-single-sign-on"></a>Konfigurace služby Marketo jednotné přihlašování
+### <a name="configure-marketo-single-sign-on"></a>Konfigurace jednotného přihlašování na Marketo
 
-1. K získání Id Munchkin vaší aplikace, přihlaste se k Marketo pomocí přihlašovacích údajů správce a proveďte následující akce:
+1. Pokud chcete získat ID Munchkin vaší aplikace, přihlaste se k Marketě pomocí přihlašovacích údajů správce a proveďte následující akce:
    
-    a. Přihlaste se k aplikaci služby Marketo pomocí přihlašovacích údajů správce.
+    a. Přihlaste se do aplikace Marketo pomocí přihlašovacích údajů správce.
    
-    b. Klikněte na tlačítko **správce** tlačítko v horním navigačním podokně.
+    b. Klikněte na tlačítko **správce** v horním navigačním podokně.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
-    c. Přejděte do nabídky integrace a klikněte na tlačítko **Munchkin odkaz**.
+    c. Přejděte do nabídky integrace a klikněte na **odkaz Munchkin**.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_11.png)
    
-    d. Zkopírujte Id Munchkin uvedené na obrazovce a dokončení vaší adresy URL odpovědi v Průvodci konfigurací služby Azure AD.
+    d. Zkopírujte ID Munchkin zobrazené na obrazovce a dokončete adresu URL odpovědi v Průvodci konfigurací služby Azure AD.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_12.png) 
 
-2. Pokud chcete nakonfigurovat jednotné přihlašování v aplikaci, postupujte následujících kroků:
+2. K nakonfigurování jednotného přihlašování v aplikaci použijte následující postup:
    
-    a. Přihlaste se k aplikaci služby Marketo pomocí přihlašovacích údajů správce.
+    a. Přihlaste se do aplikace Marketo pomocí přihlašovacích údajů správce.
    
-    b. Klikněte na tlačítko **správce** tlačítko v horním navigačním podokně.
+    b. Klikněte na tlačítko **správce** v horním navigačním podokně.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
-    c. Přejděte do nabídky integrace a klikněte na tlačítko **Single Sign On**.
+    c. Přejděte do nabídky integrace a klikněte na **jednotné přihlašování**.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_07.png) 
    
-    d. Chcete-li povolit nastavení SAML, klikněte na tlačítko **upravit** tlačítko.
+    d. Chcete-li povolit nastavení SAML, klikněte na tlačítko **Upravit** .
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_08.png) 
    
-    e. **Povolené** nastavení jednotného přihlašování.
+    e. **Povoleno** Nastavení jednotného přihlašování
    
-    f. Vložit **Azure AD identifikátor**v **ID vystavitele** textového pole.
+    f. Do textového pole **ID vystavitele** vložte **identifikátor Azure AD**.
    
-    g. V **Entity ID** textového pole zadejte adresu URL jako `http://saml.marketo.com/sp`.
+    g. Do textového pole **ID entity** zadejte adresu URL jako `http://saml.marketo.com/sp`.
    
-    h. Vyberte umístění, ID uživatele jako **identifikátor názvu elementu**.
+    h. Vyberte umístění ID uživatele jako **element identifikátoru názvu**.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_09.png)
    
     > [!NOTE]
-    > Pokud není uživatelský identifikátor hodnotu hlavního názvu uživatele, pak změňte hodnotu atributu kartě.
+    > Pokud váš identifikátor uživatele není hodnota hlavního názvu uživatele (UPN), změňte hodnotu na kartě atribut.
    
-    i. Nahrajte certifikát, který jste si stáhli z Průvodce konfigurací služby Azure AD. **Uložit** nastavení.
+    i. Nahrajte certifikát, který jste si stáhli z Průvodce konfigurací služby Azure AD. **Uložte** nastavení.
    
-    j. Upravte nastavení přesměrování stránky.
+    j. Upravte nastavení přesměrování stránek.
    
-    k. Vložit **přihlašovací adresa URL** v **přihlašovací adresa URL** textového pole.
+    k. Vložte **přihlašovací adresu URL** do textového pole **přihlašovací adresa URL** .
    
-    l. Vložit **odhlašovací adresa URL** v **odhlašovací adresa URL** textového pole.
+    l. Do textového pole **Adresa URL pro odhlášení** vložte **adresu URL pro odhlášení** .
    
-    m. V **chybová adresa URL**, kopie vašeho **adresu URL instance služby Marketo** a klikněte na tlačítko **Uložit** uložte nastavení tlačítkem.
+    4m. V **chybové adrese URL**zkopírujte **adresu URL instance Marketo** a kliknutím na **Uložit** uložte nastavení.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_10.png)
 
 3. Pokud chcete povolit jednotné přihlašování pro uživatele, proveďte následující akce:
    
-    a. Přihlaste se k aplikaci služby Marketo pomocí přihlašovacích údajů správce.
+    a. Přihlaste se do aplikace Marketo pomocí přihlašovacích údajů správce.
    
-    b. Klikněte na tlačítko **správce** tlačítko v horním navigačním podokně.
+    b. Klikněte na tlačítko **správce** v horním navigačním podokně.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
-    c. Přejděte **zabezpečení** nabídky a klikněte na tlačítko **nastavení přihlášení**.
+    c. Přejděte do nabídky **zabezpečení** a klikněte na tlačítko **Nastavení přihlášení**.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_13.png)
    
-    d. Zkontrolujte **vyžadovat jednotné přihlašování** možnost a **Uložit** nastavení.
+    d. Ověřte možnost **vyžadovat jednotné přihlašování** a **uložte** nastavení.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_14.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k službě Marketo.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Marketo.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Marketo**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Marketo**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Marketo**.
+2. V seznamu aplikace vyberte **Marketo**.
 
-    ![Propojení platformy Marketo v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na Marketo v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-marketo-test-user"></a>Vytvoření služby Marketo testovacího uživatele
+### <a name="create-marketo-test-user"></a>Vytvořit testovacího uživatele Marketo
 
-V této části vytvořte uživatele Britta Simon služby marketo. postupujte podle těchto kroků a vytvořte uživatele v platformy Marketo.
+V této části vytvoříte uživatele s názvem Britta Simon ve Marketo. pomocí těchto kroků můžete vytvořit uživatele na Market platformě.
 
-1. Přihlaste se k aplikaci služby Marketo pomocí přihlašovacích údajů správce.
+1. Přihlaste se do aplikace Marketo pomocí přihlašovacích údajů správce.
 
-2. Klikněte na tlačítko **správce** tlačítko v horním navigačním podokně.
+2. Klikněte na tlačítko **správce** v horním navigačním podokně.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_06.png) 
 
-3. Přejděte **zabezpečení** nabídky a klikněte na tlačítko **uživatelů a rolí**
+3. Přejděte do nabídky **zabezpečení** a klikněte na **Uživatelé & rolí** .
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_19.png)  
 
-4. Klikněte na tlačítko **pozvat nového uživatele** odkaz na kartě Uživatelé
+4. Klikněte na odkaz **pozvat nového uživatele** na kartě Uživatelé.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_15.png) 
 
-5. V Průvodci pozvat nového uživatele zadejte následující informace
+5. V průvodci pozvání nového uživatele vyplňte následující informace.
    
-    a. Zadejte uživatele **e-mailu** adresu do textového pole
+    a. Do textového pole zadejte **e-mailovou** adresu uživatele.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_16.png)
    
-    b. Zadejte **křestní jméno** do textového pole
+    b. Zadejte **jméno** do textového pole.
    
-    c. Zadejte **příjmení** do textového pole
+    c. Zadejte **příjmení** do textového pole.
    
     d. Klikněte na **Další**
 
-6. V **oprávnění** kartu, vyberte **userRoles** a klikněte na tlačítko **další**
+6. Na kartě **oprávnění** vyberte **položka userroles může** a klikněte na **Další** .
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_17.png)
-7. Klikněte na tlačítko **odeslat** tlačítko si pošlete e-mailové pozvánce uživatele
+7. Kliknutím na tlačítko **Odeslat** odešlete pozvánku uživateli.
    
     ![Konfigurace jednotného přihlašování](./media/marketo-tutorial/tutorial_marketo_18.png)
 
-8. Uživatel obdrží e-mailové oznámení a klikněte na odkaz a změnit heslo k aktivaci účtu. 
+8. Uživatel dostane e-mailové oznámení a musí kliknout na odkaz a změnit heslo pro aktivaci účtu. 
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici služby Marketo na přístupovém panelu, vám by měl být automaticky přihlášeni k službě Marketo, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Marketo na přístupovém panelu, měli byste se automaticky přihlásit ke službě Marketo, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

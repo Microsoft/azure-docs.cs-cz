@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 705e3818aef0338d9b34da7b0320b99594573fca
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e05515c2fd118c21f891be86fae6423affab0324
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985982"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160890"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Nastavení informací o zabezpečení (Preview) na příkazovém řádku přihlašovací stránky
 
@@ -92,13 +92,13 @@ Postupujte podle těchto kroků a nastavte bezpečnostní údaje pro svůj praco
 
     ![Testování účtu pomocí textové zprávy](media/security-info/securityinfo-prompt-text-msg-enter-code.png)
 
-11. Přečtěte si oznámení o úspěšnosti apotom vyberte Hotovo.
+11. Přečtěte si oznámení o úspěšnosti a potom vyberte **Hotovo**.
 
     ![Oznámení o úspěchu](media/security-info/securityinfo-prompt-call-answered-success.png)
 
     Vaše bezpečnostní údaje se aktualizují, aby používaly textové zasílání zpráv jako metodu zálohování k ověření vaší identity při použití dvoustupňového ověřování nebo resetování hesla.
 
-12. Zkontrolujte stránku **úspěch** a ověřte, že jste úspěšně nastavili aplikaci Microsoft Authenticator a telefon (buď textovou zprávu nebo telefonní hovor) pro vaše bezpečnostní údaje, a pak vyberte Hotovo.
+12. Zkontrolujte stránku **úspěch** a ověřte, že jste úspěšně nastavili aplikaci Microsoft Authenticator a telefon (buď textovou zprávu nebo telefonní hovor) pro vaše bezpečnostní údaje, a pak vyberte **Hotovo**.
 
     ![Stránka průvodce byla úspěšně dokončena.](media/security-info/securityinfo-prompt-setup-success.png)
 
@@ -124,7 +124,7 @@ Při používání hesel aplikací je důležité pamatovat:
 
 1. Po dokončení předchozích částí průvodce vyberte **Další** a dokončete oddíl **heslo aplikace** .
 
-2. Zadejte název aplikace, která potřebuje heslo, například `Outlook 2010`a potom vyberte **Další**.
+2. Zadejte název aplikace, která potřebuje heslo, například `Outlook 2010`, a pak vyberte **Další**.
 
     ![Přidání názvu hesla aplikace v Průvodci](media/security-info/app-password-app-password.png)
 
@@ -132,11 +132,11 @@ Při používání hesel aplikací je důležité pamatovat:
 
     ![Stránka hesla aplikace s heslem pro kopírování](media/security-info/app-password-copy-password.png)
 
-4. Po zkopírování hesla a jeho vložení do aplikace se vraťte k tomuto průvodci a ujistěte se, že všechny informace o způsobu přihlašování jsou přesné a potom vyberte Hotovo.
+4. Po zkopírování hesla a jeho vložení do aplikace se vraťte k tomuto průvodci a ujistěte se, že všechny informace o způsobu přihlašování jsou přesné a potom vyberte **Hotovo**.
 
     ![Stránka hesla aplikace s upozorněním na dokončení](media/security-info/app-password-complete.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak změnit, odstranit nebo aktualizovat výchozí bezpečnostní údaje, najdete v těchto tématech:
 
@@ -152,6 +152,6 @@ Při používání hesel aplikací je důležité pamatovat:
 
 - Informace o tom, jak se pomocí zadané metody přihlásit, najdete v tématu [jak se přihlásit](user-help-sign-in.md).
 
-- Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](user-help-reset-password.md) .
+- Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md) .
 
-- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se nemůžete [přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .
+- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se [nemůžete přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .

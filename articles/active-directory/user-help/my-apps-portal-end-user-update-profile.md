@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14146be73de309a7119f5c7b416c4e02f3bb4285
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383081"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160767"
 ---
 # <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Aktualizace informací o profilu a účtu na portálu moje aplikace
 
@@ -77,7 +77,7 @@ Pokud chcete změnit heslo pro svůj pracovní nebo školní účet, můžete vy
 
     ![Stránka pro změnu hesla](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Vyberte **odeslat**.
+3. Vyberte **Odeslat**.
 
     Vaše heslo se změnilo. Budete se muset přihlásit ke všem aplikacím, ke kterým jste se předtím přihlásili pomocí pracovního nebo školního účtu.
 
@@ -86,7 +86,7 @@ Pokud chcete změnit heslo pro svůj pracovní nebo školní účet, můžete vy
 Pokud jste zapomněli heslo, neobdrželi jste ho od firemní podpory nebo jste ho z vašeho účtu zazamkli, můžete resetovat vlastní heslo.
 
 >[!Important]
->Správce musí tuto funkci zapnout a musíte se zaregistrovat, abyste se účastnili. Podrobnosti o tom, jak se zaregistrovat a jak resetovat heslo, najdete v tématu [Registrace pro Samoobslužné resetování hesla](active-directory-passwords-reset-register.md) a [resetování svého pracovního nebo školního hesla](user-help-reset-password.md).
+>Správce musí tuto funkci zapnout a musíte se zaregistrovat, abyste se účastnili. Podrobnosti o tom, jak se zaregistrovat a jak resetovat heslo, najdete v tématu [Registrace pro Samoobslužné resetování hesla](active-directory-passwords-reset-register.md) a [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md).
 
 ## <a name="change-your-security-verification-information"></a>Změnit informace o ověření zabezpečení
 
@@ -108,7 +108,7 @@ Dvojúrovňové ověřování vyžaduje, abyste předtím, než se dostanete k �
 
     - **Nastavte aplikaci Microsoft Authenticator.** Můžete zvolit nastavení aplikace Microsoft Authenticator, aby fungovala jako metoda ověřování. Další informace o aplikaci Microsoft Authenticator najdete v tématu [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md)
 
-3. Vyberte **Uložit** uložte provedené změny.
+3. Kliknutím na **Uložit** uložte změny.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Kontrola podmínek použití v rámci vaší organizace
 
@@ -120,7 +120,7 @@ V případě, že je k dispozici, můžete si vybrat, jestli chcete zkontrolovat
 
     ![Podmínky použití stránka na portálu moje aplikace](media/my-apps-portal/my-apps-portal-tou-page.png)
 
-    Pokud vaše organizace nemá žádné podmínkami použití, můžete vybrat Hotovo a  vrátit se na stránku **profilu** .
+    Pokud vaše organizace nemá žádné podmínkami použití, můžete vybrat **Hotovo** a vrátit se na stránku **profilu** .
 
 ## <a name="sign-out-of-everywhere"></a>Odhlásit se z všude
 
@@ -128,11 +128,11 @@ Můžete se rozhodnout, že se chcete odhlásit z všude, kde jste aktuálně p�
 
 ### <a name="to-sign-out-of-everywhere"></a>Odhlášení z všude
 
-1. V oblasti **Spravovat účet** na stránce **profil** vyberte možnost Odhlásit **všude**.
+1. V oblasti **Spravovat účet** na stránce **profil** vyberte možnost **Odhlásit všude**.
 
 2. V poli pro potvrzení **Odhlásit všude** vyberte **Ano** a potvrďte tak, že se chcete odhlásit ze všech svých relací a zařízení. Pokud změníte své rozhodnutí, vyberte možnost **ne** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po dokončení aktualizací na stránce **profilu** můžete:
 

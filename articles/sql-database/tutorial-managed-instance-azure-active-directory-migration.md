@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/22/2019
-ms.openlocfilehash: ca0997010fef40c0927960c04588c031dd85fff8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 10/30/2019
+ms.openlocfilehash: b27c9991fd86334c87806772cbd641dd72aad1f6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795277"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163968"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Kurz: migrace SQL Server místních uživatelů a skupin Windows do Azure SQL Database spravované instance pomocí syntaxe jazyka T-SQL DDL
 
@@ -41,6 +41,8 @@ K dokončení tohoto kurzu platí následující předpoklady:
 - Přístup ke službě Active Directory pro vytváření uživatelů nebo skupin.
 - Existující SQL Server v místním prostředí.
 - Existující spravovaná instance. Viz [rychlý Start: vytvoření spravované instance Azure SQL Database](sql-database-managed-instance-get-started.md).
+  - K vytvoření přihlašovacích údajů Azure AD se musí použít `sysadmin` ve spravované instanci.
+- [Vytvořte správce Azure AD pro spravovanou instanci](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 - Můžete se připojit ke spravované instanci v rámci vaší sítě. Další informace najdete v následujících článcích: 
     - [Připojení aplikace k Azure SQL Database Managed instance](sql-database-managed-instance-connect-app.md)
     - [Rychlý Start: Konfigurace připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí](sql-database-managed-instance-configure-p2s.md)
@@ -214,7 +216,7 @@ Postupujte podle našeho [rychlého startu: obnovení databáze do spravované i
 
 Provedením příkazu ALTER USER dokončíte proces migrace na spravované instanci.
 
-1. Přihlaste se ke spravované instanci pomocí účtu správce SQL pro spravovanou instanci. Pak vytvořte přihlašovací jméno Azure AD ve spravované instanci pomocí následující syntaxe:
+1. Přihlaste se ke spravované instanci pomocí účtu správce SQL pro spravovanou instanci. Pak vytvořte přihlašovací jméno Azure AD ve spravované instanci pomocí následující syntaxe. Další informace najdete v tématu [kurz: zabezpečení spravované instance v Azure SQL Database pomocí objektů zabezpečení serveru Azure AD (přihlášení)](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 
