@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 0bd078e8c920ca1ebe01767915036ca84650aadd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e012f595dbd12ba3f85045293420329352d30373
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958193"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176229"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Prohlídka uživatelského rozhraní Azure IoT Central (funkce ve verzi Preview)
 
@@ -138,7 +138,7 @@ Další informace najdete v kurzu [monitorování vašich zařízení](tutorial-
 > [!div class="mx-imgBorder"]
 > Stránka ![skupiny zařízení](media/overview-iot-central-tour-pnp/device-groups-pnp.png)
 
-Skupina zařízení je kolekce souvisejících zařízení. *Tvůrce řešení* definuje dotaz k identifikaci zařízení, která jsou obsažena ve skupině zařízení. Skupiny zařízení slouží k provádění hromadných operací ve vaší aplikaci. Další informace najdete v článku [použití skupin zařízení v aplikaci Azure IoT Central](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
+Skupina zařízení je kolekce souvisejících zařízení. *Tvůrce řešení* definuje dotaz k identifikaci zařízení, která jsou obsažena ve skupině zařízení. Skupiny zařízení slouží k provádění hromadných operací ve vaší aplikaci. Další informace najdete v článku [použití skupin zařízení v aplikaci Azure IoT Central](tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
 
 ### <a name="rules"></a>Pravidla
 > [!div class="mx-imgBorder"]
@@ -151,7 +151,7 @@ Stránka pravidla umožňuje definovat pravidla založená na telemetrie, stavu 
 > [!div class="mx-imgBorder"]
 > Stránka ![Analytics](media/overview-iot-central-tour-pnp/analytics-pnp.png)
 
-Analýza vám umožní vytvořit vlastní zobrazení nad daty zařízení a odvodit z ní přehledy. Další informace najdete v článku [Vytvoření vlastních analýz pro aplikaci Azure IoT Central](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+Analýza vám umožní vytvořit vlastní zobrazení nad daty zařízení a odvodit z ní přehledy. Další informace najdete v článku [Vytvoření analýzy pro Azure IoT Central aplikace](howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
 
 ### <a name="jobs"></a>Úlohy
 

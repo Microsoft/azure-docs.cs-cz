@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d7d2ad6adefb83c3c313063a9e630458ccebc5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 07c1d6e3c622a76a1e625962ad5f08d414ad8cef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851773"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175041"
 ---
 # <a name="what-is-a-device-identity"></a>Co je identita zařízení?
 
@@ -38,13 +38,13 @@ Pokud chcete v Azure AD získat zařízení, máte několik možností:
 
 - **Registrace Azure AD**
    - Zařízení, která jsou registrovaná v Azure AD, jsou obvykle osobně vlastněná nebo mobilní zařízení a jsou přihlášená pomocí osobního účet Microsoft nebo jiného místního účtu.
-      - Windows 10
+      - Windows 10
       - iOS
       - Android
       - MacOS
 - **Připojeno k Azure AD**
    - Zařízení, která jsou připojená k Azure AD, jsou vlastněna organizací a přihlásili jste se k účtu Azure AD patřícímu do této organizace. Existují jenom v cloudu.
-      - Windows 10 
+      - Windows 10 
 - **k hybridní službě Azure AD**.
    - Zařízení, která jsou připojená k hybridní službě Azure AD, jsou vlastněna organizací a přihlásili jste se k účtu Azure AD patřícímu do této organizace. Existují v cloudu i v místním prostředí.
       - Windows 7, 8,1 nebo 10
@@ -66,7 +66,7 @@ Zařízení, která jsou připojená k Azure AD nebo hybridní služba Azure AD,
 
 - **Zařízení registrovaná v Azure AD** využívají účet spravovaný koncovým uživatelem, tento účet je účet Microsoft nebo jiné místně spravované přihlašovací údaje, které jsou zabezpečené pomocí jedné nebo několika z následujících možností.
    - Heslo
-   - PIN
+   - KOTVICÍ
    - Vzor
    - Windows Hello
 - **Připojené služby Azure AD nebo zařízení připojená k hybridní službě Azure AD** využívají účet organizace ve službě Azure AD, který je zabezpečený pomocí jedné nebo několika z následujících možností.

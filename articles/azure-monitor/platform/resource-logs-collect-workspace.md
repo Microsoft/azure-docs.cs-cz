@@ -1,5 +1,5 @@
 ---
-title: Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure Monitor
+title: Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics
 description: Naučte se streamovat protokoly prostředků Azure do pracovního prostoru Log Analytics v Azure Monitor.
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 2f5dba7c36ec04263f6d227d82b9fc50b82890a3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262437"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200499"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure Monitor
 [Protokoly prostředků](resource-logs-overview.md) v Azure poskytují bohatě a často větší údaje o interním provozu prostředku Azure. Tento článek popisuje, jak shromažďovat protokoly prostředků v pracovním prostoru Log Analytics, který umožňuje jejich analýzu s dalšími daty monitorování shromážděnými v protokolech Azure Monitor pomocí výkonných dotazů protokolu a také k využití dalších Azure Monitor funkcí, jako jsou výstrahy a. vizualizace. 
@@ -26,7 +26,7 @@ Shromažďování protokolů o prostředcích do pracovního prostoru Log Analyt
 * **Upozornění** – Získejte proaktivní oznamování kritických podmínek a vzorů identifikovaných v protokolech prostředků pomocí [výstrah protokolu v Azure monitor](alerts-log.md).
 * **Vizualizace** – připnout výsledky dotazu protokolu na řídicí panel Azure nebo zahrnout ho do sešitu jako součást interaktivní sestavy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Je potřeba [vytvořit nový pracovní prostor](../learn/quick-create-workspace.md) , pokud ho ještě nemáte. Pracovní prostor nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
 
 ## <a name="create-a-diagnostic-setting"></a>Vytvoření nastavení diagnostiky
@@ -51,15 +51,15 @@ Vezměte v úvahu následující příklad, kdy se diagnostické nastavení shro
 
 Tabulka AzureDiagnostics bude vypadat takto:  
 
-| ResourceProvider    | Category     | A  | B  | C  | D  | E  | pá  | U  | H  | I  |
+| ResourceProvider    | Kategorie     | A  | B  | C  | D  | Cerebrální  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft. Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
-| Microsoft. Service1 | Chybná protokolu    |    |    |    | q1 | w1 | e1 |    |    |    |
-| Microsoft. Jazyka2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
-| Microsoft. Service1 | Chybná protokolu    |    |    |    | q2 | w2 | e2 |    |    |    |
-| Microsoft. Jazyka2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
+| Microsoft. Service1 | AuditLogs    | x1 | Y1 | z1 |    |    |    |    |    |    |
+| Microsoft. Service1 | Chybná protokolu    |    |    |    | dotazu | W1 | E1 |    |    |    |
+| Microsoft. Jazyka2 | AuditLogs    |    |    |    |    |    |    | j1 | K1 | L1 |
+| Microsoft. Service1 | Chybná protokolu    |    |    |    | F2 | W2 | E2 |    |    |    |
+| Microsoft. Jazyka2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | L3 |
 | Microsoft. Service1 | AuditLogs    | x5 | y5 | z5 |    |    |    |    |    |    |
-| ... |
+| Tlačítka ... |
 
 ### <a name="resource-specific"></a>Specifické pro prostředky
 V tomto režimu se pro každou kategorii vybranou v nastavení diagnostiky vytvoří jednotlivé tabulky ve vybraném pracovním prostoru. Tato metoda se doporučuje, protože je mnohem jednodušší pracovat s daty v protokolových dotazech, poskytuje lepší zjistitelnost schémat a jejich struktury, zlepšuje výkon v rámci latence příjmu a doby dotazování a možnost udělovat práva RBAC pro konkrétní tabulka Všechny služby Azure nakonec budou migrovány do režimu specifického pro prostředky. 
@@ -68,27 +68,27 @@ V předchozím příkladu by se vytvořily tři tabulky:
  
 - Tabulka *Service1AuditLogs* následujícím způsobem:
 
-    | Poskytovatel prostředků | Category | A | B | C |
+    | Poskytovatel prostředků | Kategorie | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | AuditLogs | x1 | y1 | z1 |
+    | Service1 | AuditLogs | x1 | Y1 | z1 |
     | Service1 | AuditLogs | x5 | y5 | z5 |
-    | ... |
+    | Tlačítka ... |
 
 - Tabulka *Service1ErrorLogs* následujícím způsobem:  
 
-    | Poskytovatel prostředků | Category | D | E | pá |
+    | Poskytovatel prostředků | Kategorie | D | Cerebrální | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | Chybná protokolu |  q1 | w1 | e1 |
-    | Service1 | Chybná protokolu |  q2 | w2 | e2 |
-    | ... |
+    | Service1 | Chybná protokolu |  dotazu | W1 | E1 |
+    | Service1 | Chybná protokolu |  F2 | W2 | E2 |
+    | Tlačítka ... |
 
 - Tabulka *Service2AuditLogs* následujícím způsobem:  
 
-    | Poskytovatel prostředků | Category | U | H | I |
+    | Poskytovatel prostředků | Kategorie | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Jazyka2 | AuditLogs | j1 | k1 | l1|
-    | Jazyka2 | AuditLogs | j3 | k3 | l3|
-    | ... |
+    | Jazyka2 | AuditLogs | j1 | K1 | L1|
+    | Jazyka2 | AuditLogs | j3 | k3 | L3|
+    | Tlačítka ... |
 
 
 

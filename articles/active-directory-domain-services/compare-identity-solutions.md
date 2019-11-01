@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: f1759bd2cc82073378c5668682f4cecf8482c2d3
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: e3ef082f19f979f1b8b0c2ba4afd9712b34b7321
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042265"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173167"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services
 
-Pro poskytování aplikací, služeb nebo zařízení přístup k centrální identitě existují tři běžné způsoby použití služeb založených na službě Active Directory v Azure. Tato volba v řešení identity nabízí flexibilitu pro použití nejvhodnějšího adresáře pro potřeby vaší organizace. Pokud například většinou spravujete pouze cloudové uživatele, kteří používají mobilní zařízení, nemusí mít smysl sestavit a spustit vaše vlastní Active Directory Domain Services řešení identity. Místo toho můžete použít Azure Active Directory.
+Pro poskytování aplikací, služeb nebo zařízení přístup k centrální identitě existují tři běžné způsoby použití služeb založených na službě Active Directory v Azure. Tato volba v řešení identity nabízí flexibilitu pro použití nejvhodnějšího adresáře pro potřeby vaší organizace. Pokud například většinou spravujete pouze cloudové uživatele, kteří používají mobilní zařízení, nemusí mít smysl sestavit a spustit vlastní řešení identity Active Directory Domain Services (služba AD DS). Místo toho můžete použít Azure Active Directory.
 
 I když tři řešení pro identitu založená na službě Active Directory sdílejí společný název a technologii, jsou navržené tak, aby poskytovaly služby, které splňují různé požadavky zákazníků. Na vysoké úrovni jsou tato řešení identit a sady funkcí:
 
@@ -36,12 +36,16 @@ Tento přehledový článek porovnává a narozdíluje, jak tato řešení ident
 
 Pokud máte aplikace a služby, které potřebují přístup k tradičnímu mechanismu ověřování, jako je Kerberos nebo NTLM, existují dva způsoby, jak poskytnout Active Directory Domain Services v cloudu:
 
-* *Spravovaná* doména, kterou vytvoříte pomocí Azure Active Directory Domain Services. Společnost Microsoft vytvoří a spravuje požadované prostředky.
-* *Samoobslužná* doména, kterou vytvoříte a konfigurujete pomocí tradičních prostředků, jako jsou virtuální počítače, hostované operační systémy Windows Server a Active Directory Domain Services. Tyto prostředky pak budete dál spravovat.
+* *Spravovaná* doména, kterou vytvoříte pomocí Azure Active Directory Domain Services (Azure služba AD DS). Společnost Microsoft vytvoří a spravuje požadované prostředky.
+* *Samostatně spravovaná* doména, kterou vytvoříte a konfigurujete pomocí tradičních prostředků, jako jsou virtuální počítače, operační systém Windows Server host a Active Directory Domain Services (služba AD DS). Tyto prostředky pak budete dál spravovat.
 
-V případě Azure služba AD DS jsou základní součásti služby nasazeny a udržovány za vás Microsoft jako prostředí *spravované* domény. Nebudete nasazovat, spravovat, opravovat a zabezpečovat infrastrukturu služba AD DS pro součásti, jako jsou virtuální počítače, operační systém Windows Server nebo řadiče domény (DCs). Azure služba AD DS poskytuje menší podmnožinu funkcí tradičního prostředí služba AD DS spravovaného v rámci sebe, což snižuje část složitosti návrhu a správy. Například pro návrh a údržbu nejsou k dispozici žádné doménové struktury služby AD, domény, lokality a replikační odkazy. Pro aplikace a služby, které běží v cloudu a potřebují přístup k tradičním ověřovacím mechanismům, jako je Kerberos nebo NTLM, poskytuje Azure služba AD DS prostředí spravované v doméně s minimálními nároky na správu.
+V případě Azure služba AD DS jsou základní součásti služby nasazeny a udržovány za vás Microsoft jako prostředí *spravované* domény. Nebudete nasazovat, spravovat, opravovat a zabezpečovat infrastrukturu služba AD DS pro součásti, jako jsou virtuální počítače, operační systém Windows Server nebo řadiče domény (DCs).
 
-Když nasadíte a spustíte samoobslužně spravované prostředí služba AD DS, je nutné zachovat všechny přidružené infrastruktury a součásti adresáře. Existují další režijní náklady na údržbu pomocí samoobslužného služba AD DSho prostředí, ale můžete provádět další úkoly, jako je například rozšiřování schématu nebo vytvoření vztahů důvěryhodnosti doménové struktury. Mezi běžné modely nasazení pro samoobslužně spravované prostředí služba AD DS, které poskytuje identitu aplikacím a službám v cloudu, patří následující:
+ Azure služba AD DS poskytuje menší podmnožinu funkcí tradičního prostředí služba AD DS spravovaného v rámci sebe, což snižuje část složitosti návrhu a správy. Například pro návrh a údržbu nejsou k dispozici žádné doménové struktury služby AD, domény, lokality a replikační odkazy. Pro aplikace a služby, které běží v cloudu a potřebují přístup k tradičním ověřovacím mechanismům, jako je Kerberos nebo NTLM, poskytuje Azure služba AD DS prostředí spravované v doméně s minimálními nároky na správu.
+
+Když nasadíte a spustíte samoobslužně spravované prostředí služba AD DS, je nutné zachovat všechny přidružené infrastruktury a součásti adresáře. Existují další režijní náklady na údržbu pomocí samoobslužného služba AD DSho prostředí, ale můžete provádět další úkoly, jako je například rozšiřování schématu nebo vytvoření vztahů důvěryhodnosti doménové struktury.
+
+Mezi běžné modely nasazení pro samoobslužně spravované prostředí služba AD DS, které poskytuje identitu aplikacím a službám v cloudu, patří následující:
 
 * **Samostatné cloudové služba AD DS** – virtuální počítače Azure jsou nakonfigurované jako řadiče domény a vytvoří se samostatné cloudové služba AD DS prostředí. Toto prostředí služba AD DS Neintegruje s místním prostředím služba AD DS. K přihlášení a správě virtuálních počítačů v cloudu se používá jiná sada přihlašovacích údajů.
 * **Nasazení doménové struktury prostředků** – virtuální počítače Azure jsou nakonfigurované jako řadiče domény a doména služba AD DS v rámci existující doménové struktury je vytvořená. Vztah důvěryhodnosti je pak nakonfigurovaný na místní služba AD DS prostředí. Jiné virtuální počítače Azure se můžou připojit k této doménové struktuře prostředků v cloudu. Ověřování uživatelů se spouští přes připojení VPN/ExpressRoute k místnímu prostředí služba AD DS.
@@ -70,9 +74,11 @@ Následující tabulka popisuje některé funkce, které možná budete potřebo
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure služba AD DS a Azure AD
 
-Azure AD umožňuje spravovat identitu zařízení používaných organizací a řídit přístup k podnikovým prostředkům z těchto zařízení. Uživatelé můžou zaregistrovat svoje osobní zařízení (vlastní nebo vlastní) se službou Azure AD, která poskytuje zařízení identitu. Služba Azure AD pak může ověřit zařízení, když se uživatel přihlásí k Azure AD a použije zařízení k přístupu k zabezpečeným prostředkům. Zařízení je možné spravovat pomocí softwaru pro správu mobilních zařízení (MDM), jako je Microsoft Intune. Tato možnost správy umožňuje omezit přístup k citlivým prostředkům na spravovaná zařízení a zařízení vyhovující zásadám.
+Azure AD umožňuje spravovat identitu zařízení používaných organizací a řídit přístup k podnikovým prostředkům z těchto zařízení. Uživatelé si také můžou zaregistrovat svoje osobní zařízení (vlastní nebo vlastní) se službou Azure AD, která poskytuje zařízení identitu. Azure AD pak zařízení ověří, když se uživatel přihlásí k Azure AD, a použije zařízení k přístupu k zabezpečeným prostředkům. Zařízení je možné spravovat pomocí softwaru pro správu mobilních zařízení (MDM), jako je Microsoft Intune. Tato možnost správy umožňuje omezit přístup k citlivým prostředkům na spravovaná zařízení a zařízení vyhovující zásadám.
 
-K Azure AD se můžou připojit i tradiční počítače a přenosné počítače. Tento mechanismus nabízí stejné výhody registrace osobního zařízení ve službě Azure AD, například k tomu, aby se uživatelé mohli přihlásit k zařízení pomocí svých podnikových přihlašovacích údajů. Zařízení připojená k Azure AD poskytují následující výhody:
+K Azure AD se můžou připojit i tradiční počítače a přenosné počítače. Tento mechanismus nabízí stejné výhody registrace osobního zařízení ve službě Azure AD, například k tomu, aby se uživatelé mohli přihlásit k zařízení pomocí svých podnikových přihlašovacích údajů.
+
+Zařízení připojená k Azure AD poskytují následující výhody:
 
 * Jednotné přihlašování (SSO) k aplikacím zabezpečeným službou Azure AD.
 * Roaming uživatelských nastavení odpovídajících podnikovým zásadám napříč zařízeními.
@@ -88,7 +94,9 @@ Zařízení je možné připojit k Azure AD s hybridním nasazením nebo bez ně
 | Zařízení vlastněné organizací nepřipojená k místnímu služba AD DS | Windows 10                       | Připojeno k Azure AD        |
 | Zařízení vlastněné organizací připojené k místnímu služba AD DS  | Windows 10                       | Připojeno k hybridní službě Azure AD |
 
-V případě zařízení připojeného k Azure AD se k ověřování uživatelů používá moderní protokoly založené na protokolu OAuth/OpenID Connect. Tyto protokoly jsou navržené tak, aby fungovaly přes Internet, takže jsou skvělé pro mobilní scénáře, kdy uživatelé přistupují k podnikovým prostředkům odkudkoli. U zařízení připojených k Azure služba AD DS můžou aplikace používat protokoly Kerberos a NTLM pro ověřování, takže v rámci strategie navýšení a posunutí můžou podporovat starší verze aplikací, které se migrují na spouštění na virtuálních počítačích Azure. V následující tabulce jsou uvedeny rozdíly v tom, jak se zařízení reprezentují a můžou se ověřovat proti adresáři:
+V případě zařízení připojeného k Azure AD se k ověřování uživatelů používá moderní protokoly založené na protokolu OAuth/OpenID Connect. Tyto protokoly jsou navržené tak, aby fungovaly přes Internet, takže jsou skvělé pro mobilní scénáře, kdy uživatelé přistupují k podnikovým prostředkům odkudkoli.
+
+U zařízení připojených k Azure služba AD DS můžou aplikace používat protokoly Kerberos a NTLM pro ověřování, takže v rámci strategie navýšení a posunutí můžou podporovat starší verze aplikací, které se migrují na spouštění na virtuálních počítačích Azure. V následující tabulce jsou uvedeny rozdíly v tom, jak se zařízení reprezentují a můžou se ověřovat proti adresáři:
 
 | **Součástí**                      | **Připojeno k Azure AD**                                 | **Azure služba AD DS – připojeno**                                                    |
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |

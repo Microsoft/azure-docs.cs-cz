@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 10/07/2019
+ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 9c53aac47e965a6eba681008d6b6476142190ef8
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72023079"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182190"
 ---
 ### <a name="what-is-expressroute-direct"></a>Co je ExpressRoute Direct?
 
@@ -25,31 +25,7 @@ Zákazníci budou muset spolupracovat s místními poskytovateli a poskytovateli
 
 ### <a name="what-locations-currently-support-expressroute-direct"></a>Jaká umístění momentálně podporují ExpressRoute Direct? 
 
-Dostupné porty budou dynamické a budou k dispozici prostředí PowerShell pro zobrazení kapacity. Umístění zahrnují a *se mohou měnit na základě dostupnosti*:
-
-* Amsterdam
-* Amsterdam2
-* Auckland 
-* Chicago
-* Dallas
-* Dublin
-* Hongkong – zvláštní správní oblast
-* Londýn
-* Londýn2
-* Melbourne
-* New York City
-* Perth
-* Antonio San
-* Seattle
-* Soul
-* Silicon Valley
-* Singapur2 
-* Sydney
-* Tchaj-pej
-* Tokio
-* Toronto
-* Washington DC
-* Washington DC2
+Zkontrolujte prosím dostupnost na [stránce umístění](../articles/expressroute/expressroute-locations-providers.md). 
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>Jaká je smlouva SLA pro ExpressRoute Direct?
 

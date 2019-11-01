@@ -9,16 +9,16 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: fdc5340c9affa7137815577af842aa8b43a552a8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799607"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200622"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps
 
-Pokud chcete získat přístup k prostředkům v jiných klientech Azure Active Directory (Azure AD) a ověřit vaši identitu bez přihlášení, vaše aplikace logiky může používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) přiřazenou systémem (dřív označovanou jako identita spravované služby nebo MSI), a ne přihlašovací údaje nebo tajné kódy. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče. Tento článek ukazuje, jak nastavit a používat spravovanou identitu přiřazenou systémem ve vaší aplikaci logiky.
+Pokud chcete získat přístup k prostředkům v jiných klientech Azure Active Directory (Azure AD) a ověřit vaši identitu bez přihlášení, vaše aplikace logiky může používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) přiřazenou systémem (dřív označovanou jako identita spravované služby nebo MSI), a ne přihlašovací údaje nebo tajné kódy. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče. Tento článek ukazuje, jak nastavit a používat spravovanou identitu přiřazenou systémem ve vaší aplikaci logiky. Spravované identity v současné době fungují jenom s [konkrétními integrovanými triggery a akcemi](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls), ne spravovanými konektory nebo připojeními.
 
 Další informace najdete v těchto tématech:
 
@@ -155,7 +155,7 @@ Po nastavení spravované identity pro vaši aplikaci logiky můžete [této ide
 
 ## <a name="authenticate-access-with-managed-identity"></a>Ověření přístupu pomocí spravované identity
 
-Po [Povolení spravované identity pro vaši aplikaci logiky](#azure-portal-system-logic-app) a [udělení této identity k cílovému prostředku](#access-other-resources)můžete tuto identitu použít v [aktivačních událostech a akcích, které podporují spravované identity](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+Po [Povolení spravované identity pro vaši aplikaci logiky](#azure-portal-system-logic-app) a [udělení této identity přístup k cílovému prostředku nebo entitě](#access-other-resources)můžete tuto identitu použít v [aktivačních událostech a akcích, které podporují spravované identity](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
 > [!IMPORTANT]
 > Pokud máte funkci Azure, kde chcete používat identitu přiřazenou systémem, nejdřív [Povolte ověřování pro službu Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
@@ -164,27 +164,34 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. Pokud jste to ještě neudělali, přidejte Trigger nebo akci [, která podporuje spravované identity](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+1. Pokud jste to ještě neudělali, přidejte [Trigger nebo akci, která podporuje spravované identity](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
-   Předpokládejme například, že chcete spustit [operaci Snapshot BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) u objektu BLOB v účtu Azure Storage, kde jste předtím nastavili přístup k vaší identitě, ale [konektor Azure Blob Storage](/connectors/azureblob/) tuto operaci momentálně nenabízí. Místo toho můžete použít [akci HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) ke spuštění operace nebo jakékoli jiné [operace REST API služby BLOB Service](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs). V případě ověřování může akce HTTP používat identitu přiřazenou systémem, kterou jste povolili pro vaši aplikaci logiky. Akce HTTP také pomocí těchto vlastností určí prostředek, ke kterému chcete získat přístup:
+   Například Trigger nebo akce HTTP může používat identitu přiřazenou systémem, kterou jste povolili pro vaši aplikaci logiky. V obecném případě Trigger HTTP nebo akce tyto vlastnosti používá k určení prostředku nebo entity, ke které chcete získat přístup:
 
-   * Vlastnost **URI** Určuje adresu URL koncového bodu pro přístup k cílovému prostředku Azure. Tato syntaxe identifikátoru URI obvykle zahrnuje [ID prostředku](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) pro prostředek nebo službu Azure.
+   | Vlastnost | Požaduje se | Popis |
+   |----------|----------|-------------|
+   | **Metoda** | Ano | Metoda HTTP, kterou používá operace, kterou chcete spustit |
+   | **IDENTIFIKÁTOR URI** | Ano | Adresa URL koncového bodu pro přístup k cílovému prostředku Azure nebo entitě. Syntaxe identifikátoru URI obvykle zahrnuje [ID prostředku](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) pro prostředek nebo službu Azure. |
+   | **Hlavičky** | Ne | Všechny hodnoty hlaviček, které potřebujete nebo chcete zahrnout do odchozího požadavku, jako je typ obsahu |
+   | **Dotazy** | Ne | Všechny parametry dotazů, které potřebujete nebo chcete zahrnout do žádosti, jako je například parametr konkrétní operace nebo verze rozhraní API pro operaci, kterou chcete spustit |
+   | **Ověřování** | Ano | Typ ověřování, který se má použít pro ověřování přístupu k cílovému prostředku nebo entitě |
+   ||||
 
-   * Vlastnost **Headers** určuje všechny hodnoty hlaviček, které potřebujete nebo chcete zahrnout do žádosti, jako je například verze rozhraní API pro operaci, kterou chcete spustit na cílovém prostředku.
+   Jako konkrétní příklad Předpokládejme, že chcete spustit [operaci Snapshot BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) u objektu BLOB v účtu Azure Storage, kde jste předtím nastavili přístup k vaší identitě. Ale [konektor Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/) v současnosti tuto operaci nenabízí. Místo toho můžete tuto operaci spustit pomocí [akce http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) nebo jiné [operace REST API služby BLOB Service](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs).
 
-   * Vlastnost querys Určuje **Parametry dotazů,** které je třeba zahrnout do žádosti, jako je například parametr konkrétní operace nebo konkrétní verze rozhraní API v případě potřeby.
+   > [!IMPORTANT]
+   > Pokud chcete získat přístup k účtům Azure Storage za brány firewall pomocí požadavků HTTP a spravovaných identit, ujistěte se, že jste také nastavili účet úložiště s [výjimkou, která umožňuje přístup důvěryhodnými službami Microsoftu](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service).
 
-   Pokud tedy chcete spustit [operaci objektu BLOB snímku](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob), akce http určuje tyto vlastnosti:
+   Pokud chcete spustit [operaci objektu BLOB snímku](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob), akce http určuje tyto vlastnosti:
 
-   * **Metoda**: určuje operaci `PUT`.
-
-   * **URI**: Určuje ID prostředku pro soubor Azure Blob Storage v globálním (veřejném) prostředí Azure a používá tuto syntaxi:
-
-     `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}`
-
-   * **Headers**: Určuje `x-ms-blob-type` jako `BlockBlob` a `x-ms-version` jako `2019-02-02` pro operaci objektu BLOB snímku. Další informace najdete v tématu [o hlavičkách žádostí – BLOB snímků](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) a [verzích pro Azure Storage Services](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services).
-
-   * **Dotazy**: Určuje `comp` jako název parametru dotazu a `snapshot` jako hodnotu parametru.
+   | Vlastnost | Požaduje se | Příklad hodnoty | Popis |
+   |----------|----------|---------------|-------------|
+   | **Metoda** | Ano | `PUT`| Metoda HTTP, kterou používá operace objektu BLOB snímku |
+   | **IDENTIFIKÁTOR URI** | Ano | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | ID prostředku pro soubor Azure Blob Storage v globálním (veřejném) prostředí Azure, které používá tuto syntaxi |
+   | **Hlavičky** | Ano, pro Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Hodnoty hlaviček `x-ms-blob-type` a `x-ms-version`, které jsou požadovány pro operace Azure Storage. <p><p>**Důležité**: v odchozích triggerech http a požadavcích akcí pro Azure Storage hlavička vyžaduje vlastnost `x-ms-version` a verzi rozhraní API pro operaci, kterou chcete spustit. <p>Další informace najdete v těchto tématech: <p><p>- [hlaviček žádostí – objekt BLOB snímku](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>- [Správa verzí pro Azure Storage služby](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **Dotazy** | Ano, pro tuto operaci | `comp` = `snapshot` | Název a hodnota parametru dotazu pro operaci objektu BLOB snímku. |
+   | **Ověřování** | Ano | `Managed Identity` | Typ ověřování, který se má použít pro ověřování přístupu k objektu blob Azure |
+   |||||
 
    Tady je příklad akce HTTP, která zobrazuje všechny tyto hodnoty vlastností:
 

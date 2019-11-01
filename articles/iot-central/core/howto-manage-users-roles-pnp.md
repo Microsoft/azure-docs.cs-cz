@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 14789549218d46dc0eb147bc659fce7adba0a9bd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 17dd4862a02a736237257c50802135fb62883d77
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953236"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200616"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application-preview-features"></a>Správa uživatelů a rolí v aplikaci IoT Central (funkce ve verzi Preview)
 
@@ -40,6 +40,9 @@ Další informace najdete v tématu [účet Microsoft nápovědu](https://suppor
 
     > [!div class="mx-imgBorder"]
     >![přidat uživatele a vybrat roli](media/howto-manage-users-roles-pnp/add-user-pnp.png)
+
+    > [!NOTE]
+    > Uživatel, který je ve vlastní roli, která jim uděluje oprávnění k přidávání dalších uživatelů, může přidat uživatele do role se stejnými nebo méně oprávněními než jejich vlastní role.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>Úprava rolí, které jsou přiřazeny uživatelům
 
@@ -195,6 +198,9 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 | Přidat | Zobrazit <br/> Další závislosti: zobrazení vlastních rolí |
 | Odstranit | Zobrazit <br/> Další závislosti: zobrazení vlastních rolí |
 | Úplné řízení | Zobrazit, přidat, odstranit <br/> Další závislosti: zobrazení vlastních rolí |
+
+> [!NOTE]
+> Uživatel, který je ve vlastní roli, která jim uděluje oprávnění k přidávání dalších uživatelů, může přidat uživatele do role se stejnými nebo méně oprávněními než jejich vlastní role.
 
 #### <a name="customizing-the-app"></a>Přizpůsobení aplikace
 

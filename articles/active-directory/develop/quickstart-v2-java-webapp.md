@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: ff7563a9ebbbc996af56f94b8e23d349752ef9f4
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 0046443bef0e71215157dfe89aaae45b2a91c330
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964108"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200267"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
@@ -58,14 +58,15 @@ K provedení této ukázky budete potřebovat:
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 > 
-> 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/linkid=2083908) Microsoft Identity Platform for Developers.
+> 1. Přejděte na stránku [Registrace aplikací](/azure/active-directory/develop/) Microsoft Identity Platform for Developers.
 > 1. Vyberte **Nová registrace**.
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `java-webapp`.
 >    - Nyní nechejte **identifikátor URI pro přesměrování** prázdné a vyberte **Registrovat**.
 > 1. Na stránce **Přehled** vyhledejte **ID aplikace (klienta)** a ID adresáře aplikace ( **tenant)** . Tyto hodnoty zkopírujte pro pozdější verzi.
 > 1. V nabídce vyberte **ověřování** a přidejte následující informace:
->    - V případě **identifikátorů URI pro přesměrování**přidejte `http://localhost:8080/msal4jsamples/secure/aad` a `https://localhost:8080/msal4jsamples/graph/me`.
+>    - V případě **identifikátorů URI pro přesměrování**přidejte `http://localhost:8080/msal4jsamples/secure/aad` a `http://localhost:8080/msal4jsamples/graph/me`.
+>    - V **rozšířeném nastavení**přidejte `https://localhost:8080/msal4jsample/sign-out` k **odhlašovací adrese URL**.
 >    - Vyberte **Save** (Uložit).
 > 1. V nabídce vyberte **certifikáty & tajné klíče** a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta**:
 > 
@@ -79,10 +80,10 @@ K provedení této ukázky budete potřebovat:
 > 
 > Ukázku kódu pro tento rychlý Start, který funguje, je třeba:
 > 
-> 1. Přidejte adresy URL odpovědi jako `http://localhost:8080/msal4jsamples/secure/aad` a `https://localhost:8080/msal4jsamples/graph/me`.
+> 1. Přidejte adresy URL odpovědi jako `http://localhost:8080/msal4jsamples/secure/aad` a `http://localhost:8080/msal4jsamples/graph/me`.
 > 1. Vytvořte tajný klíč klienta.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Udělat změnu za mě]()
+> > [Provést tyto změny pro mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Už nakonfigurované](media/quickstart-v2-aspnet-webapp/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
@@ -100,7 +101,7 @@ K provedení této ukázky budete potřebovat:
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
-    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Name_Here/
+    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
     aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
     aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
@@ -111,7 +112,7 @@ K provedení této ukázky budete potřebovat:
 >
 > - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
 > - `Enter_the_Client_Secret_Here` – je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro zaregistrovanou aplikaci.
-> - `Enter_the_Tenant_Name_Here` – hodnota **ID adresáře (tenant)** aplikace, kterou jste zaregistrovali.
+> - `Enter_the_Tenant_Info_Here` – hodnota **ID adresáře (tenant)** aplikace, kterou jste zaregistrovali.
 
 #### <a name="step-4-run-the-code-sample"></a>Krok 4: spuštění ukázky kódu
 
@@ -149,7 +150,7 @@ Přidejte do své aplikace MSAL4J pomocí Maven nebo Gradle pro správu závislo
 ```
 
 ```$xslt
-compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
+compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.6.0-preview'
 ```
 
 ### <a name="msal-initialization"></a>Inicializace knihovny MSAL
