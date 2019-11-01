@@ -131,10 +131,14 @@
           items:
             - name: Konfigurace souhlasu uživatele
               href: configure-user-consent.md
+            - name: Konfigurace pracovního postupu souhlasu správce (Preview)
+              href: configure-admin-consent-workflow.md
             - name: Metody pro přiřazení uživatelů a skupin k aplikaci
               href: methods-for-assigning-users-and-groups.md
             - name: Přiřazení uživatele k aplikaci
               href: assign-user-or-group-access-portal.md
+            - name: Vytváření pracovních prostorů na portálu Moje aplikace (Preview)
+              href: access-panel-workspaces.md
             - name: Použití samoobslužného přístupu k aplikacím
               href: access-panel-manage-self-service-access.md
             - name: Metody pro odebrání přístupu uživatele k aplikaci
@@ -155,6 +159,8 @@
               href: migration-resources.md
             - name: Migrace aplikace ADFS do Azure
               href: migrate-adfs-apps-to-azure.md
+            - name: Použití sestavy aktivity aplikací AD FS (Preview)
+              href: migrate-adfs-application-activity.md
         - name: Řešení potíží
           items:
             - name: Řešení potíží s přidáváním aplikací

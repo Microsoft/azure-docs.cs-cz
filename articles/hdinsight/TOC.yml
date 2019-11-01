@@ -41,6 +41,10 @@
           href: ./hdinsight-streaming-at-scale-overview.md
         - name: Architektura Apache Hadoop v HDInsightu
           href: ./hdinsight-hadoop-architecture.md
+        - name: Velikosti virtuálních počítačů podporované HDInsightem
+          href: ./hdinsight-supported-node-configuration.md
+        - name: Volba vhodné velikosti virtuálního počítače
+          href: ./hdinsight-selecting-vm-size.md
         - name: Plánování kapacity clusteru
           href: ./hdinsight-capacity-planning.md
         - name: Dostupnost a spolehlivost

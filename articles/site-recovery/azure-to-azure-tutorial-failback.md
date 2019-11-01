@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8eb329ae019f125b98c475b4a77d19e9cafe23fa
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 57f37808f3f90863079ba73f7899f142d32951d3
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053825"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242963"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Navrácení služeb po obnovení virtuálního počítače Azure mezi oblastmi Azure
 
@@ -58,7 +58,7 @@ Po opětovném zapnutí ochrany virtuálních počítačů můžete v případě
     ![Virtuální počítač v primárních a sekundárních oblastech](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> Pro počítače, na kterých běží rozšíření Site Recovery 9.28. x. x, [kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery vyčistí počítače v sekundární oblasti zotavení po havárii, nafter navrácení služeb po obnovení je dokončené a virtuální počítače se znovu chrání. Nemusíte ručně odstraňovat virtuální počítače a síťové karty.
+> Pro počítače, na kterých běží rozšíření Site Recovery 9.28. x. x, [kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery vyčistí počítače v sekundární oblasti zotavení po havárii, po dokončení navrácení služeb po obnovení a opětovné ochraně virtuálních počítačů. Nemusíte ručně odstraňovat virtuální počítače a síťové adaptéry v sekundární oblasti. Pokud po převzetí služeb při selhání dojde k úplnému vypnutí replikace, Site Recovery kromě virtuálních počítačů a síťových karet vyčistí disky v oblasti zotavení po havárii.
 
 ## <a name="next-steps"></a>Další kroky
 

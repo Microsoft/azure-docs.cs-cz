@@ -31,8 +31,8 @@
       href: api-management-get-started-revise-api.md
     - name: 8. Přidání několika verzí
       href: api-management-get-started-publish-versions.md
-    - name: 9. Přizpůsobení portálu pro vývojáře
-      href: api-management-customize-styles.md
+    - name: 9. Přizpůsobení vývojářského portálu
+      href: api-management-howto-developer-portal-customize.md
 - name: Ukázky
   items:
     - name: Zásady
@@ -123,12 +123,8 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: Přizpůsobení prostředí pro vývojáře
       items:
-        - name: Použití a přizpůsobení nového portálu pro vývojáře
+        - name: Vysvětlení portálu pro vývojáře
           href: api-management-howto-developer-portal.md
-        - name: Změna rozložení a obsahu stránek
-          href: api-management-modify-content-layout.md
-        - name: Přizpůsobení systémových stránek pomocí šablon
-          href: api-management-developer-portal-templates.md
         - name: Ověřování pomocí Azure AD
           href: api-management-howto-aad.md
         - name: Ověřování pomocí Azure AD B2C
@@ -139,6 +135,34 @@
           href: api-management-howto-configure-notifications.md
         - name: Povolení podpory OAuth v konzole
           href: api-management-howto-oauth2.md
+        - name: Starší verze portálu – přizpůsobení portálu
+          href: api-management-customize-styles.md
+        - name: Starší verze portálu – změna stránek a rozložení
+          href: api-management-modify-content-layout.md
+        - name: Starší verze portálu – přizpůsobení s využitím šablon
+          href: api-management-developer-portal-templates.md
+    - name: Šablony starší verze portálu
+      items:
+        - name: Referenční informace k datovému modelu
+          href: api-management-template-data-model-reference.md
+        - name: Ovládací prvky stránek
+          href: api-management-page-controls.md
+        - name: Šablony
+          href: api-management-developer-portal-templates-reference.md
+        - name: Rozhraní API
+          href: api-management-api-templates.md
+        - name: Produkty
+          href: api-management-product-templates.md
+        - name: Aplikace
+          href: api-management-application-templates.md
+        - name: Problémy
+          href: api-management-issue-templates.md
+        - name: Profil uživatele
+          href: api-management-user-profile-templates.md
+        - name: Stránky
+          href: api-management-page-templates.md
+        - name: Prostředky šablon
+          href: api-management-template-resources.md
     - name: Definování zásad
       items:
         - name: Nastavení nebo úprava zásad
@@ -167,28 +191,6 @@
           href: api-management-cross-domain-policies.md
         - name: Zásady transformace
           href: api-management-transformation-policies.md
-    - name: Referenční informace k šablonám
-      items:
-        - name: Šablony
-          href: api-management-developer-portal-templates-reference.md
-        - name: Rozhraní API
-          href: api-management-api-templates.md
-        - name: Produkty
-          href: api-management-product-templates.md
-        - name: Aplikace
-          href: api-management-application-templates.md
-        - name: Problémy
-          href: api-management-issue-templates.md
-        - name: Profil uživatele
-          href: api-management-user-profile-templates.md
-        - name: Stránky
-          href: api-management-page-templates.md
-        - name: Prostředky šablon
-          href: api-management-template-resources.md
-    - name: Referenční informace k datovému modelu
-      href: api-management-template-data-model-reference.md
-    - name: Ovládací prvky stránek
-      href: api-management-page-controls.md
     - name: Správa v produkčním prostředí
       items:
         - name: Správa skupin

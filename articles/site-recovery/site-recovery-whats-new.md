@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/31/2019
 ms.author: raynew
-ms.openlocfilehash: 144050bd29e8d2ec56c1347d60fd7452ea60b9cf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 54416faa9140cf6e7c7c471e4b4c62db5f6f079b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053627"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242937"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -41,14 +41,45 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 **Aktualizace** |  **Sjednocené nastavení** | **Vajíčka konfiguračního serveru** | **Agent služby mobility** | **Poskytovatel Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
+[Kumulativní aktualizace 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 9.29.5367.1 | 5.15000.0 | 9.29.5367.1 | 5.15000.0 | 2.0.9165.0
 [Kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Kumulativní aktualizace 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [Kumulativní aktualizace 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
 [Kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
-[Kumulativní aktualizace 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
         
 
 [Přečtěte si další informace](service-updates-how-to.md) o instalaci a podpoře aktualizací.
+
+
+## <a name="updates-october-2019"></a>Aktualizace (říjen 2019)
+
+### <a name="update-rollup-41"></a>Kumulativní aktualizace 41
+
+[Kumulativní aktualizace 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) poskytuje následující aktualizace.
+
+**Aktualizace** | **Podrobnosti**
+--- | ---
+**Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
+**Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Zotavení po havárii virtuálního počítače Azure
+
+Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shrnuté v tabulce.
+
+**Funkce** | **Podrobnosti**
+--- | ---
+**Nastavení testovacího převzetí služeb při selhání** | Při nastavování testovacího převzetí služeb při selhání teď můžete nakonfigurovat nastavení pro virtuální počítač a síť testovacího převzetí služeb při selhání, včetně IP adresy, NSG, interního vyrovnávání zatížení a veřejné IP adresy pro každou síťovou kartu počítače. Tato nastavení jsou volitelná a nemění aktuální chování. Pokud tato nastavení nenakonfigurujete, můžete v době testování převzetí služeb při selhání zvolit virtuální síť Azure. [Další informace](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/).
+**Plány obnovení** | Plány obnovení jsou teď omezené na 100 virtuálních počítačů, aby se zajistila spolehlivost převzetí služeb při selhání.
+
+### <a name="vmware-to-azure-disaster-recovery"></a>Zotavení po havárii VMware do Azure
+
+Nové funkce pro zotavení po havárii z VMware do Azure jsou shrnuté v tabulce.
+
+**Funkce** | **Podrobnosti**
+--- | ---
+**Plány obnovení** | Plány obnovení jsou teď omezené na 100 virtuálních počítačů, aby se zajistila spolehlivost převzetí služeb při selhání.
 
 
 ## <a name="updates-september-2019"></a>Aktualizace (září 2019)

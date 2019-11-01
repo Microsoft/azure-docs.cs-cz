@@ -31,6 +31,8 @@
       href: location-condition.md
     - name: Ovládací prvky
       href: controls.md
+    - name: Režim pouze sestav
+      href: concept-conditional-access-report-only.md
     - name: Závislosti služeb
       href: service-dependencies.md
     - name: Nástroj What If
@@ -76,6 +78,8 @@
       href: untrusted-networks.md
     - name: Vyžadování podmínek použití
       href: terms-of-use.md
+    - name: Konfigurace režimu pouze sestav
+      href: howto-conditional-access-report-only.md
     - name: Kontroly četnosti přihlášení a trvalosti prohlížeče
       href: howto-conditional-access-session-lifetime.md
     - name: Migrace klasických zásad

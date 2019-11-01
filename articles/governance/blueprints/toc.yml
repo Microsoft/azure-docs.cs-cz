@@ -47,6 +47,17 @@
           href: ./samples/cis-azure-1.1.0/index.md
         - name: Mapování doporučení
           href: ./samples/cis-azure-1.1.0/control-mapping.md
+    - name: FedRAMP Moderate
+      items:
+        - name: Přehled
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/index.md
+        - name: Mapování kontrol
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/control-mapping.md
+        - name: Kroky pro nasazení
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/deploy.md
     - name: IRS 1075
       items:
         - name: Přehled

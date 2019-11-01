@@ -1,5 +1,5 @@
 ---
-title: Chyba serveru Jupyter 404 z důvodu "blokování rozhraní API pro více zdrojů" ve službě Azure HDInsight
+title: Chyba Jupyter 404-"blokování rozhraní API pro více zdrojů" – Azure HDInsight
 description: Jupyter Server 404 "nenalezen" v důsledku "blokování rozhraní API pro více zdrojů" ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: f5ac70381f0879a896e96cb37a70c1b1a1f0b5da
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7f8eb000533673d243258d569834869bbb2a1778
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091011"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241130"
 ---
 # <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Scénář: Jupyter Server 404 "nenalezen" v důsledku "blokování rozhraní API pro více zdrojů" ve službě Azure HDInsight
 
@@ -36,9 +36,9 @@ Tato chyba může být způsobena několika způsoby:
 
 - Pokud jste nakonfigurovali pravidla skupiny zabezpečení sítě (NSG), která budou omezovat přístup ke clusteru. Omezení přístupu pomocí pravidel NSG vám pořád umožní přímý přístup k Apache Ambari a dalším službám s použitím IP adresy místo názvu clusteru. Při přístupu k Jupyter se ale může zobrazit chyba 404 "Nenalezeno".
 
-- Pokud jste vašemu bráně HDInsight přizpůsobili jiný název DNS než standard `xxx.azurehdinsight.net`.
+- Pokud jste vašemu bráně HDInsight přizpůsobili jiný název DNS než standardní `xxx.azurehdinsight.net`.
 
-## <a name="resolution"></a>Řešení
+## <a name="resolution"></a>Rozlišení
 
 1. Upravte soubory jupyter.py na těchto dvou místech:
 
@@ -47,7 +47,7 @@ Tato chyba může být způsobena několika způsoby:
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. Najděte řádek, který říká: `NotebookApp.allow_origin='\"https://{2}.{3}\"'`A změňte ji na: `NotebookApp.allow_origin='\"*\"'`.
+1. Najděte řádek, který říká: `NotebookApp.allow_origin='\"https://{2}.{3}\"'` a změňte jej na: `NotebookApp.allow_origin='\"*\"'`.
 
 1. Restartujte službu Jupyter z Ambari.
 
@@ -61,6 +61,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

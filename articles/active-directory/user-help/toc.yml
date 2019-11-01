@@ -116,3 +116,13 @@
       href: my-apps-portal-end-user-access-reviews.md
     - name: Řešení potíží
       href: my-apps-portal-end-user-troubleshoot.md
+- name: Nápověda k portálu Moje aplikace (Preview)
+  items:
+    - name: Přehled
+      href: my-applications-portal-overview.md
+    - name: Přístup k portálu Moje aplikace a jeho používání
+      href: my-applications-portal-access.md
+    - name: Přístup k pracovním prostorům a jejich použití
+      href: my-applications-portal-workspaces.md
+    - name: Úpravy nebo odvolání oprávnění aplikace
+      href: my-applications-portal-permissions-saved-accounts.md

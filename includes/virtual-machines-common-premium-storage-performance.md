@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 289100afe825c14ce9964f39e3f583078f51da1d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391595"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182197"
 ---
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -140,7 +140,7 @@ Vstupně-výstupní operace je jednotka vstupně-výstupních operací, kterou b
 Velikost v/v je jedním z důležitějších faktorů. Velikost vstupně-výstupních operací je velikost žádosti o vstupně-výstupní operace vygenerované vaší aplikací. Velikost vstupně-výstupních operací má významný dopad na výkon hlavně na základě IOPS a šířky pásma, které aplikace dokáže dosáhnout. Následující vzorec znázorňuje vztah mezi vstupně-výstupními operacemi, velikostí vstupně-výstupních operací a šířkou pásma a propustností  
     ![](media/premium-storage-performance/image1.png)
 
-Některé aplikace umožňují změnit jejich vstupně-výstupní operace, zatímco některé aplikace ne. SQL Server například určuje optimální velikost vstupně-výstupních operací a neposkytuje uživatelům žádné ovladače ke změně. Na druhé straně Oracle poskytuje parametr s názvem [DB @ no__t-1BLOCK @ no__t-2SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , pomocí kterého můžete nakonfigurovat velikost vstupně-výstupních požadavků databáze.
+Některé aplikace umožňují změnit jejich vstupně-výstupní operace, zatímco některé aplikace ne. SQL Server například určuje optimální velikost vstupně-výstupních operací a neposkytuje uživatelům žádné ovladače ke změně. Na druhé straně Oracle poskytuje parametr s názvem [DB\_BLOCK\_Size](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , pomocí kterého můžete nakonfigurovat velikost vstupně-výstupních požadavků databáze.
 
 Pokud používáte aplikaci, která vám neumožňuje změnit velikost vstupně-výstupních operací, použijte pokyny v tomto článku k optimalizaci klíčového ukazatele výkonu, který je pro vaši aplikaci nejrelevantnější. Například:
 
@@ -189,15 +189,15 @@ Předpokládejme například, že požadavek na aplikaci je maximálně 4 000 IO
 *Náklady na operaci*  
 V mnoha případech je možné, že celkové náklady na provoz pomocí Premium Storage jsou nižší než používání služby Storage úrovně Standard.
 
-Představte si třeba aplikaci vyžadující 16 000 IOPS. Pro dosažení tohoto výkonu budete potřebovat standardní virtuální počítač Azure IaaS s podporou @ no__t-0D14, který může poskytnout maximální IOPS 16 000 s použitím disků 32 úrovně Standard úložiště 1 TB. Každý standardní disk úložiště o velikosti 1 TB může dosáhnout maximálně 500 IOPS. Odhadované náklady na tento virtuální počítač za měsíc budou $1 570. Měsíční náklady na disky úložiště úrovně Standard 32 budou $1 638. Odhadované celkové měsíční náklady budou $3 208.
+Představte si třeba aplikaci vyžadující 16 000 IOPS. K dosažení tohoto výkonu budete potřebovat standardní\_virtuální počítač Azure IaaS s D14, který může poskytnout maximální IOPS 16 000 s použitím disků 32 úrovně Standard úložiště 1 TB. Každý standardní disk úložiště o velikosti 1 TB může dosáhnout maximálně 500 IOPS. Odhadované náklady na tento virtuální počítač za měsíc budou $1 570. Měsíční náklady na disky úložiště úrovně Standard 32 budou $1 638. Odhadované celkové měsíční náklady budou $3 208.
 
-Pokud však používáte stejnou aplikaci na Premium Storage, budete potřebovat menší velikost virtuálního počítače a méně disků služby Premium Storage, čímž se sníží celkové náklady. Standardní virtuální počítač @ no__t-0DS13 může splňovat požadavky 16 000 IOPS pomocí čtyř disků P30. Virtuální počítač DS13 má maximální IOPS 25 600 a každý disk P30 má maximální počet IOPS 5 000. Celková Tato konfigurace může dosáhnout 5 000 x 4 = 20 000 IOPS. Odhadované náklady na tento virtuální počítač za měsíc budou $1 003. Měsíční náklady na čtyři disky P30 Premium Storage budou $544,34. Odhadované celkové měsíční náklady budou $1 544.
+Pokud však používáte stejnou aplikaci na Premium Storage, budete potřebovat menší velikost virtuálního počítače a méně disků služby Premium Storage, čímž se sníží celkové náklady. Standardní\_virtuální počítač DS13 může splňovat požadavky 16 000 IOPS pomocí čtyř disků P30. Virtuální počítač DS13 má maximální IOPS 25 600 a každý disk P30 má maximální počet IOPS 5 000. Celková Tato konfigurace může dosáhnout 5 000 x 4 = 20 000 IOPS. Odhadované náklady na tento virtuální počítač za měsíc budou $1 003. Měsíční náklady na čtyři disky P30 Premium Storage budou $544,34. Odhadované celkové měsíční náklady budou $1 544.
 
 Následující tabulka shrnuje rozpis nákladů tohoto scénáře pro Standard a Premium Storage.
 
 | &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
-| **Náklady na virtuální počítač za měsíc** |$1 570,58 (Standard @ no__t – 0D14) |$1 003,66 (Standard @ no__t – 0DS13) |
+| **Náklady na virtuální počítač za měsíc** |$1 570,58 (standardní\_D14) |$1 003,66 (standardní\_DS13) |
 | **Náklady na disky za měsíc** |$1 638,40 (32 × 1 TB disků) |$544,34 (4 x P30 disky) |
 | **Celkové náklady za měsíc** |$3 208,98 |$1 544,34 |
 
@@ -298,12 +298,12 @@ Některé verze vyžadují nejnovější služby Linux Integration Services (LIS
 | SUSE | SLES 12 nebo novější| 3.12.36 – 38.1 + | SUSE-SLES-12-priority-v20150213 <br> SUSE-SLES-12 – v20150213 |
 | SUSE | SLES 11 SP4 nebo novější| 3.0.101 – 0.63.1 + | &nbsp; |
 | CoreOS | 584.0.0 + nebo novější| 3.18.4 + | CoreOS 584.0.0 |
-| CentOS | 6,5, 6,6, 6,7, 7,0 nebo novější| &nbsp; | [Požadováno LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Viz Poznámka v následující části.* |
-| CentOS | 7.1 + nebo novější| 3.10.0-229.1.2. el7 + | [LIS4 Doporučené](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Viz Poznámka v následující části.* |
+| CentOS | 6,5, 6,6, 6,7, 7,0 nebo novější| &nbsp; | [Požadováno LIS4](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Viz Poznámka v následující části.* |
+| CentOS | 7.1 + nebo novější| 3.10.0-229.1.2. el7 + | [LIS4 Doporučené](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Viz Poznámka v následující části.* |
 | Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + nebo novější | &nbsp; | &nbsp; |
 | Oracle | 6.0 +, 7.2 + nebo novější | &nbsp; | UEK4 nebo RHCK |
-| Oracle | 7.0-7.1 nebo novější | &nbsp; | UEK4 nebo RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4 – 6.7 nebo novější | &nbsp; | UEK4 nebo RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 7.0-7.1 nebo novější | &nbsp; | UEK4 nebo RHCK w/[lis 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
+| Oracle | 6.4 – 6.7 nebo novější | &nbsp; | UEK4 nebo RHCK w/[lis 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>Ovladače LIS pro OpenLogic CentOS
 
