@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Spuštění skriptu R na ML Services pomocí konzoly R – Azure HDInsight'
+title: 'Rychlý Start: skript R na ML Services & R Console – Azure HDInsight'
 description: V rychlém startu spustíte skript R v clusteru služby ML ve službě Azure HDInsight pomocí konzoly R.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,20 +8,20 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 44bc90a4c556108b4b6874a2d1297a6467413824
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736366"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241596"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Rychlý start: Spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí konzoly R
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Rychlý Start: spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí konzoly R
 
 Služba ML Services v Azure HDInsight umožňuje skriptům R používat Apache Spark a Apache Hadoop MapReduce ke spouštění distribuovaných výpočtů. Služba ML řídí, jak se spouštějí volání, nastavením výpočetního kontextu. Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R. Pomocí hraničního uzlu máte možnost spouštět paralelní distribuované funkce RevoScaleR napříč jádry serveru hraničního uzlu. Můžete je také spouštět v uzlech clusteru pomocí RevoScaleR mapy Hadoop pro redukci nebo Apache Spark výpočetních kontextů.
 
 V tomto rychlém startu se dozvíte, jak spustit skript R s konzolou R, která demonstruje použití Sparku pro distribuované výpočty R. Definujete výpočetní kontext pro místní provádění výpočtů na hraničním uzlu a znovu rozšíříte napříč uzly v clusteru HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru**.
 

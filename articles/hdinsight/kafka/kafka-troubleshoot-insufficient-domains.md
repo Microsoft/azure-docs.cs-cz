@@ -1,5 +1,5 @@
 ---
-title: Vytvoření clusteru se nezdařilo z důvodu nedostatečných domén selhání v oblasti ve službě Azure HDInsight.
+title: Chyba v oblasti nedostatečných domén selhání v Azure HDInsight
 description: Vytvoření clusteru se nezdařilo z důvodu nedostatečných domén selhání v oblasti ve službě Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,20 +7,20 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
-ms.openlocfilehash: 1e0fae699752f5e2417a4a3cbd42f4f1d2bd891f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: defb0666a6537d62b22dca301f69a5163e887d3f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091253"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241899"
 ---
-# <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Scénář: Vytvoření clusteru se nepovedlo kvůli `not sufficient fault domains in region` službě Azure HDInsight.
+# <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Scénář: Vytvoření clusteru selhalo kvůli `not sufficient fault domains in region` ve službě Azure HDInsight.
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-`not sufficient fault domains in region` Při pokusu o vytvoření clusteru Apache Kafka se zobrazí chybová zpráva podobná.
+Při pokusu o vytvoření clusteru Apache Kafka se zobrazí chybová zpráva podobná `not sufficient fault domains in region`.
 
 ## <a name="cause"></a>Příčina
 
@@ -30,7 +30,7 @@ Každá oblast Azure má určitý počet domén selhání. Seznam domén a poče
 
 V HDInsight musí být clustery Kafka zřízené v oblasti s nejméně třemi doménami selhání.
 
-## <a name="resolution"></a>Řešení
+## <a name="resolution"></a>Rozlišení
 
 Pokud v oblasti, ve které chcete vytvořit cluster, nejsou dost domén selhání, vynechejte si produktový tým a umožněte zřizování clusteru i v případě, že nejsou k dispozici tři domény selhání.
 
@@ -40,6 +40,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) -oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

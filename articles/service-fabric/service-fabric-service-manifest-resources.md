@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bb3fd77df60be68408fceea683ee4b8b74d77427
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170441"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242902"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Zadání prostředků v manifestu služby
 ## <a name="overview"></a>Přehled
@@ -30,6 +30,8 @@ Pokud je prostředek koncového bodu definovaný v manifestu služby, Service Fa
 
 > [!WARNING] 
 > Návrhem statických portů se nesmí překrývat s rozsahem portů aplikace zadaným v manifestem clusteru. Pokud zadáte statický port, přiřaďte ho mimo rozsah portů aplikace, jinak bude výsledkem konflikty portů. S vydáním verze 6.5 CU2 budeme při zjišťování takového konfliktu vystavovat **Upozornění na stav** , ale nasazení bude pokračovat v synchronizaci s dodaným chováním 6,5. Můžeme ale zabránit nasazení aplikace z dalších hlavních verzí.
+>
+> S vydáním verze 7,0 budeme vystavovat **Upozornění na stav** , když zjistíme, že využití rozsahu portů aplikace bude vyšší než HostingConfig:: ApplicationPortExhaustThresholdPercentage (výchozí 80%).
 >
 
 ```xml
@@ -56,7 +58,7 @@ Pokud existuje více balíčků kódu v jednom balíčku služby, pak musí být
 Další informace o odkazování koncových bodů ze souboru nastavení balíčku konfigurace (Settings. XML) najdete v článku [Konfigurace stavového Reliable Services](service-fabric-reliable-services-configuration.md) .
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Příklad: určení koncového bodu HTTP pro vaši službu
-Následující manifest služby definuje jeden prostředek koncového bodu TCP a dva prostředky koncového bodu HTTP v elementu &lt;Resources @ no__t-1.
+Následující manifest služby definuje jeden prostředek koncového bodu TCP a dva prostředky koncového bodu HTTP v&gt; elementu &lt;ch prostředků.
 
 Koncové body HTTP jsou automaticky ACL Service Fabric.
 

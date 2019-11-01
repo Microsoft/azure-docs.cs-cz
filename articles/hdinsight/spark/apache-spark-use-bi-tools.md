@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Analýza dat Apache Sparku pomocí Power BI v Azure HDInsight '
+title: 'Kurz: Analýza dat Apache Spark Azure HDInsight pomocí Power BI'
 description: Kurz – použití Microsoft Power BI k vizualizaci Apache Spark uložených clusterů HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: fe7560f68690233d7a333724274a259d693123d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: c2d6a5acba304d7421b000cab2ee5cee5b85e5ce
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035689"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241359"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: analýza Apache Spark dat pomocí Power BI ve službě HDInsight
 
@@ -78,7 +78,7 @@ Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desk
 
 2. Na kartě **Domů** přejděte na **získat data** > **Další.** ..
 
-    ![Načtení dat do Power BI Desktopu z Apache Sparku ve službě HDInsight](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Načtení dat do Power BI z Apache Spark BI")
+    ![Načtení dat do Power BI Desktop ze služby HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Načtení dat do Power BI z Apache Spark BI")
 
 3. Do vyhledávacího pole zadejte `Spark`, vyberte **Azure HDInsight Spark**a pak vyberte **připojit**.
 
@@ -104,21 +104,21 @@ Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desk
 
     2. Přetáhněte pole **BuildingID** (ID budovy) do části **Osa** a pole **ActualTemp** (Skutečná teplota) a **TargetTemp** (Cílová teplota) do části **Hodnota**.
 
-        Přidat sloupce ![hodnot]–(./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Přidat sloupce hodnot")
+        ![Přidat sloupce hodnot](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Přidat sloupce hodnot")
 
         Diagram vypadá takto:
 
-        (./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "součet grafu") oblasti ![součtu plošného grafu]
+        ![součet plošného grafu](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "součet plošného grafu")
 
         Vizualizace ve výchozím nastavení zobrazí pro **ActualTemp** a **TargetTemp** součet hodnot. V podokně vizualizace vyberte šipku dolů vedle **ActualTemp** a **TragetTemp** , kde vidíte, že je vybraná možnost **Sum** .
 
     3. V podokně vizualizace vyberte šipky dolů vedle **ActualTemp** a **TragetTemp** . Pokud chcete získat průměr skutečných a cílových teplot pro každé sestavení, vyberte **průměr** .
 
-        Průměrná ![hodnota](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "průměru hodnot")
+        ![průměr hodnot](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "průměr hodnot")
 
         Vaše vizualizace dat by měla vypadat podobně jako na následujícím snímku obrazovky. Přesunutím kurzoru nad vizualizaci zobrazte popisky s relevantními daty.
 
-        (./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "graf oblasti") ![plošného grafu]
+        ![plošný graf](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "plošný graf")
 
 9. Přejděte do **souboru** > **Uložit**, zadejte název souboru `BuildingTemperature` a pak vyberte **Uložit**.
 
@@ -134,19 +134,19 @@ Služba Power BI umožňuje sdílet sestavy a řídicí panely napříč organiz
 
 1. Vyberte pracovní prostor, do kterého chcete datovou sadu a sestavu publikovat, a klikněte na **Vybrat**. Na následujícím obrázku je vybraný výchozí pracovní prostor **My Workspace**.
 
-    ![Výběr pracovního prostoru, do kterého se mají datová sada a sestava publikovat](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Výběr pracovního prostoru, do kterého se mají datová sada a sestava publikovat") 
+    ![Vyberte pracovní prostor, pro který chcete publikovat datovou sadu a sestavu.](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Vyberte pracovní prostor, pro který chcete publikovat datovou sadu a sestavu.") 
 
 1. Po úspěšném publikování klikněte na **Otevřít soubor BuildingTemperature.pbix v Power BI**.
 
-    ![Úspěšné publikování a kliknutí pro zadání přihlašovacích údajů](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Úspěšné publikování a kliknutí pro zadání přihlašovacích údajů") 
+    ![Úspěch publikování, kliknutím zadejte přihlašovací údaje.](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Úspěch publikování, kliknutím zadejte přihlašovací údaje.") 
 
 1. Ve službě Power BI klikněte na **Zadat přihlašovací údaje**.
 
-    ![Zadání přihlašovacích údajů ve službě Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Zadání přihlašovacích údajů ve službě Power BI")
+    ![Zadejte přihlašovací údaje v služba Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Zadejte přihlašovací údaje v služba Power BI")
 
 1. Klikněte na **Upravit přihlašovací údaje**.
 
-    ![Úprava přihlašovacích údajů ve službě Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Úprava přihlašovacích údajů ve službě Power BI")
+    ![Upravit přihlašovací údaje v služba Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Upravit přihlašovací údaje v služba Power BI")
 
 1. Zadejte přihlašovací údaje účtu služby HDInsight a pak klikněte na **Přihlásit se**. Výchozí název účtu je *admin*.
 
@@ -154,7 +154,7 @@ Služba Power BI umožňuje sdílet sestavy a řídicí panely napříč organiz
 
 1. V levém podokně přejděte do části **Pracovní prostory** > **My Workspace** > **SESTAVY** a klikněte na **BuildingTemperature**.
 
-    ![Sestava uvedená v části Sestavy v levém podokně](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Sestava uvedená v části Sestavy v levém podokně")
+    ![Sestava uvedená v části sestavy v levém podokně](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Sestava uvedená v části sestavy v levém podokně")
 
     V části **DATOVÉ SADY** v levém podokně by se také měla zobrazit datová sada **BuildingTemperature**.
 
@@ -162,11 +162,11 @@ Služba Power BI umožňuje sdílet sestavy a řídicí panely napříč organiz
 
 1. Najeďte kurzorem na vizualizaci a klikněte na ikonu připínáčku v pravém horním rohu.
 
-    ![Sestava ve službě Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Sestava ve službě Power BI")
+    ![Sestava v služba Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Sestava v služba Power BI")
 
 1. Vyberte Nový řídicí panel, zadejte název `Building temperature` a klikněte na **Připnout**.
 
-    ![Připnutí na nový řídicí panel](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Připnutí na nový řídicí panel")
+    ![Připnout na nový řídicí panel](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Připnout na nový řídicí panel")
 
 1. V sestavě klikněte na **Přejít na řídicí panel**.
 

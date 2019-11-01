@@ -1,5 +1,5 @@
 ---
-title: Nastavení Apache Kafka ve službě HDInsight pomocí Azure PowerShell – rychlý Start
+title: 'Rychlý Start: vytvoření Apache Kafka s využitím Azure PowerShell-HDInsight'
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka v Azure HDInsight pomocí Azure PowerShellu. Také se seznámíte s tématy, předplatiteli a konzumenty Kafka.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 79224879dc0f23c7ad022134c6add087b90304b7
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 082be3630474ec5f97ab7d80a3ee1b92cdc28fd7
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123150"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242322"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí prostředí PowerShell
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Rychlý Start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí prostředí PowerShell
 
 [Apache Kafka](https://kafka.apache.org/) je open source platforma pro distribuované streamování. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. 
 
@@ -27,7 +27,7 @@ Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) installed.
 
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému `Connect-AzAccount` Azure pomocí rutiny a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí rutiny `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
 ```azurepowershell-interactive
 # Login to your Azure subscription
@@ -65,7 +65,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 I když Kafka v HDInsight ukládá data Kafka pomocí Spravovaných disků Azure, cluster používá i Azure Storage k ukládání informací, jako jsou protokoly. Pomocí [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) vytvořte nový účet úložiště.
 
 > [!IMPORTANT]  
-> Druh `BlobStorage` účtu úložiště se dá použít jenom jako sekundární úložiště pro clustery HDInsight.
+> Druh účtu úložiště `BlobStorage` dá se použít jenom jako sekundární úložiště pro clustery HDInsight.
 
 ```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"
@@ -133,7 +133,7 @@ Vytvoření clusteru HDInsight může trvat až 20 minut.
 
 Parametr `-DisksPerWorkerNode` konfiguruje škálovatelnost platformy Kafka v HDInsight. Kafka ve službě HDInsight používá k ukládání dat místní disk virtuálního počítače v clusteru. Platforma Kafka je náročná na vstupně-výstupní operace, proto se k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel využívají [Spravované disky Azure](../../virtual-machines/windows/managed-disks-overview.md).
 
-Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Typ disku závisí na velikosti virtuálního počítače používaného pracovními uzly (zprostředkovateli Kafka). U virtuálních počítačů řady DS a GS se automaticky používají disky Premium. Všechny ostatní typy virtuálních počítačů používají standardní disky. Typ virtuálního počítače můžete nastavit pomocí parametru `-WorkerNodeSize`. Další informace o parametrech najdete v dokumentaci k [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) .
+Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Typ disku závisí na velikosti virtuálního počítače používaného pracovními uzly (zprostředkovateli Kafka). U virtuálních počítačů řady DS a GS se automaticky používají prémiové disky. Všechny ostatní typy virtuálních počítačů používají standardní disky. Typ virtuálního počítače můžete nastavit pomocí parametru `-WorkerNodeSize`. Další informace o parametrech najdete v dokumentaci k [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) .
 
 Pokud hodláte použít víc než 32 pracovních uzlů (při vytvoření clusteru nebo škálováním clusteru po vytvoření), musíte pomocí parametru `-HeadNodeSize` určit velikost virtuálního počítače s aspoň 8 jádry a 14 GB RAM. Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 

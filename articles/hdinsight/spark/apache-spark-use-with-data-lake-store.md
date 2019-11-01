@@ -1,5 +1,5 @@
 ---
-title: Použití Apache Spark k analýze dat v Azure Data Lake Storage Gen1
+title: Analýza Azure Data Lake Storage Gen1 pomocí HDInsight Apache Spark
 description: Spuštění úloh Apache Spark pro analýzu dat uložených v Azure Data Lake Storage Gen1
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,22 +8,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 7c60fdfd4d8e579c24da3c43501e4437806becc6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002494"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241717"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1
 
 V tomto článku použijete [Jupyter notebook](https://jupyter.org/) dostupné s clustery HDInsight Spark ke spuštění úlohy, která čte data z účtu Data Lake Storage.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure Data Lake Storage Gen1. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Azure HDInsight Spark cluster s Data Lake Storage Gen1 jako úložiště. Postupujte podle pokynů v [části rychlý Start: Nastavte clustery v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Azure HDInsight Spark cluster s Data Lake Storage Gen1 jako úložiště. Postupujte podle pokynů v tématu [rychlý Start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 ## <a name="prepare-the-data"></a>Příprava dat
 
@@ -108,14 +108,14 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. Vzhledem k tomu, že používáte jádro PySpark, můžete nyní přímo spustit dotaz SQL na dočasnou tabulku **TVK**, kterou jste právě vytvořili pomocí `%%sql` magic. Další informace o `%%sql` Magic a dalších přístupnosti, které jsou k dispozici v jádru PySpark, najdete v tématu [jádra dostupná na poznámkových blocích Jupyter s Apache Spark clustery HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+6. Vzhledem k tomu, že používáte jádro PySpark, můžete nyní přímo spustit dotaz SQL na dočasnou tabulku **TVK**, kterou jste právě vytvořili pomocí `%%sql` magic. Další informace o `%%sql` Magic a dalších přístupnosti, které jsou k dispozici v jádru PySpark, najdete v části [jádra dostupné v poznámkových blocích Jupyter s clustery HDInsight Apache Spark](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
 7. Po úspěšném dokončení úlohy se ve výchozím nastavení zobrazí následující tabulkový výstup.
 
-      ![Tabulkový výstup výsledků dotazu](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "Tabulkový výstup výsledků dotazu")
+      ![Výstup tabulky výsledků dotazu](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "Tabulkový výstup výsledků dotazu")
 
      Výsledky můžete také zobrazit v dalších vizualizacích. Například plošný graf pro stejný výstup bude vypadat následovně.
 
@@ -124,7 +124,7 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
 8. Po dokončení spuštění aplikace byste měli poznámkový blok vypnout a uvolnit tak prostředky. To provedete kliknutím na položku **Zavřít a zastavit** z nabídky **Soubor** v poznámkovém bloku. Dojde k vypnutí a zavření poznámkového bloku.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření samostatné aplikace v Scala ke spuštění v clusteru Apache Spark](apache-spark-create-standalone-application.md)
 * [Použití nástrojů HDInsight v Azure Toolkit for IntelliJ k vytvoření Apache Sparkch aplikací pro cluster HDInsight Spark Linux](apache-spark-intellij-tool-plugin.md)

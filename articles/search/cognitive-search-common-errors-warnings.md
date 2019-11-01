@@ -1,23 +1,24 @@
 ---
-title: Běžné chyby a upozornění
-titleSuffix: Azure Cognitive Search
-description: Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Kognitivní hledání.
-manager: nitinme
+title: Běžné chyby a upozornění – Azure Search
+description: Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Search.
+services: search
+manager: heidist
 author: amotley
-ms.author: abmotley
-ms.service: cognitive-search
+ms.service: search
+ms.workload: search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 09/18/2019
+ms.author: abmotley
+ms.openlocfilehash: 6455ac9dbe0933f6d46d1137e0a19dcc388d8c80
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787980"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243049"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Běžné chyby a upozornění kanálu obohacení AI v Azure Kognitivní hledání
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Běžné chyby a upozornění kanálu obohacení AI v Azure Search
 
-Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Kognitivní hledání.
+Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Search.
 
 ## <a name="errors"></a>Chyby
 Indexování se zastaví, když počet chyb překročí [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
@@ -132,6 +133,10 @@ Dokument byl načten a zpracován, ale kvůli neshodě v konfiguraci polí index
 
 Ve všech těchto případech odkazujete na [podporované datové typy (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a [mapování datových typů pro indexery v Azure Search](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) , abyste se ujistili, že schéma indexu správně sestavíte a že jste nastavili odpovídající [mapování polí indexeru](search-indexer-field-mappings.md). Chybová zpráva bude obsahovat podrobnosti, které mohou přispět ke sledování zdroje neshody.
 
+### <a name="could-not-process-document-within-indexer-max-run-time"></a>Nelze zpracovat dokument v rámci maximální doby běhu indexeru
+
+K této chybě dochází, pokud indexer nemůže dokončit zpracování jednoho dokumentu ze zdroje dat v rámci povolené doby provádění. [Maximální doba](search-limits-quotas-capacity.md#indexer-limits) běhu je kratší, když se dovednosti používají. Pokud k této chybě dojde, pokud máte maxFailedItems nastavenou na jinou hodnotu než 0, indexer ho při budoucích spuštěních obejít, takže indexování může probíhat. Pokud si nemůžete dovolit přeskočit libovolný dokument, nebo pokud se tato chyba zobrazuje konzistentně, zvažte možnost rozdělit dokumenty na menší dokumenty, aby bylo možné provést částečný průběh v rámci jednoho spuštění indexeru.
+
 ##  <a name="warnings"></a>Varování
 Upozornění neukončí indexování, ale označují podmínky, které by mohly vést k neočekávaným výsledkům. Bez ohledu na to, jestli provedete akci, nebo ne, závisí na datech a vašem scénáři.
 
@@ -159,8 +164,8 @@ Pokud chcete zadat výchozí hodnotu pro případ chybějícího vstupu, můžet
 | Důvod | Příklad: | Akce |
 | --- | --- | --- |
 | Nesprávný vstup dovednosti je nesprávného typu. | Požadovaný vstup `X` dovednosti není očekávaného typu `String`. Požadovaný vstup `X` dovednosti není v očekávaném formátu. | Určité dovednosti očekávají vstupy konkrétního typu, například [mínění dovednost](cognitive-search-skill-sentiment.md) očekává, že `text` být řetězec. Pokud vstup Určuje hodnotu, která není typu řetězec, pak se dovednost nespustí a negeneruje žádné výstupy. Ujistěte se, že vaše datová sada má v typu stejné vstupní hodnoty, nebo použijte [vlastní dovednost webového rozhraní API](cognitive-search-custom-skill-web-api.md) k předzpracování vstupu. Pokud provádíte iteraci dovedností v poli, ověřte, že kontext dovednosti a vstup mají `*` ve správných pozicích. Pro pole by měl být obvykle jak kontext, tak vstupní zdroj `*`. |
-| Chybí vstup dovedností. | @No__t_0 chybí požadovaný vstup pro dovednost. | Pokud se zobrazí všechny dokumenty s tímto upozorněním, pravděpodobně dojde k překlepu ve vstupních cestách a v cestě byste měli poklepat na název vlastnosti velká a malá písmena, `*` v cestě a dokumenty ze zdroje dat definovat požadované vstupy. |
-| Vstup kódu pro jazyk dovednosti je neplatný. | @No__t_0 pro zadávání dovedností má `X,Y,Z` následující kódy jazyka, minimálně jeden z nich je neplatný. | Další podrobnosti najdete [níže](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) . |
+| Chybí vstup dovedností. | `X` chybí požadovaný vstup pro dovednost. | Pokud se zobrazí všechny dokumenty s tímto upozorněním, pravděpodobně dojde k překlepu ve vstupních cestách a v cestě byste měli poklepat na název vlastnosti velká a malá písmena, `*` v cestě a dokumenty ze zdroje dat definovat požadované vstupy. |
+| Vstup kódu pro jazyk dovednosti je neplatný. | `languageCode` pro zadávání dovedností má `X,Y,Z`následující kódy jazyka, minimálně jeden z nich je neplatný. | Další podrobnosti najdete [níže](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) . |
 
 ### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Vstup dovedností ' languageCode ' má následující kódy jazyka ' X, Y, Z ', minimálně jeden z nich je neplatný.
 Jedna nebo více hodnot předaných do volitelného vstupu `languageCode` dovedností pro příjem dat není podporováno. Tato situace může nastat, Pokud předáváte výstup [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) k následným dovednostím a výstup se skládá z více jazyků, než jaké jsou podporované v těchto dovednostech.

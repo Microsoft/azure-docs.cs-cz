@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: bd9b9edde0f4c5e3bea6e31342298f2df5a2b5fe
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941691"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241867"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML Services ve službě Azure HDInsight
 
@@ -23,7 +23,7 @@ Služba ML Services v HDInsight poskytuje nejnovější funkce pro analýzy zalo
 
 Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R. Pomocí hraničního uzlu máte možnost spouštět paralelní distribuované funkce nástroje pro horizontální navýšení kapacity napříč jádry serveru hraničního uzlu. Můžete je také spouštět v uzlech clusteru pomocí mapy Hadoop pro škálování zmenšení nebo Apache Spark výpočetních kontextů.
 
-Modely nebo předpovědi, které vyplývají z analýzy, se dají stáhnout pro místní použití. Můžou být taky v Azure fungující jinde, zejména prostřednictvím [Azure Machine Learning Studio](https://studio.azureml.net) [webové služby](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
+Modely nebo předpovědi, které vyplývají z analýzy, se dají stáhnout pro místní použití. Můžou být taky v Azure fungující jinde, zejména prostřednictvím [webové služby](../../machine-learning/studio/publish-a-machine-learning-web-service.md) [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) .
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Začínáme se službami ML v HDInsight
 
@@ -58,7 +58,7 @@ Následující funkce jsou součástí ML Services v HDInsight.
 | Kategorie funkce | Popis |
 |------------------|-------------|
 | R – povoleno | [Balíčky r](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) pro řešení napsané v jazyce r s využitím open source distribuce r a běhové infrastruktury pro spuštění skriptu. |
-| Python-enabled | [Moduly Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) pro řešení napsané v Pythonu s využitím otevřené distribuce zdrojového kódu Pythonu a běhové infrastruktury pro provádění skriptu.
+| Python – povolený | [Moduly Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) pro řešení napsané v Pythonu s využitím otevřené distribuce zdrojového kódu Pythonu a běhové infrastruktury pro provádění skriptu.
 | [Předem připravené modely](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Pro vizuální analýzu a analýzu textu mínění připravené k určení skóre dat, která zadáte. |
 | [Nasazení a využití](r-server-operationalize.md) | Zprovoznění svůj server a nasaďte řešení jako webovou službu. |
 | [Vzdálené spuštění](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Z pracovní stanice klienta spusťte vzdálené relace v clusteru služby ML Services ve vaší síti. |
@@ -92,7 +92,7 @@ Pokud chcete dosáhnout skóre v HDInsight, napište funkci R, která volá vá�
 
 Pokud chcete určit skóre pomocí Azure Machine Learning, použijte Open Source Azure Machine Learning R známý jako [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) k publikování modelu jako webové služby Azure. Pro usnadnění práce je tento balíček předem nainstalován na hraničním uzlu. Dále pomocí zařízení v Azure Machine Learning vytvořte uživatelské rozhraní webové služby a potom zavolejte webovou službu podle potřeby pro vyhodnocování.
 
-Pokud zvolíte tuto možnost, musíte převést objekty modelu nástroje pro horizontální navýšení kapacity na ekvivalentní objekty Open Source modelu pro použití s webovou službou. Pro tento převod použijte funkce pro vynucení `as.randomForest()` škálování, například pro modely založené na kompletech.
+Pokud zvolíte tuto možnost, musíte převést objekty modelu nástroje pro horizontální navýšení kapacity na ekvivalentní objekty Open Source modelu pro použití s webovou službou. Pro tento převod použijte funkce pro vynucení horizontálního navýšení, například `as.randomForest()` pro modely založené na kompletech.
 
 ### <a name="score-on-premises"></a>Místní skóre
 
@@ -102,7 +102,7 @@ Chcete-li po vytvoření modelu vyhodnotit místní skóre, můžete model seria
 
 ### <a name="install-and-maintain-r-packages"></a>Instalace a údržba balíčků R
 
-Většina balíčků R, které použijete, se na hraničním uzlu vyžaduje, protože tam běží většina kroků v skriptech jazyka R. Chcete-li nainstalovat další balíčky R na hraničním uzlu, můžete použít `install.packages()` metodu v jazyce R.
+Většina balíčků R, které použijete, se na hraničním uzlu vyžaduje, protože tam běží většina kroků v skriptech jazyka R. Chcete-li nainstalovat další balíčky R na hraničním uzlu, můžete použít metodu `install.packages()` v jazyce R.
 
 Pokud pouze používáte rutiny z knihovny škálování v clusteru, nemusíte většinou na datových uzlech instalovat další balíčky R. Je však možné, že budete potřebovat další balíčky pro podporu použití **rxExec** nebo **RxDataStep** provádění na datových uzlech.
 
@@ -138,7 +138,7 @@ Kromě toho můžete ke konzole R na hraničním uzlu přejít zadáním **R** n
 
 Ceny, které jsou přidružené k clusteru HDInsight služby ML Services, jsou strukturované podobně jako ceny pro ostatní typy clusterů HDInsight. Jsou založené na velikosti příslušných virtuálních počítačů v názvech, datech a hraničních uzlech, a to s přidáním oprotia na základě základní hodiny. Další informace najdete v tématu [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak používat služby ML v clusterech HDInsight, najdete v následujících tématech:
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066985"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241649"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Rozsáhlá podrobněa – Pokročilá analýza
 
@@ -45,10 +45,10 @@ Společně s výběrem nejlépe přidaných algoritmů je potřeba zvážit, jes
 
 | Kategorie algoritmu| Použití | Typ učení | Algoritmy |
 | --- | --- | --- | -- |
-| Klasifikace | Klasifikovat lidi nebo věci do skupin | Jenom pod dohledem | Rozhodovací stromy, logistické regrese, sítě neuronové |
+| Classification | Klasifikovat lidi nebo věci do skupin | Jenom pod dohledem | Rozhodovací stromy, logistické regrese, sítě neuronové |
 | Clustering | Dělení sady příkladů do homogenních skupin | Bez dohledu | K-znamená clustering |
 | Detekce vzoru | Identifikace častých přidružení v datech | Bez dohledu | Pravidla přidružení |
-| Regrese | Předpověď číselných výsledků | Jenom pod dohledem | Lineární regrese, neuronové sítě |
+| Nevýhody | Předpověď číselných výsledků | Jenom pod dohledem | Lineární regrese, neuronové sítě |
 | Zpětnovazební | Určení optimálního chování pro roboty | Zpětnovazební | Simulace Monte Carlo, DeepMind |
 
 ## <a name="machine-learning-on-hdinsight"></a>Machine Learning v HDInsight
@@ -63,7 +63,7 @@ HDInsight má několik možností strojového učení pro pracovní postup pokro
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning a Apache Spark
 
 
-[HDInsight Spark](../spark/apache-spark-overview.md) je nabídka Azure hostovaná s využitím [Apache Spark](https://spark.apache.org/)sjednoceného Open Source architektury paralelního zpracování dat, která využívá zpracování v paměti ke zvýšení analýz velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. 
+[HDInsight Spark](../spark/apache-spark-overview.md) je nabídka Azure hostovaná s využitím [Apache Spark](https://spark.apache.org/)sjednoceného Open Source architektury paralelního zpracování dat, která využívá zpracování v paměti ke zvýšení analýz velkých objemů dat. Modul pro zpracování Spark je založený na rychlosti, snadném použití a propracované analýze. Funkce distribuovaného výpočtu v paměti Sparku nabízí dobrou volbu pro iterativní algoritmy používané v strojovém učení a výpočtech grafů. 
 
 
 Existují tři škálovatelné knihovny strojového učení, které přinášejí možnosti algoritmu modelování do tohoto distribuovaného prostředí:
@@ -78,7 +78,7 @@ V rámci služby HDInsight můžete vytvořit cluster HDInsight se [službami ml
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning a Apache Hive
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) poskytuje nástroje pro modelování prediktivních analýz a také plně spravovanou službu, kterou můžete použít k nasazení prediktivních modelů jako připravených webových služeb. Azure Machine Learning poskytuje nástroje pro vytváření kompletních řešení prediktivní analýzy v cloudu, aby bylo možné rychle vytvářet, testovat, zprovoznění a spravovat prediktivní modely. Vyberte si z velké knihovny algoritmů, použijte webové Studio pro vytváření modelů a jednoduše nasaďte model jako webovou službu.
+[Azure Machine Learning Studio (Classic)](https://studio.azureml.net/) poskytují nástroje pro modelování prediktivních analýz a také plně spravovanou službu, kterou můžete použít k nasazení prediktivních modelů jako připravených webových služeb. Azure Machine Learning poskytuje nástroje pro vytváření kompletních řešení prediktivní analýzy v cloudu, aby bylo možné rychle vytvářet, testovat, zprovoznění a spravovat prediktivní modely. Vyberte si z velké knihovny algoritmů, použijte webové Studio pro vytváření modelů a jednoduše nasaďte model jako webovou službu.
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark a obsáhlý Learning
 
@@ -127,8 +127,8 @@ Apache Hive a Azure Machine Learning
 Apache Spark a MLLib
 
 * [Machine Learning s Apache Spark ve službě HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Apache Spark s Machine Learning: Použití Apache Spark ve službě HDInsight k analýze teploty budovy pomocí dat TVK](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Apache Spark v HDInsight](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s Machine Learning: použití Apache Spark ve službě HDInsight k analýze teploty budovy pomocí dat TVK](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: použití Apache Spark ve službě HDInsight k předpovědi výsledků kontroly potravin](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
 Obsáhlý Learning, Cognitive Toolkit a další
 

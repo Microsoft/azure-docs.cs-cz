@@ -1,5 +1,5 @@
 ---
-title: Nástroje Azure HDInsight – PySpark interaktivní prostředí pro Visual Studio Code
+title: PySpark interaktivní prostředí pomocí nástrojů Azure HDInsight
 description: Naučte se používat nástroje Azure HDInsight pro Visual Studio Code k vytváření a odesílání dotazů a skriptů.
 keywords: VScode, nástroje Azure HDInsight, podregistr, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, interaktivní podregistr, interaktivní dotaz
 author: jejiang
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f62f7994818e487202e35e4931472355fb6ac3d2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: db2336fb79207ada24b71e0e64f0aaaab543e4da
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130181"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241544"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Nastavení PySpark interaktivního prostředí pro Visual Studio Code
 
@@ -24,7 +24,7 @@ K sestavení virtuálního prostředí v cestě domů používáme příkaz **Py
 1. Nainstalujte [Python](https://www.python.org/downloads/) a [PIP](https://pip.pypa.io/en/stable/installing/).
 
    + Nainstalujte Python z [https://www.python.org/downloads/](https://www.python.org/downloads/).
-   + Nainstalujte PIP z [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) (Pokud není nainstalovaný z instalace Pythonu).
+   + Nainstalujte PIP z [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) (Pokud není nainstalovaná z instalace Pythonu).
    + Pomocí následujících příkazů ověřte, zda jsou Python a PIP úspěšně nainstalovány. Volitelné
 
         ![Ověření verze Python PIP – příkaz](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
@@ -52,12 +52,12 @@ sudo apt-get install libkrb5-dev
 sudo apt-get install python-dev
 ```
 
-Restartujte vs Code a pak se vraťte do editoru skriptů, na kterém běží **HDInsight: PySpark Interactive**
+Restartujte VS Code a pak se vraťte do editoru skriptů, na kterém běží **HDInsight: PySpark Interactive**.
 
 ## <a name="next-steps"></a>Další kroky
 
 ### <a name="demo"></a>Ukázka
-* HDInsight pro VS Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight pro VS Code: [video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Použití nástroje Azure HDInsight pro Visual Studio Code](hdinsight-for-vscode.md)

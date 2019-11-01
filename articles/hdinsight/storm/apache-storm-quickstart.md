@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření a monitorování topologie Apache Storm ve službě Azure HDInsight'
+title: 'Rychlý Start: vytvoření a Správa topologie Apache Storm – Azure HDInsight'
 description: V rychlém startu se dozvíte, jak vytvořit a monitorovat topologii Apache Storm v Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,20 +8,20 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 9e48cb53b55cdc4200498a54dba31ae93ca8b31a
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018585"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241220"
 ---
-# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rychlý start: Vytvoření a monitorování topologie Apache Storm ve službě Azure HDInsight
+# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rychlý Start: vytvoření a monitorování topologie Apache Storm ve službě Azure HDInsight
 
 Apache Storm je škálovatelný výpočetní systém v reálném čase odolný proti chybám, distribuovaný určený pro zpracování datových proudů. Pomocí Storm v Azure HDInsight můžete vytvořit cloudový cluster Storm, který bude provádět analýzy velkých objemů dat v reálném čase.
 
 V tomto rychlém startu použijete příklad z projektu Apache [-Starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) k vytvoření a monitorování Apache Storm topologie do existujícího clusteru Apache Storm.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
@@ -29,13 +29,13 @@ V tomto rychlém startu použijete příklad z projektu Apache [-Starter](https:
 
 ## <a name="create-the-topology"></a>Vytvoření topologie
 
-1. Připojte se ke clusteru nevlastníce. Níže uvedený příkaz upravte nahrazením `CLUSTERNAME` názvem vašeho clusteru pro zaplavení a zadáním příkazu:
+1. Připojte se ke clusteru nevlastníce. Níže uvedený příkaz upravte tak, že nahradíte `CLUSTERNAME` názvem vašeho clusteru pro zaplavení a pak zadáte příkaz:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. **WORDCOUNT** příklad je součástí vašeho clusteru HDInsight na adrese `/usr/hdp/current/storm-client/contrib/storm-starter/`. Tato topologie vygeneruje náhodné věty a spočítá, kolikrát se slova vyskytují. K zahájení topologie **WORDCOUNT** v clusteru použijte následující příkaz:
+2. **WORDCOUNT** příklad je součástí clusteru HDInsight na adrese `/usr/hdp/current/storm-client/contrib/storm-starter/`. Tato topologie vygeneruje náhodné věty a spočítá, kolikrát se slova vyskytují. K zahájení topologie **WORDCOUNT** v clusteru použijte následující příkaz:
 
     ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
@@ -58,12 +58,12 @@ Ke sledování topologie pomocí uživatelského rozhraní Storm použijte násl
     |Vlastnost | Popis |
     |---|---|
     |Statistiky topologie|Základní informace o výkonu topologie uspořádané do časových oken. Výběrem konkrétního časového okna změníte časové okno informací zobrazených v dalších částech stránky.|
-    |Součásti Spout|Základní informace o spoutů, včetně poslední chyby vrácené jednotlivými Spout.|
-    |Procesy Bolt|Základní informace o šrouby.|
+    |Spoutů|Základní informace o spoutů, včetně poslední chyby vrácené jednotlivými Spout.|
+    |Připevňovacích|Základní informace o šrouby.|
     |Konfigurace topologie|Podrobné informace o konfiguraci topologie|
-    |Aktivovat|Obnoví zpracování deaktivované topologie.|
-    |Deaktivace|Pozastaví běžící topologii.|
-    |Obnovit rovnováhu|Upravuje paralelismus topologie. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Nové vyvážení upraví paralelismus, aby se vykompenzovalo zvýšení nebo snížení počtu uzlů v clusteru. Další informace najdete v tématu [Princip paralelismu Apache Storm topologie](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).|
+    |Aktivace|Obnoví zpracování deaktivované topologie.|
+    |Dezaktivaci|Pozastaví běžící topologii.|
+    |Obnovení rovnováhy|Upravuje paralelismus topologie. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Nové vyvážení upraví paralelismus, aby se vykompenzovalo zvýšení nebo snížení počtu uzlů v clusteru. Další informace najdete v tématu [Princip paralelismu Apache Storm topologie](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).|
     |Kill|Ukončí topologii nečinnosti po zadaném časovém limitu.|
 
 3. Na této stránce vyberte položku z oddílu **Spouts** nebo **Bolts**. Zobrazí se informace o vybrané komponentě.

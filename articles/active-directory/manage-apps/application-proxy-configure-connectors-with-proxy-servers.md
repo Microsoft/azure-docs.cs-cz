@@ -1,6 +1,6 @@
 ---
-title: Práce s existující místní proxy servery a službou Azure AD | Dokumentace Microsoftu
-description: Popisuje, jak pracovat s existující místní proxy servery.
+title: Práce se stávajícími místními proxy servery a Azure AD | Microsoft Docs
+description: Obsahuje informace o tom, jak pracovat se stávajícími místními proxy servery.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,33 +12,33 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e4b073a63b5b6bec565aed67bcaec7ed014261b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: d305f3354e7b1af6d43f31f0dd5fe9f54ef3e66f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807877"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242273"
 ---
-# <a name="work-with-existing-on-premises-proxy-servers"></a>Práce s existující místní proxy servery
+# <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
-Tento článek vysvětluje, jak konfigurovat konektory Proxy aplikací Azure Active Directory (Azure AD) pro práci s odchozí proxy servery. Je určená pro zákazníky pomocí síťových prostředí, které mají existující proxy servery.
+Tento článek vysvětluje, jak nakonfigurovat konektory proxy aplikací aplikace Azure Active Directory (Azure AD) pro práci s odchozími proxy servery. Je určená pro zákazníky se síťovými prostředími, která mají existující proxy servery.
 
-Můžeme začít hledáním v těchto scénářích hlavní nasazení:
+Začneme tím, že si vyhledáme tyto hlavní scénáře nasazení:
 
-* Nakonfigurujte konektory pro obejití odchozí proxy vaší místní služby.
-* Nakonfigurujte konektory pro odchozí proxy server používat pro přístup k Azure AD Application Proxy.
+* Nakonfigurujte konektory pro obejití místních odchozích proxy serverů.
+* Nakonfigurujte konektory pro přístup k Azure Proxy aplikací služby AD pro použití odchozího proxy serveru.
 
-Další informace o tom, jak fungují konektory najdete v tématu [pochopit Azure AD Application Proxy konektory](application-proxy-connectors.md).
+Další informace o tom, jak fungují konektory, najdete v tématu [vysvětlení konektorů Azure proxy aplikací služby AD](application-proxy-connectors.md).
 
-## <a name="bypass-outbound-proxies"></a>Odchozí proxy jednorázové přihlášení
+## <a name="bypass-outbound-proxies"></a>Nepoužívat odchozí proxy
 
-Konektory mají základní komponenty operačního systému, které umožňují odchozí požadavky. Tyto součásti se automaticky pokusí vyhledat proxy server v síti pomocí Proxy Auto-Discovery WPAD (Web).
+Konektory mají základní součásti operačního systému, které vytvářejí odchozí požadavky. Tyto součásti se automaticky pokusí najít proxy server v síti pomocí automatického zjišťování (WPAD) webového proxy serveru.
 
-Součásti operačního systému došlo k pokusu o nalezení provádí vyhledávání DNS pro wpad.domainsuffix proxy server. Pokud vyhledávání ve službě DNS, IP adresu pro wpad.dat je potom k požadavku HTTP. Tento požadavek se změní na skript konfigurace proxy serveru ve vašem prostředí. Konektor používá tento skript k výběru odchozího proxy serveru. Ale konektor provoz nemusí stále procházejí, z důvodu další nastavení konfigurace na proxy serveru.
+Součásti operačního systému se pokusí najít proxy server provedením vyhledání DNS pro WPAD. domainsuffix. Pokud se vyhledávání v DNS vyřeší, požadavek HTTP se pak provede na IP adresu pro WPAD. dat. Tento požadavek se ve vašem prostředí stal skriptem konfigurace proxy serveru. Konektor používá tento skript k výběru odchozího proxy server. Provoz konektoru ale nemusí dál probíhat, protože na proxy serveru je potřeba další nastavení konfigurace.
 
-Můžete nakonfigurovat konektor obejít vaše místní proxy a zajistit, aby používal přímé připojení ke službám Azure. Tento přístup, doporučujeme tak dlouho, dokud zásady sítě umožňuje, protože znamená, že máte jeden menší konfiguraci udržovat.
+Konektor můžete nakonfigurovat tak, aby vynechal místní proxy server, aby se zajistilo, že používá přímé připojení ke službám Azure. Doporučujeme tento přístup, pokud to vaše zásada sítě umožňuje, protože to znamená, že máte jednu méně konfigurací, kterou je třeba udržovat.
 
-Zakázat používání odchozího proxy serveru pro konektor, upravte soubor C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config a přidejte *system.net* část uvedenou v této ukázce kódu:
+Pokud chcete pro konektor zakázat použití odchozího proxy serveru, upravte soubor C:\Program Files\Microsoft AAD App proxy Connector\ApplicationProxyConnectorService.exe.config a přidejte část *System.NET* zobrazenou v této ukázce kódu:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -55,28 +55,28 @@ Zakázat používání odchozího proxy serveru pro konektor, upravte soubor C:\
 </configuration>
 ```
 
-Pokud chcete mít jistotu, že service Connector Updater také obchází proxy serveru, proveďte podobné změny ApplicationProxyConnectorUpdaterService.exe.config souboru. Tento soubor se nachází v C:\Program Files\Microsoft AAD App Proxy Connector Updater.
+Chcete-li zajistit, že služba Aktualizátor konektorů také obchází proxy server, udělejte podobné změny v souboru ApplicationProxyConnectorUpdaterService. exe. config. Tento soubor se nachází ve složce C:\Program Files\Microsoft AAD App proxy Aktualizátor konektorů.
 
-Nezapomeňte si vytvořte kopie původního souborů v případě, že budete potřebovat obnovit v souborech .config výchozí.
+Nezapomeňte vytvořit kopie původních souborů pro případ, že budete potřebovat vrátit se k souboru Default. config.
 
-## <a name="use-the-outbound-proxy-server"></a>Odchozí proxy server používat
+## <a name="use-the-outbound-proxy-server"></a>Použít odchozí proxy server
 
-Některá prostředí vyžadují veškerý odchozí provoz a absolvovat odchozího proxy serveru, bez výjimky. V důsledku toho obcházení proxy serveru není možné.
+Některá prostředí vyžadují, aby veškerý odchozí provoz procházel prostřednictvím odchozího proxy serveru bez výjimky. Výsledkem je, že obcházení proxy serveru není možnost.
 
-Konektor provoz a absolvovat odchozího proxy serveru, můžete nakonfigurovat, jak je znázorněno v následujícím diagramu:
+Provoz konektoru můžete nakonfigurovat tak, aby procházel prostřednictvím odchozího proxy serveru, jak je znázorněno na následujícím obrázku:
 
- ![Konfigurace konektoru provoz absolvovat odchozího proxy serveru do Azure AD Application Proxy](./media/application-proxy-configure-connectors-with-proxy-servers/configure-proxy-settings.png)
+ ![Konfigurace provozu konektoru pro přechod prostřednictvím odchozího proxy serveru do Azure Proxy aplikací služby AD](./media/application-proxy-configure-connectors-with-proxy-servers/configure-proxy-settings.png)
 
-V důsledku s pouze odchozí provoz, není potřeba konfigurovat příchozí přístup přes brány firewall.
+V důsledku existence pouze odchozího provozu není potřeba konfigurovat příchozí přístup přes brány firewall.
 
 > [!NOTE]
-> Proxy aplikací nepodporuje ověřování na jiné servery proxy. Účty služeb konektoru/updater sítě by měl moct připojit k proxy serveru, aniž by se samy pro ověřování.
+> Proxy aplikace nepodporuje ověřování u jiných proxy serverů. Účty síťové služby konektoru a aktualizace by měly být schopné se připojit k proxy serveru bez výzvy k ověření.
 
-### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>Krok 1: Nakonfigurujte konektor a související služby a absolvovat odchozího proxy serveru
+### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>Krok 1: Konfigurace konektoru a souvisejících služeb pro přechod prostřednictvím odchozího proxy serveru
 
-Pokud WPAD je povoleno v prostředí a správně nakonfigurována, konektor automaticky zjistí odchozí proxy server a pokusíte se ji použít. Můžete však explicitně nakonfigurovat konektoru a absolvovat odchozího proxy serveru.
+Pokud je v prostředí povolená možnost WPAD a správně nakonfigurovaná, konektor automaticky zjistí odchozí proxy server a pokusí se ho použít. Konektor ale můžete explicitně nakonfigurovat tak, aby procházel prostřednictvím odchozího proxy serveru.
 
-Uděláte to tak, upravte soubor C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config a přidejte *system.net* část uvedenou v této ukázce kódu. Změna *proxyserver:8080* tak, aby odrážely název vašeho místního proxy serveru nebo IP adresu a port, který naslouchá. Hodnota musí mít předponu http://, i když používáte IP adresu.
+Provedete to tak, že upravíte soubor Connector\ApplicationProxyConnectorService.exe.config App proxy serveru C:\Program Files\Microsoft AAD a přidáte oddíl *System.NET* zobrazený v této ukázce kódu. Změňte *ProxyServer: 8080* tak, aby odrážela místní název proxy server nebo IP adresu a port, na kterém naslouchá. Hodnota musí mít http://předponu, i když používáte IP adresu.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -95,95 +95,95 @@ Uděláte to tak, upravte soubor C:\Program Files\Microsoft AAD App Proxy Connec
 </configuration>
 ```
 
-V dalším kroku nakonfigurujte službu Connector Updater používal proxy server tak, že podobné změny do souboru C:\Program Files\Microsoft AAD App proxy serveru konektoru Updater\ApplicationProxyConnectorUpdaterService.exe.config.
+Dále nakonfigurujte službu Aktualizátor konektorů tak, aby používala proxy, a to tak, že se v souboru Updater\ApplicationProxyConnectorUpdaterService.exe.config C:\Program Files\Microsoft AAD App proxy Connector vytvoří podobná změna.
 
-### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Krok 2: Konfigurace proxy serveru umožňující provoz z konektor a související služby k toku
+### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Krok 2: konfigurace proxy serveru tak, aby povoloval přenosy z konektoru a souvisejících služeb, které se mají proflow
 
-Existují čtyři aspekty ke zvážení v odchozího proxy serveru:
+Existují čtyři aspekty, které je třeba vzít v úvahu při použití odchozího proxy serveru:
 
-* Odchozí pravidla proxy
-* Ověřování proxy serveru
-* Porty serveru proxy
-* Kontrola protokolu SSL
+* Odchozí pravidla proxy serveru
+* Ověřování proxy
+* Proxy porty
+* Kontrola SSL
 
-#### <a name="proxy-outbound-rules"></a>Odchozí pravidla proxy
+#### <a name="proxy-outbound-rules"></a>Odchozí pravidla proxy serveru
 
-Povolit přístup k následujícím adresám URL:
+Povolte přístup k následujícím adresám URL:
 
-| URL | Jak se používá |
+| Adresa URL | Jak se používá |
 | --- | --- |
-| \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikace mezi konektoru a cloudovou službou Proxy aplikací |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Tyto adresy URL Azure používá k ověření certifikátů |
-| login.windows.net<br>login.microsoftonline.com | Konektor používá tyto adresy URL během procesu registrace. |
+| \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure tyto adresy URL používá k ověření certifikátů. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com<br>* . microsoftonline-p.com<br>*. msauth.net<br>* . msauthimages.NET<br>*. msecnd.net<br>* . msftauth.NET<br>*. msftauthimages.net<br>* . PhoneFactor.NET<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Konektor tyto adresy URL používá během procesu registrace. |
 
-Pokud vaše brána firewall nebo proxy server umožňuje nakonfigurovat DNS povolit seznamy, můžete povolit připojení k \*. msappproxy.net a \*. servicebus.windows.net. Pokud ne, je potřeba povolit přístup k [rozsahy IP adres Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
+Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete povolit připojení k \*. msappproxy.net a \*. servicebus.windows.net. V takovém případě je potřeba, abyste povolili přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
 
-Pokud nemůžete povolit připojení pomocí plně kvalifikovaného názvu domény a je nutné místo toho zadat rozsahy IP adres, použijte tyto možnosti:
+Pokud nemůžete připojení podle plně kvalifikovaného názvu domény a potřebujete místo toho zadat rozsahy IP adres, použijte tyto možnosti:
 
-* Povolte konektor odchozí přístup k všechny cíle.
-* Povolit konektor odchozí přístup ke všem [rozsahy IP adres datacentra Azure](https://www.microsoft.com//download/details.aspx?id=41653). Před obrovskou výzvou – s použitím seznamu rozsahů IP adres datacentra Azure je, že se každý týden aktualizuje. Je potřeba umístit proces určitým postupem zajistit, že jsou vaše pravidla přístupu k příslušným způsobem aktualizuje. Pouze pomocí některé podsady z IP adres může způsobit vaše konfigurace pro přerušení.
+* Povolí konektoru odchozí přístup ke všem cílům.
+* Povolí konektoru odchozí přístup ke všem [rozsahům IP adres datacentra Azure](https://www.microsoft.com//download/details.aspx?id=41653). Výzvou k použití seznamu rozsahů IP adres datacentra Azure je, že se každý týden aktualizuje. K zajištění toho, aby se pravidla přístupu aktualizovala, je potřeba umístit proces. Pouze použití podmnožiny IP adres může způsobit přerušení vaší konfigurace.
 
-#### <a name="proxy-authentication"></a>Ověřování proxy serveru
+#### <a name="proxy-authentication"></a>Ověřování proxy
 
-Ověřování proxy serveru se momentálně nepodporuje. Aktuální doporučujeme povolit konektor anonymní přístup k internetové cíle.
+Ověřování proxy serveru se momentálně nepodporuje. Naše aktuální doporučení je povolení konektoru anonymního přístupu k internetovým cílům.
 
-#### <a name="proxy-ports"></a>Porty serveru proxy
+#### <a name="proxy-ports"></a>Proxy porty
 
-Konektor umožňuje odchozí připojení SSL pomocí metody CONNECT. Tato metoda je v podstatě nastaví tunelové propojení prostřednictvím odchozího proxy serveru. Konfigurace proxy serveru tak, aby tunelové propojení na porty 443 a 80.
+Konektor zpřístupňuje odchozí připojení SSL pomocí metody CONNECT. Tato metoda v podstatě nastaví tunelové propojení prostřednictvím odchozího proxy serveru. Nakonfigurujte proxy server, aby povolovaly tunelování na porty 443 a 80.
 
 > [!NOTE]
-> Při spuštění služby Service Bus přes protokol HTTPS používá port 443. Ve výchozím nastavení, ale služby Service Bus pokusí přímého připojení TCP a spadne zpět na HTTPS pouze v případě, že přímé připojení se nezdaří.
+> Když Service Bus spouští přes protokol HTTPS, používá port 443. Ve výchozím nastavení se ale Service Bus pokusí přímá připojení TCP a vrátí se k HTTPS jenom v případě, že se přímé připojení nepovede.
 
-#### <a name="ssl-inspection"></a>Kontrola protokolu SSL
+#### <a name="ssl-inspection"></a>Kontrola SSL
 
-Nepoužívejte kontrole SSL pro provoz konektoru, protože to způsobuje problémy pro provoz konektoru. Konektor používá certifikát k ověření Proxy aplikace služby a tento certifikát může dojít ke ztrátě během kontroly protokolu SSL.
+Nepoužívejte kontrolu SSL pro provoz konektoru, protože způsobuje problémy s přenosy konektoru. Konektor používá certifikát k ověření ve službě proxy aplikací a tento certifikát může být během kontroly SSL ztracen.
 
-## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Řešení potíží s problémy proxy serveru konektoru a problémy s připojením služby
+## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Řešení problémů s proxy konektorem a problémy s připojením služby
 
-Teď byste měli vidět veškerý provoz přes proxy server. Pokud máte problémy, by měly pomoci následující informace o odstraňování potíží.
+Nyní byste měli vidět veškerý tok provozu prostřednictvím proxy serveru. Pokud máte problémy, měli byste využít následující informace pro řešení potíží.
 
-Nejlepší způsob, jak identifikovat a řešit problémy s připojením konektoru je provést zachytávání sítě při spouštění služby konektoru. Tady jsou některé rychlé tipy pro zachytávání a filtrování trasování sítě.
+Nejlepším způsobem, jak identifikovat a řešit potíže s připojením konektoru, je zařídit síťové zachycení při spuštění služby konektoru. Tady jsou některé rychlé tipy pro zachytávání a filtrování trasování sítě.
 
-Můžete použít monitorování nástroje podle vašeho výběru. Pro účely tohoto článku jsme použili Microsoft Message Analyzer. Je možné [si ho stáhnout z Microsoft](https://www.microsoft.com/download/details.aspx?id=44226).
+Můžete použít nástroj pro monitorování podle vašeho výběru. Pro účely tohoto článku jsme použili Microsoft Message Analyzer. Můžete [si ho stáhnout od Microsoftu](https://www.microsoft.com/download/details.aspx?id=44226).
 
-Následující příklady jsou specifické pro Message Analyzer, ale zásady můžete použít u libovolného nástroje pro analýzu.
+Následující příklady jsou specifické pro analyzátor zpráv, ale zásady je možné použít na jakýkoli nástroj pro analýzu.
 
-### <a name="take-a-capture-of-connector-traffic"></a>Využijte zachytávání provozu konektoru
+### <a name="take-a-capture-of-connector-traffic"></a>Pořiďte si zachycení provozu konektoru.
 
-Počáteční s řešením problémů, proveďte následující kroky:
+Při prvotním řešení potíží proveďte následující kroky:
 
-1. V services.msc zastavte službu Azure AD Application Proxy Connector.
+1. Ve službě Services. msc zastavte službu konektoru Azure Proxy aplikací služby AD.
 
-   ![Služba Azure AD Application Proxy Connector v konzole services.msc](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
+   ![Služba konektoru Azure Proxy aplikací služby AD v Services. msc](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
-1. Message Analyzer spusťte jako správce.
-1. Vyberte **spustit místní trasování**.
-1. Spusťte službu Azure AD Application Proxy Connector.
-1. Zastavte zachytávání sítě.
+1. Spusťte analyzátor zpráv jako správce.
+1. Vyberte **Spustit místní trasování**.
+1. Spusťte službu konektoru Azure Proxy aplikací služby AD.
+1. Zastavte síťové zachycení.
 
-   ![Snímek obrazovky ukazuje tlačítko Zastavit zachytávání sítě](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
+   ![Snímek obrazovky se zobrazí tlačítko Zastavit síťové zachycení](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
 
-### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>Zaškrtněte, pokud konektor provoz obchází odchozí proxy servery
+### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>Ověřte, jestli přenos konektoru obchází odchozí proxy servery.
 
-Pokud jste nakonfigurovali váš konektor Proxy aplikací obejít proxy servery a připojte se přímo ke službě Proxy aplikací, který chcete zobrazit v zachytávání sítě pro neúspěšné pokusy o připojení TCP.
+Pokud jste proxy server aplikace nakonfigurovali tak, aby se nepoužívaly proxy servery a připojili se přímo k proxy službě aplikace, chcete se podívat na síťové zachycení pro neúspěšné pokusy o připojení TCP.
 
-Pomocí filtru Message Analyzer k identifikaci těchto pokusů. Zadejte `property.TCPSynRetransmit` pole Filtr a vyberte **použít**.
+Tyto pokusy Identifikujte pomocí filtru analyzátoru zpráv. Do pole Filtr zadejte `property.TCPSynRetransmit` a vyberte **použít**.
 
-SYN paket, který je první paket odeslaný k navázání připojení TCP. Pokud tento paket nevrací odpověď, je SYN opakování. Předchozí filtru můžete použít zobrazíte všechny požadavky SYN opakovaně. Potom můžete zkontrolovat, zda tyto požadavky SYN odpovídají veškerý provoz související s konektoru.
+Paket SYN je první paket odeslaný k navázání připojení TCP. Pokud tento paket nevrátí odpověď, dojde k pokusu o SYN. K zobrazení všech přenesených SYNs můžete použít předchozí filtr. Pak můžete ověřit, zda tyto SYNs odpovídají jakýmkoli přenosům spojeným s konektorem.
 
-Pokud očekáváte, že konektor navázat přímé připojení ke službám Azure, SynRetransmit odpovědi na portu 443 jsou jako ukazatel toho, že máte problém sítě nebo brány firewall.
+Pokud očekáváte, že konektor bude přímá připojení ke službám Azure, SynRetransmit odpovědi na portu 443 jsou známkou toho, že máte potíže se sítí nebo bránou firewall.
 
-### <a name="check-if-the-connector-traffic-uses-outbound-proxies"></a>Zaškrtněte, pokud provoz konektor používá odchozí proxy servery
+### <a name="check-if-the-connector-traffic-uses-outbound-proxies"></a>Ověřte, jestli provoz konektoru používá odchozí proxy servery.
 
-Pokud jste nakonfigurovali provozu konektor Proxy aplikací na proxy servery, budete chtít najít připojení se nezdařilo prostřednictvím protokolu https pro váš proxy server.
+Pokud jste nakonfigurovali provoz konektoru proxy aplikací tak, aby procházel servery proxy, chcete vyhledat neúspěšná připojení HTTPS k vašemu proxy serveru.
 
-Chcete-li filtrovat v zachytávání sítě pro tyto pokusy o připojení, zadejte `(https.Request or https.Response) and tcp.port==8080` ve filtru Message Analyzer nahradíte 8080 služby port proxy serveru. Vyberte **použít** zobrazíte výsledky filtru.
+Pokud chcete pro tyto pokusy o připojení vyfiltrovat síťové zachycení, zadejte `(https.Request or https.Response) and tcp.port==8080` do filtru analyzátoru zpráv a nahraďte 8080 portem služby proxy. Výběrem **použít** zobrazíte výsledky filtru.
 
-Předchozí filtr zobrazí pouze HTTPs požadavky a odpovědi do a z portu proxy serveru. Hledáte připojit požadavků, které ukazují komunikace s proxy serverem. Po úspěšném nasazení získáte odpověď HTTP OK (200).
+Předchozí filtr ukazuje pouze požadavky HTTPs a odpovědi na nebo z portu proxy serveru. Hledáte žádosti o připojení, které ukazují komunikaci s proxy server. Po úspěchu získáte odpověď HTTP OK (200).
 
-Pokud se zobrazí další kódy odpovědí, jako je například 407 nebo 502, to znamená, že se proxy server vyžaduje ověření nebo nepovoluje přenos z nějakého důvodu. V tomto okamžiku zapojení týmu podpory proxy serveru.
+Pokud vidíte další kódy odpovědí, například 407 nebo 502, znamená to, že proxy vyžaduje ověření nebo nepovoluje provoz z nějakého jiného důvodu. V tuto chvíli propojíte tým podpory proxy server.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Principy konektorů Proxy aplikací Azure AD](application-proxy-connectors.md)
-* Pokud máte problémy s problémy s připojením konektor, položte svou otázku v [fórum pro Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) nebo vytvoříte lístek náš tým podpory.
+* [Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
+* Pokud máte problémy s problémy s připojením konektoru, položte svůj dotaz ve [fóru Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) nebo vytvořte lístek s naším týmem podpory.

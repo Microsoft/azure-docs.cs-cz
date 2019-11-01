@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984121"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242480"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -95,11 +95,11 @@ Následující diagram znázorňuje prostředí Azure Native:
 
 Základní scénář je vytvořit nebo připojit se k Azure NetApp Files svazku z virtuálního počítače ve stejné virtuální síti. Pro virtuální síť 2 v diagramu výše se svazek 1 vytvoří v delegované podsíti a dá se připojit k virtuálnímu počítači 1 ve výchozí podsíti.
 
-### <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
+### <a name="vnet-peering"></a>VNet Peering
 
 Pokud máte další virtuální sítě ve stejné oblasti, která potřebuje přístup k prostředkům ostatních zdrojů, virtuální sítě se dá připojit pomocí [partnerského vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuálních sítí a povolit tak zabezpečené připojení prostřednictvím infrastruktury Azure. 
 
-V diagramu výše zvažte virtuální síť 2 a virtuální síť 3. Pokud se virtuální počítač 2 potřebuje připojit k virtuálnímu počítači 3 nebo ke svazku 2 nebo pokud se virtuální počítač 3 potřebuje připojit k virtuálnímu počítači 2 nebo ke svazku 1, musíte povolit partnerský vztah virtuálních sítí mezi virtuálními sítěmi 2 a virtuální sítě 3. 
+V diagramu výše zvažte virtuální síť 2 a virtuální síť 3. Pokud se virtuální počítač 1 potřebuje připojit k virtuálnímu počítači 2 nebo ke svazku 2 nebo pokud se virtuální počítač 2 potřebuje připojit k virtuálnímu počítači 1 nebo ke svazku 1, musíte povolit partnerský vztah virtuálních sítí mezi virtuálními sítěmi 2 a virtuální sítě 3. 
 
 Zvažte také situaci, kdy je virtuální síť 1 partnerského vztahu s virtuální sítí 2 a virtuální síť 2 je v partnerském vztahu s virtuální sítí 3 ve stejné oblasti. Prostředky z virtuální sítě 1 se můžou připojit k prostředkům ve virtuální síti 2, ale nemůžou se připojit k prostředkům ve virtuální síti 3, pokud virtuální síť 1 a virtuální síť 3 nejsou partnerského vztahu. 
 
@@ -126,6 +126,6 @@ V topologii zobrazené výše je místní síť připojená k virtuální síti 
 
 Virtuální počítač 4 ve virtuální síti rozbočovače 1 se nemůže připojit ke svazku 3 ve virtuální síti rozbočovače 2. Virtuální počítač 5 v paprskovém VNet2 se navíc nemůže připojit ke svazku 2 v síti VNet-paprsek 1. Jedná se o případ, že virtuální sítě paprsků není v partnerském vztahu virtuálních _sítí podporována a směrování přenosu není podporováno_.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

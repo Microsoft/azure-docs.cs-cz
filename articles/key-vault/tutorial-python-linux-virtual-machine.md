@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 48095a2d446c8f85bab9d9268e924e29fe9a9f21
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 15650de776b481d1635b58f2b8ecf2bf2921d12f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003887"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242416"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Kurz: Použití virtuálního počítače Linux a aplikace Python k ukládání tajných kódů v Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Kurz: použití virtuálního počítače se systémem Linux a aplikace Python k ukládání tajných kódů v Azure Key Vault
 
 Azure Key Vault vám pomůže s ochranou tajných kódů, jako jsou klíče rozhraní API a databázové připojovací řetězce potřebné pro přístup k aplikacím, službám a prostředkům IT.
 
@@ -25,14 +25,14 @@ V tomto kurzu nastavíte webovou aplikaci Azure pro čtení informací z Azure K
 > [!div class="checklist"]
 > * Vytvořte trezor klíčů
 > * Uložení tajného klíče do trezoru klíčů
-> * Vytvořit virtuální počítač s Linuxem
+> * Vytvoření virtuálního počítače s Linuxem
 > * Povolit [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) pro virtuální počítač
 > * Udělte aplikaci konzoly požadovaná oprávnění ke čtení dat z trezoru klíčů.
 > * Načtení tajného kódu z trezoru klíčů
 
 Než budete pokračovat, ujistěte se, že rozumíte [základním konceptům o Key Vault](basic-concepts.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Git](https://git-scm.com/downloads)
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -62,7 +62,7 @@ az login
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí `az group create` příkazu v umístění západní USA s následujícím kódem. Nahraďte `YourResourceGroupName` názvem, který jste si zvolili.
+Vytvořte skupinu prostředků pomocí příkazu `az group create` v umístění Západní USA s následujícím kódem. Nahraďte `YourResourceGroupName` názvem dle vašeho výběru.
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
@@ -75,9 +75,9 @@ Tuto skupinu prostředků použijete v průběhu tohoto kurzu.
 
 Potom ve skupině prostředků, kterou jste vytvořili v předchozím kroku, vytvoříte Trezor klíčů. Zadejte tyto informace:
 
-* Název trezoru klíčů: Název musí být řetězec 3-24 znaků a musí obsahovat pouze 0-9, a-z, A-Z a spojovníky (-).
+* Název trezoru klíčů: název musí být řetězec 3-24 znaků a musí obsahovat pouze 0-9, a-z, A-Z a spojovníky (-).
 * Název skupiny prostředků.
-* Oblasti **Západní USA**.
+* Umístění: **Západní USA**.
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -95,11 +95,11 @@ Zadáním následujících příkazů vytvořte v trezoru klíčů tajný klíč
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Vytvořit virtuální počítač s Linuxem
+## <a name="create-a-linux-virtual-machine"></a>Vytvoření virtuálního počítače s Linuxem
 
-Vytvořte virtuální počítač pomocí `az vm create` příkazu.
+Vytvořte virtuální počítač pomocí příkazu `az vm create`.
 
-Následující příklad vytvoří virtuální počítač **myVM** a přidá uživatelský účet **azureuser**. Parametr automaticky vygeneruje klíč SSH a umístí ho do výchozího umístění klíče ( **~/.ssh**). `--generate-ssh-keys` Pokud chcete místo toho vytvořit konkrétní sadu klíčů, použijte `--ssh-key-value` možnost.
+Následující příklad vytvoří virtuální počítač **myVM** a přidá uživatelský účet **azureuser**. Parametr `--generate-ssh-keys` automaticky vygeneruje klíč SSH a umístí ho do výchozího umístění klíče ( **~/.ssh**). Pokud chcete místo toho vytvořit konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -125,7 +125,7 @@ Vytvoření virtuálního počítače a podpůrných prostředků trvá několik
 }
 ```
 
-Poznamenejte si si vlastní `publicIpAddress` výstup z virtuálního počítače. Tuto adresu použijete pro přístup k virtuálnímu počítači v pozdějších krocích.
+Poznamenejte si vlastní `publicIpAddress` ve výstupu z virtuálního počítače. Tuto adresu použijete pro přístup k virtuálnímu počítači v pozdějších krocích.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Přiřazení identity k virtuálnímu počítači
 
@@ -144,7 +144,7 @@ Výstup příkazu je následující.
 }
 ```
 
-Poznamenejte `systemAssignedIdentity`si. Použijete ho v dalším kroku.
+Poznamenejte si `systemAssignedIdentity`. Použijete ho v dalším kroku.
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>Udělte identitě virtuálního počítače oprávnění k Key Vault
 
@@ -174,20 +174,20 @@ Otevřete Sample.py a upravte jej tak, aby obsahoval následující kód:
 
 ```python
 # importing the requests library
-  import requests
-  
+import requests
+
 # Step 1: Fetch an access token from an MSI-enabled Azure resource      
-  # Note that the resource here is https://vault.azure.net for the public cloud, and api-version is 2018-02-01
-  MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
-  r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"})
+# Note that the resource here is https://vault.azure.net for the public cloud, and api-version is 2018-02-01
+MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
+r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"})
 
 # Extracting data in JSON format 
-  # This request gets an access token from Azure Active Directory by using the local MSI endpoint
-  data = r.json()
+# This request gets an access token from Azure Active Directory by using the local MSI endpoint
+data = r.json()
 
 # Step 2: Pass the access token received from the previous HTTP GET call to the key vault
-  KeyVaultURL = "https://prashanthwinvmvault.vault.azure.net/secrets/RandomSecret?api-version=2016-10-01"
-  kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
+KeyVaultURL = "https://prashanthwinvmvault.vault.azure.net/secrets/RandomSecret?api-version=2016-10-01"
+kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
 
 print(kvSecret.json()["value"])
 ```
@@ -209,7 +209,7 @@ V tomto kurzu jste zjistili, jak používat Azure Key Vault s aplikací Python b
 
 Odstraňte skupinu prostředků, virtuální počítač a všechny související prostředky, pokud je už nepotřebujete. Provedete to tak, že vyberete skupinu prostředků pro virtuální počítač a vyberete **Odstranit**.
 
-Odstraňte Trezor klíčů pomocí `az keyvault delete` příkazu:
+Odstraňte Trezor klíčů pomocí příkazu `az keyvault delete`:
 
 ```azurecli-interactive
 az keyvault delete --name

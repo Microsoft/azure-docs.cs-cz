@@ -11,26 +11,34 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/09/2019
+ms.date: 10/10/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b29e5815ec39e850bee0707a9c92c12201c7f21e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934534"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242217"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph z aplikace pro Android.
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro Android
 
 > [!NOTE]
 > Tento kurz se ještě neaktualizoval, aby fungoval s MSAL pro knihovnu Android verze 1,0. Funguje s dřívější verzí, jak je nakonfigurované v tomto kurzu.
 
 V tomto kurzu se dozvíte, jak integrovat aplikaci pro Android s platformou Microsoft identity. Vaše aplikace se přihlásí k uživateli, získá přístupový token pro volání rozhraní API Microsoft Graph a vytvoří požadavek na rozhraní Microsoft Graph API.  
 
-Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory.
+> [!div class="checklist"]
+> * Integrace aplikace pro Android s platformou Microsoft identity
+> * Přihlášení uživatele
+> * Získání přístupového tokenu pro volání rozhraní Microsoft Graph API
+> * Zavolejte Microsoft Graph rozhraní API.  
+
+Po dokončení tohoto kurzu bude vaše aplikace přijímat přihlašování osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a také pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="how-this-tutorial-works"></a>Jak tento kurz funguje
 
@@ -56,7 +64,7 @@ Tato ukázka používá knihovnu Microsoft Authentication Library pro Android (M
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
-V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kurz místo toho, [Stáhněte si kód](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
+V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kurz místo toho, [Stáhněte si kód](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip).
 
 1. Otevřete Android Studio a vyberte **Spustit nový Android Studio projekt**.
 2. Vyberte možnost **základní aktivita** a vyberte možnost **Další**.
@@ -538,6 +546,10 @@ Po přihlášení aplikace zobrazí data vrácená z Microsoft Graph koncového 
 ### <a name="consent"></a>Souhlas
 
 Když se uživatel poprvé přihlásí do vaší aplikace, zobrazí se mu výzva společnosti Microsoft pro vyjádření souhlasu s požadovanými oprávněními.  I když se většina uživatelů může zasílat, někteří klienti Azure AD mají zakázaný souhlas s uživatelem, který vyžaduje, aby správci souhlasí jménem všech uživatelů. Pro podporu tohoto scénáře Zaregistrujte obory aplikace v Azure Portal.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace](#register-your-application) .
 
 ## <a name="get-help"></a>Získání nápovědy
 

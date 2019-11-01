@@ -1,5 +1,5 @@
 ---
-title: Úlohy streamování Sparku s právě jedním zpracováním událostí – Azure HDInsight
+title: Streamování Sparku & právě jednou při zpracování událostí – Azure HDInsight
 description: Jak nastavit streamování Apache Spark pro zpracování události jednou a jenom jednou.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,20 +8,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 908c49a46fe7993bc20bcb63a3c15758e2de5343
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 34cb3f4cdcc5bfc11bba300ff1aa04422e0fcc57
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091026"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241147"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytváření úloh Apache Spark streamování s právě jedním zpracováním událostí
 
 Aplikace pro zpracování datových proudů využívají různé přístupy k tomu, jak zpracovávají zprávy znovu po určité chybě v systému:
 
-* Aspoň jednou: U každé zprávy je zaručeno, že bude zpracována, ale může být zpracována více než jednou.
-* Nejvýše jednou: Každá zpráva může nebo nemusí být zpracována. Pokud je zpráva zpracována, je zpracována pouze jednou.
-* Právě jednou: U každé zprávy je zaručeno, že bude zpracována pouze jednou a pouze jednou.
+* Alespoň jednou: je zaručeno, že každá zpráva bude zpracována, ale může být zpracována více než jednou.
+* Nejvýše jednou: každá zpráva může nebo nemusí být zpracována. Pokud je zpráva zpracována, je zpracována pouze jednou.
+* Přesně jednou: každou zprávu je zaručeno, že bude zpracována pouze jednou a pouze jednou.
 
 V tomto článku se dozvíte, jak nakonfigurovat streamování Sparku tak, aby bylo možné provést právě jedno zpracování.
 
@@ -49,7 +49,7 @@ Ve streamování Spark mají zdroje, jako je Event Hubs a Kafka, *spolehlivé p�
 
 ### <a name="use-the-write-ahead-log"></a>Použijte protokol zápisu předem.
 
-Služba Spark streamování podporuje použití protokolu pro zápis do paměti, kdy každá přijatá událost je nejdřív zapsaná do adresáře kontrolního bodu Sparku v úložišti odolném proti chybám a pak se uloží do odolné distribuované datové sady (RDD). V Azure je úložiště odolné proti chybám HDFS v Azure Storage nebo Azure Data Lake Storage. V aplikaci pro streamování Sparku je protokol pro zápis k dispozici pro všechny příjemce `spark.streaming.receiver.writeAheadLog.enable` nastavením nastavení konfigurace na. `true` Protokol zápisu vpřed poskytuje odolnost proti chybám při selhání ovladače i prováděcích modulů.
+Služba Spark streamování podporuje použití protokolu pro zápis do paměti, kdy každá přijatá událost je nejdřív zapsaná do adresáře kontrolního bodu Sparku v úložišti odolném proti chybám a pak se uloží do odolné distribuované datové sady (RDD). V Azure je úložiště odolné proti chybám HDFS v Azure Storage nebo Azure Data Lake Storage. V aplikaci pro streamování Sparku je protokol pro zápis k dispozici pro všechny přijímače nastavením nastavení konfigurace `spark.streaming.receiver.writeAheadLog.enable` na `true`. Protokol zápisu vpřed poskytuje odolnost proti chybám při selhání ovladače i prováděcích modulů.
 
 Pro pracovníky, kteří spouštějí úlohy s daty události, je každá RDD podle definice replikovaná i distribuovaná napříč více procesy. Pokud úloha selže, protože v pracovním procesu došlo k chybě, úloha bude restartována v jiném pracovním procesu, který má repliku dat události, takže nedojde ke ztrátě události.
 
@@ -87,7 +87,7 @@ Můžete například použít uloženou proceduru s Azure SQL Database, která v
 
 Dalším příkladem je použití děleného systému souborů, například Azure Storage objektů BLOB nebo Azure Data Lake Storage. V takovém případě nemusí logika jímky kontrolovat existenci souboru. Pokud soubor představující událost existuje, je jednoduše přepsán stejnými daty. V opačném případě se vytvoří nový soubor na vypočítané cestě.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přehled streamování Apache Spark](apache-spark-streaming-overview.md)
 * [Vytváření úloh s vysokou dostupností Apache Spark streamování v Apache Hadoop nitě](apache-spark-streaming-high-availability.md)

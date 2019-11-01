@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025006"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242223"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -73,7 +73,7 @@ Pokud jako koncový bod používáte veřejnou IP adresu, najdete informace o IP
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Mění se IP adresa nebo název DNS po celou dobu životnosti služby Application Gateway?
 
-Virtuální IP adresa se může změnit, pokud zastavíte a spustíte Aplikační bránu. Název DNS přidružený k aplikační bráně se ale po dobu života brány nezmění. Vzhledem k tomu, že se název DNS nemění, měli byste použít alias CNAME a nasměrovat ho na adresu DNS služby Application Gateway.
+V případě SKU Application Gateway V1 se virtuální IP adresa může změnit, pokud zastavíte a spustíte Aplikační bránu. Název DNS přidružený k aplikační bráně se ale po dobu života brány nezmění. Vzhledem k tomu, že se název DNS nemění, měli byste použít alias CNAME a nasměrovat ho na adresu DNS služby Application Gateway. V případě SKU Application Gateway v2 můžete IP adresu nastavit jako statickou, takže se IP adresa a název DNS se po celou dobu životnosti služby Application Gateway nezmění. 
 
 ### <a name="does-application-gateway-support-static-ip"></a>Podporuje Application Gateway statickou IP adresu?
 
@@ -322,7 +322,7 @@ Další informace najdete v tématu [OWASP chyby zabezpečení nejvyšší úrov
 
 ### <a name="does-waf-support-ddos-protection"></a>Podporuje WAF ochranu DDoS?
 
-Ano. Můžete povolit DDoS Protection ve virtuální síti, ve které je nasazená Aplikační brána. Toto nastavení zajišťuje, že služba Azure DDoS Protection také chrání virtuální IP adresu služby Application Gateway.
+Ano. Službu DDoS Protection můžete povolit ve virtuální síti, ve které je nasazená aplikační brána. Toto nastavení zajistí, aby služba Azure DDoS Protection chránila také virtuální IP adresu aplikační brány.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici návod k migraci z SKU V1 na SKU 2?
 

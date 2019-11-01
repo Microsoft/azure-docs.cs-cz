@@ -16,20 +16,20 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfaa5a4ebb8bc633dc49db08698aec31de9436d4
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 779328f4c21afb4392663e6f8840749ea505c529
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373121"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242435"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s PureCloud pomocí Genesys
 
-V tomto kurzu se dozvíte, jak integrovat PureCloud pomocí Genesys s Azure Active Directory (Azure AD). Při integraci PureCloud pomocí Genesys se službou Azure AD můžete:
+V tomto kurzu se dozvíte, jak integrovat PureCloud pomocí Genesys s Azure Active Directory (Azure AD). Až to uděláte, můžete:
 
-* Řízení ve službě Azure AD, která má přístup k PureCloud prostřednictvím Genesys.
+* Pomocí Azure AD můžete řídit, kteří uživatelé budou mít přístup k PureCloud pomocí Genesys.
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k PureCloud prostřednictvím Genesys s účty Azure AD.
-* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
+* Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
@@ -37,55 +37,55 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 
 Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné služby Azure AD. Pokud ho nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * PureCloud pomocí předplatného jednotného přihlašování Genesys (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* PureCloud by Genesys podporuje **SP a IDP** INICIované SSO
+* PureCloud by Genesys podporovaly **SP a IDP**– bylo zahájeno jednotné přihlašování.
 
 > [!NOTE]
-> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+> Vzhledem k tomu, že ID této aplikace je hodnota s pevným řetězcem, může být v jednom klientovi nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-purecloud-by-genesys-from-the-gallery"></a>Přidání PureCloud pomocí Genesys z Galerie
 
-Pokud chcete nakonfigurovat integraci PureCloud by Genesys do služby Azure AD, musíte přidat PureCloud od galerie Genesys z Galerie do svého seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci PureCloud by Genesys do služby Azure AD, musíte přidat PureCloud od galerie Genesys z Galerie do svého seznamu spravovaných aplikací SaaS. Postupujte přitom takto:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo pomocí osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Přejít na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **PureCloud by Genesys** .
-1. Z panelu výsledků vyberte **PureCloud by Genesys** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. Z panelu výsledků vyberte **PureCloud by Genesys** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-purecloud-by-genesys"></a>Konfigurace a testování jednotného přihlašování Azure AD pro PureCloud pomocí Genesys
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí PureCloud pomocí Genesys pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v PureCloud pomocí Genesys.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí PureCloud pomocí Genesys pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v PureCloud pomocí Genesys.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí PureCloud od Genesys, dokončete následující stavební bloky:
 
-1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Nakonfigurujte PureCloud pomocí jednotného přihlašování Genesys](#configure-purecloud-by-genesys-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte PureCloud pomocí Genesys testovacího uživatele](#create-purecloud-by-genesys-test-user)** – můžete mít protějšek B. Simon v PureCloud by Genesys, který je propojený s reprezentací uživatele v Azure AD.
-1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, **[přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** .
+1. **[Nakonfigurujte PureCloud pomocí jednotného přihlašování Genesys](#configure-purecloud-by-genesys-sso)** pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte PureCloud pomocí Genesys testovacího uživatele](#create-purecloud-by-genesys-test-user)** , aby měl protějšek B. Simon v PureCloud by Genesys, který je propojený s reprezentací uživatele Azure AD.
+1. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
+Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal, postupujte následovně:
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce **PureCloud podle Genesys** Application Integration najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu pera pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP**, zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL dle vaší oblasti:
+    a. Do pole **identifikátor** zadejte adresu URL, která odpovídá vaší oblasti:
 
     | |
     |--|
@@ -95,7 +95,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | `https://login.mypurecloud.ie/saml` |
     | `https://login.mypurecloud.au/saml` |
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL dle vaší oblasti:
+    b. Do pole **Adresa URL odpovědi** zadejte adresu URL, která odpovídá vaší oblasti:
 
     | |
     |--|
@@ -105,9 +105,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | `https://login.mypurecloud.ie/saml` |
     | `https://login.mypurecloud.com.au/saml`|
 
-1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
+1. Vyberte **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL dle vaší oblasti:
+    Do pole **přihlašovací adresa URL** zadejte adresu URL, která odpovídá vaší oblasti:
     
     | |
     |--|
@@ -117,11 +117,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | `https://login.mypurecloud.ie` |
     | `https://login.mypurecloud.com.au` |
 
-1. PureCloud by aplikace Genesys očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
+1. PureCloud by aplikace Genesys očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů:
 
     ![image](common/default-attributes.png)
 
-1. Kromě výše uvedeného aplikace PureCloud podle Genesys očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+1. Kromě toho PureCloud by aplikace Genesys očekává, že se v odpovědi SAML vrátí několik dalších atributů, jak je znázorněno v následující tabulce. Tyto atributy jsou také předem vyplněné, ale můžete je podle potřeby zkontrolovat.
 
     | Name (Název) | Zdrojový atribut|
     | ---------------| --------------- |
@@ -132,25 +132,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. V části **Nastavení PureCloud podle Genesys** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+1. V části **Nastavení PureCloud podle Genesys** zkopírujte příslušnou adresu URL (nebo adresy URL) na základě vašich požadavků.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+V této části vytvoříte testovacího uživatele s názvem B. Simon v Azure Portal:
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Do pole **uživatelské jméno** zadejte uživatelské jméno v následujícím formátu: username@companydomain.extension. Například: `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a potom si poznamenejte hodnotu zobrazenou v poli **heslo** .
+   1. Vyberte **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k PureCloud pomocí Genesys.
+V této části nastavíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k PureCloud pomocí Genesys.
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **PureCloud podle Genesys**.
@@ -162,72 +162,72 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak zvolte tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak zvolte tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** vyberte tlačítko **přiřadit** .
 
 ## <a name="configure-purecloud-by-genesys-sso"></a>Konfigurace PureCloud pomocí jednotného přihlašování Genesys
 
 1. V jiném okně webového prohlížeče se přihlaste k PureCloud pomocí Genesys jako správce.
 
-1. V horní části klikněte na **správce** a v části **integrace**přejděte na **jednotné přihlašování** .
+1. V horní části vyberte **správce** a potom v části **integrace**klikněte na **jednotné přihlašování** .
 
     ![Konfigurace jednotného přihlašování](./media/purecloud-by-genesys-tutorial/configure01.png)
 
-1. Přepněte na kartu **ADFS/Azure AD (Premium)** a proveďte následující kroky:
+1. Přepněte na kartu **ADFS/Azure AD (Premium)** a pak postupujte podle těchto kroků:
 
     ![Konfigurace jednotného přihlašování](./media/purecloud-by-genesys-tutorial/configure02.png)
 
-    a. Kliknutím na tlačítko **Procházet** Nahrajte certifikát s kódováním base-64, který jste stáhli z Azure Portal, do **certifikátu ADFS**.
+    a. Vyberte **Procházet** a nahrajte certifikát s kódováním base-64, který jste stáhli z Azure Portal do **certifikátu ADFS**.
 
-    b. Do textového pole **identifikátor URI vystavitele ADFS** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
+    b. Do pole **identifikátor URI vystavitele ADFS** vložte hodnotu **identifikátoru Azure AD** , který jste zkopírovali z Azure Portal.
 
-    c. Do textového pole **cílový identifikátor URI** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    c. Do pole **cílový identifikátor URI** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    d. Pro hodnotu **identifikátoru předávající strany** musíte přejít na Azure Portal, na stránce integrace aplikace **Genesys PureCloud podle** klikněte na kartu **vlastnosti** a zkopírujte hodnotu **ID aplikace** . Vložte ji do textového pole **identifikátoru předávající strany** . 
+    d. Pro hodnotu **identifikátoru předávající strany** klikněte na Azure Portal a pak na stránce Application Integration **PureCloud podle Genesys** vyberte kartu **vlastnosti** a zkopírujte hodnotu **ID aplikace** . Vložte ho do pole **identifikátor předávající strany** .
 
     ![Konfigurace jednotného přihlašování](./media/purecloud-by-genesys-tutorial/configure06.png)
 
-    e. Klikněte na **Uložit**.
+    e. Vyberte **Save** (Uložit).
 
 ### <a name="create-purecloud-by-genesys-test-user"></a>Vytvořit PureCloud podle Genesys testovacího uživatele
 
 Aby se uživatelé Azure AD mohli přihlašovat k PureCloud prostřednictvím Genesys, musí se zřídit v PureCloud pomocí Genesys. V PureCloud podle Genesys je zřizování ručním úkolem.
 
-**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
+**Pokud chcete zřídit uživatelský účet, postupujte podle těchto kroků:**
 
 1. Přihlaste se k PureCloud pomocí Genesys jako správce.
 
-1. V horní části klikněte na **správce** a přejděte na **lidi** v části **lidé & oprávnění**.
+1. V horní části vyberte **správce** a v části **lidé & oprávnění**přejít na **lidi** .
 
     ![Konfigurace jednotného přihlašování](./media/purecloud-by-genesys-tutorial/configure03.png)
 
-1. Na stránce Lidé klikněte na **Přidat osobu**.
+1. Na stránce **lidé** vyberte **Přidat osobu**.
 
     ![Konfigurace jednotného přihlašování](./media/purecloud-by-genesys-tutorial/configure04.png)
 
-1. V místní nabídce **Přidat lidi k organizaci** proveďte následující kroky:
+1. V dialogovém okně **Přidat lidi do organizace** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/purecloud-by-genesys-tutorial/configure05.png)
 
-    a. Do textového pole jméno a **příjmení** zadejte jméno uživatele jako **B. Simon**.
+    a. Do pole **jméno a příjmení zadejte** jméno uživatele. Například: **B. Simon**.
 
-    b. Do textového pole **e-mail** zadejte e-maily uživatele, jako je **b.Simon\@contoso.com**.
+    b. Do pole **e-mail** zadejte e-mail uživatele. Například: **b. simon\@contoso.com**.
 
-    c. Klikněte na **Vytvořit**.
+    c. Vyberte **Create** (Vytvořit).
 
 ## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici PureCloud by Genesys, měli byste se k PureCloud automaticky přihlásit pomocí Genesys, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici **PureCloud by Genesys** , měli byste se k PureCloud automaticky přihlásit pomocí účtu Genesys, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí služby Azure AD?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si PureCloud pomocí Genesys se službou Azure AD](https://aad.portal.azure.com/)

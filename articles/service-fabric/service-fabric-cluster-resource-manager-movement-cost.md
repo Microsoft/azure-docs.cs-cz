@@ -1,6 +1,6 @@
 ---
-title: 'Service Fabric Cluster Resource Manager: Náklady na přesunutí | Dokumentace Microsoftu'
-description: Přehled náklady na přesunutí pro služby Service Fabric
+title: 'Správce prostředků Service Fabric clusteru: náklady na přesun | Microsoft Docs'
+description: Přehled nákladů na přesun pro služby Service Fabric Services
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516606"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243008"
 ---
-# <a name="service-movement-cost"></a>Nákladech na přesun služeb
-Faktor, který Service Fabric Cluster Resource Manager bere v úvahu při pokusu určit, co se změní na clusteru udělat, je náklady na tyto změny. Pojem "cost" vyměněno vypnout kolik clusteru může zlepšit. Náklady se dostaneme při přesunu služby Vyrovnávání, Defragmentace a další požadavky. Cílem je pro splnění požadavků způsobem nejméně rušivé nebo nákladné. 
+# <a name="service-movement-cost"></a>Náklady na přesun služeb
+Faktor, který Správce prostředků Cluster Service Fabric zvažuje při pokusu o určení toho, jaké změny provedete v clusteru, jsou náklady na tyto změny. Pojem "náklady" se nepodílí na tom, kolik clusteru je možné zlepšit. Náklady se připravují při přesunu služeb pro vyrovnávání, defragmentaci a další požadavky. Cílem je splnit požadavky alespoň na rušivý nebo nákladný způsob. 
 
-Přesun služeb čas náklady na využití procesoru a šířka pásma minimálně sítě. Pro stavové služby vyžaduje kopírování stav těchto služeb, spotřebovává další paměti a disku. Minimalizace nákladů na řešení, které Azure Service Fabric Cluster Resource Manager nabízí zajišťuje, který se zbytečně stráví prostředky clusteru. Ale také nechcete ignorovat řešení, které by mohly výrazně zlepšit přidělení prostředků v clusteru.
+Přesun služeb má za nejnižší náklady na čas procesoru a šířku pásma sítě. Pro stavové služby je nutné zkopírovat stav těchto služeb a spotřebovat další paměť a disk. Minimalizace nákladů na řešení, která Správce prostředků cluster Azure Service Fabric, vám pomůže zajistit, že prostředky clusteru nestráví zbytečně. Nechcete ale také ignorovat řešení, která by významně vylepšila přidělení prostředků v clusteru.
 
-Cluster Resource Manager má dva způsoby výpočetní náklady a omezení, kterým je při pokusu o správě clusteru. První mechanismus je jednoduše počítání každém přesunu, která by provedla. Pokud jsou obě tato řešení generuje s použitím stejné vyvážit (skóre), pak Cluster Resource Manager upřednostňuje jeden s nejnižšími náklady (celkový počet přesune).
+Cluster Správce prostředků má dva způsoby výpočtu nákladů a jejich omezení při pokusu o správu clusteru. První mechanismus se počítá jenom při každém přesunu, který by provedl. Pokud jsou vygenerována dvě řešení se stejnou bilancí (skóre), pak cluster Správce prostředků upřednostňuje ten s nejnižšími náklady (celkový počet přesunů).
 
-Tato strategie funguje dobře. Ale stejně jako u výchozí nebo statické zatížení, je nepravděpodobné, že by v jakékoli komplexního systému, že všechny přesuny jsou stejné. Některé by mohly být mnohem víc.
+Tato strategie funguje dobře. Ale stejně jako u výchozích nebo statických zátěží není pravděpodobné v žádném komplexním systému, který je stejný jako u všech přesunů. Některé jsou pravděpodobně mnohem dražší.
 
-## <a name="setting-move-costs"></a>Náklady na přesunutí nastavení 
-Můžete určit výchozí přesunout náklady pro službu při jeho vytváření:
+## <a name="setting-move-costs"></a>Nastavení nákladů na přesun 
+Můžete určit výchozí náklady na přesunutí pro službu při jejím vytvoření:
 
 PowerShell:
 
@@ -49,7 +49,7 @@ serviceDescription.DefaultMoveCost = MoveCost.Medium;
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Můžete také zadat nebo aktualizovat MoveCost dynamicky pro službu po vytvoření služby: 
+Po vytvoření služby můžete také zadat nebo aktualizovat Cenazapřesun dynamicky pro službu: 
 
 PowerShell: 
 
@@ -65,9 +65,9 @@ updateDescription.DefaultMoveCost = MoveCost.High;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), updateDescription);
 ```
 
-## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Dynamicky zadání náklady na přesunutí na základě na repliku
+## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Dynamické určení nákladů na přesun u jednotlivých replik
 
-Všechny předchozí fragmenty kódu jsou pro zadání MoveCost celou službu najednou mimo službu samotnou. Ale přesun náklady jsou nejužitečnější při náklady na přesunutí objektu konkrétní službu změny v průběhu jeho životnost. Protože vlastních služeb pravděpodobně nejlepší představu o jak nákladné se mají přesunout daném okamžiku, je rozhraní API pro služby na sestavu vlastní osoba přesunout náklady za běhu. 
+Předchozí fragmenty kódu jsou všechny pro zadání Cenazapřesun pro celou službu najednou mimo samotnou službu. Náklady na přesunutí jsou však nejužitečnější, pokud se náklady na přesunutí určitého objektu služby mění po jeho životnosti. Vzhledem k tomu, že samotné služby pravděpodobně mají nejlepší představu o tom, jak nákladná mají přesunout určitou dobu, existuje rozhraní API pro služby, které během běhu oznamují své vlastní náklady na přesun. 
 
 C#:
 
@@ -75,25 +75,35 @@ C#:
 this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
-## <a name="impact-of-move-cost"></a>Dopad náklady na přesunutí
-MoveCost má čtyři úrovně: Nula, nízká, střední a vysokou. MoveCosts jsou relativní vzhledem k sobě navzájem, s výjimkou nula. Nula náklady na přesunutí znamená, že pohyb je zdarma a by neměl započítávat skóre řešení. Nastavení vašeho přechodu náklady na nejvyšší nemá *není* záruka, že replika zůstane na jednom místě.
+## <a name="impact-of-move-cost"></a>Dopad nákladů na přesun
+Cenazapřesun má pět úrovní: 0, nízká, střední, vysoká a VeryHigh. Platí následující pravidla:
+
+* MoveCosts jsou vzájemně relativní, s výjimkou nul a VeryHigh. 
+* Nulové náklady na přesun znamená, že pohyb je bezplatný a neměl by se počítat s skóre řešení.
+* Nastavení nákladů na přesun na vysoká nebo VeryHigh *neposkytuje jistotu* , že replika nebude *nikdy* přesunuta.
+* Repliky s VeryHigh náklady na přesun budou přesunuty pouze v případě, že dojde k porušení omezení v clusteru, které nelze opravit jiným způsobem (ani když vyžaduje přesunutí mnoha dalších replik za účelem opravy porušení).
+
+
 
 <center>
 
-![Náklady na přesunutí jako faktor při výběru replik pro přesun][Image1]
-</center>
+![přesunout náklady jako faktor pro výběr replik pro][Image1]
+přesunu </center>
 
-MoveCost vám pomůže najít řešení, která způsobit, že celkový nejméně přerušení a jsou nejjednodušší při stále přicházejících u ekvivalentní zůstatek. Pojem náklady na služby může být relativní vzhledem k řadu věcí. Většina běžných faktorů při výpočtu vaše náklady na přesunutí jsou:
+Cenazapřesun vám pomůže najít řešení, která způsobují nejmenší přerušení a jsou nejjednodušší, abyste dosáhli stejného zůstatku. Pojem nákladů na službu může být relativní vzhledem k mnoha účelům. Mezi nejběžnější faktory při výpočtu nákladů na stěhování patří:
 
-- Množství dat, který má služba pro přesun nebo stav.
-- Náklady na odpojení klientů. Přesunutí primární repliky je obvykle dražší než náklady na přesunutí na sekundární repliku.
-- Náklady na přerušení operace vydávaných za pochodu. Některé operace na data ukládat úroveň nebo operací provedených v reakci na hovor klienta je nákladné. Po určitém místě které nechcete toho není nutné. Proto při operaci se děje, zvýšit náklady na přesunutí tohoto objektu služby ke snížení pravděpodobnosti, že přesunu. Po dokončení operace nastavíte náklady zpět na normální.
+- Množství stavu nebo dat, které musí služba přesunout.
+- Náklady na odpojení klientů. Přesunutí primární repliky je obvykle nákladnější než náklady na přesun sekundární repliky.
+- Náklady na přerušení provozu v letadle. Některé operace na úrovni úložiště dat nebo operací provedených v reakci na klientské volání jsou nákladné. Po určitém okamžiku je nechcete zastavit, pokud ho nepotřebujete. Takže když operace probíhá, zvýšíte tím náklady na přesun tohoto objektu služby, aby se snížila pravděpodobnost, že se přesune. Po dokončení operace nastavte náklady zpět na normální.
 
-## <a name="enabling-move-cost-in-your-cluster"></a>Povolení náklady na přesunutí ve vašem clusteru
-Aby podrobnější MoveCosts vzít v úvahu musí být povolena MoveCost ve vašem clusteru. Bez tohoto nastavení výchozí režim počítání přesune se používá pro výpočet MoveCost a MoveCost sestavy jsou ignorovány.
+> [!IMPORTANT]
+> Cena za stěhování VeryHigh by se měla pečlivě zvážit, protože významně omezuje schopnost clusteru Správce prostředků najít globálně optimální řešení umístění v clusteru. Repliky s VeryHigh náklady na přesun budou přesunuty pouze v případě, že dojde k porušení omezení v clusteru, které nelze opravit jiným způsobem (ani když vyžaduje přesunutí mnoha dalších replik za účelem opravy porušení).
+
+## <a name="enabling-move-cost-in-your-cluster"></a>Povolení přesunutí nákladů v clusteru
+Aby bylo možné podrobnější MoveCosts vzít v úvahu, musí být ve vašem clusteru povolený Cenazapřesun. Bez tohoto nastavení se pro výpočet Cenazapřesun používá výchozí režim počítání přesunů a sestavy Cenazapřesun se ignorují.
 
 
-ClusterManifest.xml:
+Manifestem clusteru. XML:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -101,7 +111,7 @@ ClusterManifest.xml:
         </Section>
 ```
 
-prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery:
+přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
 
 ```json
 "fabricSettings": [
@@ -117,8 +127,8 @@ prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.jso
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
-- Správce prostředků clusteru Service Fabric metriky používá ke správě využití a kapacitu v clusteru. Další informace o metrikách a způsob jejich konfigurace, podívejte se na [Správa spotřeby prostředků a zatížení v Service Fabric s metrikami](service-fabric-cluster-resource-manager-metrics.md).
-- Další informace o tom, jak Cluster Resource Manager spravuje a vyrovnává zatížení v clusteru, podívejte se na [vyrovnávání vašeho clusteru Service Fabric](service-fabric-cluster-resource-manager-balancing.md).
+## <a name="next-steps"></a>Další kroky
+- Správce prostředků clusteru Service Fabric využívá metriky ke správě využití a kapacity v clusteru. Další informace o metrikách a o tom, jak je nakonfigurovat, najdete [v tématu Správa spotřeby prostředků a načítání v Service Fabric se metrikami](service-fabric-cluster-resource-manager-metrics.md).
+- Pokud se chcete dozvědět, jak cluster Správce prostředků spravuje a vyrovnává zatížení v clusteru, podívejte se na [vyvážení Service Fabric clusteru](service-fabric-cluster-resource-manager-balancing.md).
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png

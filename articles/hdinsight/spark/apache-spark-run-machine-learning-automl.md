@@ -1,5 +1,5 @@
 ---
-title: Spouštění Azure Machine Learning úloh v Apache Spark ve službě Azure HDInsight
+title: Spouštění Azure Machine Learning úloh v Apache Spark ve službě HDInsight
 description: Naučte se spouštět úlohy Azure Machine Learning pomocí automatizovaného strojového učení (AutoML) v Apache Spark ve službě Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 14cb4f02bc18bda24f022f1ccf41a06776a5136b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814036"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241485"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Spouštění Azure Machine Learning úloh pomocí automatizovaného strojového učení na Apache Spark ve službě HDInsight
 
@@ -21,7 +21,7 @@ Azure Machine Learning zjednodušuje a zrychluje sestavování, školení a nasa
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>Instalace Azure Machine Learning v clusteru HDInsight
 
-Obecné kurzy k automatizovanému strojovém učení najdete [v tématu Kurz: Pomocí automatizovaného strojového učení Sestavte](../../machine-learning/service/tutorial-auto-train-models.md)regresní model.
+Obecné kurzy k automatizovanému strojovém učení najdete v tématu [kurz: Použití automatizovaného strojového učení k sestavení regresního modelu](../../machine-learning/service/tutorial-auto-train-models.md).
 Všechny nové clustery HDInsight-Spark jsou předinstalované se sadou AutoML SDK. Pomocí tohoto [ukázkového poznámkového bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi)můžete začít s AutoML ve službě HDInsight. Tento Jupyter Notebook ukazuje, jak používat automatizované třídění strojového učení pro jednoduchý problém klasifikace.
 
 > [!Note]
@@ -71,10 +71,10 @@ dataflow_with_token = dprep.read_csv(
 
 ## <a name="experiment-submission"></a>Odeslání experimentu
 
-V případě [automatizované konfigurace strojového učení](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig)by vlastnost `spark_context` měla být nastavena pro balíček, který má být spuštěn v distribuovaném režimu. Vlastnost `concurrent_iterations`, která má maximální počet spuštěných iterací paralelně, by měla být nastavena na číslo nižší než jádro vykonavatele aplikace Spark.
+V [automatizované konfiguraci machine learningu](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig)by měla být vlastnost `spark_context` nastavená tak, aby balíček běžel v distribuovaném režimu. Vlastnost `concurrent_iterations`, což je maximální počet souběžně spuštěných iterací, by měl být nastaven na číslo menší než jádro vykonavatele aplikace Spark.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o motivaci na základě automatizovaného strojového učení najdete v tématu věnovaném [vydávání modelů na základě automatizovaného strojového učení od Microsoftu.](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
-* Další informace o používání funkcí automatizovaného ML v Azure ML najdete v tématu [nové možnosti automatizovaného strojového učení ve službě Azure Machine Learning Service](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/) .
+* Další informace o používání funkcí automatizovaného ML v Azure ML najdete [v tématu nové možnosti automatizovaného strojového učení v Azure Machine Learning](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/) .
 * [Projekt AutoML z Microsoft Research](https://www.microsoft.com/research/project/automl/)

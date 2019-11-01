@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: RStudio Server pro spouštění R v rámci služeb ML – Azure HDInsight'
+title: 'Rychlý Start: RStudio Server & ML Services pro R-Azure HDInsight'
 description: V rychlém startu spustíte skript R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: e2fcdeb91517b048766d59a9714346f76091a8c8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8a6a204ee5080e3acf99c13ecba1e1c7664d68b4
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123132"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241880"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Rychlý start: Spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Rychlý Start: spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio
 
 Služba ML Services v Azure HDInsight umožňuje skriptům R používat Apache Spark a Apache Hadoop MapReduce ke spouštění distribuovaných výpočtů. Služba ML řídí, jak se spouštějí volání, nastavením výpočetního kontextu. Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R. Pomocí hraničního uzlu máte možnost spouštět paralelní distribuované funkce RevoScaleR napříč jádry serveru hraničního uzlu. Můžete je také spouštět v uzlech clusteru pomocí RevoScaleR mapy Hadoop pro redukci nebo Apache Spark výpočetních kontextů.
 
@@ -27,13 +27,13 @@ Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop 
 
 ## <a name="connect-to-rstudio-server"></a>Připojení k RStudio Serveru
 
-RStudio server běží na hraničním uzlu clusteru. V části název clusteru služby ml `CLUSTERNAME` , který jste vytvořili, použijte následující adresu URL:
+RStudio server běží na hraničním uzlu clusteru. V `CLUSTERNAME` je název clusteru služby ML, který jste vytvořili, na následující adrese URL:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Při prvním přihlášení budete muset dvakrát ověřit. Pro první výzvu k ověření zadejte přihlašovací jméno a heslo správce clusteru. výchozí hodnota je `admin`. Pro druhé zobrazení výzvy k ověření zadejte přihlašovací jméno a heslo SSH, výchozí hodnota `sshuser`je. Další přihlašovací údaje vyžadují jenom pověření SSH.
+Při prvním přihlášení budete muset dvakrát ověřit. Pro první výzvu k ověření zadejte přihlašovací jméno a heslo správce clusteru. výchozí hodnota je `admin`. Pro druhé zobrazení výzvy k ověření zadejte přihlašovací jméno a heslo SSH, výchozí hodnota je `sshuser`. Další přihlašovací údaje vyžadují jenom pověření SSH.
 
 Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím snímku obrazovky:
 

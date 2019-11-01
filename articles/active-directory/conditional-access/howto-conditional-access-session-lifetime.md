@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356f2eac06365b90052cab214d9d1ac318710730
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70de9da44d52bd6e93377776a2dbfc1b802dd412
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389670"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241706"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relace ověřování pomocí podmíněného přístupu
 
@@ -53,7 +53,7 @@ Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživ
 Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na prémii. Pokud se chcete dozvědět víc o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
-> Pokud používáte funkci [existence konfigurovatelného tokenu](../develop/active-directory-configurable-token-lifetimes.md) , která je aktuálně ve verzi Public Preview, pamatujte, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a druhou s konfigurovatelným tokenem. funkce života. Společnost Microsoft plánuje vyřadit funkci životnosti konfigurovatelného tokenu od 1. listopadu a nahradit ji funkcí správy relace ověřování pomocí podmíněného přístupu.  
+> Pokud používáte funkci [existence konfigurovatelného tokenu](../develop/active-directory-configurable-token-lifetimes.md) , která je aktuálně ve verzi Public Preview, pamatujte, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a druhou s konfigurovatelným tokenem. funkce života. Microsoft plánuje vyřadit z provozu konfigurovatelnou funkci životnosti tokenu 1. května 2020 a nahradit ji funkcí správy relace ověřování pomocí podmíněného přístupu.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Zásady 1: řízení četnosti přihlašování
 
@@ -63,7 +63,7 @@ Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na pré
    > [!NOTE]
    > Pro klíčové systém Microsoft Office aplikace, jako je Exchange Online a SharePoint Online, se doporučuje nastavit četnost výzvy pro ověření, která se bude používat pro nejlepší uživatelské prostředí.
 
-1. Přejít na **řízení přístupu**@no__t**relaci** -1 a kliknutí na **četnost přihlášení**
+1. Přejděte na **ovládací prvky přístupu** > **relaci** a klikněte na **četnost přihlášení** .
 1. Zadejte požadovanou hodnotu dnů a hodin do prvního textového pole.
 1. Vyberte v rozevíracím seznamu hodnotu **hodiny** nebo **dny** .
 1. Uložit zásadu
@@ -82,7 +82,7 @@ Pokud jste nakonfigurovali různou frekvenci přihlašování pro různé webov�
    > [!NOTE]
    > Upozorňujeme, že tento ovládací prvek vyžaduje jako podmínku možnost "všechny cloudové aplikace". Trvalost relace prohlížeče se řídí tokenem relace ověřování. Všechny karty v relaci prohlížeče sdílejí jeden token relace, takže všichni musí sdílet stav trvalosti.
 
-1. Přejděte na **ovládací prvky přístupu**@no__t**relaci** -1 a klikněte na **trvalá relace prohlížeče** .
+1. Přejděte na **ovládací prvky přístupu** > **relaci** a klikněte na **trvalá relace prohlížeče** .
 1. Vybrat hodnotu z rozevíracího seznamu
 1. Uložit zásady
 

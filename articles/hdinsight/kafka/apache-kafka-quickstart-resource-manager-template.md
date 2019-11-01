@@ -1,5 +1,5 @@
 ---
-title: Nastavení Apache Kafka ve službě HDInsight pomocí Azure Resource Manager – rychlý Start
+title: 'Rychlý Start: Apache Kafka pomocí Azure Resource Manager-HDInsight'
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka v Azure HDInsight pomocí šablony Azure Resource Manager. Také se seznámíte s tématy, předplatiteli a konzumenty Kafka.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: deae58c30e37aa4df1dd8ca9b1b64cc79e9509ae
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: d908d210ff0448069a9abc76209c72d9b2a7595c
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123179"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242024"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí šablony Správce prostředků
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý Start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí šablony Správce prostředků
 
 [Apache Kafka](https://kafka.apache.org/) je open source platforma pro distribuované streamování. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. 
 
@@ -27,7 +27,7 @@ Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -39,11 +39,11 @@ Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsig
 
 2. K vytvoření clusteru Kafka použijte tyto hodnoty:
 
-    | Vlastnost | Value |
+    | Vlastnost | Hodnota |
     | --- | --- |
-    | Subscription | Vaše předplatné Azure. |
-    | Resource group | Skupina prostředků, ve které se cluster vytvoří. |
-    | Location | Oblast Azure, ve které se cluster vytvoří. |
+    | Předplatné | Vaše předplatné Azure. |
+    | Skupina prostředků | Skupina prostředků, ve které se cluster vytvoří. |
+    | Umístění | Oblast Azure, ve které se cluster vytvoří. |
     | Název clusteru | Název clusteru Kafka. |
     | Uživatelské jméno přihlášení clusteru | Název účtu používaného pro přihlášení ke službám založeným na protokolu HTTPs hostovaným v clusteru. |
     | Heslo přihlášení clusteru | Heslo pro přihlašovací uživatelské jméno. |

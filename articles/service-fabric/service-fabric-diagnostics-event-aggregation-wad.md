@@ -1,6 +1,6 @@
 ---
-title: Agregace událostí infrastruktury služby Azure s Windows Azure Diagnostics | Dokumentace Microsoftu
-description: Další informace o agregaci a shromažďování událostí pomocí WAD pro monitorování a diagnostiku clustery Azure Service Fabric.
+title: Agregace událostí v Azure Service Fabric s Windows Azure Diagnostics | Microsoft Docs
+description: Naučte se agregovat a shromažďovat události pomocí WAD pro monitorování a diagnostiku clusterů Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,72 +14,72 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 641f9150d1135f4f214038150b95b6691a37ecc0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 555a8a823526a51b045b4a0314ef7610bf728e5b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393256"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242968"
 ---
-# <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace událostí a kolekce pomocí Windows Azure Diagnostics
+# <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace a shromažďování událostí pomocí Azure Diagnostics Windows
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
 >
 >
 
-Když používáte cluster Azure Service Fabric, je vhodné pro shromažďování protokolů ze všech uzlů v centrálním umístění. S protokoly v centrálním umístění vám pomáhají analyzovat a řešit problémy ve vašem clusteru nebo problémy v aplikace a služby běžící v tomto clusteru.
+Pokud používáte cluster Azure Service Fabric, je vhodné shromáždit protokoly ze všech uzlů v centrálním umístění. Protokoly v centrálním umístění vám pomůžou analyzovat a řešit problémy v clusteru nebo problémy s aplikacemi a službami běžícími v tomto clusteru.
 
-Jeden způsob, jak nahrát a shromažďovat protokoly je použít rozšíření Windows Azure Diagnostics (WAD), nahraje protokoly do služby Azure Storage, který má také možnost odeslat protokoly do služby Azure Application Insights nebo Center událostí. Externí proces lze také použít ke čtení události ze služby storage a umístit je do o produkt poskytovaný analýzy platformy, jako [protokoly Azure monitoru](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení analýzy protokolů.
+Jedním ze způsobů, jak nahrávat a shromažďovat protokoly, je použít rozšíření Windows Azure Diagnostics (WAD), které nahrává protokoly do Azure Storage a má také možnost odesílat protokoly do Azure Application Insights nebo Event Hubs. Můžete také použít externí proces ke čtení událostí z úložiště a jejich umístění do produktu Analysis Platform, jako jsou [protokoly Azure monitor](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení pro analýzu protokolů.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
-Tyto nástroje se používají v tomto článku:
+## <a name="prerequisites"></a>Předpoklady
+V tomto článku se používají následující nástroje:
 
 * [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Šablona Azure Resource Manageru](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="service-fabric-platform-events"></a>Události platformy Service Fabric
-Service Fabric nastaví můžete s několika [out-of-the-box protokolování kanály](service-fabric-diagnostics-event-generation-infra.md), které jsou k dispozici následující kanály jsou předem nakonfigurovaným rozhraním rozšíření k odeslání, sledování a diagnostická data do tabulky úložiště, nebo jinde:
-  * [Provozní události](service-fabric-diagnostics-event-generation-operational.md): Chcete získat podrobnější popis operace, které provádí platformu Service Fabric. Mezi příklady patří vytváření aplikací a služeb, změny stavu uzlu a informace o upgradu. Tyto jsou emitovány jako protokoly trasování událostí pro Windows (ETW)
-  * [Programovacího modelu Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
-  * [Programovacího modelu Reliable Services](service-fabric-reliable-services-diagnostics.md)
+## <a name="service-fabric-platform-events"></a>Service Fabric události platformy
+Service Fabric nastavíte v několika málo integrovaných [kanálech protokolování](service-fabric-diagnostics-event-generation-infra.md), u kterých jsou následující kanály předem nakonfigurované s příponou, aby odesílaly data monitorování a diagnostiky do tabulky úložiště nebo jinde:
+  * [Provozní události](service-fabric-diagnostics-event-generation-operational.md): operace vyšší úrovně, které provádí Service Fabric platforma. Mezi příklady patří vytváření aplikací a služeb, změny stavu uzlu a informace o upgradu. Ty se generují jako protokoly ETW (Event Tracing for Windows).
+  * [Reliable Actors události programovacího modelu](service-fabric-reliable-actors-diagnostics.md)
+  * [Reliable Services události programovacího modelu](service-fabric-reliable-services-diagnostics.md)
 
-## <a name="deploy-the-diagnostics-extension-through-the-portal"></a>Nasazení rozšíření diagnostiky na portálu
-Prvním krokem při shromažďování protokolů je k nasazení rozšíření diagnostiky na uzlech škálovací sady virtuálního počítače v clusteru Service Fabric. Rozšíření diagnostiky shromažďuje protokoly na každém virtuálním počítači a odesílá je do účtu úložiště, který zadáte. Následující kroky popisují, jak to provést pro nové i stávající clusterů pomocí webu Azure portal a šablon Azure Resource Manageru.
+## <a name="deploy-the-diagnostics-extension-through-the-portal"></a>Nasazení diagnostického rozšíření prostřednictvím portálu
+Prvním krokem při shromažďování protokolů je nasazení diagnostického rozšíření na uzlech sady škálování virtuálních počítačů v clusteru Service Fabric. Diagnostické rozšíření shromažďuje protokoly na každém virtuálním počítači a nahrává je do účtu úložiště, který zadáte. Následující kroky popisují, jak tuto akci provést pro nové a existující clustery prostřednictvím šablon Azure Portal a Azure Resource Manager.
 
-### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>Nasazení rozšíření diagnostiky jako součást vytvoření clusteru pomocí webu Azure portal
-Při vytváření clusteru, v kroku konfigurace clusteru, rozbalte volitelná nastavení a ujistěte se, že Diagnostika je nastavena na **na** (výchozí nastavení).
+### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>Nasazení diagnostického rozšíření v rámci vytváření clusteru pomocí Azure Portal
+Při vytváření clusteru rozbalte v kroku konfigurace clusteru volitelná nastavení a ujistěte se, že je diagnostika nastavená na **zapnuto** (výchozí nastavení).
 
-![Nastavení Azure Diagnostics na portálu pro vytváření clusteru](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics-new.png)
+![Nastavení Azure Diagnostics na portálu pro vytvoření clusteru](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics-new.png)
 
-Důrazně doporučujeme, stáhněte si šablonu **před kliknutím na vytvořit** v posledním kroku. Podrobnosti najdete v [nastavení clusteru Service Fabric pomocí šablony Azure Resource Manageru](service-fabric-cluster-creation-via-arm.md). Je nutné šablonu, kterou chcete provést změny na jaké kanálů (jsou uvedené výše) pro shromažďování dat z.
+Důrazně doporučujeme, abyste si šablonu stáhli předtím, než v posledním kroku **kliknete na vytvořit** . Podrobnosti najdete v tématu [nastavení Service Fabricho clusteru pomocí Azure Resource Manager šablony](service-fabric-cluster-creation-via-arm.md). Potřebujete šablonu k provedení změn v tom, jaké kanály (uvedené výše) mají shromažďovat data.
 
-![Šablony clusteru](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
+![Šablona clusteru](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-Teď, když máte agregaci událostí ve službě Azure Storage [nastavení protokoly Azure monitoru](service-fabric-diagnostics-oms-setup.md) k získání přehledu a jejich dotazování ve službě Azure Monitor protokoly portálu
+Teď, když agregujete události v Azure Storage, můžete [nastavit protokoly Azure monitor](service-fabric-diagnostics-oms-setup.md) a získat přehledy a dotazovat je na portálu Azure monitor Logs.
 
 >[!NOTE]
->Aktuálně neexistuje žádný způsob, jak filtrovat nebo mazání událostí, které se odesílají do tabulky. Pokud implementujete není procesu odebrání události z tabulky, bude dál rozšiřovat tabulky (výchozí limit je 50 GB). Návod, jak změnit jsou [níže v tomto článku](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Kromě toho je příkladem data výmazu dat služby spuštěné [sledovacích ukázka](https://github.com/Azure-Samples/service-fabric-watchdog-service), a je doporučeno, že napíšete nějakou, pokud není dobrý důvod pro ukládání protokolů nad rámec 30 nebo 90 den časový rámec.
+>V současné době neexistuje způsob, jak filtrovat nebo odfiltrovat události, které jsou odesílány do tabulek. Pokud neimplementujete proces pro odebrání událostí z tabulky, bude se tabulka dál zvětšovat (výchozí limit je 50 GB). Pokyny, jak to změnit, najdete [dál v tomto článku](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Kromě toho existuje příklad služby výmazu dat spuštěného v rámci [sledovacího](https://github.com/Azure-Samples/service-fabric-watchdog-service)procesu a doporučujeme, abyste si sami napsali, a to i v případě, že nebudete mít dobrý důvod na uložení protokolů mimo časový rámec 30 nebo 90 dnů.
 
 
 
-## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Nasazení rozšíření diagnostiky prostřednictvím Azure Resource Manageru
+## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Nasadit rozšíření diagnostiky prostřednictvím Azure Resource Manager
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Vytvoření clusteru s diagnostickým rozšířením
-K vytvoření clusteru pomocí Resource Manageru, musíte přidat konfiguraci diagnostiky JSON do úplné šablony Resource Manageru. Poskytujeme Ukázka šablony Resource Manageru cluster pět virtuálních počítačů s konfiguraci diagnostiky, které jsou přidány jako součást naší ukázkové šablony Resource Manageru. Zobrazí se na této pozici ve Galerii ukázek Azure: [Cluster s pěti uzly s ukázkou šablony Resource Manageru diagnostiky](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+Chcete-li vytvořit cluster pomocí Správce prostředků, je nutné přidat kód JSON konfigurace diagnostiky do úplné Správce prostředků šablony. V rámci našich ukázek šablon Správce prostředků poskytujeme ukázkovou šablonu Správce prostředků clusteru s pěti virtuálními počítači, které se do ní přidaly pomocí konfigurace diagnostiky. Můžete ji zobrazit v tomto umístění v galerii ukázek Azure: [cluster s pěti uzly s diagnostikou správce prostředků šablony ukázka](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
-Pokud chcete zobrazit nastavení diagnostiky v šabloně Resource Manageru, otevřete soubor azuredeploy.json a vyhledejte **IaaSDiagnostics**. Pokud chcete vytvořit cluster pomocí této šablony, vyberte **nasadit do Azure** tlačítko, které jsou k dispozici na na předchozí odkaz.
+Chcete-li zobrazit nastavení diagnostiky v šabloně Správce prostředků, otevřete soubor azuredeploy. JSON a vyhledejte **IaaSDiagnostics**. Pokud chcete vytvořit cluster pomocí této šablony, vyberte tlačítko **nasadit do Azure** , které je k dispozici na předchozím odkazu.
 
-Alternativně můžete stáhnout ukázku Resource Manageru, provádět změny a vytvořit cluster s upravenou šablonu pomocí `New-AzResourceGroupDeployment` příkazu v okně Azure PowerShell. Viz následující kód pro parametry, které je předáno příkazu. Podrobné informace o tom, jak nasadit skupinu prostředků pomocí Powershellu najdete v článku [nasazení skupiny prostředků pomocí šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md).
+Alternativně můžete stáhnout ukázku Správce prostředků, provést v ní změny a vytvořit cluster s upravenou šablonou pomocí příkazu `New-AzResourceGroupDeployment` v okně Azure PowerShell. Podívejte se na následující kód parametrů, které předáte do příkazu. Podrobné informace o tom, jak nasadit skupinu prostředků pomocí PowerShellu, najdete v článku [nasazení skupiny prostředků pomocí šablony Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
 
-### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Přidat diagnostické rozšíření do existujícího clusteru
-Pokud máte existující cluster, který nemá diagnostiky nasazený, můžete přidat nebo aktualizovat prostřednictvím šablona clusteru. Upravte šablonu Resource Manageru, který se používá k vytvoření stávajícího clusteru nebo stáhněte šablonu z portálu, jak je popsáno výše. Upravte soubor template.json provedením následujících úloh:
+### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Přidání rozšíření diagnostiky do existujícího clusteru
+Pokud máte existující cluster, který nemá nasazenou diagnostiku, můžete ho přidat nebo aktualizovat prostřednictvím šablony clusteru. Upravte Správce prostředků šablonu, která se používá k vytvoření existujícího clusteru, nebo Stáhněte šablonu z portálu, jak je popsáno výše. Upravte soubor Template. JSON prováděním následujících úloh:
 
-Přidáte nový prostředek úložiště tak, že přidáte do části prostředky k šabloně.
+Přidejte do šablony nový prostředek úložiště přidáním do části Resources (prostředky).
 
 ```json
 {
@@ -98,7 +98,7 @@ Přidáte nový prostředek úložiště tak, že přidáte do části prostřed
 },
 ```
 
- V dalším kroku přidejte do části parametrů ihned za definici účtu úložiště mezi `supportLogStorageAccountName`. Nahraďte zástupný text *místo pro název účtu úložiště* s názvem účtu úložiště, který chcete.
+ V dalším kroku přidejte do oddílu Parameters hned za definice účtu úložiště mezi `supportLogStorageAccountName`. Nahraďte zástupný text *název účtu úložiště* místo pro název účtu úložiště, který chcete.
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -120,7 +120,7 @@ Přidáte nový prostředek úložiště tak, že přidáte do části prostřed
       }
     },
 ```
-Potom aktualizujte `VirtualMachineProfile` část soubor template.json přidáním následujícího kódu v rámci pole přípon. Ujistěte se, že přidejte čárku na začátku nebo konci, v závislosti na tom, kde je vložen.
+Pak aktualizujte část `VirtualMachineProfile` souboru template. JSON přidáním následujícího kódu do pole rozšíření. Nezapomeňte přidat čárku na začátek nebo konec, v závislosti na tom, kde je vložena.
 
 ```json
 {
@@ -165,6 +165,15 @@ Potom aktualizujte `VirtualMachineProfile` část soubor template.json přidán�
                     "DefaultEvents": {
                     "eventDestination": "ServiceFabricSystemEventTable"
                     }
+                },
+                {
+                    "provider": "02d06793-efeb-48c8-8f7f-09713309a810",
+                    "scheduledTransferLogLevelFilter": "Information",
+                    "scheduledTransferKeywordFilter": "4611686018427387904",
+                    "scheduledTransferPeriod": "PT5M",
+                    "DefaultEvents": {
+                    "eventDestination": "ServiceFabricSystemEventTable"
+                    }
                 }
                 ]
             }
@@ -177,10 +186,10 @@ Potom aktualizujte `VirtualMachineProfile` část soubor template.json přidán�
 }
 ```
 
-Když upravíte soubor template.json, jak je popsáno, znovu publikujte šablony Resource Manageru. Pokud jste exportovali šablonu, spuštěním deploy.ps1 souboru znovu publikuje uzamkl šablony. Po nasazení, ujistěte se, že **ProvisioningState** je **Succeeded**.
+Po úpravě souboru template. JSON, jak je popsáno, znovu publikujte šablonu Správce prostředků. Pokud byla šablona exportována, je při spuštění souboru Deploy. ps1 znovu publikována šablona. Po nasazení zajistěte, aby byla **ProvisioningState** **úspěšná**.
 
 > [!TIP]
-> Pokud se chystáte nasazení kontejnerů do clusteru, povolte WAD ke sbírání statistiky dockeru tak, že přidáte tuto hodnotu na vaše **WadCfg > DiagnosticMonitorConfiguration** oddílu.
+> Pokud budete do svého clusteru nasazovat kontejnery, povolte WAD, abyste si vybrali statistiku Docker tak, že ji přidáte do oddílu **WadCfg > DiagnosticMonitorConfiguration** .
 >
 >```json
 >"DockerSources": {
@@ -191,45 +200,45 @@ Když upravíte soubor template.json, jak je popsáno, znovu publikujte šablony
 >},
 >```
 
-### <a name="update-storage-quota"></a>Aktualizace kvóty úložiště
+### <a name="update-storage-quota"></a>Aktualizovat kvótu úložiště
 
-Od tabulky vyplněn rozšíření roste až do dosažení této kvóty, můžete chtít zvážit snížení velikosti kvóty. Výchozí hodnota je 50 GB a je možné konfigurovat v šabloně v části `overallQuotaInMB` pole `DiagnosticMonitorConfiguration`
+Vzhledem k tomu, že tabulky naplněné rozšířením roste až do dosažení kvóty, možná budete chtít zvážit snížení velikosti kvóty. Výchozí hodnota je 50 GB a v šabloně v poli `overallQuotaInMB` v části `DiagnosticMonitorConfiguration` lze nakonfigurovat.
 
 ```json
 "overallQuotaInMB": "50000",
 ```
 
 ## <a name="log-collection-configurations"></a>Konfigurace shromažďování protokolů
-Protokoly z další kanály jsou také k dispozici pro kolekci, tady jsou některé z nejběžnějších konfiguracích, které provedete v šabloně pro clustery spuštěné v Azure.
+Protokoly z dalších kanálů jsou k dispozici také pro kolekci. zde jsou některé nejběžnější konfigurace, které můžete vytvořit v šabloně pro clustery běžící v Azure.
 
-* Provozní kanál - Base: Povolené ve výchozím nastavení vysoké úrovně operací provedených metodou Service Fabric a clusteru, včetně událostí pro uzel vzniká, nové aplikace se nasazuje nebo upgradu vrácení zpět, atd. Seznam událostí, najdete v tématu [provozní události kanálu](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
+* Provozní kanál – základ: ve výchozím nastavení povolená operace vysoké úrovně, které provádí Service Fabric a cluster, včetně událostí pro uzel, který se připravuje, nově nasazené aplikace nebo vrácení upgradu, atd. Seznam událostí najdete v tématu [události provozního kanálu](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
   ```
-* Provozní kanál – podrobné: To zahrnuje sestav o stavu a vyrovnávání zátěže rozhodnutí plus všechno, co v základní provozní kanál. Tyto události jsou generovány v systému nebo kódu s použitím stavu nebo načíst rozhraní API pro generování sestav, jako [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) nebo [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Chcete-li zobrazit tyto události v prohlížeči diagnostických událostí v sadě Visual Studio přidejte "Microsoft-ServiceFabric:4:0x4000000000000008" do seznamu zprostředkovatelů trasování událostí pro Windows.
+* Provozní kanál – podrobné: zahrnuje sestavy o stavu a rozhodnutí o vyrovnávání zatížení a také vše v základním provozním kanálu. Tyto události jsou generovány systémem nebo vaším kódem pomocí rozhraní API pro vytváření sestav stavu nebo načítání, jako je například [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) nebo [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Chcete-li zobrazit tyto události v diagnostickém Prohlížeč událostí sady Visual Studio, přidejte do seznamu zprostředkovatelů ETW "Microsoft-ServiceFabric: 4:0x4000000000000008".
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387912"
   ```
 
-* Data a kanál pro zasílání zpráv – základ: Kritické protokolů a událostí vygenerovaných při zasílání zpráv (aktuálně pouze ReverseProxy) a cesta k datům, kromě do protokolů podrobné provozní kanál. Tyto události jsou zpracování chyb a další důležité problémy v ReverseProxy požadavku, jakož i zpracovaných požadavků. **Toto je naše doporučení pro komplexní protokolování**. Chcete-li tyto události zobrazit v prohlížeči diagnostických událostí v sadě Visual Studio, přidejte "Microsoft-ServiceFabric:4:0x4000000000000010" do seznamu zprostředkovatelů trasování událostí pro Windows.
+* Kanál dat a zasílání zpráv – základní: kritické protokoly a události generované v zasílání zpráv (aktuálně jenom ReverseProxy) a data a cesty k podrobným protokolům operačního kanálu. Tyto události jsou selhání zpracování požadavků a další kritické problémy v ReverseProxy a také zpracovávané požadavky. **Toto je naše doporučení pro komplexní protokolování**. Chcete-li zobrazit tyto události v diagnostickém Prohlížeč událostí sady Visual Studio, přidejte do seznamu zprostředkovatelů ETW "Microsoft-ServiceFabric: 4:0x4000000000000010".
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387928"
   ```
 
-* Kanál pro zasílání zpráv – podrobné & dat: Podrobné kanál, který obsahuje všechny protokoly, které jsou méně náročné z dat a zasílání zpráv v clusteru a podrobné provozní kanál. Podrobné řešení potíží se všechny události reverzního proxy serveru, najdete [Průvodce Diagnostika reverzního proxy serveru](service-fabric-reverse-proxy-diagnostics.md).  Chcete-li tyto události zobrazit v prohlížeči diagnostických událostí v sadě Visual Studio, přidejte "Microsoft-ServiceFabric:4:0x4000000000000020" do seznamu zprostředkovatelů trasování událostí pro Windows.
+* Kanál data & zasílání zpráv – podrobná: podrobný kanál, který obsahuje všechny nekritické protokoly z dat a zasílání zpráv v clusteru a podrobný provozní kanál. Podrobný Poradce při potížích se všemi událostmi reverzního proxy serveru najdete v [průvodci diagnostikou reverzního proxy](service-fabric-reverse-proxy-diagnostics.md).  Chcete-li zobrazit tyto události v prohlížeči diagnostických událostí aplikace Visual Studio, přidejte do seznamu zprostředkovatelů ETW "Microsoft-ServiceFabric: 4:0x4000000000000020".
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387944"
   ```
 
 >[!NOTE]
->Tento kanál má velmi velký objem událostí, povolení shromažďování událostí z této podrobné výsledky kanálu v spoustu trasování rychle vytvořit a může využívat kapacitu úložiště. Pouze zapněte Pokud je to nezbytně nutné.
+>Tento kanál má velmi velký objem událostí. díky tomu shromažďování událostí z tohoto podrobného kanálu vede k rychlému generování mnoha trasování a může spotřebovávat kapacitu úložiště. Tuto funkci zapněte pouze v případě, že je nezbytně nutné.
 
 
-Povolit **základní provozní kanál** Naše doporučení pro komplexní protokolování s minimem šumu `EtwManifestProviderConfiguration` v `WadCfg` šablony by vypadat nějak takto:
+Aby bylo možné **základní provozní kanál** povolit pro komplexní protokolování s minimálním objemem hluku, `EtwManifestProviderConfiguration` v `WadCfg` vaší šablony vypadala takto:
 
 ```json
   "WadCfg": {
@@ -262,6 +271,15 @@ Povolit **základní provozní kanál** Naše doporučení pro komplexní protok
                 "DefaultEvents": {
                   "eventDestination": "ServiceFabricSystemEventTable"
                 }
+              },
+              {
+                "provider": "02d06793-efeb-48c8-8f7f-09713309a810",
+                "scheduledTransferLogLevelFilter": "Information",
+                "scheduledTransferKeywordFilter": "4611686018427387904",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                "eventDestination": "ServiceFabricSystemEventTable"
+                }
               }
             ]
           }
@@ -269,13 +287,13 @@ Povolit **základní provozní kanál** Naše doporučení pro komplexní protok
       },
 ```
 
-## <a name="collect-from-new-eventsource-channels"></a>Shromažďovat z nových kanálů EventSource
+## <a name="collect-from-new-eventsource-channels"></a>Shromáždit z nových kanálů EventSource
 
-Aktualizovat diagnostiku, která shromažďování protokolů z nových kanálů EventSource, které představují novou aplikaci, že jste o nasazení, provádět stejné kroky, jak je uvedeno výše pro nastavení diagnostiky pro existující cluster.
+Chcete-li aktualizovat diagnostiku pro shromažďování protokolů z nových kanálů EventSource, které reprezentují novou aplikaci, kterou se chystáte nasadit, proveďte stejný postup, jak je popsáno výše v tématu nastavení diagnostiky pro existující cluster.
 
-Aktualizovat `EtwEventSourceProviderConfiguration` oddílu v souboru template.json mohli přidat záznamy pro nové kanály EventSource před použít danou konfiguraci aktualizovat pomocí `New-AzResourceGroupDeployment` příkaz prostředí PowerShell. Název zdroje událostí je definován jako část kódu v souboru ServiceEventSource.cs generovaný sady Visual Studio.
+Aktualizujte část `EtwEventSourceProviderConfiguration` v souboru template. JSON a přidejte položky pro nové kanály EventSource předtím, než použijete aktualizaci konfigurace pomocí příkazu `New-AzResourceGroupDeployment` PowerShellu. Název zdroje události je definován jako součást kódu v souboru ServiceEventSource.cs generovaném systémem Visual Studio.
 
-Například pokud váš zdroj událostí název mé Eventsource, přidejte následující kód do tabulky s názvem MyDestinationTableName umístit události z mé Eventsource.
+Pokud se například váš zdroj události jmenuje my-EventSource, přidejte následující kód, který umístí události z mé vlastnosti EventSource do tabulky s názvem MyDestinationTableName.
 
 ```json
         {
@@ -287,35 +305,35 @@ Například pokud váš zdroj událostí název mé Eventsource, přidejte násl
         }
 ```
 
-Pokud chcete shromáždit čítače výkonu nebo protokoly událostí, upravte šablonu Resource Manageru pomocí příkladů v [vytvořit virtuální počítač Windows s monitorováním a diagnostikou pomocí šablony Azure Resource Manageru](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Potom znovu publikujte šablony Resource Manageru.
+Chcete-li shromáždit čítače výkonu nebo protokoly událostí, upravte šablonu Správce prostředků pomocí příkladů uvedených v části [Vytvoření virtuálního počítače s Windows pomocí monitorování a diagnostiky pomocí Azure Resource Manager šablony](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Pak šablonu Správce prostředků znovu publikujte.
 
-## <a name="collect-performance-counters"></a>Shromažďování čítačů výkonu
+## <a name="collect-performance-counters"></a>Shromáždit čítače výkonu
 
-Ke shromažďování metrik výkonu z vašeho clusteru, přidejte čítače výkonu pro vaše "WadCfg > DiagnosticMonitorConfiguration" v šabloně Resource Manageru pro váš cluster. Naleznete v tématu [Performance monitoring pro aplikace s využitím WAD](service-fabric-diagnostics-perf-wad.md) pokyny, jak upravit vaše `WadCfg` ke shromažďování konkrétních čítačů výkonu. Referenční dokumentace [čítače výkonu služby Service Fabric](service-fabric-diagnostics-event-generation-perf.md) pro seznam výkonu čítače, které doporučujeme shromažďování.
+Pokud chcete shromáždit metriky výkonu z clusteru, přidejte čítače výkonu do složky "WadCfg > DiagnosticMonitorConfiguration" v šabloně Správce prostředků pro váš cluster. Postup úpravy `WadCfg` ke shromažďování specifických čítačů výkonu najdete v tématu [monitorování výkonu pomocí wad](service-fabric-diagnostics-perf-wad.md) . Referenční informace [Service Fabric čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) pro seznam čítačů výkonu, které doporučujeme shromažďovat.
   
-Pokud používáte jímky Application Insights, jak je popsáno v následující části a chcete tyto metriky se zobrazí ve službě Application Insights, pak Ujistěte se, že přidáte název jímky v části "jímky", jak je znázorněno výše. To bude automaticky posílat čítačů výkonu, které konfigurují jednotlivě do prostředku Application Insights.
+Pokud používáte Application Insights jímka, jak je popsáno v následující části, a chcete, aby se tyto metriky zobrazovaly v Application Insights, nezapomeňte přidat název jímky do části "jímky", jak je uvedeno výše. Tím se automaticky odešlou čítače výkonu, které jsou pro váš Application Insights prostředek individuálně nakonfigurované.
 
 
-## <a name="send-logs-to-application-insights"></a>Odeslání protokolů s Application Insights
+## <a name="send-logs-to-application-insights"></a>Odeslat protokoly do Application Insights
 
-### <a name="configuring-application-insights-with-wad"></a>Konfigurace Application Insights s využitím WAD
+### <a name="configuring-application-insights-with-wad"></a>Konfigurace Application Insights pomocí WAD
 
 >[!NOTE]
->To platí pouze pro clustery s Windows v tuto chvíli.
+>To platí jenom pro clustery s Windows.
 
-Existují dva základní způsoby odesílání dat z WAD do služby Azure Application Insights, který můžete vytvořit přidáním jímky Application Insights do konfigurace WAD, prostřednictvím webu Azure portal nebo pomocí šablony Azure Resource Manageru.
+Existují dva základní způsoby, jak odesílat data z WAD do Azure Application Insights, což se dosahuje přidáním jímky Application Insights do konfigurace WAD, prostřednictvím Azure Portal nebo prostřednictvím šablony Azure Resource Manager.
 
-#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Přidat Instrumentační klíč Application Insights při vytváření clusteru na webu Azure portal
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Přidání klíče instrumentace Application Insights při vytváření clusteru v Azure Portal
 
 ![Přidání AIKey](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
 
-Při vytváření clusteru, pokud je Diagnostika "On", volitelné pole a zadejte kód instrumentace Application Insights se zobrazí. Pokud vám Application Insights sem vložte klíč, jímku Application Insights automaticky nakonfigurované pro vás v šabloně Resource Manageru, který se používá k nasazení clusteru.
+Pokud je při vytváření clusteru zapnutá Diagnostika zapnutá, volitelné pole, které zadáte Application Insights klíč instrumentace, se zobrazí. Pokud sem vložíte svůj Application Insights klíč, Application Insights jímka se automaticky nakonfiguruje v šabloně Správce prostředků, která se používá k nasazení clusteru.
 
-#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Přidání Application Insights jímky do šablony Resource Manageru
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Přidání jímky Application Insights do šablony Správce prostředků
 
-V "WadCfg" šablony Resource Manageru přidejte "Sink" zahrnutím následující dvě změny:
+V části "WadCfg" šablony Správce prostředků přidejte "jímku", včetně následujících dvou změn:
 
-1. Přidat konfiguraci jímky přímo po deklaraci sady `DiagnosticMonitorConfiguration` dokončení:
+1. Přidejte konfiguraci jímky přímo po dokončení deklarace `DiagnosticMonitorConfiguration`:
 
     ```json
     "SinksConfig": {
@@ -329,28 +347,28 @@ V "WadCfg" šablony Resource Manageru přidejte "Sink" zahrnutím následující
 
     ```
 
-2. Zahrnout jímce ve `DiagnosticMonitorConfiguration` přidáním následujícího řádku `DiagnosticMonitorConfiguration` z `WadCfg` (bezprostředně před `EtwProviders` jsou deklarovány):
+2. Zahrňte do `DiagnosticMonitorConfiguration` jímka přidáním následujícího řádku do `DiagnosticMonitorConfiguration` `WadCfg` (vpravo před deklarováním `EtwProviders`):
 
     ```json
     "sinks": "applicationInsights"
     ```
 
-V obou předchozích fragmenty kódu byl použit název "applicationInsights" k popisu jímky. Toto není povinné a jako jímku název je součástí "jímky", můžete nastavit název na libovolný řetězec.
+V předchozích fragmentech kódu byl použit název "applicationInsights" k popisu jímky. Nejedná se o požadavek a pokud je název jímky obsažený v části "jímky", můžete nastavit název libovolného řetězce.
 
-V současné době protokoly z clusteru zobrazí jako **trasy** v log vieweru. Application Insights. Protože většina trasování z platformy je úrovně "Informační", můžete také zvážit změnu konfigurace jímky pouze odeslat protokoly typu "Varování" nebo "Chyba". To můžete udělat tak, že přidáte "Kanály" do jímky, jak je ukázáno v [v tomto článku](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
-
->[!NOTE]
->Pokud používáte nesprávný klíč Application Insights na portálu nebo v šabloně Resource Manageru, budete muset ručně změnit klíč a aktualizaci clusteru a znovu ji nasadíte.
-
-## <a name="next-steps"></a>Další postup
-
-Po nakonfigurování Azure diagnostics správně, zobrazí se data v tabulkách úložiště z protokolů trasování událostí pro Windows a EventSource. Pokud budete chtít používat protokoly Azure monitoru, Kibana nebo jakékoli jiné datové analýzy a vizualizace platformě, která není nakonfigurovaná přímo v šabloně Resource Manageru, ujistěte se, že nastavení platformy podle vašeho výběru, pokud chcete číst data z těchto tabulek úložiště. Protokoly Azure monitoru to je poměrně jednoduchá a je podrobně [analýzy událostí a protokolů](service-fabric-diagnostics-event-analysis-oms.md). Application Insights je hodně ve speciálním případě v tomto smyslu, protože je možné nakonfigurovat jako součást konfigurace diagnostického rozšíření, naleznete [příslušný článek](service-fabric-diagnostics-event-analysis-appinsights.md) Pokud budete chtít využít AI.
+V současné době se protokoly z clusteru zobrazují jako **trasování** v prohlížeči protokolu Application Insights. Vzhledem k tomu, že většina trasování přicházejících z platformy je úrovně "informativní", můžete také zvážit změnu konfigurace jímky jenom na Odeslat protokoly typu "upozornění" nebo "Chyba". To lze provést přidáním "kanálů" do jímky, jak je znázorněno v [tomto článku](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
 >[!NOTE]
->Aktuálně neexistuje žádný způsob, jak filtrovat nebo mazání událostí, které se odesílají do tabulky. Pokud implementujete není procesu odebrání události z tabulky, bude růst v tabulce. V současné době je příkladem data výmazu dat služby spuštěné [sledovacích ukázka](https://github.com/Azure-Samples/service-fabric-watchdog-service), a je doporučeno, že napíšete nějakou, pokud není dobrý důvod pro ukládání protokolů nad rámec 30 nebo 90 den časový rámec.
+>Pokud používáte nesprávný Application Insights klíč buď na portálu, nebo v šabloně Správce prostředků, budete muset ručně změnit klíč a aktualizovat cluster nebo ho znovu nasadit.
 
-* [Zjistěte, jak shromáždit čítače výkonu nebo protokoly pomocí diagnostického rozšíření](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Události analýzy a vizualizace pomocí Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Události analýzy a vizualizace s protokoly Azure monitoru](service-fabric-diagnostics-event-analysis-oms.md)
-* [Události analýzy a vizualizace pomocí Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Události analýzy a vizualizace s protokoly Azure monitoru](service-fabric-diagnostics-event-analysis-oms.md)
+## <a name="next-steps"></a>Další kroky
+
+Po správném nakonfigurování diagnostiky Azure se v tabulkách úložiště zobrazí data z protokolů ETW a EventSource. Pokud se rozhodnete použít protokoly Azure Monitor Kibana nebo jakoukoli jinou platformu pro analýzu dat a vizualizaci, která není přímo nakonfigurovaná v šabloně Správce prostředků, ujistěte se, že jste si nastavili platformu, kterou si zvolíte pro čtení dat z těchto tabulek úložiště. V případě Azure Monitor protokolů je poměrně triviální a je vysvětleno v tématu [Analýza událostí a protokolů](service-fabric-diagnostics-event-analysis-oms.md). Application Insights je v tomto smyslu trochu speciální případ, protože může být nakonfigurovaný jako součást konfigurace rozšíření diagnostiky, takže pokud se rozhodnete použít AI, přečtěte si [příslušný článek](service-fabric-diagnostics-event-analysis-appinsights.md) .
+
+>[!NOTE]
+>V současné době neexistuje způsob, jak filtrovat nebo povýmazovat události, které se odesílají do tabulky. Pokud neimplementujete proces odebrání událostí z tabulky, bude tabulka dál rozrůstat. V současné době existuje příklad služby výmazu dat spuštěného v rámci [sledovacího](https://github.com/Azure-Samples/service-fabric-watchdog-service)procesu a doporučujeme, abyste si sami napsali, pokud nemůžete mít dobrý důvod ukládat protokoly nad rámec 30 nebo 90 dne.
+
+* [Naučte se shromažďovat čítače výkonu nebo protokoly pomocí rozšíření diagnostiky.](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Analýza a vizualizace událostí pomocí Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Analýza a vizualizace událostí pomocí protokolů Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)
+* [Analýza a vizualizace událostí pomocí Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Analýza a vizualizace událostí pomocí protokolů Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)

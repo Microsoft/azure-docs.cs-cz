@@ -7,16 +7,16 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e2f05ba28109a9b3c88d80eb218bf94014f0f082
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333125"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243028"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Spravovaná identita pro aplikaci Service Fabric (Preview)
 
-Běžnou výzvou při vytváření cloudových aplikací je, jak v kódu spravovat přihlašovací údaje pro ověřování u cloudových služeb. Zabezpečení přihlašovacích údajů je důležitou úlohou, protože se nikdy nezobrazuje na pracovních stanicích pro vývojáře a nekontrolují se do správy zdrojových kódů. Tento problém řeší funkce Managed identity pro prostředky Azure v Azure Active Directory (Azure AD). Tato funkce poskytuje služby Azure s automaticky spravovanou identitou ve službě Azure AD. Tuto identitu můžete použít k ověření u jakékoli služby, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
+Běžnou výzvou při vytváření cloudových aplikací je, jak v kódu spravovat přihlašovací údaje pro ověřování u cloudových služeb. Zabezpečení přihlašovacích údajů je důležitou úlohou, protože se nikdy nezobrazuje na pracovních stanicích pro vývojáře a nekontrolují se do správy zdrojových kódů. Tento problém řeší funkce Managed identity pro prostředky Azure v Azure Active Directory (Azure AD). Tato funkce poskytuje službám Azure automaticky spravovanou identitu v Azure AD. Tuto identitu můžete použít k ověření u jakékoli služby, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
 
 Funkce Managed identity pro prostředky Azure je zdarma se službou Azure AD pro předplatné Azure. Neúčtují se žádné další náklady.
 
@@ -78,3 +78,4 @@ Následující scénáře nejsou podporovány nebo nejsou doporučovány. Všimn
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Využití spravované identity Service Fabric aplikace z kódu služby](./how-to-managed-identity-service-fabric-app-code.md)
 * [Udělení přístupu k aplikacím Azure Service Fabric k ostatním prostředkům Azure](./how-to-grant-access-other-resources.md)
+* [Deklarace a používání tajných klíčů aplikace jako KeyVaultReferences](./service-fabric-keyvault-references.md) 

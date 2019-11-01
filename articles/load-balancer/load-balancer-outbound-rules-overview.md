@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9fc9eb347e97fe6ab57b3e30651e4ea77a4ce9c8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fd43e9c71db9ae553b24e6cd774495ee8cc5b621
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790237"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242345"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer odchozí pravidla
 
@@ -86,7 +86,7 @@ K přidělení portů 10 000 SNAT na virtuální počítač (konfigurace IP adre
 
 Každá veřejná IP adresa ze všech front-endu odchozího pravidla přispívá až 64 000 dočasných portů, které se použijí jako porty SNAT.  Load Balancer přiděluje porty SNAT v násobcích 8. Pokud zadáte hodnotu, která není dělitelná 8, operace konfigurace se odmítne.  Pokud se pokusíte přidělit více portů SNAT, než je k dispozici na základě počtu veřejných IP adres, je operace konfigurace odmítnuta.  Pokud například přidělíte porty 10 000 na virtuální počítač a 7 virtuálních počítačů ve fondu back-end, bude se jednat o jednu veřejnou IP adresu, konfigurace se odmítne (7 x 10 000 SNAT portů > 64 000 portů SNAT).  Můžete přidat další veřejné IP adresy do front-endu odchozího pravidla a povolit tak scénář.
 
-Můžete vrátit zpět na [automatické přidělování portů SNAT na základě velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro počet portů.
+Můžete vrátit zpět na [automatické přidělování portů SNAT na základě velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro počet portů. V takovém případě získají první 50 instancí virtuálních počítačů 1024 portů, 51-100 instancí virtuálních počítačů bude 512 a tak podle tabulky. Pokud máte více front-end s veřejnou IP adresou přidruženou k odchozímu pravidlu, nezvýší se počet portů přidělených jednotlivým instancím virtuálního počítače.
 
 ### <a name="idletimeout"></a>Řízení časového limitu nečinnosti odchozího toku
 

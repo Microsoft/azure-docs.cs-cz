@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0b51617966ad85037ad29f3e5005a17f66602e01
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5c07fac0590b833aa19909849271c59d65d42ad6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677121"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242453"
 ---
 # <a name="what-is-distributed-tracing"></a>Co je distribuované trasování?
 
@@ -40,6 +40,7 @@ Rozhraní Application Insights SDK pro .NET, .NET Core, Java, Node. js a JavaScr
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [Python (Preview)](opencensus-python.md)
 
 Když je nainstalovaná a nakonfigurovaná sada SDK s patřičnou Application Insights, trasovací informace se automaticky shromažďují pro oblíbené architektury, knihovny a technologie pomocí automatických kolekcí závislosti sady SDK. Úplný seznam podporovaných technologií je k dispozici v [dokumentaci k automatické kolekci závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
 
@@ -49,7 +50,7 @@ Když je nainstalovaná a nakonfigurovaná sada SDK s patřičnou Application In
 
 Kromě Application Insights sady SDK Application Insights podporuje také distribuované trasování prostřednictvím [OpenCensus](https://opencensus.io/). OpenCensus je open source, dodavatel – nezávislá, jedna distribuce knihoven, která poskytuje shromažďování metrik a distribuované trasování pro služby. Umožňuje také komunitě Open Source povolit distribuované trasování s oblíbenými technologiemi, jako je Redis, memcached nebo MongoDB. [Microsoft spolupracuje na OpenCensus s několika dalšími monitorováními a cloudových partnerů](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-Pokud chcete přidat funkce distribuované vektorizace do aplikace pomocí OpenCensus, nejdřív [nainstalujte a nakonfigurujte Application Insights místní služby pro](./../../azure-monitor/app/opencensus-local-forwarder.md)zakládání. Odtud nakonfigurujte OpenCensus pro směrování distribuovaných dat trasování prostřednictvím místního předávání. Podporují se [Python](./../../azure-monitor/app/opencensus-python.md) i [Přejít](./../../azure-monitor/app/opencensus-go.md) .
+[Python (Preview)](opencensus-python.md) 
 
 Web OpenCensus udržuje referenční dokumentaci rozhraní API pro [Python](https://opencensus.io/api/python/trace/usage.html) a [Přejít](https://godoc.org/go.opencensus.io)a také různá různá vodítka pro použití OpenCensus. 
 
