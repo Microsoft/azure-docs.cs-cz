@@ -10,43 +10,40 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/15/2019
+ms.date: 11/1/2019
 ms.author: raiye
-ms.openlocfilehash: b4150858986f204723dc258b23daf22de5d39842
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e1d27563d2181a8e094e00295f9506d88e694513
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430165"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500267"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
 
 ## <a name="october-2019-guest-os"></a>Října 2019 hostovaný operační systém
 
->[!NOTE]
->Hostovaný operační systém v říjnu se v tuto chvíli zavádí na virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. V říjnu hostovaného operačního systému jsou zahrnuté následující opravy. Tento seznam se může změnit.
-
 | Kategorie produktů | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-10   |  [4520003]  |  Zabezpečení systému Windows   |  2,91  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4519985]  |  Zabezpečení systému Windows   |  3,78  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4519990]  |  Zabezpečení systému Windows   |  4,71  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4519998]  |  Nejnovější kumulativní aktualizace   |  5,36  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4519338]  |  Nejnovější kumulativní aktualizace   |  6,12  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4519974]  |  Internet Explorer   |  2,91, 3,78, 4,71  |  Říjen 8, 2019  |
-|  Rel. 19-10   |  [4516065]  |  Bez zabezpečení   |  2,91  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4516655]  |  CESTOU nadřazené   |  2,91  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4516055]  |  Bez zabezpečení   |  3,78  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4512939]  |  CESTOU nadřazené   |  3,78  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4514370]  |  .NET Framework 3,5   |  3,78  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  3,78  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4516067]  |  Bez zabezpečení   |  4,71  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4512938]  |  CESTOU nadřazené   |  4,71  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4514371]  |  .NET Framework 3,5   |  4,71  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  4,71  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4512574]  |  CESTOU nadřazené   |  5,36  |  Září 10, 2019  |
-|  Rel. 19-10   |  [4512577]  |  CESTOU nadřazené   |  6,12  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4520003]  |  Zabezpečení systému Windows   |  [2,91]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519985]  |  Zabezpečení systému Windows   |  [3,78]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519990]  |  Zabezpečení systému Windows   |  [4,71]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519998]  |  Nejnovější kumulativní aktualizace   |  [5,36]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519338]  |  Nejnovější kumulativní aktualizace   |  [6,12]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519974]  |  Internet Explorer   |  [2,91], [3,78], [4,71]  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4516065]  |  Bez zabezpečení   |  [2,91]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4516655]  |  CESTOU nadřazené   |  [2,91]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4516055]  |  Bez zabezpečení   |  [3,78]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512939]  |  CESTOU nadřazené   |  [3,78]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514370]  |  .NET Framework 3,5   |  [3,78]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  [3,78]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4516067]  |  Bez zabezpečení   |  [4,71]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512938]  |  CESTOU nadřazené   |  [4,71]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514371]  |  .NET Framework 3,5   |  [4,71]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  [4,71]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512574]  |  CESTOU nadřazené   |  [5,36]  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512577]  |  CESTOU nadřazené   |  [6,12]  |  Září 10, 2019  |
 
 [4520003]: https://support.microsoft.com/kb/4520003
 [4519985]: https://support.microsoft.com/kb/4519985
@@ -67,6 +64,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4512574]: https://support.microsoft.com/kb/4512574
 [4512577]: https://support.microsoft.com/kb/4512577
 
+[6,12]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,36]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,71]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,78]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,91]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="september-2019-guest-os"></a>Hostovaný operační systém od září 2019

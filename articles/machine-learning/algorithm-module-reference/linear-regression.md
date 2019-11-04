@@ -1,23 +1,23 @@
 ---
 title: 'Lineární regrese: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul lineární regrese ve službě Azure Machine Learning Service k vytvoření modelu lineární regrese pro použití v kanálu.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul lineární regrese v Azure Machine Learning k vytvoření modelu lineární regrese pro použití v kanálu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 9c1dc34743d3fe65d50559d1b75aab1a0530d24c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693698"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497751"
 ---
 # <a name="linear-regression-module"></a>Modul lineární regrese
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul slouží k vytvoření modelu lineární regrese pro použití v kanálu.  Lineární regrese se pokusí vytvořit lineární vztah mezi jednou nebo více nezávislými proměnnými a číselným výstupem nebo závislou proměnnou. 
 
@@ -63,7 +63,7 @@ Tento modul podporuje dvě metody pro přizpůsobení regresního modelu s různ
 
 ## <a name="bkmk_OrdinaryLeastSquares"></a>Vytvoření regresního modelu pomocí běžných minimálních čtverců
 
-1. Přidejte modul **lineární regrese** do vašeho kanálu v rozhraní.
+1. Přidejte modul **lineární regrese** do kanálu v návrháři.
 
     Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte položku **inicializovat model**, rozbalte položku **regrese**a poté přetáhněte modul **lineární regrese** do vašeho kanálu.
 
@@ -97,7 +97,7 @@ Po dokončení školení:
 
 ## <a name="bkmk_GradientDescent"></a>Vytvoření regresního modelu pomocí online gradientu
 
-1. Přidejte modul **lineární regrese** do vašeho kanálu v rozhraní.
+1. Přidejte modul **lineární regrese** do kanálu v návrháři.
 
     Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte možnost **inicializovat model**, rozbalte **regresi**a přetáhněte modul **lineární regrese** do vašeho kanálu.
 
@@ -143,4 +143,4 @@ Po dokončení školení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

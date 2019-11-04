@@ -1,7 +1,7 @@
 ---
-title: Používání webové služby v aplikaci Excel
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio usnadňuje volání webové služby přímo z aplikace Excel bez nutnosti psát jakýkoli kód.
+title: Využívání webové služby v Excelu
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Azure Machine Learning Studio (Classic) usnadňuje volání webových služeb přímo z Excelu bez nutnosti psát jakýkoli kód.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,59 +10,59 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afa6430a76650b08f979687e2a1e5c7b53c89180
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773753"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493247"
 ---
-# <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Využívání webové služby Azure Machine Learning Studio z Excelu
+# <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Spotřebovávání webové služby Azure Machine Learning Studio (Classic) z Excelu
 
- Azure Machine Learning Studio usnadňuje volání webové služby přímo z aplikace Excel bez nutnosti psát jakýkoli kód.
+ Azure Machine Learning Studio (Classic) usnadňuje volání webových služeb přímo z Excelu bez nutnosti psát jakýkoli kód.
 
-Pokud používáte aplikaci Excel 2013 (nebo novější) nebo Excelu Online, pak doporučujeme použít v aplikaci Excel [doplněk aplikace Excel](excel-add-in-for-web-services.md).
+Pokud používáte Excel 2013 (nebo novější) nebo Excel Online, doporučujeme použít excelový [doplněk](excel-add-in-for-web-services.md)Excelu.
 
 
 
 ## <a name="steps"></a>Kroky
-Publikování webové služby. [Tutoriál 3: Nasazení modelu úvěrové riziko](tutorial-part3-credit-risk-deploy.md) vysvětluje, jak na to. Aktuálně funkce sešitu aplikace Excel je podporována pouze pro služby požadavků/odpovědí, které mají jeden výstup (tedy hodnoticí přípony). 
+Publikování webové služby. [Kurz 3: nasazení modelu úvěrového rizika](tutorial-part3-credit-risk-deploy.md) vysvětluje, jak to provést. V současné době je funkce excelového sešitu podporována pouze pro služby požadavku a odpovědi, které mají jeden výstup (tj. jeden popisek hodnocení). 
 
-Jakmile budete mít webovou službu, klikněte na **webových služeb** části nalevo od sady studio a pak vyberte webovou službu používat z aplikace Excel.
+Jakmile máte webovou službu, klikněte na část **webové služby** na levé straně studia a pak vyberte webovou službu, kterou chcete spotřebovat z Excelu.
 
-**Klasické webové služby**
+**Klasická webová služba**
 
-1. Na **řídicí panel** kartě je řádek pro webovou službu **žádostí a odpovědí** služby. Pokud tato služba má jeden výstup, měli byste vidět **stáhněte si Excelový sešit** odkaz v daném řádku.
+1. Na kartě **řídicí panel** webové služby je řádek pro službu **Request/response** . Pokud má tato služba jeden výstup, měli byste vidět odkaz **Stáhnout excelový sešit** v tomto řádku.
 
-    ![Stáhněte si Excelový sešit na portálu Studio webové služby](./media/consuming-from-excel/excellink.png)
-2. Klikněte na **stáhněte si Excelový sešit**.
+    ![Stažení excelového sešitu pomocí portálu webové služby Studio (Classic)](./media/consuming-from-excel/excellink.png)
+2. Klikněte na **Stáhnout excelový sešit**.
 
-**Nové webové služby**
+**Nová webová služba**
 
-1. Na portálu webové služby Azure Machine Learning, vyberte **spotřebovat**.
-2. Na stránce využívání v **webové služby možnosti spotřeby** klikněte na ikonu aplikace Excel.
+1. Na portálu Azure Machine Learning webové služby vyberte možnost **spotřebovat**.
+2. Na stránce spotřebovat v části **Možnosti spotřeby webové služby** klikněte na ikonu aplikace Excel.
 
-**V práci se sešitem**
+**Používání sešitu**
 
 1. Otevřete sešit.
-2. Zobrazí se upozornění zabezpečení. Klikněte na **povolit úpravy** tlačítko.
+2. Zobrazí se upozornění zabezpečení. klikněte na tlačítko **Povolit úpravy** .
 
-    ![Povolit úpravy odebrat chráněné zobrazení upozornění zabezpečení](./media/consuming-from-excel/enableeditting.png)
-3. Zobrazí se upozornění zabezpečení. Klikněte na **povolit obsah** možnost spouštět makra tabulky.
+    ![Povolit úpravy pro odebrání upozornění zabezpečení chráněného zobrazení](./media/consuming-from-excel/enableeditting.png)
+3. Zobrazí se upozornění zabezpečení. Kliknutím na tlačítko **Povolit obsah** spustíte makra v tabulce.
 
-    ![Povolit obsah zavřete upozornění zabezpečení zakázání makra](./media/consuming-from-excel/enablecontent.png)
-4. Jakmile jsou povolená makra, je vygenerována tabulku. Sloupce v modré jsou vyžaduje jako vstup do webové služby RRS nebo **parametry**. Všimněte si výstup služby RRS **PŘEDPOVĚDĚT hodnoty** zeleně. Když jsou vyplněny všechny sloupce daného řádku, sešit automaticky volá rozhraní API pro vyhodnocení a zobrazí skóre výsledky.
+    ![Povolit obsahu, aby se zakázalo upozornění na zabezpečení zakázání maker](./media/consuming-from-excel/enablecontent.png)
+4. Jakmile jsou makra povolena, je vygenerována tabulka. Sloupce v modrém jsou požadovány jako vstup do webové služby RR nebo **parametrů**. Poznamenejte si výstup služby RR, **předpovězené hodnoty** zeleně. Po vyplnění všech sloupců pro daný řádek sešit automaticky zavolá rozhraní API pro bodování a zobrazí výsledky skóre.
 
-    ![Tabulka pro parametr vstupů a výsledné předpovědět hodnoty](./media/consuming-from-excel/sampletable.png)
-5. Ke stanovení skóre pro více než jeden řádek, jsou vytvářeny výplně druhý řádek s daty a předpovězeným hodnotám. I vložením několika řádků najednou.
+    ![Tabulka pro vstupy parametrů a výsledné předpovězené hodnoty](./media/consuming-from-excel/sampletable.png)
+5. Chcete-li vyhodnotit více než jeden řádek, vyplní druhý řádek daty a vytvoří se předpovězené hodnoty. Můžete dokonce vložit několik řádků najednou.
 
-Vám pomůže některou z funkcí aplikace Excel (grafů, doplňkem power map, podmíněné formátování, atd.) s předpovězeným hodnotám pomáhají vizualizovat data.
+K vizualizaci dat můžete použít kteroukoli z funkcí aplikace Excel (grafy, Power map, podmíněné formátování atd.) s předpokládanými hodnotami.
 
-## <a name="sharing-your-workbook"></a>Sdílení vašeho sešitu
-Makra pro práci klíč rozhraní API musí být součástí tabulky. To znamená, že by měly sdílet sešit pouze u entity nebo jednotlivce, které důvěřujete.
+## <a name="sharing-your-workbook"></a>Sdílení sešitu
+Aby makra fungovala, musí být klíč rozhraní API součástí tabulky. To znamená, že byste měli sešit sdílet jenom s entitami/jednotlivci, kterým důvěřujete.
 
 ## <a name="automatic-updates"></a>Automatické aktualizace
-Volání rozhraní RRS se provádí v těchto dvou případů:
+Volání RR se provádí v těchto dvou situacích:
 
-1. První řádek má obsah ve všech jeho **parametry**
-2. Pokaždé, když některý **parametry** změny v řádku, které měly všechny jeho **parametry** zadali.
+1. První, když má řádek obsah ve všech svých **parametrech**
+2. Kdykoliv se všechny **parametry** změní v řádku, který měl zadané všechny jeho **parametry** .

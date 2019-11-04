@@ -1,24 +1,24 @@
 ---
 title: 'Oddíl a ukázka: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat oddíl a vzorový modul ve službě Azure Machine Learning, abyste mohli provádět vzorkování na datové sadě nebo vytvářet oddíly z vaší datové sady.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak pomocí oddílu a ukázkového modulu v Azure Machine Learning provést vzorkování na datové sadě nebo vytvořit oddíly z datové sady.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: fcbf9fae3306c43613ef0b67a79c9c0b53f6b923
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 659dcae0bee0fe1015ba6225797c31bad438013f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693759"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497712"
 ---
 # <a name="partition-and-sample-module"></a>Oddíl a vzorový modul
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul použijte k provedení vzorkování pro datovou sadu nebo k vytvoření oddílů z datové sady.
 
@@ -122,7 +122,7 @@ Tuto možnost použijte, pokud chcete datovou sadu rozdělit na podmnožiny dat.
 
     - **Oddíl s přizpůsobenými poměry**: tuto možnost použijte, pokud chcete určit velikost každého oddílu jako seznam oddělený čárkami.
 
-        Pokud například chcete vytvořit tři oddíly s prvním oddílem obsahujícím 50% dat a zbývající dva oddíly, které obsahují 25% dat, klikněte na pole se **seznamem proporcí oddělené čárkami** a zadejte tato čísla: @no_ _t_1
+        Pokud například chcete vytvořit tři oddíly s prvním oddílem obsahujícím 50% dat a zbývající dva oddíly, které obsahují 25% dat, klikněte na pole se **seznamem proporcí oddělené čárkami** a zadejte tato čísla: @no_ _t_1_
 
         Součet všech velikostí oddílů musí být přidán přesně na 1.
 
@@ -156,7 +156,7 @@ Tato možnost se používá, pokud jste rozdělili datovou sadu do několika odd
 
     Řekněme například, že dříve dělené pacienty do čtyř přeložení pomocí stáří. Chcete-li pracovat s jednotlivými skládáními, potřebujete čtyři kopie **oddílu a vzorového** modulu a v každém z nich vyberete jiné skládání, jak je uvedeno níže. Není správné použít přímo výstup **pro přiřazení k skládání** .  
 
-    [![Partition a ukázka](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    [![oddíl a ukázka](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
 
 5. Spuštění kanálu
 
@@ -167,4 +167,4 @@ Tato možnost se používá, pokud jste rozdělili datovou sadu do několika odd
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

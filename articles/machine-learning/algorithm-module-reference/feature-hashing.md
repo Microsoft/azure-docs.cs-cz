@@ -1,7 +1,7 @@
 ---
 title: Reference k modulům hash funkcí
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul hashování funkcí ve službě Azure Machine Learning k zpracování textových dat.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul hashování funkcí v Azure Machine Learning k zpracování textových dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: bbcab6e94783583c7e13ae482d68fd013ba4c91d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170873"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497833"
 ---
 # <a name="feature-hashing-module-reference"></a>Reference k modulům hash funkcí
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning (Preview).
 
 K transformaci datového proudu anglického textu do sady celočíselných funkcí použijte modul hash funkcí. Tuto funkci s hodnotou hash můžete následně předat algoritmu strojového učení a naučit se model pro analýzu textu.
 
@@ -30,38 +30,38 @@ Funkce hashing funkcí funguje převodem jedinečných tokenů na celá čísla.
 
 Například proveďte sadu jednoduchých vět, jako třeba, a potom mínění skóre. Předpokládejme, že chcete použít tento text k vytvoření modelu.
 
-|Uživatelský text|Mínění|
+|Uživatelský text|Zabarvení|
 |--------------|---------------|
 |Jsem mi blízký tuto knihu|3|
-|Hated tuto knihu|1|
+|Hated tuto knihu|1\. místo|
 |Tato kniha byla Skvělé|3|
 |Líbí se mi moje knihy|2|
 
 Interně modul hashování funkcí vytvoří slovník n-gramů. Například seznam bigrams pro tuto datovou sadu by byl podobný tomuto:
 
-|Termín (bigrams)|Frekvence|
+|Termín (bigrams)|Frequency|
 |------------|---------------|
 |Tato kniha|3|
-|Jsem blízký|1|
-|Hated|1|
-|Líbí se mi|1|
+|Jsem blízký|1\. místo|
+|Hated|1\. místo|
+|Líbí se mi|1\. místo|
 
 Velikost n-gramů můžete řídit pomocí vlastnosti **n-gramů** . Zvolíte-li možnost bigrams, jsou vypočítány také unigrams. Slovník by měl také zahrnovat jednotlivé výrazy, jako jsou tyto:
 
-|Termín (unigrams)|Frekvence|
+|Termín (unigrams)|Frequency|
 |------------|---------------|
 |účetních|3|
 |I|3|
-|Příruček|1|
-|byl|1|
+|příruček|1\. místo|
+|vytvořen|1\. místo|
 
 Po vytvoření slovníku modul hash funkcí převede výrazy slovníku na hodnoty hash. Pak vypočítá, zda byla funkce v každém případě použita. Pro každý řádek textových dat modul výstupuje sadu sloupců, jeden sloupec pro každou funkci s algoritmem hash.
 
 Například po použití algoritmu hash mohou sloupce funkce vypadat přibližně takto:
 
-|Hodnocení|Hash – funkce 1|Funkce hashing 2|Funkce hashing 3|
+|Hodnocen|Hash – funkce 1|Funkce hashing 2|Funkce hashing 3|
 |-----|-----|-----|-----|
-|4|1|1|0|
+|4|1\. místo|1\. místo|0|
 |5|0|0|0|
 
 * Pokud je hodnota ve sloupci 0, řádek neobsahuje funkci hash.
@@ -73,7 +73,7 @@ Funkce hashing funkcí umožňuje reprezentovat textové dokumenty s proměnlivo
 
 ## <a name="configure-the-feature-hashing-module"></a>Konfigurace modulu hashování funkcí
 
-1.  Přidejte modul hash funkcí do experimentu do vizuálního rozhraní.
+1.  Přidejte modul hash funkcí do kanálu v návrháři.
 
 1. Připojte datovou sadu obsahující text, který chcete analyzovat.
 
@@ -94,7 +94,7 @@ Funkce hashing funkcí umožňuje reprezentovat textové dokumenty s proměnlivo
 
     Pokud například zadáte 3, unigrams, bigrams a trigrams, vytvoří se.
 
-1. Spusťte experiment.
+1. Spuštění kanálu
 
 ## <a name="results"></a>Výsledky
 
@@ -127,8 +127,8 @@ Následující osvědčené postupy vám pomůžou využít modul hashování fu
     * Odebrání interpunkčních znamének a speciálních znaků
     * Způsobenému výpadky proudu  
 
-Optimální sada metod předběžného zpracování, která se má použít v jakémkoli řešení, závisí na doméně, slovníku a potřebě firmy. Experimentujte s daty a zjistěte, které metody zpracování textu jsou nejefektivnější.
+Optimální sada metod předběžného zpracování, která se má použít v jakémkoli řešení, závisí na doméně, slovníku a potřebě firmy. Podívejte se na kanály s daty a zjistěte, které metody zpracování textu jsou nejefektivnější.
 
 ## <a name="next-steps"></a>Další kroky
             
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning 

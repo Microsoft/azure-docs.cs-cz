@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database omezení prostředků založené na vCore – jedna databáze | Microsoft Docs
-description: Tato stránka popisuje několik běžných omezení prostředků založených na vCore pro jednu databázi v Azure SQL Database.
+title: Omezení prostředků Azure SQL Database vCore – jedna databáze | Microsoft Docs
+description: Tato stránka popisuje některé běžné limity vCore prostředků pro izolovanou databázi v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,29 +10,115 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/21/2019
-ms.openlocfilehash: 108e31ebff5910c139bcaf83675cc8161c2a96f6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: 55b0b28f3081cfe643645683a9773b4c97b9caef
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693371"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495944"
 ---
-# <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na vCore
+# <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu vCore
 
-Tento článek poskytuje podrobné omezení prostředků pro Azure SQL Database izolované databáze pomocí nákupního modelu založeného na vCore.
+Tento článek poskytuje podrobné omezení prostředků pro Azure SQL Database izolované databáze pomocí modelu nákupu vCore.
 
-Omezení pro nákupní model založený na DTU pro jednotlivé databáze na serveru SQL Database najdete v tématu [Přehled omezení prostředků na serveru SQL Database](sql-database-resource-limits-database-server.md).
+Omezení nákupních modelů pro DTU pro izolované databáze na serveru SQL Database najdete v tématu [Přehled omezení prostředků na serveru SQL Database](sql-database-resource-limits-database-server.md).
 
-> [!IMPORTANT]
-> Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
 Můžete nastavit úroveň služby, výpočetní velikost a množství úložiště pro jednu databázi pomocí [Azure Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [jazyka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShellu](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), rozhraní příkazového [řádku Azure](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)nebo [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases).
 
 > [!IMPORTANT]
 > Pokyny a požadavky pro škálování najdete v tématu [škálování izolované databáze](sql-database-single-database-scale.md).
 
-## <a name="general-purpose-service-tier-for-provisioned-compute"></a>Úroveň služby Pro obecné účely pro zřízené výpočetní prostředky
+
+## <a name="general-purpose---serverless-compute---gen5"></a>Obecné účely – COMPUTE bez serveru – Gen5
+
+[Výpočetní vrstva bez serveru](sql-database-serverless.md) je aktuálně dostupná jenom na Gen5 hardwaru.
+
+### <a name="gen5-compute-generation-part-1"></a>Generování výpočetních prostředků Gen5 (část 1)
+
+|Velikost výpočetního prostředí|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
+|:--- | --: |--: |--: |--: |--: |
+|Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Min – max – virtuální jádra|0,5 – 1|0,5 – 2|0,5 – 4|0,75-6|1,0 – 8|
+|Minimální – maximální velikost paměti (GB)|2.02-3|2.05 – 6|2.10 – 12|2.25-18|3.00-24|
+|Minimální prodleva automatického pozastavení (minuty)|60|60|60|60|60|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
+|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Maximální velikost dat (GB)|512|1024|1024|1024|1536|
+|Maximální velikost protokolu (GB)|154|307|307|307|461|
+|Maximální velikost dat databáze TempDB (GB)|32|64|128|192|256|
+|Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
+|Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
+|Maximální počet datových IOPS (64 KB)|500|1 000|2000|3000|4000|
+|Maximální rychlost protokolu (MB/s)|2,5|5,6|10|15|20|
+|Maximální počet souběžných pracovních procesů (požadavků)|75|150|300|450|600|
+|Maximální počet souběžných relací|30000|30000|30000|30000|30000|
+|Počet replik|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|
+|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
+
+### <a name="gen5-compute-generation-part-2"></a>Generace COMPUTE Gen5 (část 2)
+
+|Velikost výpočetního prostředí|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
+|:--- | --: |--: |--: |--: |
+|Generování výpočtů|Gen5|Gen5|Gen5|Gen5|
+|Min – max – virtuální jádra|1,25 – 10|1.50-12|1,75 – 14|2,00-16|
+|Minimální – maximální velikost paměti (GB)|3,75 – 30|4.50 – 36|5,25 – 42|6.00-48|
+|Minimální prodleva automatického pozastavení (minuty)|60|60|60|60|
+|Podpora columnstore|Ano|Ano|Ano|Ano|
+|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Maximální velikost dat (GB)|1536|1536|1536|3072|
+|Maximální velikost protokolu (GB)|461|461|461|922|
+|Maximální velikost dat databáze TempDB (GB)|320|384|448|512|
+|Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
+|Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
+|Maximální počet datových IOPS (64 KB)|5000|6000|7000|8000|
+|Maximální rychlost protokolu (MB/s)|20|20|20|20|
+|Maximální počet souběžných pracovních procesů (požadavků)|750|900|1050|1200|
+|Maximální počet souběžných relací|30000|30000|30000|30000|
+|Počet replik|1\. místo|1\. místo|1\. místo|1\. místo|
+|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
+
+
+## <a name="hyperscale---provisioned-compute---gen5"></a>Výpočetní prostředí s podporou škálování na více Gen5
+
+### <a name="gen5-compute-generation"></a>Generování výpočtů Gen5
+
+|Úroveň výkonu|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Virtuální jádra|2|4|8|16|24|32|40|80|
+|Paměť (GB)|10.2|20,4|40,8|81,6|122,4|163,2|204|408|
+|[RBPEX](sql-database-service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
+|Maximální velikost protokolu (TB)|1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |
+|Maximální velikost dat databáze TempDB (GB)|64|128|256|384|384|384|384|384|
+|Typ úložiště| [Poznámka 1](#notes) |[Poznámka 1](#notes)|[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) | [Poznámka 1](#notes) |
+|Maximální počet datových IOPS (64 KB)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
+|Latence v/v (přibližná)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|
+|Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|2400|3200|4000|8000|
+|Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|30000|30000|
+|Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
+|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Škálování čtení na více instancí|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
+|||
+
+#### <a name="notes"></a>Poznámky
+
+**Poznámka 1**: Škálovatelná architektura je Vícevrstvá architektura se samostatnými výpočetními a úložnými součástmi: [Architektura vrstvy služeb s vlastním škálováním](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
+
+**Poznámka 2**: Vícevrstvá architektura škálovatelné architektury má ukládání do mezipaměti na více úrovních. Platnost IOPS bude záviset na zatížení.
+
+**Poznámka 3**: latence je 1-2 MS pro data v mezipaměti založené na SSD RBPEX na výpočetních replikách, které ukládá do mezipaměti nejčastěji používané datové stránky. Vyšší latence pro data získaná ze stránkových serverů.
+
+## <a name="general-purpose---provisioned-compute---gen4"></a>Pro obecné účely zřízené COMPUTE – COMPUTE GEN4 –
 
 > [!IMPORTANT]
 > Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih.
@@ -83,6 +169,8 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
+## <a name="general-purpose---provisioned-compute---gen5"></a>Pro obecné účely zřízené COMPUTE – Gen5
+
 ### <a name="gen5-compute-generation-part-1"></a>Generování výpočetních prostředků Gen5 (část 1)
 
 |Velikost výpočetního prostředí|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
@@ -129,59 +217,34 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
-## <a name="general-purpose-service-tier-for-serverless-compute"></a>Úroveň služby Pro obecné účely pro výpočetní prostředky bez serveru
+## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Pro obecné účely zřízené COMPUTE-Fsv2-Series
 
-[Výpočetní vrstva bez serveru](sql-database-serverless.md) je ve verzi Preview.
+### <a name="fsv2-series-compute-generation-preview"></a>Generování výpočetních prostředků Fsv2-Series (Preview)
 
-### <a name="gen5-compute-generation-part-1"></a>Generování výpočetních prostředků Gen5 (část 1)
+|Velikost výpočetního prostředí|GP_Fsv2_72|
+|:--- | --: |
+|Generování výpočtů|Fsv2-series|
+|Virtuální jádra|72|
+|Paměť (GB)|136|
+|Podpora columnstore|Ano|
+|Úložiště OLTP v paměti (GB)|Nevztahuje se|
+|Maximální velikost dat (GB)|4 096|
+|Maximální velikost protokolu (GB)|1024|
+|Maximální velikost dat databáze TempDB (GB)|333|
+|Typ úložiště|Vzdálený disk SSD|
+|Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|
+|Maximální počet datových IOPS (64 KB)|36000|
+|Maximální rychlost protokolu (MB/s)|30|
+|Maximální počet souběžných pracovních procesů (Quests)|3600|
+|Maximální počet souběžných relací|30000|
+|Počet replik|1\. místo|
+|Více AZ|Nevztahuje se|
+|Škálování čtení na více instancí|Nevztahuje se|
+|Zahrnuté úložiště zálohování|velikost databáze 1X|
 
-|Velikost výpočetního prostředí|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
-|:--- | --: |--: |--: |--: |--: |
-|Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|
-|Min – max – virtuální jádra|0,5 – 1|0,5 – 2|0,5 – 4|0,75-6|1,0 – 8|
-|Minimální – maximální velikost paměti (GB)|2.02-3|2.05 – 6|2.10 – 12|2.25-18|3.00-24|
-|Minimální prodleva automatického pozastavení (minuty)|60|60|60|60|60|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Maximální velikost dat (GB)|512|1024|1024|1024|1536|
-|Maximální velikost protokolu (GB)|154|307|307|307|461|
-|Maximální velikost dat databáze TempDB (GB)|32|64|128|192|256|
-|Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
-|Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS (64 KB)|500|1 000|2000|3000|4000|
-|Maximální rychlost protokolu (MB/s)|2,5|5,6|10|15|20|
-|Maximální počet souběžných pracovních procesů (požadavků)|75|150|300|450|600|
-|Maximální počet souběžných relací|30000|30000|30000|30000|30000|
-|Počet replik|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|
-|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
-### <a name="gen5-compute-generation-part-2"></a>Generace COMPUTE Gen5 (část 2)
 
-|Velikost výpočetního prostředí|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
-|:--- | --: |--: |--: |--: |
-|Generování výpočtů|Gen5|Gen5|Gen5|Gen5|
-|Min – max – virtuální jádra|1,25 – 10|1.50-12|1,75 – 14|2,00-16|
-|Minimální – maximální velikost paměti (GB)|3,75 – 30|4.50 – 36|5,25 – 42|6.00-48|
-|Minimální prodleva automatického pozastavení (minuty)|60|60|60|60|
-|Podpora columnstore|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Maximální velikost dat (GB)|1536|1536|1536|3072|
-|Maximální velikost protokolu (GB)|461|461|461|922|
-|Maximální velikost dat databáze TempDB (GB)|320|384|448|512|
-|Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
-|Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS (64 KB)|5000|6000|7000|8000|
-|Maximální rychlost protokolu (MB/s)|20|20|20|20|
-|Maximální počet souběžných pracovních procesů (požadavků)|750|900|1050|1200|
-|Maximální počet souběžných relací|30000|30000|30000|30000|
-|Počet replik|1\. místo|1\. místo|1\. místo|1\. místo|
-|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
-
-## <a name="business-critical-service-tier-for-provisioned-compute"></a>Úroveň služby Pro důležité obchodní informace pro zřízené výpočetní prostředky
+## <a name="business-critical---provisioned-compute---gen4"></a>Uživatelsky důležité – zřízené COMPUTE – COMPUTE GEN4 –
 
 > [!IMPORTANT]
 > Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih.
@@ -234,7 +297,9 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Škálování čtení na více instancí|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
-### <a name="gen5-compute-compute-part-1"></a>Výpočetní COMPUTE Gen5 (část 1)
+## <a name="business-critical---provisioned-compute---gen5"></a>Uživatelsky důležité – zřízené COMPUTE – Gen5
+
+### <a name="gen5-compute-generation-part-1"></a>Generování výpočetních prostředků Gen5 (část 1)
 
 |Velikost výpočetního prostředí|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -282,45 +347,43 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Škálování čtení na více instancí|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
-## <a name="hyperscale-service-tier-for-provisioned-compute"></a>Úroveň služby technologie webscale pro zřízené výpočetní prostředky
 
-### <a name="gen5-compute-generation"></a>Generování výpočtů Gen5
+## <a name="business-critical---provisioned-compute---m-series"></a>Podnikové kritické pro výpočetní prostředí-M-Series
 
-|Úroveň výkonu|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
-|Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
-|Virtuální jádra|2|4|8|16|24|32|40|80|
-|Paměť (GB)|10.2|20,4|40,8|81,6|122,4|163,2|204|408|
-|[RBPEX](sql-database-service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
-|Maximální velikost protokolu (TB)|1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |
-|Maximální velikost dat databáze TempDB (GB)|64|128|256|384|384|384|384|384|
-|Typ úložiště| [Poznámka 1](#notes) |[Poznámka 1](#notes)|[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) | [Poznámka 1](#notes) |
-|Maximální počet datových IOPS (64 KB)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
-|Latence v/v (přibližná)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|
-|Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|2400|3200|4000|8000|
-|Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|30000|30000|
-|Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Škálování čtení na více instancí|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
-|||
+### <a name="m-series-compute-generation-preview"></a>Generování výpočetních prostředků řady M-Series (Preview)
 
-#### <a name="notes"></a>Poznámky
+|Velikost výpočetního prostředí|GP_M_128|
+|:--- | --: |
+|Generování výpočtů|M-Series|
+|Virtuální jádra|128|
+|Paměť (GB)|3767|
+|Podpora columnstore|Ano|
+|Úložiště OLTP v paměti (GB)|481|
+|Maximální velikost dat (GB)|4 096|
+|Maximální velikost protokolu (GB)|2 048|
+|Maximální velikost dat databáze TempDB (GB)|4 096|
+|Typ úložiště|Místní jednotka SSD|
+|Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|
+|Maximální počet datových IOPS (64 KB)|204800|
+|Maximální rychlost protokolu (MB/s)|192|
+|Maximální počet souběžných pracovních procesů (požadavků)|12800|
+|Maximální počet souběžných relací|30000|
+|Počet replik|4|
+|Více AZ|Ano|
+|Škálování čtení na více instancí|Ano|
+|Zahrnuté úložiště zálohování|velikost databáze 1X|
 
-**Poznámka 1**: Škálovatelná architektura je Vícevrstvá architektura se samostatnými výpočetními a úložnými součástmi: [Architektura vrstvy služeb s vlastním škálováním](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
 
-**Poznámka 2**: Vícevrstvá architektura škálovatelné architektury má ukládání do mezipaměti na více úrovních. Platnost IOPS bude záviset na zatížení.
 
-**Poznámka 3**: latence je 1-2 MS pro data v mezipaměti založené na SSD RBPEX na výpočetních replikách, které ukládá do mezipaměti nejčastěji používané datové stránky. Vyšší latence pro data získaná ze stránkových serverů.
+
+> [!IMPORTANT]
+> Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Omezení prostředků DTU pro jednu databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na DTU](sql-database-dtu-resource-limits-single-databases.md) .
-- Omezení prostředků vCore pro elastické fondy najdete v tématu [omezení prostředků pro elastické fondy pomocí nákupního modelu založeného na Vcore](sql-database-vcore-resource-limits-elastic-pools.md) .
-- Omezení prostředků DTU pro elastické fondy najdete v tématu [omezení prostředků pro elastické fondy pomocí nákupního modelu založeného na DTU](sql-database-dtu-resource-limits-elastic-pools.md) .
+- Omezení prostředků DTU pro jednu databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí modelu nákupu DTU](sql-database-dtu-resource-limits-single-databases.md) .
+- Omezení prostředků vCore pro elastické fondy najdete v tématu [omezení prostředků pro elastické fondy pomocí modelu nákupu Vcore](sql-database-vcore-resource-limits-elastic-pools.md) .
+- Omezení prostředků DTU pro elastické fondy najdete v tématu [omezení prostředků pro elastické fondy pomocí modelu nákupu DTU](sql-database-dtu-resource-limits-elastic-pools.md) .
 - Omezení prostředků pro spravované instance najdete v tématu [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md).
 - Informace o obecných omezeních Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md).
 - Informace o omezeních prostředků na databázovém serveru najdete v tématu [Přehled omezení prostředků na serveru SQL Database](sql-database-resource-limits-database-server.md) , kde najdete informace o omezeních na úrovni serveru a předplatného.

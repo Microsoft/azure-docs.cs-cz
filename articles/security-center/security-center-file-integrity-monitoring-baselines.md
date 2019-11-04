@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: 116f295365084e7570ed9afc493d9179ea2dfb5a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e7ef558ec75622b804aef96781b549f1a833e21
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202136"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73518868"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Porovnání směrných plánů pomocí monitorování integrity souborů (FIM)
 
@@ -36,7 +36,7 @@ Mnoho standardů dodržování předpisů, jako je PCI-DSS & ISO 17799, ale vyž
 
 Výchozí nastavení podregistru služby FIM nabízí pohodlný způsob, jak monitorovat rekurzivní změny v rámci běžných oblastí zabezpečení.  Nežádoucí osoba může například nakonfigurovat skript, který se spustí v kontextu LOCAL_SYSTEM, nakonfigurováním spuštění při spuštění nebo vypnutí.  Chcete-li monitorovat změny tohoto typu, povolte vestavěnou kontrolu.  
 
-![Registru](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
+![Registr](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
 > Rekurzivní kontroly se vztahují jenom na Doporučené podregistry zabezpečení a ne na vlastní cesty registru.  
@@ -48,19 +48,19 @@ Směrné plány FIM začínají určením vlastností známého stavu, který je
 
 |Název zásady                 | Nastavení registru|
 |---------------------------------------|-------------|
-|Řadič domény: Odmítnout změny hesla účtu počítače| MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RefusePasswordChange|
-|Člen domény: Digitálně šifrovat nebo podepsat data zabezpečeného kanálu (vždy)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
-|Člen domény: Digitálně šifrovat data zabezpečeného kanálu (Pokud je to možné)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SealSecureChannel|
-|Člen domény: Digitálně podepsat data zabezpečeného kanálu (Pokud je to možné)|MACHINE\System\CurrentControlSet\Services   \Netlogon\Parameters\SignSecureChannel|
+|Řadič domény: odmítnout změny hesla účtu počítače| MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RefusePasswordChange|
+|Člen domény: digitálně zašifrovat nebo podepsat data zabezpečeného kanálu (vždy)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
+|Člen domény: digitálně Zašifrujte data zabezpečeného kanálu (Pokud je to možné).|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SealSecureChannel|
+|Člen domény: digitálně podepsat data zabezpečeného kanálu (Pokud je to možné)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SignSecureChannel|
 |Člen domény: Zakázat změny hesla účtu počítače|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DisablePasswordChange|
-|Člen domény: Maximální stáří hesla účtu počítače|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
-|Člen domény: Vyžadovat silný klíč relace (Windows 2000 nebo novější)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
-|Zabezpečení sítě: Omezit protokol NTLM:  Ověřování protokolem NTLM v této doméně|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
-|Zabezpečení sítě: Omezit protokol NTLM: Přidat výjimky serveru v této doméně|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
-|Zabezpečení sítě: Omezit protokol NTLM: Auditovat ověřování NTLM v této doméně|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\AuditNTLMInDomain|
+|Člen domény: maximální stáří hesla účtu počítače|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
+|Člen domény: vyžadovat silný klíč relace (Windows 2000 nebo novější)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
+|Zabezpečení sítě: omezit protokol NTLM: ověřování NTLM v této doméně|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
+|Zabezpečení sítě: omezit protokol NTLM: přidat výjimky serveru v této doméně|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
+|Zabezpečení sítě: omezit protokol NTLM: Auditovat ověřování NTLM v této doméně|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
 
 > [!NOTE]
-> Další informace o nastaveních registru podporovaných různými verzemi operačních systémů najdete v [referenční tabulce nastavení zásady skupiny](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25250).
+> Další informace o nastaveních registru podporovaných různými verzemi operačních systémů najdete v [referenční tabulce nastavení zásady skupiny](https://www.microsoft.com/download/confirmation.aspx?id=25250).
 
 *Konfigurace produktu FIM pro monitorování standardních hodnot registru:*
 

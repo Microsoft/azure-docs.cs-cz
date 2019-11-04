@@ -1,28 +1,28 @@
 ---
 title: 'Regrese rozhodovací doménové struktury: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak pomocí modulu pro regresi rozhodovací doménové struktury ve službě Azure Machine Learning vytvořit regresní model založený na kompletu rozhodovacích stromů.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak pomocí modulu pro regresi rozhodovací doménové struktury v Azure Machine Learning vytvořit regresní model založený na kompletu rozhodovacích stromů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693176"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497963"
 ---
 # <a name="decision-forest-regression-module"></a>Modul pro regresi rozhodovací doménové struktury
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vytvořit regresní model založený na kompletu rozhodovacích stromů.
 
-Po nakonfigurování modelu je nutné proškolit model pomocí popisku DataSet a modulu [vlakového modelu](./train-model.md) .  K vytvoření předpovědi se pak dá použít trained model. 
+Po nakonfigurování modelu je nutné proškolit model pomocí popisku DataSet a modulu [vlakového modelu](./train-model.md) . K vytvoření předpovědi se pak dá použít trained model. 
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -42,11 +42,11 @@ Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci 
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Jak nakonfigurovat regresní model doménové struktury
 
-1. Přidejte do kanálu modul **regrese rozhodovací doménové struktury** . Modul můžete najít v rozhraní pod **Machine Learning**, **inicializovat model**a **regrese**.
+1. Přidejte do kanálu modul **regrese rozhodovací doménové struktury** . Modul můžete najít v návrháři v části **Machine Learning**, **inicializovat model**a **regresi**.
 
 2. Otevřete vlastnosti modulu a pro **metodu převzorkování**vyberte metodu použitou k vytvoření jednotlivých stromů.  Můžete si vybrat z **zavazadla** nebo **replikace**.
 
-    - Zaznamenání **do zavazadla**se také označuje jako *agregace Bootstrap*. Každý strom v doménové struktuře regrese má za následek Gaussovské rozdělení způsobem předpovědi. Agregaci je najít Gaussovské, jehož první dvě momenty se shodují se momentem kombinace Gaussovské, která je dána kombinací všech Gaussovskéů vrácených jednotlivými stromy.
+    - Zaznamenání **do zavazadla**se také označuje jako *agregace Bootstrap*. Každý strom v doménové struktuře regrese má za následek Gaussovské rozdělení způsobem předpovědi. Agregace je najít Gaussovské, jehož první dvě momenty odpovídá momentu kombinace Gaussovské distribuce, která je dána kombinací všech distribucí vrácených jednotlivými stromy.
 
          Další informace najdete v tématu Wikipedii pro [agregaci Bootstrap](https://wikipedia.org/wiki/Bootstrap_aggregating).
 
@@ -96,4 +96,4 @@ Po dokončení školení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

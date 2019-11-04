@@ -1,7 +1,7 @@
 ---
 title: 'Vyhodnocení modelu: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul vyhodnocení modelu ve službě Azure Machine Learning k měření přesnosti vyučeného modelu.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul vyhodnocení modelu v Azure Machine Learning k měření přesnosti vyučeného modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 0ad4ceedf9c1d65339c9e4aabebc0a47475ed568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ddc6a35d5959a2d1f85c151a6f229223db9ba566
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693807"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497914"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul použijte k měření přesnosti trained model. Poskytnete datovou sadu obsahující skóre vygenerované z modelu a modul **vyhodnocení modelu** vypočítá sadu standardních metrik vyhodnocení v oboru.
   
@@ -69,7 +69,7 @@ Tato funkce je užitečná, protože můžete snadno porovnat výsledky dvou rů
 Po spuštění **modelu vyhodnocení**klikněte pravým tlačítkem myši na modul a výběrem **výsledků vyhodnocení** zobrazte výsledky. Můžete:
 
 + Uložte výsledky jako datovou sadu pro snazší analýzu pomocí dalších nástrojů.
-+ Generování vizualizace v rozhraní
++ Generování vizualizace v Návrháři
 
 Pokud připojíte datové sady ke vstupům **modelu vyhodnocení**, budou výsledky obsahovat metriky pro sadu dat nebo oba modely.
 Model nebo data připojená k levému portu se zobrazí jako první v sestavě, za kterými následuje metrika pro datovou sadu nebo model připojený ke správnému portu.  
@@ -126,4 +126,4 @@ Metriky vracené pro regresní modely jsou obecně navržené k odhadu množstv�
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

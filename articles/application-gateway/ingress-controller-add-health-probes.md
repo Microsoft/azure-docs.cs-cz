@@ -1,0 +1,70 @@
+---
+title: Přidání sond stavu do AKS lusků
+description: Tento článek poskytuje informace o tom, jak přidat sondy stavu (připravenost a/nebo živý) do AKS do lusků pomocí Application Gateway.
+services: application-gateway
+author: caya
+ms.service: application-gateway
+ms.topic: article
+ms.date: 10/23/2019
+ms.author: caya
+ms.openlocfilehash: 073babf407509c9bbf05340edd828c895fa376e9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73513624"
+---
+# <a name="add-health-probes-to-your-service"></a>Přidání sond stavu do služby
+Adaptér příchozího přenosu dat ve výchozím nastavení zřídí test HTTP GET pro exponované lusky.
+Vlastnosti sondy je možné přizpůsobit přidáním [testu připravenosti nebo živého provozu](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) do `deployment`/`pod` specifikace.
+
+## <a name="with-readinessprobe-or-livenessprobe"></a>S `readinessProbe` nebo `livenessProbe`
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: aspnetapp
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        service: site
+    spec:
+      containers:
+      - name: aspnetapp
+        image: mcr.microsoft.com/dotnet/core/samples:aspnetapp
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          periodSeconds: 3
+          timeoutSeconds: 1
+```
+
+Reference k rozhraní Kubernetes API:
+* [Sondy kontejneru](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes)
+* [Akce HttpGet](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#httpgetaction-v1-core)
+
+> [!NOTE]
+> * `readinessProbe` a `livenessProbe` jsou podporovány, pokud jsou nakonfigurovány pomocí `httpGet`.
+> * Zjišťování na jiném portu, než který je vystavený na straně, se v tuto chvíli nepodporuje.
+> * `HttpHeaders``InitialDelaySeconds``SuccessThreshold` nejsou podporovány.
+
+##  <a name="without-readinessprobe-or-livenessprobe"></a>Bez `readinessProbe` nebo `livenessProbe`
+Pokud výše uvedené sondy nejsou k dispozici, pak kontroler příchozího přenosu dat předpokládá, že je služba dosažitelná na `Path` zadanou pro `backend-path-prefix` anotaci nebo `path` zadanou v definici `ingress` služby.
+
+## <a name="default-values-for-health-probe"></a>Výchozí hodnoty pro sondu stavu
+Pro jakoukoliv vlastnost, kterou nelze odvodit pomocí testu připravenosti/živých, jsou nastaveny výchozí hodnoty.
+
+| Vlastnost Application Gateway PROBE | Výchozí hodnota |
+|-|-|
+| `Path` | / |
+| `Host` | místního |
+| `Protocol` | HTTP |
+| `Timeout` | 30 |
+| `Interval` | 30 |
+| `UnhealthyThreshold` | 3 |

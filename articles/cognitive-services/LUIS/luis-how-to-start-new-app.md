@@ -1,7 +1,7 @@
 ---
 title: Vytvoření nové aplikace – LUIS
 titleSuffix: Azure Cognitive Services
-description: Vytvářet a spravovat vaše aplikace na webové stránce Language Understanding (LUIS).
+description: Vytvářejte a spravujte své aplikace na webové stránce Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,31 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 227efcdbcb7d8e776dd77b38c5d1dedd54d71b6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258505"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500313"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu LUIS
-Existuje několik způsobů, jak vytvořit aplikaci LUIS. Můžete vytvořit aplikaci LUIS v [LUIS](https://www.luis.ai) portálu, nebo prostřednictvím LUIS vytváření [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
+Existuje několik způsobů, jak vytvořit aplikaci LUIS. Aplikaci LUIS můžete vytvořit na portálu [Luis](https://www.luis.ai) nebo prostřednictvím [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)pro vytváření Luis.
 
-## <a name="using-the-luis-portal"></a>Na portálu služby LUIS
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-Vytvoření nové aplikace na portálu služby LUIS několika způsoby:
+## <a name="using-the-luis-portal"></a>Používání portálu LUIS
 
-* Začít s prázdnou aplikaci a vytvořit záměrů, projevy a entity.
-* Začít s prázdnou aplikaci a přidejte [předem připravených domény](luis-how-to-use-prebuilt-domains.md).
-* Importujte aplikace LUIS ze souboru JSON, který již obsahuje záměrů, projevy a entity.
+Novou aplikaci můžete na portálu LUIS vytvořit několika způsoby:
 
-## <a name="using-the-authoring-apis"></a>Pomocí rozhraní API pro vytváření obsahu
-Vytvořit novou aplikaci s rozhraním API pro vytváření obsahu v několika způsoby:
+* Začněte s prázdnou aplikací a vytvořte záměry, projevy a entity.
+* Začněte s prázdnou aplikací a přidejte [předem vytvořenou doménu](luis-how-to-use-prebuilt-domains.md).
+* Importujte aplikaci LUIS ze souboru JSON, který už obsahuje záměry, projevy a entity.
 
-* [Spustit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) s prázdnou aplikaci a vytvořit záměrů, projevy a entity.
-* [Spustit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) s využitím předem připravených doménou.  
+## <a name="using-the-authoring-apis"></a>Použití rozhraní API pro vytváření obsahu
+Novou aplikaci s rozhraními API pro vytváření obsahu můžete vytvořit několika způsoby:
+
+* [Začněte](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) s prázdnou aplikací a vytvořte záměry, projevy a entity.
+* [Začněte](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) předem vytvořenou doménou.  
 
 
 <a name="export-app"></a>
@@ -45,16 +47,16 @@ Vytvořit novou aplikaci s rozhraním API pro vytváření obsahu v několika zp
 
 ## <a name="create-new-app-in-luis"></a>Vytvoření nové aplikace v LUIS
 
-1. Na **Moje aplikace** stránce **vytvořit novou aplikaci**.
+1. Na stránce **Moje aplikace** vyberte **+ vytvořit**.
 
     ![Seznam aplikací LUIS](./media/luis-create-new-app/apps-list.png)
 
 
-2. V dialogovém okně pojmenujte svoji aplikaci "TravelAgent".
+2. Do dialogového okna zadejte název aplikace "TravelAgent".
 
-    ![Vytvoření nového dialogového okna aplikace](./media/luis-create-new-app/create-app.png)
+    ![Dialogové okno vytvořit novou aplikaci](./media/luis-create-new-app/create-app.png)
 
-3. Zvolte jazykovou verzi vaší aplikace (TravelAgent aplikaci, zvolte možnost angličtina) a pak vyberte **provádí**. 
+3. Zvolte jazykovou verzi vaší aplikace (pro aplikaci TravelAgent zvolte angličtinu) a potom vyberte **Hotovo**. 
 
     > [!NOTE]
     > Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi. 
@@ -90,6 +92,6 @@ Možné chyby:
 1. V nabídce vyberte **Odstranit** .
 1. V potvrzovacím okně vyberte **OK** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Vaše první úkol v aplikaci je [přidání záměrů](luis-how-to-add-intents.md).
+Prvním úkolem v aplikaci je [Přidat záměry](luis-how-to-add-intents.md).

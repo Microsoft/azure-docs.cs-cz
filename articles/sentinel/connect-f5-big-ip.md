@@ -1,0 +1,58 @@
+---
+title: Připojit data o velkém IP adrese F5 do Azure Sentinel | Microsoft Docs
+description: Přečtěte si, jak připojit data o velkém IP adresy F5 do Azure Sentinel.
+services: sentinel
+documentationcenter: na
+author: rkarlin
+manager: rkarlin
+editor: ''
+ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
+ms.devlang: na
+ms.topic: conceptual
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/23/2019
+ms.author: rkarlin
+ms.openlocfilehash: ff5a8f940348c36ca2a19fb31a173b2dfc4f4d6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73514131"
+---
+# <a name="connect-your-f5-big-ip-appliance"></a>Připojení zařízení se systémem F5 BIG-IP 
+
+> [!IMPORTANT]
+> Konektor dat F5 BIG-IP ve službě Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Konektor pro BIG-IP s nástrojem F5 umožňuje snadno propojit všechny protokoly BIG-IP s protokolem Azure Sentinel, zobrazit sešity, vytvářet vlastní výstrahy a vylepšit šetření. Získáte tak lepší přehled o síti vaší organizace a zlepšíte možnosti vaší operace zabezpečení. Integrace mezi službami F5 BIG-IP a Sentinel Azure využívá REST API.
+
+
+> [!NOTE]
+> Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
+
+## <a name="configure-and-connect-f5-big-ip"></a>Konfigurace a připojení F5 BIG-IP 
+
+Možnost F5 BIG-IP může integrovat a exportovat protokoly přímo do Azure Sentinel.
+
+1. Na portálu Sentinel Azure klikněte na **datové konektory** a vyberte **F5 Big-IP** a pak **otevřete stránku konektor**. 
+1. Pro připojení ke službě F5 BIG-IP musíte odeslat deklaraci JSON do koncového bodu rozhraní API systému. Pokyny k tomu, jak to provést, najdete v tématu [integrování Big-IP adresy F5 pomocí funkce Azure Sentinel](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel).
+8. Na stránce konektoru nástroje F5 BIG-IP zkopírujte ID a primární klíč pracovního prostoru a vložte je podle pokynů v části [streamovaná data do Azure Log Analytics](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel#streaming-data-to-azure-log-analytics).
+1. Po dokončení kroků F5 BIG-IP se na stránce konektoru služby Azure Sentinel zobrazí propojené datové typy.
+1. Pokud chcete použít příslušné schéma v Log Analytics pro události F5 BIG-IP, vyhledejte **F5Telemetry_LTM_CL**, **F5Telemetry_system_CL**a **F5Telemetry_ASM_CL**.
+
+
+## <a name="validate-connectivity"></a>Ověřit připojení
+
+Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics. 
+
+
+
+## <a name="next-steps"></a>Další kroky
+V tomto dokumentu jste zjistili, jak připojit F5 BIG-IP ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
+

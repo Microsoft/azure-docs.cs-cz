@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa08ea44722b2def684c269c3f9a0a30a4890a12
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970912"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495782"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informace o nastavení konfigurace VPN Gateway
 
@@ -39,7 +39,7 @@ Dostupné hodnoty pro – GatewayType jsou:
 * Vpn
 * ExpressRoute
 
-Brána sítě VPN vyžaduje rozhraní `-GatewayType` *VPN*.
+Brána sítě VPN vyžaduje `-GatewayType` *VPN*.
 
 Příklad:
 
@@ -79,9 +79,9 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 Pokud máte bránu VPN a chcete použít jinou SKU brány, vaše možnosti mají buď změnit velikost SKU brány, nebo přejít na jinou SKLADOVOU položku. Když změníte jinou SKU brány, odstraníte zcela stávající bránu a vytvoříte novou. Sestavení brány může trvat až 45 minut. V porovnání se při změně velikosti SKU brány nejedná o spoustu výpadků, protože nemusíte bránu odstranit a znovu sestavovat. Pokud máte možnost změnit velikost SKU brány místo změny, budete ji chtít provést. Existují však pravidla týkající se změny velikosti:
 
-1. Můžete měnit velikost mezi VpnGw1, VpnGw2 a VpnGw3 SKU.
+1. S výjimkou základního SKU můžete změnit velikost SKU brány VPN na jinou SKLADOVOU položku služby VPN Gateway v rámci stejné generace (Generation1 nebo Generation2). Například VpnGw1 of Generation1 lze změnit na VpnGw2 Generation1, ale ne na VpnGw2 Generation2.
 2. Pokud používáte staré SKU brány, můžete měnit velikost mezi Basic, Standard a HighPerformance SKU.
-3. **Není možné** změnit velikost z Basic/Standard/HighPerformance SKU na nové VpnGw1/VpnGw2/VpnGw3 SKU. Místo toho je třeba [Přejít](#change) na nové SKU.
+3. **Nemůžete** změnit velikost z položek Basic/Standard/HighPerformance SKU na SKU VpnGw. Místo toho je třeba [Přejít](#change) na nové SKU.
 
 #### <a name="resizegwsku"></a>Změna velikosti brány
 

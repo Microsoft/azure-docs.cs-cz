@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření experimentu pro datové vědy'
-titleSuffix: Azure Machine Learning Studio
+title: 'Rychlý Start: vytvoření experimentu pro datové vědy'
+titleSuffix: Azure Machine Learning Studio (classic)
 description: Tento rychlý Start Machine Learning vás provede jednoduchým experimentem pro datové vědy. Pomocí regresního algoritmu předpovíme cenu automobilu.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: e5c004b69f24b50ed2eb3a10dbd0a7915c0773ce
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c95954bbe96b947312a952ebaab4e6bfc2b2f5a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515111"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493296"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Rychlý start: Vytvořte svůj první experiment s datovou vědy v Azure Machine Learning Studio
+# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Rychlý Start: vytvoření prvního experimentu pro datové vědy v Azure Machine Learning Studio (Classic)
 
-V tomto rychlém startu vytvoříte experiment strojového učení v [Azure Machine Learning Studio](what-is-ml-studio.md) , který předpovídá cenu auta na základě různých proměnných, jako jsou třeba technické specifikace.
+[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+
+V tomto rychlém startu vytvoříte experiment strojového učení v [Azure Machine Learning Studio (Classic)](what-is-ml-studio.md) , který předpovídá cenu auta na základě různých proměnných, jako jsou třeba technické specifikace.
 
 Pokud se naučíte novinkou ve strojovém učení, je [pro začátečníky užitečná řada datových věd](data-science-for-beginners-the-5-questions-data-science-answers.md) , která využívá každodenní jazyk a koncepty.
 
@@ -40,20 +42,18 @@ Tento rychlý Start následuje za výchozím pracovním postupem pro experiment:
 [Volba a použití algoritmu]: #choose-and-apply-an-algorithm
 [Předpověď cen nových automobilů]: #predict-new-automobile-prices
 
-Pokud nemáte účet studia, na [domovské stránce studia](https://studio.azureml.net) klikněte na **zaregistrovat** a vytvořte si bezplatný účet. Pracovní prostor Free bude obsahovat všechny funkce, které pro tento rychlý Start potřebujete.
-
 ## <a name="get-the-data"></a>Získání dat
 
 První věc, kterou potřebujete ve službě Machine Learning, je data.
-Sada Studio obsahuje několik ukázkových datových sad, které můžete použít, nebo můžete importovat data z mnoha zdrojů. V tomto příkladu použijeme ukázkovou datovou sadu **Automobile price data (Raw)** , která je součástí vašeho pracovního prostoru.
+K dispozici je několik ukázkových datových sad, které jsou součástí klasické verze studia, kterou můžete použít, nebo můžete importovat data z mnoha zdrojů. V tomto příkladu použijeme ukázkovou datovou sadu **Automobile price data (Raw)** , která je součástí vašeho pracovního prostoru.
 Tato datová sada obsahuje záznamy řady různých automobilů, včetně informací o značce, modelu, technických specifikacích a ceně.
 
 > [!TIP]
-> Pracovní kopii následujícího experimentu najdete v [galerii Azure AI](https://gallery.azure.ai). Přejděte k části **[První experiment z oblasti datové vědy – predikce ceny automobilu](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** , klikněte na **Open in Studio** (Otevřít v sadě Studio) a stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio.
+> Pracovní kopii následujícího experimentu najdete v [galerii Azure AI](https://gallery.azure.ai). Přejděte na **[první experiment z oblasti datové vědy, předpověď ceny automobilu](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** a kliknutím na **otevřít v aplikaci Studio** Stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio (Classic).
 
 Tuto datovou sadu dostanete do svého experimentu takto.
 
-1. Kliknutím na **+ Nový** ve spodní části okna Machine Learning Studio vytvořte nový experiment. Vyberte **experimentovat** >  **prázdný experiment**.
+1. Vytvořte nový experiment kliknutím na **+ Nový** ve spodní části okna Machine Learning Studio (Classic). Vyberte **experiment** >  **prázdný experiment**.
 
 1. Experimentu se přiřadí výchozí název, který se zobrazí v horní části plátna. Vyberte tento text a přejmenujte jej na něco smysluplného, například **Predikce ceny automobilu**. Název nemusí být jedinečný.
 
@@ -183,7 +183,7 @@ Naše data můžeme použít jak pro trénování modelu, tak pro jeho otestová
 
 1. Nyní vyberte algoritmus učení. Na paletě modulů nalevo od plátna rozbalte kategorii **Strojové učení** a pak **Inicializovat model**. Tímto se zobrazí několik kategorií modulů, které je možné použít k inicializaci algoritmů strojového učení. Pro tento experiment vyberte modul [lineární regrese][linear-regression] v kategorii **regrese** a přetáhněte ho na plátno experimentu. (Tento modul můžete najít i tak, že do pole Hledat palety zadáte lineární regrese.)
 
-1. Najděte modul vlakového [modelu][train-model] a přetáhněte ho na plátno experimentu. Připojte výstup modulu [lineární regrese][linear-regression] k levému vstupu modulu [vlak model][train-model] a připojte výstup školicích dat (levý port) modulu [rozdělení dat][split] ke správnému vstupu modulu [vlak model][train-model] .
+1. Najděte modul [vlakového modelu][train-model] a přetáhněte ho na plátno experimentu. Připojte výstup modulu [lineární regrese][linear-regression] k levému vstupu modulu [vlak model][train-model] a připojte výstup školicích dat (levý port) modulu [rozdělení dat][split] ke správnému vstupu modulu [vlak model][train-model] .
 
     ![Připojte modul vlakového modelu k modulům lineární regrese a rozdělení dat.](./media/create-experiment/connect-train-model.png)
 
@@ -223,11 +223,11 @@ Pokud chcete zobrazit výstup z modulu [vyhodnocení modelu][evaluate-model] , k
 
 Pro náš model se zobrazí následující statistiky:
 
-- **Střední absolutní chyba** (MAE): Průměr absolutních chyb ( *Chyba* je rozdíl mezi předpovězenou a skutečnou hodnotou).
-- **Střední Chyba v kořenu – chyba** (RMSE): Druhá odmocnina průměru kvadratických chyb předpovědi provedených v testovací datové sadě.
-- **Relativní absolutní chyba**: Průměr absolutních chyb relativních k absolutnímu rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot.
-- **Relativní čtvercová chyba**: Průměr kvadratických chyb vzhledem k kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot.
-- **Koeficient určení**: Tato statistická Metrika označuje, jak dobře model odpovídá datům, označovanou také jako **hodnota R**.
+- **Střední absolutní chyba** (MAE): Průměr absolutních chyb (*chyba* je rozdíl mezi předpovězenou a skutečnou hodnotu)
+- **Odmocnina střední kvadratické chyby** (RMSE): Druhá odmocnina průměru kvadratických chyb předpovědí na základě testovací datové sady
+- **Relativní absolutní chyba**: Průměr absolutních chyb relativních k absolutnímu rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
+- **Relativní kvadratická chyba**: Průměr kvadratických chyb relativních ke kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
+- **Koeficient spolehlivosti**: Znám také jako **hodnota spolehlivosti R**, tedy statistická metrika označující kvalitu přizpůsobení modelu datům
 
 Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodnota označuje, že předpověď přesněji odpovídá skutečným hodnotám. V případě **koeficientu spolehlivosti** platí, že čím bližší je jeho hodnota hodnotě jedna (1,0), tím lepší jsou předpovědi.
 
@@ -235,12 +235,12 @@ Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodn
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili jednoduchý experiment s použitím ukázkové datové sady. Chcete-li prozkoumat proces tvorby a nasazení modelu podrobněji, pokračujte do kurzu prediktivního řešení.
 
 > [!div class="nextstepaction"]
-> [Kurz: Vývoj prediktivního řešení v studiu](tutorial-part1-credit-risk.md)
+> [Kurz: vývoj prediktivního řešení v studiu (Classic)](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

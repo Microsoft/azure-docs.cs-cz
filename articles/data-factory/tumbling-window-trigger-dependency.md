@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: 6e5e293e9759f091b6537d5efab9884e0a20fabc
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725477"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "73520507"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Vytvoření závislosti aktivační události pro přeskakující okno
 
@@ -76,11 +76,11 @@ Aktivační událost bubnového okna se závislostí má následující vlastnos
 
 Následující tabulka uvádí seznam atributů potřebných k definování závislosti bubnu okna.
 
-| **Název vlastnosti** | **Popis**  | **Typ** | **Požadováno** |
+| **Název vlastnosti** | **Popis**  | **Typ** | **Požadovanou** |
 |---|---|---|---|
 | type  | V tomto rozevíracím seznamu se zobrazí všechny existující triggery bubnového okna. Vyberte aktivační událost, u které se má provést závislost.  | TumblingWindowTriggerDependencyReference nebo SelfDependencyTumblingWindowTriggerReference | Ano |
-| offset | Posun triggeru závislosti. Zadejte hodnotu ve formátu časového rozsahu a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud je Trigger závislý sám na sobě a ve všech ostatních případech je nepovinný. Samostatná závislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Timespan<br/>(hh: mm: SS) | Samostatná závislost: Ano<br/>Jiné: Ne |
-| size | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Timespan<br/>(hh: mm: SS) | Ne  |
+| polohy | Posun triggeru závislosti. Zadejte hodnotu ve formátu časového rozsahu a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud je Trigger závislý sám na sobě a ve všech ostatních případech je nepovinný. Samostatná závislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Časový interval<br/>(hh: mm: SS) | Samostatná závislost: Ano<br/>Jiné: ne |
+| Hodnota | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | Ne  |
 
 > [!NOTE]
 > Aktivační událost bubnového okna může záviset na maximálním počtu dvou dalších triggerů.
@@ -151,16 +151,18 @@ Denní úloha bez mezer ve výstupních streamech úlohy:
 
 ## <a name="monitor-dependencies"></a>Monitorování závislostí
 
-Řetěz závislostí a odpovídající okna můžete monitorovat na stránce monitorování spuštění aktivační události. Přejděte na **monitorování > spuštění aktivační události**.
+Řetěz závislostí a odpovídající okna můžete monitorovat na stránce monitorování spuštění aktivační události. Přejděte na **monitorování > spuštění aktivační události**. Ve sloupci akce můžete Trigger spustit znovu nebo zobrazit jeho závislosti.
 
 ![Monitorování spuštění aktivační události](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Monitorování spuštění aktivační události")
 
-Kliknutím na ikonu akce zobrazíte všechny závislé triggery spuštění vybraného okna.
+Pokud kliknete na možnost zobrazit závislosti triggeru, uvidíte stav závislostí. Pokud se jedna z triggerů závislosti nezdaří, je nutné ji úspěšně znovu spustit, aby se spustila závislá aktivační událost. Aktivační událost bubnového okna počká na závislosti po dobu sedmi dnů, než se dokončí časový limit.
 
 ![Monitorování závislostí](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Monitorování závislostí")
 
-Ve výše uvedeném příkladu je denní Trigger závislý na hodinovém triggeru bez definovaného okna a posun 3 hodiny. V důsledku toho se aktivační událost spustí po 24 úspěšném spuštění závislosti.
+Pokud chcete zobrazit více vizuálů pro zobrazení plánu závislosti triggeru, vyberte zobrazení Ganttova diagramu.
 
-## <a name="next-steps"></a>Další postup
+![Monitorování závislostí](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Monitorování závislostí")
+
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si [, jak vytvořit aktivační událost bubnového okna](how-to-create-tumbling-window-trigger.md) .

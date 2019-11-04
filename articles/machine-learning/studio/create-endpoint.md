@@ -1,7 +1,7 @@
 ---
-title: Vytvoření webového koncové body služby
-titleSuffix: Azure Machine Learning Studio
-description: Vytvoření webových koncových bodů služby v nástroji Azure Machine Learning Studio. Každý koncový bod webové služby je nezávisle na sobě zákazníky a vyřešené, omezení a spravované.
+title: Vytvoření koncových bodů webové služby
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Vytvoření koncových bodů webové služby v Azure Machine Learning Studio (Classic). Každý koncový bod ve webové službě se nezávisle zabývá, omezuje a spravuje.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,45 +10,45 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: ac434a696f6e77e5ce61b430232166e7727eda38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d98df3e2dcc8112df9d56033bece069607380d9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751174"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493237"
 ---
-# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>Vytváření koncových bodů pro nasazené webové služby Azure Machine Learning Studio
+# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Vytvoření koncových bodů pro nasazené webové služby Azure Machine Learning Studio (Classic)
 
 > [!NOTE]
-> Toto téma popisuje postupy aplikovatelné **Classic** webové služby Machine Learning.
+> Toto téma popisuje techniky, které se vztahují na **klasický** Machine Learning webovou službu.
 
-Po nasazení webové služby je pro tuto službu vytvořen koncový bod. Výchozí koncový bod je možné volat pomocí klíče rozhraní API. Můžete přidat další koncové body s vlastními klíči z portálu webových služeb.
-Každý koncový bod webové služby je nezávisle na sobě zákazníky a vyřešené, omezení a spravované. Každý koncový bod je jedinečnou adresu URL pomocí autorizačního klíče, které můžete distribuovat zákazníkům.
+Po nasazení webové služby je pro tuto službu vytvořen koncový bod. Výchozí koncový bod je možné volat pomocí klíče rozhraní API. Můžete přidat další koncové body s vlastními klíči z portálu webové služby.
+Každý koncový bod ve webové službě se nezávisle zabývá, omezuje a spravuje. Každý koncový bod je jedinečná adresa URL s autorizačním klíčem, který můžete distribuovat vašim zákazníkům.
 
-## <a name="add-endpoints-to-a-web-service"></a>Přidání koncových bodů webové služby
+## <a name="add-endpoints-to-a-web-service"></a>Přidání koncových bodů do webové služby
 
-Přidání koncového bodu webové služby pomocí portálu Azure Machine Learning Web Services. Po vytvoření koncového bodu můžete využívat přes synchronního rozhraní API, rozhraní API pro dávkové a listy aplikace excel.
+Koncový bod můžete k webové službě přidat pomocí portálu Azure Machine Learning Web Services. Po vytvoření koncového bodu ho můžete využívat přes synchronní rozhraní API, rozhraní API služby Batch a excelové listy.
 
 > [!NOTE]
-> Pokud jste přidali další koncové body webové služby, nelze odstranit výchozí koncový bod.
+> Pokud jste do webové služby přidali další koncové body, nemůžete výchozí koncový bod odstranit.
 
-1. V nástroji Machine Learning Studio v levém navigačním sloupci klikněte na webové služby.
-2. V dolní části řídicího panelu webové služby, klikněte na tlačítko **spravovat koncové body**. Na portálu Azure Machine Learning Web Services se otevře na stránce koncové body pro webové služby.
+1. V Machine Learning Studio (Classic) v levém navigačním sloupci klikněte na webové služby.
+2. V dolní části řídicího panelu webové služby klikněte na možnost **Spravovat koncové body**. Portál Azure Machine Learning webové služby se otevře na stránce koncové body webové služby.
 3. Klikněte na možnost **Nové**.
-4. Zadejte název a popis pro nový koncový bod. Názvy koncových bodů musí být 24 znaků nebo méně délku a musí být tvořen malá písmena a číslice. Vyberte úroveň protokolování a povolení ukázková data. Další informace o protokolování naleznete v tématu [povolení protokolování pro webové služby Machine Learning](web-services-logging.md).
+4. Zadejte název a popis nového koncového bodu. Názvy koncových bodů musí mít délku 24 znaků nebo méně a musí se nacházet z malých písmen nebo číslic. Vyberte úroveň protokolování a jestli jsou povolená ukázková data. Další informace o protokolování najdete v tématu [Povolení protokolování pro Machine Learning webové služby](web-services-logging.md).
 
-## <a id="scaling"></a> Škálování webové služby tak, že přidáte další koncové body
+## <a id="scaling"></a>Škálování webové služby přidáním dalších koncových bodů
 
-Ve výchozím nastavení každé publikované webové služby je nakonfigurována pro podporu 20 souběžných požadavků a může být až 200 souběžných požadavků. Azure Machine Learning Studio se automaticky optimalizuje nastavení můžete poskytovat nejlepší výkon pro webové služby a portálu hodnota je ignorována.
+Ve výchozím nastavení je každá publikovaná webová služba nakonfigurovaná tak, aby podporovala 20 souběžných požadavků a může být stejně vysoká jako 200 souběžných požadavků. Klasická verze Azure Machine Learning Studio automaticky optimalizuje nastavení tak, aby poskytovala nejlepší výkon pro vaši webovou službu, a hodnota portálu se ignoruje.
 
-Pokud bude podporovat plán pro volání rozhraní API se zatížením vyšší než hodnota maximálního počtu současných volání 200, měli byste vytvořit několik koncových bodů na stejné webové služby. Potom můžete náhodně distribuovat zatížení napříč jimi.
+Pokud máte v úmyslu volat rozhraní API s vyšší zátěží, než je maximální počet souběžných volání 200, bude třeba vytvořit více koncových bodů ve stejné webové službě. Potom můžete zatížení náhodně rozmístit napříč všemi nimi.
 
-Škálování webové služby je běžný úkol. Jsou některé důvody pro škálování podporovat více než 200 souběžných požadavků, zvyšují dostupnost prostřednictvím více koncových bodů nebo poskytovat samostatný koncových bodů webové služby. Škálování můžete zvýšit tak, že přidáte další koncové body pro službu web prostřednictvím [webové služby Azure Machine Learning](https://services.azureml.net/) portálu.
+Škálování webové služby je běžný úkol. Důvodem pro škálování je podpora více než 200 souběžných požadavků, zvýšení dostupnosti prostřednictvím více koncových bodů nebo poskytnutí samostatných koncových bodů pro webovou službu. Měřítko můžete zvětšit přidáním dalších koncových bodů pro stejnou webovou službu prostřednictvím portálu [Azure Machine Learning webové služby](https://services.azureml.net/) .
 
-Nezapomínejte, že pomocí souběžnosti vysoký počet může být škodlivé, pokud nejsou volání rozhraní API s odpovídajícím způsobem vysoký. Sporadické vypršení časových limitů a/nebo provozní špičky může zobrazit v latenci, když vložíte relativně nízký zatížení na rozhraní API nakonfigurovaný pro vysokého zatížení.
+Mějte na paměti, že použití vysoké souběžnosti může být škodlivé, pokud nevoláte rozhraní API s odpovídající vysokou mírou. Pokud zadáte relativně nízké zatížení rozhraní API, které je nakonfigurováno pro vysoké zatížení, může se zobrazit občasná prodleva nebo špičky v latenci.
 
-Synchronní rozhraní API se obvykle používá v situacích, kdy je žádoucí s nízkou latencí. Tady latence znamená doba potřebná pro rozhraní API pro jeden požadavek na dokončení a nebude účet pro žádné zpoždění v síti. Řekněme, že máte rozhraní API s latencí 50 ms. Chcete-li plnohodnotně pracovat s úroveň omezování prostředků vysoce dostupnou kapacitu a maximálního počtu současných volání = 20, potřebné k volání tohoto rozhraní API 20 * 1 000 / 50 = 400 vyprší za sekundu. Tato další rozšíření, maximálního počtu současných volání 200 umožňuje volat časy 4000 rozhraní API za sekundu, za předpokladu, že latence 50 ms.
+Synchronní rozhraní API se obvykle používají v situacích, kdy je potřeba nízká latence. Latence tady znamená dobu, kterou rozhraní API potřebuje k dokončení jedné žádosti, a nebere v úvahu žádné zpoždění v síti. Řekněme, že máte rozhraní API s latencí 50-ms. Aby bylo možné plně využít dostupnou kapacitu s vysokým a maximálním počtem souběžných volání = 20, je nutné zavolat toto rozhraní API 20 * 1000/50 = 400 krát za sekundu. Další rozšíření: maximální počet souběžných volání 200 umožňuje volat rozhraní API 4000 za sekundu za předpokladu, že je latence 50-ms.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Způsob využívání webové služby Azure Machine Learning](consume-web-services.md).
+[Jak využívat Azure Machine Learning webovou službu](consume-web-services.md).

@@ -1,53 +1,64 @@
 ---
 title: 'Importovat data: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul import dat ve službě Azure Machine Learning k načtení dat do kanálu strojového učení z existujících cloudových datových služeb.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul importovat data v Azure Machine Learning k načtení dat do kanálu strojového učení z existujících cloudových datových služeb.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: fef7d686479b24b0402ab6f1e6990df74231b8d6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693140"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497777"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Pomocí tohoto modulu můžete načíst data do kanálu strojového učení z existujících cloudových datových služeb.  
+Pomocí tohoto modulu můžete načíst data do kanálu strojového učení z existujících cloudových datových služeb. 
 
-Nejprve vyberte typ cloudového úložiště, ze kterého čtete, a dokončete další nastavení. Až nadefinujete požadovaná data a připojíte se ke zdroji, [importujte data](./import-data.md) datový typ každého sloupce na základě hodnot, které obsahuje, a načte data do svého pracovního prostoru Azure Machine Learning. Výstupem [importu dat](./import-data.md) je datová sada, která se dá použít s libovolným kanálem.
+> [!Note]
+> Všechny funkce, které tento modul poskytuje, může udělat **úložiště dat** a **datové sady** na úvodní stránce pracovního prostoru. Doporučujeme používat **úložiště** dat a **datovou sadu** , které zahrnují další funkce, jako je monitorování dat. Další informace najdete v článku [Jak získat přístup k datům](../service/how-to-access-data.md) a [jak zaregistrovat datové sady](../service/how-to-create-register-datasets.md) .
+> Po registraci můžete datovou sadu najít v **datových sadách** -> kategorie **Moje datové sady** v rozhraní návrháře. Tento modul je vyhrazený pro uživatele v rámci studia (Classic) pro známé prostředí. 
+>
 
-  
-Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a přidat nová data tak, že znovu spustíte [importovaná data](./import-data.md). Pokud ale nechcete znovu číst ze zdroje při každém spuštění kanálu, vyberte možnost **použít výsledky v mezipaměti** na hodnotu true. Pokud je vybrána tato možnost, modul zkontroluje, zda kanál dříve běžel pomocí stejné možnosti zdroje a stejného vstupu. Pokud se najde předchozí spuštění, místo opětovného načtení dat ze zdroje se použijí data v mezipaměti.
- 
+Nejdřív vyberte zdroj, ze kterého čtete, a dokončete další nastavení. Modul **Import dat** podporuje čtení dat z následujících zdrojů:
 
-## <a name="data-sources"></a>Zdroje dat
+- Adresa URL prostřednictvím protokolu HTTP
+- Cloudové úložiště Azure přes [**úložiště dat**](../service/how-to-access-data.md))
+    - Kontejner objektů blob Azure
+    - Sdílená složka Azure
+    - Azure Data Lake
+    - Azure Data Lake Gen2
+    - Azure SQL Database
+    - PostgreSQL Azure    
 
-Modul Import dat podporuje následující zdroje dat. Kliknutím na odkazy zobrazíte podrobné pokyny a příklady použití jednotlivých zdrojů dat. 
- 
-Pokud si nejste jistí, jak nebo kam byste měli ukládat data, přečtěte si tento průvodce o běžných datových scénářích v procesu datové vědy: [scénáře pro pokročilou analýzu v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-plan-sample-scenarios). 
+Než použijete cloudové úložiště, musíte nejdřív zaregistrovat úložiště dat v pracovním prostoru Azure Machine Learning. Další informace najdete v tématu [Jak získat přístup k datům](../service/how-to-access-data.md). 
 
+Jakmile definujete požadovaná data a připojíte se ke zdroji, **[importujte data](./import-data.md)** datový typ každého sloupce v závislosti na hodnotách, které obsahuje, a načte data do kanálu návrháře. Výstupem **importu dat** je datová sada, která se dá použít s libovolným kanálem návrháře.
 
-|Zdroj dat| Použít s|
-|-----------|-----------|  
-|[Webová adresa URL přes HTTP](./import-from-web-url-via-http.md)|Získat data hostovaná na webové adrese URL, která používá protokol HTTP a která byla k dispozici ve formátech CSV, TSV, ARFF nebo SvmLight|  
-|[Import z Azure Blob Storage](./import-from-azure-blob-storage.md) |Získat data uložená ve službě Azure Blob Service|  
-|[Importovat z Azure SQL Database](./import-from-azure-sql-database.md) |Získat data z Azure SQL Database|
+Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a přidat nová data tak, že znovu spustíte [importovaná data](./import-data.md). Pokud se však nechcete znovu načíst ze zdroje při každém spuštění kanálu, nastavte možnost **použít výsledky v mezipaměti** na hodnotu true. Pokud je vybrána tato možnost, modul zkontroluje, zda kanál dříve běžel pomocí stejné možnosti zdroje a stejného vstupu. Pokud se najde předchozí spuštění, místo opětovného načtení dat ze zdroje se použijí data v mezipaměti.
 
 ## <a name="how-to-configure-import-data"></a>Jak konfigurovat importovaná data
- 
-1. Přidejte do svého kanálu modul **Import dat** . Tento modul můžete najít v kategorii **vstup a výstup dat** v rozhraní.
 
-1. Klikněte na **zdroj dat**a vyberte typ cloudového úložiště, ze kterého čtete. 
+1. Přidejte do svého kanálu modul **Import dat** . Tento modul můžete najít v kategorii **vstup a výstup dat** v návrháři.
 
-    Další nastavení závisí na zvoleném typu úložiště a na tom, jestli je úložiště zabezpečené nebo ne. Možná budete muset zadat název účtu, typ souboru nebo přihlašovací údaje. Některé zdroje nevyžadují ověřování. pro jiné možná budete muset znát název účtu, klíč nebo název kontejneru.
+1. Kliknutím na **Spustit Průvodce importem dat** nakonfigurujte zdroj dat pomocí průvodce.
+
+    Průvodce získá název účtu a přihlašovací údaje a pomůže vám nakonfigurovat další možnosti. Pokud upravujete existující konfiguraci, nejprve načte aktuální hodnoty.
+
+1. Vyberte **zdroj dat**a vyberte typ zdroje dat. Může se jednat o protokol HTTP nebo úložiště dat.
+
+    Pokud zvolíte úložiště dat, můžete vybrat existující úložiště dat, která jsou už zaregistrovaná v pracovním prostoru Azure Machine Learning, nebo vytvořit nové úložiště dat. Pak definujte cestu k datům, která chcete importovat do úložiště dat. Cestu můžete snadno procházet kliknutím na **Procházet cestu** ![import-data-cesta](media/module/import-data-path.png)
+
+1. Vyberte schéma verze Preview pro filtrování sloupců, které chcete zahrnout. V možnostech analýzy můžete také definovat upřesňující nastavení, jako je oddělovač.
+
+    ![import-data-Preview](media/module/import-data.png)
 
 1. Vyberte možnost **použít výsledky v mezipaměti** , pokud chcete datovou sadu ukládat do mezipaměti pro opakované spuštění.
 
@@ -57,20 +68,19 @@ Pokud si nejste jistí, jak nebo kam byste měli ukládat data, přečtěte si t
 
 1. Spuštění kanálu
 
-    Když import dat načte data do rozhraní, odvodí se datový typ každého sloupce na základě hodnot, které obsahuje, buď číselného, nebo kategorií.
+    Když import dat načte data do návrháře, odvodí datový typ každého sloupce na základě hodnot, které obsahuje, buď číselného, nebo kategorií.
 
-    - Pokud je hlavička k dispozici, záhlaví se použije k pojmenování sloupců výstupní datové sady.
+    Pokud je hlavička k dispozici, záhlaví se použije k pojmenování sloupců výstupní datové sady.
 
-    - Pokud v datech nejsou žádná existující záhlaví sloupců, generují se nové názvy sloupců pomocí formátu Sloupec1, col2,... , coln*.
+    Pokud v datech nejsou žádná existující záhlaví sloupců, generují se nové názvy sloupců pomocí formátu Sloupec1, col2,... , coln*.
 
 ## <a name="results"></a>Výsledky
 
 Po dokončení importu klikněte na výstupní datovou sadu a vyberte **vizualizovat** , abyste viděli, jestli se data úspěšně importovala.
 
-Pokud chcete data uložit pro opětovné použití, neimportujte novou sadu dat při každém spuštění kanálu, klikněte pravým tlačítkem na výstup a vyberte **Uložit jako datovou sadu**. Vyberte název datové sady. Uložená datová sada uchovává data v době uložení a data se po opětovném spuštění kanálu neaktualizují, i když se datová sada v kanálu změní. To může být užitečné při pořizování snímků dat.
+Pokud chcete data uložit pro opakované použití, místo importu nové sady dat při každém spuštění kanálu klikněte pravým tlačítkem na výstup a vyberte **Uložit jako datovou sadu**. Vyberte název datové sady. Uložená datová sada uchovává data v době uložení a data se po opětovném spuštění kanálu neaktualizují, i když se datová sada v kanálu změní. To může být užitečné při pořizování snímků dat.
 
 Po importu dat možná budete potřebovat další přípravy na modelování a analýzu:
-
 
 - Pomocí možnosti [Upravit metadata](./edit-metadata.md) můžete změnit názvy sloupců, zpracovat sloupec jako jiný datový typ nebo označit, že některé sloupce jsou popisky nebo funkce.
 
@@ -80,4 +90,4 @@ Po importu dat možná budete potřebovat další přípravy na modelování a a
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

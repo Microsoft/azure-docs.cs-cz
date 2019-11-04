@@ -1,0 +1,50 @@
+---
+title: Připojit bránu firewall Barracuda CloudGen k Azure Sentinel | Microsoft Docs
+description: Naučte se připojit bránu firewall Barracuda CloudGen ke službě Azure Sentinel.
+services: sentinel
+documentationcenter: na
+author: cabailey
+manager: rkarlin
+editor: ''
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
+ms.devlang: na
+ms.topic: conceptual
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 11/04/2019
+ms.author: cabailey
+ms.openlocfilehash: 3d467026022a7bc90babd94827d64828f59ea714
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73518122"
+---
+# <a name="connect-barracuda-cloudgen-firewall"></a>Připojení brány firewall Barracuda CloudGen
+
+Konektor brány firewall Barracuda CloudGen (CGFW) umožňuje snadno připojit protokoly Barracuda CGFW k Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Získáte tak lepší přehled o síti vaší organizace a zlepšíte možnosti vaší operace zabezpečení.
+
+
+
+
+## <a name="prerequisites"></a>Předpoklady
+
+- Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
+
+- Brána firewall Barracuda CloudGen musí být nakonfigurovaná tak, aby se protokoly exportovali přes syslog.
+
+## <a name="connect-azure-sentinel-to-barracuda-cloudgen-firewall"></a>Připojení Azure Sentinel k bráně firewall Barracuda CloudGen
+
+1. V Azure Portal přejděte do části **Azure Sentinel** > **data Connectors** a pak vyberte konektor **brány firewall Barracuda CloudGen** .
+
+2. Vyberte **stránku otevřít konektor**.
+
+3. Postupujte podle pokynů na stránce **brány firewall Barracuda CloudGen** .
+
+
+## <a name="next-steps"></a>Další kroky
+V tomto dokumentu jste zjistili, jak připojit bránu firewall Barracuda CloudGen ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
+

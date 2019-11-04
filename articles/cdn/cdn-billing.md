@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996815"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495481"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Principy fakturace Azure CDN
 
@@ -48,29 +48,29 @@ Oblast fakturace Azure CDN je založena na umístění zdrojového serveru, kter
 Pokud například uživatel umístěný v Mexiku vydá požadavek a tato žádost je obsluhovaná serverem umístěným v USA POP kvůli podmínkám partnerských vztahů nebo přenosů, bude USA oblastí pro fakturaci.
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>Co je fakturovatelná Azure CDN transakce?
-Každá žádost HTTP (S), která končí v CDN, je fakturovatelná událost, která zahrnuje všechny typy odpovědí: úspěch, selhání nebo jiné. Různé odezvy ale můžou vygenerovat různé objemy provozu. Například *304* nezměněno a jiné odpovědi pouze hlavičky generují malý provoz, protože se jedná o malou odpověď hlavičky; Podobně se neúčtují odpovědi na chyby (například *404, které*se nenašly), ale z důvodu datové části s malou odezvou se účtují malé náklady.
+Každá žádost HTTP (S), která končí v CDN, je fakturovatelná událost, která zahrnuje všechny typy odpovědí: úspěch, selhání nebo jiné. Různé odezvy ale můžou vygenerovat různé objemy provozu. Například *304 Nezměněno* a jiné odpovědi pouze hlavičky generují malý provoz, protože se jedná o malou odpověď hlavičky; Podobně se neúčtují odpovědi na chyby (například *404, které se nenašly*), ale z důvodu datové části s malou odezvou se účtují malé náklady.
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Jaké další náklady na Azure jsou spojené s Azure CDN používání?
 Při použití Azure CDN se také vyskytnou poplatky za využití služeb, které se používají jako původ vašich objektů. Tyto náklady obvykle představují malou část celkových nákladů na využití CDN.
 
 Pokud jako zdroj obsahu používáte službu Azure Blob Storage, účtují se také následující poplatky za úložiště pro ukládání do mezipaměti:
 
-- Využité skutečné GB: Skutečné úložiště vašich zdrojových objektů.
+- Využité skutečné GB: skutečné úložiště vašich zdrojových objektů.
 
-- Převody Podle potřeby můžete mezipaměť vyplnit.
+- Transakce: podle potřeby můžete mezipaměť vyplnit.
 
-- Přenosy v GB: Množství dat přenesených za účelem vyplňování mezipamětí CDN.
+- Přenosy v GB: množství dat přenesených do vyplňování mezipamětí CDN.
 
 > [!NOTE]
 > Od října 2019 platí, že pokud používáte Azure CDN od Microsoftu, účtují se náklady na přenos dat ze zdrojů hostovaných v Azure do CDN pop. Azure CDN z Verizon a Azure CDN z Akamai podléhají sazbám popsaným níže.
 
 Další informace o fakturaci Azure Storage najdete v tématu [porozumění Azure Storage fakturace – šířka pásma, transakce a kapacita](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-Pokud používáte doručování *hostované služby*, účtují se vám poplatky následujícím způsobem:
+Pokud používáte *doručování hostované služby*, účtují se vám poplatky následujícím způsobem:
 
-- Výpočetní čas Azure: Výpočetní instance, které fungují jako původ.
+- Výpočetní čas Azure: výpočetní instance, které fungují jako původ.
 
-- Výpočetní přenos Azure: Přenosy dat z výpočetních instancí pro vyplňování mezipamětí Azure CDN.
+- Azure COMPUTE Transfer: přenos dat z výpočetních instancí pro vyplňování mezipamětí Azure CDN.
 
 Pokud váš klient používá požadavky na rozsah bajtů (bez ohledu na počáteční službu), platí následující požadavky:
 
@@ -81,11 +81,11 @@ Pokud váš klient používá požadavky na rozsah bajtů (bez ohledu na počát
 ## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>K kolika aktivit přenosů dochází pro podporu mezipaměti?
 Pokaždé, když POP POP potřebuje vyplnit svou mezipaměť, vytvoří požadavek na počátek objektu v mezipaměti. V důsledku toho původ při každé neúspěšné operaci ukládání do mezipaměti zaznamená fakturovatelnou transakci. Počet neúspěšných přístupů do mezipaměti závisí na několika faktorech:
 
-- Jak obsah ukládat do mezipaměti: Pokud má obsah vysoké hodnoty TTL (Time-to-Live)/Expiration a často se k němu přistupovalo, takže zůstane v mezipaměti populární, pak je velká většina zatížení zpracována přes CDN. Typický dobrý poměr přístupů do mezipaměti je dobře větší než 90%, což znamená, že méně než 10% požadavků klientů se musí vrátit ke zdroji, a to buď v případě neúspěšného pokusu o ukládání do mezipaměti, nebo obnovení objektu.
+- Jak obsah ukládat do mezipaměti: Pokud má obsah vysoké hodnoty TTL (Time-to-Live)/Expiration a často se k němu přistupoval, aby byl v mezipaměti oblíbený, pak je velká většina zatížení zpracována přes CDN. Typický dobrý poměr přístupů do mezipaměti je dobře větší než 90%, což znamená, že méně než 10% požadavků klientů se musí vrátit ke zdroji, a to buď v případě neúspěšného pokusu o ukládání do mezipaměti, nebo obnovení objektu.
 
-- Kolik uzlů potřebuje načíst objekt: Pokaždé, když uzel načte objekt ze zdroje, dojde k transakci Fakturovatelné. Výsledkem je, že více globálních obsahu (ke kterému se dostanete z více uzlů) má za následek Fakturovatelné transakce.
+- Kolik uzlů potřebuje načíst objekt: pokaždé, když uzel načte objekt ze zdroje, dojde k transakci Fakturovatelné. Výsledkem je, že více globálních obsahu (ke kterému se dostanete z více uzlů) má za následek Fakturovatelné transakce.
 
-- Vliv TTL: Vyšší hodnota TTL pro objekt znamená, že musí být načtena z původu méně často. Také to znamená, že klienti, jako jsou například prohlížeče, mohou objekt ukládat do mezipaměti, což může snížit transakce do sítě CDN.
+- Vliv TTL: vyšší hodnota TTL pro objekt znamená, že musí být načtena z původu méně často. Také to znamená, že klienti, jako jsou například prohlížeče, mohou objekt ukládat do mezipaměti, což může snížit transakce do sítě CDN.
 
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Které služby původu mají nárok na bezplatné přenosy dat s Azure CDN od Microsoftu? 
 Pokud jako zdroj CDN použijete jednu z následujících služeb Azure, nebudete se účtovat z přenosu dat od počátku do bodů POP CDN. 
@@ -93,7 +93,7 @@ Pokud jako zdroj CDN použijete jednu z následujících služeb Azure, nebudete
 - Azure Storage
 - Azure Media Services
 - Azure Virtual Machines
-- Virtuální sítě
+- Virtual Network
 - Load Balancer
 - Application Gateway
 - Azure DNS
@@ -101,11 +101,11 @@ Pokud jako zdroj CDN použijete jednu z následujících služeb Azure, nebudete
 - VPN Gateway
 - Traffic Manager
 - Network Watcher
-- Brána Azure Firewall
+- Azure Firewall
 - Azure Front Door Service
 - Azure Bastion
 - Služba Azure App Service
-- Azure Functions
+- Funkce Azure
 - Azure Data Factory
 - Azure API Management
 - Azure Batch 
@@ -113,8 +113,8 @@ Pokud jako zdroj CDN použijete jednu z následujících služeb Azure, nebudete
 - HDInsight
 - Azure Cosmos DB
 - Azure Data Lake Store
-- Služba Azure Machine Learning 
-- Databáze SQL Azure
+- Azure Machine Learning 
+- Databáze Azure SQL
 - Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Návody spravovat mé náklady efektivněji?

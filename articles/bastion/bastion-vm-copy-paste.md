@@ -1,66 +1,59 @@
 ---
-title: 'Zkopírujte a vložte do a z virtuálního počítače: Azure Bastionu | Dokumentace Microsoftu'
-description: V tomto článku se dozvíte, jak zkopírovat a vložit do a z virtuálního počítače Azure pomocí Bastionu.
+title: 'Kopírování a vkládání do a z virtuálního počítače: Azure bastionu | Microsoft Docs'
+description: V tomto článku se dozvíte, jak kopírovat a vkládat do a z virtuálního počítače Azure pomocí bastionu.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9d69d1a9fae258c9546a8c794fc0b0c68b952049
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: ed8d52a4932271020dfb2a010392b312fa38703b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191808"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519356"
 ---
-# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion-preview"></a>Zkopírujte a vložte do virtuálního počítače: Azure Bastion (Preview)
+# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Zkopírování a vložení do virtuálního počítače: Azure bastionu
 
-Tento článek pomůže můžete zkopírovat a vložit text do a z virtuálních počítačů při použití Azure Bastionu. Než začnete pracovat s virtuálním Počítačem, ujistěte se, že jste postupovali podle kroků pro [vytvořit hostitel typu bašta](bastion-create-host-portal.md). Poté se připojte k virtuálnímu počítači, který chcete pracovat buď pomocí [RDP](bastion-connect-vm-rdp.md) nebo [SSH](bastion-connect-vm-ssh.md).
+Tento článek vám pomůže kopírovat a vkládat text do a z virtuálních počítačů při použití Azure bastionu. Než začnete pracovat s virtuálním počítačem, ujistěte se, že jste postupovali podle pokynů k [Vytvoření hostitele bastionu](bastion-create-host-portal.md). Pak se připojte k virtuálnímu počítači, se kterým chcete pracovat pomocí [protokolu RDP](bastion-connect-vm-rdp.md) nebo [SSH](bastion-connect-vm-ssh.md).
 
-> [!IMPORTANT]
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+V prohlížečích podporujících pokročilý přístup k rozhraní API ve schránce můžete kopírovat a vkládat text mezi místními a vzdálenými relacemi stejným způsobem jako při kopírování a vkládání mezi aplikacemi na místním zařízení. Pro jiné prohlížeče můžete použít paletu nástroje pro přístup ke schránce bastionu.
 
-Pro prohlížeče, které podporují pokročilé přístup přes rozhraní API schránky můžete zkopírovat a vložit text mezi místním zařízením a vzdálené relace stejným způsobem, kopírování a vkládání mezi aplikacemi na vaše místní zařízení. Pro jiné prohlížeče můžete použít nástroj palety Bastionu schránky přístup.
+   ![Povoluje schránku](./media/bastion-vm-manage/allow.png)
 
-  ![Povolit schránky](./media/bastion-vm-manage/allow.png)
+Podporuje se jenom textové kopírování a vkládání. V případě přímých kopírování a vkládání může prohlížeč při inicializaci relace bastionu zobrazit výzvu k zadání přístupu do schránky. **Povolí** webové stránce přístup ke schránce.
 
-Je podporován pouze text, kopírování a vkládání. Pro přímou kopírování a vkládání váš prohlížeč vás může vyzvat k schránky přístup při inicializaci relace Bastionu. **Povolit** webové stránky přistupovat do schránky.
+## <a name="to"></a>Kopírovat do vzdálené relace
 
-## <a name="to"></a>Zkopírujte do vzdálené relace
+Po připojení k virtuálnímu počítači pomocí [Azure Portal ](https://portal.azure.com)proveďte následující kroky:
 
-Po připojení k virtuálnímu počítači pomocí [webu Azure portal](https://aka.ms/BastionHost) ve verzi Preview Bastionu:
+1. Zkopíruje text nebo obsah z místního zařízení do místní schránky.
+1. Během vzdálené relace spusťte na paletě nástrojů pro přístup ke schránce bastionu výběr dvou šipek. Šipky se nacházejí v levém středu relace.
 
-1. Zkopírujte do místní schránky text nebo obsah z místního zařízení.
-1. Během vzdálené relace spusťte nástroj palety Bastionu schránky přístup tak, že vyberete dvě šipky. Šipky se nacházejí v vlevo uprostřed relace.
+   ![Paleta nástrojů](./media/bastion-vm-manage/left.png)
 
-    ![Nástroj palety](./media/bastion-vm-manage/left.png)
+   ![Obsah](./media/bastion-vm-manage/clipboard.png)
+1. Zkopírovaný text se obvykle automaticky zobrazuje na paletě pro vložení bastionu kopírování. Pokud text tam není, vložte text do textové oblasti na paletě.
+1. Jakmile je text v oblasti textu, můžete ho vložit do vzdálené relace.
 
-    ![Schránky](./media/bastion-vm-manage/clipboard.png)
+   ![Vlož](./media/bastion-vm-manage/local.png)
 
-1. Obvykle zkopírovaný text automaticky zobrazí na paletě Bastionu kopírování vložit. Pokud není text, vložte text do textového pole na paletě.
-1. Jakmile je text v textovém poli, můžete vložit jej do vzdálené relace.
+## <a name="from"></a>Kopírovat ze vzdálené relace
 
-    ![Vložit](./media/bastion-vm-manage/local.png)
+Po připojení k virtuálnímu počítači pomocí [Azure Portal ](https://portal.azure.com)proveďte následující kroky:
 
-## <a name="from"></a>Zkopírovat ze vzdálené relace
+1. Kopírovat text nebo obsah ze vzdálené relace do vzdálené schránky (pomocí kombinace kláves CTRL-C).
 
-Po připojení k virtuálnímu počítači pomocí [webu Azure portal](https://aka.ms/BastionHost) ve verzi Preview Bastionu:
+   ![Paleta nástrojů](./media/bastion-vm-manage/remote.png)
+1. Během vzdálené relace spusťte na paletě nástrojů pro přístup ke schránce bastionu výběr dvou šipek. Šipky se nacházejí v levém středu relace.
 
-1. Zkopírujte text nebo obsah ze vzdálené relace do vzdáleného schránky (pomocí Ctrl-C).
+   ![Obsah](./media/bastion-vm-manage/clipboard2.png)
+1. Zkopírovaný text se obvykle automaticky zobrazuje na paletě pro vložení bastionu kopírování. Pokud text tam není, vložte text do textové oblasti na paletě.
+1. Jakmile se text v oblasti textu nachází, můžete ho vložit do místního zařízení.
 
-    ![Nástroj palety](./media/bastion-vm-manage/remote.png)
-
-1. Během vzdálené relace spusťte nástroj palety Bastionu schránky přístup tak, že vyberete dvě šipky. Šipky se nacházejí v vlevo uprostřed relace.
-
-    ![Schránky](./media/bastion-vm-manage/clipboard2.png)
-
-1. Obvykle zkopírovaný text automaticky zobrazí na paletě Bastionu kopírování vložit. Pokud není text, vložte text do textového pole na paletě.
-1. Jakmile je text v textovém poli, můžete ho vložit do místního zařízení.
-
-    ![Vložit](./media/bastion-vm-manage/local2.png)
+   ![Vlož](./media/bastion-vm-manage/local2.png)
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Přečtěte si [Bastionu nejčastější dotazy k](bastion-faq.md).
+Přečtěte si [Nejčastější dotazy k bastionu](bastion-faq.md).

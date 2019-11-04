@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: c7d18ab6e9018511915e9b77ea02ac60b1277c12
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: fb11b785cecbd021c0b894754e31d226edfe72f2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72596483"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519311"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro tok dat mapování 
-
-
 
 Zdrojová transformace konfiguruje zdroj dat pro tok dat. Při navrhování toků dat bude váš první krok vždycky konfigurovat transformaci zdroje. Zdroj přidáte tak, že kliknete na pole **Přidat zdroj** v plátně toku dat.
 
@@ -27,11 +25,12 @@ Každá transformace zdroje je přidružená k právě jedné datové sadě Data
 
 Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (ELT) a pracuje s *přípravnými* datovými sadami, které jsou všechny v Azure. V současné době je možné v transformaci zdroje použít následující datové sady:
     
-* Azure Blob Storage
-* Azure Data Lake Storage Gen1
-* Azure Data Lake Storage Gen2
+* Azure Blob Storage (JSON, Avro, text, Parquet)
+* Azure Data Lake Storage Gen1 (JSON, Avro, text, Parquet)
+* Azure Data Lake Storage Gen2 (JSON, Avro, text, Parquet)
 * Azure SQL Data Warehouse
 * Azure SQL Database
+* Azure CosmosDB
 
 Azure Data Factory má přístup k více než 80 nativním konektorům. Pokud chcete do toku dat zahrnout data z jiných zdrojů, použijte aktivitu kopírování a načtěte tato data do jedné z podporovaných pracovních oblastí.
 
@@ -130,7 +129,7 @@ Pokud je váš zdroj v SQL Database nebo SQL Data Warehouse, na kartě **Možnos
 
 **Vstup:** Vyberte, jestli se má zdroj nasměrovat na tabulku (ekvivalent ```Select * from <table-name>```), nebo zadejte vlastní dotaz SQL.
 
-**Dotaz**: Pokud ve vstupním poli vyberete možnost dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat.
+**Dotaz**: Pokud ve vstupním poli vyberete možnost dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat. Použití dotazů je také skvělým způsobem, jak omezit řádky pro testování nebo pro vyhledávání. Příklad: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
 **Velikost dávky**: zadejte velikost dávky pro velké objemy dat v čtení.
 
@@ -152,6 +151,19 @@ Stejně jako schémata v datových sadách definuje projekce ve zdroji datové s
 Pokud textový soubor nemá žádné definované schéma, vyberte možnost **detekovat datový typ** , aby data Factory vzorkovat a odvodit datové typy. Pro automatické rozpoznání výchozích formátů dat vyberte možnost **definovat výchozí formát** . 
 
 Můžete upravit typy dat sloupce v transformaci odvozeného sloupce z vedlejšího datového proudu. Použijte transformaci SELECT k úpravě názvů sloupců.
+
+### <a name="import-schema"></a>Importovat schéma
+
+Datové sady, jako jsou Avro a CosmosDB, které podporují komplexní datové struktury, nevyžadují, aby v datové sadě existovaly definice schématu. Proto budete moci kliknout na tlačítko "importovat schéma" na kartu projekce pro tyto typy zdrojů.
+
+## <a name="cosmosdb-specific-settings"></a>Konkrétní nastavení CosmosDB
+
+Při použití CosmosDB jako typu zdroje existuje několik možností, které je třeba vzít v úvahu:
+
+* Zahrnout systémové sloupce: Pokud zaškrtnete toto, ```id```, ```_ts```a další systémové sloupce budou zahrnuty do metadat toku dat z CosmosDB. Při aktualizaci kolekcí je důležité zahrnout to, abyste mohli existující ID řádku vzít.
+* Velikost stránky: počet dokumentů na stránku výsledku dotazu. Výchozí hodnota je-1, která dynamickou stránku služby používá až 1000.
+* Propustnost: nastavte volitelnou hodnotu pro počet ru, které chcete použít pro kolekci CosmosDB pro každé spuštění tohoto toku dat během operace čtení. Minimum je 400.
+* Preferované oblasti: můžete zvolit preferované oblasti čtení pro tento proces.
 
 ## <a name="optimize-the-source-transformation"></a>Optimalizace zdrojové transformace
 

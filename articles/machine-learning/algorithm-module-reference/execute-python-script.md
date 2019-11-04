@@ -1,26 +1,26 @@
 ---
 title: 'Spustit skript jazyka Python: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul spuštění skriptu Pythonu ve službě Azure Machine Learning ke spouštění kódu Pythonu.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul spuštění skriptu Pythonu v Azure Machine Learning ke spouštění kódu Pythonu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: ac68239c12fb284dd3cb5179b5719f3d36acbd34
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 1ba10bf682d900a45f345f2ebe2707ba1275e94e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693794"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497870"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul použijte ke spuštění kódu Pythonu. Další informace o architektuře a zásadách návrhu Pythonu najdete v [následujícím článku.](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)
+Tento modul použijte ke spuštění kódu Pythonu. Další informace o architektuře a zásadách návrhu Pythonu najdete v [následujícím článku](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
 
 Pomocí Pythonu můžete provádět úlohy, které aktuálně nejsou podporované existujícími moduly, například:
 
@@ -81,7 +81,7 @@ Modul **spuštění skriptu Pythonu** obsahuje ukázkový kód Pythonu, který m
 
 1. Přidejte modul **spuštění skriptu Pythonu** do vašeho kanálu.
 
-2. Přidejte a připojte se k **DataSet1.** datových sad z rozhraní, které chcete použít pro vstup. Odkazujte tuto datovou sadu ve skriptu Pythonu jako **DataFrame1**.
+2. Přidejte a připojte se k **DataSet1.** datových sad z návrháře, který chcete použít pro vstup. Odkazujte tuto datovou sadu ve skriptu Pythonu jako **DataFrame1**.
 
     Použití datové sady je volitelné, pokud chcete generovat data pomocí Pythonu, nebo použít kód Pythonu k importu dat přímo do modulu.
 
@@ -97,7 +97,7 @@ Modul **spuštění skriptu Pythonu** obsahuje ukázkový kód Pythonu, který m
 
 5. Do textového pole **skript Pythonu** zadejte nebo vložte platný skript Pythonu.
 
-    Textové pole **skriptu Pythonu** se předem vyplní některými pokyny v komentářích a vzorový kód pro přístup k datům a výstup. **Tento kód musíte upravit nebo nahradit.** Nezapomeňte dodržovat konvence Pythonu týkající se odsazení a používání velkých a malých písmen.
+    Textové pole **skriptu Pythonu** se předem vyplní některými pokyny v komentářích a vzorový kód pro přístup k datům a výstup. Tento kód musíte upravit nebo nahradit. Nezapomeňte dodržovat konvence Pythonu týkající se odsazení a používání velkých a malých písmen.
 
     + Skript musí obsahovat funkci s názvem `azureml_main` jako vstupní bod pro tento modul.
     + Funkce vstupního bodu může obsahovat až dva vstupní argumenty: `Param<dataframe1>` a `Param<dataframe2>`
@@ -105,7 +105,7 @@ Modul **spuštění skriptu Pythonu** obsahuje ukázkový kód Pythonu, který m
 
     Proto pokud váš soubor zip obsahuje `mymodule.py`, importujte ho pomocí `import mymodule`.
 
-    + Do rozhraní se dají vracet dvě datové sady, které musí být sekvence typu `pandas.DataFrame`. V kódu Pythonu můžete vytvořit další výstupy a zapsat je přímo do služby Azure Storage.
+    + Do návrháře lze vrátit dvě datové sady, které musí být sekvence typu `pandas.DataFrame`. V kódu Pythonu můžete vytvořit další výstupy a zapsat je přímo do služby Azure Storage.
 
 6. Spusťte kanál, nebo vyberte modul a kliknutím na **Spustit vybraný** spusťte jenom skript Pythonu.
 
@@ -124,4 +124,4 @@ Modul vrací dvě datové sady:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

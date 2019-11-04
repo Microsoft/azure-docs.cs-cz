@@ -5,17 +5,17 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 02/11/2019
+ms.date: 10/17/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: b59d58eb2c387e5ba1f71748751110bf932837b9
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1f2cbe447508ca6939fcdb997a9536ea91a7953f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66727127"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495637"
 ---
-# <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Kurz: Vytvoření a Správa připojení S2S VPN pomocí Powershellu
+# <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Kurz: vytvoření a Správa připojení S2S VPN pomocí PowerShellu
 
 Připojení VPN Azure typu Site-to-Site poskytují zabezpečené propojení různých míst mezi zákazníkem a Azure. Tento kurz vás provede životními cykly připojení VPN typu Site-to-Site s protokolem IPsec, například vytvořením a správou připojení VPN typu Site-to-Site. Získáte informace o těchto tématech:
 
@@ -35,15 +35,15 @@ Následující diagram ukazuje topologii pro tento kurz:
 
 ## <a name="requirements"></a>Požadavky
 
-Prvním kurzu: [Vytvoření brány VPN gateway pomocí Azure Powershellu](vpn-gateway-tutorial-create-gateway-powershell.md) vytvoříte následující prostředky:
+Dokončete první kurz: [Vytvoření brány VPN pomocí Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md) pro vytvoření následujících prostředků:
 
-1. Skupina prostředků (TestRG1), virtuální sítě (ze sítě VNet1) a podsítě GatewaySubnet
+1. Skupina prostředků (TestRG1), virtuální síť (VNet1) a GatewaySubnet
 2. Brána VPN (VNet1GW)
 
-Hodnoty parametrů virtuální sítě jsou uvedené níže. Všimněte si další hodnoty pro bránu místní sítě, které představují vaše místní sítě. Změňte podle vašeho prostředí a síťových nastavení, pak kopírování a vkládání k nastavení proměnných pro účely tohoto kurzu níže uvedené hodnoty. Pokud vyprší časový limit vaší relace Cloud Shellu, nebo budete muset použít jiné okno prostředí PowerShell, kopírování a vložení proměnné do nové relace a pokračujte kurz.
+Hodnoty parametrů virtuální sítě jsou uvedené níže. Poznamenejte si další hodnoty brány místní sítě, která představuje vaši místní síť. Změňte hodnoty níže na základě vašeho prostředí a nastavení sítě a potom zkopírujte a vložte, abyste nastavili proměnné pro tento kurz. Pokud vypršel časový limit relace Cloud Shell nebo potřebujete použít jiné okno prostředí PowerShell, zkopírujte a vložte proměnné do nové relace a pokračujte v tomto kurzu.
 
 >[!NOTE]
-> Pokud použijete toto připojení, nezapomeňte změnit hodnoty tak, aby odpovídaly vaší místní síti. Pokud používáte systém právě tyto kroky jako kurz, není nutné provádět změny, ale připojení nebude fungovat.
+> Pokud toto připojení používáte k vytvoření připojení, nezapomeňte změnit hodnoty tak, aby odpovídaly vaší místní síti. Pokud právě spouštíte tyto kroky jako kurz, nemusíte provádět změny, ale připojení nebude fungovat.
 >
 
 ```azurepowershell-interactive
@@ -82,7 +82,7 @@ Brána místní sítě reprezentuje vaši místní síť. V bráně místní sí
 * Adresní prostor místního prostředí
 * (Volitelné) Atributy BGP (IP adresa a číslo AS partnera BGP)
 
-Vytvoření brány místní sítě s [New-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/new-azlocalnetworkgateway) příkazu.
+Pomocí příkazu [New-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/new-azlocalnetworkgateway) vytvořte bránu místní sítě.
 
 ```azurepowershell-interactive
 New-AzLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
@@ -91,7 +91,7 @@ New-AzLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
 
 ## <a name="create-a-s2s-vpn-connection"></a>Vytvoření připojení VPN typu Site-to-Site
 
-Dále vytvořte připojení VPN typu Site-to-Site mezi bránou virtuální sítě a zařízením VPN s [New-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection). Všimněte si, že hodnota -ConnectionType pro VPN typu Site-to-Site je *IPsec*.
+Dále vytvořte připojení VPN typu Site-to-site mezi bránou virtuální sítě a zařízením VPN pomocí [New-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection). Všimněte si, že hodnota -ConnectionType pro VPN typu Site-to-Site je *IPsec*.
 
 ```azurepowershell-interactive
 $vng1 = Get-AzVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -99,16 +99,16 @@ $lng1 = Get-AzLocalNetworkGateway   -Name $LNG1 -ResourceGroupName $RG1
 
 New-AzVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1 `
   -Location $Location1 -VirtualNetworkGateway1 $vng1 -LocalNetworkGateway2 $lng1 `
-  -ConnectionType IPsec -SharedKey "Azure@!b2C3"
+  -ConnectionType IPsec -SharedKey "Azure@!b2C3" -ConnectionProtocol IKEv2
 ```
 
-Pokud používáte BGP a chcete pro připojení povolit BGP, přidejte volitelnou vlastnost **-EnableBGP $True**. Ve výchozím nastavení je zakázaná.
+Pokud používáte BGP a chcete pro připojení povolit BGP, přidejte volitelnou vlastnost **-EnableBGP $True**. Ve výchozím nastavení je zakázaná. Parametr-ConnectionProtocol je volitelný s IKEv2 jako výchozí. Připojení s protokoly IKEv1 můžete vytvořit zadáním parametru **-ConnectionProtocol IKEv1**.
 
 ## <a name="update-the-vpn-connection-pre-shared-key-bgp-and-ipsecike-policy"></a>Aktualizace předsdíleného klíče, BGP a zásad IPsec/IKE pro připojení VPN
 
 ### <a name="view-and-update-your-pre-shared-key"></a>Zobrazení a aktualizace předsdíleného klíče
 
-Připojení VPN Azure typu Site-to-Site využívá předsdílený klíč (tajný klíč) k ověřování mezi místním zařízením VPN a bránou VPN Azure. Můžete zobrazit a aktualizovat předsdílený klíč pro připojení k [Get-AzVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionsharedkey) a [Set-AzVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnectionsharedkey).
+Připojení VPN Azure typu Site-to-Site využívá předsdílený klíč (tajný klíč) k ověřování mezi místním zařízením VPN a bránou VPN Azure. Můžete zobrazit a aktualizovat předsdílený klíč pro připojení pomocí [Get-AzVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionsharedkey) a [set-AzVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnectionsharedkey).
 
 > [!IMPORTANT]
 > Předsdílený klíč je řetězec **tisknutelných znaků ASCII** o maximální délce 128 znaků.
@@ -120,7 +120,7 @@ Get-AzVirtualNetworkGatewayConnectionSharedKey `
   -Name $Connection1 -ResourceGroupName $RG1
 ```
 
-Výstup bude "**Azure\@! b2C3**" po výše uvedeném příkladu. Pomocí následujícího příkazu, chcete-li změnit hodnotu předsdíleného klíče pro "**Azure\@! _b2 = C3**":
+Výstup bude "**Azure\@! b2C3**" za výše uvedeným příkladem. Pomocí následujícího příkazu změňte hodnotu předsdíleného klíče na "**Azure\@! _b2 = C3**":
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkGatewayConnectionSharedKey `
@@ -136,9 +136,9 @@ Brána VPN Azure podporuje protokol dynamického směrování BGP. Pro jednotliv
 * ASN místní brány místní sítě
 * IP adresa partnera BGP místní brány místní sítě
 
-Pokud jste nenakonfigurovali vlastnosti protokolu BGP, přidejte následující příkazy tyto vlastnosti k bráně VPN a bránu místní sítě: [Set-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway) a [Set-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway).
+Pokud jste vlastnosti protokolu BGP nenakonfigurovali, přidejte tyto vlastnosti do brány VPN a brány místní sítě: [set-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway) a [set-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway).
 
-Postup konfigurace vlastností protokolu BGP, použijte následující příklad:
+Pro konfiguraci vlastností protokolu BGP použijte následující příklad:
 
 ```azurepowershell-interactive
 $vng1 = Get-AzVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -149,7 +149,7 @@ Set-AzLocalNetworkGateway -LocalNetworkGateway $lng1 `
   -Asn $LNGASN1 -BgpPeeringAddress $BGPPeerIP1
 ```
 
-Povolit protokol BGP s [Set-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnection).
+Povolte protokol BGP s [set-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnection).
 
 ```azurepowershell-interactive
 $connection = Get-AzVirtualNetworkGatewayConnection `
@@ -166,7 +166,7 @@ BGP můžete zakázat změnou hodnoty vlastnosti -EnableBGP na **$False**. Podro
 Místo použití [výchozích návrhů](vpn-gateway-about-vpn-devices.md#ipsec) můžete použít volitelné zásady IPsec/IKE a zadat pro připojení přesnou kombinaci kryptografických algoritmů IPsec/IKE a síly klíče. Následující ukázkový skript vytvoří jinou zásadu IPsec/IKE s následujícími algoritmy a parametry:
 
 * IKEv2: AES256, SHA256, DHGroup14
-* Protokol IPsec: Aes128, SHA1, PFS14, sekund 14 400 fakturovatelných životnost SA & 102,400,000 KB
+* IPsec: AES128, SHA1, PFS14, životnost SA 14 400 sekund a 102 400 000 kB
 
 ```azurepowershell-interactive
 $connection = Get-AzVirtualNetworkGatewayConnection -Name $Connection1 `
@@ -184,7 +184,7 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 
 ## <a name="add-another-s2s-vpn-connection"></a>Přidání dalšího připojení VPN typu Site-to-Site
 
-Přidání dalšího připojení sítě VPN typu S2S ke stejné bráně VPN vytvořit jinou bránu místní sítě a vytvořit nové připojení mezi novou bránu místní sítě a brány VPN. Pomocí následujících příkladech nezapomeňte změnit proměnné tak, aby odrážely konfiguraci sítě.
+Přidejte další připojení S2S VPN ke stejné bráně VPN, vytvořte jinou bránu místní sítě a vytvořte nové připojení mezi novou bránou místní sítě a bránou VPN. Použijte následující příklady a ujistěte se, že upravíte proměnné tak, aby odrážely vlastní konfiguraci sítě.
 
 ```azurepowershell-interactive
 # On-premises network - LNGIP2 is the VPN device public IP address
@@ -212,7 +212,7 @@ K vaší bráně VPN Azure teď existují dvě připojení VPN typu Site-to-Site
 
 ## <a name="delete-a-s2s-vpn-connection"></a>Odstranění připojení VPN typu Site-to-Site
 
-Odstranit připojení k síti VPN S2S s [odebrat AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetworkgatewayconnection).
+Odstraňte připojení S2S VPN pomocí [Remove-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetworkgatewayconnection).
 
 ```azurepowershell-interactive
 Remove-AzVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName $RG1
@@ -226,13 +226,13 @@ Remove-AzVirtualNetworkGatewayConnection -Name $LNG2 -ResourceGroupName $RG1
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud tato konfigurace je součástí prototypu, testovací nebo testování konceptu nasazení, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkazu k odebrání skupiny prostředků, VPN gateway a všechny související prostředky.
+Pokud je tato konfigurace součástí nasazení prototypu, testu nebo testování konceptu, můžete k odebrání skupiny prostředků, brány VPN a všech souvisejících prostředků použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $RG1
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se seznámili s vytvářením a správou připojení VPN typu Site-to-Site a s následujícími postupy:
 

@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/7/2019
+ms.date: 11/1/2019
 ms.author: raiye
-ms.openlocfilehash: 1a3945569002ea0ec88a9e23a6f02e7833d7690a
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: fa6f3e77a49afc5b16d11cb0c7d434f967c7cd53
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035146"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500241"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
 Poskytuje aktuální informace o nejnovějších vydáních hostovaného operačního systému Azure pro Cloud Services. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud vaše role nakonfigurujete tak, aby používaly *Automatické* aktualizace HOSTOVANÉHO operačního systému, jak je popsáno v tématu [aktualizace nastavení operačního systému hosta v Azure][Azure Guest OS Update Settings], není důležité tuto stránku číst.
@@ -41,6 +41,9 @@ Poskytuje aktuální informace o nejnovějších vydáních hostovaného operač
 Nevíte, jak aktualizovat hostovaný operační systém? Podívejte se na [Toto][cloud updates] .
 
 ## <a name="news-updates"></a>Aktualizace zpráv
+
+###### <a name="november-1-2019"></a>**Od 1. listopadu 2019**
+Hostovaný operační systém v říjnu vydal.
 
 ###### <a name="october-7-2019"></a>**7. října 2019**
 Hostovaný operační systém v září vydal.
@@ -106,8 +109,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-HOST-OS-6.11 _201909-01 | 7\. října 2019 |  Post 6,13  |  
-| WA-HOST-OS-6.10 _201908-01 | 4\. srpna 2019 |  Post 6,12  |  
+| WA-HOST-OS-6,12 _201910-01 | Od 1. listopadu 2019 | Post 6,14 |  
+| WA-HOST-OS-6.11 _201909-01 | 7\. října 2019 | Post 6,13 |  
+|~~WA-HOST-OS-6.10 _201908-01~~| 4\. srpna 2019 | Od 1. listopadu 2019  |  
 |~~WA-HOST-OS-_201907-0~~|26. července 2019 | 7\. října 2019 |
 |~~WA-HOST-OS-6.8 _201906-01~~|8\. července 2019 |4\. srpna 2019 |
 |~~WA-HOST-OS-6.7 _201905-01~~ |6\. června 2019 |26. července 2019 |
@@ -130,8 +134,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-5.36 _201910-01 | Od 1. listopadu 2019 | Post 5,38 |  
 | WA-HOST-OS-5.35 _201909-01 | 7\. října 2019 | Post 5,37 |  
-| WA-HOST-OS-5.34 _201908-01  |  4\. srpna 2019  |  Post 5,36 |  
+|~~WA-HOST-OS-5.34 _201908-01~~|  4\. srpna 2019  |  Post 5,36 |  
 |~~WA-HOST-OS-5.33 _201907-01~~| 26. července 2019 | 7\. října 2019 |  
 |~~WA-HOST-OS-5.32 _201906-01~~|8\. července 2019 |4\. srpna 2019 |
 |~~WA-HOST-OS-5.31 _201905-01~~ |6\. června 2019 |26. července 2019 |
@@ -151,8 +156,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-4.71 _201910-01 | Od 1. listopadu 2019 | Post 4,73 |  
 | WA-HOST-OS-4.70 _201909-01 | 7\. října 2019 | Post 4,72 |  
-| WA-HOST-OS-4.69 _201908-01 | 4\. srpna 2019 | Post 4,71 |  
+|~~WA-HOST-OS-4.69 _201908-01~~| 4\. srpna 2019 | Od 1. listopadu 2019 |  
 |~~WA-HOST-OS-4.68 _201907-01~~| 26. července 2019  | 7\. října 2019 |
 |~~WA-HOST-OS-4.67 _201906-01~~| 8\. července 2019 |4\. srpna 2019 |
 |~~WA-HOST-OS-4.66 _201905-01~~ |6\. června 2019 |26. července 2019 |
@@ -172,8 +178,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-3.78 _201910-01 | Od 1. listopadu 2019 | Post 3,80 |  
 | WA-HOST-OS-3.77 _201909-01 | 7\. října 2019 | Post 3,79 |  
-| WA-HOST-OS-3.76 _201908-01 |  4\. srpna 2019  |  Post 3,78  |  
+|~~WA-HOST-OS-3.76 _201908-01~~|  4\. srpna 2019  |  Od 1. listopadu 2019  |  
 |~~WA-HOST-OS-3,75 _201907-01~~| 26. července 2019 | 7\. října 2019 |
 |~~WA-HOST-OS-3.74 _201906-01~~| 8\. července 2019 |4\. srpna 2019 |
 |~~WA-HOST-OS-3.73 _201905-01~~ |6\. června 2019 |26. července 2019 |
@@ -193,8 +200,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-2.91 _201910-01 | Od 1. listopadu 2019 | Post 2,93 |  
 | WA-HOST-OS-2.90 _201909-01 | 7\. října 2019 | Post 2,92 |  
-| WA-HOST-OS-2.89 _201908-01 | 4\. srpna 2019 | Post 2,91 |  
+|~~WA-HOST-OS-2.89 _201908-01~~| 4\. srpna 2019 | Od 1. listopadu 2019 |  
 |~~WA-HOST-OS-2,88 _201907-01~~| 26. července 2019 | 7\. října 2019 |
 |~~WA-HOST-OS-2.87 _201906-01~~|8\. července 2019 | 4\. srpna 2019 |
 |~~WA-HOST-OS-2.86 _201905-01~~ |6\. června 2019 |26. července 2019 |

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 383cade6e8bb5f66aa240564912056ec345a1ee6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949548"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500186"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyků a oblastí pro LUIS
 
@@ -30,32 +30,26 @@ Pokud potřebujete klientskou aplikaci LUIS s více jazyky, jako je chatovací r
 
 LUIS rozumí projevy v následujících jazycích:
 
-| Jazyk |Národní prostředí  |  Předem sestavená doména | Předem vytvořená entita | Doporučení pro seznam frází | [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) **<br>(Mínění a<br>Klíčov|
+| Jazyk |Národní prostředí  |  Předem sestavená doména | Předem vytvořená entita | Doporučení pro seznam frází | [analýza **textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Mínění a<br>Klíčov|
 |--|--|:--:|:--:|:--:|:--:|
 | Americká angličtina |`en-US` | ✔ | ✔  |✔|✔|
-| @no__t – 0 –[čínština](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
+| *[čínština](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Holandština |`nl-NL` |✔|  -   |-|✔|
 | Francouzština (Francie) |`fr-FR` |✔| ✔ |✔ |✔|
 | Francouzština (Kanada) |`fr-CA` |-|   -   |-|✔|
 | Němčina |`de-DE` |✔| ✔ |✔ |✔|
 | Hindština | `hi-IN`|-|-|-|-|
-| Italština |`it-IT` |✔| ✔ |✔|✔|
-| @no__t – 0[japonština](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Jenom klíčová fráze|
+| italština |`it-IT` |✔| ✔ |✔|✔|
+| *[japonština](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Jenom klíčová fráze|
 | Korejština |`ko-KR` |✔|   -   |-|Jenom klíčová fráze|
 | Portugalština (Brazílie) |`pt-BR` |✔| ✔ |✔ |Ne všechny dílčí kultury|
 | Španělština (Španělsko) |`es-ES` |✔| ✔ |✔|✔|
 | Španělština (Mexiko)|`es-MX` |-|  -   |✔|✔|
-| Turečtina | `tr-TR` |✔|-|-|Jenom mínění|
-
+| turečtina | `tr-TR` |✔|-|-|Jenom mínění|
 
 Podpora jazyků se liší u [předem sestavených entit](luis-reference-prebuilt-entities.md) a [předem sestavených domén](luis-reference-prebuilt-domains.md).
 
-### <a name="chinese-support-notes"></a>\* Poznámky k podpoře čínštiny
-
- - V kultuře `zh-cn` očekává LUIS znaková sada zjednodušené čínštiny namísto tradiční znakové sady.
- - Názvy záměrů, entit, funkcí a regulárních výrazů můžou být v čínském nebo římském znaku.
- - V referenčních informacích k [předdefinovaným doménám](luis-reference-prebuilt-domains.md) najdete informace o tom, které předem sestavené domény jsou podporovány v jazykové verzi `zh-cn`.
-<!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
+[!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
 ### <a name="japanese-support-notes"></a>\* Japonské poznámky k podpoře
 
@@ -63,8 +57,7 @@ Podpora jazyků se liší u [předem sestavených entit](luis-reference-prebuilt
      - でございます není stejný jako です.
      - です není stejný jako だ.
 
-### <a name="text-analytics-support-notes"></a>\* * Poznámky k podpoře pro analýzu textu
-Analýza textu zahrnuje předem sestavenou entitu keyPhrase a analýzu mínění. Pro subjazykové verze jsou podporovány pouze portugalštiny: `pt-PT` a `pt-BR`. Všechny ostatní jazykové verze jsou podporovány na úrovni primární kultury. Přečtěte si další informace o Analýza textu [podporovaných jazycích](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages).
+[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Jazyky podporované rozhraním API pro rozpoznávání řeči
 Jazyky režimů diktování řeči najdete v tématu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) Speech.
@@ -73,7 +66,7 @@ Jazyky režimů diktování řeči najdete v tématu [podporované jazyky](https
 Seznam podporovaných jazyků a stavu naleznete v tématu Kontrola pravopisu Bingu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) .
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Vzácná nebo cizí slova v aplikaci
-V kultuře `en-us` se LUIS učí, jak rozlišovat anglická slova včetně slangem. V jazykové verzi `zh-cn` se aplikace LUIS učí, aby lišila většinu čínských znaků. Pokud používáte zřídka používané slovo v `en-us` nebo znaku v `zh-cn` a vidíte, že LUIS se zdá, že toto slovo nebo znak není možné odlišit, můžete toto slovo nebo znak přidat do [funkce seznamu frází](luis-how-to-add-features.md). Například slova mimo jazykovou verzi aplikace – to znamená, že cizí slova--by měla být přidána do funkce seznamu frází. 
+V `en-us` jazykové verzi se LUIS učí, jak rozlišovat anglická slova, včetně slangem. V `zh-cn` jazykové verzi se LUIS učí, aby lišily většinu čínských znaků. Pokud používáte zřídka používané slovo v `en-us` nebo znak v `zh-cn`a vidíte, že LUIS se zdá, že není možné toto slovo nebo znak odlišit, můžete toto slovo nebo znak přidat do [funkce seznamu frází](luis-how-to-add-features.md). Například slova mimo jazykovou verzi aplikace – to znamená, že cizí slova--by měla být přidána do funkce seznamu frází. 
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
@@ -87,12 +80,12 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 |--|:--:|:--:|:--:|:--:|
 |Čínština||✔||✔|
 |Holandština|||✔|✔|
-|Angličtina (EN-US)|✔ ||||
+|Angličtina (en-us)|✔ ||||
 |Francouzština (fr-FR)|✔||||
 |Francouzština (fr-CA)|✔||||
 |Němčina|||✔|✔|
 | Hindština |✔|-|-|-|-|
-|Italština|✔||||
+|italština|✔||||
 |Japonština||||✔|
 |Korejština||✔||✔|
 |Portugalština (Brazílie)|✔||||
@@ -103,10 +96,10 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 
 Následující jazykové verze mají vlastní verze provádějících tokenizaci:
 
-|Jazykových|Version|Účel|
+|Jazyková verze|Version|Účel|
 |--|--|--|
 |Němčina<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, je zapnutý `Ich fahre einen kranken wagen`. Povolení označení `kranken` a `wagen` nezávisle na různých entitách.|
-|Němčina<br>`de-de`|1.0.2|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstane jeden token. Proto `krankenwagen` je označena jako jediná entita. |
+|Němčina<br>`de-de`|1.0.2|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstane jeden token. Proto je `krankenwagen` označena jako jediná entita. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrace mezi verzemi provádějících tokenizaci
 <!--

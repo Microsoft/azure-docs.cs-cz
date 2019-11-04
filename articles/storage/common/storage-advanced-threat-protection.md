@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: c19b64441d7afbe7544a4401314078b807a8c939
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673261"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495966"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Rozšířená ochrana před internetovými útoky pro Azure Storage
 
@@ -30,7 +30,7 @@ Rozšířená ochrana před internetovými útoky pro Azure Storage ingestuje di
 
 Rozšířená ochrana před internetovými útoky je ve výchozím nastavení povolená pro váš účet úložiště. Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovolným z několika způsobů popsaných v následujících částech.
 
-### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
+### <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Spusťte [Azure Portal](https://portal.azure.com/).
 1. Přejděte na účet Azure Storage. V části **Nastavení**vyberte **Rozšířené zabezpečení**.
@@ -40,7 +40,7 @@ Rozšířená ochrana před internetovými útoky je ve výchozím nastavení po
 
     ![Zapnutí Azure Storage rozšířené ochrany před internetovými útoky](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="using-azure-security-center"></a>Pomocí Azure Security Center
+### <a name="azure-security-centertabazure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
 Když se přihlásíte k odběru úrovně Standard v Azure Security Center, Rozšířená ochrana před internetovými útoky se automaticky nastaví na všechny vaše účty úložiště. Rozšířenou ochranu před internetovými útoky pro účty úložiště v rámci určitého předplatného můžete povolit nebo zakázat následujícím způsobem:
 
@@ -56,11 +56,11 @@ Když se přihlásíte k odběru úrovně Standard v Azure Security Center, Roz�
     ![Povolit ATP v Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. Klikněte na **Uložit**.
 
-### <a name="using-azure-resource-manager-templates"></a>Používání šablon Azure Resource Manager
+### <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 
 Pomocí šablony Azure Resource Manager nasaďte účet Azure Storage s povolenou rozšířenou ochranou hrozeb. Další informace najdete v tématu [účet úložiště s pokročilou ochranou hrozeb](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-### <a name="using-an-azure-policy"></a>Použití Azure Policy
+### <a name="azure-policytabazure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 Pomocí Azure Policy můžete povolit rozšířenou ochranu před internetovými útoky napříč účty úložiště v rámci konkrétního předplatného nebo skupiny prostředků.
 
@@ -78,20 +78,22 @@ Pomocí Azure Policy můžete povolit rozšířenou ochranu před internetovými
 
     ![Stránka definice zásad](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="using-the-rest-api"></a>S využitím REST API
+### <a name="rest-apitabrest-api"></a>[REST API](#tab/rest-api)
 
 Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo získat nastavení rozšířené ochrany před internetovými útoky pro určitý účet úložiště.
 
 * [Rozšířená ochrana před internetovými útoky – vytvořit](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Rozšířená ochrana před internetovými útoky – získání](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="using-azure-powershell"></a>Použití Azure Powershell
+### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Použijte následující rutiny PowerShellu:
 
 * [Povolit rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
 * [Získat rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
 * [Zakázat rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+
+---
 
 ## <a name="explore-security-anomalies"></a>Prozkoumejte anomálie zabezpečení
 
