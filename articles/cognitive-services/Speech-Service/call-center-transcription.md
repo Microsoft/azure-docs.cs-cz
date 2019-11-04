@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 858ca114ca4c4b469ce4a5dd5275c9ac9874feb5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516763"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464999"
 ---
 # <a name="speech-services-for-telephony-data"></a>Hlasové služby pro data telefonního subsystému
 
@@ -38,9 +38,9 @@ Kromě funkčního aspektu služeb rozpoznávání řeči jejich primární úč
 
 * Analýza po volání, která znamená dávkové zpracování záznamů volání
 * Analýzy zvukového signálu v reálném čase pro extrakci různých přehledů, jak probíhá volání (s mínění se jedná o výrazný případ použití) a
-* Virtuální asistenti (roboty) – Řídící dialog mezi zákazníkem a robotem v pokusu o vyřešení problému zákazníka bez účasti agenta nebo použití protokolů AI pro pomoc s agentem.
+* Roboty (Voice Assistant) – Řídící dialog mezi zákazníkem a robotem v pokusu o vyřešení problému zákazníka bez účasti agenta nebo použití protokolů AI pro pomoc s agentem.
 
-Typický diagram architektury implementace scénáře Batch je znázorněný na obrázku níže ](media/scenarios/call-center-transcription-architecture.png) ![Call Center přepis architektury.
+Typický diagram architektury implementace scénáře Batch je znázorněný na obrázku níže ![architektuře](media/scenarios/call-center-transcription-architecture.png) přepisů volání centra
 
 ## <a name="speech-analytics-technology-components"></a>Komponenty technologie Speech Analytics
 
@@ -92,7 +92,7 @@ Typické řešení používá tyto služby:
 * [Webhooky](webhooks.md) slouží k získání oznámení, když jsou přepisy dokončeny.
 
 Interně používáme výše uvedené technologie k podpoře zákaznických hovorů Microsoftu v dávkovém režimu.
-Architektura ![Batch ](media/scenarios/call-center-batch-pipeline.png)
+Architektura ![Batch](media/scenarios/call-center-batch-pipeline.png)
 
 ## <a name="real-time-transcription-for-call-center-data"></a>Přepis v reálném čase pro data centra volání
 

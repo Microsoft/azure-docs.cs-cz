@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: de98f972a43f3845d2a01b928d90283732ef4843
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 26033192ee841262345b0fc7f6aec76872379070
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329777"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470180"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy v Azure App Service
 
@@ -32,7 +32,7 @@ Bez ohledu na počet instancí s horizontálním navýšení kapacity má každ�
 
 - Odstraňte aplikaci a znovu ji vytvořte v jiné skupině prostředků.
 - Odstraní poslední aplikaci v kombinaci skupiny prostředků _a_ oblasti a znovu ji vytvoří.
-- Odstraní existující vazbu SSL, například během obnovování certifikátu (viz [obnovení certifikátů](app-service-web-tutorial-custom-ssl.md#renew-certificates)).
+- Odstraní existující vazbu SSL, například během obnovování certifikátu (viz [obnovení certifikátu](configure-ssl-certificate.md#renew-certificate)).
 
 ## <a name="find-the-inbound-ip"></a>Najít příchozí IP adresu
 
@@ -44,7 +44,7 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="get-a-static-inbound-ip"></a>Získat statickou příchozí IP adresu
 
-Někdy můžete chtít vyhrazenou statickou IP adresu pro vaši aplikaci. Pokud chcete získat statickou příchozí IP adresu, musíte nakonfigurovat [vazbu SSL založenou na protokolu IP](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain). Pokud nepotřebujete pro zabezpečení vaší aplikace funkci SSL, můžete dokonce pro tuto vazbu nahrát certifikát podepsaný svým držitelem. Ve vazbě protokolu SSL založeného na protokolu IP je certifikát vázán na vlastní IP adresu, takže App Service zřídí statickou IP adresu, aby k ní mohlo dojít. 
+Někdy můžete chtít vyhrazenou statickou IP adresu pro vaši aplikaci. Pokud chcete získat statickou příchozí IP adresu, musíte nakonfigurovat [vazbu SSL založenou na protokolu IP](configure-ssl-bindings.md#secure-a-custom-domain). Pokud nepotřebujete pro zabezpečení vaší aplikace funkci SSL, můžete dokonce pro tuto vazbu nahrát certifikát podepsaný svým držitelem. Ve vazbě protokolu SSL založeného na protokolu IP je certifikát vázán na vlastní IP adresu, takže App Service zřídí statickou IP adresu, aby k ní mohlo dojít. 
 
 ## <a name="when-outbound-ips-change"></a>Změna odchozích IP adres
 

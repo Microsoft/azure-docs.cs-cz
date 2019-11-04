@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: d116f6bd389b1404ea723c965111cd05880e6c30
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 5ac9a870cb05328f040febd0f8161a97f0982e09
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662824"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490773"
 ---
 # <a name="scalability-and-performance"></a>Škálovatelnost a výkon
 
@@ -24,28 +24,15 @@ Vysoce výkonné a vysoce náročné weby a aplikace mají dva hlavní faktory, 
 * Udržování nízké latence při vytváření volání rozhraní API pořadí
 * Zajištění zajištění propustnosti školení pomocí vstupu události
 
-Individuální nastavení může vracet pořadí velmi rychle, s většinou dobu trvání volání vyhrazenou pro komunikaci prostřednictvím REST API. Azure vám umožní rychle reagovat na požadavky.
+Individuální nastavení může rychle vracet pořadí a většinu doby trvání volání, která je vyhrazena pro komunikaci prostřednictvím REST API. Azure vám umožní rychle reagovat na požadavky.
 
 ##  <a name="low-latency-scenarios"></a>Scénáře s nízkou latencí
 
-Některé aplikace vyžadují při vracení pořadí nízkou latenci. To je nezbytné:
+Některé aplikace vyžadují při vracení pořadí nízkou latenci. Jsou nezbytné nízké latence:
 
 * Aby uživatel mohl před zobrazením hodnoceného obsahu čekat na znatelné množství času.
 * Aby bylo možné zajistit, že server má extrémní provoz, vyhněte se tomu omezených výpočetním časem a síťovým připojením.
 
-<!--
-
-If your web site is scaled on your infrastructure, you can avoid making HTTP calls by hosting the Personalizer API in your own servers running a Docker container.
-
-This change would be transparent to your application, other than using an endpoint URL referring to the running docker instances as opposed to an online service in the cloud.
-
-
-
-### Extreme Low Latency Scenarios
-
-If you require latencies under a millisecond, and have already tested using Personalizer via containers, please contact our support team so we can assess your scenario and provide guidance suited to your needs.
-
--->
 
 ## <a name="scalability-and-training-throughput"></a>Škálovatelnost a propustnost školení
 
@@ -62,6 +49,6 @@ Pokud například vaše průměrná datová část obsahuje 500 funkcí a každ�
 
 Pokud dosáhnou těchto limitů, obraťte se na náš tým podpory, kde najdete doporučení pro architekturu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Vytvořte a nakonfigurujte](how-to-settings.md)přizpůsobeného přizpůsobování.
+[Vytvořte a nakonfigurujte přizpůsobeného přizpůsobování](how-to-settings.md).

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e3ef082f19f979f1b8b0c2ba4afd9712b34b7321
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 04a1f19ddf894467a9129e8a16c951298a6af529
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173167"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474709"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services
 
@@ -41,7 +41,7 @@ Pokud máte aplikace a služby, které potřebují přístup k tradičnímu mech
 
 V případě Azure služba AD DS jsou základní součásti služby nasazeny a udržovány za vás Microsoft jako prostředí *spravované* domény. Nebudete nasazovat, spravovat, opravovat a zabezpečovat infrastrukturu služba AD DS pro součásti, jako jsou virtuální počítače, operační systém Windows Server nebo řadiče domény (DCs).
 
- Azure služba AD DS poskytuje menší podmnožinu funkcí tradičního prostředí služba AD DS spravovaného v rámci sebe, což snižuje část složitosti návrhu a správy. Například pro návrh a údržbu nejsou k dispozici žádné doménové struktury služby AD, domény, lokality a replikační odkazy. Pro aplikace a služby, které běží v cloudu a potřebují přístup k tradičním ověřovacím mechanismům, jako je Kerberos nebo NTLM, poskytuje Azure služba AD DS prostředí spravované v doméně s minimálními nároky na správu.
+Azure služba AD DS poskytuje menší podmnožinu funkcí tradičního prostředí služba AD DS spravovaného v rámci sebe, což snižuje část složitosti návrhu a správy. Například pro návrh a údržbu nejsou k dispozici žádné doménové struktury služby AD, domény, lokality a replikační odkazy. Pro aplikace a služby, které běží v cloudu a potřebují přístup k tradičním ověřovacím mechanismům, jako je Kerberos nebo NTLM, poskytuje Azure služba AD DS prostředí spravované v doméně s minimálními nároky na správu.
 
 Když nasadíte a spustíte samoobslužně spravované prostředí služba AD DS, je nutné zachovat všechny přidružené infrastruktury a součásti adresáře. Existují další režijní náklady na údržbu pomocí samoobslužného služba AD DSho prostředí, ale můžete provádět další úkoly, jako je například rozšiřování schématu nebo vytvoření vztahů důvěryhodnosti doménové struktury.
 

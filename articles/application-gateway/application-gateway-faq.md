@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242223"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470071"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -327,6 +327,19 @@ Ano. Službu DDoS Protection můžete povolit ve virtuální síti, ve které je
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici návod k migraci z SKU V1 na SKU 2?
 
 Ano. Podrobnosti najdete v tématu [migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi v2](migrate-v1-v2.md).
+
+## <a name="configuration---ingress-controller-for-aks"></a>Konfigurace – řadič pro příchozí přenosy pro AKS
+
+### <a name="what-is-an-ingress-controller"></a>Co je kontroler příchozího přenosu dat?
+
+Kubernetes umožňuje vytvoření `deployment` a `service` prostředků k internímu vystavení skupiny lusků v clusteru. Pokud chcete stejnou službu vystavit externě, je definován [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) prostředek, který poskytuje vyrovnávání zatížení, ukončení protokolu SSL a virtuální hostování na základě názvu.
+Aby bylo možné splnit tento prostředek `Ingress`, vyžaduje se kontroler příchozího přenosu dat, který naslouchá jakýmkoli změnám `Ingress` prostředků a konfiguruje zásady nástroje pro vyrovnávání zatížení.
+
+Kontroler Application Gateway příchozího přenosu dat umožňuje použití [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) jako příchozí pro [službu Azure Kubernetes](https://azure.microsoft.com/services/kubernetes-service/) , která se označuje také jako cluster AKS.
+
+### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Může jediná instance kontroleru příchozího přenosu dat spravovat víc aplikačních bran?
+
+V současné době může být jedna instance řadiče pro příchozí spojení přidružená jenom k jednomu Application Gateway.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostika a protokolování
 

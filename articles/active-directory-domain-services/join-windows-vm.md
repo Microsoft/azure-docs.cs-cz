@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 164ba5ff7be38d3b11a8c5f8e5c76a3ff19ff508
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172933"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474695"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Kurz: připojení virtuálního počítače s Windows serverem ke spravované doméně
 
@@ -54,7 +54,8 @@ Pokud chcete zjistit, jak připojit počítač k spravované doméně Azure slu�
 
 Pokud už máte virtuální počítač, ke kterému se chcete připojit k doméně, přejděte k části [připojení virtuálního počítače k spravované doméně Azure služba AD DS](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
-1. V levém horním rohu Azure Portal vyberte **+ vytvořit prostředek**.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+
 1. V **možnosti Začínáme vyberte** **Windows Server 2016 Datacenter**.
 
     ![Vyberte, pokud chcete vytvořit virtuální počítač s Windows serverem 2016 Datacenter v Azure Portal](./media/join-windows-vm/select-vm-image.png)

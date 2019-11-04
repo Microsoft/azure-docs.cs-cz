@@ -1,7 +1,7 @@
 ---
 title: Nastavení kontejneru Docker – LUIS
 titleSuffix: Azure Cognitive Services
-description: Běhové prostředí kontejneru LUIS je nakonfigurovaný nástrojem `docker run` argumenty příkazu. Služba LUIS má několik požadovaná nastavení, společně s pár volitelná nastavení.
+description: Běhové prostředí kontejneru LUIS se konfiguruje pomocí argumentů příkazu `docker run`. LUIS má několik požadovaných nastavení spolu s několika volitelnými nastaveními.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,125 +9,120 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 9760475886ecb0f20d9f0f3981eab8246643da21
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 163fe24c941f779a2160ee5ef50f9d4dfcea1022
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101985"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486737"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnerů Docker Language Understanding 
 
-Prostředí modulu runtime kontejneru **Language Understanding** (Luis) je nakonfigurováno pomocí `docker run` argumentů příkazu. Služba LUIS má několik požadovaná nastavení, společně s pár volitelná nastavení. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení pro konkrétní kontejner se vstup [nastavení připojování](#mount-settings) a nastavení fakturace. 
+Prostředí modulu runtime kontejneru **Language Understanding** (Luis) je nakonfigurováno pomocí `docker run`ch argumentů příkazu. LUIS má několik požadovaných nastavení spolu s několika volitelnými nastaveními. K dispozici je několik [příkladů](#example-docker-run-commands) příkazu. Nastavení specifická pro daný kontejner představují vstupní [nastavení připojení](#mount-settings) a nastavení fakturace. 
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 
-Tento kontejner má následující nastavení:
+Tento kontejner má následující nastavení konfigurace:
 
 |Požaduje se|Nastavení|Účel|
 |--|--|--|
-|Ano|[ApiKey](#apikey-setting)|Lze sledovat fakturační údaje.|
-|Ne|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) podporu telemetrická data do kontejneru.|
-|Ano|[Billing](#billing-setting)|Určuje identifikátor URI koncového bodu prostředku služby v Azure.|
-|Ano|[Eula](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
-|Ne|[Fluentd](#fluentd-settings)|Zápis protokolu a volitelně data metriky Fluentd server.|
-|Ne|[Http Proxy](#http-proxy-credentials-settings)|Nakonfigurujte proxy server HTTP pro vytváření odchozích požadavků.|
-|Ne|[Logging](#logging-settings)|Poskytuje podporu protokolování ASP.NET Core pro váš kontejner. |
-|Ano|[Mounts](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpět do hostitelského počítače.|
+|Ano|[ApiKey](#apikey-setting)|Používá se ke sledování fakturačních informací.|
+|Ne|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat do svého kontejneru podporu telemetrie [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) .|
+|Ano|[Fakturace](#billing-setting)|Určuje identifikátor URI koncového bodu prostředku služby v Azure.|
+|Ano|[Konkrétní](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
+|Ne|[Fluent](#fluentd-settings)|Protokol zápisu a volitelně data metriky na server se systémem.|
+|Ne|[Proxy server http](#http-proxy-credentials-settings)|Nakonfigurujte proxy server HTTP pro vytváření odchozích požadavků.|
+|Ne|[Protokolu](#logging-settings)|Poskytuje podporu protokolování ASP.NET Core pro váš kontejner. |
+|Ano|[Připojí](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpátky do hostitelského počítače.|
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](luis-container-howto.md#billing).
+> Nastavení [`ApiKey`](#apikey-setting), [`Billing`](#billing-setting)a [`Eula`](#eula-setting) se používají společně a je nutné zadat platné hodnoty pro všechny tři z nich. v opačném případě se Váš kontejner nespustí. Další informace o tom, jak pomocí těchto nastavení konfigurace vytvořit instanci kontejneru, najdete v tématu [fakturace](luis-container-howto.md#billing).
 
 ## <a name="apikey-setting"></a>Nastavení ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro prostředek _Cognitive Services_ zadaný pro [`Billing`](#billing-setting) nastavení konfigurace.
+Nastavení `ApiKey` Určuje klíč prostředku Azure, který se používá ke sledování fakturačních informací pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí být platným klíčem pro prostředek _Cognitive Services_ zadaný pro nastavení [`Billing`](#billing-setting) konfigurace.
 
 Toto nastavení najdete v následujících umístěních:
 
-* Azure Portal: **Cognitive Services** Správa prostředků, v části **klíče**
-* Portál LUIS: Stránky **nastavení klíčů a koncových bodů** . 
+* Azure Portal: Správa prostředků **Cognitive Services** v části **klíče**
+* Portál LUIS: Stránka **nastavení klíčů a koncového bodu** . 
 
-Nepoužívejte starter klíč nebo klíč pro vytváření obsahu. 
+Nepoužívejte počáteční klíč ani klíč pro vytváření. 
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-setting"></a>Nastavení Billing
+## <a name="billing-setting"></a>Nastavení fakturace
 
-Nastavení určuje identifikátor URI koncového bodu Cognitive Services prostředku v Azure, který se používá pro informace o fakturaci pro daný kontejner. `Billing` Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _Cognitive Services_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
+Nastavení `Billing` Určuje identifikátor URI koncového bodu prostředku _Cognitive Services_ v Azure, který se používá pro informace o fakturaci pro daný kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _Cognitive Services_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
 
 Toto nastavení najdete v následujících umístěních:
 
-* Azure Portal: **Cognitive Services** Přehled, označený`Endpoint`
-* Portál LUIS: Stránky **nastavení klíčů a koncových bodů** jako součást identifikátoru URI koncového bodu.
+* Azure Portal: **Cognitive Services** Overview, označený `Endpoint`
+* Portál LUIS: **klíčová stránka a nastavení koncového bodu** jako součást identifikátoru URI koncového bodu.
 
-Nezapomeňte zahrnout `luis/v2.0` směrování do adresy URL, jak je znázorněno v následující tabulce:
+| Požaduje se | Name (Název) | Data type | Popis |
+|----------|------|-----------|-------------|
+| Ano      | `Billing` | string | Identifikátor URI koncového bodu fakturace |
 
-
-|Požadováno| Název | Typ dat | Popis |
-|--|------|-----------|-------------|
-|Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
-
-## <a name="eula-setting"></a>Nastavení Eula
+## <a name="eula-setting"></a>Nastavení smlouvy EULA
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Nastavení Fluentd
+## <a name="fluentd-settings"></a>Nastavení Fluent
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru http
+## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru HTTP
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Nastavení Logging
+## <a name="logging-settings"></a>Nastavení protokolování
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-## <a name="mount-settings"></a>Nastavení Mounts
+## <a name="mount-settings"></a>Nastavení připojení
 
-Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu. 
+Ke čtení a zápisu dat do a z kontejneru použijte připojení BIND. Zadáním možnosti `--mount` v příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) můžete zadat vstupní připojení nebo připojení výstupu. 
 
-Kontejner LUIS nepoužívá vstup nebo výstup připojí k uložení školení nebo dat služby. 
+Kontejner LUIS nepoužívá k ukládání dat školení nebo služby vstupní ani výstupní připojení. 
 
-Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](luis-container-howto.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby docker a hostiteli připojit umístění oprávnění. 
+Přesná syntaxe umístění hostitelského připojení se liší v závislosti na hostitelském operačním systému. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](luis-container-howto.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele. 
 
-Následující tabulka popisuje nastavení podporováno.
+V následující tabulce jsou popsána podporovaná nastavení.
 
-|Požaduje se| Název | Typ dat | Popis |
+|Požaduje se| Name (Název) | Data type | Popis |
 |-------|------|-----------|-------------|
-|Ano| `Input` | Řetězec | Cíl vstupní připojení. Výchozí hodnota je `/input`. Toto je umístění souborů balíčku LUIS. <br><br>Příklad:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Ne| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje LUIS dotazu protokoly a protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Ano| `Input` | Řetězec | Cíl vstupního připojení Výchozí hodnota je `/input`. Toto je umístění souborů balíčku LUIS. <br><br>Příklad:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Ne| `Output` | Řetězec | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly dotazů LUIS a protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad
+## <a name="example-docker-run-commands"></a>Příklady příkazů pro spuštění Docker
 
-Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy.  Po spuštění kontejneru nadále běžel dokud [Zastavit](luis-container-howto.md#stop-the-container) ho.
+Následující příklady používají konfigurační nastavení k ilustraci, jak psát a používat `docker run` příkazy.  Po spuštění bude kontejner dál běžet, dokud ho [nezastavíte](luis-container-howto.md#stop-the-container) .
 
-* Tyto příklady používají adresář mimo `C:` jednotku, aby nedocházelo ke konfliktům oprávnění ve Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění. 
-* Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
-* Pokud používáte jiný operační systém, použijte pro připojení správnou konzolu, terminál, syntaxi složky a znak pro pokračování řádku pro svůj systém. Tyto příklady předpokládají konzolu Windows se znakem `^`pro pokračování řádku. Vzhledem k tomu, že kontejner je operačním systémem Linux, cílový připojení používá syntaxi složky ve stylu systému Linux.
+* Tyto příklady používají adresář mimo `C:` jednotky, aby nedocházelo ke konfliktům oprávnění ve Windows. Pokud potřebujete použít konkrétní adresář jako vstupní adresář, bude pravděpodobně nutné udělit oprávnění služby Docker. 
+* Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
+* Pokud používáte jiný operační systém, použijte pro připojení správnou konzolu, terminál, syntaxi složky a znak pro pokračování řádku pro svůj systém. Tyto příklady předpokládají konzolu Windows se znakem pro pokračování řádku `^`. Vzhledem k tomu, že kontejner je operačním systémem Linux, cílový připojení používá syntaxi složky ve stylu systému Linux.
 
-Nezapomeňte zahrnout `luis/v2.0` směrování do adresy URL, jak je znázorněno v následující tabulce.
-
-Nahradit {_argument_name_} s vlastními hodnotami:
+Nahraďte {_argument_name_} vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-| **{API_KEY}** | Klíč `LUIS` koncového bodu prostředku na stránce klíčů Azure `LUIS` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `LUIS` .| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](luis-container-howto.md#gathering-required-parameters) . |
+| **{API_KEY}** | Klíč koncového bodu prostředku `LUIS` na stránce klíčů Azure `LUIS`. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled služby Azure `LUIS`.| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](luis-container-howto.md#gathering-required-parameters) . |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru. Další informace najdete v tématu [fakturace](luis-container-howto.md#billing).
-> Hodnota ApiKey je **klíč** ze stránky klíče a koncové body na portálu Luis a je k dispozici také na stránce klíče prostředků `Cognitive Services` Azure. 
+> Aby bylo možné spustit kontejner, musí být zadány možnosti `Eula`, `Billing`a `ApiKey`. v opačném případě se kontejner nespustí. Další informace najdete v tématu [fakturace](luis-container-howto.md#billing).
+> Hodnota ApiKey je **klíč** ze stránky klíče a koncové body na portálu Luis a je k dispozici také na stránce klíče prostředků Azure `Cognitive Services`. 
 
 ### <a name="basic-example"></a>Základní příklad
 
-V následujícím příkladu má nejmíň argumenty umožňuje spuštění kontejneru:
+Následující příklad má nejnižší možné argumenty ke spuštění kontejneru:
 
 ```console
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 ^
@@ -141,7 +136,7 @@ ApiKey={API_KEY}
 
 ### <a name="applicationinsights-example"></a>Příklad ApplicationInsights
 
-Následující příklad nastaví ApplicationInsights argument k odesílání telemetrie do Application Insights, když je kontejner spuštěný:
+Následující příklad nastaví argument ApplicationInsights k odeslání telemetrie do Application Insights, když je kontejner spuštěný:
 
 ```console
 docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
@@ -156,7 +151,7 @@ InstrumentationKey={INSTRUMENTATION_KEY}
 
 ### <a name="logging-example"></a>Příklad protokolování 
 
-Následující příkaz nastavuje úroveň protokolování `Logging:Console:LogLevel`, konfigurace úrovně protokolování [ `Information` ](https://msdn.microsoft.com). 
+Následující příkaz nastaví úroveň protokolování, `Logging:Console:LogLevel`, aby se nakonfigurovala úroveň protokolování na [`Information`](https://msdn.microsoft.com). 
 
 ```console
 docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
@@ -169,8 +164,8 @@ ApiKey={API_KEY} ^
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Kontrola [instalace a spouštění kontejnerů](luis-container-howto.md)
+* Přečtěte si [, jak nainstalovat a spustit kontejnery](luis-container-howto.md) .
 * Problémy související s LUIS funkcemi najdete v tématu [řešení potíží](troubleshooting.md) .
 * Použít více [Cognitive Servicesch kontejnerů](../cognitive-services-container-support.md)

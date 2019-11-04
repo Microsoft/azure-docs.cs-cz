@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 68d0f693d0cc7d8db8e6f697ff8907400a7aca50
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 111ee6cda46677b3b0fc39f5a84268e6ac192da9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121317"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470531"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -43,12 +43,12 @@ Informace o tom, jak koupit a nastavit vlastní doménu pro App Service webovou 
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Návody nahrát a nakonfigurovat existující certifikát SSL pro moji webovou aplikaci?
 
-Informace o tom, jak nahrát a nastavit stávající vlastní certifikát SSL, najdete v tématu [vytvoření vazby existujícího vlastního certifikátu SSL k webové aplikaci Azure](app-service-web-tutorial-custom-ssl.md#upload).
+Informace o tom, jak nahrát a nastavit stávající vlastní certifikát SSL, najdete v tématu [Přidání certifikátu SSL do aplikace App Service](configure-ssl-certificate.md).
 
 
 ## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Návody koupit a nakonfigurovat nový certifikát SSL v Azure pro moji webovou aplikaci?
 
-Informace o tom, jak koupit a nastavit certifikát SSL pro App Service webovou aplikaci, najdete v tématu [Přidání certifikátu SSL do aplikace App Service](web-sites-purchase-ssl-web-site.md).
+Informace o tom, jak koupit a nastavit certifikát SSL pro App Service webovou aplikaci, najdete v tématu [Přidání certifikátu SSL do aplikace App Service](configure-ssl-certificate.md).
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Návody přesunout prostředky Application Insights?
@@ -69,9 +69,9 @@ Nastavení časového pásma serveru pro vaši webovou aplikaci:
 2. V části **nastavení aplikace**přidejte toto nastavení:
     * Klíč = WEBSITE_TIME_ZONE
     * Hodnota = *časové pásmo, které chcete*
-3. Vyberte **Uložit**.
+3. Vyberte **Save** (Uložit).
 
-Pro služby App Service, které jsou spuštěné v systému Windows, se ve sloupci **timezone (časové pásmo** ) v článku [výchozí časové pásmo](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) pro přijaté hodnoty zobrazí. Pro služby App Services spuštěné v systému Linux nastavte jako hodnotu časového pásma [název TZ databáze](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) . Tady je příklad názvu TZ Database: America/Adak.
+Pro služby App Service, které jsou spuštěné v systému Windows, se ve sloupci **timezone (časové pásmo** ) v článku [výchozí časové pásmo](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) pro přijaté hodnoty zobrazí. Pro služby App Services spuštěné v systému Linux nastavte jako hodnotu časového pásma [název TZ databáze](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) . Tady je příklad názvu TZ databáze: America/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Proč dojde k selhání mých nepřetržitých webových úloh?
 
@@ -111,7 +111,7 @@ Běžnou příčinou selhání zálohování je, že aplikace používá někter
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Návody odebrat hlavičku z odpovědi HTTP?
 
-Chcete-li odebrat hlavičky z odpovědi HTTP, aktualizujte soubor Web. config vašeho webu. Další informace najdete v tématu [Odebrání standardních hlaviček serveru na Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)websites.
+Chcete-li odebrat hlavičky z odpovědi HTTP, aktualizujte soubor Web. config vašeho webu. Další informace najdete v tématu [Odebrání standardních hlaviček serveru na Azure websites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>Je App Service kompatibilní se standardem PCI 3,0 a 3,1?
 
@@ -139,7 +139,7 @@ Kontrola protokolů webové úlohy:
 6. Vyberte tlačítko **přepnout výstup** .
 7. Vyberte odkaz ke stažení.
 
-## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Snažím se použít Hybrid Connections s SQL Server. Proč se zobrazí zpráva System. OverflowException: Výsledkem aritmetické operace je přetečení?
+## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Snažím se použít Hybrid Connections s SQL Server. Proč se zobrazí zpráva "System. OverflowException: aritmetická operace vedla k přetečení"?
 
 Pokud používáte Hybrid Connections pro přístup k SQL Server, může aktualizace Microsoft .NET na 10, 2016 způsobit selhání připojení. Může se zobrazit tato zpráva:
 
@@ -147,22 +147,22 @@ Pokud používáte Hybrid Connections pro přístup k SQL Server, může aktuali
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Výjimka byla způsobena problémem s Správce hybridního připojení, která od byla opravena. Nezapomeňte [aktualizovat správce hybridního připojení](https://go.microsoft.com/fwlink/?LinkID=841308) pro vyřešení tohoto problému.
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Návody přidat pravidlo pro přepsání adresy URL?
 
-Chcete-li přidat pravidlo přepsání adresy URL, vytvořte soubor Web. config s příslušnými konfiguračními položkami ve složce **wwwroot** . Další informace najdete v tématu [Azure App Services: Principy přepsání](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)adresy URL
+Chcete-li přidat pravidlo přepsání adresy URL, vytvořte soubor Web. config s příslušnými konfiguračními položkami ve složce **wwwroot** . Další informace najdete v tématu [Azure App Services: principy přepsání adresy URL](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Návody řízení příchozího provozu do App Service?
 
 Na úrovni webu máte dvě možnosti řízení příchozího provozu do App Service:
 
-* Zapněte dynamická omezení IP adres. Pokud se chcete dozvědět, jak zapnout dynamická omezení IP adres, přečtěte si téma [omezení IP adresy a domény pro Azure](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)websites.
-* Zapněte zabezpečení modulů. Informace o tom, jak zapnout zabezpečení modulů, najdete v tématu [ModSecurity Firewall webových aplikací v Azure](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/)websites.
+* Zapněte dynamická omezení IP adres. Pokud se chcete dozvědět, jak zapnout dynamická omezení IP adres, přečtěte si téma [omezení IP adresy a domény pro Azure websites](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/).
+* Zapněte zabezpečení modulů. Informace o tom, jak zapnout zabezpečení modulů, najdete v tématu [ModSecurity Firewall webových aplikací v Azure websites](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/).
 
-Pokud používáte App Service Environment, můžete použít bránu [firewall Barracuda](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/).
+Pokud používáte App Service Environment, můžete použít [bránu firewall Barracuda](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/).
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Návody blokovat porty ve App Service webové aplikaci?
 
@@ -197,7 +197,7 @@ Chcete-li zobrazit soubor HAR, můžete použít [prohlížeč Har](https://www.
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Proč se při pokusu o připojení webové aplikace App Service k virtuální síti, která je připojená k ExpressRoute, zobrazí chyba?
 
-Pokud se pokusíte připojit webovou aplikaci Azure k virtuální síti, která je připojená k Azure ExpressRoute, dojde k jejímu chybě. Zobrazí se následující zpráva: "Brána není bránou sítě VPN."
+Pokud se pokusíte připojit webovou aplikaci Azure k virtuální síti, která je připojená k Azure ExpressRoute, dojde k jejímu chybě. Zobrazí se následující zpráva: "brána není bránou sítě VPN."
 
 V současné době nemůžete mít připojení VPN typu Point-to-site k virtuální síti, která je připojená k ExpressRoute. Sítě VPN typu Point-to-site a ExpressRoute nemohou existovat současně pro stejnou virtuální síť. Další informace najdete v tématu [omezení a omezení připojení ExpressRoute a Site-to-Site VPN](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations).
 

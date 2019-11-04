@@ -7,15 +7,15 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 0c5541d7a80c3b6157ccadd979412163122ca8a2
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 9e6206e6f7e09ebe03659eb6e515a9b26d3469bd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300748"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475944"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Co je privátní propojení Azure? (Preview)
-Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Ve své virtuální síti můžete také vytvořit vlastní [službu privátního propojení](private-link-service-overview.md) a poskytnout ji soukromým uživatelům. Prostředí pro nastavení a spotřebu pomocí privátního propojení Azure je konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered.
+Privátní odkaz Azure vám umožní přístup ke službám Azure PaaS (například Azure Storage, Azure Cosmos DB a SQL Database) a hostovaným zákazníkům a partnerským službám Azure prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Ve své virtuální síti můžete také vytvořit vlastní [službu privátního propojení](private-link-service-overview.md) a poskytnout ji soukromým uživatelům. Prostředí pro nastavení a spotřebu pomocí privátního propojení Azure je konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered.
 
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Známá omezení najdete v tématu [privátní koncový bod](private-endpoint-overview.md#limitations) a [Služba privátního propojení](private-link-service-overview.md#limitations).
@@ -25,33 +25,34 @@ Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (např�
 
 ## <a name="key-benefits"></a>Klíčové výhody
 Privátní propojení Azure přináší následující výhody:  
-- **Služby soukromého přístupu na platformě Azure**: Připojte svoji virtuální síť ke službám běžícím v Azure Private bez nutnosti veřejné IP adresy ve zdroji nebo cíli. Poskytovatelé služeb můžou své služby vykreslovat soukromě ve své vlastní virtuální síti a příjemci mají přístup k těmto službám soukromě ve své místní virtuální síti. Platforma privátního propojení bude zpracovávat připojení mezi příjemcem a službami přes páteřní síť Azure. 
+- **Služby soukromého přístupu na platformě Azure**: Připojte virtuální síť ke službám běžícím v Azure Private bez nutnosti veřejné IP adresy ve zdroji nebo cíli. Poskytovatelé služeb můžou své služby vykreslovat soukromě ve své vlastní virtuální síti a příjemci mají přístup k těmto službám soukromě ve své místní virtuální síti. Platforma privátního propojení bude zpracovávat připojení mezi příjemcem a službami přes páteřní síť Azure. 
  
-- **Místní a partnerské sítě**: Přístup ke službám běžícím v Azure z místního prostředí přes tunely privátního partnerského vztahu ExpressRoute/VPN (z místních) a partnerských virtuálních sítí s využitím privátních koncových bodů. Pro přístup ke službě není nutné nastavovat veřejný partnerský vztah ani procházet internetem. Tato možnost poskytuje zabezpečený způsob migrace úloh do Azure.
+- **Místní a partnerské sítě**: přístup ke službám běžícím v Azure z místního prostředí přes tunely privátního partnerského vztahu/sítě VPN ExpressRoute (z místního) a partnerských virtuálních sítí s použitím privátních koncových bodů. Pro přístup ke službě není nutné nastavovat veřejný partnerský vztah ani procházet internetem. Tato možnost poskytuje zabezpečený způsob migrace úloh do Azure.
  
-- **Ochrana proti exfiltrace dat**:  Pomocí privátního odkazu Azure se privátní koncový bod ve virtuální síti namapuje na konkrétní instanci prostředku PaaS zákazníka na rozdíl od celé služby. Použití příjemců privátního koncového bodu se může připojit pouze ke konkrétnímu prostředku a nikoli k žádnému jinému prostředku ve službě. V sestavách mechanismu je zajištěna ochrana před riziky exfiltrace dat. 
+- **Ochrana proti exfiltrace dat**: pomocí privátního propojení Azure se privátní koncový bod ve virtuální síti namapuje na konkrétní instanci prostředku PaaS zákazníka, a to na rozdíl od celé služby. Použití příjemců privátního koncového bodu se může připojit pouze ke konkrétnímu prostředku a nikoli k žádnému jinému prostředku ve službě. V sestavách mechanismu je zajištěna ochrana před riziky exfiltrace dat. 
  
 - **Globální dosah**: Připojte soukromě ke službám běžícím v jiných oblastech. To znamená, že virtuální síť příjemce může být v oblasti a a může se připojit ke službám za soukromým odkazem v oblasti B.  
  
-- **Rozšiřování na vlastní služby**: Využijte stejné prostředí a funkce k tomu, aby vaše vlastní služba byla soukromá pro uživatele v Azure. Umístěním služby za Standard Load Balancer můžete povolit pro privátní propojení. Příjemce se pak může připojit přímo k vaší službě pomocí privátního koncového bodu ve své vlastní virtuální síti. Tyto požadavky na připojení můžete spravovat pomocí jednoduchého toku volání schválení. Privátní propojení Azure funguje i pro zákazníky a služby patřící do různých tenantů služby Active Directory. 
+- **Přihlaste se ke svým vlastním službám**: Využijte stejné možnosti a funkce, abyste svým uživatelům mohli soukromě vykreslit vlastní službu pro uživatele v Azure. Umístěním služby za Standard Load Balancer můžete povolit pro privátní propojení. Příjemce se pak může připojit přímo k vaší službě pomocí privátního koncového bodu ve své vlastní virtuální síti. Tyto požadavky na připojení můžete spravovat pomocí jednoduchého toku volání schválení. Privátní propojení Azure funguje i pro zákazníky a služby patřící do různých tenantů služby Active Directory. 
 
 ## <a name="availability"></a>Dostupnost 
  V následující tabulce jsou uvedeny služby privátních odkazů a oblasti, kde jsou k dispozici. 
 
 |Scénář  |Podporované služby   |Dostupné oblasti | Stav   |
 |---------|---------|---------|---------|
-|Soukromý odkaz pro služby vlastněné zákazníkem|Služby privátních odkazů za Standard Load Balancer |Středozápadní USA; WestUS Střed USA – jih; Východní USA; Střed USA – sever  |  Náhled  |
-|Privátní odkaz pro služby Azure PaaS   | Azure Storage        |  Východní USA, Západní USA Středozápadní USA       | Náhled         |
-|  | Azure Data Lake Storage Gen2        |  Východní USA, Západní USA Středozápadní USA       | Náhled         |
-|  |  Azure SQL Database         | Středozápadní USA; WestUS Střed USA – jih; Východní USA; Střed USA – sever      |   Náhled      |
-||Azure SQL Data Warehouse| Středozápadní USA; WestUS Střed USA – jih; Východní USA; Střed USA – sever |Náhled|
+|Soukromý odkaz pro služby vlastněné zákazníkem|Služby privátních odkazů za Standard Load Balancer |Středozápadní USA; WestUS Střed USA – jih; Východní USA; Střed USA – sever  |  Preview  |
+|Privátní odkaz pro služby Azure PaaS   | Azure Storage        |  Východní USA, Západní USA Středozápadní USA       | Preview         |
+|  | Azure Data Lake Storage Gen2        |  Východní USA, Západní USA Středozápadní USA       | Preview         |
+|  |  Azure SQL Database         | Středozápadní USA; WestUS Střed USA – jih; Východní USA; Střed USA – sever      |   Preview      |
+||Azure SQL Data Warehouse| Středozápadní USA; WestUS Střed USA – jih; Východní USA; Střed USA – sever |Preview|
+||Azure Cosmos DB| Středozápadní USA; WestUS EastUS Střed USA – sever; EastUS 2; WestUS 2 |Preview|
 
-Nejaktuálnější oznámení najdete na [stránce s aktualizacemi služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network). 
+Nejaktuálnější oznámení najdete na [stránce s aktualizacemi služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
 Privátní propojení Azure je integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor. Na Azure Monitor můžete získat přístup k následujícím informacím: 
-- **Privátní koncový bod**: Data zpracovaná privátním koncovým bodem (v/v)
+- **Privátní koncový bod**: data zpracovaná privátním koncovým bodem (v/v)
  
 - **Služba privátního propojení**:
     - Data zpracovaná službou privátního propojení (v/v)
@@ -71,6 +72,7 @@ Omezení najdete v tématu [omezení privátních propojení Azure](../azure-sub
 - [Vytvoření privátního koncového bodu pro SQL Database Server pomocí PowerShellu](create-private-endpoint-powershell.md)
 - [Vytvoření privátního koncového bodu pro SQL Database Server pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)
 - [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu](create-private-endpoint-storage-portal.md)
+- [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Vytvoření vlastní služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)
 
 

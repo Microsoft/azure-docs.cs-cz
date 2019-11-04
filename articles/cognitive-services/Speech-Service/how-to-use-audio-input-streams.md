@@ -1,7 +1,7 @@
 ---
-title: Koncepce zvukový vstupní datový proud SDK řeči
+title: Koncepce streamování zvukového vstupu v sadě Speech SDK
 titleSuffix: Azure Cognitive Services
-description: Přehled možností SDK řeči zvukový vstupní datový proud rozhraní API.
+description: Přehled možností rozhraní API pro zvukové vstupní Stream sady Speech SDK
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 06b69da7f7435ce8a1e32150b7abe161ebdf527c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e00feed416eb3e06b703a2ef4fe040f0c815716e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606505"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464301"
 ---
-# <a name="about-the-speech-sdk-audio-input-stream-api"></a>O sadou SDK pro řeč zvukový vstup datového proudu rozhraní API
+# <a name="about-the-speech-sdk-audio-input-stream-api"></a>O rozhraní API pro audio input Stream v sadě Speech SDK
 
-Sada SDK řeči **zvuk vstupní Stream** rozhraní API poskytuje možnost streamování audiostreamy do nástroje pro rozpoznávání namísto použití mikrofonu nebo vstupní soubor rozhraní API.
+Rozhraní API pro **Audio Input Stream** v sadě Speech SDK poskytuje způsob, jak streamovat zvukové streamy do rozpoznávání, místo abyste použili buď mikrofon, nebo vstupní soubor rozhraní API.
 
-Následující kroky jsou potřeba při používání zvuk vstupní datové proudy:
+Při použití vstupních datových proudů je potřeba použít následující postup:
 
-- Určete formát zvukový datový proud. Formát musí být podporována sadou SDK pro řeč a řeči služby. V současné době se podporuje pouze následující konfiguraci:
+- Určete formát streamu zvuku. Formát musí být podporován sadou Speech SDK a službou Speech. V současné době je podporována pouze následující konfigurace:
 
-  Zvukové vzorky ve formátu PCM, jeden kanál, 16000 vzorků za sekundu, délku 32 000 bajtů za sekundu, dva bloku zarovnání (16 bitů včetně odsazení ukázku), 16 bitů na vzorku.
+  Ukázky zvuku ve formátu PCM, One Channel, 16000 Samples za sekundu, 32000 bajtů za sekundu, dva bloky zarovnává (16 bitů včetně odsazení vzorku), 16 bitů na vzorek.
 
-  Odpovídající kód v sadě SDK vytvořte zvukový formát vypadá například takto:
+  Odpovídající kód v sadě SDK pro vytvoření formátu zvuku vypadá takto:
 
   ```
   byte channels = 1;
@@ -36,9 +36,9 @@ Následující kroky jsou potřeba při používání zvuk vstupní datové prou
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- Ujistěte se, že váš kód může poskytnout NEZPRACOVANÁ zvukových dat podle těchto specifikací. Pokud data zdroje zvuku neodpovídá podporované formáty, musí být zvuk převedou do požadovaného formátu.
+- Ujistěte se, že váš kód může poskytovat nezpracovaná zvuková data podle těchto specifikací. Pokud vaše zdrojová data zvuku neodpovídají podporovaným formátům, musí být zvuk předaný do požadovaného formátu.
 
-- Vytvoření vlastních zvukových vstupního datového proudu třídu odvozenou z `PullAudioInputStreamCallback`. Implementujte členy `Read()` a `Close()`. Signatura funkce stejné je závislá na jazyku, ale kód bude vypadat podobně jako tato ukázka kódu:
+- Vytvořte si vlastní třídu vstupního streamu zvuku odvozenou z `PullAudioInputStreamCallback`. Implementujte členy `Read()` a `Close()`. Přesný podpis funkce je závislý na jazyku, ale kód bude vypadat podobně jako tento ukázka kódu:
 
   ```
    public class ContosoAudioStream : PullAudioInputStreamCallback {
@@ -59,7 +59,7 @@ Následující kroky jsou potřeba při používání zvuk vstupní datové prou
    };
   ```
 
-- Vytvořit zvuku konfiguraci podle vaší Zvuk formátu a vstupní datový proud. Předáno při vytváření rozlišovači konfigurace pravidelných rozpoznávání řeči a zvuku vstupní konfiguraci. Příklad:
+- Vytvořte zvukovou konfiguraci na základě zvukového formátu a vstupního streamu. Při vytváření nástroje pro rozpoznávání můžete předávat standardní konfiguraci řeči i konfiguraci zvukového vstupu. Například:
 
   ```
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
@@ -73,7 +73,7 @@ Následující kroky jsou potřeba při používání zvuk vstupní datové prou
   var text = result.GetText();
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Zjistěte, jak rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)
+* [Podívejte se, jak rozpoznávat řeč vC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

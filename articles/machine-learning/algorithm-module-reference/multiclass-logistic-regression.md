@@ -1,6 +1,6 @@
 ---
 title: 'Regresní regrese s více třídami: odkaz na modul'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se používat modul logistické regrese ve službě Azure Machine Learning k vytvoření modelu logistické regrese, který se dá použít k předpovědi více hodnot.
 services: machine-learning
 ms.service: machine-learning
@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: d31329d6d45fd9f137bd6d57a638915e0833ee4a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 9d6e6c11f0e2a8fb7e08385f7abf26fb4a8d21c8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692752"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465969"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Modul logistické regrese pro více tříd
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vytvořit model logistické regrese, který se dá použít k předpovědi více hodnot.
 
@@ -67,4 +67,4 @@ Po dokončení školení uvidíte souhrn parametrů modelu spolu s váhy funkcí
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

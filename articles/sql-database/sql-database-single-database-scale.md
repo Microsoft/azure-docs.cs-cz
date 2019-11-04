@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: b7015b3e861aea3a33ea26d6a8c1a31f7f17b8c4
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: d2571b04f10bbbd3a461e553a56904abb3b46588
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063078"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496027"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování jednoho databázového prostředku v Azure SQL Database
 
-Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky úložiště dostupné pro Azure SQL Database v zřízené výpočetní úrovni. Alternativně [výpočetní úroveň bez serveru (Preview)](sql-database-serverless.md) poskytuje výpočetní automatické škálování a počet faktur za sekundu pro využité výpočetní prostředky.
+Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky úložiště dostupné pro Azure SQL Database v zřízené výpočetní úrovni. [Výpočetní úroveň bez serveru](sql-database-serverless.md) navíc poskytuje výpočetní automatické škálování a platby za sekundu pro využité výpočetní prostředky.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

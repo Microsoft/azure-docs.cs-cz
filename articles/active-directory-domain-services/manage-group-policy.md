@@ -8,18 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958547"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474523"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Správa Zásady skupiny ve spravované doméně Azure AD Domain Services
 
 Nastavení pro objekty uživatelů a počítačů v Azure Active Directory Domain Services (Azure služba AD DS) se často spravují pomocí objektů Zásady skupiny (objekty zásad skupiny). Azure služba AD DS obsahuje integrované objekty zásad skupiny pro kontejnery *uživatelů AADDC* a *počítačů AADDC* . Tyto předdefinované objekty zásad skupiny můžete přizpůsobit tak, aby Zásady skupiny podle potřeby pro vaše prostředí. Členové skupiny *Správci domény Azure AD* mají zásady skupiny oprávnění správce v doméně Azure služba AD DS a můžou také vytvářet vlastní objekty zásad skupiny a organizační jednotky (OU). Další informace o tom, co Zásady skupiny a jak funguje, najdete v článku [Zásady skupiny přehled][group-policy-overview].
+
+V hybridním prostředí se zásady skupiny nakonfigurované v místních služba AD DS prostředí nesynchronizují s Azure služba AD DS. Pokud chcete definovat nastavení konfigurace pro uživatele nebo počítače v Azure služba AD DS, upravte jeden z výchozích objektů zásad skupiny nebo vytvořte vlastní objekt zásad skupiny.
 
 V tomto článku se dozvíte, jak nainstalovat nástroje pro správu Zásady skupiny a pak upravit předdefinované objekty zásad skupiny a vytvořit vlastní objekty zásad skupiny.
 
@@ -80,7 +82,7 @@ Existují dva předdefinované Zásady skupiny objekty (GPO) v Azure služba AD 
 
     ![Předdefinované objekty zásad skupiny použité pro výchozí kontejnery AADDC počítače a AADDC Users](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-1. Tyto předdefinované objekty zásad skupiny je možné přizpůsobit tak, aby na spravované doméně Azure služba AD DS nakonfigurovaly konkrétní zásady skupiny. Pravým tlačítkem vyberte jeden z objektů zásad skupiny (GPO), třeba *AADDC počítače*, a pak vyberte **Upravit...** .
+1. Tyto předdefinované objekty zásad skupiny je možné přizpůsobit tak, aby na spravované doméně Azure služba AD DS nakonfigurovaly konkrétní zásady skupiny. Pravým tlačítkem vyberte jeden z objektů zásad skupiny (GPO), třeba *AADDC počítače*, a pak zvolte **Upravit...** .
 
     ![Vyberte možnost upravit jeden z vestavěných objektů zásad skupiny.](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 

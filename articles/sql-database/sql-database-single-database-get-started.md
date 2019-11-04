@@ -11,14 +11,14 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0035495d9dd3b82b65aa3b4a7b1d918c73288df8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845294"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496130"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Rychlý start: Vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Rychlý Start: vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure
 
 Vytvoření [jedné databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení pro vytvoření databáze v Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit a pak zadat dotaz na izolovanou databázi pomocí Azure Portal.
 
@@ -28,7 +28,7 @@ Pro všechny kroky v tomto rychlém startu se přihlaste k [Azure Portal](https:
 
 ## <a name="create-a-single-database"></a>Vytvoření izolované databáze
 
-Jednu databázi je možné vytvořit buď ve výpočetní úrovni zřízené, nebo bez serveru (Preview).
+Jedna databáze se dá vytvořit buď v zřízené, nebo na výpočetní úrovni bez serveru.
 
 - Jedna databáze v zřízené výpočetní úrovni je předem přidělena pevná množství výpočetních prostředků, včetně procesoru a paměti, pomocí jednoho ze dvou [nákupních modelů](sql-database-purchase-models.md).
 - Jedna databáze na výpočetní úrovni bez serveru obsahuje řadu výpočetních prostředků, včetně procesoru a paměti, které se automaticky škálují a jsou dostupné jenom v [nákupních modelech založených na Vcore](sql-database-service-tiers-vcore.md).
@@ -62,7 +62,7 @@ Teď, když jste vytvořili databázi, použijte integrovaný nástroj pro dotaz
 
 4. Vyberte **Spustit**a potom zkontrolujte výsledky dotazu v podokně **výsledků** .
 
-   ![výsledky editoru dotazů](./media/sql-database-get-started-portal/query-editor-results.png)
+   ![Výsledky editoru dotazů](./media/sql-database-get-started-portal/query-editor-results.png)
 
 5. Zavřete stránku **Editor dotazů** a po zobrazení výzvy k zahození neuložených úprav vyberte **OK** .
 

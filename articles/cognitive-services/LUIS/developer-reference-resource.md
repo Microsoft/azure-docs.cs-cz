@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: 8accac7fe6068007180403fdab27013da161b28c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437190"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465724"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Materiály pro vývojáře pro Language Understanding
 
@@ -54,6 +54,17 @@ Rozhraní API pro vytváření obsahu a předpovědi jsou dostupná z rozhraní 
 |Node.js|[Vytváření obsahu](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Předpověď](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[Vytváření NPM](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[Předpověď NPM](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[Vytváření obsahu](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Předpověď](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[Vytváření obsahu pomocí REST](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-get-intent)<br>[Předpověď pomocí REST](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-add-utterance)|
 |Python|[Vytváření a předpověď](sdk-python-quickstart-authoring-app.md)|[PIP](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Vytváření obsahu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Vytváření obsahu](sdk-python-quickstart-authoring-app.md)<br>[Předpověď pomocí REST](luis-get-started-python-get-intent.md)
 
+
+### <a name="containers"></a>Containers
+
+Language Understanding (LUIS) poskytuje [kontejner](luis-container-howto.md) pro poskytování místních a obsažených verzí vaší aplikace. 
+
+### <a name="export-and-import-formats"></a>Formáty exportu a importu
+
+Language Understanding poskytuje možnost spravovat svou aplikaci a její modely ve formátu JSON, ve formátu `.LU` ([LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)) a komprimovaném balíčku pro kontejner Language Understanding. 
+
+Import a export těchto formátů je dostupný z rozhraní API a z portálu LUIS. Portál poskytuje import a export jako součást seznamu a verzí seznamu aplikací. 
+
 ## <a name="other-tools-and-sdks"></a>Další nástroje a sady SDK
 
 Rozhraní bot Framework je dostupné jako [sada SDK](https://github.com/Microsoft/botframework) v různých jazycích a jako služba pomocí [Azure bot Service](https://dev.botframework.com/). 
@@ -69,4 +80,8 @@ Robot Framework nabízí [několik nástrojů](https://github.com/microsoft/botb
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o běžných [kódech chyb HTTP](luis-reference-response-codes.md)
+* Další informace o běžných [kódech chyb HTTP](luis-reference-response-codes.md)
+* [Referenční dokumentace](https://docs.microsoft.com/azure/index#pivot=sdkstools) pro všechna rozhraní API a sady SDK
+* [Rozhraní bot Framework](https://github.com/Microsoft/botbuilder-dotnet) a [Azure bot Service](https://dev.botframework.com/)
+* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
+* [Rozpoznávání kontejnerů](../cognitive-services-container-support.md)

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9ac95896e67338437325e8290a96b8e42b2fa3a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 30e7059605ef86e6afd86251db0e416c9143a9ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374253"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475109"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Kurz: poskytnutí přístupu k ASP.NET Core webovému rozhraní API z jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Obory poskytují způsob, jak řídit přístup k chráněným prostředkům. We
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Poznamenejte si **úplnou hodnotu oboru** `demo.read` pro použití v pozdějším kroku při konfiguraci jednostránkové aplikace. Úplná hodnota oboru je podobná `https://yourtenant.onmicrosoft.com/api/demo.read`.
+Poznamenejte si hodnotu v části **obory** pro obor `demo.read`, který se má použít v pozdějším kroku při konfiguraci jednostránkové aplikace. Úplná hodnota oboru je podobná `https://contosob2c.onmicrosoft.com/api/demo.read`.
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
@@ -62,7 +62,7 @@ Webová aplikace s jednou stránkou je zaregistrovaná pro volání chráněnéh
 
 Když je teď webové rozhraní API zaregistrované a máte definované obory, nakonfigurujete kód webového rozhraní API tak, aby používal vašeho tenanta Azure AD B2C. V tomto kurzu nakonfigurujete ukázkovou webovou aplikaci .NET Core, kterou stáhnete z GitHubu.
 
-[Stáhněte si @no__t archiv -1. zip](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) nebo naklonujte ukázkový projekt webového rozhraní API z GitHubu.
+[Stáhněte si archiv \*. zip](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) nebo naklonujte ukázkový projekt webového rozhraní API z GitHubu.
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi.git
@@ -133,8 +133,8 @@ Změna nastavení v zabezpečeném hesla:
 
 1. Otevřete soubor *index. html* v projektu [Active-Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] , který jste stáhli nebo naklonoval v předchozím kurzu.
 1. Nakonfigurujte ukázku s identifikátorem URI pro obor *demo. Read* , který jste vytvořili dříve, a adresu URL webového rozhraní API.
-    1. V definici `appConfig` nahraďte hodnotu `b2cScopes` úplným identifikátorem URI pro obor ( **úplnou hodnotu rozsahu** , kterou jste si poznamenali dříve).
-    1. Hodnotu `webApi` změňte na hodnotu `applicationURL`, kterou jste zadali v předchozí části.
+    1. V definici `appConfig` nahraďte hodnotu `b2cScopes` úplným identifikátorem URI pro obor (hodnotu **rozsahu** , kterou jste si poznamenali dříve).
+    1. Změňte hodnotu `webApi` na identifikátor URI přesměrování, který jste přidali při registraci aplikace webového rozhraní API v předchozím kroku.
 
     Definice `appConfig` by měla vypadat podobně jako následující blok kódu (s názvem vašeho tenanta v místě `<your-tenant-name>`):
 
@@ -158,7 +158,7 @@ V aplikaci Visual Studio stiskněte klávesu **F5** pro sestavení a ladění ř
 
 Pokud upřednostňujete použití rozhraní příkazového řádku `dotnet` místo sady Visual Studio:
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího soubor *@no__t -1. csproj* . Například:
+1. Otevřete okno konzoly a přejděte do adresáře, který obsahuje soubor *\*. csproj* . Například:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 

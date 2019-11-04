@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d60c1a01f3a4ca3a191ddb322def7d86a316c58f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803325"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473842"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům
 
@@ -51,7 +51,7 @@ Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte 
 
 Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou zděděna na nižší úrovně rozsahu. Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že může číst skupinu prostředků a všechny prostředky, které obsahuje.
 
-1. Přejděte na úroveň rozsahu, ke kterému chcete aplikaci přiřadit. Pokud například chcete přiřadit roli v oboru předplatného, vyberte **všechny služby** a **odběry**.
+1. V Azure Portal vyberte úroveň rozsahu, do kterého chcete aplikaci přiřadit. Pokud například chcete přiřadit roli v oboru předplatného, vyhledejte a vyberte **odběry**nebo vyberte **předplatná** na **domovské** stránce.
 
    ![Přiřaďte například roli v oboru předplatného.](./media/howto-create-service-principal-portal/select-subscription.png)
 

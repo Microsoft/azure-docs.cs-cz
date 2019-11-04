@@ -6,22 +6,22 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255848"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464062"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta Azure Policy
 
-Kromě auditování a [Oprava](../how-to/remediate-resources.md) prostředků Azure může Azure Policy auditovat nastavení v rámci počítače. Ověřování se provádí pomocí rozšíření konfigurace hosta a klienta. Rozšíření přes klienta ověří nastavení, jako například:
+Kromě auditování a [Oprava](../how-to/remediate-resources.md) prostředků Azure může Azure Policy auditovat nastavení v rámci počítače. Ověřování se provádí pomocí rozšíření Konfigurace hosta a prostřednictvím klienta. Toto rozšíření prostřednictvím klienta ověřuje nastavení, jako například:
 
 - Konfigurace operačního systému
-- Konfigurace nebo přítomnost aplikace
+- Konfigurace nebo přítomnost aplikací
 - Nastavení prostředí
 
-V tuto chvíli Azure Policy konfigurace hostů jenom auditují nastavení v rámci počítače. Neaplikuje konfigurace.
+Konfigurace hosta Azure Policy momentálně jenom audituje nastavení uvnitř počítače. Neaplikuje konfigurace.
 
 ## <a name="extension-and-client"></a>Rozšíření a klient
 
@@ -75,12 +75,12 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 
 V následující tabulce je uveden seznam podporovaných operačních systémů na obrázcích Azure:
 
-|Publisher|Jméno|Zachovávaných|
+|Vydavatel|Name (Název)|Verze|
 |-|-|-|
-|Interpret|Server Ubuntu|14,04, 16,04, 18,04|
+|Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |credativ|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
-|Microsoft|Klient systému Windows|Windows 10|
+|Microsoft|Klient Windows|Windows 10|
 |OpenLogic|CentOS|7,3, 7,4, 7,5|
 |Red Hat|Red Hat Enterprise Linux|7,4, 7,5|
 |SUSE|SLES|12 SP3|
@@ -122,6 +122,29 @@ Azure Policy používá k hlášení dodržování předpisů v uzlu **dodržov�
 > Zásady **DeployIfNotExists** se vyžadují, aby zásady **AuditIfNotExists** vracely výsledky. Bez **DeployIfNotExists**se v zásadách **AuditIfNotExists** zobrazuje "0 z 0" prostředků jako stav.
 
 V iniciativě jsou zahrnuty všechny předdefinované zásady pro konfiguraci hosta, aby bylo možné seskupit definice pro použití v přiřazeních. Integrovaná iniciativa s názvem *[Preview]: Auditovat nastavení zabezpečení hesla v počítačích se systémy Linux a Windows* obsahuje 18 zásad. Pro systém Linux existuje šest párů **DeployIfNotExists** a **AuditIfNotExists** pro Windows a tři páry. Logika [definice zásad](definition-structure.md#policy-rule) ověřuje, zda je vyhodnocen pouze cílový operační systém.
+
+#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditování nastavení operačního systému po oborových plánech
+
+Jedna z iniciativ, které jsou k dispozici v Azure Policy, poskytuje možnost auditování nastavení operačního systému v rámci virtuálních počítačů, které jsou uvedené na základě směrného plánu od Microsoftu.  Definice *[Preview]: Auditovat virtuální počítače s Windows, které neodpovídají nastavení základní hodnoty zabezpečení Azure,* zahrnuje úplnou sadu pravidel auditu na základě nastavení služby Active Directory Zásady skupiny.
+
+Většina nastavení je k dispozici jako parametry.  Tato funkce umožňuje přizpůsobit, co se bude auditovat, aby se zásady zarovnaly požadavkům vaší organizace, nebo aby se tyto zásady namapovaly na informace třetích stran, jako jsou například oborové zákonné standardy.
+
+Některé parametry podporují rozsah celočíselných hodnot.  Například parametr maximální stáří hesla lze nastavit pomocí operátoru rozsahu, který umožní flexibilitu vlastníkům počítačů.  Mohli byste auditovat, že platné Zásady skupiny nastavení vyžadující, aby uživatel změnil heslo, nesmí být delší než 70 dní, ale nemělo by být kratší než 1 den.  Jak je popsáno v informacích bublinách pro parametr, chcete-li tuto efektivní hodnotu auditovat, nastavte hodnotu na "1, 70".
+
+Pokud přiřadíte zásadu pomocí šablony Azure Resource Manager dployment, můžete použít soubor parametrů ke správě těchto nastavení ze správy zdrojového kódu.
+Pomocí nástroje, jako je třeba Git, můžete spravovat změny zásad auditu s komentáři při každém vrácení se změnami, které dokumentují jako důvod, proč by přiřazení mělo být ve výjimce na očekávanou hodnotu.
+
+#### <a name="applying-configurations-using-guest-configuration"></a>Použití konfigurace pomocí konfigurace hosta
+
+Nejnovější funkce Azure Policy konfiguruje nastavení v počítačích.
+Definice *nastaví časové pásmo na počítačích s Windows* a provede změny v počítači konfigurací časového pásma.
+
+Při přiřazování definic, které začínají na *Konfigurovat*, musíte také přiřadit *předpoklady nasazení definice a povolit zásadu konfigurace hosta na virtuálních počítačích s Windows.*
+V případě, že se rozhodnete, můžete tyto definice kombinovat v iniciativě.
+
+#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Přiřazování zásad do počítačů mimo Azure
+
+Zásady auditu, které jsou k dispozici pro konfiguraci hosta, zahrnují typ prostředku **Microsoft. HybridCompute/počítače** .  Všechny počítače připojené ke službě Azure ARC, které jsou v oboru přiřazení, budou zahrnuty automaticky.
 
 ### <a name="multiple-assignments"></a>Více přiřazení
 
@@ -179,8 +202,8 @@ Ukázky konfigurace hosta zásad jsou k dispozici v následujících umístění
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
-- Zkontrolujte [strukturu definice Azure Policy](definition-structure.md).
-- Přečtěte si téma [Principy efektů zásad](effects.md).
+- Projděte si [strukturu definic Azure Policy](definition-structure.md).
+- Projděte si [Vysvětlení efektů zásad](effects.md).
 - Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
 - Přečtěte si, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
 - Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).

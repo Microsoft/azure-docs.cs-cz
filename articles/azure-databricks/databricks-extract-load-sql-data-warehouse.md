@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: c2d7d7d97dce974ad8d72cc98f9ec6d3d554fb6d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 39f71e109b0d9d7b3b0375c0ec2c4d1e4a657994
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72783980"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469473"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks
 
@@ -89,9 +89,15 @@ Ujistěte se, že jste dokončili požadavky tohoto kurzu.
 
 V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**.
+1. V nabídce Azure Portal vyberte **vytvořit prostředek**.
 
-    ![Datacihly na Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Datacihly na Azure Portal")
+    ![Vytvoření prostředku na Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png)
+
+    Pak vyberte **Analytics** > **Azure Databricks**.
+
+    ![Vytvoření Azure Databricks na Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-resource-create.png)
+
+
 
 2. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření služby datacihly:
 
@@ -184,11 +190,11 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
 
 6. V tomto bloku kódu Nahraďte zástupné hodnoty `<app-id>`, `<password>`, `<tenant-id>` a `<storage-account-name>` v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte zástupnou hodnotu `<file-system-name>` libovolným názvem, který chcete systému souborů poskytnout.
 
-   * @No__t_0 a `<password>` jsou z aplikace, kterou jste zaregistrovali se službou Active Directory, v rámci vytváření instančního objektu.
+   * `<app-id>`a `<password>` jsou z aplikace, kterou jste zaregistrovali se službou Active Directory, v rámci vytváření instančního objektu.
 
-   * @No__t_0 je z vašeho předplatného.
+   * `<tenant-id>` je z vašeho předplatného.
 
-   * @No__t_0 je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
+   * `<storage-account-name>` je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
 
 7. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
 

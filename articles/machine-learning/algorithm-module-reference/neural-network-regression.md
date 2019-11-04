@@ -1,20 +1,20 @@
 ---
 title: 'Regrese sítě neuronové: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul neuronové Network regrese ve službě Azure Machine Learning k vytvoření regresního modelu pomocí přizpůsobitelného síťového algoritmu neuronové.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak pomocí modulu neuronové Network regrese v Azure Machine Learning vytvořit regresní model pomocí přizpůsobitelného síťového algoritmu neuronové.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 54518d21db0c9b14cbb7b4fc4316d1db2b871573
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d5cc0f06e9fb95894df30af1322d47337f51e314
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692740"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466007"
 ---
 # <a name="neural-network-regression-module"></a>Neuronové Network regrese – modul
 
@@ -24,7 +24,7 @@ ms.locfileid: "72692740"
   
 ## <a name="module-overview"></a>Přehled modulu  
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul použijte k vytvoření regresního modelu pomocí přizpůsobitelného neuronové síťového algoritmu.
   
@@ -51,8 +51,8 @@ Neuronové sítě je možné výrazně přizpůsobit. Tato část popisuje, jak 
     Tato možnost je nejlepší, pokud už se neuronové sítě už trochu obeznámené. K definování síťové architektury použijte jazyk NET #.  
 
 ##  <a name="bkmk_DefaultArchitecture"></a>Vytvoření modelu sítě neuronové pomocí výchozí architektury
-  
-1.  Přidejte modul **regrese sítě neuronové** do vašeho kanálu v rozhraní. Tento modul najdete v části **Machine Learning**, **Initialize**, v kategorii **regrese** . 
+
+1.  Přidejte do kanálu modul **regrese sítě neuronové** v návrháři. Tento modul najdete v části **Machine Learning**, **Initialize**, v kategorii **regrese** . 
   
 2. Určete, jak chcete, aby byl model vyškolený, nastavením možnosti **vytvořit Trainer režim** .  
   
@@ -98,4 +98,4 @@ Po dokončení školení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

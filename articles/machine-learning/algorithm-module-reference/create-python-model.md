@@ -1,7 +1,7 @@
 ---
 title: 'Vytvoření modelu Pythonu: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat model vytvoření modelu Pythonu ve službě Azure Machine Learning k vytvoření vlastního modulu modelování nebo zpracování dat.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat model vytvoření modelu Pythonu v Azure Machine Learning k vytvoření vlastního modulu modelování nebo zpracování dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 2a035644dc0d3d533aa052217c89968a5692230b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 33e15055958ac99f2aa9eb160f9e5cf3c5b0cd41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693895"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493797"
 ---
 # <a name="create-python-model"></a>Vytvoření modelu Pythonu
 
 Tento článek popisuje, jak pomocí modulu **vytvořit model Pythonu** vytvořit z skriptu Pythonu nevlakový model. 
 
-Model můžete založit na jakémkoli učení, které je součástí balíčku Pythonu v prostředí Azure Machine Learning. 
+Model můžete založit na jakémkoli učení, které je součástí balíčku Pythonu v prostředí návrháře Azure Machine Learning. 
 
 Po vytvoření modelu můžete použít [model výuky](train-model.md) pro výuku modelu pro datovou sadu, jako je jakékoli jiné informace v Azure Machine Learning. Vyškolený model může být předán [modelu skóre](score-model.md) pro použití modelu k vytvoření předpovědi. Vyškolený model se pak dá uložit a pracovní postup bodování je možné publikovat jako webovou službu.
 

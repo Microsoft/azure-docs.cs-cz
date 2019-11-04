@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 950818d08cb654bad969deaede24231cab9bcbe2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 102f3e131b20534dc2f192b6485a3fdc95070315
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098553"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470258"
 ---
 # <a name="app-service-networking-features"></a>Funkce App Service sítě
 
@@ -34,7 +34,7 @@ Azure App Service je distribuovaný systém. Role, které zpracovávají přích
 | Příchozí funkce | Odchozí funkce |
 |---------------------|-------------------|
 | Adresa přiřazená aplikaci | Hybridní připojení |
-| Omezení přístupu | Požadovaná brána Integration VNet |
+| Omezení přístupu | požadovaná brána Integration VNet |
 | Koncové body služeb | Integrace virtuální sítě (Preview) |
 
 Pokud není uvedeno jinak, lze použít všechny funkce společně. Můžete kombinovat funkce a vyřešit různé problémy.
@@ -60,7 +60,7 @@ Následující případy odchozího použití ukazují, jak používat funkce Ap
 | Případy odchozího použití | Funkce |
 |---------------------|-------------------|
 | Přístup k prostředkům v Azure Virtual Network ve stejné oblasti | Integrace virtuální sítě </br> ASE |
-| Přístup k prostředkům v Azure Virtual Network v jiné oblasti | Požadovaná brána Integration VNet </br> Pomocného a virtuálním počítačem |
+| Přístup k prostředkům v Azure Virtual Network v jiné oblasti | požadovaná brána Integration VNet </br> Pomocného a virtuálním počítačem |
 | Přístup k prostředkům zabezpečeným pomocí koncových bodů služby | Integrace virtuální sítě </br> ASE |
 | Přístup k prostředkům v privátní síti nepřipojené k Azure | Hybridní připojení |
 | Přístup k prostředkům napříč okruhy ExpressRoute | Integrace virtuální sítě (v současnosti je omezená na RFC 1918 adres) </br> ASE | 
@@ -137,11 +137,11 @@ Vzhledem k tomu, že tato funkce umožňuje přístup k místním prostředkům 
 
 I když je Hybrid Connections populární pro vývoj, používá se také v mnoha produkčních aplikacích. Je ideální pro přístup k webové službě nebo databázi, ale není vhodná pro situace zahrnující vytváření mnoha připojení. 
 
-### <a name="gateway-required-vnet-integration"></a>Požadovaná brána Integration VNet 
+### <a name="gateway-required-vnet-integration"></a>požadovaná brána Integration VNet 
 
 Funkce Brána App Service Integration VNet umožňuje vaší aplikaci vytvářet **odchozí** požadavky do Azure Virtual Network. Funkce funguje připojením hostitele, na kterém je aplikace spuštěná, do Virtual Network brány ve vaší virtuální síti pomocí sítě VPN typu Point-to-site. Když nakonfigurujete funkci, aplikace získá jednu z adres Point-to-site přiřazených k jednotlivým instancím. Tato funkce umožňuje přístup k prostředkům v klasickém nebo Správce prostředků virtuální sítě v libovolné oblasti. 
 
-![Požadovaná brána Integration VNet](media/networking-features/gw-vnet-integration.png)
+![požadovaná brána Integration VNet](media/networking-features/gw-vnet-integration.png)
 
 Tato funkce řeší potíže s přístupem k prostředkům v jiných virtuální sítě a je možné ji dokonce použít k připojení přes virtuální síť k jiným virtuální sítě nebo dokonce i místnímu. Nefunguje s ExpressRoute připojenými virtuální sítě, ale s propojenými sítěmi VPN typu Site-to-site. Tato funkce se obvykle nedoporučuje používat z aplikace v App Service Environment (pomocného mechanismu), protože je už ve vaší virtuální síti. Případy použití, které tato funkce řeší:
 
@@ -163,7 +163,7 @@ Funkce vyžadovat integraci virtuální sítě pro bránu je velmi užitečná, 
 
 Tato funkce je ve verzi Preview a neměla by se používat pro produkční úlohy. Další informace o této funkci najdete v článku věnovaném [integraci virtuální sítě App Service][vnetintegration].
 
-## <a name="app-service-environment"></a>App Service Environment 
+## <a name="app-service-environment"></a>Prostředí App Service 
 
 App Service Environment (pomocným mechanismem) je nasazení jednoho tenanta Azure App Service, které ve vaší virtuální síti běží. Pomocí pomocného mechanismu můžete použít případy použití jako:
 
@@ -222,7 +222,7 @@ Vícevrstvá aplikace je aplikace, ve které se k aplikacím back-endu rozhraní
 Můžete mít několik front-endové aplikací, které používají stejnou aplikaci API pomocí integrace virtuální sítě z jiných front-end aplikací a koncových bodů služby z aplikace API s jejich podsítěmi.  
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl
+[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
 [iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections

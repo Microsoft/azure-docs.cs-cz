@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d880bcc7c0c3f1b9cf647242a54cc779ba8945e1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2a1fbe8d47af8a2215b0d0a3d81fbe67a62d4755
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172383"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474401"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Kurz: vytvoření a konfigurace instance Azure Active Directory Domain Services
 
@@ -55,7 +55,7 @@ V tomto kurzu vytvoříte a nakonfigurujete instanci Azure služba AD DS pomocí
 
 Chcete-li spustit průvodce **povolením Azure AD Domain Services** , proveďte následující kroky:
 
-1. V levém horním rohu Azure Portal vyberte **+ vytvořit prostředek**.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
 1. Do panelu hledání zadejte *Domain Services* a pak zvolte *Azure AD Domain Services* z návrhů hledání.
 1. Na stránce Azure AD Domain Services vyberte **vytvořit**. Spustí se průvodce **povolením Azure AD Domain Services** .
 1. Vyberte **předplatné** Azure, ve kterém chcete vytvořit spravovanou doménu.

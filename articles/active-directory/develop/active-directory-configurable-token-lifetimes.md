@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73869773597d372affbf02e6a256642c8c1ce8f4
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809308"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473957"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životnosti tokenů v Azure Active Directory (Preview)
 
@@ -71,6 +71,9 @@ Důvěrné klienty jsou aplikace, které můžou bezpečně ukládat heslo klien
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Životnost tokenů s obnovovacími tokeny veřejného klienta
 
 Veřejné klienty nemohou bezpečně ukládat heslo klienta (tajný kód). Například aplikace pro iOS/Android nemůže odvažovat tajný klíč od vlastníka prostředku, takže se považuje za veřejného klienta. Můžete nastavit zásady pro prostředky, aby se zabránilo aktualizačním tokenům z veřejných klientů starších než v zadaném období, od získání nového páru přístupů nebo obnovovacího tokenu. (Chcete-li to provést, použijte vlastnost maximální neaktivní doba obnovovacího tokenu (`MaxInactiveTime`).) Pomocí zásad můžete také nastavit dobu, po kterou se obnovovací tokeny už nepřijímají. (Chcete-li to provést, použijte vlastnost maximální stáří obnovovacího tokenu.) Dobu platnosti obnovovacího tokenu můžete upravit tak, aby bylo možné řídit, kdy a jak často musí uživatel při použití veřejné klientské aplikace znovu zadat přihlašovací údaje.
+
+> [!NOTE]
+> Vlastnost maximální stáří představuje dobu, po kterou lze použít jeden token. 
 
 ### <a name="id-tokens"></a>Tokeny ID
 Tokeny ID jsou předány webům a nativním klientům. Tokeny ID obsahují informace o profilu uživatele. Token ID je vázán na určitou kombinaci uživatele a klienta. Tokeny ID se považují za platné, dokud nevyprší jejich platnost. Obvykle webová aplikace odpovídá době životnosti relace uživatele v aplikaci až po dobu životnosti tokenu ID vydaného pro uživatele. Můžete upravit životnost tokenu ID, abyste mohli určit, jak často webová aplikace vyprší platnost relace aplikace, a jak často vyžaduje, aby byl uživatel znovu ověřen pomocí Azure AD (buď tiše, nebo interaktivně).

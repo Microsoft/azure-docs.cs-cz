@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae1c1a6c151d0bfae1b608ccefdfeaaaa74b608
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803829"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473802"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Postupy: Konfigurace MSAL pro iOS a macOS pro používání různých zprostředkovatelů identity
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak nakonfigurovat aplikaci knihovny Microsoft Aut
 `MSALPublicClientApplication` je nakonfigurovaná s adresou URL výchozího úřadu `https://login.microsoftonline.com/common`, která je vhodná pro většinu Azure Active Directory (AAD). Pokud neimplementujete pokročilé scénáře, jako jsou národní cloudy nebo pracujete s B2C, nebudete je muset měnit.
 
 > [!NOTE]
-> Moderní ověřování pomocí Active Directory Federation Services (AD FS) jako zprostředkovatele identity (ADFS) není podporované (podrobnosti najdete v tématu [ADFS pro vývojáře](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers) ). Služba ADFS je podporovaná prostřednictvím federace.
+> Moderní ověřování pomocí Active Directory Federation Services (AD FS) jako zprostředkovatele identity (ADFS) není podporované (podrobnosti najdete v tématu [ADFS pro vývojáře](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ). Služba ADFS je podporovaná prostřednictvím federace.
 
 ## <a name="change-the-default-authority"></a>Změna výchozího úřadu
 

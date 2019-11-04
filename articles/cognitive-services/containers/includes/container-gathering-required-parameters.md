@@ -6,31 +6,28 @@ manager: nitinme
 description: Parametry pro všechny kontejnery Cognitive Services
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/18/2019
+ms.date: 10/15/2019
 ms.author: dapine
-ms.openlocfilehash: 06f68d28d06dec7c9e738ad8cb50ca337fa840be
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: bf4e8f06642a4a764794a75e2b49f15958796c61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102003"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465938"
 ---
 ## <a name="gathering-required-parameters"></a>Shromažďují se požadované parametry.
 
-Existují tři primární parametry pro všechny požadované kontejnery Cognitive Services. Podmínky licenční smlouvy s koncovým uživatelem (EULA) musí být k dispozici s `accept`hodnotou. Kromě toho je potřeba adresa URL koncového bodu i klíč rozhraní API.
+Existují tři primární parametry pro všechny požadované kontejnery Cognitive Services. Licenční smlouvu s koncovým uživatelem (EULA) se musí nacházet s hodnotou `accept`. Kromě toho je potřeba adresa URL koncového bodu i klíč rozhraní API.
 
-> [!NOTE]
-> Jedinou výjimkou těchto tří požadovaných parametrů je, že kontejnery se považují za "offline" kontejnery. Offline kontejnery neobsahují použití, nejsou měřeny a sledují jinou metodologii fakturace.
+### <a name="endpoint-uri-endpoint_uri"></a>`{ENDPOINT_URI}` identifikátoru URI koncového bodu
 
-### <a name="endpoint-uri-endpoint_uri"></a>Identifikátor URI koncového bodu`{ENDPOINT_URI}`
-
-Hodnota identifikátoru URI **koncového bodu** je k dispozici na stránce *Přehled* Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na stránku *Přehled* , najeďte myší na koncový bod a `Copy to clipboard` zobrazí se <span class="docon docon-edit-copy x-hidden-focus"></span> ikona. Zkopírujte a použijte tam, kde je to potřeba.
+Hodnota identifikátoru URI **koncového bodu** je k dispozici na stránce *Přehled* Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na stránku *Přehled* , najeďte myší na koncový bod a zobrazí se <span class="docon docon-edit-copy x-hidden-focus"></span> ikona `Copy to clipboard`. Zkopírujte a použijte tam, kde je to potřeba.
 
 ![Shromáždit identifikátor URI koncového bodu pro pozdější použití](../media/overview-endpoint-uri.png)
 
-### <a name="keys-api_key"></a>Klíče`{API_KEY}`
+### <a name="keys-api_key"></a>`{API_KEY}` klíčů
 
-Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíčů Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na stránku *klíče* a klikněte `Copy to clipboard` na <span class="docon docon-edit-copy x-hidden-focus"></span> ikonu.
+Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíčů Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na stránku *klíče* a klikněte na ikonu `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> .
 
 ![Získat jeden ze dvou klíčů pro pozdější použití](../media/keys-copy-api-key.png)
 

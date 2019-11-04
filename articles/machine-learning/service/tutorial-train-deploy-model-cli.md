@@ -1,6 +1,6 @@
 ---
 title: Výuka a nasazování modelů z rozhraní příkazového řádku
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Naučte se používat rozšíření Machine Learning pro Azure CLI ke školení, registraci a nasazení modelu z příkazového řádku.
 ms.author: larryfr
 author: Blackmist
@@ -9,14 +9,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: fb46aaf04535c1b44cdd80810fbb6382dc727a67
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3f619caf7e2713e1c9251550b06c8bdefba5936f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350421"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493382"
 ---
-# <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: Výuka a nasazení modelu z rozhraní příkazového řádku
+# <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: výuka a nasazení modelu z rozhraní příkazového řádku
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto kurzu použijete rozšíření Machine Learning pro Azure CLI ke školení, registraci a nasazení modelu.
 
@@ -33,7 +34,7 @@ Přečtěte si, jak provést následující akce:
 > * Nasazení modelu jako webové služby
 > * Data skóre pomocí webové služby
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -43,7 +44,7 @@ Přečtěte si, jak provést následující akce:
 
 ## <a name="download-the-example-project"></a>Stažení ukázkového projektu
 
-Pro tento kurz Stáhněte projekt [https://github.com/microsoft/MLOps](https://github.com/microsoft/MLOps) . Soubory v adresářích `model-training` a `model-deployment` jsou používány kroky v tomto kurzu.
+Pro tento kurz Stáhněte projekt [https://github.com/microsoft/MLOps](https://github.com/microsoft/MLOps) . Soubory v adresářích `model-training` a `model-deployment` se používají v krocích v tomto kurzu.
 
 Pokud chcete získat místní kopii souborů, buď [stáhněte archiv zip](https://github.com/microsoft/MLOps/archive/master.zip), nebo pomocí následujícího příkazu Gitu naklonujte úložiště:
 
@@ -53,23 +54,23 @@ git clone https://github.com/microsoft/MLOps.git
 
 ### <a name="training-files"></a>Školicí soubory
 
-Adresář `model-training` obsahuje následující soubory, které se používají při výuce modelu:
+`model-training` adresář obsahuje následující soubory, které se používají při výuce modelu:
 
-* `.azureml\sklearn.runconfig`: __Konfigurační soubor spuštění__ . Tento soubor definuje běhové prostředí potřebné ke školení modelu.
-* `train-sklearn.py`: Školicí skript. Tento soubor navlakuje model.
-* `mylib.py`: Pomocný modul, který používá `train-sklearn.py`.
-* `training-env.yml`: Definuje závislosti softwaru potřebné ke spuštění školicího skriptu.
+* `.azureml\sklearn.runconfig`: __konfigurační soubor spuštění__ . Tento soubor definuje běhové prostředí potřebné ke školení modelu.
+* `train-sklearn.py`: školicí skript. Tento soubor navlakuje model.
+* `mylib.py`: pomocný modul, který používá `train-sklearn.py`.
+* `training-env.yml`: definuje závislosti softwaru potřebné ke spuštění školicího skriptu.
 
 Školicí skript používá datovou sadu diabetes, která je poskytována s scikit-učí pro výuku modelu.
 
 ### <a name="deployment-files"></a>Soubory nasazení
 
-Adresář `model-deployment` obsahuje následující soubory, které se používají k nasazení výukového modelu jako webové služby:
+`model-deployment` adresář obsahuje následující soubory, které se používají k nasazení výukového modelu jako webové služby:
 
-* `aciDeploymentConfig.yml`: __Konfigurační soubor nasazení__ . Tento soubor definuje hostitelské prostředí potřebné pro model.
-* `inferenceConfig.yml`: Odvození souboru configuration__. Tento soubor definuje softwarové prostředí, které služba používá k určení skóre dat modelu.
-* `score.py`: Skript Pythonu, který přijímá příchozí data, vyhodnotí ho pomocí modelu a pak vrátí odpověď.
-* `scoring-env.yml`: Závislosti conda potřebné ke spuštění modelu a skriptu `score.py`.
+* `aciDeploymentConfig.yml`: __konfigurační soubor nasazení__ . Tento soubor definuje hostitelské prostředí potřebné pro model.
+* `inferenceConfig.yml`: odvození souboru configuration__. Tento soubor definuje softwarové prostředí, které služba používá k určení skóre dat modelu.
+* `score.py`: skript Pythonu, který přijímá příchozí data, vyhodnotí ho pomocí modelu a pak vrátí odpověď.
+* `scoring-env.yml`: závislosti conda potřebné ke spuštění modelu a skriptu `score.py`.
 
 ## <a name="connect-to-your-azure-subscription"></a>Připojení k předplatnému služby Azure
 
@@ -79,7 +80,7 @@ Existuje několik způsobů, jak můžete z CLI ověřit předplatné Azure. Nej
 az login
 ```
 
-Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít prohlížeč a postupovat podle pokynů v příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadávání autorizačního kódu.
+Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít prohlížeč a postupovat podle pokynů v příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadání autorizačního kódu.
 
 ## <a name="install-the-machine-learning-extension"></a>Instalace rozšíření Machine Learning
 
@@ -97,12 +98,12 @@ az extension update -n azure-cli-ml
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je základní kontejner prostředků na platformě Azure. Při práci se službou Azure Machine Learning bude skupina prostředků obsahovat váš pracovní prostor služby Azure Machine Learning. Bude také obsahovat další služby Azure, které pracovní prostor používá. Pokud například provedete svůj model pomocí cloudového výpočetního prostředku, vytvoří se tento prostředek ve skupině prostředků.
+Skupina prostředků je základní kontejner prostředků na platformě Azure. Při práci s Azure Machine Learning bude skupina prostředků obsahovat váš pracovní prostor Azure Machine Learning. Bude také obsahovat další služby Azure, které pracovní prostor používá. Pokud například provedete svůj model pomocí cloudového výpočetního prostředku, vytvoří se tento prostředek ve skupině prostředků.
 
 Pokud chcete __vytvořit novou skupinu prostředků__, použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
 
 > [!TIP]
-> Vyberte oblast, ve které je služba Azure Machine Learning k dispozici. Informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
+> Vyberte oblast, ve které je Azure Machine Learning k dispozici. Informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -178,11 +179,11 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 }
 ```
 
-Tento příkaz vytvoří soubor `.azureml/config.json`, který obsahuje informace potřebné pro připojení k vašemu pracovnímu prostoru. Zbytek příkazů `az ml` použitý v tomto kurzu bude používat tento soubor, takže nemusíte přidávat pracovní prostor a skupinu prostředků do všech příkazů.
+Tento příkaz vytvoří soubor `.azureml/config.json`, který obsahuje informace potřebné pro připojení k vašemu pracovnímu prostoru. Zbývající příkazy `az ml` použité v tomto kurzu budou používat tento soubor, takže nemusíte přidávat pracovní prostor a skupinu prostředků do všech příkazů.
 
 ## <a name="create-the-compute-target-for-training"></a>Vytvoření cíle výpočetní služby pro školení
 
-V tomto příkladu se pro výuku modelu používá výpočetní instance Azure Machine Learning. Chcete-li vytvořit novou výpočetní instanci, použijte následující příkaz:
+V tomto příkladu se pro výuku modelu používá výpočetní cluster Azure Machine Learning. Chcete-li vytvořit nový výpočetní cluster, použijte následující příkaz:
 
 ```azurecli-interactive
 az ml computetarget create amlcompute -n cpu --max-nodes 4 --vm-size Standard_D2_V2
@@ -199,14 +200,14 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 }
 ```
 
-Tento příkaz vytvoří nový cíl výpočtů s názvem `cpu` s maximálně čtyřmi uzly. Vybraná velikost virtuálního počítače poskytuje virtuální počítač s prostředkem GPU. Informace o velikosti virtuálního počítače najdete v tématu [typy a velikosti virtuálních počítačů].
+Tento příkaz vytvoří nový cíl výpočtů s názvem `cpu`s maximálně čtyřmi uzly. Vybraná velikost virtuálního počítače poskytuje virtuální počítač s prostředkem GPU. Informace o velikosti virtuálního počítače najdete v tématu [typy a velikosti virtuálních počítačů].
 
 > [!IMPORTANT]
-> Název cílového výpočetního prostředí (v tomto případě `cpu`) je důležitý; na něj odkazuje soubor `.azureml/sklearn.runconfig`, který se používá v další části.
+> Název cílového výpočetního prostředí (v tomto případě`cpu`) je důležitý. na něj odkazuje soubor `.azureml/sklearn.runconfig`, který se používá v další části.
 
 ## <a name="submit-the-training-run"></a>Odeslat školicí běh
 
-Pokud chcete spustit školicí běh na výpočetním cíli `cpu`, změňte adresáře na adresář `model-training` a pak použijte následující příkaz:
+Pokud chcete spustit školicí běh na `cpu` cílovém cíli, změňte adresáře na adresář `model-training` a pak použijte následující příkaz:
 
 ```azurecli-interactive
 cd ~/mlops/model-training
@@ -215,11 +216,11 @@ az ml run submit-script -e myexperiment -c sklearn -d training-env.yml -t runout
 
 Tento příkaz určuje název experimentu (`myexperiment`). Experiment ukládá informace o tomto běhu v pracovním prostoru.
 
-Parametr `-c sklearn` určuje soubor `.azureml/sklearn.runconfig`. Jak už bylo zmíněno dříve, tento soubor obsahuje informace, které slouží ke konfiguraci prostředí používaného v rámci školicích běhů. Pokud tento soubor zkontrolujete, uvidíte, že odkazuje na výpočetní cíl `cpu`, který jste vytvořili dříve. Zobrazuje také počet uzlů, které se mají použít při výuce (`"nodeCount": "4"`), a obsahuje část `"condaDependenciees"`, která obsahuje balíčky Pythonu potřebné ke spuštění školicího skriptu.
+Parametr `-c sklearn` určuje `.azureml/sklearn.runconfig` soubor. Jak už bylo zmíněno dříve, tento soubor obsahuje informace, které slouží ke konfiguraci prostředí používaného v rámci školicích běhů. Pokud tento soubor zkontrolujete, uvidíte, že odkazuje na `cpu` výpočetní cíl, který jste vytvořili dříve. Zobrazuje také počet uzlů, které se mají použít při výuce (`"nodeCount": "4"`), a obsahuje `"condaDependenciees"` oddíl se seznamem balíčků Pythonu potřebných ke spuštění školicího skriptu.
 
-Další informace o spuštění konfiguračních souborů najdete v tématu [nastavení a použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli).
+Další informace o spuštění konfiguračních souborů najdete v tématech [nastavení a použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)nebo na tento [soubor JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) , abyste viděli úplné schéma pro RunConfig.
 
-Parametr `-t` ukládá odkaz na toto spuštění v souboru JSON a použije se v dalších krocích k registraci a stažení modelu.
+Parametr `-t` ukládá odkaz na tento běh v souboru JSON a použije se v dalších krocích k registraci a stažení modelu.
 
 V rámci školicích procesů IT streamuje informace z cvičení cvičení na vzdáleném výpočetním prostředku. Část informací se podobá následujícímu textu:
 
@@ -236,11 +237,11 @@ Cleaning up all outstanding Run operations, waiting 300.0 seconds
 
 Tento text se zaznamená do protokolu ze školicího skriptu (`train-sklearn.py`) a zobrazí dvě metriky výkonu pro tento model. V tomto případě chceme model s nejvyšší hodnotou alfa. Metriky výkonu jsou specifické pro model, který budete školením. Ostatní modely budou mít různé metriky výkonu.
 
-Pokud provedete `train-sklearn.py`, všimnete si, že při ukládání vycvičených modelů do souboru používá také hodnotu alfa. V tomto případě si vlaky nahlásí několik modelů. Ten, který má nejvyšší hodnotu alfa, by měl být ten nejlepší. Na výstupu výše a kódu byl model s Alpha 0,95 uložen jako `./outputs/ridge_0.95.pkl`
+Pokud provedete `train-sklearn.py`, všimnete si, že při ukládání vycvičených modelů do souboru používá také hodnotu alfa. V tomto případě si vlaky nahlásí několik modelů. Ten, který má nejvyšší hodnotu alfa, by měl být ten nejlepší. Jak vidíte výstup výše, a kód, model s Alpha 0,95 byl uložen jako `./outputs/ridge_0.95.pkl`
 
-Model byl uložen do adresáře `./outputs` na cíli výpočetní služby, kde byl vyškolený. V tomto případě Azure Machine Learning výpočetní instance v cloudu Azure. Proces školení automaticky nahraje obsah adresáře `./outputs` z cílového výpočetního prostředí, kde k vašemu pracovnímu prostoru Azure Machine Learning přichází školení. Ukládá se jako součást experimentu (v tomto příkladu `myexperiment`).
+Model byl uložen do adresáře `./outputs` v cíli výpočetní služby, kde byl vyškolený. V tomto případě Azure Machine Learning výpočetní instance v cloudu Azure. Proces školení automaticky nahraje obsah adresáře `./outputs` z cíle výpočetního prostředí, kde k vašemu pracovnímu prostoru Azure Machine Learning přichází školení. Je uložen jako součást experimentu (`myexperiment` v tomto příkladu).
 
-## <a name="register-the-model"></a>Zaregistrujte model
+## <a name="register-the-model"></a>Registrace modelu
 
 K registraci modelu přímo z uložené verze v experimentu použijte následující příkaz:
 
@@ -248,7 +249,7 @@ K registraci modelu přímo z uložené verze v experimentu použijte následuj�
 az ml model register -n mymodel -f runoutput.json --asset-path "outputs/ridge_0.95.pkl" -t registeredmodel.json
 ```
 
-Tento příkaz zaregistruje soubor `outputs/ridge_0.95.pkl` vytvořený školením spuštěným jako novou registrací modelu s názvem `mymodel`. @No__t-0 odkazuje na cestu v experimentu. V tomto případě jsou informace o experimentech a spuštění načteny ze souboru `runoutput.json` vytvořeného pomocí školicího příkazu. @No__t-0 vytvoří soubor JSON, který odkazuje na nový registrovaný model vytvořený tímto příkazem a je používán jinými příkazy rozhraní příkazového řádku, které pracují s registrovanými modely.
+Tento příkaz zaregistruje soubor `outputs/ridge_0.95.pkl` vytvořený školením spustit jako novou registrací modelu s názvem `mymodel`. `--assets-path` odkazuje na cestu v experimentu. V tomto případě jsou informace o experimentech a spuštění načteny ze souboru `runoutput.json` vytvořeného pomocí školicího příkazu. `-t registeredmodel.json` vytvoří soubor JSON, který odkazuje na nový registrovaný model vytvořený tímto příkazem a je používán jinými příkazy rozhraní příkazového řádku, které pracují s registrovanými modely.
 
 Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 
@@ -277,11 +278,11 @@ az ml model download -i "mymodel:1" -t .
 az ml model register -n mymodel -p "ridge_0.95.pkl"
 ```
 
-První příkaz stáhne registrovaný model do aktuálního adresáře. Název souboru je `ridge_0.95.pkl`, což je soubor, na který se odkazuje při registraci modelu. Druhý příkaz registruje místní model (`-p "ridge_0.95.pkl"`) se stejným názvem jako při předchozí registraci (`mymodel`). Tentokrát data JSON vrátí seznam verze jako 2.
+První příkaz stáhne registrovaný model do aktuálního adresáře. Název souboru je `ridge_0.95.pkl`, což je soubor, na který se odkazuje při registraci modelu. Druhý příkaz registruje místní model (`-p "ridge_0.95.pkl"`) se stejným názvem jako předchozí registrace (`mymodel`). Tentokrát data JSON vrátí seznam verze jako 2.
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
-Chcete-li nasadit model, změňte adresáře na adresář `model-deployment` a pak použijte následující příkaz:
+Model nasadíte tak, že změníte adresáře do adresáře `model-deployment` a pak použijete následující příkaz:
 
 ```azurecli-interactive
 cd ~/mlops/model-deployment
@@ -290,11 +291,11 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 Může se zobrazit zpráva "Nepodařilo se vytvořit klienta Docker". Tuto zprávu můžete ignorovat. Rozhraní příkazového řádku může nasadit webovou službu do místního kontejneru Docker a zkontroluje Docker. V tomto případě nepoužíváme místní nasazení.
 
-Tento příkaz nasadí novou službu s názvem `myservice` s použitím verze 1 modelu, který jste předtím zaregistrovali.
+Tento příkaz nasadí novou službu s názvem `myservice`s použitím verze 1 modelu, který jste předtím zaregistrovali.
 
-Soubor `inferenceConfig.yml` poskytuje informace o tom, jak provést odvození, jako je například vstupní skript (`score.py`) a závislosti softwaru. Další informace o struktuře tohoto souboru naleznete v tématu [schéma konfigurace odvození](reference-azure-machine-learning-cli.md#inference-configuration-schema). Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
+Soubor `inferenceConfig.yml` poskytuje informace o tom, jak provést odvození, jako je například vstupní skript (`score.py`) a závislosti softwaru. Další informace o struktuře tohoto souboru naleznete v tématu [schéma konfigurace odvození](reference-azure-machine-learning-cli.md#inference-configuration-schema). Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
 
-@No__t-0 popisuje prostředí nasazení používané pro hostování služby. Konfigurace nasazení je specifická pro výpočetní typ, který používáte pro nasazení. V tomto případě se používá instance kontejneru Azure. Další informace najdete v tématu [schéma konfigurace nasazení](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
+`aciDeploymentConfig.yml` popisuje prostředí nasazení používané pro hostování služby. Konfigurace nasazení je specifická pro výpočetní typ, který používáte pro nasazení. V tomto případě se používá instance kontejneru Azure. Další informace najdete v tématu [schéma konfigurace nasazení](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 
 Dokončení procesu nasazení bude trvat několik minut.
 
@@ -318,7 +319,7 @@ ACI service creation operation finished, operation "Succeeded"
 
 ### <a name="the-scoring-uri"></a>Identifikátor URI pro vyhodnocování
 
-@No__t-0 vráceného z nasazení je koncový bod REST pro model nasazený jako webová služba. Tento identifikátor URI můžete získat také pomocí následujícího příkazu:
+`scoringUri` vrácená z nasazení je koncový bod REST pro model nasazený jako webovou službu. Tento identifikátor URI můžete získat také pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az ml service show -n myservice
@@ -355,7 +356,7 @@ Tento příkaz vrátí dokument JSON, který obsahuje název odstraněné služb
 
 ### <a name="delete-the-training-compute"></a>Odstranění školicích výpočtů
 
-Pokud plánujete pokračovat v používání pracovního prostoru Azure Machine Learning, ale chcete se zbavit výpočetního cíle `cpu` vytvořeného pro školení, použijte následující příkaz:
+Pokud plánujete, že budete nadále používat Azure Machine Learning pracovní prostor, ale chcete se zbavit `cpu`ho cíle výpočtů vytvořeného pro školení, použijte následující příkaz:
 
 ```azurecli-interactive
 az ml computetarget delete -n cpu
@@ -386,4 +387,4 @@ V tomto Azure Machine Learning kurzu jste pro tyto úlohy použili rozhraní př
 > * Nasazení modelu jako webové služby
 > * Data skóre pomocí webové služby
 
-Další informace o použití rozhraní příkazového řádku najdete v tématu [použití rozšíření CLI pro službu Azure Machine Learning](reference-azure-machine-learning-cli.md).
+Další informace o použití rozhraní příkazového řádku najdete v tématu [použití rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).

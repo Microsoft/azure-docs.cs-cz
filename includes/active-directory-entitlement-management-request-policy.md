@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 78a0dafeedc9aac4db69903b9f1193574cbd39c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6f2b5eb96eeb1c4b7d07219d5fe54a8a0ca9e28a
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934606"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73412956"
 ---
 ## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
 
@@ -105,19 +105,19 @@ Pomocí těchto kroků určíte nastavení schválení pro uživatele, které js
 
 1. Pokud chcete pro žádosti od vybraných uživatelů vyžadovat schválení, nastavte u přepínače **vyžadovat schválení** **hodnotu Ano**. Chcete-li automaticky schvalovat požadavky, nastavte přepínač na **ne**.
 
-    ![Přístup k balíčku – nastavení schválení](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 1. Pokud chcete, aby uživatelé zadali odůvodnění pro přístup k balíčku pro přístup, nastavte u přepínače **vyžadovat změnu zarovnání** na **hodnotu Ano**.
 
-1. Určete, zda požadavek bude vyžadovat jedno nebo více fází schválení. Nastavte, **kolik fází** se má pro jednu fázi přepnout na hodnotu **1** .
+    ![Přístup k balíčku – nastavení schválení](./media/active-directory-entitlement-management-request-policy/approval.png)
+
+### <a name="single-stage-approval"></a>Schválení jednou fází
 
 1. U schvalovatelů vyberte **manažera jako schvalovatele** nebo **zvolte konkrétní schvalovatele**.
 
-    Správce je určený atributem **správce** v profilu uživatele Azure AD. Další informace najdete v tématu [Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
-
-    ![Azure Active Directory atributu User Profile Manager](./media/active-directory-entitlement-management-request-policy/profile-manager.png)
+    ![Přístup k balíčku – požadavky – nastavení jedné fáze](./media/active-directory-entitlement-management-request-policy/approval-single-stage.png)
 
 1. Pokud jste vybrali manažera jako schvalovatele, klikněte na **Přidat zálohu** a vyberte jednoho nebo více uživatelů nebo skupin ve vašem adresáři jako záložního schvalovatele v případě, že správa nároků nemůže najít správce.
+
+    Správce je určený atributem **správce** v profilu uživatele Azure AD. Další informace najdete v tématu [Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
 1. Pokud jste vybrali možnost zvolit konkrétní schvalovatele, klikněte na **Přidat schvalovatele** a vyberte jednoho nebo více uživatelů nebo skupin v adresáři, které mají být schvalovatelé.
 
@@ -125,9 +125,34 @@ Pomocí těchto kroků určíte nastavení schválení pro uživatele, které js
 
     Pokud žádost není v tomto časovém období schválena, bude automaticky odepřena. Uživatel bude muset odeslat další žádost o přístup k balíčku.
 
-1. Pokud chcete, aby uživatelé měli oprávnění k vyžádání balíčku pro přístup, nastavte **vyžadovat odůvodnění** na **Ano**.
+1. Pokud chcete, aby uživatelé měli oprávnění k vyžádání balíčku pro přístup, nastavte **vyžadovat odůvodnění schvalovatele** na **Ano**.
 
     Odůvodnění se zobrazí ostatním schvalovatelům a žadateli.
+
+### <a name="alternate-approvers"></a>Alternativní schvalovatelé
+
+Kromě určení primárních schvalovatelů, kteří mohou schvalovat žádosti, můžete zadat alternativní schvalovatele. Tím zajistíte, že žádosti budou schváleny nebo zamítnuty před vypršením platnosti (časový limit).
+
+Zadáním alternativních schvalovatelů v případě, že primární schvalovatelé nezískali žádost o schválení nebo zamítnutí, se nevyřízený požadavek přesměruje na alternativní schvalovatele podle plánu předávání, který jste zadali během nastavování zásad. Obdrží e-mail ke schválení nebo zamítnutí žádosti, která čeká na vyřízení.
+
+Po přeposlání žádosti na alternativní schvalovatelé můžou primární schvalovatele tuto žádost schválit nebo zamítnout. Alternativní schvalovatelé používají stejný web přístupu jako primární schvalovatelé ke schválení nebo zamítnutí žádosti, která čeká na vyřízení.
+
+Můžeme vypsat osoby nebo skupiny uživatelů, kteří mají být primárními schvalovateli a alternativním schvalovateli. Ujistěte se prosím, že je seznam různých uživatelů, kteří mají být primárními schvalovateli a alternativní schvalovatelé.
+Pokud jste například jako primární schvalovatelé vyřadíi Alice a Bob, seznam Karolínu a Dave jako alternativní schvalovatele. Pomocí následujících kroků přidejte do balíčku pro přístup alternativní schvalovatele:
+
+1. Klikněte na **Zobrazit upřesňující nastavení žádostí**.
+
+    ![Přístup k balíčku – zásady-Zobrazit upřesňující nastavení žádostí](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+
+1. Nastavit **, jestli se žádná akce neuskutečnila, předají se k alternativním schvalovatelům?** přepnout na **Ano**.
+
+1. Klikněte na **Přidat alternativní schvalovatele** a ze seznamu vyberte alternativní schvalovatele.
+
+    ![Přístup k balíčku – zásady – přidání alternativních schvalovatelů](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+
+1. V poli **předávat k alternativním schvalovatelům po počtu dní** uveďte počet dní, po které schvalovatelé schválí nebo zamítnou požadavek. Pokud žádný schvalovatel neschválil nebo zamítl požadavek před trváním žádosti, vyprší platnost žádosti (časový limit) a uživatel bude muset odeslat další žádost o přístup k balíčku. 
+
+    Žádosti je možné přeslat pouze alternativním schvalovatelům po dnech, kdy doba trvání žádosti dosáhne poloviny životního cyklu. V tomto příkladu je doba trvání žádosti 14 dní. To znamená, že doba trvání žádosti dosáhne poloviny životnosti dne 7. Proto je možné žádost přeposláním bez předchozího dne 8. Požadavky také nelze přeslat alternativnímu schvalovateli v posledním dni trvání žádosti. Takže v tomto příkladu může být nejnovější žádost předána dne 13.
 
 ## <a name="enable-requests"></a>Povolit žádosti
 

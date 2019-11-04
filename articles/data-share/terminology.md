@@ -1,21 +1,21 @@
 ---
-title: Terminologie ve službě Azure Data Share Preview
-description: Přečtěte si o běžných pojmech, které se používají k popisu prostředků používaných ve verzi Preview Azure Data Share (poskytovatel dat, příjemce dat, sdílení dat, sdílení předplatného, snímek, pozvánka, příjemce).
+title: Terminologie služby Azure Data Share
+description: Přečtěte si o běžných pojmech, které se používají k popisu prostředků používaných v Azure Data Share (poskytovatel dat, příjemce dat, sdílení dat, sdílení předplatného, snímek, pozvánka, příjemce).
+ms.service: data-share
 author: joannapea
 ms.author: joanpo
-ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166278"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468553"
 ---
-# <a name="azure-data-share-preview-concepts"></a>Koncepty verze Preview služby Azure Data Share 
+# <a name="azure-data-share-concepts"></a>Koncepty Azure Data Share 
 
-Azure Data Share Preview zavádí určitou novou terminologii související se sdílením dat. Tento článek vysvětluje některé často používané výrazy, které se můžou zobrazit v rámci služby. 
+Azure Data Share zavádí určitou novou terminologii související se sdílením dat. Tento článek vysvětluje některé často používané výrazy, které se můžou zobrazit v rámci služby. 
 
 ## <a name="data-provider"></a>Poskytovatel dat
 
@@ -47,7 +47,7 @@ Poskytovatel dat může povolit nastavení snímku pro sdílenou složku dat. To
 
 Pokud zprostředkovatel dat povolí toto nastavení, je možné vybrat interval opakování. Interval opakování může být hodinu nebo každý den. 
 
-Příjemce dat má možnost se přihlásit k tomuto plánu snímků a získat tak přírůstkové aktualizace, které zahrnují všechna data, která se změnila od prvního vygenerování nového snímku. 
+Příjemce dat má možnost se přihlásit k tomuto plánu snímků a získat tak přírůstkové aktualizace, což zahrnuje všechna data, která se změnila od prvního vygenerování nového snímku. 
 
 ## <a name="invitation"></a>Uživateli
 
@@ -64,4 +64,3 @@ Příjemce je osoba, která obdrží pozvánku ke sdílení dat. Poskytovatel da
 ## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .
-

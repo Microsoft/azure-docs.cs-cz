@@ -9,18 +9,19 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5c9cae2fadfccadfd4f178021160e3a4ecd0fab8
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ab3d2c0e73a5fd52e4659e38cb80c5e18d334caa
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266292"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466171"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
 
 
 > [!div class="op_single_selector"]
-> * [.NET](create-sql-api-dotnet.md)
+> * [.NET V3](create-sql-api-dotnet.md)
+> * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
@@ -28,12 +29,12 @@ ms.locfileid: "71266292"
 
 V tomto rychlém startu se dozvíte, jak pomocí aplikace v jazyce Java vytvořit a spravovat databázi dokumentů z Azure Cosmos DB účtu rozhraní SQL API. Nejdřív vytvoříte Azure Cosmos DB účet rozhraní SQL API pomocí Azure Portal, vytvoříte aplikaci Java pomocí SQL Java SDK a potom do svého účtu Cosmos DB přidáte prostředky pomocí aplikace Java. Pokyny v tomto rychlém startu platí pro všechny operační systémy, které podporují Javu. Po dokončení tohoto rychlého startu budete obeznámeni s vytvářením a úpravou databází Cosmos DB, kontejnerů buď v uživatelském rozhraní, nebo programově, podle toho, co je vaše preference.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-Navíc platí: 
+Dále musí být splněny všechny tyto podmínky: 
 
 * [Java Development Kit (JDK) verze 8](https://aka.ms/azure-jdks)
     * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
@@ -155,7 +156,7 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
     }
     ```    
 
-## <a name="run-the-app"></a>Spuštění aplikace
+## <a name="run-the-app"></a>Spusťte aplikaci
 
 Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovacím řetězci, a spusťte aplikaci s použitím informací o vašem koncovém bodu. Tím aplikaci umožníte komunikovat s hostovanou databází.
 

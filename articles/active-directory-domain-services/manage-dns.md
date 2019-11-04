@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 9279f97d5260eae698d5dbee10e077b71ab01992
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c225be5a1123c89d8a470a8dea48b3c57eb893b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612322"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474570"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>Správa DNS ve spravované doméně Azure AD Domain Services
 
@@ -23,11 +23,13 @@ V Azure Active Directory Domain Services (Azure služba AD DS) je klíčovou sou
 
 Při spouštění vlastních aplikací a služeb možná budete muset vytvořit záznamy DNS pro počítače, které nejsou připojené k doméně, nakonfigurovat virtuální IP adresy pro nástroje pro vyrovnávání zatížení nebo nastavit externí servery DNS pro přeposílání. Uživatelům patřícím do skupiny *správci řadiče domény AAD* se udělují oprávnění ke správě DNS ve spravované doméně Azure služba AD DS a můžou vytvářet a upravovat vlastní záznamy DNS.
 
-V tomto článku se dozvíte, jak nainstalovat nástroje serveru DNS a potom použít konzolu DNS ke správě záznamů.
+V hybridním prostředí se zóny DNS a záznamy nakonfigurované v místním prostředí služba AD DS nesynchronizují s Azure služba AD DS. Pokud chcete definovat a používat vlastní položky DNS, vytvořte záznamy na serveru DNS Azure služba AD DS nebo použijte podmíněné servery pro směrování, které odkazují na stávající servery DNS ve vašem prostředí.
+
+V tomto článku se dozvíte, jak nainstalovat nástroje serveru DNS a pak použít konzolu DNS ke správě záznamů v Azure služba AD DS.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -39,14 +41,14 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
     * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 * Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
     * V případě potřeby dokončete kurz a [vytvořte virtuální počítač s Windows serverem a připojte ho ke spravované doméně][create-join-windows-vm].
-* Uživatelský účet, který je členem skupiny správců *řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
+* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
 
 ## <a name="install-dns-server-tools"></a>Instalace nástrojů serveru DNS
 
-Pokud chcete vytvořit a upravit DNS, musíte nainstalovat nástroje serveru DNS. Tyto nástroje je možné nainstalovat jako funkci Windows serveru. Další informace o tom, jak nainstalovat nástroje pro správu na klienta Windows, najdete v tématu Install [Nástroje pro vzdálenou správu serveru (RSAT)][install-rsat].
+Pokud chcete vytvářet a upravovat záznamy DNS v Azure služba AD DS, musíte nainstalovat nástroje serveru DNS. Tyto nástroje je možné nainstalovat jako funkci Windows serveru. Další informace o tom, jak nainstalovat nástroje pro správu na klienta Windows, najdete v tématu Install [Nástroje pro vzdálenou správu serveru (RSAT)][install-rsat].
 
 1. Přihlaste se ke svému VIRTUÁLNÍmu počítači pro správu. Postup, jak se připojit pomocí Azure Portal, najdete v tématu [připojení k virtuálnímu počítači s Windows serverem][connect-windows-server-vm].
-1. Když se přihlásíte k virtuálnímu počítači, **Správce serveru** by se měly otevřít ve výchozím nastavení. Pokud ne, v nabídce **Start** vyberte **Správce serveru**.
+1. Pokud se při přihlášení k virtuálnímu počítači ve výchozím nastavení **Správce serveru** neotevře, vyberte nabídku **Start** a pak zvolte **Správce serveru**.
 1. V podokně *řídicí panel* v okně **Správce serveru** vyberte **Přidat role a funkce**.
 1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí*vyberte **Další**.
 1. Pro *typ instalace*ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
@@ -78,7 +80,7 @@ S nainstalovanými nástroji serveru DNS můžete spravovat záznamy DNS ve spra
 > [!WARNING]
 > Při správě záznamů pomocí nástrojů serveru DNS se ujistěte, že neodstraníte ani neupravujete předdefinované záznamy DNS, které používá Azure služba AD DS. Mezi předdefinované záznamy DNS patří záznamy DNS domény, záznamy názvového serveru a další záznamy používané pro umístění řadiče domény. Pokud tyto záznamy upravíte, přeruší se služba Domain Services ve virtuální síti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o správě DNS najdete v článku věnovaném [nástrojům DNS na webu TechNet](https://technet.microsoft.com/library/cc753579.aspx).
 

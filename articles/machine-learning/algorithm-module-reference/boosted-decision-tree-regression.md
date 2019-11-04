@@ -1,24 +1,24 @@
 ---
 title: 'Zesílené regrese rozhodovacího stromu: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak používat modul pro regresi se zesíleným rozhodovacím stromem ve službě Azure Machine Learning k vytvoření sady regresních stromů pomocí zvyšování úrovně.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat v Azure Machine Learning modul pro regresi se zvýšením rozhodovacího stromu a vytvořit ze sady regresních stromů pomocí zvyšování úrovně.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 4b8ff1c9f5b0f0b04448b950d3ba904ba76927c9
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693841"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493879"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Zesílený modul pro regresi rozhodovacího stromu
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul použijte k vytvoření kompletu regresních stromů pomocí zvyšování úrovně. *Zvyšování úrovně* znamená, že každý strom je závislý na předchozí stromové struktuře. Algoritmus se učí tím, že se dovedou zbytky stromů, které jí předcházejí. Proto zvýšení přesnosti v kompletu rozhodovacího stromu zamýšlí zlepšit přesnost s malým rizikem menšího rozsahu.  
   
@@ -97,6 +97,8 @@ Po dokončení školení:
 
 + Chcete-li použít model pro bodování, připojte ho k [modelu skóre](./score-model.md)a předpovídat hodnoty pro nové vstupní příklady.
 
++ Pokud chcete uložit snímek školicího modelu, klikněte pravým tlačítkem na **vyškolený výstup modelu** školicího modulu a vyberte **Uložit jako**. Kopie vyškolených modelů, které uložíte, není aktualizována při následných spuštěních kanálu.
+
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

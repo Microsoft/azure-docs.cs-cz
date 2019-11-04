@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9a66e4ecf2230caad233a4eff12c0fadc95409d5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45b45c6c9afd43b711fc548f470ce0f0acd04a0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803808"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464281"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK v iOS
 
@@ -44,24 +44,24 @@ Tato architektura musí být zahrnutá ve všech aplikacích, které používaj�
 
 Použijte následující nastavení v projektu Xcode k tomuto účelu:
 
-1. Zkopírujte `GStreamerWrapper.framework`, které jste právě vytvořili, a architektury sady Cognitive Services Speech pro rozpoznávání řeči, kterou si můžete stáhnout z [tohoto tématu](https://aka.ms/csspeech/iosbinary), do adresáře, který obsahuje ukázkový projekt.
+1. Zkopírujte jak vámi sestavené `GStreamerWrapper.framework`, tak i architekturu sady Cognitive Services Speech SDK, kterou si můžete stáhnout z [tohoto místa](https://aka.ms/csspeech/iosbinary), do adresáře, který obsahuje ukázkový projekt.
 1. Upravte cesty k architekturám v *nastavení projektu*.
-    1. Na kartě **Obecné** pod hlavičkou **vložená binární soubory** přidejte knihovnu SDK jako rozhraní: **přidejte vložené binární soubory** > **přidejte další...** > přejděte do zvoleného adresáře a vyberte obě architektury.
+    1. Na kartě **Obecné** pod hlavičkou **vložená binární soubory** přidejte knihovnu SDK jako rozhraní: **přidejte vložené binární soubory** > **Přidat další...** > přejděte do adresáře, který jste zvolili, a vyberte obě architektury.
     1. Přejděte na kartu **Build Settings** (Nastavení sestavení) a aktivujte **všechna** nastavení.
 1. Do části *Framework Search Paths* (Cesty pro hledání rozhraní) pod nadpisem **Search Paths** (Cesty pro hledání) přidejte adresář `$(SRCROOT)/..`.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Příklad kódu pomocí komprimovaného zvukového vstupu kodeku
 
 Pokud chcete streamovat v komprimovaném zvukovém formátu ke službám Speech, vytvořte `SPXPullAudioInputStream` nebo `SPXPushAudioInputStream`.
-Následující fragment kódu ukazuje, jak vytvořit `SPXAudioConfiguration` z instance `SPXPushAudioInputStream` a jako kompresní formát datového proudu zadat MP3.
+Následující fragment kódu ukazuje, jak vytvořit `SPXAudioConfiguration` z instance `SPXPushAudioInputStream`a určením MP3 jako kompresního formátu datového proudu.
 
 [!code-objectivec[Set up the input stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=66-77&highlight=2-11)]
 
-Další fragment kódu ukazuje, jak lze komprimovat zvuková data ze souboru a nacházet z něj do `SPXPushAudioInputStream`.
+Další fragment kódu ukazuje, jak je možné číst komprimovaná zvuková data ze souboru a nacházet z něj do `SPXPushAudioInputStream`.
 
 [!code-objectivec[Push compressed audio data into the stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=105-151&highlight=19-44)]
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Podívejte se, jak rozpoznávat řeč vC#](quickstart-csharp-dotnet-windows.md)
+* [Viz rozpoznávání řeči v jazyce Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

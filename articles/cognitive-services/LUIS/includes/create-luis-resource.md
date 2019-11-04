@@ -1,5 +1,5 @@
 ---
-title: Podpora kontejnerů
+title: Vytvořit prostředek LUIS
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: IEvangelist
@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: dapine
-ms.openlocfilehash: ecb172aec37fdab21bed8373ac7484dc52a54829
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a765ac27936da9da5a2f41464c17491e3561f44b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821965"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465921"
 ---
 ## <a name="create-a-luis-resource"></a>Vytvoření prostředku LUIS
 
@@ -30,9 +30,6 @@ ms.locfileid: "72821965"
     |Skupina prostředků|Vyberte dostupnou skupinu prostředků.|
 
 1. Klikněte na **vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
-1. Shromažďovat nakonfigurované `endpoint` a klíč rozhraní API:
+1. Shromáždění nakonfigurovaných `endpoint` a klíče rozhraní API najdete v článku [shromažďování požadovaných parametrů](#gathering-required-parameters).
 
-    |Karta prostředek na portálu|Nastavení|Hodnota|
-    |--|--|--|
-    |**Přehled**|Koncový bod|Zkopírujte koncový bod. Vypadá podobně jako `https://luis.cognitiveservices.azure.com/luis/v2.0`|
-    |**Klíče**|Klíč rozhraní API|Zkopírujte 1 ze dvou klíčů. Je to 32 řetězec alfanumerického znaku, který neobsahuje mezery ani pomlčky, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+[!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]

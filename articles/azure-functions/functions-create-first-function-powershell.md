@@ -1,45 +1,40 @@
 ---
-title: Vytvoření první funkce PowerShellu pomocí Azure Functions
+title: Vytvoření první funkce PowerShellu v Azure
 description: Naučte se, jak vytvořit první funkci PowerShellu v Azure pomocí Visual Studio Code.
-services: functions
-keywords: ''
 author: joeyaiello
-manager: jeconnoc
+manager: gwallace
 ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.devlang: powershell
-ms.openlocfilehash: c9de4cec417625bb8451457652dacb61550c31b0
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 1d6d641e141862b12fed40b800589aad70af2789
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248338"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469407"
 ---
-# <a name="create-your-first-powershell-function-in-azure-preview"></a>Vytvoření první funkce PowerShellu v Azure (Preview)
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
+# <a name="create-your-first-powershell-function-in-azure"></a>Vytvoření první funkce PowerShellu v Azure
 
 Tento článek rychlý Start vás provede procesem vytvoření první funkce prostředí PowerShell bez [serveru](https://azure.com/serverless) pomocí Visual Studio Code.
 
 ![Azure Functions kódu v projektu Visual Studio Code](./media/functions-create-first-function-powershell/powershell-project-first-function.png)
 
-Pomocí [Azure Functions rozšíření pro Visual Studio Code] vytvoříte místní funkci PowerShellu a potom ji nasadíte do nové aplikace Function App v Azure. Rozšíření je aktuálně ve verzi Preview. Další informace najdete na stránce rozšíření [Azure Functions rozšíření pro Visual Studio Code] .
+Pomocí [rozšíření Azure Functions pro Visual Studio Code] vytvoříte místní funkci PowerShellu a potom ji nasadíte do nové aplikace Function App v Azure. Rozšíření je v současné době ve verzi Preview. Další informace najdete na stránce rozšíření [Rozšíření Azure Functions pro Visual Studio Code].
 
 > [!NOTE]  
-> Podpora prostředí PowerShell pro rozšíření [Azure Functions rozšíření][azure functions rozšíření pro visual studio code] je aktuálně ve výchozím nastavení zakázaná. Povolení podpory PowerShellu je jedním z kroků v tomto článku.
+> Podpora prostředí PowerShell pro rozšíření [Azure Functions rozšíření][rozšíření azure functions pro visual studio code] je aktuálně ve výchozím nastavení zakázaná. Povolení podpory PowerShellu je jedním z kroků v tomto článku.
 
 V operačních systémech macOS, Windows a Linux jsou podporovány následující kroky.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu:
+K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * Nainstalovat [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-* Nainstalujte [Visual Studio Code](https://code.visualstudio.com/) na jednu z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms). 
+* Nainstalujte [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms). 
 
 * Nainstalujte [rozšíření PowerShellu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).
 
@@ -53,27 +48,27 @@ K dokončení tohoto rychlého startu:
 
 [!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)] 
 
-## <a name="create-a-function-app-project"></a>Vytvoření projektu Function App
+## <a name="create-a-function-app-project"></a>Vytvoření projektu aplikace funkcí
 
-Šablona projektu Azure Functions v Visual Studio Code vytvoří projekt, který lze publikovat do aplikace Function App v Azure. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro správu, nasazování a sdílení prostředků. 
+Šablona projektu Azure Functions ve Visual Studio Code vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. 
 
-1. V Visual Studio Code vyberte logo Azure, které se zobrazí v oblasti **Azure: Functions** , a pak vyberte ikonu Vytvořit nový projekt.
+1. Ve Visual Studio Code vyberte logo Azure, aby se zobrazila oblast **Azure: Functions**, pak vyberte ikonu Vytvořit nový projekt.
 
-    ![Vytvoření projektu Function App](./media/functions-create-first-function-powershell/create-function-app-project.png)
+    ![Vytvoření projektu aplikace funkcí](./media/functions-create-first-function-powershell/create-function-app-project.png)
 
 1. Zvolte umístění pro pracovní prostor projektu functions a zvolte **možnost vybrat**.
 
     > [!NOTE]
-    > Tento článek je navržený tak, aby se dokončil mimo pracovní prostor. V takovém případě nevybírejte složku projektu, která je součástí pracovního prostoru.
+    > Tento článek je navržený k dokončení mimo pracovní prostor. V tomto případě nevybírejte složku projektu, která je součástí pracovního prostoru.
 
-1. Jako jazyk projektu Function App vyberte **PowerShell (Preview)** a pak **Azure Functions v2**.
+1. Jako jazyk projektu Function App vyberte **PowerShell** a pak **Azure Functions v2**.
 
 1. Jako šablonu pro první funkci vyberte **Trigger http** , jako název funkce použijte `HTTPTrigger` a vyberte úroveň autorizace **funkce**.
 
     > [!NOTE]
     > Úroveň autorizace **funkce** vyžaduje hodnotu [klíče funkce](functions-bindings-http-webhook.md#authorization-keys) při volání koncového bodu funkce v Azure. Díky tomu je to obtížnější pro volání vaší funkce pouze komukoli.
 
-1. Po zobrazení výzvy vyberte **Přidat do pracovního prostoru**.
+1. Po zobrazení výzvy zvolte **Přidat do pracovního prostoru**.
 
 Visual Studio Code vytvoří projekt aplikace Functions PowerShellu v novém pracovním prostoru. Tento projekt obsahuje konfigurační soubory [Host. JSON](functions-host-json.md) a [Local. Settings. JSON](functions-run-local.md#local-settings-file) , které se vztahují na všechny funkce v projektu. Tento [projekt PowerShell](functions-reference-powershell.md#folder-structure) je stejný jako aplikace Function App běžící v Azure.
 
@@ -81,9 +76,9 @@ Visual Studio Code vytvoří projekt aplikace Functions PowerShellu v novém pra
 
 Azure Functions Core Tools se integruje s Visual Studio Code, aby se mohl spustit a ladit Azure Functions projektu místně.  
 
-1. Chcete-li ladit funkci, vložte volání do rutiny [`Wait-Debugger`] v kódu funkce před tím, než budete chtít připojit ladicí program, a stisknutím klávesy F5 spusťte projekt Function App a připojte ladicí program. Výstup z klíčových nástrojů se zobrazí na panelu **terminálu** .
+1. Chcete-li ladit funkci, vložte volání do rutiny [`Wait-Debugger`] v kódu funkce před tím, než budete chtít připojit ladicí program, a stisknutím klávesy F5 spusťte projekt Function App a připojte ladicí program. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**.
 
-1. Na panelu **terminálu** zkopírujte koncový bod adresy URL funkce aktivované protokolem HTTP.
+1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 
     ![Místní výstup Azure](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
 
@@ -98,15 +93,15 @@ Azure Functions Core Tools se integruje s Visual Studio Code, aby se mohl spusti
 
     Když zavoláte koncový bod HttpTrigger bez předání parametru `name` buď jako parametr dotazu, nebo v těle, funkce vrátí chybu [HttpStatusCode]:: důvodu chybného požadavku. Když zkontrolujete kód v běhu. ps1, uvidíte, že k této chybě dochází podle návrhu.
 
-1. Chcete-li zastavit ladění, stiskněte klávesy Shift + F5.
+1. Pokud chcete zastavit ladění, stiskněte Shift + F5.
 
-Po ověření, že se funkce na místním počítači spustí správně, je čas publikovat projekt do Azure.
+Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
 
 > [!NOTE]
 > Před publikováním funkcí do Azure nezapomeňte odebrat všechna volání `Wait-Debugger`. 
-
-> [!NOTE]
-> Vytvořením Function App v Azure se zobrazí výzva k Function Appmu názvu. Nastavte azureFunctions. advancedCreation na true, aby se zobrazila výzva pro všechny ostatní hodnoty.
+>
+> Vytvořením aplikace Function App v Azure se zobrazí výzva k zadání názvu aplikace Function App. Pro vás jsou definovány jiné hodnoty.
+> Nastavte `azureFunctions.advancedCreation` na `true`, aby se zobrazila výzva pro všechny ostatní hodnoty.
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
@@ -140,9 +135,9 @@ RawContentLength  : 16
 Použili jste Visual Studio Code k vytvoření aplikace funkce PowerShellu pomocí jednoduché funkce aktivované protokolem HTTP. Další informace o [ladění funkce PowerShellu](functions-debug-powershell-local.md) můžete také získat místně pomocí Azure Functions Core Tools. Projděte si [příručku pro vývojáře Azure Functions PowerShellu](functions-reference-powershell.md).
 
 > [!div class="nextstepaction"]
-> [Povolit integraci Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Povolení integrace Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure portal]: https://portal.azure.com
 [Azure Functions Core Tools]: functions-run-local.md
-[Azure Functions rozšíření pro Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
+[Rozšíření Azure Functions pro Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
 [' Wait-Debugger ']: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6

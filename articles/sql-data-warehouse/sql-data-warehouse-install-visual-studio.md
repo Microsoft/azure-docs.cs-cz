@@ -12,12 +12,12 @@ ms.subservice: development
 ms.date: 10/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 81c709e7705e16484438ab684a6b1591e5e624ba
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0ca59080b4056ba74e2f05038e07d647f12de765
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553508"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485057"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Začínáme se sadou Visual Studio 2019 pro SQL Data Warehouse
 Sady Visual Studio **2019** SQL Server Data Tools (SSDT) je jeden nástroj, který vám umožní provádět tyto akce:
@@ -26,7 +26,7 @@ Sady Visual Studio **2019** SQL Server Data Tools (SSDT) je jeden nástroj, kter
 - Pomocí Průzkumníka objektů můžete vizuálně prozkoumat všechny objekty v datovém modelu, včetně tabulek, zobrazení, uložených procedur a atd.
 - Generování skriptů DDL (Data Definition Language) jazyka T-SQL pro vaše objekty
 - Vývoj datového skladu pomocí přístupu na základě stavu s projekty SSDT Database
-- Integrujte svůj projekt databáze se systémy správy zdrojového kódu, jako je git s úložištěm Azure DevOps.
+- Integrujte svůj projekt databáze se systémy správy zdrojového kódu, jako je git, pomocí Azure Repos
 - Nastavení kanálů průběžné integrace a nasazování pomocí automatizačních serverů, jako je Azure DevOps
 
 > [!NOTE]

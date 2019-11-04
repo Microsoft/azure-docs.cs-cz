@@ -1,21 +1,21 @@
 ---
-title: Jak monitorovat Azure Data Share Preview
-description: Naučte se monitorovat stav pozvánky, sdílet odběry a historii snímků ve službě Azure Data Share Preview.
+title: Jak monitorovat Azure Data Share
+description: Naučte se monitorovat stav pozvánky, sdílet odběry a historii snímků ve službě Azure Data Share.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 22c95f1ac541e1288494ed85cc9654d42780ea60
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169125"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490514"
 ---
-# <a name="monitor-azure-data-share-preview"></a>Monitorovat Azure Data Share Preview 
+# <a name="monitor-azure-data-share"></a>Monitorování služby Azure Data Share  
 
-Tento článek vysvětluje, jak můžete monitorovat sdílené složky dat pomocí Azure Data Share Preview. Jako poskytovatel dat můžete monitorovat různé aspekty vašich relací sdílení dat. Podrobnosti o tom, jestli vaši příjemci dat přijali vaše pozvání ke sdílení dat, a taky to, jestli si vytvořili předplatné pro sdílení a začali používat vaše data, jsou k dispozici pro monitorování. 
+Tento článek vysvětluje, jak můžete monitorovat sdílené složky dat pomocí Azure Data Share. Jako poskytovatel dat můžete monitorovat různé aspekty vašich relací sdílení dat. Podrobnosti o tom, jestli vaši příjemci dat přijali vaše pozvání ke sdílení dat, a taky to, jestli si vytvořili předplatné pro sdílení a začali používat vaše data, jsou k dispozici pro monitorování. 
 
 Jako příjemce dat můžete monitorovat snímky, které se aktivovaly v rámci vašeho předplatného Azure. 
 
@@ -23,7 +23,7 @@ Jako příjemce dat můžete monitorovat snímky, které se aktivovaly v rámci 
 
 Přejděte na odeslané sdílené složky – > pozvánky, zobrazte stav pozvání ke sdílení dat. 
 
-(./media/invitation-status.png "Stav pozvánky") na ![stav pozvánky] 
+![Stav pozvánky](./media/invitation-status.png "Stav pozvánky") 
 
 Existují tři stavy, ve kterých může být vaše Pozvánka:
 
@@ -42,13 +42,13 @@ Projděte si stav vašich předplatných sdílení tak, že přejdete na odeslan
 
 Na kartě Historie můžete zobrazit snímky, které byly zkopírovány do tenanta data Consumer. Můžete monitorovat četnost a dobu trvání každého intervalu snímků. 
 
-(./media/sent-shares.png "Historie snímků") ![Historie snímků] 
+![Historie snímků](./media/sent-shares.png "Historie snímků") 
 
 Další podrobnosti o každém spuštění snímku můžete zobrazit kliknutím na datum zahájení spuštění. 
 
 Ve výchozím nastavení se zobrazí historie snímků po dobu až 30 dnů. Pokud potřebujete zobrazit historii více než 30 dnů, přejděte do části monitorování-> diagnostické nastavení a vyberte **Přidat nastavení diagnostiky**. Budete muset vybrat účet úložiště, do kterého se mají ukládat tyto protokoly. 
 
-(./media/diagnostic-settings.png "Nastavení diagnostiky") ![Historie snímků] 
+![Historie snímků](./media/diagnostic-settings.png "Nastavení diagnostiky") 
 
 ## <a name="next-steps"></a>Další kroky 
 

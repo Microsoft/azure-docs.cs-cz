@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccc3da6f2dd49775ff4d4486fcd2af9f08a396d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172981"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475926"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
-Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Služba může být služba Azure, například Azure Storage, SQL atd. nebo vaše vlastní [Služba privátních odkazů](private-link-service-overview.md).
+Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Služba může být služba Azure, například Azure Storage, Azure Cosmos DB, SQL atd. nebo vaše vlastní [Služba privátních odkazů](private-link-service-overview.md).
   
 ## <a name="private-endpoint-properties"></a>Vlastnosti privátního koncového bodu 
  Soukromý koncový bod určuje následující vlastnosti: 
@@ -57,7 +57,7 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure SQL Data Warehouse** | Microsoft. SQL/servery    |  SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Table (tabulka; table_secondary)<BR> Queue (Queue; queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (Web; web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)       |
- 
+|**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabulka|
  
 ## <a name="network-security-of-private-endpoints"></a>Zabezpečení sítě privátních koncových bodů 
 Při používání privátních koncových bodů pro služby Azure je provoz zabezpečený pro konkrétní prostředek privátního propojení. Platforma provede řízení přístupu, aby se ověřilo, že síťová připojení dosáhnou pouze zadaného prostředku privátního propojení. Pokud chcete získat přístup k dalším prostředkům v rámci stejné služby Azure, vyžadují se další privátní koncové body. 
@@ -107,9 +107,12 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 |Účet úložiště (Microsoft. Storage/storageAccounts)   |    Soubor (soubor, file_secondary)      |    privatelink.file.core.windows.net      |
 |Účet úložiště (Microsoft. Storage/storageAccounts)     |  Web (Web; web_secondary)        |    privatelink.web.core.windows.net      |
 |Data Lake Gen2 systému souborů (Microsoft. Storage/storageAccounts)  |  Data Lake Gen2 systému souborů (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-||||
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Tabulka|privatelink.table.cosmos.azure.com|
  
-
 Azure vytvoří záznam DNS (CNAME) kanonického názvu (CNAME) na veřejném serveru DNS pro přesměrování řešení na navržené názvy domén. Řešení bude možné přepsat privátní IP adresou vašich privátních koncových bodů. 
  
 Vaše aplikace nemusí měnit adresu URL připojení. Při pokusu o překlad pomocí veřejné služby DNS se server DNS teď přeloží na vaše soukromé koncové body. Proces nemá vliv na vaše aplikace. 
@@ -131,4 +134,5 @@ Následující tabulka obsahuje seznam známých omezení při použití privát
 - [Vytvoření privátního koncového bodu pro SQL Database Server pomocí PowerShellu](create-private-endpoint-powershell.md)
 - [Vytvoření privátního koncového bodu pro SQL Database Server pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)
 - [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu](create-private-endpoint-storage-portal.md)
+- [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Vytvoření vlastní služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)

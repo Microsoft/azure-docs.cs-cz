@@ -1,27 +1,27 @@
 ---
-title: Přidání datových sad do existující verze Preview služby Azure Data Share
+title: Přidání datových sad do existující sdílené složky Azure
 description: Naučte se, jak přidat datové sady do existující sdílené složky v Azure Data Share a sdílet se stejnými příjemci.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 8cc61307ae6664889f60469cc3ca65c840c43b86
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 00c96950565b077e65f84e2d8b4977092df5e317
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169200"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490549"
 ---
-# <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share-preview"></a>Postup přidání datových sad do existující sdílené složky v Azure Data Share Preview
+# <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Postup přidání datových sad do existující sdílené složky v Azure Data Share
 
-Tento článek vysvětluje, jak přidat datové sady do již existující sdílené složky pomocí Azure Data Share Preview. Díky tomu můžete sdílet více dat se stejnými příjemci, aniž byste museli vytvářet novou sdílenou složku.
+Tento článek vysvětluje, jak přidat datové sady do již existující sdílené složky pomocí sdílené složky Azure. Díky tomu můžete sdílet více dat se stejnými příjemci, aniž byste museli vytvářet novou sdílenou složku.
 
 Informace o tom, jak přidat datové sady při vytváření sdílené složky, najdete v kurzu [sdílení dat](share-your-data.md) .
 
 ## <a name="navigate-to-a-sent-data-share"></a>Přejít na sdílenou složku odeslaných dat
 
-Ve verzi Preview sdílené složky Azure přejděte do odeslané sdílené složky a vyberte kartu datové **sady** . Kliknutím na tlačítko **+ přidat datové sady** přidejte více datových sad.
+V části sdílená složka Azure přejděte do odeslané sdílené složky a vyberte kartu datové **sady** . Kliknutím na tlačítko **+ přidat datové sady** přidejte více datových sad.
 
 ![Přidat datové sady](./media/how-to/how-to-add-datasets/add-datasets.png)
 

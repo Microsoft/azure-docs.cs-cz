@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 07/24/2019
+ms.date: 10/14/2019
 ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 40b92f24922b146dfdc66c1b0a59aab748dea6f2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f6a417e33ac9c60c978d8638539a1e5a0772a034
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931372"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475051"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Kurz: povolení ověřování v aplikaci s jednou stránkou pomocí Azure Active Directory B2C (Azure AD B2C)
 
@@ -48,6 +48,10 @@ V místním vývojovém prostředí budete navíc potřebovat následující:
 
 V druhém kurzu, který jste dokončili v rámci požadavků, jste zaregistrovali webovou aplikaci v Azure AD B2C. Pokud chcete povolit komunikaci s ukázkou v tomto kurzu, musíte do aplikace v Azure AD B2C přidat identifikátor URI přesměrování.
 
+K aktualizaci aplikace můžete použít aktuální prostředí **aplikací** nebo naše nové prostředí Unified **Registrace aplikací (Preview)** . [Přečtěte si další informace o prostředí verze Preview](http://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
@@ -55,6 +59,19 @@ V druhém kurzu, který jste dokončili v rámci požadavků, jste zaregistroval
 1. V části **Adresa URL odpovědi**přidejte `http://localhost:6420`.
 1. Vyberte **Save** (Uložit).
 1. Na stránce vlastnosti si poznamenejte **ID aplikace**. ID aplikace použijete v pozdějším kroku, když aktualizujete kód ve webové aplikaci s jednou stránkou.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **Registrace aplikací (Preview)** , vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *WebApp1* .
+1. Vyberte **ověřování**a pak vyberte **vyzkoušet nové prostředí** (Pokud je zobrazeno).
+1. V části **Web**vyberte odkaz **Přidat identifikátor URI** , zadejte `http://localhost:6420`a pak vyberte **Uložit**.
+1. Vyberte **Přehled**.
+1. Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku, když aktualizujete kód ve webové aplikaci s jednou stránkou.
+
+* * *
 
 ## <a name="get-the-sample-code"></a>Získání ukázkového kódu
 
@@ -124,7 +141,7 @@ Ukázka podporuje registraci, přihlašování, úpravy profilu a resetování h
 
     Použijte platnou e-mailovou adresu a proveďte ověření pomocí ověřovacího kódu. Nastavte heslo. Zadejte hodnoty požadovaných atributů.
 
-    ![Přihlašovací stránka prezentovaná uživatelským tokem přihlášení/přihlášení](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
+    ![Přihlašovací stránka prezentovaná uživatelským tokem přihlášení/přihlášení](./media/active-directory-b2c-tutorials-spa/azure-ad-b2c-sign-up-workflow.png)
 
 1. Vyberte **vytvořit** k vytvoření místního účtu v adresáři Azure AD B2C.
 

@@ -1,141 +1,183 @@
 ---
-title: Služba Azure SQL Database – vCore | Microsoft Docs
-description: Nákupní model založený na vCoreech umožňuje nezávisle škálovat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny.
+title: Služba Azure SQL Database – Přehled modelu vCore | Microsoft Docs
+description: Model nákupu vCore vám umožňuje nezávisle škálovat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/01/2019
-ms.openlocfilehash: af2e8826c40fb0d16844b6c67f151b0affbf3efd
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 11/04/2019
+ms.openlocfilehash: 2bbdd565a861004014ca4161856bba83ec0be511
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034997"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496070"
 ---
-# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Výběr mezi úrovněmi služby vCore a migrace z úrovní služeb DTU
+# <a name="vcore-model-overview"></a>Přehled modelu vCore
 
-Nákupní model založený na Virtual Core (vCore) umožňuje nezávisle škálovat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny. Umožňuje vám také zvolit generaci hardwaru:
+Model Virtual Core (vCore) poskytuje několik výhod:
 
-- **COMPUTE GEN4 –** : až 24 logických procesorů založených na procesorech Intel E5-2673 V3 (Haswell) 2,4, Vcore = 1 PP (fyzický jádro), 7 GB na Vcore, připojený SSD
-- **Gen5**: až 80 logických procesorů založených na procesorech Intel E5-2673 v4 (Broadwell) 2,3, Vcore = 1 LP (Hyper-thread), 5,1 GB na Vcore pro zřízené výpočetní prostředky a až 24 GB na Vcore pro výpočetní prostředky, Fast eNVM SSD
+- Vyšší omezení výpočetních prostředků, paměti, vstupně-výstupních operací a úložiště.
+- Řízení vytváření hardwaru pro lepší porovnání požadavků na výpočetní a paměťové úlohy.
+- Cenové slevy pro [zvýhodněné hybridní využití Azure (AHB)](sql-database-azure-hybrid-benefit.md) a [REZERVOVANOU instanci (ri)](sql-database-reserved-capacity.md).
+- Větší transparentnost v podrobnostech o hardwaru, které vysílaly výpočetní výkon; usnadňuje plánování migrací z místních nasazení.
 
-COMPUTE GEN4 – hardware nabízí podstatně větší množství paměti na vCore. Gen5 hardware ale umožňuje škálovat výpočetní prostředky mnohem vyšší.
+## <a name="service-tiers"></a>Úrovně služeb
 
-> [!IMPORTANT]
-> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih.
-> [!NOTE]
-> Další informace o úrovních služeb založených na DTU najdete v tématu [úrovně služeb pro nákupní model založený na DTU](sql-database-service-tiers-dtu.md). Informace o rozdílech mezi úrovněmi služeb pro nákupní modely založené na DTU a na vCore naleznete v tématu [Azure SQL Database nákup modelů](sql-database-purchase-models.md).
-
-## <a name="service-tier-characteristics"></a>Vlastnosti vrstvy služeb
-
-Nákupní model založený na vCore poskytuje tři úrovně služeb: obecné účely, škálování a důležité pro podnikání. Tyto úrovně služeb jsou rozlišené škálou výpočetních velikostí, návrhů s vysokou dostupností, metod pro izolaci chyb, typů a velikostí úložiště a vstupně-výstupními rozsahy.
-
-Je nutné samostatně nakonfigurovat požadované úložiště a dobu uchovávání záloh. Pokud chcete nastavit dobu uchování zálohy, otevřete Azure Portal, přejděte na server (ne na databázi) a potom přejděte na **Správa záloh** > **Konfigurace zásad** > **bod v čase obnovení konfigurace** > **7-35 dní**.
-
-Následující tabulka vysvětluje rozdíly mezi těmito třemi úrovněmi:
+Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro důležité obchodní informace a měřítko. Vrstva služeb obecně definuje architekturu úložiště, omezení místa a vstupně-výstupních operací a možnosti provozní kontinuity související s dostupností a zotavením po havárii.
 
 ||**Obecné účely**|**Důležité pro podnikání**|**Hyperškálovatelný**|
 |---|---|---|---|
-|Nejlepší pro|Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.|OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|Většina obchodních úloh. Automatické škálování velikosti úložiště až na 100 TB, škálování kapalinových vertikálních a horizontálních výpočetních škálování a rychlé obnovení databáze.|
-|Výpočetní|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 1 až 24 virtuální jádra<br/>Gen5:2 až 80 virtuální jádra<br/>**Výpočetní**prostředí bez serveru:<br/>Gen5:0,5-16 virtuální jádra|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 1 až 24 virtuální jádra<br/>Gen5:2 až 80 virtuální jádra|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 1 až 24 virtuální jádra<br/>Gen5:2 až 80 virtuální jádra|
-|Rezident|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 7 GB na vCore<br/>Gen5:5,1 GB na vCore<br/>**Výpočetní**prostředí bez serveru:<br/>Gen5: až 24 GB na vCore|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 7 GB na vCore<br/>Gen5:5,1 GB na vCore |**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 7 GB na vCore<br/>Gen5:5,1 GB na vCore|
-|Úložiště|Používá vzdálené úložiště.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 4 TB<br/>**Spravovaná instance**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
-|Propustnost vstupně-výstupních operací (přibližná)|Izolovaná **databáze a elastický fond**: 500 vstupně-výstupních operací na vCore až 40000 maximálních IOPS.<br/>**Spravovaná instance**: závisí na [velikosti souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS za jádro až 200 000 maximální IOPS|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPs bude záviset na zatížení.|
+|Nejvhodnější pro|Většina obchodních úloh. Nabízí uživatelsky orientované, vyvážené a škálovatelné možnosti výpočtů a úložiště. |Nabízí podnikovým aplikacím nejvyšší odolnost proti chybám pomocí několika izolovaných replik a poskytuje nejvyšší výkon vstupně-výstupních operací na jednu repliku databáze.|Většina obchodních úloh s vysokou škálovatelností úložiště a požadavky na škálování pro čtení.  Nabízí vyšší odolnost proti chybám tím, že umožňuje konfiguraci více než jedné repliky izolované databáze. |
+|Úložiště|Používá vzdálené úložiště.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 8 TB<br/>**Spravovaná instance**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
+|Propustnost vstupně-výstupních operací (přibližná)|Izolovaná **databáze a elastický fond**: 500 vstupně-výstupních operací na vCore až 40000 maximálních IOPS.<br/>**Spravovaná instance**: závisí na [velikosti souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 vstupně-výstupních operací na vCore až 320 000 maximální IOPS|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPs bude záviset na zatížení.|
 |Dostupnost|1 replika, žádné repliky na úrovni čtení|3 repliky, 1 [replika pro čtení a škálování](sql-database-read-scale-out.md)<br/>zóna – redundantní vysoká dostupnost (HA)|1 replika pro čtení i zápis a 0-4 replik v režimu [čtení a škálování](sql-database-read-scale-out.md)|
-|Vytvářet|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
-|V paměti|Není podporováno|Podporováno|Není podporováno|
+|Zálohování|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
+|V paměti|Nepodporováno|Podporováno|Nepodporováno|
 |||
 
-> [!NOTE]
-> V kombinaci s bezplatným účtem Azure můžete získat bezplatnou službu Azure SQL Database na úrovni služeb Basic. Další informace najdete v tématu [Vytvoření spravované cloudové databáze pomocí bezplatného účtu Azure](https://azure.microsoft.com/free/services/sql-database/).
 
-- Další informace o omezeních prostředků vCore najdete v tématu omezení [prostředků Vcore v jedné databázi](sql-database-vcore-resource-limits-single-databases.md) a v [omezeních prostředků Vcore ve spravované instanci](sql-database-managed-instance.md#vcore-based-purchasing-model).
-- Další informace o úrovních služeb pro obecné účely a pro důležité obchodní informace najdete v tématu [úrovně služeb pro obecné účely a pro důležité obchodní](sql-database-service-tiers-general-purpose-business-critical.md)informace.
-- Další informace o vrstvě služby vCore v nákupním modelu založeném na najdete v tématu [úroveň služby pro škálování](sql-database-service-tier-hyperscale.md)na více úrovních.  
+### <a name="choosing-a-service-tier"></a>Výběr úrovně služby
 
-## <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
+Informace o výběru úrovně služby pro konkrétní úlohu najdete v následujících článcích:
 
-V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCore můžete vyměňovat stávající licence pro zvýhodněné sazby SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure vám umožní ušetřit až 30 procent na Azure SQL Database pomocí místních licencí SQL Server se Software Assurance.
+- [Kdy zvolit úroveň služby pro obecné účely](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Kdy zvolit úroveň služby Pro důležité obchodní informace](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
+- [Kdy zvolit úroveň služby na úrovni služeb](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
-![stanov](./media/sql-database-service-tiers/pricing.png)
 
-Pomocí Zvýhodněné hybridní využití Azure se můžete rozhodnout platit jenom za základní infrastrukturu Azure pomocí vaší stávající licence SQL Server pro samotný stroj SQL Database (základní výpočetní ceny), nebo můžete platit jak z základní infrastruktury, tak i SQL Server licence (ceny včetně licencí).
+## <a name="compute-tiers"></a>Výpočetní úrovně
 
-Licenční model můžete vybrat nebo změnit pomocí Azure Portal nebo pomocí některého z následujících rozhraní API:
+Mezi možnosti výpočetní vrstvy v modelu vCore patří zřízené a výpočetní úrovně bez serveru.
 
-- Chcete-li nastavit nebo aktualizovat typ licence pomocí prostředí PowerShell:
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+### <a name="provisioned-compute"></a>Zřízené výpočetní prostředky
 
-- Nastavení nebo aktualizace typu licence pomocí Azure CLI:
+Zřízená výpočetní vrstva poskytuje určité množství výpočetních prostředků, které se průběžně zřídí nezávisle na aktivitě úloh a účtuje se na množství výpočetní služby za pevnou cenu za hodinu.
 
-  - [AZ SQL DB Create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [AZ SQL DB Update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [AZ SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
-- Chcete-li nastavit nebo aktualizovat typ licence pomocí REST API:
+### <a name="serverless-compute"></a>Bezserverové výpočetní prostředí
 
-  - [Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [Spravované instance – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [Spravované instance – aktualizace](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+[Výpočetní vrstva bez serveru](sql-database-serverless.md) automaticky škáluje výpočetní prostředky na základě aktivity úloh a účtuje množství výpočetní služby za sekundu.
 
-## <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrace z modelu založeného na DTU na model založený na vCore
 
-### <a name="migrate-a-database"></a>Migrace databáze
 
-Migrace databáze z nákupního modelu založeného na DTU do nákupního modelu založeného na vCore se podobá upgradu nebo downgrade mezi úrovněmi služeb Standard a Premium v nákupním modelu založeném na DTU.
+## <a name="hardware-generations"></a>Generace hardwaru
 
-### <a name="migrate-databases-with-geo-replication-links"></a>Migrace databází pomocí odkazů geografické replikace
+Mezi možnosti generování hardwaru v modelu vCore patří obecné 4/5, M-Series (Preview) a Fsv2-Series (Preview). Generování hardwaru obecně definuje omezení výpočetních hodnot a paměti a další vlastnosti, které mají vliv na výkon úlohy.
 
-Migrace z modelu založeného na DTU do nákupního modelu založeného na vCore se podobá upgradu nebo downgrade vztahů geografické replikace mezi databázemi v úrovních služeb Standard a Premium. Během migrace nemusíte zastavit geografickou replikaci, ale musíte dodržovat tato pravidla sekvencování:
+### <a name="gen4gen5"></a>COMPUTE GEN4 –/Gen5
 
-- Při upgradu musíte nejdřív upgradovat sekundární databázi a potom upgradovat primární.
-- Když se downgrade, obrátí se pořadí: Nejdřív musíte nejprve downgradovat primární databázi a pak snížit její sekundární verzi.
+- COMPUTE GEN4 –/Gen5 hardware poskytuje vyvážené výpočetní a paměťové prostředky a je vhodný pro většinu databázových úloh, které nemají vyšší nároky na paměť, vyšší vCore nebo rychlejší jednoduché požadavky vCore, jak poskytují řady Fsv2-Series nebo M-Series.
 
-Pokud používáte geografickou replikaci mezi dvěma elastickými fondy, doporučujeme, abyste jeden fond určili jako primární a druhý jako sekundární. V takovém případě byste měli při migraci elastických fondů použít stejné pokyny k sekvencování. Pokud ale máte elastické fondy, které obsahují jak primární, tak sekundární databáze, považovat fond s vyšším využitím jako primární a podle toho pravidla sekvencování řídí.  
+Oblasti, ve kterých je COMPUTE GEN4 –/Gen5 k dispozici, najdete v tématu [dostupnost COMPUTE GEN4 –/Gen5](#gen4gen5-1).
 
-Následující tabulka poskytuje pokyny pro konkrétní scénáře migrace:
+### <a name="fsv2-seriespreview"></a>Fsv2-Series (Preview)
 
-|Aktuální úroveň služby|Cílová úroveň služby|Typ migrace|Akce uživatele|
-|---|---|---|---|
-|Standardní|Obecné účely|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore *|
-|Nárok|Důležité pro podnikání|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore *|
-|Standardní|Důležité pro podnikání|Přejít|Nejprve je třeba migrovat sekundární|
-|Důležité pro podnikání|Standardní|Downgradovat|Nejprve je třeba migrovat primární|
-|Nárok|Obecné účely|Downgradovat|Nejprve je třeba migrovat primární|
-|Obecné účely|Nárok|Přejít|Nejprve je třeba migrovat sekundární|
-|Důležité pro podnikání|Obecné účely|Downgradovat|Nejprve je třeba migrovat primární|
-|Obecné účely|Důležité pro podnikání|Přejít|Nejprve je třeba migrovat sekundární|
-||||
+- Fsv2-Series je hardwarově optimalizovaná možnost hardwaru, která poskytuje nízkou latenci procesoru a vysokou rychlost práce pro nejvíce náročné úlohy procesoru.
+- V závislosti na zatížení může Fsv2-Series doručovat větší výkon procesoru na vCore než Gen5 a velikost vCore 72 může poskytovat větší výkon procesoru pro méně nákladů než 80 virtuální jádra v Gen5. 
+- Fsv2 poskytuje méně paměti a databázi tempdb na vCore než jiný hardware, takže zatížení citlivá na tato omezení mohou místo toho brát v úvahu Gen5 nebo M-Series.  
 
-\* každých 100 DTU na úrovni Standard vyžaduje aspoň 1 vCore a každé 125 DTU úrovně Premium vyžaduje aspoň 1 vCore.
+Oblasti, ve kterých je Fsv2-Series k dispozici, najdete v tématu [dostupnost Fsv2-Series](#fsv2-series).
 
-### <a name="migrate-failover-groups"></a>Migrace skupin převzetí služeb při selhání
 
-Migrace skupin převzetí služeb při selhání s více databázemi vyžaduje samostatnou migraci primárních a sekundárních databází. Během tohoto procesu platí stejné podmínky a pravidla sekvence. Po převedení databází na nákupní model založený na vCore zůstane skupina převzetí služeb při selhání platná se stejnými nastaveními zásad.
+### <a name="m-seriespreview"></a>Řada M-Series (Preview)
 
-### <a name="create-a-geo-replication-secondary-database"></a>Vytvoření sekundární databáze geografické replikace
+- Řada M-Series je hardwarově optimalizovaná možnost hardwaru pro úlohy, které přidávají větší nároky na paměť a vyšší výpočetní limity než služba Gen5.
+- Řada M-Series poskytuje 29 GB na vCore a 128 virtuální jádra, což zvyšuje limit paměti relativní vzhledem k Gen5, 8rychlostní až skoro 4 TB.
 
-Sekundární databázi geografické replikace můžete vytvořit pouze pomocí stejné úrovně služby, jakou jste použili pro primární databázi. Pro databáze s vysokou rychlostí generování protokolů doporučujeme vytvořit geografickou sekundární stejnou velikost služby COMPUTE jako primární.
+Pokud chcete povolit hardware řady M-Series pro předplatné a oblast, je nutné otevřít žádost o podporu. Pokud je žádost o podporu schválená, možnosti výběru a zřizování řady M-Series se řídí stejným vzorem jako u ostatních generací hardwaru. V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
 
-Pokud vytváříte geograficky sekundární v elastickém fondu pro jednu primární databázi, ujistěte se, že nastavení `maxVCore` pro fond odpovídá výpočetní velikosti primární databáze. Pokud vytváříte geografickou sekundární hodnotu pro primární objekt v jiném elastickém fondu, doporučujeme, aby fondy měly stejné nastavení `maxVCore`.
 
-### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Použití kopie databáze k převedení databáze založené na DTU na databázi založenou na vCore
+### <a name="compute-and-memory-specifications"></a>Specifikace výpočtů a paměti
 
-Můžete zkopírovat jakoukoli databázi s výpočetní velikostí založenou na DTU do databáze s výpočetní velikostí založenou na vCore bez omezení nebo speciální sekvencování, pokud cílová výpočetní velikost podporuje maximální velikost databáze zdrojové databáze. Kopie databáze vytvoří snímek dat pro počáteční čas operace kopírování a nesynchronizuje data mezi zdrojem a cílem.
+
+|Generování hardwaru  |Služby Compute  |Paměť  |
+|:---------|:---------|:---------|
+|COMPUTE GEN4 –     |– Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz<br>-Zřídit až 24 virtuální jádra (1 vCore = 1 fyzický jádro)  |– 7 GB na vCore<br>– Zřídit až 168 GB|
+|Gen5     |**Zřízené výpočetní prostředky**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz<br>-Zřídit až 80 virtuální jádra (1 vCore = 1 Hyper-thread)<br><br>**Výpočetní prostředí bez serveru**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz<br>– Automatické škálování až na 16 virtuální jádra (1 vCore = 1 Hyper-thread)|**Zřízené výpočetní prostředky**<br>-5,1 GB na vCore<br>– Zřídit až 408 GB<br><br>**Výpočetní prostředí bez serveru**<br>– Automatické škálování až na 24 GB na vCore<br>– Automatické škálování až do 48 GB max.|
+|Fsv2-series     |– Procesory Intel Xeon Platinum 8168 (SkyLake)<br>– S trvalou frekvencí 3,4 GHz a maximální jednotnou rychlostí Turbo 3,7 GHz v jádře.<br>-Zřídit 72 virtuální jádra (1 vCore = 1 = 1 Hyper-thread)|-1,9 GB na vCore<br>-Zřizování 136 GB|
+|M-Series     |– Procesory Intel Xeon E7-8890 V3 2,5 GHz<br>-Zřídit 128 virtuální jádra (1 vCore = 1 = 1 Hyper-thread)|– 29 GB na vCore<br>-Zřizování 3,7 TB|
+
+
+Další informace o omezeních prostředků najdete v tématech [omezení prostředků pro izolované databáze (Vcore)](sql-database-vcore-resource-limits-single-databases.md)nebo [omezení prostředků pro elastické fondy (Vcore)](sql-database-vcore-resource-limits-elastic-pools.md).
+
+### <a name="selecting-a-hardware-generation"></a>Výběr hardwarového generování
+
+V Azure Portal můžete vybrat generování hardwaru pro databázi nebo fond SQL v době vytváření, nebo můžete změnit vygenerování hardwaru existující databáze nebo fondu SQL.
+
+**Výběr generování hardwaru při vytváření databáze nebo fondu SQL**
+
+Podrobné informace najdete v tématu [Vytvoření databáze SQL](sql-database-single-database-get-started.md).
+
+Na kartě **základy** vyberte odkaz **Konfigurovat databázi** v části **COMPUTE + úložiště** a pak vyberte odkaz **změnit konfiguraci** :
+
+  ![Konfigurace databáze](media/sql-database-service-tiers-vcore/configure-sql-database.png)
+
+Vyberte požadovanou generaci hardwaru:
+
+  ![vybrat hardware](media/sql-database-service-tiers-vcore/select-hardware.png)
+
+
+**Změna hardwarového generování existující databáze nebo fondu SQL**
+
+V případě databáze klikněte na stránce Přehled na odkaz **cenová úroveň** :
+
+  ![Změna hardwaru](media/sql-database-service-tiers-vcore/change-hardware.png)
+
+U fondu na stránce Přehled vyberte **Konfigurovat**.
+
+Použijte postup změny konfigurace a vyberte generaci hardwaru, jak je popsáno v předchozích krocích.
+
+### <a name="hardware-availability"></a>Dostupnost hardwaru
+
+#### <a name="gen4gen5"></a>COMPUTE GEN4 –/Gen5
+
+Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih. 
+
+Gen5 je k dispozici ve většině oblastí po celém světě.
+
+#### <a name="fsv2-series"></a>Fsv2-series
+
+Fsv2-Series je k dispozici v následujících oblastech: Austrálie – střed, Austrálie – střed, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed Východní Asie, USA – střed, Severní Korea, Indie – střed, Indie – západ, Indie – jih, USA – sever Evropa, Jižní Afrika, USA – sever, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, západ USA 2.
+
+
+#### <a name="m-series"></a>M-Series
+
+Řada M-Series je k dispozici v následujících oblastech: Východní USA, Severní Evropa, Západní Evropa Západní USA 2.
+Řada M-Series může mít také omezené dostupnosti v dalších oblastech. Můžete si vyžádat jinou oblast, než je zde uvedeno, ale nemusí být splněna v jiné oblasti.
+
+Pokud chcete povolit dostupnost řady M-Series v rámci předplatného, musíte požádat o přístup k [nové žádosti o podporu](#create-a-support-request-to-enable-m-series).
+
+
+##### <a name="create-a-support-request-to-enable-m-series"></a>Vytvoření žádosti o podporu pro povolení řady M-Series: 
+
+1. Na portálu vyberte **help + podpora** .
+2. Vyberte **Nová žádost o podporu**.
+
+Na stránce **základy** zadejte následující:
+
+1. Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)** .
+2. Pro **předplatné** = vyberte předplatné, abyste mohli povolit řadu M-Series.
+3. Jako **typ kvóty**vyberte **SQL Database**.
+4. Kliknutím na tlačítko **Další** přejdete na stránku s **podrobnostmi** .
+
+Na stránce **Podrobnosti** zadejte následující:
+
+5. V části **Podrobnosti o problému** vyberte odkaz **poskytnout podrobnosti** . 
+6. U **SQL Database typ kvóty** vyberte **M-Series**.
+7. V poli **oblast**vyberte oblast, do které chcete povolit řadu M-Series.
+    V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
+
+Schválené žádosti o podporu jsou obvykle splněné do 5 pracovních dnů.
+
 
 ## <a name="next-steps"></a>Další kroky
 
+- Chcete-li vytvořit databázi SQL, přečtěte si téma [Vytvoření databáze SQL pomocí Azure Portal](sql-database-single-database-get-started.md).
 - Konkrétní velikosti a možnosti velikosti úložiště, které jsou dostupné pro jednotlivé databáze, najdete v tématu [SQL Database omezení prostředků na základě Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md).
-- Konkrétní velikosti a možnosti velikosti úložiště dostupné pro elastické fondy najdete v tématu [SQL Database omezení prostředků na základě Vcore pro elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Konkrétní velikosti a možnosti velikosti úložiště dostupné pro elastické fondy najdete v tématu [SQL Database omezení prostředků na základě Vcore pro elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
+- Podrobnosti o cenách najdete na [stránce s cenami Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/).

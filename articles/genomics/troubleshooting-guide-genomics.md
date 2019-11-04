@@ -1,7 +1,7 @@
 ---
 title: Průvodce odstraňováním potíží
 titleSuffix: Microsoft Genomics
-description: Přečtěte si o strategiích řešení potíží pro použití Microsoft Genomics.
+description: Přečtěte si o strategiích řešení potíží s používáním Microsoft Genomics, včetně chybových zpráv a jejich řešení.
 keywords: řešení potíží, chyba, ladění
 services: genomics
 author: ruchir
@@ -11,14 +11,14 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: ce8af4d444e642a8f67f43f8cf403ce9b2cb08ab
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248517"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485995"
 ---
-# <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
+# <a name="troubleshooting-guide"></a>Průvodce řešením potíží
 
 Tady je několik tipů pro řešení potíží s některými běžnými problémy, které se můžou při používání služby Microsoft Genomics MSGEN.
 
@@ -106,7 +106,7 @@ Služba Microsoft Genomics (msgen) může vyvolat následující dva druhy chyb:
 
 Interní chyba služby není uživatelem nastavená akce. Pracovní postup můžete znovu odeslat, ale pokud to nefunguje, obraťte se na podporu Microsoft Genomics.
 
-| Chybová zpráva                                                                                                                            | Doporučené kroky pro řešení potíží                                                                                                                                   |
+| Chybová zpráva                                                                                                                            | Doporučený postup při řešení potíží                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Došlo k vnitřní chybě. Zkuste znovu odeslat pracovní postup. Pokud se tato chyba zobrazí znovu, požádejte o pomoc Microsoft Genomics podporu. | Odešlete pracovní postup znovu. Pokud potíže potrvají, požádejte o pomoc Microsoft Genomics podporu. Pokud se problém opakuje, vytvořte [lístek](file-support-ticket-genomics.md )podpory. |
 
@@ -114,9 +114,9 @@ Interní chyba služby není uživatelem nastavená akce. Pracovní postup můž
 
 Tyto chyby jsou uživatelem akce. Na základě typu souboru a kódu chyby služba Microsoft Genomics výstupy mají odlišné kódy chyb. Postupujte podle doporučených kroků pro řešení potíží uvedených níže.
 
-| Typ souboru | Kód chyby | Chybová zpráva                                                                           | Doporučené kroky pro řešení potíží                                                                                         |
+| Typ souboru | Kód chyby | Chybová zpráva                                                                           | Doporučený postup při řešení potíží                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Jakýkoli          | 701        | Čtení [připraveno] má [numberOfBases] základ, ale limit je [maxReadLength].           | Nejběžnějším důvodem této chyby je poškození souboru vedoucí ke zřetězení dvou čtení. Ověřte vstupní soubory. |
+| Všechny          | 701        | Čtení [připraveno] má [numberOfBases] základ, ale limit je [maxReadLength].           | Nejběžnějším důvodem této chyby je poškození souboru vedoucí ke zřetězení dvou čtení. Ověřte vstupní soubory. |
 | BAM          | 200        |   Nelze číst soubor ' [yourFileName] '.                                                                                       | Ověřte formát souboru BAM. Odešlete pracovní postup znovu se správným formátovaným souborem.                                                                           |
 | BAM          | 201        |  Nelze číst soubor BAM [název_souboru].                                                                                      |Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                            |
 | BAM          | 202        | Nelze číst soubor BAM [název_souboru]. Soubor je moc malý a záhlaví chybí.                                                                                        | Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                            |

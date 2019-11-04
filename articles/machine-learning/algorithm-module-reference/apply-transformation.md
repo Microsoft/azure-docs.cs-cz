@@ -1,24 +1,24 @@
 ---
 title: 'Použít transformaci: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul použít transformaci ve službě Azure Machine Learning k úpravě vstupní datové sady na základě dříve vypočítané transformace.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul použít transformaci v Azure Machine Learning k úpravě vstupní datové sady na základě dříve vypočítané transformace.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: adb2477fe2b7eea0dd0a98c7240843d90411d832
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 19385870d184654d902cd40b45d4be3646c87b46
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693881"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493899"
 ---
 # <a name="apply-transformation-module"></a>Použít transformační modul
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete upravit vstupní datovou sadu založenou na dříve vypočítané transformaci.  
   
@@ -46,4 +46,4 @@ Azure Machine Learning poskytuje podporu pro vytváření a následné použití
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

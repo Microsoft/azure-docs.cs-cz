@@ -8,39 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 8/26/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 3c8ffcdb08fc99f5d815639e14fb4456fbd035e8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b413bc6d29f1b08949b50570cb5baa2eb758d779
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066494"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491023"
 ---
 # <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Použití kontejneru služby Speech s Kubernetes a Helm
 
 Jednou z možností správy vašich místních kontejnerů řeči je použití Kubernetes a Helm. Když použijete Kubernetes a Helm k definování imagí na kontejnerech pro text a převod textu na řeč, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazené služby a různé možnosti konfigurace. Další informace o spouštění kontejnerů Docker bez orchestrace Kubernetes najdete v tématu [instalace a spuštění kontejnerů služby Speech](speech-container-howto.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před použitím kontejnerů řeči v místním prostředí použijte následující požadavky:
 
-|Požadováno|Účel|
+|Požaduje se|Účel|
 |--|--|
 | Účet Azure | Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][free-azure-account] před tím, než začnete. |
-| Přístup k Container Registry | Aby Kubernetes mohl načíst image Docker do clusteru, bude potřebovat přístup k registru kontejneru. Je nutné nejprve [požádat o přístup k registru kontejneru][speech-preview-access] . |
+| Přístup k Container Registry | Aby Kubernetes mohl načíst image Docker do clusteru, bude potřebovat přístup k registru kontejneru. |
 | Kubernetes CLI | [KUBERNETES CLI][kubernetes-cli] se vyžaduje pro správu sdílených přihlašovacích údajů z registru kontejneru. Kubernetes je také potřeba před Helm, což je správce balíčků Kubernetes. |
-| Helm CLI | V rámci instalace rozhraní příkazového [řádku Helm][helm-install] budete taky muset inicializovat Helm, který se nainstaluje do nástroje [][tiller-install]. |
-|Prostředek řeči |Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého fakturačního klíče a identifikátoru URI koncového bodu faktury Obě hodnoty jsou k dispozici na stránkách přehled a klíče Azure Portal **řeči** a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : klíč prostředku<br><br>**{ENDPOINT_URI}** : příklad identifikátoru URI koncového bodu je:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+| Helm CLI | V [rámci instalace rozhraní][tiller-install]příkazového [řádku Helm][helm-install] budete taky muset inicializovat Helm, který se nainstaluje do nástroje. |
+|Prostředek řeči |Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého fakturačního klíče a identifikátoru URI koncového bodu faktury Obě hodnoty jsou k dispozici na stránkách přehled a klíče Azure Portal **řeči** a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : klíč prostředku<br><br>**{ENDPOINT_URI}** : příklad identifikátoru URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Doporučená konfigurace hostitelského počítače
 
-Referenční informace najdete v tématu podrobnosti o [hostitelském počítači kontejneru služby Speech][speech-container-host-computer] . Tento *graf Helm* automaticky vypočítá požadavky na procesor a paměť na základě toho, kolik dekódování (souběžných požadavků) uživatel zadá. Navíc se upraví na základě toho, jestli jsou optimalizace pro vstup zvuku a textu nakonfigurované `enabled`jako. Graf Helm je ve výchozím nastavení na hodnotu, dvě souběžné požadavky a zakazování optimalizace.
+Referenční informace najdete v tématu podrobnosti o [hostitelském počítači kontejneru služby Speech][speech-container-host-computer] . Tento *graf Helm* automaticky vypočítá požadavky na procesor a paměť na základě toho, kolik dekódování (souběžných požadavků) uživatel zadá. Navíc se upraví na základě toho, jestli jsou optimalizace pro vstup zvuku a textu nakonfigurované jako `enabled`. Graf Helm je ve výchozím nastavení na hodnotu, dvě souběžné požadavky a zakazování optimalizace.
 
 | Služba | PROCESOR/kontejner | Paměť/kontejner |
 |--|--|--|
-| **Speech-to-Text** | jeden dekodér vyžaduje minimálně 1 150 millicores. `optimizedForAudioFile` Pokud je povolená, pak je potřeba 1 950 millicores. (výchozí: dva dekodéry) | Požadovanou 2 GB<br>Limitovan  4 GB |
-| **Text-to-Speech** | Jedna souběžná žádost vyžaduje minimálně 500 millicores. `optimizeForTurboMode` Pokud je povolená, pak je potřeba 1 000 millicores. (výchozí: dvou souběžných požadavků) | Požadovanou 1 GB<br> Limitovan 2 GB |
+| **Převod řeči na text** | jeden dekodér vyžaduje minimálně 1 150 millicores. Pokud je povolená `optimizedForAudioFile`, je potřeba 1 950 millicores. (výchozí: dva dekodéry) | Požadováno: 2 GB<br>Omezeno: 4 GB |
+| **Převod textu na řeč** | Jedna souběžná žádost vyžaduje minimálně 500 millicores. Pokud je povolená `optimizeForTurboMode`, je potřeba 1 000 millicores. (výchozí: dvou souběžných požadavků) | Požadováno: 1 GB<br> Omezeno: 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Připojení ke clusteru Kubernetes
 
@@ -48,22 +48,22 @@ V hostitelském počítači se očekává, že bude dostupný cluster Kubernetes
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Sdílení přihlašovacích údajů Docker s clusterem Kubernetes
 
-Pokud chcete, aby cluster `docker pull` Kubernetes nakonfigurovali bitové kopie `containerpreview.azurecr.io` z registru kontejneru, je nutné přenést přihlašovací údaje Docker do clusteru. Spuštěním následujícího příkazu vytvořte *tajný klíč registru Docker-Registry* na základě přihlašovacích údajů, které jste zadali v části požadavky na přístup k registru kontejneru. [`kubectl create`][kubectl-create]
+Aby mohl cluster Kubernetes `docker pull` nakonfigurovaných imagí z `mcr.microsoft.com` registru kontejneru, je nutné přenést přihlašovací údaje Docker do clusteru. Spuštěním následujícího příkazu [`kubectl create`][kubectl-create] vytvořte *tajný klíč registru Docker-Registry* založený na přihlašovacích údajích poskytnutých z předpokladu přístupu k registru kontejneru.
 
-V rozhraní příkazového řádku, které zvolíte, spusťte následující příkaz. Nezapomeňte nahradit `<username>`, `<password>`a `<email-address>` s přihlašovacími údaji registru kontejneru.
+V rozhraní příkazového řádku, které zvolíte, spusťte následující příkaz. Nezapomeňte nahradit `<username>`, `<password>`a `<email-address>` přihlašovací údaje registru kontejneru.
 
 ```console
-kubectl create secret docker-registry containerpreview \
-    --docker-server=containerpreview.azurecr.io \
+kubectl create secret docker-registry mcr \
+    --docker-server=mcr.microsoft.com \
     --docker-username=<username> \
     --docker-password=<password> \
     --docker-email=<email-address>
 ```
 
 > [!NOTE]
-> Pokud již máte přístup k `containerpreview.azurecr.io` registru kontejneru, můžete místo toho vytvořit tajný kód Kubernetes pomocí obecného příznaku. Vezměte v úvahu následující příkaz, který se provede proti vašemu kódu JSON konfigurace Docker.
+> Pokud již máte přístup k `mcr.microsoft.com` registru kontejnerů, můžete místo toho vytvořit tajný kód Kubernetes pomocí obecného příznaku. Vezměte v úvahu následující příkaz, který se provede proti vašemu kódu JSON konfigurace Docker.
 > ```console
->  kubectl create secret generic containerpreview \
+>  kubectl create secret generic mcr \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
 >      --type=kubernetes.io/dockerconfigjson
 > ```
@@ -71,31 +71,31 @@ kubectl create secret docker-registry containerpreview \
 Následující výstup je vytištěn do konzoly, pokud byl tajný kód úspěšně vytvořen.
 
 ```console
-secret "containerpreview" created
+secret "mcr" created
 ```
 
-Chcete-li ověřit, zda byl tajný klíč vytvořen, [`kubectl get`][kubectl-get] spusťte `secrets` s příznakem.
+Chcete-li ověřit, zda byl tajný klíč vytvořen, spusťte [`kubectl get`][kubectl-get] s příznakem `secrets`.
 
 ```console
 kuberctl get secrets
 ```
 
-Po spuštění `kubectl get secrets` se zobrazí všechna nakonfigurovaná tajná klíčová.
+Spuštění `kubectl get secrets` vytiskne všechny nakonfigurované tajné klíče.
 
 ```console
-NAME                  TYPE                                  DATA      AGE
-containerpreview      kubernetes.io/dockerconfigjson        1         30s
+NAME    TYPE                              DATA    AGE
+mcr     kubernetes.io/dockerconfigjson    1       30s
 ```
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Konfigurace hodnot grafu Helm pro nasazení
 
-Navštivte [Centrum Microsoft Helme][ms-helm-hub] , kde najdete všechny veřejně dostupné grafy Helm, které nabízí Microsoft. V centru Microsoft Helm najdete **místní graf Cognitive Services řeč**. **Místní Cognitive Services řeč** je graf, který nainstalujeme, ale nejdřív je potřeba vytvořit `config-values.yaml` soubor s explicitními konfiguracemi. Pojďme začít přidáním úložiště Microsoftu do naší instance Helm.
+Navštivte [Centrum Microsoft Helme][ms-helm-hub] , kde najdete všechny veřejně dostupné grafy Helm, které nabízí Microsoft. V centru Microsoft Helm najdete **místní graf Cognitive Services řeč**. **Místní Cognitive Services řeč** je graf, který nainstalujeme, ale nejdřív je potřeba vytvořit soubor `config-values.yaml` s explicitními konfiguracemi. Pojďme začít přidáním úložiště Microsoftu do naší instance Helm.
 
 ```console
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-Dále nakonfigurujeme hodnoty grafu Helm. Zkopírujte a vložte následující YAML do souboru s názvem `config-values.yaml`. Další informace o přizpůsobení Cognitive Servicesho **rozpoznávání řeči v místním Helm grafu**najdete v tématu [přizpůsobení Helm grafů](#customize-helm-charts). Nahraďte komentáře `# {API_KEY}`avlastními hodnotami. `# {ENDPOINT_URI}`
+Dále nakonfigurujeme hodnoty grafu Helm. Zkopírujte následující YAML a vložte je do souboru s názvem `config-values.yaml`. Další informace o přizpůsobení **Cognitive Servicesho rozpoznávání řeči v místním Helm grafu**najdete v tématu [přizpůsobení Helm grafů](#customize-helm-charts). Nahraďte `# {ENDPOINT_URI}` a `# {API_KEY}` komentáře vlastními hodnotami.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -106,11 +106,11 @@ speechToText:
   numberOfConcurrentRequest: 3
   optimizeForAudioFile: true
   image:
-    registry: containerpreview.azurecr.io
-    repository: microsoft/cognitive-services-speech-to-text
+    registry: mcr.microsoft.com
+    repository: azure-cognitive-services/speech-to-text
     tag: latest
     pullSecrets:
-      - containerpreview # Or an existing secret
+      - mcr # Or an existing secret
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -122,11 +122,11 @@ textToSpeech:
   numberOfConcurrentRequest: 3
   optimizeForTurboMode: true
   image:
-    registry: containerpreview.azurecr.io
-    repository: microsoft/cognitive-services-text-to-speech
+    registry: mcr.microsoft.com
+    repository: azure-cognitive-services/text-to-speech
     tag: latest
     pullSecrets:
-      - containerpreview # Or an existing secret
+      - mcr # Or an existing secret
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -134,19 +134,19 @@ textToSpeech:
 ```
 
 > [!IMPORTANT]
-> Pokud nejsou zadány hodnoty `apikey` a,vypršíplatnostslužebpo15minutách.`billing` Ověření se nezdaří, protože služby nebudou k dispozici.
+> Pokud nejsou zadány hodnoty `billing` a `apikey`, vyprší platnost služeb po 15 minutách. Ověření se nezdaří, protože služby nebudou k dispozici.
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Balíček Kubernetes (Helm graf)
 
-*Graf Helm* obsahuje konfiguraci, které imagí Docker mají být vyžádané z `containerpreview.azurecr.io` registru kontejneru.
+*Graf Helm* obsahuje konfiguraci, které imagí Docker mají být vyžádané z registru kontejneru `mcr.microsoft.com`.
 
 > [Graf Helm][helm-charts] je kolekce souborů, které popisují související sadu prostředků Kubernetes. Jeden graf se dá použít k nasazení jednoduchého, podobného memcached nebo nějakého složitého, jako je úplný zásobník webových aplikací se servery HTTP, databázemi, mezipamětemi a tak dále.
 
-Poskytnuté *grafy Helm* si z registru `containerpreview.azurecr.io` kontejnerů stáhnou image služby pro rozpoznávání řeči, a to jak pro převod textu na řeč, tak i ze služeb převodu řeči na text.
+Uvedené *grafy Helm* vyžádají image Docker služby řeči, jak převod textu na řeč, tak ze služby `mcr.microsoft.com` registru kontejneru.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Instalace grafu Helm v clusteru Kubernetes
 
-K instalaci *grafu Helm* je potřeba provést [`helm install`][helm-install-cmd] `<config-values.yaml>` příkaz a nahradit ho názvem odpovídající cestou a argumentu název souboru. Graf `microsoft/cognitive-services-speech-onpremise` Helm, na který se odkazuje níže, je k dispozici v [centru Microsoftu pro Microsoft Helm][ms-helm-hub-speech-chart].
+K instalaci *grafu Helm* je potřeba spustit příkaz [`helm install`][helm-install-cmd] a nahradit `<config-values.yaml>` vhodným argumentem cesta a název souboru. `microsoft/cognitive-services-speech-onpremise` graf Helm, na který se odkazuje níže, je k dispozici v [centru Microsoft Helm][ms-helm-hub-speech-chart].
 
 ```console
 helm install microsoft/cognitive-services-speech-onpremise \
@@ -239,7 +239,7 @@ helm test onprem-speech
 ```
 
 > [!IMPORTANT]
-> Tyto testy selžou, pokud stav `Running` pod není nebo pokud nasazení není uvedené `AVAILABLE` pod sloupcem. Musí být pacient, protože se to může trvat déle než 10 minut.
+> Pokud stav POD není `Running` nebo pokud nasazení není uvedené pod sloupcem `AVAILABLE`, testy se nezdaří. Musí být pacient, protože se to může trvat déle než 10 minut.
 
 Tyto testy budou mít za následek výstup různých výsledků stavu:
 
@@ -250,7 +250,7 @@ RUNNING: text-to-speech-readiness-test
 PASSED: text-to-speech-readiness-test
 ```
 
-Jako alternativu ke spuštění *testů Helm*můžete z `kubectl get all` příkazu shromáždit *externí IP* adresy a odpovídající porty. Pomocí IP adresy a portu otevřete webový prohlížeč a přejděte `http://<external-ip>:<port>:/swagger/index.html` na stránku a zobrazte si stránky rozhraní API Swagger.
+Jako alternativu ke spuštění *testů Helm*můžete shromáždit *externí IP* adresy a odpovídající porty z příkazu `kubectl get all`. Pomocí IP adresy a portu otevřete webový prohlížeč a přejděte na `http://<external-ip>:<port>:/swagger/index.html` a zobrazte stránky rozhraní API Swagger.
 
 ## <a name="customize-helm-charts"></a>Přizpůsobení Helm grafů
 
@@ -279,7 +279,6 @@ Další podrobnosti o instalaci aplikací pomocí Helm ve službě Azure Kuberne
 [helm-install-cmd]: https://helm.sh/docs/helm/#helm-install
 [tiller-install]: https://helm.sh/docs/install/#installing-tiller
 [helm-charts]: https://helm.sh/docs/developing_charts
-[speech-preview-access]: https://aka.ms/speechcontainerspreview
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [helm-test]: https://helm.sh/docs/helm/#helm-test

@@ -8,27 +8,30 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790072"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485153"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Připojit znalostní bázi Knowledge Store s Power BI
 
 > [!Note]
-> Znalostní báze je ve verzi Preview a neměl by se používat v produkčním prostředí. Tuto funkci poskytuje [Azure Kognitivní hledání REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
+> Znalostní báze je ve verzi Preview a neměl by se používat v produkčním prostředí. Tuto funkci poskytuje portál a [REST API pro hledání verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
 >
-V tomto článku se dozvíte, jak se připojit a prozkoumat úložiště znalostí pomocí Power Query v aplikaci Power BI Desktop. Pokud chcete vytvořit ukázku znalostní báze používanou v tomto návodu, přečtěte si téma [vytvoření znalostní báze v Azure Portal](knowledge-store-create-portal.md).
+
+V tomto článku se dozvíte, jak se připojit k znalostnímu obchodu a prozkoumat ho pomocí Power Query v aplikaci Power BI Desktop. Můžete začít rychleji pracovat se šablonami nebo si vytvořit vlastní řídicí panel úplně od začátku.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-+ Postupujte podle kroků v [části vytvoření znalostní báze v Azure Portal](knowledge-store-create-portal.md) k vytvoření ukázkového úložiště znalostí, které jste použili v tomto návodu. Také budete potřebovat název účtu služby Azure Storage, který jste použili k vytvoření obchodu Knowledge Store, a jeho přístupová klávesa z Azure Portal.
-
 + [Nainstalovat Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
-## <a name="connect-with-power-bi"></a>Propojení s Power BI
++ Budete potřebovat znalostní bázi s projekcí do služby Azure Table Storage. Také budete potřebovat název účtu Azure Storage, který jste použili k vytvoření obchodu Knowledge Store, a jeho přístupový klíč z Azure Portal.
+
+Pokud chcete pracovat s ukázkovým úložištěm Knowledge Store, postupujte podle pokynů pro [Vytvoření úložiště znalostí](knowledge-store-create-portal.md).
+
+## <a name="create-a-custom-report"></a>Vytvoření vlastní sestavy
 
 1. Spusťte Power BI Desktop a klikněte na **získat data**.
 

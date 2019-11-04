@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: daaced0aae595e839f2b2476562fc5caffb63640
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430052"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473932"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Přijetí podmíněného přístupu Azure AD
 
@@ -104,7 +104,7 @@ Přečtěte si následující kurzy podmíněného přístupu a další informac
 * O'Reilly – [implementace řešení Azure – Second Edition.](https://www.oreilly.com/library/view/implementing-azure-solutions/9781789343045/b7ead3db-eb1c-4ace-897e-86ee25ea86be.xhtml)
    * Začínáme se službami Azure a Naučte se, jak je implementovat ve vaší organizaci. Podmíněný přístup Azure AD je popsaný v kapitole [nasazení a synchronizace Azure Active Directory](https://learning.oreilly.com/library/view/implementing-azure-solutions/9781789343045/02ca8bba-08cf-4691-a7d0-1b96e286e7ea.xhtml). "
 
-* Wiley – [hlavní služby Microsoft Azure infrastruktury](https://www.wiley.com/Mastering+Microsoft+Azure+Infrastructure+Services-p-9781119003298)
+* [Služby infrastruktury Wiley-Microsoft Azure pro architekty: návrh cloudových řešení](https://www.wiley.com/Microsoft+Azure+Infrastructure+Services+for+Architects%3A+Designing+Cloud+Solutions-p-9781119596547)
    * "Tady je vše, co potřebujete, abyste pochopili, vyhodnotili, nasadili a zachovali prostředí, která využívají Microsoft Azure."
 
 ## <a name="white-papers"></a>Whitepapery
@@ -122,38 +122,38 @@ Přečtěte si následující kurzy podmíněného přístupu a další informac
 
 Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu. Přečtěte si téma [oprávnění role správce v Azure Active Directory.](../users-groups-roles/directory-assign-admin-roles.md)
 
-Jako správce IT použijte [podmíněný přístup Azure AD](overview.md) k vyžadování ověřování uživatelů pomocí Azure Multi-Factor Authentication, přihlášení z důvěryhodné sítě nebo důvěryhodného zařízení.
+As an IT administrator, use [Azure AD Conditional Access](overview.md) to require users to authenticate using Azure Multi-Factor Authentication, sign in from a trusted network, or trusted device.
 
-Tady jsou užitečné odkazy, které vám pomůžou začít:
+Here are useful links to help you get started:
 
-* [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md)
-* [Pomocí kontrol přístupu Azure AD můžete spravovat uživatele, kteří byli vyloučení ze zásad podmíněného přístupu.](../governance/conditional-access-exclusion.md)
-* [Postupy: plánování nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md)
-* [Rychlý Start: vyžadování MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md)
-* [Rychlý Start: vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly podmínkami použití](require-tou.md)
-* [Rychlý Start: blokování přístupu při zjištění rizika relace s Azure Active Directory podmíněný přístup](app-sign-in-risk.md)
-* [Nejčastější dotazy týkající se podmíněného přístupu Azure AD](faqs.md)
-   * Další otázky můžete zobrazit také ve [fóru MSDN](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&sort=relevancedesc&brandIgnore=True&searchTerm=password+reset+azure).
-   * Pokud nemůžete najít odpověď na problém, naši týmy podpory vám budou mít k dispozici vždycky. Použijte [kontaktujte podporu Microsoftu](../authentication/active-directory-passwords-troubleshoot.md#contact-microsoft-support).
+* [Best practices for Conditional Access in Azure Active Directory](best-practices.md)
+* [Use Azure AD access reviews to manage users that have been excluded from Conditional Access policies](../governance/conditional-access-exclusion.md)
+* [How To: Plan your Conditional Access deployment in Azure Active Directory](plan-conditional-access.md)
+* [Quickstart: Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md)
+* [Quickstart: Require terms of use to be accepted before accessing cloud apps](require-tou.md)
+* [Quickstart: Block access when a session risk is detected with Azure Active Directory Conditional Access](app-sign-in-risk.md)
+* [Azure AD Conditional Access FAQs](faqs.md)
+   * For additional questions, you can also view the [MSDN forum](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&sort=relevancedesc&brandIgnore=True&searchTerm=password+reset+azure).
+   * If you cannot find the answer to a problem, our support teams are always available to assist you further. Use [Contact Microsoft support](../authentication/active-directory-passwords-troubleshoot.md#contact-microsoft-support).
 
 ### <a name="tutorials"></a>Kurzy
 
-* [**Rychlý Start: vyžadování MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup**](app-based-mfa.md)
-   * V tomto rychlém startu se dozvíte, jak nakonfigurovat zásady podmíněného přístupu Azure AD, které pro vybranou cloudovou aplikaci ve vašem prostředí vyžadují službu Multi-Factor Authentication.
+* [**Quickstart: Require MFA for specific apps with Azure Active Directory Conditional Access**](app-based-mfa.md)
+   * This quickstart shows how to configure an Azure AD Conditional Access policy that requires multi-factor authentication for a selected cloud app in your environment.
 
-* [**Rychlý Start: vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly podmínkami použití**](require-tou.md)
-   * V tomto rychlém startu se dozvíte, jak nakonfigurovat zásadu podmíněného přístupu Azure AD, která vyžaduje přijetí podmínky použití pro vybranou cloudovou aplikaci ve vašem prostředí.
+* [**Quickstart: Require terms of use to be accepted before accessing cloud apps**](require-tou.md)
+   * This quickstart shows how to configure an Azure AD Conditional Access policy that requires a ToU to be accepted for a selected cloud app in your environment.
 
-* [**Rychlý Start: blokování přístupu při zjištění rizika relace s Azure Active Directory podmíněný přístup**](app-sign-in-risk.md)
-   * V tomto rychlém startu se dozvíte, jak nakonfigurovat zásady podmíněného přístupu, které blokují přihlášení, když se zjistí nakonfigurovaná úroveň rizika přihlašování.
+* [**Quickstart: Block access when a session risk is detected with Azure Active Directory Conditional Access**](app-sign-in-risk.md)
+   * This quickstart shows how to configure a Conditional Access policy that blocks a sign-in when a configured sign-in risk level has been detected.
 
-* [Kurz: **migrace klasických zásad, které vyžadují službu Multi-Factor Authentication v Azure Portal**](policy-migration-mfa.md)
-   * V tomto kurzu se dozvíte, jak migrovat klasické zásady, které pro cloudovou aplikaci vyžadují vícefaktorové ověřování (MFA).
+* [Tutorial: **Migrate a classic policy that requires multi-factor authentication in the Azure portal**](policy-migration-mfa.md)
+   * This tutorial shows how to migrate a classic policy that requires multi-factor authentication (MFA) for a cloud app.
 
-## <a name="end-user-readiness-and-communication"></a>Připravenost koncových uživatelů a komunikace
+## <a name="end-user-readiness-and-communication"></a>End-user readiness and communication
 
-Podmíněný přístup využívá další možnosti služby Azure AD, které mohou mít vliv na činnost koncového uživatele. Můžete například použít Azure Multi-Factor Authentication k povolení silného ověřování pro uživatele. V takovém případě použijete šablony koncových uživatelů Azure MFA.
+Conditional Access uses other Azure AD capabilities that may affect the end user experience. For example, you can use Azure Multi-factor authentication to enable strong authentication for users. In that case, you will use the end-user templates of Azure MFA.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Spusťte nasazení pomocí [dokumentace plánování nasazení podmíněného přístupu](plan-conditional-access.md).
+* Start your deployment with the [Conditional Access deployment planning documentation](plan-conditional-access.md).

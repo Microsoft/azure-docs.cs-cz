@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: victorh
-ms.openlocfilehash: 53a4fca0c05cd54bae6d01d07e72e1033a247a05
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: afdb5d256c33042655c122e9c84a4ab07c94f14c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327370"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470034"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Kurz: Konfigurace aplikační brány s ukončením protokolu SSL pomocí Azure Portal
 
@@ -21,10 +21,10 @@ Pomocí Azure Portal můžete nakonfigurovat [Aplikační bránu](overview.md) s
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+> * Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 > * Vytvořit aplikační bránu s certifikátem
 > * Vytvoření virtuálních počítačů používaných jako servery back-end
-> * Otestování aplikační brány
+> * Testování brány Application Gateway
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 V této části použijete [příkaz New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) k vytvoření certifikátu podepsaného svým držitelem. Certifikát nahrajete do Azure Portal při vytváření naslouchacího procesu pro službu Application Gateway.
 
@@ -62,14 +62,14 @@ Použijte [příkaz Export-vybíráte](https://docs.microsoft.com/powershell/mod
 > V hesle souboru. pfx nepoužívejte žádné speciální znaky. Jsou podporovány pouze alfanumerické znaky.
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
   -Password $pwd
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
 
 1. V levé nabídce Azure Portal vyberte **vytvořit prostředek** . Zobrazí se **nové** okno.
 
@@ -79,28 +79,28 @@ Export-PfxCertificate `
 
 1. Na kartě **základy** zadejte tyto hodnoty pro následující nastavení služby Application Gateway:
 
-   - **Skupina prostředků**: Jako skupinu prostředků vyberte **myResourceGroupAG** . Pokud neexistuje, vyberte **vytvořit novou** a vytvořte ji.
-   - **Název aplikační brány**: Jako název služby Application Gateway zadejte *myAppGateway* .
+   - **Skupina prostředků**: pro skupinu prostředků vyberte **myResourceGroupAG** . Pokud neexistuje, vyberte **vytvořit novou** a vytvořte ji.
+   - **Název aplikační brány**: jako název služby Application Gateway zadejte *myAppGateway* .
 
-        ![Vytvořit novou aplikační bránu: Základní informace](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+        ![Vytvořit novou aplikační bránu: Základy](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2.  Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť. Můžete buď vytvořit novou virtuální síť, nebo použít existující. V tomto příkladu vytvoříte novou virtuální síť ve stejnou chvíli, kdy vytvoříte Aplikační bránu. Instance Application Gateway se vytvářejí v oddělených podsítích. V tomto příkladu vytvoříte dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery.
 
     V části **Konfigurovat virtuální síť**vytvořte novou virtuální síť výběrem možnosti **vytvořit nový**. V okně **vytvořit virtuální síť** , které se otevře, zadejte následující hodnoty pro vytvoření virtuální sítě a dvě podsítě:
 
-    - **Název**: Jako název virtuální sítě zadejte *myVNet* .
+    - **Název**: jako název virtuální sítě zadejte *myVNet* .
 
-    - **Název podsítě** (Application Gateway podsíť): V mřížce **podsítě** se zobrazí podsíť s názvem *výchozí*. Změňte název této podsítě na *myAGSubnet*.<br>Podsíť aplikační brány může obsahovat jenom aplikační brány. Žádné další prostředky nejsou povoleny.
+    - **Název podsítě** (Application Gateway podsíť): v mřížce **podsítě** se zobrazí podsíť s názvem *výchozí*. Změňte název této podsítě na *myAGSubnet*.<br>Podsíť aplikační brány může obsahovat jenom aplikační brány. Žádné další prostředky nejsou povoleny.
 
-    - **Název podsítě** (podsíť back-end serveru): Ve druhém řádku mřížky **podsítě** zadejte *myBackendSubnet* do sloupce **název podsítě** .
+    - **Název podsítě** (podsíť back-end serveru): v druhém řádku mřížky **podsítě** zadejte *myBackendSubnet* do sloupce **název podsítě** .
 
-    - **Rozsah adres** (podsíť back-end serveru): V druhém řádku mřížky **podsítě** zadejte rozsah adres, který se nepřekrývá s rozsahem adres *myAGSubnet*. Pokud má například rozsah adres *myAGSubnet* 10.0.0.0/24, zadejte pro rozsah adres *myBackendSubnet* *10.0.1.0/24* .
+    - **Rozsah adres** (podsíť back-end serveru): ve druhém řádku mřížky **podsítě** zadejte rozsah adres, který se nepřekrývá s rozsahem adres *myAGSubnet*. Pokud má například rozsah adres *myAGSubnet* 10.0.0.0/24, zadejte pro rozsah adres *myBackendSubnet* *10.0.1.0/24* .
 
     Výběrem **OK** zavřete okno **vytvořit virtuální síť** a uložte nastavení virtuální sítě.
 
     ![Vytvořit novou aplikační bránu: virtuální síť](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
     
-3. Na kartě **základy** přijměte výchozí hodnoty pro ostatní nastavení a potom vyberte **další: Front-endové.**
+3. Na kartě **základy** přijměte výchozí hodnoty pro ostatní nastavení a potom vyberte **Další: front-endu**.
 
 ### <a name="frontends-tab"></a>Karta front-endu
 
@@ -112,7 +112,7 @@ Export-PfxCertificate `
 
    ![Vytvořit novou aplikační bránu: front-endové](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-3. Vyberte **další: Back-** endy.
+3. Vyberte **Další: back-endy**.
 
 ### <a name="backends-tab"></a>Karta back-endy
 
@@ -122,16 +122,16 @@ Back-end fond slouží ke směrování požadavků na servery back-end, které o
 
 2. V okně **Přidat fond back-end** , které se otevře, zadejte následující hodnoty a vytvořte prázdný back-end fond:
 
-    - **Název**: Jako název back-end fondu zadejte *myBackendPool* .
-    - **Přidat back-end fond bez cílů**: Vyberte **Ano** , pokud chcete vytvořit fond back-end bez cílů. Po vytvoření aplikační brány přidáte cíle back-endu.
+    - **Název**: jako název back-end fondu zadejte *myBackendPool* .
+    - **Přidat back-end fond bez cílů**: vyberte **Ano** , pokud chcete vytvořit back-end fond bez cílů. Po vytvoření aplikační brány přidáte cíle back-endu.
 
 3. V okně **Přidat fond back-endu** vyberte **Přidat** a uložte konfiguraci fondu back-end a vraťte se na kartu back- **endy** .
 
    ![Vytvořit novou aplikační bránu: back-endy](./media/application-gateway-create-gateway-portal/application-gateway-create-backends.png)
 
-4. Na kartě **back-endy** vyberte **další: Konfigurace**.
+4. Na kartě **back-endy** vyberte **Další: Konfigurace**.
 
-### <a name="configuration-tab"></a>Karta Konfigurace
+### <a name="configuration-tab"></a>Karta konfigurace
 
 Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fondu, který jste vytvořili pomocí pravidla směrování.
 
@@ -141,18 +141,18 @@ Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fond
 
 3. Pravidlo směrování vyžaduje naslouchací proces. Na kartě **naslouchací proces** v okně **Přidat pravidlo směrování** zadejte následující hodnoty pro naslouchací proces:
 
-    - **Název naslouchacího procesu**: Jako název naslouchacího procesu zadejte *MyListener* .
-    - **IP adresa front-endu**: Vyberte **veřejné** a zvolte veřejnou IP adresu, kterou jste vytvořili pro front-end.
-    - **Protokol**: Vyberte **https**.
-    - **Port**: Pro port je zadáno ověření 443.
+    - **Název naslouchacího procesu**: jako název naslouchacího procesu zadejte *MyListener* .
+    - **Front-end IP adresa**: vyberte **veřejné** a zvolte veřejnou IP adresu, kterou jste vytvořili pro front-end.
+    - **Protokol**: vyberte **https**.
+    - **Port**: pro port se zadá ověření 443.
 
    V části **certifikát https**:
 
    - **Soubor certifikátu PFX** – vyhledejte a vyberte soubor c:\appgwcert.pfx, který jste vytvořili dříve.
    - **Název certifikátu** – jako název certifikátu zadejte *mycert1* .
-   - **Heslo** – zadejte *Azure123456.* jako heslo.
+   - **Heslo** – zadejte *Azure123456* hesla.
   
-        Přijměte výchozí hodnoty pro ostatní nastavení na kartě **naslouchací proces** a potom vyberte kartu cílení na **back-end** a nakonfigurujte zbývající část pravidla směrování.
+        Přijměte výchozí hodnoty pro ostatní nastavení na kartě **naslouchací proces** a potom vyberte kartu **cílení na back-end** a nakonfigurujte zbývající část pravidla směrování.
 
    ![Vytvoření nové aplikační brány: naslouchací proces](./media/create-ssl-portal/application-gateway-create-rule-listener.png)
 
@@ -160,13 +160,13 @@ Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fond
 
 5. Pro **Nastavení http**vyberte **vytvořit novou** a vytvořte nové nastavení http. Nastavením protokolu HTTP se určí chování pravidla směrování. V okně **Přidat nastavení protokolu HTTP** , které se otevře, zadejte *myHTTPSetting* pro **název nastavení http**. Přijměte výchozí hodnoty pro ostatní nastavení v okně **Přidat nastavení http** a pak vyberte **Přidat** a vraťte se do okna **Přidat pravidlo směrování** . 
 
-   ![Vytvořit novou aplikační bránu: Nastavení HTTP](./media/create-ssl-portal/application-gateway-create-httpsetting.png)
+   ![Vytvořit novou aplikační bránu: nastavení HTTP](./media/create-ssl-portal/application-gateway-create-httpsetting.png)
 
 6. V okně **Přidat pravidlo směrování** vyberte **Přidat** a uložte pravidlo směrování a vraťte se na kartu **Konfigurace** .
 
    ![Vytvoření nové aplikační brány: pravidlo směrování](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-backends.png)
 
-7. Vyberte **další: Značky** a potom **další: Zkontrolovat + vytvořit**.
+7. Vyberte **Další: značky** a potom **Další: zkontrolovat + vytvořit**.
 
 ### <a name="review--create-tab"></a>Revize + vytvořit kartu
 
@@ -191,16 +191,16 @@ Uděláte to takto:
 
 1. Zadejte tyto hodnoty na kartě **základy** pro následující nastavení virtuálního počítače:
 
-    - **Skupina prostředků**: Jako název skupiny prostředků vyberte **myResourceGroupAG** .
-    - **Název virtuálního počítače**: Jako název virtuálního počítače zadejte *myVM* .
-    - **Uživatelské jméno**: Jako uživatelské jméno správce zadejte *azureuser* .
-    - **Heslo**: Enter *Azure123456!* pro heslo správce.
-4. Přijměte ostatní výchozí hodnoty a potom **vyberte Další: Disky**.  
-5. Přijměte výchozí hodnoty na kartě **disky** a **potom vyberte Další: Sítě**.
-6. Na kartě **sítě** ověřte, že je pro **virtuální síť** vybraný **myVNet** a že **podsíť** je nastavená na **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a potom **vyberte Další: Správa**.
+    - **Skupina prostředků**: pro název skupiny prostředků vyberte **myResourceGroupAG** .
+    - **Název virtuálního počítače**: jako název virtuálního počítače zadejte *myVM* .
+    - **Uživatelské jméno**: jako uživatelské jméno správce zadejte *azureuser* .
+    - **Heslo**: jako heslo správce zadejte *Azure123456* .
+4. Přijměte ostatní výchozí hodnoty a potom vyberte **Další: disky**.  
+5. Přijměte výchozí hodnoty na kartě **disky** a potom vyberte **Další: sítě**.
+6. Na kartě **sítě** ověřte, že je pro **virtuální síť** vybraný **myVNet** a že **podsíť** je nastavená na **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a potom vyberte **Další: Správa**.
 
    Application Gateway může komunikovat s instancemi mimo virtuální síť, ve které je, ale je potřeba zajistit připojení k IP adrese.
-1. Na kartě **Správa** nastavte diagnostiku **spouštění** na **vypnuto**. Přijměte ostatní výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
+1. Na kartě **Správa** nastavte **diagnostiku spouštění** na **vypnuto**. Přijměte ostatní výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
 2. Na kartě **Revize + vytvořit** zkontrolujte nastavení, opravte chyby ověřování a potom vyberte **vytvořit**.
 3. Než budete pokračovat, počkejte na dokončení nasazení.
 
@@ -242,17 +242,17 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
     ![Přidání back-endových serverů](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 7. Než budete pokračovat k dalšímu kroku, počkejte na dokončení nasazení.
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
 1. Vyberte **všechny prostředky**a pak vyberte **myAGPublicIPAddress**.
 
     ![Záznam veřejné IP adresy aplikační brány](./media/create-ssl-portal/application-gateway-ag-address.png)
 
-2. Do adresního řádku prohlížeče zadejte *https://\<your IP adresa aplikační brány @ no__t-2*.
+2. Do panelu Adresa v prohlížeči zadejte *https://\<IP adresa služby Application gateway\>* .
 
    Pokud chcete upozornění zabezpečení přijmout, pokud jste použili certifikát podepsaný svým držitelem, vyberte **Podrobnosti** (nebo **Upřesnit** na Chrome) a pak se na webovou stránku dostanete takto:
 
@@ -260,7 +260,7 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
     Potom se zobrazí váš zabezpečený web služby IIS, jak je znázorněno v následujícím příkladu:
 
-    ![Otestování základní adresy URL v aplikační bráně](./media/create-ssl-portal/application-gateway-iistest.png)
+    ![Testování základní adresy URL v bráně Application Gateway](./media/create-ssl-portal/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>Další kroky
 

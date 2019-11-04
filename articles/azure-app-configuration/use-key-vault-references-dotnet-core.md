@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 277333cbca5a31fdc08ae943d2ff61c35d2c9310
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 992cface653bf3fe52afc7efa3f17573fcf91399
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802359"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469649"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Kurz: použití odkazů Key Vault v aplikaci ASP.NET Core
 
@@ -123,7 +123,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. V následujících příkazech přidejte tajné klíče místo *ClientID* a *ClientSecret* do správce tajných klíčů. Příkazy musí být spuštěny ve stejném adresáři jako soubor *. csproj* .
+1. Přidání tajných kódů pro *ClientID* a *ClientSecret* do správce tajných klíčů – Nástroj pro ukládání citlivých dat, která jste přidali do souboru *. csproj* v [rychlém startu: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikací Azure](./quickstart-aspnet-core-app.md). Tyto příkazy musí být spuštěny ve stejném adresáři jako soubor *. csproj* .
 
     ```
     dotnet user-secrets set ConnectionStrings:KeyVaultClientId <clientId-of-your-service-principal>

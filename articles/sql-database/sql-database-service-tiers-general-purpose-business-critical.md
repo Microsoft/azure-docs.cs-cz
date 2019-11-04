@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: 7b5fd9800fdd2ee3b46087308f81f506e3e09e03
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a971b428da72028bcabd874e848d53bc2392a0f6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034960"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496112"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database úrovní služeb
 
@@ -32,29 +32,29 @@ Tento článek pojednává o rozdílech, které se týkají porovnání úrovní
 
 Následující tabulka popisuje klíčové rozdíly mezi úrovněmi služeb pro nejnovější generaci (Gen5). Všimněte si, že vlastnosti vrstvy služeb se můžou lišit v Izolovaná databáze a spravované instanci.
 
-| | Typ prostředku | Pro obecné účely |  Hyperškálovatelný | Pro důležité obchodní informace |
+| | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
 |:---:|:---:|:---:|:---:|:---:|
 | **Nejlepší pro** | |  Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem. | Většina obchodních úloh. Automatické škálování velikosti úložiště až na 100 TB, škálování kapalinových vertikálních a horizontálních výpočetních škálování a rychlé obnovení databáze. | OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
-|  **K dispozici v typu prostředku:** ||Jedna databáze/elastický fond/spravovaná instance | Samostatná databáze | Jedna databáze/elastický fond/spravovaná instance |
+|  **K dispozici v typu prostředku:** ||Jedna databáze/elastický fond/spravovaná instance | Izolovaná databáze | Jedna databáze/elastický fond/spravovaná instance |
 | **Velikost výpočetního prostředí**|Izolovaná databáze/elastický fond | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra |
-| | Spravovaná instance | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Není k dispozici | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
-| | Fondy spravovaných instancí | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Není k dispozici | Není k dispozici |
-| **Typ úložiště** | Všechny | Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
+| | Spravovaná instance | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Nevztahuje se | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| | Fondy spravovaných instancí | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Nevztahuje se | Nevztahuje se |
+| **Typ úložiště** | Všechno | Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
 | **Velikost databáze** | Izolovaná databáze/elastický fond | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
-| | Spravovaná instance  | 32 GB – 8 TB | Není k dispozici | 32 GB – 4 TB |
+| | Spravovaná instance  | 32 GB – 8 TB | Nevztahuje se | 32 GB – 4 TB |
 | **Velikost úložiště** | Izolovaná databáze/elastický fond | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
-| | Spravovaná instance  | 32 GB – 8 TB | Není k dispozici | 32 GB – 4 TB |
-| **Velikost databáze TempDB** | Izolovaná databáze/elastický fond | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
-| | Spravovaná instance  | [24 GB na vCore](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Není k dispozici | Až 4 TB – [omezeno velikostí úložiště](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-| **Propustnost zápisu protokolu** | Samostatná databáze | [1,875 MB/s na vCore (max. 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | 100 MB/s | [6 MB/s na vCore (max. 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
-| | Spravovaná instance | [3 MB/s na vCore (max. 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Není k dispozici | [4 MB/s na Vcore (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-|**Dostupnost**|Všechny| 99,99% |  [99,95% s jednou sekundární replikou, 99,99% s více replikami](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99% <br/> [99,995% s redundantní jedinou databází zóny](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
-|**Vytvářet**|Všechny|RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů)| RA-GRS, 7 dní, časový interval pro obnovení v čase konstanty (PITR) | RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů) |
-|**OLTP v paměti** | | Není k dispozici | Není k dispozici | K dispozici |
-|**Repliky jen pro čtení**| | 0,8  | 0 - 4 | 1 (integrovaná, zahrnutá v ceně) |
-|**Ceny a fakturace** | Samostatná databáze | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. | účtují se [Vcore pro každou repliku a využité úložiště](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se ještě neúčtuje. | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. |
-|| Spravovaná instance | účtuje se [Vcore a rezervované úložiště](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.<br/>Úložiště zálohování se ještě neúčtuje. | Není k dispozici | účtuje se [Vcore a rezervované úložiště](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.<br/>Úložiště zálohování se ještě neúčtuje. | 
-|**Modely slev**| | [Rezervované instance](sql-database-reserved-capacity.md)<br/>[Zvýhodněné hybridní využití Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování| [Zvýhodněné hybridní využití Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování| [Rezervované instance](sql-database-reserved-capacity.md)<br/>[Zvýhodněné hybridní využití Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování|
+| | Spravovaná instance  | 32 GB – 8 TB | Nevztahuje se | 32 GB – 4 TB |
+| **Velikost databáze TempDB** | Izolovaná databáze/elastický fond | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
+| | Spravovaná instance  | [24 GB na vCore](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Nevztahuje se | Až 4 TB – [omezeno velikostí úložiště](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| **Propustnost zápisu protokolu** | Izolovaná databáze | [1,875 MB/s na vCore (max. 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/s | [6 MB/s na vCore (max. 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
+| | Spravovaná instance | [3 MB/s na vCore (max. 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Nevztahuje se | [4 MB/s na Vcore (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+|**Dostupnost**|Všechno| 99,99 % |  [99,95% s jednou sekundární replikou, 99,99% s více replikami](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99 % <br/> [99,995% s redundantní jedinou databází zóny](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**Vytvářet**|Všechno|RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů)| RA-GRS, 7 dní, časový interval pro obnovení v čase konstanty (PITR) | RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů) |
+|**OLTP v paměti** | | Nevztahuje se | Nevztahuje se | Dostupné |
+|**Repliky jen pro čtení**| | 0  | 0 - 4 | 1 (integrovaná, zahrnutá v ceně) |
+|**Ceny a fakturace** | Izolovaná databáze | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. | účtují se [Vcore pro každou repliku a využité úložiště](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se ještě neúčtuje. | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. |
+|| Managed Instance | účtuje se [Vcore a rezervované úložiště](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.<br/>Úložiště zálohování se ještě neúčtuje. | Nevztahuje se | účtuje se [Vcore a rezervované úložiště](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.<br/>Úložiště zálohování se ještě neúčtuje. | 
+|**Modely slev**| | [Rezervované instance](sql-database-reserved-capacity.md)<br/>[Zvýhodněné hybridní využití Azure](sql-database-azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování| [Zvýhodněné hybridní využití Azure](sql-database-azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování| [Rezervované instance](sql-database-reserved-capacity.md)<br/>[Zvýhodněné hybridní využití Azure](sql-database-azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování|
 
 Další informace najdete v podrobných rozdílech mezi úrovněmi služby v izolovaných [databázích (Vcore)](sql-database-vcore-resource-limits-single-databases.md), [fondech s izolovanými databázemi (Vcore)](sql-database-dtu-resource-limits-single-databases.md), izolovanými databázemi [(DTU)](sql-database-dtu-resource-limits-single-databases.md), fondy izolovaných [databází (DTU)](sql-database-dtu-resource-limits-single-databases.md)a [spravovanou instancí](sql-database-managed-instance-resource-limits.md) . stránky.
 

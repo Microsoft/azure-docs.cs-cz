@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b0fab51e002ecb431bf68f58984290889296b2a9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097546"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470104"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -25,9 +25,14 @@ Azure poskytuje integrovanou diagnostiku, která vám pomůže s laděním [apli
 
 Tento článek používá [Azure Portal](https://portal.azure.com) a Azure CLI pro práci s diagnostickými protokoly. Informace o práci s diagnostickými protokoly pomocí sady Visual Studio najdete v tématu [řešení potíží s Azure v aplikaci Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
-|type|Platforma|Location|Popis|
+> [!NOTE]
+> Kromě pokynů k protokolování v tomto článku je k dispozici nová integrovaná funkce protokolování s monitorováním Azure. Tuto funkci najdete na stránce [protokoly a v části nastavení diagnostiky (Preview)](https://aka.ms/appsvcblog-azmon). 
+>
+>
+
+|Typ|Platforma|Umístění|Popis|
 |-|-|-|-|
-| Protokolování aplikace | Windows, Linux | App Service objekty blob systému souborů nebo Azure Storage | Protokoluje zprávy vygenerované kódem vaší aplikace. Zprávy mohou být generovány webovým rozhraním, které si zvolíte, nebo z kódu vaší aplikace přímo pomocí standardního vzoru protokolování vašeho jazyka. Každé zprávě je přiřazena jedna z následujících kategorií: **Kritická**, **Chyba**, **Upozornění**, **informace**, **ladění**a **trasování**. Pokud povolíte protokolování aplikací, můžete vybrat, jak chcete, aby protokolování bylo, nastavením úrovně závažnosti.|
+| Protokolování aplikací | Windows, Linux | App Service objekty blob systému souborů nebo Azure Storage | Protokoluje zprávy vygenerované kódem vaší aplikace. Zprávy mohou být generovány webovým rozhraním, které si zvolíte, nebo z kódu vaší aplikace přímo pomocí standardního vzoru protokolování vašeho jazyka. Každé zprávě je přiřazena jedna z následujících kategorií: **kritická**, **Chyba**, **Upozornění**, **informace**, **ladění**a **trasování**. Pokud povolíte protokolování aplikací, můžete vybrat, jak chcete, aby protokolování bylo, nastavením úrovně závažnosti.|
 | Protokolování webového serveru| Windows | App Service nebo objekty blob Azure Storage systému souborů| Nezpracovaná data požadavku HTTP ve [formátu W3C Extended](/windows/desktop/Http/w3c-logging). Každá zpráva protokolu obsahuje data, jako je například metoda HTTP, identifikátor URI prostředku, IP adresa klienta, port klienta, uživatelský agent, kód odpovědi atd. |
 | Podrobné protokolování chyb | Windows | App Service systému souborů | Kopie chybových stránek *. htm* , které byly odeslány do prohlížeče klienta. Z bezpečnostních důvodů by podrobné chybové stránky neměly být odesílány klientům v produkčním prostředí, ale App Service mohou tuto chybovou stránku uložit pokaždé, když dojde k chybě aplikace, která má kód HTTP 400 nebo vyšší. Stránka může obsahovat informace, které vám pomohou určit, proč Server vrací kód chyby. |
 | Trasování chybných požadavků | Windows | App Service systému souborů | Podrobné informace o trasování o neúspěšných žádostech, včetně trasování komponent služby IIS použitých ke zpracování žádosti a času provedeného v každé součásti. To je užitečné, pokud chcete zlepšit výkon webu nebo izolovat konkrétní chybu protokolu HTTP. Jedna složka je vygenerována pro každou neúspěšnou žádost, která obsahuje soubor protokolu XML, a šablonu stylů XSL pro zobrazení souboru protokolu s. |
@@ -45,7 +50,7 @@ Pokud chcete povolit protokolování aplikací pro aplikace pro Windows v [Azure
 
 Vyberte možnost **zapnuto** buď pro **protokolování aplikace (systém souborů)** , nebo **protokolování aplikace (BLOB)** , nebo pro obojí. 
 
-Možnost **systému souborů** je určena pro dočasné účely ladění a sama se odpíná za 12 hodin. Možnost **BLOB** je určena pro dlouhodobé protokolování a potřebuje kontejner úložiště objektů BLOB k zápisu protokolů do.  Možnost **BLOB** obsahuje taky další informace v protokolových zprávách, jako je ID instance virtuálního počítače v protokolu (`InstanceId`), ID vlákna (`Tid`) a podrobnější časové razítko ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)).
+Možnost **systému souborů** je určena pro dočasné účely ladění a sama se odpíná za 12 hodin. Možnost **BLOB** je určena pro dlouhodobé protokolování a potřebuje kontejner úložiště objektů BLOB k zápisu protokolů do.  Možnost **BLOB** obsahuje taky další informace v protokolových zprávách, jako je ID počáteční instance virtuálního počítače zprávy protokolu (`InstanceId`), ID vlákna (`Tid`) a podrobnější časové razítko ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)).
 
 > [!NOTE]
 > Do úložiště objektů BLOB se teď dají zapisovat jenom protokoly aplikací .NET. Protokoly aplikací v jazyce Java, PHP, Node. js a Python lze ukládat pouze do App Service systému souborů (bez úprav kódu pro zápis protokolů do externího úložiště).
@@ -59,13 +64,13 @@ Možnost **systému souborů** je určena pro dočasné účely ladění a sama 
 
 Vyberte **úroveň**nebo úroveň podrobností, které se mají protokolovat. V následující tabulce jsou uvedeny kategorie protokolů, které jsou součástí jednotlivých úrovní:
 
-| Level | Zahrnuté kategorie |
+| Úroveň | Zahrnuté kategorie |
 |-|-|
 |**Disabled** (Zakázáno) | Žádné |
 |**Chyba** | Chyba, kritická |
 |**Upozornění** | Upozornění, chyba, kritická|
-|**Informace o** | Informace, varování, chyba, kritické|
-|**Verbose** | Trasování, ladění, informace, varování, chyba, kritická (všechny kategorie) |
+|**Informace** | Informace, varování, chyba, kritické|
+|**Podrobné** | Trasování, ladění, informace, varování, chyba, kritická (všechny kategorie) |
 
 Po dokončení vyberte **Uložit**.
 
@@ -107,9 +112,9 @@ Oba typy protokolů jsou uloženy v App Service systému souborů. Zachovají se
 
 ## <a name="add-log-messages-in-code"></a>Přidat protokolové zprávy v kódu
 
-V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Příklad:
+V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Například:
 
-- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Příklad:
+- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Například:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -137,12 +142,12 @@ Pokud chcete streamovat živé vysílání v [Cloud Shell](../cloud-shell/overvi
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Příklad:
+Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Například:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Příklad:
+Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Například:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -158,8 +163,8 @@ Pokud nakonfigurujete možnost Azure Storage objekty blob pro typ protokolu, bud
 
 V případě protokolů uložených v App Serviceovém systému souborů nejjednodušší způsob, jak stáhnout soubor ZIP v prohlížeči v:
 
-- Aplikace pro Linux/kontejner:`https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
-- Aplikace pro Windows:`https://<app-name>.scm.azurewebsites.net/api/dump`
+- Linux/kontejnerové aplikace: `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
+- Aplikace pro Windows: `https://<app-name>.scm.azurewebsites.net/api/dump`
 
 Pro aplikace Linux/kontejner obsahuje soubor ZIP protokoly výstupu konzoly hostitele Docker i kontejneru Docker. Pro aplikaci s horizontálním rozšířením souboru ZIP obsahuje jednu sadu protokolů pro každou instanci. V App Service systému souborů jsou tyto soubory protokolu obsahem adresáře */Home/LogFiles* .
 
@@ -169,8 +174,8 @@ V případě aplikací pro Windows soubor ZIP obsahuje obsah adresáře *D:\Home
 |-|-|-|
 | **Protokoly aplikací** |*/LogFiles/Application/* | Obsahuje jeden nebo více textových souborů. Formát zpráv protokolu závisí na poskytovateli protokolování, který používáte. |
 | **Trasování chybných žádostí** | */LogFiles/W3SVC#########/* | Obsahuje soubory XML a soubor XSL. Formátované soubory XML můžete zobrazit v prohlížeči. |
-| **Podrobné protokoly chyb** | */LogFiles/DetailedErrors/* | Obsahuje soubory chyb HTM. Soubory HTM můžete zobrazit v prohlížeči.<br/>Dalším způsobem, jak zobrazit trasování chybných požadavků, je přejít na stránku aplikace na portálu. V nabídce vlevo vyberte diagnostikovat **a řešit problémy**, vyhledejte **protokoly pro trasování chybných požadavků**a potom klikněte na ikonu pro procházení a zobrazení požadovaného trasování. |
-| **Protokoly webového serveru** | */LogFiles/http/RawLogs/* | Obsahuje textové soubory formátované pomocí [rozšířeného formátu souboru protokolu W3C](/windows/desktop/Http/w3c-logging). Tyto informace lze číst pomocí textového editoru nebo nástroje, jako je například [analyzátor protokolů](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>App Service nepodporuje `s-computername`pole, `s-ip`, ani `cs-version` . |
+| **Podrobné protokoly chyb** | */LogFiles/DetailedErrors/* | Obsahuje soubory chyb HTM. Soubory HTM můžete zobrazit v prohlížeči.<br/>Dalším způsobem, jak zobrazit trasování chybných požadavků, je přejít na stránku aplikace na portálu. V nabídce vlevo vyberte **diagnostikovat a řešit problémy**, vyhledejte **protokoly pro trasování chybných požadavků**a potom klikněte na ikonu pro procházení a zobrazení požadovaného trasování. |
+| **Protokoly webového serveru** | */LogFiles/http/RawLogs/* | Obsahuje textové soubory formátované pomocí [rozšířeného formátu souboru protokolu W3C](/windows/desktop/Http/w3c-logging). Tyto informace lze číst pomocí textového editoru nebo nástroje, jako je například [analyzátor protokolů](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>App Service nepodporuje pole `s-computername`, `s-ip`ani `cs-version`. |
 | **Protokoly nasazení** | */Logfiles/Git/* a */Deployments/* | Obsahují protokoly generované interními procesy nasazení a protokoly pro nasazení Git. |
 
 ## <a name="nextsteps"></a> Další kroky

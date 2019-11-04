@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 3c3c54faa882a38fb6c55c9fc0476a569f25cb98
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638323"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486624"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Vysvětlení, co je pro vaši aplikaci LUIS dobré projevy
 
@@ -68,7 +68,7 @@ Každý záměr musí mít příklad projevy, nejméně 15. Pokud máte záměr,
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Přidat malé skupiny s 15 projevy pro každou iteraci vytváření
 
-V každé iteraci modelu nepřidávejte velké množství projevy. Přidejte projevy do množství 15. [](luis-how-to-train.md)Znovu proveďte výuku, [publikování](luis-how-to-publish-app.md)a [testování](luis-interactive-test.md) .  
+V každé iteraci modelu nepřidávejte velké množství projevy. Přidejte projevy do množství 15. Znovu proveďte [výuku](luis-how-to-train.md), [publikování](luis-how-to-publish-app.md)a [testování](luis-interactive-test.md) .  
 
 LUIS vytváří efektivní modely s projevy, které pečlivě vybral Autor modelu LUIS. Přidání příliš velkého počtu projevy není důležité, protože představuje nejasnost.  
 
@@ -88,9 +88,9 @@ Diakritická znaménka jsou značky nebo znaménka v rámci textu, jako napřík
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-Pokud vaše aplikace zapne normalizaci, skóre v testovacím podokně, dávkových testech a dotazech koncového bodu se změní pro všechny projevy pomocí diakritických znamének nebo interpunkce.
+Pokud vaše aplikace zapne normalizaci, skóre v **testovacím** podokně, dávkových testech a dotazech koncového bodu se změní pro všechny projevy pomocí diakritických znamének nebo interpunkce.
 
-Zapněte normalizaci utterance pro diakritická znaménka nebo interpunkční znaménka do souboru aplikace Luis JSON `settings` v parametru.
+Zapněte normalizaci utterance pro diakritická znaménka nebo interpunkční znaménka do souboru aplikace LUIS JSON v parametru `settings`.
 
 ```JSON
 "settings": [
@@ -101,20 +101,20 @@ Zapněte normalizaci utterance pro diakritická znaménka nebo interpunkční zn
 
 Normalizace **interpunkce** znamená, že před tím, než se vaše modely vyškole a ještě před dokončením dotazů na koncové body, se z projevy odeberou interpunkční znaménka. 
 
-Normalizace **diakritických znamének** nahradí znaky diakritikou v projevy pomocí regulárních znaků. Například: `Je parle français` se bude `Je parle francais`jednat o. 
+Normalizace **diakritických znamének** nahradí znaky diakritikou v projevy pomocí regulárních znaků. Například: `Je parle français` se budou `Je parle francais`. 
 
 Normalizace neznamená, že se v příkladech projevy nebo prediktivních odpovědí nezobrazí interpunkce a diakritická znaménka, a to jenom tak, že se během školení a předpovědi budou ignorovat.
 
 
 ### <a name="punctuation-marks"></a>Interpunkční značky
 
-Rozdělení je samostatný token v LUIS. Utterance, která obsahuje tečku na konci oproti utterance, která neobsahuje tečku na konci, je dvě samostatné projevy a může získat dvě různé předpovědi. 
+Interpunkce je samostatný token v LUIS. Utterance, která obsahuje tečku na konci oproti utterance, která neobsahuje tečku na konci, je dvě samostatné projevy a může získat dvě různé předpovědi. 
 
 Pokud interpunkční znaménko není normalizováno, LUIS Neignoruje interpunkční znaménka ve výchozím nastavení, protože některé klientské aplikace mohou na tyto značky umístit význam. Ujistěte se, že váš příklad projevy použít interpunkční znaménka i bez interpunkce v případě, že oba styly vrátí stejné relativní skóre. 
 
-Ujistěte se, že model buď zpracovává interpunkce v [příklad projevy](luis-concept-utterance.md) (mají a nemají interpunkční znaménka) nebo [vzory](luis-concept-patterns.md) kde se snadněji ignorovat interpunkční znaménka zvláštní syntaxí: `I am applying for the {Job} position[.]`
+Ujistěte se, že model zpracovává interpunkční znaménka buď v [příkladu projevy](luis-concept-utterance.md) (s a bez interpunkce), nebo ve [vzorech](luis-concept-patterns.md) , kde je snazší ignorovat interpunkci se speciální syntaxí: `I am applying for the {Job} position[.]`
 
-Pokud interpunkční znaménko nemá v klientské aplikaci žádný zvláštní význam, [](#utterance-normalization) zvažte ignorování interpunkce normalizací interpunkce. 
+Pokud interpunkční znaménko nemá v klientské aplikaci žádný zvláštní význam, zvažte [ignorování interpunkce](#utterance-normalization) normalizací interpunkce. 
 
 ### <a name="ignoring-words-and-punctuation"></a>Ignorují se slova a interpunkční znaménka.
 
@@ -122,7 +122,7 @@ Chcete-li v vzorcích ignorovat určitá slova nebo interpunkční znaménka, po
 
 ## <a name="training-utterances"></a>Projevy školení
 
-Školení je všeobecně nedeterministické: předpověď utterance se může mírně lišit napříč verzemi nebo aplikacemi. Nedeterministické školení můžete odebrat tak, že aktualizujete rozhraní API pro [Nastavení verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) s `UseAllTrainingData` použitím dvojice název/hodnota, aby se použila všechna školicí data.
+Školení je všeobecně nedeterministické: předpověď utterance se může mírně lišit napříč verzemi nebo aplikacemi. Nedeterministické školení můžete odebrat tak, že aktualizujete rozhraní API pro [Nastavení verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) s `UseAllTrainingData` dvojici název/hodnota pro použití všech školicích dat.
 
 ## <a name="testing-utterances"></a>Testování projevy 
 
@@ -136,6 +136,20 @@ Po vyškolení, publikování a přijímání dotazů na [koncové body](luis-gl
 
 Projděte si [osvědčené postupy](luis-concept-best-practices.md) a použijte je jako součást běžného cyklu vytváření.
 
-## <a name="next-steps"></a>Další postup
+## <a name="label-for-word-meaning"></a>Označení pro wordový význam
+
+Pokud je volba slova nebo uspořádání slov stejná, ale neznamená to stejné, nepište je entitou. 
+
+V následujícím projevy je slovo `fair` homograf. Je pravopisné, ale má jiný význam:
+
+|Promluva|
+|--|
+|Jaký druh veletrhů se děje v oblasti Praha této léto?|
+|Je aktuální hodnocení pro Seattle na veletrzích?|
+
+Pokud jste chtěli, aby entita události vyhledala všechna data události, označte slovo `fair` v prvním utterance, ale ne za sekundu.
+
+
+## <a name="next-steps"></a>Další kroky
 Informace o výuce aplikace LUIS pro pochopení uživatelského projevy najdete v tématu věnovaném [Přidání ukázkového projevy](luis-how-to-add-example-utterances.md) .
 

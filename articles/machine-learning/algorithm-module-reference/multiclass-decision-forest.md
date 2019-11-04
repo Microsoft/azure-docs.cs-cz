@@ -1,24 +1,24 @@
 ---
 title: 'Více tříd – rozhodovací doménová struktura: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul více tříd pro rozhodovací doménovou strukturu ve službě Azure Machine Learning k vytvoření modelu Machine Learning na základě algoritmu *doménové struktury rozhodnutí* .
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul více tříd pro rozhodovací doménovou strukturu v Azure Machine Learning k vytvoření modelu machine learningu na základě algoritmu *doménové struktury rozhodnutí* .
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 80d8fc886ec62cf6abea7620f0c5763b619b5de4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 85459fe586ccbb5adb1e86b153ec63252c0cce2d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692767"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466017"
 ---
 # <a name="multiclass-decision-forest-module"></a>Modul více tříd pro rozhodovací doménovou strukturu
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vytvořit model strojového učení na základě algoritmu *rozhodovací doménové struktury* . Rozhodovací doménová struktura je model kompletování, který rychle sestaví sérii rozhodovacích stromů při učení od tagovaných dat.
 
@@ -39,9 +39,7 @@ Klasifikátor rozhodovací doménové struktury v Azure Machine Learning se skl�
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>Jak konfigurovat doménovou strukturu s více třídami
 
-
-
-1. Přidejte modul pro více **tříd pro rozhodovací doménovou strukturu** do kanálu v rozhraní. Tento modul najdete v části **Machine Learning**, **Inicializace modelu**a **klasifikace**.
+1. Přidejte modul **doménové struktury s více třídami** do kanálu v návrháři. Tento modul najdete v části **Machine Learning**, **Inicializace modelu**a **klasifikace**.
 
 2. Dvojitým kliknutím na modul otevřete podokno **vlastnosti** .
 
@@ -88,4 +86,4 @@ Po dokončení školení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

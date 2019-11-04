@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: bf87b1709c355faf6f06ff2d23b2c819f88750cd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802115"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475183"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -57,8 +57,8 @@ Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 | Iniciované uživatelem (actor) | SPN | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 | Cíl (y) | Objektu | **ID objektu** uživatele, který se přihlašuje. |
 | Další podrobnosti | TenantId | **ID tenanta** klienta Azure AD B2C. |
-| Další podrobnosti | PolicyId | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
-| Další podrobnosti | ApplicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
+| Další podrobnosti | policyId | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
+| Další podrobnosti | applicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Zobrazit protokoly auditu v Azure Portal
 
@@ -89,8 +89,7 @@ Protokoly auditu se publikují do stejného kanálu jako jiné aktivity pro Azur
 
 Abyste povolili přístup k rozhraní API pro vytváření sestav Azure AD pomocí skriptu nebo aplikace, budete potřebovat aplikaci Azure Active Directory registrovanou v Azure AD B2C tenantovi s následujícími oprávněními API:
 
-* Microsoft Graph
-  * Aplikace: číst všechna data protokolu auditu
+* Microsoft Graph > oprávnění aplikace > AuditLog. Read. All
 
 Tato oprávnění můžete povolit pro existující registraci aplikace Azure Active Directory v rámci tenanta B2C nebo vytvořit novou specifickou pro použití s automatizací protokolu auditu.
 
@@ -102,6 +101,8 @@ Postupujte podle těchto kroků, zaregistrujte aplikaci, udělte jí požadovan�
 
 ### <a name="assign-api-access-permissions"></a>Přiřazení přístupových oprávnění k rozhraní API
 
+#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+
 1. Na stránce Přehled **zaregistrovaných aplikací** vyberte **Nastavení**.
 1. V části **přístup přes rozhraní API**vyberte **požadovaná oprávnění**.
 1. Vyberte **Přidat**a pak **Vyberte rozhraní API**.
@@ -109,6 +110,22 @@ Postupujte podle těchto kroků, zaregistrujte aplikaci, udělte jí požadovan�
 1. V části **oprávnění aplikace**vyberte **číst všechna data protokolu auditu**.
 1. Vyberte tlačítko **Vybrat** a potom vyberte **Hotovo**.
 1. Vyberte **udělit oprávnění**a pak vyberte **Ano**.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+
+1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
+1. V části **konfigurovaná oprávnění**vyberte **Přidat oprávnění**.
+1. Vyberte kartu **rozhraní Microsoft API** .
+1. Vyberte **Microsoft Graph**.
+1. Vyberte **oprávnění aplikace**.
+1. Rozbalte **AuditLog** a potom zaškrtněte políčko **AuditLog. Read. All** .
+1. Vyberte **Přidat oprávnění**. Jak je směrované, počkejte několik minut, než budete pokračovat k dalšímu kroku.
+1. Vyberte **udělit souhlas správce pro (název vašeho tenanta)** .
+1. Vyberte aktuálně přihlášený účet, pokud se mu přiřadí role *globálního správce* , nebo se přihlaste pomocí účtu ve Azure AD B2C klientovi, kterému byla přiřazena role *globálního správce* .
+1. Vyberte **Přijmout**.
+1. Vyberte **aktualizovat**a pak ověřte, že "uděleno pro..." zobrazí se v části **stav** pro oprávnění *AuditLog. Read. All* . Rozšíření oprávnění může trvat několik minut.
+
+* * *
 
 ### <a name="create-client-secret"></a>Vytvořit tajný klíč klienta
 
@@ -128,15 +145,15 @@ https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByServi
 
 Následující skript prostředí PowerShell ukazuje příklad postupu dotazování rozhraní API pro vytváření sestav Azure AD. Po dotazování rozhraní API se události zaznamenávají do standardního výstupu a pak se zapíší výstup JSON do souboru.
 
-Tento skript můžete vyzkoušet v [Azure Cloud Shell](../cloud-shell/overview.md). Nezapomeňte ho aktualizovat s ID aplikace, klíčem a názvem vašeho tenanta Azure AD B2C.
+Tento skript můžete vyzkoušet v [Azure Cloud Shell](../cloud-shell/overview.md). Nezapomeňte ho aktualizovat pomocí ID aplikace, tajného kódu klienta a názvu vašeho tenanta Azure AD B2C.
 
 ```powershell
 # This script requires the registration of a Web Application in Azure Active Directory:
 # https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a GUID (registered by Global Admin)
-$ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client secret/key
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
 $tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI

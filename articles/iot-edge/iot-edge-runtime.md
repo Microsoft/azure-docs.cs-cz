@@ -1,40 +1,40 @@
 ---
 title: Přečtěte si, jak modul runtime spravuje zařízení – Azure IoT Edge | Microsoft Docs
-description: Přečtěte si, jak modul runtime Azure IoT Edge spravuje moduly, zabezpečení, komunikaci a vytváření sestav na vašich zařízeních.
+description: Přečtěte si, jak IoT Edge runtime spravuje moduly, zabezpečení, komunikaci a vytváření sestav na vašich zařízeních.
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/06/2019
+ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 49abd9e5ecee8637d830604028463650071c0198
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 94e33c855327e70f486746bcd781491823324dec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163165"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490419"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení Azure IoT Edge runtime a jeho architektury
 
-Modul runtime IoT Edge je kolekce programů, které přepínají zařízení do IoT Edge zařízení. Souhrnně IoT Edge komponenty modulu runtime umožňují zařízením IoT Edge přijímat kód, který se má spustit na hraničních zařízeních, a sdělit výsledky. 
+Modul runtime IoT Edge je kolekce programů, které přepínají zařízení do IoT Edge zařízení. Souhrnně IoT Edge komponenty modulu runtime umožňují zařízením IoT Edge přijímat kód, který se má spustit na hranici a sdělit výsledky. 
 
-Modul runtime IoT Edge provádí v IoT Edge zařízeních následující funkce:
+IoT Edge runtime zodpovídá za následující funkce na IoT Edge zařízeních:
 
 * Instalace a aktualizace úloh na zařízení.
 * Udržujte na zařízení standardy zabezpečení Azure IoT Edge.
 * Ujistěte se, že [moduly IoT Edge](iot-edge-modules.md) jsou vždycky spuštěné.
 * Oznamte stav modulu v cloudu pro vzdálené monitorování.
-* Usnadňuje komunikaci mezi navazujícími a IoT Edge zařízeními.
-* Usnadňuje komunikaci mezi moduly na zařízení IoT Edge.
-* Usnadňuje komunikaci mezi IoT Edgem zařízením a cloudem.
+* Spravujte komunikaci mezi zařízeními pro příjem dat a IoT Edgemi zařízeními.
+* Spravujte komunikaci mezi moduly na zařízení IoT Edge.
+* Spravujte komunikaci mezi IoT Edgem zařízením a cloudem.
 
 ![Modul runtime komunikuje s přehledy a stavem modulu IoT Hub](./media/iot-edge-runtime/Pipeline.png)
 
 Odpovědnosti modulu runtime IoT Edge spadají do dvou kategorií: komunikace a Správa modulů. Tyto dvě role provádí dvě komponenty, které jsou součástí modulu runtime IoT Edge. *Centrum IoT Edge* zodpovídá za komunikaci, zatímco *Agent IoT Edge* nasazuje a monitoruje moduly. 
 
-IoT Edge centrum i agent IoT Edge jsou moduly, stejně jako jakýkoli jiný modul běžící na IoT Edgem zařízení. 
+IoT Edge centrum i agent IoT Edge jsou moduly, stejně jako jakýkoli jiný modul běžící na IoT Edgem zařízení. Někdy se označují jako *běhové moduly*. 
 
 ## <a name="iot-edge-hub"></a>Centrum IoT Edge
 
@@ -45,7 +45,7 @@ IoT Edge centrum je jedním ze dvou modulů, které tvoří modul runtime Azure 
 
 IoT Edge centrum není plná verze IoT Hub spuštěná místně. K dispozici je několik věcí, které IoT Edge centrum tiše deleguje k IoT Hub. Například Centrum IoT Edge předá žádosti o ověření do IoT Hub při prvním pokusu o připojení zařízení. Po navázání prvního připojení se informace o zabezpečení ukládají místně do mezipaměti IoT Edge hub. Další připojení z tohoto zařízení jsou povolená bez nutnosti ověřování v cloudu. 
 
-Aby se snížila šířka pásma, kterou používá IoT Edge řešení, Centrum IoT Edge optimalizuje, kolik skutečných připojení se do cloudu provedlo. Centrum IoT Edge přijímá logická připojení od klientů, jako jsou moduly nebo listová zařízení, a kombinuje je s jedním fyzickým připojením ke cloudu. Podrobnosti tohoto procesu jsou pro zbytek řešení transparentní. Klienti si budou myslet, že mají vlastní připojení ke cloudu, i když se všechny odesílají přes stejné připojení. 
+Aby se snížila šířka pásma, kterou používá IoT Edge řešení, Centrum IoT Edge optimalizuje, kolik skutečných připojení se do cloudu provedlo. Centrum IoT Edge přijímá logická připojení od klientů, jako jsou moduly nebo podřízená zařízení, a kombinuje je s jedním fyzickým připojením ke cloudu. Podrobnosti tohoto procesu jsou pro zbytek řešení transparentní. Klienti si budou myslet, že mají vlastní připojení ke cloudu, i když se všechny odesílají přes stejné připojení. 
 
 ![Centrum IoT Edge je brána mezi fyzickými zařízeními a IoT Hub](./media/iot-edge-runtime/Gateway.png)
 
@@ -73,13 +73,13 @@ Chcete-li získat zprávu, zaregistrujte zpětné volání, které zpracovává 
 
 Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)jazyk sady SDK:, [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)nebo [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
-Vývojář řešení zodpovídá za zadání pravidel, která určují, jak IoT Edge hub předává zprávy mezi moduly. Pravidla směrování se definují v cloudu a přepnula se na IoT Edge hub v zařízení. Stejná syntaxe pro IoT Hub trasy se používá k definování tras mezi moduly v Azure IoT Edge. Další informace najdete v tématu [Naučte se nasazovat moduly a navázat trasy v IoT Edge](module-composition.md).   
+Vývojář řešení zodpovídá za zadání pravidel, která určují, jak IoT Edge hub předává zprávy mezi moduly. Pravidla směrování jsou definovaná v cloudu a jsou vložená dolů do IoT Edgeho centra v jeho modulu. Stejná syntaxe pro IoT Hub trasy se používá k definování tras mezi moduly v Azure IoT Edge. Další informace najdete v tématu [Naučte se nasazovat moduly a navázat trasy v IoT Edge](module-composition.md).   
 
 ![Trasy mezi moduly procházejí prostřednictvím centra IoT Edge.](./media/iot-edge-runtime/module-endpoints-with-routes.png)
 
 ## <a name="iot-edge-agent"></a>Agent IoT Edge
 
-Agent IoT Edge je druhý modul, který tvoří modul runtime Azure IoT Edge. Zodpovídá za vytváření instancí modulů, zajišťuje, že budou nadále běžet, a oznamuje stav modulů zpět do IoT Hub. Stejně jako u jakéhokoli jiného modulu používá agent IoT Edge k ukládání těchto konfiguračních dat jeho modul na vlákna. 
+Agent IoT Edge je druhý modul, který tvoří modul runtime Azure IoT Edge. Zodpovídá za vytváření instancí modulů, zajišťuje, že budou nadále běžet, a oznamuje stav modulů zpět do IoT Hub. Tato konfigurační data jsou zapsána jako vlastnost vlákna modulu IoT Edgeho agenta. 
 
 [Démon zabezpečení IoT Edge](iot-edge-security-manager.md) spustí agenta IoT Edge při spuštění zařízení. Agent z IoT Hub načte svůj modul s nevlákenou a zkontroluje manifest nasazení. Manifest nasazení je soubor JSON, který deklaruje moduly, které musí být spuštěny. 
 

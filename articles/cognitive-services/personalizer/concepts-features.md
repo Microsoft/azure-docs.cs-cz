@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756107"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490763"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
@@ -61,7 +61,7 @@ Následují příklady oborů názvů funkcí používaných aplikacemi:
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Před
+* Počasí
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,7 +69,10 @@ Následují příklady oborů názvů funkcí používaných aplikacemi:
 Obory názvů funkcí můžete pojmenovat podle vlastních konvencí, pokud jsou platné klíče JSON. Obory názvů slouží k uspořádání funkcí do různých sad a k jednoznačnému využití funkcí s podobnými názvy. Obory názvů si můžete představit jako předponu, která je přidána do názvů funkcí. Obory názvů nemůžou být vnořené.
 
 
-V následujících JSON jsou `user`, `state` a `device` obory názvů funkcí. Public Preview Poznámka: v současné době důrazně doporučujeme používat názvy pro obory názvů funkcí, které jsou založené na kódování UTF-8 a začínají s různými písmeny. Například `user`, `state` a `device` začínají `u`, `s` a `d`. V současné době by obory názvů se stejnými prvními znaky mohly způsobit kolizi v indexech použitých pro strojové učení.
+V následujících JSON jsou `user`, `state` a `device` obory názvů funkcí. 
+
+> [!Note]
+> V současné době důrazně doporučujeme používat názvy pro obory názvů funkcí, které jsou založené na kódování UTF-8 a začínají s různými písmeny. Například `user`, `state` a `device` začínají `u`, `s` a `d`. V současné době by obory názvů se stejnými prvními znaky mohly způsobit kolizi v indexech použitých pro strojové učení.
 
 Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti nebo hodnoty. Pole lze zahrnout pouze v případě, že položky pole jsou čísla. 
 

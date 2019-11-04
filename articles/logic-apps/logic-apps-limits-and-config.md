@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 52e1594f40917519d80f042a4ace77532186758b
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: e2b866ddd888261e7d8817c73952d4830a4f8147
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968602"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464018"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -273,13 +273,11 @@ IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volán�
 
 * Aby bylo možné podporovat volání, která vytváří [konektory spravované Microsoftem](../connectors/apis-list.md) , nastavte bránu firewall se *všemi* [odchozími](#outbound) IP adresami používanými těmito konektory na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod **výstupní** hlavičkou v této části a jsou seřazené podle oblasti. 
 
-* U aplikací logiky, které běží v prostředí ISE (Integration Service Environment), nezapomeňte [tyto porty otevřít](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+* Pokud chcete povolit komunikaci pro Logic Apps, které běží v prostředí ISE (Integration Service Environment), ujistěte se, že jste [tyto porty otevřeli](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
-* Aplikace logiky nemají přímý přístup k účtům Azure Storage, které mají [pravidla brány firewall](../storage/common/storage-network-security.md) a existují ve stejné oblasti. Pokud ale povolíte [odchozí IP adresy pro spravované konektory ve vaší oblasti](../logic-apps/logic-apps-limits-and-config.md#outbound), můžou Logic Apps získat přístup k účtům úložiště v jiné oblasti kromě případů, kdy použijete konektor Azure Table Storage nebo Azure Queue Storage Connector. Pro přístup k Table Storage nebo Queue Storage můžete i nadále používat Trigger a akce HTTP. V opačném případě můžete použít pokročilejší možnosti:
+* Pokud vaše aplikace logiky mají problémy s přístupem k účtům Azure Storage, které používají [brány firewall a pravidla brány firewall](../storage/common/storage-network-security.md), máte k dispozici [různé možnosti pro povolení přístupu](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
-  * Vytvořte [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), které se může připojit k prostředkům ve službě Azure Virtual Network.
-
-  * Pokud pro API Management použijete vyhrazenou vrstvu, můžete rozhraní API úložiště před tím, že použijete API Management a povolíte jeho IP adresy prostřednictvím brány firewall. V podstatě přidejte virtuální síť Azure, kterou používá API Management, do nastavení brány firewall účtu úložiště. Pak můžete použít akci API Management nebo akci protokolu HTTP pro volání rozhraní API Azure Storage. Pokud však zvolíte tuto možnost, musíte proces ověřování zpracovat sami. Další informace najdete v tématu [Jednoduchá architektura podnikové integrace](https://aka.ms/aisarch).
+  Například Logic Apps nemůžou přímo přistupovat k účtům úložiště, které používají pravidla brány firewall a a existují ve stejné oblasti. Pokud ale povolíte [odchozí IP adresy pro spravované konektory ve vaší oblasti](../logic-apps/logic-apps-limits-and-config.md#outbound), můžou vaše aplikace logiky přistupovat k účtům úložiště, které jsou v jiné oblasti, s výjimkou případů, kdy používáte konektory Azure Table Storage nebo Azure Queue Storage. Pro přístup k Table Storage nebo Queue Storage můžete místo toho použít Trigger HTTP a akce. Další možnosti najdete v tématu [přístup k účtům úložiště za branami firewall](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
 * Pro vlastní konektory, [Azure Government](../azure-government/documentation-government-overview.md)a [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/)nejsou k dispozici pevné nebo rezervované IP adresy.
 

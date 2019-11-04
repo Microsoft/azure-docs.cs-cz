@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 902bf84ebf090cf9f0f886ad1e774ff7bdfeca93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002896"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490748"
 ---
 # <a name="how-personalizer-works"></a>Jak služba Personalizace funguje
 
-Přizpůsobování využívá Machine Learning ke zjištění, jakou akci použít v kontextu. Každá výuková smyčka má model, který je vyškolen výhradně na datech, která jste jim odeslali prostřednictvím volání **Rank** a disměna. Každá výuková smyčka je zcela nezávislá na sobě. Vytvořte výukovou smyčku pro každou část nebo chování vaší aplikace, kterou chcete přizpůsobit.
+Přizpůsobování využívá Machine Learning ke zjištění, jakou akci použít v kontextu. Každá výuková smyčka má model, který je vyškolen výhradně na datech, která jste jim odeslali prostřednictvím volání **Rank** a **disměna** . Každá výuková smyčka je zcela nezávislá na sobě. Vytvořte výukovou smyčku pro každou část nebo chování vaší aplikace, kterou chcete přizpůsobit.
 
 Pro každou smyčku **volejte rozhraní API řazení s** použitím aktuálního kontextu s:
 
@@ -27,13 +27,13 @@ Pro každou smyčku **volejte rozhraní API řazení s** použitím aktuálního
 
 Rozhraní API **pořadí** se rozhodne použít buď:
 
-* _Zneužití_: Aktuální model, který určí nejlepší akci na základě minulých dat.
-* _Prozkoumat_: Místo horní akce vyberte jinou akci.
+* _Zneužití_: aktuální model pro určení nejlepší akce na základě minulých dat.
+* _Prozkoumejte_: Vyberte jinou akci namísto horní akce.
 
-API pro odměnu:
+API pro **odměnu** :
 
 * Shromažďuje data pro výuku modelu pomocí zaznamenávání funkcí a odměňování skóre každého volání pořadí.
-* Tato data používá k aktualizaci modelu na základě nastavení určeného v _zásadách Učení_.
+* Tato data používá k aktualizaci modelu na základě konfigurace zadané v _zásadách Učení_.
 
 ## <a name="architecture"></a>Architektura
 
@@ -55,9 +55,9 @@ Přizpůsobování vychází z špičkové vědy a výzkumu v oblasti [posílen�
 
 ## <a name="terminology"></a>Terminologie
 
-* **Výuková smyčka**: Výukovou smyčku můžete vytvořit pro každou část aplikace, která může být výhodou individuálního nastavení. Pokud máte více než jedno prostředí pro přizpůsobení, vytvořte smyčku pro každý z nich. 
+* **Výuková smyčka**: můžete vytvořit výukovou smyčku pro každou část aplikace, která může být výhodou individuálního nastavení. Pokud máte více než jedno prostředí pro přizpůsobení, vytvořte smyčku pro každý z nich. 
 
-* **Akce**: Akce jsou položky obsahu, jako jsou produkty nebo propagační materiály, ze kterých si můžete vybrat. Přizpůsobení zvolí hlavní akci, která se zobrazí uživatelům, označovanou jako _Akce odměňování_prostřednictvím rozhraní API pro řazení. Každá akce může mít funkce odeslané pomocí požadavku Rank.
+* **Akce**: akce jsou položky obsahu, jako jsou produkty nebo propagační akce, ze kterých si můžete vybrat. Přizpůsobení zvolí hlavní akci, která se zobrazí uživatelům, označovanou jako _Akce odměňování_prostřednictvím rozhraní API pro řazení. Každá akce může mít funkce odeslané pomocí požadavku Rank.
 
 * **Kontext**: Chcete-li zadat přesnější pořadí, zadejte informace o kontextu, například:
     * Váš uživatel.
@@ -68,19 +68,19 @@ Přizpůsobování vychází z špičkové vědy a výzkumu v oblasti [posílen�
 
     Vaše konkrétní aplikace mohou mít různé kontextové informace. 
 
-* **[Funkce](concepts-features.md)** : Jednotka informací o položce obsahu nebo kontextu uživatele.
+* **[Funkce](concepts-features.md)** : jednotka informací o položce obsahu nebo kontextu uživatele.
 
-* **Odměna**: Míra, kterou uživatel odpověděl na rozhraní API řazení, se vrátilo jako skóre mezi 0 a 1. Hodnota 0 až 1 je nastavená vaší obchodní logikou na základě toho, jak volba pomáhá dosáhnout vašich obchodních cílů přizpůsobení. 
+* **Disměna**: míra reakce uživatele na rozhraní API řazení vrátilo akci jako skóre mezi 0 a 1. Hodnota 0 až 1 je nastavená vaší obchodní logikou na základě toho, jak volba pomáhá dosáhnout vašich obchodních cílů přizpůsobení. 
 
-* **Průzkum**: Služba pro přizpůsobení zkoumá, kdy místo vrácení nejlepší akce zvolí pro uživatele jinou akci. Služba přizpůsobeného přizpůsobování zabraňuje posunu, stagnation a přizpůsobení probíhajícímu uživatelskému chování, a to zkoumáním. 
+* **Průzkum**: služba přizpůsobeného přizpůsobuje, kdy místo vrácení nejlepší akce zvolí pro uživatele jinou akci. Služba přizpůsobeného přizpůsobování zabraňuje posunu, stagnation a přizpůsobení probíhajícímu uživatelskému chování, a to zkoumáním. 
 
-* **Doba trvání experimentu**: Doba, po kterou služba přizpůsobeného přizpůsobování čeká na určitou odměnu od okamžiku, kdy pro danou událost proběhlo volání pořadí.
+* **Doba trvání experimentu**: doba, po kterou služba přizpůsobené může čekat na určitou odměnu od okamžiku, kdy pro danou událost proběhlo volání pořadí.
 
-* **Neaktivní události**: Neaktivní událost je ta, kde se říkáte Rank, ale nejste si jistí, že uživatel uvidí výsledek z důvodu rozhodnutí klientské aplikace. Neaktivní události umožňují vytvořit a uložit výsledky přizpůsobení a pak se rozhodnout o jejich zrušení později, aniž by to ovlivnilo model strojového učení.
+* **Neaktivní události**: neaktivní událost je ta, kde se říkáte Rank, ale nejste si jistí, že uživatel uvidí výsledek z důvodu rozhodnutí klientské aplikace. Neaktivní události umožňují vytvořit a uložit výsledky přizpůsobení a pak se rozhodnout o jejich zrušení později, aniž by to ovlivnilo model strojového učení.
 
-* **Model**: Model pro přizpůsobení zachycuje všechna data zjištěná v souvislosti s uživatelským chováním a získá školicí data z kombinace argumentů, které odesíláte do volání funkce Rank a disměna, a s chováním školení, které určila zásada učení. 
+* **Model**: model pro přizpůsobení zachycuje všechna data zjištěná v souvislosti s uživatelským chováním a získá školicí data z kombinace argumentů, které odesíláte do volání funkce Rank a disměna, a s chováním školení stanoveným pomocí zásad učení. 
 
-* **Zásady učení**: Způsob, jakým přizpůsobuje vlaky model každé události, bude stanoven pomocí některých meta parametrů, které mají vliv na to, jak algoritmy strojového učení fungují. Nové smyčky pro přizpůsobení začnou používat výchozí zásady učení, což může přinést střední výkon. Při spuštění [hodnocení](concepts-offline-evaluation.md)může přizpůsobovat nové zásady učení, které jsou speciálně optimalizované pro případy použití smyčky. Přizpůsobený přizpůsobování bude výrazně lepší díky zásadám optimalizovaným pro každou specifickou smyčku vygenerovanou během hodnocení.
+* **Zásady učení**: jak přizpůsobovat vlaky na každou událost se určí pomocí některých meta parametrů, které mají vliv na to, jak algoritmy strojového učení fungují. Nové smyčky pro přizpůsobení začnou používat výchozí zásady učení, což může přinést střední výkon. Při spuštění [hodnocení](concepts-offline-evaluation.md)může přizpůsobovat nové zásady učení, které jsou speciálně optimalizované pro případy použití smyčky. Přizpůsobený přizpůsobování bude výrazně lepší díky zásadám optimalizovaným pro každou specifickou smyčku vygenerovanou během hodnocení.
 
 ## <a name="example-use-cases-for-personalizer"></a>Příklady případů použití pro přizpůsobování
 
@@ -156,7 +156,7 @@ V některých architekturách může být výše uvedená sekvence těžká impl
 
 Efektivitu přizpůsobeného přizpůsobování můžete pravidelně monitorovat prováděním [offline hodnocení](how-to-offline-evaluation.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pochopení, [kde můžete použít](where-can-you-use-personalizer.md)přizpůsobování.
+Pochopení, [kde můžete použít přizpůsobování](where-can-you-use-personalizer.md).
 Provést [vyhodnocení offline](how-to-offline-evaluation.md)

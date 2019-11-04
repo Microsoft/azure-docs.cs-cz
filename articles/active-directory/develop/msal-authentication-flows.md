@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65c68e4f24dd95696cc53b92dd7e2b59d940b6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175717"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473810"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -203,7 +203,7 @@ To znamená, že jedna z následujících možností je pravdivá:
 - Poskytli jste způsob, jak uživatelům udělit souhlas s aplikací (viz [vyžádání souhlasu jednotlivého uživatele](v2-permissions-and-consent.md#requesting-individual-user-consent)).
 - Poskytli jste možnost souhlasu správce tenanta s aplikací (viz téma [souhlas správce](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
 
-Tok IWA je povolený pro aplikace .NET Desktop, .NET Core a Windows Universal Platform. V .NET Core je k dispozici pouze přetížení přebírající uživatelské jméno. Platforma .NET Core nemůže požádat o uživatelské jméno na operační systém.
+Tok IWA je povolený pro aplikace .NET Desktop, .NET Core a Windows Universal Platform. V .NET Core musíte zadat uživatelské jméno, které se IWA, protože .NET Core nemůže získat uživatelská jména z operačního systému.
   
 Další informace o souhlasu najdete v tématu [oprávnění a vyjádření souhlasu v 2.0](v2-permissions-and-consent.md).
 

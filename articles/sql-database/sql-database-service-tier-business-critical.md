@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ef1f420e4c4dbd38ad703eb0573fae36af078edb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899721"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496227"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Pro důležité obchodní informace úroveň – Azure SQL Database
 
@@ -49,7 +49,7 @@ Kromě toho Pro důležité obchodní informace cluster obsahuje integrovanou mo
 Hlavní důvody, proč byste měli zvolit Pro důležité obchodní informace úroveň služby místo Pro obecné účely úrovně:
 -   Nízké požadavky na latenci v/v – zatížení, které potřebuje rychlou odezvu z vrstvy úložiště (1-2 milisekund v průměru), by mělo používat Pro důležité obchodní informaceovou vrstvu. 
 -   Častá komunikace mezi aplikací a databází Aplikace, která nemůže využít ukládání do mezipaměti aplikační vrstvy ani [dávkování požadavků](sql-database-use-batching-to-improve-performance.md) a potřebovat poslat mnoho dotazů SQL, které je nutné rychle zpracovat, je dobrým kandidátem na pro důležité obchodní informaceovou vrstvu.
--   Velký počet aktualizací – operace vložení, aktualizace a odstranění upraví datové stránky v paměti (nezměněná stránka), které je třeba uložit do datových souborů `CHECKPOINT` s operací. Možná dojde k selhání procesu databázového stroje nebo převzetí služeb při selhání databáze s velkým počtem nezměněných stránek, což může prodloužit dobu obnovení Pro obecné účely úrovně. Pro důležité obchodní informace úroveň použijte v případě, že máte zatížení, které způsobuje mnoho změn v paměti. 
+-   Velký počet aktualizací – operace vložení, aktualizace a odstranění upraví datové stránky v paměti (nezměněná stránka), které je třeba uložit do datových souborů pomocí operace `CHECKPOINT`. Možná dojde k selhání procesu databázového stroje nebo převzetí služeb při selhání databáze s velkým počtem nezměněných stránek, což může prodloužit dobu obnovení Pro obecné účely úrovně. Pro důležité obchodní informace úroveň použijte v případě, že máte zatížení, které způsobuje mnoho změn v paměti. 
 -   Dlouho běžící transakce, které upravují data. Transakce, které jsou otevřeny po delší dobu, zabraňují zkracování souboru protokolu, který by mohl zvýšit velikost protokolu a počet [souborů virtuálního protokolu (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). Vysoký počet VLF může zpomalit obnovení databáze po převzetí služeb při selhání.
 -   Úlohy s vytvářením sestav a analytickými dotazy, které se dají přesměrovat na bezplatnou sekundární repliku jen pro čtení.
 - Vyšší odolnost a rychlejší obnovení při selhání. V případě selhání systému bude databáze na primární instanci zakázaná a jedna ze sekundárních replik se hned stala novou primární databází pro čtení a zápis, která je připravená na zpracování dotazů. Databázový stroj nemusí analyzovat a opakovat transakce ze souboru protokolu a načíst všechna data do vyrovnávací paměti.
@@ -59,7 +59,7 @@ Hlavní důvody, proč byste měli zvolit Pro důležité obchodní informace ú
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vyhledá charakteristiky prostředků (počet jader, vstupně-výstupních operací, paměti) Pro důležité obchodní informace úrovně ve [spravované instanci](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), izolovanou databázi v [modelu Vcore](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) nebo [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)nebo elastický fond v modelu [Vcore](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) a modelu [DTU](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
+- Vyhledá charakteristiky prostředků (počet jader, vstupně-výstupních operací, paměti) Pro důležité obchodní informace úrovně ve [spravované instanci](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), izolovanou databázi v [modelu Vcore](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) nebo [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)nebo elastický fond v modelu [Vcore](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4) a modelu [DTU](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
 - Přečtěte si o [pro obecné účely](sql-database-service-tier-general-purpose.md) a úrovních [škálování](sql-database-service-tier-hyperscale.md) .
 - Přečtěte si o [Service Fabric](../service-fabric/service-fabric-overview.md).
 - Další možnosti pro vysokou dostupnost a zotavení po havárii najdete v tématu [Kontinuita podnikových aplikací](sql-database-business-continuity.md).

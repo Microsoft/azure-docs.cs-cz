@@ -1,24 +1,24 @@
 ---
 title: 'Neuronové Network: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat síťový modul neuronové ve službě Azure Machine Learning k vytvoření modelu sítě neuronové, který se dá použít k předpovědi cíle, který má více hodnot.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak pomocí modulu neuronové Network Module v Azure Machine Learning vytvořit model sítě neuronové, který se dá použít k předpovědi cíle, který má více hodnot.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3322f2be3c5c6f819adbc9d83ee9eb6b6577f707
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b49ff44e898a78d865278df087aca75e4f8e50ca
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692728"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466028"
 ---
 # <a name="multiclass-neural-network-module"></a>Neuronové síťový modul pro více tříd
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul použijte k vytvoření neuronové síťového modelu, který se dá použít k předpovědi cíle, který má více hodnot. 
 
@@ -40,7 +40,7 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
 
 ## <a name="configure-multiclass-neural-network"></a>Nakonfigurovat neuronové síť s více třídami
 
-1. Přidejte do kanálu neuronové síťový modul s více **třídami** v rozhraní. Tento modul můžete najít v části **Machine Learning**, **Initialize**, v kategorii **klasifikace** .
+1. Přidejte do kanálu neuronové síťový modul s více **třídami** v návrháři. Tento modul můžete najít v části **Machine Learning**, **Initialize**, v kategorii **klasifikace** .
 
 2. **Vytvořit režim Trainer**: pomocí této možnosti určíte, jak chcete model vyškolet:
 
@@ -93,4 +93,4 @@ Po dokončení školení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

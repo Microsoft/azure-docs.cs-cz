@@ -1,24 +1,24 @@
 ---
 title: 'Neuronové síť se dvěma třídami: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat neuronové síťový modul se dvěma třídami ve službě Azure Machine Learning k vytvoření modelu sítě neuronové, který se dá použít k předpovědi cíle, který má jenom dvě hodnoty.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat neuronové síťový modul se dvěma třídami v Azure Machine Learning k vytvoření modelu sítě neuronové, který se dá použít k předpovědi cíle, který má jenom dvě hodnoty.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 8f38a7b7086e5023eb63e94363301ac5277f7e7c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d8e27d13de6b1ac6940972022f66811eb75c8986
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693597"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485887"
 ---
 # <a name="two-class-neural-network-module"></a>Síťový modul neuronové se dvěma třídami
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vytvořit model sítě neuronové, který se dá použít k předpovědi cíle, který má jenom dvě hodnoty.
 
@@ -89,4 +89,4 @@ Po dokončení školení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

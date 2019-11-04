@@ -1,24 +1,24 @@
 ---
 title: 'Podpora dvou tříd – vektorový počítač: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul **vektorového počítače podpory dvou tříd** ve službě Azure Machine Learning Service k vytvoření modelu, který je založený na algoritmu podpory vektorového počítače.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul **vektorového počítače podpory dvou tříd** v Azure Machine Learning k vytvoření modelu, který je založený na algoritmu podpory vektorového počítače.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: c58e66070f137f9c5d713a45682afac5f30bbd1e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0ab4a0ebf2844d064e40c8417ab22162d2d0ded6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692609"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485864"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Modul Vector Machine Support pro dvě třídy
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul použijte k vytvoření modelu, který je založen na algoritmu podpory vektorového počítače. 
 
@@ -80,4 +80,4 @@ Po dokončení školení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

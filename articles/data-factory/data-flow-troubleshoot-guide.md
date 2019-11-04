@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 5cf4773ac781ae51a60ef7d987c3dc324c125d95
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 53c38af2208be6bb7cdb794ad0403456613f2df6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387727"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486185"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Řešení potíží s Azure Data Factory toky dat
 
@@ -67,6 +67,14 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 - **Příčina**: v cílové databázi už existuje existující název tabulky se stejným názvem, který je definovaný ve vašem zdroji nebo v sadě dat.
 
 - **Řešení**: Změna názvu tabulky, kterou se pokoušíte vytvořit
+
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-string-or-binary-data-would-be-truncated"></a>Chybová zpráva: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: data String nebo Binary by byla zkrácena. 
+
+- **Příznaky**: při zápisu dat do jímky SQL se datový tok při spuštění kanálu nezdařil s možnou chybou zkrácení.
+
+- **Příčina**: pole z datového toku se mapuje do sloupce ve vaší databázi SQL Database není dostatečné pro uložení hodnoty, což způsobí, že ovladač SQL vyvolá tuto chybu.
+
+- **Řešení**: můžete zkrátit délku dat pro sloupce řetězců pomocí ```left()``` v odvozeném sloupci nebo implementovat [vzor "chybový řádek".](how-to-data-flow-error-rows.md)
 
 ## <a name="general-troubleshooting-guidance"></a>Obecné pokyny k odstraňování potíží
 
