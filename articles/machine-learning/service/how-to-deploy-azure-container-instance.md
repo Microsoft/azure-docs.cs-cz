@@ -9,24 +9,25 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
-ms.openlocfilehash: 27988edaf9d6fe70288352b0ba45945e32976d4d
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 10/25/2019
+ms.openlocfilehash: 6590b6c3ecf1efc43822a4fefab79cdc7f624dcd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034634"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496981"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Nasazení modelu pro Azure Container Instances
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Naučte se používat Azure Machine Learning k nasazení modelu jako webové služby v Azure Container Instances (ACI). Použijte Azure Container Instances, pokud je splněna jedna z následujících podmínek:
 
-- Potřebujete k rychlému nasazení a ověření modelu. Nemusíte vytvářet kontejnery ACI předem. Jsou vytvořeny v rámci procesu nasazení.
-- Testování modelu, který je ve vývoji. 
+- Potřebujete rychle nasadit a ověřit model. Nemusíte vytvářet kontejnery ACI předem. Jsou vytvořeny v rámci procesu nasazení.
+- Testujete model, který je ve vývoji. 
 
 Informace o dostupnosti kvót a oblastí pro ACI najdete v článku [kvóty a dostupnost oblastí pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) článek.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -36,13 +37,13 @@ Informace o dostupnosti kvót a oblastí pro ACI najdete v článku [kvóty a do
 
 - Fragmenty kódu __Pythonu__ v tomto článku předpokládají, že jsou nastavené následující proměnné:
 
-    * `ws`– Nastavte na svůj pracovní prostor.
-    * `model`– Nastavte na registrovaný model.
-    * `inference_config`– Nastavte na odvození konfigurace pro model.
+    * `ws` – nastaveno na váš pracovní prostor.
+    * `model` – nastaveno na registrovaný model.
+    * `inference_config` – nastaveno na odvození konfigurace modelu.
 
     Další informace o nastavení těchto proměnných najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
-- Fragmenty rozhraní příkazového __řádku__ v tomto článku předpokládají, že jste `inferenceconfig.json` vytvořili dokument. Další informace o vytváření tohoto dokumentu najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
+- Fragmenty rozhraní příkazového __řádku__ v tomto článku předpokládají, že jste vytvořili dokument `inferenceconfig.json`. Další informace o vytváření tohoto dokumentu najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 ## <a name="deploy-to-aci"></a>Nasazení do ACI
 
@@ -85,7 +86,7 @@ Viz [nasazení modelů pomocí vs Code](how-to-vscode-tools.md#deploy-and-manage
 > [!IMPORTANT]
 > Nemusíte vytvářet kontejner ACI k testování předem. Kontejnery ACI se vytvářejí podle potřeby.
 
-## <a name="update-the-web-service"></a>Aktualizovat webovou službu
+## <a name="update-the-web-service"></a>Aktualizace webové služby
 
 [!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 
@@ -93,7 +94,7 @@ Viz [nasazení modelů pomocí vs Code](how-to-vscode-tools.md#deploy-and-manage
 
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
-* [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
-* [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)
+* [Zabezpečené Azure Machine Learning webové služby pomocí protokolu SSL](how-to-secure-web-service.md)
+* [Využití modelu ML nasazeného jako webové služby](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)

@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell: Povolit BYOK TDE-Azure SQL Database Managed instance | Microsoft Docs'
+title: 'PowerShell: povolení BYOK TDE-Azure SQL Database Managed instance | Microsoft Docs'
 description: Naučte se konfigurovat spravovanou instanci Azure SQL, abyste mohli začít používat BYOK transparentní šifrování dat (TDE) pro šifrování v klidovém prostředí pomocí PowerShellu.
 services: sql-database
 ms.service: sql-database
@@ -10,19 +10,19 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-ms.date: 04/19/2019
-ms.openlocfilehash: d8f0f4a8e603a9040d166b00682077cff23abd8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 11/04/2019
+ms.openlocfilehash: 0413216bc666aff504193d6723d46a6ee26be8ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569694"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500062"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Správa transparentní šifrování dat ve spravované instanci pomocí vlastního klíče z Azure Key Vault (Preview)
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Správa transparentní šifrování dat ve spravované instanci pomocí vlastního klíče z Azure Key Vault
 
 Tento ukázkový skript PowerShellu nakonfiguruje transparentní šifrování dat (TDE) ve scénáři Bring Your Own Key (Preview) pro spravovanou instanci Azure SQL pomocí klíče z Azure Key Vault. Další informace o podpoře TDE with Bring Your Own Key (BYOK) najdete v článku [TDE Bring Your Own Key do Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Existující spravovaná instance. Viz [použití PowerShellu k vytvoření spravované instance Azure SQL Database](sql-database-create-configure-managed-instance-powershell.md).
 

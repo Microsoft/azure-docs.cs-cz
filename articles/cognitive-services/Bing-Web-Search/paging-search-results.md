@@ -9,14 +9,14 @@ ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: 9fc05ab42c75bac1f8e192dd4fe20bb142881479
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176908"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481734"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Postup stránky pomocí výsledků z rozhraní API pro vyhledávání Bingu
 
@@ -47,7 +47,7 @@ K procházení dostupných výsledků použijte parametry dotazu `count` a `offs
 | Parametr | Popis                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `count`   | Určuje počet výsledků, které se mají vrátit v odpovědi. Všimněte si, že výchozí hodnota `count` a maximální počet výsledků, které se mohou vyžádat, se liší podle rozhraní API. Tyto hodnoty najdete v referenční dokumentaci v části [Další kroky](#next-steps). |
-| `offset`  | Určuje počet výsledků, které se mají přeskočit. @No__t-0 je založený na nule a musí být menší než (`totalEstimatedMatches` @ no__t-2 @ no__t-3).                                           |
+| `offset`  | Určuje počet výsledků, které se mají přeskočit. `offset` je založen na nule a musí být menší než (`totalEstimatedMatches` - `count`).                                           |
 
 Pokud například chcete zobrazit 15 výsledků na stránce, nastavili jste `count` až 15 a `offset` na 0 pro získání první stránky výsledků. Pro každé následné volání rozhraní API se zvýší `offset` o 15. Následující příklad vyžádá 15 webových stránek počínaje posunem 45.
 
@@ -64,6 +64,8 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&offs
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 Host: api.cognitive.microsoft.com  
 ```
+
+Pokud používáte rozhraní API pro obrázky a videa Bingu, můžete pomocí `nextOffset` hodnoty zabránit duplicitním výsledkům vyhledávání. Získat hodnotu z objektů odpovědi `Images` nebo `Videos` a použít ji ve svých žádostech s parametrem `offset`.  
 
 > [!NOTE]
 > Rozhraní API Bingu pro vyhledávání na webu vrátí výsledky hledání, které mohou zahrnovat webové stránky, obrázky, videa a novinky. Při procházení výsledků hledání z rozhraní API Bingu pro vyhledávání na webu se jedná o [webové stránky](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)jenom stránkování, a ne další typy odpovědí, jako jsou obrázky nebo novinky. Výsledky hledání v objektech `WebPage` můžou zahrnovat výsledky, které se zobrazují i v jiných typech odpovědí.

@@ -3,26 +3,27 @@ title: Vytvoření a použití výpočetních cílů pro školení modelů
 titleSuffix: Azure Machine Learning
 description: Nakonfigurujte školicí prostředí (cíle výpočtů) pro školení modelů ve službě Machine Learning. Mezi školicími prostředími můžete snadno přepínat. Spusťte školení místně. Pokud potřebujete horizontální navýšení kapacity, přepněte na cloudový cíl výpočtů.
 services: machine-learning
-author: rastala
-ms.author: roastala
+author: sdgilley
+ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 46a212719846eddc7d21f3aeb0815dfbf4119e15
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935354"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489559"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Pomocí Azure Machine Learning můžete model vyškolit na nejrůznějších materiálech nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.  Můžete také vytvořit výpočetní cíle pro nasazení modelu, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
 
-Výpočetní cíl můžete vytvořit a spravovat pomocí sady Azure Machine Learning SDK, Azure Portal, cílové stránky pracovního prostoru (Preview), rozhraní příkazového řádku Azure CLI nebo rozšíření Azure Machine Learning VS Code. Pokud máte výpočetní cíle vytvořené prostřednictvím jiné služby (například cluster HDInsight), můžete je použít tak, že je připojíte k pracovnímu prostoru Azure Machine Learning.
+Výpočetní cíl můžete vytvořit a spravovat pomocí rozšíření Azure Machine Learning SDK, Azure Machine Learning Studio, Azure CLI nebo Azure Machine Learning VS Code. Pokud máte výpočetní cíle vytvořené prostřednictvím jiné služby (například cluster HDInsight), můžete je použít tak, že je připojíte k pracovnímu prostoru Azure Machine Learning.
  
 V tomto článku se dozvíte, jak používat různé výpočetní cíle pro školení modelů.  Postup pro všechny výpočetní cíle se řídí stejným pracovním postupem:
 1. Pokud ho ještě nemáte, __vytvořte__ cíl výpočtů.
@@ -132,7 +133,7 @@ Trvalé Azure Machine Learning výpočetní prostředí se dá opakovaně použ�
    Při vytváření Azure Machine Learning výpočetních prostředků můžete také nakonfigurovat několik pokročilých vlastností. Vlastnosti umožňují vytvořit trvalý cluster s pevnou velikostí nebo v rámci stávajícího Virtual Network Azure v rámci vašeho předplatného.  Podrobnosti najdete v tématu [Třída AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ) .
     
-   Případně můžete vytvořit a připojit trvalý Azure Machine Learning výpočetní prostředek [v Azure Portal](#portal-create).
+   Nebo můžete vytvořit a připojit trvalé Azure Machine Learning výpočetní prostředky v [Azure Machine Learning Studiu](#portal-create).
 
 1. **Konfigurace**: Vytvořte konfiguraci spuštění pro trvalý cíl služby Compute.
 
@@ -179,7 +180,7 @@ Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako vir
    compute.wait_for_completion(show_output=True)
    ```
 
-   Nebo můžete DSVM připojit k pracovnímu prostoru [pomocí Azure Portal](#portal-reuse).
+   Nebo můžete připojit DSVM k vašemu pracovnímu prostoru [pomocí Azure Machine Learning studia](#portal-reuse).
 
 1. **Konfigurace**: Vytvořte konfiguraci spuštění pro cíl služby DSVM Compute. Docker a conda slouží k vytvoření a konfiguraci školicího prostředí na DSVM.
 
@@ -220,7 +221,7 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
    hdi_compute.wait_for_completion(show_output=True)
    ```
 
-   Nebo můžete připojit cluster HDInsight k vašemu pracovnímu prostoru [pomocí Azure Portal](#portal-reuse).
+   Nebo můžete připojit cluster HDInsight k vašemu pracovnímu prostoru [pomocí Azure Machine Learning studia](#portal-reuse).
 
 1. **Konfigurace**: Vytvořte konfiguraci spuštění pro cíl služby HDI Compute. 
 
@@ -270,9 +271,9 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-in-azure-portal"></a>Nastavení v Azure Portal
+## <a name="set-up-in-azure-machine-learning-studio"></a>Nastavení v Azure Machine Learning Studiu
 
-K cílovým cílům, které jsou přidruženy k vašemu pracovnímu prostoru v Azure Portal, můžete přistupovat.  Portál můžete použít k těmto akcím:
+Ke výpočetním cílům, které jsou přidružené k vašemu pracovnímu prostoru v Azure Machine Learning studiu, získáte přístup.  Můžete použít Studio k těmto akcím:
 
 * [Zobrazení cílů služby COMPUTE](#portal-view) připojených k vašemu pracovnímu prostoru
 * [Vytvoření cíle služby COMPUTE](#portal-create) v pracovním prostoru
@@ -291,11 +292,11 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 Chcete-li zobrazit výpočetní cíle pro váš pracovní prostor, použijte následující postup:
 
-1. Přejděte do [Azure Portal](https://portal.azure.com) a otevřete svůj pracovní prostor. K těmto stejným postupům můžete také přistupovat na [úvodní stránce pracovního prostoru (Preview)](https://ml.azure.com), i když obrázky níže ukazují Azure Portal.
+1. Přejděte do [Azure Machine Learning studia](https://ml.azure.com).
  
 1. V části __aplikace__vyberte __COMPUTE__.
 
-    [karta COMPUTE![zobrazení](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [karta COMPUTE ![zobrazení](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Vytvořit cíl výpočtů
 
@@ -310,7 +311,7 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
 1. Jako typ výpočetních prostředků, které se mají použít pro __školení__, vyberte **výpočetní prostředky služby Machine Learning** . 
 
     >[!NOTE]
-    >Výpočetním prostředkem, který můžete v Azure Portal vytvořit, je Azure Machine Learning Compute.  Po vytvoření můžete připojit všechny ostatní výpočetní prostředky.
+    >Výpočetním prostředkem Azure Machine Learning, který se dá vytvořit, je jediný spravovaný výpočetní prostředek, který můžete vytvořit v Azure Machine Learning Studiu.  Po vytvoření můžete připojit všechny ostatní výpočetní prostředky.
 
 1. Vyplňte formulář. Zadejte hodnoty požadovaných vlastností, zejména **rodinu virtuálních počítačů**, a **maximální počet uzlů** , které se mají použít ke spuštění výpočtů.  
 
@@ -336,7 +337,7 @@ Podle výše popsaného postupu zobrazte seznam cílů výpočtů. Pak pomocí n
 1. Vyberte typ výpočetních prostředků, které se mají připojit ke __školení__:
 
     > [!IMPORTANT]
-    > Z Azure Portal není možné připojit všechny výpočetní typy. Typy výpočetních prostředků, které se dají v současnosti připojit ke školením, zahrnují:
+    > Z Azure Machine Learning studia se nedají připojit všechny výpočetní typy. Typy výpočetních prostředků, které se dají v současnosti připojit ke školením, zahrnují:
     >
     > * Vzdálený virtuální počítač
     > * Azure Databricks (pro použití v kanálech strojového učení)
@@ -446,6 +447,8 @@ Konfigurační soubor spuštění je YAML formátovaný s následujícími oddí
  * Podrobnosti konfigurace specifické pro vybrané rozhraní.
  * Odkaz na data a podrobnosti úložiště dat.
  * Podrobnosti konfigurace specifické pro Výpočetní prostředky služby Machine Learning pro vytvoření nového clusteru.
+
+Úplné schéma RunConfig najdete v ukázkovém [souboru JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) .
 
 ### <a name="create-an-experiment"></a>Vytvoření experimentu
 

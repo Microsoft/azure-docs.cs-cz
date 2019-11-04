@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f40043b920fab4cb38f935618c7aaecc6bf40a87
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8b8e7270851c71869b1a67f0f0f0ba2187f0e87
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069711"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470668"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certifikáty a App Service Environment 
 
@@ -32,7 +32,7 @@ Pokud používáte externí pomocného mechanismu pro přístup, vaše aplikace 
 
 Existují dvě možnosti konfigurace certifikátů pomocí pomocného programu interního nástroje.  Můžete nastavit výchozí certifikát se zástupnými znaky pro interního nástroje pomocného uživatele nebo nastavit certifikáty pro jednotlivé webové aplikace v pomocném panelu.  Bez ohledu na to, jakou možnost provedete, musí být správně nakonfigurované následující atributy certifikátu:
 
-- **Závislosti** Tento atribut musí být nastaven na hodnotu *. [vaše kořenová doména – tady] pro certifikát se zástupným MECHANISMem interního nástroje. Pokud vytváříte certifikát pro vaši aplikaci, měla by být [AppName]. [vaše kořenová doména – tady]
+- **Předmět:** Tento atribut musí být nastaven na hodnotu *. [vaše kořenová doména – tady] pro certifikát se zástupným MECHANISMem interního nástroje. Pokud vytváříte certifikát pro vaši aplikaci, měla by být [AppName]. [vaše kořenová doména – tady]
 - **Alternativní název subjektu:** Tento atribut musí zahrnovat *. [vaše kořenová-doména-sem] a *. SCM. [vaše kořenová doména-tady] pro certifikát interního nástroje pomocného certifikátu. Pokud vytváříte certifikát pro vaši aplikaci, měla by být [AppName]. [vaše-kořenová-doména-sem] a [AppName]. SCM. [vaše kořenová-doména-zde].
 
 Třetí varianta vám umožní vytvořit certifikát interního nástroje pomocného programu, který bude obsahovat všechny názvy jednotlivých aplikací v síti SAN certifikátu namísto použití zástupné odkazy. Problém s touto metodou je, že potřebujete znát název aplikací, které umístíte do pomocného mechanismu, nebo musíte aktualizovat certifikát interního nástroje pomocného programu.
@@ -43,7 +43,7 @@ Po vytvoření pomocného interního NÁSTROJEu na portálu se musí nastavit ce
 
 Certifikát, který nahrajete, musí být soubor. pfx. Po nahrání certifikátu pomocného modulu pro nastavení certifikátu provede operaci škálování. 
 
-Nemůžete vytvořit pomocného mechanismu řízení a nahrát ho jako jednu akci na portálu nebo dokonce i v jedné šabloně. V rámci samostatné akce můžete certifikát nahrát pomocí šablony, jak je popsáno v tématu Vytvoření pomocného programu [z dokumentu šablony](./create-from-template.md) .  
+Nemůžete vytvořit pomocného mechanismu řízení a nahrát ho jako jednu akci na portálu nebo dokonce i v jedné šabloně. V rámci samostatné akce můžete certifikát nahrát pomocí šablony, jak je popsáno v tématu [Vytvoření POmocného programu z dokumentu šablony](./create-from-template.md) .  
 
 Pokud chcete rychle vytvořit certifikát podepsaný svým vlastníkem pro účely testování, můžete použít tento bit prostředí PowerShell:
 
@@ -64,7 +64,7 @@ Aplikace, které jsou hostované v pomocném formuláři, můžou používat fun
 - Protokol SSL založený na protokolu IP, který je podporován pouze s externím MECHANISMem pro čtení.  INTERNÍHO nástroje pomocného mechanismu nepodporuje protokol SSL založený na protokolu IP.
 - Hostované certifikáty trezoru klíčů 
 
-Pokyny pro nahrávání a správu těchto certifikátů jsou k dispozici v kurzu https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl App Service SSL.  Pokud jednoduše konfigurujete certifikáty tak, aby odpovídaly vlastnímu názvu domény, který jste přiřadili k vaší webové aplikaci, budou tyto pokyny stačit. Pokud nahráváte certifikát pro webovou aplikaci interního nástroje pomocného programu pro pojmenování s výchozím názvem domény, zadejte web SCM v síti SAN certifikátu, jak je uvedeno výše. 
+Pokyny pro nahrávání a správu těchto certifikátů jsou k dispozici v tématu [Přidání certifikátu SSL v Azure App Service](../configure-ssl-certificate.md).  Pokud jednoduše konfigurujete certifikáty tak, aby odpovídaly vlastnímu názvu domény, který jste přiřadili k vaší webové aplikaci, budou tyto pokyny stačit. Pokud nahráváte certifikát pro webovou aplikaci interního nástroje pomocného programu pro pojmenování s výchozím názvem domény, zadejte web SCM v síti SAN certifikátu, jak je uvedeno výše. 
 
 ## <a name="tls-settings"></a>Nastavení TLS 
 

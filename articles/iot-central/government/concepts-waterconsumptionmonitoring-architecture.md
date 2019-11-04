@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: c9eea0b78916cc3bc5994eabfd029418b634db3e
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d979c4210c7de4588338c8e3c30b179056102d0d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026675"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498803"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>Referenční architektura monitorování spotřeby vody 
 
@@ -34,7 +34,7 @@ Pojďme se podívat na klíčové komponenty, které obecně hrají součást v 
 ## <a name="devices-and-connectivity"></a>Zařízení a připojení 
 V této části budeme označovat zařízení, která se používají pro inteligentní řešení na vodu, jako je monitorování kvality vody nebo monitorování spotřeby vody, obecně jako zařízení s inteligentním napájením. Inteligentní zařízení na vodu může být Flow měřičů, monitorů kvality vody, inteligentní ventily, detektory netěsnosti atd.
 
-Zařízení použitá v inteligentních vodách budou obecně připojena prostřednictvím operátoru sítě (LPWAN) s nízkou spotřebou (WAN) prostřednictvím operátoru sítě třetí strany. U těchto typů zařízení můžete využít [most služby Azure IoT Central](https://docs.microsoft.com/azure/iot-central/howto-build-iotc-device-bridge) k posílání dat zařízení do vaší aplikace IoT ve službě Azure IoT Central. Alternativně můžete mít brány zařízení, které jsou schopné IP a můžou se přímo připojit k IoT Central.
+Zařízení použitá v inteligentních vodách budou obecně připojena prostřednictvím operátoru sítě (LPWAN) s nízkou spotřebou (WAN) prostřednictvím operátoru sítě třetí strany. U těchto typů zařízení můžete využít [most služby Azure IoT Central](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) k posílání dat zařízení do vaší aplikace IoT ve službě Azure IoT Central. Alternativně můžete mít brány zařízení, které jsou schopné IP a můžou se přímo připojit k IoT Central.
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central je aplikační platforma IoT, která vám umožní rychle začít pracovat v řešení IoT. Vaše řešení můžete označit, přizpůsobit a integrovat s službami třetích stran.
@@ -54,4 +54,4 @@ Data IoT je možné využít k napájení různých podnikových aplikací v rá
 ## <a name="next-steps"></a>Další kroky
 * Zjistěte, jak [vytvořit spotřebu vody](./tutorial-water-consumption-monitoring.md) IoT Central aplikaci.
 * Další informace o [IoT Central státních šablonách](./overview-iot-central-government.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/overview-iot-central) .
+* Další informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) .

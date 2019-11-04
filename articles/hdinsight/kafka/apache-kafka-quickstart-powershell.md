@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 082be3630474ec5f97ab7d80a3ee1b92cdc28fd7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: d14d8f38ff8a2bed01584d5c5fec56d254cede05
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242322"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494748"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Rychlý Start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí prostředí PowerShell
 
@@ -28,6 +28,8 @@ Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) installed.
 

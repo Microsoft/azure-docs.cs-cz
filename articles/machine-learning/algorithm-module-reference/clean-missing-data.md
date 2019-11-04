@@ -1,24 +1,24 @@
 ---
 title: 'Vyčistit chybějící data: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul vyčištění chybějících dat ve službě Azure Machine Learning k odebrání, nahrazení nebo odvodit chybějící hodnoty.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak pomocí modulu vyčištění chybějících dat v Azure Machine Learning odebrat, nahradit nebo odvodit chybějící hodnoty.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: fef8cb0c29eac4b26b93abee54faa4fe1078678d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693213"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493812"
 ---
 # <a name="clean-missing-data-module"></a>Modul vyčištění chybějících dat
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete odebrat, nahradit nebo odvodit chybějící hodnoty. 
 
@@ -133,8 +133,8 @@ Pokud potřebujete znovu opakovat čisticí operace, doporučujeme, abyste ulož
   
 2.  Přidejte datovou sadu, kterou chcete vyčistit, a připojte datovou sadu ke vstupnímu portu na pravé straně.  
   
-3.  Rozbalte skupinu **Transformers** v levém podokně rozhraní. Vyhledejte uloženou transformaci a přetáhněte ji do kanálu.  
-  
+3.  Rozbalte skupinu **Transformers** v levém podokně návrháře. Vyhledejte uloženou transformaci a přetáhněte ji do kanálu.  
+
 4.  Připojte uloženou transformaci k levému vstupnímu portu [transformace Apply](./apply-transformation.md). 
 
     Když použijete uloženou transformaci, nemůžete vybrat sloupce, na které se transformace aplikuje. Důvodem je, že transformace již byla definována a automaticky se používá pro sloupce zadané v původní operaci.
@@ -145,4 +145,4 @@ Pokud potřebujete znovu opakovat čisticí operace, doporučujeme, abyste ulož
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

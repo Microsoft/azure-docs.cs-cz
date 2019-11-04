@@ -46,6 +46,12 @@
           href: prevent-translation.md
         - name: Použití funkce dynamického slovníku
           href: dynamic-dictionary.md
+        - name: Použití kontejnerů
+          items:
+            - name: Instalace a spuštění kontejnerů
+              href: how-to-install-containers.md
+            - name: Konfigurace kontejnerů
+              href: translator-text-container-config.md
         - name: Překlad přes brány firewall
           href: firewalls.md
     - name: Ukázky

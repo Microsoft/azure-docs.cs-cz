@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: f5b40e59a4ed2393e3b9912f8e4caa06ee267428
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 76cb2e0378cc7a005232304174c1de887adfe387
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757507"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482221"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -40,7 +40,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů:
 
-1. Vyberte **+** nebo **+ vytvořit prostředek**.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
 2. V okně hledání na Marketplace zadejte **Windows Virtual Desktop** .
 3. Vyberte **virtuální počítač s Windows – zřídit fond hostitelů**a pak vyberte **vytvořit**.
 

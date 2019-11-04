@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 62ec5d4e85a6e72982b49872af59e7b579c4fd77
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249391"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496262"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
@@ -26,6 +26,7 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 
 | Funkce | Podrobnosti |
 | ---| --- |
+| Nové generace hardwaru řady Fsv2-Series a M-Series| Informace najdete v tématu [hardwarové generace](sql-database-service-tiers-vcore.md#hardware-generations).|
 | [Privátní odkaz Azure](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Privátní propojení zjednodušuje architekturu sítě a zabezpečuje propojení mezi koncovými body v Azure díky uchovávání dat v síti Azure. Eliminuje tak jejich vystavení ve veřejném internetu. Privátní propojení také umožňuje vytvářet a vykreslovat vlastní služby v Azure. |
 | Urychlené obnovení databáze s izolovanými databázemi a elastickými fondy | Informace najdete v tématu [urychlení obnovení databáze](sql-database-accelerated-database-recovery.md).|
 |Přibližný počet DISTINCT|Informace najdete v tématu [přibližný počet jedinečných](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
@@ -37,7 +38,6 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 |Zpětná vazba o udělení paměti (režim řádku) (v části úroveň kompatibility 150)|Informace najdete v článku o [zpětné vazbě přidělení paměti (režim řádku)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
 | Editor dotazů v Azure Portal |Informace najdete v tématu [použití Editoru dotazů SQL Azure Portal k připojení a dotazování dat](sql-database-connect-query-portal.md).|
 | Služba R Services/strojové učení s izolovanými databázemi a elastickými fondy |Informace najdete v tématu [Machine Learning Services v Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
-| Bezserverová výpočetní úroveň | Informace najdete v tématu [SQL Database bez serveru (Preview)](sql-database-serverless.md).|
 |Analýza SQL|Informace najdete v tématu [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
 |Odložená kompilace proměnné tabulky (pod úrovní kompatibility 150)|Informace naleznete v tématu [odložená kompilace proměnné tabulky](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | &nbsp; |

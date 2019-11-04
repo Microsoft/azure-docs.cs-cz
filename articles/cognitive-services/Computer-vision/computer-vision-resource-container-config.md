@@ -8,58 +8,58 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: aba846ade9e2b5e19304df87ea3e29713aacf4ba
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1df8199abbbc195db873ab3da515cb1dd5fe9761
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129968"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484103"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Konfigurace kontejnerů Docker Počítačové zpracování obrazu
 
-Prostředí runtime kontejneru počítačové zpracování obrazu můžete nakonfigurovat pomocí `docker run` argumentů příkazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení fakturace jsou specifická pro kontejner. 
+Pomocí argumentů příkazu `docker run` nakonfigurujete běhové prostředí kontejneru Počítačové zpracování obrazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními. K dispozici je několik [příkladů](#example-docker-run-commands) příkazu. Nastavení fakturace jsou specifická pro kontejner. 
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](computer-vision-how-to-install-containers.md).
+> Nastavení [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)a [`Eula`](#eula-setting) se používají společně a je nutné zadat platné hodnoty pro všechny tři z nich. v opačném případě se Váš kontejner nespustí. Další informace o tom, jak pomocí těchto nastavení konfigurace vytvořit instanci kontejneru, najdete v tématu [fakturace](computer-vision-how-to-install-containers.md).
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-Nastavení určuje klíč prostředku Azure `Cognitive Services` , který se používá ke sledování fakturačních informací pro kontejner. `ApiKey` Je nutné zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro prostředek _Cognitive Services_ zadaný pro [`Billing`](#billing-configuration-setting) nastavení konfigurace.
+Nastavení `ApiKey` Určuje klíč prostředku Azure `Cognitive Services`, který se používá ke sledování fakturačních informací pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí být platným klíčem pro prostředek _Cognitive Services_ zadaný pro nastavení [`Billing`](#billing-configuration-setting) konfigurace.
 
 Toto nastavení najdete na následujícím místě:
 
-* Azure Portal: **Cognitive Services** Správa prostředků, v části **klíče**
+* Azure Portal: Správa prostředků **Cognitive Services** v části **klíče**
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
+## <a name="billing-configuration-setting"></a>Nastavení konfigurace fakturace
 
-Nastavení určuje identifikátor URI koncového bodu Cognitive Services prostředku v Azure, který se používá pro informace o fakturaci pro daný kontejner. `Billing` Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _Cognitive Services_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
+Nastavení `Billing` Určuje identifikátor URI koncového bodu prostředku _Cognitive Services_ v Azure, který se používá pro informace o fakturaci pro daný kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _Cognitive Services_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
 
 Toto nastavení najdete na následujícím místě:
 
-* Azure Portal: **Cognitive Services** Přehled, označený`Endpoint`
+* Azure Portal: **Cognitive Services** Overview, označený `Endpoint`
 
-Nezapomeňte přidat `vision/v1.0` směrování k identifikátoru URI koncového bodu, jak je znázorněno v následující tabulce. 
+Nezapomeňte přidat směrování `vision/v1.0` k identifikátoru URI koncového bodu, jak je znázorněno v následující tabulce. 
 
-|Požadováno| Název | Typ dat | Popis |
+|Požaduje se| Name (Název) | Data type | Popis |
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
-## <a name="eula-setting"></a>Nastavení Eula
+## <a name="eula-setting"></a>Nastavení smlouvy EULA
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Nastavení Fluentd
+## <a name="fluentd-settings"></a>Nastavení Fluent
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -67,52 +67,50 @@ Nezapomeňte přidat `vision/v1.0` směrování k identifikátoru URI koncového
 
 [!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Nastavení Logging
+## <a name="logging-settings"></a>Nastavení protokolování
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-## <a name="mount-settings"></a>Nastavení Mounts
+## <a name="mount-settings"></a>Nastavení připojení
 
-Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu.
+Ke čtení a zápisu dat do a z kontejneru použijte připojení BIND. Zadáním možnosti `--mount` v příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) můžete zadat vstupní připojení nebo připojení výstupu.
 
 Kontejnery Počítačové zpracování obrazu nepoužívají k ukládání dat školení nebo služby vstupní ani výstupní připojení. 
 
-Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](computer-vision-how-to-install-containers.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele. 
+Přesná syntaxe umístění hostitelského připojení se liší v závislosti na hostitelském operačním systému. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](computer-vision-how-to-install-containers.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele. 
 
-|volitelná,| Name | Typ dat | Popis |
+|Volitelné| Name (Název) | Data type | Popis |
 |-------|------|-----------|-------------|
 |Nepovolené| `Input` | Řetězec | Kontejnery Počítačové zpracování obrazu nepoužívají.|
-|volitelná,| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Volitelné| `Output` | Řetězec | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad
+## <a name="example-docker-run-commands"></a>Příklady příkazů pro spuštění Docker
 
-Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy.  Po spuštění kontejneru nadále běžel dokud [Zastavit](computer-vision-how-to-install-containers.md#stop-the-container) ho.
+Následující příklady používají konfigurační nastavení k ilustraci, jak psát a používat `docker run` příkazy.  Po spuštění bude kontejner dál běžet, dokud ho [nezastavíte](computer-vision-how-to-install-containers.md#stop-the-container) .
 
-* **Znak pro pokračování řádku**: Příkazy Docker v následujících částech používají zpětné lomítko, `\`jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
+* **Znak pro pokračování řádku**: příkazy Docker v následujících částech používají zpětné lomítko, `\`jako znak pro pokračování řádku. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů. 
 * **Pořadí argumentů**: Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
 
-Nahradit {_argument_name_} s vlastními hodnotami:
+Nahraďte {_argument_name_} vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-| **{API_KEY}** | Klíč `Computer Vision` koncového bodu prostředku na stránce klíčů Azure `Computer Vision` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `Computer Vision` .| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](computer-vision-how-to-install-containers.md#gathering-required-parameters) . |
+| **{API_KEY}** | Klíč koncového bodu prostředku `Computer Vision` na stránce klíčů Azure `Computer Vision`. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled služby Azure `Computer Vision`.| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](computer-vision-how-to-install-containers.md#gathering-required-parameters) . |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](computer-vision-how-to-install-containers.md#billing).
-> Hodnota ApiKey je **klíč** ze stránky klíče prostředků Azure `Cognitive Services` .
+> Aby bylo možné spustit kontejner, musí být zadány možnosti `Eula`, `Billing`a `ApiKey`. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](computer-vision-how-to-install-containers.md#billing).
+> Hodnota ApiKey je **klíč** ze stránky klíče prostředků Azure `Cognitive Services`.
 
 ## <a name="container-docker-examples"></a>Příklady Docker kontejneru
-
-#### <a name="readtabread"></a>[Čtení](#tab/read)
 
 Následující příklady Docker jsou určené pro kontejner pro čtení.
 
 ### <a name="basic-example"></a>Základní příklad
 
-  ```
+  ```docker
   docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
@@ -122,7 +120,7 @@ Následující příklady Docker jsou určené pro kontejner pro čtení.
 
 ### <a name="logging-example"></a>Příklad protokolování 
 
-  ```
+  ```docker
   docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
@@ -130,33 +128,6 @@ Následující příklady Docker jsou určené pro kontejner pro čtení.
   ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
-
-#### <a name="recognize-texttabrecognize-text"></a>[Rozpoznání textu](#tab/recognize-text)
-
-Následující příklady Docker jsou pro kontejner Rozpoznávání textu.
-
-### <a name="basic-example"></a>Základní příklad
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>Příklad protokolování
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} \
-  Logging:Console:LogLevel:Default=Information
-  ```
-
-***
 
 ## <a name="next-steps"></a>Další kroky
 

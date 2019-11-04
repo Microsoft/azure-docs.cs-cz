@@ -16,12 +16,12 @@ ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 380e587fc8c921b395d63d1dbca10e2f5fb1b9ba
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 98d939c69bb03666dbeed124778b06f8a7e73532
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433204"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471470"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure 
 
@@ -43,7 +43,7 @@ Po instalaci rozšíření se přihlaste ke svému účtu Azure. V řádku aktiv
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Pokud se zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"** , může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraní API Azure. Nakonfigurujte proměnné prostředí `HTTP_PROXY` a `HTTPS_PROXY` s informacemi svého proxy serveru v terminálu pomocí `export`.
+Pokud se zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"** , může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraní API Azure. Nakonfigurujte `HTTP_PROXY` a `HTTPS_PROXY` proměnné prostředí pomocí informací o proxy serveru v terminálu pomocí `export`.
 
 ```sh
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -124,13 +124,13 @@ V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasa�
 1. Vyberte možnost vytvoření v závislosti na operačním systému, do kterého chcete nasadit:
 
     - Linux: vyberte **vytvořit novou webovou aplikaci**.
-    - Windows: vyberte **vytvořit novou webovou aplikaci... Upřesnit**.
+    - Windows: zvolte **vytvořit novou webovou aplikaci** a vyberte možnost **Upřesnit** .
 
 1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu ENTER. Platnými znaky pro název aplikace jsou "a-z", "0-9" a "-".
 
 1. Pokud se zaměřujete na Linux, po zobrazení výzvy vyberte verzi Node. js. Doporučuje se verze **LTS** .
 
-1. Pokud cílíte na systém Windows pomocí možnosti *Advanced**, postupujte podle dalších pokynů:
+1. Pokud cílíte na systém Windows pomocí možnosti **Upřesnit** , postupujte podle dalších pokynů:
     1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků.
     1. Pro operační systém vyberte **systém Windows** .
     1. Vyberte existující plán App Service nebo vytvořte nový. Při vytváření nového plánu můžete vybrat cenovou úroveň.

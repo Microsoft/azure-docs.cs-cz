@@ -1,7 +1,7 @@
 ---
 title: Začínáme s R
-titleSuffix: Azure Machine Learning Studio
-description: Pomocí tohoto kurzu programovacího jazyka R a začněte využívat jazyka R s Azure Machine Learning Studio k vytvoření řešení Prognózování.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Tento kurz programování v R vám umožní začít používat jazyk R s Azure Machine Learning Studio (Classic) k vytvoření řešení prognózování.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,99 +10,99 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d3bc64291f58c5dd77531141c31490451cc8ea2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726533"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496835"
 ---
-# <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>Začínáme s R programovacím jazyku v nástroji Azure Machine Learning Studio
+# <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Začínáme s programovacím jazykem R v Azure Machine Learning Studio (Classic)
 
 <!-- Stephen F Elston, Ph.D. -->
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
-Tento kurz vám pomůže spustit programovací jazyk R pomocí rozšíření Azure Machine Learning Studio. V tomto kurzu R programování pro vytvoření, testování a spouštění kódu R studia. Při práci prostřednictvím kurzu vytvoříte pomocí jazyka R v sadě Studio kompletní řešení Prognózování.  
+Tento kurz vám pomůže začít s rozšířením Azure Machine Learning Studio (Classic) pomocí programovacího jazyka R. Pomocí tohoto kurzu pro programování v R můžete vytvořit, otestovat a spustit kód R v rámci studia (Classic). Při práci v kurzu vytvoříte kompletní řešení předpovědi pomocí jazyka R v klasické verzi studia.  
 
-Microsoft Azure Machine Learning Studio obsahuje mnoho modulů výkonném počítači pro manipulaci s učení a data. Výkonné jazyka R je popsán jako lingua franca obchodu analýzy. Využívá elastic manipulaci analytics a data v sadě Studio je možné rozšířit pomocí jazyka R. Tato kombinace poskytuje škálovatelnost a snadné nasazení sady Studio flexibilitu a hloubkové analýzy R.
+Klasická verze Azure Machine Learning Studio obsahuje mnoho výkonného strojového učení a modulů manipulace s daty. Výkonný jazyk R je popsaný jako lingua franca analýzy. Happily, analýzy a manipulace s daty v klasické verzi studia se dají rozšířit pomocí R. Tato kombinace nabízí škálovatelnost a snadné nasazení klasické verze studia s flexibilitou a hloubkovou analýzou jazyka R.
 
-### <a name="forecasting-and-the-dataset"></a>Prognózování a datové sady
+### <a name="forecasting-and-the-dataset"></a>Prognózování a datová sada
 
-Prognózování je metoda analytické široce proces a velmi užitečné. Běžné použití rozsahu od předpověď sales sezónní položek, určení optimální zásob se predikce makroekonomické proměnné. Prognózy se obvykle provádí s modely řady čas.
+Prognózování je široce zaměstnaná a poměrně užitečná analytická metoda. Běžný používá rozsah z předpovědi prodej sezónních položek a určení optimálních úrovní inventáře k předvídání makroekonomických proměnných. Prognózy se obvykle provádějí s modely časových řad.
 
-Data časových řad se data, ve kterém mají hodnoty indexu čas. Index čas může být pravidelné, např. měsíčně nebo po minutách, nebo je nestandardní. Model časové řady vychází z dat časových řad. Programovací jazyk R obsahuje flexibilní rozhraní framework a rozsáhlé analýzy dat časové řady.
+Data časové řady jsou data, ve kterých mají hodnoty časový index. Časový index může být pravidelný, například každý měsíc nebo každou minutu nebo nepravidelně. Model časových řad je založený na datech časových řad. Programovací jazyk R obsahuje flexibilní rozhraní a rozsáhlou analýzu pro data časových řad.
 
-V této příručce budeme se práce s produkci mléka Kalifornie a data o cenách. Tato data zahrnují měsíční údaje o produkci mléka několik produktů a ceně mléka fat, komoditním srovnávacího testu.
+V této příručce budeme pracovat s daty o cenách v Kalifornii a produkci pro mléčné výrobky. Tato data zahrnují měsíční informace o produkci několika mléčných produktů a cenu mléčného tuku, srovnávacího zboží.
 
-Data použitá v tomto článku, spolu s skriptů R, si můžete stáhnout z [MachineLearningSamples-poznámkových bloků a studio – ukázky](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). Data v souboru `cadairydata.csv` byla původně syntetizovat z informací z University of Wisconsin na [ https://dairymarkets.com ](https://dairymarkets.com).
+Data použitá v tomto článku spolu se skripty jazyka R lze stáhnout z [MachineLearningSamples-poznámkových bloků/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). Data v souboru `cadairydata.csv` byla původně syntetizovaná z informací, které jsou k dispozici na University of Wisconsin v [https://dairymarkets.com](https://dairymarkets.com).
 
 ### <a name="organization"></a>Organizace
 
-Jak se dozvíte, jak vytvářet, testovat a spustit kód analytics a data manipulaci s R v prostředí Azure Machine Learning Studio jsme se projděte několik kroků.  
+Až se naučíte vytvářet, testovat a spouštět analýzy a kód R manipulace s daty v klasické verzi Azure Machine Learning Studio prostředí, budeme postupovat několika kroky.  
 
-* Nejprve se podíváme na základní informace o používání jazyka R v prostředí Azure Machine Learning Studio.
-* Potom jsme průběh pojednávající o různých aspektů vstupně-výstupních operací pro data, kód R a grafiky v prostředí Azure Machine Learning Studio.
-* Potom jsme se vytvořit první část našeho řešení Prognózování tak, že vytvoříte kód pro transformaci a čištění dat.
-* Pomocí našich dat připravené budeme provádět analýzu korelace mezi několika proměnných v naší datové sadě.
-* Nakonec vytvoříme předpovědi modelu sezónní časové řady pro produkci mléka.
+* Nejprve se podíváme na základy používání jazyka R v klasické verzi Azure Machine Learning Studio prostředí.
+* Následně jsme provedli diskusi o různých aspektech vstupně-výstupních operací pro data, kód R a grafiku v klasické verzi Azure Machine Learning Studio prostředí.
+* Pak vytvoříme první část našeho řešení předpovědi vytvořením kódu pro čištění a transformaci dat.
+* Naše data jsou připravená k analýze korelace mezi několika proměnnými v naší datové sadě.
+* Nakonec vytvoříme model předpovědi pro sezónní časovou řadu pro produkci mléka.
 
-## <a id="mlstudio"></a>Pracovat s jazykem R v nástroji Machine Learning Studio
+## <a id="mlstudio"></a>Interakce s jazykem R v Machine Learning Studio (Classic)
 
-Tato část vás provede základy interakci s programovací jazyk R v prostředí Machine Learning Studio. Jazyk R poskytuje výkonný nástroj pro vytvoření přizpůsobené analytics a modulů pro manipulaci s dat v rámci prostředí Azure Machine Learning Studio.
+V této části se seznámíte se základy práce s programovacím jazykem R v prostředí Machine Learning Studio (Classic). Jazyk R poskytuje výkonný nástroj pro vytváření přizpůsobených modulů analýzy a manipulace s daty v rámci klasické verze Azure Machine Learning Studio prostředí.
 
-Použiji RStudio pro vývoj, testování a ladění kódu R v malém měřítku. Tento kód je pak vyjmutí a vložení do [spustit skript jazyka R] [ execute-r-script] modulů v Machine Learning Studio připraven ke spuštění.  
+Využijem RStudio k vývoji, testování a ladění kódu R v malém měřítku. Tento kód se pak vyjme a vloží do modulu [spuštění skriptu jazyka R][execute-r-script] , který je připravený ke spuštění v klasické verzi Machine Learning Studio.  
 
-### <a name="the-execute-r-script-module"></a>Modul spustit skript jazyka R
+### <a name="the-execute-r-script-module"></a>Modul spuštění skriptu jazyka R
 
-V nástroji Machine Learning Studio, jsou skripty jazyka R poběží [spustit skript jazyka R] [ execute-r-script] modulu. Příkladem [spustit skript jazyka R] [ execute-r-script] modulu v nástroji Machine Learning Studio je znázorněno na obrázku 1.
+V rámci klasické verze Machine Learning Studio jsou skripty R spouštěny v modulu [spouštění skriptu jazyka r][execute-r-script] . Příkladem modulu [spuštění skriptu R][execute-r-script] v klasické verzi Machine Learning Studio je znázorněno na obrázku 1.
 
- ![Programovací jazyk R: Spustit skript jazyka R modulu vybraná v nástroji Machine Learning Studio](./media/r-quickstart/fig1.png)
+ ![Programovací jazyk r: modul spuštění skriptu jazyka R vybraný v Machine Learning Studio (klasický)](./media/r-quickstart/fig1.png)
 
-*Obrázek 1. Zobrazuje vybraný modul spustit skript jazyka R prostředí Machine Learning Studio.*
+*Obrázek 1. Prostředí Machine Learning Studio (Classic) znázorňující vybraný modul skriptu pro spuštění jazyka R.*
 
-Odkazující na obrázku 1, Pojďme se podívat na některé z klíčových částí tohoto prostředí Machine Learning studia pro práci s [spustit skript jazyka R] [ execute-r-script] modulu.
+S odkazem na obrázek 1 se podíváme na některé z klíčových částí prostředí Machine Learning Studio (Classic) pro práci s modulem [skriptu Execute R][execute-r-script] .
 
-* V prostředním podokně se zobrazí moduly do experimentu.
-* Horní část v pravém podokně obsahuje okno zobrazit a upravovat svoje skripty jazyka R.  
-* Pravé dolní části ukazuje některé vlastnosti [spustit skript jazyka R][execute-r-script]. Protokoly chyb a výstupu můžete zobrazit tak, že vyberete příslušný míst v tomto podokně.
+* Moduly v experimentu se zobrazí v prostředním podokně.
+* Horní část pravého podokna obsahuje okno pro zobrazení a úpravy skriptů jazyka R.  
+* Dolní část pravého podokna zobrazuje některé vlastnosti [skriptu Execute R][execute-r-script]. Protokoly chyb a výstupu můžete zobrazit tak, že vyberete vhodné body v tomto podokně.
 
-Jsme se, samozřejmě, mluvit o [spustit skript jazyka R] [ execute-r-script] podrobněji ve zbývající části tohoto článku.
+Budeme samozřejmě diskutovat o [skriptu Execute R][execute-r-script] podrobněji ve zbývající části tohoto článku.
 
-Při práci s komplexní funkce R je můžu jenom doporučit úpravy, testování a ladění v RStudio. Stejně jako u jakékoli vývoje softwaru postupně rozšiřovat kódu a testování na malé jednoduchý testovací případy. Pak vyjímejte a vkládejte vaše funkce do okna skriptu R [spustit skript jazyka R] [ execute-r-script] modulu. Tento přístup umožňuje využít RStudio integrovaného vývojového prostředí (IDE) a sílu Azure Machine Learning Studio.  
+Když pracujete se složitými funkcemi jazyka R, doporučujeme, abyste v RStudio provedete úpravy, testování a ladění. Stejně jako u jakéhokoli vývoje softwaru rozšíříte kód přírůstkově a otestujete ho v malých jednoduchých testovacích případech. Potom tyto funkce vyjměte a vložte do okna skript R v modulu [spuštění skriptu jazyka r][execute-r-script] . Tento přístup umožňuje využít integrované vývojové prostředí (IDE) RStudio a výkon klasické verze Azure Machine Learning Studio.  
 
-#### <a name="execute-r-code"></a>Spouštění kódu R
+#### <a name="execute-r-code"></a>Spustit kód R
 
-Veškerý kód R ve [spustit skript jazyka R] [ execute-r-script] modulu se spustí při spuštění experimentu tak, že vyberete **spustit** tlačítko. Po dokončení spuštění se zobrazí zaškrtávací políčko na [spustit skript jazyka R] [ execute-r-script] ikonu.
+Jakýkoli kód R v modulu [spouštění skriptu jazyka r][execute-r-script] se spustí při spuštění experimentu výběrem tlačítka **Spustit** . Po dokončení spuštění se na ikoně [Spustit skript jazyka R][execute-r-script] zobrazí zaškrtnutí.
 
-#### <a name="defensive-r-coding-for-azure-machine-learning"></a>Obranné psaní kódu jazyka R pro službu Azure Machine Learning
+#### <a name="defensive-r-coding-for-azure-machine-learning"></a>Obrannou linií R kódování pro Azure Machine Learning
 
-Pokud vyvíjíte kód R pro, například webovou službu pomocí Azure Machine Learning Studio, měli byste jednoznačně naplánovat, jak váš kód se bude zabývat neočekávaný datový vstup a výjimek. Pokud chcete zachovat přehlednost, můžu nezahrnuli většinu cestě kontrolu nebo zpracování výjimek v většina příkladů kódu zobrazí. Ale jak můžeme pokračovat můžu vám poskytne několik příkladů funkcí pomocí funkce pro zpracování výjimek R.  
+Pokud vyvíjíte kód R pro, řekněme, že webová služba používá klasickou verzi Azure Machine Learning Studio, měli byste bez omezení naplánovat, jak váš kód bude pracovat s neočekávaným vstupem a výjimkami dat. Aby se zachovala jasnost, nezahrnuli jsme do většiny zobrazených příkladů kódu mnoho možností kontroly nebo zpracování výjimek. Jak ale budeme pokračovat, nabídneme vám několik příkladů funkcí pomocí schopnosti zpracování výjimek jazyka R.  
 
-Pokud potřebujete podrobnější zacházení s zpracování výjimek jazyka R, doporučuji čtení příslušných částech kniha od Wickham uvedené níže v [další materiály](#appendixb).
+Pokud potřebujete úplnější zpracování výjimek R, doporučujeme si přečíst si příslušné části knihy podle Wickham uvedeného níže v tématu Další informace o [čtení](#appendixb).
 
-#### <a name="debug-and-test-r-in-machine-learning-studio"></a>Ladění a testování R v nástroji Machine Learning Studio
+#### <a name="debug-and-test-r-in-machine-learning-studio-classic"></a>Ladění a testování R v Machine Learning Studio (Classic)
 
-Zdůrazňujeme, doporučuji, testování a ladění kódu R v malém měřítku v RStudio. Existují však případy, kdy je potřeba sledovat problémy kódu R v [spustit skript jazyka R] [ execute-r-script] samotný. Kromě toho je vhodné zkontrolovat výsledky v nástroji Machine Learning Studio.
+K opakování iterace doporučujeme testovat a ladit kód R v malém měřítku v RStudio. Existují však případy, kdy budete muset sledovat problémy s kódem R v samotném [spuštění skriptu jazyka r][execute-r-script] . Kromě toho je dobrým zvykem kontrolovat výsledky v klasické verzi Machine Learning Studio.
 
-Především v souboru výstup.log se nachází výstup z provádění kódu jazyka R a na platformě Azure Machine Learning Studio. Další informace se zobrazí ve error.log.  
+Výstup z provádění vašeho kódu R a klasické verze Azure Machine Learning Studio platformy najdete hlavně v části Output. log. Některé další informace se zobrazí v Error. log.  
 
-Pokud dojde k chybě v nástroji Machine Learning Studio při spuštění kódu jazyka R, by mělo být prvním kurzu akce podívejte se na error.log. Tento soubor může obsahovat užitečné chybové zprávy, které vám pomůžou pochopit a opravit chyby. Chcete-li zobrazit error.log, vyberte **naleznete v protokolu chyb** na **podokno vlastností** pro [spustit skript jazyka R] [ execute-r-script] obsahující chybu.
+Pokud dojde k chybě v klasické verzi Machine Learning Studio při spuštění kódu R, měli byste se podívat na chybu. log v prvním postupu. Tento soubor může obsahovat užitečné chybové zprávy, které vám pomůžou pochopit a opravit chybu. Chcete-li zobrazit Error. log, vyberte **Zobrazit protokol chyb** v **podokně vlastnosti** pro [skript Execute R][execute-r-script] obsahující chybu.
 
-Například mám spuštěných následující kód R nedefinované proměnné y, v [spustit skript jazyka R] [ execute-r-script] modul:
+Například jsem spustil následující kód R s nedefinovanou proměnnou y v modulu [spuštění skriptu jazyka r][execute-r-script] :
 
 ```R
 x <- 1.0
 z <- x + y
 ```
 
-Tento kód se nepodaří spustit, což vede k chybě. Výběr **naleznete v protokolu chyb** na **podokno vlastností** vytvoří zobrazení je znázorněno na obrázku 2.
+Spuštění tohoto kódu se nepovede, takže dojde k chybě. Výběr možnosti **Zobrazit protokol chyb** v **podokně vlastnosti** vytvoří zobrazení zobrazené na obrázku 2.
 
-  ![Chybová zpráva je překryvné](./media/r-quickstart/fig2.png)
+  ![Chybová zpráva – překryvný stav](./media/r-quickstart/fig2.png)
 
-*Obrázek 2. Chybová zpráva automaticky.*
+*Obrázek 2. Automaticky otevíraná okna chybové zprávy.*
 
-Zdá se, musíme se podívat v souboru výstup.log zobrazíte R chybová zpráva. Vyberte [spustit skript jazyka R] [ execute-r-script] a pak vyberte **zobrazení souboru výstup.log** položku **podokno vlastností** vpravo. Otevře se nové okno prohlížeče a I v tomto tématu.
+Vypadá to, že je potřeba vyhledat výstup. log a zobrazit chybovou zprávu R. Vyberte [skript spustit][execute-r-script] v jazyce R a potom v **podokně vlastností** vpravo vyberte položku **Zobrazit výstup. log** . Otevře se nové okno prohlížeče a zobrazí se následující.
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
     ---------- Start of error message from R ----------
@@ -112,111 +112,111 @@ Zdá se, musíme se podívat v souboru výstup.log zobrazíte R chybová zpráva
     object 'y' not found
     ----------- End of error message from R -----------
 
-Tato chybová zpráva obsahuje žádná překvapení a jednoznačně identifikuje potíže.
+Tato chybová zpráva neobsahuje žádné překvapením a jasně identifikuje problém.
 
-Chcete-li zkontrolovat hodnoty libovolný objekt v jazyce R, můžete vytisknout tyto hodnoty do souboru výstup.log souboru. Pravidla pro zkoumání hodnoty objektu jsou v podstatě stejné jako interaktivní relace jazyka R. Například pokud zadáte název proměnné na řádek, hodnota objektu budou zobrazeny souboru výstup.log souboru.  
+Chcete-li zkontrolovat hodnotu libovolného objektu v R, můžete tyto hodnoty vytisknout do souboru Output. log. Pravidla pro zkoumání hodnot objektu jsou v podstatě stejná jako v interaktivní relaci jazyka R. Například pokud zadáte název proměnné na řádku, hodnota objektu bude vytištěna do souboru Output. log.  
 
-#### <a name="packages-in-machine-learning-studio"></a>Balíčky v nástroji Machine Learning Studio
+#### <a name="packages-in-machine-learning-studio-classic"></a>Balíčky v Machine Learning Studio (klasické)
 
-Obsahuje víc než 350 předinstalované balíčky jazyka R Studio. Můžete použít následující kód [spustit skript jazyka R] [ execute-r-script] modulu, který chcete načíst seznam předinstalované balíčky.
+Studio přichází s více než 350 předinstalovanými balíčky jazyka R. K načtení seznamu předinstalovaných balíčků můžete použít následující kód v modulu [spuštění skriptu jazyka R][execute-r-script] .
 
 ```R
 data.set <- data.frame(installed.packages())
 maml.mapOutputPort("data.set")
 ```
 
-Pokud nevíte, poslední řádek tohoto kódu v okamžiku, přečtěte si o. Ve zbývající části tohoto článku bude výrazně probereme využití R v prostředí sady Studio.
+Pokud v tuto chvíli nerozumíte poslednímu řádku tohoto kódu, přečtěte si. Ve zbývající části tohoto článku budeme v prostředí studia (Classic) podrobně projednávat použití R.
 
-### <a name="introduction-to-rstudio"></a>Úvod k Rstudiu
+### <a name="introduction-to-rstudio"></a>Úvod do RStudio
 
-RStudio je často používaný integrované vývojové prostředí pro jazyk R. Použiji RStudio pro úpravy, testování a ladění některý kód R použitá v tomto průvodci. Jakmile se kód R otestovaný a připravený, můžete jednoduše vyjmout a vložit do nástroje Machine Learning Studio z editoru RStudio [spustit skript jazyka R] [ execute-r-script] modulu.  
+RStudio je široce používané integrované vývojové prostředí (IDE) pro R. Používám RStudio pro úpravy, testování a ladění kódu R použitého v této příručce. Po otestování a přípravě kódu R můžete jednoduše vyjmout a vložit z editoru RStudio do Machine Learning Studio (Classic) [spustit modul skriptu R][execute-r-script] .  
 
-Pokud nemáte programovací jazyk R nainstalovaný na desktopovém počítači, doporučujeme provést to nyní. Zdarma ke stažení z open-source jazyk R jsou k dispozici na komplexní R Archive sítě (CRAN) na [ https://www.r-project.org/ ](https://www.r-project.org/). K dispozici ke stažení pro Windows, Mac OS a Linux/UNIX. Zvolte nejbližší zrcadlení a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje celou řadu užitečných analytics a data manipulaci s balíčky.
+Pokud nemáte na stolním počítači nainstalovaný programovací jazyk R, doporučujeme to udělat teď. Bezplatné stahování Open Source jazyka R je k dispozici v obsáhlé síti archivu R (CRAN) na [https://www.r-project.org/](https://www.r-project.org/). K dispozici jsou soubory ke stažení pro Windows, Mac OS a Linux/UNIX. Vyberte okolní zrcadlo a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje širokou spoustu užitečných analýz a datových sad pro manipulaci s daty.
 
-Pokud jste ještě na přihlašovací stránce RStudio, by měl stáhněte a nainstalujte verzi pro stolní počítače. Můžete najít přihlašovací stránce RStudio, soubory ke stažení pro Windows, Mac OS a Linux/UNIX na http://www.rstudio.com/products/RStudio/. Postupujte podle pokynů k instalaci RStudio na desktopovém počítači k dispozici.  
+Pokud s RStudio začínáte, měli byste si stáhnout a nainstalovat desktopovou verzi. RStudio Ke_stažení pro Windows, Mac OS a Linux/UNIX najdete v http://www.rstudio.com/products/RStudio/. Postupujte podle pokynů uvedených k instalaci RStudio na stolní počítač.  
 
-Je k dispozici na kurz Úvod k Rstudiu [pomocí RStudio IDE](https://support.rstudio.com/hc/sections/200107586-Using-RStudio).
+Kurz Úvod do RStudio je k dispozici v [části použití prostředí IDE RStudio](https://support.rstudio.com/hc/sections/200107586-Using-RStudio).
 
-Mám poskytnout další informace o používání nástroje RStudio v [Průvodce RStudio dokumentaci](#appendixa) níže.  
+V této příručce najdete další informace o používání RStudio v [dokumentaci k RStudio](#appendixa) .  
 
-## <a id="scriptmodule"></a>Načtení dat do a z modulu spustit skript jazyka R
+## <a id="scriptmodule"></a>Načtení dat z modulu spuštění skriptu R a z něj
 
-V této části probereme, jak získat data do a z celkového počtu [spustit skript jazyka R] [ execute-r-script] modulu. Podíváme se zpracování čtení do a z různých datových typů [spustit skript jazyka R] [ execute-r-script] modulu.
+V této části se dozvíte, jak získat data do a z modulu [spuštění skriptu jazyka R][execute-r-script] . Přečtěte si, jak zpracovávat různé datové typy, které jsou čteny do modulu [spuštění skriptu jazyka R][execute-r-script] a z něj.
 
-Kompletní kód pro tento oddíl je v [MachineLearningSamples-poznámkových bloků a studio – ukázky](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+Úplný kód této části je v [MachineLearningSamples-poznámkách/studiu-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="load-and-check-data-in-machine-learning-studio"></a>Načíst a zkontrolujte data v nástroji Machine Learning Studio
+### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Načíst a ověřit data v Machine Learning Studio (Classic)
 
 #### <a id="loading"></a>Načíst datovou sadu
 
-Začneme tím, **csdairydata.csv** souboru do Azure Machine Learning Studio.
+Začneme tak, že načteme soubor **csdairydata. csv** do klasické verze Azure Machine Learning Studio.
 
-1. Spuštění prostředí Azure Machine Learning Studio.
-1. Vyberte **+ nová** v levém dolním rohu obrazovky a vyberte **datovou sadu**.
-1. Vyberte **z místního souboru**a potom **Procházet** a vyberte soubor.
-1. Ujistěte se, že jste vybrali **obecný CSV soubor s hlavičkou (CSV)** jako typ datové sady.
-1. Výběrem symbolu zaškrtnutí.
-1. Po uložení datové sady, by se měla zobrazit novou datovou sadu vyberete **datových sad** kartu.  
+1. Spusťte klasickou verzi Azure Machine Learning Studioho prostředí.
+1. V levém dolním rohu obrazovky vyberte **+ Nový** a vyberte **datová sada**.
+1. Vyberte možnost **z místního souboru**a pak **procházením** vyberte soubor.
+1. Ujistěte se, že jste jako typ pro datovou sadu vybrali **obecný soubor CSV s hlavičkou (. csv)** .
+1. Zaškrtněte políčko.
+1. Po nahrání datové sady byste měli zobrazit novou datovou sadu výběrem karty datové **sady** .  
 
 #### <a name="create-an-experiment"></a>Vytvoření experimentu
 
-Když teď máme některá data ve službě Machine Learning Studio, potřebujeme vytvořit nový experiment provést analýzu.  
+Teď, když máme nějaká data v klasické verzi Machine Learning Studio, musíme vytvořit experiment pro analýzu.  
 
-1. Vyberte **+ nová** na nižší vlevo a pak vyberte **Experiment**, pak **prázdný Experiment**.
-1. Název experimentu můžete výběrem a úpravy, **experimentu vytvořili na...**  nadpis v horní části stránky. Například změny na **certifikační Autority mléka analýzy**.
-1. Na levé straně stránky experiment, rozbalte **uložení datové sady**a potom **Moje datové sady**. Měli byste vidět **cadairydata.csv** , který jste nahráli dříve.
-1. Přetáhnout myší **datovou sadu csdairydata.csv** do experimentu.
-1. V **hledání experimentovat položky** pole nahoře v levém podokně, typ [spustit skript jazyka R][execute-r-script]. Zobrazí se v modulu se zobrazí v seznamu hledání.
-1. Přetáhnout myší [spustit skript jazyka R] [ execute-r-script] modulu do vaší palety.  
-1. Propojte výstup modulu **datovou sadu csdairydata.csv** k levému vstupu (**Dataset1**) z [spustit skript jazyka R][execute-r-script].
-1. **Nezapomeňte si vyberte možnost 'Uložit'!**  
+1. V levém dolním rohu vyberte **+ Nový** a vyberte **experiment**a pak **prázdný experiment**.
+1. Experiment můžete pojmenovat tak, že vyberete a upravíte v horní části stránky název experimentu, který jste **vytvořili...** . Například změna na **analýzu mléčných mléka certifikační autority**.
+1. Na levé straně stránky experimentu rozbalte **uložené datové sady**a pak **Moje datové sady**. Měl by se zobrazit soubor **cadairydata. csv** , který jste nahráli dříve.
+1. Přetáhněte **datovou sadu csdairydata. csv** do experimentu.
+1. Do pole **Hledat položky experimentu** v horní části levého podokna zadejte [Execute Script script][execute-r-script]. V seznamu hledání se zobrazí modul.
+1. Přetáhněte na paletu modul [spuštění skriptu jazyka R][execute-r-script] .  
+1. Připojte výstup **datové sady csdairydata. csv** k levému vstupu (**DataSet1.** ) [skriptu Execute jazyka R][execute-r-script].
+1. **Nezapomeňte vybrat Save (Uložit).**  
 
-V tomto okamžiku experiment by měl vypadat přibližně jako obrázek 3.
+V tomto okamžiku by experiment měl vypadat přibližně jako obrázek 3.
 
-![Analýza mléka certifikační Autority experimentovat s datovou sadu a modul spustit skript jazyka R](./media/r-quickstart/fig3.png)
+![Experiment s datovou sadou a spuštěným modulem skriptu R pro certifikační autoritu](./media/r-quickstart/fig3.png)
 
-*Obrázek 3. Analýza mléka certifikační Autority můžete experimentovat s datovou sadu a spustit skript jazyka R modulu.*
+*Obrázek 3. Experiment s datovou sadou a spuštěným modulem skriptu jazyka R v certifikační autoritě.*
 
-#### <a name="check-on-the-data"></a>Podívejte se na data
+#### <a name="check-on-the-data"></a>Kontrolovat data
 
-Pojďme Podíváme se na data, která jsme načetli do našich experimentu. V testu, vyberte výstup **datovou sadu cadairydata.csv** a vyberte **vizualizovat**. Měli byste vidět něco jako obrázek 4.  
+Pojďme se podívat na data, která jsme načetli do našeho experimentu. V experimentu vyberte výstup **datové sady cadairydata. csv** a vyberte **vizualizovat**. Mělo by se zobrazit něco jako obrázek 4.  
 
-![Souhrn cadairydata.csv datové sady](./media/r-quickstart/fig4.png)
+![Souhrn datové sady cadairydata. csv](./media/r-quickstart/fig4.png)
 
-*Obrázek 4. Souhrn cadairydata.csv datové sady.*
+*Obrázek 4. Souhrn datové sady cadairydata. csv*
 
-V tomto zobrazení vidíme spoustu užitečných informací. Můžeme vidět prvních několik řádků z této datové sadě. Pokud vybereme sloupec, v části Statistika zobrazí další informace o sloupci. Typ funkce řádek příkladu nás jaké typy dat Azure Machine Learning Studio přiřazené ke sloupci. Rychlý pohled tímto způsobem je kontrolu správnosti dobré předtím, než začneme jakékoli závažné práci.
+V tomto zobrazení se zobrazí spousta užitečných informací. Můžeme zobrazit prvních několik řádků této datové sady. Když vybereme sloupec, v části Statistika se zobrazí další informace o sloupci. Například řádek typ funkce zobrazuje, jaké typy dat jsou klasické verze Azure Machine Learning Studio přiřazené ke sloupci. Rychlý vzhled je dobrý správnosti před zahájením provádění všech závažných prací.
 
-### <a name="first-r-script"></a>První skript jazyka R
+### <a name="first-r-script"></a>První skript R
 
-Pojďme vytvořit jednoduchý první skript jazyka R můžete experimentovat v Azure Machine Learning Studio. Můžu mít vytvořený a otestovaný následující skript v RStudio.  
+Pojďme vytvořit jednoduchý první skript R pro experimentování s klasickou verzí Azure Machine Learning Studio. V RStudio jsem vytvořil a otestoval následující skript.  
 
 ```R
 ## Only one of the following two lines should be used
-## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
 ## If in RStudio, use the second line with read.csv()
 cadairydata <- maml.mapInputPort(1)
 # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
 str(cadairydata)
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio
+## Azure Machine Learning Studio (classic)
 maml.mapOutputPort('cadairydata')
 ```
 
-Nyní potřebuji převést tento skript k Azure Machine Learning studiu. Může stačí vyjmout a vložit. Ale v tomto případě jsem přenášet Můj skript jazyka R prostřednictvím souboru zip.
+Nyní Potřebuji přenést tento skript na klasickou verzi Azure Machine Learning Studio. Můžu ho jednoduše vyjímat a vkládat. V tomto případě se ale skript R převede přes soubor zip.
 
-### <a name="data-input-to-the-execute-r-script-module"></a>Vložení dat do modulu spustit skript jazyka R
+### <a name="data-input-to-the-execute-r-script-module"></a>Vstup dat do modulu spuštění skriptu jazyka R
 
-Pojďme Podíváme se na vstupy [spustit skript jazyka R] [ execute-r-script] modulu. V tomto příkladu jsme bude číst data mléka Kalifornie do [spustit skript jazyka R] [ execute-r-script] modulu.  
+Pojďme se podívat na vstupy pro modul [spuštění skriptu jazyka R][execute-r-script] . V tomto příkladu přečteme data o mlékárnách z Brna do modulu [spuštění skriptu jazyka R][execute-r-script] .  
 
-Existují tři možné vstupy pro [spustit skript jazyka R] [ execute-r-script] modulu. V závislosti na vaší aplikaci můžete použít některé nebo všechny tyto vstupy. Je také použít skript R, který nemá žádný vstup vůbec nemusíte zajistit dokonalou přiměřené.  
+Existují tři možné vstupy pro modul [spuštění skriptu jazyka R][execute-r-script] . V závislosti na vaší aplikaci můžete použít libovolný nebo všechny tyto vstupy. Je také naprosto rozumné použít skript R, který neprovádí žádné vstupy.  
 
-Pojďme se podívat na všechny tyto vstupy, že přejdete zleva doprava. Můžete zobrazit názvy každý ze vstupů umístit ukazatel myši nad vstupu a popis pro čtení.  
+Pojďme se podívat na každý z těchto vstupů zleva doprava. Můžete zobrazit názvy všech vstupů tak, že umístíte kurzor na vstup a přečtete popis.  
 
-#### <a name="script-bundle"></a>Skript sady
+#### <a name="script-bundle"></a>Sada skriptů
 
-Zadejte skript sady umožňuje předat obsah souboru zip do [spustit skript jazyka R] [ execute-r-script] modulu. Číst obsah souboru zip do kódu jazyka R můžete použít jednu z následujících příkazů.
+Vstup sady prostředků skriptu umožňuje předat obsah souboru zip do [spouštěného modulu skriptu jazyka R][execute-r-script] . K načtení obsahu souboru zip do kódu jazyka R můžete použít jeden z následujících příkazů.
 
 ```R
 source("src/yourfile.R") # Reads a zipped R script
@@ -224,52 +224,52 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> Azure Machine Learning Studio považuje soubory v souboru zip, jako by šlo v src / directory, takže budete muset před názvy souborů s tímto názvem adresáře. Například, pokud soubor zip obsahuje soubory `yourfile.R` a `yourData.rdata` v kořenovém adresáři souboru zip, chcete řešit jako `src/yourfile.R` a `src/yourData.rdata` při použití `source` a `load`.
+> Klasická verze Azure Machine Learning Studio považuje soubory na zip jako v případě, že jsou v souboru src/Directory, takže je třeba názvy souborů s tímto názvem zakládat jako předpony. Pokud například ZIP obsahuje soubory `yourfile.R` a `yourData.rdata` v kořenovém adresáři souboru zip, při použití `source` a `load`byste tyto adresy vyvolali jako `src/yourfile.R` a `src/yourData.rdata`.
 
-Jsme již probírali načítání datových sad v [načíst datovou sadu](#loading). Po vytvoření a testování skript jazyka R je znázorněno v předchozí části, postupujte takto:
+Již jsme probrali načítání datových sad v [načtení datové](#loading)sady. Jakmile vytvoříte a otestujete skript R zobrazený v předchozí části, udělejte toto:
 
-1. Uložte skript jazyka R do. Soubor R. Můžu volat můj soubor skriptu "simpleplot. R". Tady je obsah.
+1. Uložte skript R do. Soubor R. Já jsem volat můj soubor skriptu "simpleplot. R. Tady je obsah.
 
    ```R
    ## Only one of the following two lines should be used
-   ## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+   ## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
    ## If in RStudio, use the second line with read.csv()
    cadairydata <- maml.mapInputPort(1)
    # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
    str(cadairydata)
    pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
    ## The following line should be executed only when running in
-   ## Azure Machine Learning Studio
+   ## Azure Machine Learning Studio (classic)
    maml.mapOutputPort('cadairydata')
    ```
 
-1. Vytvořte soubor zip a zkopírujte skript do tohoto souboru zip. Na Windows, klikněte pravým tlačítkem na soubor a vyberte **odeslat**a potom **komprimovaná složka**. Tím se vytvoří nový soubor zip obsahující "simpleplot. Soubor R".
+1. Vytvořte soubor zip a zkopírujte skript do tohoto souboru ZIP. V systému Windows můžete kliknout pravým tlačítkem na soubor a vybrat **Odeslat do**a pak na **komprimovanou složku**. Tím se vytvoří nový soubor zip, který obsahuje "simpleplot". R "soubor.
 
-1. Přidání souboru **datových sad** v nástroji Machine Learning Studio, určení typu jako **zip**. Měli byste vidět soubor zip do vaší datové sady.
+1. Přidejte soubor do **datových sad** v klasické verzi Machine Learning Studio, zadejte typ jako **zip**. V datových sadách by se teď měl zobrazit soubor zip.
 
-1. Přetažení souboru zip z **datových sad** na **ML Studio plátna**.
+1. Přetáhněte soubor zip z **datových sad** na **plátno ml Studio (Classic)** .
 
-1. Propojte výstup modulu **zip data** ikony **skript sady** vstupní sady [spustit skript jazyka R] [ execute-r-script] modulu.
+1. Připojte výstup ikony **dat zip** ke vstupu **sady prostředků skriptu** [spustit modul skriptu jazyka R][execute-r-script] .
 
-1. Typ `source()` funkci s názvem souboru zip do okna kódu pro [spustit skript jazyka R] [ execute-r-script] modulu. V případě Moje zadané mnou `source("src/simpleplot.R")`.  
+1. Zadejte funkci `source()` s názvem souboru zip do okna Code pro modul [spouštění skriptu jazyka R][execute-r-script] . V mém zadaném typu písmen jsem `source("src/simpleplot.R")`.  
 
-1. Ujistěte se, že vyberete **Uložit**.
+1. Ujistěte se, že jste vybrali **Uložit**.
 
-Po dokončení těchto kroků [spustit skript jazyka R] [ execute-r-script] modulu spustí skript jazyka R v souboru zip při spuštění experimentu. V tomto okamžiku experiment by měl vypadat přibližně jako obrázek 5.
+Po dokončení těchto kroků se v souboru ZIP při spuštění experimentu spustí modul [skriptu Run r][execute-r-script] . V tomto okamžiku by experiment měl vypadat přibližně jako obrázek 5.
 
-![Experimentování s využitím ZIP skript jazyka R](./media/r-quickstart/fig6.png)
+![Experimentování s použitím skriptu zip R](./media/r-quickstart/fig6.png)
 
-*Obrázek 5. Experimentování s využitím ZIP skript jazyka R.*
+*Obrázek 5. Experimentujte pomocí skriptu zip R.*
 
-#### <a name="dataset1"></a>Dataset1
+#### <a name="dataset1"></a>DataSet1.
 
-Můžete předat obdélníkové tabulky dat kódu R pomocí Dataset1 vstup. V našem jednoduchý skript `maml.mapInputPort(1)` funkce načítá data z portu 1. Tato data se pak přiřadí název proměnné datového rámce v kódu. V našem jednoduchý skript provede první řádek kódu přiřazení.
+Pomocí vstupu DataSet1. můžete předat obdélníkovou tabulku dat kódu jazyka R. V našem jednoduchém skriptu načte funkce `maml.mapInputPort(1)` data z portu 1. Tato data se pak přiřazují k názvu proměnné datového rámce v kódu. V našem jednoduchém skriptu provede první řádek kódu přiřazení.
 
 ```R
 cadairydata <- maml.mapInputPort(1)
 ```
 
-Spusťte experiment tak, že vyberete **spustit** tlačítko. Po dokončení provádění vyberte [spustit skript jazyka R] [ execute-r-script] modulu a pak vyberte **zobrazení výstupu protokolu** v podokně vlastností. Nová stránka by se zobrazit v prohlížeči zobrazující obsah souboru výstup.log souboru. Když se posunete dolů mělo zobrazit něco jako následující.
+Spusťte experiment výběrem tlačítka **Spustit** . Po dokončení spuštění vyberte modul skriptu pro [spuštění R][execute-r-script] a v podokně Vlastnosti vyberte **Zobrazit výstupní protokol** . V prohlížeči by se měla zobrazit nová stránka, která zobrazuje obsah výstupního souboru. log. Když se posunete dolů, měla by se zobrazit něco podobného jako následující.
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]
@@ -280,7 +280,7 @@ Spusťte experiment tak, že vyberete **spustit** tlačítko. Po dokončení pro
     [ModuleOutput]  "ColumnTypes":System.Int32,3,System.Double,5,System.String,1
     [ModuleOutput] }
 
-Dále snížit na stránce je podrobnější informace ve sloupcích, které bude vypadat podobně jako následující.
+Další možností na stránce je podrobnější informace o sloupcích, což bude vypadat přibližně takto.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput]
@@ -304,81 +304,81 @@ Dále snížit na stránce je podrobnější informace ve sloupcích, které bud
     [ModuleOutput]
     [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
 
-Tyto výsledky se většinou podle očekávání, s 228 připomínky a 9 sloupců v datového rámce. Můžeme vidět názvy sloupců, typ dat R a vzorky každý sloupec.
+Tyto výsledky jsou převážně podle očekávání, přičemž 228 pozorování a 9 sloupců v dataframe. Zobrazí se názvy sloupců, datový typ R a ukázka každého sloupce.
 
 > [!NOTE]
-> Tento stejný výstupu je pohodlně k dispozici z výstupu zařízení jazyka r. [spustit skript jazyka R] [ execute-r-script] modulu. Probereme výstupů [spustit skript jazyka R] [ execute-r-script] modulu v další části.  
+> Stejný vytištěný výstup je pohodlně dostupný z výstupu zařízení R v modulu [spouštění skriptu jazyka r][execute-r-script] . V další části se podíváme na výstupy modulu [spuštění skriptu jazyka R][execute-r-script] .  
 
 #### <a name="dataset2"></a>Dataset2
 
-Chování Dataset2 vstupu je shodná s Dataset1. Pomocí tohoto vstupního můžete předat obdélníkové druhou tabulku dat do kódu R. Funkce `maml.mapInputPort(2)`, s argumentem 2 slouží k předání tato data.  
+Chování vstupu Dataset2 je stejné jako u DataSet1. Pomocí tohoto vstupu můžete do kódu R předat druhou obdélníkovou tabulku dat. Funkce `maml.mapInputPort(2)`s argumentem 2 se používá k předání těchto dat.  
 
-### <a name="execute-r-script-outputs"></a>Spustit skript jazyka R výstupy
+### <a name="execute-r-script-outputs"></a>Spouštění výstupů skriptů R
 
-#### <a name="output-a-dataframe"></a>Výstupní datový rámec
+#### <a name="output-a-dataframe"></a>Výstup datového rámce
 
-Obsah datového rámce R můžete výstup jako obdélníkový tabulku přes port Dataset1 výsledek pomocí `maml.mapOutputPort()` funkce. V našem jednoduchý skript jazyka R se provádí pomocí následující řádek.
+Obsah datového rámce R můžete vytvořit jako obdélníkovou tabulku pomocí DataSet1 .ho portu pomocí funkce `maml.mapOutputPort()`. V našem jednoduchém skriptu jazyka R se to provádí na následujícím řádku.
 
 ```
 maml.mapOutputPort('cadairydata')
 ```
 
-Po spuštění testu, vyberte na výstupní port Dataset1 výsledek a pak vyberte **vizualizovat**. Měli byste vidět něco jako obrázek 6.
+Po spuštění experimentu vyberte výstupní port DataSet1. výsledku a pak vyberte **vizualizovat**. Měl by se zobrazit něco podobného jako obrázek 6.
 
-![Vizualizace výstupu mléka Kalifornie dat](./media/r-quickstart/fig7.png)
+![Vizualizace výstupu dat pro mléčné výrobky v Kalifornii](./media/r-quickstart/fig7.png)
 
-*Obrázek 6. Vizualizace výstupu Kalifornie mléka data.*
+*Obrázek 6. Vizualizace výstupu dat o mlékárnách v Kalifornii*
 
-Tento výstup by měl vypadat stejný jako vstup, přesně tak, jak jsme očekávání.  
+Tento výstup bude stejný jako u vstupu, přesně podle očekávání.  
 
-### <a name="r-device-output"></a>Výstup zařízení jazyka r.
+### <a name="r-device-output"></a>Výstup zařízení v R
 
-Výstup zařízení [spustit skript jazyka R] [ execute-r-script] modul obsahuje zprávy a grafický výstup. Zprávy i na standardní výstup a chyby z jazyka R se odesílají na výstupní port R zařízení.  
+Výstup zařízení modulu [spuštění skriptu jazyka R][execute-r-script] obsahuje zprávy a výstup grafiky. Do výstupního portu zařízení R se odesílají standardní výstupní i standardní chybové zprávy z R.  
 
-Chcete-li zobrazit výstup zařízení R, vyberte port a pak na **vizualizovat**. Vidíme standardní výstup a chyby ze skriptu R na obrázku 7.
+Chcete-li zobrazit výstup zařízení R, vyberte port a pak na **vizualizaci**. Ve skriptu jazyka R na obrázku 7 se zobrazuje standardní výstup a standardní chyba.
 
-![Standardní výstup a chyby z portu zařízení jazyka r.](./media/r-quickstart/fig8.png)
+![Standardní výstup a standardní chyba z portu zařízení R](./media/r-quickstart/fig8.png)
 
-*Obrázek 7. Standardní výstup a chyby z portu R zařízení.*
+*Obrázek 7. Standardní výstup a standardní chyba z portu zařízení R.*
 
-Posun dolů jsme zobrazit výstup grafiky z našich skript jazyka R na obrázku 8.  
+Posouváním dolů vidíte výstup grafiky z našeho skriptu jazyka R na obrázku 8.  
 
-![Grafického výstupu z portu zařízení jazyka r.](./media/r-quickstart/fig9.png)
+![Výstup grafiky z portu zařízení R](./media/r-quickstart/fig9.png)
 
-*Obrázek 8. Výstup z portu R zařízení grafiky.*  
+*Obrázek 8. Výstup grafiky z portu zařízení R*  
 
-## <a id="filtering"></a>Filtrování dat a transformace
+## <a id="filtering"></a>Filtrování a transformace dat
 
-V této části budeme provádět některé základní filtrování dat a transformace operací s daty mléka Kalifornie. Na konci této části máme data ve formátu vhodném pro sestavování analytických modelů.  
+V této části provedeme několik základních operací pro filtrování a transformaci dat v rámci dat o mlékárnách v Kalifornii. Na konci této části budeme mít data ve formátu vhodném pro vytvoření analytického modelu.  
 
-Přesněji řečeno, v této části budeme provádět několik běžných dat čištění a transformace úloh: Zadejte transformace, filtrování datových rámců, přidává nové počítané sloupce a hodnota transformace. Toto pozadí by měly pomoct vypořádat se se mnoho variant v reálných problémů.
+Konkrétně v této části provedeme několik běžných úloh čištění a transformace dat: transformace typu, filtrování na datových snímcích, přidávání nových vypočítaných sloupců a transformace hodnot. Toto pozadí by vám mělo pomáhat při práci s mnoha variantami zjištěnými v reálných problémech.
 
-Kompletní kód R pro tento oddíl je k dispozici v [MachineLearningSamples-poznámkových bloků a studio – ukázky](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+Úplný kód R této části je k dispozici v [MachineLearningSamples – poznámkových blocích/studiu-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="type-transformations"></a>Typ transformace
+### <a name="type-transformations"></a>Transformace typu
 
-Teď, když jsme může číst data mléka Kalifornie do kódu jazyka R v [spustit skript jazyka R] [ execute-r-script] modulu, potřebujeme zajistit, že data ve sloupcích odpovídající typ a formát.  
+Teď, když můžeme přečíst data o mlékárnách v Kalifornii do kódu R v modulu [spuštění skriptu jazyka r][execute-r-script] , musíme zajistit, aby data ve sloupcích měla zamýšlený typ a formát.  
 
-R je dynamicky psaný jazyk, což znamená, že se na další podle potřeby převést datové typy. Atomic datové typy v jazyce R zahrnují číselné literály, logické a znak. Faktor typ slouží k uložení kompaktně data zařazená do kategorií. Mnohem více informace o typech dat najdete v odkazech v [další materiály](#appendixb) níže.
+R je dynamicky typový jazyk, což znamená, že datové typy jsou v případě potřeby z jednoho na jiné. Atomické datové typy v jazyce R obsahují číselné, logické a znakové. Typ faktoru se používá k komprimaci dat kategorií. Další informace o datových typech [najdete v odkazech níže.](#appendixb)
 
-Pokud tabulkových dat je pro čtení do jazyka R z externího zdroje, je vždy vhodné zkontrolujte výsledné typy ve sloupcích. Chcete sloupec – znak typu, ale v mnoha případech to se zobrazí jako faktor nebo naopak. V ostatních případech sloupec, který si myslíte, že by měl být číselné je reprezentována znaková data, například "1,23", spíše než 1,23 jako plovoucí bodu číslo.  
+Když jsou tabulková data načítána z externího zdroje na R, je vždy vhodné kontrolovat výsledné typy ve sloupcích. Je možné, že budete chtít sloupec typu znak, ale v mnoha případech se to zobrazí jako faktor nebo naopak. V ostatních případech by měla být číselná hodnota, která je vyjádřená jako znaková data, třeba 1,23, nikoli 1,23 jako číslo s plovoucí desetinnou čárkou.  
 
-Naštěstí je snadný převod jednoho typu na jiný, za předpokladu, je možné mapování. Například 'Nevada' nelze převést na číselnou hodnotu, ale můžete ji převést na faktor (zařazené do kategorií proměnné). Další příklad můžete převést číselné 1 znak '1' nebo faktor.  
+Naštěstí je snadné převést jeden typ na jiný, pokud je mapování možné. Například nelze převést ' Nevada ' na číselnou hodnotu, ale lze jej převést na faktor (kategorií proměnná). V jiném příkladu můžete převést číslo 1 na znak 1 nebo faktor.  
 
-Syntaxe pro některý z těchto převodů je jednoduchý: `as.datatype()`. V následujících bodech tyto funkce pro převod typů.
+Syntaxe pro některý z těchto převodů je jednoduchá: `as.datatype()`. Tyto funkce pro převod typů zahrnují následující.
 
 * `as.numeric()`
 * `as.character()`
 * `as.logical()`
 * `as.factor()`
 
-Na datové typy sloupců zadáme v předchozí části: jsou všechny sloupce s výjimkou sloupec s názvem "Měsíc", což je typ znaku číselného typu. Pojďme to převést na faktorem a testovat výsledky.  
+Podívejte se na datové typy sloupců, které zadáte v předchozí části: všechny sloupce jsou typu numeric, s výjimkou sloupce označeného ' month ', který je typu Character. Pojďme to převést na faktor a otestovat výsledky.  
 
-Odstraněný řádek, který diagnostického matice a přidá řádek převodu ve sloupci "Měsíc" faktor. V experimentu jsem se jenom operace vyjmutí a vložení kódu R do okna kódu [spustit skript jazyka R] [ execute-r-script] modulu. Můžete také aktualizovat soubor zip a nahrajte ho do Azure Machine Learning Studio, ale tato akce trvá několik kroků.  
+Odstranil (a) jsem řádek, který vytvořil matici scatterplot, a přidal (a) řádek, který převádí sloupec ' month ' na faktor. V mém experimentu budu jenom vyjímat a vkládat kód R do okna Code modulu [spouštěného skriptu jazyka R][execute-r-script] . Můžete také aktualizovat soubor zip a odeslat ho do klasické verze Azure Machine Learning Studio, ale toto nastavení trvá několik kroků.  
 
 ```R
 ## Only one of the following two lines should be used
-## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
 ## If in RStudio, use the second line with read.csv()
 cadairydata <- maml.mapInputPort(1)
 # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
@@ -386,11 +386,11 @@ cadairydata <- maml.mapInputPort(1)
 cadairydata$Month <- as.factor(cadairydata$Month)
 str(cadairydata) # Check the result
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio
+## Azure Machine Learning Studio (classic)
 maml.mapOutputPort('cadairydata')
 ```
 
-Umožňuje spustit tento kód a podívejte se na výstup protokolu pro skript R. Relevantní data z protokolu je znázorněno na obrázku 9.
+Pojďme tento kód spustit a podívat se na výstupní protokol pro skript R. Relevantní data z protokolu jsou uvedena na obrázku 9.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -418,18 +418,18 @@ Umožňuje spustit tento kód a podívejte se na výstup protokolu pro skript R.
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Obrázek 9. Souhrn datového rámce s proměnnou faktor.*
+*Obrázek 9: Souhrn datového rámce s proměnnou faktor.*
 
-Teď by měl být typu měsíc "**faktor plánovaným bodem obnovení kratším 14 úrovní**". To je problém, protože existují jenom 12 měsíců v roce. Můžete také zkontrolovat, Všimněte si, že typ v **vizualizovat** datové sady, výsledek je port "**zařazené do kategorií**".
+Typ pro měsíc by teď měl vyslovit "**faktor w/14 úrovně**". Jedná se o problém, protože v roce je jenom 12 měsíců. Můžete také zjistit, že typ v **vizualizaci** portu datové sady výsledku je '**kategorií**'.
 
-Problém je, že sloupec "Měsíc" nebyl systematicky programového. V některých případech se nazývá měsíc dne a v jiných se zkracuje jako dubna. Ořízne řetězec, který má 3 znaky jsme můžete tento problém vyřešit. Řádek kódu nyní vypadá takto:
+Problémem je, že sloupec ' month ' nebyl kódovaný systematicky. V některých případech se za měsíc zavolá duben a v ostatních případech se zkrátí jako APR. Tento problém můžeme vyřešit oříznutím řetězce na 3 znaky. Řádek kódu nyní vypadá takto:
 
 ```R
 ## Ensure the coding is consistent and convert column to a factor
 cadairydata$Month <- as.factor(substr(cadairydata$Month, 1, 3))
 ```
 
-Znovu spustit experiment a zobrazte výstup protokolu. Očekávané výsledky jsou uvedené na obrázku 10.  
+Znovu spusťte experiment a zobrazte výstupní protokol. Očekávané výsledky jsou zobrazeny na obrázku 10.  
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -457,27 +457,27 @@ Znovu spustit experiment a zobrazte výstup protokolu. Očekávané výsledky js
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Obrázek 10. Souhrn datového rámce s správný počet úrovní faktor.*
+*Obrázek 10. Souhrn datového rámce se správným počtem úrovní faktoru.*
 
-Naše proměnná faktor teď má požadované úrovně 12.
+Naše proměnná faktoru má teď požadované 12 úrovní.
 
-### <a name="basic-data-frame-filtering"></a>Základní datové rámce filtrování
+### <a name="basic-data-frame-filtering"></a>Základní filtrování datových snímků
 
-R dataframes podporují výkonné možnosti filtrování. Datové sady mohou být podsady pomocí logické filtry řádků nebo sloupců. V mnoha případech se bude vyžadovat komplexní filtrovací kritéria. Odkazy v [další materiály](#appendixb) níže obsahují příklady rozsáhlé filtrování datových rámců.  
+Datový rámec R podporuje výkonné možnosti filtrování. Datové sady mohou být subsetted pomocí logických filtrů na jednom řádku nebo ve sloupcích. V mnoha případech se vyžadují složitá kritéria filtru. [Níže uvedené](#appendixb) odkazy obsahují podrobné příklady filtrování dataframes.  
 
-Existuje jeden bit filtrování by měl uděláme v naší datové sadě. Když se podíváte na sloupce v cadairydata datového rámce, zobrazí se dvě nepotřebných sloupců. První sloupec obsahuje jenom číslo řádku, který není velmi užitečné. Druhý sloupec Year.Month, obsahuje nadbytečné informace. Tyto sloupce snadno vylučujeme pomocí následujícího kódu jazyka R.
+Pro naši datovou sadu bychom měli dělat jeden bit filtrování. Pokud se podíváte na sloupce v dataframe cadairydata, zobrazí se dva nepotřebné sloupce. První sloupec má pouze číslo řádku, což není velmi užitečné. Druhý sloupec year. Month obsahuje nadbytečné informace. Tyto sloupce můžeme snadno vyloučit pomocí následujícího kódu R.
 
 > [!NOTE]
-> Od této chvíle v této části, stačí vám ukážu, další kód se přidává do [spustit skript jazyka R] [ execute-r-script] modulu. Přidat každý nový řádek **před** `str()` funkce. Můžu tuto funkci použít k ověření své výsledky v Azure Machine Learning Studio.
+> Od tohoto oddílu teď v této části ukážeme jenom další kód, který přidáváte do modulu [spuštění skriptu jazyka R][execute-r-script] . Přidám všechny nové řádky **před** funkci `str()`. Pomocí této funkce lze ověřit výsledky v klasické verzi Azure Machine Learning Studio.
 
-Můžu přidejte následující řádek kódu jazyka R v [spustit skript jazyka R] [ execute-r-script] modulu.
+Do kódu R v modulu [spuštění skriptu jazyka r][execute-r-script] přidám následující řádek.
 
 ```R
 # Remove two columns we do not need
 cadairydata <- cadairydata[, c(-1, -2)]
 ```
 
-Tento kód spustit v experimentu a podívat se na výsledek z výstupu protokolu. Tyto výsledky jsou zobrazeny v obrázek 11.
+Spusťte tento kód v experimentu a Prohlédněte si výsledek z výstupního protokolu. Tyto výsledky se zobrazují na obrázku 11.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -501,15 +501,15 @@ Tento kód spustit v experimentu a podívat se na výsledek z výstupu protokolu
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Obrázek 11. Souhrn datový rámec se dvěma sloupci odebrat.*
+*Obrázek 11. Souhrn datového rámce se dvěma odebranými sloupci*
 
-Dobrá zpráva! Jsme dosáhli očekávaných výsledků.
+Dobrá zpráva! Získáte očekávané výsledky.
 
 ### <a name="add-a-new-column"></a>Přidat nový sloupec
 
-Vytváření modelů řady času bude vhodné mít sloupce obsahujícího měsíců od začátku časové řady. Vytvoříme nový sloupec "Month.Count".
+Aby bylo možné vytvářet modely časových řad, bude vhodné mít sloupec, který obsahuje měsíce od začátku časové řady. Vytvoří se nový sloupec Month. Count.
 
-Kvůli lepší organizaci kódu vytvoříme naši první jednoduchou funkci `num.month()`. Potom použije této funkce vytvoří nový sloupec v datového rámce. Nový kód je následujícím způsobem.
+Abychom vám usnadnili uspořádání kódu, vytvoříme naši první jednoduchou funkci `num.month()`. Pak tuto funkci použijeme k vytvoření nového sloupce v dataframe. Nový kód je následující.
 
 ```R
 ## Create a new column with the month count
@@ -527,7 +527,7 @@ num.month <- function(Year, Month) {
 cadairydata$Month.Count <- num.month(cadairydata$Year, cadairydata$Month.Number)
 ```
 
-Nyní spusťte aktualizovanou experiment a používat protokol výstup zobrazíte výsledky. Tyto výsledky jsou zobrazeny v obrázek 12.
+Nyní spusťte aktualizovaný experiment a použijte výstupní protokol k zobrazení výsledků. Tyto výsledky se zobrazují na obrázku 12.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -553,19 +553,19 @@ Nyní spusťte aktualizovanou experiment a používat protokol výstup zobrazít
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Obrázek 12. Souhrn datový rámec se další sloupec.*
+*Obrázek 12. Souhrn datového rámce s dalším sloupcem*
 
-Vypadá všechno funguje. Máme nový sloupec s očekávané hodnoty v našem datového rámce.
+Vypadá to, že všechno funguje. V našem dataframe máme nový sloupec s očekávanými hodnotami.
 
-### <a name="value-transformations"></a>Hodnota transformace
+### <a name="value-transformations"></a>Transformace hodnot
 
-V této části budeme provádět některé jednoduché transformace na hodnoty v některé sloupce naše datového rámce. Jazyk R podporuje téměř libovolnou hodnotu transformace. Odkazy v [další materiály](#appendixb) níže obsahují rozsáhlé příklady.
+V této části provedeme některé jednoduché transformace na hodnoty v některých sloupcích našeho datového rámce. Jazyk R podporuje skoro libovolné transformace hodnot. [Níže uvedené](#appendixb) odkazy níže obsahují rozsáhlé příklady.
 
-Když se podíváte na hodnoty v souhrnné informace o našich datový rámec byste měli vidět něco liché tady. Dosažení více zmrzliny než mléka v Kalifornii? Ne, samozřejmě, jak to nemá smysl sad jako tato skutečnost může být na některé z nás ice cream lovers. Jednotky se liší. Cena je v jednotkách, které nám librách, kterého je v jednotkách 1 milion librách USA, ice cream je v jednotkách 1 000 nám galony a produkci minipivovarů ve wisconsinu byt je v jednotkách 1 000 librách USA. Za předpokladu, že se asi 6,5 librách na paliva váží ice cream, můžeme snadno udělat násobení převést tyto hodnoty tak, aby byly všechny ve stejné jednotky librách 1 000.
+Pokud se podíváte na hodnoty v souhrnech našeho dataframe, měla by se tady zobrazit něco odlišného. Je zmrzlina zmrzlina než mléko vyráběná v Kalifornii? Ne, samozřejmě nemusíte mít žádný smysl, jako by se jednalo o tento fakt jako na některém ze smetany zmrzliny Lovers. Jednotky se liší. Cena je v jednotkách USA – libry, mléko v jednotkách 1 – US libry, zmrzlina v jednotkách 1 000 amerických a domáckých sýrů je v jednotkách 1 000 amerických Libr. Za předpokladu, že zmrzlina v 6,5 librách za galon, můžeme jednoduše provést násobení, aby se tyto hodnoty převedly na stejné jednotky 1 000 Libr.
 
-Pro náš model Prognózování používáme násobení model pro vývoj a sezónní úpravy tato data. Transformace protokolu nám umožňuje používat lineární model, zjednodušuje tento proces. Můžete použít ve stejné funkci použití násobitel transformace protokolu.
+Pro náš model prognózy používáme model multiplikativní pro vývoj a sezónní úpravu těchto dat. Transformace protokolu nám umožňuje použít lineární model a zjednodušit tento proces. Transformaci protokolu můžeme použít ve stejné funkci, kde se aplikuje násobitel.
 
-V následujícím kódu, definovat novou funkci, `log.transform()`a použijte ji pro řádky obsahující číselné hodnoty. R `Map()` funkce se používá k aplikování `log.transform()` funkce, která se vybrané sloupce datového rámce. `Map()` je podobný `apply()` , ale umožňuje více než jeden seznam argumentů funkce. Všimněte si, že poskytuje seznam multiplikátory druhým argumentem `log.transform()` funkce. `na.omit()` Funkce se používá jako hodně vyčištění k zajištění nemáme chybí nebo je nedefinované hodnoty datového rámce.
+V následujícím kódu definujeme novou funkci `log.transform()`a použijete ji na řádky, které obsahují číselné hodnoty. Funkce R `Map()` slouží k aplikování funkce `log.transform()` na vybrané sloupce datového rámce. `Map()` je podobná `apply()`, ale umožňuje více než jeden seznam argumentů funkce. Všimněte si, že seznam násobitelů poskytuje druhý argument funkci `log.transform()`. Funkce `na.omit()` slouží jako bitová kopie, aby nedošlo k chybějícím nebo nedefinovaným hodnotám v dataframe.
 
 ```R
 log.transform <- function(invec, multiplier = 1) {
@@ -600,18 +600,18 @@ cadairydata[, 4:7] <- Map(log.transform, cadairydata[, 4:7], multipliers)
 cadairydata <- na.omit(cadairydata)  
 ```
 
-Je v poměrně bit děje `log.transform()` funkce. Většina tento kód kontroluje potenciální problémy s argumenty nebo nakládání s výjimkami, které můžou stále nastat během výpočtů. Stačí několik řádků tohoto kódu dělají výpočtů.
+Ve funkci `log.transform()` je něco nového. Většina tohoto kódu kontroluje možné problémy s argumenty nebo řešení potíží s výjimkami, které mohou být stále v průběhu výpočtů. Pouze pár řádků tohoto kódu ve skutečnosti provádí výpočty.
 
-Cílem obranné programování je zabránit selhání jednu funkci, která zabrání zpracování pokračovat. K náhlému selhání dlouhotrvajících analýzy může být poměrně frustrující pro uživatele. Abyste předešli této situaci, musí se zvolit výchozí návratové hodnoty, který bude omezovat poškození zpracování příjmu dat. Zprávu je také vytvořen uživatele upozorňuje, že se něco nepovedlo.
+Cílem programování v obrannou linií je zabránit selhání jedné funkce, která brání v pokračování zpracování. Náhlé selhání dlouhotrvající analýzy může být pro uživatele poměrně frustrující. Aby k této situaci nedocházelo, je nutné zvolit výchozí návratové hodnoty, které omezují škodu na zpracování pro příjem dat. Také se vytvoří zpráva upozorňující uživatele, že došlo k nějakému problému.
 
-Pokud není jste zvyklí obranné programování v jazyce R, tento kód se může zdát poněkud náročný. Můžu vás provede hlavními kroky:
+Pokud se nepoužíváte k obrannou linií programování v jazyce R, může se stát, že se veškerý tento kód může zdát příliš náročný. Provede vás hlavními kroky:
 
-1. Vektor čtyř zpráv je definována. Tyto zprávy se používají ke sdělování informací o některých možných chyb a výjimek, které se mohou vyskytnout s tímto kódem.
-2. Hodnota není k dispozici pro každý případ se lze vrátit. Existuje mnoho dalších možností, které může mít méně vedlejší účinky. Lze může vrátit vektor nuly nebo vstupní původního vektoru, např.
-3. Kontroly jsou spuštěny na argumenty funkci. V obou případech, pokud dojde k chybě, vrátí se výchozí hodnota a vytvořil zprávu `warning()` funkce. Používám `warning()` spíše než `stop()` jako druhá možnost se ukončí provádění, přesně jak jsem snažím se vyhnout. Všimněte si, že mám napsali tento kód ve stylu postupu jako v tomto případě funkční přístup vypadal jako komplexní a skrytého.
-4. Výpočty protokolu jsou zabaleny v `tryCatch()` tak, aby výjimky nezpůsobí náhlé zastavení zpracování. Bez `tryCatch()` Většina chyb vyvolaných výsledek funkce R v signál k zastavení, který právě tohle dělá.
+1. Je definován vektor čtyř zpráv. Tyto zprávy slouží ke sdělování informací o některých možných chybách a výjimkách, které mohou s tímto kódem nastat.
+2. Vrátím hodnotu NEDEF pro každý případ. Existuje mnoho dalších možností, které mohou mít méně vedlejších účinků. Mohl by vracet vektor nul nebo původní vstupní vektor, například.
+3. Kontroly jsou spouštěny na argumentech funkce. V každém případě, pokud je zjištěna chyba, je vrácena výchozí hodnota a zpráva je vytvořena funkcí `warning()`. Používám `warning()` místo `stop()`, protože tím se ukončí provádění, přesně co se mi snažím zabránit. Všimněte si, že jsem tento kód napsal ve stylu procedurální, protože v tomto případě se jedná o funkční přístup, který je složitý a zakrývá se.
+4. Výpočty protokolu jsou zabaleny do `tryCatch()` tak, že výjimky nebudou způsobovat náhlé zastavení zpracování. Bez `tryCatch()` většina chyb vyvolaných funkcí jazyka R má za následek signál stop, který to dělá pouze.
 
-Spustit tento kód R v experimentu a podíváme se na tištěné výstup do souboru výstup.log souboru. Nyní uvidíte transformovaný hodnoty čtyři sloupce v protokolu, jak je znázorněno na obrázku 13.
+Spusťte tento kód R v experimentu a podívejte se na vytištěný výstup v souboru Output. log. Nyní se zobrazí transformované hodnoty čtyř sloupců v protokolu, jak je znázorněno na obrázku 13.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -637,33 +637,33 @@ Spustit tento kód R v experimentu a podíváme se na tištěné výstup do soub
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Obrázek 13. Souhrn transformovaný hodnot v datového rámce.*
+*Obrázek 13. Souhrn transformovaných hodnot v rámci datového rámce.*
 
-Vidíme, že byly transformovány hodnoty. Nyní produkci mléka výrazně přesahuje všechny ostatní mléka produktu produkčního prostředí, vrací, že jsou nyní se díváme na logaritmické měřítko.
+Uvidíme hodnoty, které byly transformované. Mléčná produkce nyní výrazně přesáhne veškerou další produkci produktů v mléčném prostředí a znovu volá, že teď se díváte na škálování protokolu.
 
-V tomto okamžiku je naše data vyčistí a jsme připraveni pro některé modelování. Prohlížení souhrn pro datovou sadu výsledků výstupu vizualizace naše [spustit skript jazyka R] [ execute-r-script] modul, zobrazí se sloupec "Měsíc" je "Zařazené do kategorií" s 12 jedinečné hodnoty, znovu, stejně jako My jsme chtěli.
+V tomto okamžiku se vyčistí naše data a budeme připraveni na nějaké modelování. Podívejte se na Shrnutí vizualizace výstup výsledné sady výsledků v modulu [spuštění skriptu jazyka R][execute-r-script] . sloupec ' month ' je ' kategorií ' s 12 jedinečnými hodnotami, a to stejně, jako jsme chtěli.
 
-## <a id="timeseries"></a>Čas řady objekty a analýzy korelace
+## <a id="timeseries"></a>Objekty časové řady a analýza korelace
 
-V této části budeme prozkoumejte pár základních objektů řady čas R a analyzovat korelace mezi určité proměnné. Naším cílem je výstupní datový rámec obsahující informace o pairwise korelace v několika zjevně demonstruje výskyt pomalé.
+V této části prozkoumáme několik základních objektů časových řad jazyka R a analyzujete korelace mezi některými proměnnými. Naším cílem je výstup datového rámce obsahujícího informace o korelační korelaci v několika prodlevy.
 
-Kompletní kód R pro tento oddíl je v [MachineLearningSamples-poznámkových bloků a studio – ukázky](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+Úplný kód R tohoto oddílu je v [MachineLearningSamples-poznámkách/studiu-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="time-series-objects-in-r"></a>Čas řady objekty v jazyce R
+### <a name="time-series-objects-in-r"></a>Objekty časové řady v R
 
-Jak už jsme už zmínili, time series jsou řady hodnot data indexované podle času. R čas řady objekty se používají k vytváření a správě index čas. Existuje několik výhod používání času řada objektů. Čas řady objekty vás zbaví mnoho podrobností správy časových řad index hodnoty, které jsou zapouzdřeny v objektu. Kromě toho čas řady objekty vám umožňují použít metody řady mnoho času pro vykreslení, tisk, modelování a tak dál.
+Jak už bylo zmíněno, časové řady představují řadu hodnot dat indexovaných podle času. Objekty časové řady R slouží k vytvoření a správě časového indexu. Použití objektů časových řad má několik výhod. Objekty Time Series uvolňují z mnoha podrobností o správě hodnot indexu časové řady, které jsou zapouzdřeny v objektu. Kromě toho objekty Time Series umožňují použít řadu metod časové řady pro vykreslování, tisk, modelování atd.
 
-POSIXct time series třída se obvykle používá a je poměrně jednoduché. Toto časové řady třídy opatření čas od začátku epochy, 1. ledna 1970. V tomto příkladu budeme používat POSIXct čas řady objekty. Další často používaný R čas řadu tříd objektů patří zoo a xts, rozšiřitelné časové řady.
+Třída POSIXct Time Series se běžně používá a je relativně jednoduchá. Tato časová osa měří čas od začátku epocha, od 1. ledna 1970. V tomto příkladu použijeme objekty POSIXct Time Series. Mezi další široce používané třídy objektů R časové řady patří XTS, rozšiřitelná časová řada.
 
-### <a name="time-series-object-example"></a>Objekt časové řadě – příklad
+### <a name="time-series-object-example"></a>Příklad objektu Time Series
 
-Pusťme se do práce v našem příkladu. Přetáhnout myší **nové** [spustit skript jazyka R] [ execute-r-script] modulu do svého experimentu. Připojte výstupní port výsledek Dataset1 existující [spustit skript jazyka R] [ execute-r-script] modulu Dataset1 vstupním portem modulu nové [spustit skript jazyka R] [ execute-r-script] modulu.
+Pojďme začít s naším příkladem. Přetáhněte **Nový** modul [spuštění skriptu jazyka R][execute-r-script] do experimentu. Připojte výstupní port DataSet1. pro existující modul [skriptu Execute r][execute-r-script] ke vstupnímu portu DataSet1. nového modulu [skriptu pro spuštění r][execute-r-script] .
 
-Jak jsme to udělali pro prvních příkladů, jak jsme průběhu v příkladu, v některých jsem se zobrazí pouze přírůstkové další řádky kódu R v každém kroku.  
+Jak jsme pracovali v prvních příkladech, jak postupovat v příkladu, v některých bodech se zobrazí pouze přírůstkové další řádky kódu R v každém kroku.  
 
 #### <a name="reading-the-dataframe"></a>Čtení datového rámce
 
-Jako první krok pojďme si přečíst datový rámec a ujistěte se, že jsme dosáhli očekávaných výsledků. Následující kód by měl provádět úlohy.
+Jako první krok si přečteme v dataframe a ujistěte se, že jsme získali očekávané výsledky. Následující kód by měl provést úlohu.
 
 ```R
 # Comment the following if using RStudio
@@ -671,7 +671,7 @@ cadairydata <- maml.mapInputPort(1)
 str(cadairydata) # Check the results
 ```
 
-Nyní spusťte experiment. Protokol nový obrazec spustit skript jazyka R by měl vypadat jako obrázek 14.
+Nyní spusťte experiment. Protokol nového obrazce skriptu pro spuštění jazyka R by měl vypadat jako obrázek 14.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -693,13 +693,13 @@ Nyní spusťte experiment. Protokol nový obrazec spustit skript jazyka R by mě
     [ModuleOutput] 
     [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
 
-*Obrázek 14. Souhrn datového rámce v modulu spustit skript jazyka R*
+*Obrázek 14. Souhrn datového rámce v modulu spuštění skriptu jazyka R.*
 
-Tato data jsou z očekávaných typů a formát. Mějte na paměti, že sloupec "Měsíc" je faktoru typ a má očekávaný počet úrovní.
+Tato data mají očekávané typy a formát. Všimněte si, že sloupec ' month ' je typu faktor a má očekávaný počet úrovní.
 
-#### <a name="creating-a-time-series-object"></a>Vytváření time series objekt
+#### <a name="creating-a-time-series-object"></a>Vytvoření objektu časové řady
 
-Potřebujeme přidat time series objekt do našich datového rámce. Nahraďte následující příkaz, který přidá nový sloupec třídy POSIXct stávajícího kódu.
+Musíme do našeho datového rámce přidat objekt časové řady. Nahraďte aktuální kód následujícím kódem, který přidá nový sloupec třídy POSIXct.
 
 ```R
 # Comment the following if using RStudio
@@ -712,7 +712,7 @@ cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-
 str(cadairydata) # Check the results
 ```
 
-Nyní zkontrolujte protokol. Měl by vypadat jako obrázek 15.
+Teď si Projděte protokol. Měl by vypadat jako obrázek 15.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -736,31 +736,31 @@ Nyní zkontrolujte protokol. Měl by vypadat jako obrázek 15.
     [ModuleOutput] 
     [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
-*Obrázek 15. Souhrn datového rámce s time series objekt.*
+*Obrázek 15. Souhrn objektu dataframe s objektem časové řady*
 
-Můžeme vidět ze souhrnu nového sloupce, který je ve skutečnosti třídy POSIXct.
+V souhrnu jsme viděli, že nový sloupec je ve skutečnosti pro třídu POSIXct.
 
 ### <a name="exploring-and-transforming-the-data"></a>Zkoumání a transformace dat
 
-Podívejme se na určité proměnné v této datové sadě. Matice diagnostického je dobrým způsobem, jak vytvořit krátce podívat. Mám teď nahrazuje `str()` funkce v předcházejícím kódu R s následujícím řádkem.
+Pojďme prozkoumat některé proměnné v této datové sadě. Scatterplot matice je dobrým způsobem, jak vytvořit rychlý vzhled. V předchozím kódu R nahrazujem funkci `str()` s následujícím řádkem.
 
 ```R
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata, main = "Pairwise Scatterplots of dairy time series")
 ```
 
-Tento kód spustit a zobrazit, co se stane. Vykreslení vytvořený v zařízení jazyka r. port by měl vypadat jako obrázek 16.
+Spusťte tento kód a podívejte se, co se stane. Vykreslení vyprodukované na portu zařízení R by mělo vypadat jako obrázek 16.
 
-![Diagnostického matice vybrané proměnné](./media/r-quickstart/fig17.png)
+![Matice scatterplot vybraných proměnných](./media/r-quickstart/fig17.png)
 
-*Obrázek 16. Matice diagnostického vybraných proměnných.*
+*Obrázek 16. Matice scatterplot vybraných proměnných*
 
-Je některé struktura odd-looking vztahy mezi tyto proměnné. Možná vzniká to z trendy v datech a ze skutečnosti, že jsme ještě standardizované proměnné.
+Mezi těmito proměnnými jsou některé struktury s lichým vzhledem. To může být způsobeno trendy v datech a ze skutečnosti, že proměnné jsme nemuseli standardizovaně roznikat.
 
-### <a name="correlation-analysis"></a>Korelace analýzy
+### <a name="correlation-analysis"></a>Analýza korelace
 
-K provedení analýzy korelace musíme zrušit trend i standardizovat proměnné. Mohli bychom jednoduše použít R `scale()` funkce, která centra i škáluje proměnné. Tato funkce může dobře pracovat rychleji. Ale chci zobrazit příklad obranné programování v jazyce R.
+Aby bylo možné provést analýzu korelace, musíme použít jak de-LINTREND, tak i standardizovat proměnné. Můžeme jednoduše použít funkci R `scale()`, která obě centra a škáluje proměnné. Tato funkce může být dobře spouštěna rychleji. Chci si ale zobrazit příklad programu obrannou linií v jazyce R.
 
-`ts.detrend()` Funkce uvedené níže provede oba z těchto operací. Následující dva řádky kódu zrušit trend dat a pak standardizovat hodnoty.
+Níže uvedená funkce `ts.detrend()` provádí obě tyto operace. Následující dva řádky kódu detrendují data a pak tyto hodnoty standardizovat.
 
 ```R
 ts.detrend <- function(ts, Time, min.length = 3){
@@ -807,23 +807,23 @@ df.detrend <- data.frame(lapply(cadairydata[, 4:7], ts.detrend, cadairydata$Time
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = df.detrend, main = "Pairwise Scatterplots of detrended standardized time series")
 ```
 
-Je v poměrně bit děje `ts.detrend()` funkce. Většina tento kód kontroluje potenciální problémy s argumenty nebo nakládání s výjimkami, které můžou stále nastat během výpočtů. Stačí několik řádků tohoto kódu dělají výpočtů.
+Ve funkci `ts.detrend()` je něco nového. Většina tohoto kódu kontroluje možné problémy s argumenty nebo řešení potíží s výjimkami, které mohou být stále v průběhu výpočtů. Pouze pár řádků tohoto kódu ve skutečnosti provádí výpočty.
 
-Už jsme projednat příkladem obranné programování v transformacích hodnotu. Obě výpočtu bloky jsou zabaleny v `tryCatch()`. Některé chyby smysl vraťte původního vstupního vektoru a v jiných případech lze vrátit vektor nulami.  
+V transformacích hodnot jsme už probrali příklad programování v obrannou linií. Oba bloky výpočtů jsou zabaleny v `tryCatch()`. V případě některých chyb má smysl vrátit původní vstupní vektor a v ostatních případech vrátí Vektor nul.  
 
-Všimněte si, že lineární regrese, použít pro zrušení vzroste zájem o času řady regrese. Prediktivní proměnná je time series objekt.  
+Všimněte si, že lineární regrese, která se používá pro detrendování, je regrese časové řady. Proměnná prediktivního je objekt časové řady.  
 
-Jednou `ts.detrend()` je definována jsme použít na proměnné zájem o náš datového rámce. Jsme musí vynucení výsledný seznam vytvořené `lapply()` do dat datový rámec s použitím `as.data.frame()`. Z důvodu obranné aspektů `ts.detrend()`, nepodařilo se zpracovat jeden z proměnné nezabrání správné zpracování ostatních.  
+Po definování `ts.detrend()` ji použijeme na proměnné zájmu v našem dataframe. Výsledný seznam vytvořený `lapply()` pro datový rámec pomocí `as.data.frame()`je nutné převést. Vzhledem k tomu, že obrannou linií aspekty `ts.detrend()`, neúspěšné zpracování jedné z proměnných nezabrání správnému zpracování ostatních.  
 
-Poslední řádek kódu vytvoří pairwise diagnostického. Po spuštění kódu jazyka R se zobrazují výsledky diagnostického v obrázek 17.
+Poslední řádek kódu vytvoří scatterplot. Po spuštění kódu R se výsledky scatterplot zobrazí na obrázku 17.
 
-![Pairwise diagnostického zrušit trendu a standardizovaným časové řady](./media/r-quickstart/fig18.png)
+![Scatterplot z netrendových a standardizovaných časových řad](./media/r-quickstart/fig18.png)
 
-*Obrázek 17. Pairwise diagnostického zrušit trendu a standardizovaným časové řady.*
+*Obrázek 17. Scatterplot z netrendové a standardizované časové řady.*
 
-Můžete porovnat tyto výsledky jsou uvedeny v obrázek 16. Trend odebrán a proměnné standardizované vidíme mnohem méně struktury v vztahy mezi tyto proměnné.
+Tyto výsledky můžete porovnat s hodnotami uvedenými na obrázku 16. S odebraným trendem a s proměnnými, které jsou standardizovány, se v relacích mezi těmito proměnnými zobrazuje struktura s menším množstvím.
 
-Kód pro výpočet korelace jako objekty PVJS R je následujícím způsobem.
+Kód pro výpočet korelace jako objektů R CCF je následující.
 
 ```R
 ## A function to compute pairwise correlations from a
@@ -841,7 +841,7 @@ cadairycorrelations <- lapply(corpairs, pair.cor, df.detrend)
 cadairycorrelations
 ```
 
-Spuštěním tohoto kódu vytvoří protokol znázorňuje obrázek 18.
+Spuštění tohoto kódu vytvoří protokol uvedený na obrázku 18.
 
     [ModuleOutput] Loading objects:
     [ModuleOutput]   port1
@@ -895,14 +895,14 @@ Spuštěním tohoto kódu vytvoří protokol znázorňuje obrázek 18.
     [ModuleOutput]     -1      0      1 
     [ModuleOutput] -0.002 -0.074 -0.124 
 
-*Obrázek 18. Seznam PVJS objekty z analýzy pairwise korelace.*
+*Obrázek 18. Seznam objektů CCF z analýzy párových korelace.*
 
-Existuje korelace hodnota pro každou prodleva. Žádný z těchto hodnot korelace není dostatečně velký, aby se důležité. Závěru jsme proto, že jsme každou proměnnou modelu nezávisle na sobě.
+Pro každou prodlevu existuje korelační hodnota. Žádná z těchto hodnot korelace není dostatečně velká, aby mohla být významná. Můžeme proto uzavřít, abychom každou proměnnou mohli modelovat nezávisle.
 
-### <a name="output-a-dataframe"></a>Výstupní datový rámec
-Jako seznam objektů R PVJS jsme jste vypočítali pairwise korelace. To představuje bit problém se jako výstupní port datové sady výsledků ve skutečnosti vyžaduje datový rámec. Dále PVJS je objekt samotný seznam a chceme, aby pouze hodnoty v první prvek seznamu, korelace v různých zjevně demonstruje výskyt pomalé.
+### <a name="output-a-dataframe"></a>Výstup datového rámce
+Vypočítali jsme relace párových relací jako seznam objektů CCF jazyka R. To představuje bitovou příčinu problému, protože výstupní port výsledné sady dat skutečně vyžaduje datový rámec. Kromě toho objekt CCF je sám seznam a chceme, aby v prvním elementu tohoto seznamu byly pouze hodnoty, korelace v různých prodlevy.
 
-Následující kód extrahuje hodnoty prodleva ze seznamu PVJS objekty, které představují samy o sobě seznamy.
+Následující kód extrahuje hodnoty prodlevy ze seznamu objektů CCF, které jsou vlastními seznamy.
 
 ```R
 df.correlations <- data.frame(do.call(rbind, lapply(cadairycorrelations, '[[', 1)))
@@ -923,45 +923,45 @@ outframe
 
 
 ## WARNING!
-## The following line works only in Azure Machine Learning Studio
+## The following line works only in Azure Machine Learning Studio (classic)
 ## When running in RStudio, this code will result in an error
 #maml.mapOutputPort('outframe')
 ```
 
-První řádek kódu je trochu složité, a vysvětlení vám můžou pomoct porozumět ho. Práce zevnitř jsme měli tyto položky:
+První řádek kódu je trochu obtížné a některé vysvětlení vám může porozumět. Při práci z interního prostředí máme následující:
 
-1. " **[[** 'Operator s argumentem'**1**" vybere vektor korelace v zjevně demonstruje výskyt pomalé od prvního prvku seznamu PVJS objektů.
-2. `do.call()` Funkce se vztahuje `rbind()` funkce přes prvky seznamu vrací podle `lapply()`.
-3. `data.frame()` Funkce převede výsledek produkovaný `do.call()` na datový rámec.
+1. Operátor ' **[** ' s argumentem '**1**' vybere vektor korelace na prodlevy z prvního prvku seznamu objektů CCF.
+2. Funkce `do.call()` použije funkci `rbind()` nad prvky seznamu, kterou vrátí `lapply()`.
+3. Funkce `data.frame()` převede výsledek vytvořený `do.call()` na datový rámec.
 
-Všimněte si, že názvy řádků ve sloupci datového rámce. Způsobem tak zachová řádku názvy, když se výstup z [spustit skript jazyka R][execute-r-script].
+Všimněte si, že názvy řádků jsou ve sloupci datového rámce. Tím se zachová názvy řádků při výstupu ze [skriptu Execute jazyka R][execute-r-script].
 
-Spuštění kódu vytvoří výstup znázorňuje obrázek 19 když mám **vizualizovat** výstupu na port datové sady výsledků. Názvy řádků jsou v prvním sloupci tak, jak má.
+Spuštění kódu vytvoří výstup uvedený na obrázku 19 při **vizualizaci** výstupu na portu datové sady výsledků. Názvy řádků jsou v prvním sloupci, jak je určeno.
 
-![Výsledky výstupu z analýzy korelace](./media/r-quickstart/fig20.png)
+![Výstup výsledků analýzy korelace](./media/r-quickstart/fig20.png)
 
-*Obrázek 19. Výsledky výstupu z analýzy korelace.*
+*Obrázek 19. Výstup výsledků analýzy korelace.*
 
-## <a id="seasonalforecasting"></a>Časové řadě – příklad: sezónní Prognózování
+## <a id="seasonalforecasting"></a>Příklad časové řady: sezónní prognózování
 
-Naše data je teď ve formátu vhodném pro analýzy a zjistili jsme, že nejsou žádné významné korelace mezi proměnné. Teď přejdeme a vytvořit časové řady model Prognózování. Pomocí tohoto modelu jsme se prognózy produkci mléka Kalifornie po dobu 12 měsíců 2013.
+Naše data jsou teď ve formě vhodné k analýze a zjistili jsme, že mezi proměnnými neexistují žádné významné korelace. Pojďme se přesunout a vytvořit model prognózy časových řad. Pomocí tohoto modelu budeme předpovědět, že se v Kalifornii po dobu 12 měsíců 2013.
 
-Náš model Prognózování bude mít dvě komponenty, trendů a sezónní součásti. Kompletní prognózy je produkt z těchto dvou komponentách. Tento typ modelu se označuje jako model násobení. Alternativou je sčítání modelu. Proměnné, které vás zajímají, který provádí tuto analýzu tractable jsme už jste použili transformace protokolu.
+Náš model prognózy bude mít dvě komponenty, komponentu trendu a sezónní komponentu. Kompletní prognóza je produktem těchto dvou součástí. Tento typ modelu je známý jako multiplikativní model. Alternativou je model doplňku. Transformaci protokolu jsme už použili na proměnné zájmu, což usnadňuje tuto analýzu.
 
-Kompletní kód R pro tento oddíl je v [MachineLearningSamples-poznámkových bloků a studio – ukázky](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+Úplný kód R tohoto oddílu je v [MachineLearningSamples-poznámkách/studiu-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
 ### <a name="creating-the-dataframe-for-analysis"></a>Vytvoření datového rámce pro analýzu
 
-Začněte přidáním **nové** [spustit skript jazyka R] [ execute-r-script] modulu do experimentu. Připojení **datovou sadu výsledků** výstup existující [spustit skript jazyka R] [ execute-r-script] modulu **Dataset1** vstupní nového modulu. Výsledek by měl vypadat podobně jako obrázek 20.
+Začněte přidáním nového modulu [skriptu pro spuštění R][execute-r-script] do experimentu. Připojte výstup **výsledné datové sady** existujícího modulu [skriptu pro spuštění R][execute-r-script] k **DataSet1.** vstupu nového modulu. Výsledek by měl vypadat přibližně takto: obrázek 20.
 
-![Experiment s modulem nové spustit skript jazyka R přidán](./media/r-quickstart/fig21.png)
+![Experiment s novým modulem pro spuštění skriptu jazyka R se přidal.](./media/r-quickstart/fig21.png)
 
-*Obrázek 20. Experiment s modulem nové spustit skript jazyka R přidán.*
+*Obrázek 20. Došlo k pokusu o přidání nového modulu skriptu pro spuštění jazyka R.*
 
-Jako s analýzou korelace, které jsme právě dokončili, potřebujeme přidat sloupec s POSIXct time series objekt. Následující kód to stačí.
+Stejně jako u analýzy korelace jsme právě dokončili přidání sloupce s objektem POSIXct Time Series. Následující kód provede pouze to.
 
 ```R
-# If running in Machine Learning Studio, uncomment the first line with maml.mapInputPort()
+# If running in Machine Learning Studio (classic), uncomment the first line with maml.mapInputPort()
 cadairydata <- maml.mapInputPort(1)
 
 ## Create a new column as a POSIXct object
@@ -971,7 +971,7 @@ cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-
 str(cadairydata)
 ```
 
-Tento kód spustit a podívejte se na protokol. Výsledek by měl vypadat jako obrázek 21.
+Spusťte tento kód a podívejte se do protokolu. Výsledek by měl vypadat jako obrázek 21.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -997,11 +997,11 @@ Tento kód spustit a podívejte se na protokol. Výsledek by měl vypadat jako o
 
 *Obrázek 21. Souhrn datového rámce.*
 
-Pomocí tohoto výsledku jsou připravené ke spuštění analýzy.
+V důsledku toho jsme připraveni začít s analýzou.
 
-### <a name="create-a-training-dataset"></a>Vytvoření trénovací datové sady
+### <a name="create-a-training-dataset"></a>Vytvoření datové sady školení
 
-Vytvořený datového rámce potřebujeme vytvořit trénovací datové sady. Tato data bude obsahovat všechny vyjádření kromě posledních 12 v roce 2013, což je naše testovací datové sady. Následující kód podmnožiny datového rámce a vytvoří vykreslení mléka proměnných produkčního prostředí a ceny. Potom vytvořit grafy čtyři produkčního prostředí a cena proměnné. Anonymní funkce se používá k definování argumentech pro vykreslení a potom iteraci přes seznam dalších dvou argumentů s `Map()`. Pokud přemýšlíte, který pro smyčky by mít fungovaly správně tady, jsou správné. Ale vzhledem k tomu, že je funkční jazyk R uvádíme je funkční přístup.
+S vytvořeným datovým rámcem musíme vytvořit školicí datovou sadu. Tato data budou zahrnovat všechna pozorování kromě posledních 12, roku 2013, což je naše testovací datová sada. Následující kód podmnožinou datového rámce a vytvoří parcely produkčních a cenových proměnných pro mléčné výrobky. Vytvořím zkusnou řadu čtyř produkčních a cenových proměnných. Anonymní funkce se používá k definování některých rozšíření pro vykreslení a pak iterování nad seznamem dalších dvou argumentů pomocí `Map()`. Pokud si myslíte, že smyčka for by v tomto případě fungovala správně, je to správné. Ale vzhledem k tomu, že R je funkční jazyk, se mi zobrazuje funkční přístup.
 
 ```R
 cadairytrain <- cadairydata[1:216, ]
@@ -1014,32 +1014,32 @@ Ylabs  <- list("Log CA Cotage Cheese Production, 1000s lb",
 Map(function(y, Ylabs){plot(cadairytrain$Time, y, xlab = "Time", ylab = Ylabs, type = "l")}, cadairytrain[, 4:7], Ylabs)
 ```
 
-Spuštění kódu vytváří řadu času z výstupu zařízení jazyka r. znázorňuje obrázek 22, který řady. Všimněte si, že je časová osa v jednotkách, které data, skvělé výhody čas řady grafu – metoda.
+Spuštění kódu vytvoří řadu časových řad z výstupu zařízení R, které vidíte na obrázku 22. Všimněte si, že časová osa je v jednotkách dat, skvělé výhody metody grafu Time Series.
 
-![První čas řady vykreslení Kalifornie mléka produkčního prostředí a cena dat.](./media/r-quickstart/unnamed-chunk-161.png)
+![První z časů řady Brna pro produkci mléčných a cenových dat v Kalifornii](./media/r-quickstart/unnamed-chunk-161.png)
 
-![Druhý čas řady vykreslení Kalifornie mléka produkčního prostředí a cena dat.](./media/r-quickstart/unnamed-chunk-162.png)
+![Druhá z časů řady Brna pro produkci mléčných a cenových dat v Kalifornii](./media/r-quickstart/unnamed-chunk-162.png)
 
-![Třetí čas řady vykreslení Kalifornie mléka produkčního prostředí a cena dat.](./media/r-quickstart/unnamed-chunk-163.png)
+![Třetí z řady časových řad v Kalifornii pro produkci mléčných a cenových údajů](./media/r-quickstart/unnamed-chunk-163.png)
 
-![Čtvrtý vykreslení řad čas Kalifornie mléka produkčního prostředí a cena dat.](./media/r-quickstart/unnamed-chunk-164.png)
+![Čtvrtá řada časových řad v Kalifornii pro produkci dojnic a data o cenách](./media/r-quickstart/unnamed-chunk-164.png)
 
-*Obrázek 22. Vykreslení řad čas produkci mléka Kalifornie a cenové údaje.*
+*Obrázek 22. Časová řada řady Kalifornie pro produkci mléčných a cenových dat v Kalifornii.*
 
-### <a name="a-trend-model"></a>Vývoj modelu
+### <a name="a-trend-model"></a>Model trendu
 
-Máte vytvořený objekt řady čas a podívejte se na data měla, Začněme vytvořit model trend Kalifornie mléka produkční data. Můžeme to udělat pomocí řady regrese čas. Je však zřejmé z diagram, který budeme potřebovat vyšší než sklon a zachytit přesně modelování zjištěnou trend v trénovací data.
+Když jste vytvořili objekt časové řady a museli jste se podívat na data, začali začít sestavovat model trendu pro data o produkci mléka v Kalifornii. Můžeme to provést s regresí časových řad. Je ale jasné, že z tohoto grafu nebudeme potřebovat více než sklon a zachytit k přesnému modelování pozorovaného trendu v školicích datech.
 
-Zadaný malém měřítku data, můžu se sestavení modelu pro vývoj v RStudio a pak vyjímejte a vkládejte výsledný model do Azure Machine Learning Studio. RStudio nabízí interaktivní prostředí pro interaktivní analýzu tohoto typu.
+Vzhledem k malé škále dat vytvoříme model pro vývoj v RStudio a pak vyjmete a vložíte výsledný model do klasické verze Azure Machine Learning Studio. RStudio poskytuje interaktivní prostředí pro tento typ interaktivní analýzy.
 
-Jako první pokus bude proveden pokus polynomické regrese s mocniny až 3. Je skutečných nebezpečí over-pass-the přizpůsobení těchto typů modelů. Proto se nedoporučuje nejvyšších podmínky. `I()` Funkce potlačuje výklad obsah (interpretuje obsah "je") a umožňuje psát doslova interpretovaný funkce v rovnici regrese.
+Při prvním pokusu se pokusíte o polynomickou regresi s pravomocemi až na 3. Existují reálné nebezpečí přebudování těchto druhů modelů. Proto je nejlepší vyhnout se podmínkám vysokého řádu. Funkce `I()` znemožňuje výklad obsahu (interpretuje obsah "tak, jak je") a umožňuje v regresní rovnici napsat doslova interpretovaná funkce.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^2) + I(Month.Count^3), data = cadairytrain)
 summary(milk.lm)
 ```
 
-Tím se vytvoří následující.
+Tím vygenerujete následující.
 
     ##
     ## Call:
@@ -1063,14 +1063,14 @@ Tím se vytvoří následující.
     ## Multiple R-squared:  0.941,    Adjusted R-squared:  0.94
     ## F-statistic: 1.12e+03 on 3 and 212 DF,  p-value: <2e-16
 
-Z hodnoty P (`Pr(>|t|)`) tento výstup, vidíme, že ve čtverci termín nemusí být významné. Můžu používat `update()` funkce k úpravě tohoto modelu přetažením kvadratických termín.
+Na základě hodnot P (`Pr(>|t|)`) v tomto výstupu zjistíme, že druhá podmínka nemusí být významná. Pomocí funkce `update()` upravíte tento model vyřazením čtvercového období.
 
 ```R
 milk.lm <- update(milk.lm, . ~ . - I(Month.Count^2))
 summary(milk.lm)
 ```
 
-Tím se vytvoří následující.
+Tím vygenerujete následující.
 
     ##
     ## Call:
@@ -1092,9 +1092,9 @@ Tím se vytvoří následující.
     ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
     ## F-statistic: 1.69e+03 on 2 and 213 DF,  p-value: <2e-16
 
-To vypadá lépe. Podmínky jsou významné. Však hodnotu 2e-16 je výchozí hodnota a nesmí být přijata příliš vážně.  
+To vypadá lépe. Všechny tyto výrazy jsou významné. Hodnota 2E-16 je však výchozí hodnotou a neměla by být pořízena příliš vážně.  
 
-Jako test správností vytvoříme vykreslení řad čas Kalifornie dat produkci mléka s trend křivky zobrazí. Jsem přidali následující kód v Azure Machine Learning Studio [spustit skript jazyka R] [ execute-r-script] modelu (ne RStudio) k vytvoření modelu a ujistěte se, vykreslení. Výsledek se zobrazí obrázek 23.
+Jako správnosti test si probereme časovou řadu mléčných dat z Brna v Kalifornii pomocí zobrazené křivky trendu. Přidal (a) jsem následující kód v klasické verzi Azure Machine Learning Studio spustit model [skriptu R][execute-r-script] (ne RStudio) a vytvořit model a vytvořit vykreslení. Výsledek je znázorněn na obrázku 23.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
@@ -1103,24 +1103,24 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 ```
 
-![Kalifornie mléka provozních dat pomocí vzoru trend](./media/r-quickstart/unnamed-chunk-18.png)
+![Údaje o produkci mléčných mléka v Kalifornii pomocí zobrazeného modelu trendu](./media/r-quickstart/unnamed-chunk-18.png)
 
-*Obrázek 23. Kalifornie mléka provozních dat s trend vzoru.*
+*Obrázek 23. Údaje o produkci mléčných mléka v Kalifornii se zobrazeným modelem trendu.*
 
-Zdá se, trend modelu odpovídá zpracovávaným datům poměrně dobře. Kromě toho existuje zřejmě není zahrnuta do legitimaci typu over-pass-the přizpůsobování, jako je liché rychlé pohyby v křivce modelu.  
+Vypadá to, že model trendu přesně odpovídá datům. Dále se zdá, že se nejeví jako nedostatečné množství, jako je například lichá Wiggles v křivce modelu.  
 
-### <a name="seasonal-model"></a>Sezónním vzoru
+### <a name="seasonal-model"></a>Sezónní model
 
-S modelem trend v rukou musíme zapnutí a zahrnují sezónní účinky. Měsíce v roce jako fiktivní proměnnou lineární model použije k zaznamenání efekt po měsících. Mějte na paměti, když zavádíte faktor proměnné do modelu, intercept nesmí být vypočítán. Pokud to neprovedete, vzorec je over-pass-the zadané a R budou odstraňte jednu z požadovaných faktory, ale ponechat termín zachycení.
+S modelem trendu je potřeba nasdílet a zahrnovat sezónní účinky. Měsíc v roce použijeme jako fiktivní proměnnou v lineárním modelu pro zachycení měsíčního efektu. Všimněte si, že při zavedení proměnných faktoru do modelu nesmí být zachytávání vypočítáno. Pokud to neuděláte, vzorec se zachová a R vynechá jeden z požadovaných faktorů, ale ponechá termín zachytávání.
 
-Vzhledem k tomu, že máme modelu uspokojivé trendů můžete použít `update()` funkce pro přidání nové podmínky do existujícího modelu. -1 v aktualizace vzorec zahodí termín zachycení. Pokračování v RStudio pro tuto chvíli:
+Vzhledem k tomu, že máme uspokojivý model trendů, můžeme k přidání nových podmínek do existujícího modelu použít funkci `update()`. Výraz-1 ve vzorci aktualizace zruší termín zachycení. Pokračuje se v RStudio a teď:
 
 ```R
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
 summary(milk.lm2)
 ```
 
-Tím se vytvoří následující.
+Tím vygenerujete následující.
 
     ##
     ## Call:
@@ -1154,9 +1154,9 @@ Tím se vytvoří následující.
     ## Multiple R-squared:     1,    Adjusted R-squared:     1
     ## F-statistic: 1.42e+06 on 14 and 202 DF,  p-value: <2e-16
 
-Vidíme, že model už má některý výraz zachycení a má 12 faktory důležité měsíc. To je přesně to co jsme chtěli byste vidět.
+Zjistili jsme, že model už nemá termín zachycení a má 12 významných měsíčních faktorů. To je přesně to, co jsme chtěli vidět.
 
-Vytvoříme jiného diagramu čas řady Kalifornie dat produkci mléka zobrazíte, jak dobře funguje sezónním vzoru. Jsem přidali následující kód v Azure Machine Learning Studio [spustit skript jazyka R] [ execute-r-script] vytvořit model a zadáte vykreslení.
+Pojďme udělat další graf časových řad v rámci produkčních dat v Kalifornii a zjistit, jak dobře funguje sezónní model. Přidal (a) jsem následující kód v klasické verzi Azure Machine Learning Studio spouští [skript R][execute-r-script] pro vytvoření modelu a vytvoření grafu.
 
 ```R
 milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
@@ -1165,15 +1165,15 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 ```
 
-Tento kód spuštěný v Azure Machine Learning Studio vytváří diagram znázorňuje obrázek 24.
+Spuštění tohoto kódu v klasické verzi Azure Machine Learning Studio vytvoří vykreslení znázorněné na obrázku 24.
 
-![Produkci mléka Kalifornie s modelem včetně sezónní efekty](./media/r-quickstart/unnamed-chunk-20.png)
+![Výroba mléka v Kalifornii s modelem včetně sezónních účinků](./media/r-quickstart/unnamed-chunk-20.png)
 
-*Obrázek 24. Produkci mléka Kalifornie s modelem včetně sezónní účinky.*
+*Obrázek 24. V Kalifornii mléčné výroby s modelem včetně sezónních účinků.*
 
-Přizpůsobit data zobrazená v obrázek 24 je spíše podporovat. Oblast přiměřené sezónní efekt (měsíční variace) i trend.
+Místo toho se hodí pro data uvedená na obrázku 24. Trend i sezónní účinek (měsíční variace) vypadají jako rozumné.
 
-Jako další kontrolu na náš model dopřejeme si podívat odchylky. Následující kód vypočítá predikované hodnoty z našich dva modely, vypočítá zbytky sezónní modelu a poté vytvoří tyto zbytky pro trénovací data.
+Jako další kontrolu našeho modelu se podívejme na zbytky. Následující kód vypočítá předpovězené hodnoty z našich dvou modelů, vypočítá zbytky pro sezónní model a potom tyto zbytky vykreslí pro školicí data.
 
 ```R
 ## Compute predictions from our models
@@ -1185,42 +1185,42 @@ residuals <- cadairydata$Milk.Prod - predict2
 plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Seasonal Model")
 ```
 
-Zbývající diagram je zobrazena ve obrázek 25.
+Zbytkový graf je znázorněn na obrázku 25.
 
-![Zbytky sezónní model pro trénovací data](./media/r-quickstart/unnamed-chunk-21.png)
+![Zbytky sezónního modelu pro školicí data](./media/r-quickstart/unnamed-chunk-21.png)
 
-*Obrázek 25. Zbytky sezónní model pro trénovací data.*
+*Obrázek 25. Zbytky sezónního modelu pro školicí data.*
 
-Tyto odchylky vyhledejte rozumný. Neexistuje žádná konkrétní struktura, s výjimkou efekt recesí 2008-2009, který náš model nezodpovídá za obzvláště dobře.
+Tyto zbytky vypadají rozumným způsobem. Neexistuje žádná konkrétní struktura, s výjimkou účinku 2008-2009 recesí, který náš model nepoužívá zejména k tomu.
 
-Diagram znázorňuje obrázek 25 je užitečné pro zjišťování všechny závislé na čase vzory v odchylky. Explicitní přístup výpočetního prostředí a vykreslení zbytky, který jsem používal umístí odchylky v pořadí podle času na vykreslení. Pokud na druhé straně jsem měl promítají `milk.lm$residuals`, vykreslení by nebyl v pořadí podle času.
+Vykreslení znázorněné na obrázku 25 je užitečné pro detekci všech vzorů závislých na čase ve zbytkech. Explicitní přístup k výpočetnímu prostředí a vykreslení zbytků, které jsem používá, umístí zbytky v časovém pořadí na vykreslení. Pokud na druhé straně jsem vykreslil `milk.lm$residuals`, vykreslení by nebylo v časovém pořadí.
 
-Můžete také použít `plot.lm()` vytvoří řady diagnostických vykreslení.
+`plot.lm()` můžete použít také k vytvoření řady diagnostických parcel.
 
 ```R
 ## Show the diagnostic plots for the model
 plot(milk.lm2, ask = FALSE)
 ```
 
-Tento kód vytvoří řady diagnostických vykreslení znázorňuje obrázek 26.
+Tento kód vytváří řadu diagnostických zobrazení na obrázku 26.
 
-![První z diagnostické vykreslení sezónní modelu](./media/r-quickstart/unnamed-chunk-221.png)
+![První z diagnostických parcel pro sezónní model](./media/r-quickstart/unnamed-chunk-221.png)
 
-![Druhé diagnostických vykreslení sezónní modelu](./media/r-quickstart/unnamed-chunk-222.png)
+![Druhá z diagnostických parcel pro sezónní model](./media/r-quickstart/unnamed-chunk-222.png)
 
-![Třetí diagnostických vykreslení sezónní modelu](./media/r-quickstart/unnamed-chunk-223.png)
+![Třetí z diagnostických parcel pro sezónní model](./media/r-quickstart/unnamed-chunk-223.png)
 
-![Čtvrtý diagnostických vykreslení sezónní modelu](./media/r-quickstart/unnamed-chunk-224.png)
+![Čtvrtá část diagnostických nástrojů pro sezónní model](./media/r-quickstart/unnamed-chunk-224.png)
 
-*Obrázek 26. Diagnostika vykreslí sezónní modelu.*
+*Obrázek 26. Diagnostické parcely pro sezónní model.*
 
-Nejsou k dispozici několik vysoce vlivní body identifikované v těchto vykreslení, ale nic vyvolalo obavy skvělé. Dále můžeme vidět z diagramů normální Q-Q toto políčko, budou se zavřít obvykle distribuován důležité předpokladů pro lineární modely.
+V těchto zkusných grafech je několik vysoce kvalitních bodových bodů, ale nic nezpůsobuje Skvělé obavy. Dále uvidíte z normálního vykreslování Q-Q, že zbytky jsou blízko normálního rozdělení, což je důležitý předpoklad pro lineární modely.
 
-### <a name="forecasting-and-model-evaluation"></a>Prognózování a model hodnocení
+### <a name="forecasting-and-model-evaluation"></a>Prognózování a vyhodnocení modelu
 
-Existuje pouze jeden další věc, kterou chcete udělat, abyste dokončili náš příklad. Musíme compute předpovědí a vyhodnocování chybu podle Skutečná data. Naše předpovědí bude po dobu 12 měsíců 2013. Můžeme můžete následujícím způsobem vypočítat míru chyb pro této předpovědi na skutečná data, která není součástí naší trénovací datové sady. Kromě toho jsme můžete porovnat výkon na 18 let trénovacích dat do 12 měsíců testovací data.  
+K dokončení našeho příkladu je tu jenom jedna věc. Musíme vypočítat předpovědi a změřit chybu proti skutečným datům. Naše předpověď bude na 12 měsíců od 2013. Pro tuto prognózu můžeme vypočítat chybovou míru na skutečná data, která nejsou součástí naší datové sady školení. Kromě toho můžeme porovnat výkon na 18 let školicích dat až po dobu 12 měsíců testovacích dat.  
 
-Počet metriky se používají k měření výkonu čas řady modely. V našem případě použijeme chyba kořenové směrodatná (RMS). Následující funkce vypočítá chybu RMS mezi dvou řad.  
+K měření výkonu modelů časových řad se používá řada metrik. V našem případě použijeme chybu root střed_hodn Square (RMS). Následující funkce vypočítá chybu služby RMS mezi dvěma řadami.  
 
 ```R
 RMS.error <- function(series1, series2, is.log = TRUE, min.length = 2){
@@ -1268,9 +1268,9 @@ predict2  <- predict(milk.lm2, cadairydata)
 }
 ```
 
-Stejně jako u `log.transform()` funkce jsme probírali v části "Hodnoty transformace" je poměrně velké množství chyb kontrolu a výjimek kód pro obnovení této funkce. Zásady použijí jsou stejné. Práce se provádí na dvou místech, který je obalen `tryCatch()`. Nejprve časové řady jsou exponentiated, protože Pracujeme s protokoly hodnoty. Za druhé je vypočítán skutečná Chyba služby RMS.  
+Stejně jako u `log.transform()` funkce, kterou jsme probrali v části "transformace hodnot", je v této funkci dost velký počet kontrol chyb a kód pro obnovení výjimek. Použité zásady jsou stejné. Práce se provádí na dvou místech zabalených v `tryCatch()`. Nejdřív se exponentiated časová řada, protože jsme pracovali s protokoly těchto hodnot. Za druhé se počítá skutečná Chyba služby RMS.  
 
-Vybavený funkci měření chybu RMS, Pojďme sestavení a výstupní datový rámec obsahující chyby služby RMS. Zavedeme podmínky pro model trend samostatně a úplný model s sezónní faktory. Následující kód provede úlohu pomocí dvou lineární modely, které jsme vytvořen.
+Je vybavená funkcí k měření chyby služby RMS a vytvoří a vytvoří výstup dataframe obsahující chyby RMS. Budeme zahrnovat výrazy pro model trendů a kompletní model s sezónními faktory. Následující kód provede úlohu pomocí dvou lineárních modelů, které jsme sestavili.
 
 ```R
 ## Compute the RMS error in a dataframe
@@ -1288,51 +1288,51 @@ rowNames = c("Trend Model", "Seasonal Model"),
 RMS.df
 
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio
+## Azure Machine Learning Studio (classic)
 maml.mapOutputPort('RMS.df')
 ```
 
-Spuštěním tohoto kódu vytvoří výstup znázorňuje obrázek 27 na výstupní port datové sady výsledků.
+Spuštění tohoto kódu vytvoří výstup uvedený na obrázku 27 na výstupním portu výsledné sady dat.
 
-![Porovnání chyb služby RMS pro modely](./media/r-quickstart/fig26.png)
+![Porovnání chyb RMS pro modely](./media/r-quickstart/fig26.png)
 
 *Obrázek 27. Porovnání chyb služby RMS pro modely.*
 
-Z těchto výsledků vidíme, že přidání sezónní faktory do modelu snižuje chyby RMS výrazně. Chyba služby RMS pro trénovací data je příliš logicky chvíli menší než prognózy.
+Z těchto výsledků vidíte, že přidání sezónních faktorů do modelu snižuje chybu služby RMS významně. Není příliš překvapivě, Chyba služby RMS pro školicí data je trochu méně než u prognózy.
 
-## <a id="appendixa"></a>Příručka k dokumentaci nástroje RStudio
+## <a id="appendixa"></a>Příručka k dokumentaci k RStudio
 
-RStudio poměrně dobře zdokumentovat. Tady je pár odkazů na klíčové části RStudio dokumentace vám pomůžou začít.
+RStudio je poměrně dobře zdokumentovaná. Tady jsou některé odkazy na klíčové oddíly dokumentace k RStudio, které vám pomohou začít.
 
-* **Vytváření projektů** – můžete organizovat a spravovat kódu R do projektů pomocí Rstudia. Zobrazit [pomocí projektů](https://support.rstudio.com/hc/articles/200526207-Using-Projects) podrobnosti. Můžu jenom doporučit postupujte podle těchto pokynů a vytvořte projekt pro příklady kódu R v tomto článku.  
-* **Úpravy a spouštění kódu R** -RStudio poskytuje integrované prostředí pro úpravy a spouštění kódu R. Zobrazit [úpravy a provádění kódu](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code) podrobnosti.
-* **Ladění** -RStudio zahrnuje výkonné možnosti ladění. Zobrazit [ladění s prostředím RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio) Další informace o těchto funkcích. Informace o řešení potíží s funkcí zarážku najdete v tématu [zarážky Poradce při potížích](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
+* **Vytváření projektů** – kód R můžete organizovat a spravovat v projektech pomocí RStudio. Podrobnosti najdete v tématu [použití projektů](https://support.rstudio.com/hc/articles/200526207-Using-Projects) . Doporučujeme vám postupovat podle těchto pokynů a vytvořit projekt pro příklady kódu R v tomto článku.  
+* **Úprava a spuštění kódu r** -RStudio poskytuje integrované prostředí pro úpravy a spouštění kódu r. Podrobnosti najdete v tématu [Úpravy a spouštění kódu](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code) .
+* **Ladění** – RStudio zahrnuje výkonné funkce ladění. Další informace o těchto funkcích najdete v tématu [ladění pomocí RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio) . Informace o funkcích řešení potíží s zarážkou najdete v tématu [řešení potíží s zarážkou](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
 
 ## <a id="appendixb"></a>Další čtení
 
-V tomto kurzu programovacího jazyka R vysvětluje co je potřeba použít jazyka R s Azure Machine Learning Studio. Pokud nejste obeznámeni s jazykem R, jsou k dispozici na CRAN dvě úvodní informace:
+Tento kurz programování v R se zabývá základními informacemi o tom, co potřebujete k používání jazyka R s klasickou verzí Azure Machine Learning Studio. Pokud R neznáte, jsou v CRAN k dispozici dva úvody:
 
-* [R pro začátečníky](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Emmanuel Paradis je dobrým začátkem.  
-* [Úvod do jazyka R](https://cran.r-project.org/doc/manuals/R-intro.html) W. n. Venables et. al. Přejde do větší hloubky.
+* [R pro začátečníky](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) by Emmanuel Paradis je dobrým místem, kde začít.  
+* [Úvod do jazyka R](https://cran.r-project.org/doc/manuals/R-intro.html) pomocí W. N. Venables et VŠ. přejde do trochu větší hloubky.
 
-Existuje mnoho knih v R, které může pomoci vám začít. Tady je několik, které se mi najít užitečné:
+K dispozici je mnoho knih v jazyce R, které vám pomůžou začít. Tady je několik užitečných:
 
-* **Techniky programování v jazyce R: Prohlídka z statistické softwaru návrh** Norman Matloff je vynikající Úvod k programování v jazyce R.  
-* **Kuchařka R** díky Paul Teetor poskytuje řešení problému a přístupem k používání jazyka R.  
-* **R v akci** Robert Kabacoff je další užitečná úvodní knihy. Doprovodný [rychlé R webu](https://www.statmethods.net/) je užitečný prostředek.
-* **R Inferno** Burnse Patrick je překvapivě sloupku knihy, které se zabývají počet témat složité a složité, které mohou nastat při programování v jazyce R. Kniha je k dispozici zdarma na [The R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/).
-* Pokud chcete podrobné informace o Pokročilá témata týkající se jazyka R, podíváme se na knihu **pokročilé R** podle Hadley Wickham. Je k dispozici zdarma na online verze této knihy [ http://adv-r.had.co.nz/ ](http://adv-r.had.co.nz/).
+* **Obrázek programování v jazyce r: prohlídka statistického návrhu softwaru pomocí programu** Norman Matloff je vynikající Úvod do programování v jazyce r.  
+* **R kuchařka** podle Paul Teetor poskytuje přístup k problému a řešení pro použití R.  
+* **R v akci** Robert Kabacoff je další užitečnou úvodní knihou. Doprovodný [web s rychlým R](https://www.statmethods.net/) je užitečným prostředkem.
+* **R Inferno** by se překvapivěou poradním sloupkuou knihou, která se zabývá několika obtížemi a obtížnémi tématy, která se dají při programování v jazyce r setkat. Kniha je k dispozici zdarma na adrese [R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/).
+* Pokud chcete hluboko podrobně do pokročilých témat v jazyce R, podívejte se na příručku **Advanced R** by Hadley Wickham. Online verze této knihy je k dispozici zdarma na [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/).
 
-Katalog R čas řady balíčků lze nalézt v [CRAN zobrazení úlohy: Time Series analýzy](https://cran.r-project.org/web/views/TimeSeries.html). Informace o určité časové řady objektu balíčky by měla odkazovat v dokumentaci pro tento balíček.
+Katalog balíčků časových řad R se dá najít v [zobrazení úloh Cran: analýza časových řad](https://cran.r-project.org/web/views/TimeSeries.html). Informace o konkrétních balíčcích objektů časových řad najdete v dokumentaci k tomuto balíčku.
 
-Knihu **úvodní časové řady** s jazykem R Paul Cowpertwait a Andrew Metcalfe obsahuje úvod k využití R pro analýzu časových řad. Mnoho více teoretické texty najdete příklady R.
+**Úvodní časová řada** knih s R podle Paul Cowpertwait a Andrew Metcalfe představuje úvod k použití R pro analýzu časových řad. Mnoho dalších teoretických textů poskytuje příklady jazyka R.
 
-Tady jsou některé skvělé internetové prostředky:
+Tady je několik skvělých internetových prostředků:
 
-* R v pohodlí vašeho prohlížeče s video poznatky a kódování cvičení se dozvíte, jaké Datacampu. Existují interaktivní kurzy o nejnovější R techniky a balíčky. Využijte bezplatnou [Interaktivní kurz R](https://www.datacamp.com/courses/introduction-to-r).
-* [Učte se programovat v R, úplnou příručku](https://www.programiz.com/r-programming) z Programiz.
-* Stručná [R kurzu](https://www.cyclismo.org/tutorial/R/) podle Kelly černé z Clarkson University.
-* Existuje přes 60 R prostředky uvedené v [prostředků jazyka R horní ke zlepšení své dovednosti data](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
+* DataCamp učí R v pohodlí vašeho prohlížeče s využitím lekcí a výukových cvičení. K dispozici jsou interaktivní kurzy k nejnovějším technikám a balíčkům jazyka R. Využijte bezplatný [Interaktivní kurz jazyka R](https://www.datacamp.com/courses/introduction-to-r).
+* [Naučte se programování v jazyce R, což je konečný průvodce](https://www.programiz.com/r-programming) z Programiz.
+* Rychlý [kurz R](https://www.cyclismo.org/tutorial/R/) od irské černé z Clarkson University.
+* K dispozici jsou více než 60 prostředků R [, které jsou v horních prostředcích jazyka r k dispozici pro zlepšení dovedností dat](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html)
 
 <!-- Module References -->
 [execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script

@@ -9,20 +9,21 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8606ac2578c45062182517b5e67d669a09b8e5c0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002637"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489725"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak vytvořit pracovní prostor Azure Machine Learning pomocí Azure CLI. Rozhraní příkazového řádku Azure nabízí příkazy pro správu prostředků Azure. Rozšíření Machine Learning pro rozhraní příkazového řádku poskytuje příkazy pro práci s Azure Machine Learning prostředky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* **Předplatného Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
+* **Předplatné Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -39,7 +40,7 @@ Existuje několik způsobů, jak můžete z CLI ověřit předplatné Azure. Nej
 az login
 ```
 
-Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít prohlížeč a postupovat podle pokynů v příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadávání autorizačního kódu.
+Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít prohlížeč a postupovat podle pokynů v příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadání autorizačního kódu.
 
 Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
@@ -61,7 +62,7 @@ Pracovní prostor Azure Machine Learning spoléhá na tyto služby nebo entity A
 | Služba | Parametr pro určení existující instance |
 | ---- | ---- |
 | **Skupina prostředků Azure** | `-g <resource-group-name>`
-| **Azure Storage Account** | `--storage-account <service-id>` |
+| **Účet úložiště Azure** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
@@ -133,7 +134,7 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
 > [!IMPORTANT]
 > Nemusíte zadávat všechny existující prostředky. Můžete zadat jednu nebo více. Můžete například zadat existující účet úložiště a pracovní prostor vytvoří další prostředky.
 
-+ **Účet Azure Storage**:`az storage account show --name <storage-account-name> --query "id"`
++ **Účet Azure Storage**: `az storage account show --name <storage-account-name> --query "id"`
 
     Odpověď z tohoto příkazu je podobná následujícímu textu a je ID účtu úložiště:
 
@@ -163,7 +164,7 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry**:`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Odpověď z tohoto příkazu je podobná následujícímu textu a je ID pro registr kontejneru:
 
@@ -172,7 +173,7 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
     > [!IMPORTANT]
     > V registru kontejneru musí být povolen [účet správce](/azure/container-registry/container-registry-authentication#admin-account) , aby jej bylo možné použít s pracovním prostorem Azure Machine Learning.
 
-Jakmile budete mít ID prostředků, které chcete používat s pracovním prostorem, použijte základní `az workspace create -w <workspace-name> -g <resource-group-name>` příkaz a přidejte parametry a ID pro existující prostředky. Například následující příkaz vytvoří pracovní prostor, který používá existující registr kontejnerů:
+Jakmile budete mít ID pro prostředky, které chcete použít v pracovním prostoru, použijte příkaz základní `az workspace create -w <workspace-name> -g <resource-group-name>` a přidejte parametry a ID pro existující prostředky. Například následující příkaz vytvoří pracovní prostor, který používá existující registr kontejnerů:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name> --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
@@ -201,7 +202,7 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 }
 ```
 
-## <a name="list-workspaces"></a>Vypsat pracovní prostory
+## <a name="list-workspaces"></a>Zobrazit seznam pracovních prostorů
 
 Pokud chcete zobrazit seznam všech pracovních prostorů pro vaše předplatné Azure, použijte následující příkaz:
 
@@ -337,6 +338,6 @@ az group delete -g <resource-group-name>
 
 Další informace najdete v tématu [AZ ml Workspace Delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) Document.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o rozšíření Azure CLI pro Machine Learning najdete v dokumentaci [AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest) .

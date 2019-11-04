@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b0adc75d2da1a8ef053edf0078746df8f36ed5e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 329e4b262731ae1b23fb94da7b937c9c1549185f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430319"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473621"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
@@ -34,7 +34,7 @@ V tomto rychlém startu se dozvíte, jak přidat a zaregistrovat aplikaci pomoc�
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací > nové registrace**.
+1. Vyhledejte a vyberte **Azure Active Directory**. Na stránce **Služba Active Directory** vyberte možnost **Registrace aplikací** a pak vyberte možnost **Nová registrace**.
 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 
    - **Název** – Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace.
@@ -54,11 +54,11 @@ V tomto rychlém startu se dozvíte, jak přidat a zaregistrovat aplikaci pomoc�
 
 1. Až budete hotovi, vyberte **Zaregistrovat**.
 
-    [@no__t – 1Shows obrazovky pro registraci nové aplikace v Azure Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
+    [![zobrazuje obrazovku pro registraci nové aplikace v Azure Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
 Azure AD vaší aplikaci přiřadí jedinečné ID aplikace (klienta) a přesměruje vás na stránku **Přehled** vaší aplikace. Pokud chcete do své aplikace přidat další funkce, můžete vybrat další možnosti konfigurace, jako jsou branding, certifikáty a tajné klíče, oprávnění rozhraní API a další.
 
-[@no__t – 1Example na nově registrovanou stránku s přehledem aplikace](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
+[![příklad stránky s přehledem nově registrované aplikace](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 

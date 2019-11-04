@@ -1,93 +1,98 @@
 ---
-title: Vizualizace závislostí v Azure Migrate | Microsoft Docs
+title: Vizualizace závislostí ve službě Azure Migrate
 description: Poskytuje přehled výpočtů posouzení ve službě hodnocení serveru v Azure Migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178125"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489213"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
-Azure Migrate: posouzení serveru vyhodnocuje skupiny místních počítačů pro migraci do Azure. K vytvoření skupin můžete použít funkci Vizualizace závislostí v nástroji hodnocení serveru. Tento článek poskytuje informace o této funkci.
+Tento článek popisuje funkci Vizualizace závislostí v Azure Migrate: posouzení serveru.
+
+Vizualizace závislostí vám pomůže pochopit závislosti mezi počítači, které chcete vyhodnotit a migrovat. Mapování závislostí se obvykle používá, pokud chcete vyhodnotit počítače s vyšší úrovní spolehlivosti.
+
+- V Azure Migrate: posouzení serveru shromažďujete počítače dohromady do skupin pro posouzení. Skupiny se obvykle skládají z počítačů, které chcete migrovat společně, a vizualizace závislostí vám pomůže kontrolovat závislosti počítačů, takže můžete počítače seskupit přesně.
+- Pomocí vizualizace můžete zjistit vzájemně závislé systémy, které potřebují migrovat dohromady. Můžete určit, jestli se běžící systémy pořád používají, nebo jestli se můžou systémy vyřadit z provozu místo migrace.
+- Vizualizace závislostí pomáhá zajistit, že nic není na pozadí, a během migrace se vyhnete nepřekročení výpadků.
+- Tato funkce je užitečná hlavně v případě, že nejste zcela vědomi počítačů, které jsou součástí aplikací, a proto by se měly migrovat společně do Azure.
+
 
 > [!NOTE]
 > Funkce vizualizace závislosti není v Azure Government k dispozici.
 
-## <a name="overview"></a>Přehled
+## <a name="agent-based-and-agentless"></a>Založené na agentech a bez agentů
 
-Vizualizace závislostí v nástroji vyhodnocování serveru umožňuje vytvořit vysoce spolehlivé skupiny pro vyhodnocení migrace. Pomocí Vizualizace závislostí můžete zobrazit síťové závislosti počítačů a identifikovat související počítače, které je potřeba migrovat společně do Azure. Tato funkce je užitečná ve scénářích, kdy si nejste naprosto vědomi počítačů, které tvoří vaši aplikaci, a je třeba je migrovat společně do Azure.
+Existují dvě možnosti nasazení Vizualizace závislostí:
 
-## <a name="before-you-start"></a>Než začnete
+- **Vizualizace závislostí bez agentů**: Tato možnost je aktuálně ve verzi Preview. Nevyžaduje, abyste v počítačích nainstalovali žádné agenty. 
+    - Funguje tak, že zachytává data připojení TCP z počítačů, pro které je povolená. [Další informace](how-to-create-group-machine-dependencies-agentless.md).
+Po spuštění zjišťování závislostí zařízení shromáždí data z počítačů v intervalu dotazování po dobu pěti minut.
+    - Shromažďují se následující data:
+        - Připojení TCP
+        - Názvy procesů, které mají aktivní připojení
+        - Názvy nainstalovaných aplikací, které spouštějí výše uvedené procesy
+        - Ne. připojení zjištěných při každém intervalu dotazování
+- **Vizualizace závislostí na základě agenta**: Pokud chcete použít vizualizaci závislostí založenou na agentech, musíte si stáhnout a nainstalovat následující agenty na každý místní počítač, který chcete analyzovat.  
+    - Na každém počítači musí být nainstalovaný [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows). [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) o tom, jak nainstalovat agenta MMA.
+    - Na každém počítači je potřeba nainstalovat [agenta závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent) . [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) o tom, jak nainstalovat agenta závislostí.
+    - Pokud navíc máte počítače bez připojení k internetu, musíte na ně stáhnout a nainstalovat bránu Log Analytics.
 
-- Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
-- Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
-- Ujistěte se, že jste počítače zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md) nebo [Hyper-V](how-to-set-up-appliance-hyper-v.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md).
+## <a name="agent-based-requirements"></a>Požadavky založené na agentovi
 
-## <a name="how-does-it-work"></a>Jak to funguje?
+### <a name="what-do-i-need-to-deploy-dependency-visualization"></a>Co potřebuji k nasazení Vizualizace závislostí?
+
+Než nasadíte vizualizaci závislostí, měli byste mít Azure Migrate projekt, a to pomocí Azure Migrate: Nástroj pro vyhodnocení serveru přidaný do projektu. Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování vašich místních počítačů.
+
+[Přečtěte si další informace](how-to-assess.md) o přidání nástroje a nasazení zařízení pro [Hyper-V](how-to-set-up-appliance-hyper-v.md), [VMware](how-to-set-up-appliance-vmware.md)nebo fyzické servery.
+
+
+### <a name="how-does-it-work"></a>Jak to funguje?
 
 Azure Migrate používá řešení [Service map](../operations-management-suite/operations-management-suite-service-map.md) v [protokolech Azure monitor](../log-analytics/log-analytics-overview.md) pro vizualizaci závislostí.
-- Aby bylo možné využít vizualizaci závislostí, je nutné k projektu Azure Migrate přidružit Log Analytics pracovní prostor, a to buď nové, nebo existující.
-- Pracovní prostor můžete vytvořit nebo připojit pouze ve stejném předplatném, ve kterém je vytvořen Azure Migrate projekt.
-- Připojení pracovního prostoru Log Analytics k projektu:
-    1. Na kartě **servery** na dlaždici **Azure Migrate: vyhodnocování serveru** klikněte na **Přehled**.
-    2. V části **Přehled**klikněte na šipku dolů a rozbalte **základy**.
-    3. V **pracovním prostoru OMS**klikněte na **vyžaduje konfiguraci**.
-    4. V **oblasti konfigurovat pracovní prostor**určete, jestli chcete vytvořit nový pracovní prostor, nebo použijte existující:
-    
-    ![Přidat pracovní prostor](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-- Když přidružujete pracovní prostor, získáte možnost vytvořit nový pracovní prostor nebo připojit nějaký existující:
-  - Když vytváříte nový pracovní prostor, musíte zadat název pracovního prostoru. Můžete zvolit [oblast](https://azure.microsoft.com/global-infrastructure/regions/) , ve které bude pracovní prostor vytvořen.
-  - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. Všimněte si, že jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v oblasti, kde [je podpora Service map podporována](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Aby bylo možné připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
-
-  > [!NOTE]
-  > Jakmile připojíte pracovní prostor k projektu, nemůžete ho později změnit.
-
-  > [!NOTE]
-  > Azure Migrate aktuálně podporuje vytváření nebo přidružení Log Analytics pracovních prostorů, které jsou v oblastech Východní USA, jihovýchodní Asie a Západní Evropa. Pokud je pracovní prostor vytvořen mimo Azure Migrate v nepodporované oblasti, nelze jej aktuálně přidružit k projektu Azure Migrate. 
-
-- Přidružený pracovní prostor je označený jako **projekt migrace**klíče a hodnota **název projektu**, kterou můžete použít k vyhledávání v Azure Portal.
-- Pokud chcete přejít k pracovnímu prostoru přidruženému k projektu, můžete přejít na oddíl **základy** na stránce **Přehled** projektu a získat přístup k pracovnímu prostoru.
+- Aby bylo možné využít vizualizaci závislostí, je třeba k projektu Azure Migrate přidružit Log Analytics pracovní prostor (nové nebo existující).
+- Pracovní prostor musí být ve stejném předplatném, jako by byl vytvořen Azure Migrate projekt.
+- Azure Migrate podporuje pracovní prostory, které jsou umístěné v oblastech Východní USA, jihovýchodní Asie a Západní Evropa. Pracovní prostory v jiných oblastech nelze přidružit k projektu. Všimněte si také, že se pracovní prostor musí nacházet v oblasti, ve které [je podpora Service map podporována](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).
+- Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit.
+- V Log Analytics je pracovní prostor přidružený k Azure Migrate označený klíčem projektu migrace a názvem projektu.
 
     ![Přejít Log Analytics pracovní prostor](./media/concepts-dependency-visualization/oms-workspace.png)
 
-Pokud chcete používat vizualizaci závislostí, potřebujete si stáhnout a nainstalovat agenty na každý místní počítač, který chcete analyzovat.  
 
-- Na každém počítači je potřeba nainstalovat [agenta Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) . [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) o tom, jak nainstalovat agenta MMA.
-- Na každém počítači je potřeba nainstalovat [agenta závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent) . [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) o tom, jak nainstalovat agenta závislostí.
-- Pokud navíc máte počítače bez připojení k internetu, musíte na ně stáhnout a nainstalovat bránu Log Analytics.
 
-Pokud nepoužíváte vizualizaci závislostí, nepotřebujete tyto agenty na počítačích, které chcete vyhodnotit.
+### <a name="do-i-need-to-pay-for-it"></a>Je nutné za ně platit?
 
-## <a name="do-i-need-to-pay-for-it"></a>Je nutné za ně platit?
+Vizualizace závislosti vyžaduje Service Map a přidružený pracovní prostor Log Analytics. 
 
-Funkce vizualizace závislosti je k dispozici bez dalších poplatků. Použití funkce Vizualizace závislostí v nástroji vyhodnocování serveru vyžaduje Service Map a vyžaduje, abyste k projektu Azure Migrate přiřadili pracovní prostor Log Analytics, a to buď nové, nebo existující. Funkce Vizualizace závislostí v posouzení serveru je po dobu prvních 180 dnů zdarma.
-
-1. Pomocí jiných řešení, než je Service Map v tomto pracovním prostoru Log Analytics, se budou účtovat [standardní Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) poplatky.
-2. Za účelem podpory migračních scénářů bez dalších poplatků se Service Map řešení neúčtují žádné poplatky za prvních 180 dní od data přidružení Log Analytics pracovního prostoru k projektu Azure Migrate. Po 180 dnech budou platit standardní poplatky za Log Analytics.
-
-Při registraci agentů do pracovního prostoru použijte ID a klíč uvedený v projektu na stránce instalovat kroky agenta.
-
-Když se projekt Azure Migrate odstraní, pracovní prostor se spolu s ním neodstraní. Po odstranění projektu bude použití Service Map nevolné a každý uzel se bude účtovat podle placené úrovně Log Analytics pracovního prostoru.
-
-> [!NOTE]
-> Funkce vizualizace závislosti používá Service Map přes pracovní prostor Log Analytics. Od 28. února 2018 s oznámením Azure Migrateou obecnou dostupnost je tato funkce teď dostupná bez dalších poplatků. Abyste mohli využít pracovní prostor bezplatného využití, budete muset vytvořit nový projekt. Stávající pracovní prostory před všeobecnou dostupností jsou stále Fakturovatelné, proto doporučujeme přejít na nový projekt.
+- V řešení Service Map se neúčtují žádné poplatky za prvních 180 dní. To je od data, kdy jste přidružit Log Analytics pracovní prostor k projektu Azure Migrate.
+- Po 180 dnech budou platit standardní poplatky za Log Analytics.
+- Použití jakéhokoli řešení, které je jiné než Service Map v přidruženém pracovním prostoru Log Analytics, bude mít za následek [standardní Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) poplatky.
+- Když se projekt Azure Migrate odstraní, pracovní prostor se spolu s ním neodstraní. Po odstranění projektu Service Map využití není volné a každý uzel se bude účtovat podle placené úrovně Log Analytics pracovního prostoru.
 
 Další informace o cenách služby Azure Migrate najdete [zde](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
-## <a name="how-do-i-manage-the-workspace"></a>Návody spravovat pracovní prostor?
+> [!NOTE]
+> Pokud máte projekty, které jste vytvořili před Azure Migrateou obecnou dostupností ve 28. února 2018, mohly by vám být účtovány další Service Map poplatky. Abyste měli jistotu, že platíte jenom po 180 dnech, doporučujeme, abyste si vytvořili nový projekt, protože stávající pracovní prostory před obecnou dostupností jsou pořád Fakturovatelné.
 
-Pracovní prostor Log Analytics můžete použít mimo Azure Migrate. Neodstraní se, pokud odstraníte Azure Migrate projekt, ve kterém byl vytvořen. Pokud pracovní prostor již nepotřebujete, [odstraňte jej](../azure-monitor/platform/manage-access.md) ručně.
 
-Pokud neodstraníte projekt Azure Migrate, neodstraňujte pracovní prostor vytvořený pomocí Azure Migrate. Pokud to uděláte, funkce vizualizace závislosti nebude fungovat podle očekávání.
+
+### <a name="how-do-i-manage-the-workspace"></a>Návody spravovat pracovní prostor?
+
+- Při registraci agentů do pracovního prostoru použijete ID a klíč poskytnutý Azure Migrate projektem.
+- Pracovní prostor Log Analytics můžete použít mimo Azure Migrate.
+- Pokud odstraníte přidružený Azure Migrate projekt, pracovní prostor se automaticky neodstraní. Musíte [ho odstranit ručně](../azure-monitor/platform/manage-access.md).
+- Pokud neodstraníte projekt Azure Migrate, neodstraňujte pracovní prostor vytvořený pomocí Azure Migrate. Pokud to uděláte, funkce vizualizace závislosti nebude fungovat podle očekávání.
 
 ## <a name="next-steps"></a>Další kroky
 - [Seskupení počítačů pomocí závislostí počítačů](how-to-create-group-machine-dependencies.md)
 - [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) o nejčastějších dotazech k vizualizaci závislostí.
+
+

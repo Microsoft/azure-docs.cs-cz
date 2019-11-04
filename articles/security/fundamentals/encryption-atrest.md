@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: bcf66515fe24dda0d060a0b5c290bd05e46bf9d7
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 0fddabc7973fbea147de9f3b6e6da5556407030c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965677"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498463"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure – v klidovém případě
 
@@ -263,7 +263,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 |                                  | **Na straně serveru pomocí klíče spravovaného službou**     | **Na straně serveru pomocí klíče spravovaného zákazníkem**             | **Klientská strana s použitím klíče spravovaného klientem**      |
 | **AI a Machine Learning**      |                    |                    |                    |
 | Azure Search                     | Ano                | Preview            | -                  |
-| Služba Azure Machine Learning   | Ano                | -                  | -                  |
+| Azure Machine Learning   | Ano                | -                  | -                  |
 | Azure Machine Learning Studio    | Ano                | Verze Preview, RSA 2048-bit | -               |
 | Power BI                         | Ano                | Verze Preview, RSA 2048-bit | -                  |
 | **Analýzy**                    |                    |                    |                    |

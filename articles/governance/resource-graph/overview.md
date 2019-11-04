@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: 45853e3c8986cec58f27d785af31f174aff21b2e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c113719d304aa4ed9c13df1fe0264d22aacb5002
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755884"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499140"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Přehled služby Azure Resource Graph
 
@@ -92,7 +92,9 @@ Graf prostředků podporuje rozhraní příkazového řádku Azure CLI, Azure Po
 
 ## <a name="next-steps"></a>Další kroky
 
+- Spusťte první dotaz v [Azure Portal](first-query-portal.md).
 - Spusťte první dotaz pomocí [Azure CLI](first-query-azurecli.md).
 - Spusťte první dotaz pomocí [Azure PowerShell](first-query-powershell.md).
+- Získejte další informace o [dotazovacím jazyce](./concepts/query-language.md).
 - Začínáme s [úvodními dotazy](./samples/starter.md)
 - Rozšiřte své porozumění pomocí [pokročilých dotazů](./samples/advanced.md).

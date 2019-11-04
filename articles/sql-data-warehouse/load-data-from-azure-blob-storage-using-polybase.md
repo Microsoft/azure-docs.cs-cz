@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Načíst data taxislužby města New York do Azure SQL Data Warehouse | Microsoft Docs'
-description: Kurz používá Azure Portal a SQL Server Management Studio k načtení dat New York taxislužby města z veřejného objektu blob Azure do Azure SQL Data Warehouse.
+title: 'Kurz: načtení dat New York taxislužby města do Azure SQL Data Warehouse | Microsoft Docs'
+description: Kurz používá Azure Portal a SQL Server Management Studio k načtení dat New York taxislužby města z globálního objektu blob Azure do Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e3bef20a92322b07219e42c4f7fe8443917eae32
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2e799d84aee9ba4d3bfb00ddfad358c9b90c3d59
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575214"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482398"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat New York taxislužby města do Azure SQL Data Warehouse
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: načtení dat New York taxislužby města do Azure SQL Data Warehouse
 
-V tomto kurzu se pomocí základu načte data New York taxislužby města z veřejného objektu blob Azure do Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k: 
+V tomto kurzu se pomocí základu načte data New York taxislužby města z globálního objektu blob Azure do Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k: 
 
 > [!div class="checklist"]
 > * Vytvoření datového skladu na webu Azure Portal
@@ -33,7 +33,7 @@ V tomto kurzu se pomocí základu načte data New York taxislužby města z veř
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
@@ -72,11 +72,11 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse.
     | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). | 
     | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
     | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
-    | **Location** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
+    | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
 
     ![vytvoření databázového serveru](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. Klikněte na tlačítko **vyberte**.
+5. Klikněte na **Vybrat**.
 
 6. Klikněte na **úroveň výkonu** , abyste určili, jestli je datový sklad Gen1 nebo Gen2, a kolik jednotek datového skladu. 
 
@@ -84,7 +84,7 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse.
 
     ![konfigurace výkonu](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Klikněte na tlačítko **Použít**.
+8. Klikněte na **Použít**.
 9. Na stránce služby SQL Data Warehouse vyberte **kolaci** pro prázdnou databázi. Pro účely tohoto kurzu použijte výchozí hodnotu. Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations).
 
 11. Po vyplnění formuláře pro SQL Database klikněte na **Vytvořit** a databázi zřiďte. Zřizování trvá několik minut. 
@@ -142,7 +142,7 @@ Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. 
 
 V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) naváže připojení k serveru SQL Azure.
 
-1. Spusťte aplikaci SQL Server Management Studio.
+1. Otevřete SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
@@ -150,8 +150,8 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
     | ------------ | --------------- | ----------- | 
     | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
     | Název serveru | Plně kvalifikovaný název serveru | Název by měl být podobný tomuto: **MyNewServer-20180430.Database.Windows.NET**. |
-    | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
-    | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
+    | Ověření | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
+    | Přihlášení | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
     | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
 
     ![Připojení k serveru](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -564,7 +564,7 @@ Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/
 ## <a name="authenticate-using-managed-identities-to-load-optional"></a>Ověřování pomocí spravovaných identit k načtení (volitelné)
 Nasazování pomocí základů a ověření prostřednictvím spravovaných identit je nejbezpečnější mechanismus, který umožňuje využívat koncové body služby virtuální sítě s Azure Storage. 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 1.  Pomocí této [příručky](https://docs.microsoft.com/powershell/azure/install-az-ps)nainstalujte Azure PowerShell.
 2.  Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte nejdřív v této [příručce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)upgradovat na obecné účely v2.
 3.  Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Další informace najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .

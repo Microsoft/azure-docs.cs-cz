@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: a8cf17ab3eab31d4ac6113437f55d73f96425e4e
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: a43783110f625dd5faef13c83228a2659155ead0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843303"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492234"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -82,7 +82,7 @@ Podobně jako PITR, zálohy LTR jsou geograficky redundantní a chráněné [Azu
 Další informace najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
 
 ## <a name="storage-costs"></a>Náklady na úložiště
-U izolovaných databází se minimální hodnota záložního úložiště rovná 100% velikosti databáze je k dispozici bez dalších poplatků. V případě elastických fondů se minimální hodnota úložiště zálohy rovná 100% přiděleného úložiště dat pro fond, a to bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází.
+U izolovaných databází a spravovaných instancí se minimální velikost záložního úložiště rovná 100% velikosti databáze poskytuje bez dalších poplatků. V případě elastických fondů se minimální hodnota úložiště zálohy rovná 100% přiděleného úložiště dat pro fond, a to bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází.
 
 Další informace o cenách za úložiště najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/sql-database/single/) . 
 

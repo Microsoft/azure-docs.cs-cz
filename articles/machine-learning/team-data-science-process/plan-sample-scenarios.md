@@ -1,6 +1,6 @@
 ---
-title: Identifikace scénářů pro Azure Machine Learning – vědecké zpracování týmových dat
-description: Vyberte odpovídající scénáře pro pokročilé prediktivní analytiky pomocí vědeckého zpracování týmových dat tím.
+title: Identifikace scénářů pro Azure Machine Learning a týmovou vědu pro zpracování dat
+description: Vyberte vhodné scénáře pro pokročilou prediktivní analýzu v rámci vědeckého zpracování týmových dat.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,244 +11,240 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 130ab6ee8e59b157d1fbdd8769f14814445dea18
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: de02e94014fa2a28e364c4f85bcb31a1a4827b8c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202746"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495064"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scénáře pro pokročilé analýzy ve službě Azure Machine Learning
-Tento článek popisuje různé ukázkové zdroje dat a cílové scénáře, které mohou být zpracovány [vědecké zpracování týmových dat (TDSP)](overview.md). TDSP nabízí systematický přístup pro týmy spolupracovat na sestavování inteligentních aplikací. Scénáře uvedené tady ukazují možnosti dostupné v pracovním postupu zpracování dat, které se liší podle vlastností dat, zdrojová umístění a cíl úložiště v Azure.
+Tento článek popisuje řadu ukázkových zdrojů dat a cílových scénářů, které lze zpracovat v rámci [vědeckého zpracování týmových dat (TDSP)](overview.md). TDSP poskytuje systematický přístup pro týmy, které umožňují spolupráci při vytváření inteligentních aplikací. Zde uvedené scénáře znázorňují možnosti dostupné v pracovním postupu zpracování dat, které závisí na charakteristikách dat, zdrojových umístěních a cílových úložištích v Azure.
 
-**Rozhodovací strom** pro výběr ukázkové scénáře, které je vhodné pro vaše data a cíl je uveden v předchozí části.
+V poslední části se zobrazí **rozhodovací strom** pro výběr vzorových scénářů, které jsou vhodné pro vaše data a cíl.
 
-> [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-> 
-> 
-
-Každá z těchto částí představuje vzorový scénář. Pro každý scénář možné datové vědy a pokročilé analýzy toku a podpůrné prostředky Azure, jsou uvedeny.
+V následujících částech najdete ukázkový scénář. V každém scénáři jsou uvedeny možné toky pro datové vědy a pokročilé analýzy a podpůrné prostředky Azure.
 
 > [!NOTE]
-> **Pro všechny z následujících scénářů budete muset:**
+> **U všech následujících scénářů potřebujete:**
 > <br/>
 > 
-> * [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md)
+> * [vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md)
 >   <br/>
 > * [Vytvoření pracovního prostoru Azure Machine Learning](../studio/create-workspace.md)
 > 
 > 
 
-## <a name="smalllocal"></a>Scénář \#1: Malé a střední tabulkové datové sady v místních souborů
-![Malé a střední místní soubory][1]
+## <a name="smalllocal"></a>Scénář \#1: malá a střední datová sada v místních souborech
+![Malé až střední místní soubory][1]
 
-#### <a name="additional-azure-resources-none"></a>Další prostředky Azure: Žádný
+#### <a name="additional-azure-resources-none"></a>Další prostředky Azure: žádné
 1. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
 1. Nahrajte datovou sadu.
-1. Vytvoření toku experimentu Azure Machine Learning počínaje nahrané datových sad.
+1. Sestavte Azure Machine Learningho toku experimentu počínaje nahranými datovými prvky.
 
-## <a name="smalllocalprocess"></a>Scénář \#2: Malé a střední datové sady místních souborů, které vyžadují zpracování
-![Malé a střední místních souborů se zpracování][2]
+## <a name="smalllocalprocess"></a>Scénář \#2: malá a střední datová sada místních souborů, které vyžadují zpracování
+![Malé až střední místní soubory se zpracováním][2]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Další prostředky Azure: Virtuální počítač Azure (IPython Notebook server)
-1. Vytvořte virtuální počítač Azure s IPython Notebook.
-1. Nahrání dat do kontejneru služby Azure storage.
-1. Předběžně zpracovat a vyčistit data v IPython Notebook, přístup k datům z kontejneru úložiště Azure.
-1. Transformace data vyčistit formě tabulky.
-1. Uložení transformovaných dat v objektech BLOB Azure.
+#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (Server poznámkového bloku IPython)
+1. Vytvořte virtuální počítač Azure s poznámkovým blokem IPython.
+1. Nahrajte data do kontejneru úložiště Azure.
+1. Předběžné zpracování a vyčištění dat v IPython poznámkovém bloku s přístupem k datům z kontejneru Azure Storage.
+1. Transformuje data na vyčištěný, tabulkový formulář.
+1. Ukládat transformovaná data v objektech blob Azure
 1. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-1. Přečíst data z Azure objektů BLOB pomocí [Import dat] [ import-data] modulu.
-1. Vytvoření toku experimentu Azure Machine Learning počínaje přijaté datových sad.
+1. Pomocí modulu [Import dat][import-data] si přečtěte data z objektů blob Azure.
+1. Sestavte Azure Machine Learning tok experimentu počínaje příjmovou datovou sadou (y).
 
-## <a name="largelocal"></a>Scénář \#3: Velké datové sady místních souborů, které cílí na objektech BLOB Azure
+## <a name="largelocal"></a>Scénář \#3: velká datová sada místních souborů, která cílí na objekty blob Azure
 ![Velké místní soubory][3]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Další prostředky Azure: Virtuální počítač Azure (IPython Notebook server)
-1. Vytvořte virtuální počítač Azure s IPython Notebook.
-1. Nahrání dat do kontejneru služby Azure storage.
-1. Předběžně zpracovat a vyčistit data v IPython Notebook, přístup k datům v objektech BLOB Azure.
-1. Transformace data vyčistit formě tabulky, v případě potřeby.
-1. Zkoumání dat a podle potřeby vytvořit funkce.
-1. Extrahujte ukázková data malé až střední.
-1. Uložte jen Vzorkovaná data v objektech BLOB Azure.
+#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (Server poznámkového bloku IPython)
+1. Vytvořte virtuální počítač Azure s poznámkovým blokem IPython.
+1. Nahrajte data do kontejneru úložiště Azure.
+1. Předběžné zpracování a vyčištění dat v IPython poznámkovém bloku s přístupem k datům z objektů blob Azure.
+1. V případě potřeby Transformujte data na vyčištěnou a tabulkovou formu.
+1. Prozkoumejte data a podle potřeby Vytvářejte funkce.
+1. Extrahujte ukázku dat z malých do střední.
+1. Uložte ukázková data do objektů blob Azure.
 1. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-1. Přečíst data z Azure objektů BLOB pomocí [Import dat] [ import-data] modulu.
-1. Vytvoření toku experiment Azure Machine Learning počínaje přijaté datových sad.
+1. Pomocí modulu [Import dat][import-data] si přečtěte data z objektů blob Azure.
+1. Sestavování Azure Machine Learningho toku experimentů od ingestních datových sad.
 
-## <a name="smalllocaltodb"></a>Scénář \#4: Malé a střední datové sady místních souborů, které cílí na SQL Server ve virtuálním počítači Azure
-![Malé a střední místní soubory do databáze SQL v Azure][4]
+## <a name="smalllocaltodb"></a>Scénář \#4: malá a střední datová sada místních souborů, která cílí na SQL Server na virtuálním počítači Azure
+![Malé až střední místní soubory do databáze SQL v Azure][4]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: Virtuální počítač Azure (SQL Server / IPython Notebook server)
-1. Vytvořte virtuální počítač Azure s SQL Server + IPython Notebook.
-1. Nahrání dat do kontejneru služby Azure storage.
-1. Předběžně zpracovat a vyčistit data v kontejneru úložiště Azure pomocí IPython Notebook.
-1. Transformace data vyčistit formě tabulky, v případě potřeby.
-1. Ukládání dat do virtuálního počítače – místní soubory (IPython Notebook běží na virtuálním počítači najdete místní jednotky na virtuálním počítači jednotky).
-1. Načtení dat do databáze serveru SQL Server běžící na Virtuálním počítači Azure.
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (SQL Server/Server notebook IPython)
+1. Vytvořte virtuální počítač Azure se spuštěným SQL Server a poznámkovým blokem IPython.
+1. Nahrajte data do kontejneru úložiště Azure.
+1. Předběžné zpracování a vyčištění dat v kontejneru úložiště Azure pomocí poznámkového bloku IPython
+1. V případě potřeby Transformujte data na vyčištěnou a tabulkovou formu.
+1. Uložení dat do místních souborů VM (Poznámkový blok IPython běží na virtuálním počítači, místní jednotky odkazují na jednotky virtuálních počítačů).
+1. Načte data do SQL Server databáze běžící na virtuálním počítači Azure.
    
-   Možnost \#1: Pomocí aplikace SQL Server Management Studio.
+   Možnost \#1: použití SQL Server Management Studio.
    
-   * Přihlaste se k serveru SQL Server VM
+   * Přihlášení k SQL Server virtuálního počítače
    * Spusťte SQL Server Management Studio.
-   * Vytvoření databáze a cílové tabulky.
-   * Použijte některou z hromadného importu metody k načtení dat z virtuálního počítače – místní soubory.
+   * Vytvořte databázi a cílové tabulky.
+   * Pomocí jedné z metod hromadného importu načtěte data z místních souborů virtuálních počítačů.
    
-   Možnost \#2: Pomocí IPython Notebook – není vhodné pro střední nebo větší datové sady
+   Možnost \#2: Použití poznámkového bloku IPython – nejde doporučit pro střední a větší datové sady.
    
    <!-- -->    
-   * Použijte připojovací řetězec ODBC pro přístup k systému SQL Server na virtuálním počítači.
-   * Vytvoření databáze a cílové tabulky.
-   * Použijte některou z hromadného importu metody k načtení dat z virtuálního počítače – místní soubory.
-1. Zkoumání dat, vytváření funkcí, podle potřeby. Všimněte si, že funkce nemusí být vyhodnocena v databázových tabulkách. Mějte na paměti pouze nezbytné dotazu k jejich vytvoření.
-1. Při rozhodování velikost vzorku dat, pokud potřebné a/nebo potřeby.
+   * Pro přístup k SQL Server na virtuálním počítači použijte připojovací řetězec ODBC.
+   * Vytvořte databázi a cílové tabulky.
+   * Pomocí jedné z metod hromadného importu načtěte data z místních souborů virtuálních počítačů.
+1. Prozkoumejte data a podle potřeby vytvořte funkce. Všimněte si, že tyto funkce nemusí být vyhodnoceny v databázových tabulkách. Poznamenejte si pouze nezbytný dotaz pro jejich vytvoření.
+1. V případě potřeby určete velikost vzorku dat a/nebo požadovanou velikost.
 1. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-1. Přečíst data přímo z SQL serveru pomocí [Import dat] [ import-data] modulu. Vložte potřebné dotaz, který extrahuje pole, vytvoří funkce a vzorkuje data, v případě potřeby přímo v [Import dat] [ import-data] dotazu.
-1. Vytvoření toku experiment Azure Machine Learning počínaje přijaté datových sad.
+1. Pomocí modulu [Import dat][import-data] Přečtěte data přímo z SQL Server. Vložte potřebný dotaz, který extrahuje pole, vytvoří funkce a vzorkuje data v případě potřeby přímo v dotazu [Import dat][import-data] .
+1. Sestavování Azure Machine Learningho toku experimentů od ingestních datových sad.
 
-## <a name="largelocaltodb"></a>Scénář \#5: Velké datové sady v místních souborů cílit na SQL Server na virtuálním počítači Azure
-![Velké místní soubory databáze SQL v Azure][5]
+## <a name="largelocaltodb"></a>Scénář \#5: velká datová sada v místních souborech, cílová SQL Server na virtuálním počítači Azure
+![Velké místní soubory do databáze SQL v Azure][5]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: Virtuální počítač Azure (SQL Server / IPython Notebook server)
-1. Vytvořte virtuální počítač Azure s SQL serveru a serveru IPython Notebook.
-1. Nahrání dat do kontejneru služby Azure storage.
-1. (Volitelné) Předběžně zpracovat a vyčistit data.
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (SQL Server/Server notebook IPython)
+1. Vytvořte virtuální počítač Azure se spuštěným serverem SQL Server a IPython notebookem.
+1. Nahrajte data do kontejneru úložiště Azure.
+1. Volitelné Předběžná zpracování a čištění dat.
    
-   a.  Předběžně zpracovat a vyčistit data v IPython Notebook, přístup k datům z Azure
+   a.  Předběžné zpracování a vyčištění dat v IPython poznámkovém bloku s přístupem k datům z Azure
    
        blobs.
    
-   b.  Transformace data vyčistit formě tabulky, v případě potřeby.
+   b.  V případě potřeby Transformujte data na vyčištěnou a tabulkovou formu.
    
-   c.  Ukládání dat do virtuálního počítače – místní soubory (IPython Notebook běží na virtuálním počítači najdete místní jednotky na virtuálním počítači jednotky).
-1. Načtení dat do databáze serveru SQL Server běžící na Virtuálním počítači Azure.
+   c.  Uložení dat do místních souborů VM (Poznámkový blok IPython běží na virtuálním počítači, místní jednotky odkazují na jednotky virtuálních počítačů).
+1. Načte data do SQL Server databáze běžící na virtuálním počítači Azure.
    
-   a.  Přihlaste se k virtuálnímu počítači SQL serverem.
+   a.  Přihlaste se k SQL Server virtuálního počítače.
    
-   b.  Pokud data nejsou již uložena, stahování datových souborů z Azure
+   b.  Pokud se data už neukládají, Stáhněte si datové soubory z Azure.
    
        storage container to local-VM folder.
    
    c.  Spusťte SQL Server Management Studio.
    
-   d.  Vytvoření databáze a cílové tabulky.
+   d.  Vytvořte databázi a cílové tabulky.
    
-   e.  Použijte některou z hromadného importu metody, které chcete načíst data.
+   e.  K načtení dat použijte jednu z metod hromadného importu.
    
-   f.  Pokud požadujete spoje tabulky platná, vytváření indexů pro urychlení spojení.
+   f.  Pokud jsou vyžadovány spojení s tabulkami, vytvořte indexy pro urychlení spojení.
    
    > [!NOTE]
-   > Pro rychlejší načítání velké objemy dat, je doporučeno, můžete vytvořit dělené tabulky a hromadného importu dat paralelně. Další informace najdete v tématu [paralelní Import dat do dělené tabulky SQL](parallel-load-sql-partitioned-tables.md).
+   > Pro rychlejší načítání velkých objemů dat doporučujeme vytvořit dělené tabulky a hromadně importovat data. Další informace najdete v tématu [paralelní import dat do dělených tabulek SQL](parallel-load-sql-partitioned-tables.md).
    > 
    > 
-1. Zkoumání dat, vytváření funkcí, podle potřeby. Všimněte si, že funkce nemusí být vyhodnocena v databázových tabulkách. Mějte na paměti pouze nezbytné dotazu k jejich vytvoření.
-1. Při rozhodování velikost vzorku dat, pokud potřebné a/nebo potřeby.
+1. Prozkoumejte data a podle potřeby vytvořte funkce. Všimněte si, že tyto funkce nemusí být vyhodnoceny v databázových tabulkách. Poznamenejte si pouze nezbytný dotaz pro jejich vytvoření.
+1. V případě potřeby určete velikost vzorku dat a/nebo požadovanou velikost.
 1. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-1. Přečíst data přímo z SQL serveru pomocí [Import dat] [ import-data] modulu. Vložte potřebné dotaz, který extrahuje pole, vytvoří funkce a vzorkuje data, v případě potřeby přímo v [Import dat] [ import-data] dotazu.
-1. Jednoduchý experiment tok Azure Machine Learning, počínaje nahraná datová sada
+1. Pomocí modulu [Import dat][import-data] Přečtěte data přímo z SQL Server. Vložte potřebný dotaz, který extrahuje pole, vytvoří funkce a vzorkuje data v případě potřeby přímo v dotazu [Import dat][import-data] .
+1. Jednoduchý tok experimentu Azure Machine Learning počínaje nahranou datovou sadou
 
-## <a name="largedbtodb"></a>Scénář \#6: Velkou datovou sadu v databázi SQL serveru v místním prostředí, cílení na serveru SQL Server ve virtuálním počítači Azure
-![Velké SQL DB místní k databázi SQL v Azure][6]
+## <a name="largedbtodb"></a>Scénář \#6: velká datová sada v databázi SQL Server místně, která cílí na SQL Server na virtuálním počítači Azure
+![Rozsáhlá databáze SQL DB on-Prem do databáze SQL v Azure][6]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: Virtuální počítač Azure (SQL Server / IPython Notebook server)
-1. Vytvořte virtuální počítač Azure s SQL serveru a serveru IPython Notebook.
-1. Použijte některou z data exportu metod exportovat data z SQL serveru do souborů s výpisem paměti.
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (SQL Server/Server notebook IPython)
+1. Vytvořte virtuální počítač Azure se spuštěným serverem SQL Server a IPython notebookem.
+1. Pomocí jedné z metod exportu dat exportujte data z SQL Server do souborů s výpisem paměti.
    
    > [!NOTE]
-   > Pokud se rozhodnete přesunout všechna data z on premises databáze alternativní metodu (rychlejší) přesunout celé databáze do instance systému SQL Server v Azure. Přeskočte kroky k exportovat data, vytvořit databázi a zatížení a import dat do cílové databáze a použijte alternativní metodu.
+   > Pokud se rozhodnete přesunout všechna data z místní databáze, alternativní (rychlejší) metodu pro přesun úplné databáze do instance SQL Server v Azure. Přeskočte kroky pro export dat, vytvořte databázi a načtěte/importujte data do cílové databáze a použijte alternativní metodu.
    > 
    > 
-1. Nahrajte soubory s výpisem paměti do kontejneru úložiště Azure.
-1. Načtení dat do databáze SQL serveru spuštěná na virtuálním počítači Azure.
+1. Soubory výpisu paměti nahrajte do kontejneru úložiště Azure.
+1. Načtěte data do databáze SQL Server běžící na virtuálním počítači Azure.
    
-   a.  Přihlaste se k virtuálnímu počítači SQL serverem.
+   a.  Přihlaste se k virtuálnímu počítači SQL Server.
    
-   b.  Stahování datových souborů do složky místního virtuálního počítače z kontejneru úložiště Azure.
+   b.  Stáhněte si datové soubory z kontejneru úložiště Azure do složky Local-VM.
    
    c.  Spusťte SQL Server Management Studio.
    
-   d.  Vytvoření databáze a cílové tabulky.
+   d.  Vytvořte databázi a cílové tabulky.
    
-   e.  Použijte některou z hromadného importu metody, které chcete načíst data.
+   e.  K načtení dat použijte jednu z metod hromadného importu.
    
-   f.  Pokud požadujete spoje tabulky platná, vytváření indexů pro urychlení spojení.
+   f.  Pokud jsou vyžadovány spojení s tabulkami, vytvořte indexy pro urychlení spojení.
    
    > [!NOTE]
-   > Rychlejší načítání velké objemy dat, vytváření oddílů tabulky a k hromadnému importu paralelně. Další informace najdete v tématu [paralelní Import dat do dělené tabulky SQL](parallel-load-sql-partitioned-tables.md).
+   > Pro rychlejší načítání velkých objemů dat Vytvářejte dělené tabulky a hromadně importujte data. Další informace najdete v tématu [paralelní import dat do dělených tabulek SQL](parallel-load-sql-partitioned-tables.md).
    > 
    > 
-1. Zkoumání dat, vytváření funkcí, podle potřeby. Všimněte si, že funkce nemusí být vyhodnocena v databázových tabulkách. Mějte na paměti pouze nezbytné dotazu k jejich vytvoření.
-1. Při rozhodování velikost vzorku dat, pokud potřebné a/nebo potřeby.
+1. Prozkoumejte data a podle potřeby vytvořte funkce. Všimněte si, že tyto funkce nemusí být vyhodnoceny v databázových tabulkách. Poznamenejte si pouze nezbytný dotaz pro jejich vytvoření.
+1. V případě potřeby určete velikost vzorku dat a/nebo požadovanou velikost.
 1. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-1. Přečíst data přímo z SQL serveru pomocí [Import dat] [ import-data] modulu. Vložte potřebné dotaz, který extrahuje pole, vytvoří funkce a vzorkuje data, v případě potřeby přímo v [Import dat] [ import-data] dotazu.
-1. Počínaje nahraná datová sada jednoduchý tok s experiment Azure Machine Learning.
+1. Pomocí modulu [Import dat][import-data] Přečtěte data přímo z SQL Server. Vložte potřebný dotaz, který extrahuje pole, vytvoří funkce a vzorkuje data v případě potřeby přímo v dotazu [Import dat][import-data] .
+1. Jednoduchý tok experimentu Azure Machine Learning počínaje nahranou datovou sadou.
 
-### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Alternativní způsob zkopírovat celé databáze z místního SQL serveru do služby Azure SQL Database
-![Místní databáze odpojit a připojit k databázi SQL v Azure][7]
+### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Alternativní metoda kopírování úplné databáze z místního SQL Server do Azure SQL Database
+![Odpojení místní databáze a připojení k databázi SQL v Azure][7]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: Virtuální počítač Azure (SQL Server / IPython Notebook server)
-Replikovat celou databázi systému SQL Server ve virtuálním počítači SQL serveru, měli byste zkopírovat databázi z jednoho umístění/serveru na jiný, za předpokladu, že databáze můžete provést dočasně v režimu offline. To provedete v Průzkumník objektů systému SQL Server Management Studio nebo pomocí ekvivalentní příkazy jazyka Transact-SQL.
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: virtuální počítač Azure (SQL Server/Server notebook IPython)
+Pokud chcete replikovat celou SQL Server databázi na svém SQL Serverm VIRTUÁLNÍm počítači, měli byste zkopírovat databázi z jednoho umístění nebo serveru do jiné za předpokladu, že databázi je možné dočasně považovat do offline režimu. Provedete to v SQL Server Management Studio Průzkumník objektů nebo pomocí ekvivalentních příkazů Transact-SQL.
 
-1. Odpojení databáze v umístění zdroje. Další informace najdete v tématu [odpojit databázi](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).
-1. V okně Průzkumníka Windows nebo na příkazovém řádku Windows zkopírujte soubor odpojenou databázi nebo soubory a soubor protokolu nebo soubory do cílového umístění na virtuálním počítači SQL serveru v Azure.
-1. Zkopírované soubory připojení k cílové instanci SQL serveru. Další informace najdete v tématu [připojit databázi](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx).
+1. Odpojte databázi ve zdrojovém umístění. Další informace najdete v tématu [odpojení databáze](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).
+1. V Průzkumníku Windows nebo v okně příkazového řádku Windows zkopírujte odpojený databázový soubor nebo soubory a soubory protokolu nebo soubory do cílového umístění na SQL Serverm VIRTUÁLNÍm počítači v Azure.
+1. Připojte zkopírované soubory k cílové instanci SQL Server. Další informace najdete v tématu [připojení databáze](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx).
 
-[Přesunout databázi pomocí odpojit a připojit (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
+[Přesunutí databáze pomocí příkazu odpojit a připojit (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="largedbtohive"></a>Scénář \#7: Velké objemy dat v místních souborů, cílová databáze Hive v clusterech Azure HDInsight Hadoop
-![Velké objemy dat v místních cílových Hive][9]
+## <a name="largedbtohive"></a>Scénář \#7: velké objemy dat v místních souborech, cílová databáze podregistru v clusterech Azure HDInsight Hadoop
+![Velké objemy dat v místním cílovém podregistru][9]
 
-#### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>Další prostředky Azure: Azure HDInsight Hadoop Cluster a virtuální počítač Azure (IPython Notebook server)
-1. Vytvořte virtuální počítač Azure s serveru IPython Notebook.
-1. Vytvoření clusteru Azure HDInsight Hadoop.
-1. (Volitelné) Předběžně zpracovat a vyčistit data.
+#### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>Další prostředky Azure: Azure HDInsight Hadoop cluster a virtuální počítač Azure (Server poznámkového bloku IPython)
+1. Vytvořte virtuální počítač Azure se spuštěným serverem IPython notebook.
+1. Vytvořte cluster Azure HDInsight Hadoop.
+1. Volitelné Předběžná zpracování a čištění dat.
    
-   a.  Předběžně zpracovat a vyčistit data v IPython Notebook, přístup k datům z Azure
+   a.  Předběžné zpracování a vyčištění dat v IPython poznámkovém bloku s přístupem k datům z Azure
    
        blobs.
    
-   b.  Transformace data vyčistit formě tabulky, v případě potřeby.
+   b.  V případě potřeby Transformujte data na vyčištěnou a tabulkovou formu.
    
-   c.  Ukládání dat do virtuálního počítače – místní soubory (IPython Notebook běží na virtuálním počítači najdete místní jednotky na virtuálním počítači jednotky).
-1. Nahrání dat do výchozího kontejneru cluster Hadoop v kroku 2 vybrali.
-1. Načtení dat do databáze Hive v clusteru Azure HDInsight Hadoop.
+   c.  Uložení dat do místních souborů VM (Poznámkový blok IPython běží na virtuálním počítači, místní jednotky odkazují na jednotky virtuálních počítačů).
+1. Nahrajte data do výchozího kontejneru clusteru Hadoop vybraného v kroku 2.
+1. Načte data do databáze podregistru v clusteru Azure HDInsight Hadoop.
    
-   a.  Přihlaste se k hlavnímu uzlu clusteru Hadoop
+   a.  Přihlaste se k hlavnímu uzlu clusteru Hadoop.
    
-   b.  Otevřete příkazový řádek systému Hadoop.
+   b.  Otevřete příkazový řádek Hadoop.
    
-   c.  Zadejte kořenový adresář Hive příkazem `cd %hive_home%\bin` příkazového řádku v Hadoopu.
+   c.  Do příkazového řádku Hadoop zadejte kořenový adresář podregistru Command `cd %hive_home%\bin`.
    
-   d.  Spouštění dotazů Hive k vytvoření databáze a tabulky a načtení dat z úložiště objektů blob do tabulky Hive.
+   d.  Spuštěním dotazů na podregistr vytvořte databázi a tabulky a načtěte data z úložiště objektů blob do tabulek podregistru.
    
    > [!NOTE]
-   > Pokud jsou data velká, uživatelé mohou vytvářet tabulky Hive s oddíly. Uživatelé pak můžou použít `for` smyčky v Hadoop příkazový řádek hlavního uzlu pro načtení dat do tabulky Hive rozdělené podle oddílu.
+   > Pokud jsou data velká, uživatelé mohou vytvořit tabulku podregistru s oddíly. Uživatelé pak mohou pomocí smyčky `for` v příkazovém řádku Hadoop v hlavním uzlu načíst data do tabulky pododdílu v oddílu.
    > 
    > 
-1. Zkoumání dat a vytvoření funkcí, podle potřeby v Hadoop příkazového řádku. Všimněte si, že funkce nemusí být vyhodnocena v databázových tabulkách. Mějte na paměti pouze nezbytné dotazu k jejich vytvoření.
+1. Prozkoumejte data a podle potřeby Vytvářejte funkce v příkazovém řádku Hadoop. Všimněte si, že tyto funkce nemusí být vyhodnoceny v databázových tabulkách. Poznamenejte si pouze nezbytný dotaz pro jejich vytvoření.
    
-   a.  Přihlaste se k hlavnímu uzlu clusteru Hadoop
+   a.  Přihlaste se k hlavnímu uzlu clusteru Hadoop.
    
-   b.  Otevřete příkazový řádek systému Hadoop.
+   b.  Otevřete příkazový řádek Hadoop.
    
-   c.  Zadejte kořenový adresář Hive příkazem `cd %hive_home%\bin` příkazového řádku v Hadoopu.
+   c.  Do příkazového řádku Hadoop zadejte kořenový adresář podregistru Command `cd %hive_home%\bin`.
    
-   d.  Spouštění dotazů Hive v příkazového řádku Hadoopu hlavního uzlu clusteru Hadoop zkoumat data a vytvářet funkce, podle potřeby.
-1. Pokud třeba a/nebo potřeby, ukázková data pro Azure Machine Learning Studio.
+   d.  Spusťte dotazy na podregistr v hlavním uzlu clusteru Hadoop a prozkoumejte data a podle potřeby vytvořte funkce.
+1. V případě potřeby a/nebo podle potřeby vyvzorkujte data tak, aby se vešla do Azure Machine Learning Studio.
 1. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/).
-1. Čtení dat přímo z `Hive Queries` pomocí [Import dat] [ import-data] modulu. Vložte potřebné dotaz, který extrahuje pole, vytvoří funkce a vzorkuje data, v případě potřeby přímo v [Import dat] [ import-data] dotazu.
-1. Počínaje nahraná datová sada jednoduchý tok s experiment Azure Machine Learning.
+1. Pomocí modulu [Import dat][import-data] Přečtěte data přímo z `Hive Queries`. Vložte potřebný dotaz, který extrahuje pole, vytvoří funkce a vzorkuje data v případě potřeby přímo v dotazu [Import dat][import-data] .
+1. Jednoduchý tok experimentu Azure Machine Learning počínaje nahranou datovou sadou.
 
 ## <a name="decisiontree"></a>Rozhodovací strom pro výběr scénáře
 ---
-Následující diagram obsahuje souhrn scénáře popsané výše a pokročilé analýzy procesu a technologické volby, která můžete přejít k jednotlivé rozepsané scénáře. Všimněte si, že může trvat zpracování dat, průzkum, vytváření funkcí a vzorkování umístit do jednoho nebo více metoda/prostředí – ve zdroji, středně pokročilý, a/nebo cílové prostředí – a může pokračovat zavádět postupně, podle potřeby. Diagram pouze slouží jako ilustraci některé možné toků a neposkytuje kompletní výčet.
+Následující diagram shrnuje výše popsané scénáře a procesy pokročilé analýzy a možnosti vývoje, které vás provedou jednotlivými scénáři s vydanými položkami. Všimněte si, že zpracování dat, průzkum, vytváření funkcí a vzorkování může probíhat v jedné nebo více metodách nebo prostředích – ve zdrojovém, zprostředkujícím nebo cílovém prostředí – a podle potřeby může postupovat iterativním způsobem. Diagram slouží pouze jako ilustrace některých možných toků a neposkytuje vyčerpávající výčet.
 
-![Vzorové DS procesu návod scénáře][8]
+![Ukázka scénářů pro postupy procesu DS][8]
 
-### <a name="advanced-analytics-in-action-examples"></a>Pokročilé analýzy v akci příklady
-Návody začátku do konce Azure Machine Learning, které využívají pokročilé analýzy procesu a technologie, pomocí veřejných datových sad naleznete v tématu:
+### <a name="advanced-analytics-in-action-examples"></a>Pokročilé analýzy v příkladech akcí
+Ucelené postupy Azure Machine Learning, které využívají proces a technologii pokročilých analýz s využitím veřejných datových sad, najdete v těchto tématech:
 
-* [Týmu vědecké zpracování dat v akci: použití serveru SQL Server](sql-walkthrough.md).
-* [Týmu vědecké zpracování dat v akci: clusterů systému HDInsight Hadoop](hive-walkthrough.md).
+* [Vědecké zpracování týmových dat v akci: použití SQL Server](sql-walkthrough.md).
+* [Vědecké zpracování týmových dat v akci: používání clusterů HDInsight Hadoop](hive-walkthrough.md).
 
 [1]: ./media/plan-sample-scenarios/dsp-plan-small-in-aml.png
 [2]: ./media/plan-sample-scenarios/dsp-plan-local-with-processing.png

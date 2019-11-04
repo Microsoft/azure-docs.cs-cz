@@ -1,5 +1,5 @@
 ---
-title: Apache Hive se nepodařilo navázat připojení Apache Zookeeper – Azure HDInsight
+title: Apache Hive připojení k Apache Zookeeper – Azure HDInsight
 description: Zobrazení Apache Hive nedostupné kvůli problémům s Apache Zookeeper v Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,20 +7,20 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: a99b2deac7304813c07622fef76eaf034a4305f7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a6ede13ea258048857e06e1c158a297219ff0df6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091452"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494266"
 ---
-# <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>Scénář: Apache Hive se nepodařilo navázat připojení k Apache Zookeeper v Azure HDInsight.
+# <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>Scénář: Apache Hive se nepodařilo navázat připojení k Apache Zookeeper v Azure HDInsight
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při používání interaktivních komponent dotazů v clusterech Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Zobrazení podregistru je nedostupné a v `/var/log/hive` protokolech se zobrazuje chyba podobná této:
+Zobrazení podregistru je nedostupné a protokoly v `/var/log/hive` zobrazují chybu podobnou následující:
 
 ```
 ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:checkTimeouts(200)) - Connection timed out for connection string (zk0-cluster.cloud.wbmi.com:2181,zk1-cluster.cloud.wbmi.com:2181,zk2-cluster.cloud.wbmi.com:2181) and timeout (15000) / elapsed (21852)
@@ -30,7 +30,7 @@ ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:check
 
 Může dojít k selhání podregistru při navázání připojení k Zookeeper, které brání spuštění zobrazení podregistru.
 
-## <a name="resolution"></a>Řešení
+## <a name="resolution"></a>Rozlišení
 
 1. Ověřte, že je služba Zookeeper v pořádku.
 
@@ -43,12 +43,12 @@ Může dojít k selhání podregistru při navázání připojení k Zookeeper, 
 
 1. Pokud chcete znovu vytvořit připojení, restartujte uzly Zookeeper a restartujte HiveServer2.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

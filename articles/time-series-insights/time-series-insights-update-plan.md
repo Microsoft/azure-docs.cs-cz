@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc4336629a4c3b9da906daefca160c5a305603dc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f5a12ca2bdccee1d2f738aa3c810577caf3d8eac
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990849"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491969"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí pro Azure Time Series Insights Preview
 
@@ -43,7 +43,7 @@ Když zřizujete prostředí Time Series Insights Preview, vytvoříte dva prost
 * Prostředí Azure Time Series Insights Preview
 * Účet Azure Storage pro obecné účely v1
 
-V rámci procesu zřizování určíte, jestli chcete povolit teplé úložiště. Úložiště pro poskytování vrstvených dotazů vám poskytuje vícevrstvé možnosti. Pokud je povoleno, je nutné zadat dobu uchování mezi 7 a 30 dny. Dotazy spouštěné v období uchovávání teplého úložiště obecně poskytují rychlejší odezvy. Když dotaz pokrývá dobu uchovávání teplého úložiště, je obsluhován z chladírenského úložiště.
+V rámci procesu zřizování určíte, jestli chcete povolit teplé úložiště. Úložiště pro poskytování vrstvených dotazů vám poskytuje vícevrstvé možnosti. Pokud je povoleno, je nutné zadat dobu uchování mezi 7 a 30 dny. Dotazy spouštěné v období uchovávání teplého úložiště obecně poskytují rychlejší odezvy. Když dotaz pokrývá dobu uchovávání teplého úložiště, je obsluhován z chladírenského skladu.
 
 Dotazy na teplém úložišti jsou bezplatné, zatímco dotazy na chladírenský sklad účtují náklady. Je důležité porozumět vašim vzorům dotazů a odpovídajícím způsobem naplánovat konfiguraci pro svůj záložní obchod. Doporučujeme, aby se interaktivní analýzy na nejaktuálnějších datech nacházely v provozním úložišti a analýze vzorků a dlouhodobé trendy se nachází v chladu.
 

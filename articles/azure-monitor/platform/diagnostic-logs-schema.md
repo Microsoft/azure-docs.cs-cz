@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: 0031a0c96ecadbb3c7d3a479384bee92ba4d102c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 09d1a25b83f405b45bbefd39766c82565ea86925
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161982"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476674"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Podporované služby, schémata a kategorie pro protokoly prostředků Azure
 
@@ -59,6 +59,7 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na katego
 | Azure Database for PostgreSQL | [Protokoly Azure Database for PostgreSQL](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Průzkumník dat Azure | [Protokoly Průzkumník dat Azure](../../data-explorer/using-diagnostic-logs.md) |
 | Cognitive Services | [Protokolování pro Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
+| Container Registry | [Protokolování pro Azure Container Registry](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [Protokoly Azure pro CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Protokolování Azure Cosmos DB](../../cosmos-db/logging.md) |
 | Data Factory | [Monitorování datových továren pomocí Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
@@ -114,8 +115,8 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na katego
 |Microsoft. ClassicNetwork/networksecuritygroups|Událost toku pravidla skupiny zabezpečení sítě|Událost toku pravidla skupiny zabezpečení sítě|
 |Microsoft. Cognitiveservices Account/účty|Auditování|Protokoly auditování|
 |Microsoft. Cognitiveservices Account/účty|Operace RequestResponse|Protokoly žádostí a odpovědí|
-|Microsoft. ContainerRegistry/Registry|ContainerRegistryRepositoryEvents|Protokoly RepositoryEvent|
-|Microsoft. ContainerRegistry/Registry|ContainerRegistryLoginEvents|Události přihlášení|
+|Microsoft. ContainerRegistry/Registry|ContainerRegistryRepositoryEvents|Protokoly RepositoryEvent (Preview)|
+|Microsoft. ContainerRegistry/Registry|ContainerRegistryLoginEvents|Události přihlášení (Preview)|
 |Microsoft. ContainerService/managedClusters|kube-apiserver|Server Kubernetes API|
 |Microsoft. ContainerService/managedClusters|Kube-Controller-Manager|Správce kontroleru Kubernetes|
 |Microsoft. ContainerService/managedClusters|Kube – Scheduler|Plánovač Kubernetes|

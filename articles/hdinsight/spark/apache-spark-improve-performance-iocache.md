@@ -1,5 +1,5 @@
 ---
-title: Apache Spark výkon úloh s využitím Azure HDInsight v/v cache (Preview)
+title: Apache Spark výkon – Azure HDInsight v/v cache (Preview)
 description: Přečtěte si o službě Azure HDInsight v/v cache a o tom, jak je používat ke zvýšení výkonu Apache Spark.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: b60906df01f640877e90281812acf64082ffad01
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162832"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494656"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Zvýšení výkonu Apache Spark úloh pomocí Azure HDInsight v/v cache
 

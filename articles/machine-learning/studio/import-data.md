@@ -1,7 +1,7 @@
 ---
-title: Umožňuje importovat data z různých zdrojů dat
-titleSuffix: Azure Machine Learning Studio
-description: Jak importovat data do Azure Machine Learning Studio z různých zdrojů dat. Zjistěte, jaké datové typy a formáty dat jsou podporovány.
+title: Importovat data z různých zdrojů dat
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Jak importovat data do Azure Machine Learning Studio (Classic) z různých zdrojů dat. Zjistěte, jaké datové typy a datové formáty jsou podporovány.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,77 +10,77 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 41cc1d6638871f26ae942e724a402e17f52150fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e84f5c8cab6323234b81126ad3e8b1299e10171
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811058"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492891"
 ---
-# <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Import cvičných dat do nástroje Azure Machine Learning Studio z různých zdrojů dat
+# <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Import školicích dat do Azure Machine Learning Studio (Classic) z různých zdrojů dat
 
-Chcete-li použít vlastní data ve službě Machine Learning Studio k vývoji a trénování řešení prediktivní analýzy, můžete použít data z: 
+Pokud chcete používat vlastní data v Machine Learning Studio (Classic) k vývoji a výukovém řešení prediktivní analýzy, můžete použít data z: 
 
-* **Místní soubor** – místní data předem načíst z vašeho pevného disku, jak vytvořit modul datovou sadu v pracovním prostoru
-* **Online zdroje dat** – použití [Import dat] [ import-data] modulu pro přístup k datům z jednoho z několika zdrojů online při spuštění experimentu
-* **Machine Learning Studio experiment** – používají data, která byla uložena jako datové sady v nástroji Machine Learning Studio
-* [**Databáze systému SQL Server v místním** ](use-data-from-an-on-premises-sql-server.md) – aniž byste museli ručně zkopírujte data použít data z místní databáze systému SQL Server
+* **Místní** načtení místních dat souborů z pevného disku na pevný disk pro vytvoření modulu DataSet v pracovním prostoru
+* **Online zdroje dat** – použijte modul [importu dat][import-data] pro přístup k datům z jednoho z několika online zdrojů, zatímco je váš experiment spuštěný.
+* **Experiment Machine Learning Studio (klasický)** – použití dat uložených jako datová sada v klasické verzi Machine Learning Studio
+* [**Místní SQL Server databáze**](use-data-from-an-on-premises-sql-server.md) – použití dat z místní databáze SQL Server bez nutnosti ručního kopírování dat
 
 > [!NOTE]
-> Existuje několik ukázkových datových sad v nástroji Machine Learning Studio, můžete použít pro trénovací data k dispozici. Informace naleznete v tématu [použití ukázkových datových sad v nástroji Azure Machine Learning Studio](use-sample-datasets.md).
+> V klasické verzi Machine Learning Studio je k dispozici několik ukázkových datových sad, které můžete použít pro školení dat. Další informace najdete v tématu [použití ukázkových datových sad v Azure Machine Learning Studio (Classic)](use-sample-datasets.md).
 
 ## <a name="prepare-data"></a>Příprava dat
 
-Machine Learning Studio je navržena pro práci s obdélníkové nebo tabulkových dat, jako jsou textová data, která má s oddělovači nebo strukturovaná data z databáze, i když se v některých případech může použít neobdélníkových data.
+Klasická verze Machine Learning Studio je navržená tak, aby fungovala s pravoúhlými nebo tabelárními daty, jako jsou textová data, která jsou oddělená nebo strukturovaná data z databáze, i když v některých případech mohou být použita neobdélníková data.
 
-Je vhodné, pokud vaše data jsou relativně vyčištění před importem do sady Studio. Například budete chtít postará o problémy, jako jsou třeba řetězce bez uvozovek.
+Je nejvhodnější, pokud jsou data relativně čistá, než je naimportujete do klasické verze studia. Například budete chtít pořídit problémy, jako jsou například řetězce v uvozovkách.
 
-Však nejsou k dispozici v sadě Studio a po import dat povolit některé manipulaci s daty v rámci experimentu moduly. V závislosti na algoritmech strojového učení, které budete používat, musíte se rozhodnout, jak budete zpracovávat data strukturální problémy, jako je například chybějící hodnoty a řídkých datových a moduly, které vám ho mohl pomoct, které jsou. Podívejte se **transformace dat** části palety modulů pro moduly, které provádějí tyto funkce.
+V klasické verzi studia jsou ale dostupné moduly, které umožňují určitou manipulaci s daty v experimentu po importu dat. V závislosti na algoritmech strojového učení, které budete používat, se možná budete muset rozhodnout, jak budete zpracovávat problémy se strukturou dat, jako jsou chybějící hodnoty a zhuštěná data, a moduly, které s ní můžou pomoci. Prohlédněte si část **transformace dat** v paletě modulu pro moduly, které provádějí tyto funkce.
 
-Kdykoli v experimentu můžete zobrazit nebo stáhnout data, který je vytvořen po kliknutí na výstupní port modulu. V závislosti na modulu můžou existovat jiné stahování možnosti k dispozici nebo je možné vizualizovat data ve vašem prohlížeči ve studiu.
+V jakémkoli okamžiku experimentu můžete zobrazit nebo stáhnout data vytvořená modulem kliknutím na výstupní port. V závislosti na modulu mohou být k dispozici různé možnosti stažení, případně můžete vizualizovat data ve webovém prohlížeči v klasické verzi studia.
 
-## <a name="supported-data-formats-and-data-types"></a>Datové typy a formáty dat podporovaných
+## <a name="supported-data-formats-and-data-types"></a>Podporované formáty dat a datové typy
 
-Počet typů dat můžete importovat do experimentu, v závislosti na tom, jaký mechanismus použijete k importu dat a odkud pocházejí od:
+Do experimentu můžete importovat několik datových typů, v závislosti na tom, jaký mechanismus používáte k importu dat a odkud pochází:
 
-* Prostý text (TXT)
-* Hodnot oddělených čárkami (CSV) s hlavičkou (CSV) nebo bez něj (. nh.csv)
-* Hodnoty oddělené tabulátorem (TSV) s hlavičkou (TSV) nebo bez něj (. nh.tsv)
+* Prostý text (. txt)
+* Hodnoty oddělené čárkami (CSV) s hlavičkou (. csv) nebo bez (. NH. csv)
+* Hodnoty oddělené tabulátory (TSV) s hlavičkou (. TSV) nebo bez (. NH. TSV)
 * Excelový soubor
 * Tabulka Azure
-* Tabulka Hive
-* Tabulka databází SQL
+* Tabulka podregistru
+* Tabulka SQL Database
 * Hodnoty OData
-* SVMLight data (.svmlight) (viz [SVMLight definice](http://svmlight.joachims.org/) pro informace o formátu)
-* Atribut formátu arff (Relation File Format) data (.arff) (viz [ARFF definice](https://weka.wikispaces.com/ARFF) pro informace o formátu)
-* Soubor ZIP (.zip)
-* Soubor objektu nebo pracovního prostoru R (. RData)
+* Data SVMLight (. SVMLight) (viz [definice SVMLight](http://svmlight.joachims.org/) pro informace o formátu)
+* Data formátu souboru relací atributů (ARFF) (. arff) (viz [definice arff](https://weka.wikispaces.com/ARFF) pro informace o formátu)
+* Soubor zip (. zip)
+* Objekt R nebo soubor pracovního prostoru (. RData
 
-Pokud importujete data ve formátu například ARFF, který zahrnuje jejich metadata, používá Studio tato metadata k definování záhlaví a datový typ jednotlivých sloupců.
+Pokud importujete data ve formátu, jako je například ARFF, který obsahuje metadata, používá klasická verze nástroje Studio tato metadata k definování nadpisu a datového typu každého sloupce.
 
-Pokud importujete data, jako je formát TSV nebo sdíleného svazku clusteru, který nezahrnuje tato metadata, Studio odvodí typ dat pro každý sloupec vzorkováním data. Pokud data také nemá záhlaví sloupců, Studio poskytuje výchozí názvy.
+Pokud importujete data, jako je například TSV nebo CSV, který tato metadata neobsahuje, aplikace klasické verze aplikace Studio odvodí datový typ pro každý sloupec vzorkováním dat. Pokud data také nemají záhlaví sloupců, nabízí klasická verze studia výchozí názvy.
 
-Můžete explicitně zadat nebo změnit hlavičky a datové typy sloupců pomocí [upravit Metadata] [ edit-metadata] modulu.
+Můžete explicitně zadat nebo změnit záhlaví a datové typy pro sloupce pomocí modulu [Upravit metadata][edit-metadata] .
 
-Následující datové typy jsou rozpoznávány Studio:
+Klasické verze studia rozpoznávají následující typy dat:
 
-* String
+* Řetězec
 * Integer
-* Double
-* Boolean
-* DateTime
+* Klepat
+* Logická hodnota
+* Datum a čas
 * TimeSpan
 
-Studio používá interní data typ, který volá ***tabulka dat*** k předávání dat mezi moduly. Data můžete explicitně převést do formátu tabulky data s využitím [převod na datové sadě] [ convert-to-dataset] modulu.
+Studio používá k předávání dat mezi moduly interní datový typ nazvaný ***Tabulka dat*** . Data můžete explicitně převést do formátu tabulky dat pomocí modulu [převést na datovou sadu][convert-to-dataset] .
 
-Libovolného modulu, který přijímají se formáty než tabulka dat bez upozornění převede dat do tabulky před předáním k dalšímu modulu.
+Libovolný modul, který přijímá jiné formáty než tabulka dat, převede data do tabulky dat před jejich předáním dalšímu modulu.
 
-V případě potřeby můžete převést formát tabulky dat zpět do CSV, TSV, ARFF nebo SVMLight formátu a používat ostatní moduly převodu.
-Podívejte se **převody formátů dat** části palety modulů pro moduly, které provádějí tyto funkce.
+V případě potřeby můžete formát tabulky dat převést zpátky do formátu CSV, TSV, ARFF nebo SVMLight pomocí jiných modulů převodu.
+Podívejte se na část s **převody formátů dat** v paletě modulu pro moduly, které tyto funkce provádějí.
 
-## <a name="data-capacities"></a>Datové kapacity.
+## <a name="data-capacities"></a>Datové kapacity
 
-Moduly v nástroji Machine Learning Studio podporují datové sady, které obsahují až 10 GB hustých číselných dat pro běžné případy použití. Pokud modul přijímá víc než jeden vstup, celková velikost všech vstupních velikostí je 10 GB. Větší datové sady můžete vzorkovat pomocí dotazů Hive nebo Azure SQL Database, nebo můžete použít učení dle počtů předzpracování předtím, než importujete data.  
+Moduly v klasické verzi Machine Learning Studio podporují datové sady až 10 GB hustých číselných dat pro běžné případy použití. Pokud modul přijímá víc než jeden vstup, celková velikost všech vstupních velikostí je 10 GB. Můžete vzorkovat větší datové sady pomocí dotazů z podregistru nebo Azure SQL Database, nebo můžete použít učení podle počtu předzpracování před importem dat.  
 
 Během normalizace funkcí je možné následující typy dat rozšířit do větších datových sad. Tyto typy jsou omezené na méně než 10 GB:
 
@@ -97,89 +97,89 @@ Následující moduly jsou omezené na datové sady menší než 10 GB:
 * Moduly, kde velikost výstupních dat může být větší než velikost vstupních dat, třeba Join nebo Feature Hashing
 * Pro velmi velký počet iterací Cross-validation, Tune Model Hyperparameters, Ordinal Regression a One-vs-All Multiclass
 
-U datových sad, které jsou větší než několik GB nahrajte data do služby Azure Storage nebo Azure SQL Database nebo pomocí Azure HDInsight, nikoli nahrávat přímo z místního souboru.
+U datových sad, které jsou větší než několik GB, nahrajte data Azure Storage nebo Azure SQL Database nebo použijte Azure HDInsight místo nahrávání přímo z místního souboru.
 
-Může najít informace o dat obrázků [Import obrázků](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes) odkazu na modul.
+Informace o datech imagí najdete v referenčních informacích k modulu [Import imagí](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes) .
 
-## <a name="import-from-a-local-file"></a>Import z místního souboru
+## <a name="import-from-a-local-file"></a>Importovat z místního souboru
 
-Můžete nahrát soubor dat z vašeho pevného disku, který se použije jako trénovací data v sadě Studio. Pokud importujete soubor sady dat, vytvoříte datovou sadu modul připravené k použití v experimentech ve vašem pracovním prostoru.
+Můžete nahrát datový soubor z pevného disku, který se použije jako školicí data v klasické verzi studia. Když importujete datový soubor, vytvoříte modul DataSet připravený pro použití ve experimentech ve vašem pracovním prostoru.
 
-Import dat z místního pevného disku, postupujte takto:
+Pokud chcete importovat data z místního pevného disku, udělejte toto:
 
-1. Klikněte na tlačítko **+ nová** v dolní části okna nástroje Studio.
+1. Klikněte na **+ Nový** ve spodní části okna Studio (Classic).
 2. Vyberte **datovou sadu** a **z místního souboru**.
-3. V **nahrát novou datovou sadu** dialogové okno, přejděte na soubor, který chcete nahrát.
-4. Zadejte název, identifikace typu dat a volitelně zadejte popis. Popis se doporučuje – umožňuje zaznamenat všechny charakteristiky data, která chcete mějte na paměti při používání dat v budoucnu.
-5. Zaškrtávací políčko **jde o novou verzi existující datovou sadu** umožňuje aktualizovat existující datovou sadu s novými daty. Uděláte to tak, klikněte na toto zaškrtávací políčko a potom zadejte název existující datovou sadu.
+3. V dialogovém okně **nahrát novou datovou sadu** vyhledejte soubor, který chcete nahrát.
+4. Zadejte název, identifikujte datový typ a volitelně zadejte popis. Doporučuje se popis – umožňuje zaznamenat jakékoli charakteristiky dat, která chcete pamatovat při používání dat v budoucnu.
+5. Zaškrtávací políčko **Toto je nová verze existující datové sady** , umožňuje aktualizovat existující datovou sadu s novými daty. Uděláte to tak, že kliknete na toto políčko a pak zadáte název existující datové sady.
 
 ![Nahrát novou datovou sadu](./media/import-data/upload-dataset-from-local-file.png)
 
-Nahrát doba závisí na velikosti dat a rychlosti vašeho připojení ke službě. Pokud víte, že soubor bude trvat dlouhou dobu, vám pomůžou jiné práce se sadou Studio, zatímco čekáte. Ale zavření prohlížeče před dokončením odesílání dat způsobí, že se nezdaří.
+Doba nahrávání závisí na velikosti vašich dat a rychlosti připojení ke službě. Pokud víte, že soubor bude trvat dlouhou dobu, můžete v klasické verzi studia dělat jiné věci, než budete čekat. Zavřením prohlížeče před dokončením nahrávání dat ale dojde k selhání nahrávání.
 
-Po nahrání dat je uložený v modulu datová sada a je k dispozici žádné experimentu do pracovního prostoru.
+Po nahrání dat je uložená v modulu DataSet a je dostupná pro libovolný experiment v pracovním prostoru.
 
-Při úpravách experimentu si můžete datové sady, když jste odeslali v **Moje datové sady** seznamu v části **uložení datové sady** seznamu paletě modulů. Můžete přetáhnout a vyřadit datovou sadu na plátno experimentu. Pokud chcete používat datovou sadu pro další analýzy s využitím a strojové učení.
+Když upravujete experiment, můžete najít datové sady, které jste nahráli v seznamu **Moje datové sady** v seznamu **uložené datové sady** v paletě modulu. Datovou sadu můžete přetáhnout na plátno experimentu, když chcete datovou sadu použít pro další analýzy a strojové učení.
 
-## <a name="import-from-online-data-sources"></a>Importovat z online zdrojů dat
+## <a name="import-from-online-data-sources"></a>Import z online zdrojů dat
 
-Použití [importovat Data] [ import-data] modulu, experimentu můžete importovat data z různých online zdrojů dat při spuštění testu.
+Pomocí modulu [Import dat][import-data] může experiment importovat data z různých online zdrojů dat, zatímco experiment běží.
 
 > [!NOTE]
-> Tento článek obsahuje obecné informace o [Import dat] [ import-data] modulu. Podrobné informace o typech dat můžete přistupovat, formátů, parametry a odpovědi na běžné dotazy, naleznete v tématu referenční modulu pro [Import dat] [ import-data] modulu.
+> Tento článek poskytuje obecné informace o modulu [Import dat][import-data] . Podrobnější informace o typech dat, ke kterým můžete získat přístup, formáty, parametry a odpovědi na běžné otázky, najdete v tématu Referenční příručka k modulu [Import dat][import-data] .
 
-S použitím [Import dat] [ import-data] modul, můžete přístup k datům z jednoho z několika zdrojů dat online při spuštění experimentu:
+Pomocí modulu [Import dat][import-data] můžete získat přístup k datům z jednoho z několika online zdrojů dat, když je spuštěný experiment:
 
-* Adresu URL webu pomocí protokolu HTTP
+* Adresa URL webu pomocí protokolu HTTP
 * Hadoop pomocí HiveQL
-* Úložiště blobů v Azure
+* Azure Blob Storage
 * Tabulka Azure
-* Azure SQL database nebo SQL Server na virtuálním počítači Azure
-* Místní databáze SQL serveru
-* Datový kanál zprostředkovatele, aktuálně OData
+* Azure SQL Database nebo SQL Server na virtuálním počítači Azure
+* Místní databáze SQL Server
+* Zprostředkovatel datového kanálu, OData aktuálně
 * Azure Cosmos DB
 
-Protože tato data školení je přístup při spuštění experimentu, je dostupná jenom v testu. Naproti tomu data, která byla uložena v datové sadě modulu je k dispozici žádné experimentu do pracovního prostoru.
+Vzhledem k tomu, že tato školicí data jsou k dispozici v době, kdy experiment běží, je k dispozici pouze v tomto experimentu. Porovnáním jsou data uložená v modulu DataSet dostupná pro libovolný experiment v pracovním prostoru.
 
-Chcete-li získat přístup k online zdroje dat v experimentu Studio, přidejte [Import dat] [ import-data] modulu do experimentu. Potom vyberte **spusťte Průvodce importem dat** pod **vlastnosti** podrobné pokyny s průvodcem konfigurace zdroje dat a vyberte. Alternativně můžete ručně vybrat **zdroj dat** pod **vlastnosti** a zadejte parametry potřebné pro přístup k datům.
+Pokud chcete získat přístup k online zdrojům dat v experimentu studia (Classic), přidejte do experimentu modul [Import dat][import-data] . Pak vyberte **Spustit Průvodce importem dat** v části **vlastnosti** pro podrobné pokyny pro výběr a konfiguraci zdroje dat. Alternativně můžete ručně vybrat **zdroj dat** v části **vlastnosti** a zadat parametry potřebné pro přístup k datům.
 
-V následující tabulce je uvedeno online zdroje dat, které jsou podporovány. Tato tabulka shrnuje také formátů souborů, které jsou podporovány a parametry, které se používají pro přístup k datům.
+Online zdroje dat, které jsou podporovány, jsou vypsány v následující tabulce. Tato tabulka také shrnuje podporované formáty souborů a parametry, které se používají pro přístup k datům.
 
 > [!IMPORTANT]
-> V současné době [Import dat] [ import-data] a [exportovat Data] [ export-data] může číst a zapisovat data pouze z úložiště Azure, které jsou vytvořeny pomocí klasického moduly model nasazení. Jinými slovy nový typ účtu úložiště objektů Blob v Azure, která nabízí úroveň přístupu horkého úložiště nebo studené úrovni přístupu úložiště zatím nepodporuje.
+> Datové moduly [importu dat][import-data] a [exportu][export-data] v současné době mohou číst a zapisovat data pouze z úložiště Azure vytvořeného pomocí modelu nasazení Classic. Jinými slovy, nový typ účtu Azure Blob Storage, který nabízí úroveň přístupu horkého úložiště nebo úroveň přístupu studeného úložiště, zatím není podporován.
 >
-> Obecně platí, žádné účty úložiště Azure může mít vytvořené předtím, než tuto možnost služby jsou dostupné by neměly být ovlivněny.
-> Pokud je potřeba vytvořit nový účet, vyberte **Classic** pro nasazení modelu, nebo použijte Resource manager a vyberte **Obecné** spíše než **úložiště objektů Blob** pro  **Druh účtu**.
+> Obecně platí, že žádné účty úložiště Azure, které jste mohli vytvořit předtím, než tato možnost služby nastaly, by neměly být ovlivněny.
+> Pokud potřebujete vytvořit nový účet, vyberte pro model nasazení možnost **klasický** , nebo použijte Správce prostředků a pro **druh účtu**vyberte **obecný účel** místo **BLOB Storage** .
 >
-> Další informace najdete v tématu [Azure Blob Storage: Horká a studená úroveň úložiště](../../storage/blobs/storage-blob-storage-tiers.md).
+> Další informace najdete v tématu [Azure Blob Storage: horká a studená vrstva úložiště](../../storage/blobs/storage-blob-storage-tiers.md).
 
-### <a name="supported-online-data-sources"></a>Podporované zdroje dat online
-Azure Machine Learning Studio **Import dat** modul podporuje následující zdroje dat:
+### <a name="supported-online-data-sources"></a>Podporované online zdroje dat
+Klasická verze modulu Azure Machine Learning Studio **Import dat** podporuje následující zdroje dat:
 
 | Zdroj dat | Popis | Parametry |
 | --- | --- | --- |
-| Adresa URL webu přes protokol HTTP |Čte data v hodnot oddělených čárkami (CSV), hodnoty oddělené tabulátorem (TSV), atribut vztah formátu arff (Format) a formáty Support Vector počítače (SVM light) z jakékoli webové adresy URL, která používá protokol HTTP |<b>ADRESA URL</b>: Určuje úplný název souboru, včetně adresy URL webu a název souboru s jakoukoli příponou. <br/><br/><b>Formát dat</b>: Určuje jeden z podporovaných datových formátů: CSV, TSV, ARFF nebo SVM-light. Pokud data obsahují řádek záhlaví, používá se k přiřazení názvy sloupců. |
-| Hadoop/HDFS |Čte data z distribuovaného úložiště v systému Hadoop. Určíte data, která chcete, aby pomocí HiveQL SQL jako dotazovací jazyk. HiveQL slouží také k agregovat data a provádět filtrování předtím, než přidáte data k sadě Studio dat. |<b>Databázový dotaz Hive</b>: Určuje dotaz Hive sloužící ke generování data.<br/><br/><b>Identifikátor URI serveru HCatalog </b> : Zadaný název vašeho clusteru ve formátu  *&lt;název clusteru&gt;. azurehdinsight.net.*<br/><br/><b>Název uživatelského účtu systému Hadoop</b>: Určuje název uživatelského účtu systému Hadoop, slouží ke zřizování clusteru.<br/><br/><b>Heslo uživatelského účtu systému Hadoop</b> : Určuje přihlašovací údaje použité při zřizování clusteru. Další informace najdete v tématu [vytváření clusterů Hadoop v HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Umístění výstupních dat</b>: Určuje, zda jsou data uložená v Hadoop distributed file system (HDFS) nebo v Azure. <br/><ul>Pokud uchováváte výstupní data v HDFS, zadejte identifikátor URI serveru HDFS. (Nezapomeňte použít název clusteru HDInsight bez předpony HTTPS://). <br/><br/>Pokud ukládáte výstupní data v Azure, musíte zadat název účtu služby Azure storage, úložiště přístupový klíč a název kontejneru úložiště.</ul> |
-| Databáze SQL |Přečte data, která je uložená ve službě Azure SQL database nebo databáze systému SQL Server běžící na virtuálním počítači Azure. |<b>Název databázového serveru</b>: Určuje název serveru, na kterém běží databáze.<br/><ul>V případě Azure SQL Database zadejte název serveru, který je generován. Obvykle má formát  *&lt;generated_identifier&gt;. database.windows.net.* <br/><br/>V případě SQL serveru hostované na Azure Virtual machine zadejte *tcp:&lt;název DNS virtuálního počítače&gt;, 1433*</ul><br/><b>Název databáze </b>: Určuje název databáze na serveru. <br/><br/><b>Název uživatelského účtu serveru</b>: Určuje uživatelské jméno pro účet, který má oprávnění k přístupu k databázi. <br/><br/><b>Heslo uživatelského účtu serveru</b>: Určuje heslo pro uživatelský účet.<br/><br/><b>Databázový dotaz</b>: Zadejte příkaz SQL, který popisuje data chcete číst. |
-| Místní databáze SQL |Přečte data, která je uložená do místní databáze SQL. |<b>Brána data gateway</b>: Určuje název brána správy dat nainstalovaná na počítači, kde má přístup k vaší databázi SQL serveru. Informace o nastavení brány najdete v tématu [provádět pokročilé analýzy s Azure Machine Learning Studio pomocí dat z SQL serveru v místním](use-data-from-an-on-premises-sql-server.md).<br/><br/><b>Název databázového serveru</b>: Určuje název serveru, na kterém běží databáze.<br/><br/><b>Název databáze </b>: Určuje název databáze na serveru. <br/><br/><b>Název uživatelského účtu serveru</b>: Určuje uživatelské jméno pro účet, který má oprávnění k přístupu k databázi. <br/><br/><b>Uživatelské jméno a heslo</b>: Klikněte na tlačítko <b>zadejte hodnoty</b> zadávat přihlašovací údaje databáze. Můžete použít integrované ověřování Windows nebo ověřování systému SQL Server v závislosti na konfiguraci vaší místní SQL Server.<br/><br/><b>Databázový dotaz</b>: Zadejte příkaz SQL, který popisuje data chcete číst. |
-| Tabulka Azure |Přečte data ze služby Table service ve službě Azure Storage.<br/><br/>Pokud načtete velké množství dat jen zřídka, použijte službu Azure Table Service. Nabízí flexibilní, nerelačních (NoSQL), řešení masivně škálovatelné, cenově dostupné a vysoce dostupné úložiště. |Možnosti **Import dat** měnit v závislosti na tom, zda přistupujete informací veřejného nebo privátního úložiště účtu, který vyžaduje přihlašovací údaje. Toto je určeno <b>typ ověřování</b> která může mít hodnotu "PublicOrSAS" nebo "Account", z nichž každá má svou vlastní sadu parametrů. <br/><br/><b>Veřejný nebo sdílený přístupový podpis (SAS) URI</b>: Parametry jsou:<br/><br/><ul><b>Tabulka URI</b>: Určuje Public nebo adresa URL SAS pro tabulku.<br/><br/><b>Určuje řádků, které chcete vyhledat názvy vlastností</b>: Hodnoty jsou <i>prvních n hodnot</i> kontrolovat zadaný počet řádků, nebo <i>ScanAll</i> zobrazíte všechny řádky v tabulce. <br/><br/>Pokud jsou data homogenní a předvídatelné, doporučuje se, že vyberete *prvních n hodnot* a zadejte číslo pro N. Pro velké tabulky to může způsobit rychlejší časy čtení.<br/><br/>Pokud se nastaví vlastnosti, které se liší v závislosti na hloubka a pozice tabulce strukturovaná data, zvolte *ScanAll* možnosti prohledávání všech řádků. Tím zajistíte integritu výsledný vlastností a metadat převodu.<br/><br/></ul><b>Účet úložiště privátního</b>: Parametry jsou: <br/><br/><ul><b>Název účtu</b>: Určuje název účtu, který obsahuje tabulku ke čtení.<br/><br/><b>Klíč účtu</b>: Určuje klíč úložiště přidruženého k účtu.<br/><br/><b>Název tabulky</b> : Určuje název tabulky, která obsahuje data ke čtení.<br/><br/><b>Řádky, které chcete vyhledat názvy vlastností</b>: Hodnoty jsou <i>prvních n hodnot</i> kontrolovat zadaný počet řádků, nebo <i>ScanAll</i> zobrazíte všechny řádky v tabulce.<br/><br/>Pokud jsou data homogenní a předvídatelné, doporučujeme vám, že vyberete *prvních n hodnot* a zadejte číslo pro N. Pro velké tabulky to může způsobit rychlejší časy čtení.<br/><br/>Pokud se nastaví vlastnosti, které se liší v závislosti na hloubka a pozice tabulce strukturovaná data, zvolte *ScanAll* možnosti prohledávání všech řádků. Tím zajistíte integritu výsledný vlastností a metadat převodu.<br/><br/> |
-| Azure Blob Storage |Přečte data uložená ve službě Blob service ve službě Azure Storage, včetně obrázků, ukládání nestrukturovaných textových nebo binárních dat.<br/><br/>Služba objektů Blob můžete použít veřejně zpřístupnit data, nebo k soukromému ukládání dat aplikací. Můžete přistupovat k datům z libovolného místa s využitím připojení protokolu HTTP nebo HTTPS. |Možnosti **Import dat** modulu změnit v závislosti na tom, zda přistupujete informací veřejného nebo privátního úložiště účtu, který vyžaduje přihlašovací údaje. Toto je určeno <b>typ ověřování</b> která může mít hodnotu "PublicOrSAS" nebo "Účet".<br/><br/><b>Veřejný nebo sdílený přístupový podpis (SAS) URI</b>: Parametry jsou:<br/><br/><ul><b>IDENTIFIKÁTOR URI</b>: Určuje Public nebo adresa URL SAS pro objekt blob úložiště.<br/><br/><b>Formát souborů</b>: Určuje formát dat ve službě Blob service. Podporované formáty jsou CSV, TSV a ARFF.<br/><br/></ul><b>Účet úložiště privátního</b>: Parametry jsou: <br/><br/><ul><b>Název účtu</b>: Určuje název účtu, který obsahuje objekt blob, který chcete číst.<br/><br/><b>Klíč účtu</b>: Určuje klíč úložiště přidruženého k účtu.<br/><br/><b>Cesta ke kontejneru, adresáře nebo objekt blob </b> : Určuje název objektu blob, který obsahuje data ke čtení.<br/><br/><b>Formát souboru objektu BLOB</b>: Určuje formát dat ve službě blob service. Formáty dat podporovaných jsou uvedené kódování a Excel CSV, TSV, ARFF, sdíleného svazku clusteru. <br/><br/><ul>Pokud je ve formátu CSV nebo TSV, ujistěte se, k označení, zda soubor obsahuje řádek záhlaví.<br/><br/>Možnost aplikace Excel můžete použít ke čtení dat z Excelových sešitů. V <i>formát dat aplikace Excel</i> možnost určete, zda jsou data uložena v oblasti listu aplikace Excel nebo v Excelové tabulce. V <i>listu aplikace Excel nebo vložené tabulky </i>určete název listu nebo tabulky, který chcete číst z.</ul><br/> |
-| Zprostředkovatel datových kanálů |Čte data z podporovaného poskytovatele informačního kanálu. Aktuálně se podporuje jenom formátu Open Data Protocol (OData). |<b>Datový typ obsahu, který</b>: Určuje formát protokolu OData.<br/><br/><b>Adresa URL zdroje</b>: Určuje úplnou adresu URL datového kanálu. <br/>Například na následující adrese URL čte z ukázkové databáze Northwind: https://services.odata.org/northwind/northwind.svc/ |
+| Webová adresa URL přes HTTP |Čte data v hodnotách oddělených čárkami (CSV), hodnot oddělených tabulátory (TSV), formát souboru relací atributů (ARFF) a podporují formáty vektorových počítačů (SVM-Light) z libovolné webové adresy URL, která používá protokol HTTP. |<b>Adresa URL</b>: Určuje úplný název souboru včetně adresy URL webu a názvu souboru s libovolným rozšířením. <br/><br/><b>Formát dat</b>: Určuje jeden z podporovaných formátů dat: CSV, TSV, arff nebo SVM-Light. Pokud data obsahují řádek záhlaví, slouží k přiřazení názvů sloupců. |
+| Hadoop/HDFS |Načte data z distribuovaného úložiště v Hadoop. Požadovaná data určíte pomocí HiveQL dotazovacího jazyka, který se podobá jazyku SQL. HiveQL se dá také použít k agregaci dat a filtrování dat před tím, než data přidáte do klasické verze studia. |<b>Dotaz na databázi podregistru</b>: určuje dotaz na podregistr použitý k vygenerování dat.<br/><br/><b>HCatalog serveru \ identifikátor URI</b> : zadaný název clusteru ve formátu *&lt;název clusteru&gt;. azurehdinsight.NET.*<br/><br/><b>Název uživatelského účtu Hadoop</b>: Určuje název uživatelského účtu Hadoop, který se používá k zřízení clusteru.<br/><br/><b>Heslo uživatelského účtu Hadoop</b> : Určuje přihlašovací údaje, které se použijí při zřizování clusteru. Další informace najdete v tématu [vytváření clusterů Hadoop ve službě HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Umístění výstupních dat</b>: Určuje, jestli jsou data uložená v systému Hadoop Distributed File System (HDFS) nebo v Azure. <br/><ul>Pokud ukládáte výstupní data do HDFS, zadejte identifikátor URI serveru HDFS. (Nezapomeňte použít název clusteru HDInsight bez předpony HTTPS://). <br/><br/>Pokud ukládáte výstupní data do Azure, musíte zadat název účtu úložiště Azure, přístupový klíč úložiště a název kontejneru úložiště.</ul> |
+| Databáze SQL |Čte data uložená v databázi SQL Azure nebo v SQL Server databázi běžící na virtuálním počítači Azure. |<b>Název databázového serveru</b>: Určuje název serveru, na kterém je databáze spuštěná.<br/><ul>V případě Azure SQL Database zadejte název serveru, který se vygeneruje. Má obvykle tvar *&lt;generated_identifier&gt;. Database.Windows.NET.* <br/><br/>V případě SQL serveru hostovaného na virtuálním počítači Azure zadejte *TCP:&lt;název DNS virtuálního počítače&gt;, 1433*</ul><br/><b>Název databáze </b>: Určuje název databáze na serveru. <br/><br/><b>Název uživatelského účtu serveru</b>: Určuje uživatelské jméno pro účet, který má oprávnění pro přístup k databázi. <br/><br/><b>Heslo k uživatelskému účtu serveru</b>: Určuje heslo pro uživatelský účet.<br/><br/><b>Databázový dotaz</b>: zadejte příkaz SQL, který popisuje data, která chcete číst. |
+| Místní databáze SQL |Načte data, která jsou uložená v místní databázi SQL. |<b>Brána dat</b>: určuje název Správa dat brány nainstalované v počítači, kde má přístup k databázi SQL Server. Informace o nastavení brány najdete v tématu [provádění pokročilých analýz pomocí klasické verze Azure Machine Learning Studio s využitím dat z místního SQL serveru](use-data-from-an-on-premises-sql-server.md).<br/><br/><b>Název databázového serveru</b>: Určuje název serveru, na kterém je databáze spuštěná.<br/><br/><b>Název databáze </b>: Určuje název databáze na serveru. <br/><br/><b>Název uživatelského účtu serveru</b>: Určuje uživatelské jméno pro účet, který má oprávnění pro přístup k databázi. <br/><br/><b>Uživatelské jméno a heslo</b>: kliknutím na <b>zadat hodnoty</b> zadejte svoje přihlašovací údaje do databáze. V závislosti na tom, jak je místní SQL Server nakonfigurovaná, můžete použít integrované ověřování systému Windows nebo SQL Server ověřování.<br/><br/><b>Databázový dotaz</b>: zadejte příkaz SQL, který popisuje data, která chcete číst. |
+| Tabulka Azure |Načte data z Table service v Azure Storage.<br/><br/>Pokud často přečtete velké objemy dat, použijte službu Azure Table. Poskytuje flexibilní, nerelační (NoSQL), široce škálovatelné, levné a vysoce dostupné řešení úložiště. |Možnosti v části **Import dat** se mění v závislosti na tom, zda přistupujete k veřejným informacím nebo privátnímu účtu úložiště, který vyžaduje přihlašovací údaje. To je určeno <b>typem ověřování</b> , který může mít hodnotu "PublicOrSAS" nebo "Account", z nichž každá má svou vlastní sadu parametrů. <br/><br/><b>Identifikátor URI veřejného nebo sdíleného přístupového podpisu (SAS)</b>: parametry:<br/><br/><ul><b>Identifikátor URI tabulky</b>: Určuje veřejnou adresu URL nebo adresu URL SAS pro tabulku.<br/><br/><b>Určuje řádky, ve kterých se mají hledat názvy vlastností</b>: hodnoty jsou <i>nejlepší</i> ke skenování zadaného počtu řádků nebo <i>ScanAll</i> k získání všech řádků v tabulce. <br/><br/>Pokud jsou data homogenní a předvídatelné, doporučuje se vybrat *nejlepší* a zadat číslo pro N. U rozsáhlých tabulek to může vést k rychlejšímu čtení času.<br/><br/>Pokud jsou data strukturovaná pomocí sad vlastností, které se liší v závislosti na hloubkě a umístění tabulky, vyberte možnost *ScanAll* pro kontrolu všech řádků. Tím zajistíte integritu výsledných vlastností a převodů metadat.<br/><br/></ul><b>Privátní účet úložiště</b>: parametry jsou: <br/><br/><ul><b>Název účtu</b>: Určuje název účtu, který obsahuje tabulku, která se má číst.<br/><br/><b>Klíč účtu</b>: Určuje klíč úložiště přidružený k účtu.<br/><br/><b>Název tabulky</b> : Určuje název tabulky obsahující data, která se mají číst.<br/><br/><b>Řádky, ve kterých se mají hledat názvy vlastností</b>: hodnoty jsou <i>nejlepší</i> ke skenování zadaného počtu řádků nebo <i>ScanAll</i> k získání všech řádků v tabulce.<br/><br/>Pokud jsou data homogenní a předvídatelné, doporučujeme vybrat *nejlepší* a zadat číslo pro N. U rozsáhlých tabulek to může vést k rychlejšímu čtení času.<br/><br/>Pokud jsou data strukturovaná pomocí sad vlastností, které se liší v závislosti na hloubkě a umístění tabulky, vyberte možnost *ScanAll* pro kontrolu všech řádků. Tím zajistíte integritu výsledných vlastností a převodů metadat.<br/><br/> |
+| Azure Blob Storage |Čte data uložená v Blob service v Azure Storage, včetně obrázků, nestrukturovaných textových nebo binárních dat.<br/><br/>Blob service můžete použít k veřejně vystavování dat nebo k soukromému ukládání dat aplikací. K datům můžete přistupovat odkudkoli pomocí připojení HTTP nebo HTTPS. |Možnosti v modulu **importovat data** se mění v závislosti na tom, jestli přistupujete k veřejným informacím nebo privátnímu účtu úložiště, který vyžaduje přihlašovací údaje. To je určeno <b>typem ověřování</b> , který může mít hodnotu buď "PublicOrSAS" nebo "Account".<br/><br/><b>Identifikátor URI veřejného nebo sdíleného přístupového podpisu (SAS)</b>: parametry:<br/><br/><ul><b>URI</b>: Určuje adresu URL veřejného nebo SAS pro objekt BLOB úložiště.<br/><br/><b>Formát souboru</b>: Určuje formát dat v BLOB Service. Podporované formáty jsou CSV, TSV a ARFF.<br/><br/></ul><b>Privátní účet úložiště</b>: parametry jsou: <br/><br/><ul><b>Název účtu</b>: Určuje název účtu, který obsahuje objekt blob, který chcete číst.<br/><br/><b>Klíč účtu</b>: Určuje klíč úložiště přidružený k účtu.<br/><br/><b>Cesta k kontejneru, adresáři nebo objektu BLOB</b> : Určuje název objektu blob, který obsahuje data, která se mají číst.<br/><br/><b>Formát souboru BLOB</b>: Určuje formát dat ve službě BLOB Service. Podporované formáty dat jsou CSV, TSV, ARFF, CSV se zadaným kódováním a Excelem. <br/><br/><ul>Je-li formát CSV nebo TSV, nezapomeňte určit, zda soubor obsahuje řádek záhlaví.<br/><br/>Pomocí možnosti aplikace Excel můžete číst data z excelových sešitů. V možnosti <i>Formát excelových dat</i> určete, zda jsou data v oblasti listu aplikace Excel nebo v excelové tabulce. V <i>listu aplikace Excel nebo v možnosti vložená tabulka </i>zadejte název listu nebo tabulky, ze které chcete číst.</ul><br/> |
+| Poskytovatel datového kanálu |Načte data z podporovaného poskytovatele kanálu. V současné době je podporován pouze formát protokolu OData (Open Data Protocol). |<b>Datový typ obsahu</b>: Určuje formát OData.<br/><br/><b>Zdrojová adresa URL</b>: Určuje úplnou adresu URL pro datový kanál. <br/>Například následující adresa URL se načte z ukázkové databáze Northwind: https://services.odata.org/northwind/northwind.svc/ |
 
-## <a name="import-from-another-experiment"></a>Import z jiného experimentu
+## <a name="import-from-another-experiment"></a>Importovat z jiného experimentu
 
-Bude nastat situace, kdy budete chtít využít přechodný výsledek z jednoho experimentu a používat jako součást jiného experimentu. K tomuto účelu uložte modul jako datovou sadu:
+V takovém případě budete chtít vzít v úvahu průběžný výsledek z jednoho experimentu a použít ho jako součást jiného experimentu. Chcete-li to provést, Uložte modul jako datovou sadu:
 
-1. Kliknutím na výstup modulu, který chcete uložit jako datovou sadu.
-2. Klikněte na tlačítko **uložit jako datovou sadu**.
-3. Po zobrazení výzvy zadejte název a popis, který by bylo možné snadno identifikovat datové sady.
-4. Klikněte na tlačítko **OK** značky zaškrtnutí.
+1. Klikněte na výstup modulu, který chcete uložit jako datovou sadu.
+2. Klikněte na **Uložit jako datovou sadu**.
+3. Po zobrazení výzvy zadejte název a popis, který vám umožní snadno identifikovat datovou sadu.
+4. Zaškrtněte políčko **OK** .
 
-Po dokončení uložení datové sady bude k dispozici pro použití v rámci jakékoli experimentu do pracovního prostoru. Najdete ho v **uložení datové sady** seznamu paletě modulů.
+Po dokončení ukládání bude datová sada dostupná pro použití v rámci libovolného experimentu v pracovním prostoru. Můžete ji najít v seznamu **uložených datových sad** v paletě modulu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Nasazení webové služby Azure Machine Learning studio, používající importu a exportu dat modulů](web-services-that-use-import-export-modules.md)
+[Nasazení Azure Machine Learning Studio webové služby, které používají moduly importu a exportu dat](web-services-that-use-import-export-modules.md)
 
 
 <!-- Module References -->

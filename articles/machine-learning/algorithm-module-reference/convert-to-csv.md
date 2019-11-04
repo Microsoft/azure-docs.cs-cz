@@ -1,24 +1,24 @@
 ---
 title: 'Převést na sdílený svazek clusteru: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul převést do sdíleného svazku clusteru ve službě Azure Machine Learning k převodu datové sady do formátu CSV, který se dá stáhnout, exportovat nebo sdílet s moduly R nebo Python Script.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul převést do sdíleného svazku clusteru v Azure Machine Learning k převodu datové sady do formátu CSV, který se dá stáhnout, exportovat nebo sdílet s moduly R nebo Python Script.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 37c1653b31049dc0142cf8c0c6f6d405338b1d1f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 999f78ab08e1a2c9dd6b28d853e49fbb559fab83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693202"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493845"
 ---
 # <a name="convert-to-csv-module"></a>Převést na modul CSV
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete převést datovou sadu na formát CSV, který se dá stáhnout, exportovat nebo sdílet s moduly R nebo Python Script.
 
@@ -36,7 +36,8 @@ Když datovou sadu převedete do sdíleného svazku clusteru, soubor se uloží 
 
 ## <a name="how-to-configure-convert-to-csv"></a>Jak nakonfigurovat převod na CSV
 
-1.  Přidejte do svého kanálu modul [převést do sdíleného svazku clusteru](./convert-to-csv.md) . Tento modul můžete najít ve skupině **převodů formátu dat** v rozhraní. 
+
+1.  Přidejte do svého kanálu modul [převést do sdíleného svazku clusteru](./convert-to-csv.md) . Tento modul můžete najít ve skupině **převodů formátu dat** v návrháři. 
 
 2. Připojte ho ke všem modulům, které výstupují datovou sadu.   
   
@@ -56,4 +57,4 @@ Dvakrát klikněte na výstup [převést na sdílený svazek clusteru](./convert
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

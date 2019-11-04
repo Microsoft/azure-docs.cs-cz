@@ -1,5 +1,5 @@
 ---
-title: Shrnout data
+title: Sumarizace dat
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul shrnutí dat ve službě Azure Machine Learning ke generování základní sestavy statistiky pro sloupce v datové sadě.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 54d7235ef56a94c9c0e7b780c53cbd9791bf4f53
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694711"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492582"
 ---
-# <a name="summarize-data"></a>Shrnout data
+# <a name="summarize-data"></a>Sumarizace dat
 
-Tento článek popisuje modul Azure Machine Learningho vizuálního rozhraní.
+Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
 
 Modul shrnutí dat slouží k vytvoření sady standardních statistických měr, které popisují jednotlivé sloupce ve vstupní tabulce.
 
@@ -32,7 +32,7 @@ Modul vypočítá důležité skóre pro jednotlivé sloupce a vrátí řádek s
 
 ## <a name="how-to-configure-summarize-data"></a>Jak konfigurovat souhrnná data  
 
-1. Přidejte modul **Shrnutí dat** do vašeho kanálu. Tento modul můžete najít v kategorii **statistické funkce** v vizuálním rozhraní.
+1. Přidejte modul **Shrnutí dat** do vašeho kanálu. Tento modul můžete najít v kategorii **statistické funkce** v návrháři.
 
 1. Připojte datovou sadu, pro kterou chcete vygenerovat sestavu.
 

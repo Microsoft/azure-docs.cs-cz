@@ -1,40 +1,36 @@
 ---
-title: Změnit zobrazení relace virtuálního počítače na zobrazení na celé obrazovce v Azure Bastionu | Dokumentace Microsoftu
+title: Změna zobrazení relace virtuálního počítače na celou obrazovku v Azure bastionu | Microsoft Docs
 description: V tomto článku se dozvíte, jak změnit zobrazení na celou obrazovku.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6a063d6c8891133126924bfb934770f7818db71a
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: a8c9cab825644fe797713c80d3a710c7a2d54850
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191548"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498046"
 ---
-# <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion-preview"></a>Změňte zobrazení na celé obrazovce pro relace virtuálního počítače: Azure Bastion (Preview)
+# <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Změnit na zobrazení na celé obrazovce pro relaci virtuálních počítačů: Azure bastionu
 
-Tento článek pomůže můžete změnit zobrazení virtuálního počítače pro zobrazení na celé obrazovce a zpět v prohlížeči. Než začnete pracovat s virtuálním Počítačem, ujistěte se, že jste postupovali podle kroků pro [vytvořit hostitel typu bašta](bastion-create-host-portal.md). Poté se připojte k virtuálnímu počítači, který chcete pracovat buď pomocí [RDP](bastion-connect-vm-rdp.md) nebo [SSH](bastion-connect-vm-ssh.md).
+Tento článek vám pomůže změnit zobrazení virtuálního počítače na celou obrazovku a zpět v prohlížeči. Než začnete pracovat s virtuálním počítačem, ujistěte se, že jste postupovali podle pokynů k [Vytvoření hostitele bastionu](bastion-create-host-portal.md). Pak se připojte k virtuálnímu počítači, se kterým chcete pracovat pomocí [protokolu RDP](bastion-connect-vm-rdp.md) nebo [SSH](bastion-connect-vm-ssh.md).
 
-> [!IMPORTANT]
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+## <a name="launch-the-clipboard-tool"></a>Spuštění nástroje schránka
 
-## <a name="launch-the-clipboard-tool"></a>Spusťte nástroj schránky
-
-Během vzdálené relace spusťte nástroj palety Bastionu schránky přístup tak, že vyberete dvě šipky, které se nachází na vlevo uprostřed relace.
+Během vzdálené relace spusťte na paletě nástrojů pro přístup ke schránce bastionu výběr dvou šipek, které se nachází na levém středi relace.
 
 ![nástroje](./media/bastion-vm-manage/left.png)
 
-## <a name="select-full-screen"></a>Vyberte zobrazení na celé obrazovce
+## <a name="select-full-screen"></a>Vybrat celou obrazovku
 
-Vyberte **na celou obrazovku –** tlačítkem přepnete na zobrazení na celé obrazovce prostředí relace. Po přepnutí, bude reinicializovat zachycení relace zobrazení na celé obrazovce.
+Vyberte tlačítko na **celé** obrazovce a přepněte relaci na prostředí na celou obrazovku. Po přepnutí se relace znovu inicializuje na celou obrazovku.
 
-![zobrazení na celé obrazovce](./media/bastion-vm-manage/full-screen.png)
+![Celá obrazovka](./media/bastion-vm-manage/full-screen.png)
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Přečtěte si [Bastionu nejčastější dotazy k](bastion-faq.md).
-Zjistěte, jak [kopírování a vkládání](bastion-vm-copy-paste.md) do a z virtuálního počítače Azure.
+Přečtěte si [Nejčastější dotazy k bastionu](bastion-faq.md).
+Přečtěte si, jak [Kopírovat a vkládat](bastion-vm-copy-paste.md) z virtuálního počítače Azure a z něj.

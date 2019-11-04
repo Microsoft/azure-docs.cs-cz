@@ -11,14 +11,15 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: e0143a6075ef7b88cc0b365a544a5e69c92362ff
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 9bb6bba26fd97a0219f183ffcc67e3e34e3973c8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710123"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489468"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Proveďte výuku a zaregistrujte model klasifikace Keras pomocí Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak vytvořit model klasifikace Keras sestavený na TensorFlow pomocí Azure Machine Learning. Používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí neuronové sítě (DNN) sestavené pomocí [Keras Python Library](https://keras.io) běžící nad [TensorFlow](https://www.tensorflow.org/overview).
 
@@ -28,11 +29,11 @@ Bez ohledu na to, jestli vyvíjíte model Keras z provozu nebo přenášíte exi
 
 Informace o rozdílech mezi strojovým učením a obsáhlým učením najdete v [koncepčním článku](concept-deep-learning-vs-machine-learning.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Spusťte tento kód v jednom z těchto prostředí:
 
- - Virtuální počítač s poznámkovým blokem Azure Machine Learning – nemusíte stahovat nebo instalovat
+ - Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
 
      - Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
     - Ve složce Samples na serveru poznámkového bloku najděte dokončený a rozbalený Poznámkový blok tak, že přejdete na tento adresář: **postupy-použití-azureml > školení – with-learning > výuka-keras** .
@@ -49,7 +50,7 @@ Spusťte tento kód v jednom z těchto prostředí:
 
 Tato část nastavuje experiment pro školení načtením požadovaných balíčků Pythonu, inicializací pracovního prostoru, vytvořením experimentu a nahráním školicích dat a školicích skriptů.
 
-### <a name="import-packages"></a>Importovat balíčky
+### <a name="import-packages"></a>Import balíčků
 
 Nejdřív importujte nezbytné knihovny Pythonu.
 
@@ -141,7 +142,7 @@ dataset = Dataset.get_by_name(ws, 'mnist dataset')
 dataset.to_path()
 ```
 
-TensorFlow Estimator je implementován prostřednictvím obecné třídy [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) , kterou lze použít k podpoře libovolného rozhraní. Navíc vytvořte slovník `script_params`, který obsahuje nastavení parametrů DNN. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
+TensorFlow Estimator je implementován prostřednictvím obecné třídy [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) , kterou lze použít k podpoře libovolného rozhraní. Kromě toho vytvořte slovník `script_params`, který obsahuje nastavení parametrů DNN. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
 
 ```python
 from azureml.train.dnn import TensorFlow
@@ -189,7 +190,7 @@ Po proškolení modelu DNN ho můžete zaregistrovat do svého pracovního prost
 model = run.register_model(model_name='keras-dnn-mnist', model_path='outputs/model')
 ```
 
-Můžete si také stáhnout místní kopii modelu. To může být užitečné pro místní práci s ověřováním modelu. Ve školicím skriptu `mnist-keras.py`, objekt spořiče TensorFlow uchovává model do místní složky (místní do výpočetního cíle). Pomocí objektu spustit můžete stáhnout kopii z úložiště dat.
+Můžete si také stáhnout místní kopii modelu. To může být užitečné pro místní práci s ověřováním modelu. Ve školicím skriptu `mnist-keras.py`objekt spořiče TensorFlow udržuje model do místní složky (místní do výpočetního cíle). Pomocí objektu spustit můžete stáhnout kopii z úložiště dat.
 
 ```Python
 # Create a model folder in the current directory

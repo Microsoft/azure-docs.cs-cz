@@ -1,22 +1,22 @@
 ---
-title: Řešení potíží s Azure Data Share Preview
-description: Naučte se řešit problémy s pozvánkami a chybami při vytváření nebo přijímání sdílených dat pomocí Azure Data Share Preview.
+title: Řešení potíží se službou Azure Data Share
+description: Naučte se řešit problémy s požadavky a chybami při vytváření nebo přijímání sdílených dat pomocí Azure Data Share.
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6ad612d56b25da9e092070198e321e7fca8ad96b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169223"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490569"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Řešení běžných problémů v Azure Data Share Preview
+# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Řešení běžných problémů v Azure Data Share 
 
-Tento článek popisuje, jak řešit běžné problémy pro Azure Data Share Preview. 
+Tento článek popisuje, jak řešit běžné problémy s Azure Data Share. 
 
 ## <a name="azure-data-share-invitations"></a>Pozvánky ke sdílení dat Azure 
 
@@ -55,6 +55,20 @@ Pokud se při vytváření nebo přijímání nové sdílené datové složky zo
 1. Výběr **řízení přístupu (IAM)**
 1. Klikněte na **Přidat** .
 1. Přidejte sami sebe jako vlastníka.
+
+## <a name="troubleshooting-sql-based-sharing"></a>Řešení potíží s sdílením na základě SQL
+
+"Chyba: datové sady x nebyly přidány, protože nemáte požadovaná oprávnění ke sdílení."
+
+Pokud se tato chyba zobrazí při přidávání datové sady ze zdroje založeného na SQL, může to být tím, že jste nevytvořili uživatele pro soubor MSI Azure data Shared na vašem SQL Server.  Pokud chcete tento problém vyřešit, spusťte následující skript:
+
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```      
+Všimněte si, že *< share_acc_name >* je název vašeho účtu pro sdílení dat. Pokud jste ještě nevytvořili účet pro sdílení dat, můžete se k tomuto předběžnému požadavku vrátit později.         
+
+Ujistěte se, že jste postupovali podle všech požadavků uvedených v kurzu [sdílení vašich dat](share-your-data.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

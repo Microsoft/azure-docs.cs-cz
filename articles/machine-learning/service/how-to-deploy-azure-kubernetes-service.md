@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
-ms.openlocfilehash: dfaa39b33839406ffdf484299cb520aebf011c7d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/25/2019
+ms.openlocfilehash: 45d76328f4a5de4a5cf26b0a126825c1b0a906c7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299682"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496946"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Naučte se používat Azure Machine Learning k nasazení modelu jako webové služby ve službě Azure Kubernetes Service (AKS). Služba Azure Kubernetes je vhodná pro vysoce škálovatelná produkční nasazení. Použijte službu Azure Kubernetes, pokud potřebujete jednu nebo více z následujících možností:
 
@@ -30,8 +31,8 @@ Naučte se používat Azure Machine Learning k nasazení modelu jako webové slu
 
 Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který je __připojený k vašemu pracovnímu prostoru__. Existují dva způsoby, jak připojit cluster AKS k vašemu pracovnímu prostoru:
 
-* Vytvořte cluster AKS pomocí sady Azure Machine Learning SDK, Machine Learning CLI, cílové stránky pro [Azure Portal](https://portal.azure.com) nebo [pracovní prostor (Preview)](https://ml.azure.com). Tento proces automaticky připojí cluster k pracovnímu prostoru.
-* Připojte existující cluster AKS k pracovnímu prostoru Azure Machine Learning. Cluster se dá připojit pomocí Azure Machine Learning SDK, Machine Learning CLI nebo Azure Portal.
+* Vytvořte cluster AKS pomocí sady Azure Machine Learning SDK, Machine Learning CLI nebo [Azure Machine Learning Studio](https://ml.azure.com). Tento proces automaticky připojí cluster k pracovnímu prostoru.
+* Připojte existující cluster AKS k pracovnímu prostoru Azure Machine Learning. Cluster se dá připojit pomocí Azure Machine Learning SDK, Machine Learning CLI nebo Azure Machine Learning studia.
 
 > [!IMPORTANT]
 > Proces vytvoření nebo přílohy je jednorázovým úkolem. Jakmile je cluster AKS připojený k pracovnímu prostoru, můžete ho použít pro nasazení. Cluster AKS můžete odpojit nebo odstranit, pokud ho už nepotřebujete. Jakmile Detatched nebo odstraníte, nebudete už moct nasadit do clusteru.
@@ -48,7 +49,7 @@ Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který 
 
     * `ws` – nastaveno na váš pracovní prostor.
     * `model` – nastaveno na registrovaný model.
-    * `inference_config` – nastaveno na odvození konfigurace pro model.
+    * `inference_config` – nastaveno na odvození konfigurace modelu.
 
     Další informace o nastavení těchto proměnných najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
@@ -91,9 +92,9 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> Pokud [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)vyberete vlastní hodnoty pro `agent_count` a `vm_size` a `cluster_purpose` není `DEV_TEST`, musíte zajistit, aby `agent_count` vynásobený `vm_size` bylo větší nebo rovno 12 virtuálním procesorům. Pokud například použijete `vm_size` z "Standard_D3_v2", který má 4 virtuální procesory, měli byste vybrat `agent_count` ze 3 nebo vyšší.
+> Pokud pro [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)vyberete vlastní hodnoty pro `agent_count` a `vm_size`a `cluster_purpose` není `DEV_TEST`, musíte zajistit, aby `agent_count` vynásobený `vm_size` je větší nebo roven 12 virtuálním procesorům. Pokud například použijete `vm_size` "Standard_D3_v2", která má 4 virtuální procesory, měli byste vybrat `agent_count` 3 nebo vyšší.
 >
-> Sada SDK pro Azure Machine Learning neposkytuje podporu škálování clusteru AKS. Pro horizontální navýšení kapacity uzlů v clusteru použijte uživatelské rozhraní pro cluster AKS v Azure Portal. Můžete změnit jenom počet uzlů, nikoli velikost virtuálního počítače v clusteru.
+> Sada SDK pro Azure Machine Learning neposkytuje podporu škálování clusteru AKS. Pokud chcete škálovat uzly v clusteru, použijte uživatelské rozhraní pro cluster AKS v nástroji Azure Machine Learning Studio. Můžete změnit jenom počet uzlů, nikoli velikost virtuálního počítače v clusteru.
 
 Další informace o třídách, metodách a parametrech použitých v tomto příkladu naleznete v následujících referenčních dokumentech:
 
@@ -126,7 +127,7 @@ Pokud už máte cluster AKS ve svém předplatném Azure a je nižší než verz
 >
 > Pokud nenastavíte parametr `cluster_purpose` nebo nastavíte `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, cluster musí mít k dispozici alespoň 12 virtuálních procesorů.
 >
-> Pokud nastavíte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, cluster nemusí mít 12 virtuálních procesorů. Pro vývoj a testování doporučujeme aspoň 2 virtuální procesory. Cluster, který je nakonfigurovaný pro vývoj a testování, ale není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám.
+> Pokud `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`nastavíte, cluster nemusí mít 12 virtuálních procesorů. Pro vývoj a testování doporučujeme aspoň 2 virtuální procesory. Cluster, který je nakonfigurovaný pro vývoj a testování, ale není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám.
 
 Další informace o vytvoření clusteru AKS pomocí Azure CLI nebo portálu najdete v následujících článcích:
 
@@ -227,6 +228,69 @@ Informace o použití VS Code najdete v tématu [nasazení do AKS prostřednictv
 > [!IMPORTANT] 
 > Nasazení prostřednictvím VS Code vyžaduje, aby byl cluster AKS vytvořen nebo připojen k vašemu pracovnímu prostoru předem.
 
+## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Nasazení modelů do AKS pomocí řízeného zavedení (Preview)
+Analyzujte a Propagujte verze modelu řízeným způsobem pomocí koncových bodů. Nasaďte až 6 verzí za jeden koncový bod a nakonfigurujte% vyhodnocování provozu na každou nasazenou verzi. Službu App Insights můžete povolit pro zobrazení provozních metrik koncových bodů a nasazených verzí.
+
+### <a name="create-an-endpoint"></a>Vytvoření koncového bodu
+Až budete připraveni k nasazení modelů, vytvořte hodnoticí koncový bod a nasaďte první verzi. V následujícím kroku se dozvíte, jak nasadit a vytvořit koncový bod pomocí sady SDK. První nasazení bude definováno jako výchozí verze, což znamená, že nespecifikovaný percentil provozu napříč všemi verzemi bude přejít na výchozí verzi.  
+
+```python
+import azureml.core,
+from azureml.core.webservice import AksEndpoint
+from azureml.core.compute import AksCompute
+from azureml.core.compute import ComputeTarget
+# select a created compute
+compute = ComputeTarget(ws, 'myaks')
+namespace_name= endpointnamespace 
+# define the endpoint and version name
+endpoint_name = "mynewendpoint",
+version_name= "versiona",
+# create the deployment config and define the scoring traffic percentile for the first deployment
+endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
+                                                              enable_app_insights = true, 
+                                                              tags = {'sckitlearn':'demo'},
+                                                              decription = testing versions,
+                                                              version_name = version_name,
+                                                              traffic_percentile = 20)
+ # deploy the model and endpoint
+ endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ ```
+
+### <a name="update-and-add-versions-to-an-endpoint"></a>Aktualizace a přidání verzí do koncového bodu
+
+Přidejte do svého koncového bodu jinou verzi a nakonfigurujte percentil pro přenos dat bodování na verzi. Existují dva typy verzí, ovládací prvek a verze zpracování. Pro porovnání s verzí s jediným ovládacím prvkem může být k dispozici více verzí zpracování. 
+
+ ```python
+from azureml.core.webservice import AksEndpoint
+
+# add another model deployment to the same endpoint as above
+version_name_add = "versionb" 
+endpoint.create_version(version_name = version_name_add, 
+                        inference_config=inference_config,
+                        models=[model], 
+                        tags = {'modelVersion':'b'}, 
+                        description = "my second version", 
+                        traffic_percentile = 10)
+```
+
+Aktualizujte existující verze nebo je odstraňte v koncovém bodu. Můžete změnit výchozí typ verze, typ ovládacího prvku a percentil provozu. 
+ 
+ ```python
+from azureml.core.webservice import AksEndpoint
+
+# update the version's scoring traffic percentage and if it is a default or control type 
+endpoint.update_version(version_name=endpoint.versions["versionb"].name, 
+                        description="my second version update", 
+                        traffic_percentile=40,
+                        is_default=True,
+                        is_control_version_type=True)
+
+# delete a version in an endpoint 
+endpoint.delete_version(version_name="versionb")
+
+```
+
+
 ## <a name="web-service-authentication"></a>Ověřování webové služby
 
 Při nasazování do služby Azure Kubernetes je ve výchozím nastavení povolené ověřování __na základě klíčů__ . Můžete také povolit ověřování __na základě tokenů__ . Ověřování na základě tokenu vyžaduje, aby klienti používali účet Azure Active Directory k vyžádání ověřovacího tokenu, který se používá k provádění požadavků na nasazenou službu.
@@ -249,17 +313,17 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Pokud potřebujete znovu vygenerovat klíč, použijte [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) .
+> Pokud potřebujete znovu vygenerovat klíč, použijte [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
 ### <a name="authentication-with-tokens"></a>Ověřování pomocí tokenů
 
-Pokud chcete povolit ověřování pomocí tokenu, nastavte při vytváření nebo aktualizaci nasazení parametr `token_auth_enabled=True`. Následující příklad povoluje ověření tokenu pomocí sady SDK:
+Pokud chcete povolit ověřování pomocí tokenu, nastavte parametr `token_auth_enabled=True` při vytváření nebo aktualizaci nasazení. Následující příklad povoluje ověření tokenu pomocí sady SDK:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
 ```
 
-Pokud je povoleno ověřování tokenů, můžete použít metodu `get_token` k načtení tokenu JWT a času vypršení platnosti tohoto tokenu:
+Pokud je povoleno ověřování tokenů, můžete použít metodu `get_token` k načtení tokenu JWT a času vypršení platnosti tokenu:
 
 ```python
 token, refresh_by = service.get_token()
@@ -267,7 +331,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Po @no__tovém čase tokenu budete muset požádat o nový token.
+> Po `refresh_by`ovém čase tokenu budete muset požádat o nový token.
 >
 > Microsoft důrazně doporučuje vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes. K ověřování pomocí tokenu webová služba provede volání do oblasti, ve které je vytvořen Azure Machine Learning pracovní prostor. Pokud oblast pracovního prostoru není k dispozici, nebudete moci načíst token pro webovou službu, a to i v případě, že se váš cluster nachází v jiné oblasti než váš pracovní prostor. To efektivně vede k nedostupnosti ověřování na základě tokenů, dokud nebude oblast pracovního prostoru znovu dostupná. Navíc čím větší je vzdálenost mezi oblastí vašeho clusteru a oblastí vašeho pracovního prostoru, tím déle bude trvat Načtení tokenu.
 

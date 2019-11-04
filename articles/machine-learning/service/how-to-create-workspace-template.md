@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/16/2019
+ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7e0897f92dd5ead939cbae9d6bf269bd22152419
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 9d966c7a4e9c56529b36eb87ecc46dbd6b5bab6a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034781"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497035"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -23,9 +23,9 @@ V tomto článku se dozvíte několik způsobů, jak vytvořit pracovní prostor
 
 Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* **Předplatného Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
+* **Předplatné Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) , nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -33,15 +33,151 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 Následující šablonu Správce prostředků lze použít k vytvoření pracovního prostoru Azure Machine Learning a přidružených prostředků Azure:
 
-[!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the name of the Azure Machine Learning workspace."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "southcentralus",
+      "allowedValues": [
+        "eastus",
+        "eastus2",
+        "southcentralus",
+        "southeastasia",
+        "westcentralus",
+        "westeurope",
+        "westus2"
+      ],
+      "metadata": {
+        "description": "Specifies the location for all resources."
+      }
+    },
+    "sku":{
+      "type": "string",
+      "defaultValue": "basic",
+        "allowedValues": [
+          "basic",
+          "enterprise"
+        ],
+        "metadata": {
+          "description": "Specifies the sku, also referred as 'edition' of the Azure Machine Learning workspace."
+        }
+    }
+  },
+  "variables": {
+    "storageAccountName": "[concat('sa',uniqueString(resourceGroup().id))]",
+    "storageAccountType": "Standard_LRS",
+    "keyVaultName": "[concat('kv',uniqueString(resourceGroup().id))]",
+    "tenantId": "[subscription().tenantId]",
+    "applicationInsightsName": "[concat('ai',uniqueString(resourceGroup().id))]",
+    "containerRegistryName": "[concat('cr',uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2018-07-01",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[variables('storageAccountType')]"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "encryption": {
+          "services": {
+            "blob": {
+              "enabled": true
+            },
+            "file": {
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "supportsHttpsTrafficOnly": true
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2018-02-14",
+      "name": "[variables('keyVaultName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "tenantId": "[variables('tenantId')]",
+        "sku": {
+          "name": "standard",
+          "family": "A"
+        },
+        "accessPolicies": []
+      }
+    },
+    {
+      "type": "Microsoft.Insights/components",
+      "apiVersion": "2015-05-01",
+      "name": "[variables('applicationInsightsName')]",
+      "location": "[if(or(equals(parameters('location'),'eastus2'),equals(parameters('location'),'westcentralus')),'southcentralus',parameters('location'))]",
+      "kind": "web",
+      "properties": {
+        "Application_Type": "web"
+      }
+    },
+    {
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2017-10-01",
+      "name": "[variables('containerRegistryName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "adminUserEnabled": true
+      }
+    },
+    {
+      "type": "Microsoft.MachineLearningServices/workspaces",
+      "apiVersion": "2019-11-01",
+      "name": "[parameters('workspaceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
+        "[resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))]",
+        "[resourceId('Microsoft.ContainerRegistry/registries', variables('containerRegistryName'))]"
+      ],
+      "identity": {
+        "type": "systemAssigned"
+      },
+      "sku": {
+        "tier": "[parameters('sku')]",
+        "name": "[parameters('sku')]"
+      },
+      "properties": {
+        "friendlyName": "[parameters('workspaceName')]",
+        "keyVault": "[resourceId('Microsoft.KeyVault/vaults',variables('keyVaultName'))]",
+        "applicationInsights": "[resourceId('Microsoft.Insights/components',variables('applicationInsightsName'))]",
+        "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries',variables('containerRegistryName'))]",
+        "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]"
+      }
+    }
+  ]
+}
+```
 
 Tato šablona vytvoří následující služby Azure:
 
 * Skupina prostředků Azure
-* Azure Storage Account
+* Účet služby Azure Storage
 * Azure Key Vault
 * Azure Application Insights
-* Registr kontejneru Azure
+* Azure Container Registry
 * Pracovní prostor služby Azure Machine Learning
 
 Skupina prostředků je kontejner, který obsahuje služby. Jednotlivé služby jsou vyžadovány pracovním prostorem Azure Machine Learning.
@@ -67,21 +203,21 @@ Další informace o šablonách najdete v následujících článcích:
 * [Nasazení aplikace pomocí šablon Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Typy prostředků Microsoft. MachineLearningServices](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
-## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
+## <a name="use-the-azure-portal"></a>Použití portálu Azure
 
 1. Postupujte podle kroků v části [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Po přijetí na obrazovku __Upravit šablonu__ vložte do šablony z tohoto dokumentu šablonu.
 1. Vyberte __Uložit__ a použijte šablonu. Zadejte následující informace a vyjádřete souhlas s uvedenými podmínkami a ujednáními:
 
-   * Předplatné: Vyberte předplatné Azure, které chcete použít pro tyto prostředky.
-   * Skupina prostředků: Vyberte nebo vytvořte skupinu prostředků, která bude obsahovat služby.
-   * Název pracovního prostoru: Název, který se má použít pro pracovní prostor Azure Machine Learning, který se má vytvořit. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat pouze alfanumerické znaky a znak "-".
-   * Oblasti Vyberte umístění, kde se budou prostředky vytvářet.
+   * Předplatné: vyberte předplatné Azure, které chcete použít pro tyto prostředky.
+   * Skupina prostředků: vyberte nebo vytvořte skupinu prostředků, která bude obsahovat služby.
+   * Název pracovního prostoru: název, který se má použít pro pracovní prostor Azure Machine Learning, který se vytvoří. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat pouze alfanumerické znaky a znak "-".
+   * Umístění: vyberte umístění, kde se budou prostředky vytvářet.
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="use-azure-powershell"></a>Použití Azure Powershell
+## <a name="use-azure-powershell"></a>Použití Azure PowerShellu
 
-V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s `azuredeploy.json` názvem v aktuálním adresáři:
+V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s názvem `azuredeploy.json` v aktuálním adresáři:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -94,7 +230,7 @@ Další informace najdete v tématu [nasazení prostředků pomocí šablon Spr�
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
 
-V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s `azuredeploy.json` názvem v aktuálním adresáři:
+V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s názvem `azuredeploy.json` v aktuálním adresáři:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -115,12 +251,12 @@ Většina operací vytváření prostředků prostřednictvím šablon je idempo
 
 Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících přístupů:
 
-*  Nesaďte šablonu více než jednou pro stejné parametry. Nebo odstraňte existující prostředky, abyste je mohli znovu vytvořit pomocí šablony.
+* Nesaďte šablonu více než jednou pro stejné parametry. Nebo odstraňte existující prostředky, abyste je mohli znovu vytvořit pomocí šablony.
   
 * Zkontrolujte zásady přístupu Key Vault a pak pomocí těchto zásad nastavte vlastnost accessPolicies šablony.
 * Ověřte, zda prostředek Key Vault již existuje. Pokud tomu tak není, nevytvářejte ho znovu prostřednictvím šablony. Například přidejte parametr, který umožňuje zakázat vytvoření prostředku Key Vault, pokud již existuje.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nasazení prostředků pomocí Správce prostředků šablon a Správce prostředků REST API](../../azure-resource-manager/resource-group-template-deploy-rest.md).
 * [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).

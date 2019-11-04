@@ -1,7 +1,7 @@
 ---
 title: 'Spustit skript R: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul R skriptu Execute ve službě Azure Machine Learning ke spuštění kódu R.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul r skriptu Execute v Azure Machine Learning ke spuštění kódu R.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,25 +9,25 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 01d4e3a06b8c6a95374b9ee246864167e6d2ac85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f9aae1302f0d83c27d5d8f01745ddecbaeea9467
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693773"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497877"
 ---
 # <a name="execute-r-script"></a>Spouštění skriptů R
 
-Tento článek popisuje, jak použít modul **skriptu Run r** ke spuštění kódu R v kanálu vizuálního rozhraní.
+Tento článek popisuje, jak použít modul **skriptu Run r** ke spuštění kódu R v kanálu návrháře Azure Machine Learning (Preview).
 
 Pomocí jazyka R můžete provádět úlohy, které aktuálně nejsou podporovány existujícími moduly, například: 
 - Vytváření vlastních transformací dat
 - Použití vlastních metrik k vyhodnocení předpovědi
-- Vytváření modelů pomocí algoritmů, které nejsou implementované jako samostatné moduly v vizuálním rozhraní
+- Modely sestavení pomocí algoritmů, které nejsou implementované jako samostatné moduly v Návrháři
 
 ## <a name="r-version-support"></a>Podpora verze R
 
-Vizuální rozhraní Azure Machine Learning služby používá distribuci R v CRAN (komplexní archivní síť v R). Aktuálně použitá verze je CRAN 3.5.1.
+Azure Machine Learning Designer používá distribuci R v CRAN (komplexní archivní síť v R). Aktuálně použitá verze je CRAN 3.5.1.
 
 ## <a name="supported-r-packages"></a>Podporované balíčky R
 
@@ -73,7 +73,7 @@ Modul **spuštění skriptu jazyka R** obsahuje vzorový kód, který můžete p
 
 ![R – modul](media/module/execute-r-script.png)
 
-Datové sady uložené ve vizuálním rozhraní se při načtení s tímto modulem automaticky převedou na datový rámec R.
+Datové sady uložené v návrháři se při načtení s tímto modulem automaticky převedou na datový rámec R.
 
 1.  Přidejte do svého kanálu modul **spuštění skriptu jazyka R** .
 
@@ -116,10 +116,10 @@ azureml_main <- function(dataframe1, dataframe2){
  * Funkce vstupního bodu může obsahovat až dva vstupní argumenty: `Param<dataframe1>` a `Param<dataframe2>`
  
    > [!NOTE]
-    > Data předaná do modulu **spuštění skriptu jazyka R** jsou odkazována jako `dataframe1` a `dataframe2`, která se liší od Azure Machine Learning Studio (odkaz na Studio jako `dataset1`, `dataset2`). Zkontrolujte prosím, jestli se vstupní data ve skriptu referneced správně.  
+    > Data předaná do modulu **spuštění skriptu jazyka R** jsou odkazována jako `dataframe1` a `dataframe2`, která se liší od Azure Machine Learning Designer (odkaz návrháře jako `dataset1`, `dataset2`). Zkontrolujte prosím, jestli se vstupní data ve skriptu referneced správně.  
  
     > [!NOTE]
-    >  Existující kód R může vyžadovat drobné změny ke spuštění v kanálu vizuálního rozhraní. Například vstupní data, která zadáte ve formátu CSV, by měla být explicitně převedena na datovou sadu, aby ji bylo možné použít ve svém kódu. Typy dat a sloupců používané v jazyce R se také liší v různých způsobech z dat a typů sloupců používaných ve vizuálním rozhraní.
+    >  Existující kód R může vyžadovat drobné změny ke spuštění v kanálu návrháře. Například vstupní data, která zadáte ve formátu CSV, by měla být explicitně převedena na datovou sadu, aby ji bylo možné použít ve svém kódu. Typy dat a sloupců používané v jazyce R se také liší v různých způsobech z dat a typů sloupců použitých v návrháři.
 
 1.  **Náhodný základ**: zadejte hodnotu, která se má použít v prostředí jazyka R, jako náhodná hodnota počáteční hodnoty. Tento parametr je ekvivalentní volání `set.seed(value)` v kódu R.  
 
@@ -127,7 +127,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="results"></a>Výsledky
 
-Moduly **spouštěné skriptem R** mohou vracet více výstupů, ale musí být zadány jako datové snímky R. Datové snímky se automaticky převedou na datové sady vizuálního rozhraní, aby byly kompatibilní s jinými moduly.
+Moduly **spouštěné skriptem R** mohou vracet více výstupů, ale musí být zadány jako datové snímky R. Datové snímky jsou automaticky převedeny na datové sady v návrháři, aby byly kompatibilní s jinými moduly.
 
 Do protokolu modulu se vrátí standardní zprávy a chyby z R.
 
@@ -235,7 +235,7 @@ Můžete předat objekty R mezi instancemi modulu **spouštění skriptu jazyka 
     }
     ```
 
-    Explicitní převod na celočíselný typ je proveden, protože funkce serializace vypisuje data ve formátu R `Raw`, který není podporován vizuálním rozhraním.
+    Explicitní převod na celočíselný typ je proveden, protože funkce serializace výstupuje data ve formátu R `Raw`, který není podporován návrhářem.
 
 1. Přidejte druhou instanci modulu **spuštění skriptu jazyka R** a připojte ho k výstupnímu portu předchozího modulu.
 
@@ -402,4 +402,4 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

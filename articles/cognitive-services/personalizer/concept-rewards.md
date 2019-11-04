@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154669"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490885"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Skóre odměňování indikuje úspěch přizpůsobení
 
@@ -71,32 +71,28 @@ Pak můžete k rozhraní API odeslat celkovou odměnu.
 
 ## <a name="calling-the-reward-api-multiple-times"></a>Vícenásobné volání rozhraní API pro odměnu
 
-Můžete také volat API pro odměnu pomocí stejného ID události, která posílá různé výsledky odměňování. Když aplikace přizpůsobuje tyto odměny, určí konečnou odměnu této události jejich agregací, jak je uvedeno v nastavení přizpůsobení.
+Můžete také volat API pro odměnu pomocí stejného ID události, která posílá různé výsledky odměňování. Když aplikace přizpůsobuje tyto odměny, určí konečnou odměnu této události jejich agregací, jak je uvedeno v konfiguraci přizpůsobení.
 
-Nastavení agregace:
+Hodnoty agregace:
 
-*  **První**: Bere v případě, že je pro událost obdrženo první skóre a zahodí zbytek.
-* **Součet**: Vybírá všechny hodnocení bez jakýchkoli motivů pro ID události a přidává je dohromady.
+*  **First**: vybere pro událost první obdržené skóre odměňování a zbytek se zahodí.
+* **Sum**: vezme všechny skóre pro celou měnu shromážděné pro ID události a přidá je dohromady.
 
 Všechny odměny za události, které jsou obdrženy po **dobu čekání na odměnu**, se zahodí a neovlivňují školení modelů.
 
 Pokud přidáte skóre pro každou měnu, vaše konečná odměna může být mimo očekávaný rozsah skóre. Tím nedojde k selhání služby.
 
-<!--
-@edjez - is the number ignored if it is outside the acceptable range?
--->
-
 ## <a name="best-practices-for-calculating-reward-score"></a>Osvědčené postupy pro výpočet skóre odměňování
 
-* **Vezměte v úvahu pravdivé indikátory úspěšného přizpůsobení**: Můžete se snadno domnívat, že se jedná o kliknutí, ale dobrá výhoda je založená na tom, co chcete, aby uživatelé měli místo toho, co chcete *, aby mohli* *dělat*.  Například odměňování za kliknutí může vést k výběru obsahu, který je clickbait náchylnější.
+* **Vezměte v úvahu pravdivé indikátory úspěšného přizpůsobení**: snadno se můžete domnívat, že se jedná o kliknutí, ale dobrá odměna je založená na tom, co chcete, aby uživatelé *měli místo toho* , co chcete, aby mohli *dělat*.  Například odměňování za kliknutí může vést k výběru obsahu, který je clickbait náchylnější.
 
-* **Použijte skóre odměňování pro to, jak dobrá přizpůsobení fungovala**: Přizpůsobení návrhu filmu by vedlo k tomu, že by se snado, že uživatel sleduje film a dává jim vysoké hodnocení. Vzhledem k tomu, že hodnocení filmu pravděpodobně závisí na mnoha věcech (kvalita jednání, nálada uživatele), není dobrým signálem pro to, jak dobře *přizpůsobení* fungovalo. Uživatel sleduje několik prvních minut filmu, ale může to být lepší signál účinnosti přizpůsobení a odeslání odměna 1 až 5 minut bude lepším signálem.
+* **Použití skóre odměňování pro to, jak dobrým způsobem přizpůsobení fungovalo**: přizpůsobením návrhu filmu by se snado, že uživatel sleduje film a dává jim vysoké hodnocení. Vzhledem k tomu, že hodnocení filmu pravděpodobně závisí na mnoha věcech (kvalita jednání, nálada uživatele), není dobrým signálem pro to, jak dobře *přizpůsobení* fungovalo. Uživatel sleduje několik prvních minut filmu, ale může to být lepší signál účinnosti přizpůsobení a odeslání odměna 1 až 5 minut bude lepším signálem.
 
-* **Ceny se vztahují jenom na RewardActionID**: Přizpůsobování platí pro pochopení účinnosti akce zadané v RewardActionID. Pokud se rozhodnete zobrazit další akce a uživatel na ně klikne, odměna by měla být nulová.
+* **Ceny se vztahují jenom na RewardActionID**: přizpůsobování platí pro pochopení účinnosti akce zadané v RewardActionID. Pokud se rozhodnete zobrazit další akce a uživatel na ně klikne, odměna by měla být nulová.
 
 * **Zvažte nezamýšlené důsledky**: Vytvořte funkce odměňování, které vedou k odpovědným výsledkům s [etickým a odpovědným používáním](ethics-responsible-use.md).
 
-* **Použijte přírůstkové ceny**: Přidání částečných odčítání pro menší uživatelské chování pomáhá přizpůsobovat, aby se dosáhlo lepšího zvýšení ceny. Tato přírůstková odměna umožňuje algoritmu poznat, že je přiblížný k uživateli v konečném požadovaném chování.
+* **Použití přírůstků**: Přidání částečných odčítání pro menší uživatelské chování pomáhá přizpůsobovat, aby se zajistilo lepší ceny. Tato přírůstková odměna umožňuje algoritmu poznat, že je přiblížný k uživateli v konečném požadovaném chování.
     * Pokud se zobrazuje seznam filmů, pokud uživatel po chvíli najede myší na jednu z nich, můžete určit, že došlo k nějakému uživateli – zapojení. Chování se může počítat s skóre pro odměnu 0,1. 
     * Pokud uživatel stránku otevřel a pak skončil, může být skóre odměňování 0,2. 
 
@@ -106,13 +102,11 @@ Přizpůsobování bude korelovat informace o volání pořadí s neprospěchem 
 
 Pokud **Doba čekání na odměnu** vyprší a neexistují žádné informace o záplatcích, použije se pro tuto událost výchozí odměna za školení. Maximální doba čekání je 6 dnů.
 
-## <a name="best-practices-for-setting-reward-wait-time"></a>Osvědčené postupy pro nastavení doby čekání na odměnu
+## <a name="best-practices-for-reward-wait-time"></a>Osvědčené postupy pro dobu čekání na odměnu
 
 Pro lepší výsledky použijte tato doporučení.
 
 * Nechte si volnou dobu čekání, jak je to možné, a zároveň nechat dostatek času na získání zpětné vazby od uživatele. 
-
-<!--@Edjez - storage quota? -->
 
 * Nevybírejte dobu trvání, která je kratší než čas potřebný k získání zpětné vazby. Například pokud se některé z vašich vydaných vašich vydaných z vašich vydaných uživatelů dokončí po zobrazení 1 minuty videa, délka experimentu by měla být aspoň dvojitá.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz k klasifikaci obrázků: Trénování modelů'
+title: 'Kurz pro klasifikaci imagí: modely vlaků'
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak vytvořit model klasifikace obrázků pomocí scikit-učení v poznámkovém bloku Python Jupyter s Azure Machine Learning. Tento kurz je první částí z dvoudílné série.
 services: machine-learning
@@ -8,20 +8,21 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/20/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f3277d76709fe14a5eaa28cc0f562d95c1e4004
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: dd215e754b7e72c9ac424a53015955332068558e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128944"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493566"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Kurz: Analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – Naučte se pomocí Azure Machine Learning
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Kurz: analýza modelů klasifikace imagí pomocí MNIST ručně zapsaných dat a scikit – Naučte se pomocí Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto kurzu se naučíte model strojového učení ve vzdálených výpočetních prostředcích. Pracovní postup školení a nasazení budete používat pro Azure Machine Learning v Jupyter poznámkovém bloku Pythonu.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
 
-V tomto kurzu se učí jednoduchá Logistická regrese s využitím datové sady [mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) a [scikit-učení](https://scikit-learn.org) s Azure Machine Learning. MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každý obrázek je ručně psaná číslice o 28 × 28 pixelech, která představuje číslo od 0 do 9. Cílem je vytvořit klasifikátor s více třídami, který identifikuje číslici, kterou daný obrázek představuje.
+V tomto kurzu se učí jednoduchá Logistická regrese s využitím datové sady [mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) a [scikit-učení](https://scikit-learn.org) s Azure Machine Learning. MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každý obrázek je ručně psaná číslice o 28 × 28 pixelech, která představuje číslo od 0 do 9. Cílem je vytvoření klasifikátoru s více třídami pro identifikaci číslice, kterou představuje daný obrázek.
 
 Přečtěte si, jak provést následující akce:
 
@@ -36,19 +37,25 @@ Naučíte se, jak vybrat model a nasadit ho v [části 2 tohoto kurzu](tutorial-
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 >[!NOTE]
-> Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.57 verze.
+> Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.65 verze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Dokončete [kurz: Začněte vytvářet první experiment](tutorial-1st-experiment-sdk-setup.md) na ml:
+* Dokončete [kurz: Začínáme s vytvářením prvního experimentu ml](tutorial-1st-experiment-sdk-setup.md) na:
     * Vytvoření pracovního prostoru
-    * Vytvoření serveru cloudového poznámkového bloku
-    * Spustit řídicí panel poznámkového bloku Jupyter
+    * Naklonujte Poznámkový blok kurzů do složky v pracovním prostoru.
+    * Vytvořte cloudovou instanci Compute.
 
-* Po spuštění řídicího panelu poznámkového bloku Jupyter otevřete Poznámkový blok **kurzy/img-Classification-part1-Training. ipynb** .
+* Ve složce s naklonovánými **kurzy** otevřete Poznámkový blok **img-Classification-part1-Training. ipynb** . 
 
-Kurz a doprovodný soubor **utils.py** je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte `matplotlib` nainstalované `scikit-learn` a ve vašem prostředí.
 
+Kurz a doprovodný soubor **utils.py** je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local). Pro instalaci závislostí pro tento kurz spusťte `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib`.
+
+> [!Important]
+> Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v poznámkovém bloku.  
+>
+> Pokud chcete při spuštění kódu číst společně, přepněte do poznámkového bloku Jupyter. 
+> Pokud chcete na poznámkovém bloku spustit jednu buňku kódu, klikněte na buňku kódu a stiskněte **SHIFT + ENTER**. Případně spusťte celý Poznámkový blok výběrem možnosti **Spustit vše** na horním panelu nástrojů.
 
 ## <a name="start"></a>Nastavení vývojového prostředí
 
@@ -77,7 +84,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>Připojení k pracovnímu prostoru
 
-Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. `Workspace.from_config()`přečte soubor **config. JSON** a načte podrobnosti do objektu s názvem `ws`:
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. `Workspace.from_config()` přečte soubor **config. JSON** a načte podrobnosti do objektu s názvem `ws`:
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -141,53 +148,50 @@ else:
 
 Nyní máte k dispozici potřebné balíčky a výpočetní prostředky pro trénink modelu v cloudu.
 
-## <a name="explore-data"></a>Zkoumání dat
+## <a name="explore-data"></a>Prozkoumání dat
 
-Než začnete pracovat s modelem, potřebujete pochopit data, která používáte k jeho učení. Data je také potřeba nahrát do cloudu s využitím, aby k němu měli k dispozici cloudové školicí prostředí. V této části se dozvíte, jak provést následující akce:
+Než začnete pracovat s modelem, potřebujete pochopit data, která používáte k jeho učení. V této části získáte informace o následujících postupech:
 
 * Stáhněte si datovou sadu MNIST ručně zapsaných.
 * Zobrazí některé ukázkové obrázky.
-* Nahrajte data do svého pracovního prostoru v cloudu.
 
 ### <a name="download-the-mnist-dataset"></a>Stáhnutí datové sady MNIST
 
-Stáhněte datovou sadu MNIST a uložte soubory do místního adresáře `data`. Stáhnou se obrázky a popisky pro školení a testování:
+K získání nezpracovaných datových souborů MNIST ručně zapsaných použijte Azure Open DataSets. [Otevřené datové sady v Azure](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) jsou spravované veřejné datové sady, které můžete použít k přidání funkcí specifických pro konkrétní scénář do řešení Machine Learning pro přesnější modely. Každá datová sada má odpovídající třídu, `MNIST` v tomto případě k načtení dat různými způsoby.
+
+Tento kód načte data jako objekt `FileDataset`, což je podtřídou `Dataset`. `FileDataset` odkazuje na jeden nebo více souborů libovolného formátu v úložišti dat nebo veřejných adresách URL. Třída poskytuje možnost stahovat nebo připojovat soubory do výpočetních prostředků tím, že vytvoří odkaz na umístění zdroje dat. Navíc zaregistrujete datovou sadu do svého pracovního prostoru pro snadné načtení během školení.
+
+Pokud chcete získat další informace o datových sadách a jejich využití v sadě [SDK, postupujte](how-to-create-register-datasets.md) podle pokynů.
 
 ```python
-import urllib.request
-import os
+from azureml.core import Dataset
+from azureml.opendatasets import MNIST
 
 data_folder = os.path.join(os.getcwd(), 'data')
 os.makedirs(data_folder, exist_ok=True)
 
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
-                           filename=os.path.join(data_folder, 'train-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
-                           filename=os.path.join(data_folder, 'train-labels.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
-                           filename=os.path.join(data_folder, 'test-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz',
-                           filename=os.path.join(data_folder, 'test-labels.gz'))
-```
+mnist_file_dataset = MNIST.get_file_dataset()
+mnist_file_dataset.download(data_folder, overwrite=True)
 
-Zobrazí se výstup podobný tomuto:```('./data/test-labels.gz', <http.client.HTTPMessage at 0x7f40864c77b8>)```
+mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
+                                                 name='mnist_opendataset',
+                                                 description='training and test dataset',
+                                                 create_new_version=True)
+```
 
 ### <a name="display-some-sample-images"></a>Zobrazení některých ukázkových obrázků
 
-Načtěte komprimované soubory do pole `numpy`. Pak pomocí `matplotlib` vykreslete 30 náhodných obrázků z datové sady s jejich popisky nad nimi. Tento krok vyžaduje `load_data` funkci, která je součástí `util.py` souboru. Tento soubor je umístěný ve složce s ukázkou. Ujistěte se, že je umístěn ve stejné složce jako tento poznámkový blok. `load_data` Funkce jednoduše analyzuje komprimované soubory do numpy polí:
+Načtěte komprimované soubory do pole `numpy`. Pak pomocí `matplotlib` vykreslete 30 náhodných obrázků z datové sady s jejich popisky nad nimi. Tento krok vyžaduje funkci `load_data`, která je zahrnutá v souboru `util.py`. Tento soubor je umístěný ve složce s ukázkou. Ujistěte se, že je umístěn ve stejné složce jako tento poznámkový blok. Funkce `load_data` jednoduše analyzuje komprimované soubory do polí numpy.
 
 ```python
 # make sure utils.py is in the same directory as this code
 from utils import load_data
 
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the model converge faster.
-X_train = load_data(os.path.join(
-    data_folder, 'train-images.gz'), False) / 255.0
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(
-    data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(
-    data_folder, 'test-labels.gz'), True).reshape(-1)
+X_train = load_data(os.path.join(data_folder, "train-images-idx3-ubyte.gz"), False) / 255.0
+X_test = load_data(os.path.join(data_folder, "t10k-images-idx3-ubyte.gz"), False) / 255.0
+y_train = load_data(os.path.join(data_folder, "train-labels-idx1-ubyte.gz"), True).reshape(-1)
+y_test = load_data(os.path.join(data_folder, "t10k-labels-idx1-ubyte.gz"), True).reshape(-1)
 
 # now let's show some randomly chosen images from the traininng set.
 count = 0
@@ -209,39 +213,12 @@ Náhodná ukázka obrázků:
 
 Nyní máte představu o tom, jak tyto obrázky vypadají, a o očekávaném výstupu predikce.
 
-### <a name="create-a-filedataset"></a>Vytvoření datové sady
-
-`FileDataset` Objekt odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo veřejných adresách URL. Soubory mohou být libovolného formátu a třída poskytuje možnost stahovat nebo připojovat soubory do výpočtů. Vytvořením `FileDataset`vytvoříte odkaz na umístění zdroje dat. Pokud jste v sadě dat použili jakékoli transformace, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště. Další informace najdete v průvodci `Dataset` [vytvořením](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets) balíčku.
-
-```python
-from azureml.core.dataset import Dataset
-
-web_paths = [
-            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
-            ]
-dataset = Dataset.File.from_files(path=web_paths)
-```
-
-`register()` Pomocí metody zaregistrujete datovou sadu do svého pracovního prostoru, aby bylo možné je sdílet s ostatními, znovu použít v různých experimentech a v rámci školicího skriptu označované jako název.
-
-```python
-dataset = dataset.register(workspace=ws,
-                           name='mnist dataset',
-                           description='training and test dataset',
-                           create_new_version=True)
-```
-
-Teď máte všechno, co potřebujete k zahájení trénování modelu.
-
 ## <a name="train-on-a-remote-cluster"></a>Trénování na vzdáleném clusteru
 
 Odešlete úlohu do clusteru pro vzdálené trénování, který jste nastavili dříve.  K odeslání úlohy je potřeba provést:
 * Vytvoření adresáře
 * Vytvoření trénovacího skriptu
-* Vytvoření objektu odhad
+* Vytvoření objektu Estimator
 * Odeslání úlohy
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
@@ -249,7 +226,6 @@ Odešlete úlohu do clusteru pro vzdálené trénování, který jste nastavili 
 Vytvořte adresář, ze kterého bude dodán potřebný kód z počítače do vzdáleného prostředku.
 
 ```python
-import os
 script_folder = os.path.join(os.getcwd(), "sklearn-mnist")
 os.makedirs(script_folder, exist_ok=True)
 ```
@@ -315,9 +291,9 @@ Všimněte si, jak skript získává data a ukládá modely:
 
 + Školicí skript čte argument pro vyhledání adresáře, který obsahuje data. Když později odešlete úlohu, bude odkázána na úložiště dat pro tento argument: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ Školicí skript uloží model do adresáře s názvem výstupy. Vše, co je v tomto adresáři zapsáno, se automaticky nahraje do vašeho pracovního prostoru. K vašemu modelu přistupujete z tohoto adresáře později v tomto kurzu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
++ Školicí skript uloží model do adresáře s názvem **výstupy**. Vše, co je v tomto adresáři zapsáno, se automaticky nahraje do vašeho pracovního prostoru. K vašemu modelu přistupujete z tohoto adresáře později v tomto kurzu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
-+ Školicí skript vyžaduje, aby soubor `utils.py` správně načetl datovou sadu. Následující kód zkopíruje `utils.py` do, `script_folder` aby k souboru bylo možné přihlédnout společně se školicím skriptem na vzdáleném prostředku.
++ Školicí skript vyžaduje, aby soubor `utils.py` správně načetl datovou sadu. Následující kód zkopíruje `utils.py` do `script_folder`, aby k souboru bylo možné přihlédnout společně se školicím skriptem na vzdáleném prostředku.
 
   ```python
   import shutil
@@ -328,7 +304,7 @@ Všimněte si, jak skript získává data a ukládá modely:
 
 K odeslání běhu se použije objekt [skriptu sklearn Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) . Vytvořte Estimator spuštěním následujícího kódu k definování těchto položek:
 
-* Název objektu Estimator, `est`.
+* Název objektu Estimator `est`.
 * Adresář, který obsahuje vaše skripty. Všechny soubory v tomto adresáři se nahrají do uzlů clusteru ke spuštění.
 * Cílové výpočetní prostředí. V takovém případě použijete výpočetní cluster Azure Machine Learning, který jste vytvořili.
 * Název školicího skriptu, **Train.py**.
@@ -351,7 +327,7 @@ Pak vytvořte Estimator pomocí následujícího kódu.
 from azureml.train.sklearn import SKLearn
 
 script_params = {
-    '--data-folder': dataset.as_named_input('mnist').as_mount(),
+    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
     '--regularization': 0.5
 }
 
@@ -379,19 +355,19 @@ V celkovém případě trvá první spuštění **přibližně 10 minut**. U ná
 
 Co se stane, když počkáte:
 
-- **Vytvoření bitové kopie**: Vytvoří se image Docker, která odpovídá prostředí Pythonu určenému parametrem Estimator. Image se nahraje do pracovního prostoru. Vytvoření a nahrání obrázku trvá **přibližně pět minut**.
+- **Vytvoření bitové kopie**: vytvoří se image Docker, která odpovídá prostředí Pythonu určenému parametrem Estimator. Image se nahraje do pracovního prostoru. Vytvoření a nahrání obrázku trvá **přibližně pět minut**.
 
   Tato fáze se u každého prostředí Pythonu provede jednou, protože kontejner je uložený v mezipaměti pro další spuštění. Při vytváření image se streamují protokoly do historie spuštění. Pomocí těchto protokolů můžete monitorovat průběh vytváření imagí.
 
-- **Škálování:** Pokud vzdálený cluster vyžaduje více uzlů, než kolik je aktuálně k dispozici, přidají se další uzly automaticky. Škálování obvykle trvá **přibližně pět minut.**
+- **Škálování**: Pokud vzdálený cluster vyžaduje více uzlů, než kolik je aktuálně k dispozici, přidají se další uzly automaticky. Škálování obvykle trvá **přibližně pět minut.**
 
-- **Spuštěno**: V této fázi se do cíle výpočtů odesílají potřebné skripty a soubory. Pak jsou úložiště dat připojená nebo zkopírovaná. A pak se spustí **entry_script** . Když je úloha spuštěná, **stdout** a adresář **./logs** se streamují do historie spuštění. Průběh běhu můžete monitorovat pomocí těchto protokolů.
+- **Spuštěno**: v této fázi jsou nezbytné skripty a soubory odeslány do cíle výpočtů. Pak jsou úložiště dat připojená nebo zkopírovaná. A pak se spustí **entry_script** . Když je úloha spuštěná, **stdout** a adresář **./logs** se streamují do historie spuštění. Průběh běhu můžete monitorovat pomocí těchto protokolů.
 
-- **Následné zpracování**: Adresář s **příponou./Outputs** se zkopíruje do historie spuštění ve vašem pracovním prostoru, takže můžete získat přístup k těmto výsledkům.
+- **Následné zpracování**: adresář **./Outputs** tohoto spuštění se kopíruje do historie spuštění ve vašem pracovním prostoru, takže můžete získat přístup k těmto výsledkům.
 
-Průběh spuštěné úlohy můžete sledovat několika způsoby. V tomto kurzu se používá widget Jupyter a `wait_for_completion` metoda.
+Průběh spuštěné úlohy můžete sledovat několika způsoby. V tomto kurzu se používá widget Jupyter a metoda `wait_for_completion`.
 
-### <a name="jupyter-widget"></a>Widget Jupyter
+### <a name="jupyter-widget"></a>Pomůcka Jupyter
 
 Sledujte průběh běhu pomocí [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Podobně jako odeslání běhu je pomůcka asynchronní a poskytuje aktualizace za provozu každých 10 až 15 sekund, dokud se nedokončí úloha:
 
@@ -408,7 +384,7 @@ Pokud potřebujete běh zrušit, můžete postupovat podle [těchto pokynů](htt
 
 ### <a name="get-log-results-upon-completion"></a>Získání protokolu výsledků při dokončení
 
-Trénování modelu a monitorování probíhají na pozadí. Počkejte, dokud model nedokončí školení, než spustíte více kódu. Použijte `wait_for_completion` k zobrazení po dokončení školení modelu:
+Trénování modelu a monitorování probíhají na pozadí. Počkejte, dokud model nedokončí školení, než spustíte více kódu. Po dokončení školení modelu použít `wait_for_completion`:
 
 ```python
 run.wait_for_completion(show_output=False)  # specify True for a verbose log
@@ -430,7 +406,7 @@ V dalším kurzu si tento model podrobněji prozkoumáte podrobněji.
 
 ## <a name="register-model"></a>Registrace modelu
 
-Poslední krok v školicím skriptu vypsal soubor `outputs/sklearn_mnist_model.pkl` v adresáři s názvem `outputs` ve virtuálním počítači clusteru, ve kterém je úloha spuštěná. `outputs`je speciální adresář v tom, že se veškerý obsah v tomto adresáři automaticky nahraje do vašeho pracovního prostoru. Tento obsah se objeví v záznamu spuštění v experimentu pod vaším pracovním prostorem. Proto je soubor modelu teď dostupný i ve vašem pracovním prostoru.
+Poslední krok školicího skriptu vytvořil soubor `outputs/sklearn_mnist_model.pkl` v adresáři s názvem `outputs` ve virtuálním počítači clusteru, ve kterém je úloha spuštěná. `outputs` je speciální adresář, ve kterém se veškerý obsah v tomto adresáři automaticky nahraje do vašeho pracovního prostoru. Tento obsah se objeví v záznamu spuštění v experimentu pod vaším pracovním prostorem. Proto je soubor modelu teď dostupný i ve vašem pracovním prostoru.
 
 Můžete zobrazit soubory spojené s tímto spuštěním:
 

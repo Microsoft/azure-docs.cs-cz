@@ -1,7 +1,7 @@
 ---
 title: Seznamy frází – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Naučte se poskytovat hlasové služby pomocí seznamu frází pomocí `PhraseListGrammar` objektu pro zlepšení výsledků rozpoznávání řeči na text.
+description: Naučte se poskytovat hlasové služby pomocí seznamu frází pomocí objektu `PhraseListGrammar` ke zlepšení výsledků rozpoznávání řeči na text.
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 0e552d502184d1b537263c2c1f6b2a8562cdf791
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 61d3e4d2de6b8707ee7433815f8002e5d5e3e3d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562775"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464539"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Seznamy frází pro převod řeči na text
 
-Když poskytnete hlasové služby se seznamem frází, můžete zlepšit přesnost rozpoznávání řeči. Seznamy frází slouží k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění.
+Poskytnutím služby Speech Services se seznamem frází můžete zlepšit přesnost rozpoznávání řeči. Seznamy frází slouží k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění.
 
 Příklad: Pokud máte příkaz "přesunout do" a možné místo cíle "", které je možné přehlasovat, můžete přidat položku "přesunout do" dál ". Přidáním fráze dojde k nárůstu pravděpodobnosti, že při rozpoznání zvuku bude místo možnosti přesunout směrem nahoru rozpoznáno "Přesun na".
 
-Do seznamu frází lze přidat jednotlivá slova nebo kompletní fráze. Při rozpoznávání se používá záznam v seznamu frází, pokud je do zvuku vložena přesná shoda. V předchozím příkladu, pokud seznam frází obsahuje "přesunout na další", a zaznamenaná fráze je "přesunout směrem nahoru", výsledek rozpoznávání bude "Přesun do nejbližšího zpomalit".
+Do seznamu frází lze přidat jednotlivá slova nebo kompletní fráze. Při rozpoznávání se používá záznam v seznamu frází, pokud je do zvuku vložena přesná shoda. V předchozím příkladu, pokud seznam frází obsahuje "přesunout na další", a zvuk zachycených zvuků, který je podobný jako u možnosti "přesunout směrem k" a "přesunout na předchozí", bude výsledek rozpoznávání pravděpodobně rozpoznán jako "přesunout do" na vyšší pomalé ".
 
 >[!Note]
 > V současné době seznamy frází podporují pouze angličtinu pro převod řeči na text.
 
 ## <a name="how-to-use-phrase-lists"></a>Používání seznamů frází
 
-Následující ukázky ukazují, jak vytvořit seznam frází pomocí `PhraseListGrammar` objektu.
+Následující ukázky ukazují, jak vytvořit seznam frází pomocí objektu `PhraseListGrammar`.
 
 ```C++
 auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
@@ -93,7 +93,7 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> `PhraseListGrammar` Změny objektu se projeví při dalším rozpoznávání nebo po opětovném připojení ke službám řeči.
+> Změny `PhraseListGrammar`ho objektu se projeví při příštím rozpoznávání nebo po opětovném připojení ke službám řeči.
 
 ## <a name="next-steps"></a>Další kroky
 

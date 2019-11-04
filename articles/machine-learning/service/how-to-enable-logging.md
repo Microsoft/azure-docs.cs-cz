@@ -10,20 +10,21 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a47ce44a325720fb1b6df919a0a324a4d3319d86
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002755"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489892"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Povolit přihlašování Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Sada SDK Azure Machine Learning Pythonu vám umožňuje povolit protokolování pomocí výchozího protokolovacího balíčku Pythonu i pomocí funkce specifické pro sadu SDK jak pro místní protokolování, tak pro protokolování do vašeho pracovního prostoru na portálu. Protokoly poskytují vývojářům informace o stavu aplikace v reálném čase a můžou vám pomáhat s diagnostikou chyb nebo upozornění. V tomto článku se seznámíte s různými způsoby, jak povolit protokolování v následujících oblastech:
 
 > [!div class="checklist"]
 > * Školicí modely a cíle výpočtů
-> * Vytvoření Image
+> * Vytvoření obrázku
 > * Nasazené modely
 > * Nastavení `logging` Pythonu
 
@@ -31,7 +32,7 @@ Sada SDK Azure Machine Learning Pythonu vám umožňuje povolit protokolování 
 
 ## <a name="training-models-and-compute-target-logging"></a>Školicí modely a protokolování cílů výpočtů
 
-Existuje několik způsobů, jak povolit protokolování během procesu školicích modelů, a příklady zobrazené v příkladu ilustrují běžné vzory návrhu. Data týkající se spuštění můžete do svého pracovního prostoru v cloudu snadno protokolovat pomocí `start_logging` funkce `Experiment` ve třídě.
+Existuje několik způsobů, jak povolit protokolování během procesu školicích modelů, a příklady zobrazené v příkladu ilustrují běžné vzory návrhu. Data týkající se spuštění můžete do svého pracovního prostoru v cloudu snadno protokolovat pomocí funkce `start_logging` na `Experiment` třídě.
 
 ```python
 from azureml.core import Experiment
@@ -43,7 +44,7 @@ run.log("test-val", 10)
 
 Další funkce protokolování najdete v referenční dokumentaci pro třídu [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) .
 
-Pokud chcete povolit místní protokolování stavu aplikace během procesu školení, použijte `show_output` parametr. Povolení podrobného protokolování vám umožní zobrazit podrobnosti z procesu školení a také informace o všech vzdálených prostředcích nebo výpočetních cílech. Pomocí následujícího kódu Povolte protokolování při odeslání experimentu.
+Pokud chcete povolit místní protokolování stavu aplikace během procesu školení, použijte parametr `show_output`. Povolení podrobného protokolování vám umožní zobrazit podrobnosti z procesu školení a také informace o všech vzdálených prostředcích nebo výpočetních cílech. Pomocí následujícího kódu Povolte protokolování při odeslání experimentu.
 
 ```python
 from azureml.core import Experiment
@@ -52,13 +53,13 @@ experiment = Experiment(ws, experiment_name)
 run = experiment.submit(config=run_config_object, show_output=True)
 ```
 
-Můžete také použít stejný parametr ve `wait_for_completion` funkci ve výsledném běhu.
+Ve výsledném běhu můžete použít také stejný parametr ve funkci `wait_for_completion`.
 
 ```python
 run.wait_for_completion(show_output=True)
 ```
 
-Sada SDK také podporuje použití výchozího balíčku protokolování Pythonu v některých scénářích pro školení. Následující příklad povoluje úroveň `INFO` protokolování `AutoMLConfig` v objektu.
+Sada SDK také podporuje použití výchozího balíčku protokolování Pythonu v některých scénářích pro školení. Následující příklad povoluje úroveň protokolování `INFO` v objektu `AutoMLConfig`.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -73,7 +74,7 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    primary_metric="spearman_correlation")
 ```
 
-`show_output` Parametr můžete použít také při vytváření trvalého cíle výpočtů. Zadejte parametr ve `wait_for_completion` funkci, který povolí protokolování během vytváření cílového cíle.
+Při vytváření trvalého cíle výpočtů můžete použít také parametr `show_output`. Zadáním parametru ve funkci `wait_for_completion` povolíte protokolování během vytváření cílového cíle.
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -85,7 +86,7 @@ compute.wait_for_completion(show_output=True)
 
 ## <a name="logging-during-image-creation"></a>Protokolování při vytváření image
 
-Povolení protokolování při vytváření image vám umožní zobrazit případné chyby během procesu sestavení. `show_output` Nastavte parametr`wait_for_deployment()` funkce.
+Povolení protokolování při vytváření image vám umožní zobrazit případné chyby během procesu sestavení. U funkce `wait_for_deployment()` nastavte parametr `show_output`.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -101,7 +102,7 @@ service.wait_for_deployment(show_output=True)
 
 ## <a name="logging-for-deployed-models"></a>Protokolování nasazených modelů
 
-Chcete-li načíst protokoly z dříve nasazené webové služby, načtěte službu a `get_logs()` použijte ji. Protokoly mohou obsahovat podrobné informace o všech chybách, ke kterým došlo během nasazení.
+Chcete-li načíst protokoly z dříve nasazené webové služby, načtěte službu a použijte funkci `get_logs()`. Protokoly mohou obsahovat podrobné informace o všech chybách, ke kterým došlo během nasazení.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -111,13 +112,13 @@ service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
 ```
 
-Můžete také protokolovat vlastní trasování zásobníku webové služby tím, že povolíte Application Insights, což vám umožní monitorovat časy požadavků a odpovědí, míry selhání a výjimky. Voláním `update()` funkce na existující webové službě povolíte Application Insights.
+Můžete také protokolovat vlastní trasování zásobníku webové služby tím, že povolíte Application Insights, což vám umožní monitorovat časy požadavků a odpovědí, míry selhání a výjimky. Voláním funkce `update()` v existující webové službě povolíte Application Insights.
 
 ```python
 service.update(enable_app_insights=True)
 ```
 
-Další informace o tom, jak pracovat s Application Insights v Azure Portal, najdete v tématu [How to](how-to-enable-app-insights.md) .
+Další informace o tom, jak pracovat s Application Insights v Azure Machine Learning studiu, najdete v tématu [How to](how-to-enable-app-insights.md) .
 
 ## <a name="python-native-logging-settings"></a>Nastavení nativního protokolování Pythonu
 

@@ -1,24 +1,24 @@
 ---
 title: 'Model skóre: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul určení skóre modelu ve službě Azure Machine Learning ke generování předpovědi pomocí výukového modelu klasifikace nebo regrese.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul určení skóre modelu v Azure Machine Learning k vygenerování předpovědi pomocí vyškoleného modelu klasifikace nebo regrese.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: f046b41d02ac392d003a9ecd15f25b43e5449cd0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: e7ab953a7ac0907244ebaab70b3b86cbe6f0f4d9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692670"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497649"
 ---
 # <a name="score-model-module"></a>Modul Určení skóre modelu
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vygenerovat předpovědi s využitím trained nebo regresního modelu.
 
@@ -50,7 +50,6 @@ Skóre nebo předpokládaná hodnota může být v mnoha různých formátech v 
 
 Běžné použití bodování je vrácení výstupu v rámci prediktivní webové služby. Další informace najdete v tomto kurzu, jak vytvořit webovou službu založenou na kanálu v Azure Machine Learning:
 
-
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

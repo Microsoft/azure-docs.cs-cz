@@ -10,14 +10,15 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 47387108de09c9b24471c4afc06a25fa0cbeca00
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 3f822e0089772f06245d80c1323cf1f5dfe10361
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053391"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496933"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Naučte se používat vlastní základní image Docker při nasazování vycvičených modelů pomocí Azure Machine Learning.
 
@@ -180,10 +181,10 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
 
 Společnost Microsoft poskytuje několik imagí Docker pro veřejně dostupné úložiště, které je možné použít s kroky v této části:
 
-| Image | Popis |
+| Obrázek | Popis |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Základní obrázek pro Azure Machine Learning |
-| `mcr.microsoft.com/azureml/onnxruntime:latest` | Obsahuje ONNX runtime pro PROCESORové inferecning |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | Obsahuje ONNX runtime pro PROCESORové Inferencing |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | Obsahuje modul runtime ONNX a CUDA pro GPU |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | Obsahuje ONNX runtime a TensorRT pro GPU |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Obsahuje ONNX runtime a OpenVINO pro návrh<sup> </sup> akcelerátoru Intel Vision na základě Movidius<sup>TM</sup> MyriadX VPUs |

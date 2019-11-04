@@ -5,17 +5,17 @@ services: iot-central
 ms.service: iot-central
 ms.topic: tutorial
 ms.custom:
-- iot-storeAnalytics-conditionMonitor
+- iot-storeAnalytics-checkout
 - iot-p0-scenario
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: 057602e9a595f1cb76927810801bd87e4f124d31
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 913a87df47121c18fcd4f83aa8d5a24b4041ce19
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026380"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495131"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Kurz: Export dat z Azure IoT Central a vizualizace Insights v Power BI
 

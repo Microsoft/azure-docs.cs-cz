@@ -11,14 +11,15 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe4a2082647ef1325d03ce4eec428ed1579704c5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 373713cc92379236385024beff201d16fbbfd4b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755989"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497042"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se naučíte, jak pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)vytvořit, publikovat, spouštět a sledovat [kanál strojového učení](concept-ml-pipelines.md) .  Pomocí **kanálů ml** můžete vytvořit pracovní postup, který spojuje různé fáze ml, a pak tento kanál publikovat do svého pracovního prostoru Azure Machine Learning pro pozdější přístup nebo sdílení s ostatními.  Kanály ML jsou ideální pro scénáře dávkového vyhodnocování, které používají různé výpočetní prostředky, místo jejich spouštění a sdílení pracovních postupů ML s ostatními. 
 
@@ -36,7 +37,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před t
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu.
 
-* [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [virtuální počítač Poznámkový blok](tutorial-1st-experiment-sdk-setup.md#azure) s již nainstalovanou sadou SDK.
+* [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [výpočetní instanci Azure Machine Learning](concept-compute-instance.md) s již nainstalovanou sadou SDK.
+
+> [!NOTE]
+> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
+>Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) . 
 
 Začněte připojením pracovního prostoru:
 
@@ -410,21 +415,21 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Zobrazení výsledků publikovaného kanálu
 
 Podívejte se na seznam všech publikovaných kanálů a jejich podrobnosti o spuštění:
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
 
 1. [Zobrazte svůj pracovní prostor](how-to-manage-workspace.md#view) a najděte seznam kanálů.
  ![seznam kanálů strojového učení](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Výběrem konkrétního kanálu zobrazíte výsledky spuštění.
 
-Tyto výsledky jsou také k dispozici na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com).
+Tyto výsledky jsou také k dispozici ve vašem pracovním prostoru v [Azure Machine Learning Studiu]] (https://ml.azure.com).
 
 ### <a name="disable-a-published-pipeline"></a>Zakázání publikovaného kanálu
 
 Pokud chcete kanál ze seznamu publikovaných kanálů skrýt, můžete ho zakázat:
 
 ```
-# Get the pipeline by using its ID from the Azure portal
+# Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```

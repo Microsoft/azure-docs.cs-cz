@@ -8,20 +8,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 22583d82d8e422d8176fdb7cd70a98d229e8b6bb
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736383"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494657"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Vytvoření kanálu strojového učení Apache Sparku
 
-Škálovatelná knihovna MLlib (Machine Learning Library) Apache Spark přináší možnosti modelování distribuovanému prostředí. Balíček [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) Spark je sada rozhraní API na vysoké úrovni postavená na objektech dataframes. Tato rozhraní API vám pomůžou vytvořit a ladit praktické kanály strojového učení.  *Spark Machine Learning* odkazuje na toto rozhraní API založené na MLlib dataframe, nikoli na starší rozhraní API kanálu založeného na RDD.
+Škálovatelná knihovna MLlib (Machine Learning Library) Apache Spark přináší možnosti modelování distribuovanému prostředí. [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) balíčku Spark je sada rozhraní API na vysoké úrovni postavená na objektech dataframes. Tato rozhraní API vám pomůžou vytvořit a ladit praktické kanály strojového učení.  *Spark Machine Learning* odkazuje na toto rozhraní API založené na MLlib dataframe, nikoli na starší rozhraní API kanálu založeného na RDD.
 
 Kanál strojového učení (ML) je kompletní pracovní postup, který kombinuje více algoritmů strojového učení dohromady. Může se jednat o mnoho kroků potřebných ke zpracování a získání informací z dat, což vyžaduje sekvenci algoritmů. Kanály definují fáze a pořadí procesu strojového učení. V MLlib jsou fáze kanálu reprezentovány určitým pořadím PipelineStages, kde transformátor a Estimator provádí úlohy.
 
-Transformátor je algoritmus, který transformuje jeden datový rámec na jiný `transform()` pomocí metody. Například transformátor funkce by mohl přečíst jeden sloupec datového rámce, namapovat ho do jiného sloupce a vytvořit výstup nového datového rámce s připojeným mapovaným sloupcem.
+Transformátor je algoritmus, který transformuje jeden datový rámec na jiný pomocí metody `transform()`. Například transformátor funkce by mohl přečíst jeden sloupec datového rámce, namapovat ho do jiného sloupce a vytvořit výstup nového datového rámce s připojeným mapovaným sloupcem.
 
 Estimator je abstrakce výukových algoritmů a zodpovídá za přizpůsobení nebo školení na datové sadě za účelem vytvoření transformátoru. Estimator implementuje metodu s názvem `fit()`, která přijímá datový rámec a vytvoří datový rámec, což je transformátor.
 
@@ -29,12 +29,12 @@ Každá Bezstavová instance transformátoru nebo Estimator má svůj vlastní j
 
 ## <a name="pipeline-example"></a>Příklad kanálu
 
-V tomto příkladu se k předvedení praktického použití kanálu ml používá ukázkový `HVAC.csv` datový soubor, který se načte předem do výchozího úložiště pro cluster HDInsight, a to buď Azure Storage, nebo data Lake Storage. Chcete-li zobrazit obsah souboru, přejděte do `/HdiSamples/HdiSamples/SensorSampleData/hvac` adresáře. `HVAC.csv`obsahuje sadu časů s cílovou i skutečnou teplotou pro systémy TVK (*vytápění, větrání a klimatizace*) v různých budovách. Cílem je vyškolit model na datech a vytvořit odhadovou teplotu pro danou budova.
+K předvedení praktického použití kanálu ML v tomto příkladu se používá vzorový `HVAC.csv` datový soubor, který se předběžně načte do výchozího úložiště pro cluster HDInsight, a to buď Azure Storage nebo Data Lake Storage. Chcete-li zobrazit obsah souboru, přejděte do adresáře `/HdiSamples/HdiSamples/SensorSampleData/hvac`. `HVAC.csv` obsahuje sadu časů s cílovou i skutečnou teplotou pro systémy TVK (*vytápění, větrání a*klimatizace) v různých budovách. Cílem je vyškolit model na datech a vytvořit odhadovou teplotu pro danou budova.
 
 Následující kód:
 
-1. Definuje, který `BuildingID`ukládá, `SystemInfo` (identifikátor a stáří systému) a a `label` (1,0, pokud je budova příliš horká, 0,0 jinak). `LabeledDocument`
-2. Vytvoří vlastní funkci `parseDocument` analyzátoru, která provede řádek (řádek) dat a určí, zda je budova "horká" porovnáním cílové teploty se skutečnou teplotou.
+1. Definuje `LabeledDocument`, který ukládá `BuildingID`, `SystemInfo` (identifikátor systému a stáří), a `label` (1,0, pokud je budova příliš horká, 0,0 jinak).
+2. Vytvoří funkci vlastního analyzátoru `parseDocument`, která přebírá řádek (řádek) dat a určuje, zda je budova "horká" porovnáním cílové teploty se skutečnou teplotou.
 3. Použije analyzátor při extrakci zdrojových dat.
 4. Vytvoří školicí data.
 
@@ -78,11 +78,11 @@ documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
 ```
 
-Tento příklad kanálu má tři fáze: `Tokenizer` a `HashingTF` (oba transformátory) a `Logistic Regression` (Estimator).  Extrahovaná a Analyzovaná data v `training` dataframe přecházejí prostřednictvím kanálu při `pipeline.fit(training)` volání.
+Tento příklad kanálu má tři fáze: `Tokenizer` a `HashingTF` (oba transformátory) a `Logistic Regression` (Estimator).  Extrahovaná a Analyzovaná data v `training` dataframe přecházejí prostřednictvím kanálu při volání `pipeline.fit(training)`.
 
-1. První fáze, `Tokenizer`, rozdělí `SystemInfo` vstupní sloupec (skládající se z identifikátoru systému a `words` věkové hodnoty) do výstupního sloupce. Tento nový `words` sloupec se přidá do datového rámce. 
-2. Druhá fáze, `HashingTF`, převede nový `words` sloupec na vektory funkce. Tento nový `features` sloupec se přidá do datového rámce. Tyto první dvě fáze jsou transformátory. 
-3. Třetí fáze, `LogisticRegression`, je Estimator, a proto kanál `LogisticRegression.fit()` volá metodu pro vytvoření `LogisticRegressionModel`. 
+1. První fáze, `Tokenizer`, rozdělí `SystemInfo` vstupní sloupec (skládající se z identifikátoru systému a věkové hodnoty) do sloupce `words` výstup. Tento nový `words` sloupec se přidá do datového rámce. 
+2. Druhá fáze, `HashingTF`, převede nový sloupec `words` na vektory funkce. Tento nový `features` sloupec se přidá do datového rámce. Tyto první dvě fáze jsou transformátory. 
+3. Třetí fáze, `LogisticRegression`, je Estimator, a proto kanál volá metodu `LogisticRegression.fit()` a vytvoří `LogisticRegressionModel`. 
 
 ```python
 tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-Chcete-li zobrazit `words` nové `features` `Tokenizer` sloupcea`LogisticRegression` přidané pomocí `HashingTF` transformátorů a vzorek Estimator, spusťte v původním dataframe metodu. `PipelineModel.transform()` V produkčním kódu bude další krok předávat do testu dataframe za účelem ověření školení.
+Chcete-li zobrazit nové `words` a `features` sloupce přidané `Tokenizer` a `HashingTF` transformátory a ukázku `LogisticRegression`ho Estimator, spusťte v původním dataframe metodu `PipelineModel.transform()`. V produkčním kódu bude další krok předávat do testu dataframe za účelem ověření školení.
 
 ```python
 peek = model.transform(training)
@@ -130,8 +130,8 @@ peek.show()
 only showing top 20 rows
 ```
 
-`model` Objekt se teď dá použít k vytvoření předpovědi. Úplnou ukázku této aplikace pro strojové učení a podrobné pokyny pro její spuštění najdete v tématu [sestavování aplikací Apache Spark Machine Learning v Azure HDInsight](apache-spark-ipython-notebook-machine-learning.md).
+Objekt `model` se teď dá použít k vytvoření předpovědi. Úplnou ukázku této aplikace pro strojové učení a podrobné pokyny pro její spuštění najdete v tématu [sestavování aplikací Apache Spark Machine Learning v Azure HDInsight](apache-spark-ipython-notebook-machine-learning.md).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Datové vědy s využitím Scala a Apache Spark v Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)

@@ -11,14 +11,15 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c16b6d769aa191b0e8ac86768a7eafd35ccbc3b9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9da057683f3da41f077b309db79271a10738b59d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301022"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490014"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nasazené do koncových bodů webové služby ve službě Azure Kubernetes Service (AKS) nebo Azure Container Instances (ACI) povolením Azure Application Insights. Kromě shromažďování vstupních dat a odpovědí koncového bodu můžete sledovat:
 * Míry požadavků, doby odezvy a míry selhání.
@@ -28,7 +29,7 @@ V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nas
 [Přečtěte si další informace o Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -37,7 +38,7 @@ V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nas
 
 ## <a name="web-service-input-and-response-data"></a>Data vstupu a odpovědi webové služby
 
-Vstup a odpověď na službu – odpovídající vstupům k modelu ML a jeho předpovědi – jsou protokolovány do Azure Application Insights trasování v rámci zprávy `"model_data_collection"`. Můžete se dotázat na Azure Application Insights přímo pro přístup k těmto datům nebo nastavit [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do účtu úložiště pro delší dobu uchovávání nebo dalšího zpracování. Data modelu se pak dají ve službě Azure ML použít k nastavení popisků, rekurzování, vyjasnění, analýzy dat nebo jiné použití. 
+Vstup a odpověď na službu, která odpovídá vstupům na model ML a jeho předpověď –, se zaznamenávají do trasování Azure Application Insights v `"model_data_collection"`zpráv. Můžete se dotázat na Azure Application Insights přímo pro přístup k těmto datům nebo nastavit [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do účtu úložiště pro delší dobu uchovávání nebo dalšího zpracování. Data modelu se pak dají ve službě Azure ML použít k nastavení popisků, rekurzování, vyjasnění, analýzy dat nebo jiné použití. 
 
 ## <a name="use-the-azure-portal-to-configure"></a>Ke konfiguraci použijte Azure Portal
 
@@ -47,27 +48,27 @@ V Azure Portal můžete povolit a zakázat službu Azure Application Insights.
 
 1. Na kartě **nasazení** vyberte službu, ve které chcete povolit Azure Application Insights.
 
-   [@no__t – 1List služeb na kartě nasazení](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![seznam služeb na kartě nasazení](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Vyberte **Upravit**.
 
-   [@no__t – tlačítko 1Edit](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![– tlačítko pro úpravy](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. V části **Upřesnit nastavení**zaškrtněte políčko **Povolit diagnostiku AppInsights** .
 
-   [zaškrtávací políčko @no__t – 1Selected pro povolení diagnostiky](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![zaškrtnuté políčko pro povolení diagnostiky](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily. 
 
-### <a name="disable"></a>Zakázat
+### <a name="disable"></a>Zákaz
 1. V [Azure Portal](https://portal.azure.com)otevřete pracovní prostor.
 1. Vyberte **nasazení**, vyberte službu a pak vyberte **Upravit**.
 
-   [@no__t – 1Use tlačítko pro úpravy](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![použít tlačítko Upravit](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. V části **Upřesnit nastavení**zrušte zaškrtnutí políčka **Povolit diagnostiku AppInsights** . 
 
-   [zaškrtávací políčko @no__t – 1Cleared pro povolení diagnostiky](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [zaškrtnutí políčka ![pro povolení diagnostiky nezaškrtnuté.](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily. 
  
@@ -112,35 +113,68 @@ Pokud chcete zakázat službu Azure Application Insights, použijte následujíc
 <service_name>.update(enable_app_insights=False)
 ```
     
+## <a name="use-studio-to-configure"></a>Použití studia ke konfiguraci
+
+Můžete povolit nebo zakázat Application Insights v Azure Machine Learning Studiu.
+
+1. V aplikaci [Azure Machine Learning Studio](https://ml.azure.com)otevřete pracovní prostor.
+
+1. Na kartě **nasazení** vyberte službu, u které chcete povolit Application Insights.
+
+   [![seznam služeb na kartě nasazení](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+
+3. Vyberte **Upravit**.
+
+   [![– tlačítko pro úpravy](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+
+4. V části **Upřesnit nastavení**zaškrtněte políčko **Povolit diagnostiku AppInsights** .
+
+   [![zaškrtnuté políčko pro povolení diagnostiky](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+
+1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily. 
+
+### <a name="disable"></a>Zákaz
+1. V aplikaci [Azure Machine Learning Studio](https://ml.azure.com)otevřete pracovní prostor.
+1. Vyberte **nasazení**, vyberte službu a vyberte **Upravit**.
+
+   [![použít tlačítko Upravit](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+
+1. V části **Upřesnit nastavení**zrušte zaškrtnutí políčka **Povolit diagnostiku AppInsights** . 
+
+   [zaškrtnutí políčka ![pro povolení diagnostiky nezaškrtnuté.](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+
+1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily. 
+ 
+
 ## <a name="evaluate-data"></a>Vyhodnotit data
 Data vaší služby se ukládají do účtu Azure Application Insights v rámci stejné skupiny prostředků jako Azure Machine Learning.
 Zobrazení:
-1. V [Azure Portal](https://portal.azure.com)přejdete do pracovního prostoru služby Machine Learning. Klikněte na odkaz Azure Application Insights.
+1. Přejděte do pracovního prostoru služby Machine Learning v [Azure Machine Learning Studiu](https://ml.azure.com) a klikněte na odkaz Application Insights.
 
-    [@no__t – 1AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
 1. Výběrem karty **Přehled** zobrazíte základní sadu metrik pro vaši službu.
 
-   [@no__t – 1Overview](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
+   [Přehled ![](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Chcete-li se podívat na vstupy a výstupy vaší webové služby, vyberte **Analýza** .
-1. V části schéma vyberte **trasování** a vyfiltrujte trasování pomocí zprávy `"model_data_collection"`. Ve vlastních dimenzích můžete zobrazit vstupy, předpovědi a další relevantní podrobnosti.
+1. V části schéma vyberte **trasování** a vyfiltrujte trasování pomocí `"model_data_collection"`zpráv. Ve vlastních dimenzích můžete zobrazit vstupy, předpovědi a další relevantní podrobnosti.
 
-   [data @no__t – 1Model](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
+   [![data modelu](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 
 3. Pokud chcete vyhledat vlastní trasování, vyberte **Analytics**.
 4. V části schématu vyberte **trasování**. Pak vyberte **Spustit** a spusťte dotaz. Data by se měla zobrazit ve formátu tabulky a měla by se namapovat na vaše vlastní volání v souboru bodování. 
 
-   [@no__t – trasování 1Custom](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+   [![vlastní trasování](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Další informace o tom, jak používat Azure Application Insights, najdete v tématu [co je Application Insights?](../../azure-monitor/app/app-insights-overview.md).
 
 ## <a name="export-data-for-further-processing-and-longer-retention"></a>Exportovat data pro další zpracování a delší dobu uchování
 
-Můžete použít [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) v Azure Application Insights k posílání zpráv do podporovaného účtu úložiště, kde je možné nastavit delší dobu uchování. Zprávy `"model_data_collection"` jsou uloženy ve formátu JSON a lze je snadno analyzovat pro extrakci dat modelu. Azure Data Factory, kanály Azure ML nebo jiné nástroje pro zpracování dat se dají použít k transformaci dat podle potřeby. Po transformaci dat ji můžete zaregistrovat v pracovním prostoru služby Azure Machine Learning jako datovou sadu.
+Můžete použít [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) v Azure Application Insights k posílání zpráv do podporovaného účtu úložiště, kde je možné nastavit delší dobu uchování. Zprávy `"model_data_collection"` jsou uloženy ve formátu JSON a lze je snadno analyzovat pro extrakci dat modelu. Azure Data Factory, kanály Azure ML nebo jiné nástroje pro zpracování dat se dají použít k transformaci dat podle potřeby. Po transformaci dat je můžete zaregistrovat v pracovním prostoru Azure Machine Learning jako datovou sadu. Postup najdete v tématu [jak vytvořit a zaregistrovat datové sady](how-to-create-register-datasets.md).
 
-   [@no__t – export 1Continuous](media/how-to-enable-app-insights/continuous-export-setup.png)](./media/how-to-enable-app-insights/continuous-export-setup.png)
+   [![průběžný export](media/how-to-enable-app-insights/continuous-export-setup.png)](./media/how-to-enable-app-insights/continuous-export-setup.png)
 
 
 ## <a name="example-notebook"></a>Příklad poznámkového bloku

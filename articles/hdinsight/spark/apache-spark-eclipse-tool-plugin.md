@@ -1,5 +1,5 @@
 ---
-title: 'Azure Toolkit for Eclipse: Vytváření Scalach aplikací pro HDInsight Spark '
+title: 'Azure Toolkit for Eclipse: vytváření aplikací Scala pro HDInsight Spark'
 description: Nástroje HDInsight v Azure Toolkit for Eclipse slouží k vývoji aplikací Spark napsaných v Scala a jejich odeslání do clusteru HDInsight Spark přímo z integrovaného vývojového prostředí (IDE).
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 5336153a776f3324e5f73564ba2804389cd96938
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7e320b4a0166ffad3ba62c80ad7667c626acb136
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257575"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494678"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Použití Azure Toolkit for Eclipse k vytvoření Apache Spark aplikací pro cluster HDInsight
 
@@ -26,7 +26,7 @@ Pomocí nástrojů HDInsight v sadě Azure Toolkit for [zatmění](https://www.e
 > [!IMPORTANT]  
 > Pomocí tohoto nástroje můžete vytvářet a odesílat aplikace jenom pro cluster HDInsight Spark v systému Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Apache Spark clusteru v HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 * Oracle Java Development Kit verze 8, která se používá pro modul runtime prostředí IDE pro zatmění. Můžete si ho stáhnout z [webu Oracle](https://aka.ms/azure-jdks).
@@ -71,7 +71,7 @@ Uživatel se může [přihlásit k předplatnému Azure](#sign-in-to-your-azure-
 
 ## <a name="link-a-cluster"></a>Propojení clusteru
 
-Běžný cluster můžete propojit pomocí spravovaného uživatelského jména Ambari. Podobně v případě clusteru HDInsight připojeného k doméně můžete propojit s doménou a uživatelským jménem, jako `user1@contoso.com`je například.
+Běžný cluster můžete propojit pomocí spravovaného uživatelského jména Ambari. Podobně v případě clusteru HDInsight připojeného k doméně můžete propojit pomocí domény a uživatelského jména, například `user1@contoso.com`.
 
 1. Vyberte **propojit cluster** z **Azure Exploreru**.
 
@@ -83,7 +83,7 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
 
    > [!NOTE]  
    > V případě, že se ke clusteru přihlásilo v předplatném Azure i v souvislosti s clusterem, používáme klíč propojeného úložiště, uživatelské jméno a heslo
-   > ![Účty úložiště Azure Explorer](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
+   > ![účty úložiště Azure Explorer](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
 
 1. Odkazovaný cluster můžete zobrazit v uzlu **HDInsight** po kliknutí na tlačítko OK, pokud jsou zadané informace správné. Nyní můžete odeslat aplikaci do tohoto odkazovaného clusteru.
 
@@ -214,7 +214,7 @@ Pomocí nástrojů HDInsight můžete provádět různé operace, včetně pří
 
 1. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru. Při zřizování clusteru jste tyto služby zadali.
 
-### <a name="manage-azure-subscriptions"></a>Spravovat předplatná Azure
+### <a name="manage-azure-subscriptions"></a>Správa předplatných Azure
 
 Ve výchozím nastavení nástroj HDInsight v Azure Toolkit for Eclipse uvádí Clustery Spark ze všech vašich předplatných Azure. V případě potřeby můžete zadat odběry, pro které chcete získat přístup ke clusteru.
 
@@ -312,19 +312,19 @@ Když propojíte cluster, doporučujeme vám poskytnout přihlašovací údaje �
 
 Existují dva režimy, jak odeslat úlohy. Pokud je zadané přihlašovací údaje úložiště, použije se k odeslání úlohy dávkový režim. V opačném případě bude použit interaktivní režim. Pokud je cluster zaneprázdněný, může se zobrazit chyba níže.
 
-Při ![zaneprázdněném clusteru se zobrazí chyba funkce zatmění] Při (./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "zaneprázdněném clusteru se zobrazí chyba funkce zatmění")
+![Při zaneprázdněném clusteru se zobrazí chyba funkce zatmění](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "Při zaneprázdněném clusteru se zobrazí chyba funkce zatmění")
 
-Při ![zaneprázdněném přízi clusteru se zobrazí chyba funkce zatmění] Při (./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "zaneprázdněném přízi clusteru se zobrazí chyba funkce zatmění")
+![Při zaneprázdněném přízi clusteru se zobrazí chyba funkce zatmění](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "Při zaneprázdněném přízi clusteru se zobrazí chyba funkce zatmění")
 
 ## <a name="seealso"></a>Viz také
 
-* [Přehled Apache Spark ve službě Azure HDInsight](apache-spark-overview.md)
+* [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
 
-* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: Použití Sparku ve službě HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI.](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Vytváření a spouštění aplikací

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 40a2443419fab5d0a89d704312d880e344597b8b
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: db6e47b39b7ebe35a6c0fef42af53f91e96c363f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053899"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496196"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -47,7 +47,7 @@ Azure SQL Database vychází z architektury SQL Server databázového stroje, kt
 
 Navíc se čas potřebný k vytvoření záloh databáze nebo horizontální navýšení nebo snížení kapacity už neváže na objem dat v databázi. Databáze s škálovatelným škálováním se dají zálohovat prakticky okamžitě. Můžete také škálovat databázi v desítkách terabajtů v řádu minut. Díky tomu budete mít obavy z toho, že budete mít v zabalené možnosti počáteční konfigurace.
 
-Další informace o velikostech výpočtů pro úroveň služby technologie škálování na úrovni služeb najdete v tématu [Vlastnosti vrstvy služeb](sql-database-service-tiers-vcore.md#service-tier-characteristics).
+Další informace o velikostech výpočtů pro úroveň služby technologie škálování na úrovni služeb najdete v tématu [Vlastnosti vrstvy služeb](sql-database-service-tiers-vcore.md#service-tiers).
 
 ## <a name="who-should-consider-the-hyperscale-service-tier"></a>Kdo by měl uvažovat o úrovni služby škálování na úrovni služeb
 
