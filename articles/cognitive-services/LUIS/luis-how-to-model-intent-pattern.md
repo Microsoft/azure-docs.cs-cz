@@ -9,41 +9,43 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 7b6c8ba1517de44d01ffbceec812749403465e63
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cbd8ad73ff4a03790dd6b22d5ce33acf09a2b125
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638092"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491365"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Postup přidání vzorů pro zlepšení přesnosti předpovědi
 Jakmile aplikace LUIS přijme koncový bod projevy, použijte [vzorek](luis-concept-patterns.md) , který vylepšit přesnost předpovědi pro projevy, která odhalí vzor v textovém pořadí a v textovém výběru. Vzory používají specifickou [syntaxi](luis-concept-patterns.md#pattern-syntax) k označení umístění: [entity](luis-concept-entity-types.md), [role](luis-concept-roles.md)entit a volitelného textu.
 
-## <a name="add-template-utterance-to-create-pattern"></a>Přidat utterance šablony k vytvoření vzorku
-1. Otevřete aplikaci tak, že vyberete jeho název na **Moje aplikace** stránce a pak vyberte **vzory** v levém panelu klikněte v části **zvýšit výkon aplikace**.
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-    ![Snímek obrazovky seznamu vzorů](./media/luis-how-to-model-intent-pattern/patterns-1.png)
+## <a name="add-template-utterance-to-create-pattern"></a>Přidání šablony utterance k vytvoření vzoru
+1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název a na levém panelu jste v části **zlepšení výkonu aplikace**vybrali **vzory** .
 
-2. Vyberte správný záměr pro vzor. 
+    ![Snímek obrazovky se seznamem vzorů](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
-    ![Vyberte záměr](./media/luis-how-to-model-intent-pattern/patterns-2.png)
+2. Vyberte správný záměr pro daný model. 
 
-3. V textovém poli šablony zadejte utterance šablony a stiskněte Enter. Pokud chcete zadat název entity, použijte syntaxi správný model entity. Začněte syntaxe entity s `{`. Seznam entit zobrazí. Vyberte správný entitu a pak stiskněte Enter. 
+    ![Vybrat záměr](./media/luis-how-to-model-intent-pattern/patterns-2.png)
 
-    ![Snímek obrazovky pro model entity](./media/luis-how-to-model-intent-pattern/patterns-3.png)
+3. Do textového pole šablony zadejte šablonu utterance a vyberte Enter. Pokud chcete zadat název entity, použijte správnou syntaxi entity Pattern. Zahajte syntaxi entity pomocí `{`. Zobrazí se seznam entit. Vyberte správnou entitu a pak vyberte zadat. 
 
-    Pokud vaše entita obsahuje [roli](luis-concept-roles.md), uveďte roli s jednou dvojtečkou `:`, za `{Location:Origin}`názvem entity, jako je například. Seznam rolí pro entity, které se zobrazí v seznamu. Vyberte roli a pak stiskněte Enter. 
+    ![Snímek entity pro vzor](./media/luis-how-to-model-intent-pattern/patterns-3.png)
+
+    Pokud vaše entita obsahuje [roli](luis-concept-roles.md), uveďte roli s jednou dvojtečkou, `:`za názvem entity, jako je například `{Location:Origin}`. Seznam rolí pro entity se zobrazí v seznamu. Vyberte roli a pak vyberte zadat. 
 
     ![Snímek obrazovky entity s rolí](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 
-    Po výběru entity správné zadáte vzor a pak stiskněte Enter. Po dokončení zadávání vzorce [trénování](luis-how-to-train.md) vaší aplikace.
+    Po výběru správné entity Dokončete zadání vzoru a pak vyberte Enter. Jakmile dokončíte zadávání vzorů, proveďte [výuku](luis-how-to-train.md) své aplikace.
 
-    ![Snímek obrazovky zadaný vzor s oběma typy entit](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+    ![Snímek obrazovky zadaného vzoru s oběma typy entit](./media/luis-how-to-model-intent-pattern/patterns-5.png)
 
-## <a name="train-your-app-after-changing-model-with-patterns"></a>Po změně modelu s vzory trénování vaší aplikace
-Po přidání, úpravy, odebrat nebo změnit přiřazení vzor, [trénování](luis-how-to-train.md) a [publikovat](luis-how-to-publish-app.md) vaší aplikace pro vaše změny ovlivnit dotazy koncový bod. 
+## <a name="train-your-app-after-changing-model-with-patterns"></a>Školení aplikace po změně modelu pomocí vzorů
+Po přidání, úpravě, odebrání nebo opětovném přiřazení vzoru, [školení](luis-how-to-train.md) a [publikování](luis-how-to-publish-app.md) aplikace pro změny, které mají vliv na dotazy koncového bodu. 
 
 <a name="search-patterns"></a>
 <a name="edit-a-pattern"></a>
@@ -62,16 +64,16 @@ Kontextový panel nad seznamem vzorů vám umožní:
 
 * Vyhledat vzory
 * Úprava vzoru
-* Změnit přiřazení jednotlivých vzor, který má jiný záměr
-* Znovu přiřadit několik vzory na různých záměr
+* Změna přiřazení jednotlivého vzoru jinému záměru
+* Opětovné přiřazení několika vzorů jinému záměru
 * Odstranění – jeden vzor
-* Odstranit některé postupy
-* Vzor seznam můžete filtrovat podle entity
+* Odstranění několika vzorů
+* Filtrovat seznam vzorků podle entity
 * Filtr – vzor – seznam po záměru
-* Odebrat entitu nebo záměru filtru
-* Přidat model z existující utterance na stránce záměr nebo entity
+* Odebrat entitu nebo filtr záměru
+* Přidat vzor ze stávající stránky utterance na záměr nebo entitu
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Naučte se [vytvářet vzor](luis-tutorial-pattern.md) pomocí vzoru. jakékoli role a s kurzem.
-* Zjistěte, jak [trénování](luis-how-to-train.md) vaší aplikace.
+* Naučte se, jak svou aplikaci [naučit](luis-how-to-train.md) .

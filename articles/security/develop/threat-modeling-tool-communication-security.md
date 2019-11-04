@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 090242cde79f6c31b0f70e1a75240778dca89fa7
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1c9562f413fa0ed52d61d0b38df358f1a2cd03f9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828584"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498674"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Rámec zabezpečení: zabezpečení komunikace | Hrozeb 
 | Produkt/služba | Článek |
@@ -102,7 +102,7 @@ ms.locfileid: "71828584"
 | **Fáze SDL**               | Build |  
 | **Použitelné technologie** | Obecněji |
 | **Atribut**              | EnvironmentType – Azure |
-| **Odkazy**              | [Povolení HTTPS pro aplikaci v Azure App Service](../../app-service/app-service-web-tutorial-custom-ssl.md) |
+| **Odkazy**              | [Povolení HTTPS pro aplikaci v Azure App Service](../../app-service/configure-ssl-bindings.md) |
 | **Kroky** | Ve výchozím nastavení Azure už pro každou aplikaci s certifikátem se zástupným znakem pro doménu *. azurewebsites.net povoluje protokol HTTPS. Stejně jako u všech domén se zástupnými znaky ale není tak bezpečné jako použití vlastní domény s vlastním [certifikátem](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/). Doporučuje se povolit SSL pro vlastní doménu, ke které se nasazená aplikace přistupovala prostřednictvím.|
 
 ## <a id="appservice-https"></a>Vynutit veškerý provoz na Azure App Service přes připojení HTTPS
@@ -113,7 +113,7 @@ ms.locfileid: "71828584"
 | **Fáze SDL**               | Build |  
 | **Použitelné technologie** | Obecněji |
 | **Atribut**              | EnvironmentType – Azure |
-| **Odkazy**              | [Vynutilit HTTPS na Azure App Service](../../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
+| **Odkazy**              | [Vynutilit HTTPS na Azure App Service](../../app-service/configure-ssl-bindings.md#enforce-https) |
 | **Kroky** | <p>I když Azure už umožňuje protokol HTTPS pro služby Azure App Services s certifikátem se zástupným znakem pro doménu *. azurewebsites.net, neuplatňuje protokol HTTPS. Návštěvníci můžou k aplikaci přistupovat i přes protokol HTTP, což může ohrozit zabezpečení aplikace, a proto je nutné explicitně vyhovět HTTPS. Aplikace ASP.NET MVC by měly použít [Filtr RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) , který vynutí opětovné odeslání nezabezpečeného požadavku HTTP prostřednictvím protokolu HTTPS.</p><p>Alternativně je možné k vykonání protokolu HTTPS použít modul pro přepsání adresy URL, který je součástí Azure App Service. Modul pro přepis adres URL umožňuje vývojářům definovat pravidla, která se aplikují na příchozí požadavky před předáním požadavků do vaší aplikace. Pravidla pro přepis adres URL jsou definovaná v souboru Web. config uloženém v kořenovém adresáři aplikace.</p>|
 
 ### <a name="example"></a>Příklad:
@@ -136,7 +136,7 @@ Následující příklad obsahuje pravidlo pro přepsání základní adresy URL
   </system.webServer>
 </configuration>
 ```
-Toto pravidlo funguje tak, že vrátí stavový kód HTTP 301 (trvalé přesměrování), když uživatel požádá o stránku pomocí protokolu HTTP. Rozhraní 301 přesměruje požadavek na stejnou adresu URL, jakou požadoval návštěvník, ale nahradí část požadavku HTTP pomocí protokolu HTTPS. Například HTTP://contoso.com se přesměruje na HTTPS://contoso.com. 
+Toto pravidlo funguje tak, že vrátí stavový kód HTTP 301 (trvalé přesměrování), když uživatel požádá o stránku pomocí protokolu HTTP. Rozhraní 301 přesměruje požadavek na stejnou adresu URL, jakou požadoval návštěvník, ale nahradí část požadavku HTTP pomocí protokolu HTTPS. Například HTTP://contoso.com by byl přesměrován na HTTPS://contoso.com. 
 
 ## <a id="http-hsts"></a>Povolit zabezpečení protokolu HTTP Strict Transport (HSTS)
 
@@ -158,7 +158,7 @@ Toto pravidlo funguje tak, že vrátí stavový kód HTTP 301 (trvalé přesměr
 | **Použitelné technologie** | SQL Azure  |
 | **Atribut**              | SQL verze – V12 |
 | **Odkazy**              | [Osvědčené postupy při psaní řetězců zabezpečeného připojení pro SQL Database](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
-| **Kroky** | <p>Veškerá komunikace mezi SQL Database a klientskou aplikací se vždy šifruje pomocí SSL (Secure Sockets Layer) (SSL). SQL Database nepodporuje nešifrovaná připojení. Chcete-li ověřit certifikáty pomocí kódu aplikace nebo nástrojů, explicitně vyžádejte šifrované připojení a nedůvěřuje certifikátům serveru. Pokud kód aplikace nebo nástroje nevyžadují šifrované připojení, budou i nadále přijímat šifrovaná připojení.</p><p>Nemusí však ověřovat certifikáty serveru a proto budou náchylné k útokům typu "muž" v prostředním. Chcete-li ověřit certifikáty s kódem aplikace ADO.NET, nastavte v připojovacím řetězci databáze `Encrypt=True` a `TrustServerCertificate=False`. Pokud chcete certifikáty ověřit přes SQL Server Management Studio, otevřete dialogové okno připojit k serveru. Klikněte na šifrovat připojení na kartě Vlastnosti připojení.</p>|
+| **Kroky** | <p>Veškerá komunikace mezi SQL Database a klientskou aplikací se vždy šifruje pomocí SSL (Secure Sockets Layer) (SSL). SQL Database nepodporuje nešifrovaná připojení. Chcete-li ověřit certifikáty pomocí kódu aplikace nebo nástrojů, explicitně vyžádejte šifrované připojení a nedůvěřuje certifikátům serveru. Pokud kód aplikace nebo nástroje nevyžadují šifrované připojení, budou i nadále přijímat šifrovaná připojení.</p><p>Nemusí však ověřovat certifikáty serveru a proto budou náchylné k útokům typu "muž" v prostředním. Chcete-li ověřit certifikáty s kódem aplikace ADO.NET, nastavte `Encrypt=True` a `TrustServerCertificate=False` v připojovacím řetězci databáze. Pokud chcete certifikáty ověřit přes SQL Server Management Studio, otevřete dialogové okno připojit k serveru. Klikněte na šifrovat připojení na kartě Vlastnosti připojení.</p>|
 
 ## <a id="encrypted-sqlserver"></a>Vynutit šifrovanou komunikaci s SQL serverem
 
@@ -213,7 +213,7 @@ Toto pravidlo funguje tak, že vrátí stavový kód HTTP 301 (trvalé přesměr
 | **Použitelné technologie** | Obecné, Windows Phone |
 | **Atribut**              | Nevztahuje se  |
 | **Odkazy**              | [Certifikát a připnutí veřejného klíče](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
-| **Kroky** | <p>Připnutí certifikátů brání útokům MITM (man-in-the-middle). Připnutí je proces přidružení hostitele k očekávanému certifikátu x509 nebo veřejnému klíči. Jakmile je certifikát nebo veřejný klíč známý nebo zobrazený pro hostitele, certifikát nebo veřejný klíč je přidružený k hostiteli nebo "připnuté". </p><p>Proto když se nežádoucí osoba pokusí udělat útok SSL MITM během útoku SSL, klíč ze serveru útočníka se bude lišit od klíče připnutého certifikátu a požadavek se zahodí, takže zabrání připnutí certifikátů MITM. implementuje se Třída ServicePointManager delegáta `ServerCertificateValidationCallback`.</p>|
+| **Kroky** | <p>Připnutí certifikátů brání útokům MITM (man-in-the-middle). Připnutí je proces přidružení hostitele k očekávanému certifikátu x509 nebo veřejnému klíči. Jakmile je certifikát nebo veřejný klíč známý nebo zobrazený pro hostitele, certifikát nebo veřejný klíč je přidružený k hostiteli nebo "připnuté". </p><p>Proto když se nežádoucí osoba pokusí udělat útok SSL MITM během útoku SSL, klíč ze serveru útočníka se bude lišit od klíče připnutého certifikátu a požadavek se zahodí, takže zabrání připnutí certifikátů MITM. implementace delegáta `ServerCertificateValidationCallback` Třída ServicePointManager</p>|
 
 ### <a name="example"></a>Příklad:
 ```csharp
@@ -290,7 +290,7 @@ namespace CertificatePinningExample
 | **Použitelné technologie** | Rozhraní .NET Framework 3 |
 | **Atribut**              | Nevztahuje se  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
-| **Kroky** | Konfigurace aplikace by měla zajistit, aby se protokol HTTPS používal pro veškerý přístup k citlivým informacím.<ul><li>**Vysvětlení:** Pokud aplikace zpracovává citlivé informace a nepoužívá šifrování na úrovni zpráv, měla by být povolena pouze komunikace přes zašifrovaný transportní kanál.</li><li>**Doporučení:** Zajistěte, aby byl zakázán přenos HTTP, a místo toho povolte přenos HTTPS. Například nahraďte značku `<httpsTransport/>` `<httpTransport/>`. Nespoléhá na síťovou konfiguraci (bránu firewall), aby se zaručilo, že aplikaci lze používat jenom přes zabezpečený kanál. Z pohledu Philosophical by aplikace neměla záviset na síti pro své zabezpečení.</li></ul><p>Z praktického hlediska můžou osoby zodpovědné za zabezpečení sítě vždycky sledovat požadavky na zabezpečení aplikace při jejich vývoje.</p>|
+| **Kroky** | Konfigurace aplikace by měla zajistit, aby se protokol HTTPS používal pro veškerý přístup k citlivým informacím.<ul><li>**Vysvětlení:** Pokud aplikace zpracovává citlivé informace a nepoužívá šifrování na úrovni zpráv, měla by být povolena pouze komunikace přes zašifrovaný transportní kanál.</li><li>**Doporučení:** Zajistěte, aby byl zakázán přenos HTTP, a místo toho povolte přenos HTTPS. Například nahraďte `<httpTransport/>` značkou `<httpsTransport/>`. Nespoléhá na síťovou konfiguraci (bránu firewall), aby se zaručilo, že aplikaci lze používat jenom přes zabezpečený kanál. Z pohledu Philosophical by aplikace neměla záviset na síti pro své zabezpečení.</li></ul><p>Z praktického hlediska můžou osoby zodpovědné za zabezpečení sítě vždycky sledovat požadavky na zabezpečení aplikace při jejich vývoje.</p>|
 
 ## <a id="message-protection"></a>WCF: Nastavte úroveň ochrany zabezpečení zprávy na EncryptAndSign
 
@@ -301,10 +301,10 @@ namespace CertificatePinningExample
 | **Použitelné technologie** | .NET Framework 3 |
 | **Atribut**              | Nevztahuje se  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **Kroky** | <ul><li>**Vysvětlení:** Pokud je úroveň ochrany nastavená na hodnotu žádné, zakáže se ochrana zpráv. Důvěrnost a integrita se dosahuje pomocí vhodné úrovně nastavení.</li><li>**DOPORUČIT**<ul><li>Když `Mode=None` – zakáže ochranu zpráv</li><li>Když `Mode=Sign` – podepisuje, ale nešifruje zprávu; by měla být použita, pokud je integrita dat důležitá.</li><li>Když `Mode=EncryptAndSign`-podepisuje a zašifruje zprávu</li></ul></li></ul><p>Zvažte vypnutí šifrování a podepsání zprávy pouze v případě, že pouze potřebujete ověřit integritu informací bez obav. To může být užitečné pro operace nebo kontrakty služby, ve kterých potřebujete ověřit původní odesílatele, ale neodesílají se žádná citlivá data. Při snižování úrovně ochrany buďte opatrní, že zpráva neobsahuje žádné osobní údaje.</p>|
+| **Kroky** | <ul><li>**Vysvětlení:** Pokud je úroveň ochrany nastavená na hodnotu žádné, zakáže se ochrana zpráv. Důvěrnost a integrita se dosahuje pomocí vhodné úrovně nastavení.</li><li>**DOPORUČIT**<ul><li>Když `Mode=None` – zakáže ochranu zpráv.</li><li>Když se `Mode=Sign` – podepisuje, ale nešifruje zprávu; by měla být použita, pokud je integrita dat důležitá.</li><li>Když se `Mode=EncryptAndSign` – podepíše a zašifruje zprávu.</li></ul></li></ul><p>Zvažte vypnutí šifrování a podepsání zprávy pouze v případě, že pouze potřebujete ověřit integritu informací bez obav. To může být užitečné pro operace nebo kontrakty služby, ve kterých potřebujete ověřit původní odesílatele, ale neodesílají se žádná citlivá data. Při snižování úrovně ochrany buďte opatrní, že zpráva neobsahuje žádné osobní údaje.</p>|
 
 ### <a name="example"></a>Příklad:
-Konfigurace služby a operace pro podepsání zprávy se zobrazí v následujících příkladech. Příklad kontraktu služby `ProtectionLevel.Sign`: Následuje příklad použití ProtectionLevel. Sign na úrovni kontraktu služby: 
+Konfigurace služby a operace pro podepsání zprávy se zobrazí v následujících příkladech. Příklad kontraktu služby `ProtectionLevel.Sign`: Následuje příklad použití technologie ProtectionLevel. Sign na úrovni kontraktu služby: 
 ```
 [ServiceContract(Protection Level=ProtectionLevel.Sign] 
 public interface IService 
@@ -314,7 +314,7 @@ public interface IService
 ```
 
 ### <a name="example"></a>Příklad:
-Příklad kontraktu operace `ProtectionLevel.Sign` (pro podrobný ovládací prvek): Následující příklad je použití `ProtectionLevel.Sign` na úrovni OperationContract:
+Příklad kontraktu operace `ProtectionLevel.Sign` (pro detailní řízení): Následuje příklad použití `ProtectionLevel.Sign` na úrovni OperationContract:
 
 ```
 [OperationContract(ProtectionLevel=ProtectionLevel.Sign] 

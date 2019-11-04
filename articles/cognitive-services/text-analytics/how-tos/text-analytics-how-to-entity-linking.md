@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/30/2019
+ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984266"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488646"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -23,47 +23,109 @@ ms.locfileid: "70984266"
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Propojování entit a rozpoznávání pojmenovaných entit
 
-Koncový bod analýza textu `entities` ' podporuje rozpoznávání pojmenovaných entit (ner) a propojení entit.
+Koncový bod Analýza textu `entities` podporuje rozpoznávání pojmenovaných entit (NER) i propojení entit.
 
-### <a name="entity-linking"></a>Entity Linking
-Propojení entit je schopnost identifikovat a odstranit identitu entity nalezenou v textu (například určit, zda je služba Mars používána jako globálním nebo jako Římská jsou of War). Tento proces vyžaduje přítomnost znalostní báze, ke které jsou propojené entity připojené – Wikipedii se používá jako znalostní báze pro `entities` koncový bod analýza textu.
+### <a name="entity-linking"></a>Propojování entit
+Propojení entit je schopnost identifikovat a odstranit identitu entity nalezenou v textu (například určit, zda je služba Mars používána jako globálním nebo jako Římská jsou of War). Tento proces vyžaduje přítomnost znalostní báze, ke které jsou propojené entity připojené – Wikipedii se používá jako znalostní báze Analýza textu koncového bodu `entities`.
 
 ### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
-Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé entity v textu a kategorizovat je do předem definovaných tříd. Podporované třídy entit jsou uvedeny níže.
+Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé entity v textu a kategorizovat je do předem definovaných tříd nebo typů. 
 
-V Analýza textu [verze 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)jsou pro několik jazyků k dispozici jak propojení entit, tak rozpoznávání pojmenovaných entit (ner). Další informace najdete v článku věnovaném [jazykové podpoře](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
+## <a name="named-entity-recognition-v3-public-preview"></a>Rozpoznávání pojmenovaných entit V3 Public Preview
 
-### <a name="language-support"></a>Podpora jazyků
+[Další verze rozpoznávání pojmenovaných entit](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) je nyní k dispozici ve verzi Public Preview. Poskytuje aktualizace pro odkazování na entity i pro rozpoznávání pojmenovaných entit. 
 
-Použití propojení entit v různých jazycích vyžaduje použití odpovídající znalostní báze v jednotlivých jazycích. V případě propojení entit v analýza textu to znamená, že každý jazyk podporovaný `entities` koncovým bodem odkazuje na odpovídající corpus Wikipedii v daném jazyce. Vzhledem k tomu, že velikost Corpora se v různých jazycích liší, očekává se, že se projeví i odvolání funkce propojení entit.
+:::row:::
+    :::column span="":::
+        **Funkce**
+    :::column-end:::
+    ::: column span="":::
+        **Popis** 
+    :::column-end:::
+:::row-end:::
+<!-- expanded types and subtypes row-->
+:::row:::
+    :::column span="":::
+        Rozšířené typy a podtypy entit
+    :::column-end:::
+    :::column span="":::
+     Rozšířená klasifikace a detekce pro několik pojmenovaných typů entit
+    :::column-end:::
+:::row-end:::
+<!-- separate endpoints row-->
+:::row:::
+    :::column span="":::
+        Samostatné koncové body požadavku 
+    :::column-end:::
+    :::column span="":::
+        Samostatné koncové body pro posílání NER entit a žádostí o připojení.
+    :::column-end:::
+:::row-end:::
+<!-- model-version row -->
+:::row:::
+    :::column span="":::
+        `model-version` parametr
+    :::column-end:::
+    :::column span="":::
+        Volitelný parametr pro výběr verze Analýza textuho modelu. V současné době je k dispozici pouze výchozí model.
+    :::column-end:::
+:::row-end:::
 
-## <a name="supported-types-for-named-entity-recognition"></a>Podporované typy pro rozpoznávání pojmenovaných entit
+### <a name="entity-types"></a>Typy entit
 
-| type  | SubType | Příklad |
+Rozpoznávání pojmenovaných entit V3 poskytuje rozšířené zjišťování napříč více typy. V současné době může NER V3 rozpoznat následující kategorie entit. Podrobný seznam podporovaných entit a jazyků naleznete v článku [pojmenované typy entit](../named-entity-types.md) .
+
+* Obecné
+* Osobní údaje 
+
+### <a name="request-endpoints"></a>Koncové body požadavku
+
+Rozpoznávání pojmenovaných entit V3 používá samostatné koncové body pro žádosti NER a propojení entit. V závislosti na vaší žádosti použijte formát adresy URL:
+
+NER
+* Obecné entity – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+
+* Entity osobních informací – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+
+Propojení entit
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+### <a name="model-versioning"></a>Správa verzí modelů
+
+[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+
+## <a name="supported-types-for-named-entity-recognition-v2"></a>Podporované typy pro rozpoznávání pojmenovaných entit v2
+
+> [!NOTE]
+> Následující entity jsou podporovány funkcí rozpoznávání pojmenovaných entit (NER) verze 2. [Ner V3](#named-entity-recognition-v3-public-preview) je ve verzi Public Preview a významně rozšiřuje počet a hloubku entit rozpoznaných v textu.   
+
+| Typ  | Podtyp | Příklad: |
 |:-----------   |:------------- |:---------|
-| Person (Osoba)        | NENÍ K DISPOZICI\*         | Jan, vyúčtování Branch     |
-| Location      | NENÍ K DISPOZICI\*         | "Redmond, Washington", "Paříž"  |
-| Organizace  | NENÍ K DISPOZICI\*         | "Microsoft"   |
+| Osoba        | Není k dispozici\*         | Jan, vyúčtování Branch     |
+| Umístění      | Není k dispozici\*         | "Redmond, Washington", "Paříž"  |
+| Organizace  | Není k dispozici\*         | "Microsoft"   |
 | Množství      | Číslo        | "6", "šest"     |
 | Množství      | Procento    | "50 %", "padesát procent"|
 | Množství      | Pořadí       | "2.", "druhý"     |
 | Množství      | Věk           | "90 den starý", "30 let starý"    |
-| Množství      | Currency      | "10,99 USD"     |
+| Množství      | Měna      | "10,99 USD"     |
 | Množství      | Dimenze     | "10 mil", "40 cm"     |
 | Množství      | Teplota   | "32 stupňů"    |
-| DateTime      | NENÍ K DISPOZICI\*         | "4. února 2012 – 18:30"      |
-| DateTime      | Date          | "2. května 2017", "2. 5. 2017"   |
-| DateTime      | Time          | "8:00", "8:00"  |
-| DateTime      | Rozsah dat     | "2. května až 5. května"    |
-| DateTime      | Časový rozsah     | "18:00 až 19:00"     |
-| DateTime      | Trvání      | "1 minuta a 45 sekund"   |
-| DateTime      | Sada           | "každé úterý"     |
-| URL           | NENÍ K DISPOZICI\*         | "https:\//www.Bing.com"    |
-| Email         | NENÍ K DISPOZICI\*         | "support@contoso.com" |
+| Datum a čas      | Není k dispozici\*         | "4. února 2012 – 18:30"      |
+| Datum a čas      | Datum          | "2. května 2017", "2. 5. 2017"   |
+| Datum a čas      | Time          | "8:00", "8:00"  |
+| Datum a čas      | Rozsah dat     | "2. května až 5. května"    |
+| Datum a čas      | Časový rozsah     | "18:00 až 19:00"     |
+| Datum a čas      | Délka      | "1 minuta a 45 sekund"   |
+| Datum a čas      | Sada           | "každé úterý"     |
+| Adresa URL           | Není k dispozici\*         | "https:\//www.bing.com"    |
+| E-mail         | Není k dispozici\*         | support@contoso.com |
 
-\*V závislosti na vstupních a extrahovaných entitách můžou některé entity vynechat `SubType`.  Všechny uvedené podporované typy entit jsou k dispozici pouze pro anglické, zjednodušené, francouzské, německé a španělské jazyky.
+\* v závislosti na vstupních a extrahovaných entitách, mohou některé entity vynechat `SubType`.  Všechny uvedené podporované typy entit jsou k dispozici pouze pro jazyky anglické, zjednodušené, francouzštiny, němčiny a španělštiny.
 
+### <a name="language-support"></a>Podpora jazyků
 
+Použití propojení entit v různých jazycích vyžaduje použití odpovídající znalostní báze v jednotlivých jazycích. V případě propojení entit v Analýza textu to znamená, že každý jazyk podporovaný koncovým bodem `entities` bude odkazovat na odpovídající corpus Wikipedii v daném jazyce. Vzhledem k tomu, že velikost Corpora se v různých jazycích liší, očekává se, že se projeví i odvolání funkce propojení entit. Další informace najdete v článku věnovaném [jazykové podpoře](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
 ## <a name="preparation"></a>Příprava
 
@@ -90,13 +152,13 @@ Velikost dokumentu musí být 5 120 znaků v jednom dokumentu a pro každou kole
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>Krok 1: Strukturování žádosti
+## <a name="step-1-structure-the-request"></a>Krok 1: Struktura žádosti
 
 Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pro analýzu textu](text-analytics-how-to-call-api.md). Pro usnadnění znovu uvádíme následující body:
 
-+ Vytvořte žádost **POST**. Přečtěte si dokumentaci k rozhraní API pro tuto žádost: [Rozhraní API pro entity](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ Vytvořte žádost **POST**. Přečtěte si dokumentaci k rozhraní API pro tento požadavek: [entity API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout `/text/analytics/v2.1/entities`. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
++ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Je nutné zahrnout `/text/analytics/v2.1/entities`. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 
@@ -105,7 +167,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 > [!Tip]
 > Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Publikování žádosti
+## <a name="step-2-post-the-request"></a>Krok 2: Odeslání žádosti
 
 Analýza se provede po přijetí žádosti. Informace o velikosti a počtu požadavků, které můžete odeslat za minutu a sekundy, najdete v části [omezení dat](../overview.md#data-limits) v přehledu.
 
@@ -281,10 +343,10 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro propojení entit
 
 + [Rozhraní API pro entity](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) je k dispozici pro vybrané jazyky.
 + Dokumenty JSON v textu požadavku zahrnují ID, text a kód jazyka.
-+ Žádost POST je určená pro koncový bod `/entities` a používá individuální [přístupový klíč a koncový bod](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource), které jsou platné pro dané předplatné.
++ Žádost POST je určená pro koncový bod `/entities` a používá individuální [přístupový klíč a koncový bod](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource), který je platný pro dané předplatné.
 + Výstup odpovědi, který se skládá z propojených entit (včetně hodnocení spolehlivosti, posunu a webových odkazů, pro každé ID dokumentu), se dá použít v libovolné aplikaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro analýzu textu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)

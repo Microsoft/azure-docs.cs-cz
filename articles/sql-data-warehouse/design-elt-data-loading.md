@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 07/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c90deefba75cd8bbeda126c9da8a05e1069831d4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c248a2e3e6724388fa6402a70ac3bcb51f0f9ef3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597467"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492244"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Návrh strategie načítání základních dat pro Azure SQL Data Warehouse
 
@@ -43,7 +43,7 @@ Kurz načítání najdete v tématu [použití základny k načtení dat z úlo�
 Další informace najdete v tématu [načítání vzorů na blogu](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/). 
 
 
-## <a name="1-extract-the-source-data-into-text-files"></a>1. Extrahovat zdrojová data do textových souborů
+## <a name="1-extract-the-source-data-into-text-files"></a>1. extrahuje zdrojová data do textových souborů.
 
 Získávání dat ze zdrojového systému závisí na umístění úložiště.  Cílem je přesunout data do podporovaných textových souborů s oddělovači. 
 
@@ -57,32 +57,32 @@ Základ kódu načítá data z textových souborů s oddělovači v kódování 
 |       smallint        |                           smallint                           |
 |          int          |                             int                              |
 |        bigint         |                            bigint                            |
-|        boolean        |                             bit                              |
+|        Boolean        |                             40bitového                              |
 |        double         |                            float                             |
-|         float         |                             real                             |
-|        double         |                            money                             |
+|         float         |                             nemovitostí                             |
+|        double         |                            papír                             |
 |        double         |                          smallmoney                          |
-|        řetězec         |                            nchar                             |
-|        řetězec         |                           nvarchar                           |
-|        řetězec         |                             char                             |
-|        řetězec         |                           varchar                            |
-|        binary         |                            binary                            |
-|        binary         |                          Varbinary                           |
-|       timestamp       |                             date                             |
-|       timestamp       |                        smalldatetime                         |
-|       timestamp       |                          datetime2                           |
-|       timestamp       |                           datetime                           |
-|       timestamp       |                             time                             |
+|        string         |                            nchar                             |
+|        string         |                           nvarchar                           |
+|        string         |                             char                             |
+|        string         |                           varchar                            |
+|        Tvaru         |                            Tvaru                            |
+|        Tvaru         |                          varbinary                           |
+|       časové razítko       |                             date                             |
+|       časové razítko       |                        smalldatetime                         |
+|       časové razítko       |                          datetime2                           |
+|       časové razítko       |                           datetime                           |
+|       časové razítko       |                             time                             |
 |       date            |                             date                             |
 |        decimal        |                            decimal                           |
 
-## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Využití dat do služby Azure Blob Storage nebo Azure Data Lake Store
+## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. překládat data do služby Azure Blob Storage nebo Azure Data Lake Store
 
 Pokud chcete data z Azure Storage nakládat, můžete je přesunout do služby [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) nebo [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). V obou umístěních by se data měla ukládat v textových souborech. Základna může být načtena z libovolného umístění.
 
 Nástroje a služby, které můžete použít k přesunu dat do Azure Storage:
 
-- Služba [Azure ExpressRoute](../expressroute/expressroute-introduction.md) vylepšuje propustnost, výkon a předvídatelnost sítě. ExpressRoute je služba, která směruje vašich dat pomocí vyhrazeného soukromého připojení k Azure. Připojení ExpressRoute nesměrují data prostřednictvím veřejného Internetu. Připojení nabízejí spolehlivější, rychlejší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes veřejný Internet.
+- Služba [Azure ExpressRoute](../expressroute/expressroute-introduction.md) vylepšuje propustnost, výkon a předvídatelnost sítě. ExpressRoute je služba, která směruje vaše data prostřednictvím vyhrazeného privátního připojení k Azure. Připojení ExpressRoute nesměrují data prostřednictvím veřejného Internetu. Připojení nabízejí spolehlivější, rychlejší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes veřejný Internet.
 - [Nástroj AzCopy](../storage/common/storage-moving-data.md) přesouvá data Azure Storage přes veřejný Internet. To funguje, pokud jsou velikosti vašich dat menší než 10 TB. Pokud chcete pravidelně provádět zátěž s AZCopy, otestujte rychlost sítě a zjistěte, jestli je přijatelné. 
 - [Azure Data Factory (ADF)](../data-factory/introduction.md) má bránu, kterou můžete nainstalovat na svůj místní server. Pak můžete vytvořit kanál pro přesun dat z místního serveru až do Azure Storage. Pokud chcete použít Data Factory s SQL Data Warehouse, přečtěte si téma [načtení dat do SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
 
@@ -112,7 +112,7 @@ Formátování textových souborů:
 - Oddělte pole v textovém souboru ukončovacím znakem.  Nezapomeňte použít znak nebo sekvenci znaků, které se ve zdrojových datech nenašly. Použijte ukončovací znak, který jste zadali pomocí nástroje [Create External File Format](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
 
-## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase"></a>4. Načtení dat do SQL Data Warehouse přípravných tabulek pomocí základu
+## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase"></a>4. načtěte data do SQL Data Warehouse přípravných tabulek pomocí základu
 
 Osvědčeným postupem je načíst data do pracovní tabulky. Pracovní tabulky umožňují zpracovávat chyby bez rušivého vlivu na provozní tabulky. Pracovní tabulka vám také umožní použít SQL Data Warehouse MPP pro transformaci dat před vložením dat do provozních tabulek.
 
@@ -123,19 +123,19 @@ Chcete-li načíst data pomocí základu, můžete použít některou z těchto 
 - [Základ T-SQL](load-data-from-azure-blob-storage-using-polybase.md) funguje dobře, když jsou vaše data ve službě Azure Blob storage nebo Azure Data Lake Store. Poskytuje vám největší kontrolu nad procesem načítání, ale také vyžaduje, abyste definovali externí datové objekty. Ostatní metody definují tyto objekty na pozadí při mapování zdrojových tabulek na cílové tabulky.  K orchestraci načtení T-SQL můžete použít Azure Data Factory, SSIS nebo Azure Functions. 
 - [Základna s SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) funguje dobře, když jsou vaše zdrojová data v SQL Server, a to buď SQL Server místně, nebo v cloudu. SSIS definuje mapování zdrojového do cílové tabulky a také toto zatížení orchestruje. Pokud již máte balíčky SSIS, můžete je upravit tak, aby fungovaly s novým cílem datového skladu. 
 - [Základem s Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) je další nástroj orchestrace.  Definuje kanál a plánuje úlohy. 
-- [Základna s Azure](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) datacihly přenáší data z SQL Data Warehouse tabulky do datacihly datacihly nebo zapisuje data z datového rámce datacihly do tabulky SQL Data Warehouse pomocí základu.
+- [Základna s Azure Databricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) přenáší data z tabulky SQL Data Warehouse do datacihly datacihly nebo zapisuje data z datového rámce datacihly do tabulky SQL Data Warehouse pomocí základu.
 
 ### <a name="non-polybase-loading-options"></a>Možnosti načítání nezaložených na základech
 
 Pokud vaše data nejsou kompatibilní s základnu, můžete použít [BCP](/sql/tools/bcp-utility) nebo [rozhraní SqlBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP se načítá přímo do SQL Data Warehouse bez přechodu přes úložiště objektů BLOB v Azure a je určený jenom pro malé zátěže. Všimněte si, že výkon zatížení těchto možností je výrazně pomalejší než základ. 
 
 
-## <a name="5-transform-the-data"></a>5. Transformace dat
+## <a name="5-transform-the-data"></a>5. Transformujte data
 
 Data jsou v pracovní tabulce a umožňují transformace, které vaše zatížení vyžaduje. Pak data přesuňte do provozní tabulky.
 
 
-## <a name="6-insert-the-data-into-production-tables"></a>6. Vložení dat do provozních tabulek
+## <a name="6-insert-the-data-into-production-tables"></a>6. Vložte data do provozních tabulek.
 
 VLOŽIT do... Příkaz SELECT přesune data z pracovní tabulky do trvalé tabulky. 
 
@@ -147,7 +147,7 @@ Při navrhování procesu ETL zkuste proces spustit na malém vzorku testu. Zkus
 Mnohé z našich partnerů načítají řešení. Pokud se chcete dozvědět víc, podívejte se na seznam našich [partnerů pro řešení](sql-data-warehouse-partner-business-intelligence.md). 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokyny k načtení najdete v tématu [doprovodné materiály k načtení dat](guidance-for-loading-data.md).
 

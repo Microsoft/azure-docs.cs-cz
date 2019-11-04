@@ -1,7 +1,7 @@
 ---
 title: Seznamy frází – LUIS
 titleSuffix: Azure Cognitive Services
-description: Pomocí Language Understanding (LUIS) přidejte funkce aplikací, které můžete zlepšit zjišťování nebo předpověď záměry a entity, které kategorie a vzory
+description: Pomocí Language Understanding (LUIS) můžete přidat funkce aplikace, které můžou zlepšit detekci nebo předpovědi záměrů a entit, které kategorie a vzory.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,52 +9,56 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: f51f5a8583a73219ffb419c76fcd009d102f6ffb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0e3e4226eaaa0505eea96d8b3aca820f2327349e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932913"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467612"
 ---
-# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Použijte frázi v seznamech boost signál seznam slov
+# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Použití seznamů frází ke zvýšení signálu v seznamu slov
 
-Přidání funkcí do své aplikace LUIS a zvýšit jeho přesnost. Funkce pomáhají LUIS tím, že poskytuje pomocné parametry tohoto slova a frází jsou součástí slovníku domény aplikaci. 
+Do aplikace LUIS můžete přidat funkce, aby se zlepšila její přesnost. Funkce nápovědy LUIS poskytují nápovědu, že určitá slova a fráze jsou součástí slovníku domény aplikace. 
 
-A [seznam frází](luis-concept-feature.md) obsahuje skupinu hodnot (slova nebo fráze), která patří do stejné třídy a musí být zacházeno podobně (například názvy města nebo produkty). Služba LUIS dozvídá o jeden z nich se automaticky využije na ostatní také. Tento seznam není stejný jako [entita seznamu](reference-entity-list.md) (shoda přes text) odpovídajících slov.
+[Seznam frází](luis-concept-feature.md) obsahuje skupinu hodnot (slova nebo fráze), které patří do stejné třídy a musí se nacházet podobně (například názvy měst nebo produktů). K čemu se LUIS informace o jednom z nich automaticky aplikuje i na ostatní. Tento seznam není stejný jako [entita seznamu](reference-entity-list.md) (shoda přes text) odpovídajících slov.
 
-Seznam frází přidá do slovníku domény aplikace jako druhý signál k LUIS o těchto slov.
+Seznam frází se do slovníku domény aplikace přidá jako druhý signál, který LUIS o těchto slovech.
+
+Seznamte se s [Koncepty funkcí](luis-concept-feature.md) a zjistěte, kdy a proč použít seznam frází. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="add-phrase-list"></a>Přidat seznam frází
 
 LUIS umožňuje až 10 seznamů frází na aplikaci. 
 
-1. Otevřete aplikaci klepnutím na jeho název na **Moje aplikace** stránce a potom klikněte na **sestavení**, pak klikněte na tlačítko **frázi seznamy** v levém panelu vaší aplikace. 
+1. Otevřete aplikaci kliknutím na její název na stránce **Moje aplikace** a pak klikněte na **sestavit**a pak na na levém panelu vaší aplikace klikněte na **seznamy frází** . 
 
-1. Na **frázi seznamy** klikněte na **vytvořit nový seznam frázi**. 
+1. Na stránce **seznam frází** klikněte na **vytvořit nový seznam frází**. 
  
-1. Do dialogového okna **Přidat seznam frází** zadejte `Cities` název seznamu frází. V **hodnotu** zadejte hodnoty seznamu frázi. Zadejte jednu hodnotu, nebo sadu hodnot oddělených čárkami a potom stiskněte klávesu **Enter**.
+1. Do dialogového okna **Přidat seznam frází** zadejte `Cities` jako název seznamu frází. Do pole **hodnota** zadejte hodnoty seznamu frází. Najednou můžete zadat jednu hodnotu nebo sadu hodnot oddělených čárkami. potom stiskněte **ENTER**.
 
-    ![Přidat frázi seznam měst](./media/luis-add-features/add-phrase-list-cities.png)
+    ![Přidat města seznamu frází](./media/luis-add-features/add-phrase-list-cities.png)
 
-1. Služba LUIS můžete navrhnout související hodnoty pro přidání do seznamu frázi. Klikněte na tlačítko **doporučujeme** zobrazíte skupinu navrhované hodnoty, které se týkají sémanticky added value(s). Získáte po kliknutí na navrhované hodnoty, nebo klikněte na tlačítko **přidat všechny** je přidat všechny.
+1. LUIS může navrhovat související hodnoty pro přidání do seznamu frází. Kliknutím na tlačítko **doporučit** získáte skupinu navrhovaných hodnot, které jsou sémanticky spojeny s přidanými hodnotami. Můžete kliknout na libovolnou z navrhovaných hodnot nebo přidat všechny kliknutím na **Přidat vše** .
 
     ![Seznam frází navrhovaných hodnot – přidat vše](./media/luis-add-features/related-values.png)
 
-1. Klikněte na tlačítko **tyto hodnoty jsou zaměnitelné** Pokud jsou hodnoty seznamu přidal frázi alternativy, které můžete používat Zaměnitelně.
+1. Klikněte na **tyto hodnoty jsou zaměnitelné** , pokud jsou přidané fráze hodnoty alternativy, které je možné použít zaměnitelné.
 
     ![Seznam frází navrhovaných hodnot – výběr proměnitelné pole](./media/luis-add-features/interchangeable.png)
 
-1. Klikněte na **Done** (Hotovo). Přidání seznamu frázi "Cities" **frázi seznamy** stránky.
+1. Klikněte na **Done** (Hotovo). Seznam frází města je přidán na stránku **seznamy frází** .
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Můžete odstranit nebo deaktivovat frázi seznamu z panelu nástrojů kontextové na **frázi seznamy** stránky.
+> Seznam frází můžete odstranit nebo deaktivovat z kontextového panelu nástrojů na stránce **seznam frází** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po přidání, úprava, odstranění nebo deaktivace seznam frázi [trénování a testování aplikace](luis-interactive-test.md) znovu, abyste viděli, zda se výkon zlepšil.
+Po přidání, úpravě, odstranění nebo deaktivaci seznamu frází znovu spusťte [výuku a otestujte aplikaci](luis-interactive-test.md) , abyste viděli, jestli se výkon zlepšuje.

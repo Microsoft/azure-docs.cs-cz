@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 69ff1a5681fbb0b434d7114b069610ed34d9e843
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744472"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492206"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -53,7 +53,7 @@ SQL Database také nabízí několik funkcí provozní kontinuity, které může
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Obnovení databáze ve stejné oblasti Azure
 
-Automatické zálohování databáze můžete použít k obnovení databáze k určitému bodu v čase v minulosti. Tímto způsobem se můžete zotavit z poškození dat způsobených lidmi chybami. Obnovení bodu v čase umožňuje vytvořit novou databázi na stejném serveru, který představuje stav dat před poškozenou událostí. U většiny databází trvá operace obnovení méně než 12 hodin. Obnovení velmi rozsáhlé nebo vysoce aktivní databáze může trvat déle. Další informace o čase obnovení najdete v tématu [čas obnovení databáze](sql-database-recovery-using-backups.md#recovery-time). 
+Automatické zálohování databáze můžete použít k obnovení databáze k určitému bodu v čase v minulosti. Tímto způsobem se můžete zotavit z poškození dat způsobených lidmi chybami. Obnovení k určitému bodu v čase umožňuje vytvořit novou databázi na stejném serveru, který představuje stav dat před poškozenou událostí. U většiny databází trvá operace obnovení méně než 12 hodin. Obnovení velmi rozsáhlé nebo vysoce aktivní databáze může trvat déle. Další informace o čase obnovení najdete v tématu [čas obnovení databáze](sql-database-recovery-using-backups.md#recovery-time). 
 
 Pokud není maximální podporovaná doba uchovávání záloh pro obnovení k určitému bodu v čase (PITR) dostatečná pro vaši aplikaci, můžete ji prodloužit konfigurací zásad pro dlouhodobé uchovávání (LTR) pro databáze. Další informace najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
 
@@ -85,7 +85,7 @@ Při vývoji plánu provozní kontinuity musíte pochopit maximální přijateln
 
 Různé metody obnovení nabízejí různé úrovně bodu RPO a RTO. Můžete zvolit konkrétní metodu obnovení nebo použít kombinaci metod k dosažení úplného obnovení aplikace. Následující tabulka porovnává RPO a RTO jednotlivých možností obnovení. Skupiny automatického převzetí služeb při selhání zjednodušují nasazení a využití geografické replikace a přidávají další možnosti, jak je popsáno v následující tabulce.
 
-| Metoda obnovení | RTO | Cíl bodu obnovení (RPO) |
+| Metoda obnovení | RTO | OBNOVENÍ |
 | --- | --- | --- | 
 | Geografické obnovení ze geograficky replikovaných záloh | 12 h | 1 h |
 | Skupiny automatického převzetí služeb při selhání | 1 h | 5 s |

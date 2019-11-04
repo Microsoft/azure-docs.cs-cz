@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/12/2019
-ms.openlocfilehash: c3a034776b32db57f70ddee960c1cd5fc96b170b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 787e9e6d0ae86568e1af74b4d67fb716841a02df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555409"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477085"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Postup dotazování protokolů z Azure Monitor pro kontejnery
 
@@ -46,7 +46,7 @@ Příklady záznamů, které jsou shromažďovány Azure Monitor pro kontejnery 
 
 Protokoly Azure Monitor vám můžou pomáhat při hledání trendů, diagnostikování slabých míst, předpovědi nebo korelují dat, která vám pomůžou určit, jestli aktuální konfigurace clusteru funguje optimálně. K dispozici jsou předem definovaná prohledávání protokolů, která vám umožní hned začít používat nebo k přizpůsobení, aby vraceli informace tak, jak chcete.
 
-Můžete provést interaktivní analýzu dat v pracovním prostoru výběrem možnosti **Zobrazit protokoly událostí Kubernetes** nebo **Zobrazit protokoly kontejnerů** v podokně náhledu. Stránka pro **prohledávání protokolu** se zobrazí napravo od Azure Portal stránky, na které jste byli.
+Interaktivní analýzu dat v pracovním prostoru můžete provádět tak, že v rozevíracím seznamu **Zobrazit v analýze** vyberete možnost **Zobrazit protokoly událostí Kubernetes** nebo **Zobrazit protokoly kontejnerů** v podokně náhledu. Stránka pro **prohledávání protokolu** se zobrazí napravo od Azure Portal stránky, na které jste byli.
 
 ![Analýza dat v Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)   
 
@@ -65,37 +65,57 @@ Výstup protokolu kontejnerů, který se předává do vašeho pracovního prost
 | **Vyberte možnost zobrazení spojnicového grafu**:<br> Výkon<br> &#124;kde ObjectName = = "K8SContainer" and CounterName = = "memoryRssBytes" &#124; sumarizace AvgUsedRssMemoryBytes = prům (CounterValue) by bin (TimeGenerated, až min), InstanceName | Paměť kontejneru |
 | InsightsMetrics<br> &#124;kde name = = "requests_count"<br> &#124;Shrnutí: Val = any (Val) by TimeGenerated = bin (TimeGenerated, 1m)<br> &#124;Seřadit podle TimeGenerated ASC<br> &#124;Project RequestsPerMinute = Val-předchozí (Val), TimeGenerated <br> &#124;BarChart vykreslování  | Žádosti za minutu s vlastními metrikami |
 
-V následujícím příkladu je dotaz Prometheus metriky. Shromažďované metriky jsou počty a aby bylo možné určit, kolik chyb se v určitém časovém období vyskytlo, musíme odečíst od počtu. Tato datová sada je rozdělená podle *partitionKey*, což znamená pro každou jedinečnou sadu *názvů*, názvu *hostitele*a *typem operace OperationType*spustíme poddotaz na této sadě, který seřadí protokoly podle *TimeGenerated*, což je proces, který umožňuje vyhledá předchozí *TimeGenerated* a počet zaznamenaný pro tento čas, aby bylo možné určit sazbu.
+## <a name="query-prometheus-metrics-data"></a>Data metrik Prometheus dotazů
+
+V následujícím příkladu je dotaz Prometheus metriky ukazující čtení disku za sekundu na jeden disk na jeden uzel.
 
 ```
-let data = InsightsMetrics 
-| where Namespace contains 'prometheus' 
-| where Name == 'kubelet_docker_operations' or Name == 'kubelet_docker_operations_errors'    
-| extend Tags = todynamic(Tags) 
-| extend OperationType = tostring(Tags['operation_type']), HostName = tostring(Tags.hostName) 
-| extend partitionKey = strcat(HostName, '/' , Name, '/', OperationType) 
-| partition by partitionKey ( 
-    order by TimeGenerated asc 
-    | extend PrevVal = prev(Val, 1), PrevTimeGenerated = prev(TimeGenerated, 1) 
-    | extend Rate = iif(TimeGenerated == PrevTimeGenerated, 0.0, Val - PrevVal) 
-    | where isnull(Rate) == false 
-) 
-| project TimeGenerated, Name, HostName, OperationType, Rate; 
-let operationData = data 
-| where Name == 'kubelet_docker_operations' 
-| project-rename OperationCount = Rate; 
-let errorData = data 
-| where Name == 'kubelet_docker_operations_errors' 
-| project-rename ErrorCount = Rate; 
-operationData 
-| join kind = inner ( errorData ) on TimeGenerated, HostName, OperationType 
-| project-away TimeGenerated1, Name1, HostName1, OperationType1 
-| extend SuccessPercentage = iif(OperationCount == 0, 1.0, 1 - (ErrorCount / OperationCount))
+InsightsMetrics
+| where Namespace == 'container.azm.ms/diskio'
+| where TimeGenerated > ago(1h)
+| where Name == 'reads'
+| extend Tags = todynamic(Tags)
+| extend HostName = tostring(Tags.hostName), Device = Tags.name
+| extend NodeDisk = strcat(Device, "/", HostName)
+| order by NodeDisk asc, TimeGenerated asc
+| serialize
+| extend PrevVal = iif(prev(NodeDisk) != NodeDisk, 0.0, prev(Val)), PrevTimeGenerated = iif(prev(NodeDisk) != NodeDisk, datetime(null), prev(TimeGenerated))
+| where isnotnull(PrevTimeGenerated) and PrevTimeGenerated != TimeGenerated
+| extend Rate = iif(PrevVal > Val, Val / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1), iif(PrevVal == Val, 0.0, (Val - PrevVal) / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1)))
+| where isnotnull(Rate)
+| project TimeGenerated, NodeDisk, Rate
+| render timechart
+
+```
+
+Pokud chcete zobrazit Prometheus metriky, které jsou vyAzure Monitor filtrované podle oboru názvů, zadejte "Prometheus". Tady je ukázkový dotaz pro zobrazení metrik Prometheus z oboru názvů `default` Kubernetes.
+
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| extend tags=parse_json(Tags)
+| summarize count() by Name
+```
+
+Data Prometheus lze také přímo dotazovat podle názvu.
+
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| where Name contains "some_prometheus_metric"
+```
+
+### <a name="query-config-or-scraping-errors"></a>Konfigurace dotazů nebo chyby při vyřazení
+
+Pokud chcete prozkoumat chyby konfigurace nebo vyřazení, vrátí následující ukázkový dotaz z tabulky `KubeMonAgentEvents` informativní události.
+
+```
+KubeMonAgentEvents | where Level != "Info" 
 ```
 
 Ve výstupu se zobrazí výsledky podobné následujícímu:
 
-![Výsledky dotazu do protokolu pro objem příjmu dat](./media/container-insights-log-search/log-query-example-prometheus-metrics.png)
+![Protokolování výsledků dotazů informativních událostí z agenta](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
 ## <a name="next-steps"></a>Další kroky
 

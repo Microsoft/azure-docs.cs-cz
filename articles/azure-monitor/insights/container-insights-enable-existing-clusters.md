@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/12/2019
-ms.openlocfilehash: 0ca73d75751259eccd9e952c2d704a09fc081396
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5d68c343fee5807c430ce42777b988a48b9227f8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162269"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478599"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Povolení monitorování clusteru Azure Kubernetes Service (AKS) již nasazeného
 
@@ -47,7 +47,7 @@ provisioningState       : Succeeded
 
 Pokud byste místo toho museli provést integraci s existujícím pracovním prostorem, proveďte následující kroky, abyste nejprve identifikovali úplné ID prostředku Log Analytics pracovního prostoru požadovaného pro parametr `--workspace-resource-id` a pak spustíte příkaz, který povolí doplněk monitorování proti zadaný pracovní prostor.  
 
-1. Seznam všech předplatných, ke kterým máte přístup, pomocí následujícího příkazu:
+1. Vypíše seznam všech předplatných, ke kterým máte přístup, pomocí následujícího příkazu:
 
     ```azurecli
     az account list --all -o table
@@ -371,4 +371,6 @@ Po několika minutách se příkaz dokončí a vrátí informace o řešení ve 
 
 * Pokud při pokusu o připojení řešení dochází k problémům, přečtěte si [příručku k odstraňování potíží](container-insights-troubleshoot.md) .
 
-* Díky monitorování, které povoluje zachycení metrik stavu pro uzly clusteru AKS a lusky, jsou tyto metriky stavu dostupné v Azure Portal. Informace o tom, jak používat Azure Monitor pro kontejnery, najdete v tématu [zobrazení stavu služby Azure Kubernetes](container-insights-analyze.md).
+* Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru AKS a úlohách, které se na nich běží, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.
+
+

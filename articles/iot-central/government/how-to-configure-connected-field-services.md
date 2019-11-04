@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d8eda3aefb317b9c6383561dd2094913e5d8f7d1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 957e9337bf8ea5941b140ba4f3266417d36df6a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026625"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498758"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>Sestavení uceleného řešení s využitím Azure IoT Central a služby pole Dynamics 365 
 
@@ -34,5 +34,5 @@ Níže uvedené komplexní integrační procesy je možné snadno implementovat 
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [IoT Central státních šablonách](./overview-iot-central-government.md)
-* Další informace o [IoT Central](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
+* Další informace o [IoT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
 * Další informace o [službách pro pole Dynamics 365](https://docs.microsoft.com/dynamics365/field-service/cfs-iot-overview)

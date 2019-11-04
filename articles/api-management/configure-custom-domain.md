@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 52eeedf4651cee012569034ae635a4736b3f3335
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135538"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472194"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
@@ -25,7 +25,7 @@ Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí sub
 > [!WARNING]
 > Zákazníci, kteří chtějí použít připnutí certifikátů ke zlepšení zabezpečení svých aplikací, musí používat vlastní název domény > a certifikát, který spravují, nikoli výchozí certifikát. Zákazníci, kteří připnout výchozí certifikát, místo toho budou > s ohledem na vlastnosti certifikátu, který neovládají, což není doporučený postup.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -45,10 +45,10 @@ K provedení kroků popsaných v tomto článku musíte mít:
 
     K dispozici je několik koncových bodů, ke kterým můžete přiřadit vlastní název domény. V současné době jsou k dispozici následující koncové body:
 
-    - **Brána** (výchozí hodnota je `<apim-service-name>.azure-api.net`:),
-    - **Portál** (výchozí hodnota je `<apim-service-name>.portal.azure-api.net`:),
-    - **Správa** (výchozí hodnota je `<apim-service-name>.management.azure-api.net`:),
-    - **SCM** (výchozí hodnota je `<apim-service-name>.scm.azure-api.net`:).
+    - **Brána** (výchozí je: `<apim-service-name>.azure-api.net`),
+    - **Portál** (výchozí je: `<apim-service-name>.portal.azure-api.net`),
+    - **Správa** (výchozí je: `<apim-service-name>.management.azure-api.net`),
+    - **SCM** (výchozí je: `<apim-service-name>.scm.azure-api.net`).
 
     > [!NOTE]
     > Pro konfiguraci v úrovni spotřeby je dostupný jenom koncový bod **brány** .
@@ -63,7 +63,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
     - V části **certifikát**vyberte certifikát z Key Vault. Můžete také nahrát platnou hodnotu. Soubor PFX a zadejte **heslo**, pokud je certifikát chráněn heslem.
 
     > [!NOTE]
-    > Názvy domén se zástupnými `*.contoso.com` znaky, např., jsou podporovány ve všech úrovních s výjimkou úrovně spotřeby.
+    > Názvy domén se zástupnými znaky, například `*.contoso.com`, jsou podporovány ve všech vrstvách s výjimkou úrovně spotřeby.
 
     > [!TIP]
     > Doporučujeme použít Azure Key Vault pro správu certifikátů a jejich nastavení na automatické střídání.
@@ -88,7 +88,7 @@ Při konfiguraci DNS pro vlastní název domény máte dvě možnosti:
 -   Nakonfigurujte záznam A, který odkazuje na IP adresu brány API Management.
 
 > [!NOTE]
-> I když je IP adresa instance pro správu rozhraní API statická, může se v několika scénářích změnit. Z tohoto důvodu doporučujeme při konfiguraci vlastní domény použít CNAME. Při volbě metody konfigurace DNS Vezměte v úvahu. Další informace najdete v tématu [Nejčastější dotazy k rozhraní API Mananagement](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
+> I když je IP adresa instance pro správu rozhraní API statická, může se v několika scénářích změnit. Z tohoto důvodu doporučujeme při konfiguraci vlastní domény použít CNAME. Při volbě metody konfigurace DNS Vezměte v úvahu. Další informace najdete v části [Nejčastější dotazy k API Management](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
 
 ## <a name="next-steps"></a>Další kroky
 

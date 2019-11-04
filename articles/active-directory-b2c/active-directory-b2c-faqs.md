@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: e6e4c0018f11e216afd5a8c295fc336036885e68
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302544"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468942"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -35,7 +35,7 @@ Azure AD B2C nelze použít k ověřování uživatelů pro systém Microsoft Of
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Co jsou místní účty v Azure AD B2C? Jak se liší od pracovních nebo školních účtů ve službě Azure AD?
 
-V tenantovi Azure AD uživatelé patřící do přihlášení tenanta pomocí e-mailové adresy formuláře `<xyz>@<tenant domain>`. @No__t-0 je jedna z ověřených domén v tenantovi nebo počáteční doména `<...>.onmicrosoft.com`. Tento typ účtu je pracovní nebo školní účet.
+V tenantovi Azure AD uživatelé patřící do přihlášení tenanta pomocí e-mailové adresy formuláře `<xyz>@<tenant domain>`. `<tenant domain>` je jedna z ověřených domén v tenantovi nebo počáteční `<...>.onmicrosoft.com` doména. Tento typ účtu je pracovní nebo školní účet.
 
 Ve Azure AD B2C tenantovi většina aplikací chce, aby se uživatel přihlásil pomocí libovolné e-mailové adresy (například joe@comcast.net, bob@gmail.com, sarah@contoso.com nebo jim@live.com). Tento typ účtu je místní účet. Také podporujeme libovolná uživatelská jména jako místní účty (například Jana, Bob, Sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C v Azure Portal můžete zvolit jeden z těchto dvou místních typů účtů. Ve vašem tenantovi Azure AD B2C vyberte **Zprostředkovatelé identity**, vyberte **místní účet**a pak vyberte **uživatelské jméno**.
 
@@ -130,15 +130,20 @@ Momentálně ne. Tato funkce je v našem plánu. Ověření domény na kartě **
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Návody odstranit můj tenant Azure AD B2C?
 
-Pomocí těchto kroků odstraňte klienta Azure AD B2C:
+Chcete-li odstranit svého tenanta Azure AD B2C, postupujte podle těchto kroků.
 
+Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednocené **Registrace aplikací (ve verzi Preview)** . [Přečtěte si další informace o prostředí verze Preview](http://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako *Správce předplatného*. Použijte stejný pracovní nebo školní účet nebo stejnou účet Microsoft, jakou jste použili k registraci do Azure.
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Odstraňte všechny **toky uživatelů (zásady)** ve vašem tenantovi Azure AD B2C.
 1. Odstraňte všechny **aplikace** , které jste zaregistrovali ve vašem tenantovi Azure AD B2C.
-1. Potom se přihlaste k [Azure Portal](https://portal.azure.com/) jako správce předplatného. Použijte stejný pracovní nebo školní účet nebo stejnou účet Microsoft, jakou jste použili k registraci do Azure.
-1. Přepněte na tenanta Azure AD B2C, který chcete odstranit.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. V části **Spravovat** vyberte **Uživatele**.
-1. Vyberte možnost jednotliví uživatelé zase (vyloučit Správce předplatného, kterého jste právě přihlášeni jako uživatel). V dolní části stránky vyberte **Odstranit** a po zobrazení výzvy vyberte **Ano** .
+1. Vyberte možnost jednotliví uživatelé zase (vyloučit *Správce předplatného* , kterého jste právě přihlášeni jako uživatel). V dolní části stránky vyberte **Odstranit** a po zobrazení výzvy vyberte **Ano** .
 1. V části **Spravovat**vyberte **Registrace aplikací** (nebo **Registrace aplikací (starší verze)** ).
 1. Vybrat **Zobrazit všechny aplikace**
 1. Vyberte aplikaci s názvem **B2C-Extensions-App**, vyberte **Odstranit**a po zobrazení výzvy vyberte **Ano** .
@@ -149,6 +154,28 @@ Pomocí těchto kroků odstraňte klienta Azure AD B2C:
 1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. Na stránce **Přehled** vyberte **odstranit adresář**. Dokončete proces podle pokynů na obrazovce.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako *Správce předplatného*. Použijte stejný pracovní nebo školní účet nebo stejnou účet Microsoft, jakou jste použili k registraci do Azure.
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. Odstraní všechny **toky uživatelů (zásady)** ve vašem tenantovi Azure AD B2C.
+1. Vyberte **Registrace aplikací (Preview)** a pak vyberte kartu **všechny aplikace** .
+1. Odstraňte všechny aplikace, které jste zaregistrovali.
+1. Odstraňte **B2C-Extensions-App**.
+1. V části **Spravovat** vyberte **Uživatele**.
+1. Vyberte možnost jednotliví uživatelé zase (vyloučit *Správce předplatného* , kterého jste právě přihlášeni jako uživatel). V dolní části stránky vyberte **Odstranit** a po zobrazení výzvy vyberte **Ano** .
+1. V nabídce na levé straně vyberte **Azure Active Directory** .
+1. V části **Spravovat**vyberte **uživatelská nastavení**.
+1. Pokud je k dispozici, vyberte v části **připojení k účtu LinkedIn**možnost **ne**a pak vyberte **Uložit**.
+1. V části **Spravovat**vyberte **vlastnosti** .
+1. V části **Správa přístupu pro prostředky Azure**vyberte **Ano**a pak vyberte **Uložit**.
+1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.
+1. V nabídce na levé straně vyberte **Azure Active Directory** .
+1. Na stránce **Přehled** vyberte **odstranit adresář**. Dokončete proces podle pokynů na obrazovce.
+
+* * *
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Můžu Azure AD B2C jako součást sady Enterprise Mobility Suite?
 

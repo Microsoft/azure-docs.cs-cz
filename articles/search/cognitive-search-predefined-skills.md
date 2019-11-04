@@ -1,5 +1,5 @@
 ---
-title: Integrovaná extrakce dat, přirozený jazyk, zpracování obrázků
+title: Integrované dovednosti pro extrakci dat, přirozený jazyk a zpracování obrazu během indexování.
 titleSuffix: Azure Cognitive Search
 description: 'Extrakce dat, přirozený jazyk, rozpoznávání obrazu zpracování obrázků: Přidání sémantiky a struktury do nezpracovaného obsahu v kanálu Azure Kognitivní hledání.'
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 435635018dc25ed2af0aec3d542c0388af8ab885
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2f03752c5fda366fc16b681d71ba68486527a30f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792090"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466797"
 ---
 # <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>Vestavěné dovednosti v rozpoznávání obsahu pro rozšíření obsahu (Azure Kognitivní hledání)
 
@@ -41,6 +41,7 @@ Několik dovedností je flexibilní v tom, co spotřebovávají nebo vyrábí. O
 | [Microsoft. dovednosti. Vision. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Tato dovednost používá algoritmus pro detekci obrázků k identifikaci obsahu obrázku a vygenerování popisného textu. |
 | [Microsoft. dovednosti. Vision. OcrSkill](cognitive-search-skill-ocr.md) | Optické rozpoznávání znaků. |
 | [Microsoft. dovednosti. util. ConditionalSkill](cognitive-search-skill-conditional.md) | Povoluje filtrování, přiřazuje výchozí hodnotu a slučuje data na základě podmínky.|
+| [Microsoft. dovednosti. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) | Extrahuje obsah ze souboru v rámci kanálu pro obohacení. |
 | [Microsoft. dovednosti. util. ShaperSkill](cognitive-search-skill-shaper.md) | Mapuje výstup na komplexní typ (datový typ s více částmi, který může být použit pro celé jméno, víceřádkovou adresu nebo kombinaci příjmení a osobní identifikátor). |
 | [Microsoft. dovednosti. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md) | Umožňuje rozšiřitelnost kanálu rozšíření AI vytvořením volání HTTP do vlastního webového rozhraní API. |
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202092"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520806"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Přizpůsobení zásad SQL Information Protection v Azure Security Center (Preview)
  
@@ -52,9 +52,9 @@ Chcete-li upravit zásady ochrany informací pro vašeho tenanta Azure, musíte 
 2. Na obrazovce pro **označení citlivosti konfigurace** můžete vytvořit nebo změnit název popisku a jeho popis. Můžete také nastavit, zda je popisek aktivní nebo zakázaný přepnutím přepínače **Enabled** zapnuto nebo vypnuto. Nakonec můžete přidat nebo odebrat typy informací přidružené k popisku. Všechna zjištěná data, která odpovídají danému typu informací, budou automaticky zahrnovat popisek související citlivosti v doporučeních klasifikace.
 3. Klikněte na **OK**.
  
-   ![Nakonfigurovat popisek citlivosti](./media/security-center-info-protection-policy/config-sensitivity-label.png)
+   ![Konfigurovat popisek citlivosti](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
-4. Popisky jsou uvedené v pořadí podle vzestupné citlivosti. Chcete-li změnit pořadí mezi popisky, přetáhněte popisky, abyste je změnili v tabulce, nebo použijte tlačítka nahoru a **dolů** pro změnu pořadí. 
+4. Popisky jsou uvedené v pořadí podle vzestupné citlivosti. Chcete-li změnit pořadí mezi popisky, přetáhněte popisky, abyste je změnili v tabulce, nebo použijte tlačítka **nahoru a** **dolů** pro změnu pořadí. 
  
     ![Konfigurace zásad ochrany informací](./media/security-center-info-protection-policy/move-up.png)
  
@@ -83,8 +83,5 @@ V tomto článku jste se dozvěděli o definování zásad Information Protectio
 
 Další informace o zásadách zabezpečení a zabezpečení dat v Azure Security Center najdete v následujících článcích:
  
-- [Přehled zásad zabezpečení](security-center-policies-overview.md): Seznamte se s přehledem zásad zabezpečení v Security Center
-- [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md): Přečtěte si, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
-- [Zabezpečení dat Azure Security Center](security-center-data-security.md): Informace o tom, jak Security Center spravuje a chrání data
-
-
+- [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md): Naučte se konfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+- [Azure Security Center zabezpečení dat](security-center-data-security.md): Přečtěte si, jak Security Center spravuje a chrání data.

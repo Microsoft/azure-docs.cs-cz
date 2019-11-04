@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 8adc052e732fdc54bd3b51873fdcf13a55f1f490
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 6a17993d7bc4ff54b3d55fa5b5bb141463896e32
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971970"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488696"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy Language Understanding
 
@@ -50,7 +50,7 @@ Ano, je dobré naučit svůj záměr **none** s více projevy při přidávání
 Přečtěte si kurz [rozhraní API Bingu pro kontrolu pravopisu v7](luis-tutorial-bing-spellcheck.md) . LUIS vynucuje omezení vyplývající z rozhraní API Bingu pro kontrolu pravopisu v7.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Návody aplikaci LUIS programově upravit?
-Pokud chcete aplikaci LUIS upravit programově, použijte [rozhraní API pro vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087). Příklady, jak volat rozhraní API pro vytváření, najdete v tématu [volání rozhraní API pro volání Luis](./luis-quickstart-node-add-utterance.md) a [Vytvoření aplikace Luis programově pomocí Node. js](./luis-tutorial-node-import-utterances-csv.md) . Rozhraní API pro vytváření obsahu vyžaduje použití [klíčového obsahu](luis-concept-keys.md#authoring-key) místo klíče koncového bodu. Programový vytváření obsahu umožňuje až 1 000 000 volání za měsíc a pět transakcí za sekundu. Další informace o klíčích, které používáte se službou LUIS, najdete v tématu [Správa klíčů](./luis-concept-keys.md).
+Pokud chcete aplikaci LUIS upravit programově, použijte [rozhraní API pro vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087). Příklady, jak volat rozhraní API pro vytváření, najdete v tématu [volání rozhraní API pro volání Luis](./luis-quickstart-node-add-utterance.md) a [Vytvoření aplikace Luis programově pomocí Node. js](./luis-tutorial-node-import-utterances-csv.md) . Rozhraní API pro vytváření obsahu vyžaduje použití [klíčového obsahu](luis-concept-keys.md#azure-resources-for-luis) místo klíče koncového bodu. Programový vytváření obsahu umožňuje až 1 000 000 volání za měsíc a pět transakcí za sekundu. Další informace o klíčích, které používáte se službou LUIS, najdete v tématu [Správa klíčů](./luis-concept-keys.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Kde je funkce vzoru, která poskytuje porovnávání regulárních výrazů?
 Předchozí **funkce vzoru** je aktuálně zastaralá, Nahrazená **[vzorci](luis-concept-patterns.md)** .
@@ -70,7 +70,7 @@ Pokud chcete přenést aplikaci LUIS do jiného předplatného Azure, exportujte
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Předem vytvořená entita je označena jako utterance jako místo vlastní entity. Návody opravit? 
 
-Viz [Poradce při potížích s předem vytvořenými entitami](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
+Na portálu LUIS můžete označit text pro přesně entitu, které vás zajímá při extrakci. Pokud LUIS Portal nezobrazuje správnou předpověď entit, možná budete muset přidat další projevy a označit entitu v rámci textu nebo Přidat popisovač (například funkci). 
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Pokusili jste se importovat soubor aplikace nebo verze, ale zobrazila se chyba, co se stalo? 
 
@@ -193,7 +193,7 @@ Podívejte [se na téma výuka se všemi daty](luis-how-to-train.md#train-with-a
 ## <a name="app-publishing"></a>Publikování aplikace
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Jaké je ID tenanta v okně Přidat klíč do aplikace?
-V Azure tenant představuje klienta nebo organizaci, která je přidružená ke službě. V Azure Portal v poli **ID adresáře** Najděte ID tenanta tak, že vyberete **Azure Active Directory** > **Spravovat** **vlastnosti** > .
+V Azure tenant představuje klienta nebo organizaci, která je přidružená ke službě. V Azure Portal v poli **ID adresáře** Najděte ID tenanta tak, že vyberete **Azure Active Directory** > **Spravovat** > ové **vlastnosti**.
 
 ![ID tenanta v Azure Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -230,7 +230,7 @@ Vytváření klíčů je k dispozici na portálu LUIS po [migraci na prostředí
 Ve výchozím nastavení vaše aplikace LUIS zaznamená projevy od uživatelů. Pokud si chcete stáhnout protokol projevy, který uživatelé odesílají do vaší aplikace LUIS, pokračujte na **Moje aplikace**a vyberte aplikaci. Na panelu nástrojů kontext vyberte **exportovat protokoly koncových bodů**. Protokol je formátovaný jako textový soubor s oddělovači (CSV).
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Jak můžu zakázat protokolování projevy?
-Protokolování uživatele projevy můžete vypnout nastavením `log=false` v adrese URL koncového bodu, kterou klientská aplikace používá pro dotazování LUIS. Vypnutí protokolování ale zakáže schopnost vaší aplikace LUIS navrhovat projevy nebo zdokonalovat výkon, který je založený na [aktivním učení](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Pokud jste nastavili `log=false` kvůli problémům s ochranou osobních údajů, nemůžete stáhnout záznam o těchto uživatelích projevy z LUIS ani použít tyto projevy k vylepšení vaší aplikace.
+Protokolování uživatele projevy můžete vypnout nastavením `log=false` v adrese URL koncového bodu, kterou klientská aplikace používá pro dotazování LUIS. Vypnutí protokolování ale zakáže schopnost vaší aplikace LUIS navrhovat projevy nebo zdokonalovat výkon, který je založený na [aktivním učení](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Pokud jste nastavili `log=false` z důvodu ochrany osobních údajů, nemůžete stáhnout záznam o uživatelích projevy z LUIS ani použít tyto projevy k vylepšení vaší aplikace.
 
 Protokolování je jediné úložiště projevy.
 
@@ -271,11 +271,11 @@ Prvním problémem je izolovat, jestli problém souvisí s LUIS nebo nastane mim
 #### <a name="resolve-issue-in-luis"></a>Řešení potíží v LUIS
 Předejte stejný utterance do LUIS z [koncového bodu Luis](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Pokud se zobrazí chyba, vyřešte problém v LUIS, dokud nebude chyba nadále vrácena. Mezi běžné chyby patří:
 
-* `Out of call volume quota. Quota will be replenished in <time>.` – Tento problém znamená, že buď potřebujete změnit z klíčového obsahu na [klíč koncového bodu](luis-how-to-azure-subscription.md) , nebo potřebujete změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-pricing-tier). 
+* `Out of call volume quota. Quota will be replenished in <time>.` – tento problém znamená, že buď potřebujete změnit z klíčového obsahu na [klíč koncového bodu](luis-how-to-azure-subscription.md) , nebo potřebujete změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-pricing-tier). 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Řešení potíží v Azure Bot Service
 
-Pokud používáte Azure Bot Service a problém je, že **test ve webovém chatu** vrátí `Sorry, my bot code is having an issue`, zkontrolujte protokoly:
+Pokud používáte Azure Bot Service a problém je, že **test ve webovém chatu** vrátí `Sorry, my bot code is having an issue`, zkontrolujte své protokoly:
 
 1. V Azure Portal pro robota v části **Správa robota** vyberte **Build (sestavit**).
 1. Otevřete Editor kódu online. 

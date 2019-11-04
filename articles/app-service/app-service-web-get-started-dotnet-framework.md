@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 258e547c58016cb449c74b058d02f2a2e4d7d683
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04dd7cb55f9a6d4ceb722606f0eb90792413e414
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792715"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471781"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Framework v Azure
 
@@ -131,9 +131,11 @@ Po dokončení publikování spustí Visual Studio prohlížeč na adrese URL we
 
 ## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 
-1. Pokud chcete webovou aplikaci spravovat, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+1. Pokud chcete webovou aplikaci spravovat, otevřete [Azure Portal](https://portal.azure.com)a vyhledejte a vyberte **App Services**.
 
-2. V nabídce vlevo vyberte **App Services**a pak vyberte název aplikace Azure.
+   ![Vybrat služby App Services](./media/app-service-web-get-started-dotnet-framework/app-services.png)
+
+2. Na stránce **App Services** vyberte název vaší webové aplikace.
 
    ![Přechod do aplikace Azure na portálu](./media/app-service-web-get-started-dotnet-framework/access-portal-framework-vs2019.png)
 

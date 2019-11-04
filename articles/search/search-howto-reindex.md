@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793709"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466438"
 ---
 # <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Postup opětovného sestavení indexu služby Azure Kognitivní hledání
 
@@ -46,7 +46,7 @@ Jakékoli další úpravy lze provádět bez vlivu na existující fyzické stru
 
 Když přidáte nové pole, u existujících indexovaných dokumentů se pro nové pole předává hodnota null. Při budoucí aktualizaci dat hodnoty z externích zdrojových dat nahradí hodnoty null přidané službou Azure Kognitivní hledání. Další informace o aktualizaci obsahu indexu najdete v tématu [Přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="partial-or-incremental-indexing"></a>Částečné nebo přírůstkové indexování
+## <a name="partial-indexing"></a>Částečné indexování
 
 V Azure Kognitivní hledání nemůžete řídit indexování pro jednotlivá pole, a to volbou pro odstranění nebo opětovné vytvoření určitých polí. Podobně není k dispozici žádný vestavěný mechanismus pro [indexování dokumentů na základě kritérií](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents). Všechny požadavky, které máte pro indexování řízené pomocí kritérií, musí být splněné prostřednictvím vlastního kódu.
 

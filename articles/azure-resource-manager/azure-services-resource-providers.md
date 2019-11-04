@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: e8bcaf1e55b042f8dfd8bba2e2113894a67e8b13
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 3bbd52615962c2cd187fb16282a373688175cf59
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035627"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476688"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -45,7 +45,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. cache | [Azure Cache for Redis](/azure/azure-cache-for-redis/) |
 | Microsoft. Capacity | jádro |
 | Microsoft. CDN | [Content Delivery Network](../cdn/index.yml) |
-| Microsoft. CertificateRegistration | [App Service certifikátů](../app-service/web-sites-purchase-ssl-web-site.md) |
+| Microsoft. CertificateRegistration | [App Service certifikátů](../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
 | Microsoft. ChangeAnalysis | [Azure Monitor](../azure-monitor/index.yml) |
 | Microsoft.ClassicCompute | Virtuální počítač modelu nasazení Classic |
 | Microsoft. ClassicInfrastructureMigrate | Migrace modelu nasazení Classic |

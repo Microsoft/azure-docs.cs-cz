@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Provádění operací ETL pomocí interaktivního dotazu ve službě Azure HDInsight'
+title: 'Kurz: operace ETL s interaktivním dotazem – Azure HDInsight'
 description: Kurz – Zjistěte, jak extrahovat data z nezpracované datové sady CSV, transformovat je pomocí interaktivního dotazu ve službě HDInsight a pak načíst transformovaná data do služby Azure SQL Database pomocí Apache Sqoop.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 9ff215bb687ea2b6aa32ecb01dba7a61385b15a4
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735830"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494157"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Kurz: Extrakce, transformace a načtení dat pomocí interaktivního dotazu ve službě Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Kurz: extrakce, transformace a načtení dat pomocí interaktivního dotazu ve službě Azure HDInsight
 
 V tomto kurzu budete mít nezpracovaný datový soubor CSV s veřejně dostupnými letovými daty, naimportujete ho do úložiště clusteru HDInsight a pak data Transformujte pomocí interaktivního dotazu ve službě Azure HDInsight. Data se po transformaci načítají do Azure SQL Database pomocí [Apache Sqoop](https://sqoop.apache.org/).
 
@@ -28,7 +28,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Vytvoření tabulky ve službě Azure SQL Database
 > * Použití Sqoop k exportu dat do Azure SQL Database
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Interaktivní cluster dotazů v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **interaktivního dotazu** pro **typ clusteru**.
 
@@ -36,16 +36,16 @@ Tento kurz se zabývá následujícími úkony:
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="download-the-flight-data"></a>Stažení letových údajů
+## <a name="download-the-flight-data"></a>Stažení údajů o letech
 
 1. Přejděte do části [výzkum a inovativní Správa technologie, Statistika dopravy](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
 2. Na stránce zrušte zaškrtnutí všech polí a pak vyberte následující hodnoty:
 
-   | Name | Hodnota |
+   | Name (Název) | Hodnota |
    | --- | --- |
    | Filter Year (Filtr roku) |2019 |
-   | Filter Period (Filtr období) |January (Leden) |
+   | Filter Period (Filtr období) |Leden |
    | Fields (Pole) |Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, původ, OriginCityName, OriginState, DestAirportID, cíl, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
 
 3. Vyberte **Download** (Stáhnout). Získáte soubor .zip s vybranými datovými poli.
@@ -68,7 +68,7 @@ Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoh
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Po navázání připojení SSH nastavte proměnnou prostředí. `FILE_NAME`Nahraďte `SQL_SERVERNAME` ,,`SQL_USER`, a odpovídajícímihodnotami.`SQL_PASWORD` `SQL_DATABASE` Pak zadejte příkaz:
+3. Po navázání připojení SSH nastavte proměnnou prostředí. Hodnoty `FILE_NAME`, `SQL_SERVERNAME`, `SQL_DATABASE`, `SQL_USER`a `SQL_PASWORD` nahraďte odpovídajícími hodnotami. Pak zadejte příkaz:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -260,15 +260,15 @@ V předchozích částech jste zkopírovali transformovaná data do umístění 
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    Tento příkaz vrátí seznam databází, včetně databáze, ve které jste `delays` tabulku vytvořili dříve.
+    Tento příkaz vrátí seznam databází, včetně databáze, ve které jste dříve vytvořili `delays` tabulku.
 
-2. Exportujte data z `/tutorials/flightdelays/output` `delays` do tabulky zadáním následujícího příkazu:
+2. Exportujte data z `/tutorials/flightdelays/output` do tabulky `delays` zadáním následujícího příkazu:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    Sqoop se připojí k databázi `delays` obsahující tabulku a exportuje data `/tutorials/flightdelays/output` z adresáře do `delays` tabulky.
+    Sqoop se připojuje k databázi obsahující `delays` tabulce a exportuje data z `/tutorials/flightdelays/output` adresáře do tabulky `delays`.
 
 3. Až se příkaz Sqoop dokončí, připojte se k databázi pomocí nástroje TSQL, a to zadáním následujícího příkazu:
 

@@ -1,5 +1,5 @@
 ---
-title: Rozšířený server pro historii Sparku pro ladění aplikací Spark – Azure HDInsight
+title: Rozšířený server pro historii Sparku pro ladění aplikací – Azure HDInsight
 description: Použití rozšířeného serveru pro historii Spark k ladění a diagnostice aplikací Spark – Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9398745cb240e7b7dff45ff5d6d9cdf064239bfd
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1320764687f3eb2f033ca70703a9bcb16ab616ea
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130355"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494734"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
 
@@ -32,7 +32,7 @@ Server historie Apache Spark je webové uživatelské rozhraní pro kompletní a
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Otevřete webové uživatelské rozhraní serveru historie Sparku podle adresy URL
 
-Přejděte na následující adresu URL, kde otevřete Server historie Spark, který `<ClusterName>` se nahrazuje názvem clusteru Spark Customer.
+Přejděte na následující adresu URL, kde otevřete Server historie Spark, nahraďte `<ClusterName>` názvem clusteru Spark zákazníka.
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory
@@ -106,16 +106,16 @@ Vyberte ID úlohy a potom kliknutím na **graf** v nabídce nástroje Získejte 
 
 + Začněte tím, že kliknete na tlačítko **přehrávání** a kdykoli kliknete na tlačítko Zastavit. Zobrazený úkol v barvě pro zobrazení jiného stavu při přehrávání:
 
-  + Zelená pro úspěšná: Úloha se úspěšně dokončila.
-  + Oranžová pro opakování: Instance úloh, které selhaly, ale neovlivňují konečný výsledek úlohy. Tyto úlohy měly duplicitní nebo opakované instance, které mohou být později úspěšné.
-  + Modrá pro běh: Úloha je spuštěna.
-  + Bílá pro čekání nebo přeskočení: Úloha čeká na spuštění, nebo byla fáze přeskočena.
-  + Červená neúspěšná: Úloha se nezdařila.
+  + Zelená pro úspěšná: úloha se úspěšně dokončila.
+  + Oranžová pro opakování: instance úloh, které selhaly, ale neovlivňují konečný výsledek úlohy. Tyto úlohy měly duplicitní nebo opakované instance, které mohou být později úspěšné.
+  + Modrá pro běh: úloha je spuštěná.
+  + Bílá pro čekání nebo přeskočení: úloha čeká na spuštění, nebo se fáze přeskočila.
+  + Červená chyba: úloha se nezdařila.
 
     ![Ukázka barvy grafu aplikace Spark a grafu úlohy, která běží](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
     Vynechaná fáze se zobrazuje bíle.
-    ![Ukázka barvy grafu aplikace Spark a grafu úlohy, přeskočit](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+    ![ukázka barvy grafu aplikace Spark a grafu úlohy, přeskočit](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
 
     ![Ukázka barvy grafu aplikace Spark a grafu úlohy, selhání](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
 
@@ -137,7 +137,7 @@ Vyberte ID úlohy a potom kliknutím na **graf** v nabídce nástroje Získejte 
     ![Ikona zkosení grafu aplikace Spark a grafu úlohy](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + Uzel grafu úlohy zobrazí následující informace o každé fázi:
-  + ID.
+  + Účet.
   + Název nebo popis
   + Celkové číslo úlohy
   + Přečtená data: součet velikosti vstupní velikosti a náhodné velikosti čtení.
@@ -168,7 +168,7 @@ Vyberte ID úlohy a potom kliknutím na **diagnóza** v nabídce nástroje Získ
 
 Klikněte na kartu **zkosení dat** . na základě zadaných parametrů se zobrazí odpovídající šikmé úkoly.
 
-+ **Zadejte parametry** – první oddíl zobrazuje parametry, které se používají ke zjištění zkosení dat. Předdefinované pravidlo je: Přečtená data úkolu jsou delší než 3 časy průměrných čtených dat úkolu a přečtená data jsou větší než 10 MB. Pokud chcete definovat vlastní pravidlo pro úkoly, které jsou pro úlohy zkreslené, můžete zvolit parametry, oddíl **zkosených fází**a **znaků zkosení** se odpovídajícím způsobem aktualizuje.
++ **Zadejte parametry** – první oddíl zobrazuje parametry, které se používají ke zjištění zkosení dat. Předdefinované pravidlo je: čtení dat úkolu je více než 3 krát průměrně přečtených dat úkolu a přečtených dat úlohy je více než 10 MB. Pokud chcete definovat vlastní pravidlo pro úkoly, které jsou pro úlohy zkreslené, můžete zvolit parametry, oddíl **zkosených fází**a **znaků zkosení** se odpovídajícím způsobem aktualizuje.
 
 + **Zkosený stupeň** – druhý oddíl zobrazuje fáze, které mají úkoly, které splňují kritéria uvedená výše. Pokud ve fázi existuje více než jeden zkosený úkol, tabulka zkosených fází zobrazí pouze nejvýraznější úlohu (např. největší data pro zkosení dat).
 
@@ -200,9 +200,9 @@ Graf využití prováděcího modulu, který vizualizuje skutečné přidělení
 
     ![sparkui – výběr grafu pro diagnostiku](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
-### <a name="1-revert-to-community-version"></a>1. Vrátit se k verzi komunity
+### <a name="1-revert-to-community-version"></a>1. vrátit se k verzi komunity
 
 Chcete-li se vrátit k verzi komunity, proveďte následující kroky:
 
@@ -224,7 +224,7 @@ Chcete-li se vrátit k verzi komunity, proveďte následující kroky:
     ![Restart Ambari Spark2 pro Apache](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 9. Aktualizuje webové uživatelské rozhraní serveru historie Sparku, bude se vrátit na verzi komunity.
 
-### <a name="2-upload-history-server-event"></a>2. Událost serveru pro odeslání historie
+### <a name="2-upload-history-server-event"></a>2. odeslání události serveru historie
 
 Pokud se při spuštění do historie serveru zobrazí chyba, postupujte podle pokynů pro zadání této události:
 
@@ -240,7 +240,7 @@ Pokud se při spuštění do historie serveru zobrazí chyba, postupujte podle p
 
     ![Příklad problému se souborem Apache Spark](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
-### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Upgrade souboru jar pro scénář oprav hotfix
+### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. upgrade souboru jar pro scénář oprav hotfix
 
 Pokud chcete upgradovat pomocí opravy hotfix, použijte následující skript, který bude upgradovat Spark-Enhancement. jar *.
 
@@ -330,4 +330,4 @@ Pokud chcete upgradovat pomocí opravy hotfix, použijte následující skript, 
 
 ## <a name="contact-us"></a>Kontaktujte nás
 
-Pokud máte nějakou zpětnou vazbu nebo pokud narazíte na jiné problémy při používání tohoto nástroje, pošlete e-mail na adresu[hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)().
+Pokud máte nějakou zpětnou vazbu nebo pokud při používání tohoto nástroje narazíte na jiné problémy, pošlete e-mail na adresu ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)).

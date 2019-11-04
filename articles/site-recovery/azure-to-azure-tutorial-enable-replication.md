@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6987c6f1191b0dfc7b78b14e77a5d6a0ab369f57
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e46bc9e4fbb2b573338b8be43c38e658ebde05a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782611"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468024"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Nastavení zotavení po havárii pro virtuální počítače Azure
 
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii pro virtuální po
 > [!NOTE]
 > Tento článek poskytuje pokyny pro nasazení zotavení po havárii s nejjednodušším nastavením. Pokud se chcete dozvědět o přizpůsobených nastaveních, přečtěte si články v části [postupy](azure-to-azure-how-to-enable-replication.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu je potřeba:
 
@@ -43,7 +43,7 @@ K provedení kroků v tomto kurzu je potřeba:
 V libovolné oblasti (s výjimkou zdrojové oblasti) vytvořte trezor.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Klikněte **na vytvořit** > **nástroje** > pro správu prostředků**zálohování a Site Recovery**.
+2. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**. Pak vyberte **Nástroje pro správu** > **zálohování a Site Recovery**.
 3. Do pole **Název** zadejte popisný název pro identifikaci trezoru. Pokud máte více předplatných, vyberte příslušné předplatné.
 4. Vytvořte skupinu prostředků nebo vyberte existující. Zadejte oblast Azure. Informace o tom, které oblasti jsou podporované, najdete v části s geografickou dostupností v tématu s [podrobnostmi o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
 5. Pokud chcete mít možnost rychle se dostat k trezoru z řídicího panelu, klikněte na **Připnout na řídicí panel** a potom klikněte na **Vytvořit**.
@@ -175,8 +175,8 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
 Pokud má zdrojový virtuální počítač povolenou službu Azure Disk Encryption (ADE), zkontrolujte nastavení.
 
 1. Ověřte nastavení:
-    - **Trezory klíčů pro šifrování disku**: Ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů na klíčích pro šifrování disků zdrojového virtuálního počítače s příponou ASR. Pokud Trezor klíčů již existuje, bude znovu použit.
-    - **Trezory**klíčů šifrovacího klíče: Ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů v cílové oblasti. Název má příponu ASR a je založený na šifrovacích klíčích zdrojového virtuálního počítače. Pokud Trezor klíčů vytvořený pomocí Site Recovery již existuje, bude znovu použit.
+    - **Trezory klíčů šifrování disku**: ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů na klíčích pro šifrování disků zdrojového virtuálního počítače s příponou ASR. Pokud Trezor klíčů již existuje, bude znovu použit.
+    - **Trezory klíčů šifrovacího**klíče: ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů v cílové oblasti. Název má příponu ASR a je založený na šifrovacích klíčích zdrojového virtuálního počítače. Pokud Trezor klíčů vytvořený pomocí Site Recovery již existuje, bude znovu použit.
 
 2. Kliknutím na **přizpůsobit** vyberte vlastní trezory klíčů.
 
@@ -188,10 +188,10 @@ Pokud má zdrojový virtuální počítač povolenou službu Azure Disk Encrypti
 
 1. V **Nastavení** klikněte na **Aktualizovat**, abyste získali nejnovější stav.
 2. Sledujte průběh a stav následujícím způsobem:
-    - Sledovat průběh úlohy **Povolení ochrany** v **Nastavení** > **úlohy** > **Site Recovery úlohy**.
+    - Sledovat průběh úlohy **Povolení ochrany** v **nastavení** > **úlohy** > **Site Recovery úlohy**.
     - V části **Nastavení** > **Replikované položky** můžete zobrazit stav virtuálních počítačů a průběh počáteční replikace. Kliknutím na virtuální počítač přejdete k podrobnostem o jeho nastavení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste pro virtuální počítač Azure nakonfigurovali zotavení po havárii. Nyní můžete iniciovat postup zotavení po havárii a zkontrolovat, že převzetí služeb při selhání funguje podle očekávání.
 

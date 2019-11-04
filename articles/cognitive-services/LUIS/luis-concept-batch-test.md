@@ -1,7 +1,7 @@
 ---
 title: Dávkové testování – LUIS
 titleSuffix: Azure Cognitive Services
-description: Pomocí služby batch testování neustále pracovat na aplikaci zpřesnit jej a zvýšit jeho umožňující porozumět jazyku.
+description: Pomocí dávkového testování můžete u své aplikace průběžně pracovat a zdokonalit jejich porozumění jazyku.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,48 +9,48 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: b962fc32cdcde0509cfa60d105022bb208633ae3
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639299"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487740"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Dávkové testování s 1000 projevy na portálu LUIS
 
-Testování služby batch ověří vaše [aktivní](luis-concept-version.md#active-version) trénovaný model pro měření jeho přesnost předpovědi. Batch test vám pomůže zobrazit přesnost každého záměru a entity v aktuálním vyškolený model a zobrazovat výsledky pomocí grafu. Posoudit výsledky testu služby batch a přijmout vhodná opatření zvyšte přesnost, jako je například přidávání další příklad projevy k záměru, pokud vaše aplikace často nepodaří identifikovat správné záměr.
+Dávkové testování ověřuje vaši aktivní výukovou verzi, aby měřila její přesnost předpovědi. Batch test vám pomůže zobrazit přesnost každého záměru a entity v aktivní verzi a zobrazovat výsledky pomocí grafu. Prohlédněte si výsledky dávkových testů, abyste měli vhodná opatření ke zlepšení přesnosti, jako je například přidání dalších příkladů projevy k záměru, pokud se aplikace často nedaří identifikovat správné záměry nebo označení entit v rámci utterance.
 
-## <a name="group-data-for-batch-test"></a>Data skupiny pro testovací služby batch
+## <a name="group-data-for-batch-test"></a>Seskupit data pro dávkový test
 
-Je důležité, že teprve začínáte LUIS projevy, používá se pro testování služby batch. Pokud máte datovou sadu projevy, rozdělte projevy na tři sady: příklad projevy přidané k záměru, projevy přijatý od publikovaného koncového bodu a projevy, který se používá k dávkovému testování LUIS po jeho školení. 
+Je důležité, aby se projevy, které se používají pro dávkové testování, LUIS. Pokud máte datovou sadu projevy, rozdělte projevy na tři sady: příklad projevy přidané k záměru, projevy přijatý od publikovaného koncového bodu a projevy, který se používá k dávkovému testování LUIS po jeho školení. 
 
 ## <a name="a-data-set-of-utterances"></a>Sada dat projevy
 
 Odeslání dávkového souboru projevy, který se označuje jako *datová sada*, pro dávkové testování. Datová sada je soubor ve formátu JSON, který obsahuje maximálně 1 000 s označením, že **není duplicitní** projevy. V aplikaci můžete testovat až 10 datových sad. Pokud potřebujete vyzkoušet víc, odstraňte datovou sadu a pak přidejte novou.
 
-|**pravidla**|
+|**Pravidly**|
 |--|
 |\* Žádné duplicitní projevy|
-|projevy 1 000 nebo méně|
+|1000 projevy nebo méně|
 
-\* Duplicity, jsou považovány za přesná shody, ne shody, které jsou nejprve tokenizovaného. 
+\* Duplicity se považují za přesné shody řetězců, nikoli shody, které jsou nejprve zařazeny do tokenu. 
 
-## <a name="entities-allowed-in-batch-tests"></a>Entity, které jsou povolené v testech služby batch
+## <a name="entities-allowed-in-batch-tests"></a>Entity povolené v dávkových testech
 
-Všechny vlastní entity v modelu se zobrazí ve filtru entity batch test i v případě, že neexistují žádné odpovídající entity v souboru dat dávek.
+Všechny vlastní entity v modelu se zobrazí v rámci filtru entity testu dávky i v případě, že v datech dávkového souboru nejsou žádné odpovídající entity.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="example-batch-file"></a>
 
-## <a name="batch-file-format"></a>Formát souboru služby batch
+## <a name="batch-file-format"></a>Formát dávkového souboru
 
-Dávkový soubor se skládá z projevy. Každý utterance musí mít očekávané záměru předpovědi spolu s [zjištěné počítače entity](luis-concept-entity-types.md#types-of-entities) očekáváte, že aby se rozpoznal. 
+Dávkový soubor se skládá z projevy. Každý utterance musí mít očekávanou předpověď záměru spolu se všemi [entitami](luis-concept-entity-types.md#types-of-entities) zjištěnými počítačem, které se mají detekovat. 
 
 ## <a name="batch-syntax-template-for-intents-with-entities"></a>Šablona syntaxe služby Batch pro záměry s entitami
 
-Pomocí následující šablony můžete spustit dávkový soubor:
+K spuštění dávkového souboru použijte následující šablonu:
 
 ```JSON
 [
@@ -74,7 +74,7 @@ Pomocí následující šablony můžete spustit dávkový soubor:
 ]
 ```
 
-Dávkový soubor používá **startPos** a **endPos** vlastnosti poznamenat začátek a konec entity. Hodnoty jsou počítány od nuly a nesmí začínat ani končit mezerou. Tím se liší z protokolů dotazu, které používají startIndex a hodnota endIndex vlastnosti. 
+Dávkový soubor používá vlastnosti **startPos** a **endpos** , které označují začátek a konec entity. Hodnoty jsou počítány od nuly a neměly by začínat ani končit mezerou. To se liší od protokolů dotazů, které používají vlastnosti startIndex a hodnota endIndex. 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
@@ -92,46 +92,46 @@ K spuštění dávkového souboru bez entit použijte následující šablonu:
 ]
 ```
 
-Pokud nechcete testovat entity, zahrňte `entities` vlastnost a nastavte hodnotu jako prázdné pole,. `[]`
+Pokud nechcete testovat entity, zahrňte vlastnost `entities` a nastavte hodnotu jako prázdné pole, `[]`.
 
 
-## <a name="common-errors-importing-a-batch"></a>Běžné chyby při importu služby batch
+## <a name="common-errors-importing-a-batch"></a>Běžné chyby při importu dávky
 
-Běžné chyby patří: 
+Mezi běžné chyby patří: 
 
-> * Víc než 1 000 projevy
-> * Objekt utterance JSON, který nemá na vlastnost entity. Vlastnost může být prázdné pole.
-> * Slova popisem více entit
-> * Popisek entity od nebo končí mezerou.
+> * Více než 1 000 projevy
+> * Objekt utterance JSON, který nemá vlastnost Entities. Vlastnost může být prázdné pole.
+> * Word (y) označený v několika entitách
+> * Popisek entity začínající nebo končící mezerou
 
-## <a name="batch-test-state"></a>Stav testu služby batch
+## <a name="batch-test-state"></a>Stav testu dávky
 
-LUIS sleduje stav posledního testu sady dat. To zahrnuje velikost (počet v dávce projevy), poslední spuštění data a výsledek posledního (počet úspěšně předpokládané projevy).
+LUIS sleduje stav posledního testu sady dat. To zahrnuje velikost (počet projevy v dávce), datum posledního spuštění a poslední výsledek (počet úspěšně předpokládaných projevy).
 
 <a name="sections-of-the-results-chart"></a>
 
-## <a name="batch-test-results"></a>Výsledky testu služby batch
+## <a name="batch-test-results"></a>Výsledky dávkového testu
 
-Výsledek testu batch je bodový graf, označované jako matici chyby. Tento graf se 4 způsob porovnání projevy dávkový soubor a předpokládané záměr aktuální model a entity. 
+Výsledkem dávkového testu je bodový graf, který se označuje jako chybová matice. Tento graf je obousměrné porovnání projevy v dávkovém souboru a předpovězeného záměru a entit aktuálního modelu. 
 
-Datových bodů na **falešně pozitivní** a **falešně negativní** části označují chyby, které by mělo být vypátráno. Pokud jsou všechny datové body na **true pozitivních** částech a **pravdivé záporné** části, je přesnost vaší aplikace ideální pro tuto datovou sadu.
+Datové body na **falešně pozitivních** a **falešně negativních** částech označují chyby, které by se měly prozkoumat. Pokud jsou všechny datové body na **true pozitivních** částech a **pravdivé záporné** části, je přesnost vaší aplikace ideální pro tuto datovou sadu.
 
 ![Čtyři části grafu](./media/luis-concept-batch-test/chart-sections.png)
 
-Tento graf vám pomůže najít projevy, které předpoví LUIS nesprávně podle jeho aktuální školení. Výsledky se zobrazí v jedné oblasti grafu. Vyberte jednotlivé body v grafu zkontrolujte informace utterance nebo vyberte název oblasti a zkontrolovat výsledky utterance v dané oblasti.
+Tento graf vám pomůže najít projevy, že LUIS předpověď nesprávně na základě jeho aktuálního školení. Výsledky se zobrazí v jednotlivých oblastech v grafu. Výběrem jednotlivých bodů v grafu si můžete prohlédnout utterance informace nebo vybrat název oblasti a zkontrolovat výsledky utterance v této oblasti.
 
 ![Dávkové testování](./media/luis-concept-batch-test/batch-testing.png)
 
-## <a name="errors-in-the-results"></a>Ve výsledcích chyby
+## <a name="errors-in-the-results"></a>Chyby ve výsledcích
 
-Chyby v testu batch označují záměrů, které nejsou předpovědět, jak je uvedeno v dávkovém souboru. Chyby jsou uvedené v dvě red části grafu. 
+Chyby v dávkovém testu označují záměry, které nejsou předvídatelné, jak je uvedeno v dávkovém souboru. Chyby jsou uvedeny v dvou červených částech grafu. 
 
-Falešně pozitivní části označuje, že utterance shoda s cílem nebo entity při by neměl mít. Záporné hodnoty false označuje, že že utterance se neshodoval s cílem nebo entity při by měl mít. 
+Falešně pozitivní část označuje, že se utterance shodoval s záměrem nebo entitou, pokud by neměla mít. Hodnota false Negative znamená, že utterance neodpovídal záměru nebo entitě, pokud by měla být. 
 
-## <a name="fixing-batch-errors"></a>Opravy chyb služby batch
+## <a name="fixing-batch-errors"></a>Oprava chyb dávky
 
-Pokud nejsou chyby při testování služby batch, můžete přidat další projevy záměru, nebo popisek další projevy s entitou umožňující LUIS, ujistěte se, k ní mezi záměry. Pokud jste přidali projevy a s popiskem je a stále get předpovědi chyb při testování služby batch, zvažte přidání [seznam frází](luis-concept-feature.md) funkce, která nabízí slovník jazyka specifického pro doménu umožňující LUIS při učení. 
+Pokud dojde k chybám v dávkovém testování, můžete přidat více projevy k záměru a/nebo označit více projevy s entitou, která bude pomáhat LUIS učinit diskriminaci mezi záměry. Pokud jste přidali projevy a přiřadíte je a stále máte chyby předpovědi při dávkovém testování, zvažte přidání funkce [seznamu frází](luis-concept-feature.md) s slovníkem specifickým pro doménu, aby se Luis rychleji dozvěděly. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak [testování dávky](luis-how-to-batch-test.md)
+* Postup [testování dávky](luis-how-to-batch-test.md)

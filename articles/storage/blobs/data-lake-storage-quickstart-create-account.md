@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 1c9cdfa54494cd6d77edcd13110a79e5265e5032
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 675d1889fc74474a1d732cb5d4e9f46c638ce200
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817848"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467918"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Vytvoření účtu úložiště Azure Data Lake Storage Gen2
 
@@ -78,7 +78,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
 4. Dále zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure. Název také musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
 5. Zvolte umístění.
 6. Ujistěte se, že se v rozevíracím seznamu **druh účtu** zobrazuje položka **StorageV2 (obecné účely v2)** jako vybraná.
-7. Volitelně můžete změnit hodnoty v každém z těchto polí: **výkon**, **replikace**, **úroveň přístupu**. Další informace o těchto možnostech najdete v tématu [Úvod do Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#introducing-the-azure-storage-services).
+7. Volitelně můžete změnit hodnoty v každém z těchto polí: **výkon**, **replikace**, **úroveň přístupu**. Další informace o těchto možnostech najdete v tématu [Úvod do Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services).
 8. Vyberte kartu **Upřesnit** .
 10. V části **Data Lake Storage Gen2** nastavte **hierarchický obor názvů** na **Enabled**.
 11. Kliknutím na tlačítko **zkontrolovat + vytvořit** vytvořte účet úložiště.

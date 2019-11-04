@@ -16,16 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: edba2a18e3b086a132f0bba7622df5df389671c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372412"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489196"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Loven pro hrozby s v Azure Sentinel
-
-
+# <a name="hunt-for-threats-with-azure-sentinel"></a>Loven pro hrozby s Sentinel Azure
 
 Pokud jste zkoušející, který chce být aktivní pro hledání bezpečnostních hrozeb, výkonné nástroje pro vyhledávání a dotazování v souvislosti s technologií Azure pro zajištění bezpečnostních hrozeb v rámci zdrojů dat vaší organizace. Ale vaše systémy a bezpečnostní zařízení generují Mountains dat, která se můžou obtížně analyzovat a filtrovat na smysluplné události. Aby se analytikům zabezpečení dokázali aktivně podívat na nové anomálie, které nezjistily vaše aplikace zabezpečení, v rámci integrovaných dotazů Azure Sentinele se podíváte na tyto otázky, které vám pomůžou najít problémy v datech, která už máte ve vaší síti. 
 
@@ -48,7 +46,7 @@ S ohledem na dodržování ověřovacích funkcí Azure můžete využít výhod
 ## <a name="get-started-hunting"></a>Začít s loveckím
 
 1. Na portálu Sentinel Azure klikněte na možnost **rozlovu**.
-  @no__t 0Azure Sentinel začíná lov @ no__t-1
+  ![Azure Sentinel začíná lov](media/tutorial-hunting/hunting-start.png)
 
 2. Po otevření stránky pro **lov** se všechny lovecké dotazy zobrazí v jedné tabulce. V tabulce jsou uvedeny všechny dotazy napsané týmem analytiků zabezpečení společnosti Microsoft a všechny další dotazy, které jste vytvořili nebo upravili. Každý dotaz poskytuje popis toho, co je v nástroji k dispozici, a druh dat, na kterých se spouští. Tyto šablony jsou seskupené podle jejich různých taktiku – ikony na pravé straně typ hrozby, například počáteční přístup, trvalost a exfiltrace. Tyto šablony pro lovecké dotazy můžete filtrovat pomocí kteréhokoli z těchto polí. Libovolný dotaz můžete uložit do oblíbených položek. Když uložíte dotaz do oblíbených položek, dotaz se automaticky spustí při každém otevření stránky pro **lov** . Můžete vytvořit vlastní lovecký dotaz nebo klonovat a přizpůsobit existující šablonu pro lovecké dotazy. 
  

@@ -12,43 +12,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/14/2019
 ms.author: rkarlin
-ms.openlocfilehash: e74dd54403ed599aa95e8fc8a94c2bd7a3ca41d8
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 92beb61125c9c6a41bafb9a0c477d81c34a2f5de
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719115"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520668"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
 
-Můžete připojit Azure Sentinel k externímu řešení, které umožňuje ukládat soubory protokolu v protokolu syslog. Pokud vaše zařízení umožňuje ukládat protokoly jako CEF (Common Event Format) syslog, Integration with Azure Sentinel vám umožní snadno spouštět analýzy a dotazy napříč daty.
+
+
+Tento článek vysvětluje, jak propojit službu Azure Sentinel s vašimi externími řešeními zabezpečení, která odesílají zprávy CEF (Common Event Format) nad syslog. 
 
 > [!NOTE] 
 > Data se ukládají do geografického umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Připojení mezi službou Azure Sentinel a zařízením CEF se provádí ve třech krocích:
-
-1. Na zařízení je potřeba nastavit tyto hodnoty tak, aby zařízení odesílalo potřebné protokoly v potřebném formátu do agenta Azure Sentinel syslog, a to na základě Microsoft Monitoring Agent. Tyto parametry můžete upravit v zařízení, pokud je také upravíte v procesu démona syslog na agentu služby Azure Sentinel.
-    - Protokol = UDP
-    - Port = 514
-    - Facilita = Local4
-    - Format = CEF
-2. Agent syslog data shromáždí a bezpečně ho pošle Log Analytics, kde je analyzovaný a obohacený.
-3. Agent ukládá data do pracovního prostoru Log Analytics, takže se na ně můžete dotazovat podle potřeby, pomocí pravidel analýzy, korelace a řídicích panelů.
-
-> [!NOTE]
-> Agent může shromažďovat protokoly z více zdrojů, ale musí být nainstalovaný na vyhrazeném počítači.
-
+Musíte nasadit agenta na vyhrazený počítač se systémem Linux (virtuální počítač nebo místní), aby podporoval komunikaci mezi zařízením a službou Azure Sentinel. Následující diagram popisuje nastavení v případě virtuálního počítače se systémem Linux v Azure.
 
  ![CEF v Azure](./media/connect-cef/cef-syslog-azure.png)
 
-Případně můžete agenta nasadit ručně na existující virtuální počítač Azure, na virtuální počítač v jiném cloudu nebo na místní počítač. 
+Případně bude tato instalace existovat, pokud použijete virtuální počítač v jiném cloudu nebo v místním počítači. 
 
  ![Místní CEF](./media/connect-cef/cef-syslog-onprem.png)
+
 
 ## <a name="security-considerations"></a>Informace o zabezpečení
 
@@ -56,92 +47,84 @@ Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení
 
 Pokud chcete používat komunikaci TLS mezi řešením zabezpečení a počítačem syslog, budete muset nakonfigurovat démona syslog (rsyslog nebo syslog-ng) pro komunikaci v TLS: [šifrování provozu syslog pomocí TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [šifrování zpráv protokolu pomocí TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
+ 
+## <a name="prerequisites"></a>Předpoklady
+Ujistěte se, že počítač se systémem Linux, který používáte jako proxy, používá jeden z následujících operačních systémů:
 
-## <a name="step-1-configure-your-syslog-vm"></a>Krok 1: konfigurace virtuálního počítače syslog
+- 64 – bit
+  - CentOS 6 a 7
+  - Amazon Linux 2017,09
+  - Oracle Linux 6 a 7
+  - Red Hat Enterprise Linux Server 6 a 7
+  - Debian GNU/Linux 8 a 9
+  - Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
+  - SUSE Linux Enterprise Server 12
+- 32 – bit
+   - CentOS 6
+   - Oracle Linux 6
+   - Red Hat Enterprise Linux Server 6
+   - Debian GNU/Linux 8 a 9
+   - Ubuntu Linux 14,04 LTS a 16,04 LTS
+ 
+ - Verze démona
+   - Syslog-ng: 2,1-3.22.1
+   - Rsyslog: V8
+  
+ - Podporované specifikace RFC syslog
+   - Protokol syslog RFC 3164
+   - Protokol syslog RFC 5424
+ 
+Ujistěte se, že váš počítač splňuje i následující požadavky: 
+- Oprávnění
+    - Na počítači musíte mít zvýšená oprávnění (sudo). 
+- Požadavky na software
+    - Ujistěte se, že je v počítači spuštěný Python.
+## <a name="step-1-deploy-the-agent"></a>Krok 1: nasazení agenta
 
-Musíte nasadit agenta na vyhrazený počítač se systémem Linux (virtuální počítač nebo místní), aby podporoval komunikaci mezi zařízením a službou Azure Sentinel. 
-
-> [!NOTE]
-> Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. 
-
-
+V tomto kroku musíte vybrat počítač se systémem Linux, který bude fungovat jako proxy server mezi službou Azure Sentinel a řešením zabezpečení. Na proxy počítači budete muset spustit skript, který:
+- Nainstaluje agenta Log Analytics a nakonfiguruje ho podle potřeby, aby naslouchal zprávy syslog na portu 514 přes TCP a odesílal zprávy CEF do pracovního prostoru Azure Sentinel.
+- Nakonfiguruje démon procesu Syslog pro přeposílání zpráv CEF na agenta Log Analytics pomocí portu 25226.
+- Nastaví agenta syslog ke shromáždění dat a jeho bezpečnému odeslání do Log Analytics, kde se analyzuje a obohacuje.
+ 
+ 
 1. Na portálu Sentinel Azure klikněte na **datové konektory** a vyberte **Common Event Format (CEF)** a pak **otevřete stránku konektor**. 
 
-1. V části **Stáhnout a nainstalovat agenta SYSLOG**vyberte typ počítače, buď Azure, nebo místní. 
-1. Na obrazovce **virtuální počítače** , která se otevře, vyberte počítač, který chcete použít, a klikněte na **připojit**.
-1. Pokud zvolíte **Stáhnout a nainstalovat agenta pro virtuální počítače se systémem Azure Linux**, vyberte počítač a klikněte na **připojit**. Pokud jste zvolili **Stáhnout a nainstalovat agenta pro virtuální počítače, které nejsou na platformě Azure Linux**, na obrazovce **Direct agent** spusťte skript v části stáhnout a začlenit **agenta pro Linux**.
-1. Na obrazovce konektoru CEF v části **Konfigurovat a přeposlání SYSLOG**nastavte, zda je démon procesu Syslog **rsyslog. d** nebo **syslog-ng**. 
-1. Zkopírujte tyto příkazy a spusťte je na svém zařízení:
-    - Pokud jste vybrali rsyslog. d:
-              
-       1. Informujte démona syslog, aby naslouchal na zařízení local_4 a odesílal zprávy syslog do agenta Azure Sentinel pomocí portu 25226. `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            
-       2. Stáhněte a nainstalujte [konfigurační soubor security_events](https://aka.ms/asi-syslog-config-file-linux) , který konfiguruje agenta syslog k naslouchání na portu 25226. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`, kde by {0} mělo být nahrazeno identifikátorem GUID pracovního prostoru.
-            
-       1. Restartujte démona syslog `sudo service rsyslog restart`.<br> Další informace najdete v [dokumentaci k rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html) .
-           
-    - Pokud jste vybrali syslog-ng:
-       1. Informujte démona syslog, aby naslouchal na zařízení local_4 a odesílal zprávy syslog do agenta Azure Sentinel pomocí portu 25226. `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-       2. Stáhněte a nainstalujte [konfigurační soubor security_events](https://aka.ms/asi-syslog-config-file-linux) , který konfiguruje agenta syslog k naslouchání na portu 25226. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`, kde by {0} mělo být nahrazeno identifikátorem GUID pracovního prostoru.
+1. V části **instalace a konfigurace agenta SYSLOG**vyberte typ počítače, Azure, jiný Cloud nebo místní prostředí. 
+   > [!NOTE]
+   > Vzhledem k tomu, že skript v dalším kroku nainstaluje agenta Log Analytics a připojí počítač k pracovnímu prostoru Sentinel Azure, ujistěte se, že tento počítač není připojený k žádnému jinému pracovnímu prostoru.
+1. Na počítači musíte mít zvýšená oprávnění (sudo). Ujistěte se, že máte v počítači Python, a to pomocí následujícího příkazu: `python –version`
 
-        3. Restartujte démona syslog `sudo service syslog-ng restart`. <br>Další informace najdete v [dokumentaci k syslog-ng](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/mutual-authentication-using-tls/2) .
-1. Restartujte agenta syslog pomocí tohoto příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-1. Spuštěním tohoto příkazu ověřte, že protokol agenta neobsahuje chyby: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+1. Spusťte na proxy počítači následující skript.
+   `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+1. Když je skript spuštěný, zkontrolujte, že nezískáváte žádné chybové zprávy ani upozornění.
 
-Pokud chcete použít příslušné schéma v Log Analytics pro události CEF, vyhledejte `CommonSecurityLog`.
 
-## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>Krok 2: předejte protokoly CEF (Common Event Format) do agenta syslog.
+## <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>Krok 2: konfigurace řešení zabezpečení pro posílání zpráv CEF
 
-Nastavte řešení zabezpečení tak, aby odesílalo zprávy syslog ve formátu CEF do vašeho agenta syslog. Ujistěte se, že používáte stejné parametry, které se zobrazí v konfiguraci agenta. Obvykle jsou to:
+1. Na zařízení musíte nastavit tyto hodnoty tak, aby zařízení odesílalo potřebné protokoly v potřebném formátu do agenta Azure Sentinel syslog na základě agenta Log Analytics. Tyto parametry můžete upravit v zařízení, pokud je také upravíte v procesu démona syslog na agentu služby Azure Sentinel.
+    - Protokol = TCP
+    - Port = 514
+    - Format = CEF
+    - IP adresa – zajistěte odeslání zpráv CEF na IP adresu virtuálního počítače, který jste si pro tento účel vyhradi.
 
-- Port 514
-- LOCAL4 zařízení
+   > [!NOTE]
+   > Toto řešení podporuje syslog RFC 3164 nebo RFC 5424.
+
+
+1. Pokud chcete použít příslušné schéma v Log Analytics pro události CEF, vyhledejte `CommonSecurityLog`.
 
 ## <a name="step-3-validate-connectivity"></a>Krok 3: ověření připojení
 
-Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics. 
+1. Otevřete Log Analytics a ujistěte se, že jsou protokoly přijaté pomocí schématu CommonSecurityLog.<br> Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics. 
 
-1. Ujistěte se, že používáte správné zařízení. Zařízení musí být ve vašem zařízení stejné a v Azure Sentinel. Můžete zjistit, který soubor zařízení používáte v rámci Azure Sentinel, a upravit ho v souboru `security-config-omsagent.conf`. 
-
-2. Zajistěte, aby se protokoly načítají do správného portu agenta syslog. Spusťte tento příkaz na počítači agenta syslog: `tcpdump -A -ni any  port 514 -vv` Tento příkaz zobrazí protokoly, které streamuje ze zařízení do počítače syslog. Zajistěte, aby byly protokoly přijímány ze zdrojového zařízení na správném portu a v pravém zařízení.
-
-3. Ujistěte se, že protokoly, které odesíláte, vyhovují [specifikaci RFC 3164](https://tools.ietf.org/html/rfc3164).
-
-4. V počítači, na kterém je spuštěn Agent syslog, se ujistěte, že jsou porty 514, 25226 otevřené a naslouchající, pomocí příkazu `netstat -a -n:`. Další informace o použití tohoto příkazu naleznete v tématu [netstat (8) – Linux Man](https://linux.die.net/man/8/netstat). Pokud je naslouchá správně, uvidíte toto:
-
-   ![Porty Sentinel Azure](./media/connect-cef/ports.png) 
-
-5. Ujistěte se, že démon je nastaven na naslouchání na portu 514, na který odesíláte protokoly.
-    - Pro rsyslog:<br>Ujistěte se, že soubor `/etc/rsyslog.conf` zahrnuje tuto konfiguraci:
-
-           # provides UDP syslog reception
-           module(load="imudp")
-           input(type="imudp" port="514")
-        
-           # provides TCP syslog reception
-           module(load="imtcp")
-           input(type="imtcp" port="514")
-
-      Další informace najdete v tématu [imudp: vstupní modul protokolu UDP SYSLOG](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) a [Imtcp: vstupní modul protokolu TCP syslog.](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)
-
-   - Pro syslog-ng:<br>Ujistěte se, že soubor `/etc/syslog-ng/syslog-ng.conf` zahrnuje tuto konfiguraci:
-
-           # source s_network {
-            network( transport(UDP) port(514));
-             };
-     Další informace naleznete v tématu [syslog-ng Open Source Edition 3,16-příručka pro správu](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455).
-
-1. Ověřte, zda mezi démonem syslog a agentem probíhá komunikace. Spusťte tento příkaz na počítači agenta syslog: `tcpdump -A -ni any  port 25226 -vv` Tento příkaz zobrazí protokoly, které streamuje ze zařízení do počítače syslog. Ujistěte se, že jsou protokoly také přijímány v agentovi.
-
-6. Pokud se oba tyto příkazy dodávají úspěšně, zkontrolujte Log Analytics a zjistěte, jestli jsou protokoly přicházející. Všechny události streamované z těchto zařízení se zobrazí v nezpracované podobě v Log Analytics v části `CommonSecurityLog` typ.
-
-7. Pokud chcete zjistit, jestli se vyskytly chyby, nebo jestli se protokoly nepřicházejí, podívejte se `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`. Pokud se vyskytnou chyby neshody formátu protokolu, přejděte na `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` a podívejte se na soubor `security_events.conf`and ověřte, že se protokoly shodují s formátem Regex, který vidíte v tomto souboru.
-
-8. Ujistěte se, že výchozí velikost zprávy syslog je omezená na 2048 bajtů (2 KB). Pokud jsou protokoly moc dlouhé, aktualizujte security_events. conf pomocí tohoto příkazu: `message_length_limit 4096`
+1. Před spuštěním skriptu doporučujeme, abyste odeslali zprávy z řešení zabezpečení, abyste se ujistili, že jsou předávány na počítač proxy syslog, který jste nakonfigurovali. 
+1. Na počítači musíte mít zvýšená oprávnění (sudo). Ujistěte se, že máte v počítači Python, a to pomocí následujícího příkazu: `python –version`
+1. Spuštěním následujícího skriptu zkontrolujete konektivitu mezi agentem, službou Azure Sentinel a vaším řešením zabezpečení. Kontroluje, zda je přesměrování démona správně nakonfigurováno, naslouchá na správných portech a zda nic neblokuje komunikaci mezi démonem a agentem Log Analytics. Skript také pošle příznakové zprávy "TestCommonEventFormat", aby zkontrolovala koncové připojení. <br>
+ `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit zařízení CEF ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
 

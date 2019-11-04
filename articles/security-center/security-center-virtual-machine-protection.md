@@ -1,6 +1,6 @@
 ---
-title: Ochrana vašich počítačů a aplikací ve službě Azure Security Center | Dokumentace Microsoftu
-description: Tento dokument popisuje doporučení ve službě Security Center, které vám pomůžou chránit virtuální počítače a počítače a webové aplikace a služby App Service Environment.
+title: Ochrana počítačů a aplikací v Azure Security Center | Microsoft Docs
+description: Tento dokument popisuje doporučení v Security Center, která vám pomůžou chránit vaše virtuální počítače a počítače a vaše webové aplikace a App Service prostředí.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: a3bce8d6312dd09a7f10f8d5d2eaebd4e312d95d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 2317d0206e3fc4a342606d17c172ac42cbe82870
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200784"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520676"
 ---
-# <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrana vašich počítačů a aplikací ve službě Azure Security Center
-Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure, serverů mimo Azure a virtuálních počítačů. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol. Doporučení platí pro typy prostředků Azure: virtuální počítače (VM) a počítačů, aplikací, sítí, SQL a identit a přístupů.
+# <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrana počítačů a aplikací v Azure Security Center
+Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure, serverů mimo Azure a virtuálních počítačů. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků. Doporučení se vztahují na typy prostředků Azure: virtuální počítače a počítače, aplikace, sítě, SQL a identita a přístup.
 
-Tento článek se zabývá doporučení, která platí pro počítače a aplikace.
+Tento článek se zabývá doporučeními, která se vztahují na počítače a aplikace.
 
 ## <a name="monitoring-security-health"></a>Sledování stavu zabezpečení
-Můžete monitorovat stav zabezpečení vašich prostředků na **Security Center – přehled** řídicího panelu. **Prostředky** část obsahuje počet problémů zjištěných a stavu zabezpečení pro každý typ prostředku.
+Stav zabezpečení vašich prostředků můžete monitorovat na řídicím panelu **Security Center – přehled** . Část **Resources (prostředky** ) poskytuje počet zjištěných problémů a stav zabezpečení pro každý typ prostředku.
 
-Seznam všech problémů můžete zobrazit tak, že vyberete **doporučení**. Další informace o tom, jak používat doporučení, najdete v části [implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
+Seznam všech problémů můžete zobrazit výběrem **doporučení**. Další informace o tom, jak používat doporučení, najdete [v tématu Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
-Úplný seznam výpočetní prostředky a aplikace služeb doporučení najdete v tématu [doporučení](security-center-virtual-machine-protection.md#compute-and-app-recommendations).
+Úplný seznam doporučení COMPUTE a App Services najdete v tématu [věnovaném doporučením](security-center-virtual-machine-protection.md#compute-and-app-recs).
 
-Chcete-li pokračovat, vyberte **výpočty a aplikace** pod **prostředky** nebo hlavní nabídce služby Security Center.
-![Řídicí panel Security Center](./media/security-center-virtual-machine-recommendations/overview.png)
+Pokud chcete pokračovat, vyberte **compute & aplikace** v části **prostředky** nebo v hlavní nabídce Security Center.
+řídicí panel Security Center ![](./media/security-center-virtual-machine-recommendations/overview.png)
 
 ## <a name="monitor-compute-and-app-services"></a>Monitorování výpočetních a aplikačních služeb
 V části **výpočetní & aplikace**jsou k dispozici následující karty:
@@ -42,80 +42,80 @@ V části **výpočetní & aplikace**jsou k dispozici následující karty:
 - **Virtuální počítače a počítače:** Seznam virtuálních počítačů, počítačů a aktuální stav jejich zabezpečení
 - **Cloudové služby:** Seznam webových a pracovních rolí monitorovaných službou Security Center
 - **App Services**: seznam prostředí App Service a aktuální stav zabezpečení každého.
-- **Kontejnery (Preview)** : Seznam kontejnerů hostovaných na počítačích se systémem IaaS Linux a posouzení zabezpečení jejich konfigurací Docker.
+- **Kontejnery**: Seznam kontejnerů a posouzení zabezpečení jejich konfigurací.
 - **Výpočetní prostředky (Preview)** : seznam doporučení pro výpočetní prostředky, například Service Fabric clusterů a centra událostí.
 
 Pokud chcete pokračovat, vyberte **compute & aplikace** v části **hygiena zabezpečení prostředků**.
 
-![Compute](./media/security-center-virtual-machine-recommendations/compute.png)
+![Služby Compute](./media/security-center-virtual-machine-recommendations/compute.png)
 
 Na každé kartě můžete mít několik částí a v každé části můžete vybrat jednotlivé možnosti, abyste zobrazili další podrobnosti o doporučeném postupu k vyřešení konkrétního problému.
 
-### Nemonitorované virtuální počítače a počítače <a name="unmonitored-vms-and-computers"></a>
-Virtuální počítač nebo počítač je nemonitorovaný službou Security Center, pokud počítač není spuštěný rozšíření Microsoft Monitoring Agent. Počítač může mít již nainstalovaný místní agent, například agenta OMS Direct nebo Agent System Center Operations Manager. Počítače s těmito agenty se identifikují jako nemonitorované, protože tyto agenty plně nepodporuje ve službě Security Center. Pokud chcete naplno využívat všechny schopnosti služby Security Center, potřebujete rozšíření Microsoft Monitoring Agent.
+### Nemonitorované virtuální počítače a počítače<a name="unmonitored-vms-and-computers"></a>
+VIRTUÁLNÍ počítač nebo počítač se nemonitoruje Security Center, pokud počítač nepoužívá rozšíření Microsoft Monitoring Agent. Počítač může mít již nainstalovaný místní agent, například agenta OMS Direct nebo Agent System Center Operations Manager. Počítače s těmito agenty jsou označeny jako nemonitorované, protože tito agenti nejsou v Security Center plně podporovaná. Pokud chcete naplno využívat všechny schopnosti služby Security Center, potřebujete rozšíření Microsoft Monitoring Agent.
 
-Rozšíření můžete nainstalovat na nemonitorovaný virtuální počítač nebo počítač kromě již nainstalovanému místnímu agentu. Nakonfigurujte oba agenty stejným způsobem a připojte je ke stejnému pracovnímu prostoru. Tím umožníte službě Security Center pracovat s rozšířením Microsoft Monitoring Agent a shromažďovat data. Pokyny k instalaci rozšíření Microsoft Monitoring Agent najdete v tématu popisujícím [povolení rozšíření virtuálního počítače](../azure-monitor/learn/quick-collect-azurevm.md).
+Kromě již nainstalovaného místního agenta můžete nainstalovat rozšíření na nemonitorovaný virtuální počítač nebo počítač. Nakonfigurujte oba agenty stejným způsobem a připojte je ke stejnému pracovnímu prostoru. Tím umožníte službě Security Center pracovat s rozšířením Microsoft Monitoring Agent a shromažďovat data. Pokyny k instalaci rozšíření Microsoft Monitoring Agent najdete v tématu popisujícím [povolení rozšíření virtuálního počítače](../azure-monitor/learn/quick-collect-azurevm.md).
 
 Další informace o důvodech, proč se službě Security Center nedaří úspěšně monitorovat virtuální počítače a počítače inicializované pro automatické zřizování, najdete v tématu popisujícím [problémy s monitorováním stavu agenta](security-center-troubleshooting-guide.md#mon-agent).
 
 ### <a name="recommendations"></a>Doporučení
-Tato část obsahuje sadu doporučení jednotlivých virtuálních počítačů a počítačů, webových a pracovních rolí, Azure App Service Web Apps a Azure App Service Environment, která monitoruje Security Center. První sloupec uvádí doporučení. Druhý sloupec zobrazuje celkový počet prostředků, které jsou ovlivněny tímto doporučením. Třetí sloupec zobrazuje závažnost problému.
+Tato část obsahuje sadu doporučení pro každý virtuální počítač a počítač, webové a pracovní role, Azure App Service Web Apps a Azure App Service Environment, které Security Center monitorují. První sloupec uvádí doporučení. Druhý sloupec zobrazuje celkový počet prostředků, které jsou ovlivněny tímto doporučením. Třetí sloupec zobrazuje závažnost problému.
 
-Každé doporučení obsahuje sadu akcí, které můžete provést po výběru. Pokud například vyberete **chybějící aktualizace systému**, zobrazí se počet virtuálních počítačů a počítačů, ve kterých chybí opravy, a závažnost chybějící aktualizace.
+Každé doporučení obsahuje sadu akcí, které můžete provést po jeho výběru. Pokud například vyberete **chybějící aktualizace systému**, zobrazí se počet virtuálních počítačů a počítačů, ve kterých chybí opravy, a závažnost chybějící aktualizace.
 
-**Nainstalovat aktualizace systému** obsahuje souhrn důležitých aktualizací ve formátu grafu, jeden pro Windows a jeden pro Linux. Druhá část obsahuje tabulku s následujícími informacemi:
+**Použití aktualizací systému** obsahuje souhrn důležitých aktualizací ve formátu grafu, jeden pro Windows a jeden pro Linux. Druhá část obsahuje tabulku s následujícími informacemi:
 
-- **NÁZEV**: Název chybějící aktualizace
-- **POČET Virtuálních počítačů & počítačů**: Celkový počet virtuálních počítačů a počítačů, ve kterých chybí Tato aktualizace.
-- **ZÁVAŽNOST AKTUALIZACE**: Popisuje závažnost tohoto konkrétního doporučení:
+- **NÁZEV:** Název chybějící aktualizace.
+- **Ne. Virtuálních počítačů &ch počítačů**: celkový počet virtuálních počítačů a počítačů, ve kterých chybí Tato aktualizace.
+- **Závažnost aktualizace**: popisuje závažnost tohoto konkrétního doporučení:
 
-    - **Kritické**: Existuje chyba s smysluplným prostředkem (aplikace, virtuální počítač nebo skupina zabezpečení sítě) a vyžaduje pozornost.
-    - **Důležité**informace: K dokončení procesu nebo odstranění ohrožení zabezpečení se vyžadují nekritické nebo další kroky.
-    - **Střední**: Ohrožení zabezpečení by se mělo řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
+    - **Kritické**: ohrožení zabezpečení existuje smysluplným prostředkem (aplikace, virtuální počítač nebo skupina zabezpečení sítě) a vyžaduje pozornost.
+    - **Důležité**: k dokončení procesu nebo odstranění ohrožení zabezpečení se vyžadují nekritické nebo další kroky.
+    - **Střední**: ohrožení zabezpečení by se mělo řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
 
 
 - **STAV**: Aktuální stav doporučení:
 
-    - **Otevřete**: Doporučení ještě není vyřešené.
-    - **Probíhá**: Doporučení se v tuto chvíli aplikuje na tyto prostředky a nevyžaduje žádnou akci.
-    - **Vyřešeno**: Doporučení již bylo dokončeno. (Pokud byl problém vyřešen, položka je vyšedlá.)
+    - **Otevřené**: Doporučení dosud nebylo řešeno.
+    - **Probíhá**: Doporučení se aktuálně na tyto prostředky používá a není třeba provádět žádnou akci.
+    - **Vyřešeno**: Doporučení už je dokončené. (Pokud byl problém vyřešen, položka je vyšedlá.)
 
 Pokud chcete zobrazit podrobnosti o doporučení, klikněte na název chybějící aktualizace v seznamu.
 
 
 > [!NOTE]
-> Bezpečnostní doporučení uvedená tady jsou stejné jako ty v rámci **doporučení** dlaždici. Další informace o řešení doporučení najdete [v tématu Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
+> Bezpečnostní doporučení uvedená tady jsou stejná jako na dlaždici **doporučení** . Další informace o řešení doporučení najdete [v tématu Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 >
 >
 
 ### <a name="vms-and-computers"></a>Virtuální počítače a počítače
-Část virtuálních počítačů a počítačů poskytuje přehled o všech doporučení pro virtuální počítač a počítač. Každý sloupec představuje jednu sadu doporučení.
+Část virtuální počítače a počítače nabízí přehled všech doporučení pro virtuální počítače a počítače. Každý sloupec představuje jednu sadu doporučení.
 
 ![Doporučení pro virtuální počítač a počítač](./media/security-center-virtual-machine-recommendations/vm-computers.png)
 
-Existují čtyři typy ikon v tomto seznamu:
+V tomto seznamu jsou zastoupeny čtyři typy ikon:
 
 ![Počítač umístěný mimo Azure](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Počítač mimo Azure.
 
-![Virtuální počítač Azure Resource Manageru](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Virtuální počítač Azure Resource Manageru.
+![Azure Resource Manager virtuálního počítače](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Azure Resource Manager virtuální počítač.
 
 ![Virtuální počítač Azure Classic](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Virtuální počítač Azure Classic.
 
 
-![Virtuální počítače uvedené v pracovním prostoru](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Virtuální počítače identifikované pouze z pracovního prostoru, který je součástí zobrazeného předplatného. To zahrnuje virtuální počítače z jiných předplatných, které jsou součástí pracovního prostoru v tomto předplatném, a virtuální počítače, které byly nainstalovány s Operations Manager přímým agentem, a nemají žádné ID prostředku.
+![Virtuální počítače identifikované z pracovního prostoru](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Virtuální počítače identifikované pouze z pracovního prostoru, který je součástí zobrazeného předplatného. To zahrnuje virtuální počítače z jiných předplatných, které jsou součástí pracovního prostoru v tomto předplatném, a virtuální počítače, které byly nainstalovány s Operations Manager přímým agentem, a nemají žádné ID prostředku.
 
-Ikona, který se zobrazí pod každým doporučením, pomáhá rychle identifikovat virtuální počítač a počítač, který vyžaduje pozornost a typ doporučení se jedná. Pomocí filtrů můžete také Hledat v seznamu podle **typu prostředku** a podle závažnosti.
+Ikona, která se zobrazí pod každým doporučením, vám pomůže rychle identifikovat virtuální počítač a počítač, který vyžaduje pozornost, a typ doporučení. Pomocí filtrů můžete také Hledat v seznamu podle **typu prostředku** a podle **závažnosti**.
 
 Pokud chcete přejít k podrobnostem o zabezpečení pro každý virtuální počítač, klikněte na virtuální počítač.
-Tady vidíte podrobné informace o zabezpečení pro virtuální počítač nebo počítač. V dolní části vidíte doporučenou akci a závažnost každého problému.
+Tady vidíte podrobnosti zabezpečení pro virtuální počítač nebo počítač. V dolní části vidíte doporučenou akci a závažnost každého problému.
 ![Cloudové služby](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
-### <a name="cloud-services"></a>Cloud Services
+### <a name="cloud-services"></a>Cloudové služby
 Pro cloudové služby se vytvoří doporučení, když je verze operačního systému zastaralá.
 
-![Cloud Services](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
+![Cloudové služby](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
 
-V případě, kdy máte doporučení (což není případ předchozího příkladu) budete muset postupovat podle kroků v doporučení a aktualizovat verzi operačního systému. Když je k dispozici aktualizace, obdržíte výstrahu (červenou nebo oranžovou – v závislosti na závažnosti problému). Když vyberete tuto výstrahu v WebRole1 (spouští Windows Server s vaší webovou aplikací automaticky nasazenou do služby IIS) nebo WorkerRole1 (spouští Windows Server s vaší webovou aplikací automaticky nasazenou do služby IIS), zobrazí se další podrobnosti o tomto doporučení.
+V případě, kdy máte doporučení (což není případ předchozího příkladu), musíte postupovat podle kroků v doporučení a aktualizovat verzi operačního systému. Když je k dispozici aktualizace, obdržíte výstrahu (červenou nebo oranžovou – v závislosti na závažnosti problému). Když vyberete tuto výstrahu v WebRole1 (spouští Windows Server s vaší webovou aplikací automaticky nasazenou do služby IIS) nebo WorkerRole1 (spouští Windows Server s vaší webovou aplikací automaticky nasazenou do služby IIS), zobrazí se další podrobnosti o tomto doporučení.
 
 Pokud chcete zobrazit podrobnější vysvětlení tohoto doporučení, klikněte na **Aktualizovat verzi operačního systému** ve sloupci **POPIS**.
 
@@ -126,46 +126,46 @@ Pokud chcete zobrazit podrobnější vysvětlení tohoto doporučení, klikněte
 ### <a name="app-services"></a>Aplikační služby
 Pokud chcete zobrazit informace o App Service, musíte ve svém předplatném povolit App Service. Pokyny k povolení této funkce najdete v tématu [ochrana App Service pomocí Azure Security Center](security-center-app-services.md).
 [!NOTE]
-> Monitorování služby App Service je ve verzi preview a je k dispozici jenom na úrovni Standard služby Security Center.
+> App Service monitorování je ve verzi Preview a je k dispozici pouze na úrovni Standard Security Center.
 
 
-V části **App services**najdete seznam vaší služby App service Environment a provést shrnutí stavu na základě posouzení Security Center.
+V části **App Services**najdete seznam prostředí App Service Environment a shrnutí stavu na základě Security Center prováděného hodnocení.
 
 ![Aplikační služby](./media/security-center-virtual-machine-recommendations/app-services.png)
 
-Existují tři typy ikon v tomto seznamu:
+V tomto seznamu jsou zastoupeny tři typy ikon:
 
-![Prostředí App services](./media/security-center-virtual-machine-recommendations/ase.png) Prostředí App services.
+![Prostředí App Services](./media/security-center-virtual-machine-recommendations/ase.png) Prostředí App Services.
 
-![Webová aplikace](./media/security-center-virtual-machine-recommendations/web-app.png) Webová aplikace.
+![Webová aplikace](./media/security-center-virtual-machine-recommendations/web-app.png) Webová aplikace
 
-![Aplikace – funkce](./media/security-center-virtual-machine-recommendations/function-app.png) Použití funkce.
+![Aplikace Function](./media/security-center-virtual-machine-recommendations/function-app.png) Aplikace Function.
 
-1. Vyberte webovou aplikaci. Souhrnné zobrazení otevřete tři karty:
+1. Vyberte webovou aplikaci. Otevře se souhrnné zobrazení se třemi kartami:
 
-   - **Doporučení**: založené na posouzení, které provádí služba Security Center, která selhala.
-   - **Předaný posouzení**: seznam posouzení, které provádí služba Security Center, který předává.
-   - **Nedostupná posouzení**: seznam vyhodnocení, které se nepovedlo spustit kvůli chybě nebo doporučení není relevantní pro konkrétní službu App service
+   - **Doporučení**: na základě posouzení provedených Security Center, která selhala.
+   - **Úspěšná vyhodnocení**: seznam hodnocení provedených Security Center, která byla úspěšná.
+   - **Nedostupná posouzení**: seznam posouzení, která se nepodařilo spustit z důvodu chyby, nebo doporučení není relevantní pro konkrétní službu App Service.
 
-   V části **doporučení** se seznam doporučení pro vybranou webovou aplikaci a závažnost jednotlivých doporučení.
+   V části **doporučení** je seznam doporučení pro vybranou webovou aplikaci a závažnost každého doporučení.
 
    ![App Services doporučení](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
 
 2. Vyberte doporučení, abyste zobrazili popis doporučení a seznam špatných prostředků, zdravých prostředků a nekontrolovaných prostředků.
 
-   - Ve sloupci **předaná vyhodnocení** je seznam předaných vyhodnocení.  Závažnost těchto hodnocení je vždy zelená.
+   - Ve sloupci **předaná vyhodnocení** je seznam předaných vyhodnocení.  Závažnost těchto hodnocení je vždycky zelená.
 
-   - Vyberte ze seznamu popis posouzení, seznam prostředků není v pořádku a v pořádku a seznam nezkontrolované prostředky předané posouzení. Je na kartě pro prostředky není v pořádku, ale tento seznam je prázdný, vždy od předaný posouzení.
+   - V seznamu vyberte úspěšné posouzení, seznam stavů, které jsou v pořádku, a v seznamu nekontrolovaných prostředků. Pro prostředky, které nejsou v pořádku, je k dispozici karta, ale tento seznam je vždy prázdný, protože hodnocení bylo úspěšné.
 
      ![App Service nápravy](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+## <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 Security Center automaticky zjišťuje, zda máte sady škálování a doporučuje nainstalovat Microsoft Monitoring Agent na tyto sady škálování. 
 
 Instalace Microsoft Monitoring Agent: 
 
 1. Vyberte doporučení **nainstalovat agenta monitorování do sady škálování virtuálních počítačů**. Zobrazí se seznam nemonitorované sady škálování.
-2. Vyberte skupinu škálování, která není v pořádku. Postupujte podle pokynů pro instalaci agenta monitorování pomocí stávajícího naplněné pracovní plochy nebo vytvořte nový. Pokud není nastavená cenová [úroveň](security-center-pricing.md) pracovního prostoru, ujistěte se, že jste ji nastavili.
+2. Vyberte skupinu škálování, která není v pořádku. Postupujte podle pokynů pro instalaci agenta monitorování pomocí stávajícího naplněné pracovní plochy nebo vytvořte nový. Pokud není nastavená [cenová úroveň](security-center-pricing.md) pracovního prostoru, ujistěte se, že jste ji nastavili.
 
    ![Instalace MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
@@ -175,53 +175,53 @@ Pokud chcete nastavit nové sady škálování tak, aby se automaticky nainstalo
 3. Klikněte na **Přiřadit**.
 4. Nastavte **Rozsah** a **Log Analytics pracovní prostor** a klikněte na **přiřadit**.
 
-Pokud chcete nastavit všechny existující sady škálování pro instalaci Microsoft Monitoring Agent, v Azure Policy se můžete vrátit k nápravě a použít existující zásady na existující sady škálování.
+Pokud chcete nastavit všechny existující sady škálování pro instalaci Microsoft Monitoring Agent, v Azure Policy se můžete vrátit k **nápravě** a použít existující zásady na existující sady škálování.
 
 
-## <a name="compute-and-app-recommendations"></a>Doporučení pro výpočetní prostředky a aplikace
+## Doporučení pro výpočty a aplikace<a name="compute-and-app-recs"></a>
 |Typ prostředku|Bezpečnostní skóre|Doporučení|Popis|
 |----|----|----|----|
-|App Service|20|Webová aplikace by měla být přístupná jen přes HTTPS|Pouze omezit přístup k webovým aplikacím přes protokol HTTPS.|
-|App Service|20|Funkce aplikace by měla být přístupná jen přes HTTPS|Přístup z aplikace Function App omezit pouze přes protokol HTTPS.|
-|App Service|5|Měly by být povolené diagnostické protokoly v App Services.|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|App Service|10|Vzdálené ladění by měl být vypnuté pro webovou aplikaci|Vypněte ladění pro webové aplikace, pokud už nepotřebujete ho používat. Vzdálené ladění vyžaduje příchozí porty potřeba otevřít v aplikaci Function App.|
-|App Service|10|Vzdálené ladění by měla být vypnuta aplikace – funkce|Vypněte ladění pro aplikace Function App, pokud už nepotřebujete ho používat. Vzdálené ladění vyžaduje příchozí porty potřeba otevřít v aplikaci Function App.|
-|App Service|10|Nejsou povoleny všechny ("*") prostředkům pro přístup k aplikaci| Nepovolit sadu parametr WEBSITE_LOAD_CERTIFICATES "". Nastavení parametru na "znamená, že jsou načteny všechny certifikáty do úložiště osobních certifikátů webové aplikace. To může vést k porušení principu nejnižší úrovně oprávnění, jak je pravděpodobné, že web potřebuje přístup ke všem certifikátům za běhu.|
-|App Service|20|CORS by nemělo umožňovat každý prostředek pro přístup k vaší webové aplikace|Povolte pouze požadované domény k interakci s vaší webovou aplikací. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat přístup k webové aplikaci všem doménám.|
-|App Service|20|CORS by nemělo umožňovat každý prostředek pro přístup k aplikaci Function App| Povolte pouze požadované domény k interakci s vaší aplikací funkce. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat všechny domény pro přístup k vaší aplikaci funkcí.|
-|Výpočetní prostředky (batch)|1|Pravidla upozornění na metriky by měly být nakonfigurovaná na účtech Batch.|Konfigurace pravidla upozornění na metriky na účet Batch a zapnutí metrik události dokončení odstranění fondu a spuštění události odstranění fondu|
-|Výpočetní prostředky (service fabric)|10|Clustery Service Fabric by se měly používat jenom Azure Active Directory pro ověřování klientů.|Proveďte ověření klienta pouze prostřednictvím Azure Active Directory v Service Fabric.|
-|Výpočetní prostředky (účet služby automation)|5|Proměnné účtu Automation by se měly šifrovat.|Při ukládání citlivých dat, povolte šifrování proměnných assetů účtu Automation.|
-|Výpočetní prostředky (vyhledávání)|5|Auditovat povolení diagnostických protokolů pro služby vyhledávání|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|Výpočetní prostředky (služby Service bus)|5|Měly by být povolené diagnostické protokoly v Service Bus.|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|Výpočetní prostředky (stream analytics)|5|Měly by být povolené diagnostické protokoly v Azure Stream Analytics.|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|Výpočetní prostředky (batch)|5|Povolení diagnostických protokolů v účtů služby Batch|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|Výpočetní prostředky (centra událostí)|5|Měly by být povolené diagnostické protokoly v centru událostí.|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|Výpočetní prostředky (logic apps)|5|Povolit diagnostické protokoly v Logic Apps|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|Výpočetní prostředky (service fabric)|15|Nastavte vlastnost ClusterProtectionLevel EncryptAndSign v Service Fabric|Service Fabric nabízí tři úrovně ochrany (None, přihlašování a EncryptAndSign) pro komunikaci mezi uzly pomocí certifikátu primární clusteru.  Nastavte úroveň ochrany, k zajištění, že všechny zprávy – uzly jsou zašifrované a digitálně podepsané. |
-|Výpočetní prostředky (služby Service bus)|1|Odebrat všechna autorizační pravidla s výjimkou RootManageSharedAccessKey z oboru názvů služby Service Bus |Klienti služby Service Bus neměli používat zásady přístupu na úrovni oboru názvů, který poskytuje přístup ke všem fronty a témata v oboru názvů. K zajištění souladu s modelem zabezpečení s minimálními oprávněními byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.|
-|Výpočetní prostředky (centra událostí)|1|Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí.|Event Hub klientů neměli používat zásady přístupu na úrovni oboru názvů, který poskytuje přístup ke všem fronty a témata v oboru názvů. K zajištění souladu s modelem zabezpečení s minimálními oprávněními byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.|
-|Výpočetní prostředky (centra událostí)|5|Měla by být definovaná autorizační pravidla pro entitu centra událostí.|Autorizační pravidla centra událostí entity udělit přístup s nejnižšími auditu.|
-|Machine|50|Nainstalujte agenta Monitoring Agent na své počítače|Nainstalujte agenta monitorování povolíte shromažďování dat, aktualizace, vyhledávání směrných plánů a služby endpoint protection na každém počítači.|
-|Počítač|50|Povolit automatické zřizování a shromažďování dat pro předplatná |Povolte automatické zřizování a shromažďování dat pro počítače v rámci vašich předplatných povolíte shromažďování dat, aktualizace, vyhledávání směrných plánů a služby endpoint protection na každý počítač přidat do vašich předplatných.|
-|Počítač|40|Vyřešte problémy se stavem agenta Monitoring Agent na svých počítačích|Pro plnou ochranu Security Center vyřešte problémy s monitorováním agenta na počítačích, postupujte podle pokynů v příručce pro řešení potíží| 
-|Počítač|40|Vyřešte problémy se stavem služby Endpoint Protection na svých počítačích|Pro plnou ochranu Security Center vyřešte problémy s monitorováním agenta na počítačích, postupujte podle pokynů v příručce pro řešení potíží.|
-|Počítač|40|Vyřešte chybějící data skenování na počítačích|Řešení potíží s chybějící data skenu na virtuálních počítačích a počítačích. Chybějící data skenu na výsledky počítače ve vyhodnocování zabezpečení, jako chybějící aktualizace kontrolu směrného plánu vyhledávání a chybějící prohledávání řešení ochrany koncových bodů.|
-|Počítač|40|Do vašich počítačů by se měly nainstalovat aktualizace systému|Nainstalovat chybějící zabezpečení systému a kritických aktualizací zabezpečení virtuálních počítačů s Windows a Linux a počítače
-|Machine|15|Přidání brány firewall webových aplikací| Nasaďte řešení webové aplikace brány firewall (WAF) k zabezpečení webových aplikací. |
-|Machine|40|Aktualizujte verzi operačního systému pro role cloudových služeb|Aktualizujte verzi operačního systému pro role cloudových služeb na nejnovější verzi, která je k dispozici pro vaši řadu operačního systému.|
-|Počítač|35|Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno|Náprava ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích pro ochranu před útoky.|
-|Počítač|35|Náprava ohrožení zabezpečení v konfiguraci zabezpečení pro vaše kontejnery|Pokud chcete počítače, které mají nainstalovaný Docker, chránit před útoky, napravte v konfiguraci zabezpečení ohrožení zabezpečení.|
-|Počítač|25|Povolit Adaptivní řízení aplikací|Povolte aplikaci ovládacího prvku do ovládacího prvku, které aplikace můžete spouštět na vašich virtuálních počítačích v Azure. To vám pomůže posílit ochranu virtuálních počítačů před malwarem. Security Center pomocí strojového učení analyzuje aplikace spuštěné na každém virtuálním počítači a pomáhá použijete povolit pravidla těchto informací. Tato funkce zjednodušuje proces konfigurace a Správa aplikací povolit pravidla.|
-|Počítač|20|Nainstalujte řešení Endpoint Protection do počítačů|Nainstalujte řešení ochrany koncových bodů na vašich virtuálních počítačů, a ochraňte je proti hrozby a ohrožení zabezpečení.|
-|Počítač|20|Restartujte své počítače, aby se nainstalovaly aktualizace systému|Pokud chcete nainstalovat aktualizace systému a zabezpečit počítač před ohroženími zabezpečení, restartujte svůj počítač.|
-|Machine|15|Na virtuálních počítačích by se mělo použít šifrování disku|Šifrování disků vašich virtuálních počítačů pomocí Azure Disk Encryption i pro virtuální počítače s Windows a Linux. Azure Disk Encryption (ADE) využívá oborové funkci standardní BitLocker systému Windows a funkci DM-Crypt systému Linux k poskytování šifrování disku operačního systému a dat k ochraně a chránit vaše data a vám pomohou splnit vaše organizace na zabezpečení a dodržování předpisů závazky v zákazník služby Azure key vault. Když váš požadavek na dodržování předpisů a zabezpečení vyžaduje, abyste šifrovat data začátku do konce pomocí šifrovacích klíčů, včetně šifrování dočasný disk (místně připojených dočasný) použití Azure disk encryption. Můžete také ve výchozím nastavení, spravované disky jsou šifrované v klidovém stavu ve výchozím nastavení pomocí šifrování služby úložiště Azure, kde jsou šifrovací klíče Microsoft managed keys v Azure. Pokud tím se splní vaše požadavky na zabezpečení a dodržování předpisů, můžete využít výchozí spravovaný disk encryption podle svých požadavků.|
-|Machine|30|Nainstalujte řešení Posouzení ohrožení zabezpečení na virtuální počítače.|Nainstalujte řešení Posouzení ohrožení zabezpečení na virtuální počítače.|
-|Počítač|15|Přidání brány firewall webových aplikací| Nasaďte řešení webové aplikace brány firewall (WAF) k zabezpečení webových aplikací. |
-|Počítač|30|Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.|Virtuální počítače, u kterých je 3. stran řešení posouzení ohrožení zabezpečení nasazení průběžně hodnotí proti aplikace a ohrožení zabezpečení operačního systému. Pokaždé, když se najde takovýmto ohrožením zabezpečení, jsou dostupné pro více informací v rámci doporučení.|
-|Machine|30|Nainstalujte řešení Posouzení ohrožení zabezpečení na virtuální počítače.|Nainstalujte řešení Posouzení ohrožení zabezpečení na virtuální počítače.|
-|Machine|1|Virtuální počítače by měly být migrovány do nových prostředků AzureRM|Použijte Azure Resource Manager pro vaše virtuální počítače k zajištění vylepšení zabezpečení, jako je: silnější řízení přístupu (RBAC), lepší auditování, nasazení Správce prostředků a zásady správného řízení, přístup ke spravovaným identitám, přístup k trezoru klíčů pro tajné klíče, Ověřování a podpora založené na Azure AD pro značky a skupiny prostředků pro snadnější správu zabezpečení. |
-|Machine|30|Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.|Virtuální počítače, u kterých je 3. stran řešení posouzení ohrožení zabezpečení nasazení průběžně hodnotí proti aplikace a ohrožení zabezpečení operačního systému. Pokaždé, když se najde takovýmto ohrožením zabezpečení, jsou dostupné pro více informací v rámci doporučení.|
+|App Service|20|Webová aplikace by měla být přístupná jen přes protokol HTTPS|Omezte přístup k webovým aplikacím jenom přes HTTPS.|
+|App Service|20|Function App by měl být přístupný jenom přes HTTPS|Omezte přístup aplikací Function App jenom přes protokol HTTPS.|
+|App Service|5|Měly by být povolené diagnostické protokoly v App Services.|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
+|App Service|10|Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.|Vypnout ladění pro webové aplikace, pokud už je nepotřebujete používat. Vzdálené ladění vyžaduje, aby byly na Function App otevřené porty pro příchozí spojení.|
+|App Service|10|Vzdálené ladění by mělo být pro aplikaci funkcí vypnuté.|Vypněte ladění pro Function App, pokud už je nepotřebujete používat. Vzdálené ladění vyžaduje, aby byly na Function App otevřené porty pro příchozí spojení.|
+|App Service|10|Nepovolit všem (' * ') prostředkům přístup k aplikaci| Nepovolujte u parametru WEBSITE_LOAD_CERTIFICATES hodnotu "". Nastavením parametru na ' ' znamená, že všechny certifikáty budou načteny do osobního úložiště certifikátů vaší webové aplikace. To může vést k zneužití principu nejnižší úrovně oprávnění, protože je pravděpodobné, že lokalita potřebuje mít přístup ke všem certifikátům za běhu.|
+|App Service|20|CORS by neměl umožňovat každému prostředku přístup k vašim webovým aplikacím|Povoluje interakci jenom požadovaných domén s webovou aplikací. Sdílení prostředků mezi zdroji (CORS) by nemělo umožňovat přístup k vaší webové aplikaci všem doménám.|
+|App Service|20|CORS by neměl umožňovat každému prostředku přístup k vašemu Function App| Povoluje interakci jenom požadovaných domén s vaší aplikací funkcí. Sdílení prostředků mezi zdroji (CORS) by nemělo umožňovat všem doménám přístup k vaší aplikaci funkcí.|
+|Výpočetní prostředky (Batch)|1\. místo|Pravidla upozornění na metriky by měly být nakonfigurovaná na účtech Batch.|Nakonfigurujte pravidla upozornění metrik na účtu Batch a povolte události odstranit kompletní události a odstranit fond. události spuštění odstranění fondu|
+|Výpočetní prostředky (Service Fabric)|10|Clustery Service Fabric by se měly používat jenom Azure Active Directory pro ověřování klientů.|Ověřování klienta provádějte pouze prostřednictvím Azure Active Directory v Service Fabric.|
+|Výpočetní prostředky (účet Automation)|5|Proměnné účtu Automation by se měly šifrovat.|Povoluje šifrování prostředků proměnných účtu služby Automation při ukládání citlivých dat.|
+|Výpočetní prostředky (hledání)|5|Auditovat povolení diagnostických protokolů pro služby vyhledávání|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
+|Výpočetní prostředky (Service Bus)|5|Měly by být povolené diagnostické protokoly v Service Bus.|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
+|Výpočetní prostředky (Stream Analytics)|5|Měly by být povolené diagnostické protokoly v Azure Stream Analytics.|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
+|Výpočetní prostředky (Batch)|5|Povolení diagnostických protokolů v účtech Batch|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
+|Výpočetní prostředky (centrum událostí)|5|Měly by být povolené diagnostické protokoly v centru událostí.|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
+|Výpočetní prostředky (Logic Apps)|5|Povolit diagnostické protokoly v Logic Apps|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
+|Výpočetní prostředky (Service Fabric)|15|Nastavte vlastnost ClusterProtectionLevel na EncryptAndSign v Service Fabric|Service Fabric poskytuje tři úrovně ochrany (žádné, podpisové a EncryptAndSign) pro komunikaci mezi uzly pomocí primárního certifikátu clusteru.  Nastavte úroveň ochrany tak, aby bylo zajištěno, že všechny zprávy mezi uzly budou šifrovány a digitálně podepsány. |
+|Výpočetní prostředky (Service Bus)|1\. místo|Odebrat všechna autorizační pravidla s výjimkou RootManageSharedAccessKey z oboru názvů Service Bus |Klienti Service Bus by neměli používat zásady přístupu na úrovni oboru názvů, které poskytují přístup ke všem frontám a tématům v oboru názvů. K zajištění souladu s modelem zabezpečení s minimálními oprávněními byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.|
+|Výpočetní prostředky (centrum událostí)|1\. místo|Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí.|Klienti centra událostí by neměli používat zásady přístupu na úrovni oboru názvů, které poskytují přístup ke všem frontám a tématům v oboru názvů. K zajištění souladu s modelem zabezpečení s minimálními oprávněními byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.|
+|Výpočetní prostředky (centrum událostí)|5|Měla by být definovaná autorizační pravidla pro entitu centra událostí.|Auditujte autorizační pravidla v entitě centra událostí, abyste udělili přístup s minimálním oprávněním.|
+|Počítač|50|Instalace agenta monitorování do počítačů|Nainstalujte agenta monitorování, aby bylo možné na každém počítači povolit shromažďování dat, kontrolu aktualizací, kontrolu základních hodnot a službu Endpoint Protection.|
+|Počítač|50|Povolení automatického zřizování a shromažďování dat pro vaše předplatná |Povolením automatického zřizování a shromažďování dat pro počítače ve vašich předplatných umožníte shromažďování dat, kontrolu aktualizací, kontrolu standardních hodnot a službu Endpoint Protection na každém počítači přidávaném do vašich předplatných.|
+|Počítač|40|Řešení problémů se stavem agenta monitorování na vašich počítačích|Pokud chcete úplnou Security Center ochranu, vyřešte problémy s agentem monitorování na vašich počítačích podle pokynů v Průvodci odstraňováním potíží.| 
+|Počítač|40|Řešení problémů se stavem služby Endpoint Protection na vašich počítačích|V případě úplné ochrany Security Center vyřešte problémy s agentem monitorování na vašich počítačích podle pokynů v Průvodci odstraňováním potíží.|
+|Počítač|40|Řešení potíží s chybějícími daty kontroly na vašich počítačích|Řešení potíží s chybějícími daty kontroly na virtuálních počítačích a počítačích Chybějící data kontroly na vašich počítačích mají za následek chybějící vyhodnocení zabezpečení, jako je například skenování aktualizací, kontrola standardních hodnot a chybějící kontrola řešení ochrany koncových bodů.|
+|Počítač|40|Do vašich počítačů by se měly nainstalovat aktualizace systému|Pro zabezpečení virtuálních počítačů a počítačů se systémem Windows a Linux nainstalujte chybějící zabezpečení systému a důležité aktualizace.
+|Počítač|15|Přidání brány firewall webových aplikací| Nasazením řešení Firewall webových aplikací (WAF) zabezpečíte své webové aplikace. |
+|Počítač|40|Aktualizace verze operačního systému pro vaše role cloudové služby|Aktualizujte verzi operačního systému (OS) pro role cloudové služby na nejnovější verzi dostupnou pro vaši rodinu operačních systémů.|
+|Počítač|35|Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno|Opravte chyby zabezpečení v konfiguraci zabezpečení na vašich počítačích, abyste je chránili před útoky.|
+|Počítač|35|Oprava ohrožení zabezpečení v konfiguraci zabezpečení v kontejnerech|Napravit ohrožení zabezpečení v konfiguraci zabezpečení na počítačích s nainstalovaným Docker pro ochranu před útoky|
+|Počítač|25|Povolit adaptivní řízení aplikací|Povolením řízení aplikací můžete řídit, které aplikace se můžou spouštět na virtuálních počítačích umístěných v Azure. To vám pomůže posílit vaše virtuální počítače proti malwaru. Security Center využívá Machine Learning k analýze aplikací spuštěných na každém virtuálním počítači a pomůže vám použít pravidla pro povolení pomocí těchto inteligentních funkcí. Tato možnost zjednodušuje proces konfigurace a správy pravidel povolených aplikací.|
+|Počítač|20|Instalace řešení Endpoint Protection na počítačích|Nainstalujte řešení ochrany koncových bodů na virtuální počítače, abyste je chránili před hrozbami a ohroženími zabezpečení.|
+|Počítač|20|Restartujte počítače, aby se projevily systémové aktualizace.|Restartujte počítače, aby se projevily aktualizace systému, a zabezpečte počítač před ohrožením zabezpečení.|
+|Počítač|15|Na virtuálních počítačích by se mělo použít šifrování disku|Zašifrujte disky virtuálních počítačů pomocí Azure Disk Encryption pro virtuální počítače s Windows i Linux. Azure Disk Encryption (ADE) využívá standardní funkci nástroje BitLocker systému Windows a funkci DM-crypt systému Linux k poskytnutí šifrování operačního systému a datového disku pro zajištění ochrany a ochrany vašich dat a lepšího zabezpečení a dodržování předpisů vaší organizace. závazky v trezoru klíčů zákazníka Azure V případě, že požadavek na dodržování předpisů a zabezpečení vyžaduje, abyste zašifrují data zakončení pomocí šifrovacích klíčů, včetně šifrování dočasného (místně připojeného dočasného) disku, použijte Azure Disk Encryption. Ve výchozím nastavení se Managed Disks standardně šifrují v klidovém stavu pomocí Azure Storage šifrování služby, kde šifrovací klíče jsou spravované klíče Microsoftu v Azure. Pokud to vyhovuje vašim požadavkům na dodržování předpisů a zabezpečení, můžete využít výchozí šifrování spravovaného disku, které splňuje vaše požadavky.|
+|Počítač|30|Instalace řešení pro posouzení ohrožení zabezpečení na virtuálních počítačích|Instalace řešení pro posouzení ohrožení zabezpečení na virtuálních počítačích|
+|Počítač|15|Přidání brány firewall webových aplikací| Nasazením řešení Firewall webových aplikací (WAF) zabezpečíte své webové aplikace. |
+|Počítač|30|Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.|Virtuální počítače, pro které je nasazené řešení zabezpečení od jiných výrobců, se průběžně vyhodnocuje proti chybám zabezpečení aplikací a operačních systémů. Pokaždé, když jsou taková ohrožení zabezpečení zjištěná, jsou k dispozici pro další informace jako součást doporučení.|
+|Počítač|30|Instalace řešení pro posouzení ohrožení zabezpečení na virtuálních počítačích|Instalace řešení pro posouzení ohrožení zabezpečení na virtuálních počítačích|
+|Počítač|1\. místo|Virtuální počítače by měly být migrovány do nových prostředků AzureRM|Použijte Azure Resource Manager pro vaše virtuální počítače k zajištění vylepšení zabezpečení, jako je: silnější řízení přístupu (RBAC), lepší auditování, nasazení Správce prostředků a zásady správného řízení, přístup ke spravovaným identitám, přístup k trezoru klíčů pro tajné klíče, Ověřování a podpora založené na Azure AD pro značky a skupiny prostředků pro snadnější správu zabezpečení. |
+|Počítač|30|Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.|Virtuální počítače, pro které je nasazené řešení zabezpečení od jiných výrobců, se průběžně vyhodnocuje proti chybám zabezpečení aplikací a operačních systémů. Pokaždé, když jsou taková ohrožení zabezpečení zjištěná, jsou k dispozici pro další informace jako součást doporučení.|
 |Škálovací sada virtuálních počítačů |4|Měly by být povolené diagnostické protokoly v Virtual Machine Scale Sets.|Povolte protokoly a zachovejte je po dobu až do roku. To umožňuje znovu vytvořit stopy aktivity pro účely šetření. To je užitečné v případě, že dojde k incidentu zabezpečení nebo dojde k ohrožení bezpečnosti sítě.|
 |Škálovací sada virtuálních počítačů|35|V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.|Opravte chyby zabezpečení v konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů, abyste je chránili před útoky. |
 |Škálovací sada virtuálních počítačů|5|Napravit selhání stavu ochrany koncových bodů ve virtuálních počítačích služby Virtual Machine Scale Sets|Opravte chyby stavu ochrany koncových bodů v rámci sady škálování virtuálních počítačů, abyste je chránili před hrozbami a ohroženími zabezpečení. |
@@ -234,13 +234,13 @@ Pokud chcete nastavit všechny existující sady škálování pro instalaci Mic
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
+Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících tématech:
 
 
 * [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
-* [Monitorování identity a přístupu v Azure Security Center](security-center-identity-access.md)
+* [Monitorování identity a přístupu ve službě Azure Security Center](security-center-identity-access.md)
 * [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
-* [Ochrana služby Azure SQL ve službě Azure Security Center](security-center-sql-service-recommendations.md)
+* [Ochrana služby Azure SQL Service v Azure Security Center](security-center-sql-service-recommendations.md)
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 

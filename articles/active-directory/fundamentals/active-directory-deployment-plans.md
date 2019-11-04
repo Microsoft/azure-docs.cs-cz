@@ -1,6 +1,6 @@
 ---
-title: Plány nasazení – Azure Active Directory | Dokumentace Microsoftu
-description: Začátku do konce pokyny o tom, jak nasadit řadu funkcí Azure Active Directory.
+title: Plány nasazení – Azure Active Directory | Microsoft Docs
+description: Kompletní pokyny, jak nasadit mnoho možností Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 949676c622c87831d22dcfc7e1bc6d920b622738
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336864"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473280"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny k nasazení funkcí Azure Active Directory (Azure AD)? Plány nasazení Azure AD vás seznámí s obchodní hodnotou, požadavky na plánování a provozními postupy potřebnými k úspěšnému nasazení běžných funkcí služby Azure AD.
@@ -59,23 +59,24 @@ Rozšiřování zavedení na větší skupiny uživatelů by mělo být proveden
 
 ## <a name="deploy-authentication"></a>Nasazení ověřování
 
-| Funkce | Popis|
+| Schopnost | Popis|
 | -| -|
-| [Multi-Factor Authentication](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-getstarted)| Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřování od Microsoftu. Pomocí metod ověřování schválených správcem Azure MFA pomáhá chránit přístup k vašim datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování. |
+| [Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)| Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřování od Microsoftu. Pomocí metod ověřování schválených správcem Azure MFA pomáhá chránit přístup k vašim datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování. |
 | [Podmíněný přístup](https://aka.ms/deploymentplans/ca)| Pomocí podmíněného přístupu můžete implementovat automatizované rozhodnutí řízení přístupu, která budou mít přístup k vašim cloudovým aplikacím, a to na základě podmínek. |
 | [Samoobslužné resetování hesla](https://aka.ms/deploymentplans/sspr)| Samoobslužné resetování hesla pomáhá uživatelům resetovat hesla bez zásahu správce, kdy a kde potřebují. |
+| [Vyzkoušet](https://aka.ms/deploymentplans/passwordless) | Implementace ověřování pomocí hesla pomocí Microsoft Authenticator aplikace nebo klíčů zabezpečení FIDO2 ve vaší organizaci |
 
 ## <a name="deploy-application-management"></a>Nasazení správy aplikací
 
-| Funkce | Popis|
+| Schopnost | Popis|
 | -| - |
 | [Jednotné přihlašování](https://aka.ms/deploymentplans/sso)| Jednotné přihlašování pomáhá uživatelům přistupovat k aplikacím a prostředkům, které potřebují k podnikání, a současně se přihlašuje. Až se přihlásí, můžou přejít z systém Microsoft Office do služby SalesForce do interních aplikací, aniž by se museli zadávat přihlašovací údaje podruhé. |
-| [Přístupový panel](https://aka.ms/deploymentplans/accesspanel)| Nabízejí uživatelům jednoduchý hub ke zjištění a přístupu k aplikacím. Umožněte jejich zvýšení produktivity díky funkcím samoobslužné služby, jako je vyžadování přístupu k aplikacím a skupinám nebo Správa přístupu k prostředkům jménem jiných uživatelů. |
+| [Přístupový panel](https://aka.ms/deploymentplans/accesspanel)| Poskytněte uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Umožněte jejich zvýšení produktivity díky funkcím samoobslužné služby, jako je vyžadování přístupu k aplikacím a skupinám nebo Správa přístupu k prostředkům jménem jiných uživatelů. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Nasazení hybridních scénářů
 
-| Funkce | Popis|
+| Schopnost | Popis|
 | -| -|
 | [ADFS pro synchronizaci hodnot hash hesel](https://aka.ms/deploymentplans/adfs2phs)| Díky synchronizaci hodnot hash hesel jsou hash hesla uživatelů synchronizovaná z místní služby Active Directory do Azure AD a umožňují tak uživatelům ověřování Azure AD bez interakce s místní službou Active Directory. |
 | [ADFS pro předávací ověřování](https://aka.ms/deploymentplans/adfs2pta)| Předávací ověřování Azure AD pomáhá uživatelům přihlašovat se pomocí stejných hesel k místním i cloudovým aplikacím. Tato funkce poskytuje uživatelům lepší možnosti – jedno méně než jedno heslo, které si zapamatuje a snižuje náklady na helpdesk, protože uživatelé mají méně pravděpodobný způsob, jak se přihlásit. Když se uživatelé přihlásí pomocí Azure AD, tato funkce ověří jejich hesla přímo v místní službě Active Directory. |
@@ -84,14 +85,14 @@ Rozšiřování zavedení na větší skupiny uživatelů by mělo být proveden
 
 ## <a name="deploy-user-provisioning"></a>Nasazení zřizování uživatelů
 
-| Funkce | Popis|
+| Schopnost | Popis|
 | -| -|
-| [Zřizování uživatelů](https://aka.ms/UserProvisioningDPDownload)| Azure AD pomáhá automatizovat vytváření, údržbu a odebírání identit uživatelů v cloudových aplikacích (SaaS), jako jsou Dropbox, Salesforce, ServiceNow a další. |
-| [Zřizování WORKDAY řízené příchozí uživatelů](https://aka.ms/WorkdayDeploymentPlan)| Řízené WORKDAY příchozího zřizování uživatelů služby Active Directory vytvoří základ pro zásady správného řízení identit probíhající a zvyšuje kvalitu obchodních procesů, které jsou závislé na datech autoritativní identity. Pomocí této funkce můžete bez problémů spravovat životní cyklus identit zaměstnanců a podmíněných pracovníků tím, že nakonfigurujete pravidla, která mapují procesy připojující se k stěhovací společnosti (například nové přijetí, ukončení a přenos) na akce zřizování IT (například vytvořit, povolit, Dezaktivovat |
+| [Zřizování uživatelů](https://aka.ms/deploymentplans/userprovisioning)| Azure AD pomáhá automatizovat vytváření, údržbu a odebírání identit uživatelů v cloudových aplikacích (SaaS), jako jsou Dropbox, Salesforce, ServiceNow a další. |
+| [Zřizování příchozích uživatelů založené na Workday](https://aka.ms/WorkdayDeploymentPlan)| Zřizování příchozích uživatelů založené na Workday ve službě Active Directory vytvoří základ pro průběžné řízení identit a vylepšuje kvalitu obchodních procesů, které spoléhají na data autoritativní identity. Pomocí této funkce můžete bez problémů spravovat životní cyklus identit zaměstnanců a podmíněných pracovníků tím, že nakonfigurujete pravidla, která mapují procesy připojující se k stěhovací společnosti (například nové přijetí, ukončení a přenos) na akce zřizování IT (například vytvořit, povolit, Dezaktivovat |
 
 ## <a name="deploy-governance-and-reporting"></a>Nasazení zásad správného řízení a vytváření sestav
 
-| Funkce | Popis|
+| Schopnost | Popis|
 | -| -|
 | [Privileged Identity Management](https://aka.ms/deploymentplans/pim)| Azure AD Privileged Identity Management (PIM) pomáhá spravovat privilegované administrativní role napříč službami Azure AD, prostředky Azure a dalšími online službami Microsoftu. PIM poskytuje řešení, jako je přístup za běhu, pracovní postupy schvalování žádostí a plně integrované recenze přístupu, abyste mohli identifikovat, odhalit a zabránit škodlivým aktivitám privilegovaných rolí v reálném čase. |
 | [Vytváření sestav a monitorování](https://aka.ms/deploymentplans/reporting)| Návrh řešení pro vytváření sestav a monitorování Azure AD závisí na vašich právních a provozních požadavcích a na vašich stávajících prostředích a procesech. Tento článek nabízí různé možnosti návrhu a provede vás se správnou strategií nasazení. |

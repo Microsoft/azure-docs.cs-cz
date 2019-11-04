@@ -5,19 +5,31 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/07/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: b3147db8cda04ce7a71b35659eb91a20a06e0c52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8824111edff23b8bdc93a64707cf5198288b3a6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028055"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488851"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu site-to-site pomocí služby Azure Virtual WAN
 
 V tomto kurzu se dozvíte, jak se pomocí služby Virtual WAN připojit ke svým prostředkům v Azure přes připojení VPN IPsec/IKE (IKEv1 a IKEv2). Tento typ připojení vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu. Další informace o službě Virtual WAN najdete v tématu [Přehled služby Virtual WAN](virtual-wan-about.md).
+
+Co se v tomto kurzu naučíte:
+
+> [!div class="checklist"]
+> * Vytvoření virtuální sítě WAN
+> * Vytvoření rozbočovače
+> * Vytvoření lokality
+> * Připojení lokality k centru
+> * Připojení lokality VPN k centru
+> * Připojení virtuální sítě k rozbočovači
+> * Stažení konfiguračního souboru
+> * Zobrazení virtuální sítě WAN
 
 > [!NOTE]
 > Pokud máte hodně lokalit, doporučujeme využít k vytvoření této konfigurace [partnera pro Virtual WAN](https://aka.ms/virtualwan). Pokud se ale vyznáte ve vytváření sítí a umíte nakonfigurovat vlastní zařízení VPN, můžete tuto konfiguraci vytvořit sami.
@@ -25,76 +37,57 @@ V tomto kurzu se dozvíte, jak se pomocí služby Virtual WAN připojit ke svým
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan.png)
 
-V tomto kurzu se naučíte:
-
-> [!div class="checklist"]
-> * Vytvoření sítě WAN
-> * Vytvoření lokality
-> * Vytvoření rozbočovače
-> * Připojení rozbočovače k lokalitě
-> * Vytvoření kompatibilní virtuální sítě (pokud ji ještě nemáte)
-> * Připojení virtuální sítě k rozbočovači
-> * Stažení a použití konfigurace zařízení VPN
-> * Zobrazení virtuální sítě WAN
-> * Zobrazení stavu prostředků
-> * Monitorování připojení
-
 ## <a name="before-you-begin"></a>Než začnete
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
-## <a name="openvwan"></a>1. vytvoření virtuální sítě WAN
+* Máte virtuální síť, ke které se chcete připojit. Ověřte, že se žádná z podsítí místních sítí nepřekrývá s virtuálními sítěmi, ke kterým se chcete připojit. Pokud chcete vytvořit virtuální síť v Azure Portal, přečtěte si [rychlý Start](../virtual-network/quick-create-portal.md).
 
-V prohlížeči přejděte na web [Azure Portal](https://aka.ms/azurevirtualwanpreviewfeatures) a přihlaste se pomocí svého účtu Azure.
+* Vaše virtuální síť nemá žádné brány virtuální sítě. Pokud má vaše virtuální síť bránu (buď VPN, nebo ExpressRoute), musíte odebrat všechny brány. Tato konfigurace vyžaduje, aby se virtuální sítě místo toho připojovaly k virtuální bráně WAN hub.
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
+* Zařiďte rozsah IP adres pro oblast vašeho rozbočovače. Centrum je virtuální síť, kterou vytváří a používá virtuální síť WAN. Rozsah adres, který zadáte pro centrum, se nemůže překrývat s žádnou ze stávajících virtuálních sítí, ke kterým se připojujete. Taky se nesmí překrývat s rozsahy adres, ke kterým se připojujete v místním prostředí. Pokud neznáte rozsahy IP adres nacházející se v konfiguraci vaší místní sítě, zajistěte koordinaci s někým, kdo vám poskytne tyto podrobnosti.
 
-## <a name="site"></a>2. vytvoření webu
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Můžete vytvořit libovolný počet lokalit odpovídajících fyzickým umístěním. Pokud máte třeba jednu pobočku v New Yorku, jednu v Londýně a jednu v Los Angeles, vytvoříte tři oddělené lokality. Tyto lokality obsahují koncové body místních zařízení VPN. V tuto chvíli můžete pro každou lokalitu určit jenom jeden privátní adresní prostor.
+## <a name="openvwan"></a>Vytvoření virtuální sítě WAN
 
-1. Klikněte na síť WAN, kterou jste vytvořili. Na stránce WAN v části **virtuální síť WAN**klikněte na **sítě VPN** a otevřete stránku sítě VPN.
-2. Na stránce **Lokality VPN** klikněte na **+Vytvořit lokalitu**.
-3. Na stránce **Create site** (Vytvořit lokalitu) zadejte údaje do následujících polí:
+V prohlížeči přejděte na Azure Portal a přihlaste se pomocí svého účtu Azure.
 
-   * **Název** – název, podle kterého chcete odkazovat na místní lokalitu.
-   * **Veřejná IP adresa** – veřejná IP adresa zařízení VPN, která se nachází na vaší místní lokalitě.
-   * **Private address space** (Privátní adresní prostor) – prostor IP adres, který se nachází v místní lokalitě. Provoz určený do tohoto adresního prostoru se přesměruje do místní lokality.
-   * **Subscription** (Předplatné) – ověřte předplatné.
-   * **Resource Group** (Skupina prostředků) – skupina prostředků, kterou chcete použít.
-   * **Umístění**
-4. Další nastavení zobrazíte kliknutím na **Show advanced** (Zobrazit rozšířené nastavení). 
+1. Přejděte na stránku Virtual WAN. Na portálu klikněte na **+ Vytvořit prostředek**. Do vyhledávacího pole zadejte **virtuální síť WAN** a vyberte Enter.
+2. Z výsledků vyberte **virtuální síť WAN** . Na stránce virtuální síť WAN kliknutím na **vytvořit** otevřete stránku vytvořit síť WAN.
+3. Na stránce **vytvořit síť WAN** na kartě **základy** vyplňte následující pole:
 
-   Můžete vybrat protokol **BGP** a povolit protokol BGP. tím se povolí funkce protokolu BGP u všech připojení vytvořených pro tento web v Azure. Konfigurace protokolu BGP ve virtuální síti WAN je rovnocenná konfiguraci protokolu BGP v bráně Azure VPN. Vaše místní adresa partnerského uzlu BGP *nesmí* být stejná jako veřejná IP adresa vaší sítě VPN k zařízení nebo adresní prostor virtuální sítě sítě VPN. Pro IP adresu partnerského uzlu BGP použijte jinou IP adresu na zařízení VPN. Může se jednat o adresu přiřazenou rozhraní zpětné smyčky v zařízení. Nejedná se však o APIPA (169,254). *x*. *x*) adresa. Adresu zadejte v odpovídající bráně místní sítě reprezentující umístění. Požadavky protokolu BGP najdete v tématu [informace o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
+   ![Virtual WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
-   Můžete také zadat **Informace o zařízení** (volitelná pole). Díky tomu může tým Azure lépe pochopit vaše prostředí, aby v budoucnu přidal další možnosti optimalizace, nebo vám pomůže při odstraňování potíží.
-   
-5. Klikněte na **Confirm** (Potvrdit).
-6. Po kliknutí na **Potvrdit** se podívejte na stav na stránce Lokality VPN. Stav lokality se změní ze **Zřizování** na **Zřízeno**.
+   * **Subscription** (Předplatné) – vyberte předplatné, které chcete použít.
+   * **Skupina prostředků** – vytvořte nové nebo použijte existující.
+   * **Umístění skupiny prostředků** – vyberte umístění prostředku z rozevíracího seznamu. Síť WAN je globální prostředek, takže se nenachází v určité oblasti. Přesto je ale potřeba oblast vybrat, abyste mohli snáz spravovat a vyhledávat prostředek sítě WAN, který vytvoříte.
+   * **Název** – zadejte název, který chcete zavolat do sítě WAN.
+   * **Zadejte:** Basic nebo Standard. Pokud vytvoříte základní síť WAN, můžete vytvořit jenom základní centrum. Základní centra se podporují jenom pro připojení VPN typu Site-to-site.
+4. Po dokončení vyplňování polí vyberte **zkontrolovat + vytvořit**.
+5. Po úspěšném ověření vyberte **vytvořit** a vytvořte virtuální síť WAN.
 
-## <a name="hub"></a>3. vytvoření centra
+## <a name="hub"></a>Vytvoření centra
 
-[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
+Centrum je virtuální síť, která může obsahovat brány pro funkce typu Site-to-site, ExpressRoute nebo Point-to-site. Po vytvoření centra se vám bude centrum účtovat i v případě, že nepřipojíte žádné servery. Vytvoření brány VPN typu Site-to-site ve virtuálním rozbočovači trvá 30 minut.
 
-## <a name="associate"></a>4. přidružte lokality k centru
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-Rozbočovače by se obecně měly přidružovat k lokalitám ve stejné oblasti jako virtuální síť.
+## <a name="site"></a>Vytvoření webu
 
-1. Na stránce **Lokality VPN** vyberte lokalitu nebo lokality, které chcete přidružit k rozbočovači, a pak klikněte na **+ Nové přidružení k rozbočovači**.
-2. Na stránce **Přidružit lokality k jednomu nebo více rozbočovačům** vyberte v rozevírací nabídce rozbočovač. Lokalitu můžete přidružit k dalším rozbočovačům kliknutím na **+ Přidat přidružení**.
-3. Tady můžete také přidat konkrétní **předsdílený klíč** nebo použít výchozí.
-4. Klikněte na **Confirm** (Potvrdit).
-5. Stav připojení můžete zobrazit na stránce **Lokality VPN**.
+Nyní jste připraveni vytvořit lokality odpovídající vašim fyzickým umístěním. Můžete vytvořit libovolný počet lokalit odpovídajících fyzickým umístěním. Pokud máte třeba jednu pobočku v New Yorku, jednu v Londýně a jednu v Los Angeles, vytvoříte tři oddělené lokality. Tyto lokality obsahují koncové body místních zařízení VPN. Můžete vytvořit až 1000 lokalit na jedno virtuální centrum ve virtuální síti WAN. Pokud máte více rozbočovačů, můžete pro každé z těchto Center vytvořit 1000. Pokud máte zařízení Virtual WAN partner (vložit Link) CPE, požádejte ho, aby se dozvěděl o automatizaci do Azure. Obvykle automatizace zahrnuje jednoduché možnosti kliknutí k exportu rozsáhlých informací o větvích do Azure a nastavení připojení ze služby CPE pro Azure Virtual WAN na Azure (tady je odkaz na pokyny pro automatizaci od Azure až po partnery na CPE).
 
-## <a name="vnet"></a>5. vytvoření virtuální sítě
+[!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-Pokud ještě nemáte virtuální síť, můžete ji rychle vytvořit pomocí PowerShellu nebo Azure Portal. Pokud už virtuální síť máte, ověřte si, jestli splňuje povinná kritéria a nemá bránu virtuální sítě.
+## <a name="connectsites"></a>Připojení lokality VPN k centru
 
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
+V tomto kroku připojíte síť VPN k centru.
 
-## <a name="vnet"></a>6. Připojte svoji virtuální síť k centru
+[!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-V tomto kroku vytvoříte partnerské připojení mezi rozbočovačem a určitou virtuální sítí. Uvedený postup zopakujte pro všechny virtuální sítě, které chcete připojit.
+## <a name="vnet"></a>Připojení virtuální sítě k centru
+
+V tomto kroku vytvoříte připojení mezi rozbočovačem a virtuální sítí. Uvedený postup zopakujte pro všechny virtuální sítě, které chcete připojit.
 
 1. Na stránce vaší virtuální sítě WAN klikněte na **Připojení k virtuální síti**.
 2. Na stránce připojení k virtuální síti klikněte na **+Add connection** (Přidat připojení).
@@ -104,16 +97,16 @@ V tomto kroku vytvoříte partnerské připojení mezi rozbočovačem a určitou
     * **Hubs** (Rozbočovače) – vyberte rozbočovač, který chcete k tomuto připojení přidružit.
     * **Subscription** (Předplatné) – ověřte předplatné.
     * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nesmí mít existující bránu virtuální sítě.
-4. Kliknutím na **OK** vytvořte partnerské propojení.
+4. Kliknutím na tlačítko **OK** vytvořte připojení k virtuální síti.
 
-## <a name="device"></a>7. Stáhněte si konfiguraci sítě VPN.
+## <a name="device"></a>Stáhnout konfiguraci sítě VPN
 
 Nakonfigurujte místní zařízení VPN pomocí konfigurace zařízení VPN.
 
 1. Na stránce virtuální sítě WAN klikněte na **Overview** (Přehled).
-2. V horní části stránky přehledu klikněte na **Download VPN configuration** (Stáhnout konfiguraci VPN). Azure vytvoří účet úložiště ve skupině prostředků microsoft-network-[umístění], kde umístění znamená umístění sítě WAN. Až tuto konfiguraci použijete ve svých zařízeních VPN, můžete tento účet úložiště odstranit.
+2. V horní části stránky **centra – > VPNSite** klikněte na **Stáhnout konfiguraci sítě VPN**. Azure vytvoří účet úložiště ve skupině prostředků ' Microsoft-Network-[location] ', kde umístění je umístění sítě WAN. Až tuto konfiguraci použijete ve svých zařízeních VPN, můžete tento účet úložiště odstranit.
 3. Jakmile se dokončí vytváření souboru, můžete ho kliknutím na odkaz stáhnout.
-4. Použijte konfiguraci ve svém zařízení VPN.
+4. Použijte konfiguraci na vaše místní zařízení VPN.
 
 ### <a name="understanding-the-vpn-device-configuration-file"></a>Vysvětlení konfiguračního souboru zařízení VPN
 
@@ -255,45 +248,15 @@ Pokud potřebujete pokyny ke konfiguraci zařízení, můžete použít pokyny n
 
 * Pokyny na stránce zařízení VPN nejsou určené pro službu Virtual WAN, můžete ale použít hodnoty služby Virtual WAN z konfiguračního souboru a nakonfigurovat zařízení VPN ručně. 
 * Skripty konfigurace zařízení ke stažení, které jsou určené pro službu VPN Gateway, pro službu Virtual WAN nefungují, protože se konfigurace liší.
-* Nová služba Virtual WAN může podporovat protokol IKEv1 i IKEv2.
+* Nová virtuální síť WAN podporuje jak IKEv1, tak IKEv2.
 * Virtual WAN smí používat jenom zařízení VPN a pokyny pro zařízení založené na trasách.
 
-## <a name="viewwan"></a>8. Podívejte se na virtuální síť WAN
+## <a name="viewwan"></a>Zobrazení virtuální sítě WAN
 
 1. Přejděte na virtuální síť WAN.
-2. Na stránce Overview (Přehled) každý bod na mapě představuje jeden rozbočovač. Podržením ukazatele na některém z těchto bodů zobrazíte souhrn stavu rozbočovače.
-3. V části Hubs and connections (Rozbočovače a připojení) můžete zjistit stav rozbočovače, lokalitu, oblast, stav připojení VPN a přijaté a odeslané bajty.
-
-## <a name="viewhealth"></a>9. zobrazení stavu prostředku
-
-1. Přejděte na svoji síť WAN.
-2. Na stránce sítě WAN v části **SUPPORT + Troubleshooting** (Podpora a řešení potíží) klikněte na **Health** (Stav) a prohlédněte si stav svého prostředku.
-
-## <a name="connectmon"></a>10. monitorování připojení
-
-Vytvořte připojení pro monitorování komunikace mezi virtuálním počítačem Azure a vzdálenou lokalitou. Informace o tom, jak nastavit monitorování připojení, najdete v článku [Monitorování síťové komunikace](~/articles/network-watcher/connection-monitor.md). Do pole zdroje zadejte IP adresu virtuálního počítače v Azure a cílovou IP adresou je IP adresa lokality.
-
-## <a name="cleanup"></a>11. vyčištění prostředků
-
-Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+2. Na stránce **Přehled** představuje každý bod na mapě rozbočovač. Najeďte myší na libovolný bod, abyste zobrazili souhrn stavu centra, stav připojení a počet bajtů v/v.
+3. V části centra a připojení můžete zobrazit stav centra, weby sítě VPN atd. Můžete kliknout na konkrétní název centra a přejít na web VPN, kde najdete další podrobnosti.
 
 ## <a name="next-steps"></a>Další kroky
-
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Vytvoření sítě WAN
-> * Vytvoření lokality
-> * Vytvoření rozbočovače
-> * Připojení rozbočovače k lokalitě
-> * Připojení virtuální sítě k rozbočovači
-> * Stažení a použití konfigurace zařízení VPN
-> * Zobrazení virtuální sítě WAN
-> * Zobrazení stavu prostředků
-> * Monitorování připojení
 
 Další informace o službě Virtual WAN najdete v článku [Přehled služby Virtual WAN](virtual-wan-about.md).
