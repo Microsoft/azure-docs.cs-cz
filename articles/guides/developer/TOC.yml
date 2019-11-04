@@ -135,7 +135,7 @@
     - name: Zabezpečení
       items:
         - name: Webové a mobilní aplikace
-          href: 'https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl'
+          href: 'https://docs.microsoft.com/azure/app-service/configure-ssl-bindings'
     - name: Backup
       items:
         - name: Webové a mobilní aplikace

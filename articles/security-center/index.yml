@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: memildin
   ms.author: memildin
-  ms.date: 09/26/2019
-  ms.openlocfilehash: 8574c69221d1f0f0528a0ab9b8d27df4ca9a0ef0
-  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 48140c014492383fd4c714669b070df1fa6214e6
+  ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71327606"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73521155"
 landingContent:
 - title: Informace o službě Security Center
   linkLists:
@@ -33,8 +33,6 @@ landingContent:
     links:
     - text: Konfigurace zásad zabezpečení
       url: tutorial-security-policy.md
-    - text: Úprava nastavení služby Security Center
-      url: security-center-policies-overview.md
     - text: Vyhodnocení stavu zabezpečení
       url: security-center-secure-score.md
     - text: Upgrade na pokročilé zabezpečení
