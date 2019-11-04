@@ -1,5 +1,5 @@
 ---
-title: Jednotky datového skladu (DWU, cDWUs) v Azure SQL Data Warehouse | Microsoft Docs
+title: Jednotky datového skladu (DWU, cDWUs) ve službě Azure synapse Analytics (dřív SQL DW) | Microsoft Docs
 description: Doporučení pro výběr ideálního počtu jednotek datového skladu (DWU, cDWUs) pro optimalizaci ceny a výkonu a změnu počtu jednotek.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 05/30/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 mscustom: sqlfreshmay19
-ms.openlocfilehash: 282fab70e3b6d1fcf81814b2dd599259e2396fb3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036046"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475757"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednotky datového skladu (DWU) a jednotky datového skladu COMPUTE (cDWUs)
 
@@ -24,15 +24,15 @@ Doporučení pro výběr ideálního počtu jednotek datového skladu (DWU, cDWU
 
 ## <a name="what-are-data-warehouse-units"></a>Co jsou jednotky datového skladu
 
-Azure SQL Data Warehouse CPU, paměti a vstupně-výstupních operací jsou součástí jednotek výpočetních prostředků s názvem jednotky datového skladu (DWU). DWU představuje abstraktní a normalizovanou míru výpočetních prostředků a výkonu. Změna úrovně služby mění počet DWU, které jsou k dispozici pro systém, což zase upravuje výkon a náklady vašeho systému.
+Fond SQL představuje kolekci analytických prostředků, které se zřídí při použití [analýzy SQL](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse). Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vstupně-výstupních operací. Tyto tři prostředky jsou seskupené do jednotek výpočetního škálování s názvem jednotky datového skladu (DWU). DWU představuje abstraktní a normalizovanou míru výpočetních prostředků a výkonu. Změna úrovně služby mění počet DWU, které jsou k dispozici pro systém, což zase upravuje výkon a náklady vašeho systému.
 
 Pro vyšší výkon můžete zvýšit počet jednotek datového skladu. Pro méně výkon omezte jednotky datového skladu. Náklady na úložiště a výpočetní výkon se účtují samostatně, takže změna jednotek datového skladu nemá vliv na náklady na úložiště.
 
-Výkon pro jednotky datového skladu je založen na těchto metrikách úloh datového skladu:
+Výkon jednotek datového skladu je založený na těchto metrikách úloh:
 
 - Jak rychle standardní dotaz na datové sklady může kontrolovat velký počet řádků a pak provádět komplexní agregace. Tato operace je v/v a náročná na výkon procesoru.
 - Jak rychle může datový sklad ingestovat data z Azure Storage objektů BLOB nebo Azure Data Lake. Tato operace je náročná na síť a využití procesoru.
-- Jak rychle [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) příkaz T-SQL může zkopírovat tabulku. Tato operace zahrnuje čtení dat z úložiště, jejich distribuci napříč uzly zařízení a zpětný zápis do úložiště. Tato operace je náročná na procesor, v/v a na síť.
+- Jak rychle příkaz [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) t-SQL může zkopírovat tabulku. Tato operace zahrnuje čtení dat z úložiště, jejich distribuci napříč uzly zařízení a zpětný zápis do úložiště. Tato operace je náročná na procesor, v/v a na síť.
 
 Zvyšování DWU:
 
@@ -42,11 +42,11 @@ Zvyšování DWU:
 
 ## <a name="service-level-objective"></a>Cíl na úrovni služby
 
-Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro Gen2 se měří v jednotkách služby COMPUTE Data Warehouse (cDWU), například DW2000c. Úrovně služeb Gen1 se měří v DWU, například DW2000.
+Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro Gen2 fond SQL se měří v jednotkách služby COMPUTE Data Warehouse (cDWU), například DW2000c. Gen1 úrovně služby fondu SQL se měří v DWU, například DW2000.
   > [!NOTE]
-  > Azure SQL Data Warehouse Gen2 nedávno přidal další možnosti škálování pro podporu výpočetních úrovní, které jsou nízké jako 100 cDWU. Stávající datové sklady, které jsou aktuálně na Gen1, které vyžadují nižší výpočetní úrovně, teď můžou upgradovat na Gen2 v oblastech, které jsou momentálně dostupné bez dalších nákladů.  Pokud vaše oblast ještě není podporovaná, můžete i nadále upgradovat na podporovanou oblast. Další informace najdete v tématu [upgrade na Gen2](upgrade-to-latest-generation.md).
+  > Ve fondu SQL Gen 2 se nedávno přidaly další možnosti škálování pro podporu výpočetních úrovní, které jsou nízké jako 100 cDWU. Stávající fondy SQL, které jsou aktuálně na Gen1, které vyžadují nižší výpočetní úrovně, teď můžou upgradovat na Gen2 v oblastech, které jsou momentálně dostupné bez dalších nákladů.  Pokud vaše oblast ještě není podporovaná, můžete i nadále upgradovat na podporovanou oblast. Další informace najdete v tématu [upgrade na Gen2](upgrade-to-latest-generation.md).
 
-V T-SQL nastavení SERVICE_OBJECTIVE určuje úroveň služby a úroveň výkonu pro datový sklad.
+V T-SQL nastavení SERVICE_OBJECTIVE určuje úroveň služby a úroveň výkonu pro váš fond SQL.
 
 ```sql
 --Gen1
@@ -68,10 +68,10 @@ CREATE DATABASE myComputeSQLDW
 
 Každá úroveň výkonu používá pro své jednotky datového skladu mírně odlišnou měrnou jednotku. Tento rozdíl se odráží na faktuře, protože jednotka škálování je přímo převedená na fakturaci.
 
-- Gen1 datové sklady se měří v jednotkách datového skladu (DWU).
-- Gen2 datové sklady se měří v jednotkách výpočetního datového skladu (cDWUs).
+- Gen1 fondy SQL se měří v jednotkách datového skladu (DWU).
+- Gen2 fondy SQL se měří v jednotkách výpočetního datového skladu (cDWUs).
 
-DWU i cDWUs podporují škálování výpočetních prostředků nahoru i dolů a pozastaví výpočetní výkon, pokud nepotřebujete datový sklad používat. Tyto operace jsou všechny na vyžádání. Gen2 používá k vylepšení výkonu místní mezipaměť na disku na výpočetních uzlech. Při škálování nebo pozastavení systému se mezipaměť zruší a proto je potřeba zahřívání mezipaměti, aby se dosáhlo optimálního výkonu.  
+DWU i cDWUs podporují škálování výpočetních prostředků nahoru i dolů a pozastaví výpočetní výkon, pokud nepotřebujete fond SQL použít. Tyto operace jsou všechny na vyžádání. Gen2 používá k vylepšení výkonu místní mezipaměť na disku na výpočetních uzlech. Při škálování nebo pozastavení systému se mezipaměť zruší a proto je potřeba zahřívání mezipaměti, aby se dosáhlo optimálního výkonu.  
 
 Při zvyšování počtu jednotek datového skladu lineárně roste výpočetní prostředky. Gen2 poskytuje nejlepší výkon dotazů a nejvyšší měřítko. Gen2 systémy také využívají mezipaměť.
 
@@ -89,7 +89,7 @@ Postup pro vyhledání nejlepšího DWU pro vaši úlohu:
 2. Monitorujte výkon aplikace při testování zátěžových dat do systému a sledujte počet DWU vybraných v porovnání s výkonem, které sledujete.
 3. Identifikujte všechny další požadavky na pravidelné doby aktivity špičky. Úlohy, které zobrazují významné špičky a žlaby v aktivitě, se můžou potřebovat často škálovat.
 
-SQL Data Warehouse je systém škálování na více systémů, který dokáže zřídit obrovské množství výpočetních dat a výraznouí dotazů. Pokud chcete zobrazit jeho skutečné možnosti pro škálování, zejména u větších DWU, doporučujeme škálovat datovou sadu při škálování, abyste měli jistotu, že budete mít k dispozici dostatek dat k vytvoření kanálu pro procesory. Pro testování škálování doporučujeme používat aspoň 1 TB.
+SQL Analytics je systém škálované na více systémů, který umožňuje zřídit velké množství výpočetních a dotazových výraznou množství dat. Pokud chcete zobrazit jeho skutečné možnosti pro škálování, zejména u větších DWU, doporučujeme škálovat datovou sadu při škálování, abyste měli jistotu, že budete mít k dispozici dostatek dat k vytvoření kanálu pro procesory. Pro testování škálování doporučujeme používat aspoň 1 TB.
 
 > [!NOTE]
 >
@@ -120,7 +120,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ## <a name="change-data-warehouse-units"></a>Změnit jednotky datového skladu
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 Změna DWU nebo cDWUs:
 
@@ -185,25 +185,26 @@ Nelze kontrolovat stav databáze pro operace škálování na více instancí po
 Postup kontroly stavu DWU změn:
 
 1. Připojte se k hlavní databázi přidružené k vašemu logickému SQL Database serveru.
-2. Odešlete následující dotaz pro kontrolu stavu databáze.
 
-```sql
-SELECT    *
-FROM      sys.databases
-;
-```
+1. Odešlete následující dotaz pro kontrolu stavu databáze.
 
+    ```sql
+    SELECT    *
+    FROM      sys.databases
+    ;
+    ```
+    
 1. Odešlete následující dotaz pro kontrolu stavu operace.
 
-```sql
-SELECT    *
-FROM      sys.dm_operation_status
-WHERE     resource_type_desc = 'Database'
-AND       major_resource_id = 'MySQLDW'
-;
-```
-
-Tento DMV vrací informace o různých SQL Data Warehouse operacích správy, jako je například operace a stav operace, což je buď IN_PROGRESS nebo COMPLETED.
+    ```sql
+    SELECT    *
+    FROM      sys.dm_operation_status
+    WHERE     resource_type_desc = 'Database'
+    AND       major_resource_id = 'MySQLDW'
+    ;
+    ```
+    
+Tento DMV vrací informace o různých operacích správy ve vašem fondu SQL, jako je například operace a stav operace, což je buď IN_PROGRESS nebo COMPLETED.
 
 ## <a name="the-scaling-workflow"></a>Pracovní postup škálování
 

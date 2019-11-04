@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 906beabe527db41f41793a7fb1f76aef27487cdd
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 379629cfe3c742bd247e02cdf7a891afab08107f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044973"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496187"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database Nejčastější dotazy k škálování
 
@@ -127,7 +127,7 @@ V tuto chvíli ale můžete škálovat výpočetní výkon a počet replik dolů
 
 ### <a name="can-i-provision-a-compute-replica-with-extra-ram-for-my-memory-intensive-workload"></a>Můžu zřídit výpočetní repliku s dodatečnou pamětí RAM pro úlohy náročné na paměť
 
-Ne. Pokud chcete získat větší velikost paměti RAM, musíte upgradovat na vyšší výpočetní kapacitu. Další informace najdete v tématu [velikosti úložiště a výpočetních](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute)prostředků ve škálování na úrovni.
+Ne. Pokud chcete získat větší velikost paměti RAM, musíte upgradovat na vyšší výpočetní kapacitu. Další informace najdete v tématu [velikosti úložiště a výpočetních](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)prostředků ve škálování na úrovni.
 
 ### <a name="can-i-provision-multiple-compute-replicas-of-different-sizes"></a>Můžu zřídit několik výpočetních replik různých velikostí.
 

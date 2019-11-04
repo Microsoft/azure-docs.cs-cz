@@ -1,6 +1,6 @@
 ---
-title: Použití dvojčat zařízení Azure k ovládání MXChip IoT DevKit uživatele LED | Dokumentace Microsoftu
-description: V tomto kurzu se naučíte se stavy DevKit monitorovat a kontrolovat uživatele LED s dvojčaty zařízení Azure IoT Hub.
+title: Použití vláken zařízení Azure k řízení MXChip uživatele IoT DevKit | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak monitorovat stavy DevKit a řídit, jak se uživatel vystavuje s využitím vlákna zařízení v Azure IoT Hub.
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61369803"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483937"
 ---
-# <a name="mxchip-iot-devkit"></a>Sada MXChip IoT DevKit
+# <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
-V tomto příkladu můžete použít ke sledování stavů informace a senzor MXChip IoT DevKit Wi-Fi a řídit barev uživatelské LED s využitím dvojčat zařízení Azure IoT Hub.
+Tento příklad můžete použít ke sledování informací o MXChip IoT DevKit Wi-Fi a stavu senzoru a k řízení barvy uživatele, který využívali v případě nevláken zařízení Azure IoT Hub.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-- Jak monitorovat stavy MXChip IoT DevKit senzoru.
+- Jak monitorovat stavy MXChip IoT DevKit snímače.
 
-- Jak barvy DevKit RGB LED s pomocí dvojčata zařízení v Azure.
+- Jak používat vlákna zařízení v Azure k řízení barvy INDIKÁTORu RGB pro DevKit.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-- Nastavení vývojového prostředí pomocí následujících [– Příručka Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+- Pomocí [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)nastavte vývojové prostředí.
 
-- V okně terminálu GitBash (nebo jiné rozhraní příkazového řádku Gitu) zadejte následující příkazy:
+- V okně terminálu GitBash (nebo jiném rozhraní příkazového řádku Git) zadejte následující příkazy:
 
    ```bash
    git clone https://github.com/DevKitExamples/DevKitState.git
@@ -38,83 +38,83 @@ V tomto příkladu můžete použít ke sledování stavů informace a senzor MX
    code .
    ```
 
-## <a name="provision-azure-services"></a>Zřízení služby Azure
+## <a name="provision-azure-services"></a>Zřizování služeb Azure
 
-1. Klikněte na tlačítko **úlohy** rozevírací nabídky v aplikaci Visual Studio Code a vyberte **spustit úlohu...**   -  **zřizování cloudu**.
+1. V Visual Studio Code klikněte na rozevírací nabídku **úlohy** a vyberte **Spustit úlohu...**  - **Cloud-zřizování**.
 
-2. Pokroku ve studiu se zobrazí v části **TERMINÁLU** karty **úvodní** panelu.
+2. Váš pokrok se zobrazí na kartě **terminál** na **uvítacím** panelu.
 
-3. Po zobrazení výzvy se zprávou *jaké předplatné chcete zvolit*, vyberte předplatné.
+3. Po zobrazení výzvy s výzvou, kterou *předplatné chcete vybrat*, vyberte předplatné.
 
 4. Vyberte nebo zvolte skupinu prostředků. 
  
    > [!NOTE]
-   > Pokud již máte free služby IoT Hub, můžete tento krok přeskočit.
+   > Pokud už máte bezplatný IoT Hub, můžete tento krok přeskočit.
 
-5. Po zobrazení výzvy se zprávou *jaké služby IoT hub chcete zvolit*vyberte nebo vytvořte Centrum IoT.
+5. Až se zobrazí výzva se zprávou, *jakou IoT Hub chcete vybrat*, vyberte nebo vytvořte IoT Hub.
 
-6. Podobně jako *aplikace function app: názvem aplikace function app: xxx*, se zobrazí. Poznamenejte si název aplikace funkcí; použije se v pozdějším kroku.
+6. Něco podobného *aplikaci Function App: název aplikace Function App: XXX*se zobrazí. Zapište si název aplikace Function App; bude použit v pozdějším kroku.
 
-7. Čekat pro nasazení šablony Azure Resource Manageru k dokončení, což je uvedeno, kdy se zpráva *nasazení šablony Resource Manageru: Provádí* se zobrazí.
+7. Počkejte, než se dokončí nasazení šablony Azure Resource Manager, což je uvedeno při *nasazení zprávy Správce prostředků šablony: dokončeno* .
 
-## <a name="deploy-function-app"></a>Nasadit aplikaci Function App
+## <a name="deploy-function-app"></a>Nasazení Function App
 
-1. Klikněte na tlačítko **úlohy** rozevírací nabídky v aplikaci Visual Studio Code a vyberte **spustit úlohu...**   -  **nasazení cloudu**.
+1. V Visual Studio Code klikněte na rozevírací nabídku **úlohy** a vyberte **Spustit úlohu...**  - nasazení v **cloudu**.
 
-2. Počkejte na dokončení; procesu nahrávání kódu aplikace – funkce zpráva *nasadí aplikaci function app: Provádí* se zobrazí.
+2. Počkejte na dokončení procesu nahrávání kódu aplikace Function App. nasazují se *aplikace funkce zpráva: dokončeno* se zobrazí.
 
-## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>Nakonfigurovat připojovací řetězec zařízení služby IoT Hub v DevKit
+## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>Konfigurace připojovacího řetězce zařízení IoT Hub v DevKit
 
-1. Připojení MXChip IoT DevKit k vašemu počítači.
+1. Připojte svůj MXChip IoT DevKit k vašemu počítači.
 
-2. Klikněte na tlačítko **úlohy** rozevírací nabídky v aplikaci Visual Studio Code a vyberte **spustit úlohu...**   -  **config připojení zařízení**
+2. V Visual Studio Code klikněte na rozevírací nabídku **úlohy** a vyberte **Spustit úlohu...**  - **Konfigurace-zařízení-připojení** .
 
-3. MXChip IoT DevKit, stiskněte a podržte tlačítko **A**, stiskněte **resetování** tlačítka a potom verzi **A** aby DekKit zadejte režim konfigurace.
+3. V MXChip IoT DevKit stiskněte a podržte tlačítko **a, stiskněte tlačítko** **reset** a pak klikněte na tlačítko **uvolnit a, aby DekKit** zadal režim konfigurace.
 
-4. Počkejte na Dokončit připojovací řetězec konfigurace procesu.
+4. Počkejte, než se dokončí proces konfigurace připojovacího řetězce.
 
-## <a name="upload-arduino-code-to-devkit"></a>Nahrání kódu Arduino DevKit
+## <a name="upload-arduino-code-to-devkit"></a>Nahrání kódu Arduino do DevKit
 
-S MXChip IoT DevKit připojíte k počítači:
+S MXChip IoT DevKit připojeným k vašemu počítači:
 
-1. Klikněte na tlačítko **úlohy** rozevírací nabídky v aplikaci Visual Studio Code a vyberte **spustit úlohu sestavení...** Arduino nákresu je zkompilován a nahráli DevKit.
+1. V Visual Studio Code klikněte na rozevírací nabídku **úlohy** a vyberte **Spustit úlohu sestavení...** Náčrt Arduino se zkompiluje a nahraje na DevKit.
 
-2. Když náčrt úspěšně odeslal *sestavení a nahrání náčrt: Úspěch* se zobrazí zpráva.
+2. Po úspěšném nahrání náčrtu se zobrazí *sestavení & odeslat nákres:* zpráva o úspěchu.
 
-## <a name="monitor-devkit-state-in-browser"></a>Stav DevKit sledování v prohlížeči
+## <a name="monitor-devkit-state-in-browser"></a>Monitorovat stav DevKit v prohlížeči
 
-1. Ve webovém prohlížeči otevřete `DevKitState\web\index.html` souboru –, který byl vytvořen při co budete potřebovat kroku.
+1. Ve webovém prohlížeči otevřete `DevKitState\web\index.html` soubor, který byl vytvořen během kroku co potřebujete.
 
-2. Zobrazí se na následující stránce webu:![Zadejte název aplikace funkcí.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
+2. Zobrazí se následující webová stránka:![Zadejte název aplikace Function App.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 
-3. Zadejte název aplikace funkcí, které jste si poznamenali dříve.
+3. Zadejte název aplikace Function App, kterou jste napsali dříve.
 
-4. Klikněte na tlačítko **připojit** tlačítko
+4. Klikněte na tlačítko **připojit** .
 
-5. Během několika sekund stránka se obnoví a zobrazí stav připojení Wi-Fi DevKit a stav každého připojení senzory.
+5. Během několika sekund se stránka aktualizuje a zobrazí stav připojení Wi-Fi DevKit a stav každého z nich.
 
-## <a name="control-the-devkits-user-led"></a>Ovládací prvek DevKit uživatele LED
+## <a name="control-the-devkits-user-led"></a>Řízení INDIKÁTORu uživatele DevKit
 
-1. Klikněte na symbol LED uživatel na obrázku webové stránky.
+1. Na obrázku webové stránky klikněte na obrázek INDIKÁTORu uživatele.
 
-2. Během několika sekund obrazovky aktualizuje a zobrazí aktuální stav barev uživatelské Indikátor.
+2. Během několika sekund se obrazovka aktualizuje a zobrazí aktuální stav barvy INDIKÁTORu uživatele.
 
-3. Zkuste změnit hodnotu barvy RGB LED kliknutím na různých místech v ovládacích prvcích posuvníku RGB.
+3. Zkuste změnit hodnotu barvy INDIKÁTORu RGB kliknutím na různá umístění v ovládacím prvku posuvníku RGB.
 
-## <a name="example-operation"></a>Příklad operace
+## <a name="example-operation"></a>Ukázková operace
 
-![Příklad postupu testu](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
+![Příklad testovací procedury](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Zobrazí se nezpracovaná data objektu dvojče zařízení na webu Azure portal: IoT Hub -\> zařízení IoT –\> *\<zařízení\>*  - \> dvojče zařízení.
+> Nezpracovaná data je možné zobrazit v Azure Portal: IoT Hub-\> zařízení IoT –\>\<\> -*zařízení* .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Jste se naučili, jak:
-- Připojení MXChip IoT DevKit zařízení k akcelerátor řešení vzdáleného monitorování Azure IoT.
-- Smysl a barvy DevKit RGB LED s pomocí funkce dvojčat zařízení Azure IoT.
+Zjistili jste, jak:
+- Připojte zařízení IoT DevKit MXChip k akcelerátoru řešení vzdáleného monitorování Azure IoT.
+- Použijte funkci revláken zařízení Azure IoT k určení a kontrole barvy INDIKÁTORu DevKitu RGB.
 
-Tady jsou další navrhované kroky:
+Tady jsou doporučené další kroky:
 
-* [Azure IoT vzdálené monitorování přehled akcelerátorů řešení](https://docs.microsoft.com/azure/iot-suite/)
-* [Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Přehled akcelerátoru řešení vzdáleného monitorování Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
+* [Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central](/azure/iot-central/core/howto-connect-devkit)

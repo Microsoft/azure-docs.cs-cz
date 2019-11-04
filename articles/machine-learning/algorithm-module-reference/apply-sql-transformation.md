@@ -1,5 +1,5 @@
 ---
-title: Použít transformaci SQL
+title: Použití transformace SQL
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul použití transformace SQL ve službě Azure Machine Learning ke spuštění dotazu SQLite na vstupních datových sadách pro transformaci dat.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 8eede9d1fbee7d8b70f6b6924b9767b4d3f4e0bf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694633"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493918"
 ---
-# <a name="apply-sql-transformation"></a>Použít transformaci SQL
+# <a name="apply-sql-transformation"></a>Použití transformace SQL
 
-Tento článek popisuje modul Azure Machine Learningho vizuálního rozhraní.
+Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
 
 Pomocí modulu použít transformaci SQL můžete:
   

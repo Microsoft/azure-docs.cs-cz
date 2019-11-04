@@ -6,21 +6,21 @@ manager: nitinme
 author: lisaleib
 ms.author: v-lilei
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9ba11b69a51a5bc563764a7e75189bed67cb2ac6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789977"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485003"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Zobrazení znalostní báze s Průzkumník služby Storage
 
 > [!Note]
-> Znalostní báze je ve verzi Preview a neměl by se používat v produkčním prostředí. Tuto funkci poskytuje [Azure Kognitivní hledání REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
+> Znalostní báze je ve verzi Preview a neměl by se používat v produkčním prostředí. Tuto funkci poskytuje portál a [REST API pro hledání verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
 >
-V tomto článku se dozvíte, jak se připojit a prozkoumat úložiště znalostí pomocí Průzkumník služby Storage v Azure Portal. Pokud chcete vytvořit ukázku znalostní báze používanou v tomto návodu, přečtěte si téma [vytvoření znalostní báze v Azure Portal](knowledge-store-create-portal.md).
+V tomto článku se naučíte, jak se připojit k znalostnímu obchodu a prozkoumat ho pomocí Průzkumník služby Storage v Azure Portal.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak se připojit a prozkoumat úložiště znalost
 
 ## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Zobrazení, úprava a dotazování znalostní databáze v Průzkumník služby Storage
 
-1. V Azure Portal otevřete účet úložiště, který jste použili k vytvoření obchodu Knowledge Store.
+1. V Azure Portal [otevřete účet úložiště](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) , který jste použili k vytvoření obchodu Knowledge Store.
 
 1. V levém navigačním podokně účtu úložiště klikněte na **Průzkumník služby Storage**.
 
@@ -58,12 +58,8 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak připojit toto úložiště znalostní báze k Power BI, najdete v následujícím článku.
+Připojte si toto úložiště znalostní báze k Power BI pro hlubší analýzu nebo přejděte vpřed s kódem pomocí REST API a post, aby se vytvořilo jiné úložiště znalostí.
 
 > [!div class="nextstepaction"]
-> [Propojení s Power BI](knowledge-store-connect-power-bi.md)
-
-Informace o tom, jak vytvořit úložiště znalostí pomocí rozhraní REST API a post, najdete v následujícím článku.  
-
-> [!div class="nextstepaction"]
+> [Připojení pomocí Power BI](knowledge-store-connect-power-bi.md)
 > [Vytvoření úložiště znalostí v REST](knowledge-store-howto.md)

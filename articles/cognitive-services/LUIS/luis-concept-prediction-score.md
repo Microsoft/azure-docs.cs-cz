@@ -9,68 +9,75 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 34ec5588a510574f4ea9f01bd23c6f6487e288da
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5b8d97005d8f404a296ddb45e92b65e4aa811aa3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638361"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486771"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Skóre předpovědi označují přesnost předpovědi pro záměr a entity.
 
-Skóre předpovědi indikuje, jakou míru spolehlivosti LUIS má výsledek předpovědi na základě utterance uživatele.
+Skóre předpovědi indikuje, že stupeň spolehlivosti LUIS má za následek předpověď výsledků utterance uživatele.
 
-Predikce skóre je nula (0) a jedna (1). Příklad vysoce jistotu skóre LUIS je 0,99. Příklad s nízkou spolehlivostí skóre je 0,01. 
+Skóre předpovědi je mezi nulou (0) a jednou (1). Příkladem vysoce jistoty je LUIS skóre je 0,99. Příklad skóre s nízkou jistotou je 0,01. 
 
-|Hodnota skóre|Spolehlivost|
+|Hodnota skóre|jistotou|
 |--|--|
-|1|jednoznačného shody|
-|0,99.|jistotou|
-|0.01|s nízkou spolehlivostí|
-|0|jednoznačného selhání tak, aby odpovídaly|
+|1\. místo|přesně shoda|
+|0,99|vysoká důvěra|
+|0,01|nízká důvěra|
+|0|přesné selhání při porovnávání|
 
-Když utterance výsledkem nízká pravděpodobnost, LUIS upozorňuje, že v [LUIS](luis-reference-regions.md) webu **záměr** stránka s identifikovanou **označené záměr** uvedených s red.
+## <a name="top-scoring-intent"></a>Záměr na nejvyšší hodnocení
 
-![Nesrovnalosti skóre](./media/luis-concept-score/score-discrepancy.png)
+Každá předpověď utterance vrací záměr na nejvyšší hodnocení. Tato předpověď je numerické porovnání skóre předpovědi. 
 
-## <a name="top-scoring-intent"></a>Nejvyšší hodnocení záměr
+## <a name="proximity-of-scores-to-each-other"></a>Blízkost výsledků od sebe navzájem
 
-Každý předpovědi utterance vrátí záměr se nejvyšší hodnocení. Tato předpověď je numerické porovnání skóre předpovědi. V horních dvou hodnoceních může být mezi nimi velmi malý rozdíl. LUIS neindikuje tuto blízkost jinou, než vrací nejvyšší skóre.  
+V horních dvou hodnoceních může být mezi nimi velmi malý rozdíl. LUIS neindikuje tuto blízkost jinou, než vrací nejvyšší skóre.  
 
-## <a name="return-prediction-score-for-all-intents"></a>Vrátí skóre předpovědi pro všechny příkazy
+## <a name="return-prediction-score-for-all-intents"></a>Vrátit skóre předpovědi pro všechny záměry
 
-Výsledek testu nebo koncový bod může zahrnovat všechny záměry. Tato konfigurace je nastavena na [koncový bod](https://aka.ms/v1-endpoint-api-docs) s `verbose=true` dvojice název/hodnota v řetězci dotazu.
+Výsledek testu nebo koncového bodu může obsahovat všechny záměry. Tato konfigurace je nastavená na koncovém bodu pomocí správné dvojice název/hodnota řetězce dotazu.
 
-## <a name="review-intents-with-similar-scores"></a>Zkontrolujte záměry s podobné skóre
+|Rozhraní API pro předpověď|Název řetězce dotazu|
+|--|--|
+|Technologie|`show-all-intents=true`|
+|V2|`verbose=true`|
 
-Kontrola skóre pro veškeré záměry je dobrým způsobem, jak ověřit, že se identifikuje správná záměr nejen, ale, že další identifikovat záměr na skóre je výrazně nižší konzistentně projevy.
+## <a name="review-intents-with-similar-scores"></a>Recenze s podobnými skóre
 
-Pokud máte více záměry zavřít předpovědi skóre, na základě kontextu utterance, LUIS může přepínat mezi příkazů. Chcete-li tuto situaci opravit, pokračujte v přidávání projevy k jednotlivým záměrům s širší škálou kontextových rozdílů, nebo můžete mít klientskou aplikaci, jako je například robotka chatu, nastavit programovou volbu pro zpracování 2 nejdůležitějších záměrů.
+Kontrola skóre pro všechny záměry je dobrým způsobem, jak ověřit, že není pouze správný záměr, ale zda je skóre dalšího identifikovaného záměru významně a konzistentně nižší pro projevy.
 
-2 záměry, které jsou příliš pečlivě skóre, mohou Invertovat kvůli nedeterministickému školení. Začátek skóre může být ten druhý a druhou nejvyšší skóre se první hlavní skóre stát. Aby nedocházelo k této situaci, přidejte příklad projevy ke každému hornímu dvou záměrům pro daný utterance s volbou a kontextem pro Word, který rozlišuje 2 záměry. O stejném počtu projevy příklad by měl mít dva záměry. Existuje pravidlo pro oddělení, které brání inverzi kvůli školení, je 15 % rozdíl v skóre.
+Pokud má více záměrů uzavřít skóre na základě kontextu utterance, LUIS může přepínat mezi záměry. Chcete-li tuto situaci opravit, pokračujte v přidávání projevy k jednotlivým záměrům s širší škálou kontextových rozdílů, nebo můžete mít klientskou aplikaci, jako je například robotka chatu, nastavit programovou volbu pro zpracování 2 nejdůležitějších záměrů.
 
-Nedeterministické školení můžete vypnout [školením se všemi daty](luis-how-to-train.md#train-with-all-data).
+2 záměry, které jsou příliš pečlivě skóre, mohou Invertovat kvůli **nedeterministickému školení**. Nejvyšší skóre by se mohlo stát druhým nahoru a druhé horní skóre by mohlo být první horní skóre. Aby nedocházelo k této situaci, přidejte příklad projevy ke každému hornímu dvou záměrům pro daný utterance s volbou a kontextem pro Word, který rozlišuje 2 záměry. Oba záměry by měly mít stejný počet příkladů projevy. Pravidlo pro oddělení, které zabrání inverzi z důvodu školení, je o 15% rozdílu ve skórech.
+
+**Nedeterministické školení** můžete vypnout [školením se všemi daty](luis-how-to-train.md#train-with-all-data).
 
 ## <a name="differences-with-predictions-between-different-training-sessions"></a>Rozdíly mezi různými školicími cvičeními v předpovědi
 
-Když provedete stejný model v jiné aplikaci a skóre nejsou stejné, je rozdíl z důvodu nedeterministického školení (prvek náhodnost). Za druhé žádné překrytí utterance na více než jeden záměr znamená, že hlavní záměr pro stejný utterance lze změnit v závislosti na školení.
+Když provedete stejný model v jiné aplikaci a skóre nejsou stejné, je rozdíl z důvodu **nedeterministického školení** (prvek náhodnost). Za druhé, jakékoli překrytí utterance na více než jeden záměr znamená, že se nejvyšší záměr pro stejný utterance může změnit na základě školení.
 
 Pokud váš chat robot vyžaduje konkrétní LUIS skóre k označení důvěry v úmyslu, měli byste použít rozdíl skóre mezi prvními dvěma záměry. Tato situace nabízí flexibilitu při výuce.
 
-## <a name="e-exponent-notation"></a>Zápis E (exponent)
+**Nedeterministické školení** můžete vypnout [školením se všemi daty](luis-how-to-train.md#train-with-all-data).
 
-Predikce skóre, které můžete použít exponentu zápis *povolí, nebude* vyšší než 0-1 v rozsahu, jako například `9.910309E-07`. Toto skóre je údaj o velmi **malé** číslo.
+## <a name="e-exponent-notation"></a>Notaci E (exponent)
 
-|Skóre zápis E |Skutečný výsledek|
+Skóre předpovědi můžou použít notaci exponent, který se *zobrazuje* nad rozsahem 0-1, například `9.910309E-07`. Toto skóre je označením velmi **malého** čísla.
+
+|Skóre zápisu E |Skutečné skóre|
 |--|--|
-|9.910309E-07|.0000009910309|
+|9.910309 e-07|.0000009910309|
 
-## <a name="punctuation"></a>Interpunkce
+## <a name="punctuation"></a>Oddělovač
 
 [Přečtěte si další informace](luis-concept-utterance.md#punctuation-marks) o použití nebo ignorování interpunkce. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zobrazit [přidat entity](luis-how-to-add-entities.md) získat další informace o přidání entity do aplikace LUIS.
+Další informace o tom, jak přidat entity do aplikace LUIS, najdete v tématu věnovaném [Přidání entit](luis-how-to-add-entities.md) .

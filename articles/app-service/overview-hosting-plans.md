@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3118be297caabbd4b829344e42361fa6b7602aad
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 78440185b4a26bccc8ffb0258416a19aa929af6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066727"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470237"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu Azure App Service
 
-Ve službě App Service se aplikace spouští v rámci _plánu služby App Service_. Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace. Tyto výpočetní prostředky jsou obdobné jako serverová [_farma_](https://wikipedia.org/wiki/Server_farm) v části konvenční webové hostování. Jednu nebo více aplikací je možné nakonfigurovat tak, aby běžely na stejných výpočetních prostředcích (nebo ve stejném plánu App Service).
+Ve službě App Service se aplikace spouští v rámci _plánu služby App Service_. Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace. Tyto výpočetní prostředky jsou obdobné jako [_Serverová farma_](https://wikipedia.org/wiki/Server_farm) v části konvenční webové hostování. Jednu nebo více aplikací je možné nakonfigurovat tak, aby běžely na stejných výpočetních prostředcích (nebo ve stejném plánu App Service).
 
 Při vytváření plánu App Service v určité oblasti (například Západní Evropa) se pro tento plán v této oblasti vytvoří sada výpočetních prostředků. Všechny aplikace, které zadáte do tohoto plánu App Service, běží na těchto výpočetních prostředcích, jak jsou definované vaším plánem App Service. Každý plán App Service definuje:
 
@@ -35,8 +35,8 @@ Při vytváření plánu App Service v určité oblasti (například Západní E
 
 _Cenová úroveň_ plánu App Service určuje, jaké App Service funkce získáte a kolik platíte za plán. Existuje několik kategorií cenových úrovní:
 
-- **Sdílené výpočetní**prostředky: V obou základních vrstvách **Free** a **Shared**spouští aplikaci na stejném virtuálním počítači Azure jako jiné aplikace App Service, včetně aplikací jiných zákazníků. Tyto úrovně přidělují kvóty procesoru ke každé aplikaci, která běží na sdílených prostředcích a prostředky nelze škálovat.
-- **Vyhrazené výpočetní**prostředky: Úrovně **Basic**, **Standard**, **Premium**a **PremiumV2** spouštějí aplikace na vyhrazených virtuálních počítačích Azure. Stejné výpočetní prostředky mají jenom aplikace ve stejném App Service plánu. Čím vyšší je úroveň, tím více instancí virtuálních počítačů vám bude k dispozici pro horizontální navýšení kapacity.
+- **Shared COMPUTE**: **Free** and **Shared**, dvě základní úrovně, spustí aplikaci na stejném virtuálním počítači Azure jako jiné aplikace App Service, včetně aplikací jiných zákazníků. Tyto úrovně přidělují kvóty procesoru ke každé aplikaci, která běží na sdílených prostředcích a prostředky nelze škálovat.
+- **Vyhrazené výpočetní**prostředky: úrovně **Basic**, **Standard**, **Premium**a **PremiumV2** spouštějí aplikace na vyhrazených virtuálních počítačích Azure. Stejné výpočetní prostředky mají jenom aplikace ve stejném App Service plánu. Čím vyšší je úroveň, tím více instancí virtuálních počítačů vám bude k dispozici pro horizontální navýšení kapacity.
 - **Izolované**: Tato úroveň spouští vyhrazené virtuální počítače Azure ve vyhrazených virtuálních sítích Azure. Poskytuje izolaci sítě nad výpočetní izolací pro vaše aplikace. Poskytuje maximální možnosti škálování na více instancí.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
@@ -95,7 +95,7 @@ Neúčtují se vám žádné poplatky za použití funkcí App Service, které j
 
 Plán App Service můžete kdykoli škálovat nahoru a dolů. Je to jednoduché jako změna cenové úrovně plánu. V první době si můžete vybrat nižší cenovou úroveň a později ji škálovat, až budete potřebovat více App Service funkcí.
 
-Můžete například zahájit testování webové aplikace v bezplatném App Service plánu a platíte nic. Pokud chcete do webové aplikace přidat [vlastní název DNS](app-service-web-tutorial-custom-domain.md) , stačí škálovat plán až na **sdílenou** úroveň. Později, až budete chtít přidat [vlastní certifikát SSL](app-service-web-tutorial-custom-ssl.md), Škálujte svůj plán až na úroveň **Basic** . Pokud chcete mít [pracovní prostředí](deploy-staging-slots.md), Škálujte až na úroveň **Standard** . Pokud potřebujete více jader, paměti nebo úložiště, Škálujte až větší velikost virtuálního počítače ve stejné vrstvě.
+Můžete například zahájit testování webové aplikace v **bezplatném** App Service plánu a platíte nic. Pokud chcete do webové aplikace přidat [vlastní název DNS](app-service-web-tutorial-custom-domain.md) , stačí škálovat plán až na **sdílenou** úroveň. Později, pokud chcete [vytvořit vazbu SSL](configure-ssl-bindings.md), Škálujte svůj plán až na úroveň **Basic** . Pokud chcete mít [pracovní prostředí](deploy-staging-slots.md), Škálujte až na úroveň **Standard** . Pokud potřebujete více jader, paměti nebo úložiště, Škálujte až větší velikost virtuálního počítače ve stejné vrstvě.
 
 Stejné funguje v obráceném pořadí. Pokud se domníváte, že už nepotřebujete možnosti nebo funkce vyšší úrovně, můžete horizontální navýšení kapacity snížit na nižší úroveň, která vám ušetří peníze.
 

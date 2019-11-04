@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 2f55ad795cc76d59581b25ca60a1c89e7db96b04
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316661"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496009"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je jediná databáze v Azure SQL Database
 
@@ -29,7 +29,7 @@ Možnost nasazení jedné databáze vytvoří databázi v Azure SQL Database s v
 
 ## <a name="dynamic-scalability"></a>Dynamická škálovatelnost
 
-V rámci výpočetní úrovně bez serveru (Preview) nebo malé výpočetní velikosti v zřízené výpočetní úrovni můžete vytvořit svou první aplikaci s malou jedinou databází za nízkou cenu. [Výpočetní kapacitu nebo úroveň služby](sql-database-single-database-scale.md) můžete změnit ručně nebo programově, aby vyhovovaly potřebám vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
+V rámci výpočetní úrovně bez serveru nebo malé výpočetní velikosti v zřízené výpočetní úrovni můžete vytvořit svou první aplikaci s malou jedinou databází za nízkou cenu. [Výpočetní kapacitu nebo úroveň služby](sql-database-single-database-scale.md) můžete změnit ručně nebo programově, aby vyhovovaly potřebám vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
 
 ## <a name="single-databases-and-elastic-pools"></a>Izolované databáze a elastické fondy
 
@@ -37,7 +37,7 @@ Pro sdílení prostředků lze přesunout jednu databázi do [elastického fondu
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 
-V kombinaci s hodnocením výkonu použijete integrované [nástroje](sql-database-insights-alerts-portal.md)pro [monitorování výkonu](sql-database-performance.md) a upozorňování. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity v závislosti na stávajících nebo předpokládaných požadavcích. Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sql-database-metrics-diag-logging.md) pro snazší monitorování.
+V kombinaci s hodnocením výkonu použijete integrované nástroje pro [monitorování výkonu](sql-database-performance.md) a [upozorňování](sql-database-insights-alerts-portal.md). Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity v závislosti na stávajících nebo předpokládaných požadavcích. Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sql-database-metrics-diag-logging.md) pro snazší monitorování.
 
 ## <a name="availability-capabilities"></a>Možnosti dostupnosti
 
@@ -52,7 +52,7 @@ Další informace najdete v tématu [řešení rozdílů v jazyce Transact-SQL b
 
 ## <a name="security"></a>Zabezpečení
 
-SQL Database poskytuje řadu integrovaných funkcí [zabezpečení a dodržování předpisů](sql-database-security-overview.md) , které vaší aplikaci pomůžou splnit různé požadavky na zabezpečení a dodržování předpisů.
+SQL Database poskytuje řadu [integrovaných funkcí zabezpečení a dodržování předpisů](sql-database-security-overview.md) , které vaší aplikaci pomůžou splnit různé požadavky na zabezpečení a dodržování předpisů.
 
 > [!IMPORTANT]
 > Azure SQL Database (všechny možnosti nasazení) byly certifikovány na základě řady standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.

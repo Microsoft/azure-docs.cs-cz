@@ -3,15 +3,15 @@ title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/17/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176332"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464046"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -25,6 +25,7 @@ V definici zásad se v současné době podporují tyto efekty:
 - [Odmítnout](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled) (Zakázáno)
+- [EnforceOPAConstraint](#enforceopaconstraint) (Preview)
 - [EnforceRegoPolicy](#enforceregopolicy) (Preview)
 - [Upravíte](#modify)
 
@@ -39,7 +40,7 @@ V definici zásad se v současné době podporují tyto efekty:
 
 Jakmile poskytovatel prostředků vrátí kód úspěšnosti, **AuditIfNotExists** a **DeployIfNotExists** se vyhodnotí a určí, jestli je potřeba další protokolování nebo akce dodržování předpisů.
 
-V současné době není k dispozici žádné pořadí vyhodnocení pro **EnforceRegoPolicy** efekt.
+V současné době není k dispozici žádné pořadí vyhodnocení pro efekty **EnforceOPAConstraint** nebo **EnforceRegoPolicy** .
 
 ## <a name="disabled"></a>Zakázáno
 
@@ -431,12 +432,68 @@ Příklad: vyhodnotí SQL Server databáze a určí, jestli je povolený transpa
 }
 ```
 
-## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Tento efekt se používá v *režimu* definice zásad `Microsoft.ContainerService.Data`. Používá se k předávání pravidel řízení přístupu definovaných pomocí [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) k [otevření agenta zásad](https://www.openpolicyagent.org/) (Neprů) ve [službě Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+Tento efekt se používá v *režimu* definice zásad `Microsoft.Kubernetes.Data`. Používá se k předávání pravidel řízení přístupu na serveru gatekeeper V3 definovaných pomocí [architektury omezení neprů](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) k [otevření agenta zásad](https://www.openpolicyagent.org/) (neprů) pro samoobslužně spravované clustery Kubernetes v Azure.
 
 > [!NOTE]
-> [Azure Policy pro Kubernetes](rego-for-aks.md) jsou v Public Preview a podporují jenom předdefinované definice zásad.
+> [Azure Policy pro modul AKS](aks-engine.md) je v Public Preview a podporuje pouze předdefinované definice zásad.
+
+### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint vyhodnocování
+
+Otevřený řadič pro přístup agenta zásad vyhodnocuje všechny nové žádosti v clusteru v reálném čase.
+Každých 5 minut se dokončila úplná kontrola clusteru a výsledky nahlásily Azure Policy.
+
+### <a name="enforceopaconstraint-properties"></a>Vlastnosti EnforceOPAConstraint
+
+Vlastnost **Details** EnforceOPAConstraintového efektu má podvlastnosti, které popisují pravidlo pro Admission Control na serveru gatekeeper v3.
+
+- **constraintTemplate** [povinné]
+  - Šablona omezení CustomResourceDefinition (CRD), která definuje nová omezení. Šablona definuje logiku Rego, schéma omezení a parametry omezení, které jsou předány prostřednictvím **hodnot** z Azure Policy.
+- **omezení** [povinné]
+  - Implementace šablony omezení CRD. Používá parametry předané prostřednictvím **hodnot** jako `{{ .Values.<valuename> }}`. V následujícím příkladu `{{ .Values.cpuLimit }}` a `{{ .Values.memoryLimit }}`.
+- **hodnoty** [nepovinné]
+  - Definuje všechny parametry a hodnoty, které se mají předat omezení. Každá hodnota musí existovat v šabloně omezení CRD.
+
+### <a name="enforceregopolicy-example"></a>Příklad EnforceRegoPolicy
+
+Příklad: pravidlo pro Admission Control pro gatekeeper v3, které nastaví omezení prostředků procesoru a paměti v AKS Engine.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "in": [
+                "Microsoft.ContainerService/managedClusters",
+                "AKS Engine"
+            ]
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "enforceOPAConstraint",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
+        "values": {
+            "cpuLimit": "[parameters('cpuLimit')]",
+            "memoryLimit": "[parameters('memoryLimit')]"
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Tento efekt se používá v *režimu* definice zásad `Microsoft.ContainerService.Data`. Používá se k předávání pravidel řízení přístupu serveru gatekeeper v2 definovaných pomocí [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) k [otevření agenta zásad](https://www.openpolicyagent.org/) (Neprů) ve [službě Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Azure Policy pro AKS](rego-for-aks.md) je ve verzi omezené verze Preview a podporuje jenom integrované definice zásad.
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy vyhodnocování
 
@@ -445,7 +502,7 @@ Každých 5 minut se dokončila úplná kontrola clusteru a výsledky nahlásily
 
 ### <a name="enforceregopolicy-properties"></a>Vlastnosti EnforceRegoPolicy
 
-Vlastnost **Details** EnforceRegoPolicyového efektu má podvlastnosti, které popisují pravidlo Rego Admission Control.
+Vlastnost **Details** EnforceRegoPolicy efektu má podvlastnosti, které popisují pravidlo pro Admission Control pro rozhraní gatekeeper v2.
 
 - **policyId** [povinné]
   - K pravidlu Rego Admission Control se předal jedinečný název jako parametr.
@@ -456,7 +513,7 @@ Vlastnost **Details** EnforceRegoPolicyového efektu má podvlastnosti, které p
 
 ### <a name="enforceregopolicy-example"></a>Příklad EnforceRegoPolicy
 
-Příklad: Rego Admission Control Rule povolí pouze zadané image kontejneru v AKS.
+Příklad: pravidlo pro Admission Control pro gatekeeper v2, které povoluje pouze zadané image kontejneru v AKS.
 
 ```json
 "if": {

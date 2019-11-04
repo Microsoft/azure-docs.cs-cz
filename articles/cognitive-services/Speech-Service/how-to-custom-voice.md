@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959398"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464530"
 ---
-# <a name="get-started-with-custom-voice"></a>Začínáme s vlastním hlasem
+# <a name="get-started-with-custom-voice"></a>Začínáme se službou Custom Voice
 
 [Vlastní hlas](https://aka.ms/customvoice) je sada online nástrojů, která umožňuje vytvořit rozpoznatelný hlas pro vaši značku. Vše, co vše trvá, je několik zvukových souborů a přidružených přepisů. Pomocí odkazů níže můžete začít vytvářet vlastní prostředí pro převod textu na řeč.
 
@@ -36,6 +36,13 @@ Diagram níže popisuje kroky pro vytvoření vlastního hlasového modelu pomoc
 3.  [Využijte svoje data](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) a vytvořte si vlastní hlasový model pro převod textu na řeč. Model můžete vyškolit v různých jazycích. Po školení, testování modelu a pokud jste s výsledkem spokojeni, můžete model nasadit.
 
 4.  [Nasazení modelu](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) – vytvořte si vlastní koncový bod pro hlasový model pro převod textu na řeč a použijte ho pro syntézu řeči ve svých produktech, nástrojích a aplikacích.
+
+## <a name="custom-neural-voices"></a>Vlastní hlasy neuronové
+
+Funkce pro přizpůsobení hlasu neuronové je aktuálně ve verzi Public Preview omezená na vybrané zákazníky. Vyplňte formulář této [aplikace](https://go.microsoft.com/fwlink/?linkid=2108737) a začněte.
+
+> [!NOTE]
+> V rámci snahy Microsoftu o návrh zodpovědného AI je naším záměrem chránit práva jednotlivců a společnosti a podporovat transparentní interakce v rámci lidských počítačů. Z tohoto důvodu není vlastní neuronové hlas všeobecně dostupný všem zákazníkům. Přístup k technologii můžete získat až po zkontrolování vašich aplikací a s potvrzením, že je budete používat v souladu s našimi principy etiky. Přečtěte si další informace o našich [procesech uzavírání aplikací](https://aka.ms/custom-neural-gating-overview).
 
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 

@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 2a61a2ba74ccdaa69b26cae65dd4f74a7b837ccf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 96c346db74c1e6c43c3501b657621d09e019309c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927445"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469202"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Reference Host. JSON pro Azure Functions 2. x  
 
@@ -71,6 +71,9 @@ Následující ukázkové soubory *Host. JSON* mají uvedené všechny možné m
             }
         }
     },
+    "managedDependency": {
+        "enabled": true
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -78,10 +81,7 @@ Následující ukázkové soubory *Host. JSON* mají uvedené všechny možné m
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ],
-    "managedDependency": {
-        "enabled": true
-    }
+    "watchDirectories": [ "Shared", "Test" ]
 }
 ```
 
@@ -247,6 +247,18 @@ Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí p
 |---------|---------|---------| 
 |isEnabled|false|Povolí nebo zakáže protokolování konzoly.| 
 
+## <a name="manageddependency"></a>managedDependency
+
+Spravovaná závislost je funkce, kterou momentálně podporuje jenom funkce založené na PowerShellu. Umožňuje, aby se závislosti automaticky spravovaly službou. Je-li vlastnost `enabled` nastavena na hodnotu `true`, je zpracován soubor `requirements.psd1`. Závislosti se aktualizují při vydání jakýchkoli dílčích verzí. Další informace najdete v tématu [spravovaná závislost](functions-reference-powershell.md#dependency-management) v článku věnovaném prostředí PowerShell.
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
+}
+```
+
 ## <a name="queues"></a>vytvořil
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách fronty úložiště](functions-bindings-storage-queue.md#host-json).  
@@ -294,18 +306,6 @@ Sada [sdílených adresářů kódu](functions-reference-csharp.md#watched-direc
 ```json
 {
     "watchDirectories": [ "Shared" ]
-}
-```
-
-## <a name="manageddependency"></a>managedDependency
-
-Spravovaná závislost je funkce ve verzi Preview, která je aktuálně podporovaná jenom s funkcemi založenými na PowerShellu. Umožňuje, aby se závislosti automaticky spravovaly službou. Pokud je vlastnost Enabled nastavená na hodnotu true, zpracuje se soubor [požadavky. psd1](functions-reference-powershell.md#dependency-management) . Závislosti se budou aktualizovat, až budou uvolněny jakékoli dílčí verze.
-
-```json
-{
-    "managedDependency": {
-        "enabled": true
-    }
 }
 ```
 

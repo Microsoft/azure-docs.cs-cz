@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: cfecea6a64301d86aa657420dc300c26d4ed6f1e
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663399"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490811"
 ---
 # <a name="exploration-and-exploitation"></a>Zkoumání a využití
 
@@ -25,22 +25,15 @@ Když přizpůsobené přizpůsobuje volání pořadí, vrátí RewardActionID, 
 * Používá využívání, které odpovídá nejpravděpodobnějšímu chování uživatelů na základě aktuálního modelu strojového učení.
 * Používá průzkum, který se neshoduje s akcí, která má nejvyšší pravděpodobnost v pořadí.
 
-<!--
-Returning the most probable action is called *exploit* behavior. Returning a different action is called *exploration*.
--->
 Přizpůsobené přizpůsobování v současnosti používá algoritmus s názvem *Epsilon hlad* . 
 
 ## <a name="choosing-an-exploration-setting"></a>Výběr nastavení průzkumu
 
-Procentuální hodnotu provozu, který se má použít pro průzkum, nakonfigurujete na stránce **nastavení** Azure Portal pro přizpůsobení. Toto nastavení určuje procento volání pořadí, která provádějí průzkum. 
+Procentuální hodnotu provozu, který se má použít pro průzkum, nakonfigurujete na stránce **konfigurace** Azure Portal pro přizpůsobení. Toto nastavení určuje procento volání pořadí, která provádějí průzkum. 
 
 Přizpůsobení určuje, zda se má tato pravděpodobnost prozkoumat nebo zneužít při každém volání pořadí. To se liší od chování v některých architekturách A/B, které zablokují zpracování pro konkrétní ID uživatelů.
 
 ## <a name="best-practices-for-choosing-an-exploration-setting"></a>Osvědčené postupy pro výběr nastavení průzkumu
-
-<!--
-@edjez - you say what not to do, but make no recommendations of what **to** do. 
--->
 
 Výběr nastavení průzkumu je obchodní rozhodnutí o poměru interakcí uživatelů, které se mají prozkoumat, aby bylo možné model vylepšit. 
 
@@ -50,6 +43,6 @@ Nastavení, které je příliš vysoké, bude mít na starosti výhody učení o
 
 Je důležité, abyste neměnili chování aplikace na základě toho, jestli se vám zobrazuje, jestli se dá přizpůsobovat nebo zneužít. To by vedlo k případným posunům, které by nakonec snížily potenciální výkon.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Posílení učení](concepts-reinforcement-learning.md) 
