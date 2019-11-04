@@ -1,7 +1,7 @@
 ---
-title: 'Kurz 1: Predikce úvěrového rizika'
-titleSuffix: Azure Machine Learning Studio
-description: Podrobný kurz ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v nástroji Azure Machine Learning Studio. Tento kurz je první částí z třídílné série.  Ukazuje, jak vytvořit pracovní prostor, odešle data a vytvořit nový experiment.
+title: 'Kurz 1: předpověď úvěrového rizika'
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v klasické verzi Azure Machine Learning Studio. Tento kurz je první částí série kurzů se třemi částmi.  Ukazuje, jak vytvořit pracovní prostor, nahrát data a vytvořit experiment.
 keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
 author: sdgilley
 ms.author: sgilley
@@ -10,113 +10,112 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f9746dae4cdf10a10922be41602f4ecd7f032f5b
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: b861fbca1f8b4fd6b313e770b1636674767e406a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949790"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492628"
 ---
-# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Kurz 1: Předpovědět úvěrové riziko - Azure Machine Learning Studio
+# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Kurz 1: předpověď úvěrového rizika – Azure Machine Learning Studio (Classic)
 
-V tomto kurzu provedete rozšířené pohled na proces vývoje řešení prediktivní analýzy. Při vývoji jednoduchý model v nástroji Machine Learning Studio.  Potom tento model nasadíme jako webové služby Azure Machine Learning.  Tento model nasazený můžete vytvářet predikce na nová data. Tento kurz je **první částí z třídílné série kurzů**.
+[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+
+V tomto kurzu se podíváme na proces vývoje řešení prediktivní analýzy. V Machine Learning Studio (Classic) vyvíjíte jednoduchý model.  Model pak nasadíte jako Azure Machine Learning webovou službu.  Tento nasazený model může vytvářet předpovědi s využitím nových dat. Tento kurz je **první částí série kurzů se třemi částmi**.
 
 Předpokládejme, že potřebujete předpovědět úvěrové riziko u jednotlivých zákazníků na základě údajů, které uvedli v žádosti o úvěr.  
 
-Posouzení úvěrového rizika je komplexní problém, ale v tomto kurzu se tak si ho Zjednodušte trochu. Budete ho používat jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí Microsoft Azure Machine Learning Studio. Budete používat Azure Machine Learning Studio a webovou službou Machine Learning pro toto řešení.  
+Posouzení úvěrového rizika je složitý problém, ale v tomto kurzu se tento kurz zjednodušuje. Použijete ho jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí Microsoft Azure Machine Learning Studio (Classic). Pro toto řešení použijete klasickou verzi Azure Machine Learning Studio a Machine Learning webovou službu.  
 
-V tomto kurzu třemi částmi začnete s veřejně dostupnými daty úvěrového rizika.  Vyvíjejte a natrénujeme prediktivní model.  Nakonec tento model nasadíme jako webovou službu.
+V tomto kurzu se třemi částmi začínáte veřejně dostupnými daty o úvěrovém riziku.  Pak vyvíjíte a naučíte prediktivní model.  Nakonec model nasadíte jako webovou službu.
 
-V této části kurzu jste: 
+V této části kurzu: 
  
 > [!div class="checklist"]
-> * Vytvoření pracovního prostoru Machine Learning Studio
+> * Vytvořit pracovní prostor Machine Learning Studio (Classic)
 > * Nahrání existujících dat
 > * Vytvoření experimentu
 
-Pak můžete použít pro tento experiment [trénování modelů v části 2](tutorial-part2-credit-risk-train.md) a potom [nasaďte je do 3. část](tutorial-part3-credit-risk-deploy.md).
+Pak můžete tento experiment použít k [proškolování modelů v části 2](tutorial-part2-credit-risk-train.md) a pak [je nasadit v části 3](tutorial-part3-credit-risk-deploy.md).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+## <a name="prerequisites"></a>Předpoklady
 
+V tomto kurzu se předpokládá, že jste předtím používali Machine Learning Studio (Classic) alespoň jednou a že máte zkušenosti s koncepty machine learningu. Bere ale v úvahu, že nejste odborníkem ani na jedno.
 
-## <a name="prerequisites"></a>Požadavky
-
-Tento kurz předpokládá, že jste použili Machine Learning Studio alespoň jednou před a že rozumíte některé konceptům strojového učení. Bere ale v úvahu, že nejste odborníkem ani na jedno.
-
-Pokud jste nikdy **Azure Machine Learning Studio** dříve, můžete chtít spustit v rychlém startu, [vytvoření vašeho prvního experimentu datové vědy v nástroji Azure Machine Learning Studio](create-experiment.md). Rychlý start vás provede Machine Learning Studio poprvé. Ukáže vám základy toho, jak pomocí myši přetáhnout moduly do experimentu, vzájemně je propojit, spustit experiment a prohlédnout si výsledky.
+Pokud jste ještě nikdy nepoužívali **Azure Machine Learning Studio (Classic)** , můžete začít s rychlým startem, [vytvořit první experiment pro datové vědy v Azure Machine Learning Studio (Classic)](create-experiment.md). Rychlý Start vás provede procesem Machine Learning Studio (klasický) poprvé. Ukáže vám základy toho, jak pomocí myši přetáhnout moduly do experimentu, vzájemně je propojit, spustit experiment a prohlédnout si výsledky.
 
 
 > [!TIP] 
-> Můžete najít pracovní kopii experimentu, který používáte k vývoji tohoto kurzu [galerii Azure AI](https://gallery.azure.ai). Přejděte na **[kurz – předpovědět úvěrové riziko](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** a klikněte na tlačítko **Open in Studio** a stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio.
+> Pracovní kopii experimentu, který vyvíjíte v tomto kurzu, můžete najít v [Azure AI Gallery](https://gallery.azure.ai). Přejděte na **[kurz – předpověď úvěrového rizika](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** a kliknutím na **otevřít v studiu** Stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio (Classic).
 > 
 
 
-## <a name="create-a-machine-learning-studio-workspace"></a>Vytvoření pracovního prostoru Machine Learning Studio
+## <a name="create-a-machine-learning-studio-classic-workspace"></a>Vytvořit pracovní prostor Machine Learning Studio (Classic)
 
-Pokud chcete používat Machine Learning Studio, musíte mít pracovní prostor Microsoft Azure Machine Learning Studio. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.  
+Pokud chcete použít Machine Learning Studio (Classic), musíte mít pracovní prostor Microsoft Azure Machine Learning Studio (Classic). Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.  
 
-Chcete-li vytvořit pracovní prostor, přečtěte si téma [vytváření a sdílení pracovního prostoru služby Azure Machine Learning Studio](create-workspace.md).
+Pokud chcete vytvořit pracovní prostor, přečtěte si téma [Vytvoření a sdílení pracovního prostoru Azure Machine Learning Studio (Classic)](create-workspace.md).
 
-Po vytvoření pracovního prostoru, otevřete Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Pokud máte více než jeden pracovní prostor, můžete vybrat pracovní prostor v panelu nástrojů v pravém horním rohu okna.
+Po vytvoření pracovního prostoru otevřete Machine Learning Studio (Classic) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Pokud máte více než jeden pracovní prostor, můžete pracovní prostor vybrat na panelu nástrojů v pravém horním rohu okna.
 
-![Vyberte pracovní prostor v sadě Studio](./media/tutorial-part1-credit-risk/open-workspace.png)
+![Výběr pracovního prostoru v nástroji Studio (klasický)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> Pokud jste vlastník pracovního prostoru, můžete sdílet experimenty, kterou právě pracujete ostatní pozváním do pracovního prostoru. Můžete to provést v nástroji Machine Learning Studio na **nastavení** stránky. Stačí účet Microsoft nebo účtu organizace pro každého uživatele.
+> Pokud jste vlastníkem pracovního prostoru, můžete nasdílet experimenty, na kterých právě pracujete, a to tak, že v pracovním prostoru vyzvete ostatní. To můžete provést v Machine Learning Studio (Classic) na stránce **Nastavení** . Pro každého uživatele potřebujete pouze účet účet Microsoft nebo organizace.
 > 
-> Na **nastavení** klikněte na **uživatelé**, pak klikněte na tlačítko **POZVAT další uživatele** v dolní části okna.
+> Na stránce **Nastavení** klikněte na **Uživatelé**a potom v dolní části okna klikněte na **pozvat další uživatele** .
 > 
 
-## <a name="upload"></a>Nahrání existujících dat
+## <a name="upload"></a>Nahrát existující data
 
-K vývoji prediktivního modelu pro úvěrové riziko, potřebujete data, která můžete použít k trénování a pak model otestujeme. Pro účely tohoto kurzu budete používat "UCI Statlog (německé daty o úvěrovém) Data Set" v úložišti UC Irvine Machine Learning. Najdete ho tady:  
+Pro vývoj prediktivního modelu pro úvěrové riziko budete potřebovat data, která můžete použít ke školení a testování modelu. V tomto kurzu použijete datovou sadu "UCI Statlog (německá úvěrová data)" z úložiště UC Irvine Machine Learning. Můžete ji najít tady:  
 <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
-Budete používat soubor s názvem **german.data**. Stáhněte si tento soubor na místní pevný disk.  
+Použijete soubor s názvem **němčina. data**. Stáhněte si tento soubor na svůj místní pevný disk.  
 
-**German.data** datová sada obsahuje řádky 20 proměnných pro 1000 posledních žadatel o kredit. Tyto proměnné 20 představují sadu funkcí datové sady ( *funkce vector*), poskytující charakteristiky identifikace pro každý kredit žadatel. Další sloupce v jednotlivých řádcích představuje žadatele počítané úvěrové riziko s vysokým rizikem označeno jako nízké úvěrové riziko a 300 700 uchazeči.
+**Němčina. data** DataSet obsahuje řádky 20 proměnných pro 1000 minulých žadatelů pro kredit. Tyto 20 proměnných představují sadu funkcí datové sady ( *vektor funkce*), která poskytuje identifikovatelné charakteristiky pro jednotlivé kandidáty na kredit. Další sloupec v každém řádku představuje vypočtené úvěrové riziko žadatele s 700 žadateli, kteří se identifikovali jako nízké úvěrové riziko a 300 jako vysoké riziko.
 
-Web UCI poskytuje popis atributů vektoru funkce pro tato data. Tato data zahrnují finančním informacím, historie kreditu, stav pracovní a osobní údaje. Pro každý žadatel binární hodnocení byl daný označující, zda jsou nízké nebo vysoké úvěrové riziko. 
+Web UCI poskytuje popis atributů vektoru funkce pro tato data. Tato data zahrnují finanční informace, historii kreditů, stav zaměstnanosti a osobní údaje. Pro každého žadatele bylo uvedeno binární hodnocení, které označuje, zda se jedná o nízké nebo vysoké úvěrové riziko. 
 
-Tato data použijete k natrénování modelu prediktivní analýzy. Až budete hotovi, váš model by měl být moct přijmout vektor funkce pro nové uživatele a předpovědět, jestli jsou nízké nebo vysoké úvěrové riziko.  
+Tato data použijete k vytvoření výukového modelu prediktivní analýzy. Až budete hotovi, váš model by měl být schopný přijmout vektor funkce pro novou osobu a odhadnout, jestli se jedná o nízké nebo vysoké úvěrové riziko.  
 
-Tady je zajímavé prvkem.
+Tady je zajímavou značku.
 
-Popis datové sady na webu UCI uvádí, co to stojí Pokud misclassify osoby úvěrové riziko.
-Pokud tento model předpovídá vysoké úvěrové riziko u někoho, kdo je ve skutečnosti nízké úvěrové riziko, model chybnou provedl.
+Popis datové sady na webu UCI uvádí, k čemu v případě netřídění úvěrového rizika u osoby nebudete zařadit.
+Pokud model předpovídá vysoké úvěrové riziko pro někoho, kdo je ve skutečnosti nízké úvěrové riziko, model provedl chybnou klasifikaci.
 
-Reverzní chybnou je pětkrát dražší do finanční instituce, ale: Pokud tento model předpovídá nízké úvěrové riziko u někoho, kdo je ve skutečnosti vysoké úvěrové riziko.
+Ale reverzní nevratná klasifikace je pro finanční instituce pětkrát levnější: Pokud model předpovídá nízké úvěrové riziko pro někoho, kdo je skutečně vysokým úvěrovým rizikem.
 
-Ano budete chtít trénování modelu, tak, aby náklady na tento druhý typ. chybnou pětkrát větší než misclassifying jiným způsobem.
+Proto chcete svůj model naučit, aby náklady na tento druhý typ chybných klasifikací byly pětkrát vyšší než nezpůsobující netřídění jiným způsobem.
 
-Jeden jednoduchý způsob, jak to provést, když trénujete model v experimentu je tak, že duplikujete (pětkrát) ty položky, které představují někdo s vysoké úvěrové riziko. 
+Jedním z jednoduchých způsobů, jak to provést při výuce modelu v experimentu, je duplikování (pětkrát) záznamů, které reprezentují někoho s vysokým úvěrovým rizikem. 
 
-Potom Pokud model misclassifies někdo jako nízké úvěrové riziko, když jsou ve skutečnosti vysoce rizikové, model nemá tento stejný chybnou pětkrát, jednou pro každý duplicitní. Tím se zvýší náklady na této chyby ve výsledcích školení.
+V případě, že model chybně klasifikuje osobu jako nízké úvěrové riziko, když jsou ve skutečnosti vysoké riziko, model to znamená, že stejná nechybná klasifikace je pětkrát, jednou pro každou duplicitu. Tím se zvýší náklady na tuto chybu ve výsledcích školení.
 
 
-### <a name="convert-the-dataset-format"></a>Převést formát datové sady
+### <a name="convert-the-dataset-format"></a>Převod formátu datové sady
 
-Původní datové sady používá formát oddělených prázdné. Machine Learning Studio lépe funguje s hodnotami oddělenými čárkami (CSV) souboru, tak budete převést datové sady nahrazením mezer čárkami.  
+Původní datová sada používá formát oddělený prázdným znakem. Klasická verze Machine Learning Studio funguje lépe pomocí souboru s hodnotami oddělenými čárkami (CSV), takže tuto datovou sadu převedete tak, že nahradíte mezery čárkami.  
 
-Existuje mnoho způsobů, jak převést tato data. Jedním ze způsobů je pomocí následujícího příkazu Windows Powershellu:   
+Existuje mnoho způsobů, jak tato data převést. Jedním ze způsobů je použít následující příkaz Windows PowerShellu:   
 
     cat german.data | %{$_ -replace " ",","} | sc german.csv  
 
-Dalším způsobem je použití příkazu sed systému Unix:  
+Dalším způsobem je použití příkazu UNIX sed:  
 
     sed 's/ /,/g' german.data > german.csv  
 
-V obou případech vytvoříte oddělených čárkou verzi dat do souboru s názvem **german.csv** , který vám pomůže v experimentu.
+V obou případech jste vytvořili verzi dat oddělených čárkami v souboru s názvem **němčina. csv** , který můžete použít v experimentu.
 
-### <a name="upload-the-dataset-to-machine-learning-studio"></a>Nahrajte datovou sadu do nástroje Machine Learning Studio
+### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Nahrajte datovou sadu do Machine Learning Studio (Classic).
 
-Po převedení dat do formátu CSV, budete muset nahrát do nástroje Machine Learning Studio. 
+Jakmile budou data převedena do formátu CSV, je nutné ji nahrát do klasické verze Machine Learning Studio. 
 
-1. Otevřete domovskou stránku Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). 
+1. Otevřete domovskou stránku Machine Learning Studio (Classic) ([https://studio.azureml.net](https://studio.azureml.net)). 
 
-2. Klikněte na nabídku ![nabídky](./media/tutorial-part1-credit-risk/menu.png) v levém horním rohu okna, klikněte na tlačítko **Azure Machine Learning**vyberte **Studio**a přihlaste se.
+2. Klikněte na nabídku ![nabídce](./media/tutorial-part1-credit-risk/menu.png) v levém horním rohu okna klikněte na možnost **Azure Machine Learning**, vyberte možnost **Studio**a přihlaste se.
 
-3. Klikněte na tlačítko **+ nová** v dolní části okna.
+3. V dolní části okna klikněte na **+ Nový** .
 
 4. Vyberte **datovou sadu**.
 
@@ -124,138 +123,138 @@ Po převedení dat do formátu CSV, budete muset nahrát do nástroje Machine Le
 
     ![Přidat datovou sadu z místního souboru](./media/tutorial-part1-credit-risk/add-dataset.png)
 
-6. V **nahrát novou datovou sadu** dialogového okna, klikněte na tlačítko Procházet a najít **german.csv** souborů, které jste vytvořili.
+6. V dialogovém okně **nahrát novou datovou sadu** klikněte na Procházet a najděte **německý soubor. csv** , který jste vytvořili.
 
-7. Zadejte název pro tuto datovou sadu. Pro účely tohoto kurzu říkat "Údajů o kreditních kartách UCI němčina".
+7. Zadejte název datové sady. Pro tento kurz zavolejte IT data o kreditních kartách "UCI němčina".
 
-8. Datový typ, vyberte **obecný soubor CSV neobsahuje záhlaví (. nh.csv)**.
+8. Jako typ dat vyberte **obecný soubor CSV bez záhlaví (. NH. csv)** .
 
-9. Pokud chcete přidáte popis.
+9. Pokud chcete, přidejte popis.
 
-10. Klikněte na tlačítko **OK** zaškrtávací políčko.  
+10. Klikněte na značku zaškrtnutí **OK** .  
 
-    ![Nahrajte datovou sadu](./media/tutorial-part1-credit-risk/upload-dataset.png)
+    ![Nahrát datovou sadu](./media/tutorial-part1-credit-risk/upload-dataset.png)
 
-To nahrává data do datové sady modul, který vám pomůže v jednom experimentu.
+Tím se data nahrávají do modulu DataSet, který můžete použít v experimentu.
 
-Můžete spravovat datové sady, které jste odeslali do Studio kliknutím **datových sad** karty na levé straně okna nástroje Studio.
+Datové sady, které jste nahráli do studia (Classic), můžete spravovat kliknutím na kartu **datové sady** vlevo v okně Studio (Classic).
 
 ![Správa datových sad](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-Další informace o importu dalších typů dat do experimentu najdete v tématu [Import cvičných dat do Azure Machine Learning Studio](import-data.md).
+Další informace o importování dalších typů dat do experimentu najdete v tématu [Import školicích dat do Azure Machine Learning Studio (Classic)](import-data.md).
 
 ## <a name="create-an-experiment"></a>Vytvoření experimentu
 
-Dalším krokem v tomto kurzu je vytvořit nový experiment v Machine Learning Studio, který používá datovou sadu, kterou jste nahráli.  
+Dalším krokem v tomto kurzu je vytvoření experimentu v klasické verzi Machine Learning Studio, který používá datovou sadu, kterou jste nahráli.  
 
-1. V sadě Studio, klikněte na tlačítko **+ nová** v dolní části okna.
-1. Vyberte **EXPERIMENT**a pak vyberte "Prázdný Experiment". 
+1. V nástroji Studio (Classic) klikněte v dolní části okna na **+ Nový** .
+1. Vyberte **experiment**a potom vyberte "prázdný experiment". 
 
     ![Vytvoření nového experimentu](./media/tutorial-part1-credit-risk/create-new-experiment.png)
 
 
-1. Vyberte v horní části plátna výchozí název experimentu a přejmenujte jej na něco smysluplného.
+1. V horní části plátna vyberte výchozí název experimentu a přejmenujte ho na něco smysluplného.
 
-    ![Přejmenování experimentu](./media/tutorial-part1-credit-risk/rename-experiment.png)
+    ![Přejmenovat experiment](./media/tutorial-part1-credit-risk/rename-experiment.png)
 
    > [!TIP]
-   > Je dobrým zvykem vyplnit **Souhrn** a **popis** experimentu v **vlastnosti** podokně. Tyto vlastnosti vám poskytnou příležitost k dokumentaci testu tak, aby každý, kdo ho později zkoumá rozumět cíle a metodologie.
+   > Je dobrým zvykem vyplnit **Souhrn** a **Popis** experimentu v podokně **vlastnosti** . Tyto vlastnosti poskytují možnost zdokumentovat experiment, aby každý, kdo ho uvidí později, porozuměl vašim cílům a metodologii.
    > 
    > ![Vlastnosti experimentu](./media/tutorial-part1-credit-risk/experiment-properties.png)
    > 
 
-1. Paletě modulů nalevo od plátna experimentu rozbalte **uložení datové sady**.
-1. Vyhledejte datovou sadu, které jste vytvořili v části **Moje datové sady** a přetáhněte ji na plátno. Datovou sadu můžete najít také zadáním názvu v **hledání** pole výše na paletě.  
+1. V paletě modulu nalevo od plátna experimentu rozbalte **uložené datové sady**.
+1. Najděte datovou sadu, kterou jste vytvořili v části **Moje datové sady** , a přetáhněte ji na plátno. Datovou sadu můžete také vyhledat zadáním názvu do **vyhledávacího** pole nad paletou.  
 
-    ![Datovou sadu přidat do experimentu](./media/tutorial-part1-credit-risk/add-dataset-to-experiment.png)
+    ![Přidat datovou sadu do experimentu](./media/tutorial-part1-credit-risk/add-dataset-to-experiment.png)
 
 
 ### <a name="prepare-the-data"></a>Příprava dat
 
-Můžete zobrazit prvních 100 řádků dat a některé statistické informace pro celou datovou sadu: Klikněte na výstupní port datové sady (malý kruh v dolní části) a vyberte **vizualizovat**.  
+Můžete zobrazit prvních 100 řádků dat a některé statistické informace pro celou datovou sadu: klikněte na výstupní port datové sady (malý kroužek v dolní části) a vyberte **vizualizovat**.  
 
-Protože datový soubor nebyl dodán záhlaví sloupců, Studio poskytuje obecný záhlaví (Sloupec1, Sloupec2, *atd*). Dobré záhlaví nejsou nezbytné pro vytvoření modelu, ale jejich usnadňují práci s daty v experimentu. Také až nakonec publikovat tento model ve webové službě, záhlaví pomoci při identifikaci sloupce, které chcete uživatele služby.  
+Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, nabízí klasická verze studia obecné nadpisy (Sloupec1, col2 *atd.* ). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
 
-Můžete přidat pomocí záhlaví sloupců [upravit Metadata] [ edit-metadata] modulu.
+Záhlaví sloupců můžete přidat pomocí modulu [Upravit metadata][edit-metadata] .
 
-Můžete použít [upravit Metadata][edit-metadata] modulu změnit metadata spojená s datovou sadu. V takovém případě vám to zadat další popisné názvy záhlaví sloupců. 
+Pomocí modulu [Upravit metadata][edit-metadata] můžete změnit metadata přidružená k datové sadě. V takovém případě ji použijete k poskytnutí výstižnější názvy pro záhlaví sloupců. 
 
-Chcete-li použít [upravit Metadata][edit-metadata], Nejdřív musíte určit sloupce, které chcete upravit (v tomto případě všechny z nich.) Dále určete akci, která má být proveden na těchto sloupců (v tomto případě změna záhlaví sloupců.)
+Chcete-li použít [úpravu metadat][edit-metadata], určete nejprve, které sloupce chcete upravit (v tomto případě všechny). Dále zadáte akci, která má být provedena na těchto sloupcích (v tomto případě Změna záhlaví sloupců).
 
-1. V palety modulů zadejte "metadat" **hledání** pole. [Upravit Metadata] [ edit-metadata] se zobrazí v seznamu modulů.
+1. V paletě modulu zadejte do **vyhledávacího** pole "metadata". V seznamu modulů se zobrazí [metadata pro úpravy][edit-metadata] .
 
-1. Klikněte na tlačítko a přetáhněte ji [upravit Metadata] [ edit-metadata] modulů na plátno a klesne pod datové sady, které jste přidali dříve.
+1. Klikněte na plátno a přetáhněte na něj modul [Upravit metadata][edit-metadata] a přetáhněte ho pod datovou sadu, kterou jste přidali dříve.
 
-1. Připojit datovou sadu, která [upravit Metadata][edit-metadata]: klikněte na výstupní port datové sady (přeškrtnutým kroužkem v dolní části datové sady), přetáhněte do vstupní port [upravit Metadata][edit-metadata] (přeškrtnutým kroužkem v horní části modulu), pak uvolnění tlačítka myši. Datové sady a modul zůstanou připojené i v případě, že přesouváte buď na plátně.
+1. Připojte datovou sadu k [metadatům pro úpravy][edit-metadata]: klikněte na výstupní port datové sady (malý kroužek v dolní části datové sady), přetáhněte na vstupní port [Upravit metadata][edit-metadata] (malý kroužek v horní části modulu) a pak uvolněte tlačítko myši. Datová sada a modul zůstávají propojené i v případě, že se přesunete podél plátna.
  
-    Experiment by teď měl vypadat přibližně takto:  
+    Experiment by teď měl vypadat nějak takto:  
 
-    ![Přidání upravit Metadata](./media/tutorial-part1-credit-risk/experiment-with-edit-metadata-module.png)
+    ![Přidávání metadat pro úpravy](./media/tutorial-part1-credit-risk/experiment-with-edit-metadata-module.png)
 
-    Červený vykřičník označuje, že nebyly nastavení vlastností pro tento modul ještě. Uděláte to teď.
+    Červený vykřičník označuje, že ještě nemáte nastavené vlastnosti pro tento modul. Provedete to dál.
 
     > [!TIP]
-    > Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. V tomto případě klikněte dvakrát na [upravit Metadata] [ edit-metadata] modulů a typů komentář "přidat záhlaví sloupců". Klikněte kamkoli jinam na plátně zavřete do textového pole. Pokud chcete zobrazit komentář, klikněte na šipku dolů v modulu.
+    > Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. V takovém případě poklikejte na modul [Upravit metadata][edit-metadata] a zadejte komentář "Přidání záhlaví sloupců". Textové pole zavřete kliknutím kamkoli jinde na plátně. Chcete-li zobrazit komentář, klikněte na šipku dolů v modulu.
     > 
-    > ![Upravit Metadata modulu s byl přidán komentář.](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
+    > ![Upravit modul metadat s přidaným komentářem](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
     > 
 
-1. Vyberte [upravit Metadata][edit-metadata]a **vlastnosti** klikněte na podokno na pravé straně plátna **spustit selektor sloupců**.
+1. Vyberte [Upravit metadata][edit-metadata]a v podokně **vlastnosti** napravo od plátna klikněte na **Spustit selektor sloupců**.
 
-1. V **vyberte sloupce, které** dialogovém okně Vybrat všechny řádky v **dostupných sloupců** a klikněte na > a přesunout jej do **vybrané sloupce**.
-   Dialogové okno by měl vypadat nějak takto:
+1. V dialogovém okně **Vybrat sloupce** vyberte všechny řádky v **dostupných sloupcích** a kliknutím na > je přesuňte do **vybraných sloupců**.
+   Dialogové okno by mělo vypadat takto:
 
-   ![Selektor sloupců s vybrány všechny sloupce](./media/tutorial-part1-credit-risk/select-columns.png)
+   ![Selektor sloupců se zvolenými vybranými sloupci](./media/tutorial-part1-credit-risk/select-columns.png)
 
 
-1. Klikněte na tlačítko **OK** zaškrtávací políčko.
+1. Klikněte na značku zaškrtnutí **OK** .
 
-1. Zpátky **vlastnosti** podokně vyhledejte **nové názvy sloupců** parametru. V tomto poli zadejte seznam názvů 21 sloupců v datové sadě, oddělené čárkami a pořadí sloupců. Názvy sloupců můžete získat z datové sady dokumentace na webu UCI nebo pro usnadnění práce můžete zkopírovat a vložit následující seznam:  
+1. Zpátky v podokně **vlastnosti** vyhledejte **Nový parametr názvů sloupců** . Do tohoto pole zadejte seznam názvů pro 21 sloupců v datové sadě oddělené čárkami a v pořadí sloupců. Názvy sloupců můžete získat z dokumentace datové sady na webu UCI nebo pro usnadnění můžete zkopírovat a vložit následující seznam:  
 
    ```   
    Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
    ```
 
-   V podokně vlastností vypadá takto:
+   Podokno Vlastnosti vypadá takto:
 
-   ![Vlastnosti pro upravit Metadata](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
+   ![Vlastnosti pro úpravu metadat](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > Pokud chcete ověřit záhlaví sloupců, spustit experiment (klikněte na tlačítko **spustit** pod plátnem experimentu). Po jeho dokončení spuštění (zelená značka zaškrtnutí se zobrazí na [upravit Metadata][edit-metadata]), klikněte na výstupní port modulu [upravit Metadata][edit-metadata] modulu a vyberte **vizualizovat**. Zobrazit výstup jakýkoli modul stejným způsobem, chcete-li zobrazit průběh dat prostřednictvím experimentu.
+   > Pokud chcete ověřit záhlaví sloupců, spusťte experiment (klikněte na tlačítko **Spustit** pod plátnem experimentu). Po dokončení běhu (pro [úpravy metadat][edit-metadata]se zobrazí zelený znak zaškrtnutí), klikněte na výstupní port modulu [úprav metadat][edit-metadata] a vyberte **vizualizovat**. Výstup libovolného modulu můžete zobrazit stejným způsobem, jak zobrazit průběh dat v experimentu.
    > 
    > 
 
-### <a name="create-training-and-test-datasets"></a>Vytvoření trénovací a testovací datové sady
+### <a name="create-training-and-test-datasets"></a>Vytváření školicích a testovacích datových sad
 
-Potřebujete data pro trénování modelu a některé a otestovat ho.
-Abyste v dalším kroku testu můžete datové sady rozdělit na dvě samostatné datové sady: jeden pro školení náš model a jeden pro testování.
+K tomu, abyste mohli model vyškolit, budete potřebovat nějaká data a otestujete ho.
+V dalším kroku experimentu budete mít datovou sadu rozdělenou do dvou samostatných datových sad: jednu pro školení našeho modelu a jednu pro testování.
 
-K tomuto účelu můžete použít [rozdělení dat] [ split] modulu.  
+K tomu použijte modul [rozdělit data][split] .  
 
-1. Najít [rozdělení dat][split] modulu, přetáhněte na plátno a propojte jej s [upravit Metadata][edit-metadata] modulu.
+1. Najděte modul [rozdělit data][split] , přetáhněte ho na plátno a připojte ho k modulu [Upravit metadata][edit-metadata] .
 
-1. Ve výchozím nastavení, poměr rozdělení je 0,5 a **Randomized rozdělení** je nastaven parametr. To znamená, že náhodný poloviční dat je výstup prostřednictvím jeden port [rozdělení dat] [ split] modulu a polovinu prostřednictvím druhé. Můžete upravit tyto parametry, jakož i **náhodná počáteční hodnota** parametr, chcete-li změnit rozdělení mezi trénování a testování data. V tomto příkladu je jako ponecháte-je.
+1. Ve výchozím nastavení je poměr rozdělení 0,5 a je nastaven parametr **náhodného rozdělení** . To znamená, že náhodná polovina dat je výstupem přes jeden port modulu [rozdělených dat][split] a polovina až po druhé. Tyto parametry můžete upravit, stejně jako parametr **náhodného osazení** , chcete-li změnit rozdělení mezi školicími a testovacími daty. V tomto příkladu je ponecháte tak, jak je.
    
    > [!TIP]
-   > Vlastnost **podíl řádků v první výstupní sadě dat** Určuje, kolik dat je výstup prostřednictvím *levé* výstupní port. Například pokud nastavíte na 0,7 poměr, pak 70 % modulů pro data je výstup prostřednictvím levý port a z 30 % přes správný port.  
+   > **Zlomky vlastností řádků v první výstupní datové sadě** určují, kolik dat je výstupem na *levém* výstupním portu. Pokud například nastavíte poměr na 0,7, pak 70% dat je výstupem přes levý port a 30% přes správný port.  
    > 
    > 
 
-1. Dvakrát klikněte [rozdělení dat] [ split] modul a zadejte komentář, "trénování a testování data rozdělit 50 %". 
+1. Dvakrát klikněte na modul [rozdělení dat][split] a zadejte komentář "data o školeních a testováních 50%". 
 
-Můžete použít na výstupy [rozdělení dat] [ split] modulu však, jako jsou, ale můžeme se rozhodnout použít levý výstupní jako trénovacích dat a právo výstupní data jako testování.  
+Můžete použít výstupy modulu [rozdělených dat][split] , ale můžete se rozhodnout použít levý výstup jako školicí data a správný výstup jako testovací data.  
 
-Jak je uvedeno v [předchozího kroku](tutorial-part1-credit-risk.md#upload), je pětkrát vyšší než náklady na misclassifying nízké úvěrové riziko jako vysoce misclassifying vysoké úvěrové riziko jako s nízkými náklady. Aby se zohlednily to, generovat novou datovou sadu, která zohledňuje, tato funkce náklady. V nová datová sada se každý příklad vysoké riziko replikuje pětkrát, když není replikován každý příklad s nízkým rizikem.   
+Jak je uvedeno v [předchozím kroku](tutorial-part1-credit-risk.md#upload), náklady na chybnou klasifikaci vysokého úvěrového rizika v nízkém rozsahu jsou pětkrát vyšší než náklady na neklasifikaci nízkého úvěrového rizika jako vysoké. K tomuto účtu vygenerujete novou datovou sadu, která odráží tuto nákladovou funkci. V nové datové sadě se každý příklad s vysokým rizikem replikuje pětkrát, zatímco každý příklad s nízkým rizikem není replikovaný.   
 
-Tato replikace můžete provést pomocí kódu R:  
+Tuto replikaci můžete provést pomocí kódu R:  
 
-1. Najděte a přetáhněte [spustit skript jazyka R] [ execute-r-script] modulů na plátno experimentu. 
+1. Najděte a přetáhněte modul [spuštění skriptu jazyka R][execute-r-script] na plátno experimentu. 
 
-1. Propojte levý výstupní port modulu [rozdělení dat] [ split] modulu na první vstupní port ("Dataset1") [spustit skript jazyka R] [ execute-r-script] modulu.
+1. Připojte levý výstupní port modulu [rozdělit data][split] k prvnímu vstupnímu portu ("DataSet1.") modulu [spuštění skriptu jazyka R][execute-r-script] .
 
-1. Dvakrát klikněte [spustit skript jazyka R] [ execute-r-script] modul a zadejte komentář, "Set nákladů úpravu".
+1. Dvakrát klikněte na modul [spuštění skriptu jazyka R][execute-r-script] a zadejte komentář. "nastavit adjustaci nákladů".
 
-1. V **vlastnosti** podokno, odstraňte výchozí text v **skript jazyka R** parametr a zadejte tento skript:
+1. V podokně **vlastnosti** odstraňte výchozí text v parametru **skriptu jazyka R** a zadejte tento skript:
    
        dataset1 <- maml.mapInputPort(1)
        data.set<-dataset1[dataset1[,21]==1,]
@@ -263,47 +262,47 @@ Tato replikace můžete provést pomocí kódu R:
        for (i in 1:5) data.set<-rbind(data.set,pos)
        maml.mapOutputPort("data.set")
 
-    ![Skript jazyka R v modulu spustit skript jazyka R](./media/tutorial-part1-credit-risk/execute-r-script.png)
+    ![Skript r v modulu spouštění skriptu jazyka R](./media/tutorial-part1-credit-risk/execute-r-script.png)
 
-Je třeba provést operaci replikace pro každé výstup [rozdělení dat] [ split] modulu tak, aby stejné úpravy náklady na trénovací a testovací data. Nejjednodušší způsob, jak to provést, je tak, že duplikujete [spustit skript jazyka R] [ execute-r-script] modulu, které jste právě vytvořili a připojení k druhému výstupní port [rozdělení dat] [ split] modulu.
+Tato operace replikace je potřeba provést pro každý výstup modulu [rozdělení dat][split] , aby data školení a testování měla stejnou adjustaci nákladů. Nejsnadnější způsob, jak to provést, je duplikace modulu [skriptu Execute-R][execute-r-script] , který jste právě provedli, a jeho připojením k druhému výstupnímu portu modulu [Split data][split] .
 
-1. Klikněte pravým tlačítkem myši [spustit skript jazyka R] [ execute-r-script] modul a vyberte **kopírování**.
+1. Klikněte pravým tlačítkem na modul [spuštění skriptu jazyka R][execute-r-script] a vyberte možnost **Kopírovat**.
 
-1. Klikněte pravým tlačítkem na plátno experimentu a vyberte **vložit**.
+1. Klikněte pravým tlačítkem na plátno experimentu a vyberte **Vložit**.
 
-1. Přetáhněte nový modul na místo a potom propojte pravý výstupní port modulu [rozdělení dat] [ split] modulu první vstupní port této nové [spustit skript jazyka R] [ execute-r-script] modulu. 
+1. Přetáhněte nový modul na pozici a pak připojte pravý výstupní port modulu [Split data][split] k prvnímu vstupnímu portu tohoto nového modulu [skriptu pro spuštění R][execute-r-script] . 
 
-1. V dolní části plátna, klikněte na tlačítko **spustit**. 
+1. V dolní části plátna klikněte na **Spustit**. 
 
 > [!TIP]
-> Kopírovat skript R spustit modul obsahuje stejný skript jako původní modul. Když zkopírujete a vložíte modulu na plátně, kopie uchovává všechny vlastnosti původní.  
+> Kopie modulu spuštění skriptu jazyka R obsahuje stejný skript jako původní modul. Když zkopírujete a vložíte modul na plátno, kopie zachová všechny vlastnosti originálu.  
 > 
 >
 
-Naše experiment teď vypadá přibližně takto:
+Náš experiment teď vypadá nějak takto:
 
-![Přidání modulu rozdělení a skripty jazyka R](./media/tutorial-part1-credit-risk/experiment.png)
+![Přidání rozděleného modulu a skriptů R](./media/tutorial-part1-credit-risk/experiment.png)
 
-Další informace o používání skriptů jazyka R ve své experimenty, naleznete v tématu [rozšíření experimentů pomocí R](extend-your-experiment-with-r.md).
+Další informace o použití skriptů R v experimentech najdete v tématu o [prodloužení experimentu pomocí jazyka r](extend-your-experiment-with-r.md).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste dokončili tyto kroky: 
  
 > [!div class="checklist"]
-> * Vytvoření pracovního prostoru Machine Learning Studio
-> * Nahrání existujících dat do pracovního prostoru
+> * Vytvořit pracovní prostor Machine Learning Studio (Classic)
+> * Nahrání stávajících dat do pracovního prostoru
 > * Vytvoření experimentu
 
-Nyní jste připraveni k natrénování a vyhodnocení modelů pro tato data.
+Nyní jste připraveni vyškolit a vyhodnocovat modely pro tato data.
 
 > [!div class="nextstepaction"]
-> [Kurz 2 – trénování a vyhodnocení modelů](tutorial-part2-credit-risk-train.md)
+> [Kurz 2 – výuka modelů a jejich vyhodnocování](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/

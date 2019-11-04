@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8264030593a1e44b2a50d9f95dce925136eb4d26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: edb100901dea4419d65635f9214555c27c1949f0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965990"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494062"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rychlý Start: nasazení prvního IoT Edge modulu do virtuálního zařízení s Windows
 
@@ -22,7 +22,7 @@ Vyzkoušejte si Azure IoT Edge v tomto rychlém startu nasazením kontejneru kó
 
 V tomto rychlém startu se naučíte:
 
-1. Vytvořit IoT Hub.
+1. Vytvořte centrum IoT.
 2. Zaregistrovat zařízení IoT Edge do centra IoT Hub.
 3. Nainstalujte a spusťte modul runtime IoT Edge na virtuálním zařízení.
 4. Vzdáleně nasadit modul na zařízení IoT Edge a odeslat telemetrická data do služby IoT Hub.
@@ -93,7 +93,7 @@ Následující kód vytvoří bezplatné centrum **F1** ve skupině prostředků
 
 ## <a name="register-an-iot-edge-device"></a>Registrace zařízení IoT Edge
 
-Zaregistrujte zařízení IoT Edge do nově vytvořeného IoT Hubu.
+Zaregistrujte zařízení IoT Edge do nově vytvořeného centra IoT.
 Diagram ![– registrace zařízení pomocí IoT Hub identity](./media/quickstart/register-device.png)
 
 Vytvořte identitu simulovaného zařízení, aby mohla komunikovat s centrem IoT. Identita zařízení se uchovává v cloudu a k přidružení fyzického zařízení k identitě zařízení se používá jedinečný připojovací řetězec zařízení.
@@ -139,7 +139,7 @@ Pomocí PowerShellu stáhněte a nainstalujte modul runtime IoT Edge. Ke konfigu
 
 1. Pokud jste to ještě neudělali, postupujte podle kroků v části [Registrace nového zařízení Azure IoT Edge](how-to-register-device.md) pro registraci zařízení a načtení připojovacího řetězce zařízení.
 
-2. Spusťte PowerShell jako správce.
+2. Na virtuálním počítači spusťte PowerShell jako správce.
 
    >[!NOTE]
    >K instalaci IoT Edge, nikoli PowerShell (x86) použijte relaci AMD64 prostředí PowerShell. Pokud si nejste jistí, který typ relace používáte, spusťte následující příkaz:

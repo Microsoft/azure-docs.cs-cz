@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: f95174efbffedd09946f5910a39285e7bec062c1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d8e95f9c345a943eb458800b852640e3f1fde907
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161498"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488496"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rychlý start: Vytvoření virtuální sítě pomocí webu Azure Portal
 
@@ -34,9 +34,11 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+1. V nabídce Azure Portal vyberte **vytvořit prostředek**.
 
-1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+2. Z Azure Marketplace vyberte **síť** > **virtuální síť**.
+
+3. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -48,7 +50,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com).
     | Název podsítě | Zadejte *myVirtualSubnet*. |
     | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
 
-1. Ponechte REST jako výchozí a vyberte **vytvořit**.
+4. Ponechte REST jako výchozí a vyberte **vytvořit**.
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
@@ -56,9 +58,11 @@ Vytvořte ve virtuální síti dva virtuální počítače:
 
 ### <a name="create-the-first-vm"></a>Vytvoření prvního virtuálního počítače
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **COMPUTE** > **Windows Server 2019 Datacenter**.
+1. V nabídce Azure Portal vyberte **vytvořit prostředek**.
 
-1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
+2. V Azure Marketplace vyberte **compute** > **Windows Server 2019 Datacenter**.
+
+3. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -69,7 +73,7 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Název virtuálního počítače | Zadejte *myVm1*. |
     | Oblast | Vyberte **USA – východ**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
-    | Image | Ponechte výchozí **Windows Server 2019 Datacenter**. |
+    | Obrázek | Ponechte výchozí **Windows Server 2019 Datacenter**. |
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
@@ -80,11 +84,11 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | **ÚSPORA PENĚZ** |  |
     | Máte už licenci na Windows? | Ponechte výchozí hodnotu **ne**. |
 
-1. Vyberte **Další: disky**.
+4. Vyberte **Další: disky**.
 
-1. V části **vytvořit virtuální počítač – disky**ponechte výchozí hodnoty a vyberte **Další: sítě**.
+5. V části **vytvořit virtuální počítač – disky**ponechte výchozí hodnoty a vyberte **Další: sítě**.
 
-1. V nástroji **vytvořit virtuální počítač – síť**vyberte tyto informace:
+6. V nástroji **vytvořit virtuální počítač – síť**vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -94,11 +98,11 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
     | Vybrat příchozí porty | Vyberte **http** a **RDP**.
 
-1. Vyberte **Další: Správa**.
+7. Vyberte **Další: Správa**.
 
-1. V **nástroji vytvořit virtuální počítač**pro **účet úložiště pro diagnostiku**vyberte **vytvořit novou**.
+8. V **nástroji vytvořit virtuální počítač**pro **účet úložiště pro diagnostiku**vyberte **vytvořit novou**.
 
-1. V nástroji **vytvořit účet úložiště**zadejte nebo vyberte tyto informace:
+9. V nástroji **vytvořit účet úložiště**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -107,11 +111,11 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Výkon | Ponechte výchozí **Standard**. |
     | Replikace | Ponechte výchozí **místně redundantní úložiště (LRS)** . |
 
-1. Vyberte **OK**.
+10. Vyberte **OK**.
 
-1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+11. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+12. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
 
 ### <a name="create-the-second-vm"></a>Vytvoření druhého virtuálního počítače
 
@@ -122,9 +126,9 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     >
     > V kroku 7 v případě **diagnostiky účtu úložiště**ověřte, že jste vybrali možnost **myvmstorageaccount**.
 
-1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** a Azure ověří vaši konfiguraci.
+2. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** a Azure ověří vaši konfiguraci.
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+3. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
@@ -132,34 +136,34 @@ Po vytvoření *myVm1*se připojte k Internetu.
 
 1. Na panelu hledání na portálu zadejte *myVm1*.
 
-1. Klikněte na tlačítko **Připojit**.
+2. Klikněte na tlačítko **Připojit**.
 
     ![Připojení k virtuálnímu počítači](./media/quick-create-portal/connect-to-virtual-machine.png)
 
     Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+3. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
-1. Otevřete stažený soubor *. RDP* .
+4. Otevřete stažený soubor *. RDP* .
 
     1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
-    1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
+    2. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
         > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
-1. Vyberte **OK**.
+5. Vyberte **OK**.
 
-1. Během procesu přihlašování se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+6. Během procesu přihlašování se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
 
-1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.
+7. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.
 
 ## <a name="communicate-between-vms"></a>Komunikace mezi virtuálními počítači
 
 1. Ve vzdálené ploše *myVm1*otevřete PowerShell.
 
-1. Zadejte `ping myVm2`.
+2. Zadejte `ping myVm2`.
 
     Zobrazí se zpráva podobná této:
 
@@ -176,7 +180,7 @@ Po vytvoření *myVm1*se připojte k Internetu.
 
     `ping` se nezdařil, protože `ping` používá protokol ICMP (Internet Control Message Protocol). Standardně není ICMP povolený přes bránu Windows Firewall.
 
-1. Pokud chcete, aby se v pozdějším kroku *myVm2* příkaz Test *myVm1* , zadejte tento příkaz:
+3. Pokud chcete, aby se v pozdějším kroku *myVm2* příkaz Test *myVm1* , zadejte tento příkaz:
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -184,11 +188,11 @@ Po vytvoření *myVm1*se připojte k Internetu.
 
     Tento příkaz umožňuje příchozí protokol ICMP přes bránu Windows Firewall:
 
-1. Ukončete připojení ke vzdálené ploše virtuálního počítače *myVm1*.
+4. Ukončete připojení ke vzdálené ploše virtuálního počítače *myVm1*.
 
-1. Zopakujte kroky uvedené v části [Připojení k virtuálnímu počítači z internetu](#connect-to-a-vm-from-the-internet), ale připojte se k virtuálnímu počítači *myVm2*.
+5. Zopakujte kroky uvedené v části [Připojení k virtuálnímu počítači z internetu](#connect-to-a-vm-from-the-internet), ale připojte se k virtuálnímu počítači *myVm2*.
 
-1. Na příkazovém řádku zadejte `ping myvm1`.
+6. Na příkazovém řádku zadejte `ping myvm1`.
 
     Zobrazí se něco jako tato zpráva:
 
@@ -207,7 +211,7 @@ Po vytvoření *myVm1*se připojte k Internetu.
 
     Dostanete odpovědi z *myVm1*, protože jste povolili protokol ICMP prostřednictvím brány Windows Firewall na virtuálním počítači s *myVm1* v kroku 3.
 
-1. Ukončete připojení ke vzdálené ploše virtuálního počítače *myVm2*.
+7. Ukončete připojení ke vzdálené ploše virtuálního počítače *myVm2*.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -215,9 +219,9 @@ Až budete s použitím virtuální sítě a virtuálních počítačů hotovi, 
 
 1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte **myResourceGroup** .
 
-1. Vyberte **Odstranit skupinu prostředků**.
+2. Vyberte **Odstranit skupinu prostředků**.
 
-1. Zadejte *myResourceGroup* pro **typ název skupiny prostředků** a vyberte **Odstranit**.
+3. Zadejte *myResourceGroup* pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

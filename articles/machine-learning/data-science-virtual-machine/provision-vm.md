@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: c9b72c90bc23cfac6f064445c4f6f98d05d7fe16
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: afc026ccb602538b0749fa294cee763efa3d27d0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331774"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483233"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Windows
 
@@ -34,10 +34,10 @@ Vytvoření instance DSVM:
 
 1. V dolní části vyberte tlačítko **vytvořit** .
 
-    [![](media/provision-vm/create-windows.png "Tlačítko pro vytvoření počítače s Windows")](media/provision-vm/create-windows-expanded.png#lightbox)
+    [![](media/provision-vm/create-windows.png "Button to create a Windows machine")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
-   karta ![Basics odpovídající virtuálnímu počítači s Windows @ no__t-1
+   karta základy ![odpovídající virtuálnímu počítači s Windows](./media/provision-vm/review-create-windows.png)
 
 1. Vyplňte kartu **základy** :
       * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
@@ -72,7 +72,7 @@ K Azure Notebooks také můžete připojit DSVM a spustit poznámkové bloky Jup
 ## <a name="next-steps"></a>Další kroky
 
 * Prozkoumejte nástroje na DSVM otevřením nabídky **Start** .
-* Přečtěte si o službě Azure Machine Learning, kterou si přečtete, [co je Azure Machine Learning služba?](../service/overview-what-is-azure-ml.md) a vyzkoušet si [kurzy](../index.yml).
+* Přečtěte si o Azure Machine Learning tak, že si přečtete, [co je Azure Machine Learning?](../service/overview-what-is-azure-ml.md) a vyzkoušíte si [kurzy](../index.yml).
 * V Průzkumníku souborů přejděte do složky C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts, kde najdete ukázky, které používají knihovnu RevoScaleR v jazyce R, která podporuje analýzu dat v podnikovém měřítku. 
 * Přečtěte si článek [deset věcí, které můžete provádět na data Science Virtual Machine](https://aka.ms/dsvmtenthings).
 * Naučte se systematicky sestavovat komplexní Analytická řešení pomocí [procesu vědeckého zpracování týmových dat](../team-data-science-process/index.yml).

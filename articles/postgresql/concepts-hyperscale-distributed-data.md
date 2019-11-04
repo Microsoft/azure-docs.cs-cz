@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 8a0fe871685f2a140cd8272d93f49f594cd2c910
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 53d656d8d39c71c813d7dd7a504ec45667bf18b4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947491"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482427"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Distribuovaná data v Azure Database for PostgreSQL – Citus (škálování)
 
-Tento článek popisuje tři typy tabulek ve verzi Preview Azure Database for PostgreSQL – Citus.
+Tento článek popisuje tři typy tabulek v Azure Database for PostgreSQL – Citus (škálování).
 Ukazuje, jak jsou distribuované tabulky uložené jako horizontálních oddílů, a způsob, jakým se horizontálních oddílů umístí na uzly.
 
 ## <a name="table-types"></a>Typy tabulek
@@ -64,11 +64,11 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Pokud uzel koordinátora chce určit, který horizontálních oddílů obsahuje řádek `github_events`, vyhodnotí hodnotu distribučního sloupce v řádku. Uzel pak zkontroluje, které horizontálních oddílů rozsah @ no__t-0s obsahuje hodnotu hash. Rozsahy jsou definovány tak, že obrázek funkce hash je jejich nesouvislý sjednocení.
+Pokud uzel koordinátora chce určit, který horizontálních oddílů obsahuje řádek `github_events`, vyhodnotí hodnotu distribučního sloupce v řádku. Uzel pak zkontroluje, které horizontálních oddílů\'s obsahuje hodnotu hash. Rozsahy jsou definovány tak, že obrázek funkce hash je jejich nesouvislý sjednocení.
 
 ### <a name="shard-placements"></a>Horizontálních oddílů místa
 
-Předpokládejme, že horizontálních oddílů 102027 je přidružen k danému řádku. Řádek se načte nebo zapíše v tabulce s názvem `github_events_102027` v jednom z pracovních procesů. Který pracovník? To je určeno výhradně tabulkami metadat. Mapování horizontálních oddílů na pracovní proces se označuje jako umístění horizontálních oddílů.
+Předpokládejme, že horizontálních oddílů 102027 je přidružen k danému řádku. Řádek je načten nebo napsán v tabulce s názvem `github_events_102027` v jednom z pracovních procesů. Který pracovník? To je určeno výhradně tabulkami metadat. Mapování horizontálních oddílů na pracovní proces se označuje jako umístění horizontálních oddílů.
 
 Uzel koordinátora přepíše dotazy na fragmenty, které odkazují na konkrétní tabulky, jako je `github_events_102027`, a spustí tyto fragmenty na příslušných pracovních procesech. Tady je příklad dotazu spuštěného na pozadí, kde najdete uzel obsahující horizontálních oddílů ID 102027.
 

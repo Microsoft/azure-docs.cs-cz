@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044402"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469725"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -47,8 +47,9 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 Pro účely tohoto kurzu nejprve na svém virtuálním počítači povolte řešení Update Management:
 
-1. Na webu Azure Portal v levé nabídce vyberte **Virtuální počítače**. V seznamu vyberte virtuální počítač.
-2. Na stránce virtuálního počítače v části **OPERACE** vyberte **Správa aktualizací**. Otevře se podokno **Povolit řešení Update Management**.
+1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **virtuální počítače** nebo vyhledejte a vyberte **virtuální počítače** z **domovské** stránky.
+1. Vyberte virtuální počítač, pro který chcete povolit Update Management.
+1. Na stránce virtuálního počítače v části **OPERACE** vyberte **Správa aktualizací**. Otevře se podokno **Povolit řešení Update Management**.
 
 Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management. Toto ověření zahrnuje kontroly pracovního prostoru služby Azure Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení Update Management nachází v tomto pracovním prostoru.
 

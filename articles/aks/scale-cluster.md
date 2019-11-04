@@ -1,26 +1,26 @@
 ---
 title: Škálování clusteru Azure Kubernetes Service (AKS)
-description: Zjistěte, jak škálovat počet uzlů v clusteru služby Azure Kubernetes Service (AKS).
+description: Naučte se škálovat počet uzlů v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 9cc06df5d2a66ede18af52c13201c731c12e2049
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 719f45aeeb5c7aa7e9b5e597ed461808c9d2b005
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614494"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472583"
 ---
-# <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Škálovat počet uzlů v clusteru služby Azure Kubernetes Service (AKS)
+# <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Škálování počtu uzlů v clusteru Azure Kubernetes Service (AKS)
 
-Pokud prostředek požadavkům vašich aplikací změnit, můžete ručně škálovat cluster AKS ke spuštění jiný počet uzlů. Když vertikálně snížit kapacitu, jsou uzly pečlivě [uzavřené a Vyprázdněné][kubernetes-drain] aby se minimalizovalo přerušení spuštěných aplikací. Když vertikálně navýšit kapacitu, AKS čeká na označení uzlů `Ready` clusterem Kubernetes před podů jsou naplánovány na ně.
+Pokud se potřeby prostředků vašich aplikací změní, můžete cluster AKS ručně škálovat tak, aby běžel jiný počet uzlů. Při horizontálním navýšení kapacity jsou uzly pečlivě [uzavřené a vyprázdněné][kubernetes-drain] , aby se minimalizovalo přerušení spuštěných aplikací. Při horizontálním navýšení kapacity AKS počká, dokud nebudou uzly označeny `Ready` clusterem Kubernetes předtím, než je v nich naplánováno lusky.
 
 ## <a name="scale-the-cluster-nodes"></a>Škálování uzlů clusteru
 
-Nejprve získejte *název* použití fondu uzlů [az aks zobrazit][az-aks-show] příkazu. Následující příklad získá název uzlu fondu pro cluster s názvem *myAKSCluster* v *myResourceGroup* skupina prostředků:
+Nejprve získejte *název* fondu uzlů pomocí příkazu [AZ AKS show][az-aks-show] . Následující příklad získá název fondu uzlů pro cluster s názvem *myAKSCluster* ve skupině prostředků *myResourceGroup* :
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
@@ -44,13 +44,13 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query agent
 ]
 ```
 
-Použití [az aks škálování][az-aks-scale] příkazu škálování uzlů clusteru. Následující příklad škáluje cluster *myAKSCluster* do jednoho uzlu. Zadejte vlastní *nodepool – název* z předchozího příkazu, jako například *nodepool1*:
+Pomocí příkazu [AZ AKS Scale][az-aks-scale] můžete škálovat uzly clusteru. Následující příklad škáluje cluster s názvem *myAKSCluster* na jeden uzel. Zadejte vlastní *--nodepool-Name* z předchozího příkazu, jako je například *nodepool1*:
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
 ```
 
-Následující příklad výstupu ukazuje clusteru má byla úspěšně škálována na jeden uzel, jak je znázorněno *agentPoolProfiles* části:
+Následující příklad výstupu ukazuje, že se cluster úspěšně škálovat na jeden uzel, jak je znázorněno v části *agentPoolProfiles* :
 
 ```json
 {
@@ -72,9 +72,9 @@ Následující příklad výstupu ukazuje clusteru má byla úspěšně škálov
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku můžete ručně škálovat cluster AKS chcete zvýšit nebo snížit počet uzlů. Můžete také použít [clusteru bylo][cluster-autoscaler] (aktuálně ve verzi preview ve službě AKS) pro automatické škálování clusteru.
+V tomto článku jste ručně nazměnili velikost clusteru AKS na zvýšení nebo snížení počtu uzlů. K automatickému škálování clusteru můžete použít taky automatický [škálování clusteru][cluster-autoscaler] .
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

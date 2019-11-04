@@ -1,7 +1,7 @@
 ---
 title: Vyhodnocení dat
-titleSuffix: Azure Machine Learning Studio
-description: Čtyři kritéria, vaše data se musí splnit, aby vyhovovalo připravené pro datové vědy. Toto video obsahuje konkrétní příklady, které pomohou s vyhodnocením základní data.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Čtyři kritéria, která vaše data musí splňovat, aby byla připravená pro datové vědy. Toto video obsahuje konkrétní příklady, které vám pomůžou se základním hodnocením dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 1d9475b49b3ef8a2e672e1ce505a7d94d19cb14f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 0903bbd5e0000e26472660271bd2fc8970279061
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875329"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493128"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Jsou data připravená pro vědecké zkoumání?
-## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Řady pro datové vědy pro začátečníky
-Zjistěte, jak k vyhodnocení vašich dat, abyste měli jistotu, že splňují základní kritéria, až bude připravená pro datové vědy.
+## <a name="video-2-data-science-for-beginners-series"></a>Video 2: řada pro datové vědy pro začátečníky
+Naučte se vyhodnocovat vaše data, abyste měli jistotu, že splňují základní kritéria, která jsou připravená pro datové vědy.
 
-Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](#other-videos-in-this-series)
+Pokud chcete získat maximum z řady, Sledujte je vše. [Přejít na seznam videí](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/9/player]
@@ -29,79 +29,79 @@ Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](
 >
 
 ## <a name="other-videos-in-this-series"></a>Další videa v této sérii
-*Datová věda pro začátečníky* článek obsahuje rychlý úvod do datových věd v pěti krátkých videích.
+*Data vědy pro začátečníky* je rychlý Úvod k datové vědy v pěti krátkých videích.
 
 * Video 1: [5 otázek pro datové vědy](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min. 14 sec)*
-* Video 2: Jsou data připravená pro vědecké zkoumání?
-* Video 3: [Položte otázku, na kterou můžete odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) . *(4 minuty 17 sec)*
-* Video 4: [Předpověď odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min. 42 s)*
-* Video 5: [Kopírování práce jiných lidí pro účely zpracování dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min. 18 sec)*
+* Video 2: jsou vaše data připravená pro datové vědy?
+* Video 3: [Položte otázku, na kterou můžete odpovědět](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 minuty 17 s)* .
+* Video 4: [předpověď odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 s)*
+* Video 5: [kopírování práce jiných lidí do oblasti datové vědy](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min. 18 sec)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>Záznamy Jsou data připravená pro vědecké zkoumání?
-Vítá vás "Jsou vaše data připravená pro vědecké zpracování dat?" druhý videa v této sérii *datová věda pro začátečníky*.  
+## <a name="transcript-is-your-data-ready-for-data-science"></a>Přepis: jsou vaše data připravená pro datové vědy?
+Vítá vás "jsou vaše data připravená pro datové vědy?" druhé video v *datové vědy řady pro začátečníky*.  
 
-Před odpovědi, které chcete, aby vám může poskytnout pro datové vědy, musíte jí suroviny některé vysoce kvalitní pro práci s. Stejně jako provedení pizza, tím lepší složek, které můžete začít s tím lepší konečného produktu. 
+Než vám datové vědy poskytnou požadované odpovědi, musíte mu poskytnout některé vysoce kvalitní surové materiály, se kterými chcete pracovat. Stejně jako v případě, že je Pizza, lepšími složkami, které začnete, je lepší konečný produkt. 
 
 ## <a name="criteria-for-data"></a>Kritéria pro data
-V datové vědy existují některé faktory, které musí být dali dohromady včetně:
+V oblasti datové vědy jsou některé složky, které je třeba provést společně, včetně:
 
-* Relevantní
+* Významný
 * Připojeno
-* Přesné
-* Aby bylo možné pracovat s
+* Způsobují
+* Dostatek pro práci s
 
 ## <a name="is-your-data-relevant"></a>Jsou vaše data relevantní?
-Proto první složka – třeba data, která jsou relevantní.
+Takže první složka vyžaduje relevantní data.
 
-![Relevantní data vs. nahromadění irelevantních dat – vyhodnocení dat](./media/data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
+![Relevantní data vs. nerelevantní data – vyhodnocování dat](./media/data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
 
-Na levé straně v tabulce představuje úroveň alkoholu krve sedm uživatelů otestovat mimo panel Boston, průměr batting Red Sox ve svých hrách pro poslední a cena mléka v úložišti nejbližší pohodlí.
+Vlevo je v tabulce uvedena hladina krevního alkoholu sedmi lidí testovaných mimo Boston, průměr červeného Soxu batting v poslední hře a cenu mléka v nejbližším obchodě s nejpohodlnější.
 
-Jedná se o všech dokonale legitimní data. Pouze chyby je, že není relevantní. Není žádný zřejmý vztah mezi tato čísla. Pokud někdo poskytl aktuální cena mléka a průměr batting Red Sox, neexistuje žádný způsob, může uhodnout obsah alkoholu krve.
+To je naprosto legitimní data. Je to jenom chyba, že není relevantní. Mezi těmito čísly není zřejmé vztah. Pokud vám někdo zavedl aktuální cenu mléka a průměrně červeného Soxu batting, neexistuje způsob, jak byste mohli odhadnout obsah krevního alkoholu.
 
-Nyní se podívejte na tabulky na pravé straně. Text pro každou osobu v tuto chvíli velkokapacitních se měří a také počet drinky den před začátkem jste měli.  Čísla v každém řádku jsou nyní relevantní k sobě navzájem. Pokud mám dala Moje tělo velkokapacitních a počet Margaritas měl byste mohli provést odhad toho, Moje krve alkoholu obsahu.
+Teď se podívejte na tabulku na pravé straně. Tato doba se měří na velké objemy textu jednotlivých uživatelů a také na počet nápojů, které měly.  Čísla v každém řádku jsou teď vzájemně relevantní. Pokud jsem mi dal své tělo a počet Margaritas, které jsem měl, můžete v obsahu krevního alkoholu provést odhad.
 
-## <a name="do-you-have-connected-data"></a>Připojení dat?
-Další složka je připojená data.
+## <a name="do-you-have-connected-data"></a>Máte připojená data?
+Další složkou jsou připojená data.
 
-![Připojená data vs. odpojený datový – kritéria dat data připravená](./media/data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
+![Připojená data vs. odpojená data – kritéria dat, připravena data](./media/data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
 
-Tady jsou některé relevantní data o kvalitě hamburgers: gril teploty, váha patty a hodnocení v místní potravin magazine. Ale Všimněte si, že mezery v tabulce na levé straně.
+Tady je několik relevantních dat o kvalitě Hamburg: teplota mřížky, pattyá váha a hodnocení v místním katalogu potravin. Všimněte si ale mezer v tabulce vlevo.
 
-Většina sad dat chybí některé hodnoty. Je běžné mít děr tímto způsobem a jsou způsoby, jak je vyřešit. Ale pokud existuje příliš mnoho chybí, vaše data začne vypadat Swiss produkci minipivovarů ve wisconsinu.
+U většiny datových sad chybí některé hodnoty. To je běžné, že mají otvory podobné tomuto a existují způsoby, jak je obejít. Pokud ale chybí příliš mnoho, vaše data začnou vypadat jako švýcarský sýr.
 
-Když se podíváte na tabulky na levé straně, je tak mnohem chybí data, je těžké a navrhněte jakýkoli druh vztahu mezi mřížkou teploty a patty váhu. Tento příklad ukazuje odpojený datový.
+Pokud se podíváte na levou stranu v tabulce, máte tolik chybějících dat, je těžké se zavázat s jakýmkoli typem relace mezi teplotou mřížky a pattyou váhou. Tento příklad ukazuje odpojená data.
 
-V tabulce na pravé straně, ale je plný. dokončení – příklad připojených dat
+Tabulka na pravé straně je ale plná a kompletní – příkladem připojených dat.
 
-## <a name="is-your-data-accurate"></a>Jsou vaše data přesné?
-Další složka je přesnost. Tady jsou čtyři cíle narazí.
+## <a name="is-your-data-accurate"></a>Jsou vaše data přesná?
+Další složkou je přesnost. Tady jsou čtyři cíle, které se mají vysáhnout.
 
-![Přesná data vs. nepřesných dat. – kritéria dat](./media/data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
+![Přesné data a nepřesná data – kritéria dat](./media/data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
 
-Podívejte se na cíl v pravém horním rohu. Existuje úzkou seskupení kolem oka býků vpravo. To, samozřejmě, je přesné. Oddly v jazyce pro datové vědy, výkon na pravé straně cílové pod něj bude také považován za přesný.
+Podívejte se na cíl v pravém horním rohu. Kolem oka býků je těsné seskupení přímo. To je samozřejmě přesné. Oddly v jazyce pro datové vědy, výkonu na cíli přímo pod ním se považuje také za přesný.
 
-Když zmapování center z těchto šipek uvidíte, že je velmi blízko býků oči. Šipky se šíří všechny kolem cíl, takže budou považovány za nepřesný, ale jejich jste soustředí na býků oka, takže budou považovány za přesné.
+Pokud jste namapovali střed z těchto šipek, vidíte, že je velmi blízko k oko zápasy. Šipky se rozšíří vše kolem cíle, takže se považují za nepřesné, ale zacentrují se na základě očí zápasy, takže se považují za přesné.
 
-Nyní se podívejte na levou horní cíl. Tady šipky přístupů velmi blízko sebe úzkou seskupení. Jsou přesné, ale protože centru je způsob, jak vypnout oka býků jsou nesprávné. Šipky v levém cílové jsou nesprávné a nepřesný. Tato archer potřebuje další postup.
+Teď se podívejte na levý horní cíl. Tady se šipky blíží blízko sebe a těsné seskupení. Jsou přesné, ale jsou nepřesné, protože střed je v rámci očí. Šipky v cíli vlevo dole jsou nepřesné a nepřesné. Tento Archer potřebuje více postupů.
 
 ## <a name="do-you-have-enough-data-to-work-with"></a>Máte k dispozici dostatek dat pro práci s?
-Nakonec je komponentou #4 dostatečným množstvím dat.
+A konečně, #4 složek je dostatečné množství dat.
 
-![Máte k dispozici dostatek dat pro analýzu? Vyhodnocení dat](./media/data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
+![Máte k analýze dostatek dat? Vyhodnocení dat](./media/data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
 
-Představte si každý datový bod v tabulce jako štětcem od ruky v malování. Pokud máte pouze několik z nich může být Malování přibližných shod – je obtížné zjistit, co to je.
+Každý datový bod v tabulce si můžete představit jako tah štětce při malování. Pokud máte jen několik z nich, vykreslování může být neostré – je obtížné zjistit, co je.
 
-Pokud chcete přidat některé další stopou, vaše Malování spustí získat mírně ostřejší.
+Pokud přidáte další tahy štětce, začne vaše Malování trochu ostřejší.
 
-Až budete mít i neziskovky dostatek tahy, se zobrazí jenom dostatečně široké rozhodování. Je někde, které chci navštivte? Vypadá jasně, která vypadá jako čistá vody – Ano, který je, kde kliknu na dovolené.
+Až budete mít zlomek dostatek tahů, stačí vám dodávat dostatečně široké rozhodnutí. Je někde možné navštívit? Vypadá to jasně, vypadá to, že se jedná o čistou vodu – Ano, kde mám na dovolenou.
 
-Při přidávání více dat, obrázek bude srozumitelnější a je možné provádět podrobné rozhodnutí. Nyní můžete si prohlédnout tři hotels na levém bank. Můžete si všimnete architektury funkce v popředí. Dokonce můžete rozhodnout zůstat na třetí floor kvůli zobrazení.
+Když přidáváte další data, může se obrázek vyjasnit a můžete vytvořit podrobnější rozhodnutí. Nyní se můžete podívat na tři hotely v levém bankě. V popředí si můžete všimnout funkcí architektury. Můžete dokonce zvolit, že se má na třetím patře zůstat, protože je zobrazení.
 
-Data, která jsou relevantní, připojené, přesné a dostatečně, zobrazí všechny složky potřebovali udělat některé vysoce kvalitní datové vědy.
+S daty, která jsou relevantní, připojená, přesná a dostatečná, máte k dispozici všechny složky potřebné k provedení některé z vysoce kvalitních datových věd.
 
-Nezapomeňte se podívat na další čtyři videa v *oblasti datové vědy pro začátečníky* z Microsoft Azure Machine Learning Studio.
+Nezapomeňte se podívat na další čtyři videa v *oblasti datové vědy pro začátečníky* z Microsoft Azure Machine Learning Studio (Classic).
 
-## <a name="next-steps"></a>Další postup
-* [Zkuste prvního experimentu vědy data s Machine Learning Studio](create-experiment.md)
-* [Úvod do strojového učení v Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+## <a name="next-steps"></a>Další kroky
+* [Vyzkoušejte si první experiment pro datové vědy s Machine Learning Studio (Classic)](create-experiment.md)
+* [Seznámení s Machine Learningem Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

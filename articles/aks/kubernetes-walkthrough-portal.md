@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 0e09d541cb84ef7857e4d68f776b92f845488771
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 89bb7014ddb04b63a83dc8c5b520bcf500bdc707
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329890"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472688"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí Azure Portal
 
@@ -31,27 +31,29 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-V levém horním rohu Azure Portal vyberte **+ vytvořit prostředek** > **kontejnery** >  **Kubernetes služba**.
-
 Pokud chcete vytvořit cluster AKS, proveďte následující kroky:
 
-1. Na stránce **základy** nakonfigurujte následující možnosti:
-   - *PODROBNOSTI O PROJEKTU:* Vyberte předplatné Azure a pak vyberte nebo vytvořte skupinu prostředků Azure, například *myResourceGroup*. Zadejte **Název clusteru Kubernetes**, například *myAKSCluster*.
-   - *PODROBNOSTI O CLUSTERU:* Vyberte oblast, verzi Kubernetes a předponu názvu DNS pro cluster AKS.
-   - **Fond primárních uzlů**: vyberte velikost virtuálního počítače pro uzly AKS. Velikost virtuálního počítače **nejde** změnit po nasazení clusteru AKS. 
-       - Vyberte počet uzlů, které se mají do clusteru nasadit. Pro účely tohoto rychlého startu nastavte **Počet uzlů** na hodnotu *1*. Počet uzlů **jde** upravit po nasazení clusteru.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+
+2. Vyberte **kontejnery** >  **službu Kubernetes**.
+
+3. Na stránce **základy** nakonfigurujte následující možnosti:
+    - **Podrobnosti o projektu**: vyberte **předplatné**Azure a pak vyberte nebo vytvořte **skupinu prostředků**Azure, například *myResourceGroup*.
+    - **Podrobnosti o clusteru**: zadejte **název clusteru Kubernetes**, například *myAKSCluster*. Vyberte **oblast**, **verzi Kubernetes**a **předponu názvu DNS** pro cluster AKS.
+    - **Fond primárních uzlů**: vyberte **Velikost uzlu** virtuálního počítače pro uzly AKS. Velikost virtuálního počítače se po nasazení clusteru AKS *nedá* změnit. 
+            -Vyberte počet uzlů, které mají být do clusteru nasazeny. Pro účely tohoto rychlého startu nastavte **Počet uzlů** na hodnotu *1*. Počet uzlů *jde* upravit po nasazení clusteru.
     
-     ![Vytvoření clusteru AKS – zadání základních informací](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
+    ![Vytvoření clusteru AKS – zadání základních informací](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-     Po dokončení vyberte **Další: škálovat** .
+    Po dokončení vyberte **Další: škálovat** .
 
-2. Na stránce **škálování** ponechte výchozí možnosti. V dolní části obrazovky klikněte na **Další: ověřování**.
-> [!CAUTION]
-> Vytváření nových objektů služby AAD může trvat několik minut, než se rozšíří a stane se k dispozici, což způsobí, že se instanční objekt nenalezne chyby a chyby ověřování v Azure Portal. Pokud [k tomu](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one) dojde, navštivte prosím tuto skutečnost pro zmírnění rizik.
+4. Na stránce **škálování** ponechte výchozí možnosti. V dolní části obrazovky klikněte na **Další: ověřování**.
+    > [!CAUTION]
+    > Vytváření nových objektů služby AAD může trvat několik minut, než se rozšíří a stane se k dispozici, což způsobí, že se instanční objekt nenalezne chyby a chyby ověřování v Azure Portal. Pokud [k tomu](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one) dojde, navštivte prosím tuto skutečnost pro zmírnění rizik.
 
-3. Na stránce **ověřování** nakonfigurujte následující možnosti:
-   - Vytvořte nový instanční objekt tím, že zachováte pole **instanční objekt** s **výchozím instančním objektem (nový)** . Případně můžete zvolit možnost *Konfigurovat instanční objekt* pro použití existujícího objektu. Pokud použijete existující, budete muset zadat ID a tajný klíč klienta SPN.
-   - Povolte možnost řízení přístupu na základě role (RBAC) v Kubernetes. Tím zajistíte podrobnější kontrolu nad přístupem k prostředkům Kubernetes nasazeným v clusteru AKS.
+5. Na stránce **ověřování** nakonfigurujte následující možnosti:
+    - Vytvořte nový instanční objekt tím, že zachováte pole **instanční objekt** s **výchozím instančním objektem (nový)** . Případně můžete zvolit možnost *Konfigurovat instanční objekt* pro použití existujícího objektu. Pokud použijete existující, budete muset zadat ID a tajný klíč klienta SPN.
+    - Povolte možnost řízení přístupu na základě role (RBAC) v Kubernetes. Tím zajistíte podrobnější kontrolu nad přístupem k prostředkům Kubernetes nasazeným v clusteru AKS.
 
 Ve výchozím nastavení se používá *základní* sítě a Azure monitor pro kontejnery jsou povoleny. Po dokončení ověřování klikněte na **zkontrolovat + vytvořit** a pak **vytvořit** .
 

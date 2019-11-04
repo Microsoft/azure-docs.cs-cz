@@ -1,6 +1,6 @@
 ---
-title: Vytvoření oboru názvů služby Azure Service Bus a umístit do fronty pomocí šablony Azure Resource Manageru | Dokumentace Microsoftu
-description: Vytvoření oboru názvů služby Service Bus a fronty pomocí šablony Azure Resource Manageru
+title: Vytvoření Azure Service Busého oboru názvů a fronty pomocí šablony Azure Resource Manager | Microsoft Docs
+description: Vytvoření oboru názvů Service Bus a fronty pomocí šablony Azure Resource Manager
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 6d7e4253d37d5b50fc8c3de1c8c31636e59b2b9c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1c6a4202b944b2eb95008964eb1040f176645334
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444787"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482378"
 ---
-# <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů služby Service Bus a fronty pomocí šablony Azure Resource Manageru
+# <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů Service Bus a fronty pomocí šablony Azure Resource Manager
 
-Tento článek ukazuje, jak použít šablonu Azure Resource Manageru, která vytvoří obor názvů služby Service Bus a fronty v daném oboru názvů. Tento článek popisuje, jak k určení prostředků, které jsou nasazené a tom, jak definovat parametry, které jsou zadané při spouštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
+Tento článek ukazuje, jak použít šablonu Azure Resource Manager, která vytvoří obor názvů Service Bus a frontu v rámci tohoto oboru názvů. V tomto článku se dozvíte, jak určit, které prostředky se nasazují a jak definovat parametry, které jsou zadané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
 
-Další informace o vytváření šablon najdete v tématu [šablon pro vytváření Azure Resource Manageru][Authoring Azure Resource Manager templates].
+Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager][Authoring Azure Resource Manager templates].
 
-Úplnou šablonu najdete v článku [šablony obor názvů a frontu služby Service Bus][Service Bus namespace and queue template] na Githubu.
+Úplnou šablonu najdete v tématu [Service Bus obor názvů a šablona fronty][Service Bus namespace and queue template] na GitHubu.
 
 > [!NOTE]
-> Následující šablony Azure Resource Manageru jsou k dispozici ke stažení a nasazení.
+> Následující šablony Azure Resource Manager jsou k dispozici ke stažení a nasazení.
 > 
-> * [Vytvoření oboru názvů služby Service Bus s fronty a autorizační pravidla](service-bus-resource-manager-namespace-auth-rule.md)
-> * [Vytvoření oboru názvů služby Service Bus s tématem a předplatným](service-bus-resource-manager-namespace-topic.md)
-> * [Vytvoření oboru názvů služby Service Bus](service-bus-resource-manager-namespace.md)
-> * [Vytvoření oboru názvů služby Service Bus s tématem, předplatné a pravidla](service-bus-resource-manager-namespace-topic-with-rule.md)
+> * [Vytvoření oboru názvů Service Bus s použitím fronty a autorizačního pravidla](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Vytvoření oboru názvů Service Bus s tématem a předplatným](service-bus-resource-manager-namespace-topic.md)
+> * [Vytvoření oboru názvů Service Bus](service-bus-resource-manager-namespace.md)
+> * [Vytvoření oboru názvů Service Bus s použitím tématu, předplatného a pravidla](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> Vyhledat nejnovější šablony, najdete v tématu [šablony pro rychlý start Azure][Azure Quickstart Templates] galerie a vyhledejte **služby Service Bus**.
+> Pokud chcete vyhledat nejnovější šablony, přejděte na galerii [šablon Azure pro rychlý Start][Azure Quickstart Templates] a vyhledejte **Service Bus**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -45,7 +45,7 @@ Další informace o vytváření šablon najdete v tématu [šablon pro vytvář
 
 Pomocí této šablony nasadíte obor názvů Service Bus s frontou.
 
-[Fronty služby Service Bus](service-bus-queues-topics-subscriptions.md#queues) představují první In doručování zpráv první Out (FIFO) na jeden nebo několik konkurenčních spotřebitelů.
+[Fronty Service Bus](service-bus-queues-topics-subscriptions.md#queues) nabízejí doručování zpráv first in, First out (FIFO) do jednoho nebo více konkurenčních zákazníků.
 
 Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
 
@@ -53,12 +53,12 @@ Pokud chcete nasazení spustit automaticky, klikněte na následující tlačít
 
 ## <a name="parameters"></a>Parametry
 
-Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje část s názvem `Parameters` , který obsahuje všechny hodnoty parametrů. Byste měli definovat parametr pro tyto hodnoty, které se liší podle projektu, které nasazujete nebo podle prostředí, které nasazujete. Nedefinujte parametry pro hodnoty, které zůstane vždy stejný. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků.
+Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje oddíl s názvem `Parameters`, který obsahuje všechny hodnoty parametrů. Měli byste definovat parametr pro tyto hodnoty, které se budou lišit v závislosti na projektu, který nasazujete, nebo na základě prostředí, do kterého nasazujete. Nedefinujte parametry pro hodnoty, které budou vždycky zůstat stejné. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků.
 
 Šablona definuje následující parametry.
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-Název oboru názvů služby Service Bus k vytvoření.
+Název oboru názvů Service Bus, který se má vytvořit
 
 ```json
 "serviceBusNamespaceName": {
@@ -70,7 +70,7 @@ Název oboru názvů služby Service Bus k vytvoření.
 ```
 
 ### <a name="servicebusqueuename"></a>serviceBusQueueName
-Název fronty vytvořené v oboru názvů služby Service Bus.
+Název fronty vytvořený v oboru názvů Service Bus.
 
 ```json
 "serviceBusQueueName": {
@@ -79,7 +79,7 @@ Název fronty vytvořené v oboru názvů služby Service Bus.
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
-Verze rozhraní API služby Service Bus šablony.
+Verze Service Bus rozhraní API šablony.
 
 ```json
 "serviceBusApiVersion": { 
@@ -91,18 +91,19 @@ Verze rozhraní API služby Service Bus šablony.
 ```
 
 ## <a name="resources-to-deploy"></a>Prostředky k nasazení
-Vytvoří standardní obor názvů služby Service Bus tohoto typu **zasílání zpráv**, s frontou.
+Vytvoří obor názvů Standard Service Bus typu **zasílání zpráv**s frontou.
 
 ```json
-"resources ": [{
-        "apiVersion": "[variables('sbVersion')]",
+{
+    "resources": [{
+        "apiVersion": "2017-04-01",
         "name": "[parameters('serviceBusNamespaceName')]",
-        "type": "Microsoft.ServiceBus/Namespaces",
-        "location": "[variables('location')]",
-        "kind": "Messaging",
+        "type": "Microsoft.ServiceBus/namespaces",
+        "location": "[parameters('location')]",
         "sku": {
-            "name": "Standard",
+            "name": "Standard"
         },
+        "properties": {},
         "resources": [{
             "apiVersion": "[variables('sbVersion')]",
             "name": "[parameters('serviceBusQueueName')]",
@@ -111,13 +112,14 @@ Vytvoří standardní obor názvů služby Service Bus tohoto typu **zasílání
                 "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
             ],
             "properties": {
-                "path": "[parameters('serviceBusQueueName')]",
+                "path": "[parameters('serviceBusQueueName')]"
             }
         }]
     }]
+}
 ```
 
-Syntaxi JSON a vlastnostech najdete v tématu [obory názvů](/azure/templates/microsoft.servicebus/namespaces) a [fronty](/azure/templates/microsoft.servicebus/namespaces/queues).
+Informace o syntaxi a vlastnostech JSON najdete v tématu [obory názvů](/azure/templates/microsoft.servicebus/namespaces) a [fronty](/azure/templates/microsoft.servicebus/namespaces/queues).
 
 ## <a name="commands-to-run-deployment"></a>Příkazy pro spuštění nasazení
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
@@ -136,10 +138,10 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
 ```
 
-## <a name="next-steps"></a>Další postup
-Najdete v tématu, který ukazuje, jak vytvořit autorizační pravidlo oboru názvů/fronty: [Vytvořit pravidlo autorizace sběrnice pro obor názvů a frontu pomocí šablony Azure Resource Manageru](service-bus-resource-manager-namespace-auth-rule.md)
+## <a name="next-steps"></a>Další kroky
+V následujícím tématu se dozvíte, jak vytvořit autorizační pravidlo pro obor názvů nebo frontu: [Vytvoření autorizačního pravidla Service Bus pro obor názvů a frontu pomocí šablony Azure Resource Manager](service-bus-resource-manager-namespace-auth-rule.md)
 
-Zjistěte, jak tyto zdroje spravovat pomocí těchto článků:
+Naučte se spravovat tyto prostředky zobrazením těchto článků:
 
 * [Správa služby Service Bus pomocí PowerShellu](service-bus-manage-with-ps.md)
 * [Správa prostředků Service Bus pomocí Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

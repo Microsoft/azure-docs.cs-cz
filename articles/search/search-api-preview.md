@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a4daaac6abababcedb5d6dd7eb2122ef29846ef4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: dff6473fd01fc2d41c5bb100eefd583afe4175b0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792536"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496480"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Rozhraní REST API pro službu Azure Kognitivní hledání – verze 2019-05-06 – Preview
 
@@ -24,6 +24,8 @@ Tento článek popisuje REST API `api-version=2019-05-06-Preview` verzi služby 
 
 
 ## <a name="new-in-2019-05-06-preview"></a>Novinka ve verzi 2019-05-06 – Preview
+
+[* * Přírůstkové indexování](cognitive-search-incremental-indexing-conceptual.md) je nový režim pro indexování, který přidává stav a ukládání do mezipaměti, což umožňuje znovu použít stávající výstup, když se data, indexer a definice dovednosti nezměnily. Tato funkce se vztahuje pouze na obohacení prostřednictvím rozpoznávání dovednosti.
 
 [**Znalostní báze Knowledge Store**](knowledge-store-concept-intro.md) je nový cíl kanálu pro rozšíření na bázi AI. Kromě indexu teď můžete zachovat naplněné datové struktury vytvořené při indexování ve službě Azure Storage. Fyzické struktury dat můžete řídit prostřednictvím prvků v dovednosti, včetně způsobu, jakým jsou data uložená v úložišti tabulek nebo objektů blob, a to, jestli existuje více zobrazení.
 

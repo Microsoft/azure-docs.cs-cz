@@ -1,6 +1,6 @@
 ---
-title: Přidání webové aplikace – Azure Active Directory B2C | Microsoft Docs
-description: Naučte se, jak přidat webovou aplikaci do tenanta Active Directory B2C.
+title: Přidání aplikace webového rozhraní API – Azure Active Directory B2C | Microsoft Docs
+description: Naučte se, jak přidat aplikaci webového rozhraní API do tenanta Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,16 +10,20 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 88ce3931d9f47b8c16251a45e54fa96b97f038e2
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 0fd6af26390778491a127ce1bd0a58846b87f721
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693277"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474866"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Přidání aplikace webového rozhraní API do tenanta Azure Active Directory B2C
 
- Zaregistrujte prostředky webového rozhraní API ve vašem tenantovi, aby mohli přijímat a reagovat na žádosti klientskými aplikacemi, které prezentují přístupový token. V tomto článku se dozvíte, jak zaregistrovat aplikaci v Azure Active Directory B2C (Azure AD B2C).
+ Zaregistrujte prostředky webového rozhraní API ve vašem tenantovi, aby mohli přijímat a reagovat na žádosti klientskými aplikacemi, které prezentují přístupový token. V tomto článku se dozvíte, jak zaregistrovat webové rozhraní API v Azure Active Directory B2C (Azure AD B2C).
+
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete použít aktuální prostředí **aplikací** nebo naše nové sjednocené **Registrace aplikací (Preview)** . [Přečtěte si další informace o prostředí verze Preview](https://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
@@ -32,6 +36,26 @@ ms.locfileid: "71693277"
 9. Klikněte na **Vytvořit**.
 10. Na stránce Vlastnosti Poznamenejte ID aplikace, které použijete při konfiguraci webové aplikace.
 
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
+1. Zadejte **název** aplikace. Například *webapi1*.
+1. V části **identifikátor URI pro přesměrování**vyberte **Web**a potom zadejte koncový bod, kde Azure AD B2C by měl vracet jakékoli tokeny, které vaše aplikace požaduje. V produkční aplikaci můžete nastavit identifikátor URI přesměrování jako koncový bod jako `https://localhost:5000`. Během vývoje nebo testování jej můžete nastavit tak, aby `https://jwt.ms`, webové aplikace vlastněné společností Microsoft, která zobrazuje dekódování obsahu tokenu (obsah tokenu nikdy nezůstane v prohlížeči). V registrovaných aplikacích můžete kdykoli přidat a změnit identifikátory URI pro přesměrování.
+1. Vyberte **Zaregistrovat**.
+1. Poznamenejte si **ID aplikace (klienta)** pro použití v kódu webového rozhraní API.
+
+Pokud máte aplikaci, která implementuje tok implicitního udělení, například jednoduchou aplikaci založenou na jazyce JavaScript (SPA), můžete tok povolit pomocí následujícího postupu:
+
+1. V části **Spravovat**vyberte **ověřování**.
+1. Vyberte **vyzkoušet nové prostředí** (Pokud je zobrazeno).
+1. V části **implicitní udělení**vyberte zaškrtávací políčka **přístupové tokeny** i **tokeny ID** .
+1. Vyberte **Save** (Uložit).
+
+* * *
+
 ## <a name="configure-scopes"></a>Konfigurace oborů
 
 Obory poskytují způsob, jak řídit přístup k chráněným prostředkům. Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Například uživatelé webového rozhraní API můžou mít přístup ke čtení i zápisu nebo přístup pouze ke čtení. V tomto kurzu pomocí oborů nadefinujete pro webové rozhraní API oprávnění ke čtení i zápisu.
@@ -40,7 +64,7 @@ Obory poskytují způsob, jak řídit přístup k chráněným prostředkům. We
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
-Chcete-li volat chráněné webové rozhraní API z aplikace, musíte aplikaci udělit oprávnění k rozhraní API. Například v [kurzu: registrace aplikace v Azure Active Directory B2C](tutorial-register-applications.md)je webová aplikace vytvořena v Azure AD B2C s názvem *WebApp1*. Tuto aplikaci můžete použít k volání webového rozhraní API.
+Chcete-li volat chráněné webové rozhraní API z aplikace, musíte aplikaci udělit oprávnění k rozhraní API. Například v [kurzu: registrace aplikace v Azure Active Directory B2C](tutorial-register-applications.md), Webová aplikace s názvem *WebApp1* je zaregistrována v Azure AD B2C. Tuto aplikaci můžete použít k volání webového rozhraní API.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 

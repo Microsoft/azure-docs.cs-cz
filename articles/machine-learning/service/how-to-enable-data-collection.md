@@ -6,19 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
-ms.author: marthalc
-author: marthalc
+ms.reviewer: laobri
+ms.author: copeters
+author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 845d271c60762177ea88912f2100f3b47aedde46
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929364"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489983"
 ---
 # <a name="collect-data-for-models-in-production"></a>Shromažďování dat pro modely v produkčním prostředí
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
 > Tato sada SDK brzy vychází z provozu. Tato sada SDK je stále vhodná pro vývojáře, kteří sledují posun dat v modelech, ale většina vývojářů by měla používat zjednodušené [monitorování dat s Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights). 
@@ -115,7 +116,7 @@ Pokud ho chcete povolit, musíte:
 
 Pokud již máte v souboru **prostředí** a v **souboru bodování**nainstalovanou službu se závislostmi, povolte shromažďování dat pomocí:
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
+1. Přejít na [Azure Machine Learning Studio](https://ml.azure.com).
 
 1. Otevřete pracovní prostor.
 
@@ -133,10 +134,10 @@ Pokud již máte v souboru **prostředí** a v **souboru bodování**nainstalova
 
 
 ## <a name="disable-data-collection"></a>Zakázat shromažďování dat
-Shromažďování dat můžete kdykoli zastavit. Pro zakázání shromažďování dat použijte kód Pythonu nebo Azure Portal.
+Shromažďování dat můžete kdykoli zastavit. K zakázání shromažďování dat použijte kód Pythonu nebo Azure Machine Learning Studio.
 
-+ Možnost 1 – zakázat v Azure Portal: 
-  1. Přihlaste se k [portálu Azure](https://portal.azure.com).
++ Možnost 1 – zakázat v Azure Machine Learning Studiu: 
+  1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
 
   1. Otevřete pracovní prostor.
 
@@ -150,7 +151,7 @@ Shromažďování dat můžete kdykoli zastavit. Pro zakázání shromažďován
 
   1. Pokud chcete změnu použít, vyberte **aktualizovat** .
 
-  K těmto nastavením můžete přistupovat také na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com).
+  K těmto nastavením můžete získat přístup také v [Azure Machine Learning Studiu](https://ml.azure.com)v pracovním prostoru.
 
 + Možnost 2 – použití Pythonu k zakázání shromažďování dat:
 
@@ -160,10 +161,10 @@ Shromažďování dat můžete kdykoli zastavit. Pro zakázání shromažďován
   ```
 
 ## <a name="validate-your-data-and-analyze-it"></a>Ověření dat a jejich analýza
-Můžete vybrat libovolný nástroj z vaší předvolby a analyzovat data shromážděná do objektu blob Azure. 
+Můžete vybrat libovolný nástroj z vaší předvolby a analyzovat data shromážděná do objektu blob Azure.
 
 Rychlý přístup k datům z objektu BLOB:
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
 
 1. Otevřete pracovní prostor.
 1. Klikněte na **úložiště**.
@@ -184,7 +185,7 @@ Rychlý přístup k datům z objektu BLOB:
 
 1. Vyberte **získat data** a klikněte na [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
-    [nastavení![PBI BLOB](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [nastavení ![PBI BLOB](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
 1. Přidejte název svého účtu úložiště a zadejte svůj klíč úložiště. Tyto informace najdete v **Nastavení** objektu blob > > přístupových klíčích. 
@@ -220,11 +221,11 @@ Rychlý přístup k datům z objektu BLOB:
 
 1. V pracovním prostoru datacihly vyberte **Odeslat data**.
 
-    [nahrání![DB](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+    [nahrání ![DB](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
 1. Vytvořte novou tabulku a vyberte **jiné zdroje dat** – > Azure Blob Storage-> vytvořit tabulku v poznámkovém bloku.
 
-    [Tabulka![DB](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+    [Tabulka ![DB](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
 1. Aktualizujte umístění vašich dat. Zde naleznete příklad:
 

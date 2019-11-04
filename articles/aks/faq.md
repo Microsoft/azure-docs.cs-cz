@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 4d736556147797bcd007bdab1b5328deeadea712
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 2f24f5cacb8b6e115d7fe91c6ef0a7a333676ae1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827359"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472836"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy týkající se služby Azure Kubernetes (AKS)
 
@@ -33,7 +33,7 @@ Ano, cluster AKS můžete nasadit do existující virtuální sítě pomocí [fu
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Můžu omezit, kdo má přístup k serveru rozhraní Kubernetes API?
 
-Ano, můžete omezit přístup k serveru rozhraní Kubernetes API pomocí [rozsahů IP adres autorizovaných serverem API][api-server-authorized-ip-ranges], které jsou v současnosti ve verzi Preview.
+Ano, můžete omezit přístup k serveru rozhraní Kubernetes API pomocí [rozsahů IP adres autorizovaných serverem API][api-server-authorized-ip-ranges].
 
 ## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Můžu Server Kubernetes API zpřístupnit jenom v rámci své virtuální sítě?
 
@@ -41,7 +41,7 @@ V tuto chvíli se ale plánuje. Průběh můžete sledovat v [úložišti GitHub
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Můžu v jednom clusteru mít různé velikosti virtuálních počítačů?
 
-Ano, v clusteru AKS můžete pomocí různých velikostí virtuálních počítačů vytvořit [víc fondů uzlů][multi-node-pools], které jsou v tuto chvíli ve verzi Preview.
+Ano, v clusteru AKS můžete pomocí různých velikostí virtuálních počítačů vytvořit [více fondů uzlů][multi-node-pools].
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Jsou aktualizace zabezpečení aplikovány na uzly agenta AKS?
 
@@ -118,13 +118,13 @@ Podpora Windows serveru pro fond uzlů obsahuje některá omezení, která jsou 
 
 V rámci smlouvy o úrovni služeb (SLA) poskytovatel souhlasí s tím, že zákazníkovi vrátí náklady na službu, pokud není splněna publikovaná úroveň služby. Vzhledem k tomu, že je AKS zdarma, nejsou k dispozici žádné náklady, takže AKS nemá žádnou oficiální smlouvu SLA. AKS se ale snaží zachovat dostupnost minimálně 99,5% pro server Kubernetes API.
 
-Je důležité rozpoznat rozdíl mezi dostupností služby AKS, která odkazuje na dobu provozu Kubernetes řídicí roviny a dostupnost konkrétního zatížení, které běží na Azure Virtual Machines. I když rovina ovládacího prvku nemusí být k dispozici, pokud řídicí plocha není připravená, úlohy clusteru běžící na virtuálních počítačích Azure stále můžou fungovat. Vzhledem k tomu, že virtuální počítače Azure jsou placené prostředky, se účtují pomocí finanční smlouvy SLA. [Další podrobnosti](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/) o smlouvě SLA pro virtuální počítače Azure a o tom, jak tuto dostupnost zvýšit, najdete tady: [zóny dostupnosti][availability-zones].
+Je důležité rozpoznat rozdíl mezi dostupností služby AKS, která odkazuje na dobu provozu Kubernetes řídicí roviny a dostupnost konkrétního zatížení, které běží na Azure Virtual Machines. I když rovina ovládacího prvku nemusí být k dispozici, pokud řídicí plocha není připravená, úlohy clusteru běžící na virtuálních počítačích Azure stále můžou fungovat. Vzhledem k tomu, že virtuální počítače Azure jsou placené prostředky, se účtují pomocí finanční smlouvy SLA. [Další podrobnosti](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) o smlouvě SLA pro virtuální počítače Azure a o tom, jak tuto dostupnost zvýšit, najdete tady: [zóny dostupnosti][availability-zones].
 
 ## <a name="why-cant-i-set-maxpods-below-30"></a>Proč nemohu nastavit maxPods nižší než 30?
 
 V AKS můžete nastavit hodnotu `maxPods` při vytváření clusteru pomocí Azure CLI a Azure Resource Manager šablon. Kubenet i Azure CNI ale vyžadují *minimální hodnotu* (v době vytváření ověřený čas):
 
-| Síťové služby | Minimální | Maximum |
+| Sítě | Minimální | Maximum |
 | -- | :--: | :--: |
 | CNI Azure | 30 | 250 |
 | Kubenet | 30 | 110 |

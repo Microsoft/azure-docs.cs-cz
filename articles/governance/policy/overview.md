@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
-ms.openlocfilehash: b8628d60110818fe64e5b09b400a1396213147b6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 46d78ca9f82017e1a11642af6e5dcdc68e239c8a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980773"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498281"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Přehled služby Azure Policy
 
@@ -48,12 +48,11 @@ Postup vytváření a implementace zásady v Azure Policy začíná vytvořením
 
 V Azure Policy nabízíme několik předdefinovaných zásad, které jsou ve výchozím nastavení dostupné. Například:
 
-- **Vyžadovat SQL Server 12,0**: ověří, že všechny servery SQL používají verzi 12,0. Jeho účelem je Odepřít všechny servery, které tyto kritéria nesplňují.
 - **Povolené skladové položky účtu úložiště**: Určuje, jestli se nasazený účet úložiště nachází v rámci sady velikostí SKU. Jeho účinkem je odmítnutí všech účtů úložiště, které nedodržují sadu definovaných velikostí SKU.
 - **Povolený typ prostředku**: definuje typy prostředků, které můžete nasadit. Jeho účelem je Odepřít všechny prostředky, které nejsou součástí tohoto definovaného seznamu.
 - **Povolená umístění**: omezuje dostupná umístění pro nové prostředky. Účinkem je vynucení vašich požadavků na geografické dodržování předpisů.
 - **Povolené SKU virtuálních počítačů**: Určuje sadu SKU virtuálních počítačů, které můžete nasadit.
-- **Použít značku a její výchozí hodnotu**: použije požadovanou značku a její výchozí hodnotu, pokud není zadána v žádosti o nasazení.
+- **Přidat značku k prostředkům**: použije povinnou značku a její výchozí hodnotu, pokud není zadána v žádosti o nasazení.
 - **Vysazení značky a její hodnoty**: vynutila požadovanou značku a její hodnotu pro prostředek.
 - **Nepovolené typy prostředků**: zabrání v nasazení seznamu typů prostředků.
 

@@ -1,6 +1,6 @@
 ---
-title: Kurz Apache Spark strukturované streamování s využitím Apache Kafka-Azure HDInsight
-description: Naučte se používat streamování Apache Spark k získání dat do Apache Kafka nebo z nich. V tomto kurzu Streamujte data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
+title: 'Kurz: Apache Spark streamování & Apache Kafka – Azure HDInsight'
+description: Zjistěte, jak pomocí streamování Apache Sparku přenášet data do nebo ze systému Apache Kafka. V tomto kurzu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: db2174451f01ef38dc69e4e14561175203e075c3
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 96420a3ea4ddc8c3d8210f1b35d6606257eba5ff
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264253"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494379"
 ---
-# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Spark s Apache Kafka v HDInsight
+# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Sparku se systémem Apache Kafka ve službě HDInsight
 
 V tomto kurzu se dozvíte, jak pomocí [Apache Spark strukturovaného streamování](https://spark.apache.org/docs/latest/structured-streaming-programming-guide) číst a zapisovat data pomocí [Apache Kafka](https://kafka.apache.org/) v Azure HDInsight.
 
-Strukturované streamování Spark je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje vám obpočítat výpočty streamování stejné jako dávkové výpočty statických dat.  
+Strukturované streamování Spark je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty.  
 
 V tomto kurzu se naučíte:
 
@@ -27,20 +27,20 @@ V tomto kurzu se naučíte:
 > * Použití šablony Azure Resource Manager k vytváření clusterů
 > * Použití strukturovaného streamování Sparku s Kafka
 
-Až budete s kroky v tomto dokumentu hotovi, nezapomeňte odstranit clustery, abyste se vyhnuli nadměrným poplatkům.
+Jakmile budete hotovi s kroky v tomto dokumentu, nezapomeňte clustery odstranit, abyste se vyhnuli nadbytečným poplatkům.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * JQ, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 * Seznamte se s používáním [poznámkových bloků Jupyter](https://jupyter.org/) s Sparkem ve službě HDInsight. Další informace najdete v tématu [načtení dat a spuštění dotazů s Apache Spark v dokumentu HDInsight](spark/apache-spark-load-data-run-query.md) .
 
-* Znalost programovacího jazyka [Scala](https://www.scala-lang.org/) Kód použitý v tomto kurzu je napsán v Scala.
+* Znalost programovacího jazyku [Scala](https://www.scala-lang.org/). Kód použitý v tomto kurzu je napsaný v jazyce Scala.
 
-* Znalost vytváření Kafka témat. Další informace najdete v dokumentu [rychlý Start pro Apache Kafka v HDInsight](kafka/apache-kafka-get-started.md) .
+* Znalost vytváření témat Kafka. Další informace najdete v dokumentu [rychlý Start pro Apache Kafka v HDInsight](kafka/apache-kafka-get-started.md) .
 
 > [!IMPORTANT]  
-> Kroky v tomto dokumentu vyžadují skupinu prostředků Azure, která obsahuje Spark ve službě HDInsight a Kafka v clusteru HDInsight. Tyto clustery se nacházejí v rámci Azure Virtual Network, což umožňuje clusteru Spark přímo komunikovat s clusterem Kafka.
+> Kroky v tomto dokumentu vyžadují skupinu prostředků Azure obsahující cluster Spark ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve virtuální síti Azure, což umožňuje přímou komunikaci clusteru Spark s clusterem Kafka.
 >
 > Pro usnadnění práce tento dokument odkazuje na šablonu, která může vytvořit všechny požadované prostředky Azure.
 >
@@ -48,9 +48,9 @@ Až budete s kroky v tomto dokumentu hotovi, nezapomeňte odstranit clustery, ab
 
 ## <a name="structured-streaming-with-apache-kafka"></a>Strukturované streamování s Apache Kafka
 
-Strukturované streamování Spark je modul pro zpracování datových proudů založený na modulu Spark SQL. Při použití strukturovaného streamování můžete zapisovat dotazy streamování stejným způsobem, jakým píšete dávkové dotazy.
+Strukturované streamování Sparku je modul pro zpracování datových proudů založený na modulu Spark SQL. Při použití strukturovaného streamování můžete psát streamovací dotazy stejným způsobem jako dávkové dotazy.
 
-Následující fragmenty kódu ukazují čtení z Kafka a ukládání do souboru. První z nich je operace Batch, zatímco druhá z nich je operace streamování:
+Následující fragmenty kódu ukazují čtení ze systému Kafka a uložení do souboru. První z nich je dávková operace, zatímco druhá je operace streamování:
 
 ```scala
 // Read a batch from Kafka
@@ -86,9 +86,9 @@ kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip")
                 .start.awaitTermination(30000)
 ```
 
-V obou fragmentech kódu jsou data načítána z Kafka a zapsána do souboru. Rozdíly mezi příklady:
+V obou fragmentech kódu se data čtou ze systému Kafka a zapisují do souboru. Rozdíly mezi příklady jsou následující:
 
-| Partie | Streamování |
+| Batch | Streamování |
 | --- | --- |
 | `read` | `readStream` |
 | `write` | `writeStream` |
@@ -96,7 +96,7 @@ V obou fragmentech kódu jsou data načítána z Kafka a zapsána do souboru. Ro
 
 Operace streamování také používá `awaitTermination(30000)`, což zastaví datový proud po 30 000 ms.
 
-Aby bylo možné používat strukturované streamování s Kafka, musí mít váš projekt závislost na balíčku `org.apache.spark : spark-sql-kafka-0-10_2.11`. Verze tohoto balíčku by měla odpovídat verzi Sparku ve službě HDInsight. Pro Spark 2.2.0 (k dispozici v HDInsight 3,6) můžete najít informace o závislostech pro různé typy projektů na [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar).
+Pokud chcete použít strukturované streamování s využitím systému Kafka, váš projekt musí obsahovat závislost na balíčku `org.apache.spark : spark-sql-kafka-0-10_2.11`. Verze tohoto balíčku musí odpovídat verzi Sparku ve službě HDInsight. Pro Spark 2.2.0 (k dispozici ve službě HDInsight 3.6) můžete najít informace o závislostech pro různé typy projektů na adrese [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar).
 
 Pro Jupyter Notebook používané v tomto kurzu načte následující buňka tuto závislost balíčku:
 
@@ -112,51 +112,51 @@ Pro Jupyter Notebook používané v tomto kurzu načte následující buňka tut
 
 ## <a name="create-the-clusters"></a>Vytvoření clusterů
 
-Apache Kafka v HDInsight neposkytuje přístup ke zprostředkovatelům Kafka prostřednictvím veřejného Internetu. Cokoli, co používá Kafka, musí být ve stejné virtuální síti Azure. V tomto kurzu se clustery Kafka a Spark nacházejí ve stejné virtuální síti Azure.
+Apache Kafka ve službě HDInsight neposkytuje přístup ke zprostředkovatelům systému Kafka přes veřejný internet. Cokoli, co využívá systém Kafka, musí být ve stejné virtuální síti Azure. V tomto kurzu se clustery Kafka i Spark nacházejí ve stejné virtuální síti Azure.
 
-Následující diagram ukazuje způsob komunikace toků mezi Sparkem a Kafka:
+Následující diagram znázorňuje tok komunikace mezi Sparkem a systémem Kafka:
 
-![Diagram clusterů Sparku a Kafka ve službě Azure Virtual Network](./media/hdinsight-apache-kafka-spark-structured-streaming/apache-spark-kafka-vnet.png)
+![Diagram clusterů Spark a Kafka ve virtuální síti Azure](./media/hdinsight-apache-kafka-spark-structured-streaming/apache-spark-kafka-vnet.png)
 
 > [!NOTE]  
-> Služba Kafka je omezená na komunikaci v rámci virtuální sítě. K dalším službám v clusteru, jako jsou SSH a Ambari, se dá dostat přes Internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [porty a identifikátory URI používané v HDInsight](hdinsight-hadoop-port-settings-for-services.md).
+> Komunikace služby Kafka je omezená na virtuální síť. Další služby v clusteru, jako jsou SSH a Ambari, jsou přístupné přes internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
-Pokud chcete vytvořit Virtual Network Azure a pak v něm vytvořit clustery Kafka a Spark, použijte následující postup:
+K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafka a Spark v rámci této sítě použijte následující postup:
 
-1. Pomocí následujícího tlačítka se přihlaste do Azure a otevřete šablonu v Azure Portal.
+1. Pomocí následujícího tlačítka se přihlaste do Azure a otevřete šablonu na webu Azure Portal.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-kafka-structured-streaming%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apache-kafka-spark-structured-streaming/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Šablona Azure Resource Manager se nachází na **https://raw.githubusercontent.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming/master/azuredeploy.json** .
+    Šablona Azure Resource Manageru se nachází na adrese **https://raw.githubusercontent.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming/master/azuredeploy.json** .
 
     Tato šablona vytvoří následující prostředky:
 
-   * Kafka v clusteru HDInsight 3,6.
-   * 2\.2.0 Spark v clusteru HDInsight 3,6.
-   * Virtual Network Azure, který obsahuje clustery HDInsight.
+   * Cluster Kafka ve službě HDInsight 3.6.
+   * Cluster Spark 2.2.0 ve službě HDInsight 3.6.
+   * Virtuální síť Azure obsahující clustery HDInsight.
 
      > [!IMPORTANT]  
-     > Strukturovaný Poznámkový blok používaný v tomto kurzu vyžaduje Spark 2.2.0 ve službě HDInsight 3,6. Pokud používáte starší verzi Sparku ve službě HDInsight, dostanete při používání poznámkového bloku chyby.
+     > Poznámkový blok strukturovaného streamování použitý v tomto kurzu vyžaduje Spark 2.2.0 ve službě HDInsight 3.6. Pokud používáte starší verzi Sparku ve službě HDInsight, při použití poznámkového bloku se zobrazí chyby.
 
-2. Následující informace použijte k naplnění položek v části **vlastní šablona** :
+2. Pomocí následujících informací vyplňte položky v části **Přizpůsobená šablona**:
 
-    | Nastavením | Hodnota |
+    | Nastavení | Hodnota |
     | --- | --- |
-    | Formě | Vaše předplatné Azure |
-    | Skupina prostředků | Skupina prostředků, která obsahuje prostředky. |
-    | Umístění | Oblast Azure, ve které se prostředky vytvářejí. |
+    | Předplatné | Vaše předplatné Azure |
+    | Skupina prostředků | Skupina prostředků obsahující prostředky. |
+    | Umístění | Oblast Azure, ve které se prostředky vytvoří. |
     | Název clusteru Spark | Název clusteru Spark. Prvních šest znaků se musí lišit od názvu clusteru Kafka. |
     | Název clusteru Kafka | Název clusteru Kafka. Prvních šest znaků se musí lišit od názvu clusteru Spark. |
-    | Uživatelské jméno přihlášení clusteru | Uživatelské jméno správce pro clustery. |
-    | Heslo pro přihlášení ke clusteru | Uživatelské heslo správce pro clustery. |
+    | Uživatelské jméno přihlášení clusteru | Uživatelské jméno správce clusterů. |
+    | Heslo přihlášení clusteru | Heslo správce clusterů. |
     | Uživatelské jméno SSH | Uživatel SSH, který se má pro clustery vytvořit. |
     | Heslo SSH | Heslo uživatele SSH. |
 
     ![Snímek obrazovky přizpůsobené šablony](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
-3. Přečtěte si **podmínky a ujednání**a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
+3. Přečtěte si **Podmínky a ujednání** a pak vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**.
 
-4. Vyberte **koupit**.
+4. Vyberte **Koupit**.
 
 > [!NOTE]  
 > Vytvoření clusterů může trvat až 20 minut.
@@ -176,11 +176,11 @@ Tento příklad ukazuje, jak používat strukturované streamování Sparku s Ka
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.net/api/v1/clusters/%CLUSTERNAME%/services/KAFKA/components/KAFKA_BROKER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")"
     ```
 
-2. Ve webovém prohlížeči se připojte k poznámkovému bloku Jupyter v clusteru Spark. V následující adrese URL nahraďte `CLUSTERNAME` názvem vašeho clusteru __Spark__ :
+2. Ve webovém prohlížeči se připojte k poznámkovému bloku Jupyter na svém clusteru Spark. V následující adrese URL nahraďte `CLUSTERNAME` názvem svého clusteru __Spark__:
 
         https://CLUSTERNAME.azurehdinsight.net/jupyter
 
-    Po zobrazení výzvy zadejte přihlášení ke clusteru (správce) a heslo, které jste použili při vytváření clusteru.
+    Po zobrazení výzvy zadejte přihlašovací jméno (správce) a heslo clusteru, které jste použili při vytváření clusteru.
 
 3. Pokud chcete vytvořit Poznámkový blok, vyberte **nový > Spark** .
 
@@ -199,7 +199,7 @@ Tento příklad ukazuje, jak používat strukturované streamování Sparku s Ka
     }
     ```
 
-5. Vytvořte téma Kafka. Níže uvedený příkaz upravte tak, že nahradíte `YOUR_ZOOKEEPER_HOSTS` informacemi o hostiteli Zookeeper extrahovaných v prvním kroku. Pokud chcete vytvořit téma `tripdata`, zadejte do svého Jupyter Notebook upravený příkaz.
+5. Vytvořte téma Kafka. Níže uvedený příkaz upravte nahrazením `YOUR_ZOOKEEPER_HOSTS` informacemi o hostiteli Zookeeper extrahovaných v prvním kroku. Pokud chcete vytvořit téma `tripdata`, zadejte do svého Jupyter Notebook upravený příkaz.
 
     ```scala
     %%bash
@@ -318,18 +318,18 @@ Tento příklad ukazuje, jak používat strukturované streamování Sparku s Ka
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, můžete odstranit skupinu prostředků. Odstraněním skupiny prostředků se odstraní také přidružený cluster HDInsight a všechny další prostředky přidružené ke skupině prostředků.
+Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, můžete odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený cluster HDInsight a všechny další prostředky, které jsou k příslušné skupině prostředků přidružené.
 
-Odebrání skupiny prostředků pomocí Azure Portal:
+Odebrání skupiny prostředků pomocí webu Azure Portal:
 
-1. V Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a potom zvolte __skupiny prostředků__ . zobrazí se seznam skupin prostředků.
-2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a potom klikněte pravým tlačítkem myši na tlačítko __Další__ (...) na pravé straně seznamu.
-3. Vyberte __Odstranit skupinu prostředků__a pak potvrďte.
+1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__. Zobrazí se seznam skupin prostředků.
+2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
+3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
 > [!WARNING]  
-> Fakturace clusteru HDInsight začíná, jakmile se cluster vytvoří a zastaví se, když se cluster odstraní. Fakturuje se poměrnou částí po minutách, takže byste cluster měli vždycky odstranit, když už se nepoužívá.
+> Účtování clusteru HDInsight začne vytvořením clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá.
 >
-> Odstranění Kafka v clusteru HDInsight odstraní všechna data uložená v Kafka.
+> Odstraněním clusteru Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.
 
 ## <a name="next-steps"></a>Další kroky
 

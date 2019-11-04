@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: d2d7508b4f0a2789a0eae5d6c6205475b5795e36
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097845"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472870"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes (AKS)
 
@@ -57,8 +57,6 @@ Aby bylo možné reagovat na měnící se požadavky pod, má Kubernetes k disAK
 
 Automatické škálování clusteru se obvykle používá společně s autohorizontálním škálováním pod. V kombinaci se horizontální automatické škálování pod ním zvyšuje nebo snižuje počet lusků v závislosti na požadavcích aplikace a automatické škálování clusteru podle potřeby upraví počet uzlů podle potřeby, aby tyto další lusky běžely odpovídajícím způsobem.
 
-Automatické škálování clusteru by se mělo testovat jenom ve verzi Preview v clusterech AKS.
-
 Pokud chcete začít s nástrojem pro automatické škálování clusteru v AKS, přečtěte si téma [Automatické škálování clusteru na AKS][aks-cluster-autoscaler].
 
 ### <a name="scale-up-events"></a>Horizontální navýšení kapacity
@@ -89,7 +87,7 @@ Vaše aplikace nevyžaduje žádné úpravy k použití virtuálních uzlů. Nas
 
 Virtuální uzly se nasazují do další podsítě ve stejné virtuální síti jako cluster AKS. Tato konfigurace virtuální sítě umožňuje zabezpečení provozu mezi ACI a AKS. Podobně jako cluster AKS je instance ACI zabezpečeným logickým výpočetním prostředkem, který je izolovaný od ostatních uživatelů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít s škálováním aplikací, nejdřív postupujte podle pokynů v [rychlém startu a vytvořte cluster AKS pomocí Azure CLI][aks-quickstart]. Pak můžete začít ručně nebo automaticky škálovat aplikace v clusteru AKS:
 

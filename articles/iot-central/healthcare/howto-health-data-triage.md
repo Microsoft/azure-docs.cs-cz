@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: cbbfc13cd818c3f29ed306beab49d101c70f562b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: b0f3a486edb0c650a4a14e5e60b4459f758a64d4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026492"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499945"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Kurz: sestavení řídicího panelu poskytovatele Power BI
 
@@ -51,7 +51,7 @@ V tomto kurzu se naučíte:
 * Účet služba Power BI. Pokud ho ještě nemáte, můžete [pro služba Power BI vytvořit bezplatný zkušební účet](https://app.powerbi.com/). Pokud jste už Power BI ještě nepoužili, může být užitečné projít [si Začínáme s Power BI](https://docs.microsoft.com/power-bi/service-get-started).
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Nastavení průběžného exportu dat do Azure Event Hubs
-Nejdřív budete muset nastavit průběžný export dat ze šablony aplikace Azure IoT Central do centra událostí Azure v rámci vašeho předplatného. Můžete to udělat podle kroků v tomto kurzu pro Azure IoT Central pro [Export do Event Hubs](https://docs.microsoft.com/azure/iot-central/howto-export-data-event-hubs-service-bus-pnp). Pro účely tohoto kurzu budete muset jenom vyexportovat pro telemetrii.
+Nejdřív budete muset nastavit průběžný export dat ze šablony aplikace Azure IoT Central do centra událostí Azure v rámci vašeho předplatného. Můžete to udělat podle kroků v tomto kurzu pro Azure IoT Central pro [Export do Event Hubs](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp). Pro účely tohoto kurzu budete muset jenom vyexportovat pro telemetrii.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Vytvoření datové sady streamování Power BI
 
@@ -91,7 +91,7 @@ Na konci tohoto kroku by měl návrhář aplikace logiky vypadat takto:
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Streamování dat do Power BI z aplikace logiky
 V dalším kroku budete analyzovat data přicházející z centra událostí, abyste je mohli streamovat do Power BIch datových sad, které jste vytvořili dříve.
 
-1. Než to uděláte, budete muset pochopit datovou část JSON, která se posílá ze zařízení do vašeho centra událostí. Můžete to udělat tak, že si prohlédněte toto [ukázkové schéma](https://docs.microsoft.com/azure/iot-central/howto-export-data-event-hubs-service-bus-pnp#telemetry) a upravíte ho tak, aby odpovídalo vašemu schématu, nebo pomocí [Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer) zkontrolovat zprávy. Pokud používáte aplikace pro monitorování nepřetržitého pacienta, vaše zprávy budou vypadat takto:
+1. Než to uděláte, budete muset pochopit datovou část JSON, která se posílá ze zařízení do vašeho centra událostí. Můžete to udělat tak, že si prohlédněte toto [ukázkové schéma](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp#telemetry) a upravíte ho tak, aby odpovídalo vašemu schématu, nebo pomocí [Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer) zkontrolovat zprávy. Pokud používáte aplikace pro monitorování nepřetržitého pacienta, vaše zprávy budou vypadat takto:
 
 **Inteligentní telemetrie opravy – nedůležité**
 

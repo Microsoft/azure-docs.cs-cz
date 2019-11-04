@@ -1,6 +1,6 @@
 ---
-title: Odeslání zprávy serveru MQTT s využitím klientské knihovny Azure MQTT | Dokumentace Microsoftu
-description: Použít DevKit jako klient k odeslání zprávy serveru MQTT
+title: Posílání zpráv na server MQTT pomocí klientské knihovny Azure MQTT | Microsoft Docs
+description: Použití DevKit jako klienta k posílání zpráv na server MQTT
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,85 +9,85 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6afe0a2fe366b83af45682245776c803c99483d3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61369296"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484036"
 ---
-# <a name="send-messages-to-an-mqtt-server"></a>Odeslání zprávy serveru MQTT
+# <a name="send-messages-to-an-mqtt-server"></a>Odesílání zpráv na server MQTT
 
-Internet věcí (IoT) systémy často řešit Přerušovaná, nízké kvality nebo pomalé připojení k Internetu. MQTT je protokol připojení machine-to-machine (modelů M2M), které se tyto výzvy v úvahu vyvinula. 
+Systémy Internet věcí (IoT) často řeší občasné, špatnou kvalitu nebo pomalé připojení k Internetu. MQTT je protokol připojení typu počítač-počítač (M2M), který byl vyvinut s těmito výzvami. 
 
-Knihovna klienta MQTT se tady použít. je součástí [Eclipse Paho](https://www.eclipse.org/paho/) projektu, který poskytuje rozhraní API pomocí protokolu MQTT přes více způsob přenosu.
+Zde použitá knihovna klienta MQTT je součástí projektu [zatmění PAHO](https://www.eclipse.org/paho/) , který poskytuje rozhraní API pro použití MQTT přes více prostředků přenosu.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-V tomto projektu se dozvíte:
-- Jak používat protokol MQTT klientské knihovny pro odesílání zpráv do Service broker MQTT.
-- Jak nakonfigurovat MXChip Iot DevKit jako klienta MQTT.
+V tomto projektu se naučíte:
+- Jak používat klientskou knihovnu MQTT k posílání zpráv do zprostředkovatele MQTT.
+- Jak nakonfigurovat MXChip IoT DevKit jako klienta MQTT.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-Dokončit [– Příručka Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) na:
+Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) :
 
-* Mají vaše DevKit připojení k Wi-Fi
+* Připojení DevKit k Wi-Fi
 * Příprava vývojového prostředí
 
-## <a name="open-the-project-folder"></a>Otevřít složku projektu
+## <a name="open-the-project-folder"></a>Otevření složky projektu
 
-1. Pokud už je DevKit připojte k počítači, odpojte ho.
+1. Pokud se DevKit už připojí k vašemu počítači, odpojte ho.
 
 2. Spusťte VS Code.
 
-3. Připojení DevKit k vašemu počítači.
+3. Připojte DevKit k počítači.
 
 ## <a name="open-the-mqttclient-sample"></a>Otevřete ukázku MQTTClient
 
-Rozbalte na levé straně **ARDUINO příklady** vyhledejte **příklady MXCHIP AZ3166 > MQTT**a vyberte **MQTTClient**. Otevře se nové okno VS Code se v něm složku projektu.
+Rozbalte části **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > MQTT**a vyberte **MQTTClient**. Otevře se nové okno VS Code se složkou projektu.
 
 > [!NOTE]
-> Příklad lze také otevřít z palety příkazů. Použití `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) otevřete paletu příkazů, zadejte **Arduino**a poté vyhledejte a vyberte **Arduino: Příklady**.
+> Můžete také otevřít příklad z palety příkazů. K otevření palety příkazů použijte `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`), zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
 
-## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Vytváření a odesílání Arduino sketch DevKit
+## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Sestavení a nahrání Arduino náčrtu do DevKit
 
-Typ `Ctrl+P` (macOS: `Cmd+P`) ke spuštění `task device-upload`. Po dokončení nahrávání DevKit restartuje a spustí náčrt.
+Chcete-li spustit `task device-upload`, zadejte `Ctrl+P` (macOS: `Cmd+P`). Až se nahrávání dokončí, DevKit se restartuje a spustí nákres.
 
-![nahrávání zařízení](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
+![zařízení – nahrání](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
-> Může se zobrazit "Chyba: AZ3166: Neznámý balíček"chybová zpráva. Tato chyba nastane, pokud index panelu balíček není správně aktualizovat. Chcete-li tuto chybu vyřešit, přečtěte si [části vývoj nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> Může se zobrazit chybová zpráva "Chyba: AZ3166: neznámý balíček". K této chybě dochází, pokud se index balíčku panelu není správně aktualizovat. Pokud chcete tuto chybu vyřešit, přečtěte si [část věnované vývoji v tématu Nejčastější dotazy ke službě IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testování projektu
 
-V nástroji VS Code pomocí následujícího postupu otevřete a nastavte monitorování sériového portu:
+V VS Code postupujte podle následujícího postupu a otevřete a nastavte monitorování sériového portu:
 
-1. Klikněte na tlačítko `COM[X]` word na stavovém řádku na nastavte správný port COM s `STMicroelectronics`: ![sady port com](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. Kliknutím na `COM[X]` Word na stavovém řádku nastavte správný port COM pomocí `STMicroelectronics`: ![set-COM-port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. Klikněte na ikonu power moduly na stavovém řádku otevřete sériového portu monitorování: ![sériové monitorování](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. Kliknutím na ikonu plug-in na stavovém řádku otevřete monitorování sériového portu: ![sériového monitorování](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. Na stavovém řádku, klikněte na číslo představující přenosovou rychlostí a nastavte ho na `115200`: ![set přenosová rychlost](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. Na stavovém řádku klikněte na číslo, které představuje přenosovou rychlost, a nastavte ji na `115200`: ![nastavené přenosové rychlosti](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
-Sériový Monitor má zobrazit všechny zprávy odeslané sketch vzorku. Náčrt DevKit připojí k Wi-Fi. Po úspěšném připojení Wi-Fi náčrt odešle zprávu do zprostředkovatele protokolu MQTT. Poté odešle vzorku opakovaně dvě "iot.eclipse.org" zprávy pomocí technologie QoS 0 a QoS 1 v uvedeném pořadí.
+Nástroj sériového zobrazení zobrazí všechny zprávy odesílané vzorovým nákresem. Náčrt připojuje DevKit k Wi-Fi. Po úspěšném připojení k síti Wi-Fi pošle skica zprávu zprostředkovateli MQTT. Poté ukázka opakovaně odesílá dvě zprávy "iot.eclipse.org" pomocí technologie QoS 0 a QoS 1 v uvedeném pořadí.
 
-![výstup sériové](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
+![sériové – výstup](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 
-Pokud narazíte na potíže, přečtěte si [nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se připojte pomocí následujících kanálů:
+Pokud narazíte na problémy, přečtěte si [Nejčastější dotazy ke službě IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se připojte pomocí následujících kanálů:
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [IoT DevKit AZ3166 se připojit ke službě Azure IoT Hub v cloudu](iot-hub-arduino-iot-devkit-az3166-get-started.md)
-* [Zatřeste, zatřeste tweetu](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+* [Připojení IoT DevKit AZ3166 k Azure IoT Hub v cloudu](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+* [Třepačka, Třesce](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak nakonfigurovat MXChip Iot DevKit jako klienta MQTT a použít protokol MQTT klientskou knihovnu pro odesílání zpráv do Service broker MQTT, tady jsou další navrhované kroky:
+Teď, když jste se naučili, jak nakonfigurovat MXChip IoT DevKit jako klienta MQTT a použít klientskou knihovnu MQTT k posílání zpráv do zprostředkovatele MQTT, tady jsou doporučené další kroky:
 
-* [Azure IoT vzdálené monitorování přehled akcelerátorů řešení](https://docs.microsoft.com/azure/iot-suite/)
-* [Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Přehled akcelerátoru řešení vzdáleného monitorování Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
+* [Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central](/azure/iot-central/core/howto-connect-devkit)

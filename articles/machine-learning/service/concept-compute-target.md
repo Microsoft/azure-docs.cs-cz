@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/10/2019
-ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: c3791946ee31183e4b3c5131a8e62934bf87dfee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035520"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497470"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -46,16 +46,31 @@ Naučte se [, jak a jak model nasadit do cílového výpočetního prostředí](
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning COMPUTE (spravované)
 
-Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure Machine Learning. Tato výpočetní prostředí jsou optimalizovaná pro úlohy strojového učení. Azure Machine Learning COMPUTE je jediným spravovaným výpočetním prostředím 30. května 2019. V budoucnu může být přidáno více spravovaných výpočetních prostředků.
+Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure Machine Learning. Tato výpočetní prostředí jsou optimalizovaná pro úlohy strojového učení. Jediným spravovaným výpočetním prostředím jsou Azure Machine Learning výpočetní clustery a [výpočetní instance](concept-compute-instance.md) . V budoucnu může být přidáno více spravovaných výpočetních prostředků.
 
-Můžete použít Azure Machine Learning COMPUTE pro školení a pro Batch Inferencing (Preview).  S tímto výpočetním prostředkem máte tyto:
+V nástroji můžete vytvořit Azure Machine Learning výpočetní instance nebo výpočetní clustery:
+
+| | Azure Machine Learning Studio | Portál Azure | SDK | Šablona Resource Manageru | Rozhraní příkazového řádku |
+|---| ----- | ----- | ----- | ----- | ----- |
+| Instance COMPUTE | ano | ano | ano | ano |  |
+| Výpočetní cluster | ano | ano | ano | ano | ano |
+
+Po vytvoření těchto výpočetních prostředků se tento pracovní prostor automaticky dojedná na rozdíl od jiných druhů výpočetních cílů.
+
+> [!NOTE]
+> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
+>Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) . 
+
+### <a name="compute-clusters"></a>Výpočetní clustery
+
+Můžete použít výpočetní clustery Azure Machine Learning pro školení a pro Batch Inferencing (Preview).  S tímto výpočetním prostředkem máte tyto:
 
 * Cluster s jedním nebo několika uzly
 * Automatické škálování pokaždé, když odešlete běh 
 * Automatická správa clusteru a plánování úloh 
 * Podpora pro prostředky CPU a GPU
 
-Pomocí sady SDK nebo rozhraní příkazového řádku můžete vytvořit výpočetní instance Azure Machine Learning v Azure Portal nebo na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com). Po vytvoření je automaticky součástí pracovního prostoru, a to na rozdíl od jiných druhů výpočetních cílů.
+
 
 ## <a name="unmanaged-compute"></a>Nespravované výpočetní prostředky
 
@@ -63,6 +78,6 @@ Nespravovaný cíl výpočetní služby není *spravován nástrojem* Azure Mach
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se:
+Získáte informace o těchto tématech:
 * [Nastavení cílového výpočetního prostředí pro výuku modelu](how-to-set-up-training-targets.md)
 * [Nasazení modelu do cíle služby COMPUTE](how-to-deploy-and-where.md)

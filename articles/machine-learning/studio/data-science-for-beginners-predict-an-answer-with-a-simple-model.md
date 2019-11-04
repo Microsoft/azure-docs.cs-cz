@@ -1,7 +1,7 @@
 ---
-title: Předpověď odpovědi pomocí regresních modelů
-titleSuffix: Azure Machine Learning Studio
-description: Jak vytvořit jednoduchý regresní model k predikci cenu v datová věda pro začátečníky č. 4. Zahrnuje lineární regrese s daty cíl.
+title: Předpověď odpovědí pomocí regresních modelů
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Jak vytvořit jednoduchý regresní model pro předpověď ceny v oblasti datové vědy pro začátečníky – video 4. Zahrnuje lineární regresi s cílovými daty.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 9165e51d07cf97756408c7f73720931abe067bb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 028422dd710f7e8d9021c6435250a05c73c76c42
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751532"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493113"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Předpovídání odpovědi pomocí jednoduchého modelu
-## <a name="video-4-data-science-for-beginners-series"></a>Video 4: Datová věda pro začátečníky řady
-Zjistěte, jak vytvořit jednoduchý regresní model odhadnout cenu kosočtverce v datová věda pro začátečníky č. 4. Jsme budete nakreslete regresní model s daty cíl.
+## <a name="video-4-data-science-for-beginners-series"></a>Video 4: řada pro datové vědy pro začátečníky
+Naučte se vytvořit jednoduchý regresní model pro předpověď ceny kosočtverce v oblasti datové vědy pro začátečníky – video 4. Nakreslíme regresní model s cílovými daty.
 
-Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](#other-videos-in-this-series)
+Pokud chcete získat maximum z řady, Sledujte je vše. [Přejít na seznam videí](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
@@ -29,103 +29,103 @@ Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](
 >
 
 ## <a name="other-videos-in-this-series"></a>Další videa v této sérii
-*Datová věda pro začátečníky* článek obsahuje rychlý úvod do datových věd v pěti krátkých videích.
+*Data vědy pro začátečníky* je rychlý Úvod k datové vědy v pěti krátkých videích.
 
-* Video 1: [5 otázky, které odpovídá vědecké zkoumání dat](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek)*
-* Video 2: [Jsou vaše data připravená pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek)*
-* Video 3: [Položit dotaz lze odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
-* Video 4: Předpovídání odpovědi pomocí jednoduchého modelu
-* Video 5: [Kopírování práce jiných lidí pro vědecké zkoumání dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
+* Video 1: [5 otázek pro datové vědy](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min. 14 sec)*
+* Video 2: [jsou vaše data připravená pro datové vědy?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min. 56 s)*
+* Video 3: [Položte otázku, na kterou můžete odpovědět](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 minuty 17 s)* .
+* Video 4: předpověď odpovědi pomocí jednoduchého modelu
+* Video 5: [kopírování práce jiných lidí do oblasti datové vědy](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min. 18 sec)*
 
-## <a name="transcript-predict-an-answer-with-a-simple-model"></a>Přepisu: Předpovídání odpovědi pomocí jednoduchého modelu
-Vítá vás čtvrtý videa "datové vědě pro začátečníky" řady. Do tohoto objektu za jsme sestavíte jednoduchého modelu a vytvoří předpověď.
+## <a name="transcript-predict-an-answer-with-a-simple-model"></a>Přepis: předpověď odpovědi pomocí jednoduchého modelu
+Vítejte ve čtvrtém videu v řadě "datové vědy pro začátečníky". V tomto případě vytvoříme jednoduchý model a vytvoříme předpovědi.
 
-A *modelu* je zjednodušený scénář o našich datech. Ukážeme vám co mám na mysli to.
+*Model* je zjednodušený příběh o našich datech. Ukážem to, co jsem chtěl.
 
-## <a name="collect-relevant-accurate-connected-enough-data"></a>Shromažďovat relevantní, přesné, připojeno, dostatek dat.
-Řekněme, že chci nakupovat kosočtverce. Mám aktualizační kanál, který patřil Moje celé s nastavením pro kosočtverce 1.35 ikonu kosočtverce a chci získat představu o tom, kolik to stojí. Do úložiště špercích vezmu Poznámkový blok a pera a jsem zapište si cena diamanty – v případě a kolik naváží v carats. Počínaje prvním kosočtverce - 1.01 carats a 7,366 $.
+## <a name="collect-relevant-accurate-connected-enough-data"></a>Shromáždění relevantního, přesného, připojeného a dostatečného množství dat
+Řekněme, že se mi má koupit pro kosočtverec. Mám prstenec, který patří k mému jméno s nastavením pro kosočtverec 1,35 kosočtverce, a chci získat představu o tom, kolik to bude mít náklady. Převezmem Poznámkový blok a pero do Jewelry Storu a zapíšete cenu všech diamantů v případu a to, kolik je v carats. Počínaje prvním kosočtvercem – je 1,01 carats a $7 366.
 
-Teď můžu projít a udělat to pro všechny ostatní diamanty v úložišti.
+Teď procházím a uděláte to pro všechny ostatní diamanty ve Storu.
 
-![Sloupce dat kosočtverec](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/diamond-data.png)
+![Sloupce Diamond data](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/diamond-data.png)
 
-Všimněte si, že náš seznam obsahuje dva sloupce. Každý sloupec má jiný atribut – váha v carats a cena - a každý řádek je jeden datový bod, který představuje jeden kosočtverec.
+Všimněte si, že náš seznam má dva sloupce. Každý sloupec má jinou váhu atributu v carats a Price a každý řádek je jedním datovým bodem, který představuje jeden kosočtverec.
 
-Ve skutečnosti jsme vytvořili malý tady – sada dat tabulky. Všimněte si, že splňují naše kritéria kvality:
+V tomto příkladu jsme vytvořili malou datovou sadu – tabulku. Všimněte si, že splňuje naše kritéria pro kvalitu:
 
-* Data jsou **relevantní** – váha jednoznačně týkající se ceny
-* Má **přesné** -jsme double-checked ceny, které jsme zapište
-* Má **připojené** -nejsou žádné mezery v některém z těchto sloupců
-* A jak uvidíme, má **dostatek** dat pro potřeby odpovědí naše otázku
+* Data jsou **relevantní** – v tuto dobu se jednoznačně vztahují ceny.
+* Je to **přesné** – dvakrát jsme kontrolovali ceny, které zapisujeme.
+* Je **připojený** – v žádném z těchto sloupců nejsou žádné prázdné mezery.
+* A jak uvidíme, je k **dispozici dostatek** dat pro zodpovězení naší otázky.
 
-## <a name="ask-a-sharp-question"></a>Zeptejte se sharp
-Nyní jsme bude představovat naše otázku sharp způsobem: "Kolik vás to bude stát koupit kosočtverce 1.35 ikonu kosočtverce?"
+## <a name="ask-a-sharp-question"></a>Zeptat se na ostřejší dotaz
+Naši otázku teď vyplníme ostrým způsobem: "kolik bude při nákupu 1,35 kosočtverce kosočtverec?"
 
-Náš seznam nemá kosočtverce 1.35 ikonu kosočtverce v ní, tak nám budete muset používat rest naše data odpověď na otázku.
+Náš seznam nemá v tomto seznamu 1,35 kosočtverce kosočtverec, takže abychom dostali odpověď na otázku, budeme muset použít zbytek našich dat.
 
-## <a name="plot-the-existing-data"></a>Vykreslení stávajících dat
-První věc, kterou uděláme je kreslení vodorovné čáry číslo, volá osy, do grafu váhy. Rozsah vah je 0 až 2, takže jsme budete nakreslit čáru, která zahrnuje, která v rozsahu a vložit značky pro každý poloviční ikonu kosočtverce.
+## <a name="plot-the-existing-data"></a>Vykreslit existující data
+První věc, kterou budeme dělat, je nakreslit vodorovnou číselnou čáru, která se označuje jako osa, aby se váhy vykreslily. Rozsah závaží je 0 až 2, proto vykreslíme řádek, který pokrývá tento rozsah a značku pro každou polovinu kosočtverce.
 
-Dále jsme budete nakreslete svislou osu pro záznam cena a připojte ho k váha vodorovné osy. Bude jím v jednotkách dolarů. Teď máme sady souřadnic osy.
+V dalším kroku nakreslíme svislou osu pro záznam ceny a připojíme ji k ose horizontální váhy. To bude v jednotkách v dolarech. Teď máme sadu souřadnic osy.
 
-![Váha a cena osy](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
+![Váha a cenové osy](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
 
-My budeme udělejte tato data a komerčně *korelačního diagramu*. To je skvělý způsob, jak vizualizovat číselné datových sad.
+Tato data teď provedeme a zařadíme do *bodového grafu*. Toto je skvělý způsob, jak vizualizovat číselné datové sady.
 
-Pro první datový bod jsme eyeball svislice 1.01 carats. Potom jsme eyeball vodorovnou čáru na 7,366 $. Pokud nebudou splňovat jsme nakreslete tečku. To představuje naši první kosočtverec.
+Pro první datový bod jsme eyeballi svislou čáru na 1,01 carats. Pak jsme eyeballi horizontální linii na $7 366. Tam, kde splňují, nakreslíme tečku. To představuje náš první kosočtverec.
 
-Nyní jsme projít každý kosočtverce v tomto seznamu a stejnou věc udělat. Když jsme prostřednictvím, toto je jsme získali: spoustu tečky, jeden pro každý kosočtverec.
+Nyní procházíme každý kosočtverec v tomto seznamu a provedeme stejnou věc. V takovém případě se dostanete jako spousta teček, jednu pro každý kosočtverec.
 
-![Bodové vykreslení](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/scatter-plot.png)
+![Bodový graf](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/scatter-plot.png)
 
-## <a name="draw-the-model-through-the-data-points"></a>Nakreslit prostřednictvím datových bodů
-Když se podíváte na tečky a squint, kolekce vypadat řádku fat, přibližných shod. Můžete využít naše značky a nakreslení rovné čáry přes něj.
+## <a name="draw-the-model-through-the-data-points"></a>Nakreslete model prostřednictvím datových bodů.
+Teď, když se podíváte na tečky a squint, kolekce vypadá jako FAT, Přibližná čára. Můžeme absolvovat značku a nakreslit rovnou čáru.
 
-Kreslením řádku jsme vytvořili *modelu*. Představte si to jako trvá reálného světa a provádění komiksový zjednodušenou verzi souboru. Nyní komiksový nesprávný – řádku neprojde, všechny datové body. Ale to je užitečné zjednodušení.
+Nakreslením čáry jsme vytvořili *model*. Tohle si můžete představit jako z reálného světa a vytvořit zjednodušenýou jeho verzi. Kresba není nyní správná – řádek neprojde všemi datovými body. Ale jedná se o užitečné zjednodušení.
 
-![Lineární regrese řádku](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/linear-regression-line.png)
+![Čára lineární regrese](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/linear-regression-line.png)
 
-Skutečnost, že všechny body nechcete procházet přesně řádku je v pořádku. Odborníci přes data vysvětlují to chci říct, že je model –, který je na řádku - a potom každé tečce má některé *šumu* nebo *variance* s ním spojená. Je základní ideální relace a nejsou k dispozici na světě krupičnaté, real, která přidá šumu a nejistoty.
+Skutečnost, že všechny tečky nejdou přesně přes řádek, je OK. Vědečtí data tyto odborníky vysvětlují, že se jedná o model – to je řádek a pak každá tečka má k sobě nějaký určitý *šum* nebo *odchylku* . Existuje základní dokonalý vztah a pak je Gritty reálného světa, který zvyšuje šum a nejistotu.
 
-Protože ale My se snažíme odpověď na otázku *kolik?* tento postup se nazývá *regrese*. A protože používáme rovné čáry, jde *lineární regrese*.
+Vzhledem k tomu, že se snažíme odpovědět na otázku, *Jak velká je?* Toto se nazývá *regrese*. A protože používáme rovnou čáru, jedná se o *lineární regresi*.
 
-## <a name="use-the-model-to-find-the-answer"></a>Použití modelu odpovědi
-Teď máme modelu a jeho žádáme naše otázku: Kolik stojí kosočtverce 1.35 ikonu kosočtverce
+## <a name="use-the-model-to-find-the-answer"></a>Vyhledejte odpověď pomocí modelu.
+Teď máme model a požádáme ho o naši otázku: kolik bude 1,35 kosočtverceových nákladů na Diamond?
 
-Odpověď naše otázku, jsme oka 1.35 carats a kreslení svislé čáry. Pokud překročí řádku modelu jsme eyeball vodorovná čára na ose dolar. Volání přímo na 10 000. Vida! Odpověď je: 1.35 ikonu kosočtverce kosočtverce náklady o 10 000 USD.
+K zodpovězení naší otázky jsme Eyeball 1,35 carats a nakreslili svislou čáru. Tam, kde přechází čáru modelu, Eyeball vodorovnou čáru na osu dolaru. Narazí přímo na 10 000. Bác! Jedná se o odpověď: 1,35 kosočtverce Diamond – náklady na $10 000.
 
 ![Najít odpověď na modelu](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
-## <a name="create-a-confidence-interval"></a>Vytvoření interval spolehlivosti
-Je přirozené zajímat, jak přesně je tato predikce. To je užitečné vědět, jestli kosočtverce 1.35 ikonu kosočtverce bude velmi blízko 10 000 USD, nebo mnohem vyšší nebo nižší. Chcete-li to zjistit, nakreslíme obálku kolem řádku regrese, který obsahuje většinu bodů. Tato obálky se nazývá naše *interval spolehlivosti*: Jsme hodně jistotu, že ceny spadají do obálky, protože v posledních většina z nich mít. Dva více vodorovné čáry jsme můžete čerpat kde protíná řádku 1.35 ikonu kosočtverce horní a dolní část této obálky.
+## <a name="create-a-confidence-interval"></a>Vytvoření intervalu spolehlivosti
+Je přirozenější, aby na tom, jak přesně je tato předpověď. Je vhodné zjistit, zda bude 1,35 kosočtverce kosočtverec velmi blízko $10 000 nebo vyšší nebo nižší. K tomuto obrázku nakreslíme obálku kolem regresní přímky, která obsahuje většinu teček. Tato obálka se označuje jako náš *interval spolehlivosti*: máme v podstatě jistotu, že ceny spadají do této obálky, protože v minulosti většina z nich. Můžeme vykreslit dvě další vodorovné čáry, ze kterých 1,35 kosočtverce řádek protíná horní a dolní část této obálky.
 
 ![Interval spolehlivosti](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
-Teď budeme moct říct: něco o našich interval spolehlivosti:  Bez obav budeme moct říct, že cena kosočtverce 1.35 ikonu kosočtverce je asi $ 10 000 – ale může být v rozsahu od 8 000 $ a může být až 12 000 $.
+Nyní můžeme něco o tomto intervalu spolehlivosti: řekněme, že cena 1,35 kosočtverce Diamond má asi $10 000, ale může to být tak nízké jako $8 000 a může to být tak vysoké jako $12 000.
 
-## <a name="were-done-with-no-math-or-computers"></a>Máme Hotovo, bez matematické nebo počítače
-Jsme to udělali jaké odborníci přes data získat placenou provedete a událo pouhým vykreslování:
+## <a name="were-done-with-no-math-or-computers"></a>Jsme hotovi, bez matematických ani počítačů.
+Provedli jsme to, co se pro odborníky přes data vyplatilo, a my jsme ho právě vykreslit:
 
-* Společnost Microsoft položil dotaz, že jsme mohli odpovědět pomocí dat
-* Sestavili jsme *modelu* pomocí *lineární regrese*
-* Provedli jsme *předpovědi*, s *interval spolehlivosti*
+* Položili jsme otázku, že můžeme odpovědět na data.
+* Sestavili jsme *model* pomocí *lineární regrese* .
+* Provedli jsme *předpovědi*a dokončili jste *interval spolehlivosti* .
 
-A jsme k tomu nepoužili matematické nebo počítače.
+A k tomu jsme nepoužili matematické ani počítače.
 
-Teď Pokud jsme měli informace, jako je...
+Teď, když máme další informace, třeba...
 
-* vyjmutí kosočtverec
-* variace barev (jak blízko kosočtverce je právě bílé)
-* počet zahrnutí v kosočtverec
+* vyjmutí kosočtverce
+* variace barev (jak blízko má být kosočtverec bílá)
+* počet zahrnutí ve čtverečku
 
-.. .then jsme by měli více sloupců. V takovém případě se změní matematické užitečné. Pokud máte více než dva sloupce, je těžké nakreslit tečky na papír. Výpočty umožňuje velmi krásně podle daného řádku nebo že roviny ke svým datům.
+... pak by měl být více sloupců. V takovém případě by matematika mohla být užitečná. Pokud máte více než dva sloupce, je těžké nakreslit tečky na papír. Matematický vám umožní přizpůsobit si tento řádek nebo tuto rovinu vašim datům.
 
-Také pokud namísto pouze několik diamanty, jsme měli dva tisíce nebo dvou miliónů a potom tuto práci můžete provést mnohem rychleji, s počítačem.
+Kromě toho, pokud místo jenom několik kosočtverců, jsme měli 2000 nebo 2 000 000, a díky tomu můžete tuto práci mnohem rychleji udělat v počítači.
 
-V současné době už jsme mluvili o tom, jak provádět lineární regrese a jsme provedli předpověď na základě data.
+Dnes jsme se mluvilii o tom, jak provést lineární regresi a jsme vytvořili předpověď pomocí dat.
 
-Nezapomeňte se podívat na další videa v "Datové vědě pro začátečníky" z Microsoft Azure Machine Learning Studio.
+Nezapomeňte se podívat na další videa v oblasti "data vědy pro začátečníky" z Microsoft Azure Machine Learning Studio (Classic).
 
-## <a name="next-steps"></a>Další postup
-* [Zkuste prvního experimentu vědy data s Machine Learning Studio](create-experiment.md)
-* [Úvod do strojového učení v Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+## <a name="next-steps"></a>Další kroky
+* [Vyzkoušejte si první experiment pro datové vědy s Machine Learning Studio (Classic)](create-experiment.md)
+* [Seznámení s Machine Learningem Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

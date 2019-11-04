@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b6f122abff1ac75bb1cb836f3389c96dfcdf60e0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074118"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470097"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpečení v Azure App Service
 
@@ -40,16 +40,20 @@ V následujících částech se dozvíte, jak dále chránit aplikaci App Servic
 
 ## <a name="https-and-certificates"></a>HTTPS a certifikáty
 
-App Service vám umožní zabezpečit aplikace pomocí [protokolu HTTPS](https://wikipedia.org/wiki/HTTPS). Po vytvoření aplikace je její výchozí název domény (\<APP_NAME >. azurewebsites. NET) již přístupný pomocí protokolu HTTPS. Pokud [pro svou aplikaci nakonfigurujete vlastní doménu](app-service-web-tutorial-custom-domain.md), měli byste [ji také zabezpečit vlastním certifikátem](app-service-web-tutorial-custom-ssl.md) , aby klientské prohlížeče mohli vytvořit zabezpečená připojení HTTPS k vaší vlastní doméně. Můžete to provést dvěma způsoby:
+App Service vám umožní zabezpečit aplikace pomocí [protokolu HTTPS](https://wikipedia.org/wiki/HTTPS). Po vytvoření aplikace je její výchozí název domény (\<APP_NAME >. azurewebsites. NET) již přístupný pomocí protokolu HTTPS. Pokud [pro svou aplikaci nakonfigurujete vlastní doménu](app-service-web-tutorial-custom-domain.md), měli byste [ji také ZABEZPEČIT pomocí certifikátu SSL](configure-ssl-bindings.md) , aby klientské prohlížeče mohli vytvořit zabezpečená připojení HTTPS k vaší vlastní doméně. App Service podporuje několik typů certifikátů:
 
-- **App Service certifikát** – vytvoření certifikátu přímo v Azure. Certifikát je zabezpečený v [Azure Key Vault](/azure/key-vault/)a je možné ho importovat do aplikace App Service. Další informace najdete v tématu [Nákup a konfigurace certifikátu SSL pro Azure App Service](web-sites-purchase-ssl-web-site.md).
-- **Certifikát třetí strany** – nahrajte vlastní certifikát SSL, který jste zakoupili od důvěryhodné certifikační autority, a navažte ho do vaší aplikace App Service. App Service podporuje certifikáty s jednou doménou a zástupné znaky. Pro účely testování podporuje také certifikáty podepsané svým držitelem. Další informace najdete v tématu [vytvoření vazby existujícího vlastního certifikátu SSL k Azure App Service](app-service-web-tutorial-custom-ssl.md).
+- Free App Service spravovaný certifikát
+- App Service certifikát
+- Certifikát třetí strany
+- Certifikát se importoval z Azure Key Vault
+
+Další informace najdete v tématu [Přidání certifikátu protokolu SSL v Azure App Service](configure-ssl-certificate.md).
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>Nezabezpečené protokoly (HTTP, TLS 1,0, FTP)
 
-Pokud chcete svoji aplikaci zabezpečit před všemi nezašifrovanými připojeními (HTTP), App Service poskytuje konfiguraci jedním kliknutím pro vymáhání protokolu HTTPS. Nezabezpečené žádosti jsou vypnuté předtím, než budou mít přístup k vašemu kódu aplikace. Další informace najdete v tématu [vymáhání protokolu HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https).
+Pokud chcete svoji aplikaci zabezpečit před všemi nezašifrovanými připojeními (HTTP), App Service poskytuje konfiguraci jedním kliknutím pro vymáhání protokolu HTTPS. Nezabezpečené žádosti jsou vypnuté předtím, než budou mít přístup k vašemu kódu aplikace. Další informace najdete v tématu [vymáhání protokolu HTTPS](configure-ssl-bindings.md#enforce-https).
 
-Protokol [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1,0 již není považován za zabezpečený oborovým standardem, jako je například [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). App Service umožňuje zakázat zastaralé protokoly vynucením [TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions).
+Protokol [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1,0 již není považován za zabezpečený oborovým standardem, jako je například [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). App Service umožňuje zakázat zastaralé protokoly [vynucením TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions).
 
 App Service podporuje FTP i FTPS pro nasazování souborů. Nicméně FTPS by se měl používat místo FTP, pokud je to možné. Pokud se jeden nebo oba tyto protokoly nepoužívají, měli byste [je zakázat](deploy-ftp.md#enforce-ftps).
 
@@ -57,7 +61,7 @@ App Service podporuje FTP i FTPS pro nasazování souborů. Nicméně FTPS by se
 
 Ve výchozím nastavení vaše aplikace App Service přijímá požadavky ze všech IP adres z Internetu, ale můžete tento přístup omezit na malou podmnožinu IP adres. App Service ve Windows vám umožní definovat seznam IP adres, které mají povolený přístup k vaší aplikaci. Seznam povolených adres může zahrnovat jednotlivé IP adresy nebo rozsah IP adres definovaných maskou podsítě. Další informace najdete v tématu [Azure App Service omezení statických IP adres](app-service-ip-restrictions.md).
 
-Pro App Service ve Windows můžete také dynamicky omezit IP adresy konfigurací _souboru Web. config_. Další informace najdete v tématu [> Dynamic IP \<Security dynamicIpSecurity](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Pro App Service ve Windows můžete také dynamicky omezit IP adresy konfigurací _souboru Web. config_. Další informace najdete v tématu [> zabezpečení protokolu IP \<dynamicIpSecurity](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Ověřování a autorizace klienta
 
@@ -110,7 +114,7 @@ Alternativně můžete svou aplikaci App Service integrovat s [Azure Key Vault](
 
 ## <a name="network-isolation"></a>Izolace sítě
 
-S výjimkou cenové úrovně inizolace všechny úrovně spouštějí vaše aplikace na sdílené síťové infrastruktuře v App Service. Například veřejné IP adresy a nástroje pro vyrovnávání zatížení front-end jsou sdíleny s ostatními klienty. Izolovaná vrstva poskytuje kompletní izolaci sítě spuštěním aplikací v [prostředí vyhrazené App Service](environment/intro.md). Prostředí App Service běží ve vaší vlastní instanci [Azure Virtual Network](/azure/virtual-network/). Umožňuje: 
+S výjimkou cenové úrovně **inizolace** všechny úrovně spouštějí vaše aplikace na sdílené síťové infrastruktuře v App Service. Například veřejné IP adresy a nástroje pro vyrovnávání zatížení front-end jsou sdíleny s ostatními klienty. **Izolovaná** vrstva poskytuje kompletní izolaci sítě spuštěním aplikací v [prostředí vyhrazené App Service](environment/intro.md). Prostředí App Service běží ve vaší vlastní instanci [Azure Virtual Network](/azure/virtual-network/). Umožňuje: 
 
 - Obsluhujte své aplikace prostřednictvím vyhrazeného veřejného koncového bodu s vyhrazenými front-endy.
 - Obsluhovat interní aplikace s využitím interního nástroje pro vyrovnávání zatížení (interního nástroje), který umožňuje přístup pouze zevnitř vaší služby Azure Virtual Network. INTERNÍHO nástroje má IP adresu z vaší privátní podsítě, která poskytuje celkovou izolaci vašich aplikací z Internetu.

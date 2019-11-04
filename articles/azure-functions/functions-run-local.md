@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 28502c49c0eebce84ffd5aa376e7b20bd52213c0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674971"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469105"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -156,8 +156,8 @@ Pokud ve verzi 2. x spustíte příkaz, musíte zvolit modul runtime pro váš p
 Select a worker runtime:
 dotnet
 node
-python (preview)
-powershell (preview)
+python 
+powershell
 ```
 
 Pomocí kláves se šipkami nahoru/dolů vyberte jazyk a potom stiskněte klávesu ENTER. Pokud plánujete vývoj funkcí JavaScriptu nebo TypeScript, zvolte **uzel**a pak vyberte jazyk. TypeScript má [několik dalších požadavků](functions-reference-node.md#typescript). 
@@ -208,11 +208,13 @@ Pokud není nastaven žádný platný připojovací řetězec úložiště pro [
 
 I když používáte emulátor úložiště pro vývoj, budete možná chtít testovat pomocí skutečného připojení úložiště. Za předpokladu, že jste již [vytvořili účet úložiště](../storage/common/storage-create-storage-account.md), můžete získat platný připojovací řetězec úložiště jedním z následujících způsobů:
 
-+ Z [Azure Portal]. Přejděte do svého účtu úložiště, vyberte **přístupové klíče** v **Nastavení**a potom zkopírujte jednu z hodnot **připojovacího řetězce** .
+- V [Azure Portal]vyhledejte a vyberte **účty úložiště**. 
+  ![vyberte účty úložiště z Azure Portal](./media/functions-run-local/select-storage-accounts.png)
+  
+  Vyberte svůj účet úložiště, vyberte **přístupové klíče** v **Nastavení**a pak zkopírujte jednu z hodnot **připojovacího řetězce** .
+  ![zkopírování připojovacího řetězce z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-  ![Kopírovat připojovací řetězec z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
-
-+ Pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) se připojte ke svému účtu Azure. V **Průzkumníku**rozbalte své předplatné, vyberte svůj účet úložiště a zkopírujte primární nebo sekundární připojovací řetězec.
+- Pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) se připojte ke svému účtu Azure. V **Průzkumníku**rozbalte své předplatné, vyberte svůj účet úložiště a zkopírujte primární nebo sekundární připojovací řetězec.
 
   ![Kopírovat připojovací řetězec z Průzkumník služby Storage](./media/functions-run-local/storage-explorer.png)
 

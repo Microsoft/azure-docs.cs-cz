@@ -1,7 +1,7 @@
 ---
-title: Moduly prostředí PowerShell pro Machine Learning Studio
-titleSuffix: Azure Machine Learning Studio
-description: Pomocí Powershellu vytvářet a spravovat Azure Machine Learning Studio pracovní prostory, experimenty, webové služby a další.
+title: Moduly PowerShellu pro Machine Learning Studio (klasické)
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Pomocí PowerShellu můžete vytvářet a spravovat Azure Machine Learning Studio (klasické) pracovní prostory, experimenty, webové služby a další.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,61 +9,61 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: bee42f8a9582908963c0eef95a2fd04742cd425e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dae20a86c7a16e1d989b529a3f2dd4e32253a354
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205668"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496812"
 ---
-# <a name="powershell-modules-for-azure-machine-learning-studio"></a>Moduly Powershellu pro Azure Machine Learning Studio
+# <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Moduly PowerShellu pro Azure Machine Learning Studio (klasické)
 
-Používání modulů Powershellu, můžete programově spravovat Studio prostředky a prostředky, jako jsou pracovní prostory, datové sady a webových služeb.
+Pomocí modulů prostředí PowerShell můžete programově spravovat prostředky studia (Classic) a prostředky, jako jsou pracovní prostory, datové sady a webové služby.
 
-Můžete pracovat s prostředky Studio pomocí tří modulů prostředí Powershell:
+S klasickou verzí prostředků studia můžete pracovat pomocí tří modulů PowerShellu:
 
-* [Azure PowerShell Az](#az-rm) vydána v roce 2018, zahrnuje všechny funkce AzureRM, i když se názvy různých rutin
-* [AzureRM](#az-rm) vydána v roce 2016 nahrazuje Az prostředí PowerShell
-* [Azure Machine Learning PowerShell classic](#classic) vydané v 2016
+* [Azure PowerShell AZ](#az-rm) vydaná v 2018 zahrnuje všechny funkce AzureRM, ale s různými názvy rutin.
+* [AzureRM](#az-rm) vydaná v 2016, nahrazeno prostředím PowerShell AZ
+* [Azure Machine Learning PowerShell Classic](#classic) vydaný v 2016
 
-I když tyto moduly prostředí PowerShell mají některé podobné rysy, jednotlivé jsou nastavené pro určité scénáře. Tento článek popisuje rozdíly mezi moduly Powershellu a pomůže vám při rozhodování jaké vizualizace zvolit.  
+I když tyto moduly PowerShellu mají nějaké podobnosti, každá je navržena pro konkrétní scénáře. Tento článek popisuje rozdíly mezi moduly PowerShellu a pomůže vám se rozhodnout, které z nich si vybrat.  
 
-Zkontrolujte [podporu tabulky](#support-table) dole můžete zjistit, které prostředky jsou podporovány každý modul. 
+Podívejte se na následující [tabulku podpory](#support-table) , kde vidíte, které prostředky jsou podporovány každým modulem. 
 
-## <a name="az-rm"></a> Azure PowerShell Az a AzureRM
+## <a name="az-rm"></a>Azure PowerShell AZ a AzureRM
 
-AZ je určený modul prostředí PowerShell pro interakci s Azure a obsahuje všechny předchozí funkce AzureRM. AzureRM budou dál dostávat opravy chyb, ale bude přijímat žádné nové rutiny nebo funkce.  AZ a AzureRM i spravovat nasazené pomocí řešení **Azure Resource Manageru** modelu nasazení. Tyto prostředky zahrnují pracovní prostory Studio a Studio "Nové" webové služby. 
+AZ je teď zamýšlený modul PowerShellu pro interakci s Azure a zahrnuje všechny předchozí funkce AzureRM. AzureRM bude i nadále přijímat opravy chyb, ale neobdrží žádné nové rutiny nebo funkce.  AZ a AzureRM spravujte řešení nasazená pomocí modelu nasazení **Azure Resource Manager** . Mezi tyto prostředky patří pracovní prostory studia a aplikace Studio (Classic) "nové" webové služby. 
 
-PowerShell – classic je možné nainstalovat souběžně s Az nebo AzureRM zahrnují oba typy zdrojů "nové" a "klasickém". Však není doporučeno mít Az a AzureRM nainstalované ve stejnou dobu. Při rozhodování mezi Az a AzureRM, společnost Microsoft doporučuje Az pro všechny budoucí nasazení.  Další informace o Az oproti AzureRM i migrační cestu v [Úvod do prostředí Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+PowerShell Classic se dá nainstalovat současně buď AZ, nebo AzureRM, aby se pokryly i "nové" i "klasické" typy prostředků. Nedoporučuje se ale mít nainstalovanou AZ a AzureRM ve stejnou dobu. Pro rozhodování mezi AZ a AzureRM společnost Microsoft doporučuje AZ pro všechna budoucí nasazení.  Další informace o AZ AzureRM a cestě k migraci najdete v [úvodu k Azure PowerShell AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
 
-Pokud chcete začít pracovat s Az, postupujte [pokyny k instalaci pro Azure Az](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud chcete začít používat AZ, postupujte podle [pokynů pro instalaci Azure AZ](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-## <a name="classic"></a> PowerShell – classic
+## <a name="classic"></a>PowerShell – Classic
 
-Sady Studio [modulu PowerShell classic](https://aka.ms/amlps) umožňuje spravovat prostředky nasazené pomocí **modelu nasazení classic**. Tyto prostředky zahrnují Studio prostředky uživatele, "klasickém" webových služeb a koncových bodů "klasickém" webové služby.
+[Klasický modul PowerShellu](https://aka.ms/amlps) pro Studio (Classic) umožňuje spravovat prostředky nasazené pomocí **modelu nasazení Classic**. Mezi tyto prostředky patří prostředky pro uživatele studia (Classic), klasické webové služby a klasické koncové body webové služby.
 
-Společnost Microsoft doporučuje, Zjednodušte nasazování a správu prostředků pomocí modelu nasazení Resource Manager pro všechny budoucí prostředky. Pokud chcete získat další informace o modelech nasazení, najdete v článku [Azure Resource Manageru a klasického nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) článku.
+Společnost Microsoft však doporučuje použít model nasazení Správce prostředků pro všechny budoucí prostředky a zjednodušit tak nasazení a správu prostředků. Pokud se chcete dozvědět víc o modelech nasazení, přečtěte si článek [Azure Resource Manager vs. Classic pro nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) .
 
-Chcete-li začít používat PowerShell – classic, stáhněte si [balíček verze](https://github.com/hning86/azuremlps/releases) z Githubu a postupujte podle [pokyny pro instalaci](https://github.com/hning86/azuremlps/blob/master/README.md). Pokyny vysvětlují, jak odblokovat DLL stažené/odblokujte a potom ho importujte do prostředí PowerShell.
+Pokud chcete začít pracovat s prostředím PowerShell Classic, Stáhněte si [balíček pro vydání](https://github.com/hning86/azuremlps/releases) z GitHubu a postupujte podle [pokynů k instalaci](https://github.com/hning86/azuremlps/blob/master/README.md). Pokyny vysvětlují, jak odblokovat staženou a dezip knihovnu DLL, a pak ji importovat do prostředí PowerShell.
 
-PowerShell – classic je možné nainstalovat souběžně s Az nebo AzureRM zahrnují oba typy zdrojů "nové" a "klasickém".
+PowerShell Classic se dá nainstalovat současně buď AZ, nebo AzureRM, aby se pokryly i "nové" i "klasické" typy prostředků.
 
-## <a name="support-table"></a> Tabulka podporu prostředí PowerShell
+## <a name="support-table"></a>Tabulka podpory PowerShellu
 
 
-| | **Az** |  **PowerShell – Classic** |
+| | **AZ** |  **PowerShell – Classic** |
 | --- | --- | --- |
-| Vytvoření nebo odstranění pracovních prostorů | [Šablony Resource Manageru](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
-| Spravovat plány závazků pracovního prostoru | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
-| Správa uživatelů pracovního prostoru |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
-| Správa webových služeb | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>("nové" web services)|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>("klasickém" web services) |
-| Správa koncových bodů/klíče webové služby |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
-| Správa modelů trénovaných/datových sad uživatele| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
-| Spravovat uživatele experimentů |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
-| Správa vlastních modulů | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
+| Vytváření a odstraňování pracovních prostorů | [Šablony Resource Manageru](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
+| Správa plánů závazku pracovního prostoru | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
+| Správa uživatelů v pracovním prostoru |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
+| Správa webových služeb | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>("nové" webové služby)|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>("klasické" webové služby) |
+| Správa koncových bodů a klíčů webové služby |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
+| Správa uživatelských datových sad/poučených modelů| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
+| Správa experimentů uživatelů |  | [Spustit – AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
+| Spravovat vlastní moduly | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
 
 
-## <a name="next-steps"></a>Další postup
-Obraťte se na úplné dokumentaci tyto modul prostředí PowerShell:
+## <a name="next-steps"></a>Další kroky
+Projděte si kompletní dokumentaci k tomuto modulu PowerShellu:
 * [PowerShell – Classic](https://aka.ms/amlps)
-* [Azure PowerShell Az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)
+* [Azure PowerShell AZ](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)

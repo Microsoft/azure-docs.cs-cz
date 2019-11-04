@@ -1,7 +1,7 @@
 ---
-title: 'Kurz 2: Trénování modelů úvěrové riziko'
-titleSuffix: Azure Machine Learning Studio
-description: Podrobný kurz ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v nástroji Azure Machine Learning Studio. Tento kurz je druhou částí z třídílné série. Ukazuje, jak pro trénování a vyhodnocení modelů.
+title: 'Kurz 2: modely úvěrových rizik pro vlaky'
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v klasické verzi Azure Machine Learning Studio. Tento kurz je druhou částí série kurzů s třemi částmi. Ukazuje, jak proškolit a vyhodnocovat modely.
 keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
 author: sdgilley
 ms.author: sgilley
@@ -10,198 +10,195 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 45407e183c70fe67e6bd59e3fd86a50a31844c47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce3661a75d35ab39b7e8b551cc0b84b57a76e032
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60735631"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492550"
 ---
-# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio"></a>Kurz 2: Trénování modelů úvěrové riziko - Azure Machine Learning Studio
+# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Kurz 2: modely úvěrových rizik výukového programu – Azure Machine Learning Studio (Classic)
 
-V tomto kurzu provedete rozšířené pohled na proces vývoje řešení prediktivní analýzy. Při vývoji jednoduchý model v nástroji Machine Learning Studio.  Potom tento model nasadíme jako webové služby Azure Machine Learning.  Tento model nasazený můžete vytvářet predikce na nová data. Tento kurz je **druhou částí z třídílné série kurzů**.
+V tomto kurzu se podíváme na proces vývoje řešení prediktivní analýzy. Vyvíjíte jednoduchý model v klasické verzi Machine Learning Studio.  Model pak nasadíte jako Azure Machine Learning webovou službu.  Tento nasazený model může vytvářet předpovědi s využitím nových dat. Tento kurz je **druhou částí série kurzů s třemi částmi**.
 
 Předpokládejme, že potřebujete předpovědět úvěrové riziko u jednotlivých zákazníků na základě údajů, které uvedli v žádosti o úvěr.  
 
-Posouzení úvěrového rizika je komplexní problém, ale v tomto kurzu se tak si ho Zjednodušte trochu. Budete ho používat jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí Microsoft Azure Machine Learning Studio. Budete používat Azure Machine Learning Studio a webovou službou Machine Learning pro toto řešení.  
+Posouzení úvěrového rizika je složitý problém, ale v tomto kurzu se tento kurz zjednodušuje. Použijete ho jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí Microsoft Azure Machine Learning Studio (Classic). Pro toto řešení použijete klasickou verzi Azure Machine Learning Studio a Machine Learning webovou službu.  
 
-V tomto kurzu třemi částmi začnete s veřejně dostupnými daty úvěrového rizika.  Vyvíjejte a natrénujeme prediktivní model.  Nakonec tento model nasadíme jako webovou službu.
+V tomto kurzu se třemi částmi začínáte veřejně dostupnými daty o úvěrovém riziku.  Pak vyvíjíte a naučíte prediktivní model.  Nakonec model nasadíte jako webovou službu.
 
-V [první části kurzu](tutorial-part1-credit-risk.md), vytvořili pracovní prostor Machine Learning Studio, nahrát data a vytvoření experimentu.
+V [první části kurzu](tutorial-part1-credit-risk.md)jste vytvořili pracovní prostor Machine Learning Studio (klasický), nahráli jste data a vytvořili experiment.
 
-V této části kurzu jste:
+V této části kurzu:
  
 > [!div class="checklist"]
-> * Trénování více modelů
-> * Stanovení skóre a vyhodnocení modelů
+> * Výuka více modelů
+> * Skóre a vyhodnocení modelů
 
 
-V [třetí částí z kurzu](tutorial-part3-credit-risk-deploy.md), bude nasazení modelu jako webové služby.
+V [třetí části kurzu](tutorial-part3-credit-risk-deploy.md)nasadíte model jako webovou službu.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+## <a name="prerequisites"></a>Předpoklady
 
+Vyplňte [první část kurzu](tutorial-part1-credit-risk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="train"></a>Výuka více modelů
 
-Kompletní [první části kurzu](tutorial-part1-credit-risk.md).
+Jednou z výhod použití klasické verze Azure Machine Learning Studio pro vytváření modelů strojového učení je možnost vyzkoušet v jednom experimentu více než jeden typ modelu a porovnat výsledky. Tento typ experimentu vám pomůže najít nejlepší řešení pro váš problém.
 
-## <a name="train"></a>Trénování více modelů
+V experimentu, který vyvíjíme v tomto kurzu, vytvoříte dva různé typy modelů a pak porovnáte výsledky jejich bodování a určíte, který algoritmus chcete použít v konečném experimentu.  
 
-Jednou z výhod pro vytváření modelů strojového učení pomocí Azure Machine Learning Studio je schopnost zkuste více než jeden typ modelu v daný okamžik v jednom experimentu a porovnejte výsledky. Tento typ služby experimentování ve službě vám pomůže najít nejlepší řešení pro váš problém.
-
-V experiment, který vyvíjíme v tomto kurzu vytvoříte dva různé typy modelů a porovnejte jejich vyhodnocování výsledky se rozhodnout, které algoritmus, kterou chcete použít v našich konečný experiment.  
-
-Existují různé modely, které může vybírat. Pokud chcete zobrazit dostupné modely, rozbalte **Machine Learning** uzel paletě modulů a potom rozbalte **inicializovat Model** a uzlů pod ním. Pro účely tohoto experimentu, vyberete [Two-Class Support Vector Machine] [ two-class-support-vector-machine] (SVM) a [Two-Class Boosted Decision Tree] [ two-class-boosted-decision-tree] moduly.
+Existují různé modely, ze kterých si můžete vybrat. Pokud chcete zobrazit dostupné modely, rozbalte uzel **Machine Learning** v paletě modulu a potom rozbalte položku **inicializovat model** a uzly pod ním. Pro účely tohoto experimentu vyberete SVM ( [Podpora dvou tříd][two-class-support-vector-machine] ) a moduly pro [zvýšení rozhodovacího stromu se dvěma třídami][two-class-boosted-decision-tree] .
 
 > [!TIP]
-> Nechte si poradit který nejlepší algoritmus Machine Learning vyhovuje konkrétního problému, který se snažíte vyřešit, najdete v článku [jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio](algorithm-choice.md).
+> Pokud chcete získat pomoc s rozhodnutím, který Machine Learning algoritmus nejlépe vyhovuje konkrétnímu problému, který se snažíte vyřešit, přečtěte si téma [Jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio (Classic)](algorithm-choice.md).
 > 
 > 
 
-Přidáte i [Two-Class Boosted Decision Tree] [ two-class-boosted-decision-tree] modulu a [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modulu v tohoto experimentu .
+Do tohoto experimentu přidáte jak modul [zvýšení rozhodovacího stromu obou tříd][two-class-boosted-decision-tree] , tak i modul [podpory dvou tříd][two-class-support-vector-machine] .
 
-### <a name="two-class-boosted-decision-tree"></a>Two-Class posíleného rozhodovacího stromu
+### <a name="two-class-boosted-decision-tree"></a>Zvýšení rozhodovacího stromu se dvěma třídami
 
-Nejprve nastavte model posíleného rozhodovacího stromu.
+Nejdřív nastavte model zesíleného rozhodovacího stromu.
 
-1. Najít [Two-Class Boosted Decision Tree] [ two-class-boosted-decision-tree] modulu paletě modulů a přetáhněte ji na plátno.
+1. V paletě modulu Najděte modul pro [zvýšení rozhodovacího stromu se dvěma třídami][two-class-boosted-decision-tree] a přetáhněte ho na plátno.
 
-1. Najít [Train Model] [ train-model] modulu, přetáhněte na plátno a potom propojte výstup modulu [Two-Class Boosted Decision Tree] [ two-class-boosted-decision-tree] modul na levé straně vstupním portem modulu [Train Model] [ train-model] modulu.
+1. Najděte modul [vlakového modelu][train-model] , přetáhněte ho na plátno a pak připojte výstup modulu [zesíleného rozhodovacího stromu se dvěma třídami][two-class-boosted-decision-tree] k levému vstupnímu portu modulu [vlakového modelu][train-model] .
    
-   [Two-Class Boosted Decision Tree] [ two-class-boosted-decision-tree] inicializuje modul obecný model a [trénování modelu] [ train-model] používá trénovacích dat pro trénování model. 
+   Modul pro [zvýšení rozhodovacího stromu se dvěma třídami][two-class-boosted-decision-tree] inicializuje obecný model a [model][train-model] výuky používá školicí data pro výuku modelu. 
 
-1. Propojte levý výstup levé straně [spustit skript jazyka R] [ execute-r-script] modulu na pravé straně vstupním portem modulu [Train Model] [ train-model] modulu (v tomto kurzu můžete [používá data přicházející z levé strany](#train) modulu rozdělení dat pro trénování).
+1. Připojte levý výstup levého modulu [spuštění skriptu jazyka R][execute-r-script] ke správnému vstupnímu portu modulu [vlakového modelu][train-model] (v tomto kurzu jste [použili data přicházející z levé strany](#train) modulu rozdělit data pro školení).
    
    > [!TIP]
-   > není nutné dvou vstupů a jeden z výstupů [spustit skript jazyka R] [ execute-r-script] modul pro tento experiment, takže můžete nechat nepřipojené. 
+   > pro tento experiment nepotřebujete dva vstupy a jeden z výstupů modulu [spuštění skriptu jazyka R][execute-r-script] , takže je můžete nechat nepřipojený. 
    > 
    > 
 
-Tato část experiment teď vypadá přibližně takto:  
+Tato část experimentu teď vypadá nějak takto:  
 
-![Trénování modelu](./media/tutorial-part2-credit-risk-train/experiment-with-train-model.png)
+![Školení modelu](./media/tutorial-part2-credit-risk-train/experiment-with-train-model.png)
 
-Nyní je třeba sdělit [Train Model] [ train-model] modul, který má model pro předpověď úvěrového rizika hodnotu.
+Nyní potřebujete sdělit modul [vlakového modelu][train-model] , který má model předpovědět hodnotu úvěrového rizika.
 
-1. Vyberte [Train Model] [ train-model] modulu. V **vlastnosti** podokně klikněte na tlačítko **spustit selektor sloupců**.
+1. Vyberte modul [vlakového modelu][train-model] . V podokně **vlastnosti** klikněte na **Spustit selektor sloupců**.
 
-1. V **zvolte jeden sloupec** dialogové okno, zadejte vyhledávacího pole v části "úvěrové riziko" **dostupných sloupců**, vyberte "Úvěrové riziko" níže a klikněte na tlačítko se šipkou doprava (**>**) přesunete "Úvěrové riziko" **vybrané sloupce**. 
+1. V dialogovém okně **vybrat jeden sloupec** zadejte do pole Hledat v části **Dostupné sloupce**hodnotu úvěrové riziko, vyberte níže "úvěrové riziko" a kliknutím na tlačítko se šipkou doprava ( **>** ) přesuňte "úvěrové riziko" na **vybrané sloupce**. 
 
-    ![Vyberte sloupec úvěrové riziko pro modul trénování modelu](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
+    ![Výběr sloupce úvěrového rizika pro modul vlakového modelu](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 
-1. Klikněte na tlačítko **OK** zaškrtávací políčko.
+1. Klikněte na značku zaškrtnutí **OK** .
 
 ### <a name="two-class-support-vector-machine"></a>Support Vector Machine (SVM) se dvěma třídami
 
-V dalším kroku nastavíte SVM modelu.  
+Dále nastavte SVM model.  
 
-První, trochu vysvětlení SVM. Posílený rozhodovací stromy dobře fungují s funkcí libovolného typu. Protože SVM modul generuje lineární třídění, model, který generuje má ale nejlepší Chyba testu při všechny číselné funkce mají stejné měřítko. Převést všechny číselné funkce na stejném měřítku, používáte transformaci "Tanh" (s [normalizovat Data] [ normalize-data] modul). To transformuje naše čísla v rozsahu [0, 1]. Modulu SVM převede funkce řetězec zařazené do kategorií funkce a klikněte na binární funkce 0 nebo 1, takže není nutné ručně transformace funkce řetězec. Navíc nechcete transformovat úvěrové riziko column (sloupec 21) – je číselná, ale jedná se o hodnotu jsme supervizí trénujete model k predikci, takže je třeba ponechat samostatně.  
+Za prvé, trochu vysvětlující informace o SVM. Vylepšené rozhodovací stromy dobře fungují s funkcemi libovolného typu. Vzhledem k tomu, že modul SVM generuje lineární klasifikátor, má model, který generuje, k chybě nejlepšího testu, pokud mají všechny číselné funkce stejné měřítko. Chcete-li převést všechny číselné funkce na stejné měřítko, použijte transformaci "tanh –" (s modulem [data Normalize][normalize-data] ). Tím se čísla transformují do rozsahu [0, 1]. Modul SVM převádí řetězcové funkce na funkce kategorií a pak do binárních funkcí 0/1, takže nemusíte ručně transformovat řetězcové funkce. Nechcete také transformovat sloupec úvěrového rizika (sloupec 21) – je číslo, ale je to hodnota, kterou sledujeme model pro předpověď, takže je potřeba ho ponechat samostatně.  
 
-Nastavení modelu SVM, postupujte takto:
+K nastavení modelu SVM postupujte takto:
 
-1. Najít [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modulu paletě modulů a přetáhněte ji na plátno.
+1. V paletě modulu Najděte modul pro [vektorový stroj podpory dvou tříd][two-class-support-vector-machine] a přetáhněte ho na plátno.
 
-1. Klikněte pravým tlačítkem na [Train Model] [ train-model] modulu, vyberte **kopírování**a potom klikněte pravým tlačítkem na plátně a vyberte možnost **vložit**. Kopii [Train Model] [ train-model] modul má stejné výběr sloupce jako původní.
+1. Klikněte pravým tlačítkem na modul [vlakového modelu][train-model] , vyberte **Kopírovat**a pak klikněte pravým tlačítkem na plátno a vyberte **Vložit**. Kopie modulu [vlakového modelu][train-model] má stejný výběr sloupce jako původní.
 
-1. Propojte výstup modulu [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modul na levé straně vstupním portem modulu druhý [Train Model] [ train-model] modulu.
+1. Připojte výstup modulu [vektorového počítače podpory dvou tříd][two-class-support-vector-machine] k levému vstupnímu portu druhého modulu [vlakového modelu][train-model] .
 
-1. Najít [normalizovat Data] [ normalize-data] modulu a přetáhněte ji na plátno.
+1. Najděte modul [Normalize data][normalize-data] a přetáhněte ho na plátno.
 
-1. Propojte levý výstup levé straně [spustit skript jazyka R] [ execute-r-script] tohoto modulu (Všimněte si, že na výstupní port modulu může být připojen k více než jeden další modul) se vstupem modulu.
+1. Připojí levý výstup levého modulu [spuštění skriptu jazyka R][execute-r-script] ke vstupu tohoto modulu (Všimněte si, že výstupní port modulu může být připojen k více než jednomu jinému modulu).
 
-1. Propojte levý výstupní port modulu [normalizovat Data] [ normalize-data] modulu na pravé straně vstupním portem modulu druhý [Train Model] [ train-model] modulu.
+1. Připojte levý výstupní port modulu [Normalize data][normalize-data] ke správnému vstupnímu portu druhého modulu [vlakového modelu][train-model] .
 
-Tato část naší experiment by teď měl vypadat přibližně takto:  
+Tato část našeho experimentu by teď měla vypadat nějak takto:  
 
-![Trénujete model pro druhý](./media/tutorial-part2-credit-risk-train/svm-model-added.png)
+![Školení druhého modelu](./media/tutorial-part2-credit-risk-train/svm-model-added.png)
 
-Teď nakonfigurovat [normalizovat Data] [ normalize-data] modul:
+Teď nakonfigurujte modul [dat Normalize][normalize-data] :
 
-1. Kliknutím vyberte [normalizovat Data] [ normalize-data] modulu. V **vlastnosti** vyberte **Tanh** pro **metoda transformace** parametru.
+1. Kliknutím vyberte modul [normalizing data][normalize-data] Module. V podokně **vlastnosti** vyberte možnost **tanh –** pro parametr **metody transformace** .
 
-1. Klikněte na tlačítko **spustit selektor sloupců**, vyberte "Žádné sloupce" pro **začít s**vyberte **zahrnout** v prvním rozevíracím seznamu vyberte **typ sloupce** v druhé rozevírací seznam a vyberte **číselné** v třetí rozevíracího seznamu. Toto nastavení určuje, že jsou transformovány všechny číselné sloupce (a pouze číslice).
+1. Klikněte na tlačítko **Spustit selektor sloupců**, vyberte možnost žádné sloupce pro možnost **začít s**, vyberte možnost **Zahrnout** v prvním rozevíracím seznamu, v rozevíracím seznamu druhý vyberte **typ sloupce** a v rozevíracím seznamu třetí vyberte **číslo** . Tím se určí, že se transformují všechny číselné sloupce (a jenom číselné).
 
-1. Klikněte na znaménko plus (+) napravo od tohoto řádku – tím se vytvoří řádek rozevíracích seznamech. Vyberte **vyloučit** v prvním rozevíracím seznamu vyberte **názvy sloupců** v druhé rozevírací nabídce a zadejte "Úvěrové riziko" v textovém poli. Určuje, že mají být ignorovány úvěrové riziko sloupce (musíte to provést, protože tento sloupec je číselná a proto by je neměli vyloučíte-li transformovat).
+1. Klikněte na znaménko plus (+) napravo od tohoto řádku – tím se vytvoří řádek rozevíracích seznamů. V prvním rozevíracím seznamu vyberte **vyloučit** , v druhém rozevíracím seznamu vyberte **názvy sloupců** a v textovém poli zadejte "úvěrové riziko". To určuje, že by se měl sloupec úvěrového rizika ignorovat (musíte to udělat, protože tento sloupec je numerický, takže by se transformoval, pokud jste ho nevyloučili).
 
-1. Klikněte na tlačítko **OK** zaškrtávací políčko.  
+1. Klikněte na značku zaškrtnutí **OK** .  
 
-    ![Vyberte sloupce pro modul normalizovat Data](./media/tutorial-part2-credit-risk-train/normalize-data-select-column.png)
+    ![Vyberte sloupce pro modul normalizing data Module.](./media/tutorial-part2-credit-risk-train/normalize-data-select-column.png)
 
 
-[Normalizovat Data] [ normalize-data] modulu je nyní nastaven na provedení transformace Tanh pro všechny číselné sloupce kromě sloupce úvěrové riziko.  
+Modul [normalizing data][normalize-data] Module je teď nastavený tak, aby provedl transformaci tanh – pro všechny číselné sloupce s výjimkou sloupce úvěrové riziko.  
 
-## <a name="score-and-evaluate-the-models"></a>Stanovení skóre a vyhodnocení modelů
+## <a name="score-and-evaluate-the-models"></a>Skóre a vyhodnocení modelů
 
-použití testovacích dat, který byl oddělen navýšení kapacity podle [rozdělení dat] [ split] modulu ke stanovení skóre pro naše trénované modely. pak můžete porovnat výsledky ze dvou modelů zobrazíte, která vygeneruje lepší výsledky.  
+testovací data, která byla oddělená modulem [rozdělení dat][split] , můžete použít k vyhodnocení našich vyškolených modelů. pak můžete porovnat výsledky dvou modelů a zjistit, které vygenerovaly lepší výsledky.  
 
-### <a name="add-the-score-model-modules"></a>Přidat moduly určení skóre modelu
+### <a name="add-the-score-model-modules"></a>Přidání modulů modelu skóre
 
-1. Najít [Score Model] [ score-model] modulu a přetáhněte ji na plátno.
+1. Najděte modul určení [skóre modelu][score-model] a přetáhněte ho na plátno.
 
-1. Připojení [Train Model] [ train-model] modul, který je připojený k [Two-Class Boosted Decision Tree] [ two-class-boosted-decision-tree] modul na levé straně vstupním portem modulu [Score Model] [ score-model] modulu.
+1. Připojte modul [vlakového modelu][train-model] , který je připojený k modulu [zesíleného rozhodovacího stromu se dvěma třídami][two-class-boosted-decision-tree] , na levý vstupní port modulu určení [skóre modelu][score-model] .
 
-1. Připojit vpravo [spustit skript jazyka R] [ execute-r-script] modulu (našich testovacích dat) na pravé straně vstupním portem modulu [Score Model] [ score-model] modulu.
+1. Připojte ke správnému vstupnímu portu modulu [skóre modelu][score-model] správný spouštěcí modul [R skriptu][execute-r-script] (naše testovací data).
 
-    ![Připojený modul určení skóre modelu](./media/tutorial-part2-credit-risk-train/score-model-connected.png)
+    ![Připojený modul modelu skóre](./media/tutorial-part2-credit-risk-train/score-model-connected.png)
 
    
-   [Score Model] [ score-model] modulu teď můžete vzít platební informace z testovacích dat, spusťte ho pomocí modelu a porovnat předpovědi modelu vygeneruje se sloupcem riziko skutečné kredit v testování dat.
+   Modul určení [skóre][score-model] teď může z testovacích dat přebírat platební údaje, spustit ho v modelu a porovnat předpovědi, který model generuje, se skutečným sloupcem úvěrového rizika v testovacích datech.
 
-1. Zkopírujte a vložte [Score Model] [ score-model] modul k vytváření druhé kopie.
+1. Zkopírujte a vložte modul určení [skóre modelu][score-model] a vytvořte druhou kopii.
 
-1. Propojte výstup modulu SVM modelu (to znamená, výstupní port modulu [Train Model] [ train-model] modul, který je připojený k [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modul) ke vstupnímu portu druhého [Score Model] [ score-model] modulu.
+1. Připojte výstup modelu SVM (to znamená výstupní port modulu [vlak model][train-model] , který je připojený ke [třídě Vector Machine Machine support][two-class-support-vector-machine] Module), do vstupního portu druhého modulu [bodového modelu][score-model] .
 
-1. Pro SVM model budete muset provést stejné transformace na testovací data, jako jste to udělali na trénovací data. Takže zkopírujte a vložte [normalizovat Data] [ normalize-data] modul k vytváření druhé kopie a jejím připojení k pravému [spustit skript jazyka R] [ execute-r-script] modulu.
+1. V případě modelu SVM je třeba provést stejnou transformaci testovacích dat, jako byste to provedli v školicích datech. Proto zkopírujte a vložte modul [Normalize data][normalize-data] a vytvořte druhou kopii a připojte ji ke správnému modulu [skriptu jazyka R][execute-r-script] .
 
-1. Propojte levý výstup druhého [normalizovat Data] [ normalize-data] modulu na pravé straně vstupním portem modulu druhý [Score Model] [ score-model] modulu.
+1. Připojte levý výstup z druhého modulu [Normalize data][normalize-data] ke správnému vstupnímu portu pro druhý modul [bodového modelu][score-model] .
 
-    ![Obě připojeným modulům určení skóre modelu](./media/tutorial-part2-credit-risk-train/both-score-models-added.png)
-
-
-### <a name="add-the-evaluate-model-module"></a>Přidání modulu Evaluate Model
-
-K vyhodnocení dvě bodování výsledky a k jejich porovnání, můžete použít [Evaluate Model] [ evaluate-model] modulu.  
-
-1. Najít [Evaluate Model] [ evaluate-model] modulu a přetáhněte ji na plátno.
-
-1. Připojte výstupní port modulu [Score Model] [ score-model] modulu spojené s modelem Posílený rozhodovací strom levý vstupní port [Evaluate Model] [ evaluate-model] modulu.
-
-1. Připojte druhou [Score Model] [ score-model] vstupním portem modulu na pravé straně.  
-
-    ![Vyhodnocení modelu připojeným](./media/tutorial-part2-credit-risk-train/evaluate-model-added.png)
+    ![Oba propojené moduly modelu skóre](./media/tutorial-part2-credit-risk-train/both-score-models-added.png)
 
 
-### <a name="run-the-experiment-and-check-the-results"></a>Spusťte experiment a zkontrolovat výsledky
+### <a name="add-the-evaluate-model-module"></a>Přidání modulu vyhodnocení modelu
 
-Spusťte experiment, klikněte na tlačítko **spustit** tlačítko dole na plátně. Může to trvat několik minut. Rotující indikátor na každý modul ukazuje, že je spuštěná a poté zobrazí zelená značka zaškrtnutí dokončení modulu. Když u všech modulů se zaškrtávací políčko, experiment byl ukončen.
+Pro vyhodnocení dvou výsledků bodování a jejich porovnání použijte modul [vyhodnocení modelu][evaluate-model] .  
 
-Experiment by teď měl vypadat přibližně takto:  
+1. Najděte modul [vyhodnocení modelu][evaluate-model] a přetáhněte ho na plátno.
 
-![Vyhodnocení obou modelů](./media/tutorial-part2-credit-risk-train/final-experiment.png)
+1. Připojte výstupní port modulu [bodového modelu][score-model] , který je přidružený k modelu zesíleného rozhodovacího stromu, k levému vstupnímu portu modulu [vyhodnocení modelu][evaluate-model] .
+
+1. Připojte modul pro druhý [model skóre][score-model] ke správnému vstupnímu portu.  
+
+    ![Vyhodnotit připojený modul modelu](./media/tutorial-part2-credit-risk-train/evaluate-model-added.png)
 
 
-Pokud chcete zkontrolovat výsledky, klikněte na výstupní port modulu [Evaluate Model] [ evaluate-model] modul a vyberte **vizualizovat**.  
+### <a name="run-the-experiment-and-check-the-results"></a>Spusťte experiment a podívejte se na výsledky.
 
-[Evaluate Model] [ evaluate-model] modul vytvoří dvojici křivky a metriky, které můžete porovnat výsledky ze dvou modelů Vyhodnocená. Můžete zobrazit výsledky jako křivky příjemce operátor charakteristiku (roc s více TŘÍDAMI), přesnosti/spojené s vracením křivky nebo výtah křivky. Další data obsahuje chybovou matici kumulativní hodnoty pro oblasti pod křivkou (AUC) a další metriky. Můžete změnit prahovou hodnotu přesunete posuvník doleva nebo doprava a zjistit, jak to ovlivní nastavení metriky.  
+Experiment spustíte tak, že kliknete na tlačítko **Spustit** pod plátnem. Může to trvat několik minut. Otáčející se ukazatel u každého modulu ukazuje, že je spuštěný, a po dokončení modulu se zobrazí zelená značka zaškrtnutí. Když mají všechny moduly značku zaškrtnutí, experiment byl dokončen.
 
-Napravo od grafu, klikněte na tlačítko **skóre datovou sadu** nebo **skóre datovou sadu, která porovnání** zvýraznit související křivky a zobrazit související metriky níže. V legendě pro křivky, "Skóre datovou sadu" odpovídá levý vstupní port [Evaluate Model] [ evaluate-model] modul – v našem případě je to model posíleného rozhodovacího stromu. "Skóre datovou sadu, která porovnání" odpovídá pravý vstupní port – model SVM v našem případě. Když kliknete na některý z těchto popisky, křivky pro tento model je zvýrazněn a odpovídající metriky se zobrazí, jak je znázorněno na následujícím obrázku.  
+Experiment by teď měl vypadat nějak takto:  
 
-![Křivky roc s více TŘÍDAMI pro modely](./media/tutorial-part2-credit-risk-train/roc-curves.png)
+![Vyhodnocování obou modelů](./media/tutorial-part2-credit-risk-train/final-experiment.png)
 
-Prozkoumáním těchto hodnot můžete rozhodnout, které model je nejblíže získáte výsledky, které hledáte. Můžete přejít zpět a iterace experimentu změnou hodnoty parametrů v různých modelech. 
 
-Vědy a grafiky interpretace tyto výsledky a optimalizace výkonu modelu je mimo rámec tohoto návodu. Potřebujete další pomoc může přečíst následující články:
-- [Jak vyhodnotit výkon modelu ve službě Azure Machine Learning Studio](evaluate-model-performance.md)
-- [Vybrat parametry pro optimalizaci algoritmů ve službě Azure Machine Learning Studio](algorithm-parameters-optimize.md)
-- [Interpretace výsledků modelu v nástroji Azure Machine Learning Studio](interpret-model-results.md)
+Pokud chcete výsledky kontrolovat, klikněte na výstupní port modulu [vyhodnocení modelu][evaluate-model] a vyberte **vizualizovat**.  
+
+Modul [vyhodnocení modelu][evaluate-model] vytvoří dvojici křivek a metrik, které vám umožní porovnat výsledky dvou modelů skóre. Výsledky můžete zobrazit jako charakteristiky operátorů přijímače (ROC), křivky přesnosti a odvolání nebo křivky zvednutí. Další zobrazená data zahrnují nejasnou matrici, kumulativní hodnoty pro oblast pod křivkou (AUC) a další metriky. Mezní hodnotu můžete změnit přesunutím posuvníku vlevo nebo vpravo a zobrazením vlivu na sadu metrik.  
+
+Napravo od grafu klikněte na **vyhodnocenou** datovou sadu nebo **datovou sadu, která se má porovnat** , zvýrazněte související křivku a zobrazte související metriky níže. V legendě pro křivky "sada dat s skóre" odpovídá levému vstupnímu portu modulu [vyhodnocení modelu][evaluate-model] – v našem případě se jedná o model zesíleného rozhodovacího stromu. "Vyhodnocená datová sada pro porovnání" odpovídá správnému vstupnímu portu – model SVM v našem případě. Po kliknutí na jeden z těchto popisků je křivka tohoto modelu zvýrazněna a zobrazí se odpovídající metrika, jak je znázorněno na následujícím obrázku.  
+
+![ROC – křivky pro modely](./media/tutorial-part2-credit-risk-train/roc-curves.png)
+
+Prozkoumáním těchto hodnot se můžete rozhodnout, který model je nejblížený, abyste vám poskytli výsledky, které hledáte. Můžete se vrátit zpět a iterovat na experimentu změnou hodnot parametrů v různých modelech. 
+
+Vědy a umělecké interpretace těchto výsledků a optimalizace výkonu modelu jsou mimo rozsah tohoto kurzu. Pro další nápovědu si můžete přečíst následující články:
+- [Postup vyhodnocení výkonu modelu v Azure Machine Learning Studio (Classic)](evaluate-model-performance.md)
+- [Výběr parametrů pro optimalizaci algoritmů v Azure Machine Learning Studio (Classic)](algorithm-parameters-optimize.md)
+- [Interpretace výsledků modelu v Azure Machine Learning Studio (Classic)](interpret-model-results.md)
 
 > [!TIP]
-> Pokaždé, když spuštění experimentu záznam danou iteraci, zůstane v historii spuštění. Můžete zobrazit tyto iterace a snadnému návratu na kteroukoli z nich, kliknutím na **zobrazit HISTORII spuštění** dole na plátně. Můžete také kliknout na **předchozího spuštění** v **vlastnosti** se vraťte na iteraci bezprostředně před tím máte otevřený.
+> Pokaždé, když spustíte experiment, záznam této iterace se uchová v historii spuštění. Tyto iterace můžete zobrazit a vrátit se k libovolné z nich kliknutím na **Zobrazit historii spuštění** pod plátnem. Můžete také kliknout na **předchozí spuštění** v podokně **vlastnosti** a vrátit se do iterace hned před tím, co jste otevřeli.
 > 
-> Kliknutím můžete vytvořit kopii kteroukoli iteraci experimentu **uložit jako** dole na plátně. 
-> Použít experiment **Souhrn** a **popis** vlastnosti, které chcete mít přehled, co jste se pokusili v iterace experimentu.
+> Kopii jakékoli iterace experimentu můžete vytvořit tak, že kliknete na tlačítko **Uložit** pod plátnem. 
+> Pomocí vlastností **souhrnu** a **popisu** experimentu můžete uchovat záznam o tom, co jste se snažili v iteracích experimentu.
 > 
-> Další informace najdete v tématu [Správa iterací experimentů v nástroji Azure Machine Learning Studio](manage-experiment-iterations.md).  
+> Další informace najdete v tématu [Správa iterací experimentů v Azure Machine Learning Studio (Classic)](manage-experiment-iterations.md).  
 > 
 > 
 
@@ -209,16 +206,16 @@ Vědy a grafiky interpretace tyto výsledky a optimalizace výkonu modelu je mim
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste dokončili tyto kroky: 
  
 > [!div class="checklist"]
 > * Vytvoření experimentu
-> * Trénování více modelů
-> * Stanovení skóre a vyhodnocení modelů
+> * Výuka více modelů
+> * Skóre a vyhodnocení modelů
 
-Teď jste připravení nasadit modely pro tato data.
+Nyní jste připraveni nasadit modely pro tato data.
 
 > [!div class="nextstepaction"]
 > [Kurz 3 – Nasazení modelů](tutorial-part3-credit-risk-deploy.md)

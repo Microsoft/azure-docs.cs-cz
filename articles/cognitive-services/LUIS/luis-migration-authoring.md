@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 19852fe3a6925ada3dea141a1472683ee264f6d5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 86a7575c173b4515eaf0f690bcd00c6fb70ee581
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973299"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492732"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
 Language Understanding (LUIS) ověřování při vytváření se změnilo z e-mailového účtu na prostředek Azure. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="why-migrate"></a>Proč migrovat?
 
@@ -65,7 +67,7 @@ Proces migrace můžete odložit zrušením z okna. Pravidelně budete požádá
 * **Volitelně můžete**Uložit seznam collaborator's jednotlivých aplikací. Tento e-mailový seznam se poskytuje jako součást procesu migrace.
 * Je **potřeba mít** [předplatné Azure](https://azure.microsoft.com/free/). Součástí procesu předplatného je vyžadování fakturačních informací. Při použití LUIS ale můžete použít cenovou úroveň Free (`F0`). 
 
-**Vytváření aplikací Luis je zadarmo**, které uvádí vrstva `F0`. Přečtěte si [Další informace o cenových úrovních](luis-boundaries.md#key-limits).
+**Vytváření aplikací Luis je zadarmo**, které uvádí `F0` vrstva. Přečtěte si [Další informace o cenových úrovních](luis-boundaries.md#key-limits).
 
 Pokud nemáte předplatné Azure, [Zaregistrujte](https://azure.microsoft.com/free/)se. 
 

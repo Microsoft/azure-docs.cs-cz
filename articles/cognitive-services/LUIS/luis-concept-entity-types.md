@@ -9,214 +9,118 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 9919b6d07e874bd306bdba9da2cd3357bedc48f0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9dc26e50e1c0f43e816e422f0fee91a246ea04a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564004"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487599"
 ---
-# <a name="entity-types-and-their-purposes-in-luis"></a>Typy entit a jejich účely v LUIS
+# <a name="entities-and-their-purpose-in-luis"></a>Entity a jejich účel v LUIS
 
-Entity extrahují data z utterance. Typy entit poskytují předvídatelné extrakci dat. Existují dva typy entit: počítač-se naučil a počítač se naučil. Je důležité znát, ve kterém typu entity pracujete v projevy. 
+Hlavním účelem entit je poskytnout aplikaci klienta předvídatelné extrakci dat. _Volitelným_a sekundárním účelem je zvýšit předpověď záměru pomocí popisovačů. 
 
-## <a name="entity-compared-to-intent"></a>Entity ve srovnání s cílem
+Existují dva typy entit: 
 
-Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrahován. Utterance může obsahovat mnoho entit nebo žádný vůbec. Klientská aplikace může potřebovat entitu k provedení její úlohy nebo ji použít jako vodítko pro zobrazení několika možností pro uživatele. 
+* strojové učení-z kontextu
+* nenáročné na počítač – pro přesné shody textu
 
-Entita:
+Vždy začněte s entitou získanou počítačem, protože poskytuje nejširší škálu voleb pro extrakci dat.
 
-* Představuje třídu, včetně kolekce podobných objektů (míst, věcí, osob, událostí nebo konceptů). 
-* Popisuje informace týkající se záměru.
+## <a name="entity-compared-to-intent"></a>Entita v porovnání s záměrem
 
+Entita představuje koncept dat uvnitř utterance, který chcete extrahovat. 
 
-Pro vyhledávání zpráv aplikace může například obsahovat entity, jako je například "tematické", "zdroj", "– klíčové slovo" a "datum publikování", které jsou klíčová data pro vyhledávání zpráv. V aplikaci pro rezervaci cest jsou klíčové informace pro rezervaci letu (důležité pro záměr "let", "datum", "letecká", "cestovní třída" a "lístky".
+Vezměte v úvahu následující 3 projevy:
 
-Naproti tomu představuje záměr předpovědi celý utterance. 
+|Promluva|Extrahovaná data|Vysvětlení|
+|--|--|--|
+|`Help`|-|Nic k extrakci.|
+|`Send Bob a present`|Bob, přítomen|Bob je pro dokončení úkolu jednoznačně důležité. K dispozici může být dostatek informací, nebo robot může potřebovat objasnit, co se vyskytuje, na základě následné otázky.|
+|`Send Bob a box of chocolates.`|Dvě důležité části dat, Bob a pole čokolády jsou důležité k dokončení požadavku uživatele.|
 
-## <a name="entities-help-with-data-extraction-only"></a>Informace o entitách s extrakcí dat
+Utterance může zahrnovat mnoho entit nebo žádný vůbec. Klientská aplikace _může_ potřebovat entitu k provedení jejího úkolu. 
 
-Entity můžete označovat nebo označovat jenom pro účely extrakce entity, ale nemůžete s předpověďmi záměrů.
+Porovnáním je _vyžadovaná_ předpověď záměru pro utterance a představuje celý utterance. LUIS vyžaduje, aby byl v záměru obsažen příklad projevy. Pokud primární záměr utterance není důležitý pro klientskou aplikaci, přidejte všechny projevyy do záměru None. 
 
-## <a name="entities-represent-data"></a>Entity představují data
+Pokud najdete později v životním cyklu aplikace, chcete projevy přerušit, můžete to snadno udělat. To může být při vytváření projevy organizovat, nebo může být možné použít předpokládaný záměr v klientské aplikaci. 
 
-Entity jsou data, která chcete načítat utterance. To může být název, datum, název produktu nebo jakákoli skupina slova. 
+Neexistuje žádný požadavek na použití prediktivního záměru v klientské aplikaci, ale je vrácen jako součást odpovědi koncového bodu předpovědi.
+
+## <a name="entities-represent-data"></a>Entity reprezentují data
+
+Entity jsou data, která chcete z utterance vyžádat. Může to být název, datum, název produktu nebo libovolná skupina slov. 
 
 |Promluva|Entita|Data|
 |--|--|--|
-|Zakoupit 3 lístky pro New York|Předem připravené číslo<br>Location.Destination|3<br>New York|
-|Nákup lístků z New Yorku do Londýna na 5. března|Location.Origin<br>Location.Destination<br>Předem připravené datetimeV2|New York<br>Londýn<br>5\. března 2018|
+|Koupit 3 lístky do Praha|Předem připravené číslo<br>Umístění. cíl|3<br>New York|
+|Koupit lístek od Praha do Brna v 5. březnu|Umístění. Origin<br>Umístění. cíl<br>Předem sestavený datetimeV2|New York<br>Londýn<br>5\. března 2018|
 
-## <a name="entities-are-optional-but-highly-recommended"></a>Entity jsou volitelné, ale důrazně doporučené
+## <a name="entities-are-optional-but-highly-recommended"></a>Entity jsou volitelné, ale důrazně se doporučují.
 
-I když záměry povinné, entity jsou volitelné. Nemusíte vytvářet entity pro každý koncept ve vaší aplikaci, ale jenom pro ty, které vyžaduje, aby klientská aplikace provedla akci. 
+I když jsou požadované záměry, jsou entity volitelné. Nemusíte vytvářet entity pro každý koncept ve vaší aplikaci, ale jenom pro ty, které vyžaduje, aby klientská aplikace provedla akci. 
 
-Pokud vaše projevy nemají podrobnosti, které váš robot je potřeba pokračovat, není potřeba je přidat. Během existence vaší aplikace, můžete je přidat později. 
+Pokud vaše projevy neobsahuje podrobnosti o tom, že robot potřebuje pokračovat, nemusíte je přidávat. V případě, že vaše aplikace bude vyspělá, můžete je přidat později. 
 
 Pokud si nejste jistí, jak byste tyto informace použili, přidejte několik běžných předem vytvořených entit, jako je [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinální](luis-reference-prebuilt-ordinal.md)číslo, [e-mail](luis-reference-prebuilt-email.md)a [telefonní číslo](luis-reference-prebuilt-phonenumber.md).
 
-## <a name="label-for-word-meaning"></a>Popisek pro význam slova
+## <a name="design-entities-for-decomposition"></a>Entity návrhu pro rozložení
 
-Pokud volba slovo nebo slovo uspořádání je stejný, ale není to samé, není popisek s entitou. 
+Začněte vytvářet návrh entit pomocí počítače, který se naučil. Díky tomu je možné v průběhu času snadno rozšířit návrh a změny vaší entity. Přidejte **dílčí součásti** (podřízené entity) s **omezeními** a **popisovači** k dokončení návrhu entity. 
 
-Následující projevy, slovo `fair` je homograf. Je napsána stejný, ale má odlišný význam:
+Návrh pro dekompozici umožňuje, aby LUIS vrátilo v klientské aplikaci hlubokou míru překladu entit. Díky tomu se klientská aplikace může soustředit na obchodní pravidla a ponechá překlad dat na LUIS.
 
-|Promluva|
-|--|
-|Jaký druh county veletrhů se dějí v Seattlu toto léto?|
-|Je aktuální hodnocení ke kontrole Seattle přiměřená?|
+### <a name="machine-learned-entities-are-primary-data-collections"></a>Entity, které se naučily počítačem, jsou primárními kolekcemi dat.
 
-Pokud byste chtěli entity událost najít všechna data událostí, popisek slovo `fair` v první utterance, ale nikoli do druhého.
+Entity, které se naučily počítačem, jsou datovou jednotkou nejvyšší úrovně. Dílčí komponenty jsou podřízené entity entit strojového učení. 
 
-## <a name="entities-are-shared-across-intents"></a>Entity jsou sdíleny napříč záměrů
+**Omezení** jsou přesné texty vyhovující entitám, které používají pravidla pro identifikaci a extrahování dat. **Popisovače** jsou funkce aplikované na zvýšení relevance slov nebo frází pro předpověď.
 
-Entity jsou sdíleny mezi záměry. Nepatří do žádné jeden záměr. Záměry a entity je možné sémanticky přidružit, ale nejedná se o výhradní vztah.
-
-V adresáři utterance "lístek na dotaz na Paříž", "Paříž" je entita odkazující na umístění. Díky rozpoznávání entit, které jsou zmíněné v utterance uživatele, LUIS pomáhá klientské aplikaci zvolit konkrétní akce, které se mají provést při plnění požadavku uživatele.
-
-## <a name="mark-entities-in-none-intent"></a>Označit entity v žádném záměru
-
-Všechny záměry, včetně záměru **none** , by měly mít označené entity, pokud je to možné. To pomáhá LUIS Další informace o kde entity, které jsou v projevy a slova jsou kolem entity. 
-
-## <a name="entity-status-for-predictions"></a>Stav entity pro předpovědi
-
-Portál LUIS vás upozorní, když se entita v ukázkovém utterance liší od označené entity nebo je příliš blízko jiné entitě, a proto ji nejasný. To je v příkladu utterance označeno červeným podtržením. 
-
-Další informace najdete v tématu [předpovědi stavu entity](luis-how-to-add-example-utterances.md#entity-status-predictions). 
+<a name="composite-entity"></a>
+<a name="list-entity"></a>
+<a name="patternany-entity"></a>
+<a name="prebuilt-entity"></a>
+<a name="regular-expression-entity"></a>
+<a name="simple-entity"></a>
 
 ## <a name="types-of-entities"></a>Typy entit
 
-LUIS nabízí mnoho typů entit. Vyberte entitu na základě toho, jak by měla být data extrahována a jak by měla být reprezentována po extrakci.
+Vyberte entitu na základě toho, jak by měla být data extrahována a jak by měla být reprezentována po extrakci.
 
-Entity se dají extrahovat pomocí strojového učení, které LUIS umožňuje pokračovat ve získávání informací o tom, jak se entita zobrazuje v utterance. Entity je možné extrahovat bez strojového učení, a to tak, že odpovídají přesně textům nebo regulárnímu výrazu. Entity ve vzorcích mohou být extrahovány smíšenou implementací. 
+|typ entity|Účel|
+|--|--|
+|[**Strojové učení**](#composite-entity)|Nadřazené seskupení entit bez ohledu na typ entity. Entity, které se naučily počítačem, se seznámí z kontextu v utterance. Díky tomu je variace umístění v příkladu projevy významná. |
+|[**Seznamu**](#list-entity)|Seznam položek a jejich synonym, které byly extrahovány s **přesnou shodou textu**|
+|[**Vzor. any**](#patternany-entity)|Entita, kde je obtížné určit konec entity |
+|[**Předem připravených**](#prebuilt-entity)|Vyškolený pro extrakci konkrétního druhu dat, jako je adresa URL nebo e-mail. Některé z těchto předem vytvořených entit jsou definované v otevřeném zdrojovém projektu pro [rozpoznávání – textový](https://github.com/Microsoft/Recognizers-Text) projekt. Pokud vaše konkrétní jazyková verze nebo entita není aktuálně podporována, přispívat k projektu.|
+|[**Regulární výraz**](#regular-expression-entity)|Používá regulární výraz pro **přesnější shodu textu**.|
 
-Jakmile je entita extrahována, mohou být data entity reprezentována jako jediná jednotka informací nebo kombinována s jinými entitami, aby mohla tvořit jednotku informací, které může klientská aplikace používat.
+### <a name="entity-role-defines-context"></a>Role entity definuje kontext
 
-|Strojové učení|Může označovat|Kurz|Příklad<br>Odpověď|Typ entity|Účel|
-|--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Náhled**](#composite-entity)|Seskupení entit bez ohledu na typ entity.|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Seznamu**](#list-entity)|Seznam položek a jejich synonym, které byly extrahovány s přesnou shodou textu|
-|Smíšený||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Vzor. any**](#patternany-entity)|Entita, kde je obtížné určit konec entity|
-|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Předem připravených**](#prebuilt-entity)|Již jste vyškoleni k extrakci různých druhů dat.|
-|||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regulární výraz**](#regular-expression-entity)|Používá regulární výraz pro spárování textu.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Pouh**](#simple-entity)|Obsahuje jeden koncept ve slovech nebo frázi.|
+Role entity je pojmenovaný alias na základě kontextu v rámci utterance. Příkladem je utterance pro rezervaci letu, který má dvě umístění, počátek a cíl.
 
-V příkladu projevy je potřeba označit jenom ty entity, které se strojově naučily. Entity náročné na počítač fungují nejlépe při testování prostřednictvím [dotazů na koncový bod](luis-concept-test.md#endpoint-testing) a [kontrole projevy koncového bodu](luis-how-to-review-endoint-utt.md). 
+`Book a flight from Seattle to Cairo`
 
-Vzor. všechny entity musí být označeny v příkladech šablony [vzoru](luis-how-to-model-intent-pattern.md) , nikoli v příkladech uživatele záměr. 
+Musí být extrahovány dva příklady `location` entity. Klientská aplikace musí znát typ umístění pro každý, aby bylo možné dokončit nákup lístku. `location` entita potřebuje dvě role `origin` a `destination` musí být označené v příkladu projevy. 
 
-Smíšené entity používají kombinaci metod detekce entit.
+Pokud LUIS nalezne `location`, ale nemůže určit roli, entita umístění se pořád vrátí. Klientská aplikace by musela postupovat podle otázky, aby určila typ umístění, které uživatel chtěl. 
 
-## <a name="machine-learned-entities-use-context"></a>Entity, které se naučily počítač, používají kontext
+V utterance může existovat více entit a lze je extrahovat bez použití rolí. Pokud kontext věty označuje hodnotu entity, měla by se použít role.
 
-Entity, které se naučily počítačem, se seznámí z kontextu v utterance. Díky tomu je variace umístění v příkladu projevy významná. 
-
-## <a name="non-machine-learned-entities-dont-use-context"></a>Nepoužité entity, které se naučily počítač, nepoužívají kontext
-
-Následující entity nenáročné na počítač neberou utterance kontext do účtu, když se shodují entity: 
-
-* [Předem připravených entit](#prebuilt-entity)
-* [Entity regulárního výrazu](#regular-expression-entity)
-* [Seznam entit](#list-entity) 
-
-Tyto entity nevyžadují popisky ani školení modelu. Jakmile přidáte nebo nakonfigurujete entitu, budou se tyto entity extrahovat. Kompromisem je, že tyto entity se můžou přerovnávat, kde if byl kontext přidaný do účtu, shoda se neudělala. 
-
-K tomu dochází často s entitami seznam pro nové modely. Svůj model sestavíte a otestujete pomocí entity seznam, ale když publikujete model a přijmete dotazy z koncového bodu, provedete si, že se model přechází z důvodu nedostatku kontextu. 
-
-Pokud chcete rozlišovat slova nebo fráze a přihlédnout do kontextu, máte dvě možnosti. Prvním je použití jednoduché entity spárované se seznamem frází. Seznam frází se nebude používat pro porovnání, ale v takovém případě bude pomáhat signalizovat relativně podobná slova (seznam s rozevíracími změnami). Pokud potřebujete přesně vyhledat místo variací seznamu frází, použijte entitu seznam s rolí, která je popsaná níže.
-
-### <a name="context-with-non-machine-learned-entities"></a>Kontext s entitami, které nezískal počítač
-
-Pokud chcete, aby kontext utterance v souvislosti s entitami, které se nestrojově naučily, měli byste použít [role](luis-concept-roles.md).
-
-Pokud máte entitu, která se nejedná o počítač, například [předem připravené entity](#prebuilt-entity), [regulární výrazy](#regular-expression-entity) nebo entity [seznamu](#list-entity) , které se shodují nad požadovanou instancí, zvažte vytvoření jedné entity se dvěma rolemi. Jedna role zachytí, co hledáte, a jedna role zachytí, co nehledáte. Obě verze budou muset být označeny jako projevy.  
-
-## <a name="composite-entity"></a>Složený entity
-
-[Složená entita](reference-entity-composite.md) je tvořena dalšími entitami, jako jsou předem připravené entity, jednoduché, regulární výrazy a seznam entit. Samostatné entity tvoří celé entity. 
-
-## <a name="list-entity"></a>Entita seznamu
-
-[Seznam entit](reference-entity-list.md) představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. Služba LUIS nevyhledává další hodnoty pro seznam entit. Použití **doporučujeme** funkce návrhy pro nové slova na základě aktuálního seznamu. Pokud existuje více než jednu entitu seznamu se stejnou hodnotou, je každá entita vrácené dotazem koncový bod. 
-
-## <a name="patternany-entity"></a>Pattern.Any entity
-
-[Pattern. any](reference-entity-pattern-any.md) je zástupný symbol s proměnlivou délkou, který se používá jenom v šabloně vzoru utterance k označení, kde začíná a končí entita.  
-
-## <a name="prebuilt-entity"></a>Předem připravených entit
-
-Předem připravené entity jsou vestavěné typy, které představují běžné koncepty, jako je e-mail, adresa URL a telefonní číslo. Názvy předem připravených entit, jsou vyhrazena. [Všechny předem připravené entity](luis-prebuilt-entities.md) , které se přidají do aplikace, se vrátí v dotazu předpovědi koncového bodu, pokud se nacházejí v utterance. 
-
-Entita je vhodná v případě, že:
-
-* Data odpovídají běžnému případu použití, který je podporován předem vytvořenými entitami pro jazykovou verzi. 
-
-Předem připravené entity lze kdykoli přidat a odebrat.
-
-![Číslo předem připravených entit](./media/luis-concept-entities/number-entity.png)
-
-[Kurz](luis-tutorial-prebuilt-intents-entities.md)<br>
-[Příklad odpovědi JSON pro entitu](luis-concept-data-extraction.md#prebuilt-entity-data)
-
-Některé z těchto předem vytvořených entit jsou definované v otevřeném zdrojovém projektu pro [rozpoznávání – textový](https://github.com/Microsoft/Recognizers-Text) projekt. Pokud konkrétní jazykovou verzi nebo entity se aktuálně nepodporuje, přispět k projektu. 
-
-### <a name="troubleshooting-prebuilt-entities"></a>Řešení potíží s předem vytvořenými entitami
-
-Pokud je v portálu LUIS k dispozici označení předem sestavené entity místo vlastní entity, máte několik možností, jak tento problém vyřešit.
-
-Předem připravené entity přidané do aplikace se _vždycky_ vrátí, i když by utterance měl extrahovat vlastní entity pro stejný text. 
-
-#### <a name="change-tagged-entity-in-example-utterance"></a>Změnit entitu s příznakem v příkladu utterance
-
-Pokud je předem vytvořená entita stejný text nebo tokeny jako vlastní entita, vyberte text v příkladu utterance a změňte tagovaný utterance. 
-
-Pokud je předem vytvořená entita označená s větším textem nebo tokeny než vaše vlastní entita, máte několik možností, jak tento problém vyřešit:
-
-* [Remove – příklad metody utterance](#remove-example-utterance-to-fix-tagging)
-* [Odebrat předem vytvořenou metodu entity](#remove-prebuilt-entity-to-fix-tagging)
-
-#### <a name="remove-example-utterance-to-fix-tagging"></a>Odebrat příklad utterance pro opravu označování 
-
-První volbou je odebrání ukázkového utteranceu. 
-
-1. Odstraňte příklad utterance.
-1. Přeučení aplikace 
-1. Přidejte zpět pouze slovo nebo frázi, která je entitou, která je označena jako předem sestavená entita, jako kompletní příklad utterance. Pro slovo nebo frázi bude stále označena předdefinovaná entita. 
-1. Vyberte entitu v příkladu utterance na stránce **záměr** a změňte ji na vlastní entitu a znovu spusťte vlak. To by mělo zabránit tomu, aby LUIS označit tento přesný text jako předem vytvořenou entitu v jakémkoli příkladu projevy, který tento text používá. 
-1. Přidejte celý původní příklad utterance zpátky k záměru. Vlastní entita by měla být označena jako místo předem sestavené entity. Pokud vlastní entita není označená, musíte do projevy přidat další příklady tohoto textu.
-
-#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Odebrat předem vytvořenou entitu pro opravu označování
-
-1. Z aplikace odeberte předem vytvořenou entitu. 
-1. Na stránce **záměr** označte vlastní entitu v příkladu utterance.
-1. Trénujte aplikaci.
-1. Přidejte předem vytvořenou entitu zpátky do aplikace a proveďte výuku aplikace. Tato oprava předpokládá, že předem vytvořená entita není součástí složené entity.
-
-## <a name="regular-expression-entity"></a>Entiay regulárního výrazu 
-
-[Entita regulárního výrazu](reference-entity-regular-expression.md) extrahuje entitu na základě vzoru regulárního výrazu, který zadáte.
-
-## <a name="simple-entity"></a>Jednoduchá entita
-
-A [jednoduchou entitu](reference-entity-simple.md) je hodnota zjištěné počítače. Může být slova nebo fráze.
-## <a name="entity-limits"></a>Omezení entity
-
-Kontrola [omezení](luis-boundaries.md#model-boundaries) porozumět, kolik jednotlivých typů entit můžete přidat do modelu.
+Pokud utterance obsahuje seznam umístění, `I want to travel to Seattle, Cairo, and London.`, jedná se o seznam, kde každá položka nemá další význam. 
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Pokud potřebujete více než maximální počet entit 
 
-V kombinaci s rolemi entit může být nutné použít složené entity.
+Pokud potřebujete víc, než je limit, obraťte se na podporu. Provedete to tak, že shromáždíte podrobné informace o vašem systému, přejdete na web [Luis](luis-reference-regions.md#luis-website) a pak vyberete **Podpora**. Pokud vaše předplatné Azure zahrnuje služby podpory, obraťte se na [technickou podporu Azure](https://azure.microsoft.com/support/options/). 
 
-Složený entity představují část celku. Například složenou entitu s názvem PlaneTicketOrder může mít podřízené entity letecká společnost, cíl, DepartureCity, datumOdjezdu a PlaneTicketClass.
+## <a name="entity-prediction-status"></a>Stav předpovědi entity
 
-LUIS také poskytuje typ entity seznamu, který není zjištěn počítačem, ale umožňuje vaší aplikaci LUIS určit pevný seznam hodnot. Zobrazit [LUIS hranice](luis-boundaries.md) odkazu ke kontrole omezení typu entity. 
+Portál LUIS se zobrazí, když entita ve vzorovém utterance má jinou předpověď entit než vybraná entita. Toto jiné skóre vychází z aktuálně vyškolených modelů. 
 
-Pokud jste tyto entity posuzujete a stále potřebujete víc, než je limit, obraťte se na podporu. Uděláte to tak, získat podrobné informace o systému, přejděte [LUIS](luis-reference-regions.md#luis-website) webu a pak vyberte **podporu**. Pokud vaše předplatné Azure zahrnuje odbornou pomoc, obraťte se na [technické podpoře Azure](https://azure.microsoft.com/support/options/). 
+## <a name="next-steps"></a>Další kroky
 
-## <a name="next-steps"></a>Další postup
+Seznamte se s koncepty dobré [projevy](luis-concept-utterance.md). 
 
-Další koncepty o dobré [projevy](luis-concept-utterance.md). 
-
-Zobrazit [přidat entity](luis-how-to-add-entities.md) získat další informace o přidání entity do aplikace LUIS.
+Další informace o tom, jak přidat entity do aplikace LUIS, najdete v tématu věnovaném [Přidání entit](luis-how-to-add-entities.md) .

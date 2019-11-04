@@ -1,7 +1,7 @@
 ---
 title: Export a odstranění vašich dat
-titleSuffix: Azure Machine Learning Studio
-description: V rámci produktu data uložená pomocí Azure Machine Learning Studio je k dispozici pro exportu a odstranění na webu Azure portal a také prostřednictvím ověřeného rozhraní REST API. Telemetrická data, je přístupný prostřednictvím portálu Azure o ochraně osobních údajů. V tomto článku se dozvíte, jak.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Data v produktu uložená v Azure Machine Learning Studio (Classic) jsou k dispozici pro export a odstranění prostřednictvím Azure Portal a také prostřednictvím ověřených rozhraní REST API. K datům telemetrie se dá dostat prostřednictvím portálu ochrany osobních údajů Azure. V tomto článku se dozvíte, jak.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,68 +10,68 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 827714fea9618724ef058e1f76dc099f692482bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0cc200f69be2362806886aae79ece52c833a43a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60750094"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492970"
 ---
-# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Exportovat a odstranit data v rámci produktu uživatelů z Azure Machine Learning Studio
+# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Exportovat a odstranit data uživatelů v produktu z Azure Machine Learning Studio (Classic)
 
-Můžete odstranit nebo exportu v rámci produktu data uložená pomocí Azure Machine Learning Studio pomocí webu Azure portal, rozhraní Studio, PowerShell a ověřil rozhraní REST API. Tento článek vysvětluje, jak. 
+Můžete odstranit nebo exportovat data v produktu uložená v Azure Machine Learning Studio (Classic) pomocí Azure Portal, rozhraní studia (Classic), PowerShellu a ověřených rozhraní REST API. V tomto článku se dozvíte, jak. 
 
-Telemetrická data, je přístupný prostřednictvím portálu Azure o ochraně osobních údajů. 
+K datům telemetrie se dá dostat prostřednictvím portálu ochrany osobních údajů Azure. 
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="what-kinds-of-user-data-does-studio-collect"></a>Jaké druhy uživatelská data shromažďuje nástroj Studio?
+## <a name="what-kinds-of-user-data-does-studio-classic-collect"></a>Jaké druhy uživatelských dat má Studio (Classic) shromažďovat?
 
-Uživatelská data se skládá z informací o uživatelích oprávnění pro přístup k telemetrii záznamy interakcí uživatelů ve službě a pracovní prostory pro tuto službu.
+Pro tuto službu se uživatelská data skládají z informací o uživatelích autorizovaných pro přístup k pracovním prostorům a k záznamům o interakcích uživatelů pomocí služby.
 
-Existují dva druhy údajů uživatele ve službě Machine Learning Studio:
-- **Data osobní účet:** ID účtu a e-mailové adresy přidružené k účtu.
-- **Zákaznická data:** Data, která jste nahráli k analýze.
+V Machine Learning Studio jsou dva druhy uživatelských dat (Classic):
+- **Data osobního účtu:** ID účtu a e-mailové adresy přidružené k účtu.
+- **Zákaznická data:** Data, která jste nahráli k analýze
 
-## <a name="studio-account-types-and-how-data-is-stored"></a>Typy účtů Studio a způsob uložení dat
+## <a name="studio-classic-account-types-and-how-data-is-stored"></a>Typy účtů studia (Classic) a způsob ukládání dat
 
-Existují tři typy účtů ve službě Machine Learning Studio. Druh účtu, který máte Určuje, jak vaše data jsou uložená a jak můžete odstranit nebo ho exportovat.
+Existují tři druhy účtů v Machine Learning Studio (Classic). Druh účtu, který určíte, jak jsou data uložená a jak je můžete odstranit nebo exportovat.
 
-- A **pracovního prostoru hosta** je anonymní, bezplatný účet. Zaregistrovat bez zadání pověření, například e-mailová adresa nebo heslo.
-    -  Data se vyprazdňují po vypršení platnosti pracovního prostoru hosta.
-    - Uživatelé typu Host můžete exportovat zákaznická data prostřednictvím balíčku uživatelského rozhraní, rozhraní REST API nebo Powershellu.
-- A **bezplatný pracovní prostor** je bezplatný účet, přihlaste se na přihlašovací údaje - e-mailovou adresu a heslo účtu u Microsoftu.
-    - Můžete exportovat a odstranit osobní a zákaznická data, která se vztahují data žádosti PSÚ (práv).
-    - Můžete exportovat zákaznická data prostřednictvím balíčku uživatelského rozhraní, rozhraní REST API nebo Powershellu.
-    - Bezplatné pracovní prostory bez použití účtů služby Azure AD, telemetrická data je možné exportovat pomocí portálu pro ochranu osobních údajů.
-    - Když odstraníte pracovní prostor, odstraňte všechna osobní data.
-- A **standardní pracovní prostor** je placený účet přistupujete s přihlašovacími údaji.
-    - Můžete exportovat a odstranit osobní a zákaznická data, která jsou v souladu s žádosti PSÚ.
-    - Data můžete přistupovat prostřednictvím portálu Azure o ochraně osobních údajů
-    - Můžete exportovat osobní a zákaznická data prostřednictvím uživatelského rozhraní, rozhraní REST API nebo Powershellu balíčku
-    - Vaše data na webu Azure Portal můžete odstranit.
+- **Pracovní prostor hosta** je bezplatný anonymní účet. Zaregistrujte se bez zadání přihlašovacích údajů, jako je e-mailová adresa nebo heslo.
+    -  Po vypršení platnosti pracovního prostoru hosta se data vyprázdní.
+    - Uživatelé typu Host můžou exportovat zákaznická data prostřednictvím uživatelského rozhraní, rozhraní REST API nebo balíčku PowerShellu.
+- **Bezplatný pracovní prostor** je bezplatný účet, ke kterému se přihlašujete pomocí účet Microsoft přihlašovacích údajů – e-mailová adresa a heslo.
+    - Můžete exportovat a odstranit osobní údaje a zákaznická data, která se vztahují na žádosti o práva subjektu údajů (DSR).
+    - Zákaznická data můžete exportovat prostřednictvím uživatelského rozhraní, rozhraní REST API nebo balíčku PowerShellu.
+    - U bezplatných pracovních prostorů, které nepoužívají účty Azure AD, se telemetrie dá exportovat pomocí portálu ochrany osobních údajů.
+    - Při odstraňování pracovního prostoru odstraníte všechna osobní zákaznická data.
+- **Standardní pracovní prostor** je placený účet, ke kterému přistupujete pomocí přihlašovacích údajů pro přihlášení.
+    - Můžete exportovat a odstranit osobní údaje a zákaznická data, která se vztahují na požadavky na DSR.
+    - K datům můžete přistupovat prostřednictvím portálu ochrany osobních údajů Azure.
+    - Osobní údaje a zákaznická data můžete exportovat prostřednictvím uživatelského rozhraní, rozhraní REST API nebo balíčku PowerShellu.
+    - Data můžete z Azure Portal odstranit.
 
-## <a name="delete"></a>Odstranit data pracovního prostoru v nástroji Studio 
+## <a name="delete"></a>Odstranění dat pracovního prostoru v studiu (klasické) 
 
-### <a name="delete-individual-assets"></a>Odstranit jednotlivé prostředky
+### <a name="delete-individual-assets"></a>Odstranění jednotlivých assetů
 
-Uživatelé, mohou odstranit prostředky v pracovním prostoru tak, že je vyberete a pak vyberete tlačítko Odstranit.
+Uživatelé mohou odstranit prostředky v pracovním prostoru, a to tak, že je vyberete a pak vyberete tlačítko Odstranit.
 
-![Odstranění prostředků v nástroji Machine Learning Studio](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
+![Odstranění prostředků v Machine Learning Studio (klasické)](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
 
 ### <a name="delete-an-entire-workspace"></a>Odstranit celý pracovní prostor
 
-Uživatelé mohou také odstranit jejich celý pracovní prostor:
-- Placené pracovního prostoru: Odstraňte prostřednictvím webu Azure portal.
-- Bezplatný pracovní prostor: Použijte tlačítko Odstranit v **nastavení** podokně.
+Uživatelé můžou také odstranit celý pracovní prostor:
+- Placený pracovní prostor: odstranění prostřednictvím Azure Portal.
+- Bezplatný pracovní prostor: použijte tlačítko Odstranit v podokně **Nastavení** .
 
-![Odstranit bezplatný pracovní prostor v Machine Learning Studio](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
+![Odstranění bezplatného pracovního prostoru v Machine Learning Studio (Classic)](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
-## <a name="export-studio-data-with-powershell"></a>Export dat Studio pomocí Powershellu
-Exportovat všechny informace do formátu přenosného z Azure Machine Learning Studio pomocí příkazů pomocí Powershellu. Informace najdete v tématu [modul PowerShell pro Azure Machine Learning Studio](powershell-module.md) článku.
+## <a name="export-studio-classic-data-with-powershell"></a>Export dat studia (Classic) pomocí PowerShellu
+Pomocí PowerShellu můžete exportovat všechny informace do přenosného formátu z klasické verze Azure Machine Learning Studio pomocí příkazů. Informace najdete v článku [modul PowerShellu pro Azure Machine Learning Studio (Classic)](powershell-module.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Webové služby a plán závazku fakturace dokumentaci najdete v tématu [REST API služby Azure Machine Learning Studio odkaz](https://docs.microsoft.com/rest/api/machinelearning/). 
+Dokumentaci týkající se fakturace za webové služby a plán závazku najdete v tématu [Azure Machine Learning Studio (Classic) REST API Reference](https://docs.microsoft.com/rest/api/machinelearning/). 

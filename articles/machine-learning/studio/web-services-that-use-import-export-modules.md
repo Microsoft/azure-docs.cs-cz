@@ -1,8 +1,7 @@
 ---
-title: Import/Export dat ve službě web services – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Další informace o použití modulů Data importovat a exportovat Data odesílat a přijímat data z webové služby.
+title: Import/Export dat ve webových službách – Azure Machine Learning Studio (Classic) | Microsoft Docs
+description: Naučte se, jak používat importovaná data a exportovat datové moduly pro posílání a přijímání dat z webové služby.
 services: machine-learning
-documentationcenter: ''
 author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
@@ -10,42 +9,39 @@ editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
 ms.subservice: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 28d16bce6dbb5063c085e8c4393777ee9d152768
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a9259856a792dbd3c2f22ed98eef26c8e5f7b17d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345111"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500112"
 ---
-# <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webové služby Azure Machine Learning Studio, které používají moduly Import dat a Export dat
+# <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webových služeb Azure Machine Learning Studio (Classic), které používají moduly importu a exportu dat
 
-Při vytváření prediktivní experiment přidáte obvykle webové služby vstup a výstup. Při nasazení experimentu příjemci můžou odesílat a přijímat data z webové služby prostřednictvím vstupy a výstupy. U některých aplikací může být k dispozici z datového kanálu uživatelských dat nebo se již nacházejí v externího zdroje dat jako jsou úložiště objektů Blob v Azure. V těchto případech nemusí číst a zapisovat data pomocí webové služby vstupy a výstupy. Mohou, místo toho dat ze zdroje dat pomocí modulu Import dat pomocí služby Batch Execution (BES) a bodovací výsledky zapsat do různých datových umístění pomocí modulu exportovat Data.
+Při vytváření prediktivní experimentu obvykle přidáte vstup a výstup webové služby. Při nasazení experimentu mohou uživatelé odesílat a přijímat data z webové služby prostřednictvím vstupů a výstupů. U některých aplikací mohou být data spotřebitele k dispozici z datového kanálu nebo již nacházejí v externím zdroji dat, jako je například úložiště objektů BLOB v Azure. V těchto případech nepotřebují číst a zapisovat data pomocí vstupů a výstupů webové služby. Můžou místo toho použít službu Batch Execution Service (BES) ke čtení dat ze zdroje dat pomocí modulu import dat a zápis výsledků bodování do jiného umístění dat pomocí modulu export dat.
 
-Import dat a Export dat moduly, můžete číst z a zapisovat do různých dat, třeba na adresu URL webu prostřednictvím protokolu HTTP, dotaz Hive, Azure SQL database, Azure Table storage, Azure Blob storage, datového kanálu poskytnout nebo místní databázi SQL.
+Datové moduly pro import dat a export můžou číst z různých umístění dat, jako je webová adresa URL prostřednictvím protokolu HTTP, dotaz na podregistr, Azure SQL Database, Azure Table Storage, Azure Blob Storage, datový kanál nebo místní databáze SQL.
 
-Toto téma používá "vzorku 5: Trénování, testování, vyhodnotit pro binární klasifikace: Ukázkové datové sady pro dospělé"a předpokládá do tabulky Azure SQL s názvem censusdata již byla načtena datové sady.
+V tomto tématu se používá Ukázka 5: výuka, test, vyhodnocení binární klasifikace: datová sada pro dospělé a předpokládá, že datová sada již byla načtena do tabulky Azure SQL s názvem censusdata.
 
-## <a name="create-the-training-experiment"></a>Vytvořit výukový experiment
-Když otevřete "vzorku 5: Trénování, testování, vyhodnotit pro binární klasifikace: Ukázkové datové sady pro dospělé"používá ukázkovou datovou sadou pro dospělé binární klasifikace příjmů sčítání. A na plátno experimentu bude vypadat podobně jako na následujícím obrázku:
+## <a name="create-the-training-experiment"></a>Vytvoření školení experimentu
+Když otevřete ukázku 5: výuka, test, vyhodnocení pro binární klasifikaci: datová sada pro dospělé, používá ukázkovou datovou sadu binární klasifikace pro dospělé. A experiment na plátně bude vypadat podobně jako na následujícím obrázku:
 
-![Počáteční konfigurace testu.](./media/web-services-that-use-import-export-modules/initial-look-of-experiment.png)
+![Počáteční konfigurace experimentu.](./media/web-services-that-use-import-export-modules/initial-look-of-experiment.png)
 
-K načtení dat z tabulky Azure SQL:
+Čtení dat z tabulky Azure SQL:
 
-1. Odstraňte modul datovou sadu.
-2. Do vyhledávacího pole komponenty typ importu.
-3. Ze seznamu výsledků přidat *Import dat* modulů na plátno experimentu.
-4. Propojte výstup z *Import dat* modulu vstupu z *vyčištění chybějících dat* modulu.
-5. V podokně vlastností, vyberte **Azure SQL Database** v **zdroj dat** rozevíracího seznamu.
-6. V **název databázového serveru**, **název_databáze**, **uživatelské jméno**, a **heslo** polí zadejte příslušné informace pro váš databáze.
-7. Do pole databáze dotazu zadejte následující dotaz.
+1. Odstraňte modul DataSet.
+2. Do vyhledávacího pole součásti zadejte import.
+3. V seznamu výsledků přidejte modul *Import dat* na plátno experimentu.
+4. Připojte výstup modulu *Import dat* do vstupu modulu *Vyčištění chybějících dat* .
+5. V podokně Vlastnosti vyberte v rozevíracím seznamu **zdroj dat** možnost **Azure SQL Database** .
+6. Do polí **název databázového serveru**, **název databáze**, **uživatelské jméno**a **heslo** zadejte příslušné informace pro vaši databázi.
+7. Do pole databázový dotaz zadejte následující dotaz.
 
-     Vyberte [stáří]
+     Vyberte [věk],
 
         [workclass],
         [fnlwgt],
@@ -61,53 +57,53 @@ K načtení dat z tabulky Azure SQL:
         [hours-per-week],
         [native-country],
         [income]
-     z dbo.censusdata;
-8. V dolní části na plátno experimentu klikněte na tlačítko **spustit**.
+     z dbo. censusdata;
+8. V dolní části plátna experimentu klikněte na **Spustit**.
 
 ## <a name="create-the-predictive-experiment"></a>Vytvoření prediktivního experimentu
-Další nastavíte prediktivní experiment, ze kterého nasazujete webovou službu.
+Dále nastavíte prediktivní experiment, ze kterého nasadíte webovou službu.
 
-1. V dolní části na plátno experimentu klikněte na tlačítko **nastavení webové služby** a vyberte **prediktivní webové služby (doporučeno)** .
-2. Odeberte *vstup webové služby* a *webové služby výstupní moduly* z prediktivního experimentu.
-3. Do pole Hledat součásti zadejte exportu.
-4. Ze seznamu výsledků přidat *exportovat Data* modulů na plátno experimentu.
-5. Propojte výstup z *Score Model* modulu vstupu z *exportovat Data* modulu.
-6. V podokně vlastností, vyberte **Azure SQL Database** v rozevírací nabídce Cíl data.
-7. V **název databázového serveru**, **název_databáze**, **název uživatelského účtu serveru**, a **heslo uživatelského účtu serveru** pole, zadejte příslušné informace pro vaši databázi.
-8. V **čárkami oddělený seznam sloupců, které se má uložit** zadejte popisky vyhodnocení.
-9. V **pole název tabulky dat**, zadejte dbo. ScoredLabels. Pokud tabulka neexistuje, vytvoří se při spuštění experimentu nebo webová služba je volána.
-10. V **čárkami oddělený seznam sloupců do tabulky datatable** pole, zadejte ScoredLabels.
+1. V dolní části plátna experimentu klikněte na **nastavit webovou službu** a vyberte **prediktivní webovou službu [doporučeno]** .
+2. Odeberte *výstupní moduly* vstupu a výstupu *webové služby* z prediktivního experimentu.
+3. Do vyhledávacího pole součásti zadejte export.
+4. V seznamu výsledků přidejte modul *Export dat* na plátno experimentu.
+5. Připojte výstup modulu určení *skóre modelu* se vstupem modulu *Export dat* .
+6. V podokně Vlastnosti vyberte v rozevíracím seznamu cíl data možnost **Azure SQL Database** .
+7. Do polí **název**databázového serveru, název **databáze**, **název účtu uživatele serveru**a **heslo účet uživatele serveru** zadejte příslušné informace pro vaši databázi.
+8. V **seznamu sloupců, které mají být uloženy, do pole oddělených čárkami** zadejte popisky s skóre.
+9. Do **pole název tabulky dat**zadejte dbo. ScoredLabels. Pokud tabulka neexistuje, vytvoří se při spuštění experimentu nebo volání webové služby.
+10. Do **textového pole seznam sloupců DataTable** zadejte ScoredLabels.
 
-Při psaní aplikace, která volá poslední webovou službu, můžete zadat jiný dotaz vstupní nebo cílové tabulky v době běhu. Při konfiguraci těchto vstupy a výstupy, funkce parametrů webové služby používá k nastavení *Import dat* modulu *zdroj dat* vlastnost a *exportovat Data* data režimu cílové vlastnosti.  Další informace o parametry webové služby, najdete v článku [vstupní parametry webové služby Azure Machine Learning studio](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) v Cortana Intelligence a Machine Learning Blog.
+Při psaní aplikace, která volá konečnou webovou službu, můžete v době běhu zadat jiné vstupní dotazy nebo cílovou tabulku. Chcete-li nakonfigurovat tyto vstupy a výstupy, použijte funkci parametry webové služby a nastavte vlastnost *zdroj dat* modulu *Import dat* a vlastnost cíl pro *Export* dat v režimu dat.  Další informace o parametrech webové služby najdete v tématu [Azure Machine Learning Studio položky parametrů webové služby](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) na blogu Cortana Intelligence a Machine Learning.
 
-Konfigurace parametrů webové služby pro import dotazu a cílová tabulka:
+Konfigurace parametrů webové služby pro dotaz import a cílovou tabulku:
 
-1. V podokně vlastností *Import dat* modulu, klikněte na ikonu v horní části napravo od **databázový dotaz** pole a vyberte **nastavit jako parametr webové služby**.
-2. V podokně vlastností *exportovat Data* modulu, klikněte na ikonu v horní části napravo od **název tabulky dat** pole a vyberte **nastavit jako parametr webové služby**.
-3. V dolní části *exportovat Data* podokno vlastností modulu v **parametrů webové služby** části, klikněte na tlačítko databázového dotazu a dotaz přejmenovat.
-4. Klikněte na tlačítko **název tabulky dat** a přejmenujte jej **tabulky**.
+1. V podokně vlastnosti modulu *importovat data* klikněte na ikonu v pravém horním rohu pole **databázový dotaz** a vyberte možnost **nastavit jako parametr webové služby**.
+2. V podokně vlastnosti modulu *exportovat data* klikněte na ikonu v pravém horním rohu pole **název tabulky dat** a vyberte možnost **nastavit jako parametr webové služby**.
+3. V dolní části podokna Vlastnosti modulu *exportu dat* klikněte v části **parametry webové služby** na dotaz databáze a přejmenujte dotaz na něj.
+4. Klikněte na **název tabulky dat** a přejmenujte ji na **tabulka**.
 
-Jakmile budete hotovi, experiment by měl vypadat podobně jako na následujícím obrázku:
+Až skončíte, váš experiment by měl vypadat podobně jako na následujícím obrázku:
 
-![Poslední vzhled experimentu.](./media/web-services-that-use-import-export-modules/experiment-with-import-data-added.png)
+![Konečný pohled experimentu.](./media/web-services-that-use-import-export-modules/experiment-with-import-data-added.png)
 
-Teď můžete nasadit experiment jako webové služby.
+Nyní můžete experiment nasadit jako webovou službu.
 
 ## <a name="deploy-the-web-service"></a>Nasazení webové služby
-Můžete nasadit na klasickém nebo novou webovou službu.
+Můžete nasadit na klasickou nebo novou webovou službu.
 
-### <a name="deploy-a-classic-web-service"></a>Nasadit klasickou webovou službou
-Nasadit jako webovou službu Classic a vytvořte aplikaci pro použít:
+### <a name="deploy-a-classic-web-service"></a>Nasazení klasické webové služby
+Nasazení jako klasické webové služby a vytvoření aplikace pro její využívání:
 
-1. V dolní části na plátno experimentu klikněte na tlačítko spustit.
-2. Po dokončení spuštění, klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]** .
-3. Na řídicím panelu webové služby vyhledejte klíč rozhraní API. Zkopírujte a uložte ho pro pozdější použití.
-4. V **výchozí koncový bod** tabulku, klikněte na tlačítko **Batch Execution** odkaz k otevření stránce nápovědy k API.
-5. V sadě Visual Studio, vytvořit C# konzolové aplikace: **Nové** > **projektu** > **Visual C#**   >  **klasická plocha Windows**  >   **Aplikace konzoly (.NET Framework)** .
-6. Na stránce nápovědy k API, vyhledejte **ukázkový kód** části v dolní části stránky.
-7. Zkopírujte a vložte C# ukázkový kód do souboru Program.cs a odeberte všechny odkazy na úložiště objektů blob.
-8. Aktualizujte hodnotu *apiKey* proměnné s klíčem rozhraní API předtím uložili.
-9. Vyhledejte prohlášení požadavku a aktualizujte hodnoty parametrů webové služby, které jsou předány *Import dat* a *exportovat Data* moduly. V takovém případě použijte původní dotaz ale definovat nový název tabulky.
+1. V dolní části plátna experimentu klikněte na spustit.
+2. Po dokončení běhu klikněte na **nasadit webovou službu** a vyberte **nasadit webovou službu [Classic]** .
+3. Na řídicím panelu webové služby Najděte svůj klíč rozhraní API. Zkopírujte a uložte ho pro pozdější použití.
+4. V tabulce **výchozích koncových bodů** klikněte na odkaz **spuštění dávky** a otevřete stránku s usnadněníem rozhraní API.
+5. V aplikaci Visual Studio C# vytvořte konzolovou aplikaci: **Nový** > **projekt** > **Visual C#**  > **Windows Classic Desktop** > **Konzolová aplikace (.NET Framework)** .
+6. Na stránce s nápovědě k rozhraní API vyhledejte část **vzorový kód** v dolní části stránky.
+7. Zkopírujte a vložte C# vzorový kód do souboru program.cs a odeberte všechny odkazy na úložiště objektů BLOB.
+8. Aktualizujte hodnotu proměnné *apiKey* pomocí klíče rozhraní API, který jste uložili dříve.
+9. Vyhledejte deklaraci žádosti a aktualizujte hodnoty parametrů webové služby, které jsou předány do datových modulů *Import dat* a *Export* . V takovém případě použijete původní dotaz, ale nadefinujete nový název tabulky.
 
         var request = new BatchExecutionRequest()
         {
@@ -118,24 +114,24 @@ Nasadit jako webovou službu Classic a vytvořte aplikaci pro použít:
         };
 10. Spusťte aplikaci.
 
-Po dokončení spuštění se přidá novou tabulku k databázi obsahující výsledky hodnocení.
+Po dokončení spuštění je do databáze obsahující výsledky bodování přidána nová tabulka.
 
 ### <a name="deploy-a-new-web-service"></a>Nasazení nové webové služby
 
 > [!NOTE]
-> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, ke kterému, můžete nasazení webové služby. Další informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md).
+> Nasazení nové webové služby vyžaduje dostatečná oprávnění v předplatném, na které nasazujete webovou službu. Další informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md).
 
-Nasadit jako novou webovou službu a vytvořte aplikaci pro použít:
+Nasazení jako nové webové služby a vytvoření aplikace pro její využívání:
 
-1. V dolní části na plátno experimentu klikněte na tlačítko **spustit**.
-2. Po dokončení spuštění, klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení [nové] webová služba**.
-3. Na stránce experimentu nasazení zadejte název pro webovou službu a vybrat cenový plán, pak klikněte na tlačítko **nasadit**.
-4. Na **rychlý Start** klikněte na **spotřebovat**.
-5. V **ukázkový kód** klikněte na tlačítko **Batch**.
-6. V sadě Visual Studio, vytvořit C# konzolové aplikace: **Nové** > **projektu** > **Visual C#**   >  **klasická plocha Windows**  >   **Aplikace konzoly (.NET Framework)** .
-7. Zkopírujte a vložte C# ukázkový kód do souboru Program.cs.
-8. Aktualizujte hodnotu *apiKey* proměnné s **primární klíč** umístěné v **informace o základní spotřeby** oddílu.
-9. Vyhledejte *scoreRequest* prohlášení a aktualizujte hodnoty parametrů webové služby, které jsou předány *Import dat* a *exportovat Data* moduly. V takovém případě použijte původní dotaz ale definovat nový název tabulky.
+1. V dolní části plátna experimentu klikněte na **Spustit**.
+2. Po dokončení běhu klikněte na **nasadit webovou službu** a vyberte **nasadit webovou službu [New]** .
+3. Na stránce nasazení experimentu zadejte název vaší webové služby a vyberte cenový tarif a klikněte na **nasadit**.
+4. Na stránce **rychlý Start** klikněte na možnost **spotřebovat**.
+5. V části **vzorový kód** klikněte na **Batch**.
+6. V aplikaci Visual Studio C# vytvořte konzolovou aplikaci: **Nový** > **projekt** > **Visual C#**  > **Windows Classic Desktop** > **Konzolová aplikace (.NET Framework)** .
+7. Zkopírujte a vložte C# vzorový kód do souboru program.cs.
+8. Aktualizujte hodnotu proměnné *apiKey* pomocí **primárního klíče** , který je umístěný v části **informace o základní spotřebě** .
+9. Vyhledejte deklaraci *scoreRequest* a aktualizujte hodnoty parametrů webové služby, které jsou předány do datových modulů *Import dat* a *Export* . V takovém případě použijete původní dotaz, ale nadefinujete nový název tabulky.
 
         var scoreRequest = new
         {

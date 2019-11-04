@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 5664bf1eaee85d2492601ef00968d9b17d857abb
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900487"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489084"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostování statického webu v Azure Storage
 
@@ -22,9 +22,9 @@ V tomto článku se dozvíte, jak povolit hostování statických webů pomocí 
 
 <a id="portal" />
 
-## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
+## <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-Podrobný kurz najdete v tématu [kurz: Hostování statického webu na Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
+Podrobný kurz najdete v tématu [kurz: hostování statického webu na BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
 
 Po povolení hostování statického webu můžete zobrazit stránky vaší lokality z prohlížeče pomocí veřejné adresy URL webu.
 
@@ -38,7 +38,7 @@ V podokně, které se zobrazí vedle stránky přehled účtu úložiště, vybe
 
 <a id="cli" />
 
-## <a name="use-the-azure-cli"></a>Použití Azure CLI
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Můžete povolit hostování statického webu pomocí [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
@@ -50,7 +50,7 @@ Můžete povolit hostování statického webu pomocí [rozhraní příkazového 
    az account set --subscription <subscription-id>
    ```
 
-   Nahraďte `<subscription-id>` hodnotu zástupného symbolu číslem ID vašeho předplatného.
+   Nahraďte hodnotu zástupného symbolu `<subscription-id>` číslem ID vašeho předplatného.
 
 3. Povolte hostování statických webů.
 
@@ -58,16 +58,16 @@ Můžete povolit hostování statického webu pomocí [rozhraní příkazového 
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
    ```
 
-   * Nahraďte `<storage-account-name>` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
+   * Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
 
-   * `<error-document-name>` Zástupný symbol nahraďte názvem dokumentu chyby, který se zobrazí uživatelům, když prohlížeč požaduje stránku na vašem webu, který neexistuje.
+   * Zástupný symbol `<error-document-name>` nahraďte názvem dokumentu chyby, který se zobrazí uživatelům, když prohlížeč požaduje stránku na vašem webu, který neexistuje.
 
-   * `<index-document-name>` Zástupný symbol nahraďte názvem dokumentu indexu. Tento dokument je běžně "index. html".
+   * Zástupný text `<index-document-name>` nahraďte názvem dokumentu indexu. Tento dokument je běžně "index. html".
 
 4. Nahrajte objekty do kontejneru *$Web* ze zdrojového adresáře.
 
    > [!NOTE]
-   > Pokud používáte Azure Cloud Shell, nezapomeňte při odkazování `\` `$web` na kontejner přidat řídicí znak (například: `\$web`). Pokud používáte místní instalaci rozhraní příkazového řádku Azure CLI, nebudete muset používat řídicí znak.
+   > Pokud používáte Azure Cloud Shell, nezapomeňte při odkazování na kontejner `$web` přidat řídicí znak `\` (například: `\$web`). Pokud používáte místní instalaci rozhraní příkazového řádku Azure CLI, nebudete muset používat řídicí znak.
 
    V tomto příkladu se předpokládá, že spouštíte příkazy z Azure Cloud Shell relace.
 
@@ -75,9 +75,9 @@ Můžete povolit hostování statického webu pomocí [rozhraní příkazového 
    az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
    ```
 
-   * Nahraďte `<storage-account-name>` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
+   * Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
 
-   * Nahraďte `<source-path>` zástupný text cestou k umístění souborů, které chcete odeslat.
+   * Nahraďte zástupný text `<source-path>` cestou k umístění souborů, které chcete nahrát.
 
    > [!NOTE]
    > Pokud používáte instalaci rozhraní příkazového řádku Azure CLI, můžete použít cestu k libovolnému umístění v místním počítači (například: `C:\myFolder`.
@@ -96,13 +96,13 @@ Adresu URL najdete pomocí následujícího příkazu:
 az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
 ```
 
-* Nahraďte `<storage-account-name>` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
+* Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
 
-* Nahraďte `<resource-group-name>` hodnotu zástupného symbolu názvem vaší skupiny prostředků.
+* Nahraďte hodnotu zástupného symbolu `<resource-group-name>` názvem vaší skupiny prostředků.
 
 <a id="powershell" />
 
-## <a name="use-powershell"></a>Použití prostředí PowerShell
+## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hostování statického webu můžete povolit pomocí modulu Azure PowerShell.
 
@@ -129,7 +129,7 @@ Hostování statického webu můžete povolit pomocí modulu Azure PowerShell.
    Set-AzContext $context
    ```
 
-   Nahraďte `<subscription-id>` hodnotu zástupného symbolu číslem ID vašeho předplatného.
+   Nahraďte hodnotu zástupného symbolu `<subscription-id>` číslem ID vašeho předplatného.
 
 5. Získejte kontext účtu úložiště, který definuje účet úložiště, který chcete použít.
 
@@ -138,9 +138,9 @@ Hostování statického webu můžete povolit pomocí modulu Azure PowerShell.
    $ctx = $storageAccount.Context
    ```
 
-   * Nahraďte `<resource-group-name>` hodnotu zástupného symbolu názvem vaší skupiny prostředků.
+   * Nahraďte hodnotu zástupného symbolu `<resource-group-name>` názvem vaší skupiny prostředků.
 
-   * Nahraďte `<storage-account-name>` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
+   * Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
 
 6. Povolte hostování statických webů.
 
@@ -148,9 +148,9 @@ Hostování statického webu můžete povolit pomocí modulu Azure PowerShell.
    Enable-AzStorageStaticWebsite -Context $ctx -IndexDocument <index-document-name> -ErrorDocument404Path <error-document-name>
    ```
 
-   * `<error-document-name>` Zástupný symbol nahraďte názvem dokumentu chyby, který se zobrazí uživatelům, když prohlížeč požaduje stránku na vašem webu, který neexistuje.
+   * Zástupný symbol `<error-document-name>` nahraďte názvem dokumentu chyby, který se zobrazí uživatelům, když prohlížeč požaduje stránku na vašem webu, který neexistuje.
 
-   * `<index-document-name>` Zástupný symbol nahraďte názvem dokumentu indexu. Tento dokument je běžně "index. html".
+   * Zástupný text `<index-document-name>` nahraďte názvem dokumentu indexu. Tento dokument je běžně "index. html".
 
 7. Nahrajte objekty do kontejneru *$Web* ze zdrojového adresáře.
 
@@ -162,9 +162,9 @@ Hostování statického webu můžete povolit pomocí modulu Azure PowerShell.
     -Context $ctx
      ```
 
-   * Nahraďte hodnotu `C:\temp\index.html` zástupnéhosymboluúplnoucestouksouboru,kterýchcetenahrát(`<path-to-file>` například:).
+   * Hodnotu zástupného textu `<path-to-file>` nahraďte úplnou cestou k souboru, který chcete nahrát (například: `C:\temp\index.html`).
 
-   * Nahraďte hodnotu `index.html` zástupnéhosymbolunázvem,kterýchcetevýslednémuobjektuBLOBposkytnout(`<blob-name>` například:).
+   * Nahraďte hodnotu zástupného symbolu `<blob-name>` názvem, který chcete výslednému objektu BLOB poskytnout (například: `index.html`).
 
 <a id="powershell-find-url" />
 
@@ -179,17 +179,19 @@ Adresu URL najdete pomocí následujícího příkazu:
 Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 
-* Nahraďte `<resource-group-name>` hodnotu zástupného symbolu názvem vaší skupiny prostředků.
+* Nahraďte hodnotu zástupného symbolu `<resource-group-name>` názvem vaší skupiny prostředků.
 
-* Nahraďte `<storage-account-name>` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
+* Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
 
 <a id="metrics" />
+
+---
 
 ## <a name="enable-metrics-on-static-website-pages"></a>Povolit metriky na statických stránkách webu
 
 Po povolení metrik se na řídicím panelu metriky nahlásí Statistiky provozu souborů v kontejneru **$Web** .
 
-1. Klikněte na **Nastavení** > **metrik** **monitorování** > .
+1. Klikněte na **nastavení** > **monitorování** > **metriky**.
 
    Data metrik se generují zapojováním do různých rozhraní API metrik. Portál zobrazí pouze členy rozhraní API používané v daném časovém rámci, aby bylo možné se zaměřit pouze na členy, kteří vracejí data. Aby bylo zajištěno, že budete moci vybrat potřebného člena rozhraní API, je prvním krokem rozšíření časového rámce.
 
@@ -217,7 +219,7 @@ Po povolení metrik se na řídicím panelu metriky nahlásí Statistiky provozu
 
    ![GetWebContent metriky Azure Storage statických webů](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Hostování statického webu ve službě Azure Storage](storage-blob-static-website.md)
 * [Použití Azure CDN pro přístup k objektům blob s vlastními doménami přes HTTPS](storage-https-custom-domain-cdn.md)

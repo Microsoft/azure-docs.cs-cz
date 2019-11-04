@@ -1,24 +1,24 @@
 ---
 title: 'Rozdělit data: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul rozdělit data ve službě Azure Machine Learning k rozdělení datové sady do dvou různých sad.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul rozdělit data v Azure Machine Learning k rozdělení datové sady do dvou různých sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0f6ba3c608c90d8634309a1843dc803b98be3d6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692652"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492634"
 ---
 # <a name="split-data-module"></a>Modul rozdělení dat
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete rozdělit datovou sadu do dvou různých sad.
 
@@ -30,7 +30,7 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit da
 > Než zvolíte režim rozdělování, přečtěte si všechny možnosti a určete typ rozdělení, který potřebujete.
 > Pokud změníte rozdělovací režim, můžete obnovit všechny ostatní možnosti.
 
-1. Přidejte modul **rozdělit data** do kanálu v rozhraní. Tento modul můžete najít v části **transformace dat**v kategorii **Ukázka a rozdělení** .
+1. Přidejte modul **rozdělit data** do kanálu v návrháři. Tento modul můžete najít v části **transformace dat**v kategorii **Ukázka a rozdělení** .
 
 2. **Režim rozdělení**: v závislosti na typu dat a způsobu, jakým je chcete rozdělit, vyberte jeden z následujících režimů. Každý režim rozdělování má různé možnosti. Podrobné pokyny a příklady získáte kliknutím na následující témata. 
 
@@ -45,7 +45,8 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit da
     - **Rozdělení relativního výrazu**: tuto možnost použijte vždy, když chcete použít podmínku pro sloupec s čísly. Toto číslo může být pole Datum a čas, sloupec obsahující věkové nebo dolarové částky nebo dokonce i procento. Například můžete chtít rozdělit datovou sadu podle nákladů na položky, seskupit lidi podle věkových rozsahů nebo jednotlivé údaje podle kalendářního data.
 
 ### <a name="split-rows"></a>Rozdělit řádky
-1.  Přidejte modul [rozdělit data](./split-data.md) do kanálu v rozhraní a připojte datovou sadu, kterou chcete rozdělit.
+
+1.  Přidejte modul [rozdělit data](./split-data.md) do kanálu v návrháři a připojte datovou sadu, kterou chcete rozdělit.
   
 2.  V **režimu rozdělení**vyberte **rozdělit řádky**. 
 
@@ -114,4 +115,4 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit da
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

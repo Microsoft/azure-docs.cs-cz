@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9f9fe78db2d8bcf50a076fdfc3eba7b1f347201
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 6d8f67cf94e143cd67a525fa2cc675650fb59e65
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965392"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494016"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
 
@@ -73,11 +73,11 @@ V této části vytvoříme certifikáty podepsané svým držitelem pomocí Ima
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Nahrání certifikátů do Azure Key Vault
 
-K bezpečnému uložení certifikátů a jejich zpřístupnění z více zařízení odešleme certifikáty do Azure Key Vault. Jak vidíte v seznamu výše, máme dva typy souborů certifikátu: PFX a PEM. Soubor PFX budeme považovat za Key Vault certifikáty, které se mají nahrát do Key Vault. Soubory PEM jsou prostý text a my je považujeme za Key Vault tajných klíčů. Použijeme Key Vault přidružené k pracovnímu prostoru služby Azure Machine Learning, který jsme vytvořili spuštěním [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks).
+K bezpečnému uložení certifikátů a jejich zpřístupnění z více zařízení odešleme certifikáty do Azure Key Vault. Jak vidíte v seznamu výše, máme dva typy souborů certifikátu: PFX a PEM. Soubor PFX budeme považovat za Key Vault certifikáty, které se mají nahrát do Key Vault. Soubory PEM jsou prostý text a my je považujeme za Key Vault tajných klíčů. Použijeme Key Vault přidružené k pracovnímu prostoru Azure Machine Learning, který jsme vytvořili spuštěním [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks).
 
-1. Z [Azure Portal](https://portal.azure.com)přejděte do pracovního prostoru služby Azure Machine Learning.
+1. Z [Azure Portal](https://portal.azure.com)přejděte do pracovního prostoru Azure Machine Learning.
 
-2. Na stránce Přehled pracovního prostoru služby Azure Machine Learning vyhledejte název **Key Vault**.
+2. Na stránce Přehled v pracovním prostoru Azure Machine Learning vyhledejte název **Key Vault**.
 
     ![Kopírovat název trezoru klíčů](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 

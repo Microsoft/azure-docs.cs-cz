@@ -1,5 +1,5 @@
 ---
-title: Použít matematickou operaci
+title: Použití matematických operací
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul pro použití matematických operací ve službě Azure Machine Learning k použití matematické operace na hodnoty sloupců v kanálu.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 49bab338f559b1b43389e12d98c75bbffbb25a85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694763"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493927"
 ---
-# <a name="apply-math-operation"></a>Použít matematickou operaci
+# <a name="apply-math-operation"></a>Použití matematických operací
 
-Tento článek popisuje modul Azure Machine Learningho vizuálního rozhraní.
+Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
 
 Použijte operaci použít matematický postup k vytvoření výpočtů, které jsou použity na číselné sloupce vstupní datové sady. 
 
@@ -95,7 +95,7 @@ Vygenerujete-li výsledky pomocí možností **připojit** nebo **ResultOnly** ,
 -   **Equals (Col2_Col1)** , který označuje, že jste otestovali col2 proti sloupci Sloupec1.  
 -   **Rovná se (Col2_ $10)** , což značí, že jste porovnali sloupec 2 s konstantou 10.  
 
-I když použijete možnost **umístění** , zdrojová data se neodstraní ani nezmění. sloupec v původní datové sadě je stále k dispozici ve vizuálním rozhraní. Chcete-li zobrazit původní data, můžete připojit modul [Přidat sloupce](add-columns.md) a spojit ho s výstupem **použití matematické operace**.  
+I když použijete možnost **umístění** , zdrojová data se neodstraní ani nezmění. sloupec v původní datové sadě je stále k dispozici v návrháři. Chcete-li zobrazit původní data, můžete připojit modul [Přidat sloupce](add-columns.md) a spojit ho s výstupem **použití matematické operace**.  
     
 ## <a name="basic-math-operations"></a>Základní matematické operace 
 
@@ -130,7 +130,7 @@ Vypočítá kořenovou datovou krychli pro hodnoty ve vybraném sloupci.
 
 Vrátí velikost mezery mezi aktuální hodnotou a nejbližším číslem s dvojitou přesností. Odpovídá funkci EPS v programu MATLAB.  
   
-### <a name="exp"></a>Oček
+### <a name="exp"></a>Exp
 
 Vrátí hodnotu e umocněnou na mocninu hodnoty ve vybraném sloupci. To je stejné jako funkce Excelu EXP.  
 
@@ -168,7 +168,7 @@ Vrátí protokol hodnot ve vybraném sloupci, které jsou zadané základem.
 
 Základní (druhý argument) můžete určit buď jako konstantu, nebo výběrem jiného sloupce hodnot.  
 
-### <a name="log10"></a>Log10 –
+### <a name="log10"></a>Log10
 
 Vrátí logaritmické hodnoty o základu 10 pro vybraný sloupec.  
 
@@ -194,7 +194,7 @@ V **druhém typu argumentu**vyberte sloupec, který obsahuje exponent, nebo zade
 
 Pokud je druhým argumentem sloupec, všechny hodnoty ve sloupci se použijí jako exponent pro odpovídající řádek. Je-li druhý argument konstanta, zadejte hodnotu exponent do textového pole **druhý argument** .  
 
-### <a name="sqrt"></a>SQRT
+### <a name="sqrt"></a>Sqrt
 
 Vrátí druhou odmocninu hodnot ve vybraném sloupci.  
 
@@ -208,7 +208,7 @@ Odmocninuje hodnoty ve vybraném sloupci.
 
 ## <a name="comparison-operations"></a>Operace porovnání  
 
-Použijte funkce porovnávání v Azure Machine Learning vizuální rozhraní, kdykoli potřebujete testovat dvě sady hodnot vzájemně. Například v kanálu může být nutné provést tyto operace porovnání:  
+Použijte funkce porovnávání v Návrháři Azure Machine Learning, kdykoli potřebujete testovat dvě sady hodnot mezi sebou. Například v kanálu může být nutné provést tyto operace porovnání:  
 
 - Vyhodnotit sloupec s rizikovým skóre modelu s prahovou hodnotou.
 - Určí, zda jsou dvě sady výsledků stejné. Pro každý řádek, který je jiný, přidejte příznak FALSE, který lze použít pro další zpracování nebo filtrování.  
@@ -280,13 +280,13 @@ Určete sloupec hodnot, na kterých se má ( *minuend*) pracovat, výběrem jin�
 
 ##  <a name="rounding-operations"></a>Operace zaokrouhlení 
 
-Azure Machine Learning vizuální rozhraní podporuje nejrůznější operace zaokrouhlení. Pro mnoho operací je nutné zadat množství přesnosti, které se má použít při zaokrouhlování. Můžete použít buď statickou úroveň přesnosti, zadanou jako konstantu, nebo můžete použít hodnotu dynamické přesnosti získanou ze sloupce hodnot.  
+Návrhář Azure Machine Learning podporuje nejrůznější operace zaokrouhlení. Pro mnoho operací je nutné zadat množství přesnosti, které se má použít při zaokrouhlování. Můžete použít buď statickou úroveň přesnosti, zadanou jako konstantu, nebo můžete použít hodnotu dynamické přesnosti získanou ze sloupce hodnot.  
 
 - Použijete-li konstantu, nastavte **typ přesnosti** na **konstantní** a pak zadejte počet číslic jako celé číslo v textovém poli **přesnost konstanty** . Pokud zadáte jiné než celé číslo, modul nevyvolává chybu, ale výsledky mohou být neočekávané.  
 
 - Chcete-li pro každý řádek datové sady použít jinou hodnotu přesnosti, nastavte **typ přesnosti** na **sadou sloupců**a pak vyberte sloupec, který obsahuje odpovídající hodnoty přesnosti.  
 
-### <a name="ceiling"></a>Maximální
+### <a name="ceiling"></a>Ceiling
 
 Vrátí strop pro hodnoty v **sadě sloupců**.  
 
@@ -294,7 +294,7 @@ Vrátí strop pro hodnoty v **sadě sloupců**.
 
 Vrátí čtvercovou mez pro hodnoty v **sadě sloupců**.  
 
-### <a name="floor"></a>Řízení
+### <a name="floor"></a>Floor
 
 Vrátí podlahovou hodnotu pro hodnoty ve **sloupci nastavené**na zadanou přesnost.  
 
@@ -330,7 +330,7 @@ Vrátí hodnoty v **sadě sloupců**zaokrouhlené na nejbližší celé číslo,
 
 Vrátí hodnoty v **sadě sloupců**zaokrouhlené na nejbližší celé, liché číslo.  
 
-### <a name="truncate"></a>Zkrátit
+### <a name="truncate"></a>Truncate
 
 Zkrátí hodnoty v **sadě sloupců** odebráním všech číslic, které nejsou povoleny zadanou přesností.  
   
@@ -493,7 +493,7 @@ Vypočítá kosinus hodnot sloupců.
 
 Vypočítá kosinus pro hodnoty sloupce ve stupních.  
 
-### <a name="cosh"></a>Cosh –
+### <a name="cosh"></a>Cosh
 
 Vypočítá hyperbolický kosinus hodnot sloupců.  
 
@@ -540,7 +540,7 @@ Vypočítá hyperbolický sekans hodnot sloupců.
 
 Vrátí znaménko hodnot sloupce.  
 
-### <a name="sin"></a>Tlačítek
+### <a name="sin"></a>Sin
 
 Vypočítá sinus hodnot sloupce.  
 
@@ -552,11 +552,11 @@ Vypočítá hodnotu hodnoty sloupce ve sinus-kosinus hodnot.
 
 Vypočítá sinus hodnot sloupce ve stupních.  
 
-### <a name="sinh"></a>Sinh –
+### <a name="sinh"></a>Sinh
 
 Vypočítá hyperbolický sinus hodnot sloupců.  
 
-### <a name="tan"></a>nádrž
+### <a name="tan"></a>Tan
 
 Vypočítá tangens hodnot sloupců.  
 
@@ -564,7 +564,7 @@ Vypočítá tangens hodnot sloupců.
 
 Vypočítá tangens argumentu ve stupních.  
 
-### <a name="tanh"></a>Tanh –
+### <a name="tanh"></a>Tanh
 
 Vypočítá hyperbolický tangens hodnot sloupců.  
   

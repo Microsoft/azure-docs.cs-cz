@@ -1,7 +1,7 @@
 ---
-title: Optimalizace algoritmů
-titleSuffix: Azure Machine Learning Studio
-description: Vysvětluje, jak vybrat optimální parametrem nastaveným pro algoritmus v Azure Machine Learning Studio.
+title: Optimalizovat algoritmy
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Vysvětluje, jak zvolit optimální sadu parametrů pro algoritmus v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,66 +10,66 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 6dc9476f603d5664b7ea23489042b69f86647cf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74775550054fc3b4fdbed5cc006d14a913c369c5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60752147"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493513"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Vybrat parametry pro optimalizaci algoritmů ve službě Azure Machine Learning Studio
+# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Výběr parametrů pro optimalizaci algoritmů v Azure Machine Learning Studio (Classic)
 
-Toto téma popisuje, jak zvolit správný hyperparameter nastavení pro algoritmus v Azure Machine Learning Studio. Většina algoritmů strojového učení mít parametry se mají nastavit. Při tréninku modelu, budete muset zadat hodnoty pro tyto parametry. Efektivnost trénovaného modelu, závisí na parametry modelu, které zvolíte. Proces hledání optimální sadu parametrů se označuje jako *modelu výběru*.
+Toto téma popisuje, jak zvolit správnou sadu parametrů pro algoritmus v Azure Machine Learning Studio (Classic). Většina algoritmů strojového učení má nastavené parametry. Při výukovém modelu je nutné zadat hodnoty pro tyto parametry. Účinnost proučeného modelu závisí na zvolených parametrech modelu. Proces nalezení optimální sady parametrů je známý jako *Výběr modelu*.
 
 
 
-Existují různé způsoby, jak modelu výběru. Ve službě machine learning, křížového ověření je jedním z nejpoužívanějších metody pro výběr modelu a je mechanismus výběru výchozí model v Azure Machine Learning Studio. Protože Azure Machine Learning Studio podporuje R a Python, můžete vždy implementovat vlastní mechanismus výběru modelu pomocí R nebo Python.
+Existují různé způsoby, jak vybrat model. V strojovém učení je křížové ověřování jednou z nejpoužívanějších metod výběru modelu a je výchozím mechanismem pro výběr modelu v klasické verzi Azure Machine Learning Studio. Vzhledem k tomu, že klasická verze Azure Machine Learning Studio podporuje R i Python, můžete vždy implementovat vlastní mechanismy výběru modelu pomocí jazyka R nebo Python.
 
-Probíhá hledání sady nejlepší čtyři kroky:
+Při hledání nejlepší sady parametrů je potřeba postupovat podle čtyř kroků:
 
-1. **Definování prostor parametr**: Pro algoritmus nejdřív se rozhodněte, přesné parametr hodnoty, které se mají zvážit.
-2. **Definujte nastavení křížového ověření**: Rozhodněte, jak zvolit přeložení křížového ověření datové sady.
-3. **Definování metriky**: Rozhodněte, jaké metriky pro určení nejlepší sadu parametrů, jako jsou správnost, střední kořenové spolehlivosti chyba, přesnosti, odvolání nebo f skóre.
-4. **Školení, vyhodnocení a porovnat**: Pro každou jedinečnou kombinaci hodnot parametrů je křížového ověřování prováděné a na základě chybové metriky, které definujete. Po vyhodnocení a porovnání můžete zvolit ty modelu.
+1. **Definujte prostor parametru**: pro algoritmus nejdřív určete přesné hodnoty parametrů, které chcete zvážit.
+2. **Definice nastavení křížového ověření**: Rozhodněte, jak zvolit skládání křížového ověřování pro datovou sadu.
+3. **Definování metriky**: Rozhodněte, jaká metrika se má použít k určení nejlepší sady parametrů, jako je přesnost, hlavní střední hodnota chyby, přesnost, odvolání nebo f-skóre.
+4. **Výukové, vyhodnocování a porovnávání**: pro každou jedinečnou kombinaci hodnot parametrů se křížové ověření provádí pomocí a na základě metriky chyby, kterou definujete. Po vyhodnocení a porovnání můžete vybrat nejlepší model.
 
-Ukazuje, jak jde tohoto dosáhnout v Azure Machine Learning Studio je znázorněný na následujícím obrázku.
+Následující obrázek ukazuje, jak to lze dosáhnout v klasické verzi Azure Machine Learning Studio.
 
 ![Najít nejlepší sadu parametrů](./media/algorithm-parameters-optimize/fig1.png)
 
-## <a name="define-the-parameter-space"></a>Definování prostor parametr
-Můžete definovat parametrem nastaveným na model inicializačnímu kroku. Podokno parametr algoritmů strojového učení všechny má dva režimy trainer: *Jeden parametr* a *parametr rozsahu*. Zvolte režim oblasti parametrů. V režimu parametr rozsahu můžete zadat více hodnot pro každý parametr. V textovém poli můžete zadat hodnoty oddělené čárkami.
+## <a name="define-the-parameter-space"></a>Definovat prostor parametru
+Můžete definovat parametr nastavený v kroku inicializace modelu. Podokno parametrů všech algoritmů strojového učení má dva režimy Trainer: *jeden parametr* a *Rozsah parametru*. Vyberte režim rozsahu parametrů. V režimu rozsahu parametrů můžete pro každý parametr zadat více hodnot. Do textového pole můžete zadat hodnoty oddělené čárkami.
 
-![Dvěma třídami posíleného rozhodovacího stromu, jeden parametr](./media/algorithm-parameters-optimize/fig2.png)
+![Zvýšení rozhodovacího stromu se dvěma třídami, jeden parametr](./media/algorithm-parameters-optimize/fig2.png)
 
- Alternativně můžete definovat maximální a minimální bodů mřížky a celkový počet bodů pomocí **Tvůrce rozsahu použití**. Hodnoty parametrů jsou ve výchozím nastavení generovány lineární stupnice. Avšak v tom případě **logaritmické měřítko** je zaškrtnuto, hodnoty jsou generovány v logaritmické měřítko (to znamená, poměr sousední body je konstantní místo jejich rozdíl). Pro celočíselné parametry můžete definovat rozsah použitím spojovníku. Například "1-10" znamená, že všechny celých čísel od 1 do 10 (obojí inkluzivní) tvoří sadu parametrů. Ve smíšeném režimu je také podporována. Například nastavte parametr "1-10, 20, 50" bude zahrnovat celá čísla 1 až 10, 20 a 50.
+ Alternativně můžete definovat maximální a minimální body mřížky a celkový počet bodů, které mají být vygenerovány pomocí **Tvůrce rozsahu použití**. Ve výchozím nastavení se hodnoty parametrů generují lineární stupnice. Pokud je ale zaškrtnuto **měřítko protokolu** , generují se hodnoty v logaritmickém měřítku (to znamená, že poměr sousedních bodů je konstantní místo jejich rozdílu). Pro celočíselné parametry můžete definovat rozsah pomocí pomlčky. Například "1-10" znamená, že všechna celá čísla mezi 1 a 10 (včetně) tvoří sadu parametrů. Podporuje se i smíšený režim. Například sada parametrů "1-10, 20, 50" by obsahovala celá čísla 1-10, 20 a 50.
 
-![Dvěma třídami posíleného rozhodovacího stromu, parametr rozsahu](./media/algorithm-parameters-optimize/fig3.png)
+![Zvýšení rozhodovacího stromu se dvěma třídami, rozsah parametrů](./media/algorithm-parameters-optimize/fig3.png)
 
-## <a name="define-cross-validation-folds"></a>Definování přeložení křížového ověřování
-[Rozdělení a vzorky] [ partition-and-sample] modulu je možné náhodně přiřazení složení k datům. V následující ukázková konfigurace pro modul jsme definování pěti složení a náhodně přiřaďte číslo fold k instancím vzorku.
+## <a name="define-cross-validation-folds"></a>Definování skládání křížového ověřování
+[Oddíl a vzorový][partition-and-sample] modul lze použít k náhodnému přiřazování skládání k datům. V následující ukázkové konfiguraci pro modul definujeme pět skládání a náhodně přiřadíte k ukázkovým instancím číslo přeložení.
 
-![Rozdělení a vzorky](./media/algorithm-parameters-optimize/fig4.png)
+![Oddíl a ukázka](./media/algorithm-parameters-optimize/fig4.png)
 
 ## <a name="define-the-metric"></a>Definování metriky
-[Tune Model Hyperparameters] [ tune-model-hyperparameters] modulu poskytuje podporu pro empirických výběr nejlepší sadu parametrů pro danou algoritmus a datové sady. Kromě dalších informací ohledně trénování modelu, **vlastnosti** podokně tento modul obsahuje metriky pro určení nejlepší sadu parametrů. Má dvě různé rozevírací seznamy klasifikačních a regresních algoritmů, v uvedeném pořadí. Pokud tento algoritmus uvažovanou je klasifikační algoritmus, je ignorován metrika regrese a naopak. V tomto konkrétním příkladu je metrika **přesnost**.   
+Modul [předparametrů modelu ladění][tune-model-hyperparameters] poskytuje podporu pro empirický výběr nejvhodnější sady parametrů pro daný algoritmus a datovou sadu. Kromě dalších informací týkajících se školení modelu obsahuje podokno **vlastností** tohoto modulu metriku pro určení nejlepší sady parametrů. Má dvě různá rozevírací seznamy pro klasifikaci a regresní algoritmy. Pokud je dotyčný algoritmus klasifikační algoritmus, je metrika regrese ignorována a naopak. V tomto konkrétním příkladu je metrika **přesnost**.   
 
-![Uklízení parametrů](./media/algorithm-parameters-optimize/fig5.png)
+![Parametry Sweep](./media/algorithm-parameters-optimize/fig5.png)
 
-## <a name="train-evaluate-and-compare"></a>Školení, vyhodnocení a porovnání
-Stejné [Tune Model Hyperparameters] [ tune-model-hyperparameters] modulu železniční všechny modely, které odpovídají parametru nastavení, vyhodnotí jako různé metriky a pak vytvoří přizpůsobené trénovaného modelu na základě metriku můžete Zvolte. Tento modul má dvě povinné vstupy:
+## <a name="train-evaluate-and-compare"></a>Výuka, vyhodnocení a porovnání
+Stejný modul [parametrů][tune-model-hyperparameters] modulů pro ladění má za základ navlakování všech modelů odpovídajících sadě parametrů, vyhodnotit různé metriky a pak vytvoří nejlepší školený model na základě metriky, kterou zvolíte. Tento modul má dva povinné vstupy:
 
-* Nezkušený learner
-* Datové sady
+* Nevlakované učení
+* Datová sada
 
-Modul obsahuje také volitelné datové sadě služby vstup. Připojte datové sady s informacemi o fold povinná datová sada vstupem. Pokud datovou sadu není přiřazené žádné informace o skládání, pak 10-fold křížové ověření automaticky spustí ve výchozím nastavení. Pokud podmínka není splněna fold přiřazení a ověření datové sady se poskytuje port volitelné datové sady, je zvolen režim trénování a testování a první datová sada použije k natrénování modelu pro každou kombinaci parametrů.
+Modul má také volitelnou vstupní datovou sadu. Připojte datovou sadu s informacemi přeloženými do povinného vstupu datové sady. Pokud datová sada nemá přiřazeny žádné informace o přeložení, bude ve výchozím nastavení automaticky spuštěn křížové ověřování. Pokud přiřazení skládání není provedeno a datová sada ověření je k dispozici na volitelném portu DataSet, je zvolen režim vlaku-test a první datová sada je použita ke výukě modelu pro každou kombinaci parametrů.
 
-![Posílený rozhodovací strom třídění](./media/algorithm-parameters-optimize/fig6a.png)
+![Rozdaný klasifikátor rozhodovacího stromu](./media/algorithm-parameters-optimize/fig6a.png)
 
-Model se pak vyhodnocuje na datové sadě ověření. Na levý výstupní port modulu ukazuje různé požadované metriky, jako funkce hodnot parametrů. Na pravém výstupní port poskytuje trénovaného modelu, který odpovídá na ty model podle vybrané metriky (**přesnost** v tomto případě).  
+Model se pak vyhodnotí na datové sadě ověřování. Levý výstupní port modulu zobrazuje různé metriky jako funkce hodnot parametrů. Pravý výstupní port poskytuje vyškolený model, který odpovídá nejlepšímu modelu podle zvolené metriky (**přesnost** v tomto případě).  
 
-![Ověření datové sady](./media/algorithm-parameters-optimize/fig6b.png)
+![Ověřovací datová sada](./media/algorithm-parameters-optimize/fig6b.png)
 
-Zobrazí se přesný parametry zvolí vizualizace na pravé výstupní port. Tento model je možné v vyhodnocování sady testů nebo zprovozněné webové službě po uložení jako trénovaného modelu.
+Můžete zobrazit přesné parametry zvolené k vizualizaci správného výstupního portu. Tento model lze použít při vyhodnocování testovací sady nebo v provozní webové službě po uložení jako trained model.
 
 <!-- Module References -->
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/

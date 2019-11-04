@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: ee505cc78c16d85640c7e13541272f1bafe30061
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: f6446a2dbe3f111c9c617e78a0bdd98f6cea9153
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71800004"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468776"
 ---
 # <a name="about-the-speech-sdk"></a>Sada Speech SDK
 
@@ -33,7 +33,7 @@ V případě systému Windows podporujeme následující jazyky:
 
 * C#(UWP a .NET), C++: můžete odkazovat a používat nejnovější verzi našeho balíčku NuGet sady Speech SDK. Balíček zahrnuje 32 a 64 klientských knihoven a spravovaných knihoven (.NET). Sadu SDK můžete nainstalovat do sady Visual Studio pomocí NuGet. Vyhledejte **Microsoft. cognitiveservices Account. Speech**.
 
-* Java: můžete odkazovat a používat nejnovější verzi našeho balíčku Maven sady Speech SDK, který podporuje jenom Windows x64. V projektu Maven přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` jako závislost.
+* Java: můžete odkazovat a používat nejnovější verzi našeho balíčku Maven sady Speech SDK, který podporuje jenom Windows x64. V projektu Maven přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` na odkaz jako závislost.
 
 ### <a name="linux"></a>Linux
 
@@ -65,7 +65,7 @@ sudo apt-get install libssl1.0.2 libasound2
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.7.0" />
   ```
 
-* Java: můžete odkazovat a používat nejnovější verzi našeho balíčku Maven sady Speech SDK. V projektu Maven přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` jako závislost.
+* Java: můžete odkazovat a používat nejnovější verzi našeho balíčku Maven sady Speech SDK. V projektu Maven přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` na odkaz jako závislost.
 
 * C++: Stáhněte si sadu SDK jako [balíček. tar](https://aka.ms/csspeech/linuxbinary) a rozbalte soubory v adresáři dle vašeho výběru. Struktura složek sady SDK je znázorněna v následující tabulce:
 
@@ -81,11 +81,11 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ### <a name="android"></a>Android
 
-Java SDK pro Android je zabalená jako [Knihovna AAR (Android Library)](https://developer.android.com/studio/projects/android-library), která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android. Hostuje se v úložišti Maven na `https://csspeechstorage.blob.core.windows.net/maven/` jako balíček `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`.
+Java SDK pro Android je zabalená jako [Knihovna AAR (Android Library)](https://developer.android.com/studio/projects/android-library), která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android. Hostuje se v úložišti Maven ve `https://csspeechstorage.blob.core.windows.net/maven/` jako `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`balíčku.
 
 Chcete-li balíček využívat z Android Studio projektu, proveďte následující změny:
 
-* V souboru Build. Gradle na úrovni projektu přidejte následující část do oddílu `repository`:
+* V souboru Build. Gradle na úrovni projektu přidejte do části `repository` následující:
 
   ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
@@ -104,4 +104,4 @@ Sada Java SDK je také součástí [sady Speech SDK pro zařízení](speech-devi
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Podívejte se, jak rozpoznávat řeč vC#](quickstart-csharp-dotnet-windows.md)
+* [Podívejte se, jak rozpoznávat řeč vC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

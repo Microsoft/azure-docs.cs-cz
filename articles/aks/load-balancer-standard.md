@@ -7,20 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 55ded9a733baaac7fbc78621bd625d57d1d37ad1
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8ebd91f8f02ad7eacd8440b34a31b78f5cac5741
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255473"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472615"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití nástroje pro vyrovnávání zatížení Standard SKU ve službě Azure Kubernetes (AKS)
 
 Pokud chcete zajistit přístup k vašim aplikacím ve službě Azure Kubernetes Service (AKS), můžete vytvořit a použít Azure Load Balancer. Nástroj pro vyrovnávání zatížení, který běží na AKS, se dá použít jako interní nebo externí nástroj pro vyrovnávání zatížení. Interní nástroj pro vyrovnávání zatížení zpřístupňuje službu Kubernetes jenom aplikacím běžícím ve stejné virtuální síti jako cluster AKS. Externí nástroj pro vyrovnávání zatížení přijímá jednu nebo více veřejných IP adres pro příchozí provoz a zpřístupňuje službu Kubernetes externě pomocí veřejných IP adres.
 
-Azure Load Balancer je k dispozici ve dvou SKU – *Basic* a *Standard*. Ve výchozím nastavení se *základní* SKU používá, když se k vytvoření nástroje pro vyrovnávání zatížení v AKS používá manifest služby. Použití nástroje pro vyrovnávání zatížení *Standard* SKU poskytuje další funkce, jako je větší velikost fondu back-endu a zóny dostupnosti. Před výběrem, který se má použít, je důležité porozumět rozdílům mezi *standardními* a *základními* nástroji pro vyrovnávání zatížení. Po vytvoření clusteru AKS již nelze změnit SKLADOVOU položku Nástroje pro vyrovnávání zatížení pro daný cluster. Další informace o jednotkách *Basic* a *Standard* najdete v tématu [porovnání skladové položky služby Vyrovnávání zatížení Azure][azure-lb-comparison].
-
-V tomto článku se dozvíte, jak vytvořit a použít Azure Load Balancer se *standardní* SKU se službou Azure Kubernetes Service (AKS).
+Azure Load Balancer je k dispozici ve dvou SKU – *Basic* a *Standard*. Ve výchozím nastavení se *standardní* SKU používá při vytváření clusteru AKS. Použití nástroje pro vyrovnávání zatížení *Standard* SKU poskytuje další funkce, jako je větší velikost fondu back-endu a zóny dostupnosti. Před výběrem, který se má použít, je důležité porozumět rozdílům mezi *standardními* a *základními* nástroji pro vyrovnávání zatížení. Po vytvoření clusteru AKS již nelze změnit SKLADOVOU položku Nástroje pro vyrovnávání zatížení pro daný cluster. Další informace o jednotkách *Basic* a *Standard* najdete v tématu [porovnání skladové položky služby Vyrovnávání zatížení Azure][azure-lb-comparison].
 
 Tento článek předpokládá základní znalost konceptů Kubernetes a Azure Load Balancer. Další informace najdete v tématu [Kubernetes Core koncepty pro Azure Kubernetes Service (AKS)][kubernetes-concepts] a [co je Azure Load Balancer?][azure-lb].
 
@@ -28,15 +26,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.74 nebo novější. Pokud chcete zjistit verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.74 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
+V tomto článku se předpokládá, že máte cluster AKS s Azure Load Balancerem *standardní* SKU. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Pokud použijete existující podsíť nebo skupinu prostředků, instanční objekt služby AKS potřebuje oprávnění ke správě síťových prostředků. Obecně přiřaďte roli *Přispěvatel sítě* k instančnímu objektu u delegovaných prostředků. Další informace o oprávněních najdete v tématu [delegování přístupu AKS k ostatním prostředkům Azure][aks-sp].
+Instanční objekt služby AKS potřebuje také oprávnění ke správě síťových prostředků, pokud použijete existující podsíť nebo skupinu prostředků. Obecně přiřaďte roli *Přispěvatel sítě* k instančnímu objektu u delegovaných prostředků. Další informace o oprávněních najdete v tématu [delegování přístupu AKS k ostatním prostředkům Azure][aks-sp].
 
-Musíte vytvořit cluster AKS, který nastaví SKU pro nástroj pro vyrovnávání zatížení na *standardní* místo výchozí *Basic*.
-
-### <a name="limitations"></a>Omezení (limity)
+### <a name="limitations"></a>Omezení
 
 Při vytváření a správě clusterů AKS, které podporují Nástroj pro vyrovnávání zatížení se *standardní* SKU, platí následující omezení:
 
@@ -48,220 +45,11 @@ Při vytváření a správě clusterů AKS, které podporují Nástroj pro vyrov
 * Definování SKU nástroje pro vyrovnávání zatížení se dá provést jenom při vytváření clusteru AKS. SKU nástroje pro vyrovnávání zatížení nelze změnit po vytvoření clusteru AKS.
 * V jednom clusteru můžete použít jenom jednu SKU nástroje pro vyrovnávání zatížení.
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="configure-the-load-balancer-to-be-internal"></a>Konfigurace nástroje pro vyrovnávání zatížení jako interního
 
-Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] .
+Nástroj pro vyrovnávání zatížení můžete také nakonfigurovat tak, aby byl interní a nezveřejňuje veřejnou IP adresu. Pokud chcete nástroj pro vyrovnávání zatížení nakonfigurovat jako interní, přidejte `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` jako anotaci do služby *Vyrovnávání* zatížení. [Tady][internal-lb-yaml]vidíte ukázkový manifest YAML a další podrobnosti o interním nástroji pro vyrovnávání zatížení.
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* .
-
-```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
-
-Následující příklad výstupu ukazuje, že skupina prostředků byla úspěšně vytvořena:
-
-```json
-{
-  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup",
-  "location": "eastus",
-  "managedBy": null,
-  "name": "myResourceGroup",
-  "properties": {
-    "provisioningState": "Succeeded"
-  },
-  "tags": null,
-  "type": null
-}
-```
-
-## <a name="create-aks-cluster"></a>Vytvoření clusteru AKS
-Aby bylo možné spustit cluster AKS, který podporuje nástroj pro vyrovnávání zatížení se *standardní* SKU, musí váš cluster nastavit parametr *Vyrovnávání zatížení – SKU* na *úroveň Standard*. Tento parametr vytvoří nástroj pro vyrovnávání zatížení se *standardní* SKU při vytvoření clusteru. Když ve svém clusteru *spustíte službu Vyrovnávání* zatížení, konfigurace nástroje Load Balancer *Standard* SKU se aktualizuje s konfigurací služby. Pomocí příkazu [AZ AKS Create][az-aks-create] vytvořte cluster AKS s názvem *myAKSCluster*.
-
-> [!NOTE]
-> Vlastnost *pro vyrovnávání zatížení – vlastnost SKU* se dá použít jenom při vytváření clusteru. SKU nástroje pro vyrovnávání zatížení nelze změnit po vytvoření clusteru AKS. V jednom clusteru taky můžete použít jenom jeden typ SKU nástroje pro vyrovnávání zatížení.
-> 
-> Pokud chcete použít vlastní veřejné IP adresy, použijte parametry *Vyrovnávání zatížení – odchozí IP adresy*nebo *Nástroje pro vyrovnávání zatížení-odchozí-IP-předpony* . Oba tyto parametry lze použít také při [aktualizaci clusteru](#optional---provide-your-own-public-ips-or-prefixes-for-egress).
-
-```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
-    --load-balancer-sku standard \
-    --generate-ssh-keys
-```
-
-Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON.
-
-## <a name="connect-to-the-cluster"></a>Připojit ke clusteru
-
-Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl][kubectl]. Pokud používáte Azure Cloud Shell, je už nainstalovaná `kubectl`. Pokud chcete `kubectl` nainstalovat místně, použijte příkaz [AZ AKS Install-CLI][az-aks-install-cli] :
-
-```azurecli
-az aks install-cli
-```
-
-Pokud chcete nakonfigurovat `kubectl` pro připojení ke clusteru Kubernetes, použijte příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
-
-```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
-```
-
-Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl Get][kubectl-get] , který vrátí seznam uzlů clusteru.
-
-```azurecli-interactive
-kubectl get nodes
-```
-
-Následující příklad výstupu ukazuje jeden uzel vytvořený v předchozích krocích. Ujistěte se, že stav uzlu je *připravený*:
-
-```
-NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.10
-```
-
-## <a name="verify-your-cluster-uses-the-standard-sku"></a>Ověření, že cluster používá *standardní* SKU
-
-Pro zobrazení konfigurace clusteru použijte příkazem [AZ AKS show][az-aks-show] .
-
-```console
-$ az aks show --resource-group myResourceGroup --name myAKSCluster
-
-{
-  "aadProfile": null,
-  "addonProfiles": null,
-   ...
-   "networkProfile": {
-    "dnsServiceIp": "10.0.0.10",
-    "dockerBridgeCidr": "172.17.0.1/16",
-    "loadBalancerSku": "standard",
-    ...
-```
-
-Ověřte, že vlastnost *loadBalancerSku* se zobrazuje jako *Standard*.
-
-## <a name="use-the-load-balancer"></a>Použití nástroje pro vyrovnávání zatížení
-
-Chcete-li použít nástroj pro vyrovnávání zatížení v clusteru, vytvořte v něm manifest služby s typem služby pro *Vyrovnávání*zatížení. Chcete-li zobrazit fungování nástroje pro vyrovnávání zatížení, vytvořte další manifest s ukázkovou aplikací pro spuštění v clusteru. Tato ukázková aplikace je vystavena prostřednictvím nástroje pro vyrovnávání zatížení a je možné ji zobrazit v prohlížeči.
-
-Vytvořte manifest s názvem `sample.yaml`, jak je znázorněno v následujícím příkladu:
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-back
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-back
-  template:
-    metadata:
-      labels:
-        app: azure-vote-back
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-back
-        image: redis
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 6379
-          name: redis
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-back
-spec:
-  ports:
-  - port: 6379
-  selector:
-    app: azure-vote-back
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-front
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-front
-  template:
-    metadata:
-      labels:
-        app: azure-vote-front
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-front
-        image: microsoft/azure-vote-front:v1
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 80
-        env:
-        - name: REDIS
-          value: "azure-vote-back"
-```
-
-Výše uvedený manifest konfiguruje dvě nasazení: *Azure-hlasování-přední* a *Azure-hlasování*. Pokud chcete nakonfigurovat nasazení *Azure – hlasování* , které se má zveřejnit pomocí nástroje pro vyrovnávání zatížení, vytvořte manifest s názvem `standard-lb.yaml`, jak je znázorněno v následujícím příkladu:
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-front
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: azure-vote-front
-```
-
-Služba *Azure – hlasová přední strana* *používá typ vyrovnávání* zatížení pro konfiguraci nástroje pro vyrovnávání zatížení v clusteru AKS pro připojení k nasazení *Azure-hlasování* .
-
-Nasaďte ukázkovou aplikaci a nástroj pro vyrovnávání zatížení pomocí [kubectl použít][kubectl-apply] a zadejte název vašich manifestů YAML:
-
-```console
-kubectl apply -f sample.yaml
-kubectl apply -f standard-lb.yaml
-```
-
-Nástroj pro vyrovnávání zatížení *Standard* SKU je teď nakonfigurovaný tak, aby vystavoval ukázkovou aplikaci. Podívejte se na podrobnosti o službě *Azure – hlasování* s použitím [kubectl Get][kubectl-get] k zobrazení veřejné IP adresy nástroje pro vyrovnávání zatížení. Veřejná IP adresa nástroje pro vyrovnávání zatížení je zobrazena ve sloupci *External-IP* . Aby se IP adresa změnila z *\<pending @ no__t-2* na skutečnou externí IP adresu, jak je znázorněno v následujícím příkladu, může to trvat minutu nebo dvě.
-
-```
-$ kubectl get service azure-vote-front
-
-NAME                TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP   16s
-```
-
-V prohlížeči přejděte na veřejnou IP adresu a ověřte, že vidíte ukázkovou aplikaci. Ve výše uvedeném příkladu je veřejná IP adresa `52.179.23.131`.
-
-![Obrázek přechodu na hlasování Azure](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
-
-> [!NOTE]
-> Nástroj pro vyrovnávání zatížení můžete také nakonfigurovat tak, aby byl interní a nezveřejňuje veřejnou IP adresu. Pokud chcete nástroj pro vyrovnávání zatížení nakonfigurovat jako interní, přidejte `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` jako anotaci do služby *Vyrovnávání* zatížení. [Tady][internal-lb-yaml]vidíte ukázkový manifest YAML a další podrobnosti o interním nástroji pro vyrovnávání zatížení.
-
-## <a name="optional---scale-the-number-of-managed-public-ips"></a>Volitelné – škálování počtu spravovaných veřejných IP adres
+## <a name="scale-the-number-of-managed-public-ips"></a>Škálování počtu spravovaných veřejných IP adres
 
 Pokud používáte nástroj pro vyrovnávání zatížení *standardní* skladové položky se spravovanými odchozími veřejnými IP adresami, které se ve výchozím nastavení vytvoří, můžete škálovat počet spravovaných odchozích veřejných IP adres pomocí parametru *Vyrovnávání zatížení – spravovaná-IP-Count* .
 
@@ -278,7 +66,7 @@ Výše uvedený příklad nastaví počet spravovaných odchozích veřejných I
 
 K nastavení počátečního počtu spravovaných odchozích veřejných IP adres při vytváření clusteru pomocí parametru `--load-balancer-managed-outbound-ip-count` a jeho nastavení na požadovanou hodnotu můžete použít taky parametr *služby Vyrovnávání zatížení – spravovaná IP-Count* . Výchozí počet spravovaných odchozích veřejných IP adres je 1.
 
-## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>Volitelné – Poskytněte vlastní veřejné IP adresy nebo předpony pro odchozí přenosy
+## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>Poskytněte vlastní veřejné IP adresy nebo předpony pro odchozí přenosy
 
 Při použití *standardního* nástroje pro vyrovnávání zatížení SKU cluster AKS automaticky vytvoří veřejnou IP adresu ve stejné skupině prostředků vytvořené pro cluster AKS a přiřadí veřejnou IP adresu k nástroji pro vyrovnávání zatížení *Standard* SKU. Alternativně můžete přiřadit vlastní veřejnou IP adresu při vytváření clusteru nebo můžete aktualizovat vlastnosti nástroje pro vyrovnávání zatížení existujícího clusteru.
 
@@ -336,7 +124,7 @@ Možná budete chtít uvést vlastní IP adresy nebo předpony IP pro výstup v 
 
 Pomocí příkazu *AZ AKS Create* s parametrem *Load Balancer-Outbound-IPS* vytvořte nový cluster s vašimi veřejnými IP adresami na začátku.
 
-```
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -349,7 +137,7 @@ az aks create \
 
 Pomocí příkazu *AZ AKS Create* s parametrem *Load Balance-Outbound-IP-prefixs* vytvořte nový cluster s předponami veřejné IP adresy na začátku.
 
-```
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -358,15 +146,6 @@ az aks create \
     --load-balancer-sku standard \
     --generate-ssh-keys \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
-```
-
-## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>Vyčištění konfigurace nástroje pro vyrovnávání zatížení Standard SKU
-
-Pokud chcete odebrat ukázkovou aplikaci a konfiguraci nástroje pro vyrovnávání zatížení, použijte [kubectl Delete][kubectl-delete]:
-
-```console
-kubectl delete -f sample.yaml
-kubectl delete -f standard-lb.yaml
 ```
 
 ## <a name="next-steps"></a>Další kroky
@@ -408,4 +187,3 @@ Další informace o službách Kubernetes Services najdete v [dokumentaci ke slu
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-

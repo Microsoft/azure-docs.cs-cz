@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL – Citus (Preview) – rychlý Start
-description: Rychlý Start pro vytváření a dotazování distribuovaných tabulek v Azure Database for PostgreSQL Citus (Preview).
+title: Azure Database for PostgreSQL – rychlé zprovoznění (Citus)
+description: Rychlý Start pro vytváření a dotazování distribuovaných tabulek v Azure Database for PostgreSQL Citus ().
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: fe981167249e24a43a8cb14c51c9b7c1eb081225
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 6b5bfbf16e76cbf90a5536332d8e3bf1035f983a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70164014"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500076"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Rychlý Start: vytvoření Azure Database for PostgreSQL – Citus (Preview) v Azure Portal
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Rychlý Start: vytvoření Azure Database for PostgreSQL – Citus (škálování) v Azure Portal
 
-Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte, spravujete a škálujete vysoce dostupné databáze PostgreSQL v cloudu. V tomto rychlém startu se dozvíte, jak vytvořit skupinu serverů Azure Database for PostgreSQL (Citus) (ve verzi Preview) pomocí Azure Portal. Budete zkoumat distribuovaná data: horizontálního dělení tabulky napříč uzly, ingestování ukázkových dat a spouštění dotazů, které se spouštějí na více uzlech.
+Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte, spravujete a škálujete vysoce dostupné databáze PostgreSQL v cloudu. V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit skupinu serverů Azure Database for PostgreSQL-Citus (škálovatelný škálování). Budete zkoumat distribuovaná data: horizontálního dělení tabulky napříč uzly, ingestování ukázkových dat a spouštění dotazů, které se spouštějí na více uzlech.
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -113,7 +113,7 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Proto se dotazy do GitHubu podílely \_events výhradně, ale tyto informace můžeme kombinovat s \_users GitHubu. Vzhledem k tomu, že jsme horizontálně dělené uživatele i události na stejný identifikátor (`user_id`), řádky obou tabulek s ID odpovídajícího uživatele budou společně [umístěny](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) na stejných uzlech databáze a lze je snadno připojit.
+Doposud dotazy zahrnovaly jenom\_události GitHubu, ale tyto informace můžeme kombinovat s uživateli GitHub\_. Vzhledem k tomu, že jsme horizontálně dělené uživatele i události na stejný identifikátor (`user_id`), řádky obou tabulek s ID odpovídajícího uživatele budou společně [umístěny](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) na stejných uzlech databáze a lze je snadno připojit.
 
 Pokud se připojíme k `user_id`, může se při spuštění připojení do horizontálních oddílů spustit souběžně na pracovních uzlech. Pojďme například najít uživatele, kteří vytvořili největší počet úložišť:
 

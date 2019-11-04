@@ -1,7 +1,7 @@
 ---
 title: Správa webových služeb
-titleSuffix: Azure Machine Learning Studio
-description: Správa služby Machine Learning nová a klasická webová pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Spravujte své Machine Learning nové a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Vzhledem k tomu, že klasické webové služby a nové webové služby jsou založené na různých základních technologiích, máte u každého z nich poněkud různé možnosti správy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,147 +10,147 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 711cb674cb00a880eadda11b03da87631df90b0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0d31ce46ce185ad5bbcd736d9f45e62d7436d24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861731"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489236"
 ---
-# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Správa webové služby pomocí portálu webových služeb Azure Machine Learning Studio
-Můžete spravovat novou Machine Learning a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.
+# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Správa webové služby pomocí portálu Web Services Azure Machine Learning Studio (Classic)
+Pomocí portálu Microsoft Azure Machine Learning Web Services můžete spravovat Machine Learning nové a klasické webové služby. Vzhledem k tomu, že klasické webové služby a nové webové služby jsou založené na různých základních technologiích, máte u každého z nich poněkud různé možnosti správy.
 
-Na portálu pro Machine Learning Web Services vám umožňuje:
+Na portálu Machine Learning Web Services můžete:
 
-* Sledujte, jak se používá webová služba.
-* Konfigurace popisu a aktualizovat klíče pro web service (pouze nové), aktualizovat vaše úložiště účtu klíče (pouze nové), povolte protokolování a povolit nebo zakázat ukázková data.
+* Sledujte, jak se webová služba používá.
+* Nakonfigurujte popis, aktualizujte klíče webové služby (jenom nové), aktualizujte svůj klíč účtu úložiště (jenom nové), povolte protokolování a povolte nebo zakažte ukázková data.
 * Odstraňte webovou službu.
-* Vytvoření, odstranění nebo aktualizaci fakturace schémata (pouze nové).
-* Přidání a odstranění koncových bodů (pouze Klasický model)
+* Vytváření, odstraňování nebo Aktualizace fakturačních plánů (jenom nové)
+* Přidat a odstranit koncové body (jenom klasické)
 
 >[!NOTE]
->Také můžete spravovat klasické webové služby v [Machine Learning Studio](https://studio.azureml.net) na **webových služeb** kartu.
+>Klasické webové služby můžete spravovat také v [Machine Learning Studio (Classic)](https://studio.azureml.net) na kartě **webové služby** .
 
-## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Oprávnění ke správě nového správce prostředků na základě webové služby
+## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Oprávnění ke správě nových webových služeb založených na správci prostředků
 
-S novými webovými službami jsou nasazeny jako prostředky Azure. V důsledku toho musí mít správná oprávnění k nasazení a Správa nových webových služeb.  Nasazovat nebo spravovat s novými webovými službami musí mít přiřazenou roli přispěvatelem nebo správcem předplatného, které je nasazena webová služba. Pokud vás pozvat jiného uživatele do pracovního prostoru machine learning, je nutné jim přiřadit roli přispěvatelem nebo správcem předplatného mohli nasadit nebo spravovat webové služby. 
+Nové webové služby se nasazují jako prostředky Azure. V takovém případě musíte mít správná oprávnění k nasazení a správě nových webových služeb.  Chcete-li nasadit nebo spravovat nové webové služby, musíte mít přiřazenou roli přispěvatel nebo správce v předplatném, ve kterém je webová služba nasazená. Pokud k pracovnímu prostoru Machine Learning Pozvěte jiného uživatele, musíte je před tím, než bude moct nasadit nebo spravovat webové služby, přiřadit k roli přispěvatel nebo správce v předplatném. 
 
-Pokud uživatel nemá správná oprávnění pro přístup k prostředkům na portálu Azure Machine Learning Web Services, zobrazí se chybová zpráva při pokusu o nasazení webové služby:
+Pokud uživatel nemá správná oprávnění pro přístup k prostředkům na portálu Azure Machine Learning Web Services, při pokusu o nasazení webové služby se zobrazí následující chyba:
 
-*Nasazení webové služby se nezdařilo. Tento účet nemá dostatečný přístup k předplatnému Azure, který obsahuje tento pracovní prostor. Pokud chcete nasadit webovou službu do Azure, stejný účet musí být pozvaní do pracovního prostoru a být poskytnut přístup k předplatnému Azure, který obsahuje tento pracovní prostor.*
+*Nasazení webové služby se nezdařilo. Tento účet nemá dostatečný přístup k předplatnému Azure, které obsahuje tento pracovní prostor. Aby bylo možné nasadit webovou službu do Azure, musí být stejný účet pozván do pracovního prostoru a mít přístup k předplatnému Azure, které obsahuje tento pracovní prostor.*
 
-Další informace o vytváření pracovního prostoru najdete v tématu [vytváření a sdílení pracovního prostoru služby Azure Machine Learning Studio](create-workspace.md).
+Další informace o vytváření pracovního prostoru najdete v tématu [Vytvoření a sdílení pracovního prostoru Azure Machine Learning Studio (Classic)](create-workspace.md).
 
-Další informace o nastavení přístupových oprávnění najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
+Další informace o nastavení přístupových oprávnění najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 
 ## <a name="manage-new-web-services"></a>Správa nových webových služeb
 Správa nových webových služeb:
 
-1. Přihlaste se k [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart) portálu Microsoft Azure pomocí účtu – použijte účet, který je spojen s předplatným Azure.
-2. V nabídce klikněte na tlačítko **webových služeb**.
+1. Přihlaste se k portálu [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart) pomocí účtu Microsoft Azure – použijte účet, který je přidružený k předplatnému Azure.
+2. V nabídce klikněte na položku **webové služby**.
 
 Zobrazí se seznam nasazených webových služeb pro vaše předplatné. 
 
-Pokud chcete spravovat webovou službu, klikněte na webové služby. Na stránce webové služby můžete:
+Chcete-li spravovat webovou službu, klikněte na položku webové služby. Na stránce webové služby můžete:
 
-* Klikněte na webové služby k její správě.
-* Klikněte na tlačítko fakturační plán pro webovou službu ji aktualizovat.
-* Odstraňte webovou službu.
-* Kopírovat webovou službu a nasaďte ji do jiné oblasti.
+* Klikněte na webovou službu, kterou chcete spravovat.
+* Kliknutím na plán fakturace webové služby ho aktualizujte.
+* Odstraní webovou službu.
+* Zkopírujte webovou službu a nasaďte ji do jiné oblasti.
 
-Po kliknutí na webovou službu, otevře se stránka rychlý start webové služby. Webová stránka rychlého startu služby obsahuje dvě možnosti nabídky, které vám pomohou se správou vaší webové služby:
+Když kliknete na webovou službu, otevře se stránka pro rychlý Start webové služby. Stránka pro rychlý Start webové služby má dvě možnosti nabídky, které vám umožní spravovat webovou službu:
 
-* **Řídicí panel** – umožňuje uživateli zobrazit využití webové služby.
-* **KONFIGUROVAT** – umožňuje přidat popisný text, aktualizujte klíč pro účet úložiště přidružený k webové službě a povolit nebo zakázat ukázková data.
+* **Řídicí panel** – umožňuje zobrazit použití webové služby.
+* **Konfigurovat** – umožňuje přidat popisný text, aktualizovat klíč pro účet úložiště přidružený k webové službě a povolit nebo zakázat ukázková data.
 
-### <a name="monitoring-how-the-web-service-is-being-used"></a>Monitorování, jak se používá webová služba
-Klikněte na tlačítko **řídicí panel** kartu.
+### <a name="monitoring-how-the-web-service-is-being-used"></a>Monitorování způsobu použití webové služby
+Klikněte na kartu **řídicí panel** .
 
-Na řídicím panelu se zobrazí celkové využití webové služby po určitou dobu. Můžete vybrat období pro zobrazení z období rozevírací nabídky v pravém horním rohu grafu využití. Na řídicím panelu zobrazuje následující informace:
+Z řídicího panelu můžete zobrazit celkové využití webové služby v časovém intervalu. V rozevírací nabídce tečka v pravém horním rohu grafu využití můžete vybrat období, které chcete zobrazit. Řídicí panel zobrazuje následující informace:
 
-* **Žádosti v čase** otevře graf krok počet požadavků za vybrané časové období. Může pomoct určit, jestli máte špičky využití.
-* **Žádosti typu žádost-odpověď** zobrazuje celkový počet volání typu žádost-odpověď, Služba obdržela za vybrané časové období a kolik z nich se nezdařilo.
-* **Průměrná doba Compute Request-Response** Průměrná doba potřebná k provedení přijaté žádosti.
-* **Dávkovat požadavky** zobrazuje celkový počet dávkových žádostí, které Služba obdržela za vybrané časové období a kolik z nich se nezdařilo.
-* **Průměrná latence úlohy** Průměrná doba potřebná k provedení přijaté žádosti.
-* **Chyby** zobrazí souhrnný počet chyb, ke kterým došlo u volání webové služby.
-* **Náklady na služby** zobrazí poplatky za fakturační plán související se službou.
+* **Žádosti v průběhu času** zobrazují krokový graf počtu požadavků v průběhu vybraného časového období. Může vám to usnadnit určení, jestli máte špičky využití.
+* **Požadavek – požadavky na odpověď** zobrazí celkový počet volání požadavků a odpovědí, které služba přijala během vybraného časového období, a počet selhání.
+* **Průměrná doba výpočtu odezvy požadavku** zobrazuje průměrnou dobu potřebnou k provedení přijatých požadavků.
+* **Dávková žádost** zobrazuje celkový počet požadavků na dávky, které služba přijala během vybraného časového období, a počet selhání.
+* **Průměrná latence úlohy** zobrazuje průměrnou dobu potřebnou k provedení přijatých požadavků.
+* **Chyba** zobrazuje agregovaný počet chyb, ke kterým došlo při volání webové služby.
+* **Náklady na služby** zobrazují poplatky za fakturační plán přidružený ke službě.
 
 ### <a name="configuring-the-web-service"></a>Konfigurace webové služby
-Klikněte na tlačítko **KONFIGUROVAT** nabídky.
+Klikněte na možnost **Konfigurace** nabídky.
 
-Můžete aktualizovat následujícími vlastnostmi:
+Můžete aktualizovat tyto vlastnosti:
 
-* **Popis** můžete zadat popis pro webovou službu.
-* **Název** můžete zadat název pro webovou službu
-* **Klíče** umožňuje otočit primární a sekundární klíče rozhraní API.
-* **Klíč účtu úložiště** umožňuje aktualizovat klíč pro účet úložiště přidružený k změny webové služby. 
-* **Povolit ukázková data** umožňuje poskytovat ukázková data, která slouží k otestování služby typu žádost-odpověď. Pokud jste vytvořili webovou službu v nástroji Machine Learning Studio, ukázkových dat je převzat z dat vaší používané k natrénování modelu. Pokud jste vytvořili službu prostřednictvím kódu programu, data je převzat z příkladu s daty, které jste zadali jako součást balíčku JSON.
+* **Popis** umožňuje zadat popis webové služby.
+* **Název** umožňuje zadat název webové služby.
+* **Klíče** umožňují otočit primární a sekundární klíče rozhraní API.
+* **Klíč účtu úložiště** vám umožní aktualizovat klíč pro účet úložiště přidružený k změnám webové služby. 
+* **Možnost Povolit ukázková data** vám umožní poskytnout ukázková data, která můžete použít k otestování služby Request-Response. Pokud jste vytvořili webovou službu v Machine Learning Studio (Classic), budou se ukázková data pořízena z dat, která jste použili pro výuku modelu. Pokud jste službu vytvořili programově, data jsou přijímána z ukázkových dat, která jste zadali jako součást balíčku JSON.
 
-### <a name="managing-billing-plans"></a>Správa fakturační plány
-Klikněte na tlačítko **plány** nabídky ze stránky rychlý start webové služby. Můžete také kliknout na plán přidružený k konkrétní webové služby ke správě tohoto plánu.
+### <a name="managing-billing-plans"></a>Správa fakturačních plánů
+Na stránce rychlý Start webových služeb klikněte na možnost nabídky **plány** . Můžete také kliknout na plán přidružený ke konkrétní webové službě a spravovat tento plán.
 
-* **Nové** vám umožní vytvořit nový plán.
-* **Instance plánu přidat nebo odebrat** umožňuje "škálování" existující plán navyšovat kapacitu.
-* **Upgrade a DownGrade** umožňuje "škálování" existující plán navyšovat kapacitu.
-* **Odstranit** umožňuje odstranění plánu.
+* **Novinka** vám umožní vytvořit nový plán.
+* Možnost **Přidat nebo odebrat instanci plánu** umožňuje "horizontální navýšení kapacity" k přidání kapacity.
+* **Upgrade/downgrade** vám umožní škálovat nahoru stávající plán pro přidání kapacity.
+* **Odstranění** umožňuje odstranit plán.
 
-Klikněte na možnost plánu, chcete-li zobrazit jeho řídicí panel. Řídicí panel poskytuje snímku nebo plán využití za vybrané období. Vyberte časové období pro zobrazení, klikněte na tlačítko **období** rozevírací seznam v pravém horním rohu řídicího panelu. 
+Kliknutím na plán zobrazíte jeho řídicí panel. Řídicí panel poskytuje snímek nebo plánování využití během vybraného časového období. Chcete-li vybrat časové období, které chcete zobrazit, klikněte na rozevírací nabídku **tečka** v pravém horním rohu řídicího panelu. 
 
-Řídicí panel plánu obsahuje následující informace:
+Řídicí panel plán poskytuje následující informace:
 
-* **Popis plánu** zobrazí informace o nákladech a kapacitu přidružené k plánu.
-* **Plánování použití** zobrazuje počet transakce a výpočetní hodiny, které se účtují podle plánu.
+* **Popis plánu** zobrazuje informace o nákladech a kapacitě spojené s plánem.
+* **Využití plánu** zobrazuje počet transakcí a výpočetních hodin, které se účtují na základě plánu.
 * **Webové služby** zobrazí počet webových služeb, které používají tento plán.
-* **TOP webové služby pomocí volání** zobrazuje prvních čtyř webové služby, které jsou volání, které jsou poplatek účtovat podle plánu.
-* **Nejčastějších webových služeb podle výpočetních hodin** zobrazuje prvních čtyř webové služby, které používají výpočetní prostředky, které jsou poplatek účtovat podle plánu.
+* **Hlavní webová služba podle volání** zobrazuje horní čtyři webové služby, které provádějí volání, která se účtují na základě plánu.
+* **Hlavní webové služby podle COMPUTE – hodiny** zobrazují horní čtyři webové služby, které používají výpočetní prostředky, které se účtují na základě plánu.
 
-## <a name="manage-classic-web-services"></a>Spravovat klasické webové služby
+## <a name="manage-classic-web-services"></a>Správa klasických webových služeb
 > [!NOTE]
-> Postupy v této části jsou relevantní pro správu klasických webových služeb prostřednictvím portálu Azure Machine Learning Web Services. Informace o správě klasické webové služby Machine Learning Studio a na webu Azure portal najdete v tématu [Správa pracovního prostoru Azure Machine Learning Studio](manage-workspace.md).
+> Postupy v této části jsou relevantní pro správu klasických webových služeb prostřednictvím portálu Azure Machine Learning Web Services. Informace o správě klasických webových služeb prostřednictvím Machine Learning Studio (Classic) a Azure Portal najdete v tématu [Správa pracovního prostoru Azure Machine Learning Studio (Classic)](manage-workspace.md).
 > 
 > 
 
-Správa klasické webové služby:
+Správa klasických webových služeb:
 
-1. Přihlaste se k [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart) portálu Microsoft Azure pomocí účtu – použijte účet, který je spojen s předplatným Azure.
-2. V nabídce klikněte na tlačítko **klasické webové služby**.
+1. Přihlaste se k portálu [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart) pomocí účtu Microsoft Azure – použijte účet, který je přidružený k předplatnému Azure.
+2. V nabídce klikněte na **klasické webové služby**.
 
-Ke správě klasických webových služeb, klikněte na tlačítko **klasické webové služby**. Na stránce klasické webové služby můžete:
+Pokud chcete spravovat klasickou webovou službu, klikněte na **klasické webové služby**. Na stránce klasické webové služby můžete:
 
-* Klikněte na webovou službu, chcete-li zobrazit přidružené koncové body.
-* Odstraňte webovou službu.
+* Kliknutím na webovou službu zobrazíte přidružené koncové body.
+* Odstraní webovou službu.
 
-Při správě klasickou webovou službou, můžete spravovat každý z koncových bodů samostatně. Po kliknutí na webové služby na stránce webové služby, otevře se seznam koncových bodů související se službou. 
+Když spravujete klasickou webovou službu, spravujete jednotlivé koncové body samostatně. Po kliknutí na webovou službu na stránce webové služby se otevře seznam koncových bodů přidružených k této službě. 
 
-Na stránce koncový bod webové služby Classic můžete přidat a odstranění koncových bodů služby. Další informace o přidání koncových bodů najdete v tématu [vytváření koncových bodů](create-endpoint.md).
+Na stránce koncového bodu klasické webové služby můžete přidat a odstranit koncové body služby. Další informace o přidávání koncových bodů najdete v tématu [vytváření koncových](create-endpoint.md)bodů.
 
-Klikněte na jeden z koncových bodů a otevřete stránku rychlý start webové služby. Na stránce Rychlý start existují dvě možnosti nabídky, které vám pomohou se správou vaší webové služby:
+Kliknutím na jeden z koncových bodů otevřete stránku pro rychlý Start webové služby. Na stránce rychlý Start jsou k dispozici dvě možnosti nabídky, které vám umožní spravovat webovou službu:
 
-* **Řídicí panel** – umožňuje uživateli zobrazit využití webové služby.
-* **KONFIGUROVAT** – umožňuje přidat popisný text, zapnout a vypnout protokolování chyb, aktualizujte klíč pro účet úložiště přidružený k webové službě a povolit a zakázat ukázková data.
+* **Řídicí panel** – umožňuje zobrazit použití webové služby.
+* **Konfigurovat** – umožňuje přidat popisný text, zapnout a vypnout protokolování chyb, aktualizovat klíč pro účet úložiště přidružený k webové službě a povolit a zakázat ukázková data.
 
-### <a name="monitoring-how-the-web-service-is-being-used"></a>Monitorování, jak se používá webová služba
-Klikněte na tlačítko **řídicí panel** kartu.
+### <a name="monitoring-how-the-web-service-is-being-used"></a>Monitorování způsobu použití webové služby
+Klikněte na kartu **řídicí panel** .
 
-Na řídicím panelu se zobrazí celkové využití webové služby po určitou dobu. Můžete vybrat období pro zobrazení z období rozevírací nabídky v pravém horním rohu grafu využití. Na řídicím panelu zobrazuje následující informace:
+Z řídicího panelu můžete zobrazit celkové využití webové služby v časovém intervalu. V rozevírací nabídce tečka v pravém horním rohu grafu využití můžete vybrat období, které chcete zobrazit. Řídicí panel zobrazuje následující informace:
 
-* **Žádosti v čase** otevře graf krok počet požadavků za vybrané časové období. Může pomoct určit, jestli máte špičky využití.
-* **Žádosti typu žádost-odpověď** zobrazuje celkový počet volání typu žádost-odpověď, Služba obdržela za vybrané časové období a kolik z nich se nezdařilo.
-* **Průměrná doba Compute Request-Response** Průměrná doba potřebná k provedení přijaté žádosti.
-* **Dávkovat požadavky** zobrazuje celkový počet dávkových žádostí, které Služba obdržela za vybrané časové období a kolik z nich se nezdařilo.
-* **Průměrná latence úlohy** Průměrná doba potřebná k provedení přijaté žádosti.
-* **Chyby** zobrazí souhrnný počet chyb, ke kterým došlo u volání webové služby.
-* **Náklady na služby** zobrazí poplatky za fakturační plán související se službou.
+* **Žádosti v průběhu času** zobrazují krokový graf počtu požadavků v průběhu vybraného časového období. Může vám to usnadnit určení, jestli máte špičky využití.
+* **Požadavek – požadavky na odpověď** zobrazí celkový počet volání požadavků a odpovědí, které služba přijala během vybraného časového období, a počet selhání.
+* **Průměrná doba výpočtu odezvy požadavku** zobrazuje průměrnou dobu potřebnou k provedení přijatých požadavků.
+* **Dávková žádost** zobrazuje celkový počet požadavků na dávky, které služba přijala během vybraného časového období, a počet selhání.
+* **Průměrná latence úlohy** zobrazuje průměrnou dobu potřebnou k provedení přijatých požadavků.
+* **Chyba** zobrazuje agregovaný počet chyb, ke kterým došlo při volání webové služby.
+* **Náklady na služby** zobrazují poplatky za fakturační plán přidružený ke službě.
 
 ### <a name="configuring-the-web-service"></a>Konfigurace webové služby
-Klikněte na tlačítko **KONFIGUROVAT** nabídky.
+Klikněte na možnost **Konfigurace** nabídky.
 
-Můžete aktualizovat následujícími vlastnostmi:
+Můžete aktualizovat tyto vlastnosti:
 
-* **Popis** můžete zadat popis pro webovou službu. Popis je povinné pole.
-* **Protokolování** umožňuje povolit nebo zakázat chyb do protokolu na koncovém bodu. Další informace o protokolování naleznete v tématu Povolení [protokolování pro webové služby Machine Learning](web-services-logging.md).
-* **Povolit ukázková data** umožňuje poskytovat ukázková data, která slouží k otestování služby typu žádost-odpověď. Pokud jste vytvořili webovou službu v nástroji Machine Learning Studio, ukázkových dat je převzat z dat vaší používané k natrénování modelu. Pokud jste vytvořili službu prostřednictvím kódu programu, data je převzat z příkladu s daty, které jste zadali jako součást balíčku JSON.
+* **Popis** umožňuje zadat popis webové služby. Popis je povinné pole.
+* **Protokolování** umožňuje povolit nebo zakázat protokolování chyb u koncového bodu. Další informace o protokolování najdete v tématu Povolení [protokolování pro Machine Learning webové služby](web-services-logging.md).
+* **Možnost Povolit ukázková data** vám umožní poskytnout ukázková data, která můžete použít k otestování služby Request-Response. Pokud jste vytvořili webovou službu v Machine Learning Studio (Classic), budou se ukázková data pořízena z dat, která jste použili pro výuku modelu. Pokud jste službu vytvořili programově, data jsou přijímána z ukázkových dat, která jste zadali jako součást balíčku JSON.
 
 

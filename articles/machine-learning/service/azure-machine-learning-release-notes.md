@@ -10,19 +10,150 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7bfa4a35a99b5a3bbca63fa2d8349568d0ce2467
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 4db535c9ecaf74f189d81740a26ef40e1f99ed13
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025441"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497599"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
-V tomto článku se dozvíte o Azure Machine Learning verzích. Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
+V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . V tomto článku se dozvíte o Azure Machine Learning verzích. Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde se dozvíte o známých chybách a alternativním řešení.
 
+
+## <a name="2019-11-04"></a>2019-11-04
+
+### <a name="web-experience"></a>Webové prostředí 
+
+Cílová stránka pracovního prostoru pro spolupráci na [https://ml.azure.com](https://ml.azure.com) byla vylepšena a byla upravena jako Azure Machine Learning Studio (Preview).
+
+Z studia můžete provádět výukové, testovací, nasazování a správu Azure Machine Learningch prostředků, jako jsou datové sady, kanály, modely, koncové body a další.  
+
+Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
+
+| Webový nástroj | Popis | Edice |
+|-|-|-|
+| [Instance COMPUTE](concept-compute-instance.md) (Preview) | Plně spravovaná cloudová pracovní stanice | Basic & Enterprise |
+| [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | Enterprise |
+| [Návrhář](ui-concept-visual-interface.md) (Preview) | Nástroj pro modelování strojového učení, který se dřív jmenoval jako Návrhář | Enterprise |
+
+> [!NOTE]
+> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
+>Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .  
+
+### <a name="azure-machine-learning-designer-enhancements"></a>Vylepšení návrháře Azure Machine Learning 
+
++ Dříve označované jako vizuální rozhraní 
++   11 nových [modulů](../algorithm-module-reference/module-reference.md) , včetně doporučení, klasifikátorů a školicích nástrojů, včetně techniků, ověřování a transformace dat.
+
+### <a name="r-sdk"></a>SADA R SDK 
+ 
+Odborníci přes data a vývojáři AI používají [Azure Machine Learning SDK pro R](tutorial-1st-r-experiment.md) k sestavování a spouštění pracovních postupů strojového učení pomocí Azure Machine Learning.
+
+Sada Azure Machine Learning SDK pro R používá balíček `reticulate` k vytvoření vazby na sadu Python SDK. Pomocí vazby přímo na Python umožňuje sada SDK pro R přístup k základním objektům a metodám implementovaným v sadě Python SDK z libovolného prostředí jazyka R, které zvolíte.
+
+Mezi hlavní funkce sady SDK patří:
+
++   Spravujte cloudové prostředky pro sledování, protokolování a organizování experimentů ve strojovém učení.
++   Výukové modely s využitím cloudových prostředků, včetně školení modelů pomocí GPU
++   Nasaďte modely jako WebServices na Azure Container Instances (ACI) a Azure Kubernetes Service (AKS).
+
+Úplnou dokumentaci najdete na [webu balíčku](https://azure.github.io/azureml-sdk-for-r) .
+
+## <a name="2019-10-31"></a>2019-10-31
+
+### <a name="azure-machine-learning-sdk-for-python-v1072"></a>Sada SDK Azure Machine Learning pro Python v 1.0.72
+
++ **Nové funkce**
+  + Přidali jsme monitorování datových sad prostřednictvím balíčku `azureml-datadrift`, což umožňuje monitorovat datové sady časové řady pro posun dat nebo jiné statistické změny v průběhu času. Výstrahy a události mohou být aktivovány, pokud je zjištěn posun nebo jsou splněny jiné podmínky pro data. Podrobnosti najdete v [naší dokumentaci](http://aka.ms/datadrift) . 
+  + Oznamujeme dvě nové edice (také označované jako interchageably SKU) v Azure Machine Learning. V této verzi teď můžete vytvořit pracovní prostor Azure ML úrovně Basic nebo Enterprise. Všechny existující pracovní prostory budou ve výchozím nastavení pro edici Basic a můžete přejít na Azure Portal nebo do studia a kdykoli upgradovat pracovní prostor. Pracovní prostor Basic nebo Enterprise můžete vytvořit na webu Azure Portal. Další informace najdete v [naší dokumentaci](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-manage-workspace) . V sadě SDK se dá edice pracovního prostoru určit pomocí vlastnosti SKU objektu pracovního prostoru.
+  + Provedli jsme také Azure Machine Learning enhancments výpočetní prostředky – nyní můžete zobrazit metriky pro vaše clustery (jako celkem uzlů, spuštěné uzly, celková základní kvóta) v Azure Monitor, kromě zobrazení diagnostických protokolů pro ladění. Kromě toho můžete také zobrazit aktuálně spuštěné nebo zařazené běhy na clusteru a podrobnosti, jako jsou například IP adresy různých uzlů v clusteru. Můžete je zobrazit buď na portálu, nebo pomocí odpovídajících funkcí v sadě SDK nebo rozhraní příkazového řádku. 
+  
+  + **Funkce ve verzi Preview**
+    + Ve službě Azure Machine Learning COMPUTE vydáváme podporu pro šifrování disků místního disku SSD. Pokud chcete používat tuto funkci, vyvolejte prosím lístek technické podpory, abyste získali předplatné, které je na seznamu povolených.
+    + Public Preview Azure Machine Learning odvození dávky. Azure Machine Learning odvození dávky cílí na velké odvozené úlohy, které nerozlišují čas. Odvození dávky poskytuje nákladově efektivní výpočetní škálování pro odvození, s využitím neparalelní propustnosti pro asynchronní aplikace. Je optimalizovaný pro účely vysoké propustnosti, zaznamenání a zapomenout na odvození přes velké kolekce dat. Další informace najdete na adrese https://aka.ms/binb 
+    + [Funkce contrib dole] 
+    + **AzureML-contrib-DataSet**
+        + Povolené funkce pro datovou sadu s popisky
+        ```Python
+        import azureml.core
+        from azureml.core import Workspace, Datastore, Dataset
+        import azureml.contrib.dataset
+        from azureml.contrib.dataset import FileHandlingOption, LabeledDatasetTask
+        
+        # create a labeled dataset by passing in your JSON lines file
+        dataset = Dataset._Labeled.from_json_lines(datastore.path('path/to/file.jsonl'), LabeledDatasetTask.IMAGE_CLASSIFICATION)
+        
+        # download or mount the files in the `image_url` column
+        dataset.download()
+        dataset.mount()
+        
+        # get a pandas dataframe
+        from azureml.data.dataset_type_definitions import FileHandlingOption
+        dataset.to_pandas_dataframe(FileHandlingOption.DOWNLOAD) 
+        dataset.to_pandas_dataframe(FileHandlingOption.MOUNT)
+        
+        # get a Torchvision dataset
+        dataset.to_torchvision()
+        ```
+
++ **Opravy chyb a vylepšení**
+  + **Azure-CLI-ml**
+    + Rozhraní příkazového řádku teď podporuje balení modelu.
+    + Byl přidán objekt CLI datové sady. Další informace: `az ml dataset --help`
+    + Přidání podpory pro nasazení a sbalení podporovaných modelů (ONNX, scikit-učení a TensorFlow) bez instance InferenceConfig
+    + Přidání příznaku přepsání pro nasazení služby (ACI a AKS) v sadě SDK a rozhraní příkazového řádku. Pokud je tato akce k dispozici, přepíše existující službu, pokud již existuje služba s názvem. Pokud služba neexistuje, vytvoří novou službu.
+    + Modely lze registrovat pomocí dvou nových rozhraní Onnx a Tensorflow. -Registrace modelu akceptuje ukázková vstupní data, ukázkové výstupní data a konfiguraci prostředků pro model.
+  + **AzureML-automl – jádro**
+    + Školení iterace se spustí v podřízeném procesu jenom v případě, že jsou nastavená omezení za běhu.
+    + Přidali jsme guardrail pro úlohy předpovědi a zkontrolovali, jestli zadaný max_horizon způsobí v daném počítači problémy s pamětí. Pokud bude, zobrazí se zpráva guardrail.
+    + Přidání podpory pro komplexní frekvence, jako je 2 roky a 1 měsíc. – Byla přidána srozumitelná chybová zpráva, pokud nelze určit četnost.
+    + Pokud chcete vyřešit selhání nasazení modelu, přidejte do automaticky generovaného conda ENV výchozí hodnoty AzureML.
+    + Povolí převod mezilehlých dat v kanálu Azure Machine Learning na tabulkovou sadu dat a používá se v `AutoMLStep`.
+    + Implementovala se aktualizace účelu sloupce pro streamování.
+    + Implementuje se aktualizace parametru transformátoru pro Imputac a HashOneHotEncoder pro streamování.
+    + Byla přidána velikost aktuální velikosti dat a minimální požadovaná velikost dat pro chybové zprávy ověřování.
+    + Aktualizovala se minimální požadovaná velikost dat pro křížové ověření, aby se zajistilo minimum dvou vzorků v každé přeložení pro ověření.
+  + **AzureML-CLI – společné**
+    + Rozhraní příkazového řádku teď podporuje balení modelu.
+    + Modely lze registrovat pomocí dvou nových rozhraní Onnx a Tensorflow.
+    + Registrace modelu přijímá ukázková vstupní data, ukázková výstupní data a konfiguraci prostředků pro model.
+  + **AzureML-contrib-gbdt**
+    + Opravili jsme kanál verze pro Poznámkový blok.
+    + Bylo přidáno upozornění pro AmlCompute výpočetní cíl, který nepodporujeme.
+    + Přidání LightGMB Estimator do balíčku AzureML-contrib-gbdt
+  + **AzureML-Core**    
+    + Rozhraní příkazového řádku teď podporuje balení modelu.
+    + Přidejte upozornění na zastaralost pro vystaralá rozhraní API datové sady. Viz upozornění na změnu rozhraní API datové sady na https://aka.ms/tabular-dataset.
+    + Změňte `Dataset.get_by_id` a vraťte název a verzi registrace, pokud je datová sada zaregistrovaná.
+    + Oprava chyby, která ScriptRunConfig s datovou sadou jako argumentu se opakovaně nedá použít k odeslání experimentu.
+    + Datové sady načtené během spuštění budou sledovány a lze je zobrazit na stránce Podrobnosti o spuštění nebo voláním `run.get_details()` po dokončení spuštění.
+    + Povolí převod mezilehlých dat v kanálu Azure Machine Learning na tabulkovou sadu dat a používá se v `AutoMLStep`.
+    + Přidání podpory pro nasazení a sbalení podporovaných modelů (ONNX, scikit-učení a TensorFlow) bez instance InferenceConfig
+    + Přidání příznaku přepsání pro nasazení služby (ACI a AKS) v sadě SDK a rozhraní příkazového řádku. Pokud je tato akce k dispozici, přepíše existující službu, pokud již existuje služba s názvem. Pokud služba neexistuje, vytvoří novou službu.
+    +  Modely lze registrovat pomocí dvou nových rozhraní Onnx a Tensorflow. -Registrace modelu akceptuje ukázková vstupní data, ukázkové výstupní data a konfiguraci prostředků pro model.
+    + Bylo přidáno nové úložiště dat pro Azure Database for MySQL. -Přidání příkladu pro použití Azure Database for MySQL v DataTransferStep v Azure Machine Learningch kanálech.
+    + Přidání funkce pro přidání a odebrání značek z experimentů – přidané funkce pro odebrání značek z spuštění
+    + Přidání příznaku přepsání pro nasazení služby (ACI a AKS) v sadě SDK a rozhraní příkazového řádku. Pokud je tato akce k dispozici, přepíše existující službu, pokud již existuje služba s názvem. Pokud služba neexistuje, vytvoří novou službu.
+  + **AzureML-dataunášená**
+    + Přesunuto z `azureml-contrib-datadrift` do `azureml-datadrift`
+    + Přidání podpory pro monitorování časové řady datových sad pro posun a další statistická opatření 
+    + Nové metody `create_from_model()` a `create_from_dataset()` do třídy `DataDriftDetector`. Metoda `create()` bude zastaralá. 
+    + Úpravy vizualizací v Pythonu a uživatelském rozhraní v Azure Machine Learning Studiu.
+    + Podpora denního a měsíčního plánování monitorování, a to i denně pro monitorování datových sad.
+    + Podpora doplňování metrik sledování dat pro analýzu historických dat pro monitorování datových sad 
+    + Různé opravy chyb 
+  + **AzureML-kanál – jádro**
+    + k odeslání Azure Machine Learningého kanálu ze souboru `yaml` kanálu už není potřeba AzureML-dataprep.
+  + **AzureML-vlak – automl**
+    + Pokud chcete vyřešit selhání nasazení modelu, přidejte do automaticky generovaného conda ENV výchozí hodnoty AzureML.
+    + AutoML vzdálené školení teď zahrnuje AzureML – výchozí nastavení, které umožňuje znovu použít školicí obálku pro odvození.
+  + **AzureML-vlak – jádro**
+    + Přidání podpory PyTorch 1,3 v PyTorch Estimator
+  
 ## <a name="2019-10-21"></a>2019-10-21
 
 ### <a name="visual-interface-preview"></a>Vizuální rozhraní (Preview)
@@ -31,6 +162,8 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
   + Jednotné prostředí pro správu pomocí prostředků sady SDK
   + Správa verzí a sledování modelů, kanálů a koncových bodů pro vizuální rozhraní 
   + Přepracování uživatelského rozhraní
+  + Přidání nasazení Batch Inferencing
+  + Přidání podpory služby Azure Kubernetes (AKS) pro cíle výpočtů Inferencing
   + Přidání nasazení odvozeného z dávky
   + Přidání podpory služby Azure Kubernetes (AKS) pro cílení na odvození výpočtů
   + Nový pracovní postup vytváření kanálů v Pythonu – krok
@@ -50,22 +183,48 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
 + **Opravy chyb a vylepšení**
   + **AzureML-automl – jádro**
     + Omezení modelových vysvětlení tak, aby se místo výpočetních vysvětlení pro každé spuštění co nejlépe spouštělo. Změna chování místních, vzdálených a ADB.
-    + Přidali jsme podporu pro vysvětlení modelu na vyžádání pro uživatelské rozhraní.
-    + Přidání psutil jako závislosti automl a zahrnutí psutil jako závislosti conda v amlcompute.
+    + Přidání podpory pro vysvětlení modelu na vyžádání pro uživatelské rozhraní
+    + Přidání psutil jako závislosti `automl` a zahrnutí psutil jako závislosti conda v amlcompute.
     + Opravili jsme problém s heuristickými prodlevy a velikostmi oken pro prognózování dat, jejichž série může způsobit chyby lineárního algebraický.
       + Přidání tisku pro heuristicky určené parametry při spuštění prognózování.
+  + **AzureML-contrib – dataunášená**
   + **[AzureML-contrib – dataunášená](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
     + Přidání ochrany při vytváření výstupních metrik, pokud posun úrovně DataSet není v první části.
   + **AzureML-contrib – interpretace**
+    + balíček AzureML-contrib-vysvětlit-model byl přejmenován na AzureML-contrib-Interpret
+  + **AzureML-Core**
+    + Bylo přidáno rozhraní API pro zrušení registrace datových sad. `dataset.unregister_all_versions()`
     + balíček AzureML-contrib-vysvětlit-model byl přejmenován na AzureML-contrib-interpretace.
   + **[AzureML-Core](https://docs.microsoft.com/python/api/azureml-core)**
     + Bylo přidáno rozhraní API pro zrušení registrace datových sad. integrován. [unregister_all_versions ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_datastore.abstractdatastore#unregister--).
     + Bylo přidáno rozhraní API datové sady pro kontrolu času změny dat. `dataset.data_changed_time`.
+    + Schopnost spotřebovávat `FileDataset` a `TabularDataset` jako vstupy pro `PythonScriptStep`, `EstimatorStep` a `HyperDriveStep` v kanálu Azure Machine Learning
+    + Výkon `FileDataset.mount` byl vylepšen pro složky s velkým počtem souborů
     + Schopnost využívat [datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset) a [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset) jako vstupy pro [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep), [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)a [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep) v kanálu Azure Machine Learning.
     + Výkon objektu DataSet. [připojení ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset#mount-mount-point-none-) bylo vylepšeno pro složky s velkým počtem souborů.
     + Přidání adresy URL ke známým doporučením chyb v podrobnostech o spuštění.
+    + Opravili jsme chybu v běhu. Získejte _metrics, kde se požadavky nezdařily, pokud by běželo příliš mnoho podřízených objektů.
     + Opravili jsme chybu v [běhu. Získejte _metrics](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run#get-metrics-name-none--recursive-false--run-type-none--populate-false-) , kde se požadavky nezdařily, pokud by běželo příliš mnoho podřízených objektů.
     + Přidala se podpora pro ověřování v clusteru Arcadia.
+    + Vytvoření objektu experimentu Získá nebo vytvoří experiment v pracovním prostoru Azure Machine Learning pro sledování historie spuštění. ID experimentu a archivovaný čas se naplní v objektu experiment při vytváření. Příklad: experiment = experiment (pracovní prostor, "nový experiment") experiment_id = experiment.id Archive () a reactivate () jsou funkce, které lze volat v experimentu pro skrytí a obnovení experimentu v uživatelském rozhraní nebo ve výchozím nastavení ve volání funkce. k vypsání experimentů. Pokud se vytvoří nový experiment se stejným názvem jako archivovaný experiment, můžete při opětovné aktivaci přejmenovat archivovaný experiment tak, že předáte nový název. Může existovat pouze jeden aktivní experiment se zadaným názvem. Příklad: experiment1 = experiment (pracovní prostor, "aktivní Experimenta") experiment1. Archive () # vytvoří nový aktivní experiment se stejným názvem jako Archivovaná. experiment2. = Experiment (pracovní prostor, "aktivní experiment") experiment1. reactivate (new_name = "předchozí aktivní experiment"). seznam statických metod () při experimentování může pořizovat filtr názvů a filtr element ViewType. Element ViewType hodnoty jsou "ACTIVE_ONLY", "ARCHIVED_ONLY" a "ALL" Příklad: archived_experiments = experiment. list (pracovní prostor, view_type = "ARCHIVED_ONLY") all_first_experiments = experiment. list (pracovní prostor, název = "první experiment", view_type = "ALL")
+    + Podpora použití prostředí pro nasazení modelů a aktualizace služby
+  + **AzureML-dataunášená**
+    + Atribut show třídy DataDriftDector nepodporuje nepovinný argument "with_details". Atribut show bude prezentovat pouze koeficient posunu dat a příspěvek na posun dat pro sloupce funkcí.
+    + Změny chování atributu DataDriftDetector ' get_output ':
+      + Vstupní parametr start_time, end_time je volitelná místo povinné;
+      + Zadání specifických start_time a/nebo end_time s konkrétním run_id ve stejném vyvolání způsobí výjimku chyby hodnoty, protože se vzájemně vylučují. 
+      + Po zadání specifických start_time a/nebo end_time se vrátí jenom výsledky plánovaných spuštění. 
+      + Parametr ' daily_latest_only ' je zastaralý.
+    + Podpora načítání výstupů pro posun dat na základě datové sady
+  + **AzureML-vysvětlit-model**
+    + Přejmenuje balíček AzureML-vysvětlit-model na AzureML-interpretace, takže starý balíček zůstane pro zpětnou kompatibilitu nyní.
+    + Opravená `automl` chyba s nezpracovanými vysvětlivkami nastavenými na úlohu klasifikace místo regrese ve výchozím nastavení při stahování z ExplanationClient
+    + Přidání podpory pro `ScoringExplainer` k přímému vytvoření pomocí `MimicWrapper`
+  + **AzureML-kanál – jádro**
+    + Vylepšený výkon pro vytváření velkých kanálů
+  + **AzureML-vlak – jádro**
+    + Přidání podpory TensorFlow 2,0 v TensorFlow Estimator
+  + **AzureML-vlak – automl**
     + Vytvoření objektu [experimentu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment) Získá nebo vytvoří experiment v pracovním prostoru Azure Machine Learning pro sledování historie spuštění. ID experimentu a archivovaný čas se naplní v objektu experiment při vytváření. Příklad:
 
         ```py
@@ -106,6 +265,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Přidala se podpora TensorFlow 2,0 v [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow) Estimator.
   + **[AzureML-vlak – automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
     + Nadřazený běh již nebude při iteraci instalace úspěšný, protože orchestrace ho již zajímá.
+    + Přidání podpory Local-Docker a Local-conda pro experimenty AutoML
     + Přidání místních Docker a podpory místních conda pro experimenty AutoML.
 
 
@@ -123,32 +283,48 @@ Karta experiment v [novém portálu pracovního prostoru](http://ml.azure.com) s
 ### <a name="azure-machine-learning-sdk-for-python-v1065"></a>Sada SDK Azure Machine Learning pro Python v 1.0.65
 
   + **Nové funkce**
+    + Přidání prostředí, která jsou s ním uspořádaná Tato prostředí jsou předem nakonfigurovaná s knihovnami pro běžné úkoly strojového učení a byla předem sestavena a ukládána do mezipaměti jako image Docker pro rychlejší provádění. Ve výchozím nastavení se zobrazí v seznamu prostředí v pracovním prostoru s předponou "AzureML".
     + Přidání prostředí, která jsou s ním uspořádaná Tato prostředí jsou předem nakonfigurovaná s knihovnami pro běžné úkoly strojového učení a byla předem sestavena a ukládána do mezipaměti jako image Docker pro rychlejší provádění. Ve výchozím nastavení se zobrazí v seznamu prostředí v [pracovním prostoru](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29)s předponou "AzureML".
   
+  + **AzureML-vlak – automl**
   + **[AzureML-vlak – automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
     + Přidání podpory převodu ONNX pro ADB a HDI
 
 + **Funkce ve verzi Preview**  
+  + **AzureML-vlak – automl**
   + **[AzureML-vlak – automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
     + Podporované BERT a BiLSTM jako text featurizer (jenom ve verzi Preview)
     + Podporované přizpůsobení featurization pro účely sloupce a transformaci parametrů (jenom ve verzi Preview)
     + Podporovaná neupravená vysvětlení, když uživatel během školení povolí vysvětlení modelu (jenom náhled)
-    + Přidání Prophet pro prognózování časové řady jako kanálu pro vlak (jenom pro náhled)
+    + Přidání Prophet pro prognózování `timeseries` jako kanálu pro vlak (jenom pro náhled)
   
   + **AzureML-contrib – dataunášená**
-    + Balíčky přemístěné z AzureML-contrib-disčárky do AzureML-; balíček contrib se odebere v budoucí verzi. 
+    + Balíčky přemístěné z AzureML-contrib-disčárky do AzureML-; balíček `contrib` se v budoucí verzi odebere. 
 
 + **Opravy chyb a vylepšení**
   + **AzureML-automl – jádro**
+    + Zavedení FeaturizationConfig do AutoMLConfig a AutoMLBaseSettings
     + Zavedení FeaturizationConfig do [AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig) a AutoMLBaseSettings
       + Přepsat účel sloupce pro Featurization s daným typem sloupce a funkce
       + Přepsat parametry transformátoru
     + Přidání zprávy o zastaralosti pro explain_model () a retrieve_model_explanations ()
     + Přidání Prophet jako kanálu pro vlak (jenom pro náhled)
+    + Přidání zprávy o zastaralosti pro explain_model () a retrieve_model_explanations ()
+    + Přidání Prophet jako kanálu pro vlak (jenom pro náhled)
     + Byla přidána podpora pro automatické zjišťování cílových prodlevy, velikost okna a maximální horizont. Pokud je jedna z target_lags, target_rolling_window_size nebo max_horizon nastavená na auto, použijí se heuristiky k odhadu hodnoty odpovídajícího parametru na základě školicích dat.
+    + V případě pevného prognózování v případě, kdy datová sada obsahuje jeden sloupec zrnitosti, je tato zrnitosti číselného typu a mezi vlakem a testovací sadou existuje mezera.
+    + Opravili jsme chybovou zprávu o duplicitním indexu ve vzdáleném spuštění při prognózování úloh.
     + Fixní prognóza v případě, kdy datová sada obsahuje jeden sloupec zrnitosti, je tato zrnitosti číselného typu a mezi vlakem a testovací sadou existuje mezera.
     + Opravili jsme chybovou zprávu o duplicitním indexu ve vzdáleném spuštění při prognózování úloh.
     + Přidání guardrail pro kontrolu, zda je datová sada nevyvážená nebo ne. V takovém případě se do konzoly zapíše zpráva guardrail.
+  + **AzureML-Core**
+    + Přidání možnosti načíst adresu URL SAS pro model v úložišti prostřednictvím objektu modelu. Ex: model. Get _sas_url ()
+    + Zavést `run.get_details()['datasets']` k získání datových sad přidružených k odeslanému běhu
+    + Přidejte `Dataset.Tabular.from_json_lines_files` API k vytvoření TabularDataset ze souborů JSON řádků. Další informace o těchto tabelárních datech v souborech řádků JSON na TabularDataset najdete v dokumentaci https://aka.ms/azureml-data.
+    + Přidání dalších polí velikosti virtuálního počítače (disk s operačním systémem, počet GPU) do funkce supported_vmsizes ()
+    + Do funkce list_nodes () přidejte další pole, která zobrazí spuštění, soukromou a veřejnou IP adresu, port atd.
+    + Možnost zadat nové pole během zřizování clusteru--remotelogin_port_public_access, který se dá nastavit na povoleno nebo zakázáno v závislosti na tom, jestli se má port SSH nechat otevřený nebo zavřený v době vytváření clusteru. Pokud ho nezadáte, služba bude port inteligentně otevřít nebo Zavřít v závislosti na tom, jestli nasazujete cluster uvnitř virtuální sítě.
+  + **AzureML-vysvětlit-model**
   + **[AzureML-Core](https://docs.microsoft.com/python/api/azureml-core/azureml.core)**
     + Přidání možnosti načíst adresu URL SAS pro model v úložišti prostřednictvím objektu modelu. Ex: model. [get_sas_url ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model#get-sas-urls--)
     + Zaveďte běh. [get_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29#get-details--)[' datové sady '] pro získání datových sad přidružených k odeslanému běhu
@@ -160,6 +336,14 @@ Karta experiment v [novém portálu pracovního prostoru](http://ml.azure.com) s
     + Vylepšená dokumentace pro vysvětlení výstupů ve scénáři klasifikace.
     + Byla přidána možnost Odeslat předpovězené hodnoty y na vysvětlení pro příklady vyhodnocení. Odemkne užitečnější vizualizace.
     + Přidala se vlastnost vysvětlujícího nástroje do MimicWrapper, která umožňuje získat základní MimicExplainer.
+  + **AzureML-kanál – jádro**
+    + Přidání poznámkového bloku pro popis modulu, ModuleVersion a ModuleStep
+  + **AzureML-Pipeline – kroky**
+    + Přidání RScriptStep k podpoře skriptu R spouštěného prostřednictvím kanálu AML
+    + Pevné parametry metadat při analýze v AzureBatchStep, které způsobily chybovou zprávu "přiřazení pro parametr SubscriptionId není zadané"
+  + **AzureML-vlak – automl**
+    + Podporované training_data, validation_data, label_column_name, weight_column_name jako formát vstupu dat
+    + Přidání zprávy o zastaralosti pro explain_model () a retrieve_model_explanations ()
   + **[AzureML-kanál – jádro](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Přidal se [Poznámkový blok](https://aka.ms/pl-modulestep) popisující [modul](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module(class)), [ModuleVersion](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.moduleversion) a [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep).
   + **[AzureML-Pipeline – kroky](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
@@ -175,18 +359,18 @@ Karta experiment v [novém portálu pracovního prostoru](http://ml.azure.com) s
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Sada SDK Azure Machine Learning pro Python v 1.0.62
 
 + **Nové funkce**
-  + Zavedli jste vlastnost časové řady na TabularDataset. Tento vlastnost umožňuje snadné filtrování časových razítek u dat a TabularDataset, jako je například pořízení všech dat mezi časovým obdobím nebo nejnovějšími daty. Pokud se chcete dozvědět o tomto vlastnosti časové řady v TabularDataset, navštivte prosím https://aka.ms/azureml-data pro dokumentaci nebo https://aka.ms/azureml-tsd-notebook pro ukázkový Poznámkový blok. 
+  + Do TabularDataset se zavedla vlastnost `timeseries`. Tento vlastnost umožňuje snadné filtrování časových razítek u dat a TabularDataset, jako je například pořízení všech dat mezi časovým obdobím nebo nejnovějšími daty. Další informace o tomto `timeseries` vlastností na TabularDataset najdete v dokumentaci k ukázkovému poznámkovém bloku https://aka.ms/azureml-data pro dokumentaci nebo https://aka.ms/azureml-tsd-notebook. 
   + Bylo povoleno školení s TabularDataset a datovou sadou. Pro ukázkový Poznámkový blok prosím navštivte https://aka.ms/dataset-tutorial. 
   
   + **AzureML-vlak – jádro**
-    + Přidání podpory Nccl a Gloo v PyTorch Estimator
+    + Přidání podpory `Nccl` a `Gloo` v PyTorch Estimator
   
 + **Opravy chyb a vylepšení**
   + **AzureML-automl – jádro**
     + Zastaralé nastavení AutoML ' lag_length ' a LaggingTransformer.
     + Oprava správného ověření vstupních dat, jsou-li zadána ve formátu toku dat
     + Upraveno fit_pipeline. py pro generování JSON grafu a nahrání do artefaktů. 
-    + Vykresluje se graf pod userrun pomocí Cytoscape.
+    + Vykresluje se graf pod `userrun` pomocí `Cytoscape`.
   + **AzureML-Core**
     + Přečtěte si přečtěte si zpracování výjimek v kódu ADB a udělejte změny jako při zpracování nových chyb.
     + Bylo přidáno automatické ověřování MSI pro virtuální počítače poznámkových bloků.
@@ -206,9 +390,9 @@ Karta experiment v [novém portálu pracovního prostoru](http://ml.azure.com) s
     + Pevná neproměnlivá Chyba při nastavování vlastností při nahrávání s vysvětlením klienta pomocí dvou různých typů modelů
     + Do bodování bodování byl přidán get_raw param. vysvětlit (), takže jeden vysvětlující bodování může vracet jak provedenou, tak nezpracované hodnoty.
   + **AzureML-vlak – automl**
-    + Zavedli jsme veřejná rozhraní API ze služby AutoML pro podporu vysvětlení z AutoML vysvětlené sady SDK – novější způsob podpory AutoML vysvětlení tím, že odpojujete AutoML featurization a vysvětlete podporu integrovaného vysvětlení sady SDK. vzor.
+    + Zavedli jsme veřejná rozhraní API ze služby AutoML pro podporu vysvětlení z `automl` vysvětlující sadu SDK – novější způsob podpory AutoML vysvětlení pomocí odpojujecích se AutoML featurization a vysvětlení nezpracovaného vysvětlení na základě sady SDK v části vzor.
     + Odebírají se výchozí hodnoty ze vzdálených školicích prostředí.
-    + Umístění úložiště výchozí mezipaměti bylo změněno z FileCacheStore na jednu na AzureFileCacheStore jednu pro AutoML v cestě kódu AzureDatabricks.
+    + Umístění úložiště výchozí mezipaměti bylo změněno z FileCacheStore na jednu až AzureFileCacheStore jedno pro AutoML v Azure Databricks cestě kódu.
     + Oprava správného ověření vstupních dat, jsou-li zadána ve formátu toku dat
   + **AzureML-vlak – jádro**
     + Vyřazení source_directory_data_store se zrušilo.
@@ -268,6 +452,13 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
   + **AzureML-Core**
     + Zaveďte DataSet. Get _all (pracovní prostor), který vrací slovník `TabularDataset` a `FileDataset` objektů podle názvu registrace. 
     
+    ```py 
+    workspace = Workspace.from_config() 
+    all_datasets = Dataset.get_all(workspace) 
+    mydata = all_datasets['my-data'] 
+    ```
+    
+    + Do `Dataset.Tabular.from_delimited_files` a `Dataset.Tabular.from_parquet.files`zaveďte `parition_format` jako argument. Informace o oddílu každé cesty k datům budou extrahovány do sloupců v závislosti na zadaném formátu. {column_name} vytvoří sloupec String a {column_name: RRRR/MM/DD/HH/MM/SS} vytvoří sloupec data a času, kde ' yyyy ', ' MM ', ' DD ', ' HH ', ' mm ' a ' ss ' slouží k extrakci roku, měsíce, dne, hodin, minut a sekund pro typ DateTime. Partition_format by měl začít od pozice prvního klíče oddílu až do konce cesty k souboru. Například s ohledem na cestu. /USA/2019/01/01/data.csv ', kde je oddíl podle země a čas, partition_format = '/{Country}/{PartitionDate: RRRR/MM/DD}/data. csv ' vytvoří řetězcový sloupec ' země ' s hodnotou ' USA ' a sloupec DateTime ' PartitionDate ' s hodnotou ' 2019-01-01 '.
         ```py 
         workspace = Workspace.from_config() 
         all_datasets = Dataset.get_all(workspace) 
@@ -293,7 +484,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
   + **AzureML-kanál – jádro**
     + Přidání podpory pro vytváření, aktualizaci a používání PipelineDrafts-lze použít k údržbě proměnlivých definic kanálu a jejich interaktivnímu používání.
   + **AzureML-vlak – automl**
-    + Vytvořená funkce pro instalaci konkrétních verzí pytorch v 1.1.0, CUDA Toolkit 9,0, pytorch-transformes, která je nutná pro povolení BERT/XLNet ve vzdáleném prostředí Python runtime.
+    + Vytvořená funkce pro instalaci konkrétních verzí pytorch v 1.1.0 s grafickým procesorem, :::no-loc text="cuda"::: Toolkit 9,0, pytorch-transformes, které jsou nutné k povolení BERT/XLNet ve vzdáleném prostředí Python runtime.
   + **AzureML-vlak – jádro**
     + Prvotní selhání některých chyb definice prostoru s parametry přímo v sadě SDK namísto na straně serveru.
 
@@ -321,7 +512,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Opravili jsme problém v AutoML, kde se řádky s chybějícími popisky neodebraly správně.
     + Vylepšené protokolování chyb v AutoML; všechny chybové zprávy se teď vždycky zapisují do souboru protokolu.
     + AutoML aktualizovala své připnutí balíčku tak, aby zahrnovala `azureml-defaults`, `azureml-explain-model` a `azureml-dataprep`. AutoML už nebude upozorňovat na neshody balíčku (s výjimkou balíčku `azureml-train-automl`).
-    + Opravili jsme problém v časové řady, kde CV odděluje nestejnou velikost způsobující selhání výpočtu bin.
+    + Opravili jsme problém v `timeseries`, kde se CV oddělí nestejnou velikostí, což způsobuje selhání výpočtu bin.
     + Pokud se při spuštění iterace kompletu pro školicí typ pro křížové ověření objevilo potíže při stahování modelů vyškolených na celou datovou sadu, máme nekonzistenci mezi závažím modelu a modely, které byly dodány do hlasování. stromů.
     + Opravili jsme chybu, která se vyvolala při výuce a/nebo ověřovací popisky (y a y_valid), a to ve formě PANDAS dataframe, ale ne jako pole numpy.
     + Opravili jsme problém s prognózou úkolů v případě, že v logických sloupcích vstupních tabulek nebyl žádný nalezen.
@@ -346,7 +537,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Opravili jsme problém s tokenem SAS s vypršenou platností ve sledovacím procesu, což způsobilo, že se soubory zastavily po vypršení platnosti počátečního tokenu
     + Podporuje se import souborů HTTP CSV/TSV v sadě DataSet Python SDK.
     + Zastaralá metoda pracovního prostoru. Setup (). Zpráva s upozorněním, která se zobrazuje uživatelům, navrhuje místo toho použití Create () nebo Get ()/from_config ().
-    + Přidání prostředí. Přidejte _private_pip_wheel (), které umožňuje nahrávání privátních vlastních balíčků Pythonu (. WHL) do pracovního prostoru a jejich bezpečné použití pro sestavení nebo vyhodnotit prostředí.
+    + Přidání prostředí. Přidejte _private_pip_wheel (), které umožňuje nahrávání privátních vlastních balíčků Pythonu `whl`do pracovního prostoru a jejich bezpečné použití pro sestavení nebo vyhodnotit prostředí.
     + Certifikát SSL pro vyhodnocování koncového bodu, který je nasazený v clusteru AKS, teď můžete aktualizovat pro Microsoft vygenerovaný i certifikát zákazníka.
   + **AzureML-vysvětlit-model**
     + Přidání parametru pro přidání ID modelu do vysvětlení při nahrávání.
@@ -364,7 +555,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Opravili jsme problém v AutoML, kde se řádky s chybějícími popisky neodebraly správně.
     + Umožní uživatelům AutoML vyřadit řadu školení, která nejsou dostatečně dlouhá při prognózování.
     + Povolí uživatelům AutoML odstranit zrna ze sady testů, které neexistují v školicí sadě při prognózování.
-    + Nyní AutoMLStep prostřednictvím automl config do back-endu, aby se předešlo jakýmkoli problémům při změnách nebo přidávání nových parametrů konfigurace.
+    + Nyní AutoMLStep projde do back-endu `automl` config, aby se předešlo jakýmkoli problémům při změnách nebo přidávání nových parametrů konfigurace.
     + AutoML data Guardrail je teď ve verzi Public Preview. Po školení se uživateli zobrazí sestava Guardrail dat (pro úlohy klasifikace/regrese) a také k ní bude mít přístup prostřednictvím rozhraní SDK API.
   + **AzureML-vlak – jádro**
     + Přidala se podpora Torch 1,2 v PyTorch Estimator.
@@ -396,13 +587,13 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
   + **AzureML-automl – jádro**
     + Opravuje chybu, při které je velikost ověřování pro rozdělení CV malá a výsledkem je špatný odhad vs. opravdové grafy pro regresi a předpovědi.
     + V případě, že došlo k chybě při spuštění, je k dispozici protokolování úloh prognózování na vzdálené běhy. nyní se uživateli zobrazí komplexní chybová zpráva.
-    + Opravené chyby časové řady, pokud je příznak předběžného zpracování true.
+    + Opravené chyby `Timeseries`, pokud je příznak předběžného zpracování true.
     + Provedli jsme některé chybové zprávy při ověřování dat předpovědi, které jsou nenapadnutelné.
     + Snížená spotřeba paměti AutoML se spouští vyřazením a/nebo opožděným načítáním datových sad, zejména mezi vytvářením procesů.
   + **AzureML-contrib-vysvětlený model**
     + Přidání příznaku model_task pro vysvětlení, aby uživatel mohl přepsat výchozí automatickou logiku odvození pro typ modelu
-    + Změny widgetů: automaticky se nainstalují pomocí contrib, žádné další vysvětlení nbextension Install/Enable-support se závažností jenom globální funkce (například Permutative).
-    + Změny řídicího panelu: – box vykresluje a Violin vykresluje kromě beeswarm vykreslení na stránce souhrnu – mnohem rychlejší převykreslování beeswarm vykreslovat při změně posuvníku nahoře – užitečná zpráva s vysvětlením, jak se počítá shora k vypočítaným chybovým zprávám v místě grafů, když nejsou k dispozici žádná data.
+    + Změny widgetů: automaticky se nainstalují pomocí `contrib`, žádné další `nbextension` vysvětlení instalace/povolení-podpora jenom s důležitou funkcí důležitost (například Permutative).
+    + Změny řídicího panelu: – box vykresluje a Violin se kromě `beeswarm` vykreslení na stránce Shrnutí – mnohem rychlejší překreslovat `beeswarm` sestrojit na stránce se změnou horního okraje – užitečnou zprávu s vysvětlením, jak je nejdůležitější přizpůsobitelná zpráva, která vysvětluje, jak se vypočítané přizpůsobitelné zprávy místo grafů nejsou k dispozici žádná data.
   + **AzureML-Core**
     + Přidání metody model. Package () pro vytváření imagí Docker a fázemi, které zapouzdřují modely a jejich závislosti.
     + Místní služby WebService se aktualizovaly, aby přijímaly InferenceConfigs obsahující objekty prostředí.
@@ -429,11 +620,11 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Přidali jsme podporu instance_pool_id a parametry cluster_log_dbfs_path pro krok DatabricksStep.
     + Přidání podpory pro parametry kanálu v kroku DatabricksStep
   + **AzureML-vlak – automl**
-    + Přidání docstrings pro soubory související s kompletem.
+    + Přidáno `docstrings` souborů souvisejících s kompletem.
     + Aktualizace dokumentů na vhodnější jazyk pro `max_cores_per_iteration` a `max_concurrent_iterations`
     + V případě, že došlo k chybě při spuštění, je k dispozici protokolování úloh prognózování na vzdálené běhy. nyní se uživateli zobrazí komplexní chybová zpráva.
-    + Z poznámkového bloku automlstep kanálu se odebraly get_data.
-    + Začalo podpora dataprep v automlstep.
+    + Z `automlstep` poznámkového bloku kanálu se odebraly get_data.
+    + Začalo podpora `dataprep` v `automlstep`.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Sada Azure Machine Learning data PREP SDK v 1.1.10
 
@@ -469,21 +660,21 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + V úkolech prognózování parametr `target_lags` nyní přijímá jednu celočíselnou hodnotu nebo seznam celých čísel. Pokud bylo zadáno celé číslo, bude vytvořena pouze jedna prodleva. Pokud je k dispozici seznam, budou provedeny jedinečné hodnoty prodlevy. target_lags = [1, 2, 2, 4] vytvoří prodlevy jednu, 2 a 4 tečky.
     + Opravte chybu týkající se ztráty typů sloupců po transformaci (propojená chyba);
     + V `model.forecast(X, y_query)`povolte, aby y_query bylo typu objektu, který neobsahuje žádné (s) na začátku (#459519).
-    + Přidání očekávaných hodnot do výstupu automl
+    + Přidání očekávaných hodnot do výstupu `automl`
   + **AzureML-contrib – dataunášená**
     +  Vylepšení ukázkového poznámkového bloku, včetně přepnutí do programu AzureML-opendatasets namísto funkcí AzureML-contrib-opendatasets a zlepšení výkonu při rozšiřování dat
   + **AzureML-contrib-vysvětlený model**
     + Pevné transformace argumentu pro nástroj pro vysvětlení VÁPNa pro nezpracovaný význam funkcí v balíčku AzureML-contrib-vysvětlit-model
     + Přidání segmentů k vysvětlení obrázků v popisu obrázku pro balíček AzureML-contrib-vysvětlit-model
     + Přidání podpory zhuštění scipy pro LimeExplainer
-    + Přidat batch_size pro napodobení vysvětlení, když include_local = false pro globální vysvětlení streamování v dávkách za účelem zlepšení doby provádění DecisionTreeExplainableModel
+    + Přidání `batch_size` pro napodobování vysvětlení při `include_local=False`pro streamování globálních vysvětlení v dávkách za účelem zlepšení doby provádění DecisionTreeExplainableModel
   + **AzureML-contrib-featureengineering**
-    + Oprava pro volání set_featurizer_timeseries_params (): Změna typu hodnoty dict – a nulová check-přidat Poznámkový blok pro časové řady featurizer
+    + Oprava pro volání set_featurizer_timeseries_params (): Změna typu hodnoty dict – a prázdná hodnota check-přidat Poznámkový blok pro `timeseries` featurizer
     + Aktualizuje závislost NimbusML na verzi 1.2.0 (aktuální nejnovější).
   + **AzureML-Core**
     + Přidání možnosti připojit úložiště DBFS v rozhraní příkazového řádku AzureML 
     + Opravili jsme chybu pomocí nahrávání úložiště dat, kde se vytvoří prázdná složka, pokud `target_path` spuštěná s `/`
-    + Opravený problém DeepCopy v ServicePrincipalAuthentication.
+    + Opravený `deepcopy` problém v ServicePrincipalAuthentication.
     + Do CLI se přidaly příkazy AZ ml Environment show a AZ ml Environment list.
     + Prostředí teď podporují zadání base_dockerfile jako alternativy k již vytvořeným base_image.
     + Nepoužívané nastavení RunConfiguration auto_prepare_environment bylo označeno jako zastaralé.
@@ -503,9 +694,9 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Přidání podpory zhuštění scipy pro LimeExplainer
     + přidaný tvar lineárního vysvětlujícího pobalení a také další úroveň pro tabulkový popis vysvětlující lineární modely
     + pro napodobení napodobení v knihovně modelů vysvětluje, že při include_local = false pro zhuštěné datové vstupy je Opravená chyba.
-    + Přidání očekávaných hodnot do výstupu automl
+    + Přidání očekávaných hodnot do výstupu `automl`
     + pevná funkce permutace důležitost při zadání argumentu Transformers pro získání důležité funkce
-    + Přidat batch_size pro napodobení vysvětlení, když include_local = false pro globální vysvětlení streamování v dávkách za účelem zlepšení doby provádění DecisionTreeExplainableModel
+    + Přidání `batch_size` pro napodobování vysvětlení při `include_local=False`pro streamování globálních vysvětlení v dávkách za účelem zlepšení doby provádění DecisionTreeExplainableModel
     + v případě knihovny pro vysvětlení modelu jsou k disblackbox vysvětlující, kde je pro předpověď vyžadován vstup PANDAS dataframe.
     + Opravili jsme chybu, kdy `explanation.expected_values` někdy vracet místo seznamu s plovoucí desetinnou čárkou.
   + **AzureML-mlflow**
@@ -515,7 +706,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Zlepšení dokumentace k balíčku AzureML-mlflow
     + Oprava chyby, kde mlflow. log _artifacts ("my_dir") by ukládala artefakty v rámci ">/< artefakt-Paths" místo "< artefakt-Paths >"
   + **AzureML-opendatasets**
-    + Připnout pyarrow z opendatasets na starší verze (< 0.14.0) z důvodu chyby nově zavedené paměti.
+    + Připnout `pyarrow` z `opendatasets` na staré verze (< 0.14.0) z důvodu chyby nově zavedené paměti.
     +  Přesuňte AzureML-contrib-opendatasets do AzureML-opendatasets. – Povolí, aby se třídy Open DataSet zaregistrovaly do pracovního prostoru AML a mohli hladce využívat funkce AML DataSet. – Zlepšení výkonu NoaaIsdWeather obohacení ve verzi mimo SPARK
   + **AzureML-Pipeline – kroky**
     + Úložiště dat DBFS se teď podporuje pro vstupy a výstupy v DatabricksStep.
@@ -526,7 +717,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
   + **AzureML-vlak – automl**
     + Aktualizovala se dokumentace na get_output, která odráží skutečný návratový typ a poskytuje další poznámky k načítání vlastností klíče.
     + Aktualizuje závislost NimbusML na verzi 1.2.0 (aktuální nejnovější).
-    + Přidání očekávaných hodnot do výstupu automl
+    + Přidání očekávaných hodnot do výstupu `automl`
   + **AzureML-vlak – jádro**
     + Řetězce se teď akceptují jako cíl COMPUTE pro automatizované ladění parametrů.
     + Nepoužívané nastavení RunConfiguration auto_prepare_environment bylo označeno jako zastaralé.
@@ -570,11 +761,10 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Vylepšený výkon NoaaIsdWeather obohacen v jiné verzi než SPARK.
   + **AzureML-vysvětlit-model**
     + Aktualizovaná online dokumentace pro objekty interpretace.
-    + Přidali jsme batch_size k napodobení vysvětlujícíi, když include_local = false pro globální vysvětlení streamování v dávkách, aby se zlepšila doba provádění DecisionTreeExplainableModel.
+    + Přidání `batch_size` pro napodobování vysvětlení při `include_local=False`, pro streamování globálních vysvětlení v dávkách za účelem zlepšení doby provádění DecisionTreeExplainableModel pro knihovnu pro vysvětlení modelu.
     + Opravili jsme problém, kdy `explanation.expected_values` někdy vracet místo seznamu s plovoucí desetinnou čárkou.
-    + Přidání očekávaných hodnot do automl výstupu pro vysvětlení v knihovně vysvětlení modelu.
+    + Přidání očekávaných hodnot do výstupního `automl` pro podrobnější vysvětlení v knihovně modelů vysvětlit.
     + Pevná funkce permutace důležitost při zadání argumentu Transformers, který má za problém získat důležitost nezpracovaných funkcí
-    + Přidali jsme batch_size k napodobení vysvětlujícíi, když include_local = false pro globální vysvětlení streamování v dávkách, aby se zlepšila doba provádění DecisionTreeExplainableModel pro knihovnu pro vysvětlení modelu.
   + **AzureML-Core**
     + Do příkazového řádku AzureML se přidala možnost připojit úložiště DBFS.
     + Opravili jsme problém s nahráváním úložiště dat, kde se vytvoří prázdná složka, pokud `target_path` spuštěná s `/`.
@@ -587,7 +777,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Opravili jsme problém, kdy mlflow. log _artifacts ("my_dir") uloží artefakty v rámci "my_dir/artefakt-Paths" místo "artefakt-Paths".
   + **AzureML-kanál – jádro**
     + Parametr hash_paths pro všechny kroky kanálu je zastaralý a v budoucnu se odebere. Ve výchozím nastavení je obsah source_directory hash (s výjimkou souborů uvedených v souboru. amlignore nebo. gitignore).
-    + Pokračující zlepšování modulu a ModuleStep, aby podporovalo moduly specifické pro výpočetní typ, při přípravě na integraci RunConfiguration a další změny pro odemčení jejich používání v kanálech.
+    + Pokračující zlepšování modulu a ModuleStep pro podporu modulů výpočetních typů, přípravu na RunConfiguration integraci a další změny pro odemknutí využití modulu specifického pro výpočetní typ v kanálech.
   + **AzureML-Pipeline – kroky**
     + AzureBatchStep: Vylepšená dokumentace s ohledem na vstupy a výstupy.
     + AzureBatchStep: výchozí hodnota delete_batch_job_after_finish se změnila na true.
@@ -601,9 +791,14 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
 ### <a name="azure-machine-learning-data-prep-sdk-v118"></a>Sada Azure Machine Learning data PREP SDK v 1.1.8
 
 + **Nové funkce**
+ + Objekty toku dat se teď dají iterovat a vytvářejí sekvenci záznamů. `Dataflow.to_record_iterator`najdete v dokumentaci.
   + Objekty toku dat se teď dají iterovat a vytvářejí sekvenci záznamů. `Dataflow.to_record_iterator`najdete v dokumentaci.
 
 + **Opravy chyb a vylepšení**
+ + Zvýšila se odolnost sady SDK pro sadu pro dataprep.
+ + Vylepšené zpracování pandasch datarámečcích pomocí neřetězcových indexů sloupců.
+ + Zvýšil se výkon `to_pandas_dataframe` v datových sadách.
+ + Opravili jsme chybu, při které se spuštění rutiny Sparku u datových sad nezdařilo v prostředí s více uzly.
   + Zvýšila se odolnost sady SDK pro sadu pro dataprep.
   + Vylepšené zpracování pandasch datarámečcích pomocí neřetězcových indexů sloupců.
   + Zvýšil se výkon `to_pandas_dataframe` v datových sadách.
@@ -636,7 +831,7 @@ Změnili jsme změnu, která zlepšila výkon, protože způsobila problémům p
     + Aktualizovali jsme mlflow. AzureML. build_image na nové rozhraní API, opravy chyb vystavené novou implementací.
 
 + **Opravy chyb a vylepšení**
-  + Z AzureML-Core se odebrala závislost paramiko. Přidání upozornění na zastarání pro starší metody připojení cíle výpočtů
+  + Z AzureML-Core se odebrala závislost `paramiko`. Přidání upozornění na zastarání pro starší metody připojení cíle výpočtů
   + Zvýšení výkonu rutiny run. create_children
   + Při napodobování s binárním klasifikátorem je možné opravit pořadí pravděpodobnosti, když se pro škálování hodnot tvarů používá pravděpodobnost použití učitelů.
   + Vylepšené zpracování chyb a zpráva pro automatizované strojové učení. 
@@ -791,7 +986,7 @@ Použijte virtuální počítač s poznámkovým blokem jako zabezpečené hosti
 
 ### <a name="automated-machine-learning"></a>Automatizované Machine Learning
 
-+ Funkce, která umožňuje dynamické přidávání featurizers pro optimalizaci výkonu. New featurizers: vkládání pracovních verzí, váha legitimace, cílové kódování, kódování textu v cíli, vzdálenost clusteru
++ Funkce, která umožňuje dynamické přidávání :::no-loc text="featurizers"::: pro optimalizaci výkonu. Nové :::no-loc text="featurizers":::: vkládání pracovních verzí, váha legitimace, cílové kódování, kódování textu v cíli, vzdálenost clusteru
 + Inteligentní CV pro zpracování rozdělených a platných rozdělení v rámci automatizovaného ML
 + Několik změn optimalizace paměti a vylepšení výkonu za běhu
 + Zvýšení výkonu v vysvětlení modelu
@@ -1264,7 +1459,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
   * Vylepšené zpracování chyb a dokumentace 
   * Pevné problémy s výkonem načítání vlastností spuštění 
   * Opravený problém s pokračováním v běhu. 
-  * Vyřešené problémy s iterací ensembling.
+  * Vyřešené problémy s iterací :::no-loc text="ensembling":::.
   * Opravili jsme chybu v systému MAC OS.
   * Průměrná křivka PR/ROC v případě vlastního ověřovacího scénáře makra převzorkování.
   * Odebrala se logika nadbytečného indexu.

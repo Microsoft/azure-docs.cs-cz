@@ -5,18 +5,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 10/11/2019
 ms.author: hamusa
-ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952098"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521238"
 ---
-# <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Vyhodnoťte virtuální počítače VMware pomocí Azure Migrate: Hodnocení serverů
+# <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů VMware pomocí Azure Migrate: posouzení serveru
 
-V tomto článku se dozvíte, jak vyhodnotit místní virtuální počítače VMware pomocí Azure Migrate: Nástroj pro vyhodnocení serveru.
+V tomto článku se dozvíte, jak pomocí nástroje Azure Migrate: Server Assessment Tool zhodnotit místní virtuální počítače VMware.
 
 [Azure Migrate](migrate-services-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců.
 
@@ -38,7 +38,7 @@ Tento kurz je druhý v řadě, který ukazuje, jak vyhodnotit a migrovat virtuá
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Dokončete](tutorial-prepare-vmware.md) první kurz v této sérii. Pokud to neuděláte, pokyny v tomto kurzu nebudou fungovat.
 - Tady je seznam toho, co byste měli udělat v prvním kurzu:
@@ -50,35 +50,35 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Následujícím způsobem nastavte nový projekt Azure Migrate.
 
-1. V Azure Portal > **všechny služby**vyhledejte **Azure Migrate**.
-2. V části **služby**vyberte **Azure Migrate**.
-3. V části **Přehled**v části **zjišťování, vyhodnocení a migrace serverů**klikněte na možnost **zhodnotit a migrovat servery**.
+1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
+2. V části **Služby** vyberte **Azure Migrate**.
+3. Na stránce **Přehled** v části **Zjistit, posoudit a migrovat servery** klikněte na **Posoudit a migrovat servery**.
 
     ![Zjišťování a vyhodnocení serverů](./media/tutorial-assess-vmware/assess-migrate.png)
 
-4. V části **Začínáme**klikněte na **Přidat nástroje**.
-5. V rámci **migrace projektu**vyberte předplatné Azure a vytvořte skupinu prostředků, pokud ji nemáte.     
+4. V části **Začínáme** klikněte na **Přidat nástroje**.
+5. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.     
 6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Podporují se Asie, Evropa, Spojené království a USA.
 
-    - Zeměpisná oblast projektu se používá jenom k ukládání metadat shromážděných z místních virtuálních počítačů.
-    - Při spuštění migrace můžete vybrat libovolnou cílovou oblast.
+    - Zeměpisná oblast projektu slouží pouze k ukládání metadat shromážděných z místních virtuálních počítačů.
+    - Při spouštění migrace můžete vybrat jakoukoli cílovou oblast.
 
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-vmware/migrate-project.png)
 
 
 7. Klikněte na **Další**.
-8. V **nástroji vybrat nástroj**pro posouzení **vyberte Azure Migrate: **Další**posouzení**serveru > 
+8. V **nástroji vybrat nástroj pro posouzení**vyberte **Azure Migrate: posouzení serveru** > **Další**.
 
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-vmware/assessment-tool.png)
 
-9. V **nástroji vybrat nástroj pro migraci**vyberte možnost **Přeskočit přidat nástroj pro migraci pro nyní** > **Next**.
-10. V části **Revize + přidat nástroje**zkontrolujte nastavení a klikněte na **Přidat nástroje**.
-11. Počkejte několik minut, než se projekt Azure Migrate nasadí. Přejdete na stránku projektu. Pokud projekt nevidíte, můžete k němu přistupovat ze **serverů** na řídicím panelu Azure Migrate.
+9. V části **Vybrat nástroj pro migraci** vyberte **V tuto chvíli přeskočit přidání nástroje pro migraci** > **Další**.
+10. V části **Kontrola a přidání nástrojů** zkontrolujte nastavení a klikněte na **Přidat nástroje**.
+11. Počkejte několik minut, než se projekt Azure Migrate nasadí. Budete přesměrováni na stránku projektu. Pokud se projekt nezobrazí, můžete k němu přejít z části **Servery** na řídicím panelu služby Azure Migrate.
 
 
 ## <a name="set-up-the-appliance-vm"></a>Nastavení virtuálního počítače zařízení
 
-Azure Migrate: Posouzení serveru spouští odlehčené zařízení VMware VM.
+Azure Migrate: posouzení serveru spouští odlehčené zařízení VMware VM.
 
 - Toto zařízení provádí zjišťování virtuálních počítačů a odesílá údaje o metadatech a výkonu virtuálních počítačů do Azure Migrate posouzení serveru.
 - Nastavení zařízení:
@@ -89,9 +89,9 @@ Azure Migrate: Posouzení serveru spouští odlehčené zařízení VMware VM.
 
 ### <a name="download-the-ova-template"></a>Stažení šablony pro VAJÍČKy
 
-1. V Azure Migrate **cíle** > migrace na**servery** > : **Vyhodnocování**serveru klikněte na tlačítko **zjistit**.
-2. V nabídce **zjistit** > počítače**jsou vaše počítače virtualizované?** klikněte na **Ano a hypervisor VMware vSphere**.
-3. Kliknutím na **Stáhnout** Stáhněte. Soubor šablony vajíček
+1. V ** > ** **cíli migrace** > **Azure Migrate: posouzení serveru**, klikněte na **zjistit**.
+2. V části **Zjistit počítače** > **Máte počítače ve virtuální podobě?** klikněte na **Ano, s hypervisorem VMware vSphere**.
+3. Pokud si chcete stáhnout soubor šablony .OVA, klikněte na **Stáhnout**.
 
     ![Stažení souboru .OVA](./media/tutorial-assess-vmware/download-ova.png)
 
@@ -104,7 +104,7 @@ Před nasazením ověřte, zda je soubor sady vajíček zabezpečený.
 2. Spusťte následující příkaz, kterým vygenerujete hodnotu hash pro soubor OVA:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Pro 2.19.07.30 verze by se měla vygenerovaná hodnota hash shodovat s těmito hodnotami. 
+3. Pro 2.19.07.30 verze by se měla vygenerovaná hodnota hash shodovat s těmito hodnotami.
 
   **Algoritmus** | **Hodnota hash**
   --- | ---
@@ -140,18 +140,18 @@ Zařízení nastavte pomocí následujících kroků.
 
 1. V konzoli vSphere Client klikněte pravým tlačítkem na daný virtuální počítač a pak na **Open Console** (Otevřít konzolu).
 2. Zadejte jazyk, časové pásmo a heslo pro zařízení.
-3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k virtuálnímu počítači, a otevřete adresu URL webové aplikace zařízení: **název zařízení *https://nebo IP adresa*: 44368**.
+3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k VIRTUÁLNÍmu počítači, a otevřete adresu URL webové aplikace zařízení: ***název zařízení https://nebo IP adresa*: 44368**.
 
    Alternativně můžete aplikaci otevřít z plochy zařízení kliknutím na zástupce aplikace.
 4. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
-    - **Licence**: Přijměte licenční podmínky a přečtěte si informace třetích stran.
-    - **Připojení**: Aplikace zkontroluje, jestli má virtuální počítač přístup k Internetu. Pokud virtuální počítač používá proxy server:
+    - **Licence**: přijměte licenční podmínky a přečtěte si informace třetích stran.
+    - **Připojení**: aplikace kontroluje, jestli má virtuální počítač přístup k Internetu. Pokud virtuální počítač používá proxy server:
         - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN.
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
         - Podporuje se jen proxy protokolu HTTP.
     - **Čas synchronizace**: čas v zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování fungovalo správně.
-    - **Nainstalovat aktualizace**: Zařízení zajišťuje instalaci nejnovějších aktualizací.
-    - **Nainstalovat VDDK**: Zařízení zkontroluje, jestli je nainstalovaná sada vSphere Virtual disk Development Kit (VDDK) VMWare.
+    - **Nainstalovat aktualizace**: zařízení zajišťuje, že jsou nainstalované nejnovější aktualizace.
+    - **Instalace VDDK**: zařízení kontroluje, jestli je nainstalovaná sada Virtual disks Development Kit (VDDK) VMware vSphere.
         - Azure Migrate: Migrace serveru používá VDDK k replikaci počítačů během migrace do Azure.
         - Stáhněte si VDDK 6,7 z VMware a Extrahujte stažený obsah zip do zadaného umístění na zařízení.
 
@@ -166,17 +166,30 @@ Zařízení nastavte pomocí následujících kroků.
 3. Zadejte název zařízení. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
 4. Klikněte na **zaregistrovat**.
 
-
 ## <a name="start-continuous-discovery"></a>Spustit průběžné zjišťování
 
-Nyní se připojte ze zařízení k vCenter Server a spusťte zjišťování virtuálních počítačů.
+Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítačů, musí se zařízení připojit k vCenter Server.
 
+### <a name="specify-vcenter-server-details"></a>Zadání podrobností vCenter Serveru
 1. V části **zadat vCenter Server podrobnosti**zadejte název (FQDN) nebo IP adresu vCenter Server. Můžete ponechat výchozí port nebo zadat vlastní port, na kterém vCenter Server naslouchá.
 2. V části **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu jen pro čtení, které zařízení použije ke zjištění virtuálních počítačů na serveru vCenter. Ujistěte se, že účet má [požadovaná oprávnění pro zjišťování](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). Rozsah zjišťování můžete omezit tak, že omezíte přístup k účtu vCenter odpovídajícím způsobem; Další informace o zjišťování oboru [najdete tady](tutorial-assess-vmware.md#scoping-discovery).
 3. Klikněte na **ověřit připojení** a ujistěte se, že se zařízení může připojit k vCenter Server.
-4. Po navázání spojení klikněte na **Uložit a spusťte zjišťování**.
 
-Spustí se zjišťování. Zobrazení metadat zjištěných virtuálních počítačů na portálu trvá přibližně 15 minut.
+### <a name="specify-vm-credentials"></a>Zadat přihlašovací údaje virtuálního počítače
+Pro zjišťování aplikací, rolí a funkcí a vizualizací závislostí virtuálních počítačů můžete zadat přihlašovací údaje k virtuálnímu počítači, které mají přístup k virtuálním počítačům VMware. Můžete přidat jednu přihlašovací údaje pro virtuální počítače s Windows a jedno přihlašovací údaje pro virtuální počítače se systémem Linux. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) o požadovaných oprávněních pro přístup.
+
+> [!NOTE]
+> Tento vstup je nepovinný a je potřeba, aby se povolilo zjišťování aplikací a vizualizace závislostí bez agentů.
+
+1. V nabídce **zjistit aplikace a závislosti na virtuálních počítačích**klikněte na **Přidat přihlašovací údaje**.
+2. Vyberte **operační systém**.
+3. Zadejte popisný název přihlašovacích údajů.
+4. V části **uživatelské jméno** a **heslo**zadejte účet, který má alespoň přístup k hostům na virtuálních počítačích.
+5. Klikněte na tlačítko **Přidat**.
+
+Po zadání vCenter Server a přihlašovacích údajů k virtuálnímu počítači (volitelné) klikněte na **Uložit a spusťte zjišťování** a spusťte zjišťování místního prostředí.
+
+Zobrazení metadat zjištěných virtuálních počítačů na portálu trvá přibližně 15 minut. Zjišťování nainstalovaných aplikací, rolí a funkcí nějakou dobu trvá, doba trvání závisí na počtu zjištěných virtuálních počítačů. Pro virtuální počítače 500 trvá na portálu Azure Migrate přibližně 1 hodinu, než se inventář aplikace zobrazí.
 
 ### <a name="scoping-discovery"></a>Zjišťování rozsahu
 
@@ -189,13 +202,13 @@ Chcete-li nastavit obor, je nutné provést následující kroky:
 
 **Vytvoření uživatelského účtu vCenter**
 1.  Přihlaste se k webovému klientovi vSphere jako správce vCenter Server.
-2.  Klikněte na možnost **Správa** > **uživatele jednotného přihlašování a skupiny** > **Uživatelé** .
+2.  Klikněte na možnost **správa** > **Uživatelé a skupiny jednotného přihlašování** > **Uživatelé** .
 3.  Klikněte na ikonu **nového uživatele** .
 4.  Zadejte požadované informace pro vytvoření nového uživatele a klikněte na tlačítko **OK**.
 
-**Definice nové role s požadovanými oprávněními** (<em>vyžaduje se pro migraci serveru bez agenta</em>)
+**Definování nové role s požadovanými oprávněními** (<em>vyžadované pro migraci serveru bez agenta</em>)
 1.  Přihlaste se k webovému klientovi vSphere jako správce vCenter Server.
-2.  Přejděte do**správce role** **správy** > .
+2.  Přejděte do **administrace** > **správce rolí**.
 3.  Z rozevírací nabídky vyberte svou vCenter Server.
 4.  Klikněte na akce **vytvořit roli** .
 5.  Zadejte název nové role. (například <em>Azure_Migrate</em>).
@@ -205,18 +218,18 @@ Chcete-li nastavit obor, je nutné provést následující kroky:
 **Přiřazení oprávnění pro objekty vCenter**
 
 Existují dva přístupy k přiřazení oprávnění k objektům inventáře v vCenter k uživatelskému účtu vCenter s přiřazenou rolí.
-- Pro vyhodnocování serveru je třeba použít roli jen **pro čtení** pro uživatelský účet vCenter pro všechny nadřazené objekty, které jsou hostovány virtuálními počítači, které mají být zjištěny. Do datového centra se mají zahrnout všechny nadřazené objekty – hostitel, složka hostitelů, cluster, složka clusterů v hierarchii. Tato oprávnění mají být šířena do podřízených objektů v hierarchii. 
+- Pro vyhodnocování serveru je třeba použít roli jen **pro čtení** pro uživatelský účet vCenter pro všechny nadřazené objekty, které jsou hostovány virtuálními počítači, které mají být zjištěny. Do datového centra se mají zahrnout všechny nadřazené objekty – hostitel, složka hostitelů, cluster, složka clusterů v hierarchii. Tato oprávnění mají být šířena do podřízených objektů v hierarchii.
 
     Podobně jako u migrace serveru může být uživatelsky definovaná role (s názvem <em>Azure _Migrate</em>), která má přiřazená tato [oprávnění](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) , použita u všech nadřazených objektů, u kterých jsou virtuální počítače, které mají být migrovány, hostovány na uživatelském účtu vCenter.
 
-![Přiřadit oprávnění](./media/tutorial-assess-vmware/assign-perms.png)
+![Přiřazení oprávnění](./media/tutorial-assess-vmware/assign-perms.png)
 
 - Alternativním přístupem je přiřadit uživatelský účet a roli na úrovni datového centra a rozšířit je na podřízené objekty. Pak mu udělte účet **bez role přístupu** pro každý objekt (například virtuální počítače), který nechcete zjišťovat nebo migrovat. Tato konfigurace je nenáročný. Zpřístupňuje nechtěné řízení přístupu, protože každému novému podřízenému objektu je také automaticky udělen přístup, který je zděděný z nadřazené položky. Proto doporučujeme použít první přístup.
- 
+
 > [!NOTE]
 > Dnes, posouzení serveru nemůže zjistit virtuální počítače, pokud má účet vCenter udělen přístup na úrovni složky virtuálního počítače vCenter. Pokud chcete určit obor zjišťování pomocí složek virtuálních počítačů, můžete to provést tak, že účet vCenter má přiřazený přístup jen pro čtení na úrovni virtuálního počítače.  Postup najdete v následujících pokynech:
 >
-> 1. Přiřaďte oprávnění jen pro čtení na všech virtuálních počítačích ve složkách virtuálních počítačů, na které chcete zjišťování oborovat. 
+> 1. Přiřaďte oprávnění jen pro čtení na všech virtuálních počítačích ve složkách virtuálních počítačů, na které chcete zjišťování oborovat.
 > 2. Udělte přístup jen pro čtení ke všem nadřazeným objektům, kde jsou hostované virtuální počítače. Všechny nadřazené objekty – hostitel, složka hostitelů, cluster, složka clusterů – v hierarchii až do datového centra se mají zahrnout. Nemusíte šířit oprávnění ke všem podřízeným objektům.
 > 3. Použijte přihlašovací údaje pro zjišťování pro výběr datového centra jako *oboru shromažďování*. Nastavení RBAC zajišťuje, že odpovídající uživatel vCenter bude mít přístup jenom k virtuálním počítačům specifickým pro tenanta.
 >
@@ -227,16 +240,16 @@ Existují dva přístupy k přiřazení oprávnění k objektům inventáře v v
 Po zjištění můžete ověřit, že se virtuální počítače objeví v Azure Portal.
 
 1. Otevřete řídicí panel Azure Migrate.
-2. V **Azure Migrate-servery** > **Azure Migrate: Na stránce** posouzení serveru klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
+2. V **Azure Migrate-servery** > **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 ## <a name="set-up-an-assessment"></a>Nastavení posouzení
 
-Existují dva typy hodnocení, které můžete vytvořit pomocí Azure Migrate: Hodnocení serverů.
+Existují dva typy hodnocení, které můžete vytvořit pomocí Azure Migrate: posouzení serveru.
 
 **Posouzení** | **Podrobnosti** | **Data**
 --- | --- | ---
-**Na základě výkonu** | Posouzení na základě shromážděných dat o výkonu | **Doporučená velikost virtuálního počítače**: Na základě dat využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)** : Na základě vstupně-výstupních operací a propustnosti místních disků.
-**Jako místní** | Posouzení na základě místních velikostí. | **Doporučená velikost virtuálního počítače**: V závislosti na velikosti místního virtuálního počítače<br/><br> **Doporučený typ disku**: Na základě nastavení typu úložiště, které jste vybrali pro posouzení.
+**Na základě výkonu** | Posouzení na základě shromážděných dat o výkonu | **Doporučená velikost virtuálního počítače**: na základě dat využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)** : na základě vstupně-výstupních operací a propustnosti místních disků.
+**Jako místní** | Posouzení na základě místních velikostí. | **Doporučená velikost virtuálního počítače**: na základě velikosti místního virtuálního počítače<br/><br> **Doporučený typ disku**: na základě nastavení typu úložiště, které jste vybrali pro posouzení.
 
 
 ### <a name="run-an-assessment"></a>Spuštění posouzení
@@ -244,11 +257,11 @@ Existují dva typy hodnocení, které můžete vytvořit pomocí Azure Migrate: 
 Proveďte posouzení následujícím způsobem:
 
 1. Projděte si [osvědčené postupy](best-practices-assessment.md) pro vytváření hodnocení.
-2. Na kartě **servery** v **Azure Migrate: Na dlaždici posouzení** serveru klikněte na vyhodnotit.
+2. Na kartě **servery** na dlaždici **Azure Migrate: vyhodnocování serveru** klikněte na možnost **vyhodnotit**.
 
-    ![Posoudit](./media/tutorial-assess-vmware/assess.png)
+    ![Posouzení](./media/tutorial-assess-vmware/assess.png)
 
-2. V poli vyhodnotit **servery**zadejte název posouzení.
+2. V poli **vyhodnotit servery**zadejte název posouzení.
 3. Kliknutím na **Zobrazit vše** zobrazíte vlastnosti posouzení.
 
     ![Vlastnosti posouzení](./media/tutorial-assess-vmware/view-all.png)
@@ -259,7 +272,7 @@ Proveďte posouzení následujícím způsobem:
 
     ![Vytvoření posouzení](./media/tutorial-assess-vmware/assessment-create.png)
 
-6. Po vytvoření posouzení ho zobrazte na **serverech** > **Azure Migrate: **Vyhodnocení**vyhodnocení** > serveru.
+6. Po vytvoření posouzení ho zobrazte na stránce **servery** > **Azure Migrate: posouzení serveru** > **posouzení**.
 7. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
 
 
@@ -268,13 +281,13 @@ Proveďte posouzení následujícím způsobem:
 
 Posouzení popisuje:
 
-- **Připravenost na Azure**: Zda jsou virtuální počítače vhodné pro migraci do Azure.
+- **Připravenost na Azure**: jestli jsou virtuální počítače vhodné pro migraci do Azure.
 - **Odhad měsíčních nákladů**: Odhadované měsíční náklady na výpočetní prostředky a úložiště pro provoz virtuálních počítačů v Azure.
-- **Odhad měsíčních nákladů na úložiště**: Odhadované náklady na diskové úložiště po migraci
+- **Odhad měsíčních nákladů na úložiště**: Odhadované náklady na diskové úložiště po migraci.
 
 ### <a name="view-an-assessment"></a>Zobrazit posouzení
 
-1. V případě **migrace** >  na**serverech**klikněte na **posouzení** v **Azure Migrate: Posouzení**serveru.
+1. V ** >  ** **cíli migrace** klikněte na **posouzení** v **Azure Migrate: posouzení serveru**.
 2. V **posouzení**klikněte na posouzení a otevřete ho.
 
     ![Souhrn posouzení](./media/tutorial-assess-vmware/assessment-summary.png)
@@ -283,10 +296,10 @@ Posouzení popisuje:
 
 1. V **Azure Readiness**ověřte, jestli jsou virtuální počítače připravené k migraci do Azure.
 2. Zkontrolujte stav virtuálního počítače:
-    - **Připraveno pro Azure**: Azure Migrate doporučuje velikost virtuálního počítače a odhad nákladů na virtuální počítače v rámci posouzení.
-    - **Připraveno s podmínkami**: Zobrazuje problémy a navrhovanou nápravu.
-    - **Nepřipraveno pro Azure**: Zobrazuje problémy a navrhovanou nápravu.
-    - **Připravenost**není známa: Používá se, když Azure Migrate nedokáže vyhodnotit připravenost kvůli problémům s dostupností dat.
+    - **Připraveno pro Azure**: Azure Migrate doporučuje velikost virtuálního počítače a odhad nákladů pro virtuální počítače ve vyhodnocování.
+    - **Připraveno s podmínkami**: zobrazuje problémy a navrhovanou nápravu.
+    - **Nepřipraveno pro Azure**: zobrazuje problémy a navrhovanou nápravu.
+    - **Připravenost neznámá**: používá se, když Azure Migrate nedokáže vyhodnotit připravenost kvůli problémům s dostupností dat.
 
 2. Klikněte na stav **připravenosti na Azure** . Můžete si prohlédnout podrobnosti připravenosti na virtuální počítač a přejít k podrobnostem, kde najdete podrobnosti o virtuálním počítači, včetně výpočetních prostředků, úložiště a nastavení sítě.
 
@@ -310,7 +323,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 
 Když spustíte posouzení na základě výkonu, bude posouzení k posouzení přiřazeno hodnocení spolehlivosti.
 
-![Míra spolehlivosti](./media/tutorial-assess-vmware/confidence-rating.png)
+![Hodnocení spolehlivosti](./media/tutorial-assess-vmware/confidence-rating.png)
 
 - Je uděleno hodnocení od 1 hvězdičky (nejnižší) do 5 hvězdiček (nejvyšší).
 - Hodnocení spolehlivosti vám pomůže odhadnout spolehlivost doporučení týkajících se velikosti, která poskytuje posouzení.
@@ -323,13 +336,13 @@ Hodnocení spolehlivosti pro posouzení je následující.
 0 až 20 % | 1 hvězdička
 21 až 40 % | 2 hvězdičky
 41 až 60 % | 3 hvězdičky
-61 až 80 % | 4 Star
+61 až 80 % | 4 hvězdičky
 81 až 100 % | 5 hvězdiček
 
 [Přečtěte si další](best-practices-assessment.md#best-practices-for-confidence-ratings) informace o osvědčených postupech pro hodnocení spolehlivosti.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se naučíte:
 

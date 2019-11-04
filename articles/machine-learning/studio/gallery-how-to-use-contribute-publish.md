@@ -1,7 +1,7 @@
 ---
 title: Galerie Azure AI
-titleSuffix: Azure Machine Learning Studio
-description: Sdílení a vyhledání prostředků analýzy a další v galerii Azure AI. Učte se od ostatních a vlastní přispívání do komunity.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Sdílení a zjišťování prostředků analýzy a další informace v Azure AI Gallery. Přečtěte si od ostatních a udělejte své vlastní příspěvky komunitě.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,195 +10,195 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 445ea2fa299e32d0ceae7b3eee9bbf0a82dd75af
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811525"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492935"
 ---
-# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a vyhledání prostředků v galerii Azure AI
+# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a zjišťování prostředků v Azure AI Gallery
 
-**[Galerie Azure AI](https://gallery.azure.ai)**  je komunitní web pro zjišťování a sdílení řešení vytvořené pomocí Azure AI.
-Galerie má širokou škálu prostředků, které můžete použít k vývoji vlastních řešení pro analýzu.
+**[Azure AI Gallery](https://gallery.azure.ai)** je web založený na komunitě pro zjišťování a sdílení řešení vytvořených pomocí Azure AI.
+Galerie má řadu prostředků, které můžete použít k vývoji vlastních analytických řešení.
 
-## <a name="what-can-i-find-in-the-gallery"></a>Co lze najít v galerii?
+## <a name="what-can-i-find-in-the-gallery"></a>Co můžu najít v galerii?
 
-Galerie Azure AI obsahuje řadu různých prostředků, které přispěl Microsoft a členům komunity odborníků přes data. Mezi ně patří:
+Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Mezi ně patří:
 
-* **Experimenty** – The galerie obsahuje širokou škálu experimenty, které byly vyvinuty v Azure Machine Learning Studio. Jsou nejrůznější, od rychlé testování konceptu experimenty, které ukazují konkrétní služby machine learning technika na plně vyvinuli řešení problémů složitých strojového učení.
-* **Kurzy** – kurzů je k dispozici několik vás provede technologie machine learning a koncepty, nebo k popisu rozšířené metody k řešení potíží, různé machine learning.
-* **Kolekce** – kolekce umožňuje seskupit experimentů, rozhraní API a další prostředky galerie, které řeší konkrétní řešení nebo koncept.
-* **Vlastní moduly** -vlastních modulů můžete stáhnout do pracovního prostoru Studio pro použití v vlastní experimenty.
-* **Poznámkové bloky Jupyter** – zahrnout kód, vizualizace dat, poznámkové bloky Jupyter a dokumentace v jediném interaktivní plátno. Poznámkové bloky ve galerii poskytují kurzy a podrobné vysvětlení pokročilých machine learningu, techniky a řešení.
+* **Experimenty** – galerie obsahuje širokou škálu experimentů, které byly vyvinuty v Azure Machine Learning Studio (Classic). Tyto experimenty jsou z rychlých experimentů v rámci konceptu, které ukazují konkrétní technika strojového učení, k plně vyvinutým řešením pro složité problémy strojového učení.
+* **Kurzy** – k dispozici je řada kurzů, které vás provedou pomocí technologií a konceptů strojového učení, případně popisují pokročilé metody řešení různých problémů strojového učení.
+* **Kolekce – kolekce** umožňuje seskupit experimenty, rozhraní API a další prostředky galerie, které řeší konkrétní řešení nebo koncept.
+* **Vlastní moduly** – vlastní moduly si můžete stáhnout do pracovního prostoru studia (Classic), abyste je mohli použít ve svých experimentech.
+* **Jupyter poznámkové bloky** – Jupyter notebooky obsahují kód, vizualizace dat a dokumentaci na jednom interaktivním plátně. Poznámkové bloky v galerii poskytují kurzy a podrobná vysvětlení pokročilých technik strojového učení a řešení.
 
-## <a name="discover-and-contribute"></a>Zjišťování a přispívat
+## <a name="discover-and-contribute"></a>Zjišťování a přispívání
 
-Kdokoli může procházení a vyhledávání různé druhy prostředků v galerii přispěl Microsoft a komunity datových věd.
-Další informace a začít na řešení vlastní problémy analýzy dat pomocí těchto prostředků.
+Kdokoli může procházet a prohledávat různé typy prostředků v galerii, které přispěly od Microsoftu a komunity pro vědecké zpracování dat.
+Pomocí těchto zdrojů se dozvíte víc a získáte přehled o řešení problémů s analýzou vašich vlastních dat.
 
-Můžete snadno vyhledat naposledy publikované a oblíbených prostředků v galerii, nebo můžete vyhledávat podle názvu, značky, algoritmy a dalších atributů.
-Klikněte na tlačítko **Procházet vše** v hlavičce galerii a vyhledat upřesnění na levé straně stránky vyberte a zadejte hledaný text v horní části.
-Zobrazit všechny příspěvky od konkrétního autora kliknutím jméno autora z v rámci všech dlaždic.
-Můžete přidat komentář, poskytovat zpětnou vazbu nebo klást otázky pomocí oddílu pro komentáře na každé stránce prostředku.
-Prostředků, které vás zajímají můžete dokonce i sdílet s přáteli nebo kolegy pomocí funkcí sdílené složky, LinkedIn a Twitter nebo e-mailem odkaz.
+Nedávno publikované a oblíbené prostředky můžete snadno najít v galerii, případně můžete hledat podle názvu, značek, algoritmů a dalších atributů.
+Klikněte na **Procházet vše** v hlavičce galerie a potom vyberte vyhledat upřesnění na levé straně stránky a zadejte hledané výrazy v horní části.
+Kliknutím na jméno autora v kterékoli z dlaždic zobrazíte příspěvky od určitého autora.
+Můžete komentovat, poskytovat zpětnou vazbu nebo klást otázky prostřednictvím oddílu komentáře na každé stránce prostředků.
+Můžete dokonce sdílet prostředek s přáteli nebo kolegy pomocí možností sdílení LinkedInu nebo Twitteru, nebo e-mailem prostřednictvím odkazu.
 
-Když jste přihlášení stane členem Galerie komunity. To umožňuje stáhnout prostředky nebo poskytování vlastních položek galerie tak, aby ostatní mohou těžit z řešení, které jste se seznámili.
+Když se přihlásíte, stanete se členem komunity galerie. To vám umožňuje stahovat prostředky nebo přispívat k vlastním položkám galerie, aby ostatní mohli využívat řešení, která jste zjistili.
 
-Můžete si stáhnout **experimenty**, **vlastních modulů**, a **poznámkové bloky Jupyter** používat při vývoji vlastních řešení pro analýzu.
-Můžete přispívat **experimenty**, **kurzy**, a **kolekce** do galerie.
+Můžete si stáhnout **experimenty**, **vlastní moduly**a **Jupyter poznámkové bloky** pro použití při vývoji vlastních analytických řešení.
+Do galerie můžete přispívat **experimenty**, **kurzy**a **kolekce** .
 
-## <a name="download-experiments-modules-notebooks"></a>Stáhněte si experimenty, moduly, poznámkové bloky
+## <a name="download-experiments-modules-notebooks"></a>Stáhnout experimenty, moduly, poznámkové bloky
 
-Můžete si stáhnout **experimenty**, **vlastních modulů**, a **poznámkové bloky Jupyter** do vlastní pracovní prostor Machine Learning Studio pro použití při vývoji vlastních řešení.
+**Experimenty**, **vlastní moduly**a **Jupyter poznámkové bloky** můžete stáhnout do svého vlastního Machine Learning Studioho (klasického) pracovního prostoru, abyste je mohli využít při vývoji vlastních řešení.
 
-Stažení prostředku z v rámci galerii AI:
+Stažení prostředku z Galerie AI:
 
 1. Otevřete prostředek v galerii AI.
-1. Klikněte na tlačítko **Open in Studio**.
+1. **V nástroji Studio**klikněte na otevřít.
 
-![Otevřete položku v galerii AI](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
+![Otevření položky z Galerie AI](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
-Chcete-li stáhnout prostředek ze studia:
+Stažení prostředku v rámci klasické verze nástroje Studio:
 
-1. V sadě Studio, vyberte **nový**.
-1. Vyberte **modulu**, **Experiment**, nebo **Poznámkový blok**.
-1. Procházet nebo Hledat prostředek galerie.
-1. Přesuňte ukazatel myši na prostředek a pak vyberte **Open in Studio**.
-    ![Otevřít galerii experimentovat v v nástroji Machine Learning Studio](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
+1. V klasické verzi studia vyberte **Nový**.
+1. Vyberte **modul**, **experiment**nebo **Poznámkový blok**.
+1. Vyhledejte prostředek Galerie procházením nebo hledáním.
+1. Najeďte ukazatelem myši na prostředek a potom vyberte **otevřít v aplikaci Studio**.
+    ![experimentovat z galerie v rámci Machine Learning Studio (Classic)](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
 
-Jakmile se prostředek je ve vašem pracovním prostoru, můžete přizpůsobit a použít ho jako cokoli, co ve studiu vytvoříte.
+Jakmile je prostředek ve vašem pracovním prostoru, můžete ho přizpůsobit a používat stejně jako cokoli, co vytvoříte v klasické verzi studia.
 
-Použití importovaný vlastní modul:
+Použití importovaného vlastního modulu:
 
-1. Vytvoření experimentu nebo otevřete existující experiment.
-1. Pokud chcete rozšířit seznam vlastních modulů ve vašem pracovním prostoru, vyberte paletě modulů **vlastní**. Je na paletě modulů nalevo od plátna experimentu.
-1. Vyberte modul, který jste naimportovali a přetáhněte ho do experimentu.
+1. Vytvořte experiment nebo otevřete existující experiment.
+1. Pokud chcete rozšířit seznam vlastních modulů v pracovním prostoru, vyberte v paletě modul **Custom (vlastní**). Paleta modulu je nalevo od plátna experimentu.
+1. Vyberte modul, který jste naimportovali, a přetáhněte ho do experimentu.
 
-## <a name="contribute-experiments"></a>Přispívat experimentů
+## <a name="contribute-experiments"></a>Experimenty přispívání
 
-K předvedení techniky analytics nebo poskytnout ostatním náskoku s ukončením na svá řešení, můžete přispívat **experimenty** jsme vypracovali v sadě Studio.
-Stejně jako ostatní vytvářet přes svůj příspěvek v galerii, postupujte podle počtu zobrazení a soubory ke stažení podstatu vašeho příspěvku.
-Uživatele můžete také přidat komentáře, sdílet s ostatními členy komunity datových věd vaše příspěvky.
-A můžete přihlásit diskuse nástroje, jako je Disqus pro příjem oznámení pro komentáře na vaše příspěvky.
+Chcete-li předvést analytické techniky nebo umožnit ostatním uživatelům, aby na jejich řešení začali začít, můžete přispět **experimenty** , které jste vytvořili v klasické verzi studia.
+Jak ostatní přicházejí do svého příspěvku v galerii, můžete postupovat podle počtu zobrazení a stahování příspěvku.
+Uživatelé mohou také přidávat komentáře a sdílet příspěvky s ostatními členy komunity pro vědu.
+A můžete se přihlásit pomocí nástroje pro diskuzi, jako je Disqus, a dostávat oznámení o svých příspěvcích.
 
-1. Otevřete experiment v nástroji Studio.
+1. Otevřete experiment v klasické verzi studia.
 
-1. Vyberte v seznamu akcí pod plátnem experimentu **publikovat do Galerie**.
+1. V seznamu akcí pod plátnem experimentu vyberte **publikovat do galerie**.
 
-1. V galerii, zadejte **název** a **značky** , která jsou popisné. Zvýraznit techniky, které jste použili nebo skutečné problém už řešení. Příklad experimentu popisný název je "binární klasifikace: Analýza Sentimentu na twitteru."
+1. V galerii zadejte **název** a **značky** , které jsou popisné. Zvýrazněte techniky, které jste použili, nebo problém reálného světa. Příkladem popisného experimentálního názvu je "binární klasifikace: Twitter Analýza mínění."
 
-1. V **souhrnu** zadejte souhrn experimentu. Krátce popište problém, který byl odstraněn experiment a jak dosaženy.
+1. Do pole **Souhrn** zadejte souhrn experimentu. Stručně popište problém, který experiment vyřeší, a způsob, jakým se k němu přiblížíte.
 
-1. V **podrobný popis** pole, popisují kroky jste provedli v jednotlivých součástí experimentu. Jsou některé užitečné témata, které zahrnují:
-   * Snímek grafu experimentu
-   * Vysvětlení a zdroje dat
+1. V poli **podrobný popis** popište kroky, které jste udělali v jednotlivých částech experimentu. Mezi užitečná témata, která je potřeba zahrnout:
+   * Snímek obrazovky s grafem experimentu
+   * Zdroje dat a vysvětlení
    * Zpracování dat
    * Návrh funkcí
    * Popis modelu
    * Výsledky a vyhodnocení výkonu modelu
 
-   Markdownu můžete použít k formátování popisu. Pokud chcete zobrazit, vzhled vaší položky na stránce experimentu popis publikovaného testu, vyberte **ve verzi Preview**.
+   K formátování popisu můžete použít Markdownu. Chcete-li zjistit, jak budou položky na stránce s popisem experimentu vypadat po publikování experimentu, vyberte možnost **Náhled**.
 
    > [!TIP]
-   > Textových polí zobrazených pro markdown úprav a náhledu jsou malé. Doporučujeme psát dokumentaci experiment v editoru markdownu (například [Visual Studio Code](https://aka.ms/vscode)), pak zkopírujte a vložte dokončené dokumentace do textového pole v galerii.
+   > Textová pole, která jsou k dispozici pro Markdownu Editing and Preview, jsou malá. Doporučujeme napsat dokumentaci experimentu v editoru Markdownu (například [Visual Studio Code](https://aka.ms/vscode)) a pak zkopírovat a vložit dokončenou dokumentaci do textového pole v galerii.
 
-1. Na **výběr Image** zvolte obrázek miniatury pro experiment. Miniaturu se zobrazí v horní části stránky s podrobnostmi experiment a na dlaždici experimentu. Ostatní uživatelé uvidí na miniaturu při procházení Galerie. Můžete nahrát obrázek z vašeho počítače nebo vyberte základní image z galerie.
+1. Na stránce **Výběr obrázku** vyberte miniaturu obrázku pro svůj experiment. Obrázek miniatury se zobrazí v horní části stránky s podrobnostmi experimentu a na dlaždici experiment. Ostatním uživatelům se při procházení Galerie uvidí obrázek miniatury. Můžete nahrát obrázek z počítače nebo vybrat uloženou image z galerie.
 
-1. Na **nastavení** stránce v části **viditelnost**, vyberte, jestli k publikování obsahu veřejně (**veřejné**) nebo je přístupná pouze na uživatele, kteří mají odkaz na stránku ( **Neuvedené**).
+1. Na stránce **Nastavení** v části **viditelnost**vyberte, jestli se má obsah publikovat veřejně (**veřejný**), nebo jestli má být přístupný jenom uživatelům, kteří mají odkaz na stránku (bez**seznamu**).
 
    > [!TIP]
-   > Pokud chcete Ujistěte se, že ještě před vydáním se veřejně vypadá správně v dokumentaci k sadě, můžete nejprve publikovat experimentu jako **Unlisted**. Později, můžete změnit nastavení viditelnosti na **veřejné** na stránce s podrobnostmi experimentu. Všimněte si, že po nastavení experimentu na **veřejné** nemůžete později změnit na **Unlisted**.
+   > Pokud chcete zajistit, aby vaše dokumentace vypadala správně ještě před tím, než veřejně vydáte, můžete experimentu publikovat jako **neuvedený**. Později můžete nastavení viditelnosti na stránce s podrobnostmi experimentu změnit na **veřejné** . Všimněte si, že po nastavení experimentu jako **veřejné** ho nelze později změnit na **neuvedený seznam**.
 
-1. Chcete-li publikovat experimentu do galerie, vyberte **OK** zaškrtávací políčko.
+1. Chcete-li publikovat experiment do galerie, zaškrtněte políčko **OK** .
 
-### <a name="update-your-experiment"></a>Aktualizovat experimentu
+### <a name="update-your-experiment"></a>Aktualizace experimentu
 
-Pokud budete potřebovat, můžete provádět změny pracovního postupu (moduly, parametry a tak dále) v jednom experimentu, kterou jste publikovali v galerii. V nástroji Machine Learning Studio proveďte požadované změny, které chcete provést experiment a publikovat znovu. Publikovaných experimentů se aktualizují se změnami.
+Pokud potřebujete, můžete v experimentu, který jste publikovali do galerie, provádět změny v pracovním postupu (moduly, parametry a tak dále). V Machine Learning Studio (Classic) proveďte jakékoli změny, které byste chtěli udělat v experimentu, a potom znovu publikujte. Publikovaný experiment se aktualizuje o vaše změny.
 
-Pro experiment přímo v galerii, můžete změnit některý z následujících informací:
+Jakékoli z následujících informací můžete pro svůj experiment změnit přímo v galerii:
 
 * Název experimentu
-* Souhrn nebo popisu
+* Shrnutí nebo popis
 * Značky
-* Image
-* Nastavení viditelnosti (**veřejné** nebo **Unlisted**)
+* Obrázek
+* Nastavení viditelnosti (**Veřejná** nebo **nerozevírací**)
 
 Můžete také odstranit experiment z galerie.
 
-Můžete tyto změny nebo odstranění experiment, ze stránky podrobností experiment nebo na stránce svého profilu v galerii.
+Tyto změny můžete provést nebo odstranit experiment, na stránce s podrobnostmi experimentu nebo na stránce vašeho profilu v galerii.
 
-* Na stránce s podrobnostmi experiment, chcete-li změnit podrobnosti pro experiment, vyberte **upravit**. Stránce s podrobnostmi o přejde do režimu úprav. Chcete-li provést změny, vyberte **upravit** vedle název experimentu, souhrn nebo značky. Jakmile budete hotovi, změny, vyberte **provádí**. Chcete-li změnit nastavení viditelnosti pro experiment (**veřejné** nebo **Unlisted**), nebo pokud chcete odstranit experiment z galerie, vyberte **nastavení** ikonu.
+* Na stránce s podrobnostmi experimentu můžete změnit podrobnosti o experimentu a vybrat možnost **Upravit**. Stránka podrobností vstupuje do režimu úprav. Chcete-li provést změny, vyberte možnost **Upravit** vedle názvu experimentu, souhrnu nebo značek. Až skončíte s změnami, vyberte **Hotovo**. Chcete-li změnit nastavení viditelnosti experimentu (veřejné **nebo**neuvedené), nebo chcete-li experiment odstranit z Galerie, vyberte ikonu **Nastavení** .
 
-* Na stránce svého profilu, vyberte šipku dolů u testu a pak vyberte **upravit**. Tím přejdete na stránku podrobností pro experiment, v režimu úprav. Po dokončení změn vyberte **provádí**. Chcete-li odstranit experiment z galerie, vyberte **odstranit**.
+* Na stránce profil vyberte šipku dolů pro experiment a pak vyberte **Upravit**. Tím přejdete na stránku podrobností pro váš experiment v režimu úprav. Až změny dokončíte, vyberte **Hotovo**. Chcete-li experiment odstranit z Galerie, vyberte možnost **Odstranit**.
 
-### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Tipy, jak dokumentovat a publikování experimentů
+### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Tipy pro dokumentování a publikování experimentu
 
-* Můžete předpokládat, že má čtečka předchozí datové vědy prostředí, ale může být užitečné používat Jednoduchý jazyk. Vysvětluje co podrobně kdykoli je to možné.
-* Poskytuje dostatek informace a podrobné vysvětlení k pomáhají čtenářům přejděte experimentu.
-* Vizuály mohou být užitečné pro čtenáře jak interpretovat a správně používat dokumentaci k experimentu. Vizuály patří grafy experimentů a snímky obrazovek pro data.
-* Zadáte-li datovou sadu v experimentu (není tedy Import datové sady přes modul pro Import dat), datová sada je součástí experimentu a, se publikují v galerii. Zkontrolujte, že datová sada, kterou publikujete licenční podmínky, které umožňují sdílení a stahování kdokoli. Příspěvky v galerii se vztahuje smlouva Azure [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+* Můžete předpokládat, že čtenář má předchozí prostředí pro datové vědy, ale může být užitečné použít jednoduchý jazyk. Podrobnější vysvětlení věcí, kdykoli je to možné.
+* Poskytněte dostatek informací a podrobná vysvětlení, která čtenářům umožní přejít na experiment.
+* Vizuály mohou být užitečné, aby čtenáři mohli správně interpretovat a používat dokumentaci k experimentům. Vizuály zahrnují grafy experimentů a snímky obrazovky dat.
+* Pokud do experimentu zahrnete datovou sadu (to znamená, že datovou sadu neimportujete prostřednictvím modulu import dat), datová sada je součástí vašeho experimentu a je publikována v galerii. Ujistěte se, že datová sada, kterou publikujete, obsahuje licenční podmínky, které umožňují sdílení a stahování kýmkoli. Příspěvky do galerie se týkají [podmínek použití](https://azure.microsoft.com/support/legal/website-terms-of-use/)Azure.
 
-## <a name="contribute-tutorials-and-collections"></a>Přispívat kurzy a kolekce
+## <a name="contribute-tutorials-and-collections"></a>Kurzy a kolekce pro Contribute
 
-Může pomoci ostatním zápisem **kurzu** v galerii, která vysvětluje koncepty služby machine learning, případně můžete vytvořit **kolekce** , která seskupuje více materiály zaměřené na konkrétní řešení.
+Psaním **kurzu** v galerii, který vysvětluje koncepty strojového učení nebo vytvořením **kolekce** , která seskupuje více prostředků kolem konkrétního řešení, vám může pomáhat jiné.
 
-1. Přihlaste se do Galerie pomocí účtu Microsoft.
+1. Přihlaste se k galerii pomocí účet Microsoft.
 
-1. V pravém horním rohu stránky vyberte image a pak vyberte své jméno.
+1. Vyberte svůj obrázek v pravém horním rohu stránky a potom vyberte své jméno.
 
 1. Vyberte **New Item** (Nová položka).
 
-1. Na **popis** stránky, pro **typ položky**vyberte **kurzu** nebo **kolekce**. Zadejte název, stručný popis, podrobný popis a všechny značky, které vám mohou pomoci ostatním uživatelům najít váš příspěvek. Pak klikněte na tlačítko **Další**.
+1. Na stránce **Popis** pro **typ položky**vyberte **kurz** nebo **kolekce**. Zadejte název, stručný souhrn, podrobný popis a všechny značky, které by vám mohly pomoci ostatním uživatelům najít váš příspěvek. Pak klikněte na tlačítko **Další**.
 
-1. Na **výběr Image** vyberte bitovou kopii, která se zobrazí se váš příspěvek. Můžete nahrát vlastní obrázek nebo vyberte základní image. Vyberte bitovou kopii, která může pomoci uživatelům identifikaci obsahu a účel podstatu vašeho příspěvku. Pak klikněte na tlačítko **Další**.
+1. Na stránce **Výběr obrázku** vyberte obrázek, který se zobrazí spolu s vaším příspěvkem. Můžete nahrát vlastní soubor obrázku nebo vybrat uloženou bitovou kopii. Vyberte si obrázek, který může pomoci uživatelům identifikovat obsah a účel vašeho příspěvku. Pak klikněte na tlačítko **Další**.
 
-1. Na **nastavení** stránky, pro **viditelnost**vyberte, jestli je váš příspěvek **veřejné** (kdokoli může zobrazit) nebo **Unlisted** (pouze Uživatelé s přímým odkazem ji můžete zobrazit).
+1. Na stránce **Nastavení** pro **viditelnost**vyberte, jestli je váš příspěvek **veřejný** (kdokoli ho může zobrazit) nebo není v **seznamu** (jenom lidé s přímým odkazem ho můžou zobrazit).
 
    > [!TIP]
-   > Pokud chcete Ujistěte se, že ještě před vydáním se veřejně vypadá správně v dokumentaci k sadě, můžete nejprve publikovat experimentu jako **Unlisted**. Později, můžete změnit nastavení viditelnosti na **veřejné** na stránce s podrobnostmi experimentu. Všimněte si, že po nastavení experimentu na **veřejné** nemůžete později změnit na **Unlisted**.
+   > Pokud chcete zajistit, aby vaše dokumentace vypadala správně ještě před tím, než veřejně vydáte, můžete experimentu publikovat jako **neuvedený**. Později můžete nastavení viditelnosti na stránce s podrobnostmi experimentu změnit na **veřejné** . Všimněte si, že po nastavení experimentu jako **veřejné** ho nelze později změnit na **neuvedený seznam**.
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
-Váš příspěvek je nyní v galerii Azure AI. Vaše příspěvky jsou uvedené na stránce svého účtu na **položky** kartu.
+Váš příspěvek je teď v Azure AI Gallery. Vaše příspěvky jsou uvedené na stránce vašeho účtu na kartě **položky** .
 
-### <a name="add-to-and-edit-your-collection"></a>Přidejte a upravte kolekci
+### <a name="add-to-and-edit-your-collection"></a>Přidání do kolekce a její úprava
 
-Můžete přidat položky do kolekce dvěma způsoby:
+Položky do kolekce můžete přidat dvěma způsoby:
 
-* Otevřete kolekci, vyberte **upravit**a pak vyberte **přidat položku**. Můžete přidat položky, které jsem přispěl do Galerie nebo můžete prohledat galerii pro položky pro přidání. Po výběru položky, kterou chcete přidat, klikněte na tlačítko **přidat**.
+* Otevřete kolekci, vyberte **Upravit**a pak vyberte **Přidat položku**. Můžete přidat položky, které jste přispěli do galerie, nebo můžete vyhledat položky, které chcete přidat do galerie. Po výběru položek, které chcete přidat, klikněte na tlačítko **Přidat**.
 
-* Pokud zjistíte položku, kterou chcete přidat při procházení Galerie, otevřete položku a vyberte **přidat do kolekce**. Vyberte, kterou chcete přidat položku do kolekce.
+* Pokud najdete položku, kterou chcete přidat při procházení galerie, otevřete položku a vyberte **Přidat do kolekce**. Vyberte kolekci, do které chcete položku Přidat.
 
-Položky v kolekci můžete upravit tak, že vyberete **upravit**.
+Kliknutím na **Upravit**můžete položky v kolekci upravit.
 
-* Souhrn, popis nebo značek můžete změnit pro kolekci.
-* Pomocí šipky vedle této položky můžete změnit pořadí položek v kolekci.
-* Přidání poznámky do položek v kolekci, vyberte pravém horním rohu položky a pak vyberte **přidat/upravit poznámku**.
-* Chcete-li odebrat položku z kolekce, vyberte pravém horním rohu položky a pak vyberte **odebrat**.
+* Můžete změnit souhrn, popis nebo značky pro kolekci.
+* Pořadí položek v kolekci můžete změnit pomocí šipek vedle položky.
+* Chcete-li přidat poznámky k položkám v kolekci, vyberte horní pravý roh položky a pak vyberte **Přidat/upravit poznámku**.
+* Pokud chcete položku z kolekce odebrat, vyberte v pravém horním rohu položky a pak vyberte **Odebrat**.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Jaké jsou požadavky na odeslání nebo úprava obrázku?**
+**Jaké jsou požadavky na odeslání nebo úpravu obrázku?**
 
-Bitové kopie, které publikujete pomocí váš příspěvek se používají k vytvoření dlaždice. Doporučujeme vám, že Image být menší než 500 KB, se aspect ratio 3:2 a rozlišení 960 &#215; 640.
+Obrázky, které odesíláte s vaším příspěvkem, se používají k vytvoření dlaždice. Doporučujeme, aby Image byly menší než 500 KB, s poměrem stran 3:2 a řešením 960 &#215; 640.
 
-**Co se stane do datové sady, který jsem používal v jednom experimentu? Jsou datové sady publikované v galerii?**
+**Co se stane s datovou sadou použitou v experimentu? Je datová sada také publikována v galerii?**
 
-Pokud vaše datová sada je součástí experimentu a neimportujeme pomocí modulu Import dat, datové sady se publikují v galerii v rámci experimentu. Ujistěte se, že datovou sadu, kterou publikujete pomocí experiment má příslušné licenční podmínky. Licenční podmínky by měl povolit všem uživatelům sdílet a stáhnout data. Příspěvky v galerii se vztahuje smlouva Azure [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+Pokud je vaše datová sada součástí experimentu a není importována prostřednictvím modulu import dat, je datová sada publikována v galerii v rámci vašeho experimentu. Ujistěte se, že datová sada, kterou publikujete s vaším experimentem, má příslušné licenční podmínky. Licenční podmínky by měly umožnit komukoli sdílet a stahovat data. Příspěvky do galerie se týkají [podmínek použití](https://azure.microsoft.com/support/legal/website-terms-of-use/)Azure.
 
-**Mám experiment, který používá modul importovat Data k získání dat z Azure HDInsight nebo SQL Server. Aby se načetla data používá přihlašovací údaje. Můžete publikovat tento druh experimentu? Jak si můžu být jistí, že se nebudou sdílet přihlašovací údaje?**
+**Mám experiment, který pomocí modulu import dat vyžádá data z Azure HDInsight nebo SQL Server. K načtení dat používá moje přihlašovací údaje. Můžu tento typ experimentu publikovat? Jak se dá zajistit, aby se moje přihlašovací údaje sdílely?**
 
-V současné době nelze publikovat, v galerii experiment, který používá přihlašovací údaje.
+V současné době nemůžete publikovat v galerii experiment, který používá přihlašovací údaje.
 
-**Jak mám zadat více značek?**
+**Návody zadat více značek?**
 
-Po zadání značku, zadejte jinou značku, stiskněte klávesu Tabulátor.
+Po zadání značky zadejte jinou značku a stiskněte klávesu Tabulátor.
 
-## <a name="we-want-to-hear-from-you"></a>Chceme znát váš názor!
+## <a name="we-want-to-hear-from-you"></a>Chceme slyšet váš názor!
 
-Chceme, aby Galerie tak, aby měl vycházet v našich uživatelů a pro naše uživatele. Použijte ikonu Veselého na pravé straně nám můžete sdělit rádi nebo bude o galerii.  
+Chceme, aby Galerie byla řízena našimi uživateli a pro naše uživatele. Použijte emotikonu vpravo a řekněte nám, co se vám na galerii líbí nebo nenávist.  
 
 ![Váš názor](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[PŘEJÍT NA VE GALERII &GT;&GT;](https://gallery.azure.ai)**
+**[Přejít na > Galerie >](https://gallery.azure.ai)**

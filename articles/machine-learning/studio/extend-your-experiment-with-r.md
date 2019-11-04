@@ -1,7 +1,7 @@
 ---
 title: Rozšíření experimentu pomocí R
-titleSuffix: Azure Machine Learning Studio
-description: Jak rozšiřovat funkce Azure Machine Learning Studio pomocí jazyka R s použitím modulu spustit skript jazyka R došlo k chybě.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Postup rozšiřování funkcí Azure Machine Learning Studio (Classic) prostřednictvím jazyka R pomocí modulu spuštění skriptu jazyka R.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,34 +10,34 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 8c1292d0d36874892a286d91b1e367c7336b99aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1a3eca380240d624da3e2f086749756aabccbe2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811418"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492950"
 ---
-# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure Machine Learning Studio: Rozšíření experimentu pomocí R 
-Funkce Azure Machine Learning Studio pomocí jazyka R můžete rozšířit pomocí [spustit skript jazyka R] [ execute-r-script] modulu.
+# <a name="azure-machine-learning-studio-classic-extend-your-experiment-with-r"></a>Azure Machine Learning Studio (Classic): prodlužte experiment pomocí R 
+Můžete roztáhnout funkce Azure Machine Learning Studio (Classic) prostřednictvím jazyka R pomocí modulu [spuštění skriptu jazyka r][execute-r-script] .
 
-Tento modul přijímá více vstupních datových sad a vrací jednu datovou sadu jako výstup. Můžete zadat do skriptu jazyka R **skript jazyka R** parametr [spustit skript jazyka R] [ execute-r-script] modulu.
+Tento modul přijímá více vstupních datových sad a jako výstup poskytuje jedinou datovou sadu. Skript R můžete zadat do parametru skriptu jazyka **r** v modulu [spouštění skriptu jazyka r][execute-r-script] .
 
-Každý vstupnímu portu modulu přistupujete pomocí kódu podobného následujícímu:
+Ke každému vstupnímu portu modulu přistupujete pomocí kódu podobného následujícímu:
 
     dataset1 <- maml.mapInputPort(1)
 
-## <a name="listing-all-currently-installed-packages"></a>Výpis všech aktuálně nainstalované balíčky
-Můžete změnit seznam nainstalovaných balíčků. Seznam aktuálně nainstalovaných balíčků můžete najít v [balíčky R podporované nástroji Azure Machine Learning Studio](https://msdn.microsoft.com/library/azure/mt741980.aspx).
+## <a name="listing-all-currently-installed-packages"></a>Výpis všech aktuálně nainstalovaných balíčků
+Seznam nainstalovaných balíčků se může změnit. Seznam aktuálně nainstalovaných balíčků najdete v [balíčcích R, které podporuje Azure Machine Learning Studio (Classic)](https://msdn.microsoft.com/library/azure/mt741980.aspx).
 
-Také můžete získat kompletní a aktuální seznam nainstalovaných balíčků tak, že zadáte následující kód do [spustit skript jazyka R] [ execute-r-script] modul:
+Úplný aktuální seznam nainstalovaných balíčků můžete získat tak, že do modulu [spuštění skriptu jazyka R][execute-r-script] zadáte následující kód:
 
     out <- data.frame(installed.packages(,,,fields="Description"))
     maml.mapOutputPort("out")
 
-Tím se odešle seznam balíčků na výstupní port modulu [spustit skript jazyka R] [ execute-r-script] modulu.
-Chcete-li zobrazit seznam balíčků, připojte převáděcího modulu [převést na sdílený svazek clusteru] [ convert-to-csv] na levém výstupu [spustit skript jazyka R] [ execute-r-script] modulu Spusťte experiment, pak kliknutím na výstup u převáděcího modulu a vyberte **Stáhnout**. 
+Tím se seznam balíčků pošle na výstupní port modulu [spouštěného skriptu jazyka R][execute-r-script] .
+Pokud chcete zobrazit seznam balíčků, připojte modul převodu, jako je třeba [převést na sdílený svazek clusteru][convert-to-csv] , na levý výstup modulu Run [R Script][execute-r-script] , spusťte experiment, potom klikněte na výstup modulu pro převod a vyberte **Stáhnout**. 
 
-![Stáhněte si výstup modulu "Převést na sdílený svazek clusteru"](./media/extend-your-experiment-with-r/download-package-list.png)
+![Stáhnout výstup modulu převést do sdíleného svazku clusteru](./media/extend-your-experiment-with-r/download-package-list.png)
 
 
 <!--
@@ -45,12 +45,12 @@ For convenience, here is the [current full list with version numbers in Excel fo
 -->
 
 ## <a name="importing-packages"></a>Import balíčků
-Můžete importovat balíčky, které nejsou nainstalovány pomocí následujících příkazů v [spustit skript jazyka R] [ execute-r-script] modul:
+Balíčky, které ještě nejsou nainstalované, můžete importovat pomocí následujících příkazů v modulu [spuštění skriptu jazyka R][execute-r-script] :
 
     install.packages("src/my_favorite_package.zip", lib = ".", repos = NULL, verbose = TRUE)
     success <- library("my_favorite_package", lib.loc = ".", logical.return = TRUE, verbose = TRUE)
 
-kde `my_favorite_package.zip` soubor obsahuje vašeho balíčku.
+kde `my_favorite_package.zip` soubor obsahuje balíček.
 
 
 

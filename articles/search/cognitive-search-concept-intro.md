@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 27578e50c56a9c7dac3d74b88e14d0f8fbe9d402
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 97622df578b6c1357601b32a22c806e9eef77c96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784991"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466868"
 ---
-# <a name="introduction-to-ai-enrichment-in-azure-cognitive-search"></a>Seznámení s rozšířením AI v Azure Kognitivní hledání
+# <a name="introduction-to-ai-in-azure-cognitive-search"></a>Úvod do AI v Azure Kognitivní hledání
 
-Obohacení AI je schopnost indexování Kognitivní hledání v Azure, která se používá k extrakci textu z obrázků, objektů BLOB a dalších nestrukturovaných zdrojů dat – vylepšuje obsah, aby bylo lépe prohledávatelné úložiště v indexu nebo ve znalostní bázi. Extrakce a obohacení jsou implementovány prostřednictvím *dovedností rozpoznávání* připojených k kanálu indexování. K rozpoznávání dovedností spadají tyto kategorie: 
+Obohacení AI je schopnost indexování Kognitivní hledání v Azure, která se používá k extrakci textu z obrázků, objektů BLOB a dalších nestrukturovaných zdrojů dat – vylepšuje obsah, aby bylo lépe prohledávatelné úložiště v indexu nebo ve znalostní bázi. Extrakce a obohacení jsou implementovány prostřednictvím *dovedností rozpoznávání* připojených k kanálu indexování. K rozpoznávání dovedností integrovaných do služby patří do těchto kategorií: 
 
 + Mezi dovednosti při **zpracování přirozeného jazyka** patří [rozpoznávání entit](cognitive-search-skill-entity-recognition.md), rozpoznávání [jazyka](cognitive-search-skill-language-detection.md), [extrakce klíčových frází](cognitive-search-skill-keyphrases.md), manipulace s textem a [mínění zjišťování](cognitive-search-skill-sentiment.md). S těmito dovednostmi může nestrukturovaný text předpokládat nové formuláře, namapované jako prohledávatelné a filtrovatelné pole v indexu.
 
@@ -36,6 +36,12 @@ Během fáze příjmu dat se použije přirozený jazyk a zpracování obrazu s 
 
 ## <a name="when-to-use-cognitive-skills"></a>Kdy použít dovednosti v rozpoznávání
 
+Měli byste zvážit použití vestavěných schopností rozpoznávání, pokud je nezpracovaný obsah nestrukturovaný text, obsah obrázku nebo obsah, který potřebuje rozpoznání a překlad jazyka. Použití AI prostřednictvím integrovaných přístupných znalostí může tento obsah odemknout, což zvyšuje jeho hodnotu a nástroj ve vašich aplikacích pro vyhledávání a datovou vědu. 
+
+Kromě toho můžete zvážit přidání vlastní dovednosti, pokud máte otevřený zdrojový kód, třetí stranu nebo kód první strany, který byste chtěli do kanálu integrovat. Modely klasifikace, které identifikují charakteristiky nejdůležitějšími různých typů dokumentů spadají do této kategorie, ale můžou se použít i všechny balíčky, které přidávají hodnotu k obsahu.
+
+### <a name="more-about-built-in-skills"></a>Další informace o integrovaných dovednostech
+
 Dovednosti, která je sestavená pomocí integrovaných dovedností, je vhodná pro následující scénáře aplikací:
 
 + Naskenované dokumenty (JPEG), u kterých chcete provádět fulltextové vyhledávání. Můžete připojit dovednost optického rozpoznávání znaků (OCR) k identifikaci, extrakci a přijímání textu ze souborů JPEG.
@@ -49,6 +55,8 @@ Dovednosti, která je sestavená pomocí integrovaných dovedností, je vhodná 
   Objekty blob často obsahují velké tělo obsahu, které se zabalí do jednoho pole. Připojením obrazu a dovedností pro zpracování přirozeného jazyka k indexeru můžete vytvořit nové informace, které se Extant v nezpracovaném obsahu, ale ne jinak naplochit jako různá pole. Některé předem připravené schopnosti pro rozpoznávání řeči, které vám můžou pomáhat: extrakce klíčových frází, analýza mínění a rozpoznávání entit (lidé, organizace a umístění).
 
   Kromě toho je možné pomocí integrovaných dovedností také změnit strukturu obsahu prostřednictvím operací rozdělení textu, sloučení a tvaru.
+
+### <a name="more-about-custom-skills"></a>Další informace o vlastních dovednostech
 
 Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoznávání formulářů nebo detekce vlastních entit pomocí modelu, který zadáte a zabalíte do [vlastního webového rozhraní s dovednostmi](cognitive-search-custom-skill-interface.md). Mezi vlastní dovednosti patří i [Nástroj pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/overview), integraci [rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)a [rozpoznávání vlastních entit](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 

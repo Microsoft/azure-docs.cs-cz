@@ -11,14 +11,15 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: fda6c72504a75d600931185e224bb46db03e23ed
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e9d262380a8e0769b1191673a7e00eed770f7ab2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374297"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497075"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití modelu Azure Machine Learning nasazeného jako webové služby
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Nasazení Azure Machine Learning modelu jako webové služby vytvoří REST API. Do tohoto rozhraní API můžete posílat data a získat předpovědi vrácenou modelem. V tomto dokumentu se dozvíte, jak vytvořit klienty pro webovou službu pomocí C#, jazyka Java a Pythonu.
 
@@ -40,10 +41,10 @@ Obecný pracovní postup pro vytvoření klienta, který používá webovou slu�
 
 Třída [AzureML. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) poskytuje informace, které potřebujete k vytvoření klienta. Následující vlastnosti `Webservice` jsou užitečné při vytváření klientské aplikace:
 
-* `auth_enabled` – Pokud je povolené ověřování klíčů, `True`; v opačném případě `False`.
-* `token_auth_enabled` – Pokud je povolené ověřování tokenu, `True`; v opačném případě `False`.
-* `scoring_uri`-adresa REST API.
-* `swagger_uri`-adresa specifikace OpenAPI. Tento identifikátor URI je k dispozici, pokud jste povolili automatické generování schématu. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md#schema).
+* `auth_enabled` – Pokud je povolené klíčové ověřování, `True`; v opačném případě `False`.
+* Pokud je povoleno ověřování tokenu `token_auth_enabled`, `True`; v opačném případě `False`.
+* `scoring_uri` – REST API adresa.
+* `swagger_uri` – adresa specifikace OpenAPI Tento identifikátor URI je k dispozici, pokud jste povolili automatické generování schématu. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md#schema).
 
 Existují tři způsoby, jak načíst tyto informace pro nasazené webové služby:
 
@@ -90,9 +91,9 @@ Pokud povolíte ověřování pro nasazení, automaticky se vytvoří ověřovac
 * Ověřování je ve výchozím nastavení povolené při nasazení do služby Azure Kubernetes.
 * Ověřování je ve výchozím nastavení zakázáno při nasazení do Azure Container Instances.
 
-Pro řízení ověřování použijte při vytváření nebo aktualizaci nasazení parametr `auth_enabled`.
+K řízení ověřování použijte parametr `auth_enabled` při vytváření nebo aktualizaci nasazení.
 
-Pokud je povoleno ověřování, můžete k načtení primárního a sekundárního ověřovacího klíče použít metodu `get_keys`:
+Pokud je povoleno ověřování, můžete použít metodu `get_keys` k načtení primárního a sekundárního ověřovacího klíče:
 
 ```python
 primary, secondary = service.get_keys()
@@ -109,9 +110,9 @@ Pokud povolíte ověřování tokenu pro webovou službu, musí uživatel poskyt
 * Ověřování tokenu je ve výchozím nastavení zakázáno při nasazení do služby Azure Kubernetes.
 * Ověřování tokenu není při nasazení do Azure Container Instances podporováno.
 
-K řízení ověřování tokenu použijte parametr `token_auth_enabled` při vytváření nebo aktualizaci nasazení.
+K řízení ověřování pomocí tokenu použijte parametr `token_auth_enabled` při vytváření nebo aktualizaci nasazení.
 
-Pokud je povoleno ověřování tokenu, můžete použít metodu `get_token` k načtení nosného tokenu a jeho doby vypršení platnosti tokenu:
+Pokud je povoleno ověřování tokenu, můžete použít metodu `get_token` k načtení nosného tokenu a jeho doby vypršení platnosti tokenů:
 
 ```python
 token, refresh_by = service.get_token()
@@ -119,7 +120,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Po @no__tovém čase tokenu budete muset požádat o nový token. 
+> Po `refresh_by`ovém čase tokenu budete muset požádat o nový token. 
 
 ## <a name="request-data"></a>Data žádosti
 

@@ -11,23 +11,23 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 98d257c28ab5ff2cf902c0b8205ac8918ccf4d45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ab291ab60a5e72b5c61552bc54c10e303c1df1a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567011"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492488"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Volba mezi vCore a nákupními modely DTU
 
 Azure SQL Database vám umožní snadno zakoupit plně spravovaný databázový stroj PaaS (Platform as a Service), který vyhovuje vašim požadavkům na výkon a náklady. V závislosti na modelu nasazení, který jste zvolili pro Azure SQL Database, můžete vybrat model nákupu, který vám bude vyhovovat:
 
-- [Nákupní model založený na Virtual Core (Vcore)](sql-database-service-tiers-vcore.md) (doporučeno) Tento model nákupu nabízí možnost volby mezi zřízenou výpočetní vrstvou a výpočetní úrovní bez serveru (Preview). Po zřízené výpočetní úrovni zvolíte přesné množství výpočetních prostředků, které se pro vaše úlohy vždycky zřídí. Pomocí výpočetní úrovně bez serveru určíte automatické škálování výpočetních prostředků přes konfigurovatelný výpočetní rozsah. Pomocí této výpočetní vrstvy můžete také automaticky pozastavit a obnovit databázi na základě aktivity úloh. VCore Jednotková cena za jednotku času je nižší ve zřízené výpočetní úrovni, než je na výpočetní úrovni bez serveru.
+- [Model nákupu založený na Virtual Core (Vcore)](sql-database-service-tiers-vcore.md) (doporučeno) Tento model nákupu nabízí možnost volby mezi zřízenou výpočetní vrstvou a výpočetní úrovní bez serveru. Po zřízené výpočetní úrovni zvolíte přesné množství výpočetních prostředků, které se pro vaše úlohy vždycky zřídí. Pomocí výpočetní úrovně bez serveru určíte automatické škálování výpočetních prostředků přes konfigurovatelný výpočetní rozsah. Pomocí této výpočetní vrstvy můžete také automaticky pozastavit a obnovit databázi na základě aktivity úloh. VCore Jednotková cena za jednotku času je nižší ve zřízené výpočetní úrovni, než je na výpočetní úrovni bez serveru.
 - [Nákupní model založený na jednotce pro databázové transakce (DTU)](sql-database-service-tiers-dtu.md). Tento model nákupu poskytuje balíčky výpočetních a úložných prostředků vyrovnaných pro běžné úlohy.
 
 Pro různé modely nasazení Azure SQL Database jsou k dispozici různé nákupní modely:
 
-- Možnosti [nasazení jedna databáze](sql-database-single-databases-manage.md) a [elastický fond](sql-database-elastic-pool.md) v [Azure SQL Database](sql-database-technical-overview.md) nabízejí jak [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) , tak i [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).
+- Možnosti nasazení [jedna databáze](sql-database-single-databases-manage.md) a [elastický fond](sql-database-elastic-pool.md) v [Azure SQL Database](sql-database-technical-overview.md) nabízejí jak [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) , tak i [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).
 - Možnost nasazení [Managed instance](sql-database-managed-instance.md) v Azure SQL Database nabízí jenom [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).
 - [Úroveň služby pro škálování](sql-database-service-tier-hyperscale.md) na úrovni služeb je k dispozici pro izolované databáze, které používají [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).
 
@@ -53,9 +53,9 @@ Náklady na úložiště zálohování jsou stejné jako u důležitých podniko
 
 ### <a name="serverless-compute-costs"></a>Náklady na výpočetní prostředky bez serveru
 
-Popis způsobu definování kapacity a výpočtu nákladů na výpočetní úrovni serveru najdete v tématu [SQL Database bez serveru (Preview)](sql-database-serverless.md).
+Popis způsobu definování kapacity a výpočtu nákladů na výpočetní úrovni serveru najdete v tématu [SQL Database bez serveru](sql-database-serverless.md).
 
-## <a name="storage-costs"></a>Cena za uložení
+## <a name="storage-costs"></a>Náklady na úložiště
 
 Různé typy úložiště se účtují jinak. Pro úložiště dat se vám budou účtovat zřízené úložiště založené na maximální velikosti databáze nebo fondu, který vyberete. Náklady se nezmění, pokud je maximální hodnota nesnížíte nebo nezvýšíte. Úložiště zálohování je přidruženo k automatizovaným zálohám vaší instance a dynamicky se přiřazuje. Zvýšení doby uchovávání záloh zvyšuje velikost úložiště zálohování spotřebovaného vaší instancí.
 
@@ -102,7 +102,7 @@ Prostředky používané úlohou nemají vliv na prostředky, které jsou k disp
 
 ![ohraničovací rámeček](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze SQL Azure v různých velikostech výpočtů a úrovních služby. Příklad:
+DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze SQL Azure v různých velikostech výpočtů a úrovních služby. Například:
 
 - Zdvojnásobuje se DTU zvýšením velikosti databáze, která je rovna zdvojnásobení sady prostředků, které jsou k dispozici pro danou databázi.
 - P11 databáze úrovně Premium Service s 1750 DTU poskytuje výpočetní výkon 350x větší než základní databáze úrovně služeb s 5 DTU.  
@@ -115,7 +115,7 @@ Pokud chcete získat hlubší přehled o spotřebě prostředků (DTU) pro vaše
 
 ### <a name="elastic-database-transaction-units-edtus"></a>Jednotky transakce elastické databáze (eDTU)
 
-Pro databáze SQL, které jsou vždy k dispozici, místo poskytování vyhrazené sady prostředků (DTU), které nemusí být vždy potřeba, můžete tyto databáze umístit do elastického [fondu](sql-database-elastic-pool.md). Databáze v elastickém fondu jsou na jednom Azure SQL Databaseovém serveru a sdílejí fond prostředků.
+Pro databáze SQL, které jsou vždy k dispozici, místo poskytování vyhrazené sady prostředků (DTU), které nemusí být vždy potřeba, můžete tyto databáze umístit do [elastického fondu](sql-database-elastic-pool.md). Databáze v elastickém fondu jsou na jednom Azure SQL Databaseovém serveru a sdílejí fond prostředků.
 
 Sdílené prostředky v elastickém fondu se měří podle jednotek elastické databázové transakce (eDTU). Elastické fondy poskytují jednoduché a nákladově výhodné řešení pro správu cílů výkonu pro více databází, které mají široce proměnlivé a nepředvídatelné vzorce používání. Elastický fond zaručuje, že všechny prostředky nemůže využívat jedna databáze ve fondu, a přitom zajišťuje, aby každá databáze ve fondu měla vždy minimální množství nezbytných prostředků k dispozici.
 
@@ -125,7 +125,7 @@ Do existujícího fondu můžete přidat další eDTU bez výpadku databáze a b
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Určení počtu DTU potřebných pro zatížení
 
-Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na Azure SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu Azure SQL Database použijte přehledy [výkonu dotazů](sql-database-query-performance.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy resource_stats (DMV) [Sys. DM _db_](https://msdn.microsoft.com/library/dn800981.aspx) vám umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
+Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na Azure SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu Azure SQL Database použijte [přehledy výkonu dotazů](sql-database-query-performance.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy resource_stats (DMV) [Sys. DM _db_](https://msdn.microsoft.com/library/dn800981.aspx) vám umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Úlohy, které využívají elastický fond prostředků
 

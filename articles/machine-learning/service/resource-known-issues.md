@@ -9,35 +9,34 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.custom: seodec18
-ms.openlocfilehash: 5edf4a4f53e6b4255970f86dd942795ad2e4cbe2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025394"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476131"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
 Tento článek vám pomůže najít a opravit chyby nebo chyby, ke kterým došlo při použití Azure Machine Learning.
 
-## <a name="upcoming-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Nadcházející upgrade SR-IOV na počítače NCv3 v AmlCompute
+## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Výpadek: upgrade SR-IOV na počítače NCv3 v AmlCompute
 
-Azure COMPUTE bude aktualizovat skladové položky NCv3 od začátku listopadu až po podporu všech MPIch implementací a verzí a akcí RDMA pro virtuální počítače vybavené InfiniBand. To bude vyžadovat krátké výpadky. [Další informace o upgradu SR-IOV najdete v tématu](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
+Azure COMPUTE bude aktualizovat skladové položky NCv3 počínaje začátkem listopadu 2019, aby podporovaly všechny MPI implementace a verze, a operace RDMA pro virtuální počítače s podporou InfiniBand. To bude vyžadovat krátké výpadky. [Další informace o upgradu SR-IOV najdete v tématu](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
 Jako zákazník z nabídky spravované COMPUTE (AmlCompute) Azure Machine Learning nemusíte v tuto chvíli provádět žádné změny. Na základě [plánu aktualizací](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) byste museli naplánovat krátké přerušení školení. Služba bude mít za úkol, aby na uzlech clusteru aktualizovala image virtuálních počítačů a automaticky nastavila horizontální navýšení kapacity clusteru. Po dokončení upgradu může být možné použít všechny ostatní MPI discibutions (například OpenMP s Pytorch), kromě toho, že se zvyšuje šířka pásma InfiniBand, nižší latence a lepší výkon distribuovaných aplikací.
 
-## <a name="visual-interface-issues"></a>Problémy s vizuálním rozhraním
+## <a name="azure-machine-learning-designer-issues"></a>Problémy s návrhářem Azure Machine Learning
 
-Vizuální rozhraní pro problémy se službou Machine Learning.
+Známé problémy s návrhářem.
 
 ### <a name="long-compute-preparation-time"></a>Čas přípravy na dlouhou výpočetní výkon
 
 Vytváření nových výpočetních prostředků nebo EVOKE, které opouští výpočetní výkon, může trvat několik minut nebo i delší dobu. Tým pracuje na optimalizaci.
 
 
-### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Nelze spustit experiment obsahující pouze datovou sadu. 
+### <a name="cannot-run-an-experiment-only-contains-a-dataset"></a>Nelze spustit experiment pouze obsahující datovou sadu. 
 
 Možná budete chtít spustit experiment pouze s datovou sadou, která bude vizualizovat datovou sadu. Není však povoleno spouštět experiment pouze v dnešní době. Aktivně opravujeme tento problém.
  
@@ -150,6 +149,7 @@ Pokud se při čtení dat v clusteru Azure Databricks zobrazí chyba `FailToSend
 * Přidejte `azure-dataprep` verze 1.1.8 nebo vyšší.
 * Přidejte `pyarrow` verze 0,11 nebo vyšší.
 
+
 ## <a name="datasets"></a>Datové sady
 
 Jedná se o známé problémy pro Azure Machine Learning datové sady.
@@ -158,11 +158,11 @@ Jedná se o známé problémy pro Azure Machine Learning datové sady.
 
 ## <a name="azure-portal"></a>Portál Azure
 
-Pokud přejdete přímo k pracovnímu prostoru z odkazu pro sdílení ze sady SDK nebo portálu, nebudete moci zobrazit stránku normální přehled s informacemi o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, alternativní řešení je přejít přímo na [Azure Portal](https://portal.azure.com) a vyhledat název pracovního prostoru.
+Pokud přejdete přímo k pracovnímu prostoru z odkazu pro sdílení ze sady SDK nebo portálu, nebudete moci zobrazit stránku normální přehled s informacemi o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, alternativní řešení je přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledat název pracovního prostoru.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-V některých případech může být užitečné, pokud při dotazování na nápovědu poskytnete diagnostické informace. Pokud chcete zobrazit některé protokoly, navštivte [Azure Portal](https://portal.azure.com) a přejděte do svého pracovního prostoru a vyberte **pracovní prostor > Experiment > Run > log**.  Tyto informace můžete najít také v části **experimenty** na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com).
+V některých případech může být užitečné, pokud při dotazování na nápovědu poskytnete diagnostické informace. Pokud chcete zobrazit některé protokoly, přejděte na web [Azure Machine Learning Studio](https://ml.azure.com) , přejděte do svého pracovního prostoru a vyberte **pracovní prostor > experiment > Spustit protokoly >** .  
 
 > [!NOTE]
 > Azure Machine Learning v průběhu školení protokolovat informace z nejrůznějších zdrojů, jako je například AutoML nebo kontejner Docker, který spouští školicí úlohu. Mnohé z těchto protokolů nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.

@@ -1,7 +1,7 @@
 ---
 title: Časté otázky – Nejčastější dotazy
 titleSuffix: Microsoft Genomics
-description: Odpovědi na běžné otázky, se kterými se zákazníci dotazují o Microsoft Genomics.
+description: Získejte odpovědi na běžné otázky týkající se používání služby Microsoft Genomics, včetně technických informací, smlouvy SLA a fakturace.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 80a656ee687b71fcaf09a02d70d0a5a4300186bc
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 4a2b66f95467e7f6cb99f632548351f827e259c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249228"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476433"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: běžné otázky
 
@@ -22,7 +22,7 @@ Tento článek obsahuje seznam nejčastějších dotazů, které jste pravděpod
 
 
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>Návody spouštět pracovní postupy GATK4 v Microsoft Genomics?
-V souboru config. txt služby Microsoft Genomics zadejte process_name pro `gatk4`. Všimněte si, že se vám budou účtovat pravidelné fakturační sazby.
+V souboru config. txt služby Microsoft Genomics zadejte process_name, který se má `gatk4`. Všimněte si, že se vám budou účtovat pravidelné fakturační sazby.
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Jaká je smlouva SLA pro Microsoft Genomics?
@@ -35,7 +35,7 @@ Microsoft Genomics faktury na základě počtu zpracovaných gigabází na praco
 ## <a name="where-can-i-find-a-list-of-all-possible-commands-and-arguments-for-the-msgen-client"></a>Kde najdu seznam všech možných příkazů a argumentů pro klienta `msgen`?
 Úplný seznam dostupných příkazů a argumentů můžete získat spuštěním `msgen help`. Pokud nejsou zadány žádné další argumenty, zobrazí se seznam dostupných sekcí pro nápovědu, jeden pro každý `submit`, `list`, `cancel` a `status`. Pokud chcete získat nápovědu ke konkrétnímu příkazu, zadejte `msgen help command`; například `msgen help submit` vypíše všechny možnosti odeslání.
 
-## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>Jaké jsou nejběžněji používané příkazy pro klienta @no__t 0?
+## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>Jaké jsou nejběžněji používané příkazy pro klienta `msgen`?
 Nejčastěji používané příkazy jsou argumenty pro klienta `msgen` zahrnují: 
 
  |**Příkaz**          |  **Popis pole** |

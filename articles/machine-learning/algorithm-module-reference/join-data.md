@@ -1,7 +1,7 @@
 ---
 title: 'Data spojování: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat datový modul Join join ve službě Azure Machine Learning ke sloučení datových sad.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat datový modul Join join v Azure Machine Learning ke sloučení datových sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 587490284b2886764c137a01e0eb4b3c9c755d41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693098"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495088"
 ---
 # <a name="join-data"></a>Spojení dat
 
-Tento článek popisuje, jak použít modul **Join data** v vizuálním rozhraní služby Azure Machine Learning ke sloučení dvou datových sad pomocí operace join ve stylu databáze.  
+Tento článek popisuje, jak použít modul **Join data** v Návrháři Azure Machine Learning (Preview) ke sloučení dvou datových sad pomocí operace join ve stylu databáze.  
 
 ## <a name="how-to-configure-join-data"></a>Postup konfigurace připojení k datům
 
@@ -68,4 +68,4 @@ Chcete-li provést spojení se dvěma datovými sadami, měly by se vztahovat na
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

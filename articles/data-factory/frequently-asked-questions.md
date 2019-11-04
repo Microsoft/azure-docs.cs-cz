@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 764a4dd31125dad20f6ef23e3628d7710dba2b85
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7ebcf865ad23e75b2aa9070fe14fc3ee8f1397c7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880147"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481138"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Data Factory.  
@@ -191,6 +191,82 @@ Použijte aktivitu kopírování pro přípravu dat z jiných konektorů a potom
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Je místně hostovaný modul Integration runtime dostupný pro toky dat?
 
 Místní prostředí IR je konstrukce kanálu ADF, kterou můžete použít s aktivitou kopírování k získání nebo přesunu dat do a z Prem nebo datových zdrojů a jímky založených na virtuálních počítačích. Nejprve Připravte data s kopírováním, potom toku dat pro transformaci a následným zkopírováním, pokud potřebujete přesunout tato transformovaná data zpět do úložiště on-Prem.
+
+## <a name="wrangling-data-flows"></a>Toky dat tahání
+
+### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Jaké jsou podporované oblasti pro tok dat tahání?
+
+Tok dat tahání se v tuto chvíli podporuje v datových továrnách vytvořených v následujících oblastech:
+
+* Austrálie – východ
+* Kanada – střed
+* Střední Indie
+* Střední USA
+* USA – východ
+* Východ USA 2
+* Japonsko – východ
+* Severní Evropa
+* Jihovýchodní Asie
+* Středojižní USA
+* Velká Británie – jih
+* Středozápadní USA
+* Západní Evropa
+* Západní USA
+* Západní USA 2
+
+### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Jaká jsou omezení a omezení pomocí toku dat tahání?
+
+Názvy datových sad můžou obsahovat jenom alfanumerické znaky. Podporují se následující úložiště dat:
+
+* DelimitedText datová sada v Azure Blob Storage pomocí ověřování klíčů účtu
+* DelimitedText datová sada ve službě Azure Data Lake Storage Gen2 pomocí ověřování klíče účtu nebo instančního objektu
+* DelimitedText datová sada ve službě Azure Data Lake Storage Gen1 pomocí ověřování instančního objektu
+* Azure SQL Database a datový sklad pomocí ověřování SQL. Další informace najdete níže v části Podporované typy SQL. Pro datový sklad neexistuje žádná podpora základní ani pracovní.
+
+V tuto chvíli se integrace propojených služeb Key Vault nepodporuje v toku dat tahání.
+
+### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>Jaký je rozdíl mezi mapováním a toky dat tahání?
+
+Mapování toků dat poskytuje způsob, jak transformovat data ve velkém měřítku bez nutnosti jakéhokoli kódování. Můžete navrhnout úlohu transformace dat v plátně toku dat vytvořením řady transformací. Začněte s libovolným počtem zdrojových transformací následovaných kroky transformace dat. Dokončete tok dat pomocí jímky, aby se vaše výsledky vyplochy v cíli. Mapování toku dat je skvělé při mapování a transformace dat se známými i neznámými schématy v jímkach a zdrojích.
+
+Tahání data flows vám umožní provádět agilní přípravu a průzkum dat pomocí Power Queryho online editoru hybridních webových aplikací ve velkém měřítku prostřednictvím spuštění Sparku. V případě, že se vám podíváme na datové jezera, někdy stačí prozkoumat datovou sadu nebo vytvořit datovou sadu v Lake. Nejste mapováni na známý cíl. Toky dat tahání se používají pro méně formální a modelově založené analytické scénáře.
+
+### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Jaký je rozdíl mezi datovými proudy Power Platform a toky dat tahání?
+
+Datové toky Power Platform umožňují uživatelům import a transformaci dat z široké škály zdrojů dat do Common Data Service a Azure Data Lake k sestavování aplikací PowerApps, Power BI sestav nebo automatizace toků. Datové toky Power Platform využívají vytvořená prostředí pro přípravu Power Query dat, podobně jako Power BI a Excel. Obslužné rutiny dat Power Platform také umožňují snadné opakované použití v rámci organizace a automatické zpracování orchestrace (například automatické aktualizace toku dat, které závisí na jiném toku dat při obnovení původní verze).
+
+Azure Data Factory (ADF) je spravovaná služba pro integraci dat, která umožňuje, aby data technici a data občana vytvořila komplexní pracovní postupy hybridní extrakce, transformace a načítání (ETL) a extrakce (ELT). Tahání tok dat v ADF umožňuje uživatelům používat prostředí bez kódu bez serveru, které zjednodušuje přípravu dat v cloudu a škáluje se na velikost dat, a to bez nutnosti správy infrastruktury. Používá technologii pro přípravu dat Power Query (používá se také v datových proudech Power Platform, Excel, Power BI) k přípravě a tvarování dat. Tahání datové toky, které jsou vytvořené pro zpracování všech komplexních a škálovatelných problémů s integrací velkých objemů dat, umožňují uživatelům rychle připravovat data ve velkém měřítku prostřednictvím spuštění Sparku. Uživatelé můžou vytvářet odolné datové kanály v přístupném vizuálním prostředí pomocí našeho rozhraní založeného na prohlížeči a nechat si ADF složitosti spuštění Sparku. Plány sestavení pro vaše kanály a monitorování provádění toků dat z portálu monitorování ADF. Snadná Správa dostupnosti dat SLA Díky monitorování a výstrahám s bohatou dostupností ADF a využívají integrované možnosti průběžné integrace a nasazování pro ukládání a správu toků ve spravovaném prostředí. Navažte výstrahy a zobrazte plány provádění, abyste ověřili, jestli vaše logika funguje tak, jak plánujete při ladění toků dat.
+
+### <a name="supported-sql-types"></a>Podporované typy SQL
+
+Tok dat tahání podporuje v SQL následující datové typy. Při použití datového typu, který není podporován, se zobrazí chyba ověřování.
+
+* Dostatečná
+* double
+* nemovitostí
+* float
+* char
+* nchar
+* varchar
+* nvarchar
+* celé číslo
+* int
+* 40bitového
+* Boolean
+* smallint
+* tinyint
+* bigint
+* Dlouhou
+* text
+* date
+* datetime
+* datetime2
+* smalldatetime
+* časové razítko
+* uniqueidentifier
+* xml
+
+Další datové typy budou v budoucnu podporovány.
 
 ## <a name="next-steps"></a>Další kroky
 Podrobné pokyny k vytvoření datové továrny najdete v následujících kurzech:

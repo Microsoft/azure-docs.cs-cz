@@ -1,5 +1,5 @@
 ---
-title: 'Selhání ladění úloh Sparku pomocí Azure Toolkit for IntelliJ (Preview) '
+title: Ladění úlohy Spark pomocí sady IntelliJ Azure Toolkit (Preview) – HDInsight
 description: Doprovodné materiály k ladění aplikací pomocí nástrojů HDInsight v Azure Toolkit for IntelliJ
 keywords: dálková ladění IntelliJ, vzdálené ladění IntelliJ, SSH, IntelliJ, HDInsight, ladění IntelliJ, ladění
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 0275cd6ff83fd5fdcc75c8b88602e8943f9504dd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266168"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494601"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Selhání ladění úloh Sparku pomocí Azure Toolkit for IntelliJ (Preview)
 
 Tento článek poskytuje podrobné pokyny k používání nástrojů HDInsight v [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) ke spouštění aplikací pro **ladění chyb Spark** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Sada Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). V tomto kurzu se používá Java verze 8.0.202.
   
-* IntelliJ IDEA. V tomto článku [se používá IntelliJ nápad Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows).
+* IntelliJ nápad. Tento článek používá [INTELLIJ nápad Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows).
   
 * Azure Toolkit for IntelliJ. Viz [instalace Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
 
@@ -58,7 +58,7 @@ Vytvořte projekt Spark 2.3.2 pro pokračování v ladění selhání. v tomto d
 
    d. Vyberte **Finish** (Dokončit).
 
-3. Vyberte **Src** > MainScala > a otevřete svůj kód v projektu. V tomto příkladu se používá skript **AgeMean_Div ()** .
+3. Vyberte **src** > **Main** > **Scala** k otevření kódu v projektu. V tomto příkladu se používá skript **AgeMean_Div ()** .
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>Spuštění aplikace Spark Scala/Java v clusteru HDInsight
 
@@ -90,7 +90,7 @@ Vytvořte aplikaci Spark Scala/Java a spusťte aplikaci v clusteru Spark pomocí
 
 Pokud se odeslání úlohy nepovede, můžete pro další ladění stáhnout profil neúspěšné úlohy do místního počítače.
 
-1. Otevřete **Průzkumník služby Microsoft Azure Storage**, vyhledejte účet HDInsight clusteru pro neúspěšnou úlohu, Stáhněte neúspěšné prostředky úlohy z příslušného umístění: **\hdp\spark2-Events\\. Spark\\ – chyby.ID\<aplikace >** do místní složky. V okně **aktivity** se zobrazí průběh stahování.
+1. Otevřete **Průzkumník služby Microsoft Azure Storage**, vyhledejte účet HDInsight clusteru pro neúspěšnou úlohu, Stáhněte neúspěšné prostředky úlohy z příslušného umístění: **\hdp\spark2-Events\\. spark-selhání\\\<ID aplikace >** do místní složky. V okně **aktivity** se zobrazí průběh stahování.
 
    ![Průzkumník služby Azure Storage Chyba stahování](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
@@ -116,18 +116,18 @@ Pokud se odeslání úlohy nepovede, můžete pro další ladění stáhnout pro
 
 ## <a name="seealso"></a>Další kroky
 
-* [Přehled Ladění aplikací Apache Spark](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Přehled: ladění aplikací Apache Spark](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 
 ### <a name="demo"></a>Ukázka
 
-* Vytvořit projekt Scala (video): [Vytváření aplikací Apache Spark Scala](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Vzdálené ladění (video): [Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně na clusteru HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Vytvořit projekt Scala (video): [vytváření Apache Sparkch Scala aplikací](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* Vzdálené ladění (video): [použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně na clusteru HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Scénáře
 
-* [Apache Spark s BI: Analýza interaktivních dat pomocí Sparku ve službě HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku ve službě HDInsight s nástroji BI.](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
@@ -146,7 +146,7 @@ Pokud se odeslání úlohy nepovede, můžete pro další ladění stáhnout pro
 * [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Spravovat prostředky
+### <a name="manage-resources"></a>Správa prostředků
 
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)

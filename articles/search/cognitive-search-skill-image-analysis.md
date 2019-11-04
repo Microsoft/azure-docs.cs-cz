@@ -1,29 +1,28 @@
 ---
-title: Dovednost pro vyhledávání rozpoznávání obrázků v analýze – Azure Search
-description: Extrahujte sémantický text prostřednictvím analýzy obrázků s využitím ImageAnalysis vnímání v kanálu rozšíření Azure Search.
-services: search
+title: Vnímání znalostí analýzy obrázků
+titleSuffix: Azure Cognitive Search
+description: Extrahujte sémantický text pomocí analýzy obrázků s využitím vnímání analýzy obrázků v kanálu rozšíření AI v Azure Kognitivní hledání.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 08/28/2019
 ms.author: luisca
-ms.openlocfilehash: e2c8f0519ffcbdbc2445d1fed2725b6f6b948cd1
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 4819f34e16efebcdab734270988382e086c44e36
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064074"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479714"
 ---
-#   <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
+# <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
 
 Dovednost **analýzy obrázků** extrahuje bohatou sadu vizuálních funkcí založenou na obsahu obrázku. Můžete například vygenerovat titulek z obrázku, generovat značky nebo identifikovat celebrit a orientačních bodů. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) . 
 
 > [!NOTE]
-> Malé objemy (pod 20 transakcí) se dají spouštět zdarma v Azure Search, ale větší úlohy vyžadují [připojení fakturovatelné Cognitive Services prostředků](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů v Azure Search. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
+> Malé objemy (pod 20 transakcí) se dají v Azure Kognitivní hledání zdarma spustit, ale větší úlohy vyžadují [připojení fakturovatelné Cognitive Services prostředků](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsány na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -521,6 +520,6 @@ Pokud se zobrazí chybová zpráva podobná `"One or more skills are invalid. De
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-+ [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
++ [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

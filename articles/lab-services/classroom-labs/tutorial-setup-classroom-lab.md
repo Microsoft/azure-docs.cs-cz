@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: fe40eb27b07304aba48be4a47fb22168cb60434c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5bf8aea05855d81e88face1dd507f0006cc19cab
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332274"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483902"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -111,11 +111,11 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
 1. Přepněte na stránku **plány** a na panelu nástrojů vyberte **Přidat naplánovanou událost** . 
 
     ![Tlačítko Přidat plán na stránce plány](../media/how-to-create-schedules/add-schedule-button.png)
-2. Potvrďte, že **Standard** je vybraný jako **Typ události**. Vyberte **pouze spustit** , chcete-li zadat pouze počáteční čas pro virtuální počítače. Vyberte možnost **zastavit pouze** a zadejte pouze dobu zastavení virtuálních počítačů. 
-7. V části **Opakovat** vyberte aktuální plán. 
+2. Potvrďte, že jako **Typ události**je vybrána možnost **Standard** . Vyberte **pouze spustit** , chcete-li zadat pouze počáteční čas pro virtuální počítače. Vyberte možnost **zastavit pouze** a zadejte pouze dobu zastavení virtuálních počítačů. 
+3. V části **Opakovat** vyberte aktuální plán. 
 
     ![Tlačítko Přidat plán na stránce plány](../media/how-to-create-schedules/select-current-schedule.png)
-5. V dialogovém okně **Opakovat** proveďte následující kroky:
+4. Když vyberete plán, otevře se dialogové okno **Opakovat** . V tomto dialogovém okně proveďte následující kroky:
     1. Potvrďte, že je pro pole **Opakovat** nastaven **každý týden** . 
     3. Zadejte **počáteční datum**.
     4. Zadejte **čas spuštění** , ve kterém chcete virtuální počítače spustit.
@@ -124,10 +124,8 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
     2. Vyberte dny, ve kterých se má plán projevit. V následujícím příkladu je vybrána možnost pondělí-čtvrtek. 
     8. Vyberte **Save** (Uložit). 
 
-        ![Nastavit plán opakování](../media/how-to-create-schedules/set-repeat-schedule.png)
-
-3. Nyní na stránce **Přidat naplánovanou událost** pro **poznámky (volitelné)** zadejte libovolný popis nebo poznámky k plánu. 
-4. Na stránce **Přidat naplánovanou událost** vyberte **Uložit**. 
+5. Nyní na stránce **Přidat naplánovanou událost** pro **poznámky (volitelné)** zadejte libovolný popis nebo poznámky k plánu. 
+6. Na stránce **Přidat naplánovanou událost** vyberte **Uložit**. 
 
     ![Týdenní plán](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
@@ -140,7 +138,7 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
 1. Na stránce **Odeslat pozvánku podle e-mailu** zadejte volitelnou zprávu a pak vyberte **Odeslat**. E-mail automaticky obsahuje odkaz na registraci. Tuto registrační odkaz můžete získat tak, že vyberete **... (tři tečky)** na panelu nástrojů a na **odkaz pro registraci**. 
 
     ![Poslat odkaz na registraci e-mailem](../media/tutorial-setup-classroom-lab/send-email.png)
-4. V seznamu **uživatelů** se zobrazí stav **Pozvánka** . Stav by se měl změnit na **odesílání** a pak na **&lt;date @ no__t-3**. 
+4. V seznamu **uživatelů** se zobrazí stav **Pozvánka** . Stav by se měl změnit na **odesílání** a pak na **&gt;datum &lt;** . 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste vytvořili testovací prostředí v učebně a nakonfigurovali ho. Pokud chcete získat informace o tom, jak může student přistupovat k virtuálnímu počítači v testovacím prostředí pomocí odkazu pro registraci, přejděte na další kurz:

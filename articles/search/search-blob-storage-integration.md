@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/09/2019
-ms.openlocfilehash: 6bd96df1a2ed4ff7cde637a646ab514e89340b38
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 11/04/2019
+ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792488"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496489"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Přidání fulltextového vyhledávání do dat objektů BLOB v Azure pomocí Azure Kognitivní hledání
 
@@ -71,4 +71,4 @@ Dalším trvalým řešením je shromáždit vstupy dotazů a prezentovat odpov�
 ## <a name="next-steps"></a>Další kroky
 
 + [Nahrávání, stahování a výpis objektů BLOB pomocí Azure Portal (úložiště objektů BLOB v Azure)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-+ [Nastavení indexeru objektů BLOB (Azure Search)](search-howto-indexing-azure-blob-storage.md) 
++ [Nastavení indexeru objektů BLOB (Azure Kognitivní hledání)](search-howto-indexing-azure-blob-storage.md) 

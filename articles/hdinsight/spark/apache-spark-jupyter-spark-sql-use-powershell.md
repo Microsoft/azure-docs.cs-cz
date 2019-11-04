@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření clusteru Spark ve službě HDInsight pomocí Azure PowerShell'
+title: 'Rychlý Start: Vytvoření clusteru HDInsight Spark pomocí Azure PowerShell'
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShellu vytvořit cluster Apache Spark v Azure HDInsight a jak spustit jednoduchý dotaz Spark SQL.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc
-ms.openlocfilehash: f4f876c6a0e208c949f8aec2781dda39ba66fb00
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d2ab605d3532df1623ff087dbf1f93dad35445f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337602"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494505"
 ---
-# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Rychlý start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí prostředí PowerShell
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí prostředí PowerShell
 
-Naučte se vytvářet clustery [Apache Spark](https://spark.apache.org/) v Azure HDInsight a spouštět dotazy Spark SQL pro [Apache Hive](https://hive.apache.org/) tabulky. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Sparku ve službě HDInsight najdete [v tématu Přehled: Apache Spark ve službě Azure](apache-spark-overview.md)HDInsight.
+Naučte se vytvářet clustery [Apache Spark](https://spark.apache.org/) v Azure HDInsight a spouštět dotazy Spark SQL pro [Apache Hive](https://hive.apache.org/) tabulky. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Apache Spark ve službě HDInsight najdete v tématu [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md).
 
-V tomto rychlém startu pomocí Azure PowerShellu vytvoříte cluster HDInsight Spark. Cluster jako úložiště využívá Azure Storage Blob. Další informace o používání Data Lake Storage Gen2 najdete v tématu [rychlý Start: Nastavte clustery v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+V tomto rychlém startu pomocí Azure PowerShellu vytvoříte cluster HDInsight Spark. Cluster jako úložiště využívá Azure Storage Blob. Další informace o použití Data Lake Storage Gen2 najdete v tématu [Rychlý start: Nastavení clusterů ve službě HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 > [!IMPORTANT]  
 > Clustery HDInsight se fakturují za minutu bez ohledu na to, jestli je používáte, nebo ne. Až přestanete cluster používat, nezapomeňte ho odstranit. Další informace najdete v části [Vyčištění prostředků](#clean-up-resources) tohoto článku.
@@ -27,6 +27,8 @@ V tomto rychlém startu pomocí Azure PowerShellu vytvoříte cluster HDInsight 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisite"></a>Požadavek
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) installed.
 
@@ -143,11 +145,11 @@ Pokud narazíte na problém s vytvářením clusterů HDInsight, může to být 
 
 1. Na portálu vyberte **Řídicí panely clusteru** a pak vyberte **Jupyter Notebook**. Po zobrazení výzvy zadejte přihlašovací údaje clusteru.
 
-   ![Otevření poznámkového bloku Jupyter pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Otevření poznámkového bloku Jupyter pro spuštění interaktivního dotazu Spark SQL")
+   ![Otevřete Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Otevřete Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL")
 
 1. Vyberte **Nový** > **PySpark** a vytvořte poznámkový blok.
 
-   ![Vytvoření poznámkového bloku Jupyter pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření poznámkového bloku Jupyter pro spuštění interaktivního dotazu Spark SQL")
+   ![Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL")
 
    Nový poznámkový blok se vytvoří a otevře s názvem Bez názvu (Bez názvu.pynb).
 
@@ -169,7 +171,7 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
 
     Pokud používáte poznámkový blok Jupyter s clusterem HDInsight Spark, získáte přednastavený kontext `sqlContext`, který můžete použít ke spouštění dotazů Hive pomocí Spark SQL. `%%sql` říká poznámkovému bloku Jupyter, aby ke spuštění dotazu Hive použil přednastavený kontext `sqlContext`. Dotaz načte prvních 10 řádků z tabulky Hive (**hivesampletable**), která je ve výchozím nastavení k dispozici na všech clusterech HDInsight. Získání výsledků trvá přibližně 30 sekund. Výstup bude vypadat následovně:
 
-    Dotaz ![Apache Hive v dotazu na podregistr HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "v HDInsight Spark")
+    ![Apache Hive dotazování v HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Dotaz na podregistr v HDInsight Spark")
 
     Při každém spuštění dotazu v Jupyter se v názvu okna webového prohlížeče zobrazí stav **(Busy)** (Zaneprázdněn) společně s názvem poznámkového bloku. Zobrazí se také plný kroužek vedle textu **PySpark** v pravém horním rohu.
 
@@ -182,7 +184,7 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
 
     Obrazovka by se měla aktualizovat a zobrazit výstup dotazu.
 
-    ![Výstup dotazu Hive v HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "Výstup dotazu Hive v HDInsight Spark")
+    ![Výstup dotazů na podregistr v HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "Výstup dotazů na podregistr v HDInsight Spark")
 
 1. V nabídce **Soubor** poznámkového bloku vyberte **Zavřít a zastavit**. Ukončením poznámkového bloku se uvolní prostředky clusteru.
 
@@ -192,7 +194,7 @@ HDInsight ukládá vaše data ve službě Azure Storage nebo v úložišti Azure
 
 Přepněte zpět na web Azure Portal a vyberte **Odstranit**.
 
-![Azure Portal odstranění clusteru HDInsight](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "Odstranit cluster HDInsight")
+![Azure Portal odstranit cluster HDInsight](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "Odstranit cluster HDInsight")
 
 Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight Spark i výchozí účet úložiště.
 

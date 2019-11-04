@@ -8,42 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 7c137572fadd07254343b7b4c34b5a63534b9d88
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 2b6918e9b334ee8a906a477ee1c3e7e4d86e8551
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936996"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481785"
 ---
-# <a name="install-and-run-computer-vision-containers"></a>Instalace a spuštění kontejnerů Počítačové zpracování obrazu
+# <a name="install-and-run-read-containers"></a>Instalace a spuštění kontejnerů pro čtení
 
 Kontejnery umožňují spouštět rozhraní API Počítačové zpracování obrazu ve vlastním prostředí. Kontejnery jsou skvělé pro specifické požadavky zabezpečení a zásad správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner Počítačové zpracování obrazu.
 
-K dispozici jsou dva kontejnery Docker pro Počítačové zpracování obrazu: *rozpoznávání textu* a *čtení*. Kontejner *rozpoznávání textu* umožňuje detekovat a extrahovat *vytištěný text* z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kontejner *pro čtení* , ale také detekuje *rukou psaný text* v obrázcích a poskytuje podporu PDF/TIFF/vícestránkového textu. Další informace najdete v dokumentaci k [rozhraní API pro čtení](concept-recognizing-text.md#read-api) .
-
-> [!IMPORTANT]
-> Rozpoznávání textu kontejner se už nepoužívá, protože má kontejner pro čtení. Kontejner pro čtení je nadmnožinou svého předchůdce kontejneru Rozpoznávání textu a příjemci by se měli migrovat na používání kontejneru pro čtení. Oba kontejnery pracují pouze v angličtině.
+Pro Počítačové zpracování obrazu je k dispozici jeden kontejner Docker, který je *určen*. Kontejner *pro čtení* umožňuje detekovat a extrahovat *vytištěný text* z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kromě toho kontejner *pro čtení* detekuje *rukou psaný text* v obrázcích a poskytuje podporu PDF, TIFF a vícestránkového souboru. Další informace najdete v dokumentaci k [rozhraní API pro čtení](concept-recognizing-text.md#read-api) .
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před použitím kontejnerů musíte splnit následující předpoklady:
 
-|Požadováno|Účel|
+|Požaduje se|Účel|
 |--|--|
 |Modul Docker| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Informace o úvodu k Docker a kontejneru najdete v tématu [Přehled Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
-|Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních příkazů `docker`.| 
+|Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
 |Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : koncový bod uvedený na stránce **Přehled**|
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k privátnímu registru kontejnerů
-
-[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>Hostitelský počítač
 
@@ -55,27 +48,13 @@ Před použitím kontejnerů musíte splnit následující předpoklady:
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí `docker pull`
 
-# <a name="readtabread"></a>[Read](#tab/read)
-
 K dispozici jsou image kontejneru pro čtení.
 
-| Vnitřního | Název Container Registry/úložiště/image |
+| Kontejner | Název Container Registry/úložiště/image |
 |-----------|------------|
-| Číst | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
-
-# <a name="recognize-texttabrecognize-text"></a>[Rozpoznávání textu](#tab/recognize-text)
-
-K dispozici jsou image kontejneru pro Rozpoznávání textu.
-
-| Vnitřního | Název Container Registry/úložiště/image |
-|-----------|------------|
-| Rozpoznávání textu | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
-
-***
+| Čtení | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
 K stažení Image kontejneru použijte příkaz [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) .
-
-# <a name="readtabread"></a>[Read](#tab/read)
 
 ### <a name="docker-pull-for-the-read-container"></a>Pull Docker pro kontejner pro čtení
 
@@ -83,32 +62,20 @@ K stažení Image kontejneru použijte příkaz [`docker pull`](https://docs.doc
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 ```
 
-# <a name="recognize-texttabrecognize-text"></a>[Rozpoznávání textu](#tab/recognize-text)
-
-### <a name="docker-pull-for-the-recognize-text-container"></a>Vyžádané čtení Docker pro kontejner Rozpoznávání textu
-
-```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
-
-***
-
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
 ## <a name="how-to-use-the-container"></a>Jak používat kontejner
 
 Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K dispozici jsou další [Příklady](computer-vision-resource-container-config.md) příkazu `docker run`. 
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K dispozici jsou další [příklady](computer-vision-resource-container-config.md) `docker run` příkazu. 
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint) 
 
-## <a name="run-the-container-with-docker-run"></a>Spuštění kontejneru s `docker run`
+## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner pomocí `docker run`
 
-Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty `{ENDPOINT_URI}` a `{API_KEY}`, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) .
+Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat `{ENDPOINT_URI}` a `{API_KEY}` hodnoty, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) .
 
-K dispozici jsou [Příklady](computer-vision-resource-container-config.md#example-docker-run-commands) příkazu `docker run`.
-
-# <a name="readtabread"></a>[Read](#tab/read)
+K dispozici jsou [příklady](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` příkazu.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -125,29 +92,10 @@ Tento příkaz:
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
-# <a name="recognize-texttabrecognize-text"></a>[Rozpoznávání textu](#tab/recognize-text)
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-Tento příkaz:
-
-* Spustí kontejner Rozpoznávání textu z image kontejneru.
-* Přiděluje 8 PROCESORových jader a 16 gigabajtů (GB) paměti.
-* Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
-* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
-
-***
-
-K dispozici jsou další [Příklady](./computer-vision-resource-container-config.md#example-docker-run-commands) příkazu `docker run`. 
+K dispozici jsou další [příklady](./computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` příkazu. 
 
 > [!IMPORTANT]
-> Pro spuštění kontejneru musí být zadány možnosti `Eula`, `Billing` a `ApiKey`. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
+> Aby bylo možné spustit kontejner, musí být zadány možnosti `Eula`, `Billing`a `ApiKey`. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -159,19 +107,17 @@ K dispozici jsou další [Příklady](./computer-vision-resource-container-confi
 
 Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. 
 
-Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`.
-
-# <a name="readtabread"></a>[Read](#tab/read)
+Pro rozhraní API kontejneru použijte hostitele, `http://localhost:5000`.
 
 ### <a name="asynchronous-read"></a>Asynchronní čtení
 
-Můžete použít operace `POST /vision/v2.0/read/core/asyncBatchAnalyze` a `GET /vision/v2.0/read/operations/{operationId}` společně k asynchronnímu čtení obrázku, podobně jako služba Počítačové zpracování obrazu používá tyto odpovídající operace REST. Metoda asynchronního POST vrátí `operationId`, který se používá jako identifikátorem požadavku HTTP GET.
+Můžete použít operace `POST /vision/v2.0/read/core/asyncBatchAnalyze` a `GET /vision/v2.0/read/operations/{operationId}` společně k asynchronnímu čtení obrázku podobným způsobem, jakým služba Počítačové zpracování obrazu používá tyto odpovídající operace REST. Metoda asynchronního POST vrátí `operationId`, který se používá jako identifikátorem požadavku HTTP GET.
 
-V uživatelském rozhraní Swagger vyberte `asyncBatchAnalyze`, aby se rozbalí v prohlížeči. Pak vyberte **vyzkoušet** > **Zvolte soubor**. V tomto příkladu použijeme následující obrázek:
+V uživatelském rozhraní Swagger vyberte `asyncBatchAnalyze` a rozbalte ho v prohlížeči. Pak vyberte **vyzkoušet,**  > **Zvolte soubor**. V tomto příkladu použijeme následující obrázek:
 
 ![tabulátory vs – mezery](media/tabs-vs-spaces.png)
 
-Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **HTTP 202** . V rámci odpovědi je k dispozici hlavička `operation-location`, která obsahuje koncový bod výsledku pro požadavek.
+Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **HTTP 202** . V rámci odpovědi je k dispozici `operation-location` záhlaví, které obsahuje výsledný koncový bod pro požadavek.
 
 ```http
  content-length: 0
@@ -180,7 +126,7 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
  server: Kestrel
 ```
 
-@No__t-0 je plně kvalifikovaná adresa URL, ke které se dostanete prostřednictvím HTTP GET. Tady je odpověď JSON pro spuštění `operation-location` adresy URL z předchozího obrázku:
+`operation-location` je plně kvalifikovaná adresa URL, ke které se dostanete prostřednictvím HTTP GET. Tady je odpověď JSON pro spuštění `operation-location` URL z předchozího obrázku:
 
 ```json
 {
@@ -279,7 +225,7 @@ K synchronnímu čtení obrázku můžete použít operaci `POST /vision/v2.0/re
 }
 ```
 
-Objekt odpovědi JSON má stejný graf objektů jako asynchronní verze. Pokud jste uživatelem JavaScriptu a chcete typ zabezpečení, můžete použít následující typy k přetypování odpovědi JSON jako objekt `AnalyzeResult`.
+Objekt odpovědi JSON má stejný graf objektů jako asynchronní verze. Pokud jste uživatelem JavaScriptu a chcete typ zabezpečení, můžete použít následující typy k přetypování odezvy JSON jako objekt `AnalyzeResult`.
 
 ```typescript
 export interface AnalyzeResult {
@@ -314,38 +260,31 @@ export interface Line {
     words?: Word[] | null;
 }
 
+export enum Confidence {
+    High = 0,
+    Low = 1
+}
+
 export interface Word {
   boundingBox?: number[] | null;
   text: string;
-  confidence?: string | null;
+  confidence?: Confidence | null;
 }
 ```
 
-Příklad použití naleznete tady: v [karanténě pro TypeScript](https://aka.ms/ts-read-api-types) a vyberte spustit pro vizualizaci jeho snadného použití.
-
-# <a name="recognize-texttabrecognize-text"></a>[Rozpoznávání textu](#tab/recognize-text)
-
-### <a name="asynchronous-text-recognition"></a>Asynchronní rozpoznávání textu
-
-Operace `POST /vision/v2.0/recognizeText` a `GET /vision/v2.0/textOperations/*{id}*` můžete použít společně k asynchronnímu rozpoznávání vytištěného textu v obrázku, podobně jako služba Počítačové zpracování obrazu používá tyto odpovídající operace REST. Kontejner Rozpoznávání textu v současné době rozpoznává jenom vytištěný text, ne ručně psaný text, takže parametr `mode`, který je obvykle zadaný pro operaci Počítačové zpracování obrazu služby, se v kontejneru Rozpoznávání textu ignoruje.
-
-### <a name="synchronous-text-recognition"></a>Synchronní rozpoznávání textu
-
-Operaci `POST /vision/v2.0/recognizeTextDirect` můžete použít k synchronnímu rozpoznání vytištěného textu v obrázku. Vzhledem k tomu, že je tato operace synchronní, je text žádosti pro tuto operaci stejný jako operace `POST /vision/v2.0/recognizeText`, ale tělo odpovědi pro tuto operaci je stejné, jako by bylo vráceno operací `GET /vision/v2.0/textOperations/*{id}*`.
-
-***
+Příklad použití naleznete <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">tady <span class="docon docon-navigate-external x-hidden-focus"></span> </a> : v karanténě pro TypeScript a výběrem **Spustit** provizualizujte jeho snadné použití.
 
 ## <a name="stop-the-container"></a>Zastavení kontejneru
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud spouštíte kontejner s povoleným výstupním [připojením](./computer-vision-resource-container-config.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Fakturované
+## <a name="billing"></a>Vyúčtování
 
 Kontejnery Cognitive Services odesílají informace o fakturaci do Azure pomocí odpovídajícího prostředku v účtu Azure.
 
@@ -359,12 +298,12 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Počítačové zpracování obrazu. V souhrnu:
+V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Počítačové zpracování obrazu. Souhrn:
 
-* Počítačové zpracování obrazu poskytuje kontejner pro Linux pro Docker, který zapouzdřuje Rozpoznávání textu a přečte.
+* Počítačové zpracování obrazu poskytuje kontejner pro Linux pro Docker, zapouzdření čtení.
 * Image kontejnerů se stáhnou z registru kontejnerů "kontejner ve verzi Preview" v Azure.
 * Image kontejneru se spouštějí v Docker.
-* K volání operací v Rozpoznávání textu nebo čtení kontejnerů můžete použít buď REST API nebo SDK, a to zadáním identifikátoru URI hostitele kontejneru.
+* Pomocí REST API nebo sady SDK můžete volat operace v kontejnerech pro čtení, a to zadáním identifikátoru URI hostitele kontejneru.
 * Při vytváření instance kontejneru je nutné zadat informace o fakturaci.
 
 > [!IMPORTANT]

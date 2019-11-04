@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 8e4c817437c22d15e60cf48d5976c30433e83d75
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 715db36921427dc0ac5dcdad24c2c026b1ea1326
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970027"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496691"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Zjišťování a používání ukázkových poznámkových bloků
 
@@ -30,7 +30,7 @@ Po identifikaci poznámkového bloku, který byste chtěli prozkoumat, tady najd
 
 ## <a name="great-sample-notebooks"></a>Skvělé ukázkové poznámkové bloky
 
-- [Azure Notebooks Starter sada](https://notebooks.azure.com/#sample-redirect) obsahuje úvod do Pythonu, R a F#společně s poznámkami, které demonstrují přístup k datům, Azure Machine Learning služby a několik cvičení pro datové vědy.
+- [Azure Notebooks Starter sada](https://notebooks.azure.com/#sample-redirect) obsahuje úvod do Pythonu, R a F#společně s poznámkami, které demonstrují přístup k datům, Azure Machine Learning a několik cvičení v oblasti datových věd.
 - [Úvod do notebooků Jupyter](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (Jupyter.org)
 - [Seznámení s datovou vědy](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) podle Jake Vanderplas.
 - [Galerie zajímavých poznámkových bloků](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (projekt Jupyter na GitHubu)
@@ -43,4 +43,4 @@ Po identifikaci poznámkového bloku, který byste chtěli prozkoumat, tady najd
 - [Postupy: konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
 - [Postupy: práce s datovými soubory](work-with-project-data-files.md)
 - [Postupy: přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
-- [Postupy: použití služeb Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Postupy: použití Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

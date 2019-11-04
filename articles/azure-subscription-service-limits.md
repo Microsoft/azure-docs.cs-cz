@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345551"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476947"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument obsahuje seznam některých nejběžnějších omezení Microsoft Azure, která se také někdy označují jako kvóty. Tento dokument v tuto chvíli nepokrývá všechny služby Azure. V průběhu času se seznam rozbalí a aktualizuje, aby pokryl víc služeb.
@@ -25,7 +25,7 @@ Další informace o cenách Azure najdete v tématu [Přehled cen Azure](https:/
 > [!NOTE]
 > Pokud chcete limit nebo kvótu nad výchozím limitem zvýšit, [otevřete online žádost o zákaznickou podporu](azure-resource-manager/resource-manager-quota-errors.md)zdarma. Mezní hodnoty se nedají vyhodnotit nad maximální hodnotou limitu uvedenou v následujících tabulkách. Pokud není sloupec maximální limit, prostředek nemá nastavitelný limit.
 >
-> [Bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p) neplatí pro zvýšení limitu nebo kvóty. Pokud máte [bezplatnou zkušební verzi předplatného](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) předplatného. Další informace najdete v tématu [upgrade předplatného bezplatné zkušební verze Azure na předplatné](billing/billing-upgrade-azure-subscription.md) s průběžnými platbami a na [Nejčastější dotazy k bezplatné zkušební verzi předplatného](https://azure.microsoft.com/free/free-account-faq).
+> [Bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p) neplatí pro zvýšení limitu nebo kvóty. Pokud máte [bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na předplatné s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) . Další informace najdete v tématu [upgrade předplatného bezplatné zkušební verze Azure na předplatné](billing/billing-upgrade-azure-subscription.md) s průběžnými platbami a na [Nejčastější dotazy k bezplatné zkušební verzi předplatného](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Omezení a Azure Resource Manager
@@ -56,7 +56,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Azure Firewall](#azure-firewall-limits)
 * [Azure Functions](#functions-limits)
 * [Azure Kubernetes Service](#azure-kubernetes-service-limits)
-* [Služba Azure Machine Learning](#azure-machine-learning-service-limits)
+* [Azure Machine Learning](#azure-machine-learning-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
@@ -82,8 +82,9 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Media Services](#media-services-limits)
 * [Mobile Services](#mobile-services-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication-limits)
-* [Sítě](#networking-limits)
+* [Networking](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
+  * [Bastionu Azure](#azure-bastion-limits)
   * [Azure DNS](#azure-dns-limits)
   * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Firewall](#azure-firewall-limits)
@@ -154,7 +155,7 @@ Následující tabulka obsahuje informace o funkcích a omezeních [úrovní slu
 ### <a name="azure-kubernetes-service-limits"></a>Omezení služby Azure Kubernetes
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
-### <a name="azure-machine-learning-service-limits"></a>Omezení služby Azure Machine Learning
+### <a name="azure-machine-learning-limits"></a>Omezení Azure Machine Learning
 Nejnovější hodnoty pro Azure Machine Learning výpočetních kvót najdete na [stránce kvóty Azure Machine Learning](../articles/machine-learning/service/how-to-manage-quotas.md)
 
 ### <a name="networking-limits"></a>Síťová omezení
@@ -179,6 +180,9 @@ Následující tabulka se vztahuje na SKU V1, v2, Standard a WAF, pokud není uv
 
 #### <a name="traffic-manager-limits"></a>Omezení Traffic Manager
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
+
+#### <a name="azure-bastion-limits"></a>Omezení Azure bastionu
+[!INCLUDE [Azure Bastion limits](../includes/bastion-limits.md)]
 
 #### <a name="azure-dns-limits"></a>Omezení Azure DNS
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
@@ -294,7 +298,7 @@ Další informace o omezeních na podrobnější úrovni, jako je velikost dokum
 
 ### <a name="azure-monitor-limits"></a>Omezení Azure Monitor
 
-#### <a name="alerts"></a>Upozornění
+#### <a name="alerts"></a>Výstrahy
 
 [!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-alerts.md)]
 
@@ -306,7 +310,7 @@ Další informace o omezeních na podrobnější úrovni, jako je velikost dokum
 
 [!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-log-queries.md)]
 
-#### <a name="log-analytics-workspaces"></a>Pracovní prostory Log Analytics
+#### <a name="log-analytics-workspaces"></a>Pracovní prostory služby Log Analytics
 
 [!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-workspaces.md)]
 
@@ -398,7 +402,7 @@ Omezení SQL Database najdete v tématu omezení [prostředků SQL Database pro 
 ### <a name="sql-data-warehouse-limits"></a>Omezení SQL Data Warehouse
 Omezení SQL Data Warehouse najdete v tématu [omezení prostředků SQL Data Warehouse](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 - [Pochopení omezení a zvýšení počtu Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 - [Velikosti virtuálních počítačů a cloudových služeb pro Azure](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Velikosti pro Azure Cloud Services](cloud-services/cloud-services-sizes-specs.md)

@@ -1,5 +1,5 @@
 ---
-title: Migrace místních Apache Hadoopových clusterů do Azure HDInsight – migrace dat
+title: 'Migrace dat: místní Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy migrace dat pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 567edca422237c71f0d69c862a17fbc0d2a72795
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 30f7ae2eeb928e3f8dc71baed20d9c9b2129d1f9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735916"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494993"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy pro migraci dat
 
@@ -25,7 +25,7 @@ Existují dvě hlavní možnosti migrace dat z místního prostředí do prostř
 
 1.  Přenos dat přes síť pomocí protokolu TLS
     1. Přes Internet – data můžete přenést do služby Azure Storage prostřednictvím běžného internetového připojení pomocí některého z několika nástrojů, jako je: Průzkumník služby Azure Storage, AzCopy, Azure PowerShell a Azure CLI.  Další informace najdete v tématu [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md) .
-    2. Express Route-ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojení mezi datovými centry Microsoftu a infrastrukturou ve vašich prostorách nebo v zařízení se systémem. Připojení ExpressRoute nemáte se přenášejí prostřednictvím veřejného Internetu a nabízí vyšší zabezpečení, spolehlivost a rychlost s nižší latencí než Typická připojení přes Internet. Další informace najdete v tématu [Vytvoření a úprava okruhu ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+    2. Express Route-ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojení mezi datovými centry Microsoftu a infrastrukturou ve vašich prostorách nebo v zařízení se systémem. Připojení ExpressRoute nevyužívají veřejný Internet a nabízejí vyšší úroveň zabezpečení, spolehlivosti a rychlosti s nižší latencí než typická připojení přes Internet. Další informace najdete v tématu [Vytvoření a úprava okruhu ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
     1. Data Box online přenosu dat – Data Box Edge a Data Box Gateway jsou online produkty pro přenos dat, které fungují jako brány síťového úložiště pro správu dat mezi vaší lokalitou a Azure. Data Box Edge je místní síťové zařízení, které přenáší data do a z Azure a při zpracování dat využívá hraniční výpočetní prostředky s podporou umělé inteligence (AI). Data Box Gateway je virtuální zařízení s funkcemi brány úložiště. Další informace najdete v tématu [Azure Data box dokumentaci – online přenos](https://docs.microsoft.com/azure/databox-online/).
 1.  Přenos dat do režimu offline
     1. Data Box offline přenos dat – Data Box, Data Box Disk a Data Box Heavy zařízení vám pomůžou přenášet velké objemy dat do Azure, když síť není možnost. Tato zařízení pro offline přenos dat se převážejí mezi vaší organizací a datacentrem Azure. Přenášená data pomáhají chránit s využitím šifrování AES a po nahrání provádějí proces důkladné sanitizace, který odstraní vaše data ze zařízení. Další informace o Data Box offline přenosových zařízeních najdete v části [Azure Data box dokumentace – offline přenos](https://docs.microsoft.com/azure/databox/). Další informace o migraci clusterů Hadoop najdete v tématu [použití Azure Data box k migraci z místního úložiště HDFS do Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
@@ -35,7 +35,7 @@ Následující tabulka má přibližnou dobu trvání přenosu dat na základě 
 |**Množství dat**|**Šířka pásma sítě**||||
 |---|---|---|---|---|
 || **45 MB/s (T3)**|**100 MB/s**|**1 GB/s**|**10 GB/s**|
-|1 TB|2 dny|1 den| 2 hodiny|14 minut|
+|1 TB|2 dny|1 den| 2 hodiny|14 minut|
 |10 TB|22 dní|10 dní|1 den|2 hodiny|
 |35 TB|76 dní|34 dní|3 dny|8 hodin|
 |80 TB|173 dní|78 dní|8 dní|19 hodin|
@@ -58,7 +58,7 @@ DistCp je projekt Apache, který používá úlohu mapování MapReduce k přeno
 DistCp se pokusí vytvořit úlohy mapování, aby každá z nich přibližně stejný počet bajtů měla. Ve výchozím nastavení používají úlohy DistCp 20 mapovačů. Použití většího počtu mapovačů pro Distcp (s parametrem ' m ' na příkazovém řádku) zvyšuje paralelismus během procesu přenosu dat a snižuje délku přenosu dat. Při zvyšování počtu mapovačů je ale potřeba vzít v úvahu dvě věci:
 
 1. Nejnižší členitost DistCp je jeden soubor. Zadání počtu mapovačů, než je počet zdrojových souborů, nepomůže a zachová dostupné prostředky clusteru.
-1. Vezměte v úvahu dostupnou paměť příze v clusteru, abyste zjistili počet mapovačů. Každá úloha mapy se spustí jako kontejner příze. Za předpokladu, že v clusteru nejsou spuštěny žádné jiné náročné úlohy, lze počet mapovačů určit pomocí následujícího vzorce: m = (počet pracovních uzlů \* příze paměti pro každý pracovní uzel)/velikost kontejneru příz. Pokud však jiná aplikace používá paměť, pak zvolte možnost použít pouze část paměti PŘÍZe pro úlohy DistCp.
+1. Vezměte v úvahu dostupnou paměť příze v clusteru, abyste zjistili počet mapovačů. Každá úloha mapy se spustí jako kontejner příze. Za předpokladu, že v clusteru nejsou spuštěny žádné jiné náročné úlohy, lze počet mapovačů určit pomocí následujícího vzorce: m = (počet pracovních uzlů \* PŘÍZ paměti pro každý pracovní uzel)/velikost kontejneru PŘÍZ. Pokud však jiná aplikace používá paměť, pak zvolte možnost použít pouze část paměti PŘÍZe pro úlohy DistCp.
 
 ### <a name="use-more-than-one-distcp-job"></a>Použití víc než jedné úlohy DistCp
 
@@ -70,15 +70,15 @@ Pokud existuje malý počet velkých souborů, zvažte jejich rozdělení na blo
 
 ### <a name="use-the-strategy-command-line-parameter"></a>Použijte parametr příkazového řádku strategie.
 
-Zvažte použití `strategy = dynamic` parametru v příkazovém řádku. Výchozí hodnota `strategy` parametru je `uniform size`, v takovém případě Každá mapa kopíruje přibližně stejný počet bajtů. Když se tento parametr změní na `dynamic`, soubor výpisu se rozdělí do několika "bloků souborů". Počet souborů bloku je násobek počtu map. Každé úloze mapování se přiřadí jeden ze souborů bloku. Po zpracování všech cest v bloku dat se odstraní aktuální blok a získá se nový blok. Proces pokračuje, dokud nebudou k dispozici žádné další bloky. Tento "dynamický" přístup umožňuje rychlejší mapování – úlohy pro využívání více cest než pomalejších, čímž se celková rychlost DistCp úlohy.
+Zvažte použití parametru `strategy = dynamic` v příkazovém řádku. Výchozí hodnota parametru `strategy` je `uniform size`, v takovém případě Každá mapa kopíruje přibližně stejný počet bajtů. Když se tento parametr změní na `dynamic`, soubor výpisu se rozdělí do několika "bloků souborů". Počet souborů bloku je násobek počtu map. Každé úloze mapování se přiřadí jeden ze souborů bloku. Po zpracování všech cest v bloku dat se odstraní aktuální blok a získá se nový blok. Proces pokračuje, dokud nebudou k dispozici žádné další bloky. Tento "dynamický" přístup umožňuje rychlejší mapování – úlohy pro využívání více cest než pomalejších, čímž se celková rychlost DistCp úlohy.
 
 ### <a name="increase-the-number-of-threads"></a>Zvýšení počtu vláken
 
-Podívejte se `-numListstatusThreads` , jestli zvýšením parametru zlepšíte výkon. Tento parametr řídí počet vláken, která se mají použít pro sestavování seznamu souborů, a 40 je maximální hodnota.
+Podívejte se, jestli zvýšením parametru `-numListstatusThreads` zlepšuje výkon. Tento parametr řídí počet vláken, která se mají použít pro sestavování seznamu souborů, a 40 je maximální hodnota.
 
 ### <a name="use-the-output-committer-algorithm"></a>Použití algoritmu výstupního potvrzení
 
-Podívejte se, jestli předání `-Dmapreduce.fileoutputcommitter.algorithm.version=2` parametru vylepšuje DistCp výkon. Tento algoritmus vypisování výstupu obsahuje optimalizace pro zápis výstupních souborů do cíle. Následující příkaz je příklad, který ukazuje použití různých parametrů:
+Podívejte se, jestli předání parametru `-Dmapreduce.fileoutputcommitter.algorithm.version=2` zlepšuje výkon DistCp. Tento algoritmus vypisování výstupu obsahuje optimalizace pro zápis výstupních souborů do cíle. Následující příkaz je příklad, který ukazuje použití různých parametrů:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/
@@ -112,7 +112,7 @@ Podregistr metastore lze migrovat buď pomocí skriptů, nebo pomocí replikace 
 - Transformujte místní konkrétní cesty na základě HDFS na WASB/ADLS pomocí nástroje, jako je XSLT.
 - Importujte zásady na Ranger běžící na HDInsight.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další článek v této sérii:
 

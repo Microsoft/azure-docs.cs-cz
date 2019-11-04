@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1b8bdde64ee003d93ad15df8f1d4d8b1e3a2b5f9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 32aa2c8f4c97f247bfcff5fc82a3f810b8005591
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814329"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488565"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
 
@@ -49,21 +49,22 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste správcem předpl
 - Zápis do účtu služby Azure Storage.
 - Zapište na spravovaný disk Azure.
 
-K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovanou roli Přispěvatel virtuálních počítačů. Pokud chcete spravovat operace Site Recovery v trezoru, měl by váš účet mít navíc přiřazenou předdefinovanou roli Přispěvatel Site Recovery.
+K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovanou roli Přispěvatel virtuálních počítačů. Aby bylo možné spravovat Site Recovery operace v trezoru, měl by mít váš účet přiřazenou předdefinovanou roli Site Recovery Přispěvatel.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-1. V Azure Portal klikněte na **+ vytvořit prostředek**a vyhledejte **obnovení**na Marketplace.
-2. Klikněte na **zálohovat a Site Recovery**a na stránce zálohování a Site Recovery klikněte na **vytvořit**. 
-1. Do pole**název** **trezoru** > Recovery Services zadejte popisný název pro identifikaci trezoru. Pro tuto sadu kurzů používáme název **ContosoVMVault**.
-2. V **skupiny prostředků**vyberte existující skupinu prostředků nebo vytvořte novou. Pro tento kurz používáme **contosoRG**.
-3. V části **umístění**vyberte oblast, ve které se má Trezor umístit. používáme oblast **Západní Evropa**.
-4. Pokud chcete mít k trezoru rychlý přístup z řídicího panelu, vyberte **Připnout na řídicí panel** > **Vytvořit**.
+1. V nabídce Azure Portal vyberte **vytvořit prostředek**a vyhledejte **obnovení**na Marketplace.
+2. Ve výsledcích hledání vyberte **Backup a Site Recovery** a na stránce zálohování a Site Recovery klikněte na **vytvořit**. 
+3. Na stránce **vytvořit trezor Recovery Services** vyberte **předplatné**. Používáme **předplatné contoso**.
+4. V **skupiny prostředků**vyberte existující skupinu prostředků nebo vytvořte novou. Pro tento kurz používáme **contosoRG**.
+5. Do pole **název trezoru**zadejte popisný název pro identifikaci trezoru. Pro tuto sadu kurzů používáme název **ContosoVMVault**.
+6. V části **oblast**vyberte oblast, ve které se má Trezor umístit. používáme oblast **Západní Evropa**.
+7. Vyberte **Zkontrolovat a vytvořit**.
 
    ![Vytvoření nového trezoru](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   Nový trezor se zobrazí v části **Řídicí panel** > **Všechny prostředky** a na hlavní stránce **Trezory služby Recovery Services**.
+   Nový trezor se teď bude zobrazovat na **řídicím panelu** > **všechny prostředky**a na hlavní stránce **Recovery Services trezory** .
 
 ## <a name="set-up-an-azure-network"></a>Nastavení sítě Azure
 
@@ -72,21 +73,22 @@ Místní počítače se replikují do Azure Managed disks. Když dojde k převze
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Sítě** > **Virtuální síť**.
 2. Jako model nasazení nechte **Správce prostředků** vybrané.
 3. V části **Název** zadejte název sítě. Název musí být v rámci skupiny prostředků Azure jedinečný. V tomto kurzu používáme **ContosoASRnet**.
-4. Zadejte skupinu prostředků, ve které se vytvoří síť. V tomto kurzu používáme existující skupinu prostředků **contosoRG**.
-5. Do pole **Rozsah adres**zadejte rozsah sítě. Používáme **10.1.0.0/24**a nepoužívám podsíť.
-6. V části **Předplatné** vyberte předplatné, ve kterém chcete síť vytvořit.
+4. Do pole **adresní prostor**zadejte rozsah adres virtuální sítě v notaci CdR. Používáme **10.1.0.0/24**.
+5. V části **Předplatné** vyberte předplatné, ve kterém chcete síť vytvořit.
+6. Zadejte **skupinu prostředků** , ve které bude síť vytvořena. V tomto kurzu používáme existující skupinu prostředků **contosoRG**.
 7. V části **umístění**vyberte stejnou oblast, ve které byl vytvořen Recovery Services trezor. V našem kurzu je to **západní Evropa**. Síť musí být ve stejné oblasti jako trezor.
-8. Ponecháme výchozí možnosti základní ochrany před útoky DDoS bez koncového bodu služby v síti.
-9. Klikněte na možnost **Vytvořit**.
+8. Do pole **Rozsah adres**zadejte rozsah sítě. Používáme **10.1.0.0/24**a nepoužívám podsíť.
+9. Ponecháváme výchozí možnosti základní ochrany DDoS Protection bez koncového bodu služby nebo brány firewall v síti.
+9. Vyberte **Create** (Vytvořit).
 
    ![Vytvoření virtuální sítě](media/tutorial-prepare-azure/create-network.png)
 
-Vytvoření virtuální sítě trvá několik sekund. Po vytvoření se zobrazí na řídicím panelu webu Azure Portal.
+Vytvoření virtuální sítě trvá několik sekund. Po vytvoření se zobrazí na řídicím panelu Azure Portal.
 
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pro zotavení po havárii VMware [Připravte místní infrastrukturu VMware](tutorial-prepare-on-premises-vmware.md).
 - Pro zotavení po havárii technologie Hyper-V [Připravte místní servery Hyper-v](hyper-v-prepare-on-premises-tutorial.md).

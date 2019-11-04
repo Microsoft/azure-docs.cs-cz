@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 109c838d903faee7510441a8b3d502a7e95d8bb4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 4bdf482357789b71b2f87bb74afd76d9ebc7f7d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533666"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476767"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal
 
 Naučte se generovat šablonu Správce prostředků pomocí Azure Portal a proces úpravy a nasazení šablony z portálu. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md).
 
-![Diagram portálu pro šablonu Resource Manageru pro rychlý Start](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
+![Diagram portálu pro rychlé zprovoznění šablon Správce prostředků](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 Po dokončení kurzu nasadíte účet Azure Storage. Stejný postup je možné použít k nasazení dalších prostředků Azure.
 
@@ -36,11 +36,15 @@ Vytvoření šablony Správce prostředků od začátku není jednoduchý úkol,
 
 Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování šablon při pokusu o nasazení prostředků Azure, které nejsou obeznámené s. Další informace o exportu šablon pomocí portálu najdete v tématu [Export skupin prostředků do šablon](./manage-resource-groups-portal.md#export-resource-groups-to-templates). Další možností, jak najít pracovní šablonu, je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/).
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Vyberte **Vytvořit prostředek** > **Storage** > **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
+1. Ve webovém prohlížeči přejdete na [Azure Portal](https://portal.azure.com) a přihlaste se.
+2. V nabídce Azure Portal vyberte **vytvořit prostředek**.
 
-    ![Vytvoření účtu Azure Storage na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
-3. Zadejte následující informace:
+    ![V nabídce Azure Portal vyberte vytvořit prostředek.](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
+
+3. Vyberte **úložiště** > **účet úložiště**.
+
+    ![Vytvoření účtu úložiště Azure](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
+1. Zadejte následující informace:
 
     |Name (Název)|Hodnota|
     |----|----|
@@ -54,8 +58,8 @@ Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování �
     > [!NOTE]
     > Některé exportované šablony vyžadují před nasazením nějaké úpravy.
 
-4. V dolní části obrazovky vyberte **Zkontrolovat a vytvořit**. V dalším kroku nevybírejte **vytvořit** .
-5. V dolní části stránky vyberte **Stáhnout šablonu pro automatizaci**. Na portálu se zobrazí vygenerovaná šablona:
+5. V dolní části obrazovky vyberte **Zkontrolovat a vytvořit**. V dalším kroku nevybírejte **vytvořit** .
+6. V dolní části stránky vyberte **Stáhnout šablonu pro automatizaci**. Na portálu se zobrazí vygenerovaná šablona:
 
     ![Vygenerování šablony na portálu](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
@@ -64,9 +68,9 @@ Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování �
     Existuje šest definovaných parametrů. Jeden z nich má název **storageAccountName**. Druhá zvýrazněná část na předchozím snímku obrazovky ukazuje, jak odkazovat na tento parametr v šabloně. V další části upravíte šablonu tak, aby používala vygenerovaný název účtu úložiště.
 
     Šablona obsahuje jeden definovaný prostředek Azure. Typ je `Microsoft.Storage/storageAccounts`. Podívejte se, jak je definován prostředek, a strukturu definice.
-6. V horní části obrazovky vyberte **Stáhnout** .
-7. Otevřete stažený soubor zip a uložte soubor **template. JSON** do počítače. V další části šablonu upravíte pomocí nástroje Template deployment.
-8. Vyberte kartu **Parametr** a zobrazte zadané hodnoty parametrů. Tyto hodnoty si poznamenejte, protože je budete potřebovat v další části k nasazení šablony.
+7. V horní části obrazovky vyberte **Stáhnout** .
+8. Otevřete stažený soubor zip a uložte soubor **template. JSON** do počítače. V další části šablonu upravíte pomocí nástroje Template deployment.
+9. Vyberte kartu **Parametr** a zobrazte zadané hodnoty parametrů. Tyto hodnoty si poznamenejte, protože je budete potřebovat v další části k nasazení šablony.
 
     ![Vygenerování šablony na portálu](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
@@ -81,7 +85,7 @@ Na webu Azure Portal je možné provádět několik základních úprav šablon.
 
 Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení může selhat, pokud jste zadali název účtu úložiště, který už existuje. Chcete-li se tomuto problému vyhnout, upravte šablonu tak, aby používala volání funkce šablony `uniquestring()` pro vygenerování jedinečného názvu účtu úložiště.
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek**.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
 2. Do pole **Hledat na Marketplace** zadejte **template deployment** a stiskněte **ENTER**.
 3. Vyberte **Template deployment**.
 

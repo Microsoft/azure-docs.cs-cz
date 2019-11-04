@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: clustery Apache Hadoop na vyžádání v Azure HDInsight – Data Factory'
+title: 'Kurz: clustery na vyžádání v Azure HDInsight s Data Factory'
 description: Kurz – Naučte se vytvářet clustery Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
-ms.openlocfilehash: 00937197536ede7d6eed168e0a84bad294800159
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 1d1ddb84c000efaf58356ffdd15382e0b74aa744
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72264543"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494877"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory
 

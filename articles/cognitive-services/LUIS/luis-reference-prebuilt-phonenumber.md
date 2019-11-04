@@ -11,39 +11,69 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 9e237b09bd2b0ecc3e91e10697f6c025f73057da
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 1cc7469bf6b29ed864fac3955dc8770aa879f84d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677439"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499530"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita pro aplikaci pro LUIS s telefonním číslem
-Entita `phonenumber` extrahuje celou řadu telefonních čísel včetně kódu země. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do aplikace přidat příklad projevy. Entita `phonenumber` je podporována pouze v jazykové verzi `en-us`. 
+Entita `phonenumber` extrahuje celou řadu telefonních čísel, včetně kódu země. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do aplikace přidat příklad projevy. Entita `phonenumber` je podporována pouze v `en-us` jazykové verzi. 
 
 ## <a name="types-of-a-phone-number"></a>Typy telefonního čísla
-`Phonenumber` se spravuje z úložiště GitHub pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml)
+`Phonenumber` je spravováno z úložiště GitHub [pro rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml)
 
 ## <a name="resolution-for-this-prebuilt-entity"></a>Řešení pro tuto předem vytvořenou entitu
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+Pro dotaz se vrátí následující objekty entity:
+
+`my mobile is 1 (800) 642-7676`
+
+#### <a name="v3-responsetabv3"></a>[Odpověď V3](#tab/V3)
+
+Následující JSON je s parametrem `verbose` nastaveným na `false`:
+
+```json
+"entities": {
+    "phonenumber": [
+        "1 (800) 642-7676"
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Podrobná odpověď V3](#tab/V3-verbose)
+Následující JSON je s parametrem `verbose` nastaveným na `true`:
+
+```json
+"entities": {
+    "phonenumber": [
+        "1 (800) 642-7676"
+    ],
+    "$instance": {
+
+        "phonenumber": [
+            {
+                "type": "builtin.phonenumber",
+                "text": "1 (800) 642-7676",
+                "startIndex": 13,
+                "length": 16,
+                "score": 1.0,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+#### <a name="v2-responsetabv2"></a>[Odpověď v2](#tab/V2)
 
 Následující příklad ukazuje řešení entity **Builtin. PhoneNumber** .
 
 ```json
-{
-  "query": "my mobile is 1 (800) 642-7676",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.8448457
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.8448457
-    }
-  ],
-  "entities": [
+"entities": [
     {
         "entity": "1 (800) 642-7676",
         "type": "builtin.phonenumber",
@@ -54,69 +84,8 @@ Následující příklad ukazuje řešení entity **Builtin. PhoneNumber** .
             "value": "1 (800) 642-7676"
         }
     }
-  ]
-}
+]
 ```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
-
-Následující JSON má parametr `verbose` nastavený na `false`:
-
-```json
-{
-    "query": "my mobile is 1 (800) 642-7676",
-    "prediction": {
-        "normalizedQuery": "my mobile is 1 (800) 642-7676",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.592748761
-            }
-        },
-        "entities": {
-            "phonenumber": [
-                "1 (800) 642-7676"
-            ]
-        }
-    }
-}
-```
-
-Následující JSON má parametr `verbose` nastavený na `true`:
-
-```json
-{
-    "query": "my mobile is 1 (800) 642-7676",
-    "prediction": {
-        "normalizedQuery": "my mobile is 1 (800) 642-7676",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.592748761
-            }
-        },
-        "entities": {
-            "phonenumber": [
-                "1 (800) 642-7676"
-            ],
-            "$instance": {
-                "phonenumber": [
-                    {
-                        "type": "builtin.phonenumber",
-                        "text": "1 (800) 642-7676",
-                        "startIndex": 13,
-                        "length": 16,
-                        "score": 1,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
 * * * 
 
 ## <a name="next-steps"></a>Další kroky

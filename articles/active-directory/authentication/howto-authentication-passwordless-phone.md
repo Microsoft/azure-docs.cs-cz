@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648317"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474349"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
 
@@ -29,9 +29,9 @@ Namísto zobrazení výzvy k zadání hesla po zadání uživatelského jména s
 > [!NOTE]
 > Tato funkce byla v aplikaci Microsoft Authenticator od března 2017, takže pokud je zásada pro adresář povolená, můžou se uživatelé setkat okamžitě a zobrazit chybovou zprávu, pokud je zásada nepovolila. Mějte na paměti informace a připravte uživatele na tuto změnu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Ověřování Azure Multi-Factor Authentication s nabízenými oznámeními povolenými jako metoda ověřování 
+- Azure Multi-Factor Authentication s nabízenými oznámeními povolenými jako metoda ověřování 
 - Na zařízeních se systémem iOS 8,0 nebo vyšším je nainstalovaná nejnovější verze Microsoft Authenticator nebo Android 6,0 nebo novější.
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla jsou závisl�
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Povolit metody ověřování přihlašování bezheslem pro telefonování
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-1. Přejít na **Azure Active Directory** > zásady ověřování**metody** > ověřování **(Preview)**
+1. Přejděte do **služby Azure AD Security** > **metod ověřování** > **zásady metody ověřování (Preview)** .
 1. V části **přihlášení bez hesla pro telefonování**vyberte následující možnosti.
    1. **Povolit** – Ano nebo ne
    1. **Cíl** – všichni uživatelé nebo vybrat uživatele
@@ -54,11 +54,11 @@ Funkce registrace pro metody ověřování nevyužívající hesla jsou závisl�
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Registrace a Správa uživatelů aplikace Microsoft Authenticator
 
-1. Přejít na[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. Přejít na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
 1. Přihlásit se, pokud ještě není
 1. Přidejte aplikaci ověřovatele tak, že kliknete na **Přidat metodu**, zvolíte **ověřovací aplikaci**a kliknete na **Přidat** .
 1. Podle pokynů nainstalujte a nakonfigurujte na svém zařízení Microsoft Authenticatorovou aplikaci.
-1. Kliknutím na Hotovo dokončíte tok nastavení aplikace MFA pro ověřování. 
+1. Kliknutím na **Hotovo** dokončíte tok nastavení aplikace MFA pro ověřování. 
 1. V **Microsoft Authenticator**v rozevírací nabídce účet vyberte **Povolit přihlášení k telefonu** .
 1. Podle pokynů v aplikaci dokončete registraci pro přihlášení k telefonu s neheslem. 
 
@@ -78,7 +78,7 @@ Po zadání uživatelského jména na webu a výběru možnosti **Další**se u�
 
 Je možné, že uživatel v určitém okamžiku vytvořil přihlašovací údaje pro přihlášení bez hesla v aktuální Microsoft Authenticator aplikaci nebo na dřívějším zařízení. Když správce povolí zásadu metody ověřování pro telefonické přihlášení k telefonu bez hesla, bude začít používat nové přihlašovací výzvy, a to bez ohledu na to, jestli je povolil použití této zásady. Pokud uživatel nepovolil použití přihlašovacích údajů podle zásad, zobrazí se po dokončení toku ověřování chyba. 
 
-Správce může povolit, aby uživatel mohl používat přihlášení bez hesla pro telefonování, nebo musí tuto metodu odebrat uživatel. Pokud uživatel už registrované zařízení nemá, může přejít na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) adresu a odebrat ho. Pokud i nadále používají ověřovací data pro MFA, můžou zvolit **Zakázat přihlášení telefonem** z Microsoft Authenticator.  
+Správce může povolit, aby uživatel mohl používat přihlášení bez hesla pro telefonování, nebo musí tuto metodu odebrat uživatel. Pokud uživatel už registrované zařízení nemá, může přejít na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) a odebrat ho. Pokud i nadále používají ověřovací data pro MFA, můžou zvolit **Zakázat přihlášení telefonem** z Microsoft Authenticator.  
 
 ### <a name="ad-fs-integration"></a>Integrace AD FS
 
@@ -97,10 +97,10 @@ Jedním z požadavků pro vytvoření těchto nových silných přihlašovacích
 > [!NOTE]
 > Registrace zařízení není stejná jako Správa zařízení nebo MDM. Přidružuje jenom ID zařízení a ID uživatele společně v adresáři Azure AD.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Co není heslo?](concept-authentication-passwordless.md)
 
 [Další informace o registraci zařízení](../devices/overview.md#getting-devices-in-azure-ad)
 
-[Další informace o službě Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Přečtěte si o Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

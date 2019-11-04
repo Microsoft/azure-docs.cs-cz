@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11b16f91d600c20b48fbdc5887a4a0a4b538e916
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a1ab8f881aaee9e29519e99a5cd2a0e6fdbc9846
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330657"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489416"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Vytvářejte TensorFlow model hloubkového učení ve velkém měřítku pomocí Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak spustit školicí skripty [TensorFlow](https://www.tensorflow.org/overview) ve velkém měřítku pomocí třídy [estimator TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) v Azure Machine Learning. V tomto příkladu se navlacích a registruje TensorFlow model pro klasifikaci psaných číslic pomocí neuronové sítě (DNN).
 
@@ -29,7 +30,7 @@ Přečtěte si další informace o službě [hloubkového učení vs Machine Lea
 
 Spusťte tento kód v jednom z těchto prostředí:
 
- - Virtuální počítač s poznámkovým blokem Azure Machine Learning – nemusíte stahovat nebo instalovat
+ - Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
 
      - Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
     - Ve složce s ukázkami hloubkového učení na serveru poznámkového bloku najděte dokončený a rozbalený Poznámkový blok tak, že přejdete do tohoto adresáře: **postupy-použití-azureml > ml-framework > tensorflow > deployment > Výuková složka – parametr-Intune-Deploy-with-tensorflow** . 
@@ -140,7 +141,7 @@ Další informace o výpočetních cílech najdete v článku [co je cílový v�
 
 TensorFlow Estimator je implementován prostřednictvím obecné třídy [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) , kterou lze použít k podpoře libovolného rozhraní. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
 
-Pokud váš školicí skript potřebuje ke spuštění další balíčky PIP nebo Conda, můžete je nainstalovat ve výsledné imagi Docker předáním jejich názvů pomocí argumentů `pip_packages` a `conda_packages`.
+Pokud váš školicí skript potřebuje ke spuštění další balíčky PIP nebo Conda, můžete je nainstalovat ve výsledné imagi Docker předáním jejich názvů prostřednictvím `pip_packages` a `conda_packages`ch argumentů.
 
 ```python
 script_params = {
@@ -198,9 +199,9 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="distributed-training"></a>Distribuované školení
+## <a name="distributed-training"></a>Distribuované trénování
 
-[@No__t-1](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) Estimator podporuje také distribuované školení v rámci clusterů procesoru a GPU. Můžete snadno spouštět distribuované úlohy TensorFlow a Azure Machine Learning bude orchestrace spravovat za vás.
+[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) Estimator také podporuje distribuované školení v rámci clusterů procesoru a GPU. Můžete snadno spouštět distribuované úlohy TensorFlow a Azure Machine Learning bude orchestrace spravovat za vás.
 
 Azure Machine Learning podporuje dvě metody distribuovaného školení v TensorFlow:
 
@@ -233,7 +234,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 Můžete také spustit [nativní distribuované TensorFlow](https://www.tensorflow.org/deploy/distributed), které používají model serveru parametrů. V této metodě budete vlakovat v clusteru parametrů serverů a pracovních procesů. Pracovní procesy vypočítávají přechody během školení, zatímco servery parametrů agreguje přechody.
 
-Chcete-li použít metodu serveru parametrů, zadejte [@no__t objekt-1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) pro parametr `distributed_training` v konstruktoru TensorFlow.
+Chcete-li použít metodu serveru parametrů, zadejte objekt [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) pro parametr `distributed_training` v konstruktoru TensorFlow.
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -257,7 +258,7 @@ run = exp.submit(tf_est)
 
 #### <a name="define-cluster-specifications-in-tf_config"></a>Definice specifikací clusteru v ' TF_CONFIG '
 
-Pro [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)budete taky potřebovat síťové adresy a porty clusteru, takže Azure Machine Learning pro vás nastaví proměnnou prostředí `TF_CONFIG`.
+Pro [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)budete potřebovat taky síťové adresy a porty clusteru, takže Azure Machine Learning pro vás nastaví proměnnou prostředí `TF_CONFIG`.
 
 Proměnná prostředí `TF_CONFIG` je řetězec JSON. Tady je příklad proměnné pro server parametrů:
 
@@ -272,9 +273,9 @@ TF_CONFIG='{
 }'
 ```
 
-Pro TensorFlow rozhraní API na nejvyšší úrovni [@no__t](https://www.tensorflow.org/api_docs/python/tf/estimator) TensorFlow analyzuje proměnnou `TF_CONFIG` a vytvoří pro vás specifikaci clusteru.
+Pro TensorFlow rozhraní API pro [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) vysoké úrovně TensorFlow analyzuje proměnnou `TF_CONFIG` a vytvoří pro vás specifikaci clusteru.
 
-Pro základní rozhraní API nižší úrovně TensorFlow pro školení Analyzujte proměnnou `TF_CONFIG` a sestavte `tf.train.ClusterSpec` ve školicím kódu.
+Pro základní rozhraní API nižší úrovně TensorFlow pro školení, analyzujte proměnnou `TF_CONFIG` a sestavte `tf.train.ClusterSpec` ve školicím kódu.
 
 ```Python
 import os, json

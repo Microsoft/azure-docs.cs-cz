@@ -1,6 +1,6 @@
 ---
-title: Návrh řídicího panelu v reálném čase s využitím Azure Database for PostgreSQL – velkokapacitní (Citus) (preview) kurz
-description: Tento kurz ukazuje, jak vytvářet, naplnit a dotazovat distribuované tabulky v databázi Azure pro PostgreSQL Hyperškálovatelného (Citus) (preview).
+title: Návrh řídicího panelu v reálném čase s kurzem Azure Database for PostgreSQL – Citus)
+description: V tomto kurzu se dozvíte, jak vytvořit, naplnit a dotazovat distribuované tabulky na Azure Database for PostgreSQL Citus (Scale).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,35 +8,35 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 32487d65397a96d9e96ae3bf3476eed23ddb8adc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791309"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482867"
 ---
-# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Kurz: Návrh řídicí panel analýzy v reálném čase s využitím Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
+# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: Návrh řídicího panelu analýzy v reálném čase pomocí Azure Database for PostgreSQL – škálovatelné (Citus)
 
-V tomto kurzu použijete Azure Database for PostgreSQL – velkokapacitní (Citus) (preview) se dozvíte jak:
+V tomto kurzu se naučíte, jak používat Azure Database for PostgreSQL-Citus (škálování na více procesorů):
 
 > [!div class="checklist"]
-> * Vytvořte skupinu serverů a velkokapacitní (Citus)
-> * Vytvořte schéma pomocí nástroje psql
-> * Tabulky horizontálních oddílů mezi uzly
+> * Vytvoření skupiny serverů Hyperscale (Citus)
+> * Vytvoření schématu pomocí nástroje psql
+> * Tabulky horizontálních oddílů napříč uzly
 > * Generování ukázkových dat
-> * Provádění kumulativních
-> * Nezpracovaná a agregovaná data dotazu
+> * Provést souhrny
+> * Dotazování na hrubá a agregovaná data
 > * Vypršení platnosti dat
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
-## <a name="use-psql-utility-to-create-a-schema"></a>Vytvořte schéma pomocí nástroje psql
+## <a name="use-psql-utility-to-create-a-schema"></a>Vytvoření schématu pomocí nástroje psql
 
-Po připojení k Azure Database for PostgreSQL – Hyperškálovatelného (Citus) (preview) pomocí nástroje psql, které můžete provádět některé základní úlohy. Tento kurz vás provede příjem přenosů dat z webových analýz, pak zahrnované data a poskytuje v reálném čase řídicí panely založené na těchto datech.
+Po připojení k Azure Database for PostgreSQL – Citus () pomocí psql můžete dokončit některé základní úlohy. Tento kurz vás provede příjmem dat přenosů z webové analýzy a následným shrnutím dat a poskytnutím řídicích panelů v reálném čase na základě těchto dat.
 
-Pojďme vytvořit tabulku, která bude využívat všechny naše nezpracovaných dat z webu provoz. Spuštěním následujících příkazů v terminálu psql:
+Pojďme vytvořit tabulku, která bude využívat všechna nezpracované data webového provozu. V terminálu psql spusťte následující příkazy:
 
 ```sql
 CREATE TABLE http_request (
@@ -52,7 +52,7 @@ CREATE TABLE http_request (
 );
 ```
 
-Budeme také vytvořit tabulku, která bude obsahovat naše agregace po minutách a tabulku, která udržuje pozice naší poslední kumulativní. Spuštěním následujících příkazů v také psql:
+Také se vytvoří tabulka, která bude obsahovat naši agregaci za minutu, a tabulku, která bude uchovávat pozici poslední souhrn. V psql také spusťte následující příkazy:
 
 ```sql
 CREATE TABLE http_request_1min (
@@ -76,17 +76,17 @@ CREATE TABLE latest_rollup (
 );
 ```
 
-Zobrazí se nově vytvořené tabulky v seznamu tabulek teď pomocí tohoto příkazu psql:
+Nově vytvořené tabulky můžete zobrazit v seznamu tabulek nyní pomocí tohoto příkazu psql:
 
 ```postgres
 \dt
 ```
 
-## <a name="shard-tables-across-nodes"></a>Tabulky horizontálních oddílů mezi uzly
+## <a name="shard-tables-across-nodes"></a>Tabulky horizontálních oddílů napříč uzly
 
-Nasazení hyperškálovatelného ukládá řádky tabulky na různých uzlech, na základě hodnoty sloupce určený uživatel. Soubor "sloupec distribuce" označuje, jak se horizontálně dělených dat napříč uzly.
+Nasazení v rámci škálování ukládá řádky tabulky na různých uzlech na základě hodnoty uživatelem označeného sloupce. Tento "distribuční sloupec" označuje způsob, jakým se data horizontálně dělené napříč uzly.
 
-Pojďme nastavit sloupec distribuce na serveru\_id, klíč horizontálního oddílu. V psql spusťte tyto funkce:
+Nastavíme distribuční sloupec na ID\_ID webu, klíč horizontálních oddílů. V psql spusťte tyto funkce:
 
   ```sql
 SELECT create_distributed_table('http_request',      'site_id');
@@ -95,7 +95,7 @@ SELECT create_distributed_table('http_request_1min', 'site_id');
 
 ## <a name="generate-sample-data"></a>Generování ukázkových dat
 
-Naše skupiny serverů nyní měli být připravení ingestování nějaká data. Jsme spusťte následující příkaz místně z našich `psql` připojení průběžně vložit data.
+Naše skupina serverů by teď měla být připravená na ingestování některých dat. Z našeho `psql`ho připojení můžeme pro průběžné vkládání dat spustit následující místně.
 
 ```sql
 DO $$
@@ -122,18 +122,18 @@ DO $$
 END $$;
 ```
 
-Dotaz vloží přibližně osm řádků za sekundu. Řádky se ukládají na jinou pracovní uzly podle sloupec distribuce `site_id`.
+Dotaz vkládá přibližně osm řádků každou sekundu. Řádky jsou uloženy na různých pracovních uzlech, které jsou směrovány pomocí distribučního sloupce `site_id`.
 
    > [!NOTE]
-   > Nechte generování dotazu na data spuštění a otevřít druhé připojení psql pro zbývající příkazy v tomto kurzu.
+   > Ponechte dotaz na generování dat spuštěný a otevřete druhé připojení psql pro zbývající příkazy v tomto kurzu.
    >
 
 ## <a name="query"></a>Dotaz
 
-Velkokapacitní možnost hostování umožňuje více uzlů ke zpracování dotazů paralelně pro rychlost. Pro instanci databáze vypočítá agregace, jako jsou součet a počet na pracovní uzly a sloučí výsledky do konečné odpovědí.
+Možnost hostování v rámci škálování umožňuje více uzlům zpracovávat paralelně dotazy pro rychlost. Databáze například vypočítá agregované hodnoty, jako je součet a počet na pracovních uzlech, a zkombinuje výsledky do konečné odpovědi.
 
-Tady je dotaz na počet webových požadavků za minutu společně s pár statistiky.
-Zkuste spustit v psql a sledujte výsledky.
+Tady je dotaz, jak počítat webové žádosti za minutu spolu s několika statistikami.
+Zkuste ho spustit v psql a sledujte výsledky.
 
 ```sql
 SELECT
@@ -151,11 +151,11 @@ ORDER BY minute ASC;
 
 ## <a name="rolling-up-data"></a>Shrnutí dat
 
-Předchozí dotaz funguje v počátečních fázích, ale jeho výkon sníží, přetrénujte jako škálování vašich dat. I přes distribuované zpracování, je rychlejší předem compute dat než přepočítat ho opakovaně.
+Předchozí dotaz funguje v počátečních fázích dobře, ale jeho výkon se sníží, protože se škálují data. I u distribuovaného zpracování je rychlejší vypočítávat data, než je znovu přepočítat.
 
-Jsme zajistit náš řídicí panel zůstane rychlé zahrnutím pravidelně nezpracovaná data do agregační tabulky. Můžete experimentovat s dobou trvání agregace. Jsme použili tabulce agregace za minutu, ale data může rozdělit na 5, 15 nebo 60 minut místo.
+V rámci pravidelného Shrnutí nezpracovaných dat do agregované tabulky můžeme zajistit, aby byl náš řídicí panel stále rychlý. Můžete experimentovat s trváním agregace. Použili jsme tabulku agregace po minutách, ale místo ní můžete data přerušit na 5, 15 nebo 60 minut.
 
-Ke spuštění této souhrnné snadněji, My budeme umístíte do plpgsql funkce. Spusťte následující příkazy psql vytvořit `rollup_http_request` funkce.
+Aby bylo možné tento souhrn snadněji spustit, přidáme ho do plpgsql funkce. Spusťte tyto příkazy v psql a vytvořte funkci `rollup_http_request`.
 
 ```sql
 -- initialize to a time long ago
@@ -190,13 +190,13 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-Pomocí naší funkce v místě spusťte ji chcete-li vrátit data:
+Když je naše funkce na místě, spusťte ji a zaveďte data:
 
 ```sql
 SELECT rollup_http_request();
 ```
 
-A pomocí našich dat ve formě předem agregovat jsme můžete dotazovat v tabulce kumulativní získat stejné sestavy jako předtím. Spuštěním následujícího dotazu:
+A s našimi daty v předem agregované podobě se můžeme dotazovat na souhrnnou tabulku a získat tak stejnou sestavu jako dříve. Spusťte následující dotaz:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,
@@ -205,25 +205,25 @@ SELECT site_id, ingest_time as minute, request_count,
  WHERE ingest_time > date_trunc('minute', now()) - '5 minutes'::interval;
  ```
 
-## <a name="expiring-old-data"></a>U nichž vyprší platnost starých dat
+## <a name="expiring-old-data"></a>Vypršení starých dat
 
-Souhrny urychlit dotazů, ale musíme vyprší původní dat. vyhnete se tak náklady na úložiště bez vazby. Rozhodněte, jak dlouho chcete uchovávat data pro každý členitosti a odstraňte data s prošlou platností pomocí standardní dotazy. V následujícím příkladu jsme se rozhodli zachovat nezpracovaná data za jeden den a po minutách, agregací pro jeden měsíc:
+Souhrny urychlují dotazy, ale pořád potřebujeme vypršet stará data, aby nedocházelo k nevázaným nákladům na úložiště. Určete, jak dlouho chcete uchovat data pro každou členitost, a pomocí standardních dotazů odstraňte data s vypršenou platností. V následujícím příkladu jsme se rozhodli uchovávat nezpracovaná data za jeden den a agregace po minutách po dobu jednoho měsíce:
 
 ```sql
 DELETE FROM http_request WHERE ingest_time < now() - interval '1 day';
 DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 ```
 
-V produkčním prostředí můžete zalomit tyto dotazy ve funkci a volání každou minutu v úlohy cron.
+V produkčním prostředí byste tyto dotazy mohli zabalit do funkce a volat je každou minutu v rámci úlohy cron.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste vytvořili prostředky Azure ve skupině serveru. Pokud jste Neočekáváme, že v budoucnu potřeba tyto prostředky, odstraňte skupinu serveru. Stisknutím klávesy *odstranit* tlačítko *přehled* stránce pro skupinu serverů. Po zobrazení výzvy na místní stránce Potvrďte název serveru skupiny a klikněte na poslední *odstranit* tlačítko.
+V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu serverů. Stiskněte tlačítko *Odstranit* na stránce *Přehled* pro skupinu serverů. Po zobrazení výzvy na místní stránce potvrďte název skupiny serverů a klikněte na tlačítko poslední *Odstranit* .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak zřídit skupinu serverů Hyperškálovatelného (Citus). K němu připojili pomocí nástroje psql, vytvoří schéma a distribuovat data. Jste zjistili, jak dotaz na data i v nezpracované podobě, pravidelně agregovat data dotazovat agregovaných tabulek a stará data vypršení platnosti.
+V tomto kurzu jste zjistili, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data. Seznámili jste se s dotazem na data v nezpracovaném formuláři, pravidelně agreguje tato data, dotazování na agregované tabulky a vypršení platnosti starých dat.
 
-V dalším kroku informace o konceptech hyperškálovatelný systém.
+V dalším kroku se dozvíte o konceptech škálování.
 > [!div class="nextstepaction"]
-> [Typy uzlů Hyperškálováním](https://aka.ms/hyperscale-concepts)
+> [Typy uzlů s měřítkem](https://aka.ms/hyperscale-concepts)

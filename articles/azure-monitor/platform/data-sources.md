@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/23/2019
-ms.openlocfilehash: 7c03c0c649876143eaa75c98fa0c9001f2b24fbd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b93bf4f67c2581b7cac476b83fc130bf344cfa83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932389"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476738"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Zdroje dat monitorování pro Azure Monitor
 Azure Monitor je založený na [běžné platformě dat pro monitorování](data-platform.md) , která zahrnuje [protokoly](data-platform-logs.md) a [metriky](data-platform-metrics.md). Shromažďování dat na této platformě umožňuje analyzovat data z několika prostředků společně pomocí běžné sady nástrojů v Azure Monitor. Data monitorování se můžou posílat i na další místa pro podporu určitých scénářů a některé prostředky můžou zapisovat do jiných umístění, než je budete moct shromažďovat do protokolů nebo metrik.
@@ -180,7 +180,7 @@ Pokud povolíte Application Insights pro aplikaci instalací balíčku instrumen
 |:---|:---|:---|
 | Protokoly služby Azure Monitor | Ukládá data monitorování pro AKS, včetně inventáře, protokolů a událostí. Data metriky se také ukládají v protokolech, aby bylo možné využít její funkci analýzy na portálu. | [Porozumění výkonu clusteru AKS pomocí služby Azure Monitor pro kontejnery](../insights/container-insights-analyze.md) |
 | Azure Monitor metriky | Data metriky se ukládají v databázi metrik pro řízení vizualizace a výstrah. | [Zobrazit metriky kontejneru v Průzkumníkovi metrik](../insights/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
-| Azure Kubernetes Service | Z důvodu téměř reálného času Azure Monitor pro kontejnery prezentují data přímo ze služby Azure Kubernetes v Azure Portal. | [Postup zobrazení protokolů kontejneru v reálném čase pomocí služby Azure Monitor pro kontejnery (verze Preview)](../insights/container-insights-live-logs.md) |
+| Azure Kubernetes Service | Poskytuje přímý přístup k protokolům kontejnerů služby Azure Kubernetes (stdout/stderr), událostem a pod metrikám na portálu. | [Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase](../insights/container-insights-livedata-overview.md) |
 
 ### <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače
 [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) poskytuje přizpůsobené prostředí pro monitorování virtuálních počítačů. Popis dat shromažďovaných službou Azure Monitor pro virtuální počítače je obsažený v části [operační systém (host)](#operating-system-guest) výše.

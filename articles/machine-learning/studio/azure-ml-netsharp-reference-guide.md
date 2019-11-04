@@ -1,7 +1,7 @@
 ---
-title: 'Vytvoření vlastní neuronové sítě pomocí Net #'
-titleSuffix: Azure Machine Learning Studio
-description: 'Průvodce syntaxí pro specifikačnímu jazyku neuronových sítí Net #. Zjistěte, jak vytvářet modely vlastní neuronové sítě v nástroji Azure Machine Learning Studio.'
+title: 'Vytváření vlastních sítí neuronové pomocí sítě #'
+titleSuffix: Azure Machine Learning Studio (classic)
+description: 'Průvodce syntaxí pro jazyk specifikace NET # neuronové Networks Naučte se vytvářet vlastní neuronové síťové modely v Azure Machine Learning Studio (Classic).'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,96 +10,96 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7e7ad51622c3d3c8254755fb1ad24a047d48a58b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751664"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493358"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Příručka k jazyku .NET # neuronové Network Specification pro Azure Machine Learning Studio (Classic)
 
-NET # je jazyk vyvinutý microsoftem, který se používá k definování architektur komplexní neuronové sítě jako hluboké neuronové sítě nebo convolutions libovolného dimenzí. Složité struktury můžete použít ke zlepšení učení na data, jako jsou image, video nebo ve zvukovém souboru.
+NET # je jazyk vyvinutý Microsoftem, který se používá k definování složitých neuronové síťových architektur, jako jsou například hluboké neuronové sítě nebo konvoluce libovolných dimenzí. Složité struktury můžete použít ke zlepšení učení o datech, jako je obrázek, video nebo zvuk.
 
-Architektura specifikace Net # můžete použít v těchto kontextech:
+V těchto kontextech můžete použít specifikaci architektury NET:
 
-+ Všechny moduly neuronových sítí v Microsoft Azure Machine Learning Studio: [Víc tříd Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Two-Class Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), a [regrese Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Funkce neuronových sítí v Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) a [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)jazyka R a [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) pro Python.
-
-
-Tento článek popisuje základní koncepty a syntaxe, které potřebujete pro vývoj vlastní neuronové sítě pomocí Net #:
-
-+ Požadavky na neuronové sítě a tom, jak definovat primární součásti
-+ Syntaxi a klíčových slovech specifikace jazyka Net #
-+ Příklady vlastních neuronových sítí vytvořené pomocí Net #
++ Všechny neuronové síťové moduly v Microsoft Azure Machine Learning Studio (Classic): [neuronové síť s více třídami](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [síť neuronové se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)a [neuronovéová regrese sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Neuronové síťové funkce v Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) a [RxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)pro jazyk R a [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) pro Python.
 
 
+Tento článek popisuje základní koncepty a syntaxi potřebné k vývoji vlastní sítě neuronové pomocí rozhraní NET #:
 
-## <a name="neural-network-basics"></a>Základy neuronové sítě
-
-Struktura neuronové sítě se skládá z uzlů, které jsou uspořádány do vrstev a vážené připojení (nebo hrany) mezi uzly. Připojení se směrové a každé připojení má zdrojový uzel a cílový uzel.
-
-Každá trainable vrstva (skrytý nebo vrstvu výstupu) má jeden nebo více **připojení sady**. Připojení sady se skládá ze zdrojové vrstvy a specifikaci připojení z této zdrojové vrstvy. Všechna připojení v dané sadě sdílet zdrojové a cílové vrstvy. Net # sady připojení se považuje za jako patřící do cílové vrstvy do sady prostředků.
-
-NET # podporuje různé typy připojení sad, které umožňují přizpůsobit vstupy způsob, jak jsou mapovány na skrytými vrstvami a mapovat na výstupy.
-
-Výchozí nebo standardní sada je **úplnou sadu**, ve které je připojeno každý uzel ve vrstvě zdroje na každý uzel v cílové vrstvy.
-
-Kromě toho Net # podporuje následující čtyři typy sad rozšířeného připojení:
-
-+ **Filtrované sady**. Predikát můžete definovat pomocí umístění vrstvy zdrojový a cílový uzel vrstvy. Pokaždé, když predikát je hodnota True, jsou uzly připojeny.
-
-+ **Svazky s využitím konvolučních**. Můžete definovat malé sousedství uzlů ve vrstvě zdroje. Každý uzel v cílové vrstvy je připojen k jedné okolí uzly ve zdrojové vrstvy.
-
-+ **Sdružování sady** a **odpovědi normalizace sady**. Ty jsou podobné konvoluční sad v tom, že uživatel definuje malé sousedství uzly ve zdrojové vrstvy. Rozdíl je, že nejsou trainable váhy okraje v těchto svazcích. Místo toho předdefinované funkce použity na zdrojové hodnoty uzlu k určení hodnoty cílový uzel.
++ Neuronové požadavky na síť a definování primárních součástí
++ Syntaxe a klíčová slova jazyka .NET # Specification
++ Příklady vlastních neuronové sítí vytvořených pomocí příkazu NET #
 
 
-## <a name="supported-customizations"></a>Podporovaná vlastní nastavení
 
-Architektura modely neuronových sítí, které vytvoříte v Azure Machine Learning Studio je možné výrazně přizpůsobit pomocí Net #. Můžete:
+## <a name="neural-network-basics"></a>Základy sítě neuronové
 
-+ Vytvoření skrytými vrstvami a řídí počet uzlů v každé vrstvě.
-+ Zadejte, jak mají být připojené k sobě navzájem vrstvy.
-+ Definujte zvláštní připojení struktury, jako je například convolutions a váhy sdílení svazků.
-+ Zadejte jiný aktivace funkce.
+Struktura sítě neuronové se skládá z uzlů, které jsou uspořádány do vrstev, a váženého počtu připojení (nebo hran) mezi uzly. Připojení jsou směrová a každé připojení má zdrojový uzel a cílový uzel.
 
-Podrobnosti o syntaxi specifikaci jazyka naleznete v tématu [struktura specifikace](#structure-specifications).
+Každá vlakové vrstva (skrytá nebo výstupní vrstva) má minimálně jednu sadu **prostředků připojení**. Svazek připojení se skládá ze zdrojové vrstvy a specifikace připojení z této zdrojové vrstvy. Všechna připojení v dané sadě prostředků sdílejí zdrojové a cílové vrstvy. V části NET # se sada prostředků připojení považuje za patřící do cílové vrstvy sady.
 
-Příklady definice neuronových sítí pro některé běžné strojového učení úloh, od simplexně pro komplexní, najdete v článku [příklady](#examples-of-net-usage).
+NET # podporuje různé druhy připojovacích sad, které umožňují přizpůsobit způsob, jakým jsou vstupy namapovány na skryté vrstvy a namapovány na výstupy.
+
+Výchozí nebo standardní svazek je **Úplná sada**, ve které je každý uzel ve zdrojové vrstvě připojen ke každému uzlu v cílové vrstvě.
+
+NET # navíc podporuje následující čtyři druhy pokročilých sad připojení:
+
++ **Filtrované sady prostředků**. Můžete definovat predikát pomocí umístění uzlu zdrojové vrstvy a cílového uzlu vrstvy. Uzly jsou připojeny vždy, když je predikát true.
+
++ **Konvoluční sady**. Můžete definovat malé okolí uzlů ve zdrojové vrstvě. Každý uzel v cílové vrstvě je připojen k jednomu okolí uzlů ve zdrojové vrstvě.
+
++ Sady **fondů** a **sady normalizace odpovědí**. Jedná se o podobné sady konvoluční v tom, že uživatel definuje malé okolí uzlů ve zdrojové vrstvě. Rozdílem je, že váhy hran v těchto svazekích nejsou vlakem. Místo toho se pro hodnoty zdrojového uzlu použije předdefinovaná funkce k určení hodnoty cílového uzlu.
+
+
+## <a name="supported-customizations"></a>Podporovaná přizpůsobení
+
+Architektura neuronovéch síťových modelů, které vytvoříte v klasické verzi Azure Machine Learning Studio, se dá výrazně přizpůsobit pomocí příkazu NET #. Můžete:
+
++ Vytváření skrytých vrstev a řízení počtu uzlů v jednotlivých vrstvách.
++ Určete, jak mají být vrstvy vzájemně propojeny.
++ Definujte speciální struktury připojení, například konvoluce a sady pro sdílení váhy.
++ Zadejte jiné aktivační funkce.
+
+Podrobnosti o syntaxi jazyka specifikace najdete v tématu [specifikace struktury](#structure-specifications).
+
+Příklady definování neuronové sítí pro některé běžné úkoly strojového učení, od simplex až po komplexní, najdete v tématu [Příklady](#examples-of-net-usage).
 
 ## <a name="general-requirements"></a>Obecné požadavky
 
-+ Musí být právě jeden výstupní vrstvě, aspoň jeden vstupní a nula nebo více skrytými vrstvami.
-+ Každá vrstva má pevný počet uzlů, koncepčně uspořádané v pravoúhlého pole libovolného dimenzí.
-+ Vstupní vrstvy mít žádné parametry přidružené trénovaného a představují místa, kde instance data do sítě.
-+ Trainable vrstev (vrstvy skryté a výstupní) mají přidružené trénovaného parametry, označované jako váhy a tendence.
-+ Zdrojový a cílový uzel musí být v samostatné vrstvy.
-+ Připojení musí být Acyklické; jinými slovy nemůže být řetězec připojení vede zpět na původní zdrojový uzel.
-+ Vrstva výstupu nemůže být zdrojovou vrstvu sady připojení.
++ Musí existovat přesně jedna výstupní vrstva, aspoň jedna vstupní vrstva a nula nebo více skrytých vrstev.
++ Každá vrstva má pevný počet uzlů, který je koncepčně uspořádán v obdélníkovém poli libovolných dimenzí.
++ Vstupní vrstvy neobsahují žádné přidružené parametry, které by představovaly bod, ve kterém data instance vstupují do sítě.
++ Vlakové vrstvy (skryté a výstupní vrstvy) mají přidružené výukové parametry, označované jako váhy a posuny.
++ Zdrojový a cílový uzel musí být v samostatných vrstvách.
++ Připojení musí být acyklického; Jinými slovy, neexistuje žádný řetěz připojení, který vede zpět na počáteční zdrojový uzel.
++ Výstupní vrstva nemůže být zdrojovou vrstvou sady prostředků připojení.
 
-## <a name="structure-specifications"></a>Struktura specifikace
+## <a name="structure-specifications"></a>Specifikace struktury
 
-Specifikace struktura neuronové sítě se skládá ze tří částí: **deklarace konstanty**, **vrstvy deklarace**, **připojení deklarace**. K dispozici je také volitelné **sdílet deklarace** oddílu. Oddíly lze zadat v libovolném pořadí.
+Specifikace struktury sítě neuronové se skládá ze tří částí: **deklarace konstanty**, **deklarace vrstvy**, **deklarace připojení**. K dispozici je také volitelný oddíl **deklarace sdílení** . Oddíly lze zadat v libovolném pořadí.
 
-## <a name="constant-declaration"></a>Deklarace konstanty
+## <a name="constant-declaration"></a>Konstantní deklarace
 
-Deklarace konstanty je volitelný. Poskytuje prostředky k definování hodnot použitých v definici neuronové sítě jinde. Příkaz deklarace se skládá z identifikátoru následovaný rovnítko a hodnota výrazu.
+Deklarace konstanty je volitelná. Poskytuje způsob, jak definovat hodnoty používané jinde v definici sítě neuronové. Příkaz deklarace se skládá z identifikátoru následovaného rovnítkem a výrazem hodnoty.
 
 Například následující příkaz definuje konstantu `x`:
 
 `Const X = 28;`
 
-Pro definování současně dva nebo více konstant, uzavřete názvy identifikátorů a hodnoty ve složených závorkách a oddělte je středníky. Příklad:
+Pro definování dvou nebo více konstant současně vložte názvy identifikátorů a hodnot do složených závorek a oddělte je pomocí středníků. Například:
 
 `Const { X = 28; Y = 4; }`
 
-Pravá strana výrazu přiřazení jednotlivých může být celé číslo, reálné číslo, logickou hodnotu (True nebo False) nebo matematický výraz. Příklad:
+Pravá strana každého výrazu přiřazení může být celé číslo, reálné číslo, logická hodnota (true nebo false) nebo matematický výraz. Například:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Deklarace vrstvy
 
-Je nutná deklarace vrstvy. Definuje velikost a zdrojové vrstvy, včetně sady připojení a atributy. Příkaz deklarace začíná název vrstvy (vstup, skrytá nebo výstupní), za nímž následuje dimenze vrstvy (řazené kolekce členů kladných celých čísel). Příklad:
+Deklarace vrstvy je povinná. Definuje velikost a zdroj vrstvy, včetně jejích sad připojení a atributů. Příkaz deklarace začíná názvem vrstvy (vstup, skrytý nebo výstup) následovaný rozměry vrstvy (řazené kolekce členů s kladnými celými čísly). Například:
 
 ```Net#
 input Data auto;
@@ -107,16 +107,16 @@ hidden Hidden[5,20] from Data all;
 output Result[2] from Hidden all;
 ```
 
-+ Dimenze je počet uzlů ve vrstvě. V tomto příkladu jsou dvě dimenze [5,20], což znamená, že ve vrstvě 100 uzlů.
-+ Vrstvy mohou být deklarovány v libovolném pořadí, s jednou výjimkou: Pokud je definován více než jeden vstupní vrstvy, pořadí, ve kterém jsou deklarovány musí odpovídat pořadí funkcí ve vstupních datech.
++ Součin dimenzí je počet uzlů ve vrstvě. V tomto příkladu existují dvě dimenze [5, 20], což znamená, že ve vrstvě jsou 100 uzly.
++ Vrstvy lze deklarovat v libovolném pořadí s jednou výjimkou: je-li definována více než jedna vstupní vrstva, pořadí, ve kterém jsou deklarovány, musí odpovídat pořadí funkcí ve vstupních datech.
 
-Chcete-li určit počet uzlů ve vrstvě automaticky určit, použijte `auto` – klíčové slovo. `auto` – Klíčové slovo má různé účinky, v závislosti na vrstvě:
+Chcete-li určit, že se má automaticky určit počet uzlů ve vrstvě, použijte klíčové slovo `auto`. Klíčové slovo `auto` má jiné účinky v závislosti na vrstvě:
 
-+ Počet uzlů v deklaraci vstupní vrstvy je mnoho funkcí v vstupní data.
-+ V deklaraci skryté vrstvě počet uzlů, je číslo, které je zadána hodnota parametru pro **počet skrytých uzlů:** .
-+ Počet uzlů v deklaraci výstupu vrstvy je 2 pro klasifikaci dvěma třídami, 1 pro regresní a stejný počet výstupních uzlů pro klasifikace víc tříd.
++ V deklaraci vstupní vrstvy je počet uzlů počtem funkcí ve vstupních datech.
++ V případě skryté deklarace vrstvy je počet uzlů číslo, které je zadáno hodnotou parametru pro **Počet skrytých uzlů**.
++ V deklaraci výstupní vrstvy je počet uzlů 2 pro klasifikaci dvou tříd, 1 pro regresi a roven počtu výstupních uzlů pro klasifikaci s více třídami.
 
-Například následující definice sítě umožňuje všechny vrstvy se automaticky určit velikost:
+Například následující definice sítě umožňuje, aby se automaticky určila velikost všech vrstev:
 
 ```Net#
 input Data auto;
@@ -124,44 +124,44 @@ hidden Hidden auto from Data all;
 output Result auto from Hidden all;
 ```
 
-Vrstva deklaraci trainable vrstvy (vrstvy skrytý nebo výstupní) může volitelně zahrnovat výstup funkci (také nazývané aktivace funkce), kde je použit výchozí **sigmoid** modelů klasifikace a  **Lineární** pro regresní modely. I v případě, že používáte výchozí nastavení, můžete explicitně stavu aktivace funkce, v případě potřeby pro přehlednost.
+Deklarace vrstvy pro vlakovou vrstvu (skryté nebo výstupní vrstvy) může volitelně zahrnovat výstupní funkci (označovanou také jako aktivační funkce), která se standardně **sigmoid** pro klasifikace modelů a **lineární** pro regresní modely. I v případě, že použijete výchozí hodnotu, můžete explicitně uvést funkci aktivace, pokud je to potřeba pro přehlednost.
 
-Jsou podporovány následující funkce výstup:
+Podporují se následující výstupní funkce:
 
 + sigmoid
-+ Lineární
++ lineární
 + softmax
 + rlinear
-+ Čtverec
-+ Sqrt
++ čtvercové
++ SQRT
 + srlinear
-+ Abs
-+ TANH –
++ ABS
++ Tanh –
 + brlinear
 
-Například následující deklarace používá **softmax** funkce:
+Například následující deklarace používá funkci **softmax** :
 
 `output Result [100] softmax from Hidden all;`
 
 ## <a name="connection-declaration"></a>Deklarace připojení
 
-Okamžitě po definování trainable vrstvu, je třeba deklarovat připojení mezi vrstvami, které jste definovali. Deklarace sady připojení začíná klíčovým slovem `from`následovaný název zdrojové vrstvy do sady prostředků a druh sady připojení prostředků k vytvoření.
+Ihned po definování vlakové vrstvy je nutné deklarovat připojení mezi vrstvami, které jste definovali. Deklarace sady prostředků připojení začíná klíčovým slovem `from`následovaný názvem zdrojové vrstvy svazku a druhem sady připojení, která se má vytvořit.
 
-V současné době jsou podporovány pět typů sad připojení:
+V současné době jsou podporovány pět druhů sad připojení:
 
-+ **Úplné** sady uvedeno klíčové slovo `all`
-+ **Filtrovat** svazky označeny klíčovým slovem `where`následovaný výraz predikátu
-+ **Konvoluční** svazky označeny klíčovým slovem `convolve`následovaný konvoluce atributy
-+ **Sdružování** sady označená klíčovými slovy **max. fondu** nebo **znamenat fondu**
-+ **Odpověď normalizace** svazky označeny klíčovým slovem **norm odpovědi**
++ **Úplné** sady, označené klíčovým slovem `all`
++ **Filtrované** sady, označené klíčovým slovem `where`následovaný výrazem predikátu
++ **Konvoluční** sady, které jsou označeny klíčovým slovem `convolve`následovaný atributy konvoluce
++ **Sdružování** svazků, které jsou označeny klíčovým slovem **Maximum** nebo **střední fond**
++ Sady pro **normalizaci odpovědí** označené klíčovým slovem **Response norma**
 
-## <a name="full-bundles"></a>Úplné sady
+## <a name="full-bundles"></a>Úplné sady prostředků
 
-Připojení úplná sada zahrnuje připojení z každého uzlu ve vrstvě zdroje do každého uzlu v cílové vrstvy. Toto je výchozí typ připojení.
+Sada kompletních připojení zahrnuje připojení z každého uzlu zdrojové vrstvy ke každému uzlu v cílové vrstvě. Toto je výchozí typ síťového připojení.
 
-## <a name="filtered-bundles"></a>Filtrované sady
+## <a name="filtered-bundles"></a>Filtrované sady prostředků
 
-Specifikace sady filtrovaném připojení zahrnuje predikátu, vyjádřené syntakticky, velmi podobně jako C# výrazu lambda. Následující příklad definuje dvě filtrované sady:
+Filtrovaná specifikace sady prostředků připojení obsahuje predikát vyjádřený syntakticky, podobně jako výraz C# lambda. Následující příklad definuje dvě filtrované sady prostředků:
 
 ```Net#
 input Pixels [10, 20];
@@ -169,71 +169,71 @@ hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ V predikátu pro `ByRow`, `s` je parametr představující index do obdélníkové pole uzly vstupní vrstvy `Pixels`, a `d` je parametr představující index do pole uzlů ve skryté vrstvě `ByRow`. Typ obou `s` a `d` je řazená kolekce členů celých čísel o délce 2. Koncepčně `s` rozsahy adres přes všechny páry celých čísel s `0 <= s[0] < 10` a `0 <= s[1] < 20`, a `d` rozsahy adres přes všechny páry celých čísel, s `0 <= d[0] < 10` a `0 <= d[1] < 12`.
++ V predikátu pro `ByRow`je `s` parametr reprezentující index do obdélníkového pole uzlů vstupní vrstvy, `Pixels`a `d` je parametr reprezentující index do pole uzlů skryté vrstvy. , `ByRow`. Typ `s` a `d` je řazená kolekce členů s celými čísly s délkou 2. V koncepčním rozsahu `s` rozsahy přes všechny páry celých čísel s `0 <= s[0] < 10` a `0 <= s[1] < 20`a `d` rozsahy přes všechny páry celých čísel, s `0 <= d[0] < 10` a `0 <= d[1] < 12`.
 
-+ Na pravé straně výraz predikátu je podmínkou. V tomto příkladu, pro každou hodnotu `s` a `d` tak, že je podmínka True, je okraj ze zdrojového uzlu vrstvy do cílového uzlu vrstvy. Proto tento výraz filtru znamená, že sada zahrnuje připojení z uzlu definované `s` k uzlu definované `d` ve všech případech, kde je rovna d [0] s [0].
++ Na pravé straně výrazu predikátu existuje podmínka. V tomto příkladu pro každou hodnotu `s` a `d` tak, že podmínka je pravdivá, existuje okraj z uzlu zdrojové vrstvy do cílového uzlu vrstvy. Proto tento výraz filtru označuje, že sada zahrnuje připojení z uzlu definovaného `s` k uzlu definovanému `d` ve všech případech, kde s [0] je rovno d [0].
 
-Volitelně můžete zadat sadu váhy k filtrované sadě. Hodnota **váhy** atribut musí být z hodnoty plovoucího bodu s délkou, která se shoduje s počtem připojení definované sadě řazené kolekce členů. Ve výchozím nastavení generují náhodně váhy.
+Volitelně můžete zadat sadu vah pro filtrovanou sadu. Hodnota atributu **váhy** musí být řazené kolekce členů hodnot s plovoucí desetinnou čárkou s délkou, která odpovídá počtu připojení definovaných v rámci sady. Ve výchozím nastavení se závaží náhodně generují.
 
-Vážené hodnoty jsou seskupené podle index cílového uzlu. To znamená, pokud první cílový uzel je připojen k K zdrojové uzly, první `K` prvky **váhy** vah pro první cílový uzel v pořadí zdrojů rejstřík jsou řazené kolekce členů. To platí i pro zbývající uzly cíl.
+Hodnoty váhy jsou seskupené podle indexu cílového uzlu. To znamená, že pokud je první cílový uzel připojen k uzlům zdrojové uzly, první `K` prvky řazené kolekce členů **jsou váhy pro** první cílový uzel v pořadí zdrojového indexu. Totéž platí pro zbývající cílové uzly.
 
-Je možné zadat přímo jako konstantních hodnot váhu. Například pokud jste se dozvěděli, vah dříve, můžete je zadat jako konstanty, použijte tuto syntaxi:
+Je možné zadat váhy přímo jako konstantní hodnoty. Pokud jste například dříve naučili váhy, můžete je zadat jako konstanty pomocí této syntaxe:
 
 `const Weights_1 = [0.0188045055, 0.130500451, ...]`
 
 ## <a name="convolutional-bundles"></a>Konvoluční sady
 
-Když trénovacích dat má homogenní strukturu, konvoluční připojení se běžně používají k další data mezi důležité funkce. Například obrázek, zvukový nebo video, prostorových nebo dočasné dimenzionalitu lze data poměrně jednotné.
+Pokud jsou školicí data v homogenní struktuře, často se používají připojení konvoluční k učení funkcí vysoké úrovně dat. Například v obrazovém, zvukovém nebo obrazovém datovém zařízení může být prostorová nebo dočasná dimenze poměrně jednotná.
 
-Konvoluční svazky využívat obdélníkové **jádrech** , který se posouvá prostřednictvím dimenze. V podstatě každý jádra definuje sadu váhy použitý v místní sousedství říká **aplikací jádra**. Každá aplikace jádra odpovídá uzlu ve vrstvě zdroj, který se označuje jako **centrálního uzlu**. Váhy jádra jsou sdílena mezi mnoha připojení. Ve svazku konvoluční každý jádra je obdélníková a všechny aplikace jádra mají stejnou velikost.
+Konvoluční sady využívají pravoúhlá **jádra** , která jsou SLID prostřednictvím dimenzí. V podstatě každá jádro definuje sadu vah aplikovaných v místních prostředích, označovaných jako **aplikace jádra**. Každá aplikace jádra odpovídá uzlu ve zdrojové vrstvě, který je označován jako **centrální uzel**. Váhy jádra se sdílejí mezi mnoha připojeními. U konvoluční sady je každé jádro obdélníkové a všechny aplikace jádra mají stejnou velikost.
 
-Konvoluční sady podporují následující atributy:
+Sady konvoluční podporují následující atributy:
 
-**InputShape** definuje dimenzionalitu zdrojová vrstva pro účely této konvoluční sady. Hodnota musí být kladná celá čísla se řazená kolekce členů. Produkt celá čísla musí být roven počtu uzlů ve vrstvě zdroje, ale jinak není nutné tak, aby odpovídaly dimenzionalitu deklarované pro vrstvu zdroj. Délka této řazené kolekce členů se stane **Arita** hodnotu konvoluční sady. Arity obvykle odkazuje na počet argumentů nebo operandy, které můžete využít funkci.
+**InputShape** definuje dimenzionální zdrojovou vrstvu pro účely tohoto balíčku konvoluční. Hodnota musí být řazené kolekce členů kladných celých čísel. Součin celých čísel musí být stejný jako počet uzlů ve zdrojové vrstvě, ale v opačném případě nemusí odpovídat rozměru deklarovanému pro zdrojovou vrstvu. Délka této řazené kolekce členů se bude hodnotou **aritou** pro sadu konvoluční. Typicky Arita odkazuje na počet argumentů nebo operandů, které může funkce provést.
 
-Chcete-li definovat tvar a umístění jader, použijte atributy **KernelShape**, **Stride**, **odsazení**, **LowerPad**a  **UpperPad**:
+Chcete-li definovat tvar a umístění jader, použijte atributy **KernelShape**, **Rozteč**, **odsazení**, **LowerPad**a **UpperPad**:
 
-+ **KernelShape**: (povinné) definuje dimenzionalitu každé jádro, konvoluční sady. Hodnota musí být kladná celá čísla, jehož délka se rovná Arita sady se řazená kolekce členů. Jednotlivé komponenty této řazené kolekce členů nesmí být větší než odpovídající komponenta **InputShape**.
++ **KernelShape**: (povinné) definuje dimenzionální pro každé jádro sady konvoluční. Hodnota musí být řazené kolekce členů kladných celých čísel s délkou, která se rovná aritou sady. Každá součást této řazené kolekce členů nesmí být větší než odpovídající součást **InputShape**.
 
-+ **STRIDE**: (volitelné) definuje posuvného krok velikostí konvoluce (jeden krok velikost pro jednotlivé rozměry), který je vzdálenost mezi centrální uzly. Hodnota musí být typu tuple kladná celá čísla s délkou, která je Arita sady. Jednotlivé komponenty této řazené kolekce členů nesmí být větší než odpovídající komponenta **KernelShape**. Výchozí hodnota je řazená kolekce členů se všemi součástmi rovna jedné.
++ **Rozteč**: (volitelné) definuje velikost klouzavého kroku u konvoluce (jedna velikost kroku pro každou dimenzi), což je vzdálenost mezi centrálními uzly. Hodnota musí být řazené kolekce členů kladných celých čísel s délkou, která je aritou sady. Každá součást této řazené kolekce členů nesmí být větší než odpovídající součást **KernelShape**. Výchozí hodnota je řazená kolekce členů se všemi komponentami, které se rovnají jedné.
 
-+ **Sdílení**: (volitelné) určuje váhu sdílení pro jednotlivé rozměry konvoluce. Hodnota může být jeden logická hodnota nebo logické hodnoty s délkou, která je Arita sady se řazená kolekce členů. Jednu logickou hodnotu rozšířen tak, aby se řazené kolekce členů správnou délku se všemi součástmi rovna zadané hodnotě. Výchozí hodnota je řazená kolekce členů, které obsahuje všechny hodnoty True.
++ **Sdílení**: (volitelné) definuje váhu sdílení pro každou dimenzi konvoluce. Hodnotou může být jedna logická hodnota nebo n-tice logických hodnot s délkou, která je aritou sady. Jedna logická hodnota je rozšířena tak, aby byla řazená kolekce členů se správnou délkou se všemi komponentami, které se rovnají zadané hodnotě. Výchozí hodnota je řazená kolekce členů, která se skládá ze všech hodnot true.
 
-+ **MapCount**: (volitelné) definuje maximální počet funkcí mapuje konvoluční sady. Hodnota může být jeden kladné celé číslo nebo kladných celých čísel s délkou, která je Arita sady řazené kolekce členů. Být správnou délku s rovna zadaná hodnota první součásti řazené kolekce členů je rozšířený hodnotu celá čísla a všechny zbývající součásti rovno jedné. Výchozí hodnota je 1. Total number of funkce mapy je produkt součásti řazené kolekce členů. Řešení celkový počet komponent určuje způsob seskupení hodnoty funkci mapy v cílové uzly.
++ **MapCount**: (nepovinný) definuje počet map funkcí pro sadu prostředků konvoluční. Hodnota může být jedno kladné celé číslo nebo řazená kolekce členů kladných celých čísel s délkou, která je aritou sady. Jedna celočíselná hodnota je rozšířena tak, aby byla řazená kolekce členů správné délky s prvními součástmi rovny zadané hodnotě a všemi zbývajícími součástmi, které se rovnají jedné. Výchozí hodnota je jedna. Celkový počet map funkcí je produktem součástí řazené kolekce členů. Faktoring tohoto celkového čísla napříč komponentami určuje, jak se hodnoty map funkcí seskupují v cílových uzlech.
 
-+ **Váhy**: (volitelné) definuje počáteční váhy k sadě. Hodnota musí být se řazená kolekce členů hodnoty plovoucího bodu s délkou, která je počet jader počet váhy za jádra, jak je definováno dále v tomto článku. Výchozí vah se vygenerují, náhodně.
++ **Závaží**: (volitelné) definuje počáteční váhu sady. Hodnota musí být řazené kolekce členů hodnot s plovoucí desetinnou čárkou s délkou, která představuje počet jader krát počtem vah na jádro, jak je definováno dále v tomto článku. Výchozí tloušťky se generují náhodně.
 
 Existují dvě sady vlastností, které řídí odsazení, vlastnosti, které se vzájemně vylučují:
 
-+ **Odsazení**: (volitelné) určuje, zda by měl bude doplněn vstup pomocí **výchozí odsazení schéma**. Hodnota může být jednu logickou hodnotu, nebo může být logických hodnot s délkou, která je Arita sady řazené kolekce členů.
++ **Odsazení**: (volitelné) určuje, zda má být vstup doplněn pomocí **výchozího schématu odsazení**. Hodnota může být jedna logická hodnota, nebo může být řazená kolekce logických hodnot s délkou, která je aritou sady.
 
-    Jednu logickou hodnotu rozšířen tak, aby se řazené kolekce členů správnou délku se všemi součástmi rovna zadané hodnotě.
+    Jedna logická hodnota je rozšířena tak, aby byla řazená kolekce členů se správnou délkou se všemi komponentami, které se rovnají zadané hodnotě.
 
-    Pokud pro dimenzi hodnotu True, zdroj je logicky, aby bylo vytvořeno v dané dimenzi s buňky s hodnotou nula pro podporu aplikací další jádra tak, aby centrální uzly první a poslední jádrech v dané dimenzi první a poslední uzly v tomto dimenze ve vrstvě zdroje. Díky tomu se počet "fiktivní" uzlů v každém rozměru určit automaticky, podle přesně `(InputShape[d] - 1) / Stride[d] + 1` jádrech do vrstvy vyplněný zdroje.
+    Pokud je hodnota pro dimenzi true, zdroj je logicky doplněn v této dimenzi s nulovými buňkami, aby podporovaly další aplikace jádra, jako je například hlavní uzly první a poslední jádra v této dimenzi, které jsou první a poslední uzel v této dimenzi. dimenze ve zdrojové vrstvě Proto je počet "fiktivních" uzlů v každé dimenzi určen automaticky, aby odpovídaly přesně `(InputShape[d] - 1) / Stride[d] + 1` jádrům do čalouněné zdrojové vrstvy.
 
-    Pokud pro dimenzi hodnotu False, jádrech jsou definovány, tak, aby počet uzlů na každé straně, které jsou ponechány navýšení kapacity je stejné (až rozdíl 1). Výchozí hodnota tohoto atributu je řazená kolekce členů se všemi součástmi rovná na hodnotu False.
+    Je-li hodnota pro dimenzi false, jsou definovány jádro, aby počet uzlů na každé straně, které jsou vycházející z něj, byl stejný (až do rozdílu 1). Výchozí hodnota tohoto atributu je řazená kolekce členů se všemi komponentami, které se rovnají hodnotě false.
 
-+ **UpperPad** a **LowerPad**: (volitelné) zadejte větší kontrolu nad velikost odsazení používat. **Důležité:** Tyto atributy mohou být definované Pokud a pouze tehdy, pokud **odsazení** výše uvedené vlastnosti je ***není*** definované. Hodnoty by měl být celočíselný řazené kolekce členů s, které jsou Arita sady. Když jsou zadané tyto atributy, "fiktivní" uzly se přidají do horní a dolní konce každé dimenze vstupní vrstvy. Počet uzlů, které jsou přidány do horní a dolní zakončení v každém rozměru je určeno **LowerPad**[i] a **UpperPad**[i] v uvedeném pořadí.
++ **UpperPad** a **LowerPad**: (volitelné) poskytují větší kontrolu nad množstvím odsazení, které se má použít. **Důležité informace:** Tyto atributy lze definovat, pokud a pouze v případě, že ***není*** definována vlastnost **odsazení** výše. Hodnoty by měly být celočíselné řazené kolekce členů s délkami, které jsou aritou sady. Při zadání těchto atributů jsou "fiktivní" uzly přidány do dolního a horního konce každé dimenze vstupní vrstvy. Počet uzlů přidaných do dolních a horních konců v každé dimenzi se určuje podle **LowerPad**[i] a **UpperPad**[i] v uvedeném pořadí.
 
-    Pokud chcete mít jistotu, že odpovídají jádrech pouze pro uzly "text real" a "fiktivní" uzlů, musí být splněny následující podmínky:
-  - Jednotlivé komponenty **LowerPad** musí být striktně menší než `KernelShape[d]/2`.
-  - Jednotlivé komponenty **UpperPad** nesmí být větší než `KernelShape[d]/2`.
-  - Výchozí hodnota z těchto atributů je řazená kolekce členů se všemi součástmi rovnat 0.
+    Chcete-li zajistit, že jádra odpovídají pouze skutečným uzlům a nikoli k uzlům "fiktivních", musí být splněny následující podmínky:
+  - Každá součást **LowerPad** musí být výhradně menší než `KernelShape[d]/2`.
+  - Každá součást **UpperPad** nesmí být větší než `KernelShape[d]/2`.
+  - Výchozí hodnota těchto atributů je řazená kolekce členů se všemi komponentami rovnými 0.
 
-    Nastavení **odsazení** = true umožňuje tolik odsazení, jako je třeba zachovat "střed" běžícího uvnitř "real" vstupu. Tím se změní matematické trochu pro výpočty výstupní velikost. Obecně platí, velikost výstupní *D* je vypočítán jako `D = (I - K) / S + 1`, kde `I` vstupní velikost, `K` velikost jádra, `S` je stride, a `/` je dělení celého čísla (zaokrouhluje se směrem k nule. ). Pokud nastavíte UpperPad = [1, 1], vstupní velikost `I` je v podstatě 29 a proto `D = (29 - 5) / 2 + 1 = 13`. Ale když **odsazení** = true, v podstatě `I` získá sadu podle `K - 1`; proto `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Zadáním hodnoty pro **UpperPad** a **LowerPad** získáte mnohem lepší kontrolu nad odsazení než pokud stačí nastavit **odsazení** = true.
+    Nastavení **odsazení** = true umožňuje tolik odsazení, kolik je potřeba k udržení "středu" jádra uvnitř "reálného" vstupu. Tím se v matematickém výpočtu vypočítá bit velikosti výstupu. Obecně je výstupní velikost *D* vypočítána jako `D = (I - K) / S + 1`, kde `I` je vstupní velikost, `K` je velikost jádra, `S` je rozteč a `/` je dělení celého čísla (zaokrouhlení směrem k nule). Pokud nastavíte UpperPad = [1, 1], velikost vstupu `I` je efektivní 29 a tak `D = (29 - 5) / 2 + 1 = 13`. Pokud se ale **výplň** = true, v podstatě `I` získá `K - 1`; Proto `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Zadáním hodnot pro **UpperPad** a **LowerPad** získáte mnohem větší kontrolu nad odsazením, než když pouze nastavíte **odsazení** = true.
 
-Další informace o konvoluční sítě a jejich aplikací najdete v těchto článcích:
+Další informace o sítích konvoluční a jejich aplikacích najdete v těchto článcích:
 
 + [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
 + [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
-## <a name="pooling-bundles"></a>Sdružování sady
+## <a name="pooling-bundles"></a>Sdružování svazků
 
-A **sdružování sady** platí geometrie podobný konvoluční připojení, ale používá předdefinované funkce na zdrojový uzel hodnoty k odvození hodnoty cílový uzel. Tudíž sdružování sady nemáte žádný trainable stav (váhy nebo chyb). Sdružování sady podporují konvoluční atributů s výjimkou **sdílení**, **MapCount**, a **váhy**.
+**Sada fondů** používá geometrii podobnou konvoluční připojení, ale používá předdefinované funkce pro hodnoty zdrojového uzlu k odvození hodnoty cílového uzlu. Fondy proto nesmí obsahovat žádné výukové stavy (váhy nebo posuny). Sdružování svazků podporuje všechny atributy konvoluční s výjimkou **sdílení**, **MapCount**a **vah**.
 
-Obvykle se nepřekrývají jádrech automaticky shrnutý podle sousedních sdružování jednotky. Pokud Stride [d] je rovna KernelShape [d] v každém rozměru, vrstva získali je tradiční místní sdružování vrstvu, která se běžně používané v využitím konvolučních neuronových sítí. Každý cílový uzel vypočítá maximální nebo střední aktivity jeho jádra ve vrstvě zdroje.
+Jádra sumarizovaná sousedními jednotkami sdružování se obvykle nepřekrývají. Pokud je mezera [d] rovna KernelShape [d] v každé dimenzi, je získaná vrstva tradiční místní vrstvou, která je běžně zaměstnaná v sítích konvoluční neuronové. Každý cílový uzel vypočítá maximální nebo průměr aktivity jeho jádra ve zdrojové vrstvě.
 
-Následující příklad ukazuje sdružování sady prostředků:
+Následující příklad znázorňuje skupinu sdružování:
 
 ```Net#
 hidden P1 [5, 12, 12]
@@ -244,43 +244,43 @@ hidden P1 [5, 12, 12]
   }
 ```
 
-+ Arity sady je 3: to znamená, délka řazené kolekce členů `InputShape`, `KernelShape`, a `Stride`.
-+ Počet uzlů ve vrstvě zdroje je `5 * 24 * 24 = 2880`.
-+ Toto je tradiční místní sdružování vrstvy, protože **KernelShape** a **Stride** jsou si rovny.
-+ Počet uzlů v cílové vrstvy je `5 * 12 * 12 = 1440`.
++ Arita sady prostředků je 3: to znamená, že délka řazených kolekcí členů `InputShape`, `KernelShape`a `Stride`.
++ Počet uzlů ve zdrojové vrstvě je `5 * 24 * 24 = 2880`.
++ Jedná se o tradiční vrstvu s místními fondy, protože **KernelShape** a **Rozteč** jsou stejné.
++ Počet uzlů v cílové vrstvě je `5 * 12 * 12 = 1440`.
 
-Další informace o sdružování vrstvy najdete v těchto článcích:
+Další informace o vrstvách sdružování najdete v těchto článcích:
 
-+ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (Části 3.4)
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (oddíl 3,4)
 + [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
 + [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
-## <a name="response-normalization-bundles"></a>Odpověď normalizace sady
+## <a name="response-normalization-bundles"></a>Sady pro normalizaci odpovědí
 
-**Odpověď normalizace** je místní normalizace schéma, které bylo poprvé dostupné ve Geoffrey Hinton nedostupným v knize [ImageNet klasifikace s využitím Konvolučních Neuronových sítí hloubkové](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
+**Normalizace odpovědí** je místní schéma normalizace, které bylo poprvé zavedeno pomocí Geoffrey Hinton, et al, v [klasifikaci papírového ImageNetu s hlubokými konvolučními neuronovémi sítěmi](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
 
-Normalizace odpovědi se používá na podporu Generalizace v neuronových sítí. Když jeden neuron se spouští na aktivaci velmi vysoké úrovni, potlačí vrstvu normalizace místní odpovědi úroveň aktivace okolního neurons. To se provádí pomocí tří parametrů (`α`, `β`, a `k`) a využitím konvolučních strukturu (nebo detekovaná sousední obrazec). Každý neuron v cílové vrstvy **y** odpovídá neuron **x** ve vrstvě zdroje. Úroveň aktivace **y** je dán na následující vzorec, kde `f` je úroveň aktivace neuron, a `Nx` je jádro (nebo sadu, která obsahuje neurons v okolí z **x**), jak jsou definovány následující konvoluční konstrukcí:
+Normalizace odezvy se používá k podpoře generalizace v neuronové sítích. Když se jedna neuron vychází na úrovni vysoké úrovně aktivace, potlačí se úroveň aktivace okolního neurons vrstvy pro normalizaci odezvy. K tomu je potřeba použít tři parametry (`α`, `β`a `k`) a strukturu konvoluční (neboli okolní tvar). Každý neuron v cílové vrstvě **y** odpovídá neuron **x** ve zdrojové vrstvě. Úroveň aktivace **y** je dána následujícím vzorcem, kde `f` je úroveň aktivace neuron a `Nx` je jádro (nebo sada, která obsahuje neurons v okolí **x**), jak je definováno následujícím konvoluční. strukturované
 
-![Vzorec pro konvoluční strukturu](./media/azure-ml-netsharp-reference-guide/formula_large.png)
+![vzorec pro strukturu konvoluční](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
-Odpověď normalizace sady podporují konvoluční atributů s výjimkou **sdílení**, **MapCount**, a **váhy**.
+Normalizované balíčky odezvy podporují všechny atributy konvoluční s výjimkou **sdílení**, **MapCount**a **vah**.
 
-+ Pokud jádro obsahuje neurons v mapě stejnou jako ***x***, schéma normalizace se označuje jako **stejná mapování normalizace**. K definování stejné mapování normalizace, první bod se souřadnicemi v **InputShape** musí mít hodnotu 1.
++ Pokud jádro obsahuje neurons ve stejné mapě jako ***x***, schéma normalizace se označuje jako **normalizace v mapě**. Pro definování stejné normalizace mapování musí mít první souřadnice v **InputShape** hodnotu 1.
 
-+ Pokud jádro obsahuje neurons na stejné pozici prostorových jako ***x***, ale neurons jsou v jiné mapování, se nazývá schéma normalizace **napříč mapuje normalizace**. Tento typ odpovědi normalizace implementuje formu laterální zabránění INSPIROVANÉ v reálné neurons byl nalezen typ vytváření soutěže pro velké objemy aktivace úrovně mezi neuron výstupy vypočítat na různých map. K definování napříč normalizace mapy, první souřadnice musí být celé číslo větší než a větší než počet mapy a zbytek souřadnice musí mít hodnotu 1.
++ Pokud jádro obsahuje neurons ve stejné prostorové pozici jako ***x***, ale neurons jsou v jiných mapách, je schéma normalizace voláno **napříč normalizací map**. Tento typ normalizace odezvy implementuje formu nechte inspirovatho inhibice podle typu nalezeného v reálných neuronsch, což vytváří konkurenci pro úrovně velkých aktivací mezi neuron výstupy vypočítanými v různých mapách. Chcete-li definovat napříč normalizačními mapami, první souřadnice musí být celé číslo větší než jedna a nesmí být větší než počet map a zbytek souřadnic musí mít hodnotu 1.
 
-Protože odpověď normalizace sady použít předdefinované funkce pro zdrojový uzel hodnoty k určení hodnoty cílový uzel, nemají žádný trainable stav (váhy nebo chyb).
+Vzhledem k tomu, že sady pro normalizaci odpovědí používají předdefinované funkce na hodnoty zdrojového uzlu k určení hodnoty cílového uzlu, nemají žádný stav vlaku (váhy nebo posuny).
 
 > [!NOTE]
-> Uzly v cílové vrstvě odpovídají neurons, které jsou centrální uzly jádrech. Například pokud `KernelShape[d]` je liché, pak `KernelShape[d]/2` odpovídá uzel centrální jádra. Pokud `KernelShape[d]` je sudé, do centrálního uzlu se na `KernelShape[d]/2 - 1`. Proto pokud `Padding[d]` NEPRAVDA, první a poslední `KernelShape[d]/2` uzly nemají odpovídající uzly v cílové vrstvy. Chcete-li této situaci vyhnout, definujte **odsazení** jako [true hodnotu true, true,...].
+> Uzly v cílové vrstvě odpovídají neurons, které jsou centrálními uzly jader. Například pokud je `KernelShape[d]` liché, `KernelShape[d]/2` odpovídá centrálnímu uzlu jádra. Pokud je `KernelShape[d]` i, je centrální uzel na `KernelShape[d]/2 - 1`. Proto pokud je `Padding[d]` false, první a poslední `KernelShape[d]/2` uzly nemají odpovídající uzly v cílové vrstvě. Chcete-li se této situaci vyhnout, definujte **odsazení** jako [true, true,..., true].
 
-Kromě čtyři atributy je popsáno výše odpověď normalizace sady podporují také následující atributy:
+Kromě výše uvedených čtyř atributů podporují normalizované sady odpovědí také následující atributy:
 
-+ **Systém Alpha**: (povinné) určuje hodnotu s plovoucí desetinnou čárkou, která odpovídá `α` v předchozí vzorec.
-+ **Beta verze**: (povinné) určuje hodnotu s plovoucí desetinnou čárkou, která odpovídá `β` v předchozí vzorec.
-+ **Posun**: (volitelné) určuje hodnotu s plovoucí desetinnou čárkou, která odpovídá `k` v předchozí vzorec. Je výchozí hodnota je 1.
++ **Alfa**: (povinné) určuje hodnotu s plovoucí desetinnou čárkou, která odpovídá `α` v předchozím vzorci.
++ **Beta**: (povinné) určuje hodnotu s plovoucí desetinnou čárkou, která odpovídá `β` v předchozím vzorci.
++ **Offset**: (volitelné) určuje hodnotu s plovoucí desetinnou čárkou, která odpovídá `k` v předchozím vzorci. Výchozí hodnota je 1.
 
-Následující příklad definuje sady normalizace odpovědi pomocí těchto atributů:
+V následujícím příkladu je definována normalizovaná sada odpovědí pomocí těchto atributů:
 
 ```Net#
 hidden RN1 [5, 10, 10]
@@ -292,13 +292,13 @@ from P1 response norm {
   }
 ```
 
-+ Zdrojová vrstva obsahuje pět mapování, každý s aof dimenze 12 x 12, celkem tedy 1 440 uzly.
-+ Hodnota **KernelShape** označuje, že se jedná o stejné normalizace vrstvu mapy, kde je čtvrti obdélník velikosti 3 × 3.
-+ Výchozí hodnota **odsazení** má hodnotu False, tedy cílové vrstvě má jenom 10 uzlů v každém rozměru. Chcete-li zahrnout jeden uzel v cílové vrstvy, která odpovídá na každý uzel ve zdrojové vrstvy, přidejte odsazení = [true, true, true]; a změnit velikost RN1 [5, 12, 12].
++ Zdrojová vrstva obsahuje pět map, z nichž každý má AOF dimenzi 12x12, součet v 1440 uzlech.
++ Hodnota **KernelShape** značí, že se jedná o stejnou normalizační vrstvu mapy, kde okolí je obdélník 3x3.
++ Výchozí hodnota **odsazení** je false, takže cílová vrstva má v každé dimenzi pouze 10 uzlů. Chcete-li zahrnout jeden uzel do cílové vrstvy, který odpovídá každému uzlu ve zdrojové vrstvě, přidejte odsazení = [true, true, true]; a změňte velikost RN1 na [5, 12, 12].
 
-## <a name="share-declaration"></a>Deklarace sdílené složky
+## <a name="share-declaration"></a>Sdílet deklaraci
 
-NET # podporuje volitelně definování víc sad s sdílené váhy. Váhy jakékoli dvě sady je možné sdílet, pokud jejich struktur jsou stejné. Následující syntaxe definuje sady s sdílené vah:
+NET # volitelně podporuje definování více sad se sdílenými závažími. Váhy všech dvou svazků lze sdílet, pokud jsou jejich struktury stejné. Následující syntaxe definuje sady se sdílenými závažími:
 
 ```Net#
 share-declaration:
@@ -328,7 +328,7 @@ share-declaration:
     identifier
 ```
 
-Například následující deklaraci sdílené složky určuje názvy vrstev, označující, že by měla být sdílena váhy a tendence:
+Například následující deklarace Share-určuje názvy vrstev, což značí, že se mají sdílet jak závaží, tak i bias:
 
 ```Net#
 Const {
@@ -350,11 +350,11 @@ output Result [2] {
 share { H1, H2 } // share both weights and biases
 ```
 
-+ Vstupní funkce jsou rozdělené do dvou rovná velikosti vstupní vrstev.
-+ Skrytými vrstvami pak výpočetních funkcí vyšší úrovně na dva vstupní vrstvy.
-+ Deklaraci sdílenou složku, která určuje *H1* a *H2* musí být vypočítán stejným způsobem z jejich odpovídajících vstupy.
++ Vstupní funkce jsou rozdělené do dvou vstupních vrstev se stejnou velikostí.
++ Skryté vrstvy pak budou funkce vyšší úrovně COMPUTE na dvou vstupních vrstvách.
++ Deklarace Share-určuje, že *H1* a *H2* musí být počítány stejným způsobem než jejich příslušné vstupy.
 
-Můžete také to může být zadaný pomocí dvě samostatné prohlášení sdílené složky následujícím způsobem:
+Případně můžete tuto situaci zadat se dvěma samostatnými deklaracemi Share-, jak je znázorněno níže:
 
 ```Net#
 share { Data1 => H1, Data2 => H2 } // share weights
@@ -362,15 +362,15 @@ share { Data1 => H1, Data2 => H2 } // share weights
     share { 1 => H1, 1 => H2 } // share biases
 ```
 
-Krátký tvar můžete použít pouze v případě, že v jedné sadě obsahovat vrstvy. Obecně platí sdílení je možné jenom v případě relevantní struktura je identická, což znamená, že mají stejnou velikost, stejné konvoluční geometrie a tak dále.
+Můžete použít krátký tvar pouze v případě, že vrstvy obsahují jednu sadu prostředků. Obecně platí, že sdílení je možné pouze v případě, že je příslušná struktura shodná, což znamená, že mají stejnou velikost, stejnou geometrii konvoluční a tak dále.
 
-## <a name="examples-of-net-usage"></a>Příklady použití Net #
+## <a name="examples-of-net-usage"></a>Příklady využití NET #
 
-Tato část obsahuje příklady použití Net # k přidání skrytými vrstvami, definování způsobu, jakým komunikovat s jinými vrstvami skrytými vrstvami a vytvářet konvoluční sítě.
+V této části najdete několik příkladů, jak můžete pomocí rozhraní NET # přidat skryté vrstvy, definovat způsob, jakým budou skryté vrstvy pracovat s jinými vrstvami, a vytvářet konvoluční sítě.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Definujte jednoduchý vlastní neuronové sítě: Příkladu "Hello World"
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Definování jednoduché vlastní neuronové sítě: příklad "Hello World"
 
-Tento jednoduchý příklad ukazuje, jak vytvořit model neuronové sítě, která má jeden skryté vrstvě.
+Tento jednoduchý příklad ukazuje, jak vytvořit model sítě neuronové, který má jednu skrytou vrstvu.
 
 ```Net#
 input Data auto;
@@ -378,15 +378,15 @@ hidden H [200] from Data all;
 output Out [10] sigmoid from H all;
 ```
 
-Příklad ukazuje některé základní příkazy následujícím způsobem:
+Tento příklad znázorňuje některé základní příkazy následujícím způsobem:
 
-+ První řádek definuje vstupní vrstvy (s názvem `Data`). Při použití `auto` – klíčové slovo, neuronové sítě automaticky obsahuje všechny funkce sloupce vstupní příklady.
-+ Druhý řádek vytvoří skryté vrstvě. Název `H` přiřazen skryté vrstvě, který má 200 uzly. Tato vrstva je plně připojení k vrstvě vstupu.
-+ Definuje ve třetím řádku výstupu vrstvy (s názvem `Out`), který obsahuje 10 výstupních uzlů. Pokud neuronové sítě se používá pro klasifikaci, je jeden uzel výstupu na třídě. Klíčové slovo **sigmoid** označuje, že výstup funkce použity na vrstvě výstup.
++ První řádek definuje vstupní vrstvu (s názvem `Data`). Když použijete klíčové slovo `auto`, síť neuronové automaticky zahrne všechny sloupce funkce ve vstupních příkladech.
++ Druhá čára vytvoří skrytou vrstvu. Název `H` je přiřazen ke skryté vrstvě, která má 200 uzlů. Tato vrstva je plně připojená ke vstupní vrstvě.
++ Třetí řádek definuje výstupní vrstvu (s názvem `Out`), která obsahuje 10 výstupních uzlů. Pokud se neuronové síť používá pro klasifikaci, existuje jeden výstupní uzel na jednu třídu. Klíčové slovo **sigmoid** označuje, že funkce Output je použita na výstupní vrstvu.
 
-### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Definování více skrytými vrstvami: příklad počítače pro zpracování obrazu
+### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Definovat více skrytých vrstev: příklad počítačové vize
 
-Následující příklad ukazuje, jak definovat o něco složitější neuronové sítě s více vlastních skrytými vrstvami.
+Následující příklad ukazuje, jak definovat mírně komplexnější neuronové síť s více vlastními skrytými vrstvami.
 
 ```Net#
 // Define the input layers
@@ -412,17 +412,17 @@ from MetaData all;
 }
 ```
 
-Tento příklad ukazuje několik funkcí specifikačnímu jazyku neuronových sítí:
+Tento příklad znázorňuje několik funkcí jazyka specifikace neuronové Networks:
 
-+ Struktura obsahuje dvě vstupní vrstvy, `Pixels` a `MetaData`.
-+ `Pixels` Vrstva je vrstva zdroje pro dvě sady připojení s cílové vrstvy `ByRow` a `ByCol`.
-+ Vrstvy `Gather` a `Result` jsou cílové vrstvy do víc sad připojení.
-+ Vrstvy výstup `Result`, je cílové vrstvy ve dvou sad připojení; jeden s druhou úroveň skryté vrstvě `Gather` jako cílové vrstvy a další vrstvou vstupní `MetaData` jako cílové vrstvy.
-+ Skrytými vrstvami, `ByRow` a `ByCol`, zadejte filtrované připojení pomocí predikátu výrazů. Přesněji řečeno, uzel v `ByRow` na [x, y] je připojený k uzlům v `Pixels` , že máte koordinovat rovna uzel prvního indexu je první souřadnic x. Podobně uzlu v `ByCol` na [x, y] je připojený k uzlům v `Pixels` , že máte druhý index koordinaci v jednom uzlu v druhé souřadnice, y.
++ Struktura má dvě vstupní vrstvy, `Pixels` a `MetaData`.
++ `Pixels` vrstva je zdrojová vrstva pro dvě sady připojení, s cílovými vrstvami, `ByRow` a `ByCol`.
++ Vrstvy `Gather` a `Result` jsou cílové vrstvy ve více sad pro připojení.
++ Výstupní vrstva, `Result`, je cílová vrstva ve dvou připojovacích sadě; druhý na úrovni skryté vrstvy `Gather` jako cílová vrstva a druhá s vstupní vrstvou `MetaData` jako cílovou vrstvou.
++ Skryté vrstvy, `ByRow` a `ByCol`, určují filtrované připojení pomocí výrazů predikátů. Přesněji se uzel v `ByRow` v [x, y] připojí k uzlům v `Pixels`, které mají první souřadnici indexu rovnající se první souřadnici uzlu, x. Podobně uzel v `ByCol` v umístění [x, y] je připojen k uzlům v `Pixels`, které mají druhou souřadnici indexu v rámci jedné souřadnice uzlu, y.
 
-### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>Definování konvoluční sítě pro klasifikace víc tříd: Příklad rozpoznávání číslice
+### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>Definování sítě konvoluční pro třídu klasifikace s více třídami: příklad rozpoznávání číslic
 
-Definice následující síť slouží k rozpoznání čísla a ukazuje některé pokročilé techniky pro přizpůsobení neuronové sítě.
+Definice následující sítě je navržena tak, aby rozpoznala čísla, a znázorňuje některé pokročilé techniky pro přizpůsobení neuronové sítě.
 
 ```Net#
 input Image [29, 29];
@@ -446,20 +446,20 @@ hidden Hid3 [100] from Conv2 all;
 output Digit [10] from Hid3 all;
 ```
 
-+ Struktura má jeden vstupní vrstvu, `Image`.
-+ Klíčové slovo `convolve` označuje, že vrstvy s názvem `Conv1` a `Conv2` jsou konvoluční vrstvy. Každá z těchto vrstev deklarace je následovaný seznamem atributů konvoluce.
-+ Net obsahuje třetí skryté vrstvě `Hid3`, což je plně připojení k druhé skryté vrstvě `Conv2`.
-+ Vrstva výstup `Digit`, je připojený jenom k třetí skryté vrstvě `Hid3`. Klíčové slovo `all` označuje, že výstupní vrstvě plně připojení k `Hid3`.
-+ Arita konvoluce je třetí: délka řazené kolekce členů `InputShape`, `KernelShape`, `Stride`, a `Sharing`.
-+ Počet váhy za jádra je `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Or `26 * 50 = 1300`.
-+ Uzly v každé skryté vrstvě můžete vypočítat následujícím způsobem:
++ Struktura má jednu vstupní vrstvu `Image`.
++ Klíčové slovo `convolve` označuje, že vrstvy s názvem `Conv1` a `Conv2` jsou konvoluční vrstvy. Každá z těchto deklarací vrstev následuje seznam atributů konvoluce.
++ Síť má třetí skrytou vrstvu, `Hid3`, která je plně připojená k druhé skryté vrstvě, `Conv2`.
++ Výstupní vrstva, `Digit`, je připojena pouze k třetí skryté vrstvě, `Hid3`. Klíčové slovo `all` označuje, že výstupní vrstva je plně připojená k `Hid3`.
++ Arita konvoluce je tři: délka řazených kolekcí členů `InputShape`, `KernelShape`, `Stride`a `Sharing`.
++ Počet závaží na jádro je `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Nebo `26 * 50 = 1300`.
++ Uzly v každé z skrytých vrstev můžete vypočítat následujícím způsobem:
 
     `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
-+ Celkový počet uzlů můžete vypočítat pomocí toho deklarované dimenzionalitu vrstvy, [50, 5, 5], následujícím způsobem: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
-+ Protože `Sharing[d]` je pouze pro `d == 0`, počet jader je `MapCount * NodeCount\[0] = 10 * 5 = 50`.
++ Celkový počet uzlů lze vypočítat pomocí deklarované dimenzionální velikosti vrstvy [50, 5, 5] následujícím způsobem: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
++ Vzhledem k tomu, že `Sharing[d]` má hodnotu false pouze pro `d == 0`, je počet jader `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
 ## <a name="acknowledgements"></a>Potvrzení
 
-Jazyka Net # pro přizpůsobení architektura neuronové sítě byla vyvinuta v Microsoftu Shon Katzenberger (architekt, strojové učení) a Alexey Kamenev (softwarový inženýr, Microsoft Research). Se používá interně pro strojové učení, projekty a aplikace, od rozpoznávání obrazu pro analýzu textu. Další informace najdete v tématu [Neuronových sítí v Azure Machine Learning studio – Úvod do jazyka Net #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)
+Jazyk NET # pro přizpůsobení architektury sítí neuronové vyvinula společnost Microsoft o shon Katzenberger (architekt, Machine Learning) a Alexey Kamenev (softwarový inženýr, Microsoft Research). Používá se interně pro projekty strojového učení a aplikace od detekce obrázků až po textovou analýzu. Další informace najdete v tématu [neuronové sítě v Azure Machine Learning Studiu – Úvod do NET #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx) .

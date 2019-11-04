@@ -1,81 +1,72 @@
 ---
-title: Připojte se k virtuálnímu počítači s Linuxem pomocí Azure Bastionu | Dokumentace Microsoftu
-description: V tomto článku se dozvíte, jak připojení pro virtuální počítač s Linuxem pomocí Azure Bastionu.
+title: Připojení k virtuálnímu počítači se systémem Linux pomocí Azure bastionu | Microsoft Docs
+description: V tomto článku se dozvíte, jak se připojit k virtuálnímu počítači se systémem Linux pomocí Azure bastionu.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 69548541d16db95f633400808f72aebaf59cff08
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: b88327ea0b5d2958cc1c86fa317415f2441af894
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477781"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494475"
 ---
-# <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion-preview"></a>Připojení pomocí protokolu SSH pro virtuální počítač s Linuxem pomocí Azure Bastionu (Preview)
+# <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Připojení pomocí protokolu SSH k virtuálnímu počítači se systémem Linux pomocí Azure bastionu
 
-Tento článek vám ukáže, jak chcete snadno a bezpečně do virtuálních počítačů s Linuxem ve službě Azure virtual network přes SSH. K virtuálnímu počítači se můžete připojit přímo z webu Azure Portal. Při použití Azure Bastionu virtuální počítače nevyžadují žádného klienta, agenta ani další software. Další informace o Azure Bastionu, najdete v článku [přehled](bastion-overview.md).
+V tomto článku se dozvíte, jak bezpečně a bezproblémově popracovat s virtuálními počítači Linux ve službě Azure Virtual Network. K virtuálnímu počítači se můžete připojit přímo z webu Azure Portal. Při použití Azure Bastionu virtuální počítače nevyžadují žádného klienta, agenta ani další software. Další informace o Azure bastionu najdete v tématu [Přehled](bastion-overview.md).
 
-Bastionu Azure můžete použít pro připojení k virtuální počítač s Linuxem pomocí protokolu SSH. Uživatelské jméno a heslo a klíčů SSH můžete použít pro ověřování. Můžete připojit k virtuálnímu počítači s klíči SSH pomocí:
+Pomocí služby Azure bastionu se můžete připojit k virtuálnímu počítači se systémem Linux pomocí protokolu SSH. Pro ověřování můžete použít jak uživatelské jméno/heslo, tak klíče SSH. K VIRTUÁLNÍmu počítači se můžete připojit pomocí klíčů SSH pomocí těchto akcí:
 
-* Soukromý klíč, který je zadat ručně
-* Soubor, který obsahuje informace o soukromém klíči
+* Soukromý klíč, který zadáte ručně
+* Soubor, který obsahuje informace o privátním klíči
 
-Privátní klíč SSH musí být ve formátu, který začíná `"-----BEGIN RSA PRIVATE KEY-----"` a končí `"-----END RSA PRIVATE KEY-----"`.
-
-> [!IMPORTANT]
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+Privátní klíč SSH musí být ve formátu, který začíná na `"-----BEGIN RSA PRIVATE KEY-----"` a končí na `"-----END RSA PRIVATE KEY-----"`.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Ujistěte se, že jste nastavili Azure Bastion host pro virtuální síť, ve kterém se tento virtuální počítač nachází. Další informace najdete v tématu [vytvoření Azure Bastion host](bastion-create-host-portal.md). Po Bastionu service je zřízení a nasazení ve virtuální síti, můžete se připojit k všech virtuálních počítačů v této virtuální síti. V této verzi preview použijete-li Bastionu se pokud chcete připojit, předpokládá, že se pomocí protokolu RDP pro připojení k virtuálnímu počítači Windows a SSH pro připojení virtuálních počítačů s Linuxem.
+Ujistěte se, že jste nastavili hostitele Azure bastionu pro virtuální síť, ve které se virtuální počítač nachází. Další informace najdete v tématu [Vytvoření hostitele Azure bastionu](bastion-create-host-portal.md). Jakmile se služba bastionu zřídí a nasadí ve vaší virtuální síti, můžete ji použít pro připojení k libovolnému virtuálnímu počítači v této virtuální síti. Když použijete bastionu k připojení, předpokládá se, že používáte protokol RDP pro připojení k virtuálnímu počítači s Windows, a SSH pro připojení k virtuálním počítačům Linux.
 
-Aby bylo možné navázat připojení, následující role jsou povinné:
+Aby bylo možné vytvořit připojení, jsou vyžadovány následující role:
 
-* Role čtenáře na virtuálním počítači
-* Role čtenáře na síťovou kartu s privátní IP adresa virtuálního počítače
-* Role Čtenář u prostředku Azure Bastionu
+* Role čtenář na virtuálním počítači
+* Role čtecího zařízení na síťové kartě s privátní IP adresou virtuálního počítače
+* Role čtenář v prostředku Azure bastionu
 
-## <a name="username"></a>Připojení: Pomocí uživatelského jména a hesla
+## <a name="username"></a>Připojení: použití uživatelského jména a hesla
 
+1.   Otevřete web [Azure Portal](https://portal.azure.com). Přejděte k virtuálnímu počítači, ke kterému se chcete připojit, a pak klikněte na **připojit**. Virtuální počítač by měl být virtuálním počítačem Linux při použití připojení SSH.
+1. Po kliknutí na připojit se zobrazí boční panel se třemi kartami – RDP, SSH a bastionu. Pokud byl pro virtuální síť zřízen bastionu, karta bastionu je ve výchozím nastavení aktivní. Pokud jste nezřídili bastionu pro virtuální síť, přečtěte si téma [Konfigurace bastionu](bastion-create-host-portal.md).
 
-1.  Použití [tento odkaz](https://aka.ms/BastionHost) otevřete stránku portálu ve verzi preview pro Azure Bastionu. Přejděte k virtuálnímu počítači, který chcete připojit k a potom klikněte na tlačítko **připojit**. Virtuální počítač by měl být virtuální počítač s Linuxem pomocí připojení SSH.
-1. Po kliknutí na Connect, zobrazí se bočním panelu, která obsahuje tři karty – protokol RDP, SSH a Bastionu. Pokud Bastionu byla zřízena pro virtuální síť, je ve výchozím nastavení aktivní kartě Bastionu. Pokud Bastionu nepovedlo zřídit virtuální sítě, přečtěte si téma [nakonfigurovat Bastionu](bastion-create-host-portal.md). Pokud nevidíte **Bastionu** uvedené, nebyly otevřít na portálu preview. Otevřít na portálu pomocí [tento odkaz](https://aka.ms/BastionHost).
-
-      ![Připojení virtuálního počítače](./media/bastion-connect-vm-ssh/bastion.png)
-
+   ![Připojení k virtuálnímu počítači](./media/bastion-connect-vm-ssh/bastion.png)
 1. Zadejte uživatelské jméno a heslo pro SSH k virtuálnímu počítači.
-1. Klikněte na tlačítko **připojit** tlačítko po zadání klíče.
+1. Po zadání klíče klikněte na tlačítko **připojit** .
 
-## <a name="privatekey"></a>Připojení: Ručně zadejte privátní klíč
+## <a name="privatekey"></a>Connect: Ruční zadání privátního klíče
 
-1.  Použití [tento odkaz](https://aka.ms/BastionHost) otevřete stránku portálu ve verzi preview pro Azure Bastionu. Přejděte k virtuálnímu počítači, který chcete připojit k a potom klikněte na tlačítko **připojit**. Virtuální počítač by měl být virtuální počítač s Linuxem pomocí připojení SSH.
-1. Po kliknutí na Connect, zobrazí se bočním panelu, která obsahuje tři karty – protokol RDP, SSH a Bastionu. Pokud Bastionu byla zřízena pro virtuální síť, je ve výchozím nastavení aktivní kartě Bastionu. Pokud Bastionu nepovedlo zřídit virtuální sítě, přečtěte si téma [nakonfigurovat Bastionu](bastion-create-host-portal.md). Pokud nevidíte **Bastionu** uvedené, nebyly otevřít na portálu preview. Otevřít na portálu pomocí [tento odkaz](https://aka.ms/BastionHost).
+1. Otevřete web [Azure Portal](https://portal.azure.com). Přejděte k virtuálnímu počítači, ke kterému se chcete připojit, a pak klikněte na **připojit**. Virtuální počítač by měl být virtuálním počítačem Linux při použití připojení SSH.
+1. Po kliknutí na připojit se zobrazí boční panel se třemi kartami – RDP, SSH a bastionu. Pokud byl pro virtuální síť zřízen bastionu, karta bastionu je ve výchozím nastavení aktivní. Pokud jste nezřídili bastionu pro virtuální síť, přečtěte si téma [Konfigurace bastionu](bastion-create-host-portal.md).
 
-      ![Připojení virtuálního počítače](./media/bastion-connect-vm-ssh/bastion.png)
-
+   ![Připojení k virtuálnímu počítači](./media/bastion-connect-vm-ssh/bastion.png)
 1. Zadejte uživatelské jméno a vyberte **privátní klíč SSH**.
-1. Do textového pole zadejte váš privátní klíč **privátní klíč SSH** (nebo ji vložíte přímo).
-1. Klikněte na tlačítko **připojit** tlačítko po zadání klíče.
+1. Zadejte privátní klíč do textové oblasti **SSH privátního klíče** (nebo ho vložte přímo).
+1. Po zadání klíče klikněte na tlačítko **připojit** .
 
-## <a name="ssh"></a>Připojení: Pomocí souboru privátního klíče
+## <a name="ssh"></a>Připojit: použití souboru privátního klíče
 
-1.  Použití [tento odkaz](https://aka.ms/BastionHost) otevřete stránku portálu ve verzi preview pro Azure Bastionu. Přejděte k virtuálnímu počítači, který chcete připojit k a potom klikněte na tlačítko **připojit**. Virtuální počítač by měl být virtuální počítač s Linuxem pomocí připojení SSH.
+1. Otevřete web [Azure Portal](https://portal.azure.com). Přejděte k virtuálnímu počítači, ke kterému se chcete připojit, a pak klikněte na **připojit**. Virtuální počítač by měl být virtuálním počítačem Linux při použití připojení SSH.
 
-    ![Připojení virtuálního počítače](./media/bastion-connect-vm-ssh/connect.png)
+   ![Připojení k virtuálnímu počítači](./media/bastion-connect-vm-ssh/connect.png)
+1. Po kliknutí na připojit se zobrazí boční panel se třemi kartami – RDP, SSH a bastionu. Pokud byl pro virtuální síť zřízen bastionu, karta bastionu je ve výchozím nastavení aktivní. Pokud jste nezřídili bastionu pro virtuální síť, přečtěte si téma [Konfigurace bastionu](bastion-create-host-portal.md).
 
-1. Po kliknutí na Connect, zobrazí se bočním panelu, která obsahuje tři karty – protokol RDP, SSH a Bastionu. Pokud Bastionu byla zřízena pro virtuální síť, je ve výchozím nastavení aktivní kartě Bastionu. Pokud Bastionu nepovedlo zřídit virtuální sítě, přečtěte si téma [nakonfigurovat Bastionu](bastion-create-host-portal.md). Pokud nevidíte **Bastionu** uvedené, nebyly otevřít na portálu preview. Otevřít na portálu pomocí [tento odkaz](https://aka.ms/BastionHost).
-
-    ![Připojení virtuálního počítače](./media/bastion-connect-vm-ssh/bastion.png)
-
+   ![Připojení k virtuálnímu počítači](./media/bastion-connect-vm-ssh/bastion.png)
 1. Zadejte uživatelské jméno a vyberte **privátní klíč SSH z místního souboru**.
-1. Klikněte na tlačítko **Procházet** tlačítko (ikona složky v místním souboru).
-1. Vyhledat soubor a potom klikněte na **otevřít**.
-1. Klikněte na tlačítko **připojit** pro připojení k virtuálnímu počítači. Po kliknutí na Connect, přístup k tomuto virtuálnímu počítači přes SSH přímo otevře na portálu Azure portal. Toto připojení není v HTML5 pomocí portu 443 na Bastionu služby přes privátní IP adresa vašeho virtuálního počítače.
+1. Klikněte na tlačítko **Procházet** (ikona složky v místním souboru).
+1. Vyhledejte soubor a pak klikněte na **otevřít**.
+1. Kliknutím na **připojit** se připojte k virtuálnímu počítači. Po kliknutí na připojit se SSH k tomuto virtuálnímu počítači přímo otevře v Azure Portal. Toto připojení je přes HTML5 pomocí portu 443 ve službě bastionu přes soukromou IP adresu vašeho virtuálního počítače.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Přečtěte si [Bastionu – nejčastější dotazy](bastion-faq.md)
+Přečtěte si [Nejčastější dotazy k bastionu](bastion-faq.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: aplikace Scala Maven pro Spark s IntelliJ – Azure HDInsight'
+title: 'Kurz: Scala Maven App for Spark & IntelliJ – Azure HDInsight'
 description: Kurz – vytvoření aplikace Spark napsané v Scala s Apache Maven jako systém sestavení a stávající Maven Archetype pro Scala poskytované IntelliJ NÁPADem.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 667590120bba4676cbedf3d3bb2ff08e31656e1d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 156892a4785bf1644d29b82e98c3b2ae202c5a49
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71147022"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494698"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace Scala Maven pro Apache Spark v HDInsight pomocí IntelliJ
 
@@ -78,7 +78,7 @@ K instalaci modulu plug-in Scala proveďte následující kroky:
   	|  Vlastnost   | Popis   |  
   	| ----- | ----- |  
   	|Název projektu| Zadejte název.|  
-  	|Projekt @ no__t-0location| Zadejte požadované umístění pro uložení projektu.|
+  	|Umístění projektu&nbsp;| Zadejte požadované umístění pro uložení projektu.|
   	|Projektový SDK| Tato akce bude při prvním používání NÁPADu prázdná.  Vyberte **Nový...** a přejděte k JDK.|
   	|Verze Sparku|Průvodce vytvořením integruje správnou verzi sady Spark SDK a Scala SDK. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x**. V tomto příkladu se používá **Spark 2.3.0 (Scala 2.11.8)** .|
 
@@ -220,7 +220,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste
 
 1. Vyberte **Odstranit**. Vyberte **Ano**.
 
-![Portál HDInsight Azure odstranění clusteru](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "Odstranit cluster HDInsight")
+![Portál Azure na webu HDInsight – odstranění clusteru](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "Odstranit cluster HDInsight")
 
 ## <a name="next-step"></a>Další krok
 

@@ -1,7 +1,7 @@
 ---
 title: 'Více třídou rozhodovacího stromu s zvýšením úrovně: Reference k modulu'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul více tříd pro rozhodovací strom s více třídami ve službě Azure Machine Learning k vytvoření klasifikátoru pomocí popisků dat.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul více tříd pro rozhodovací strom s více třídami v Azure Machine Learning k vytvoření klasifikátoru pomocí popisků dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/22/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 09d2a637099bae414400f49bb89efc5b6652f150
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b53e504e98cab34fdc50ee8715ec162c910dd40d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692823"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465982"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Posílený rozhodovací strom s několika třídami
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vytvořit model strojového učení, který je založený na algoritmu zesílených rozhodovacích stromů.
 
@@ -61,4 +61,4 @@ Tento typ modelu můžete vyškolit pomocí [modelu vlakové soupravy](././train
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

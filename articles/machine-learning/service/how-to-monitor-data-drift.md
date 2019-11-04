@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
-ms.date: 09/13/2019
-ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 11/04/2019
+ms.openlocfilehash: 536f3ab506dcbe2b8997f2c1870f25244b6c070f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123270"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489682"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak monitorovat posun dat mezi školicí datovou sadou a odvozenými daty nasazeného modelu. V kontextu strojového učení můžou školicí modely strojového učení mít vliv na snížení výkonu předpovědi z důvodu snížení úrovně. Pomocí Azure Machine Learning můžete monitorovat posun dat a služba vám může při zjištění posunu odeslat e-mailovou výstrahu.
 
@@ -40,9 +41,9 @@ Pomocí Azure Machine Learning můžete sledovat vstupy modelu nasazeného na AK
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Jak se monitoruje posun dat v Azure Machine Learning
 
-Pomocí Azure Machine Learning jsou data unášená pomocí datových sad nebo nasazení. Chcete-li monitorovat pro posun dat, je určena datová sada, která je obvykle datovou sadou pro model. Druhá datová sada – obvykle modelují vstupní data shromážděná z nasazení – jsou testována proti základní datové sadě. Obě datové sady jsou profilované a vstupní služba pro sledování datového posunu dat. Model strojového učení je vyškolen k detekci rozdílů mezi dvěma datovými sadami. Výkon modelu se převede na koeficient posunu, který měří velikost posunu mezi dvěma datovými sadami. Pomocí [Interpretace modelu](machine-learning-interpretability-explainability.md)jsou vypočítány funkce, které přispívají k součiniteli posunu. Z profilu datové sady jsou sledovány statistické informace o jednotlivých funkcích. 
+Pomocí Azure Machine Learning jsou data unášená pomocí datových sad nebo nasazení. Chcete-li monitorovat pro posun dat, je určena datová sada, která je obvykle datovou sadou pro model. Druhá datová sada – obvykle modelují vstupní data shromážděná z nasazení – jsou testována proti základní datové sadě. Obě datové sady jsou profilované a vstupní služba pro sledování datového posunu dat. Model strojového učení je vyškolen k detekci rozdílů mezi dvěma datovými sadami. Výkon modelu se převede na koeficient posunu, který měří velikost posunu mezi dvěma datovými sadami. Pomocí [Interpretace modelu](how-to-machine-learning-interpretability.md)jsou vypočítány funkce, které přispívají k součiniteli posunu. Z profilu datové sady jsou sledovány statistické informace o jednotlivých funkcích. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ho ještě nemáte, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -58,12 +59,12 @@ Pomocí Azure Machine Learning jsou data unášená pomocí datových sad nebo n
 - Nainstalujte sadu SDK pro přenos dat pomocí následujícího příkazu:
 
     ```shell
-    pip install azureml-contrib-datadrift
+    pip install azureml-datadrift
     ```
 
 - Vytvořte [datovou sadu](how-to-create-register-datasets.md) z školicích dat vašeho modelu.
 
-- Určete datovou sadu školení při [registraci](concept-model-management-and-deployment.md) modelu. Následující příklad ukazuje použití `datasets` parametru pro určení datové sady školení:
+- Určete datovou sadu školení při [registraci](concept-model-management-and-deployment.md) modelu. Následující příklad ukazuje použití parametru `datasets` k určení datové sady školení:
 
     ```python
     model = Model.register(model_path=model_file,
@@ -74,17 +75,17 @@ Pomocí Azure Machine Learning jsou data unášená pomocí datových sad nebo n
     print(model_name, image_name, service_name, model)
     ```
 
-- [Povolte shromažďování dat modelu](how-to-enable-data-collection.md) pro shromažďování dat z nasazení modelu AKS a ověřte, že se data shromažďují v `modeldata` kontejneru objektů BLOB.
+- [Povolte shromažďování dat modelu](how-to-enable-data-collection.md) pro shromažďování dat z nasazení modelu AKS a potvrďte shromažďování dat v `modeldata` kontejneru objektů BLOB.
 
 ## <a name="configure-data-drift"></a>Konfigurace posunu dat
 Pokud chcete pro svůj experiment nakonfigurovat posun dat, importujte závislosti, jak je vidět v následujícím příkladu Pythonu. 
 
-Tento příklad ukazuje konfiguraci [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) objektu:
+Tento příklad ukazuje, jak nakonfigurovat objekt [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) :
 
 ```python
 # Import Azure ML packages
 from azureml.core import Experiment, Run, RunDetails
-from azureml.contrib.datadrift import DataDriftDetector, AlertConfiguration
+from azureml.datadrift import DataDriftDetector, AlertConfiguration
 
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
@@ -97,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>Odeslání DataDriftDetector spuštění
 
-S nakonfigurovaným objektem můžete odeslat [Posun dat spuštěný](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) v daném datu pro model. `DataDriftDetector` V rámci spuštění povolte výstrahy DataDriftDetector nastavením `drift_threshold` parametru. Pokud je [datadrift_coefficient](#metrics) nad daným `drift_threshold`, pošle se e-mail.
+S nakonfigurovaným objektem `DataDriftDetector` můžete odeslat [Posun dat spuštěný](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) v daném datu pro daný model. V rámci spuštění povolte výstrahy DataDriftDetector nastavením parametru `drift_threshold`. Pokud je [datadrift_coefficient](#metrics) nad daným `drift_threshold`, pošle se e-mail.
 
 ```python
 # adhoc run today
@@ -131,9 +132,9 @@ datadrift_contribution|Důležitost funkcí, které přispívají k posunu.|
 
 Existují různé způsoby, jak zobrazit metriky pro posun:
 
-* Použijte widget [Jupyter.](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
-* Funkci použijte u libovolného `datadrift` objektu run. [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)
-* Podívejte se na metriky v části **modely** na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com).
+* Použijte [pomůcku `RunDetails`Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
+* Použijte funkci [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) u libovolného objektu `datadrift` spuštění.
+* Metriky najdete v části **modely** v pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com).
 
 Následující příklad Pythonu ukazuje, jak vykreslovat relevantní metriky pro posun dat. Pomocí vrácené metriky můžete vytvářet vlastní vizualizace:
 
@@ -151,22 +152,22 @@ drift_figures = datadrift.show(with_details=True)
 
 ## <a name="schedule-data-drift-scans"></a>Plánování posunu dat 
 
-Když povolíte detekci posunu dat, DataDriftDetector se spustí podle zadané plánované frekvence. Pokud datadrift_coefficient dosáhne daného `drift_threshold`přenosu, pošle se při každém plánovaném spuštění e-mail. 
+Když povolíte detekci posunu dat, DataDriftDetector se spustí podle zadané plánované frekvence. Pokud datadrift_coefficient dosáhne daného `drift_threshold`, pošle se při každém plánovaném spuštění e-mail. 
 
 ```python
 datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Konfigurace detektoru pro přenos dat se může zobrazit v části **modely** na kartě **Podrobnosti** na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com).
+Konfigurace detektoru pro přenos dat se dá zobrazit v části **modely** na kartě **Podrobnosti** ve vašem pracovním prostoru na [Azure Machine Learning Studiu](https://ml.azure.com).
 
-![Azure Portal posun dat](media/how-to-monitor-data-drift/drift-config.png)
+![Posun dat Azure Machine Learning studia](media/how-to-monitor-data-drift/drift-config.png)
 
-## <a name="view-results-in-your-workspace-landing-page"></a>Zobrazit výsledky na úvodní stránce pracovního prostoru
+## <a name="view-results-in-your-azure-machine-learning-studio"></a>Zobrazení výsledků v Azure Machine Learning Studiu
 
-Pokud chcete zobrazit výsledky v pracovním prostoru na [úvodní stránce pracovního prostoru (Preview)](https://ml.azure.com), přejděte na stránku modelu. Na kartě Podrobnosti modelu se zobrazí konfigurace posunování dat. Teď je dostupná karta pro **Posun dat** , která vizualizuje metriky posunu dat. 
+Pokud chcete zobrazit výsledky v pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com), přejděte na stránku modelu. Na kartě Podrobnosti modelu se zobrazí konfigurace posunování dat. Teď je dostupná karta pro **Posun dat** , která vizualizuje metriky posunu dat. 
 
-[![Posun dat na úvodní stránce pracovního prostoru](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
+[Posun dat ![Azure Machine Learning Studio](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 
 
 ## <a name="receiving-drift-alerts"></a>Přijímání upozornění na posun

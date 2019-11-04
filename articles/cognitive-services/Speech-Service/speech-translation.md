@@ -1,7 +1,7 @@
 ---
 title: Překlad řeči pomocí služby Speech
 titleSuffix: Azure Cognitive Services
-description: Služba Speech umožňuje přidat do aplikací, nástrojů a zařízení komplexní překlady řeči v reálném čase na více jazyků. Stejného rozhraní API můžete použít pro překlad řeči řeči a rozpoznávání řeči na text.
+description: Služba Speech umožňuje přidat do aplikací, nástrojů a zařízení komplexní překlady řeči v reálném čase na více jazyků. Stejné rozhraní API je možné použít pro překlad řeči i převod řeči na text.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cfcefd0b18831163324519b61dbea305f90f44bc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 17ad32cba18915bf7f83163cd876686d42323750
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552648"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468758"
 ---
 # <a name="what-is-speech-translation"></a>Co je překlad řeči?
 
@@ -23,13 +23,13 @@ Překlad řeči z Azure Speech Services umožňuje v reálném čase využívat 
 
 Překladatelské modul společnosti Microsoft používá dva různé přístupy: statistická strojové překlady (SMT) a neuronové Machine Translation (NMT). SMT používá pokročilou statistickou analýzu k odhadu nejlepší možné překlady s ohledem na kontext několika slov. Pomocí NMT se sítě neuronové používají k zajištění přesnější a přirozeného akustického překladu pomocí úplného kontextu vět k překladu slov.
 
-Dnes Microsoft používá NMT k překladu do nejoblíbenějších jazyků. Všechny [jazyky dostupné pro překlad řeči speech](language-support.md#speech-translation) NMT využívají. Překlad řeči na text pomocí SMT nebo NMT v závislosti na pár jazyka. Pokud je cílový jazyk podporován nástrojem NMT, úplný překlad je NMT. Pokud NMT cílový jazyk nepodporuje, je překlad hybridem NMT a SMT, a to pomocí angličtiny jako "Pivot" mezi dvěma jazyky.
+Dnes Microsoft používá NMT k překladu do nejoblíbenějších jazyků. Všechny [jazyky, které jsou k dispozici pro překlad řeči na řeč](language-support.md#speech-translation) , jsou napájeny pomocí NMT. Překlad řeči na text může v závislosti na páru jazyků používat SMT nebo NMT. Pokud je cílový jazyk podporován nástrojem NMT, úplný překlad je NMT. Pokud NMT cílový jazyk nepodporuje, je překlad hybridem NMT a SMT, a to pomocí angličtiny jako "Pivot" mezi dvěma jazyky.
 
 ## <a name="core-features"></a>Základní funkce
 
 Tady jsou funkce, které jsou k dispozici prostřednictvím sady Speech SDK a rozhraní REST API:
 
-| Případ použití | Sada SDK | REST |
+| Případ použití | SDK | REST |
 |----------|-----|------|
 | Překlad řeči na text s výsledky rozpoznávání. | Ano | Ne |
 | Překlad řeči na řeč. | Ano | Ne |
@@ -39,13 +39,13 @@ Tady jsou funkce, které jsou k dispozici prostřednictvím sady Speech SDK a ro
 
 Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut. Tato tabulka obsahuje seznam rychlých startů překladu řeči uspořádaných podle jazyka.
 
-| Rychlý start | Platforma | API – referenční informace |
+| Rychlý start | Platforma | Referenční materiály k rozhraním API |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-translate-speech-dotnetcore-windows.md) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](quickstart-translate-speech-dotnetframework-windows.md) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](quickstart-translate-speech-uwp.md) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| [C++](quickstart-translate-speech-cpp-windows.md) | Windows | [Procházet](https://aka.ms/csspeech/cppref)|
-| [Java](quickstart-translate-speech-java-jre.md) | Windows, Linux, macOS | [Procházet](https://aka.ms/csspeech/javaref) |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
+| [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Hlíží](https://aka.ms/csspeech/cppref)|
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Hlíží](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Ukázka kódu
 
@@ -53,7 +53,7 @@ Vzorový kód pro sadu Speech SDK je k dispozici na GitHubu. Tyto ukázky se tý
 
 * [Ukázky pro převod řeči na text a překlady (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 
-## <a name="migration-guides"></a>Příručky k migraci
+## <a name="migration-guides"></a>Průvodci migrací
 
 Pokud vaše aplikace, nástroje nebo produkty používají [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview), vytvořili jsme příručky, které vám pomůžou s migrací na služby pro rozpoznávání řeči.
 
@@ -64,8 +64,8 @@ Pokud vaše aplikace, nástroje nebo produkty používají [Translator Speech AP
 * [Speech SDK](speech-sdk-reference.md)
 * [Sada Speech Devices SDK](speech-devices-sdk.md)
 * [REST API: Převod řeči na text](rest-speech-to-text.md)
-* [REST API: Převod textu na řeč](rest-text-to-speech.md)
-* [REST API: Přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
+* [REST API: převod textu na řeč](rest-text-to-speech.md)
+* [REST API: přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Další kroky
 

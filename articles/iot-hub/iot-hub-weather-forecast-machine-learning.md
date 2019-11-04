@@ -1,154 +1,154 @@
 ---
-title: Předpověď počasí s využitím Azure Machine Learning s daty ze služby IoT Hub | Dokumentace Microsoftu
-description: Použití Azure Machine Learning k predikci pravděpodobnost deště podle služby IoT hub se shromažďuje ze senzoru teploty a vlhkosti data.
+title: Předpověď počasí s využitím Azure Machine Learning s daty z IoT Hub | Microsoft Docs
+description: Použijte Azure Machine Learning pro předpověď pravděpodobnosti deště na základě dat o teplotě a vlhkosti, které vaše centrum IoT shromažďuje ze senzoru.
 author: robinsh
 manager: philmea
-keywords: předpověď počasí strojového učení
+keywords: Předpověď počasí do strojového učení
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: ffc2e5fb588ce6861f5df6cefdf810c1a015c043
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7b71a6aa17e8eeae55fd6c8c6e9a5aa9e0ce524
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61440933"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498891"
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Předpověď počasí s využitím dat snímačů ze služby IoT hub ve službě Azure Machine Learning
+# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Předpověď počasí pomocí dat ze senzorů ze služby IoT Hub v Azure Machine Learning
 
-![Diagram začátku do konce](media/iot-hub-get-started-e2e-diagram/6.png)
+![Komplexní diagram](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-Strojové učení je technika datové vědy, které umožňuje počítačům učit se z existujících dat předpovídá budoucí chování, výsledky a trendy. Azure Machine Learning je cloudová služba pro prediktivní analýzu, která umožňuje rychle vytvářet a nasazovat prediktivní modely jako analytická řešení.
+Machine Learning je technika datové vědy, která pomáhá počítačům učit se z existujících dat a předpovídat budoucí chování, výsledky a trendy. Azure Machine Learning je cloudová služba pro prediktivní analýzu, která umožňuje rychle vytvářet a nasazovat prediktivní modely jako analytická řešení.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-Zjistíte, jak pomocí Azure Machine Learning (pravděpodobnost deště) předpovědi počasí pomocí teploty a vlhkosti dat ze služby Azure IoT hub. Pravděpodobnost deště je výstup modelu předpovědi počasí připravený. Model je postavený na základě historických dat předpovídá pravděpodobnost deště na základě teploty a vlhkosti.
+Naučíte se, jak pomocí Azure Machine Learning provádět předpověď počasí s využitím dat o teplotě a vlhkosti ve službě Azure IoT Hub. Šance na deště je výstupem připraveného modelu předpovědi počasí. Model je vytvořen na základě historických dat, aby se mohla odhadnout pravděpodobnost srážky na základě teploty a vlhkosti.
 
-## <a name="what-you-do"></a>Co můžete dělat
+## <a name="what-you-do"></a>Co dělat
 
-- Nasazení modelu předpovědi počasí jako webovou službu.
-- Připravte se službu IoT hub pro přístup k datům tak, že přidáte skupinu příjemců.
-- Vytvoření úlohy Stream Analytics a konfigurovat úlohy:
-  - Číst teploty a vlhkosti data ze služby IoT hub.
-  - Volání webové služby, chcete-li získat pravděpodobnost deště.
-  - Uložte výsledek do služby Azure blob storage.
-- Zobrazíte předpověď počasí pomocí Průzkumníka služby Microsoft Azure Storage.
+- Nasaďte model předpovědi počasí jako webovou službu.
+- Přidejte skupinu příjemců a připravte si tak přístup k datům do služby IoT Hub.
+- Vytvořte úlohu Stream Analytics a nakonfigurujte úlohu na:
+  - Načte data o teplotě a vlhkosti ze služby IoT Hub.
+  - Zavolejte webovou službu, abyste získali možnost deště.
+  - Výsledek uložte do úložiště objektů BLOB v Azure.
+- K zobrazení předpovědi počasí použijte Průzkumník služby Microsoft Azure Storage.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-- Dokončení [online simulátor Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md) kurzu nebo jeden z kurzů zařízení; například [Raspberry Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ty zahrnují následující požadavky:
+- Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
   - Aktivní předplatné Azure.
-  - Azure IoT hub v rámci vašeho předplatného.
-  - Klientská aplikace, která odesílá zprávy do služby Azure IoT hub.
-- Účet Azure Machine Learning Studio. ([Vyzkoušejte si Machine Learning Studio zdarma](https://studio.azureml.net/)).
+  - Azure IoT Hub v rámci vašeho předplatného.
+  - Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
+- Účet [Azure Machine Learning Studio](https://studio.azureml.net/) .
 
-## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Nasazení modelu předpovědi počasí jako webovou službu
+## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Nasazení modelu předpovědi počasí jako webové služby
 
-1. Přejděte [stránce o modelu předpovědi počasí](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
-1. Klikněte na tlačítko **Open in Studio** v Microsoft Azure Machine Learning Studio.
-   ![Otevřete stránku modelu předpovědi počasí v galerii Cortana Intelligence](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
-1. Klikněte na tlačítko **spustit** ověření kroky v modelu. Tento krok může trvat 2 minut.
-   ![Otevření modelu předpovědi počasí v Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. Klikněte na tlačítko **nastavení webové služby** > **prediktivní webová služba**.
-   ![Nasazení modelu předpovědi počasí v Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. V diagramu, přetáhněte **webové služby vstup** modulu někde blízko **Score Model** modulu.
-1. Připojení **webové služby vstup** modulu **určení skóre modelu** modulu.
-   ![Připojit dva moduly v nástroji Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
-1. Klikněte na tlačítko **spustit** ověření kroky v modelu.
-1. Klikněte na tlačítko **NASADIT webovou službu** nasazení modelu jako webové služby.
-1. Na řídicím panelu modelu, stáhněte si **Excel 2010 nebo starší sešitu** pro **žádostí a odpovědí**.
+1. Přejít na [stránku modelu předpovědi počasí](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
+1. V Microsoft Azure Machine Learning Studio klikněte na **otevřít v studiu** .
+   ![otevřít stránku modelu předpovědi počasí v Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
+1. Kliknutím na tlačítko **Spustit** ověříte kroky v modelu. Dokončení tohoto kroku může trvat 2 minuty.
+   ![otevřít model předpovědi počasí v Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
+1. Klikněte na **nastavit webovou službu** > **prediktivní webovou službu**.
+   ![nasadit model předpovědi počasí do Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
+1. V diagramu přetáhněte **Vstupní modul webové služby** někam do blízkosti modulu určení **skóre modelu** .
+1. Připojte modul **vstupu webové služby** k modulu **skóre modelu** .
+   ![propojit dva moduly v Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+1. Kliknutím na tlačítko **Spustit** ověříte kroky v modelu.
+1. Kliknutím na **nasadit webovou službu** nasaďte model jako webovou službu.
+1. Na řídicím panelu modelu stáhněte **sešit aplikace Excel 2010 nebo starší** pro **požadavek nebo odpověď**.
 
    > [!Note]
-   > Ujistěte se, že stáhnete **Excel 2010 nebo starší sešitu** i v případě, že používáte novější verzi Excelu na vašem počítači.
+   > Je nutné stáhnout **sešit aplikace Excel 2010 nebo starší** , i když v počítači používáte novější verzi aplikace Excel.
 
-   ![Stažení aplikace Excel pro koncový bod REQUEST RESPONSE](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
+   ![Stažení Excelu pro koncový bod odpovědi na žádost](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
 
-1. Otevřete Excelový sešit, poznamenejte si, **adresa URL webové služby** a **přístupový klíč**.
+1. Otevřete excelový sešit, poznamenejte si **adresu URL webové služby** a **přístupový klíč**.
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
-## <a name="create-configure-and-run-a-stream-analytics-job"></a>Vytvořte, nakonfigurujte a spusťte úlohu Stream Analytics
+## <a name="create-configure-and-run-a-stream-analytics-job"></a>Vytvoření, konfigurace a spuštění úlohy Stream Analytics
 
 ### <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 
 1. Na webu [Azure Portal](https://portal.azure.com/) klikněte na **Vytvořit prostředek** > **Internet věcí** > **Úloha Stream Analytics**.
 1. Zadejte o úloze následující informace.
 
-   **Název úlohy**: Název úlohy. Název musí být globálně jedinečný.
+   **Název úlohy:** Název, který chcete úloze dát. Název musí být globálně jedinečný.
 
-   **Skupina prostředků**: Použijte stejnou skupinu prostředků, která používá službu IoT hub.
+   **Skupina prostředků**: použijte stejnou skupinu prostředků, kterou používá IoT Hub.
 
-   **Umístění**: Použijte stejné umístění jako skupina prostředků.
+   **Umístění**: použijte stejné umístění jako vaše skupina prostředků.
 
-   **Připnout na řídicí panel**: Zaškrtněte tuto možnost pro snadný přístup k centru IoT z řídicího panelu.
+   **Připnout na řídicí panel:** Zaškrtněte tuto možnost pro snadný přístup k centru IoT z řídicího panelu.
 
    ![Vytvoření úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-1. Otevřete úlohu Stream Analytics.
+1. Otevřete Stream Analytics úlohu.
 1. V části **Topologie úlohy** klikněte na **Vstupy**.
-1. V **vstupy** podokně klikněte na tlačítko **přidat**a potom zadejte následující informace:
+1. V podokně **vstupy** klikněte na **Přidat**a zadejte následující informace:
 
-   **Vstupní alias**: Jedinečný alias pro vstup.
+   **Vstupní alias**: jedinečný alias pro vstup.
 
-   **Zdroj**: Vyberte **služby IoT hub**.
+   **Zdroj**: vyberte **Centrum IoT**.
 
-   **Skupina uživatelů**: Vyberte skupinu příjemců, který jste vytvořili.
+   **Skupina příjemců**: vyberte skupinu uživatelů, kterou jste vytvořili.
 
-   ![Přidat vstup do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
+   ![Přidání vstupu do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
 1. V části **Topologie úlohy** klikněte na **Výstupy**.
-1. V **výstupy** podokně klikněte na tlačítko **přidat**a potom zadejte následující informace:
+1. V podokně **výstupy** klikněte na tlačítko **Přidat**a zadejte následující informace:
 
-   **Alias pro výstup**: Jedinečný alias pro výstup.
+   **Alias pro výstup:** Jedinečný alias pro výstup.
 
-   **Jímka**: Vyberte **úložiště objektů Blob**.
+   **Jímka**: vyberte **BLOB Storage**.
 
-   **Účet úložiště**: Účet úložiště pro úložiště objektů blob. Můžete vytvořit účet úložiště nebo použijte již existující.
+   **Účet úložiště**: účet úložiště pro úložiště objektů BLOB. Můžete vytvořit účet úložiště nebo použít nějaký existující.
 
-   **kontejner**: Kontejner, ve kterém je uložený objekt blob. Můžete vytvořit kontejner nebo použijte již existující.
+   **Kontejner**: kontejner, ve kterém je objekt BLOB uložený. Můžete vytvořit kontejner nebo použít existující.
 
-   **Formát serializace události**: Vyberte **sdíleného svazku clusteru**.
+   **Formát serializace události**: vyberte **CSV**.
 
-   ![Přidat výstup do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
+   ![Přidání výstupu do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
-### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Přidání funkce do úlohy Stream Analytics k volání webové služby, které jste nasadili
+### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Přidání funkce do úlohy Stream Analytics pro volání webové služby, kterou jste nasadili
 
-1. V části **topologie úlohy**, klikněte na tlačítko **funkce** > **přidat**.
+1. V části **topologie úlohy**klikněte na **funkce** > **Přidat**.
 1. Zadejte následující informace:
 
-   **Alias funkce**: Zadejte `machinelearning`.
+   **Alias funkce**: zadejte `machinelearning`.
 
-   **Typ funkce**: Vyberte **Azure ML**.
+   **Typ funkce**: vyberte **Azure ml**.
 
-   **Možnost importu**: Vyberte **Import z jiného předplatného**.
+   **Možnost importu**: vyberte **importovat z jiného předplatného**.
 
-   **ADRESA URL**: Zadejte adresu URL webové služby, který jste si poznamenali z Excelového sešitu.
+   **Adresa URL**: zadejte adresu URL webové služby, kterou jste si poznamenali v excelovém sešitu.
 
-   **Klíč**: Zadejte přístupový klíč, který jste si poznamenali z Excelového sešitu.
+   **Klíč**: zadejte přístupový klíč, který jste si poznamenali v excelovém sešitu.
 
    ![Přidání funkce do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
 1. V části **Topologie úlohy** klikněte na **Dotaz**.
-1. Nahraďte stávající kód následujícím kódem:
+1. Nahraďte existující kód následujícím kódem:
 
    ```sql
    WITH machinelearning AS (
@@ -171,21 +171,21 @@ V úloze Stream Analytics klikněte na **Spustit** > **Nyní** > **Spustit**. Ja
 
 ![Spuštění úlohy Stream Analytics](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 
-## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>Pomocí Průzkumníka služby Microsoft Azure Storage zobrazíte předpovědí počasí
+## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>Použití Průzkumník služby Microsoft Azure Storage k zobrazení předpovědi počasí
 
-Spusťte klientská aplikace mohla zahájit shromažďování a odesílání teploty a vlhkosti dat do služby IoT hub. Pro každou zprávu, která bude přijímat vaše Centrum IoT úlohy Stream Analytics volat webovou službu předpovědi počasí pro vytvoření pravděpodobnost deště. Výsledek se pak uloží do úložiště objektů blob v Azure. Průzkumník služby Azure Storage je nástroj, který můžete použít k zobrazení výsledku.
+Spusťte klientskou aplikaci, která začne shromažďovat a odesílat data o teplotě a vlhkosti do služby IoT Hub. U každé zprávy, kterou služba IoT Hub přijme, Stream Analytics úloha volá webovou službu předpovědi počasí, aby vznikla možnost deště. Výsledek se pak uloží do úložiště objektů BLOB v Azure. Průzkumník služby Azure Storage je nástroj, který můžete použít k zobrazení výsledku.
 
-1. [Stáhněte a nainstalujte Microsoft Azure Storage Explorer](https://storageexplorer.com/).
-1. Otevřete Průzkumníka služby Azure Storage.
+1. [Stáhněte a nainstalujte Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/).
+1. Otevřete Průzkumník služby Azure Storage.
 1. Přihlaste se ke svému účtu Azure.
 1. Vyberte své předplatné.
-1. Kliknutím na své předplatné > **účty úložiště** > váš účet úložiště > **kontejnery objektů Blob** > vašeho kontejneru.
-1. Otevřete soubor CSV k zobrazení výsledku. Poslední sloupec zaznamenává pravděpodobnost deště.
+1. Klikněte na své předplatné > **účty úložiště** > svého účtu úložiště > **kontejnery objektů BLOB** > vašem kontejneru.
+1. Otevřete soubor. csv a zobrazte výsledek. Poslední sloupec zaznamená šanci na deště.
 
-   ![Získat výsledek předpověď počasí s Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
+   ![Získat výsledek předpovědi počasí s Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
 
 ## <a name="summary"></a>Souhrn
 
-Azure Machine Learning jste úspěšně použili k vytvoření pravděpodobnost deště založené na datech teploty a vlhkosti, která bude přijímat vaše Centrum IoT.
+Úspěšně jste použili Azure Machine Learning k vyprodukování pravděpodobnosti deště na základě dat o teplotě a vlhkosti, které vaše centrum IoT přijme.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

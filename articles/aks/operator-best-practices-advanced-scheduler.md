@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: f260e019ffa6eb89e8a2c1e17d2bf239e74290c2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 798c368edb4a738124fce965f8990e6805fbdeba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900115"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472608"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánovače ve službě Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ Tento článek o osvědčených postupech se zaměřuje na pokročilé funkce pl
 
 Při vytváření clusteru AKS můžete nasadit uzly s podporou GPU nebo velkým množstvím výkonných procesorů. Tyto uzly se často používají pro úlohy velkých objemů dat, jako je Machine Learning (ML) nebo umělá Intelligence (AI). Vzhledem k tomu, že tento typ hardwaru je obvykle náročný prostředek uzlu k nasazení, omezte zatížení, které lze na těchto uzlech naplánovat. Místo toho můžete chtít vyhradit některé uzly v clusteru, aby běžely příchozí služby, a zabránit dalším úlohám.
 
-Tato podpora pro různé uzly je poskytována pomocí více fondů uzlů. Cluster AKS poskytuje jeden nebo více fondů uzlů. Podpora pro více fondů uzlů v AKS je aktuálně ve verzi Preview.
+Tato podpora pro různé uzly je poskytována pomocí více fondů uzlů. Cluster AKS poskytuje jeden nebo více fondů uzlů.
 
 Plánovač Kubernetes může pomocí chuti a omezení omezit, jaké úlohy je možné spouštět na uzlech.
 
@@ -81,16 +81,16 @@ Další informace o použití více fondů uzlů v AKS najdete v tématu [Vytvo�
 
 Když upgradujete fond uzlů v AKS, příchuti a tolerovánosti se řídí vzorem, který se použije pro nové uzly:
 
-- **Výchozí clustery bez podpory škálování virtuálních počítačů**
-  - Předpokládejme, že máte dva uzly clusteru – *Uzel1* a *Uzel2*. Při upgradu se vytvoří další uzel (*Uzel3*).
+- **Výchozí clustery, které používají Virtual Machine Scale Sets**
+  - Předpokládejme, že máte dva uzly clusteru – *Uzel1* a *Uzel2*. Upgradujete fond uzlů.
+  - Vytvoří se dva další uzly, *Uzel3* a *Uzel4*a v uvedeném pořadí se přenesou příchuti.
+  - Původní *Uzel1* a *Uzel2* se odstraní.
+
+- **Clustery bez podpory sady škálování virtuálních počítačů**
+  - Pak Předpokládejme, že máte dva uzly cluster- *Uzel1* a *Uzel2*. Při upgradu se vytvoří další uzel (*Uzel3*).
   - Od *Uzel1* se aplikují příchuti na *Uzel3*, *Uzel1* se pak odstraní.
   - Vytvoří se další nový uzel (s názvem *Uzel1*, protože předchozí *Uzel1* byl odstraněn) a na nový *Uzel1*se aplikují *uzel2é* chuti. Pak se *Uzel2* odstraní.
   - V podstatě *Uzel1* se bude *Uzel3*a *Uzel2* se bude *Uzel1*.
-
-- **Clustery, které používají Virtual Machine Scale Sets**
-  - Pak Předpokládejme, že máte dva uzly cluster- *Uzel1* a *Uzel2*. Upgradujete fond uzlů.
-  - Vytvoří se dva další uzly, *Uzel3* a *Uzel4*a v uvedeném pořadí se přenesou příchuti.
-  - Původní *Uzel1* a *Uzel2* se odstraní.
 
 Při horizontálním navýšení kapacity fondu uzlů v AKS se neprovádí návrh.
 

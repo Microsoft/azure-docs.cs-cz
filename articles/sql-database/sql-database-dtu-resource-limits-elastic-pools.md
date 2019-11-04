@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database omezení prostředků na základě DTU pro elastické fondy | Microsoft Docs
-description: Tato stránka popisuje několik běžných omezení prostředků na základě DTU pro elastické fondy v Azure SQL Database.
+title: Azure SQL Database omezení prostředků DTU elastické fondy | Microsoft Docs
+description: Tato stránka popisuje některé běžné limity prostředků DTU pro elastické fondy v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,20 +11,20 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 2bd193c53ee85a1423dc63bf669021de954231c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 08e6c27b359e8fcf48caed6faf21c0aed8fad224
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568808"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521023"
 ---
-# <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí nákupního modelu založeného na DTU
+# <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 
-Tento článek poskytuje podrobné omezení prostředků pro Azure SQL Database elastické fondy a databáze ve fondu s využitím nákupního modelu založeného na DTU.
+Tento článek poskytuje podrobné omezení prostředků pro Azure SQL Database elastické fondy a databáze ve fondu pomocí modelu nákupu DTU.
 
-Pro omezení prostředků pro nákupní model založený na DTU pro izolované databáze se podívejte na [omezení prostředků na bázi DTU – izolované databáze](sql-database-vcore-resource-limits-elastic-pools.md). Omezení prostředků založené na vCorech najdete v tématu [omezení prostředků založené na Vcore – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založené na Vcore – elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
+Omezení prostředků modelu nákupu pro jednotlivé databáze najdete v tématu [omezení prostředků DTU – jednotlivé databáze](sql-database-vcore-resource-limits-elastic-pools.md). Omezení prostředků vCore najdete v tématu omezení [prostředků Vcore – jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků Vcore – elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
 
-## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastický fond: Velikosti úložiště a velikosti výpočtů
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastický fond: velikosti úložiště a velikosti výpočtů
 
 V případě SQL Database elastických fondů se v následujících tabulkách zobrazují prostředky dostupné v každé úrovni služby a výpočetní velikost. Úroveň služby, výpočetní velikost a množství úložiště můžete nastavit pomocí [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShellu](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), rozhraní příkazového [řádku Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases)nebo [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
@@ -39,7 +39,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maximální počet možností úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
+| Maximální úložiště OLTP v paměti na fond (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |
 | Maximální počet databází pro každý fond | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -54,7 +54,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maximální počet možností úložiště na fond (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
+| Maximální úložiště OLTP v paměti na fond (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |
 | Maximální počet databází pro každý fond | 100 | 200 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -69,7 +69,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maximální počet možností úložiště na fond (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
+| Maximální úložiště OLTP v paměti na fond (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |
 | Maximální počet databází pro každý fond | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -84,7 +84,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 250 | 500 | 750 | 1024 | 1536 |
 | Maximální počet možností úložiště na fond (GB) | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 1536 |
-| Maximální úložiště OLTP v paměti na fond (GB) | 1 | 2 | 4 | 10 | 12 |
+| Maximální úložiště OLTP v paměti na fond (GB) | 1\. místo | 2 | 4 | 10 | 12 |
 | Maximální počet databází pro každý fond | 50 | 100 | 100 | 100 | 100 |
 | Maximální počet souběžných pracovních procesů na fond (požadavky) | 200 | 400 | 800 | 1600 | 2400 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -97,8 +97,8 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 
 | Počet eDTU na fond | **2000** | **2500** | **3000** | **3500** | **4000**|
 |:---|---:|---:|---:| ---: | ---: |
-| Zahrnuté úložiště na fond (GB) | 2048 | 2560 | 3072 | 3548 | 4096 |
-| Maximální počet možností úložiště na fond (GB) | 2048 | 2560 | 3072 | 3548 | 4096|
+| Zahrnuté úložiště na fond (GB) | 2 048 | 2560 | 3072 | 3548 | 4 096 |
+| Maximální počet možností úložiště na fond (GB) | 2 048 | 2560 | 3072 | 3548 | 4 096|
 | Maximální úložiště OLTP v paměti na fond (GB) | 16 | 20 | 24 | 28 | 32 |
 | Maximální počet databází pro každý fond | 100 | 100 | 100 | 100 | 100 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 3200 | 4000 | 4800 | 5600 | 6400 |
@@ -109,12 +109,12 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |||||||
 
 > [!IMPORTANT]
-> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium, kromě těchto: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správa USA – střed. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
+> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 
 Pokud se využívají všechny DTU elastického fondu, pak každá databáze ve fondu obdrží stejné množství prostředků ke zpracování dotazů. Služba SQL Database poskytuje spravedlivé sdílení prostředků mezi databázemi tím, že zajišťuje rovnoměrné rozdělení výpočetního času. Pokud je minimální počet DTU na databázi nastaven na nenulovou hodnotu, pro každou databázi bude garantováno spravedlivé sdílení prostředků elastického fondu je společně s libovolným množstvím prostředků.
 
 > [!NOTE]
-> Omezení najdete v tématu [omezení tempdb.](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database) `tempdb`
+> Omezení `tempdb` najdete v tématu [omezení databáze tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 
 ### <a name="database-properties-for-pooled-databases"></a>Vlastnosti databáze pro sdružené databáze
 
@@ -127,11 +127,11 @@ Následující tabulka popisuje vlastnosti pro databáze ve fondu.
 | Maximální velikost úložiště na databázi |Maximální velikost databáze nastavená uživatelem pro databázi ve fondu. Databáze ve fondu ale sdílejí přidělené úložiště fondu. I v případě, že celkové maximum úložiště *na databázi* je větší než celkový dostupný *prostor úložiště fondu*, nebude mít celkové místo v podstatě využitý limit fondu k dispozici. Maximální velikost databáze odkazuje na maximální velikost datových souborů a nezahrnuje místo využívané soubory protokolu. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Omezení prostředků vCore pro izolovanou databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na Vcore](sql-database-vcore-resource-limits-single-databases.md) .
-- Omezení prostředků DTU pro jednu databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na DTU](sql-database-dtu-resource-limits-single-databases.md) .
-- Omezení prostředků vCore pro elastické fondy najdete v tématu [omezení prostředků pro elastické fondy pomocí nákupního modelu založeného na Vcore](sql-database-vcore-resource-limits-elastic-pools.md) .
+- Omezení prostředků vCore pro izolovanou databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí modelu nákupu Vcore](sql-database-vcore-resource-limits-single-databases.md) .
+- Omezení prostředků DTU pro jednu databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí modelu nákupu DTU](sql-database-dtu-resource-limits-single-databases.md) .
+- Omezení prostředků vCore pro elastické fondy najdete v tématu [omezení prostředků pro elastické fondy pomocí modelu nákupu Vcore](sql-database-vcore-resource-limits-elastic-pools.md) .
 - Omezení prostředků pro spravované instance najdete v tématu [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md).
 - Informace o obecných omezeních Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md).
 - Informace o omezeních prostředků na databázovém serveru najdete v tématu [Přehled omezení prostředků na serveru SQL Database](sql-database-resource-limits-database-server.md) , kde najdete informace o omezeních na úrovni serveru a předplatného.

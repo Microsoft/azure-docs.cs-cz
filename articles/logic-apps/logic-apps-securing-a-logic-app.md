@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: b219eb50254ecd347f731d332c3236be028834ba
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 2177ba8b3864e8d453a097b391a18ebbbb5baa11
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045032"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499923"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -677,7 +677,7 @@ Další informace o zabezpečení služeb pomocí ověřování klientského cer
 * [Zabezpečení back-endové služby pomocí ověřování klientských certifikátů v Azure API Management](../api-management/api-management-howto-mutual-certificates.md)
 * [Zabezpečte službu RESTfuL pomocí klientských certifikátů.](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 * [Přihlašovací údaje certifikátu pro ověřování aplikací](../active-directory/develop/active-directory-certificate-credentials.md)
-* [Použijte certifikát SSL v kódu aplikace v Azure App Service](../app-service/app-service-web-ssl-cert-load.md)
+* [Použijte certifikát SSL v kódu aplikace v Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
@@ -770,9 +770,9 @@ Pokud je k dispozici možnost [spravovaná identita](../active-directory/managed
 
 1. Předtím, než aplikace logiky bude moci používat identitu přiřazenou systémem, postupujte podle kroků v části [ověření přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](../logic-apps/create-managed-service-identity.md). Tyto kroky povolí spravovanou identitu ve vaší aplikaci logiky a nastaví přístup této identity k cílovému prostředku Azure.
 
-1. Než může funkce Azure využít identitu přiřazenou systémem, nejdřív [Povolte ověřování pro službu Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
+2. Než může funkce Azure využít identitu přiřazenou systémem, nejdřív [Povolte ověřování pro službu Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
 
-1. V aktivační události nebo akci, kde chcete použít spravovanou identitu, zadejte tyto hodnoty vlastností:
+3. V aktivační události nebo akci, kde chcete použít spravovanou identitu, zadejte tyto hodnoty vlastností:
 
    | Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
    |---------------------|-----------------|----------|-------|-------------|

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 83446d30de17973352e836d6107ad545b2da63e3
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a480e459fdbbf135b00ee46d1513eddb0f36e09e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550315"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479616"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače s Azure Portal
 
@@ -55,13 +55,13 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Na nové stránce v části Oblíbené vyberte **Ubuntu Server 18,04 LTS**.
 1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné.
-1. V poli **Skupina prostředků**vyberte skupinu prostředků, kterou jste vytvořili při výše uvedeném trezoru klíčů (např. **myResourceGroup**).
-1. Jako **název virtuálního počítače** zadejte *MyVM*a vyberte 
+1. V poli **Skupina prostředků**vyberte skupinu prostředků, kterou jste vytvořili při výše uvedené trezoru klíčů (např. **myResourceGroup**).
+1. Jako **název virtuálního počítače**zadejte *MyVM*.
 1. V poli **oblast**vyberte stejnou oblast, kterou jste použili při vytváření trezoru klíčů (například **východní USA**).
 1. Ujistěte se, že je **Velikost** *standardní D2s V3*.
 1. V části **účet správce**vyberte **heslo**. Zadejte uživatelské jméno a heslo.
-    obrazovka pro vytváření ![ResourceGroup ](./media/disk-encryption/portal-qs-vm-creation.png)
-1. Vyberte kartu Správa a ověřte, že máte účet úložiště diagnostiky. Pokud nemáte žádné účty úložiště, vyberte vytvořit nový, zadejte název nového účtu a vyberte obrazovka "OK" ![ResourceGroup vytvoření ](./media/disk-encryption/portal-qs-vm-creation-storage.png)
+    obrazovka pro vytvoření zdroje ![](./media/disk-encryption/portal-qs-vm-creation.png)
+1. Vyberte kartu Správa a ověřte, že máte účet úložiště diagnostiky. Pokud nemáte žádné účty úložiště, vyberte vytvořit nový, zadejte název nového účtu a vyberte OK ![obrazovce pro vytváření zdrojů](./media/disk-encryption/portal-qs-vm-creation-storage.png)
 1. Klikněte na zkontrolovat + vytvořit.
 1. Na stránce **Vytvoření virtuálního počítače** se zobrazí podrobnosti o virtuálním počítači, který se chystáte vytvořit. Až budete připraveni, vyberte **Vytvořit**.
 

@@ -1,6 +1,6 @@
 ---
-title: Použití služeb Azure Machine Learning Services v Azure Notebooks
-description: Přehled ukázkových poznámkových bloků pro Azure Machine Learning služby, které můžete použít s Azure Notebooks.
+title: Použití Azure Machine Learning v Azure Notebooks
+description: Přehled ukázkových poznámkových bloků pro Azure Machine Learning, které můžete použít s Azure Notebooks.
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -12,23 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: f591758fa6e51c420a090aa62d5160320fe15fe8
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 6eac5d77404c85d5481ded7e58b0cd9fab0de083
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973034"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496639"
 ---
-# <a name="use-azure-machine-learning-service-in-a-notebook"></a>Použití Azure Machine Learning služby v poznámkovém bloku
+# <a name="use-azure-machine-learning-in-a-notebook"></a>Použití Azure Machine Learning v poznámkovém bloku
 
-Azure Notebooks je předem nakonfigurovaný s potřebným prostředím pro spolupráci se [službou Azure Machine Learning](/azure/machine-learning/service/). Ukázkový projekt můžete snadno klonovat do účtu poznámkových bloků a prozkoumat celou řadu scénářů Machine Learning.
+Azure Notebooks je předem nakonfigurovaný s potřebným prostředím pro práci s [Azure Machine Learning](/azure/machine-learning/service/). Ukázkový projekt můžete snadno klonovat do účtu poznámkových bloků a prozkoumat celou řadu scénářů Machine Learning.
 
 ## <a name="clone-the-sample-into-your-account"></a>Naklonujte ukázku na svůj účet.
 
 1. Přihlaste se [Azure Notebooks](https://notebooks.azure.com/).
 1. Vyberte **Moje projekty** a přejdete na řídicí panel projekty.
 1. Kliknutím na tlačítko **nahrát úložiště GitHub** (šipka nahoru) otevřete místní nabídku **nahrát úložiště GitHub** .
-1. V místní nabídce zadejte `Azure/MachineLearningNotebooks` v **úložišti GitHubu**, v části **název projektu** zadejte název projektu, jako je například "Azure Machine Learning služba", zadejte identifikátor v **ID projektu**, zrušte zaškrtnutí políčka **Public** , pokud chcete, a pak vyberte **importovat.** .
+1. V místní nabídce zadejte `Azure/MachineLearningNotebooks` do **úložiště GitHubu**, v části **název projektu** zadejte název projektu, jako je například "Azure Machine Learning", zadejte identifikátor v **ID projektu**, zrušte zaškrtnutí **veřejného** , pokud chcete, a pak vyberte **importovat**.
 
     ![Import ukázky Azure Machine Learning poznámkového bloku do účtu vašich poznámkových bloků](media/azureml-import-project.png)
 
@@ -44,11 +44,11 @@ Azure Notebooks je předem nakonfigurovaný s potřebným prostředím pro spolu
 
 ## <a name="next-steps"></a>Další kroky
 
-Dokumentace ke službě Azure Machine Learning Services obsahuje řadu dalších prostředků, které vás provedou při práci se službou Machine Learning v rámci poznámkových bloků:
+Dokumentace k Azure Machine Learning obsahuje řadu dalších prostředků, které vás provedou prací s Machine Learning v rámci poznámkových bloků:
 
 - [Rychlý Start: použití Pythonu pro začátek Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
-- [Kurz #1: výuka modelu klasifikace obrázků pomocí služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
+- [Kurz #1: výuka modelu klasifikace obrázků pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
 - [Kurz #2: nasazení modelu klasifikace imagí ve službě Azure Container instance (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
-- [Kurz: výuka modelu klasifikace pomocí automatizovaného strojového učení ve službě Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
+- [Kurz: analýza modelu klasifikace pomocí automatizovaného strojového učení v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
 
 Podívejte se také na dokumentaci k sadě [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).

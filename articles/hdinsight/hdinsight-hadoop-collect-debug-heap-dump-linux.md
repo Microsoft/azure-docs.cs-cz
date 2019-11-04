@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5df6ab47c45a64077a39974a30c65fe13f3c851d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091500"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494853"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Povolit výpisy haldy pro Apache Hadoop služby v HDInsight se systémem Linux
 
@@ -37,12 +37,12 @@ Můžete také povolit výpisy paměti haldy pro mapu a snížit procesy spušt�
 
 Výpisy haldy jsou povolené předáním možností (někdy označované jako výslovný nebo parametry) do JVM při spuštění služby. U většiny [Apache Hadoop](https://hadoop.apache.org/) Services můžete upravit skript prostředí používaný ke spuštění služby a předat tyto možnosti.
 
-V každém skriptu je k dispozici export pro  **\* \_výslovný**, který obsahuje možnosti předané do JVM. Například ve skriptu **Hadoop-env.sh** má řádek, který začíná `export HADOOP_NAMENODE_OPTS=` , obsahuje možnosti pro službu NameNode.
+V každém skriptu je k dispozici export pro **\*\_výslovný**, který obsahuje možnosti předané JVM. Například v **Hadoop-env.sh** skriptu obsahuje řádek, který začíná na `export HADOOP_NAMENODE_OPTS=`, i možnosti služby NameNode.
 
 Mapování a snížení procesů se mírně liší, protože tyto operace jsou podřízeným procesem služby MapReduce. Každá mapa nebo omezení procesu běží v podřízeném kontejneru a existují dvě položky, které obsahují JVM možnosti. Obojí je obsaženo v **souboru mapred-site. XML**:
 
-* **mapreduce.admin.map.child.java.opts**
-* **mapreduce.admin.reduce.child.java.opts**
+* **MapReduce. admin. map. Child. Java. výslovný**
+* **MapReduce. admin. redukovat. Child. Java. výslovný**
 
 > [!NOTE]  
 > K úpravě nastavení skriptů a mapred-site. XML doporučujeme použít [Apache Ambari](https://ambari.apache.org/) , protože Ambari zpracovává replikaci změn napříč uzly v clusteru. Konkrétní postup najdete v části [použití Apache Ambari](#using-apache-ambari) .
@@ -53,7 +53,7 @@ Následující možnost povolí výpisy paměti haldy, když dojde k OutOfMemory
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-**+** Označuje, že je tato možnost povolená. Ve výchozím nastavení je tato možnost zakázána.
+**+** označuje, že je tato možnost povolená. Ve výchozím nastavení je tato možnost zakázána.
 
 > [!WARNING]  
 > Ve výchozím nastavení nejsou ve výchozím nastavení pro služby Hadoop ve službě HDInsight povoleny výpisy haldy, protože soubory s výpisem paměti můžou být velké. Pokud je povolíte pro řešení potíží, zakažte je po reprodukování problému a shromáždění souborů výpisu paměti.
@@ -66,7 +66,7 @@ Výchozím umístěním pro soubor s výpisem paměti je aktuální pracovní ad
 
 Například použití `-XX:HeapDumpPath=/tmp` způsobí, že se výpisy paměti ukládají do adresáře adresáře/TMP.
 
-### <a name="scripts"></a>Scripts
+### <a name="scripts"></a>Skripty
 
 Skript můžete také aktivovat, když dojde k **OutOfMemoryError** . Například spuštění oznámení, abyste věděli, že došlo k chybě. Pro aktivaci skriptu na __OutOfMemoryError__použijte následující možnost:
 
@@ -75,7 +75,7 @@ Skript můžete také aktivovat, když dojde k **OutOfMemoryError** . Napříkla
 > [!NOTE]  
 > Vzhledem k tomu, že Apache Hadoop je distribuovaný systém, musí být všechny použité skripty umístěné na všech uzlech v clusteru, na kterém je služba spuštěná.
 > 
-> Skript musí být také v umístění, které je přístupné pro účet, ve kterém služba běží, a musí poskytovat oprávnění k provedení. Můžete například chtít, aby se skripty ukládaly do `/usr/local/bin` a používaly `chmod go+rx /usr/local/bin/filename.sh` pro udělení oprávnění ke čtení a spuštění.
+> Skript musí být také v umístění, které je přístupné pro účet, ve kterém služba běží, a musí poskytovat oprávnění k provedení. Můžete například chtít, aby se skripty ukládaly do `/usr/local/bin` a pomocí `chmod go+rx /usr/local/bin/filename.sh` udělovat oprávnění ke čtení a spouštění.
 
 ## <a name="using-apache-ambari"></a>Použití Apache Ambari
 
@@ -96,7 +96,7 @@ Chcete-li upravit konfiguraci služby, použijte následující postup:
 
     ![Seznam filtrovaných konfigurací Apache Ambari](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Vyhledejte položku výslovný pro službu, pro kterou chcete povolit výpisy paměti haldy, a přidejte možnosti, které chcete povolit.  **\* \_** Na následujícím obrázku jsem přidaný `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do položky **HADOOP\_NAMENODE\_výslovný** :
+4. Vyhledejte položku **\*\_výslovný** pro službu, pro kterou chcete povolit výpisy paměti haldy, a přidejte možnosti, které chcete povolit. Na následujícím obrázku jsem přidal `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do položky **HADOOP\_NAMENODE\_výslovný** :
 
     ![Apache Ambari Hadoop-namenode-výslovný](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 

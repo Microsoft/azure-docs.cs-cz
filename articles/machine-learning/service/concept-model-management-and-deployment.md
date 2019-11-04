@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: Správa, nasazení a & monitorování modelů ML'
+title: 'MLOps: Správa, nasazení & monitorování modelů ML'
 titleSuffix: Azure Machine Learning
-description: 'Naučte se používat Azure Machine Learning pro MLOps: nasazení, správu a monitorování vašich modelů pro jejich nepřetržité zlepšení. Můžete nasadit modely, které natrénovaný pomocí Azure Machine Learning na místním počítači nebo z jiných zdrojů.'
+description: 'Naučte se používat Azure Machine Learning pro MLOps: nasazení, správu a monitorování vašich modelů pro jejich nepřetržité zlepšení. Můžete nasadit modely, které jste vyškolení pomocí Azure Machine Learning, na vašem místním počítači nebo z jiných zdrojů.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 06/24/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98a3102d47504b40a6b62eb329b508468947ca79
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035466"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497444"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Spravujte, nasaďte a monitorujte modely pomocí Azure Machine Learning
+# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Správa, nasazení a monitorování modelů pomocí Azure Machine Learning
 
 V tomto článku se dozvíte, jak pomocí Azure Machine Learning spravovat životní cyklus vašich modelů. Azure Machine Learning využívá přístup k operacím s Machine Learning (MLOps), což zlepšuje kvalitu a konzistenci vašich řešení pro strojové učení. 
 
@@ -47,7 +47,7 @@ Registrace modelu umožňuje ukládat a modelovat modely v cloudu Azure ve vaše
 > [!TIP]
 > Registrovaný model je logický kontejner pro jeden nebo více souborů, které tvoří model. Například pokud máte model, který je uložený v několika souborech, můžete je zaregistrovat jako jeden model v pracovním prostoru Azure Machine Learning. Po registraci můžete zaregistrovaný model stáhnout nebo nasadit a získat všechny soubory, které byly zaregistrovány.
  
-Registrované modely se identifikují podle názvu a verze. Pokaždé, když zaregistrujete model se stejným názvem jako existující registr zvýší verzi. Během registrace, který se dá použít při vyhledávání pro modely můžete zadat také další metadata značky. Azure Machine Learning podporuje libovolný model, který lze načíst pomocí Pythonu 3.5.2 nebo vyššího.
+Registrované modely se identifikují podle názvu a verze. Pokaždé, když zaregistrujete model se stejným názvem, jako má existující, registr zvýší verzi. Během registrace můžete také poskytnout další značky metadat, které lze použít při hledání modelů. Azure Machine Learning podporuje libovolný model, který lze načíst pomocí Pythonu 3.5.2 nebo vyššího.
 
 > [!TIP]
 > Můžete také registrovat modely školení mimo Azure Machine Learning.
@@ -88,9 +88,9 @@ Tyto prostředky jsou zabaleny do bitové kopie Docker a nasazeny jako webová s
 
 Volitelně můžete k dalšímu vyladění nasazení použít následující parametry:
 
-* Povolit GPU: Slouží k povolení podpory GPU v imagi Docker. Image se musí používat pro Microsoft Azure služby, jako je Azure Container Instances, Azure Kubernetes Service, Azure Machine Learning COMPUTE nebo Azure Virtual Machines.
-* Další kroky k souboru Docker: Soubor, který obsahuje další kroky Docker, které se mají spustit při vytváření image Docker.
-* Základní bitová kopie: Vlastní image, která se použije jako základní image. Pokud nepoužíváte vlastní image, poskytuje Azure Machine Learning základní image.
+* Povolit GPU: používá se k povolení podpory GPU v imagi Docker. Image se musí používat pro Microsoft Azure služby, jako je Azure Container Instances, Azure Kubernetes Service, Azure Machine Learning COMPUTE nebo Azure Virtual Machines.
+* Další kroky souboru Docker: soubor, který obsahuje další kroky Docker, které se mají spustit při vytváření image Docker.
+* Základní obrázek: vlastní image, která se použije jako základní image. Pokud nepoužíváte vlastní image, poskytuje Azure Machine Learning základní image.
 
 Také zadáte konfiguraci cílové platformy nasazení. Například typ rodiny virtuálních počítačů, dostupnou paměť a počet jader při nasazení do služby Azure Kubernetes.
 
@@ -115,7 +115,7 @@ Chcete-li model nasadit jako webovou službu, je nutné zadat následující pol
 
 Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.md).
 
-#### <a name="iot-edge-devices"></a>Zařízení IoT Edge
+#### <a name="iot-edge-devices"></a>IoT Edge zařízení
 
 Modely se zařízeními IoT můžete používat prostřednictvím **Azure IoT Edgech modulů**. Moduly IoT Edge jsou nasazeny do hardwarového zařízení, které umožňuje odvození modelu nebo vyhodnocování modelů na zařízení.
 
@@ -157,7 +157,7 @@ Další informace o použití Azure Pipelines s Azure Machine Learning najdete v
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [tom, jak a kde můžete nasadit modely](how-to-deploy-and-where.md) pomocí Azure Machine Learning. Příklad nasazení najdete v tématu [kurz: Nasaďte model klasifikace imagí v Azure Container Instances](tutorial-deploy-models-with-aml.md).
+Přečtěte si další informace o [tom, jak a kde můžete nasadit modely](how-to-deploy-and-where.md) pomocí Azure Machine Learning. Příklad nasazení najdete v tématu [kurz: nasazení modelu klasifikace imagí v Azure Container Instances](tutorial-deploy-models-with-aml.md).
 
 Naučte se vytvářet [průběžnou integraci a nasazování modelů ml pomocí Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning). 
 

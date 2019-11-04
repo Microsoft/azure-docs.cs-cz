@@ -7,20 +7,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 9404888eadf94eaf86a6e8584b49595e10b34c69
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 36bd05940644b62bc3e58b642bfe6c00238383fa
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264188"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472469"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
 V rámci životního cyklu clusteru AKS je často potřeba upgradovat na nejnovější verzi Kubernetes. Je důležité použít nejnovější verze zabezpečení Kubernetes nebo upgradovat, abyste získali nejnovější funkce. V tomto článku se dozvíte, jak upgradovat hlavní komponenty nebo jeden výchozí fond uzlů v clusteru AKS.
 
-Clustery AKS, které používají více fondů uzlů nebo uzlů Windows serveru (aktuálně ve verzi Preview v AKS), najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
+Clustery AKS, které používají více fondů uzlů nebo uzlů Windows serveru (v současné době ve verzi Preview v AKS), najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.65 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
@@ -38,7 +38,7 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 > [!NOTE]
 > Při upgradu clusteru AKS nelze přeskočí podverze Kubernetes. Například upgrady mezi *1.12. x* -> *1.13. x* nebo *1.13. x* -> *1.14. x* jsou povoleny, ale *1.12. x* -> *1.14. x* není.
 >
-> Chcete-li provést upgrade, z *1.12. x* -> *1.14. x*, nejprve upgradujte z *1.12. x* -> *1.13. x*a potom proveďte upgrade z *1.13. x* -> *1.14. x*.
+> Chcete-li provést upgrade, z *1.12. x* -> *1.14. x*, nejprve upgradujte z *1.12. x* -> *1.13. x*a pak upgradujte z aplikace *1.13. x* -> *1.14. x*.
 
 Následující příklad výstupu ukazuje, že cluster je možné upgradovat na verze *1.13.9* a *1.13.10*:
 
@@ -65,7 +65,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 Upgrade clusteru může trvat několik minut v závislosti na tom, kolik uzlů máte. 
 
 > [!NOTE]
-> Je celkově povolený čas pro dokončení upgradu clusteru. Tento čas se vypočítá pomocí produktu `10 minutes * total number of nodes in the cluster`. Například v clusteru 20 uzlů musí operace upgradu úspěšně probíhat během 200 minut nebo AKS operace, aby se předešlo neopravitelnému stavu clusteru. Chcete-li provést obnovení při selhání upgradu, opakujte operaci upgradu po vypršení časového limitu.
+> Je celkově povolený čas pro dokončení upgradu clusteru. Tento čas se vypočítá pomocí `10 minutes * total number of nodes in the cluster`produktu. Například v clusteru 20 uzlů musí operace upgradu úspěšně probíhat během 200 minut nebo AKS operace, aby se předešlo neopravitelnému stavu clusteru. Chcete-li provést obnovení při selhání upgradu, opakujte operaci upgradu po vypršení časového limitu.
 
 Pokud chcete ověřit, že upgrade proběhl úspěšně, použijte příkaz [AZ AKS show][az-aks-show] :
 

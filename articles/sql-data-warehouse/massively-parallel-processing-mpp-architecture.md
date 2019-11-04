@@ -1,43 +1,56 @@
 ---
-title: Azure SQL Data Warehouse – architektura MPP | Dokumentace Microsoftu
-description: Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP) s Azure storage k dosažení vysokého výkonu a škálovatelnosti.
+title: Architektura Azure synapse Analytics (dříve SQL DW) | Microsoft Docs
+description: Přečtěte si, jak Azure synapse Analytics (dřív SQL DW) kombinuje výkonné paralelní zpracování (MPP) se službou Azure Storage, aby dosáhlo vysokého výkonu a škálovatelnosti.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 25dc469c9f50dee7d088fccd214020791ff73def
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b463b0806d39ba20ae714c8785e5c0d227ce481b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515800"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466401"
 ---
-# <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse – výkonné paralelní zpracování (MPP) architektury
-Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP) s Azure storage k dosažení vysokého výkonu a škálovatelnosti. 
+# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura Azure synapse Analytics (dříve SQL DW) 
+
+Azure synapse je bezlimitní analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek pomocí neserverových nebo zřízených prostředků na vyžádání – ve velkém měřítku. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení.
+
+ Azure synapse má čtyři součásti:
+- Analýza SQL: kompletní analýzy založené na T-SQL 
+    - Fond SQL (placený za DWU zřízený) – všeobecně dostupné
+    - SQL na vyžádání (platba za TB zpracovaná) – (Preview)
+- Spark: hluboce integrované Apache Spark (Preview) 
+- Integrace dat: integrace hybridních dat (Preview)
+- Studio: jednotné uživatelské prostředí.  (Preview)
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
-## <a name="mpp-architecture-components"></a>Komponenty architektury MPP
-SQL Data Warehouse využívá s horizontálním navýšením kapacity architektura distribuovat výpočetní zpracování dat napříč více uzly. Jednotka škálování je abstrakcí výpočetní výkon, který se označuje jako [jednotka datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). SQL Data Warehouse odděluje výpočetní ze služby storage, který umožňuje škálovat výpočetní nezávisle na data ve vašem systému.
+## <a name="sql-analytics-mpp-architecture-components"></a>Komponenty architektury SQL Analytics MPP
 
-![Architektura služby SQL Data Warehouse](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
+[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) využívá architekturu horizontálního navýšení kapacity k distribuci výpočetního zpracování dat napříč více uzly. Jednotka škálování je abstrakce výpočetního výkonu, který se označuje jako [jednotka datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). Výpočetní oddělení je oddělené od úložiště, které umožňuje škálovat výpočetní prostředky nezávisle na datech v systému.
 
-SQL Data Warehouse používá architekturu založenou na uzlu. Aplikace připojit a vydávat příkazy T-SQL, řídicí uzel, který je jediný bod vstupu pro datový sklad. Řídicí uzel spustí MPP modul, který optimalizuje dotazy pro paralelní zpracování a operace předá výpočetní uzly, aby mohly pracovat paralelně. Výpočetní uzly ukládání dat všech uživatelů ve službě Azure Storage a spouštění paralelních dotazů. Služba pohyb dat (DMS) je interní služby na úrovni systému, který přesouvá data mezi uzly podle potřeby ke spouštění dotazů paralelně a vrátit přesné výsledky. 
+![Architektura analýzy SQL](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Díky oddělenému úložišti a výpočetním prostředkům může SQL Data Warehouse:
+SQL Analytics používá architekturu založenou na uzlech. Aplikace připojují a vydávají příkazy T-SQL do řídicího uzlu, který je jediným bodem záznamu pro SQL Analytics. Řídicí uzel spouští modul MPP, který optimalizuje dotazy pro paralelní zpracování a pak předává operace do výpočetních uzlů, aby fungovaly paralelně. 
 
-* Velikost nezávisle na sobě výpočetní výkon bez ohledu na vaše potřeby při ukládání.
-* Zvětšovat a zmenšovat výpočetní výkon bez přesouvání dat
-* Pozastavit výpočetní kapacitu a ponechání dat beze změny, takže platíte jenom za úložiště.
+Výpočetní uzly ukládají všechna uživatelská data v Azure Storage a spouštějí paralelní dotazy. Služba pro přesun dat (DMS) je interní služba na úrovni systému, která přesouvá data mezi uzly, jak je to nutné pro paralelní spouštění dotazů a vracení přesných výsledků. 
+
+S odděleným úložištěm a výpočetním prostředím může při použití SQL Analytics jednu z těchto akcí:
+
+* Bez ohledu na požadavky na úložiště se výpočetní výkon nezávisle mění.
+* Zvětšete nebo zmenšete výpočetní výkon v rámci fondu SQL (datový sklad) bez přesouvání dat.
+* Pozastaví výpočetní kapacitu a zachová data beze změny, takže platíte jenom za úložiště.
 * Obnovit výpočetní kapacitu za provozu
 
 ### <a name="azure-storage"></a>Úložiště Azure
-SQL Data Warehouse využívá úložiště Azure k bezpečnost vašich dat uživatele.  Vzhledem k tomu, že se vaše data ukládají a spravovaných službou Azure storage, SQL Data Warehouse samostatně poplatky za spotřebu úložiště. Vlastní data se horizontálně dělené do **distribuce** za účelem optimalizace výkonu v systému. Můžete zvolit, které model horizontálního dělení na slouží k distribuci dat při definování tabulky. SQL Data Warehouse podporuje tyto vzory horizontálního dělení:
+
+SQL Analytics využívá Azure Storage k zajištění bezpečnosti vašich uživatelských dat.  Vzhledem k tomu, že vaše data jsou uložená a spravovaná službou Azure Storage, je pro vaši spotřebu úložiště k dispozici samostatný poplatek. Samotná data jsou horizontálně dělené do **distribucí** za účelem optimalizace výkonu systému. Můžete zvolit, který vzor horizontálního dělení se má použít k distribuci dat při definování tabulky. Jsou podporovány tyto horizontálního dělení vzory:
 
 * Hodnota hash
 * Kruhové dotazování.
@@ -45,53 +58,55 @@ SQL Data Warehouse využívá úložiště Azure k bezpečnost vašich dat uživ
 
 ### <a name="control-node"></a>Řídicí uzel
 
-Řídicí uzel je brain datového skladu. Jde o prvek front-end, který komunikuje se všemi aplikacemi a připojeními. Modul MPP běží na uzlu ovládacího prvku k optimalizaci a koordinovat paralelních dotazů. Když odešlete dotaz T-SQL do služby SQL Data Warehouse, řídicí uzel ho transformuje na dotazy, které spustily každé distribuci paralelně.
+Řídicí uzel je mozek architektury. Jde o prvek front-end, který komunikuje se všemi aplikacemi a připojeními. Modul MPP běží v uzlu Control pro optimalizaci a koordinaci paralelních dotazů. Když odešlete dotaz T-SQL do analýzy SQL, řídicí uzel ho transformuje na dotazy, které se spouštějí proti každé distribuci paralelně.
 
 ### <a name="compute-nodes"></a>Výpočetní uzly
 
-Výpočetní uzly poskytují výpočetní výkon. Distribuce namapovat na výpočetních uzlech pro zpracování. Protože platíte za další výpočetní prostředky, SQL Data Warehouse znovu mapuje distribucí do výpočetních uzlů k dispozici. Počet výpočetních uzlů v rozmezí od 1 do 60 a je určen podle úrovně služeb pro datový sklad.
+Výpočetní uzly poskytují výpočetní výkon. Distribuce se mapují na výpočetní uzly pro zpracování. Když platíte za další výpočetní prostředky, SQL Analytics znovu mapuje distribuce na dostupné výpočetní uzly. Počet výpočetních uzlů je v rozsahu od 1 do 60 a určuje se podle úrovně služby pro SQL Analytics.
 
-Každý výpočetní uzel má ID uzlu, který je viditelný v zobrazeních systému. Tím, že hledají sloupci $node_id v systémových zobrazeních, jejichž názvy začínají řetězcem sys.pdw_nodes uvidíte ID výpočetního uzlu. Seznam těchto zobrazení systému najdete v tématu [MPP systémová zobrazení](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
+Každý výpočetní uzel má ID uzlu, které je viditelné v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit hledáním sloupce NODE_ID v systémových zobrazeních, jejichž názvy začínají řetězcem sys. PDW _nodes. Seznam těchto systémových zobrazení najdete v tématu [Systémová zobrazení MPP](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
 
 ### <a name="data-movement-service"></a>Služba pro přesun dat
-Přesun dat Service (DMS) je technologie přenosu dat, která koordinuje přesun dat mezi jednotlivými výpočetními uzly. Některé dotazy vyžadují přesunu dat pro zajištění přesných výsledků vrátí paralelní dotazy. Při přesunu dat je potřeba, DMS zajišťuje že ta správná data načte do správného umístění. 
+Služba pro přesun dat (DMS) je technologie pro přenos dat, která koordinuje pohyb dat mezi výpočetními uzly. Některé dotazy vyžadují přesun dat, aby se zajistilo, že paralelní dotazy vrátí přesné výsledky. Když se vyžaduje přesun dat, DMS zajistí, aby se správná data dostala do správného umístění. 
 
 ## <a name="distributions"></a>Distribuce
 
-Rozdělení je základní jednotkou úložiště a zpracování paralelních dotazů, ve kterých běží na distribuovaných datech. Při spuštění dotazu SQL Data Warehouse je práce rozdělena do 60 menších dotazů, které běží paralelně. Každý dotaz na 60 menší běží na jednom z distribuce data. Každý výpočetní uzel spravuje jeden nebo více 60 distribucí. Datový sklad s maximální výpočetních prostředků má k jednomu distribučnímu na výpočetním uzlu. Datový sklad s minimální výpočetních prostředků má distribuce na jeden výpočetní uzel.  
+Distribuce je základní jednotkou úložiště a zpracování pro paralelní dotazy, které běží na distribuovaných datech. Když SQL Analytics spustí dotaz, bude práce rozdělena do 60 menších dotazů, které běží paralelně. 
 
-## <a name="hash-distributed-tables"></a>Hodnoty hash distribuované tabulky
-Distribuovaná zatřiďovací tabulka dokáže poskytovat nejvyšší výkon dotazů pro spojování a agregaci pro velké tabulky. 
+Každý z těchto 60 dotazů běží v jedné z distribucí dat. Každý výpočetní uzel spravuje jednu nebo více distribucí 60. Fond SQL s maximálními výpočetními prostředky má jednu distribuci na výpočetní uzel. Fond SQL s minimálními výpočetními prostředky má všechny distribuce v jednom výpočetním uzlu.  
 
-Sdílení dat do tabulky hash distribuované SQL Data Warehouse používá funkce hash pro každý řádek nedeterministicky přidělí k jednomu distribučnímu. V definici tabulky některý ze sloupců je určený jako sloupec distribuce. Funkce hash používá hodnoty ve sloupci distribuce přiřadit každý řádek k distribuci.
+## <a name="hash-distributed-tables"></a>Hodnoty hash-distribuované tabulky
+Distribuovaná tabulka hash může poskytovat nejvyšší výkon dotazu pro spojení a agregace ve velkých tabulkách. 
 
-Následující diagram znázorňuje, jak úplné (tabulka nedistribuovaná) se uloží jako tabulka hash distribuován. 
+K horizontálních oddílů dat do tabulky distribuované pomocí algoritmu hash používá SQL Analytics funkci hash k deterministickému přiřazení každého řádku k jedné distribuci. V definici tabulky je jeden ze sloupců označený jako distribuční sloupec. Funkce hash používá hodnoty ve sloupci distribuce k přiřazení každého řádku k distribuci.
 
-![Distribuované tabulky](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "distribuované tabulky")  
+Následující diagram znázorňuje, jak se celá (nedistribuovaná tabulka) uloží jako tabulka distribuovaná pomocí algoritmu hash. 
 
-* Každý řádek patří k jednomu distribučnímu.  
-* Deterministické hashovací algoritmus přiřadí k jednomu distribučnímu každý řádek.  
-* Počet řádků tabulky na distribuci se liší podle různých velikostí tabulky.
+![Distribuovaná tabulka](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Distribuovaná tabulka")  
 
-Některé aspekty výkonu pro výběr distribučního sloupce, jako je například odlišnosti Nerovnoměrná distribuce dat a typy dotazů, které běží na systému.
+* Každý řádek patří k jedné distribuci.  
+* Deterministický algoritmus hash přiřadí jednotlivé řádky do jedné distribuce.  
+* Počet řádků tabulky na distribuci se liší, jak je znázorněno v různých velikostech tabulek.
 
-## <a name="round-robin-distributed-tables"></a>Kruhové dotazování distribuované tabulky
-Kruhové dotazování tabulky je nejjednodušší tabulky vytvořte a poskytuje rychlý výkon při použití jako pracovní tabulky pro načtení.
+Pro výběr distribučního sloupce, jako je například odlišnosti, zkosení dat a typy dotazů, které jsou spuštěny v systému, dochází k důležitým informacím o výkonu.
 
-Distribuované tabulky kruhové dotazování rovnoměrně distribuuje data v tabulce, ale bez jakékoli další optimalizace. Rozdělení je nejprve vybrán náhodně a pak vyrovnávací paměti řádků jsou přiřazeny k rozdělení postupně. Je snadné k načtení dat do kruhové dotazování tabulky, ale výkon dotazů může být často vám dá víc tabulek provádět distribuci hodnot hash. Spojení tabulek kruhového vyžadují promísení dat, a to bude vyžadovat čas navíc.
+## <a name="round-robin-distributed-tables"></a>Distribuované tabulky kruhového dotazování
+Tabulka kruhového dotazování je nejjednodušší tabulka k vytvoření a poskytuje rychlý výkon při použití jako pracovní tabulka pro zatížení.
+
+Distribuovaná tabulka kruhového dotazování rovnoměrně distribuuje data napříč tabulkou, ale bez další optimalizace. Nejprve se vybere distribuce s náhodným rozsahem a potom se do mezipamětí řádků přiřadí distribuce postupně. Data je možné rychle načíst do tabulky kruhového dotazování, ale výkon dotazů je často lepší díky distribuovaným tabulkám hash. Spojení s tabulkami kruhového dotazování vyžadují přebírání dat a trvá další čas.
 
 
 ## <a name="replicated-tables"></a>Replikované tabulky
-Replikované tabulky. poskytuje nejrychlejší výkon dotazů pro malé tabulky.
+Replikovaná tabulka poskytuje nejrychlejší výkon dotazů pro malé tabulky.
 
-Tabulka, která se replikuje ukládá do mezipaměti úplnou kopii tabulky na jednotlivých výpočetních uzlech. V důsledku toho replikuje tabulku eliminuje nutnost provádět přenos dat mezi výpočetní uzly před spojení nebo agregace. Replikované tabulky jsou nejlépe využít s malé tabulky. Dodatečné úložiště je povinný a je další režií, ke které dojde při zápisu dat, což mohlo způsobit nepoužitelnost velké tabulky nepraktické.  
+Replikovaná tabulka ukládá do mezipaměti úplnou kopii tabulky na každém výpočetním uzlu. V důsledku toho replikování tabulky odstraní nutnost přenášet data mezi výpočetními uzly před spojením nebo agregací. Replikované tabulky se nejlépe využívají v malých tabulkách. Dodatečné úložiště je potřeba a při psaní dat, které neumožňují použití velkých tabulek, se účtuje další režie.  
 
-Následující diagram znázorňuje replikované tabulky. Pro službu SQL Data Warehouse je do mezipaměti replikované tabulky na první distribuci na jednotlivých výpočetních uzlech.  
+Následující diagram znázorňuje replikovanou tabulku, která je ukládána do mezipaměti při první distribuci na každém výpočetním uzlu.  
 
-![Replikované tabulky](media/sql-data-warehouse-distributed-data/replicated-table.png "replikované tabulky") 
+![Replikovaná tabulka](media/sql-data-warehouse-distributed-data/replicated-table.png "Replikovaná tabulka") 
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychle [vytvořit datový sklad SQL Data Warehouse][create a SQL Data Warehouse] a [načíst ukázková data][load sample data]. Pokud s Azure začínáte, může vám být užitečný [Glosář Azure][Azure glossary], kde najdete potřebnou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
+## <a name="next-steps"></a>Další kroky
+Teď, když víte o Azure synapse, se dozvíte, jak rychle [vytvořit fond SQL][create a SQL pool] a [načíst ukázková data][load sample data]. Pokud s Azure začínáte, můžete využít [Glosář Azure][Azure glossary], kde najdete potřebnou terminologii. Nebo se podívejte na některé z těchto dalších prostředků Azure synapse.  
 
 * [Úspěšné zákaznické implementace]
 * [Blogy]
@@ -109,9 +124,9 @@ Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychl
 <!--Article references-->
 [Vytvoření lístku podpory]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
+[create a SQL pool]: ./sql-data-warehouse-get-started-provision.md
 [Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[Azure Synapse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
 [Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
 [Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
 [Azure glossary]: ../azure-glossary-cloud-terminology.md
@@ -127,6 +142,6 @@ Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychl
 [Fórum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
+[SLA for Azure Synapse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

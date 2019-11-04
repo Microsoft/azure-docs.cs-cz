@@ -1,6 +1,6 @@
 ---
-title: Návrh databáze s více klienty pomocí Azure Database for PostgreSQL – kurz Citus (Preview)
-description: V tomto kurzu se dozvíte, jak vytvořit, naplnit a dotazovat distribuované tabulky v Azure Database for PostgreSQL Citus (Preview).
+title: Návrh databáze s více klienty pomocí Azure Database for PostgreSQL – kurz Citus (vývoj)
+description: V tomto kurzu se dozvíte, jak vytvořit, naplnit a dotazovat distribuované tabulky na Azure Database for PostgreSQL Citus (Scale).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 130c3e9f5abb24ffcc4e0c4ad6b96af5fca62090
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70163990"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496543"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Kurz: návrh databáze s více klienty pomocí Azure Database for PostgreSQL – Citus (Preview)
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: návrh databáze s více klienty pomocí Azure Database for PostgreSQL – Citus (škálování)
 
-V tomto kurzu se naučíte, jak pomocí Azure Database for PostgreSQL – Citus (Preview):
+V tomto kurzu se naučíte, jak používat Azure Database for PostgreSQL-Citus (škálování na více procesorů):
 
 > [!div class="checklist"]
 > * Vytvoření skupiny serverů Hyperscale (Citus)
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte, jak pomocí Azure Database for PostgreSQL – Citus 
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Vytvoření schématu pomocí nástroje psql
 
-Po připojení k Azure Database for PostgreSQL – Citus (Preview) pomocí psql můžete provést několik základních úloh. Tento kurz vás provede vytvořením webové aplikace, která umožňuje inzerentům sledovat své kampaně.
+Po připojení k Azure Database for PostgreSQL – Citus () pomocí psql můžete dokončit některé základní úlohy. Tento kurz vás provede vytvořením webové aplikace, která umožňuje inzerentům sledovat své kampaně.
 
 Aplikace může používat více společností, takže vytvoříme tabulku, která bude uchovávat společnosti a jinou pro své kampaně. V konzole psql spusťte tyto příkazy:
 
@@ -130,7 +130,7 @@ Víceklientské aplikace můžou vymáhat jedinečnost jenom pro každého tenan
 
 Nasazení v rámci škálování ukládá řádky tabulky na různých uzlech na základě hodnoty uživatelem označeného sloupce. Tento "distribuční sloupec" označuje, ve kterém tenantovi vlastní řádky.
 
-Nastavíme distribuční sloupec jako \_id společnosti, identifikátor tenanta. V psql spusťte tyto funkce:
+Nastavíme distribuční sloupec jako ID\_společnosti, identifikátor tenanta. V psql spusťte tyto funkce:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -211,7 +211,7 @@ Načtěte ho s ukázkovými daty. Nezapomeňte spustit tento příkaz v psql zev
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Spojování tabulky kliknutí s geografickým \_ips je efektivní na všech uzlech.
+Připojení tabulky kliknutí s geografickými\_mi IP adresami je efektivní na všech uzlech.
 Tady je spojení, kde najdete umístění všech uživatelů, kteří na reklamu klikli.
 290. Zkuste spustit dotaz v psql.
 

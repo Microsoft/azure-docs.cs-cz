@@ -1,5 +1,5 @@
 ---
-title: 'Kurz k klasifikaci obrázků: Modely nasazení'
+title: 'Kurz k klasifikaci imagí: nasazení modelů'
 titleSuffix: Azure Machine Learning
 description: V tomto kurzu se dozvíte, jak použít Azure Machine Learning k nasazení modelu klasifikace image s scikit-učení v poznámkovém bloku Python Jupyter. Tento kurz je druhým z řad se dvěma částmi.
 services: machine-learning
@@ -10,14 +10,15 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 988f91d9ab644df4ecb375114abf4245440cbf13
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ae657daca86c979495ca14d9df845e2a7a769e0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162526"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476160"
 ---
-# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: Nasazení modelu klasifikace imagí v Azure Container Instances
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: nasazení modelu klasifikace imagí v Azure Container Instances
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Tento kurz je **druhou částí z dvoudílné série kurzů**. V [předchozím kurzu](tutorial-train-models-with-aml.md) jste trénovali modely strojového učení a pak jste zaregistrovali model ve vašem pracovním prostoru v cloudu.  
 
@@ -32,16 +33,22 @@ V této části kurzu použijete Azure Machine Learning pro následující úloh
 > * Nasaďte model do Container Instances.
 > * Otestujte nasazený model.
 
-Container Instances je skvělé řešení pro testování a porozumění pracovnímu postupu. Pro nasazení v produkčním prostředí škálovatelné zvažte použití služby Azure Kubernetes Service. Další informace naleznete v tématu [Jak nasadit a kde](how-to-deploy-and-where.md).
+Container Instances je skvělé řešení pro testování a porozumění pracovnímu postupu. V případě škálovatelných produkčních nasazení zvažte použití služby Azure Kubernetes. Další informace naleznete v tématu [Jak nasadit a kde](how-to-deploy-and-where.md).
 
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí sady Azure Machine Learning SDK 1.0.41 verze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete spustit Poznámkový blok, nejdřív dokončete [výuku modelu v kurzu (část 1): Výukový model](tutorial-train-models-with-aml.md)klasifikace image   Pak otevřete Poznámkový blok **kurzy/img-Classification-part2-Deploy. ipynb** pomocí stejného serveru poznámkového bloku.
+Pokud chcete spustit Poznámkový blok, nejdřív dokončete školení modelu v [kurzu (část 1): výuka modelu klasifikace imagí](tutorial-train-models-with-aml.md).   Pak otevřete Poznámkový blok **img-Classification-Část2-Deploy. ipynb** ve složce klonovaných **kurzů** .
 
-Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte `matplotlib` nainstalované `scikit-learn` a ve vašem prostředí. 
+Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte ve svém prostředí nainstalovanou `matplotlib` a `scikit-learn`. 
+
+> [!Important]
+> Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v poznámkovém bloku.  
+>
+> Pokud chcete při spuštění kódu číst společně, přepněte do poznámkového bloku Jupyter.
+> Pokud chcete na poznámkovém bloku spustit jednu buňku kódu, klikněte na buňku kódu a stiskněte **SHIFT + ENTER**. Případně spusťte celý Poznámkový blok výběrem možnosti **Spustit vše** na horním panelu nástrojů.
 
 ## <a name="start"></a>Nastavení prostředí
 
@@ -231,7 +238,7 @@ myenv.add_conda_package("scikit-learn")
 with open("myenv.yml", "w") as f:
     f.write(myenv.serialize_to_string())
 ```
-Zkontrolujte obsah `myenv.yml` souboru:
+Zkontrolujte obsah souboru `myenv.yml`:
 
 ```python
 with open("myenv.yml", "r") as f:
@@ -258,8 +265,8 @@ Odhadovaná doba k dokončení nasazení je **přibližně sedm až osm minut**.
 Nakonfigurujte image a nasaďte ji. Následující kód provede tyto kroky:
 
 1. Sestavte Image pomocí těchto souborů:
-   * Soubor bodování, `score.py`.
-   * Soubor prostředí, `myenv.yml`.
+   * Soubor bodování `score.py`.
+   * Soubor prostředí `myenv.yml`.
    * Soubor modelu.
 1. Zaregistrujte image v pracovním prostoru. 
 1. Odeslat obrázek do kontejneru Container Instances.

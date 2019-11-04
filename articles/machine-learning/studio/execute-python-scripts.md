@@ -1,6 +1,6 @@
 ---
 title: Spouštění skriptů strojového učení v Pythonu
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio (classic)
 description: Naučte se používat modul spouštěného skriptu Pythonu pro použití kódu Pythonu v Machine Learning Studio (klasických) experimentech a webových službách.
 services: machine-learning
 ms.service: machine-learning
@@ -10,22 +10,22 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: bfc2efca0786838d528b3019a3aff405f46ef645
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 1be367191ab042611f45d1f773df0d499400c500
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053785"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493003"
 ---
-# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Spouštění skriptů strojového učení v Pythonu v nástroji Azure Machine Learning Studio
+# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Spouštění skriptů strojového učení v jazyce Python v Azure Machine Learning Studio (Classic)
 
 Python je cenným nástrojem v nástroji pro řadu vědeckých dat. Používá se v každé fázi typických pracovních postupů strojového učení, včetně průzkumu dat, extrakce funkcí, školení modelů a ověřování a nasazení.
 
-Tento článek popisuje, jak pomocí modulu spouštěného skriptu Pythonu používat v Azure Machine Learning Studio experimenty a webové služby kód Pythonu.
+Tento článek popisuje, jak pomocí modulu spouštěného skriptu Pythonu používat v Azure Machine Learning Studio (klasické) experimenty a webové služby kód Pythonu.
 
 ## <a name="using-the-execute-python-script-module"></a>Použití modulu spuštění skriptu Pythonu
 
-Primární rozhraní pro Python v nástroji Studio je prostřednictvím modulu [spuštění skriptu Pythonu][execute-python-script] . Akceptuje až tři vstupy a vytvoří až dva výstupy, podobně jako modul [spuštění skriptu jazyka R][execute-r-script] . Kód Pythonu je zadán do pole parametru prostřednictvím speciálně pojmenované funkce vstupního bodu s názvem `azureml_main`.
+Primární rozhraní pro Python v studiu (Classic) se provádí pomocí modulu [spouštění skriptu Pythonu][execute-python-script] . Akceptuje až tři vstupy a vytvoří až dva výstupy, podobně jako modul [spuštění skriptu jazyka R][execute-r-script] . Kód Pythonu je zadán do pole parametru prostřednictvím speciálně pojmenované funkce vstupního bodu s názvem `azureml_main`.
 
 ![Spustit modul Python Script](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -53,7 +53,7 @@ Funkce `azureml_main` musí vracet jeden PANDAS dataframe zabalený do [sekvence
 
 ## <a name="translation-of-input-and-output-data-types"></a>Překlad vstupních a výstupních datových typů
 
-Datové sady studia nejsou stejné jako v případě Panda dataframes. V důsledku toho se vstupní datové sady v studiu převedou na PANDAS dataframe a výstupní datové rámce se převedou zpátky na datové sady studia. Během tohoto procesu převodu jsou provedeny také následující překlady:
+Datové sady studia nejsou stejné jako v případě Panda dataframes. V důsledku toho se vstupní datové sady v klasické verzi studia převedou na PANDAS dataframe a výstupní datové rámce se převedou zpátky na datové sady studia (Classic). Během tohoto procesu převodu jsou provedeny také následující překlady:
 
  **Datový typ Pythonu** | **Postup překladu studia** |
 | --- | --- |
@@ -67,9 +67,9 @@ Datové sady studia nejsou stejné jako v případě Panda dataframes. V důsled
 
 ## <a id="import-modules"></a>Importují se existující moduly skriptu Pythonu.
 
-Back-end používaný ke spuštění Pythonu vychází z [Anaconda](https://www.anaconda.com/distribution/), široce používaného vědecké distribuce Pythonu. Obsahuje téměř 200 nejčastějších balíčků Python používaných v úlohách orientovaných na data. Studio v současné době nepodporuje pro instalaci a správu externích knihoven použití systémů správy balíčků, jako je PIP nebo conda.  Pokud potřebujete přidat další knihovny, použijte jako vodítko následující scénář.
+Back-end používaný ke spuštění Pythonu vychází z [Anaconda](https://www.anaconda.com/distribution/), široce používaného vědecké distribuce Pythonu. Obsahuje téměř 200 nejčastějších balíčků Python používaných v úlohách orientovaných na data. Klasická verze studia v současné době nepodporuje pro instalaci a správu externích knihoven použití systémů správy balíčků jako PIP nebo conda.  Pokud potřebujete přidat další knihovny, použijte jako vodítko následující scénář.
 
-Běžným případem použití je zahrnutí stávajících skriptů Pythonu do experimentů studia. Modul [spuštění skriptu Pythonu][execute-python-script] přijímá soubor zip, který obsahuje moduly Pythonu na třetím vstupním portu. Soubor je v době běhu extrahován rozhraním a obsah se přidá do cesty knihovny interpretu Pythonu. Funkce vstupního bodu `azureml_main` pak může tyto moduly importovat přímo. 
+Běžným případem použití je zahrnutí stávajících skriptů Pythonu do klasické verze sady Studio experimentů. Modul [spuštění skriptu Pythonu][execute-python-script] přijímá soubor zip, který obsahuje moduly Pythonu na třetím vstupním portu. Soubor je v době běhu extrahován rozhraním a obsah se přidá do cesty knihovny interpretu Pythonu. Funkce vstupního bodu `azureml_main` pak může tyto moduly importovat přímo. 
 
 Například zvažte, že soubor Hello.py obsahující jednoduchou funkci "Hello, World".
 
@@ -79,7 +79,7 @@ V dalším kroku vytvoříme soubor Hello. zip, který obsahuje Hello.py:
 
 ![Soubor ZIP obsahující kód Pythonu definovaný uživatelem](./media/execute-python-scripts/figure5.png)
 
-Nahrajte soubor ZIP jako datovou sadu do studia. Pak vytvořte a spusťte experiment, který pomocí kódu Pythonu v souboru Hello. zip připojíte k třetímu vstupnímu portu modulu pro **spuštění skriptu Pythonu** , jak je znázorněno na následujícím obrázku.
+Nahrajte soubor ZIP jako datovou sadu do klasické verze studia. Pak vytvořte a spusťte experiment, který pomocí kódu Pythonu v souboru Hello. zip připojíte k třetímu vstupnímu portu modulu pro **spuštění skriptu Pythonu** , jak je znázorněno na následujícím obrázku.
 
 ![Ukázkový experiment s Hello. zip jako vstup pro modul spuštění skriptu Pythonu](./media/execute-python-scripts/figure6a.png)
 
@@ -94,7 +94,7 @@ Výstup modulu ukazuje, že se soubor zip rozbalí a že funkce `print_hello` by
 K datům uloženým v účtu Azure Blob Storage můžete přistupovat pomocí těchto kroků:
 
 1. Stáhněte si [balíček Azure Blob Storage pro Python](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) místně.
-1. Nahrajte soubor zip do pracovního prostoru studia jako datovou sadu.
+1. Nahrajte soubor zip do pracovního prostoru studia (Classic) jako datovou sadu.
 1. Vytvořte objekt BlobService pomocí `protocol='http'`
 
 ```
@@ -141,11 +141,11 @@ Tento proces je znázorněn v následujících obrázcích, které tvoří matic
 
 ![Vizualizace pro ukázkový experiment pomocí kódu Pythonu](./media/execute-python-scripts/figure-v2-9b.png)
 
-Je možné vrátit více hodnot tak, že je uložíte do různých imagí. Modul runtime studia vybere všechny obrázky a zřetězuje je pro vizualizaci.
+Je možné vrátit více hodnot tak, že je uložíte do různých imagí. Klasická verze studia runtime bere všechny obrázky a zřetězuje je pro vizualizaci.
 
 ## <a name="advanced-examples"></a>Rozšířené příklady
 
-Prostředí Anaconda nainstalované v studiu obsahuje běžné balíčky, jako je NumPy, SciPy a Scikits – Naučte se. Tyto balíčky je možné efektivně využít ke zpracování dat v kanálu strojového učení.
+Prostředí Anaconda nainstalované v klasické verzi studia obsahuje běžné balíčky, jako je NumPy, SciPy a Scikits – informace. Tyto balíčky je možné efektivně využít ke zpracování dat v kanálu strojového učení.
 
 Například následující experimenty a skripty ilustrují použití Scikitsch doplňků v – informace o hodnocení důležitosti funkcí pro datovou sadu. Skóre lze použít k provedení výběru funkcí pod dohledem před jejich odesláním do jiného modelu.
 
@@ -153,7 +153,7 @@ Tady je funkce Pythonu, která slouží k výpočtu skóre důležitosti a objed
 
 ![Funkce pro hodnocení funkcí podle skóre](./media/execute-python-scripts/figure8.png)
 
-Následující experiment pak vypočítá a vrátí hodnocení důležitosti funkcí v datové sadě "Pima indických diabetes" v Azure Machine Learning Studio:
+Následující experiment pak vypočítá a vrátí hodnocení důležitosti funkcí v datové sadě "Pima indických diabetes" v klasické verzi Azure Machine Learning Studio:
 
 ![Experimentování k funkcím Rank v Pima datové sadě indických diabetes pomocí Pythonu](./media/execute-python-scripts/figure9a.png)
 
@@ -173,7 +173,7 @@ Modul Python v současné době nepodporuje funkce rozhraní IDE, jako je Intell
 
 ### <a name="single-data-frame-output"></a>Výstup s jedním datovým snímkem
 
-Vstupní bod Pythonu smí vracet pouze jeden datový rámec jako výstup. V tuto chvíli není možné vracet libovolné objekty Pythonu, jako jsou například školené modely, přímo zpět do modulu runtime studia. Stejně jako spouštěcí [skript jazyka R][execute-r-script], který má stejné omezení, je možné v mnoha případech do rozevíracích objektů do pole bajtů a pak vracet v rámci datového rámce.
+Vstupní bod Pythonu smí vracet pouze jeden datový rámec jako výstup. V současné době není možné vracet libovolné objekty Pythonu, jako jsou například školené modely, přímo zpět do modulu runtime studia (Classic). Stejně jako spouštěcí [skript jazyka R][execute-r-script], který má stejné omezení, je možné v mnoha případech do rozevíracích objektů do pole bajtů a pak vracet v rámci datového rámce.
 
 ### <a name="inability-to-customize-python-installation"></a>Nemožnost přizpůsobení instalace Pythonu
 

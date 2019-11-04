@@ -1,7 +1,7 @@
 ---
-title: Položte otázku, na které můžete odpovědět dat
-titleSuffix: Azure Machine Learning Studio
-description: Zjistěte, jak formulovat otázku sharp data science v datová věda pro začátečníky videa 3. Obsahuje porovnání klasifikačních a regresních dotazy.
+title: Položte dotaz na data, která můžou odpovědět
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Naučte se formulovat ostrost vědeckých otázek v oblasti datových věd pro začátečníky – video 3. Obsahuje porovnání otázek klasifikace a regrese.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 7343692e8484e50a02963b4528889a35cc1fcaa6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f0064d30c96a143dd2e53637a681e4a7ee0bc30
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239082"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493177"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Položení otázky, na kterou lze odpovědět pomocí dat
-## <a name="video-3-data-science-for-beginners-series"></a>Video 3: Datová věda pro začátečníky řady
-Zjistěte, jak na otázky v datová věda pro začátečníky videa 3 formulovat problém datové vědy. Toto video obsahuje porovnání otázek klasifikačních a regresních algoritmů.
+## <a name="video-3-data-science-for-beginners-series"></a>Video 3: řada pro datové vědy pro začátečníky
+Naučte se formulovat problém s datovou vědy na otázky v oblasti datové vědy pro začátečníky – video 3. Toto video obsahuje porovnání otázek pro klasifikaci a regresní algoritmy.
 
-Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](#other-videos-in-this-series)
+Pokud chcete získat maximum z řady, Sledujte je vše. [Přejít na seznam videí](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
@@ -28,68 +28,68 @@ Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](
 >
 
 ## <a name="other-videos-in-this-series"></a>Další videa v této sérii
-*Datová věda pro začátečníky* článek obsahuje rychlý úvod do datových věd v pěti krátkých videích.
+*Data vědy pro začátečníky* je rychlý Úvod k datové vědy v pěti krátkých videích.
 
-* Video 1: [5 otázky, které odpovídá vědecké zkoumání dat](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek)*
-* Video 2: [Jsou vaše data připravená pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek)*
-* Video 3: Položení otázky, na kterou lze odpovědět pomocí dat
-* Video 4: [Předpovídání odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek)*
-* Video 5: [Kopírování práce jiných lidí pro vědecké zkoumání dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
+* Video 1: [5 otázek pro datové vědy](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min. 14 sec)*
+* Video 2: [jsou vaše data připravená pro datové vědy?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min. 56 s)*
+* Video 3: Položte otázku, na kterou můžete odpovědět pomocí dat
+* Video 4: [předpověď odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 s)*
+* Video 5: [kopírování práce jiných lidí do oblasti datové vědy](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min. 18 sec)*
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Přepisu: Položení otázky, na kterou lze odpovědět pomocí dat
-Vítá vás třetí videa v této sérii "Datová věda pro začátečníky."  
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Přepis: Položte otázku, na kterou můžete odpovědět pomocí dat.
+Vítá vás třetí video v řadě "datové vědy pro začátečníky".  
 
-Do tohoto objektu za získáte některé tipy pro formulování otázky, na kterou lze odpovědět pomocí dat.
+V tomto případě získáte několik tipů pro formulaci otázky, na kterou můžete odpovědět s daty.
 
-Může se zobrazit informace z tohoto videa, pokud nejprve sledovat dvě starší videa v této sérii: "5 otázek datové vědy můžete odpovědět na" a "Je vaše data připravená pro vědecké zpracování dat?"
+Při prvním sledování těchto dvou předchozích videí v této sérii můžete dostat více z tohoto videa: "5 otázek pro datové vědy může odpovídat" a "vaše data jsou připravená na datovou vědu?"
 
-## <a name="ask-a-sharp-question"></a>Zeptejte se sharp
-Už jsme mluvili o tom, jak pro datové vědy je proces použití názvů (také nazývané kategorií nebo popisky) a čísel pro předpověď odpovědi na dotaz. Ale nemůže být jen na každou otázku; je třeba *sharp otázku.*
+## <a name="ask-a-sharp-question"></a>Zeptat se na ostřejší dotaz
+Mluvilii jsme, jak je datová věda proces použití názvů (označovaných také jako kategorie nebo popisky), a čísla k předpovědi odpovědi na otázku. Ale nemůže to být jenom žádné otázky; musí se jednat o *ostřejší dotaz.*
 
-Vágní dotaz nemusí jako odpověď získat název nebo číslo. Musí být sharp otázku.
+Otázka Vague nemusí být zodpovězena s názvem nebo číslem. Musí se jednat o ostřejší dotaz.
 
-Představte si, že jste našli magic lamp s genie, který bude pravdivě odpovědět na každou otázku, kterou požadujete. Ale je mischievous genie, kteří se pokusí provést jejich odpověď jako vágní a matoucí, jak můžete hned začít s. Chcete připínat je mimo provoz s dotaz vzduchotěsným tak, že nemůže pomoct ale říct, co potřebujete vědět.
+Představte si, že jste narazili na Genie, který bude pravdivě odpovídat na všechny otázky, které požadujete. Ale jedná se o mischievous Genie, který se pokusí učinit svou odpověď jako Vague a je matoucí, protože vám může dodržet. Chcete je připnout s otázkou, aby vám Airtight, že vám nemůžou poznat, co chcete vědět.
 
-Pokud byste chtěli položit vágní dotaz, jako je "Co se to stát se Moje akcie?", může odpovědět genie, "se změní cena". Který je truthful odpověď, ale není velmi užitečné.
+Pokud byste se chtěli zeptat na Vague otázku, třeba "co se stane s mým zásobou", Genie může odpovídat "cena se změní". To je věrné odpověď, ale není velmi užitečná.
 
-Ale pokud byste chtěli položit otázku sharp, jako je "Co Moje akcie prodejní cena bude příští týden?", nelze genie pomoci ale poskytují konkrétní odpovědět a předpovědět cenu prodej.
+Pokud byste ale položili ostřejší dotaz, třeba "co by cena za cenu akcií byla na příští týden?", Genie nemůže pomoc, ale poskytne vám konkrétní odpověď a předpovědět prodejní cenu.
 
-## <a name="examples-of-your-answer-target-data"></a>Příklady odpovědi: Cíl dat
-Jakmile jste formulovat otázku, zaškrtněte, pokud chcete zjistit, jestli máte příklady odpovědi ve vašich datech.
+## <a name="examples-of-your-answer-target-data"></a>Příklady vaší odpovědi: cílová data
+Po formulaci otázky zkontrolujte, jestli máte v datech příklady odpovědi.
 
-Pokud je naše otázku "Co Moje akcie prodejní cena bude příští týden?" potom máme Ujistěte se, že naše data obsahují historii minimální cenu akcie.
+Pokud je naše otázka "Co znamená, že je cena za prodej v mém skladu příští týden?" pak musíme zajistit, aby naše data obsahovala historii cen akcií.
 
-Pokud je naše otázku "které car v mé fleet bude selhání nejprve?" potom máme Ujistěte se, že naše data zahrnují informace o předchozích chybách.
+Pokud se jedná o otázku, kterou auto v mém loďstvu napřed chybou? " pak musíme zajistit, aby naše data obsahovala informace o předchozích chybách.
 
-![Cíl dat – příklady odpověď. Formulovat otázku datové vědy.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
+![Cílová data – příklady vaší odpovědi. Formulujte otázku pro datové vědy.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
 
-Tyto příklady odpovědi se označují jako cíl. Cílem je, co se pokoušíme předpovídat budoucí datové body, ať už jde o kategorii nebo číslo.
+Tyto příklady odpovědí se nazývají cíle. Cílem je, že se snažíme předpovědět budoucí datové body, ať už se jedná o kategorii nebo číslo.
 
-Pokud nemáte k dispozici žádná data target, budete muset získat některé. Nebude moct vaši otázku odpověděl bez něj.
+Pokud nemáte žádná cílová data, budete je muset získat. Nebudete moct odpovědět na svoji otázku bez něj.
 
-## <a name="reformulate-your-question"></a>Byla znovu formulována svůj dotaz
-Někdy může změna znění váš dotaz, chcete-li získat odpovědi na další užitečné.
+## <a name="reformulate-your-question"></a>Přeformulování otázky
+V některých případech můžete své otázky přeformulovat, abyste získali užitečnější odpověď.
 
-Na otázku "Je tento datový bod A nebo B?" předpovídá kategorie (nebo název nebo popisek) určitého objektu. Přijměte hovor, použijeme *klasifikační algoritmus*.
+Otázka "je tento datový bod A nebo B?" předpovídá kategorii (nebo název nebo popisek) nějakého typu. K zodpovězení používáme *klasifikační algoritmus*.
 
-Na otázku "Kolik?" nebo "Kolik?" předvídá množství. Přijměte hovor, použijeme *regresní algoritmus*.
+Otázka "kolik věcí?" nebo "kolik?" předpovídá částku. K zodpovězení používáme *regresní algoritmus*.
 
-Pokud chcete zobrazit, jak můžete transformujeme tyto, Podívejme se na otázku "které text zprávy je nejzajímavějších tento čtečku?" Požádá predikcí jeden podle výběru z mnoha možností – jinými slovy "Je tento A nebo B nebo C nebo D?" - a využije klasifikační algoritmus.
+Pokud chcete zjistit, jak můžeme tyto funkce transformovat, Podívejme se na otázku "který příběh je nejzajímavější pro tento čtenář?" Žádá o předpověď jedné volby z mnoha možností – jinými slovy je toto A nebo B nebo C nebo D? -a by používal algoritmus klasifikace.
 
-Ale tento dotaz může být jednodušší zodpovědět, pokud Změna znění jako "jak zajímavé je každý scénář v tomto seznamu prohlížeč?" Nyní můžete poskytnout každý článek v číselné skóre a potom je snadno rozpoznat článek nejvyšší hodnocení. Jedná se naformulovat jinak klasifikace otázku do pole pro otázku regrese nebo kolik?
+Ale tato otázka může být jednodušší, pokud ji předáte jako "jak zajímavá je každý příběh v tomto seznamu pro tento čtenář?" Nyní můžete každému článku poskytnout číselné skóre a potom snadno identifikovat článek s nejvyšším hodnocením. Toto je změna formulace otázky klasifikace na otázku regrese nebo kolik?
 
-![Byla znovu formulována svůj dotaz. Klasifikace otázka vs. regrese otázku.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
+![Přeformulujte svůj dotaz. Otázka klasifikace vs. regresní otázka](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
 
-Jak položit otázku je vodítko, které algoritmus vám může poskytnout odpověď.
+Dotaz na otázku je formulace, na kterou vám může poskytnout odpověď.
 
-Zjistíte, že jsou určité druhy algoritmy – stejně jako ty v našem příkladu textu zprávy – úzce souvisí. Byla znovu formulována váš dotaz použít algoritmus, který poskytuje nejužitečnější odpovědí.
+Zjistíte, že některé rodiny algoritmů, jako jsou ty v našem příkladu zprávy, jsou úzce propojené. Můžete znovu formulovat svou otázku a použít algoritmus, který vám poskytne nejužitečnější odpověď.
 
-Ale nejdůležitější položit otázku, kterou lze odpovědět pomocí dat tohoto sharp dotaz -. A ujistěte se, že máte správné dat pro potřeby odpovědí jej.
+Ale nejdůležitějším požádáme o ostrost dotazů – otázka, kterou můžete na data odpovědět. A ujistěte se, že máte správná data pro zodpovězení.
 
-Už jsme mluvili o některé základní principy položení dotazu, že vám pomůže odpovědět s daty.
+Mluvilii jsme se o některých základních principech pro dotazování na otázku, na kterou můžete odpovědět pomocí dat.
 
-Nezapomeňte se podívat na další videa v "Datové vědě pro začátečníky" z Microsoft Azure Machine Learning Studio.
+Nezapomeňte se podívat na další videa v oblasti "data vědy pro začátečníky" z Microsoft Azure Machine Learning Studio (Classic).
 
-## <a name="next-steps"></a>Další postup
-* [Zkuste prvního experimentu vědy data s Machine Learning Studio](create-experiment.md)
-* [Úvod do strojového učení v Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+## <a name="next-steps"></a>Další kroky
+* [Vyzkoušejte si první experiment pro datové vědy s Machine Learning Studio (Classic)](create-experiment.md)
+* [Seznámení s Machine Learningem Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

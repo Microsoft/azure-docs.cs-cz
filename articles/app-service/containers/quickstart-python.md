@@ -16,12 +16,12 @@ ms.author: cephalin
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 8c3015f78df1427af760f14bd948057643ef2a98
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 69e7cfef01005432a99dd10ed5bc7f004562e582
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990831"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470825"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -207,17 +207,19 @@ Pokud chcete streamování protokolů kdykoli zastavit, zadejte `Ctrl`+`C`.
 
 ## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 
-Aplikaci, kterou jste vytvořili v <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, můžete spravovat. 
+Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete <a href="https://portal.azure.com" target="_blank">Azure Portal</a> . Vyhledejte a vyberte **App Services**.
 
-V nabídce vlevo vyberte **App Services**a pak vyberte název aplikace Azure.
+![Přejděte na App Services v Azure Portal](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
+
+Vyberte název aplikace Azure.
 
 ![Přejděte do aplikace Python v App Services Azure Portal](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
-Zobrazí se stránka s přehledem vaší aplikace. Na této stránce můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
+Zobrazí se stránka s přehledem vaší aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
 
 ![Správa aplikace v Pythonu na stránce s přehledem v Azure Portal](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
-Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplikace. 
+V nabídce App Service najdete různé stránky pro konfiguraci vaší aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

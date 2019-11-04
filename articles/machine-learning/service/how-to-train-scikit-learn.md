@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 707c6d99d4c5f4335ff771bdd916b2ee37092604
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ec1ea8bac35906969f051a70c44bd6f0685dc942
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710061"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489431"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Sestavujte modely scikit s využitím škálování pomocí Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak spustit školicí skripty scikit v podnikovém měřítku pomocí třídy [skriptu sklearn Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) v Azure Machine Learning. 
 
@@ -25,10 +26,10 @@ V ukázkových skriptech v tomto článku se používají ke klasifikaci imagí 
 
 Bez ohledu na to, jestli provedete výukový model Machine Learning scikit z provozu nebo do cloudu převedete existující model, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh pomocí elastických výpočetních prostředků pro Cloud. Pomocí Azure Machine Learning můžete sestavovat, nasazovat, používat verzi a monitorovat modely produkčního prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Spusťte tento kód v jednom z těchto prostředí:
- - Virtuální počítač s poznámkovým blokem Azure Machine Learning – nemusíte stahovat nebo instalovat
+ - Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
 
     - Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
     - Ve složce školení ukázek na serveru pro Poznámkový blok Najděte dokončený a rozbalený Poznámkový blok tak, že přejdete na tento adresář: **How-to->-azureml ml-framework > scikit-učení > školení >** složka.
@@ -46,7 +47,7 @@ Spusťte tento kód v jednom z těchto prostředí:
 
 Tato část nastavuje experiment pro školení načtením požadovaných balíčků Pythonu, inicializací pracovního prostoru, vytvořením experimentu a nahráním školicích dat a školicích skriptů.
 
-### <a name="import-packages"></a>Importovat balíčky
+### <a name="import-packages"></a>Import balíčků
 
 Nejdřív importujte nezbytné knihovny Pythonu.
 
@@ -88,7 +89,7 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 V tomto kurzu jste si už pro vás poskytli školicí skript **train_iris. py** . V praxi byste měli být schopni vzít libovolný vlastní školicí skript a spustit ho s Azure ML bez nutnosti upravovat kód.
 
-Pokud chcete používat funkce sledování a metrik Azure ML, přidejte do školicího skriptu malý objem kódu Azure ML.  Školicí skript **train_iris. py** ukazuje, jak zaznamenat některé metriky do běhu Azure ml pomocí objektu `Run` v rámci skriptu.
+Pokud chcete používat funkce sledování a metrik Azure ML, přidejte do školicího skriptu malý objem kódu Azure ML.  Školicí skript **train_iris. py** ukazuje, jak protokolovat některé metriky do Azure ml běhu pomocí objektu `Run` ve skriptu.
 
 Zadaný školicí skript používá ukázková data z funkce `iris = datasets.load_iris()`.  Pro vlastní data možná budete muset použít kroky, jako je například [nahrát datovou sadu a skripty](how-to-train-keras.md#data-upload) k zpřístupnění dat během školení.
 
@@ -125,9 +126,9 @@ Další informace o výpočetních cílech najdete v článku [co je cílový v�
 
 ## <a name="create-a-scikit-learn-estimator"></a>Vytvoření scikit-učit Estimator
 
-[Scikit-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) poskytuje jednoduchý způsob, jak spustit výukovou úlohu s scikitmi postupy na výpočetním cíli. Je implementována prostřednictvím třídy [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) , kterou lze použít k podpoře školení procesoru s jedním uzlem.
+[Scikit-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) poskytuje jednoduchý způsob, jak spustit výukovou úlohu s scikitmi postupy na výpočetním cíli. Je implementována prostřednictvím [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) třídy, kterou lze použít k podpoře školení procesoru s jedním uzlem.
 
-Pokud váš školicí skript potřebuje ke spuštění další balíčky PIP nebo Conda, můžete je nainstalovat ve výsledné imagi Docker předáním jejich názvů pomocí argumentů `pip_packages` a `conda_packages`.
+Pokud váš školicí skript potřebuje ke spuštění další balíčky PIP nebo Conda, můžete je nainstalovat ve výsledné imagi Docker předáním jejich názvů prostřednictvím `pip_packages` a `conda_packages`ch argumentů.
 
 ```Python
 from azureml.train.sklearn import SKLearn

@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: a6c3b8485a3243d7c89ab409a2fb83b1b045c9ba
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 778836661ff15c334823f95fef42acadb3e8b649
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121980"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470143"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s certifikátem domény a SSL v Azure App Service
 
 V tomto článku jsou uvedené běžné problémy, se kterými se můžete setkat při konfiguraci domény nebo certifikátu SSL pro webové aplikace v Azure App Service. Popisuje také možné příčiny a řešení těchto problémů.
 
-Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [fórech MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [fórech MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -70,18 +70,18 @@ Odeberte vazbu SSL pro tento certifikát z aplikací. Pak zkuste certifikát ods
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>Nemůžete si koupit certifikát App Service. 
 
 #### <a name="symptom"></a>Příznak
-Z Azure Portal si nemůžete koupit [certifikát Azure App Service](./web-sites-purchase-ssl-web-site.md) .
+Z Azure Portal si nemůžete koupit [certifikát Azure App Service](./configure-ssl-certificate.md#import-an-app-service-certificate) .
 
 #### <a name="cause-and-solution"></a>Příčina a řešení
 K tomuto problému může dojít z některého z následujících důvodů:
 
 - Plán App Service je bezplatný nebo sdílený. Tyto cenové úrovně nepodporují protokol SSL. 
 
-    **Řešení**: Upgradujte App Service plán pro aplikaci na standard.
+    **Řešení**: upgradujte App Service plán pro aplikaci na standard.
 
 - Předplatné nemá platnou platební kartu.
 
-    **Řešení**: Přidejte do svého předplatného platnou platební kartu. 
+    **Řešení**: přidejte do svého předplatného platnou platební kartu. 
 
 - Nabídka předplatného nepodporuje nákup certifikátu App Service, jako je například Microsoft student.  
 
@@ -89,14 +89,14 @@ K tomuto problému může dojít z některého z následujících důvodů:
 
 - Předplatné dosáhlo limitu nákupů, které jsou povoleny v rámci předplatného.
 
-    **Řešení**: Pro typy předplatného s průběžnými platbami a EA mají App Service certifikáty limit 10 nákupů certifikátů. Pro jiné typy předplatného je limit 3. Pokud chcete tento limit zvýšit, kontaktujte [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Certifikát App Service byl označen jako podvod. Zobrazila se tato chybová zpráva: "Certifikát byl označen jako označený jako možný podvod. V tuto chvíli je žádost v současnosti pod kontrolou. Pokud se certifikát nestane použitelným během 24 hodin, obraťte se na podporu Azure. "
+    **Řešení**: App Service certifikáty mají omezení 10 nákupů certifikátů pro typy předplatného s průběžnými platbami a EA. Pro jiné typy předplatného je limit 3. Pokud chcete tento limit zvýšit, kontaktujte [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Certifikát App Service byl označen jako podvod. Zobrazila se následující chybová zpráva: "váš certifikát byl označen příznakem pro případné podvody. V tuto chvíli je žádost v současnosti pod kontrolou. Pokud se certifikát nestane použitelným během 24 hodin, obraťte se na podporu Azure. "
 
-    **Řešení**: Pokud je certifikát označený jako podvod a po 24 hodinách se nevyřešil, postupujte takto:
+    **Řešení**: Pokud je certifikát označený jako podvod a za 24 hodin se nevyřešil, postupujte podle těchto kroků:
 
-    1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+    1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
     2. Přejít na **App Service certifikáty**a vyberte certifikát.
-    3. Vyberte **Konfigurace** > certifikátukrok2: **Ověřte**ověření > **domény**. Tento krok pošle e-mailové oznámení poskytovateli certifikátů Azure, aby problém vyřešil.
+    3. Vyberte **Konfigurace certifikátu** > **Krok 2: ověření** > **ověření domény**. Tento krok pošle e-mailové oznámení poskytovateli certifikátů Azure, aby problém vyřešil.
 
 ## <a name="custom-domain-problems"></a>Problémy s vlastní doménou
 
@@ -116,7 +116,7 @@ V vlastní doméně, kterou jste nakonfigurovali, chybí záznam CNAME nebo záz
 
 **Řešení 1. příčiny**
 
-- Pokud jste přidali záznam A, ujistěte se, že je přidán také záznam TXT. Další informace najdete v tématu [vytvořte záznam a](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
+- Pokud jste přidali záznam A, ujistěte se, že je přidán také záznam TXT. Další informace najdete v tématu [Vytvoření záznamu A](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
 - Pokud pro vaši aplikaci nemusíte používat kořenovou doménu, doporučujeme místo záznamu A použít záznam CNAME.
 - Nepoužívejte záznam CNAME a záznam a pro stejnou doménu. Tento problém může způsobit konflikt a zabránit tomu, aby se doména vyřešila. 
 
@@ -196,9 +196,9 @@ App Service automaticky synchronizuje certifikát během 48 hodin. Při otočen�
 
 Můžete vynutit synchronizaci certifikátu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **App Service certifikáty**a pak vyberte certifikát.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **App Service certifikáty**a pak vyberte certifikát.
 2. Vyberte opětovné vytvoření klíče **a synchronizaci**a pak vyberte **synchronizovat**. Dokončení synchronizace trvá déle. 
-3. Po dokončení synchronizace se zobrazí následující oznámení: "Úspěšně se aktualizovaly všechny prostředky s nejnovějším certifikátem."
+3. Po dokončení synchronizace se zobrazí následující oznámení: "úspěšně se aktualizovaly všechny prostředky s nejnovějším certifikátem".
 
 ### <a name="domain-verification-is-not-working"></a>Ověřování domény nefunguje 
 
@@ -219,7 +219,7 @@ Jako alternativu můžete použít metodu webové stránky HTML k ručnímu ově
 3.  Tento soubor nahrajte do kořenového adresáře webového serveru, který je hostitelem vaší domény.
 4.  Vyberte **aktualizovat** a ověřte stav certifikátu. Dokončení ověření může trvat několik minut.
 
-Pokud například koupíte standardní certifikát pro Azure.com s tokenem pro ověření domény 1234abcd, https://azure.com/1234abcd.html měla by webová žádost vrátit 1234abcd. 
+Pokud například koupíte standardní certifikát pro azure.com s tokenem pro ověření domény 1234abcd, webový požadavek https://azure.com/1234abcd.html by měl vrátit 1234abcd. 
 
 > [!IMPORTANT]
 > Dokončení operace ověření domény pro pořadí certifikátů má pouze 15 dní. Po 15 dnech certifikát odepře certifikační autorita a za certifikát se vám neúčtují poplatky. V takové situaci odstraňte tento certifikát a zkuste to znovu.
@@ -237,11 +237,11 @@ K tomuto problému dochází z jednoho z následujících důvodů:
 
 - V předplatném Azure není žádná kreditní karta nebo platební karta není platná.
 
-    **Řešení**: Přidejte do svého předplatného platnou platební kartu.
+    **Řešení**: přidejte do svého předplatného platnou platební kartu.
 
 - Nejste vlastníkem předplatného, takže nemáte oprávnění k nákupu domény.
 
-    **Řešení**: Přiřaďte k vašemu účtu [roli vlastníka](../role-based-access-control/role-assignments-portal.md) . Nebo se obraťte na správce předplatného, aby získal oprávnění k nákupu domény.
+    **Řešení**: [přiřaďte](../role-based-access-control/role-assignments-portal.md) k vašemu účtu roli vlastníka. Nebo se obraťte na správce předplatného, aby získal oprávnění k nákupu domény.
 - Dosáhli jste limitu pro nákupy domén v rámci vašeho předplatného. Aktuální limit je 20.
 
     **Řešení**: Pokud chcete požádat o zvýšení limitu, obraťte se na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
@@ -261,22 +261,22 @@ K tomuto problému dochází z jednoho z následujících důvodů:
 
 - Nemáte oprávnění přidat název hostitele.
 
-    **Řešení**: Požádejte správce předplatného, aby vám udělil oprávnění k přidání názvu hostitele.
+    **Řešení**: požádejte správce předplatného, aby vám udělil oprávnění k přidání názvu hostitele.
 - Nebylo možné ověřit vlastnictví domény.
 
-    **Řešení**: Ověřte, že je záznam CNAME nebo A správně nakonfigurován. K namapování vlastní domény na aplikaci vytvořte záznam CNAME nebo záznam A. Pokud chcete použít kořenovou doménu, je nutné použít záznamy a. TXT:
+    **Řešení**: Ověřte, že je záznam CNAME nebo a správně nakonfigurován. K namapování vlastní domény na aplikaci vytvořte záznam CNAME nebo záznam A. Pokud chcete použít kořenovou doménu, je nutné použít záznamy a. TXT:
 
-    |Typ záznamu|Host|Ukázat na|
+    |Typ záznamu|Hostitel|Ukázat na|
     |------|------|-----|
     |A|@|IP adresa pro aplikaci|
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Musím po nákupu nakonfigurovat vlastní doménu pro svůj web?**
 
-Když si koupíte doménu z Azure Portal, App Service aplikace se automaticky nakonfiguruje tak, aby používala tuto vlastní doménu. Nemusíte provádět žádné další kroky. Další informace najdete v [tématu Azure App Service svépomocnou nápovědu: Přidejte vlastní název](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) domény v channel9.
+Když si koupíte doménu z Azure Portal, App Service aplikace se automaticky nakonfiguruje tak, aby používala tuto vlastní doménu. Nemusíte provádět žádné další kroky. Další informace najdete v [Azure App Service vlastní nápovědu: Přidání vlastního názvu domény](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) v channel9.
 
 **Můžu místo toho použít doménu zakoupenou v Azure Portal, aby odkazovala na virtuální počítač Azure?**
 
@@ -286,7 +286,7 @@ Ano, doménu můžete nasměrovat na virtuální počítač. Další informace n
 
 App Service domény používají GoDaddy k registraci domény a Azure DNS k hostování domén. 
 
-**Bylo povoleno automatické obnovení, ale v e-mailu se stále dostalo oznámení o obnovení pro moji doménu. Co bych měl/a dělat?**
+**Bylo povoleno automatické obnovení, ale v e-mailu se stále dostalo oznámení o obnovení pro moji doménu. Co mám dělat?**
 
 Pokud jste povolili automatické obnovení, nemusíte provádět žádnou akci. E-mail s oznámením vám poskytne informace o tom, že se doména blíží k vypršení platnosti a že se má obnovit ručně, pokud není povolená Automatická obnova.
 

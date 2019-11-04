@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: b741e928ed80a045b61d79f99d2436577ca864b0
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d97470494af0d64cc20d78d69957d84a8acebc16
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027710"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494907"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hive
 
@@ -73,7 +73,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `<username>` účtem přihlášení clusteru pro váš cluster. Poznámka: clustery ESP používají celý hlavní název uživatele (např. user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
 
-Privátní koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v [tomto](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) tématu. Pomocí příkazu `curl` s možností `-v` můžete vyřešit potíže s připojením k s veřejnými nebo soukromými koncovými body před použitím Beeline.
+Privátní koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v tématu [omezení globálních partnerských vztahů virtuální sítě a nástrojů pro vyrovnávání zatížení](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Pomocí příkazu `curl` s možností `-v` můžete řešit problémy s připojením s veřejnými nebo soukromými koncovými body před použitím Beeline.
 
 ---
 
@@ -97,7 +97,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `<username>` účtem přihlášení clusteru pro váš cluster. Poznámka: clustery ESP používají celý hlavní název uživatele (např. user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
 
-Privátní koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v [tomto](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) tématu. Pomocí příkazu `curl` s možností `-v` můžete vyřešit potíže s připojením k s veřejnými nebo soukromými koncovými body před použitím Beeline.
+Privátní koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v tématu [omezení globálních partnerských vztahů virtuální sítě a nástrojů pro vyrovnávání zatížení](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Pomocí příkazu `curl` s možností `-v` můžete řešit problémy s připojením s veřejnými nebo soukromými koncovými body před použitím Beeline.
 
 ---
 

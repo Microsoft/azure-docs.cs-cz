@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 26d66868ab4c003dbd962e0c94009bc38bb36345
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f8793975d920e24924fca7c2ae366f70972e6ab7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558832"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468620"
 ---
 # <a name="support-and-help-options"></a>Podpora a možnosti pomoci
 
@@ -43,7 +43,7 @@ Odpověď, kterou potřebujete, najdete v dokumentaci, ukázkách nebo odpověd�
 
 ### <a name="scoped-search"></a>Hledání v oboru
 
-Pro dosažení rychlejších výsledků můžete určit rozsah hledání Stack Overflow, dokumentaci a ukázky kódu pomocí následujícího dotazu na oblíbeném vyhledávacím [stroji](https://bing.com):
+Pro dosažení rychlejších výsledků můžete určit rozsah hledání Stack Overflow, dokumentaci a ukázky kódu pomocí následujícího dotazu na [oblíbeném vyhledávacím stroji](https://bing.com):
 
 ```
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples)
@@ -64,14 +64,14 @@ Stack Overflow je preferovaným kanálem pro otázky související s vývojem. J
 
 Pokud nemůžete najít odpověď na váš problém pomocí hledání, odešlete novou otázku pro Stack Overflow. Při formulování otázky použijte jednu z následujících značek:
 
-|Součást/oblast  |Tags  |
+|Součást/oblast  |Značky  |
 |---------|---------|
-|Rozpoznávání řeči |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|Syntéza řeči |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|Překlad řeči |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|Záměr řeči |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|Obecná sada Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-| Virtuální asistenti, kteří jsou první hlas (Preview) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
+|Rozpoznávání řeči |[[Microsoft-rozpoznávání + převod řeči na text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
+|Syntéza řeči |[[Microsoft-rozpoznávání + převod textu na řeč]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
+|Překlad řeči |[[Microsoft-rozpoznávání + překlad]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
+|Záměr řeči |[[Microsoft-rozpoznávání + Luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
+|Obecná sada Speech SDK |[[Microsoft-rozpoznávání + Microsoft-Speech-API]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+|Asistenti hlasu | [[Microsoft-rozpoznávání + Virtual-Assistant + botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
 > Následující příspěvky z Stack Overflow obsahují tipy, jak vytvořit otázky a přidat zdrojový kód. Podle těchto pokynů může pomáhat zvýšit riziko, že členové komunity vyhodnotili a rychle reagují na své otázky:  
@@ -94,8 +94,8 @@ Jasný a výstižný popis toho, co je chyba.
 **Pro reprodukování**
 
 Kroky pro reprodukování chování:
-1. ...
-2. ...
+1. Tlačítka ...
+2. Tlačítka ...
 
 **Očekávané chování**
 

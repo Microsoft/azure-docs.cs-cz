@@ -1,7 +1,7 @@
 ---
 title: Ladění modelu
-titleSuffix: Azure Machine Learning Studio
-description: Jak ladit chyby, vytvořené moduly Train Model a Score Model v Azure Machine Learning Studio.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Jak ladit chyby vytvářené modelem výukového modelu a modelem skóre v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,62 +10,62 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 9c505262030e5b5aa13b8d221cf1e39c4a9c7833
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 053bb75bb7beea86215397bdfd81a1dbc9d1bcb9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751101"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493060"
 ---
-# <a name="debug-your-model-in-azure-machine-learning-studio"></a>Ladění modelu ve službě Azure Machine Learning Studio
+# <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Ladění modelu v Azure Machine Learning Studio (Classic)
 
-Při spuštění modelu, můžete narazit následující chyby:
+Při spuštění modelu můžete spustit následující chyby:
 
-* [Train Model] [ train-model] modulu dojde k chybě 
-* [Score Model] [ score-model] modulu produkuje nesprávné výsledky 
+* modul [vlakového modelu][train-model] vytvoří chybu. 
+* modul [skóre modelu][score-model] vytváří nesprávné výsledky. 
 
-Tento článek vysvětluje možné příčiny pro tyto chyby.
+Tento článek vysvětluje možné příčiny těchto chyb.
 
 
-## <a name="train-model-module-produces-an-error"></a>Modul trénování modelu dojde k chybě
+## <a name="train-model-module-produces-an-error"></a>Modul vlakového modelu vytvoří chybu.
 
 ![image1](./media/debug-models/train_model-1.png)
 
-[Train Model] [ train-model] modul očekávají dva vstupy:
+Modul [vlakového modelu][train-model] očekává dva vstupy:
 
-1. Typ modelu strojového učení z kolekce modelů poskytované Azure Machine Learning Studio.
-2. Trénovacích dat pomocí zadaného popisku sloupec, který určuje proměnnou k předpovědi (další sloupce, které jsou považovány za funkce).
+1. Typ modelu strojového učení z kolekce modelů, které poskytuje Azure Machine Learning Studio (Classic).
+2. Školicí data se zadaným sloupcem popisku, který určuje proměnnou pro předpověď (u ostatních sloupců se předpokládá, že jsou funkce).
 
-Tento modul může vést k chybě v následujících případech:
+Tento modul může způsobit chybu v následujících případech:
 
-1. Popisek sloupce je nesprávně zadán. To může nastat, pokud jako popisek byl vybrán více než jednoho sloupce nebo je vybrané nesprávné sloupce indexu. Druhém případě by například platí v případě, že index sloupce 30 se používá s vstupní datovou sadu, která má jen 25 sloupců.
+1. Sloupec popisku je nesprávně zadán. K tomu může dojít, pokud je vybráno více než jeden sloupec jako popisek nebo je vybrán nesprávný index sloupce. Druhý případ by například měl platit, pokud se používá index sloupce 30 se vstupní datovou sadou, která má pouze 25 sloupců.
 
-2. Datová sada neobsahuje žádné sloupce. Například pokud vstupní datová sada obsahuje pouze jeden sloupec, který je označený jako sloupec popisek, by existovat žádné funkce, pomocí kterého se má sestavení modelu. V takovém případě [Train Model] [ train-model] modulu dojde k chybě.
+2. Datová sada neobsahuje žádné sloupce funkce. Například pokud má vstupní datová sada jenom jeden sloupec, který je označený jako sloupec popisku, neexistují žádné funkce, pomocí kterých by bylo možné model sestavit. V takovém případě modul [vlakového modelu][train-model] vytvoří chybu.
 
-3. Vstupní datové sady (funkce nebo popisku) obsahuje jako hodnotu nekonečno.
+3. Vstupní datová sada (funkce nebo popisek) obsahuje nekonečno jako hodnotu.
 
-## <a name="score-model-module-produces-incorrect-results"></a>Modul určení skóre modelu produkuje nesprávné výsledky
+## <a name="score-model-module-produces-incorrect-results"></a>Modul určení skóre modelu vytváří nesprávné výsledky.
 
 ![image2](./media/debug-models/train_test-2.png)
 
-V typické experimentu trénování a testování pro učení [rozdělení dat] [ split] modulu rozděluje původní datové sady do dvou částí: jednu část se používá pro trénování modelu a jedné části slouží ke stanovení skóre jak také provádí trénovaného modelu. Trénovaného modelu je potom použít ke stanovení skóre testovacích dat, po jejímž uplynutí jsou výsledky vyhodnocován pro určení přesnost modelu.
+V typických experimentech pro školení a testování se v režimu pod dohledem naučí modul [rozdělení dat][split] rozdělit původní datovou sadu na dvě části: jedna část se používá ke výukě modelu a jedna část se používá ke zjištění, jak dobře je vyškolený model vykonává. Vyškolený model se pak použije k vyhodnocení testovacích dat, po kterém jsou výsledky vyhodnocovány k určení přesnosti modelu.
 
-[Score Model] [ score-model] modul vyžaduje dva vstupy:
+Modul [skóre modelu][score-model] vyžaduje dva vstupy:
 
-1. Výstup trénovaného modelu z [Train Model] [ train-model] modulu.
-2. Vyhodnocení sady dat se liší od datové sady pro trénování modelu.
+1. Vyškolený výstup modelu z modulu [vlakového modelu][train-model] .
+2. Datová sada bodování, která se liší od datové sady použité pro výuku modelu.
 
-Je možné, že i když podaří experiment, [Score Model] [ score-model] modulu produkuje nesprávné výsledky. Několik scénářů může způsobit, že tento problém, která se provede:
+Je možné, že i když je experiment úspěšný, modul [skóre modelu][score-model] vytvoří nesprávné výsledky. K tomuto problému může dojít z několika scénářů:
 
-1. Pokud zadaným popiskem je zařazená do kategorií a regresní model se trénuje na data, by bylo vytvořeno nesprávný výstup, tak [Score Model] [ score-model] modulu. Je to proto, že regresní vyžaduje proměnnou průběžné odpovědi. V takovém případě by bylo vhodnější použít model klasifikace. 
+1. Pokud je zadaný popisek kategorií a je-li na datech vyškolený model regrese, bude modul určení [skóre][score-model] vytvořen nesprávným výstupem. Je to proto, že regrese vyžaduje proměnnou průběžné odezvy. V takovém případě by bylo vhodnější použít klasifikační model. 
 
-2. Podobně pokud model klasifikace jsou trénovaná na datovou sadu s plovoucí desetinnou čárkou ve sloupci popisek, může způsobit nežádoucí výsledky. Je to proto, že klasifikace vyžaduje proměnnou diskrétní odpověď, která povoluje jenom hodnoty tohoto rozsahu konečná a malé, sadu tříd.
+2. Podobně pokud je model klasifikace vyškolený pro datovou sadu, která má čísla s plovoucí desetinnou čárkou ve sloupci Label, může to způsobit nežádoucí výsledky. Důvodem je, že klasifikace vyžaduje samostatnou proměnnou odpovědi, která umožňuje pouze hodnoty, které mají rozsah přes konečnou a malou sadu tříd.
 
-3. Pokud bodování datová sada neobsahuje všechny funkce využívají k tréninku modelu, [Score Model] [ score-model] dojde k chybě.
+3. Pokud datová sada bodování neobsahuje všechny funkce používané pro výuku modelu, [model skóre][score-model] vytvoří chybu.
 
-4. Pokud řádek v hodnoticí datová sada obsahuje chybějící hodnota nebo nekonečnou hodnotu pro některou z jejích funkcí [Score Model] [ score-model] nevytváří žádný výstup odpovídající na daném řádku.
+4. Pokud řádek v datové sadě bodování obsahuje chybějící hodnotu nebo nekonečnou hodnotu pro žádnou z jeho funkcí, [model skóre][score-model] nevytvoří žádný výstup odpovídající tomuto řádku.
 
-5. [Score Model] [ score-model] mohou mít identické výstupy pro všechny řádky v hodnoticí datové sadě. Tato situace může nastat například při pokusu o klasifikaci pomocí rozhodnutí doménovými strukturami, pokud je minimální počet vzorků za uzel typu list je zvolená být vyšší než počet dostupných příkladů školení.
+5. [Model skóre][score-model] může pro všechny řádky v datové sadě bodování vydávat stejné výstupy. K tomu může dojít například při pokusu o klasifikaci pomocí rozhodovacích doménových struktur, pokud je zvolený minimální počet vzorků na uzel na úrovni listu větší než počet dostupných příkladů školení.
 
 <!-- Module References -->
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/

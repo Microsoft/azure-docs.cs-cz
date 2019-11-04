@@ -1,5 +1,5 @@
 ---
-title: Uzly v Azure Database for PostgreSQL – Citus (Preview)
+title: Uzly v Azure Database for PostgreSQL – Citus (škálování)
 description: Přečtěte si o dvou typech uzlů, koordinátora a pracovní procesy ve skupině serverů v Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 097fcdb3a7e53bb63db9dc2d352d754062df7be6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 5348c8bbe432cd024a8da93ca866ae4458f956e4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947560"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468094"
 ---
-# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Uzly v Azure Database for PostgreSQL – Citus (Preview)
+# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Uzly v Azure Database for PostgreSQL – Citus (škálování)
 
-Typ hostingu Citus (ve verzi Preview) umožňuje Azure Database for PostgreSQL servery (nazývané uzly), aby se vzájemně koordinovaly v architektuře "Shared Nothing". Uzly ve skupině serverů společně uchovávají více dat a využívají více jader procesoru, než by bylo možné na jednom serveru. Architektura také umožňuje škálování databáze přidáním dalších uzlů do skupiny serverů.
+Typ hostingu Citus () Azure Database for PostgreSQL umožňuje, aby se servery (označované jako uzly) mezi sebou vzájemně koordinovaly v architektuře "Shared Nothing". Uzly ve skupině serverů společně uchovávají více dat a využívají více jader procesoru, než by bylo možné na jednom serveru. Architektura také umožňuje škálování databáze přidáním dalších uzlů do skupiny serverů.
 
 ## <a name="coordinator-and-workers"></a>Koordinátor a pracovníci
 

@@ -1,0 +1,51 @@
+---
+title: Podporovaná úložiště dat v Azure Data Share
+description: Přečtěte si o úložištích dat, která jsou podporovaná pro použití Azure Data Share.
+ms.service: data-share
+author: joannapea
+ms.author: joanpo
+ms.topic: conceptual
+ms.date: 10/30/2019
+ms.openlocfilehash: 762cea6dce3e0c6be3f5e977c5f9de806ca0880e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73516393"
+---
+# <a name="supported-data-stores-in-azure-data-share"></a>Podporovaná úložiště dat v Azure Data Share
+
+Azure data Shared poskytuje otevřené a flexibilní sdílení dat, včetně možnosti sdílení z a do různých úložišť dat. Poskytovatelé dat můžou sdílet data z jednoho typu úložiště dat a jejich příjemci dat si můžou zvolit, do kterého úložiště dat se mají přijímat data. 
+
+V tomto článku se seznámíte s bohatou sadou úložišť dat Azure, která jsou podporovaná v Azure Data Share. Můžete také najít informace o kombinacích úložišť dat, která mohou využívat poskytovatelé dat a spotřebitelé dat. 
+
+## <a name="what-data-stores-are-supported-in-azure-data-share"></a>Jaká úložiště dat jsou podporovaná v Azure Data Share? 
+
+Následující tabulka uvádí podporované zdroje dat pro sdílenou složku Azure. 
+
+| Úložiště dat | Sdílení na základě snímků | Místní sdílení 
+|:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob Storage |✓ | |
+| Azure Data Lake Storage Gen1 |✓ | |
+| Azure Data Lake Storage Gen2 |✓ ||
+| Azure SQL Database |Public Preview | |
+| Azure SQL Data Warehouse |Public Preview | |
+| Průzkumník dat Azure | |[Omezená verze Preview](https://aka.ms/azuredatasharepreviewsignup) |
+
+## <a name="data-store-support-matrix"></a>Matice podpory úložiště dat
+
+Azure Data Share nabízí flexibilitu uživatelů dat při rozhodování v úložišti dat, ve kterém se mají přijímat data. Například data, která jsou sdílena z Azure SQL Database, lze přijímat do Azure Data Lake Store Gen2, Azure SQL Database nebo Azure SQL Data Warehouse. Zákazníci si můžou vybrat, v jakém formátu se mají data přijímat, když nakonfigurujete příchozí sdílenou složku. 
+
+Následující tabulka obsahuje podrobnosti různých kombinací a možností, které příjemci dat mají při přijetí a konfiguraci jejich sdílení dat. Další informace o konfiguraci mapování datových sad naleznete v tématu [How to Configure DataSet Mapping](how-to-configure-mapping.md).
+
+|  | Azure Blob Storage | Gen1 Azure SQL Data Lake | Gen2 Azure SQL Data Lake | Azure SQL Database | Azure SQL Data Warehouse 
+|:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob Storage |✓ ||✓|
+| Azure Data Lake Storage Gen1 |✓ | |✓|
+| Azure Data Lake Storage Gen2 |✓ | |✓|
+| Azure SQL Database |✓ | |✓|✓|✓|
+| Azure SQL Data Warehouse |✓ | |✓|✓|✓|
+
+## <a name="next-steps"></a>Další kroky
+
+Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .

@@ -6,17 +6,21 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 08/14/2019
-ms.openlocfilehash: bda64dd555f1970b70878d827f6be1dab3f1e2d5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555431"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477414"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor pro kontejnery často kladené dotazy
 
 Toto je seznam nejčastějších dotazů týkajících se Azure Monitor kontejnerů. Pokud máte další dotazy týkající se řešení, navštivte [diskuzní fórum](https://feedback.azure.com/forums/34192--general-feedback) a publikujte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
+
+## <a name="can-i-view-metrics-collected-in-grafana"></a>Můžu zobrazit metriky shromážděné v Grafana?
+
+Azure Monitor for Containers podporuje zobrazování metrik uložených v pracovním prostoru Log Analytics v řídicích panelech Grafana. K dispozici je šablona, kterou si můžete stáhnout z [úložiště řídicích panelů](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) Grafana, abyste mohli začít s odkazem na Další informace, které vám pomůžou s postupem dotazování dalších dat ze sledovaných clusterů na vizualizaci ve vlastních Grafana jde. 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Můžu monitorovat cluster AKS s Azure Monitor pro kontejnery?
 
@@ -72,20 +76,15 @@ Podrobný přehled tohoto problému najdete v následujícím [odkazu na GitHub]
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Návody vyřešit chyby Azure AD, když povolíte živé protokoly? 
 
-Může se zobrazit následující chyba: **Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: ' < ID aplikace \> '** . Řešení, které se má vyřešit, najdete v článku [jak zobrazit protokoly kontejneru v reálném čase s Azure monitor pro kontejnery](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
+Může se zobrazit následující chyba: **Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: ' < ID aplikace \> '** . Řešení, které se má vyřešit, najdete v článku [jak zobrazit data kontejneru v reálném čase s Azure monitor pro kontejnery](container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Proč není možné upgradovat cluster po registraci?
 
 Pokud po povolení Azure Monitor pro kontejnery pro cluster AKS odstraníte pracovní prostor Log Analytics, který cluster odeslal do, při pokusu o upgrade clusteru se nezdaří. Pokud chcete tento problém obejít, budete muset zakázat monitorování a pak ho znovu povolit odkazování na jiný platný pracovní prostor v rámci vašeho předplatného. Pokud se pokusíte upgradovat cluster znovu, měl by se zpracovat a dokončit úspěšně.  
 
 ## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Které porty a domény potřebuji k otevření nebo seznamu povolených pro agenta?
-- *. ods.opinsights.azure.com 443
-- *. oms.opinsights.azure.com 443
-- *. blob.core.windows.net 443
-- dc.services.visualstudio.com 443
-- *. microsoftonline.com 443
-- *. monitoring.azure.com 443
-- login.microsoftonline.com 443
+
+Podívejte se na [požadavky na bránu firewall sítě](container-insights-onboard.md#network-firewall-requirements) pro informace o konfiguraci proxy serveru a brány firewall vyžadované pro kontejnerový agent s Azure, vládou USA a Azure Čína.
 
 ## <a name="next-steps"></a>Další kroky
 

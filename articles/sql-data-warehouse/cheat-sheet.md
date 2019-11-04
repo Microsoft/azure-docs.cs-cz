@@ -1,24 +1,25 @@
 ---
-title: Tahák pro službu Azure SQL Data Warehouse | Microsoft Docs
-description: Tady najdete odkazy a osvědčené postupy, které vám pomůžou s rychlým vytvářením řešení Azure SQL Data Warehouse.
+title: List tahák pro Azure synapse Analytics (dřív SQL DW) | Microsoft Docs
+description: Najděte odkazy a osvědčené postupy pro rychlé vytvoření řešení Azure synapse Analytics (dříve SQL DW).
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 08/23/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1bbb0148e6f4be2afc777960afcda9c727328206
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: be5e8952ddfc6cb831b87f880bc281d6ceb2ba3d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195058"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492273"
 ---
-# <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tahák pro službu Azure SQL Data Warehouse
-Tento tahák obsahuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure SQL Data Warehouse. Než začnete, přečtěte si článek [Vzory a antivzory úloh Azure SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns), který podrobně popisuje jednotlivé kroky a vysvětluje, co je služba SQL Data Warehouse, a co není.
+# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>List tahák pro Azure synapse Analytics (dřív SQL DW)
+
+Tento tahák list poskytuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure synapse. 
 
 Následující obrázek znázorňuje proces návrhu datového skladu:
 
@@ -35,11 +36,11 @@ Znalost typů operací předem vám pomůže optimalizovat návrh tabulek.
 
 ## <a name="data-migration"></a>Migrace dat
 
-Nejdřív načtěte data do [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) nebo úložiště objektů BLOB v Azure. Pak pomocí PolyBase načtěte svá data do pracovní tabulky ve službě SQL Data Warehouse. Použijte následující konfiguraci:
+Nejdřív načtěte data do [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) nebo Azure Blob Storage. Potom pomocí základu dat načtěte data do pracovních tabulek. Použijte následující konfiguraci:
 
 | Návrh | Doporučení |
 |:--- |:--- |
-| Distribuce | Kruhové dotazování |
+| Distribuce | Kruhové dotazování. |
 | Indexování | Halda |
 | Dělení | Žádné |
 | Třída prostředku | largerc nebo xlargerc |
@@ -50,7 +51,7 @@ Další informace o [migraci dat], [načítání dat] a [procesu extrakce, nač�
 
 Použijte následující strategie v závislosti na vlastnostech tabulek:
 
-| type | Skvěle se hodí pro...| Na co si dát pozor|
+| Typ | Skvěle se hodí pro...| Na co si dát pozor|
 |:--- |:--- |:--- |
 | Replikované | • Malé tabulky dimenzí v hvězdicovém schématu s úložištěm menším než 2 GB po kompresi (přibližně 5násobná komprese) |• V tabulce se provádí velké množství transakcí zápisu (například vložení, operace upsert, odstranění, aktualizace).<br></br>• Často měníte zřizování jednotek datového skladu (DWU).<br></br>• Vaše tabulka obsahuje mnoho sloupců, ale používáte pouze 2 až 3 sloupce.<br></br>• Indexujete replikovanou tabulku. |
 | Kruhové dotazování (výchozí) | • Dočasná nebo pracovní tabulka<br></br> • Žádný zřejmý připojovací klíč ani vhodný sloupec |• Nízký výkon kvůli přesunům dat |
@@ -70,7 +71,7 @@ Další informace o [replikovaných tabulkách] a [distribuovaných tabulkách].
 
 Indexování je užitečné pro rychlé čtení tabulek. Existuje jedinečná sada technologií, které můžete použít podle svých potřeb:
 
-| type | Skvěle se hodí pro... | Na co si dát pozor|
+| Typ | Skvěle se hodí pro... | Na co si dát pozor|
 |:--- |:--- |:--- |
 | Halda | • Pracovní nebo dočasná tabulka<br></br>• Malé tabulky s malým počtem hledání |• Každé hledání prochází celou tabulku. |
 | Clusterovaný index | • Tabulky obsahující až 100 milionů řádků<br></br>• Velké tabulky (více než 100 milionů řádků) obsahující pouze 1 až 2 často používané sloupce |• Používá se u replikované tabulky.<br></br>• Máte složité dotazy zahrnující několik operací spojení a seskupení.<br></br>• Provádíte aktualizace indexovaných sloupců, což zabírá paměť. |
@@ -98,28 +99,28 @@ Přečtěte si další informace o [oddílech].
 
 Pokud se chystáte přírůstkově načítat data, nejprve se ujistěte, že pro načítání dat přidělujete větší třídy prostředků.  To je důležité hlavně při načítání do tabulek pomocí clusterovaných indexů columnstore.  Další podrobnosti naleznete v tématu [třídy prostředků](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) .  
 
-K automatizaci kanálů ELT do služby SQL Data Warehouse doporučujeme použít PolyBase nebo ADF V2.
+Pro automatizaci vašich ELTch kanálů do datového skladu doporučujeme použít základní a ADF v2.
 
 Pro velkou dávku aktualizací v historických datech zvažte použití [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) k zapsání dat, která chcete uchovávat v tabulce, a nepoužívejte vložení, aktualizaci a odstranění.
 
 ## <a name="maintain-statistics"></a>Udržujte statistiky
- Dokud nebudou obecně dostupné automatické statistky, vyžaduje SQL Data Warehouse ruční údržbu statistik. Statistiky je důležité aktualizovat, když dojde k *významným* změnám vašich dat. Pomáhá to optimalizovat plány dotazů. Pokud zjistíte, že údržba vašich statistik trvá příliš dlouho, pečlivěji zvažte, které sloupce mají statistiku mít. 
+ Pokud jsou automatické statistiky všeobecně dostupné, vyžadují se ruční údržba statistik. Statistiky je důležité aktualizovat, když dojde k *významným* změnám vašich dat. Pomáhá to optimalizovat plány dotazů. Pokud zjistíte, že údržba vašich statistik trvá příliš dlouho, pečlivěji zvažte, které sloupce mají statistiku mít. 
 
 Můžete také definovat frekvenci aktualizací. Například můžete chtít každý den aktualizovat sloupce s datem, do kterých se můžou přidávat nové hodnoty. Nejvíce výhod získáte tak, že budete mít statistiky pro sloupce používané ve spojeních, sloupce používané v klauzuli WHERE a sloupce používané v příkazu GROUP BY.
 
 Další informace o [statistikách].
 
 ## <a name="resource-class"></a>Třída prostředků
-SQL Data Warehouse používá skupiny prostředků jako způsob přidělení paměti pro dotazy. Pokud ke zrychlení dotazů nebo načítání potřebujete více paměti, měli byste přidělit vyšší třídy prostředků. Na druhou stranu, použití větších tříd prostředků má vliv na souběžnost. Na to byste měli brát ohled před přesunem všech vašich uživatelů do větší třídy prostředků.
+Skupiny prostředků se používají jako způsob přidělování paměti pro dotazy. Pokud ke zrychlení dotazů nebo načítání potřebujete více paměti, měli byste přidělit vyšší třídy prostředků. Na druhou stranu, použití větších tříd prostředků má vliv na souběžnost. Na to byste měli brát ohled před přesunem všech vašich uživatelů do větší třídy prostředků.
 
 Pokud si všimnete, že dotazy trvají příliš dlouho, zkontrolujte, jestli vaši uživatelé nepoužívají velké třídy prostředků. Velké třídy prostředků využívají velké množství slotů souběžnosti. Můžou způsobit hromadění dalších dotazů ve frontě.
 
-Z využitím SQL Data Warehouse Gen2 dostává každá třída prostředků 2,5krát víc paměti než Gen1.
+Nakonec, při použití Gen2 [fondu SQL](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse), každá třída prostředků získá 2,5 krát více paměti než Gen1.
 
 Další informace o práci s [třídami prostředků a souběžností].
 
 ## <a name="lower-your-cost"></a>Snížení nákladů
-Klíčovou funkcí služby SQL Data Warehouse je schopnost [spravovat výpočetní prostředky](sql-data-warehouse-manage-compute-overview.md). Datový sklad můžete pozastavit, když ho zrovna nepoužíváte, a zastavit tak účtování výpočetních prostředků. Prostředky můžete škálovat s ohledem na své požadavky na výkon. K pozastavení můžete použít [Azure Portal](pause-and-resume-compute-portal.md) nebo [PowerShell](pause-and-resume-compute-powershell.md). Ke škálování můžete použít [Azure Portal](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md), jazyk [T-SQL](quickstart-scale-compute-tsql.md) nebo rozhraní [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+Klíčovou funkcí služby Azure synapse je schopnost [Spravovat výpočetní prostředky](sql-data-warehouse-manage-compute-overview.md). Můžete pozastavit fond SQL, pokud ho nepoužíváte, a zastavit tak účtování výpočetních prostředků. Prostředky můžete škálovat s ohledem na své požadavky na výkon. K pozastavení můžete použít [Azure Portal](pause-and-resume-compute-portal.md) nebo [PowerShell](pause-and-resume-compute-powershell.md). Ke škálování můžete použít [Azure Portal](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md), jazyk [T-SQL](quickstart-scale-compute-tsql.md) nebo rozhraní [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 Automatické škálování teď můžete provádět kdykoli díky Azure Functions:
 
@@ -131,9 +132,9 @@ Automatické škálování teď můžete provádět kdykoli díky Azure Function
 
 Služby SQL Database a Azure Analysis Services doporučujeme zvážit v hvězdicovité architektuře. Toto řešení může zajistit izolaci úloh mezi různými skupinami uživatelů a zároveň využívat pokročilé funkce zabezpečení ve službách SQL Database a Azure Analysis Services. Tímto způsobem můžete uživatelům poskytnout neomezenou souběžnost.
 
-Další informace o [typických architekturách, které využívají službu SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Přečtěte si další informace o [typických architekturách, které využijí Azure synapse](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
-Nasazujte své paprsky do databází SQL ze služby SQL Data Warehouse jedním kliknutím:
+Nasazení proveďte v jednom z fondů SQL kliknutím na své paprsky v databázích SQL:
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>

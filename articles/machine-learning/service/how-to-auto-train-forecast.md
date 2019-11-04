@@ -9,15 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 3cec6ee9368b1d9d1f2c9a627108aaf41c6da3c3
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.date: 11/04/2019
+ms.openlocfilehash: d9a879e92f78275f2366ccfc008068afbe208e5a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819851"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497391"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se naučíte, jak pomocí automatizovaného strojového učení v Azure Machine Learning naučit regresní model předpovědi časových řad. Konfigurace modelu prognózy je podobná nastavení standardního regresního modelu pomocí automatizovaného strojového učení, ale pro práci s daty časových řad existují některé možnosti konfigurace a postup předběžného zpracování. Následující příklady vám ukážou, jak:
 
@@ -50,7 +51,7 @@ Modely hloubkového učení mají tři vnitřní capbailities:
 1. Podporují několik vstupů a výstupů.
 1. Můžou automaticky extrahovat vzory ve vstupních datech, která jsou rozložená přes dlouhé sekvence.
 
-Kvalitní modely pro hloubkové učení, jako je například Microsoft, ForecasTCN, můžou zlepšit skóre výsledného modelu. 
+Kvalitní modely pro hloubkové učení, jako je například Microsoft, ForecastTCN, můžou zlepšit skóre výsledného modelu. 
 
 V rámci automatizovaného ML jsou také k dispozici informace o nativních časových řadách. Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Prophet je přesný & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě. 
 
@@ -119,6 +120,7 @@ Objekt `AutoMLConfig` definuje nastavení a data potřebná pro úlohu automatiz
 |`max_horizon`|Definuje maximální požadovaný horizont prognózy v jednotkách časové řady. Jednotky jsou založené na časovém intervalu vašich školicích dat, třeba měsíčně, týdně, kdy by měl prognóza předpovědět.|✓|
 |`target_lags`|Počet řádků pro prodlevu cílových hodnot na základě frekvence dat Tato hodnota je vyjádřena jako seznam nebo jedno celé číslo. Je nutné použít prodlevu v případě, že vztah mezi nezávislými proměnnými a závislými proměnnou se ve výchozím nastavení neshoduje nebo koreluje. Například při pokusu o Předpověď poptávky za produkt může být poptávka v jakémkoli měsíci závislá na ceně konkrétních komoditních 3 měsíců předem. V tomto příkladu můžete chtít, aby se cíl (poptávka) negativně zavedl 3 měsíce, aby model byl školením správného vztahu.||
 |`target_rolling_window_size`|*n* historická období, která se mají použít ke generování předpokládaných hodnot, < = velikost sady školení Pokud tento parametr vynecháte, *n* je úplná velikost sady školení. Tento parametr zadejte, pokud chcete při výuce modelu vzít v úvahu jen určitou velikost historie.||
+|`enable_dnn`|Povolte prognózování hluboké.||
 
 Další informace najdete v [referenční dokumentaci](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) .
 
@@ -150,7 +152,8 @@ import logging
 
 automl_config = AutoMLConfig(task='forecasting',
                              primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
+                             experiment_timeout_minutes=15,
+                             enable_early_stopping=True,
                              training_data=train_data,
                              label_column_name=label,
                              n_cross_validations=5,
@@ -170,6 +173,17 @@ Podrobné příklady kódu pro pokročilou konfiguraci prognózování najdete v
 * křížové ověření pro návratové zdroje
 * konfigurovatelné prodlevy
 * souhrnné funkce kumulovaných oken
+
+### <a name="configure-a-dnn-enable-forecasting-experiment"></a>Konfigurace experimentu s DNN povolení prognózování
+
+> [!NOTE]
+> Podpora DNN pro prognózování v automatizovaných Machine Learning je ve verzi Preview.
+
+Aby bylo možné využít hluboké pro prognózování, budete muset nastavit parametr `enable_dnn` v poli AutoMLConfig na hodnotu true. 
+
+Aby bylo možné používat hluboké, doporučujeme použít výpočetní cluster AML s SKU GPU a nejméně 2 uzly jako cíl výpočtů. Další informace najdete v [dokumentaci ke výpočetnímu prostředí AML](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute) . Další informace o velikostech virtuálních počítačů, které zahrnují GPU, najdete v tématu [velikosti virtuálních počítačů optimalizovaných pro procesory GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-gpu) .
+
+Aby bylo umožněno dostatek času na dokončení školení DNN, doporučujeme nastavit časový limit experimentu alespoň na několik hodin.
 
 ### <a name="view-feature-engineering-summary"></a>Zobrazit souhrn metodologie funkcí
 

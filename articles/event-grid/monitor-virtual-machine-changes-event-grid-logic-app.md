@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
-ms.openlocfilehash: ed48a4e5bab807695000fe6cdbecf1c1b7b01e9b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5d852378812d8e69480ceb2c5dcea95f1d5f3770
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325812"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488621"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Kurz: monitorování změn virtuálních počítačů pomocí Azure Event Grid a Logic Apps
 
@@ -101,9 +101,9 @@ Nyní přidejte aktivační událost Event Grid, kterou použijete k monitorová
    | Vlastnost | Požaduje se | Hodnota | Popis |
    | -------- | -------- | ----- | ----------- |
    | **Předplatné** | Ano | <*událost – Publisher-Azure-Subscription-name*> | Vyberte název předplatného Azure, které je přidružené k *vydavateli události*. Pro tento kurz vyberte název předplatného Azure pro váš virtuální počítač. |
-   | **Typ prostředku** | Ano | <*událost-Publisher-Azure-Resource-type*> | Vyberte typ prostředku Azure pro vydavatele události. Další informace o typech prostředků Azure najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/resource-manager-supported-services.md). Pro tento kurz vyberte hodnotu `Microsoft.Resources.ResourceGroups` pro monitorování skupin prostředků Azure. Pokud jste chtěli monitorovat pouze virtuální počítače,  |
+   | **Typ prostředku** | Ano | <*událost-Publisher-Azure-Resource-type*> | Vyberte typ prostředku Azure pro vydavatele události. Další informace o typech prostředků Azure najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/resource-manager-supported-services.md). Pro tento kurz vyberte hodnotu `Microsoft.Resources.ResourceGroups` pro monitorování skupin prostředků Azure. |
    | **Název prostředku** |  Ano | <*událost-Publisher-Azure-Resource-name*> | Vyberte název prostředku Azure pro vydavatele události. Tento seznam se liší v závislosti na typu prostředku, který jste vybrali. V tomto kurzu vyberte název skupiny prostředků Azure, která zahrnuje váš virtuální počítač. |
-   | **Položka typu události** |  Ne | <*Typ události*> | Vyberte jeden nebo více konkrétních typů událostí pro filtrování a odeslání do služby Event Grid. Volitelně můžete například přidat tyto typy událostí k detekci, kdy jsou prostředky změněny nebo odstraněny: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Další informace najdete v těchto tématech: <p><p>@no__t – 0[Azure Event Grid schéma událostí pro skupiny prostředků](../event-grid/event-schema-resource-groups.md) <br>- [pochopení filtrování událostí](../event-grid/event-filtering.md) <br>@no__t – 0[události filtru pro Event Grid](../event-grid/how-to-filter-events.md) |
+   | **Položka typu události** |  Ne | <*Typ události*> | Vyberte jeden nebo více konkrétních typů událostí pro filtrování a odeslání do služby Event Grid. Volitelně můžete například přidat tyto typy událostí k detekci, kdy jsou prostředky změněny nebo odstraněny: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Další informace najdete v těchto tématech: <p><p>[schéma událostí Azure Event Grid - pro skupiny prostředků](../event-grid/event-schema-resource-groups.md) <br>- [pochopení filtrování událostí](../event-grid/event-filtering.md) <br>- [Filtrovat události pro Event Grid](../event-grid/how-to-filter-events.md) |
    | Chcete-li přidat volitelné vlastnosti, vyberte možnost **Přidat nový parametr**a pak vyberte požadované vlastnosti. | Ne | {Zobrazit popisy} | **Filtr předpon*** : pro tento kurz nechte tuto vlastnost prázdnou. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec předpony, třeba cestu k určitému prostředku a jeho parametr. <p>**filtr přípon*** : pro tento kurz nechte tuto vlastnost prázdnou. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec přípony, třeba příponu názvu souboru, pokud chcete jenom určité typy souborů. <p>**název Předplatného*** : pro tento kurz můžete zadat jedinečný název pro vaše předplatné událostí. |
    |||
 
@@ -198,9 +198,9 @@ Teď přidejte [*akci*](../logic-apps/logic-apps-overview.md#logic-app-concepts)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    | -------- | -------- | ----- | ----------- |
-   | **Komu** | Ano | <*příjemce @ no__t-2domain*> | Zadejte e-mailovou adresu příjemce. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
+   | **Komu** | Ano | < *\@domény příjemce*> | Zadejte e-mailovou adresu příjemce. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
    | **Předmět** | Ano | `Resource updated:` **Předmět** | Zadejte obsah předmětu e-mailu. Pro tento kurz zadejte zadaný text a vyberte pole **Předmět** události. V našem příkladu je v předmětu e-mailu název aktualizovaného prostředku (virtuálního počítače). |
-   | **Text** | Ano | @no__t – 0 – **téma** <p>**Typ události** `Event type:`<p>`Event ID:` **ID**<p>@no__t – 0 – **čas události** | Zadejte obsah e-mailu. Pro tento kurz zadejte zadaný text a vyberte pole **události,** **Typ události**, **ID**a **dobu události** , aby váš e-mail zahrnoval prostředek, který vyvolal událost, typ události, časové razítko události a ID události pro Update. V tomto kurzu je prostředkem skupina prostředků Azure vybraná v aktivační události. <p>Pokud chcete do obsahu přidat prázdné řádky, stiskněte Shift + Enter. |
+   | **Text** | Ano | `Resource:` **téma** <p>**Typ události** `Event type:`<p>`Event ID:` **ID**<p>**čas události** `Time:` | Zadejte obsah e-mailu. Pro tento kurz zadejte zadaný text a vyberte pole **události,** **Typ události**, **ID**a **dobu události** , aby váš e-mail zahrnoval prostředek, který vyvolal událost, typ události, časové razítko události a ID události pro Update. V tomto kurzu je prostředkem skupina prostředků Azure vybraná v aktivační události. <p>Pokud chcete do obsahu přidat prázdné řádky, stiskněte Shift + Enter. |
    ||||
 
    > [!NOTE]

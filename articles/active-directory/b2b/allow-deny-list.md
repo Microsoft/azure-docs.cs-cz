@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62cbe68bcf191c7ee6fc906bc8ba8ea66e3efb31
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 2cd0cc6b2343a84287bd2ffdfd9df8d832f17fc8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233881"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474162"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Povolení nebo blokování pozvánek uživatelů B2B z konkrétních organizací
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Povolí nebo zablokuje pozvánky uživatelům B2B z konkrétních organizací.
 
 Pomocí seznamu povolených nebo zakázaných seznamů můžete povolit nebo zablokovat pozvánky uživatelům B2B z konkrétních organizací. Například pokud chcete blokovat domény osobní e-mailové adresy, můžete nastavit seznam odepření, který obsahuje domény, jako je Gmail.com a Outlook.com. Nebo pokud má vaše firma partnerství s jinými společnostmi, jako jsou Contoso.com, Fabrikam.com a Litware.com, a chcete omezit pozvánky jenom na tyto organizace, můžete do seznamu povolených aplikací přidat Contoso.com, Fabrikam.com a Litware.com.
   
@@ -41,15 +41,15 @@ Toto je nejběžnější scénář, ve kterém vaše organizace potřebuje praco
 
 Přidání seznamu odepření:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **Azure Active Directory** > **uživatelská nastavení** **uživatelů** > .
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. Vyberte **Azure Active Directory** > **Uživatelé** > **nastavení uživatele**.
 3. V části **externí uživatelé**vyberte **Spravovat nastavení externí spolupráce**.
 4. V části **omezení spolupráce**vyberte **Odepřít pozvánky zadaným doménám**.
-5. V části **cílové domény**zadejte název jedné z domén, které chcete blokovat. V případě více domén zadejte každou doménu na nový řádek. Příklad:
+5. V části **cílové domény**zadejte název jedné z domén, které chcete blokovat. V případě více domén zadejte každou doménu na nový řádek. Například:
 
    ![Zobrazí možnost Odepřít u přidaných domén.](./media/allow-deny-list/DenyListSettings.png)
  
-6. Jakmile budete hotovi, klikněte na tlačítko **Uložit**.
+6. Až skončíte, klikněte na **Uložit**.
 
 Pokud se po nastavení zásady pokusíte pozvat uživatele z Blokované domény, zobrazí se zpráva s informací o tom, že je doména uživatele v tuto chvíli zablokovaná vašimi zásadami pro pozvánky.
  
@@ -62,15 +62,15 @@ Pokud chcete použít seznam povolených, ujistěte se, že strávíte čas pot�
 
 Chcete-li přidat seznam povolených:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **Azure Active Directory** > **uživatelská nastavení** **uživatelů** > .
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. Vyberte **Azure Active Directory** > **Uživatelé** > **nastavení uživatele**.
 3. V části **externí uživatelé**vyberte **Spravovat nastavení externí spolupráce**.
 4. V části **omezení spolupráce**vyberte možnost **povoluje pozvánky pouze do zadaných domén (nejvíce omezující)** .
-5. V části **cílové domény**zadejte název jedné z domén, které chcete udělit. V případě více domén zadejte každou doménu na nový řádek. Příklad:
+5. V části **cílové domény**zadejte název jedné z domén, které chcete udělit. V případě více domén zadejte každou doménu na nový řádek. Například:
 
    ![Zobrazí možnost Allow s přidanými doménami.](./media/allow-deny-list/AllowListSettings.png)
  
-6. Jakmile budete hotovi, klikněte na tlačítko **Uložit**.
+6. Až skončíte, klikněte na **Uložit**.
 
 Pokud se po nastavení zásady pokusíte pozvat uživatele z domény, která není v seznamu povolených, zobrazí se zpráva s informací o tom, že je doména uživatele v tuto chvíli zablokovaná vašimi zásadami pro pozvánky.
 
@@ -81,6 +81,9 @@ Pokud přepnete z jedné zásady na druhou, odstraní se stávající konfigurac
 ## <a name="set-the-allow-or-deny-list-policy-using-powershell"></a>Nastavení zásady povolit nebo odepřít seznam pomocí prostředí PowerShell
 
 ### <a name="prerequisite"></a>Požadavek
+
+> [!Note]
+> Modul AzureADPreview není plně podporovaný modul, protože je ve verzi Preview. 
 
 Pokud chcete nastavit seznam povolených nebo zakázaných aplikací pomocí PowerShellu, musíte nainstalovat verzi Preview modulu Azure Active Directory pro Windows PowerShell. Konkrétně nainstalujte modul AzureADPreview verze 2.0.0.98 nebo novější.
 
@@ -137,25 +140,25 @@ V následujícím příkladu vidíte stejný příklad, ale s vloženou definic�
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-Pokud chcete nastavit zásadu seznamu povolených nebo zakázaných, použijte rutinu [set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) . Příklad:
+Pokud chcete nastavit zásadu seznamu povolených nebo zakázaných, použijte rutinu [set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) . Například:
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-K získání této zásady použijte rutinu [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) . Příklad:
+K získání této zásady použijte rutinu [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) . Například:
 
 ```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-Pokud chcete zásadu odebrat, použijte rutinu [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) . Příklad:
+Pokud chcete zásadu odebrat, použijte rutinu [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) . Například:
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled služby Azure AD B2B najdete v tématu [co je spolupráce B2B Azure AD?](what-is-b2b.md)
 - Informace o službě podmíněný přístup a spolupráci B2B najdete v tématu [podmíněný přístup pro uživatele spolupráce B2B](conditional-access.md).

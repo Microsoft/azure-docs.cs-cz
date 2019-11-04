@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: e1e89612ee48aaf5ee9bda51f954add426bf6720
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: bebfad57da41d257749acd3842a75ace114ed643
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516796"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492777"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Postup migrace do prostředku pro vytváření obsahu Azure
 
 Na portálu Language Understanding (LUIS) migrujte všechny aplikace, které vlastníte, abyste mohli používat prostředek pro vytváření obsahu Azure.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="prerequisites"></a>Předpoklady
 

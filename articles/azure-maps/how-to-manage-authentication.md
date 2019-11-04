@@ -3,17 +3,17 @@ title: Správa ověřování v Azure Maps | Microsoft Docs
 description: Azure Portal můžete použít ke správě ověřování v Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/11/2019
+ms.date: 10/24/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2f4a3d791e6b5d6ff20c09408d1a0bf5995c32fd
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 496edb4f3528daa5bd06193383f0277922e8a93a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756562"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478785"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Správa ověřování v Azure Maps
 
@@ -91,7 +91,12 @@ Po registraci aplikace a jejím přidružení k Azure Maps můžete požádat o 
 
 * Pokud vaše aplikace používá ověřování pomocí tokenu uživatele s Azure Maps Web SDK, je nutné nakonfigurovat stránku HTML s ID Azure Maps klienta a ID aplikace Azure AD.
 
-* Pokud vaše aplikace používá ověřování serveru nebo aplikace, musíte požádat o token od koncového bodu přihlášení Azure AD `https://login.microsoftonline.com` s ID prostředku Azure AD `https://atlas.microsoft.com/` Azure Maps, ID klienta služby Azure AD, ID aplikace Azure AD a registrační heslo aplikace Azure AD nebo certifikát.
+* Pokud vaše aplikace používá ověřování serveru nebo aplikace, musíte požádat o token z koncového bodu tokenu Azure AD `https://login.microsoftonline.com` s ID prostředku Azure AD `https://atlas.microsoft.com/`, ID klienta Azure Maps, ID aplikace Azure AD a registrační heslo aplikace Azure AD nebo certifikát.
+
+| Prostředí Azure   | Koncový bod tokenu Azure AD | ID prostředku Azure |
+| --------------------|-------------------------|-------------------|
+| Veřejné Azure        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
+| Azure Government    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
 Další informace o tom, jak získat přístupové tokeny ze služby Azure AD pro uživatele a instanční objekty, najdete v tématu [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 

@@ -1,6 +1,6 @@
 ---
-title: Pravidla brány Firewall služby Azure Event Hubs | Dokumentace Microsoftu
-description: Použijte pravidla brány Firewall pro povolení připojení z konkrétní IP adresy do služby Azure Event Hubs.
+title: Pravidla brány firewall pro Azure Event Hubs | Microsoft Docs
+description: Pomocí pravidel brány firewall povolte připojení z konkrétních IP adres do Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
 author: spelluru
@@ -11,68 +11,67 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f96c25dbb85ed92141636487f10d861a8c5e5f28
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821664"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468436"
 ---
-# <a name="use-firewall-rules"></a>Pomocí pravidel brány Firewall
+# <a name="use-firewall-rules"></a>Použít pravidla brány firewall
 
-Pro scénáře, ve kterých Azure Event Hubs by měly být pouze přístupné z některé známé servery pravidla brány firewall umožňují nakonfigurovat pravidla pro příjem dat pocházejících z konkrétní adresy IPv4. Tyto adresy může být například těch, které podnikové bráně překladu adres.
+Ve scénářích, ve kterých by měl být Azure Event Hubs dostupný jenom z určitých dobře známých lokalit, vám pravidla brány firewall umožní nakonfigurovat pravidla pro příjem provozu pocházejících z konkrétních IPv4 adres. Například tyto adresy můžou být firemní bránou NAT.
 
-## <a name="when-to-use"></a>Kdy je použít
+## <a name="when-to-use"></a>When to use
 
-Pokud chcete nastavit váš obor názvů služby Event Hubs, které by měla přijímat provoz ze zadaného rozsahu IP adres a odmítnout všechno ostatní, pak můžete využít *pravidlo brány Firewall* blokování koncové body centra událostí z ostatní IP adresy. Například, pokud používáte Event Hubs s využitím [Azure Express Route][express-route], můžete vytvořit *pravidlo brány Firewall* omezit přenosy z IP adresy vaší místní infrastruktury adresy.
+Pokud chcete nastavit obor názvů Event Hubs tak, že by měl přijímat přenosy jenom z určeného rozsahu IP adres a odmítat všechno ostatní, můžete použít *pravidlo brány firewall* pro blokování koncových bodů centra událostí z jiných IP adres. Pokud například používáte Event Hubs s využitím [Azure Express Route][express-route], můžete vytvořit *pravidlo brány firewall* , které omezí provoz z vašich místních IP adres infrastruktury.
 
 ## <a name="how-filter-rules-are-applied"></a>Jak se používají pravidla filtru
 
-Pravidla filtru IP se použijí na úrovni oboru názvů služby Event Hubs. Takže pravidla se vztahují na všechna připojení od klientů pomocí libovolného protokolu pro podporované.
+Pravidla filtru IP jsou použita na úrovni oboru názvů Event Hubs. Proto se pravidla vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu.
 
-Jakékoli pokusy o připojení z IP adresy, která se neshoduje s povolenou pravidlo protokolu IP v centrech událostí oboru názvů je byl odmítnut jako neoprávněný přístup. Odpověď není zmiňuje pravidlo protokolu IP.
+Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v oboru názvů Event Hubs, se odmítnou jako neoprávněné. Odpověď nezmiňuje pravidlo protokolu IP.
 
 ## <a name="default-setting"></a>Výchozí nastavení
 
-Ve výchozím nastavení **filtr IP** mřížky na portálu pro službu Event Hubs je prázdný. Toto výchozí nastavení znamená, že vaše Centrum událostí přijme připojení z libovolné IP adresy. Toto výchozí nastavení je ekvivalentní pravidlo, které přijímá tento rozsah IP adres 0.0.0.0/0.
+Ve výchozím nastavení je mřížka **filtru IP** na portálu pro Event Hubs prázdná. Toto výchozí nastavení znamená, že vaše centrum událostí akceptuje připojení z libovolné IP adresy. Toto výchozí nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0.
 
 ## <a name="ip-filter-rule-evaluation"></a>Vyhodnocení pravidla filtru IP
 
-Pravidla filtru IP jsou použity v zadaném pořadí a první pravidlo, které odpovídá IP adrese Určuje akci, přijmout nebo odmítnout.
+Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá IP adrese, určuje akci přijmout nebo odmítnout.
 
 >[!WARNING]
-> Implementace brány firewall může zabránit interakci s centry událostí dalšími službami Azure.
+> Implementace bran firewall může zabránit interakci s Event Hubs jinými službami Azure.
 >
-> Důvěryhodné služby Microsoftu nejsou podporovány při filtrování protokolu IP (brány firewall) jsou implementovány a budou brzy dostupné.
+> Důvěryhodné služby společnosti Microsoft nejsou podporovány, pokud jsou implementovány filtrování IP adres (brány firewall) a budou brzy k dispozici.
 >
-> Běžné scénáře služby Azure, které nefungují s filtrování protokolu IP (Všimněte si, že je seznam **není** vyčerpávající)-
+> Běžné scénáře Azure, které nefungují s filtrováním IP adres (Všimněte si, že seznam **není vyčerpávající)** –
 > - Azure Monitor
 > - Azure Stream Analytics
 > - Integrace s Azure Event Grid
-> - Azure IoT Hub Routes
-> - Azure IoT Device Explorer
-> - Průzkumník dat Azure
+> - Trasy k Azure IoT Hub
+> - Device Explorer Azure IoT
 >
-> Níže Microsoft services musí být ve virtuální síti
+> Níže uvedené služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure Web Apps
-> - Azure Functions
+> - Funkce Azure
 
-### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Vytvoření pravidla brány Firewall pomocí šablon Azure Resource Manageru
+### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Vytvoření pravidla brány firewall pomocí Azure Resource Manager šablon
 
 > [!IMPORTANT]
-> Pravidla brány firewall jsou podporovány v **standardní** a **vyhrazené** úrovně služby Event Hubs. Není podporována v úrovni basic.
+> Pravidla brány firewall jsou podporovaná na úrovni **Standard** a **vyhrazené** Event Hubs. Na úrovni Basic se nepodporuje.
 
-Následující šablony Resource Manageru umožňuje přidání pravidlo filtru IP do existujícího oboru názvů služby Event Hubs.
+Následující šablona Správce prostředků umožňuje přidat pravidlo filtru IP do existujícího oboru názvů Event Hubs.
 
 Parametry šablony:
 
-- **ipMask** je jedna IPv4 adresa nebo blok IP adres v zápisu CIDR. Například v CIDR notation 70.37.104.0/24 představuje 256 adresy IPv4 z 70.37.104.0 70.37.104.255 s 24 označující počet bitů významné předpona pro rozsah.
+- **ipMask** je jedna adresa IPv4 nebo blok IP adres v zápisu CIDR. Například v zápisu CIDR 70.37.104.0/24 představuje 256 IPv4 adres z 70.37.104.0 do 70.37.104.255, přičemž 24 značí počet významných bitů předpony pro daný rozsah.
 
 > [!NOTE]
-> Nejsou žádná pravidla odepřít je to možné, šablony Azure Resource Manageru je nastavena na výchozí akce **"Povolit"** který nepodporuje omezení připojení.
-> Při vytváření pravidla virtuální sítě a brány firewall, musíte Změníme ***"defaultAction"***
+> I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.
+> Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit ***"defaultAction"*** .
 > 
-> from
+> Výsledkem
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -143,13 +142,13 @@ Parametry šablony:
   }
 ```
 
-Pokud chcete nasadit šablonu, postupujte podle pokynů pro [Azure Resource Manageru][lnk-deploy].
+Pokud chcete nasadit šablonu, postupujte podle pokynů [Azure Resource Manager][lnk-deploy].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Omezující přístup do služby Event Hubs k virtuálním sítím Azure naleznete na následující odkaz:
+Informace o omezení přístupu k Event Hubs k virtuálním sítím Azure najdete na následujícím odkazu:
 
-- [Koncové body služeb virtuální sítě pro službu Event Hubs][lnk-vnet]
+- [Virtual Network koncové body služby pro Event Hubs][lnk-vnet]
 
 <!-- Links -->
 

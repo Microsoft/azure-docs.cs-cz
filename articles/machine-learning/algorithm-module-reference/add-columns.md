@@ -1,24 +1,24 @@
 ---
 title: 'Přidat sloupce: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul přidat sloupce ve službě Azure Machine Learning ke zřetězení dvou datových sad.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul přidat sloupce v Azure Machine Learning k zřetězení dvou datových sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: cbb1249b529fde1368bfaff0c6c251c93fa6c309
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 55981279cb1902424d1a0f77af097dc379d7222f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693861"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493975"
 ---
 # <a name="add-columns-module"></a>Modul přidat sloupce
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul slouží ke zřetězení dvou datových sad. Všechny sloupce můžete kombinovat ze dvou datových sad, které zadáte jako vstupy, a vytvořit tak jedinou datovou sadu. Pokud potřebujete zřetězit více než dvě datové sady, použijte několik instancí **Přidat sloupce**.
 
@@ -46,4 +46,4 @@ Pokud ve vstupních datových sadách existují dva sloupce se stejným názvem,
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

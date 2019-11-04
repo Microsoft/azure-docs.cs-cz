@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 268def74a354b19427849738549fbc0c6b197746
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813401"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488460"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
@@ -60,9 +60,9 @@ Dokončete předchozí kurzy:
 
 Ve vašem zdrojovém prostředí potřebujete jeden vysoce dostupný místní počítač, který bude hostovat tyto místní Site Recovery komponenty:
 
-- **Konfigurační server**: Konfigurační server koordinuje komunikaci mezi místním prostředím a Azure a spravuje replikaci dat.
-- **Procesový server:** Procesní server funguje jako replikační brána. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do účtu úložiště mezipaměti v Azure. Procesový Server také nainstaluje agenta služby mobility na virtuální počítače, které chcete replikovat, a provádí automatické zjišťování místních virtuálních počítačů VMware.
-- **Hlavní cílový server**: Hlavní cílový server zpracovává replikační data během navrácení služeb z Azure po obnovení.
+- **Konfigurační server**: konfigurační server koordinuje komunikaci mezi místními a Azure a spravuje replikaci dat.
+- **Procesový Server**: procesový server funguje jako brána replikace. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do účtu úložiště mezipaměti v Azure. Procesový Server také nainstaluje agenta služby mobility na virtuální počítače, které chcete replikovat, a provádí automatické zjišťování místních virtuálních počítačů VMware.
+- **Hlavní cílový server**: hlavní cílový Server zpracovává replikační data během navrácení služeb po obnovení z Azure.
 
 
 Všechny tyto součásti jsou nainstalovány společně na jednom místním počítači, který je známý jako *konfigurační server*. Ve výchozím nastavení se pro zotavení po havárii VMware nastaví konfigurační server jako vysoce dostupný virtuální počítač VMware. Pokud to chcete provést, Stáhněte si připravenou šablonu Open Application Virtualization (VAJÍČK) a importujte ji do VMware a vytvořte virtuální počítač. 
@@ -158,7 +158,7 @@ Vyberte a zkontrolujte cílové prostředky.
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
-1. Otevřete [Azure Portal](https://portal.azure.com) a vyberte **Všechny prostředky**.
+1. Otevřete web [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **trezory Recovery Services**.
 2. Vyberte trezor služby Recovery Services (v tomto kurzu **ContosoVMVault**).
 3. Zásadu replikace vytvoříte tak, že vyberete **Infrastruktura Site Recovery** > **Zásady replikace** >  **+ Zásada replikace**.
 4. V části **Vytvoření zásady replikace** zadejte název zásady. Používáme **VMwareRepPolicy**.
@@ -166,7 +166,7 @@ Vyberte a zkontrolujte cílové prostředky.
 6. V části **Uchování bodu obnovení** zadejte, po jakou delší dobu se má každý bod obnovení uchovat. V tomto kurzu použijeme 72 hodin. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu.
 7. U možnosti **Frekvence snímků konzistentní vzhledem k aplikacím**  zadejte, jak často se vytvářejí snímky konzistentní vzhledem k aplikaci. Používáme výchozí hodnotu 60 minut. Vyberte **OK** a vytvořte zásadu.
 
-   ![Vytvoření zásad replikace](./media/vmware-azure-tutorial/replication-policy.png)
+   ![Vytvoření zásady replikace](./media/vmware-azure-tutorial/replication-policy.png)
 
 - Tato zásada se automaticky přidruží ke konfiguračnímu serveru.
 - Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud má zásada replikace název například **rep-policy**, zásada navrácení služeb po obnovení bude mít název **rep-policy-failback**. Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.
@@ -191,7 +191,7 @@ Replikaci pro virtuální počítače povolíte takto:
 1. Může to trvat 15 minut nebo déle, než se změny projeví a objeví se na portálu.
 1. Pokud chcete monitorovat virtuální počítače, které jste přidali, zkontrolujte čas posledního zjištění virtuálních počítačů v části **Konfigurační servery** > **Poslední kontakt**. Pokud chcete přidat virtuální počítače bez čekání na naplánované zjišťování, zvýrazněte konfigurační server (nevybírejte ho) a vyberte **Aktualizovat**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po povolení replikace spusťte přechod a ujistěte se, že vše funguje podle očekávání.
 > [!div class="nextstepaction"]
 > [Spuštění postupu zotavení po havárii](site-recovery-test-failover-to-azure.md)

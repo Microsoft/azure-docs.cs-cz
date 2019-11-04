@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389611"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473698"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API
 
@@ -57,7 +57,8 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
+1. Vyhledejte a vyberte **Azure Active Directory**. 
+1. V levém podokně vyberte **Registrace aplikací**.
 1. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** neboli hlavní stránka registrace dané aplikace.
 1. Podle následujícího postupu nakonfigurujte aplikaci pro přístup k webovým rozhraním API:
     * [Přidání identifikátorů URI pro přesměrování do aplikace](#add-redirect-uris-to-your-application)
@@ -117,7 +118,7 @@ Změna podporovaných typů účtů pro existující registraci aplikace:
 
 ## <a name="configure-platform-settings-for-your-application"></a>Konfigurace nastavení platformy pro vaši aplikaci
 
-[nastavení @no__t 1Configure pro vaši aplikaci na základě platformy nebo zařízení](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
+[![nakonfigurovat nastavení vaší aplikace na základě platformy nebo zařízení](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
 
 Při konfiguraci nastavení aplikace na základě platformy nebo zařízení cílíte na tyto možnosti:
 

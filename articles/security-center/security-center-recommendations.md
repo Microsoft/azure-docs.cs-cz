@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 32b7f1d699c0d620d70614c441a8c18520c1b2d5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 6a01ddbc733ce52c02e9abef2569adbfbd19c6a8
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201058"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520733"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Doporučení zabezpečení v Azure Security Center 
 V tomto tématu se dozvíte, jak zobrazit a pochopit doporučení v Azure Security Center, která vám pomůžou chránit vaše prostředky Azure.
@@ -36,7 +36,7 @@ Security Center pravidelně analyzovat stav zabezpečení vašich prostředků A
 Každé doporučení vám poskytne:
 
 - Stručný popis toho, co se doporučuje.
-- Kroky k nápravě, které je nutné provést pro implementaci doporučení. <!-- In some cases, one-click remediation is available. -->
+- Kroky k nápravě, které je nutné provést pro implementaci doporučení. <!-- In some cases, Quick Fix remediation is available. -->
 - Které prostředky potřebují k provedení doporučené akce.
 - **Dopad zabezpečeného skóre**, což je množství, které se bude používat při implementaci tohoto doporučení v zabezpečeném skóre.
 
@@ -48,17 +48,17 @@ Security Center analyzuje stav zabezpečení vašich prostředků, aby identifik
 
 1. V části **Přehled**vyberte **dlaždici doporučení** . Otevře se seznam **doporučení** .
 
-      ![Zobrazit doporučení](./media/security-center-recommendations/view-recommendations.png)
+      ![Zobrazení doporučení](./media/security-center-recommendations/view-recommendations.png)
 
     Doporučení můžete filtrovat. Pokud chcete vyfiltrovat doporučení, vyberte v okně **doporučení** možnost **Filtr** . Otevře se okno **filtru** a vyberete závažnost a hodnoty stavu, které chcete zobrazit.
 
-   * **DOPORUČENÍ**: Doporučení.
-   * **DOPAD NA ZABEZPEČENÍ SKÓRE**: Skóre vygenerované Security Centerm pomocí doporučení zabezpečení a použití pokročilých algoritmů k určení, jak rozhodující je každé doporučení. Další informace najdete v tématu [zabezpečení výpočtu skóre](security-center-secure-score.md#secure-score-calculation).
-   * **PROSTŘEDEK**: Zobrazí seznam prostředků, na které se vztahuje toto doporučení.
-   * **STAVOVÉ ŘÁDKY**:  Popisuje závažnost tohoto konkrétního doporučení:
-       * **Vysoká (červená)** : Existuje chyba s smysluplným prostředkem (jako je aplikace, virtuální počítač nebo skupina zabezpečení sítě) a vyžaduje pozornost.
-       * **Střední (oranžová)** : Existuje ohrožení zabezpečení a nekritické nebo další kroky jsou vyžadovány k jeho odstranění nebo k dokončení procesu.
-       * **Nízká (modrá)** : Existuje ohrožení zabezpečení, které by mělo být adresováno, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení se neprezentují nízká doporučení, ale pokud je chcete zobrazit, můžete je vyfiltrovat podle nízkých doporučení.) 
+   * **Doporučení**: doporučení.
+   * **Bezpečný dopad na skóre**: skóre vygenerované Security centerm pomocí doporučení zabezpečení a použití pokročilých algoritmů k určení, jak rozhodující je každé doporučení. Další informace najdete v tématu [zabezpečení výpočtu skóre](security-center-secure-score.md#secure-score-calculation).
+   * **Prostředek**: zobrazí seznam prostředků, na které se vztahuje toto doporučení.
+   * **Stavové řádky**: popisuje závažnost tohoto konkrétního doporučení:
+       * **Vysoká (červená)** : ohrožení zabezpečení existuje smysluplným prostředkem (jako je aplikace, virtuální počítač nebo skupina zabezpečení sítě) a vyžaduje pozornost.
+       * **Střední (oranžová)** : existuje ohrožení zabezpečení a nekritické nebo další kroky jsou vyžadovány k jeho odstranění nebo k dokončení procesu.
+       * **Nízká (modrá)** : existuje ohrožení zabezpečení, které by mělo být adresováno, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení se neprezentují nízká doporučení, ale pokud je chcete zobrazit, můžete je vyfiltrovat podle nízkých doporučení.) 
        * **V pořádku (zelená)** :
        * **Není k dispozici (šedá)** :
 

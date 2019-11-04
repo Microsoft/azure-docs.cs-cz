@@ -1,5 +1,5 @@
 ---
-title: Příklad aplikace Jupyter notebook
+title: Příklad poznámkových bloků Jupyter
 titleSuffix: Azure Machine Learning
 description: Vyhledejte a použijte příklady Jupyter poznámkových bloků pro zkoumání Azure Machine Learning Pythonu pro sadu SDK.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 145ab994bbd2ac2445947968ccdeadbb730eb76a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997065"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476118"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Prozkoumejte Azure Machine Learning pomocí poznámkových bloků Jupyter
 
@@ -24,7 +24,7 @@ ms.locfileid: "70997065"
 
 V tomto článku se dozvíte, jak získat přístup k úložišti z následujících prostředí:
 
-- [Virtuální počítač s Azure Machine Learning poznámkového bloku](#notebookvm)
+- [Azure Machine Learning výpočetní instance](#notebookvm)
 - [Přineste si vlastní server poznámkového bloku](#byo)
 - [Data Science Virtual Machine](#dsvm)
 
@@ -32,9 +32,9 @@ V tomto článku se dozvíte, jak získat přístup k úložišti z následujíc
 > Po klonování úložiště najdete poznámkové bloky kurzu ve složce **kurzy** a poznámkových blocích specifických pro konkrétní funkce ve složce **How-to-AzureML** .
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Získat ukázky na virtuálním počítači s Azure Machine Learning poznámkového bloku
+## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Získat ukázky pro Azure Machine Learning výpočetní instance
 
-Nejjednodušší způsob, jak začít s ukázkami, je provést tento [kurz: Nastavte prostředí a pracovní](tutorial-1st-experiment-sdk-setup.md)prostor. Po dokončení budete mít k dispozici vyhrazený server poznámkového bloku předem načtený pomocí sady SDK a ukázkového úložiště. Nepotřebujete žádné soubory ke stažení nebo instalaci.
+Nejjednodušší způsob, jak začít s ukázkami, je projít si [kurz: nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md). Po dokončení budete mít k dispozici vyhrazený server poznámkového bloku předem načtený pomocí sady SDK a ukázkového úložiště. Nepotřebujete žádné soubory ke stažení nebo instalaci.
 
 <a name="byo"></a>
 
@@ -53,10 +53,10 @@ Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního poč�
 
 [!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte [ukázkové poznámkové bloky](https://aka.ms/aml-notebooks) , abyste zjistili, co Azure Machine Learning může dělat, nebo vyzkoušejte tyto kurzy:
 
-- [Trénování a nasadit model klasifikace obrázků s mnist ručně](tutorial-train-models-with-aml.md)
+- [Výuka a nasazení modelu klasifikace obrázků pomocí MNIST ručně zapsaných](tutorial-train-models-with-aml.md)
 
-- [Příprava dat a na základě automatizovaných machine learningu k natrénování modelu regrese s datovou sadou NYC taxislužby města](tutorial-auto-train-models.md)
+- [Příprava dat a použití automatizovaného strojového učení k výuce regresního modelu s taxislužby datovou sadou NYC](tutorial-auto-train-models.md)

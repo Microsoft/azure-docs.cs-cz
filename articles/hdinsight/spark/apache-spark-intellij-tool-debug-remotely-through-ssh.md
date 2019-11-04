@@ -1,5 +1,5 @@
 ---
-title: 'Azure Toolkit for IntelliJ: Vzdálené ladění aplikací Spark přes SSH '
+title: 'Azure Toolkit for IntelliJ: ladění aplikací Spark pomocí SSH-HDInsight'
 description: Podrobné pokyny k používání nástrojů HDInsight v Azure Toolkit for IntelliJ pro vzdálené ladění aplikací na clusterech HDInsight pomocí SSH
 keywords: dálková ladění IntelliJ, vzdálené ladění IntelliJ, SSH, IntelliJ, HDInsight, ladění IntelliJ, ladění
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 1f3f08385ac4f7044f4e6c4e4110be701e8f576d
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 82aaead87fad0ed9fc7b715baf3dc5ebbd4941be
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266223"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494616"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Ladění aplikací Apache Spark v clusteru HDInsight pomocí Azure Toolkit for IntelliJ prostřednictvím SSH
 
@@ -66,18 +66,18 @@ Tento článek poskytuje podrobné pokyny, jak pomocí nástrojů služby HDInsi
 
    d. Vyberte **Finish** (Dokončit).
 
-1. Vyberte **Src** > MainScala > a otevřete svůj kód v projektu. V tomto příkladu se používá skript **SparkCore_wasbloTest** .
+1. Vyberte **src** > **Main** > **Scala** k otevření kódu v projektu. V tomto příkladu se používá skript **SparkCore_wasbloTest** .
 
 ### <a name="prerequisite-for-windows"></a>Předpoklad pro Windows
 Když spouštíte místní aplikaci Spark Scala na počítači se systémem Windows, může se zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K výjimce dochází, protože ve Windows chybí WinUtils. exe.
 
 Chcete-li tuto chybu vyřešit, [Stáhněte spustitelný soubor](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do umístění, jako je například **C:\WinUtils\bin**. Pak přidejte proměnnou prostředí **HADOOP_HOME**a nastavte hodnotu proměnné na **C:\WinUtils**.
 
-### <a name="scenario-2-perform-local-run"></a>Scénář 2: Provést místní spuštění
+### <a name="scenario-2-perform-local-run"></a>Scénář 2: provedení místního spuštění
 
 1. Otevřete skript **SparkCore_wasbloTest** , klikněte pravým tlačítkem myši na editor skriptů a potom vyberte možnost **Spustit [Spark Job] XXX** a proveďte místní spuštění.
 
-1. Až se místní spuštění dokončí, můžete si prohlédnout výstupní soubor uložit do aktuálního **__Nastavení__** **dat** > Průzkumníka projektu.
+1. Po dokončení místního spuštění můžete zobrazit výstupní soubor uložit do aktuálního **data** průzkumníka projektu >  **__výchozí__** .
 
     ![Výsledek místního běhu projektu IntelliJ](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 
@@ -91,12 +91,12 @@ Chcete-li tuto chybu vyřešit, [Stáhněte spustitelný soubor](https://public-
 
 1. Konfiguraci můžete také nastavit ručně před provedením místního běhu a místního ladění. Na předchozím snímku obrazovky vyberte znaménko plus ( **+** ). Pak vyberte možnost **Apache Spark na HDInsight** . Zadejte informace pro **název**, **název hlavní třídy** , který chcete uložit, a potom klikněte na tlačítko místní spuštění.
 
-### <a name="scenario-3-perform-local-debugging"></a>Scénář 3: Provést místní ladění
+### <a name="scenario-3-perform-local-debugging"></a>Scénář 3: provedení místního ladění
 1. Otevřete skript **SparkCore_wasbloTest** , nastavte zarážky.
 1. Klikněte pravým tlačítkem na editor skriptů a potom vyberte možnost **ladit ' [Spark v HDInsight] xxx '** k provedení místního ladění.
 
 ## <a name="learn-how-to-perform-remote-run-and-debugging"></a>Naučte se provádět vzdálené spuštění a ladění.
-### <a name="scenario-1-perform-remote-run"></a>Scénář 1: Provést vzdálené spuštění
+### <a name="scenario-1-perform-remote-run"></a>Scénář 1: provedení vzdáleného spuštění
 
 1. Pokud chcete získat přístup k nabídce **Upravit konfigurace** , vyberte ikonu v pravém horním rohu. Z této nabídky můžete vytvořit nebo upravit konfigurace pro vzdálené ladění.
 
@@ -124,16 +124,16 @@ Chcete-li tuto chybu vyřešit, [Stáhněte spustitelný soubor](https://public-
 
    ![Výsledek vzdáleného spuštění úlohy IntelliJ ladění vzdáleného Sparku](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
-### <a name="scenario-2-perform-remote-debugging"></a>Scénář 2: Provést vzdálené ladění
+### <a name="scenario-2-perform-remote-debugging"></a>Scénář 2: proveďte vzdálené ladění
 1. Nastavte body přerušení a pak klikněte na ikonu **vzdáleného ladění** . Rozdíl se vzdáleným odesláním spočívá v tom, že je nutné nakonfigurovat uživatelské jméno/heslo SSH.
 
    ![Ikona ladění vzdálené úlohy Sparku IntelliJ ladění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
 
-1. Když program dosáhne bodu přerušení, zobrazí se karta **ovladače** a dvě karty prováděcího modulu v podokně ladicího **programu** . Vyberte ikonu **pokračovat v programu** pro pokračování v běhu kódu, který pak dosáhne další zarážky. Pro vyhledání cílového prováděcího modulu pro ladění musíte přejít na správnou kartu vykonavatele. Protokoly spouštění můžete zobrazit na příslušné kartě **konzoly** .
+1. Když program dosáhne bodu přerušení, zobrazí se karta **ovladače** a dvě karty **prováděcího** modulu v podokně **ladicího programu** . Vyberte ikonu **pokračovat v programu** pro pokračování v běhu kódu, který pak dosáhne další zarážky. Pro vyhledání cílového prováděcího modulu pro ladění musíte přejít na správnou kartu **vykonavatele** . Protokoly spouštění můžete zobrazit na příslušné kartě **konzoly** .
 
    ![Karta ladění vzdálené úlohy Spark IntelliJ](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
 
-### <a name="scenario-3-perform-remote-debugging-and-bug-fixing"></a>Scénář 3: Provést vzdálené ladění a opravy chyb
+### <a name="scenario-3-perform-remote-debugging-and-bug-fixing"></a>Scénář 3: provedení vzdáleného ladění a opravy chyb
 
 1. Nastavte dva body přerušení a potom výběrem ikony **ladění** spusťte proces vzdáleného ladění.
 
@@ -159,16 +159,16 @@ Chcete-li tuto chybu vyřešit, [Stáhněte spustitelný soubor](https://public-
 
 ## <a name="seealso"></a>Další kroky
 
-* [Přehled Apache Spark ve službě Azure HDInsight](apache-spark-overview.md)
+* [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="demo"></a>Ukázka
-* Vytvořit projekt Scala (video): [Vytváření aplikací Apache Spark Scala](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Vzdálené ladění (video): [Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně na clusteru HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Vytvořit projekt Scala (video): [vytváření Apache Sparkch Scala aplikací](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* Vzdálené ladění (video): [použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně na clusteru HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Sparku ve službě HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku ve službě HDInsight s nástroji BI.](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
@@ -184,6 +184,6 @@ Chcete-li tuto chybu vyřešit, [Stáhněte spustitelný soubor](https://public-
 * [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Spravovat prostředky
+### <a name="manage-resources"></a>Správa prostředků
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)

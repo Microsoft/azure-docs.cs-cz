@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/27/2018
-ms.openlocfilehash: ec75f607f707405d6a5bea98deb784f4306c04f1
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 3d6ed3b13c134d8e9c1df72ae2cb880a477a803a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555371"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477044"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Řešení potíží s Azure Monitor pro kontejnery
 
@@ -106,10 +106,30 @@ Následující tabulka shrnuje známé chyby, se kterými se můžete setkat př
 | Chybové zprávy  | Akce |  
 | ---- | --- |  
 | Chybová zpráva `No data for selected filters`  | Navázání toku dat monitorování pro nově vytvořené clustery může nějakou dobu trvat. Pro zobrazení dat pro váš cluster povolte aspoň 10 až 15 minut. |   
-| Chybová zpráva `Error retrieving data` | I když je cluster služby Azure Kubenetes nastaven pro monitorování stavu a výkonu, připojení mezi clusterem a pracovním prostorem Azure Log Analytics je navázáno. Pracovní prostor Log Analytics slouží k ukládání všech dat monitorování pro váš cluster. K této chybě může dojít, když byl pracovní prostor Log Analytics odstraněn. Kontrola, zda byl pracovní prostor odstraněn a v případě potřeby bude nutné znovu povolit monitorování clusteru pomocí Azure Monitor pro kontejnery a zadat existující nebo vytvořit nový pracovní prostor. Pokud ho chcete znovu povolit, budete muset [Zakázat](container-insights-optout.md) monitorování clusteru a [Povolit](container-insights-enable-new-cluster.md) Azure monitor pro kontejnery znovu. |  
+| Chybová zpráva `Error retrieving data` | I když je cluster služby Azure Kubernetes nastaven pro monitorování stavu a výkonu, připojení mezi clusterem a pracovním prostorem Azure Log Analytics je navázáno. Pracovní prostor Log Analytics slouží k ukládání všech dat monitorování pro váš cluster. K této chybě může dojít, když byl pracovní prostor Log Analytics odstraněn. Kontrola, zda byl pracovní prostor odstraněn a v případě potřeby bude nutné znovu povolit monitorování clusteru pomocí Azure Monitor pro kontejnery a zadat existující nebo vytvořit nový pracovní prostor. Pokud ho chcete znovu povolit, budete muset [Zakázat](container-insights-optout.md) monitorování clusteru a [Povolit](container-insights-enable-new-cluster.md) Azure monitor pro kontejnery znovu. |  
 | `Error retrieving data` po přidání Azure Monitor pro kontejnery prostřednictvím AZ AKS CLI | Pokud povolíte monitorování pomocí `az aks cli`, Azure Monitor pro kontejnery pravděpodobně nebudou správně nasazeny. Ověřte, zda je řešení nasazeno. Provedete to tak, že přejdete do svého pracovního prostoru Log Analytics a zjistíte, jestli je řešení dostupné, a to tak, že v podokně na levé straně vyberete **řešení** . Chcete-li tento problém vyřešit, budete muset řešení znovu nasadit podle pokynů pro [nasazení Azure monitor pro kontejnery](container-insights-onboard.md) . |  
 
-Abychom vám pomohli diagnostikovat problém, máme [tady](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)k dispozici skript pro řešení potíží.  
+Abychom vám pomohli diagnostikovat problém, máme [tady](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)k dispozici skript pro řešení potíží.
+
+## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Azure Monitor pro kontejnery agentů ReplicaSet se neplánují na Kubernetes cluster mimo Azure.
+
+Azure Monitor for Containers agent ReplicaSet lusky má závislost na následujících selektorech uzlů v uzlech pracovního procesu (nebo agenta) pro plánování:
+
+```
+nodeSelector:
+  beta.kubernetes.io/os: Linux
+  kubernetes.io/role: agent
+```
+
+Pokud k vašim pracovním uzlům nejsou připojené popisky uzlů, pak se agent ReplicaSet neplánuje. Pokyny k připojení popisku najdete v tématu [Kubernetes Assign pro selektory Label](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) .
+
+## <a name="performance-charts-dont-show-cpu-or-memory-of-nodes-and-containers-on-a-non-azure-cluster"></a>Grafy výkonu nezobrazují PROCESORy nebo paměť uzlů a kontejnerů v clusteru mimo Azure.
+
+Azure Monitor for Containers agent lusky pomocí koncového bodu cAdvisor v agentovi uzlu shromažďují metriky výkonu. Ověřte, jestli je agent s kontejnerem na uzlu nakonfigurovaný tak, aby povoloval, aby se `cAdvisor port: 10255` otevíraly na všech uzlech v clusteru za účelem shromažďování metrik výkonu.
+
+## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Cluster s Kubernetes, který není v Azure, se v Azure Monitor pro kontejnery nezobrazuje.
+
+Pokud chcete zobrazit cluster Kubernetes mimo Azure v Azure Monitor for Containers, vyžaduje se v pracovním prostoru Log Analytics přístup pro čtení, který podporuje tento přehled a v ContainerInsights prostředků řešení Container Insights **(*pracovní prostor*)** .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Nastavení pro replikaci clusteru v Azure Virtual Networks – Azure HDInsight
+title: HBA replikace clusteru ve virtuálních sítích – Azure HDInsight
 description: Naučte se, jak nastavit replikaci HBA z jedné verze HDInsight na jinou pro vyrovnávání zatížení, vysokou dostupnost, migraci a aktualizace s nulovými výpadky a zotavení po havárii.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 34b9993482d1036570805af7caba29361b231426
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077187"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468410"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBA v Azure Virtual Networks
 
@@ -38,7 +38,7 @@ Následující jsou adaptéry HBA v případech využití replikace pro dvě vir
 
 Clustery můžete replikovat pomocí skriptů [skriptových akcí](../hdinsight-hadoop-customize-cluster-linux.md) z [GitHubu](https://github.com/Azure/hbase-utils/tree/master/replication).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete tento článek, musíte mít předplatné Azure. Viz [získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="set-up-the-environments"></a>Nastavení prostředí
@@ -66,36 +66,36 @@ Některé pevně zakódované hodnoty v šabloně:
 
 **Virtuální síť 1**
 
-| Vlastnost | Value |
+| Vlastnost | Hodnota |
 |----------|-------|
-| Location | USA – západ |
+| Umístění | Západní USA |
 | Název virtuální sítě | &lt;ClusterNamePrevix > – vnet1 |
 | Předpona adresního prostoru | 10.1.0.0/16 |
-| Název podsítě | Podsíť 1 |
+| Název podsítě | podsíť 1 |
 | Předpona podsítě | 10.1.0.0/24 |
 | Název podsítě (brány) | GatewaySubnet (nejde změnit) |
 | Předpona podsítě (brány) | 10.1.255.0/27 |
 | Název brány | vnet1gw |
 | Typ brány | Vpn |
 | Typ sítě VPN brány | RouteBased |
-| SKU brány | Basic |
+| SKU brány | Úroveň Basic |
 | IP adresa brány | vnet1gwip |
 
 **Virtuální síť 2**
 
-| Vlastnost | Value |
+| Vlastnost | Hodnota |
 |----------|-------|
-| Location | East US |
+| Umístění | USA – východ |
 | Název virtuální sítě | &lt;ClusterNamePrevix > – vnet2 |
 | Předpona adresního prostoru | 10.2.0.0/16 |
-| Název podsítě | Podsíť 1 |
+| Název podsítě | podsíť 1 |
 | Předpona podsítě | 10.2.0.0/24 |
 | Název podsítě (brány) | GatewaySubnet (nejde změnit) |
 | Předpona podsítě (brány) | 10.2.255.0/27 |
 | Název brány | vnet2gw |
 | Typ brány | Vpn |
 | Typ sítě VPN brány | RouteBased |
-| SKU brány | Basic |
+| SKU brány | Úroveň Basic |
 | IP adresa brány | vnet1gwip |
 
 ## <a name="setup-dns"></a>Nastavení DNS
@@ -121,12 +121,12 @@ K instalaci vazby použijte následující postup:
     Nahraďte `sshuser` uživatelským účtem SSH, který jste zadali při vytváření virtuálního počítače DNS.
 
     > [!NOTE]  
-    > Existuje mnoho způsobů, jak tento `ssh` nástroj získat. V systému Linux, UNIX a macOS je k dispozici jako součást operačního systému. Pokud používáte systém Windows, vezměte v úvahu jednu z následujících možností:
+    > Existuje mnoho způsobů, jak získat nástroj `ssh`. V systému Linux, UNIX a macOS je k dispozici jako součást operačního systému. Pokud používáte systém Windows, vezměte v úvahu jednu z následujících možností:
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
     > * [Bash na Ubuntu ve Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
-    > * [Git https://git-scm.com/)](https://git-scm.com/)
-    > * [OpenSSH https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+    > * [Git (https://git-scm.com/)](https://git-scm.com/)
+    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. K instalaci vazby použijte následující příkazy z relace SSH:
 
@@ -135,7 +135,7 @@ K instalaci vazby použijte následující postup:
     sudo apt-get install bind9 -y
     ```
 
-3. Nakonfigurujte službu BIND na dopředné požadavky na překlad názvů na místní server DNS. K tomu použijte následující text jako obsah `/etc/bind/named.conf.options` souboru:
+3. Nakonfigurujte službu BIND na dopředné požadavky na překlad názvů na místní server DNS. K tomu použijte následující text jako obsah souboru `/etc/bind/named.conf.options`:
 
     ```
     acl goodclients {
@@ -162,7 +162,7 @@ K instalaci vazby použijte následující postup:
     ```
     
     > [!IMPORTANT]  
-    > Nahraďte hodnoty v `goodclients` oddílu rozsahem IP adres dvou virtuálních sítí. V této části se definují adresy, od kterých tento server DNS přijímá požadavky.
+    > Hodnoty v části `goodclients` nahraďte rozsahem IP adres dvou virtuálních sítí. V této části se definují adresy, od kterých tento server DNS přijímá požadavky.
 
     Chcete-li tento soubor upravit, použijte následující příkaz:
 
@@ -182,11 +182,11 @@ K instalaci vazby použijte následující postup:
 
         vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    Text je __přípona DNS__ pro tuto virtuální síť. `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Uložte tuto hodnotu, bude se hodit později.
+    Text `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` je __přípona DNS__ této virtuální sítě. Uložte tuto hodnotu, bude se hodit později.
 
     Také je nutné zjistit příponu DNS z jiného serveru DNS. Budete ho potřebovat v dalším kroku.
 
-5. Pokud chcete nakonfigurovat službu BIND k překladu názvů DNS pro prostředky v rámci virtuální sítě, jako obsah `/etc/bind/named.conf.local` souboru použijte následující text:
+5. Chcete-li nakonfigurovat službu BIND k překladu názvů DNS pro prostředky v rámci virtuální sítě, použijte následující text jako obsah souboru `/etc/bind/named.conf.local`:
 
     ```
     // Replace the following with the DNS suffix for your virtual network
@@ -197,7 +197,7 @@ K instalaci vazby použijte následující postup:
     ```
 
     > [!IMPORTANT]  
-    > Je nutné nahradit `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` příponu DNS druhé virtuální sítě. A IP adresa pro předávací službu je privátní IP adresa serveru DNS v druhé virtuální síti.
+    > `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` musíte nahradit příponou DNS druhé virtuální sítě. A IP adresa pro předávací službu je privátní IP adresa serveru DNS v druhé virtuální síti.
 
     Chcete-li tento soubor upravit, použijte následující příkaz:
 
@@ -260,12 +260,12 @@ sudo service bind9 status
 Vytvořte cluster [Apache HBA](https://hbase.apache.org/) v každé z těchto dvou virtuálních sítí s následující konfigurací:
 
 - **Název skupiny prostředků**: použijte stejný název skupiny prostředků jako při vytváření virtuálních sítí.
-- **Typ clusteru**: HBase
+- **Typ clusteru**: HBA
 - **Verze**: HBA – 1.1.2 (HDI 3,6)
-- **Umístění**: Použijte stejné umístění jako virtuální síť.  Ve výchozím nastavení je vnet1 *západní USA*a vnet2 je *východní USA*.
-- **Úložiště**: Vytvořte nový účet úložiště pro cluster.
-- **Virtuální síť** (z rozšířených nastavení na portálu): Vyberte vnet1, které jste vytvořili v posledním postupu.
-- **Podsíť**: Výchozí název, který se používá v šabloně, je **SUBNET1**.
+- **Umístění**: použijte stejné umístění jako virtuální síť.  Ve výchozím nastavení je vnet1 *západní USA*a vnet2 je *východní USA*.
+- **Úložiště**: vytvořte nový účet úložiště pro cluster.
+- **Virtuální síť** (z pokročilého nastavení na portálu): vyberte vnet1, který jste vytvořili v posledním postupu.
+- **Podsíť**: výchozí název, který se používá v šabloně, je **SUBNET1**.
 
 Aby bylo zajištěno, že je prostředí správně nakonfigurováno, musíte být schopni odeslat příkaz k otestování plně kvalifikovaného názvu domény hlavnímu uzlu mezi dvěma clustery.
 
@@ -273,7 +273,7 @@ Aby bylo zajištěno, že je prostředí správně nakonfigurováno, musíte bý
 
 Při replikaci clusteru je nutné zadat tabulky, které chcete replikovat. V této části načtete některá data do zdrojového clusteru. V další části budete umožňovat replikaci mezi dvěma clustery.
 
-Pokud chcete vytvořit tabulku **kontaktů** a vložit do ní nějaká data, postupujte podle pokynů v [článku Apache HBA – kurz: Začněte používat Apache HBA v HDInsight](apache-hbase-tutorial-get-started-linux.md).
+Pokud chcete vytvořit tabulku **kontaktů** a vložit do ní nějaká data, postupujte podle pokynů v článku o [Apache HBA kurz: Začínáme používat Apache HBA v HDInsight](apache-hbase-tutorial-get-started-linux.md).
 
 ## <a name="enable-replication"></a>Povolení replikace
 
@@ -281,46 +281,46 @@ Následující postup popisuje, jak volat skript akce skriptu z Azure Portal. In
 
 **Povolení replikace HBA z Azure Portal**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Otevřete zdrojový cluster HBA.
 3. V nabídce cluster Vyberte **akce skriptu**.
 4. V horní části stránky vyberte **Odeslat novou**.
 5. Vyberte nebo zadejte následující informace:
 
-   1. **Název**: Zadejte **Povolit replikaci**.
-   2. **Adresa URL skriptu bash**: Zadejte **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** .
-   3. **Pozice**: Ujistěte se, že je vybraná možnost. Zrušte zaškrtnutí ostatních typů uzlů.
-   4. **Parametry**: Následující ukázkové parametry umožňují replikaci pro všechny existující tabulky a následné zkopírování všech dat ze zdrojového clusteru do cílového clusteru:
+   1. **Název**: zadejte **Povolit replikaci**.
+   2. **Adresa URL skriptu bash**: zadejte **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** .
+   3. **Head**: Ujistěte se, že je vybraná možnost. Zrušte zaškrtnutí ostatních typů uzlů.
+   4. **Parametry**: následující ukázkové parametry umožňují replikaci pro všechny existující tabulky a následné zkopírování všech dat ze zdrojového clusteru do cílového clusteru:
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
       > [!NOTE]
       > Jako název DNS zdrojového i cílového clusteru použijte název hostitele místo plně kvalifikovaného názvu domény.
 
-6. Vyberte **Vytvořit**. Spuštění skriptu může trvat delší dobu, zejména při použití argumentu **-COPYDATA** .
+6. Vyberte **Create** (Vytvořit). Spuštění skriptu může trvat delší dobu, zejména při použití argumentu **-COPYDATA** .
 
 Požadované argumenty:
 
-|Name|Popis|
+|Name (Název)|Popis|
 |----|-----------|
-|-s, --src-cluster | Určuje název DNS zdrojového clusteru HBA. Příklad:-s hbsrccluster,--src-cluster = hbsrccluster |
-|-d, --dst-cluster | Určuje název DNS cílového clusteru (repliky) HBA. Příklad:-s dsthbcluster,--src-cluster = dsthbcluster |
-|-sp, --src-ambari-password | Určuje heslo správce pro Ambari ve zdrojovém clusteru HBA. |
+|-s,--src-cluster | Určuje název DNS zdrojového clusteru HBA. Příklad:-s hbsrccluster,--src-cluster = hbsrccluster |
+|-d,--DST-cluster | Určuje název DNS cílového clusteru (repliky) HBA. Příklad:-s dsthbcluster,--src-cluster = dsthbcluster |
+|-SP,--src-Ambari-Password | Určuje heslo správce pro Ambari ve zdrojovém clusteru HBA. |
 |-DP,--DST-Ambari-Password | Určuje heslo správce pro Ambari v cílovém clusteru HBA.|
 
 Nepovinné argumenty:
 
-|Name|Popis|
+|Name (Název)|Popis|
 |----|-----------|
-|-su, --src-ambari-user | Určuje uživatelské jméno správce pro Ambari ve zdrojovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
-|-du, --dst-ambari-user | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
+|-Su,--src-Ambari-User | Určuje uživatelské jméno správce pro Ambari ve zdrojovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
+|-du,--DST-Ambari-User | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
 |-t,--Table-list | Určuje tabulky, které se mají replikovat. Příklad:--Table-list = "Tabulka1; Tabulka2; TABLE3". Pokud nezadáte žádné tabulky, replikují se všechny existující tabulky HBA.|
 |-m,--Machine | Určuje hlavní uzel, ve kterém se spustí akce skriptu. Hodnota je buď **hn0** nebo **HN1** , a měla by být vybrána v závislosti na tom, který je aktivním hlavním uzlem. Tuto možnost použijte, když spouštíte skript $0 jako akci skriptu z portálu HDInsight nebo Azure PowerShell.|
 |-CP,-COPYDATA | Povolí migraci existujících dat v tabulkách, ve kterých je povolená replikace. |
-|-rpm, -replicate-phoenix-meta | Povoluje replikaci v systémových tabulkách v Phoenixu. <br><br>*Tuto možnost používejte opatrně.* Před použitím tohoto skriptu doporučujeme, abyste v clusterech replik znovu vytvořili tabulky v Phoenixu. |
+|-ot./min. – replikace-Phoenix-meta | Povoluje replikaci v systémových tabulkách v Phoenixu. <br><br>*Tuto možnost používejte opatrně.* Před použitím tohoto skriptu doporučujeme, abyste v clusterech replik znovu vytvořili tabulky v Phoenixu. |
 |-h,--help | Zobrazí informace o použití. |
 
-Část skriptu obsahuje podrobné vysvětlení parametrů. [](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) `print_usage()`
+Část `print_usage()` [skriptu](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) obsahuje podrobné vysvětlení parametrů.
 
 Po úspěšném nasazení akce skriptu můžete použít SSH pro připojení k cílovému clusteru HBA a pak ověřte, že se data replikují.
 
@@ -356,7 +356,7 @@ Stejný postup, který je popsaný v tématu [Povolení replikace](#enable-repli
 
     -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
 
-Část skriptu obsahuje podrobný popis parametrů. [](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) `print_usage()`
+Část `print_usage()` [skriptu](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) má podrobný popis parametrů.
 
 ### <a name="scenarios"></a>Scénáře
 
@@ -379,14 +379,14 @@ Pokud chcete replikaci zakázat, použijte jiný skript akce skriptu z [GitHubu]
 
     -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
-Část skriptu obsahuje podrobné vysvětlení parametrů. [](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) `print_usage()`
+Část `print_usage()` [skriptu](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) obsahuje podrobné vysvětlení parametrů.
 
 ### <a name="scenarios"></a>Scénáře
 
 - **Zakázat replikaci na všech tabulkách**:
 
         -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
-  or
+  nebo
 
         --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
@@ -394,7 +394,7 @@ Pokud chcete replikaci zakázat, použijte jiný skript akce skriptu z [GitHubu]
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak nastavit replikaci Apache HBA v rámci virtuální sítě nebo mezi dvěma virtuálními sítěmi. Další informace o HDInsight a Apache HBA najdete v těchto článcích:
 

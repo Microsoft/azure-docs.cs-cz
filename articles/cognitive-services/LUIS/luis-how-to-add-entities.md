@@ -9,84 +9,86 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 80e1052cb7acbdcec2dcb94f1667cae3c554d18e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 54c9d79c62052daeee76de5dffb1099dc7d75180
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932927"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467716"
 ---
-# <a name="create-entities-without-utterances"></a>Vytvoření entity bez projevy
+# <a name="create-entities-without-utterances"></a>Vytváření entit bez projevy
 
-Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrahován. Entita představuje třídu, včetně kolekce podobných objektů (míst, věcí, osob, událostí nebo konceptů). Entity popisují informace související s cílem a někdy jsou nezbytné pro vaši aplikaci k provedení svých úkolů. Můžete vytvořit entity, když přidáte utterance k záměru nebo od (před nebo po) přidání utterance k záměru.
+Entita představuje slovo nebo frázi uvnitř utterance, který chcete extrahovat. Entita představuje třídu, včetně kolekce podobných objektů (míst, věcí, osob, událostí nebo konceptů). Entity popisují informace týkající se záměru a někdy jsou nezbytné, aby vaše aplikace mohla provádět její úkoly. Můžete vytvořit entity, když přidáte utterance k záměru nebo od (před nebo po) přidání utterance k záměru.
 
-Můžete přidat, upravit nebo odstranit entity v aplikaci LUIS prostřednictvím **seznam entit** na **entity** stránky. Služba LUIS nabízí dva hlavní typy entit: [předem připravených entit](luis-reference-prebuilt-entities.md)a vlastní [vlastní entity](luis-concept-entity-types.md#types-of-entities).
+Entity můžete do aplikace LUIS přidat, upravit nebo odstranit pomocí **seznamu entity** na stránce **entity** . LUIS nabízí dva hlavní typy entit: [předem připravené entity](luis-reference-prebuilt-entities.md)a vlastní [entity](luis-concept-entity-types.md#types-of-entities).
 
 Po vytvoření entity, která je v počítači zjištěna, je nutné označit tuto entitu ve všech příkladech utterance všech záměrů, ve kterých se nachází.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="add-prebuilt-entity"></a>
 
 ## <a name="add-a-prebuilt-entity-to-your-app"></a>Přidat předem vytvořenou entitu do aplikace
 
-Jsou přidány do aplikace běžné předem připravených entit *číslo* a *datetimeV2*. 
+Mezi běžné předem připravené entity přidané do aplikace patří *Number* a *datetimeV2*. 
 
-1. Ve vaší aplikaci z **sestavení** vyberte **entity** na levém panelu.
+1. V aplikaci v části Build ( **sestavení** ) vyberte **entity** na levém panelu.
  
-1. Na **entity** stránce **přidání předem připravených entit**.
+1. Na stránce **entity** vyberte **Přidat předem připravené entity**.
 
-1. V **přidání předem připravených entit** dialogové okno, vyberte **číslo** a **datetimeV2** předem připravených entit. Potom vyberte **Done** (Hotovo).
+1. V dialogovém okně **Přidat předem připravené entity** vyberte **počet** a **datetimeV2** předem sestavené entity. Potom vyberte **Done** (Hotovo).
 
-    ![Dialogové okno snímek obrazovky přidání předem připravených entit](./media/add-entities/list-of-prebuilt-entities.png)
+    ![Snímek obrazovky dialogového okna Přidat předem vytvořenou entitu](./media/add-entities/list-of-prebuilt-entities.png)
 
 <a name="add-simple-entities"></a>
 
 ## <a name="add-simple-entities-for-single-concepts"></a>Přidání jednoduchých entit pro jednoduché koncepty
 
-Jednoduché entity popisuje jeden koncept. Pomocí následujícího postupu vytvořte entitu, která extrahuje názvy oddělení společnosti, jako *lidských zdrojů* nebo *operace*.   
+Jednoduchá Entita popisuje jeden koncept. Pomocí následujícího postupu můžete vytvořit entitu, která extrahuje názvy oddělení společnosti, jako jsou *lidské zdroje* nebo *operace*.   
 
-1. Ve vaší aplikaci, vyberte **sestavení** a potom vyberte **entity** na levém panelu, vyberte **vytvořit novou entitu**.
+1. V aplikaci vyberte část **sestavení** , pak na levém panelu vyberte **entity** a pak vyberte **vytvořit novou entitu**.
 
-1. V místním dialogovém okně zadejte `Location` v **název Entity** vyberte **jednoduché** z **typ Entity** seznamu a pak vyberte **provádí**.
+1. V automaticky otevíraném okně zadejte do pole **název entity** text `Location`, v seznamu **typ entity** vyberte možnost **jednoduché** a potom vyberte **Hotovo**.
 
-    Jakmile se vytvoří tuto entitu, přejděte na všechny příkazy, které mají příklad projevy, které obsahují entity. Výběr textu v příkladu utterance a označte text jako entity. 
+    Jakmile je tato entita vytvořena, přejdete na všechny záměry, které obsahují příklad projevy, který obsahuje entitu. Vyberte text v příkladu utterance a označte text jako entitu. 
 
-    A [seznam frází](luis-concept-feature.md) se běžně používá pro zvýšení signál jednoduchou entitu.
+    [Seznam frází](luis-concept-feature.md) se běžně používá ke zvýšení signálu jednoduché entity.
 
 <a name="add-regular-expression-entities"></a>
 
 ## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>Přidání entit regulárních výrazů pro vysoce strukturované koncepty
 
-Regulární výraz entita se používá vyžádá si data z utterance podle regulárních výrazů, které zadáte. 
+Entita regulárního výrazu se používá k vyžádání dat z utterance na základě regulárního výrazu, který zadáte. 
 
-1. Ve vaší aplikaci, vyberte **entity** v levém navigačním panelu a pak vyberte **vytvořit novou entitu**.
+1. V aplikaci v levém navigačním panelu vyberte **entity** a pak vyberte **vytvořit novou entitu**.
 
-1. V místním dialogovém okně zadejte `Human resources form name` v **název Entity** vyberte **regulárního výrazu** z **typ Entity** seznamu, zadejte regulární výraz `hrf-[0-9]{6}`a pak vyberte **provádí**. 
+1. V místním dialogovém okně zadejte `Human resources form name` do pole **název entity** , v seznamu **typ entity** vyberte **regulární výraz** , zadejte regulární výraz `hrf-[0-9]{6}`a potom vyberte **Hotovo**. 
 
-    Tento regulární výraz odpovídá znakům `hrf-`literálu a pak 6 číslic představuje číslo formuláře pro formulář lidských zdrojů.
+    Tento regulární výraz odpovídá znakům literálu `hrf-`, a 6 číslic, které reprezentují číslo formuláře pro formulář lidských zdrojů.
 
 <a name="add-composite-entities"></a>
 
 ## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Přidání složených entit do skupin do vztahu nadřízený-podřízený
 
-Je možné definovat vztahy mezi entitami z různých typů tak, že vytvoříte složený entity. V následujícím příkladu obsahuje entitu regulárního výrazu a předem připravených entit názvu.  
+Vytvořením složené entity můžete definovat vztahy mezi entitami různých typů. V následujícím příkladu entita obsahuje regulární výraz a předem sestavenou entitu názvu.  
 
-V utterance `Send hrf-123456 to John Smith`, text `hrf-123456` je nalezena shoda pro tým lidských zdrojů [regulárního výrazu](#add-regular-expression-entities) a `John Smith` se extrahuje personName předem připravených entit. Každá entita je součástí větší, nadřazená entita. 
+V `Send hrf-123456 to John Smith`utterance je text `hrf-123456` shodný s [regulárním výrazem](#add-regular-expression-entities) lidských zdrojů a `John Smith` je extrahován s předem vytvořenou entitou Person. Každá entita je součástí větší nadřazené entity. 
 
-1. Ve vaší aplikaci, vyberte **entity** v levém navigačním panelu **sestavení** a potom vyberte **přidat předem připravených entit**.
+1. V aplikaci vyberte **entity** z levé navigační části **sestavení** a pak vyberte **Přidat předem vytvořenou entitu**.
 
-1. Přidat předem připravených entit **PersonName**. Pokyny najdete v tématu [přidat předem připravených entit](#add-prebuilt-entity). 
+1. Přidejte předem sestavenou **osobu**EntityName. Pokyny najdete v tématu [Přidání předem sestavených entit](#add-prebuilt-entity). 
 
-1. Vyberte **entity** v levém navigačním panelu a pak vyberte **vytvořit novou entitu**.
+1. V levém navigačním panelu vyberte **entity** a pak vyberte **vytvořit novou entitu**.
 
-1. V místním dialogovém okně zadejte `SendHrForm` v **název Entity** pole a pak vyberte **složené** z **typ Entity** seznamu.
+1. V automaticky otevíraném dialogovém okně zadejte do pole **název entity** `SendHrForm` a pak vyberte **složené** ze seznamu **typ entity** .
 
-1. Vyberte **přidat podřízenou položku** přidáte novou podřízenou položku.
+1. Vyberte **Přidat podřízenou** položku, chcete-li přidat novou podřízenou položku.
 
-1. V **podřízené č. 1**, vyberte entitu **číslo** ze seznamu.
+1. V části **podřízené #1**v seznamu vyberte **číslo** entity.
 
-1. V **podřízené č. 2**, vyberte entitu **lidské zdroje tvoří název** ze seznamu. 
+1. V části **podřízené #2**v seznamu vyberte **název formuláře entity lidské prostředky** . 
 
 1. Vyberte **Done** (Hotovo).
 
@@ -94,17 +96,17 @@ V utterance `Send hrf-123456 to John Smith`, text `hrf-123456` je nalezena shoda
 
 ## <a name="add-patternany-entities-to-capture-free-form-entities"></a>Přidat vzor. jakékoli entity pro zachycení entit Free-Form
 
-[Pattern.Any](luis-concept-entity-types.md) entity platí jenom v [vzory](luis-how-to-model-intent-pattern.md), ne záměry. Tento typ entity pomáhá najít koncové entity různé délky a výběr slov LUIS. Protože tato entita se používá ve vzorku, LUIS ví, kde koncové entity je v šabloně utterance.
+[Vzor. jakékoli](luis-concept-entity-types.md) entity jsou platné pouze ve [vzorcích](luis-how-to-model-intent-pattern.md), nikoli v záměrech. Tento typ entity pomáhá LUIS najít konec entit s různou délkou a volbou Wordu. Vzhledem k tomu, že tato entita se používá ve vzoru, LUIS ví, kde je konec entity v šabloně utterance.
 
-Pokud má aplikace `FindHumanResourcesForm` záměru, název extrahované formuláře může kolidovat s záměru předpovědi. Aby bylo možné vyjasnit, která slova jsou v názvu formuláře, použijte Pattern.any v rámci vzoru. Predikce služby LUIS začíná utterance. Nejprve utterance je zaškrtnuto a pro entity, když entity, které najde, pak vzor je zaškrtnuto a. 
+Pokud má aplikace `FindHumanResourcesForm` záměr, může dojít ke konfliktu názvu extrahované formuláře s předpovědí záměru. Chcete-li vyjasnit, která slova jsou v nadpisu formuláře, použijte vzor. any v rámci vzoru. Předpověď LUIS začíná na utterance. Nejprve je utterance a při nalezení entit zkontrolován a spárován s entitami, potom je vzor zkontrolován a spárován. 
 
-V utterance `Where is Request relocation from employee new to the company on the server?`, název formuláře je velmi obtížné, protože není kontextově jasné, kde název končí a kde začíná rest utterance. Názvy může být jakékoli pořadí slov jediné slovo, včetně složitých frází pomocí interpunkce a nesmyslná řazení slov. Vzoru můžete vytvořit entitu kde může být extrahována entity úplné a přesné. Po nalezení názvu `FindHumanResourcesForm` záměr očekává se, že vzhledem k tomu, který je cílem pro vzor.
+V `Where is Request relocation from employee new to the company on the server?`utterance je název formuláře obtížné, protože není kontextem zřejmé, kde končí název a kde zbytek utterance začíná. Názvy mohou být libovolné pořadí slov, včetně jednoho slova, složité fráze s interpunkčním znaménkem a nesmyslná řazení slov. Vzor umožňuje vytvořit entitu, kde lze extrahovat úplnou a přesnou entitu. Po nalezení nadpisu je záměr `FindHumanResourcesForm` předvídatelný, protože to je záměr pro vzor.
 
-1. Z **sestavení** vyberte **entity** v levém panelu a pak vyberte **vytvořit novou entitu**.
+1. V části **sestavení** vyberte **entity** na levém panelu a pak vyberte **vytvořit novou entitu**.
 
-1. V **Přidat entitu** dialogového okna zadejte `HumanResourcesFormTitle` v **název Entity** a vyberte **Pattern.any** jako **typ Entity**.
+1. V dialogovém okně **Přidat entitu** zadejte do pole **název entity** `HumanResourcesFormTitle` a jako **typ entity**vyberte **model. any** .
 
-    Použití pattern.any entity, přidejte vzor na **vzory** stránku, **zvýšit výkon aplikace** části, se syntaxí správné složenou závorku, jako například `Where is **{HumanResourcesFormTitle}** on the server?`.
+    Chcete-li použít vzor. jakékoli entity, přidejte vzor na stránce **vzory** v části **zlepšení výkonu aplikace** se správnou syntaxí složené závorky, například `Where is **{HumanResourcesFormTitle}** on the server?`.
 
     Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](luis-concept-patterns.md#explicit-lists). 
 
@@ -116,38 +118,38 @@ Role je pojmenovaný podtyp založený na kontextu. Je k dispozici ve všech ent
 
 Syntaxe role je **`{Entityname:Rolename}`** , kde je název entity následován dvojtečkou a potom názvem role. Například, `Move {personName} from {Location:Origin} to {Location:Destination}`.
 
-1. Z **sestavení** vyberte **entity** na levém panelu.
+1. V části **Build (sestavení** ) vyberte **entity** na levém panelu.
 
-1. Vyberte **Create new entity** (Vytvořit novou entitu). Zadejte název `Location`. Vyberte typ **jednoduché** a vyberte **provádí**. 
+1. Vyberte **Create new entity** (Vytvořit novou entitu). Zadejte název `Location`. Vyberte typ **jednoduchý** a vyberte **Hotovo**. 
 
 1. Na levém panelu vyberte **entity** a pak vyberte nové **umístění** entity vytvořené v předchozím kroku.
 
-1. V **název Role** textového pole zadejte název role `Origin` a zadejte. Přidejte druhý název role `Destination`. 
+1. Do textového pole **název role** zadejte název role `Origin` a zadejte. Přidejte název druhé role `Destination`. 
 
-    ![Snímek obrazovky přidání role zdroje do umístění entity](./media/add-entities/roles-enter-role-name-text.png)
+    ![Snímek obrazovky s přidáním role původu do entity umístění](./media/add-entities/roles-enter-role-name-text.png)
 
 <a name="add-list-entities"></a>
 
 ## <a name="add-list-entities-for-exact-matches"></a>Přidat seznam entit pro přesné shody
 
-Seznam entit představují pevné, uzavřené sadu souvisejících slov. 
+Seznam entit představuje pevně uzavřenou sadu příbuzných slov. 
 
-Pro aplikaci lidských zdrojů může mít seznam všech oddělení spolu s jakékoli synonyma pro jako vodítko použijte oddělení. Není nutné znát všechny hodnoty při vytvoření entity. Můžete přidat více až po kontrole projevy uživatelů s synonym.
+U aplikací pro lidské zdroje můžete mít seznam všech oddělení spolu s případnými synonymy pro oddělení. Při vytváření entity nemusíte znát všechny hodnoty. Po kontrole reálných uživatelských projevy pomocí synonym můžete přidat další.
 
-1. Z **sestavení** vyberte **entity** v levém panelu a pak vyberte **vytvořit novou entitu**.
+1. V části **sestavení** vyberte **entity** na levém panelu a pak vyberte **vytvořit novou entitu**.
 
-1. V **Přidat entitu** dialogovém okně `Department` v **název Entity** a vyberte **seznamu** jako **typ Entity**. Vyberte **Done** (Hotovo).
+1. Do pole **název entity** zadejte v dialogovém okně **přidat entitu** `Department` a jako **typ entity**vyberte **seznam** . Vyberte **Done** (Hotovo).
   
-1. Na stránce seznamu entit umožňuje přidat normalizované názvy. V **hodnoty** textového pole zadejte název oddělení pro seznam, jako například `HumanResources` stisknutím klávesy Enter na klávesnici. 
+1. Stránka Seznam entit vám umožní přidat normalizované názvy. Do textového pole **hodnoty** zadejte název oddělení pro seznam, například `HumanResources` pak na klávesnici stiskněte klávesu ENTER. 
 
-1. Napravo od normalizovanou hodnotu zadejte synonyma, stisknutím klávesy Enter na klávesnici po každé položky.
+1. Napravo od normalizované hodnoty zadejte synonyma a stisknutím klávesy ENTER na klávesnici za každou položku.
 
-1. Pokud chcete více normalizované položek pro seznam, vyberte **doporučujeme** zobrazíte možnosti z [sémantické slovníku](luis-glossary.md#semantic-dictionary).
+1. Pokud chcete pro seznam použít více normalizovaných položek, vyberte možnost **doporučit** pro zobrazení možností ze [sémantického slovníku](luis-glossary.md#semantic-dictionary).
 
     ![Snímek obrazovky s výběrem funkce doporučit pro zobrazení možností](./media/add-entities/hr-list-2.png)
 
 
-1. Vyberte položku v seznamu doporučené a přidejte ho jako normalizované hodnoty, nebo vyberte **přidejte všechny** přidat všechny položky. 
+1. Vyberte položku v seznamu Doporučené a přidejte ji jako normalizovanou hodnotu, nebo výběrem **Přidat vše** přidejte všechny položky. 
     Hodnoty můžete importovat do existující entity seznamu pomocí následujícího formátu JSON:
 
     ```JSON
@@ -175,23 +177,23 @@ Pro aplikaci lidských zdrojů může mít seznam všech oddělení spolu s jak�
 
 ## <a name="do-not-change-entity-type"></a>Neměnit typ entity
 
-Služba LUIS neumožňuje změnit typ entity, protože nebude vědět, co se má přidat nebo odebrat k vytvoření této entity. Chcete-li změnit typ, je lepší vytvořit novou entitu správného typu s mírně odlišný název. Po vytvoření entity v každé utterance, odeberte starý název s popiskem entity a přidejte nový název entity. Jakmile se všechny projevy mít relabeled, odstraňte staré entitu. 
+LUIS neumožňuje změnit typ entity, protože nevíte, co přidat nebo odebrat k vytvoření této entity. Aby bylo možné typ změnit, je vhodnější vytvořit novou entitu správného typu s trochu odlišným názvem. Po vytvoření entity odstraňte v každém utterance starý název entity a přidejte nový název entity. Po přeznačení všech projevy se odstraní stará entita. 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
 ## <a name="create-a-pattern-from-an-example-utterance"></a>Vytvoření vzoru z příkladu utterance
 
-Zobrazit [přidat vzorek z existující utterance na stránce záměr nebo entity](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
+Přečtěte si téma [Přidání vzoru z existující stránky utterance na záměr nebo entitu](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 
-## <a name="train-your-app-after-changing-model-with-entities"></a>Trénování aplikace po změně modelu s entitami
+## <a name="train-your-app-after-changing-model-with-entities"></a>Výuka aplikace po změně modelu pomocí entit
 
-Po přidání, úprava nebo odebrání entity, [trénování](luis-how-to-train.md) a [publikovat](luis-how-to-publish-app.md) vaší aplikace pro vaše změny ovlivnit dotazy koncový bod. 
+Po přidání, úpravě nebo odebrání entit, [školení](luis-how-to-train.md) a [publikování](luis-how-to-publish-app.md) aplikace pro změny, které mají vliv na dotazy koncového bodu. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o předem připravených entit, najdete v článku [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text) projektu. 
+Další informace o předem připravených entitách najdete v tématu věnovaném [rozpoznávání – textový](https://github.com/Microsoft/Recognizers-Text) projekt. 
 
-Informace o tom, jak se entita zobrazuje v odpovědi JSON koncového bodu dotazu, naleznete v tématu [extrakce dat](luis-concept-data-extraction.md)
+Informace o tom, jak se entita zobrazuje v odpovědi na koncový bod JSON, najdete v tématu věnovaném [extrakci dat](luis-concept-data-extraction.md) .
 
-Teď, když jste přidali projevy záměry a entity, budete mít základní aplikaci LUIS. Zjistěte, jak [trénování](luis-how-to-train.md), [testování](luis-interactive-test.md), a [publikovat](luis-how-to-publish-app.md) vaší aplikace.
+Teď, když jste přidali záměry, projevy a entity, máte základní aplikaci LUIS. Naučte se, jak [vlakovat](luis-how-to-train.md), [testovat](luis-interactive-test.md)a [publikovat](luis-how-to-publish-app.md) vaši aplikaci.
  

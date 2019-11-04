@@ -1,5 +1,5 @@
 ---
-title: Vizualizace dat podregistru interaktivních dotazů pomocí Power BI ve službě Azure HDInsight
+title: Zobrazení dat podregistru interaktivního dotazu pomocí Power BI ve službě Azure HDInsight
 description: Použití Microsoft Power BI k vizualizaci dat podregistru interaktivních dotazů z Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,22 +8,22 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 0f273f75c33362bc99efbd7ac6bc46c3778ae88b
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123021"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467146"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Vizualizace interaktivních dotazů Apache Hive dat pomocí Microsoft Power BI pomocí přímého dotazování v HDInsight
 
-Tento článek popisuje, jak připojit Microsoft Power BI k clusterům s interaktivními dotazy Azure HDInsight a vizualizovat Apache Hive data pomocí přímých dotazů. Zadaný příklad načte data z `hivesampletable` tabulky podregistru do Power BI. Tabulka `hivesampletable` podregistru obsahuje data o využití mobilních telefonů. Pak vykreslíte data o využití na světové mapě:
+Tento článek popisuje, jak připojit Microsoft Power BI k clusterům s interaktivními dotazy Azure HDInsight a vizualizovat Apache Hive data pomocí přímých dotazů. Zadaný příklad načte data z `hivesampletable` tabulky podregistru do Power BI. Tabulka `hivesampletable` podregistr obsahuje některá data o využití mobilních telefonů. Pak vykreslíte data o využití na světové mapě:
 
 ![HDInsight Power BI sestavy mapy](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
 Pomocí [ovladače Apache Hive ODBC](../hadoop/apache-hadoop-connect-hive-power-bi.md) můžete provádět import prostřednictvím obecného konektoru odbc v Power BI Desktop. Nedoporučuje se ale pro úlohy BI, které neinteraktivní charakterují modul dotazů na podregistr. Konektor [HDInsight Interactive pro dotazy](./apache-hadoop-connect-hive-power-bi-directquery.md) a [konektor HDInsight Apache Spark](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepšími možnostmi pro jejich výkon.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Před provedením tohoto článku musíte mít následující položky:
 
 * **Cluster HDInsight**. Cluster může být buď cluster HDInsight s Apache Hive, nebo nově vydaným clusterem interaktivních dotazů. Informace o vytváření clusterů najdete v tématu [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
@@ -35,7 +35,7 @@ Tabulka `hivesampletable` podregistr je dodávána se všemi clustery HDInsight.
 
 1. Spusťte Power BI Desktop.
 
-2. V řádku nabídek přejděte na **Domů** > **získat data** > **Další..** ..
+2. V řádku nabídek přejděte na **domovskou** > **získat data** > **Další...** .
 
     ![HDInsight Power BI získat data více](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 

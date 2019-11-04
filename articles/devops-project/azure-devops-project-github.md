@@ -16,12 +16,12 @@ ms.date: 06/27/2019
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4a48b5c413f6dfb58a1ba3f896ded49250cde306
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 15ac201a078864717d8e0079801507cf5fc0fe3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286297"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481112"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Kurz: vytvoření kanálu CI/CD pro váš stávající kód pomocí Azure DevOps Projects
 
@@ -48,7 +48,11 @@ Azure DevOps Projects vytvoří v Azure Pipelines kanál CI/CD. Můžete vytvoř
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-2. V levém podokně vyberte **+ vytvořit prostředek** v levém navigačním panelu a pak vyhledejte **DevOps Projects**vyberte **vytvořit**.
+2. V nabídce Azure Portal vyberte **vytvořit prostředek**.
+
+   ![Nabídka Azure Portal – vytvoření prostředku](_img/azure-devops-project-github/createaresource.png)
+
+3. Vyberte **DevOps > projekt DevOps**.
 
    ![Řídicí panel DevOps Projects](_img/azure-devops-project-github/azuredashboard.png)
 
@@ -56,7 +60,7 @@ Azure DevOps Projects vytvoří v Azure Pipelines kanál CI/CD. Můžete vytvoř
 
 ## <a name="configure-access-to-your-github-repo-and-choose-a-framework"></a>Nakonfigurujte přístup k úložišti GitHub a vyberte rozhraní.
 
-1. Vyberte buď **GitHub** , nebo externí úložiště kódu **Git** . V tomto kurzu vyberte **GitHub**. Možná se budete muset nejdřív ověřit pomocí GitHubu, abyste povolili Azure přístup k úložišti GitHub.
+1. Vyberte buď **GitHub** , nebo externí úložiště kódu **Git** . V tomto kurzu vyberte **GitHub**. Pokud chcete, aby Azure měl přístup k úložišti GitHubu, možná budete muset nejdřív ověřit pomocí GitHubu.
 
 2. Dokončete výběrem **úložiště** a **větve**, vyberte **Další**.
 

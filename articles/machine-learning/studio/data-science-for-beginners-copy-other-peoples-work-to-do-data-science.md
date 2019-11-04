@@ -1,7 +1,7 @@
 ---
-title: Zkopírujte ostatních data science příklady
-titleSuffix: Azure Machine Learning Studio
-description: 'Tajemství pro datové vědy: Získejte ostatním uživatelům práci za vás. Získání příkladů strojového učení v galerii Azure AI.'
+title: Kopírovat další příklady pro datové vědy
+titleSuffix: Azure Machine Learning Studio (classic)
+description: 'Obchodní tajemství pro datové vědy: Získejte ostatním uživatelům práci za vás. Získejte příklady strojového učení z Azure AI Gallery.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,22 +10,22 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 8bacc3940cebaf9c62179cee0788e5903e56a310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 248696188c2f93104987e395479fdee49cdecf94
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751773"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493146"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopírování práce jiných lidí pro vědecké zkoumání dat
-## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Datová věda pro začátečníky řady
-Jeden z tajemství datové vědy je stále ostatním uživatelům práci za vás. Clustering algoritmus příklad najdete v galerii Azure AI pro vlastní experimentu strojového učení.
+## <a name="video-5-data-science-for-beginners-series"></a>Video 5: řada pro datové vědy pro začátečníky
+Jedním z obchodních tajných kódů pro datové vědy je, že pro vás budou fungovat i další uživatelé. Najděte příklad algoritmu clusteringu v Azure AI Gallery, který se použije pro vlastní experimentování ve službě Machine Learning.
 
 > [!IMPORTANT]
-> **Cortana Intelligence Gallery** byla přejmenována **galerii Azure AI**. V důsledku toho textu a obrázků v tomto přepisu mírně lišit od videa, která využívá původní název.
+> **Cortana Intelligence Gallery** byla přejmenována **Azure AI Gallery**. V důsledku toho se text a obrázky v tomto přepisu mírně liší od videa, které používá předchozí název.
 >
 
-Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](#other-videos-in-this-series)
+Pokud chcete získat maximum z řady, Sledujte je vše. [Přejít na seznam videí](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
@@ -33,63 +33,63 @@ Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](
 >
 
 ## <a name="other-videos-in-this-series"></a>Další videa v této sérii
-*Datová věda pro začátečníky* článek obsahuje rychlý úvod do datových věd v pěti krátkých videích.
+*Data vědy pro začátečníky* je rychlý Úvod k datové vědy v pěti krátkých videích.
 
-* Video 1: [5 otázky, které odpovídá vědecké zkoumání dat](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek)*
-* Video 2: [Jsou vaše data připravená pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek)*
-* Video 3: [Položit dotaz lze odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
-* Video 4: [Předpovídání odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek)*
-* Video 5: Kopírování práce jiných lidí pro vědecké zkoumání dat
+* Video 1: [5 otázek pro datové vědy](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min. 14 sec)*
+* Video 2: [jsou vaše data připravená pro datové vědy?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min. 56 s)*
+* Video 3: [Položte otázku, na kterou můžete odpovědět](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 minuty 17 s)* .
+* Video 4: [předpověď odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 s)*
+* Video 5: kopírování práce jiných lidí do oblasti zpracování dat
 
-## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Přepisu: Kopírování práce jiných lidí pro vědecké zkoumání dat
-Vítá vás páté videa v této sérii "Datová věda pro začátečníky."
+## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Přepis: kopírování práce jiných lidí do oblasti zpracování dat
+Vítejte v pátém videu v řadě "datové vědy pro začátečníky".
 
-Do tohoto objektu za zjistíte místo, kde můžete najít příklady, které můžete vypůjčit z jako výchozí bod pro vlastní práci. Pokud sledujete starší videa v této sérii, může se zobrazit maximálně využít toto video.
+V tomto případě zjistíte místo, kde najdete příklady, které můžete vypůjčit jako výchozí bod pro vlastní práci. Pokud si v tomto seriálu poprvé sledujete předchozí videa, můžete toto video využít nejvíc.
 
-Jeden z tajemství datové vědy je stále ostatním uživatelům práci za vás.
+Jedním z obchodních tajných kódů pro datové vědy je, že pro vás budou fungovat i další uživatelé.
 
-## <a name="find-examples-in-the-azure-ai-gallery"></a>Příklady v galerii Azure AI
+## <a name="find-examples-in-the-azure-ai-gallery"></a>Najít příklady v Azure AI Gallery
 
-Microsoft má cloudové služby zvané [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) , že si klidně můžete vyzkoušet zdarma. To vám poskytne pracovní prostor tam, kde můžete experimentovat s algoritmů různých strojového učení, a pokud máte řešení dobře fungoval, můžete ji spustit jako webovou službu.
+Microsoft má cloudovou službu s názvem [Azure Machine Learning Studio (Classic)](https://azure.microsoft.com/services/machine-learning-studio/). Nabízí vám pracovní prostor, kde můžete experimentovat s různými algoritmy strojového učení, a až se vaše řešení vypracovalo, můžete ho spustit jako webovou službu.
 
-Součástí této služby je něco volá se,  **[galerii Azure AI](https://gallery.azure.ai/)** . Obsahuje prostředky, včetně kolekce experimenty Azure Machine Learning Studio, nebo modely, které lidé mít vytvořené a které přispívají k použití jiným uživatelům. Tyto experimenty jsou skvělý způsob, jak využít myšlenek a těžkou práci ostatních začít pracovat na své vlastní řešení. Všichni uživatelé jsou Vítá vás procházet přes něj.
+Součástí této služby je něco nazvané **[Azure AI Gallery](https://gallery.azure.ai/)** . Obsahuje prostředky, včetně kolekce Azure Machine Learning Studio (klasických) experimentů nebo modelů, které uživatelé vytvořili a přispěli k tomu, aby je mohli používat ostatní. Tyto experimenty představují skvělý způsob, jak využít promyšlenou a tvrdou práci dalších uživatelů, abyste mohli začít pracovat na svých vlastních řešeních. Všichni uživatelé s uvítáním budou procházet.
 
 ![Galerie Azure AI](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
-Vyberete-li **experimenty** v horní části stránky, zobrazí se vám několik nejvíce posledních a oblíbených experimenty v galerii. Můžete prohledávat rest experimenty kliknutím **Procházet vše** v horní části obrazovky a že je možné zadat hledané termíny a zvolte vyhledávací filtry.
+Pokud v horní části kliknete na **experimenty** , zobrazí se v galerii několik nejnovějších a oblíbených experimentů. Zbývající experimenty můžete prohledávat kliknutím na **Procházet vše** v horní části obrazovky a tam můžete zadat hledané podmínky a zvolit vyhledávací filtry.
 
-## <a name="find-and-use-a-clustering-algorithm-example"></a>Vyhledání a používání clusteringu příklad algoritmus
-Tedy například Řekněme, že chcete zobrazit příklad clustering jak funguje, tak můžete vyhledat **"clustering úklidu"** experimentů.
+## <a name="find-and-use-a-clustering-algorithm-example"></a>Příklad použití algoritmu clusteringu
+Řekněme například, že chcete zobrazit příklad fungování clusteringu, takže vyhledáte experimenty **"úklid clusteringu"** .
 
-![Hledat clustering experimentů](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
+![Hledání experimentů clusteringu](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
 
-Tady je zajímavé ten, který někdo přispět do galerie.
+Tady je zajímavou osobu, kterou někdo přidal do galerie.
 
-![Clustering experimentu](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment.png)
+![Experiment clusteringu](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment.png)
 
-Klikněte na tento experiment a získejte webovou stránku, která popisuje práce, která nebyla tato přispěvatelů, společně s jejich výsledky.
+Klikněte na tento experiment a zobrazí se webová stránka s popisem práce, kterou tento Přispěvatel provedl, spolu s některými jejich výsledky.
 
-![Clustering experiment popisu stránky](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
+![Stránka s popisem experimentu pro clustering](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
 
-Všimněte si, že odkaz, který říká **Open in Studio**.
+Všimněte si odkazu, který říká **otevřít v studiu (Classic)** .
 
-![Otevřít v sadě Studio tlačítko](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
+![Tlačítko otevřít v Studio (klasické)](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-Můžu kliknout na, který a budu přesměrován právo na **Azure Machine Learning Studio**. Vytvoří kopii experimentu a umístí jej ve svém pracovním prostoru. To zahrnuje Přispěvatel datovou sadu, všechny výpočetní výkon, který udělal, všechny algoritmy, které používají, a jak jsou uloženy výsledky.
+Můžu na něj kliknout a postará se o **Azure Machine Learning Studio (Classic)** . Vytvoří kopii experimentu a umístí ho do vlastního pracovního prostoru. To zahrnuje datovou sadu přispěvatelů, všechny jejich zpracování, všechny algoritmy, které byly použity, a způsob, jakým byly uloženy výsledky.
 
-![Otevřete galerii experiment v Machine Learning Studio - clusteringu příklad algoritmus](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
+![Otevřít experiment z galerie v Machine Learning Studio (Classic) – příklad algoritmu clusteringu](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
-A teď mám výchozí bod. Můžu můžete použít svoje vlastní data a dělat vlastní úprava modelu. Mi to dává start spuštěná, a umožní mi sestavení na práci lidi, kteří ve skutečnosti, co dělají.
+A teď mám počáteční bod. Můžu si svoje data odměňovat a dělat svoje vlastní a vlastní jejich vylepšení modelu. Díky tomu se spustí spuštění, které mi umožní sestavovat uživatele, kteří skutečně znají, co dělají.
 
-## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Najít experimenty, které ukazují techniky machine learning
-Existují jiné experimenty v [galerii Azure AI](https://gallery.azure.ai) , které byly za konkrétně pro zajištění postupy: příklady pro datové vědy noví uživatelé. Například je experiment v galerii, který ukazuje, jak zpracovat chybějící hodnoty ([metody pro zpracování chybějící hodnoty](https://gallery.azure.ai/Experiment/Methods-for-handling-missing-values-1)). Naučíte se 15 různé způsoby nahrazování prázdné hodnoty a hovoří o výhodách každé metody a kdy ji použít.
+## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Najděte experimenty, které ukazují techniky strojového učení.
+Existují i další experimenty v [Azure AI Gallery](https://gallery.azure.ai) , které byly určeny konkrétně k tomu, aby poskytovaly příklady příkladů pro lidi, kteří se k datovému vědy podíleli. Například existuje experiment v galerii, který ukazuje, jak zpracovat chybějící hodnoty ([metody pro zpracování chybějících hodnot](https://gallery.azure.ai/Experiment/Methods-for-handling-missing-values-1)). Provede vás 15 různými způsoby nahrazení prázdných hodnot a mluví o výhodách jednotlivých metod a jejich použití.
 
-![Otevřít galerii experimentů v nástroji Machine Learning Studio - metody pro chybějící hodnoty](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
+![Experimenty v galerii se otevírají v Machine Learning Studio (Classic) – metody pro chybějící hodnoty](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-[Galerie Azure AI](https://gallery.azure.ai) je místo, kde můžete najít pracovní experimenty, které můžete použít jako výchozí bod pro svoje vlastní řešení.
+[Azure AI Gallery](https://gallery.azure.ai) je místo, kde najdete pracovní experimenty, které můžete použít jako výchozí bod pro vaše vlastní řešení.
 
-Nezapomeňte se podívat na další videa v "Datové vědě pro začátečníky" z Microsoft Azure Machine Learning Studio.
+Nezapomeňte se podívat na další videa v oblasti "data vědy pro začátečníky" z Microsoft Azure Machine Learning Studio (Classic).
 
-## <a name="next-steps"></a>Další postup
-* [Zkuste prvního experimentu datové vědy s Azure Machine Learning Studio](create-experiment.md)
-* [Úvod do strojového učení v Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+## <a name="next-steps"></a>Další kroky
+* [Vyzkoušejte si první experiment pro datové vědy s Azure Machine Learning Studio (Classic)](create-experiment.md)
+* [Seznámení s Machine Learningem Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

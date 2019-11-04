@@ -10,14 +10,15 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b0d7286d96d2fbfa35eb7ce9079413dfd186288c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034597"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496967"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Nasazení modelu Machine Learning do Azure App Service (Preview)
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Naučte se nasadit model z Azure Machine Learning jako webovou aplikaci v Azure App Service.
 
@@ -28,25 +29,25 @@ Pomocí Azure Machine Learning můžete vytvářet image Docker z školicích mo
 
 * Rozšířené [ověřování](/azure/app-service/configure-authentication-provider-aad) pro rozšířené zabezpečení. Metody ověřování zahrnují Azure Active Directory i Multi-Factor auth.
 * [Automatické škálování](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) bez nutnosti opětovného nasazení.
-* [Podpora SSL](/azure/app-service/app-service-web-ssl-cert-load) pro zabezpečenou komunikaci mezi klienty a službou.
+* [Podpora SSL](/azure/app-service/configure-ssl-certificate-in-code) pro zabezpečenou komunikaci mezi klienty a službou.
 
 Další informace o funkcích poskytovaných nástrojem Azure App Service najdete v [přehledu App Service](/azure/app-service/overview).
 
 > [!IMPORTANT]
 > Pokud potřebujete mít možnost protokolovat data bodování používaná s nasazeným modelem nebo výsledky bodování, měli byste je místo toho nasadit do služby Azure Kubernetes. Další informace najdete v tématu [shromažďování dat v produkčních modelech](how-to-enable-data-collection.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
-* [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Vyškolený model strojového učení zaregistrovaný ve vašem pracovním prostoru. Pokud model nemáte, použijte [kurz k klasifikaci imagí: výukový model](tutorial-train-models-with-aml.md) pro výuku a registraci k jednomu.
 
     > [!IMPORTANT]
     > Fragmenty kódu v tomto článku předpokládají, že jste nastavili následující proměnné:
     >
-    > * `ws`– Váš pracovní prostor Azure Machine Learning.
-    > * `model`– Registrovaný model, který se nasadí.
-    > * `inference_config`– Odvození konfigurace pro model.
+    > * `ws` – váš pracovní prostor Azure Machine Learning.
+    > * `model` – registrovaný model, který se nasadí.
+    > * `inference_config` – odvození konfigurace modelu.
     >
     > Další informace o nastavení těchto proměnných najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
@@ -99,7 +100,7 @@ Další informace o konfiguraci odvození najdete v tématu [nasazení modelů p
 Chcete-li vytvořit bitovou kopii Docker, která je nasazena do Azure App Service, použijte [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-). Následující fragment kódu ukazuje, jak vytvořit novou bitovou kopii z modelu a odvozené konfigurace:
 
 > [!NOTE]
-> Fragment kódu předpokládá, že `model` obsahuje registrovaný model `inference_config` a obsahuje konfiguraci pro odvození prostředí. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
+> Fragment kódu předpokládá, že `model` obsahuje registrovaný model a že `inference_config` obsahuje konfiguraci pro odvození prostředí. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -110,14 +111,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-V `show_output=True`případě je zobrazen výstup procesu Docker Build. Po dokončení procesu se image vytvoří v Azure Container Registry pro váš pracovní prostor. Po sestavení obrázku se zobrazí umístění v Azure Container Registry. Navrácené umístění má formát `<acrinstance>.azurecr.io/package:<imagename>`. Například, `myml08024f78fd10.azurecr.io/package:20190827151241`.
+Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení procesu se image vytvoří v Azure Container Registry pro váš pracovní prostor. Po sestavení obrázku se zobrazí umístění v Azure Container Registry. Umístění, které se vrátilo, je ve formátu `<acrinstance>.azurecr.io/package:<imagename>`. Například, `myml08024f78fd10.azurecr.io/package:20190827151241`.
 
 > [!IMPORTANT]
 > Uložte informace o umístění, jak se používá při nasazování bitové kopie.
 
 ## <a name="deploy-image-as-a-web-app"></a>Nasazení image jako webové aplikace
 
-1. K získání přihlašovacích údajů pro Azure Container Registry, které obsahují obrázek, použijte následující příkaz. Nahradit `<acrinstance>` hodnotou th e vrácenou dříve z `package.location`: 
+1. K získání přihlašovacích údajů pro Azure Container Registry, které obsahují obrázek, použijte následující příkaz. Nahradí `<acrinstance>` hodnotou th e vrácenou dříve z `package.location`: 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -150,12 +151,12 @@ V `show_output=True`případě je zobrazen výstup procesu Docker Build. Po doko
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    V tomto příkladu se používá cenová úroveň Basic`--sku B1`().
+    V tomto příkladu se používá cenová úroveň __Basic__ (`--sku B1`).
 
     > [!IMPORTANT]
-    > Image vytvořené Azure Machine Learning používají Linux, takže musíte použít `--is-linux` parametr.
+    > Image vytvořené Azure Machine Learning používají Linux, takže musíte použít parametr `--is-linux`.
 
-1. Pokud chcete vytvořit webovou aplikaci, použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. `<acrinstance>` Nahraďte `<imagename>` a hodnotami vrácenými `package.location` dříve:
+1. Pokud chcete vytvořit webovou aplikaci, použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Nahraďte `<acrinstance>` a `<imagename>` hodnotami vrácenými `package.location` dříve:
 
     ```azurecli-interactive
     az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
@@ -184,7 +185,7 @@ V `show_output=True`případě je zobrazen výstup procesu Docker Build. Po doko
     > [!IMPORTANT]
     > V tuto chvíli se vytvořila webová aplikace. Vzhledem k tomu, že jste neposkytli přihlašovací údaje Azure Container Registry, který obsahuje obrázek, není tato webová aplikace aktivní. V dalším kroku zadáte informace o ověřování pro registr kontejnerů.
 
-1. K poskytnutí přihlašovacích údajů, které jsou potřebné pro přístup k registru kontejnerů, použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Hodnoty `<acrinstance>` a `<imagename>` nahraďte hodnotami vrácenými `package.location` dříve. `<username>` Nahraďte `<password>` a informacemi o přihlášení ACR získanými dříve:
+1. K poskytnutí přihlašovacích údajů, které jsou potřebné pro přístup k registru kontejnerů, použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Nahraďte `<acrinstance>` a `<imagename>` hodnotami vrácenými `package.location` dříve. Nahraďte `<username>` a `<password>` informace o přihlášení ACR, které byly načteny dříve:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -230,7 +231,7 @@ V tuto chvíli webová aplikace začne načítat image.
 > az webapp log tail --name <app-name> --resource-group myresourcegroup
 > ```
 >
-> Po načtení bitové kopie a umístění lokality do protokolu se zobrazí zpráva s `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`oznámením.
+> Jakmile je bitová kopie načtena a lokalita je aktivní, protokol zobrazí zprávu s informací o `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`.
 
 Po nasazení bitové kopie můžete název hostitele najít pomocí následujícího příkazu:
 
@@ -238,11 +239,11 @@ Po nasazení bitové kopie můžete název hostitele najít pomocí následujíc
 az webapp show --name <app-name> --resource-group myresourcegroup
 ```
 
-Tento příkaz vrátí informace podobné následujícímu názvu hostitele – `<app-name>.azurewebsites.net`. Tuto hodnotu použijte jako součást __základní adresy URL__ služby.
+Tento příkaz vrátí informace podobné následujícímu názvu hostitele `<app-name>.azurewebsites.net`. Tuto hodnotu použijte jako součást __základní adresy URL__ služby.
 
 ## <a name="use-the-web-app"></a>Použití webové aplikace
 
-Webová služba, která předává požadavky do modelu, je umístěna `{baseurl}/score`na adrese. Například, `https://<app-name>.azurewebsites.net/score`. Následující kód Pythonu ukazuje, jak odesílat data do adresy URL a zobrazovat odpověď:
+Webová služba, která předá požadavky na model, je umístěna na adrese `{baseurl}/score`. Například, `https://<app-name>.azurewebsites.net/score`. Následující kód Pythonu ukazuje, jak odesílat data do adresy URL a zobrazovat odpověď:
 
 ```python
 import requests
@@ -263,10 +264,10 @@ print(response.elapsed)
 print(response.json())
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Naučte se konfigurovat webovou aplikaci v dokumentaci k [App Service v systému Linux](/azure/app-service/containers/) .
 * Další informace o škálování najdete v [Seznámení s automatickým škálováním v Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
-* [Použijte certifikát SSL v Azure App Service](/azure/app-service/app-service-web-ssl-cert-load).
+* [Použijte certifikát SSL v Azure App Service](/azure/app-service/configure-ssl-certificate-in-code).
 * [Nakonfigurujte aplikaci App Service, aby používala Azure Active Directory přihlášení](/azure/app-service/configure-authentication-provider-aad).
-* [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)
+* [Využití modelu ML nasazeného jako webové služby](how-to-consume-web-service.md)

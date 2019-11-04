@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eb5e2c2e2eeb0f29eb74b3727ecf14d70d2381f6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1311328dde6fc70202ce3c6271b33f79d52102cc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176694"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472239"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -25,7 +25,10 @@ Portál pro vývojáře je automaticky generovaný plně přizpůsobitelný web 
 
 Tento článek popisuje rozdíly mezi místně hostovanými a spravovanými verzemi portálu pro vývojáře v API Management. Vysvětluje také její architekturu a poskytuje odpovědi na nejčastější dotazy.
 
-> [!IMPORTANT]
+> [!WARNING]
+> Nový portál pro vývojáře se v tuto chvíli zavádí na API Management služby.
+> Pokud je vaše služba nově vytvořená nebo se jedná o službu vrstvy vývojářů, měli byste už mít nejnovější verzi. V opačném případě může docházet k problémům (například s funkcí publikování). Zavedení funkce bude dokončeno v pondělí 11. listopadu 2019.
+>
 > [Naučte se migrovat z verze Preview na všeobecně dostupnou verzi portálu pro](#preview-to-ga) vývojáře.
 
 ![Portál pro vývojáře API Management](media/api-management-howto-developer-portal/cover.png)

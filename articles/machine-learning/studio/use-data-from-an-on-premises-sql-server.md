@@ -1,7 +1,7 @@
 ---
-title: Na místním SQL serveru
-titleSuffix: Azure Machine Learning Studio
-description: Data z místní databáze systému SQL Server použijte k provádění pokročilých analýz Azure Machine Learning Studio.
+title: Místní SQL Server
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Použijte data z místní databáze SQL Server k provádění pokročilých analýz s využitím klasické verze Azure Machine Learning Studio.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,21 +10,21 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78b50ac5f0c39a38815b01ab7510d17eda941425
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60735343"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492546"
 ---
-# <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Provádět analýzy k místní databázi SQL serveru pomocí Azure Machine Learning Studio
+# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Analýza pomocí Azure Machine Learning Studio (Classic) pomocí místní databáze SQL Server
 
-Často podniky, které fungují s místními daty by chtěli využívat škálování a flexibility cloudu k jejich počítači strojové učení. Ale nebudete chtít narušit jejich aktuální obchodní procesy a pracovní postupy díky přesunu jejich místní data do cloudu. Azure Machine Learning Studio nyní podporuje čtení dat z místní databáze systému SQL Server a pak trénování a vyhodnocování modelu s těmito daty. Už máte ručně zkopírovat a synchronizovat data mezi cloudem a místním serverem. Místo toho **Import dat** modulu v nástroji Azure Machine Learning Studio teď najdete přímo z místní databáze SQL serveru pro trénování a vyhodnocování úlohy.
+Často by podniky, které pracují s místními daty, mohly využít výhod škály a flexibility cloudu pro úlohy strojového učení. Ale nechtějí přerušit své současné obchodní procesy a pracovní postupy přesunutím místních dat do cloudu. Azure Machine Learning Studio (Classic) teď podporuje čtení vašich dat z místní databáze SQL Server a následné školení a vyhodnocování modelu s těmito daty. Už nemusíte ručně kopírovat a synchronizovat data mezi cloudem a místním serverem. Místo toho se teď může modul **Import dat** v klasické verzi Azure Machine Learning Studio přečíst přímo z místní databáze SQL Server pro vaše školicí a vyhodnocovací úlohy.
 
-Tento článek poskytuje přehled o tom, jak příchozího přenosu dat místní data SQL serveru do Azure Machine Learning Studio. Předpokládá, že jste obeznámeni s Studio koncepty, jako jsou pracovní prostory, moduly, datové sady, experimenty, *atd*.
+Tento článek poskytuje přehled o příchozím přenosu dat z místního SQL serveru do klasické verze Azure Machine Learning Studio. Předpokládá, že máte zkušenosti s klasickými verzemi studia, jako jsou pracovní prostory, moduly, datové sady, experimenty *atd.*
 
 > [!NOTE]
-> Tato funkce není k dispozici pro bezplatné pracovní prostory. Další informace o úrovních a Machine Learning – ceny najdete v tématu [Azure Machine Learning – ceny](https://azure.microsoft.com/pricing/details/machine-learning/).
+> Tato funkce není k dispozici pro bezplatné pracovní prostory. Další informace o cenách a úrovních Machine Learning najdete v tématu [Azure Machine Learning ceny](https://azure.microsoft.com/pricing/details/machine-learning/).
 >
 >
 
@@ -32,116 +32,116 @@ Tento článek poskytuje přehled o tom, jak příchozího přenosu dat místní
 
 
 
-## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Instalace prostředí Integration Runtime Data Factory
-Pro přístup k místní databázi SQL serveru v Azure Machine Learning Studio, budete muset stáhnout a nainstalovat Data Factory IR, dřív označované jako brána pro správu dat. Při konfiguraci připojení v nástroji Machine Learning Studio, máte možnost stáhnout a nainstalovat ji pomocí Integration Runtime (IR) **stahování a brána dat registru** dialogového okna popsané níže.
+## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Instalace Integration Runtime Data Factory v místním prostředí
+Chcete-li získat přístup k místní databázi SQL Server v klasické verzi Azure Machine Learning Studio, je třeba stáhnout a nainstalovat Data Factory v místním prostředí Integration Runtime, dříve označované jako brána Správa dat. Když nakonfigurujete připojení v Machine Learning Studio (Classic), máte možnost stáhnout a nainstalovat Integration Runtime (IR) pomocí dialogu **Stáhnout a zaregistrovat data Gateway** , který je popsaný níže.
 
 
-Můžete si také nainstalovat prostředí IR předem stažením a instalací balíčku MSI Instalační program z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). MSI lze použít také k upgradu existujících IR na nejnovější verzi, se všemi možnými nastavení zachovány.
+Pomocí stažení a spuštění instalačního balíčku MSI z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717)můžete také nainstalovat prostředí IR před časem. Soubor MSI se dá použít taky k upgradu existujícího IR na nejnovější verzi, kde se zachovají všechna nastavení.
 
-Data Factory modul Integration Runtime má následující požadavky:
+Integration Runtime Data Factory v místním prostředí má následující požadavky:
 
-* Integrace místním objekt pro vytváření dat vyžaduje 64-bit operační systém pomocí rozhraní .NET Framework 4.6.1 nebo vyšší.
-* Podporované verze operačního systému Windows jsou Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
-* Doporučená konfigurace pro počítač reakcí na Incidenty, je nejméně 2 GHz, 4 jádra procesoru, 8GB paměti RAM a 80GB disk.
-* Pokud hostitelský počítač přejde do režimu spánku, prostředí IR neodpovídá na požadavky na data. Proto konfigurovat schéma napájení příslušné v v počítači před instalací IR. Pokud je počítač nakonfigurovaný do režimu hibernace, instalace prostředí IR zobrazí zprávu.
-* Vzhledem k tomu, že konkrétní frekvencí dojde k aktivitě kopírování, využití prostředků (procesor, paměť) na počítači také používá stejný vzor s ve špičce a doby nečinnosti. Využití prostředků také závisí do značné míry na množství dat, který se přesouvá. Když probíhají úlohy s více kopií, budete sledovat využití prostředků zvýší během špiček. Minimální konfigurace uvedené výše je technicky dostatečná, můžete chtít mít konfigurací s více prostředků, než minimální požadavky na konfiguraci v závislosti na konkrétní zatížení pro přesun dat.
+* Data Factory integrace v místním prostředí vyžaduje 64 operační systém s .NET Framework 4.6.1 nebo vyšším.
+* Podporované verze operačních systémů Windows jsou Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
+* Doporučená konfigurace pro počítač s INFRAČERVENým přenosem je minimálně 2 GHz, 4 jádro procesoru, 8 GB paměti RAM a disk pro 80 GB.
+* Pokud se hostitelský počítač přepne do režimu hibernace, přestane IR reagovat na požadavky na data. Proto nakonfigurujte v počítači vhodné schéma napájení před instalací IR. Pokud je počítač nakonfigurovaný do režimu hibernace, zobrazí se při instalaci infračerveného přenosu zpráva.
+* Vzhledem k tomu, že aktivita kopírování probíhá na konkrétní frekvenci, využívá využití prostředků (CPU, paměť) na počítači stejný vzor s špičkou a nečinnými časy. Využití prostředků také závisí na množství dat, která se přesunují. Když probíhají více úloh kopírování, sledujte využití prostředků v době špičky. I když minimální výše uvedená konfigurace je technicky dostačující, možná budete chtít mít konfiguraci s více prostředky než minimální konfigurací v závislosti na konkrétní zátěži pro přesun dat.
 
-Vezměte v úvahu následující při nastavování a pomocí Data Factory modul Integration Runtime:
+Při nastavování a používání Integration Runtime Data Factory v místním prostředí Vezměte v úvahu následující:
 
-* V jednom počítači můžete nainstalovat jenom jednu instanci reakcí na Incidenty.
-* Jednotné prostředí IR můžete použít pro více zdrojů dat v místním prostředí.
-* Více IRs na různé počítače můžete připojit ke stejnému zdroji dat místní.
-* Konfigurace finančnímu úřadu pro jenom jeden pracovní prostor v čase. V současné době IRs se nedají sdílet mezi pracovními prostory.
-* Můžete nakonfigurovat více IRs pro jeden pracovní prostor. Můžete například použít prostředí IR, který je připojený ke zdrojům dat testu během vývoje a provozu reakcí na Incidenty až budete připraveni na zprovoznění.
-* Prostředí IR nemusí být ve stejném počítači jako zdroj dat. Ale zůstává blíž ke zdroji dat snižuje čas potřebný pro bránu pro připojení ke zdroji dat. Doporučujeme nainstalovat prostředí IR v počítači, který je jiný než ten, který je hostitelem místního zdroje dat tak, aby brána a zdroj dat není soutěží o prostředky.
-* Pokud už máte prostředí IR nainstalovaný ve vašem počítači obsluhující scénářů Power BI nebo služby Azure Data Factory, nainstalujte samostatné prostředí IR pro Azure Machine Learning studia v jiném počítači.
+* V jednom počítači můžete nainstalovat jenom jednu instanci prostředí IR.
+* Pro více místních zdrojů dat můžete použít jeden infračervený.
+* K místnímu zdroji dat můžete připojit více úřadů v různých počítačích.
+* V jednu chvíli nakonfigurujete finanční úřad jenom pro jeden pracovní prostor. V současné době se finanční úřad nedá sdílet mezi pracovními prostory.
+* Pro jeden pracovní prostor můžete nakonfigurovat více úřadů. Například můžete chtít použít IR, který je připojený k vašim testovacím zdrojům dat během vývoje, a provozní IR, až budete připraveni k zprovoznění.
+* Prostředí IR nemusí být ve stejném počítači jako zdroj dat. Ale zachování bližšího zdroje dat zkracuje čas, kdy se brána připojí ke zdroji dat. Doporučujeme nainstalovat technologii IR na počítač, který je jiný než ten, který je hostitelem místního zdroje dat, aby brána a zdroj dat nesoutěží o prostředky.
+* Pokud již máte v počítači nainstalováno INFRAČERVENé prostředí, které obsluhuje Power BI nebo Azure Data Factorych scénářů, nainstalujte samostatný modul IR pro klasickou verzi Azure Machine Learning Studio v jiném počítači.
 
   > [!NOTE]
-  > Data Factory modul Integration Runtime a Power BI Gateway nelze spustit ve stejném počítači.
+  > Nemůžete spouštět Data Factory v místním prostředí Integration Runtime a Power BI Gateway na stejném počítači.
   >
   >
-* Budete muset použít Data Factory modul Integration Runtime pro Azure Machine Learning Studio, i když používáte Azure ExpressRoute pro další data. Zdroje dat by měly zpracovávat jako zdroj dat v místním (který je za bránou firewall) i při použití ExpressRoute. K navázání připojení mezi Machine Learning a zdroji dat pomocí Data Factory modul Integration Runtime.
+* Pro klasickou verzi Azure Machine Learning Studio musíte použít Integration Runtime Data Factory v místním prostředí, a to i v případě, že používáte Azure ExpressRoute pro jiná data. Zdroj dat byste měli považovat za místní zdroj dat (to je za bránou firewall), i když používáte ExpressRoute. K navázání spojení mezi Machine Learning a zdrojem dat použijte Integration Runtime Data Factory v místním prostředí.
 
-Podrobné informace o požadavky na instalaci, instalační kroky a tipy pro řešení potíží najdete v článku [prostředí Integration Runtime ve službě Data Factory](../../data-factory/concepts-integration-runtime.md).
+Podrobné informace o požadavcích na instalaci, krocích instalace a tipůch k odstraňování potíží najdete v článku [Integration runtime v Data Factory](../../data-factory/concepts-integration-runtime.md).
 
-## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-idtoc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Příchozí přenos dat z místní databáze SQL serveru do Azure Machine Learning
-V tomto podrobném návodu nastavení Azure Data Factory Integration Runtime v pracovním prostoru Azure Machine Learning, nakonfigurujte ji a pak si můžete přečíst data z databáze SQL serveru v místním.
+## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Příchozí data z místní databáze SQL Server do Azure Machine Learning
+V tomto návodu nastavíte Integration Runtime Azure Data Factory v pracovním prostoru Azure Machine Learning, nakonfigurujete ho a pak načtete data z místní databáze SQL Server.
 
 > [!TIP]
-> Než začnete, zakažte v prohlížeči blokování automaticky otevíraných oken pro `studio.azureml.net`. Pokud používáte prohlížeč Google Chrome, stáhnout a nainstalovat některou z několika moduly plug-in k dispozici v Google Chrome WebStore [klikněte jednou rozšíření aplikace](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
+> Než začnete, zakažte blokování automaticky otevíraných oken v prohlížeči pro `studio.azureml.net`. Pokud používáte prohlížeč Google Chrome, Stáhněte a nainstalujte jeden z několika modulů plug-in, které jsou k dispozici na webu Google Chrome webstore [klikněte jednou na rozšíření aplikace](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
 >
 > [!NOTE]
-> Brána správy dat se dřív používal Azure Data Factory modul Integration Runtime. Podrobný kurz nadále označujeme jako bránu.  
+> Azure Data Factory Integration Runtime v místním prostředí se dřív jmenovala jako Správa dat brána. V tomto kurzu se v tomto kroku budou dál odkazovat jako na bránu.  
 
 ### <a name="step-1-create-a-gateway"></a>Krok 1: Vytvoření brány
-Prvním krokem je vytvoření a nastavení brány pro přístup k vaší místní databáze SQL.
+Prvním krokem je vytvoření a nastavení brány pro přístup k místní databázi SQL.
 
-1. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net/Home/) a vyberte pracovní prostor, který chcete pracovat.
-2. Klikněte na tlačítko **nastavení** okna na levé straně a pak klikněte na tlačítko **brány DATA GATEWAYS** kartě v horní části.
-3. Klikněte na tlačítko **novou bránu DATA GATEWAY** v dolní části obrazovky.
+1. Přihlaste se k [Azure Machine Learning Studio (Classic)](https://studio.azureml.net/Home/) a vyberte pracovní prostor, ve kterém chcete pracovat.
+2. Klikněte na levé okno **Nastavení** a pak klikněte na kartu **brány dat** v horní části.
+3. V dolní části obrazovky klikněte na **Nová brána dat** .
 
-    ![Novou bránu Data Gateway](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
-4. V **novou bránu data gateway** dialogové okno, zadejte **název brány** a volitelně přidejte **popis**. Klikněte na šipku v pravém dolním rohu přejdete k dalšímu kroku konfigurace.
+    ![Nová brána dat](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
+4. V dialogovém okně **Nová brána dat** zadejte **název brány** a volitelně přidejte **Popis**. Kliknutím na šipku v pravém dolním rohu přejdete k dalšímu kroku konfigurace.
 
-    ![Zadejte název brány a popis](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
-5. V stahování a zaregistrujte data gateway dialogovém okně zkopírujte do schránky brány registrační klíč.
+    ![Zadejte název a popis brány.](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
+5. V dialogovém okně stáhnout a zaregistrovat datovou bránu zkopírujte registrační klíč brány do schránky.
 
-    ![Stáhněte si a registraci brány dat](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
-6. <span id="note-1" class="anchor"></span>Pokud dosud jste stáhli a nainstalovaná Brána pro správu dat společnosti Microsoft, klepněte na tlačítko **brána správy dat stažení**. Tím přejdete na webu Microsoft Download Center kde můžete vybrat verze brány, které potřebujete, si ho stáhnout a nainstalovat ho. Podrobné informace o požadavky na instalaci, instalační kroky a tipy pro řešení potíží najdete v části začátku tohoto článku [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](../../data-factory/tutorial-hybrid-copy-portal.md) .
-7. Po instalaci brány se otevře Data Management Gateway Configuration Manager a **registrace brány** se zobrazí dialogové okno. Vložit **brány registrační klíč** , který jste zkopírovali do schránky a klikněte na tlačítko **zaregistrovat**.
-8. Pokud už máte nainstalovanou bránu, spusťte Správce konfigurace brány správy dat. Klikněte na tlačítko **změnit klíč**, vložte **brány registrační klíč** , který jste zkopírovali do schránky. v předchozím kroku a klikněte na **OK**.
-9. Po dokončení instalace **registrace brány** se zobrazí dialogové okno pro Microsoft Data Management Gateway Configuration Manager. Vložte brány registrační klíč, který jste zkopírovali do schránky. v předchozím kroku a klikněte na tlačítko **zaregistrovat**.
+    ![Stažení a registrace brány dat](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
+6. <span id="note-1" class="anchor"></span>Pokud jste ještě nestáhli a nainstalovali bránu Microsoft Správa dat Gateway, klikněte na **Stáhnout bránu pro správu dat**. Tím přejdete na Microsoft Download Center, kde můžete vybrat požadovanou verzi brány, stáhnout ji a nainstalovat ji. Podrobné informace o požadavcích na instalaci, krocích instalace a tipů pro řešení potíží najdete v části úvodní části článku [přesun dat mezi místními zdroji a cloudem pomocí služby Správa dat Gateway](../../data-factory/tutorial-hybrid-copy-portal.md).
+7. Po instalaci brány se otevře Configuration Manager brány Správa dat a zobrazí se dialogové okno **zaregistrovat bránu** . Vložte **registrační klíč brány** , který jste zkopírovali do schránky, a klikněte na **zaregistrovat**.
+8. Pokud už máte bránu nainstalovanou, spusťte Configuration Manager Správa dat brány. Klikněte na **změnit klíč**, vložte **registrační klíč brány** , který jste zkopírovali do schránky v předchozím kroku, a klikněte na **OK**.
+9. Po dokončení instalace se zobrazí dialogové okno **zaregistrovat bránu** pro bránu Microsoft Správa dat gateway Configuration Manager. Vložte registrační klíč brány, který jste zkopírovali do schránky v předchozím kroku, a klikněte na **zaregistrovat**.
 
-    ![Registrace brány](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
-10. Když tyto hodnoty jsou nastavené na dokončení konfigurace brány **Domů** kartu v Microsoft Data Management Gateway Configuration Manageru:
+    ![Registrovat bránu](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
+10. Konfigurace brány je dokončena, když jsou na kartě **Domů** v bráně Microsoft Správa dat Configuration Manager Gateway nastaveny následující hodnoty:
 
-    * **Název brány** a **název Instance** jsou nastaveny na název brány.
-    * **Registrace** je nastavena na **registrované**.
-    * **Stav** je nastavena na **spuštěno**.
-    * Stavového řádku v dolní části zobrazí **připojená ke cloudové službě Data Management Gateway** spolu s zelená značka zaškrtnutí.
+    * Název **brány** a **název instance** jsou nastavené na název brány.
+    * **Registrace** je nastavená na **zaregistrovaná**.
+    * **Stav** je nastaven na **spuštěno**.
+    * Stavový řádek v dolní části zobrazuje **připojení ke cloudové službě Správa dat Gateway** spolu se zeleným znakem zaškrtnutí.
 
-      ![Správce brány správy dat](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
+      ![Správce brány Správa dat](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
-      Azure Machine Learning Studio také aktualizuje po úspěšné registraci.
+      Klasická verze Azure Machine Learning Studio se také aktualizuje po úspěšné registraci.
 
-    ![Registrace brány byla úspěšná](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
-11. V **stáhnout a registrovat bránu data gateway** dialogového okna, klikněte na zaškrtávací políčko k dokončení instalace. **Nastavení** stránce se zobrazuje stav brány jako "Online". V pravém podokně zjistíte, stav a další užitečné informace.
+    ![Úspěšná registrace brány](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
+11. V dialogovém okně **Stáhnout a zaregistrovat datovou bránu** kliknutím na značku zaškrtnutí dokončete instalaci. Na stránce **Nastavení** se zobrazí stav brány jako "online". V pravém podokně najdete stav a další užitečné informace.
 
     ![Nastavení brány](./media/use-data-from-an-on-premises-sql-server/gateway-status.png)
-12. V Microsoft Data Management Gateway Configuration Manageru přejděte **certifikát** kartu. Certifikát uvedený na této kartě se používá k šifrování/dešifrování přihlašovacích údajů pro místní úložiště dat, které jste zadali v portálu. Tento certifikát je výchozí certifikát. Společnost Microsoft doporučuje změna na svůj vlastní certifikát, který je zálohovat v systému pro správu certifikátů. Klikněte na tlačítko **změnu** místo toho použít vlastní certifikát.
+12. V bráně Microsoft Správa dat Configuration Manager přepněte na kartu **certifikát** . Certifikát zadaný na této kartě slouží k šifrování/dešifrování přihlašovacích údajů pro místní úložiště dat, které zadáte na portálu. Tento certifikát je výchozím certifikátem. Microsoft doporučuje tuto změnu na vlastní certifikát, který zálohujete v systému správy certifikátů. Pokud místo toho chcete použít vlastní certifikát, klikněte na **změnit** .
 
     ![Změnit certifikát brány](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. (volitelné) Pokud chcete povolit podrobné protokolování, abyste mohli řešit problémy s bránou v Microsoft Data Management Gateway Configuration Manageru přejděte **diagnostiky** kartě a zaškrtněte **povolit podrobné protokolování pro účely odstraňování potíží** možnost. Informace o protokolování najdete v prohlížeči událostí Windows v části **protokoly aplikací a služeb**  - &gt; **brána správy dat** uzlu. Můžete také použít **diagnostiky** kartu a otestujte připojení k místním zdroji dat pomocí brány.
+13. volitelné Pokud chcete povolit podrobné protokolování, abyste mohli řešit problémy s bránou, přejděte v bráně Microsoft Správa dat Configuration Manager na kartu **Diagnostika** a zaškrtněte možnost **Povolit podrobné protokolování pro účely řešení potíží.** možnost. Informace o protokolování najdete v Prohlížeč událostí Windows v části **protokoly aplikací a služeb** -&gt; uzlu **Správa dat brány** . Kartu **Diagnostika** můžete také použít k otestování připojení k místnímu zdroji dat pomocí brány.
 
-    ![Zapnout podrobné protokolování](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
+    ![Povolit podrobné protokolování](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
-Tím dokončíte proces instalace brány v nástroji Azure Machine Learning Studio.
-Nyní jste připraveni používat vaše místní data.
+Tím se dokončí proces instalace brány v klasické verzi Azure Machine Learning Studio.
+Teď jste připraveni použít vaše místní data.
 
-Můžete vytvořit a nastavit více bran v nástroji Studio za každý pracovní prostor. Například může mít bránu, kterou chcete připojit ke zdrojům dat testu během vývoje a jinou bránu pro zdroje dat produkčního prostředí. Azure Machine Learning Studio poskytuje flexibilitu pro nastavení více bran v závislosti na vašem podnikovém prostředí. Momentálně nemůžete sdílet brány mezi pracovními prostory a jenom jedna brána lze nainstalovat v jednom počítači. Další informace najdete v tématu [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](../../data-factory/tutorial-hybrid-copy-portal.md).
+Pro každý pracovní prostor můžete vytvořit a nastavit několik bran v nástroji Studio (Classic). Například můžete mít bránu, kterou chcete připojit ke zdrojům testovacích dat během vývoje, a jinou bránu pro zdroje dat v produkčním prostředí. Klasická verze Azure Machine Learning Studio poskytuje flexibilitu při nastavení několika bran v závislosti na vašem podnikovém prostředí. V tuto chvíli nemůžete sdílet bránu mezi pracovními prostory a v jednom počítači může být nainstalovaná jenom jedna brána. Další informace najdete v tématu [přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány](../../data-factory/tutorial-hybrid-copy-portal.md).
 
-### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Krok 2: Čtení dat z místních zdrojů dat pomocí brány
-Jakmile nastavíte bránu, můžete přidat **Import dat** modulů na experiment, který vstupů data z místní databáze SQL serveru.
+### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Krok 2: použití brány ke čtení dat z místního zdroje dat
+Po nastavení brány můžete přidat modul **importu dat** do experimentu, který bude pokaždé zadat data z místní databáze SQL Server.
 
-1. V nástroji Machine Learning Studio, vyberte **EXPERIMENTY** klikněte na tlačítko **+ nová** v levém dolním rohu a vyberte **prázdný Experiment** (nebo vyberte některou z několika vzorku experimentů k dispozici).
-2. Najděte a přetáhněte **Import dat** modulů na plátno experimentu.
-3. Klikněte na tlačítko **uložit jako** dole na plátně. Zadejte "Azure kurz Machine learningu Studio místní SQL Server" pro název experimentu, vyberte pracovní prostor a klikněte na tlačítko **OK** zaškrtávací políčko.
+1. V Machine Learning Studio (Classic) vyberte kartu **experimenty** , v levém dolním rohu klikněte na **+ Nový** a vyberte možnost **prázdný experiment** (nebo vyberte jednu z několika možných experimentů s ukázkou).
+2. Vyhledejte a přetáhněte na plátno experimentu modul **Import dat** .
+3. Klikněte na tlačítko **Uložit** pod plátnem. Zadejte "Azure Machine Learning Studio (klasický) místní SQL Server kurz" pro název experimentu vyberte pracovní prostor a klikněte na značku zaškrtnutí **OK** .
 
-   ![Uložit experimentu s novým názvem.](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
-4. Klikněte na tlačítko **Import dat** modul se vybere, pak v **vlastnosti** v podokně napravo od plátna, vyberte "On-Premises SQL Database" **zdroj dat** rozevíracího seznamu.
-5. Vyberte **bránu Data gateway** instalaci a registraci. Jinou bránu můžete nastavit tak, že vyberete "(Přidat novou bránu Data Gateway...)".
+   ![Uložit experiment s novým názvem](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
+4. Kliknutím na modul **Import dat** ho vyberte a potom v podokně **vlastnosti** napravo od plátna vyberte v rozevíracím seznamu **zdroj dat** možnost místní SQL Database.
+5. Vyberte **bránu dat** , kterou jste nainstalovali a zaregistrovali. Jinou bránu můžete nastavit tak, že vyberete (Přidat novou bránu dat).
 
-   ![Vyberte bránu dat pro modulu Import dat](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. Zadejte SQL **název databázového serveru** a **název_databáze**, spolu s SQL **databázový dotaz** chcete spustit.
-7. Klikněte na tlačítko **zadejte hodnoty** pod **uživatelské jméno a heslo** a zadejte svoje přihlašovací údaje databáze. Můžete použít integrované ověřování Windows nebo ověřování systému SQL Server v závislosti na konfiguraci vaší místní SQL Server.
+   ![Vybrat bránu dat pro modul import dat](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
+6. Zadejte **název serveru SQL Database** a **název databáze**společně s **dotazem SQL Database** , který chcete spustit.
+7. V části **uživatelské jméno a heslo** klikněte na **zadat hodnoty** a zadejte svoje přihlašovací údaje do databáze. V závislosti na tom, jak je místní SQL Server nakonfigurovaná, můžete použít integrované ověřování systému Windows nebo SQL Server ověřování.
 
-   ![Zadejte přihlašovací údaje databáze](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
+   ![Zadat přihlašovací údaje databáze](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
-   Změny "hodnoty požadované" zpráva "sada hodnot" s zelená značka zaškrtnutí. Stačí zadat přihlašovací údaje jednou, pokud se změní informace o databázi nebo heslo. Azure Machine Learning Studio používá certifikát, který jste zadali při instalaci brány pro šifrování přihlašovacích údajů v cloudu. Azure nikdy ukládá místních přihlašovacích údajů bez šifrování.
+   U zprávy "požadované hodnoty" se změní hodnota nastavená na zelenou značku zaškrtnutí. Přihlašovací údaje stačí zadat jenom jednou, pokud se nezmění informace nebo heslo databáze. Klasická verze Azure Machine Learning Studio používá certifikát, který jste zadali při instalaci brány pro šifrování přihlašovacích údajů v cloudu. Azure nikdy neukládá místní přihlašovací údaje bez šifrování.
 
-   ![Import modulu vlastnosti dat](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
-8. Klikněte na tlačítko **spustit** ke spuštění testu.
+   ![Importovat vlastnosti datového modulu](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
+8. Kliknutím na **Spustit** spustíte experiment.
 
-Po dokončení testu můžete vizualizovat data importovat z databáze klikněte na výstupní port modulu **Import dat** modulu a vyberete **vizualizovat**.
+Po dokončení experimentu můžete vizualizovat data, která jste importovali z databáze, kliknutím na výstupní port modulu **Import dat** a výběrem možnosti **vizualizovat**.
 
-Jakmile dokončíte, vývoji experimentů, můžete nasazení a zprovoznění vašeho modelu. Služba Batch Execution, data z místního SQL serveru pomocí databáze nakonfigurovaná v **Import dat** modulu čtení, který se používá pro vyhodnocení. Zatímco odpovědi služby žádosti můžete použít pro vyhodnocování místním datům, společnost Microsoft doporučuje používat [Excelový doplněk](excel-add-in-for-web-services.md) místo. V současné době zápisu do místní databáze systému SQL Server prostřednictvím **exportovat Data** není podporováno buď ve své experimenty nebo publikované webové služby.
+Až dokončíte vývoj experimentů, můžete model nasadit a zprovoznění. Pomocí služby Batch Execution se data z místní databáze SQL Server nakonfigurovaná v modulu **Import dat** přečtou a budou se používat pro vyhodnocování. I když můžete použít službu Request response pro bodování místních dat, Microsoft doporučuje místo toho použít [doplněk Excelu](excel-add-in-for-web-services.md) . V současné době se zápisy do místní databáze SQL Server prostřednictvím **exportu dat** nepodporují ani v experimentech nebo publikovaných webových službách.

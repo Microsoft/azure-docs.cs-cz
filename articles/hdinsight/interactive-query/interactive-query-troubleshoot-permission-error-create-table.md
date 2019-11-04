@@ -1,5 +1,5 @@
 ---
-title: Při pokusu o vytvoření tabulky Apache Hive ve službě Azure HDInsight došlo k chybě odepření oprávnění.
+title: Chyba odepření oprávnění s Apache Hive tabulkou ve službě Azure HDInsight
 description: Při pokusu o vytvoření tabulky Apache Hive ve službě Azure HDInsight došlo k chybě odepření oprávnění.
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
-ms.openlocfilehash: 8440bbc1cf7019e77c6274cbb11c013fb4e3e69d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: d9901132af992ea95a60773f404b1351386cfbcb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091399"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494207"
 ---
-# <a name="scenario-permission-denied-error-when-trying-to-create-an-apache-hive-table-in-azure-hdinsight"></a>Scénář: Při pokusu o vytvoření tabulky Apache Hive ve službě Azure HDInsight došlo k chybě odepření oprávnění.
+# <a name="scenario-permission-denied-error-when-trying-to-create-an-apache-hive-table-in-azure-hdinsight"></a>Scénář: chyba odepření oprávnění při pokusu o vytvoření tabulky Apache Hive ve službě Azure HDInsight
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při používání interaktivních komponent dotazů v clusterech Azure HDInsight.
 
@@ -36,16 +36,16 @@ hdfs dfs -mkdir wasbs://data@xxxxx.blob.core.windows.net/path/table
 
 Možnost vytvořit tabulku v Apache Hive je určena oprávněním použitým pro účet úložiště clusteru. Pokud oprávnění účtu úložiště clusteru nejsou správná, nebudete moct vytvářet tabulky. To znamená, že můžete mít správné zásady Ranger pro vytvoření tabulky a pořád se zobrazí chyba "oprávnění odepřeno".
 
-## <a name="resolution"></a>Řešení
+## <a name="resolution"></a>Rozlišení
 
 Příčinou je nedostatek dostatečných oprávnění na používaném kontejneru úložiště. Uživatel vytvářející tabulku podregistru potřebuje oprávnění číst, zapisovat a spustit pro kontejner. Další informace najdete [v tématu osvědčené postupy pro autorizaci podregistru pomocí Apache Ranger v HDP 2,2](https://hortonworks.com/blog/best-practices-for-hive-authorization-using-apache-ranger-in-hdp-2-2/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

@@ -1,7 +1,7 @@
 ---
 title: Doplněk Excelu pro webové služby
-titleSuffix: Azure Machine Learning Studio
-description: Jak používat Azure Machine Learning Web services přímo v aplikaci Excel bez psaní kódu.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Jak používat Azure Machine Learning webové služby přímo v aplikaci Excel bez psaní kódu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,76 +10,76 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 9e801e0d7a26cd4d6c43118959aee1dec7216b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18e7e2c2c57bd44cb974e5de668045d6322bc4ce
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60750174"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492984"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio
-Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli kód.
+# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio (Classic)
+Aplikace Excel usnadňuje volání webových služeb přímo bez nutnosti psát jakýkoli kód.
 
-## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Postup používání webové služby existující v sešitu
+## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Postup použití existující webové služby v sešitu
 
-1. Otevřít [Excelový soubor ukázka](https://aka.ms/amlexcel-sample-2), který obsahuje doplněk aplikace Excel a data o cestujících Titaniku. 
+1. Otevřete [vzorový excelový soubor](https://aka.ms/amlexcel-sample-2), který obsahuje excelový doplněk a data o cestujících na Titanic. 
  
     > [!NOTE]
-    > Zobrazí se že seznam webových služeb týkající se do souboru a v dolní části zaškrtávacího políčka "Automatické předpovědět". Pokud povolíte automatické odhad predikce **všechny** vašich služeb se aktualizují pokaždé, když dojde ke změně na vstupy. Pokud není zaškrtnuto budete muset kliknout na "Předpovědět vše" pro aktualizaci. Pro povolení automatického. odhad na úrovni služby přejít ke kroku 6.
+    > Zobrazí se seznam webových služeb vztahujících se k souboru a dolní políčko pro automatické předvídání. Pokud povolíte automatické předpovídání, předpovědi **všech** služeb se aktualizuje pokaždé, když dojde ke změně vstupů. Pokud toto políčko nezaškrtnuté, budete muset pro aktualizaci kliknout na možnost předpověď vše. Pro povolení automatické předpovědi na úrovni služby přejít na krok 6.
 
-2. Kliknutím ji vyberte webovou službu – "Titanic pozůstalým prediktivní (ukázka doplňku Excel) [skóre]" v tomto příkladu.
+2. Vyberte webovou službu kliknutím na ni – "Titanic pozůstalost prediktivní (Ukázka doplňku Excel) [skore]" v tomto příkladu.
    
-    ![Vyberte webovou službu](./media/excel-add-in-for-web-services/image1.png)
-3. Tím přejdete **Predict** oddílu.  Tento sešit už obsahuje ukázková data, ale pro prázdný sešit můžete vybrat buňku v aplikaci Excel a klikněte na tlačítko **použít vzorová data**.
-4. Vyberte data, která se záhlavími a klikněte na ikonu rozsah vstupní data.  Ujistěte se, že je zaškrtnuté políčko "má data obsahují záhlaví".
-5. V části **výstup**, zadejte počet buněk, ve kterém má výstup, například "H1" tady se.
-6. Klikněte na tlačítko **předpovědět**. Pokud zaškrtnete políčko "auto-predict" jakákoli změna ve vybrané oblasti (úlohy uvedené jako vstup) spustí požadavek a aktualizace buněk výstup bez nutnosti až stisknete tlačítko predict.
+    ![Vybrat webovou službu](./media/excel-add-in-for-web-services/image1.png)
+3. Tím přejdete do části **předpověď** .  Tento sešit už obsahuje ukázková data, ale u prázdného sešitu můžete vybrat buňku v Excelu a kliknout na **použít vzorová data**.
+4. Vyberte data se záhlavími a klikněte na ikonu rozsah vstupních dat.  Ujistěte se, že je zaškrtnuté políčko moje data obsahují záhlaví.
+5. V části **výstup**zadejte číslo buňky, kde má být výstup, například "H1".
+6. Klikněte na **předpověď**. Pokud zaškrtnete políčko automaticky vypovědět, všechny změny ve vybraných oblastech (které jsou zadané jako Input) spustí požadavek a aktualizuje výstupní buňky, aniž by bylo nutné stisknout tlačítko předpověď.
    
-    ![Předpověď oddílu](./media/excel-add-in-for-web-services/image1.png)
+    ![Oddíl předpověď](./media/excel-add-in-for-web-services/image1.png)
 
-Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [Tutorial 3: Nasazení modelu úvěrové riziko](tutorial-part3-credit-risk-deploy.md).
+Nasazení webové služby nebo použití existující webové služby. Další informace o nasazení webové služby najdete v [kurzu 3: nasazení modelu úvěrového rizika](tutorial-part3-credit-risk-deploy.md).
 
-Získání klíče rozhraní API pro webovou službu. Pokud provedete tuto akci závisí na, jestli jste publikovali webovou službu Classic Machine Learning webové služby Machine Learning nové.
+Získejte klíč rozhraní API pro webovou službu. Kde tuto akci provedete, záleží na tom, jestli jste publikovali klasický Machine Learning webové služby nové webové služby Machine Learning.
 
-**Pomocí webové služby Classic** 
+**Použití klasické webové služby** 
 
-1. V nástroji Machine Learning Studio, klikněte na tlačítko **webových služeb** části v levém podokně a pak vyberte webovou službu.
+1. V Machine Learning Studio (Classic) klikněte v levém podokně na část **webové služby** a pak vyberte webovou službu.
    
-    ![Vyberte Studio webové služby](./media/excel-add-in-for-web-services/image4.png)
+    ![Studio vyberte webovou službu.](./media/excel-add-in-for-web-services/image4.png)
 2. Zkopírujte klíč rozhraní API pro webovou službu.
    
     ![Klíč rozhraní API sady Studio](./media/excel-add-in-for-web-services/image5.png)
-3. Na **řídicí panel** karta pro webovou službu, klikněte na tlačítko **žádostí a odpovědí** odkaz.
-4. Hledat **Request URI** oddílu.  Zkopírujte a uložte adresu URL.
+3. Na kartě **řídicí panel** pro webovou službu klikněte na odkaz **požadavek/odpověď** .
+4. Vyhledejte část **identifikátor URI žádosti** .  Zkopírujte a uložte adresu URL.
 
 > [!NOTE]
-> Nyní je možné se přihlásit [Azure Machine Learning Web Services](https://services.azureml.net) portál k získání klíče rozhraní API pro webové služby Classic Machine Learning.
+> Nyní se můžete přihlásit k portálu [Azure Machine Learning Web Services](https://services.azureml.net) , abyste získali klíč rozhraní API pro klasický Machine Learning webové služby.
 > 
 > 
 
-**Pomocí nové webové služby**
+**Použít novou webovou službu**
 
-1. V [Azure Machine Learning Web Services](https://services.azureml.net) portálu klikněte na **webových služeb**, pak vyberte webovou službu. 
-2. Klikněte na tlačítko **využívat**.
-3. Hledat **informace o základní spotřeby** oddílu. Zkopírujte a uložte **primární klíč** a **Request-Response** adresy URL.
+1. Na portálu [Azure Machine Learning Web Services](https://services.azureml.net) klikněte na možnost **webové služby**a pak vyberte webovou službu. 
+2. Klikněte na možnost **spotřebovat**.
+3. Vyhledejte část **základní informace o spotřebě** . Zkopírujte a uložte **primární klíč** a adresu URL **požadavku-odpovědi** .
 
 ## <a name="steps-to-add-a-new-web-service"></a>Postup přidání nové webové služby
 
-1. Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [Tutorial 3: Nasazení modelu úvěrové riziko](tutorial-part3-credit-risk-deploy.md).
-2. Klikněte na tlačítko **využívat**.
-3. Hledat **informace o základní spotřeby** oddílu. Zkopírujte a uložte **primární klíč** a **Request-Response** adresy URL.
-4. V aplikaci Excel přejděte na **webových služeb** části (Pokud jste v **Predict** klikněte na šipku zpět a přejděte na seznam webové služby).
+1. Nasazení webové služby nebo použití existující webové služby. Další informace o nasazení webové služby najdete v [kurzu 3: nasazení modelu úvěrového rizika](tutorial-part3-credit-risk-deploy.md).
+2. Klikněte na možnost **spotřebovat**.
+3. Vyhledejte část **základní informace o spotřebě** . Zkopírujte a uložte **primární klíč** a adresu URL **požadavku-odpovědi** .
+4. V Excelu přejděte do části **webové služby** (Pokud jste v části **předpověď** , přejděte kliknutím na šipku zpět do seznamu webových služeb).
    
-    ![Přejít na vybranou webovou službu](./media/excel-add-in-for-web-services/image3.png)
-5. Klikněte na tlačítko **přidat webovou službu**.
-6. Vložte adresu URL do aplikace Excel, přidejte do textového pole s popiskem **URL**.
-7. Vložení rozhraní API a primární klíč do textového pole s popiskem **klíč rozhraní API**.
-8. Klikněte na tlačítko **Add** (Přidat).
+    ![Přejít na výběr webové služby](./media/excel-add-in-for-web-services/image3.png)
+5. Klikněte na **Přidat webovou službu**.
+6. Vložte adresu URL do textového pole excelový doplněk s názvem **URL**.
+7. Vložte rozhraní API/primární klíč do textového pole s popiskem **klíč rozhraní API**.
+8. Klikněte na tlačítko **Přidat**.
    
-    ![Adresa URL a klíč rozhraní API pro klasické webové služby.](./media/excel-add-in-for-web-services/image6.png)
-9. Webová služba, postupujte podle předchozích pokynů, "Postup použijte existující webové služby."
+    ![Adresa URL a klíč rozhraní API pro klasickou webovou službu.](./media/excel-add-in-for-web-services/image6.png)
+9. Chcete-li použít webovou službu, postupujte podle pokynů v části "postup použití existující webové služby".
 
-## <a name="sharing-your-workbook"></a>Sdílení vašeho sešitu
-Pokud váš sešit uložit, rozhraní API a primární klíč pro webové služby, které jste přidali také uloží. To znamená, že sešit by měly sdílet jenom uživatele, kterému můžete důvěřovat.
+## <a name="sharing-your-workbook"></a>Sdílení sešitu
+Pokud sešit uložíte, uloží se taky rozhraní API/primární klíč pro webové služby, které jste přidali. To znamená, že byste měli sešit sdílet jenom s jednotlivci, kterým důvěřujete.
 
-Jakékoli otázky v části komentáře nebo na našem [fórum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
+Požádejte o všechny otázky v následující části komentáře nebo na našem [fóru](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).

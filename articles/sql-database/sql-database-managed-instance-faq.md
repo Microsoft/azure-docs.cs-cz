@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 7e341cf8a4ff2a18e44e36d73ad5dbc642582802
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710152"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496276"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k SQL Database Managed Instances (FAQ)
 
@@ -179,7 +179,7 @@ Načítání dat je často pomalejší na spravované instanci než v SQL Server
 Ano, nemusíte dešifrovat databázi, abyste ji mohli obnovit do spravované instance. Abyste mohli číst data ze šifrovaného záložního souboru, musíte do spravované instance zadat certifikát nebo klíč, který se používá jako ochrana šifrovacího klíče ve zdrojovém systému. Existují dva možné způsoby, jak to provést:
 
 - *Nahrajte do spravované instance ochranu pomocí certifikátu*. Můžete to udělat jenom pomocí PowerShellu. [Vzorový skript](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) popisuje celý proces.
-- *Nahrání asymetrického klíče-ochrany do Azure Key Vault (integrace) a nasměrování na něj na spravované instance*. Tento přístup se podobá BYOKm případu použití TDE, který taky používá integraci integrace k uložení šifrovacího klíče. Pokud nechcete používat klíč jako ochranu šifrovacího klíče a chcete jenom zpřístupnit klíč pro spravovanou instanci pro obnovení šifrovaných databází, postupujte podle pokynů pro [Nastavení BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption-in-the-azure-portal)a nezaškrtněte políčko *nastavit vybraný klíč. výchozí ochrana TDE*
+- *Nahrání asymetrického klíče-ochrany do Azure Key Vault (integrace) a nasměrování na něj na spravované instance*. Tento přístup se podobá BYOKm případu použití TDE, který taky používá integraci integrace k uložení šifrovacího klíče. Pokud nechcete používat klíč jako ochranu šifrovacího klíče a chcete jenom zpřístupnit klíč pro spravovanou instanci pro obnovení šifrovaných databází, postupujte podle pokynů pro [Nastavení BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)a nezaškrtněte políčko *nastavit vybraný klíč. výchozí ochrana TDE*
 
 Jakmile zpřístupníte ochranu šifrování pro spravovanou instanci, můžete pokračovat v postupu standardního obnovení databáze.
 

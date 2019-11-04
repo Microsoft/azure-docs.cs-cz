@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 35c696e47c0a01c2cdb4d91db5a654208f2196e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9dd24a962ddece4ae7841effea7fc36bba1b727b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71257269"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496447"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Podrobný plán zabezpečení a dodržování předpisů Azure: analýza finančních služeb FFIEC
 
@@ -29,7 +29,7 @@ Splnění FFIEC vyžaduje, aby kvalifikovaní Auditori osvědčují řešení pr
 
 Tato Podrobný plán zabezpečení a dodržování předpisů Azure poskytuje analytickou platformu, na které můžou zákazníci vytvářet svoje vlastní analytické nástroje. Referenční architektura popisuje obecný případ použití, kdy zákazník zadá data prostřednictvím hromadného importu dat prostřednictvím správce SQL/dat nebo prostřednictvím aktualizace provozních dat prostřednictvím provozního uživatele. Oba pracovní proudy zahrnují Azure Functions pro import dat do Azure SQL Database. Azure Functions musí být nakonfigurované zákazníkem prostřednictvím Azure Portal, aby se úlohy importu vypracovaly jako jedinečné pro požadavky na analýzu jednotlivých zákazníků.
 
-Azure nabízí řadu zpravodajských a analytických služeb pro zákazníky. Toto řešení zahrnuje Azure Machine Learning služby ve spojení s Azure SQL Database pro rychlé procházení dat a poskytování rychlejších výsledků prostřednictvím inteligentnějšího modelování. Azure Machine Learning zvyšuje rychlost dotazů tím, že zjišťuje nové vztahy mezi datovými sadami. Jakmile se data vyškole prostřednictvím několika statistických funkcí, až 7 dalších fondů dotazů (celkem 8 včetně zákaznického serveru), můžete synchronizovat se stejnými tabelárními modely pro rozprostření úloh dotazů a omezení doby odezvy.
+Azure nabízí řadu zpravodajských a analytických služeb pro zákazníky. Toto řešení zahrnuje Azure Machine Learning ve spojení s Azure SQL Database pro rychlé procházení dat a poskytování rychlejších výsledků prostřednictvím inteligentnějšího modelování. Azure Machine Learning zvyšuje rychlost dotazů tím, že zjišťuje nové vztahy mezi datovými sadami. Jakmile se data vyškole prostřednictvím několika statistických funkcí, až 7 dalších fondů dotazů (celkem 8 včetně zákaznického serveru), můžete synchronizovat se stejnými tabelárními modely pro rozprostření úloh dotazů a omezení doby odezvy.
 
 Pro lepší analýzy a vytváření sestav je možné konfigurovat databáze Azure SQL pomocí indexů columnstore. Azure Machine Learning i databáze SQL Azure je možné škálovat nahoru nebo dolů nebo zcela vypnout v reakci na používání zákazníků. Veškerý provoz SQL je zašifrovaný pomocí SSL prostřednictvím zahrnutí certifikátů podepsaných svým držitelem. Osvědčeným postupem je, že Azure doporučuje používání důvěryhodné certifikační autority pro rozšířené zabezpečení.
 
@@ -71,7 +71,7 @@ Následující část podrobně popisuje prvky nasazení a implementace.
 
 **Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) je výpočetní služba bez serveru, která umožňuje uživatelům spouštět kód na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Azure Functions můžete použít ke spuštění skriptu nebo kusu kódu jako reakci na různé události.
 
-**Služba Azure Machine Learning**: [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) je technika pro datové vědy, která umožňuje počítačům používat stávající data k předpovědi budoucích chování, výsledků a trendů.
+**Azure Machine Learning**: [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) je technika pro datové vědy, která umožňuje počítačům používat stávající data k předpovědi budoucího chování, výsledků a trendů.
 
 **Azure Data Catalog**: [Data Catalog](../../data-catalog/overview.md) zdroje dat snadno zjistitelné a srozumitelné pro uživatele, kteří data spravují. U běžných zdrojů dat se dají zaregistrovat, označit a vyhledat finanční data. Data zůstanou v jeho stávajícím umístění, ale do Data Catalog se přidá kopie jeho metadat spolu s odkazem na umístění zdroje dat. Tato metadata jsou také indexována, aby byl každý zdroj dat snadno objevitelný prostřednictvím vyhledávání a aby byl srozumitelný uživatelům, kteří ho objevili.
 

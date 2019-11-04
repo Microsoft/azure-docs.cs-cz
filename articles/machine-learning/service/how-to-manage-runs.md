@@ -10,15 +10,16 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 07/31/2019
-ms.openlocfilehash: 7ebbc7575ad52bbf7a399babb048113bc505a7f8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: 525fc8beafbdbe15435c59697d136ae06c91c135
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174541"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489702"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 [Sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) a [Machine Learning CLI](reference-azure-machine-learning-cli.md) nabízí různé metody pro monitorování, uspořádání a správu vašich běhů pro školení a experimentování.
 
@@ -62,7 +63,7 @@ ws = Workspace.from_config()
 exp = Experiment(workspace=ws, name="explore-runs")
 ```
 
-Spusťte běh a jeho proces protokolování s metodou [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) .
+Spusťte běh a jeho proces protokolování pomocí metody [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) .
 
 ```python
 notebook_run = exp.start_logging()
@@ -89,7 +90,7 @@ Pro spuštění experimentu použijte následující postup:
 
     Další informace najdete v tématu [AZ ml složka připojit](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
-2. Chcete-li spustit spuštění, použijte následující příkaz. Při použití tohoto příkazu zadejte název souboru RunConfig (text před @no__t -0. RunConfig, pokud hledáte v systému souborů) s parametrem-c.
+2. Chcete-li spustit spuštění, použijte následující příkaz. Při použití tohoto příkazu zadejte název souboru RunConfig (text před \*. RunConfig, pokud hledáte systém souborů) s parametrem-c.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
@@ -108,7 +109,7 @@ Pro spuštění experimentu použijte následující postup:
 
 ### <a name="using-the-sdk"></a>Použití sady SDK
 
-Získejte stav spuštění s metodou [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) .
+Získejte stav spuštění pomocí metody [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) .
 
 ```python
 print(notebook_run.get_status())
@@ -226,7 +227,7 @@ Chcete-li vytvořit mnoho podřízených spuštění efektivně, použijte metod
 
 Podřízené běhy lze také odeslat z nadřazeného spuštění. To vám umožňuje vytvářet hierarchie nadřazených a podřízených spuštění, z nichž každý běží v různých cílových výpočetních prostředích, které jsou propojeny běžným ID nadřazeného spuštění.
 
-Použijte metodu [submit_child ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) pro odeslání podřízeného spuštění v rámci nadřazeného spuštění. Pokud to chcete provést v nadřazeném skriptu spuštění, Získejte kontext spuštění a odešlete podřízený běh pomocí metody ``submit_child`` instance kontextu.
+Použijte metodu [submit_child ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) pro odeslání podřízeného spuštění v rámci nadřazeného spuštění. Pokud to chcete provést v nadřazeném skriptu spuštění, Získejte kontext spuštění a odešlete podřízené spuštění pomocí metody ``submit_child`` instance kontextu.
 
 ```python
 ## In parent run script

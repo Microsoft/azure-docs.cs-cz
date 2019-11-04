@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8e858869d742120138e7997ce21d9e4cca93ed9b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b8ce4565a2df3ad5f144508010265c1029a6856d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264368"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468860"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "71264368"
 
 [Vlastní zásady](active-directory-b2c-overview-custom.md) jsou konfigurační soubory, které definují chování klienta Azure Active Directory B2C (Azure AD B2C). V tomto článku vytvoříte vlastní zásadu, která podporuje registraci nebo přihlášení k místnímu účtu pomocí e-mailové adresy a hesla. Připravuje se také prostředí pro přidávání zprostředkovatelů identity.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ho ještě nemáte, [Vytvořte klienta Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 - [Zaregistrujte svoji aplikaci](tutorial-register-applications.md) v tenantovi, kterou jste vytvořili, aby mohla komunikovat s Azure AD B2C.
@@ -39,37 +39,43 @@ ms.locfileid: "71264368"
 ### <a name="create-the-signing-key"></a>Vytvoření podpisového klíče
 
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-1. Pro **Možnosti**vyberte `Generate`možnost.
-1. Do **název**zadejte `TokenSigningKeyContainer`. Předponu `B2C_1A_` lze přidat automaticky.
+1. Pro **Možnosti**vyberte možnost `Generate`.
+1. Do **název**zadejte `TokenSigningKeyContainer`. `B2C_1A_` předpony je možné přidat automaticky.
 1. Jako **typ klíče**vyberte **RSA**.
 1. V případě **použití klíče**vyberte možnost **podpis**.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 ### <a name="create-the-encryption-key"></a>Vytvoření šifrovacího klíče
 
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-1. Pro **Možnosti**vyberte `Generate`možnost.
+1. Pro **Možnosti**vyberte možnost `Generate`.
 1. Do **název**zadejte `TokenEncryptionKeyContainer`. Předponu `B2C_1A`_ lze přidat automaticky.
 1. Jako **typ klíče**vyberte **RSA**.
 1. V případě **použití klíče**vyberte **šifrování**.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 ### <a name="create-the-facebook-key"></a>Vytvořit facebookový klíč
 
 Přidejte [tajný klíč aplikace](active-directory-b2c-setup-fb-app.md) vaší aplikace Facebook jako klíč zásad. Můžete použít tajný klíč aplikace, který jste vytvořili v rámci požadavků tohoto článku.
 
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-1. Pro **Možnosti**vyberte `Manual`možnost.
-1. Jako **název**zadejte `FacebookSecret`. Předponu `B2C_1A_` lze přidat automaticky.
+1. Pro **Možnosti**vyberte možnost `Manual`.
+1. Jako **název**zadejte `FacebookSecret`. `B2C_1A_` předpony je možné přidat automaticky.
 1. V **tajnosti**zadejte *tajný kód aplikace* vaší aplikace na Facebooku z Developers.Facebook.com. Tato hodnota je tajný kód, nikoli ID aplikace.
 1. V případě **použití klíče**vyberte možnost **podpis**.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 ## <a name="register-identity-experience-framework-applications"></a>Registrovat aplikace architektury identity Experience Framework
 
-Azure AD B2C vyžaduje, abyste zaregistrovali dvě aplikace, které se používají k registraci a přihlašování uživatelů: IdentityExperienceFramework (webová aplikace) a ProxyIdentityExperienceFramework (nativní aplikace) s delegovaným oprávněním z aplikace IdentityExperienceFramework. Místní účty existují jenom ve vašem tenantovi. Uživatelé si zaregistrují jedinečnou kombinaci e-mailové adresy a hesla pro přístup k aplikacím registrovaným v tenantovi.
+Azure AD B2C vyžaduje, abyste zaregistrovali dvě aplikace, které používá k registraci a přihlašování uživatelů pomocí místních účtů: *IdentityExperienceFramework*, webové rozhraní API a *ProxyIdentityExperienceFramework*, nativní aplikace s delegovaným oprávněním Aplikace IdentityExperienceFramework Uživatelé se můžou zaregistrovat pomocí e-mailové adresy nebo uživatelského jména a hesla pro přístup k aplikacím registrovaným v tenantovi. tím se vytvoří místní účet. Místní účty existují pouze ve vašem tenantovi Azure AD B2C.
+
+Tyto dvě aplikace je potřeba zaregistrovat ve svém tenantovi Azure AD B2C jenom jednou.
 
 ### <a name="register-the-identityexperienceframework-application"></a>Registrace aplikace IdentityExperienceFramework
+
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete použít aktuální prostředí **aplikací** nebo naše nové sjednocené **Registrace aplikací (Preview)** . [Přečtěte si další informace o prostředí verze Preview](https://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
 
 1. V levém horním rohu Azure Portal vyberte **všechny služby** .
 1. Do vyhledávacího pole zadejte `Azure Active Directory`.
@@ -79,19 +85,75 @@ Azure AD B2C vyžaduje, abyste zaregistrovali dvě aplikace, které se používa
 1. Jako **název**zadejte `IdentityExperienceFramework`.
 1. Jako **Typ aplikace**vyberte **Webová aplikace/rozhraní API**.
 1. Pro **přihlašovací adresu URL**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš Azure AD B2C název domény tenanta. Všechny adresy URL by teď měly používat [b2clogin.com](b2clogin.md).
-1. Vyberte **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
+1. Vyberte **Create** (Vytvořit). Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+
+1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
+1. Jako **název**zadejte `IdentityExperienceFramework`.
+1. V části **podporované typy účtů**vyberte **účty jenom v tomto organizačním adresáři**.
+1. V části **identifikátor URI pro přesměrování**vyberte **Web**a potom zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je Azure AD B2C název domény tenanta.
+1. V části **oprávnění**zaškrtněte políčko *udělit souhlas správce oprávnění OpenID a offline_access* .
+1. Vyberte **Zaregistrovat**.
+1. Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
+
+V dalším kroku vystavte rozhraní API přidáním oboru:
+
+1. V části **Spravovat**vyberte **zveřejnit rozhraní API**.
+1. Vyberte **Přidat obor**a pak vyberte **Uložit a pokračovat** a přijměte výchozí identifikátor URI ID aplikace.
+1. Zadejte následující hodnoty pro vytvoření oboru, který umožňuje vlastní spuštění zásad ve vašem tenantovi Azure AD B2C:
+    * **Název oboru**: `user_impersonation`
+    * **Zobrazovaný název souhlasu správce**: `Access IdentityExperienceFramework`
+    * **Popis souhlasu správce**: `Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
+1. Vybrat **Přidat obor**
+
+* * *
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Registrace aplikace ProxyIdentityExperienceFramework
+
+#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
 
 1. V **Registrace aplikací (starší verze)** vyberte možnost **Registrace nové aplikace**.
 1. Jako **název**zadejte `ProxyIdentityExperienceFramework`.
 1. Jako **Typ aplikace**vyberte možnost **nativní**.
-1. Jako **identifikátor URI přesměrování**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš Azure AD B2C tenant.
-1. Vyberte **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
+1. Pro **identifikátor URI přesměrování**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš tenant Azure AD B2C.
+1. Vyberte **Create** (Vytvořit). Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
 1. Vyberte **Nastavení**, pak vyberte **požadovaná oprávnění**a pak vyberte **Přidat**.
 1. Zvolte **Vybrat rozhraní API**, vyhledejte a vyberte **IdentityExperienceFramework**a potom klikněte na **Vybrat**.
-1. Zaškrtněte políčko vedle **přístupu k IdentityExperienceFramework**, klikněte na **Vybrat**a potom na Hotovo.
+1. Zaškrtněte políčko vedle **přístupu k IdentityExperienceFramework**, klikněte na **Vybrat**a potom na **Hotovo**.
 1. Vyberte **udělit oprávnění**a pak potvrďte výběrem možnosti **Ano**.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+
+1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
+1. Jako **název**zadejte `ProxyIdentityExperienceFramework`.
+1. V části **podporované typy účtů**vyberte **účty jenom v tomto organizačním adresáři**.
+1. V části **identifikátor URI pro přesměrování**vyberte v rozevíracím seznamu možnost **veřejný klient/nativní (mobilní & Desktop)** .
+1. Pro **identifikátor URI přesměrování**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš tenant Azure AD B2C.
+1. V části **oprávnění**zaškrtněte políčko *udělit souhlas správce oprávnění OpenID a offline_access* .
+1. Vyberte **Zaregistrovat**.
+1. Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
+
+Dále určete, že aplikace by měla být považována za veřejného klienta:
+
+1. V části **Spravovat**vyberte **ověřování**.
+1. Vyberte **vyzkoušet nové prostředí** (Pokud je zobrazeno).
+1. V části **Upřesnit nastavení**povolte možnost **považovat aplikaci za veřejného klienta** (vyberte **Ano**).
+1. Vyberte **Save** (Uložit).
+
+Nyní udělte oprávnění k oboru rozhraní API, který jste dříve vystavili v registraci *IdentityExperienceFramework* :
+
+1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
+1. V části **konfigurovaná oprávnění**vyberte **Přidat oprávnění**.
+1. Vyberte kartu **Moje rozhraní API** a pak vyberte aplikaci **IdentityExperienceFramework** .
+1. V části **oprávnění**vyberte obor **user_impersonation** , který jste definovali dříve.
+1. Vyberte **Přidat oprávnění**. Jak je směrované, počkejte několik minut, než budete pokračovat k dalšímu kroku.
+1. Vyberte **udělit souhlas správce pro (název vašeho tenanta)** .
+1. Vyberte aktuálně přihlášený účet správce nebo se přihlaste pomocí účtu v Azure AD B2C tenantovi, kterému byla přiřazena alespoň role *správce cloudové aplikace* .
+1. Vyberte **Přijmout**.
+1. Vyberte **aktualizovat**a pak ověřte, že "uděleno pro..." zobrazí se pod položkou **stav** pro oba obory. Rozšíření oprávnění může trvat několik minut.
+
+* * *
 
 ## <a name="custom-policy-starter-pack"></a>Startovní sada vlastních zásad
 
@@ -122,15 +184,15 @@ Získejte vlastní úvodní sady zásad z GitHubu a pak aktualizujte soubory XML
 
 1. Ve všech souborech v adresáři **SocialAndLocalAccounts** nahraďte řetězec `yourtenant` názvem vašeho tenanta Azure AD B2C.
 
-    Například pokud je název vašeho tenanta B2C *contosotenant*, všechny instance `yourtenant.onmicrosoft.com` se stanou `contosotenant.onmicrosoft.com`.
+    Například pokud je název vašeho tenanta B2C *contosotenant*, budou `contosotenant.onmicrosoft.com`všechny instance `yourtenant.onmicrosoft.com`.
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>Přidání ID aplikace do vlastních zásad
 
 Přidejte ID aplikace do souboru rozšíření *TrustFrameworkExtensions. XML*.
 
-1. Otevřete `SocialAndLocalAccounts/` `<TechnicalProfile Id="login-NonInteractive">`a **vyhledejteelement.`TrustFrameworkExtensions.xml`**
-1. Nahraďte obě instance `IdentityExperienceFrameworkAppId` s ID aplikace aplikace IdentityExperienceFramework, kterou jste vytvořili dříve.
-1. Nahraďte obě instance `ProxyIdentityExperienceFrameworkAppId` s ID aplikace aplikace ProxyIdentityExperienceFramework, kterou jste vytvořili dříve.
+1. Otevřete `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** a vyhledejte prvek `<TechnicalProfile Id="login-NonInteractive">`.
+1. Pomocí ID aplikace IdentityExperienceFramework, kterou jste vytvořili dříve, nahraďte obě instance `IdentityExperienceFrameworkAppId`.
+1. Pomocí ID aplikace ProxyIdentityExperienceFramework, kterou jste vytvořili dříve, nahraďte obě instance `ProxyIdentityExperienceFrameworkAppId`.
 1. Uložte soubor.
 
 ## <a name="upload-the-policies"></a>Nahrajte zásady.
@@ -144,10 +206,10 @@ Přidejte ID aplikace do souboru rozšíření *TrustFrameworkExtensions. XML*.
     1. *ProfileEdit. XML*
     1. *PasswordReset. XML*
 
-Při nahrávání souborů Azure přidá předponu `B2C_1A_` do každého.
+Při nahrávání souborů přidá Azure do každého `B2C_1A_` předponu.
 
 > [!TIP]
-> Pokud editor XML podporuje ověřování, ověřte soubory oproti `TrustFrameworkPolicy_0.3.0.0.xsd` schématu XML, které se nachází v kořenovém adresáři úvodní sady. Ověřování schématu XML identifikuje chyby před odesláním.
+> Pokud editor XML podporuje ověřování, ověřte soubory proti `TrustFrameworkPolicy_0.3.0.0.xsd` schématu XML, které se nachází v kořenovém adresáři úvodní sady. Ověřování schématu XML identifikuje chyby před odesláním.
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
@@ -161,7 +223,7 @@ Při nahrávání souborů Azure přidá předponu `B2C_1A_` do každého.
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Přidat Facebook jako zprostředkovatele identity
 
-1. V souboru nahraďte hodnotu hodnotou `client_id` ID aplikace Facebook: **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts/`
+1. V souboru **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts/`nahraďte hodnotu `client_id` ID aplikace Facebook:
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">

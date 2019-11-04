@@ -9,16 +9,17 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 08/2/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 07c23d3b93c85e3409814ab0eb635a51344e2ab2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eac10c8c680caf834bbe4be18ca22a5af936c7a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929255"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497408"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Přístup k datům ve službě Azure Storage
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak snadno získat přístup k datům ve službě Azure Storage prostřednictvím Azure Machine Learning úložiště dat. Úložiště dat slouží k ukládání informací o připojení, jako je ID předplatného a autorizace tokenu. Pomocí úložiště dat získáte přístup k úložišti, aniž byste museli zakódovat informace o připojení ve svých skriptech. Z těchto [Řešení Azure Storage](#matrix)můžete vytvořit úložiště dat. Nepodporovaná řešení úložiště vám umožní ušetřit náklady na výstup dat během experimentů strojového učení. Doporučujeme přesunout data do našich podporovaných řešení Azure Storage. Přečtěte si, [Jak přesunout data](#move). 
 
@@ -35,7 +36,7 @@ Tento postup ukazuje příklady následujících úloh:
 
 - Účet služby Azure Storage s [kontejnerem objektů blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) nebo [sdílenou složkou Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
-- [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo přístup k [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com/).
+- [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
 - Pracovní prostor služby Azure Machine Learning. 
     - Buď [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) , nebo použijte existující s použitím sady Python SDK.
@@ -51,13 +52,13 @@ Tento postup ukazuje příklady následujících úloh:
 
 ## <a name="create-and-register-datastores"></a>Vytvoření a registrace úložišť dat
 
-Když zaregistrujete řešení úložiště Azure jako úložiště dat, vytvoříte toto úložiště automaticky v konkrétním pracovním prostoru. Můžete vytvořit a zaregistrovat úložiště dat v pracovním prostoru pomocí sady Python SDK nebo cílové stránky pracovního prostoru.
+Když zaregistrujete řešení úložiště Azure jako úložiště dat, vytvoříte toto úložiště automaticky v konkrétním pracovním prostoru. Můžete vytvořit a zaregistrovat úložiště dat v pracovním prostoru pomocí sady Python SDK nebo Azure Machine Learning studia.
 
 ### <a name="using-the-python-sdk"></a>Používání sady Python SDK
 
 Všechny metody registru jsou na třídě [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) a mají tvar register_azure_ *.
 
-Informace, které potřebujete k naplnění metody Register (), lze nalézt prostřednictvím [Azure Portal](https://ms.portal.azure.com). V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** poskytuje informace, jako je název účtu a kontejner nebo název sdílené složky. Pro informace o ověřování, jako je klíč účtu nebo token SAS, přejděte na **klíče účtu** v podokně **Nastavení** na levé straně. 
+Informace, které potřebujete k naplnění metody Register (), najdete prostřednictvím [Azure Machine Learning studia](https://ml.azure.com). V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** poskytuje informace, jako je název účtu a kontejner nebo název sdílené složky. Pro informace o ověřování, jako je klíč účtu nebo token SAS, přejděte na **klíče účtu** v podokně **Nastavení** na levé straně. 
 
 Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Azure nebo sdílenou složku Azure jako úložiště dat.
 
@@ -92,16 +93,16 @@ Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Az
 
 Doporučujeme kontejner Azure Blob. Úložiště úrovně Standard a Premium jsou k dispozici pro objekty blob. I když je výhodnější, doporučujeme Premium Storage z důvodu rychlejších přenosů propustnosti, které můžou zlepšit rychlost vašich školicích běhů, zejména pokud budete vlakem s velkou datovou sadou. Informace o nákladech na účet úložiště najdete v [cenové kalkulačkě Azure](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) .
 
-### <a name="using-the-workspace-landing-page"></a>Použití úvodní stránky pracovního prostoru 
+### <a name="using-azure-machine-learning-studio"></a>Používání Azure Machine Learning studia 
 
-V několika krocích na úvodní stránce pracovního prostoru vytvořte nové úložiště dat.
+V několika krocích v Azure Machine Learning Studiu vytvořte nové úložiště dat.
 
-1. Přihlaste se na [úvodní stránku pracovního prostoru](https://ml.azure.com/).
+1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 1. V levém podokně v části **Spravovat**vyberte **úložiště dat** .
 1. Vyberte **+ nové úložiště dat**.
 1. Dokončete formulář nového úložiště dat. Formulář se inteligentně aktualizuje na základě výběru typu úložiště Azure a typu ověřování.
   
-Informace, které potřebujete k naplnění formuláře, lze najít prostřednictvím [Azure Portal](https://ms.portal.azure.com). V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** poskytuje informace, jako je název účtu a kontejner nebo název sdílené složky. U položek ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** na levé straně na **klíče účtu** .
+Informace, které potřebujete k naplnění formuláře, najdete prostřednictvím [Azure Machine Learning studia](https://ml.azure.com). V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** poskytuje informace, jako je název účtu a kontejner nebo název sdílené složky. U položek ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** na levé straně na **klíče účtu** .
 
 Následující příklad ukazuje, co by formulář vypadal jako při vytváření úložiště dat objektů BLOB v Azure. 
     
@@ -281,10 +282,10 @@ V situacích, kdy sada SDK neposkytuje přístup k úložiště dat, může být
 <a name="move"></a>
 ## <a name="move-data-to-supported-azure-storage-solutions"></a>Přesun dat na podporovaná řešení Azure Storage
 
-Služba Azure Machine Learning podporuje přístup k datům z objektů blob Azure, souborů Azure, Azure Data Lake Gen 1, Azure Data Lake pro obecné 2, Azure SQL a Azure PostgreSQL. V případě nepodporovaného úložiště ušetříte náklady na výstup dat během experimentů strojového učení, doporučujeme přesunout data do našich podporovaných řešení Azure Storage pomocí Azure Data Factory. Azure Data Factory poskytuje efektivní a odolný přenos dat s více než 80 předem sestavenými konektory, včetně datových služeb Azure, místních zdrojů dat, Amazon S3 a RedShift a Google BigQuery – bez dalších poplatků. [Postupujte podle podrobných pokynů a přesuňte data pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
+Azure Machine Learning podporuje přístup k datům z objektů blob Azure, Azure File, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL a Azure PostgreSQL. V případě nepodporovaného úložiště ušetříte náklady na výstup dat během experimentů strojového učení, doporučujeme přesunout data do našich podporovaných řešení Azure Storage pomocí Azure Data Factory. Azure Data Factory poskytuje efektivní a odolný přenos dat s více než 80 předem sestavenými konektory, včetně datových služeb Azure, místních zdrojů dat, Amazon S3 a RedShift a Google BigQuery – bez dalších poplatků. [Postupujte podle podrobných pokynů a přesuňte data pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Výuka modelu](how-to-train-ml-models.md)
+* [Výuka modelu](how-to-train-ml-models.md).
 
-* [Nasazení modelu](how-to-deploy-and-where.md)
+* [Nasazení modelu](how-to-deploy-and-where.md).

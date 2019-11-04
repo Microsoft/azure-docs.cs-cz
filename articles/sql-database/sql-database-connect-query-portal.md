@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Dotazování Azure SQL Database pomocí Editoru dotazů | Microsoft Docs'
+title: 'Azure Portal: Dotazování služby Azure SQL Database s využitím editoru dotazů | Dokumentace Microsoftu'
 description: Zjistěte, jak se připojit k SQL Database na webu Azure Portal pomocí editoru dotazů SQL. Potom spustíte příkazy jazyka Transact-SQL (T-SQL) k dotazování a úpravě dat.
 keywords: connect to sql database,azure portal, portal, query editor
 services: sql-database
@@ -11,19 +11,19 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/28/2019
-ms.openlocfilehash: 3702c88d0a5cdc7aa1f854f71e3aee8a42d9c22c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/24/2019
+ms.openlocfilehash: 433f2a190cf24a7e59dcd1d5a5aba0d3aa4e8588
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569174"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492184"
 ---
-# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Rychlý start: Připojení a dotazování dat pomocí Editoru dotazů SQL Azure Portal
+# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Rychlý Start: použití Editoru dotazů SQL Azure Portal k připojení a dotazování dat
 
-Editor dotazů SQL je nástroj Prohlížeč Azure portal poskytuje snadný způsob, jak spouštět dotazy SQL v Azure SQL Database nebo Azure SQL Data Warehouse. V tomto rychlém startu použijete Editor dotazů pro připojení k databázi SQL a potom spustíte příkazy jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat.
+Editor dotazů SQL je Azure Portal Nástroj pro prohlížeč, který poskytuje snadný způsob, jak spouštět dotazy SQL na Azure SQL Database nebo Azure SQL Data Warehouse. V tomto rychlém startu použijete Editor dotazů pro připojení k databázi SQL a potom spustíte příkazy jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -31,7 +31,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
   || Izolovaná databáze |
   |:--- |:--- |
-  | Create| [Azure Portal](sql-database-single-database-get-started.md) |
+  | Vytváření| [Azure Portal](sql-database-single-database-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)|
@@ -40,51 +40,57 @@ Pro absolvování tohoto kurzu potřebujete:
 > [!NOTE]
 > Editor dotazů používá ke komunikaci porty 443 a 1443.  Ujistěte se prosím, že jste na těchto portech povolili odchozí přenosy HTTPS. Pro přístup k databázím a datovým skladům budete taky muset přidat odchozí IP adresu k povoleným pravidlům brány firewall serveru.
 
-## <a name="sign-in-the-azure-portal"></a>Přihlaste se na webu Azure portal
+## <a name="sign-in-the-azure-portal"></a>Přihlášení Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="connect-using-sql-authentication"></a>Připojení pomocí ověřování SQL
 
-1. Vyberte **databází SQL** z nabídky na levé straně a pak vyberte **mySampleDatabase**.
+1. Pokud se chcete připojit k databázi SQL, otevřete Azure Portal. Vyhledejte a vyberte **databáze SQL**.
 
-2. V nabídce vlevo najděte a vyberte **editor dotazů (preview)** . **Přihlášení** se zobrazí stránka.
+    ![Přejděte do seznamu SQL Database, Azure Portal](./media/sql-database-connect-query-portal/search-for-sql-databases.png)
+
+2. Vyberte svou databázi SQL.
+
+    ![Vyberte databázi SQL Azure Portal](./media/sql-database-connect-query-portal/select-a-sql-database.png)
+
+3. V nabídce **databáze SQL** vyberte **Editor dotazů (Preview)** .
 
     ![vyhledání editoru dotazů](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. Z **typ autorizace** rozevírací nabídky vyberte **ověřování serveru SQL Server** a zadejte ID uživatele a heslo účtu správce serveru, který se používá k vytvoření databáze.
+4. Na **přihlašovací** stránce v popisku **ověřování systému SQL Server** zadejte **přihlašovací** ID a **heslo** účtu správce serveru, který jste použili k vytvoření databáze. Pak vyberte **OK**.
 
-    ![Přihlášení](./media/sql-database-connect-query-portal/login-menu.png)
+    ![přihlášení](./media/sql-database-connect-query-portal/login-menu.png)
 
-4. Vyberte **OK**.
+## <a name="connect-using-azure-active-directory"></a>Připojit pomocí Azure Active Directory
 
-
-## <a name="connect-using-azure-active-directory"></a>Připojte se pomocí Azure Active Directory
-
-Konfigurace správce Active Directory (AD) umožňuje používat jednu identitu pro přihlášení k webu Azure portal a SQL database. Podle následujících pokynů ke konfiguraci správce AD pro SQL server.
+Konfigurace správce Azure Active Directory (Azure AD) umožňuje použít jedinou identitu pro přihlášení k Azure Portal a vaší databázi SQL. Použijte následující postup ke konfiguraci správce Azure AD pro SQL Server.
 
 > [!NOTE]
-> * Jako správci AD zatím nepodporují e-mailové účty (například outlook.com, gmail.com, yahoo.com a tak dále). Nezapomeňte vybrat uživatele vytvořené nativně v Azure AD nebo Federovaná do služby Azure AD.
-> * Přihlášení správce Azure AD nefunguje s účty, které mají 2-factor authentication povolena.
+> * E-mailové účty (například outlook.com, gmail.com, yahoo.com atd.) se zatím nepodporují jako správci služby Azure AD. Nezapomeňte zvolit uživatele vytvořeného nativně ve službě Azure AD nebo federovaného do Azure AD.
+> * Přihlášení správce Azure AD nefunguje s účty, které mají povolené 2-Factor Authentication.
 
-1. Vyberte **všechny prostředky** z nabídky na levé straně a pak vyberte váš server SQL.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **všechny prostředky**.
 
-2. V nabídce **Nastavení** serveru SQL vyberte možnost **Správce služby Active Directory**.
+2. Vyberte svůj SQL Server.
 
-3. Vyberte z panelu nástrojů stránky Správce AD **nastavit správce** a zvolte uživatele nebo skupiny jako správce AD.
+3. V nabídce **SQL Server** v části **Nastavení**vyberte **Správce služby Active Directory**.
+
+4. Na panelu nástrojů stránky **Správce služby Active Directory** SQL serveru vyberte **nastavit správce** a zvolte uživatele nebo skupinu jako správce Azure AD.
 
     ![Výběr Active Directory](./media/sql-database-connect-query-portal/select-active-directory.png)
 
-4. Vyberte z panelu nástrojů stránky Správce AD **Uložit**.
+5. Na stránce **přidat správce** zadejte do vyhledávacího pole uživatele nebo skupinu, které chcete najít, vyberte je jako správce a pak klikněte na tlačítko **Vybrat** .
 
-5. Přejděte **mySampleDatabase** databáze a v nabídce vlevo vyberte **editor dotazů (preview)** . **Přihlášení** se zobrazí stránka. Pokud jste správce služby AD, zobrazí se na pravé straně v části **jednotné přihlašování služby Active Directory**zpráva oznamující, že jste se přihlásili.
+6. Zpátky na panelu nástrojů stránky **Správce služby Active Directory** SQL serveru vyberte **Uložit**.
 
-6. Vyberte **OK**.
+7. V nabídce **SQL Server** vyberte **databáze SQL**a pak vyberte svou databázi SQL.
 
+8. V nabídce **databáze SQL** vyberte **Editor dotazů (Preview)** . Na **přihlašovací** stránce pod popiskem **ověřování služby Active Directory** se zobrazí zpráva oznamující, že jste přihlášení, pokud jste správcem Azure AD. Pak vyberte možnost **pokračovat jako** *\<ID uživatele nebo skupiny >* tlačítko.
 
 ## <a name="view-data"></a>Zobrazení dat
 
-1. Poté, co je ověřen, vložte následující příkaz SQL v editoru dotazů pro získání nejlepších 20 produktů podle kategorie.
+1. Po ověření vložte následující příkaz SQL do editoru dotazů, abyste načetli prvních 20 produktů podle kategorie.
 
    ```sql
     SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -93,18 +99,18 @@ Konfigurace správce Active Directory (AD) umožňuje používat jednu identitu 
     ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Na panelu nástrojů vyberte **spustit** a pak zkontrolujte výstup v **výsledky** podokně.
+2. Na panelu nástrojů vyberte **Spustit** a potom zkontrolujte výstup v podokně **výsledků** .
 
-![výsledky editoru dotazů](./media/sql-database-connect-query-portal/query-editor-results.png)
+   ![výsledky editoru dotazů](./media/sql-database-connect-query-portal/query-editor-results.png)
 
 ## <a name="insert-data"></a>Vložení dat
 
-Chcete-li přidat nový produkt v `SalesLT.Product` tabulce, spusťte následující příkaz jazyka Transact-SQL. [](https://msdn.microsoft.com/library/ms174335.aspx)
+Chcete-li přidat nový produkt v tabulce `SalesLT.Product`, [Spusťte následující příkaz](https://msdn.microsoft.com/library/ms174335.aspx) jazyka Transact-SQL.
 
-1. Nahraďte předchozí dotaz s touto položkou.
+1. Nahraďte předchozí dotaz tímto.
 
-   ```sql
-   INSERT INTO [SalesLT].[Product]
+    ```sql
+    INSERT INTO [SalesLT].[Product]
            ( [Name]
            , [ProductNumber]
            , [Color]
@@ -113,7 +119,7 @@ Chcete-li přidat nový produkt v `SalesLT.Product` tabulce, spusťte následuj�
            , [ListPrice]
            , [SellStartDate]
            )
-     VALUES
+    VALUES
            ('myNewProduct'
            ,123456789
            ,'NewColor'
@@ -124,14 +130,14 @@ Chcete-li přidat nový produkt v `SalesLT.Product` tabulce, spusťte následuj�
    ```
 
 
-2. Vyberte možnost **Spustit** pro vložení nového řádku do `Product` tabulky. V podokně **zprávy** se **zobrazí dotaz úspěšně: Ovlivněné řádky: 1**.
+2. Vyberte možnost **Spustit** pro vložení nového řádku do tabulky `Product`. V podokně **zprávy** se zobrazí **dotaz uspěl: ovlivněné řádky: 1**.
 
 
 ## <a name="update-data"></a>Aktualizace dat
 
 Spusťte následující příkaz Transact-SQL [Update](https://msdn.microsoft.com/library/ms177523.aspx) pro úpravu nového produktu.
 
-1. Nahraďte předchozí dotaz s touto položkou.
+1. Nahraďte předchozí dotaz tímto.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -139,39 +145,39 @@ Spusťte následující příkaz Transact-SQL [Update](https://msdn.microsoft.co
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte možnost **Spustit** a aktualizujte zadaný řádek v `Product` tabulce. V podokně **zprávy** se **zobrazí dotaz úspěšně: Ovlivněné řádky: 1**.
+2. Vyberte možnost **Spustit** a aktualizujte zadaný řádek v `Product` tabulce. V podokně **zprávy** se zobrazí **dotaz uspěl: ovlivněné řádky: 1**.
 
 ## <a name="delete-data"></a>Odstranění dat
 
 Pokud chcete nový produkt odebrat, spusťte následující příkaz Transact-SQL [Delete](https://msdn.microsoft.com/library/ms189835.aspx) .
 
-1. Nahraďte předchozí dotaz s touto položkou:
+1. Nahraďte předchozí dotaz jedním z těchto:
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte možnost **Spustit** a odstraňte zadaný řádek v `Product` tabulce. V podokně **zprávy** se **zobrazí dotaz úspěšně: Ovlivněné řádky: 1**.
+2. Vyberte možnost **Spustit** a odstraňte zadaný řádek v `Product` tabulce. V podokně **zprávy** se zobrazí **dotaz uspěl: ovlivněné řádky: 1**.
 
 
-## <a name="query-editor-considerations"></a>Požadavky editoru dotazů
+## <a name="query-editor-considerations"></a>Otázky editoru dotazů
 
-Existuje několik věcí, které při práci s editorem dotazů.
+Při práci s editorem dotazů se dozvíte několik věcí.
 
 * Editor dotazů používá ke komunikaci porty 443 a 1443.  Ujistěte se prosím, že jste na těchto portech povolili odchozí přenosy HTTPS. Pro přístup k databázím a datovým skladům budete taky muset přidat odchozí IP adresu k povoleným pravidlům brány firewall serveru.
 
-* Stisknutím klávesy F5 aktualizuje stránku editoru dotazů a dojde ke ztrátě všech dotazů se pracuje.
+* Stisknutím F5 aktualizujete stránku editoru dotazů a přijdete o všechny dotazy, které jsou právě zpracovávány.
 
 * Editor dotazů nepodporuje připojení k `master` databázi.
 
-* Časový limit 5 minut pro provádění dotazů není k dispozici.
+* Pro provádění dotazů existuje časový limit 5 minut.
 
-* Editor dotazů podporuje pouze válcové geografických datových typů.
+* Editor dotazů podporuje pouze válcovou projekci pro geografické datové typy.
 
-* Není dostupná podpora technologie IntelliSense pro databázové tabulky a zobrazení. Editor ale podporuje automatické dokončování v názvy, které jste už zadali.
+* Pro databázové tabulky a zobrazení není k dispozici žádná podpora technologie IntelliSense. Editor však podporuje automatické dokončování u názvů, které již byly zadány.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o jazyku Transact-SQL podporované v Azure SQL Database najdete v tématu [rozdíly řešení příkazů jazyka Transact-SQL během migrace do služby SQL Database](sql-database-transact-sql-information.md).
+Další informace o podporovaných jazycích Transact-SQL v databázích SQL Azure najdete v tématu [řešení rozdílů v jazyce Transact-SQL během migrace na SQL Database](sql-database-transact-sql-information.md).

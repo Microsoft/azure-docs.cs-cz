@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ecec4d0701f6f55385937f872151a373b2f62e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ea174de04d0e75bc996c6f692edd474a9396346a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808105"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474272"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -219,7 +219,7 @@ Alternativním řešením této chyby je, aby byly samostatné uživatelské ú�
 
 Pokud tady na váš dotaz neodpovíte, ponechte ho prosím v komentářích v dolní části stránky. Nebo tady jsou některé další možnosti, jak získat nápovědu:
 
-* Vyhledejte v [Podpora Microsoftu znalostní bázi](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) řešení běžných technických problémů.
+* Vyhledejte v [Podpora Microsoftu znalostní bázi](https://www.microsoft.com/en-us/search?form=mssupport&q=phonefactor&rtc=1) řešení běžných technických problémů.
 * Vyhledejte a procházejte technické dotazy a odpovědi z komunity nebo položte svoji vlastní otázku ve [fórech Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 * Pokud jste PhoneFactor starší verze zákazníka a máte nějaké dotazy nebo potřebujete pomoc s obnovením hesla, použijte odkaz pro [resetování hesla](mailto:phonefactorsupport@microsoft.com) a otevřete případ podpory.
 * Obraťte se na podporu odborníka na podporu [Azure Multi-Factor Authentication Server (PhoneFactor)](https://support.microsoft.com/oas/default.aspx?prid=14947). Při kontaktování nás je užitečné, pokud můžete zahrnout co nejvíce informací o vašem problému. Informace, které můžete dodat, zahrnují stránku, kde jste viděli chybu, konkrétní kód chyby, konkrétní ID relace a ID uživatele, který chybu viděl.

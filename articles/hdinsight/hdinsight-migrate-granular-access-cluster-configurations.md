@@ -1,5 +1,5 @@
 ---
-title: Migrace na podrobný přístup založený na rolích – konfigurace clusteru Azure HDInsight
+title: Podrobné přístupy ke konfiguraci clusteru Azure HDInsight na základě rolí
 description: Přečtěte si o změnách vyžadovaných v rámci migrace až na podrobný přístup založený na rolích pro konfigurace clusteru HDInsight.
 author: tylerfox
 ms.author: tyfox
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 9eb77b3e4066712aecebee4660d50baf45957cb8
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: ea8e1565a5ebe4e5cb40049fbfcb329feb83bdda
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733238"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498208"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -20,18 +20,18 @@ Zavádíme některé důležité změny pro podporu přístupu k citlivým infor
 
 ## <a name="what-is-changing"></a>Co se mění?
 
-Dříve mohli tajné klíče získat prostřednictvím rozhraní API HDInsight uživatelů clusteru, kteří mají [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)vlastník, přispěvatel nebo čtenář, protože byly k dispozici pro kohokoli s `*/read` oprávněním. Tajné kódy se definují jako hodnoty, které by se daly použít k získání vyšší úrovně přístupu, než jakou má uživatel role. Mezi ně patří hodnoty jako například přihlašovací údaje protokolu HTTP brány clusteru, klíče účtu úložiště a přihlašovací údaje databáze.
+Dříve mohli tajné klíče získat prostřednictvím rozhraní API HDInsight uživatelů clusteru, kteří mají [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)vlastník, přispěvatel nebo čtenář, protože byly k dispozici pro kohokoli s oprávněním `*/read`. Tajné kódy se definují jako hodnoty, které by se daly použít k získání vyšší úrovně přístupu, než jakou má uživatel role. Mezi ně patří hodnoty jako například přihlašovací údaje protokolu HTTP brány clusteru, klíče účtu úložiště a přihlašovací údaje databáze.
 
-Od 3. září 2019 budou přístup k těmto tajným klíčům `Microsoft.HDInsight/clusters/configurations/action` vyžadovat oprávnění, což znamená, že je uživatelé s rolí čtenář již nebudou mít přístup. Role, které mají toto oprávnění, jsou přispěvatel, vlastník a nová role operátora clusteru HDInsight (Další informace najdete níže).
+Od 3. září 2019 budou přístup k těmto tajným klíčům vyžadovat oprávnění `Microsoft.HDInsight/clusters/configurations/action`, což znamená, že uživatelé s rolí čtenáře již nebudou mít přístup. Role, které mají toto oprávnění, jsou přispěvatel, vlastník a nová role operátora clusteru HDInsight (Další informace najdete níže).
 
 Zavádíme taky novou roli [operátora clusteru HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) , která bude moct načíst tajné kódy bez udělení oprávnění pro správu přispěvatele nebo vlastníka. Sumarizace:
 
 | Role                                  | Měsíci                                                                                       | Po přechodu dál       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Čtenář                                | – Přístup pro čtení, včetně tajných klíčů                                                                   | – Přístup pro čtení, **s výjimkou** tajných klíčů |           |   |   |
-| Operátor clusteru HDInsight<br>(Nová role) | Není k dispozici                                                                                              | – Přístup pro čtení a zápis, včetně tajných klíčů         |   |   |
-| Přispěvatel                           | – Přístup pro čtení a zápis, včetně tajných klíčů<br>– Vytvářejte a spravujte všechny typy prostředků Azure.     | Žádné změny |
-| Owner                                 | – Přístup pro čtení a zápis včetně tajných klíčů<br>– Úplný přístup ke všem prostředkům<br>– Delegovat přístup jiným uživatelům | Žádné změny |
+| Operátor clusteru HDInsight<br>(Nová role) | Nevztahuje se                                                                                              | – Přístup pro čtení a zápis, včetně tajných klíčů         |   |   |
+| Přispěvatel                           | – Přístup pro čtení a zápis, včetně tajných klíčů<br>– Vytvářejte a spravujte všechny typy prostředků Azure.     | Beze změny |
+| Vlastník                                 | – Přístup pro čtení a zápis včetně tajných klíčů<br>– Úplný přístup ke všem prostředkům<br>– Delegovat přístup jiným uživatelům | Beze změny |
 
 Informace o tom, jak přidat přiřazení role operátora clusteru HDInsight uživateli, aby jim udělil přístup pro čtení a zápis k tajným klíčům clusteru, najdete v níže uvedené části [Přidání přiřazení role operátora clusteru HDInsight uživateli](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user).
 
@@ -39,31 +39,31 @@ Informace o tom, jak přidat přiřazení role operátora clusteru HDInsight už
 
 Ovlivněny jsou následující entity a scénáře:
 
-- [ROZHRANÍ API](#api): Uživatelé používají `/configurations` koncové body `/configurations/{configurationName}` nebo.
+- [Rozhraní API](#api): uživatelé používají koncové body `/configurations` nebo `/configurations/{configurationName}`.
 - [Nástroje Azure HDInsight pro Visual Studio Code](#azure-hdinsight-tools-for-visual-studio-code) verze 1.1.1 nebo nižší.
 - [Azure Toolkit for IntelliJ](#azure-toolkit-for-intellij) verze 3.20.0 nebo nižší.
 - [Azure Data Lake a Stream Analytics Tools for Visual Studio, které](#azure-data-lake-and-stream-analytics-tools-for-visual-studio) následují 2.3.9000.1 verze.
 - [Azure Toolkit for Eclipse](#azure-toolkit-for-eclipse) verze 3.15.0 nebo nižší.
 - [Sada SDK pro .NET](#sdk-for-net)
-    - [verze 1. x nebo 2. x](#versions-1x-and-2x): Uživatelé `GetClusterConfigurations`používají metody, `GetConnectivitySettings`, `ConfigureHttpSettings`, `EnableHttp` nebo ztřídyConfigurationsOperationsExtensions.`DisableHttp`
-    - [verze 3. x a vyšší](#versions-3x-and-up): `Get`Uživatelé používají metody, `Update`, `EnableHttp`, nebo `DisableHttp` z `ConfigurationsOperationsExtensions` třídy.
-- [Sada SDK pro Python](#sdk-for-python): Uživatelé používají `get` metody nebo `update` z `ConfigurationsOperations` třídy.
-- [Sada SDK pro jazyk Java](#sdk-for-java): Uživatelé používají `update` metody nebo `get` z `ConfigurationsInner` třídy.
-- [Sada SDK pro přejít](#sdk-for-go): Uživatelé používají `Get` metody nebo `Update` z `ConfigurationsClient` struktury.
+    - [verze 1. x nebo 2. x](#versions-1x-and-2x): uživatelé používají metody `GetClusterConfigurations`, `GetConnectivitySettings`, `ConfigureHttpSettings`, `EnableHttp` nebo `DisableHttp` ze třídy ConfigurationsOperationsExtensions.
+    - [verze 3. x a vyšší](#versions-3x-and-up): uživatelé používající `Get`, `Update`, `EnableHttp`nebo `DisableHttp` metody z třídy `ConfigurationsOperationsExtensions`.
+- [Sada SDK pro Python](#sdk-for-python): uživatelé používající `get` nebo `update` metody z třídy `ConfigurationsOperations`.
+- [Sada SDK pro jazyk Java](#sdk-for-java): uživatelé používající `update` nebo `get` metody z třídy `ConfigurationsInner`.
+- [Sada SDK for přejít](#sdk-for-go): uživatelé používají metody `Get` nebo `Update` z struktury `ConfigurationsClient`.
 - [AZ. HDInsight PowerShell](#azhdinsight-powershell) pod 2.0.0 verze
 Kroky při migraci pro váš scénář najdete v následujících částech (nebo použijte odkazy uvedené výš).
 
-### <a name="api"></a>rozhraní API
+### <a name="api"></a>API
 
 Následující rozhraní API se změní nebo zastaralé:
 
 - [**Získat/Configurations/{ConfigurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (odstraněné citlivé informace)
     - Dřív se použila k získání individuálních typů konfigurace (včetně tajných klíčů).
     - Od 3. září 2019 toto volání rozhraní API nyní vrátí jednotlivé typy konfigurace s tajnými klíči vynechány. Chcete-li získat všechny konfigurace, včetně tajných klíčů, použijte nové volání POST/configurations. Chcete-li získat pouze nastavení brány, použijte nové volání POST/getGatewaySettings.
-- [**Získat/Configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) zastaralé
+- [**Získat/Configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (zastaralé)
     - Dřív se použilo k získání všech konfigurací (včetně tajných klíčů).
     - Od 3. září 2019 bude toto volání rozhraní API zastaralé a už se nepodporuje. Chcete-li získat všechny konfigurace před tím, použijte nové volání POST/configurations. Chcete-li získat konfigurace s citlivými parametry, použijte volání metody GET/configurations/{configurationName}.
-- [**Příspěvek/Configurations/{ConfigurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) zastaralé
+- [**Post/Configurations/{ConfigurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (zastaralé)
     - Dřív se použila k aktualizaci přihlašovacích údajů brány.
     - Od 3. září 2019 bude toto volání rozhraní API zastaralé a už se nepodporuje. Místo toho použijte nový příspěvek/updateGatewaySettings.
 
@@ -98,60 +98,60 @@ Pokud používáte verzi 3.15.0 nebo nižší, aktualizujte na [nejnovější ve
 
 Aktualizace [verze 2.1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/2.1.0) sady HDInsight SDK pro .NET Pokud používáte metodu ovlivněnou těmito změnami, může být nutné provést minimální změny kódu:
 
-- `ClusterOperationsExtensions.GetClusterConfigurations`**už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
-    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů `ClusterOperationsExtensions.ListConfigurations` , použijte příkaz pokračovat dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru.
-    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP `ClusterOperationsExtensions.GetGatewaySettings`, použijte.
+- `ClusterOperationsExtensions.GetClusterConfigurations` **už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
+    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů, použijte `ClusterOperationsExtensions.ListConfigurations` až dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru.
+    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP, použijte `ClusterOperationsExtensions.GetGatewaySettings`.
 
-- `ClusterOperationsExtensions.GetConnectivitySettings`je nyní zastaralý a byl nahrazen `ClusterOperationsExtensions.GetGatewaySettings`.
+- `ClusterOperationsExtensions.GetConnectivitySettings` je nyní zastaralé a bylo nahrazeno `ClusterOperationsExtensions.GetGatewaySettings`.
 
-- `ClusterOperationsExtensions.ConfigureHttpSettings`je nyní zastaralý a byl nahrazen `ClusterOperationsExtensions.UpdateGatewaySettings`.
+- `ClusterOperationsExtensions.ConfigureHttpSettings` je nyní zastaralé a bylo nahrazeno `ClusterOperationsExtensions.UpdateGatewaySettings`.
 
-- `ConfigurationsOperationsExtensions.EnableHttp`a `DisableHttp` jsou nyní zastaralé. Protokol HTTP je nyní vždy povolen, takže tyto metody již nejsou potřeba.
+- `ConfigurationsOperationsExtensions.EnableHttp` a `DisableHttp` jsou nyní zastaralé. Protokol HTTP je nyní vždy povolen, takže tyto metody již nejsou potřeba.
 
 #### <a name="versions-3x-and-up"></a>Verze 3. x a vyšší
 
 Aktualizujte na [verzi 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) nebo novější v sadě HDInsight SDK pro .NET. Pokud používáte metodu ovlivněnou těmito změnami, může být nutné provést minimální změny kódu:
 
-- [`ConfigurationOperationsExtensions.Get`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet)**už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
-    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů [`ConfigurationOperationsExtensions.List`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet) , použijte příkaz pokračovat dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
-    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP [`ClusterOperationsExtensions.GetGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet), použijte. 
-- [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet)je nyní zastaralý a byl nahrazen [`ClusterOperationsExtensions.UpdateGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet). 
-- [`ConfigurationsOperationsExtensions.EnableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet)a [`DisableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet) jsou nyní zastaralé. Protokol HTTP je nyní vždy povolen, takže tyto metody již nejsou potřeba.
+- [`ConfigurationOperationsExtensions.Get`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet) **už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
+    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů, použijte [`ConfigurationOperationsExtensions.List`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet) až dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
+    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP, použijte [`ClusterOperationsExtensions.GetGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet). 
+- [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet) je nyní zastaralé a bylo nahrazeno [`ClusterOperationsExtensions.UpdateGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet). 
+- [`ConfigurationsOperationsExtensions.EnableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet) a [`DisableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet) jsou nyní zastaralé. Protokol HTTP je nyní vždy povolen, takže tyto metody již nejsou potřeba.
 
 ### <a name="sdk-for-python"></a>SDK pro Python
 
 Aktualizujte na [verzi 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) nebo novější v sadě HDInsight SDK pro Python. Pokud používáte metodu ovlivněnou těmito změnami, může být nutné provést minimální změny kódu:
 
-- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-)**už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
-    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) , použijte příkaz pokračovat dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
-    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP [`ClusterOperations.get_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-), použijte.
-- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-)je nyní zastaralý a byl nahrazen [`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-).
+- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) **už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
+    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů, použijte [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) až dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
+    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP, použijte [`ClusterOperations.get_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-).
+- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) je nyní zastaralé a bylo nahrazeno [`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-).
 
 ### <a name="sdk-for-java"></a>Sada SDK pro jazyk Java
 
 Aktualizujte na [verzi 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) nebo novější v sadě HDInsight SDK pro jazyk Java. Pokud používáte metodu ovlivněnou těmito změnami, může být nutné provést minimální změny kódu:
 
-- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get)**už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
-    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) , použijte příkaz pokračovat dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
-    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP [`ClustersInner.getGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable), použijte.
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update)je nyní zastaralý a byl nahrazen [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable).
+- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) **už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
+    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů, použijte [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) až dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
+    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP, použijte [`ClustersInner.getGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable).
+- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) je nyní zastaralé a bylo nahrazeno [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable).
 
 ### <a name="sdk-for-go"></a>Sada SDK pro přejít
 
 Aktualizujte na [verzi 27.1.0](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight) nebo novější v sadě HDInsight SDK pro přejít. Pokud používáte metodu ovlivněnou těmito změnami, může být nutné provést minimální změny kódu:
 
-- [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Get)**už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
-    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů [`ConfigurationsClient.list`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.List) , použijte příkaz pokračovat dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
-    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP [`ClustersClient.get_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.GetGatewaySettings), použijte.
-- [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Update)je nyní zastaralý a byl nahrazen [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings).
+- [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Get) **už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
+    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů, použijte [`ConfigurationsClient.list`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.List) až dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
+    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP, použijte [`ClustersClient.get_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.GetGatewaySettings).
+- [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Update) je nyní zastaralé a bylo nahrazeno [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings).
 
 ### <a name="azhdinsight-powershell"></a>AZ. HDInsight PowerShell
 Aktualizujte [rutinu AZ PowerShell verze 2.0.0](https://www.powershellgallery.com/packages/Az) nebo novější, abyste se vyhnuli přerušení.  Pokud používáte metodu ovlivněnou těmito změnami, může být nutné provést minimální změny kódu.
-- `Grant-AzHDInsightHttpServicesAccess`je nyní zastaralá a byla nahrazena novou `Set-AzHDInsightGatewayCredential` rutinou.
-- `Get-AzHDInsightJobOutput`byla aktualizována pro podporu podrobného přístupu založeného na rolích k klíči úložiště.
+- `Grant-AzHDInsightHttpServicesAccess` je teď zastaralá a nahradila se novou rutinou `Set-AzHDInsightGatewayCredential`.
+- `Get-AzHDInsightJobOutput` byla aktualizována pro podporu podrobného přístupu založeného na rolích k klíči úložiště.
     - Uživatelů s rolemi Vlastník, Přispěvatel a Operátor clusteru HDInsight se tato změna nedotkne.
-    - Jenom uživatelé, kteří mají roli Čtenář, budou muset `DefaultStorageAccountKey` parametr explicitně zadat.
-- `Revoke-AzHDInsightHttpServicesAccess`je nyní zastaralé. Protokol HTTP je teď vždycky povolený, takže tato rutina už není potřeba.
+    - Uživatelé, kteří mají jenom roli Čtenář, budou muset explicitně zadat parametr `DefaultStorageAccountKey`.
+- `Revoke-AzHDInsightHttpServicesAccess` je nyní zastaralé. Protokol HTTP je teď vždycky povolený, takže tato rutina už není potřeba.
  Viz [AZ. ](https://github.com/Azure/azure-powershell/blob/master/documentation/migration-guides/Az.2.0.0-migration-guide.md#azhdinsight)Další podrobnosti najdete v příručce k migraci HDInsight.
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Přidání přiřazení role operátora clusteru HDInsight uživateli
@@ -160,10 +160,10 @@ Uživatel s rolí [vlastníka](https://docs.microsoft.com/azure/role-based-acces
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
 
-Nejjednodušší způsob, jak přidat toto přiřazení role, je použití `az role assignment create` příkazu v Azure CLI.
+Nejjednodušší způsob, jak přidat toto přiřazení role, je použití příkazu `az role assignment create` v Azure CLI.
 
 > [!NOTE]
-> Tento příkaz musí spustit uživatel s rolí vlastníka, protože mu můžou udělit tato oprávnění. `--assignee` Je název objektu služby nebo e-mailové adresy uživatele, kterému chcete přiřadit roli operátora clusteru HDInsight. Pokud se zobrazí chyba nedostatečná oprávnění, přečtěte si níže uvedené Nejčastější dotazy.
+> Tento příkaz musí spustit uživatel s rolí vlastníka, protože mu můžou udělit tato oprávnění. `--assignee` je název instančního objektu nebo e-mailové adresy uživatele, kterému chcete přiřadit roli operátora clusteru HDInsight. Pokud se zobrazí chyba nedostatečná oprávnění, přečtěte si níže uvedené Nejčastější dotazy.
 
 #### <a name="grant-role-at-the-resource-cluster-level"></a>Udělení role na úrovni prostředku (clusteru)
 
@@ -187,7 +187,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 Alternativně můžete použít Azure Portal k přidání přiřazení role operátora clusteru HDInsight uživateli. Projděte si dokumentaci, [spravujte přístup k prostředkům Azure pomocí RBAC a Azure Portal – přidejte přiřazení role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>Proč se mi zobrazuje odpověď 403 (zakázaná) po aktualizaci požadavků rozhraní API a/nebo nástroje?
 
@@ -195,13 +195,13 @@ Konfigurace clusteru jsou nyní za detailní řízení přístupu založené na 
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Proč se zobrazuje "nedostatečná oprávnění k dokončení operace" při spuštění příkazu rozhraní příkazového řádku Azure pro přiřazení role operátora clusteru HDInsight jinému uživateli nebo instančnímu objektu?
 
-Uživatel nebo instanční objekt, který spouští příkaz, musí kromě role vlastníka mít k dispozici dostatečná oprávnění pro službu AAD, aby mohli vyhledat ID objektu pověřeného nabyvatele. Tato zpráva indikuje nedostatečné oprávnění AAD. Zkuste nahradit `-–assignee` `–assignee-object-id` argument parametrem a místo názvu (nebo ID objektu zabezpečení v případě spravované identity) zadejte ID objektu zmocnění. Další informace najdete v části nepovinných parametrů v [dokumentaci AZ role Assignment Create](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) .
+Uživatel nebo instanční objekt, který spouští příkaz, musí kromě role vlastníka mít k dispozici dostatečná oprávnění pro službu AAD, aby mohli vyhledat ID objektu pověřeného nabyvatele. Tato zpráva indikuje nedostatečné oprávnění AAD. Zkuste nahradit argument `-–assignee` parametrem `–assignee-object-id` a místo názvu (nebo ID objektu zabezpečení v případě spravované identity) zadejte ID objektu zmocnění. Další informace najdete v části nepovinných parametrů v [dokumentaci AZ role Assignment Create](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) .
 
 Pokud to pořád nefunguje, požádejte správce AAD, aby získal správná oprávnění.
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Co se stane, když neprovedem žádnou akci?
 
-Od 3. září 2019 `GET /configurations` a `POST /configurations/gateway` volání již nebudou `GET /configurations/{configurationName}` vracet žádné informace a volání již nebude vracet citlivé parametry, jako jsou klíče účtu úložiště nebo heslo clusteru. Totéž platí pro odpovídající metody SDK a rutiny PowerShellu.
+Od 3. září 2019 `GET /configurations` a volání `POST /configurations/gateway` již nebudou vracet žádné informace a volání `GET /configurations/{configurationName}` již nebude vracet citlivé parametry, jako jsou klíče účtu úložiště nebo heslo clusteru. Totéž platí pro odpovídající metody SDK a rutiny PowerShellu.
 
 Pokud používáte starší verzi některého z nástrojů pro sadu Visual Studio, VSCode, IntelliJ nebo zatmění uvedenou výše, nebudou již nadále fungovat, dokud ji neaktualizujete.
 

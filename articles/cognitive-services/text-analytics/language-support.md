@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 846650fce6701bb7e382df049902f427390b3051
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 529568cf4f667e72b0b4fb7ba83d0b85c4a90341
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931210"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499992"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Podpora jazyků a oblastí pro rozhraní API pro analýzu textu
 
@@ -31,7 +31,7 @@ Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete zk
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analýza mínění, Extrakce klíčových frází a rozpoznávání pojmenovaných entit
 
-V případě analýzy mínění, extrakce klíčových frází a rozpoznávání entit je seznam podporovaných jazyků pokročilejší, protože analyzátory jsou upřesněny tak, aby vyhovovaly jazykovým pravidlům dalších jazyků. Podpora pro úplnou sadu [typů entit](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition) je aktuálně omezená na následující jazyky: 
+V případě analýzy mínění, extrakce klíčových frází a rozpoznávání entit je seznam podporovaných jazyků pokročilejší, protože analyzátory jsou upřesněny tak, aby vyhovovaly jazykovým pravidlům dalších jazyků. V případě rozpoznávání pojmenovaných entit v2 je podpora pro úplnou sadu [typů entit](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2) aktuálně omezena na následující jazyky: 
 * Angličtina
 * Čínština (zjednodušená)
 * Francouzština
@@ -44,37 +44,38 @@ Pro ostatní jazyky jsou vraceny pouze `Person`, `Location` a `Organization` poj
 
 Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na stavu (GA), nezávisle na sobě navzájem a na celkové dostupnosti služby Analýza textu. Je možné, že jazyky zůstanou ve verzi Preview, i když rozhraní API pro analýzu textu přechody na všeobecně dostupné.
 
-| Jazyk    | Kód jazyka | Zabarvení | Klíčové fráze | Rozpoznávání pojmenovaných entit |   Poznámky  |
-|:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
-| arabština      | `ar`          |           |             | ✔ \*                     | |
-| Čeština       | `cs`          |           |             | ✔ \*                     | |
-| Čínština (zjednodušená) | `zh-hans`| ✔ \***     |             | ✔         |    |
-| Čínština (tradiční) | `zh-hant`| ✔ \***     |             |          |    |
-| dánština      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
-| Holandština       | `nl`          | ✔ \***     | ✔          |  ✔ \*           |     |
-| Angličtina     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
-| Finština     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Francouzština      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
-| Němčina      | `de`          | ✔ \***     | ✔           |  ✔           |     |
-| Řečtina       | `el`          | ✔ \*     |             |            |     |
-| Maďarština   | `hu`          |           |             |  ✔ \*          |     | 
-| italština     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
-| Japonština    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
-| Korejština      | `ko`          |          | ✔           |  ✔ \*          |     |
-| Norština (Bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
-| polština      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
-| Portugalština (Portugalsko) | `pt-PT`| ✔ \***        |  ✔          | ✔ \*      |`pt` také přijaty|
-| Portugalština (Brazílie)   | `pt-BR`|          |  ✔   |  ✔ \*       |     |
-| ruština     | `ru`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Španělština     | `es`          | ✔ \***       | ✔           |   ✔ \*\*      |     | 
-| švédština     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
-| turečtina     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
+> [!NOTE]
+> Podrobnou jazykovou podporu pro funkci rozpoznávání pojmenovaných entit (NER) v3 Public Preview najdete v tématu [typy pojmenovaných entit](named-entity-types.md).
+
+| Jazyk              | Kód jazyka | Zabarvení | Klíčové fráze | Rozpoznávání pojmenovaných entit | Propojení entit |       Poznámky        |
+|:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
+| arabština                |     `ar`      |           |             |           ✔ \*           |                |                    |
+| Čeština                 |     `cs`      |           |             |           ✔ \*           |                |                    |
+| Čínština (zjednodušená)    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Čínština (tradiční)   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
+| dánština                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Holandština                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Angličtina               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
+| Finština               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Francouzština                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
+| Němčina                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
+| Řečtina                 |     `el`      |   ✔ \*    |             |                          |                |                    |
+| Maďarština             |     `hu`      |           |             |           ✔ \*           |                |                    |
+| italština               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Japonština              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Korejština                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
+| Norština (Bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| polština                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Portugalština (Portugalsko) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` také přijaty |
+| Portugalština (Brazílie)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
+| ruština               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Španělština               |     `es`      |   ✔\**    |      ✔      |           ✔ \*           |     ✔ \**      |                    |
+| švédština               |     `sv`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| turečtina               |     `tr`      |   ✔ \*    |             |           ✔ \*           |                |                    |
 
 Podpora jazyka \* je ve verzi Preview.
 
-pro tento jazyk jsou k dispozici aplikace \*\* [rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) a [propojení entit](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) .  
-
-\** * k dispozici v [Analýza mínění V3 Public Preview](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview)
+\** k dispozici také v [Analýza mínění V3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) a/nebo ve verzi Public Preview pro [rozpoznávání entit V3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) .
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

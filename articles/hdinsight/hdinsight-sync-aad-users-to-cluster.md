@@ -1,5 +1,5 @@
 ---
-title: Synchronizace Azure Active Directory uživatelů do clusteru – Azure HDInsight
+title: Synchronizace Azure Active Directory uživatelů s clusterem HDInsight
 description: Synchronizace ověřených uživatelů z Azure Active Directory do clusteru HDInsight.
 ms.service: hdinsight
 author: ashishthaps
@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9767bccc754d5ccf8c0e7cbb66c8e9c3d5eaf7d0
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: b6252e99e69f849e2e988819f38dcccc5a7a73e0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105366"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498158"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizace uživatelů Azure Active Directory do clusteru HDInsight
 
 [Clustery HDInsight s balíček zabezpečení podniku (ESP)](hdinsight-domain-joined-introduction.md) můžou používat silné ověřování s uživateli služby Azure Active Directory (Azure AD) a také používat zásady *řízení přístupu na základě rolí* (RBAC). Při přidávání uživatelů a skupin do služby Azure AD můžete synchronizovat uživatele, kteří potřebují přístup ke clusteru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud jste to ještě neudělali, [vytvořte cluster HDInsight s balíček zabezpečení podniku](hdinsight-domain-joined-configure.md).
 
@@ -33,11 +33,11 @@ Chcete-li zobrazit hostitele, otevřete webové uživatelské rozhraní Ambari. 
 
     ![Azure Portal uživatelů a skupin](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
-3. Dokončete formulář nového uživatele. Vyberte skupiny, které jste vytvořili pro přiřazení oprávnění na základě clusteru. V tomto příkladu vytvořte skupinu s názvem "HiveUsers", do které můžete přiřadit nové uživatele. [Příklady pokynů](hdinsight-domain-joined-configure.md) pro vytvoření clusteru ESP zahrnují přidání dvou skupin `HiveUsers` a. `AAD DC Administrators`
+3. Dokončete formulář nového uživatele. Vyberte skupiny, které jste vytvořili pro přiřazení oprávnění na základě clusteru. V tomto příkladu vytvořte skupinu s názvem "HiveUsers", do které můžete přiřadit nové uživatele. [Příklady instrukcí](hdinsight-domain-joined-configure.md) pro vytvoření clusteru ESP zahrnují přidání dvou skupin `HiveUsers` a `AAD DC Administrators`.
 
     ![Azure Portal výběru skupin v podokně uživatele](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. Vyberte **Vytvořit**.
+4. Vyberte **Create** (Vytvořit).
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>Použití REST API Apache Ambari k synchronizaci uživatelů
 
@@ -49,7 +49,7 @@ Následující metoda používá POST s REST API Ambari. Další informace najde
 
     ![Ikona SSH (HDInsight Secure Shell)](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
 
-2. Zkopírujte zobrazený `ssh` příkaz a vložte ho do svého klienta ssh. Po zobrazení výzvy zadejte heslo uživatele SSH.
+2. Zkopírujte zobrazený příkaz `ssh` a vložte ho do svého klienta SSH. Po zobrazení výzvy zadejte heslo uživatele SSH.
 
 3. Po ověření zadejte následující příkaz:
 
@@ -74,7 +74,7 @@ Následující metoda používá POST s REST API Ambari. Další informace najde
     }
     ```
 
-4. Chcete-li zobrazit stav synchronizace, spusťte nový `curl` příkaz:
+4. Chcete-li zobrazit stav synchronizace, spusťte nový příkaz `curl`:
 
     ```bash
     curl -u admin:<YOUR PASSWORD> https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events/1
@@ -127,7 +127,7 @@ Následující metoda používá POST s REST API Ambari. Další informace najde
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Ověření nově přidaného uživatele Azure AD
 
-Otevřete [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md) a ověřte, že se přidal nový uživatel Azure AD. Přístup k webovému uživatelskému rozhraní Ambari **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** získáte tak, že přejdete na. Zadejte uživatelské jméno a heslo správce clusteru.
+Otevřete [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md) a ověřte, že se přidal nový uživatel Azure AD. Přejděte na **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** webové uživatelské rozhraní Ambari. Zadejte uživatelské jméno a heslo správce clusteru.
 
 1. Z řídicího panelu Ambari v nabídce **správce** vyberte **Spravovat Ambari** .
 
@@ -137,15 +137,15 @@ Otevřete [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manag
 
     ![Nabídka uživatelů a skupin HDInsight](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
-3. Nový uživatel by měl být uveden v tabulce uživatelé. Typ je nastaven na `LDAP` `Local`místo.
+3. Nový uživatel by měl být uveden v tabulce uživatelé. Typ je nastaven na `LDAP` místo `Local`.
 
     ![Přehled stránky uživatelé AAD AAD](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Přihlaste se k Ambari jako nový uživatel.
 
-Když se nový uživatel (nebo jiný uživatel domény) přihlásí k Ambari, použije své úplné uživatelské jméno a přihlašovací údaje domény služby Azure AD.  Ambari zobrazí alias uživatele, což je zobrazované jméno uživatele ve službě Azure AD. Nový ukázkový uživatel má uživatelské jméno `hiveuser3@contoso.com`. V Ambari se tento nový uživatel zobrazuje jako `hiveuser3` , ale uživatel se do Ambari přihlašuje jako. `hiveuser3@contoso.com`
+Když se nový uživatel (nebo jiný uživatel domény) přihlásí k Ambari, použije své úplné uživatelské jméno a přihlašovací údaje domény služby Azure AD.  Ambari zobrazí alias uživatele, což je zobrazované jméno uživatele ve službě Azure AD. Nový ukázkový uživatel má uživatelské jméno `hiveuser3@contoso.com`. V Ambari se tento nový uživatel zobrazí jako `hiveuser3`, ale uživatel se do Ambari přihlásí jako `hiveuser3@contoso.com`.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Konfigurace zásad Apache Hive ve službě HDInsight pomocí protokolu ESP](hdinsight-domain-joined-run-hive.md)
 * [Správa clusterů HDInsight pomocí protokolu ESP](hdinsight-domain-joined-manage.md)

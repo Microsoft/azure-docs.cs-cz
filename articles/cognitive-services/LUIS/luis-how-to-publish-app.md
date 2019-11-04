@@ -1,7 +1,7 @@
 ---
 title: Publikování aplikace – LUIS
 titleSuffix: Azure Cognitive Services
-description: Po dokončení vytváření a testování aplikace LUIS aktivní, zpřístupní ji pro klientské aplikace ji publikujete do koncového bodu.
+description: Až dokončíte sestavování a testování vaší aktivní aplikace LUIS, zpřístupněte ji klientské aplikaci tím, že ji publikujete do koncového bodu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,24 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: f92776072038c5684e9334d2dda1690ebb7bcaa8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 0d3a413249cb9058e4098f2836131494670a1727
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257786"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491331"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikujte svou aktivní, školenou aplikaci do pracovního nebo produkčního koncového bodu.
 
-Po dokončení vytváření a testování aplikace LUIS aktivní, zpřístupní ji pro klientské aplikace ji publikujete do koncového bodu. 
+Až dokončíte sestavování a testování vaší aktivní aplikace LUIS, zpřístupněte ji klientské aplikaci tím, že ji publikujete do koncového bodu. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="publish-your-trained-app-to-an-http-endpoint"></a>
 
 ## <a name="publishing"></a>Publikování
 
-1. Chcete-li publikovat koncový bod, vyberte **publikovat** v horní části, klikněte pravým tlačítkem myši panelu. 
+1. Pokud chcete publikovat do koncového bodu, vyberte **publikovat** v horním a pravém panelu. 
 
     ![Tlačítko publikovat v horním a pravém navigačním panelu](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
@@ -47,14 +49,14 @@ Pomocí obou slotů pro publikování vám to umožňuje mít v publikovaných k
 
 Aplikace je publikovaná ve všech oblastech přidružených k prostředkům koncového bodu předpovědi LUIS přidaným na portálu LUIS. 
 
-Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud vytvoříte prostředek Luis ve dvou oblastech, **westus** a **eastus**a přidáte je do aplikace jako prostředky, aplikace se publikuje v obou oblastech. Další informace o oblastech LUIS, naleznete v tématu [oblastech](luis-reference-regions.md).
+Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud vytvoříte prostředek Luis ve dvou oblastech, **westus** a **eastus**a přidáte je do aplikace jako prostředky, aplikace se publikuje v obou oblastech. Další informace o oblastech LUIS najdete v tématu [oblasti](luis-reference-regions.md).
 
 
 ## <a name="configuring-publish-settings"></a>Konfigurace nastavení publikování
 
 Po výběru slotu nakonfigurujte nastavení publikování pro:
 
-* Analýza mínění
+* Analýza subjektivního hodnocení
 * Oprava pravopisu
 * Neprojevení řeči 
 
@@ -62,23 +64,23 @@ Po publikování jsou tato nastavení dostupná ke kontrole na stránce **Správ
 
 ### <a name="when-your-app-is-published"></a>Při publikování aplikace
 
-Pokud vaše aplikace se úspěšně publikuje, zobrazí se upozornění zelené úspěch v horní části stránky prohlížeče. Zelená oznamovací pruh také obsahuje odkaz na koncové body. 
+Po úspěšném publikování vaší aplikace se v horní části prohlížeče zobrazí zelená zpráva o úspěchu. Zelený oznamovací pruh obsahuje také odkaz na koncové body. 
 
 ![Publikování automaticky otevíraného okna s odkazem na koncový bod](./media/luis-how-to-publish-app/publish-success.png)
 
-Pokud budete potřebovat adresu URL koncového bodu, vyberte odkaz. K adresám URL koncových bodů se můžete dostat taky tak, že v horní nabídce vyberete **Spravovat** a v nabídce vlevo vyberete **prostředky Azure** . 
+Pokud potřebujete adresu URL koncového bodu, vyberte odkaz. K adresám URL koncových bodů se můžete dostat taky tak, že v horní nabídce vyberete **Spravovat** a v nabídce vlevo vyberete **prostředky Azure** . 
 
-## <a name="sentiment-analysis"></a>Analýza mínění
+## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
 
 <a name="enable-sentiment-analysis"></a>
 
-Analýza subjektivního hodnocení umožňuje LUIS můžete integrovat s [rozhraní Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) poskytnout frázi analýzu subjektivního hodnocení a klíč. 
+Analýza mínění umožňuje integraci LUIS s [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) , aby poskytovala mínění a analýzu klíčových frází. 
 
-Není potřeba zadat klíč pro analýzu textu a nic neplatíte fakturace pro tuto službu ke svému účtu Azure. 
+Nemusíte zadávat Analýza textu klíč a za tuto službu se neúčtují žádné poplatky za váš účet Azure. 
 
-Je skóre mezi 1 a 0 označující pozitivní mínění data (blíže 1) ani na zápornou (blíže 0) mínění data. Popisek `positive`mínění, `neutral`a `negative` je na podporovanou jazykovou verzi. V současné době podporuje popisky mínění jenom angličtina. 
+Mínění data jsou skóre mezi 1 a 0 značící kladné (blíže k 1) nebo záporné (navýšení na 0) mínění dat. Popisek mínění `positive`, `neutral`a `negative` je na podporovanou jazykovou verzi. V současné době podporuje popisky mínění jenom angličtina. 
 
-Další informace o odpovědi JSON koncového bodu s analýzou mínění, naleznete v tématu [analýzu subjektivního hodnocení](luis-concept-data-extraction.md#sentiment-analysis)
+Další informace o odpovědích koncových bodů JSON s analýzou mínění najdete v tématu [Analýza mínění](luis-concept-data-extraction.md#sentiment-analysis) .
 
 ## <a name="spelling-correction"></a>Oprava pravopisu
 
@@ -90,6 +92,6 @@ Dopřed konverze textu na řeč je proces použití funkce posílání LUIS mode
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zobrazit [spravovat klíče](./luis-how-to-azure-subscription.md) přidání klíče do předplatného Azure klíč k LUIS a jak nastavit kontrolu pravopisu Bingu klíče a zahrnout všechny příkazy ve výsledcích.
-* Zobrazit [trénování a testování vaší aplikace](luis-interactive-test.md) pokyny o tom, jak v testovací konzole testování publikované aplikace.
+* Přečtěte si téma [Správa klíčů](./luis-how-to-azure-subscription.md) a přidání klíčů do klíče předplatného Azure do Luis a jak nastavit klíč kontrola pravopisu Bingu a zahrnout všechny záměry do výsledků.
+* Pokyny k otestování publikované aplikace v konzole testu najdete v tématu [výuka a testování vaší aplikace](luis-interactive-test.md) .
 

@@ -10,23 +10,25 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: fc26b224a2af6ab4f1f6bf5551381d4739831351
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 891615ea301348b83124823b10403964d394c224
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053877"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476017"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto kurzu dokončíte kompletní kroky, abyste mohli začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter. Tento kurz je **první částí série kurzů se dvěma částmi**a popisuje nastavení a konfiguraci prostředí Python a také vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení. [**Druhá část**](tutorial-1st-experiment-sdk-train.md) sestavení na této stránce umožňuje výuku více modelů strojového učení a zavedení procesu správy modelů pomocí Azure Portal i sady SDK.
+V tomto kurzu dokončíte kompletní kroky, abyste mohli začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter. Tento kurz je **první částí série kurzů se dvěma částmi**a popisuje nastavení a konfiguraci prostředí Python a také vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení. [**Druhá část**](tutorial-1st-experiment-sdk-train.md) sestavení na této stránce umožňuje výuku více modelů strojového učení a zavedení procesu správy modelů pomocí Azure Machine Learning studia i sady SDK.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořte [pracovní prostor Azure Machine Learning](concept-workspace.md) pro použití v dalším kurzu.
 > * Naklonujte Poznámkový blok kurzů do složky v pracovním prostoru.
-> * Vytvořte cloudový virtuální počítač Azure Machine Learning s Jupyter poznámkovým blokem s nainstalovanou a předem nakonfigurovanou sadou Python SDK.
+> * Vytvořte cloudovou instanci COMPUTE s nainstalovanou a předem nakonfigurovanou sadou Azure Machine Learning Python SDK.
+
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -46,23 +48,27 @@ Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové kon
 
 V tomto příkladu se v pracovním prostoru používá cloudový notebook pro instalaci bez předkonfigurovaného a předem nakonfigurovaného prostředí. Použijte [vlastní prostředí](how-to-configure-environment.md#local) , pokud dáváte přednost kontrole prostředí, balíčků a závislostí.
 
-Provedete následující kroky experimentování a spuštění na úvodní stránce pracovního prostoru (Preview), konsolidovaném rozhraní, které zahrnuje nástroje strojového učení, k provádění scénářů pro datové vědy u všech úrovní dovedností.
+Dokončili jste následující postup experimentování a spouštění v sadě Azure Machine Learning Studio, konsolidované rozhraní, které zahrnuje nástroje strojového učení, které slouží k provádění scénářů pro datové vědy v rámci všech úrovní dovedností.
 
-1. Přihlaste se na [úvodní stránku pracovního prostoru](https://ml.azure.com/).
+1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
 1. Vyberte své předplatné a pracovní prostor, který jste vytvořili.
 
-1. Na levé straně vyberte **poznámkové bloky a soubory** .
+1. Na levé straně vyberte **poznámkové bloky** .
 
 1. Otevřete složku **ukázky** .
+
+1. Otevřete složku **Python** .
+
+1. Otevřete složku s číslem verze.  Toto číslo představuje aktuální vydání sady Python SDK.
 
 1. Na pravé straně složky **kurzy** vyberte **"..."** a pak vyberte **klonovat**.
 
     ![Klonovat složku](media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. Pro každého uživatele, který přistupuje k pracovnímu prostoru, se zobrazí složka.  Vyberte složku pro naklonování složky **kurzu** .
+1. Seznam složek zobrazuje každého uživatele, který přistupuje k pracovnímu prostoru.  Vyberte složku, do které se má naklonovat složka s **kurzy** .
 
-## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a><a name="open">vyberte virtuální počítač pro spuštění poznámkového bloku.
+## <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">otevřít Klonovaný Poznámkový blok
 
 1. V části **uživatelské soubory** otevřete složku a otevřete složku klonované **kurzy** .
 
@@ -73,11 +79,9 @@ Provedete následující kroky experimentování a spuštění na úvodní strá
     
 1. Ve složce s **kurzy** vyberte soubor **kurz – 1st-experiment-SDK-ipynb** .
 
-1. Na horním panelu vyberte virtuální počítač poznámkového bloku, který chcete použít ke spuštění poznámkového bloku. Tyto virtuální počítače jsou předem nakonfigurované se všemi potřebnými ke spuštění Azure Machine Learning. Můžete vybrat virtuální počítač vytvořený libovolným uživatelem pracovního prostoru. 
+1. Na horním panelu vyberte výpočetní instanci, kterou chcete použít ke spuštění poznámkového bloku. Tyto virtuální počítače jsou předem nakonfigurované se všemi [potřebnými ke spuštění Azure Machine Learning](concept-compute-instance.md#contents). Můžete vybrat virtuální počítač vytvořený libovolným uživatelem pracovního prostoru. 
 
-1. Pokud se nenašly žádné virtuální počítače, vyberte **+ Nový virtuální počítač** a vytvořte virtuální počítač.
-
-    ![Vytvoření virtuálního počítače](media/tutorial-1st-experiment-sdk-setup/no-vm.png)
+1. Pokud se nenašly žádné virtuální počítače, vyberte **+ Přidat výpočetní** prostředky a vytvořte virtuální počítač.
 
     1. Když vytváříte virtuální počítač, zadejte název.  Název musí mít 2 až 16 znaků. Platné znaky jsou písmena, číslice a znak a musí být také jedinečné v rámci předplatného Azure.
 
@@ -85,6 +89,9 @@ Provedete následující kroky experimentování a spuštění na úvodní strá
 
 1. Jakmile je virtuální počítač k dispozici, zobrazí se na horním panelu nástrojů.  Tento Poznámkový blok teď můžete spustit buď pomocí rutiny **Spustit vše** na panelu nástrojů, nebo pomocí **SHIFT + ENTER** v buňkách kódu poznámkového bloku.
 
+> [!NOTE]
+> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
+>Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .  Ke spuštění poznámkového bloku můžete použít buď virtuální počítač s poznámkovým blokem, nebo instanci služby Compute.
 
 ## <a name="next-steps"></a>Další kroky
 

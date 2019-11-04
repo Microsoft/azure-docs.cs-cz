@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802512"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464555"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro Custom Speech
 
@@ -25,15 +25,15 @@ Bez ohledu na to, jestli testujete, abyste zjistili, jak přesné rozpoznáván�
 
 Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít každý datový typ a doporučené množství. Pro vytvoření modelu není vyžadován každý datový typ. Požadavky na data se budou lišit v závislosti na tom, zda vytváříte testovací nebo školicí model.
 
-| Datový typ | Použito testování | Množství | Používá se pro školení. | Množství |
+| Data type | Použito testování | Množství | Používá se pro školení. | Množství |
 |-----------|-----------------|----------|-------------------|----------|
-| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | Ne | N/a |
+| [Kazet](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | Ne | Není k dispozici |
 | [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Ano<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Ano | 1 – 1 000 hodin zvukového přenosu |
-| [Související text](#related-text-data-for-training) | Ne | N/a | Ano | 1-200 MB souvisejícího textu |
+| [Související text](#related-text-data-for-training) | Ne | Není k dispozici | Ano | 1-200 MB souvisejícího textu |
 
 Soubory by měly být seskupené podle typu do datové sady a nahrané jako soubor zip. Každá datová sada může obsahovat pouze jeden datový typ.
 
-## <a name="upload-data"></a>Nahrání dat
+## <a name="upload-data"></a>Nahrávání dat
 
 Až budete připraveni k nahrávání dat, přejděte na [portál Custom Speech](https://speech.microsoft.com/customspeech)a pak klikněte na **nahrát data** . spustí se průvodce a vytvoří se první datová sada. Před tím, než budete moci odeslat data, budete požádáni o výběr datového typu řeči pro datovou sadu.
 
@@ -52,7 +52,7 @@ Zvuková data jsou ideální pro testování přesnosti základního rozpoznáv�
 
 Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně formátované pro použití s Custom Speech:
 
-| Vlastnost | Value |
+| Vlastnost | Hodnota |
 |----------|-------|
 | Formát souboru | RIFF (WAV) |
 | Vzorkovací frekvence | 8 000 Hz nebo 16 000 Hz |
@@ -73,7 +73,7 @@ Pokud Váš zvuk nevyhovuje těmto vlastnostem nebo chcete zjistit, jestli to ne
 
 Chcete-li změřit přesnost přesnosti řeči na text od společnosti Microsoft při zpracování zvukových souborů, je nutné zadat přepisy (Word-by-Word) pro porovnání. I když je přepis uživatelsky popisku často časově náročný, je nutné vyhodnotit přesnost a vyškolit model pro vaše případy použití. Mějte na paměti, že vylepšení v oblasti rozpoznávání budou stejně vhodná jako poskytnutá data. Z tohoto důvodu je důležité, aby se nahrály jenom přepisy s vysokou kvalitou.  
 
-| Vlastnost | Value |
+| Vlastnost | Hodnota |
 |----------|-------|
 | Formát souboru | RIFF (WAV) |
 | Vzorkovací frekvence | 8 000 Hz nebo 16 000 Hz |
@@ -85,7 +85,7 @@ Chcete-li změřit přesnost přesnosti řeči na text od společnosti Microsoft
 
 Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování slov, je nutné, aby se vylepšilo rozpoznávání dat s větším množstvím dat. Obecně se doporučuje zadat přepisy slova po slovech přibližně 10 až 1 000 hodin zvukového přenosu. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
 
-  Příklad:
+  Například:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -94,7 +94,7 @@ Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování s
 > [!NOTE]
 > Přepis by měl být kódovaný ve formátu UTF-8 BOM (značka pořadí bajtů).
 
-Přepisy se budou normalizovat, aby je mohl systém zpracovat. Existuje však několik důležitých normalizací, které musí uživatel provést _před_ nahráním dat do služby Custom Speech Service. Příslušný jazyk, který se má použít, když připravujete přepisy, najdete v tématu [Vytvoření přepisu s popiskem](how-to-custom-speech-human-labeled-transcriptions.md) .
+Přepisy se budou normalizovat, aby je mohl systém zpracovat. Existují však některé důležité normalizace, které musí uživatel provést _před_ odesláním dat do studia pro rozpoznávání řeči. Příslušný jazyk, který se má použít, když připravujete přepisy, najdete v tématu [Vytvoření přepisu s popiskem](how-to-custom-speech-human-labeled-transcriptions.md) .
 
 Až shromáždíte zvukové soubory a odpovídající přepisy, měli byste je před nahráním na [portál Custom Speech](https://speech.microsoft.com/customspeech)zabalit jako jeden soubor. zip. Toto je ukázková datová sada se třemi zvukovými soubory a soubor přepisu s popiskem:
 
@@ -104,7 +104,7 @@ Až shromáždíte zvukové soubory a odpovídající přepisy, měli byste je p
 
 Pokud máte názvy produktů nebo funkce, které jsou jedinečné, a chcete se ujistit, že jsou správně rozpoznané, je důležité zahrnout související textová data pro školení. K dispozici jsou dva typy souvisejících textových dat pro zlepšení rozpoznávání:
 
-| Datový typ | Jak tato data zlepšují rozpoznávání |
+| Data type | Jak tato data zlepšují rozpoznávání |
 |-----------|------------------------------------|
 | Projevy a/nebo věty | Ty můžou zlepšit přesnost při rozpoznávání názvů produktů nebo slovníku specifického pro konkrétní obor v kontextu věty. |
 | Výslovnost | Ty můžou zlepšit výslovnost neobvyklých pojmů, akronymů nebo jiných slov pomocí nedefinovaných výslovnosti. |
@@ -120,7 +120,7 @@ Pomocí této tabulky zajistěte, aby byl správně naformátován váš souvise
 | Vlastnost | Hodnota |
 |----------|-------|
 | Kódování textu | UTF-8 BOM |
-| Počet promluv na řádek | 1 |
+| Počet promluv na řádek | 1\. místo |
 | Maximální velikost souboru | 200 MB |
 
 Navíc se budete chtít přihlédnout k následujícím omezením:
@@ -138,19 +138,19 @@ Pokud se nejedná o běžné výrazy bez standardních výslovností, které va�
 
 Zahrnuje příklady mluveného utterance a vlastní výslovnost pro každý z nich:
 
-| Rozpoznaný/zobrazený formulář | Mluvené slovo formuláře |
+| Rozpoznaný/zobrazený formulář | Mluvený formulář |
 |--------------|--------------------------|
 | 3CPO | tři c. p o |  
 | CNTK | c n t k |
-| INSTITUT | i \ e |
+| Institut | i \ e |
 
 Mluvený formulář je fonetická sekvence, která je vypsána. Může se skládat z písmen, slov, slabik nebo kombinace všech tří.
 
 Přizpůsobená výslovnost je k dispozici v angličtině (EN-US) a v němčině (de-DE). V této tabulce jsou uvedeny podporované znaky podle jazyka:
 
-| Jazyk | Národní prostředí | Postavy |
+| Jazyk | Národní prostředí | Písmena |
 |----------|--------|------------|
-| Angličtina | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Angličtina | EN-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 | Němčina | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 Pomocí této tabulky zajistěte, aby váš související datový soubor pro výslovnost byl správně naformátován. Soubory výslovnosti jsou malé a neměly by překročit několik aktualizací KB.
@@ -158,7 +158,7 @@ Pomocí této tabulky zajistěte, aby váš související datový soubor pro vý
 | Vlastnost | Hodnota |
 |----------|-------|
 | Kódování textu | BOM UTF-8 (ANSI je také podporováno pro angličtinu) |
-| počet výslovnosti na řádek | 1 |
+| počet výslovnosti na řádek | 1\. místo |
 | Maximální velikost souboru | 1 MB (1 KB pro úroveň Free) |
 
 ## <a name="next-steps"></a>Další kroky

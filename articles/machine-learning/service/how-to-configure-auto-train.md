@@ -2,23 +2,24 @@
 title: Vytváření automatizovaných experimentů ML
 titleSuffix: Azure Machine Learning
 description: Automatický strojové učení vybere algoritmus pro vás a vygeneruje model připravený k nasazení. Seznamte se s možnostmi, které můžete použít ke konfiguraci automatizovaných experimentů strojového učení.
-author: nacharya1
-ms.author: nilesha
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 181f11bd5cfda479c25b5bce20649b8f382968fe
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4d050385bb76817c8aeada1bef4c4697a1f58d09
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935371"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497277"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V této příručce se dozvíte, jak definovat různé konfigurační nastavení pro automatizované experimenty strojového učení pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Automatický strojové učení vybere pro vás algoritmus a parametry a vygeneruje model připravený pro nasazení. K dispozici je několik možností, pomocí kterých můžete nakonfigurovat automatizované experimenty strojového učení.
 
@@ -34,7 +35,7 @@ Možnosti konfigurace dostupné v automatizovaném strojovém učení:
 * Prozkoumat metriky modelu
 * Registrace a nasazení modelu
 
-Pokud dáváte přednost žádnému způsobu použití kódu, můžete také [vytvářet automatizované experimenty strojového učení v Azure Portal](how-to-create-portal-experiments.md).
+Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure Machine Learning Studiu vytvářet i automatizované experimenty strojového učení](how-to-create-portal-experiments.md).
 
 ## <a name="select-your-experiment-type"></a>Vyberte typ experimentu.
 
@@ -72,7 +73,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>Zdroj dat a formát
 
-Automatizované Machine Learning podporuje data, která se nachází na místním počítači nebo v cloudu, jako je například Azure Blob Storage. Data lze číst do **PANDAS dataframe** nebo do **Azure Machine Learning TabularDataset**.  [Přečtěte si další informace o datatsets](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md).
+Automatizované Machine Learning podporuje data, která se nachází na místním počítači nebo v cloudu, jako je například Azure Blob Storage. Data lze číst do **PANDAS dataframe** nebo do **Azure Machine Learning TabularDataset**.  [Přečtěte si další informace o datových sadách](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md).
 
 Požadavky na školicí data:
 - Data musí být v tabulkovém formátu.
@@ -145,26 +146,24 @@ K dispozici je několik možností, pomocí kterých můžete nakonfigurovat aut
 
 Možné příklady:
 
-1.  Experiment s klasifikací využívající AUC váženou jako primární metrika s maximální dobou 12 000 sekund na iteraci a experiment se ukončí po 50 iteracích a 2 skládání křížového ověřování.
+1.  Experiment s klasifikací pomocí AUC váže jako primární metrika s časovým limitem experimentu nastaveným na 30 minut a 2 přeložení křížového ověřování.
 
     ```python
     automl_classifier=AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
-        max_time_sec=12000,
-        iterations=50,
+        experiment_timeout_minutes=30,
         blacklist_models='XGBoostClassifier',
         training_data=train_data,
         label_column_name=label,
         n_cross_validations=2)
     ```
-2.  Níže je příklad regresní experimentu nastavený na ukončení po 100 iteracích, přičemž každá iterace trvala až 600 sekund s 5 ověřovacími přeloženími.
+2.  Níže je uveden příklad regresní experimentu, který se ukončí po 60 minutách s 5 ověřovacími ohyby.
 
     ```python
     automl_regressor = AutoMLConfig(
         task='regression',
-        max_time_sec=600,
-        iterations=100,
+        experiment_timeout_minutes=60,
         whitelist_models='kNN regressor'
         primary_metric='r2_score',
         training_data=train_data,
@@ -172,7 +171,7 @@ Možné příklady:
         n_cross_validations=5)
     ```
 
-Tři různé hodnoty parametrů `task` (třetí typ úlohy je `forecasting` a používá stejný fond algoritmů jako úlohy `regression`) určuje seznam modelů, které se mají použít. Pomocí parametrů `whitelist` nebo `blacklist` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
+Tři různé hodnoty parametrů `task` (třetí typ úlohy je `forecasting` a používá stejný fond algoritmů jako úlohy `regression`) určuje seznam modelů, které se mají použít. Pomocí parametrů `whitelist` nebo `blacklist` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
 
 ### <a name="primary-metric"></a>Primární metrika
 Primární metrika určuje metriku, která se má použít během školení modelu pro optimalizaci. Dostupné metriky můžete vybrat podle typu úlohy, kterou zvolíte, a v následující tabulce jsou uvedeny platné primární metriky pro každý typ úkolu.
@@ -225,7 +224,7 @@ time_series_settings = {
 automl_config = AutoMLConfig(task = 'forecasting',
                              debug_log='automl_oj_sales_errors.log',
                              primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
+                             experiment_timeout_minutes=20,
                              training_data=train_data,
                              label_column_name=label,
                              n_cross_validations=5,
@@ -262,7 +261,7 @@ ensemble_settings = {
 automl_classifier = AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
-        iterations=20,
+        experiment_timeout_minutes=30,
         training_data=train_data,
         label_column_name=label,
         n_cross_validations=5,
@@ -276,7 +275,7 @@ automl_classifier = AutoMLConfig(
 automl_classifier = AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
-        iterations=20,
+        experiment_timeout_minutes=30,
         training_data=data_train,
         label_column_name=label,
         n_cross_validations=5,
@@ -314,7 +313,6 @@ run = experiment.submit(automl_config, show_output=True)
 ### <a name="exit-criteria"></a>Výstupní kritéria
 Existuje několik možností, které můžete definovat pro ukončení experimentu.
 1. Žádná kritéria: Pokud nedefinujete žádné parametry ukončení, bude experiment pokračovat, dokud nebude u primární metriky proveden žádný další postup.
-1. Počet iterací: definujte počet iterací pro spuštění experimentu. Volitelně můžete přidat `iteration_timeout_minutes` a definovat tak časový limit v minutách pro každou iteraci.
 1. Ukončit po určité době: pomocí `experiment_timeout_minutes` v nastavení můžete určit, jak dlouho má experiment pokračovat v běhu.
 1. Ukončit po dosažení skóre: pomocí `experiment_exit_score` se dokončí experiment po dosažení primárního skóre metriky.
 
@@ -338,7 +336,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Automatizovaná technologie funkcí
 
-Podívejte se na seznam předzpracovaných a [automatizovaných funkcí](concept-automated-ml.md#preprocess) , které se objeví při předběžném zpracování = true.
+Podívejte se na seznam předzpracovaných a [automatizovaných funkcí](concept-automated-ml.md#preprocess) , ke kterým dochází, když feauturization = auto.
 
 Vezměte v úvahu tento příklad:
 + K dispozici jsou 4 vstupní funkce: A (číselná), B (číselná), C (číselná), D (DateTime).
@@ -407,6 +405,32 @@ Tato 2 rozhraní API použijte v prvním kroku namontovaného modelu, abyste lé
    |Odpojení|Určuje, zda byla vstupní funkce vyřazena nebo použita.|
    |EngineeringFeatureCount|Počet funkcí generovaných pomocí transformací technologie automatizovaného zpracování funkcí|
    |Transformace|Seznam transformací použitých u vstupních funkcí k vygenerování navržených funkcí|
+   
+### <a name="customize-feature-engineering"></a>Přizpůsobení technologie funkcí
+K přizpůsobení technologie funkcí zadejte `"feauturization":FeaturizationConfig`.
+
+Podporované vlastní nastavení zahrnuje:
+
+|Přizpůsobení|Definice|
+|--|--|
+|Aktualizace pro účely sloupce|Přepište typ funkce pro zadaný sloupec.|
+|Aktualizace parametrů transformátoru |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje Imputac a HashOneHotEncoder.|
+|Odkládací sloupce |Sloupce, které se mají odpustit z natrénuje|
+|Blokovat transformátory| Blokuje transformátory, které se mají použít na featurization procesu.|
+
+Vytvoření objektu FeaturizationConfig pomocí volání rozhraní API:
+```python
+featurization_config = FeaturizationConfig()
+featurization_config.blocked_transformers = ['LabelEncoder']
+featurization_config.drop_columns = ['aspiration', 'stroke']
+featurization_config.add_column_purpose('engine-size', 'Numeric')
+featurization_config.add_column_purpose('body-style', 'CategoricalHash')
+#default strategy mean, add transformer param for for 3 columns
+featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"})
+featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
+featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
+featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
+```
 
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Škálování/normalizace a algoritmy pomocí hodnot parametrů:
 
@@ -467,78 +491,13 @@ LogisticRegression
 
 <a name="explain"></a>
 
-## <a name="explain-the-model-interpretability"></a>Vysvětlení modelu (výklad)
+## <a name="model-interpretability"></a>Interpretovatelnost modelů
 
-Automatizované Machine Learning vám umožní pochopit důležitost funkcí.  Během procesu školení můžete získat důležitost globálních funkcí pro model.  V případě klasifikačních scénářů můžete také získat důležitost funkcí na úrovni třídy.  Abyste získali důležitost funkcí, musíte zadat ověřovací datovou sadu (validation_data).
+Možnost interpretace modelu vám umožní pochopit, proč se vaše modely předpovědi, a základní hodnoty důležitosti funkcí. Sada SDK obsahuje různé balíčky pro povolení funkcí pro interpretaci modelu, a to jak v rámci školení, tak i v době odvození pro místní a nasazené modely.
 
-Existují dva způsoby, jak vygenerovat důležitost funkcí.
+Informace o tom, jak v rámci automatizované experimenty strojového učení povolit funkce pro interpretaci, najdete v tématu [postupy](how-to-machine-learning-interpretability-automl.md) pro ukázky kódu.
 
-*   Po dokončení experimentu můžete metodu `explain_model` použít u libovolné iterace.
-
-    ```python
-    from azureml.train.automl.automlexplainer import explain_model
-
-    shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-        explain_model(fitted_model, train_data, test_data)
-
-    #Overall feature importance
-    print(overall_imp)
-    print(overall_summary)
-
-    #Class-level feature importance
-    print(per_class_imp)
-    print(per_class_summary)
-    ```
-
-*   Chcete-li zobrazit důležitost funkcí pro všechny iterace, nastavte příznak `model_explainability` `True` v AutoMLConfig.
-
-    ```python
-    automl_config = AutoMLConfig(task='classification',
-                                 debug_log='automl_errors.log',
-                                 primary_metric='AUC_weighted',
-                                 max_time_sec=12000,
-                                 iterations=10,
-                                 verbosity=logging.INFO,
-                                 training_data=train_data,
-                                 label_column_name=y_train,
-                                 validation_data=test_data,
-                                 model_explainability=True,
-                                 path=project_folder)
-    ```
-
-    Po dokončení můžete použít metodu retrieve_model_explanation k načtení důležitosti funkce pro konkrétní iteraci.
-
-    ```python
-    from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-    shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-        retrieve_model_explanation(best_run)
-
-    #Overall feature importance
-    print(overall_imp)
-    print(overall_summary)
-
-    #Class-level feature importance
-    print(per_class_imp)
-    print(per_class_summary)
-    ```
-
-Pokud chcete zobrazit důležitost funkcí pomocí objektu Run, zobrazte si adresu URL:
-
-```
-automl_run.get_portal_url()
-```
-
-Graf důležitost funkcí v pracovním prostoru můžete vizualizovat v Azure Portal nebo na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com). Graf je také zobrazen při použití [widgetu](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails` Jupyter v poznámkovém bloku. Další informace o grafech najdete v tématu popisujícím [automatizované výsledky strojového učení](how-to-understand-automated-ml.md).
-
-```Python
-from azureml.widgets import RunDetails
-RunDetails(automl_run).show()
-```
-
-![graf důležitost funkcí](./media/how-to-configure-auto-train/feature-importance.png)
-
-Další informace o tom, jak je možné povolit vysvětlení modelu a důležitost funkcí v jiných oblastech sady SDK mimo automatizované strojové učení, najdete v článku [konceptu](machine-learning-interpretability-explainability.md) o výkladu.
+Obecné informace o tom, jak je možné povolit vysvětlení modelu a důležitost funkcí v jiných oblastech sady SDK mimo automatizované strojové učení, najdete v článku [konceptu](how-to-machine-learning-interpretability.md) o výkladu.
 
 ## <a name="next-steps"></a>Další kroky
 

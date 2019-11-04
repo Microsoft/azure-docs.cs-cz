@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9ab828daa009f7204abb1c64291d937a1f0dba2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784938"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466815"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 
@@ -313,7 +313,7 @@ namespace SampleSkills
 
 Nezapomeňte zadat vlastní hodnotu *klíče* v `key` konstantu podle klíče, který jste získali při registraci rozhraní API Bingu pro vyhledávání entit.
 
-Tato ukázka zahrnuje veškerý potřebný kód v jednom souboru pro usnadnění práce. V [úložišti dovedností](https://aka.ms/entity-search-power-skill)můžete najít poněkud více strukturované verze stejné dovednosti a také další příklady vlastních dovedností.
+Tato ukázka zahrnuje veškerý potřebný kód v jednom souboru pro usnadnění práce. V [úložišti dovedností pro napájení](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)najdete poněkud více strukturované verze stejné dovednosti.
 
 Je samozřejmě možné, že soubor přejmenujete z `Function1.cs` na `BingEntitySearch.cs`.
 
@@ -476,10 +476,10 @@ Tady se počítáme s předdefinovanými [dovednostmi pro rozpoznávání entit]
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Blahopřejeme! Vytvořili jste první vlastní obohacení. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. 
+Blahopřejeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
 
-+ [Dovednosti v Power: úložiště vlastních dovedností](https://aka.ms/powerskills)
-+ [Přidání vlastní dovednosti do kanálu vyhledávání rozpoznávání](cognitive-search-custom-skill-interface.md)
++ [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)

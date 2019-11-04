@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5fa13f209d6f4df0ebd531f803e75cdb657abf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163118"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493995"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
 
@@ -172,7 +172,7 @@ V dalším kroku přidáme modul směrovače do našeho řešení. Modul směrov
 4. Po zobrazení výzvy pro úložiště imagí Docker použijte registr z pracovního prostoru Machine Learning (registr najdete v uzlu registryCredentials souboru *Deployment. template. JSON* ). Tato hodnota je plně kvalifikovaná adresa registru, například **\<registru\>. azurecr.IO/turbofanrouter**.
 
     > [!NOTE]
-    > V tomto článku používáme Azure Container Registry vytvořeného pracovním prostorem služby Azure Machine Learning, který jsme použili ke školení a nasazení našeho třídění. To je čistě pro pohodlí. Mohli jsme vytvořit nový registr kontejnerů a publikovat naše moduly tam.
+    > V tomto článku používáme Azure Container Registry vytvořeného pracovním prostorem Azure Machine Learning, který jsme použili ke školení a nasazení našeho třídění. To je čistě pro pohodlí. Mohli jsme vytvořit nový registr kontejnerů a publikovat naše moduly tam.
 
 5. Otevřete nové okno terminálu v Visual Studio Code (**zobrazit** > **terminálu**) a zkopírujte soubory z adresáře modulů.
 
@@ -752,7 +752,7 @@ Teď, když jsme udělali změny konfigurace, jsme připraveni sestavit image a 
 
 Po úspěšném dokončení sestavení budeme moci použít Azure Portal ke kontrole publikovaných modulů.
 
-1. V Azure Portal přejděte do pracovního prostoru služby Azure Machine Learning a klikněte na hypertextový odkaz pro **registr**.
+1. V Azure Portal přejděte do pracovního prostoru Azure Machine Learning a klikněte na hypertextový odkaz pro **registr**.
 
     ![Přechod k registru z pracovního prostoru služby Machine Learning](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
 

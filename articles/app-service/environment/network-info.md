@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9b7c63639eea7176af36593983b08ad0c5213613
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ee7e3cb200a20b52a307dba31682a534e9f7b455
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073222"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470658"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Síťové požadavky pro App Service Environment #
 
@@ -26,8 +26,8 @@ ms.locfileid: "70073222"
 
  Azure [App Service Environment][Intro] je nasazení Azure App Service do podsítě ve službě Azure Virtual Network (VNET). K dispozici jsou dva typy nasazení App Service prostředí (pomocného mechanismu):
 
-- **Externí POmocného mechanismu**: Zpřístupňuje aplikace hostované pro pomocného objektu na IP adrese přístupné pro Internet. Další informace najdete v tématu [Vytvoření externího POmocného mechanismu služby][MakeExternalASE].
-- **INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU**: Zpřístupňuje aplikace hostované pro pomocného objektu na IP adrese v rámci vaší virtuální sítě. Interním koncovým bodem je interní nástroj pro vyrovnávání zatížení (interního nástroje), což je důvod, proč se nazývá pomocného mechanismu interního nástroje. Další informace najdete v tématu [Vytvoření a použití][MakeILBASE]pomocného interního nástrojeu.
+- **Externí**přístupový modul pro čtení: zpřístupňuje aplikace hostované pro pomocného objektu na IP adrese přístupné pro Internet. Další informace najdete v tématu [Vytvoření externího POmocného mechanismu služby][MakeExternalASE].
+- **Interního nástroje POmocného mechanismu**: zpřístupňuje aplikace hostované pro pomocného objektu na IP adrese v rámci vaší virtuální sítě. Interním koncovým bodem je interní nástroj pro vyrovnávání zatížení (interního nástroje), což je důvod, proč se nazývá pomocného mechanismu interního nástroje. Další informace najdete v tématu [Vytvoření a použití POmocného interního nástrojeu][MakeILBASE].
 
 Všechny služby ASE, externí a interního nástroje mají veřejnou virtuální IP adresu, která se používá pro příchozí provoz správy a jako adresa od v případě volání z pomocného mechanismu pro Internet. Volání z pomocného modulu pro pořízení, který přejde na Internet, opustí virtuální síť prostřednictvím VIP přiřazené k tomuto pomocnému uživateli. Veřejná IP adresa tohoto VIP je zdrojová IP adresa pro všechna volání z pomocného mechanismu, která se nachází na internetu. V případě, že aplikace ve vaší službě pomocného mechanismu volání vyvolají prostředky ve vaší virtuální síti nebo v síti VPN, je zdrojová IP adresa jednou z IP adres v podsíti používané vaším pomocným mechanismem řízení. Vzhledem k tomu, že je přístupový modul pro přístup ve virtuální síti, může také přistupovat k prostředkům v rámci virtuální sítě bez jakékoli další konfigurace. Pokud je virtuální síť připojená k vaší místní síti, aplikace ve vašem přihlašování k prostředkům mají také přístup k prostředkům, které nemají žádnou další konfiguraci.
 
@@ -59,11 +59,11 @@ Při horizontálním navýšení nebo snížení kapacity se přidají nové rol
 
 K fungování pomocného mechanismu pro zpracování vyžaduje jenom následující porty, které se dají otevřít:
 
-| Použití | Z | Do |
+| Použití | Od | až |
 |-----|------|----|
-| Správa | Adresy pro správu App Service | Podsíť přimocného mechanismu: 454, 455 |
-|  Interní komunikace prostřednictvím pomocného mechanismu | Podsíť přimocného mechanismu: Všechny porty | Podsíť přimocného mechanismu: Všechny porty
-|  Povolit příchozí službu Azure Load Balancer | Nástroj pro vyrovnávání zatížení Azure | Podsíť přimocného mechanismu: 16001
+| Správa | Adresy pro správu App Service | Podsíť pomocného mechanismu: 454, 455 |
+|  Interní komunikace prostřednictvím pomocného mechanismu | Podsíť pomocného mechanismu: všechny porty | Podsíť pomocného mechanismu: všechny porty
+|  Povolit příchozí službu Azure Load Balancer | Nástroj pro vyrovnávání zatížení Azure | Podsíť pomocného mechanismu: 16001
 
 K dispozici jsou dva další porty, které mohou být zobrazeny jako otevřené na prověřování portů 7654 a 1221. Odpoví s IP adresou a nic dalšího. V případě potřeby je můžete zablokovat. 
 
@@ -96,7 +96,7 @@ Služba pomocného mechanismu oznamuje přístup k Internetu adres na těchto po
 | NTP | 123 |
 | 8CRL, aktualizace Windows, závislosti Linux, služby Azure | 80/443 |
 | Azure SQL | 1433 | 
-| Monitorování | 12000 |
+| Sledování | 12000 |
 
 Odchozí závislosti jsou uvedené v dokumentu, který popisuje [uzamykání App Service Environment odchozích přenosů](./firewall-integration.md). Pokud přístupový modul pro přístup ztratí přístup k jeho závislostem, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, pozastaví se pomocného mechanismu. 
 
@@ -115,12 +115,12 @@ Pokud změníte nastavení DNS virtuální sítě, ve které je váš přihláš
 Kromě funkčních závislostí pomocného mechanismu je několik dalších položek, které se týkají prostředí portálu. Některé funkce v Azure Portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci v Azure App Service jsou k dispozici dvě adresy URL. První adresa URL má přístup k vaší aplikaci. Druhá adresa URL má přístup k webu SCM, který se také nazývá _Konzola Kudu_. K funkcím, které používají web SCM, patří:
 
 -   Webové úlohy
--   Funkce
+-   Functions
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření
 -   Průzkumník procesů
--   Konzola
+-   Console
 
 Když použijete interního nástroje pomocného mechanismu, web SCM není přístupný mimo virtuální síť. Některé možnosti nebudou fungovat z portálu aplikace, protože vyžadují přístup k webu SCM aplikace. K webu SCM se můžete připojit přímo místo používání portálu. 
 
@@ -130,10 +130,10 @@ Pokud je vaším pomocným mechanismem interního nástroje název domény *cont
 
 Pomocného programu má na paměti několik IP adres. Jsou to tyto:
 
-- **Veřejná příchozí IP adresa**: Používá se pro přenosy aplikací v externím pomocném mechanismu řízení a provoz pro správu v externím přihlašování a v interního nástroje pomocném mechanismu.
-- **Odchozí veřejná IP adresa**: Používá se jako IP adresa "z" pro odchozí připojení z přižádaného mechanismu, která opustí virtuální síť, která není směrována do sítě VPN.
-- **Interního nástroje IP adresa**: IP adresa interního nástroje existuje jenom v pomocném mechanismu interního nástroje.
-- **Adresy SSL na základě IP adres přiřazené aplikacím**: Možné jenom s externím pomocným mechanismem zabezpečení a při konfiguraci SSL na základě IP adresy.
+- **Veřejná příchozí IP adresa**: používá se pro přenosy aplikací v externím pomocném mechanismu řízení a přenos pro správu v externím pomocném mechanismu práv i v interního nástroje.
+- **Odchozí veřejná IP adresa**: používá se jako IP adresa "od" pro odchozí připojení z pomocného mechanismu, která opouští virtuální síť, která není směrována do sítě VPN.
+- **Interního nástroje IP adresa**: IP adresa interního nástroje existuje pouze v pomocném mechanismu pro interního nástroje.
+- **Adresy SSL na základě IP adres přiřazené aplikacím**: možné jenom s externím pomocným mechanismem zabezpečení a při konfiguraci SSL založeného na protokolu IP.
 
 Všechny tyto IP adresy jsou viditelné v Azure Portal v uživatelském rozhraní služby Řízení uživatelských mechanismů. Pokud máte interního nástroje pomocného nástroje, zobrazí se v seznamu IP adresa pro interního nástroje.
 
@@ -144,11 +144,11 @@ Všechny tyto IP adresy jsou viditelné v Azure Portal v uživatelském rozhran�
 
 ### <a name="app-assigned-ip-addresses"></a>IP adresy přiřazené aplikacím ###
 
-Pomocí externího pomocného uživatele můžete přiřadit IP adresy jednotlivým aplikacím. Nemůžete to udělat pomocí pomocného programu interního nástroje. Další informace o tom, jak nakonfigurovat aplikaci tak, aby měla svou vlastní IP adresu, najdete v tématu [vytvoření vazby existujícího vlastního certifikátu SSL pro Azure App Service](../app-service-web-tutorial-custom-ssl.md).
+Pomocí externího pomocného uživatele můžete přiřadit IP adresy jednotlivým aplikacím. Nemůžete to udělat pomocí pomocného programu interního nástroje. Další informace o tom, jak nakonfigurovat aplikaci tak, aby měla svou vlastní IP adresu, najdete [v tématu zabezpečení vlastního názvu DNS s vazbou SSL v Azure App Service](../configure-ssl-bindings.md).
 
 Když má aplikace svoji vlastní adresu SSL založenou na IP adresách, pomocného mechanismu pro mapování na tuto IP adresu rezervuje dva porty. Jeden port je pro přenosy HTTP a druhý port pro protokol HTTPS. Tyto porty jsou uvedené v uživatelském rozhraní pomocného mechanismu v části IP adresy. Provoz musí být schopný získat přístup k těmto portům z virtuální IP adresy nebo jsou aplikace nedostupné. Tento požadavek je důležité pamatovat při konfiguraci skupin zabezpečení sítě (skupin zabezpečení sítě).
 
-## <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě) ##
+## <a name="network-security-groups"></a>Skupiny zabezpečení sítě ##
 
 [Skupiny zabezpečení sítě][NSGs] poskytují možnost řídit přístup k síti v rámci virtuální sítě. Když použijete portál, existuje implicitní pravidlo odepření s nejnižší prioritou pro zamítnutí všeho. To, co sestavíte, jsou vaše pravidla povolení.
 
@@ -183,7 +183,7 @@ Při zohlednění vstupních a odchozích požadavků by měl skupin zabezpečen
 
 ![Příchozí pravidla zabezpečení][4]
 
-Výchozí pravidlo povoluje, aby IP adresy ve virtuální síti komunikovaly s podsítí pomocného mechanismu. Další výchozí pravidlo povolí službě Vyrovnávání zatížení, která se označuje jako veřejná VIP, ke komunikaci s pomocným mechanismem řízení. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle ikony **Přidat** . Pokud před výchozími pravidly vložíte pravidlo Odepřít vše jiného, zabráníte tak provozu mezi VIP a pomocným mechanismem řízení. Pokud chcete zabránit provozu v rámci virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použijte zdroj, který se rovná AzureLoadBalancer, s cílovým umístěním a rozsahem **\*** portů. Vzhledem k tomu, že pravidlo NSG se používá pro podsíť pomocného mechanismu, nemusíte být v cíli specifická.
+Výchozí pravidlo povoluje, aby IP adresy ve virtuální síti komunikovaly s podsítí pomocného mechanismu. Další výchozí pravidlo povolí službě Vyrovnávání zatížení, která se označuje jako veřejná VIP, ke komunikaci s pomocným mechanismem řízení. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle ikony **Přidat** . Pokud před výchozími pravidly vložíte pravidlo Odepřít vše jiného, zabráníte tak provozu mezi VIP a pomocným mechanismem řízení. Pokud chcete zabránit provozu v rámci virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použijte zdroj, který se rovná **AzureLoadBalancer, s** cílovým umístěním a rozsahem portů **\*** . Vzhledem k tomu, že pravidlo NSG se používá pro podsíť pomocného mechanismu, nemusíte být v cíli specifická.
 
 Pokud jste aplikaci přiřadili IP adresu, zajistěte, aby byly porty otevřené. Porty zobrazíte tak, že vyberete **App Service Environment** > **IP adresy**.  
 
@@ -206,7 +206,7 @@ Chcete-li vytvořit stejné trasy ručně, postupujte podle následujících kro
 
 3. V uživatelském rozhraní směrovací tabulky vyberte **trasy** > **Přidat**.
 
-4. Nastavte **typ dalšího segmentu směrování** na **Internet** a **předponu adresy** na **0.0.0.0/0**. Vyberte **Uložit**.
+4. Nastavte **typ dalšího segmentu směrování** na **Internet** a **předponu adresy** na **0.0.0.0/0**. Vyberte **Save** (Uložit).
 
     Pak se zobrazí něco podobného následujícímu:
 
@@ -218,7 +218,7 @@ Chcete-li vytvořit stejné trasy ručně, postupujte podle následujících kro
 
 ## <a name="service-endpoints"></a>Koncové body služeb ##
 
-Koncové body služby umožňují omezit přístup k víceklientským službám na sadu virtuálních sítí a podsítí Azure. Další informace o koncových bodech služby najdete v dokumentaci k koncovým bodům služby [Virtual Network][serviceendpoints] . 
+Koncové body služby umožňují omezit přístup k víceklientským službám na sadu virtuálních sítí a podsítí Azure. Další informace o koncových bodech služby najdete v dokumentaci k [koncovým][serviceendpoints] bodům služby Virtual Network. 
 
 Když pro prostředek povolíte koncové body služby, vytvoří se trasy s vyšší prioritou než všechny ostatní trasy. Pokud používáte koncové body služby v jakékoli službě Azure s vynuceným pomocným mechanismem řízení, nebude přenos do těchto služeb vynucený tunelování. 
 
@@ -251,7 +251,7 @@ Pokud jsou koncové body služby povolené v podsíti s instancí SQL Azure, mus
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

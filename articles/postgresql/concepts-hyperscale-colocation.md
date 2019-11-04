@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998049"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482751"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Společné umístění tabulky v Azure Database for PostgreSQL – měřítko (Citus)
 
@@ -20,7 +20,7 @@ Spolupoloha znamená ukládání souvisejících informací společně na stejn�
 
 ## <a name="data-colocation-for-hash-distributed-tables"></a>Společné umístění dat pro tabulky distribuované algoritmem hash
 
-V Azure Database for PostgreSQL – ve verzi Preview (Citus) je řádek uložený v horizontálních oddílů, pokud hodnota hash hodnoty v distribučním sloupci spadá do rozsahu hodnot hash horizontálních oddílů. Horizontálních oddílů se stejným rozsahem hodnot hash jsou vždy umístěny do stejného uzlu. Řádky s hodnotami rovnoměrného distribučního sloupce jsou vždy na stejném uzlu napříč tabulkami.
+V Azure Database for PostgreSQL – Citus () se řádek ukládá do horizontálních oddílů, pokud hodnota hash hodnoty v distribučním sloupci spadá do rozsahu hodnot hash horizontálních oddílů. Horizontálních oddílů se stejným rozsahem hodnot hash jsou vždy umístěny do stejného uzlu. Řádky s hodnotami rovnoměrného distribučního sloupce jsou vždy na stejném uzlu napříč tabulkami.
 
 ![Horizontálních oddílů](media/concepts-hyperscale-colocation/colocation-shards.png)
 
@@ -68,7 +68,7 @@ Pokud se do paměti vejde [pracovní sada](https://en.wikipedia.org/wiki/Working
 
 Dotazy na jeden server začínají snižovat počet klientů a data uložená pro každého tenanta roste. Pracovní sada se zastaví přizpůsobení paměti a CPU se stane kritickým bodem.
 
-V tomto případě můžeme horizontálních oddílů data v mnoha uzlech pomocí škálování (Citus). První a nejdůležitější volba, kterou musíme udělat, když se rozhodneme, že horizontálních oddílů je distribuční sloupec. Pojďme začít s Naive možností použití `event_id` pro tabulku událostí a `page_id` pro `page` tabulku:
+V tomto případě můžeme horizontálních oddílů data v mnoha uzlech pomocí škálování (Citus). První a nejdůležitější volba, kterou musíme udělat, když se rozhodneme, že horizontálních oddílů je distribuční sloupec. Pojďme začít s Naive volbou použití `event_id` pro tabulku událostí a `page_id` pro tabulku `page`:
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -109,7 +109,7 @@ Data jsou rozptýlená, takže dotazy je možné paralelně rozdávat. To je vý
 
 ### <a name="distribute-tables-by-tenant"></a>Distribuovat tabulky podle tenanta
 
-V Citus je zaručeno, že řádky se stejnou hodnotou distribučního sloupce budou ve stejném uzlu. Počínaje tím můžeme vytvořit tabulky s použitím `tenant_id` distribučního sloupce.
+V Citus je zaručeno, že řádky se stejnou hodnotou distribučního sloupce budou ve stejném uzlu. Počínaje tím můžeme vytvořit tabulky s `tenant_id` jako distribuční sloupec.
 
 ```sql
 -- co-locate tables by using a common distribution column
@@ -138,6 +138,6 @@ Vzhledem k tomu, že filtr a spojení v tenant_id, Citus () ví, že je možné 
 
 V některých případech se dotazy a schémata tabulek musí změnit tak, aby zahrnovaly ID tenanta v jedinečných omezeních a podmínkách připojení. Tato změna je obvykle jednoduchá.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podívejte se, jak se v [kurzu víceklientské architektury](tutorial-design-database-hyperscale-multi-tenant.md)nacházejí data tenanta.

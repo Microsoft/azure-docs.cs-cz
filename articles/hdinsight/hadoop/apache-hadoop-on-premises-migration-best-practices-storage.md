@@ -1,5 +1,5 @@
 ---
-title: Migrace místních Apache Hadoopových clusterů do služby Azure HDInsight – Storage
+title: 'Úložiště: migrace místních Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy úložiště pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9b246fe9b09f2939663b4fb74ee1da703264d533
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b22c3c7e7dbbf7a93fff10ded1fbb7bef8fc5900
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028937"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494957"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight
 
@@ -42,7 +42,7 @@ Pro přístup k datům, která jsou uložená v Azure Storage, se dá použít j
 
 [Azure Storage škálovatelnost a cíle výkonnosti](../../storage/common/storage-scalability-targets.md) vypíše aktuální limity účtů úložiště Azure. Pokud požadavky aplikace překročí cíle škálovatelnosti jednoho účtu úložiště, může být aplikace sestavená tak, aby používala více účtů úložiště, a pak rozdělit datové objekty mezi tyto účty úložiště.
 
-[Analýza úložiště Azure](../../storage/storage-analytics.md)@no__t – metriky 1provides pro všechny služby úložiště a Azure Portal je možné nakonfigurovat tak, aby byly metriky shromažďovány pro vizuální grafy. Výstrahy se dají vytvořit, pokud chcete upozorňovat na dosažení prahových hodnot pro metriky prostředků úložiště.
+[Analýza úložiště Azure](../../storage/storage-analytics.md) poskytuje metriky pro všechny služby úložiště a Azure Portal je možné nakonfigurovat tak, aby byly metriky shromažďovány pro vizuální grafy. Výstrahy se dají vytvořit, pokud chcete upozorňovat na dosažení prahových hodnot pro metriky prostředků úložiště.
 
 Azure Storage nabízí [obnovitelné odstranění objektů BLOB](../../storage/blobs/storage-blob-soft-delete.md) , které vám pomůžou obnovit data v případě, že je omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště.
 
@@ -163,7 +163,7 @@ Ve výchozím nastavení má služba HDInsight úplný přístup k datům v úč
     |storage_container_name|Kontejner v účtu úložiště, ke kterému chcete omezit přístup|
     |example_file_path|Cesta k souboru, který je odeslán do kontejneru.|
 
-2. Soubor SASToken.py se dodává s oprávněními @no__t 0 a dá se upravit na základě případu použití.
+2. Soubor SASToken.py obsahuje oprávnění `ContainerPermissions.READ + ContainerPermissions.LIST` a lze jej upravovat na základě případu použití.
 
 3. Skript spusťte následujícím způsobem: `python SASToken.py`
 
@@ -185,7 +185,7 @@ Existují tři důležité věci, které byste si měli pamatovat v souvislosti 
 
 1. Pokud jsou tokeny SAS vytvořené pomocí oprávnění číst a seznam, uživatelé, kteří přistupují k kontejneru objektů BLOB s tímto tokenem SAS, nebudou moct zapisovat a odstraňovat data. Uživatelé, kteří přistupují k kontejneru objektů BLOB pomocí tohoto tokenu SAS a operaci zápisu nebo odstranění, obdrží zprávu, jako je `"This request is not authorized to perform this operation"`.
 
-2. Když se tokeny SAS generují s oprávněním `READ + LIST + WRITE` (jenom pro omezení `DELETE`), nejprve příkazy, jako je například `hadoop fs -put`, zapisují do souboru `\_COPYING\_` a pak se pokusí přejmenovat soubor. Tato operace HDFS mapuje na `copy+delete` pro WASB. Vzhledem k tomu, že nebylo zadáno oprávnění `DELETE`, "Put" selže. Operace `\_COPYING\_` je funkce Hadoop určená k poskytnutí nějakého řízení souběžnosti. V současné době neexistuje způsob, jak omezit pouze operaci "odstranit", aniž by to ovlivnilo i "WRITE" operace.
+2. Pokud jsou tokeny SAS generovány s oprávněním `READ + LIST + WRITE` (k omezení pouze `DELETE`), `hadoop fs -put` nejprve zapisovat do souboru `\_COPYING\_` a potom se pokusí přejmenovat soubor. Tato operace HDFS mapuje na `copy+delete` pro WASB. Vzhledem k tomu, že nebylo zadáno oprávnění `DELETE`, "Put" selže. Operace `\_COPYING\_` je funkce Hadoop určená k poskytnutí nějakého řízení souběžnosti. V současné době neexistuje způsob, jak omezit pouze operaci "odstranit", aniž by to ovlivnilo i "WRITE" operace.
 
 3. Poskytovatel pověření Hadoop a zprostředkovatel dešifrovacího klíče (ShellDecryptionKeyProvider) v současné době nefungují s tokeny SAS, takže se v současné době nedá chránit z viditelnosti.
 

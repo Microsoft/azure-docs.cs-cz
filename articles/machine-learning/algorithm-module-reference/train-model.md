@@ -1,24 +1,24 @@
 ---
 title: 'Model výuky: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul **vlakového modelu** ve službě Azure Machine Learning ke školení modelu klasifikace nebo regrese.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul **vlakového modelu** v Azure Machine Learning ke školení modelu klasifikace nebo regrese.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: f9717c39388c85ced889744722899b78a5df8453
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 28cc2e1f8782f1ffd37e3a20fcc68264b481e42e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693686"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490375"
 ---
 # <a name="train-model-module"></a>Modul vlakového modelu
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul slouží ke školení modelu klasifikace nebo regrese. Školení proběhne po definování modelu a nastavení jeho parametrů a vyžaduje označení dat. Pomocí **výukového modelu** můžete také přeškolovat stávající model s novými daty. 
 
@@ -77,4 +77,4 @@ Po vyškolení modelu:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

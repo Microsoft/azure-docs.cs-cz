@@ -1,7 +1,7 @@
 ---
 title: Přidat příklad projevy-LUIS
 titleSuffix: Azure Cognitive Services
-description: Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Představuje Language Understanding (LUIS), že je potřeba přidat příklad projevy záměru.
+description: Příkladem projevy jsou textové příklady dotazů a příkazů uživatele. Chcete-li naučit Language Understanding (LUIS), musíte do záměru přidat příklad projevy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,85 +9,88 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1e170b86f573112cc5bc8dddd6f080921ef29d2d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ed6321963422cf17c858f43593092f8ffa4a1119
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932935"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467741"
 ---
-# <a name="add-an-entity-to-example-utterances"></a>Přidání entity do příklad projevy 
+# <a name="add-an-entity-to-example-utterances"></a>Přidání entity do ukázkového projevy 
 
-Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Představuje Language Understanding (LUIS), budete muset přidat [příklad projevy](luis-concept-utterance.md) do [záměr](luis-concept-intent.md).
+Příkladem projevy jsou textové příklady dotazů a příkazů uživatele. Chcete-li naučit Language Understanding (LUIS), musíte do [záměru](luis-concept-intent.md)přidat [příklad projevy](luis-concept-utterance.md) .
 
-Obvykle nejprve do záměru přidáte příklad utterance a potom na stránce **záměry** vytvoříte entity a popisek projevy. Pokud byste raději entity nejprve vytvoříte, přečtěte si téma [přidat entity](luis-how-to-add-entities.md).
 
-## <a name="marking-entities-in-example-utterances"></a>Označení entity v příkladu projevy
+Obvykle nejprve do záměru přidáte příklad utterance a potom na stránce **záměry** vytvoříte entity a popisek projevy. Pokud místo toho chcete vytvořit entity jako první, přečtěte si téma [Přidání entit](luis-how-to-add-entities.md).
 
-Při výběru textu v příkladu utterance označit pro entitu, se zobrazí místní nabídky v místě. Pomocí této nabídky k vytvoření nebo výběr entity. 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-Některé typy entit, jako je například předem připravených entit a entit regulární výraz nelze v příkladu utterance bez příznaku, protože jsou automaticky označené. 
+## <a name="marking-entities-in-example-utterances"></a>Označení entit v příkladu projevy
+
+Když vyberete text v příkladu utterance, který chcete označit pro entitu, zobrazí se místní nabídka místní nabídky. Pomocí této nabídky můžete vytvořit nebo vybrat entitu. 
+
+Některé typy entit, například předem připravené entity a entity regulárních výrazů, nemohou být označeny v příkladu utterance, protože jsou označeny automaticky. 
 
 ## <a name="add-a-simple-entity"></a>Přidat jednoduchou entitu
 
-V následujícím postupu vytvoříte a označíte vlastní entitu v rámci následujících utterance na stránce záměry:
+V následujícím postupu vytvoříte a označíte vlastní entitu v rámci následujících utterance na stránce **záměry** :
 
 ```text
 Are there any SQL server jobs?
 ```
 
-1. Vyberte `SQL server` v utterance a označte jej jako jednoduchou entitu. V rozevíracím seznamu pole entity, které se zobrazí můžete vybrat existující entity nebo přidat novou entitu. Chcete-li přidat novou entitu, zadejte `Job` její název do textového pole a pak vyberte **vytvořit novou entitu**.
+1. Vyberte `SQL server` v utterance, abyste ho mohli označit jako jednoduchou entitu. V rozevíracím seznamu entita, která se zobrazí, můžete buď vybrat existující entitu, nebo přidat novou entitu. Pokud chcete přidat novou entitu, zadejte její název `Job` do textového pole a pak vyberte **vytvořit novou entitu**.
 
-    ![Snímek obrazovky zadání názvu entity](./media/luis-how-to-add-example-utterances/create-simple-entity.png)
+    ![Snímek obrazovky se zadáním názvu entity](./media/luis-how-to-add-example-utterances/create-simple-entity.png)
 
     > [!NOTE]
-    > Při výběru slova ke značce jako entity:
-    > * Pro jednoho slova stačí vyberte ji. 
+    > Když vybíráte slova, která chcete označit jako entity:
+    > * V případě jednoho slova ho stačí vybrat. 
     > * V případě sady dvou nebo více slov vyberte první slovo a potom konečné slovo.
 
-1. V **jaký typ entity chcete vytvořit?** v místním okně, ověřte název entity a vyberte **jednoduché** typu entity a pak vyberte **provádí**.
+1. V rozevíracím seznamu **jaký typ entity chcete vytvořit?** ověřte název entity, vyberte typ **jednoduché** entity a pak vyberte možnost **Hotovo**.
 
-    A [seznam frází](luis-concept-feature.md) se běžně používá pro zvýšení signál jednoduchou entitu.
+    [Seznam frází](luis-concept-feature.md) se běžně používá ke zvýšení signálu jednoduché entity.
 
-## <a name="add-a-list-entity"></a>Přidat seznam entit
+## <a name="add-a-list-entity"></a>Přidat entitu seznamu
 
 Seznam entit představuje sadu přesně vyhovujících textů souvisejících slov v systému. 
 
-Pro seznam oddělení vaší společnosti, můžete mít normalizované hodnoty: `Accounting` a `Human Resources`. Každý normalizovaný název má synonym. Pro oddělení můžete tato synonyma zahrnout všechny oddělení zkratky, čísla nebo slang. Není nutné znát všechny hodnoty při vytvoření entity. Můžete přidat více až po kontrole projevy uživatelů s synonym.
+Pro seznam oddělení společnosti můžete mít normalizované hodnoty: `Accounting` a `Human Resources`. Každý normalizovaný název má synonyma. V případě oddělení můžou tato synonyma obsahovat jakékoli akronymy oddělení, čísla nebo slangem. Při vytváření entity nemusíte znát všechny hodnoty. Po kontrole reálných uživatelských projevy pomocí synonym můžete přidat další.
 
 1. V příkladu utterance na stránce **záměry** vyberte slovo nebo frázi, které chcete v seznamu nový. Když se zobrazí rozevírací seznam entita, do horního textového pole zadejte název nové entity seznamu a pak vyberte **vytvořit novou entitu**.   
 
-1. V **jaký typ entity chcete vytvořit?** v místním okně, název entity a vyberte **seznamu** jako typ. Přidání synonym této položky seznamu a pak vyberte **provádí**. 
+1. V rozevíracím seznamu **jaký typ entity chcete vytvořit?** zadejte název entity a jako typ vyberte **seznam** . Přidejte synonyma této položky seznamu a potom vyberte **Hotovo**. 
 
-    ![Snímek obrazovky zadání synonyma seznam entit](./media/luis-how-to-add-example-utterances/hr-create-list-2.png)
+    ![Snímek obrazovky se zadáním synonym entit seznamu](./media/luis-how-to-add-example-utterances/hr-create-list-2.png)
 
-    Označování jiných projevy, nebo úpravou entity z můžete přidat další položky seznamu nebo další položku synonyma **entity** v levém navigačním panelu. [Úpravy](luis-how-to-add-entities.md#add-list-entities) entity, které vám dává možnosti zadávání další položky s odpovídající synonymům nebo import seznamu. 
+    Můžete přidat více položek seznamu nebo více synonym položek pomocí označení jiných projevy nebo úpravou entity z **entit** v levém navigačním panelu. [Úpravy](luis-how-to-add-entities.md#add-list-entities) entit poskytují možnosti zadávání dalších položek s odpovídajícími synonymy nebo importování seznamu. 
 
 ## <a name="add-a-composite-entity"></a>Přidání složené entity
 
 Složené entity jsou vytvořeny z existujících **entit** pro vytvoření nadřazené entity. 
 
-Za předpokladu, `Does John Smith work in Seattle?`že utterance, může složený utterance vracet informace o entitě názvu `John Smith`zaměstnance a umístění `Seattle` ve složené entitě. Podřízené entity už musí existovat v aplikaci a musí být označené v příkladu utterance před vytvořením složené entity.
+Za předpokladu, že utterance `Does John Smith work in Seattle?`, může složený utterance vracet informace o entitě názvu zaměstnance `John Smith`a `Seattle` umístění v složené entitě. Podřízené entity už musí existovat v aplikaci a musí být označené v příkladu utterance před vytvořením složené entity.
 
 1. Pokud chcete podřízené entity zabalit do složené entity, vyberte v utterance pro složenou entitu **první** označenou entitou (vlevo-nejvíce). Zobrazí se rozevírací seznam pro zobrazení možností pro tento výběr.
 
 1. V rozevíracím seznamu vyberte možnost **zalamovat v složené entitě** . 
 
-1. Vyberte poslední slovo složený entity (nejvíce vpravo). Všimněte si, že zelená čára následuje složený entity. Toto je vizuální indikátor pro složenou entitu a měl by být v rámci všech slov v složené entitě z podřízené entity nejvíce vlevo až po podřízenou entitu nejvíce vpravo.
+1. Vyberte poslední slovo složené entity (nejvyšší oprávnění). Všimněte si, že po složené entitě následuje zelená čára. Toto je vizuální indikátor pro složenou entitu a měl by být v rámci všech slov v složené entitě z podřízené entity nejvíce vlevo až po podřízenou entitu nejvíce vpravo.
 
-1. Zadejte název složený entity v rozevíracím seznamu.
+1. V rozevíracím seznamu zadejte název složené entity.
 
-    Při zabalení entity správně, je zelenou čáru pod celou frázi.
+    Při správném zalamování entit je zelená čára v rámci celé fráze.
 
-1. Ověření složeného entity podrobnosti na **jaký typ entity chcete vytvořit?** automaticky otevírané okno pole vyberte **provádí**.
+1. Ověřte podrobnosti složených entit v rozevíracím seznamu **typ entity, který chcete vytvořit?** potom vyberte **Hotovo**.
 
-    ![Snímek obrazovky Entity podrobnosti místní](./media/luis-how-to-add-example-utterances/hr-create-composite-3.png)
+    ![Snímek obrazovky s rozbalovacími informacemi o entitě](./media/luis-how-to-add-example-utterances/hr-create-composite-3.png)
 
-1. Složený entity, zobrazí se i modré zvýraznění pro jednotlivé entity a zelená podtržení celý složené entity. 
+1. Složená entita se zobrazí s modrými zvýrazněními pro jednotlivé entity a zeleným podtržením pro celou složenou entitu. 
 
-    ![Stránce s podrobnostmi o snímek obrazovky s příkazy, pomocí složeného entity](./media/luis-how-to-add-example-utterances/hr-create-composite-4.png)
+    ![Stránka s podrobnostmi o záměrech na snímku se složenou entitou](./media/luis-how-to-add-example-utterances/hr-create-composite-4.png)
 
 ## <a name="add-entitys-role-to-utterance"></a>Přidat roli entity do utterance
 
@@ -95,68 +98,68 @@ Role je pojmenovaný podtyp entity určený kontextem utterance. Entitu můžete
 
 Naučte [se, jak označit utterance pomocí rolí entit](tutorial-entity-roles.md) z praktického kurzu. 
 
-## <a name="entity-status-predictions"></a>Predikce stavu entity
+## <a name="entity-status-predictions"></a>Předpovědi stavu entity
 
-Při zadání nového utterance na portálu služby LUIS, pravděpodobně utterance entity předpovědi chyb. Chyba předpovědi je rozdíl mezi jak entita s názvem ve srovnání s jak LUIS upozornilo na entitu. 
+Když na portálu LUIS zadáte novou utterance, může utterance obsahovat chyby předpovědi entit. Chyba předpovědi je rozdíl mezi tím, jak je entita označena v porovnání s tím, jak LUIS předpověď entit. 
 
-Tento rozdíl je vizuálně reprezentována na portálu služby LUIS s červenou vlnovkou v utterance. Červené podtržení může objevit v závorkách pro entitu nebo mimo hranaté závorky. 
+Tento rozdíl je vizuálně reprezentován na portálu LUIS s červeným podtržením v utterance. Červené podtržení se může objevit v závorkách entit nebo mimo hranaté závorky. 
 
-![Snímek obrazovky Entity stav predikcí nesrovnalosti](./media/luis-how-to-add-example-utterances/entity-prediction-error.png)
+![Snímek obrazovky s rozdílem v předpovědi stavu entity](./media/luis-how-to-add-example-utterances/entity-prediction-error.png)
 
-Vyberte slova, která jsou podtrženy červeně utterance. 
+Vyberte slova podtržená červeně v utterance. 
 
-Zobrazí pole entity **stav Entity** se červený vykřičník Pokud dojde k neshodě předpovědi. Chcete-li zobrazit stav Entity s informacemi o rozdílech mezi s popiskem a prediktivní entity, vyberte **stav Entity** vyberte položku na pravé straně.
+V poli entita se zobrazí **stav entity** s červeným vykřičníkem, pokud dojde k nesouladu předpovědi. Chcete-li zobrazit stav entity s informacemi o rozdílu mezi popisky a předpovězenými entitami, vyberte možnost **stav entity** a pak vyberte položku vpravo.
 
 ![Snímek obrazovky výběru stavu entity](./media/luis-how-to-add-example-utterances/entity-prediction-error-correction.png)
 
-Může se zobrazit řádku červeně na některý z následujících časech:
+Červená čára může vypadat v následujících časech:
 
-   * Při zadání utterance, ale před je označené jako entity
-   * Když entitu popisek
+   * Při zadání utterance, ale před označením entity
+   * Při použití popisku entity
    * Při odebrání popisku entity
-   * Pokud více než jeden popisek entity očekává se, že pro tento text 
+   * Je-li pro tento text předpokládaný více než jeden popisek entity 
 
-Následující řešení vyřešit nesrovnalosti předpovědi entity:
+Následující řešení vám pomůžou vyřešit nesoulad mezi předpověďmi entit:
 
-|Entita|Vizuální označení|Předpověď|Řešení|
+|Entita|Vizuální indikátor|Předpovědi|Řešení|
 |--|--|--|--|
-|Utterance zadali, nemá ještě Popisek entity.|červené podtržení|Predikce je správná.|Popisek entita s předpovězené hodnoty.|
-|Text bez popisku|červené podtržení|Nesprávný predikcí|Aktuální projevy, které používají tuto entitu nesprávné třeba, aby ve všech záměry. Aktuální projevy mají mistaught LUIS, tento text je prediktivní entity.
-|Správně označené text|entity modré zvýraznění, červené podtržení|Nesprávný predikcí|Zadejte další projevy s entitou správně označené v různých místech a použití. Aktuální projevy jsou je dostatečná představuje LUIS, že jde o entitu nebo podobné entity se zobrazí ve stejném kontextu. Podobně jako entity by měl sloučené do jedné entity, LUIS se zaměňovat. Jiným řešením je přidat seznam frázi a zvýšit tak význam slova. |
-|Nesprávně označené text|entity modré zvýraznění, červené podtržení|Správné predikcí| Zadejte další projevy s entitou správně označené v různých místech a použití. 
+|Utterance zadáno, entita se ještě neoznačí.|červené podtržení|Předpověď je správná.|Označte entitu entitou s předpokládanou hodnotou.|
+|Neoznačený text|červené podtržení|Nesprávná předpověď|Aktuální projevy, který používá tuto nesprávnou entitu, je nutné zkontrolovat ve všech záměrech. Aktuální projevy vyLUISi, že tento text představuje předpovězenou entitu.
+|Správně označený text|modrá entita zvýraznění, červené podtržení|Nesprávná předpověď|Poskytněte více projevy s správně označenou entitou na nejrůznějších místech a použitích. Aktuální projevy nejsou dostačující pro učení LUIS, že se jedná o entitu nebo se podobné entity zobrazují ve stejném kontextu. Podobná entita by se měla zkombinovat do jedné entity, takže LUIS se nezaměňuje. Dalším řešením je přidat seznam frází, který bude zvyšovat význam slov. |
+|Nesprávně označený text|modrá entita zvýraznění, červené podtržení|Správné předpovědi| Poskytněte více projevy s správně označenou entitou na nejrůznějších místech a použitích. 
 
 ## <a name="other-actions"></a>Další akce
 
-Můžete provádět akce na příkladu projevy jako vybranou skupinu nebo jednotlivé položky. Skupiny vybrané příklad projevy změnit v kontextové nabídce nad seznamem. Jednotlivé položky může použít místní nabídku výše v seznamu a jednotlivé kontextové tři tečky na konci každého řádku utterance. 
+Můžete provádět akce, například projevy jako vybranou skupinu nebo jako jednotlivou položku. Skupiny vybraných vzorů projevy změnu kontextové nabídky nad seznamem. Jednotlivé položky mohou používat místní nabídku nad seznamem a jednotlivé kontextové tři tečky na konci každého řádku utterance. 
 
-### <a name="remove-entity-labels-from-utterances"></a>Odebrání popisků entity z projevy
+### <a name="remove-entity-labels-from-utterances"></a>Odebrat popisky entit z projevy
 
-Na stránce záměry můžete odebrat popisky entit učené počítačem z utterance. Pokud subjektem není zjištěné počítače, nelze odebrat ze utterance. Pokud potřebujete k odebrání utterance na jiné počítače zjistili entitu, musíte odstranit entitu z celé aplikace. 
+Na stránce záměry můžete odebrat popisky entit učené počítačem z utterance. Pokud se entita nenaučila počítačem, nejde ji odebrat z utterance. Pokud potřebujete z utterance odebrat entitu, která není učená z počítače, je potřeba entitu odstranit z celé aplikace. 
 
-Odebrání popisku se naučili počítač entity ze utterance, vyberte entitu utterance. Potom vyberte **odebrat popisek** v rozevíracím seznamu pole entity, které se zobrazí.
+Pokud chcete z utterance odebrat popisek entity učené počítačem, vyberte entitu v utterance. Pak v rozevíracím seznamu entita, který se zobrazí, vyberte **Odebrat popisek** .
 
 ### <a name="add-a-prebuilt-entity-label"></a>Přidat předem sestavený popisek entity
 
-Když přidáte do aplikace LUIS předem připravených entit, není nutné projevy značky s těmito entitami. Další informace o tom předem připravených entit a jak je přidat, naleznete v tématu [přidat entity](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
+Když do aplikace LUIS přidáte předem připravené entity, nemusíte s těmito entitami označovat projevy. Další informace o předem sestavených entitách a o tom, jak je přidat, najdete v tématu věnovaném [Přidání entit](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
 ### <a name="add-a-regular-expression-entity-label"></a>Přidat popisek entity regulárního výrazu
 
-Pokud regulární výraz entity, které přidáte do aplikace LUIS, není nutné projevy značky s těmito entitami. Další informace o regulární výraz entity a jak je přidat, naleznete v tématu [přidat entity](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
+Pokud přidáte entity regulárních výrazů do aplikace LUIS, není nutné označit projevy těmito entitami. Další informace o entitách regulárních výrazů a o tom, jak je přidat, najdete v tématu věnovaném [Přidání entit](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
 
 
-### <a name="create-a-pattern-from-an-utterance"></a>Ze utterance společně tvoří masku
+### <a name="create-a-pattern-from-an-utterance"></a>Vytvoření vzoru z utterance
 
-Zobrazit [přidat vzorek z existující utterance na stránce záměr nebo entity](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
+Přečtěte si téma [Přidání vzoru z existující stránky utterance na záměr nebo entitu](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 
 
 ### <a name="add-a-patternany-entity"></a>Přidejte vzor. libovolnou entitu
 
-Pokud přidáte pattern.any entity do aplikace LUIS, nelze označit projevy s těmito entitami. Jsou platné ve vzorech. Další informace o pattern.any entity a jak je přidat, naleznete v tématu [přidat entity](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities).
+Pokud přidáte vzor. jakékoli entity do aplikace LUIS, nemůžete pomocí těchto entit označit projevy. Jsou platné pouze ve vzorcích. Další informace o vzorcích. jakékoli entity a jejich přidání najdete v tématu [Přidání entit](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities).
 
-## <a name="train-your-app-after-changing-model-with-utterances"></a>Po změně modelu s projevy trénování vaší aplikace
+## <a name="train-your-app-after-changing-model-with-utterances"></a>Školení aplikace po změně modelu pomocí projevy
 
-Po přidání, úprava nebo odebrání projevy, [trénování](luis-how-to-train.md) a [publikovat](luis-how-to-publish-app.md) vaší aplikace pro vaše změny ovlivnit dotazy koncový bod. 
+Po přidání, úpravě nebo odebrání projevy, [školení](luis-how-to-train.md) a [publikování](luis-how-to-publish-app.md) aplikace pro změny, které mají vliv na dotazy koncového bodu. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po označení projevy ve svých **záměrech**teď můžete vytvořit složenou entitu [](luis-how-to-add-entities.md).
+Po označení projevy ve svých **záměrech**teď můžete vytvořit [složenou entitu](luis-how-to-add-entities.md).

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793548"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466530"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Správa služby Azure Kognitivní hledání pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ I když pro správu obsahu nejsou k dispozici žádné vyhrazené příkazy pros
 
 Jiné úkoly, které nejsou podporované prostřednictvím PowerShellu nebo žádné jiné rozhraní API (jenom na portálu), zahrnují:
 + [Připojte prostředek služby poruchy](cognitive-search-attach-cognitive-services.md) pro [indexování obohacenou AI](cognitive-search-concept-intro.md). Služba rozpoznávání je připojená k dovednosti, nikoli k předplatnému nebo službě.
-+ [Řešení monitorování doplňku](search-monitor-usage.md#add-on-monitoring-solutions) pro monitorování Azure Search.
++ [Řešení monitorování doplňku](search-monitor-usage.md#add-on-monitoring-solutions) pro monitorování Azure kognitivní hledání.
 
 <a name="check-versions-and-load"></a>
 

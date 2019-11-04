@@ -9,125 +9,81 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: d1d69b256c4fc7e7b9d1c84b7c409d01a9f8ce52
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: b2a2d9e78a0b152da14bb737079cf0dfdef0dc05
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677546"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491235"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Pořadí předem sestavené entity pro aplikaci LUIS
-Ordinální číslo je numerická reprezentace objektu uvnitř sady: `first`, `second`, `third`. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující ordinální číslo. V [mnoha kulturách](luis-reference-prebuilt-entities.md)je podporována ordinální entita. 
+Ordinální číslo je numerická reprezentace objektu uvnitř sady: `first`, `second``third`. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující ordinální číslo. V [mnoha kulturách](luis-reference-prebuilt-entities.md)je podporována ordinální entita. 
 
 ## <a name="types-of-ordinal"></a>Typy pořadových čísel
 Ordinální číslo je spravované z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) v GitHubu.
 
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>Řešení pro předem sestavenou ordinální entitu
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
+Pro dotaz se vrátí následující objekty entity:
+
+`Order the second option`
+
+#### <a name="v3-responsetabv3"></a>[Odpověď V3](#tab/V3)
+
+Následující JSON je s parametrem `verbose` nastaveným na `false`:
+
+```json
+"entities": {
+    "ordinal": [
+        2
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Podrobná odpověď V3](#tab/V3-verbose)
+Následující JSON je s parametrem `verbose` nastaveným na `true`:
+
+```json
+"entities": {
+    "ordinal": [
+        2
+    ],
+    "$instance": {
+        "ordinal": [
+            {
+                "type": "builtin.ordinal",
+                "text": "second",
+                "startIndex": 10,
+                "length": 6,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+#### <a name="v2-responsetabv2"></a>[Odpověď v2](#tab/V2)
 
 Následující příklad ukazuje řešení entity **Builtin. Ordinal** .
 
 ```json
-{
-  "query": "Order the second option",
-  "topScoringIntent": {
-    "intent": "OrderFood",
-    "score": 0.9993253
-  },
-  "intents": [
-    {
-      "intent": "OrderFood",
-      "score": 0.9993253
-    },
-    {
-      "intent": "None",
-      "score": 0.05046708
+"entities": [
+  {
+    "entity": "second",
+    "type": "builtin.ordinal",
+    "startIndex": 10,
+    "endIndex": 15,
+    "resolution": {
+      "value": "2"
     }
-  ],
-  "entities": [
-    {
-      "entity": "second",
-      "type": "builtin.ordinal",
-      "startIndex": 10,
-      "endIndex": 15,
-      "resolution": {
-        "value": "2"
-      }
-    }
-  ]
-}
+  }
+]
 ```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
-
-Následující JSON má parametr `verbose` nastavený na `false`:
-
-```json
-{
-    "query": "Order the second option",
-    "prediction": {
-        "normalizedQuery": "order the second option",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "ordinal": [
-                {
-                    "offset": 2,
-                    "relativeTo": "start"
-                }
-            ]
-        }
-    }
-}
-```
-
-Následující JSON má parametr `verbose` nastavený na `true`:
-
-```json
-{
-    "query": "Order the second option",
-    "prediction": {
-        "normalizedQuery": "order the second option",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "ordinal": [
-                {
-                    "offset": 2,
-                    "relativeTo": "start"
-                }
-            ],
-            "$instance": {
-                "ordinal": [
-                  {
-                    "type": "builtin.ordinal",
-                    "text": "second",
-                    "startIndex": 10,
-                    "length": 6,
-                    "modelTypeId": 2,
-                    "modelType": "Prebuilt Entity Extractor",
-                    "recognitionSources": [
-                        "model"
-                    ]
-                  }
-                ]
-            }
-        }
-    }
-}
-```
-
 * * * 
 
 ## <a name="next-steps"></a>Další kroky

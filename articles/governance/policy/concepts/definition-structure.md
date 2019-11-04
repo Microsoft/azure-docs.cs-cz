@@ -3,15 +3,15 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje použití definice zásad prostředků Azure Policy k vytvoření konvencí pro prostředky ve vaší organizaci, a to tak, že popisuje, kdy se zásada vynutila a jaký je efekt, který je potřeba provést.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fe0f16fd4c07eac92ab3c1ae2c6f78b0bd1595eb
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d415075bda4ff58d4a3a633fe820f22d8a157459
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053501"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464027"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -81,12 +81,17 @@ Ve většině případů doporučujeme nastavit **režim** na `all`. Všechny de
 
 Při vytváření zásad, které vydávají značky nebo umístění, by se měla použít `indexed`. I když to není nutné, zabrání prostředkům, které nepodporují značky a umístění, z hlediska výsledků dodržování předpisů v nedodržení předpisů. Výjimkou jsou **skupiny prostředků**. Zásady, které vynutily umístění nebo značky ve skupině prostředků, by měly nastavit **režim** na `all` a konkrétně cílit na typ `Microsoft.Resources/subscriptions/resourceGroups`. Příklad najdete v tématu [vymáhání značek skupin prostředků](../samples/enforce-tag-rg.md). Seznam prostředků, které podporují značky, najdete v tématu [Podpora značek pro prostředky Azure](../../../azure-resource-manager/tag-support.md).
 
-### <a name="resource-provider-modes"></a>Režimy poskytovatele prostředků
+### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />režimy poskytovatele prostředků (Preview)
 
-V tuto chvíli se podporuje jenom režim poskytovatele prostředků, který se `Microsoft.ContainerService.Data` pro správu pravidel pro přístup k řadičům přístupu ve [službě Azure Kubernetes](../../../aks/intro-kubernetes.md).
+V současné době jsou podporovány následující režimy poskytovatele prostředků ve verzi Preview:
+
+- `Microsoft.ContainerService.Data` pro správu pravidel kontroleru přístupu pro [službu Azure Kubernetes](../../../aks/intro-kubernetes.md). Zásady, které používají tento režim poskytovatele prostředků, **musí** používat [EnforceRegoPolicy](./effects.md#enforceregopolicy) efekt.
+- `Microsoft.Kubernetes.Data` pro správu samoobslužně spravovaných clusterů Kubernetes modulu AKS v Azure.
+  Zásady, které používají tento režim poskytovatele prostředků, **musí** používat [EnforceOPAConstraint](./effects.md#enforceopaconstraint) efekt.
+- `Microsoft.KeyVault.Data` ke správě trezorů a certifikátů v [Azure Key Vault](../../../key-vault/key-vault-overview.md).
 
 > [!NOTE]
-> [Azure Policy pro Kubernetes](rego-for-aks.md) jsou v Public Preview a podporují jenom předdefinované definice zásad.
+> Režimy poskytovatele prostředků podporují jenom integrované definice zásad a nepodporují iniciativy ve verzi Preview.
 
 ## <a name="parameters"></a>Parametry
 
@@ -134,7 +139,7 @@ Jako příklad můžete definovat definici zásady, která omezí umístění, k
 
 ### <a name="using-a-parameter-value"></a>Použití hodnoty parametru
 
-V pravidle zásad můžete odkazovat na parametry pomocí následující syntaxe funkce `parameters` hodnoty nasazení:
+V pravidle zásad se odkazuje na parametry s následující syntaxí `parameters` funkce:
 
 ```json
 {
@@ -272,7 +277,7 @@ Podporují se následující pole:
 - `tags['''<tagName>''']`
   - Tato syntaxe závorky podporuje názvy značek, které mají apostrofy, pomocí uvozovacích znaků s dvojitými apostrofy.
   - Kde **'\<tagName\>'** je název značky, pro kterou má být podmínka ověřena.
-  - Příklad: `tags['''My.Apostrophe.Tag''']`, kde **'\<tagName\>'** je název značky.
+  - Příklad: `tags['''My.Apostrophe.Tag''']`, kde **' My. apostrof. tag '** je název značky.
 - aliasy vlastností – pro seznam najdete v tématu [aliasy](#aliases).
 
 > [!NOTE]
@@ -291,11 +296,17 @@ V následujícím příkladu `concat` slouží k vytvoření vyhledávání pole
         "exists": "false"
     },
     "then": {
-        "effect": "append",
-        "details": [{
-            "field": "[concat('tags[', parameters('tagName'), ']')]",
-            "value": "[resourcegroup().tags[parameters('tagName')]]"
-        }]
+        "effect": "modify",
+        "details": {
+            "operations": [{
+                "operation": "add",
+                "field": "[concat('tags[', parameters('tagName'), ']')]",
+                "value": "[resourcegroup().tags[parameters('tagName')]]"
+            }],
+            "roleDefinitionIds": [
+                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ]
+        }
     }
 }
 ```
@@ -390,42 +401,15 @@ Pomocí revidovaného pravidla zásad `if()` zkontroluje délku **názvu** a pot
 
 Azure Policy podporuje následující typy účinku:
 
-- **Deny**: vygeneruje událost v protokolu aktivit a neuspěje požadavek.
-- **Audit**: vygeneruje událost upozornění v protokolu aktivit, ale požadavek neselže.
 - **Připojit**: přidá do žádosti definovanou sadu polí.
-- **AuditIfNotExists**: povolí auditování, pokud prostředek neexistuje.
-- **DeployIfNotExists**: nasadí prostředek, pokud ještě neexistuje.
+- **Audit**: vygeneruje událost upozornění v protokolu aktivit, ale požadavek neselže.
+- **AuditIfNotExists**: vygeneruje událost upozornění v protokolu aktivit, pokud neexistuje související prostředek.
+- **Deny**: vygeneruje událost v protokolu aktivit a neuspěje požadavek.
+- **DeployIfNotExists**: nasadí související prostředek, pokud ještě neexistuje.
 - **Zakázáno**: nevyhodnotí prostředky pro dodržování předpisů pro pravidlo zásad.
-- **EnforceRegoPolicy**: konfiguruje řadič otevřeného přístupu agenta zásad ve službě Azure Kubernetes (Preview).
+- **EnforceOPAConstraint** (Preview): konfiguruje Open Controller agent admissioning Controller s gatekeeper v3 pro samoobslužně spravované clustery Kubernetes v Azure (Preview).
+- **EnforceRegoPolicy** (Preview): konfiguruje Open Controller agent admissioning Controller s gatekeeper v2 ve službě Azure Kubernetes.
 - **Upravit**: Přidání, aktualizace nebo odebrání definovaných značek z prostředku
-
-Pro **připojení**je nutné zadat následující údaje:
-
-```json
-"effect": "append",
-"details": [{
-    "field": "field name",
-    "value": "value of the field"
-}]
-```
-
-Hodnota může být buď řetězec, nebo objekt formátu JSON.
-
-**AuditIfNotExists** a **DeployIfNotExists** vyhodnocují existenci souvisejícího prostředku a použijí pravidlo. Pokud se prostředek neshoduje s pravidlem, je tento efekt implementován. Můžete třeba vyžadovat, aby se sledovací proces sítě nasadil pro všechny virtuální sítě. Další informace najdete v příkladech pro [audit, pokud rozšíření neexistuje](../samples/audit-ext-not-exist.md) .
-
-**DeployIfNotExists** efekt vyžaduje vlastnost **roleDefinitionId** v části **podrobností** pravidla zásad. Další informace najdete v tématu [náprava – konfigurace definice zásad](../how-to/remediate-resources.md#configure-policy-definition).
-
-```json
-"details": {
-    ...
-    "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
-        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
-    ]
-}
-```
-
-Podobně platí, že příkaz **Upravit** vyžaduje vlastnost **roleDefinitionId** v části **podrobností** pravidla zásad pro [úlohu nápravy](../how-to/remediate-resources.md). **Úprava** také vyžaduje, aby pole **operace** definovala akce, které se mají u značek prostředků provést.
 
 Podrobné informace o každém z efektů, pořadí vyhodnocení, vlastností a příkladů najdete v tématu [principy Azure Policych efektů](effects.md).
 

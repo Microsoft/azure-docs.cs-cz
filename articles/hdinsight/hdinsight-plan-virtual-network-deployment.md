@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 2647a8c33bf777cb2d97dcfe89799097ad719ac3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077026"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498164"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
 
@@ -136,7 +136,7 @@ Chcete-li povolit překlad názvů mezi virtuální sítí a prostředky v přip
 
 2. Nakonfigurujte virtuální síť tak, aby používala vlastní server DNS.
 
-3. Najděte příponu DNS přiřazenou k Azure pro vaši virtuální síť. Tato hodnota je podobná `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Informace o vyhledání přípony DNS najdete v tomto [příkladu: Vlastní oddíl](hdinsight-create-virtual-network.md#example-dns) DNS.
+3. Najděte příponu DNS přiřazenou k Azure pro vaši virtuální síť. Tato hodnota je podobná `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Informace o vyhledání přípony DNS najdete v části [Příklad: vlastní DNS](hdinsight-create-virtual-network.md#example-dns) .
 
 4. Nakonfigurujte přesměrování mezi servery DNS. Konfigurace závisí na typu vzdálené sítě.
 
@@ -148,7 +148,7 @@ Chcete-li povolit překlad názvů mezi virtuální sítí a prostředky v přip
 
          * Předejte všechny ostatní požadavky na místní server DNS. Místní DNS zpracovává všechny další požadavky na překlad IP adres, dokonce i požadavky na internetové prostředky, jako je Microsoft.com.
 
-     * __Místní DNS__: Předejte požadavky na příponu DNS virtuální sítě na vlastní server DNS. Vlastní server DNS se pak přepošle do rekurzivního překladače Azure.
+     * __Místní DNS__: předejte požadavky na příponu DNS virtuální sítě na vlastní server DNS. Vlastní server DNS se pak přepošle do rekurzivního překladače Azure.
 
        Tato konfigurace směruje požadavky na plně kvalifikované názvy domén, které obsahují příponu DNS virtuální sítě na vlastní server DNS. Všechny ostatní požadavky (i u veřejných internetových adres) jsou zpracovávány místním serverem DNS.
 
@@ -162,13 +162,13 @@ Chcete-li povolit překlad názvů mezi virtuální sítí a prostředky v přip
 
        Server DNS pro každou síť předávají požadavky do druhé na základě přípony DNS. Další požadavky jsou vyřešeny pomocí rekurzivního překladače Azure.
 
-     Příklad každé konfigurace najdete [v příkladu: Vlastní oddíl](hdinsight-create-virtual-network.md#example-dns) DNS.
+     Příklad každé konfigurace najdete v části [Příklad: vlastní DNS](hdinsight-create-virtual-network.md#example-dns) .
 
 Další informace najdete v dokumentu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) .
 
 ## <a name="directly-connect-to-apache-hadoop-services"></a>Přímé připojení k Apache Hadoop službám
 
-Ke clusteru se můžete připojit na adrese `https://CLUSTERNAME.azurehdinsight.net`. Tato adresa používá veřejnou IP adresu, která může být dosažitelná, pokud jste použili skupin zabezpečení sítě k omezení příchozího provozu z Internetu. Navíc platí, že když nasadíte cluster ve virtuální síti, můžete k němu přistupovat pomocí `https://CLUSTERNAME-int.azurehdinsight.net`privátního koncového bodu. Tento koncový bod se překládá na privátní IP adresu uvnitř virtuální sítě pro přístup k clusteru.
+Ke clusteru se můžete připojit na `https://CLUSTERNAME.azurehdinsight.net`. Tato adresa používá veřejnou IP adresu, která může být dosažitelná, pokud jste použili skupin zabezpečení sítě k omezení příchozího provozu z Internetu. Navíc platí, že když nasadíte cluster ve virtuální síti, můžete k němu přistupovat pomocí `https://CLUSTERNAME-int.azurehdinsight.net`privátního koncového bodu. Tento koncový bod se překládá na privátní IP adresu uvnitř virtuální sítě pro přístup k clusteru.
 
 Pokud se chcete připojit k Apache Ambari a dalším webovým stránkám prostřednictvím virtuální sítě, použijte následující postup:
 
@@ -194,7 +194,7 @@ Pokud se chcete připojit k Apache Ambari a dalším webovým stránkám prostř
     az network nic list --resource-group RESOURCEGROUP --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    V seznamu vrácených uzlů Najděte plně kvalifikovaný název domény pro hlavní uzly a pomocí plně kvalifikovaných názvů domény se připojte k Ambari a dalším webovým službám. Použijte `http://<headnode-fqdn>:8080` například pro přístup k Ambari.
+    V seznamu vrácených uzlů Najděte plně kvalifikovaný název domény pro hlavní uzly a pomocí plně kvalifikovaných názvů domény se připojte k Ambari a dalším webovým službám. Použijte například `http://<headnode-fqdn>:8080` pro přístup k Ambari.
 
     > [!IMPORTANT]  
     > Některé služby hostované v hlavních uzlech jsou aktivní jenom na jednom uzlu. Pokud se pokusíte o přístup ke službě na jednom hlavním uzlu a vrátí se chyba 404, přepněte na jiný hlavní uzel.
@@ -207,9 +207,9 @@ Pokud se chcete připojit k Apache Ambari a dalším webovým stránkám prostř
 
 Síťový provoz ve virtuálních sítích Azure je možné řídit pomocí následujících metod:
 
-* **Skupiny zabezpečení sítě** (NSG) umožňuje filtrovat příchozí a odchozí provoz do sítě. Další informace najdete v dokumentu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) .
+* **Skupiny zabezpečení sítě** (NSG) umožňují filtrovat příchozí a odchozí provoz do sítě. Další informace najdete v dokumentu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) .
 
-* **Síťová virtuální zařízení** (Síťové virtuální zařízení) se dá použít jenom u odchozího provozu. Síťová virtuální zařízení replikuje funkce zařízení, jako jsou brány firewall a směrovače. Další informace najdete v dokumentu [Síťová zařízení](https://azure.microsoft.com/solutions/network-appliances) .
+* **Síťová virtuální zařízení** (síťové virtuální zařízení) se dají použít jenom u odchozích přenosů. Síťová virtuální zařízení replikuje funkce zařízení, jako jsou brány firewall a směrovače. Další informace najdete v dokumentu [Síťová zařízení](https://azure.microsoft.com/solutions/network-appliances) .
 
 Jako spravovaná služba HDInsight vyžaduje neomezený přístup k stavům HDInsight a službám pro správu obou pro příchozí i odchozí provoz z virtuální sítě. Při použití skupin zabezpečení sítě je potřeba zajistit, že tyto služby můžou dál komunikovat s clusterem HDInsight.
 
@@ -249,7 +249,11 @@ Seznam portů pro konkrétní služby najdete v tématu [porty používané slu�
 
 Další informace o pravidlech brány firewall pro virtuální zařízení najdete v dokumentu [scénář virtuální zařízení](../virtual-network/virtual-network-scenario-udr-gw-nva.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="load-balancing"></a>Vyrovnávání zatížení
+
+Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnávání zatížení. Typ tohoto nástroje pro vyrovnávání zatížení se nachází na [základní úrovni SKU](../load-balancer/load-balancer-overview.md#skus) , která má určitá omezení. Jedním z těchto omezení je, že pokud máte dvě virtuální sítě v různých oblastech, nemůžete se připojit k základním nástrojům pro vyrovnávání zatížení. Další informace najdete v tématu [Nejčastější dotazy k virtuálním sítím VNet: omezení globálního partnerského vztahu virtuálních sítí](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+
+## <a name="next-steps"></a>Další kroky
 
 * Ukázky kódu a příklady vytváření virtuálních sítí Azure najdete v tématu [Vytvoření virtuálních sítí pro clustery Azure HDInsight](hdinsight-create-virtual-network.md).
 * Ucelený příklad konfigurace služby HDInsight pro připojení k místní síti najdete v tématu [připojení HDInsight k místní síti](./connect-on-premises-network.md).

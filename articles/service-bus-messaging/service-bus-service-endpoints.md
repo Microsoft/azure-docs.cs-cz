@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: f32a67dc6d3b3f869afaa532403c05b218588552
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7d31dd004c879fd3e689f4ba7a8ae58cb223ae70
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786381"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484924"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Použití koncových bodů služby Virtual Network s Azure Service Bus
 
@@ -36,7 +36,6 @@ Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť
 > - Integrace s Azure Event Grid
 > - Trasy k Azure IoT Hub
 > - Device Explorer Azure IoT
-> - Průzkumník dat Azure
 >
 > Níže uvedené služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure App Service

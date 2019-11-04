@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/05/2019
 ms.author: kraigb
-ms.openlocfilehash: 12d9a1a92c0b008244c7db4ec23d5a28888b042a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: ad4a1d89809ebd1b7ac933ef391965accbfd1a6c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973167"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496722"
 ---
 # <a name="overview-of-azure-notebooks"></a>Přehled Azure Notebooks
 
 Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. [Jupyter](https://jupyter.org/) (dříve IPython) je open source projekt, který umožňuje snadno kombinovat Markdownu text, spustitelný kód, trvalá data, grafiky a vizualizace na jediném, dostupném plátnu, *poznámkovém bloku* (SMS, kde se nachází Jupyter.org):
 
-[@no__t – 1Examples poznámkových bloků Jupyter](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![příklady poznámkových bloků Jupyter](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Z důvodu této výkonné kombinace kódu, grafiky a vysvětlujícího textu se Jupyter stala oblíbená pro spoustu použití, včetně instrukcí pro datové vědy, čištění a transformace dat, číselné simulace, statistického modelování a vývoje modely strojového učení.
 
@@ -118,4 +118,4 @@ Pokud chcete diskutovat o Azure Notebooks, zapište problém do [úložiště Gi
   - [Prezentace prezentace](present-jupyter-notebooks-slideshow.md)
   - [Práce s datovými soubory](work-with-project-data-files.md)
   - [Přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
-  - [Použití služeb Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+  - [Použít Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

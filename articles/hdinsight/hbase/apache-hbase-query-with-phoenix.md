@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: dotazování Apache HBA ve službě Azure HDInsight – Apache Phoenix'
+title: 'Rychlý Start: Apache HBA & Apache Phoenix – Azure HDInsight'
 description: V tomto rychlém startu se dozvíte, jak používat Apache Phoenix v HDInsight. Přečtěte si také, jak nainstalovat a nastavit SQLLine na počítači pro připojení k clusteru HBA v HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 20af6d32d03ae5d4fe37b1a37198ef1f2c50ec95
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: a6896eaad86c5e361c50cd81257131ee75a8d6a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312198"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467037"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Rychlý Start: dotazování Apache HBA ve službě Azure HDInsight pomocí Apache Phoenix
 
@@ -47,7 +47,7 @@ curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clus
       }
 ```
 
-Poznamenejte si hodnotu `host_name` pro pozdější použití.
+Poznamenejte si hodnotu pro `host_name` pro pozdější použití.
 
 ## <a name="create-a-table-and-manipulate-data"></a>Vytvoření tabulky a manipulace s daty
 

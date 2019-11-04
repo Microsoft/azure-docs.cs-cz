@@ -13,21 +13,21 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cabefcc53106a53459975fc26513dc59ae7d3372
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 841271c474ba8e24bc352bcae1fa037cf382a8ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073213"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470578"
 ---
 # <a name="use-an-app-service-environment"></a>Použití App Serviceho prostředí #
 
 Azure App Service Environment je nasazení Azure App Service do podsítě ve virtuální síti Azure zákazníka. Skládá se z těchto:
 
-- **Front-endy**: Front-endy končí, když se HTTP/HTTPS ukončí v prostředí App Service (pomocného mechanismu).
-- **Pracovní procesy**: Pracovní procesy jsou prostředky, které hostují vaše aplikace.
-- **Databáze**: Databáze obsahuje informace, které definují prostředí.
-- **Úložiště**: Úložiště se používá k hostování aplikací publikovaných zákazníky.
+- **Front-endy**: front-ENDY končí protokolem HTTP/HTTPS v prostředí App Service (pomocného mechanismu).
+- **Pracovní procesy**: pracovní procesy jsou prostředky, které hostují vaše aplikace.
+- **Databáze**: databáze obsahuje informace, které definují prostředí.
+- **Úložiště**: úložiště se používá k hostování aplikací publikovaných zákazníky.
 
 > [!NOTE]
 > Existují dvě verze App Service Environment: ASEv1 a ASEv2. V ASEv1 je nutné prostředky spravovat, aby je bylo možné použít. Informace o tom, jak nakonfigurovat a spravovat ASEv1, najdete v tématu [Konfigurace prostředí App Service v1][ConfigureASEv1]. Zbývající část tohoto článku se zaměřuje na ASEv2.
@@ -67,7 +67,7 @@ Vytvoření aplikace v pomocném mechanismu řízení:
 
     c. V rozevíracím seznamu **umístění** vyberte svůj pomocný modul pro čtení. 
     
-    d. Vyberte **izolovanou** cenovou úroveň. Vyberte **vyberte**.
+    d. Vyberte **izolovanou** cenovou úroveň. Vyberte **Vybrat**.
 
     e. Vyberte **OK**.
     
@@ -77,7 +77,7 @@ Vytvoření aplikace v pomocném mechanismu řízení:
     > Aplikace pro Linux a aplikace pro Windows nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
     >
 
-2. Vyberte **Vytvořit**.
+2. Vyberte **Create** (Vytvořit).
 
 ## <a name="how-scale-works"></a>Jak funguje škálování ##
 
@@ -105,7 +105,7 @@ Prostředky front-endu jsou koncovým bodem HTTP/HTTPS pro pomocného bodu služ
 
 ## <a name="app-access"></a>Přístup k aplikacím ##
 
-V externím pomocném mechanismu pro vytváření se doména, která se používá při vytváření aplikací, liší od víceklientské App Service. Obsahuje název pomocného mechanismu. Další informace o tom, jak vytvořit externí pomocného mechanismu řízení, najdete v tématu [vytvoření App Serviceho prostředí][MakeExternalASE]. Název domény v externím pomocném objektu pro řízení vypadá takto *.&lt; asename&gt;. p.azurewebsites.NET*. Pokud se například váš přístup k pojmenování nazývá _External-_ prohlášeno a v tomto pomocném mechanismu je hostitelem aplikace s názvem _Contoso_ , dostanete se na následující adresy URL:
+V externím pomocném mechanismu pro vytváření se doména, která se používá při vytváření aplikací, liší od víceklientské App Service. Obsahuje název pomocného mechanismu. Další informace o tom, jak vytvořit externí pomocného mechanismu řízení, najdete v tématu [vytvoření App Serviceho prostředí][MakeExternalASE]. Název domény v externím pomocném mechanismu řízení vypadá jako *.&lt;asename&gt;. p.azurewebsites.NET*. Pokud se například váš přístup k pojmenování nazývá _External-prohlášeno_ a v tomto pomocném mechanismu je hostitelem aplikace s názvem _Contoso_ , dostanete se na následující adresy URL:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
@@ -122,7 +122,7 @@ V interního nástroje pomocném modulu pro pořízení se určí doména v dob�
 Stejně jako u víceklientské App Service můžete v pomocném programu publikovat pomocí:
 
 - Nasazení webu.
-- ADRESA.
+- Adresa.
 - Průběžná integrace.
 - Přetáhněte konzolu Kudu.
 - Rozhraní IDE, jako je například Visual Studio, zatmění nebo IntelliJ nápad.
@@ -133,7 +133,7 @@ Hlavní rozdíl mezi publikováním je v souvislosti s interního nástroje pomo
 
 Nemusíte používat internetové systémy CI, jako je GitHub a Azure DevOps, s pomocným mechanismem interního nástroje, protože koncový bod publikování není dostupný na internetu. V případě Azure DevOps to můžete obejít tak, že v interní síti nainstalujete samoobslužného agenta pro hostování, ve kterém se může spojit s interního nástroje. Alternativně můžete také použít systém CI, který využívá model Pull, jako je třeba Dropbox.
 
-Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Můžete ji zobrazit v publikačním profilu aplikace a v okně portálu aplikace (v části **Přehled** > **Essentials** a také ve **vlastnostech**). 
+Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Můžete ji zobrazit v publikačním profilu aplikace a v okně portálu aplikace (v tématu **přehled** > **základy** a také ve **vlastnostech**). 
 
 ## <a name="pricing"></a>Ceny ##
 
@@ -179,7 +179,7 @@ Postup odstranění pomocného mechanismu řízení:
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

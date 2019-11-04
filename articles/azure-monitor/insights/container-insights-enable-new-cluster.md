@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/25/2019
-ms.openlocfilehash: 06f4fd56ba5d0152b7e5d3fbfaa31dc4d6c4482d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 01553eb020c1493488e941705d9df8c8c946340a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554119"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478703"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Povolit monitorování nového clusteru Azure Kubernetes Service (AKS)
 
@@ -120,4 +120,4 @@ Po několika minutách se příkaz dokončí a vrátí informace o řešení ve 
 
 * Pokud při pokusu o připojení řešení dochází k problémům, přečtěte si [příručku k odstraňování potíží](container-insights-troubleshoot.md) .
 
-* Díky monitorování, které povoluje zachycení metrik stavu pro uzly clusteru AKS a lusky, jsou tyto metriky stavu dostupné v Azure Portal. Informace o tom, jak používat Azure Monitor pro kontejnery, najdete v tématu [zobrazení stavu služby Azure Kubernetes](container-insights-analyze.md).
+* Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru AKS a úlohách, které se na nich běží, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.

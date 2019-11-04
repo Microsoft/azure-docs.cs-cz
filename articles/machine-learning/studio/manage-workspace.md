@@ -1,7 +1,7 @@
 ---
-title: Správa pracovního prostoru Machine Learning Studio
-titleSuffix: Azure Machine Learning Studio
-description: Správa přístupu k pracovním prostorům Azure Machine Learning Studio, nasazení a Správa webových služeb Machine Learning API
+title: Správa pracovního prostoru Machine Learning Studio (Classic)
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Správa přístupu k pracovním prostorům Azure Machine Learning Studio (Classic) a nasazení a správa webových služeb rozhraní API Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,43 +10,43 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: a947f9a94dd4ceed624e6b04a671b21b8926d25e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f514079379143e001d72c0e6618c88e2fbb283b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322783"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489232"
 ---
-# <a name="manage-an-azure-machine-learning-studio-workspace"></a>Správa pracovního prostoru Azure Machine Learning Studio
+# <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Správa pracovního prostoru Azure Machine Learning Studio (Classic)
 
 > [!NOTE]
-> Informace o správě webových služeb Machine Learning Web Services portálu najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md).
+> Informace o tom, jak spravovat webové služby na portálu Machine Learning Web Services, najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md).
 > 
 > 
 
-Můžete spravovat pracovní prostory Machine Learning Studio na webu Azure Portal.
+V Azure Portal můžete spravovat pracovní prostory Machine Learning Studio (Classic).
 
 
 
-## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
+## <a name="use-the-azure-portal"></a>Použití portálu Azure
 
-Chcete-li spravovat pracovní prostor Studio na webu Azure Portal:
+Správa pracovního prostoru studia (Classic) v Azure Portal:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu správce předplatného Azure.
-2. Do vyhledávacího pole v horní části stránky, zadejte "machine learning Studio pracovní prostory" a pak vyberte **pracovní prostory Machine Learning Studio**.
-3. Klikněte na pracovním prostoru, který chcete spravovat.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce předplatného Azure.
+2. Do vyhledávacího pole v horní části stránky zadejte "pracovní prostory Machine Learning Studio (Classic) a pak vyberte **Machine Learning Studio (Classic) pracovní prostory**.
+3. Klikněte na pracovní prostor, který chcete spravovat.
 
-Kromě standardních prostředků informacím a k dispozici možnosti můžete:
+Kromě standardních informací a možností správy prostředků, které jsou k dispozici, můžete:
 
-- Zobrazení **vlastnosti** – Tato stránka zobrazuje informace o pracovním prostoru a prostředků, a můžete změnit předplatné a skupinu prostředků, které tento pracovní prostor je propojená s.
-- **Resynchronizovat klíče úložiště** -pracovního prostoru udržuje klíčů k účtu úložiště. Pokud účet úložiště se změní klíče, pak můžete kliknout na **resynchronizace klíčů** aby se klíče synchronizovaly s pracovním prostorem.
+- Zobrazit **vlastnosti** – na této stránce se zobrazují informace o pracovním prostoru a prostředcích a můžete změnit předplatné a skupinu prostředků, se kterými je tento pracovní prostor připojený.
+- Opětovné **synchronizace klíčů úložiště** – pracovní prostor uchovává klíče pro účet úložiště. Pokud účet úložiště změní klíče, můžete kliknout na znovu **synchronizovat klíče** a synchronizovat klíče s pracovním prostorem.
 
-Správa webových služeb přidružené k tento pracovní prostor Studio, použití portálu webových služeb Machine Learning. Zobrazit [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md) podrobnější informace.
+Pro správu webových služeb přidružených k tomuto pracovnímu prostoru studia (Classic) použijte portál Machine Learning Web Services. Úplné informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md) .
 
 > [!NOTE]
-> Nasazovat nebo spravovat s novými webovými službami musí mít přiřazenou roli přispěvatelem nebo správcem předplatného, které je nasazena webová služba. Pokud vás pozvat jiného uživatele do služby machine learning Studio pracovní prostor, je nutné jim přiřadit roli přispěvatelem nebo správcem předplatného mohli nasadit nebo spravovat webové služby. 
+> Chcete-li nasadit nebo spravovat nové webové služby, musíte mít přiřazenou roli přispěvatel nebo správce v předplatném, ve kterém je webová služba nasazená. Pokud budete pozvat jiného uživatele k pracovnímu prostoru Machine Learning Studio (Classic), musíte je přiřadit k roli přispěvatel nebo správce v předplatném, aby mohli nasadit nebo spravovat webové služby. 
 > 
->Další informace o nastavení přístupových oprávnění najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
+>Další informace o nastavení přístupových oprávnění najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [nasazení služby Machine Learning pomocí šablony Azure Resource Manageru](deploy-with-resource-manager-template.md). 
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si další informace o [nasazení Machine Learning s využitím šablon Azure Resource Manager](deploy-with-resource-manager-template.md). 

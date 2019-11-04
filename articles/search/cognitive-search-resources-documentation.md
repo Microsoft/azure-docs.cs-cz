@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 5fb1050fed2ab7318ad5b4ecafec7a96a9324575
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792057"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466711"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Materiály k dokumentaci pro rozšíření AI v Azure Kognitivní hledání
 
@@ -22,8 +22,8 @@ Rozšíření AI je schopnost indexování služby Azure Kognitivní hledání, 
 Následující články jsou kompletní dokumentaci pro rozšíření AI.
 
 ## <a name="getting-started"></a>Začínáme
-+ [Seznámení s rozšířením AI v Azure Kognitivní hledání](cognitive-search-concept-intro.md)
-+ [Rychlý Start: Vyzkoušejte obohacení AI na portálu](cognitive-search-quickstart-blob.md)
++ [Úvod do AI v Azure Kognitivní hledání](cognitive-search-concept-intro.md)
++ [Rychlý Start: vytvoření rozpoznávání dovednosti v Azure Portal](cognitive-search-quickstart-blob.md)
 + [Kurz: obohacení indexování pomocí AI](cognitive-search-tutorial-blob.md)
 + [Příklad: Vytvoření vlastní dovednosti pro obohacení AI](cognitive-search-create-custom-skill-example.md)
 
@@ -49,6 +49,7 @@ Následující články jsou kompletní dokumentaci pro rozšíření AI.
   + [Microsoft. dovednosti. Vision. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft. dovednosti. Vision. OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft. dovednosti. util. ConditionalSkill](cognitive-search-skill-conditional.md)
+  + [Microsoft. dovednosti. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
   + [Microsoft. dovednosti. util. ShaperSkill](cognitive-search-skill-shaper.md)
 
 + Vlastní dovednosti

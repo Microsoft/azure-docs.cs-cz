@@ -1,24 +1,23 @@
 ---
-title: Běžné chyby a upozornění – Azure Search
-description: Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Search.
-services: search
-manager: heidist
+title: Běžné chyby a upozornění
+titleSuffix: Azure Cognitive Search
+description: Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Kognitivní hledání.
+manager: nitinme
 author: amotley
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: 6455ac9dbe0933f6d46d1137e0a19dcc388d8c80
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243049"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466772"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Běžné chyby a upozornění kanálu obohacení AI v Azure Search
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Běžné chyby a upozornění kanálu obohacení AI v Azure Kognitivní hledání
 
-Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Search.
+Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Kognitivní hledání.
 
 ## <a name="errors"></a>Chyby
 Indexování se zastaví, když počet chyb překročí [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
@@ -118,6 +117,7 @@ Dokument byl načten a zpracován, ale indexer ho nemohl přidat do indexu vyhle
 | Problémy s připojením k cílovému indexu (které přetrvávají po opakování), protože služba je pod jiným zatížením, jako je například dotazování nebo indexování. | Nepovedlo se navázat spojení s indexem aktualizace. Služba vyhledávání je zatížená velkým zatížením. | [Horizontální navýšení kapacity služby Search](search-capacity-planning.md)
 | Služba Search je opravena pro aktualizaci služby nebo je uprostřed rekonfigurace topologie. | Nepovedlo se navázat spojení s indexem aktualizace. Služba Search je momentálně mimo provoz. služba Search prochází přechodem. | Konfigurace služby s minimálně 3 replikami pro 99,9% dostupnost na jednu z [dokladů SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
 | Selhání základního výpočetního/síťového prostředku (zřídka) | Nepovedlo se navázat spojení s indexem aktualizace. Došlo k neznámé chybě. | Nakonfigurujte indexery, které se [spustí podle plánu](search-howto-schedule-indexers.md) pro výběr ze stavu selhání.
+| Požadavek na indexování provedený do cílového indexu nebyl potvrzen v časovém limitu kvůli problémům se sítí. | Nepovedlo se včas navázat spojení s indexem vyhledávání. | Nakonfigurujte indexery, které se [spustí podle plánu](search-howto-schedule-indexers.md) pro výběr ze stavu selhání. Dále zkuste snížit [velikost dávky](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters) indexeru, pokud tento chybový stav přetrvává.
 
 ### <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Nelze indexovat dokument, protože data indexeru k indexu byla neplatná.
 
@@ -131,7 +131,7 @@ Dokument byl načten a zpracován, ale kvůli neshodě v konfiguraci polí index
 | Ve zdrojovém dokumentu byl zjištěn neznámý typ. | Neznámý typ_Unknown_nejde indexovat. |
 | Ve zdrojovém dokumentu se použil nekompatibilní zápis pro geografické body. | Řetězcové literály Well bodu nejsou podporovány. Místo toho prosím použijte literály bodu injson. |
 
-Ve všech těchto případech odkazujete na [podporované datové typy (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a [mapování datových typů pro indexery v Azure Search](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) , abyste se ujistili, že schéma indexu správně sestavíte a že jste nastavili odpovídající [mapování polí indexeru](search-indexer-field-mappings.md). Chybová zpráva bude obsahovat podrobnosti, které mohou přispět ke sledování zdroje neshody.
+Ve všech těchto případech odkazujete na [podporované typy dat](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a [mapování datových typů pro indexery](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) , abyste se ujistili, že schéma indexů sestavíte správně a že jste nastavili odpovídající [mapování polí indexeru](search-indexer-field-mappings.md). Chybová zpráva bude obsahovat podrobnosti, které mohou přispět ke sledování zdroje neshody.
 
 ### <a name="could-not-process-document-within-indexer-max-run-time"></a>Nelze zpracovat dokument v rámci maximální doby běhu indexeru
 
@@ -225,3 +225,8 @@ Možnost obnovit nedokončenou úlohu indexování je predikátem, ve kterém js
 Toto chování je možné přepsat, což umožňuje přírůstkové průběh a potlačení tohoto upozornění pomocí vlastnosti `assumeOrderByHighWatermarkColumn` Configuration.
 
 [Další informace o Cosmos DB přírůstkovém průběhu a vlastních dotazech.](https://go.microsoft.com/fwlink/?linkid=2099593)
+
+### <a name="could-not-map-output-field-x-to-search-index"></a>Výstupní pole ' X ' nelze namapovat na index vyhledávání
+Mapování polí výstupu, které odkazují na neexistující nebo null data, vytvoří upozornění pro každý dokument a výsledkem bude prázdné pole indexu. Chcete-li tento problém vyřešit, dvakrát ověřte, zda zdrojové cesty mapování polí pro výstup neumožňují překlepy, nebo nastavte výchozí hodnotu pomocí [podmíněné dovednosti](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist).
+
+Indexer mohl v dovednosti spustit dovednost, ale odpověď z požadavku webového rozhraní API zjistila při spuštění upozornění. Přečtěte si upozornění, abyste porozuměli tomu, jak jsou vaše data ovlivněná a zda je akce nutná.

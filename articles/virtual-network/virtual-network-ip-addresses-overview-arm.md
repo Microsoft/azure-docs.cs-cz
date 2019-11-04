@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: a0c86f9ad134e9b640d33d1a391c5387af9f9afd
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 40797c1b46bc88ecdaab6e28ef64f05a73e3ba8d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965665"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495903"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -151,7 +151,7 @@ V modelu nasazení Azure Resource Manager se IP adresa přidruží k následují
 
 ### <a name="allocation-method"></a>Metoda přidělování
 
-Privátní IP adresa se přiděluje z rozsahu adres podsítě virtuální sítě, ve které je prostředek nasazený. Azure si v rozsahu adres každé podsítě vyhrazuje první čtyři adresy, takže se tyto adresy nepřiřazují prostředkům. Pokud rozsah adres podsítě je například 10.0.0.0/16, adresy 10.0.0.0-10.0.0.3 nejde přiřadit prostředkům. IP adresy v rámci rozsahu adres podsítě je možné v každém okamžiku přiřadit jenom jednomu prostředku. 
+Privátní IP adresa se přiděluje z rozsahu adres podsítě virtuální sítě, ve které je prostředek nasazený. Azure si v rozsahu adres každé podsítě vyhrazuje první čtyři adresy, takže se tyto adresy nepřiřazují prostředkům. Pokud je například rozsah adres podsítě 10.0.0.0/16, adresy 10.0.0.0-10.0.0.3 a 10.0.255.255 nelze přiřadit k prostředkům. IP adresy v rámci rozsahu adres podsítě je možné v každém okamžiku přiřadit jenom jednomu prostředku. 
 
 Existují dvě metody přidělování privátní IP adresy:
 

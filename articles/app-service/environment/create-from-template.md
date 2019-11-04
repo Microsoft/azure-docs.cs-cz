@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bf66a9e9aeee859953b4e1e2021a385491c6298e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 60c9d89bc0ab7c63e779a7cadece863540e827aa
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069665"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470599"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Vytvoření pomocného objektu pomocí šablony Azure Resource Manager
 
@@ -28,12 +28,12 @@ ms.locfileid: "70069665"
 
 Prostředí Azure App Service (služby ASE) se dají vytvořit s koncovým bodem přístupným z Internetu nebo koncovým bodem na interní adrese ve službě Azure Virtual Network (VNet). Při vytvoření pomocí interního koncového bodu je tento koncový bod poskytovaný součástí Azure s názvem interní nástroj pro vyrovnávání zatížení (interního nástroje). K pomocnému objektu pro interní IP adresu se říká interního nástroje pomocného mechanismu. Pomocného bodu s veřejným koncovým bodem se nazývá externí pomocného mechanismu. 
 
-Pomocného programu se dá vytvořit pomocí Azure Portal nebo šablony Azure Resource Manager. Tento článek vás provede jednotlivými kroky a syntaxí, které potřebujete k vytvoření externího pomocného mechanismu pro vytváření nebo interního nástroje pomocného programu pomocí šablon Správce prostředků. Informace o tom, jak vytvořit pomocného mechanismu řízení v Azure Portal, najdete v tématu [Vytvoření externího][MakeExternalASE] pomocného panelu nebo [Vytvoření interního nástroje][MakeILBASE].
+Pomocného programu se dá vytvořit pomocí Azure Portal nebo šablony Azure Resource Manager. Tento článek vás provede jednotlivými kroky a syntaxí, které potřebujete k vytvoření externího pomocného mechanismu pro vytváření nebo interního nástroje pomocného programu pomocí šablon Správce prostředků. Informace o tom, jak vytvořit pomocného mechanismu řízení v Azure Portal, najdete v tématu [Vytvoření externího POmocného][MakeExternalASE] panelu nebo [Vytvoření interního nástroje][MakeILBASE].
 
 Při vytváření pomocného mechanismu pro Azure Portal můžete vytvořit virtuální síť ve stejnou dobu nebo zvolit stávající virtuální síť, do které se mají nasadit. Při vytváření pomocného mechanismu ze šablony musíte začít s: 
 
 * Virtuální síť Správce prostředků.
-* Podsíť v této virtuální síti. Pro účely `/24` budoucího růstu a škálování doporučujeme velikost podsítě pro pomocného mechanismu řízení s 256 adresami. Po vytvoření pomocného mechanismu se velikost nedá změnit.
+* Podsíť v této virtuální síti. Pro účely budoucího růstu a škálování doporučujeme použít velikost podsítě pro pomocného mechanismu řízení `/24` s 256 adres. Po vytvoření pomocného mechanismu se velikost nedá změnit.
 * ID prostředku z vaší virtuální sítě. Tyto informace můžete získat z Azure Portal ve vlastnostech virtuální sítě.
 * Předplatné, do kterého chcete nasadit.
 * Umístění, do kterého chcete nasadit.
@@ -44,7 +44,7 @@ Automatizace vytváření pomocného mechanismu:
 
 2. Po vytvoření pomocného mechanismu interního nástroje se nahraje certifikát SSL, který odpovídá vaší doméně pomocného mechanismu interního nástroje.
 
-3. Nahraný certifikát SSL je přiřazený k interního nástroje pomocnému certifikátu jako jeho "výchozí" certifikát SSL.  Tento certifikát se používá pro přenosy SSL do aplikací v interního nástroje přihlašování k aplikacím, když používají společnou kořenovou doménu, která je přiřazená k pomocnému mechanismu řízení (například https://someapp.mycustomrootdomain.com).
+3. Nahraný certifikát SSL je přiřazený k interního nástroje pomocnému certifikátu jako jeho "výchozí" certifikát SSL.  Tento certifikát se používá pro přenos přes protokol SSL do aplikací v interního nástroje pomocném uživatelském rozhraní, když používá společnou kořenovou doménu, která je přiřazená k pomocnému mechanismu řízení (například https://someapp.mycustomrootdomain.com).
 
 
 ## <a name="create-the-ase"></a>Vytvoření pomocného mechanismu
@@ -52,7 +52,7 @@ Automatizace vytváření pomocného mechanismu:
 
 Chcete-li vytvořit interního nástroje pomocného mechanismu pro vytváření, použijte tyto [Příklady][quickstartilbasecreate]šablon Správce prostředků. Využívají k tomuto případu použití. Většina parametrů v souboru *azuredeploy. Parameters. JSON* je společná pro vytváření interního nástroje služby ASE a externí služby ase. Následující seznam volá parametry zvláštní poznámky, nebo které jsou jedinečné, když vytvoříte interního nástroje pomocného programu pro vytváření:
 
-* *internalLoadBalancingMode*: Ve většině případů nastavte tuto hodnotu na 3, což znamená, že přenos HTTP/HTTPS na portech 80/443 a porty ovládacího prvku/datového kanálu, na které naslouchá služba FTP v pomocném mechanismu řízení, bude vázán na interní adresu interního nástroje vyhrazené virtuální sítě. Pokud je tato vlastnost nastavená na hodnotu 2, budou se na interního nástroje adrese svázat jenom porty související se službou FTP (ovládací prvky a kanály dat). Přenosy HTTP/HTTPS zůstávají ve veřejné virtuální IP adrese.
+* *internalLoadBalancingMode*: ve většině případů nastavte tuto hodnotu na 3, což znamená, že přenos HTTP/HTTPS na portech 80/443 a porty ovládacího prvku/datového kanálu, na které naslouchá služba FTP v pomocném mechanismu řízení, bude vázán na interní adresu přidělené virtuální sítě. Pokud je tato vlastnost nastavená na hodnotu 2, budou se na interního nástroje adrese svázat jenom porty související se službou FTP (ovládací prvky a kanály dat). Přenosy HTTP/HTTPS zůstávají ve veřejné virtuální IP adrese.
 * *dnsSuffix*: Tento parametr definuje výchozí kořenovou doménu, která je přiřazená k pomocnému objektu pro řízení. Ve veřejné variaci Azure App Service je výchozí kořenová doména pro všechny webové aplikace *azurewebsites.NET*. Vzhledem k tomu, že interního nástroje pomocného uživatele je interní pro virtuální síť zákazníka, nemá smysl používat výchozí kořenovou doménu veřejné služby. Místo toho by měl mít interního nástroje pomocného programu k dispozici výchozí kořenovou doménu, která dává smysl pro použití v interní virtuální síti společnosti. Společnost Contoso může například používat výchozí kořenovou doménu *internal-contoso.com* pro aplikace, které mají být přeložitelný a přístupné pouze v rámci virtuální sítě společnosti Contoso. 
 * *ipSslAddressCount*: Tento parametr se automaticky nastaví na hodnotu 0 v souboru *azuredeploy. JSON* , protože interního nástroje služby ASE má jenom jednu adresu interního nástroje. Pro interního nástroje pomocného mechanismu zabezpečení nejsou k dispozici žádné explicitní adresy IP-SSL. Proto fond adres IP-SSL pro interního nástroje pomocného modulu musí být nastaven na hodnotu nula. V opačném případě dojde k chybě zřizování. 
 
@@ -72,7 +72,7 @@ Certifikát SSL musí být přidružený k pomocnému objektu zabezpečení jako
 
 Získejte platný certifikát SSL pomocí interních certifikačních autorit, zakoupením certifikátu od externího vystavitele nebo pomocí certifikátu podepsaného svým držitelem. Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurovány následující atributy certifikátu:
 
-* **Předmět**: Tento atribut musí být nastaven na hodnotu * *. your-root-Domain-here.com*.
+* **Subject**: Tento atribut musí být nastaven na hodnotu * *. your-root-Domain-here.com*.
 * **Alternativní název subjektu**: Tento atribut musí zahrnovat buď * *. your-root-Domain-here.com* , nebo * *. SCM.your-root-Domain-here.com*. Připojení SSL k webu SCM/Kudu přidruženému ke každé aplikaci používají adresu formuláře *Your-App-Name.SCM.your-root-Domain-here.com*.
 
 S platným certifikátem SSL je potřeba mít dva další přípravné kroky. Převeďte/uložte certifikát SSL jako soubor .pfx. Mějte na paměti, že soubor. pfx musí zahrnovat všechny zprostředkující a kořenové certifikáty. Zabezpečte ho pomocí hesla.
@@ -107,11 +107,11 @@ Po úspěšném vygenerování certifikátu SSL a jeho převodu na řetězec kó
 Parametry v souboru *azuredeploy. Parameters. JSON* jsou uvedeny zde:
 
 * *appServiceEnvironmentName*: Název konfigurovaného pomocného programu interního nástroje.
-* *existingAseLocation*: Textový řetězec obsahující oblast Azure, ve které byl nasazený pomocným mechanismem interního nástroje  Příklad: "Střed USA – jih".
-* *pfxBlobString*: Řetězcová reprezentace souboru. pfx zakódovaná v based64. Použijte dříve zobrazený fragment kódu a zkopírujte řetězec obsažený v souboru "exportedcert. pfx. B64". Vložte ho jako hodnotu atributu *pfxBlobString* .
-* *password*: Heslo použité k zabezpečení souboru. pfx.
-* *certificateThumbprint*: Kryptografický otisk certifikátu Pokud tuto hodnotu načtete z PowerShellu (například *$Certificate. Kryptografický otisk* z dřívějšího fragmentu kódu) můžete použít hodnotu jako. Pokud zkopírujete hodnotu z dialogového okna certifikát systému Windows, nezapomeňte oddělit nadbytečné mezery. *CertificateThumbprint* by měl vypadat nějak takto: AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* *certifikát certifikátu*: Popisný identifikátor řetězce, který se používá k identifikaci certifikátu. Název se používá jako součást jedinečného identifikátoru Správce prostředků pro entitu *Microsoft. Web/Certificates* , která představuje certifikát SSL. Název *musí* končit následující příponou: \_yourASENameHere_InternalLoadBalancingASE. Azure Portal používá tuto příponu jako indikátor, který certifikát používá k zabezpečení interního NÁSTROJEho přihlašování s povoleným protokolem.
+* *existingAseLocation*: textový řetězec obsahující oblast Azure, ve které byl nasazený pomocný modul interního nástroje.  Například: "Střed USA – jih".
+* *pfxBlobString*: řetězcová reprezentace souboru. pfx zakódovaná based64. Použijte dříve zobrazený fragment kódu a zkopírujte řetězec obsažený v souboru "exportedcert. pfx. B64". Vložte ho jako hodnotu atributu *pfxBlobString* .
+* *heslo*: heslo použité k zabezpečení souboru. pfx.
+* *certificateThumbprint*: kryptografický otisk certifikátu. Pokud tuto hodnotu načtete z PowerShellu (například *$Certificate. Kryptografický otisk* z dřívějšího fragmentu kódu) můžete použít hodnotu jako. Pokud zkopírujete hodnotu z dialogového okna certifikát systému Windows, nezapomeňte oddělit nadbytečné mezery. *CertificateThumbprint* by měl vypadat nějak takto: AF3143EB61D43F6727842115BB7F17BBCECAECAE.
+* identifikátor *certifikátu*: popisný identifikátor řetězce, který se používá k identifikaci certifikátu. Název se používá jako součást jedinečného identifikátoru Správce prostředků pro entitu *Microsoft. Web/Certificates* , která představuje certifikát SSL. Název *musí* končit následující příponou: \_yourASENameHere_InternalLoadBalancingASE. Azure Portal používá tuto příponu jako indikátor, který certifikát používá k zabezpečení interního NÁSTROJEho přihlašování s povoleným protokolem.
 
 Zde je zobrazen zkrácený příklad *azuredeploy. Parameters. JSON* :
 
@@ -153,12 +153,12 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 Změny se projeví přibližně 40 minut na front-endu. Například pro pomocného objekt pro pořízení velikosti, který používá dva front-end, bude šablona trvat přibližně jednu hodinu a 20 minut. Když je šablona spuštěná, nemůže se pomocného mechanismu škálovat.  
 
-Po dokončení šablony se k aplikacím na interního nástroje přihlašování pomocí protokolu HTTPS dostanete. Připojení jsou zabezpečená pomocí výchozího certifikátu SSL. Výchozí certifikát SSL se používá v případě, že aplikace na pomocném programu interního nástroje jsou řešeny pomocí kombinace názvu aplikace a výchozího názvu hostitele. Například https://mycustomapp.internal-contoso.com používá výchozí certifikát SSL pro * *. Internal-contoso.com*.
+Po dokončení šablony se k aplikacím na interního nástroje přihlašování pomocí protokolu HTTPS dostanete. Připojení jsou zabezpečená pomocí výchozího certifikátu SSL. Výchozí certifikát SSL se používá v případě, že aplikace na pomocném programu interního nástroje jsou řešeny pomocí kombinace názvu aplikace a výchozího názvu hostitele. https://mycustomapp.internal-contoso.com například používá výchozí certifikát SSL pro * *. Internal-contoso.com*.
 
 Nicméně stejně jako aplikace, které běží na veřejné víceklientské službě, můžou vývojáři nakonfigurovat vlastní názvy hostitelů pro jednotlivé aplikace. Můžou taky konfigurovat jedinečné vazby SNI SSL certifikátů pro jednotlivé aplikace.
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
-App Service Environment má dvě verze: ASEv1 a ASEv2. Předchozí informace se týkaly verze ASEv2. V této části jsou uvedené rozdíly mezi verzemi ASEv1 a ASEv2.
+Služba App Service Environment má dvě verze: ASEv1 a ASEv2. Předchozí informace se týkaly verze ASEv2. V této části jsou uvedené rozdíly mezi verzemi ASEv1 a ASEv2.
 
 V ASEv1 můžete všechny prostředky spravovat ručně. To se týká front-endů, pracovních procesů a IP adres používaných pro zabezpečení SSL na základě protokolu IP. Než budete moct plán App Service škálovat, musíte škálovat fond pracovních procesů, který chcete hostovat.
 
@@ -188,7 +188,7 @@ Chcete-li vytvořit ASEv1 pomocí šablony Správce prostředků, přečtěte si
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../../app-service/web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../../app-service/configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

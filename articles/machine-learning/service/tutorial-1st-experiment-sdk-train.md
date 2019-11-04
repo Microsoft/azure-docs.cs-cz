@@ -9,17 +9,19 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/03/2019
-ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: b5b3ca127aba62b39bd7236412d4c6a542347db3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173307"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476197"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
 
-Tento kurz je **druhou částí série kurzů s dvěma částmi**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
 
 V tomto kurzu se seznámíte s následujícími úlohami:
 
@@ -29,7 +31,7 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 > * Zobrazení výsledků školení na portálu
 > * Načíst nejlepší model
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
@@ -37,7 +39,7 @@ V této části kurzu spustíte kód v ukázkovém poznámkovém bloku Jupyter `
 
 ## <a name="open-the-notebook"></a>Otevření poznámkového bloku
 
-1. Přihlaste se na [úvodní stránku pracovního prostoru](https://ml.azure.com/).
+1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
 1. Otevřete **kurz – 1st-experiment-SDK-vlak. ipynb** ve složce, jak je znázorněno v [části One](tutorial-1st-experiment-sdk-setup.md#open).
 
@@ -53,7 +55,7 @@ V této části kurzu spustíte kód v ukázkovém poznámkovém bloku Jupyter `
 > Pokud chcete při spuštění kódu číst společně, přepněte do poznámkového bloku Jupyter. 
 > Pokud chcete na poznámkovém bloku spustit jednu buňku kódu, klikněte na buňku kódu a stiskněte **SHIFT + ENTER**. Případně spusťte celý Poznámkový blok výběrem možnosti **Spustit vše** na horním panelu nástrojů.
 
-Naimportujte třídu `Workspace` a načtěte informace o vašem předplatném ze souboru `config.json` pomocí funkce `from_config().`, který ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete taky zadat parametr cesty, který bude odkazovat na soubor pomocí `from_config(path="your/file/path")`. V případě serveru cloudového poznámkového bloku je soubor automaticky v kořenovém adresáři.
+Importujte třídu `Workspace` a načtěte informace o vašem předplatném ze souboru `config.json` pomocí funkce `from_config().` to ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete taky zadat parametr cesty, který bude odkazovat na soubor pomocí `from_config(path="your/file/path")`. V případě serveru cloudového poznámkového bloku je soubor automaticky v kořenovém adresáři.
 
 Pokud následující kód požádá o další ověřování, jednoduše vložte odkaz do prohlížeče a zadejte ověřovací token.
 
@@ -62,7 +64,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-Nyní vytvořte experiment v pracovním prostoru. Experiment je další základní cloudový prostředek, který představuje kolekci zkušebních verzí (jednotlivé spuštěné modely). V tomto kurzu použijete experiment k vytvoření spuštění a sledování školení modelu v Azure Portal. Parametry zahrnují odkaz na pracovní prostor a název řetězce pro experiment.
+Nyní vytvořte experiment v pracovním prostoru. Experiment je další základní cloudový prostředek, který představuje kolekci zkušebních verzí (jednotlivé spuštěné modely). V tomto kurzu použijete experiment k vytvoření spuštění a sledování školení modelu v nástroji Azure Machine Learning Studio. Parametry zahrnují odkaz na pracovní prostor a název řetězce pro experiment.
 
 
 ```python
@@ -72,18 +74,20 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>Načtení dat a příprava na školení
 
-V tomto kurzu použijete sadu dat diabetes, což je předem normalizovaná datová sada, která je součástí scikit – učení. Tato datová sada používá funkce, jako je věk, pohlaví a BMI, k předvídání diabetesí nemocí. Načtěte data z statické funkce `load_diabetes()` a rozdělte je do školicích a testovacích sad pomocí `train_test_split()`. Tato funkce odděluje data, takže model obsahuje nepřesná data, která se mají použít pro testování po školení.
+Pro účely tohoto kurzu použijete sadu dat diabetes, která používá funkce jako věk, pohlaví a BMI k předvídání pokroku diabetesch nemocí. Načtěte data z třídy [Azure Open DataSets](https://azure.microsoft.com/services/open-datasets/) a rozdělte je do školicích a testovacích sad pomocí `train_test_split()`. Tato funkce odděluje data, takže model obsahuje nepřesná data, která se mají použít pro testování po školení.
 
 
 ```python
-from sklearn.datasets import load_diabetes
+from azureml.opendatasets import Diabetes
 from sklearn.model_selection import train_test_split
 
-X, y = load_diabetes(return_X_y = True)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=66)
+x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
+y_df = x_df.pop("Y")
+
+X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
 ```
 
-## <a name="train-a-model"></a>Výuka modelu
+## <a name="train-a-model"></a>Trénování modelu
 
 Výuku jednoduchého scikit modelu se dá snadno udělat místně pro účely malého měřítka, ale při školení mnoha iterací s desítkami různých funkcí a nastaveními parametrů je snadné sledovat, které modely jste si naučili a jak vám školení. Následující vzor návrhu ukazuje, jak pomocí sady SDK snadno sledovat vaše školení v cloudu.
 
@@ -129,11 +133,11 @@ Po dokončení školení zavolejte proměnnou `experiment`, která načte odkaz 
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Portal</td><td>Odkaz na dokumentaci</td></tr></table>
+<table style="width:100%"><tr><th>Name (Název)</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Portal</td><td>Odkaz na dokumentaci</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Zobrazit výsledky školení na portálu
 
-Po **odkazu na Azure Portal** přejdete na hlavní stránku experimentu. Tady vidíte všechna jednotlivá spuštění v experimentu. Jakékoli vlastní hodnoty v protokolu (`alpha_value` a `rmse`, v tomto případě) se stanou poli pro každé spuštění a jsou také k dispozici pro grafy a dlaždice v horní části stránky experiment. Chcete-li přidat zaznamenanou metriku do grafu nebo dlaždice, najeďte myší na ni, klikněte na tlačítko Upravit a vyhledejte metriku s vlastním protokolem.
+Po **odkazu na Azure Portal** přejdete na hlavní stránku experimentu. Tady vidíte všechna jednotlivá spuštění v experimentu. Jakékoli vlastní hodnoty protokolovaných hodnot (`alpha_value` a `rmse`, v tomto případě) se stanou poli pro každé spuštění a také zpřístupněny pro grafy a dlaždice v horní části stránky experiment. Chcete-li přidat zaznamenanou metriku do grafu nebo dlaždice, najeďte myší na ni, klikněte na tlačítko Upravit a vyhledejte metriku s vlastním protokolem.
 
 Když procházíte modely ve velkém množství přes stovky a tisíce samostatných spuštění, Tato stránka usnadňuje zobrazení všech vámi vyškolených modelů, konkrétně jejich školení a způsobu, jakým se vaše jedinečné metriky v průběhu času změnily.
 
@@ -193,19 +197,9 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning.
 
-### <a name="stop-the-notebook-vm"></a>Zastavení virtuálního počítače poznámkového bloku
+### <a name="stop-the-compute-instance"></a>Zastavení výpočetní instance
 
-Pokud jste použili server cloudového poznámkového bloku, zastavte virtuální počítač, pokud ho nepoužíváte ke snížení nákladů.
-
-1. V pracovním prostoru vyberte **virtuální počítače poznámkového bloku**.
-
-   ![Zastavení serveru VM](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. V seznamu vyberte virtuální počítač.
-
-1. Vyberte **zastavit**.
-
-1. Až budete chtít znovu použít server, vyberte **Spustit**.
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>Odstranit vše
 

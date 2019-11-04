@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c72de809dc5818cced95be2cbd6b47308bad4f22
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 2d8bf44f5e5e7a3f8c328a47480599f9dd18b845
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045209"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489520"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitorování běhů a metriky Azure ML
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Vylepšete proces vytváření modelů sledováním experimentů a monitorováním metrik spuštění. V tomto článku se dozvíte, jak přidat kód protokolování do školicího skriptu, jak odeslat experiment, monitorovat tento běh a zkontrolovat výsledky v Azure Machine Learning.
 
@@ -261,7 +262,7 @@ print(run.get_portal_url())
    ![Widget pro Jupyter Poznámkový blok pro automatizované Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
-Pokud chcete zobrazit další podrobnosti o kanálu, klikněte na kanál, který chcete prozkoumat v tabulce, a grafy se vykreslí v automaticky otevíraném okně Azure Portal.
+Pokud chcete zobrazit další podrobnosti o kanálu, klikněte na kanál, který chcete prozkoumat v tabulce, a grafy se vykreslí v automaticky otevíraném okně Azure Machine Learning Studiu.
 
 ### <a name="get-log-results-upon-completion"></a>Získání protokolu výsledků při dokončení
 
@@ -273,22 +274,19 @@ Pokud chcete zobrazit další podrobnosti o kanálu, klikněte na kanál, který
 Metriky proučeného modelu můžete zobrazit pomocí ```run.get_metrics()```. Nyní můžete získat všechny metriky, které byly zaprotokolovány výše v předchozím příkladu, a určit tak nejlepší model.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Zobrazit experiment na Azure Portal nebo na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com)
+## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studiohttpsmlazurecom"></a>Zobrazení experimentu v pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com)
 
-Po dokončení experimentu můžete přejít na zaznamenaný záznam spuštění experimentu. K historii můžete přistupovat dvěma způsoby:
+Po dokončení experimentu můžete přejít na zaznamenaný záznam spuštění experimentu. K historii můžete přistupovat z [Azure Machine Learning studia](https://ml.azure.com).
 
-* Získat adresu URL pro spuštění přímo ```print(run.get_portal_url())```
-* Zobrazení podrobností o spuštění odesláním názvu běhu (v tomto případě ```run```). Tímto způsobem odkazujete na stránku název experimentu, ID, typ, stav, podrobnosti, odkaz na Azure Portal a odkaz na dokumentaci.
+Přejděte na kartu experimenty a vyberte svůj experiment. Přejdete do řídicího panelu experiment spustit, kde vidíte sledované metriky a grafy, které jsou protokolovány pro každé spuštění. V tomto případě jsme nahlásili hodnoty MSE a alfa.
 
-Odkaz na spuštění vás přesune přímo na stránku podrobností o spuštění v Azure Portal. Tady vidíte všechny vlastnosti, sledované metriky, obrázky a grafy, které se v experimentu přihlásily. V tomto případě jsme nahlásili hodnoty MSE a alfa.
+  ![Podrobnosti o spuštění v Azure Machine Learning Studiu](./media/how-to-track-experiments/experiment-dashboard.png)
 
-  ![Podrobnosti o spuštění Azure Portal](./media/how-to-track-experiments/run-details-page.png)
-
-Můžete také zobrazit všechny výstupy nebo protokoly pro spuštění nebo si stáhnout snímek experimentu, který jste odeslali, abyste mohli sdílet složku experimentů s ostatními.
+Můžete přejít k podrobnostem konkrétního spuštění a zobrazit jeho výstupy nebo protokoly nebo stáhnout snímek experimentu, který jste odeslali, abyste mohli sdílet složku experimentů s ostatními.
 
 ### <a name="viewing-charts-in-run-details"></a>Zobrazení grafů v podrobnostech o běhu
 
-Existují různé způsoby, jak použít rozhraní API protokolování k nahrávání různých typů metrik během běhu a jejich zobrazení jako grafů v Azure Portal. 
+Existují různé způsoby, jak použít rozhraní API protokolování k nahrávání různých typů metrik během běhu a jejich zobrazení jako grafů v Azure Machine Learning Studiu.
 
 |Hodnota protokolu|Příklad kódu| Zobrazit na portálu|
 |----|----|----|

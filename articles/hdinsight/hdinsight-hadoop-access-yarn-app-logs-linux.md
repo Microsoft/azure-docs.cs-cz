@@ -1,5 +1,5 @@
 ---
-title: Přístup k protokolům aplikace Apache Hadoop nitě v HDInsight založeném na systému Linux – Azure
+title: Přístup k protokolům aplikace Apache Hadoop nitě – Azure HDInsight
 description: Přečtěte si, jak získat přístup k protokolům aplikací PŘÍZ na clusteru HDInsight se systémem Linux (Apache Hadoop) pomocí příkazového řádku i webového prohlížeče.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 263456769ab391cbc0588eed1a714a1ea5788154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091507"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494888"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Přístup k protokolům aplikace Apache Hadoop nitě v HDInsight se systémem Linux
 
@@ -40,7 +40,7 @@ Protokoly aplikací (a přidružené protokoly kontejnerů) jsou důležité př
 
     /app-logs/<user>/logs/<applicationId>
 
-V cestě `user` je název uživatele, který aplikaci spustil. `applicationId` Je jedinečný identifikátor přiřazený k aplikaci pomocí příze RM.
+V cestě `user` je jméno uživatele, který aplikaci spustil. `applicationId` je jedinečný identifikátor přiřazený k aplikaci pomocí prostředků PŘÍZe RM.
 
 Agregované protokoly nejsou přímo čitelné, protože jsou napsány v [TFile][T-file] [binárním formátu][binary-format] indexovaném kontejnerem. Použijte protokoly PŘÍZe ResourceManager nebo nástroje CLI k zobrazení těchto protokolů jako prostý text pro aplikace nebo kontejnery, které vás zajímají.
 
@@ -53,7 +53,7 @@ Tyto protokoly můžete zobrazit jako prostý text spuštěním jednoho z násle
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Zadejte > &lt; &lt;ApplicationId, User-Started-the-Application >, containerId > a &lt;Work-Node-Address > informace při spuštění těchto příkazů. &lt;
+Zadejte &lt;applicationId > &lt;User-Started-the-Application >, &lt;containerId > a &lt;Work-Node-Address > informace při spuštění těchto příkazů.
 
 ## <a name="yarn-resourcemanager-ui"></a>Uživatelské rozhraní Správce prostředků PŘÍZe
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 642fcc9ac2513329e9223f59a33d51ac5005e1fd
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 5ba2255cfe0d5c4220ec2215ac837649af1ba896
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802185"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521184"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: horká, studená a archivní úroveň přístupu
 
@@ -79,7 +79,7 @@ Změna úrovně přístupu k účtu se vztahuje na všechny objekty _odvozené z
 
 Ovládání datových vrstev na úrovni objektů blob umožňuje změnit vrstvu dat na úrovni objektu pomocí jediné operace s názvem [Set Blob Tier](/rest/api/storageservices/set-blob-tier). Současně se změnou vzorů využití můžete pro objekt blob snadno změnit vrstvu přístupu (studená, horká nebo archivní) a nemusíte přitom přesouvat data mezi účty. Všechny změny úrovně se nastávají hned. Dosazování objektu BLOB z archivu ale může trvat několik hodin.
 
-Čas poslední změny úrovně objektu blob je zveřejněný prostřednictvím vlastnosti **Access Tier Change Time** objektu blob. Pokud je objekt BLOB v archivní úrovni, nejde ho přepsat, takže odeslání stejného objektu BLOB není v tomto scénáři povolené. Při přepsání objektu BLOB na horké nebo studené úrovni zdědí nový objekt BLOB vrstvu objektu blob, který se přepsal.
+Čas poslední změny úrovně objektu blob je zveřejněný prostřednictvím vlastnosti **Access Tier Change Time** objektu blob. Pokud je objekt BLOB v archivní úrovni, nejde ho přepsat, takže odeslání stejného objektu BLOB není v tomto scénáři povolené. Při přepisování objektu BLOB na horkou nebo studenou úroveň zdědí nově vytvořený objekt BLOB vrstvu objektu blob, který se přepsal, pokud při vytváření není explicitně nastavená nová vrstva přístupu k objektu BLOB.
 
 > [!NOTE]
 > Úložiště archivu a ovládání datových vrstev na úrovni objektů blob podporují jenom objekty blob bloku. V současné době nemůžete změnit úroveň objektu blob bloku, který obsahuje snímky.
@@ -192,7 +192,7 @@ Ano, výchozí úroveň účtu můžete změnit nastavením atributu **úroveň 
 
 **Můžu u účtu nastavit výchozí úroveň přístupu na archivní?**
 
-Ne. Jako výchozí úroveň přístupu se dá nastavit jenom horká a studená úroveň přístupu. Archivní úroveň je možné nastavit pouze na úrovni objektu.
+Ne. Jako výchozí úroveň přístupu se dá nastavit jenom horká a studená úroveň přístupu. Archivní úroveň je možné nastavit pouze na úrovni objektu. Při nahrávání objektů BLOB určíte úroveň přístupu podle vaší volby na horkou, studenou nebo archivní, a to bez ohledu na výchozí úroveň účtu. Tato funkce umožňuje zapisovat data přímo do archivní úrovně a ušetřit tak náklady od chvíle, kdy vytvoříte data v úložišti objektů BLOB.
 
 **Ve kterých oblastech jsou horké, studené a archivní úrovně přístupu dostupné v?**
 

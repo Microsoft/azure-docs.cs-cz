@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b32f3762f2546a4d4956bf38c914173657e9d3da
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164050"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499871"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal
 
@@ -44,7 +44,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-virtual-networks"></a>Vytvoření virtuálních sítí
 
-1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
 2. Vyberte **Sítě** a pak vyberte **Virtuální síť**.
 3. Na stránce **základy** zadejte nebo vyberte následující informace a u zbývajících nastavení přijměte výchozí hodnoty:
 
@@ -54,7 +54,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
     |Oblast| Vyberte **USA – východ**.|
     |Name (Název)|myVirtualNetwork1|
-   
+
 4. Na stránce **IP adresy** zadejte 10.0.0.0/16 pro pole **adresní prostor** . Klikněte na tlačítko **Přidat podsíť** níže a jako **Rozsah adres podsítě**zadejte Subnet1 pro **název podsítě** a 10.0.0.0/24.
    
 5. Zopakujte kroky 1 až 3 s následujícími změnami:
@@ -69,7 +69,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 ## <a name="peer-virtual-networks"></a>Vytvoření partnerského vztahu virtuálních sítí
 
 1. Do pole Hledat v horní části webu Azure Portal začněte zadávat *MyVirtualNetwork1*. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork1**, vyberte ji.
-2. V části **NASTAVENÍ** vyberte **Partnerské vztahy** a pak vyberte **+ Přidat**, jak je znázorněno na následujícím obrázku:
+2. V části **Nastavení**vyberte **partnerské vztahy**a pak vyberte **Přidat**, jak je znázorněno na následujícím obrázku:
 
     ![Vytvoření partnerského vztahu](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 
@@ -96,7 +96,7 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
 
 ### <a name="create-the-first-vm"></a>Vytvoření prvního virtuálního počítače
 
-1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
 2. Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**. Můžete vybrat jiný operační systém, ale ve zbývajících krocích se předpokládá, že jste vybrali **Windows Server 2016 Datacenter**. 
 3. V části **Základy** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
 

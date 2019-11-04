@@ -7,91 +7,45 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8a78c854e9c842915700d4a20c1a57e4f1594a2e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212262"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472453"
 ---
-# <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Preview – vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
 Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny dohromady do *fondů uzlů*. Tyto fondy uzlů obsahují základní virtuální počítače, na kterých běží vaše aplikace. Počáteční počet uzlů a jejich velikost (SKU) jsou definovány při vytváření clusteru AKS, který vytváří *výchozí fond uzlů*. Aby bylo možné podporovat aplikace, které mají různé výpočetní požadavky nebo úložiště, můžete vytvořit další fondy uzlů. Tyto další fondy uzlů můžete například využít k poskytování GPU pro aplikace náročné na výpočetní výkon nebo přístup k vysoce výkonnému úložišti SSD.
 
 > [!NOTE]
-> Tato funkce umožňuje vyšší kontrolu nad tím, jak vytvořit a spravovat více fondů uzlů. V důsledku toho jsou pro vytvoření, aktualizaci nebo odstranění vyžadovány samostatné příkazy. Dříve clusterové operace `az aks create` prostřednictvím `az aks update` nebo používaly rozhraní managedCluster API a byly jedinou možností, jak změnit plochu ovládacího prvku a jeden fond uzlů. Tato funkce zpřístupňuje samostatnou sadu operací pro fondy agentů prostřednictvím rozhraní neznámá API a vyžaduje použití `az aks nodepool` sady příkazů ke spouštění operací ve fondu jednotlivých uzlů.
+> Tato funkce umožňuje vyšší kontrolu nad tím, jak vytvořit a spravovat více fondů uzlů. V důsledku toho jsou pro vytvoření, aktualizaci nebo odstranění vyžadovány samostatné příkazy. Dříve byly clusterové operace prostřednictvím `az aks create` nebo `az aks update` používaly rozhraní managedCluster API a byly jedinou možností, jak změnit plochu ovládacího prvku a jeden fond uzlů. Tato funkce zpřístupňuje samostatnou sadu operací pro fondy agentů prostřednictvím rozhraní neznámá API a vyžaduje použití příkazu `az aks nodepool` pro provádění operací v jednotlivém fondu uzlů.
 
-V tomto článku se dozvíte, jak vytvořit a spravovat více fondů uzlů v clusteru AKS. Tato funkce je aktuálně ve verzi Preview.
+V tomto článku se dozvíte, jak vytvořit a spravovat více fondů uzlů v clusteru AKS.
 
-> [!IMPORTANT]
-> Funkce služby AKS ve verzi Preview jsou samoobslužné přihlašovací. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepšího úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace o tom, jak se zaregistrují, najdete v následujících článcích podpory:
->
-> * [Zásady podpory AKS][aks-support-policies]
-> * [Nejčastější dotazy k podpoře Azure][aks-faq]
+## <a name="before-you-begin"></a>Než začnete
 
-## <a name="before-you-begin"></a>Před zahájením
-
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
-
-### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
-
-Chcete-li použít více fondů uzlů, potřebujete rozšíření *AKS-Preview* CLI 0.4.16 nebo vyšší verze. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] ::
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-### <a name="register-multiple-node-pool-feature-provider"></a>Registrovat poskytovatele funkcí více fondů uzlů
-
-Pokud chcete vytvořit cluster AKS, který může používat víc fondů uzlů, nejdřív u svého předplatného povolte příznak funkce. Pomocí příkazu [AZ Feature Register][az-feature-register] Zaregistrujte příznak funkce *MultiAgentpoolPreview* , jak je znázorněno v následujícím příkladu:
-
-> [!CAUTION]
-> Když zaregistrujete funkci v rámci předplatného, nemůžete tuto funkci v tuto chvíli zrušit. Po povolení některých funkcí verze Preview se můžou použít výchozí hodnoty pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
-
-```azurecli-interactive
-az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-```
-
-> [!NOTE]
-> Libovolný cluster AKS, který vytvoříte po úspěšném dokončení registrace *MultiAgentpoolPreview* , používá tuto verzi Preview prostředí clusteru. Pokud chcete pokračovat v vytváření běžných, plně podporovaných clusterů, nepovolujte funkce ve verzi Preview v produkčních předplatných. Pro testování funkcí ve verzi Preview použijte samostatný test nebo vývojové předplatné Azure.
-
-Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-```
-
-Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="limitations"></a>Omezení
 
 Při vytváření a správě clusterů AKS, které podporují více fondů uzlů, platí následující omezení:
 
-* Více fondů uzlů je k dispozici pouze pro clustery vytvořené po úspěšné registraci funkce *MultiAgentpoolPreview* pro vaše předplatné. Nemůžete přidat ani spravovat fondy uzlů s existujícím clusterem AKS vytvořeným před tím, než se tato funkce úspěšně zaregistrovala.
 * Výchozí fond uzlů (první) nelze odstranit.
 * Nelze použít doplněk směrování aplikace HTTP.
 * Nemůžete přidat ani odstranit fondy uzlů pomocí existující šablony Správce prostředků jako u většiny operací. Místo toho [použijte šablonu samostatného správce prostředků](#manage-node-pools-using-a-resource-manager-template) k provádění změn v fondech uzlů v clusteru AKS.
 * Název fondu uzlů musí začínat malým písmenem a může obsahovat jenom alfanumerické znaky. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků, v případě fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.
-
-I když je tato funkce ve verzi Preview, platí následující další omezení:
-
 * Cluster AKS může mít maximálně osm fondů uzlů.
 * Cluster AKS může mít maximálně 400 uzlů v těchto osmi fondech uzlů.
 * Všechny fondy uzlů se musí nacházet ve stejné podsíti.
+* Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
 Začněte tím, že vytvoříte cluster AKS s jedním fondem uzlů. Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* . A *--Kubernetes-verze* *1.13.10* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
 
-Při využití více fondů uzlů se důrazně doporučuje použít nástroj pro vyrovnávání zatížení Standard SKU. Přečtěte si [Tento dokument](load-balancer-standard.md) , kde najdete další informace o používání služby Vyrovnávání zatížení úrovně Standard pro AKS.
+> [!NOTE]
+> Při použití více fondů uzlů není podporována *základní* Load balanacer SKU. Ve výchozím nastavení jsou clustery AKS vytvořeny pomocí *standardní* SKU loadbalacer.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -178,7 +132,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!NOTE]
 > Operace upgradu a škálování na clusteru nebo ve fondu uzlů se nemůžou vyskytovat současně, pokud se k chybě vrátí. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](https://aka.ms/aks-pending-upgrade).
 
-V případě, že byl cluster AKS původně vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.13.10* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro výchozí fond uzlů. Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů.
+Když se v prvním kroku vytvořil cluster AKS, zadala se `--kubernetes-version`a *1.13.10* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro výchozí fond uzlů. Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů.
 
 Vztah mezi upgradem verze Kubernetes roviny ovládacího prvku a fondem uzlů je vysvětlen v [níže uvedené části](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
@@ -244,20 +198,20 @@ V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v cl
 
 Cluster AKS má dva objekty prostředků clusteru s přidruženými verzemi Kubernetes. První je Kubernetes verze řídicí roviny. Druhým je fond agentů s verzí Kubernetes. Rovina ovládacího prvku se mapuje na jeden nebo více fondů uzlů. Chování operace upgradu závisí na použitém příkazu rozhraní příkazového řádku Azure.
 
-1. Upgrade roviny ovládacího prvku vyžaduje použití`az aks upgrade`
+* Upgrade roviny ovládacího prvku vyžaduje použití `az aks upgrade`.
    * Tím se upgraduje verze řídicí roviny a všechny fondy uzlů v clusteru.
-   * `az aks upgrade` Předáním`--control-plane-only` pomocí příznaku se upgraduje jenom Řídicí rovina clusteru a žádný z přidružených fondů uzlů se nemění. Příznak je k dispozici ve **verzi AKS-Preview rozšíření v 0.4.16** nebo vyšší. `--control-plane-only`
-1. Upgrade fondů jednotlivých uzlů vyžaduje použití`az aks nodepool upgrade`
+   * Předáním `az aks upgrade` s příznakem `--control-plane-only` se upgraduje jenom Řídicí rovina clusteru a žádný z přidružených fondů uzlů se nemění.
+* Upgrade fondů jednotlivých uzlů vyžaduje použití `az aks nodepool upgrade`.
    * Tato inovace se upgraduje jenom na cílový fond uzlů s určenou verzí Kubernetes.
 
 Vztah mezi verzemi Kubernetes uchovávanými fondy uzlů musí také následovat po sadě pravidel.
 
-1. Nelze downgradovat rovinu ovládacího prvku ani Kubernetes verzi fondu uzlů.
-1. Pokud není zadána verze Kubernetes fondu uzlů, závisí chování na používaném klientovi. V případě deklarace v šabloně ARM se používá existující verze definovaná pro fond uzlů, pokud není nastavená žádná hodnota řídicí roviny.
-1. Můžete buď upgradovat, nebo škálovat úroveň ovládacího prvku nebo fondu uzlů v daném čase, nelze odeslat obě operace současně.
-1. Verze Kubernetes fondu uzlů musí být stejná hlavní verze jako plocha ovládacího prvku.
-1. Verze Kubernetes fondu uzlů může být nejvýše dvě (2) menší verze menší než Řídicí rovina, nikdy větší.
-1. Fond uzlů může být libovolná verze opravy Kubernetes, která je menší nebo rovna rovině ovládacího prvku, nikdy větší.
+* Nelze downgradovat rovinu ovládacího prvku ani Kubernetes verzi fondu uzlů.
+* Pokud není zadána verze Kubernetes fondu uzlů, závisí chování na používaném klientovi. V případě deklarace v šabloně Správce prostředků se používá existující verze definovaná pro fond uzlů, pokud není nastavená žádná verze řídicí roviny.
+* Můžete buď upgradovat, nebo škálovat úroveň ovládacího prvku nebo fondu uzlů v daném čase, nelze odeslat obě operace současně.
+* Verze Kubernetes fondu uzlů musí být stejná hlavní verze jako plocha ovládacího prvku.
+* Verze Kubernetes fondu uzlů může být nejvýše dvě (2) menší verze menší než Řídicí rovina, nikdy větší.
+* Fond uzlů může být libovolná verze opravy Kubernetes, která je menší nebo rovna rovině ovládacího prvku, nikdy větší.
 
 ## <a name="scale-a-node-pool-manually"></a>Ruční škálování fondu uzlů
 
@@ -313,7 +267,7 @@ Dokončení operace škálování trvá několik minut.
 
 ## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Automatické škálování určitého fondu uzlů povolením automatického škálování clusteru
 
-AKS nabízí ve verzi Preview samostatnou funkci pro automatické škálování fondů uzlů pomocí funkce s názvem [AutoScale clusteru](cluster-autoscaler.md). Tato funkce je doplněk AKS, který se dá povolit pro fond uzlů s jedinečným minimálním a maximálním počtem škálování na jeden fond uzlů. Naučte se [používat automatické škálování clusteru pro každý fond uzlů](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
+AKS nabízí samostatnou funkci pro automatické škálování fondů uzlů pomocí funkce s názvem [AutoScale clusteru](cluster-autoscaler.md). Tato funkce se dá povolit pro fond uzlů s jedinečným minimálním a maximálním počtem škálování na jeden fond uzlů. Naučte se [používat automatické škálování clusteru pro každý fond uzlů](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
 
 ## <a name="delete-a-node-pool"></a>Odstranění fondu uzlů
 
@@ -367,7 +321,7 @@ V předchozích příkladech vytvoření fondu uzlů se pro uzly vytvořené v c
 
 V následujícím příkladu vytvořte fond uzlů založený na GPU, který používá velikost virtuálního počítače *Standard_NC6* . Tyto virtuální počítače jsou napájené kartou NVIDIA Tesla K80. Informace o dostupných velikostech virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače se systémem Linux v Azure][vm-sizes].
 
-Vytvořte fond uzlů pomocí příkazu [AZ AKS Node Pool Add][az-aks-nodepool-add] . Tentokrát zadejte název *gpunodepool*a pomocí `--node-vm-size` parametru určete velikost *Standard_NC6* :
+Vytvořte fond uzlů pomocí příkazu [AZ AKS Node Pool Add][az-aks-nodepool-add] . Tentokrát zadejte název *gpunodepool*a pomocí parametru `--node-vm-size` určete velikost *Standard_NC6* :
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -433,7 +387,7 @@ Plánovač Kubernetes může pomocí chuti a omezení omezit, jaké úlohy je mo
 
 Další informace o použití pokročilých Kubernetes naplánovaných funkcí najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][taints-tolerations] .
 
-V tomto příkladu aplikujte na uzel založený na GPU pomocí příkazu [kubectl chuti uzel][kubectl-taint] . Z výstupu předchozího `kubectl get nodes` příkazu zadejte název uzlu založeného na GPU. Chuti se použije jako *klíč: hodnota* a pak možnost plánování. Následující příklad používá dvojici *SKU = GPU* a definuje lusky, jinak mají možnost neplánovat:
+V tomto příkladu aplikujte na uzel založený na GPU pomocí příkazu [kubectl chuti uzel][kubectl-taint] . Zadejte název uzlu založeného na GPU z výstupu předchozího příkazu `kubectl get nodes`. Chuti se použije jako *klíč: hodnota* a pak možnost plánování. Následující příklad používá dvojici *SKU = GPU* a definuje lusky, jinak mají možnost *neplánovat* :
 
 ```console
 kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -466,7 +420,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Naplánujte pod pomocí `kubectl apply -f gpu-toleration.yaml` příkazu:
+Naplánujte pod pomocí příkazu `kubectl apply -f gpu-toleration.yaml`:
 
 ```console
 kubectl apply -f gpu-toleration.yaml
@@ -593,7 +547,7 @@ AKS uzly nevyžadují pro komunikaci své vlastní veřejné IP adresy. Někter�
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle [výše](#manage-node-pools-using-a-resource-manager-template) uvedených pokynů a přidejte do agentPoolProfiles následující logickou hodnotu "enableNodePublicIP". Nastavte tuto hodnotu `true` na jako výchozí `false` nastavení, pokud není zadáno. Toto je vlastnost pouze pro dobu vytváření a vyžaduje minimální verzi rozhraní API 2019-06-01. Tato možnost se dá použít pro fondy uzlů pro Linux i Windows.
+Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle [výše](#manage-node-pools-using-a-resource-manager-template) uvedených pokynů a přidejte do agentPoolProfiles následující logickou hodnotu "enableNodePublicIP". Nastavte tuto hodnotu na `true` jako výchozí je nastavená jako `false`, pokud není zadaná. Toto je vlastnost pouze pro dobu vytváření a vyžaduje minimální verzi rozhraní API 2019-06-01. Tato možnost se dá použít pro fondy uzlů pro Linux i Windows.
 
 ```
 "agentPoolProfiles":[  
@@ -637,11 +591,6 @@ Informace o vytváření a používání fondů uzlů kontejnerů Windows server
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
-[azure-cli-install]: /cli/azure/install-azure-cli
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
@@ -659,7 +608,3 @@ Informace o vytváření a používání fondů uzlů kontejnerů Windows server
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
-[aks-support-policies]: support-policies.md
-[aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update

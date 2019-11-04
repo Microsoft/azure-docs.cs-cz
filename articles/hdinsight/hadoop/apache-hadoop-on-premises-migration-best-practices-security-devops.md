@@ -1,5 +1,5 @@
 ---
-title: Migrace místních Apache Hadoopových clusterů do Azure HDInsight – zabezpečení
+title: 'Zabezpečení: migrace místních Apache Hadoop do Azure HDInsight'
 description: Seznamte se s osvědčenými postupy zabezpečení a DevOps pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: c1523ccb3952bce904deac375d11de692ac235ef
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 1cebe425e323eefda6e26b0f32ddeda0118a70d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736143"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494978"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy zabezpečení a DevOps
 
@@ -23,7 +23,7 @@ Tento článek obsahuje doporučení pro zabezpečení a DevOps v systémech Azu
 
 Balíček zabezpečení podniku (ESP) podporuje ověřování založené na službě Active Directory, podporu více uživatelů a řízení přístupu na základě rolí. Když jste zvolili možnost ESP, cluster HDInsight se připojí k doméně služby Active Directory a správce podniku může nakonfigurovat řízení přístupu na základě role (RBAC) pro Apache Hive zabezpečení pomocí Apache Ranger. Správce může také Auditovat přístup k datům podle zaměstnanců a jakékoli změny provedené v zásadách řízení přístupu.
 
-Protokol ESP je k dispozici na následujících typech clusterů: Apache Hadoop, Apache Spark, Apache HBA, Apache Kafka a interaktivní dotaz (LLAP podregistru). 
+Protokol ESP je k dispozici na následujících typech clusterů: Apache Hadoop, Apache Spark, Apache Hbas, Apache Kafka a interaktivní dotaz (LLAP podregistru). 
 
 K nasazení clusteru HDInsight připojeného k doméně použijte následující postup:
 
@@ -43,12 +43,12 @@ K nasazení clusteru HDInsight připojeného k doméně použijte následující
 
 
 - Nasaďte cluster HDInsight ESP nastavením následujících parametrů:
-    - **Název domény**: Název domény, který je přidružený k Azure služba AD DS.
-    - **Uživatelské jméno domény**: Účet služby v doméně spravované na řadiči domény Azure služba AD DS, kterou jste vytvořili v předchozí části, například: `hdiadmin@contoso.onmicrosoft.com`. Tento uživatel domény bude správcem tohoto clusteru HDInsight.
-    - **Heslo domény**: Heslo účtu služby
-    - **Organizační jednotka**: Rozlišující název organizační jednotky, kterou chcete používat s clusterem HDInsight, například: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Pokud tato organizační jednotka neexistuje, pokusí se cluster HDInsight vytvořit organizační jednotku s použitím oprávnění účtu služby.
+    - **Název domény**: název domény, který je přidružený k Azure služba AD DS.
+    - **Doména uživatelské jméno**: účet služby v doméně spravované službou Azure služba AD DS řadiče domény, kterou jste vytvořili v předchozí části, například: `hdiadmin@contoso.onmicrosoft.com`. Tento uživatel domény bude správcem tohoto clusteru HDInsight.
+    - **Heslo domény**: heslo účtu služby.
+    - **Organizační jednotka**: rozlišující název organizační jednotky, kterou chcete používat s clusterem HDInsight, například: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Pokud tato organizační jednotka neexistuje, pokusí se cluster HDInsight vytvořit organizační jednotku s použitím oprávnění účtu služby.
     - **Adresa URL LDAPS**: například `ldaps://contoso.onmicrosoft.com:636`.
-    - **Přístup ke skupině uživatelů**: Skupiny zabezpečení, jejichž uživatelé chcete synchronizovat s clusterem, například: `HiveUsers`. Pokud chcete zadat více skupin uživatelů, oddělte je středníkem ";". Aby bylo možné cluster ESP vytvořit, musí se skupiny v adresáři vyskytovat.
+    - **Přístup ke skupině uživatelů**: skupiny zabezpečení, jejichž uživatelé chcete synchronizovat s clusterem, například: `HiveUsers`. Pokud chcete zadat více skupin uživatelů, oddělte je středníkem ";". Aby bylo možné cluster ESP vytvořit, musí se skupiny v adresáři vyskytovat.
 
 Další informace najdete v následujících článcích:
 
@@ -108,13 +108,13 @@ Pravidelně inovujte na nejnovější verzi HDInsight, abyste mohli využívat n
 1. Importujte všechna přechodná data, která byla zálohována.
 1. Spustí úlohy/pokračovat ve zpracování pomocí nového clusteru.
 
-Další informace najdete v článku: [Upgradujte cluster HDInsight na novou verzi](../hdinsight-upgrade-cluster.md).
+Další informace naleznete v článku: [upgrade clusteru HDInsight na novou verzi](../hdinsight-upgrade-cluster.md).
 
 ## <a name="patch-cluster-operating-systems"></a>Oprava operačních systémů clusteru
 
 V rámci spravované služby Hadoop se HDInsight postará o opravu operačního systému virtuálních počítačů používaných clustery HDInsight.
 
-Další informace najdete v článku: [Opravy operačního systému pro HDInsight](../hdinsight-os-patching.md).
+Další informace naleznete v článku: [opravy operačního systému pro HDInsight](../hdinsight-os-patching.md).
 
 ## <a name="post-migration"></a>Po migraci
 
@@ -122,6 +122,6 @@ Další informace najdete v článku: [Opravy operačního systému pro HDInsigh
 2. **Provádět testy** – opakované spuštění testů funkčního a funkčního výkonu.
 3. **Optimalizujte** problémy s výkonem na základě výše uvedených výsledků testů a pak proveďte znovu test, abyste potvrdili zvýšení výkonu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [HDInsight 4,0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction).

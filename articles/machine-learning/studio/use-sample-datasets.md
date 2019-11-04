@@ -1,7 +1,7 @@
 ---
 title: Použít ukázkové datové sady
-titleSuffix: Azure Machine Learning Studio
-description: Popis datové sady použité v ukázkových modelů, které jsou zahrnuté v nástroji Machine Learning Studio. Tyto ukázkové datové sady můžete použít pro vaše experimenty.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Popisy datových sad použitých v ukázkových modelech, které jsou součástí Machine Learning Studio (Classic). Tyto ukázkové datové sady můžete použít pro vaše experimenty.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,22 +10,22 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f86ae4977621927a09d9b83287a00dfa3bc17196
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c44fd4fcc6672d81332d79d1f5cc6845868a09d5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736611"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466976"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Použití vzorových datových sad v Azure Machine Learning Studiu
+# <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Použití ukázkových datových sad v Azure Machine Learning Studio (klasický)
 [top]: #machine-learning-sample-datasets
 
-Když vytvoříte nový pracovní prostor Azure Machine Learning Studio, několik ukázkových datových sad a experimenty jsou zahrnuté ve výchozím nastavení. Mnohé z těchto ukázkových datových sad jsou používány ukázkových modelů v [galerii Azure AI](https://gallery.azure.ai/). Ostatní jsou zahrnuty jako příklady různých typů dat se obvykle používá ve službě machine learning.
+Když vytvoříte nový pracovní prostor v Azure Machine Learning Studio (Classic), bude ve výchozím nastavení zahrnuto několik ukázkových datových sad a experimentů. Mnohé z těchto ukázkových datových sad jsou používány vzorovými modely v [Azure AI Gallery](https://gallery.azure.ai/). Další jsou zahrnuté jako příklady různých typů dat, které se obvykle používají ve strojovém učení.
 
-Některé tyto datové sady jsou dostupné ve službě Azure Blob storage. Pro tyto datové sady následující tabulka obsahuje přímý odkaz. Tyto datové sady můžete použít ve své experimenty s použitím [Import dat] [ import-data] modulu.
+Některé z těchto datových sad jsou k dispozici v úložišti objektů BLOB v Azure. Pro tyto datové sady poskytuje následující tabulka přímý odkaz. Tyto datové sady můžete v experimentech použít pomocí modulu [Import dat][import-data] .
 
-Zbytek těchto ukázkových datových sad je k dispozici ve vašem pracovním prostoru v části **uložení datové sady**. Zjistíte to paletě modulů nalevo od plátna experimentu v nástroji Machine Learning Studio.
-Všechny tyto datové sady můžete použít ve vlastním experimentu přetáhněte na plátno experimentu.
+Zbytek těchto ukázkových datových sad je v pracovním prostoru v části **uložené datové sady**k dispozici. Najdete ho v paletě modul nalevo od plátna experimentu v Machine Learning Studio (Classic).
+Kteroukoli z těchto datových sad můžete použít ve svém vlastním experimentu tak, že ji přetáhnete na plátno experimentu.
 
 ## <a name="datasets"></a>Datové sady
 
@@ -37,378 +37,378 @@ Všechny tyto datové sady můžete použít ve vlastním experimentu přetáhn�
 </tr>
 
 <tr>
-  <td>Datová sada pro dospělé binární klasifikace příjmů v sčítání</td>
+  <td>Datová sada klasifikace binárního výnosu pro dospělé</td>
   <td>
-Podmnožinu databázi sčítání 1994 využitím dospělé pracovní víc než 16 s indexem upravené příjem > 100.
+Podmnožina 1994ch databází, která používá pracovní dospělí za stáří 16, s upraveným indexem příjmů > 100.
 <p></p>
-<b>Použití:</b> Klasifikujte uživatele, kteří používají demografické údaje k predikci, jestli osoba nepřesahuje více než 50 tisíc v roce.
+<b>Použití:</b> Klasifikujte lidi pomocí demografických údajů, abyste předpovídat, jestli osoba za 50 tis za rok.
 <p></p>
-<b>Související zdroje informací:</b> Kohavi, R., Becker, B., (1996). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
+<b>Související výzkum:</b> Kohavi, R., Becker, B., (1996). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
-  <td>Datová sada letiště kódy</td>
+  <td>Datová sada kódů letišť</td>
   <td>
-Kódy letiště USA.
+Kódy letišť USA.
 <p></p>
-Tato datová sada obsahuje jeden řádek pro každý letiště USA, zadejte do něj letiště identifikační číslo a název spolu s umístění Město a stát.
+Tato datová sada obsahuje jeden řádek pro každý letiště v USA, který poskytuje ID a název letiště společně s město a městem umístění.
   </td>
 </tr>
 
 <tr>
-  <td>Automobilů price data (Raw)</td>
+  <td>Údaje o cenách automobilu (RAW)</td>
   <td>
-Informace o automobilů podle značka a model, včetně cen, funkce, jako je počet cylindrů a MPG, jakož i pojištění rizikové skóre.
+Informace o automatickém mobilním zařízení, včetně ceny, funkcí, jako je třeba počet lahví a MPG, a hodnocení rizikového rizika.
 <p></p>
-Rizikové skóre je zpočátku spojeno s cenou automaticky. To se potom upraví skutečné rizika v procesu známém jako symboling matematici. Hodnota + 3 značí, že automatické je riskantní a hodnota čísla -3 je pravděpodobně bezpečné.
+K automatické ceně je zpočátku přidruženo skóre rizika. Pak se upraví na skutečné riziko v procesu známém Pojistní matematici jako symboling. Hodnota + 3 znamená, že auto je rizikové a hodnota-3 je pravděpodobně bezpečná.
 <p></p>
-<b>Použití:</b> Předvídání skóre rizika na základě funkcí, pomocí regrese nebo klasifikaci s množstvím proměnných. 
+<b>Použití:</b> Předpověď rizikového skóre podle funkcí pomocí regrese nebo klasifikace lineární 
 <p></p>
-<b>Související zdroje informací:</b> Schlimmer J.C. (1987). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
+<b>Související výzkum:</b> Schlimmer, J.C. (1987). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
-  <td>Datová sada pronájmu Cyklistických kol</td>
+  <td>Datová sada UCI pro půjčovnu kol</td>
   <td>
-Pronájmu Cyklistických kol dataset, který je založen na reálná data z Bikeshare velké společnosti, která udržuje síť pronájem kolo v Washington DC.
+Datová sada s daty o pronájmu kol, která je založená na skutečných datech ze společnosti pro velké Bikeshare společnosti, která udržuje síť pronájmu kol v Washington DC.
 <p></p>
-Datová sada obsahuje jeden řádek pro každou hodinu každý den v 2011 a 2012, celkem tedy 17,379 řádků. Rozsah po hodinách pronajatých kol za je od 1 do 977.
+Datová sada má jeden řádek pro každou hodinu každého dne v 2011 a 2012, celkem 17 379 řádků. Rozsah odpracovaných kol je od 1 do 977.
 
   </td>
 </tr>
 
 <tr>
-  <td>Obrázek RGB Billem Gatesem</td>
+  <td>Obrázek RGB pro brány pro účtenky</td>
   <td>
-Veřejně dostupné image soubor převést na data ve formátu CSV.
+Veřejně dostupný soubor obrázku převedený na data ve formátu CSV.
 <p></p>
-Kód pro převod této image najdete v <strong>barva kvantizační použití clusteringu s K-Means</strong> stránku podrobností o model.
+Kód pro převod obrázku je k dispozici na stránce <strong>Color kvantizační s</strong> podrobnostmi o modelu clusteringu.
   </td>
 </tr>
 
 <tr>
-  <td>Krve donation dat</td>
+  <td>Krevní data darování</td>
   <td>
-Podmnožinu dat z databáze dárcovského krve transfuzním služby System Center Hsin Chu Město, Tchaj-wan.
+Podmnožina dat z krevní databáze dárce pro krevní transfúzi střediska Hsin-chu City, Tchaj-wan.
 <p></p>
-Dárcovského data obsahují měsíců od poslední odběr) a četnost nebo celkový počet odběrů, čas od poslední odběr a množství věnován krve.
+Data dárce zahrnují měsíce od posledního darování) a četnost nebo celkový počet odběrů, čas od posledního darování a množství krevních darovaných.
 <p></p>
-<b>Použití:</b> Cílem je k předpovědi pomocí klasifikace, zda dárcovského věnován krve 2007 dne, kde 1 označuje dárcovského během období cíl a 0 bez dárcovského. 
+<b>Použití:</b> Cílem je předpovědět přes klasifikaci, ať už v březnu 2007, kde 1 označuje dárce během cílového období, a 0 nedárce. 
 <p></p>
-<b>Související zdroje informací:</b> Yeh, I.C., (2008). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy
+<b>Související výzkum:</b> Já, I.C., (2008). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní školy a počítačové vědy
 <p></p>
-Já jsem-Cheng, Yang, King-Jang a Nocení, jde značku, "Knowledge discovery na aktualizace modelu s použitím Bernoulliho pořadí,"Expert systémy s aplikacemi, 2008, <a href="https://dx.doi.org/10.1016/j.eswa.2008.07.018">https://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
+Já, I-Cheng, Yang, King-Jang a nocení, značku-Mingu, "zjišťování znalostí na NEPŘEJDE modelu pomocí Bernoulliho sekvence," expert Systems s aplikacemi, 2008, <a href="https://dx.doi.org/10.1016/j.eswa.2008.07.018">https://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
 </tr>
 
 <tr>
-  <td>Mateřské prsu</td>
+  <td>Data o prsních rakovinu</td>
   <td>
-Jeden ze tří rakoviny souvisejících datových sad poskytované radiology ústav, který se zobrazuje často dokumentace machine learning. Kombinuje diagnostické informace a funkce z laboratorní analýzy přibližně 300 tkáňových vzorků.
+Jedna ze tří datových sad souvisejících s rakovinu, kterou poskytuje Oncology Institute, což se často objevuje v dokumentaci ke službě Machine Learning. Kombinuje diagnostické informace s funkcemi z laboratorní analýzy o 300 tkáních vzorků.
 <p></p>
-<b>Použití:</b> Umožňuje klasifikovat typ rakoviny, na základě 9 atributů, z nichž některé jsou lineární a některé jsou zařazené do kategorií. 
+<b>Použití:</b> Klasifikace typu rakoviny na základě 9 atributů, z nichž některé jsou lineární a některé jsou kategorií. 
 <p></p>
-<b>Související zdroje informací:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
+<b>Související výzkum:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
-  <td>Funkce rakoviny mateřské <td>
-Datová sada obsahuje informace o 102K podezřelých oblastí (kandidáty) X-ray imagí popsány 117 potřebuje pro funkce. Funkce jsou speciální a jejich význam neposkytuje Tvůrce datové sady (Siemens zdravotnictví). 
+  <td>Funkce prsních rakoviny <td>
+Datová sada obsahuje informace o podezřelých oblastech 102K (kandidáty) z rentgenových imagí, z nichž každý popisuje funkce 117. Tyto funkce jsou proprietární a jejich význam nejsou tvůrci datových sad (zdravotnictví) odhaleny. 
   </td>
 </tr>
 
 <tr>
-  <td>Informace o rakovině mateřské</td>
+  <td>Informace o prsních Rakovinuch</td>
   <td>
-Datová sada obsahuje další informace pro každou podezřelou oblast X-ray bitové kopie. Každý příklad obsahuje informace (například popisku, pacientů ID, souřadnice opravy vzhledem k celého obrázku) o příslušné číslo řádku v datové sadě mateřské rakoviny funkce. Každý pacient má několik příkladů. U pacientů, kteří mají rakovinu jsou některé příklady kladné a některé jsou záporné. U pacientů, kteří nemají rakovinu všechny příklady jsou záporné. Objekt dataset obsahuje příklady 102 tis. Tendenční datovou sadu % 0.6 bodů jsou kladné, ostatní jsou záporné. Datová sada se zpřístupní Siemens zdravotní péče.
+Datová sada obsahuje další informace pro každou podezřelou oblast obrazu na ose X-ray. Každý příklad obsahuje informace o odpovídajícím čísle řádku v datové sadě vlastností prsních rakoviny (například popisek, ID pacienta, souřadnice týkající se opravy vzhledem k celému obrázku). Každý pacient má několik příkladů. Pro pacienty, kteří mají rakovinu, jsou některé příklady pozitivní a některé jsou záporné. Pro pacienty, kteří nemají rakovinu, jsou všechny příklady záporné. Tato datová sada obsahuje příklady 102K. Datová sada je posunuta, 0,6% bodů je pozitivní, zbývající jsou záporné. Tato datová sada byla zpřístupněna pro zdravotní péči společnosti Siemens.
   </td>
 </tr>
 
 <tr>
-  <td>Sdílené popisky Appetency CRM</td>
+  <td>Appetency popisky CRM – sdílené</td>
   <td>
-Popisky z konference KDD Cup 2009 zákazníka vztah předpovědi před obrovskou výzvou – (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency.labels</a>).
+Štítky z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency. labels</a>) na vytvářené problémy s předpovědí vztahů se zákazníky 2009.
   </td>
 </tr>
 
 <tr>
-  <td>Sdílené popisky změn CRM</td>
+  <td>Sdílené změny v CRM</td>
   <td>
-Popisky z konference KDD Cup 2009 zákazníka vztah předpovědi před obrovskou výzvou – (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn.labels</a>).
+Štítky z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn. labels</a>) na vytvářené problémy s předpovědí vztahů se zákazníky 2009.
   </td>
 </tr>
 
 <tr>
-  <td>Datová sada CRM sdílené</td>
+  <td>Sdílená datová sada CRM</td>
   <td>
-Tato data pochází z konference KDD Cup 2009 zákazníka vztah předpovědi před obrovskou výzvou – (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train.data.zip</a>).
+Tato data pocházejí z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train. data. zip</a>), která vychází ze seznamu 2009 vztahů se zákazníky.
 <p></p>
-Datová sada obsahuje 50 tisíc zákazníků francouzské telekomunikační společnosti oranžově. Každý zákazník má 230 anonymizované funkce 190, z nichž jsou číselná a 40 jsou zařazené do kategorií. Funkce jsou velmi zhuštěné.
+Datová sada obsahuje zákazníky 50 tis z francouzské telekomunikační společnosti oranžová. Každý zákazník má 230 funkcí Anonyme, 190 z nich je numerická a 40 jsou kategorií. Funkce jsou velmi zhuštěné.
   </td>
 </tr>
 
 <tr>
-  <td>Sdílené popisky Upselling CRM</td>
+  <td>Sdílení popisků pro CRM</td>
   <td>
-Popisky z konference KDD Cup 2009 zákazníka vztah předpovědi před obrovskou výzvou – (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling.labels</a>).
+Štítky z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling. labels</a>) na vytvářené problémy s předpovědí vztahů se zákazníky 2009.
   </td>
 </tr>
 
 <tr>
-  <td>Regrese energetickou účinnost dat</td>
+  <td>Data regrese pro energetickou účinnost</td>
   <td>
-Kolekce profily simulované energie, založené na 12 vytváření různých tvarů. Budovy jsou rozlišené pomocí osm funkce. Jedná se o použitém oblast, sklo oblasti distribuce a orientaci.
+Kolekce simulovaných energetických profilů na základě 12 různých stavebních tvarů. Budovy jsou odlišené o osm funkcí. To zahrnuje oblast zasklení, distribuci zasklení oblasti a orientaci.
 <p></p>
-<b>Použití:</b> Aby předpovídal hodnocení energetickou účinnost na základě jako jeden ze dvou reálné Vážíme si toho odpovědi pomocí regrese nebo klasifikaci. Pro klasifikaci roc se zaokrouhlí proměnné odpovědi na nejbližší celé číslo. 
+<b>Použití:</b> Pomocí regrese nebo klasifikace předpovědět hodnocení energetické účinnosti na základě jedné ze dvou odpovědí s skutečnou hodnotou. U klasifikace s více třídami zaokrouhlí proměnnou odpovědi na nejbližší celé číslo. 
 <p></p>
-<b>Související zdroje informací:</b> Xifara, A. & Tsanas, A. (2012). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
+<b>Související výzkum:</b> Xifara, A. & Tsanas, A. (2012). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
-  <td>Data zpoždění letů</td>
+  <td>Data o zpoždění letů</td>
   <td>
-Civilní let odloží o včasných údaje o výkonu z TranStats shromažďování dat z USA Department of Transportation (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">včas</a>).
+Data o výkonu pro osobní čas, která jsou přijímána z kolekce TranStatsch dat ministerstva dopravy USA (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">včas).</a>
 <p></p>
-Datová sada obsahuje časové období. dubna – říjen 2013. Než nahrajete do Azure Machine Learning Studio, byla datová sada zpracována následujícím způsobem:
+Datová sada se zabývá časovým obdobím od dubna do října 2013. Před nahráním do klasické verze Azure Machine Learning Studio byla datová sada zpracována takto:
 <ul>
-  <li>Datová sada se filtrovat k pokrytí pouze 70 za nejvytíženější letiště v kontinentální části USA</li>
-  <li>Zrušené lety byly označený jako zpožděné o víc než 15 minut</li>
-  <li>Byly odfiltrovány odkloněných lety</li>
-  <li>Nebyly vybrány následující sloupce: Rok, měsíc, DayofMonth, DayOfWeek, operátora, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay ArrDel15 bylo zrušeno</li>
+  <li>Datová sada se vyfiltruje tak, aby se kryla jenom 70 nejvytíženější letiště v kontinentální části USA.</li>
+  <li>Zrušené lety byly označeny za zpožděné o více než 15 minut.</li>
+  <li>Odfiltrované lety byly odfiltrovány</li>
+  <li>Byly vybrány následující sloupce: Year, month, DayofMonth, DayOfWeek, Carrier, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, Canceled.</li>
 </ul>
 </td>
 </tr>
 
 <tr>
-  <td>Flight o včasných odletech (Raw)</td>
+  <td>Výkon včas nezpracovaných letových časů (RAW)</td>
   <td>
-Záznamy o doručení letu letadlo a odchylky v rámci USA z října 2011.
+Záznamy o příjezdu a odchodech letů v letadle v rámci USA od října 2011.
 <p></p>
-<b>Použití:</b> Předpověď zpoždění letu. 
+<b>Použití:</b> Předpovědět zpoždění letů. 
 <p></p>
-<b>Související zdroje informací:</b> Z USA oddělení of Transportation <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time"> https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time </a>.
+<b>Související výzkum:</b> Od oddělení USA. <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>dopravy.
   </td>
 </tr>
 
 <tr>
-  <td>Data o lesních požárech</td>
+  <td>Data jsou aktivována v doménové struktuře.</td>
   <td>
-Obsahuje data o počasí, jako je například teploty a vlhkosti indexy a rychlost větru. Data pocházejí z oblasti severovýchodním Portugalsku v kombinaci s záznamy o lesních požárech.
+Obsahuje data o počasí, jako je teplota a indexy vlhkosti a rychlost větru. Data jsou přijímána z oblasti severovýchodního Portugalska v kombinaci se záznamy o struktuře požárů.
 <p></p>
-<b>Použití:</b> Toto je úloha obtížné regrese, kde je cílem předpovídat vypálený oblasti lesních požárech. 
+<b>Použití:</b> Jedná se o obtížný regresní úkol, ve kterém se zaměřuje na předpověď vypálené oblasti v doménové struktuře, která se aktivuje. 
 <p></p>
-<b>Související zdroje informací:</b> Cortez P. & Morais A. (2008). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy
+<b>Související výzkum:</b> Cortez, P., & Morais, A. (2008). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní školy a počítačové vědy
 <p></p>
-[Cortez a Morais 2007] P. Cortez a A. Morais. Data Mining přístup k předvídání lesních požárech pomocí meteorologická Data. In J. Neves, M. F. Santos a J. Machado Edit.:, nových trendů v umělé inteligence, in: Proceedings of 13 EPIA 2007 – portugalština Conference on umělé inteligence, dne, 523-Guimarães, Portugalsko, str. 512, 2007. APPIA, ISBN-13 978-989-95618-0-9. K dispozici na: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
+[Cortez a Morais, 2007] P. Cortez a. Morais. Přístup k dolování dat pro předpověď doménové struktury se aktivují pomocí meteorologických dat. V J. Neves, M. F. Santos a J. Machado EDS. nové trendy v umělých inteligentních Intelligencech, jednání nějak změnily 13ho EPIA 2007-portugalské konference o uměle Intelligence, prosinec, Guimarães, Portugalsku, PP. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. K dispozici na adrese: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>.
   </td>
 </tr>
 
 <tr>
-  <td>Němčina UCI platební kartu datové sady</td>
+  <td>Datová sada UCI pro německé kreditní karty</td>
   <td>
-Datová sada UCI Statlog (němčina platební karty) (<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog + němčina + + daty o úvěrovém</a>), pomocí souboru german.data.
+Datová sada Statlog (německá kreditní karta) (<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog + němčina + Credit + data</a>) s použitím souboru německého. data.
 <p></p>
-Klasifikuje datovou sadu uživatelů, popsaného sadu atributů jako střední nebo vysoké úvěrové riziko. Každý příklad představuje osobu. Existují 20 funkcí, číselná a zařazená do kategorií a binární popisek (hodnota riziko kreditů). Vysoké úvěrové riziko položky mají popisek = 2, nízké úvěrové riziko položky mají popisek = 1. Náklady na misclassifying příklad s nízkým rizikem jako vysoké je 1, zatímco misclassifying příklad vysoké riziko co nejnižší náklady na je 5.
+Datová sada klasifikuje osoby, které jsou popsány sadou atributů, jako nízké nebo vysoké úvěrové riziko. Každý příklad představuje osobu. K dispozici jsou 20 funkcí, číselné i kategorií a binární označení (hodnota úvěrového rizika). Položky vysokého kreditu mají štítek = 2, nízké položky úvěrového rizika mají označení = 1. Náklady na chybnou klasifikaci příkladu s nízkým rizikem, který je vysoký, je 1, zatímco náklady na netřídění s vysokým rizikovým příkladem jsou 5.
   </td>
 </tr>
 
 <tr>
-  <td>Názvy IMDB filmů</td>
+  <td>Názvy filmů IMDB</td>
   <td>
-Datová sada obsahuje informace o videa, která byla hodnocena v tweetech Twitter: IMDB film ID, název filmu, rozšířením podle tematických a výrobní rok. Existují 17K filmy v datové sadě. Datová sada byla zavedena v dokumentu "S. Dooms T. De Pessemier a L. Martens. MovieTweetings: filmu hodnocení datové sady se shromažďují z Twitteru. Seminář o Crowdsourcingu a lidské výpočtu systémů doporučení CrowdRec na RecSys 2013."
+Datová sada obsahuje informace o videích, které byly ohodnoceny na Twitteru tweety: IMDB ID filmu, název filmu, Žánr a produkční rok. V datové sadě jsou 17K filmy. Datová sada byla představena v dokumentu "S". Dooms, T. de Pessemier a L. Martens. MovieTweetings: datová sada hodnocení filmu shromážděná z Twitteru. Dílna v Crowdsourcingový a lidské výpočtu pro doporučované systémy, CrowdRec na RecSys 2013. "
   </td>
 </tr>
 
 <tr>
-  <td>Data Iris dvě třídy</td>
+  <td>Iris – dvě data třídy</td>
   <td>
-To je pravděpodobně nejznámější databáze najdete v dokumentaci rozpoznávání vzor. Tato datová sada je poměrně malý, obsahující 50 příklady každý petal měření z tři typy iris.
+To je pravděpodobně nejlepší známá databáze, která se nachází v dokumentaci pro rozpoznávání vzorků. Datová sada je relativně malá, obsahující 50 příklady každé Petal měření ze tří odrůd Iris.
 <p></p>
-<b>Použití:</b> Předpověď typu iris z měření.  
+<b>Použití:</b> Předpovědět typ Iris z měření.  
 <p></p>
-<b>Související zdroje informací:</b> FISHER R.A. (1988). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
+<b>Související výzkum:</b> Fisher, R.A. (1988). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
-  <td>Video Tweetů</td>
+  <td>Video tweety</td>
   <td>
-Tato datová sada je rozšířenou verzi film Tweetings datové sady. Objekt dataset obsahuje 170K hodnocení filmů, extrahovat z strukturované tweetů na Twitteru. Každá instance představuje tweet a n-tice: ID uživatele, ID IMDB film, hodnocení, časové razítko, počet Oblíbené položky pro tento tweet a počet retweets tento tweet. Datová sada byla k dispozici A. říká, že, S. Dooms, Loni b a D. Tikk pro doporučení systémy Challenge 2014.
+Datová sada je rozšířená verze datové sady ve formátu videa. Tato datová sada má 170K hodnocení filmů, která se extrahují z dobře strukturovaných tweety na Twitteru. Každá instance představuje prostupnost a je řazená kolekce členů: ID uživatele, ID videa IMDB, hodnocení, časové razítko, počet oblíbených položek pro tento seznam a počet předaných prostředků. Datová sada byla zpřístupněna prostřednictvím. říkáme, S. Dooms, B. loni a D. Tikk pro doporučované systémy Challenge 2014.
   </td>
 </tr>
 
 <tr>
-  <td>Data MPG u různých automobilů</td>
+  <td>Data MPG pro různé automobilní zařízení</td>
   <td>
-Tato datová sada je mírně upravenou verzi poskytovaných knihovnou StatLib univerzity Carnegie Mellon datové sady. 1983 American statistické přidružení budeme použila datové sady.
+Tato datová sada je mírně upravená verze datové sady poskytované knihovnou StatLib Carnegie Mellon University. Datová sada se použila ve Exposition dataassociation 1983 American.
 <p></p>
-Data jsou uvedeny spotřeby paliva u různých automobilů v mil za paliva. Také obsahuje informace, jako je počet cylindrů, modul posouvání, výkon, Celková váha a akceleraci.
+Tato data vypisuje spotřebu paliva pro různé automobilní zařízení v mílích za galon. Obsahuje také informace, jako je počet lahví, posun motoru, výkonová hodnota, celková váha a zrychlení.
 <p></p>
-<b>Použití:</b> Předpověď paliva na základě tří diskrétních atributů s více hodnotami a pět souvislé atributy. 
+<b>Použití:</b> Předpovídání úspor paliva na základě tří diskrétních atributů s více hodnotami a pěti souvislých atributů. 
 <p></p>
-<b>Související zdroje informací:</b> StatLib, Carnegie Mellon University, (1993). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
+<b>Související výzkum:</b> StatLib, Carnegie Mellon University, (1993). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
-  <td>Binární klasifikace diabetem Pima indiánů datové sady</td>
+  <td>Datová sada klasifikace Pima Indians diabetes Binary</td>
   <td>
-Podmnožinu dat z národní Institute diabetem a trávícího a nemocemi chránit ledviny databáze. Datové sady se filtrovat, aby se zaměřují na Ženský pacientů Indická dědictví Pima. Data obsahují lékařská data, jako jsou glukosy a inulinový úrovně, jakož i lifestyle faktorů.
+Podmnožina dat z Národního institutu databáze nemocí diabetes a trávící a ledvin. Datová sada se vyfiltroval, aby se zaměřila na saminí pacienty Pima indických dědictví. Data zahrnují zdravotnické údaje, jako jsou glukosy a inulinové úrovně, a také součinitele životního stylu.
 <p></p>
-<b>Použití:</b> Předpověď, jestli má předmět diabetem (binární klasifikace). 
+<b>Použití:</b> Předpovědět, zda má předmět diabetes (binární klasifikace). 
 <p></p>
-<b>Související zdroje informací:</b> Sigillito, V. (1990). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml"</a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy </td>
+<b>Související výzkum:</b> Sigillito, V. (1990). UCI Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml úložiště "</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
-  <td>Restaurace zákaznická data</td>
+  <td>Zákaznická data restaurace</td>
   <td>
-Sada metadata o zákaznících, včetně demografických údajů a předvolby.
+Sada metadat o zákaznících, včetně demografických údajů a předvoleb.
 <p></p>
-<b>Použití:</b> Tuto datovou sadu, můžete použijte v kombinaci s další dva restaurace datové sady, a natrénuje a otestuje doporučení systému. 
+<b>Použití:</b> Tuto datovou sadu použijte v kombinaci s dalšími dvěma datovými sadami restaurace, ke školení a testování doporučení systému. 
 <p></p>
-<b>Související zdroje informací:</b> Bache K. a Lichman, M. (2013). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačových věd.
+<b>Související výzkum:</b> Bache, K. a Lichman, M. (2013). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní informace a počítačové vědy.
   </td>
 </tr>
 
 <tr>
-  <td>Data funkce restaurace</td>
+  <td>Data funkcí restaurace</td>
   <td>
-Sada metadata o restaurace a jejich funkce, jako je například typ food, obědvajících stylu a umístění.
+Sada metadat o restauracích a jejich funkcích, jako je například typ potraviny, druh stravování a umístění.
 <p></p>
-<b>Použití:</b> Tuto datovou sadu, můžete použijte v kombinaci s další dva restaurace datové sady, a natrénuje a otestuje doporučení systému. 
+<b>Použití:</b> Tuto datovou sadu použijte v kombinaci s dalšími dvěma datovými sadami restaurace, ke školení a testování doporučení systému. 
 <p></p>
-<b>Související zdroje informací:</b> Bache K. a Lichman, M. (2013). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačových věd.
+<b>Související výzkum:</b> Bache, K. a Lichman, M. (2013). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní informace a počítačové vědy.
   </td>
 </tr>
 
 <tr>
-  <td>Restaurace hodnocení</td>
+  <td>Hodnocení restaurace</td>
   <td>
-Obsahuje hodnocení vzhledem uživateli restaurace na škále od 0 do 2.
+Obsahuje hodnocení vydaná uživateli do restaurací na škále od 0 do 2.
 <p></p>
-<b>Použití:</b> Tuto datovou sadu, můžete použijte v kombinaci s další dva restaurace datové sady, a natrénuje a otestuje doporučení systému. 
+<b>Použití:</b> Tuto datovou sadu použijte v kombinaci s dalšími dvěma datovými sadami restaurace, ke školení a testování doporučení systému. 
 <p></p>
-<b>Související zdroje informací:</b> Bache K. a Lichman, M. (2013). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačových věd.
+<b>Související výzkum:</b> Bache, K. a Lichman, M. (2013). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní informace a počítačové vědy.
   </td>
 </tr>
 
 <tr>
-  <td>Oceli Annealing roc dataset</td>
+  <td>Žíhání ocelová datová sada s více třídami</td>
   <td>
-Tato datová sada obsahuje řadu záznamů z oceli žíhání zkušební verze. Obsahuje fyzické atributy (šířku, tloušťka, typ (smyčka, list, atd.) výsledný oceli typy.
+Tato datová sada obsahuje řadu záznamů z žíháních testů z oceli. Obsahuje fyzické atributy (šířku, tloušťku, typ (cívka, list atd.) výsledných typů oceli.
 <p></p>
-<b>Použití:</b> Předpověď dva atributy číselné třídy; tvrdosti nebo šifrování. Může také analyzovat korelace mezi atributy.
+<b>Použití:</b> Předvídání všech dvou atributů číselné třídy; tvrdost nebo pevnost. Můžete také analyzovat korelace mezi atributy.
 <p></p>
-Oceli známek použijte standardní sadu definovaném SAE a jiných společností. Hledáte konkrétní "třída" (třída proměnná) a chcete pochopit, jaké hodnoty potřebné. 
+Třídy oceli se řídí standardním standardem, který definuje SAE a jiné organizace. Hledáte konkrétní "třídu" (proměnnou třídy) a chcete pochopit potřebné hodnoty. 
 <p></p>
-<b>Související zdroje informací:</b> Sterling, D. & Buntine, W. (NA). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole a počítačové vědy
+<b>Související výzkum:</b> Sterling, D. & Buntine, W. (NA). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of California, školní školy a počítačové vědy
 <p></p>
-Užitečný průvodce oceli známek najdete tady: <a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
+Užitečnou příručku ke jakostním odvětvím najdete tady: <a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
 <tr>
-  <td>Telescope dat</td>
+  <td>Data v oboru</td>
   <td>
-Záznam vysokou energie gama částice nárůstem spolu s šum na pozadí, obě simulované pomocí simulace typu Monte Carlo procesu.
+Záznam základních částic s vysokou spotřebou hodnot gamma spolu s hlukem na pozadí se simulují pomocí procesu Monte Carlo.
 <p></p>
-Aby se zlepšila přesnost založené na začátku atmosféru Cherenkov gama dalekohledy bylo záměrem simulace. To se provádí pomocí statistické metody rozlišovat mezi požadované signál (Cherenkov záření sprchy) a šum na pozadí (hadronic sprchy iniciovaných cosmic paprsky v horním prostředí).
+Účelem simulace bylo zlepšit přesnost atmosféry Cherenkovch hodnot gamma v rozsahu od základu. To se provádí pomocí statistických metod k odlišení od požadovaného signálu (Cherenkov záření) a hluku na pozadí (hadronic sprchy iniciované paprsky COSMIC v horní atmosféře).
 <p></p>
-Data byla předběžného zpracování k vytvoření clusteru služby prodlouženého s long osy je zaměřen na centru fotoaparát. Vlastnosti tohoto tři tečky (často označované jako parametry Hillas) jsou mezi parametry bitové kopie, které lze použít pro diskriminace.
+Data byla předem zpracována za účelem vytvoření clusteru s prodlouženou osou se zaměřením na centrum kamery. Charakteristiky této elipsy (často označované jako parametry Hillas) jsou mezi parametry obrázku, které se dají použít k diskriminaci.
 <p></p>
-<b>Použití:</b> Předpověď, jestli obrázek oslavu představuje šumu signál nebo na pozadí.
+<b>Použití:</b> Předpovídání, zda obrázek sprchy představuje signál nebo šum na pozadí.
 <p></p>
-<b>Poznámky:</b> Jednoduché klasifikace přesnost není od klasifikace události na pozadí, jako je signál horší než klasifikace signál události jako pozadí smysl pro tato data. Pro porovnání různých třídění je třeba použít graf roc s více TŘÍDAMI. Pravděpodobnost přijetí události na pozadí jako signálu musí mít míň než jednu z těchto prahových hodnot: 0,01, 0,02, 0,05, 0.1 nebo 0.2.
+<b>Poznámky:</b> Jednoduchá klasifikace není pro tato data smysluplná, protože klasifikace události na pozadí jako signalizace je horší než klasifikace události signálu jako pozadí. Pro porovnání různých klasifikátorů by se měla použít graf ROC. Pravděpodobnost přijetí události na pozadí jako signalizace musí být pod jedním z následujících mezních hodnot: 0,01, 0,02, 0,05, 0,1 nebo 0,2.
 <p></p>
-Všimněte si také, že je podcenit počet událostí na pozadí (pro hadronic sprchy h). V reálných představuje třídu h nebo šumu většinou událostí. 
+Všimněte si také, že počet událostí na pozadí (h, pro hadronic sprchy) je pododhadovaná. Ve skutečných měřeních představuje třída h nebo Noise většinu událostí. 
 <p></p>
-<b>Související zdroje informací:</b> Bock R.K. (1995). UCI strojového učení úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: University of California, z informací o škole </td>
+<b>Související výzkum:</b> Bock, R.K. (1995). <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>úložiště UCI Machine Learning. Irvine, CA: University of Kalifornie, School of Information </td>
 </tr>
 
 <tr>
   <td>Datová sada počasí</td>
   <td>
-Po hodinách na základě pozemního počasí pozorování z NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">sloučit data z 201304 201310</a>).
+Hodinově založené počasí z NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">sloučená data z 201304 do 201310</a>).
 <p></p>
-Data o počasí pokrývá pozorování z letiště meteorologická stanice, pokrývající časové období. dubna – říjen 2013. Než nahrajete do Azure Machine Learning Studio, byla datová sada zpracována následujícím způsobem:
+Údaje o počasí se týkají pozorování z povětrnostních stanic na letišti, které pokrývají dobu od dubna do října 2013. Před nahráním do klasické verze Azure Machine Learning Studio byla datová sada zpracována takto:
 <ul>
-  <li>Meteorologická stanice identifikátory byly mapovány na letišti odpovídající ID</li>
-  <li>Stanice počasí nejsou spojena s 70 za nejvytíženější letiště byly odfiltrovány.</li>
-  <li>Sloupec data byla rozdělit na samostatné sloupce, rok, měsíc a den</li>
-  <li>Nebyly vybrány následující sloupce: AirportID, rok, měsíc, den, čas, časové pásmo, SkyCondition, viditelnost, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, rychlost větru, WindDirection, ValueForWindCharacter StationPressure, PressureTendency, PressureChange, SeaLevelPressure, typ záznamu, HourlyPrecip, výškoměru</li>
+  <li>ID povětrnostních stanic byly namapovány na odpovídající ID letišť.</li>
+  <li>Nefiltrované povětrnostní stanice, které nejsou spojené s nejvytíženější letiště 70.</li>
+  <li>Sloupec data byl rozdělen na sloupce samostatného roku, měsíce a dne.</li>
+  <li>Byly vybrány následující sloupce: AirportID, Year, month, Day, Time, TimeZone, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter</li>
 </ul>
   </td>
 </tr>
 
 <tr>
-  <td>Wikipedia SP 500 datové sady</td>
+  <td>Wikipedii sada dat SP 500</td>
   <td>
-Data jsou odvozena z wikipedii (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) založené na články S & P 500 společnosti, ukládají jako XML data.
+Data jsou odvozena z Wikipedii (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) na základě článků z každé & P 500 společnosti, která je uložená jako data XML.
 <p></p>
-Než nahrajete do Azure Machine Learning Studio, byla datová sada zpracována následujícím způsobem:
+Před nahráním do klasické verze Azure Machine Learning Studio byla datová sada zpracována takto:
 <ul>
-  <li>Extrahování textového obsahu u každé konkrétní společnosti</li>
-  <li>Odebrat formátování wiki</li>
-  <li>Odeberte jiné než alfanumerické znaky</li>
-  <li>Veškerý text převést na malá písmena</li>
-  <li>Kategorie známé společnosti byly přidány.</li>
+  <li>Extrakce textového obsahu pro každou konkrétní firmu</li>
+  <li>Odebrat formátování wikiwebu</li>
+  <li>Odebrat jiné než alfanumerické znaky</li>
+  <li>Převést veškerý text na malá písmena</li>
+  <li>Byly přidány známé kategorie společnosti.</li>
 </ul>
 <p></p>
-Všimněte si, že pro některé společnosti článku nelze nalézt, tak počet záznamů, které je menší než 500.
+Upozorňujeme, že některé společnosti nemohly najít článek, takže počet záznamů je menší než 500.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. csv</a></td>
   <td>
-Datová sada obsahuje zákaznická data a údaje o jejich reakce na kampaň poštovní s přímým přístupem. Každý řádek představuje zákazník. Datová sada obsahuje devět funkce o demografických údajích uživatelů a za chování a třetí popisek sloupce (navštíví, převod a věnovat).  Navštivte je binární sloupec, který označuje, že zákazník zobrazeny po marketingové kampaně. Převod označuje, že zákazník něco zakoupili. Výdaje, který byl vynaložen na velikost.  Datová sada se zpřístupní Kevin Hillstrom pro MineThatData e-mailu Analytics a Data Mining výzvu.
+Datová sada obsahuje zákaznická data a údaje o jejich reakci na přímou poštovní kampaň. Každý řádek představuje zákazníka. Datová sada obsahuje devět funkcí demografických údajů uživatele a minulého chování a tři sloupce popisků (Přejít, převod a výdaje).  Návštěva je binární sloupec, který indikuje, že zákazník navštívil po marketingové kampani. Konverze znamená, že zákazník si koupil nějakého nějakého. Útrata je množství, které bylo stráveno.  Datovou sadu vystavila služba Kevin Hillstrom pro MineThatDatay e-mailové analýzy a pro dolování dat.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. csv</a></td>
   <td>
-Funkce testu příklady v této datové sadě RCV1 V2 Reuters zpráv. Objekt dataset obsahuje články o novinkách 781K spolu s jejich ID (první sloupec datové sady). Každý článek je tokenizovaného stopworded a nasadí. Datová sada se zpřístupní David. D. Lewis.
+Funkce příkladů testů v datové sadě RCV1-v2 pro zprávy Reuters Datová sada obsahuje články 781K News spolu s jejich ID (první sloupec datové sady). Každý článek má tokeny, stopworded a lemmatizátor. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. csv</a></td>
   <td>
-Funkce školení příklady v této datové sadě RCV1 V2 Reuters zpráv. Objekt dataset obsahuje články o novinkách 23K spolu s jejich ID (první sloupec datové sady). Každý článek je tokenizovaného stopworded a nasadí. Datová sada se zpřístupní David. D. Lewis.
+Příklady výukových příkladů v datové sadě RCV1-v2 pro zprávy Reuters Datová sada obsahuje články 23K News spolu s jejich ID (první sloupec datové sady). Každý článek má tokeny, stopworded a lemmatizátor. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a><br></td>
   <td>
-Nástroje datové sady z konference KDD Cup 1999 Knowledge Discovery a dolování dat. soutěže (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).
+Datová sada z konference KDD konvičku 1999 a soutěž nástrojů pro dolování dat (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99. html</a>)
 <p></p>
-Datová sada byla stažena a ukládají ve službě Azure Blob storage (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) a zahrnuje i trénování a testování datových sad. Trénovací datové sady má přibližně 126 tisíc řádků a sloupců 43, včetně popisků. Tři sloupce jsou součástí informace popisku a 40 sloupců, skládající se z funkce číselné a řetězec/zařazené do kategorií, které jsou k dispozici pro trénování modelu. Testovací data se přibližně 22.5K testování příkladů se stejnými sloupci 43, stejně jako v trénovací data.
+Datová sada byla stažena a uložena v úložišti objektů BLOB v Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a>) a zahrnuje školicí a testovací datové sady. Datová sada školení má přibližně 126K řádky a 43 sloupců, včetně popisků. Tři sloupce jsou součástí informací popisku a 40 sloupců, které obsahují číselné a řetězcové a kategorií funkce, jsou k dispozici pro školení modelu. Testovací data obsahují přibližně 22.5 K testovacím příkladům se stejnými sloupci 43 jako v školicích datech.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. témats. qrels. csv</a></td>
   <td>
-Téma přiřazení pro články o novinkách v této datové sadě RCV1 V2 Reuters zpráv. Zpravodajskému článku je možné přiřadit na několik témat. Každý řádek formát je "&lt;název tématu&gt; &lt;id dokumentu&gt; 1". Datová sada obsahuje 2,6 milionů tématu přiřazení. Datová sada se zpřístupní David. D. Lewis.
+Přiřazení témat pro články s příspěvky v datové sadě RCV1-v2 pro zprávy Reuters Článek s příspěvky lze přiřadit několika tématům. Formát každého řádku je "&lt;název tématu&gt; &lt;ID dokumentu&gt; 1". Datová sada obsahuje 2,6 M přiřazení tématu. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
   <td>
-Tato data pochází z konference KDD Cup 2010 Student výkonu hodnocení před obrovskou výzvou – (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">hodnocení výkonu studentů</a>). Data používaná je cvičnou sadou Algebra_2008_2009 (Niculescu Stamper J.,-Mizil, S. A. Ritter, Gordon, G.J. a Koedinger k. r. (2010). Algebraický můžu 2008-2009. Datová sada Challenge z konference KDD Cup 2010 vzdělávací Data Mining Challenge. Nachází se na <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
+Tato data pocházejí z konference KDDu pro testování výkonu studenta 2010 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">vyhodnocení výkonu studenta</a>). Použitá data jsou Algebra_2008_2009 sady školení (razítko, J., NICULESCU-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebraický I 2008-2009. Datová sada výzvy z konference KDD 2010 – výzva k dolování dat vzdělávání. Najdete ho na adrese <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads. jsp</a>.
 <p></p>
-Datová sada byla stažena a ukládají ve službě Azure Blob storage (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) a obsahuje soubory protokolu z student výukovými systému. Zadaná funkce zahrnují ID problému a jeho stručný popis, ID studenta, časové razítko a kolik pokusů student vytvořená před správným způsobem řešení tohoto problému. Původní datové sady má záznamy 8,9 M; Tato datová sada se předvýpočtem zredukovaných na prvních 100 tisíc řádků. Objekt dataset obsahuje 23 oddělené tabulátorem sloupci různých typů: číselné literály, kategorií a časové razítko.
+Datová sada byla stažena a uložena v úložišti objektů BLOB v Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) a obsahuje soubory protokolu ze systému student výukovými. Dodávané funkce zahrnují ID problému a jeho stručný popis, ID studenta, časové razítko a počet pokusů o vydaný studenta před vyřešením problému správným způsobem. Původní datová sada má 8,9 M záznamů; Tato datová sada byla vyrozdělena do vzorků na první 100 tisíc řádky. Datová sada má 23 sloupců oddělených tabulátorem různých typů: číselná, kategorií a timestamp.
   </td>
 </tr>
 
 </table>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [První kroky své experimenty s příklady](sample-experiments.md)
+> [Kickstart své experimenty s příklady](sample-experiments.md)
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/

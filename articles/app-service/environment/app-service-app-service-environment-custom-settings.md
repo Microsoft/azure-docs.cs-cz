@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: bf2441d5c0947ec94cbee247bdc4634ff9e53bfd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 768e354281aeb5e2143ddb0e190b0f27bf4f4e24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070300"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470706"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Vlastní nastavení konfigurace pro App Service prostředí
 ## <a name="overview"></a>Přehled
@@ -54,7 +54,7 @@ Atribut **clusterSettings** může být součástí šablony Správce prostředk
 ## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Aktualizace App Service Environment pomocí Azure Resource Explorer
 Alternativně můžete App Service Environment aktualizovat pomocí [Azure Resource Explorer](https://resources.azure.com).  
 
-1. V Průzkumník prostředků přejít na uzel pro App Service Environment ( >  předplatná > **poskytovatelé** > **resourceGroups** > **Microsoft. Web**  **hostingEnvironments**). Pak klikněte na konkrétní App Service Environment, kterou chcete aktualizovat.
+1. V Průzkumník prostředků přejdete na uzel pro App Service Environment (**odběry** > **ResourceGroups** ** >  > ** **Microsoft. Web** > **hostingEnvironments**). Pak klikněte na konkrétní App Service Environment, kterou chcete aktualizovat.
 2. V pravém podokně klikněte na tlačítko **pro čtení a zápis** na horním panelu nástrojů, čímž povolíte interaktivní úpravy v Průzkumník prostředků.  
 3. Klikněte na modré tlačítko pro **Úpravy** , aby bylo možné šablonu správce prostředků upravovat.
 4. Posuňte se do dolní části pravého podokna. Atribut **clusterSettings** je v horní části, kde můžete zadat nebo aktualizovat jeho hodnotu.
@@ -66,7 +66,7 @@ Například pokud má App Service Environment čtyři front-endy, bude trvat př
 
 ## <a name="disable-tls-10-and-tls-11"></a>Zakázat TLS 1,0 a TLS 1,1
 
-Pokud chcete v aplikaci spravovat nastavení TLS podle aplikace, můžete použít pokyny uvedené v dokumentaci k [Nastavení Vynutilí TLS](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions) . 
+Pokud chcete v aplikaci spravovat nastavení TLS podle aplikace, můžete použít pokyny uvedené v dokumentaci k [Nastavení Vynutilí TLS](../configure-ssl-bindings.md#enforce-tls-versions) . 
 
 Pokud chcete zakázat všechny příchozí přenosy TLS 1,0 a TLS 1,1 pro všechny aplikace v pomocném mechanismu služby, můžete nastavit následující položku **clusterSettings** :
 
@@ -94,7 +94,7 @@ Další otázkou od zákazníků je, že pokud můžou upravit seznam šifr vyda
 > 
 > 
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 Web šablony pro rychlý Start Správce prostředků pro Azure obsahuje šablonu se základní definicí pro [vytvoření App Service Environment](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
 
 <!-- LINKS -->

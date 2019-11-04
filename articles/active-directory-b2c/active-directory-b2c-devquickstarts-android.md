@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 29f1fc2a6fd23ef3a770f58fd78d5067672136dd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 28b1c3622ca449b0ce539937369fe43bd1d508ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326316"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468965"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Přihlaste se pomocí aplikace pro Android v Azure Active Directory B2C
 
@@ -32,20 +32,22 @@ Pokud jste ještě nikdy nepracovali s OAuth2 nebo OpenID Connect, pak vám tahl
 
 Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny vaše uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](tutorial-create-tenant.md) předtím, než budete pokračovat.
 
-## <a name="create-an-application"></a>Vytvořit aplikaci
+## <a name="create-an-application"></a>Vytvoření aplikace
 
 V dalším kroku zaregistrujete aplikaci do svého tenanta Azure AD B2C. To poskytuje službě Azure AD informace, které potřebuje pro bezpečnou komunikaci s vaší aplikací.
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Poznamenejte si **ID aplikace** pro použití v pozdějším kroku. V dalším kroku vyberte aplikaci v seznamu a zaznamenejte **vlastní identifikátor URI pro přesměrování**, který použijete v pozdějším kroku. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
+
+Také zaznamenejte vlastní identifikátor URI přesměrování pro použití v pozdějším kroku. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Vytvoření uživatelských toků
 
 V Azure AD B2C je každé uživatelské prostředí definované [uživatelským tokem](active-directory-b2c-reference-policies.md), což je sada zásad, které řídí chování služby Azure AD. Tato aplikace vyžaduje přihlášení a uživatelský tok pro přihlášení. Při vytváření toku uživatele nezapomeňte:
 
 * V toku uživatele vyberte **Zobrazovaný název** jako atribut pro registraci.
-* V toku každého uživatele vyberte zobrazované deklarace **názvu** a **ID objektu** . Můžete zvolit i další deklarace identity.
+* V toku každého uživatele vyberte **zobrazované deklarace názvu** a **ID objektu** . Můžete zvolit i další deklarace identity.
 * Po vytvoření si zkopírujte **název** každého toku uživatele. Měl by mít předponu `b2c_1_`.  Název toku uživatele budete potřebovat později.
 
 Po vytvoření toků uživatelů budete připraveni k sestavení aplikace.
@@ -62,14 +64,14 @@ Ukázka je úprava ukázky, kterou poskytuje [AppAuth](https://openid.github.io/
 > AppAuth podporuje Android API 16 (Jellybean) a vyšší. Doporučujeme používat rozhraní API 23 a novější.
 >
 
-### <a name="configuration"></a>Konfiguraci
+### <a name="configuration"></a>Konfigurace
 
 Komunikaci s Azure AD B2C můžete nakonfigurovat buď zadáním identifikátoru URI zjišťování, nebo zadáním identifikátoru URI koncového bodu autorizace i koncových bodů tokenu. V obou případech budete potřebovat následující informace:
 
 * ID tenanta (např. contoso.onmicrosoft.com)
 * Název toku uživatele (např. B2C\_1\_SignUpIn)
 
-Pokud se rozhodnete automaticky zjistit identifikátory URI koncového bodu autorizace a tokenu, bude nutné načíst informace z identifikátoru URI zjišťování. Identifikátor URI zjišťování můžete vygenerovat tak, že nahradíte ID tenanta\_a název zásady\_v následující adrese URL:
+Pokud se rozhodnete automaticky zjistit identifikátory URI koncového bodu autorizace a tokenu, bude nutné načíst informace z identifikátoru URI zjišťování. Identifikátor URI zjišťování se dá vygenerovat tak, že nahradíte ID\_klienta a\_název zásady v následující adrese URL:
 
 ```java
 String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
@@ -96,7 +98,7 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-Místo použití funkce zjišťování k získání identifikátorů URI koncového bodu autorizace a tokenu je můžete zadat také explicitně nahrazením\_ID tenanta a názvu\_zásady v níže uvedené adrese URL:
+Místo použití funkce zjišťování pro získání autorizačních identifikátorů URI a koncových bodů tokenu je můžete zadat explicitně tak, že nahradíte ID klienta\_a zásadu\_název v níže uvedené adrese URL:
 
 ```java
 String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
@@ -113,7 +115,7 @@ AuthorizationServiceConfiguration config =
 // perform the auth request...
 ```
 
-### <a name="authorizing"></a>Probíhá autorizace.
+### <a name="authorizing"></a>Autorizace
 
 Jakmile nakonfigurujete nebo načtete konfiguraci autorizační služby, může být vytvořen požadavek na autorizaci. Chcete-li vytvořit požadavek, budete potřebovat následující informace:
 

@@ -18,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87660c6ef8266d3ebfbad1b7a8a7cb98b936e9c6
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803356"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473777"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
@@ -43,9 +43,9 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 1. V horním panelu vyberte svůj účet a pak **Přepněte adresář**.
 1. Po otevření podokna **adresář a odběr** vyberte v seznamu **Oblíbené** nebo **všechny adresáře** klienta služby Active Directory, kde chcete aplikaci zaregistrovat.
 1. V levém navigačním panelu vyberte **všechny služby** a zvolte **Azure Active Directory**.
-1. V podokně **Azure Active Directory** vyberte **Registrace aplikací** a zobrazte seznam všech aplikací.
+1. V podokně **Azure Active Directory** vyberte **Registrace aplikací (starší verze)** , abyste zobrazili seznam všech aplikací.
 
-     Pokud nevidíte tu aplikaci, kterou chcete zobrazit, pomocí různých filtrů v horní části seznamu **Registrace aplikací** seznam Omezte, nebo posuňte seznam a vyhledejte svoji aplikaci.
+     Pokud nevidíte tu aplikaci, kterou chcete zobrazit, pomocí různých filtrů v horní části seznamu **Registrace aplikací (starší verze)** můžete seznam omezit, nebo posouvat seznam a najít svou aplikaci.
 
 1. Vyberte aplikaci, ve které chcete role aplikace definovat.
 1. V okně aplikace vyberte možnost **manifest**.
@@ -135,4 +135,4 @@ Po přidání rolí aplikace do aplikace můžete těmto rolím přiřadit uživ
 - [Azure Active Directory nyní s deklaracemi skupin a aplikačními rolemi](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
 - [Azure Active Directory manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [Přístupové tokeny AAD](access-tokens.md)
-- [`id_tokens`AAD](id-tokens.md)
+- [`id_tokens` AAD](id-tokens.md)

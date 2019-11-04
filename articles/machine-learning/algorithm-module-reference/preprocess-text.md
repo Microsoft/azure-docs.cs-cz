@@ -1,7 +1,7 @@
 ---
 title: 'Text předběžného zpracování: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak používat modul textu předzpracování ve službě Azure Machine Learning k vyčištění a zjednodušení textu.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul textu předzpracování v Azure Machine Learning k vyčištění a zjednodušení textu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 2213d26e6d3b2b6a7aca9d65e74a4499ff0da6c1
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9bf81b4e4c305c864592c32a8737d1a5eeb18651
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692694"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497680"
 ---
 # <a name="preprocess-text"></a>Předzpracování textu
 
-Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 K čištění a zjednodušení textu použijte modul **předzpracování textu** . Podporuje tyto běžné operace zpracování textu:
 
@@ -33,7 +33,7 @@ Modul pro **zpracování textu** v současné době podporuje pouze angličtinu.
 
 ## <a name="configure-text-preprocessing"></a>Konfigurace předběžného zpracování textu  
 
-1.  Přidejte modul **textu předběžného zpracování** do experimentu ve službě Azure Machine Learning. Tento modul můžete najít v části **Analýza textu**.
+1.  Přidejte modul **textu předběžného zpracování** do vašeho kanálu v Azure Machine Learning. Tento modul můžete najít v části **Analýza textu**.
 
 1. Připojte datovou sadu, která má alespoň jeden sloupec obsahující text.
 
@@ -47,7 +47,7 @@ Modul pro **zpracování textu** v současné době podporuje pouze angličtinu.
 
 1. **Lemmatizátor nebo předzpracování**: tuto možnost vyberte, pokud chcete, aby se slova reprezentují v kanonickém tvaru. Tato možnost je užitečná pro snížení počtu jedinečných výskytů jiných podobných textových tokenů.
 
-    Proces lemmatizátor nebo předzpracování je velmi závislý na jazyku.
+    Proces lemmatizátor nebo předzpracování je velmi závislý na jazyku...
 
 1. **Zjistit věty**: tuto možnost vyberte, pokud chcete, aby modul při provádění analýzy vkládal značku ohraničení věty.
 
@@ -83,8 +83,8 @@ Modul pro **zpracování textu** v současné době podporuje pouze angličtinu.
 
     Například řetězec `MS---WORD` by byl rozdělen na tři tokeny, `MS`, `-` a `WORD`.
 
-1. Spusťte experiment.
+1. Spuštění kanálu
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

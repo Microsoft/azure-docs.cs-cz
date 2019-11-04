@@ -1,24 +1,23 @@
 ---
-title: Vlastní dovednost pro hledání vnímání – Azure Search
-description: Rozšíření schopností rozpoznávání vyhledávání dovednosti voláním na webová rozhraní API
-services: search
+title: Vlastní dovednosti webového rozhraní API v kanálu pro rozšíření
+titleSuffix: Azure Cognitive Search
+description: Rozšíření schopností Azure Kognitivní hledání dovednosti voláním na webová rozhraní API. Použijte vlastní dovednosti webového rozhraní API a integrujte svůj vlastní kód.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: fda4f96c2c73c5a2d39435a509afcf654ed77b70
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901319"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466732"
 ---
-# <a name="custom-web-api-skill"></a>Vlastní dovednosti webového rozhraní API
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Vlastní dovednosti webového rozhraní API v kanálu pro rozšíření Azure Kognitivní hledání
 
-**Vlastní dovednosti webového rozhraní API** umožňuje rozšiřování rozpoznávání vyhledávání voláním koncového bodu webového rozhraní API, který poskytuje vlastní operace. Podobně jako u integrovaných dovedností má **vlastní dovednost webového rozhraní API** vstupy a výstupy. V závislosti na vstupech vaše webové rozhraní API obdrží datovou část JSON, když indexer běží, a vypíše datovou část JSON jako odpověď spolu s kódem stavu úspěch. Očekává se, že odpověď bude mít výstupy určené vaší vlastní dovedností. Jakákoli jiná odpověď se považuje za chybu a neprovádí se žádné obohacení.
+**Vlastní dovednosti webového rozhraní API** umožňuje rozšířit rozšíření AI voláním koncového bodu webového rozhraní API, který poskytuje vlastní operace. Podobně jako u integrovaných dovedností má **vlastní dovednost webového rozhraní API** vstupy a výstupy. V závislosti na vstupech vaše webové rozhraní API obdrží datovou část JSON, když indexer běží, a vypíše datovou část JSON jako odpověď spolu s kódem stavu úspěch. Očekává se, že odpověď bude mít výstupy určené vaší vlastní dovedností. Jakákoli jiná odpověď se považuje za chybu a neprovádí se žádné obohacení.
 
 Struktura datových částí JSON je podrobněji popsána v tomto dokumentu.
 
@@ -58,7 +57,7 @@ Pro tuto dovednost nejsou k dispozici žádné předdefinované výstupy. V záv
 ```json
   {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "A custom skill that can count the number of words or characters or lines in text",
+        "description": "A custom skill that can identify positions of different phrases in the source text",
         "uri": "https://contoso.count-things.com",
         "batchSize": 4,
         "context": "/document",
@@ -72,14 +71,13 @@ Pro tuto dovednost nejsou k dispozici žádné předdefinované výstupy. V záv
             "source": "/document/languageCode"
           },
           {
-            "name": "countOf",
-            "source": "/document/propertyToCount"
+            "name": "phraseList",
+            "source": "/document/keyphrases"
           }
         ],
         "outputs": [
           {
-            "name": "count",
-            "targetName": "countOfThings"
+            "name": "hitPositions"
           }
         ]
       }
@@ -103,7 +101,7 @@ Vždy se bude řídit těmito omezeními:
            {
              "text": "Este es un contrato en Inglés",
              "language": "es",
-             "countOf": "words"
+             "phraseList": ["Este", "Inglés"]
            }
       },
       {
@@ -112,16 +110,16 @@ Vždy se bude řídit těmito omezeními:
            {
              "text": "Hello world",
              "language": "en",
-             "countOf": "characters"
+             "phraseList": ["Hi"]
            }
       },
       {
         "recordId": "2",
         "data":
            {
-             "text": "Hello world \r\n Hi World",
+             "text": "Hello world, Hi world",
              "language": "en",
-             "countOf": "lines"
+             "phraseList": ["world"]
            }
       },
       {
@@ -130,7 +128,7 @@ Vždy se bude řídit těmito omezeními:
            {
              "text": "Test",
              "language": "es",
-             "countOf": null
+             "phraseList": []
            }
       }
     ]
@@ -159,7 +157,7 @@ Vždy se bude řídit těmito omezeními:
             },
             "errors": [
               {
-                "message" : "Cannot understand what needs to be counted"
+                "message" : "'phraseList' should not be null or empty"
               }
             ],
             "warnings": null
@@ -167,7 +165,7 @@ Vždy se bude řídit těmito omezeními:
         {
             "recordId": "2",
             "data": {
-                "count": 2
+                "hitPositions": [6, 16]
             },
             "errors": null,
             "warnings": null
@@ -175,7 +173,7 @@ Vždy se bude řídit těmito omezeními:
         {
             "recordId": "0",
             "data": {
-                "count": 6
+                "hitPositions": [0, 23]
             },
             "errors": null,
             "warnings": null
@@ -183,10 +181,12 @@ Vždy se bude řídit těmito omezeními:
         {
             "recordId": "1",
             "data": {
-                "count": 11
+                "hitPositions": []
             },
             "errors": null,
-            "warnings": null
+            "warnings": {
+                "message": "No occurrences of 'Hi' were found in the input text"
+            }
         },
     ]
 }
@@ -203,7 +203,6 @@ V případech, kdy webové rozhraní API není k dispozici nebo vrátí chybu pr
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-+ [Dovednosti v Power: úložiště vlastních dovedností](https://aka.ms/powerskills)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Přidat vlastní dovednosti do vyhledávání rozpoznávání](cognitive-search-custom-skill-interface.md)
-+ [Příklad: Vytvoření vlastní dovednosti pro hledání vnímání](cognitive-search-create-custom-skill-example.md)
++ [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
++ [Příklad: Vytvoření vlastní dovednosti pro rozšíření AI (rozpoznávání-Search-Create-Custom-dovednost-example.md)

@@ -1,53 +1,71 @@
 ---
-title: Co je Azure SQL Data Warehouse? | Dokumenty Microsoft
-description: Distribuovaná databáze podnikové třídy, která dokáže zpracovávat petabajtové objemy relačních a nerelačních dat. Je v oboru první cloudový datový sklad v možnost zvětšit, zmenšit nebo pozastavit během pár sekund.
+title: Co je Azure synapse Analytics (dřív SQL DW)? | Microsoft Docs
+description: Azure synapse Analytics (dřív SQL DW) je bezlimitní analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 05/30/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-mscustom: sqlfreshmay19
-ms.openlocfilehash: a9126e9023091dd8c3df71f2aa2558a01227a8be
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: d10ea99e2dc8513a9cfebec782535f9e3185a3b9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428030"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496299"
 ---
-# <a name="what-is-azure-sql-data-warehouse"></a>Co je Azure SQL Data Warehouse?
+# <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure synapse Analytics (dřív SQL DW)?
 
-SQL Data Warehouse je cloudové Enterprise Data skladu třídy, který se používá k rychlému spouštění složitých dotazů nad petabajty dat. masivně paralelní zpracování (MPP). Využijte službu SQL Data Warehouse jako klíčovou součást řešení pro velké objemy dat. Importovat velké objemy dat do SQL Data Warehouse pomocí jednoduchého [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) dotazy T-SQL a pak použijte sílu architektury MPP ke spouštění vysoce výkonných analýz. Postupným integrováním a analyzováním se datový sklad stane pro vaši firmu jediným spolehlivým zdrojem pravdivých informací.  
+Azure synapse je bezlimitní analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek pomocí neserverových nebo zřízených prostředků na vyžádání – ve velkém měřítku. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení.
 
-## <a name="key-component-of-big-data-solution"></a>Klíčová součást řešení pro velké objemy dat
+Azure synapse má čtyři součásti:
+- SQL Analytics: kompletní analýza založená na T-SQL – všeobecně dostupná
+    - Fond SQL (placený za DWU zřízený) 
+    - SQL na vyžádání (platba za TB zpracovaná) – (Preview)
+- Spark: hluboce integrované Apache Spark (Preview) 
+- Integrace dat: integrace hybridních dat (Preview)
+- Studio: jednotné uživatelské prostředí.  (Preview)
 
-SQL Data Warehouse je klíčovou součástí uceleného řešení pro velké objemy dat v cloudu.
+> [!NOTE]
+> Pokud chcete získat přístup k funkcím verze Preview služby Azure synapse, požádejte o přístup [tady](https://aka.ms/synapsepreview). Microsoft bude podle potřeby roztříděna všechny žádosti a bude co nejdříve reagovat.
+
+## <a name="sql-analytics-and-sql-pool-in-azure-synapse"></a>SQL Analytics a fond SQL ve službě Azure synapse
+
+SQL Analytics odkazuje na funkce podnikových dat v datovém skladu, které jsou všeobecně dostupné v Azure synapse. 
+
+Fond SQL představuje kolekci analytických prostředků, které se zřídí při použití analýzy SQL. Velikost fondu SQL je určena jednotkami datového skladu (DWU).
+
+Importujte velké objemy dat pomocí jednoduchých [základních](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) dotazů T-SQL a potom Využijte sílu MPP ke spouštění vysoce výkonných analýz. Při integraci a analýze se aplikace SQL Analytics stane jedinou verzí pravdy, kterou vaše firma může počítat pro rychlejší a robustnější přehledy.  
+
+## <a name="key-component-of-a-big-data-solution"></a>Klíčová součást řešení pro velké objemy dat
+
+Datové sklady jsou klíčovou součástí cloudového a komplexního řešení pro velké objemy dat.
 
 ![Řešení datového skladu](media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png) 
 
-V cloudovém datovém řešení se data ingestují do úložišť velkých objemů dat z celé řady zdrojů. Jakmile jsou data v úložišti velkých objemů dat, Hadoop, Spark a algoritmy machine learningu data připraví a natrénují. Když jsou data připravena pro komplexní analýzu, SQL Data Warehouse použije PolyBase k dotazování úložišť velkých objemů dat. PolyBase využívá standardní dotazy T-SQL k načítání dat do služby SQL Data Warehouse.
+V cloudovém datovém řešení se data ingestují do úložišť velkých objemů dat z celé řady zdrojů. Jakmile jsou data v úložišti velkých objemů dat, Hadoop, Spark a algoritmy machine learningu data připraví a natrénují. Když jsou data připravená pro komplexní analýzu, používá SQL Analytics základ k dotazování na úložiště s velkými objemy dat. Základ používá standardní dotazy T-SQL k převedení dat do tabulek SQL Analytics.
  
-SQL Data Warehouse ukládá data v relačních tabulkách se sloupcovým úložištěm. Tento formát výrazně snižuje náklady na úložiště dat a zvyšuje výkon dotazů. Jakmile jsou data uložená ve službě SQL Data Warehouse, můžete spouštět analýzy ve velkém měřítku. V porovnání s tradičními databázovými systémy se dotazy analýz dokončí během několika sekund namísto minut nebo hodin namísto dnů. 
+SQL Analytics ukládá data v relačních tabulkách s sloupcovým úložištěm. Tento formát výrazně snižuje náklady na úložiště dat a zvyšuje výkon dotazů. Po uložení dat můžete analyzovat v obrovských škálováních. V porovnání s tradičními databázovými systémy se dotazy analýz dokončí během několika sekund namísto minut nebo hodin namísto dnů. 
 
 Výsledky analýz můžou jít do aplikací nebo databází pro generování sestav po celém světě. Obchodní analytici pak můžou získávat přehledy, které jim umožní provádět informovaná obchodní rozhodnutí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Prozkoumejte [architektury Azure SQL Data Warehouse](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
-- Rychle [vytvořit SQL Data Warehouse][create a SQL Data Warehouse]
-- [Načtení ukázkových dat][load sample data].
-- Prozkoumejte [videa](/azure/sql-data-warehouse/sql-data-warehouse-videos)
+- Prozkoumejte [architekturu Azure synapse](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+- Rychlé [Vytvoření fondu SQL](create-data-warehouse-portal.md)
+- [Načíst ukázková data][load sample data].
+- Prozkoumat [videa](/azure/sql-data-warehouse/sql-data-warehouse-videos)
 
-Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
-* Hledání [blogy]
-* Odeslat [Žádosti o funkce]
-* Hledání [blogy zákaznického poradního týmu]
+Nebo se podívejte na některé z těchto dalších prostředků Azure synapse.  
+* Hledat [Blogy]
+* Odeslání [Žádosti o funkce]
+* Hledání [Blogy zákaznického poradního týmu]
 * [Vytvoření lístku podpory]
-* Hledání [Fórum MSDN]
-* Hledání [fórum Stack Overflow]
+* Prohledat [Fórum MSDN]
+* Hledat [Fórum Stack Overflow]
 
 
 <!--Image references-->
@@ -56,9 +74,9 @@ Můžete se také podívat na některé z těchto dalších zdrojů ke službě 
 <!--Article references-->
 [Vytvoření lístku podpory]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
+[create a data warehouse]: ./sql-data-warehouse-get-started-provision.md
 [Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[Azure Synapse Analytics solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
 [Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
 [Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
 [Azure glossary]: ../azure-glossary-cloud-terminology.md
@@ -73,6 +91,6 @@ Můžete se také podívat na některé z těchto dalších zdrojů ke službě 
 [Fórum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
+[SLA for Azure Synapse Analytics]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

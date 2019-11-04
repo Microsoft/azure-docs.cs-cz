@@ -1,46 +1,48 @@
 ---
 title: Přidat záměry – LUIS
 titleSuffix: Azure Cognitive Services
-description: Přidání záměrů do vaší aplikace LUIS k identifikaci skupin dotazy nebo příkazy, které mají stejné záměry.
+description: Přidejte do aplikace LUIS záměry k identifikaci skupin otázek nebo příkazů, které mají stejné záměry.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: eb90a902b8f7fe8b37b81c2825cbdfc25ef5dc0d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f2f001489552203f0157dd24356341eb3184c81
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932900"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467542"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení záměru uživatele projevy
 
-Přidat [záměry](luis-concept-intent.md) do vaší aplikace LUIS k identifikaci skupin dotazy nebo příkazy, které mají stejný účel. 
+Přidejte do aplikace LUIS [záměry](luis-concept-intent.md) k identifikaci skupin dotazů nebo příkazů, které mají stejný záměr. 
 
-V horním navigačním panelu se spravují záměry **sestavení** části, klikněte na levém panelu **záměry**. 
+Záměry jsou spravovány v části **sestavení** v horním navigačním panelu a pak z **záměrů**v levém panelu. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="add-intent"></a>Přidat záměr
 
 1. Na stránce **Intents** (Záměry) vyberte **Create new intent** (Vytvořit nový záměr).
 
-1. V **vytvořit nové záměr** dialogového okna zadejte název záměru `GetEmployeeInformation`a klikněte na tlačítko **provádí**.
+1. V dialogovém okně **vytvořit nový záměr** zadejte název záměru, `GetEmployeeInformation`a klikněte na **Hotovo**.
 
     ![Přidat záměr](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-## <a name="add-an-example-utterance"></a>Přidat utterance příklad
+## <a name="add-an-example-utterance"></a>Přidat příklad utterance
 
-Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Představuje Language Understanding (LUIS), že je potřeba přidat příklad projevy záměru.
+Příkladem projevy jsou textové příklady dotazů a příkazů uživatele. Chcete-li naučit Language Understanding (LUIS), musíte do záměru přidat příklad projevy.
 
-1. Na **GetEmployeeInformation** záměru podrobností zadejte relevantní utterance očekáváte, že od uživatelů, jako například `Does John Smith work in Seattle?` do textového pole pod název záměru a potom stiskněte klávesu Enter.
+1. Na stránce Podrobnosti záměru **GetEmployeeInformation** zadejte relevantní utterance od uživatelů, například `Does John Smith work in Seattle?` v textovém poli pod názvem záměru a potom stiskněte klávesu ENTER.
  
-    ![Stránce s podrobnostmi o snímek obrazovky záměrů, se zvýrazněným utterance](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    ![Stránka s podrobnostmi o záměrech se zvýrazněným utterance](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-    Služba LUIS převede všechny projevy na malá písmena a přidá mezery kolem tokenů, jako je například spojovníky.
+    LUIS převede všechny projevy na malá písmena a přidá mezery kolem tokenů, jako jsou spojovníky.
 
 <a name="#intent-prediction-discrepancy-errors"></a>
 
@@ -48,7 +50,7 @@ Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Před
 
 Příklad utterance záměru může mít chybu předpovědi záměru mezi záměrem, který je v současnosti v rámci, a záměrem, který je určen během školení. 
 
-Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnosti **vyhodnocení** nesprávné a nejasné v kombinaci s možností **zobrazení** **podrobného zobrazení**. 
+Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnosti **vyhodnocení** nesprávné a nejasné **v kombinaci** s možností **zobrazení** **podrobného zobrazení**. 
 
 ![Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnost filtr.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
@@ -62,49 +64,49 @@ V každém řádku se zobrazuje skóre předpovědi aktuálního školení pro p
 
 Pokud se chcete dozvědět, jak opravit chyby předpovědi, použijte [řídicí panel souhrnu](luis-how-to-use-dashboard.md). Souhrnný řídicí panel poskytuje analýzu pro poslední školení aktivní verze a nabízí hlavní návrhy na opravu modelu.  
 
-## <a name="add-a-custom-entity"></a>Přidání vlastní entity
+## <a name="add-a-custom-entity"></a>Přidat vlastní entitu
 
-Jakmile utterance se přidá k záměru, můžete vybrat text z v rámci utterance k vytvoření vlastní entity. Vlastní entity je způsob, jak text značky pro extrakci, spolu s správné záměr. 
+Po přidání utterance k záměru můžete vybrat text v rámci utterance a vytvořit vlastní entitu. Vlastní entita je způsob, jak označit text k extrakci spolu se správným záměrem. 
 
 Další informace najdete v tématu [Přidání entity do utterance](luis-how-to-add-example-utterances.md) .
 
-## <a name="entity-prediction-discrepancy-errors"></a>Entita předpovědi nesrovnalosti chyby 
+## <a name="entity-prediction-discrepancy-errors"></a>Chyby nerozdílů předpovědi entit 
 
-Entita je podtrženo červenou barvou pro označení [entity předpovědi nesrovnalosti](luis-how-to-add-example-utterances.md#entity-status-predictions). Protože je to první výskyt entity, nejsou dost příklady LUIS s vysokou spolehlivostí, který tento text je označen správného entity. Odebere této nesrovnalosti školení aplikace. 
+Entita je podtržena červeně, aby označovala [nesoulad předpovědi entity](luis-how-to-add-example-utterances.md#entity-status-predictions). Vzhledem k tomu, že se jedná o první výskyt entity, není k dispozici dostatek příkladů pro LUIS, že je tento text označený správnou entitou. Tato neshoda se odstraní, když se aplikace vyškole. 
 
-![Stránce s podrobnostmi o snímek obrazovky záměrů, vlastní entitu s názvem modře zvýrazněna](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
+![Stránka s podrobnostmi o záměrech, název vlastní entity byl zvýrazněn modře](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
 
-Text se zvýrazní modrou barvu, která entity.  
+Text je zvýrazněn modře, který značí entitu.  
 
-## <a name="add-a-prebuilt-entity"></a>Přidat předem připravených entit
+## <a name="add-a-prebuilt-entity"></a>Přidat předem vytvořenou entitu
 
-Informace najdete v tématu [předem připravených entit](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
+Informace najdete v tématu [předem vytvořená entita](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
-## <a name="using-the-contextual-toolbar"></a>Použití kontextových panelu nástrojů
+## <a name="using-the-contextual-toolbar"></a>Použití kontextového panelu nástrojů
 
 Když v seznamu vyberete jeden nebo více příkladů projevy, můžete zaškrtnutím políčka vlevo od utterance zobrazit panel nástrojů nad seznamem utterance a provést následující akce:
 
-* Záměr přiřazení: utterance(s) přesunout na jiný záměr
-* Odstranit utterance(s)
-* Filtry entity: Zobrazit pouze projevy obsahující filtrované entitu
-* Zobrazit všechny a pouze chyby: Zobrazit projevy s chybami předpovědi nebo zobrazit všechny projevy
-* Zobrazení entity/tokeny: zobrazení entity s názvy entit nebo zobrazit nezpracovaný text utterance
-* S ikonou lupy: Vyhledejte projevy, které obsahují určitý text
+* Opětovné přiřazení záměru: přesunout utterancey na jiný záměr
+* Odstranit utterance (y)
+* Filtry entit: zobrazit jenom projevy obsahující filtrované entity
+* Zobrazit pouze všechny chyby: Zobrazit projevy s chybami předpovědi nebo zobrazit všechny projevy
+* Entity/zobrazení tokenů: zobrazení zobrazení entit s názvy entit nebo zobrazení nezpracovaného textu utterance
+* Zvětšení skla: hledání projevy obsahujícího konkrétní text
 
-## <a name="working-with-an-individual-utterance"></a>Práce s jednotlivé utterance
+## <a name="working-with-an-individual-utterance"></a>Práce s jednotlivými utterance
 
-Na jednotlivé utterance z nabídky tlačítko se třemi tečkami napravo od utterance lze provést následující akce:
+Následující akce lze provádět u jednotlivých utterance z nabídky se třemi tečkami vpravo od utterance:
 
-* Úpravy: změnit text utterance
-* Odstranit: odebrání záměr utterance. Pokud chcete i utterance, lepší metodou je přesunout **žádný** záměr. 
-* Přidejte vzor: Vzor umožňuje vzít běžné utterance a označit nahraditelný text a ignorovat text, což snižuje nutnost dalších projevy v úmyslu. 
+* Upravit: Změna textu utterance
+* Odstranit: odebrat utterance z záměru. Pokud stále chcete utterance, lepší způsob je přesunout do záměru **none** . 
+* Přidání vzoru: vzor umožňuje vzít v úvahu běžný utterance a označit nahraditelný text a ignorovat text, což snižuje nutnost dalších projevy v úmyslu. 
 
-**Označené záměr** sloupec vám umožní změnit záměr utterance.
+Sloupec s **popisem záměru** umožňuje změnit záměr utterance.
 
-## <a name="train-your-app-after-changing-model-with-intents"></a>Po změně modelu pomocí tříd Intent trénování vaší aplikace
+## <a name="train-your-app-after-changing-model-with-intents"></a>Výuka aplikace po změně modelu s záměry
 
-Po přidání, úprava nebo odebrání záměrů, [trénování](luis-how-to-train.md) a [publikovat](luis-how-to-publish-app.md) vaší aplikace tak, aby provedené změny se použijí pro koncový bod dotazy. 
+Po přidání, úpravě nebo odebrání záměrů, [školení](luis-how-to-train.md) a [publikování](luis-how-to-publish-app.md) aplikace, aby byly změny aplikovány na dotazy koncového bodu. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o přidávání [příklad projevy](luis-how-to-add-example-utterances.md) s entitami. 
+Přečtěte si další informace o přidání [ukázkového projevyu](luis-how-to-add-example-utterances.md) s entitami. 

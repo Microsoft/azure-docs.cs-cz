@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2bd2510b3b7aa72ac5e66ac9910f1c941f276564
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 0bed9f96ce04fae313672f2fa627c2e20bea2f6f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259900"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496416"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Podrobný plán zabezpečení a dodržování předpisů Azure – analýza dat pro NIST SP 800-171
 
@@ -27,7 +27,7 @@ Tato referenční architektura, přidružená příručka implementace a model h
 ## <a name="architecture-diagram-and-components"></a>Diagram architektury a součásti
 Toto řešení poskytuje analytickou platformu, na které můžou zákazníci vytvářet svoje vlastní analytické nástroje. Referenční architektura popisuje obecný případ použití. Zákazníci je můžou použít k zadávání dat prostřednictvím hromadných importů dat pomocí hromadného importu dat správcem SQL/dat. Můžou je taky použít k zadávání dat prostřednictvím aktualizací provozních dat prostřednictvím provozního uživatele. Oba workstreams zahrnují Azure Functions pro import dat do Azure SQL Database. Azure Functions musí být nakonfigurované zákazníkem prostřednictvím Azure Portal, aby se úlohy importu nastavily jako jedinečné pro požadavky na analýzu zákazníka.
 
-Azure nabízí celou řadu sestav a analytických služeb pro zákazníka. Toto řešení používá Azure Machine Learning Services a SQL Database k rychlému procházení dat a dodávání rychlejších výsledků prostřednictvím inteligentnějšího modelování dat. Machine Learning slouží ke zvýšení rychlosti dotazů tím, že zjišťují nové vztahy mezi datovými sadami. Zpočátku jsou data vyškolená prostřednictvím několika statistických funkcí. Následně je možné synchronizovat až sedm dalších fondů dotazů se stejnými tabelárními modely pro rozprostření úlohy dotazů a omezení doby odezvy. Server pro zákazníky přináší celkový počet fondů dotazů na osm.
+Azure nabízí celou řadu sestav a analytických služeb pro zákazníka. Toto řešení používá Azure Machine Learning a SQL Database k rychlému procházení dat a poskytování rychlejších výsledků prostřednictvím inteligentnějšího modelování dat. Machine Learning slouží ke zvýšení rychlosti dotazů tím, že zjišťují nové vztahy mezi datovými sadami. Zpočátku jsou data vyškolená prostřednictvím několika statistických funkcí. Následně je možné synchronizovat až sedm dalších fondů dotazů se stejnými tabelárními modely pro rozprostření úlohy dotazů a omezení doby odezvy. Server pro zákazníky přináší celkový počet fondů dotazů na osm.
 
 Pro lepší analýzy a vytváření sestav je možné SQL Database nakonfigurovat s indexy úložiště sloupců. Machine Learning a SQL Database je možné škálovat nahoru nebo dolů nebo zcela vypnout v reakci na používání zákazníků. Veškerý provoz SQL je zašifrovaný pomocí SSL prostřednictvím zahrnutí certifikátů podepsaných svým držitelem. Jako osvědčený postup doporučujeme použít pro rozšířené zabezpečení používání důvěryhodné certifikační autority.
 
@@ -48,11 +48,11 @@ Toto řešení používá následující služby Azure. Další informace najdet
 - Katalog dat Azure
 - Azure Disk Encryption
 - Azure Event Grid
-- Azure Functions
+- Funkce Azure
 - Azure Key Vault
 - Azure Machine Learning
 - Azure Monitor (protokoly)
-- Azure Security Center
+- Centrum zabezpečení Azure
 - Azure SQL Database
 - Azure Storage
 - Azure Virtual Network
@@ -68,14 +68,14 @@ Následující část podrobně popisuje prvky nasazení a implementace.
 
 **Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) je výpočetní služba bez serveru, která spouští kód na vyžádání. Nemusíte explicitně zřizovat ani spravovat infrastrukturu. Azure Functions můžete použít ke spuštění skriptu nebo kusu kódu jako reakci na různé události.
 
-**Služba Azure Machine Learning**: [Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) je technika pro datové vědy, která umožňuje počítačům používat stávající data k předpovědi budoucího chování, výsledků a trendů.
+**Azure Machine Learning**: [Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) je technika pro datové vědy, která umožňuje počítačům používat stávající data k předpovědi budoucího chování, výsledků a trendů.
 
 **Azure Data Catalog**: [Data Catalog](../../data-catalog/overview.md) usnadňuje zjišťování a pochopení zdrojů dat uživateli, kteří data spravují. U běžných zdrojů dat je možné registrovat, připsaná a vyhledávat data. Data zůstanou v jeho stávajícím umístění, ale do Data Catalog se přidá kopie jeho metadat. Součástí je odkaz na umístění zdroje dat. Metadata jsou indexována, aby byl každý zdroj dat snadno vyhledán pomocí vyhledávání. Indexování také usnadňuje uživatelům, kteří je objevují.
 
 ### <a name="virtual-network"></a>Virtuální síť
 Tato referenční architektura definuje privátní virtuální síť s adresním prostorem 10.0.0.0/16.
 
-**Skupiny zabezpečení sítě**: [Skupiny zabezpečení sítě](../../virtual-network/virtual-network-vnet-plan-design-arm.md) (Skupin zabezpečení sítě) obsahuje seznam řízení přístupu, který povoluje nebo zakazuje provoz v rámci virtuální sítě. Skupin zabezpečení sítě se dá použít k zabezpečení provozu na úrovni podsítě nebo jednotlivého virtuálního počítače. Následující skupin zabezpečení sítě existuje:
+**Skupiny zabezpečení sítě**: [skupiny zabezpečení sítě](../../virtual-network/virtual-network-vnet-plan-design-arm.md) (skupin zabezpečení sítě) obsahují seznamy řízení přístupu, které povolují nebo zakazují provoz v rámci virtuální sítě. Skupin zabezpečení sítě se dá použít k zabezpečení provozu na úrovni podsítě nebo jednotlivého virtuálního počítače. Následující skupin zabezpečení sítě existuje:
   - NSG pro službu Active Directory
   - NSG pro úlohu
 
@@ -92,11 +92,11 @@ Azure ve výchozím nastavení šifruje veškerou komunikaci mezi datovými cent
 
 Architektura chrání data v klidovém měřítku prostřednictvím šifrování, auditování databáze a dalších měr.
 
-**Azure Storage**: Aby bylo možné splňovat požadavky na zašifrovaná data v klidovém stavu, všechna [úložiště](https://azure.microsoft.com/services/storage/) používá [šifrování služby Storage](../../storage/common/storage-service-encryption.md). Tato funkce pomáhá chránit a chránit data při podpoře závazků zabezpečení organizace a požadavků na dodržování předpisů definovaných v NIST SP 800-171.
+**Azure Storage**: aby se splnily požadavky na [uchovávání](https://azure.microsoft.com/services/storage/) šifrovaných dat v klidovém stavu, používá úložiště [šifrování služby Storage](../../storage/common/storage-service-encryption.md). Tato funkce pomáhá chránit a chránit data při podpoře závazků zabezpečení organizace a požadavků na dodržování předpisů definovaných v NIST SP 800-171.
 
-**Azure Disk Encryption**: [Šifrování disku](../azure-security-disk-encryption-overview.md) používá funkci nástroje BitLocker systému Windows k poskytování šifrování svazku pro datové disky. Řešení se integruje s Azure Key Vault, které vám pomůžou řídit a spravovat šifrovací klíče disku.
+**Azure Disk Encryption**: [šifrování disku](../azure-security-disk-encryption-overview.md) používá funkci nástroje BitLocker systému Windows k poskytování šifrování svazku pro datové disky. Řešení se integruje s Azure Key Vault, které vám pomůžou řídit a spravovat šifrovací klíče disku.
 
-**Azure SQL Database**: Instance SQL Database používá následující bezpečnostní opatření databáze:
+**Azure SQL Database**: instance SQL Database používá následující bezpečnostní opatření databáze:
 -   [Ověřování a autorizace služby Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) umožňují správu identit uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění.
 -   [Auditování služby SQL Database](../../sql-database/sql-database-auditing.md) sleduje události databáze a zapisuje je do protokolu auditu v účtu úložiště Azure.
 -   SQL Database je nakonfigurované pro použití [transparentního šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Provádí šifrování a dešifrování databáze, přidružených záloh a souborů protokolů transakcí v reálném čase k ochraně informací v klidovém čase. Transparentní šifrování dat poskytuje záruku, že uložená data nepodléhají neoprávněnému přístupu.
@@ -114,7 +114,7 @@ Následující technologie poskytují možnosti pro správu přístupu k datům 
 -   [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) detekuje potenciální ohrožení zabezpečení, která ovlivňují identity organizace. Konfiguruje automatizované reakce na zjištěné podezřelé akce související s identitami organizace. Prošetří také podezřelé incidenty, aby mohla přijmout vhodná opatření k jejich vyřešení.
 
 ### <a name="security"></a>Zabezpečení
-**Správa tajných**kódů: Řešení používá [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pro správu klíčů a tajných kódů. Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané v cloudových aplikacích a službách. Následující možnosti Key Vault můžou zákazníkům chránit data:
+**Správa tajných klíčů**: řešení používá [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pro správu klíčů a tajných kódů. Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané v cloudových aplikacích a službách. Následující možnosti Key Vault můžou zákazníkům chránit data:
 - Zásady pokročilého přístupu se konfigurují podle potřeby.
 - Zásady přístupu Key Vault jsou definované s minimálními požadovanými oprávněními pro klíče a tajné kódy.
 - Všechny klíče a tajné kódy v Key Vault mají datum vypršení platnosti.
@@ -123,7 +123,7 @@ Následující technologie poskytují možnosti pro správu přístupu k datům 
 - Diagnostické protokoly pro Key Vault jsou povolené s dobou uchování minimálně 365 dní.
 - Povolené kryptografické operace pro klíče jsou omezené na ty, které jsou povinné.
 
-**Azure Security Center**: Díky [Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)můžou zákazníci centrálně používat a spravovat zásady zabezpečení napříč úlohami, omezovat vystavení hrozeb a rozpoznávat a reagovat na útoky. Security Center taky přistupuje k existujícím konfiguracím služeb Azure, aby poskytovala doporučení týkající se konfigurace a služeb, která vám pomůžou zdokonalit stav zabezpečení a chránit data.
+**Azure Security Center**: Díky [Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)můžou zákazníci centrálně používat a spravovat zásady zabezpečení napříč úlohami, omezovat vystavení hrozbám a detekovat a reagovat na útoky. Security Center taky přistupuje k existujícím konfiguracím služeb Azure, aby poskytovala doporučení týkající se konfigurace a služeb, která vám pomůžou zdokonalit stav zabezpečení a chránit data.
 
  Security Center využívá celou řadu možností detekce pro upozornění zákazníků na potenciální útoky, které cílí na jejich prostředí. Tyto výstrahy obsahují cenné informace o tom, co výstrahu aktivovalo, o prostředcích na které cílí, a o zdroji útoku. Security Center má sadu [předdefinovaných výstrah zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) , které se spouštějí při výskytu hrozby nebo podezřelé aktivity. Zákazníci můžou pomocí [vlastních pravidel upozornění](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) definovat nové výstrahy zabezpečení na základě dat, která už jsou shromážděná z jejich prostředí.
 
@@ -132,20 +132,20 @@ Následující technologie poskytují možnosti pro správu přístupu k datům 
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 
 Služba Azure výrazně zaznamenává činnost systému a uživatele a také stav systému:
-- **Protokoly aktivit**: [Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md) poskytují přehled o operacích provedených u prostředků v rámci předplatného. Protokoly aktivit můžou přispět k určení iniciátoru operace, času výskytu a stavu.
-- **Diagnostické protokoly**: [Diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly úložiště, protokoly Key Vault auditu a protokoly brány firewall Azure Application Gateway a. Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uživatelé můžou nakonfigurovat dobu uchování až 730 dní, aby splnily konkrétní požadavky.
+- **Protokoly aktivit**: [protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md) poskytují přehled o operacích provedených u prostředků v rámci předplatného. Protokoly aktivit můžou přispět k určení iniciátoru operace, času výskytu a stavu.
+- **Diagnostické protokoly**: [protokoly diagnostiky](../../azure-monitor/platform/resource-logs-overview.md) obsahují všechny protokoly emitované každým prostředkem. Mezi tyto protokoly patří protokoly systému událostí Windows, protokoly úložiště, protokoly Key Vault auditu a protokoly brány firewall Azure Application Gateway a. Všechny diagnostické protokoly zapisují do centralizovaného a šifrovaného účtu Azure Storage pro účely archivace. Uživatelé můžou nakonfigurovat dobu uchování až 730 dní, aby splnily konkrétní požadavky.
 
-**Protokoly Azure monitor**: Protokoly se konsolidují do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/) pro zpracování, ukládání a vytváření sestav řídicích panelů. Po shromáždění dat se data uspořádají do samostatných tabulek pro každý datový typ v Log Analytics pracovní prostory. Tímto způsobem lze analyzovat všechna data společně bez ohledu na její původní zdroj. Security Center se integruje s protokoly Azure Monitor. Zákazníci můžou pomocí dotazů Kusto přistupovat ke svým datům události zabezpečení a kombinovat je s daty z jiných služeb.
+**Protokoly Azure monitor**: protokoly jsou konsolidovány v [protokolech Azure monitor](https://azure.microsoft.com/services/log-analytics/) pro zpracování, ukládání a vytváření sestav řídicích panelů. Po shromáždění dat se data uspořádají do samostatných tabulek pro každý datový typ v Log Analytics pracovní prostory. Tímto způsobem lze analyzovat všechna data společně bez ohledu na její původní zdroj. Security Center se integruje s protokoly Azure Monitor. Zákazníci můžou pomocí dotazů Kusto přistupovat ke svým datům události zabezpečení a kombinovat je s daty z jiných služeb.
 
 Součástí této architektury jsou tato [řešení monitorování](../../monitoring/monitoring-solutions.md) Azure:
--   [Vyhodnocení služby Active Directory](../../azure-monitor/insights/ad-assessment.md): Řešení pro kontrolu stavu služby Active Directory posuzuje rizika a stav serverových prostředí v pravidelných intervalech. Poskytuje prioritní seznam doporučení specifických pro nasazenou serverovou infrastrukturu.
-- [Vyhodnocení SQL](../../azure-monitor/insights/sql-assessment.md): Řešení pro kontrolu stavu SQL posuzuje rizika a stav serverových prostředí v pravidelných intervalech. Zákazníkům nabízí seznam doporučení specifických pro nasazenou serverovou infrastrukturu.
-- [Agent Health](../../monitoring/monitoring-solution-agenthealth.md): Agent Health řešení oznamuje, kolik agentů je nasazeno a jejich geografická distribuce. Také oznamuje, kolik agentů nereaguje a kolik agentů odesílá provozní data.
--   [Activity Log Analytics](../../azure-monitor/platform/collect-activity-logs.md): Řešení Activity Log Analytics pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure pro zákazníka.
+-   [Vyhodnocení služby Active Directory](../../azure-monitor/insights/ad-assessment.md): řešení kontroly stavu služby Active Directory posuzuje rizika a stav serverových prostředí v pravidelných intervalech. Poskytuje prioritní seznam doporučení specifických pro nasazenou serverovou infrastrukturu.
+- [Vyhodnocení SQL](../../azure-monitor/insights/sql-assessment.md): řešení kontroly stavu SQL posuzuje rizika a stav prostředí serveru v pravidelných intervalech. Zákazníkům nabízí seznam doporučení specifických pro nasazenou serverovou infrastrukturu.
+- [Agent Health](../../monitoring/monitoring-solution-agenthealth.md): řešení agent Health oznamuje, kolik agentů se nasazuje a jejich geografická distribuce. Také oznamuje, kolik agentů nereaguje a kolik agentů odesílá provozní data.
+-   [Activity Log Analytics](../../azure-monitor/platform/collect-activity-logs.md): řešení Activity Log Analytics pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure pro zákazníka.
 
-**Azure Automation**: [Automatizace](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) ukládá, spouští a spravuje Runbooky. V tomto řešení můžou sady Runbook shromažďovat protokoly z SQL Database. Zákazníci můžou pomocí řešení automatizace [Change Tracking](../../automation/change-tracking.md) snadno identifikovat změny v prostředí.
+**Azure Automation**: [Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) ukládá, spouští a spravuje Runbooky. V tomto řešení můžou sady Runbook shromažďovat protokoly z SQL Database. Zákazníci můžou pomocí řešení automatizace [Change Tracking](../../automation/change-tracking.md) snadno identifikovat změny v prostředí.
 
-**Azure Monitor**: [Monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) pomáhá uživatelům sledovat výkon, zachovat zabezpečení a identifikovat trendy. Organizace je můžou použít k auditu, vytváření výstrah a archivaci dat. Můžou taky sledovat volání rozhraní API ve svých prostředcích Azure.
+**Azure monitor**: [monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) pomáhá uživatelům sledovat výkon, zachovat zabezpečení a identifikovat trendy. Organizace je můžou použít k auditu, vytváření výstrah a archivaci dat. Můžou taky sledovat volání rozhraní API ve svých prostředcích Azure.
 
 **Application Insights**: [Application Insights](https://docs.microsoft.com/azure/application-insights/) je rozšiřitelná služba pro správu výkonu aplikací pro webové vývojáře na různých platformách. Detekuje anomálie výkonu a zahrnuje výkonné analytické nástroje. Nástroje vám pomůžou diagnostikovat problémy a pomáhat zákazníkům pochopit, co uživatelé s aplikací dělají. Je navržený tak, aby pomohla uživatelům neustále zlepšovat výkon a použitelnost.
 
@@ -177,7 +177,7 @@ Vzhledem k tomu, že provoz v rámci tunelu VPN prochází Internetem pomocí s�
 ### <a name="azure-ad-setup"></a>Nastavení služby Azure AD
 [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) je zásadní pro správu nasazení a zřizování přístupu k zaměstnancům, kteří pracují s prostředím. Místní služba Active Directory se dá integrovat do Azure AD ve [čtyřech kliknutích](../../active-directory/hybrid/how-to-connect-install-express.md). Zákazníci taky můžou nasazovat infrastrukturu služby Active Directory (řadiče domény) do Azure AD. Provedete to tak, že nasadíte infrastrukturu služby Active Directory pro subdoménu doménové struktury Azure AD.
 
-## <a name="disclaimer"></a>Zřeknutí se práv
+## <a name="disclaimer"></a>Právní omezení
 
  - Tento dokument slouží pouze k informativním účelům. SPOLEČNOST MICROSOFT NEPOSKYTUJE ŽÁDNÉ ZÁRUKY, AŤ UŽ VÝSLOVNĚ UVEDENÉ, PŘEDPOKLÁDANÉ NEBO STATUTÁRNÍ, JAKO INFORMACE V TOMTO DOKUMENTU. Tento dokument se poskytuje "tak, jak je". Informace a názory vyjádřené v tomto dokumentu, včetně adres URL a dalších odkazů na internetové weby, se mohou změnit bez předchozího upozornění. Zákazníci, kteří si tento dokument přečetli, nesou riziko jeho používání.
  - Tento dokument neposkytuje zákazníkům žádná zákonná práva k žádnému duševnímu vlastnictví jakéhokoli produktu nebo řešení společnosti Microsoft.

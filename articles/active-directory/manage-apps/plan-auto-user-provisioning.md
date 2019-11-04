@@ -12,14 +12,14 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab1caeb59cf7fc0a6baef5ba0001e734a75fccd2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758231"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473336"
 ---
-# <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování automatického nasazení zřizování uživatelů
+# <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
 Mnoho organizací spoléhá na aplikace typu software jako služba (SaaS), jako je ServiceNow, Zscaler a časová rezerva produktivity koncových uživatelů. Historicky se zaměstnanci IT spoléhali na metody ručního zřizování, jako je například nahrávání souborů CSV, nebo použití vlastních skriptů pro bezpečnou správu identit uživatelů v jednotlivých aplikacích SaaS. Tyto procesy jsou náchylné k chybám, nezabezpečené a nespravované.
 
@@ -63,7 +63,7 @@ Tento článek používá následující výrazy:
 
 * Cílový systém – úložiště uživatelů, na které Azure AD zřídí. Cílový systém je obvykle aplikace SaaS, jako je ServiceNow, Zscaler a časová rezerva. Cílový systém může být také místní systém, například AD.
 
-* [Systém pro správu identit mezi doménami (SCIM)](http://www.simplecloud.info/)) – Otevřený standard, který umožňuje automatizaci zřizování uživatelů. SCIM komunikuje data identity uživatelů mezi poskytovateli identity, jako je Microsoft, a poskytovateli služeb, jako je Salesforce nebo jiné aplikace SaaS, které vyžadují informace o identitě uživatele.
+* [Systém pro správu identit mezi doménami (SCIM)](https://aka.ms/scimoverview) – otevřený standard, který umožňuje automatizovat zřizování uživatelů. SCIM komunikuje data identity uživatelů mezi poskytovateli identity, jako je Microsoft, a poskytovateli služeb, jako je Salesforce nebo jiné aplikace SaaS, které vyžadují informace o identitě uživatele.
 
 ### <a name="training-resources"></a>Školicí materiály
 
@@ -281,6 +281,8 @@ Po úspěšném [počátečním cyklu](https://docs.microsoft.com/azure/active-d
 * Proces zřizování přejde do karantény z důvodu vysoké míry chyb a zůstane v karanténě po dobu více než čtyř týdnů, pokud bude automaticky zakázaný.
 
 Pokud chcete zkontrolovat tyto události a všechny další aktivity, které provádí služba zřizování, přečtěte si [protokoly zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context)služby Azure AD.
+
+Chcete-li zjistit, jak dlouho zřizovací cykly přebírají a sledují průběh úlohy zřizování, můžete [zjistit stav zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).
 
 ### <a name="gain-insights-from-reports"></a>Získání přehledů ze sestav
 

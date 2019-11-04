@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7426493a575ceb38211f5e6e3b4f7e2ba558b670
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: fd874776e5be94831322bce839a502ebc43e1958
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754736"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481196"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaná nástrojem Azure Data Factory
 V tomto článku se dozvíte o různých výpočetních prostředích, která můžete použít ke zpracování nebo transformaci dat. Poskytuje taky podrobnosti o různých konfiguracích (na vyžádání a přineste si vlastní) podporované Data Factory při konfiguraci propojených služeb, které propojuje tato výpočetní prostředí s objektem pro vytváření dat Azure.
@@ -28,7 +28,8 @@ Následující tabulka uvádí seznam výpočetních prostředí podporovaných 
 | [Cluster HDInsight na vyžádání](#azure-hdinsight-on-demand-linked-service) nebo [vlastní cluster HDInsight](#azure-hdinsight-linked-service) | [Podregistr](transform-data-using-hadoop-hive.md), [prase](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [streamování Hadoop](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Uživatelská](transform-data-using-dotnet-custom-activity.md)     |
 | [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Aktivity Machine Learning: Dávkové spouštění a Aktualizace prostředku](transform-data-using-machine-learning.md) |
-| [Služba Azure Machine Learning](#azure-machine-learning-service-linked-service) | [Azure Machine Learning spustit kanál](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning spustit kanál](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning spustit kanál](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [U-SQL Data Lake Analytics](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Uložená procedura](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Poznámkový blok](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
@@ -100,7 +101,7 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 | Vlastnost                     | Popis                              | Požaduje se |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Vlastnost Type by měla být nastavená na **HDInsightOnDemand**. | Ano      |
-| clusterSize                  | Počet uzlů pracovních procesů nebo datových uzlů v clusteru. Cluster HDInsight se vytvoří s 2 hlavními uzly spolu s počtem pracovních uzlů, které pro tuto vlastnost zadáte. Uzly mají velikost Standard_D3, která má 4 jádra, takže cluster se čtyřmi pracovními uzly má 24 jader (4 \*4 = 16 jader pro pracovní uzly a 2 \*4 = 8 jader pro hlavní uzly). Podrobnosti najdete v tématu [Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a další](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . | Ano      |
+| clusterSize                  | Počet uzlů pracovních procesů nebo datových uzlů v clusteru. Cluster HDInsight se vytvoří s 2 hlavními uzly spolu s počtem pracovních uzlů, které pro tuto vlastnost zadáte. Uzly mají velikost Standard_D3, která má 4 jádra, takže cluster se čtyřmi pracovními uzly má 24 jader (4\*4 = 16 jader pro pracovní uzly a 2\*4 = 8 jader pro hlavní uzly). Podrobnosti najdete v tématu [Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a další](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . | Ano      |
 | linkedServiceName            | Azure Storage propojená služba, kterou má cluster na vyžádání použít k ukládání a zpracování dat. Cluster HDInsight se vytvoří ve stejné oblasti jako tento účet Azure Storage. Pro Azure HDInsight platí omezení celkového počtu jader, která můžete v jednotlivých podporovaných oblastech Azure použít. Ujistěte se, že je v oblasti Azure dostatek základních kvót, aby splňovaly požadované clusterSize. Podrobnosti najdete [v tématu Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a dalšími](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) .<p>V současné době nemůžete vytvořit cluster HDInsight na vyžádání, který jako úložiště používá Azure Data Lake Store. Pokud chcete uložit výsledná data ze zpracování HDInsight ve Azure Data Lake Store, pomocí aktivity kopírování zkopírujte data z Azure Blob Storage do Azure Data Lake Store. </p> | Ano      |
 | clusterResourceGroup         | Cluster HDInsight se vytvoří v této skupině prostředků. | Ano      |
 | TimeToLive                   | Povolený čas nečinnosti pro cluster HDInsight na vyžádání. Určuje, jak dlouho zůstane cluster HDInsight na vyžádání aktivní po dokončení spuštění aktivity, pokud v clusteru nejsou žádné další aktivní úlohy. Minimální povolená hodnota je 5 minut (00:05:00).<br/><br/>Pokud například spuštění aktivity trvá 6 minut a TimeToLive je nastaveno na 5 minut, zůstane cluster aktivní po dobu 5 minut po 6 minutách zpracování spuštění aktivity. Pokud je spuštěný jiný běh aktivity s oknem o 6 minut, zpracuje ho stejný cluster.<br/><br/>Vytvoření clusteru HDInsight na vyžádání je náročná operace (může chvíli trvat), proto toto nastavení použijte, pokud chcete zlepšit výkon objektu pro vytváření dat, a to tak, že znovu použijete cluster HDInsight na vyžádání.<br/><br/>Pokud nastavíte hodnotu TimeToLive na 0, cluster se odstraní hned po dokončení spuštění aktivity. Pokud nastavíte vysokou hodnotu, cluster může zůstat nečinný, abyste se mohli přihlásit k nějakému účelu řešení potíží, ale může to mít za následek vysoké náklady. Proto je důležité nastavit odpovídající hodnotu podle svých potřeb.<br/><br/>Pokud je hodnota vlastnosti TimeToLive správně nastavená, může více kanálů sdílet instanci clusteru HDInsight na vyžádání. | Ano      |
@@ -392,11 +393,11 @@ Vytvoříte propojenou službu Azure Machine Learning Studio k registraci koncov
 | tenant                 | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Vyžaduje se, pokud je zadaný updateResourceEndpoint. |
 | connectVia             | Integration Runtime, která se má použít k odeslání aktivit do této propojené služby. Můžete použít Azure Integration Runtime nebo místní Integration Runtime. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne                                       |
 
-## <a name="azure-machine-learning-service-linked-service"></a>Propojená služba Azure Machine Learning
-Vytvoříte propojenou službu Azure Machine Learning Service pro připojení pracovního prostoru služby Azure Machine Learning k datové továrně.
+## <a name="azure-machine-learning-linked-service"></a>Propojená služba Azure Machine Learning
+Vytvoříte propojenou službu Azure Machine Learning pro připojení pracovního prostoru Azure Machine Learning k datové továrně.
 
 > [!NOTE]
-> V současné době je pro propojenou službu Azure Machine Learning služby podporována pouze ověřování instančního objektu.
+> V současné době je pro propojenou službu Azure Machine Learning podporována pouze ověřování instančního objektu.
 
 ### <a name="example"></a>Příklad:
 
@@ -430,7 +431,7 @@ Vytvoříte propojenou službu Azure Machine Learning Service pro připojení pr
 | Typ                   | Vlastnost Type by měla být nastavená na: **AzureMLService**. | Ano                                      |
 | subscriptionId         | ID předplatného Azure              | Ano                                      |
 | resourceGroupName      | jméno | Ano                                      |
-| mlWorkspaceName        | Název pracovního prostoru služby Azure Machine Learning | Ano  |
+| mlWorkspaceName        | Název pracovního prostoru Azure Machine Learning | Ano  |
 | servicePrincipalId     | Zadejte ID klienta aplikace.     | Ne |
 | servicePrincipalKey    | Zadejte klíč aplikace.           | Ne |
 | tenant                 | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Vyžaduje se, pokud je zadaný updateResourceEndpoint. | Ne |

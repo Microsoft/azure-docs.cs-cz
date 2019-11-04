@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 08e9656e3b899cbb6d4de733696175e8f31b0e66
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792016"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479752"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání entit
 
@@ -39,9 +39,8 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 |--------------------|-------------|
 | categories    | Pole kategorií, které mají být extrahovány.  Možné typy kategorií: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Pokud není zadána žádná kategorie, jsou vráceny všechny typy.|
 |defaultLanguageCode |  Kód jazyka vstupního textu Podporovány jsou následující jazyky: `de, en, es, fr, it`|
-|minimumPrecision | Nepoužívané. Vyhrazeno pro budoucí použití. |
-|includeTypelessEntities | Když je hodnota true, pokud text obsahuje dobře známou entitu, ale nedá se kategorizovat do jedné z podporovaných kategorií, vrátí se jako součást `"entities"` komplexního výstupního pole. 
-Jedná se o entity, které jsou dobře známé, ale nejsou klasifikované jako součást aktuálních podporovaných "kategorií". Například "Windows 10" je dobře známá entita (produkt), ale "Products" ještě nejsou v kategoriích, které jsou dnes podporovány. Výchozí hodnota je `false` |
+|minimumPrecision | Hodnota v rozsahu 0 až 1. Pokud je hodnocení spolehlivosti (ve výstupu `namedEntities`) menší než tato hodnota, entita se nevrátí. Výchozí hodnota je 0. |
+|includeTypelessEntities | Nastavte na `true`, pokud chcete rozpoznat dobře známé entity, které se nevejdou do aktuálních kategorií. Rozpoznané entity jsou vráceny v poli `entities` složitý výstup. Například "Windows 10" je dobře známá entita (produkt), ale vzhledem k tomu, že "Products" není podporovanou kategorií, bude tato entita obsažena v poli výstup entit. Výchozí hodnota je `false` |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
@@ -65,7 +64,7 @@ Jedná se o entity, které jsou dobře známé, ale nejsou klasifikované jako s
 | Typy DateTime  | Pole řetězců, kde každý řetězec představuje hodnotu DateTime (jak je zobrazeno v textu). |
 | adrese | Pole řetězců, kde každý řetězec představuje adresu URL |
 | zpráv | Pole řetězců, kde každý řetězec představuje e-mail |
-| namedEntities | Pole komplexních typů, které obsahují následující pole: <ul><li>category</li> <li>Value (skutečný název entity)</li><li>posun (umístění, kde byl nalezen v textu)</li><li>jistota (nepoužívá se teď Bude nastaveno na hodnotu-1).</li></ul> |
+| namedEntities | Pole komplexních typů, které obsahují následující pole: <ul><li>category</li> <li>Value (skutečný název entity)</li><li>posun (umístění, kde byl nalezen v textu)</li><li>důvěra (vyšší hodnota znamená, že se jedná o skutečnou entitu)</li></ul> |
 | podnikům | Pole komplexních typů, které obsahují formátované informace o entitách extrahovaných z textu, s následujícími poli <ul><li> název (skutečný název entity. Toto představuje "normalizovaný" tvar.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (odkaz na stránku Wikipedii pro entitu)</li><li>bingId</li><li>typ (kategorie rozpoznané entity)</li><li>Podtyp (k dispozici pouze pro určité kategorie, poskytuje podrobnější zobrazení typu entity)</li><li> odpovídá (komplexní kolekce, která obsahuje)<ul><li>text (nezpracovaný text pro entitu)</li><li>posun (umístění, kde byl nalezen)</li><li>Délka (délka textu nezpracované entity)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Definice vzorku
@@ -76,6 +75,7 @@ Jedná se o entity, které jsou dobře známé, ale nejsou klasifikované jako s
     "categories": [ "Person", "Email"],
     "defaultLanguageCode": "en",
     "includeTypelessEntities": true,
+    "minimumPrecision": 0.5,
     "inputs": [
       {
         "name": "text",
@@ -131,7 +131,7 @@ Jedná se o entity, které jsou dobře známé, ale nejsou klasifikované jako s
             "category":"Person",
             "value": "John Smith",
             "offset": 35,
-            "confidence": -1
+            "confidence": 0.98
           }
         ],
         "entities":  

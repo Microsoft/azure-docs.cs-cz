@@ -9,108 +9,65 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 70e58077fa40ce685324cd24b447886ec3411034
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 973a8dd56437506d907159f212164ff147ba975c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703183"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487503"
 ---
-# <a name="authoring-and-runtime-keys"></a>Vytváření a běhové klíče
+# <a name="authoring-and-runtime-keys"></a>Klíče pro vytváření obsahu a běhové klíče
 
+Language Understanding (LUIS) má dvě služby a sady rozhraní API: 
 
->[!NOTE]
->Než budete pokračovat, [migrujte](luis-migration-authoring.md) prosím všechny aplikace, které nepoužívají prostředek pro vytváření prostředků Azure.
+* Vytváření obsahu (dříve nazývané _program_)
+* Předpověď za běhu
 
-LUIS používá dva typy prostředků Azure, přičemž každý typ má klíče: 
+Existuje několik typů klíčů v závislosti na službě, se kterou chcete pracovat, a na tom, jak s ní chcete pracovat.
+
+## <a name="non-azure-resources-for-luis"></a>Prostředky mimo Azure pro LUIS
+
+### <a name="starter-key"></a>Počáteční klíč
+
+Když poprvé začnete používat LUIS, vytvoří se pro vás **počáteční klíč** . Tento prostředek poskytuje:
+
+* bezplatné požadavky na služby vytváření obsahu prostřednictvím portálu LUIS nebo rozhraní API (včetně sad SDK)
+* bezplatné požadavky na koncový bod 1 000 předpovědi za měsíc prostřednictvím prohlížeče, rozhraní API nebo sad SDK
+
+## <a name="azure-resources-for-luis"></a>Prostředky Azure pro LUIS
+
+<a name="programmatic-key" ></a>
+<a name="endpoint-key"></a>
+<a name="authoring-key"></a>
+
+LUIS umožňuje tři typy prostředků Azure: 
  
-* [Vytváření](#programmatic-key) k vytváření záměrů, entit a popisků projevy, školení a publikování. Až budete připraveni k publikování aplikace LUIS, budete potřebovat [klíč koncového bodu předpovědi pro modul runtime](luis-how-to-azure-subscription.md) přiřazený k aplikaci.
-* [Klíč koncového bodu předpovědi pro modul runtime](#prediction-endpoint-runtime-key). Klientské aplikace, jako je například robota chatu, potřebují prostřednictvím tohoto klíče přístup k **koncovému bodu předpovědi dotazů** modulu runtime. 
-
-|Key|Účel|Služba rozpoznávání `kind`|Služba rozpoznávání `type`|
+|Klíč|Účel|`kind` služby pro rozpoznávání|`type` služby pro rozpoznávání|
 |--|--|--|--|
-|[Vytváření klíče](#programmatic-key)|Vytváření, školení, publikování a testování.|`LUIS.Authoring`|`Cognitive Services`|
-|[Klíč runtime koncového bodu předpovědi](#prediction-endpoint-runtime-key)| Modul předpovědi pro koncové body v rámci dotazu s uživatelem utterance k určení záměrů a entit.|`LUIS`|`Cognitive Services`|
+|[Vytváření klíče](#programmatic-key)|Přístup k datům aplikací a jejich správa pomocí vytváření, školení, publikování a testování. Pokud máte v úmyslu programově vytvářet aplikace LUIS, vytvořte si klíč pro vytváření LUIS.<br><br>Účelem `LUIS.Authoring`ho klíče je, aby vám umožňoval:<br>* prostřednictvím kódu programu spravujte Language Understanding aplikace a modely, včetně školení a publikování<br> * řízení oprávnění k vytváření prostředků tím, že uživatelům přiřadíte [roli Přispěvatel](#contributions-from-other-authors).|`LUIS.Authoring`|`Cognitive Services`|
+|[Klíč předpovědi](#prediction-endpoint-runtime-key)| Požadavky koncového bodu předpovědi dotazu. Vytvořte klíč předpovědi LUIS před tím, než klientská aplikace požaduje předpovědi nad požadavky 1 000, které poskytuje počáteční prostředek. |`LUIS`|`Cognitive Services`|
+|[Klíč prostředku více služeb pro službu rozpoznávání](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Požadavky koncového bodu předpovědi dotazu sdílené s LUIS a dalšími podporovanými Cognitive Services.|`CognitiveServices`|`Cognitive Services`|
 
-LUIS také poskytuje [počáteční klíč](luis-how-to-azure-subscription.md#starter-key) s kvótou koncového bodu předpovědi 1000 transakcí za měsíc. 
-
-I když nemusíte současně vytvářet obě klíče, je to mnohem jednodušší.
+Až se proces vytváření prostředků dokončí, [přiřaďte klíč](luis-how-to-azure-subscription.md) k aplikaci na portálu Luis.
 
 Je důležité vytvářet aplikace LUIS v [oblastech](luis-reference-regions.md#publishing-regions) , kde chcete publikovat a dotazovat.
 
-<a name="programmatic-key" ></a>
-
-## <a name="authoring-key"></a>Vytváření klíče
-
-Klíč pro vytváření obsahu se vytvoří automaticky při vytvoření účtu LUIS a je zadarmo. Po zahájení práce s LUIS máte jeden počáteční klíč pro všechny vaše aplikace LUIS pro každou [oblast](luis-reference-regions.md)vytváření obsahu. Účelem tohoto klíčového klíče je poskytnout ověřování ke správě aplikace v LUIS nebo k testování dotazů na koncový bod předpovědi. 
-
-Vytváření vytváření klíčů v Azure Portal umožňuje řídit oprávnění k vytváření prostředků přiřazením osob k [roli Přispěvatel](#contributions-from-other-authors). Abyste mohli přidávat přispěvatele, potřebujete oprávnění na úrovni předplatného Azure. 
-
-Pokud chcete vyhledat klíč pro vytváření, přihlaste se k [Luis](luis-reference-regions.md#luis-website) a kliknutím na název účtu v pravém horním navigačním panelu otevřete **Nastavení účtu**.
-
-![vytváření klíče](./media/luis-concept-keys/authoring-key.png)
-
-Pokud chcete vytvořit **běhové dotazy**, vytvořte [prostředek Azure Luis](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). 
-
 > [!CAUTION]
-> Pro usnadnění práce mnoho z ukázek používá [počáteční klíč](#starter-prediction-endpoint-runtime-key) , protože poskytuje několik bezplatných volání koncového bodu předpovědi ve své [kvótě](luis-boundaries.md#key-limits).  
+> Pro usnadnění práce mnoho z ukázek používá [počáteční klíč](#starter-key) , protože poskytuje několik bezplatných volání koncového bodu předpovědi ve své [kvótě](luis-boundaries.md#key-limits).  
 
-<a name="endpoint-key"></a>
 
-## <a name="prediction-endpoint-runtime-key"></a>Klíč runtime koncového bodu předpovědi 
-
-Pokud potřebujete **dotazy na koncový bod za běhu**, vytvořte prostředek Language UNDERSTANDING (Luis) a pak ho přiřaďte do aplikace Luis. 
-
-[!INCLUDE [Azure runtime resource creation for Language Understanding and Cognitive Service resources](../../../includes/cognitive-services-luis-azure-resource-instructions.md)]
-
-Až se proces vytváření prostředků dokončí, [přiřaďte](luis-how-to-azure-subscription.md) k aplikaci klíč. 
-
-* Klíč modulu runtime (koncový bod předpovědi dotazu) umožňuje kvótu přístupů koncového bodu na základě plánu využití, který jste zadali při vytváření klíče modulu runtime. Informace o cenách najdete v tématu [Cognitive Services ceny](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) .
+### <a name="query-prediction-resources"></a>Prostředky předpovědi dotazů
 
 * Klíč za běhu se dá použít pro všechny aplikace LUIS nebo pro konkrétní aplikace LUIS. 
 * Nepoužívejte klíč za běhu k vytváření aplikací LUIS. 
 
-### <a name="starter-prediction-endpoint-runtime-key"></a>Klíč za běhu koncového bodu předpovědi počátečního prostředí
-
-Klíč koncového bodu předpovědi **počátečního** kódu je zdarma a zahrnuje dotazy na koncový bod předpovědi 1000. Po použití těchto dotazů byste pro Language Understanding měli vytvořit vlastní prostředek koncového bodu předpovědi.  
-
-Jedná se o speciální prostředek vytvořený za vás. Nezobrazuje se v seznamu prostředků Azure, protože je určen jako dočasný počáteční klíč. 
-
-<a name="use-endpoint-key-in-query"></a>
-
-### <a name="use-runtime-key-in-query"></a>Použít klíč za běhu v dotazu
 Koncový bod LUIS runtime akceptuje dva styly dotazů, obě používají klíč předplatného koncového bodu pro prostředí, ale na různých místech.
 
-Koncový bod používaný pro přístup k modulu runtime používá subdoménu, která je pro vaši oblast prostředku jedinečná, označená pomocí `{region}` v následující tabulce. 
+Koncový bod používaný pro přístup k modulu runtime používá subdoménu, která je jedinečná pro vaši oblast prostředku, označenou `{region}` v následující tabulce. 
 
-
-#### <a name="v2-prediction-endpointtabv2"></a>[Koncový bod pro předpověď v2](#tab/V2)
-
-|Operace|Příklad adresy URL a umístění klíče|
-|--|--|
-|[Čtěte](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`|
-|[SPUŠTĚNÍ](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`|
-
-#### <a name="v3-prediction-endpointtabv3"></a>[Prediktivní koncový bod V3](#tab/V3)
-
-|Operace|Příklad adresy URL a umístění klíče|
-|--|--|
-|[Čtěte](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a91e54c9db63d589f433)|`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?runtime-key=your-endpoint-key-here&query=turn%20on%20the%20lights`|
-|[SPUŠTĚNÍ](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a5830f741b27cd03a061)| `https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict`| 
-
-Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
-
-* * * 
-
-**Get**: Změňte hodnotu dotazu koncového bodu pro `runtime-key` z klíče pro vytváření obsahu (počáteční) na nový klíč koncového bodu, aby se použila míra kvót klíčů koncového bodu Luis. Pokud vytvoříte klíč a přiřadíte klíč, ale nezměníte hodnotu dotazu koncového bodu pro `runtime-key`, nepoužíváte kvótu klíče koncového bodu.
-
-**Post**: Změňte hodnotu hlavičky pro `Ocp-Apim-Subscription-Key`.<br>Pokud vytvoříte klíč za běhu a přiřadíte klíč za běhu, ale nezměníte hodnotu dotazu koncového bodu pro `Ocp-Apim-Subscription-Key`, nepoužíváte klíč za běhu.
-
-ID aplikace použité v předchozích adresách URL, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, je veřejná aplikace IoT, která se používá pro [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). 
-
-## <a name="assignment-of-the-runtime-key"></a>Přiřazení klíče za běhu
+## <a name="assignment-of-the-key"></a>Přiřazení klíče
 
 Klíč za běhu můžete [přiřadit](luis-how-to-azure-subscription.md) na [portálu Luis](https://www.luis.ai) nebo prostřednictvím odpovídajících rozhraní API. 
 
@@ -127,19 +84,11 @@ Pokud překročíte kvótu transakcí za sekundu (TPS), zobrazí se chyba HTTP 4
 
 ## <a name="contributions-from-other-authors"></a>Příspěvky od jiných autorů
 
-
-
-Správa příspěvků od spolupracovníků závisí na aktuálním stavu aplikace.
-
 **Pro [vytváření prostředků migrovaných](luis-migration-authoring.md) aplikací**: _přispěvatelé_ se spravují v Azure Portal pro vytváření prostředků pomocí stránky **řízení přístupu (IAM)** . Naučte [se, jak přidat uživatele](luis-how-to-collaborate.md)pomocí e-mailové adresy spolupracovníka a role _přispěvatele_ . 
 
 **Pro aplikace, které ještě nebyly migrovány**: všechny _spolupracovníci_ jsou spravováni na portálu Luis ze stránky **spolupracovníci pro správu >** .
 
-### <a name="contributor-roles-vs-entity-roles"></a>Role přispěvatele a role entit
-
-[Role entit](luis-concept-roles.md) se vztahují na datový model aplikace Luis. Role spolupracovníka/Přispěvatel se vztahují na úrovně přístupu pro vytváření. 
-
-## <a name="moving-or-changing-ownership"></a>Přesunutí nebo změna vlastnictví
+## <a name="move-transfer-or-change-ownership"></a>Přesunutí, převedení nebo změna vlastnictví
 
 Aplikace je definovaná pomocí prostředků Azure, které určuje předplatné vlastníka. 
 
@@ -148,7 +97,12 @@ Aplikaci LUIS můžete přesunout. V Azure Portal nebo Azure CLI použijte násl
 * [Přesun aplikace mezi LUIS vytváření prostředků](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
 * [Přesunout prostředek do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/resource-group-move-resources.md)
 * [Přesunutí prostředku v rámci stejného předplatného nebo napříč předplatnými](../../azure-resource-manager/move-limitations/app-service-move-limitations.md)
-* [Přenos vlastnictví](../../billing/billing-subscription-transfer.md) předplatného 
+
+Přenos [vlastnictví](../../billing/billing-subscription-transfer.md) předplatného: 
+
+**Pro uživatele, kteří mají migrované [vytváření prostředků](luis-migration-authoring.md) migrované aplikace**: jako vlastník prostředku můžete přidat `contributor`.
+
+**Pro uživatele, kteří se ještě nemigrovali**: Exportujte aplikaci jako soubor JSON. Jiný uživatel LUIS může aplikaci importovat, takže se stane vlastníkem aplikace. Nová aplikace bude mít jiné ID aplikace.  
 
 ## <a name="access-for-private-and-public-apps"></a>Přístup pro privátní a veřejné aplikace
 
@@ -169,15 +123,15 @@ Vlastník a všichni přispěvatelé mají přístup k vytváření aplikací.
 |Import verze||
 |Nastavit aplikaci jako veřejnou|Když je aplikace veřejná, může se uživatel dotazovat na aplikaci s vytvářením nebo klíčovým bodem.|
 |Upravit model|
-|Opětovn|
+|Publikování|
 |Kontrola služby Endpoint projevy pro [aktivní učení](luis-how-to-review-endpoint-utterances.md)|
-|Průřez|
+|Trénování|
+
+<a name="prediction-endpoint-runtime-key"></a>
 
 ### <a name="prediction-endpoint-runtime-access"></a>Prediktivní přístup k modulu runtime koncového bodu
 
 Přístup k dotazu na koncový bod předpovědi je řízen nastavením na stránce **informace o aplikaci** v části **Spravovat** . 
-
-![Nastavení aplikace na veřejné](./media/luis-concept-security/set-application-as-public.png)
 
 |[Soukromý koncový bod](#runtime-security-for-private-apps)|[Veřejný koncový bod](#runtime-security-for-public-apps)|
 |:--|:--|
@@ -205,9 +159,7 @@ Veřejná aplikace je publikovaná ve všech oblastech, aby uživatel s klíčem
 
 ## <a name="transfer-of-ownership"></a>Přenos vlastnictví
 
-**Pro [vytváření prostředků migrovaných](luis-migration-authoring.md) aplikací**: jako vlastník prostředku můžete přidat `contributor`.
-
-**Pro aplikace, které ještě nebyly migrovány**: Exportujte aplikaci jako soubor JSON. Jiný uživatel LUIS může aplikaci importovat, takže se stane vlastníkem aplikace. Nová aplikace bude mít jiné ID aplikace.  
+LUIS nemá na převod vlastnictví prostředku koncept. 
 
 ## <a name="securing-the-endpoint"></a>Zabezpečení koncového bodu 
 

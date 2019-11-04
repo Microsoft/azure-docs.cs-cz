@@ -1,7 +1,7 @@
 ---
 title: Batch test – LUIS
 titleSuffix: Azure Cognitive Services
-description: Pomocí služby batch Language Understanding (LUIS) testování sad vyhledejte projevy s nesprávnou záměry a entity.
+description: Pomocí Language Understanding (LUIS) Batch test Sets Najděte projevy s nesprávnými záměry a entitami.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,74 +9,76 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: bf8b2551390fa36736f678c756093a55d6ceb0c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a99b2e7097f2abf36f184368b3b4fdaba8f2730b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932871"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467409"
 ---
-# <a name="batch-testing-with-a-set-of-example-utterances"></a>Testování pomocí sady projevy příklad služby batch
+# <a name="batch-testing-with-a-set-of-example-utterances"></a>Dávkové testování se sadou příkladů projevy
 
- Testování služby batch je komplexní test na aktuální trénovaný model pro měření jejího výkonu v LUIS. Datové sady, které se používají pro dávkové testování, by neměly zahrnovat příklad projevy v záměrech nebo projevy přijaté z koncového bodu modulu runtime předpovědi. 
+ Dávkovým testováním je komplexní test na vašem aktuálně vyškolený model pro měření výkonu v LUIS. Datové sady, které se používají pro dávkové testování, by neměly zahrnovat příklad projevy v záměrech nebo projevy přijaté z koncového bodu modulu runtime předpovědi. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="batch-testing"></a>
 
-## <a name="import-a-dataset-file-for-batch-testing"></a>Importovat datovou sadu pro testování služby batch
+## <a name="import-a-dataset-file-for-batch-testing"></a>Import souboru datové sady pro dávkové testování
 
-1. Vyberte **testovací** v horní části panelu a pak vyberte **Batch testování panel**.
+1. V horním panelu vyberte **test** a pak vyberte **panel Batch Testing**.
 
-    ![Testování propojení služby batch](./media/luis-how-to-batch-test/batch-testing-link.png)
+    ![Odkaz na dávkové testování](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. Vyberte **datové sady importu**. **Nová datová sada Import** zobrazí se dialogové okno. Vyberte **zvolit soubor** a vyhledejte soubor JSON se správnými [formátu JSON](luis-concept-batch-test.md#batch-file-format) obsahující *více než 1 000* projevy k testování.
+2. Vyberte **importovat datovou sadu**. Zobrazí se dialogové okno **importovat novou datovou sadu** . Vyberte **zvolit soubor** a vyhledejte soubor JSON se správným [formátem JSON](luis-concept-batch-test.md#batch-file-format) , který neobsahuje *více než 1 000* projevy pro testování.
 
-    Chyby importu jsou hlášeny v red oznamovací pruh v horní části stránky prohlížeče. Při importu obsahuje chyby, žádná datová sada se vytvoří. Další informace najdete v tématu [běžné chyby](luis-concept-batch-test.md#common-errors-importing-a-batch).
+    Chyby importu jsou hlášeny v červeném oznamovacím panelu v horní části okna prohlížeče. Pokud import obsahuje chyby, není vytvořena žádná datová sada. Další informace najdete v tématu [běžné chyby](luis-concept-batch-test.md#common-errors-importing-a-batch).
 
-3. V **název datové sady** pole, zadejte název pro soubor datové sady. Zahrnuje soubor datové sady **pole projevy** včetně *označené záměr* a *entity*. Zkontrolujte [příklad dávkový soubor](luis-concept-batch-test.md#batch-file-format) syntaxi. 
+3. Do pole **název datové sady** zadejte název souboru DataSet. Soubor DataSet obsahuje **pole projevy, které** zahrnuje *označení záměru* a *entit*. Projděte si [ukázkový dávkový soubor](luis-concept-batch-test.md#batch-file-format) pro syntaxi. 
 
-4. Vyberte **Done** (Hotovo). Přidá soubor datové sady.
+4. Vyberte **Done** (Hotovo). Přidá se soubor DataSet.
 
-## <a name="run-rename-export-or-delete-dataset"></a>Spuštění, přejmenování, export nebo odstranění datové sady
+## <a name="run-rename-export-or-delete-dataset"></a>Spustit, přejmenovat, exportovat nebo odstranit datovou sadu
 
-Chcete-li spustit, přejmenovat, export nebo odstranění datové sady, použijte na tři tečky (***...*** ) tlačítko na konci řádku datové sady.
+Chcete-li datovou sadu spustit, přejmenovat, exportovat nebo odstranit, použijte tlačítko se třemi tečkami (***...***) na konci řádku DataSet.
 
 ![Akce datové sady](./media/luis-how-to-batch-test/batch-testing-options.png)
 
-## <a name="run-a-batch-test-on-your-trained-app"></a>Spuštění testu služby batch v aplikaci trénovaného
+## <a name="run-a-batch-test-on-your-trained-app"></a>Spuštění testu dávky na školenou aplikaci
 
-Pro spuštění testu, vyberte název datové sady. Po dokončení testu, tento řádek zobrazuje výsledek testu datové sady.
+Chcete-li spustit test, vyberte název datové sady. Po dokončení testu tento řádek zobrazí výsledek testu pro datovou sadu.
 
-![Výsledek testu služby batch](./media/luis-how-to-batch-test/run-test.png)
+![Výsledek dávkového testu](./media/luis-how-to-batch-test/run-test.png)
 
-Ke stažení datová sada je stejný soubor, který byl nahrán pro testování služby batch.
+Datová sada ke stažení je stejný soubor, který byl nahrán pro dávkové testování.
 
 |Stav|Význam|
 |--|--|
-|![Ikona zeleném kroužku úspěšných testů](./media/luis-how-to-batch-test/batch-test-result-green.png)|Všechny projevy jsou úspěšné.|
-|![Červené x ikonu selhání testu](./media/luis-how-to-batch-test/batch-test-result-red.png)|Alespoň jeden utterance záměr neodpovídá do predikce.|
-|![Jste připravení ikona testu](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test je připraven ke spuštění.|
+|![Ikona úspěšného testu zeleného kruhu](./media/luis-how-to-batch-test/batch-test-result-green.png)|Všechny projevy jsou úspěšné.|
+|![Neúspěšná ikona testu červená x](./media/luis-how-to-batch-test/batch-test-result-red.png)|Nejméně jeden utterance záměr neodpovídal předpovědi.|
+|![Ikona připraveno k otestování](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test je připravený ke spuštění.|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
 
-## <a name="view-batch-test-results"></a>Zobrazení výsledků testu služby batch 
+## <a name="view-batch-test-results"></a>Zobrazit výsledky dávkového testu 
 
-Chcete-li zkontrolovat výsledky testů služby batch, vyberte **zobrazit výsledky**.
+Chcete-li zkontrolovat výsledky dávkového testu, vyberte možnost **Zobrazit výsledky**.
 
-![Výsledky testu služby batch](./media/luis-how-to-batch-test/run-test-results.png)
+![Výsledky dávkového testu](./media/luis-how-to-batch-test/run-test-results.png)
 
 <a name="filter-chart-results-by-intent-or-entity"></a>  
 
-## <a name="filter-chart-results"></a>Filtrování grafu výsledků
+## <a name="filter-chart-results"></a>Filtrovat výsledky grafu
 
-Filtrování grafu specifické cílem nebo entity, vyberte na pravé straně panelu filtrování záměr nebo entity. Datové body a jejich distribuci aktualizací v grafu podle vašeho výběru. 
+Pokud chcete graf filtrovat podle konkrétního záměru nebo entity, vyberte záměr nebo entitu na panelu filtrování na pravé straně. Datové body a jejich distribuce se aktualizují v grafu podle vašeho výběru. 
  
-![Výsledek testu vizualizovaný služby Batch](./media/luis-how-to-batch-test/filter-by-entity.png) 
+![Vizuální výsledek testu dávky](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
-## <a name="view-single-point-utterance-data"></a>Zobrazení jednoho bodu utterance dat
+## <a name="view-single-point-utterance-data"></a>Zobrazit utterance data s jedním bodem
 
-V diagramu najeďte myší na datový bod zobrazíte skóre jistoty jeho předpovědí. Vyberte datový bod k načtení jeho odpovídajícího utterance v seznamu projevy v dolní části stránky. 
+V grafu umístěte ukazatel myši na datový bod, abyste viděli hodnocení jistoty jeho předpovědi. V seznamu projevy v dolní části stránky vyberte datový bod, pro který chcete načíst odpovídající utterance. 
 
 ![Vybrané utterance](./media/luis-how-to-batch-test/selected-utterance.png)
 
@@ -84,25 +86,25 @@ V diagramu najeďte myší na datový bod zobrazíte skóre jistoty jeho předpo
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
 
-## <a name="view-section-data"></a>Část dat zobrazení
+## <a name="view-section-data"></a>Zobrazit data oddílu
 
-V grafu čtyři části, vyberte název oddílu, jako je například **falešně pozitivní** v pravém horním rohu grafu. Pod grafem všechny projevy v této části zobrazí pod grafem v seznamu. 
+V grafu se čtyřmi oddíly vyberte název oddílu, například **falešně pozitivní** v pravém horním rohu grafu. Pod grafem se všechny projevy v této části zobrazí pod grafem v seznamu. 
 
-![Vybrané projevy oddílu](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
+![Vybrané projevy podle oddílu](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
 
-Na předchozím obrázku utterance `switch on` označená s cílem TurnAllOn však obdržela předpovědi none záměru. Toto je jako ukazatel toho, že cílem TurnAllOn potřebuje další příklad projevy používat, aby očekávané předpověď. 
+V tomto předchozím obrázku je `switch on` utterance označena záměrem TurnAllOn, ale obdržel předpověď záměru None. Jedná se o indikaci, že záměr TurnAllOn potřebuje další příklad projevy, aby bylo možné provést očekávanou předpověď. 
 
-Dva oddíly grafu červeně označení projevy, které neodpovídá očekávanému předpovědi. Tyto zprávy značí projevy které LUIS potřebuje další školení. 
+Dva části grafu červeně označují projevy, které neodpovídaly očekávané předpovědi. Označují projevy, které LUIS potřebují více školení. 
 
-Dva oddíly grafu zeleně odpovídají očekávané předpovědi.
+Dva oddíly v grafu zeleně odpovídaly očekávané předpovědi.
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud testování označuje, že aplikace LUIS nedokáže rozpoznat správný záměry a entity, můžete pracovat ke zlepšení výkonu vaší aplikace LUIS označování další projevy nebo přidáním funkcí. 
+Pokud testování indikuje, že vaše aplikace LUIS nerozpozná správné záměry a entity, můžete pracovat na zlepšení výkonu vaší aplikace LUIS tak, že se přihlásíte další projevy nebo přidáte funkce. 
 
-* [Popisek navrhované projevy služba luis](luis-how-to-review-endpoint-utterances.md) 
-* [Použití funkcí pro zvýšení výkonu aplikace LUIS](luis-how-to-add-features.md) 
-* [Vysvětlení služby batch testování v tomto kurzu](luis-tutorial-batch-testing.md)
-* [Další dávky testování konceptů](luis-concept-batch-test.md).
+* [Popisek navržený projevy pomocí LUIS](luis-how-to-review-endpoint-utterances.md) 
+* [Využijte funkce ke zlepšení výkonu aplikace v LUIS.](luis-how-to-add-features.md) 
+* [Vysvětlení dávkového testování pomocí tohoto kurzu](luis-tutorial-batch-testing.md)
+* [Přečtěte si o konceptech dávkového testování](luis-concept-batch-test.md).

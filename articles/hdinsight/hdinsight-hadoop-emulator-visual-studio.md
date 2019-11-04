@@ -1,5 +1,5 @@
 ---
-title: Data Lake Tools for Visual Studio s Hortonworksem izolovaným prostorem (sandbox) – Azure HDInsight
+title: Data Lake Tools for Visual Studio & Hortonworks – Azure HDInsight
 description: Naučte se používat nástroje Azure Data Lake pro Visual Studio s izolovaným prostorem Hortonworks běžícím na místním virtuálním počítači. Pomocí těchto nástrojů můžete vytvářet a spouštět úlohy podregistru a vepřového prostoru v izolovaném prostoru (sandbox) a zobrazit výstup a historii úlohy.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e128aaf6e1726b7a1341fefc6df3cdafd3beb880
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098778"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500154"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Použití nástrojů Azure Data Lake pro Visual Studio s izolovaným prostorem Hortonworks
 
@@ -21,7 +21,7 @@ Azure Data Lake obsahuje nástroje pro práci s obecnými clustery Apache Hadoop
 
 Použití izolovaného prostoru Hortonworks vám umožňuje pracovat se systémem Hadoop místně ve vašem vývojovém prostředí. Až vytvoříte řešení a chcete ho nasadit ve velkém měřítku, můžete přejít na cluster HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Hortonworks izolovaný prostor (sandbox) běžící ve virtuálním počítači na vašem vývojovém prostředí. Tento dokument byl napsán a testován pomocí izolovaného prostoru (sandboxu) spuštěného v Oracle VirtualBox. Informace o nastavení izolovaného prostoru (sandbox) najdete v tématu [Začínáme s izolovaným prostorem (Hortonworks).](hadoop/apache-hadoop-emulator-get-started.md) dokumentů.
 
@@ -33,7 +33,7 @@ Použití izolovaného prostoru Hortonworks vám umožňuje pracovat se systéme
 
 ## <a name="configure-passwords-for-the-sandbox"></a>Konfigurace hesel pro izolovaný prostor
 
-Ujistěte se, že je spuštěný izolovaný prostor (Hortonworks). Pak postupujte podle kroků v dokumentu [Hortonworks sandboxu](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) v části Začínáme. Tyto kroky nakonfigurují heslo pro účet SSH `root` a účet Apache Ambari. `admin` Tato hesla se používají, když se připojíte k izolovanému prostoru ze sady Visual Studio.
+Ujistěte se, že je spuštěný izolovaný prostor (Hortonworks). Pak postupujte podle kroků v dokumentu [Hortonworks sandboxu](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) v části Začínáme. Tyto kroky nakonfigurují heslo pro účet SSH `root` a účet `admin` Apache Ambari. Tato hesla se používají, když se připojíte k izolovanému prostoru ze sady Visual Studio.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>Připojit nástroje k izolovanému prostoru
 
@@ -49,7 +49,7 @@ Ujistěte se, že je spuštěný izolovaný prostor (Hortonworks). Pak postupujt
 
     Pokračujte výběrem tlačítka **Next** (Další).
 
-4. Pomocí pole **heslo** zadejte heslo, které jste nakonfigurovali pro `root` účet. U ostatních polí ponechte výchozí hodnotu.
+4. Pomocí pole **heslo** zadejte heslo, které jste nakonfigurovali pro účet `root`. U ostatních polí ponechte výchozí hodnotu.
 
     ![Snímek obrazovky dialogového okna se zvýrazněným textovým polem pro kořenové heslo](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
 
@@ -63,7 +63,7 @@ Ujistěte se, že je spuštěný izolovaný prostor (Hortonworks). Pak postupujt
     > Proces aktualizace používá Ambari ke změně konfigurace izolovaného prostoru Hortonworks na to, co se očekává pomocí nástrojů Data Lake Tools for Visual Studio.
 
 6. Po dokončení ověření vyberte **Dokončit** a dokončete konfiguraci.
-    ![Snímek obrazovky dialogového okna s zvýrazněným tlačítkem Dokončit](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
+    ![snímek obrazovky dialogového okna s zvýrazněným tlačítkem Dokončit](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
 
      >[!NOTE]  
      > V závislosti na rychlosti vývojového prostředí a množství paměti přidělené virtuálnímu počítači může trvat několik minut, než se nakonfiguruje a ověří služby.

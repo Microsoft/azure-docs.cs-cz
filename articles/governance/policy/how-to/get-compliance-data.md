@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 47258f27f44b6a21c5da72e4631591e695024400
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: bd65fcf6ebff931fbb408ca8337a37d355221dfe
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053280"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480258"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -89,10 +89,10 @@ Následující tabulka ukazuje, jak různé účinky zásad fungují s hodnocen�
 
 | Stav prostředku | Efekt | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Neodpovídající |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | V souladu s předpisy |
-| Novinka | Audit, AuditIfNotExist\* | True | Neodpovídající |
-| Novinka | Audit, AuditIfNotExist\* | False | V souladu s předpisy |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Pravda | Neodpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | V souladu s předpisy |
+| Novinka | Audit, AuditIfNotExist\* | Pravda | Neodpovídající |
+| Novinka | Audit, AuditIfNotExist\* | Nepravda | V souladu s předpisy |
 
 \* Účinky Append, DeployIfNotExist a AuditIfNotExist vyžadují, aby byl příkaz IF nastaven na TRUE.
 Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
@@ -131,9 +131,16 @@ Vzhledem k tomu, že může být zásada nebo iniciativa přiřazena k různým 
 Seznam prostředků na kartě **Kompatibilita prostředků** zobrazuje stav vyhodnocení existujících prostředků pro aktuální přiřazení. Karta je standardně **nekompatibilní**, lze ji však filtrovat.
 Události (připojit, audit, odepřít, nasadit) aktivované žádostí o vytvoření prostředku se zobrazí na kartě **události** .
 
+> [!NOTE]
+> Pro zásady stroje AKS je zobrazený prostředek skupina prostředků.
+
 ![Příklad událostí dodržování předpisů Azure Policy](../media/getting-compliance-data/compliance-events.png)
 
-Klikněte pravým tlačítkem na řádek události, na kterou chcete získat další podrobnosti, a vyberte **Zobrazit protokoly aktivit**. Otevře se stránka protokolu aktivit a je předem filtrována na hledání, které zobrazuje podrobnosti o přiřazení a událostech. Protokol aktivit poskytuje další kontext a informace o těchto událostech.
+V případě prostředků [režimu poskytovatele prostředků](../concepts/definition-structure.md#resource-provider-modes) na kartě **Kompatibilita prostředků** vyberte prostředek, klikněte na něj pravým tlačítkem myši a vyberte **Zobrazit podrobnosti** o dodržování předpisů. otevře se podrobnosti o kompatibilitě komponent. Tato stránka také nabízí karty k zobrazení zásad, které jsou přiřazeny k tomuto prostředku, událostem, událostem komponenty a historii změn.
+
+![Příklad podrobností o kompatibilitě komponent Azure Policy](../media/getting-compliance-data/compliance-components.png)
+
+Zpět na stránce kompatibilita prostředků klikněte pravým tlačítkem na řádek události, pro kterou chcete získat další podrobnosti, a vyberte **Zobrazit protokoly aktivit**. Otevře se stránka protokolu aktivit a je předem filtrována na hledání, které zobrazuje podrobnosti o přiřazení a událostech. Protokol aktivit poskytuje další kontext a informace o těchto událostech.
 
 ![Příklad protokolu aktivit Azure Policy dodržování předpisů](../media/getting-compliance-data/compliance-activitylog.png)
 

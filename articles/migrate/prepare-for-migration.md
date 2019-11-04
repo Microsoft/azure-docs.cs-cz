@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d2eeada500de0f174178234ab92b51bcf16b3502
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176734"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480114"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
 
-Tento článek popisuje, jak připravit místní a cloudový počítač před tím, než začnete s migrací do Azure pomocí [migrace Azure Migrate serveru](migrate-services-overview.md#azure-migrate-server-migration).
+Tento článek popisuje, jak připravit místní počítače před tím, než je začnete migrovat do Azure pomocí [migrace Azure Migrate serveru](migrate-services-overview.md#azure-migrate-server-migration-tool).
 
 
 V tomto článku:
@@ -78,7 +78,7 @@ Pro jiné operační systémy musíte počítače před migrací ručně připra
 Pokud migrujete počítač se systémem Windows, proveďte tyto změny před migrací. Pokud před provedením změn migrujete virtuální počítač, nemusí se virtuální počítač spustit v Azure.
 
 1. [Povolte konzolu sériového přístupu Azure](../virtual-machines/troubleshooting/serial-console-windows.md) pro virtuální počítač Azure. To pomáhá při řešení potíží. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí s použitím bitové kopie disku. Jedná se o ekvivalent restartování nového virtuálního počítače. 
-2. Pokud migrujete počítače se systémem Windows Server 2003, nainstalujte integrační služby technologie Hyper-V hosta do operačního systému virtuálního počítače. [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)
+2. Pokud migrujete počítače se systémem Windows Server 2003, nainstalujte integrační služby technologie Hyper-V hosta do operačního systému virtuálního počítače. [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
 
 ### <a name="prepare-linux-machines"></a>Příprava počítačů se systémem Linux
 
@@ -130,13 +130,13 @@ Na místních počítačích s Windows udělejte toto:
 Na místních počítačích se systémem Linux proveďte tyto kroky:
 
 1. Ověřte, že je služba Secure Shell nastavená tak, aby se spouštěla automaticky při spuštění systému.
-2. Ověřte, že pravidla brány firewall umožňují připojení SSH.
+2. Zkontrolujte, že pravidla brány firewall umožňují připojení SSH.
 
 ### <a name="configure-azure-vms-after-migration"></a>Konfigurace virtuálních počítačů Azure po migraci
 
 Po dokončení migrace proveďte následující na virtuálních počítačích Azure, které se vytvořily.
 
-1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Nemůžete použít stejnou veřejnou IP adresu pro virtuální počítač Azure, který jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md)
+1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Nemůžete použít stejnou veřejnou IP adresu pro virtuální počítač Azure, který jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md).
 2. Ověřte, že pravidla skupiny zabezpečení sítě (NSG) na virtuálním počítači povolují příchozí připojení k portu RDP nebo SSH.
 3. Zkontrolujte [diagnostiku spouštění](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) a zobrazte si virtuální počítač.
 

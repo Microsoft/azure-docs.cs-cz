@@ -11,14 +11,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4872ba8a707192cd61ec371fa982a076d410e918
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: c0d696e3fc060a2779eba7d7e895397ea3245383
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996576"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489282"
 ---
 # <a name="use-secrets-in-training-runs"></a>Používání tajných kódů v školicích běhůch
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak bezpečně používat tajné klíče v školicím běhu. Pokud se například chcete připojit k externí databázi pro dotazování školicích dat, budete muset předat uživatelské jméno a heslo do kontextu vzdáleného spuštění. Kódování takových hodnot do školicích skriptů v nešifrovaných textech je nezabezpečené, protože by to vystavilo tajný klíč. 
 

@@ -1,5 +1,5 @@
 ---
-title: Migrace místních Apache Hadoop do Azure HDInsight – motivace a výhody
+title: 'Výhody: migrace místních Apache Hadoop do Azure HDInsight'
 description: Seznamte se s motivací a výhodami migrace místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718360"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494930"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
 
@@ -51,9 +51,9 @@ Azure HDInsight je cloudová distribuce komponent systému Hadoop. Azure HDInsig
 
 - **Produktivita** – v upřednostňovaném vývojovém prostředí můžete použít různé nástroje pro Hadoop a Spark.
 
-- **Rozšiřitelnost pomocí vlastních nástrojů nebo aplikací třetích stran** – clustery HDInsight se dají rozšířit o nainstalované komponenty a dají se také integrovat s dalšími řešeními pro velké objemy dat pomocí  Deployments z Azure [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/). Místo na trhu.
+- **Rozšiřitelnost pomocí vlastních nástrojů nebo aplikací třetích stran** – clustery HDInsight se dají rozšířit o nainstalované komponenty a dají se také integrovat s dalšími řešeními pro velké objemy dat pomocí nasazení [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) z Azure. Místo na trhu.
 
-- **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [protokoly Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) To poskytuje jedno rozhraní, se kterým můžete monitorovat všechny clustery.
+- **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [protokoly Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) k poskytnutí jediného rozhraní, se kterým můžete monitorovat všechny clustery.
 
 - **Integrace s dalšími službami Azure** – HDInsight je možné snadno integrovat s dalšími oblíbenými službami Azure, jako jsou tyto:
 

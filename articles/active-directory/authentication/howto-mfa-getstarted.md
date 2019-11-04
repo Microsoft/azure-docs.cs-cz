@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2d80ac949dea3c9d6c3d28d2a343c4ed7bad8983
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554389"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474306"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Plánování cloudového nasazení Azure Multi-Factor Authentication
 
@@ -220,6 +220,7 @@ Je důležité, abyste zabránili neúmyslnému uzamčení vašeho tenanta Azure
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce.
 1. Přejděte na **Azure Active Directory**, **podmíněný přístup**.
 1. Vyberte **nové zásady**.
+   ![vytvořit zásadu podmíněného přístupu, která povolí MFA pro Azure Portal uživatele v pilotní skupině](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Zadejte smysluplný název pro zásady.
 1. V části **Uživatelé a skupiny**:
    * Na kartě **Zahrnout** klikněte na přepínač **Všichni uživatelé** .
@@ -237,8 +238,6 @@ Je důležité, abyste zabránili neúmyslnému uzamčení vašeho tenanta Azure
 1. Přeskočit část **relace** .
 1. Nastavte přepínač **Povolit zásady** na **zapnuto**.
 1. Klikněte na **Vytvořit**.
-
-![Vytvoření zásady podmíněného přístupu pro povolení MFA pro uživatele Azure Portal v pilotní skupině](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Plánování integrace s místními systémy
 

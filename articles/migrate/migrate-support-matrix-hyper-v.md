@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802192"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498697"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci Hyper-V
 
@@ -35,26 +35,7 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače Hyper-V.
 --- | ---
 Oprávnění Azure | Chcete-li vytvořit projekt Azure Migrate, potřebujete oprávnění přispěvatele nebo vlastníka v rámci předplatného.
 Virtuální počítače Hyper-V | Vyhodnoťte až 35 000 virtuálních počítačů Hyper-V v jednom projektu. V předplatném Azure můžete mít více projektů. Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
-Geografické | Azure Migrate projekty lze vytvořit v řadě geografických oblastí. I když můžete vytvářet projekty v konkrétních geografických oblastech, můžete vyhodnotit nebo migrovat počítače pro jiná cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
-
-  **Zeměpisné oblasti** | **Umístění úložiště metadat**
-  --- | ---
-  Azure Government | USA – Virginie
-  Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
-  Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
-  Brazílie | Brazílie – jih
-  Kanada | Kanada – střed nebo Kanada – východ
-  Evropa | Severní Evropa nebo Západní Evropa
-  Francie | Francie – střed
-  Indie | Střed Indie nebo Jižní Indie
-  Japonsko |  Japonsko – východ nebo Japonsko – západ
-  Korea | Korea – střed nebo Korea – jih
-  Spojené království | Velká Británie – jih nebo Velká Británie – západ
-  Spojené státy | Střed USA nebo Západní USA 2
-
-
- > [!NOTE]
- > Podpora Azure Government je v tuto chvíli dostupná jenom pro [starší verze](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) Azure Migrate.
+Geografické | [Kontrola](migrate-support-matrix.md#supported-geographies) podporovaných geografických oblastí.
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Posouzení – požadavky na hostitele Hyper-V

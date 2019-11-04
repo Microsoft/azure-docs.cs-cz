@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 13615d319af600234dcc23e04f82ce46b8f97780
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 3e0c49d1141d976558ece325baaa99fc9981275e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970093"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496703"
 ---
 # <a name="create-and-clone-projects"></a>Vytváření a klonování projektů
 
@@ -27,9 +27,9 @@ Projekt také uchovává metadata a další nastavení konfigurace, která mají
 
 ## <a name="use-the-my-projects-dashboard"></a>Použití řídicího panelu Moje projekty
 
-Váš řídicí panel **Moje projekty** na `https://notebooks.azure.com/<userID>/projects` je místo, kde můžete zobrazovat, spravovat a vytvářet projekty:
+Na řídicím panelu **Moje projekty** na `https://notebooks.azure.com/<userID>/projects` je místo, kde můžete zobrazit, spravovat a vytvářet projekty:
 
-[řídicí panel projektů @no__t 1My v Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![řídicí panel projekty v Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 To, co můžete na řídicím panelu udělat, závisí na tom, jestli jste přihlášení pomocí účtu, který vlastní ID uživatele:
 
@@ -37,7 +37,7 @@ To, co můžete na řídicím panelu udělat, závisí na tom, jestli jste přih
 | --- | --- | --- |
 | **Spouštěl** | Vlastník | Spustí projektový Server a otevře složku projektu v Jupyter. (Častěji přejděte do složky projektu a pak z ní začněte Poznámkový blok.) |
 | **Stáhnout** | Lidé | Stáhne kopii vybraného projektu jako soubor ZIP. |
-| **Předem** | Lidé | Zobrazí místní nabídku sdílení, pomocí které můžete získat adresu URL vybraného projektu, sdílet je se sociálními médii, poslat e-mail s adresou URL a získat kód HTML nebo Markdownu pro přístup pomocí znaku "Poznámkový blok" (viz část [získání znaku ke spuštění](#obtain-a-launch-badge)) s adresou URL. |
+| **Sdílení** | Lidé | Zobrazí místní nabídku sdílení, pomocí které můžete získat adresu URL vybraného projektu, sdílet je se sociálními médii, poslat e-mail s adresou URL a získat kód HTML nebo Markdownu pro přístup pomocí znaku "Poznámkový blok" (viz část [získání znaku ke spuštění](#obtain-a-launch-badge)) s adresou URL. |
 | **Odstranění** | Vlastník | Odstraní vybraný projekt. Tato operace se nedá vrátit zpět. |
 | **Terminálovému** | Vlastník | Spustí projektový Server a pak otevře nové okno prohlížeče s terminálem bash pro tento server. |
 | **+ Nový projekt** | Vlastník | Vytvoří nový projekt. Viz [Vytvoření nového projektu](#create-a-new-project). |
@@ -77,11 +77,11 @@ Následující vyhrazená slova nelze použít samostatně jako ID projektu. Tat
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| upozorňován | account | řízení | rozhraní api | webový | učeben |
+| Upozorňován | account | řízení | rozhraní api | webový | učeben |
 | content | řídicí panel | okno | dotaz | Pomoc | html |
-| domovské | importovat | Knihovna | správu | novinka | poznámkového bloku |
-| poznámkových bloků | formátu | preview | stanov | profilu | nápovědě |
-| status | pracovníky | test | | | |
+| domovské | Importovat | Knihovna | správa | novinka | poznámkového bloku |
+| poznámkových bloků | formátu | preview | stanov | Profilu | nápovědě |
+| status | Pracovníky | test | | | |
 
 Pokud se pokusíte použít jedno z těchto slov jako ID projektu, místní nabídky pro **Vytvoření nového projektu** a **projektu** označují, že "ID knihovny je vyhrazený identifikátor".
 
@@ -93,7 +93,7 @@ Můžete snadno importovat celé veřejné úložiště GitHub jako projekt, vč
 
 | Pole | Popis |
 | --- | --- |
-| Úložiště GitHub | Název zdrojového úložiště v github.com. Pokud například chcete naklonovat Jupyter poznámkové bloky pro Azure Cognitive Services v [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks), zadejte "Microsoft/vnímání-Services-poznámkové bloky".  |
+| Úložiště GitHub | Název zdrojového úložiště v github.com. Pokud například chcete klonovat Jupyter poznámkové bloky pro Azure Cognitive Services v [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks), zadejte "Microsoft/vnímání-Services-poznámkové bloky".  |
 | Rekurzivní klonování | Úložiště GitHub můžou obsahovat několik podřízených úložišť. Tuto možnost nastavte, pokud chcete klonovat nadřazené úložiště a všechny jeho podřízené objekty. Vzhledem k tomu, že je možné, že úložiště má mnoho podřízených objektů, nechte tuto možnost nevyjasná, pokud víte, že ji nepotřebujete. |
 | Název projektu | Popisný název projektu, který Azure Notebooks používá pro účely zobrazení. |
 | ID projektu | Vlastní identifikátor, který se stal součástí adresy URL, kterou používáte pro sdílení projektu (formulář je `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Toto ID může obsahovat pouze písmena, číslice a spojovníky, které jsou omezeny na 30 znaků a nesmí se jednat o [REZERVOVANÉ ID projektu](#reserved-project-ids). Pokud si nejste jistí, co použít, obvyklá konvence je použití malé verze názvu projektu, kde jsou mezery převedeny na spojovníky, například "My-Poznámkový projekt" (zkráceně, pokud je to nutné pro přizpůsobení limitu délky). |
@@ -125,4 +125,4 @@ Naklonování projektu:
 - [Postupy: zobrazení prezentace](present-jupyter-notebooks-slideshow.md)
 - [Postupy: práce s datovými soubory](work-with-project-data-files.md)
 - [Postupy: přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
-- [Postupy: použití služeb Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Postupy: použití Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

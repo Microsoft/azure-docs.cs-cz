@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 0fb5341c2e7ee55391cb38251b0ea66b55b93301
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326607"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469156"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Přihlášení pomocí aplikace pro iOS
+# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: přihlášení pomocí aplikace pro iOS
 
 Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Použití otevřeného standardního protokolu nabízí při výběru knihovny pro integraci s našimi službami více možností vývojářů. Tento názorný postup a další uživatelé mají za to, aby mohli snadněji psát aplikace, které se připojují k platformě Microsoft identity. Většina knihoven, které implementují [specifikaci RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) , se může připojit k platformě Microsoft identity.
 
@@ -31,13 +31,15 @@ Pokud s OAuth2 nebo OpenID připojením začínáte, tato Ukázková konfigurace
 ## <a name="get-an-azure-ad-b2c-directory"></a>Získání adresáře služby Azure AD B2C
 Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](tutorial-create-tenant.md) předtím, než budete pokračovat.
 
-## <a name="create-an-application"></a>Vytvořit aplikaci
+## <a name="create-an-application"></a>Vytvoření aplikace
 
 V dalším kroku zaregistrujete aplikaci do svého tenanta Azure AD B2C. To poskytuje službě Azure AD informace, které potřebuje pro bezpečnou komunikaci s vaší aplikací.
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Poznamenejte si **ID aplikace** pro použití v pozdějším kroku. V dalším kroku vyberte aplikaci v seznamu a zaznamenejte **vlastní identifikátor URI pro přesměrování**, který použijete v pozdějším kroku. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
+
+Také zaznamenejte vlastní identifikátor URI přesměrování pro použití v pozdějším kroku. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Vytvoření uživatelských toků
 V Azure AD B2C je každé uživatelské prostředí definované [uživatelským tokem](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje jedno prostředí identity: kombinované přihlášení a registrace. Při vytváření toku uživatele nezapomeňte:
@@ -59,19 +61,19 @@ Tuto ukázku vytvořil [projekt iOS AppAuth na GitHubu](https://github.com/openi
 > AppAuth podporuje iOS 7 a novější.  Aby ale podporovala sociální přihlášení na Google, je potřeba SFSafariViewController, který vyžaduje iOS 9 nebo vyšší.
 >
 
-### <a name="configuration"></a>Konfiguraci
+### <a name="configuration"></a>Konfigurace
 
 Komunikaci s Azure AD B2C můžete nakonfigurovat zadáním identifikátoru URI koncového bodu autorizace i koncového bodu tokenu.  K vygenerování těchto identifikátorů URI potřebujete následující informace:
 * ID tenanta (například contoso.onmicrosoft.com)
 * Název toku uživatele (například B2C\_1\_SignUpIn)
 
-Identifikátor URI koncového bodu tokenu se dá vygenerovat\_tak, že nahradíte ID tenanta a název zásady\_v následující adrese URL:
+Identifikátor URI koncového bodu tokenu se dá vygenerovat tak, že nahradíte ID\_klienta a\_název zásady v následující adrese URL:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-Identifikátor URI koncového bodu autorizace se dá vygenerovat tak\_, že nahradíte\_ID tenanta a název zásady v následující adrese URL:
+Identifikátor URI koncového bodu autorizace se dá vygenerovat tak, že nahradíte ID\_klienta a\_název zásady v následující adrese URL:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
@@ -85,7 +87,7 @@ OIDServiceConfiguration *configuration =
 // now we are ready to perform the auth request...
 ```
 
-### <a name="authorizing"></a>Probíhá autorizace.
+### <a name="authorizing"></a>Autorizace
 
 Jakmile nakonfigurujete nebo načtete konfiguraci autorizační služby, může být vytvořen požadavek na autorizaci. K vytvoření žádosti potřebujete následující informace:
 
@@ -120,7 +122,7 @@ appDelegate.currentAuthorizationFlow =
 
 Chcete-li nastavit aplikaci tak, aby zpracovávala přesměrování na identifikátor URI s vlastním schématem, je třeba aktualizovat seznam schémat URL v souboru info. pList:
 * Otevřete info. pList.
-* Najeďte myší na řádek, jako je \+ například kód typu operačního systému sady, a klikněte na symbol.
+* Najeďte myší na řádek, jako je například kód typu operačního systému sady prostředků, a klikněte na symbol \+.
 * Přejmenujte nový řádek ' typy URL '.
 * Kliknutím na šipku nalevo od ' typy URL ' otevřete stromovou strukturu.
 * Kliknutím na šipku nalevo od položky ' položka 0 ' otevřete strom.

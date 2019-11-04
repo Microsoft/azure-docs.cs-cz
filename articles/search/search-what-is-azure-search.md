@@ -1,5 +1,5 @@
 ---
-title: Seznámení s Azure Kognitivní hledání
+title: Úvod do kognitivního hledání Azure
 titleSuffix: Azure Cognitive Search
 description: Azure Kognitivní hledání je plně spravovaná hostovaná cloudová vyhledávací služba od Microsoftu. Přečtěte si popisy funkcí, vývojový pracovní postup, porovnání s ostatními produkty Microsoftu pro hledání a jak začít.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 51d7cf270a0df665fdcf5bc90cae283c85ae5d22
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1df8bb293834fca123b2573f02871410754a6bdc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794179"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479649"
 ---
-# <a name="what-is-azure-cognitive-search"></a>Co je Azure Kognitivní hledání?
+# <a name="what-is-azure-cognitive-search"></a>Co je kognitivní hledání Azure?
 
 Azure Kognitivní hledání ([dřív označované jako "Azure Search"](whats-new.md#new-service-name)) je cloudové řešení hledání jako služby, které poskytuje vývojářům rozhraní API a nástroje pro přidání bohatých možností vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích. . Váš kód nebo nástroj vyvolá přijímání dat (indexování) pro vytvoření a načtení indexu. Volitelně můžete přidat dovednosti rozpoznávání pro použití procesů AI během indexování. Díky tomu můžete přidat nové informace a struktury užitečné pro hledání a další scénáře.
 
@@ -67,8 +67,8 @@ Azure Kognitivní hledání je vhodné pro následující scénáře aplikací:
 |-------------------|----------|
 | Nástroje pro vytváření prototypů a kontrolu | Na portálu můžete pomocí [**Průvodce importem dat**](search-import-data-portal.md) nakonfigurovat indexery, návrháře indexů, aby sestavil index, a [**Průzkumníka služby Search**](search-explorer.md), abyste mohli testovat dotazy a upřesňovat profily vyhodnocování. Můžete také otevřít index a zobrazit jeho schéma. |
 | Monitorování a diagnostika | [**Umožněte funkcím monitorování**](search-monitor-usage.md) , abyste mohli přesáhnout metriky, které jsou vždy viditelné na portálu. Metriky pro dotazy za sekundu, latenci a omezování se zachycují a uvádějí na stránkách portálu bez další nezbytné konfigurace.|
-| Šifrování na straně serveru | [**Šifrování spravované Microsoftem v klidovém režimu**](search-security-overview.md#encrypted-transmission-and-storage) je integrované do interní vrstvy úložiště a je neodvolatelné. Volitelně můžete výchozí šifrování doplnit pomocí [**šifrovacích klíčů spravovaných zákazníkem (Preview)** ](search-security-manage-encryption-keys.md). Klíče, které vytvoříte a spravujete v Azure Key Vault slouží k šifrování indexů a mapování synonym v Azure Search. |
-| Infrastruktura | Díky **vysoce dostupné platformě** je prostředí vyhledávací služby nadmíru spolehlivé. Při správném nastavení kapacity [Azure Search nabízí SLA 99,9 %](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> Azure Search představuje **plně spravované a škálovatelné** řešení typu klient-server a nevyžaduje vůbec žádnou správu infrastruktury. Služba se dá přizpůsobit na míru vašim potřebám pomocí nastavení kapacity ve dvou dimenzích, aby mohla pracovat s větším úložištěm dokumentů, vyšším objemem dotazů nebo obojím.<br/><br/>|
+| Šifrování na straně serveru | [**Šifrování spravované Microsoftem v klidovém režimu**](search-security-overview.md#encrypted-transmission-and-storage) je integrované do interní vrstvy úložiště a je neodvolatelné. Volitelně můžete výchozí šifrování doplnit pomocí [**šifrovacích klíčů spravovaných zákazníkem (Preview)** ](search-security-manage-encryption-keys.md). Klíče, které vytvoříte a spravujete v Azure Key Vault slouží k šifrování indexů a mapování synonym v Azure Kognitivní hledání. |
+| Infrastruktura | Díky **vysoce dostupné platformě** je prostředí vyhledávací služby nadmíru spolehlivé. V případě správné škály [Azure kognitivní hledání nabízí smlouvu SLA 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> Azure Kognitivní hledání **plně spravované a škálovatelné** jako ucelené řešení, ale vyžaduje naprostou správu infrastruktury. Služba se dá přizpůsobit na míru vašim potřebám pomocí nastavení kapacity ve dvou dimenzích, aby mohla pracovat s větším úložištěm dokumentů, vyšším objemem dotazů nebo obojím.<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Jak používat Azure Kognitivní hledání
 ### <a name="step-1-provision-service"></a>1\. krok: Zřízení služby
