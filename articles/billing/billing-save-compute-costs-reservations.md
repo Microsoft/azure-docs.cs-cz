@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390163"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499240"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -125,7 +125,7 @@ Sleva za rezervaci se vztahuje jenom na prostředky přidružené k předplatný
 
 ## <a name="when-the-reservation-term-expires"></a>Po skončení období rezervace
 
-Na konci období rezervace skončí platnost slevy. Virtuální počítač, databáze SQL, služba Azure Cosmos DB nebo jiný prostředek se začne fakturovat podle ceny za průběžné platby. Rezervace Azure se automaticky neprodlužují. Pokud chcete mít i nadále slevu, musíte zakoupit novou rezervaci pro oprávněné služby a software.
+Na konci rezervačního období vyprší platnost fakturační slevy a prostředky se účtují podle sazeb za průběžné platby. Ve výchozím nastavení není pro rezervace nastavené automatické obnovování. Automatické obnovení rezervace můžete povolit výběrem příslušné možnosti v nastaveních prodloužení. Pokud je nastavené automatické prodloužení, při vypršení platnosti stávající rezervace se koupí náhradní. Náhradní rezervace má ve výchozím nastavení stejné atributy jako rezervace s vypršenou platností. Volitelně můžete v nastaveních prodloužení změnit četnost fakturace, období nebo množství. Prodloužení může nastavit libovolný uživatel, který má přístup k dané rezervaci a k předplatnému použitému pro fakturaci.  
 
 ## <a name="discount-applies-to-different-sizes"></a>Sleva se vztahuje na různé velikosti
 

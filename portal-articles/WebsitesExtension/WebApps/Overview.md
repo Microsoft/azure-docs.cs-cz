@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bc013469610d5535c89870947fe094da93660012
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60530860"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488433"
 ---
 # <a name="app-service-documentation"></a>Dokumentace ke službě App Service
 Azure App Service umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury, jazykem nebo modulem runtime webové architektury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps Services nebo libovolného úložiště Git. Naučte se používat službu Azure App Service prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
@@ -42,7 +42,7 @@ Zjistěte, jak nasadit, spravovat a monitorovat zabezpečené webové aplikace v
   - [Java s MySQL](/app-service/app-service-web-tutorial-java-mysql)
   - [Python sh PostgreSQL](/app-service/containers/tutorial-python-postgresql-app)
 - [Mapování existující vlastní domény na aplikaci](/azure/app-service/app-service-web-tutorial-custom-domain)
-- [Vytvoření vazby stávajícího certifikátu SSL na vaši aplikaci](/azure/app-service/app-service-web-tutorial-custom-SSL)
+- [Vytvoření vazby certifikátu SSL na vaši aplikaci](/azure/app-service/configure-ssl-bindings)
 
 ## <a name="free-pluralsight-video-training"></a>Bezplatné školicí video od Pluralsightu
 
